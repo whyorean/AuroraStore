@@ -36,7 +36,6 @@ import com.aurora.store.R
 import com.aurora.store.data.installer.AMInstaller
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.ServiceInstaller
-import com.aurora.store.data.installer.ShizukuInstaller
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
@@ -97,7 +96,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
-        if (AppInstaller.hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -158,7 +157,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
                             false
                         }
                     } else if (selectedId == 5) {
-                        if (AppInstaller.hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+                        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
                             if (shizukuAlive && AppInstaller.hasShizukuPerm()) {
                                 save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
                                 true
@@ -188,7 +187,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
     }
 
     override fun onDestroy() {
-        if (AppInstaller.hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
@@ -224,10 +223,5 @@ class InstallationPreference : PreferenceFragmentCompat() {
             requireContext(),
             AMInstaller.AM_DEBUG_PACKAGE_NAME
         )
-    }
-
-    private fun checkShizukuAvailability(): Boolean {
-        return (PackageUtil.isInstalled(requireContext(), ShizukuInstaller.SHIZUKU_PACKAGE_NAME) || Sui.isSui()) &&
-                shizukuAlive && Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
     }
 }

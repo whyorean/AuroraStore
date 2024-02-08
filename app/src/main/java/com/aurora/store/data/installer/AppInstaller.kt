@@ -25,6 +25,8 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.BuildConfig
@@ -78,6 +80,7 @@ class AppInstaller @Inject constructor(@ApplicationContext private val context: 
                     PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         fun hasShizukuOrSui(context: Context): Boolean {
             return PackageUtil.isInstalled(
                 context,

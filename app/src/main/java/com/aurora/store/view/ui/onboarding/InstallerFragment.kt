@@ -28,7 +28,6 @@ import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
 import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuOrSui
@@ -85,7 +84,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
 
         installerId = Preferences.getInteger(requireContext(), PREFERENCE_INSTALLER_ID)
 
-        if (hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+        if (isOAndAbove() && hasShizukuOrSui(requireContext())) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -121,7 +120,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
     }
 
     override fun onDestroy() {
-        if (hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+        if (isOAndAbove() && hasShizukuOrSui(requireContext())) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
@@ -163,7 +162,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
                 }
             }
             5 -> {
-                if (hasShizukuOrSui(requireContext()) && isOAndAbove()) {
+                if (isOAndAbove() && hasShizukuOrSui(requireContext())) {
                     if (shizukuAlive && hasShizukuPerm()) {
                         this.installerId = installerId
                         save(PREFERENCE_INSTALLER_ID, installerId)
