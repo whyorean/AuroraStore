@@ -109,6 +109,7 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             }
             if (isUAndAbove()) {
                 setInstallerPackageName(context.packageName)
+                setRequestUpdateOwnership(true)
             }
         }
         val sessionId = packageInstaller.createSession(sessionParams)
