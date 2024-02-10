@@ -1,0 +1,18 @@
+- İndirme sisteminde yapılan önemli dahili değişiklikler
+  - Aurora Store artık arka planda indirme yapmak için yeni izin gerektiriyor
+  - Duraklat ve Devam Et özellikleri indirmeler için kullanımdan kaldırıldı
+  - Eşzamanlı indirmeler kullanımdan kaldırıldı (bir seferde bir indirme ile sınırlı)
+  - İndirilen dosyalar için otomatik SHA256 ve SHA1 doğrulaması
+  - Chrome ve WebView gibi paylaşılan kütüphanelere sahip uygulamalar için daha iyi destek
+- Güncelleme sisteminde yapılan önemli değişiklikler
+  - Uygulamalar için yeni otomatik güncellemeler ( öntanımlı olarak etkin)
+  - Güncellemeler için yeni otomatik sertifika doğrulaması
+  - İmzalama anahtarı dönüşümlü güncellemele desteği (Android 9.0+'dan sonra getirildi)
+- Kendi Kendine Güncellemeler (Aurora Store) öntanımlı olarak devre dışı bırakıldı (ayarlar > güncelle bölümünden etkinleştirin)
+- Yerel Kurucu ve Aurora Hizmetleri kullanımdan kaldırıldı
+- Kurulu uygulamaları dışa aktarmak artık depolama izinleri gerektirmiyor
+- Uygulamalar için gerekli en düşük Android sürümü artık uygulama ayrıntıları sayfasında görülebilir (Bu uygulama hakkında daha fazla bilgi > Bilgi)
+- Çeviri güncellemeleri ve büyük hata düzeltmeleri
+- Sui (Shizuku Magisk Modülü) ile uygulama kurma desteği
+- Ayarlar > Ağ bölümünden GMS sürümünü geçersiz kılabilme
+- Material3 artık daha fazla yerde kullanılıyor
