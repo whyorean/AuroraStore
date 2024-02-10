@@ -1,7 +1,7 @@
 {
-  "version_name": "4.3.5",
-  "version_code": 53,
-  "aurora_build": "https://gitlab.com/AuroraOSS/AuroraStore/uploads/ac32503aee88c6d1067dad57f3f92e09/AuroraStore_4.3.5.apk",
+  "version_name": "4.4.1",
+  "version_code": 54,
+  "aurora_build": "https://auroraoss.com/AuroraStore/Stable/AuroraStore_4.4.1.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.3.3\n • Fix apps not installing post download\n • Allow choosing custom download directory\n • Add Wifi-only download option"
+  "changelog": "Changelog : v4.4.1\n • Major internal changes to the downloads system\n • Major changes to the updates system\n • Translation updates & major bug fixes"
 }
