@@ -191,7 +191,7 @@
     <string name="details_changelog_unavailable">Keine Änderungen vorhanden</string>
     <string name="details_changelog">Änderungen</string>
     <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern. Der Status der Registrierung kann später überprüft werden.</string>
-    <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Um den Entwicklern zu helfen, kannst du ihnen Rückmeldungen geben.</string>
+    <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Um den Entwicklern zu helfen, kannst du ihnen Rückmeldung geben.</string>
     <string name="details_beta_available">Am Betatest teilnehmen\?</string>
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta-Programm</string>
@@ -382,4 +382,7 @@
     <string name="pref_updates_auto_desc">Verhalten von automatischen Updates konfigurieren</string>
     <string name="action_request_analysis">Neue Analyse anfordern</string>
     <string name="failed_apk_export">APKs konnten nicht exportiert werden</string>
+    <string name="download_clear_finished">Fertige löschen</string>
+    <string name="pref_updates_incompatible">Inkompatible Updates</string>
+    <string name="pref_updates_incompatible_desc">Updates für inkompatible oder deaktivierte Apps anzeigen, die möglicherweise nicht installiert werden können</string>
 </resources>
