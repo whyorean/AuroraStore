@@ -32,7 +32,9 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
+import com.aurora.extensions.hasValidCertificate
 import com.aurora.extensions.invisible
+import com.aurora.extensions.isEnabled
 import com.aurora.extensions.px
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -79,6 +81,12 @@ class AppUpdateView : RelativeLayout {
             B.imgIcon.load(iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(RoundedCornersTransformation(8.px.toFloat()))
+            }
+
+            if (isEnabled(context)) {
+                if (!hasValidCertificate(context)) B.btnAction.setIcon(R.drawable.ic_security_fail)
+            } else {
+                B.btnAction.setIcon(R.drawable.ic_disabled)
             }
 
             B.txtLine2.text = developerName
