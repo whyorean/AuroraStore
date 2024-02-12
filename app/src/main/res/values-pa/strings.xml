@@ -382,4 +382,5 @@
     <string name="pref_updates_auto_desc">ਆਟੋ-ਅੱਪਡੇਟ ਵਿਵਹਾਰ ਨੂੰ ਕੌਨਫਿਗਰ ਕਰੋ</string>
     <string name="pref_updates_auto_install">ਉਪਲਬਧ ਅੱਪਡੇਟਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ ਚੈੱਕ ਕਰੋ ਅਤੇ ਇੰਸਟਾਲ ਕਰੋ</string>
     <string name="action_request_analysis">ਨਵੇਂ ਵਿਸ਼ਲੇਸ਼ਣ ਦੀ ਬੇਨਤੀ ਕਰੋ</string>
+    <string name="failed_apk_export">APK ਐਕਸਪੋਰਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
 </resources>
