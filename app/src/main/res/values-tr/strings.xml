@@ -107,7 +107,7 @@
     <string name="pref_install_mode_native">Yerel kurucu (Kullanılmıyor)</string>
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
     <string name="pref_install_delete_summary">APK\'ler varsayılan olarak silinecek</string>
-    <string name="pref_install_auto_title">İndirdikten sonra APK\'ları otomatik olarak yükle</string>
+    <string name="pref_install_auto_title">İndirdikten sonra APK\'ları otomatik olarak kur</string>
     <string name="pref_install_auto_summary">İndirme tamamlandıktan sonra uygulamalar anında kurulur</string>
     <string name="pref_insecure_anonymous_title">Güvensiz anonim oturum</string>
     <string name="pref_insecure_anonymous_summary">Aygıtta yerel olarak GSF kimliği oluştur</string>
@@ -381,4 +381,7 @@
     <string name="pref_updates_auto_install">Kullanılabilir denetlemeleri kendiliğinden denetle ve kur</string>
     <string name="action_request_analysis">Yeni değerlendirme iste</string>
     <string name="failed_apk_export">APK\'lar dışa aktarılamadı</string>
+    <string name="download_clear_finished">Temizlendi</string>
+    <string name="pref_updates_incompatible">Uyumsuz güncellemeler</string>
+    <string name="pref_updates_incompatible_desc">Kurulamayabilecek uyumsuz veya devre dışı uygulamalar için güncellemeleri göster</string>
 </resources>
