@@ -123,8 +123,6 @@
     <string name="purchase_unsupported">應用尚未支援</string>
     <string name="purchase_invalid">應用尚未購買</string>
     <string name="purchase_failed">下載失敗</string>
-    <string name="pref_updates_extended_desc">也為已禁用的程式檢查更新</string>
-    <string name="pref_updates_extended">擴大檢查更新</string>
     <string name="pref_ui_similar_apps_desc">在詳細說明頁面顯示「相似及相關」</string>
     <string name="pref_ui_similar_apps">相似及相關的程式</string>
     <string name="pref_ui_no_for_you_desc">在首頁顯示「為你精選」頁面</string>

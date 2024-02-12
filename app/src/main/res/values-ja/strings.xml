@@ -266,8 +266,6 @@
     <string name="notification_channel_updater_service">アプリのバックグラウンドダウンロードサービス</string>
     <string name="toast_export_failed">デバイス設定をエクスポートできませんでした</string>
     <string name="toast_export_success">デバイス設定をエクスポートしました</string>
-    <string name="pref_updates_extended_desc">無効化したアプリとゲームの更新も確認する</string>
-    <string name="pref_updates_extended">追加アップデート</string>
     <string name="account_anonymous_insecure">匿名 (非セキュア)</string>
     <string name="installer_am_unavailable">App Manager をインストールするかインストーラーを変更してください。</string>
     <string name="pref_install_mode_am">AM インストーラー:</string>

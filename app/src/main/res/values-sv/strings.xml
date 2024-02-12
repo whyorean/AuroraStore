@@ -44,8 +44,6 @@
     <string name="purchase_unsupported">Appen stöds inte</string>
     <string name="purchase_invalid">Appen är inte köpt</string>
     <string name="purchase_failed">Nerladdningen misslyckades</string>
-    <string name="pref_updates_extended_desc">Leta efter nya versioner av inaktiverade appar och spel</string>
-    <string name="pref_updates_extended">Förlängda uppdateringar</string>
     <string name="pref_ui_similar_apps">Liknande och relaterade appar</string>
     <string name="pref_ui_layout_tab">Välj standardflik</string>
     <string name="pref_ui_layout">Layout</string>

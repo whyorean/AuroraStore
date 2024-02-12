@@ -224,8 +224,6 @@
     <string name="pref_ui_theme_title">தோற்றம்</string>
     <string name="pref_ui_no_for_you">உங்களுக்கான பக்கங்கள்</string>
     <string name="pref_ui_no_for_you_desc">முகப்புத் திரையில் உங்களுக்கான பக்கங்களைக் காட்டவும்</string>
-    <string name="pref_updates_extended">நீடித்த புதுப்பிப்புகள்</string>
-    <string name="pref_updates_extended_desc">முடக்கப்பட்ட பயன்பாடுகளின் புதிய பதிப்புகளையும் தேடுகிறது</string>
     <string name="purchase_failed">பதிவிறக்கம் தோல்வியடைந்தது</string>
     <string name="purchase_invalid">பயன்பாடு வாங்கப்படவில்லை</string>
     <string name="insecure_anonymous_apply">மாற்றங்களைப் பயன்படுத்த, நீங்கள் மீண்டும் உள்நுழைந்து பயன்பாட்டை மறுதொடக்கம் செய்வதை உறுதிசெய்து கொள்ளவும்.</string>

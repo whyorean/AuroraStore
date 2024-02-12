@@ -134,8 +134,6 @@
     <string name="pref_ui_layout">පිරිසැලසුම</string>
     <string name="pref_ui_no_for_you_desc">මුල් තිරය මත ඔබ සඳහා පිටු ප්‍රදර්ශනය කරන්න</string>
     <string name="pref_ui_similar_apps">සමාන සහ ආශ්‍රිත යෙදුම්</string>
-    <string name="pref_updates_extended">දීර්ඝ කළ යාවත්කාල</string>
-    <string name="pref_updates_extended_desc">අබල කළ යෙදුම්වල නව අනුවාද ද බලයි</string>
     <string name="purchase_unsupported">යෙදුම සහාය නොදක්වයි</string>
     <string name="purchase_no_file">ගොනු ගැනීමට නොහැකි විය</string>
     <string name="toast_developer_setting_failed">ඒවා විවෘත කිරීමට උපාංගයේ සැකසුම් වලින් සංවර්ධක සැකසුම් සක්‍රීය කරන්න.</string>

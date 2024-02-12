@@ -282,8 +282,6 @@
     <string name="ui_accent_11">हलका नीला</string>
     <string name="toast_aas_token_failed">एएएस टोकन नहीं बना सके</string>
     <string name="app_updater_service_notif_text">बैकग्राउंड ऐप डाउनलोड सक्षम करेगा</string>
-    <string name="pref_updates_extended">Extended अपडेटस</string>
-    <string name="pref_updates_extended_desc">अक्षम ऐप्स और गेम्स के नए संस्करणों के लिए देखें</string>
     <string name="account_anonymous_insecure">अज्ञात (असुरक्षित)</string>
     <string name="download_progress">डाउनलोड हो रहे • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">शिज़ुकु इंस्टाल नहीं या ठीक से सेटअप नहीं किया।</string>

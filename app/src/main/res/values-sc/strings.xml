@@ -102,7 +102,6 @@
     <string name="pref_ui_no_for_you">Pàginas pro tene</string>
     <string name="pref_ui_no_for_you_desc">Ammustra sas pàginas pro tene in s\'ischermada printzipale</string>
     <string name="pref_ui_similar_apps">Aplicatziones simigiantes e ligadas</string>
-    <string name="pref_updates_extended_desc">Chirca fintzas versiones noas de sas aplicatziones disabilitadas</string>
     <string name="purchase_failed">Iscarrigamentu fallidu</string>
     <string name="purchase_invalid">Aplicatzione non comporada</string>
     <string name="purchase_unsupported">Aplicatzione non suportada</string>
@@ -233,7 +232,6 @@
     <string name="installer_status_user_action">Isetende pro sa cunfirma de s\'impreadore</string>
     <string name="pref_install_profile_summary">Ischerta su profilu chi cheres pro installare aplicatziones. Funtzionat petzi cun sa modalidade de installatzione de raighina (\"root\")</string>
     <string name="pref_install_profile_title">Profilos de installatzione (Isperimentale)</string>
-    <string name="pref_updates_extended">Agiornamentos estèndidos</string>
     <string name="filter_review_all">Totus</string>
     <string name="pref_abandon_session">Fortza s\'innetadura de sas sessiones de installatzione</string>
     <string name="toast_abandon_sessions">Sessiones de installatzione betzas abbandonadas</string>

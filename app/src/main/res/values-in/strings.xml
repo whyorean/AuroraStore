@@ -263,8 +263,6 @@
     <string name="purchase_failed">Pengunduhan Gagal</string>
     <string name="toast_export_failed">Tidak dapat mengekspor konfigurasi perangkat</string>
     <string name="toast_export_success">Konfigurasi perangkat diekspor</string>
-    <string name="pref_updates_extended_desc">Mencari versi terbaru dari aplikasi dan permainan yang dinonaktifkan juga</string>
-    <string name="pref_updates_extended">Pembaruan yang diperluas</string>
     <string name="app_updater_service_notif_text">Aktifkan unduhan aplikasi di latar belakang</string>
     <string name="app_updater_service_notif_title">Unduhan aplikasi di latar belakang</string>
     <string name="notification_channel_updater_service">Layanan unduhan aplikasi di latar belakang</string>

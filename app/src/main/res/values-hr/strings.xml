@@ -263,8 +263,6 @@
     <string name="toast_rated_success">Ocjenjeno</string>
     <string name="toast_export_failed">Neuspio izvoz konfiguracije uređaja</string>
     <string name="toast_export_success">Konfiguracija uređaja izvezena</string>
-    <string name="pref_updates_extended_desc">Traži nove verzije i za deaktivirane programe</string>
-    <string name="pref_updates_extended">Proširena aktualiziranja</string>
     <string name="app_updater_service_notif_text">Omogućuje preuzimanje programa u pozadini</string>
     <string name="app_updater_service_notif_title">Preuzimanje programa u pozadini</string>
     <string name="notification_channel_updater_service">Usluga za preuzimanje programa u pozadini</string>

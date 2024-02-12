@@ -212,7 +212,6 @@
     <string name="onboarding_permission_esa">Dostop do zunanjega pomnilnika</string>
     <string name="pref_abandon_session_desc">Počistite opuščene ali čakajoče namestitvene seje</string>
     <string name="pref_ui_no_for_you_desc">Prikaži strani za vas na domačem zaslonu</string>
-    <string name="pref_updates_extended">Razširjene posodobitve</string>
     <string name="session_scrapped">Zadnja seja je odpadla</string>
     <string name="title_download_manager">Prenosi</string>
     <string name="title_download_playstore">Play Store</string>
@@ -330,7 +329,6 @@
     <string name="pref_ui_title">Prilagajanje</string>
     <string name="pref_ui_no_for_you">Strani za vas</string>
     <string name="pref_ui_similar_apps_desc">Prikaži podobne in sorodne gruče na strani s podrobnostmi o aplikaciji</string>
-    <string name="pref_updates_extended_desc">Išče tudi nove različice onemogočenih aplikacij</string>
     <string name="rate_limited">Ups, ta račun ima omejeno stopnjo!</string>
     <string name="menu">Meni</string>
 </resources>

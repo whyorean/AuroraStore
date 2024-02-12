@@ -217,8 +217,6 @@
     <string name="pref_ui_no_for_you">\"Til dig\" sider</string>
     <string name="pref_ui_no_for_you_desc">Vis \"til dig\" sider på startskærmen</string>
     <string name="pref_ui_similar_apps">Lignende og relaterede apps</string>
-    <string name="pref_updates_extended">Udvidede opdateringer</string>
-    <string name="pref_updates_extended_desc">Led også efter nye versioner af deaktiverede apps</string>
     <string name="purchase_failed">Downloaden mislykkedes</string>
     <string name="purchase_invalid">Appen er ikke købt</string>
     <string name="purchase_unsupported">Appen støttes ikke</string>

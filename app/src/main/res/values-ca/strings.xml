@@ -280,9 +280,7 @@
     <string name="ui_accent_12">Blau Disskord</string>
     <string name="title_spoof_manager">Gestor de falsificacions</string>
     <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_updates_extended">Actualitzacions ampliades</string>
     <string name="purchase_invalid">Aplicació no comprada</string>
-    <string name="pref_updates_extended_desc">També cerca versions noves d\'aplicacions inhabilitades</string>
     <string name="title_about">Quant a</string>
     <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="action_import">Importa</string>

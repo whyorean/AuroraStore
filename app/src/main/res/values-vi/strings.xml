@@ -263,8 +263,6 @@
     <string name="onboarding_title_accent">Màu nổi bật</string>
     <string name="toast_export_failed">Không thể xuất thiết lập thiết bị</string>
     <string name="toast_export_success">Đã xuất thiết lập thiết bị</string>
-    <string name="pref_updates_extended_desc">Cũng tìm các phiên bản mới của các ứng dụng bị tắt</string>
-    <string name="pref_updates_extended">Bản cập nhật mở rộng</string>
     <string name="app_updater_service_notif_text">Bật tải xuống ứng dụng trong nền</string>
     <string name="app_updater_service_notif_title">Tải xuống ứng dụng trong nền</string>
     <string name="notification_channel_updater_service">Dịch vụ tải xuống trong nền của ứng dụng</string>

@@ -74,8 +74,6 @@
     <string name="purchase_unsupported">App niet ondersteund</string>
     <string name="purchase_invalid">App niet aangeschaft</string>
     <string name="purchase_failed">Download Mislukt</string>
-    <string name="pref_updates_extended_desc">Zoekt ook naar nieuwe versies van uitgeschakelde apps</string>
-    <string name="pref_updates_extended">Uitgebreide updates</string>
     <string name="pref_ui_similar_apps_desc">Toon vergelijkbare en gerelarteerde clusters op app details pagina</string>
     <string name="pref_ui_similar_apps">Vergelijkbare en gerelateerde apps</string>
     <string name="pref_ui_no_for_you_desc">Toon Voor Jou Pagina\'s op thuisscherm</string>

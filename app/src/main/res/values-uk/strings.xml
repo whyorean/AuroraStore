@@ -263,8 +263,6 @@
     <string name="toast_page_unavailable">Сторінка огляду недоступна</string>
     <string name="toast_export_failed">Не вдалося експортувати конфігурацію пристрою</string>
     <string name="toast_export_success">Конфігурацію пристрою експортовано</string>
-    <string name="pref_updates_extended_desc">Шукати нові версії вимкнених застосунків та ігор</string>
-    <string name="pref_updates_extended">Розширені оновлення</string>
     <string name="app_updater_service_notif_text">Вмикає фонове завантаження застосунків</string>
     <string name="app_updater_service_notif_title">Фонове завантаження застосунку</string>
     <string name="notification_channel_updater_service">Служба фонового завантаження застосунків</string>

@@ -154,7 +154,6 @@
     <string name="title_library">Bibliotēka</string>
     <string name="title_no_network">Nav interneta</string>
     <string name="title_purchase_history">Pirkumu vēsture</string>
-    <string name="pref_updates_extended_desc">Meklēt jaunas versijas arī atspējotām lietotnēm un spēlēm</string>
     <string name="toast_clipboard_copied">Ievietots starpliktuvē</string>
     <string name="toast_permission_granted">Atļauja nodrošināta</string>
     <string name="app_updater_service_notif_text">Ieslēdz fona lietotņu lejupielādi</string>
@@ -187,7 +186,6 @@
     <string name="pref_ui_title">Pielāgošana</string>
     <string name="purchase_no_file">Nevarēja iegūt failus</string>
     <string name="purchase_session_expired">Sesija ir beigusies, izejiet no lietotnes, lai iegūtu jaunu sesiju.</string>
-    <string name="pref_updates_extended">Pagarīnāti atjauninājumi</string>
     <string name="purchase_not_found">Lietotne nav atrasta</string>
     <string name="tab_top_charts">Top sadaļas</string>
     <string name="tab_top_free">Top bezmaksas</string>

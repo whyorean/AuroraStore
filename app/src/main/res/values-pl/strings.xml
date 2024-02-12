@@ -263,8 +263,6 @@
     <string name="toast_rated_failed">Nie można przesłać oceny</string>
     <string name="toast_export_failed">Nie można wyeksportować konfiguracji urządzenia</string>
     <string name="toast_export_success">Wyeksportowano konfigurację urządzenia</string>
-    <string name="pref_updates_extended_desc">Szukaj nowych wersji wyłączonych gier i aplikacji</string>
-    <string name="pref_updates_extended">Rozszerzone aktualizacje</string>
     <string name="app_updater_service_notif_text">Pobieranie aplikacji w tle włączone</string>
     <string name="app_updater_service_notif_title">Pobieranie aplikacji w tle</string>
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>

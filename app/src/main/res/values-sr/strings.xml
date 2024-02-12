@@ -263,8 +263,6 @@
     <string name="action_check">Провери</string>
     <string name="toast_export_failed">Није могуће извести конфигурацију уређаја</string>
     <string name="toast_export_success">Конфигурација уређаја је извезена</string>
-    <string name="pref_updates_extended_desc">Потражите нове верзије онемогућених апликација и игара</string>
-    <string name="pref_updates_extended">Проширена ажурирања</string>
     <string name="account_anonymous_insecure">Анонимно (несигурно)</string>
     <string name="download_paused">Паузирано •
 \n<xliff:g id="completed_downloads">

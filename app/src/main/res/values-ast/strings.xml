@@ -199,7 +199,6 @@
     <string name="session_scrapped">Last session scrapped</string>
     <string name="session_verifying">Verifying session</string>
     <string name="session_verifying_google">Verifying Google Session</string>
-    <string name="pref_updates_extended">Extended updates</string>
     <string name="action_filter_misc">Misc</string>
     <string name="action_finish">Finar</string>
     <string name="details_contains_ads">Contién anuncios</string>
@@ -244,7 +243,6 @@
     <string name="pref_network_title">Networking</string>
     <string name="pref_ui_theme_dark">Escuridá</string>
     <string name="pref_ui_layout_tab">Llingüeta predeterminada</string>
-    <string name="pref_updates_extended_desc">Busca tamién anovamientos de les aplicaciones desactivaes</string>
     <string name="download_paused">En posa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">En descarga • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="download_queued">Na cola</string>

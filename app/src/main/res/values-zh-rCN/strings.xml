@@ -263,8 +263,6 @@
     <string name="toast_page_unavailable">浏览页不可用</string>
     <string name="toast_export_failed">无法导出设备配置</string>
     <string name="toast_export_success">设备配置已导出</string>
-    <string name="pref_updates_extended_desc">查找已禁用应用和游戏的新版本</string>
-    <string name="pref_updates_extended">扩展更新</string>
     <string name="app_updater_service_notif_text">启用后台应用程序下载</string>
     <string name="app_updater_service_notif_title">后台应用下载</string>
     <string name="notification_channel_updater_service">应用后台下载服务</string>

@@ -61,7 +61,6 @@
     <string name="toast_anonymous_restriction">Не е налично за анонимни акаунти</string>
     <string name="filter_review_positive">Позитивни</string>
     <string name="filter_review_two">Двойка</string>
-    <string name="pref_updates_extended_desc">Търси за нови версии и на изключени приложения</string>
     <string name="filter_review_three">Тройка</string>
     <string name="filter_review_five">Петица</string>
     <string name="filter_review_one">Единица</string>
@@ -93,7 +92,6 @@
     <string name="title_account_manager">Акаунти</string>
     <string name="title_settings">Настройки</string>
     <string name="title_updates">Актуализации</string>
-    <string name="pref_updates_extended">Разширени актуализации</string>
     <string name="title_language">Език</string>
     <string name="ui_accent_1">Син</string>
     <string name="ui_accent_7">Сив</string>

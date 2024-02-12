@@ -263,8 +263,6 @@
     <string name="toast_page_unavailable">Страница недоступна</string>
     <string name="toast_export_failed">Экспорт конфигурации устройства не выполнен</string>
     <string name="toast_export_success">Конфигурация устройства успешно экспортирована</string>
-    <string name="pref_updates_extended_desc">Проверять наличие обновлений для отключенных приложений</string>
-    <string name="pref_updates_extended">Расширенное обновление</string>
     <string name="app_updater_service_notif_text">Позволяет загружать приложения в фоновом режиме</string>
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
     <string name="notification_channel_updater_service">Служба фоновой загрузки приложений</string>

@@ -263,8 +263,6 @@
     <string name="toast_page_unavailable">Procházet stránku není k dispozici</string>
     <string name="toast_export_failed">Nelze exportovat konfiguraci zařízení</string>
     <string name="toast_export_success">Konfigurace zařízení exportována</string>
-    <string name="pref_updates_extended_desc">Vyhledat nové verze zakázaných aplikací a her</string>
-    <string name="pref_updates_extended">Rozšířené aktualizace</string>
     <string name="app_updater_service_notif_text">Umožňuje stahování aplikací na pozadí</string>
     <string name="app_updater_service_notif_title">Stahování na pozadí</string>
     <string name="notification_channel_updater_service">Služba stahování aplikací na pozadí</string>

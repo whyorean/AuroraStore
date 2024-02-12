@@ -212,8 +212,6 @@
     <string name="onboarding_welcome_select">Πώς είσαι\?</string>
     <string name="pref_insecure_anonymous_title">Μη ασφαλής ανώνυμη συνεδρία</string>
     <string name="pref_install_mode_native">Τοπικός εγκαταστάτης</string>
-    <string name="pref_updates_extended">Εκτεταμένες ενημερώσεις</string>
-    <string name="pref_updates_extended_desc">Αναζητά επίσης νέες εκδόσεις απενεργοποιημένων εφαρμογών</string>
     <string name="toast_spoof_applied">Εφαρμόστηκε πλαστογραφία συσκευής.</string>
     <string name="title_updates">Ενημερώσεις</string>
     <string name="toast_abandon_sessions">Οι παλιές συνεδρίες εγκατάστασης ακυρώθηκαν</string>

@@ -254,8 +254,8 @@
     <string name="pref_ui_no_for_you_desc">"Display For You Pages on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
-    <string name="pref_updates_extended">Extended updates</string>
-    <string name="pref_updates_extended_desc">Look for new versions of disabled apps and games</string>
+    <string name="pref_updates_incompatible">Incompatible updates</string>
+    <string name="pref_updates_incompatible_desc">Show updates for incompatible or disabled apps that may fail to install</string>
     <string name="pref_aurora_only">Aurora Store apps only</string>
     <string name="pref_aurora_only_desc">Show only Aurora Store installed apps in Updates and Installed apps</string>
     <string name="purchase_failed">"Download Failed"</string>

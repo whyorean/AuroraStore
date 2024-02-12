@@ -32,8 +32,8 @@
         app:defaultValue="false"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_UPDATES_EXTENDED"
-        app:summary="@string/pref_updates_extended_desc"
-        app:title="@string/pref_updates_extended" />
+        app:summary="@string/pref_updates_incompatible_desc"
+        app:title="@string/pref_updates_incompatible" />
 
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="2"

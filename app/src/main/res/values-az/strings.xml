@@ -69,7 +69,6 @@
     <string name="pref_ui_theme_black">Qara</string>
     <string name="pref_ui_theme_system">Sistemi İzləyin</string>
     <string name="pref_ui_no_for_you_desc">Əsas ekranda Sizə Özəl Səhifələri göstərin</string>
-    <string name="pref_updates_extended">Genişləndirilmiş yeniləmələr</string>
     <string name="pref_ui_no_for_you">Sizə Özəl Səhifələr</string>
     <string name="insecure_anonymous_apply">Dəyişiklikləri tətbiq etmək üçün yenidən daxil olduğunuzdan və tətbiqi yenidən başlatdığınızdan əmin olun.</string>
     <string name="tab_trending">Populyar</string>
@@ -219,7 +218,6 @@
     <string name="pref_ui_layout_tab">Defolt nişanı seçin</string>
     <string name="pref_ui_similar_apps">Oxşar və əlaqəli tətbiqlər</string>
     <string name="pref_ui_similar_apps_desc">Tətbiq təfərrüatları səhifəsində oxşar və əlaqəli klasterləri göstərin</string>
-    <string name="pref_updates_extended_desc">Deaktiv edilən tətbiqlərində yeni versiyalarını axtarır</string>
     <string name="purchase_failed">Endirmə Alınmadı</string>
     <string name="purchase_invalid">Tətbiq satın alınmayıb</string>
     <string name="purchase_unsupported">Tətbiq dəstəklənmir</string>

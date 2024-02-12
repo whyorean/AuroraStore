@@ -198,7 +198,6 @@
     <string name="pref_install_mode_root">Instalator root</string>
     <string name="pref_install_mode_services">Servicii Aurora (învechit)</string>
     <string name="pref_install_mode_summary">Selectează modul de instalare APK</string>
-    <string name="pref_updates_extended_desc">Căutare versiuni noi de aplicații și jocuri dezactivate</string>
     <string name="purchase_session_expired">Sesiunea a expirat, autentifică-te din nou pentru a obține o nouă sesiune.</string>
     <string name="session_login_failed_google">Nu s-a putut conecta prin Google</string>
     <string name="session_scrapped">Ultima sesiune a fost eliminată</string>
@@ -259,7 +258,6 @@
     <string name="pref_ui_no_for_you">Pagina de recomandări</string>
     <string name="purchase_failed">Descărcare eșuată</string>
     <string name="pref_ui_similar_apps">Aplicații similare și asociate</string>
-    <string name="pref_updates_extended">Actualizări extinse</string>
     <string name="title_updates">Actualizări</string>
     <string name="title_advanced">Avansat</string>
     <string name="purchase_invalid">Aplicație neachiziționată</string>
