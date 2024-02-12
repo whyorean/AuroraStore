@@ -136,7 +136,6 @@
     <string name="details_permission">Permissió</string>
     <string name="details_privacy">Privacitat</string>
     <string name="download_cancel_all">Cancel·lar-ho tot</string>
-    <string name="download_clear_completed">Neteja completada</string>
     <string name="download_completed">Baixada completada</string>
     <string name="download_eta_calculating">Calculant</string>
     <string name="download_failed">Ha fallat la baixada</string>

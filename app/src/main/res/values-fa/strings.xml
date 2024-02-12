@@ -150,7 +150,6 @@
     <string name="exodus_powered">از Exodus</string>
     <string name="download_force_clear_all">اجباری همه را پاک کن</string>
     <string name="download_cancel_all">لغو همه</string>
-    <string name="download_clear_completed">پاک کردن تمام شد</string>
     <string name="download_completed">دانلود تکمیل شد</string>
     <string name="download_canceled">لغو شد</string>
     <string name="details_permission">دسترسی</string>

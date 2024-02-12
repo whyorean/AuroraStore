@@ -72,7 +72,6 @@
     <string name="exodus_no_tracker">Non contiene tracker conosciuti</string>
     <string name="download_speed_estimating">Stima in corso</string>
     <string name="download_force_clear_all">Rimuovi tutti</string>
-    <string name="download_clear_completed">Rimuovi completati</string>
     <string name="details_ratings">Valutazione e recensioni</string>
     <string name="details_privacy">Privacy</string>
     <string name="details_permission">Autorizzazione</string>

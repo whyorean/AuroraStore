@@ -32,7 +32,6 @@
     <string name="action_blacklist">Xannibaada</string>
     <string name="title_apps_sale">Apps xaraash ah</string>
     <string name="download_force_clear_all">Dhammaan wada nadiifi</string>
-    <string name="download_clear_completed">Nadiifi kuwa dhaamaday</string>
     <string name="download_resume_all">Dhamaan siiwad</string>
     <string name="action_resume">Siiwad</string>
     <string name="download_pause_all">Wada haki</string>

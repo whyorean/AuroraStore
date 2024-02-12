@@ -165,7 +165,6 @@
     <string name="download_failed">ਡਾਊਨਲੋਡ ਫੇਲ੍ਹ</string>
     <string name="download_eta_calculating">ਗਣਨਾ ਹੋ ਰਹੀ ਹੈ</string>
     <string name="download_completed">ਡਾਊਨਲੋਡ ਮੁਕੰਮਲ</string>
-    <string name="download_clear_completed">ਪੂਰੀਆਂ ਹੋਈਆਂ ਫਾਈਲਾਂ ਨੂੰ ਮਿਟਾਓ</string>
     <string name="download_canceled">ਸਫਲਤਾਪੂਰਵਕ ਰੱਦ</string>
     <string name="download_cancel_all">ਸਾਰੇ ਰੱਦ ਕਰੋ</string>
     <string name="details_think_this_app">ਤੁਸੀਂ ਇਸ ਐਪ ਬਾਰੇ ਕੀ ਸੋਚਦੇ ਹੋ \?</string>

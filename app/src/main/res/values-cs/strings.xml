@@ -156,7 +156,6 @@
     <string name="download_failed">Stažení se nezdařilo</string>
     <string name="download_eta_calculating">Výpočet</string>
     <string name="download_completed">Staženo</string>
-    <string name="download_clear_completed">Vymazat dokončené</string>
     <string name="download_canceled">Zrušeno</string>
     <string name="download_cancel_all">Zrušit vše</string>
     <string name="details_think_this_app">Co si myslíte o této aplikaci\?</string>

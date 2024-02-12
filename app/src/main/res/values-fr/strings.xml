@@ -71,7 +71,6 @@
     <string name="about_bhim_summary">Faire un don via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="download_completed">Téléchargement terminé</string>
-    <string name="download_clear_completed">Effacer les téléchargements terminés</string>
     <string name="download_canceled">Annulé</string>
     <string name="download_cancel_all">Tout annuler</string>
     <string name="details_think_this_app">Que pensez-vous de cette appli \?</string>

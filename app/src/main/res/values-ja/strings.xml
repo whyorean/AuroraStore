@@ -82,7 +82,6 @@
     <string name="download_failed">ダウンロードに失敗しました</string>
     <string name="download_eta_calculating">計算中</string>
     <string name="download_completed">ダウンロード済み</string>
-    <string name="download_clear_completed">完了したものをクリア</string>
     <string name="download_canceled">キャンセル済み</string>
     <string name="download_cancel_all">すべてキャンセル</string>
     <string name="details_think_this_app">アプリについてどう思いますか？</string>

@@ -88,7 +88,6 @@
     <string name="download_failed">Ошибка загрузки</string>
     <string name="download_eta_calculating">Расчет</string>
     <string name="download_completed">Загружено</string>
-    <string name="download_clear_completed">Убрать завершенные</string>
     <string name="download_canceled">Отменено</string>
     <string name="download_cancel_all">Отменить все</string>
     <string name="details_think_this_app">Что вы думаете об этом приложении\?</string>

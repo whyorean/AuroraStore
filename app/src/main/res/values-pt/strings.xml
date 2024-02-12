@@ -184,7 +184,6 @@
     <string name="download_failed">Falha ao descarregar</string>
     <string name="download_eta_calculating">A calcular</string>
     <string name="download_completed">Descarga terminada</string>
-    <string name="download_clear_completed">Remover terminadas</string>
     <string name="download_canceled">Cancelada</string>
     <string name="download_cancel_all">Cancelar tudo</string>
     <string name="details_think_this_app">O que acha desta aplicação\?</string>

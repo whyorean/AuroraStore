@@ -269,7 +269,6 @@
     <string name="action_resume">மீண்டுந்தொடர்</string>
     <string name="action_grant">வழங்கு</string>
     <string name="account_anonymous_insecure">அநாமதேய (பாதுகாப்பற்றது)</string>
-    <string name="download_clear_completed">துடைப்பு முடிந்தது</string>
     <string name="pref_install_mode_am">AM நிறுவி.</string>
     <string name="ui_accent_1">நீலம்</string>
     <string name="ui_accent_3">சிவப்பு</string>

@@ -23,5 +23,5 @@
         android:title="@string/download_cancel_all" />
     <item
         android:id="@+id/action_clear_completed"
-        android:title="@string/download_clear_completed" />
+        android:title="@string/download_clear_finished" />
 </menu>

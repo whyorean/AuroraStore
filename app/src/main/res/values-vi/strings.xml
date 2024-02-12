@@ -226,7 +226,6 @@
     <string name="download_failed">Tải xuống thất bại</string>
     <string name="download_eta_calculating">Đang tính toán</string>
     <string name="download_completed">Tải xuống hoàn tất</string>
-    <string name="download_clear_completed">Làm sạch các tệp đã cài</string>
     <string name="download_canceled">Đã huỷ</string>
     <string name="download_cancel_all">Huỷ bỏ tất cả</string>
     <string name="details_think_this_app">Bạn nghĩ thế nào về ứng dụng này\?</string>

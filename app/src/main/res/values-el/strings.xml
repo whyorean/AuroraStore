@@ -80,7 +80,6 @@
     <string name="download_metadata">Λήψη μεταδεδομένων</string>
     <string name="download_force_clear_all">Αναγκαστική απαλοιφή όλων</string>
     <string name="download_eta_calculating">Υπολογισμός</string>
-    <string name="download_clear_completed">Ολοκλήρωση απαλοιφής</string>
     <string name="download_canceled">Ακυρώθηκε</string>
     <string name="download_cancel_all">Ακύρωση όλων</string>
     <string name="details_think_this_app">Τι πιστεύετε γι\' αυτήν την εφαρμογή;</string>

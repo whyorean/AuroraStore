@@ -176,7 +176,6 @@
     <string name="download_failed">Download fehlgeschlagen</string>
     <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
     <string name="download_completed">Heruntergeladen</string>
-    <string name="download_clear_completed">Fertige löschen</string>
     <string name="download_canceled">Abgebrochen</string>
     <string name="download_cancel_all">Alle abbrechen</string>
     <string name="details_ratings">Bewertungen und Rezensionen</string>

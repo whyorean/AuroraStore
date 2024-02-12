@@ -179,7 +179,6 @@
     <string name="download_failed">Installatie mislukt</string>
     <string name="download_eta_calculating">Aan het berekenen</string>
     <string name="download_completed">Download voltooid</string>
-    <string name="download_clear_completed">Verwijdering voltooid</string>
     <string name="download_canceled">Afgebroken</string>
     <string name="download_cancel_all">Annuleer alle</string>
     <string name="details_think_this_app">Wat vind u van deze app\?</string>

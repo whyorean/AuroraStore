@@ -140,7 +140,6 @@
     <string name="toast_abandon_sessions">पुराने इंस्टॉलेशन सत्र छोड़े गए</string>
     <string name="notification_channel_updater_service">ऐप बैकग्राउंड डाउनलोड सेवा</string>
     <string name="tab_trending">ट्रेंड में</string>
-    <string name="download_clear_completed">पूरे हुए साफ करें</string>
     <string name="pref_filter_fdroid_summary">अपडेटस और इंस्टॉलड ऐप्स में से F-Droid ऐप्स को अनदेखा करें</string>
     <string name="pref_ui_theme_title">थीम</string>
     <string name="title_games">गेम्स</string>

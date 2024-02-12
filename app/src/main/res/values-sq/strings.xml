@@ -106,7 +106,6 @@
     <string name="details_think_this_app">Si ju duket ky aplikacion\?</string>
     <string name="download_cancel_all">Anuloji krejt</string>
     <string name="download_canceled">Anuluar</string>
-    <string name="download_clear_completed">Spastro të plotësuarat</string>
     <string name="download_completed">Shkarkim i plotësuar</string>
     <string name="download_eta_calculating">Po llogaritet</string>
     <string name="download_failed">Shkarkimi dështoi</string>

@@ -239,7 +239,6 @@
     <string name="onboarding_permission_esa_desc">A letöltések mentéséhez (APK &amp; OBB), exportálja és importálja az eszközkonfigurációkat a külső tárhelyre és onnan vissza.</string>
     <string name="onboarding_permission_esa">Külső tárhely elérés</string>
     <string name="onboarding_welcome_select">Hogy vagy\?</string>
-    <string name="download_clear_completed">Törlés befejezve</string>
     <string name="action_installations">Telepítések</string>
     <string name="action_disable">Tilt</string>
     <string name="action_clear">Töröl</string>

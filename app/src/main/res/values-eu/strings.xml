@@ -136,7 +136,6 @@
     <string name="download_failed">Alferrikako deskarga</string>
     <string name="download_eta_calculating">Kalkulatzen</string>
     <string name="download_completed">Deskarga osatu da</string>
-    <string name="download_clear_completed">Garbiketa bukatuta</string>
     <string name="download_canceled">Ezeztatuta</string>
     <string name="download_cancel_all">Guztiak bertan behera utzi</string>
     <string name="details_think_this_app">Zer deritzozu aplikazio honi\?</string>

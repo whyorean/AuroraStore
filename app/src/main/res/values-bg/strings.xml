@@ -126,7 +126,6 @@
     <string name="onboarding_title_theme">Теми</string>
     <string name="pref_ui_theme_system">Следвайте системата</string>
     <string name="tab_editor_choice">Избор на редакторите</string>
-    <string name="download_clear_completed">Изчистването е завършено</string>
     <string name="exodus_substring">тракер(и), намерени в</string>
     <string name="download_pause_all">Пауза на всички</string>
     <string name="exodus_no_tracker">Не съдържа тракери</string>

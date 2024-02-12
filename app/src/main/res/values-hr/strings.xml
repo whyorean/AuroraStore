@@ -228,7 +228,6 @@
     <string name="download_failed">Neuspjelo preuzimanje</string>
     <string name="download_eta_calculating">Izračunavanje</string>
     <string name="download_completed">Preuzimanje završeno</string>
-    <string name="download_clear_completed">Izbriši završene</string>
     <string name="download_canceled">Prekinuto</string>
     <string name="download_cancel_all">Prekini sve</string>
     <string name="details_think_this_app">Što misliš o ovom programu\?</string>

@@ -105,7 +105,6 @@
     <string name="details_think_this_app">이 앱에 대해 어떻게 생각하세요\?</string>
     <string name="download_cancel_all">모두 취소</string>
     <string name="download_canceled">취소됨</string>
-    <string name="download_clear_completed">지우기 완료</string>
     <string name="download_completed">다운로드 완료</string>
     <string name="download_eta_calculating">계산 중</string>
     <string name="download_failed">다운로드 실패</string>

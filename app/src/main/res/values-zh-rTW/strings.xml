@@ -224,7 +224,6 @@
     <string name="download_failed">下載失敗</string>
     <string name="download_eta_calculating">計算中</string>
     <string name="download_completed">下載完成</string>
-    <string name="download_clear_completed">清除已完成</string>
     <string name="download_canceled">已取消</string>
     <string name="download_cancel_all">取消全部</string>
     <string name="details_think_this_app">你覺得這個 app 如何？</string>

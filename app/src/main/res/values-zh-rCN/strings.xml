@@ -25,7 +25,6 @@
     <string name="download_failed">下载失败</string>
     <string name="download_eta_calculating">计算中</string>
     <string name="download_completed">下载完毕</string>
-    <string name="download_clear_completed">清除已完成</string>
     <string name="download_canceled">已取消</string>
     <string name="download_cancel_all">全部取消</string>
     <string name="details_think_this_app">您如何看待此应用？</string>

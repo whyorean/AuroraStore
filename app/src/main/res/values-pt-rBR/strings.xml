@@ -118,7 +118,6 @@
     <string name="download_failed">Falha ao baixar</string>
     <string name="download_eta_calculating">Calculando</string>
     <string name="download_completed">Download concluído</string>
-    <string name="download_clear_completed">Limpar concluído</string>
     <string name="download_canceled">Cancelado</string>
     <string name="download_cancel_all">Cancelar tudo</string>
     <string name="details_think_this_app">O que você acha deste app\?</string>

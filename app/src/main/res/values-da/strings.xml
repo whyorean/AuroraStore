@@ -84,7 +84,6 @@
     <string name="exodus_substring">Sporere fundet i</string>
     <string name="filter_review_two">To</string>
     <string name="download_completed">Downloadet</string>
-    <string name="download_clear_completed">Ryd fuldførte</string>
     <string name="download_failed">Download fejlslået</string>
     <string name="download_metadata">Henter metadata</string>
     <string name="download_none">Ingen downloads</string>

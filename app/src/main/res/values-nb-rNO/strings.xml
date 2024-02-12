@@ -58,7 +58,6 @@
     <string name="download_failed">Nedlasting mislyktes</string>
     <string name="download_eta_calculating">Regner ut</string>
     <string name="download_completed">Nedlastet</string>
-    <string name="download_clear_completed">Tøm fullførte</string>
     <string name="download_canceled">Avbrutt</string>
     <string name="download_cancel_all">Avbryt alle</string>
     <string name="details_think_this_app">Hva synes du om dette programmet\?</string>

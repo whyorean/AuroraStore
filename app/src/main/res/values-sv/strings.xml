@@ -126,7 +126,6 @@
     <string name="download_failed">Hämtningen misslyckades</string>
     <string name="download_eta_calculating">Beräknar</string>
     <string name="download_completed">Hämtningen slutförd</string>
-    <string name="download_clear_completed">Rensa bort slutförda</string>
     <string name="download_canceled">Avbröts</string>
     <string name="download_cancel_all">Avbryt alla</string>
     <string name="details_think_this_app">Vad tycker du om den här appen\?</string>

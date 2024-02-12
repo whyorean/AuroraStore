@@ -41,7 +41,6 @@
     <string name="download_failed">බාගතවීම අසාර්ථකයි</string>
     <string name="download_eta_calculating">ගණනය වෙමින්</string>
     <string name="download_completed">බාගැනීම සම්පූර්ණයි</string>
-    <string name="download_clear_completed">සම්පූර්ණ දෑ හිස් කරන්න</string>
     <string name="download_cancel_all">සියල්ල අවලංගු කරන්න</string>
     <string name="details_think_this_app">මෙම යෙදුම ගැන ඔබ සිතන්නේ කුමක්ද\?</string>
     <string name="details_privacy">පෞද්ගලිකත්වය</string>

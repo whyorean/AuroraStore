@@ -235,7 +235,6 @@
     <string name="account_anonymous">Anonimas</string>
     <string name="about_xda_summary">Žiūrėti Aurora Store XDA giją, skirtą diskusijoms ir pasiūlymams.</string>
     <string name="details_beta_description">Jūs matysite naujas ypatybes ir klaidas anksčiau nei su jomis susidurs visi kiti. Siųskite plėtotojams savo atsiliepimus, kad jie galėtų tobulinti programėles.</string>
-    <string name="download_clear_completed">Išvalyti užbaigtus</string>
     <string name="download_canceled">Atsisakytas</string>
     <string name="download_completed">Atsiuntimas užbaigtas</string>
     <string name="exodus_powered">Veikia su „Exodus“</string>

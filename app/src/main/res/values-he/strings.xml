@@ -156,7 +156,6 @@
     <string name="download_metadata">נתוני העל מתקבלים</string>
     <string name="pref_filter_fdroid_summary">התעלם מיישומי F-Droid מעדכונים ויישומים מותקנים</string>
     <string name="onboarding_title_installer">שיטת התקנה</string>
-    <string name="download_clear_completed">הניקוי הושלם</string>
     <string name="download_completed">הורדה הושלמה</string>
     <string name="download_canceled">בוטל</string>
     <string name="pref_ui_accent_title">צבע נושא</string>

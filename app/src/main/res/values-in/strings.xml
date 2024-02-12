@@ -177,7 +177,6 @@
     <string name="download_failed">Pengunduhan gagal</string>
     <string name="download_eta_calculating">Menghitung</string>
     <string name="download_completed">Unduhan selesai</string>
-    <string name="download_clear_completed">Pembersihan selesai</string>
     <string name="download_canceled">Dibatalkan</string>
     <string name="download_cancel_all">Batalkan semua</string>
     <string name="details_think_this_app">Apa pendapat Anda tentang aplikasi ini\?</string>

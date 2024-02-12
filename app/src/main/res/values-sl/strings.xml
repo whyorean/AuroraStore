@@ -144,7 +144,6 @@
     <string name="installer_root_unavailable">Brez korenskega dostopa. Odobrite ga ali menjajte namestitev.</string>
     <string name="details_no_updates">Posodobitve niso na voljo</string>
     <string name="download_none">Ni prenosov</string>
-    <string name="download_clear_completed">Počisti zaključeno</string>
     <string name="download_speed_estimating">Ocenjevanje</string>
     <string name="filter_review_critical">Kritično</string>
     <string name="filter_review_three">Trojka</string>

@@ -103,7 +103,6 @@
     <string name="download_failed">فشل التنزيل</string>
     <string name="download_eta_calculating">جارِ الحساب</string>
     <string name="download_completed">اكتمل التنزيل</string>
-    <string name="download_clear_completed">اكتمل المسح</string>
     <string name="download_canceled">ألغيت</string>
     <string name="download_cancel_all">إلغاء الكل</string>
     <string name="details_ratings">التقييمات والمراجعات</string>

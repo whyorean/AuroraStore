@@ -229,7 +229,6 @@
     <string name="download_failed">Pobieranie nieudane</string>
     <string name="download_eta_calculating">Obliczanie</string>
     <string name="download_completed">Pobieranie zakończone</string>
-    <string name="download_clear_completed">Wyczyść zakończone</string>
     <string name="download_canceled">Anulowano</string>
     <string name="download_cancel_all">Anuluj wszystkie</string>
     <string name="details_think_this_app">Co myślisz o tej aplikacji\?</string>
