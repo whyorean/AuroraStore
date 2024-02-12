@@ -381,4 +381,7 @@
     <string name="pref_updates_auto_install">التحقق من التحديثات المتوفرة وتثبيتها تلقائيًا</string>
     <string name="action_request_analysis">طلب تحليل جديد</string>
     <string name="failed_apk_export">فشل تصدير ملفات APK</string>
+    <string name="download_clear_finished">مسح المكتملة</string>
+    <string name="pref_updates_incompatible">التحديثات غير المتوافقة</string>
+    <string name="pref_updates_incompatible_desc">عرض التحديثات للتطبيقات غير المتوافقة أو المعطلة التي قد يفشل تثبيتها</string>
 </resources>
