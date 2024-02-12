@@ -26,6 +26,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
@@ -51,6 +52,11 @@ class UpdatesViewModel @Inject constructor(
 
     override fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
+            val isExtendedUpdateEnabled = Preferences.getBoolean(
+                getApplication(),
+                Preferences.PREFERENCE_UPDATES_EXTENDED
+            )
+
             try {
                 getFilteredApps().filter {
                     val packageInfo = packageInfoMap[it.packageName]
@@ -59,15 +65,21 @@ class UpdatesViewModel @Inject constructor(
                     } else {
                         false
                     }
-                }.filter { app ->
-                    app.certificateSetList.any {
-                        it.certificateSet in CertUtil.getEncodedCertificateHashes(
-                            getApplication(),
-                            app.packageName
-                        )
-                    }
                 }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
-                    _updates.emit(apps)
+                    if (!isExtendedUpdateEnabled) {
+                        _updates.emit(
+                            apps.filter { app ->
+                                app.certificateSetList.any {
+                                    it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                                        getApplication(),
+                                        app.packageName
+                                    )
+                                }
+                            }
+                        )
+                    } else {
+                        _updates.emit(apps)
+                    }
                 }
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)
