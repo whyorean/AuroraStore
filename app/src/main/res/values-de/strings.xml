@@ -191,7 +191,7 @@
     <string name="details_changelog_unavailable">Keine Änderungen vorhanden</string>
     <string name="details_changelog">Änderungen</string>
     <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern. Der Status der Registrierung kann später überprüft werden.</string>
-    <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Um den Entwicklern zu helfen, kannst du ihnen Rückmeldung geben.</string>
+    <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Hilf den Entwicklern mit deiner Rückmeldung, die App zu verbessern.</string>
     <string name="details_beta_available">Am Betatest teilnehmen\?</string>
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta-Programm</string>
