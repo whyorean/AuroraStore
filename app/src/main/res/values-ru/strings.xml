@@ -352,7 +352,7 @@
     <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического обновления в часах.</string>
     <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
-    <string name="pref_aurora_only_desc">Показать только приложения, установленные из Aurora Store, в разделе обновлений и установленных приложений</string>
+    <string name="pref_aurora_only_desc">Показывать в разделе обновлений и установленных приложений только приложения, установленные из Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
     <string name="title_app_settings">Настройки приложения</string>
     <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
@@ -381,4 +381,7 @@
     <string name="pref_updates_auto_install">Проверять доступные обновления и устанавливать их автоматически</string>
     <string name="action_request_analysis">Запросить новый анализ</string>
     <string name="failed_apk_export">Не удалось экспортировать APK-файлы</string>
+    <string name="download_clear_finished">Очистка завершена</string>
+    <string name="pref_updates_incompatible">Несовместимые обновления</string>
+    <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
 </resources>

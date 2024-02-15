@@ -381,4 +381,7 @@
     <string name="pref_updates_auto_install">Compruebe e instale automáticamente las actualizaciones disponibles</string>
     <string name="action_request_analysis">Solicitar un nuevo análisis</string>
     <string name="failed_apk_export">Error exportando APKs</string>
+    <string name="download_clear_finished">Limpieza terminada</string>
+    <string name="pref_updates_incompatible">Actualizaciones no compatibles</string>
+    <string name="pref_updates_incompatible_desc">Mostrar actualizaciones de aplicaciones incompatibles o desactivadas que pueden fallar al instalarse</string>
 </resources>

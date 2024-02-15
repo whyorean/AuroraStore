@@ -381,4 +381,7 @@
     <string name="pref_updates_auto_install">उपलब्ध अपडेट को स्वचालित रूप से जांचें और इंस्टॉल करें</string>
     <string name="action_request_analysis">नए विश्लेषण का अनुरोध करें</string>
     <string name="failed_apk_export">APK निर्यात करने में विफल</string>
+    <string name="pref_updates_incompatible_desc">असंगत या अक्षम ऐप्स के लिए अपडेट दिखाएं जो इंस्टॉल करने में विफल हो सकते हैं</string>
+    <string name="download_clear_finished">समाप्त हुए साफ़ करें</string>
+    <string name="pref_updates_incompatible">असंगत अपडेटस</string>
 </resources>

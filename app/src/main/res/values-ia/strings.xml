@@ -218,4 +218,12 @@
     <string name="session_login_failed_google">Non poteva initiar le session via Google</string>
     <string name="onboarding_permission_doze">Discargamentos in secunde fundo</string>
     <string name="onboarding_permission_doze_desc">Permitter Aurora Store le discargas e actualisationes in secunde fundo</string>
+    <string name="verifying_new_session">Verificante le nove session</string>
+    <string name="toast_permission_granted">Permission concedite</string>
+    <string name="failed_apk_export">Falleva le exportation de APKs</string>
+    <string name="pref_updates_auto_notify">Verificar e notificar le actualisationes disponibile</string>
+    <string name="pref_self_update_title">Actualisationes automatic</string>
+    <string name="pref_install_profile_title">Profilos de installation (ezperimental)</string>
+    <string name="onboarding_title_accent">Accento</string>
+    <string name="toast_apk_whitelisted">In le lista blanc</string>
 </resources>
