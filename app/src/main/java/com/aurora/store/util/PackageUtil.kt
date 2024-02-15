@@ -199,16 +199,9 @@ object PackageUtil {
 
         /*Filter F-Droid apps*/
         if (isFDroidFilterEnabled) {
-            packageInfoList = packageInfoList
-                .filter {
-                    val packageInstaller = packageManager.getInstallerPackageNameCompat(it.packageName)
-                    !listOf(
-                        "org.fdroid.fdroid",
-                        "org.fdroid.fdroid.privileged"
-                    ).contains(packageInstaller)
-                }.filter {
-                    !CertUtil.isFDroidApp(context, it.packageName)
-                }
+            packageInfoList = packageInfoList.filter {
+                !CertUtil.isFDroidApp(context, it.packageName)
+            }
         }
 
         packageInfoList.forEach {

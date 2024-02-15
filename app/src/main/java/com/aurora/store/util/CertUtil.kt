@@ -25,22 +25,18 @@ import android.content.pm.PackageManager
 import android.util.Base64
 import android.util.Log
 import com.aurora.extensions.generateX509Certificate
+import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.util.PackageUtil.getPackageInfo
 import java.security.MessageDigest
 import java.security.cert.X509Certificate
-import java.util.Locale
 
 object CertUtil {
 
     private val TAG = "CertUtil"
-    private val fdroidSubjects = listOf("FDROID", "GUARDIANPROJECT.INFO")
 
     fun isFDroidApp(context: Context, packageName: String): Boolean {
-        return getX509Certificates(
-            context,
-            packageName
-        ).any { it.subjectDN.name.uppercase(Locale.getDefault()) in fdroidSubjects }
+        return isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
     }
 
     fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> {
@@ -58,6 +54,24 @@ object CertUtil {
             Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
             emptyList()
         }
+    }
+
+    private fun isSignedByFDroid(context: Context, packageName: String): Boolean {
+        return getX509Certificates(context, packageName).any { cert ->
+            cert.subjectDN.name.split(",").associate {
+                val (left, right) = it.split("=")
+                left to right
+            }["O"] == "fdroid.org"
+        }
+    }
+
+    private fun isInstalledByFDroid(context: Context, packageName: String): Boolean {
+        val fdroidPackages = listOf(
+            "org.fdroid.basic", "org.fdroid.fdroid", "org.fdroid.fdroid.privileged"
+        )
+        return fdroidPackages.contains(
+            context.packageManager.getInstallerPackageNameCompat(packageName)
+        )
     }
 
     private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> {
