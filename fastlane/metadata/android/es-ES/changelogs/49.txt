@@ -1,0 +1,4 @@
+• Cambios internos importantes relacionados con la interfaz de usuario
+• Permite a los usuarios habilitar enlaces de aplicaciones durante la configuración inicial
+• Actualizaciones de traducción
+• Mejoras y correcciones de errores menores
