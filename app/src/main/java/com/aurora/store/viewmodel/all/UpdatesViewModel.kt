@@ -23,8 +23,8 @@ import android.app.Application
 import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.viewModelScope
-import com.aurora.extensions.hasValidCertificate
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -67,7 +67,16 @@ class UpdatesViewModel @Inject constructor(
                     }
                 }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
                     if (!isExtendedUpdateEnabled) {
-                        _updates.emit(apps.filter { it.hasValidCertificate(getApplication()) })
+                        _updates.emit(
+                            apps.filter { app ->
+                                app.certificateSetList.any {
+                                    it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                                        getApplication(),
+                                        app.packageName
+                                    )
+                                }
+                            }
+                        )
                     } else {
                         _updates.emit(apps)
                     }

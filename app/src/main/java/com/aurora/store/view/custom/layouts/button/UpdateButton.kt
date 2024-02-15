@@ -22,7 +22,6 @@ package com.aurora.store.view.custom.layouts.button
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import androidx.annotation.DrawableRes
 import com.aurora.extensions.getString
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
@@ -71,12 +70,6 @@ class UpdateButton : RelativeLayout {
     fun setText(text: Int) {
         B.viewFlipper.displayedChild = 0
         B.btnPositive.text = getString(text)
-    }
-
-    fun setIcon(@DrawableRes drawable: Int) {
-        B.btnPositive.setIconResource(drawable)
-        B.btnNegative.setIconResource(drawable)
-        B.btnQueued.setIconResource(drawable)
     }
 
     fun updateState(downloadStatus: DownloadStatus) {
