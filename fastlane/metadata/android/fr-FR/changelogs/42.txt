@@ -1,0 +1,15 @@
+Cible: Optimisé pour Android 13.
+Langues: Traduction de multiples chaînes.
+Icône: Monochrome pour Android 13.
+Dépendances: Mise à jour vers la dernière version.
+Conditions d'utilisation: Affichage au lancement.
+Configuration: Sauter les autorisations initialement.
+Mises à jour: Exclusion des fichiers système via liste XML.
+5ème page: Correction du titre.
+Bouton "Suivant": Activé lors du retour.
+Boutons radio: Remplacent les cases à cocher.
+Onglets: Couleur de trait pour l'arrière-plan.
+Bogue d'absence de thème: Correction.
+GSF & Vending: Ignorer les nouvelles versions.
+Stockage: Nouvelle configuration des autorisations.
+Traductions: Mise à jour.
