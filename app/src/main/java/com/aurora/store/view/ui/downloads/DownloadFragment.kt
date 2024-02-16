@@ -67,6 +67,11 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
             setNavigationOnClickListener { findNavController().navigateUp() }
             setOnMenuItemClickListener {
                 when (it.itemId) {
+                    R.id.action_force_clear_all -> {
+                        viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
+                            downloadWorkerUtil.clearAllDownloads()
+                        }
+                    }
                     R.id.action_cancel_all -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
                             downloadWorkerUtil.cancelAll()

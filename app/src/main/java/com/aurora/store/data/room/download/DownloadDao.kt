@@ -24,4 +24,7 @@ interface DownloadDao {
 
     @Query("DELETE FROM download WHERE packageName = :packageName")
     suspend fun delete(packageName: String)
+
+    @Query("DELETE FROM download")
+    suspend fun deleteAll()
 }

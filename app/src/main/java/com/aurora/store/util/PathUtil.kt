@@ -34,7 +34,7 @@ object PathUtil {
 
     private const val libraries = "libraries"
 
-    private fun getDownloadDirectory(context: Context): String {
+    fun getDownloadDirectory(context: Context): String {
         return if (context.isExternalStorageEnable()) {
             getExternalPath(context)
         } else {
