@@ -96,6 +96,6 @@ class UpdatesViewModel @Inject constructor(
     }
 
     fun cancelAll() {
-        viewModelScope.launch { downloadWorkerUtil.cancelAll() }
+        viewModelScope.launch { downloadWorkerUtil.cancelAll(downloads = false) }
     }
 }
