@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="action_update">Aktualizovat</string>
+    <string name="action_update">Instalovat</string>
     <string name="action_blacklist">Černá Listina</string>
     <string name="action_blacklist_add">Přidat na blacklist</string>
     <string name="title_blacklist_manager">Správa černé listiny</string>
@@ -63,7 +63,7 @@
     <string name="pref_ui_title">Přizpůsobení</string>
     <string name="pref_ui_theme_title">Motiv</string>
     <string name="pref_ui_theme_system">Podle systému</string>
-    <string name="pref_ui_theme_darkord">Šedá</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_theme_dark_x">Tmavý X</string>
     <string name="pref_ui_theme_dark">Tmavý</string>
     <string name="pref_ui_theme_black">Černý</string>
@@ -117,9 +117,9 @@
     <string name="device_miui_description">Pro povolení instalací, deaktivujte optimalizaci MIUI, v opačném případě si můžete vybrat mezi Root instalátor nebo Services instalátor.</string>
     <string name="device_miui_subtitle">Relační instalátor nelze použít z důvodu optimalizací MIUI.</string>
     <string name="device_miui_title">Zjištěno MIUI!</string>
-    <string name="menu_terms">Všeobecné smluvní podmínky</string>
+    <string name="menu_terms">Smluvní podmínky</string>
     <string name="menu_license">Licence</string>
-    <string name="menu_disclaimer">Varování</string>
+    <string name="menu_disclaimer">Odmítnutí odpovědnosti</string>
     <string name="installer_status_user_action">Čeká na potvrzení uživatelem</string>
     <string name="installer_status_success">Úspěšně nainstalováno</string>
     <string name="installer_status_failure_storage">Nedostatek paměti</string>
@@ -211,7 +211,7 @@
     <string name="action_ignore">Ignorovat</string>
     <string name="action_granted">Povoleno</string>
     <string name="action_grant">Povolit</string>
-    <string name="action_get_local_apk">Uložit skupinu aplikací</string>
+    <string name="action_get_local_apk">Exportovat balíček aplikace</string>
     <string name="action_finish">Dokončit</string>
     <string name="action_filter_rating">Hodnocení</string>
     <string name="action_filter_paid_apps">Placené</string>
@@ -253,7 +253,7 @@
     <string name="about_bitcoin_btc_summary">Přispějte prostřednictvím Bitcoinu (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Přispějte prostřednictvím Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoinová hotovost</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Přispějte prostřednictvím UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat skupiny aplikací. Změňte typ instalátoru na Relační, Služby nebo Root.</string>
@@ -353,7 +353,7 @@
     <string name="pref_download_directory_error">Vybraná cesta není zapisovatelná</string>
     <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické aktualizace, v hodinách.</string>
     <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
-    <string name="pref_aurora_only_desc">Zobrazit pouze aplikace nainstalované z obchodu Aurora Store v kartě Aktualizace a Nainstalované</string>
+    <string name="pref_aurora_only_desc">V seznamu aktualizací a nainstalovaných aplikací zobrazit pouze aplikace nainstalované z obchodu Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
     <string name="pref_updates_check_frequency">Frekvence automatických aktualizací</string>
     <string name="pref_downloader_wifi_title">Stahovat pouze přes Wi-Fi</string>
