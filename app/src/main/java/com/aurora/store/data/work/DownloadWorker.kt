@@ -307,11 +307,7 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun notifyStatus(status: DownloadStatus, dID: Int = -1) {
         // Update database for all status except downloading which is handled onProgress
         if (status != DownloadStatus.DOWNLOADING) {
-            download.apply {
-                this.downloadStatus = status
-                if (download.downloadStatus == DownloadStatus.COMPLETED) this.progress = 100
-            }
-            downloadDao.update(download)
+            downloadDao.updateStatus(download.packageName, status)
         }
 
         if (status == DownloadStatus.CANCELLED) return

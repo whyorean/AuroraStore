@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.aurora.store.data.model.DownloadStatus
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -15,6 +16,9 @@ interface DownloadDao {
 
     @Update
     suspend fun update(download: Download)
+
+    @Query("UPDATE download SET downloadStatus=:downloadStatus WHERE packageName=:packageName")
+    suspend fun updateStatus(packageName: String, downloadStatus: DownloadStatus)
 
     @Query("SELECT * FROM download")
     fun downloads(): Flow<List<Download>>
