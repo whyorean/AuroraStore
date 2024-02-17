@@ -1,0 +1,9 @@
+• Al cambiar del tema oscuro al tema del sistema, la interfaz se actualiza correctamente
+• Cuadros de diálogo en la pantalla de inicio ya no ocultan ciertas vistas
+• Abrir un enlace de Google Play garantiza que haya una cuenta funcional
+• La barra de navegación solo se abre en la pantalla principal
+• Al retroceder ahora sale correctamente de la aplicación
+• Botones de configuración tienen el color correcto en el tema oscuro
+• El nombre de la aplicación vuelve a ser visible en la barra de herramientas de Exodus Reports.
+• Mejoras internas de las imágenes.
+• Actualizaciones de traducción
