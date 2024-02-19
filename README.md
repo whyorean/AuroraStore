@@ -61,10 +61,7 @@ Please visit [Aurora Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home
 - [XDA Developers](https://forum.xda-developers.com/t/app-5-0-aurora-store-open-source-google-play-client.3739733/)
 
 ## Screenshots
-<img src="screenshot-01.png" height="400">
-<img src="screenshot-03.png" height="400">
-<img src="screenshot-07.png" height="400">
-<img src="screenshot-08.png" height="400">
+<img src="screenshot-01.png" height="400"><img src="screenshot-03.png" height="400"><img src="screenshot-07.png" height="400"><img src="screenshot-08.png" height="400">
 
 ## Translations
 
