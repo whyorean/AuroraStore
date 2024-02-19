@@ -131,6 +131,9 @@ class DownloadWorker @AssistedInject constructor(
         download.totalFiles = requestList.size
         totalBytes = requestList.sumOf { it.size }
 
+        // Update database with all latest changes
+        downloadDao.update(download)
+
         // Download and verify all files exists
         requestList.forEach { request ->
             downloading = true
@@ -283,7 +286,13 @@ class DownloadWorker @AssistedInject constructor(
                     this.speed = downloadInfo.speed
                     this.timeRemaining = bytesRemaining / speed * 1000
                 }
-                downloadDao.update(download)
+                downloadDao.updateStatusProgress(
+                    download.packageName,
+                    download.downloadStatus,
+                    download.progress,
+                    download.speed,
+                    download.timeRemaining
+                )
 
                 notifyStatus(DownloadStatus.DOWNLOADING, NOTIFICATION_ID)
                 totalProgress = progress
@@ -308,7 +317,12 @@ class DownloadWorker @AssistedInject constructor(
         // Update database for all status except downloading which is handled onProgress
         if (status != DownloadStatus.DOWNLOADING) {
             download.downloadStatus = status
-            downloadDao.updateStatus(download.packageName, status)
+            if (download.downloadStatus == DownloadStatus.COMPLETED) {
+                download.progress = 100
+                downloadDao.updateStatusProgress(download.packageName, status, 100, 0, 0)
+            } else {
+                downloadDao.updateStatus(download.packageName, status)
+            }
         }
 
         if (status == DownloadStatus.CANCELLED) return

@@ -20,6 +20,21 @@ interface DownloadDao {
     @Query("UPDATE download SET downloadStatus=:downloadStatus WHERE packageName=:packageName")
     suspend fun updateStatus(packageName: String, downloadStatus: DownloadStatus)
 
+    @Query(
+        """
+        UPDATE download
+        SET downloadStatus=:downloadStatus, progress=:progress, speed=:speed, timeRemaining=:timeRemaining
+        WHERE packageName=:packageName
+        """
+    )
+    suspend fun updateStatusProgress(
+        packageName: String,
+        downloadStatus: DownloadStatus,
+        progress: Int,
+        speed: Long,
+        timeRemaining: Long
+    )
+
     @Query("SELECT * FROM download")
     fun downloads(): Flow<List<Download>>
 
