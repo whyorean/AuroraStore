@@ -84,8 +84,8 @@ class DownloadWorkerUtil @Inject constructor(
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
         downloadsList.filter { it.isNotEmpty() }.firstOrNull()
-            ?.find { it.packageName == packageName && it.downloadStatus == DownloadStatus.QUEUED }
-            ?.let { downloadDao.update(it.copy(downloadStatus = DownloadStatus.CANCELLED)) }
+            ?.find { it.packageName == packageName }
+            ?.let { downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED) }
     }
 
     suspend fun clearDownload(packageName: String, versionCode: Int) {
