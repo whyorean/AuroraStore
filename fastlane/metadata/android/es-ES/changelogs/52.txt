@@ -1,0 +1,6 @@
+• Corregidos algunos dispositivos que fallaban al buscar palabras clave que no estuvieran en inglés.
+• Se mejoró la página de Aplicaciones y Juegos.
+• Se agregó el botón Atrás para la instalación automática después de la descargar la aplicación.
+• El sonido de notificación no se reproduce cuando se instala o actualiza una aplicación
+• Corregido en algunos dispositivos que fallaban al abrir los detalles de la aplicación
+• Se agregó un diálogo de confirmación de desinstalación para el método root

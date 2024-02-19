@@ -1,0 +1,8 @@
+• No requiere permiso de almacenamiento hasta que sea necesario
+• Configuración falsa reelaborada para evitar permisos de almacenamiento de importación y exportación
+• Se agregó una opción para verificar automáticamente si hay actualizaciones de la aplicación (requiere una cuenta que funcione y haya iniciado sesión)
+• Se solucionó el problema por el cual las bibliotecas requeridas no se instalaban con aplicaciones como Chrome y la biblioteca Trichrome.
+• El directorio de descarga de la copia de seguridad se ignora al realizar una copia de seguridad de Aurora Store
+• Shizuku implementado (requiere Android 8.0+)
+• Se discontinuó el soporte para Android 4.4. La versión mínima requerida de Android es 5.0+.
+• Mejoras y correcciones de errores menores

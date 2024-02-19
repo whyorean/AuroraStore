@@ -1,0 +1,2 @@
+• Habilitar siempre el botón de finalizar en el fragmento de permiso (corrige la incorporación de nuevos usuarios)
+• Mantener el TypeToken de la librería GSON mientras se optimiza la compilación (corrige el fallo de arranque)

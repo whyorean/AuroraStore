@@ -1,0 +1,15 @@
+• Android 13
+• Localización de múltiples cadenas
+• Icono monocromo en Android 13
+• Actualizar las dependencias a la última versión
+• Mostrar los términos al iniciar
+• Permitir avanzar sin conceder permisos al instalar
+• Leer system xml denylist por defecto para excluir actualizaciones
+• Título correcto en la 5ª página de configuración
+• Avanzar en la instalación al retroceder
+• Reemplazar casillas de verificación al instalar
+• Color del fondo de las pestañas
+• Arreglar error en la instalación
+• Sin nuevas versiones de GSF y Vending
+• Refactorización de los permisos
+• Actualizar traducción

@@ -316,7 +316,7 @@
     <string name="installer_shizuku_unavailable">Shizuku がインストールされていないか、正常に動作していません。</string>
     <string name="downloading_dep">追加ファイルをダウンロードしています：<xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> 及び <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> ､ <xliff:g id="app_three_name">%3$s</xliff:g> 及び <xliff:g id="apps_count">%4$d</xliff:g> その他</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> ､ <xliff:g id="app_three_name">%3$s</xliff:g> 及び <xliff:g id="apps_count">%4$d</xliff:g> 個のアプリ</string>
     <string name="action_import">インポート</string>
     <string name="notification_channel_updates">通知の更新</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g>個の更新があります</string>
@@ -380,4 +380,7 @@
     <string name="onboarding_permission_doze_desc">Aurora Storeがバックグラウンドでダウンロード、更新することを許可する</string>
     <string name="device_doze_description">バックグラウンドの動作を許可するにはバッテリーの最適化を無効化してください。</string>
     <string name="device_doze_extra">最適化を有効にしておくこともできますが、バックグラウンドのダウンロードと自動更新を利用することはできません。</string>
+    <string name="failed_apk_export">APKのエクスポートに失敗しました</string>
+    <string name="pref_updates_incompatible">互換性のない更新</string>
+    <string name="pref_updates_incompatible_desc">インストールに失敗する可能性がある非互換、または無効化したアプリの更新を表示する</string>
 </resources>

@@ -1,0 +1,6 @@
+• Solucionar un fallo relacionado con la notificación de los servicios de instalación.
+• Mostrar sólo propiedades de suplantación de identidad válidas en la aplicación
+• Notificar al usuario cuando la velocidad es limitada durante la búsqueda
+• Muestra una animación parpadeante durante la búsqueda para indicar el progreso de la búsqueda.
+• Corrección del comportamiento de navegación al cambiar la pestaña predeterminada
+• Arreglar la opción de salida rápida
