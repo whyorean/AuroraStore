@@ -113,7 +113,7 @@
     <string name="installer_service_misconfigured">Állítsd be az Aurora szolgáltatásokat és először adj meg minden engedélyt.</string>
     <string name="installer_service_unavailable">Telepítsd az Aurora services 1.0.9 vagy magasabb verziót, vagy változtass a telepítési módszeren.</string>
     <string name="installer_service_available">Az Aurora szolgáltatások elérhetőek és telepítésre készek.</string>
-    <string name="installer_root_unavailable">Nincs rendszergazdai hozzáférés. Add meg, vagy változtasd meg a telepítési módszert.</string>
+    <string name="installer_root_unavailable">Nincs root hozzáférés. Add meg, vagy változtasd meg a telepítési módszert.</string>
     <string name="filter_review_two">Kettő</string>
     <string name="filter_review_three">Három</string>
     <string name="filter_review_positive">Pozitív</string>
@@ -367,7 +367,7 @@
     <string name="pref_vending_version_device">Alapértelmezett (a készülék konfigurációjából)</string>
     <string name="pref_vending_version_title">Google Play verzió</string>
     <string name="details_ratings_title_hint">Értékelés címe</string>
-    <string name="onboarding_permission_doze">Háttér letöltések</string>
+    <string name="onboarding_permission_doze">Háttérben történő letöltések</string>
     <string name="pref_updates_auto">Automatikus alkalmazásfrissítés</string>
     <string name="pref_self_update_title">Önfrissítések</string>
     <string name="device_doze_title">Akkumulátor optimalizálás észlelve!</string>
@@ -379,4 +379,9 @@
     <string name="device_doze_subtitle">Az Aurora Store az akkumulátor optimalizálás miatt nem tud alkalmazásokat telepíteni, letölteni vagy frissíteni a háttérben.</string>
     <string name="pref_updates_auto_desc">Automatikus frissítések viselkedésének beállítása</string>
     <string name="pref_updates_auto_install">Ellenőrizze és automatikusan telepítse a rendelkezésre álló frissítéseket</string>
+    <string name="action_request_analysis">Új elemzés kérése</string>
+    <string name="failed_apk_export">Az APK-k exportálása meghiúsult</string>
+    <string name="download_clear_finished">Tisztítás befejezve</string>
+    <string name="pref_updates_incompatible">Összeegyeztethetetlen frissítések</string>
+    <string name="pref_updates_incompatible_desc">Mutasson frissítéseket kompatibilis vagy letiltott alkalmazásokhoz, amelyek nem telepíthetők</string>
 </resources>
