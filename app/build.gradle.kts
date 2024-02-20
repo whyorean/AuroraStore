@@ -116,7 +116,7 @@ android {
 dependencies {
 
     //Protobuf
-    implementation("com.google.protobuf:protobuf-javalite:3.25.2")
+    implementation("com.google.protobuf:protobuf-javalite:3.25.3")
 
     //Google's Goodies
     implementation("com.google.android.material:material:1.11.0")
@@ -134,7 +134,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-process:$lifeVersion")
 
     //Arch Navigation
-    val navVersion = "2.7.6"
+    val navVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
@@ -145,7 +145,7 @@ dependencies {
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     //Epoxy
-    val epoxyVersion = "5.1.3"
+    val epoxyVersion = "5.1.4"
     implementation("com.airbnb.android:epoxy:$epoxyVersion")
     ksp("com.airbnb.android:epoxy-processor:$epoxyVersion")
 
@@ -197,5 +197,5 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
 
     // LeakCanary
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.13")
 }
