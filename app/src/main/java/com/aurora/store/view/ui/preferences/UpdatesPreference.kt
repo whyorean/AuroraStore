@@ -33,7 +33,6 @@ import com.aurora.store.R
 import com.aurora.store.data.work.SelfUpdateWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.CertUtil
-import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
@@ -46,9 +45,6 @@ class UpdatesPreference : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
-
-        findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)?.isEnabled =
-            Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO, 3) != 0
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_SELF_UPDATE)?.let {
             if (CertUtil.isFDroidApp(requireContext(), BuildConfig.APPLICATION_ID)) {
@@ -72,8 +68,12 @@ class UpdatesPreference : PreferenceFragmentCompat() {
                     0 -> UpdateWorker.cancelAutomatedCheck(requireContext())
                     else -> UpdateWorker.scheduleAutomatedCheck(requireContext())
                 }
-                findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)?.isEnabled =
-                    newValue.toString().toInt() != 0
+                true
+            }
+
+        findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
+            ?.setOnPreferenceChangeListener { _, _ ->
+                UpdateWorker.updateAutomatedCheck(requireContext())
                 true
             }
     }

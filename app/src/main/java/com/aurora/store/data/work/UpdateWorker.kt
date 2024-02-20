@@ -14,6 +14,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
@@ -59,7 +60,16 @@ class UpdateWorker @AssistedInject constructor(
 
         fun scheduleAutomatedCheck(context: Context) {
             Log.i("Scheduling periodic app updates!")
+            WorkManager.getInstance(context)
+                .enqueueUniquePeriodicWork(UPDATE_WORKER, KEEP, buildUpdateWork(context))
+        }
 
+        fun updateAutomatedCheck(context: Context) {
+            Log.i("Updating periodic app updates!")
+            WorkManager.getInstance(context).updateWork(buildUpdateWork(context))
+        }
+
+        private fun buildUpdateWork(context: Context): PeriodicWorkRequest {
             val updateCheckInterval = Preferences.getInteger(
                 context,
                 PREFERENCE_UPDATES_CHECK_INTERVAL,
@@ -72,15 +82,12 @@ class UpdateWorker @AssistedInject constructor(
 
             if (isMAndAbove()) constraints.setRequiresDeviceIdle(true)
 
-            val workRequest = PeriodicWorkRequestBuilder<UpdateWorker>(
+            return PeriodicWorkRequestBuilder<UpdateWorker>(
                 repeatInterval = updateCheckInterval,
                 repeatIntervalTimeUnit = HOURS,
                 flexTimeInterval = 30,
                 flexTimeIntervalUnit = MINUTES
             ).setConstraints(constraints.build()).build()
-
-            val workManager = WorkManager.getInstance(context)
-            workManager.enqueueUniquePeriodicWork(UPDATE_WORKER, KEEP, workRequest)
         }
     }
 
