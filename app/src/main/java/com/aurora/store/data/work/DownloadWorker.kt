@@ -131,8 +131,9 @@ class DownloadWorker @AssistedInject constructor(
         download.totalFiles = requestList.size
         totalBytes = requestList.sumOf { it.size }
 
-        // Update database with all latest changes
-        downloadDao.update(download)
+        // Update database with all latest purchases
+        downloadDao.updateFiles(download.packageName, download.fileList)
+        downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
         // Download and verify all files exists
         requestList.forEach { request ->
