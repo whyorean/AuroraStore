@@ -107,15 +107,15 @@ class DownloadWorkerUtil @Inject constructor(
         }
     }
 
-    suspend fun cancelAll(downloads: Boolean = true, updates: Boolean = true) {
+    suspend fun cancelAll(updatesOnly: Boolean = false) {
         // Cancel all enqueued downloads first to avoid triggering re-download
-        downloadsList.value.filter { it.downloadStatus == DownloadStatus.QUEUED }.forEach {
-            downloadDao.update(it.copy(downloadStatus = DownloadStatus.CANCELLED))
-        }
+        downloadsList.value.filter { it.downloadStatus == DownloadStatus.QUEUED }
+            .filter { if (updatesOnly) it.isInstalled else true }.forEach {
+                downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED)
+            }
 
-        val workManager = WorkManager.getInstance(context)
-        if (downloads) workManager.cancelAllWorkByTag(DOWNLOAD_APP)
-        if (updates) workManager.cancelAllWorkByTag(DOWNLOAD_UPDATE)
+        WorkManager.getInstance(context)
+            .cancelAllWorkByTag(if (updatesOnly) DOWNLOAD_UPDATE else DOWNLOAD_APP)
     }
 
     private fun trigger(download: Download) {

@@ -43,7 +43,6 @@ import java.io.File
 import java.net.URL
 import java.security.DigestInputStream
 import java.security.MessageDigest
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.NonCancellable
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
@@ -136,6 +135,7 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
         // Download and verify all files exists
+        notifyStatus(DownloadStatus.DOWNLOADING)
         requestList.forEach { request ->
             downloading = true
             runCatching { downloadFile(request); download.downloadedFiles++ }
@@ -148,7 +148,8 @@ class DownloadWorker @AssistedInject constructor(
                 }
             while (downloading) {
                 delay(1000)
-                if (isStopped) {
+                val d = downloadDao.getDownload(download.packageName)
+                if (isStopped || d.downloadStatus == DownloadStatus.CANCELLED) {
                     onFailure()
                     break
                 }
@@ -180,13 +181,12 @@ class DownloadWorker @AssistedInject constructor(
         withContext(NonCancellable) {
             Log.i(TAG, "Cleaning up!")
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
-            val status = if (isSAndAbove() && stopReason in cancelReasons) {
-                DownloadStatus.CANCELLED
+            if (isSAndAbove() && stopReason in cancelReasons) {
+                notifyStatus(DownloadStatus.CANCELLED)
             } else {
-                DownloadStatus.FAILED
+                notifyStatus(DownloadStatus.FAILED)
             }
 
-            notifyStatus(status)
             PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode)
                 .deleteRecursively()
             with(appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager) {
@@ -282,14 +282,12 @@ class DownloadWorker @AssistedInject constructor(
                 }
 
                 download.apply {
-                    this.downloadStatus = DownloadStatus.DOWNLOADING
                     this.progress = progress
                     this.speed = downloadInfo.speed
                     this.timeRemaining = bytesRemaining / speed * 1000
                 }
-                downloadDao.updateStatusProgress(
+                downloadDao.updateProgress(
                     download.packageName,
-                    download.downloadStatus,
                     download.progress,
                     download.speed,
                     download.timeRemaining
@@ -315,18 +313,20 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private suspend fun notifyStatus(status: DownloadStatus, dID: Int = -1) {
-        // Update database for all status except downloading which is handled onProgress
-        if (status != DownloadStatus.DOWNLOADING) {
-            download.downloadStatus = status
-            if (download.downloadStatus == DownloadStatus.COMPLETED) {
-                download.progress = 100
-                downloadDao.updateStatusProgress(download.packageName, status, 100, 0, 0)
-            } else {
-                downloadDao.updateStatus(download.packageName, status)
-            }
-        }
+        // Update status in database
+        download.downloadStatus = status
+        downloadDao.updateStatus(download.packageName, status)
 
-        if (status == DownloadStatus.CANCELLED) return
+        when (status) {
+            DownloadStatus.DOWNLOADING, DownloadStatus.CANCELLED -> return
+            DownloadStatus.COMPLETED -> {
+                // Mark progress as 100 manually to avoid race conditions
+                download.progress = 100
+                downloadDao.updateProgress(download.packageName, 100, 0, 0)
+            }
+
+            else -> {}
+        }
 
         val notification = NotificationUtil.getDownloadNotification(appContext, download, id, icon)
         val notificationID = if (dID != -1) dID else download.packageName.hashCode()

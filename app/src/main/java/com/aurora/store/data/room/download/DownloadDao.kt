@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import com.aurora.gplayapi.data.models.File
 import com.aurora.store.data.model.DownloadStatus
 import kotlinx.coroutines.flow.Flow
@@ -14,9 +13,6 @@ interface DownloadDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(download: Download)
-
-    @Update
-    suspend fun update(download: Download)
 
     @Query("UPDATE download SET downloadStatus=:downloadStatus WHERE packageName=:packageName")
     suspend fun updateStatus(packageName: String, downloadStatus: DownloadStatus)
@@ -30,13 +26,12 @@ interface DownloadDao {
     @Query(
         """
         UPDATE download
-        SET downloadStatus=:downloadStatus, progress=:progress, speed=:speed, timeRemaining=:timeRemaining
+        SET progress=:progress, speed=:speed, timeRemaining=:timeRemaining
         WHERE packageName=:packageName
         """
     )
-    suspend fun updateStatusProgress(
+    suspend fun updateProgress(
         packageName: String,
-        downloadStatus: DownloadStatus,
         progress: Int,
         speed: Long,
         timeRemaining: Long
@@ -46,7 +41,7 @@ interface DownloadDao {
     fun downloads(): Flow<List<Download>>
 
     @Query("SELECT * FROM download WHERE packageName = :packageName")
-    suspend fun getDownload(packageName: String): Download?
+    suspend fun getDownload(packageName: String): Download
 
     @Query("DELETE FROM download WHERE packageName = :packageName")
     suspend fun delete(packageName: String)
