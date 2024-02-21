@@ -110,7 +110,7 @@ class AuthViewModel(application: Application) : BaseAndroidViewModel(application
         }
     }
 
-    private fun buildSecureAnonymousAuthData() {
+    fun buildSecureAnonymousAuthData() {
         liveData.postValue(AuthState.Fetching)
         viewModelScope.launch(Dispatchers.IO) {
             try {

@@ -173,7 +173,7 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
         binding.btnAnonymous.addOnClickListener {
             if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnAnonymous.updateProgress(true)
-                viewModel.buildAnonymousAuthData()
+                viewModel.buildSecureAnonymousAuthData()
             }
         }
 
