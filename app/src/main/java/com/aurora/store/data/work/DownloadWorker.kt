@@ -20,7 +20,6 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.Request
@@ -166,11 +165,9 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private suspend fun onSuccess() {
-        val installer = appInstaller.getPreferredInstaller()
-        val dispatcher = if (installer is SessionInstaller) Dispatchers.Main else NonCancellable
-        withContext(dispatcher) {
+        withContext(NonCancellable) {
             try {
-                installer.install(download)
+                appInstaller.getPreferredInstaller().install(download)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
             }

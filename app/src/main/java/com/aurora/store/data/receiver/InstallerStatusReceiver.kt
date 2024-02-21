@@ -25,6 +25,7 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.util.Log
 import androidx.core.content.IntentCompat
+import com.aurora.extensions.runOnUiThread
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
@@ -80,7 +81,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
             it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             try {
-                context.startActivity(it)
+                runOnUiThread { context.startActivity(it) }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to trigger installation!", exception)
             }
