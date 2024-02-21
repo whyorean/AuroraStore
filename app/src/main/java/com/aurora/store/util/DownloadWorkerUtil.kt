@@ -50,29 +50,35 @@ class DownloadWorkerUtil @Inject constructor(
     private val TAG = DownloadWorkerUtil::class.java.simpleName
 
     fun init() {
-        // Run cleanup for last finished download and drop it database
         GlobalScope.launch {
-            downloadDao.downloads()
-                .collectLatest { list ->
-                    // Check and trigger next download in queue, if any
-                    if (!list.any { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
-                        val enqueuedDownloads = list.filter { it.downloadStatus == DownloadStatus.QUEUED }
-                        enqueuedDownloads.firstOrNull()?.let {
-                            try {
-                                if (context.isIgnoringBatteryOptimizations() || CommonUtil.inForeground()) {
-                                    Log.i(DOWNLOAD_WORKER, "Downloading ${it.packageName}")
-                                    trigger(it)
-                                } else {
-                                    Log.i(TAG, "Not in foreground or ignoring battery optimization")
-                                    cancel()
-                                }
-                            } catch (exception: Exception) {
-                                Log.i(DOWNLOAD_WORKER, "Failed to download app", exception)
-                                downloadDao.delete(it.packageName)
+            cancelFailedDownloads(downloadDao.downloads().firstOrNull() ?: emptyList())
+        }.invokeOnCompletion {
+            observeDownloads()
+        }
+    }
+
+    private fun observeDownloads() {
+        GlobalScope.launch {
+            downloadDao.downloads().collectLatest { list ->
+                // Check and trigger next download in queue, if any
+                if (!list.any { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
+                    val enqueuedDownloads = list.filter { it.downloadStatus == DownloadStatus.QUEUED }
+                    enqueuedDownloads.firstOrNull()?.let {
+                        try {
+                            if (context.isIgnoringBatteryOptimizations() || CommonUtil.inForeground()) {
+                                Log.i(DOWNLOAD_WORKER, "Downloading ${it.packageName}")
+                                trigger(it)
+                            } else {
+                                Log.i(TAG, "Not in foreground or ignoring battery optimization")
+                                cancel()
                             }
+                        } catch (exception: Exception) {
+                            Log.i(DOWNLOAD_WORKER, "Failed to download app", exception)
+                            downloadDao.delete(it.packageName)
                         }
                     }
                 }
+            }
         }
     }
 
@@ -116,6 +122,16 @@ class DownloadWorkerUtil @Inject constructor(
 
         WorkManager.getInstance(context)
             .cancelAllWorkByTag(if (updatesOnly) DOWNLOAD_UPDATE else DOWNLOAD_APP)
+    }
+
+    private suspend fun cancelFailedDownloads(downloadList: List<Download>) {
+        val workManager = WorkManager.getInstance(context)
+
+        downloadList.filter { it.isRunning }.forEach {
+            workManager.getWorkInfosByTagFlow("$PACKAGE_NAME:${it.packageName}").firstOrNull()
+                ?.all { workInfo -> workInfo.state.isFinished }
+                ?.run { downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED) }
+        }
     }
 
     private fun trigger(download: Download) {
