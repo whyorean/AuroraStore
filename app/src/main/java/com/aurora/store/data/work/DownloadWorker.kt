@@ -134,7 +134,6 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
         // Download and verify all files exists
-        notifyStatus(DownloadStatus.DOWNLOADING)
         requestList.forEach { request ->
             downloading = true
             runCatching { downloadFile(request); download.downloadedFiles++ }
@@ -315,7 +314,7 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {
-            DownloadStatus.DOWNLOADING, DownloadStatus.CANCELLED -> return
+            DownloadStatus.CANCELLED -> return
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
                 download.progress = 100
