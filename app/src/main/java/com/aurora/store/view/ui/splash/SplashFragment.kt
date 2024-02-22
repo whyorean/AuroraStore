@@ -22,6 +22,7 @@ package com.aurora.store.view.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
@@ -35,12 +36,11 @@ import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
-import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashFragment : BaseFragment(R.layout.fragment_splash) {
+class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
@@ -101,7 +101,11 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                         navigateToDefaultTab()
                     } else {
                         requireArguments().remove("packageName")
-                        openDetailsFragment(packageName)
+                        findNavController().navigate(
+                            SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
+                                packageName
+                            )
+                        )
                     }
                 }
 
@@ -121,7 +125,11 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                         navigateToDefaultTab()
                     } else {
                         requireArguments().remove("packageName")
-                        openDetailsFragment(packageName)
+                        findNavController().navigate(
+                            SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
+                                packageName
+                            )
+                        )
                     }
                 }
 

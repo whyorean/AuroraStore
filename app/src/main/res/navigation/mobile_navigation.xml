@@ -355,6 +355,12 @@
         <action
             android:id="@+id/action_splashFragment_to_googleFragment"
             app:destination="@id/googleFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_appDetailsFragment"
+            app:destination="@id/appDetailsFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/googleFragment"
