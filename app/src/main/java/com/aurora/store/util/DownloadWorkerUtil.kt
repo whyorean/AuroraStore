@@ -130,7 +130,7 @@ class DownloadWorkerUtil @Inject constructor(
         downloadList.filter { it.isRunning }.forEach {
             workManager.getWorkInfosByTagFlow("$PACKAGE_NAME:${it.packageName}").firstOrNull()
                 ?.all { workInfo -> workInfo.state.isFinished }
-                ?.run { downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED) }
+                ?.run { downloadDao.updateStatus(it.packageName, DownloadStatus.FAILED) }
         }
     }
 
