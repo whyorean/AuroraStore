@@ -158,7 +158,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
                         findItem(R.id.action_home_screen)?.isVisible =
-                            ShortcutManagerUtil.canPinShortcut(requireContext())
+                            ShortcutManagerUtil.canPinShortcut(requireContext(), app.packageName)
                         findItem(R.id.action_uninstall)?.isVisible = true
                         findItem(R.id.menu_app_settings)?.isVisible = true
                     }
@@ -418,7 +418,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
                 menu?.findItem(R.id.action_home_screen)?.isVisible =
-                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(requireContext())
+                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(
+                        requireContext(),
+                        app.packageName
+                    )
 
                 menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
                 menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled

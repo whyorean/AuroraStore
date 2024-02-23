@@ -10,8 +10,9 @@ object ShortcutManagerUtil {
 
     private const val TAG = "ShortcutManagerUtil"
 
-    fun canPinShortcut(context: Context): Boolean {
-        return ShortcutManagerCompat.isRequestPinShortcutSupported(context)
+    fun canPinShortcut(context: Context, packageName: String): Boolean {
+        return ShortcutManagerCompat.isRequestPinShortcutSupported(context) &&
+                context.packageManager.getLaunchIntentForPackage(packageName) != null
     }
 
     fun requestPinShortcut(context: Context, packageName: String) {
