@@ -1,7 +1,7 @@
 {
   "version_name": "4.4.1",
   "version_code": 54,
-  "aurora_build": "https://auroraoss.com/AuroraStore/Stable/AuroraStore_4.4.1.apk",
+  "aurora_build": "https://auroraoss.com/AuroraStore/Stable/AuroraStore-4.4.1.apk",
   "fdroid_build": "",
   "changelog": "Changelog : v4.4.1\n • Major internal changes to the downloads system\n • Major changes to the updates system\n • Translation updates & major bug fixes"
 }
