@@ -1,0 +1,7 @@
+• Target Android 14
+• Improve the F-Droid package filter for updates
+• Claim responsibility for future updates when installing apps using SessionInstaller (Android 14+)
+• Rename "Extended Updates" to "Incompatible Updates"
+• Add menu action to create a shortcut for the installed app
+• Bug fixes and improvements
+• Translation updates
