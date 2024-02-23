@@ -76,6 +76,7 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.util.isExternalStorageEnable
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
@@ -156,6 +157,8 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 if (app.packageName == event.packageName) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
+                        findItem(R.id.action_home_screen)?.isVisible =
+                            ShortcutManagerUtil.canPinShortcut(requireContext())
                         findItem(R.id.action_uninstall)?.isVisible = true
                         findItem(R.id.menu_app_settings)?.isVisible = true
                     }
@@ -166,6 +169,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 if (app.packageName == event.packageName) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
+                        findItem(R.id.action_home_screen)?.isVisible = false
                         findItem(R.id.action_uninstall)?.isVisible = false
                         findItem(R.id.menu_app_settings)?.isVisible = false
                     }
@@ -368,6 +372,13 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
             setOnMenuItemClickListener {
                 when (it.itemId) {
+                    R.id.action_home_screen -> {
+                        ShortcutManagerUtil.requestPinShortcut(
+                            requireContext(),
+                            app.packageName
+                        )
+                    }
+
                     R.id.action_share -> {
                         view.context.share(app)
                     }
@@ -405,6 +416,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
             if (::app.isInitialized) {
                 app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+
+                menu?.findItem(R.id.action_home_screen)?.isVisible =
+                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(requireContext())
 
                 menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
                 menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled

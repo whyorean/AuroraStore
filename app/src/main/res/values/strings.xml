@@ -91,6 +91,7 @@
     <string name="action_search">"Search"</string>
     <string name="action_share">"Share"</string>
     <string name="action_uninstall">"Uninstall"</string>
+    <string name="action_home_screen">Add to Home screen</string>
     <string name="action_uninstall_confirmation">"Do you want to uninstall this app ?"</string>
     <string name="action_info">"App Info"</string>
     <string name="action_update">"Update"</string>

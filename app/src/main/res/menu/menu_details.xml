@@ -47,4 +47,9 @@
     <item
         android:id="@+id/action_playstore"
         android:title="@string/title_download_playstore" />
+
+    <item
+        android:id="@+id/action_home_screen"
+        android:title="@string/action_home_screen"
+        android:visible="false" />
 </menu>
