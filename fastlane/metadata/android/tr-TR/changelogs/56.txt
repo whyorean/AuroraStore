@@ -1,0 +1,7 @@
+- Android 14 hedeflendi
+- Güncellemeler için F-Droid paket filtresi iyileştirildi
+- SessionInstaller kullanarak uygulama kurarken gelecekteki güncellemeler için sorumluluk talep edildi (Android 14+)
+- "Genişletilmiş Güncellemeler" "Uyumsuz Güncellemeler" olarak yeniden adlandırıldı
+- Kurulan uygulama için bir kısayol oluşturmak için menü eylemi eklendi
+- Hata düzeltmeleri ve iyileştirmeler
+- Çeviri güncellemeleri
