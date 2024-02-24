@@ -1,0 +1,7 @@
+• Android 14
+• Mejorar el filtro de paquetes de F-Droid para las actualizaciones
+• Reclamar la responsabilidad de futuras actualizaciones al instalar aplicaciones mediante SessionInstaller (Android 14+)
+• Cambie el nombre de "Actualizaciones ampliadas" a "Actualizaciones incompatibles"
+• Añadir acción de menú para crear un acceso directo para la aplicación instalada
+• Correcciones de errores y mejoras
+• Actualizaciones de la traducción
