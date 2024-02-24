@@ -74,6 +74,7 @@ class UpdatesPreference : PreferenceFragmentCompat() {
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
             ?.setOnPreferenceChangeListener { _, _ ->
                 UpdateWorker.updateAutomatedCheck(requireContext())
+                SelfUpdateWorker.updateAutomatedCheck(requireContext())
                 true
             }
     }

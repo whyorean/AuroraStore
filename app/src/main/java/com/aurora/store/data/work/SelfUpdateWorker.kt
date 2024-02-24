@@ -7,6 +7,7 @@ import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
 import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
@@ -19,6 +20,7 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -43,7 +45,22 @@ class SelfUpdateWorker @AssistedInject constructor(
         }
 
         fun scheduleAutomatedCheck(context: Context) {
-            Log.i(TAG, "Scheduling periodic self-updates!")
+            Log.i(TAG,"Scheduling periodic self-updates!")
+            WorkManager.getInstance(context)
+                .enqueueUniquePeriodicWork(SELF_UPDATE_WORKER, KEEP, buildUpdateWork(context))
+        }
+
+        fun updateAutomatedCheck(context: Context) {
+            Log.i(TAG,"Updating periodic self-updates!")
+            WorkManager.getInstance(context).updateWork(buildUpdateWork(context))
+        }
+
+        private fun buildUpdateWork(context: Context): PeriodicWorkRequest {
+            val updateCheckInterval = Preferences.getInteger(
+                context,
+                PREFERENCE_UPDATES_CHECK_INTERVAL,
+                3
+            ).toLong()
 
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.UNMETERED)
@@ -51,15 +68,12 @@ class SelfUpdateWorker @AssistedInject constructor(
 
             if (isMAndAbove()) constraints.setRequiresDeviceIdle(true)
 
-            val workRequest = PeriodicWorkRequestBuilder<UpdateWorker>(
-                repeatInterval = 24,
+            return PeriodicWorkRequestBuilder<UpdateWorker>(
+                repeatInterval = updateCheckInterval,
                 repeatIntervalTimeUnit = HOURS,
                 flexTimeInterval = 30,
                 flexTimeIntervalUnit = MINUTES
             ).setConstraints(constraints.build()).build()
-
-            val workManager = WorkManager.getInstance(context)
-            workManager.enqueueUniquePeriodicWork(SELF_UPDATE_WORKER, KEEP, workRequest)
         }
     }
 
