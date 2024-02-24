@@ -354,7 +354,7 @@
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
-    <string name="pref_updates_check_frequency_desc">Intervall für die Suche nach Updates (in Stunden) festlegen</string>
+    <string name="pref_updates_check_frequency_desc">Intervall für die Suche nach automatische Updates (in Stunden) festlegen</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur durch Aurora Store installierte Apps unter Updates und Installationen anzeigen</string>
     <string name="pref_updates_check_frequency">Häufigkeit für automatische Updates</string>
@@ -366,7 +366,7 @@
     <string name="toast_proxy_failed">Fehler beim Festlegen des Proxys</string>
     <string name="pref_network_proxy_enable_desc">Gesamten Netzwerkverkehr der App über den Proxyserver leiten</string>
     <string name="pref_self_update_title">Selbständige Updates</string>
-    <string name="pref_self_update_summary">Prüfen und benachrichtigen, ob eine neue stabile Version von Aurora Store verfügbar ist</string>
+    <string name="pref_self_update_summary">Prüfen und installieren, ob eine neue stabile Version von Aurora Store verfügbar ist</string>
     <string name="pref_vending_version_device">Standard (aus Gerätekonfiguration)</string>
     <string name="pref_vending_version_title">Google-Play-Version</string>
     <string name="onboarding_permission_doze">Downloads im Hintergrund</string>
@@ -385,4 +385,5 @@
     <string name="download_clear_finished">Fertige löschen</string>
     <string name="pref_updates_incompatible">Inkompatible Updates</string>
     <string name="pref_updates_incompatible_desc">Updates für inkompatible oder deaktivierte Apps anzeigen, die möglicherweise nicht installiert werden können</string>
+    <string name="action_home_screen">Zur Startseite hinzufügen</string>
 </resources>
