@@ -351,7 +351,7 @@
     <string name="details_no_apps_on_sale">Nenalezeny žádné aplikace ve slevě</string>
     <string name="pref_downloader_path_title">Cesta pro stahování</string>
     <string name="pref_download_directory_error">Vybraná cesta není zapisovatelná</string>
-    <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické aktualizace, v hodinách.</string>
+    <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické a vlastní aktualizace, v hodinách.</string>
     <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
     <string name="pref_aurora_only_desc">V seznamu aktualizací a nainstalovaných aplikací zobrazit pouze aplikace nainstalované z obchodu Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
@@ -365,7 +365,7 @@
     <string name="toast_proxy_failed">Nepodařilo se nastavit proxy</string>
     <string name="pref_network_proxy_enable_desc">Přesměrovat veškerý síťový provoz skrz proxy</string>
     <string name="pref_self_update_title">Aktualizace Aurora Store</string>
-    <string name="pref_self_update_summary">Zkontrolovat a oznámit, pokud bude dostupná nová stabilní verze aplikace Aurora Store</string>
+    <string name="pref_self_update_summary">Kontrolovat a instalovat nové stabilní verze aplikace Aurora Store</string>
     <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
     <string name="pref_vending_version_title">Verze z Google Play</string>
     <string name="onboarding_permission_doze">Stahování na pozadí</string>
@@ -382,6 +382,7 @@
     <string name="action_request_analysis">Požádat o novou analýzu</string>
     <string name="failed_apk_export">Nepodařilo se exportovat soubory APK</string>
     <string name="download_clear_finished">Úspěšně vymazáno</string>
-    <string name="pref_updates_incompatible">Nekompatibilní aktualizace</string>
+    <string name="pref_updates_incompatible">Aktualizovat nekompatibilní</string>
     <string name="pref_updates_incompatible_desc">Zobrazit aktualizace pro nekompatibilní nebo zakázané aplikace, jejichž instalace může selhat</string>
+    <string name="action_home_screen">Přidat na domovskou obrazovku</string>
 </resources>
