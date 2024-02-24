@@ -365,7 +365,7 @@
     <string name="toast_proxy_failed">Falha ao definir proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir todo o tráfego do app passar pelo proxy</string>
     <string name="pref_self_update_title">Auto-atualizações</string>
-    <string name="pref_self_update_summary">Checar e notificar se uma nova versão da Aurora Store estiver disponível</string>
+    <string name="pref_self_update_summary">Checar e instalar se uma nova versão da Aurora Store estiver disponível</string>
     <string name="pref_vending_version_device">Padrão (da configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão do Google Play</string>
     <string name="onboarding_permission_doze">Downloads em Segundo Plano</string>
