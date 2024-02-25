@@ -143,7 +143,7 @@
     <string name="updates_available">actualisationes disponibile</string>
     <string name="pref_ui_layout_tab">Seliger scheda per predefinition</string>
     <string name="action_enabled">Activate</string>
-    <string name="pref_self_update_summary">Verificar e notificar si es disponibile un nove version stabile de Aurora Store</string>
+    <string name="pref_self_update_summary">Verificar e installar si es disponibile un nove version stabile de Aurora Store</string>
     <string name="pref_updates_check_frequency">Frequentia de actualisationes automatic</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualisationes disponibile</string>
@@ -226,4 +226,9 @@
     <string name="pref_install_profile_title">Profilos de installation (ezperimental)</string>
     <string name="onboarding_title_accent">Accento</string>
     <string name="toast_apk_whitelisted">In le lista blanc</string>
+    <string name="pref_ui_accent_title">Accento</string>
+    <string name="exodus_view_report">Vider reporto</string>
+    <string name="action_home_screen">Adder al schermo de initio</string>
+    <string name="pref_updates_incompatible">Actualisationes incompatibile</string>
+    <string name="pref_updates_auto_install">Verificar e installar actualisationes disponibile automaticamente</string>
 </resources>
