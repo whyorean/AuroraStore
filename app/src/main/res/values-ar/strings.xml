@@ -351,7 +351,7 @@
     <string name="pref_downloader_path_title">مسار التنزيل</string>
     <string name="pref_download_directory_error">المسار المحدد غير قابل للكتابة</string>
     <string name="action_uninstall_confirmation">هل تريد إلغاء تثبيت هذا التطبيق؟</string>
-    <string name="pref_updates_check_frequency_desc">‬قم بتكوين الفواصل الزمنية للتحديثات التلقائية، بالساعة.</string>
+    <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
     <string name="pref_aurora_only">تطبيقات متجر Aurora فقط</string>
     <string name="pref_aurora_only_desc">قم بعرض التطبيقات المثبتة بمتحر اورورا فقط في التحديثات والتطبيقات المثبتة</string>
     <string name="title_app_settings">إعدادات التطبيقات</string>
@@ -365,7 +365,7 @@
     <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
     <string name="pref_network_proxy_enable_desc">السماح لجميع حركة المرور من التطبيق بالمرور عبر الوكيل</string>
     <string name="pref_self_update_title">التحديثات الذاتية</string>
-    <string name="pref_self_update_summary">التحقق من توفر إصدار جديد من Aurora Store وإبلاغي بذلك</string>
+    <string name="pref_self_update_summary">تحقق من توفر إصدار ثابت جديد من Aurora Store و ثبته</string>
     <string name="pref_vending_version_device">الافتراضي (من تكوين الجهاز)</string>
     <string name="pref_vending_version_title">نسخة جوجل بلاي</string>
     <string name="onboarding_permission_doze">تنزيلات الخلفية</string>
@@ -384,4 +384,5 @@
     <string name="download_clear_finished">مسح المكتملة</string>
     <string name="pref_updates_incompatible">التحديثات غير المتوافقة</string>
     <string name="pref_updates_incompatible_desc">عرض التحديثات للتطبيقات غير المتوافقة أو المعطلة التي قد يفشل تثبيتها</string>
+    <string name="action_home_screen">أضِف إلى الشاشة الرئيسية</string>
 </resources>
