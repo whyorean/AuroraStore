@@ -11,7 +11,7 @@
     <string name="filter_review_critical">差评</string>
     <string name="filter_review_all">全部</string>
     <string name="exodus_view_report">查看报告</string>
-    <string name="exodus_substring">应用中的已知跟踪器数为</string>
+    <string name="exodus_substring">种已知跟踪器，版本</string>
     <string name="exodus_progress">正在检查跟踪器…</string>
     <string name="exodus_powered">由 Exodus 提供支持</string>
     <string name="exodus_no_tracker">不包含已知的跟踪器</string>
