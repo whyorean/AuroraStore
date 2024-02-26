@@ -139,7 +139,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //Coil
-    implementation("io.coil-kt:coil:2.5.0")
+    implementation("io.coil-kt:coil:2.6.0")
 
     //Shimmer
     implementation("com.facebook.shimmer:shimmer:0.5.0")
@@ -186,7 +186,7 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
 
-    val hiltWorkVersion = "1.1.0"
+    val hiltWorkVersion = "1.2.0"
     ksp("androidx.hilt:hilt-compiler:$hiltWorkVersion")
     implementation("androidx.hilt:hilt-work:$hiltWorkVersion")
 
