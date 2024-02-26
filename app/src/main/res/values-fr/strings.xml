@@ -346,7 +346,7 @@
     <string name="pref_network_proxy_enable">Activer le serveur mandataire</string>
     <string name="details_ratings_title_hint">Titre de l’évaluation</string>
     <string name="pref_network_proxy_url">URL du serveur mandataire</string>
-    <string name="pref_updates_check_frequency_desc">Configurez les intervalles pour les mises à jour automatiques, en heures.</string>
+    <string name="pref_updates_check_frequency_desc">Configurer les intervalles pour les mises à jour auto, en heure.</string>
     <string name="pref_aurora_only">Applications Aurora Store uniquement</string>
     <string name="pref_network_proxy_title">Serveur mandataire</string>
     <string name="amazon_appstore_desc">Amazon Appstore est un magasin d\'applications pour les plateformes compatibles Android exploitées par Amazon.</string>
@@ -375,13 +375,14 @@
     <string name="pref_updates_auto_off">Ne pas mettre les applis à jour automatiquement</string>
     <string name="device_doze_extra">En option, vous pouvez choisir de garder les optimisations activées, mais vous ne serez pas en mesure de profiter des téléchargements en arrière-plan et des mises à jour automatisées ; c’est à vous de décider.</string>
     <string name="onboarding_permission_doze_desc">Autoriser Aurora Store à télécharger et mettre à jour les applications en arrière-plan</string>
-    <string name="pref_self_update_summary">Vérifier et notifier si une nouvelle version stable de Aurora Store est disponible</string>
+    <string name="pref_self_update_summary">Vérifier si une nouvelle version stable d’Aurora Store est disponible et l’installer</string>
     <string name="device_doze_subtitle">Aurora Store ne peut pas installer de téléchargements ou mettre à jour d’applications en arrière-plan en raison des optimisations de la batterie.</string>
     <string name="pref_updates_auto_desc">Configurer le comportement des mises à jour auto</string>
     <string name="pref_updates_auto_install">Vérifier les mises à jour disponibles automatiquement</string>
     <string name="action_request_analysis">Demander une nouvelle analyse</string>
-    <string name="failed_apk_export">Échec de l\'exportation des APK</string>
-    <string name="download_clear_finished">Terminé</string>
-    <string name="pref_updates_incompatible">Mises-à-jour incompatibles</string>
-    <string name="pref_updates_incompatible_desc">Afficher les mises-à-jour pour les applications incompatibles ou désactivées dont l\'installation peut échouer</string>
+    <string name="failed_apk_export">Échec de l’exportation des APK</string>
+    <string name="download_clear_finished">Effacer les terminés</string>
+    <string name="pref_updates_incompatible">Mises à jour incompatibles</string>
+    <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applications incompatibles ou désactivées dont l’installation peut échouer</string>
+    <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
 </resources>

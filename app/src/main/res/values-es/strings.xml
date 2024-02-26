@@ -351,7 +351,7 @@
     <string name="details_no_apps_on_sale">No se han encontrado aplicaciones a la venta</string>
     <string name="pref_downloader_path_title">Ruta de la descarga</string>
     <string name="pref_download_directory_error">La ruta seleccionada no se puede escribir</string>
-    <string name="pref_updates_check_frequency_desc">Configure los intervalos para las actualizaciones automáticas, en horas.</string>
+    <string name="pref_updates_check_frequency_desc">Configure los intervalos para las actualizaciones automáticas y en horas.</string>
     <string name="pref_aurora_only">Sólo aplicaciones de Aurora Store</string>
     <string name="pref_aurora_only_desc">Mostrar sólo las aplicaciones instaladas en Aurora Store en Actualizaciones y Aplicaciones instaladas</string>
     <string name="title_app_settings">Ajustes de la aplicación</string>
@@ -365,7 +365,7 @@
     <string name="toast_proxy_failed">Error al establecer el proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir que todo el tráfico de la aplicación pase por el proxy</string>
     <string name="pref_self_update_title">Autoactualizaciones</string>
-    <string name="pref_self_update_summary">Comprobar y notificar si hay disponible una nueva versión estable de Aurora Store</string>
+    <string name="pref_self_update_summary">Compruebe e instale si hay disponible una nueva versión estable de Aurora Store</string>
     <string name="pref_vending_version_device">Por defecto (desde la configuración del dispositivo)</string>
     <string name="pref_vending_version_title">Versión para Google Play</string>
     <string name="onboarding_permission_doze">Descargas en segundo plano</string>
@@ -384,4 +384,5 @@
     <string name="download_clear_finished">Limpieza terminada</string>
     <string name="pref_updates_incompatible">Actualizaciones no compatibles</string>
     <string name="pref_updates_incompatible_desc">Mostrar actualizaciones de aplicaciones incompatibles o desactivadas que pueden fallar al instalarse</string>
+    <string name="action_home_screen">Añadir a la pantalla de inicio</string>
 </resources>

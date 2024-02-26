@@ -368,7 +368,7 @@
     <string name="pref_self_update_title">Auto-aggiornamento</string>
     <string name="pref_aurora_only_desc">Mostra solamente le app installate da Aurora Store nella pagine degli Aggiornamenti e delle App installate</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
-    <string name="pref_self_update_summary">Controlla e avvisa se è disponibile una nuova versione stabile di Aurora Store</string>
+    <string name="pref_self_update_summary">Controlla se è disponibile una nuova versione stabile di Aurora Store e installala</string>
     <string name="pref_network_proxy_enable_desc">Permetti a tutti i dati di quest\'applicazione di passare tramite proxy</string>
     <string name="device_doze_description">Si prega di disabilitare le ottimizzazioni della batteria per consentire le operazioni di sfondo.</string>
     <string name="pref_updates_auto">Aggiorna le app automaticamente</string>
@@ -380,4 +380,9 @@
     <string name="pref_updates_auto_desc">Configura il comportamento degli aggiornamenti automatici</string>
     <string name="pref_updates_auto_install">Controlla e installa gli aggiornamenti disponibili automaticamente</string>
     <string name="action_request_analysis">Richiedi nuova analisi</string>
+    <string name="failed_apk_export">Esportazioni degli APK fallita</string>
+    <string name="download_clear_finished">Cancella i finiti</string>
+    <string name="pref_updates_incompatible">Aggiornamenti incompatibili</string>
+    <string name="pref_updates_incompatible_desc">Mostra aggiornamenti per applicazioni incompatibili o disabilitate che potrebbero non installare</string>
+    <string name="action_home_screen">Aggiungi alla pagina principale</string>
 </resources>

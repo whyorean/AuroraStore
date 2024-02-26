@@ -1,0 +1,7 @@
+• Cíl Android 14
+• Zlepšení filtru balíčků F-Droid pro aktualizace
+• Převzetí zodpovědnosti za další aktualizace při instalaci aplikací pomocí SessionInstalleru (Android 14+)
+• Přejmenovány „Rozšířené aktualizace“ na „Aktualizovat nekompatibilní“
+• Přidána akce nabídky pro vytvoření zkratky pro nainstalovanou aplikaci
+• Opravy chyb a vylepšení
+• Aktualizace překladů
