@@ -196,8 +196,6 @@
     <string name="pref_filter_google_summary">Игнорировать приложения Google в обновлениях и установленных приложениях</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
     <string name="pref_filter_fdroid_summary">Игнорировать F-Droid приложения в Обновлениях и Установленных приложениях</string>
-    <string name="pref_downloader_external_desc">Внешнее хранилище будет использоваться для загрузки, экспорта и т. д.</string>
-    <string name="pref_downloader_external">Использовать внешнее хранилище</string>
     <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>
     <string name="pref_app_download">Загрузки</string>
     <string name="pref_abandon_session_desc">Очистить отмененные или ожидающие сеансы установки</string>
@@ -362,7 +360,6 @@
     <string name="pref_downloader_wifi_title">Загружать только по Wi-Fi</string>
     <string name="pref_aurora_only">Только приложения из Aurora Store</string>
     <string name="details_no_apps_on_sale">Приложений в продаже не найдено</string>
-    <string name="pref_downloader_path_title">Путь загрузки</string>
     <string name="pref_network_proxy_enable_desc">Разрешить трафику приложения проходить через прокси</string>
     <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
     <string name="pref_vending_version_title">Версия Google Play</string>

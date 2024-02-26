@@ -227,8 +227,6 @@
     <string name="pref_filter_google_summary">Google alkalmazások kihagyása a frissítés és telepített alkalmazás listákról</string>
     <string name="pref_filter_fdroid_title">F-Droid appok szűrése</string>
     <string name="pref_filter_fdroid_summary">F-Droid alkalmazások kihagyása a frissítés és telepített alkalmazás listákról</string>
-    <string name="pref_downloader_external_desc">Külső tárhelyet van használatban letöltésekhez, exportáláshoz, stb.</string>
-    <string name="pref_downloader_external">Felhasználó külső tárhelye</string>
     <string name="pref_dialog_to_apply_restart">Ez a beállítás az app újraindítása után kerül alkalmazásra</string>
     <string name="pref_app_download">Letöltések</string>
     <string name="pref_abandon_session_desc">Törli az elhagyott vagy függőben lévő telepítéseket</string>
@@ -355,7 +353,6 @@
     <string name="title_app_settings">Alkalmazás beállítások</string>
     <string name="title_apps_sale_provider">Szolgáltató - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nincs leértékelt alkalmazás</string>
-    <string name="pref_downloader_path_title">Letöltési útvonal</string>
     <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
     <string name="pref_download_directory_error">A kiválasztott út nem írható</string>
     <string name="toast_proxy_failed">A proxy beállítása sikertelen</string>

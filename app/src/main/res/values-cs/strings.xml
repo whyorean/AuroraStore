@@ -89,8 +89,6 @@
     <string name="pref_filter_google_summary">Ignorovat aplikace od společnosti Google z karty Aktualizace a Nainstalované</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorovat aplikace ze služby F-Droid z karty Aktualizace a Nainstalované</string>
-    <string name="pref_downloader_external_desc">Externí úložiště se používá pro stahování, export atd.</string>
-    <string name="pref_downloader_external">Externí úložiště uživatele</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>
     <string name="pref_common_extra">Doplňky</string>
     <string name="pref_app_download">Stahované soubory</string>
@@ -349,7 +347,6 @@
     <string name="action_uninstall_confirmation">Chcete odinstalovat tuto aplikaci\?</string>
     <string name="title_apps_sale_provider">Poskytovatel - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nenalezeny žádné aplikace ve slevě</string>
-    <string name="pref_downloader_path_title">Cesta pro stahování</string>
     <string name="pref_download_directory_error">Vybraná cesta není zapisovatelná</string>
     <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické a vlastní aktualizace, v hodinách.</string>
     <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>

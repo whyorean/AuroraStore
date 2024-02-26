@@ -198,8 +198,6 @@
     <string name="pref_filter_google_summary">在更新和已安装应用中忽略 Google 出品的应用</string>
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">在更新和已安装应用中忽略 F-Droid 应用</string>
-    <string name="pref_downloader_external_desc">外部存储用于下载、导出等操作。</string>
-    <string name="pref_downloader_external">使用外部存储</string>
     <string name="pref_dialog_to_apply_restart">在您重新启动应用后，此设置将被应用</string>
     <string name="pref_app_download">下载</string>
     <string name="pref_abandon_session_desc">清除放弃或挂起的安装会话</string>
@@ -349,7 +347,6 @@
     <string name="action_uninstall_confirmation">你想卸载此应用吗？</string>
     <string name="title_apps_sale_provider">提供商 - bestappsales.com</string>
     <string name="details_no_apps_on_sale">没找到促销应用</string>
-    <string name="pref_downloader_path_title">下载路径</string>
     <string name="pref_download_directory_error">所选路径不可写入</string>
     <string name="pref_updates_check_frequency_desc">配置小时为单位的自动更新和 Aurora Store 自更新间隔。</string>
     <string name="pref_aurora_only">仅 Aurora Store 应用</string>

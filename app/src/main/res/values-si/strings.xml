@@ -144,7 +144,6 @@
     <string name="about_bitcoin_eth">ඊතරම්</string>
     <string name="onboarding_permission_esa_desc">බාගැනීම් (APKs හා OBBs) සුරැකීමට හා බාහිර ආචයනයෙන් උපාංග වින්‍යාස ආයාත හෝ නිර්යාත කිරීමට.</string>
     <string name="toast_export_success">උපාංගයේ වින්‍යාසය නිර්යාත කෙරිණි</string>
-    <string name="pref_downloader_external_desc">බාගැනීම්, නිර්යාත ආදිය සඳහා බාහිර ආචයනය භාවිතා කෙරේ.</string>
     <string name="ui_accent_1">නිල්</string>
     <string name="ui_accent_3">රතු</string>
     <string name="ui_accent_2">ෆුච්සියා</string>
@@ -269,7 +268,6 @@
     <string name="device_miui_subtitle">MIUI ප්‍රශස්තිකරණය නිසා වාර ස්ථාපකයට යෙදුම් ස්ථාපනය කළ නොහැකිය.</string>
     <string name="device_miui_description">ස්ථාපන සඳහා ඉඩදීමට MIUI ප්‍රශස්තිකරණය අබල කරන්න, නැතහොත් මූල හෝ සේවා ස්ථාපක තෝරාගත හැකිය.</string>
     <string name="pref_install_mode_am">AM ස්ථාපකය.</string>
-    <string name="pref_downloader_external">පරිශ්‍රීලකයාගේ බාහිර ආචයනය</string>
     <string name="pref_abandon_session_desc">අතහැර දැමූ හෝ බලාසිටින ස්ථාපන වාර හිස් කරන්න</string>
     <string name="dialog_desc_native_split">නිසග ස්ථාපකය හරහා පොදි(පංගු) යෙදුම් ස්ථාපනය කිරීමට නොහැකිය. ස්ථාපකය මූල, සේවා හෝ වාරය ට වෙනස් කරන්න.</string>
     <string name="device_miui_extra">වෛකල්පිතව, ඔබට නිසග ස්ථාපකය තේරීමට හැකිය නමුත් ඊළඟට ඔබට පොදි(පංගු) APKs ස්ථානය කිරීමට නොහැකිය, තීරණය ඔබ සතුය.</string>

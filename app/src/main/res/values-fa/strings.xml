@@ -238,7 +238,6 @@
     <string name="ui_accent_11">آبی روشن</string>
     <string name="pref_insecure_anonymous_summary">تولید شناسه GSF به صورت محلی بر روی دستگاه</string>
     <string name="pref_insecure_anonymous_title">جلسه ناشناس ناامن</string>
-    <string name="pref_downloader_external_desc">حافظه خارجی برای دانلود، برون‌بری و غیره استفاده می شود.</string>
     <string name="pref_filter_search_summary">فیلترهای جستجو در هر جستجو ریست می شوند. خاموش کردن برای ذخیره فیلترهای جستجو</string>
     <string name="purchase_invalid">برنامه خریداری نشده است</string>
     <string name="purchase_unsupported">برنامه پشتیبانی نمی شود</string>
@@ -264,7 +263,6 @@
     <string name="onboarding_title_accent">رنگ‌بندی</string>
     <string name="onboarding_title_installer">نصب کننده</string>
     <string name="onboarding_permission_installer_desc">اجازه نصب برنامه‌ها از فروشگاه آرورا</string>
-    <string name="pref_downloader_external">حافظه خارجی کاربر</string>
     <string name="pref_filter_google_summary">حذف همه برنامه‌های گوگل از نتایج جستجو و دسته‌بندی برنامه‌ها</string>
     <string name="pref_filter_google_title">فیلتر کردن برنامه های گوگل</string>
     <string name="pref_filter_search_title">استفاده از فیلتر جستجوی غیر دائمی</string>

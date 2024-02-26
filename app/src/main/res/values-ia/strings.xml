@@ -60,7 +60,6 @@
     <string name="title_installed">Installate</string>
     <string name="title_device">Apparato</string>
     <string name="title_language">Lingua</string>
-    <string name="pref_downloader_path_title">Dossier de discargamento</string>
     <string name="action_info">Information de application</string>
     <string name="action_search">Cercar</string>
     <string name="error">Occurreva un error!</string>
@@ -176,7 +175,6 @@
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="installer_service_available">Le servicios de Aurora es disponibile e preste pro installar.</string>
     <string name="title_installer">Installator de applicationes</string>
-    <string name="pref_downloader_external">Immagazinage externe de usator</string>
     <string name="action_check">Verificar</string>
     <string name="details_dev_details">Contacto del disveloppator</string>
     <string name="action_wishlist_add">Adder al lista blanc</string>

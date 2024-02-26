@@ -236,8 +236,6 @@
     <string name="pref_filter_google_summary">Ignorar aplicativos do Google das atualizações e dos aplicativos instalados</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicativos F-Droid</string>
     <string name="pref_filter_fdroid_summary">Remove aplicativos do F-Droid das listas de atualizações e de aplicativos instalados</string>
-    <string name="pref_downloader_external_desc">O armazenamento externo é utilizado para downloads, exportações, etc.</string>
-    <string name="pref_downloader_external">Armazenamento externo do usuário</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o aplicativo para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Pagina Para Você</string>
     <string name="toast_manual_available">Parabéns, o código da versão solicitada está disponível, baixando agora.</string>
@@ -349,7 +347,6 @@
     <string name="action_uninstall_confirmation">Deseja desinstalar este app\?</string>
     <string name="title_apps_sale_provider">Provedor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nenhum app à venda encontrado</string>
-    <string name="pref_downloader_path_title">Caminho de download</string>
     <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>
     <string name="pref_updates_check_frequency_desc">Configure intervalos para atualizações automáticas em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>

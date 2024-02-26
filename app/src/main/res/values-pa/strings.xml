@@ -99,8 +99,6 @@
     <string name="pref_filter_google_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ ਗੂਗਲ ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_filter_fdroid_title">ਫਿਲਟਰ F-Droid ਐਪਸ</string>
     <string name="pref_filter_fdroid_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ F-Droid ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
-    <string name="pref_downloader_external_desc">ਡਾਊਨਲੋਡਸ ਅਤੇ ਐਕਸਪੋਰਟ ਵਗੈਰਾ ਲਈ ਬਾਹਰੀ (external) ਸਟੋਰੇਜ਼ ਵਰਤਿਆ ਜਾਵੇਗਾ।</string>
-    <string name="pref_downloader_external">ਡਾਊਨਲੋਡ ਵਾਸਤੇ ਬਾਹਰੀ (external) ਸਟੋਰੇਜ ਵਰਤੋ</string>
     <string name="pref_dialog_to_apply_restart">ਐਪ ਦੇ ਮੁੜ ਚਾਲੂ ਹੋਣ ਤੇ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਵੇਗੀ</string>
     <string name="pref_common_extra">ਕੁੱਝ ਹੋਰ</string>
     <string name="pref_app_download">ਡਾਊਨਲੋਡ ਬਾਰੇ</string>
@@ -353,7 +351,6 @@
     <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
     <string name="title_apps_sale_provider">ਪ੍ਰੋਵਾਈਡਰ - bestappsales.com</string>
     <string name="details_no_apps_on_sale">ਵਿਕਰੀ \'ਤੇ ਕੋਈ ਐਪ ਨਹੀਂ ਮਿਲੀ</string>
-    <string name="pref_downloader_path_title">ਡਾਊਨਲੋਡ ਮਾਰਗ</string>
     <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟ ਆਵ੍ਰਿਤੀ</string>
     <string name="pref_download_directory_error">ਚੁਣਿਆ ਗਿਆ ਮਾਰਗ ਲਿਖਣਯੋਗ ਨਹੀਂ ਹੈ</string>
     <string name="pref_downloader_wifi_title">ਸਿਰਫ਼ ਵਾਈਫਾਈ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਡਾਊਨਲੋਡ ਕਰੋ</string>

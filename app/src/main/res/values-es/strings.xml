@@ -66,8 +66,6 @@
     <string name="pref_filter_google_summary">Ignorar las aplicaciones de Google en actualizaciones y aplicaciones instaladas</string>
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorar las aplicaciones de F-Droid en Actualizaciones y aplicaciones instaladas</string>
-    <string name="pref_downloader_external_desc">El almacenamiento externo se utiliza para las descargas, exportaciones, etc.</string>
-    <string name="pref_downloader_external">Almacenamiento externo del usuario</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración se aplicará después de reiniciar la app</string>
     <string name="pref_app_download">Descargas</string>
     <string name="pref_abandon_session_desc">Limpiar las sesiones de instalación abandonadas o pendientes</string>
@@ -349,7 +347,6 @@
     <string name="action_uninstall_confirmation">¿Quieres desinstalar esta aplicación\?</string>
     <string name="title_apps_sale_provider">Proveedor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">No se han encontrado aplicaciones a la venta</string>
-    <string name="pref_downloader_path_title">Ruta de la descarga</string>
     <string name="pref_download_directory_error">La ruta seleccionada no se puede escribir</string>
     <string name="pref_updates_check_frequency_desc">Configure los intervalos para las actualizaciones automáticas y en horas.</string>
     <string name="pref_aurora_only">Sólo aplicaciones de Aurora Store</string>

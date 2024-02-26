@@ -74,7 +74,7 @@ class SpoofDeviceProvider private constructor(var context: Context) {
     private val spoofDevicesFromUser: List<Properties>
         get() {
             val deviceNames: MutableList<Properties> = ArrayList()
-            val defaultDir = File(PathUtil.getSpoofDirectory(context))
+            val defaultDir = PathUtil.getSpoofDirectory(context)
             val files = defaultDir.listFiles()
             if (defaultDir.exists() && files != null) {
                 for (file in files) {

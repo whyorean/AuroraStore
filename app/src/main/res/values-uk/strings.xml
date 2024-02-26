@@ -253,8 +253,6 @@
     <string name="filter_review_critical">Критичні</string>
     <string name="pref_filter_fdroid_title">Фільтрувати застосунки F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ігнорувати застосунки F-Droid з Оновлень та Встановлених застосунків</string>
-    <string name="pref_downloader_external_desc">Зовнішнє сховище застосовується для завантажень, експорту тощо.</string>
-    <string name="pref_downloader_external">Зовнішнє сховище</string>
     <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску застосунку</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
@@ -352,7 +350,6 @@
     <string name="title_app_settings">Налаштування застосунку</string>
     <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
     <string name="details_no_apps_on_sale">На розпродажі не знайдено жодного застосунку</string>
-    <string name="pref_downloader_path_title">Шлях завантаження</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
     <string name="pref_download_directory_error">Вибраний шлях недоступний для запису</string>
     <string name="action_uninstall_confirmation">Ви хочете видалити цей застосунок\?</string>

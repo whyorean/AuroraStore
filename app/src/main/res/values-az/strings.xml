@@ -89,8 +89,6 @@
     <string name="onboarding_title_permissions">İcazələr</string>
     <string name="onboarding_permission_installer_desc">Aurora Mağazasından tətbiqlərin quraşdırılmasına icazə verin</string>
     <string name="pref_app_download">Endirmələr</string>
-    <string name="pref_downloader_external">Xarici Yaddaş İstifadəçisi</string>
-    <string name="pref_downloader_external_desc">Xarici yaddaş endirmələr, ixraclar və s. üçün istifadə olunur.</string>
     <string name="pref_filter_fdroid_summary">F-Droid tətbiqlərini tətbiq siyahılarından silir</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_paypal">PayPal</string>

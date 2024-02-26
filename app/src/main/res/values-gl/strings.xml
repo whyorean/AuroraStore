@@ -53,8 +53,6 @@
     <string name="pref_filter_google_summary">Borra todas as aplicacións de Google dos resultados de busca e catergorías</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicacións de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Borra as aplicacións instaladas por F-Droid da lista de aplicacións</string>
-    <string name="pref_downloader_external_desc">O almacenamento externo é empregado para descargas, exportacións, etc.</string>
-    <string name="pref_downloader_external">Almacenamento externo do usuario</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración será aplicada após reiniciar a aplicación</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_app_download">Descargas</string>

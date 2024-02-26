@@ -28,7 +28,6 @@
     <string name="title_download_manager">Trasferimenti</string>
     <string name="purchase_failed">Trasferimento fallito</string>
     <string name="pref_install_auto_title">Installa automaticamente gli APK dopo il trasferimento</string>
-    <string name="pref_downloader_external_desc">L’archiviazione esterna viene utilizzata per scaricamenti, esportazioni, ecc.</string>
     <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo da e verso l’archiviazione esterna.</string>
     <string name="download_resume_all">Riprendi tutti</string>
     <string name="download_queued">In coda</string>
@@ -190,7 +189,6 @@
     <string name="pref_install_mode_native">Installatore nativo (Deprecato)</string>
     <string name="pref_install_delete_title">Elimina gli APK dopo l’installazione</string>
     <string name="pref_install_delete_summary">Gli APK verranno eliminati per impostazione predefinita</string>
-    <string name="pref_downloader_external">Archiviazione esterna dell’utente</string>
     <string name="pref_abandon_session_desc">Cancellare le sessioni di installazione in sospeso o abbandonate</string>
     <string name="pref_abandon_session">Cancella sessioni di installazione forzatamente</string>
     <string name="onboarding_permission_installer">Autorizzazione installatore</string>
@@ -347,7 +345,6 @@
     <string name="amazon_appstore_desc">Amazon Appstore è un negozio digitale per piattaforme compatibili con Android, gestito da Amazon.</string>
     <string name="title_apps_sale_provider">Fornitore: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nessuna app trovata in vendita</string>
-    <string name="pref_downloader_path_title">Percorso di scaricamento</string>
     <string name="pref_download_directory_error">Il percorso selezionato non è scrivibile</string>
     <string name="action_uninstall_confirmation">Vuoi disinstallare questa app\?</string>
     <string name="android_market_desc">Android Market è stato un negozio online che offriva applicazioni software progettate per dispositivi Android, discontinuato nel 2017.</string>

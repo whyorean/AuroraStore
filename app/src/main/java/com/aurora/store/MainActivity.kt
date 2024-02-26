@@ -20,10 +20,8 @@
 
 package com.aurora.store
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
@@ -36,9 +34,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.addCallback
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
@@ -56,8 +52,6 @@ import com.aurora.Constants
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.applyThemeAccent
 import com.aurora.extensions.isMAndAbove
-import com.aurora.extensions.isRAndAbove
-import com.aurora.extensions.toast
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
@@ -75,11 +69,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appConfig: AppBarConfiguration
-
-    private val startForPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (!it) toast(R.string.permissions_denied)
-        }
 
     // TopLevelFragments
     private val topLevelFrags = listOf(
@@ -130,21 +119,6 @@ class MainActivity : AppCompatActivity() {
 
         attachNavigation()
         attachDrawer()
-
-        /*Check only if download to external storage is enabled*/
-        if (Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)) {
-            if (isRAndAbove()) {
-                checkExternalStorageManagerPermission()
-            } else {
-                if (ContextCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                }
-            }
-        }
 
         // Handle quick exit from back actions
         val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {
@@ -212,6 +186,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.downloadFragment)
                 return true
             }
+
             R.id.menu_doze_info -> {
                 navController.navigate(R.id.dozeWarningSheet)
                 return true

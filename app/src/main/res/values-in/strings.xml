@@ -119,8 +119,6 @@
     <string name="pref_filter_google_summary">Abaikan Aplikasi Google dari Pembaruan dan Aplikasi yang terpasang</string>
     <string name="pref_filter_fdroid_title">Filter aplikasi F-droid</string>
     <string name="pref_filter_fdroid_summary">Abaikan aplikasi F-Droid dari Pembaruan dan Aplikasi yang terpasang</string>
-    <string name="pref_downloader_external_desc">Penyimpanan eksternal digunakan untuk unduhan, ekspor, dll.</string>
-    <string name="pref_downloader_external">Penyimpanan eksternal pengguna</string>
     <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_app_download">Unduhan</string>
@@ -362,7 +360,6 @@
     <string name="title_app_settings">Pengaturan Aplikasi</string>
     <string name="title_apps_sale_provider">Penyedia - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Tidak ada aplikasi yang dijual</string>
-    <string name="pref_downloader_path_title">Jalur unduhan</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
     <string name="pref_download_directory_error">Jalur yang dipilih tidah bisa ditulis</string>
     <string name="device_doze_subtitle">Aurora Store tidak dapat menginstal pengunduhan atau memperbarui aplikasi di latar belakang karena pengoptimalan baterai.</string>

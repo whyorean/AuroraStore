@@ -162,8 +162,6 @@
     <string name="pref_filter_google_summary">Uklanja sve Google programe iz rezultata pretraživanja i programa kategorije</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid programe</string>
     <string name="pref_filter_fdroid_summary">Uklanja F-Droid programe s popisa programa</string>
-    <string name="pref_downloader_external_desc">Vanjska memorija se koristiti za preuzimanja, izvoze, itd.</string>
-    <string name="pref_downloader_external">Vanjska memorija korisnika</string>
     <string name="pref_dialog_to_apply_restart">Ova će se postavka primijeniti nakon ponovnog pokretanja programa</string>
     <string name="pref_app_download">Preuzimanja</string>
     <string name="pref_abandon_session_desc">Izbriši napuštene ili čekajuće instalacije</string>

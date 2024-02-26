@@ -70,8 +70,6 @@
     <string name="pref_insecure_anonymous_summary">Generera GSF-ID lokalt på enheten</string>
     <string name="pref_filter_google_title">Filtrera Google-appar</string>
     <string name="pref_filter_fdroid_title">Filtrera F-Droid-appar</string>
-    <string name="pref_downloader_external_desc">Externt lagringsutrymme används för nerladdningar, exporteringar, osv.</string>
-    <string name="pref_downloader_external">Använd externt lagringsutrymme</string>
     <string name="pref_dialog_to_apply_restart">Den här inställningen kommer att verkställas efter att du har startat om appen</string>
     <string name="pref_app_download">Nerladdningar</string>
     <string name="onboarding_permission_installer_desc">Tillåt att installera appar från Aurora-butiken</string>
@@ -348,7 +346,6 @@
     <string name="details_ratings_title_hint">Recensera titel</string>
     <string name="title_apps_sale_provider">Leverantör - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Inga appar hittades på rea</string>
-    <string name="pref_downloader_path_title">Nedladdnings sökväg</string>
     <string name="pref_download_directory_error">Den valda sökvägen är inte skrivbar</string>
     <string name="action_uninstall_confirmation">Vill du avinstallera denna app \?</string>
     <string name="pref_network_proxy_enable">Aktivera proxy</string>

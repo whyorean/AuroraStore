@@ -17,22 +17,7 @@
   ~
   -->
 
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <EditTextPreference
-        app:iconSpaceReserved="false"
-        app:dependency="PREFERENCE_DOWNLOAD_EXTERNAL"
-        app:key="PREFERENCE_DOWNLOAD_DIRECTORY"
-        app:title="@string/pref_downloader_path_title" />
-
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
-        app:disableDependentsState="false"
-        app:key="PREFERENCE_DOWNLOAD_EXTERNAL"
-        app:summary="@string/pref_downloader_external_desc"
-        app:title="@string/pref_downloader_external" />
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
         app:defaultValue="true"

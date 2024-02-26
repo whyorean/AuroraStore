@@ -110,8 +110,6 @@
     <string name="pref_filter_google_summary">Verwijdert alle Google Apps van zoekresultaten en categorie apps</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>
     <string name="pref_filter_fdroid_summary">Verwijdert F-Droid apps van app lijsten</string>
-    <string name="pref_downloader_external_desc">Externe opslag is gebruikt voor downloads, exportaties, etc.</string>
-    <string name="pref_downloader_external">Gebruiker externe opslag</string>
     <string name="pref_dialog_to_apply_restart">Deze optie word toegepast nadat u de app herstart</string>
     <string name="pref_common_extra">Extra\'s</string>
     <string name="pref_app_download">Downloads</string>

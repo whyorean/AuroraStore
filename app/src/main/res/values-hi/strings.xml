@@ -174,7 +174,6 @@
     <string name="download_speed_estimating">अनुमान लगा रहे</string>
     <string name="action_ok">ठीक है</string>
     <string name="onboarding_installer_select">एक इंस्टॉलर चुनें</string>
-    <string name="pref_downloader_external">बाहरी स्टोरेज इस्तेमाल करें</string>
     <string name="pref_install_mode_title">इंस्टॉल करने का तरीका</string>
     <string name="title_account_manager">खाते</string>
     <string name="title_apps_sale">ऐप्स छूट पर</string>
@@ -210,7 +209,6 @@
     <string name="installer_status_failure_blocked">इंस्टॉल करना ब्लॉक किया गया</string>
     <string name="onboarding_permission_select">ऑरोरा स्टोर को ये अनुमतियां चाहिए</string>
     <string name="onboarding_title_permissions">अनुमतियां</string>
-    <string name="pref_downloader_external_desc">बाहरी स्टोरेज डाउनलोड, निर्यात, आदि के लिए इस्तेमाल होता है।</string>
     <string name="pref_network_title">नेटवर्क</string>
     <string name="pref_ui_theme_light">सफेद</string>
     <string name="purchase_failed">डाउनलोड असफल</string>
@@ -352,7 +350,6 @@
     <string name="title_app_settings">ऐप सेटिंग्स</string>
     <string name="title_apps_sale_provider">प्रोवाइडर - bestappsales.com</string>
     <string name="details_no_apps_on_sale">बिक्री पर कोई ऐप नहीं मिला</string>
-    <string name="pref_downloader_path_title">डाउनलोड पथ</string>
     <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
     <string name="pref_download_directory_error">चयनित पथ लिखने योग्य नहीं है</string>
     <string name="pref_downloader_wifi_title">केवल वाई-फ़ाई का उपयोग करके डाउनलोड करें</string>

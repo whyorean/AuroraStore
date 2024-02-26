@@ -190,7 +190,6 @@
     <string name="installer_service_available">Aurora 服務有得用兼準備好安裝。</string>
     <string name="onboarding_theme_select">隨您心水揀返個啦</string>
     <string name="onboarding_title_accent">配色</string>
-    <string name="pref_downloader_external">使用者外置儲存空間</string>
     <string name="pref_install_mode_services">Aurora 服務 (已過氣)</string>
     <string name="purchase_invalid">個 app 未有購買</string>
     <string name="purchase_unsupported">個 app 唔支援</string>
@@ -254,7 +253,6 @@
     <string name="pref_install_auto_title">下載之後自動安裝啲 APK</string>
     <string name="title_app_settings">App 設定</string>
     <string name="title_apps_sale_provider">提供：bestappsales.com</string>
-    <string name="pref_downloader_path_title">下載路徑</string>
     <string name="pref_download_directory_error">揀選嘅路徑寫入唔到</string>
     <string name="toast_proxy_failed">設定唔到代理伺服器</string>
     <string name="pref_network_proxy_enable_desc">等個 app 所有網絡通訊都流經代理伺服器</string>

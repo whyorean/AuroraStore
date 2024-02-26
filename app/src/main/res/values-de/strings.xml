@@ -118,7 +118,6 @@
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
     <string name="pref_install_auto_title">APK-Dateien nach dem Download automatisch installieren</string>
-    <string name="pref_downloader_external_desc">Externen Speicher für Download, Export usw. verwenden</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
@@ -233,7 +232,6 @@
     <string name="pref_install_mode_session">Sitzungs-Installation</string>
     <string name="pref_install_mode_root">Root-Installation</string>
     <string name="pref_install_mode_native">Systemeigene Installation (Veraltet)</string>
-    <string name="pref_downloader_external">Externer Speicher</string>
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
     <string name="onboarding_title_installer">Installationsmethode</string>
     <string name="onboarding_title_accent">Akzentfarbe</string>
@@ -350,7 +348,6 @@
     <string name="action_uninstall_confirmation">Soll diese App deinstalliert werden\?</string>
     <string name="title_apps_sale_provider">Provider: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Keine Apps im Angebot gefunden</string>
-    <string name="pref_downloader_path_title">Download-Verzeichnis</string>
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>

@@ -171,8 +171,6 @@
     <string name="pref_app_download">Shkarkime</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Ky rregullim do të aplikohet pasi të rinisni aplikacionin</string>
-    <string name="pref_downloader_external">Depozitë e jashtme e përdoruesit</string>
-    <string name="pref_downloader_external_desc">Depozita e jashtme përdoret për shkarkime, eksportime, etj.</string>
     <string name="pref_filter_fdroid_summary">Heq prej listës së aplikacioneve aplikacione nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_filter_google_summary">Heq krejt aplikacionet Google Apps nga përfundime kërkimi dhe aplikacione kategorie</string>

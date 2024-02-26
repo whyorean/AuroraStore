@@ -206,8 +206,6 @@
     <string name="pref_install_auto_summary">Les applications sont installées instantanément une fois le téléchargement terminé</string>
     <string name="pref_filter_google_summary">Ignore les applications Google dans Mises à jour et Applications installées</string>
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
-    <string name="pref_downloader_external_desc">Le stockage externe est utilisé pour les téléchargements, les exportations, etc.</string>
-    <string name="pref_downloader_external">Stockage externe de l’utilisateur</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>
     <string name="pref_abandon_session_desc">Effacer les sessions d’installation abandonnées ou en attente</string>
     <string name="pref_abandon_session">Forcer l’effacement des sessions d’installation</string>
@@ -356,7 +354,6 @@
     <string name="title_app_settings">Paramètres de l\'application</string>
     <string name="title_apps_sale_provider">Fournisseur - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Aucune application en vente trouvée</string>
-    <string name="pref_downloader_path_title">Dossier de téléchargement</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
     <string name="pref_download_directory_error">Le dossier sélectionné n’est pas utilisable</string>
     <string name="toast_proxy_failed">Échec de paramétrage du serveur mandataire</string>

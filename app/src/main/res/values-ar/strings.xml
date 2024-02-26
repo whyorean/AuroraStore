@@ -63,7 +63,6 @@
     <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
     <string name="pref_filter_google_title">تصفية تطبيقات قوقل</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
-    <string name="pref_downloader_external">استخدم وحدة التخزين الخارجي</string>
     <string name="pref_app_download">التنزيلات</string>
     <string name="onboarding_permission_installer">إذن المثبت</string>
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
@@ -177,7 +176,6 @@
     <string name="details_think_this_app">ما رأيك في هذا التطبيق؟</string>
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
-    <string name="pref_downloader_external_desc">تُستخدم وحدة التخزين الخارجية للتنزيلات والتصدير وما إلى ذلك.</string>
     <string name="installer_root_unavailable">لا توجد صلاحيات الجذر (root)، امنح حق الوصول إلى الجذر أو قم بتغيير المثبت.</string>
     <string name="pref_filter_google_summary">تجاهل تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
@@ -348,7 +346,6 @@
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
     <string name="title_apps_sale_provider">المزود - bestappsales.com</string>
     <string name="details_no_apps_on_sale">لم يتم العثور على تطبيقات للبيع</string>
-    <string name="pref_downloader_path_title">مسار التنزيل</string>
     <string name="pref_download_directory_error">المسار المحدد غير قابل للكتابة</string>
     <string name="action_uninstall_confirmation">هل تريد إلغاء تثبيت هذا التطبيق؟</string>
     <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>

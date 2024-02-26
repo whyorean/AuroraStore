@@ -121,8 +121,6 @@
     <string name="pref_filter_google_summary">Ignorar aplicações Google das atualizações e das aplicações instaladas</string>
     <string name="pref_filter_fdroid_summary">Ignorar aplicações F-Droid das atualizações e das aplicações instaladas</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
-    <string name="pref_downloader_external_desc">O armazenamento externo é usado para descargas, exportações, etc.</string>
-    <string name="pref_downloader_external">Armazenamento externo do utilizador</string>
     <string name="pref_dialog_to_apply_restart">Esta definição será aplicada após reiniciar a aplicação</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_app_download">Descargas</string>
@@ -357,7 +355,6 @@
     <string name="title_app_settings">Definições</string>
     <string name="title_apps_sale_provider">Serviço - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Não há aplicações à venda</string>
-    <string name="pref_downloader_path_title">Caminho para as descargas</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_download_directory_error">Não é possível guardar no caminho escolhido</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>

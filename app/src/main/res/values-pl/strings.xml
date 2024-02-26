@@ -161,8 +161,6 @@
     <string name="pref_filter_google_summary">Ignoruj aplikacje od Google w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignoruj aplikacje od F-Droid w Aktualizacjach i Zainstalowanych aplikacjach</string>
-    <string name="pref_downloader_external_desc">Pamięć zewnętrzna jest używana do pobierania, eksportowania itp.</string>
-    <string name="pref_downloader_external">Pamięć zewnętrzna</string>
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
@@ -349,7 +347,6 @@
     <string name="action_uninstall_confirmation">Czy chcesz odinstalować tę aplikację\?</string>
     <string name="title_apps_sale_provider">Dostawca - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nie znaleziono aplikacji na wyprzedaży</string>
-    <string name="pref_downloader_path_title">Ścieżka pobierania</string>
     <string name="pref_download_directory_error">Wybrana ścieżka nie umożliwia zapisu</string>
     <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość samoaktualizacji oraz automatycznych aktualizacji (w godzinach).</string>
     <string name="pref_aurora_only">Tylko aplikacje Aurora Store</string>

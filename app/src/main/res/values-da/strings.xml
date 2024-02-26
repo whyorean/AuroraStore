@@ -185,8 +185,6 @@
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
     <string name="onboarding_permission_esa">Adgang til ekstern lagring</string>
     <string name="onboarding_permission_esm">Ekstern opbevaringsmanager</string>
-    <string name="pref_downloader_external_desc">Ekstern opbevaring bruges til downloads, eksporter mm.</string>
-    <string name="pref_downloader_external">Brug ekstern opbevaring</string>
     <string name="onboarding_permission_esa_desc">For at gemme downloads (APK og OBB) skal du, eksportere og importere enhedskonfigurationer til og fra ekstern lagring.</string>
     <string name="onboarding_permission_installer">Installatørtilladelse</string>
     <string name="onboarding_permission_installer_desc">Tillad at installere apps fra Aurora Store</string>

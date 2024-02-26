@@ -73,8 +73,6 @@
     <string name="pref_filter_google_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako Google-ren aplikazioak</string>
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
     <string name="pref_filter_fdroid_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako F-Droid-en aplikazioak</string>
-    <string name="pref_downloader_external_desc">Kanpoko memoria deskargak egiteko, esportatzeko eta abar erabiliko da.</string>
-    <string name="pref_downloader_external">Erabiltzailearen kanpoko memoria</string>
     <string name="pref_dialog_to_apply_restart">Konfigurazio hau aplikatuko da aplikazioa berriro ireki ondoren</string>
     <string name="pref_app_download">Deskargak</string>
     <string name="pref_abandon_session_desc">Bertan utzitako instalazio saioak garbitu</string>
@@ -335,7 +333,6 @@
     <string name="title_app_settings">Aplikazioaren ezarpenak</string>
     <string name="title_apps_sale_provider">Hornitzailea: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Ez da aurkitu salgai dagoen aplikaziorik</string>
-    <string name="pref_downloader_path_title">Deskargaren bide-izena</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> eta <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_download_directory_error">Hautatutako bide-izena ez da idazgarria</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>

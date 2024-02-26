@@ -229,8 +229,6 @@
     <string name="pref_filter_google_summary">すべてのGoogleアプリを検索結果、カテゴリ表示から無視する</string>
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
     <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
-    <string name="pref_downloader_external_desc">ダウンロード、エクスポートなどに外部ストレージを使用する</string>
-    <string name="pref_downloader_external">外部ストレージ</string>
     <string name="pref_dialog_to_apply_restart">この設定はアプリの再起動後に適用されます</string>
     <string name="pref_app_download">ダウンロード</string>
     <string name="pref_abandon_session_desc">中止、中断したインストールセッションをクリア</string>
@@ -345,7 +343,6 @@
     <string name="app_language">アプリの言語</string>
     <string name="amazon_appstore_desc">Amazon Appstore は、Amazon が運営する Android 対応プラットフォーム向けのアプリストアです。</string>
     <string name="title_app_settings">アプリ設定</string>
-    <string name="pref_downloader_path_title">ダウンロードパス</string>
     <string name="pref_download_directory_error">選択されたパスは書き込み可能ではありません</string>
     <string name="action_uninstall_confirmation">このアプリをアンインストールしますか？</string>
     <string name="android_market_desc">Android マーケットは、Android デバイス用にデザインされたソフトウェアアプリケーションを提供するオンラインストアでしたが、2017年に廃止されました。</string>

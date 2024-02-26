@@ -317,8 +317,6 @@
     <string name="onboarding_permission_notifications_desc">Pošiljanje obvestil o statusu namestitve</string>
     <string name="pref_abandon_session">Vsili brisanje namestitvenih sej</string>
     <string name="pref_dialog_to_apply_restart">Ta nastavitev bo uporabljena, ko znova zaženete aplikacijo</string>
-    <string name="pref_downloader_external">Uporabniški zunanji pomnilnik</string>
-    <string name="pref_downloader_external_desc">Zunanji pomnilnik se uporablja za prenose, izvoze, itd.</string>
     <string name="pref_filter_fdroid_summary">Odstrani F-Droid aplikacije s seznamov aplikacij</string>
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>
     <string name="pref_filter_google_summary">Odstrani vse Googlove aplikacije iz rezultatov iskanja in kategorij aplikacij</string>

@@ -223,7 +223,6 @@
     <string name="onboarding_permission_installer_desc">אשר התקנת אפליקציות מחנות אורורה</string>
     <string name="pref_install_mode_summary">בחר שיטה להתקנות APK</string>
     <string name="pref_install_mode_native">מתקין Native (לא עדכני)</string>
-    <string name="pref_downloader_external_desc">נעשה שימוש באחסון חיצוני בשביל הורדות, ייצוא, וכו\'.</string>
     <string name="device_miui_description">בבקשה, השבת את האופטימיזציה של שיאומי כדי לאשר התקנות, אחרת אתה יכול לבחור מתקין רוט, או שירותי אורורה.</string>
     <string name="toast_manual_unavailable">קוד הגרסה שביקשת לא זמין.</string>
     <string name="insecure_anonymous_apply">וודא שאתה מתחבר מחדש ומפעיל מחדש את האפליקציה כדי להחיל א ת השינויים.</string>
@@ -242,7 +241,6 @@
     <string name="onboarding_installer_select">בחר מתקין מתאים</string>
     <string name="onboarding_theme_select">בחר מה שאתה אוהב</string>
     <string name="pref_dialog_to_apply_restart">ההגדרה תחול אחרי הפעלה מחדש של האפליקציה</string>
-    <string name="pref_downloader_external">אחסון חיצוני של המשתמש</string>
     <string name="pref_install_auto_summary">אפליקציות מותקנות מיידית לאחר סיום ההורדה</string>
     <string name="pref_install_mode_am">מתקין AM.</string>
     <string name="pref_install_mode_session">מתקין מערכת</string>
@@ -334,7 +332,6 @@
     <string name="session_enjoy">כנס ותהנה.</string>
     <string name="server_maintenance">השרת מושבת לצורך תחזוקה</string>
     <string name="pref_abandon_session">‏כפה ניקוי עונות התקנה</string>
-    <string name="pref_downloader_path_title">נתיב הורדה</string>
     <string name="pref_install_profile_summary">בחר פרופיל יעד להתקין אפליקציות דרכו. עובד רק התקנות בשיטת root.</string>
     <string name="toast_manual_available">אחלה, קוד הגרסה המבוקשת קיים, מוריד עכשיו.</string>
     <string name="session_verifying_google">מאמת כניסת גוגל</string>

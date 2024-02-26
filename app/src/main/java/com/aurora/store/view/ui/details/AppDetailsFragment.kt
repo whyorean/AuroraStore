@@ -77,7 +77,6 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.ShortcutManagerUtil
-import com.aurora.store.util.isExternalStorageEnable
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -545,7 +544,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         updateActionState(State.PROGRESS)
 
-        if (PathUtil.needsStorageManagerPerm(app.fileList) || requireContext().isExternalStorageEnable()) {
+        if (PathUtil.needsStorageManagerPerm(app.fileList)) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
                     startForStorageManagerResult.launch(

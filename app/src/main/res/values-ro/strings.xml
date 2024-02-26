@@ -179,8 +179,6 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_telegram">Telegram</string>
     <string name="account_google">Google</string>
-    <string name="pref_downloader_external">Utilizează stocarea externă</string>
-    <string name="pref_downloader_external_desc">Stocarea externă este utilizată pentru descărcări, exporturi etc.</string>
     <string name="pref_filter_fdroid_summary">Ignoră aplicațiile F-Droid din Actualizări și Aplicații instalate</string>
     <string name="pref_filter_fdroid_title">Filtrează aplicațiile F-Droid</string>
     <string name="pref_filter_google_summary">Ignoră aplicațiile Google din Actualizări și Aplicații instalate</string>
@@ -358,7 +356,6 @@
     <string name="title_app_settings">Setările aplicației</string>
     <string name="title_apps_sale_provider">Furnizor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nu s-au găsit aplicații la reducere</string>
-    <string name="pref_downloader_path_title">Calea de descărcare</string>
     <string name="pref_updates_check_frequency">Frecvența actualizărilor automate</string>
     <string name="pref_download_directory_error">Calea selectată nu poate fi scrisă</string>
     <string name="toast_proxy_failed">Nu s-a putut seta proxy</string>

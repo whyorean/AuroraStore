@@ -172,7 +172,6 @@
     <string name="pref_install_mode_root">Instal·lador root</string>
     <string name="pref_network_title">Xarxes</string>
     <string name="pref_ui_theme_dark_x">Fosc X</string>
-    <string name="pref_downloader_external">Emmagatzematge extern de l\'usuari</string>
     <string name="pref_ui_accent_title">Color</string>
     <string name="onboarding_permission_installer">Permís de l\'instal·lador</string>
     <string name="onboarding_permission_installer_desc">Permet instal·lar aplicacions des d\'Aurora Store</string>
@@ -181,7 +180,6 @@
     <string name="pref_app_download">Baixades</string>
     <string name="pref_common_extra">Extres</string>
     <string name="pref_dialog_to_apply_restart">Aquesta configuració s\'aplicarà després de reiniciar l\'aplicació</string>
-    <string name="pref_downloader_external_desc">L\'emmagatzematge extern s\'utilitza per a descàrregues, exportacions, etc.</string>
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>
     <string name="pref_filter_fdroid_title">Filtra les aplicacions de F-Droid</string>
     <string name="pref_filter_google_title">Filtra les aplicacions de Google</string>

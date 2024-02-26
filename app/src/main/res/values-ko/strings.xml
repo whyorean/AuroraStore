@@ -169,8 +169,6 @@
     <string name="pref_app_download">다운로드</string>
     <string name="pref_common_extra">추가 기능</string>
     <string name="pref_dialog_to_apply_restart">이 설정은 앱을 다시 시작한 후에 적용됩니다</string>
-    <string name="pref_downloader_external">사용자 외부 저장소</string>
-    <string name="pref_downloader_external_desc">외부 저장소는 다운로드, 내보내기 등에 사용됩니다.</string>
     <string name="pref_filter_fdroid_summary">업데이트 및 설치된 앱에서 F-Droid 앱 무시</string>
     <string name="pref_filter_fdroid_title">F-Droid 앱 필터링</string>
     <string name="pref_filter_google_summary">업데이트 및 설치된 앱에서 Google 앱 무시</string>
@@ -193,7 +191,6 @@
     <string name="download_eta_min">%1$d분 %2$d초 남음</string>
     <string name="download_eta_sec">%1$d초 남음</string>
     <string name="installer_shizuku_unavailable">Shizuku가 설치되지 않았거나 제대로 구성되지 않았습니다.</string>
-    <string name="pref_downloader_path_title">다운로드 경로</string>
     <string name="pref_download_directory_error">선택한 경로에 쓸 수 없습니다</string>
     <string name="action_uninstall_confirmation">이 앱을 제거하시겠습니까?</string>
     <string name="details_ratings_title_hint">리뷰 제목</string>

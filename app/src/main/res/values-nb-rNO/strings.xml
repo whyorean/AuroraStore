@@ -201,7 +201,6 @@
     <string name="details_changelog_unavailable">Endringslogg ikke inkludert</string>
     <string name="action_check">Sjekk</string>
     <string name="about_libera_summary">Bli patron på Liberapay</string>
-    <string name="pref_downloader_external_desc">Eksternlagring brukes for nedlastninger, eksporter, osv.</string>
     <string name="installer_service_unavailable">Installer Aurora Services 1.0.9 eller nyere, eller endre installasjonsprogrammet.</string>
     <string name="toast_developer_setting_failed">Skru på utviklingsinnstillingene fra enhetsinnstillingene for å åpne dem.</string>
     <string name="toast_page_unavailable">Utforskningssiden er utilgjengelig</string>
@@ -211,7 +210,6 @@
     <string name="pref_ui_theme_darkord">Uenighet</string>
     <string name="pref_ui_accent_title">Aksent</string>
     <string name="pref_filter_search_summary">Søkefiltre tilbakestilles ved hvert søk. Slå av for å lagre søkefiltre</string>
-    <string name="pref_downloader_external">Eksternlager for bruker</string>
     <string name="pref_abandon_session_desc">Fjern forlatte eller ventende installasjonsøkter</string>
     <string name="pref_abandon_session">Tving frem klare installasjonsøkter</string>
     <string name="installer_service_misconfigured">Sett opp Aurora-tjenester og innvilg alle tilganger først.</string>

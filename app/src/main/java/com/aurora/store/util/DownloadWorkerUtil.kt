@@ -15,7 +15,6 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.work.DownloadWorker
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.io.File
 import javax.inject.Inject
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -104,7 +103,7 @@ class DownloadWorkerUtil @Inject constructor(
     suspend fun clearAllDownloads() {
         Log.i(TAG, "Clearing all downloads!")
         downloadDao.deleteAll()
-        File(PathUtil.getDownloadDirectory(context), "Downloads").deleteRecursively()
+        PathUtil.getDownloadDirectory(context).deleteRecursively()
     }
 
     suspend fun clearFinishedDownloads() {

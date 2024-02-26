@@ -229,8 +229,6 @@
     <string name="pref_filter_search_summary">Hakusuodattimet nollataan jokaisella haulla. Ottamalla tämän pois käytöstä hakusuodattimet tallennetaan</string>
     <string name="pref_filter_google_title">Suodata Googlen sovellukset</string>
     <string name="pref_filter_google_summary">Poistaa kaikki Googlen sovellukset hakutuloksista ja sovelluskategorioista</string>
-    <string name="pref_downloader_external_desc">Ulkoista tallennustilaa käytetään latauksiin, vienteihin yms.</string>
-    <string name="pref_downloader_external">Käyttäjän ulkoinen tallennustila</string>
     <string name="pref_dialog_to_apply_restart">Tämä asetus otetaan käyttöön, kun käynnistät sovelluksen uudelleen</string>
     <string name="pref_common_extra">Extrat</string>
     <string name="pref_abandon_session_desc">Tyhjennä hylätyt ja odottavat asennussessiot</string>
@@ -366,7 +364,6 @@
     <string name="pref_updates_auto_desc">Automaattisten päivitysten määrittäminen</string>
     <string name="action_uninstall_confirmation">Haluatko poistaa tämän sovelluksen?</string>
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
-    <string name="pref_downloader_path_title">Latauskansio</string>
     <string name="download_clear_finished">Poista valmistuneet</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>
 </resources>
