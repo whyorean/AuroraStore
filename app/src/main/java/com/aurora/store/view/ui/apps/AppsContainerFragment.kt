@@ -24,6 +24,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
@@ -85,6 +86,10 @@ class AppsContainerFragment : Fragment(R.layout.fragment_apps_games) {
         ) { tab: TabLayout.Tab, position: Int ->
             tab.text = tabTitles[position]
         }.attach()
+
+        binding.searchFab.setOnClickListener {
+            findNavController().navigate(R.id.searchSuggestionFragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -130,7 +130,6 @@ class MainActivity : AppCompatActivity() {
 
         attachNavigation()
         attachDrawer()
-        attachSearch()
 
         /*Check only if download to external storage is enabled*/
         if (Preferences.getBoolean(this, Preferences.PREFERENCE_DOWNLOAD_EXTERNAL)) {
@@ -183,7 +182,6 @@ class MainActivity : AppCompatActivity() {
             if (navDestination !is FloatingWindow) {
                 when (navDestination.id) {
                     in topLevelFrags -> {
-                        B.searchFab.visibility = View.VISIBLE
                         B.navView.visibility = View.VISIBLE
                         B.toolbar.visibility = View.VISIBLE
                         B.drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)
@@ -223,16 +221,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hideTopLevelOnlyViews() {
-        B.searchFab.visibility = View.GONE
         B.navView.visibility = View.GONE
         B.toolbar.visibility = View.GONE
         B.drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
-    }
-
-    private fun attachSearch() {
-        B.searchFab.setOnClickListener {
-            navController.navigate(R.id.searchSuggestionFragment)
-        }
     }
 
     private fun attachNavigation() {
