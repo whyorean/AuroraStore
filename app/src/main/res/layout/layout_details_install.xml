@@ -134,6 +134,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:background="@drawable/bg_cancel"
                 android:padding="@dimen/padding_medium"
+                android:tint="@color/colorWhite"
                 app:srcCompat="@drawable/ic_cancel" />
         </RelativeLayout>
     </ViewFlipper>

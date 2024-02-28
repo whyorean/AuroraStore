@@ -69,7 +69,7 @@
                     android:drawablePadding="@dimen/padding_small"
                     android:gravity="center_vertical"
                     android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                    app:drawableStartCompat="@drawable/ic_download"
+                    app:drawableStartCompat="@drawable/ic_download_manager"
                     app:drawableTint="?colorAccent"
                     tools:text="2500" />
 

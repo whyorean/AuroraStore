@@ -37,7 +37,7 @@
             android:title="@string/title_blacklist_manager" />
         <item
             android:id="@id/spoofFragment"
-            android:icon="@drawable/ic_anonymous"
+            android:icon="@drawable/ic_spoof"
             android:title="@string/title_spoof_manager" />
     </group>
 
