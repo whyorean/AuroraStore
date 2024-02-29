@@ -364,7 +364,7 @@
     <string name="toast_proxy_success">ਪ੍ਰੌਕਸੀ ਸਫਲਤਾਪੂਰਵਕ ਸੈੱਟ ਕੀਤੀ ਗਈ</string>
     <string name="toast_proxy_failed">ਪ੍ਰੌਕਸੀ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
     <string name="pref_network_proxy_enable_desc">ਐਪ ਤੋਂ ਸਾਰੇ ਟ੍ਰੈਫਿਕ ਨੂੰ ਪ੍ਰੌਕਸੀ ਰਾਹੀਂ ਜਾਣ ਦਿਓ</string>
-    <string name="pref_self_update_title">ਸਵੈ-ਅੱਪਡੇਟ</string>
+    <string name="pref_self_update_title">ਸਵੈ-ਅੱਪਡੇਟਾਂ</string>
     <string name="pref_self_update_summary">ਜਾਂਚ ਕਰੋ ਕਿ ਕੀ ਔਰੋਰਾ ਸਟੋਰ ਦਾ ਨਵਾਂ ਸਥਿਰ ਸੰਸਕਰਣ ਉਪਲਬਧ ਹੈ ਅਤੇ ਇੰਸਟਾਲ ਕਰੋ</string>
     <string name="pref_vending_version_device">ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਤੋਂ)</string>
     <string name="pref_vending_version_title">ਗੂਗਲ ਪਲੇ ਸੰਸਕਰਣ</string>
