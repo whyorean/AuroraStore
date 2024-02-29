@@ -347,7 +347,7 @@
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
     <string name="details_ratings_title_hint">ਸਮੀਖਿਆ ਸਿਰਲੇਖ</string>
     <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
-    <string name="pref_updates_check_frequency_desc">ਘੰਟਿਆਂ ਵਿੱਚ, ਆਟੋ ਅੱਪਡੇਟਸ ਚੈੱਕ ਲਈ ਅੰਤਰਾਲ ਕੌਂਫਿਗਰ ਕਰੋ।</string>
+    <string name="pref_updates_check_frequency_desc">ਘੰਟਿਆਂ ਵਿੱਚ, ਆਟੋ ਤੇ ਸਵੈ ਅੱਪਡੇਟਸ ਲਈ ਅੰਤਰਾਲ ਕੌਂਫਿਗਰ ਕਰੋ।</string>
     <string name="pref_aurora_only">ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਐਪਸ</string>
     <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
     <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
@@ -365,7 +365,7 @@
     <string name="toast_proxy_failed">ਪ੍ਰੌਕਸੀ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
     <string name="pref_network_proxy_enable_desc">ਐਪ ਤੋਂ ਸਾਰੇ ਟ੍ਰੈਫਿਕ ਨੂੰ ਪ੍ਰੌਕਸੀ ਰਾਹੀਂ ਜਾਣ ਦਿਓ</string>
     <string name="pref_self_update_title">ਸਵੈ-ਅੱਪਡੇਟ</string>
-    <string name="pref_self_update_summary">ਜਾਂਚ ਕਰੋ ਅਤੇ ਸੂਚਿਤ ਕਰੋ ਕਿ ਕੀ ਔਰੋਰਾ ਸਟੋਰ ਦਾ ਨਵਾਂ ਸਥਿਰ ਸੰਸਕਰਣ ਉਪਲਬਧ ਹੈ</string>
+    <string name="pref_self_update_summary">ਜਾਂਚ ਕਰੋ ਕਿ ਕੀ ਔਰੋਰਾ ਸਟੋਰ ਦਾ ਨਵਾਂ ਸਥਿਰ ਸੰਸਕਰਣ ਉਪਲਬਧ ਹੈ ਅਤੇ ਇੰਸਟਾਲ ਕਰੋ</string>
     <string name="pref_vending_version_device">ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਤੋਂ)</string>
     <string name="pref_vending_version_title">ਗੂਗਲ ਪਲੇ ਸੰਸਕਰਣ</string>
     <string name="onboarding_permission_doze">ਬੈਕਗ੍ਰਾਊਂਡ ਡਾਊਨਲੋਡ</string>
@@ -384,4 +384,5 @@
     <string name="pref_updates_incompatible">ਅਸੰਗਤ ਅੱਪਡੇਟਸ</string>
     <string name="download_clear_finished">ਮੁਕੰਮਲ ਹੋਏ ਸਾਫ਼ ਕਰੋ</string>
     <string name="pref_updates_incompatible_desc">ਅਸੰਗਤ ਜਾਂ ਅਯੋਗ ਐਪਾਂ ਲਈ ਅੱਪਡੇਟ ਦਿਖਾਓ ਜੋ ਸਥਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਹੋ ਸਕਦੀਆਂ ਹਨ</string>
+    <string name="action_home_screen">ਹੋਮ ਸਕ੍ਰੀਨ ਤੇ ਐਡ ਕਰੋ</string>
 </resources>
