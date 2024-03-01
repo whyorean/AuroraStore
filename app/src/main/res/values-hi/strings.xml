@@ -356,7 +356,7 @@
     <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
     <string name="pref_download_directory_error">चयनित पथ लिखने योग्य नहीं है</string>
     <string name="pref_downloader_wifi_title">केवल वाई-फ़ाई का उपयोग करके डाउनलोड करें</string>
-    <string name="pref_updates_check_frequency_desc">घंटों में, ऑटो अपडेट के लिए अंतराल कॉन्फ़िगर करें।</string>
+    <string name="pref_updates_check_frequency_desc">ऑटो और सेल्फ अपडेट के लिए घंटे में अंतराल कॉन्फ़िगर करें।</string>
     <string name="pref_network_proxy_enable">प्रॉक्सी चालू करें</string>
     <string name="pref_network_proxy_url">प्रॉक्सी URL</string>
     <string name="pref_network_proxy_title">प्रॉक्सी</string>
@@ -365,7 +365,7 @@
     <string name="toast_proxy_failed">प्रॉक्सी सेट करने में विफल</string>
     <string name="pref_network_proxy_enable_desc">ऐप से सभी ट्रैफ़िक को प्रॉक्सी के माध्यम से जाने की अनुमति दें</string>
     <string name="pref_self_update_title">स्वयं अपडेटस</string>
-    <string name="pref_self_update_summary">जांचें और सूचित करें कि क्या ऑरोरा स्टोर का नया स्थिर संस्करण उपलब्ध है</string>
+    <string name="pref_self_update_summary">जांचें कि क्या ऑरोरा स्टोर का नया स्थिर संस्करण उपलब्ध है और इंस्टॉल करें</string>
     <string name="pref_vending_version_device">डिफ़ॉल्ट (डिवाइस कॉन्फ़िगरेशन से)</string>
     <string name="pref_vending_version_title">गूगल प्ले संस्करण</string>
     <string name="onboarding_permission_doze">बेकग्राउंड डाउनलोड</string>
@@ -384,4 +384,5 @@
     <string name="pref_updates_incompatible_desc">असंगत या अक्षम ऐप्स के लिए अपडेट दिखाएं जो इंस्टॉल करने में विफल हो सकते हैं</string>
     <string name="download_clear_finished">समाप्त हुए साफ़ करें</string>
     <string name="pref_updates_incompatible">असंगत अपडेटस</string>
+    <string name="action_home_screen">होम स्क्रीन पर जोड़ें</string>
 </resources>

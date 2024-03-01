@@ -1,0 +1,7 @@
+• Suporte ao Android 14
+• Melhorar o filtro de pacotes do F-Droid para atualizações
+• Definir responsabilidade para atualizações futuras quando instalando apps usando o instalador de sessão (Android 14+)
+• Renomear "Atualizações extendidas" para "Atualizações incompatíveis"
+• Adicionar menu de ação para criar um atalho para o app instalado
+• Correção de bugs e melhorias
+• Atualizações à tradução

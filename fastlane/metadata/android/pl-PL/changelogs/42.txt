@@ -1,15 +1,15 @@
-• Celuj w Androida 13
-• Włącz lokalizację wielu lini tekstu
-• Dodaj monochromatyczne ikony dla Androida 13
-• Aktualizuj zależności do najnowszej wersji
-• Wyświetl informację o Warunkach Użytkowania odrazu po uruchomieniu
-• Pozwól na przejście dalej bez udzielania zgód podczas pierwszego uruchomienia
-• Przeczytaj systemową listę odrzuceń xml jako podsztawową dla wyłączenia z aktualizacji
-• Pokaż prawidłowy tytuł na piątej stronie ustawień początkowych
-• Włącz przycisk przejścia dalej w ustawieniach początkowych po powrocie
+• Cel Androida 13
+• Włączono lokalizację wielu linii tekstu
+• Dodano monochromatyczne ikony dla Androida 13
+• Zaktualizowano zależności do najnowszej wersji
+• Po uruchomieniu wyświetli się informacja o Warunkami Korzystania z Usługi
+• Zezwolono na przejście dalej bez udzielania zgód podczas pierwszego uruchomienia
+• Odczytuje systemową listę odrzuceń xml jako domyślną dla wykluczenia z aktualizacji
+• Pokazuje prawidłowy tytuł na piątej stronie ustawień początkowych
+• Włączono przycisk przejścia dalej w ustawieniach początkowych podczas akcji wstecz
 • Zamień pola wielokrotnego wyboru (checkbox) podczas ustawień początkowych instalatora na pola jednokrotnego wyboru (radio)
 • Użyj koloru konturu (stroke) jako tła tabel ustawień początkowych.
-• Napraw błąd powodójący brak wystylizowania podczas ustawień początkowych poprzez użycie pól jednokrotnego wyboru (radio)
+• Napraw błąd powodujący brak wystylizowania podczas ustawień początkowych poprzez użycie pól jednokrotnego wyboru (radio)
 • Nie używaj nowych wersji GSF i Vending
 • Refaktoryzuj ustawienia początkowe zgód dotyczących pamięci dyskowej
-• Zaktualizuj tłumaczenie
+• Aktualizacja tłumaczeń

@@ -1,0 +1,18 @@
+• Mudanças internas significativas ao sistema de download
+  • A Aurora Store agora requer uma nova permissão para fazer download em segundo plano 
+  • Funções de Pausar e Continuar foram depreciadas para downloads
+  • Downloads concorrentes foram depreciados (limitado para um download ao mesmo tempo)
+  • Verificação automática de SHA256 & SHA1 para arquivos baixados
+  • Melhor suporte para apps com bibliotecas compartilhadas como o Chrome e WebView
+• Mudanças significativas feitas ao sistema de atualização
+  • Nova atualização automática de apps (ativado por padrão)
+  • Nova verificação automática de certificado para updates
+  • Suporte para atualizações com assinação com chave rotativa (introduzido depois do Android 9.0+)
+  • Atualizações próprias (Aurora Store) foram desativadas por padrão (ative em Configurações > Atualização)
+• Instalador nativo e serviços Aurora foram depreciados
+• Exportar aplicativos instalados já não requer permissões de armazenamento
+• A versão Android miníma necessária para apps agora é visível na página de detalhes do app (Mais sobre esse app > Info)
+• Atualizações à tradução & reparação significativa de bugs
+• Suporte à instalação de apps com Sui (módulo Magisk do Shizuku)
+• Agora é possível substituir a versão do GMS em Configurações > Rede
+• Material3 agora é usado em mais lugares
