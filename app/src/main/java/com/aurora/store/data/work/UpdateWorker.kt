@@ -1,12 +1,7 @@
 package com.aurora.store.data.work
 
-import android.app.Notification
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
@@ -18,20 +13,17 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.aurora.Constants
 import com.aurora.extensions.isMAndAbove
-import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.AuthValidator
-import com.aurora.store.MainActivity
-import com.aurora.store.R
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Log
+import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
@@ -108,7 +100,7 @@ class UpdateWorker @AssistedInject constructor(
         .getBlackList()
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        return ForegroundInfo(workerID, getOngoingNotification())
+        return ForegroundInfo(workerID, NotificationUtil.getOngoingUpdateNotification(appContext))
     }
 
     override suspend fun doWork(): Result {
@@ -171,9 +163,13 @@ class UpdateWorker @AssistedInject constructor(
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
                         Log.i("Found updates, notifying!")
-                        val notifyManager = appContext.getSystemService(Context.NOTIFICATION_SERVICE)
-                                as NotificationManager
-                        notifyManager.notify(notificationID, getUpdateNotification(updatesList))
+                        val notifyManager =
+                            appContext.getSystemService(Context.NOTIFICATION_SERVICE)
+                                    as NotificationManager
+                        notifyManager.notify(
+                            notificationID,
+                            NotificationUtil.getUpdateNotification(appContext, updatesList)
+                        )
                     } else {
                         Log.i("Found updates, updating!")
                         updatesList.forEach { downloadWorkerUtil.enqueueApp(it) }
@@ -196,95 +192,5 @@ class UpdateWorker @AssistedInject constructor(
         } catch (e: Exception) {
             false
         }
-    }
-
-    private fun getUpdateNotification(updatesList: List<App>): Notification {
-        val contentIntent = PendingIntent.getActivity(
-            appContext,
-            0,
-            Intent(appContext, MainActivity::class.java).apply {
-                action = Constants.NAVIGATION_UPDATES
-            },
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-        return NotificationCompat.Builder(appContext, Constants.NOTIFICATION_CHANNEL_UPDATES)
-            .setSmallIcon(R.drawable.ic_updates)
-            .setContentTitle(
-                if (updatesList.size == 1)
-                    appContext.getString(
-                        R.string.notification_updates_available_1,
-                        updatesList.size
-                    )
-                else
-                    appContext.getString(
-                        R.string.notification_updates_available,
-                        updatesList.size
-                    )
-            )
-            .setContentText(
-                when (updatesList.size) {
-                    1 -> {
-                        appContext.getString(
-                            R.string.notification_updates_available_desc_1,
-                            updatesList[0].displayName
-                        )
-                    }
-
-                    2 -> {
-                        appContext.getString(
-                            R.string.notification_updates_available_desc_2,
-                            updatesList[0].displayName,
-                            updatesList[1].displayName
-                        )
-                    }
-
-                    3 -> {
-                        appContext.getString(
-                            R.string.notification_updates_available_desc_3,
-                            updatesList[0].displayName,
-                            updatesList[1].displayName,
-                            updatesList[2].displayName
-                        )
-                    }
-
-                    else -> {
-                        appContext.getString(
-                            R.string.notification_updates_available_desc_4,
-                            updatesList[0].displayName,
-                            updatesList[1].displayName,
-                            updatesList[2].displayName,
-                            updatesList.size - 3
-                        )
-                    }
-                }
-            )
-            .setContentIntent(contentIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setAutoCancel(true)
-            .build()
-    }
-
-    private fun getOngoingNotification(): Notification {
-        val contentIntent = PendingIntent.getActivity(
-            appContext,
-            0,
-            Intent(appContext, MainActivity::class.java),
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-        return NotificationCompat.Builder(appContext, Constants.NOTIFICATION_CHANNEL_UPDATES)
-            .setSmallIcon(R.drawable.ic_logo)
-            .setContentTitle(appContext.getString(R.string.checking_for_updates))
-            .setContentIntent(contentIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setForegroundServiceBehavior(FOREGROUND_SERVICE_IMMEDIATE)
-            .setProgress(100, 0, true)
-            .setOngoing(true)
-            .build()
     }
 }

@@ -191,6 +191,96 @@ object NotificationUtil {
         return builder.build()
     }
 
+    fun getOngoingUpdateNotification(context: Context): Notification {
+        val contentIntent = PendingIntent.getActivity(
+            context,
+            0,
+            Intent(context, MainActivity::class.java),
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
+            .setSmallIcon(R.drawable.ic_logo)
+            .setContentTitle(context.getString(R.string.checking_for_updates))
+            .setContentIntent(contentIntent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setCategory(NotificationCompat.CATEGORY_SERVICE)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
+            .setProgress(100, 0, true)
+            .setOngoing(true)
+            .build()
+    }
+
+    fun getUpdateNotification(context: Context, updatesList: List<App>): Notification {
+        val contentIntent = PendingIntent.getActivity(
+            context,
+            0,
+            Intent(context, MainActivity::class.java).apply {
+                action = Constants.NAVIGATION_UPDATES
+            },
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
+            .setSmallIcon(R.drawable.ic_updates)
+            .setContentTitle(
+                if (updatesList.size == 1)
+                    context.getString(
+                        R.string.notification_updates_available_1,
+                        updatesList.size
+                    )
+                else
+                    context.getString(
+                        R.string.notification_updates_available,
+                        updatesList.size
+                    )
+            )
+            .setContentText(
+                when (updatesList.size) {
+                    1 -> {
+                        context.getString(
+                            R.string.notification_updates_available_desc_1,
+                            updatesList[0].displayName
+                        )
+                    }
+
+                    2 -> {
+                        context.getString(
+                            R.string.notification_updates_available_desc_2,
+                            updatesList[0].displayName,
+                            updatesList[1].displayName
+                        )
+                    }
+
+                    3 -> {
+                        context.getString(
+                            R.string.notification_updates_available_desc_3,
+                            updatesList[0].displayName,
+                            updatesList[1].displayName,
+                            updatesList[2].displayName
+                        )
+                    }
+
+                    else -> {
+                        context.getString(
+                            R.string.notification_updates_available_desc_4,
+                            updatesList[0].displayName,
+                            updatesList[1].displayName,
+                            updatesList[2].displayName,
+                            updatesList.size - 3
+                        )
+                    }
+                }
+            )
+            .setContentIntent(contentIntent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setAutoCancel(true)
+            .build()
+    }
+
     private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
         return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
