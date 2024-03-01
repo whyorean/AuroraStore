@@ -357,11 +357,9 @@
     <string name="pref_vending_version_title">Google Play -versio</string>
     <string name="onboarding_permission_doze">Taustalla lataukset</string>
     <string name="pref_updates_auto">Päivitä sovellukset automaattisesti</string>
-    <string name="pref_self_update_title">Itsepäivitykset</string>
     <string name="device_doze_title">Akun optimointi on havaittu!</string>
     <string name="pref_updates_auto_notify">Tarkista ja ilmoita saatavilla olevista päivityksistä</string>
     <string name="pref_updates_auto_off">Älä päivitä sovelluksia automaattisesti</string>
-    <string name="pref_self_update_summary">Tarkista ja ilmoita, onko Aurora Storen uusi versio saatavilla</string>
     <string name="title_app_settings">Sovellusasetukset</string>
     <string name="details_no_apps_on_sale">Ei sovelluksia myynnissä</string>
     <string name="device_doze_subtitle">Aurora Store ei voi asentaa lataus- tai päivityssovelluksia taustalla johtuen akun optimoinnista.</string>

@@ -364,8 +364,6 @@
     <string name="toast_proxy_success">Vekil belirleme başarılı</string>
     <string name="toast_proxy_failed">Vekil belirlenemedi</string>
     <string name="pref_network_proxy_enable_desc">Uygulamadan tüm trafiğin vekilden gitmesini sağla</string>
-    <string name="pref_self_update_title">Otomatik güncellemeler</string>
-    <string name="pref_self_update_summary">Aurora Store\'un yeni bir kararlı sürümünün bulunup bulunmadığını denetle ve kur</string>
     <string name="pref_vending_version_device">Varsayılan (cihaz yapılandırmasından)</string>
     <string name="pref_vending_version_title">Google Play Sürümü</string>
     <string name="onboarding_permission_doze">Arka Plan İndirmeleri</string>

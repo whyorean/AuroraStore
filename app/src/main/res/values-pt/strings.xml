@@ -364,8 +364,6 @@
     <string name="pref_network_proxy_enable_desc">Permite que o tráfego da aplicação seja através de um proxy</string>
     <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação\?</string>
     <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-fi</string>
-    <string name="pref_self_update_title">Atualização automática</string>
-    <string name="pref_self_update_summary">Verificar e notificar se existe uma nova versão de Aurora Store</string>
     <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão Google Play</string>
     <string name="device_doze_description">Por favor, desative as otimizações de bateria para permitir operações em plano de fundo.</string>

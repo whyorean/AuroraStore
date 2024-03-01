@@ -349,14 +349,12 @@
     <string name="app_links_desc">Permite magazinului Aurora să deschidă linkuri acceptate</string>
     <string name="amazon_appstore_desc">Amazon Appstore este un magazin de aplicații pentru platforme compatibile cu Android operate de Amazon.</string>
     <string name="toast_proxy_invalid">Adresa URL proxy nevalidă, verifică formatul!</string>
-    <string name="pref_self_update_title">Actualizări automate</string>
     <string name="pref_aurora_only_desc">Afișează numai aplicațiile instalate Aurora Store în Actualizări și Aplicații instalate</string>
     <string name="toast_proxy_success">Proxy setat cu succes</string>
     <string name="app_links_title">Link-uri la aplicații</string>
     <string name="google_play_store_desc">Google Play, cunoscut și ca Google Play Store și anterior Android Market.</string>
     <string name="verifying_new_session">Se verifică noua sesiune</string>
     <string name="action_enabled">Activat</string>
-    <string name="pref_self_update_summary">Verifică și instalează dacă este disponibilă o nouă versiune stabilă a Aurora Store</string>
     <string name="title_app_settings">Setările aplicației</string>
     <string name="title_apps_sale_provider">Furnizor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nu s-au găsit aplicații la reducere</string>

@@ -24,6 +24,8 @@ import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.BuildConfig
+import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Preferences
@@ -66,8 +68,14 @@ class UpdatesViewModel @Inject constructor(
                         false
                     }
                 }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
+                    val nApps = apps.toMutableList()
+
+                    if (!CertUtil.isFDroidApp(getApplication(), BuildConfig.APPLICATION_ID)) {
+                        UpdateWorker.getSelfUpdate(getApplication(), gson)?.let { nApps.add(it) }
+                    }
+
                     if (!isExtendedUpdateEnabled) {
-                        _updates.emit(
+                        nApps.addAll(
                             apps.filter { app ->
                                 app.certificateSetList.any {
                                     it.certificateSet in CertUtil.getEncodedCertificateHashes(
@@ -77,8 +85,9 @@ class UpdatesViewModel @Inject constructor(
                                 }
                             }
                         )
+                        _updates.emit(nApps)
                     } else {
-                        _updates.emit(apps)
+                        _updates.emit(nApps)
                     }
                 }
             } catch (exception: Exception) {

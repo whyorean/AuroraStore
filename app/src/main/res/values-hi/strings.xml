@@ -364,8 +364,6 @@
     <string name="toast_proxy_success">प्रॉक्सी सफलतापूर्वक सेट हो गई</string>
     <string name="toast_proxy_failed">प्रॉक्सी सेट करने में विफल</string>
     <string name="pref_network_proxy_enable_desc">ऐप से सभी ट्रैफ़िक को प्रॉक्सी के माध्यम से जाने की अनुमति दें</string>
-    <string name="pref_self_update_title">स्वयं अपडेटस</string>
-    <string name="pref_self_update_summary">जांचें कि क्या ऑरोरा स्टोर का नया स्थिर संस्करण उपलब्ध है और इंस्टॉल करें</string>
     <string name="pref_vending_version_device">डिफ़ॉल्ट (डिवाइस कॉन्फ़िगरेशन से)</string>
     <string name="pref_vending_version_title">गूगल प्ले संस्करण</string>
     <string name="onboarding_permission_doze">बेकग्राउंड डाउनलोड</string>

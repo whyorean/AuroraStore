@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
+import com.aurora.Constants.GITLAB_URL
 import com.aurora.extensions.browse
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
@@ -50,8 +51,6 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
     @Inject
     lateinit var downloadWorkerUtil: DownloadWorkerUtil
     lateinit var downloadList: List<Download>
-
-    private val AURORA_STORE_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -116,7 +115,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                             .download(it)
                             .click { _ ->
                                 if (it.packageName == Constants.APP_ID) {
-                                    requireContext().browse(AURORA_STORE_URL)
+                                    requireContext().browse(GITLAB_URL)
                                 } else {
                                     openDetailsFragment(it.packageName)
                                 }

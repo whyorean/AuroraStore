@@ -364,8 +364,6 @@
     <string name="toast_proxy_success">Проксі успішно налаштовано</string>
     <string name="toast_proxy_failed">Не вдалося налаштувати проксі</string>
     <string name="pref_network_proxy_enable_desc">Дозволити всьому трафіку із застосунку проходити через проксі</string>
-    <string name="pref_self_update_title">Автооновлення</string>
-    <string name="pref_self_update_summary">Перевіряти та встановлювати, якщо доступна нова стабільна версія Aurora Store</string>
     <string name="pref_vending_version_device">Типово (з конфігурації пристрою)</string>
     <string name="pref_vending_version_title">Версія Google Play</string>
     <string name="onboarding_permission_doze">Завантаження у фоні</string>

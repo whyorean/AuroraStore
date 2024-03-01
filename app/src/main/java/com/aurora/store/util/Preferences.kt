@@ -67,8 +67,6 @@ object Preferences {
 
     const val PREFERENCE_UNIQUE_GROUP_IDS = "PREFERENCE_UNIQUE_GROUP_IDS"
 
-    const val PREFERENCE_SELF_UPDATE = "PREFERENCE_SELF_UPDATE"
-
     private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences {

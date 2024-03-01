@@ -2,6 +2,7 @@ package com.aurora.store.data.work
 
 import android.app.NotificationManager
 import android.content.Context
+import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
@@ -13,21 +14,25 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import com.aurora.Constants
 import com.aurora.extensions.isMAndAbove
+import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.AuthValidator
+import com.aurora.store.BuildConfig
+import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
-import com.aurora.store.util.Log
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
+import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
@@ -37,28 +42,67 @@ import java.util.concurrent.TimeUnit.MINUTES
 
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
-    val downloadWorkerUtil: DownloadWorkerUtil,
+    private val downloadWorkerUtil: DownloadWorkerUtil,
+    private val gson: Gson,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
 
     companion object {
+        private const val TAG = "UpdateWorker"
         private const val UPDATE_WORKER = "UPDATE_WORKER"
+        private const val RELEASE = "release"
 
         fun cancelAutomatedCheck(context: Context) {
-            Log.i("Cancelling periodic app updates!")
+            Log.i(TAG, "Cancelling periodic app updates!")
             WorkManager.getInstance(context).cancelUniqueWork(UPDATE_WORKER)
         }
 
         fun scheduleAutomatedCheck(context: Context) {
-            Log.i("Scheduling periodic app updates!")
+            Log.i(TAG,"Scheduling periodic app updates!")
             WorkManager.getInstance(context)
                 .enqueueUniquePeriodicWork(UPDATE_WORKER, KEEP, buildUpdateWork(context))
         }
 
         fun updateAutomatedCheck(context: Context) {
-            Log.i("Updating periodic app updates!")
+            Log.i(TAG,"Updating periodic app updates!")
             WorkManager.getInstance(context).updateWork(buildUpdateWork(context))
+        }
+
+        suspend fun getSelfUpdate(context: Context, gson: Gson): App? {
+            return withContext(Dispatchers.IO) {
+                @Suppress("KotlinConstantConditions") // False-positive for build type always not being release
+                if (BuildConfig.BUILD_TYPE != RELEASE) {
+                    Log.i(TAG, "Self-updates are not available for this build!")
+                    return@withContext null
+                }
+
+                try {
+                    val response = HttpClient.getPreferredClient(context)
+                        .get(Constants.UPDATE_URL, mapOf())
+                    val selfUpdate =
+                        gson.fromJson(String(response.responseBytes), SelfUpdate::class.java)
+
+                    if (selfUpdate.versionCode > BuildConfig.VERSION_CODE) {
+                        if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
+                            if (selfUpdate.fdroidBuild.isNotEmpty()) {
+                                return@withContext SelfUpdate.toApp(selfUpdate, context)
+                            }
+                        } else if (selfUpdate.auroraBuild.isNotEmpty()) {
+                            return@withContext SelfUpdate.toApp(selfUpdate, context)
+                        } else {
+                            Log.e(TAG, "Update file is missing!")
+                            return@withContext null
+                        }
+                    }
+                } catch (exception: Exception) {
+                    Log.e(TAG, "Failed to check self-updates", exception)
+                    return@withContext null
+                }
+
+                Log.i(TAG, "No self-updates found!")
+                return@withContext null
+            }
         }
 
         private fun buildUpdateWork(context: Context): PeriodicWorkRequest {
@@ -83,6 +127,7 @@ class UpdateWorker @AssistedInject constructor(
         }
     }
 
+    private val updatesList = mutableListOf<App>()
     private val notificationID = 100
     private val workerID = 101
     private val gapps: MutableSet<String> = hashSetOf(
@@ -108,18 +153,23 @@ class UpdateWorker @AssistedInject constructor(
 
         // Exit if auto-updates is turned off in settings
         if (autoUpdatesMode == 0) {
-            Log.i("Auto-updates is disabled, bailing out!")
+            Log.i(TAG,"Auto-updates is disabled, bailing out!")
             return Result.failure()
+        }
+
+        // Check for Aurora Store updates first
+        if (!CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID)) {
+            getSelfUpdate(appContext, gson)?.let { updatesList.add(it) }
         }
 
         withContext(Dispatchers.IO) {
 
             if (!isValid(authData)) {
-                Log.i("AuthData is not valid, retrying later!")
+                Log.i(TAG,"AuthData is not valid, retrying later!")
                 return@withContext Result.retry()
             }
 
-            Log.i("Checking for app updates")
+            Log.i(TAG,"Checking for app updates")
 
             val appDetailsHelper = AppDetailsHelper(authData)
                 .using(HttpClient.getPreferredClient(appContext))
@@ -144,7 +194,7 @@ class UpdateWorker @AssistedInject constructor(
                 val appList = appDetailsHelper.getAppByPackageName(filtersPackages)
                     .filter { it.displayName.isNotEmpty() }
 
-                val updatesList = appList.filter {
+                val appUpdatesList = appList.filter {
                     val packageInfo = packageInfoMap[it.packageName]
                     if (packageInfo != null) {
                         it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
@@ -159,10 +209,11 @@ class UpdateWorker @AssistedInject constructor(
                         )
                     }
                 }
+                updatesList.addAll(appUpdatesList)
 
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
-                        Log.i("Found updates, notifying!")
+                        Log.i(TAG,"Found updates, notifying!")
                         val notifyManager =
                             appContext.getSystemService(Context.NOTIFICATION_SERVICE)
                                     as NotificationManager
@@ -171,13 +222,13 @@ class UpdateWorker @AssistedInject constructor(
                             NotificationUtil.getUpdateNotification(appContext, updatesList)
                         )
                     } else {
-                        Log.i("Found updates, updating!")
+                        Log.i(TAG,"Found updates, updating!")
                         updatesList.forEach { downloadWorkerUtil.enqueueApp(it) }
                     }
                     return@withContext Result.success()
                 }
 
-                Log.i("No updates found!")
+                Log.i(TAG,"No updates found!")
                 return@withContext Result.success()
             }
         }

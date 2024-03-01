@@ -30,12 +30,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.aurora.Constants
+import com.aurora.extensions.browse
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.PathUtil
@@ -178,7 +179,13 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
                                 .id(app.packageName)
                                 .app(app)
                                 .download(download)
-                                .click { _ -> openDetailsFragment(app.packageName, app) }
+                                .click { _ ->
+                                    if (app.packageName == Constants.APP_ID) {
+                                        requireContext().browse(Constants.GITLAB_URL)
+                                    } else {
+                                        openDetailsFragment(app.packageName, app)
+                                    }
+                                }
                                 .longClick { _ ->
                                     openAppMenuSheet(app)
                                     false

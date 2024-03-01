@@ -404,7 +404,5 @@
     <string name="device_doze_subtitle">Aurora Store can not install download or update apps in background due to battery optimizations.</string>
     <string name="device_doze_description">Please, disable battery optimizations to allow background operations.</string>
     <string name="device_doze_extra">Optionally you can choose to keep the optimizations enabled, but then you won\'t be able to take benefit of background downloads and automated updates, so choice is yours.</string>
-    <string name="pref_self_update_title">Self-updates</string>
-    <string name="pref_self_update_summary">Check and install if a new stable version of Aurora Store is available</string>
     <string name="failed_apk_export">Failed to export APKs</string>
 </resources>

@@ -365,8 +365,6 @@
     <string name="toast_proxy_success">Proxy erfolgreich festgelegt</string>
     <string name="toast_proxy_failed">Fehler beim Festlegen des Proxys</string>
     <string name="pref_network_proxy_enable_desc">Gesamten Netzwerkverkehr der App über den Proxyserver leiten</string>
-    <string name="pref_self_update_title">Selbständige Updates</string>
-    <string name="pref_self_update_summary">Verfügbarkeit einer neuen stabilen Version von Aurora Store prüfen und diese installieren</string>
     <string name="pref_vending_version_device">Standard (aus Gerätekonfiguration)</string>
     <string name="pref_vending_version_title">Google-Play-Version</string>
     <string name="onboarding_permission_doze">Downloads im Hintergrund</string>

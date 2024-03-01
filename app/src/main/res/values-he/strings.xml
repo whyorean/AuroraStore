@@ -301,7 +301,6 @@
     <string name="toast_page_unavailable">עמוד הדפדוף לא קיים</string>
     <string name="title_search_suggestion">הצעות חיפוש</string>
     <string name="title_advanced">מתקדם</string>
-    <string name="pref_self_update_title">עדכון-עצמי</string>
     <string name="pref_aurora_only_desc">הצג רק יישומים שהותקנו מחנות Aurora בעדכונים וביישומים המותקנים</string>
     <string name="session_login_failed_google">‏לא הצליח להיכנס עם גוגל</string>
     <string name="menu">תפריט</string>
@@ -325,7 +324,6 @@
     <string name="action_enabled">מאופשר</string>
     <string name="toast_import_success">ייבוא תצורת מכשיר בוצעה בהצלחה</string>
     <string name="download_eta_hrs">%1$dש %2$dדק %3$dשנ left</string>
-    <string name="pref_self_update_summary">בדוק והודיע אם קיימת גרסה חדשה יציבה לחנות Aurora</string>
     <string name="title_app_settings">הגדרות יישום</string>
     <string name="notification_channel_updater_service">שרות הורדת יישום ברקע</string>
     <string name="dialog_desc_native_split">אתה לא יכול להתקין אפליקציות באנדל (מפוצלות) עם מתקין Native Installer, שנה את המתקין ל-Session, Services או Root.</string>

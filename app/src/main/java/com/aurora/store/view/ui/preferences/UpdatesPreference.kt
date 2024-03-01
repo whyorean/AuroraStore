@@ -27,16 +27,10 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SeekBarPreference
-import androidx.preference.SwitchPreferenceCompat
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.data.work.SelfUpdateWorker
 import com.aurora.store.data.work.UpdateWorker
-import com.aurora.store.util.CertUtil
-import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
-import com.aurora.store.util.save
 import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,22 +39,6 @@ class UpdatesPreference : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
-
-        findPreference<SwitchPreferenceCompat>(PREFERENCE_SELF_UPDATE)?.let {
-            if (CertUtil.isFDroidApp(requireContext(), BuildConfig.APPLICATION_ID)) {
-                it.isVisible = false
-            }
-
-            it.setOnPreferenceChangeListener { _, newValue ->
-                if (newValue.toString().toBoolean()) {
-                    SelfUpdateWorker.scheduleAutomatedCheck(requireContext())
-                } else {
-                    SelfUpdateWorker.cancelAutomatedCheck(requireContext())
-                }
-                save(PREFERENCE_SELF_UPDATE, newValue.toString().toBoolean())
-                true
-            }
-        }
 
         findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)
             ?.setOnPreferenceChangeListener { _, newValue ->
@@ -74,7 +52,6 @@ class UpdatesPreference : PreferenceFragmentCompat() {
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
             ?.setOnPreferenceChangeListener { _, _ ->
                 UpdateWorker.updateAutomatedCheck(requireContext())
-                SelfUpdateWorker.updateAutomatedCheck(requireContext())
                 true
             }
     }

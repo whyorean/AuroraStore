@@ -43,6 +43,7 @@ object Constants {
     const val NOTIFICATION_CHANNEL_UPDATES = "NOTIFICATION_CHANNEL_UPDATES"
     const val NOTIFICATION_CHANNEL_UPDATER_SERVICE = "NOTIFICATION_CHANNEL_UPDATER_SERVICE"
 
+    const val GITLAB_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
     const val URL_DISPENSER = "https://auroraoss.com/api/auth"
 
     const val PLAY_QUERY_URL = "https://play.google.com/store/search?q="

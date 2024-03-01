@@ -364,8 +364,6 @@
     <string name="pref_updates_check_frequency">自動更新周期</string>
     <string name="toast_proxy_failed">プロキシの設定に失敗しました</string>
     <string name="pref_network_proxy_enable_desc">アプリからのすべてのトラフィックをプロキシに通す</string>
-    <string name="pref_self_update_title">自己アップデート</string>
-    <string name="pref_self_update_summary">Aurora Store の新しい安定版が利用可能かどうかを確認して通知します</string>
     <string name="pref_updates_auto">アプリの自動更新</string>
     <string name="onboarding_permission_doze">バックグラウンドダウンロード</string>
     <string name="pref_updates_auto_desc">自動更新の動作を設定する</string>

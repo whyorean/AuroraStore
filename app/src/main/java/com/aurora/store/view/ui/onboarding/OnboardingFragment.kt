@@ -28,12 +28,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.extensions.isSAndAbove
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.data.work.SelfUpdateWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
-import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
@@ -52,7 +49,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
-import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
@@ -63,7 +59,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
@@ -71,7 +66,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
 
-    private var shouldSelfUpdate by Delegates.notNull<Boolean>()
     private var lastPosition = 0
 
     internal class PagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
@@ -96,8 +90,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentOnboardingBinding.bind(view)
-
-        shouldSelfUpdate = CertUtil.isFDroidApp(requireContext(), BuildConfig.APPLICATION_ID)
 
         val isDefaultPrefLoaded = Preferences.getBoolean(requireContext(), PREFERENCE_DEFAULT)
         if (!isDefaultPrefLoaded) {
@@ -148,7 +140,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             binding.btnForward.setOnClickListener {
                 save(PREFERENCE_INTRO, true)
                 UpdateWorker.scheduleAutomatedCheck(requireContext())
-                if (shouldSelfUpdate) SelfUpdateWorker.scheduleAutomatedCheck(requireContext())
                 findNavController().navigate(
                     OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
                 )
@@ -196,6 +187,5 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         save(PREFERENCE_UPDATES_EXTENDED, false)
         save(PREFERENCE_UPDATES_AUTO, 2)
         save(PREFERENCE_UPDATES_CHECK_INTERVAL, 3)
-        save(PREFERENCE_SELF_UPDATE, shouldSelfUpdate)
     }
 }

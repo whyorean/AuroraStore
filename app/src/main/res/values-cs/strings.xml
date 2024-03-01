@@ -364,8 +364,6 @@
     <string name="toast_proxy_success">Proxy úspěšně nastavena</string>
     <string name="toast_proxy_failed">Nepodařilo se nastavit proxy</string>
     <string name="pref_network_proxy_enable_desc">Přesměrovat veškerý síťový provoz skrz proxy</string>
-    <string name="pref_self_update_title">Aktualizace Aurora Store</string>
-    <string name="pref_self_update_summary">Kontrolovat a instalovat nové stabilní verze aplikace Aurora Store</string>
     <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
     <string name="pref_vending_version_title">Verze z Google Play</string>
     <string name="onboarding_permission_doze">Stahování na pozadí</string>

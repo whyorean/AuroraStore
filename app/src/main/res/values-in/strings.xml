@@ -350,7 +350,6 @@
     <string name="amazon_appstore_desc">Amazon Appstore adalah toko aplikasi untuk platform yang kompatibel dengan Android yang dioperasikan oleh Amazon.</string>
     <string name="onboarding_permission_doze">Unduhan Latar Belakang</string>
     <string name="toast_proxy_invalid">URL proksi invalid, periksa format!</string>
-    <string name="pref_self_update_title">Pembaruan-sendiri</string>
     <string name="pref_aurora_only_desc">Hanya tampilkan aplikasi yang di install dari Aurora Store di Pembaruan dan Aplikasi yang terpasang</string>
     <string name="device_doze_title">Pengoptimalan baterai terdeteksi!</string>
     <string name="toast_proxy_success">Proksi berhasil disetel</string>
@@ -360,7 +359,6 @@
     <string name="verifying_new_session">Memverifikasi sesi baru</string>
     <string name="action_enabled">Diaktifkan</string>
     <string name="onboarding_permission_doze_desc">Izinkan Aurora Store untuk mengunduh dan memperbarui aplikasi di latar belakang</string>
-    <string name="pref_self_update_summary">Periksa dan beritahu jika versi stabil baru Aurora Store tersedia</string>
     <string name="title_app_settings">Pengaturan Aplikasi</string>
     <string name="title_apps_sale_provider">Penyedia - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Tidak ada aplikasi yang dijual</string>

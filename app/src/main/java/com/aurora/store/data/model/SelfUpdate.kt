@@ -34,6 +34,7 @@ data class SelfUpdate(
     @SerializedName("version_code") var versionCode: Int = 0,
     @SerializedName("aurora_build") var auroraBuild: String = String(),
     @SerializedName("fdroid_build") var fdroidBuild: String = String(),
+    @SerializedName("updated_on") var updatedOn: String = String(),
     val changelog: String = String(),
     val size: Long = 0L
 ) {
@@ -56,7 +57,9 @@ data class SelfUpdate(
                 versionName = selfUpdate.versionName,
                 changes = selfUpdate.changelog,
                 size = selfUpdate.size,
+                updatedOn = selfUpdate.updatedOn,
                 displayName = context.getString(R.string.app_name),
+                developerName = "Rahul Kumar Patel",
                 iconArtwork = Artwork(url = "$BASE_URL/$icon"),
                 fileList = mutableListOf(
                     File(
@@ -64,7 +67,9 @@ data class SelfUpdate(
                         url = downloadURL,
                         size = selfUpdate.size
                     )
-                )
+                ),
+                isFree = true,
+                isInstalled = true
             )
         }
     }

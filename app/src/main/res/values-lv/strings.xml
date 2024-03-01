@@ -376,8 +376,6 @@
     <string name="device_doze_title">Noteikta akumulatora optimizēšana.</string>
     <string name="device_doze_subtitle">Aurora Store nevar lejupielādēt un uzstādīt vai atjaunināt lietotnes fonā akumulatora optimizēšanas dēļ.</string>
     <string name="pref_updates_auto_desc">Konfigurēt automātisko atjauninājumu uzvedību</string>
-    <string name="pref_self_update_title">Pašatjaunināšanās</string>
-    <string name="pref_self_update_summary">Pārbaudīt un paziņot, ja ir pieejama jauna noturīgā Aurora Store versija</string>
     <string name="device_doze_extra">Pēc izvēles var izvēlēties paturēt optimizēšanu iespējotu, bet tad nebūs iespējams gūt labumu no fona lejupielādēm un automātiskajiem atjauninājumiem, tā ka izvēle ir paša ziņā.</string>
     <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
 </resources>
