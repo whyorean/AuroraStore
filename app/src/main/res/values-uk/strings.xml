@@ -70,7 +70,7 @@
     <string name="action_installations">Установки</string>
     <string name="action_install">Встановити</string>
     <string name="action_ignore_version">Знехтувати версію</string>
-    <string name="action_ignore">Нехтувати</string>
+    <string name="action_ignore">Знехтувати</string>
     <string name="action_grant">Надати</string>
     <string name="action_granted">Надано</string>
     <string name="action_get_local_apk">Зберегти APK застосунку</string>
