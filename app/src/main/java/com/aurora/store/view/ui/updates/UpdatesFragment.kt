@@ -30,6 +30,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
 import com.aurora.extensions.isRAndAbove
@@ -96,6 +97,37 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
                 updateController(map)
                 binding.swipeRefreshLayout.isRefreshing = false
                 viewModel.updateAllEnqueued = map?.values?.all { it?.isRunning == true } ?: false
+
+                if (!map.isNullOrEmpty()) {
+                    binding.updateFab.apply {
+                        visibility = View.VISIBLE
+                        if (viewModel.updateAllEnqueued) {
+                            setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    requireContext(),
+                                    R.drawable.ic_cancel
+                                )
+                            )
+                        } else {
+                            setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    requireContext(),
+                                    R.drawable.ic_installation
+                                )
+                            )
+                        }
+                        setOnClickListener {
+                            if (viewModel.updateAllEnqueued) {
+                                cancelAll()
+                            } else {
+                                map.keys.forEach { updateSingle(it, true) }
+                            }
+                            binding.recycler.requestModelBuild()
+                        }
+                    }
+                } else {
+                    binding.updateFab.visibility = View.GONE
+                }
             }
         }
 
@@ -156,19 +188,9 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
                                         else
                                             getString(R.string.updates_available)
                             )
-                            .action(
-                                if (viewModel.updateAllEnqueued)
-                                    getString(R.string.action_cancel)
-                                else
-                                    getString(R.string.action_update_all)
-                            )
+                            .action(getString(R.string.action_manage))
                             .click { _ ->
-                                if (viewModel.updateAllEnqueued) {
-                                    cancelAll()
-                                } else {
-                                    appList.keys.forEach { updateSingle(it, true) }
-                                }
-                                requestModelBuild()
+                                findNavController().navigate(R.id.blacklistFragment)
                             }
                     )
 

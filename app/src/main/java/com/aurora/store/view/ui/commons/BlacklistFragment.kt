@@ -65,10 +65,14 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
         updateController(null)
     }
 
+    override fun onPause() {
+        super.onPause()
+        blacklistProvider.save(VM.selected)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        blacklistProvider.save(VM.selected)
     }
 
     private fun updateController(blackList: List<Black>?) {

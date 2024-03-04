@@ -40,4 +40,19 @@
             app:stackFromEnd="false"
             tools:listitem="@layout/view_app_list" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/update_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_large"
+        android:contentDescription="@string/action_search"
+        android:text="@string/action_update_all"
+        android:textColor="@color/colorWhite"
+        android:visibility="gone"
+        app:backgroundTint="?colorAccent"
+        app:srcCompat="@drawable/ic_installation"
+        app:tint="@color/colorWhite" />
 </RelativeLayout>
