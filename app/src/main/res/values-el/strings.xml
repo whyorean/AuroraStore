@@ -289,7 +289,6 @@
     <string name="download_progress">Κατεβαίνει • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="details_no_apps_on_sale">Δεν βρέθηκαν εφαρμογές σε προσφορά</string>
     <string name="download_eta_hrs">Απομένουν %1$dώ %2$dλ %3$dδλ</string>
-    <string name="pref_downloader_path_title">Διαδρομή λήψης</string>
     <string name="pref_download_directory_error">Δεν μπορεί να γίνει εγγραφή στην επιλεγμένη διαδρομή</string>
     <string name="pref_install_mode_am">Εγκαταστάτης AM</string>
     <string name="action_import">Εισαγωγή</string>
