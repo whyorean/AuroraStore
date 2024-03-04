@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">Ιστότοπος</string>
     <string name="details_dev_email">Ηλεκτρονικό ταχυδρομείο</string>
     <string name="action_pending">Εκκρεμούν</string>
@@ -66,7 +66,7 @@
     <string name="onboarding_permission_esa_desc">Για την αποθήκευση λήψεων (APK &amp; OBB), εξάγετε και εισάγετε τις ρυθμίσεις της συσκευής προς και από έναν εξωτερικό αποθηκευτικό χώρο.</string>
     <string name="download_none">Δεν υπάρχουν λήψεις</string>
     <string name="download_failed">Αποτυχία λήψης</string>
-    <string name="download_completed">Λήφθηκε</string>
+    <string name="download_completed">Η λήψη ολοκληρώθηκε</string>
     <string name="app_updater_service_notif_text">Ενεργοποιεί τη λήψη εφαρμογών στο παρασκήνιο</string>
     <string name="app_updater_service_notif_title">Λήψη εφαρμογής στο παρασκήνιο</string>
     <string name="notification_channel_updater_service">Υπηρεσία λήψης εφαρμογών στο παρασκήνιο</string>
@@ -118,10 +118,10 @@
     <string name="action_installing">Εγκαθίσταται</string>
     <string name="about_xda_summary">Ανατρέξτε στο νήμα του Aurora Store στο XDA για συζητήσεις ή προτάσεις.</string>
     <string name="about_libera_summary">Υποστηρίξτε μας στο Liberapay</string>
-    <string name="exodus_substring">ιχνηλάτης/-ες που βρέθηκαν στο</string>
+    <string name="exodus_substring">Γνωστός/-οι ιχνηλάτης/-ες που βρέθηκαν στο</string>
     <string name="exodus_progress">Έλεγχος για ιχνηλάτες…</string>
     <string name="exodus_powered">Με την υποστήριξη του Exodus</string>
-    <string name="exodus_no_tracker">Δεν περιέχει ιχνηλάτες</string>
+    <string name="exodus_no_tracker">Δεν περιέχει γνωστούς ιχνηλάτες</string>
     <string name="details_paid">Επί πληρωμή</string>
     <string name="action_filter_paid_apps">Επί πληρωμή</string>
     <string name="action_filter_misc">Διάφορα</string>
@@ -176,10 +176,10 @@
     <string name="onboarding_permission_esm">Εξωτερική αποθήκευση</string>
     <string name="pref_abandon_session_desc">Διαγραφή παρατημένων ή εγκαταστάσεις σε εκκρεμότητα</string>
     <string name="onboarding_permission_installer_desc">Επιτρέψτε την εγκατάσταση εφαρμογών από το Aurora Store</string>
-    <string name="pref_filter_google_summary">Καταργεί όλες τις εφαρμογές Google από τα αποτελέσματα αναζήτησης και τις κατηγορίες εφαρμογών</string>
+    <string name="pref_filter_google_summary">Αγνοεί τις εφαρμογές Google από τις Ενημερώσεις και εγκατεστημένες εφαρμογές</string>
     <string name="pref_install_mode_session">Εγκαταστάτης συνεδρίας</string>
     <string name="pref_ui_accent_title">Προφορά</string>
-    <string name="pref_filter_fdroid_summary">Αφαιρεί εφαρμογές F-Droid από της λίστες εφαρμογών</string>
+    <string name="pref_filter_fdroid_summary">Αγνοεί εφαρμογές F-Droid από τις Ενημερώσεις και Εγκατεστημένες εφαρμογές</string>
     <string name="pref_dialog_to_apply_restart">Αυτή η ρύθμιση θα εφαρμοστεί μετά την επανεκκίνηση της εφαρμογής</string>
     <string name="pref_ui_theme_system">Σύμφωνα με το σύστημα</string>
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
@@ -204,12 +204,12 @@
     <string name="title_account_manager">Λογαριασμοί</string>
     <string name="title_installer">Εγκατάσταση εφαρμογής</string>
     <string name="toast_developer_setting_failed">Ενεργοποιήστε τις ρυθμίσεις προγραμματιστή από τις ρυθμίσεις της συσκευής για να τις ανοίξετε.</string>
-    <string name="pref_install_mode_services">Υπηρεσίες Aurora</string>
+    <string name="pref_install_mode_services">Υπηρεσίες Aurora (Απαρχαιωμένο)</string>
     <string name="tab_for_you">Για εσάς</string>
     <string name="pref_common_extra">Πρόσθετα</string>
     <string name="onboarding_welcome_select">Πώς είσαι\?</string>
     <string name="pref_insecure_anonymous_title">Μη ασφαλής ανώνυμη συνεδρία</string>
-    <string name="pref_install_mode_native">Τοπικός εγκαταστάτης</string>
+    <string name="pref_install_mode_native">Εγγενής εγκαταστάτης (Απαρχαιωμένος)</string>
     <string name="toast_spoof_applied">Εφαρμόστηκε πλαστογραφία συσκευής.</string>
     <string name="title_updates">Ενημερώσεις</string>
     <string name="toast_abandon_sessions">Οι παλιές συνεδρίες εγκατάστασης ακυρώθηκαν</string>
@@ -251,7 +251,7 @@
     <string name="toast_apk_whitelisted">Στην άσπρη λίστα</string>
     <string name="filter_review_two">Δύο</string>
     <string name="filter_review_three">Τρεις</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
+    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="filter_review_positive">Θετικός</string>
     <string name="toast_apk_blacklisted">Στην μάυρη λίστα</string>
     <string name="tab_top_grossing">Με Κορυφαίες Πωλήσεις</string>
@@ -279,4 +279,35 @@
     <string name="account_anonymous_insecure">Ανώνυμος (μη ασφαλές)</string>
     <string name="installer_am_unavailable">Εγκατάσταση Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
     <string name="pref_abandon_session">Εξαναγκασμός εκκαθάρισης συνεδριάσεων</string>
+    <string name="action_home_screen">Προσθήκη στην Αρχική οθόνη</string>
+    <string name="action_uninstall_confirmation">Θέλετε να απεγκαταστήσετε αυτή την εφαρμογή;</string>
+    <string name="download_eta_sec">Απομένουν %1$dδλ</string>
+    <string name="pref_install_mode_shizuku">Εγκαταστάτης Shizuku</string>
+    <string name="details_ratings_title_hint">Αξιολόγηση τίτλου</string>
+    <string name="download_paused">Σε παύση • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="onboarding_permission_notifications">Ειδοποιήσεις</string>
+    <string name="download_progress">Κατεβαίνει • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="details_no_apps_on_sale">Δεν βρέθηκαν εφαρμογές σε προσφορά</string>
+    <string name="download_eta_hrs">Απομένουν %1$dώ %2$dλ %3$dδλ</string>
+    <string name="pref_downloader_path_title">Διαδρομή λήψης</string>
+    <string name="pref_download_directory_error">Δεν μπορεί να γίνει εγγραφή στην επιλεγμένη διαδρομή</string>
+    <string name="pref_install_mode_am">Εγκαταστάτης AM</string>
+    <string name="action_import">Εισαγωγή</string>
+    <string name="download_eta_min">Απομένουν %1$dλ %2$dδλ</string>
+    <string name="onboarding_permission_notifications_desc">Αποστολή ειδοποιήσεων ανεξάρτητα της κατάστασης εγκατάστασης</string>
+    <string name="onboarding_permission_doze">Λήψεις Παρασκηνίου</string>
+    <string name="onboarding_permission_doze_desc">Επιτρέψτε στο Aurora Store να κατεβάζει και να ενημερώνει εφαρμογές στο παρασκήνιο</string>
+    <string name="pref_vending_version_title">Έκδοση Google Play</string>
+    <string name="pref_network_proxy_title">Μεσολάβηση</string>
+    <string name="pref_downloader_wifi_title">Λήψη μόνο μέσω WiFi</string>
+    <string name="installer_shizuku_unavailable">Το Shizuku δεν έχει εγκατασταθεί ή ρυθμιστεί σωστά.</string>
+    <string name="action_request_analysis">Αίτηση νέας ανάλυσης</string>
+    <string name="download_clear_finished">Η εκκαθάριση ολοκληρώθηκε</string>
+    <string name="pref_updates_incompatible">Μη συμβατές ενημερώσεις</string>
+    <string name="pref_updates_incompatible_desc">Εμφάνιση ενημερώσεων από μη συμβατές ή απενεργοποιημένες εγαρμογές οι οποίες μπορεί να αποτύχουν να εγκατασταθούν</string>
+    <string name="pref_vending_version_device">Προεπιλογή (από καταγραφές συσκευής)</string>
+    <string name="pref_network_proxy_enable">Ενεργοποίηση μεσολάβησης</string>
+    <string name="pref_network_proxy_enable_desc">Επιτρέψτε όλη την εκκίνηση από την εφαρμογή να περνάει από τη μεσολάβηση</string>
+    <string name="pref_network_proxy_url">URL μεσολάβησης</string>
+    <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
 </resources>
