@@ -332,7 +332,7 @@
     <string name="title_search_results">Wyniki wyszukiwania</string>
     <string name="failed_to_fetch_report">Nie udało się pobrać raportu prywatności</string>
     <string name="app_language">Język aplikacji</string>
-    <string name="check_connectivity">Sprawdź połączenie z Internetem</string>
+    <string name="check_connectivity">Sprawdź połączenie internetowe</string>
     <string name="failed_to_generate_session">Nie można wygenerować sesji</string>
     <string name="google_play_store_desc">Google Play, znany również jako Sklep Google Play, dawniej Android Market.</string>
     <string name="action_enable">Włącz</string>
@@ -367,7 +367,7 @@
     <string name="onboarding_permission_doze_desc">Zezwól Aurora Store na pobieranie i aktualizowanie aplikacji w tle</string>
     <string name="device_doze_description">Wyłącz optymalizację baterii, aby umożliwić działanie w tle.</string>
     <string name="device_doze_title">Wykryto optymalizację baterii!</string>
-    <string name="device_doze_extra">Opcjonalnie możesz pozostawić włączoną optymalizację, ale wtedy nie będziesz mógł korzystać z pobierania w tle i automatycznych aktualizacji, więc wybór należy do Ciebie.</string>
+    <string name="device_doze_extra">Opcjonalnie możesz pozostawić włączoną optymalizację, ale wtedy nie będziesz mógł korzystać z pobierania w tle oraz automatycznych aktualizacji, więc wybór należy do Ciebie.</string>
     <string name="device_doze_subtitle">Aurora Store nie może pobierać, instalować ani aktualizować aplikacji w tle ze względu na włączoną optymalizację baterii.</string>
     <string name="pref_updates_auto">Automatyczna aktualizacja aplikacji</string>
     <string name="pref_updates_auto_notify">Sprawdź i powiadom o dostępnych aktualizacjach</string>
@@ -378,6 +378,6 @@
     <string name="failed_apk_export">Nie udało się wyeksportować plików APK</string>
     <string name="pref_updates_incompatible">Niekompatybilne aktualizacje</string>
     <string name="pref_updates_incompatible_desc">Pokaż aktualizacje dla niekompatybilnych lub wyłączonych aplikacji, których instalacja może się nie udać</string>
-    <string name="download_clear_finished">Czyszczenie zakończone</string>
+    <string name="download_clear_finished">Wyczyść zakończone</string>
     <string name="action_home_screen">Dodaj do ekranu głównego</string>
 </resources>
