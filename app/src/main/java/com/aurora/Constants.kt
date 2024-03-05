@@ -47,7 +47,7 @@ object Constants {
     const val URL_DISPENSER = "https://auroraoss.com/api/auth"
 
     const val PLAY_QUERY_URL = "https://play.google.com/store/search?q="
-    const val ANDROID_CONNECTIVITY_URL = "http://connectivitycheck.android.com/generate_204"
+    const val ANDROID_CONNECTIVITY_URL = "https://connectivitycheck.android.com/generate_204"
 
     //ACCOUNTS
     const val ACCOUNT_SIGNED_IN = "ACCOUNT_SIGNED_IN"

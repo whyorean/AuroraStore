@@ -20,14 +20,16 @@
 package com.aurora.store.view.ui.preferences
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
+import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.aurora.Constants
-import com.aurora.extensions.runAsync
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.toast
 import com.aurora.store.R
@@ -40,6 +42,10 @@ import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragm
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class NetworkPreference : PreferenceFragmentCompat() {
@@ -47,80 +53,64 @@ class NetworkPreference : PreferenceFragmentCompat() {
     @Inject
     lateinit var gson: Gson
 
+    private val TAG = NetworkPreference::class.java.simpleName
+
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_network, rootKey)
 
-        val proxyUrl = Preferences.getString(requireContext(), Preferences.PREFERENCE_PROXY_URL, "")
-        val proxyInfo =
-            Preferences.getString(requireContext(), Preferences.PREFERENCE_PROXY_INFO, "{}")
+        findPreference<EditTextPreference>(Preferences.PREFERENCE_PROXY_URL)?.let {
+            it.summary =
+                Preferences.getString(requireContext(), Preferences.PREFERENCE_PROXY_URL, "")
 
-        val preferenceProxyUrl: Preference? = findPreference(Preferences.PREFERENCE_PROXY_URL)
-        preferenceProxyUrl?.summary = proxyUrl
+            it.setOnPreferenceChangeListener { _, newValue ->
+                val newProxyUrl = newValue.toString()
+                val newProxyInfo = CommonUtil.parseProxyUrl(newProxyUrl)
 
-        preferenceProxyUrl?.let {
-            it.onPreferenceChangeListener =
-                Preference.OnPreferenceChangeListener { preference, newValue ->
-                    val newProxyUrl = newValue.toString()
-                    val newProxyInfo = CommonUtil.parseProxyUrl(newProxyUrl)
-
-                    if (newProxyInfo == null) {
-                        runOnUiThread {
-                            requireContext().toast(getString(R.string.toast_proxy_invalid))
-                        }
-                        false
-                    } else {
-                        runAsync {
-                            kotlin.runCatching {
-                                val result = HttpClient
-                                    .getPreferredClient(requireContext())
-                                    .setProxy(newProxyInfo)
-                                    .get(
-                                        Constants.ANDROID_CONNECTIVITY_URL,
-                                        mapOf()
-                                    )
-
-                                runOnUiThread {
-                                    if (result.code == 204) {
-                                        requireContext().toast(getString(R.string.toast_proxy_success))
-                                        save(Preferences.PREFERENCE_PROXY_URL, newProxyUrl)
-                                        save(
-                                            Preferences.PREFERENCE_PROXY_INFO,
-                                            gson.toJson(newProxyInfo)
-                                        )
-
-                                        preference.summary = newProxyUrl
-                                    } else {
-                                        throw Exception("Failed to set proxy")
-                                    }
-                                }
-                            }.onFailure {
-                                runOnUiThread {
-                                    requireContext().toast(getText(R.string.toast_proxy_failed))
-                                    save(Preferences.PREFERENCE_PROXY_URL, proxyUrl)
-                                    save(
-                                        Preferences.PREFERENCE_PROXY_INFO,
-                                        proxyInfo
-                                    )
-                                }
-                            }
-                        }
-
-                        true
-                    }
-                }
-        }
-
-        val insecureAnonymous: Preference? =
-            findPreference(Preferences.PREFERENCE_INSECURE_ANONYMOUS)
-
-        insecureAnonymous?.let {
-            it.onPreferenceClickListener =
-                Preference.OnPreferenceClickListener {
+                if (newProxyInfo == null) {
                     runOnUiThread {
-                        requireContext().toast(R.string.insecure_anonymous_apply)
+                        requireContext().toast(getString(R.string.toast_proxy_invalid))
                     }
                     false
+                } else {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        try {
+                            val result = HttpClient
+                                .getPreferredClient(requireContext())
+                                .setProxy(newProxyInfo)
+                                .get(Constants.ANDROID_CONNECTIVITY_URL, mapOf())
+
+                            if (result.code == 204) {
+                                save(Preferences.PREFERENCE_PROXY_URL, newProxyUrl)
+                                save(Preferences.PREFERENCE_PROXY_INFO, gson.toJson(newProxyInfo))
+
+                                runOnUiThread {
+                                    requireContext().toast(getString(R.string.toast_proxy_success))
+                                }
+
+                                it.summary = newProxyUrl
+                            } else {
+                                throw Exception("Failed to set proxy")
+                            }
+                        } catch (exception: Exception) {
+                            Log.e(TAG, "Failed to set proxy", exception)
+                            runOnUiThread {
+                                requireContext().toast(getText(R.string.toast_proxy_failed))
+                            }
+                        }
+                    }
+                    true
                 }
+            }
+        }
+
+        findPreference<SwitchPreferenceCompat>(Preferences.PREFERENCE_INSECURE_ANONYMOUS)?.let {
+            it.setOnPreferenceChangeListener { _, _ ->
+                runOnUiThread {
+                    requireContext().toast(R.string.insecure_anonymous_apply)
+                }
+                false
+            }
         }
 
         findPreference<Preference>(Preferences.PREFERENCE_VENDING_VERSION)?.let {

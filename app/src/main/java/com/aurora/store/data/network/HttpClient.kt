@@ -27,13 +27,10 @@ import com.google.gson.Gson
 
 object HttpClient {
     fun getPreferredClient(context: Context): IProxyHttpClient {
-        val proxyEnabled = Preferences.getBoolean(
-            context,
-            Preferences.PREFERENCE_PROXY_ENABLED
-        )
+        val proxyEnabled = Preferences.getBoolean(context, Preferences.PREFERENCE_PROXY_ENABLED)
+        val proxyInfoString = Preferences.getString(context, Preferences.PREFERENCE_PROXY_INFO)
 
-        return if (proxyEnabled) {
-            val proxyInfoString = Preferences.getString(context, Preferences.PREFERENCE_PROXY_INFO)
+        return if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
             val proxyInfo = Gson().fromJson(proxyInfoString, ProxyInfo::class.java)
 
             if (proxyInfo != null) {

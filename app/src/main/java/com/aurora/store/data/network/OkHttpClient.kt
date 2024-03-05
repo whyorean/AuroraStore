@@ -57,16 +57,13 @@ object OkHttpClient : IProxyHttpClient {
     override fun setProxy(proxyInfo: ProxyInfo): OkHttpClient {
         val proxy = Proxy(
             if (proxyInfo.protocol == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,
-            InetSocketAddress.createUnresolved(
-                proxyInfo.host,
-                proxyInfo.port
-            )
+            InetSocketAddress.createUnresolved(proxyInfo.host, proxyInfo.port)
         )
 
         val proxyUser = proxyInfo.proxyUser
         val proxyPassword = proxyInfo.proxyPassword
 
-        if (proxyUser != null && proxyPassword != null) {
+        if (!proxyUser.isNullOrBlank() && !proxyPassword.isNullOrBlank()) {
             okHttpClientBuilder.proxyAuthenticator { _, response ->
                 if (response.request.header("Proxy-Authorization") != null) {
                     return@proxyAuthenticator null
@@ -82,7 +79,6 @@ object OkHttpClient : IProxyHttpClient {
 
         okHttpClientBuilder.proxy(proxy)
         okHttpClient = okHttpClientBuilder.build()
-
         return this
     }
 
