@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_title"
             android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/margin_xlarge"
             android:textAlignment="center"
             tools:text="Sign in first" />
     </RelativeLayout>

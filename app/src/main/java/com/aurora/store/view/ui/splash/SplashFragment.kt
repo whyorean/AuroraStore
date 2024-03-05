@@ -170,10 +170,10 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private fun updateActionLayout(isVisible: Boolean) {
         if (isVisible) {
             binding.layoutAction.show()
-            binding.layoutToolbarAction.toolbar.invalidateMenu()
+            binding.layoutToolbarAction.toolbar.visibility = View.VISIBLE
         } else {
             binding.layoutAction.hide()
-            binding.layoutToolbarAction.toolbar.menu.clear()
+            binding.layoutToolbarAction.toolbar.visibility = View.INVISIBLE
         }
     }
 
