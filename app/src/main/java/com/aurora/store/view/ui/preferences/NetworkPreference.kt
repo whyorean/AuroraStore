@@ -25,9 +25,7 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.EditTextPreference
-import androidx.preference.ListPreference
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.aurora.Constants
 import com.aurora.extensions.runOnUiThread
@@ -37,8 +35,6 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.save
-import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat
-import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat.Companion.PREFERENCE_DIALOG_FRAGMENT_TAG
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -48,7 +44,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NetworkPreference : PreferenceFragmentCompat() {
+class NetworkPreference : BasePreferenceFragment() {
 
     @Inject
     lateinit var gson: Gson
@@ -121,16 +117,6 @@ class NetworkPreference : PreferenceFragmentCompat() {
                 }
                 true
             }
-        }
-    }
-
-    override fun onDisplayPreferenceDialog(preference: Preference) {
-        if (preference is ListPreference) {
-            val dialogFragment = ListPreferenceMaterialDialogFragmentCompat.newInstance(preference.getKey())
-            dialogFragment.setTargetFragment(this, 0)
-            dialogFragment.show(parentFragmentManager, PREFERENCE_DIALOG_FRAGMENT_TAG)
-        } else {
-            super.onDisplayPreferenceDialog(preference)
         }
     }
 

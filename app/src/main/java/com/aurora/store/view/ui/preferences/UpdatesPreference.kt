@@ -24,18 +24,15 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SeekBarPreference
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
-import com.aurora.store.view.custom.preference.ListPreferenceMaterialDialogFragmentCompat
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UpdatesPreference : PreferenceFragmentCompat() {
+class UpdatesPreference : BasePreferenceFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
@@ -54,20 +51,6 @@ class UpdatesPreference : PreferenceFragmentCompat() {
                 UpdateWorker.updateAutomatedCheck(requireContext())
                 true
             }
-    }
-
-    override fun onDisplayPreferenceDialog(preference: Preference) {
-        if (preference is ListPreference) {
-            val dialogFragment =
-                ListPreferenceMaterialDialogFragmentCompat.newInstance(preference.getKey())
-            dialogFragment.setTargetFragment(this, 0)
-            dialogFragment.show(
-                parentFragmentManager,
-                ListPreferenceMaterialDialogFragmentCompat.PREFERENCE_DIALOG_FRAGMENT_TAG
-            )
-        } else {
-            super.onDisplayPreferenceDialog(preference)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
