@@ -380,4 +380,5 @@
     <string name="pref_updates_incompatible_desc">Mostrar atualizações para apps incompatíveis ou desativados que podem não instalar</string>
     <string name="download_clear_finished">Limpar finalizados</string>
     <string name="action_home_screen">Adicionar à Tela inicial</string>
+    <string name="action_manage">Gerenciar</string>
 </resources>
