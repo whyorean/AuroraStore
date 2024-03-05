@@ -376,7 +376,8 @@
     <string name="pref_updates_auto_install">Проверять доступные обновления и устанавливать их автоматически</string>
     <string name="action_request_analysis">Запросить новый анализ</string>
     <string name="failed_apk_export">Не удалось экспортировать APK-файлы</string>
-    <string name="download_clear_finished">Очистка завершена</string>
+    <string name="download_clear_finished">Очистить завершенные</string>
     <string name="pref_updates_incompatible">Несовместимые обновления</string>
     <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
+    <string name="action_home_screen">Добавить на Главный экран</string>
 </resources>
