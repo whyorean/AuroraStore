@@ -23,6 +23,7 @@ package com.aurora.store.data.installer
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
@@ -95,6 +96,7 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
 
         val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
             setAppPackageName(sharedLibPkgName.ifBlank { packageName })
+            setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
             if (isOAndAbove()) {
                 setInstallReason(PackageManager.INSTALL_REASON_USER)
             }
