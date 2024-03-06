@@ -22,6 +22,7 @@ import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
@@ -31,20 +32,29 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.net.Authenticator
+import java.net.InetSocketAddress
+import java.net.PasswordAuthentication
+import java.net.Proxy
 import java.net.URL
 import java.security.DigestInputStream
 import java.security.MessageDigest
-import kotlinx.coroutines.NonCancellable
+import javax.net.ssl.HttpsURLConnection
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
+
 
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
@@ -59,6 +69,8 @@ class DownloadWorker @AssistedInject constructor(
     private lateinit var notificationManager: NotificationManager
     private lateinit var icon: Bitmap
     private lateinit var purchaseHelper: PurchaseHelper
+
+    private val proxy: Proxy? = getProxy()
 
     private val NOTIFICATION_ID = 200
 
@@ -236,11 +248,18 @@ class DownloadWorker @AssistedInject constructor(
             }
 
             try {
+                requestFile.createNewFile()
+
                 val algorithm = if (request.sha256.isBlank()) "SHA-1" else "SHA-256"
                 val messageDigest = MessageDigest.getInstance(algorithm)
 
-                requestFile.createNewFile()
-                DigestInputStream(URL(request.url).openStream(), messageDigest).use { input ->
+                val inputStream = if (proxy != null) {
+                    (URL(request.url).openConnection(proxy) as HttpsURLConnection).inputStream
+                } else {
+                    URL(request.url).openStream()
+                }
+
+                DigestInputStream(inputStream, messageDigest).use { input ->
                     requestFile.outputStream().use {
                         input.copyTo(it, request.size).collectLatest { p -> onProgress(p) }
                     }
@@ -348,6 +367,35 @@ class DownloadWorker @AssistedInject constructor(
             } else {
                 return@withContext true
             }
+        }
+    }
+
+    private fun getProxy(): Proxy? {
+        val proxyEnabled = Preferences.getBoolean(appContext, PREFERENCE_PROXY_ENABLED)
+        val proxyInfoString = Preferences.getString(appContext, PREFERENCE_PROXY_INFO)
+
+        if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
+            val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
+
+            val proxy = Proxy(
+                if (proxyInfo.protocol == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,
+                InetSocketAddress.createUnresolved(proxyInfo.host, proxyInfo.port)
+            )
+
+            val proxyUser = proxyInfo.proxyUser
+            val proxyPassword = proxyInfo.proxyPassword
+
+            if (!proxyUser.isNullOrBlank() && !proxyPassword.isNullOrBlank()) {
+                Authenticator.setDefault(object : Authenticator() {
+                    override fun getPasswordAuthentication(): PasswordAuthentication {
+                        return PasswordAuthentication(proxyUser, proxyPassword.toCharArray())
+                    }
+                })
+            }
+            return proxy
+        } else {
+            Log.i(TAG,"Proxy is disabled")
+            return null
         }
     }
 }
