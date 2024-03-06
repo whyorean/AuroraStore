@@ -380,4 +380,5 @@
     <string name="pref_updates_incompatible">Mises à jour incompatibles</string>
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applications incompatibles ou désactivées dont l’installation peut échouer</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
+    <string name="action_manage">Gérer</string>
 </resources>
