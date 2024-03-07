@@ -5,13 +5,13 @@ import android.os.Bundle
 import androidx.preference.ListPreferenceDialogFragmentCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class ListPreferenceMaterialDialogFragmentCompat : ListPreferenceDialogFragmentCompat() {
+class M3ListPreference : ListPreferenceDialogFragmentCompat() {
 
     companion object {
         const val PREFERENCE_DIALOG_FRAGMENT_TAG = "androidx.preference.PreferenceFragment.DIALOG"
 
-        fun newInstance(key: String?): ListPreferenceMaterialDialogFragmentCompat {
-            val fragment = ListPreferenceMaterialDialogFragmentCompat()
+        fun newInstance(key: String?): M3ListPreference {
+            val fragment = M3ListPreference()
             val bundle = Bundle(1)
             bundle.putString(ARG_KEY, key)
             fragment.arguments = bundle
