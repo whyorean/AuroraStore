@@ -79,7 +79,7 @@
     <string name="about_bitcoin_btc_summary">Bitcoin (BTC) adományozás</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Bitcoin Cash (BCH) adományozás</string>
-    <string name="about_bitcoin_bch">Bitcoin Pénz (Bitcoin Cash)</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">UPI adományozás</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_email">E-mail</string>
@@ -343,7 +343,7 @@
     <string name="action_enable">Engedélyezés</string>
     <string name="pref_network_proxy_enable">Proxy engedélyezése</string>
     <string name="pref_network_proxy_url">Proxy URL-címe</string>
-    <string name="pref_updates_check_frequency_desc">Az automatikus frissítések intervallumainak konfigurálása, órákban.</string>
+    <string name="pref_updates_check_frequency_desc">Automatikus frissítések intervallumának konfigurálása, órákban.</string>
     <string name="pref_aurora_only">Csak Aurora Store alkalmazások</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="amazon_appstore_desc">Az Amazon Appstore egy alkalmazásbolt az Amazon által üzemeltetett Android-kompatibilis platformokhoz.</string>
@@ -379,4 +379,6 @@
     <string name="download_clear_finished">Tisztítás befejezve</string>
     <string name="pref_updates_incompatible">Összeegyeztethetetlen frissítések</string>
     <string name="pref_updates_incompatible_desc">Mutasson frissítéseket kompatibilis vagy letiltott alkalmazásokhoz, amelyek nem telepíthetők</string>
+    <string name="action_manage">Kezelés</string>
+    <string name="action_home_screen">Főképernyőhöz adás</string>
 </resources>
