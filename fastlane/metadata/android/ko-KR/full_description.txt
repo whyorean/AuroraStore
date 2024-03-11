@@ -1,0 +1,12 @@
+Aurora Store는 우아한 디자인의 Google Play에 대한, 비공식 FOSS 클라이언트입니다. Aurora Store
+를 사용하면 사용자가 Play Store와 같은 앱을 다운로드, 업데이트, 및 검색할 수 있습니다. Google Play 서비스 또는 MicroG의
+유무에 관계없이 완벽하게 작동합니다.
+ 
+<b>특징:</b> 
+ 
+• FOSS: GPLv3 라이선스 보유 
+• 아름다운 디자인: 최신 Material 3 가이드라인 기반
+• 계정 로그인: 개인 또는 익명 계정으로 로그인할 수 있음
+• 장치 및 로케일 스푸핑: 지리적으로 잠긴 앱에 액세스하도록 장치 및/또는 로케일 변경
+• [Exodus Privacy](https://exodus-privacy.eu.org/) integration: Instantly see trackers in app
+• 업데이트 블랙리스트: 특정 앱에 대한 업데이트를 무시
