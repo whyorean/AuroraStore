@@ -187,11 +187,8 @@
     <string name="notification_channel_general">"General notification"</string>
     <string name="onboarding_installer_select">"Select a suitable installer"</string>
     <string name="onboarding_permission_select">"Aurora Store requires following permissions"</string>
-    <string name="onboarding_theme_select">"Select what you like"</string>
-    <string name="onboarding_title_accent">"Accent"</string>
     <string name="onboarding_title_installer">"Installer"</string>
     <string name="onboarding_title_permissions">"Permissions"</string>
-    <string name="onboarding_title_theme">"Themes"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
     <string name="onboarding_permission_esa">"External Storage Access"</string>

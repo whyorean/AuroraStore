@@ -4,7 +4,6 @@
     <string name="details_dev_email">البريد الإلكتروني</string>
     <string name="details_no_dependencies">لا توجد اعتماديات</string>
     <string name="details_dependencies">الاعتماديات</string>
-    <string name="onboarding_title_theme">الثيمات</string>
     <string name="filter_review_two">اثنتان</string>
     <string name="filter_review_three">ثلاث</string>
     <string name="filter_review_one">واحده</string>
@@ -71,7 +70,6 @@
     <string name="onboarding_title_welcome">أهلًا وسهلًا</string>
     <string name="onboarding_title_permissions">الأذونات</string>
     <string name="onboarding_title_installer">المثبت</string>
-    <string name="onboarding_title_accent">اللون الثانوي</string>
     <string name="notification_channel_general">إشعار عام</string>
     <string name="notification_channel_alert">إشعار سريع</string>
     <string name="dialog_title_self_update">متوفر تحديث جديد</string>
@@ -193,7 +191,6 @@
     <string name="title_apps_games">تطبيقاتي وألعابي</string>
     <string name="purchase_no_file">تعذر الحصول على الملفات</string>
     <string name="pref_abandon_session">فرض مسح جلسات التثبيت</string>
-    <string name="onboarding_theme_select">اختر ما تريد</string>
     <string name="onboarding_installer_select">حدد المثبت المناسب</string>
     <string name="installer_status_user_action">في انتظار تأكيد المستخدم</string>
     <string name="installer_status_failure_invalid">حزمة APK غير صالحة أو تالفة</string>

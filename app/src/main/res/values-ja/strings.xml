@@ -29,11 +29,8 @@
     <string name="onboarding_permission_esa">外部ストレージへのアクセス</string>
     <string name="onboarding_welcome_select">ようこそ</string>
     <string name="onboarding_title_welcome">ようこそ</string>
-    <string name="onboarding_title_theme">テーマ</string>
     <string name="onboarding_title_permissions">権限</string>
     <string name="onboarding_title_installer">インストーラー</string>
-    <string name="onboarding_title_accent">アクセント</string>
-    <string name="onboarding_theme_select">選択してください</string>
     <string name="onboarding_permission_select">Aurora Store は以下の権限が必要です</string>
     <string name="onboarding_installer_select">インストーラーを選択</string>
     <string name="notification_channel_general">全般通知</string>

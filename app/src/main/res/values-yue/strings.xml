@@ -122,7 +122,6 @@
     <string name="download_none">未有下載</string>
     <string name="download_paused">暫停咗 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_status_success">安裝成功</string>
-    <string name="onboarding_title_theme">色系</string>
     <string name="download_progress">下載緊 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="filter_review_one">一星</string>
     <string name="menu_disclaimer">免責聲明</string>
@@ -188,8 +187,6 @@
     <string name="pref_ui_accent_title">配色</string>
     <string name="title_no_network">上唔到網</string>
     <string name="installer_service_available">Aurora 服務有得用兼準備好安裝。</string>
-    <string name="onboarding_theme_select">隨您心水揀返個啦</string>
-    <string name="onboarding_title_accent">配色</string>
     <string name="pref_install_mode_services">Aurora 服務 (已過氣)</string>
     <string name="purchase_invalid">個 app 未有購買</string>
     <string name="purchase_unsupported">個 app 唔支援</string>

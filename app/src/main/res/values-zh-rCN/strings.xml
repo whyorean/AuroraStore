@@ -208,11 +208,8 @@
     <string name="onboarding_permission_esa_desc">保存下载项 (APKs 和 OBBs)，将设备配置导出到外部存储和从外部存储导入设备配置。</string>
     <string name="onboarding_permission_esa">访问外部存储</string>
     <string name="onboarding_title_welcome">欢迎</string>
-    <string name="onboarding_title_theme">主题</string>
     <string name="onboarding_title_permissions">权限</string>
     <string name="onboarding_title_installer">安装包</string>
-    <string name="onboarding_title_accent">主题色</string>
-    <string name="onboarding_theme_select">选择您喜欢的</string>
     <string name="onboarding_permission_select">Aurora 商店需要以下权限</string>
     <string name="onboarding_installer_select">选择合适的安装方式</string>
     <string name="notification_channel_general">一般通知</string>

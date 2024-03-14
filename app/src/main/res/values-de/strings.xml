@@ -125,9 +125,7 @@
     <string name="onboarding_permission_esa">Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_title_welcome">Willkommen</string>
-    <string name="onboarding_title_theme">Darstellung</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
-    <string name="onboarding_theme_select">Bitte auswählen, was dir gefällt</string>
     <string name="onboarding_permission_select">Bitte die erforderlichen Berechtigungen erteilen</string>
     <string name="onboarding_installer_select">Eine passende Methode auswählen</string>
     <string name="notification_channel_general">Allgemeine Benachrichtigung</string>
@@ -234,7 +232,6 @@
     <string name="pref_install_mode_native">Systemeigene Installation (Veraltet)</string>
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
     <string name="onboarding_title_installer">Installationsmethode</string>
-    <string name="onboarding_title_accent">Akzentfarbe</string>
     <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar</string>
     <string name="insecure_anonymous_apply">Bitte neu anmelden und die App neu starten, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>

@@ -11,7 +11,6 @@
     <string name="title_blacklist_manager">Gerenciar lista de bloqueio</string>
     <string name="pref_ui_theme_black">Preto</string>
     <string name="pref_ui_accent_title">Cor de Realce</string>
-    <string name="onboarding_title_accent">Cor de Realce</string>
     <string name="pref_ui_theme_dark_x">Escuro X</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
@@ -66,10 +65,8 @@
     <string name="onboarding_permission_esa">Acesso de armazenamento externo</string>
     <string name="onboarding_welcome_select">Como você está\?</string>
     <string name="onboarding_title_welcome">Saudações</string>
-    <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permissões</string>
     <string name="onboarding_title_installer">Instalador</string>
-    <string name="onboarding_theme_select">Selecione o que você gosta</string>
     <string name="onboarding_permission_select">Aurora Store requer as seguintes permissões</string>
     <string name="onboarding_installer_select">Selecione um instalador adequado</string>
     <string name="notification_channel_general">Notificação geral</string>

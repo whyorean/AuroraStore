@@ -82,7 +82,6 @@
     <string name="pref_downloader_wifi_title">Discargar solmente usante WiFi</string>
     <string name="action_update">Actualisar</string>
     <string name="action_disable">Disactivar</string>
-    <string name="onboarding_title_theme">Themas</string>
     <string name="purchase_not_found">Application non trovate</string>
     <string name="details_no_updates">Necun actualisationes disponibile</string>
     <string name="installer_status_failure">Falleva le installator</string>
@@ -220,7 +219,6 @@
     <string name="failed_apk_export">Falleva le exportation de APKs</string>
     <string name="pref_updates_auto_notify">Verificar e notificar le actualisationes disponibile</string>
     <string name="pref_install_profile_title">Profilos de installation (ezperimental)</string>
-    <string name="onboarding_title_accent">Accento</string>
     <string name="toast_apk_whitelisted">In le lista blanc</string>
     <string name="pref_ui_accent_title">Accento</string>
     <string name="exodus_view_report">Vider reporto</string>

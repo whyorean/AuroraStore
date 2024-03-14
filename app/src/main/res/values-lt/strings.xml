@@ -103,7 +103,6 @@
     <string name="pref_app_download">Atsiuntimai</string>
     <string name="pref_ui_theme_dark_x">Tamsus X</string>
     <string name="onboarding_title_installer">Diegimo programa</string>
-    <string name="onboarding_title_theme">Apipavidalinimai</string>
     <string name="pref_network_title">Darbas tinkle</string>
     <string name="pref_ui_theme_black">Juodas</string>
     <string name="onboarding_title_permissions">Leidimai</string>
@@ -242,7 +241,6 @@
     <string name="filter_review_one">Viena</string>
     <string name="filter_review_two">Dvi</string>
     <string name="installer_am_unavailable">Įsidiekite programėlių tvarkytuvę arba pasikeiskite diegimo programėlę.</string>
-    <string name="onboarding_theme_select">Pasirinkite, kas jums patinka</string>
     <string name="installer_status_failure">Diegimo programėlė patyrė nesėkmę</string>
     <string name="onboarding_permission_select">Aurora Store reikalauja šių leidimų</string>
     <string name="onboarding_permission_esa">Prieiga prie išorinės saugyklos</string>

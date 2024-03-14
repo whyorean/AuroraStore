@@ -131,9 +131,7 @@
     <string name="onboarding_permission_esa">Akses Penyimpanan Eksternal</string>
     <string name="onboarding_welcome_select">Apa kabar\?</string>
     <string name="onboarding_title_welcome">Selamat Datang</string>
-    <string name="onboarding_title_theme">Tema</string>
     <string name="onboarding_title_permissions">Perizinan</string>
-    <string name="onboarding_theme_select">Pilih yang Anda suka</string>
     <string name="dialog_title_self_update">Pembaruan tersedia</string>
     <string name="notification_channel_general">Pemberitahuan umum</string>
     <string name="notification_channel_alert">Pemberitahuan cepat</string>
@@ -255,7 +253,6 @@
     <string name="tab_top_paid">Berbayar teratas</string>
     <string name="onboarding_installer_select">Pilih pemasang yang sesuai</string>
     <string name="onboarding_title_installer">Pemasang</string>
-    <string name="onboarding_title_accent">Aksen</string>
     <string name="onboarding_permission_select">Aurora Store memerlukan izin sebagai berikut</string>
     <string name="installer_service_misconfigured">Atur layanan Aurora dan berikan seluruh izin terlebih dahulu.</string>
     <string name="purchase_failed">Pengunduhan Gagal</string>

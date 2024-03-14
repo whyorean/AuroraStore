@@ -50,7 +50,6 @@
     <string name="pref_filter_search_summary">Kala-shaandhaynta raadinta dib ayaa loo fadhiisiyaa raadin walba. Xidh si aad ukaydiso shaandhaynta raadinta</string>
     <string name="action_filter">Shaandhaynta</string>
     <string name="pref_ui_accent_title">Nashqada Tusmada</string>
-    <string name="onboarding_title_accent">Nashqada Tusmada</string>
     <string name="pref_ui_theme_darkord">Darkord</string>
     <string name="notification_channel_updater_service">Adeega gadaal kudajiyaha appka</string>
     <string name="toast_export_failed">Lama gudbin karo fadhiga aallada</string>
@@ -133,10 +132,8 @@
     <string name="onboarding_permission_esa">Ogolaansha Kaydka Dibada</string>
     <string name="onboarding_welcome_select">Seetahay\?</string>
     <string name="onboarding_title_welcome">Soodhawoow</string>
-    <string name="onboarding_title_theme">Nashqadaha</string>
     <string name="onboarding_title_permissions">Ogolaanshaha</string>
     <string name="onboarding_title_installer">Kushubaha</string>
-    <string name="onboarding_theme_select">Dooro waxaad jeceshahay</string>
     <string name="onboarding_permission_select">Dukaanka Aurora wuxuu ubaahan yahay inaad u oglaato kuwan</string>
     <string name="onboarding_installer_select">Dooro kushube kuhaboon</string>
     <string name="notification_channel_general">Ogaysiin guud</string>

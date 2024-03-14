@@ -120,7 +120,6 @@
     <string name="details_dev_address">Адрес</string>
     <string name="details_permission">разрешение</string>
     <string name="installer_status_user_action">Изчаква се потвърждение от потребителя</string>
-    <string name="onboarding_title_theme">Теми</string>
     <string name="pref_ui_theme_system">Следвайте системата</string>
     <string name="tab_editor_choice">Избор на редакторите</string>
     <string name="exodus_substring">тракер(и), намерени в</string>
@@ -198,8 +197,6 @@
     <string name="device_miui_subtitle">Програмата за инсталиране на сесии не може да инсталира приложения поради MIUI оптимизации.</string>
     <string name="notification_channel_general">Общо известие</string>
     <string name="onboarding_permission_select">Aurora Store изисква следните разрешения</string>
-    <string name="onboarding_theme_select">Изберете това, което ви харесва</string>
-    <string name="onboarding_title_accent">Акцент</string>
     <string name="onboarding_title_installer">Инсталатор</string>
     <string name="onboarding_title_permissions">Разрешения</string>
     <string name="onboarding_title_welcome">Добре дошли</string>

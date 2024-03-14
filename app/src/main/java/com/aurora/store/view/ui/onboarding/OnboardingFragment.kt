@@ -27,7 +27,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
@@ -44,8 +43,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
-import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
-import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -68,16 +65,14 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             when (position) {
                 0 -> return WelcomeFragment()
                 1 -> return InstallerFragment()
-                2 -> return ThemeFragment()
-                3 -> return AccentFragment()
-                4 -> return AppLinksFragment()
-                5 -> return PermissionsFragment()
+                2 -> return AppLinksFragment()
+                3 -> return PermissionsFragment()
             }
             return Fragment()
         }
 
         override fun getItemCount(): Int {
-            return 6
+            return 4
         }
     }
 
@@ -126,9 +121,9 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     fun refreshButtonState() {
         binding.btnBackward.isEnabled = lastPosition != 0
-        binding.btnForward.isEnabled = lastPosition != 5
+        binding.btnForward.isEnabled = lastPosition != 3
 
-        if (lastPosition == 5) {
+        if (lastPosition == 3) {
             binding.btnForward.text = getString(R.string.action_finish)
             binding.btnForward.isEnabled = true
             binding.btnForward.setOnClickListener {
@@ -160,8 +155,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/
-        save(PREFERENCE_THEME_TYPE, 0)
-        save(PREFERENCE_THEME_ACCENT, if (isSAndAbove()) 0 else 1)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
         save(PREFERENCE_SIMILAR, true)

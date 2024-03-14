@@ -170,7 +170,6 @@
     <string name="onboarding_permission_esa">外部儲存空間存取</string>
     <string name="onboarding_welcome_select">食飽未？</string>
     <string name="onboarding_title_welcome">歡迎</string>
-    <string name="onboarding_title_theme">主題</string>
     <string name="onboarding_permission_select">Aurora Store 需要以下權限</string>
     <string name="onboarding_installer_select">選擇合適的安裝方式</string>
     <string name="notification_channel_general">一般通知</string>
@@ -260,8 +259,6 @@
     <string name="about_libera_summary">在 Liberapay 上贊助我們</string>
     <string name="onboarding_title_permissions">權限</string>
     <string name="onboarding_title_installer">安裝方式</string>
-    <string name="onboarding_title_accent">強調色</string>
-    <string name="onboarding_theme_select">選下你中意的</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="ui_accent_2">紫紅色</string>
     <string name="download_progress">正在下載 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>

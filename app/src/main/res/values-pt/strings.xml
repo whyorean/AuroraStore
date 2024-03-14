@@ -29,7 +29,6 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Cor de destaque</string>
-    <string name="onboarding_title_accent">Cor de destaque</string>
     <string name="title_apps_sale">Aplicações em promoção</string>
     <string name="title_apps_library">Aplicações na biblioteca</string>
     <string name="onboarding_permission_installer_desc">Permitir instalação de aplicações a partir da Aurora Store</string>
@@ -132,10 +131,8 @@
     <string name="onboarding_permission_esa">Acesso a armazenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_title_welcome">Bem-vindo</string>
-    <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permissões</string>
     <string name="onboarding_title_installer">Instalador</string>
-    <string name="onboarding_theme_select">Selecione o seu preferido</string>
     <string name="onboarding_permission_select">Aurora Store requer as seguintes permissões</string>
     <string name="onboarding_installer_select">Selecione um instalador adequado</string>
     <string name="notification_channel_general">Notificação geral</string>

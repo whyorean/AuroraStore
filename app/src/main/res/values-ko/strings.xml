@@ -152,10 +152,8 @@
     <string name="dialog_desc_native_split">번들(분할) 앱은 기본 설치 프로그램을 통해 설치할 수 없습니다. 설치 프로그램을 세션, 서비스 또는 루트로 변경하세요.</string>
     <string name="onboarding_installer_select">적합한 설치 프로그램을 선택하세요</string>
     <string name="onboarding_permission_select">Aurora Store는 다음 권한을 필요로 합니다</string>
-    <string name="onboarding_theme_select">선호하는 항목을 선택하세요</string>
     <string name="onboarding_title_installer">설치 프로그램</string>
     <string name="onboarding_title_permissions">권한</string>
-    <string name="onboarding_title_theme">테마</string>
     <string name="onboarding_title_welcome">환영합니다</string>
     <string name="onboarding_welcome_select">어떻게 지내세요\?</string>
     <string name="onboarding_permission_esa">외부 저장소 액세스</string>
@@ -175,7 +173,6 @@
     <string name="pref_filter_search_title">비영구 검색 필터 사용</string>
     <string name="pref_insecure_anonymous_summary">기기에서 로컬로 GSF ID 생성</string>
     <string name="pref_install_auto_summary">다운로드가 완료되면 앱이 즉시 설치됩니다</string>
-    <string name="onboarding_title_accent">강조</string>
     <string name="pref_filter_google_title">Google 앱 필터링</string>
     <string name="pref_filter_search_summary">검색 필터는 검색할 때마다 재설정됩니다. 검색 필터를 저장하려면 사용 중지하기</string>
     <string name="installer_status_failure">설치 실패</string>

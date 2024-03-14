@@ -26,7 +26,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_xda_summary">Për diskutime dhe sugjerime, shihni rrjedhën Aurora Store XDA.</string>
     <string name="details_beta_available">Të merret pjesë te Programi Beta\?</string>
-    <string name="onboarding_title_accent">Theksim</string>
     <string name="tab_for_you">Për ju</string>
     <string name="account_anonymous">Anonim</string>
     <string name="account_google">Google</string>
@@ -155,10 +154,8 @@
     <string name="notification_channel_general">Njoftim i përgjithshëm</string>
     <string name="onboarding_installer_select">Përzgjidhni një instalues të përshtatshëm</string>
     <string name="onboarding_permission_select">Aurora Store lyp lejet vijuese</string>
-    <string name="onboarding_theme_select">Përzgjidhni ç’ju pëlqen</string>
     <string name="onboarding_title_installer">Instalues</string>
     <string name="onboarding_title_permissions">Leje</string>
-    <string name="onboarding_title_theme">Tema</string>
     <string name="onboarding_title_welcome">Mirë se vini</string>
     <string name="onboarding_welcome_select">Si ia çoni\?</string>
     <string name="pref_abandon_session">Spastro me detyrim sesione instalimi</string>

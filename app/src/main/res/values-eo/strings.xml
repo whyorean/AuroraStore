@@ -112,8 +112,6 @@
     <string name="dialog_title_self_update">Nova ĝisdatigo disponeblas</string>
     <string name="notification_channel_alert">Rapida sciigo</string>
     <string name="notification_channel_general">Ĝenerala sciigo</string>
-    <string name="onboarding_theme_select">Elekti kian vi volas</string>
-    <string name="onboarding_title_accent">Emfazo</string>
     <string name="onboarding_title_welcome">Bonvenon</string>
     <string name="onboarding_welcome_select">Kiel vi fartas\?</string>
     <string name="onboarding_permission_installer">Instalila permeso</string>
@@ -156,7 +154,6 @@
     <string name="details_changelog_unavailable">Ŝanĝprotokolo ne provizita</string>
     <string name="installer_status_failure">Intalilo fiaskis</string>
     <string name="installer_status_success">Sukcese instalita</string>
-    <string name="onboarding_title_theme">Etosoj</string>
     <string name="onboarding_title_installer">Instalilo</string>
     <string name="onboarding_title_permissions">Permesoj</string>
     <string name="pref_ui_theme_light">Luma</string>

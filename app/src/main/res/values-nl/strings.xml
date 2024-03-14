@@ -122,11 +122,8 @@
     <string name="onboarding_permission_esa">Externe Opslag Toegang</string>
     <string name="onboarding_welcome_select">Hoe gaat het met u\?</string>
     <string name="onboarding_title_welcome">Welkom</string>
-    <string name="onboarding_title_theme">Thema\'s</string>
     <string name="onboarding_title_permissions">Toestemmingen</string>
     <string name="onboarding_title_installer">Installateur</string>
-    <string name="onboarding_title_accent">Accent</string>
-    <string name="onboarding_theme_select">Selecteer waar u van houdt</string>
     <string name="onboarding_permission_select">Aurora Store vereist de volgende toestemmingen</string>
     <string name="onboarding_installer_select">Selecteer een geschikte installateur</string>
     <string name="notification_channel_general">Algemene melding</string>

@@ -76,11 +76,8 @@
     <string name="onboarding_permission_esa_desc">För att spara nerladdningar (APK:er och OBB:er), exportera och importera enhetskonfigurationer till och från externt lagringsutrymme.</string>
     <string name="onboarding_welcome_select">Hur går det\?</string>
     <string name="onboarding_title_welcome">Välkommen</string>
-    <string name="onboarding_title_theme">Teman</string>
     <string name="onboarding_title_permissions">Behörigheter</string>
     <string name="onboarding_title_installer">Installatör</string>
-    <string name="onboarding_title_accent">Dialekt</string>
-    <string name="onboarding_theme_select">Välj det du tycker om</string>
     <string name="onboarding_permission_select">Aurora-butiken behöver följande tillstånd</string>
     <string name="onboarding_installer_select">Välj en passande installatör</string>
     <string name="notification_channel_general">Generell avisering</string>

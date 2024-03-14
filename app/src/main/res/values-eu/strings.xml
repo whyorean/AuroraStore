@@ -84,11 +84,8 @@
     <string name="onboarding_permission_esa">Kanpoko memoriarako sarbidea</string>
     <string name="onboarding_welcome_select">Zer moduz zaude\?</string>
     <string name="onboarding_title_welcome">Ongi etorri</string>
-    <string name="onboarding_title_theme">Diseinuak</string>
     <string name="onboarding_title_permissions">Baimenak</string>
     <string name="onboarding_title_installer">Instalatzailea</string>
-    <string name="onboarding_title_accent">Azentua</string>
-    <string name="onboarding_theme_select">Aukeratu gustokoena</string>
     <string name="onboarding_permission_select">Aukera Store-k honako baimenak behar ditu</string>
     <string name="onboarding_installer_select">Aukeratu instalatzaile egokia</string>
     <string name="notification_channel_general">Jakinarazpen orokorra</string>

@@ -101,11 +101,8 @@
     <string name="onboarding_permission_esa">Přístup k externímu úložišti</string>
     <string name="onboarding_welcome_select">Jak se vám daří\?</string>
     <string name="onboarding_title_welcome">Vítejte</string>
-    <string name="onboarding_title_theme">Motivy</string>
     <string name="onboarding_title_permissions">Oprávnění</string>
     <string name="onboarding_title_installer">Instalátor</string>
-    <string name="onboarding_title_accent">Barva</string>
-    <string name="onboarding_theme_select">Vyberte, co se vám líbí</string>
     <string name="onboarding_permission_select">Obchod Aurora vyžaduje následující oprávnění</string>
     <string name="onboarding_installer_select">Vyberte vhodný instalátor</string>
     <string name="notification_channel_general">Obecné oznámení</string>

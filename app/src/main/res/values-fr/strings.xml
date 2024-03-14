@@ -23,11 +23,9 @@
     <string name="notification_channel_alert">Notification rapide</string>
     <string name="onboarding_welcome_select">Comment ça va \?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
-    <string name="onboarding_title_theme">Thèmes</string>
     <string name="onboarding_title_installer">Installateur</string>
     <string name="onboarding_installer_select">Sélectionnez un installateur approprié</string>
     <string name="notification_channel_general">Notification générale</string>
-    <string name="onboarding_theme_select">Sélectionnez ce que vous aimez</string>
     <string name="pref_app_download">Téléchargements</string>
     <string name="pref_filter_fdroid_title">Filtrer les applications F-droid</string>
     <string name="pref_filter_google_title">Filtrer les applications Google</string>
@@ -215,7 +213,6 @@
     <string name="onboarding_permission_esa_desc">Pour sauvegarder les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil vers et depuis le stockage externe.</string>
     <string name="onboarding_permission_esa">Accès au stockage externe</string>
     <string name="onboarding_title_permissions">Autorisations</string>
-    <string name="onboarding_title_accent">Couleur</string>
     <string name="onboarding_permission_select">Aurora Store utilise les autorisations suivantes</string>
     <string name="dialog_title_self_update">Nouvelle mise à jour disponible</string>
     <string name="installer_service_misconfigured">Configurez d’abord les services Aurora et accordez toutes les autorisations.</string>

@@ -155,11 +155,8 @@
     <string name="installer_status_failure_conflict">Există un pachet conflictual</string>
     <string name="menu_license">Licență</string>
     <string name="onboarding_permission_select">Aurora Store necesită următoarele permisiuni</string>
-    <string name="onboarding_title_accent">Accent</string>
-    <string name="onboarding_theme_select">Selectează ceea ce îți place</string>
     <string name="onboarding_title_installer">Instalator</string>
     <string name="onboarding_title_permissions">Permisiuni</string>
-    <string name="onboarding_title_theme">Teme</string>
     <string name="onboarding_title_welcome">Bine ai venit</string>
     <string name="onboarding_permission_installer_desc">Permite instalarea aplicațiilor din Aurora Store</string>
     <string name="onboarding_permission_esa_desc">Pentru a salva descărcări (APK și OBB), a exporta și a importa configurații de dispozitiv în și din memoria externă.</string>

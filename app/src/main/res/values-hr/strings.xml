@@ -173,11 +173,8 @@
     <string name="onboarding_permission_esa">Pristup vanjskoj memoriji</string>
     <string name="onboarding_welcome_select">Kako si\?</string>
     <string name="onboarding_title_welcome">Dobro došao, dobro došla</string>
-    <string name="onboarding_title_theme">Teme</string>
     <string name="onboarding_title_permissions">Dozvole</string>
     <string name="onboarding_title_installer">Instalacija</string>
-    <string name="onboarding_title_accent">Boja isticanja</string>
-    <string name="onboarding_theme_select">Odaberi što želiš</string>
     <string name="onboarding_permission_select">Aurora trgovina zahtijeva sljedeće dozvole</string>
     <string name="onboarding_installer_select">Odaberi odgovarajuću instalaciju</string>
     <string name="notification_channel_general">Opće obavijesti</string>

@@ -84,7 +84,6 @@
     <string name="device_miui_subtitle">Hesab qurucu MIUI Optimizasiyasına görə tətbiqləri quraşdıra bilmir.</string>
     <string name="ui_accent_1">Mavi</string>
     <string name="ui_accent_7">Boz</string>
-    <string name="onboarding_title_accent">Vurğu</string>
     <string name="onboarding_title_installer">Quraşdırıcı</string>
     <string name="onboarding_title_permissions">İcazələr</string>
     <string name="onboarding_permission_installer_desc">Aurora Mağazasından tətbiqlərin quraşdırılmasına icazə verin</string>
@@ -173,8 +172,6 @@
     <string name="notification_channel_general">Ümumi bildiriş</string>
     <string name="onboarding_installer_select">Uyğun quraşdırıcı seçin</string>
     <string name="onboarding_permission_select">Aurora Mağazası aşağıdakı icazələri tələb edir</string>
-    <string name="onboarding_theme_select">Nəyi bəyəndiyinizi seçin</string>
-    <string name="onboarding_title_theme">Mövzular</string>
     <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
     <string name="onboarding_welcome_select">Nə etmək istəyirsən\?</string>
     <string name="onboarding_permission_esa">Xarici Yaddaş Girişi</string>

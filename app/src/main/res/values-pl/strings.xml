@@ -175,12 +175,9 @@
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_title_permissions">Uprawnienia</string>
     <string name="onboarding_permission_select">Aurora Store wymaga następujących uprawnień</string>
-    <string name="onboarding_title_theme">Motywy</string>
     <string name="onboarding_installer_select">Wybierz odpowiedni instalator</string>
     <string name="onboarding_welcome_select">Jak się masz\?</string>
     <string name="onboarding_title_welcome">Witamy</string>
-    <string name="onboarding_theme_select">Wybierz swój ulubiony</string>
-    <string name="onboarding_title_accent">Akcent</string>
     <string name="onboarding_title_installer">Instalator</string>
     <string name="notification_channel_general">Ogólne powiadomienie</string>
     <string name="notification_channel_alert">Szybkie powiadomienie</string>

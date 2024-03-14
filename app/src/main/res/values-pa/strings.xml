@@ -112,10 +112,7 @@
     <string name="onboarding_permission_esa">ਬਾਹਰੀ ਡਾਊਨਲੋਡ ਸਟੋਰੇਜ਼ ਦੀ ਮਨਜ਼ੂਰੀ</string>
     <string name="onboarding_welcome_select">ਤੁਸੀਂ ਕਿਵੇਂ ਹੋ \?</string>
     <string name="onboarding_title_welcome">ਸਵਾਗਤ ਹੈ</string>
-    <string name="onboarding_title_theme">ਥੀਮ</string>
     <string name="onboarding_title_installer">ਇੰਸਟਾਲਰ</string>
-    <string name="onboarding_title_accent">ਰੰਗ</string>
-    <string name="onboarding_theme_select">ਆਪਣੀ ਪਸੰਦ ਅਨੁਸਾਰ ਚੁਣੋ</string>
     <string name="onboarding_title_permissions">ਅਗਿਆਵਾਂ</string>
     <string name="onboarding_permission_select">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਹੇਠ ਲਿਖੀਆਂ ਇਜਾਜ਼ਤਾਂ ਦੀ ਲੋੜ ਹੈ</string>
     <string name="onboarding_installer_select">ਕਿਰਪਾ ਕਰਕੇ ਕੋਈ ਢੁਕਵਾਂ ਐਪ ਇੰਸਟਾਲਰ ਚੁਣੋ</string>

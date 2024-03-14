@@ -174,7 +174,6 @@
     <string name="onboarding_permission_esa">Quyền truy cập bộ nhớ ngoài</string>
     <string name="onboarding_welcome_select">Bạn tốt chứ\?</string>
     <string name="onboarding_title_welcome">Chào mừng</string>
-    <string name="onboarding_title_theme">Chủ đề</string>
     <string name="onboarding_title_permissions">Quyền</string>
     <string name="onboarding_title_installer">Trình cài đặt</string>
     <string name="notification_channel_general">Thông báo chung</string>
@@ -183,7 +182,6 @@
     <string name="device_miui_description">Vui lòng tắt tối ưu hóa MIUI để có thể cài đặt, nếu không, bạn có thể chọn trình cài đặt Root hoặc Trình cài đặt dịch vụ.</string>
     <string name="device_miui_subtitle">Trình cài đặt phiên không thể cài đặt ứng dụng do có Tối ưu hóa MIUI.</string>
     <string name="device_miui_title">Đã phát hiện MIUI!</string>
-    <string name="onboarding_theme_select">Chọn những gì bạn thích</string>
     <string name="onboarding_permission_select">Aurora Store yêu cầu các quyền sau</string>
     <string name="onboarding_installer_select">Chọn trình cài đặt tương thích</string>
     <string name="menu_terms">Điều khoản dịch vụ</string>
@@ -258,7 +256,6 @@
     <string name="pref_ui_layout_tab">Chọn tab mặc định</string>
     <string name="pref_ui_layout">Bố cục</string>
     <string name="pref_ui_accent_title">Màu nổi bật</string>
-    <string name="onboarding_title_accent">Màu nổi bật</string>
     <string name="toast_export_failed">Không thể xuất thiết lập thiết bị</string>
     <string name="toast_export_success">Đã xuất thiết lập thiết bị</string>
     <string name="app_updater_service_notif_text">Bật tải xuống ứng dụng trong nền</string>

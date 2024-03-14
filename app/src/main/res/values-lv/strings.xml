@@ -110,11 +110,8 @@
     <string name="installer_status_user_action">Gaida lietotāja apstiprinājumu</string>
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="notification_channel_alert">Ātrā notifikācija</string>
-    <string name="onboarding_theme_select">Izvēlaties</string>
-    <string name="onboarding_title_accent">Akcents</string>
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
-    <string name="onboarding_title_theme">Motīvs</string>
     <string name="onboarding_title_welcome">Laipni lūgti</string>
     <string name="pref_app_download">Lejupielādes</string>
     <string name="pref_ui_theme_black">Melns</string>

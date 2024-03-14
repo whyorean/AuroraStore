@@ -84,11 +84,8 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_email">E-mail</string>
     <string name="onboarding_title_welcome">Üdvözöljük</string>
-    <string name="onboarding_title_theme">Témák</string>
     <string name="onboarding_title_permissions">Engedélyek</string>
     <string name="onboarding_title_installer">Telepítő</string>
-    <string name="onboarding_title_accent">Kiemelés</string>
-    <string name="onboarding_theme_select">Válassza ki melyik tetszik</string>
     <string name="onboarding_permission_select">Az Aurora Store a következő engedélyeket igényli</string>
     <string name="onboarding_installer_select">Válasszon megfelelő telepítőt</string>
     <string name="notification_channel_general">Általános értesítés</string>

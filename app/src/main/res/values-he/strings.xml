@@ -19,7 +19,6 @@
     <string name="pref_ui_theme_dark_x">כהה X</string>
     <string name="pref_ui_theme_dark">כהה</string>
     <string name="pref_ui_theme_black">שחורה</string>
-    <string name="onboarding_title_theme">ערכות נושא</string>
     <string name="title_language">שפה</string>
     <string name="title_account_manager">חשבונות</string>
     <string name="account_logout">התנתקות מ־Aurora</string>
@@ -204,7 +203,6 @@
     <string name="exodus_powered">מופעל באמצעות Exodus</string>
     <string name="installer_status_failure_conflict">קיימת חבילה מתנגשת</string>
     <string name="installer_status_failure_session">לא היה ניתן ליצור הפעלה</string>
-    <string name="onboarding_title_accent">צבע נושא</string>
     <string name="pref_filter_fdroid_title">סינון יישומי F-Droid</string>
     <string name="pref_install_profile_title">פרופילי התקנה (ניסיוני)</string>
     <string name="pref_ui_similar_apps">יישומים דומים וקשורים</string>
@@ -239,7 +237,6 @@
     <string name="device_miui_title">זוהתה מערכת הפעלה של שיאומי!</string>
     <string name="device_miui_subtitle">מתקין מקומי לא יכול להתקין אפליקציות בגלל אופטימיזציה של הממשק של שיאומי.</string>
     <string name="onboarding_installer_select">בחר מתקין מתאים</string>
-    <string name="onboarding_theme_select">בחר מה שאתה אוהב</string>
     <string name="pref_dialog_to_apply_restart">ההגדרה תחול אחרי הפעלה מחדש של האפליקציה</string>
     <string name="pref_install_auto_summary">אפליקציות מותקנות מיידית לאחר סיום ההורדה</string>
     <string name="pref_install_mode_am">מתקין AM</string>

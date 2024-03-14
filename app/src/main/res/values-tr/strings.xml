@@ -129,11 +129,8 @@
     <string name="onboarding_permission_esa">Harici Depolama Erişimi</string>
     <string name="onboarding_welcome_select">Neler yapıyorsun\?</string>
     <string name="onboarding_title_welcome">Hoş geldiniz</string>
-    <string name="onboarding_title_theme">Temalar</string>
     <string name="onboarding_title_permissions">İzinler</string>
     <string name="onboarding_title_installer">Kurucu</string>
-    <string name="onboarding_title_accent">Vurgu</string>
-    <string name="onboarding_theme_select">Neyi sevdiğini seç</string>
     <string name="onboarding_permission_select">Aurora Mağazası aşağıdaki izinleri gerektirir</string>
     <string name="onboarding_installer_select">Uygun kurucu seç</string>
     <string name="notification_channel_general">Genel bildirim</string>

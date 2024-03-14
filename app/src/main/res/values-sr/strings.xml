@@ -83,11 +83,8 @@
     <string name="onboarding_permission_esa">Приступ спољној меморији</string>
     <string name="onboarding_welcome_select">Шта има\?</string>
     <string name="onboarding_title_welcome">Добро дошли</string>
-    <string name="onboarding_title_theme">Теме</string>
     <string name="onboarding_title_permissions">Дозволе</string>
     <string name="onboarding_title_installer">Програм за инсталацију</string>
-    <string name="onboarding_title_accent">Боја за наглашавање</string>
-    <string name="onboarding_theme_select">Изаберите оно што вам се свиђа</string>
     <string name="onboarding_permission_select">Aurora Store захтева следеће дозволе</string>
     <string name="onboarding_installer_select">Изаберите одговарајући програм за инсталацију</string>
     <string name="notification_channel_general">Опште обавештење</string>

@@ -30,7 +30,6 @@
     <string name="pref_install_mode_services">Aurora-tjenester</string>
     <string name="pref_app_download">Nedlastinger</string>
     <string name="onboarding_title_welcome">Velkommen</string>
-    <string name="onboarding_title_theme">Drakter</string>
     <string name="onboarding_title_permissions">Tilganger</string>
     <string name="menu_terms">Tjenestevilkår</string>
     <string name="menu_license">Lisens</string>
@@ -172,8 +171,6 @@
     <string name="pref_filter_google_summary">Fjerner alle Google Apps fra søkeresultater og kategori apper</string>
     <string name="onboarding_permission_installer_desc">Tillat å installere apper fra Aurora Store</string>
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
-    <string name="onboarding_title_accent">Aksent</string>
-    <string name="onboarding_theme_select">Velg hva du liker</string>
     <string name="onboarding_permission_select">Aurora Store krever følgende tillatelser</string>
     <string name="dialog_title_self_update">Ny oppdatering tilgjengelig</string>
     <string name="device_miui_title">MIUI oppdaget!</string>

@@ -207,11 +207,8 @@
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
     <string name="onboarding_title_welcome">Добро пожаловать</string>
-    <string name="onboarding_title_theme">Темы</string>
     <string name="onboarding_title_permissions">Разрешения</string>
     <string name="onboarding_title_installer">Установщик</string>
-    <string name="onboarding_title_accent">Акцент</string>
-    <string name="onboarding_theme_select">Выберите то, что вам нравится</string>
     <string name="onboarding_permission_select">Aurora Store требует следующих разрешений</string>
     <string name="onboarding_installer_select">Выберите подходящий способ установки</string>
     <string name="notification_channel_general">Общее уведомление</string>

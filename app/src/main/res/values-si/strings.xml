@@ -20,9 +20,7 @@
     <string name="about_fdroid">එෆ්-ඩ්‍රොයිඩ්</string>
     <string name="about_bitcoin_btc">බිට්කොයින්</string>
     <string name="onboarding_title_welcome">සාදරයෙන් පිළිගනිමු</string>
-    <string name="onboarding_title_theme">තේමා</string>
     <string name="onboarding_title_permissions">අවසර</string>
-    <string name="onboarding_theme_select">ඔබ කැමති දෑ තෝරන්න</string>
     <string name="notification_channel_alert">ක්‍ෂණික දැනුම්දීම</string>
     <string name="menu_terms">සේවාවේ නියම</string>
     <string name="menu_license">බලපත්‍රය</string>
@@ -245,7 +243,6 @@
     <string name="installer_service_misconfigured">අවුරෝරා සේවා පිහිටුවන්න හා පළමුව සියළු අවසර පිරිනමන්න.</string>
     <string name="installer_status_failure_invalid">APK වලංගු නොවේ හෝ හානි වී ඇත</string>
     <string name="pref_common_extra">අමතර වැඩ</string>
-    <string name="onboarding_title_accent">උදාත්තය</string>
     <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>
     <string name="pref_filter_search_title">නොනිබැඳි සෙවුම් පෙරහන භාවිතය</string>
     <string name="pref_install_auto_title">බාගැනීමෙන් පසු APKs ස්වයං ස්ථාපනය කරන්න</string>

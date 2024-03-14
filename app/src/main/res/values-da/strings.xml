@@ -176,11 +176,8 @@
     <string name="notification_channel_general">Generel notifikation</string>
     <string name="onboarding_installer_select">Vælg en egnet installatør</string>
     <string name="onboarding_permission_select">Aurora Store kræver de følgende tilladelser</string>
-    <string name="onboarding_theme_select">Vælg det du syntes om</string>
-    <string name="onboarding_title_accent">Accent</string>
     <string name="onboarding_title_installer">Installatør</string>
     <string name="onboarding_title_permissions">Tilladelser</string>
-    <string name="onboarding_title_theme">Temaer</string>
     <string name="onboarding_title_welcome">Velkommen</string>
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
     <string name="onboarding_permission_esa">Adgang til ekstern lagring</string>

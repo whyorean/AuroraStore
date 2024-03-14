@@ -120,11 +120,8 @@
     <string name="onboarding_permission_esa">Gihîştina depoya derveyî</string>
     <string name="onboarding_welcome_select">Çawa ne\?</string>
     <string name="onboarding_title_welcome">Bi xêr hatî</string>
-    <string name="onboarding_title_theme">Mijar</string>
     <string name="onboarding_title_permissions">Destûrên</string>
     <string name="onboarding_title_installer">Sazker</string>
-    <string name="onboarding_title_accent">Devok</string>
-    <string name="onboarding_theme_select">Ya ku hûn dixwazin hilbijêrin</string>
     <string name="onboarding_permission_select">Aurora Store destûrên jêrîn hewce dike</string>
     <string name="onboarding_installer_select">Sazkirinek guncan hilbijêrin</string>
     <string name="notification_channel_general">Ragihandina giştî</string>

@@ -213,11 +213,8 @@
     <string name="onboarding_permission_esa">Доступ до зовнішнього сховища</string>
     <string name="onboarding_welcome_select">Як справи\?</string>
     <string name="onboarding_title_welcome">Вітаємо</string>
-    <string name="onboarding_title_theme">Теми</string>
     <string name="onboarding_title_permissions">Дозволи</string>
     <string name="onboarding_title_installer">Встановлювач</string>
-    <string name="onboarding_title_accent">Основний колір</string>
-    <string name="onboarding_theme_select">Виберіть те, що вам подобається</string>
     <string name="onboarding_permission_select">Aurora Store використовує такі дозволи</string>
     <string name="onboarding_installer_select">Виберіть відповідний встановлювач</string>
     <string name="notification_channel_general">Загальне сповіщення</string>

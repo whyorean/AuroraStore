@@ -65,11 +65,8 @@
     <string name="onboarding_permission_esa">Acceso a almacenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_title_welcome">Benvido/a</string>
-    <string name="onboarding_title_theme">Temas</string>
     <string name="onboarding_title_permissions">Permisos</string>
     <string name="onboarding_title_installer">Instalador</string>
-    <string name="onboarding_title_accent">Acento</string>
-    <string name="onboarding_theme_select">Seleccione as súas preferencias</string>
     <string name="onboarding_permission_select">Aurora Store precisa os seguintes permisos</string>
     <string name="onboarding_installer_select">Selecciones un instalador adecuado</string>
     <string name="notification_channel_general">Notificación xeral</string>

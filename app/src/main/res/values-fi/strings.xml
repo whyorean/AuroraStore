@@ -239,11 +239,8 @@
     <string name="onboarding_permission_esa_desc">Latausten (APK &amp; OBB), laiteasetusten viemiseen ja tuomiseen ulkoiselta tallennustilalta.</string>
     <string name="onboarding_permission_esa">Ulkoisen tallennustilan käyttö</string>
     <string name="onboarding_welcome_select">Miten menee\?</string>
-    <string name="onboarding_title_theme">Teemat</string>
     <string name="onboarding_title_permissions">Käyttöoikeudet</string>
     <string name="onboarding_title_installer">Asentaja</string>
-    <string name="onboarding_title_accent">Korostus</string>
-    <string name="onboarding_theme_select">Valitse mistä tykkäät</string>
     <string name="onboarding_permission_select">Aurora Store vaatii seuraavat käyttöoikeudet</string>
     <string name="onboarding_installer_select">Valitse soveltuva asentaja</string>
     <string name="dialog_desc_native_split">Et voi asentaa niputettuja (split) sovelluksia natiiviasentajalla. Vaihda asentajaksi Services-, Root tai sessioasentaja.</string>

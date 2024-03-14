@@ -146,8 +146,6 @@
     <string name="notification_channel_alert">Γρήγορη ειδοποίηση</string>
     <string name="onboarding_installer_select">Επιλέξτε το κατάλληλο πρόγραμμα εγκατάστασης</string>
     <string name="onboarding_permission_select">Το Aurora Store απαιτεί τα ακόλουθα δικαιώματα</string>
-    <string name="onboarding_theme_select">Επιλέξτε αυτό που σας αρέσει</string>
-    <string name="onboarding_title_accent">Προφορά</string>
     <string name="installer_service_available">Οι υπηρεσίες Aurora είναι διαθέσιμες και έτοιμες για εγκατάσταση.</string>
     <string name="menu_terms">Όροι χρήσης</string>
     <string name="dialog_title_self_update">Διατίθεται νέα ενημέρωση</string>
@@ -161,7 +159,6 @@
     <string name="menu_license">Αδεια</string>
     <string name="device_miui_extra">Προαιρετικά, μπορείτε να επιλέξετε τοπικό πρόγραμμα εγκατάστασης, αλλά στη συνέχεια δεν μπορείτε να εγκαταστήσετε πακέτα (χωρισμένα) APK, οπότε η επιλογή είναι δική σας.</string>
     <string name="onboarding_title_installer">Εγκαταστάτης</string>
-    <string name="onboarding_title_theme">Θέματα</string>
     <string name="dialog_desc_native_split">Δεν μπορείτε να εγκαταστήσετε ομαδοποιημένες (διαχωρισμένες) εφαρμογές μέσω του τοπικού προγράμματος εγκατάστασης. Αλλάξτε το πρόγραμμα εγκατάστασης σε Session, Services ή Root.</string>
     <string name="notification_channel_general">Γενική ειδοποίηση</string>
     <string name="installer_status_failure_invalid">Μη έγκυρο ή κατεστραμμένο APK</string>

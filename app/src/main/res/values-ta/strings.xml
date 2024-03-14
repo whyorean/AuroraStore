@@ -92,7 +92,6 @@
     <string name="onboarding_permission_esa_desc">பதிவிறக்கங்களைச் சேமிக்க (APKகள் &amp; OBBகள்), வெளிப்புறச் சேமிப்பகத்திற்கு மற்றும் அதிலிருந்து சாதன கட்டமைப்புகளை ஏற்றுமதி மற்றும் இறக்குமதி செய்யவும்.</string>
     <string name="onboarding_installer_select">பொருத்தமான நிறுவியைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_filter_google_title">கூகுள் செயலிகளை வடிகட்டு</string>
-    <string name="onboarding_theme_select">நீங்கள் விரும்புவதைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_abandon_session">நிறுவல் அமர்வுகள் துடைப்பதைக் கட்டாயப்படுத்து</string>
     <string name="pref_filter_fdroid_title">F-Droid செயலிகளை வடிகட்டு</string>
     <string name="pref_filter_google_summary">தேடல் முடிவுகள் மற்றும் வகைப் பயன்பாடுகளில் இருந்து எல்லா Google Apps களையும் நீக்குகிறது</string>
@@ -187,10 +186,8 @@
     <string name="notification_channel_alert">விரைவான அறிவிப்பு</string>
     <string name="notification_channel_general">பொது அறிவிப்பு</string>
     <string name="onboarding_permission_select">அரோரா ஸ்டோருக்கு பின்வரும் அனுமதிகள் தேவை</string>
-    <string name="onboarding_title_accent">உரப்பு</string>
     <string name="onboarding_title_installer">நிறுவி</string>
     <string name="onboarding_title_permissions">அனுமதிகள்</string>
-    <string name="onboarding_title_theme">தோற்றங்கள்</string>
     <string name="onboarding_title_welcome">வருக</string>
     <string name="onboarding_welcome_select">எப்படி உள்ளீர்கள்\?</string>
     <string name="onboarding_permission_esa">வெளிப்புற சேமிப்பிட அணுகல்</string>
