@@ -380,4 +380,5 @@
     <string name="download_clear_finished">ਮੁਕੰਮਲ ਹੋਏ ਸਾਫ਼ ਕਰੋ</string>
     <string name="pref_updates_incompatible_desc">ਅਸੰਗਤ ਜਾਂ ਅਯੋਗ ਐਪਾਂ ਲਈ ਅੱਪਡੇਟ ਦਿਖਾਓ ਜੋ ਸਥਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਹੋ ਸਕਦੀਆਂ ਹਨ</string>
     <string name="action_home_screen">ਹੋਮ ਸਕ੍ਰੀਨ ਤੇ ਐਡ ਕਰੋ</string>
+    <string name="action_manage">ਮੈਨੇਜ ਕਰੋ</string>
 </resources>

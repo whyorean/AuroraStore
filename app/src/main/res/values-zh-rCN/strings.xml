@@ -380,4 +380,5 @@
     <string name="pref_updates_incompatible">不兼容的更新</string>
     <string name="pref_updates_incompatible_desc">显示不兼容或已停用应用的更新，可能安装失败</string>
     <string name="action_home_screen">添加到主屏</string>
+    <string name="action_manage">管理</string>
 </resources>

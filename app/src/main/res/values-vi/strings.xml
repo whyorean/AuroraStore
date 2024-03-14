@@ -94,15 +94,15 @@
     <string name="toast_purchase_blocked">Mua ứng dụng không khả dụng trên tài khoản Ẩn danh.</string>
     <string name="toast_spoof_applied">Đã áp dụng giả mạo thiết bị.</string>
     <string name="toast_permission_granted">Đã cấp quyền</string>
-    <string name="toast_developer_setting_failed">Bật cài đặt cho nhà phát triển từ cài đặt thiết bị để mở nó.</string>
+    <string name="toast_developer_setting_failed">Bật thiết đặt của nhà phát triển từ thiết đặt thiết bị để mở chúng.</string>
     <string name="toast_clipboard_copied">Đã chép vào bộ nhớ tạm</string>
     <string name="toast_apk_whitelisted">Đã vào danh sách trắng</string>
     <string name="toast_apk_blacklisted">Đã vào danh dách đen</string>
     <string name="toast_anonymous_restriction">Không khả dụng trên tài khoản ẩn danh</string>
     <string name="toast_abandon_sessions">Các phiên cài đặt cũ đã bị bỏ</string>
-    <string name="title_updates">Cập nhật</string>
+    <string name="title_updates">Bản cập nhật</string>
     <string name="title_spoof_manager">Trình quản lý giả mạo</string>
-    <string name="title_settings">Cài đặt</string>
+    <string name="title_settings">Thiết đặt</string>
     <string name="title_purchase_history">Lịch sử giao dịch</string>
     <string name="title_no_network">Không có mạng</string>
     <string name="title_library">Thư viện</string>
@@ -164,7 +164,7 @@
     <string name="pref_filter_google_summary">Bỏ qua các ứng dụng Google khỏi Cập nhật và Ứng dụng đã cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
     <string name="pref_filter_fdroid_summary">Bỏ qua các ứng dụng F-Droid khỏi Cập nhật và Ứng dụng đã cài đặt</string>
-    <string name="pref_dialog_to_apply_restart">Cài đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
+    <string name="pref_dialog_to_apply_restart">Thiết đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
     <string name="pref_app_download">Tải xuống</string>
     <string name="pref_abandon_session">Buộc xóa các phiên cài đặt</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
@@ -292,7 +292,7 @@
     <string name="onboarding_permission_notifications_desc">Gửi thông báo về trạng thái cài đặt</string>
     <string name="notification_channel_updates">Thông báo cập nhật</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> và <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="checking_for_updates">Kiểm tra cho các bản cập nhật</string>
+    <string name="checking_for_updates">Kiểm tra cập nhật</string>
     <string name="download_eta_min">Còn %1$d phút, %2$ds giây</string>
     <string name="download_paused">Đã tạm dừng• <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">Đang tải xuống• <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -345,7 +345,7 @@
     <string name="details_no_apps_on_sale">Không tìm thấy ứng dụng nào đang giảm giá</string>
     <string name="title_apps_sale_provider">Nhà cung cấp - bestappsale.com</string>
     <string name="pref_downloader_wifi_title">Chỉ tải xuống bằng WiFi</string>
-    <string name="onboarding_permission_doze_desc">Cho phép Aurora Store tải xuống và cập nhật ứng dụng ở chế độ nền</string>
+    <string name="onboarding_permission_doze_desc">Cho phép Aurora Store tải xuống và cập nhật ứng dụng trong nền</string>
     <string name="pref_vending_version_device">Mặc định (từ cấu hình thiết bị)</string>
     <string name="pref_network_proxy_enable">Bật proxy</string>
     <string name="pref_network_proxy_enable_desc">Cho phép tất cả lưu lượng truy cập từ ứng dụng đi qua proxy</string>
@@ -378,4 +378,7 @@
     <string name="download_clear_finished">Xóa xong</string>
     <string name="details_ratings_title_hint">Tiêu đề đánh giá</string>
     <string name="onboarding_permission_doze">Tải xuống trong nền</string>
+    <string name="pref_network_proxy_url">URL proxy</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="action_manage">Quản lý</string>
 </resources>

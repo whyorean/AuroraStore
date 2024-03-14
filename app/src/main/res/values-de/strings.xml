@@ -381,4 +381,5 @@
     <string name="pref_updates_incompatible">Inkompatible Updates</string>
     <string name="pref_updates_incompatible_desc">Updates für inkompatible oder deaktivierte Apps anzeigen, die möglicherweise nicht installiert werden können</string>
     <string name="action_home_screen">Zur Startseite hinzufügen</string>
+    <string name="action_manage">Verwalten</string>
 </resources>

@@ -380,4 +380,5 @@
     <string name="pref_updates_incompatible_desc">Pokaż aktualizacje dla niekompatybilnych lub wyłączonych aplikacji, których instalacja może się nie udać</string>
     <string name="download_clear_finished">Wyczyść zakończone</string>
     <string name="action_home_screen">Dodaj do ekranu głównego</string>
+    <string name="action_manage">Zarządzaj</string>
 </resources>

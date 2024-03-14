@@ -242,7 +242,7 @@
     <string name="onboarding_theme_select">בחר מה שאתה אוהב</string>
     <string name="pref_dialog_to_apply_restart">ההגדרה תחול אחרי הפעלה מחדש של האפליקציה</string>
     <string name="pref_install_auto_summary">אפליקציות מותקנות מיידית לאחר סיום ההורדה</string>
-    <string name="pref_install_mode_am">מתקין AM.</string>
+    <string name="pref_install_mode_am">מתקין AM</string>
     <string name="pref_install_mode_session">מתקין מערכת</string>
     <string name="pref_ui_layout_tab">בחר עמוד ברירת מחדל</string>
     <string name="pref_ui_no_for_you_desc">הצג את \"בשבילך\" במסך הבית</string>
@@ -274,7 +274,7 @@
     <string name="details_ratings_title_hint">כותרת סקירה</string>
     <string name="app_link_enabled">קישורי אפליקציה מופעלים!</string>
     <string name="pref_network_proxy_url">URL פרוקסי</string>
-    <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים, כל שעה.</string>
+    <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים ועדכון עצמי, כל שעה.</string>
     <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
     <string name="ui_accent_0">מערכת</string>
     <string name="pref_network_proxy_title">פרוקסי</string>
@@ -350,7 +350,7 @@
     <string name="pref_filter_search_summary">פילטרים בחיפוש מתאספים בכל חיפוש. כבה כדי לשמור את הפילטרים בחיפוש</string>
     <string name="onboarding_permission_notifications_desc">שלח התראות לגבי מצב ההתקנה</string>
     <string name="action_uninstall_confirmation">‏האם אתה רוצה להסיר את היישום הזה?</string>
-    <string name="android_market_desc">החנות של אנדרואיד היתה חנות אונליין שמציעה אפליקציות שעוצבו למכשירי אנדרואיד, עד 2017.</string>
+    <string name="android_market_desc">החנות של אנדרואיד הייתה חנות אונליין שמציעה אפליקציות שעוצבו למכשירי אנדרואיד, עד 2017.</string>
     <string name="about_xda_summary">הצג את העמוד של Aurora Store בפורום XDA לשוחח ולהציע הצעות.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="permissions_denied">ההרשאות הנדרשות נדחו. אנא אשר אותן בשביל המשך הפעולה</string>
@@ -361,4 +361,24 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="purchase_session_expired">פג תוקף כניסה, הכנס מחדש כדי לקבל כניסה חדשה.</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> עדכון נמצא</string>
+    <string name="pref_updates_incompatible">עדכונים לא נתמכים</string>
+    <string name="pref_updates_incompatible_desc">הצג עדכונים ליישומים לא נתמכים או מושבתים שעלולים להיכשל בהתקנה</string>
+    <string name="pref_updates_auto_off">אל תעדכן-אוטומטית יישומים</string>
+    <string name="pref_updates_auto_notify">בדוק ותודיע על עדכונים זמינים</string>
+    <string name="pref_updates_auto_install">בדוק והתקן עדכונים זמינים אוטומטית</string>
+    <string name="device_doze_title">אופטימיזציית סוללה זוהתה!</string>
+    <string name="device_doze_subtitle">חנות Aurora לא יכולה להוריד או לעדכן יישומים ברקע בגלל אופטימיזציית סוללה.</string>
+    <string name="failed_apk_export">נכשל בייצוא קבצי Apk</string>
+    <string name="onboarding_permission_doze">הורדות ברקע</string>
+    <string name="pref_updates_auto">עדכון-אוטומטי ליישומים</string>
+    <string name="pref_updates_auto_desc">הגדר התנהגות עדכון-אוטומטי</string>
+    <string name="action_manage">נהל</string>
+    <string name="action_home_screen">הוסף למסך הבית</string>
+    <string name="download_clear_finished">נקה הורדות שהסתיימו</string>
+    <string name="onboarding_permission_doze_desc">אפשר לחנות Aurora להוריד ולעדכן יישומים ברקע</string>
+    <string name="device_doze_description">בבקשה, השבת אופטימיזציית סוללה כדי לאפשר פעולות ברקע.</string>
+    <string name="device_doze_extra">אופציונלית תוכל לבחור להשאיר את אופטימיזציית הסוללה מופעלת, אבל אז לא תוכל להרוויח את האפשרות להורדות ברקע ועדכונים אוטומטיים, אז הבחירה שלך.</string>
+    <string name="pref_vending_version_title">גרסת גוגל פליי</string>
+    <string name="pref_vending_version_device">ברירת מחדל (מתוך תצורת המכשיר)</string>
+    <string name="action_request_analysis">בקש ניתוח חדש</string>
 </resources>

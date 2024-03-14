@@ -366,4 +366,5 @@
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
     <string name="download_clear_finished">Poista valmistuneet</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>
+    <string name="action_manage">Hallinnoi</string>
 </resources>

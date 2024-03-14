@@ -1,0 +1,7 @@
+• 대상 Android 14
+· F-Droid 패키지 필터 업데이트
+· SessionInstaller (Android 14+)를 사용하여 앱 설치시 향후 업데이트에 대한 책임
+• "Extended update"를 "Incompatible update"로 변경하십시오.
+· 설치된 앱을 위한 단축키 만들기
+· 버그 수정 및 개선
+• 번역 업데이트

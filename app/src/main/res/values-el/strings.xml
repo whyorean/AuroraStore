@@ -258,7 +258,7 @@
     <string name="toast_export_success">Εξαγωγή διαμόρφωσης συσκευής</string>
     <string name="toast_manual_unavailable">Ο κωδικός έκδοσης που ζητάτε δεν είναι διαθέσιμος.</string>
     <string name="toast_export_failed">Δεν ήταν δυνατή η εξαγωγή διαμόρφωσης συσκευής</string>
-    <string name="toast_rated_success">Βαθμολογήθηκε</string>
+    <string name="toast_rated_success">Βαθμολογήθηκε, μπορεί να πάρει λίγη ώρα να εμφανιστεί</string>
     <string name="toast_page_unavailable">Η σελίδα περιήγησης δεν είναι διαθέσιμη</string>
     <string name="toast_rated_failed">Δεν ήταν δυνατή η υποβολή αξιολόγησης</string>
     <string name="toast_aas_token_failed">Δεν ήταν δυνατή η δημιουργία AAS Token</string>
@@ -309,4 +309,19 @@
     <string name="pref_network_proxy_enable_desc">Επιτρέψτε όλη την εκκίνηση από την εφαρμογή να περνάει από τη μεσολάβηση</string>
     <string name="pref_network_proxy_url">URL μεσολάβησης</string>
     <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
+    <string name="session_login">Συνδεθείτε πρώτα</string>
+    <string name="session_login_failed_google">Δεν ήταν δυνατή η σύνδεση μέσω Google</string>
+    <string name="title_apps_sale_provider">Πάροχος - bestappsales.com</string>
+    <string name="session_good">Ουαου! Όλα καλά.</string>
+    <string name="session_enjoy">Συνδεθείτε και απολαύστε.</string>
+    <string name="session_verifying">Επικύρωση συνεδρίας</string>
+    <string name="session_scrapped">Η τελευταία συνεδρία πετάχτηκε</string>
+    <string name="title_search_suggestion">Πρόταση αναζήτησης</string>
+    <string name="title_search_results">Αποτελέσματα αναζήτησης</string>
+    <string name="pref_aurora_only_desc">Εμφάνιση μόνο των εφαρμογών εγκατεστημένων από το Aurora Store στο Ενημερώσεις και Εγκατεστημένες εφαρμογές</string>
+    <string name="session_init">Ετοιμάζουμε πράγματα…</string>
+    <string name="toast_import_success">Ρύθμιση συσκευής εισήχθη</string>
+    <string name="session_verifying_google">Επικύρωση Συνεδρίας Google</string>
+    <string name="title_advanced">Προχωρημένα</string>
+    <string name="title_app_settings">Ρυθμίσεις Εφαρμογής</string>
 </resources>

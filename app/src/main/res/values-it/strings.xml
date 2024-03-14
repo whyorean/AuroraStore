@@ -380,4 +380,5 @@
     <string name="pref_updates_incompatible">Aggiornamenti incompatibili</string>
     <string name="pref_updates_incompatible_desc">Mostra aggiornamenti per applicazioni incompatibili o disabilitate che potrebbero non installare</string>
     <string name="action_home_screen">Aggiungi alla pagina principale</string>
+    <string name="action_manage">Gestisci</string>
 </resources>

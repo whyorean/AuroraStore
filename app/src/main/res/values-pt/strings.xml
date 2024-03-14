@@ -346,7 +346,7 @@
     <string name="pref_network_proxy_enable">Ativar proxy</string>
     <string name="details_ratings_title_hint">Título da avaliação</string>
     <string name="pref_network_proxy_url">URL do proxy</string>
-    <string name="pref_updates_check_frequency_desc">Configurar tempo de intervalo para procurar atualizações (em horas)</string>
+    <string name="pref_updates_check_frequency_desc">Configurar tempo de intervalo para procurar atualizações (em horas).</string>
     <string name="pref_aurora_only">Apenas aplicações Aurora Store</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_invalid">URL inválido. Verifique o formato!</string>
@@ -376,4 +376,9 @@
     <string name="pref_updates_auto_off">Não atualizar apps automaticamente</string>
     <string name="action_request_analysis">Requisitar nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APK</string>
+    <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
+    <string name="action_manage">Gerir</string>
+    <string name="action_home_screen">Adicionar ao ecrã</string>
+    <string name="download_clear_finished">Limpeza efetuada</string>
+    <string name="pref_updates_incompatible_desc">Mostrar atualizações para aplicações incompatíveis ou desativadas</string>
 </resources>

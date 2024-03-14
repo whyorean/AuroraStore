@@ -380,4 +380,5 @@
     <string name="download_clear_finished">समाप्त हुए साफ़ करें</string>
     <string name="pref_updates_incompatible">असंगत अपडेटस</string>
     <string name="action_home_screen">होम स्क्रीन पर जोड़ें</string>
+    <string name="action_manage">प्रबंधित करें</string>
 </resources>

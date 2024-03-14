@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_bitcoin_bch">Të holla Bitcoin</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_btc_summary">Dhuroni përmes Bitcoin (BTC)</string>
@@ -116,10 +116,10 @@
     <string name="download_queued">Në Radhë</string>
     <string name="download_resume_all">Rimerri krejt</string>
     <string name="download_speed_estimating">Afërsisht</string>
-    <string name="exodus_no_tracker">S’përmban gjurmues</string>
+    <string name="exodus_no_tracker">S’përmban gjurmues të ditur</string>
     <string name="exodus_powered">Bazuar në Exodus</string>
     <string name="exodus_progress">Po kontrollohet për gjurmues…</string>
-    <string name="exodus_substring">u gjetën gjurmues() në</string>
+    <string name="exodus_substring">gjurmues() të ditur të gjetur në</string>
     <string name="exodus_view_report">Shiheni raportimin</string>
     <string name="filter_review_all">Krejt</string>
     <string name="filter_review_critical">Kritike</string>
@@ -171,9 +171,9 @@
     <string name="pref_app_download">Shkarkime</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Ky rregullim do të aplikohet pasi të rinisni aplikacionin</string>
-    <string name="pref_filter_fdroid_summary">Heq prej listës së aplikacioneve aplikacione nga F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
-    <string name="pref_filter_google_summary">Heq krejt aplikacionet Google Apps nga përfundime kërkimi dhe aplikacione kategorie</string>
+    <string name="pref_filter_google_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga Google</string>
     <string name="pref_filter_google_title">Filtro aplikacione Google</string>
     <string name="pref_filter_search_summary">Filtrat e kërkimit zerohen pas çdo kërkimi. Çaktivizojeni, që të ruhen filtrat e kërkimit</string>
     <string name="pref_filter_search_title">Përdor filtër kërkimi që s’ruhet</string>
@@ -183,9 +183,9 @@
     <string name="pref_install_auto_title">Vetëinstaloji APK-të pas shkarkimi</string>
     <string name="pref_install_delete_summary">APK-të do të fshihen, si parazgjedhje</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
-    <string name="pref_install_mode_native">Instalues i brendshëm</string>
+    <string name="pref_install_mode_native">Instalues i vetë sistemit (Nxjerrë nga përdorimi)</string>
     <string name="pref_install_mode_root">Instalues rrënjë</string>
-    <string name="pref_install_mode_services">Shërbime Aurora</string>
+    <string name="pref_install_mode_services">Shërbime Aurora (Nxjerrë nga përdorimi)</string>
     <string name="pref_install_mode_session">Instalues sesioni</string>
     <string name="pref_install_mode_summary">Përzgjidhni mënyrë instalimi APK-je</string>
     <string name="pref_install_mode_title">Metodë instalimi</string>
@@ -256,7 +256,7 @@
     <string name="toast_manual_unavailable">Kodi i versionit që po kërkoni s’është i passhëm.</string>
     <string name="toast_manual_available">Përgëzime, kodi i versionit të kërkuar është i passhëm, po shkarkohet tani.</string>
     <string name="toast_page_unavailable">Faqja e shfletimit s’është gati</string>
-    <string name="toast_rated_success">U vlerësua</string>
+    <string name="toast_rated_success">U vlerësua, mund të duhet pak kohë deri në shfaqje</string>
     <string name="toast_rated_failed">S’u parashtrua dot vlerësim</string>
     <string name="toast_aas_token_failed">S’u prodhua dot Token AAS</string>
     <string name="toast_export_success">U eksportua formësim pajisjeje</string>
@@ -277,7 +277,106 @@
     <string name="ui_accent_12">Blu Disskord-i</string>
     <string name="ui_accent_13">Blu e zënë</string>
     <string name="account_anonymous_insecure">Anonime (jo e sigurt)</string>
-    <string name="pref_install_mode_am">Instalues AM.</string>
+    <string name="pref_install_mode_am">Instalues AM</string>
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
     <string name="app_links_desc">Lejojeni Shitoren Aurora të hapë lidhjet që mbulohen</string>
+    <string name="details_no_apps_on_sale">S’u gjetën aplikacione me ulje çmimi</string>
+    <string name="action_enabled">E aktivizuar</string>
+    <string name="action_uninstall_confirmation">Doni të çinstalohet ky aplikacion?</string>
+    <string name="failed_to_fetch_report">S’u arrit të sillet raport privatësie</string>
+    <string name="download_progress">Po shkarkohet • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="onboarding_permission_notifications">Njoftime</string>
+    <string name="pref_vending_version_device">Parazgjedhje (nga formësim pajisjeje)</string>
+    <string name="pref_network_proxy_url">URL ndërmjetësi</string>
+    <string name="pref_updates_incompatible">Përditësime jo të përputhshme</string>
+    <string name="pref_aurora_only">Vetëm aplikacione Shitoreje Aurora</string>
+    <string name="session_enjoy">Bëni hyrjen dhe shijojeni.</string>
+    <string name="toast_import_failed">S’u importua dot formësim pajisjeje</string>
+    <string name="downloading_dep">Po shkarkohen kartela shtesë për <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="pref_updates_auto_desc">Formësoni sjellje vetë-përditësimesh</string>
+    <string name="pref_updates_check_frequency">Shpeshti përditësimesh të vetvetishme</string>
+    <string name="app_links_title">Lidhje Aplikacionesh</string>
+    <string name="app_link_enabled">Lidhja e aplikacionit u aktivizua!</string>
+    <string name="android_market_desc">Android Market qe një shitore internetore aplikacionesh <em>software</em> e ngritur për pajisje Android, mbyllur më 2017.</string>
+    <string name="action_import">Importoji</string>
+    <string name="requesting_new_session">Po kërkohet sesion i ri</string>
+    <string name="download_eta_hrs">Edhe %1$dh %2$dm %3$ds</string>
+    <string name="toast_import_success">Formësimi i pajisjes u importua</string>
+    <string name="onboarding_permission_doze">Shkarkime Në Prapaskenë</string>
+    <string name="onboarding_permission_doze_desc">Lejojeni Shitoren Aurora të shkarkojë dhe përditësojë aplikacione në prapaskenë</string>
+    <string name="pref_downloader_wifi_title">Shkarkoji duke përdorur vetëm Wifi</string>
+    <string name="pref_download_directory_error">Shtegu i përzgjedhur s’është i shkrueshëm</string>
+    <string name="pref_vending_version_title">Version Google Play</string>
+    <string name="session_init">Po bëhet gjërat gati…</string>
+    <string name="session_login_failed_google">S’u bë hyrja me Google</string>
+    <string name="toast_proxy_failed">S’u arrit të ujdiset ndërmjetës</string>
+    <string name="ui_accent_0">Sistem</string>
+    <string name="toast_proxy_invalid">URL e pavlefshme ndërmjetësi, kontrollojini formatin!</string>
+    <string name="toast_proxy_success">Ndërmjetësi u ujdis me sukses</string>
+    <string name="update_available">ka përditësim</string>
+    <string name="rate_limited">Oh, për këtë llogari ka kufzime!</string>
+    <string name="error">Ndodhi një gabim!</string>
+    <string name="menu">Menu</string>
+    <string name="expand">Zgjeroje</string>
+    <string name="open_in_aurora">Hape në Shitoren Aurora</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="permissions_denied">U mohuan leje të domosdoshme. Ju lutemi, që të mund të vazhdohet veprimi, akordojini</string>
+    <string name="notification_updates_available_desc_1">Ka gati një version të ri të <xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="pref_updates_check_frequency_desc">Formësoni intervale për përditësime të automatizuara dhe të vetvetishme, në orë.</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dhe <xliff:g id="apps_count">%4$d</xliff:g> të tjerë</string>
+    <string name="access_denied_using_vpn">Hyrje e mohuar! Po përdorni VPN, ose Tor?</string>
+    <string name="action_enable">Aktivizoje</string>
+    <string name="google_play_store_desc">Google Play, e njohur dhe si Google Play Store dhe ish-Android Market.</string>
+    <string name="device_doze_title">U pikas optimizim baterie!</string>
+    <string name="device_doze_subtitle">Shitorja Aurora s’mund të instalojë shkarkimin, apo të përditësojë aplikacione në sfond, për shkak optimizimesh baterie.</string>
+    <string name="device_doze_description">Ju lutemi, që të lejohen veprime në prapaskenë, çaktivizoni optimizime baterie.</string>
+    <string name="device_doze_extra">Në daçi, mund të zgjidhni t’i mbani të aktivizuara optimizimet, por kështu s’do të jeni në gjendje të përfitoni nga shkarkime në sfond dhe përditësime të automatizuara, e keni vetë në dorë.</string>
+    <string name="action_manage">Administroni</string>
+    <string name="pref_updates_auto_off">Mos i vetë-përditëso aplikacionet</string>
+    <string name="pref_updates_auto_install">Kontrollo &amp; instalo vetvetiu përditësime të gatshme</string>
+    <string name="session_verifying">Po verifikohet sesioni</string>
+    <string name="search_hint">Kërkoni për Aplikacione &amp; Lojëra</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> dhe <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="session_login">Së pari, bëni hyrjen</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> përditësim gati</string>
+    <string name="checking_for_updates">Po kontrollohen për përditësime</string>
+    <string name="pref_install_mode_shizuku">Instalues Shizuku</string>
+    <string name="server_maintenance">Shërbyesi jashtë funksionimi, për mirëmbajtje</string>
+    <string name="notification_channel_updates">Njoftime përditësimesh</string>
+    <string name="title_app_settings">Rregullime Aplikacioni</string>
+    <string name="title_apps_sale_provider">Furnizues - bestappsales.com</string>
+    <string name="title_advanced">Të mëtejshme</string>
+    <string name="login_rate_limited">Oh, për ju ka kufizime</string>
+    <string name="server_unreachable">Shërbyes i pakapshëm</string>
+    <string name="check_connectivity">Kontrolloni lidhjen në rrjet</string>
+    <string name="app_language">Gjuhë Aplikacioni</string>
+    <string name="action_request_analysis">Kërkoni analizë të re</string>
+    <string name="download_paused">Ndalur • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="installer_shizuku_unavailable">Shizuku s’është instaluar, ose s’është ujdisur si duhet.</string>
+    <string name="action_home_screen">Shtoje te Skena e Kreut</string>
+    <string name="download_clear_finished">Spastrimi përfundoi</string>
+    <string name="download_eta_min">Edhe %1$dm %2$ds</string>
+    <string name="download_eta_sec">Edhe %ds</string>
+    <string name="ui_accent_9">Qitro</string>
+    <string name="onboarding_permission_notifications_desc">Dërgo njoftime lidhur me gjendje instalimesh</string>
+    <string name="pref_network_proxy_title">Ndërmjetës</string>
+    <string name="pref_network_proxy_enable">Aktivizo ndërmjetës</string>
+    <string name="pref_network_proxy_enable_desc">Lejo që krejt trafiku prej aplikacionesh të kalojë përmes ndërmjetësit</string>
+    <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi</string>
+    <string name="pref_aurora_only_desc">Te Përditësime dhe Aplikacione të Instaluar shfaq vetëm aplikacione të instaluar me Shitoren Aurora</string>
+    <string name="session_good">Hyaaa! Gjithçka në rregull.</string>
+    <string name="session_verifying_google">Po verifikohet Sesion Google</string>
+    <string name="title_search_suggestion">Sugjerim kërkimi</string>
+    <string name="title_search_results">Përfundime kërkimi</string>
+    <string name="updates_available">ka përditësime</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> përditësime gati</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> dhe <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="pref_updates_auto">Vetë-përditësoji aplikacionet</string>
+    <string name="pref_updates_auto_notify">Kontrollo &amp; njofto për përditësime të gatshme</string>
+    <string name="bad_request">Gabim i brendshëm! Ju lutemi, riprovoni pas ca kohe</string>
+    <string name="failed_to_generate_session">S’u prodhua dot sesion</string>
+    <string name="verifying_new_session">Po verifikohet sesioni i ri</string>
+    <string name="failed_generating_session">S’u arrit të prodhohej sesion, kod gabimi: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="amazon_appstore_desc">Amazon Appstore është një shitore aplikacionesh për platforma të përputhshme me Android, mbajtur në punë nga Amazon.</string>
+    <string name="failed_apk_export">S’u arrit të eksportoheshin APK-ra</string>
 </resources>

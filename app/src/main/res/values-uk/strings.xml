@@ -380,4 +380,5 @@
     <string name="pref_updates_incompatible">Несумісні оновлення</string>
     <string name="pref_updates_incompatible_desc">Показувати оновлення для несумісних або вимкнених застосунків, які можуть не встановитися</string>
     <string name="action_home_screen">Додати на домашній екран</string>
+    <string name="action_manage">Керувати</string>
 </resources>
