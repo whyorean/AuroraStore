@@ -140,7 +140,7 @@
     <string name="exodus_substring">známých sledovacích prvků nalezeno ve verzi</string>
     <string name="exodus_no_tracker">Neobsahuje žádné známé sledovací prvky</string>
     <string name="exodus_progress">Kontroluji trackers…</string>
-    <string name="exodus_powered">Běží na Exodu</string>
+    <string name="exodus_powered">Využívá službu Exodus</string>
     <string name="download_speed_estimating">Odhaduji</string>
     <string name="download_resume_all">Pokračovat vše</string>
     <string name="download_queued">Ve frontě</string>
