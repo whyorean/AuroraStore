@@ -89,6 +89,7 @@ object CertUtil {
                     packageInfo.signingInfo.signingCertificateHistory.map { it.generateX509Certificate() }
                 }
             } else {
+                @Suppress("DEPRECATION")
                 packageInfo.signatures.map { it.generateX509Certificate() }
             }
         } catch (exception: Exception) {
@@ -101,6 +102,7 @@ object CertUtil {
         return if (isPAndAbove()) {
             getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
         } else {
+            @Suppress("DEPRECATION")
             getPackageInfo(context, packageName, PackageManager.GET_SIGNATURES)
         }
     }

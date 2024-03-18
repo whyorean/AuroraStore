@@ -215,6 +215,7 @@ object PackageUtil {
     fun getFilter(): IntentFilter {
         val filter = IntentFilter()
         filter.addDataScheme("package")
+        @Suppress("DEPRECATION")
         filter.addAction(Intent.ACTION_PACKAGE_INSTALL)
         filter.addAction(Intent.ACTION_PACKAGE_ADDED)
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED)

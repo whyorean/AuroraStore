@@ -43,13 +43,14 @@ class NativeInstaller(context: Context) : InstallerBase(context) {
         val intent: Intent
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            @Suppress("DEPRECATION")
             intent = Intent(Intent.ACTION_INSTALL_PACKAGE)
             intent.data = getUri(file)
             intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK
         } else {
             intent = Intent(Intent.ACTION_VIEW)
             intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
 
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
