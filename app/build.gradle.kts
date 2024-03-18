@@ -162,7 +162,7 @@ dependencies {
     implementation("com.gitlab.AuroraOSS:gplayapi:3.2.10")
 
     //Browser
-    implementation("androidx.browser:browser:1.7.0")
+    implementation("androidx.browser:browser:1.8.0")
 
     //Shizuku
     val shizukuVersion = "13.1.5"
