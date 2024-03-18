@@ -259,4 +259,12 @@
     <string name="pref_downloader_wifi_title">淨係用 WiFi 下載</string>
     <string name="pref_install_delete_title">安裝之後剷走 APK</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
+    <string name="action_whitelist">欽准名單</string>
+    <string name="action_wishlist_add">加落願望清單</string>
+    <string name="action_blacklist_add">加落禁制名單</string>
+    <string name="action_clear">抹走</string>
+    <string name="action_blacklist">禁制名單</string>
+    <string name="action_request_analysis">請求重新分析</string>
+    <string name="action_home_screen">喺主畫面加個公仔</string>
+    <string name="download_clear_finished">抹走搞掂嗰啲</string>
 </resources>
