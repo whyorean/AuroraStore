@@ -27,6 +27,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
@@ -127,8 +128,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             binding.btnForward.text = getString(R.string.action_finish)
             binding.btnForward.isEnabled = true
             binding.btnForward.setOnClickListener {
+                setupAutoUpdates()
                 save(PREFERENCE_INTRO, true)
-                UpdateWorker.scheduleAutomatedCheck(requireContext())
                 findNavController().navigate(
                     OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
                 )
@@ -165,7 +166,11 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
         /*Updates*/
         save(PREFERENCE_UPDATES_EXTENDED, false)
-        save(PREFERENCE_UPDATES_AUTO, 2)
         save(PREFERENCE_UPDATES_CHECK_INTERVAL, 3)
+    }
+
+    private fun setupAutoUpdates() {
+        save(PREFERENCE_UPDATES_AUTO, if (requireContext().isIgnoringBatteryOptimizations()) 2 else 1)
+        UpdateWorker.scheduleAutomatedCheck(requireContext())
     }
 }

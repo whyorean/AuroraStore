@@ -1,27 +1,35 @@
 package com.aurora.store.view.ui.sheets
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.PowerManager
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.navArgs
+import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.SheetDozeWarningBinding
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
+import com.aurora.store.util.save
 
 class DozeWarningSheet : BaseBottomSheet() {
+
+    private val args: DozeWarningSheetArgs by navArgs()
 
     private val startForDozeResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             context?.let {
-                val powerManager = it.getSystemService(Context.POWER_SERVICE) as PowerManager
-                if (isMAndAbove() && powerManager.isIgnoringBatteryOptimizations(it.packageName)) {
+                if (it.isIgnoringBatteryOptimizations()) {
+                    if (args.enableAutoUpdate) {
+                        requireContext().save(PREFERENCE_UPDATES_AUTO, 2)
+                        UpdateWorker.scheduleAutomatedCheck(requireContext())
+                    }
                     toast(R.string.toast_permission_granted)
                     activity?.recreate()
                 } else {

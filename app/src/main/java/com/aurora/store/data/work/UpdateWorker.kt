@@ -15,6 +15,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.Constants
+import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
@@ -32,6 +33,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
+import com.aurora.store.util.save
 import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -150,6 +152,7 @@ class UpdateWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         val autoUpdatesMode = Preferences.getInteger(appContext, PREFERENCE_UPDATES_AUTO, 3)
+        val notifyManager = appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         // Exit if auto-updates is turned off in settings
         if (autoUpdatesMode == 0) {
@@ -214,16 +217,23 @@ class UpdateWorker @AssistedInject constructor(
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
                         Log.i(TAG,"Found updates, notifying!")
-                        val notifyManager =
-                            appContext.getSystemService(Context.NOTIFICATION_SERVICE)
-                                    as NotificationManager
                         notifyManager.notify(
                             notificationID,
                             NotificationUtil.getUpdateNotification(appContext, updatesList)
                         )
                     } else {
-                        Log.i(TAG,"Found updates, updating!")
-                        updatesList.forEach { downloadWorkerUtil.enqueueApp(it) }
+                        if (appContext.isIgnoringBatteryOptimizations()) {
+                            Log.i(TAG,"Found updates, updating!")
+                            updatesList.forEach { downloadWorkerUtil.enqueueApp(it) }
+                        } else {
+                            // Fallback to notification if battery optimizations are enabled
+                            Log.i(TAG,"Found updates, but battery optimizations are enabled!")
+                            notifyManager.notify(
+                                notificationID,
+                                NotificationUtil.getUpdateNotification(appContext, updatesList)
+                            )
+                            appContext.save(PREFERENCE_UPDATES_AUTO, 1)
+                        }
                     }
                     return@withContext Result.success()
                 }

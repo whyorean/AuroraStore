@@ -25,11 +25,4 @@
         android:icon="@drawable/ic_download_manager"
         android:title="@string/title_download_manager"
         app:showAsAction="always" />
-
-    <item
-        android:id="@+id/menu_doze_info"
-        android:icon="@drawable/ic_menu_about"
-        android:title="@string/device_doze_title"
-        android:visible="false"
-        app:showAsAction="always" />
 </menu>

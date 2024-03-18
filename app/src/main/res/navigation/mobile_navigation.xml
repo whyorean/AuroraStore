@@ -47,6 +47,9 @@
     <action
         android:id="@+id/action_global_appMenuSheet"
         app:destination="@id/appMenuSheet" />
+    <action
+        android:id="@+id/action_global_dozeWarningSheet"
+        app:destination="@id/dozeWarningSheet" />
     <fragment
         android:id="@+id/appsContainerFragment"
         android:name="com.aurora.store.view.ui.apps.AppsContainerFragment"
@@ -468,5 +471,10 @@
         android:id="@+id/dozeWarningSheet"
         android:name="com.aurora.store.view.ui.sheets.DozeWarningSheet"
         android:label="DozeWarningSheet"
-        tools:layout="@layout/sheet_doze_warning"/>
+        tools:layout="@layout/sheet_doze_warning">
+        <argument
+            android:name="enableAutoUpdate"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </dialog>
 </navigation>

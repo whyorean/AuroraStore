@@ -177,7 +177,9 @@ fun Context.accentColor(): Int {
 }
 
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
-    if (!isMAndAbove()) return true
-    return !(getSystemService(Context.POWER_SERVICE) as PowerManager)
-        .isIgnoringBatteryOptimizations(packageName)
+    return if (isMAndAbove()) {
+        (getSystemService(Context.POWER_SERVICE) as PowerManager).isIgnoringBatteryOptimizations(packageName)
+    } else {
+        true
+    }
 }

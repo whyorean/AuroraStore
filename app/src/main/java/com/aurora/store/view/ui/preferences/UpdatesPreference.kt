@@ -25,6 +25,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.SeekBarPreference
+import com.aurora.extensions.isIgnoringBatteryOptimizations
+import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
@@ -39,11 +41,22 @@ class UpdatesPreference : BasePreferenceFragment() {
 
         findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)
             ?.setOnPreferenceChangeListener { _, newValue ->
-                when (newValue.toString().toInt()) {
+                val value = newValue.toString().toInt()
+                when (value) {
                     0 -> UpdateWorker.cancelAutomatedCheck(requireContext())
-                    else -> UpdateWorker.scheduleAutomatedCheck(requireContext())
+                    1 -> UpdateWorker.scheduleAutomatedCheck(requireContext())
+                    else -> {
+                        if (requireContext().isIgnoringBatteryOptimizations()) {
+                            UpdateWorker.scheduleAutomatedCheck(requireContext())
+                            return@setOnPreferenceChangeListener true
+                        } else {
+                            findNavController().navigate(
+                                MobileNavigationDirections.actionGlobalDozeWarningSheet(true)
+                            )
+                        }
+                    }
                 }
-                true
+                value != 2
             }
 
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
