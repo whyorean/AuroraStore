@@ -125,7 +125,7 @@
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
     <string name="onboarding_permission_installer">Kurucu İzni</string>
     <string name="onboarding_permission_esm">Harici Depolama Yöneticisi</string>
-    <string name="onboarding_permission_esa_desc">Dış depolamaya aygıt ayarlarını aktarmak ve indirmeleri (APK\'ler ve OBB\'ler) kaydetmek için.</string>
+    <string name="onboarding_permission_esa_desc">Büyük uygulamalar ve oyunlar için APK genişletme dosyalarını (OBB\'ler) kaydetmek için.</string>
     <string name="onboarding_permission_esa">Harici Depolama Erişimi</string>
     <string name="onboarding_welcome_select">Neler yapıyorsun\?</string>
     <string name="onboarding_title_welcome">Hoş geldiniz</string>
