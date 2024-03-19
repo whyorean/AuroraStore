@@ -205,7 +205,7 @@
     <string name="onboarding_permission_installer_desc">允许 Aurora 商店安装应用</string>
     <string name="onboarding_permission_installer">安装权限</string>
     <string name="onboarding_permission_esm">外部存储管理器</string>
-    <string name="onboarding_permission_esa_desc">保存下载项 (APKs 和 OBBs)，将设备配置导出到外部存储和从外部存储导入设备配置。</string>
+    <string name="onboarding_permission_esa_desc">为了保存大型应用和游戏的 APK 扩展文件（OBBs）。</string>
     <string name="onboarding_permission_esa">访问外部存储</string>
     <string name="onboarding_title_welcome">欢迎</string>
     <string name="onboarding_title_permissions">权限</string>
