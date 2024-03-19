@@ -179,7 +179,7 @@
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
     <string name="device_miui_subtitle">لا يمكن لمثبت الجلسة تثبيت التطبيقات بسبب تحسينات MIUI.</string>
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>
-    <string name="onboarding_permission_esa_desc">لحفظ التحميلات (APKs وOBBs)، قم بتصدير واستيراد تكوينات الأجهزة من وإلى التخزين الخارجي.</string>
+    <string name="onboarding_permission_esa_desc">لحفظ ملفات توسيع APK (OBBs) للتطبيقات والألعاب الكبيرة.</string>
     <string name="installer_service_misconfigured">إعداد خدمات Aurora ومنح كافة الأذونات أولا.</string>
     <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت بالجذر</string>
     <string name="device_miui_extra">اختياريا يمكنك اختيار المثبت الأصلي، ولكن بعد ذلك لا يمكنك تثبيت التطبيقات المجمعة (تقسيم) APKs، لذلك الخيار لك.</string>
