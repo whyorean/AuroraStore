@@ -21,12 +21,9 @@ package com.aurora.store.viewmodel.all
 
 import android.app.Application
 import android.util.Log
-import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.BuildConfig
-import com.aurora.store.data.work.UpdateWorker
-import com.aurora.store.util.CertUtil
+import com.aurora.store.util.AppUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -54,42 +51,14 @@ class UpdatesViewModel @Inject constructor(
 
     override fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
-            val isExtendedUpdateEnabled = Preferences.getBoolean(
-                getApplication(),
-                Preferences.PREFERENCE_UPDATES_EXTENDED
-            )
-
             try {
-                getFilteredApps().filter {
-                    val packageInfo = packageInfoMap[it.packageName]
-                    if (packageInfo != null) {
-                        it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
-                    } else {
-                        false
-                    }
-                }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }.also { apps ->
-                    val nApps = apps.toMutableList()
-
-                    if (!CertUtil.isFDroidApp(getApplication(), BuildConfig.APPLICATION_ID)) {
-                        UpdateWorker.getSelfUpdate(getApplication(), gson)?.let { nApps.add(it) }
-                    }
-
-                    if (!isExtendedUpdateEnabled) {
-                        nApps.addAll(
-                            apps.filter { app ->
-                                app.certificateSetList.any {
-                                    it.certificateSet in CertUtil.getEncodedCertificateHashes(
-                                        getApplication(),
-                                        app.packageName
-                                    )
-                                }
-                            }
-                        )
-                        _updates.emit(nApps)
-                    } else {
-                        _updates.emit(nApps)
-                    }
-                }
+                val isExtendedUpdateEnabled = Preferences.getBoolean(
+                    getApplication(), Preferences.PREFERENCE_UPDATES_EXTENDED
+                )
+                val updates =
+                    AppUtil.getUpdatableApps(getApplication(), gson, !isExtendedUpdateEnabled)
+                        .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
+                _updates.emit(updates)
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)
             }

@@ -24,6 +24,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.flushAndAdd
 import com.aurora.store.data.RequestState
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.util.AppUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
@@ -35,14 +36,13 @@ class InstalledViewModel(application: Application) : BaseAppsViewModel(applicati
 
     init {
         EventBus.getDefault().register(this)
-
         requestState = RequestState.Init
     }
 
     override fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             requestState = try {
-                appList.flushAndAdd(getFilteredApps())
+                appList = AppUtil.getFilteredInstalledApps(getApplication()).toMutableList()
                 liveData.postValue(appList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
                 RequestState.Complete
             } catch (e: Exception) {
