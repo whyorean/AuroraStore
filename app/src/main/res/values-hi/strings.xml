@@ -250,7 +250,7 @@
     <string name="device_miui_subtitle">सत्र इंस्टॉलर शाओमी ऑपटीमाइज़ेशन की वजह से ऐप इंस्टॉल नहीं कर सका।</string>
     <string name="device_miui_extra">आप मूल इंस्टॉलर भी चुन सकते हैं, लेकिन तब आप बंडल (स्प्लिट) एपीके इंस्टॉल नहीं कर पाएंगे, चुनना आपको है।</string>
     <string name="dialog_desc_native_split">आप बंडल (स्प्लिट) ऐप मूल इंस्टॉलर से इंस्टॉल नहीं कर सकते। अपना इंस्टॉलर सत्र, सेवा या रूट में बदलें।</string>
-    <string name="onboarding_permission_esa_desc">बाहरी स्टोरेज में डाउनलोड (एपीके और ओबीबी) सेव करने और डिवाइस संरचना इंपोर्ट और एक्सपोर्ट करने के लिए अनुमित दें।</string>
+    <string name="onboarding_permission_esa_desc">बड़े ऐप्स और गेम के लिए APK विस्तार फ़ाइलें (OBB) सहेजने के लिए।</string>
     <string name="pref_abandon_session_desc">छोड़े या बचे इंस्टॉलेशन सत्र साफ करें</string>
     <string name="pref_dialog_to_apply_restart">ये सेटिंग आपके ऐप रिस्टार्ट करने के बाद लागू हो जाएंगी</string>
     <string name="pref_insecure_anonymous_title">असुरक्षित अज्ञात सत्र</string>
