@@ -171,7 +171,7 @@
     <string name="onboarding_permission_installer_desc">Zezwól na instalację aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
-    <string name="onboarding_permission_esa_desc">Aby zapisać pobrane pliki (APK i OBB), wyeksportować i zaimportować konfiguracje urządzenia do i z pamięci zewnętrznej.</string>
+    <string name="onboarding_permission_esa_desc">Do zapisu rozszerzeń APK (plików OBB) dla dużych gier i aplikacji.</string>
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_title_permissions">Uprawnienia</string>
     <string name="onboarding_permission_select">Aurora Store wymaga następujących uprawnień</string>
