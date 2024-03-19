@@ -19,34 +19,37 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.ClusterHelper
-import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.viewmodel.BaseAndroidViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
-class LibraryAppsViewModel(application: Application) : BaseAndroidViewModel(application) {
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class LibraryAppsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
-    private val authData: AuthData = AuthProvider.with(application).getAuthData()
+    private val authData: AuthData = AuthProvider.with(context).getAuthData()
     private val clusterHelper: ClusterHelper =
-        ClusterHelper(authData).using(HttpClient.getPreferredClient(application))
+        ClusterHelper(authData).using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()
 
-    init {
-        requestState = RequestState.Init
-    }
-
-    override fun observe() {
+    fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
@@ -62,12 +65,9 @@ class LibraryAppsViewModel(application: Application) : BaseAndroidViewModel(appl
                             updateCluster(newCluster)
                             liveData.postValue(streamCluster)
                         }
-                        else -> {
-                            requestState = RequestState.Complete
-                        }
+                        else -> {}
                     }
-                } catch (e: Exception) {
-                    requestState = RequestState.Pending
+                } catch (_: Exception) {
                 }
             }
         }

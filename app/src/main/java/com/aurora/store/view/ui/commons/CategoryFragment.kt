@@ -20,25 +20,23 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.CategoryViewModel_
-import com.aurora.store.viewmodel.category.AppCategoryViewModel
-import com.aurora.store.viewmodel.category.BaseCategoryViewModel
-import com.aurora.store.viewmodel.category.GameCategoryViewModel
+import com.aurora.store.viewmodel.category.CategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryFragment : BaseFragment() {
+class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
-    private lateinit var B: FragmentGenericRecyclerBinding
-    private lateinit var VM: BaseCategoryViewModel
+    private var _binding: FragmentGenericRecyclerBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: CategoryViewModel by viewModels()
 
     private var pageType = 0
 
@@ -53,18 +51,9 @@ class CategoryFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentGenericRecyclerBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_generic_recycler,
-                container,
-                false
-            )
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentGenericRecyclerBinding.bind(view)
 
         val bundle = arguments
         if (bundle != null) {
@@ -72,31 +61,27 @@ class CategoryFragment : BaseFragment() {
         }
 
         when (pageType) {
-            0 -> VM = ViewModelProvider(this)[AppCategoryViewModel::class.java]
-            1 -> VM = ViewModelProvider(this)[GameCategoryViewModel::class.java]
+            0 -> viewModel.getCategoryList(Category.Type.APPLICATION)
+            1 -> viewModel.getCategoryList(Category.Type.GAME)
         }
 
-        return B.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
-        }
-    }
-
-    private fun updateController(categoryList: List<Category>) {
-        B.recycler.withModels {
-            setFilterDuplicates(true)
-            categoryList.forEach {
-                add(
-                    CategoryViewModel_()
-                        .id(it.title)
-                        .category(it)
-                        .click { _ -> openCategoryBrowseFragment(it) }
-                )
+        viewModel.liveData.observe(viewLifecycleOwner) { categoryList ->
+            binding.recycler.withModels {
+                setFilterDuplicates(true)
+                categoryList.forEach {
+                    add(
+                        CategoryViewModel_()
+                            .id(it.title)
+                            .category(it)
+                            .click { _ -> openCategoryBrowseFragment(it) }
+                    )
+                }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

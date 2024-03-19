@@ -19,29 +19,36 @@
 
 package com.aurora.store.viewmodel.homestream
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.StreamHelper
-import com.aurora.store.data.RequestState
 import com.aurora.store.data.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
-import com.aurora.store.viewmodel.BaseAndroidViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
-class BaseClusterViewModel(application: Application) : BaseAndroidViewModel(application) {
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class BaseClusterViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
-    var authData: AuthData = AuthProvider.with(application).getAuthData()
+    var authData: AuthData = AuthProvider.with(context).getAuthData()
 
     var streamHelper: StreamHelper =
-        StreamHelper(authData).using(HttpClient.getPreferredClient(application))
+        StreamHelper(authData).using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()
@@ -56,7 +63,7 @@ class BaseClusterViewModel(application: Application) : BaseAndroidViewModel(appl
         observe()
     }
 
-    override fun observe() {
+    fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
@@ -79,10 +86,8 @@ class BaseClusterViewModel(application: Application) : BaseAndroidViewModel(appl
                         liveData.postValue(ViewState.Success(streamBundle))
                     } else {
                         Log.i("End of Bundle")
-                        requestState = RequestState.Complete
                     }
                 } catch (e: Exception) {
-                    requestState = RequestState.Pending
                     liveData.postValue(ViewState.Error(e.message))
                 }
             }

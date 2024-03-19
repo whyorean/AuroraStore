@@ -19,14 +19,18 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.util.AppUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Preferences
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -35,10 +39,12 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class UpdatesViewModel @Inject constructor(
-    application: Application,
+    @ApplicationContext private val context: Context,
+    private val gson: Gson,
     private val downloadWorkerUtil: DownloadWorkerUtil
-) : BaseAppsViewModel(application) {
+) : ViewModel() {
 
     private val TAG = UpdatesViewModel::class.java.simpleName
 
@@ -49,14 +55,14 @@ class UpdatesViewModel @Inject constructor(
 
     val downloadsList get() = downloadWorkerUtil.downloadsList
 
-    override fun observe() {
+    fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val isExtendedUpdateEnabled = Preferences.getBoolean(
-                    getApplication(), Preferences.PREFERENCE_UPDATES_EXTENDED
+                    context, Preferences.PREFERENCE_UPDATES_EXTENDED
                 )
                 val updates =
-                    AppUtil.getUpdatableApps(getApplication(), gson, !isExtendedUpdateEnabled)
+                    AppUtil.getUpdatableApps(context, gson, !isExtendedUpdateEnabled)
                         .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
                 _updates.emit(updates)
             } catch (exception: Exception) {

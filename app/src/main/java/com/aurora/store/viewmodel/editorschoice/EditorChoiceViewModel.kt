@@ -19,20 +19,51 @@
 
 package com.aurora.store.viewmodel.editorschoice
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.gplayapi.data.models.editor.EditorChoiceBundle
 import com.aurora.gplayapi.helpers.StreamHelper
+import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.providers.AuthProvider
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.supervisorScope
 
-class AppEditorChoiceViewModel(application: Application) : BaseEditorChoiceViewModel(application) {
-    init {
-        category = StreamHelper.Category.APPLICATION
-        observe()
-    }
-}
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class EditorChoiceViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
+    private val TAG = EditorChoiceViewModel::class.java.simpleName
 
-class GameEditorChoiceViewModel(application: Application) : BaseEditorChoiceViewModel(application) {
-    init {
-        category = StreamHelper.Category.GAME
-        observe()
+    private val authData: AuthData = AuthProvider
+        .with(context)
+        .getAuthData()
+
+    private val streamHelper: StreamHelper = StreamHelper(authData)
+        .using(HttpClient.getPreferredClient(context))
+
+    val liveData: MutableLiveData<List<EditorChoiceBundle>> = MutableLiveData()
+
+    fun getEditorChoiceStream(category: StreamHelper.Category) {
+        viewModelScope.launch(Dispatchers.IO) {
+            supervisorScope {
+                try {
+                    val editorChoiceBundle = streamHelper.getEditorChoiceStream(category)
+                    liveData.postValue(editorChoiceBundle)
+                } catch (exception: Exception) {
+                    Log.e(TAG, "Failed fetching list of categories", exception)
+                }
+            }
+        }
     }
 }

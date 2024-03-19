@@ -19,25 +19,32 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.store.data.RequestState
 import com.aurora.store.data.model.Black
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.viewmodel.BaseAndroidViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import java.util.Locale
+import javax.inject.Inject
 
-class BlacklistViewModel(application: Application) : BaseAndroidViewModel(application) {
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class BlacklistViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
-    private val packageManager: PackageManager = application.packageManager
-    private val blacklistProvider: BlacklistProvider = BlacklistProvider.with(application)
+    private val packageManager: PackageManager = context.packageManager
+    private val blacklistProvider: BlacklistProvider = BlacklistProvider.with(context)
 
     var blackList: MutableList<Black> = mutableListOf()
     var selected: MutableSet<String> = mutableSetOf()
@@ -45,16 +52,15 @@ class BlacklistViewModel(application: Application) : BaseAndroidViewModel(applic
     val liveData: MutableLiveData<List<Black>> = MutableLiveData()
 
     init {
-        requestState = RequestState.Init
         selected = blacklistProvider.getBlackList()
         observe()
     }
 
-    override fun observe() {
+    fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    val packageInfoMap = PackageUtil.getPackageInfoMap(getApplication())
+                    val packageInfoMap = PackageUtil.getPackageInfoMap(context)
                     packageInfoMap.values
                         .filter {
                             it.packageName != null
@@ -72,10 +78,8 @@ class BlacklistViewModel(application: Application) : BaseAndroidViewModel(applic
                             blackList.add(black)
                         }
                     liveData.postValue(blackList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
-                    requestState = RequestState.Complete
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    requestState = RequestState.Pending
                 }
             }
         }

@@ -42,30 +42,6 @@
             app:itemSpacing="@dimen/margin_normal" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/error_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:gravity="center|center_vertical"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:contentDescription="@string/error"
-            android:src="@drawable/ic_problem" />
-
-        <TextView
-            android:id="@+id/error_message"
-            style="@style/TextAppearance.Aurora.SubTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rate_limited" />
-    </LinearLayout>
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/filter_fab"
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"

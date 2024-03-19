@@ -19,15 +19,18 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
-import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.viewmodel.BaseAndroidViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -37,24 +40,24 @@ data class PaginatedAppList(
     var hasMore: Boolean
 )
 
-class PurchasedViewModel(application: Application) : BaseAndroidViewModel(application) {
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class PurchasedViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
-    private val authData = AuthProvider.with(application).getAuthData()
+    private val authData = AuthProvider.with(context).getAuthData()
 
-    private val purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient(application))
+    private val purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient(context))
 
     private var appList: MutableList<App> = mutableListOf()
 
     val liveData: MutableLiveData<PaginatedAppList> = MutableLiveData()
 
-    init {
-        requestState = RequestState.Init
-    }
-
-    override fun observe() {
+    fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
-                requestState = try {
+                try {
                     val nextAppList = purchaseHelper.getPurchaseHistory(appList.size)
                         .filter { it.displayName.isNotEmpty() }
 
@@ -72,9 +75,7 @@ class PurchasedViewModel(application: Application) : BaseAndroidViewModel(applic
                             )
                         )
                     }
-                    RequestState.Complete
-                } catch (e: Exception) {
-                    RequestState.Pending
+                } catch (_: Exception) {
                 }
             }
         }

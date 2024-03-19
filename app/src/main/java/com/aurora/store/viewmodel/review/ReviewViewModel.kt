@@ -19,29 +19,36 @@
 
 package com.aurora.store.viewmodel.review
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.store.data.RequestState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.viewmodel.BaseAndroidViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
-class ReviewViewModel(application: Application) : BaseAndroidViewModel(application) {
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class ReviewViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
     var authData: AuthData = AuthProvider
-        .with(application)
+        .with(context)
         .getAuthData()
 
     var reviewsHelper: ReviewsHelper = ReviewsHelper(authData)
-        .using(HttpClient.getPreferredClient(application))
+        .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ReviewCluster> = MutableLiveData()
 
@@ -53,8 +60,7 @@ class ReviewViewModel(application: Application) : BaseAndroidViewModel(applicati
                 try {
                     reviewsCluster = reviewsHelper.getReviews(packageName, filter)
                     liveData.postValue(reviewsCluster)
-                } catch (e: Exception) {
-                    requestState = RequestState.Pending
+                } catch (_: Exception) {
                 }
             }
         }
@@ -72,14 +78,9 @@ class ReviewViewModel(application: Application) : BaseAndroidViewModel(applicati
                     }
 
                     liveData.postValue(reviewsCluster)
-                } catch (e: Exception) {
-                    requestState = RequestState.Pending
+                } catch (_: Exception) {
                 }
             }
         }
-    }
-
-    override fun observe() {
-
     }
 }

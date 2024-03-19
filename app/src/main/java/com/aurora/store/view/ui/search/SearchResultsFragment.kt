@@ -28,11 +28,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import androidx.core.view.isVisible
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
@@ -124,32 +120,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
         query = requireArguments().getString("query")
         query?.let { updateQuery(it) }
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                VM.responseCode.collect {
-                    when (it) {
-                        429 -> {
-                            if (VM.liveData.value?.appList?.isEmpty() == true) {
-                                attachErrorLayout(getString(R.string.rate_limited))
-                            } else {
-                                snackbar = Snackbar.make(
-                                    binding.root,
-                                    getString(R.string.rate_limited),
-                                    Snackbar.LENGTH_INDEFINITE
-                                )
-                                snackbar?.show()
-                            }
-                        }
-
-                        else -> {
-                            if (binding.errorLayout.isVisible) detachErrorLayout()
-                            if (snackbar != null && snackbar?.isShown == true) snackbar?.dismiss()
-                        }
-                    }
-                }
-            }
-        }
     }
 
     override fun onDestroyView() {
@@ -161,19 +131,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         }
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun attachErrorLayout(message: String) {
-        binding.recycler.visibility = View.GONE
-        binding.filterFab.visibility = View.GONE
-        binding.errorLayout.visibility = View.VISIBLE
-        binding.errorMessage.text = message
-    }
-
-    private fun detachErrorLayout() {
-        binding.recycler.visibility = View.VISIBLE
-        binding.filterFab.visibility = View.VISIBLE
-        binding.errorLayout.visibility = View.GONE
     }
 
     private fun updateController(searchBundle: SearchBundle?) {

@@ -28,12 +28,6 @@ sealed class ViewState {
     data class Success<T>(val data: T) : ViewState()
 }
 
-sealed class RequestState {
-    object Init : RequestState()
-    object Pending : RequestState()
-    object Complete : RequestState()
-}
-
 sealed class AuthState {
     object Available : AuthState()
     object Unavailable : AuthState()

@@ -19,34 +19,49 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.app.Application
+import android.annotation.SuppressLint
+import android.content.Context
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.flushAndAdd
-import com.aurora.store.data.RequestState
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.util.AppUtil
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Locale
+import javax.inject.Inject
 
-class InstalledViewModel(application: Application) : BaseAppsViewModel(application) {
+@HiltViewModel
+@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
+class InstalledViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
+
+    private val TAG = InstalledViewModel::class.java.simpleName
+
+    var appList: MutableList<App> = mutableListOf()
+    val liveData: MutableLiveData<List<App>> = MutableLiveData()
 
     init {
         EventBus.getDefault().register(this)
-        requestState = RequestState.Init
+        observe()
     }
 
-    override fun observe() {
+    fun observe() {
         viewModelScope.launch(Dispatchers.IO) {
-            requestState = try {
-                appList = AppUtil.getFilteredInstalledApps(getApplication()).toMutableList()
+            try {
+                appList = AppUtil.getFilteredInstalledApps(context).toMutableList()
                 liveData.postValue(appList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
-                RequestState.Complete
-            } catch (e: Exception) {
-                RequestState.Pending
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to get installed apps", exception)
             }
         }
     }
