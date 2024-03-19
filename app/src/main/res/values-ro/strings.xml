@@ -159,7 +159,7 @@
     <string name="onboarding_title_permissions">Permisiuni</string>
     <string name="onboarding_title_welcome">Bine ai venit</string>
     <string name="onboarding_permission_installer_desc">Permite instalarea aplicațiilor din Aurora Store</string>
-    <string name="onboarding_permission_esa_desc">Pentru a salva descărcări (APK și OBB), a exporta și a importa configurații de dispozitiv în și din memoria externă.</string>
+    <string name="onboarding_permission_esa_desc">Pentru a salva fișierele de extindere APK (OBB) pentru aplicații și jocuri mari.</string>
     <string name="onboarding_permission_installer">Permisiune de instalare</string>
     <string name="pref_abandon_session_desc">Șterge sesiunile de instalare abandonate sau în așteptare</string>
     <string name="onboarding_permission_notifications">Notificări</string>
@@ -377,4 +377,5 @@
     <string name="action_home_screen">Adaugă la ecranul de pornire</string>
     <string name="pref_updates_incompatible">Actualizări incompatibile</string>
     <string name="pref_updates_incompatible_desc">Afișează actualizări pentru aplicațiile incompatibile sau dezactivate care nu pot fi instalate</string>
+    <string name="action_manage">Gestionează</string>
 </resources>
