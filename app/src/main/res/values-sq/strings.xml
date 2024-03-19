@@ -161,7 +161,7 @@
     <string name="pref_abandon_session">Spastro me detyrim sesione instalimi</string>
     <string name="pref_abandon_session_desc">Spastro sesione instalimesh të braktisur ose pezull</string>
     <string name="onboarding_permission_esa">Hyrje Në Depozitë të Jashtme</string>
-    <string name="onboarding_permission_esa_desc">Që të ruhen shkarkimet (APK &amp; OBB), eksportoni dhe importoni formësime pajisjeje te dhe prej depozite të jashtme.</string>
+    <string name="onboarding_permission_esa_desc">Për ruajtje kartelash zgjerimi APK (OBBs) për aplikacione &amp; lojëra të mëdha.</string>
     <string name="onboarding_permission_esm">Përgjegjësi Depozitash të Jashtme</string>
     <string name="onboarding_permission_installer">Leje Instaluesi</string>
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
