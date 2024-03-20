@@ -36,7 +36,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -105,6 +104,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         get() = _binding!!
 
     private val viewModel: AppDetailsViewModel by viewModels()
+    private val detailsClusterViewModel: DetailsClusterViewModel by viewModels()
 
     private val args: AppDetailsFragmentArgs by navArgs()
 
@@ -851,8 +851,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
     private fun inflateAppStream(epoxyRecyclerView: EpoxyRecyclerView, app: App) {
         app.detailsStreamUrl?.let {
-            val VM = ViewModelProvider(this)[DetailsClusterViewModel::class.java]
-
             val carouselController =
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {
                     override fun onHeaderClicked(streamCluster: StreamCluster) {
@@ -866,7 +864,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
 
                     override fun onClusterScrolled(streamCluster: StreamCluster) {
-                        VM.observeCluster(streamCluster)
+                        detailsClusterViewModel.observeCluster(streamCluster)
                     }
 
                     override fun onAppClick(app: App) {
@@ -878,7 +876,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
                 })
 
-            VM.liveData.observe(viewLifecycleOwner) {
+            detailsClusterViewModel.liveData.observe(viewLifecycleOwner) {
                 when (it) {
                     is ViewState.Empty -> {
                     }
@@ -903,7 +901,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
             epoxyRecyclerView.setController(carouselController)
 
-            VM.getStreamBundle(it)
+            detailsClusterViewModel.getStreamBundle(it)
         }
     }
 
