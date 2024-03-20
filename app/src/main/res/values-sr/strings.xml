@@ -79,7 +79,7 @@
     <string name="onboarding_permission_installer_desc">Дозволите инсталирање апликација из Aurora Store-а</string>
     <string name="onboarding_permission_installer">Дозвола програма за инсталацију</string>
     <string name="onboarding_permission_esm">Менаџер спољне меморије</string>
-    <string name="onboarding_permission_esa_desc">Да бисте сачували преузимања (APK-ове и OBB-ове), извезите и увезите конфигурације уређаја у и из спољне меморије.</string>
+    <string name="onboarding_permission_esa_desc">За чување проширених APK фајлова (OBB-ова) за велике апликације и игре.</string>
     <string name="onboarding_permission_esa">Приступ спољној меморији</string>
     <string name="onboarding_welcome_select">Шта има\?</string>
     <string name="onboarding_title_welcome">Добро дошли</string>
