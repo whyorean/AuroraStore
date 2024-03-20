@@ -27,7 +27,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.SearchSuggestEntry
@@ -45,16 +45,16 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
     private val binding: FragmentSearchSuggestionBinding
         get() = _binding!!
 
-    lateinit var VM: SearchSuggestionViewModel
-    lateinit var searchView: TextInputEditText
+    private val viewModel: SearchSuggestionViewModel by viewModels()
 
-    var query: String = String()
+    private lateinit var searchView: TextInputEditText
+
+    private var query: String = String()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentSearchSuggestionBinding.bind(view)
-        VM = ViewModelProvider(this)[SearchSuggestionViewModel::class.java]
 
         // Toolbar
         binding.layoutToolbarSearch.apply {
@@ -67,7 +67,7 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
             }
         }
 
-        VM.liveSearchSuggestions.observe(viewLifecycleOwner) {
+        viewModel.liveSearchSuggestions.observe(viewLifecycleOwner) {
             updateController(it)
         }
 
@@ -113,7 +113,7 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
                 if (s.isNotEmpty()) {
                     query = s.toString()
                     if (query.isNotEmpty()) {
-                        VM.observeStreamBundles(query)
+                        viewModel.observeStreamBundles(query)
                     }
                 }
             }

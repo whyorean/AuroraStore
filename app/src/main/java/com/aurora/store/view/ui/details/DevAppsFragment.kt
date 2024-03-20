@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.details
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.SearchBundle
@@ -33,7 +33,6 @@ import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.filterList
 
 @AndroidEntryPoint
 class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
@@ -43,17 +42,13 @@ class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
         get() = _binding!!
 
     private val args: DevAppsFragmentArgs by navArgs()
-
-    private lateinit var VM: SearchResultViewModel
-
-    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private val viewModel: SearchResultViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        VM = ViewModelProvider(this)[SearchResultViewModel::class.java]
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
 
@@ -66,14 +61,14 @@ class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
         }
 
         // Recycler View
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.liveData.value?.let { VM.next(it.subBundles) }
+                viewModel.liveData.value?.let { viewModel.next(it.subBundles) }
             }
         }
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
-        VM.observeSearchResults("pub:${args.developerName}")
+        viewModel.observeSearchResults("pub:${args.developerName}")
     }
 
     override fun onDestroyView() {

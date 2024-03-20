@@ -38,8 +38,6 @@ class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
     private val viewModel: CategoryViewModel by viewModels()
 
-    private var pageType = 0
-
     companion object {
         @JvmStatic
         fun newInstance(pageType: Int): CategoryFragment {
@@ -55,6 +53,7 @@ class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentGenericRecyclerBinding.bind(view)
 
+        var pageType = 0
         val bundle = arguments
         if (bundle != null) {
             pageType = bundle.getInt(Constants.PAGE_TYPE, 0)

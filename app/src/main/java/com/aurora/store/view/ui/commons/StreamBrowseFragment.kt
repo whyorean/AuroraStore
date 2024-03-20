@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -42,18 +42,14 @@ class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
         get() = _binding!!
 
     private val args: StreamBrowseFragmentArgs by navArgs()
+    private val viewModel: StreamBrowseViewModel by viewModels()
 
-    lateinit var VM: StreamBrowseViewModel
-
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
-
-    lateinit var title: String
-    lateinit var cluster: StreamCluster
+    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private lateinit var cluster: StreamCluster
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        VM = ViewModelProvider(this)[StreamBrowseViewModel::class.java]
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -63,11 +59,11 @@ class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
             }
         }
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             if (!::cluster.isInitialized) {
                 endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
                     override fun onLoadMore(currentPage: Int) {
-                        VM.nextCluster()
+                        viewModel.nextCluster()
                     }
                 }
                 binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
@@ -79,7 +75,7 @@ class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
             binding.layoutToolbarAction.txtTitle.text = it.clusterTitle
         }
 
-        VM.getStreamBundle(args.browseUrl)
+        viewModel.getStreamBundle(args.browseUrl)
         updateController(null)
     }
 

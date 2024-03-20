@@ -21,12 +21,11 @@ package com.aurora.store.view.ui.details
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.store.R
@@ -48,18 +47,14 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
         get() = _binding!!
 
     private val args: DevProfileFragmentArgs by navArgs()
-
-    private lateinit var VM: DevProfileViewModel
-    private lateinit var C: DeveloperCarouselController
-    private lateinit var authData: AuthData
+    private val viewModel: DevProfileViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDevProfileBinding.bind(view)
 
-        C = DeveloperCarouselController(this)
-        VM = ViewModelProvider(this)[DevProfileViewModel::class.java]
-        authData = AuthProvider.with(requireContext()).getAuthData()
+        val developerCarouselController = DeveloperCarouselController(this)
+        val authData = AuthProvider.with(requireContext()).getAuthData()
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -69,9 +64,9 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
         }
 
         // RecyclerView
-        binding.recycler.setController(C)
+        binding.recycler.setController(developerCarouselController)
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Empty -> {
                 }
@@ -95,14 +90,14 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
                         binding.txtDevDescription.text = description
                         binding.imgIcon.load(imgUrl)
                         binding.viewFlipper.displayedChild = 0
-                        C.setData(streamBundle)
+                        developerCarouselController.setData(streamBundle)
                     }
                 }
             }
         }
 
         binding.viewFlipper.displayedChild = 1
-        VM.getStreamBundle(args.devId)
+        viewModel.getStreamBundle(args.devId)
     }
 
     override fun onDestroyView() {
@@ -115,7 +110,7 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        VM.observeCluster(streamCluster)
+        viewModel.observeCluster(streamCluster)
     }
 
     override fun onAppClick(app: App) {

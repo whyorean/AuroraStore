@@ -21,9 +21,7 @@ package com.aurora.store.view.ui.spoof
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.SpoofProvider
@@ -34,14 +32,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
 @AndroidEntryPoint
-class LocaleSpoofFragment : BaseFragment() {
-
-    private lateinit var B: FragmentGenericRecyclerBinding
-    private lateinit var spoofProvider: SpoofProvider
-
-    private var locale: Locale = Locale.getDefault()
+class LocaleSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
     private val TAG = LocaleSpoofFragment::class.java.simpleName
+
+    private var _binding: FragmentGenericRecyclerBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var spoofProvider: SpoofProvider
+    private lateinit var locale: Locale
 
     companion object {
         @JvmStatic
@@ -52,29 +51,16 @@ class LocaleSpoofFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentGenericRecyclerBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_generic_recycler,
-                container,
-                false
-            )
-        )
-
-        spoofProvider = SpoofProvider(requireContext())
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentGenericRecyclerBinding.bind(view)
 
-        if (spoofProvider.isLocaleSpoofEnabled())
-            locale = spoofProvider.getSpoofLocale()
+        spoofProvider = SpoofProvider(requireContext())
+        locale = if (spoofProvider.isLocaleSpoofEnabled()) {
+            spoofProvider.getSpoofLocale()
+        } else {
+            Locale.getDefault()
+        }
 
         try {
             updateController(fetchAvailableLocales())
@@ -83,8 +69,13 @@ class LocaleSpoofFragment : BaseFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun updateController(locales: List<Locale>) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             locales
                 .sortedBy { it.displayName }

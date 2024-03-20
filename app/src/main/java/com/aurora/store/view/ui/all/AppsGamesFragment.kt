@@ -27,7 +27,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
@@ -42,12 +41,11 @@ class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
     private val binding: ActivityGenericPagerBinding
         get() = _binding!!
 
-    private lateinit var authData: AuthData
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = ActivityGenericPagerBinding.bind(view)
-        authData = AuthProvider.with(view.context).getAuthData()
+
+        val authData = AuthProvider.with(view.context).getAuthData()
 
         // Toolbar
         binding.layoutActionToolbar.toolbar.apply {

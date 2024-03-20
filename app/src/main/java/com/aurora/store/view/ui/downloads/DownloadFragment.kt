@@ -50,7 +50,8 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
 
     @Inject
     lateinit var downloadWorkerUtil: DownloadWorkerUtil
-    lateinit var downloadList: List<Download>
+
+    private lateinit var downloadList: List<Download>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

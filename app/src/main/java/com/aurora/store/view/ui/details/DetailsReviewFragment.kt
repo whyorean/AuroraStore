@@ -22,7 +22,7 @@ package com.aurora.store.view.ui.details
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.Review
@@ -43,18 +43,15 @@ class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
         get() = _binding!!
 
     private val args: DetailsReviewFragmentArgs by navArgs()
-
-    private lateinit var VM: ReviewViewModel
+    private val viewModel: ReviewViewModel by viewModels()
 
     private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
-
     private lateinit var filter: Review.Filter
     private lateinit var reviewCluster: ReviewCluster
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsReviewBinding.bind(view)
-        VM = ViewModelProvider(this)[ReviewViewModel::class.java]
 
         // Toolbar
         binding.layoutToolbarActionReview.apply {
@@ -64,12 +61,12 @@ class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
             }
         }
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             if (!::reviewCluster.isInitialized) {
                 endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
                     override fun onLoadMore(currentPage: Int) {
                         if (::reviewCluster.isInitialized) {
-                            VM.next(reviewCluster.nextPageUrl)
+                            viewModel.next(reviewCluster.nextPageUrl)
                         }
                     }
                 }
@@ -84,7 +81,7 @@ class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
 
         // Fetch Reviews
         filter = Review.Filter.ALL
-        VM.fetchReview(args.packageName, filter)
+        viewModel.fetchReview(args.packageName, filter)
 
         // Chips
         binding.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
@@ -100,7 +97,7 @@ class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
             }
 
             endlessRecyclerOnScrollListener.resetPageCount()
-            VM.fetchReview(args.packageName, filter)
+            viewModel.fetchReview(args.packageName, filter)
         }
     }
 

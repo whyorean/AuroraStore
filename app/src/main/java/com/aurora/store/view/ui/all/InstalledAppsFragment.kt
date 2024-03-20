@@ -20,10 +20,8 @@
 package com.aurora.store.view.ui.all
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentAppsBinding
@@ -35,10 +33,13 @@ import com.aurora.store.viewmodel.all.InstalledViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InstalledAppsFragment : BaseFragment() {
+class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
-    private lateinit var VM: InstalledViewModel
-    private lateinit var B: FragmentAppsBinding
+    private var _binding: FragmentAppsBinding? = null
+    private val binding: FragmentAppsBinding
+        get() = _binding!!
+
+    private val viewModel: InstalledViewModel by viewModels()
 
     companion object {
         @JvmStatic
@@ -47,36 +48,24 @@ class InstalledAppsFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentAppsBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_apps,
-                container,
-                false
-            )
-        )
-
-        VM = ViewModelProvider(requireActivity())[InstalledViewModel::class.java]
-        VM.observe()
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner) {
+        _binding = FragmentAppsBinding.bind(view)
+
+        viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
 
         updateController(null)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun updateController(appList: List<App>?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (appList == null) {
                 for (i in 1..10) {

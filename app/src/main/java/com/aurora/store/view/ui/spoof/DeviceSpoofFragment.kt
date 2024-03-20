@@ -20,9 +20,7 @@
 package com.aurora.store.view.ui.spoof
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -40,14 +38,15 @@ import kotlinx.coroutines.launch
 import java.util.Properties
 
 @AndroidEntryPoint
-class DeviceSpoofFragment : BaseFragment() {
+class DeviceSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
-    private lateinit var B: FragmentGenericRecyclerBinding
-    private lateinit var spoofProvider: SpoofProvider
-
-    private var properties: Properties = Properties()
+    private var _binding: FragmentGenericRecyclerBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: SpoofViewModel by viewModels()
+
+    private lateinit var spoofProvider: SpoofProvider
+    private lateinit var properties: Properties
 
     companion object {
         @JvmStatic
@@ -58,30 +57,16 @@ class DeviceSpoofFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentGenericRecyclerBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_generic_recycler,
-                container,
-                false
-            )
-        )
-
-        properties = NativeDeviceInfoProvider(requireContext()).getNativeDeviceProperties()
-        spoofProvider = SpoofProvider(requireContext())
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentGenericRecyclerBinding.bind(view)
 
-        if (spoofProvider.isDeviceSpoofEnabled())
-            properties = spoofProvider.getSpoofDeviceProperties()
+        spoofProvider = SpoofProvider(requireContext())
+        properties = if (spoofProvider.isDeviceSpoofEnabled()) {
+            spoofProvider.getSpoofDeviceProperties()
+        } else {
+            NativeDeviceInfoProvider(requireContext()).getNativeDeviceProperties()
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -91,8 +76,13 @@ class DeviceSpoofFragment : BaseFragment() {
         viewModel.fetchAvailableDevices(view.context)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun updateController(locales: List<Properties>) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             locales
                 .sortedBy { it.getProperty("UserReadableName") }

@@ -43,9 +43,6 @@ class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
 
     private val viewModel: TopChartViewModel by viewModels()
 
-    private var chartType = 0
-    private var chartCategory = 0
-
     companion object {
         @JvmStatic
         fun newInstance(chartType: Int, chartCategory: Int): TopChartFragment {
@@ -62,7 +59,10 @@ class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTopContainerBinding.bind(view)
 
+        var chartType = 0
+        var chartCategory = 0
         val bundle = arguments
+
         if (bundle != null) {
             chartType = bundle.getInt(Constants.TOP_CHART_TYPE, 0)
             chartCategory = bundle.getInt(Constants.TOP_CHART_CATEGORY, 0)

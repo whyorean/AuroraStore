@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyModel
@@ -46,17 +46,14 @@ class ExpandedStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recy
         get() = _binding!!
 
     private val args: ExpandedStreamBrowseFragmentArgs by navArgs()
+    private val viewModel: ExpandedStreamBrowseViewModel by viewModels()
 
-    lateinit var VM: ExpandedStreamBrowseViewModel
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
-
-    lateinit var title: String
-    lateinit var cluster: StreamCluster
+    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private lateinit var cluster: StreamCluster
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        VM = ViewModelProvider(this)[ExpandedStreamBrowseViewModel::class.java]
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -66,7 +63,7 @@ class ExpandedStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recy
             }
         }
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             if (!::cluster.isInitialized) attachRecycler()
             cluster = it
 
@@ -74,7 +71,7 @@ class ExpandedStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recy
             updateTitle(cluster)
         }
 
-        VM.getInitialCluster(args.expandedStreamUrl)
+        viewModel.getInitialCluster(args.expandedStreamUrl)
         updateController(null)
     }
 
@@ -91,7 +88,7 @@ class ExpandedStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recy
     private fun attachRecycler() {
         endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.next()
+                viewModel.next()
             }
         }
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)

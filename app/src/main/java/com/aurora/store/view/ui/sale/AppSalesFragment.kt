@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.sale
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
@@ -43,30 +43,27 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
     private val binding: ActivityGenericRecyclerBinding
         get() = _binding!!
 
-    lateinit var VM: AppSalesViewModel
-
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private val viewModel: AppSalesViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        VM = ViewModelProvider(this)[AppSalesViewModel::class.java]
 
         binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_apps_sale)
         binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
             findNavController().navigateUp()
         }
 
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.observe()
+                viewModel.observe()
             }
         }
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
         updateController(null)
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
     }

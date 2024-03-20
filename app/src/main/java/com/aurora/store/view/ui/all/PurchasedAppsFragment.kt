@@ -20,10 +20,8 @@
 package com.aurora.store.view.ui.all
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
@@ -36,11 +34,13 @@ import com.aurora.store.viewmodel.all.PurchasedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PurchasedAppsFragment : BaseFragment() {
+class PurchasedAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
-    private lateinit var VM: PurchasedViewModel
-    private lateinit var B: FragmentAppsBinding
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private var _binding: FragmentAppsBinding? = null
+    private val binding: FragmentAppsBinding
+        get() = _binding!!
+
+    private val viewModel: PurchasedViewModel by viewModels()
 
     companion object {
         @JvmStatic
@@ -49,48 +49,33 @@ class PurchasedAppsFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentAppsBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_apps,
-                container,
-                false
-            )
-        )
-
-        VM = ViewModelProvider(requireActivity())[PurchasedViewModel::class.java]
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
+        _binding = FragmentAppsBinding.bind(view)
+
+        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener(8) {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.observe()
+            }
         }
 
-        attachRecycler()
+        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+
+        viewModel.liveData.observe(viewLifecycleOwner) {
+            updateController(it)
+        }
 
         updateController(null)
     }
 
-    private fun attachRecycler() {
-        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener(8) {
-            override fun onLoadMore(currentPage: Int) {
-                VM.observe()
-            }
-        }
-
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 
     private fun updateController(paginatedAppList: PaginatedAppList?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (paginatedAppList == null) {
                 for (i in 1..10) {

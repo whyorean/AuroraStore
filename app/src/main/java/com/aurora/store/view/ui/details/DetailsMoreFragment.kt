@@ -48,7 +48,6 @@ class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
         get() = _binding!!
 
     private val viewModel: DetailsMoreViewModel by viewModels()
-
     private val args: DetailsMoreFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyModel
@@ -46,15 +46,12 @@ class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycl
         get() = _binding!!
 
     private val args: EditorStreamBrowseFragmentArgs by navArgs()
-
-    lateinit var VM: EditorBrowseViewModel
-    lateinit var title: String
+    private val viewModel: EditorBrowseViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        VM = ViewModelProvider(this)[EditorBrowseViewModel::class.java]
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -64,11 +61,11 @@ class EditorStreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycl
             }
         }
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
 
-        VM.getEditorStreamBundle(args.browseUrl)
+        viewModel.getEditorStreamBundle(args.browseUrl)
         updateController(null)
     }
 

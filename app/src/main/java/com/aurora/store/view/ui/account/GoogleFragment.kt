@@ -61,11 +61,11 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
     private val binding: FragmentGoogleBinding
         get() = _binding!!
 
-    private val cookieManager = CookieManager.getInstance()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentGoogleBinding.bind(view)
+
+        val cookieManager = CookieManager.getInstance()
 
         binding.webview.apply {
             cookieManager.removeAllCookies(null)

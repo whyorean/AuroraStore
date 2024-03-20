@@ -28,7 +28,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
@@ -44,10 +44,8 @@ import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
@@ -57,25 +55,22 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     private val binding: FragmentSearchResultBinding
         get() = _binding!!
 
-    lateinit var VM: SearchResultViewModel
+    private val viewModel: SearchResultViewModel by viewModels()
 
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
-    lateinit var searchView: TextInputEditText
+    private lateinit var searchView: TextInputEditText
 
-    lateinit var sharedPreferences: SharedPreferences
-    lateinit var filter: Filter
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var filter: Filter
 
-    var query: String? = null
-    var searchBundle: SearchBundle = SearchBundle()
+    private var query: String? = null
+    private var searchBundle: SearchBundle = SearchBundle()
 
     private var shimmerAnimationVisible = false
-    private var snackbar: Snackbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentSearchResultBinding.bind(view)
-        VM = ViewModelProvider(this)[SearchResultViewModel::class.java]
 
         sharedPreferences = Preferences.getPrefs(view.context)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
@@ -96,9 +91,9 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         attachSearch()
 
         // RecyclerView
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                VM.next(searchBundle.subBundles)
+                viewModel.next(searchBundle.subBundles)
             }
         }
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
@@ -108,7 +103,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
             findNavController().navigate(R.id.filterSheet)
         }
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             if (shimmerAnimationVisible) {
                 endlessRecyclerOnScrollListener.resetPageCount()
                 binding.recycler.clear()
@@ -148,7 +143,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
         if (filteredAppList.isEmpty()) {
             if (searchBundle.subBundles.isNotEmpty()) {
-                VM.next(searchBundle.subBundles)
+                viewModel.next(searchBundle.subBundles)
                 binding.recycler.withModels {
                     setFilterDuplicates(true)
                     add(
@@ -197,7 +192,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
             binding.recycler.adapter?.let {
                 if (it.itemCount < 10) {
-                    VM.next(searchBundle.subBundles)
+                    viewModel.next(searchBundle.subBundles)
                 }
             }
         }
@@ -240,7 +235,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
     private fun queryViewModel(query: String) {
         updateController(null)
-        VM.observeSearchResults(query)
+        viewModel.observeSearchResults(query)
     }
 
     private fun filter(appList: MutableList<App>): List<App> {

@@ -22,7 +22,7 @@ package com.aurora.store.view.ui.commons
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
@@ -46,18 +46,16 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
         get() = _binding!!
 
     private val args: CategoryBrowseFragmentArgs by navArgs()
+    private val viewModel: SubCategoryClusterViewModel by viewModels()
 
-    lateinit var C: GenericCarouselController
-    lateinit var VM: SubCategoryClusterViewModel
-
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private lateinit var genericCarouselController: GenericCarouselController
+    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        C = CategoryCarouselController(this)
-        VM = ViewModelProvider(this)[SubCategoryClusterViewModel::class.java]
+        genericCarouselController = CategoryCarouselController(this)
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -66,9 +64,9 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
         }
 
         // RecyclerView
-        binding.recycler.setController(C)
+        binding.recycler.setController(genericCarouselController)
 
-        VM.liveData.observe(viewLifecycleOwner) {
+        viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Empty -> {
                 }
@@ -89,17 +87,16 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
             }
         }
 
-        endlessRecyclerOnScrollListener =
-            object : EndlessRecyclerOnScrollListener() {
-                override fun onLoadMore(currentPage: Int) {
-                    VM.observe()
-                }
+        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.observe()
             }
+        }
 
         endlessRecyclerOnScrollListener.disable()
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
-        VM.observeCategory(args.browseUrl)
+        viewModel.observeCategory(args.browseUrl)
         updateController(null)
     }
 
@@ -109,9 +106,8 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
     }
 
     private fun updateController(streamBundle: StreamBundle?) {
-        if (streamBundle != null)
-            endlessRecyclerOnScrollListener.enable()
-        C.setData(streamBundle)
+        if (streamBundle != null) endlessRecyclerOnScrollListener.enable()
+        genericCarouselController.setData(streamBundle)
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
@@ -127,7 +123,7 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        VM.observeCluster(streamCluster)
+        viewModel.observeCluster(streamCluster)
     }
 
     override fun onAppClick(app: App) {

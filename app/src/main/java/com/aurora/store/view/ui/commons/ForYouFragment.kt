@@ -45,10 +45,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
 
     private val viewModel: BaseClusterViewModel by viewModels()
 
-    private lateinit var C: GenericCarouselController
     private lateinit var streamBundle: StreamBundle
-
-    private var pageType = 0
 
     companion object {
         @JvmStatic
@@ -65,8 +62,9 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentForYouBinding.bind(view)
 
-        C = GenericCarouselController(this)
+        val genericCarouselController = GenericCarouselController(this)
 
+        var pageType = 0
         val bundle = arguments
         if (bundle != null) {
             pageType = bundle.getInt(Constants.PAGE_TYPE, 0)
@@ -77,7 +75,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
             1 -> viewModel.getStreamBundle(Category.GAME, Type.HOME)
         }
 
-        binding.recycler.setController(C)
+        binding.recycler.setController(genericCarouselController)
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
@@ -85,7 +83,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
                 }
 
                 is ViewState.Loading -> {
-                    updateController(null)
+                    genericCarouselController.setData(null)
                 }
 
                 is ViewState.Error -> {
@@ -108,8 +106,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
                     }
 
                     streamBundle = it.data as StreamBundle
-
-                    updateController(streamBundle)
+                    genericCarouselController.setData(streamBundle)
                 }
             }
         }
@@ -118,10 +115,6 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun updateController(streamBundle: StreamBundle?) {
-        C.setData(streamBundle)
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {

@@ -40,8 +40,6 @@ class EditorChoiceFragment : BaseFragment(R.layout.fragment_for_you),
 
     private val viewModel: EditorChoiceViewModel by viewModels()
 
-    private var pageType = 0
-
     companion object {
         @JvmStatic
         fun newInstance(pageType: Int): EditorChoiceFragment {
@@ -57,6 +55,7 @@ class EditorChoiceFragment : BaseFragment(R.layout.fragment_for_you),
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentForYouBinding.bind(view)
 
+        var pageType = 0
         val bundle = arguments
         if (bundle != null) {
             pageType = bundle.getInt(Constants.PAGE_TYPE, 0)

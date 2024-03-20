@@ -20,14 +20,11 @@
 package com.aurora.store.view.ui.all
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentAppsBinding
-import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
@@ -38,11 +35,13 @@ import com.aurora.store.viewmodel.all.LibraryAppsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LibraryAppsFragment : BaseFragment() {
+class LibraryAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
-    private lateinit var VM: LibraryAppsViewModel
-    private lateinit var B: FragmentAppsBinding
-    lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private var _binding: FragmentAppsBinding? = null
+    private val binding: FragmentAppsBinding
+        get() = _binding!!
+
+    private val viewModel: LibraryAppsViewModel by viewModels()
 
     companion object {
         @JvmStatic
@@ -53,45 +52,31 @@ class LibraryAppsFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        B = FragmentAppsBinding.bind(
-            inflater.inflate(
-                R.layout.fragment_apps,
-                container,
-                false
-            )
-        )
-
-        VM = ViewModelProvider(requireActivity()).get(LibraryAppsViewModel::class.java)
-
-        return B.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        VM.liveData.observe(viewLifecycleOwner) {
+        _binding = FragmentAppsBinding.bind(view)
+
+        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.observe()
+            }
+        }
+        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+
+        viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
-        attachRecycler()
 
         updateController(null)
     }
 
-    private fun attachRecycler() {
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                VM.observe()
-            }
-        }
-        B.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateController(streamCluster: StreamCluster?) {
-        B.recycler.withModels {
+        binding.recycler.withModels {
             setFilterDuplicates(true)
             if (streamCluster == null) {
                 for (i in 1..10) {
