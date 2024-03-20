@@ -120,6 +120,4 @@
     <style name="AppTheme.SwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
         <item name="widgetLayout">@layout/preference_material_switch</item>
     </style>
-
-    <style name="AppTheme.Dialog" parent="Theme.Material3.DayNight.BottomSheetDialog" />
 </resources>

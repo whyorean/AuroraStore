@@ -22,9 +22,7 @@ package com.aurora.store.view.ui.sheets
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.hide
@@ -33,32 +31,23 @@ import com.aurora.store.R
 import com.aurora.store.data.model.PermissionGroupInfo
 import com.aurora.store.databinding.SheetPermissionsBinding
 import com.aurora.store.view.custom.layouts.PermissionGroup
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class PermissionBottomSheet : BaseBottomSheet() {
+class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissions) {
 
-    private lateinit var B: SheetPermissionsBinding
+    private var _binding: SheetPermissionsBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var packageManager: PackageManager
 
     private val args: PermissionBottomSheetArgs by navArgs()
 
-    override fun onCreateContentView(
-        inflater: LayoutInflater,
-        container: ViewGroup,
-        savedInstanceState: Bundle?
-    ): View {
-        B = SheetPermissionsBinding.inflate(inflater)
-        return B.root
-    }
-
-    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        inflateData()
-    }
-
-    private fun inflateData() {
+        _binding = SheetPermissionsBinding.bind(view)
         packageManager = requireContext().packageManager
 
         val permissionGroupWidgets: MutableMap<String, PermissionGroup?> =
@@ -84,17 +73,23 @@ class PermissionBottomSheet : BaseBottomSheet() {
             permissionGroup?.addPermission(permissionInfo)
         }
 
-        B.permissionsContainer.removeAllViews()
+        binding.permissionsContainer.removeAllViews()
 
         val permissionGroupLabels: List<String> = ArrayList(permissionGroupWidgets.keys)
         permissionGroupLabels.sortedBy { it }.forEach {
-            B.permissionsContainer.addView(permissionGroupWidgets[it])
+            binding.permissionsContainer.addView(permissionGroupWidgets[it])
         }
 
-        if (permissionGroupLabels.isEmpty())
-            B.permissionsNone.show()
-        else
-            B.permissionsNone.hide()
+        if (permissionGroupLabels.isEmpty()) {
+            binding.permissionsNone.show()
+        } else {
+            binding.permissionsNone.hide()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun getPermissionInfo(permissionName: String): PermissionInfo? {

@@ -21,10 +21,8 @@
 package com.aurora.store.view.ui.sheets
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -37,16 +35,23 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
-class AppMenuSheet : BaseBottomSheet() {
+class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
 
-    private lateinit var B: SheetAppMenuBinding
+    companion object {
+        const val TAG = "APP_MENU_SHEET"
+    }
+
+    private var _binding: SheetAppMenuBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: SheetsViewModel by viewModels()
     private val args: AppMenuSheetArgs by navArgs()
+
     private val exportMimeType = "application/zip"
 
     private val requestDocumentCreation =
@@ -59,22 +64,14 @@ class AppMenuSheet : BaseBottomSheet() {
             dismissAllowingStateLoss()
         }
 
-    override fun onCreateContentView(
-        inflater: LayoutInflater,
-        container: ViewGroup,
-        savedInstanceState: Bundle?
-    ): View {
-        B = SheetAppMenuBinding.inflate(layoutInflater)
-        return B.root
-    }
-
-    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = SheetAppMenuBinding.bind(view)
 
         val blacklistProvider = BlacklistProvider.with(requireContext())
         val isBlacklisted: Boolean = blacklistProvider.isBlacklisted(args.app.packageName)
 
-        with(B.navigationView) {
+        with(binding.navigationView) {
             //Switch strings for Add/Remove Blacklist
             val blackListMenu: MenuItem = menu.findItem(R.id.action_blacklist)
             blackListMenu.setTitle(
@@ -125,7 +122,8 @@ class AppMenuSheet : BaseBottomSheet() {
         }
     }
 
-    companion object {
-        const val TAG = "APP_MENU_SHEET"
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

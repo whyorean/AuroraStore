@@ -22,59 +22,44 @@ package com.aurora.store.view.ui.sheets
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetDeviceMiuiBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DeviceMiuiSheet : BaseBottomSheet() {
+class DeviceMiuiSheet : BottomSheetDialogFragment(R.layout.sheet_device_miui) {
 
-    private lateinit var B: SheetDeviceMiuiBinding
+    private var _binding: SheetDeviceMiuiBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreateContentView(
-        inflater: LayoutInflater,
-        container: ViewGroup,
-        savedInstanceState: Bundle?
-    ): View {
-        B = SheetDeviceMiuiBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = SheetDeviceMiuiBinding.bind(view)
 
-        inflateData()
-        attachAction()
-
-        return B.root
-    }
-
-    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
-
-    }
-
-    private fun inflateData() {
-        B.imgIcon.load(R.drawable.ic_xiaomi_logo) {
+        binding.imgIcon.load(R.drawable.ic_xiaomi_logo) {
             transformations(CircleCropTransformation())
         }
-    }
 
-    private fun attachAction() {
-        B.btnPrimary.setOnClickListener {
-            openDeveloperSettings()
+        binding.btnPrimary.setOnClickListener {
+            try {
+                startActivity(Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS))
+            } catch (e: Exception) {
+                toast(R.string.toast_developer_setting_failed)
+            }
         }
 
-        B.btnSecondary.setOnClickListener {
+        binding.btnSecondary.setOnClickListener {
             dismissAllowingStateLoss()
         }
     }
 
-    private fun openDeveloperSettings() {
-        try {
-            startActivity(Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS))
-        } catch (e: Exception) {
-            toast(R.string.toast_developer_setting_failed)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

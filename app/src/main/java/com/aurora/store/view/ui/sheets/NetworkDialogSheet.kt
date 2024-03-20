@@ -24,19 +24,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.aurora.extensions.isQAndAbove
+import com.aurora.store.R
 import com.aurora.store.databinding.SheetNetworkBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NetworkDialogSheet : BaseBottomSheet() {
+class NetworkDialogSheet : BottomSheetDialogFragment(R.layout.sheet_network) {
 
     private val TAG = NetworkDialogSheet::class.java.simpleName
 
-    lateinit var B: SheetNetworkBinding
+    private var _binding: SheetNetworkBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
 
@@ -50,17 +51,11 @@ class NetworkDialogSheet : BaseBottomSheet() {
         }
     }
 
-    override fun onCreateContentView(
-        inflater: LayoutInflater,
-        container: ViewGroup,
-        savedInstanceState: Bundle?
-    ): View {
-        B = SheetNetworkBinding.inflate(inflater, container, false)
-        return B.root
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = SheetNetworkBinding.bind(view)
 
-    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
-        B.btnAction.setOnClickListener {
+        binding.btnAction.setOnClickListener {
             if (isQAndAbove()) {
                 startActivity(Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY))
             } else {
@@ -72,5 +67,10 @@ class NetworkDialogSheet : BaseBottomSheet() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

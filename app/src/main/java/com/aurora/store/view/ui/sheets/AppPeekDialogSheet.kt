@@ -20,47 +20,43 @@
 package com.aurora.store.view.ui.sheets
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetAppPeekBinding
 import com.aurora.store.util.CommonUtil
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AppPeekDialogSheet : BaseBottomSheet() {
+class AppPeekDialogSheet : BottomSheetDialogFragment(R.layout.sheet_app_peek) {
 
-    lateinit var B: SheetAppPeekBinding
+    private var _binding: SheetAppPeekBinding? = null
+    private val binding get() = _binding!!
 
     private val args: AppPeekDialogSheetArgs by navArgs()
 
-    override fun onCreateContentView(
-        inflater: LayoutInflater,
-        container: ViewGroup,
-        savedInstanceState: Bundle?
-    ): View {
-        B = SheetAppPeekBinding.inflate(inflater, container, false)
-        return B.root
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = SheetAppPeekBinding.bind(view)
 
-    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
-        B.txtLine1.text = args.app.displayName
-        B.imgIcon.load(args.app.iconArtwork.url) {
+        binding.txtLine1.text = args.app.displayName
+        binding.imgIcon.load(args.app.iconArtwork.url) {
             transformations(RoundedCornersTransformation(25F))
         }
-        B.txtLine2.text = args.app.developerName
-        B.txtLine3.text = String.format(
+        binding.txtLine2.text = args.app.developerName
+        binding.txtLine3.text = String.format(
             requireContext().getString(R.string.app_list_rating),
             CommonUtil.addSiPrefix(args.app.size),
             args.app.labeledRating,
-            if (args.app.isFree)
-                "Free"
-            else
-                "Paid"
+            if (args.app.isFree) "Free" else "Paid"
         )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -21,9 +21,7 @@ package com.aurora.store.view.ui.sheets
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -34,13 +32,14 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.aurora.store.util.DownloadWorkerUtil
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DownloadMenuSheet : BaseBottomSheet() {
+class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu) {
 
     private val TAG = DownloadMenuSheet::class.java.simpleName
 
@@ -56,17 +55,9 @@ class DownloadMenuSheet : BaseBottomSheet() {
     @Inject
     lateinit var appInstaller: AppInstaller
 
-    override fun onCreateContentView(
-        inflater: LayoutInflater,
-        container: ViewGroup,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = SheetDownloadMenuBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = SheetDownloadMenuBinding.bind(view)
 
         with(binding.navigationView) {
             menu.findItem(R.id.action_cancel).isVisible = !args.download.isFinished
