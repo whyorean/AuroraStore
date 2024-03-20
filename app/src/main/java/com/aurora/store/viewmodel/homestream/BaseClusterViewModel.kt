@@ -101,7 +101,7 @@ class BaseClusterViewModel @Inject constructor(
                     if (streamCluster.hasNext()) {
                         val newCluster =
                             streamHelper.getNextStreamCluster(streamCluster.clusterNextPageUrl)
-                        updateCluster(newCluster)
+                        updateCluster(streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(streamBundle))
                     } else {
                         Log.i("End of cluster")
@@ -114,8 +114,8 @@ class BaseClusterViewModel @Inject constructor(
         }
     }
 
-    private fun updateCluster(newCluster: StreamCluster) {
-        streamBundle.streamClusters[newCluster.id]?.apply {
+    private fun updateCluster(clusterID: Int, newCluster: StreamCluster) {
+        streamBundle.streamClusters[clusterID]?.apply {
             clusterAppList.addAll(newCluster.clusterAppList)
             clusterNextPageUrl = newCluster.clusterNextPageUrl
         }
