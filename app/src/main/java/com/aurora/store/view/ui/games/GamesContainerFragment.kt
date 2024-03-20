@@ -58,7 +58,7 @@ class GamesContainerFragment : Fragment(R.layout.fragment_apps_games) {
 
         binding.pager.adapter = ViewPagerAdapter(
             childFragmentManager,
-            lifecycle,
+            viewLifecycleOwner.lifecycle,
             isGoogleAccount,
             isForYouEnabled
         )
@@ -93,6 +93,7 @@ class GamesContainerFragment : Fragment(R.layout.fragment_apps_games) {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.pager.adapter = null
         _binding = null
     }
 

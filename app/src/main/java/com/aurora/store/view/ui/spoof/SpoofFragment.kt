@@ -90,7 +90,7 @@ class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
         }
 
         // ViewPager
-        binding.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
+        binding.pager.adapter = ViewPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
 
         TabLayoutMediator(
             binding.tabLayout,
@@ -108,6 +108,7 @@ class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.pager.adapter = null
         _binding = null
     }
 

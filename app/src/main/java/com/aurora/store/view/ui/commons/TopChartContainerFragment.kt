@@ -59,7 +59,8 @@ class TopChartContainerFragment : Fragment(R.layout.fragment_top_chart) {
         }
 
         // ViewPager
-        binding.pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle, chartType)
+        binding.pager.adapter =
+            ViewPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, chartType)
         binding.topTabGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             when (checkedIds[0]) {
                 R.id.tab_top_free -> binding.pager.setCurrentItem(0, true)
@@ -84,6 +85,7 @@ class TopChartContainerFragment : Fragment(R.layout.fragment_top_chart) {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.pager.adapter = null
         _binding = null
     }
 
