@@ -209,7 +209,7 @@
     <string name="onboarding_permission_installer_desc">Дозволити встановлення застосунків з Aurora Store</string>
     <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
     <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>
-    <string name="onboarding_permission_esa_desc">Щоб зберігати завантаження (APK &amp; OBB), експортувати та імпортувати конфігурації пристроїв на та із зовнішнього сховища.</string>
+    <string name="onboarding_permission_esa_desc">Щоб зберігати файли розширення APK (OBB) для великих програм та ігор.</string>
     <string name="onboarding_permission_esa">Доступ до зовнішнього сховища</string>
     <string name="onboarding_welcome_select">Як справи\?</string>
     <string name="onboarding_title_welcome">Вітаємо</string>
