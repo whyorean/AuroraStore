@@ -63,7 +63,7 @@
     <string name="pref_install_auto_title">Αυτόματη εγκατάσταση APK μετά τη λήψη</string>
     <string name="pref_install_auto_summary">Οι εφαρμογές εγκαθίστανται αμέσως μετά την ολοκλήρωση των λήψεων</string>
     <string name="pref_app_download">Λήψεις</string>
-    <string name="onboarding_permission_esa_desc">Για την αποθήκευση λήψεων (APK &amp; OBB), εξάγετε και εισάγετε τις ρυθμίσεις της συσκευής προς και από έναν εξωτερικό αποθηκευτικό χώρο.</string>
+    <string name="onboarding_permission_esa_desc">Για την αποθήκευση αρχείων επέκτασης APK (OBB) για μεγάλα παιχνίδια &amp; εφαρμογές.</string>
     <string name="download_none">Δεν υπάρχουν λήψεις</string>
     <string name="download_failed">Αποτυχία λήψης</string>
     <string name="download_completed">Η λήψη ολοκληρώθηκε</string>
@@ -321,4 +321,36 @@
     <string name="session_verifying_google">Επικύρωση Συνεδρίας Google</string>
     <string name="title_advanced">Προχωρημένα</string>
     <string name="title_app_settings">Ρυθμίσεις Εφαρμογής</string>
+    <string name="toast_proxy_success">Η μεσολάβηση ρυθμίστηκε επιτυχώς</string>
+    <string name="updates_available">διαθέσιμες ενημερώσεις</string>
+    <string name="menu">Μενού</string>
+    <string name="server_maintenance">Ο διακομιστής είναι εκτός λόγω συντήρησης</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> διαθέσιμες ενημερώσεις</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> και <xliff:g id="apps_count">%4$d</xliff:g> άλλες</string>
+    <string name="toast_import_failed">Δεν ήταν δυνατή η εισαγωγή παραμέτρων συσκευής</string>
+    <string name="toast_proxy_invalid">Μη έγκυρο URL μεσολάβησης, ελέγξτε τη μορφή!</string>
+    <string name="rate_limited">Ουπς, αυτός ο λογαριασμός έχει όριο!</string>
+    <string name="permissions_denied">Αρνήθηκαν απαιτούμενες άδειες. Παρακαλώ παραχωρήστε τες για να προχωρήσει η ενέργεια</string>
+    <string name="open_in_aurora">Άνοιγμα στο Κατάστημα Aurora</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="requesting_new_session">Αιτείται νεα συνεδρία</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> διαθέσιμη ενημέρωση</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> και <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="search_hint">Αναζήτηση για Εφαρμογές &amp; Παιχνίδια</string>
+    <string name="toast_proxy_failed">Αποτυχία ρύθμισης μεσολάβησης</string>
+    <string name="update_available">διαθέσιμη ενημέρωση</string>
+    <string name="downloading_dep">Λήψη επιπρόσθετων αρχείων για <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> και <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="checking_for_updates">Γίνεται έλεγχος για ενημερώσεις</string>
+    <string name="pref_updates_check_frequency">Συχνότητα αυτόματων ενημερώσεων</string>
+    <string name="notification_channel_updates">Ειδοποιήσεις ενημέρωσης</string>
+    <string name="notification_updates_available_desc_1">Μια νέα έκδοση της <xliff:g id="app_one_name">%1$s</xliff:g> είναι διαθέσιμη</string>
+    <string name="pref_updates_auto">Αυτόματη ενημέρωση εφαρμογών</string>
+    <string name="pref_updates_auto_desc">Ρύθμιση συμπεριφοράς αυτόματων ενημερώσεων</string>
+    <string name="pref_updates_auto_off">Να μη γίνεται αυτόματη ενημέρωση εφαρμογών</string>
+    <string name="pref_updates_auto_notify">Έλεγχος &amp; ειδοποίηση για διαθέσιμες ενημερώσεις</string>
+    <string name="pref_updates_auto_install">Έλεγχος &amp; εγκατάσταση διαθέσιμων ενημερώσεων αυτόματα</string>
+    <string name="ui_accent_0">Σύστημα</string>
+    <string name="error">Προέκυψε σφάλμα!</string>
+    <string name="expand">Επέκταση</string>
 </resources>
