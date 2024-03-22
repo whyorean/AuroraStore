@@ -215,12 +215,12 @@
     <string name="exodus_powered">Na podstawie Exodus</string>
     <string name="exodus_no_tracker">Nie zawiera znanych usług śledzących</string>
     <string name="download_speed_estimating">Szacowanie</string>
-    <string name="download_resume_all">Wznów wszystko</string>
+    <string name="download_resume_all">Wznów wszystkie</string>
     <string name="download_queued">W kolejce</string>
-    <string name="download_pause_all">Wstrzymaj wszystko</string>
+    <string name="download_pause_all">Wstrzymaj wszystkie</string>
     <string name="download_none">Brak pobranych</string>
     <string name="download_metadata">Pobieranie metadanych</string>
-    <string name="download_force_clear_all">Wymuś czyszczenie wszystkiego</string>
+    <string name="download_force_clear_all">Wymuś wyczyszczenie wszystkich</string>
     <string name="download_failed">Pobieranie nieudane</string>
     <string name="download_eta_calculating">Obliczanie</string>
     <string name="download_completed">Pobieranie zakończone</string>
