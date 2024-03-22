@@ -29,6 +29,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
+import com.aurora.store.data.work.CleanCacheWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.Preferences
@@ -129,6 +130,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             binding.btnForward.isEnabled = true
             binding.btnForward.setOnClickListener {
                 setupAutoUpdates()
+                CleanCacheWorker.scheduleAutomatedCacheCleanup(requireContext())
                 save(PREFERENCE_INTRO, true)
                 findNavController().navigate(
                     OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()

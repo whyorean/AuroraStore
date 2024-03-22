@@ -435,4 +435,8 @@
     <!-- MoreDialogFragment -->
     <string name="title_more">More</string>
     <string name="manage_account">Manage your account</string>
+
+    <!-- DownloadPreference -->
+    <string name="pref_download_cache_title">Keep downloads cache</string>
+    <string name="pref_download_cache_summary">How long to preserve downloads cache (failed, cancelled and completed), in hours</string>
 </resources>

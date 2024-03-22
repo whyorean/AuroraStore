@@ -31,6 +31,13 @@ object PathUtil {
     private const val DOWNLOADS = "Downloads"
     private const val SPOOF = "SpoofConfigs"
 
+    fun getOldDownloadDirectories(context: Context): List<File> {
+        return listOf(
+            File(context.filesDir, DOWNLOADS), // till 4.4.2
+            File(context.getExternalFilesDir(null), DOWNLOADS) // till 4.4.2
+        )
+    }
+
     fun getDownloadDirectory(context: Context): File {
         return File(context.cacheDir, DOWNLOADS)
     }
