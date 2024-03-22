@@ -619,7 +619,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         binding.layoutDetailsToolbar.toolbar.invalidateMenu()
                     }
                 } else {
-                    if (downloadStatus == DownloadStatus.QUEUED) {
+                    if (downloadStatus in DownloadStatus.running) {
                         flip(1)
                     } else if (app.isFree) {
                         btn.setText(R.string.action_install)
