@@ -94,7 +94,7 @@
     <string name="toast_developer_setting_failed">Za otvaranje, uključi postavke za programere u postavkama uređaja.</string>
     <string name="toast_clipboard_copied">Kopirano u međuspremnik</string>
     <string name="toast_apk_whitelisted">Poželjni</string>
-    <string name="toast_apk_blacklisted">Nepoželjni</string>
+    <string name="toast_apk_blacklisted">Dodano na listu nepoželjnih</string>
     <string name="toast_anonymous_restriction">Nije dostupno na anonimnim računima</string>
     <string name="toast_abandon_sessions">Stare instalacijske sesije napuštene</string>
     <string name="title_updates">Aktualiziranja</string>
@@ -149,9 +149,9 @@
     <string name="pref_install_mode_title">Način instaliranja</string>
     <string name="pref_install_mode_summary">Odaberi način instaliranja APK datoteka</string>
     <string name="pref_install_mode_session">Instalacija sesija</string>
-    <string name="pref_install_mode_services">Aurora usluge</string>
+    <string name="pref_install_mode_services">Aurora usluge (Zastarjelo)</string>
     <string name="pref_install_mode_root">Administratorska instalacija</string>
-    <string name="pref_install_mode_native">Izvorna instalacija</string>
+    <string name="pref_install_mode_native">Izvorna instalacija (Zastarjelo)</string>
     <string name="pref_install_delete_title">Izbriši APK datoteke nakon instaliranja</string>
     <string name="pref_install_delete_summary">APK datoteke će se standardno izbrisati</string>
     <string name="pref_install_auto_title">Automatski instaliraj APK datoteke nakon preuzimanja</string>
@@ -159,9 +159,9 @@
     <string name="pref_insecure_anonymous_title">Nesigurna anonimna sesija</string>
     <string name="pref_insecure_anonymous_summary">Generiraj GSF ID lokalno na uređaju</string>
     <string name="pref_filter_google_title">Filtriraj Google programe</string>
-    <string name="pref_filter_google_summary">Uklanja sve Google programe iz rezultata pretraživanja i programa kategorije</string>
+    <string name="pref_filter_google_summary">Zanemari sve Google aplikacije sa popisa ažuriranih i instaliranih programa</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid programe</string>
-    <string name="pref_filter_fdroid_summary">Uklanja F-Droid programe s popisa programa</string>
+    <string name="pref_filter_fdroid_summary">Zanemari F-Droid aplikacije s popisa ažuriranih i instaliranih programa</string>
     <string name="pref_dialog_to_apply_restart">Ova će se postavka primijeniti nakon ponovnog pokretanja programa</string>
     <string name="pref_app_download">Preuzimanja</string>
     <string name="pref_abandon_session_desc">Izbriši napuštene ili čekajuće instalacije</string>
@@ -169,7 +169,7 @@
     <string name="onboarding_permission_installer_desc">Dozvoli instaliranje programa iz Aurora trgovine</string>
     <string name="onboarding_permission_installer">Dozvola za instalaciju</string>
     <string name="onboarding_permission_esm">Upravljač vanjske memorije</string>
-    <string name="onboarding_permission_esa_desc">Za spremanje preuzimanja (APK i OBB datoteke), izvezi i uvezi konfiguracije uređaja u i iz vanjske memorije.</string>
+    <string name="onboarding_permission_esa_desc">Za spremanje APK proširenih datoteka (OBB) za veće aplikacije i igre.</string>
     <string name="onboarding_permission_esa">Pristup vanjskoj memoriji</string>
     <string name="onboarding_welcome_select">Kako si\?</string>
     <string name="onboarding_title_welcome">Dobro došao, dobro došla</string>
@@ -209,10 +209,10 @@
     <string name="filter_review_critical">Kritične</string>
     <string name="filter_review_all">Sve</string>
     <string name="exodus_view_report">Prikaži izvještaj</string>
-    <string name="exodus_substring">programi za praćenje pronađeni u</string>
+    <string name="exodus_substring">poznati programi za praćenje pronađeni u</string>
     <string name="exodus_progress">Provjeravanje programa za praćenje …</string>
     <string name="exodus_powered">Pogoni Exodus</string>
-    <string name="exodus_no_tracker">Ne sadrži programe za praćenje</string>
+    <string name="exodus_no_tracker">Ne sadrži poznate programe za praćenje</string>
     <string name="download_speed_estimating">Procjenjivanje</string>
     <string name="download_resume_all">Nastavi sve</string>
     <string name="download_queued">U redu čekanja</string>
@@ -255,13 +255,13 @@
     <string name="toast_page_unavailable">Stranica pretraživanja nedostupna</string>
     <string name="toast_aas_token_failed">Neuspjelo generiranje AAS tokena</string>
     <string name="toast_rated_failed">Neuspjelo slanje ocjene</string>
-    <string name="toast_rated_success">Ocjenjeno</string>
+    <string name="toast_rated_success">Ocjenjeno, može potrajati da bude vidljivo</string>
     <string name="toast_export_failed">Neuspio izvoz konfiguracije uređaja</string>
     <string name="toast_export_success">Konfiguracija uređaja izvezena</string>
     <string name="app_updater_service_notif_text">Omogućuje preuzimanje programa u pozadini</string>
     <string name="app_updater_service_notif_title">Preuzimanje programa u pozadini</string>
     <string name="notification_channel_updater_service">Usluga za preuzimanje programa u pozadini</string>
-    <string name="pref_install_mode_am">AM instalater.</string>
+    <string name="pref_install_mode_am">AM instalater</string>
     <string name="account_anonymous_insecure">Anonimno (nesigurno)</string>
     <string name="installer_am_unavailable">Instaliraj App Manager ili promijeni instalacijski program.</string>
     <string name="ui_accent_1">Plava</string>
@@ -279,7 +279,7 @@
     <string name="ui_accent_11">Svjetloplava</string>
     <string name="download_eta_sec">Preostalo: %1$d s</string>
     <string name="session_init">Pripremanje …</string>
-    <string name="session_login">Najprije se moraš prijaviti</string>
+    <string name="session_login">Najprije se prijavite</string>
     <string name="session_scrapped">Zadnja izbrisana sesija</string>
     <string name="session_verifying">Provjeravanje sesije</string>
     <string name="session_verifying_google">Provjeravanje Google sesije</string>
@@ -297,7 +297,7 @@
     <string name="onboarding_permission_notifications">Obavijesti</string>
     <string name="onboarding_permission_notifications_desc">Poüalji obavijesti o stanju instalacije</string>
     <string name="session_enjoy">Prijavi se i uživaj.</string>
-    <string name="session_login_failed_google">Prijava putem Googlea nije uspjela</string>
+    <string name="session_login_failed_google">Prijava putem Googlea nije moguća</string>
     <string name="session_good">Super! Sve je u redu.</string>
     <string name="ui_accent_0">Sustav</string>
     <string name="update_available">dostupna je nova verzija</string>
@@ -310,4 +310,8 @@
     <string name="toast_import_success">Konfiguracija uređaja je uvezena</string>
     <string name="action_import">Uvezi</string>
     <string name="toast_import_failed">Nije bilo moguće uvesti konfiguraciju uređaja</string>
+    <string name="action_uninstall_confirmation">Da li želite ukloniti ovu aplikaciju ?</string>
+    <string name="action_request_analysis">Zatraži novu analizu</string>
+    <string name="action_home_screen">Dodaj na početni zaslon</string>
+    <string name="installer_shizuku_unavailable">Shizuku nije instaliran ili postavljen pravilno.</string>
 </resources>

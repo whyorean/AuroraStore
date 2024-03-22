@@ -203,7 +203,7 @@
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>
-    <string name="onboarding_permission_esa_desc">Для сохранения загрузок (APK и OBB), экспорта и импорта конфигураций устройства во внешнее хранилище.</string>
+    <string name="onboarding_permission_esa_desc">Для сохранения файлов с расширением APK (OBB) для больших приложений и игр.</string>
     <string name="onboarding_permission_esa">Доступ к памяти</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
     <string name="onboarding_title_welcome">Добро пожаловать</string>
@@ -344,7 +344,7 @@
     <string name="action_uninstall_confirmation">Вы хотите удалить это приложение\?</string>
     <string name="pref_network_proxy_enable">Включить прокси</string>
     <string name="pref_network_proxy_url">URL прокси</string>
-    <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического обновления в часах.</string>
+    <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического и самостоятельного обновления в часах.</string>
     <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
     <string name="pref_aurora_only_desc">Показывать в разделе обновлений и установленных приложений только приложения, установленные из Aurora Store</string>
@@ -377,4 +377,5 @@
     <string name="pref_updates_incompatible">Несовместимые обновления</string>
     <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
     <string name="action_home_screen">Добавить на Главный экран</string>
+    <string name="action_manage">Управлять</string>
 </resources>

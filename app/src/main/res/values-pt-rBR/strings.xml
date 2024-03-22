@@ -61,7 +61,7 @@
     <string name="onboarding_permission_installer_desc">Permitir a instalação de aplicativos da Aurora Store</string>
     <string name="onboarding_permission_installer">Permissão do instalador</string>
     <string name="onboarding_permission_esm">Gerenciador de Armazenamento Externo</string>
-    <string name="onboarding_permission_esa_desc">Para salvar downloads (APKs e OBBs), exporte e importe configurações do dispositivo para e do armazenamento externo.</string>
+    <string name="onboarding_permission_esa_desc">Para salvar arquivos de expansão (OBBs) para apps e jogos grandes.</string>
     <string name="onboarding_permission_esa">Acesso de armazenamento externo</string>
     <string name="onboarding_welcome_select">Como você está\?</string>
     <string name="onboarding_title_welcome">Saudações</string>

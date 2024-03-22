@@ -97,7 +97,7 @@
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
     <string name="onboarding_permission_esm">Správce externího úložiště</string>
-    <string name="onboarding_permission_esa_desc">Pro uložení stažených souborů (APK a OBB), exportujte a importujte konfiguraci zařízení do a z externího úložiště.</string>
+    <string name="onboarding_permission_esa_desc">Pro uložení rozšiřovacích souborů pro APK (soubory OBB) pro velké aplikace a hry.</string>
     <string name="onboarding_permission_esa">Přístup k externímu úložišti</string>
     <string name="onboarding_welcome_select">Jak se vám daří\?</string>
     <string name="onboarding_title_welcome">Vítejte</string>
