@@ -245,6 +245,7 @@ class DownloadWorker @AssistedInject constructor(
             // If file exists and sha matches the request, no need to download again
             if (requestFile.exists() && validSha(requestFile, expectedSha, algorithm)) {
                 Log.i(TAG, "$requestFile is already downloaded!")
+                downloadedBytes += requestFile.length()
                 return@withContext Result.success()
             }
 
