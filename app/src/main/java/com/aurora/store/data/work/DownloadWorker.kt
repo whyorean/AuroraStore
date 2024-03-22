@@ -20,6 +20,7 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.ProxyInfo
@@ -44,6 +45,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.io.FileOutputStream
 import java.net.Authenticator
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
@@ -54,7 +56,6 @@ import java.security.MessageDigest
 import javax.net.ssl.HttpsURLConnection
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
-
 
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
@@ -169,14 +170,15 @@ class DownloadWorker @AssistedInject constructor(
         if (!requestList.all { File(it.filePath).exists() }) return Result.failure()
 
         // Mark download as completed
-        notifyStatus(DownloadStatus.COMPLETED)
-        Log.i(TAG, "Finished downloading ${download.packageName}")
         onSuccess()
         return Result.success()
     }
 
     private suspend fun onSuccess() {
         withContext(NonCancellable) {
+            Log.i(TAG, "Finished downloading ${download.packageName}")
+            notifyStatus(DownloadStatus.COMPLETED)
+
             try {
                 appInstaller.getPreferredInstaller().install(download)
             } catch (exception: Exception) {
@@ -187,7 +189,7 @@ class DownloadWorker @AssistedInject constructor(
 
     private suspend fun onFailure() {
         withContext(NonCancellable) {
-            Log.i(TAG, "Cleaning up!")
+            Log.i(TAG, "Failed downloading ${download.packageName}")
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
             if (isSAndAbove() && stopReason in cancelReasons) {
                 notifyStatus(DownloadStatus.CANCELLED)
@@ -195,8 +197,6 @@ class DownloadWorker @AssistedInject constructor(
                 notifyStatus(DownloadStatus.FAILED)
             }
 
-            PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode)
-                .deleteRecursively()
             with(appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager) {
                 cancel(NOTIFICATION_ID)
             }
@@ -236,46 +236,43 @@ class DownloadWorker @AssistedInject constructor(
         return downloadList
     }
 
-    @OptIn(ExperimentalStdlibApi::class)
     private suspend fun downloadFile(request: Request): Result {
         return withContext(Dispatchers.IO) {
             val requestFile = File(request.filePath)
+            val algorithm = if (request.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
+            val expectedSha = if (algorithm == Algorithm.SHA1) request.sha1 else request.sha256
 
-            // If file exists, no need to download again
-            if (!shouldDownload(request)) {
-                Log.i(TAG, "$requestFile already exists")
+            // If file exists and sha matches the request, no need to download again
+            if (requestFile.exists() && validSha(requestFile, expectedSha, algorithm)) {
+                Log.i(TAG, "$requestFile is already downloaded!")
                 return@withContext Result.success()
             }
 
             try {
-                requestFile.createNewFile()
-
-                val algorithm = if (request.sha256.isBlank()) "SHA-1" else "SHA-256"
-                val messageDigest = MessageDigest.getInstance(algorithm)
-
-                val inputStream = if (proxy != null) {
-                    (URL(request.url).openConnection(proxy) as HttpsURLConnection).inputStream
+                val isNewFile = requestFile.createNewFile()
+                val connection = if (proxy != null) {
+                    URL(request.url).openConnection(proxy) as HttpsURLConnection
                 } else {
-                    URL(request.url).openStream()
+                    URL(request.url).openConnection() as HttpsURLConnection
                 }
 
-                DigestInputStream(inputStream, messageDigest).use { input ->
-                    requestFile.outputStream().use {
+                if (!isNewFile) {
+                    Log.i(TAG, "$requestFile has an unfinished download, resuming!")
+                    downloadedBytes += requestFile.length()
+                    connection.setRequestProperty("Range", "bytes=${requestFile.length()}-")
+                }
+
+                connection.inputStream.use { input ->
+                    FileOutputStream(requestFile, !isNewFile).use {
                         input.copyTo(it, request.size).collectLatest { p -> onProgress(p) }
                     }
                 }
 
-                val sha = messageDigest.digest().toHexString()
-                if (!File(request.filePath).exists() || !(sha == request.sha1 || sha == request.sha256)) {
-                    Log.e(TAG, "$requestFile is either missing or corrupt")
-                    notifyStatus(DownloadStatus.FAILED)
-                    return@withContext Result.failure()
-                }
-
+                // Ensure downloaded file matches expected sha
+                assert(validSha(requestFile, expectedSha, algorithm))
                 return@withContext Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to download ${request.filePath}!", exception)
-                requestFile.delete()
                 notifyStatus(DownloadStatus.FAILED)
                 return@withContext Result.failure()
             }
@@ -348,24 +345,18 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun shouldDownload(request: Request): Boolean {
+    private suspend fun validSha(file: File, expectedSha: String, algorithm: Algorithm): Boolean {
         return withContext(Dispatchers.IO) {
-            val file = File(request.filePath)
-            if (file.exists()) {
-                val algorithm = if (request.sha256.isBlank()) "SHA-1" else "SHA-256"
-                val messageDigest = MessageDigest.getInstance(algorithm)
-                DigestInputStream(file.inputStream(), messageDigest).use { input ->
-                    val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-                    var read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
-                    while (read > -1) {
-                        read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
-                    }
+            val messageDigest = MessageDigest.getInstance(algorithm.value)
+            DigestInputStream(file.inputStream(), messageDigest).use { input ->
+                val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                var read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
+                while (read > -1) {
+                    read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
                 }
-                val sha = messageDigest.digest().toHexString()
-                return@withContext !(sha == request.sha1 || sha == request.sha256)
-            } else {
-                return@withContext true
             }
+            val sha = messageDigest.digest().toHexString()
+            return@withContext sha == expectedSha
         }
     }
 
