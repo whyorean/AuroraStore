@@ -121,7 +121,7 @@
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
-    <string name="onboarding_permission_esa_desc">Erforderlich zum Speichern heruntergeladener APK- und OBB-Dateien sowie zum Ex- und Importieren von Gerätekonfigurationen</string>
+    <string name="onboarding_permission_esa_desc">Zum Speichern von APK-Erweiterungsdateien (OBBs) für große Apps und Spiele.</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>
     <string name="onboarding_welcome_select">Wie geht’s\?</string>
     <string name="onboarding_title_welcome">Willkommen</string>
