@@ -167,7 +167,7 @@ class DownloadWorker @AssistedInject constructor(
             }
         }
 
-        if (!requestList.all { File(it.filePath).exists() }) return Result.failure()
+        if (!requestList.all { it.file.exists() }) return Result.failure()
 
         // Mark download as completed
         onSuccess()
@@ -220,7 +220,7 @@ class DownloadWorker @AssistedInject constructor(
     private fun getDownloadRequest(files: List<GPlayFile>, libPackageName: String?): List<Request> {
         val downloadList = mutableListOf<Request>()
         files.filter { it.url.isNotBlank() }.forEach {
-            val filePath = when (it.type) {
+            val file = when (it.type) {
                 GPlayFile.FileType.BASE, GPlayFile.FileType.SPLIT -> {
                     PathUtil.getApkDownloadFile(
                         appContext, download.packageName, download.versionCode, it, libPackageName
@@ -231,26 +231,25 @@ class DownloadWorker @AssistedInject constructor(
                     PathUtil.getObbDownloadFile(download.packageName, it)
                 }
             }
-            downloadList.add(Request(it.url, filePath, it.size, it.sha1, it.sha256))
+            downloadList.add(Request(it.url, file, it.size, it.sha1, it.sha256))
         }
         return downloadList
     }
 
     private suspend fun downloadFile(request: Request): Result {
         return withContext(Dispatchers.IO) {
-            val requestFile = File(request.filePath)
             val algorithm = if (request.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
             val expectedSha = if (algorithm == Algorithm.SHA1) request.sha1 else request.sha256
 
             // If file exists and sha matches the request, no need to download again
-            if (requestFile.exists() && validSha(requestFile, expectedSha, algorithm)) {
-                Log.i(TAG, "$requestFile is already downloaded!")
-                downloadedBytes += requestFile.length()
+            if (request.file.exists() && validSha(request.file, expectedSha, algorithm)) {
+                Log.i(TAG, "${request.file} is already downloaded!")
+                downloadedBytes += request.file.length()
                 return@withContext Result.success()
             }
 
             try {
-                val isNewFile = requestFile.createNewFile()
+                val isNewFile = request.file.createNewFile()
                 val connection = if (proxy != null) {
                     URL(request.url).openConnection(proxy) as HttpsURLConnection
                 } else {
@@ -258,22 +257,22 @@ class DownloadWorker @AssistedInject constructor(
                 }
 
                 if (!isNewFile) {
-                    Log.i(TAG, "$requestFile has an unfinished download, resuming!")
-                    downloadedBytes += requestFile.length()
-                    connection.setRequestProperty("Range", "bytes=${requestFile.length()}-")
+                    Log.i(TAG, "${request.file} has an unfinished download, resuming!")
+                    downloadedBytes += request.file.length()
+                    connection.setRequestProperty("Range", "bytes=${request.file.length()}-")
                 }
 
                 connection.inputStream.use { input ->
-                    FileOutputStream(requestFile, !isNewFile).use {
+                    FileOutputStream(request.file, !isNewFile).use {
                         input.copyTo(it, request.size).collectLatest { p -> onProgress(p) }
                     }
                 }
 
                 // Ensure downloaded file matches expected sha
-                assert(validSha(requestFile, expectedSha, algorithm))
+                assert(validSha(request.file, expectedSha, algorithm))
                 return@withContext Result.success()
             } catch (exception: Exception) {
-                Log.e(TAG, "Failed to download ${request.filePath}!", exception)
+                Log.e(TAG, "Failed to download ${request.file}!", exception)
                 notifyStatus(DownloadStatus.FAILED)
                 return@withContext Result.failure()
             }

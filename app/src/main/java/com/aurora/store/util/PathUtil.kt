@@ -50,7 +50,7 @@ object PathUtil {
         sharedLibPackageName: String
     ): File {
         return File(
-            getAppDownloadDir(context, packageName, versionCode).absolutePath,
+            getAppDownloadDir(context, packageName, versionCode),
             "$LIBRARIES/$sharedLibPackageName"
         )
     }
@@ -61,13 +61,13 @@ object PathUtil {
         versionCode: Int,
         file: GPlayFile,
         sharedLibPackageName: String? = null
-    ): String {
+    ): File {
         val downloadDir =  if (!sharedLibPackageName.isNullOrBlank()) {
             getLibDownloadDir(context, packageName, versionCode, sharedLibPackageName)
         } else {
             File(getPackageDirectory(context, packageName), versionCode.toString())
         }
-        return File(downloadDir, file.name).absolutePath
+        return File(downloadDir, file.name)
     }
 
     fun getZipFile(context: Context, packageName: String, versionCode: Int): File {
@@ -84,8 +84,8 @@ object PathUtil {
         return File(Environment.getExternalStorageDirectory(), "/Android/obb/$packageName")
     }
 
-    fun getObbDownloadFile(packageName: String, file: GPlayFile): String {
-        return File(getObbDownloadDir(packageName), file.name).absolutePath
+    fun getObbDownloadFile(packageName: String, file: GPlayFile): File {
+        return File(getObbDownloadDir(packageName), file.name)
     }
 
     fun needsStorageManagerPerm(fileList: List<GPlayFile>): Boolean {
