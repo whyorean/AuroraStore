@@ -32,7 +32,7 @@ object PathUtil {
     private const val SPOOF = "SpoofConfigs"
 
     fun getDownloadDirectory(context: Context): File {
-        return File(context.filesDir, DOWNLOADS)
+        return File(context.cacheDir, DOWNLOADS)
     }
 
     private fun getPackageDirectory(context: Context, packageName: String): File {
