@@ -177,7 +177,7 @@
     <string name="pref_ui_theme_title">主题</string>
     <string name="pref_ui_theme_system">跟随系统</string>
     <string name="pref_ui_theme_light">浅色</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
+    <string name="pref_ui_theme_darkord">失和</string>
     <string name="pref_ui_theme_dark_x">深色 X</string>
     <string name="pref_ui_theme_dark">深色</string>
     <string name="pref_ui_theme_black">黑色</string>
