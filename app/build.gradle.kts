@@ -64,6 +64,14 @@ android {
                 storePassword = properties["KEY_PASSWORD"] as String
             }
         }
+        create("aosp") {
+            // Generated from the AOSP test key:
+            // https://android.googlesource.com/platform/build/+/refs/tags/android-11.0.0_r29/target/product/security/testkey.pk8
+            keyAlias = "testkey"
+            keyPassword = "testkey"
+            storeFile = file("testkey.jks")
+            storePassword = "testkey"
+        }
     }
 
     buildTypes {
@@ -86,6 +94,7 @@ android {
 
         debug {
             applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("aosp")
         }
     }
 
