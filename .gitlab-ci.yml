@@ -12,10 +12,10 @@ cache:
 stages:
 - build
 
-assembleDebug:
+assembleNightly:
   stage: build
   script:
-  - ./gradlew assembleDebug
+  - ./gradlew assembleNightly
   artifacts:
     paths:
-    - app/build/outputs/apk/debug/app-debug.apk
+    - app/build/outputs/apk/nightly/app-nightly.apk
