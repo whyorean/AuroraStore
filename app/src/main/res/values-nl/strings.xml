@@ -118,7 +118,7 @@
     <string name="onboarding_permission_installer_desc">Sta installeren van apps van Aurora Store toe</string>
     <string name="onboarding_permission_installer">Installateur Recht</string>
     <string name="onboarding_permission_esm">Externe Opslag Beheerder</string>
-    <string name="onboarding_permission_esa_desc">Om je downloads op te slaan (APKs en OBBs), exporteer en importeer apparaat configuraties naar en van externe opslag.</string>
+    <string name="onboarding_permission_esa_desc">Voor het opslaan van APK-extensiebestanden (OBB\'s) voor grote apps en games.</string>
     <string name="onboarding_permission_esa">Externe Opslag Toegang</string>
     <string name="onboarding_welcome_select">Hoe gaat het met u\?</string>
     <string name="onboarding_title_welcome">Welkom</string>
@@ -161,7 +161,7 @@
     <string name="exodus_substring">bekende tracker(s) gevonden in</string>
     <string name="exodus_progress">Controleren voor trackers…</string>
     <string name="exodus_powered">Mogelijk gemaakt door Exodus</string>
-    <string name="exodus_no_tracker">Bevat geen trackers</string>
+    <string name="exodus_no_tracker">Bevat geen bekende trackers</string>
     <string name="download_speed_estimating">Geschatte</string>
     <string name="download_resume_all">Alle voortzetten</string>
     <string name="download_queued">In de wachtrij</string>
@@ -342,4 +342,8 @@
     <string name="action_request_analysis">Nieuwe analyse aanvragen</string>
     <string name="onboarding_permission_doze">Downloads in achtergrond</string>
     <string name="onboarding_permission_doze_desc">Sta Aurora Store toe om apps te downloaden en updaten in de achtergrond</string>
+    <string name="details_no_apps_on_sale">Geen apps gevonden in de uitverkoop</string>
+    <string name="pref_download_directory_error">De geselecteerde map is alleen-lezen</string>
+    <string name="pref_downloader_wifi_title">Alleen downloaden via wifi</string>
+    <string name="action_home_screen">Toevoegen aan startpagina</string>
 </resources>
