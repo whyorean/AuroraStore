@@ -1,15 +1,15 @@
 variables:
   PACKAGE_VERSION: "continuous"
-  NIGHTLY_BINARY: "com.aurora.store.nightly_${CI_COMMIT_SHORT_SHA}.apk"
-  NIGHTLY_BINARY_PATH: "app/build/outputs/apk/nightly/app-nightly.apk"
-  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/nightly/${PACKAGE_VERSION}"
+  DEBUG_BINARY: "com.aurora.store.debug_${CI_COMMIT_SHORT_SHA}.apk"
+  DEBUG_BINARY_PATH: "app/build/outputs/apk/debug/app-debug.apk"
+  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/debug/${PACKAGE_VERSION}"
 
 stages:
 - build
 - upload
 - release
 
-assembleNightly:
+assembleDebug:
   stage: build
   image: theimpulson/gitlab-ci-android:android-34
   cache:
@@ -17,15 +17,15 @@ assembleNightly:
     paths:
       - .gradle/
   script:
-    - './gradlew assembleNightly'
+    - './gradlew assembleDebug'
   artifacts:
     paths:
-    - $NIGHTLY_BINARY_PATH
+    - $DEBUG_BINARY_PATH
 
-uploadNightly:
+uploadDebug:
   stage: upload
   image: curlimages/curl:latest
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
-    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file ${NIGHTLY_BINARY_PATH} ${PACKAGE_REGISTRY_URL}/${NIGHTLY_BINARY}'
+    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file ${DEBUG_BINARY_PATH} ${PACKAGE_REGISTRY_URL}/${DEBUG_BINARY}'

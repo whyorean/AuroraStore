@@ -90,7 +90,6 @@ android {
         register("nightly") {
             initWith(getByName("release"))
             applicationIdSuffix = ".nightly"
-            signingConfig = signingConfigs.getByName("aosp")
         }
 
         debug {
