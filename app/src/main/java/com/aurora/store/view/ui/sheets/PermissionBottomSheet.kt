@@ -42,13 +42,22 @@ class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissio
     private val binding get() = _binding!!
 
     private lateinit var packageManager: PackageManager
+    private lateinit var currentPerms: List<String>
 
     private val args: PermissionBottomSheetArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = SheetPermissionsBinding.bind(view)
+
         packageManager = requireContext().packageManager
+        currentPerms = try {
+            packageManager.getPackageInfo(
+                args.app.packageName, PackageManager.GET_PERMISSIONS
+            ).requestedPermissions.toList()
+        } catch (_: Exception) {
+            emptyList()
+        }
 
         val permissionGroupWidgets: MutableMap<String, PermissionGroup?> =
             HashMap<String, PermissionGroup?>()
@@ -70,7 +79,7 @@ class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissio
                 permissionGroupWidgets[permissionGroupInfo.name] = permissionGroup
             }
 
-            permissionGroup?.addPermission(permissionInfo)
+            permissionGroup?.addPermission(permissionInfo, currentPerms)
         }
 
         binding.permissionsContainer.removeAllViews()

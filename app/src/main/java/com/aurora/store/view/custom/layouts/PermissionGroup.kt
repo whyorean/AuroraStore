@@ -27,6 +27,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.aurora.extensions.accentColor
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.model.PermissionGroupInfo
@@ -76,7 +77,7 @@ class PermissionGroup : LinearLayout {
         //imageView.setColorFilter(getContext().getStyledAttributeColor(imageView.getContext(), android.R.attr.colorAccent));
     }
 
-    fun addPermission(permissionInfo: PermissionInfo) {
+    fun addPermission(permissionInfo: PermissionInfo, currentPerms: List<String> = emptyList()) {
         val title = permissionInfo.loadLabel(packageManager)
         val description = permissionInfo.loadDescription(packageManager)
 
@@ -97,7 +98,8 @@ class PermissionGroup : LinearLayout {
                 addPermissionLabel(
                     permissionLabelsView,
                     it,
-                    permissionMap[it]
+                    permissionMap[it],
+                    if (currentPerms.isNotEmpty()) permissionInfo.name !in currentPerms else false
                 )
             }
     }
@@ -105,10 +107,12 @@ class PermissionGroup : LinearLayout {
     private fun addPermissionLabel(
         permissionLabelsView: LinearLayout,
         label: String,
-        description: String?
+        description: String?,
+        isNewPerm: Boolean = false
     ) {
         val textView = TextView(context)
         textView.text = label
+        if (isNewPerm) textView.setTextColor(context.accentColor())
         textView.setOnClickListener {
             var title: String = permissionGroupInfo.label
 
