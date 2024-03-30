@@ -34,6 +34,7 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
+import com.aurora.extensions.runOnUiThread
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
@@ -83,7 +84,10 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             }
             stageInstall(download.packageName, download.versionCode)
 
-            if (sessionIdMap.size > 1) packageInstaller.registerSessionCallback(callback)
+            if (sessionIdMap.size > 1) {
+                runOnUiThread { packageInstaller.registerSessionCallback(callback) }
+            }
+
             commitInstall(
                 sessionIdMap.getValue(sessionIdMap.keys.first()),
                 sessionIdMap.keys.first()
