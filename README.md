@@ -38,8 +38,9 @@ with or without Google Play Services or MicroG.
 Please only download the latest stable releases from one of these sources:
 
 - [F-Droid](https://f-droid.org/en/packages/com.aurora.store/) (Recommended)
-- [AuroraOSS](https://auroraoss.com/AuroraStore/)
 - [GitLab Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
+
+You can also get latest nightly builds signed with AOSP test keys for testing latest changes from our [GitLab Package Registry](https://gitlab.com/AuroraOSS/AuroraStore/-/packages/24087192).
 
 ## Certificate Fingerprints
 
