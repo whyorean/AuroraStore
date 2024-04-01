@@ -147,7 +147,7 @@
     <string name="download_resume_all">"Resume all"</string>
     <string name="download_speed_estimating">"Estimating"</string>
     <string name="exodus_no_tracker">"Contains no known trackers"</string>
-    <string name="exodus_powered">"Powered by Exodus"</string>
+    <string name="exodus_powered">"Powered by Exodus Privacy"</string>
     <string name="exodus_progress">"Checking for trackers…"</string>
     <string name="exodus_substring">known trackers(s) found in</string>
     <string name="exodus_view_report">"View report"</string>
