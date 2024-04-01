@@ -70,11 +70,13 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
     private fun updateButtonState() {
         if (isSAndAbove()) {
             buttons.forEach { (domain, button) ->
-                if (domainVerified(domain)) {
-                    button.apply {
-                        text = getString(R.string.action_enabled)
-                        isEnabled = false
+                button.apply {
+                    text = if (domainVerified(domain)) {
+                        getString(R.string.action_enabled)
+                    } else {
+                        getString(R.string.action_enable)
                     }
+                    isEnabled = !domainVerified(domain)
                 }
             }
         } else {
