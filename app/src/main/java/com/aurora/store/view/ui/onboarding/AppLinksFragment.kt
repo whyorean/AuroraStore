@@ -6,6 +6,7 @@ import android.content.pm.verify.domain.DomainVerificationUserState
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -18,6 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
+
+    private val TAG = AppLinksFragment::class.java.simpleName
 
     private var _binding: FragmentAppLinksBinding? = null
     private val binding get() = _binding!!
@@ -51,11 +54,16 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
         if (isSAndAbove()) {
             buttons.values.forEach {
                 it.setOnClickListener {
-                    val intent = Intent(
-                        ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
-                        Uri.parse("package:${view.context.packageName}")
-                    )
-                    startForResult.launch(intent)
+                    try {
+                        val intent = Intent(
+                            ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
+                            Uri.parse("package:${view.context.packageName}")
+                        )
+                        startForResult.launch(intent)
+                    } catch (exception: Exception) {
+                        Log.e(TAG, "Failed to open app links screen", exception)
+                        toast(R.string.failed_app_link)
+                    }
                 }
             }
         }

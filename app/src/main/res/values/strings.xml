@@ -400,4 +400,5 @@
     <string name="device_doze_extra">Optionally you can choose to keep the optimizations enabled, but then you won\'t be able to take benefit of background downloads and automated updates, so choice is yours.</string>
     <string name="failed_apk_export">Failed to export APKs</string>
     <string name="action_manage">Manage</string>
+    <string name="failed_app_link">Unsupported, please try associating links manually</string>
 </resources>
