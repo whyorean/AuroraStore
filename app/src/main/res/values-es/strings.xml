@@ -107,7 +107,7 @@
     <string name="exodus_view_report">Ver informe</string>
     <string name="exodus_substring">rastreador(es) conocido(s) encontrado(s) en</string>
     <string name="exodus_progress">Comprobando los rastreadores…</string>
-    <string name="exodus_powered">Desarrollado por Exodus</string>
+    <string name="exodus_powered">Desarrollado por Exodus Privacy</string>
     <string name="exodus_no_tracker">No contiene ningún rastreador conocido</string>
     <string name="download_speed_estimating">Estimando</string>
     <string name="download_resume_all">Reanudar todas</string>
@@ -378,4 +378,11 @@
     <string name="pref_updates_incompatible_desc">Mostrar actualizaciones de aplicaciones incompatibles o desactivadas que pueden fallar al instalarse</string>
     <string name="action_home_screen">Añadir a la pantalla de inicio</string>
     <string name="action_manage">Gestionar</string>
+    <string name="failed_app_link">No compatible, por favor intente asociar los enlaces manualmente</string>
+    <string name="session_installer_subtitle">Instalador basado en sesión para APK empaquetados/divididos</string>
+    <string name="session_installer_desc">Recomendado, integrado y compatible con todas las versiones de Android</string>
+    <string name="root_installer_desc">Requiere privilegios de root/superusuario, es compatible con todas las versiones de Android.</string>
+    <string name="services_installer_subtitle">Instalador para instalaciones en segundo plano</string>
+    <string name="root_installer_subtitle">Instalador basado en Shell que utiliza permisos de root</string>
+    <string name="native_installer_desc">Ideal para dispositivos con versiones anreriores a Android 4.4</string>
 </resources>
