@@ -103,7 +103,7 @@
     <string name="exodus_view_report">Ver relatório</string>
     <string name="exodus_substring">rastreador(es) conhecido(s) encontrado(s) em</string>
     <string name="exodus_progress">Verificando rastreadores…</string>
-    <string name="exodus_powered">Disponibilizado por Exodus</string>
+    <string name="exodus_powered">Disponibilizado por Exodus Privacy</string>
     <string name="exodus_no_tracker">Não contém rastreadores conhecidos</string>
     <string name="download_speed_estimating">Estimando</string>
     <string name="download_resume_all">Retomar todos</string>
@@ -364,7 +364,7 @@
     <string name="onboarding_permission_doze_desc">Permitir que a Aurora Store baixe e atualize apps em segundo plano</string>
     <string name="device_doze_description">Por favor, desative as otimizações de bateria para permitir operações em plano de fundo.</string>
     <string name="device_doze_title">Otimizações de bateria detectadas!</string>
-    <string name="device_doze_extra">Opcionalmente, você pode escolher manter as otimizações ativas, mas dessa forma não será possível usar utilizar downloads em segundo-plano e atualizações automáticas, a escolha é sua.</string>
+    <string name="device_doze_extra">Opcionalmente, você pode escolher manter as otimizações ativas, mas dessa forma não será possível usar downloads em segundo plano e atualizações automáticas, a escolha é sua.</string>
     <string name="device_doze_subtitle">Aurora Store não pode instalar, baixar ou atualizar apps no plano de fundo devido a otimizações de bateria.</string>
     <string name="pref_updates_auto">Atualizar apps automaticamente</string>
     <string name="pref_updates_auto_notify">Checar e notificar atualizações disponíveis</string>
@@ -378,4 +378,17 @@
     <string name="download_clear_finished">Limpar finalizados</string>
     <string name="action_home_screen">Adicionar à Tela inicial</string>
     <string name="action_manage">Gerenciar</string>
+    <string name="failed_app_link">Não suportado, por favor tente associar os links manualmente</string>
+    <string name="root_installer_subtitle">Instalador baseado em shell usando permissões de root</string>
+    <string name="root_installer_desc">Requer privilégios de root/super-usuário, suporta todas as versões do Android.</string>
+    <string name="native_installer_subtitle">Instalador baseado em intent, disponível em todos os dispositivos</string>
+    <string name="native_installer_desc">Melhor para dispositivos rodando versões anteriores ao Android 4.4</string>
+    <string name="services_installer_subtitle">Instalador para instalações em plano de fundo</string>
+    <string name="services_installer_desc">Requer que os Serviços Aurora estejam instalados como app de sistema privilegiado</string>
+    <string name="shizuku_installer_desc">Requer Shizuku ou Sui, precisa ser configurado e que a permissão seja concedida</string>
+    <string name="am_installer_subtitle">Gerenciador de pacotes completo de código aberto</string>
+    <string name="am_installer_desc">Requer App Manager, precisa do modo adb/root para instalar quando a otimização miui estiver ligada</string>
+    <string name="shizuku_installer_subtitle">Usando APIs do sistema diretamente com privilégios de adb/root</string>
+    <string name="session_installer_subtitle">Instalador baseado em sessão para APKs em bundle/split</string>
+    <string name="session_installer_desc">Recomendado, pré-instalado e suporta todas as versões do Android</string>
 </resources>
