@@ -116,7 +116,7 @@
     <string name="download_resume_all">Rimerri krejt</string>
     <string name="download_speed_estimating">Afërsisht</string>
     <string name="exodus_no_tracker">S’përmban gjurmues të ditur</string>
-    <string name="exodus_powered">Bazuar në Exodus</string>
+    <string name="exodus_powered">Bazuar në Exodus Privacy</string>
     <string name="exodus_progress">Po kontrollohet për gjurmues…</string>
     <string name="exodus_substring">gjurmues() të ditur të gjetur në</string>
     <string name="exodus_view_report">Shiheni raportimin</string>
@@ -376,4 +376,5 @@
     <string name="failed_generating_session">S’u arrit të prodhohej sesion, kod gabimi: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="amazon_appstore_desc">Amazon Appstore është një shitore aplikacionesh për platforma të përputhshme me Android, mbajtur në punë nga Amazon.</string>
     <string name="failed_apk_export">S’u arrit të eksportoheshin APK-ra</string>
+    <string name="failed_app_link">E pambuluar, ju lutemi, provoni të përshoqëroni dorazi lidhjet</string>
 </resources>
