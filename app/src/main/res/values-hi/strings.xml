@@ -133,7 +133,7 @@
     <string name="pref_app_download">डाउनलोड</string>
     <string name="title_updates">अपडेटस</string>
     <string name="details_beta_subscribed">आप बीटा टेस्टर हैं</string>
-    <string name="exodus_powered">एग्ज़ोडस से बना</string>
+    <string name="exodus_powered">Exodus Privacy द्वारा संचालित</string>
     <string name="pref_install_mode_am">AM इंस्टॉलर</string>
     <string name="title_download_manager">डाउनलोडस</string>
     <string name="tab_editor_choice">संपादक की पसंद</string>
@@ -168,7 +168,7 @@
     <string name="pref_ui_theme_dark">गहरा</string>
     <string name="toast_page_unavailable">पन्ना ब्राउज़ मौजूद नहीं</string>
     <string name="pref_install_mode_session">सत्र इंस्टॉलर</string>
-    <string name="pref_ui_title">पसंद का इंटरफेस</string>
+    <string name="pref_ui_title">अनुकूलन</string>
     <string name="download_speed_estimating">अनुमान लगा रहे</string>
     <string name="action_ok">ठीक है</string>
     <string name="onboarding_installer_select">एक इंस्टॉलर चुनें</string>
@@ -378,4 +378,5 @@
     <string name="pref_updates_incompatible">असंगत अपडेटस</string>
     <string name="action_home_screen">होम स्क्रीन पर जोड़ें</string>
     <string name="action_manage">प्रबंधित करें</string>
+    <string name="failed_app_link">असमर्थित, कृपया मैन्युअल रूप से लिंक जोड़ने का प्रयास करें</string>
 </resources>
