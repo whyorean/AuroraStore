@@ -379,4 +379,16 @@
     <string name="action_home_screen">होम स्क्रीन पर जोड़ें</string>
     <string name="action_manage">प्रबंधित करें</string>
     <string name="failed_app_link">असमर्थित, कृपया मैन्युअल रूप से लिंक जोड़ने का प्रयास करें</string>
+    <string name="session_installer_subtitle">बंडल/विभाजित APK के लिए सत्र आधारित इंस्टॉलर</string>
+    <string name="session_installer_desc">अनुशंसित, अंतर्निर्मित और सभी Android संस्करणों का समर्थन करता है</string>
+    <string name="root_installer_subtitle">रूट अनुमतियों का उपयोग कर शैल आधारित इंस्टॉलर</string>
+    <string name="root_installer_desc">रूट/सुपरयूज़र विशेषाधिकारों की आवश्यकता है, सभी Android संस्करणों का समर्थन करता है।</string>
+    <string name="native_installer_subtitle">आशय आधारित इंस्टॉलर, सभी उपकरणों पर उपलब्ध है</string>
+    <string name="native_installer_desc">Android 4.4 से नीचे चलने वाले उपकरणों के लिए सबसे उपयुक्त</string>
+    <string name="services_installer_subtitle">पृष्ठभूमि स्थापनाओं के लिए इंस्टॉलर</string>
+    <string name="services_installer_desc">Aurora Services को एक विशेषाधिकार प्राप्त-सिस्टम ऐप के रूप में स्थापित करने की आवश्यकता है</string>
+    <string name="am_installer_desc">ऐप मैनेजर की आवश्यकता है, miui अनुकूलन चालू होने पर इंस्टॉल करने के लिए adb/रूट मोड की आवश्यकता है</string>
+    <string name="shizuku_installer_desc">Shizuku या Sui की आवश्यकता है, इसे स्थापित करने और अनुमति देने की आवश्यकता है</string>
+    <string name="am_installer_subtitle">पूर्ण विशेषताओं वाला ओपन सोर्स पैकेज प्रबंधक</string>
+    <string name="shizuku_installer_subtitle">adb/रूट विशेषाधिकारों के साथ सीधे सिस्टम API का उपयोग करके</string>
 </resources>
