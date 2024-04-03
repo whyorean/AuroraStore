@@ -31,6 +31,7 @@ import androidx.annotation.RequiresApi
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
@@ -44,6 +45,15 @@ class ShizukuInstaller(context: Context) : InstallerBase(context) {
 
     companion object {
         const val SHIZUKU_PACKAGE_NAME = "moe.shizuku.privileged.api"
+
+        fun getInstallerInfo(context: Context): Installer {
+            return Installer(
+                id = 5,
+                title = context.getString(R.string.pref_install_mode_shizuku),
+                subtitle = context.getString(R.string.shizuku_installer_subtitle),
+                description = context.getString(R.string.shizuku_installer_desc)
+            )
+        }
     }
 
     // Taken from LSPatch (https://github.com/LSPosed/LSPatch)

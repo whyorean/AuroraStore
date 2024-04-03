@@ -28,10 +28,14 @@ import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
+import com.aurora.store.data.installer.AMInstaller
 import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
 import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuOrSui
 import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
+import com.aurora.store.data.installer.RootInstaller
+import com.aurora.store.data.installer.SessionInstaller
+import com.aurora.store.data.installer.ShizukuInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
 import com.aurora.store.util.Log
@@ -40,11 +44,9 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
 import com.aurora.store.view.epoxy.views.preference.InstallerViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
-import java.nio.charset.StandardCharsets
 
 @AndroidEntryPoint
 class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
@@ -93,7 +95,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
         // RecyclerView
         binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
-            loadInstallersFromAssets().forEach {
+            getRecommendedInstallers().forEach {
                 add(
                     InstallerViewModel_()
                         .id(it.id)
@@ -188,17 +190,18 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
         }
     }
 
-    private fun loadInstallersFromAssets(): List<Installer> {
-        val inputStream = requireContext().assets.open("installers.json")
-        val bytes = ByteArray(inputStream.available())
-        inputStream.read(bytes)
-        inputStream.close()
-
-        val json = String(bytes, StandardCharsets.UTF_8)
-        return gson.fromJson<MutableList<Installer>?>(
-            json,
-            object : TypeToken<MutableList<Installer?>?>() {}.type
+    private fun getRecommendedInstallers(): List<Installer> {
+        val installers = mutableListOf(
+            SessionInstaller.getInstallerInfo(requireContext()),
+            RootInstaller.getInstallerInfo(requireContext()),
+            AMInstaller.getInstallerInfo(requireContext())
         )
+
+        if (isOAndAbove()) {
+            installers.add(ShizukuInstaller.getInstallerInfo(requireContext()))
+        }
+
+        return installers
     }
 
 }

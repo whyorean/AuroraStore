@@ -2,6 +2,8 @@ package com.aurora.store.data.installer
 
 import android.content.Context
 import android.content.Intent
+import com.aurora.store.R
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
@@ -15,6 +17,15 @@ class AMInstaller(context: Context) : InstallerBase(context) {
     companion object {
         const val AM_PACKAGE_NAME = "io.github.muntashirakon.AppManager"
         const val AM_DEBUG_PACKAGE_NAME = "io.github.muntashirakon.AppManager.debug"
+
+        fun getInstallerInfo(context: Context): Installer {
+            return Installer(
+                id = 4,
+                title = context.getString(R.string.pref_install_mode_am),
+                subtitle = context.getString(R.string.am_installer_subtitle),
+                description = context.getString(R.string.am_installer_desc)
+            )
+        }
     }
 
     override fun install(download: Download) {

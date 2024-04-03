@@ -35,6 +35,8 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.runOnUiThread
+import com.aurora.store.R
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
@@ -47,6 +49,18 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
 
     private val packageInstaller = context.packageManager.packageInstaller
     private val sessionIdMap = mutableMapOf<Int, String>()
+
+    companion object {
+
+        fun getInstallerInfo(context: Context): Installer {
+            return Installer(
+                id = 0,
+                title = context.getString(R.string.pref_install_mode_session),
+                subtitle = context.getString(R.string.session_installer_subtitle),
+                description = context.getString(R.string.session_installer_desc)
+            )
+        }
+    }
 
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {

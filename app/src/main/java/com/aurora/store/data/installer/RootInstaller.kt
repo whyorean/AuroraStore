@@ -22,6 +22,7 @@ package com.aurora.store.data.installer
 import android.content.Context
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
@@ -30,6 +31,18 @@ import org.greenrobot.eventbus.EventBus
 import java.util.regex.Pattern
 
 class RootInstaller(context: Context) : InstallerBase(context) {
+
+    companion object {
+
+        fun getInstallerInfo(context: Context): Installer {
+            return Installer(
+                id = 2,
+                title = context.getString(R.string.pref_install_mode_root),
+                subtitle = context.getString(R.string.root_installer_subtitle),
+                description = context.getString(R.string.root_installer_desc)
+            )
+        }
+    }
 
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {

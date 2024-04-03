@@ -23,12 +23,26 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import com.aurora.store.R
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import java.io.File
 
 @Deprecated("Deprecated in favour of SessionInstaller")
 class NativeInstaller(context: Context) : InstallerBase(context) {
+
+    companion object {
+
+        fun getInstallerInfo(context: Context): Installer {
+            return Installer(
+                id = 1,
+                title = context.getString(R.string.pref_install_mode_native),
+                subtitle = context.getString(R.string.native_installer_subtitle),
+                description = context.getString(R.string.native_installer_desc)
+            )
+        }
+    }
 
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {

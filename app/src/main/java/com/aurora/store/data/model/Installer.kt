@@ -23,8 +23,7 @@ data class Installer(
     var id: Int,
     var title: String,
     var subtitle: String,
-    var description: String,
-    var url: String
+    var description: String
 ) {
     override fun equals(other: Any?): Boolean {
         return when (other) {
