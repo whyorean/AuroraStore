@@ -140,7 +140,7 @@
     <string name="exodus_substring">známých sledovacích prvků nalezeno ve verzi</string>
     <string name="exodus_no_tracker">Neobsahuje žádné známé sledovací prvky</string>
     <string name="exodus_progress">Kontroluji trackers…</string>
-    <string name="exodus_powered">Využívá službu Exodus</string>
+    <string name="exodus_powered">Využívá službu Exodus Privacy</string>
     <string name="download_speed_estimating">Odhaduji</string>
     <string name="download_resume_all">Pokračovat vše</string>
     <string name="download_queued">Ve frontě</string>
@@ -378,4 +378,5 @@
     <string name="pref_updates_incompatible_desc">Zobrazit aktualizace pro nekompatibilní nebo zakázané aplikace, jejichž instalace může selhat</string>
     <string name="action_home_screen">Přidat na domovskou obrazovku</string>
     <string name="action_manage">Správa</string>
+    <string name="failed_app_link">Nepodporováno, zkuste prosím ručně přiřadit odkazy</string>
 </resources>
