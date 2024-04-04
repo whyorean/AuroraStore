@@ -391,4 +391,11 @@
     <string name="services_installer_desc">يتطلب تثبيت خدمات Aurora كتطبيق نظام مميز</string>
     <string name="am_installer_desc">يتطلب مدير التطبيقات، ويحتاج إلى وضع adb/root للتثبيت عند تشغيل تحسين miui</string>
     <string name="shizuku_installer_desc">يتطلب Shizuku أو Sui، ويحتاج إلى الإعداد ومنح الإذن</string>
+    <string name="disclaimer_subtitle">المساءلة والمسؤولية</string>
+    <string name="manual_download_hint">أدخل رمز الإصدار الذي ترغب في تنزيله</string>
+    <string name="faqs_subtitle">هل لديك أسئلة؟ تعرف على الإجابات</string>
+    <string name="source_code_title">الكود المصدري</string>
+    <string name="source_code_subtitle">اكتشف ما بداخله</string>
+    <string name="privacy_policy_title">سياسة الخصوصية</string>
+    <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
 </resources>
