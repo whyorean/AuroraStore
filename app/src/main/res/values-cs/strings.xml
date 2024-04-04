@@ -391,4 +391,11 @@
     <string name="native_installer_desc">Vhodný pro zařízení se systémem starším než Android 4.4</string>
     <string name="services_installer_subtitle">Instalátor pro instalace na pozadí</string>
     <string name="shizuku_installer_desc">Vyžaduje aplikaci Shizuku nebo Sui, kterou je třeba nejprve nastavit a udělit jí oprávnění</string>
+    <string name="source_code_title">Zdrojový kód</string>
+    <string name="privacy_policy_title">Ochrana soukromí</string>
+    <string name="disclaimer_subtitle">Odpovědnost</string>
+    <string name="manual_download_hint">Zadejte kód verze, kterou si přejete stáhnout</string>
+    <string name="faqs_subtitle">Máte otázky? Máme odpovědi</string>
+    <string name="source_code_subtitle">Mrkněte, co je uvnitř</string>
+    <string name="privacy_policy_subtitle">Podívejte se, jak aplikace Aurora Store používá vaše data</string>
 </resources>
