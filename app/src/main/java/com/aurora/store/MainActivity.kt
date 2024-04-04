@@ -205,8 +205,11 @@ class MainActivity : AppCompatActivity() {
                 transformations(RoundedCornersTransformation(8F))
             }
             it.findViewById<TextView>(R.id.txt_name)?.text = getString(R.string.app_name)
-            it.findViewById<TextView>(R.id.txt_email)?.text =
-                ("v${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}")
+            it.findViewById<TextView>(R.id.txt_email)?.text = getString(
+                R.string.version,
+                BuildConfig.VERSION_NAME,
+                BuildConfig.VERSION_CODE
+            )
         }
 
         appConfig = AppBarConfiguration.Builder(topLevelFrags.toSet())

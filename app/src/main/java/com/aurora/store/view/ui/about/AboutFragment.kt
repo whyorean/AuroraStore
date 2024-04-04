@@ -54,7 +54,11 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
 
         // About Details
         binding.imgIcon.load(R.mipmap.ic_launcher)
-        binding.line2.text = ("v${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})")
+        binding.line2.text = view.context.getString(
+            R.string.version,
+            BuildConfig.VERSION_NAME,
+            BuildConfig.VERSION_CODE
+        )
 
         binding.epoxyRecycler.layoutManager =
             LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)

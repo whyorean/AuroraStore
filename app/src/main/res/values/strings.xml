@@ -428,4 +428,7 @@
     <string name="privacy_policy_title">Privacy policy</string>
     <string name="privacy_policy_subtitle">Learn how Aurora Store uses your data</string>
     <string name="disclaimer_subtitle">Accountability and responsibility</string>
+
+    <!-- AboutFragment -->
+    <string name="version" translatable="false">v<xliff:g id="version_name">%1$s</xliff:g> (<xliff:g id="version_code">%2$d</xliff:g>)</string>
 </resources>
