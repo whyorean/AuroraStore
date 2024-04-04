@@ -6,7 +6,7 @@
     <string name="exodus_view_report">Переглянути звіт</string>
     <string name="exodus_substring">відомих трекерів знайдено в</string>
     <string name="exodus_progress">Перевірка наявності елементів стеження…</string>
-    <string name="exodus_powered">За підтримки Exodus</string>
+    <string name="exodus_powered">За підтримки Exodus Privacy</string>
     <string name="exodus_no_tracker">Не містить відомих трекерів</string>
     <string name="download_speed_estimating">Оцінюється</string>
     <string name="download_resume_all">Продовжити все</string>
@@ -378,4 +378,17 @@
     <string name="pref_updates_incompatible_desc">Показувати оновлення для несумісних або вимкнених застосунків, які можуть не встановитися</string>
     <string name="action_home_screen">Додати на домашній екран</string>
     <string name="action_manage">Керувати</string>
+    <string name="failed_app_link">Не підтримується, спробуйте пов’язати посилання вручну</string>
+    <string name="root_installer_desc">Потрібні права root/суперкористувача, підтримуються всі версії Android.</string>
+    <string name="session_installer_subtitle">Сеансовий встановлювач для розділених/пакетних файлів APK</string>
+    <string name="shizuku_installer_subtitle">Використовує прямі системні API з правами adb/root</string>
+    <string name="shizuku_installer_desc">Потрібен Shizuku або Sui, потрібно налаштувати та отримати дозвіл</string>
+    <string name="session_installer_desc">Рекомендовано, вбудовано та підтримує всі версії Android</string>
+    <string name="root_installer_subtitle">Сеансовий встановлювач, використовує root-права</string>
+    <string name="native_installer_subtitle">Класичний встановлювач, доступний на всіх пристроях</string>
+    <string name="native_installer_desc">Найкраще підходить для пристроїв, що працюють під управлінням Android 4.4</string>
+    <string name="services_installer_subtitle">Встановлювач для фонових встановлень</string>
+    <string name="services_installer_desc">Потрібно, щоб Aurora Services було встановлено як привілейований системний застосунок</string>
+    <string name="am_installer_subtitle">Повнофункціональний менеджер пакунків з відкритим кодом</string>
+    <string name="am_installer_desc">Потрібен App Manager, потрібен режим adb/root для встановлення при ввімкненій оптимізації miui</string>
 </resources>

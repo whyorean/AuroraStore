@@ -13,7 +13,7 @@
     <string name="exodus_view_report">查看报告</string>
     <string name="exodus_substring">种已知跟踪器，版本</string>
     <string name="exodus_progress">正在检查跟踪器…</string>
-    <string name="exodus_powered">由 Exodus 提供支持</string>
+    <string name="exodus_powered">由 Exodus Privacy 提供支持</string>
     <string name="exodus_no_tracker">不包含已知的跟踪器</string>
     <string name="download_speed_estimating">估算中</string>
     <string name="download_resume_all">恢复全部</string>
@@ -378,4 +378,17 @@
     <string name="pref_updates_incompatible_desc">显示不兼容或已停用应用的更新，可能安装失败</string>
     <string name="action_home_screen">添加到主屏</string>
     <string name="action_manage">管理</string>
+    <string name="failed_app_link">不支持，请尝试手动关联链接</string>
+    <string name="services_installer_subtitle">用于后台安装的安装包</string>
+    <string name="session_installer_subtitle">bundled/split APK 的基于会话的安装包</string>
+    <string name="session_installer_desc">推荐，内置且支持所有安卓系统版本</string>
+    <string name="root_installer_subtitle">基于 Shell 的安装包，使用 root 权限</string>
+    <string name="root_installer_desc">需要 root/superuser 特权，支持所有安卓版本。</string>
+    <string name="native_installer_subtitle">基于 intent 的安装包，在所有设备上可用</string>
+    <string name="native_installer_desc">最适合运行 Android 4.4 以下系统的设备</string>
+    <string name="services_installer_desc">需要将 Aurora 服务安装为特权系统应用</string>
+    <string name="am_installer_subtitle">全功能开源包管理器</string>
+    <string name="am_installer_desc">需要 App Manager，开启 miui 优化时需要 adb/root 模式方能安装</string>
+    <string name="shizuku_installer_subtitle">以 adb/roo t特权直接使用系统 API</string>
+    <string name="shizuku_installer_desc">需要 Shizuku 或 Sui，需要进行设置并授予权限</string>
 </resources>

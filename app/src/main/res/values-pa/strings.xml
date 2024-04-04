@@ -108,7 +108,7 @@
     <string name="onboarding_permission_installer_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਦਿਓ</string>
     <string name="onboarding_permission_installer">ਇੰਸਟਾਲਰ ਦੇ ਅਧਿਕਾਰ</string>
     <string name="onboarding_permission_esm">ਬਾਹਰੀ ਸਟੋਰੇਜ਼ ਮੈਨੇਜਰ</string>
-    <string name="onboarding_permission_esa_desc">ਬਾਹਰੀ ਸਟੋਰੇਜ ਵਿੱਚ ਡਾਉਨਲੋਡਸ (APKs ਅਤੇ OBB) ਨੂੰ ਸੇਵ ਕਰਨ ਅਤੇ ਇਸ ਤੋਂ ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਨੂੰ ਐਕਸਪੋਰਟ ਅਤੇ ਇੰਪੋਰਟ ਕਰਨ ਵਾਸਤੇ ਮਨਜ਼ੂਰੀ ਦਿਓ।</string>
+    <string name="onboarding_permission_esa_desc">ਵੱਡੀਆਂ ਐਪਾਂ ਅਤੇ ਗੇਮਾਂ ਲਈ ਏਪੀਕੇ ਐਕਸਪੈਂਸ਼ਨ ਫਾਈਲਾਂ (OBBs) ਨੂੰ ਸੇਵ ਕਰਨ ਲਈ।</string>
     <string name="onboarding_permission_esa">ਬਾਹਰੀ ਡਾਊਨਲੋਡ ਸਟੋਰੇਜ਼ ਦੀ ਮਨਜ਼ੂਰੀ</string>
     <string name="onboarding_welcome_select">ਤੁਸੀਂ ਕਿਵੇਂ ਹੋ \?</string>
     <string name="onboarding_title_welcome">ਸਵਾਗਤ ਹੈ</string>

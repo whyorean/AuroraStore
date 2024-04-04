@@ -140,7 +140,7 @@
     <string name="exodus_substring">známých sledovacích prvků nalezeno ve verzi</string>
     <string name="exodus_no_tracker">Neobsahuje žádné známé sledovací prvky</string>
     <string name="exodus_progress">Kontroluji trackers…</string>
-    <string name="exodus_powered">Využívá službu Exodus</string>
+    <string name="exodus_powered">Využívá službu Exodus Privacy</string>
     <string name="download_speed_estimating">Odhaduji</string>
     <string name="download_resume_all">Pokračovat vše</string>
     <string name="download_queued">Ve frontě</string>
@@ -378,4 +378,17 @@
     <string name="pref_updates_incompatible_desc">Zobrazit aktualizace pro nekompatibilní nebo zakázané aplikace, jejichž instalace může selhat</string>
     <string name="action_home_screen">Přidat na domovskou obrazovku</string>
     <string name="action_manage">Správa</string>
+    <string name="failed_app_link">Nepodporováno, zkuste prosím ručně přiřadit odkazy</string>
+    <string name="session_installer_subtitle">Instalátor založený na relacích pro rozdělené/balíčkované soubory APK</string>
+    <string name="session_installer_desc">Doporučený, vestavěný a podporuje všechny verze systému Android</string>
+    <string name="services_installer_desc">Vyžaduje instalaci Služeb Aurora jako privilegované systémové aplikace</string>
+    <string name="am_installer_subtitle">Plnohodnotný správce balíčků s otevřeným zdrojovým kódem</string>
+    <string name="am_installer_desc">Vyžaduje aplikaci App Manager, při povolené Optimalizaci MIUI potřebuje režim adb/root</string>
+    <string name="shizuku_installer_subtitle">Používá přímá systémová API s právy adb/root</string>
+    <string name="root_installer_desc">Vyžaduje oprávnění root/superuser, podporuje všechny verze systému Android.</string>
+    <string name="root_installer_subtitle">Instalátor založený na relacích, používá oprávnění root</string>
+    <string name="native_installer_subtitle">Klasický instalátor, dostupný na všech zařízeních</string>
+    <string name="native_installer_desc">Vhodný pro zařízení se systémem starším než Android 4.4</string>
+    <string name="services_installer_subtitle">Instalátor pro instalace na pozadí</string>
+    <string name="shizuku_installer_desc">Vyžaduje aplikaci Shizuku nebo Sui, kterou je třeba nejprve nastavit a udělit jí oprávnění</string>
 </resources>
