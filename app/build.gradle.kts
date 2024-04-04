@@ -191,7 +191,7 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     //Hilt
-    val hiltVersion = "2.51"
+    val hiltVersion = "2.51.1"
     ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
 
