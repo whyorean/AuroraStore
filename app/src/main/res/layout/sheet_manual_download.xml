@@ -97,7 +97,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:helperText="Enter version code you wish to download">
+            app:helperText="@string/manual_download_hint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/version_code_inp"

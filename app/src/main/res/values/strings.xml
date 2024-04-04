@@ -420,4 +420,7 @@
 
     <string name="shizuku_installer_subtitle">Using system APIs directly with adb/root privileges</string>
     <string name="shizuku_installer_desc">Requires Shizuku or Sui, needs to be setup and permission granted</string>
+
+    <!-- ManualDownloadSheet -->
+    <string name="manual_download_hint">Enter version code you wish to download</string>
 </resources>
