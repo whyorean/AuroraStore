@@ -391,4 +391,11 @@
     <string name="root_installer_desc">Root/yetkili kullanıcı ayrıcalıkları gerektirir, tüm Android sürümlerini destekler.</string>
     <string name="native_installer_subtitle">Intent tabanlı kurucu, tüm aygıtlarda kullanılabilir</string>
     <string name="native_installer_desc">Android 4.4 sürümünden önceki aygıtlar için en uygun</string>
+    <string name="faqs_subtitle">Sorularınız mı var? Yanıtlarını öğrenin</string>
+    <string name="source_code_title">Kaynak kodu</string>
+    <string name="source_code_subtitle">İçinde ne olduğunu öğrenin</string>
+    <string name="disclaimer_subtitle">Hesap verebilirlik ve sorumluluk</string>
+    <string name="manual_download_hint">İndirmek istediğiniz sürüm kodunu girin</string>
+    <string name="privacy_policy_title">Gizlilik politikası</string>
+    <string name="privacy_policy_subtitle">Aurora Store\'un verilerinizi nasıl kullandığını öğrenin</string>
 </resources>
