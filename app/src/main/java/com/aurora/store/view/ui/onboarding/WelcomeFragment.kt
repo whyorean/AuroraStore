@@ -27,25 +27,13 @@ import com.aurora.store.data.model.Dash
 import com.aurora.store.databinding.FragmentOnboardingWelcomeBinding
 import com.aurora.store.view.epoxy.views.preference.DashViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint
-import java.nio.charset.StandardCharsets
 
 @AndroidEntryPoint
 class WelcomeFragment : BaseFragment(R.layout.fragment_onboarding_welcome) {
 
     private var _binding: FragmentOnboardingWelcomeBinding? = null
     private val binding get() = _binding!!
-
-    companion object {
-        val icMap: MutableMap<String, Int> = mutableMapOf(
-            "ic_faq" to R.drawable.ic_faq,
-            "ic_code" to R.drawable.ic_code,
-            "ic_license" to R.drawable.ic_license,
-            "ic_privacy" to R.drawable.ic_privacy,
-            "ic_disclaimer" to R.drawable.ic_disclaimer,
-        )
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,15 +54,42 @@ class WelcomeFragment : BaseFragment(R.layout.fragment_onboarding_welcome) {
     }
 
     private fun loadDashFromAssets(): List<Dash> {
-        val inputStream = requireContext().assets.open("dash.json")
-        val bytes = ByteArray(inputStream.available())
-        inputStream.read(bytes)
-        inputStream.close()
-
-        val json = String(bytes, StandardCharsets.UTF_8)
-        return gson.fromJson<MutableList<Dash>?>(
-            json,
-            object : TypeToken<MutableList<Dash?>?>() {}.type
+        return listOf(
+            Dash(
+                id = 0,
+                title = requireContext().getString(R.string.faqs_title),
+                subtitle = requireContext().getString(R.string.faqs_subtitle),
+                icon = R.drawable.ic_faq,
+                url = "https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/Frequently%20Asked%20Questions"
+            ),
+            Dash(
+                id = 1,
+                title = requireContext().getString(R.string.source_code_title),
+                subtitle = requireContext().getString(R.string.source_code_subtitle),
+                icon = R.drawable.ic_code,
+                url = "https://gitlab.com/AuroraOSS/AuroraStore/"
+            ),
+            Dash(
+                id = 2,
+                title = requireContext().getString(R.string.menu_license),
+                subtitle = requireContext().getString(R.string.license_subtitle),
+                icon = R.drawable.ic_license,
+                url = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/LICENSE"
+            ),
+            Dash(
+                id = 3,
+                title = requireContext().getString(R.string.privacy_policy_title),
+                subtitle = requireContext().getString(R.string.privacy_policy_subtitle),
+                icon = R.drawable.ic_privacy,
+                url = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/POLICY.md"
+            ),
+            Dash(
+                id = 4,
+                title = requireContext().getString(R.string.menu_disclaimer),
+                subtitle = requireContext().getString(R.string.disclaimer_subtitle),
+                icon = R.drawable.ic_disclaimer,
+                url = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/DISCLAIMER.md"
+            )
         )
     }
 

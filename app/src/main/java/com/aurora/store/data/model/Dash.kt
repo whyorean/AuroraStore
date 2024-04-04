@@ -19,11 +19,13 @@
 
 package com.aurora.store.data.model
 
+import androidx.annotation.DrawableRes
+
 data class Dash(
     var id: Int,
     var title: String,
     var subtitle: String,
-    var icon: String,
+    @DrawableRes var icon: Int,
     var url: String
 ) {
     override fun equals(other: Any?): Boolean {

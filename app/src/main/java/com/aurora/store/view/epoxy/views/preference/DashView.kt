@@ -30,7 +30,6 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Dash
 import com.aurora.store.databinding.ViewDashBinding
 import com.aurora.store.view.epoxy.views.BaseView
-import com.aurora.store.view.ui.onboarding.WelcomeFragment
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -65,16 +64,7 @@ class DashView : RelativeLayout {
     fun dash(dash: Dash) {
         B.line1.text = dash.title
         B.line2.text = dash.subtitle
-
-        var icon = WelcomeFragment.icMap[dash.icon]
-        if (icon == null)
-            icon = R.drawable.ic_arrow_right
-        B.img.setImageDrawable(
-            ContextCompat.getDrawable(
-                context,
-                icon
-            )
-        )
+        B.img.setImageDrawable(ContextCompat.getDrawable(context, dash.icon))
     }
 
     @CallbackProp

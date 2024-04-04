@@ -405,22 +405,27 @@
     <!-- InstallerFragment -->
     <string name="session_installer_subtitle">Session based installer for bundled/split APKs</string>
     <string name="session_installer_desc">Recommended, in-built and supports all Android versions</string>
-
     <string name="root_installer_subtitle">Shell based installer using root permissions</string>
     <string name="root_installer_desc">Requires root/superuser privileges, supports all Android versions.</string>
-
     <string name="native_installer_subtitle">Intent based installer, available on all devices</string>
     <string name="native_installer_desc">Best suited for devices running below Android 4.4</string>
-
     <string name="services_installer_subtitle">Installer for background installations</string>
     <string name="services_installer_desc">Requires Aurora Services to be installed as a privileged-system app</string>
-
     <string name="am_installer_subtitle">Full-featured open source package manager</string>
     <string name="am_installer_desc">Requires App Manager, need adb/root mode to install when miui optimization is on</string>
-
     <string name="shizuku_installer_subtitle">Using system APIs directly with adb/root privileges</string>
     <string name="shizuku_installer_desc">Requires Shizuku or Sui, needs to be setup and permission granted</string>
 
     <!-- ManualDownloadSheet -->
     <string name="manual_download_hint">Enter version code you wish to download</string>
+
+    <!-- WelcomeFragment -->
+    <string name="faqs_title" translatable="false">FAQs</string>
+    <string name="faqs_subtitle">Have questions? Find out the answers</string>
+    <string name="source_code_title">Source code</string>
+    <string name="source_code_subtitle">Find out what\'s inside</string>
+    <string name="license_subtitle" translatable="false">The GNU General Public License v3.0</string>
+    <string name="privacy_policy_title">Privacy policy</string>
+    <string name="privacy_policy_subtitle">Learn how Aurora Store uses your data</string>
+    <string name="disclaimer_subtitle">Accountability and responsibility</string>
 </resources>
