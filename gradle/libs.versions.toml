@@ -1,0 +1,83 @@
+[versions]
+androidGradlePlugin = "8.3.1"
+browserVersion = "1.8.0"
+coilVersion = "2.6.0"
+core = "5.0.5"
+coreVersion = "1.12.0"
+epoxyVersion = "5.1.4"
+espressoVersion = "3.5.1"
+eventbusVersion = "3.3.1"
+gplayapiVersion = "3.2.10"
+gsonVersion = "2.10.1"
+hiddenapibypassVersion = "4.3"
+hiltVersion = "2.51.1"
+hiltWorkVersion = "1.2.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+kotlinVersion = "1.9.22"
+kspVersion = "1.9.22-1.0.17"
+ktlintVersion = "12.1.0"
+leakcanaryAndroidVersion = "2.13"
+lifeVersion = "2.7.0"
+materialVersion = "1.11.0"
+navVersion = "2.7.7"
+okhttpVersion = "4.12.0"
+preferenceVersion = "1.2.1"
+protobufJavaliteVersion = "3.25.3"
+rikkaHiddenVersion = "4.3.2"
+rikkaToolsVersion = "4.4.0"
+roomVersion = "2.6.1"
+shimmerVersion = "0.5.0"
+shizukuVersion = "13.1.5"
+swiperefreshlayoutVersion = "1.1.0"
+viewpager2Version = "1.0.0"
+workVersion = "2.9.0"
+
+[libraries]
+airbnb-epoxy-android = { module = "com.airbnb.android:epoxy", version.ref = "epoxyVersion" }
+airbnb-epoxy-processor = { module = "com.airbnb.android:epoxy-processor", version.ref = "epoxyVersion" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browserVersion" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreVersion" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifeVersion" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifeVersion" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navVersion" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navVersion" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceVersion" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayoutVersion" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2Version" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workVersion" }
+coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
+facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersion" }
+gitlab-auroraoss-gplayapi = { module = "com.gitlab.AuroraOSS:gplayapi", version.ref = "gplayapiVersion" }
+github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.ref = "core" }
+google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+google-gson = { module = "com.google.code.gson:gson", version.ref = "gsonVersion" }
+google-protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavaliteVersion" }
+greenrobot-eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbusVersion" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
+hilt-android-core = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hilt-androidx-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltWorkVersion" }
+hilt-androidx-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWorkVersion" }
+junit = { module = "junit:junit", version.ref = "junit" }
+lsposed-hiddenapibypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapibypassVersion" }
+rikka-hidden-stub = { module = "dev.rikka.hidden:stub", version.ref = "rikkaHiddenVersion" }
+rikka-shizuku-api = { module = "dev.rikka.shizuku:api", version.ref = "shizukuVersion" }
+rikka-shizuku-provider = { module = "dev.rikka.shizuku:provider", version.ref = "shizukuVersion" }
+rikka-tools-refine-runtime = { module = "dev.rikka.tools.refine:runtime", version.ref = "rikkaToolsVersion" }
+squareup-leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroidVersion" }
+squareup-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttpVersion" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+androidx-navigation  = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }
+google-ksp  = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+hilt-android-plugin  = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+ktlint  = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintVersion" }
+jetbrains-kotlin-android  = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+jetbrains-kotlin-parcelize  = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
+rikka-tools-refine-plugin  = { id = "dev.rikka.tools.refine", version.ref = "rikkaToolsVersion" }

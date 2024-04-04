@@ -22,14 +22,14 @@
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.parcelize")
-    id("com.google.devtools.ksp")
-    id("androidx.navigation.safeargs.kotlin")
-    id("org.jlleitschuh.gradle.ktlint")
-    id("dev.rikka.tools.refine")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.parcelize)
+    alias(libs.plugins.google.ksp)
+    alias(libs.plugins.androidx.navigation)
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.rikka.tools.refine.plugin)
+    alias(libs.plugins.hilt.android.plugin)
 }
 
 kotlin {
@@ -124,87 +124,69 @@ android {
 
 dependencies {
 
-    //Protobuf
-    implementation("com.google.protobuf:protobuf-javalite:3.25.3")
-
     //Google's Goodies
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.google.android.material)
+    implementation(libs.google.gson)
+    implementation(libs.google.protobuf.javalite)
 
     //AndroidX
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
-    //Arch LifeCycle
-    val lifeVersion = "2.7.0"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeVersion")
-    implementation("androidx.lifecycle:lifecycle-process:$lifeVersion")
-
-    //Arch Navigation
-    val navVersion = "2.7.7"
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.browser)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.process)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.work.runtime.ktx)
 
     //Coil
-    implementation("io.coil-kt:coil:2.6.0")
+    implementation(libs.coil.kt)
 
     //Shimmer
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation(libs.facebook.shimmer)
 
     //Epoxy
-    val epoxyVersion = "5.1.4"
-    implementation("com.airbnb.android:epoxy:$epoxyVersion")
-    ksp("com.airbnb.android:epoxy-processor:$epoxyVersion")
+    implementation(libs.airbnb.epoxy.android)
+    ksp(libs.airbnb.epoxy.processor)
 
     //HTTP Clients
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(libs.squareup.okhttp)
 
     //EventBus
-    implementation("org.greenrobot:eventbus:3.3.1")
+    implementation(libs.greenrobot.eventbus)
 
     //Lib-SU
-    implementation("com.github.topjohnwu.libsu:core:5.0.5")
+    implementation(libs.github.topjohnwu.libsu)
 
-    //Love <3
-    implementation("com.gitlab.AuroraOSS:gplayapi:3.2.10")
-
-    //Browser
-    implementation("androidx.browser:browser:1.8.0")
+    //GPlayApi
+    implementation(libs.gitlab.auroraoss.gplayapi)
 
     //Shizuku
-    val shizukuVersion = "13.1.5"
-    compileOnly("dev.rikka.hidden:stub:4.3.2")
-    implementation("dev.rikka.tools.refine:runtime:4.4.0")
-    implementation("dev.rikka.shizuku:api:${shizukuVersion}")
-    implementation("dev.rikka.shizuku:provider:${shizukuVersion}")
+    compileOnly(libs.rikka.hidden.stub)
+    implementation(libs.rikka.tools.refine.runtime)
+    implementation(libs.rikka.shizuku.api)
+    implementation(libs.rikka.shizuku.provider)
 
-    implementation("org.lsposed.hiddenapibypass:hiddenapibypass:4.3")
+    implementation(libs.lsposed.hiddenapibypass)
 
     //Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    //WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
     //Hilt
-    val hiltVersion = "2.51.1"
-    ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-
-    val hiltWorkVersion = "1.2.0"
-    ksp("androidx.hilt:hilt-compiler:$hiltWorkVersion")
-    implementation("androidx.hilt:hilt-work:$hiltWorkVersion")
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.hilt.androidx.compiler)
+    implementation(libs.hilt.android.core)
+    implementation(libs.hilt.androidx.work)
 
     //Room
-    val roomVersion = "2.6.1"
-    ksp("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("androidx.room:room-runtime:$roomVersion")
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
 
     // LeakCanary
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.13")
+    debugImplementation(libs.squareup.leakcanary.android)
 }
