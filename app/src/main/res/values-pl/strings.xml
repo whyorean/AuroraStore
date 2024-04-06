@@ -212,7 +212,7 @@
     <string name="exodus_view_report">Zobacz raport</string>
     <string name="exodus_substring">znane elementy śledzące w</string>
     <string name="exodus_progress">Sprawdzam usługi śledzące…</string>
-    <string name="exodus_powered">Na podstawie Exodus</string>
+    <string name="exodus_powered">Na podstawie Exodus Privacy</string>
     <string name="exodus_no_tracker">Nie zawiera znanych usług śledzących</string>
     <string name="download_speed_estimating">Szacowanie</string>
     <string name="download_resume_all">Wznów wszystkie</string>
@@ -319,7 +319,7 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> oraz <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="checking_for_updates">Sprawdzanie dostępności aktualizacji</string>
     <string name="pref_install_mode_shizuku">Instalator Shizuku</string>
-    <string name="installer_shizuku_unavailable">Shizuku nie jest prawidłowo zainstalowany lub skonfigurowany.</string>
+    <string name="installer_shizuku_unavailable">Shizuku nie został prawidłowo zainstalowany lub skonfigurowany.</string>
     <string name="title_search_suggestion">Podpowiedzi wyszukiwania</string>
     <string name="access_denied_using_vpn">Odmowa dostępu! Czy używasz VPN lub Tor\?</string>
     <string name="bad_request">Błąd wewnętrzny! Spróbuj ponownie później</string>
@@ -378,4 +378,14 @@
     <string name="download_clear_finished">Wyczyść zakończone</string>
     <string name="action_home_screen">Dodaj do ekranu głównego</string>
     <string name="action_manage">Zarządzaj</string>
+    <string name="faqs_subtitle">Masz pytania? Znajdź odpowiedzi</string>
+    <string name="disclaimer_subtitle">Odpowiedzialność i rozliczalność</string>
+    <string name="source_code_title">Kod źródłowy</string>
+    <string name="source_code_subtitle">Dowiedz się, co jest w środku</string>
+    <string name="privacy_policy_title">Polityka prywatności</string>
+    <string name="privacy_policy_subtitle">Dowiedz się, jak Aurora Store wykorzystuje Twoje dane</string>
+    <string name="manual_download_hint">Wprowadź kod wersji, którą chcesz pobrać</string>
+    <string name="native_installer_desc">Najlepszy dla urządzeń z Androidem starszym niż 4.4</string>
+    <string name="am_installer_subtitle">Pełnowartościowy, otwarto źródłowy menedżer pakietów</string>
+    <string name="services_installer_subtitle">Instalator do instalacji w tle</string>
 </resources>

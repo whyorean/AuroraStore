@@ -89,7 +89,7 @@
     <string name="filter_review_all">الجميع</string>
     <string name="exodus_view_report">عرض التقرير</string>
     <string name="exodus_progress">التحقق من وجود برمجيات تتبع…</string>
-    <string name="exodus_powered">بدعم من Exodus</string>
+    <string name="exodus_powered">بدعم من خصوصية Exodus</string>
     <string name="exodus_no_tracker">لا يحتوي على برمجيات تتبع معروفة</string>
     <string name="download_resume_all">استئناف الكل</string>
     <string name="download_queued">في قائمة الإنتظار</string>
@@ -378,4 +378,24 @@
     <string name="pref_updates_incompatible_desc">عرض التحديثات للتطبيقات غير المتوافقة أو المعطلة التي قد يفشل تثبيتها</string>
     <string name="action_home_screen">أضِف إلى الشاشة الرئيسية</string>
     <string name="action_manage">إدارة</string>
+    <string name="failed_app_link">غير مدعوم، يرجى محاولة ربط الروابط يدويا</string>
+    <string name="session_installer_subtitle">أداة التثبيت المستندة إلى الجلسة لملفات APK المجمعة/المقسمة</string>
+    <string name="session_installer_desc">موصى به ومدمج ويدعم جميع إصدارات Android</string>
+    <string name="native_installer_subtitle">المثبت القائم على النية، متاح على جميع الأجهزة</string>
+    <string name="am_installer_subtitle">مدير حزم مفتوح المصدر كامل المواصفات</string>
+    <string name="shizuku_installer_subtitle">استخدام واجهات برمجة تطبيقات النظام مباشرةً مع امتيازات adb/root</string>
+    <string name="root_installer_subtitle">المثبت القائم على Shell باستخدام أذونات الجذر</string>
+    <string name="root_installer_desc">يتطلب امتيازات الجذر/المستخدم المتميز، ويدعم جميع إصدارات Android.</string>
+    <string name="native_installer_desc">الأنسب للأجهزة التي تعمل بنظام Android 4.4</string>
+    <string name="services_installer_subtitle">المثبت لعمليات التثبيت في الخلفية</string>
+    <string name="services_installer_desc">يتطلب تثبيت خدمات Aurora كتطبيق نظام مميز</string>
+    <string name="am_installer_desc">يتطلب مدير التطبيقات، ويحتاج إلى وضع adb/root للتثبيت عند تشغيل تحسين miui</string>
+    <string name="shizuku_installer_desc">يتطلب Shizuku أو Sui، ويحتاج إلى الإعداد ومنح الإذن</string>
+    <string name="disclaimer_subtitle">المساءلة والمسؤولية</string>
+    <string name="manual_download_hint">أدخل رمز الإصدار الذي ترغب في تنزيله</string>
+    <string name="faqs_subtitle">هل لديك أسئلة؟ تعرف على الإجابات</string>
+    <string name="source_code_title">الكود المصدري</string>
+    <string name="source_code_subtitle">اكتشف ما بداخله</string>
+    <string name="privacy_policy_title">سياسة الخصوصية</string>
+    <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
 </resources>

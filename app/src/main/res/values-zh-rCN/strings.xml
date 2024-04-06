@@ -391,4 +391,11 @@
     <string name="am_installer_desc">需要 App Manager，开启 miui 优化时需要 adb/root 模式方能安装</string>
     <string name="shizuku_installer_subtitle">以 adb/roo t特权直接使用系统 API</string>
     <string name="shizuku_installer_desc">需要 Shizuku 或 Sui，需要进行设置并授予权限</string>
+    <string name="manual_download_hint">输入你希望下载的版本码</string>
+    <string name="faqs_subtitle">有问题？找出答案</string>
+    <string name="source_code_subtitle">弄清内里玄机</string>
+    <string name="disclaimer_subtitle">问责和责任</string>
+    <string name="source_code_title">源代码</string>
+    <string name="privacy_policy_title">隐私政策</string>
+    <string name="privacy_policy_subtitle">了解 Aurora Store 如何使用您的数据</string>
 </resources>

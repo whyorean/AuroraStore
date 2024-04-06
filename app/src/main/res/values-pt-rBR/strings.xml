@@ -391,4 +391,11 @@
     <string name="shizuku_installer_subtitle">Usando APIs do sistema diretamente com privilégios de adb/root</string>
     <string name="session_installer_subtitle">Instalador baseado em sessão para APKs em bundle/split</string>
     <string name="session_installer_desc">Recomendado, pré-instalado e suporta todas as versões do Android</string>
+    <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
+    <string name="source_code_title">Código-fonte</string>
+    <string name="source_code_subtitle">Descubra o que há por dentro</string>
+    <string name="privacy_policy_title">Política de privacidade</string>
+    <string name="disclaimer_subtitle">Prestação de contas e responsabilidade</string>
+    <string name="privacy_policy_subtitle">Descubra como a Aurora Store usa seus dados</string>
+    <string name="manual_download_hint">Insira o código da versão que deseja baixar</string>
 </resources>

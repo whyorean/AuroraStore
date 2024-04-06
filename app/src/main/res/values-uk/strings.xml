@@ -391,4 +391,11 @@
     <string name="services_installer_desc">Потрібно, щоб Aurora Services було встановлено як привілейований системний застосунок</string>
     <string name="am_installer_subtitle">Повнофункціональний менеджер пакунків з відкритим кодом</string>
     <string name="am_installer_desc">Потрібен App Manager, потрібен режим adb/root для встановлення при ввімкненій оптимізації miui</string>
+    <string name="manual_download_hint">Введіть код версії, яку потрібно завантажити</string>
+    <string name="faqs_subtitle">Є питання? Знайдіть відповіді</string>
+    <string name="source_code_subtitle">Дізнайтеся, що всередині</string>
+    <string name="disclaimer_subtitle">Підзвітність і відповідальність</string>
+    <string name="source_code_title">Вихідний код</string>
+    <string name="privacy_policy_title">Політика приватності</string>
+    <string name="privacy_policy_subtitle">Дізнайтеся, як Aurora Store використовує ваші дані</string>
 </resources>

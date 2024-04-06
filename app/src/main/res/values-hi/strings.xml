@@ -391,4 +391,11 @@
     <string name="shizuku_installer_desc">Shizuku या Sui की आवश्यकता है, इसे स्थापित करने और अनुमति देने की आवश्यकता है</string>
     <string name="am_installer_subtitle">पूर्ण विशेषताओं वाला ओपन सोर्स पैकेज प्रबंधक</string>
     <string name="shizuku_installer_subtitle">adb/रूट विशेषाधिकारों के साथ सीधे सिस्टम API का उपयोग करके</string>
+    <string name="manual_download_hint">वह संस्करण कोड दर्ज करें जिसे आप डाउनलोड करना चाहते हैं</string>
+    <string name="faqs_subtitle">कोई सवाल? उत्तर खोजें</string>
+    <string name="source_code_title">सोर्स कोड</string>
+    <string name="privacy_policy_subtitle">जानें कि Aurora स्टोर आपके डेटा का उपयोग कैसे करता है</string>
+    <string name="disclaimer_subtitle">जवाबदेही और जिम्मेदारी</string>
+    <string name="source_code_subtitle">अंदर क्या है पता लगाएं</string>
+    <string name="privacy_policy_title">गोपनीयता नीति</string>
 </resources>
