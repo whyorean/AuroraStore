@@ -1,7 +1,7 @@
 {
   "version_name": "4.4.2",
   "version_code": 56,
-  "aurora_build": "https://auroraoss.com/AuroraStore/Stable/AuroraStore-4.4.2.apk",
+  "aurora_build": "https://auroraoss.com/AuroraStore/Release/AuroraStore-4.4.2.apk",
   "fdroid_build": "",
   "changelog": "Changelog : v4.4.2\n • Target Android 14\n • Improve the F-Droid package filter for updates\n • Translation updates & major bug fixes",
   "size": 6291456,
