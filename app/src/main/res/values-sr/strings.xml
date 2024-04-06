@@ -121,7 +121,7 @@
     <string name="exodus_view_report">Погледај извештај</string>
     <string name="exodus_substring">познати(x) програм(а) за праћење пронађено је у</string>
     <string name="exodus_progress">Проверавање програма за праћење…</string>
-    <string name="exodus_powered">Покреће га Exodus</string>
+    <string name="exodus_powered">Покреће га Exodus Privacy</string>
     <string name="exodus_no_tracker">Не садржи познате програме за праћење</string>
     <string name="download_speed_estimating">Процењивање</string>
     <string name="download_resume_all">Настави све</string>
@@ -414,4 +414,24 @@
     <string name="pref_updates_incompatible_desc">Прикажите ажурирања за некомпатибилне или онемогућене апликације које можда неће бити успешно инсталиране</string>
     <string name="action_manage">Управљај</string>
     <string name="action_home_screen">Додај на почетни екран</string>
+    <string name="faqs_subtitle">Имате питања? Сазнајте одговоре</string>
+    <string name="source_code_title">Изворни кôд</string>
+    <string name="session_installer_desc">Препоручено, уграђено и подржава све Android верзије</string>
+    <string name="services_installer_desc">Захтева да се Aurora услуге инсталирају као привилегована системска апликација</string>
+    <string name="failed_app_link">Није подржано, покушајте да ручно повежете линкове</string>
+    <string name="root_installer_desc">Захтева привилегије root/суперкорисника, подржава све Android верзије.</string>
+    <string name="native_installer_subtitle">Програм за инсталацију заснован на намери, доступан на свим уређајима</string>
+    <string name="root_installer_subtitle">Програм за инсталацију заснован на љусци који користи root дозволе</string>
+    <string name="session_installer_subtitle">Програм за инсталацију заснован на сесији за пакетне/подељене APK-ове</string>
+    <string name="native_installer_desc">Најприкладније за уређаје који раде испод Android 4.4</string>
+    <string name="services_installer_subtitle">Програм за инсталацију за инсталације у позадини</string>
+    <string name="am_installer_subtitle">Потпуно функционалан менаџер пакета отвореног кода</string>
+    <string name="am_installer_desc">Захтева менаџер апликација, потребан је adb/root режим за инсталацију, када је miui оптимизација укључена</string>
+    <string name="shizuku_installer_subtitle">Користи системске API-је директно са adb/root привилегијама</string>
+    <string name="shizuku_installer_desc">Захтева Shizuku или Sui, потребно је подесити и дати дозволу</string>
+    <string name="manual_download_hint">Унесите кôд верзије коју желите да преузмете</string>
+    <string name="disclaimer_subtitle">Одговорност</string>
+    <string name="source_code_subtitle">Сазнајте шта је унутра</string>
+    <string name="privacy_policy_title">Политика приватности</string>
+    <string name="privacy_policy_subtitle">Сазнајте како Aurora Store користи ваше податке</string>
 </resources>
