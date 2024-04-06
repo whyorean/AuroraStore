@@ -1,0 +1,7 @@
+• Multiple bug fixes and UI/UX improvements
+• New permissions are now highlighted in permissions sheet
+• New spoof configurations for x86 devices
+• Changes to the downloads system
+  • Default downloads location changed to internal cache directory
+  • Downloads now resume automatically when restarted if files exists
+• Translation updates

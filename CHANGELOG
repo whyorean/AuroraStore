@@ -1,3 +1,11 @@
+Changelog : v4.4.3 (57)
+• Multiple bug fixes and UI/UX improvements
+• New permissions are now highlighted in permissions sheet
+• Changes to the downloads system
+  • Default downloads location changed to internal cache directory
+  • Downloads now resume automatically when restarted if files exists
+• Translation updates
+
 Changelog : v4.4.2 (56)
 • Target Android 14
 • Improve the F-Droid package filter for updates
