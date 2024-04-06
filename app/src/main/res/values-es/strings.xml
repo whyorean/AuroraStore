@@ -385,4 +385,17 @@
     <string name="services_installer_subtitle">Instalador para instalaciones en segundo plano</string>
     <string name="root_installer_subtitle">Instalador basado en Shell que utiliza permisos de root</string>
     <string name="native_installer_desc">Ideal para dispositivos con versiones anreriores a Android 4.4</string>
+    <string name="source_code_title">Código fuente</string>
+    <string name="privacy_policy_title">Política de privacidad</string>
+    <string name="privacy_policy_subtitle">Conozca cómo Aurora Store utiliza sus datos</string>
+    <string name="services_installer_desc">Requiere que los servicios de Aurora se instale como una aplicación con privilegios de sistema.</string>
+    <string name="am_installer_subtitle">Completo gestor de paquetes de código abierto</string>
+    <string name="am_installer_desc">Requiere App Manager, necesita modo adb/root para instalar cuando la optimización de miui está activada</string>
+    <string name="shizuku_installer_subtitle">Uso directo de las API del sistema con privilegios adb/root</string>
+    <string name="shizuku_installer_desc">Requiere Shizuku o Sui, necesita ser configurado y permiso concedido</string>
+    <string name="manual_download_hint">Introduzca el código de la versión que desea descargar</string>
+    <string name="faqs_subtitle">¿Tiene preguntas? Descubra las respuestas</string>
+    <string name="source_code_subtitle">Descubra qué hay dentro</string>
+    <string name="disclaimer_subtitle">Responsabilidad</string>
+    <string name="native_installer_subtitle">Instalador basado disponible en todos los dispositivos</string>
 </resources>
