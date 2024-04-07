@@ -388,7 +388,7 @@
     <string name="source_code_title">Código fuente</string>
     <string name="privacy_policy_title">Política de privacidad</string>
     <string name="privacy_policy_subtitle">Conozca cómo Aurora Store utiliza sus datos</string>
-    <string name="services_installer_desc">Requiere que los servicios de Aurora se instale como una aplicación con privilegios de sistema.</string>
+    <string name="services_installer_desc">Requiere que los servicios de Aurora se instalen como una aplicación con privilegios de sistema</string>
     <string name="am_installer_subtitle">Completo gestor de paquetes de código abierto</string>
     <string name="am_installer_desc">Requiere App Manager, necesita modo adb/root para instalar cuando la optimización de miui está activada</string>
     <string name="shizuku_installer_subtitle">Uso directo de las API del sistema con privilegios adb/root</string>
