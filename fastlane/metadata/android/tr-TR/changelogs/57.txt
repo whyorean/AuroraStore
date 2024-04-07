@@ -1,0 +1,7 @@
+• Çok sayıda hata düzeltmesi ve kullanıcı arayüzü/deneyimi iyileştirmesi
+• Yeni izinler artık izinler sayfasında vurgulanıyor
+• x86 aygıtlar için yeni gizleme yapılandırmaları
+• İndirme sistemindeki değişiklikler
+  • Öntanımlı indirme konumu dahili önbellek dizini olarak değiştirildi
+  • Dosyalar varsa yeniden başlatıldığında indirmeler artık kendiliğinden devam ediyor
+• Çeviri güncellemeleri
