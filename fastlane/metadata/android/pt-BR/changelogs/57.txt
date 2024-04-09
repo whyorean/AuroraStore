@@ -1,0 +1,7 @@
+• Várias correções de bug e melhorias à interface visual e interação
+• Novas permissões agora são destacadas na folha de permissões
+• Novas configurações de spoofing para dispositivos x86
+• Mudanças ao sistema de downloads
+  • A localização padrão dos downloads mudou para o diretório de cache interno
+  • Agora downloads continuam automaticamente quando reiniciado se arquivos existem
+•  Traduções atualizadas
