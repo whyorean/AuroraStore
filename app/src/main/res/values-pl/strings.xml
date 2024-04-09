@@ -386,7 +386,7 @@
     <string name="privacy_policy_subtitle">Dowiedz się, jak Aurora Store wykorzystuje Twoje dane</string>
     <string name="manual_download_hint">Wprowadź kod wersji, którą chcesz pobrać</string>
     <string name="native_installer_desc">Najlepszy dla urządzeń z Androidem starszym niż 4.4</string>
-    <string name="am_installer_subtitle">Pełnowartościowy, otwarto źródłowy menedżer pakietów</string>
+    <string name="am_installer_subtitle">Pełnowartościowy, otwartoźródłowy menedżer pakietów</string>
     <string name="services_installer_subtitle">Instalator do instalacji w tle</string>
     <string name="failed_app_link">Nieobsługiwane, spróbuj powiązać linki ręcznie</string>
     <string name="session_installer_desc">Zalecane, wbudowane i obsługujące wszystkie wersje Androida</string>
