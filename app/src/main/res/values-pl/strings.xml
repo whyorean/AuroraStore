@@ -388,4 +388,14 @@
     <string name="native_installer_desc">Najlepszy dla urządzeń z Androidem starszym niż 4.4</string>
     <string name="am_installer_subtitle">Pełnowartościowy, otwarto źródłowy menedżer pakietów</string>
     <string name="services_installer_subtitle">Instalator do instalacji w tle</string>
+    <string name="failed_app_link">Nieobsługiwane, spróbuj powiązać linki ręcznie</string>
+    <string name="session_installer_desc">Zalecane, wbudowane i obsługujące wszystkie wersje Androida</string>
+    <string name="session_installer_subtitle">Instalator oparty na sesji dla dołączonych/rozdzielonych plików APK</string>
+    <string name="root_installer_subtitle">Instalator oparty na powłoce z uprawnieniami roota</string>
+    <string name="root_installer_desc">Wymaga uprawnień roota/superużytkownika, obsługuje wszystkie wersje Androida.</string>
+    <string name="shizuku_installer_subtitle">Bezpośrednie korzystanie z systemowych interfejsów API z uprawnieniami adb/root</string>
+    <string name="shizuku_installer_desc">Wymaga Shizuku lub Sui, musi zostać skonfigurowana i uzyskać pozwolenie</string>
+    <string name="native_installer_subtitle">Instalator oparty na intencjach, dostępny na wszystkich urządzeniach</string>
+    <string name="services_installer_desc">Wymaga zainstalowania Aurora Services jako uprzywilejowanej aplikacji systemowej</string>
+    <string name="am_installer_desc">Wymaga Menedżera aplikacji, wymaga trybu adb/root do instalacji, gdy włączona jest optymalizacja miui</string>
 </resources>
