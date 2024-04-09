@@ -1,0 +1,7 @@
+• Opraveno několik chyb a vylepšeno UI/UX
+• Nová oprávnění jsou nyní zvýrazněna v seznamu oprávnění
+• Nová nastavení spoofingu pro zařízení x86
+• Změny v systému stahování
+  • Výchozí umístění stahování změněno na adresář v interní mezipaměti
+  • Stahování nyní při alezení souborů po restartu automaticky pokračují
+• Aktualizovány překlady

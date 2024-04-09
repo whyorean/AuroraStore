@@ -161,7 +161,7 @@
     <string name="exodus_view_report">Bericht ansehen</string>
     <string name="exodus_substring">bekannte Tracker gefunden in</string>
     <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
-    <string name="exodus_powered">Bereitgestellt von Exodus</string>
+    <string name="exodus_powered">Bereitgestellt von Exodus Privacy</string>
     <string name="exodus_no_tracker">Enthält keine bekannten Tracker</string>
     <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
     <string name="download_resume_all">Alle fortsetzen</string>
@@ -379,4 +379,6 @@
     <string name="pref_updates_incompatible_desc">Updates für inkompatible oder deaktivierte Apps anzeigen, die möglicherweise nicht installiert werden können</string>
     <string name="action_home_screen">Zur Startseite hinzufügen</string>
     <string name="action_manage">Verwalten</string>
+    <string name="source_code_title">Quellcode</string>
+    <string name="privacy_policy_title">Datenschutzerklärung</string>
 </resources>

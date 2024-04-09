@@ -120,7 +120,7 @@
     <string name="about_libera_summary">Υποστηρίξτε μας στο Liberapay</string>
     <string name="exodus_substring">Γνωστός/-οι ιχνηλάτης/-ες που βρέθηκαν στο</string>
     <string name="exodus_progress">Έλεγχος για ιχνηλάτες…</string>
-    <string name="exodus_powered">Με την υποστήριξη του Exodus</string>
+    <string name="exodus_powered">Με την υποστήριξη του Exodus Privacy</string>
     <string name="exodus_no_tracker">Δεν περιέχει γνωστούς ιχνηλάτες</string>
     <string name="details_paid">Επί πληρωμή</string>
     <string name="action_filter_paid_apps">Επί πληρωμή</string>
@@ -353,4 +353,7 @@
     <string name="ui_accent_0">Σύστημα</string>
     <string name="error">Προέκυψε σφάλμα!</string>
     <string name="expand">Επέκταση</string>
+    <string name="access_denied_using_vpn">Πρόσβαση απορρίφθη! Χρησιμοποιείς VPN ή Tor;</string>
+    <string name="failed_to_fetch_report">Αποτυχία ανάκτησης αναφοράς ιδιωτικότητας</string>
+    <string name="pref_updates_check_frequency_desc">Ρυθμίστε διαστήματα για αυτόματες ενημερώσεις, σε ώρες.</string>
 </resources>
