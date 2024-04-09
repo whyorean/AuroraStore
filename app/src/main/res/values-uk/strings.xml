@@ -382,11 +382,11 @@
     <string name="root_installer_desc">Потрібні права root/суперкористувача, підтримуються всі версії Android.</string>
     <string name="session_installer_subtitle">Сеансовий встановлювач для розділених/пакетних файлів APK</string>
     <string name="shizuku_installer_subtitle">Використовує прямі системні API з правами adb/root</string>
-    <string name="shizuku_installer_desc">Потрібен Shizuku або Sui, потрібно налаштувати та отримати дозвіл</string>
+    <string name="shizuku_installer_desc">Потрібен Shizuku або Sui, потрібно налаштувати та надати дозвіл</string>
     <string name="session_installer_desc">Рекомендовано, вбудовано та підтримує всі версії Android</string>
     <string name="root_installer_subtitle">Сеансовий встановлювач, використовує root-права</string>
     <string name="native_installer_subtitle">Класичний встановлювач, доступний на всіх пристроях</string>
-    <string name="native_installer_desc">Найкраще підходить для пристроїв, що працюють під управлінням Android 4.4</string>
+    <string name="native_installer_desc">Найкраще підходить для пристроїв, що працюють під керуванням Android 4.4</string>
     <string name="services_installer_subtitle">Встановлювач для фонових встановлень</string>
     <string name="services_installer_desc">Потрібно, щоб Aurora Services було встановлено як привілейований системний застосунок</string>
     <string name="am_installer_subtitle">Повнофункціональний менеджер пакунків з відкритим кодом</string>
