@@ -122,7 +122,7 @@
     <string name="exodus_view_report">Jelentés megtekintése</string>
     <string name="exodus_substring">ismert nyomkövető található itt,</string>
     <string name="exodus_progress">Nyomkövetők keresése…</string>
-    <string name="exodus_powered">Működteti az Exodus</string>
+    <string name="exodus_powered">Működteti az Exodus Privacy</string>
     <string name="exodus_no_tracker">Nincs ismert nyomkövető</string>
     <string name="download_speed_estimating">Becslés</string>
     <string name="download_resume_all">Mindet folytat</string>
@@ -231,7 +231,7 @@
     <string name="onboarding_permission_installer_desc">Lehetővé teszi az Aurora Storeból származó appok telepítését</string>
     <string name="onboarding_permission_installer">Telepítési engedély</string>
     <string name="onboarding_permission_esm">Külső tárhely kezelő</string>
-    <string name="onboarding_permission_esa_desc">A letöltések mentéséhez (APK &amp; OBB), exportálja és importálja az eszközkonfigurációkat a külső tárhely használatával.</string>
+    <string name="onboarding_permission_esa_desc">Az APK bővítőfájlok (OBB) mentése, nagy alkalmazásokhoz és játékokhoz.</string>
     <string name="onboarding_permission_esa">Külső tárhely elérés</string>
     <string name="onboarding_welcome_select">Hogy van?</string>
     <string name="action_installations">Telepítések</string>
@@ -378,4 +378,24 @@
     <string name="pref_updates_incompatible_desc">Inkompatibilis és letiltott alkalmazások frissítésének megjelenítése, a telepítés meghiúsulhat</string>
     <string name="action_manage">Kezelés</string>
     <string name="action_home_screen">Főképernyőhöz adás</string>
+    <string name="failed_app_link">Nem támogatott, próbálja meg manuálisan társítani a linkeket</string>
+    <string name="faqs_subtitle">Kérdései vannak? Itt találja a válaszokat</string>
+    <string name="source_code_title">Forráskód</string>
+    <string name="source_code_subtitle">Tudja meg, mi van belül</string>
+    <string name="privacy_policy_title">Adatvédelmi irányelvek</string>
+    <string name="privacy_policy_subtitle">Ismerje meg, hogyan használja az Aurora Store az Ön adatait</string>
+    <string name="session_installer_subtitle">Munkamenet alapú telepítő a kötegelt/felosztott APK-khoz</string>
+    <string name="session_installer_desc">Ajánlott, beépített és támogatott az összes Android verzióhoz</string>
+    <string name="native_installer_desc">A legmegfelelőbb az Android 4.4 verziót futó eszközökhöz</string>
+    <string name="services_installer_subtitle">Telepítő a háttérben történő telepítésekhez</string>
+    <string name="services_installer_desc">Az Aurora Services szolgáltatást privilegizált rendszeralkalmazásként kell telepíteni</string>
+    <string name="am_installer_subtitle">Teljes funkcionalitású nyílt forráskódú csomagkezelő</string>
+    <string name="shizuku_installer_subtitle">Rendszer API-k használata közvetlenül adb/root jogosultságokkal</string>
+    <string name="shizuku_installer_desc">Shizuku vagy Sui szükséges, be kell állítani és engedélyt kell adni</string>
+    <string name="manual_download_hint">Írja be a letölteni kívánt verziókódot</string>
+    <string name="disclaimer_subtitle">Elszámoltathatóság és felelősség</string>
+    <string name="root_installer_subtitle">Shell alapú telepítő root jogosultságokkal</string>
+    <string name="root_installer_desc">Root/superuser jogosultságokat igényel, támogatja az összes Android verziót.</string>
+    <string name="native_installer_subtitle">Intent alapú telepítő, minden eszközön elérhető</string>
+    <string name="am_installer_desc">App Manager szükséges, adb/root mód szükséges a telepítéshez, ha a miui optimalizálás be van kapcsolva</string>
 </resources>
