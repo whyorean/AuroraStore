@@ -93,7 +93,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="action_installations">Instalacje</string>
     <string name="action_granted">Zgoda udzielona</string>
-    <string name="action_grant">Udziel zgody</string>
+    <string name="action_grant">Zezwól</string>
     <string name="device_miui_description">Wyłącz optymalizację MIUI, aby zezwolić na instalacje, w przeciwnym razie wybierz instalator root lub usługi Aurora.</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać Natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do Ciebie.</string>
     <string name="toast_spoof_applied">Zastosowano podmianę urządzenia.</string>
@@ -389,7 +389,7 @@
     <string name="am_installer_subtitle">Pełnowartościowy, otwartoźródłowy menedżer pakietów</string>
     <string name="services_installer_subtitle">Instalator do instalacji w tle</string>
     <string name="failed_app_link">Nieobsługiwane, spróbuj powiązać linki ręcznie</string>
-    <string name="session_installer_desc">Zalecane, wbudowane i obsługujące wszystkie wersje Androida</string>
+    <string name="session_installer_desc">Zalecany, wbudowany i obsługujący wszystkie wersje Androida</string>
     <string name="session_installer_subtitle">Instalator oparty na sesji dla dołączonych/rozdzielonych plików APK</string>
     <string name="root_installer_subtitle">Instalator oparty na powłoce z uprawnieniami roota</string>
     <string name="root_installer_desc">Wymaga uprawnień roota/superużytkownika, obsługuje wszystkie wersje Androida.</string>
