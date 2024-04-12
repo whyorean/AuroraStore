@@ -1,5 +1,5 @@
 [versions]
-androidGradlePlugin = "8.3.1"
+androidGradlePlugin = "8.3.2"
 browserVersion = "1.8.0"
 coilVersion = "2.6.0"
 core = "5.0.5"
