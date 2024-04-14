@@ -121,7 +121,7 @@
     <string name="filter_review_two">별 2개</string>
     <string name="exodus_view_report">보고서 보기</string>
     <string name="filter_review_all">전부</string>
-    <string name="exodus_powered">Exodus 제공</string>
+    <string name="exodus_powered">Exodus Privacy에서 제공</string>
     <string name="filter_review_four">별 4개</string>
     <string name="exodus_substring">알려진 트래커가 발견됨</string>
     <string name="filter_review_critical">부정적</string>
@@ -136,7 +136,7 @@
     <string name="notification_channel_general">일반 알림</string>
     <string name="installer_service_misconfigured">먼저 Aurora 서비스를 설정하고 모든 권한을 부여하세요.</string>
     <string name="installer_service_unavailable">1.0.9 이상의 Aurora 서비스를 설치하거나 설치 프로그램을 변경하세요.</string>
-    <string name="onboarding_permission_esa_desc">다운로드(APK 및 OBB)를 저장하려면 장치 구성을 외부 저장소로 내보내고 가져오세요.</string>
+    <string name="onboarding_permission_esa_desc">대형 앱 및 게임용 APK 확장 파일(OBB)을 저장합니다.</string>
     <string name="download_paused">일시 중지됨 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">다운로드 중 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_am_unavailable">앱 관리자를 설치하거나 설치 프로그램을 변경하세요.</string>
@@ -194,12 +194,12 @@
     <string name="pref_install_delete_title">설치 후 APK 삭제</string>
     <string name="onboarding_permission_doze">백그라운드 다운로드</string>
     <string name="onboarding_permission_doze_desc">Aurora Store가 백그라운드에서 앱을 다운로드하고 업데이트하도록 허용</string>
-    <string name="pref_install_delete_summary">APK는 기본적으로 삭제됩니다.</string>
+    <string name="pref_install_delete_summary">APK는 기본적으로 삭제됩니다</string>
     <string name="pref_install_mode_shizuku">Shizuku 설치기</string>
-    <string name="pref_install_mode_native">네이티브 설치기 (지원 중단)</string>
+    <string name="pref_install_mode_native">기본 설치 프로그램(소멸됨)</string>
     <string name="pref_install_mode_root">루트 설치기</string>
     <string name="pref_downloader_wifi_title">Wi-Fi를 통해서만 다운로드</string>
-    <string name="pref_install_mode_services">Aurora 서비스 (지원 중단)</string>
+    <string name="pref_install_mode_services">오로라 서비스 (지원 중단)</string>
     <string name="pref_install_mode_session">세션 설치기</string>
     <string name="pref_install_mode_title">설치 방식</string>
     <string name="pref_install_profile_summary">앱을 설치할 대상 프로필을 선택하세요. 루트 설치 방법에서만 작동합니다</string>
@@ -208,8 +208,8 @@
     <string name="pref_network_proxy_enable">프록시 켜기</string>
     <string name="pref_network_proxy_enable_desc">앱의 모든 트래픽이 프록시를 통과하도록 허용</string>
     <string name="pref_network_proxy_url">프록시 URL</string>
-    <string name="pref_ui_accent_title">악센트</string>
-    <string name="pref_ui_theme_light">밝은</string>
+    <string name="pref_ui_accent_title">테마색</string>
+    <string name="pref_ui_theme_light">엷은 색</string>
     <string name="pref_ui_theme_system">시스템 설정을 따름</string>
     <string name="pref_ui_theme_title">테마</string>
     <string name="pref_install_profile_title">설치 프로필 (실험적)</string>
@@ -219,7 +219,7 @@
     <string name="pref_ui_theme_dark_x">다크 X</string>
     <string name="pref_ui_title">맞춤화</string>
     <string name="pref_ui_no_for_you">For You 페이지</string>
-    <string name="pref_vending_version_device">기본값 (디바이스 구성에서)</string>
+    <string name="pref_vending_version_device">기본값(장치 구성에서)</string>
     <string name="pref_ui_similar_apps">유사한 및 관련 앱</string>
     <string name="title_about">소개</string>
     <string name="pref_ui_theme_darkord">디스코드</string>
@@ -263,7 +263,7 @@
     <string name="expand">확장됨</string>
     <string name="open_in_aurora">오로라 스토어로 열기</string>
     <string name="ui_accent_6">퍼플</string>
-    <string name="tab_editor_choice">에디터의 선택</string>
+    <string name="tab_editor_choice">편집자선택</string>
     <string name="tab_for_you">맞춤 추천</string>
     <string name="title_download_playstore">플레이 스토어</string>
     <string name="title_games">게임</string>
@@ -355,4 +355,47 @@
     <string name="requesting_new_session">새 세션 요청</string>
     <string name="insecure_anonymous_apply">변경 사항을 적용하려면 로그인 및 재시작 앱을 확인하십시오.</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> 와 <xliff:g id="apps_count">%4$d</xliff:g> 더보기</string>
+    <string name="toast_purchase_blocked">익명 계정에서는 앱 구매가 불가능합니다.</string>
+    <string name="toast_manual_available">요청된 버전 사용 가능 및 지금 다운로드</string>
+    <string name="toast_rated_failed">검토를 보낼 수 없음</string>
+    <string name="toast_export_success">장치 구성 내보내기</string>
+    <string name="toast_export_failed">장치 구성을 내보낼 수 없습니다</string>
+    <string name="pref_updates_auto_install">사용 가능한 업데이트 자동 확인 및 설치</string>
+    <string name="failed_generating_session">세션을 생성하지 못했습니다. 오류 코드: &lt;xliff:gid=\"status_code\"&gt;%1$d&lt;/xliff:g&gt;</string>
+    <string name="failed_app_link">지원되지 않습니다. 수동으로 링크를 연결해 보십시오</string>
+    <string name="pref_updates_incompatible_desc">호환되지 않거나 응용 프로그램이 실행 중지된 업데이트를 표시합니다. 설치가 실패할 수 있습니다</string>
+    <string name="toast_developer_setting_failed">장치 설정에서 개발자 옵션을 활성화하여 엽니다.</string>
+    <string name="toast_spoof_applied">장치 미리 보기 사용</string>
+    <string name="toast_permission_granted">권한 부여</string>
+    <string name="toast_manual_unavailable">요청하신 버전 코드를 사용할 수 없습니다.</string>
+    <string name="toast_page_unavailable">페이지 찾아보기를 사용할 수 없음</string>
+    <string name="toast_rated_success">등급(표시하려면 시간이 걸릴 수 있음)</string>
+    <string name="toast_import_success">장치 구성 가져오기</string>
+    <string name="toast_proxy_invalid">프록시 URL이 잘못되었습니다. 형식을 확인하십시오!</string>
+    <string name="ui_accent_12">디스코드 블루</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="downloading_dep">&lt;xliff:gid=\"app\"&gt;%1$s&lt;/xliff:g&gt;에 대한 추가 파일 다운로드 중</string>
+    <string name="faqs_subtitle">문제가 있습니까? 답을 찾으십시오</string>
+    <string name="source_code_title">소스 코드</string>
+    <string name="source_code_subtitle">그 안에 무엇이 들어있는지 알아보기</string>
+    <string name="disclaimer_subtitle">문책과 책임</string>
+    <string name="pref_aurora_only_desc">업데이트 및 설치에서 Aurora Store에서 설치한 앱만 표시</string>
+    <string name="app_updater_service_notif_title">백그라운드 앱 다운로드</string>
+    <string name="toast_import_failed">디바이스 구성을 가져올 수 없습니다</string>
+    <string name="toast_aas_token_failed">AAS 토큰을 생성할 수 없습니다</string>
+    <string name="session_installer_subtitle">번들/분할 APK에 대한 세션 기반 설치 관리자</string>
+    <string name="root_installer_subtitle">루트 사용 권한을 사용하는 셸 기반 설치 관리자</string>
+    <string name="session_installer_desc">추천, 내장, 모든 Android 버전 지원</string>
+    <string name="root_installer_desc">루트/슈퍼유저 권한이 필요하며 모든 안드로이드 버전을 지원합니다.</string>
+    <string name="native_installer_subtitle">의도 기반 설치 프로그램, 모든 장치에서 사용 가능</string>
+    <string name="services_installer_subtitle">백그라운드 설치용 설치 관리자</string>
+    <string name="services_installer_desc">Aurora Services를 권한 있는 시스템 앱으로 설치해야 함</string>
+    <string name="am_installer_subtitle">완전한 기능을 갖춘 오픈 소스 패키지 관리자</string>
+    <string name="am_installer_desc">App Manager가 필요하며 miui 최적화가 켜져 있을 때 설치하려면 adb/root 모드가 필요합니다</string>
+    <string name="shizuku_installer_subtitle">adb/root 권한으로 시스템 API 직접 사용</string>
+    <string name="shizuku_installer_desc">Shizuku 또는 Sui가 필요하며 설정 및 권한 부여가 필요합니다</string>
+    <string name="manual_download_hint">다운로드할 버전 코드를 입력합니다</string>
+    <string name="privacy_policy_title">개인정보 취급방침</string>
+    <string name="privacy_policy_subtitle">Aurora Store에서 데이터를 사용하는 방법 알아보기</string>
+    <string name="native_installer_desc">Android 4.4 이하를 실행하는 장치에 가장 적합합니다</string>
 </resources>

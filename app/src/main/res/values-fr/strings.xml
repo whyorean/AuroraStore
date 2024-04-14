@@ -210,7 +210,7 @@
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications depuis Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation de l’installateur</string>
     <string name="onboarding_permission_esm">Gestionnaire de stockage externe</string>
-    <string name="onboarding_permission_esa_desc">Pour sauvegarder les téléchargements (APK et OBB), exporter et importer les configurations de l’appareil vers et depuis le stockage externe.</string>
+    <string name="onboarding_permission_esa_desc">Pour sauvegarder les fichiers d\'extension APK (OBB) des applications et jeux volumineux.</string>
     <string name="onboarding_permission_esa">Accès au stockage externe</string>
     <string name="onboarding_title_permissions">Autorisations</string>
     <string name="onboarding_permission_select">Aurora Store utilise les autorisations suivantes</string>
@@ -223,7 +223,7 @@
     <string name="exodus_view_report">Voir le rapport</string>
     <string name="exodus_substring">traqueur(s) connu(s) trouvé(s) dans</string>
     <string name="exodus_progress">Vérification des traqueurs…</string>
-    <string name="exodus_powered">Propulsé par Exodus</string>
+    <string name="exodus_powered">Propulsé par Exodus Privacy</string>
     <string name="exodus_no_tracker">Ne contient pas de traqueurs connus</string>
     <string name="download_speed_estimating">Estimation en cours</string>
     <string name="download_resume_all">Tout reprendre</string>
@@ -378,4 +378,24 @@
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applications incompatibles ou désactivées dont l’installation peut échouer</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
     <string name="action_manage">Gérer</string>
+    <string name="faqs_subtitle">Des question ? Trouvez les réponses</string>
+    <string name="source_code_title">Code source</string>
+    <string name="privacy_policy_subtitle">Découvrez comment Aurora Store utilise vos données</string>
+    <string name="manual_download_hint">Entrez le code de version que vous souhaitez installer</string>
+    <string name="source_code_subtitle">Découvrez ce qu\'il y a à l\'intérieur</string>
+    <string name="privacy_policy_title">Politique de confidentialité</string>
+    <string name="disclaimer_subtitle">Obligation de transparence et responsabilité</string>
+    <string name="failed_app_link">Non supporté, veuillez essayer d\'associer les liens manuellement</string>
+    <string name="shizuku_installer_desc">Exige Shizuku ou Sui, nécessite d\'être configuré et l\'autorisation doit être accordée</string>
+    <string name="root_installer_desc">Exige des privilèges racine/super-utilisateur, supporté par toutes les version d\'Android.</string>
+    <string name="session_installer_subtitle">Installateur basé sur la session pour les APKs empaqueté/scindé</string>
+    <string name="native_installer_subtitle">Installateur basé sur l\'intention, disponible sur tous les appareils</string>
+    <string name="shizuku_installer_subtitle">Utilisant directement les API système avec les privilèges adb/root</string>
+    <string name="root_installer_subtitle">Installateur basé sur le shell en utilisant les permissions root</string>
+    <string name="session_installer_desc">Recommandé, intégré et supporté pour toutes les versions d\'Android</string>
+    <string name="native_installer_desc">Adapté aux appareils fonctionnant sous Android 4.4</string>
+    <string name="services_installer_desc">Exige qu\'Aurora Services soit installé en tant qu\'application système privilégiée</string>
+    <string name="services_installer_subtitle">Installateur pour les installations en arrière-plan</string>
+    <string name="am_installer_subtitle">Gestionnaire de paquet complet et open-source</string>
+    <string name="am_installer_desc">Exige App Manager, nécessite adb/mode root pour installer lorsque l\'optimisation MIUI est activé</string>
 </resources>
