@@ -1,9 +1,9 @@
 {
-  "version_name": "4.4.2",
-  "version_code": 56,
-  "aurora_build": "https://auroraoss.com/AuroraStore/Release/AuroraStore-4.4.2.apk",
+  "version_name": "4.4.3",
+  "version_code": 57,
+  "aurora_build": "https://www.auroraoss.com/AuroraStore/Release/AuroraStore-4.4.3.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.4.2\n • Target Android 14\n • Improve the F-Droid package filter for updates\n • Translation updates & major bug fixes",
-  "size": 6291456,
-  "updated_on": "Feb 23, 2024"
+  "changelog": "Changelog : v4.4.3\n • New permissions are now highlighted in permissions sheet\n • Changes to the downloads system\n\n • Translation updates & major bug fixes",
+  "size": 6153609,
+  "updated_on": "Apr 10, 2024"
 }
