@@ -102,8 +102,11 @@ android {
         buildConfig = true
         viewBinding = true
         aidl = true
+        compose = true
     }
-
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.11"
+    }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
@@ -140,6 +143,17 @@ dependencies {
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.work.runtime.ktx)
+
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
     //Coil
     implementation(libs.coil.kt)
