@@ -24,5 +24,11 @@
         android:id="@+id/menu_download_manager"
         android:icon="@drawable/ic_download_manager"
         android:title="@string/title_download_manager"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_more"
+        android:icon="@drawable/ic_settings_account"
+        android:title="@string/title_more"
+        app:showAsAction="ifRoom" />
 </menu>

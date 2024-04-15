@@ -20,32 +20,17 @@
 
 package com.aurora.store
 
-import android.content.Intent
 import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.Settings
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
-import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
-import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import coil.load
-import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.applyThemeAccent
@@ -56,7 +41,6 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -65,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var appConfig: AppBarConfiguration
 
     // TopLevelFragments
     private val topLevelFrags = listOf(
@@ -111,11 +94,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Toolbar
-        setSupportActionBar(B.toolbar)
-
-        attachNavigation()
-        attachDrawer()
+        B.navView.apply {
+            val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
+            setupWithNavController(navController)
+            itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
+        }
 
         // Handle quick exit from back actions
         val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {
@@ -124,21 +107,17 @@ class MainActivity : AppCompatActivity() {
             else -> R.id.appsContainerFragment
         }
         onBackPressedDispatcher.addCallback(this) {
-            if (!B.drawerLayout.isOpen) {
-                if (navController.currentDestination?.id in topLevelFrags) {
-                    if (navController.currentDestination?.id == defaultTab) {
-                        finish()
-                    } else {
-                        navController.navigate(defaultTab)
-                    }
-                } else if (navHostFragment.childFragmentManager.backStackEntryCount == 0) {
-                    // We are on either on onboarding or splash fragment
+            if (navController.currentDestination?.id in topLevelFrags) {
+                if (navController.currentDestination?.id == defaultTab) {
                     finish()
                 } else {
-                    navController.navigateUp()
+                    navController.navigate(defaultTab)
                 }
+            } else if (navHostFragment.childFragmentManager.backStackEntryCount == 0) {
+                // We are on either on onboarding or splash fragment
+                finish()
             } else {
-                B.drawerLayout.close()
+                navController.navigateUp()
             }
         }
 
@@ -152,81 +131,10 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             if (navDestination !is FloatingWindow) {
                 when (navDestination.id) {
-                    in topLevelFrags -> {
-                        B.navView.visibility = View.VISIBLE
-                        B.toolbar.visibility = View.VISIBLE
-                        B.drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)
-                    }
-
-                    else -> {
-                        hideTopLevelOnlyViews()
-                    }
+                    in topLevelFrags -> B.navView.visibility = View.VISIBLE
+                    else -> B.navView.visibility = View.GONE
                 }
             }
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_download_manager -> {
-                navController.navigate(R.id.downloadFragment)
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun hideTopLevelOnlyViews() {
-        B.navView.visibility = View.GONE
-        B.toolbar.visibility = View.GONE
-        B.drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
-    }
-
-    private fun attachNavigation() {
-        val bottomNavigationView: BottomNavigationView = B.navView
-        bottomNavigationView.setupWithNavController(navController)
-
-        bottomNavigationView.apply {
-            val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
-            itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
-        }
-    }
-
-    private fun attachDrawer() {
-        val headerView: View = B.navigation.getHeaderView(0)
-
-        headerView.let {
-            it.findViewById<ImageView>(R.id.img)?.load(R.mipmap.ic_launcher) {
-                transformations(RoundedCornersTransformation(8F))
-            }
-            it.findViewById<TextView>(R.id.txt_name)?.text = getString(R.string.app_name)
-            it.findViewById<TextView>(R.id.txt_email)?.text = getString(
-                R.string.version,
-                BuildConfig.VERSION_NAME,
-                BuildConfig.VERSION_CODE
-            )
-        }
-
-        appConfig = AppBarConfiguration.Builder(topLevelFrags.toSet())
-            .setOpenableLayout(B.root)
-            .build()
-        setupActionBarWithNavController(navController, appConfig)
-        B.navigation.setupWithNavController(navController)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appConfig)
-    }
-
-    private fun checkExternalStorageManagerPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager())
-                startActivity(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION))
         }
     }
 

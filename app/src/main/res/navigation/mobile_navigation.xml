@@ -50,6 +50,9 @@
     <action
         android:id="@+id/action_global_dozeWarningSheet"
         app:destination="@id/dozeWarningSheet" />
+    <action
+        android:id="@+id/action_global_moreDialogFragment"
+        app:destination="@id/moreDialogFragment" />
     <fragment
         android:id="@+id/appsContainerFragment"
         android:name="com.aurora.store.view.ui.apps.AppsContainerFragment"
@@ -477,4 +480,8 @@
             app:argType="boolean"
             android:defaultValue="false" />
     </dialog>
+    <dialog
+        android:id="@+id/moreDialogFragment"
+        android:name="com.aurora.store.view.ui.commons.MoreDialogFragment"
+        android:label="MoreDialogFragment" />
 </navigation>

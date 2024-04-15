@@ -26,6 +26,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.aurora.Constants.URL_DISCLAIMER
+import com.aurora.Constants.URL_LICENSE
+import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.store.R
@@ -47,11 +50,6 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
 
     private lateinit var authData: AuthData
     private lateinit var accountProvider: AccountProvider
-
-    private val URL_TOS = "https://play.google.com/about/play-terms/"
-    private val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/LICENSE"
-    private val URL_DISCLAIMER =
-        "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

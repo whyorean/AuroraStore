@@ -157,6 +157,7 @@ dependencies {
 
     //Coil
     implementation(libs.coil.kt)
+    implementation(libs.coil.compose)
 
     //Shimmer
     implementation(libs.facebook.shimmer)

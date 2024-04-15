@@ -36,6 +36,7 @@ import com.aurora.extensions.browse
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.room.download.Download
@@ -86,6 +87,21 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentUpdatesBinding.bind(view)
+
+        // Toolbar
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_download_manager -> {
+                    findNavController().navigate(R.id.downloadFragment)
+                }
+                R.id.menu_more -> {
+                    findNavController().navigate(
+                        MobileNavigationDirections.actionGlobalMoreDialogFragment()
+                    )
+                }
+            }
+            true
+        }
 
         viewModel.observe()
         viewLifecycleOwner.lifecycleScope.launch {
