@@ -55,7 +55,4 @@ object Constants {
     const val PAGE_TYPE = "PAGE_TYPE"
     const val TOP_CHART_TYPE = "TOP_CHART_TYPE"
     const val TOP_CHART_CATEGORY = "TOP_CHART_CATEGORY"
-
-    //NAVIGATION
-    const val NAVIGATION_UPDATES = "NAVIGATION_UPDATES"
 }

@@ -213,14 +213,11 @@ object NotificationUtil {
     }
 
     fun getUpdateNotification(context: Context, updatesList: List<App>): Notification {
-        val contentIntent = PendingIntent.getActivity(
-            context,
-            0,
-            Intent(context, MainActivity::class.java).apply {
-                action = Constants.NAVIGATION_UPDATES
-            },
-            PendingIntent.FLAG_IMMUTABLE
-        )
+        val contentIntent = NavDeepLinkBuilder(context)
+            .setGraph(R.navigation.mobile_navigation)
+            .setDestination(R.id.updatesFragment)
+            .setComponentName(MainActivity::class.java)
+            .createPendingIntent()
 
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_updates)
