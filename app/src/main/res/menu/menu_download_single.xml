@@ -19,6 +19,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/action_local"
+        android:title="@string/action_get_local_apk" />
+    <item
         android:id="@+id/action_install"
         android:title="@string/action_install" />
     <item

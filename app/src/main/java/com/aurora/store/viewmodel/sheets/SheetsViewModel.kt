@@ -40,9 +40,19 @@ class SheetsViewModel : ViewModel() {
         }
     }
 
-    fun copyApk(context: Context, packageName: String, uri: Uri) {
+    fun copyInstalledApp(context: Context, packageName: String, uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
-            ApkCopier.copy(context, packageName, uri)
+            ApkCopier.copyInstalledApp(context, packageName, uri)
+        }
+    }
+
+    fun copyDownloadedApp(context: Context, packageName: String, versionCode: Int, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                ApkCopier.copyDownloadedApp(context, packageName, versionCode, uri)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to copy downloads", exception)
+            }
         }
     }
 }

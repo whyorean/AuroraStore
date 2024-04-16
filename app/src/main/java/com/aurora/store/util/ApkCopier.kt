@@ -33,7 +33,7 @@ object ApkCopier {
 
     private const val TAG = "ApkCopier"
 
-    fun copy(context: Context, packageName: String, uri: Uri) {
+    fun copyInstalledApp(context: Context, packageName: String, uri: Uri) {
         val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
         val baseApk = getBaseApk(packageInfo)
         val fileList: MutableList<File?> = mutableListOf()
@@ -45,6 +45,14 @@ object ApkCopier {
             fileList.addAll(getSplitAPKs(packageInfo))
         }
         bundleAllAPKs(context, fileList.filterNotNull(), uri)
+    }
+
+    fun copyDownloadedApp(context: Context, packageName: String, versionCode: Int, uri: Uri) {
+        return bundleAllAPKs(
+            context,
+            PathUtil.getAppDownloadDir(context, packageName, versionCode).listFiles()!!.toList(),
+            uri
+        )
     }
 
     private fun getBaseApk(packageInfo: PackageInfo?): File? {
