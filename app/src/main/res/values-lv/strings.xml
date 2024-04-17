@@ -202,7 +202,7 @@
     <string name="spoof_apply">Jānodrošina atkārtota pieteikšanās, lai pielietotu atdarināšanu</string>
     <string name="installer_root_unavailable">Nav superlietotāja piekļuves. Tā ir jānodrošina vai jānomaina uzstādītājs.</string>
     <string name="title_spoof_manager">Atdarināšanas pārvaldnieks</string>
-    <string name="exodus_powered">Nodrošina Exodus</string>
+    <string name="exodus_powered">Nodrošina Exodus Privacy</string>
     <string name="installer_am_unavailable">Jāuzstāda App Manager vai jānomaina uzstādītājs.</string>
     <string name="title_blacklist_manager">Melnā saraksta pārvaldnieks</string>
     <string name="notification_updates_available_desc_1">Ir pieejama jauna <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>
@@ -294,7 +294,7 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>,<xliff:g id="app_two_name">%2$s</xliff:g> un <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> un vēl <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="onboarding_permission_esm">Ārējās krātuves pārvaldnieks</string>
-    <string name="onboarding_permission_esa_desc">Lai saglabātu lejupielādes (APK un OBB), jāizgūst un jāievieto ierīces konfigurācijas no ārējās krātuves.</string>
+    <string name="onboarding_permission_esa_desc">Lai saglabātu APK paplašināšanas datnes (OBB) lielām lietotnēm un spēlēm.</string>
     <string name="onboarding_permission_notifications">Paziņojumi</string>
     <string name="pref_filter_fdroid_title">Atlasīt F-Droid lietotnes</string>
     <string name="pref_filter_search_title">Izmantot nepaliekošus meklēšanas nosacījumus</string>
@@ -345,7 +345,7 @@
     <string name="action_uninstall_confirmation">Vai noņemt šo lietotni\?</string>
     <string name="pref_network_proxy_enable">Iespējot starpniekserveri</string>
     <string name="pref_network_proxy_url">Starpniekservera URL</string>
-    <string name="pref_updates_check_frequency_desc">Norādīt laika posmu stundās starp automātiskajiem atjauninājumiem.</string>
+    <string name="pref_updates_check_frequency_desc">Norādīt starpposmu stundās automātiskajiem un pašatjauninājumiem.</string>
     <string name="pref_aurora_only">Tikai Aurora Store lietotnes</string>
     <string name="pref_network_proxy_title">Starpniekserveris</string>
     <string name="toast_proxy_invalid">Nederīgs starpniekservera URL, jāpārbauda pieraksts.</string>
@@ -372,4 +372,30 @@
     <string name="pref_updates_auto_desc">Konfigurēt automātisko atjauninājumu uzvedību</string>
     <string name="device_doze_extra">Pēc izvēles var izvēlēties paturēt optimizēšanu iespējotu, bet tad nebūs iespējams gūt labumu no fona lejupielādēm un automātiskajiem atjauninājumiem, tā ka izvēle ir paša ziņā.</string>
     <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
+    <string name="pref_updates_incompatible_desc">Rādīt atjauninājumus nesaderīgām vai atspējotām lietotnēm, kuru uzstādīšana var neizdoties</string>
+    <string name="failed_apk_export">Neizdevās izgūt APK</string>
+    <string name="action_manage">Pārvaldīt</string>
+    <string name="failed_app_link">Neatbalstīta, lūgums mēģināt savienot saites pašrocīgi</string>
+    <string name="manual_download_hint">Jāievada versijas, kuru vēlies lejupielādēt, kods</string>
+    <string name="faqs_subtitle">Ir jautājumi? Atrodi atbildes</string>
+    <string name="source_code_title">Pirmkods</string>
+    <string name="source_code_subtitle">Atklāj, kas ir iekšā</string>
+    <string name="privacy_policy_subtitle">Uzzini, kā Aurora veikals izmanto Tavus datus</string>
+    <string name="disclaimer_subtitle">Uzskaitāmība un atbildība</string>
+    <string name="root_installer_subtitle">Čaulā balstīts uzstādītājs ar superlietotāja atļaujām</string>
+    <string name="session_installer_desc">Ieteicams, iebūvēts un atbalsta visas Android versijas</string>
+    <string name="services_installer_subtitle">Uzstādītājs uzstādīšanām fonā</string>
+    <string name="services_installer_desc">Nepieciešams uzstādīt Aurora pakalpojumus kā neierobežotu sistēmas lietotni</string>
+    <string name="am_installer_subtitle">Pilnu iespēju atvērtā pirmkoda pakotņu pārvaldnieks</string>
+    <string name="shizuku_installer_subtitle">Izmantojot sistēmas API ar adb/superlietotāja tiesībām</string>
+    <string name="shizuku_installer_desc">Nepieciešams Shizuku vai Sui, jābūt iestatītai un nodrošinātai atļaujai</string>
+    <string name="action_home_screen">Pievienot sākuma ekrānam</string>
+    <string name="download_clear_finished">Notīrīt pabeigtās</string>
+    <string name="pref_updates_incompatible">Nesaderīgi atjauninājumi</string>
+    <string name="session_installer_subtitle">Sesijā balstīts uzstādītājs apkopotiem/sadalītiem APK</string>
+    <string name="root_installer_desc">Nepieciešamas superlietotāja tiesības, atbalsta visas Android versijas.</string>
+    <string name="native_installer_subtitle">Nolūkā balstīts uzstādītājs, pieejams visās ierīcēs</string>
+    <string name="native_installer_desc">Vispiemērotākais ierīcēm, kurās darbojas par Android 4.4 vecāka versija</string>
+    <string name="am_installer_desc">Nepieciešams Lietotņu pārvaldnieks, jāizmanto adb/saknes stāvoklis, lai uzstādītu, kad ir ieslēgta miui optimizācija</string>
+    <string name="privacy_policy_title">Privātuma nosacījumi</string>
 </resources>
