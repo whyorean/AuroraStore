@@ -398,4 +398,6 @@
     <string name="source_code_subtitle">اكتشف ما بداخله</string>
     <string name="privacy_policy_title">سياسة الخصوصية</string>
     <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
+    <string name="title_more">المزيد</string>
+    <string name="manage_account">إدارة حسابك</string>
 </resources>
