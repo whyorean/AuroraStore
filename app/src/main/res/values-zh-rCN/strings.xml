@@ -398,4 +398,6 @@
     <string name="source_code_title">源代码</string>
     <string name="privacy_policy_title">隐私政策</string>
     <string name="privacy_policy_subtitle">了解 Aurora Store 如何使用您的数据</string>
+    <string name="title_more">更多</string>
+    <string name="manage_account">管理账户</string>
 </resources>

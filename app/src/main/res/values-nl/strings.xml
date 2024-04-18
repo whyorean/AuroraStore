@@ -109,7 +109,7 @@
     <string name="pref_filter_google_title">Filter Google apps</string>
     <string name="pref_filter_google_summary">Verwijdert alle Google Apps van zoekresultaten en categorie apps</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>
-    <string name="pref_filter_fdroid_summary">Verwijdert F-Droid apps van app lijsten</string>
+    <string name="pref_filter_fdroid_summary">Negeer F-Droid-apps van Updates en Geïnstalleerde apps</string>
     <string name="pref_dialog_to_apply_restart">Deze optie word toegepast nadat u de app herstart</string>
     <string name="pref_common_extra">Extra\'s</string>
     <string name="pref_app_download">Downloads</string>
@@ -160,7 +160,7 @@
     <string name="exodus_view_report">Bekijk rapport</string>
     <string name="exodus_substring">bekende tracker(s) gevonden in</string>
     <string name="exodus_progress">Controleren voor trackers…</string>
-    <string name="exodus_powered">Mogelijk gemaakt door Exodus</string>
+    <string name="exodus_powered">Mogelijk gemaakt door Exodus Privacy</string>
     <string name="exodus_no_tracker">Bevat geen bekende trackers</string>
     <string name="download_speed_estimating">Geschatte</string>
     <string name="download_resume_all">Alle voortzetten</string>
@@ -346,4 +346,6 @@
     <string name="pref_download_directory_error">De geselecteerde map is alleen-lezen</string>
     <string name="pref_downloader_wifi_title">Alleen downloaden via wifi</string>
     <string name="action_home_screen">Toevoegen aan startpagina</string>
+    <string name="details_ratings_title_hint">Titels beoordelen</string>
+    <string name="download_clear_finished">Verwijder voltooid</string>
 </resources>

@@ -398,4 +398,6 @@
     <string name="manual_download_hint">İndirmek istediğiniz sürüm kodunu girin</string>
     <string name="privacy_policy_title">Gizlilik politikası</string>
     <string name="privacy_policy_subtitle">Aurora Store\'un verilerinizi nasıl kullandığını öğrenin</string>
+    <string name="title_more">Daha Fazla</string>
+    <string name="manage_account">Hesabınızı yönetin</string>
 </resources>
