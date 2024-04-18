@@ -398,4 +398,6 @@
     <string name="disclaimer_subtitle">Prestação de contas e responsabilidade</string>
     <string name="privacy_policy_subtitle">Descubra como a Aurora Store usa seus dados</string>
     <string name="manual_download_hint">Insira o código da versão que deseja baixar</string>
+    <string name="title_more">Mais</string>
+    <string name="manage_account">Gerencie sua conta</string>
 </resources>
