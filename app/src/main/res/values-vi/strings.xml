@@ -170,7 +170,7 @@
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>
-    <string name="onboarding_permission_esa_desc">Để lưu các bản tải xuống (APK &amp; OBB), hãy xuất và nhập cấu hình thiết bị đến và từ bộ nhớ ngoài.</string>
+    <string name="onboarding_permission_esa_desc">Để lưu tệp mở rộng APK (OBB) cho các ứng dụng và trò chơi lớn.</string>
     <string name="onboarding_permission_esa">Quyền truy cập bộ nhớ ngoài</string>
     <string name="onboarding_welcome_select">Bạn tốt chứ\?</string>
     <string name="onboarding_title_welcome">Chào mừng</string>
@@ -210,7 +210,7 @@
     <string name="exodus_view_report">Xem báo cáo</string>
     <string name="exodus_substring">(các) trình theo dõi đã biết được tìm thấy trong</string>
     <string name="exodus_progress">Đang kiểm tra các trình theo dõi…</string>
-    <string name="exodus_powered">Được hỗ trợ bởi Exodus</string>
+    <string name="exodus_powered">Được hỗ trợ bởi Exodus Privacy</string>
     <string name="exodus_no_tracker">Không chứa trình theo dõi đã biết nào</string>
     <string name="download_speed_estimating">Đang ước tính</string>
     <string name="download_resume_all">Tiếp tục tất cả</string>
@@ -378,4 +378,26 @@
     <string name="pref_network_proxy_url">URL proxy</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="action_manage">Quản lý</string>
+    <string name="services_installer_subtitle">Trình cài đặt để cài đặt nền</string>
+    <string name="failed_app_link">Không được hỗ trợ, vui lòng thử liên kết các liên kết theo cách thủ công</string>
+    <string name="am_installer_subtitle">Trình quản lý gói nguồn mở đầy đủ tính năng</string>
+    <string name="services_installer_desc">Yêu cầu cài đặt Dịch vụ Aurora dưới dạng ứng dụng hệ thống đặc quyền</string>
+    <string name="am_installer_desc">Yêu cầu App Manager, cần cài đặt chế độ adb/root khi bật tối ưu hóa miui</string>
+    <string name="shizuku_installer_subtitle">Sử dụng API hệ thống trực tiếp với đặc quyền adb/root</string>
+    <string name="source_code_subtitle">Tìm hiểu những gì bên trong</string>
+    <string name="privacy_policy_subtitle">Tìm hiểu cách Aurora Store sử dụng dữ liệu của bạn</string>
+    <string name="privacy_policy_title">Chính sách bảo mật</string>
+    <string name="disclaimer_subtitle">Trách nhiệm và nghĩa vụ</string>
+    <string name="manual_download_hint">Nhập mã phiên bản bạn muốn tải xuống</string>
+    <string name="faqs_subtitle">Có một vài câu hỏi? Hãy tìm câu trả lời</string>
+    <string name="source_code_title">Mã nguồn</string>
+    <string name="session_installer_subtitle">Trình cài đặt dựa trên phiên cho APK được nhóm/tách</string>
+    <string name="session_installer_desc">Được đề xuất, tích hợp sẵn và hỗ trợ tất cả các phiên bản Android</string>
+    <string name="shizuku_installer_desc">Yêu cầu Shizuku hoặc Sui, cần được thiết lập và cấp phép</string>
+    <string name="root_installer_desc">Yêu cầu quyền root/superuser, hỗ trợ tất cả các phiên bản Android.</string>
+    <string name="root_installer_subtitle">Trình cài đặt dựa trên Shell sử dụng quyền root</string>
+    <string name="native_installer_subtitle">Trình cài đặt dựa trên ý định, có sẵn trên tất cả các thiết bị</string>
+    <string name="native_installer_desc">Phù hợp nhất cho các thiết bị chạy dưới Android 4.4</string>
+    <string name="title_more">Nhiều hơn</string>
+    <string name="manage_account">Quản lý tài khoản của bạn</string>
 </resources>
