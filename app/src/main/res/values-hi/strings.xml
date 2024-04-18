@@ -398,4 +398,6 @@
     <string name="disclaimer_subtitle">जवाबदेही और जिम्मेदारी</string>
     <string name="source_code_subtitle">अंदर क्या है पता लगाएं</string>
     <string name="privacy_policy_title">गोपनीयता नीति</string>
+    <string name="title_more">और भी</string>
+    <string name="manage_account">अपने खाते का प्रबंधन</string>
 </resources>
