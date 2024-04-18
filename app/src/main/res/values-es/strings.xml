@@ -398,4 +398,6 @@
     <string name="source_code_subtitle">Descubra qué hay dentro</string>
     <string name="disclaimer_subtitle">Responsabilidad</string>
     <string name="native_installer_subtitle">Instalador basado disponible en todos los dispositivos</string>
+    <string name="title_more">Más</string>
+    <string name="manage_account">Gestiona tu cuenta</string>
 </resources>
