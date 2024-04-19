@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,17 +44,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastForEach
-import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.aurora.Constants
 import com.aurora.Constants.URL_TOS
-import com.aurora.extensions.accentColor
 import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.view.theme.AuroraTheme
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MoreDialogFragment : DialogFragment() {
@@ -74,59 +74,80 @@ class MoreDialogFragment : DialogFragment() {
         return ComposeView(context).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                val bColor = ColorUtils.setAlphaComponent(LocalContext.current.accentColor(), 20)
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Color(bColor))
-                        .verticalScroll(rememberScrollState())
-                        .padding(13.dp),
-                    verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)
-                ) {
-                    AppBar()
-                    AccountHeader()
+                AuroraTheme {
+                    val backgroundColor = if (isSystemInDarkTheme()) {
+                        MaterialTheme.colorScheme.onSecondary
+                    } else {
+                        MaterialTheme.colorScheme.surfaceVariant
+                    }
+
+                    val onBackgroundColor = if (isSystemInDarkTheme()) {
+                        MaterialTheme.colorScheme.onSurface
+                    } else {
+                        MaterialTheme.colorScheme.onSecondary
+                    }
+
+                    val tintColor = if (isSystemInDarkTheme()) Color.White else Color.Black
+
                     Column(
                         modifier = Modifier
-                            .clip(
-                                RoundedCornerShape(
-                                    topStart = 5.dp,
-                                    topEnd = 5.dp,
-                                    bottomStart = 20.dp,
-                                    bottomEnd = 20.dp
-                                )
-                            )
-                            .background(color = Color.White)
+                            .fillMaxWidth()
+                            .background(color = backgroundColor)
+                            .verticalScroll(rememberScrollState())
+                            .padding(10.dp),
+                        verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)
                     ) {
-                        getOptions().fastForEach { option -> OptionItem(option = option) }
+                        AppBar(tintColor = tintColor)
+                        AccountHeader(backgroundColor = onBackgroundColor)
+                        Column(
+                            modifier = Modifier
+                                .clip(
+                                    RoundedCornerShape(
+                                        topStart = 5.dp,
+                                        topEnd = 5.dp,
+                                        bottomStart = 20.dp,
+                                        bottomEnd = 20.dp
+                                    )
+                                )
+                                .background(color = onBackgroundColor)
+                        ) {
+                            getOptions().fastForEach { option -> OptionItem(option = option) }
+                        }
+                        getExtraOptions().fastForEach { option ->
+                            OptionItem(
+                                option = option,
+                                tintColor = tintColor
+                            )
+                        }
+                        Footer(tintColor)
                     }
-                    getExtraOptions().fastForEach { option -> OptionItem(option = option) }
-                    Footer()
                 }
             }
         }
     }
 
     @Composable
-    fun AppBar() {
+    fun AppBar(tintColor: Color) {
         Box(contentAlignment = Alignment.CenterStart) {
             IconButton(onClick = { findNavController().navigateUp() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_cancel),
                     contentDescription = stringResource(id = R.string.action_cancel),
-                    tint = Color.Black
+                    tint = tintColor
                 )
             }
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.titleMedium,
+                color = tintColor,
                 textAlign = TextAlign.Center
             )
         }
     }
 
     @Composable
-    fun Footer() {
+    fun Footer(tintColor: Color) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -135,34 +156,31 @@ class MoreDialogFragment : DialogFragment() {
             TextButton(onClick = { requireContext().browse(Constants.URL_POLICY) }) {
                 Text(
                     text = stringResource(id = R.string.privacy_policy_title),
-                    color = Color.Black
+                    color = tintColor
                 )
             }
-            Text(text = "•")
+            Text(text = "•", color = tintColor)
             TextButton(onClick = { requireContext().browse(URL_TOS) }) {
                 Text(
                     text = stringResource(id = R.string.menu_terms),
-                    color = Color.Black
+                    color = tintColor
                 )
             }
         }
     }
 
     @Composable
-    private fun AccountHeader() {
+    private fun AccountHeader(backgroundColor: Color) {
         val authData = AuthProvider.with(LocalContext.current).getAuthData()
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(
                     RoundedCornerShape(
-                        topStart = 20.dp,
-                        topEnd = 20.dp,
-                        bottomStart = 5.dp,
-                        bottomEnd = 5.dp
+                        topStart = 20.dp, topEnd = 20.dp, bottomStart = 5.dp, bottomEnd = 5.dp
                     )
                 )
-                .background(color = Color.White)
+                .background(color = backgroundColor)
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(15.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -214,7 +232,7 @@ class MoreDialogFragment : DialogFragment() {
     }
 
     @Composable
-    private fun OptionItem(option: Option) {
+    private fun OptionItem(option: Option, tintColor: Color = Color.Black) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -226,16 +244,16 @@ class MoreDialogFragment : DialogFragment() {
             Image(
                 painter = painterResource(id = option.icon),
                 contentDescription = stringResource(id = option.title),
-                colorFilter = ColorFilter.tint(color = Color.Black),
+                colorFilter = ColorFilter.tint(color = tintColor),
                 modifier = Modifier
                     .padding(horizontal = 10.dp)
-                    .requiredSize(25.dp)
+                    .requiredSize(23.dp)
             )
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = option.title),
-                color = Color.Black,
-                fontSize = 16.sp,
+                color = tintColor,
+                fontSize = 15.sp,
             )
         }
     }
