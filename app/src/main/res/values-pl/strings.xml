@@ -398,4 +398,6 @@
     <string name="native_installer_subtitle">Instalator oparty na intencjach, dostępny na wszystkich urządzeniach</string>
     <string name="services_installer_desc">Wymaga zainstalowania Aurora Services jako uprzywilejowanej aplikacji systemowej</string>
     <string name="am_installer_desc">Wymaga Menedżera aplikacji, wymaga trybu adb/root do instalacji, gdy włączona jest optymalizacja miui</string>
+    <string name="title_more">Więcej</string>
+    <string name="manage_account">Zarządzaj swoim kontem</string>
 </resources>
