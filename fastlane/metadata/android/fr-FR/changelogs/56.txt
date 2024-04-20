@@ -1,0 +1,7 @@
+• Support d'Android 14
+• Amélioration du filtre des paquets F-Droid lors des mises à jour
+• Peut désormais endosser la responsabilité des mises à jour à venir lors de l'installation d'une appli via l'installateur de session (Android 14+)
+• "Mises à jour étendues" a été renommé en "Mises à jour incompatibles"
+• Ajout d'un menu permettant la création d'un raccourci de l'appli installée
+• Corrections diverses et améliorations
+• Mise à jour des traductions

@@ -1,0 +1,4 @@
+• Modifications internes importantes relatives à l'interface utilisateur
+• Prise en charge des liens d'application activable au premier lancement
+• Mise à jour des traductions
+• Corrections mineures et améliorations diverses

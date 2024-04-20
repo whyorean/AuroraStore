@@ -1,0 +1,2 @@
+• Activation permanente du bouton de finalisation sur les fragments de permission (corrige l'introduction des nouveaux utilisateurs) onboarding)
+• Conserver les jetons type de la librairie GSON lors de l'optimisation de la compilation (corrige le crash à l'ouverture)

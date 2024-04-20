@@ -1,0 +1,6 @@
+• Correction d'un crash relatif aux notifications des services d'installation
+• Montrer uniquement les propriétés d'usurpation valides dans l'appli
+• Notifier l'utilisateur quand sa fréquence de recherche passe en mode limitée
+• Une animation scintillante apparaît désormais pendant la progression d'une recherche
+• Correction du comportement de navigation quand l'onglet par défaut est modifié
+• Correction de l'option de sortie rapide de l'appli
