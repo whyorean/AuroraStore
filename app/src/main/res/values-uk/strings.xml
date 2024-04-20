@@ -386,7 +386,7 @@
     <string name="session_installer_desc">Рекомендовано, вбудовано та підтримує всі версії Android</string>
     <string name="root_installer_subtitle">Сеансовий встановлювач, використовує root-права</string>
     <string name="native_installer_subtitle">Класичний встановлювач, доступний на всіх пристроях</string>
-    <string name="native_installer_desc">Найкраще підходить для пристроїв, що працюють під керуванням Android 4.4</string>
+    <string name="native_installer_desc">Найкраще підходить для пристроїв, що працюють на Android 4.4 та нижче</string>
     <string name="services_installer_subtitle">Встановлювач для фонових встановлень</string>
     <string name="services_installer_desc">Потрібно, щоб Aurora Services було встановлено як привілейований системний застосунок</string>
     <string name="am_installer_subtitle">Повнофункціональний менеджер пакунків з відкритим кодом</string>
@@ -398,4 +398,6 @@
     <string name="source_code_title">Вихідний код</string>
     <string name="privacy_policy_title">Політика приватності</string>
     <string name="privacy_policy_subtitle">Дізнайтеся, як Aurora Store використовує ваші дані</string>
+    <string name="title_more">Докладніше</string>
+    <string name="manage_account">Управління обліковим записом</string>
 </resources>

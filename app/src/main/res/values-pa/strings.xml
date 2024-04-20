@@ -145,7 +145,7 @@
     <string name="filter_review_all">ਸਾਰੇ</string>
     <string name="exodus_view_report">ਵਿਸਥਾਰਿਤ ਰਿਪੋਰਟ ਵੇਖੋ</string>
     <string name="exodus_substring">ਇਸ ਵਿੱਚ ਗਿਆਤ ਟਰੈਕਰ ਮਿਲੇ ਹਨ</string>
-    <string name="exodus_powered">Exodus ਵਲੋਂ ਜਾਰੀ</string>
+    <string name="exodus_powered">Exodus Privacy ਵਲੋਂ ਜਾਰੀ</string>
     <string name="exodus_progress">ਐਪ ਟਰੈਕਰ ਦੀ ਜਾਂਚ ਜਾਰੀ…</string>
     <string name="exodus_no_tracker">ਕੋਈ ਗਿਆਤ ਟਰੈਕਰ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ</string>
     <string name="download_speed_estimating">ਅਨੁਮਾਨ ਲਗਾਇਆ ਜਾ ਰਿਹਾ ਹੈ</string>
@@ -378,4 +378,26 @@
     <string name="pref_updates_incompatible_desc">ਅਸੰਗਤ ਜਾਂ ਅਯੋਗ ਐਪਾਂ ਲਈ ਅੱਪਡੇਟ ਦਿਖਾਓ ਜੋ ਸਥਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਹੋ ਸਕਦੀਆਂ ਹਨ</string>
     <string name="action_home_screen">ਹੋਮ ਸਕ੍ਰੀਨ ਤੇ ਐਡ ਕਰੋ</string>
     <string name="action_manage">ਮੈਨੇਜ ਕਰੋ</string>
+    <string name="session_installer_subtitle">ਬੰਡਲ/ਸਪਲਿਟ ਏਪੀਕੇ ਲਈ ਸੈਸ਼ਨ ਆਧਾਰਿਤ ਇੰਸਟਾਲਰ</string>
+    <string name="session_installer_desc">ਸਿਫ਼ਾਰਿਸ਼ ਕੀਤਾ, ਇਨ-ਬਿਲਟ ਹੈ ਅਤੇ ਸਾਰੇ ਐਂਡਰਾਇਡ ਸੰਸਕਰਣਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦਾ ਹੈ</string>
+    <string name="root_installer_desc">ਰੂਟ/ਸੁਪਰ ਯੂਜ਼ਰ ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰਾਂ ਦੀ ਲੋੜ ਹੈ, ਸਾਰੇ ਐਂਡਰਾਇਡ ਸੰਸਕਰਣਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦਾ ਹੈ।</string>
+    <string name="privacy_policy_title">ਗੋਪਨੀਯਤਾ ਨੀਤੀ</string>
+    <string name="privacy_policy_subtitle">ਜਾਣੋ ਕਿ ਔਰੋਰਾ ਸਟੋਰ ਤੁਹਾਡੇ ਡੇਟਾ ਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕਰਦਾ ਹੈ</string>
+    <string name="title_more">ਹੋਰ</string>
+    <string name="manage_account">ਆਪਣੇ ਖਾਤੇ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ</string>
+    <string name="services_installer_desc">ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਨੂੰ ਇੱਕ ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ-ਸਿਸਟਮ ਐਪ ਵਜੋਂ ਸਥਾਪਤ ਕਰਨ ਦੀ ਲੋੜ ਹੈ</string>
+    <string name="am_installer_desc">ਐਪ ਮੈਨੇਜਰ ਲੋੜੀਂਦਾ ਹੈ, ਜਦੋਂ miui ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਚਾਲੂ ਹੋਵੇ ਤਾਂ ਇੰਸਟਾਲ ਕਰਨ ਲਈ adb/root ਮੋਡ ਦੀ ਲੋੜ ਹੈ</string>
+    <string name="failed_app_link">ਅਸਮਰਥਿਤ, ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂਅਲ ਤੌਰ ਤੇ ਲਿੰਕ ਜੋੜਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ</string>
+    <string name="manual_download_hint">ਵਰਸ਼ਨ ਕੋਡ ਦਰਜ ਕਰੋ ਜੋ ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ</string>
+    <string name="faqs_subtitle">ਕੋਈ ਸਵਾਲ ਹਨ? ਜਵਾਬ ਲੱਭੋ</string>
+    <string name="source_code_title">ਸ੍ਰੋਤ ਕੋਡ</string>
+    <string name="source_code_subtitle">ਅੰਦਰ ਕੀ ਹੈ ਪਤਾ ਲਗਾਓ</string>
+    <string name="disclaimer_subtitle">ਜਵਾਬਦੇਹੀ ਅਤੇ ਜ਼ਿੰਮੇਵਾਰੀ</string>
+    <string name="root_installer_subtitle">ਰੂਟ ਅਧਿਕਾਰਾਂ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋਏ ਸ਼ੈੱਲ ਅਧਾਰਤ ਇੰਸਟਾਲਰ</string>
+    <string name="native_installer_subtitle">ਇੰਟੈਂਟ ਆਧਾਰਿਤ ਇੰਸਟਾਲਰ, ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ \'ਤੇ ਉਪਲਬਧ ਹੈ</string>
+    <string name="native_installer_desc">ਐਂਡਰਾਇਡ 4.4 ਤੋਂ ਹੇਠਾਂ ਚੱਲ ਰਹੀਆਂ ਡਿਵਾਈਸਾਂ ਲਈ ਸਭ ਤੋਂ ਵਧੀਆ</string>
+    <string name="services_installer_subtitle">ਬੈਕਗਰਾਊਂਡ ਇੰਸਟਾਲੇਸ਼ਨ ਲਈ ਇੰਸਟਾਲਰ</string>
+    <string name="am_installer_subtitle">ਪੂਰੀ ਵਿਸ਼ੇਸ਼ਤਾ ਵਾਲਾ ਓਪਨ ਸ੍ਰੋਤ ਪੈਕੇਜ ਮੈਨੇਜਰ</string>
+    <string name="shizuku_installer_subtitle">adb/root ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰਾਂ ਨਾਲ ਸਿੱਧੇ ਸਿਸਟਮ API ਦੀ ਵਰਤੋਂ ਕਰਨਾ</string>
+    <string name="shizuku_installer_desc">Shizuku ਜਾਂ Sui ਦੀ ਲੋੜ ਹੈ, ਸੈੱਟਅੱਪ ਕਰਨ ਅਤੇ ਇਜਾਜ਼ਤ ਦੇਣ ਦੀ ਲੋੜ ਹੈ</string>
 </resources>
