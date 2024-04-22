@@ -1,0 +1,3 @@
+• Correction du problème qui empêchait l'installation d'une appli après son téléchargement
+• Possibilité de personnaliser le dossier de téléchargement
+• Ajout de la permission de téléchargement uniquement si le Wifi est activé

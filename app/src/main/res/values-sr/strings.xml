@@ -434,4 +434,6 @@
     <string name="source_code_subtitle">Сазнајте шта је унутра</string>
     <string name="privacy_policy_title">Политика приватности</string>
     <string name="privacy_policy_subtitle">Сазнајте како Aurora Store користи ваше податке</string>
+    <string name="title_more">Више</string>
+    <string name="manage_account">Управљајте својим налогом</string>
 </resources>

@@ -398,4 +398,6 @@
     <string name="services_installer_subtitle">Installateur pour les installations en arrière-plan</string>
     <string name="am_installer_subtitle">Gestionnaire de paquet complet et open-source</string>
     <string name="am_installer_desc">Exige App Manager, nécessite adb/mode root pour installer lorsque l\'optimisation MIUI est activé</string>
+    <string name="title_more">Plus</string>
+    <string name="manage_account">Gérer mon compte</string>
 </resources>

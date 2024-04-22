@@ -1,0 +1,7 @@
+• Corrections multiples et améliorations UI/UX
+• Les nouvelles permissions requises sont désormais surlignées dans le panneau des permissions
+• Nouvelles méthodes d'usurpation d'identité pour les appareils x86
+• Nouveautés pour les téléchargements
+  • L'emplacement par défaut des téléchargements se trouve désormais dans le dossier du cache interne
+  • Les téléchargements reprennent automatiquement quand si ils sont redémarrés et seulement si le fichier existe déjà
+• Mise à jour des traductions

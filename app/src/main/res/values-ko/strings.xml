@@ -398,4 +398,6 @@
     <string name="privacy_policy_title">개인정보 취급방침</string>
     <string name="privacy_policy_subtitle">Aurora Store에서 데이터를 사용하는 방법 알아보기</string>
     <string name="native_installer_desc">Android 4.4 이하를 실행하는 장치에 가장 적합합니다</string>
+    <string name="title_more">더 보기</string>
+    <string name="manage_account">계정 관리</string>
 </resources>

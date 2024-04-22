@@ -1,0 +1,18 @@
+• Changements majeurs apportés au système de téléchargement
+  • Aurora Store réclame désormais la permission de téléchargement en arrière-plan
+  • Les fonctions Pause et Reprendre ont été retirées de l'écran des téléchargements
+  • Les téléchargements se font désormais un par un (fonction de parallélisation abandonné)
+  • Vérifications SHA256 & SHA1 automatiques après le téléchargement des fichiers
+  • Support amélioré des applis avec librairies partagées comme Chrome ou WebView
+• Changements majeurs au système de mise à jour
+  • Nouveau système de mise à jour automatique des applis (activé par défaut)
+  • Nouveau système de vérification automatique des certificats lors de mises à jour
+  • Prise en charge des mises à jour avec rotation de la clé de chiffrement (à partir d'Android 9.0+)
+  • Les mises à jour automatiques (Aurora Store) ont été désactivées par défaut (pour réactiver : paramètres > mises à jour).
+• Abandon de l'installateur natif et des services Aurora
+• L'export des applis installées n'exige désormais plus les permissions de stockage
+• La version minimum requise d'Android pour chaque appli apparaît désormais dans les détails de l'appli (En savoir plus sur l'appli > Info)
+• Mise à jour des traductions et corrections diverses majeures
+• Prise en charge de l'installation d'appli avec Sui (Shizuku Magisk Module)
+• Possibilité de prendre la main sur la version des services Google Play dans Paramètres > Mise en réseau
+• Material3 est désormais actif dans une plus grande partie d'Aurora Store
