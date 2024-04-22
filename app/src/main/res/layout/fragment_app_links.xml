@@ -36,138 +36,147 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
-    <RelativeLayout
-        android:id="@+id/playStoreLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginVertical="@dimen/margin_large"
-        android:background="@drawable/bg_outlined_padded"
-        android:orientation="horizontal"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/playStoreTitle"
-            style="@style/AuroraTextStyle.Subtitle"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/playStoreButton"
-            android:text="@string/app_link_play_store"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/playStoreDesc"
-            style="@style/AuroraTextStyle.Line1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playStoreTitle"
-            android:layout_alignStart="@id/playStoreTitle"
-            android:layout_alignEnd="@id/playStoreTitle"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:maxLines="5"
-            android:text="@string/google_play_store_desc" />
+            <RelativeLayout
+                android:id="@+id/playStoreLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginVertical="@dimen/margin_small"
+                android:background="@drawable/bg_outlined_padded"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/playStoreButton"
-            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/margin_small"
-            android:text="@string/action_enable" />
-    </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playStoreTitle"
+                    style="@style/AuroraTextStyle.Subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/playStoreButton"
+                    android:text="@string/app_link_play_store" />
 
-    <RelativeLayout
-        android:id="@+id/marketLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginVertical="@dimen/margin_large"
-        android:background="@drawable/bg_outlined_padded"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playStoreLayout">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/playStoreDesc"
+                    style="@style/AuroraTextStyle.Line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/playStoreTitle"
+                    android:layout_alignStart="@id/playStoreTitle"
+                    android:layout_alignEnd="@id/playStoreTitle"
+                    android:layout_marginTop="@dimen/margin_xxsmall"
+                    android:maxLines="5"
+                    android:text="@string/google_play_store_desc" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/marketTitle"
-            style="@style/AuroraTextStyle.Subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/marketButton"
-            android:text="@string/app_link_android_market"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/playStoreButton"
+                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="@string/action_enable" />
+            </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/marketDesc"
-            style="@style/AuroraTextStyle.Line1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/marketTitle"
-            android:layout_alignStart="@id/marketTitle"
-            android:layout_alignEnd="@id/marketTitle"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:maxLines="5"
-            android:text="@string/android_market_desc" />
+            <RelativeLayout
+                android:id="@+id/marketLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginVertical="@dimen/margin_small"
+                android:background="@drawable/bg_outlined_padded"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/playStoreLayout">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/marketButton"
-            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/margin_small"
-            android:text="@string/action_enable" />
-    </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/marketTitle"
+                    style="@style/AuroraTextStyle.Subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/marketButton"
+                    android:text="@string/app_link_android_market" />
 
-    <RelativeLayout
-        android:id="@+id/amazonAppStoreLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginVertical="@dimen/margin_large"
-        android:background="@drawable/bg_outlined_padded"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/marketLayout">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/marketDesc"
+                    style="@style/AuroraTextStyle.Line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/marketTitle"
+                    android:layout_alignStart="@id/marketTitle"
+                    android:layout_alignEnd="@id/marketTitle"
+                    android:layout_marginTop="@dimen/margin_xxsmall"
+                    android:maxLines="5"
+                    android:text="@string/android_market_desc" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/amazonAppStoreTitle"
-            style="@style/AuroraTextStyle.Subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/amazonAppStoreButton"
-            android:text="@string/app_link_amazon_appstore"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/marketButton"
+                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="@string/action_enable" />
+            </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/amazonAppStoreDesc"
-            style="@style/AuroraTextStyle.Line1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/amazonAppStoreTitle"
-            android:layout_alignStart="@id/amazonAppStoreTitle"
-            android:layout_alignEnd="@id/amazonAppStoreTitle"
-            android:layout_marginTop="@dimen/margin_xxsmall"
-            android:maxLines="5"
-            android:text="@string/amazon_appstore_desc" />
+            <RelativeLayout
+                android:id="@+id/amazonAppStoreLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginVertical="@dimen/margin_small"
+                android:background="@drawable/bg_outlined_padded"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marketLayout">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/amazonAppStoreButton"
-            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/margin_small"
-            android:text="@string/action_enable" />
-    </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/amazonAppStoreTitle"
+                    style="@style/AuroraTextStyle.Subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/amazonAppStoreButton"
+                    android:text="@string/app_link_amazon_appstore" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/amazonAppStoreDesc"
+                    style="@style/AuroraTextStyle.Line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/amazonAppStoreTitle"
+                    android:layout_alignStart="@id/amazonAppStoreTitle"
+                    android:layout_alignEnd="@id/amazonAppStoreTitle"
+                    android:layout_marginTop="@dimen/margin_xxsmall"
+                    android:maxLines="5"
+                    android:text="@string/amazon_appstore_desc" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/amazonAppStoreButton"
+                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:text="@string/action_enable" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
