@@ -19,6 +19,9 @@
 
 package com.aurora.store.view.ui.preferences
 
+import android.app.admin.DevicePolicyManager
+import android.content.Context
+import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
@@ -38,6 +41,7 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_INSTALLATION_DEVICE_OWNER
 import com.aurora.store.util.save
 import com.aurora.store.view.custom.preference.AuroraListPreference
 import com.topjohnwu.superuser.Shell
@@ -72,6 +76,27 @@ class InstallationPreference : BasePreferenceFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_installation, rootKey)
+
+        findPreference<Preference>(PREFERENCE_INSTALLATION_DEVICE_OWNER)?.apply {
+            val packageName = context.packageName
+            val devicePolicyManager =
+                context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+
+            isVisible = devicePolicyManager.isDeviceOwnerApp(packageName)
+            setOnPreferenceClickListener {
+                context.showDialog(
+                    context.getString(R.string.pref_clear_device_owner_title),
+                    context.getString(R.string.pref_clear_device_owner_desc),
+                    { _: DialogInterface, _: Int ->
+                        @Suppress("DEPRECATION")
+                        devicePolicyManager.clearDeviceOwnerApp(packageName)
+                        activity?.recreate()
+                    },
+                    { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+                )
+                true
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

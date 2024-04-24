@@ -58,6 +58,10 @@
         android:name="android.hardware.gamepad"
         android:required="false"/>
 
+    <uses-feature
+        android:name="android.software.device_admin"
+        android:required="false" />
+
     <application
         android:name=".AuroraApp"
         android:allowBackup="true"
@@ -142,5 +146,18 @@
         <receiver
             android:name=".data.receiver.InstallerStatusReceiver"
             android:exported="false" />
+
+        <!-- SessionInstaller (as device owner) -->
+        <receiver
+            android:name=".data.receiver.DeviceOwnerReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_owner_receiver" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

@@ -41,6 +41,13 @@
         app:summary="@string/pref_abandon_session_desc"
         app:title="@string/pref_abandon_session" />
 
+    <Preference
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false"
+        app:key="PREFERENCE_INSTALLATION_DEVICE_OWNER"
+        app:summary="@string/pref_clear_device_owner_summary"
+        app:title="@string/pref_clear_device_owner_title" />
+
     <ListPreference
         app:defaultValue="0"
         app:iconSpaceReserved="false"
