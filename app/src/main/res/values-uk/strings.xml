@@ -399,5 +399,5 @@
     <string name="privacy_policy_title">Політика приватності</string>
     <string name="privacy_policy_subtitle">Дізнайтеся, як Aurora Store використовує ваші дані</string>
     <string name="title_more">Докладніше</string>
-    <string name="manage_account">Управління обліковим записом</string>
+    <string name="manage_account">Керувати обліковим записом</string>
 </resources>

@@ -28,7 +28,7 @@
     <string name="title_download_manager">Trasferimenti</string>
     <string name="purchase_failed">Trasferimento fallito</string>
     <string name="pref_install_auto_title">Installa automaticamente gli APK dopo il trasferimento</string>
-    <string name="onboarding_permission_esa_desc">Per salvare gli scaricamenti (APK e OBB), esportare e importare le configurazioni del dispositivo da e verso l’archiviazione esterna.</string>
+    <string name="onboarding_permission_esa_desc">Per salvare i file di espansione APK (OBB) per applicazioni e giochi di grandi dimensioni.</string>
     <string name="download_resume_all">Riprendi tutti</string>
     <string name="download_queued">In coda</string>
     <string name="download_pause_all">Metti in pausa tutti</string>
@@ -67,7 +67,7 @@
     <string name="action_filter_apps_with_ads">Applicazioni con annunci</string>
     <string name="action_filter_apply">Applica</string>
     <string name="exodus_progress">Controllo della presenza di traccianti…</string>
-    <string name="exodus_powered">Dati forniti da Exodus</string>
+    <string name="exodus_powered">Dati forniti da Exodus Privacy</string>
     <string name="exodus_no_tracker">Non contiene tracker conosciuti</string>
     <string name="download_speed_estimating">Stima in corso</string>
     <string name="download_force_clear_all">Rimuovi tutti</string>
@@ -378,4 +378,26 @@
     <string name="pref_updates_incompatible_desc">Mostra aggiornamenti per applicazioni incompatibili o disabilitate che potrebbero non installare</string>
     <string name="action_home_screen">Aggiungi alla pagina principale</string>
     <string name="action_manage">Gestisci</string>
+    <string name="failed_app_link">Non supportato, prova ad associare i link manualmente</string>
+    <string name="manual_download_hint">Inserisci il codice della versione che vuoi scaricare</string>
+    <string name="faqs_subtitle">Domande? Trova le risposte</string>
+    <string name="source_code_title">Codice sorgente</string>
+    <string name="source_code_subtitle">Scopri cosa c\'è dentro</string>
+    <string name="privacy_policy_title">Politica di privacy</string>
+    <string name="privacy_policy_subtitle">Scopri come Aurora Store utilizza i tuoi dati</string>
+    <string name="disclaimer_subtitle">Responsabilità</string>
+    <string name="session_installer_desc">Consigliato, integrato e supporta tutte le versioni di Android</string>
+    <string name="root_installer_subtitle">Installatore shell che usa i permessi di root</string>
+    <string name="root_installer_desc">Richiede i permessi di root/superuser, supporta tutte le versioni di Android.</string>
+    <string name="native_installer_subtitle">Installatore basato su intenti, disponibile su tutti i dispositivi</string>
+    <string name="session_installer_subtitle">Installatore di sessione per APK impacchettati/divisi</string>
+    <string name="native_installer_desc">Ideale per i dispositivi con sistema operativo inferiore ad Android 4.4</string>
+    <string name="services_installer_subtitle">Installatore per installazioni in background</string>
+    <string name="services_installer_desc">Richiede l\'installazione di Servizi Aurora come applicazione di sistema privilegiata</string>
+    <string name="am_installer_subtitle">Gestore di pacchetti completo e open source</string>
+    <string name="am_installer_desc">Richiede App Manager, necessita della modalità adb/root per l\'installazione quando l\'ottimizzazione miui è attiva</string>
+    <string name="shizuku_installer_subtitle">Uso API di sistema direttamente con i privilegi di adb/root</string>
+    <string name="shizuku_installer_desc">Richiede Shizuku o Sui, deve essere configurato e autorizzato</string>
+    <string name="title_more">Più</string>
+    <string name="manage_account">Gestisci il tuo account</string>
 </resources>
