@@ -50,8 +50,7 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
     private val viewModel: AuthViewModel by activityViewModels()
 
     companion object {
-        const val EMBEDDED_SETUP_URL =
-            "https://accounts.google.com/EmbeddedSetup/identifier?flowName=EmbeddedSetupAndroid"
+        const val EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup"
         const val AUTH_TOKEN = "oauth_token"
         private const val JS_SCRIPT =
             "(function() { return document.getElementById('profileIdentifier').innerHTML; })();"
