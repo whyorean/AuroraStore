@@ -1,0 +1,4 @@
+• Fixed issue with login related to Google Accounts
+• Moved navigation drawer items into a separate dialog
+• Switched to NavigationRail for large-screen devices
+• Ability to export downloads to an external location
