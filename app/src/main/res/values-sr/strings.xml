@@ -125,7 +125,7 @@
     <string name="exodus_no_tracker">Не садржи познате програме за праћење</string>
     <string name="download_speed_estimating">Процењивање</string>
     <string name="download_resume_all">Настави све</string>
-    <string name="download_queued">У реду чекања</string>
+    <string name="download_queued">У редоследу</string>
     <string name="download_pause_all">Паузирај све</string>
     <string name="download_none">Нема преузимања</string>
     <string name="download_metadata">Добијање метаподатака</string>
