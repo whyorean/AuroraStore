@@ -398,6 +398,6 @@
     <string name="native_installer_subtitle">Классический установщик, доступный на всех устройствах</string>
     <string name="am_installer_desc">Требуется App Manager, необходим adb/root режим, чтобы произвести установку при включенной MIUI оптимизации</string>
     <string name="shizuku_installer_subtitle">Использует API системы напрямую с adb/root привилегиями</string>
-    <string name="title_more">Ещё</string>
+    <string name="title_more">Еще</string>
     <string name="manage_account">Управление вашим аккаунтом</string>
 </resources>
