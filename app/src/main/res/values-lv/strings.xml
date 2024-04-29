@@ -328,7 +328,7 @@
     <string name="bad_request">Iekšēja kļūda. Lūgums pēc kāda laika mēģināt vēlreiz</string>
     <string name="login_rate_limited">Ak vai, piemērots ierobežojums!</string>
     <string name="server_unreachable">Serveris nav sasniedzams</string>
-    <string name="check_connectivity">Jāpārbauda interneta savienojums</string>
+    <string name="check_connectivity">Pārbaudīt interneta savienojumu</string>
     <string name="app_language">Lietotnes valoda</string>
     <string name="failed_to_generate_session">Neizdevās izveidot sesiju</string>
     <string name="app_link_enabled">Lietotņu saites iespējotas.</string>
@@ -398,4 +398,6 @@
     <string name="native_installer_desc">Vispiemērotākais ierīcēm, kurās darbojas par Android 4.4 vecāka versija</string>
     <string name="am_installer_desc">Nepieciešams Lietotņu pārvaldnieks, jāizmanto adb/saknes stāvoklis, lai uzstādītu, kad ir ieslēgta miui optimizācija</string>
     <string name="privacy_policy_title">Privātuma nosacījumi</string>
+    <string name="title_more">Vairāk</string>
+    <string name="manage_account">Pārvaldīt savu kontu</string>
 </resources>
