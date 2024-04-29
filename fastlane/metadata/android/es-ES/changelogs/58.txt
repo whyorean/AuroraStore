@@ -1,0 +1,4 @@
+• Se solucionó el problema con el inicio de sesión relacionado con las cuentas de Google.
+• Se movieron los elementos del cajón de navegación a un cuadro de diálogo separado.
+• Se cambió a NavigationRail para dispositivos de pantalla grande
+• Posibilidad de exportar descargas a una ubicación externa
