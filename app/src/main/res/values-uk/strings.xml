@@ -227,7 +227,7 @@
     <string name="device_miui_title">Виявлено MIUI!</string>
     <string name="menu_terms">Умови надання послуг</string>
     <string name="menu_license">Ліцензія</string>
-    <string name="menu_disclaimer">Відмова від відповідальності</string>
+    <string name="menu_disclaimer">Дисклеймер</string>
     <string name="installer_status_user_action">Очікується підтвердження</string>
     <string name="installer_status_success">Успішно встановлено</string>
     <string name="installer_status_failure_storage">Недостатньо пам\'яті</string>

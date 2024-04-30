@@ -184,7 +184,7 @@
     <string name="dialog_title_self_update">Dostępna jest nowa aktualizacja</string>
     <string name="device_miui_subtitle">Instalator sesji nie może zainstalować aplikacji z powodu Optymalizacji MIUI.</string>
     <string name="device_miui_title">Wykryto MIUI!</string>
-    <string name="menu_terms">Warunki świadczenia usługi</string>
+    <string name="menu_terms">Warunki korzystania z usługi</string>
     <string name="menu_license">Licencja</string>
     <string name="menu_disclaimer">Zrzeczenie się odpowiedzialności</string>
     <string name="installer_status_user_action">Czekam na potwierdzenie użytkownika</string>

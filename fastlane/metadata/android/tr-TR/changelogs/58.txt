@@ -1,0 +1,4 @@
+• Google Hesapları ile ilgili oturum açma sorunu düzeltildi
+• Gezinti çekmecesi ögeleri ayrı bir iletişim kutusuna taşındı
+• Büyük ekranlı aygıtlar için NavigationRail'e geçildi
+• İndirmeleri harici bir konuma aktarabilme seçeneği
