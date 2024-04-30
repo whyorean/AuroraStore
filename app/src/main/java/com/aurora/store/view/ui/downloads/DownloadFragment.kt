@@ -90,7 +90,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
         viewLifecycleOwner.lifecycleScope.launch {
             downloadWorkerUtil.downloadsList.collectLatest {
                 downloadList = it
-                updateController(it)
+                updateController(it.reversed())
             }
         }
     }
