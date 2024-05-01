@@ -95,6 +95,7 @@ class DownloadWorkerUtil @Inject constructor(
         Log.i(TAG, "Clearing all downloads!")
         downloadDao.deleteAll()
         PathUtil.getDownloadDirectory(context).deleteRecursively()
+        PathUtil.getOldDownloadDirectories(context).forEach { it.deleteRecursively() }
     }
 
     suspend fun clearFinishedDownloads() {
