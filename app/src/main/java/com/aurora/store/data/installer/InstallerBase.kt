@@ -22,7 +22,7 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.net.Uri
 import androidx.core.content.FileProvider
-import com.aurora.store.AuroraApplication
+import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.util.Log
@@ -33,15 +33,15 @@ import java.io.File
 abstract class InstallerBase(protected var context: Context) : IInstaller {
 
     override fun clearQueue() {
-        AuroraApplication.enqueuedInstalls.clear()
+        AuroraApp.enqueuedInstalls.clear()
     }
 
     override fun isAlreadyQueued(packageName: String): Boolean {
-        return AuroraApplication.enqueuedInstalls.contains(packageName)
+        return AuroraApp.enqueuedInstalls.contains(packageName)
     }
 
     override fun removeFromInstallQueue(packageName: String) {
-        AuroraApplication.enqueuedInstalls.remove(packageName)
+        AuroraApp.enqueuedInstalls.remove(packageName)
     }
 
     open fun postError(packageName: String, error: String?, extra: String?) {

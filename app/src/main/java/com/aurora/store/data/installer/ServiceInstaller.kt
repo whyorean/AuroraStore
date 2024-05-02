@@ -32,7 +32,7 @@ import android.os.RemoteException
 import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
-import com.aurora.store.AuroraApplication
+import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
@@ -108,7 +108,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                             readyWithAction.set(true)
                             return
                         }
-                        AuroraApplication.enqueuedInstalls.add(packageName)
+                        AuroraApp.enqueuedInstalls.add(packageName)
                         val service = IPrivilegedService.Stub.asInterface(binder)
 
                         if (service.hasPrivilegedPermissions()) {

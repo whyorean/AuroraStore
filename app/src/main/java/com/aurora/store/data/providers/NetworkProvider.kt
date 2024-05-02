@@ -26,14 +26,12 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.util.Log
 import com.aurora.extensions.isMAndAbove
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.NetworkStatus
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 
-@OptIn(DelicateCoroutinesApi::class)
 class NetworkProvider(context: Context) {
 
     private val TAG = NetworkProvider::class.java.simpleName
@@ -45,7 +43,7 @@ class NetworkProvider(context: Context) {
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     init {
-        networkStatus.launchIn(GlobalScope)
+        networkStatus.launchIn(AuroraApp.scope)
 
         // Monitor network
         connectivityManager.registerNetworkCallback(getNetworkRequest(),

@@ -8,6 +8,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
@@ -15,8 +16,6 @@ import com.aurora.store.data.work.DownloadWorker
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
@@ -24,7 +23,6 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-@OptIn(DelicateCoroutinesApi::class)
 class DownloadWorkerUtil @Inject constructor(
     @ApplicationContext private val context: Context,
     private val downloadDao: DownloadDao,
@@ -42,12 +40,12 @@ class DownloadWorkerUtil @Inject constructor(
     }
 
     val downloadsList = downloadDao.downloads()
-        .stateIn(GlobalScope, SharingStarted.WhileSubscribed(), emptyList())
+        .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
     private val TAG = DownloadWorkerUtil::class.java.simpleName
 
     fun init() {
-        GlobalScope.launch {
+        AuroraApp.scope.launch {
             cancelFailedDownloads(downloadDao.downloads().firstOrNull() ?: emptyList())
         }.invokeOnCompletion {
             observeDownloads()
@@ -55,7 +53,7 @@ class DownloadWorkerUtil @Inject constructor(
     }
 
     private fun observeDownloads() {
-        GlobalScope.launch {
+        AuroraApp.scope.launch {
             downloadDao.downloads().collectLatest { list ->
                 // Check and trigger next download in queue, if any
                 if (!list.any { it.downloadStatus == DownloadStatus.DOWNLOADING }) {

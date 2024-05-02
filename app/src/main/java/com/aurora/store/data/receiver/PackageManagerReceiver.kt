@@ -39,9 +39,9 @@ import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.withContext
 import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
@@ -70,7 +70,7 @@ open class PackageManagerReceiver : BroadcastReceiver() {
                     downloadWorkerUtil.downloadsList.filter { it.isNotEmpty() }.firstOrNull()
                         ?.find { it.packageName == packageName && it.downloadStatus == DownloadStatus.COMPLETED }
                         ?.let {
-                            notifyInstallation(context, it)
+                            withContext(Dispatchers.IO) { notifyInstallation(context, it) }
                             if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                                 clearDownloads(context, it)
                             }

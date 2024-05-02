@@ -31,11 +31,13 @@ import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import javax.inject.Inject
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 @HiltAndroidApp
-class AuroraApplication : Application(), Configuration.Provider {
+class AuroraApp : Application(), Configuration.Provider {
 
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
@@ -50,6 +52,10 @@ class AuroraApplication : Application(), Configuration.Provider {
             .build()
 
     companion object {
+        // Alternative to GlobalScope
+        var scope = MainScope()
+            private set
+
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
     }
 
@@ -76,4 +82,9 @@ class AuroraApplication : Application(), Configuration.Provider {
         CommonUtil.cleanupInstallationSessions(applicationContext)
     }
 
+    override fun onLowMemory() {
+        super.onLowMemory()
+        scope.cancel("onLowMemory() called by system")
+        scope = MainScope()
+    }
 }

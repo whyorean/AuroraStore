@@ -59,7 +59,7 @@
         android:required="false"/>
 
     <application
-        android:name=".AuroraApplication"
+        android:name=".AuroraApp"
         android:allowBackup="true"
         android:banner="@drawable/ic_tv_banner"
         android:enableOnBackInvokedCallback="true"
