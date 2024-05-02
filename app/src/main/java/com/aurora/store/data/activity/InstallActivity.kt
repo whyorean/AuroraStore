@@ -1,6 +1,6 @@
 package com.aurora.store.data.activity
 
-import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.SessionCallback
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +16,7 @@ class InstallActivity : AppCompatActivity() {
     private val TAG = InstallActivity::class.java.simpleName
 
     private lateinit var sessionInstaller: SessionInstaller
+    private lateinit var sessionCallback: SessionCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class InstallActivity : AppCompatActivity() {
             IntentCompat.getParcelableExtra(intent, Constants.PARCEL_DOWNLOAD, Download::class.java)
 
         if (download != null) {
-            val callback = object : PackageInstaller.SessionCallback() {
+            sessionCallback = object : SessionCallback() {
                 override fun onCreated(sessionId: Int) {}
 
                 override fun onBadgingChanged(sessionId: Int) {}
@@ -40,9 +41,17 @@ class InstallActivity : AppCompatActivity() {
                     }
                 }
             }
-            packageManager.packageInstaller.registerSessionCallback(callback)
+            packageManager.packageInstaller.registerSessionCallback(sessionCallback)
             install(download)
+        } else {
+            Log.e(TAG, "InstallActivity triggered without a valid download, bailing out!")
+            finish()
         }
+    }
+
+    override fun onDestroy() {
+        packageManager.packageInstaller.unregisterSessionCallback(sessionCallback)
+        super.onDestroy()
     }
 
     private fun install(download: Download) {
