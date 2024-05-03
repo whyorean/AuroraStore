@@ -65,7 +65,7 @@
     <string name="pref_install_mode_root">Програм за инсталацију „Root”</string>
     <string name="pref_install_mode_native">„Изворни” програм за инсталацију (застарео)</string>
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
-    <string name="pref_install_delete_summary">APK-ови ће подразумевано бити избрисани</string>
+    <string name="pref_install_delete_summary">Преузети APK-ови ће бити избрисани одмах након инсталације</string>
     <string name="pref_install_auto_title">Аутоматски инсталирајте APK-ове након преузимања</string>
     <string name="pref_install_auto_summary">Апликације се инсталирају одмах по завршетку преузимања</string>
     <string name="pref_filter_google_title">Филтрирај Google апликације</string>
@@ -436,4 +436,6 @@
     <string name="privacy_policy_subtitle">Сазнајте како Aurora Store користи ваше податке</string>
     <string name="title_more">Више</string>
     <string name="manage_account">Управљајте својим налогом</string>
+    <string name="pref_download_cache_title">Чувај кеш преузимања</string>
+    <string name="pref_download_cache_summary">Колико дуго чувати кеш преузимања (неуспешно, отказано и завршено), у сатима</string>
 </resources>
