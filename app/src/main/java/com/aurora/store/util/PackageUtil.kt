@@ -27,7 +27,10 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
 import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.os.UserHandle
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.graphics.drawable.toBitmap
 import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isTAndAbove
@@ -119,6 +122,21 @@ object PackageUtil {
             )
         } else {
             context.packageManager.getPackageInfo(packageName, flags)
+        }
+    }
+
+    fun getIconForPackage(context: Context, packageName: String): Bitmap? {
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
+            val icon = packageInfo.applicationInfo.loadIcon(context.packageManager)
+            if (icon.intrinsicWidth > 0 && icon.intrinsicHeight > 0) {
+                icon.toBitmap(96, 96)
+            } else {
+                context.packageManager.defaultActivityIcon.toBitmap(96, 96)
+            }
+        } catch (exception: Exception) {
+            Log.e("Failed to get icon for package!", exception)
+            null
         }
     }
 
