@@ -70,6 +70,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
     }
 
     override fun install(download: Download) {
+        super.install(download)
 
         when {
             isAlreadyQueued(download.packageName) -> {
@@ -240,6 +241,7 @@ class ServiceInstaller(context: Context) : InstallerBase(context) {
                             context.getString(R.string.installer_status_success)
                         )
                     )
+                    onInstallationSuccess()
                 }
                 else -> {
                     val error = AppInstaller.getErrorString(
