@@ -116,7 +116,7 @@
     <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
-    <string name="pref_install_delete_summary">APK-Dateien automatisch löschen</string>
+    <string name="pref_install_delete_summary">Heruntergeladene APKs werden sofort nach der Installation gelöscht</string>
     <string name="pref_install_auto_title">APK-Dateien nach dem Download automatisch installieren</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
@@ -381,4 +381,12 @@
     <string name="action_manage">Verwalten</string>
     <string name="source_code_title">Quellcode</string>
     <string name="privacy_policy_title">Datenschutzerklärung</string>
+    <string name="source_code_subtitle">Finde heraus, was drin steckt</string>
+    <string name="faqs_subtitle">Hast du Fragen? Hier findest du die Antworten</string>
+    <string name="privacy_policy_subtitle">Erfahre, wie Aurora Store deine Daten verwendet</string>
+    <string name="disclaimer_subtitle">Haftung und Verantwortung</string>
+    <string name="pref_download_cache_summary">Wie lange, in Stunden, Downloads (fehlgeschlagene, abgebrochene und beendete) im Cache behalten werden sollen</string>
+    <string name="title_more">Mehr</string>
+    <string name="pref_download_cache_title">Downloads im Cache behalten</string>
+    <string name="manage_account">Dein Konto verwalten</string>
 </resources>

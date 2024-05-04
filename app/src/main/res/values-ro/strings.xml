@@ -17,7 +17,7 @@
     <string name="action_get_local_apk">Se salvează pachetul aplicației</string>
     <string name="action_pause">Întrerupe</string>
     <string name="details_changelog">Jurnalul modificărilor</string>
-    <string name="exodus_powered">Susținut de Exodus</string>
+    <string name="exodus_powered">Susținut de Exodus Privacy</string>
     <string name="action_disable">Dezactivează</string>
     <string name="action_restart">Repornește</string>
     <string name="action_resume">Reia</string>
@@ -378,4 +378,26 @@
     <string name="pref_updates_incompatible">Actualizări incompatibile</string>
     <string name="pref_updates_incompatible_desc">Afișează actualizări pentru aplicațiile incompatibile sau dezactivate care nu pot fi instalate</string>
     <string name="action_manage">Gestionează</string>
+    <string name="faqs_subtitle">Ai întrebări? Află răspunsurile</string>
+    <string name="source_code_title">Cod sursă</string>
+    <string name="source_code_subtitle">Află ce se află înăuntru</string>
+    <string name="disclaimer_subtitle">Responsabilitate și responsabilitate</string>
+    <string name="failed_app_link">Neacceptat, încearcă să asociezi manual link-urile</string>
+    <string name="native_installer_subtitle">Program de instalare bazat pe intenție, disponibil pe toate dispozitivele</string>
+    <string name="services_installer_subtitle">Instalator pentru instalări în fundal</string>
+    <string name="am_installer_desc">Necesită App Manager, necesită modul adb/root pentru a instala când optimizarea miui este activată</string>
+    <string name="services_installer_desc">Necesită instalarea Aurora Services ca aplicație de sistem privilegiată</string>
+    <string name="am_installer_subtitle">Manager de pachete open source cu funcții complete</string>
+    <string name="privacy_policy_title">Politica de confidențialitate</string>
+    <string name="shizuku_installer_subtitle">Utilizarea API-urilor de sistem direct cu privilegii adb/root</string>
+    <string name="privacy_policy_subtitle">Află cum Aurora Store folosește datele</string>
+    <string name="shizuku_installer_desc">Necesită Shizuku sau Sui, trebuie configurat și permisiunea acordată</string>
+    <string name="manual_download_hint">Introdu codul de versiune pe care dorești să-l descarci</string>
+    <string name="session_installer_subtitle">Program de instalare bazat pe sesiune pentru APK-uri grupate/divizate</string>
+    <string name="session_installer_desc">Recomandat, încorporat și acceptă toate versiunile Android</string>
+    <string name="root_installer_subtitle">Program de instalare bazat pe Shell folosind permisiunile root</string>
+    <string name="root_installer_desc">Necesită privilegii root/super-utilizator, acceptă toate versiunile Android.</string>
+    <string name="native_installer_desc">Cel mai potrivit pentru dispozitivele care rulează Android sub v. 4.4</string>
+    <string name="title_more">Mai multe</string>
+    <string name="manage_account">Gestionează contul</string>
 </resources>

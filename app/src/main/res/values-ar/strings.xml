@@ -164,7 +164,7 @@
     <string name="pref_install_mode_summary">حدد وضع تثبيت حزمة التطبيقات APK</string>
     <string name="pref_install_auto_title">تثبيت تلقائي APKs بعد التنزيل</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
-    <string name="pref_install_delete_summary">سيتم حذف APK بشكل افتراضي</string>
+    <string name="pref_install_delete_summary">سيتم حذف حزم التطبيقات المحملة والتي قد تم تثبيتها بشكل مباشر</string>
     <string name="pref_filter_fdroid_summary">تجاهل تطبيقات F-Droid من التحديثات والتطبيقات المثبتة</string>
     <string name="pref_abandon_session_desc">مسح جلسات التثبيت المعلقة أو التي تم التخلي عنها</string>
     <string name="onboarding_permission_installer_desc">السماح بتثبيت التطبيقات من متجر Aurora</string>
@@ -400,4 +400,6 @@
     <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
     <string name="title_more">المزيد</string>
     <string name="manage_account">إدارة حسابك</string>
+    <string name="pref_download_cache_title">إبقاء سجل التخزين المؤقت لتحميلات</string>
+    <string name="pref_download_cache_summary">ما هي مدة الاحتفاظ بذاكرة التخزين المؤقت للتنزيلات (الفاشلة والملغاة والمكتملة) بالساعات</string>
 </resources>

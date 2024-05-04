@@ -59,7 +59,7 @@
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_install_mode_native">Instalador nativo (obsoleto)</string>
     <string name="pref_install_delete_title">Eliminar el APK después de la instalación</string>
-    <string name="pref_install_delete_summary">Los APK se eliminarán de manera predeterminada</string>
+    <string name="pref_install_delete_summary">Los APK descargados se eliminarán inmediatamente después de la instalación</string>
     <string name="pref_install_auto_title">Instalar automáticamente los APKs después de descargarlos</string>
     <string name="pref_install_auto_summary">Las apps se instalan inmediatamente una vez finalizada la descarga</string>
     <string name="pref_filter_google_title">Filtrar las apps de Google</string>
@@ -400,4 +400,6 @@
     <string name="native_installer_subtitle">Instalador basado disponible en todos los dispositivos</string>
     <string name="title_more">Más</string>
     <string name="manage_account">Gestiona tu cuenta</string>
+    <string name="pref_download_cache_summary">¿Cuánto tiempo conservar la caché de descargas (fallidas, canceladas y completadas), en horas?</string>
+    <string name="pref_download_cache_title">Mantener la caché de las descargas</string>
 </resources>
