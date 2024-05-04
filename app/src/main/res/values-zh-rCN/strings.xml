@@ -191,7 +191,7 @@
     <string name="pref_install_mode_root">Root 安装器</string>
     <string name="pref_install_mode_native">原生安装程序（已废弃）</string>
     <string name="pref_install_delete_title">安装后删除 APK</string>
-    <string name="pref_install_delete_summary">默认将删除 APK</string>
+    <string name="pref_install_delete_summary">安装后将立即删除所下载的 APK 文件</string>
     <string name="pref_install_auto_title">下载后自动安装 APK</string>
     <string name="pref_install_auto_summary">下载完成后立即安装应用</string>
     <string name="pref_filter_google_title">过滤 Google 应用</string>
@@ -400,4 +400,6 @@
     <string name="privacy_policy_subtitle">了解 Aurora Store 如何使用您的数据</string>
     <string name="title_more">更多</string>
     <string name="manage_account">管理账户</string>
+    <string name="pref_download_cache_title">保留下载缓存</string>
+    <string name="pref_download_cache_summary">保留下载（失败、取消或完成）缓存的时间，小时为单位</string>
 </resources>
