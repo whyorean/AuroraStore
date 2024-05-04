@@ -78,7 +78,7 @@
     <string name="pref_install_mode_root">Root instalátor</string>
     <string name="pref_install_mode_native">Nativní instalátor (zastaralý)</string>
     <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
-    <string name="pref_install_delete_summary">Soubory APK budou ve výchozím nastavení odstraněny</string>
+    <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
     <string name="pref_install_auto_title">Automatická instalace APK po stažení</string>
     <string name="pref_install_auto_summary">Aplikace se nainstalují okamžitě po dokončení stahování</string>
     <string name="pref_insecure_anonymous_title">Nezabezpečená anonymní relace</string>
@@ -400,4 +400,6 @@
     <string name="privacy_policy_subtitle">Podívejte se, jak aplikace Aurora Store používá vaše data</string>
     <string name="title_more">Více</string>
     <string name="manage_account">Správa účtu</string>
+    <string name="pref_download_cache_title">Uchovat mezipaměť stahování</string>
+    <string name="pref_download_cache_summary">Po jakou dobu uchovávat mezipaměť stahování (selhaných, zrušených a dokončených), v hodinách</string>
 </resources>
