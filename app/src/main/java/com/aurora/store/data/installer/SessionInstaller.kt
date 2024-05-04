@@ -139,7 +139,7 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             Log.i("Writing splits to session for $packageName")
             getFiles(packageName, versionCode, sharedLibPkgName).forEach {
                 it.inputStream().use { input ->
-                    session.openWrite(sharedLibPkgName.ifBlank { packageName }, 0, it.length()).use { output ->
+                    session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${it.name}", 0, it.length()).use { output ->
                         input.copyTo(output)
                         session.fsync(output)
                     }
