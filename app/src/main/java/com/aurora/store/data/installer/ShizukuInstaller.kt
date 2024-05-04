@@ -31,6 +31,7 @@ import androidx.annotation.RequiresApi
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
@@ -81,6 +82,8 @@ class ShizukuInstaller(context: Context) : InstallerBase(context) {
     }
 
     override fun install(download: Download) {
+        super.install(download)
+
         if (isAlreadyQueued(download.packageName)) {
             Log.i("${download.packageName} already queued")
         } else {
@@ -142,6 +145,7 @@ class ShizukuInstaller(context: Context) : InstallerBase(context) {
                 setPackage(context.packageName)
                 addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
                 putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, sharedLibPkgName.ifBlank { packageName })
+                putExtra(EXTRA_DOWNLOAD, download)
             }
             val flags = if (isSAndAbove()) {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE

@@ -30,8 +30,13 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.inForeground
 import com.aurora.store.util.NotificationUtil
+import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import dagger.hilt.android.AndroidEntryPoint
 import org.greenrobot.eventbus.EventBus
 
@@ -50,9 +55,19 @@ class InstallerStatusReceiver : BroadcastReceiver() {
             val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
+            val download = IntentCompat.getParcelableExtra(
+                intent, EXTRA_DOWNLOAD, Download::class.java
+            )
 
-            // Exit early if package was successfully installed, nothing to do
-            if (status == PackageInstaller.STATUS_SUCCESS) return
+            // If package was successfully installed, exit after notifying user and doing cleanup
+            if (status == PackageInstaller.STATUS_SUCCESS && download != null) {
+                AppInstaller.notifyInstallation(context, download)
+                if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
+                    PathUtil.getAppDownloadDir(context, download.packageName, download.versionCode)
+                        .deleteRecursively()
+                }
+                return
+            }
 
             if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
                 promptUser(intent, context)

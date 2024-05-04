@@ -25,12 +25,22 @@ import androidx.core.content.FileProvider
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 abstract class InstallerBase(protected var context: Context) : IInstaller {
+
+    var download: Download? = null
+        private set
+
+    override fun install(download: Download) {
+        this.download = download
+    }
 
     override fun clearQueue() {
         AuroraApp.enqueuedInstalls.clear()
@@ -42,6 +52,16 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
 
     override fun removeFromInstallQueue(packageName: String) {
         AuroraApp.enqueuedInstalls.remove(packageName)
+    }
+
+    open fun onInstallationSuccess() {
+        download?.let {
+            AppInstaller.notifyInstallation(context, it)
+            if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
+                PathUtil.getAppDownloadDir(context, it.packageName, it.versionCode)
+                    .deleteRecursively()
+            }
+        }
     }
 
     open fun postError(packageName: String, error: String?, extra: String?) {

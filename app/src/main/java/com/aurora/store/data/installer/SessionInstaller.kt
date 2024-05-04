@@ -36,6 +36,7 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
@@ -63,6 +64,8 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
     }
 
     override fun install(download: Download) {
+        super.install(download)
+
         if (isAlreadyQueued(download.packageName)) {
             Log.i("${download.packageName} already queued")
         } else {
@@ -168,6 +171,7 @@ class SessionInstaller(context: Context) : InstallerBase(context) {
             action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
             setPackage(context.packageName)
             putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, packageName)
+            putExtra(EXTRA_DOWNLOAD, download)
             addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
         }
         val flags = if (isSAndAbove()) {

@@ -93,7 +93,9 @@ class RootInstaller(context: Context) : InstallerBase(context) {
 
                 val shellResult = Shell.cmd("pm install-commit $sessionId").exec()
 
-                if (!shellResult.isSuccess) {
+                if (shellResult.isSuccess) {
+                    onInstallationSuccess()
+                } else {
                     removeFromInstallQueue(packageName)
                     val event = InstallerEvent.Failed(
                         packageName,

@@ -20,6 +20,7 @@
 
 package com.aurora.store.data.installer
 
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
@@ -31,6 +32,8 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.room.download.Download
+import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
@@ -43,6 +46,15 @@ import javax.inject.Inject
 class AppInstaller @Inject constructor(@ApplicationContext private val context: Context) {
 
     companion object {
+        const val EXTRA_DOWNLOAD = "com.aurora.store.data.installer.AppInstaller.EXTRA_DOWNLOAD"
+
+        fun notifyInstallation(context: Context, download: Download) {
+            val notificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notification = NotificationUtil.getInstallNotification(context, download)
+            notificationManager.notify(download.packageName.hashCode(), notification)
+        }
+
         fun getErrorString(context: Context, status: Int): String {
             return when (status) {
                 PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
