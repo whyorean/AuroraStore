@@ -23,6 +23,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.room.download.Download
@@ -69,6 +70,6 @@ class NativeInstaller(context: Context) : InstallerBase(context) {
 
         intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
         intent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
-        context.startActivity(intent)
+        runOnUiThread { context.startActivity(intent) }
     }
 }
