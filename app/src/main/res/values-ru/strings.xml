@@ -400,6 +400,6 @@
     <string name="shizuku_installer_subtitle">Использует API системы напрямую с adb/root привилегиями</string>
     <string name="title_more">Еще</string>
     <string name="manage_account">Управление аккаунтом</string>
-    <string name="pref_download_cache_title">Оставлять кэш загрузок</string>
-    <string name="pref_download_cache_summary">На сколько часов сохранять кэш загрузок (провальных, отменённых и завершённых)</string>
+    <string name="pref_download_cache_title">Сохранять кэш загрузок</string>
+    <string name="pref_download_cache_summary">Длительность сохранения кэша загрузок (неудачных, отмененных и завершенных), в часах</string>
 </resources>
