@@ -194,7 +194,7 @@
     <string name="pref_install_mode_root">Кореневий встановлювач</string>
     <string name="pref_install_mode_native">Власний встановлювач (Застарілий)</string>
     <string name="pref_install_delete_title">Видалити APK після встановлення</string>
-    <string name="pref_install_delete_summary">Типово APK буде видалено</string>
+    <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
     <string name="pref_install_auto_title">Автоматичне встановлення APK після завантаження</string>
     <string name="pref_install_auto_summary">Застосунки встановлюються відразу після завершення завантаження</string>
     <string name="pref_insecure_anonymous_title">Небезпечний анонімний сеанс</string>
@@ -400,4 +400,6 @@
     <string name="privacy_policy_subtitle">Дізнайтеся, як Aurora Store використовує ваші дані</string>
     <string name="title_more">Докладніше</string>
     <string name="manage_account">Керувати обліковим записом</string>
+    <string name="pref_download_cache_title">Зберігати кеш завантажень</string>
+    <string name="pref_download_cache_summary">Як довго зберігати кеш завантажень (невдалих, скасованих і завершених), у годинах</string>
 </resources>

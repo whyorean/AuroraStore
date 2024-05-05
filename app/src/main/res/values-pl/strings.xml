@@ -154,7 +154,7 @@
     <string name="pref_install_mode_root">Instalator root</string>
     <string name="pref_install_mode_native">Instalator natywny (przestarzały)</string>
     <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
-    <string name="pref_install_delete_summary">Pliki APK będą domyślnie usuwane</string>
+    <string name="pref_install_delete_summary">Pobrane pliki APK zostaną usunięte zaraz po zakończonej instalacji</string>
     <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
     <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
     <string name="pref_filter_google_title">Filtruj aplikacje Google</string>
@@ -345,7 +345,7 @@
     <string name="title_apps_sale_provider">Dostawca - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nie znaleziono aplikacji na wyprzedaży</string>
     <string name="pref_download_directory_error">Wybrana ścieżka nie umożliwia zapisu</string>
-    <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość samoaktualizacji oraz automatycznych aktualizacji (w godzinach).</string>
+    <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość samoaktualizacji oraz automatycznych aktualizacji, w godzinach</string>
     <string name="pref_aurora_only">Tylko aplikacje Aurora Store</string>
     <string name="title_app_settings">Ustawienia aplikacji</string>
     <string name="pref_updates_check_frequency">Częstotliwość automatycznych aktualizacji</string>
@@ -400,4 +400,6 @@
     <string name="am_installer_desc">Wymaga Menedżera aplikacji, wymaga trybu adb/root do instalacji, gdy włączona jest optymalizacja miui</string>
     <string name="title_more">Więcej</string>
     <string name="manage_account">Zarządzaj swoim kontem</string>
+    <string name="pref_download_cache_summary">Jak długo ma być przechowywana pamięć podręczna pobrań (nieudanych, anulowanych i ukończonych), w godzinach</string>
+    <string name="pref_download_cache_title">Zachowaj pamięć podręczną pobrań</string>
 </resources>

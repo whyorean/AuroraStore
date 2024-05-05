@@ -178,7 +178,7 @@
     <string name="pref_insecure_anonymous_title">Sesion anonim i pasigurt</string>
     <string name="pref_install_auto_summary">Aplikacionet instalohet menjëherë pasi të plotësohet shkarkimi</string>
     <string name="pref_install_auto_title">Vetëinstaloji APK-të pas shkarkimi</string>
-    <string name="pref_install_delete_summary">APK-të do të fshihen, si parazgjedhje</string>
+    <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
     <string name="pref_install_mode_native">Instalues i vetë sistemit (Nxjerrë nga përdorimi)</string>
     <string name="pref_install_mode_root">Instalues rrënjë</string>
@@ -377,4 +377,27 @@
     <string name="amazon_appstore_desc">Amazon Appstore është një shitore aplikacionesh për platforma të përputhshme me Android, mbajtur në punë nga Amazon.</string>
     <string name="failed_apk_export">S’u arrit të eksportoheshin APK-ra</string>
     <string name="failed_app_link">E pambuluar, ju lutemi, provoni të përshoqëroni dorazi lidhjet</string>
+    <string name="privacy_policy_title">Rregulla privatësie</string>
+    <string name="privacy_policy_subtitle">Mësoni se si përdoren të dhënat tuaja nga Aurora Store</string>
+    <string name="pref_download_cache_summary">Sa kohë të ruhet fshehtinë shkarkimesh (të dështuara, të anuluara dhe të plotësuara), në orë</string>
+    <string name="session_installer_subtitle">Instalues me bazë sesionin, për APK-ra të paketuara/të ndara</string>
+    <string name="services_installer_subtitle">Instalues për instalime në prapaskenë</string>
+    <string name="services_installer_desc">Lyp që Aurora Services të jetë instaluar si një aplikacione me privilegje sistemi</string>
+    <string name="am_installer_subtitle">Përgjegjës paketash me burim të hapët, me tërë veçoritë</string>
+    <string name="am_installer_desc">Do medoemos App Manager, ka nevojë për mënyrën adb/rrënjë që të instalohet, kur është aktiv optimizimi miui</string>
+    <string name="shizuku_installer_subtitle">Me përdorim drejtpërdrejt API-sh sistemi me privilegje adb/rrënjë</string>
+    <string name="shizuku_installer_desc">Lyp Shizuku, ose Sui, lyp të jetë ujdisur dhe lejet të jenë akorduar</string>
+    <string name="manual_download_hint">Jepni kodin e versionit që doni të shkarkohet</string>
+    <string name="faqs_subtitle">Keni pyetje? Gjeni përgjigjet</string>
+    <string name="source_code_title">Kod burim</string>
+    <string name="source_code_subtitle">Shihni ç’ka brenda</string>
+    <string name="pref_download_cache_title">Mbaj fshehtinë shkarkimesh</string>
+    <string name="session_scrapped">Sesioni i fundit u hodh tej</string>
+    <string name="session_installer_desc">I rekomanduar, i brendshëm dhe mbulon krejt versionet Android</string>
+    <string name="root_installer_subtitle">Instalues me bazë shell, që përdor leje rrënje</string>
+    <string name="root_installer_desc">Lyp privilegje rrënje/superpërdoruesi, mbulon krejt versionet Android.</string>
+    <string name="native_installer_subtitle">Instalues me bazë Intent, i përdorshëm në krejt pajisjet</string>
+    <string name="native_installer_desc">I përshtatshëm më tepër për pajisje që xhirojnë me sistem nën Android 4.4</string>
+    <string name="title_more">Më tepër</string>
+    <string name="manage_account">Administroni llogarinë tuaj</string>
 </resources>

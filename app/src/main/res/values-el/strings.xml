@@ -182,7 +182,7 @@
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
     <string name="pref_filter_google_title">Φιλτράρετε τις εφαρμογές Google</string>
     <string name="pref_filter_search_summary">Τα φίλτρα αναζήτησης επαναφέρονται σε κάθε αναζήτηση. Απενεργοποιήστε τα για να τα αποθηκεύσετε</string>
-    <string name="pref_install_delete_summary">Τα APK θα διαγραφούν από προεπιλογή</string>
+    <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
     <string name="pref_install_profile_summary">Επιλέξτε το προφίλ για εγκατάσταση εφαρμογών. Λειτουργεί μόνο με τη μέθοδο εγκατάστασης Root</string>
     <string name="pref_ui_title">Προσαρμογή</string>
@@ -222,12 +222,12 @@
     <string name="onboarding_permission_installer">Δικαίωμα εγκατάστασης</string>
     <string name="pref_install_mode_root">Εγκαταστάτης Root</string>
     <string name="purchase_invalid">Η εφαρμογή δεν αγοράστηκε</string>
-    <string name="title_spoof_manager">Διαχ/ση spoof</string>
+    <string name="title_spoof_manager">Διαχείριση spoof</string>
     <string name="pref_ui_theme_dark_x">Σκοτεινό Χ</string>
     <string name="title_apps_games">Εφαρμογές &amp; παιχνίδια</string>
     <string name="pref_install_delete_title">Διαγραφή APK μετά την εγκατάσταση</string>
     <string name="pref_ui_similar_apps">Παρόμοιες και σχετικές εφαρμογές</string>
-    <string name="title_blacklist_manager">Διαχ/ση μαύρης λίστας</string>
+    <string name="title_blacklist_manager">Διαχείριση μαύρης λίστας</string>
     <string name="pref_install_profile_title">Προφίλ εγκατάστασης (πειραματικό)</string>
     <string name="title_apps_library">Εφαρμογές στη βιβλιοθήκη</string>
     <string name="title_about">Σχετικά με</string>
@@ -239,7 +239,7 @@
     <string name="pref_ui_theme_title">Θέμα</string>
     <string name="pref_insecure_anonymous_summary">Δημιουργήστε GSF ID τοπικά στη συσκευή</string>
     <string name="tab_trending">Τάσεις</string>
-    <string name="title_apps_sale">Προς πώληση εφαρμογές</string>
+    <string name="title_apps_sale">Eφαρμογές προς πώληση</string>
     <string name="title_games">Παιχνίδια</string>
     <string name="toast_anonymous_restriction">Δεν διατίθεται σε ανώνυμους λογαριασμούς</string>
     <string name="toast_clipboard_copied">Αντιγράφηκε στο πρόχειρο</string>
@@ -274,7 +274,7 @@
     <string name="ui_accent_12">Disskord μπλε</string>
     <string name="ui_accent_13">Βαθύ μπλε</string>
     <string name="account_anonymous_insecure">Ανώνυμος (μη ασφαλές)</string>
-    <string name="installer_am_unavailable">Εγκατάσταση Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
+    <string name="installer_am_unavailable">Εγκατάστησε το Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
     <string name="pref_abandon_session">Εξαναγκασμός εκκαθάρισης συνεδριάσεων</string>
     <string name="action_home_screen">Προσθήκη στην Αρχική οθόνη</string>
     <string name="action_uninstall_confirmation">Θέλετε να απεγκαταστήσετε την εφαρμογή;</string>
@@ -308,7 +308,7 @@
     <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
     <string name="session_login">Συνδεθείτε πρώτα</string>
     <string name="session_login_failed_google">Δεν ήταν δυνατή η σύνδεση μέσω Google</string>
-    <string name="title_apps_sale_provider">Πάροχος - bestappsales.com</string>
+    <string name="title_apps_sale_provider">Προμηθευτής - bestappsales.com</string>
     <string name="session_good">Ουαου! Όλα καλά.</string>
     <string name="session_enjoy">Συνδεθείτε και απολαύστε.</string>
     <string name="session_verifying">Επαλήθευση συνεδρίας</string>
@@ -392,7 +392,7 @@
     <string name="am_installer_subtitle">Διαχειριστής πακέτων ανοικτού κώδικα με πλήρεις δυνατότητες</string>
     <string name="shizuku_installer_desc">Απαιτεί Shizuku ή Sui, πρέπει να ρυθμιστεί και να χορηγηθεί άδεια</string>
     <string name="root_installer_subtitle">Εγκαταστάτης με βάση το Shell που χρησιμοποιεί δικαιώματα root</string>
-    <string name="manage_account">Διαχείρηση λογαριασμού</string>
+    <string name="manage_account">Διαχείριση λογαριασμού</string>
     <string name="title_more">Περισσότερα</string>
     <string name="source_code_title">Πηγαίος κώδικας</string>
     <string name="source_code_subtitle">Μάθετε τι υπάρχει μέσα</string>
@@ -400,4 +400,6 @@
     <string name="device_doze_extra">Προαιρετικά μπορείτε να επιλέξετε να διατηρήσετε τις βελτιστοποιήσεις ενεργοποιημένες, αλλά τότε δεν θα μπορείτε να επωφεληθείτε από τις λήψεις στο παρασκήνιο και τις αυτοματοποιημένες ενημερώσεις, οπότε η επιλογή είναι δική σας.</string>
     <string name="action_manage">Διαχείριση</string>
     <string name="am_installer_desc">Απαιτεί App Manager, χρειάζεται λειτουργία adb/root για την εγκατάσταση όταν η βελτιστοποίηση miui είναι ενεργοποιημένη</string>
+    <string name="pref_download_cache_title">Διατηρεί τη μνήμη λήψεων</string>
+    <string name="pref_download_cache_summary">Διάρκεια που θα διατηρηθεί η μνήμη των λήψεων (αποτυχημένες, ακυρωμένες και ολοκληρωμένες), σε ώρες</string>
 </resources>
