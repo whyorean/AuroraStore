@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.InputStream
 import java.io.OutputStream
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlin.concurrent.fixedRateTimer
 
 fun InputStream.copyTo(out: OutputStream, streamSize: Long): Flow<DownloadInfo> {
@@ -29,9 +28,9 @@ fun InputStream.copyTo(out: OutputStream, streamSize: Long): Flow<DownloadInfo> 
             out.write(buffer, 0, bytes)
             bytesCopied += bytes
             // Emit stream progress in percentage
-            emit(DownloadInfo((bytesCopied * 100 / streamSize).toInt(), bytesCopied, speed))
+            emit(DownloadInfo((bytesCopied * 100 / streamSize).toInt(), bytes.toLong(), speed))
             bytes = read(buffer)
         }
         timer.cancel()
-    }.flowOn(Dispatchers.IO).distinctUntilChangedBy { it.progress }
+    }.flowOn(Dispatchers.IO)
 }

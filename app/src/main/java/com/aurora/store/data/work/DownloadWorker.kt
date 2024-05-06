@@ -42,7 +42,6 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
@@ -264,7 +263,7 @@ class DownloadWorker @AssistedInject constructor(
 
                 connection.inputStream.use { input ->
                     FileOutputStream(request.file, !isNewFile).use {
-                        input.copyTo(it, request.size).collectLatest { p -> onProgress(p) }
+                        input.copyTo(it, request.size).collect { p -> onProgress(p) }
                     }
                 }
 
@@ -281,17 +280,15 @@ class DownloadWorker @AssistedInject constructor(
 
     private suspend fun onProgress(downloadInfo: DownloadInfo) {
         if (!isStopped && !download.isFinished) {
-            val progress = ((downloadedBytes + downloadInfo.bytesCopied) * 100 / totalBytes).toInt()
-            val bytesRemaining = totalBytes - (downloadedBytes + downloadInfo.bytesCopied)
+            downloadedBytes += downloadInfo.bytesCopied
+
+            val progress = (downloadedBytes * 100 / totalBytes).toInt()
+            val bytesRemaining = totalBytes - downloadedBytes
             val speed = if (downloadInfo.speed == 0L) 1 else downloadInfo.speed
 
             // Individual file progress can be negligible in contrast to total progress
             // Only notify the UI if progress is greater or speed has changed to avoid being rate-limited by Android
             if (progress > totalProgress || speed != download.speed) {
-                if (downloadInfo.progress == 100) {
-                    downloadedBytes += downloadInfo.bytesCopied
-                }
-
                 download.apply {
                     this.progress = progress
                     this.speed = downloadInfo.speed
