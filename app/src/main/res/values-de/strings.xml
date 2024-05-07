@@ -393,7 +393,7 @@
     <string name="manual_download_hint">Gebe den Code der Version ein, die du herunterladen möchtest</string>
     <string name="session_installer_subtitle">Sitzungsbasiertes Installationsprogramm für gebündelte/geteilte APKs</string>
     <string name="session_installer_desc">Empfohlen, integriert und unterstützt alle Android-Versionen</string>
-    <string name="root_installer_subtitle">Shell-basierter Installer mit Root Berechtigungen</string>
+    <string name="root_installer_subtitle">Shellbasiertes Installationsprogramm unter Verwendung von Root-Rechten</string>
     <string name="root_installer_desc">Benötigt Root-/Superuser-Rechte, unterstützt alle Android-Versionen.</string>
     <string name="native_installer_subtitle">Intent-basierter Installer, auf allen Geräten verfügbar</string>
     <string name="native_installer_desc">Am besten geeignet für Geräte, die unter Android 4.4 laufen</string>
