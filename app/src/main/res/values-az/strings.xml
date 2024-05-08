@@ -169,7 +169,6 @@
     <string name="dialog_desc_native_split">Siz Yerli quraşdırıcı vasitəsilə birləşdirilmiş (bölünmüş) tətbiqləri quraşdıra bilməzsiniz. Quraşdırıcınızı Hesab, Xidmətlər və ya Kökə dəyişdirin.</string>
     <string name="notification_channel_alert">Sürətli bildiriş</string>
     <string name="notification_channel_general">Ümumi bildiriş</string>
-    <string name="onboarding_installer_select">Uyğun quraşdırıcı seçin</string>
     <string name="onboarding_permission_select">Aurora Mağazası aşağıdakı icazələri tələb edir</string>
     <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
     <string name="onboarding_welcome_select">Nə etmək istəyirsən\?</string>

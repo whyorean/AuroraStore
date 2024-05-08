@@ -238,7 +238,6 @@
     <string name="onboarding_title_permissions">Käyttöoikeudet</string>
     <string name="onboarding_title_installer">Asentaja</string>
     <string name="onboarding_permission_select">Aurora Store vaatii seuraavat käyttöoikeudet</string>
-    <string name="onboarding_installer_select">Valitse soveltuva asentaja</string>
     <string name="dialog_desc_native_split">Et voi asentaa niputettuja (split) sovelluksia natiiviasentajalla. Vaihda asentajaksi Services-, Root tai sessioasentaja.</string>
     <string name="device_miui_extra">Vaihtoehtoisesti voit valita natiiviasentajan, mutta sillä et voi asentaa niputettuja (split) APK-tiedostoja, joten valinta on sinun.</string>
     <string name="device_miui_description">Ota MIUI-optimoinnit pois käytöstä hyväksyäksesi asennukset tai valitse Root- tai Services-asentaja.</string>

@@ -66,15 +66,14 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         override fun createFragment(position: Int): Fragment {
             when (position) {
                 0 -> return WelcomeFragment()
-                1 -> return InstallerFragment()
-                2 -> return AppLinksFragment()
-                3 -> return PermissionsFragment()
+                1 -> return AppLinksFragment()
+                2 -> return PermissionsFragment()
             }
             return Fragment()
         }
 
         override fun getItemCount(): Int {
-            return 4
+            return 3
         }
     }
 
@@ -123,9 +122,9 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     fun refreshButtonState() {
         binding.btnBackward.isEnabled = lastPosition != 0
-        binding.btnForward.isEnabled = lastPosition != 3
+        binding.btnForward.isEnabled = lastPosition != 2
 
-        if (lastPosition == 3) {
+        if (lastPosition == 2) {
             binding.btnForward.text = getString(R.string.action_finish)
             binding.btnForward.isEnabled = true
             binding.btnForward.setOnClickListener {

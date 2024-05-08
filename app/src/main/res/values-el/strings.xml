@@ -142,7 +142,6 @@
     <string name="device_miui_title">Εντοπίστηκε MIUI!</string>
     <string name="device_miui_subtitle">Το πρόγραμμα δεν μπορεί να εγκαταστήσει εφαρμογές λόγω βελτιστοποιήσεων της MIUI.</string>
     <string name="notification_channel_alert">Γρήγορη ειδοποίηση</string>
-    <string name="onboarding_installer_select">Επιλέξτε το κατάλληλο πρόγραμμα εγκατάστασης</string>
     <string name="onboarding_permission_select">Το Aurora Store απαιτεί τα ακόλουθα δικαιώματα</string>
     <string name="installer_service_available">Οι υπηρεσίες Aurora είναι διαθέσιμες και έτοιμες για εγκατάσταση.</string>
     <string name="menu_terms">Όροι χρήσης</string>

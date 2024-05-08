@@ -206,7 +206,6 @@
     <string name="onboarding_title_permissions">Разрешения</string>
     <string name="onboarding_title_installer">Установщик</string>
     <string name="onboarding_permission_select">Aurora Store требует следующих разрешений</string>
-    <string name="onboarding_installer_select">Выберите подходящий способ установки</string>
     <string name="notification_channel_general">Общее уведомление</string>
     <string name="notification_channel_alert">Быстрое уведомление</string>
     <string name="dialog_title_self_update">Доступно обновление</string>

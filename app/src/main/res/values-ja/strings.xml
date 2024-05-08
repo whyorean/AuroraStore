@@ -32,7 +32,6 @@
     <string name="onboarding_title_permissions">権限</string>
     <string name="onboarding_title_installer">インストーラー</string>
     <string name="onboarding_permission_select">Aurora Store は以下の権限が必要です</string>
-    <string name="onboarding_installer_select">インストーラーを選択</string>
     <string name="notification_channel_general">全般通知</string>
     <string name="notification_channel_alert">クイック通知</string>
     <string name="dialog_title_self_update">更新が利用できます</string>

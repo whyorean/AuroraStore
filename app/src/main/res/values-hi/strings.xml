@@ -169,7 +169,6 @@
     <string name="pref_ui_title">अनुकूलन</string>
     <string name="download_speed_estimating">आकलन</string>
     <string name="action_ok">ठीक है</string>
-    <string name="onboarding_installer_select">एक उपयुक्त इंस्टॉलर चुनें</string>
     <string name="pref_install_mode_title">इंस्टॉल करने का तरीका</string>
     <string name="title_account_manager">खाते</string>
     <string name="title_apps_sale">बिक्री पर ऐप्स</string>

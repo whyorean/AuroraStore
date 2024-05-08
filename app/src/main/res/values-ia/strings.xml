@@ -194,7 +194,6 @@
     <string name="pref_install_delete_title">Deler le APK depost le installation</string>
     <string name="title_apps_sale_provider">Fornitor - bestappsales.com</string>
     <string name="action_filter_apply">Applicar</string>
-    <string name="onboarding_installer_select">Selige un installator adequate</string>
     <string name="action_filter">Filtros</string>
     <string name="action_whitelist">Lista blanc</string>
     <string name="details_changelog_unavailable">Novitates non fornite</string>

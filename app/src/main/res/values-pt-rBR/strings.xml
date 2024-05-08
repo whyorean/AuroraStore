@@ -68,7 +68,6 @@
     <string name="onboarding_title_permissions">Permissões</string>
     <string name="onboarding_title_installer">Instalador</string>
     <string name="onboarding_permission_select">A Aurora Store requer as seguintes permissões</string>
-    <string name="onboarding_installer_select">Selecione um instalador adequado</string>
     <string name="notification_channel_general">Notificação geral</string>
     <string name="notification_channel_alert">Notificação rápida</string>
     <string name="dialog_title_self_update">Nova atualização disponível</string>

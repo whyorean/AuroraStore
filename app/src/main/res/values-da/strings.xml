@@ -174,7 +174,6 @@
     <string name="dialog_title_self_update">Ny opdatering tilgængelig</string>
     <string name="notification_channel_alert">Hurtig notifikation</string>
     <string name="notification_channel_general">Generel notifikation</string>
-    <string name="onboarding_installer_select">Vælg en egnet installatør</string>
     <string name="onboarding_permission_select">Aurora Store kræver de følgende tilladelser</string>
     <string name="onboarding_title_installer">Installatør</string>
     <string name="onboarding_title_permissions">Tilladelser</string>

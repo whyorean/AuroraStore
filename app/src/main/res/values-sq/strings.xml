@@ -152,7 +152,6 @@
     <string name="dialog_desc_native_split">S’mund të instaloni aplikacione të paketuara (të ndara) përmes Instaluesit të vetë pajisjes. Ndryshoni instaluesin tuaj në instalues Sesioni, Shërbimesh ose Rrënjë.</string>
     <string name="notification_channel_alert">Njoftim i shpejtë</string>
     <string name="notification_channel_general">Njoftim i përgjithshëm</string>
-    <string name="onboarding_installer_select">Përzgjidhni një instalues të përshtatshëm</string>
     <string name="onboarding_permission_select">Aurora Store lyp lejet vijuese</string>
     <string name="onboarding_title_installer">Instalues</string>
     <string name="onboarding_title_permissions">Leje</string>

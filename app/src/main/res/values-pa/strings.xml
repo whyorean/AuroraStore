@@ -111,7 +111,6 @@
     <string name="onboarding_title_installer">ਇੰਸਟਾਲਰ</string>
     <string name="onboarding_title_permissions">ਅਗਿਆਵਾਂ</string>
     <string name="onboarding_permission_select">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਹੇਠ ਲਿਖੀਆਂ ਇਜਾਜ਼ਤਾਂ ਦੀ ਲੋੜ ਹੈ</string>
-    <string name="onboarding_installer_select">ਕਿਰਪਾ ਕਰਕੇ ਕੋਈ ਢੁਕਵਾਂ ਐਪ ਇੰਸਟਾਲਰ ਚੁਣੋ</string>
     <string name="notification_channel_general">ਆਮ ਸੂਚਨਾ</string>
     <string name="notification_channel_alert">ਤੁਰੰਤ ਸੂਚਨਾ</string>
     <string name="dialog_title_self_update">ਨਵਾਂ ਅੱਪਡੇਟ ਉਪਲਬੱਧ</string>

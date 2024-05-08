@@ -82,7 +82,6 @@
     <string name="onboarding_title_permissions">Дозволе</string>
     <string name="onboarding_title_installer">Програм за инсталацију</string>
     <string name="onboarding_permission_select">Aurora Store захтева следеће дозволе</string>
-    <string name="onboarding_installer_select">Изаберите одговарајући програм за инсталацију</string>
     <string name="notification_channel_general">Опште обавештење</string>
     <string name="notification_channel_alert">Брзо обавештење</string>
     <string name="dialog_title_self_update">Ново ажурирање је доступно</string>

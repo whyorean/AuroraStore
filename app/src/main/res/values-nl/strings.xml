@@ -121,7 +121,6 @@
     <string name="onboarding_title_permissions">Toestemmingen</string>
     <string name="onboarding_title_installer">Installateur</string>
     <string name="onboarding_permission_select">Aurora Store vereist de volgende toestemmingen</string>
-    <string name="onboarding_installer_select">Selecteer een geschikte installateur</string>
     <string name="notification_channel_general">Algemene melding</string>
     <string name="notification_channel_alert">Snelle melding</string>
     <string name="dialog_desc_native_split">U kan geen gebundelde(split) applicaties installeren met Native Installer. Verander uw installatiemethode naar Session, Service of Root.</string>

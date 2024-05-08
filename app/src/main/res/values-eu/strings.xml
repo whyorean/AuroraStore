@@ -83,7 +83,6 @@
     <string name="onboarding_title_permissions">Baimenak</string>
     <string name="onboarding_title_installer">Instalatzailea</string>
     <string name="onboarding_permission_select">Aukera Store-k honako baimenak behar ditu</string>
-    <string name="onboarding_installer_select">Aukeratu instalatzaile egokia</string>
     <string name="notification_channel_general">Jakinarazpen orokorra</string>
     <string name="notification_channel_alert">Jakinarazpen arina</string>
     <string name="dialog_title_self_update">Eguneratze berria aurkitu da</string>

@@ -67,7 +67,6 @@
     <string name="device_miui_description">Inabìlita sas otimizatziones pro permìtere s\'installatzione, si nono podet isseberare s\'installadore de raighina o de sos servìtzios.</string>
     <string name="device_miui_extra">Si cheres podes isseberare s\'installadore nativu, ma tando no as a pòdere installare sos APK agrupados (partzidos).</string>
     <string name="dialog_desc_native_split">Non podes installare sas aplicatziones agrupadas (partzidas) cun s\'installadore nativu. Muda s\'installadore tuo a su de sessione, servìtzios o raighina.</string>
-    <string name="onboarding_installer_select">Seletziona un\'installadore adatu</string>
     <string name="onboarding_permission_select">Aurora Store tenet bisòngiu de sos permissos chi sighint</string>
     <string name="onboarding_title_installer">Installadore</string>
     <string name="onboarding_welcome_select">Comente andat\?</string>

@@ -149,7 +149,6 @@
     <string name="dialog_title_self_update">새로운 업데이트 사용 가능</string>
     <string name="device_miui_extra">선택적으로 기본 설치 프로그램을 선택할 수 있지만 번들(분할) APK를 설치할 수 없으므로 선택은 귀하의 몫입니다.</string>
     <string name="dialog_desc_native_split">번들(분할) 앱은 기본 설치 프로그램을 통해 설치할 수 없습니다. 설치 프로그램을 세션, 서비스 또는 루트로 변경하세요.</string>
-    <string name="onboarding_installer_select">적합한 설치 프로그램을 선택하세요</string>
     <string name="onboarding_permission_select">Aurora Store는 다음 권한을 필요로 합니다</string>
     <string name="onboarding_title_installer">설치 프로그램</string>
     <string name="onboarding_title_permissions">권한</string>

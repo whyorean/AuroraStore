@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.ui.onboarding
+package com.aurora.store.view.ui.preferences
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -29,15 +29,14 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.installer.AMInstaller
-import com.aurora.store.data.installer.AppInstaller.Companion.hasAppManager
-import com.aurora.store.data.installer.AppInstaller.Companion.hasRootAccess
-import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuOrSui
-import com.aurora.store.data.installer.AppInstaller.Companion.hasShizukuPerm
+import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.installer.NativeInstaller
 import com.aurora.store.data.installer.RootInstaller
+import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.installer.ShizukuInstaller
 import com.aurora.store.data.model.Installer
-import com.aurora.store.databinding.FragmentOnboardingInstallerBinding
+import com.aurora.store.databinding.FragmentInstallerBinding
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
@@ -49,9 +48,9 @@ import rikka.shizuku.Shizuku
 import rikka.sui.Sui
 
 @AndroidEntryPoint
-class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
+class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
 
-    private var _binding: FragmentOnboardingInstallerBinding? = null
+    private var _binding: FragmentInstallerBinding? = null
     private val binding get() = _binding!!
 
     private var installerId: Int = 0
@@ -82,11 +81,14 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentOnboardingInstallerBinding.bind(view)
+        _binding = FragmentInstallerBinding.bind(view)
+
+        // Toolbar
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         installerId = Preferences.getInteger(requireContext(), PREFERENCE_INSTALLER_ID)
 
-        if (isOAndAbove() && hasShizukuOrSui(requireContext())) {
+        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -95,7 +97,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
         // RecyclerView
         binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
-            getRecommendedInstallers().forEach {
+            getInstallers().forEach {
                 add(
                     InstallerViewModel_()
                         .id(it.id)
@@ -110,9 +112,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
         }
 
         if (isMIUI() && !isMiuiOptimizationDisabled()) {
-            findNavController().navigate(
-                OnboardingFragmentDirections.actionOnboardingFragmentToDeviceMiuiSheet()
-            )
+            findNavController().navigate(R.id.deviceMiuiSheet)
         }
     }
 
@@ -122,7 +122,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
     }
 
     override fun onDestroy() {
-        if (isOAndAbove() && hasShizukuOrSui(requireContext())) {
+        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
@@ -134,15 +134,13 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
         when (installerId) {
             0 -> {
                 if (isMIUI() && !isMiuiOptimizationDisabled()) {
-                    findNavController().navigate(
-                        OnboardingFragmentDirections.actionOnboardingFragmentToDeviceMiuiSheet()
-                    )
+                    findNavController().navigate(R.id.deviceMiuiSheet)
                 }
                 this.installerId = installerId
                 save(PREFERENCE_INSTALLER_ID, installerId)
             }
             2 -> {
-                if (hasRootAccess()) {
+                if (AppInstaller.hasRootAccess()) {
                     this.installerId = installerId
                     save(PREFERENCE_INSTALLER_ID, installerId)
                 } else {
@@ -152,8 +150,19 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
                     )
                 }
             }
+            3 -> {
+                if (AppInstaller.hasAuroraService(requireContext())) {
+                    this.installerId = installerId
+                    save(PREFERENCE_INSTALLER_ID, installerId)
+                } else {
+                    showDialog(
+                        R.string.action_installations,
+                        R.string.installer_service_unavailable
+                    )
+                }
+            }
             4 -> {
-                if (hasAppManager(requireContext())) {
+                if (AppInstaller.hasAppManager(requireContext())) {
                     this.installerId = installerId
                     save(PREFERENCE_INSTALLER_ID, installerId)
                 } else {
@@ -164,8 +173,8 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
                 }
             }
             5 -> {
-                if (isOAndAbove() && hasShizukuOrSui(requireContext())) {
-                    if (shizukuAlive && hasShizukuPerm()) {
+                if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
+                    if (shizukuAlive && AppInstaller.hasShizukuPerm()) {
                         this.installerId = installerId
                         save(PREFERENCE_INSTALLER_ID, installerId)
                     } else if (shizukuAlive && !Shizuku.shouldShowRequestPermissionRationale()) {
@@ -190,10 +199,12 @@ class InstallerFragment : BaseFragment(R.layout.fragment_onboarding_installer) {
         }
     }
 
-    private fun getRecommendedInstallers(): List<Installer> {
+    private fun getInstallers(): List<Installer> {
         val installers = mutableListOf(
             SessionInstaller.getInstallerInfo(requireContext()),
+            NativeInstaller.getInstallerInfo(requireContext()),
             RootInstaller.getInstallerInfo(requireContext()),
+            ServiceInstaller.getInstallerInfo(requireContext()),
             AMInstaller.getInstallerInfo(requireContext())
         )
 

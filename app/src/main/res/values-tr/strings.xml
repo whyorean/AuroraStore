@@ -128,7 +128,6 @@
     <string name="onboarding_title_permissions">İzinler</string>
     <string name="onboarding_title_installer">Kurucu</string>
     <string name="onboarding_permission_select">Aurora Mağazası aşağıdaki izinleri gerektirir</string>
-    <string name="onboarding_installer_select">Uygun kurucu seç</string>
     <string name="notification_channel_general">Genel bildirim</string>
     <string name="notification_channel_alert">Hızlı bildirim</string>
     <string name="dialog_title_self_update">Yeni güncelleme var</string>

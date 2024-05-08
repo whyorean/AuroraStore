@@ -193,7 +193,6 @@
     <string name="device_miui_title">MIUI شناسایی شد!</string>
     <string name="installer_status_failure_conflict">بسته متناقض وجود دارد</string>
     <string name="installer_service_unavailable">خدمات آرورا 1.0.9 یا بالاتر را نصب کنید، یا نصب کننده را تغییر دهید.</string>
-    <string name="onboarding_installer_select">نصب کننده مناسب را انتخاب کنید</string>
     <string name="pref_common_extra">موارد اضافی</string>
     <string name="toast_apk_whitelisted">در لیست سفید قرار گرفت</string>
     <string name="toast_export_failed">پیکربندی دستگاه صادر نشد</string>

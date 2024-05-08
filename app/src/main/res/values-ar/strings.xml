@@ -187,7 +187,6 @@
     <string name="title_apps_games">تطبيقاتي وألعابي</string>
     <string name="purchase_no_file">تعذر الحصول على الملفات</string>
     <string name="pref_abandon_session">فرض مسح جلسات التثبيت</string>
-    <string name="onboarding_installer_select">حدد المثبت المناسب</string>
     <string name="installer_status_user_action">في انتظار تأكيد المستخدم</string>
     <string name="installer_status_failure_invalid">حزمة APK غير صالحة أو تالفة</string>
     <string name="action_export">تصدير</string>

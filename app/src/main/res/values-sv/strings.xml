@@ -76,7 +76,6 @@
     <string name="onboarding_title_permissions">Behörigheter</string>
     <string name="onboarding_title_installer">Installatör</string>
     <string name="onboarding_permission_select">Aurora-butiken behöver följande tillstånd</string>
-    <string name="onboarding_installer_select">Välj en passande installatör</string>
     <string name="notification_channel_general">Generell avisering</string>
     <string name="notification_channel_alert">Snabb avisering</string>
     <string name="dialog_title_self_update">Ny uppdatering tillgänglig</string>

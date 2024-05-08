@@ -179,7 +179,6 @@
     <string name="device_miui_subtitle">Trình cài đặt phiên không thể cài đặt ứng dụng do có Tối ưu hóa MIUI.</string>
     <string name="device_miui_title">Đã phát hiện MIUI!</string>
     <string name="onboarding_permission_select">Aurora Store yêu cầu các quyền sau</string>
-    <string name="onboarding_installer_select">Chọn trình cài đặt tương thích</string>
     <string name="menu_terms">Điều khoản dịch vụ</string>
     <string name="menu_license">Giấy phép</string>
     <string name="menu_disclaimer">Từ chối trách nhiệm</string>

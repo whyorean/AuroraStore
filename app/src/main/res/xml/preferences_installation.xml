@@ -19,10 +19,8 @@
 
 <androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.aurora.store.view.custom.preference.AuroraListPreference
+    <Preference
         app:defaultValue="0"
-        app:entries="@array/pref_installation_method"
-        app:entryValues="@array/pref_installation_method_values"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_INSTALLER_ID"
         app:summary="@string/pref_install_mode_summary"

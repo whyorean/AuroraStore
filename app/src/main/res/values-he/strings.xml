@@ -235,7 +235,6 @@
     <string name="installer_am_unavailable">התקן את מנהל האפליקציות או שנה סוג מתקין</string>
     <string name="device_miui_title">זוהתה מערכת הפעלה של שיאומי!</string>
     <string name="device_miui_subtitle">מתקין מקומי לא יכול להתקין אפליקציות בגלל אופטימיזציה של הממשק של שיאומי.</string>
-    <string name="onboarding_installer_select">בחר מתקין מתאים</string>
     <string name="pref_dialog_to_apply_restart">ההגדרה תחול אחרי הפעלה מחדש של האפליקציה</string>
     <string name="pref_install_mode_am">מתקין AM</string>
     <string name="pref_install_mode_session">מתקין מערכת</string>

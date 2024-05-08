@@ -259,7 +259,6 @@
     <string name="device_miui_description">Desactiva les optimizaciones de MIUI pa permitir les instalaciones, sinón pues escoyer l\'instalador root o\'l de los servicios d\'Aurora.</string>
     <string name="dialog_title_self_update">Hai un anovamientu</string>
     <string name="dialog_desc_native_split">You can not install bundled(split) apps via Native Installer. Change your installer to Session, Services or Root.</string>
-    <string name="onboarding_installer_select">Seleiciona un instalador afayadizu</string>
     <string name="onboarding_title_welcome">Acoyida</string>
     <string name="insecure_anonymous_apply">Asegúrate de que vuelves aniciar la sesión ya reanicies l\'aplicación p\'aplicar los cambeos.</string>
     <string name="tab_editor_choice">Escoyeta de los editores</string>

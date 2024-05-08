@@ -87,7 +87,6 @@
     <string name="onboarding_title_permissions">Engedélyek</string>
     <string name="onboarding_title_installer">Telepítő</string>
     <string name="onboarding_permission_select">Az Aurora Store a következő engedélyeket igényli</string>
-    <string name="onboarding_installer_select">Válasszon megfelelő telepítőt</string>
     <string name="notification_channel_general">Általános értesítés</string>
     <string name="notification_channel_alert">Gyors értesítés</string>
     <string name="dialog_title_self_update">Új frissítés érhető el</string>

@@ -119,7 +119,6 @@
     <string name="onboarding_title_permissions">Destûrên</string>
     <string name="onboarding_title_installer">Sazker</string>
     <string name="onboarding_permission_select">Aurora Store destûrên jêrîn hewce dike</string>
-    <string name="onboarding_installer_select">Sazkirinek guncan hilbijêrin</string>
     <string name="notification_channel_general">Ragihandina giştî</string>
     <string name="notification_channel_alert">Agahdariya bilez</string>
     <string name="dialog_title_self_update">Nûvekirina nû heye</string>

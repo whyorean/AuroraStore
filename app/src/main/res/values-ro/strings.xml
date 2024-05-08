@@ -138,7 +138,6 @@
     <string name="download_canceled">Anulat</string>
     <string name="download_progress">Se descarcă • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="filter_review_all">Toate</string>
-    <string name="onboarding_installer_select">Selectează un instalator potrivit</string>
     <string name="filter_review_two">Două</string>
     <string name="installer_root_unavailable">Nu există acces root. Acordă-l sau schimbă programul de instalare.</string>
     <string name="installer_status_failure_invalid">APK nevalid sau deteriorat</string>

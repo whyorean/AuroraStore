@@ -123,7 +123,6 @@
     <string name="onboarding_title_welcome">Willkommen</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
     <string name="onboarding_permission_select">Bitte die erforderlichen Berechtigungen erteilen</string>
-    <string name="onboarding_installer_select">Eine passende Methode auswählen</string>
     <string name="notification_channel_general">Allgemeine Benachrichtigung</string>
     <string name="notification_channel_alert">Kurzbenachrichtigung</string>
     <string name="dialog_title_self_update">Neues Update verfügbar</string>

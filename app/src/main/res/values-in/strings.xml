@@ -247,7 +247,6 @@
     <string name="installer_service_unavailable">Pasang layanan Aurora 1.0.9 atau lebih baru atau ubah pemasang.</string>
     <string name="tab_trending">Sedang tren</string>
     <string name="tab_top_paid">Berbayar teratas</string>
-    <string name="onboarding_installer_select">Pilih pemasang yang sesuai</string>
     <string name="onboarding_title_installer">Pemasang</string>
     <string name="onboarding_permission_select">Aurora Store memerlukan izin sebagai berikut</string>
     <string name="installer_service_misconfigured">Atur layanan Aurora dan berikan seluruh izin terlebih dahulu.</string>

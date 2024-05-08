@@ -172,7 +172,6 @@
     <string name="onboarding_title_permissions">Dovoljenja</string>
     <string name="pref_app_download">Prenosi</string>
     <string name="pref_ui_similar_apps">Podobne in sorodne aplikacije</string>
-    <string name="onboarding_installer_select">Izberite primeren namestitveni program</string>
     <string name="pref_common_extra">Dodatki</string>
     <string name="pref_ui_theme_light">Svetlo</string>
     <string name="dialog_desc_native_split">Ne morete namestiti združenih (razdeljenih) aplikacij prek izvornega namestitvenega programa. Spremenite namestitveni program v sejo, storitve ali koren.</string>

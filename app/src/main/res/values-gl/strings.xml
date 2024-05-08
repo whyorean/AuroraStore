@@ -64,7 +64,6 @@
     <string name="onboarding_title_permissions">Permisos</string>
     <string name="onboarding_title_installer">Instalador</string>
     <string name="onboarding_permission_select">Aurora Store precisa os seguintes permisos</string>
-    <string name="onboarding_installer_select">Selecciones un instalador adecuado</string>
     <string name="notification_channel_general">Notificación xeral</string>
     <string name="notification_channel_alert">Notificación rápida</string>
     <string name="dialog_desc_native_split">Non é posíbel instalar conxuntos de aplicacións polo Instalador Nativo. Cambie o instalador a Sesión, Servizos ou Root.</string>
