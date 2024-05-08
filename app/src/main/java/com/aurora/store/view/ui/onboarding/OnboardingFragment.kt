@@ -32,6 +32,7 @@ import com.aurora.store.R
 import com.aurora.store.data.work.CleanCacheWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
@@ -85,6 +86,9 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         if (!isDefaultPrefLoaded) {
             save(PREFERENCE_DEFAULT, true)
             loadDefaultPreferences()
+
+            // No onboarding for TV, proceed with defaults
+            if (PackageUtil.isTv(view.context)) finishOnboarding()
         }
 
         // ViewPager2
@@ -127,14 +131,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         if (lastPosition == 2) {
             binding.btnForward.text = getString(R.string.action_finish)
             binding.btnForward.isEnabled = true
-            binding.btnForward.setOnClickListener {
-                setupAutoUpdates()
-                CleanCacheWorker.scheduleAutomatedCacheCleanup(requireContext())
-                save(PREFERENCE_INTRO, true)
-                findNavController().navigate(
-                    OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
-                )
-            }
+            binding.btnForward.setOnClickListener { finishOnboarding() }
         } else {
             binding.btnForward.text = getString(R.string.action_next)
             binding.btnForward.setOnClickListener {
@@ -143,6 +140,15 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
                 )
             }
         }
+    }
+
+    private fun finishOnboarding() {
+        setupAutoUpdates()
+        CleanCacheWorker.scheduleAutomatedCacheCleanup(requireContext())
+        save(PREFERENCE_INTRO, true)
+        findNavController().navigate(
+            OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
+        )
     }
 
     private fun loadDefaultPreferences() {
