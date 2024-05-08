@@ -202,13 +202,26 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
     private fun getInstallers(): List<Installer> {
         val installers = mutableListOf(
             SessionInstaller.getInstallerInfo(requireContext()),
-            NativeInstaller.getInstallerInfo(requireContext()),
-            RootInstaller.getInstallerInfo(requireContext()),
-            ServiceInstaller.getInstallerInfo(requireContext()),
-            AMInstaller.getInstallerInfo(requireContext())
+            NativeInstaller.getInstallerInfo(requireContext())
         )
 
-        if (isOAndAbove()) {
+        // 2
+        if (AppInstaller.hasRootAccess()) {
+            installers.add(RootInstaller.getInstallerInfo(requireContext()))
+        }
+
+        // 3
+        if (AppInstaller.hasAuroraService(requireContext())) {
+            installers.add(ServiceInstaller.getInstallerInfo(requireContext()))
+        }
+
+        // 4
+        if (AppInstaller.hasAppManager(requireContext())) {
+            installers.add(AMInstaller.getInstallerInfo(requireContext()))
+        }
+
+        // 5
+        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
             installers.add(ShizukuInstaller.getInstallerInfo(requireContext()))
         }
 
