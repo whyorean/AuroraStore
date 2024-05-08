@@ -186,7 +186,7 @@
     <string name="action_filter_gsf_dependent_apps">Depende de Google</string>
     <string name="action_filter_misc">Varios</string>
     <string name="action_filter_downloads">Descargas</string>
-    <string name="action_filter_apps_with_ads">Aplicaciones con anuncios</string>
+    <string name="action_filter_apps_with_ads">Apps con anuncios</string>
     <string name="action_filter_apply">Aplicar</string>
     <string name="action_filter_all">Todo</string>
     <string name="action_filter">Filtros</string>
@@ -211,7 +211,7 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Donar vía Paypal</string>
     <string name="about_paypal">PayPal</string>
-    <string name="about_libera_summary">Hágase mecenas en Liberapay</string>
+    <string name="about_libera_summary">Hágase patron en Liberapay</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_fdroid_summary">Obtenga la Aurora Store a través de F-Droid.</string>
     <string name="about_gitlab_summary">Obtenga el código fuente de Aurora Store de Aurora OSS en GitLab.</string>
