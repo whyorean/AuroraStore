@@ -66,8 +66,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         override fun createFragment(position: Int): Fragment {
             when (position) {
                 0 -> return WelcomeFragment()
-                1 -> return AppLinksFragment()
-                2 -> return PermissionsFragment()
+                1 -> return PermissionsFragment()
+                2 -> return AppLinksFragment()
             }
             return Fragment()
         }
