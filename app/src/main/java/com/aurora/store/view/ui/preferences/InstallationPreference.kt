@@ -32,19 +32,14 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.showDialog
 import com.aurora.extensions.toast
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.data.installer.AMInstaller
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.installer.ServiceInstaller
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Log
-import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLATION_DEVICE_OWNER
 import com.aurora.store.util.save
 import com.aurora.store.view.custom.preference.AuroraListPreference
-import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.AndroidEntryPoint
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
@@ -135,7 +130,7 @@ class InstallationPreference : BasePreferenceFragment() {
                 Preference.OnPreferenceChangeListener { _, newValue ->
                     val selectedId = Integer.parseInt(newValue as String)
                     if (selectedId == 2) {
-                        if (checkRootAvailability()) {
+                        if (AppInstaller.hasRootAccess()) {
                             save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
                             true
                         } else {
@@ -146,7 +141,7 @@ class InstallationPreference : BasePreferenceFragment() {
                             false
                         }
                     } else if (selectedId == 3) {
-                        if (checkServicesAvailability()) {
+                        if (AppInstaller.hasAuroraService(requireContext())) {
                             save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
                             true
                         } else {
@@ -157,7 +152,7 @@ class InstallationPreference : BasePreferenceFragment() {
                             false
                         }
                     } else if (selectedId == 4) {
-                        if (checkAMAvailability()) {
+                        if (AppInstaller.hasAppManager(requireContext())) {
                             save(Preferences.PREFERENCE_INSTALLER_ID, selectedId)
                             true
                         } else {
@@ -204,35 +199,5 @@ class InstallationPreference : BasePreferenceFragment() {
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
         }
         super.onDestroy()
-    }
-
-    private fun checkRootAvailability(): Boolean {
-        return Shell.getShell().isRoot
-    }
-
-    private fun checkServicesAvailability(): Boolean {
-        val isInstalled = PackageUtil.isInstalled(
-            requireContext(),
-            ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
-        )
-
-        val isCorrectVersionInstalled =
-            PackageUtil.isInstalled(
-                requireContext(),
-                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
-                if (BuildConfig.VERSION_CODE < 31) 8 else 9
-            )
-
-        return isInstalled && isCorrectVersionInstalled
-    }
-
-    private fun checkAMAvailability(): Boolean {
-        return PackageUtil.isInstalled(
-            requireContext(),
-            AMInstaller.AM_PACKAGE_NAME
-        ) or PackageUtil.isInstalled(
-            requireContext(),
-            AMInstaller.AM_DEBUG_PACKAGE_NAME
-        )
     }
 }
