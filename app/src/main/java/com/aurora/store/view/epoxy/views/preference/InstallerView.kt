@@ -27,7 +27,7 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.store.R
-import com.aurora.store.data.model.Installer
+import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.databinding.ViewInstallerBinding
 import com.aurora.store.view.epoxy.views.BaseView
 
@@ -61,7 +61,7 @@ class InstallerView : RelativeLayout {
     }
 
     @ModelProp
-    fun installer(installer: Installer) {
+    fun installer(installer: InstallerInfo) {
         B.line1.text = installer.title
         B.line2.text = installer.subtitle
         B.line3.text = installer.description

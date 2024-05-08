@@ -37,7 +37,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
-import com.aurora.store.data.model.Installer
+import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
@@ -65,8 +65,8 @@ class ServiceInstaller @Inject constructor(
         const val PRIVILEGED_EXTENSION_PACKAGE_NAME = "com.aurora.services"
         const val PRIVILEGED_EXTENSION_SERVICE_INTENT = "com.aurora.services.IPrivilegedService"
 
-        fun getInstallerInfo(context: Context): Installer {
-            return Installer(
+        fun getInstallerInfo(context: Context): InstallerInfo {
+            return InstallerInfo(
                 id = 3,
                 title = context.getString(R.string.pref_install_mode_services),
                 subtitle = context.getString(R.string.services_installer_subtitle),

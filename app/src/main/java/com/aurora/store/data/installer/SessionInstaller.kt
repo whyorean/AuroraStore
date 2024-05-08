@@ -37,7 +37,7 @@ import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
-import com.aurora.store.data.model.Installer
+import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
@@ -59,8 +59,8 @@ class SessionInstaller @Inject constructor(
 
     companion object {
 
-        fun getInstallerInfo(context: Context): Installer {
-            return Installer(
+        fun getInstallerInfo(context: Context): InstallerInfo {
+            return InstallerInfo(
                 id = 0,
                 title = context.getString(R.string.pref_install_mode_session),
                 subtitle = context.getString(R.string.session_installer_subtitle),

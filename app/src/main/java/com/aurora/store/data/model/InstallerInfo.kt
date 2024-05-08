@@ -19,7 +19,7 @@
 
 package com.aurora.store.data.model
 
-data class Installer(
+data class InstallerInfo(
     var id: Int,
     var title: String,
     var subtitle: String,
@@ -27,7 +27,7 @@ data class Installer(
 ) {
     override fun equals(other: Any?): Boolean {
         return when (other) {
-            is Installer -> other.id == id
+            is InstallerInfo -> other.id == id
             else -> false
         }
     }

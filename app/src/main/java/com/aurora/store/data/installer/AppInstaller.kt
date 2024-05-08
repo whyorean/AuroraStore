@@ -32,6 +32,7 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
@@ -57,6 +58,31 @@ class AppInstaller @Inject constructor(
 
     companion object {
         const val EXTRA_DOWNLOAD = "com.aurora.store.data.installer.AppInstaller.EXTRA_DOWNLOAD"
+
+        fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> {
+            val installers = mutableListOf(
+                SessionInstaller.getInstallerInfo(context),
+                NativeInstaller.getInstallerInfo(context)
+            )
+
+            if (hasRootAccess()) {
+                installers.add(RootInstaller.getInstallerInfo(context))
+            }
+
+            if (hasAuroraService(context)) {
+                installers.add(ServiceInstaller.getInstallerInfo(context))
+            }
+
+            if (hasAppManager(context)) {
+                installers.add(AMInstaller.getInstallerInfo(context))
+            }
+
+            if (isOAndAbove() && hasShizukuOrSui(context)) {
+                installers.add(ShizukuInstaller.getInstallerInfo(context))
+            }
+
+            return installers
+        }
 
         fun notifyInstallation(context: Context, download: Download) {
             val notificationManager =

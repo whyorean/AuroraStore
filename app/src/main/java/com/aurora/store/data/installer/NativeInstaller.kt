@@ -25,7 +25,7 @@ import android.net.Uri
 import android.os.Build
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
-import com.aurora.store.data.model.Installer
+import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -41,8 +41,8 @@ class NativeInstaller @Inject constructor(
 
     companion object {
 
-        fun getInstallerInfo(context: Context): Installer {
-            return Installer(
+        fun getInstallerInfo(context: Context): InstallerInfo {
+            return InstallerInfo(
                 id = 1,
                 title = context.getString(R.string.pref_install_mode_native),
                 subtitle = context.getString(R.string.native_installer_subtitle),

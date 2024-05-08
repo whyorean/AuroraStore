@@ -28,14 +28,7 @@ import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
-import com.aurora.store.data.installer.AMInstaller
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.installer.NativeInstaller
-import com.aurora.store.data.installer.RootInstaller
-import com.aurora.store.data.installer.ServiceInstaller
-import com.aurora.store.data.installer.SessionInstaller
-import com.aurora.store.data.installer.ShizukuInstaller
-import com.aurora.store.data.model.Installer
 import com.aurora.store.databinding.FragmentInstallerBinding
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
@@ -97,7 +90,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
         // RecyclerView
         binding.epoxyRecycler.withModels {
             setFilterDuplicates(true)
-            getInstallers().forEach {
+            AppInstaller.getAvailableInstallersInfo(requireContext()).forEach {
                 add(
                     InstallerViewModel_()
                         .id(it.id)
@@ -198,34 +191,4 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
             }
         }
     }
-
-    private fun getInstallers(): List<Installer> {
-        val installers = mutableListOf(
-            SessionInstaller.getInstallerInfo(requireContext()),
-            NativeInstaller.getInstallerInfo(requireContext())
-        )
-
-        // 2
-        if (AppInstaller.hasRootAccess()) {
-            installers.add(RootInstaller.getInstallerInfo(requireContext()))
-        }
-
-        // 3
-        if (AppInstaller.hasAuroraService(requireContext())) {
-            installers.add(ServiceInstaller.getInstallerInfo(requireContext()))
-        }
-
-        // 4
-        if (AppInstaller.hasAppManager(requireContext())) {
-            installers.add(AMInstaller.getInstallerInfo(requireContext()))
-        }
-
-        // 5
-        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
-            installers.add(ShizukuInstaller.getInstallerInfo(requireContext()))
-        }
-
-        return installers
-    }
-
 }
