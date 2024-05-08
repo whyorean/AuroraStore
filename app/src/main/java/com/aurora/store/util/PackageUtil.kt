@@ -26,7 +26,6 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
-import android.content.res.Configuration
 import android.graphics.Bitmap
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -100,8 +99,7 @@ object PackageUtil {
     }
 
     fun isTv(context: Context): Boolean {
-        val uiMode = context.resources.configuration.uiMode
-        return uiMode and Configuration.UI_MODE_TYPE_MASK == Configuration.UI_MODE_TYPE_TELEVISION
+        return context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
     }
 
     fun getLaunchIntent(context: Context, packageName: String?): Intent? {
