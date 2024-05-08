@@ -397,4 +397,7 @@
     <string name="manage_account">Gestiona tu cuenta</string>
     <string name="pref_download_cache_summary">¿Cuánto tiempo conservar la caché de descargas (fallidas, canceladas y completadas), en horas?</string>
     <string name="pref_download_cache_title">Mantener la caché de las descargas</string>
+    <string name="pref_clear_device_owner_title">Borrar el propietario del dispositivo</string>
+    <string name="pref_clear_device_owner_summary">Elimina Aurora Store como aplicación propietaria del dispositivo</string>
+    <string name="pref_clear_device_owner_desc">Esto revocará el permiso del instalador de sesión para instalar silenciosamente la aplicación. ¿Proceder a borrar la propiedad del dispositivo?</string>
 </resources>
