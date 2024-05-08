@@ -28,13 +28,12 @@ import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
 import android.content.res.Configuration
 import android.graphics.Bitmap
-import android.os.UserHandle
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
+import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
-
 
 object PackageUtil {
 
@@ -67,8 +66,15 @@ object PackageUtil {
     fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
         return if (isOAndAbove()) {
             val sharedLibraries = getAllSharedLibraries(context)
-            sharedLibraries.any {
-                it.name == packageName && it.version == versionCode
+            if (isPAndAbove()) {
+                sharedLibraries.any {
+                    it.name == packageName && it.longVersion == versionCode.toLong()
+                }
+            } else {
+                sharedLibraries.any {
+                    @Suppress("DEPRECATION")
+                    it.name == packageName && it.version == versionCode
+                }
             }
         } else {
             false
