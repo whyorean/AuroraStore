@@ -183,7 +183,7 @@
     <string name="pref_filter_search_title">Utilizare filtru de căutare non-persistent</string>
     <string name="pref_insecure_anonymous_summary">Generare ID GSF la nivel local pe dispozitiv</string>
     <string name="pref_insecure_anonymous_title">Sesiune anonimă nesigură</string>
-    <string name="pref_install_delete_summary">APK-urile vor fi șterse în mod implicit</string>
+    <string name="pref_install_delete_summary">APK-urile descărcate vor fi șterse imediat după instalare</string>
     <string name="pref_install_delete_title">Șterge fișierul APK după instalare</string>
     <string name="pref_install_mode_am">Instalator AM</string>
     <string name="pref_install_mode_native">Instalator nativ (învechit)</string>
@@ -395,4 +395,6 @@
     <string name="native_installer_desc">Cel mai potrivit pentru dispozitivele care rulează Android sub v. 4.4</string>
     <string name="title_more">Mai multe</string>
     <string name="manage_account">Gestionează contul</string>
+    <string name="pref_download_cache_title">Păstrează memoria cache a descărcărilor</string>
+    <string name="pref_download_cache_summary">Cât timp se păstrează memoria cache a descărcărilor (eșuate, anulate și finalizate), în ore</string>
 </resources>

@@ -196,7 +196,7 @@
     <string name="pref_install_mode_root">Installateur racine</string>
     <string name="pref_install_mode_native">Installateur natif (déprécié)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
-    <string name="pref_install_delete_summary">Les fichiers APK seront supprimés par défaut</string>
+    <string name="pref_install_delete_summary">Les fichiers APK seront supprimés immédiatement après l\'installation</string>
     <string name="pref_filter_google_summary">Ignore les applications Google dans Mises à jour et Applications installées</string>
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>

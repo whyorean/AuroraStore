@@ -1,0 +1,4 @@
+• Fehler bei der Anmeldung in Verbindung mit Google-Konten behoben
+• Elemente der Navigationsschublade wurden in einen separaten Dialog verschoben
+• Umstellung auf NavigationRail für Geräte mit großen Bildschirmen
+• Möglichkeit, Downloads an einen externen Speicherort zu exportieren

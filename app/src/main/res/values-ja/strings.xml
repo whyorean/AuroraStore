@@ -6,7 +6,7 @@
     <string name="account_logged_out">ログアウトしました</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">匿名</string>
-    <string name="about_xda_summary">Aurora Store の XDA スレッドを見て、議論や提案をしましょう</string>
+    <string name="about_xda_summary">Aurora Store の XDA スレッドを見て、議論や提案をしましょう。</string>
     <string name="about_xda">開発スレッド</string>
     <string name="about_telegram_summary">Aurora のサポートグループに参加して、議論や提案をしましょう</string>
     <string name="about_telegram">Telegram</string>
@@ -66,7 +66,7 @@
     <string name="exodus_view_report">レポートを見る</string>
     <string name="exodus_substring">個の既知のトラッカーが見つかりました:</string>
     <string name="exodus_progress">トラッカーを確認中…</string>
-    <string name="exodus_powered">Powered by Exodus</string>
+    <string name="exodus_powered">Exodus Privacy により提供</string>
     <string name="exodus_no_tracker">既知のトラッカーを含んでいません</string>
     <string name="download_speed_estimating">計算中</string>
     <string name="download_resume_all">すべて再開</string>
@@ -155,7 +155,7 @@
     <string name="action_back">戻る</string>
     <string name="account_logout">Aurora からログアウトする</string>
     <string name="title_device">デバイス</string>
-    <string name="onboarding_permission_esa_desc">ダウンロードした APK、OBB の保存、デバイス設定のインポート、エクスポートに必要。</string>
+    <string name="onboarding_permission_esa_desc">大容量アプリやゲームの APK 拡張ファイル (OBB) を保存します。</string>
     <string name="toast_purchase_blocked">匿名アカウントではアプリ購入はできません。</string>
     <string name="toast_spoof_applied">デバイス偽装を適用しました。</string>
     <string name="toast_permission_granted">承認済み</string>
@@ -216,7 +216,7 @@
     <string name="pref_install_mode_root">Root インストーラー</string>
     <string name="pref_install_mode_native">ネイティブインストーラー (非推奨)</string>
     <string name="pref_install_delete_title">インストール後に APK を削除</string>
-    <string name="pref_install_delete_summary">APK はデフォルトで削除されます</string>
+    <string name="pref_install_delete_summary">ダウンロードしたAPKをインストール後すぐに削除</string>
     <string name="pref_filter_google_title">Google アプリを除外</string>
     <string name="pref_filter_google_summary">すべてのGoogleアプリを検索結果、カテゴリ表示から無視する</string>
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
@@ -342,7 +342,7 @@
     <string name="pref_network_proxy_enable">プロキシを有効化</string>
     <string name="details_ratings_title_hint">評価タイトル</string>
     <string name="pref_network_proxy_url">プロキシ URL</string>
-    <string name="pref_updates_check_frequency_desc">自動更新の間隔を設定 [時間]</string>
+    <string name="pref_updates_check_frequency_desc">自動/自己更新の間隔を時間単位で構成します。</string>
     <string name="pref_aurora_only">Aurora Store アプリのみ</string>
     <string name="pref_network_proxy_title">プロキシ</string>
     <string name="toast_proxy_invalid">プロキシ URL が無効です。形式を確認してください！</string>
@@ -373,4 +373,31 @@
     <string name="pref_clear_device_owner_title">端末所有者を解除</string>
     <string name="pref_clear_device_owner_summary">Aurora Store を端末所有者から解除します</string>
     <string name="pref_clear_device_owner_desc">これにより、アプリをサイレントインストールするための権限が取り消されます。端末所有者の解除を続行しますか？</string>
+    <string name="action_manage">管理</string>
+    <string name="manual_download_hint">ダウンロードしたいバージョンコードを入力してください</string>
+    <string name="faqs_subtitle">質問がありますか？解答を探してください</string>
+    <string name="source_code_title">ソースコード</string>
+    <string name="source_code_subtitle">中身を確認</string>
+    <string name="privacy_policy_title">プライバシーポリシー</string>
+    <string name="privacy_policy_subtitle">Aurora Storeがデータをどのように使用するかを知る</string>
+    <string name="disclaimer_subtitle">免責事項</string>
+    <string name="pref_download_cache_title">ダウンロードキャッシュを保持</string>
+    <string name="pref_download_cache_summary">ダウンロード キャッシュ（失敗、中断、完了）を保持する期間（時間単位）</string>
+    <string name="native_installer_desc">Android 4.4以下のデバイスに最適</string>
+    <string name="services_installer_subtitle">バックグラウンドインストール用のインストーラー</string>
+    <string name="am_installer_subtitle">フル機能のオープンソースパッケージマネージャー</string>
+    <string name="failed_app_link">サポートされていません。リンクを手動で関連付けてください</string>
+    <string name="services_installer_desc">Aurora Services をシステム特権アプリとしてインストールする必要があります</string>
+    <string name="session_installer_subtitle">同梱/分割 APK 用のセッション ベースのインストーラー</string>
+    <string name="session_installer_desc">推奨。ビルトイン等の全てのAndroidバージョンをサポート</string>
+    <string name="root_installer_subtitle">ルート権限を使用するシェルベースのインストーラー</string>
+    <string name="root_installer_desc">ルート/スーパーユーザー権限が必要で、全ての Android バージョンをサポートします。</string>
+    <string name="native_installer_subtitle">すべてのデバイスで利用可能なインテントベースのインストーラー</string>
+    <string name="am_installer_desc">アプリマネージャーが必要。MIUI最適化がオンの場合、インストールにはADB/rootモードが必要</string>
+    <string name="shizuku_installer_subtitle">ADB/root権限でシステムAPIを直接使用する</string>
+    <string name="shizuku_installer_desc">Shizuku または Sui が必要で、セットアップと権限付与が必要です</string>
+    <string name="download_clear_finished">完了したら削除</string>
+    <string name="action_home_screen">ホーム画面に追加</string>
+    <string name="title_more">更に</string>
+    <string name="manage_account">アカウントを管理</string>
 </resources>

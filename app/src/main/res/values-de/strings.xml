@@ -243,7 +243,7 @@
 \n(Suchfilter bleibt bei ausgeschalteter Option erhalten)</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">Keine passende App gefunden</string>
-    <string name="toast_manual_available">Angeforderte Version ist verfügbar und wird jetzt heruntergeladen</string>
+    <string name="toast_manual_available">Herzlichen Glückwunsch, der angeforderte Versionscode ist verfügbar, lade ihn jetzt herunter.</string>
     <string name="toast_manual_unavailable">Angeforderte Version ist nicht verfügbar</string>
     <string name="title_manual_download">Version auswählen</string>
     <string name="action_check">Prüfen</string>
@@ -343,7 +343,7 @@
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
-    <string name="pref_updates_check_frequency_desc">Intervall für die Suche nach automatischen Updates (in Stunden) festlegen</string>
+    <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle für automatische und selbsttätige Aktualisierungen in Stunden.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur durch Aurora Store installierte Apps unter Updates und Installationen anzeigen</string>
     <string name="pref_updates_check_frequency">Häufigkeit für automatische Updates</string>
@@ -384,4 +384,18 @@
     <string name="title_more">Mehr</string>
     <string name="pref_download_cache_title">Downloads im Cache behalten</string>
     <string name="manage_account">Dein Konto verwalten</string>
+    <string name="failed_app_link">Nicht unterstützt, bitte versuche die Links manuell zuzuordnen</string>
+    <string name="manual_download_hint">Gebe den Code der Version ein, die du herunterladen möchtest</string>
+    <string name="session_installer_subtitle">Sitzungsbasiertes Installationsprogramm für gebündelte/geteilte APKs</string>
+    <string name="session_installer_desc">Empfohlen, integriert und unterstützt alle Android-Versionen</string>
+    <string name="root_installer_subtitle">Shellbasiertes Installationsprogramm unter Verwendung von Root-Rechten</string>
+    <string name="root_installer_desc">Benötigt Root-/Superuser-Rechte, unterstützt alle Android-Versionen.</string>
+    <string name="native_installer_subtitle">Intent-basierter Installer, auf allen Geräten verfügbar</string>
+    <string name="native_installer_desc">Am besten geeignet für Geräte, die unter Android 4.4 laufen</string>
+    <string name="services_installer_subtitle">Installer für Hintergrundinstallationen</string>
+    <string name="services_installer_desc">Benötigt die Installation von Aurora Services als privilegierte Systemapp</string>
+    <string name="am_installer_subtitle">Voll ausgestatteter Open-Source-Paketmanager</string>
+    <string name="am_installer_desc">Benötigt App Manager, braucht adb/root-Modus zur Installation, wenn die Miui-Optimierung an ist</string>
+    <string name="shizuku_installer_subtitle">Direkte Verwendung von System-APIs mit adb/root-Rechten</string>
+    <string name="shizuku_installer_desc">Benötigt Shizuku oder Sui, muss eingerichtet und genehmigt werden</string>
 </resources>
