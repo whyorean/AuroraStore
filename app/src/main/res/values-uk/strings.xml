@@ -185,8 +185,6 @@
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Основний колір</string>
     <string name="pref_network_title">Мережа</string>
-    <string name="pref_install_profile_title">Профілі встановлення (Експериментально)</string>
-    <string name="pref_install_profile_summary">Вибір профілю для встановлення застосунків, працює лише з кореневим методом встановлення</string>
     <string name="pref_install_mode_title">Спосіб встановлення</string>
     <string name="pref_install_mode_summary">Виберіть режим встановлення APK</string>
     <string name="pref_install_mode_session">Установник Android</string>
@@ -195,8 +193,6 @@
     <string name="pref_install_mode_native">Власний встановлювач (Застарілий)</string>
     <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
-    <string name="pref_install_auto_title">Автоматичне встановлення APK після завантаження</string>
-    <string name="pref_install_auto_summary">Застосунки встановлюються відразу після завершення завантаження</string>
     <string name="pref_insecure_anonymous_title">Небезпечний анонімний сеанс</string>
     <string name="pref_insecure_anonymous_summary">Локальне створення ідентифікатора GSF на пристрої</string>
     <string name="pref_filter_search_title">Використовувати непостійний фільтр пошуку</string>

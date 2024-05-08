@@ -57,8 +57,6 @@
     <string name="pref_ui_theme_dark">Iluna</string>
     <string name="pref_ui_theme_black">Beltza</string>
     <string name="pref_ui_accent_title">Azentua</string>
-    <string name="pref_install_profile_title">Instalazio profilak (esperimentala)</string>
-    <string name="pref_install_profile_summary">Aukeratu aplikazioak instalatzeko helburuko profila. Root metodoa erabiltzeko bakarrik</string>
     <string name="pref_install_mode_title">Instalazio modua</string>
     <string name="pref_install_mode_summary">Aukeratu APK-ak instalatzeko modua</string>
     <string name="pref_install_mode_session">Saio instalatzailea</string>
@@ -67,8 +65,6 @@
     <string name="pref_install_mode_native">Berezko instalatzailea (zaharkitua)</string>
     <string name="pref_install_delete_title">APK ezabatu deskargatu ondoren</string>
     <string name="pref_install_delete_summary">Besterik adierazi ezean, APK-ak ezabatuko dira</string>
-    <string name="pref_install_auto_title">APK-ak instalatu deskargatu ondoren</string>
-    <string name="pref_install_auto_summary">Aplikazioak deskargatu bezain pronto instalatzen dira</string>
     <string name="pref_filter_google_title">Google aplikazioak kanpoan utzi</string>
     <string name="pref_filter_google_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako Google-ren aplikazioak</string>
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>

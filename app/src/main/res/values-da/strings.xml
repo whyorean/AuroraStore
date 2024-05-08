@@ -189,8 +189,6 @@
     <string name="pref_filter_search_title">Brug et uvedvarende søgefilter</string>
     <string name="pref_insecure_anonymous_summary">Skab et GSF ID lokalt på enheden</string>
     <string name="pref_insecure_anonymous_title">Usikker anonym session</string>
-    <string name="pref_install_auto_summary">Apps bliver installeret ummidelbart efter downloads er færdiggjorte</string>
-    <string name="pref_install_auto_title">Auto-installer APK-er efter downloads</string>
     <string name="pref_install_delete_summary">APK-er bliver som udgangspunkt slettet</string>
     <string name="pref_install_delete_title">Slet APK efter installering</string>
     <string name="pref_install_mode_native">Native installatør</string>
@@ -199,8 +197,6 @@
     <string name="pref_install_mode_session">Session installatør</string>
     <string name="pref_install_mode_summary">Vælg APK installationsmodus</string>
     <string name="pref_install_mode_title">Installationsmetode</string>
-    <string name="pref_install_profile_summary">Vælg den profil som apps skal installeres på. Virker kun med Root installationsmetoden</string>
-    <string name="pref_install_profile_title">Installationsprofil (eksperimental)</string>
     <string name="pref_network_title">Netværk</string>
     <string name="pref_ui_accent_title">Accent</string>
     <string name="pref_ui_theme_black">Sort</string>

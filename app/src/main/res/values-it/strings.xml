@@ -6,7 +6,6 @@
     <string name="details_description">Descrizione</string>
     <string name="details_dev_details">Contatto sviluppatore</string>
     <string name="purchase_no_file">Impossibile ottenere i file</string>
-    <string name="pref_install_profile_title">Profili di installazione (Sperimentale)</string>
     <string name="details_dev_website">Sito web</string>
     <string name="details_dev_address">Indirizzo</string>
     <string name="details_dev_email">E-mail</string>
@@ -27,7 +26,6 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Trasferimenti</string>
     <string name="purchase_failed">Trasferimento fallito</string>
-    <string name="pref_install_auto_title">Installa automaticamente gli APK dopo il trasferimento</string>
     <string name="onboarding_permission_esa_desc">Per salvare i file di espansione APK (OBB) per applicazioni e giochi di grandi dimensioni.</string>
     <string name="download_resume_all">Riprendi tutti</string>
     <string name="download_queued">In coda</string>
@@ -48,8 +46,6 @@
     <string name="purchase_not_found">Applicazione non trovata</string>
     <string name="purchase_unsupported">Applicazione non supportata</string>
     <string name="purchase_invalid">Applicazione non acquistata</string>
-    <string name="pref_install_profile_summary">Selezionare il profilo di destinazione in cui installare le applicazioni. Funziona solo con il metodo di installazione root</string>
-    <string name="pref_install_auto_summary">Le applicazioni vengono installate immediatamente al termine del trasferimento</string>
     <string name="pref_filter_google_title">Filtra le applicazioni Google</string>
     <string name="pref_filter_google_summary">Ignora le applicazioni di Google dalle liste degli Aggiornamenti e delle applicazioni già installate</string>
     <string name="pref_filter_fdroid_title">Filtra le applicazioni F-Droid</string>

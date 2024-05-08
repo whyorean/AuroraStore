@@ -210,8 +210,6 @@
     <string name="pref_ui_theme_black">ブラック</string>
     <string name="pref_ui_theme_dark">ダーク</string>
     <string name="pref_ui_accent_title">アクセント</string>
-    <string name="pref_install_profile_title">インストール先プロファイル (実験的)</string>
-    <string name="pref_install_profile_summary">アプリをインストールするプロファイルを選択。Root インストールでのみ有効</string>
     <string name="pref_install_mode_title">インストール方法</string>
     <string name="pref_install_mode_summary">APK インストールモードを選択</string>
     <string name="pref_install_mode_session">セッションインストーラー</string>
@@ -220,8 +218,6 @@
     <string name="pref_install_mode_native">ネイティブインストーラー (非推奨)</string>
     <string name="pref_install_delete_title">インストール後に APK を削除</string>
     <string name="pref_install_delete_summary">APK はデフォルトで削除されます</string>
-    <string name="pref_install_auto_title">APK ダウンロード後自動インストール</string>
-    <string name="pref_install_auto_summary">アプリはダウンロード完了後すぐにインストールされます</string>
     <string name="pref_filter_google_title">Google アプリを除外</string>
     <string name="pref_filter_google_summary">すべてのGoogleアプリを検索結果、カテゴリ表示から無視する</string>
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>

@@ -125,7 +125,6 @@
     <string name="action_uninstall">Удалить</string>
     <string name="title_spoof_manager">Менеджер подмены</string>
     <string name="spoof_apply">Убедитесь, что перезашли в аккаунт для применения подмены устройства</string>
-    <string name="pref_install_profile_summary">Выберите целевой профиль для установки приложений. Работает только с методом root-установки</string>
     <string name="pref_install_mode_session">Установка с помощью сессии (Android 5+)</string>
     <string name="menu_terms">Условия предоставления услуг</string>
     <string name="filter_review_positive">Положительный</string>
@@ -182,7 +181,6 @@
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Акцент</string>
-    <string name="pref_install_profile_title">Установочные профили (экспериментальная функция)</string>
     <string name="pref_install_mode_title">Способ установки</string>
     <string name="pref_install_mode_summary">Выберите режим установки APK</string>
     <string name="pref_install_mode_services">Сервисы Aurora (Устарел)</string>
@@ -190,8 +188,6 @@
     <string name="pref_install_mode_native">Системный установщик (Устарел)</string>
     <string name="pref_install_delete_title">Удалить APK-файлы после установки</string>
     <string name="pref_install_delete_summary">Загруженные APK-файлы будут удаляться сразу после установки</string>
-    <string name="pref_install_auto_title">Автоматическая установка APK-файлов после загрузки</string>
-    <string name="pref_install_auto_summary">Приложения устанавливаются сразу после завершения загрузки</string>
     <string name="pref_filter_google_title">Фильтр приложений Google</string>
     <string name="pref_filter_google_summary">Игнорировать приложения Google в обновлениях и установленных приложениях</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>

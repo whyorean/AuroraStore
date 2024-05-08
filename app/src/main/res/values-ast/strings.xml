@@ -127,7 +127,6 @@
     <string name="tab_trending">En tendencia</string>
     <string name="download_force_clear_all">Forciar el borráu de too</string>
     <string name="action_leave">Colar</string>
-    <string name="pref_install_profile_title">Perfiles d\'instalación (esperimental)</string>
     <string name="pref_app_download">Descargues</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="toast_export_failed">Nun se pudo esportar la configuración del preséu</string>
@@ -209,7 +208,6 @@
     <string name="pref_filter_search_summary">Search filters are reset on each search. Turn off to save search filters</string>
     <string name="pref_install_delete_summary">Les APKs desaníciense por defeutu</string>
     <string name="pref_install_mode_am">AM installer.</string>
-    <string name="pref_install_profile_summary">Seleiciona\'l perfil de destín nel qu\'instalar les aplicaciones. Namás funciona col métodu d\'instalación root</string>
     <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los ficheros APK</string>
     <string name="pref_ui_theme_black">Prietu</string>
     <string name="pref_ui_theme_dark_x">Escuridá X</string>
@@ -233,8 +231,6 @@
     <string name="pref_filter_google_title">Peñerar les aplicaciones de Google</string>
     <string name="pref_insecure_anonymous_summary">Generate GSF ID locally on device</string>
     <string name="pref_insecure_anonymous_title">Insecure anonymous session</string>
-    <string name="pref_install_auto_summary">Les aplicaciones instálense puramente dempués de completar la descarga</string>
-    <string name="pref_install_auto_title">Auto install APKs after download</string>
     <string name="pref_install_mode_services">Servicios d\'Aurora</string>
     <string name="pref_install_mode_session">Instalador de la sesión</string>
     <string name="pref_network_title">Networking</string>

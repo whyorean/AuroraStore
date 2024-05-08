@@ -65,7 +65,6 @@
     <string name="filter_review_one">Bir</string>
     <string name="installer_service_unavailable">Aurora xidmətləri 1.0.9 və ya yuxarısını quraşdırın və ya quraşdırıcını dəyişdirin.</string>
     <string name="installer_service_available">Aurora xidmətləri mövcuddur və quraşdırılmağa hazırdır.</string>
-    <string name="pref_install_profile_title">Quraşdırma profilləri (Təcrübi)</string>
     <string name="pref_ui_theme_black">Qara</string>
     <string name="pref_ui_theme_system">Sistemi İzləyin</string>
     <string name="pref_ui_no_for_you_desc">Əsas ekranda Sizə Özəl Səhifələri göstərin</string>
@@ -189,8 +188,6 @@
     <string name="pref_filter_search_title">Davamsız axtarış filtrindən istifadə edin</string>
     <string name="pref_insecure_anonymous_summary">Cihazda yerli olaraq GSF ID yaradın</string>
     <string name="pref_insecure_anonymous_title">Təhlükəli anonim hesab</string>
-    <string name="pref_install_auto_summary">Tətbiqlər yükləmə tamamlandıqdan dərhal sonra quraşdırılır</string>
-    <string name="pref_install_auto_title">Yüklədikdən sonra APK-ları avtomatik quraşdırın</string>
     <string name="pref_install_delete_summary">APK-lar defolt olaraq silinəcək</string>
     <string name="pref_install_delete_title">Quraşdırıldıqdan sonra APK-ni silin</string>
     <string name="pref_install_mode_am">AM quraşdırıcısı.</string>
@@ -200,7 +197,6 @@
     <string name="pref_install_mode_session">Hesab quraşdırıcısı</string>
     <string name="pref_install_mode_summary">APK quraşdırma rejimini seçin</string>
     <string name="pref_install_mode_title">Quraşdırma üsulu</string>
-    <string name="pref_install_profile_summary">Tətbiqləri quraşdırmaq üçün hədəf profili seçin. Yalnız kök quraşdırma üsulu ilə işləyir</string>
     <string name="pref_network_title">Şəbəkə yaratma</string>
     <string name="pref_ui_accent_title">Vurğu</string>
     <string name="pref_ui_theme_dark">Qaranlıq</string>

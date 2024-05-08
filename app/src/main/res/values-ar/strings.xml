@@ -53,7 +53,6 @@
     <string name="pref_ui_theme_dark">داكن</string>
     <string name="pref_ui_theme_black">أسود</string>
     <string name="pref_ui_accent_title">اللون الثانوي</string>
-    <string name="pref_install_profile_title">ملفات تثبيت التعريفات (تجريبي)</string>
     <string name="pref_install_mode_title">طريقة التثبيت</string>
     <string name="pref_install_mode_session">مثبت الجلسة</string>
     <string name="pref_install_mode_services">خدمات Aurora(مهمل)</string>
@@ -162,7 +161,6 @@
     <string name="details_beta_subscribed">أنت أحد مختبري الإصدارات التجريبية</string>
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
     <string name="pref_install_mode_summary">حدد وضع تثبيت حزمة التطبيقات APK</string>
-    <string name="pref_install_auto_title">تثبيت تلقائي APKs بعد التنزيل</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف حزم التطبيقات المحملة والتي قد تم تثبيتها بشكل مباشر</string>
     <string name="pref_filter_fdroid_summary">تجاهل تطبيقات F-Droid من التحديثات والتطبيقات المثبتة</string>
@@ -170,7 +168,6 @@
     <string name="onboarding_permission_installer_desc">السماح بتثبيت التطبيقات من متجر Aurora</string>
     <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيقات على الحسابات المجهولة.</string>
     <string name="purchase_session_expired">انتهت صلاحية جلسة العمل، إعادة تسجيل الدخول للحصول على جلسة عمل جديدة.</string>
-    <string name="pref_install_auto_summary">يتم تثبيت التطبيقات على الفور بعد اكتمال التنزيل</string>
     <string name="details_think_this_app">ما رأيك في هذا التطبيق؟</string>
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
@@ -181,7 +178,6 @@
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>
     <string name="onboarding_permission_esa_desc">لحفظ ملفات توسيع APK (OBBs) للتطبيقات والألعاب الكبيرة.</string>
     <string name="installer_service_misconfigured">إعداد خدمات Aurora ومنح كافة الأذونات أولا.</string>
-    <string name="pref_install_profile_summary">حدد ملف التعريف الهدف لتثبيت التطبيقات عليه. يعمل فقط مع طريقة تثبيت بالجذر</string>
     <string name="device_miui_extra">اختياريا يمكنك اختيار المثبت الأصلي، ولكن بعد ذلك لا يمكنك تثبيت التطبيقات المجمعة (تقسيم) APKs، لذلك الخيار لك.</string>
     <string name="installer_service_unavailable">ثبت خدمات Aurora 1.0.9 أو أعلى، أو تغيير المثبت.</string>
     <string name="details_beta_description">سترى ميزات وأخطاء جديدة قبل أن يراها المستخدمون. قدم ملاحظاتك للمطورين لمساعدتهم على التحسين من جودة تطبيقاتهم.</string>

@@ -60,8 +60,6 @@
     <string name="title_manual_download">Χειροκίνητη λήψη</string>
     <string name="title_download_manager">Λήψεις</string>
     <string name="purchase_failed">Αποτυχία λήψης</string>
-    <string name="pref_install_auto_title">Αυτόματη εγκατάσταση APK μετά τη λήψη</string>
-    <string name="pref_install_auto_summary">Οι εφαρμογές εγκαθίστανται αμέσως μετά την ολοκλήρωση της λήψης</string>
     <string name="pref_app_download">Λήψεις</string>
     <string name="onboarding_permission_esa_desc">Για την αποθήκευση αρχείων επέκτασης APK (OBB) για μεγάλα παιχνίδια &amp; εφαρμογές.</string>
     <string name="download_none">Δεν υπάρχουν λήψεις</string>
@@ -184,7 +182,6 @@
     <string name="pref_filter_search_summary">Τα φίλτρα αναζήτησης επαναφέρονται σε κάθε αναζήτηση. Απενεργοποιήστε τα για να τα αποθηκεύσετε</string>
     <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
-    <string name="pref_install_profile_summary">Επιλέξτε το προφίλ για εγκατάσταση εφαρμογών. Λειτουργεί μόνο με τη μέθοδο εγκατάστασης Root</string>
     <string name="pref_ui_title">Προσαρμογή</string>
     <string name="pref_ui_no_for_you_desc">Εμφάνιση σελίδων για Εσάς στην αρχική οθόνη</string>
     <string name="purchase_unsupported">Η εφαρμογή δεν υποστηρίζεται</string>
@@ -228,7 +225,6 @@
     <string name="pref_install_delete_title">Διαγραφή APK μετά την εγκατάσταση</string>
     <string name="pref_ui_similar_apps">Παρόμοιες και σχετικές εφαρμογές</string>
     <string name="title_blacklist_manager">Διαχείριση μαύρης λίστας</string>
-    <string name="pref_install_profile_title">Προφίλ εγκατάστασης (πειραματικό)</string>
     <string name="title_apps_library">Εφαρμογές στη βιβλιοθήκη</string>
     <string name="title_about">Σχετικά με</string>
     <string name="pref_ui_no_for_you">Σελίδες για Εσάς</string>

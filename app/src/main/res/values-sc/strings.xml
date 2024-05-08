@@ -81,7 +81,6 @@
     <string name="pref_common_extra">Extras</string>
     <string name="pref_insecure_anonymous_summary">Gènera un\'ID GSF in locale in su dispositivu</string>
     <string name="pref_insecure_anonymous_title">Sessione anònima non segura</string>
-    <string name="pref_install_auto_title">Installa sos APK in automàticu a pustis de s\'iscarrigamentu</string>
     <string name="pref_install_delete_summary">Sos APK s\'ant a iscantzellare comente impostatzione predefinida</string>
     <string name="pref_install_mode_am">Installadore AM.</string>
     <string name="pref_install_mode_native">Installadore nativu</string>
@@ -190,7 +189,6 @@
     <string name="pref_filter_google_summary">Bogat sas aplicatziones de Google dae sos risultados e dae sa lista de sas aplicatziones</string>
     <string name="pref_filter_google_title">Filtra sas aplicatziones de Google</string>
     <string name="pref_filter_search_title">Imprea filtros de chirca non persistentes</string>
-    <string name="pref_install_auto_summary">Sas aplicatziones benint installadas automaticamente a pustis de s\'acabu de s\'iscarrigamentu</string>
     <string name="pref_install_delete_title">Iscantzella sos apk a pustis de s\'installatzione</string>
     <string name="pref_install_mode_summary">Ischerta sa manera de installatzione de sos APK</string>
     <string name="pref_install_mode_title">Manera de installatzione</string>
@@ -225,8 +223,6 @@
     <string name="installer_status_failure_invalid">APK non vàlidu o corrùmpidu</string>
     <string name="installer_status_success">Installatzione resèssida</string>
     <string name="installer_status_user_action">Isetende pro sa cunfirma de s\'impreadore</string>
-    <string name="pref_install_profile_summary">Ischerta su profilu chi cheres pro installare aplicatziones. Funtzionat petzi cun sa modalidade de installatzione de raighina (\"root\")</string>
-    <string name="pref_install_profile_title">Profilos de installatzione (Isperimentale)</string>
     <string name="filter_review_all">Totus</string>
     <string name="pref_abandon_session">Fortza s\'innetadura de sas sessiones de installatzione</string>
     <string name="toast_abandon_sessions">Sessiones de installatzione betzas abbandonadas</string>

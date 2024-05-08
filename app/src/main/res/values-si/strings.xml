@@ -185,7 +185,6 @@
     <string name="installer_status_failure_storage">මතකයේ ඉඩ ප්‍රමාණවත් නැත</string>
     <string name="pref_insecure_anonymous_summary">උපාංගයෙහි ස්ථානීයව GSF හැඳු. උත්පාදනය කරන්න</string>
     <string name="pref_insecure_anonymous_title">අනාරක්‍ෂිත නිර්නාමික වාරය</string>
-    <string name="pref_install_profile_title">ස්ථාපන පැතිකඩ (පරීක්‍ෂාත්මක)</string>
     <string name="pref_network_title">ජාලකරණය</string>
     <string name="pref_ui_layout_tab">පෙරනිමි පටිත්ත තෝරන්න</string>
     <string name="tab_trending">නැගී එන</string>
@@ -245,13 +244,11 @@
     <string name="pref_common_extra">අමතර වැඩ</string>
     <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>
     <string name="pref_filter_search_title">නොනිබැඳි සෙවුම් පෙරහන භාවිතය</string>
-    <string name="pref_install_auto_title">බාගැනීමෙන් පසු APKs ස්වයං ස්ථාපනය කරන්න</string>
     <string name="pref_ui_accent_title">උදාත්තය</string>
     <string name="purchase_invalid">යෙදුම මිලදී ගෙන නැත</string>
     <string name="pref_filter_search_summary">සෙවුම් පෙරහන් එක් සෙවීමකට පසු යළි සැකසේ. සෙවුම් පෙරහන් සුරැකීමට මෙය අක්‍රිය කරන්න</string>
     <string name="pref_install_mode_summary">APK ස්ථාපන ආකාරය තෝරන්න</string>
     <string name="tab_top_paid">ප්‍රචලිත ගෙවන</string>
-    <string name="pref_install_auto_summary">බාගැනීම සම්පූර්ණ වූ පසු යෙදුම් ක්‍ෂණිකව ස්ථාපනය වේ</string>
     <string name="pref_install_mode_session">වාර ස්ථාපකය</string>
     <string name="purchase_session_expired">වාරය කල් ඉකුත්ය, නව වාරයක් අත්කර ගැනීමට යළි පිවිසෙන්න.</string>
     <string name="pref_install_mode_root">මූල ස්ථාපකය</string>
@@ -261,7 +258,6 @@
     <string name="tab_editor_choice">සම්පාදකගේ තේරීම</string>
     <string name="pref_filter_fdroid_summary">යෙදුම් ලේඛන වලින් එෆ්-ඩ්‍රොයිඩ් යෙදුම් ඉවත් කරයි</string>
     <string name="pref_install_mode_native">නිසග ස්ථාපකය</string>
-    <string name="pref_install_profile_summary">යෙදුම් ස්ථාපනයට ඉලක්කගත පැතිකඩ තෝරන්න. මූල ස්ථාපන ක්‍රමය සමඟ පමණක් වැඩ කරයි</string>
     <string name="device_miui_subtitle">MIUI ප්‍රශස්තිකරණය නිසා වාර ස්ථාපකයට යෙදුම් ස්ථාපනය කළ නොහැකිය.</string>
     <string name="device_miui_description">ස්ථාපන සඳහා ඉඩදීමට MIUI ප්‍රශස්තිකරණය අබල කරන්න, නැතහොත් මූල හෝ සේවා ස්ථාපක තෝරාගත හැකිය.</string>
     <string name="pref_install_mode_am">AM ස්ථාපකය.</string>

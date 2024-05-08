@@ -191,8 +191,6 @@
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Couleur</string>
-    <string name="pref_install_profile_title">Profils d’installation (expérimental)</string>
-    <string name="pref_install_profile_summary">Sélectionnez le profil cible pour installer les applications ; fonctionne uniquement avec la méthode d’installation racine</string>
     <string name="pref_install_mode_summary">Sélectionnez le mode d’installation de l’APK</string>
     <string name="pref_install_mode_session">Installateur de session</string>
     <string name="pref_install_mode_services">Aurora Services (Déprécié)</string>
@@ -200,8 +198,6 @@
     <string name="pref_install_mode_native">Installateur natif (déprécié)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les fichiers APK seront supprimés par défaut</string>
-    <string name="pref_install_auto_title">Installer automatiquement les fichiers APK après le téléchargement</string>
-    <string name="pref_install_auto_summary">Les applications sont installées instantanément une fois le téléchargement terminé</string>
     <string name="pref_filter_google_summary">Ignore les applications Google dans Mises à jour et Applications installées</string>
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>

@@ -60,8 +60,6 @@
     <string name="purchase_not_found">App nicht gefunden</string>
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
-    <string name="pref_install_profile_summary">Das Zielprofil auswählen, um Apps zu installieren. Dies funktioniert nur mit der Root-Installationsmethode.</string>
-    <string name="pref_install_auto_summary">Apps werden sofort nach dem Download installiert</string>
     <string name="pref_filter_google_title">Google-Apps filtern</string>
     <string name="pref_filter_google_summary">Google-Apps aus Updates und Installationen ausblenden</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
@@ -110,14 +108,12 @@
     <string name="pref_ui_theme_dark_x">Dunkel X</string>
     <string name="pref_ui_theme_dark">Dunkel</string>
     <string name="pref_ui_theme_black">Schwarz</string>
-    <string name="pref_install_profile_title">Installationsprofile (experimentell)</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
     <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
     <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">Heruntergeladene APKs werden sofort nach der Installation gelöscht</string>
-    <string name="pref_install_auto_title">APK-Dateien nach dem Download automatisch installieren</string>
     <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
     <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>

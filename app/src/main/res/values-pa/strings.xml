@@ -74,8 +74,6 @@
     <string name="pref_ui_theme_black">ਕਾਲ੍ਹਾ</string>
     <string name="pref_ui_accent_title">ਰੰਗ</string>
     <string name="pref_network_title">ਨੈਟਵਰਕਿੰਗ</string>
-    <string name="pref_install_profile_title">ਇੰਸਟਾਲੇਸ਼ਨ ਪ੍ਰੋਫਾਈਲਸ (ਪ੍ਰਯੋਗ ਅਧੀਨ)</string>
-    <string name="pref_install_profile_summary">ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਇੰਸਟਾਲੇਸ਼ਨ ਪ੍ਰੋਫਾਈਲ ਚੁਣੋ। ਇਹ ਸਿਰਫ ਰੂਟ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਨਾਲ ਕੰਮ ਕਰੇਗਾ</string>
     <string name="dialog_desc_native_split">ਤੁਸੀਂ ਨੇਟਿਵ ਇੰਸਟਾਲਰ ਰਾਹੀਂ Bundled/Split ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਕਰ ਸਕਦੇ। ਕਿਰਪਾ ਕਰਕੇ ਇੰਸਟਾਲੇਸ਼ਨ ਲਈ ਸੈਸ਼ਨ, ਔਰੋਰਾ ਸਰਵੀਸਿਜ਼ ਜਾਂ ਰੂਟ ਵਿਚੋਂ ਕੋਈ ਇਕ ਚੁਣੋ।</string>
     <string name="device_miui_description">ਸੈਸ਼ਨ ਐਪ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਵਰਤਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ MIUI optimizations ਨੂੰ ਬੰਦ ਕਰੋ, ਜਾਂ ਫਿਰ ਰੂਟ ਜਾਂ ਔਰੋਰਾ ਸਰਵੀਸਿਜ਼ ਵਿਚੋਂ ਕੋਈ ਇੱਕ ਤਰੀਕਾ ਵਰਤੋ।</string>
     <string name="installer_service_misconfigured">ਔਰੋਰਾ ਸਰਵਿਸਿਜ਼ ਨੂੰ ਖੋਲੋ ਅਤੇ ਸਾਰੇ ਲੋੜੀਂਦੇ ਅਧਿਕਾਰ ਦਿਓ।</string>
@@ -89,8 +87,6 @@
     <string name="pref_install_mode_native">ਨੇਟਿਵ ਇੰਸਟਾਲਰ (ਡੇਪ੍ਰਕੇਟਡ)</string>
     <string name="pref_install_delete_title">ਇੰਸਟਾਲ ਤੋਂ ਬਾਅਦ APK ਨੂੰ ਮਿਟਾਓ</string>
     <string name="pref_install_delete_summary">ਐਪ ਇੰਸਟਾਲ ਹੋਣ ਦੇ ਬਾਅਦ ਉਸਦਾ APK ਸੈੱਟਅਪ ਮਿਟਾ ਦਿਤਾ ਜਾਵੇਗਾ</string>
-    <string name="pref_install_auto_title">ਡਾਊਨਲੋਡ ਤੋਂ ਬਾਅਦ ਐਪਸ ਆਟੋ ਇੰਸਟਾਲ ਕਰੋ</string>
-    <string name="pref_install_auto_summary">ਡਾਊਨਲੋਡ ਪੂਰਾ ਹੋਣ ਤੋਂ ਬਾਅਦ ਐਪਸ ਤੁਰੰਤ ਇੰਸਟਾਲ ਕੀਤੇ ਜਾਣਗੇ</string>
     <string name="pref_insecure_anonymous_title">ਅਸੁਰੱਖਿਅਤ ਅਗਿਆਤ ਸੈਸ਼ਨ</string>
     <string name="pref_insecure_anonymous_summary">ਇਸ ਡਿਵਾਈਜ਼ ਅਨੁਸਾਰ ਬਣੀ GSF ਆਈਡੀ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
     <string name="pref_filter_search_title">ਨਿਰੰਤਰ ਨਾ ਰਹਿਣ ਵਾਲੇ ਖ਼ੋਜ ਫਿਲਟਰ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>

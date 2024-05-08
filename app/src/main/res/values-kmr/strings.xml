@@ -93,8 +93,6 @@
     <string name="pref_ui_theme_dark">Tarî</string>
     <string name="pref_ui_theme_black">Reş</string>
     <string name="pref_ui_accent_title">Devok</string>
-    <string name="pref_install_profile_title">Profîlên sazkirinê (Ezmûnî)</string>
-    <string name="pref_install_profile_summary">Ji bo sazkirina sepanan profîla hedef hilbijêrin. Tenê bi rêbaza sazkirina root re dixebite</string>
     <string name="pref_install_mode_title">Rêbaza sazkirinê</string>
     <string name="pref_install_mode_summary">Modeya sazkirinê ya APK hilbijêrin</string>
     <string name="pref_install_mode_session">Sazkerê danişînê</string>
@@ -103,8 +101,6 @@
     <string name="pref_install_mode_native">Sazkerê xwemalî</string>
     <string name="pref_install_delete_title">APK-ê piştî sazkirinê jê bibe</string>
     <string name="pref_install_delete_summary">APK dê bi standard werin jêbirin</string>
-    <string name="pref_install_auto_title">Piştî dakêşanê APK-an jixweber saz bikin</string>
-    <string name="pref_install_auto_summary">Piştî ku daxistin xilas dibe sepan di cih de têne saz kirin</string>
     <string name="pref_filter_google_title">Sepanên Google-ê parzûn bikin</string>
     <string name="pref_filter_google_summary">Hemî Sepanên Google-ê ji encamên lêgerînê û sepanên kategoriyê radike</string>
     <string name="pref_filter_fdroid_title">Fîlterkirin sepanên F-Droid</string>

@@ -18,13 +18,6 @@
   -->
 
 <androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
-        app:isPreferenceVisible="false"
-        app:key="PREFERENCE_AUTO_INSTALL"
-        app:summary="@string/pref_install_auto_summary"
-        app:title="@string/pref_install_auto_title" />
 
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="0"
@@ -47,12 +40,4 @@
         app:key="PREFERENCE_INSTALLATION_DEVICE_OWNER"
         app:summary="@string/pref_clear_device_owner_summary"
         app:title="@string/pref_clear_device_owner_title" />
-
-    <ListPreference
-        app:defaultValue="0"
-        app:iconSpaceReserved="false"
-        app:isPreferenceVisible="false"
-        app:key="INSTALLATION_PROFILE"
-        app:summary="@string/pref_install_profile_summary"
-        app:title="@string/pref_install_profile_title" />
 </androidx.preference.PreferenceScreen>

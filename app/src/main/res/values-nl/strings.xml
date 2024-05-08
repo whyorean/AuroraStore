@@ -90,8 +90,6 @@
     <string name="pref_ui_theme_black">Zwart</string>
     <string name="pref_ui_accent_title">Accent</string>
     <string name="pref_network_title">Netwerken</string>
-    <string name="pref_install_profile_title">Installatie profielen (Experimenteel)</string>
-    <string name="pref_install_profile_summary">Selecteer het doel profiel om apps naar te installeren. Dat werkt alleen met de Root installatie methode</string>
     <string name="pref_install_mode_title">Installatie methode</string>
     <string name="pref_install_mode_summary">Selecteer modus van APK installatie</string>
     <string name="pref_install_mode_session">Session installateur</string>
@@ -100,8 +98,6 @@
     <string name="pref_install_mode_native">Native installateur</string>
     <string name="pref_install_delete_title">Verwijder APK na installatie</string>
     <string name="pref_install_delete_summary">APKs worden standaard verwijderd</string>
-    <string name="pref_install_auto_title">Auto-installeer APKs na download</string>
-    <string name="pref_install_auto_summary">Apps worden meteen geïnstalleerd nadat de download wordt voltooid</string>
     <string name="pref_insecure_anonymous_title">Onveilige anonieme sessie</string>
     <string name="pref_insecure_anonymous_summary">Genereer GSF ID lokaal op apparaat</string>
     <string name="pref_filter_search_title">Gebruik niet-permanente zoek filter</string>

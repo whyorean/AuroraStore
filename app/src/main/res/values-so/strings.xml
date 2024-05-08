@@ -103,8 +103,6 @@
     <string name="pref_ui_theme_dark">Madow</string>
     <string name="pref_ui_theme_black">Mugdi</string>
     <string name="pref_network_title">Khadka</string>
-    <string name="pref_install_profile_summary">Dooro nooca lagu shubi appska. kani wuxuu kushaqeeyaa kaliya habka root-ka</string>
-    <string name="pref_install_profile_title">Noocyada kushubida (Tijaabo)</string>
     <string name="pref_install_mode_title">Habka kushibida</string>
     <string name="pref_install_mode_summary">Dooro habka kushubida APK-ga</string>
     <string name="pref_install_mode_session">Kushubaha Xidhiidhka</string>
@@ -113,8 +111,6 @@
     <string name="pref_install_mode_native">Kushubaha aallada</string>
     <string name="pref_install_delete_title">Saar marka lagushubo</string>
     <string name="pref_install_delete_summary">APK-ga waa lasaari (waa hadaada fadhiga badalin)</string>
-    <string name="pref_install_auto_title">Si iskeed ah ugu shub marka lasoodajiyo APK-ga</string>
-    <string name="pref_install_auto_summary">Appska islamarka ay dajintu dhamaataba waa lagu shubaa</string>
     <string name="pref_insecure_anonymous_summary">Kusamee aqoonsiga GSF aallada</string>
     <string name="pref_filter_google_title">Shaandhee appska Google</string>
     <string name="pref_filter_google_summary">Wuxuu kasaaraa appska Google natiijada raadinta iyo qaybta noocyada appska</string>

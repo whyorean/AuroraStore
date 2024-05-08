@@ -50,8 +50,6 @@
     <string name="pref_ui_theme_dark">Oscuro</string>
     <string name="pref_ui_theme_black">Negro</string>
     <string name="pref_ui_accent_title">Acento</string>
-    <string name="pref_install_profile_title">Perfiles de instalación (experimental)</string>
-    <string name="pref_install_profile_summary">Seleccione el perfil de destino para instalar las aplicaciones. Sólo funciona con el método de instalación root</string>
     <string name="pref_install_mode_title">Método de instalación</string>
     <string name="pref_install_mode_summary">Seleccione el modo de instalación del APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
@@ -60,8 +58,6 @@
     <string name="pref_install_mode_native">Instalador nativo (obsoleto)</string>
     <string name="pref_install_delete_title">Eliminar el APK después de la instalación</string>
     <string name="pref_install_delete_summary">Los APK descargados se eliminarán inmediatamente después de la instalación</string>
-    <string name="pref_install_auto_title">Instalar automáticamente los APKs después de descargarlos</string>
-    <string name="pref_install_auto_summary">Las apps se instalan inmediatamente una vez finalizada la descarga</string>
     <string name="pref_filter_google_title">Filtrar las apps de Google</string>
     <string name="pref_filter_google_summary">Ignorar las aplicaciones de Google en actualizaciones y aplicaciones instaladas</string>
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>

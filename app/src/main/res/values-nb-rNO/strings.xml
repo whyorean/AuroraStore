@@ -165,8 +165,6 @@
     <string name="pref_install_mode_title">Installasjonsmetode</string>
     <string name="pref_install_mode_summary">Velg modus for APK-installasjon</string>
     <string name="pref_install_delete_summary">APK-er blir slettet som standard</string>
-    <string name="pref_install_auto_title">Installer APK-er automatisk etter nedlasting</string>
-    <string name="pref_install_auto_summary">Apper installeres umiddelbart etter at nedlastingen er fullført</string>
     <string name="pref_insecure_anonymous_title">Usikker anonym økt</string>
     <string name="pref_filter_google_summary">Fjerner alle Google Apps fra søkeresultater og kategori apper</string>
     <string name="onboarding_permission_installer_desc">Tillat å installere apper fra Aurora Store</string>
@@ -239,8 +237,6 @@
     <string name="pref_ui_layout_tab">Velg forvalgt fane</string>
     <string name="pref_ui_layout">Oppsett</string>
     <string name="pref_ui_title">Tilpasning</string>
-    <string name="pref_install_profile_title">Installasjonsprofiler (eksperimentelt)</string>
-    <string name="pref_install_profile_summary">Velg målprofilen du vil installere apper på. Fungerer kun med rotinstallasjonsmetoden</string>
     <string name="pref_install_mode_native">Systemspesifikk installerer</string>
     <string name="pref_install_mode_session">Økt-installerer</string>
     <string name="pref_install_mode_root">Rot-installerer</string>

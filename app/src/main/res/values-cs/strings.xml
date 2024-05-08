@@ -69,8 +69,6 @@
     <string name="pref_ui_theme_black">Černý</string>
     <string name="pref_ui_accent_title">Barva</string>
     <string name="pref_network_title">Síť</string>
-    <string name="pref_install_profile_title">Instalační profily (experimentální)</string>
-    <string name="pref_install_profile_summary">Vyberte cílový profil, do kterého chcete nainstalovat aplikace. Funguje pouze s metodou instalace root</string>
     <string name="pref_install_mode_title">Způsob instalace</string>
     <string name="pref_install_mode_summary">Vyberte režim instalace APK</string>
     <string name="pref_install_mode_session">Relační instalátor</string>
@@ -79,8 +77,6 @@
     <string name="pref_install_mode_native">Nativní instalátor (zastaralý)</string>
     <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
-    <string name="pref_install_auto_title">Automatická instalace APK po stažení</string>
-    <string name="pref_install_auto_summary">Aplikace se nainstalují okamžitě po dokončení stahování</string>
     <string name="pref_insecure_anonymous_title">Nezabezpečená anonymní relace</string>
     <string name="pref_insecure_anonymous_summary">Generujte GSF ID lokálně na zařízení</string>
     <string name="pref_filter_search_title">Použít neperzistentní vyhledávací filtr</string>

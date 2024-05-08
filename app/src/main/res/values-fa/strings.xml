@@ -46,7 +46,6 @@
     <string name="title_download_playstore">فروشگاه play</string>
     <string name="title_download_manager">بارگیری‌ها</string>
     <string name="title_device">دستگاه</string>
-    <string name="pref_install_auto_title">نصب خودکار APKs ها پس از بارگیری</string>
     <string name="pref_install_mode_native">نصب کننده بومی</string>
     <string name="pref_install_mode_title">روش نصب</string>
     <string name="pref_install_mode_services">خدمات آرورا</string>
@@ -209,14 +208,12 @@
     <string name="installer_status_failure_incompatible">برنامه ناسازگار</string>
     <string name="filter_review_critical">بحرانی</string>
     <string name="installer_service_misconfigured">خدمات آرورا را راه اندازی کنید و ابتدا همه مجوزها را اعطا کنید.</string>
-    <string name="pref_install_profile_summary">نمایه مورد نظر را برای نصب برنامه ها انتخاب کنید. فقط با روش نصب روت کار می کند</string>
     <string name="onboarding_title_permissions">دسترسی ها</string>
     <string name="toast_aas_token_failed">کد AAS ایجاد نشد</string>
     <string name="installer_status_success">با موفقیت نصب شد</string>
     <string name="pref_ui_similar_apps">برنامه های مشابه و مرتبط</string>
     <string name="pref_ui_no_for_you_desc">نمایش برگه‌های برای شما در صفحه اصلی</string>
     <string name="pref_dialog_to_apply_restart">این تنظیم پس از راه اندازی مجدد برنامه اعمال خواهد شد</string>
-    <string name="pref_install_auto_summary">برنامه ها بلافاصله پس از اتمام دانلود نصب می شوند</string>
     <string name="onboarding_permission_select">فروشگاه آرورا به مجوزهای زیر نیاز دارد</string>
     <string name="pref_filter_fdroid_title">فیلتر کردن برنامه های F-Droid</string>
     <string name="menu_terms">شرایط استفاده از خدمات</string>
@@ -265,7 +262,6 @@
     <string name="pref_filter_search_title">استفاده از فیلتر جستجوی غیر دائمی</string>
     <string name="pref_install_delete_title">حذف APK پس از نصب</string>
     <string name="pref_install_mode_am">نصب کننده AM.</string>
-    <string name="pref_install_profile_title">پروفایل های نصب (آزمایشی)</string>
     <string name="pref_ui_theme_dark_x">دارک ایکس</string>
     <string name="pref_ui_similar_apps_desc">نمایش خوشه های مشابه و مرتبط در صفحه جزئیات برنامه</string>
     <string name="spoof_apply">اطمینان حاصل کنید که برای اعمال پارامتر جعلی دوباره وارد سیستم شوید</string>

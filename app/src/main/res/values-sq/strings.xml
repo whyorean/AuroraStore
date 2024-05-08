@@ -176,8 +176,6 @@
     <string name="pref_filter_search_title">Përdor filtër kërkimi që s’ruhet</string>
     <string name="pref_insecure_anonymous_summary">Prodho ID GSF lokalisht në pajisje</string>
     <string name="pref_insecure_anonymous_title">Sesion anonim i pasigurt</string>
-    <string name="pref_install_auto_summary">Aplikacionet instalohet menjëherë pasi të plotësohet shkarkimi</string>
-    <string name="pref_install_auto_title">Vetëinstaloji APK-të pas shkarkimi</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
     <string name="pref_install_mode_native">Instalues i vetë sistemit (Nxjerrë nga përdorimi)</string>
@@ -186,8 +184,6 @@
     <string name="pref_install_mode_session">Instalues sesioni</string>
     <string name="pref_install_mode_summary">Përzgjidhni mënyrë instalimi APK-je</string>
     <string name="pref_install_mode_title">Metodë instalimi</string>
-    <string name="pref_install_profile_summary">Përzgjidhni profilin ku synohet të instalohen aplikacionet. Funksionon vetëm me metodën e instalimit si rrënjë</string>
-    <string name="pref_install_profile_title">Profile Instalimi (Eksperimentale)</string>
     <string name="pref_network_title">Punim Në Rrjet</string>
     <string name="pref_ui_accent_title">Theksim</string>
     <string name="pref_ui_theme_black">E zezë</string>

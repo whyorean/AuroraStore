@@ -33,8 +33,6 @@
     <string name="pref_ui_theme_black">Negro</string>
     <string name="pref_ui_accent_title">Acento</string>
     <string name="pref_network_title">Rede</string>
-    <string name="pref_install_profile_title">Perfis de instalación (Experimental)</string>
-    <string name="pref_install_profile_summary">Seleccione o perfil onde quere instalar as aplicacións. Só funciona co método de instalación root</string>
     <string name="pref_install_mode_title">Método de instalación</string>
     <string name="pref_install_mode_summary">Seleccione o modo de instalación do APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
@@ -43,8 +41,6 @@
     <string name="pref_install_mode_native">Instalador nativo</string>
     <string name="pref_install_delete_title">Eliminar APK unha vez instalado</string>
     <string name="pref_install_delete_summary">As APKs serán eliminadas por defecto</string>
-    <string name="pref_install_auto_title">Instalar APKs automaticamente despois da descarga</string>
-    <string name="pref_install_auto_summary">As aplicacións son instaladas após a descarga é completada</string>
     <string name="pref_insecure_anonymous_title">Sesión anónima insergura</string>
     <string name="pref_insecure_anonymous_summary">Xerar ID de GSF localmente no dispositivo</string>
     <string name="pref_filter_search_title">Usar filtros de busca non persistentes</string>

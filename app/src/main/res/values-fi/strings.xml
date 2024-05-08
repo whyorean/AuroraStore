@@ -211,8 +211,6 @@
     <string name="pref_ui_theme_dark">Tumma</string>
     <string name="pref_ui_accent_title">Korostus</string>
     <string name="pref_network_title">Verkkoyhteys</string>
-    <string name="pref_install_profile_title">Asennusprofiilit (kokeellinen)</string>
-    <string name="pref_install_profile_summary">Valitse sovellusasennusten kohdeprofiili. Toimii vain root-asennustavalla</string>
     <string name="pref_install_mode_title">Asennustapa</string>
     <string name="pref_install_mode_summary">Valitse APK-asennustapa</string>
     <string name="pref_install_mode_session">Sessioasentaja</string>
@@ -221,8 +219,6 @@
     <string name="pref_install_mode_native">Natiiviasentaja</string>
     <string name="pref_install_delete_title">Poista APK:t asennuksen jälkeen</string>
     <string name="pref_install_delete_summary">APK:t poistetaan oletuksena</string>
-    <string name="pref_install_auto_title">Asenna APK:t automaattisesti latauksen jälkeen</string>
-    <string name="pref_install_auto_summary">Sovellusket asennetaan välittömästi latauksen valmistuttua</string>
     <string name="pref_insecure_anonymous_title">Turvaton anonyymi sessio</string>
     <string name="pref_insecure_anonymous_summary">Luo GSF ID paikallisesti tällä laitteella</string>
     <string name="pref_filter_search_title">Käytä väliaikaista hakujen suodatusta</string>

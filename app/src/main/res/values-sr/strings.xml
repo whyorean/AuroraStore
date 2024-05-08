@@ -56,8 +56,6 @@
     <string name="pref_ui_theme_dark">Тамна</string>
     <string name="pref_ui_theme_black">Црна</string>
     <string name="pref_ui_accent_title">Боја за наглашавање</string>
-    <string name="pref_install_profile_title">Инсталацијски профили (експериментално)</string>
-    <string name="pref_install_profile_summary">Изаберите циљни профил за инсталирање апликација. Ради само с root начином инсталације</string>
     <string name="pref_install_mode_title">Начин инсталације</string>
     <string name="pref_install_mode_summary">Изаберите начин инсталације APK-а</string>
     <string name="pref_install_mode_session">Програм за инсталацију „Сесија”</string>
@@ -66,8 +64,6 @@
     <string name="pref_install_mode_native">„Изворни” програм за инсталацију (застарео)</string>
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">Преузети APK-ови ће бити избрисани одмах након инсталације</string>
-    <string name="pref_install_auto_title">Аутоматски инсталирајте APK-ове након преузимања</string>
-    <string name="pref_install_auto_summary">Апликације се инсталирају одмах по завршетку преузимања</string>
     <string name="pref_filter_google_title">Филтрирај Google апликације</string>
     <string name="pref_filter_google_summary">Игноришите Google апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>

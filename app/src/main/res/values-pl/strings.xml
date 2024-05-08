@@ -146,8 +146,6 @@
     <string name="pref_ui_theme_dark">Ciemny</string>
     <string name="pref_ui_theme_black">Czarny</string>
     <string name="pref_ui_accent_title">Akcent</string>
-    <string name="pref_install_profile_title">Profile instalacji (eksperymentalne)</string>
-    <string name="pref_install_profile_summary">Wybierz profil, na którym chcesz instalować aplikacje. Działa tylko z metodą instalacji poprzez roota</string>
     <string name="pref_install_mode_summary">Wybierz tryb instalacji plików APK</string>
     <string name="pref_install_mode_session">Instalator sesji</string>
     <string name="pref_install_mode_services">Usługi Aurora (przestarzały)</string>
@@ -155,8 +153,6 @@
     <string name="pref_install_mode_native">Instalator natywny (przestarzały)</string>
     <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pobrane pliki APK zostaną usunięte zaraz po zakończonej instalacji</string>
-    <string name="pref_install_auto_title">Automatyczna instalacja plików APK po pobraniu</string>
-    <string name="pref_install_auto_summary">Aplikacje będą instalowane natychmiast po zakończeniu pobierania</string>
     <string name="pref_filter_google_title">Filtruj aplikacje Google</string>
     <string name="pref_filter_google_summary">Ignoruj aplikacje od Google w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>

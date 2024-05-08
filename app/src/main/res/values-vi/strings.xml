@@ -146,8 +146,6 @@
     <string name="pref_ui_theme_dark">Tối</string>
     <string name="pref_ui_theme_black">Đen</string>
     <string name="pref_network_title">Kết nối mạng</string>
-    <string name="pref_install_profile_title">Cấu hình cài đặt (Thử nghiệm)</string>
-    <string name="pref_install_profile_summary">Chọn cấu hình cài đặt ứng dụng. Chỉ hoạt động với phương pháp cài đặt root</string>
     <string name="pref_install_mode_title">Phương thức cài đặt</string>
     <string name="pref_install_mode_summary">Chọn chế độ cài đặt APK</string>
     <string name="pref_install_mode_session">Trình cài đặt phiên</string>
@@ -157,8 +155,6 @@
     <string name="pref_install_mode_native">Trình cài đặt gốc (Không dùng nữa)</string>
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
     <string name="pref_install_delete_summary">APK sẽ bị xóa theo mặc định</string>
-    <string name="pref_install_auto_title">Tự động cài đặt APK sau khi tải xuống</string>
-    <string name="pref_install_auto_summary">Ứng dụng được cài đặt ngay sau khi tải xuống hoàn tất</string>
     <string name="pref_insecure_anonymous_title">Phiên ẩn danh không an toàn</string>
     <string name="pref_filter_google_title">Lọc các ứng dụng của Google</string>
     <string name="pref_filter_google_summary">Bỏ qua các ứng dụng Google khỏi Cập nhật và Ứng dụng đã cài đặt</string>

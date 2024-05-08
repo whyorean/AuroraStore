@@ -128,7 +128,6 @@
     <string name="filter_review_five">별 5개</string>
     <string name="filter_review_one">별 1개</string>
     <string name="filter_review_three">별 3개</string>
-    <string name="pref_install_auto_title">다운로드 후 APK 자동 설치</string>
     <string name="notification_channel_alert">빠른 알림</string>
     <string name="installer_service_available">Aurora 서비스를 사용할 수 있으며 설치할 준비가 되었습니다.</string>
     <string name="installer_status_user_action">사용자의 승인 대기 중</string>
@@ -172,7 +171,6 @@
     <string name="pref_filter_google_summary">업데이트 및 설치된 앱에서 Google 앱 무시</string>
     <string name="pref_filter_search_title">비영구 검색 필터 사용</string>
     <string name="pref_insecure_anonymous_summary">기기에서 로컬로 GSF ID 생성</string>
-    <string name="pref_install_auto_summary">다운로드가 완료되면 앱이 즉시 설치됩니다</string>
     <string name="pref_filter_google_title">Google 앱 필터링</string>
     <string name="pref_filter_search_summary">검색 필터는 검색할 때마다 재설정됩니다. 검색 필터를 저장하려면 사용 중지하기</string>
     <string name="installer_status_failure">설치 실패</string>
@@ -202,7 +200,6 @@
     <string name="pref_install_mode_services">오로라 서비스 (지원 중단)</string>
     <string name="pref_install_mode_session">세션 설치기</string>
     <string name="pref_install_mode_title">설치 방식</string>
-    <string name="pref_install_profile_summary">앱을 설치할 대상 프로필을 선택하세요. 루트 설치 방법에서만 작동합니다</string>
     <string name="pref_ui_theme_dark">다크</string>
     <string name="pref_vending_version_title">Google Play 버전</string>
     <string name="pref_network_proxy_enable">프록시 켜기</string>
@@ -212,7 +209,6 @@
     <string name="pref_ui_theme_light">엷은 색</string>
     <string name="pref_ui_theme_system">시스템 설정을 따름</string>
     <string name="pref_ui_theme_title">테마</string>
-    <string name="pref_install_profile_title">설치 프로필 (실험적)</string>
     <string name="pref_network_title">네트워킹</string>
     <string name="pref_network_proxy_title">프록시</string>
     <string name="pref_ui_theme_black">검정</string>

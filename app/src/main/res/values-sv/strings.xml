@@ -56,7 +56,6 @@
     <string name="pref_ui_theme_dark">Mörk</string>
     <string name="pref_ui_theme_black">Svart</string>
     <string name="pref_network_title">Nätverk</string>
-    <string name="pref_install_profile_title">Installationsprofiler (Experimentell)</string>
     <string name="pref_install_mode_title">Installationsmetod</string>
     <string name="pref_install_mode_summary">Välj läge för APK-installation</string>
     <string name="pref_install_mode_session">Sessionsinstallatör</string>
@@ -64,8 +63,6 @@
     <string name="pref_install_mode_root">Root-installatör</string>
     <string name="pref_install_delete_title">Ta bort APK efter installation</string>
     <string name="pref_install_delete_summary">APK:er kommer att tas bort som standard</string>
-    <string name="pref_install_auto_title">Installera automatiskt APK:er efter nerladdning</string>
-    <string name="pref_install_auto_summary">Appar installeras direkt efter att nerladdning slutförs</string>
     <string name="pref_insecure_anonymous_title">Osäker anonym session</string>
     <string name="pref_insecure_anonymous_summary">Generera GSF-ID lokalt på enheten</string>
     <string name="pref_filter_google_title">Filtrera Google-appar</string>
@@ -251,7 +248,6 @@
     <string name="pref_abandon_session_desc">Ta bort övergivna eller väntande installationssessioner</string>
     <string name="pref_install_mode_native">Inbyggt installationsprogram (föråldrat)</string>
     <string name="title_installer">App-installerare</string>
-    <string name="pref_install_profile_summary">Välj målprofilen som appar ska installeras till. Fungerar endast med installationsmetoden som root</string>
     <string name="dialog_desc_native_split">Du kan inte installera medföljande (delade) appar via Systemspecifik installerare. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
     <string name="spoof_apply">Se till att du loggar in igen för att verkställa fusket</string>
     <string name="ui_accent_1">Blå</string>
