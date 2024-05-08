@@ -30,7 +30,6 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.store.R
 import com.aurora.store.data.ViewState
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDevProfileBinding
 import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -54,7 +53,6 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
         _binding = FragmentDevProfileBinding.bind(view)
 
         val developerCarouselController = DeveloperCarouselController(this)
-        val authData = AuthProvider.with(requireContext()).getAuthData()
 
         // Toolbar
         binding.layoutToolbarAction.apply {
