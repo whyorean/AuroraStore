@@ -27,10 +27,16 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.topjohnwu.superuser.Shell
+import dagger.hilt.android.qualifiers.ApplicationContext
 import org.greenrobot.eventbus.EventBus
 import java.util.regex.Pattern
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RootInstaller(context: Context) : InstallerBase(context) {
+@Singleton
+class RootInstaller @Inject constructor(
+    @ApplicationContext context: Context
+) : InstallerBase(context) {
 
     companion object {
 

@@ -42,9 +42,15 @@ import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.properties.Delegates
 
-class SessionInstaller(context: Context) : InstallerBase(context) {
+@Singleton
+class SessionInstaller @Inject constructor(
+    @ApplicationContext context: Context
+) : InstallerBase(context) {
 
     var parentSessionId by Delegates.notNull<Int>()
 

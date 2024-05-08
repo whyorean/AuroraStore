@@ -9,13 +9,16 @@ import com.aurora.Constants
 import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.room.download.Download
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class InstallActivity : AppCompatActivity() {
 
     private val TAG = InstallActivity::class.java.simpleName
 
-    private lateinit var sessionInstaller: SessionInstaller
+    @Inject
+    lateinit var sessionInstaller: SessionInstaller
+
     private lateinit var sessionCallback: SessionCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +58,6 @@ class InstallActivity : AppCompatActivity() {
     }
 
     private fun install(download: Download) {
-        sessionInstaller = SessionInstaller(this)
         try {
             sessionInstaller.install(download)
         } catch (exception: Exception) {

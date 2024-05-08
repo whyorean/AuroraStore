@@ -28,10 +28,16 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
+import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 @Deprecated("Deprecated in favour of SessionInstaller")
-class NativeInstaller(context: Context) : InstallerBase(context) {
+class NativeInstaller @Inject constructor(
+    @ApplicationContext context: Context
+) : InstallerBase(context) {
 
     companion object {
 

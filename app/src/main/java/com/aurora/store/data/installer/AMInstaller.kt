@@ -8,11 +8,17 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.aurora.store.util.PathUtil
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AMInstaller(context: Context) : InstallerBase(context) {
+@Singleton
+class AMInstaller @Inject constructor(
+    @ApplicationContext context: Context
+) : InstallerBase(context) {
 
     companion object {
         const val AM_PACKAGE_NAME = "io.github.muntashirakon.AppManager"

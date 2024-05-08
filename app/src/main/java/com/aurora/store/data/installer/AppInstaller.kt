@@ -42,8 +42,18 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class AppInstaller @Inject constructor(@ApplicationContext private val context: Context) {
+@Singleton
+class AppInstaller @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val sessionInstaller: SessionInstaller,
+    private val nativeInstaller: NativeInstaller,
+    private val rootInstaller: RootInstaller,
+    private val serviceInstaller: ServiceInstaller,
+    private val amInstaller: AMInstaller,
+    private val shizukuInstaller: ShizukuInstaller
+) {
 
     companion object {
         const val EXTRA_DOWNLOAD = "com.aurora.store.data.installer.AppInstaller.EXTRA_DOWNLOAD"
@@ -120,69 +130,24 @@ class AppInstaller @Inject constructor(@ApplicationContext private val context: 
         }
     }
 
-    val choiceAndInstaller = HashMap<Int, IInstaller>()
+    private val defaultInstaller: IInstaller
+        get() = sessionInstaller
 
     fun getPreferredInstaller(): IInstaller {
-        val prefValue = Preferences.getInteger(
-            context,
-            PREFERENCE_INSTALLER_ID
-        )
-
-        if (choiceAndInstaller.containsKey(prefValue)) {
-            return choiceAndInstaller[prefValue]!!
-        }
-
-        return when (prefValue) {
-            1 -> {
-                val installer = NativeInstaller(context)
-                choiceAndInstaller[prefValue] = installer
-                installer
-            }
-            2 -> {
-                val installer = if (hasRootAccess()) {
-                    RootInstaller(context)
-                } else {
-                    SessionInstaller(context)
-                }
-                choiceAndInstaller[prefValue] = installer
-                installer
-            }
-            3 -> {
-                val installer = if (hasAuroraService(context)) {
-                    ServiceInstaller(context)
-                } else {
-                    SessionInstaller(context)
-                }
-                choiceAndInstaller[prefValue] = installer
-                installer
-            }
-            4 -> {
-                val installer = if (hasAppManager(context)) {
-                    AMInstaller(context)
-                } else {
-                    SessionInstaller(context)
-                }
-                choiceAndInstaller[prefValue] = installer
-                installer
-            }
+        return when (Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)) {
+            0 -> sessionInstaller
+            1 -> nativeInstaller
+            2 -> if (hasRootAccess()) rootInstaller else defaultInstaller
+            3 -> if (hasAuroraService(context)) serviceInstaller else defaultInstaller
+            4 -> if (hasAppManager(context)) amInstaller else defaultInstaller
             5 -> {
-                if (isOAndAbove()) {
-                    val installer = if (hasShizukuOrSui(context) && hasShizukuPerm()) {
-                        ShizukuInstaller(context)
-                    } else {
-                        SessionInstaller(context)
-                    }
-                    choiceAndInstaller[prefValue] = installer
-                    installer
+                if (isOAndAbove() && hasShizukuOrSui(context) && hasShizukuPerm()) {
+                    shizukuInstaller
                 } else {
-                    SessionInstaller(context)
+                    defaultInstaller
                 }
             }
-            else -> {
-                val installer = SessionInstaller(context)
-                choiceAndInstaller[prefValue] = installer
-                installer
-            }
+            else -> defaultInstaller
         }
     }
 }
