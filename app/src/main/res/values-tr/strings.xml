@@ -397,4 +397,7 @@
     <string name="manage_account">Hesabınızı yönetin</string>
     <string name="pref_download_cache_title">İndirme önbelleğini sakla</string>
     <string name="pref_download_cache_summary">İndirme önbelleğinin ne kadar süreyle saklanacağı (başarısız, iptal edilen ve tamamlanan), saat cinsinden</string>
+    <string name="pref_clear_device_owner_title">Aygıt sahibini temizle</string>
+    <string name="pref_clear_device_owner_summary">Aurora Store\'un aygıt sahibi uygulaması olmasını kaldırır</string>
+    <string name="pref_clear_device_owner_desc">Bu, oturum kurucunun uygulamayı sessizce kurma iznini iptal edecektir. Aygıt sahipliğini temizlemeye devam edilsin mi?</string>
 </resources>
