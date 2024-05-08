@@ -27,7 +27,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
+    <string name="about_fdroid_summary">Hole Aurora Store via F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -37,7 +37,7 @@
     <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
     <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
-    <string name="about_gitlab_summary">Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Hole den Aurora Store-Quellcode von Aurora OSS bei GitLab.</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -64,7 +64,7 @@
     <string name="pref_filter_google_summary">Google-Apps aus Updates und Installationen ausblenden</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps aus Updates und Installationen ausblenden</string>
-    <string name="pref_dialog_to_apply_restart">Die Einstellung wird nach einem Neustart der App übernommen.</string>
+    <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach einem Neustart der App übernommen</string>
     <string name="pref_app_download">Downloads</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
@@ -72,7 +72,7 @@
     <string name="action_info">Infos zur App</string>
     <string name="action_filter_gsf_dependent_apps">Erfordert GSF</string>
     <string name="action_filter_apply">Anwenden</string>
-    <string name="toast_spoof_applied">Gerätevortäuschung angewendet</string>
+    <string name="toast_spoof_applied">Gerätevortäuschung angewendet.</string>
     <string name="toast_permission_granted">Berechtigung gewährt</string>
     <string name="toast_developer_setting_failed">Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
@@ -158,7 +158,7 @@
     <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
     <string name="exodus_powered">Bereitgestellt von Exodus Privacy</string>
     <string name="exodus_no_tracker">Enthält keine bekannten Tracker</string>
-    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
+    <string name="download_speed_estimating">Ermittlung</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
     <string name="download_pause_all">Alle anhalten</string>
@@ -166,7 +166,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
+    <string name="download_eta_calculating">Berechnet</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_canceled">Abgebrochen</string>
     <string name="download_cancel_all">Alle abbrechen</string>
@@ -195,9 +195,9 @@
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
     <string name="action_get_local_apk">App-Paket speichern</string>
-    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
+    <string name="about_xda_summary">Besuche den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge.</string>
     <string name="about_xda">XDA Entwickler-Forum</string>
-    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
+    <string name="about_telegram_summary">Tritt der Aurora-Support-Gruppe für Diskussionen oder Vorschläge bei.</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_share">Teilen</string>
     <string name="action_search">Suchen</string>
@@ -227,7 +227,7 @@
     <string name="pref_install_mode_native">Systemeigene Installation (Veraltet)</string>
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
     <string name="onboarding_title_installer">Installationsmethode</string>
-    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar</string>
+    <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar.</string>
     <string name="insecure_anonymous_apply">Bitte neu anmelden und die App neu starten, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>
     <string name="pref_insecure_anonymous_title">Unsichere anonyme Sitzungen</string>
@@ -239,12 +239,11 @@
     <string name="pref_ui_layout_tab">Startseite</string>
     <string name="pref_ui_layout">Seitengestaltung</string>
     <string name="pref_filter_search_title">Suchfilter jedes Mal zurücksetzen</string>
-    <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen
-\n(Suchfilter bleibt bei ausgeschalteter Option erhalten)</string>
+    <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen. Ausschalten, um Suchfilter zu speichern</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">Keine passende App gefunden</string>
     <string name="toast_manual_available">Herzlichen Glückwunsch, der angeforderte Versionscode ist verfügbar, lade ihn jetzt herunter.</string>
-    <string name="toast_manual_unavailable">Angeforderte Version ist nicht verfügbar</string>
+    <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Version auswählen</string>
     <string name="action_check">Prüfen</string>
     <string name="dialog_desc_native_split">Gebündelte/geteilte (Split-)APK-Dateien können nicht mit der systemeigenen Installationsmethode installiert werden. Bitte die Installationsmethode zu Sitzung, Services oder Root ändern.</string>
@@ -273,7 +272,7 @@
     <string name="ui_accent_11">Hellblau</string>
     <string name="ui_accent_12">Discord-Blau</string>
     <string name="ui_accent_13">Dunkelblau</string>
-    <string name="session_enjoy">Anmelden und genießen</string>
+    <string name="session_enjoy">Anmelden und genießen.</string>
     <string name="session_good">Boah! Alles gut.</string>
     <string name="session_init">Vorbereitung läuft …</string>
     <string name="session_login">Zuerst anmelden</string>
@@ -398,4 +397,7 @@
     <string name="am_installer_desc">Benötigt App Manager, braucht adb/root-Modus zur Installation, wenn die Miui-Optimierung an ist</string>
     <string name="shizuku_installer_subtitle">Direkte Verwendung von System-APIs mit adb/root-Rechten</string>
     <string name="shizuku_installer_desc">Benötigt Shizuku oder Sui, muss eingerichtet und genehmigt werden</string>
+    <string name="pref_clear_device_owner_title">Besitzer des Geräts löschen</string>
+    <string name="pref_clear_device_owner_summary">Entfernt Aurora Store als Gerätebesitzer App</string>
+    <string name="pref_clear_device_owner_desc">Dadurch wird dem Sitzungsinstallationsprogramm die Erlaubnis entzogen, die App im Hintergrund zu installieren. Mit dem Löschen der Geräteeigentümerschaft fortfahren?</string>
 </resources>
