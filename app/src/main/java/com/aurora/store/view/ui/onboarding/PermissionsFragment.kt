@@ -41,6 +41,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.isExternalStorageAccessible
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -214,7 +215,7 @@ class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permission
     private fun requestStorageManagerPermission() {
         if (isRAndAbove()) {
             startForStorageManagerResult.launch(
-                Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                PackageUtil.getStorageManagerIntent(requireContext())
             )
         }
     }

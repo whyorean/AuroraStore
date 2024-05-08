@@ -548,7 +548,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
                     startForStorageManagerResult.launch(
-                        Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                        PackageUtil.getStorageManagerIntent(requireContext())
                     )
                 } else {
                     viewModel.download(app)

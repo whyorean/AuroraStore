@@ -20,11 +20,9 @@
 package com.aurora.store.view.ui.updates
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
-import android.provider.Settings
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -41,6 +39,7 @@ import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentUpdatesBinding
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
@@ -244,7 +243,7 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
                     startForStorageManagerResult.launch(
-                        Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                        PackageUtil.getStorageManagerIntent(requireContext())
                     )
                 } else {
                     viewModel.download(app)
