@@ -1,0 +1,7 @@
+• Mehrere Fehlerkorrekturen und UI/UX-Verbesserungen
+• Neue Berechtigungen werden nun in der Berechtigungsliste hervorgehoben
+• Neue Spoof-Konfigurationen für x86-Geräte
+• Änderungen am Downloadsystem
+• Der Standard-Download-Speicherort wurde auf das interne Cache-Verzeichnis geändert
+• Downloads werden jetzt beim Neustart automatisch fortgesetzt, wenn Dateien vorhanden sind
+• Aktualisierungen der Übersetzung
