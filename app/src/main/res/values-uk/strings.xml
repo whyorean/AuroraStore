@@ -399,4 +399,5 @@
     <string name="pref_download_cache_summary">Як довго зберігати кеш завантажень (невдалих, скасованих і завершених), у годинах</string>
     <string name="pref_clear_device_owner_title">Видалити власника пристрою</string>
     <string name="pref_clear_device_owner_summary">Видаляє застосунок Aurora Store зі списку власників пристроїв</string>
+    <string name="pref_clear_device_owner_desc">Ця дія відкличе дозвіл встановлювача на встановлення застосунків у фоні. Впевнені, що хочете продовжити?</string>
 </resources>
