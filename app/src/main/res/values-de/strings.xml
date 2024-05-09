@@ -27,7 +27,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_bitcoin_eth">Ethereum</string>
-    <string name="about_fdroid_summary">Hole Aurora Store via F-Droid.</string>
+    <string name="about_fdroid_summary">Aurora Store über F-Droid herunterladen</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="details_dev_website">Website</string>
@@ -37,7 +37,7 @@
     <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
     <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
-    <string name="about_gitlab_summary">Hole den Aurora Store-Quellcode von Aurora OSS bei GitLab.</string>
+    <string name="about_gitlab_summary">Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -158,7 +158,7 @@
     <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
     <string name="exodus_powered">Bereitgestellt von Exodus Privacy</string>
     <string name="exodus_no_tracker">Enthält keine bekannten Tracker</string>
-    <string name="download_speed_estimating">Ermittlung</string>
+    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
     <string name="download_pause_all">Alle anhalten</string>
@@ -166,7 +166,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Berechnet</string>
+    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_canceled">Abgebrochen</string>
     <string name="download_cancel_all">Alle abbrechen</string>
@@ -195,9 +195,9 @@
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
     <string name="action_get_local_apk">App-Paket speichern</string>
-    <string name="about_xda_summary">Besuche den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge.</string>
+    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
     <string name="about_xda">XDA Entwickler-Forum</string>
-    <string name="about_telegram_summary">Tritt der Aurora-Support-Gruppe für Diskussionen oder Vorschläge bei.</string>
+    <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_share">Teilen</string>
     <string name="action_search">Suchen</string>
@@ -242,7 +242,7 @@
     <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen. Ausschalten, um Suchfilter zu speichern</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">Keine passende App gefunden</string>
-    <string name="toast_manual_available">Herzlichen Glückwunsch, der angeforderte Versionscode ist verfügbar, lade ihn jetzt herunter.</string>
+    <string name="toast_manual_available">Glückwunsch, der angeforderte Versionscode ist verfügbar und wird jetzt heruntergeladen.</string>
     <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Version auswählen</string>
     <string name="action_check">Prüfen</string>
@@ -342,7 +342,7 @@
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
-    <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle für automatische und selbsttätige Aktualisierungen in Stunden.</string>
+    <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Aktualisierungen.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur durch Aurora Store installierte Apps unter Updates und Installationen anzeigen</string>
     <string name="pref_updates_check_frequency">Häufigkeit für automatische Updates</string>
@@ -384,20 +384,20 @@
     <string name="pref_download_cache_title">Downloads im Cache behalten</string>
     <string name="manage_account">Dein Konto verwalten</string>
     <string name="failed_app_link">Nicht unterstützt, bitte versuche die Links manuell zuzuordnen</string>
-    <string name="manual_download_hint">Gebe den Code der Version ein, die du herunterladen möchtest</string>
+    <string name="manual_download_hint">Gib den Code der Version ein, die du herunterladen möchtest</string>
     <string name="session_installer_subtitle">Sitzungsbasiertes Installationsprogramm für gebündelte/geteilte APKs</string>
     <string name="session_installer_desc">Empfohlen, integriert und unterstützt alle Android-Versionen</string>
-    <string name="root_installer_subtitle">Shellbasiertes Installationsprogramm unter Verwendung von Root-Rechten</string>
+    <string name="root_installer_subtitle">Shell-basiertes Installationsprogramm unter Verwendung von Root-Rechten</string>
     <string name="root_installer_desc">Benötigt Root-/Superuser-Rechte, unterstützt alle Android-Versionen.</string>
-    <string name="native_installer_subtitle">Intent-basierter Installer, auf allen Geräten verfügbar</string>
+    <string name="native_installer_subtitle">Intent-basiertes Installationsprogramm, auf allen Geräten verfügbar</string>
     <string name="native_installer_desc">Am besten geeignet für Geräte, die unter Android 4.4 laufen</string>
-    <string name="services_installer_subtitle">Installer für Hintergrundinstallationen</string>
-    <string name="services_installer_desc">Benötigt die Installation von Aurora Services als privilegierte Systemapp</string>
-    <string name="am_installer_subtitle">Voll ausgestatteter Open-Source-Paketmanager</string>
-    <string name="am_installer_desc">Benötigt App Manager, braucht adb/root-Modus zur Installation, wenn die Miui-Optimierung an ist</string>
+    <string name="services_installer_subtitle">Installationsprogramm für Hintergrundinstallationen</string>
+    <string name="services_installer_desc">Benötigt die Installation von Aurora Services als privilegierte System-App</string>
+    <string name="am_installer_subtitle">Vollwertiger Open-Source-Paketmanager</string>
+    <string name="am_installer_desc">Benötigt App Manager, braucht den adb/root-Modus zur Installation, wenn die Miui-Optimierung an ist</string>
     <string name="shizuku_installer_subtitle">Direkte Verwendung von System-APIs mit adb/root-Rechten</string>
-    <string name="shizuku_installer_desc">Benötigt Shizuku oder Sui, muss eingerichtet und genehmigt werden</string>
-    <string name="pref_clear_device_owner_title">Besitzer des Geräts löschen</string>
-    <string name="pref_clear_device_owner_summary">Entfernt Aurora Store als Gerätebesitzer App</string>
+    <string name="shizuku_installer_desc">Benötigt Shizuku oder Sui, muss eingerichtet und berechtigt werden</string>
+    <string name="pref_clear_device_owner_title">Geräteeigentümer löschen</string>
+    <string name="pref_clear_device_owner_summary">Entfernt Aurora Store als Geräteeigentümer-App</string>
     <string name="pref_clear_device_owner_desc">Dadurch wird dem Sitzungsinstallationsprogramm die Erlaubnis entzogen, die App im Hintergrund zu installieren. Mit dem Löschen der Geräteeigentümerschaft fortfahren?</string>
 </resources>
