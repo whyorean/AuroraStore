@@ -173,7 +173,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             binding.layoutToolbarAction.toolbar.visibility = View.VISIBLE
         } else {
             binding.layoutAction.hide()
-            binding.layoutToolbarAction.toolbar.visibility = View.INVISIBLE
+            binding.layoutToolbarAction.toolbar.visibility = View.GONE
         }
     }
 
