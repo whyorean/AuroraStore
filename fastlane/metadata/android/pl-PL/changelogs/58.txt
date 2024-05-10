@@ -1,0 +1,4 @@
+• Naprawiono błąd logowania związany z kontami Google
+• Przeniesiono elementy szuflady nawigacyjnej do osobnego okna dialogowego
+• Przełączono na NavigationRail dla urządzeń z dużym ekranem
+• Możliwość eksportowania pobranych plików do zewnętrznej lokalizacji

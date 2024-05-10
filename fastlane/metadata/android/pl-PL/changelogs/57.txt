@@ -1,0 +1,7 @@
+• Liczne poprawki błędów i ulepszenia UI/UX
+• Nowe uprawnienia są teraz podświetlane w panelu uprawnień
+• Nowe konfiguracje spoof dla urządzeń x86
+• Zmiany w systemie pobierania plików
+  • Domyślna lokalizacja pobierania została zmieniona na wewnętrzny katalog pamięci podręcznej
+  • Pobieranie jest teraz automatycznie wznawiane po ponownym uruchomieniu, jeśli pliki istnieją
+• Aktualizacje tłumaczeń

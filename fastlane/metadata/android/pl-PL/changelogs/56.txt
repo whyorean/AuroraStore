@@ -1,7 +1,7 @@
-• Cel Android 14
-• Improve the F-Droid package filter for updates
-• Claim responsibility for future updates when installing apps using SessionInstaller (Android 14+)
+• Cel: Android 14
+• Ulepszono filtr pakietów F-Droid dla aktualizacji
+• Zastrzeżenie odpowiedzialności za przyszłe aktualizacje podczas instalowania aplikacji za pomocą SessionInstaller (Android 14+)
 • Zmieniono nazwę "Rozszerzone aktualizacje" na "Niekompatybilne aktualizacje"
-• Add menu action to create a shortcut for the installed app
+• Dodanie opcji menu umożliwiającej utworzenie skrótu do zainstalowanej aplikacji
 • Poprawki błędów i ulepszenia
 • Aktualizacje tłumaczeń

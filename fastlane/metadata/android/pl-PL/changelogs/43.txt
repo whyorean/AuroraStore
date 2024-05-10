@@ -1,0 +1,2 @@
+• Aktywowanie przycisku zakończenia na stronie uprawnień (naprawia wprowadzenie nowego użytkownika)
+• Zachowanie TypeToken biblioteki GSON podczas optymalizacji kompilacji (naprawia awarię uruchamiania)

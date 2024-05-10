@@ -1,0 +1,6 @@
+• Naprawiono awarię związaną z powiadomieniem o usługach instalacyjnych
+• Wyświetlanie tylko prawidłowych właściwości spoofingu w aplikacji
+• Powiadamianie użytkowników o ograniczeniach transferu podczas wyszukiwania
+• Wyświetlanie animacji migotania podczas wyszukiwania w celu wskazania postępu
+• Naprawiono zachowanie nawigacji po zmianie domyślnej karty
+• Naprawiono opcję szybkiego wyjścia
