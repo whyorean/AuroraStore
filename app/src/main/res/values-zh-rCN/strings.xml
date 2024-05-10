@@ -397,4 +397,7 @@
     <string name="manage_account">管理账户</string>
     <string name="pref_download_cache_title">保留下载缓存</string>
     <string name="pref_download_cache_summary">保留下载（失败、取消或完成）缓存的时间，小时为单位</string>
+    <string name="pref_clear_device_owner_desc">这会撤销会话安装程序静默安装应用的权限。要继续清除设备所有权吗？</string>
+    <string name="pref_clear_device_owner_title">清除设备所有者</string>
+    <string name="pref_clear_device_owner_summary">不再将 Aurora Store 作为设备所有者应用</string>
 </resources>

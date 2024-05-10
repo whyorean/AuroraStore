@@ -1,0 +1,7 @@
+• Ziel Android 14
+• Verbessern des F-Droid Paketfilters für Updates
+• Übernahme der Verantwortung für zukünftige Updates bei der Installation von Apps mit SessionInstaller (Android 14+)
+• Umbenennung von "Erweiterte Updates" in "Inkompatible Updates"
+• Hinzufügen einer Menüaktion zum Erstellen einer Verknüpfung für die installierte App
+• Fehlerkorrekturen und Verbesserungen
+• Aktualisierungen der Übersetzung

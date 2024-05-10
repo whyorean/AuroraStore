@@ -1,0 +1,9 @@
+• Przełączenie na motyw systemowy z ciemnego motywu powoduje prawidłową aktualizację interfejsu użytkownika
+• Okna dialogowe na ekranie głównym nie ukrywają już niektórych widoków
+• Otwarcie linku Google Play zapewnia teraz obecność ważnego i działającego konta
+• Szufladę nawigacyjną można otworzyć tylko na ekranie głównym
+• Akcja Wstecz powoduje teraz prawidłowe zamknięcie aplikacji na niektórych ekranach
+• Przyciski ustawień mają teraz odpowiedni odcień w ciemnym motywie
+• Nazwa aplikacji jest ponownie widoczna na pasku narzędzi dla raportów exodus
+• Wewnętrzne ulepszenia związane z obrazami
+• Aktualizacje tłumaczeń
