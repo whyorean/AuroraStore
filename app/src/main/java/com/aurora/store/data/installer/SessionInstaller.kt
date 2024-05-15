@@ -45,17 +45,17 @@ import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.properties.Delegates
 
 @Singleton
 class SessionInstaller @Inject constructor(
     @ApplicationContext context: Context
 ) : InstallerBase(context) {
 
-    var parentSessionId by Delegates.notNull<Int>()
+    val currentSessionId: Int?
+        get() = enqueuedSessions.firstOrNull()?.keys?.last()
 
     private val packageInstaller = context.packageManager.packageInstaller
-    private val sessionIdMap = mutableMapOf<Int, String>()
+    private val enqueuedSessions = mutableListOf<MutableMap<Int, String>>()
 
     val callback = object : PackageInstaller.SessionCallback() {
         override fun onCreated(sessionId: Int) {}
@@ -67,14 +67,26 @@ class SessionInstaller @Inject constructor(
         override fun onProgressChanged(sessionId: Int, progress: Float) {}
 
         override fun onFinished(sessionId: Int, success: Boolean) {
-            if (sessionId in sessionIdMap.keys) {
-                sessionIdMap.remove(sessionId)
-                if (sessionIdMap.isNotEmpty() && success) {
-                    val nextSession = sessionIdMap.keys.first()
-                    commitInstall(sessionIdMap.getValue(nextSession), nextSession)
+            enqueuedSessions.find { it.containsKey(sessionId) }?.let { sessionMap ->
+                sessionMap.remove(sessionId)
+
+                // If this was a shared lib, proceed installing other libs or actual package
+                if (sessionMap.isNotEmpty() && success) {
+                    val nextSession = sessionMap.keys.first()
+                    commitInstall(sessionMap.getValue(nextSession), nextSession)
                 } else {
-                    packageInstaller.unregisterSessionCallback(this)
+                    enqueuedSessions.remove(sessionMap)
                 }
+            }
+
+            if (enqueuedSessions.isNotEmpty()) {
+                enqueuedSessions.firstOrNull()?.let { sessionMap ->
+                    val nextSession = sessionMap.keys.first()
+                    commitInstall(sessionMap.getValue(nextSession), nextSession)
+                }
+            } else {
+                // Nothing else in queue, unregister callback
+                packageInstaller.unregisterSessionCallback(this)
             }
         }
     }
@@ -98,27 +110,40 @@ class SessionInstaller @Inject constructor(
     override fun install(download: Download) {
         super.install(download)
 
-        if (isAlreadyQueued(download.packageName)) {
+        val sessionMap = enqueuedSessions.find { it.values.contains(download.packageName) }
+        if (sessionMap != null) {
             Log.i("${download.packageName} already queued")
+            commitInstall(sessionMap.getValue(sessionMap.keys.first()), sessionMap.keys.first())
         } else {
             Log.i("Received session install request for ${download.packageName}")
+            val sessionIdMap = mutableMapOf<Int, String>()
 
             download.sharedLibs.forEach {
                 // Shared library packages cannot be updated
                 if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
-                    stageInstall(download.packageName, download.versionCode, it.packageName)
+                    stageInstall(download.packageName, download.versionCode, it.packageName)?.let { sessionID ->
+                        sessionIdMap[sessionID] = it.packageName
+                    }
                 }
             }
-            stageInstall(download.packageName, download.versionCode)
 
-            commitInstall(
-                sessionIdMap.getValue(sessionIdMap.keys.first()),
-                sessionIdMap.keys.first()
-            )
+            stageInstall(download.packageName, download.versionCode)?.let { sessionID ->
+                sessionIdMap[sessionID] = download.packageName
+            }
+
+            if (enqueuedSessions.isEmpty()) {
+                enqueuedSessions.add(sessionIdMap)
+                commitInstall(
+                    sessionIdMap.getValue(sessionIdMap.keys.first()),
+                    sessionIdMap.keys.first()
+                )
+            } else {
+                enqueuedSessions.add(sessionIdMap)
+            }
         }
     }
 
-    private fun stageInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
+    private fun stageInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = ""): Int? {
         val packageInstaller = context.packageManager.packageInstaller
 
         val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
@@ -144,7 +169,7 @@ class SessionInstaller @Inject constructor(
         val sessionId = packageInstaller.createSession(sessionParams)
         val session = packageInstaller.openSession(sessionId)
 
-        try {
+        return try {
             Log.i("Writing splits to session for $packageName")
             getFiles(packageName, versionCode, sharedLibPkgName).forEach {
                 it.inputStream().use { input ->
@@ -154,25 +179,23 @@ class SessionInstaller @Inject constructor(
                     }
                 }
             }
-
-            // Add session to list of staged sessions
-            sessionIdMap[sessionId] = packageName
-            if (sharedLibPkgName.isBlank()) parentSessionId = sessionId
+            sessionId
         } catch (exception: Exception) {
             session.abandon()
             removeFromInstallQueue(packageName)
             postError(packageName, exception.localizedMessage, exception.stackTraceToString())
+            null
         }
     }
 
     private fun commitInstall(packageName: String, sessionId: Int) {
         Log.i("Starting install session for $packageName")
         val session = packageInstaller.openSession(sessionId)
-        session.commit(getCallBackIntent(packageName).intentSender)
+        session.commit(getCallBackIntent(packageName, sessionId).intentSender)
         session.close()
     }
 
-    private fun getCallBackIntent(packageName: String): PendingIntent {
+    private fun getCallBackIntent(packageName: String, sessionId: Int): PendingIntent {
         val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
             action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
             setPackage(context.packageName)
@@ -186,6 +209,6 @@ class SessionInstaller @Inject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT
         }
 
-        return PendingIntent.getBroadcast(context, parentSessionId, callBackIntent, flags)
+        return PendingIntent.getBroadcast(context, sessionId, callBackIntent, flags)
     }
 }
