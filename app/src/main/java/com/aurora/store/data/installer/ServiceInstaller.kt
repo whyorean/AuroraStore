@@ -247,7 +247,8 @@ class ServiceInstaller @Inject constructor(
                             context.getString(R.string.installer_status_success)
                         )
                     )
-                    onInstallationSuccess()
+                    // Installation is not yet finished if this is a shared library
+                    if (packageName == download?.packageName) onInstallationSuccess()
                 }
                 else -> {
                     val error = AppInstaller.getErrorString(

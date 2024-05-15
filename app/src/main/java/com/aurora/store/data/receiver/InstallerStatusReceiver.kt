@@ -34,6 +34,7 @@ import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.inForeground
 import com.aurora.store.util.NotificationUtil
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
@@ -52,7 +53,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == ACTION_INSTALL_STATUS) {
-            val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
+            val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)!!
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
             val download = IntentCompat.getParcelableExtra(
@@ -61,6 +62,9 @@ class InstallerStatusReceiver : BroadcastReceiver() {
 
             // If package was successfully installed, exit after notifying user and doing cleanup
             if (status == PackageInstaller.STATUS_SUCCESS && download != null) {
+                // No post-install steps for shared libraries
+                if (PackageUtil.isSharedLibrary(context, packageName)) return
+
                 AppInstaller.notifyInstallation(context, download)
                 if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                     PathUtil.getAppDownloadDir(context, download.packageName, download.versionCode)
@@ -73,7 +77,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 promptUser(intent, context)
             } else {
                 postStatus(status, packageName, extra, context)
-                notifyUser(context, packageName!!, status)
+                notifyUser(context, packageName, status)
             }
         }
     }

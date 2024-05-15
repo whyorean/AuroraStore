@@ -100,7 +100,8 @@ class RootInstaller @Inject constructor(
                 val shellResult = Shell.cmd("pm install-commit $sessionId").exec()
 
                 if (shellResult.isSuccess) {
-                    onInstallationSuccess()
+                    // Installation is not yet finished if this is a shared library
+                    if (packageName == download?.packageName) onInstallationSuccess()
                 } else {
                     removeFromInstallQueue(packageName)
                     val event = InstallerEvent.Failed(
