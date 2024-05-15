@@ -57,6 +57,28 @@ class SessionInstaller @Inject constructor(
     private val packageInstaller = context.packageManager.packageInstaller
     private val sessionIdMap = mutableMapOf<Int, String>()
 
+    val callback = object : PackageInstaller.SessionCallback() {
+        override fun onCreated(sessionId: Int) {}
+
+        override fun onBadgingChanged(sessionId: Int) {}
+
+        override fun onActiveChanged(sessionId: Int, active: Boolean) {}
+
+        override fun onProgressChanged(sessionId: Int, progress: Float) {}
+
+        override fun onFinished(sessionId: Int, success: Boolean) {
+            if (sessionId in sessionIdMap.keys) {
+                sessionIdMap.remove(sessionId)
+                if (sessionIdMap.isNotEmpty() && success) {
+                    val nextSession = sessionIdMap.keys.first()
+                    commitInstall(sessionIdMap.getValue(nextSession), nextSession)
+                } else {
+                    packageInstaller.unregisterSessionCallback(this)
+                }
+            }
+        }
+    }
+
     companion object {
 
         fun getInstallerInfo(context: Context): InstallerInfo {
@@ -69,6 +91,10 @@ class SessionInstaller @Inject constructor(
         }
     }
 
+    init {
+        runOnUiThread { packageInstaller.registerSessionCallback(callback) }
+    }
+
     override fun install(download: Download) {
         super.install(download)
 
@@ -77,28 +103,6 @@ class SessionInstaller @Inject constructor(
         } else {
             Log.i("Received session install request for ${download.packageName}")
 
-            val callback = object : PackageInstaller.SessionCallback() {
-                override fun onCreated(sessionId: Int) {}
-
-                override fun onBadgingChanged(sessionId: Int) {}
-
-                override fun onActiveChanged(sessionId: Int, active: Boolean) {}
-
-                override fun onProgressChanged(sessionId: Int, progress: Float) {}
-
-                override fun onFinished(sessionId: Int, success: Boolean) {
-                    if (sessionId in sessionIdMap.keys && success) {
-                        sessionIdMap.remove(sessionId)
-                        if (sessionIdMap.isNotEmpty()) {
-                            val nextSession = sessionIdMap.keys.first()
-                            commitInstall(sessionIdMap.getValue(nextSession), nextSession)
-                        } else {
-                            packageInstaller.unregisterSessionCallback(this)
-                        }
-                    }
-                }
-            }
-
             download.sharedLibs.forEach {
                 // Shared library packages cannot be updated
                 if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
@@ -106,10 +110,6 @@ class SessionInstaller @Inject constructor(
                 }
             }
             stageInstall(download.packageName, download.versionCode)
-
-            if (sessionIdMap.size > 1) {
-                runOnUiThread { packageInstaller.registerSessionCallback(callback) }
-            }
 
             commitInstall(
                 sessionIdMap.getValue(sessionIdMap.keys.first()),
