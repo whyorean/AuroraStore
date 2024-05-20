@@ -12,10 +12,6 @@ stages:
 assembleDebug:
   stage: build
   image: theimpulson/gitlab-ci-android:latest
-  cache:
-    key: ${CI_PROJECT_ID}
-    paths:
-      - .gradle/
   script:
     - './gradlew assembleDebug'
   artifacts:
