@@ -2,6 +2,7 @@ package com.aurora.store.data.room
 
 import android.content.Context
 import androidx.room.Room
+import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
 import dagger.Module
 import dagger.Provides
@@ -18,8 +19,12 @@ object RoomModule {
 
     @Singleton
     @Provides
-    fun providesRoomInstance(@ApplicationContext context: Context): AuroraDatabase {
+    fun providesRoomInstance(
+        @ApplicationContext context: Context,
+        downloadConverter: DownloadConverter
+    ): AuroraDatabase {
         return Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
+            .addTypeConverter(downloadConverter)
             .fallbackToDestructiveMigration()
             .build()
     }

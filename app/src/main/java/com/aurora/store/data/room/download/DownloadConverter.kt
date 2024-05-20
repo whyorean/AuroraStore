@@ -1,31 +1,36 @@
 package com.aurora.store.data.room.download
 
+import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.aurora.gplayapi.data.models.File
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object DownloadConverter {
+@Singleton
+@ProvidedTypeConverter
+class DownloadConverter @Inject constructor(private val gson: Gson) {
 
     @TypeConverter
     fun toSharedLibList(string: String): List<SharedLib> {
         val listType = object : TypeToken<List<SharedLib>>() {}.type
-        return Gson().fromJson(string, listType)
+        return gson.fromJson(string, listType)
     }
 
     @TypeConverter
     fun fromSharedLibList(list: List<SharedLib>): String {
-        return Gson().toJson(list)
+        return gson.toJson(list)
     }
 
     @TypeConverter
     fun toGPlayFileList(string: String): List<File> {
         val listType = object : TypeToken<List<File>>() {}.type
-        return Gson().fromJson(string, listType)
+        return gson.fromJson(string, listType)
     }
 
     @TypeConverter
     fun fromGPlayFileList(list: List<File>): String {
-        return Gson().toJson(list)
+        return gson.toJson(list)
     }
 }
