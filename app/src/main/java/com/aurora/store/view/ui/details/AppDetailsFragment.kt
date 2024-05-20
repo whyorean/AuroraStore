@@ -115,6 +115,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             if (isRAndAbove() && Environment.isExternalStorageManager()) {
                 viewModel.download(app)
             } else {
+                flip(0)
                 toast(R.string.permissions_denied)
             }
         }
@@ -123,6 +124,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             if (it) {
                 viewModel.download(app)
             } else {
+                flip(0)
                 toast(R.string.permissions_denied)
             }
         }
