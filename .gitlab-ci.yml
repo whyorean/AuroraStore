@@ -11,7 +11,7 @@ stages:
 
 assembleDebug:
   stage: build
-  image: theimpulson/gitlab-ci-android:android-34
+  image: theimpulson/gitlab-ci-android:latest
   cache:
     key: ${CI_PROJECT_ID}
     paths:
