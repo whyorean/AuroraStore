@@ -32,6 +32,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven("https://jitpack.io/")
         maven("https://maven.google.com/")
+        maven("https://gitlab.com/api/v4/projects/18497829/packages/maven")
     }
 }
 include(":app")
