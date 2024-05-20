@@ -21,27 +21,25 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import com.aurora.store.data.Filter
-import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class FilterProvider private constructor(var context: Context) {
+@Singleton
+class FilterProvider @Inject constructor(
+    private val gson: Gson,
+    @ApplicationContext private val context: Context
+) {
 
-    companion object : SingletonHolder<FilterProvider, Context>(::FilterProvider) {
+    companion object {
         const val PREFERENCE_FILTER = "PREFERENCE_FILTER"
     }
 
-    private var gson: Gson = GsonBuilder()
-        .excludeFieldsWithModifiers(Modifier.TRANSIENT)
-        .create()
-
     fun getSavedFilter(): Filter {
-        var rawFilter = Preferences.getString(context, PREFERENCE_FILTER)
-        if (rawFilter.isEmpty())
-            rawFilter = "{}"
-        return gson.fromJson(rawFilter, Filter::class.java)
+        val rawFilter = Preferences.getString(context, PREFERENCE_FILTER)
+        return gson.fromJson(rawFilter.ifEmpty { "{}" }, Filter::class.java)
     }
 
     fun saveFilter(filter: Filter) {

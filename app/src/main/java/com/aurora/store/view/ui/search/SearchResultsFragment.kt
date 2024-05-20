@@ -34,7 +34,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.R
 import com.aurora.store.data.Filter
-import com.aurora.store.data.providers.FilterProvider
+import com.aurora.store.data.providers.FilterProvider.Companion.PREFERENCE_FILTER
 import com.aurora.store.databinding.FragmentSearchResultBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
@@ -60,7 +60,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     private lateinit var searchView: TextInputEditText
 
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var filter: Filter
 
     private var query: String? = null
     private var searchBundle: SearchBundle = SearchBundle()
@@ -74,7 +73,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
         sharedPreferences = Preferences.getPrefs(view.context)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
-        filter = FilterProvider.with(view.context).getSavedFilter()
 
         // Toolbar
         binding.layoutViewToolbar.apply {
@@ -121,7 +119,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         context?.let {
             sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
             if (Preferences.getBoolean(it, Preferences.PREFERENCE_FILTER_SEARCH)) {
-                FilterProvider.with(it).saveFilter(Filter())
+                viewModel.filterProvider.saveFilter(Filter())
             }
         }
         super.onDestroyView()
@@ -242,7 +240,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         val tempList:MutableList<App> = mutableListOf()
         tempList.addAll(appList)
 
-        filter = FilterProvider.with(requireContext()).getSavedFilter()
+        val filter = viewModel.filterProvider.getSavedFilter()
         return tempList
             .asSequence()
             .filter { it.displayName.isNotEmpty() } // Some of the apps may not have metadata
@@ -255,11 +253,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == FilterProvider.PREFERENCE_FILTER) {
-            filter = FilterProvider.with(requireContext()).getSavedFilter()
-            query?.let {
-                queryViewModel(it)
-            }
-        }
+        if (key == PREFERENCE_FILTER) query?.let { queryViewModel(it) }
     }
 }
