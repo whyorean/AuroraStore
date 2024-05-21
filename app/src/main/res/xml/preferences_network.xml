@@ -19,6 +19,13 @@
 
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <Preference
+        app:allowDividerBelow="true"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_DISPENSER_URLS"
+        app:summary="@string/pref_dispenser_summary"
+        app:title="@string/pref_dispenser_title" />
+
     <PreferenceCategory
         app:allowDividerAbove="true"
         app:allowDividerBelow="true"

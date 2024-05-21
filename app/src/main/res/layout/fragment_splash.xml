@@ -70,12 +70,12 @@
             tools:text="Sign in first" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/layout_action"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/padding_large"
         android:visibility="invisible"
@@ -86,17 +86,13 @@
             style="@style/AuroraTextStyle.Line1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/margin_normal"
-            android:text="@string/account_login_using"
-            android:textAlignment="center" />
+            android:text="@string/account_login_using" />
 
         <com.aurora.store.view.custom.layouts.button.StateButton
             android:id="@+id/btn_google"
             android:layout_width="@dimen/width_button"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_action"
-            android:layout_centerHorizontal="true"
             app:btnStateIcon="@drawable/ic_google"
             app:btnStateText="@string/account_google" />
 
@@ -104,8 +100,7 @@
             android:id="@+id/btn_anonymous"
             android:layout_width="@dimen/width_button"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn_google"
-            android:layout_centerHorizontal="true"
+            android:visibility="gone"
             app:btnStateIcon="@drawable/ic_anonymous"
             app:btnStateText="@string/account_anonymous" />
 
@@ -113,8 +108,7 @@
             android:id="@+id/btn_anonymous_insecure"
             android:layout_width="@dimen/width_button"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn_anonymous"
-            android:layout_centerHorizontal="true"
+            android:visibility="gone"
             app:btnStateIcon="@drawable/ic_anonymous"
             app:btnStateText="@string/account_anonymous_insecure" />
 
@@ -123,10 +117,8 @@
             style="@style/AuroraTextStyle.Line3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
             android:textAlignment="center"
             tools:text="Version 4.0.1" />
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

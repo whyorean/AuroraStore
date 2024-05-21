@@ -436,4 +436,18 @@
     <string name="pref_clear_device_owner_title">Clear device owner</string>
     <string name="pref_clear_device_owner_summary">Removes Aurora Store as the device owner app</string>
     <string name="pref_clear_device_owner_desc">This will revoke session installer\'s permission to silently install app. Proceed with clearing device ownership?</string>
+
+    <!-- DispenserFragment -->
+    <string name="pref_dispenser_title">Manage dispensers</string>
+    <string name="pref_dispenser_summary">View and manage token dispensers for anonymous logins</string>
+
+    <!-- DialogDispenserInput-->
+    <string name="add_dispenser_title">Add dispenser</string>
+    <string name="add_dispenser_summary">Add a token dispenser to Aurora Store. Token dispensers provide account credentials to Aurora Store for logging in anonymously.</string>
+    <string name="add_dispenser_error">Invalid URL</string>
+    <string name="add_dispenser_hint">Dispenser URL</string>
+    <string name="remove_dispenser_title">Remove dispenser</string>
+    <string name="remove_dispenser_summary">Do you wish to remove the dispenser \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="add">Add</string>
+    <string name="remove">Remove</string>
 </resources>

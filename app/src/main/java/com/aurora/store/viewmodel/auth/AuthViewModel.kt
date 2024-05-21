@@ -43,6 +43,7 @@ import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
+import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -65,6 +66,12 @@ class AuthViewModel @Inject constructor(
     private val TAG = AuthViewModel::class.java.simpleName
 
     private val spoofProvider = SpoofProvider(context)
+
+    val dispenserURL: String?
+        get() {
+            val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
+            return if (dispensers.isNotEmpty()) dispensers.random() else null
+        }
 
     val liveData: MutableLiveData<AuthState> = MutableLiveData()
 
@@ -119,7 +126,7 @@ class AuthViewModel @Inject constructor(
                 val playResponse = HttpClient
                     .getPreferredClient(context)
                     .postAuth(
-                        Constants.URL_DISPENSER,
+                        dispenserURL!!,
                         gson.toJson(properties).toByteArray()
                     )
 
@@ -154,7 +161,7 @@ class AuthViewModel @Inject constructor(
 
                 val playResponse = HttpClient
                     .getPreferredClient(context)
-                    .getAuth(Constants.URL_DISPENSER)
+                    .getAuth(dispenserURL!!)
 
                 if (playResponse.isSuccessful) {
                     val insecureAuth = gson.fromJson(

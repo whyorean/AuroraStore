@@ -27,17 +27,20 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.aurora.Constants
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
+import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
@@ -162,6 +165,10 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         save(PREFERENCE_FILTER_SEARCH, true)
 
         /*Network*/
+        // TODO: Gather feedback and drop setting default dispenser for all builds
+        if (!CertUtil.isAppGalleryApp(requireContext(), requireContext().packageName)) {
+            save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER))
+        }
         save(PREFERENCE_INSECURE_ANONYMOUS, false)
         save(PREFERENCE_VENDING_VERSION, 0)
 

@@ -4,9 +4,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.aurora.Constants
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_MIGRATION_VERSION
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
@@ -43,6 +45,7 @@ class MigrationReceiver: BroadcastReceiver() {
         if (currentVersion == 0) {
             CacheWorker.scheduleAutomatedCacheCleanup(context)
             if (isSAndAbove()) context.save(PREFERENCE_THEME_ACCENT, 0)
+            context.save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER))
             currentVersion++
         }
 

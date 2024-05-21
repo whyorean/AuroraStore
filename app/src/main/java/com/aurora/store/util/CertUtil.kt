@@ -39,6 +39,11 @@ object CertUtil {
         return isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
     }
 
+    fun isAppGalleryApp(context: Context, packageName: String): Boolean {
+        val appGalleryPackageName = "com.huawei.appmarket"
+        return context.packageManager.getInstallerPackageNameCompat(packageName) == appGalleryPackageName
+    }
+
     fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> {
         return try {
             val certificates = getX509Certificates(context, packageName)

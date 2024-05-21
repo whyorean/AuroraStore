@@ -46,6 +46,13 @@ class NetworkPreference : BasePreferenceFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_network, rootKey)
 
+        findPreference<Preference>(Preferences.PREFERENCE_DISPENSER_URLS)?.apply {
+            setOnPreferenceClickListener {
+                findNavController().navigate(R.id.dispenserFragment)
+                true
+            }
+        }
+
         findPreference<EditTextPreference>(Preferences.PREFERENCE_PROXY_URL)?.let {
             it.summary =
                 Preferences.getString(requireContext(), Preferences.PREFERENCE_PROXY_URL, "")

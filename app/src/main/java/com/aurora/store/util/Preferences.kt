@@ -53,6 +53,7 @@ object Preferences {
     const val PREFERENCE_PROXY_INFO = "PREFERENCE_PROXY_INFO"
     const val PREFERENCE_PROXY_ENABLED = "PREFERENCE_PROXY_ENABLED"
 
+    const val PREFERENCE_DISPENSER_URLS = "PREFERENCE_DISPENSER_URLS"
     const val PREFERENCE_VENDING_VERSION = "PREFERENCE_VENDING_VERSION"
 
     const val PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED"
@@ -74,6 +75,10 @@ object Preferences {
         getPrefs(context).edit().putString(key, value).apply()
     }
 
+    fun putStringSet(context: Context, key: String, value: Set<String>) {
+        getPrefs(context).edit().putStringSet(key, value).apply()
+    }
+
     fun putInteger(context: Context, key: String, value: Int) {
         getPrefs(context).edit().putInt(key, value).apply()
     }
@@ -92,6 +97,10 @@ object Preferences {
 
     fun getString(context: Context, key: String, default: String = ""): String {
         return getPrefs(context).getString(key, default).toString()
+    }
+
+    fun getStringSet(context: Context, key: String, default: Set<String> = emptySet()): Set<String> {
+        return getPrefs(context).getStringSet(key, default) ?: emptySet()
     }
 
     fun getInteger(context: Context, key: String, default: Int = 0): Int {
@@ -119,9 +128,13 @@ fun Context.save(key: String, value: Boolean) = Preferences.putBoolean(this, key
 
 fun Context.save(key: String, value: String) = Preferences.putString(this, key, value)
 
+fun Context.save(key: String, value: Set<String>) = Preferences.putStringSet(this, key, value)
+
 
 fun Fragment.save(key: String, value: Int) = requireContext().save(key, value)
 
 fun Fragment.save(key: String, value: Boolean) = requireContext().save(key, value)
 
 fun Fragment.save(key: String, value: String) = requireContext().save(key, value)
+
+fun Fragment.save(key: String, value: Set<String>) = requireContext().save(key, value)

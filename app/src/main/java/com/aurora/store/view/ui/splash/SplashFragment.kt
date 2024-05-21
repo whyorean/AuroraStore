@@ -86,6 +86,12 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         attachActions()
 
+        // Show anonymous logins if we have dispenser URL
+        if (!viewModel.dispenserURL.isNullOrBlank()) {
+            binding.btnAnonymous.visibility = View.VISIBLE
+            binding.btnAnonymousInsecure.visibility = View.VISIBLE
+        }
+
         //Initial status
         updateStatus(getString(R.string.session_init))
 
