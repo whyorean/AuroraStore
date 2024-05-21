@@ -27,7 +27,6 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
 
     private val playStoreDomain = "play.google.com"
     private val marketDomain = "market.android.com"
-    private val amazonAppStoreDomain = "www.amazon.com"
 
     // AppLink buttons
     private lateinit var buttons: Map<String, MaterialButton>
@@ -47,7 +46,6 @@ class AppLinksFragment : Fragment(R.layout.fragment_app_links) {
         buttons = mapOf(
             playStoreDomain to binding.playStoreButton,
             marketDomain to binding.marketButton,
-            amazonAppStoreDomain to binding.amazonAppStoreButton
         )
 
         updateButtonState()

@@ -316,13 +316,6 @@
             android:name="packageName"
             android:defaultValue=""
             app:argType="string" />
-        <!-- Amazon Appstore -->
-        <deepLink
-            app:action="android.intent.action.VIEW"
-            app:uri="amzn://apps/android?p={packageName}" />
-        <deepLink
-            app:action="android.intent.action.VIEW"
-            app:uri="www.amazon.com/gp/mas/dl/android?p={packageName}" />
         <!-- Android Market (deprecated) -->
         <deepLink
             app:action="android.intent.action.VIEW"
