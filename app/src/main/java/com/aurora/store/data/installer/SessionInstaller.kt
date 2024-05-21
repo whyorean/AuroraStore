@@ -73,7 +73,7 @@ class SessionInstaller @Inject constructor(
                 // If this was a shared lib, proceed installing other libs or actual package
                 if (sessionMap.isNotEmpty() && success) {
                     val nextSession = sessionMap.keys.first()
-                    commitInstall(sessionMap.getValue(nextSession), nextSession)
+                    commitInstall(sessionMap.getValue(nextSession), nextSession); return
                 } else {
                     enqueuedSessions.remove(sessionMap)
                 }
@@ -131,15 +131,12 @@ class SessionInstaller @Inject constructor(
                 sessionIdMap[sessionID] = download.packageName
             }
 
-            if (enqueuedSessions.isEmpty()) {
-                enqueuedSessions.add(sessionIdMap)
-                commitInstall(
-                    sessionIdMap.getValue(sessionIdMap.keys.first()),
-                    sessionIdMap.keys.first()
-                )
-            } else {
-                enqueuedSessions.add(sessionIdMap)
-            }
+            // Enqueue and trigger installation
+            enqueuedSessions.add(sessionIdMap)
+            commitInstall(
+                sessionIdMap.getValue(sessionIdMap.keys.first()),
+                sessionIdMap.keys.first()
+            )
         }
     }
 
