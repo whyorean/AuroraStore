@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.extensions.isIgnoringBatteryOptimizations
+import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.work.CleanCacheWorker
 import com.aurora.store.data.work.UpdateWorker
@@ -46,6 +47,8 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
+import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
+import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -163,6 +166,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/
+        save(PREFERENCE_THEME_TYPE, 0)
+        save(PREFERENCE_THEME_ACCENT, if (isSAndAbove()) 0 else 1)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
         save(PREFERENCE_SIMILAR, true)
