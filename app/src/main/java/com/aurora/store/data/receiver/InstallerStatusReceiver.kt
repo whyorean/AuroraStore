@@ -26,7 +26,6 @@ import android.content.pm.PackageInstaller
 import android.util.Log
 import androidx.core.content.IntentCompat
 import com.aurora.extensions.runOnUiThread
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -58,10 +57,10 @@ class InstallerStatusReceiver : BroadcastReceiver() {
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
             val download = IntentCompat.getParcelableExtra(
                 intent, EXTRA_DOWNLOAD, Download::class.java
-            )
+            )!!
 
             // If package was successfully installed, exit after notifying user and doing cleanup
-            if (status == PackageInstaller.STATUS_SUCCESS && download != null) {
+            if (status == PackageInstaller.STATUS_SUCCESS) {
                 // No post-install steps for shared libraries
                 if (PackageUtil.isSharedLibrary(context, packageName)) return
 
@@ -77,20 +76,20 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 promptUser(intent, context)
             } else {
                 postStatus(status, packageName, extra, context)
-                notifyUser(context, packageName, status)
+                notifyUser(context, download, status)
             }
         }
     }
 
-    private fun notifyUser(context: Context, packageName: String, status: Int) {
+    private fun notifyUser(context: Context, download: Download, status: Int) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = NotificationUtil.getInstallerStatusNotification(
             context,
-            App(packageName),
+            download,
             AppInstaller.getErrorString(context, status)
         )
-        notificationManager.notify(packageName.hashCode(), notification)
+        notificationManager.notify(download.packageName.hashCode(), notification)
     }
 
     private fun promptUser(intent: Intent, context: Context) {

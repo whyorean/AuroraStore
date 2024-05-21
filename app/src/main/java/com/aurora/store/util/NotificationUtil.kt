@@ -8,10 +8,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -27,7 +25,6 @@ import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
-import java.net.URL
 import java.util.UUID
 
 object NotificationUtil {
@@ -170,17 +167,18 @@ object NotificationUtil {
             .build()
     }
 
-    fun getInstallerStatusNotification(context: Context, app: App, content: String?): Notification {
-        val builder =
-            NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT).apply {
-                color = context.getStyledAttributeColor(R.color.colorAccent)
-                setSmallIcon(R.drawable.ic_install)
-                setContentTitle(app.displayName)
-                setContentText(content)
-                setContentIntent(getContentIntentForDetails(context, app.packageName))
-                setSubText(app.packageName)
-            }
-        return builder.build()
+    fun getInstallerStatusNotification(
+        context: Context,
+        download: Download,
+        content: String?
+    ): Notification {
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+            .setSmallIcon(R.drawable.ic_install)
+            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
+            .setContentTitle(download.displayName)
+            .setContentText(content)
+            .setContentIntent(getContentIntentForDetails(context, download.packageName))
+            .build()
     }
 
     fun getOngoingUpdateNotification(context: Context): Notification {
