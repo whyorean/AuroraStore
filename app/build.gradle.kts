@@ -24,6 +24,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.parcelize)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.navigation)
@@ -103,9 +104,6 @@ android {
         viewBinding = true
         aidl = true
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
