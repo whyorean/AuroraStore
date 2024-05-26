@@ -1,4 +1,6 @@
-Aurora Store は、エレガントなデザインを備えた Googleの非公式 FOSS クライアントです。 Aurora Store の利用者は、Play ストアなどのアプリをダウンロード、更新、検索できます。 Google Play開発者サービス や microG の有無に問わず正常に動作します。
+Aurora Store は、エレガントなデザインを備えた Googleの非公式 FOSS クライアントです。
+Aurora Store の利用者は、Play ストアなどのアプリをダウンロード、更新、検索できます。
+Google Play開発者サービス や microG の有無に問わず正常に動作します。
 
 <b>機能</b>
 
