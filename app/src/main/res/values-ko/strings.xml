@@ -191,7 +191,7 @@
     <string name="pref_install_delete_title">설치 후 APK 삭제</string>
     <string name="onboarding_permission_doze">백그라운드 다운로드</string>
     <string name="onboarding_permission_doze_desc">Aurora Store가 백그라운드에서 앱을 다운로드하고 업데이트하도록 허용</string>
-    <string name="pref_install_delete_summary">APK는 기본적으로 삭제됩니다</string>
+    <string name="pref_install_delete_summary">다운로드한 APK는 설치 후 즉시 삭제됩니다</string>
     <string name="pref_install_mode_shizuku">Shizuku 설치기</string>
     <string name="pref_install_mode_native">기본 설치 프로그램(소멸됨)</string>
     <string name="pref_install_mode_root">루트 설치기</string>
@@ -395,4 +395,9 @@
     <string name="native_installer_desc">Android 4.4 이하를 실행하는 장치에 가장 적합합니다</string>
     <string name="title_more">더 보기</string>
     <string name="manage_account">계정 관리</string>
+    <string name="pref_download_cache_title">다운로드 캐시 유지</string>
+    <string name="pref_download_cache_summary">다운로드 캐시(실패, 취소 및 완료)를 보존하는 기간(시간)</string>
+    <string name="pref_clear_device_owner_title">장치 소유자 삭제</string>
+    <string name="pref_clear_device_owner_summary">Aurora Store는 더 이상 장치 소유자 앱으로 사용할 수 없습니다.</string>
+    <string name="pref_clear_device_owner_desc">세션 설치 프로그램의 자동 설치 권한이 취소됩니다.장치 소유권을 계속 삭제하시겠습니까?</string>
 </resources>
