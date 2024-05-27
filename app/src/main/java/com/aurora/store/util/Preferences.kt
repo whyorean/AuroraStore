@@ -60,6 +60,8 @@ object Preferences {
     const val PREFERENCE_UPDATES_AUTO = "PREFERENCE_UPDATES_AUTO"
     const val PREFERENCE_UPDATES_CHECK_INTERVAL = "PREFERENCE_UPDATES_CHECK_INTERVAL"
 
+    const val PREFERENCE_MIGRATION_VERSION = "PREFERENCE_MIGRATION_VERSION"
+
     private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences {
