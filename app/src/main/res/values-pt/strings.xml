@@ -21,7 +21,7 @@
     <string name="about_bitcoin_btc_summary">Doar através de Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Doar através de Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Doar através de UPI</string>
     <string name="details_dev_address">Endereço</string>
     <string name="details_description">Descrição</string>
@@ -29,7 +29,7 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_ui_accent_title">Cor de destaque</string>
-    <string name="title_apps_sale">Aplicações em promoção</string>
+    <string name="title_apps_sale">Aplicações à venda</string>
     <string name="title_apps_library">Aplicações na biblioteca</string>
     <string name="onboarding_permission_installer_desc">Permitir instalação de aplicações a partir da Aurora Store</string>
     <string name="dialog_desc_native_split">Não é possível instalar conjuntos de aplicações via instalador nativo. Altere para o instalador de sessão, serviços ou root.</string>
@@ -39,14 +39,14 @@
     <string name="pref_install_mode_services">Aurora Services (descontinuado)</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o Token AAS</string>
-    <string name="toast_rated_success">Avaliada, pode levar algum tempo pa mostrar</string>
+    <string name="toast_rated_success">Avaliada, pode demorar algum tempo a aparecer</string>
     <string name="toast_page_unavailable">Página de navegação indisponível</string>
     <string name="toast_manual_available">Parabéns, o código da versão solicitada está disponível. A descarregar neste momento.</string>
     <string name="toast_manual_unavailable">O código da versão solicitada não está disponível.</string>
     <string name="toast_purchase_blocked">A compra de aplicações não está disponível em contas anónimas.</string>
     <string name="toast_spoof_applied">Disfarce do dispositivo aplicado.</string>
     <string name="toast_permission_granted">Permissão concedida</string>
-    <string name="toast_developer_setting_failed">Ative as ferramentas do programador para as conseguir abrir.</string>
+    <string name="toast_developer_setting_failed">Ative as definições de programador nas definições do dispositivo para as abrir.</string>
     <string name="toast_clipboard_copied">Copiado para a área de transferência</string>
     <string name="toast_apk_whitelisted">Adicionada à lista branca</string>
     <string name="toast_apk_blacklisted">Adicionada à lista negra</string>
@@ -79,8 +79,8 @@
     <string name="tab_for_you">Para si</string>
     <string name="tab_editor_choice">Escolhas do editor</string>
     <string name="tab_categories">Categorias</string>
-    <string name="insecure_anonymous_apply">Certifique-se de que se volta a autenticar para aplicar as alterações.</string>
-    <string name="spoof_apply">Certifique-se de que se volta a autenticar para aplicar o disfarce</string>
+    <string name="insecure_anonymous_apply">Certifique-se de que volta a iniciar sessão e reinicia a aplicação para aplicar as alterações.</string>
+    <string name="spoof_apply">Certifique-se de que volta a iniciar sessão para aplicar o disfarce</string>
     <string name="purchase_session_expired">Sessão expirada. Volte a autenticar-se para uma nova sessão.</string>
     <string name="purchase_no_file">Não foi possível obter os ficheiros</string>
     <string name="purchase_not_found">Aplicação não encontrada</string>
@@ -106,8 +106,8 @@
     <string name="pref_install_mode_session">Instalador de sessão</string>
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>
-    <string name="pref_install_delete_title">Apagar APK após a instalação</string>
-    <string name="pref_install_delete_summary">Por definição, as APK serão apagadas</string>
+    <string name="pref_install_delete_title">Eliminar o APK após a instalação</string>
+    <string name="pref_install_delete_summary">Os APKs descarregados serão eliminados imediatamente após a instalação</string>
     <string name="pref_insecure_anonymous_title">Sessão anónima insegura</string>
     <string name="pref_insecure_anonymous_summary">Gerar ID de GSF localmente no dispositivo</string>
     <string name="pref_filter_search_title">Filtros de pesquisa não persistentes</string>
@@ -123,7 +123,7 @@
     <string name="pref_abandon_session">Forçar limpeza de sessões de instalação</string>
     <string name="onboarding_permission_installer">Permissão do instalador</string>
     <string name="onboarding_permission_esm">Gestor de armazenamento externo</string>
-    <string name="onboarding_permission_esa_desc">Para guardar os ficheiros (APK &amp; OBB), exporte e importe as configurações do dispositivo de e para o armazenamento externo.</string>
+    <string name="onboarding_permission_esa_desc">Para guardar ficheiros de expansão APK (OBBs) para aplicações e jogos de grande dimensão.</string>
     <string name="onboarding_permission_esa">Acesso a armazenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_title_welcome">Bem-vindo</string>
@@ -148,7 +148,7 @@
     <string name="installer_status_failure_session">Não foi possível criar a sessão</string>
     <string name="installer_status_failure_blocked">Instalação bloqueada</string>
     <string name="installer_status_failure">Instalador falhou</string>
-    <string name="installer_service_misconfigured">Configure Aurora Services e conceda as permissões necessárias.</string>
+    <string name="installer_service_misconfigured">Configure os serviços Aurora e conceda todas as permissões primeiro.</string>
     <string name="installer_service_unavailable">Instale Aurora Services 1.0.9+ ou escolha outro instalador.</string>
     <string name="installer_service_available">Aurora Services está disponível e pronto para instalar.</string>
     <string name="installer_root_unavailable">Sem acesso root. Conceda-o ou escolha outro instalador.</string>
@@ -161,10 +161,10 @@
     <string name="filter_review_critical">Crítico</string>
     <string name="filter_review_all">Tudo</string>
     <string name="exodus_view_report">Ver relatório</string>
-    <string name="exodus_powered">Serviço disponibilizado por Exodus</string>
+    <string name="exodus_powered">Disponibilizado por Exodus Privacy</string>
     <string name="exodus_substring">rastreador(es) encontrado(s) em</string>
-    <string name="exodus_progress">A verificar rastreadores…</string>
-    <string name="exodus_no_tracker">Contém rastreadores não conhecidos</string>
+    <string name="exodus_progress">A verificar a existência de rastreadores…</string>
+    <string name="exodus_no_tracker">Não contém rastreadores conhecidos</string>
     <string name="download_resume_all">Retomar todas</string>
     <string name="download_queued">Na fila</string>
     <string name="download_pause_all">Pausa em tudo</string>
@@ -181,7 +181,7 @@
     <string name="details_permission">Permissão</string>
     <string name="details_paid">Paga</string>
     <string name="details_no_updates">Não existem atualizações</string>
-    <string name="toast_rated_failed">A avaliação não foi submetida</string>
+    <string name="toast_rated_failed">Não foi possível submeter a avaliação</string>
     <string name="action_filter_rating">Avaliações</string>
     <string name="details_ratings">Avaliações e comentários</string>
     <string name="details_more_about_app">Mais informações</string>
@@ -198,11 +198,11 @@
     <string name="details_dependencies">Dependências</string>
     <string name="details_changelog">Novidades</string>
     <string name="details_beta_delay">A adesão poderá levar algum tempo. Pode verificar o estado mais tarde.</string>
-    <string name="details_beta_description">Terá acesso a novas funcionalidades e erros antes do público. Dê o seu feedback aos programadores para podermos melhorar.</string>
+    <string name="details_beta_description">Verá novas funcionalidades e erros antes do público. Dê a sua opinião aos programadores para os ajudar a melhorar.</string>
     <string name="details_beta_available">Aderir ao programa beta\?</string>
     <string name="details_beta_subscribed">É um beta tester</string>
     <string name="details_beta">Programa beta</string>
-    <string name="action_wishlist_add">Adicionar aos favoritos</string>
+    <string name="action_wishlist_add">Adicionar à lista de desejos</string>
     <string name="action_whitelist">Lista branca</string>
     <string name="action_update_all">Atualizar tudo</string>
     <string name="action_update">Atualizar</string>
@@ -251,8 +251,8 @@
     <string name="account_logout">Terminar sessão</string>
     <string name="account_login_using">Iniciar sessão com</string>
     <string name="account_logged_out">Sem sessão iniciada</string>
-    <string name="toast_export_failed">Não foi possível exportar as definições</string>
-    <string name="toast_export_success">Definições exportadas</string>
+    <string name="toast_export_failed">Não foi possível exportar a configuração do dispositivo</string>
+    <string name="toast_export_success">Configuração do dispositivo exportada</string>
     <string name="app_updater_service_notif_text">Permite descarregar aplicações em segundo plano</string>
     <string name="app_updater_service_notif_title">Descarregar aplicação em segundo plano</string>
     <string name="notification_channel_updater_service">Serviço de descargas em segundo plano</string>
@@ -275,8 +275,8 @@
     <string name="action_import">Importar</string>
     <string name="download_eta_hrs">Faltam %1$dh %2$dm %3$ds</string>
     <string name="download_eta_sec">Faltam %1$ds</string>
-    <string name="toast_import_success">Definições importadas</string>
-    <string name="rate_limited">Parece que está conta tem limitações de taxa!</string>
+    <string name="toast_import_success">Configuração do dispositivo importada</string>
+    <string name="rate_limited">Esta conta tem limite de utilizações!</string>
     <string name="error">Ocorreu um erro!</string>
     <string name="menu">Menu</string>
     <string name="expand">Expandir</string>
@@ -286,7 +286,7 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> mais</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e mais <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="download_eta_min">Faltam %1$dm %2$ds</string>
     <string name="download_paused">Em pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">A descarregar • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -303,7 +303,7 @@
     <string name="session_scrapped">Última sessão perdida</string>
     <string name="session_verifying">A verificar sessão</string>
     <string name="session_verifying_google">A verificar sessão Goggle</string>
-    <string name="toast_import_failed">Não foi possível importar as definições</string>
+    <string name="toast_import_failed">Não foi possível importar a configuração do dispositivo</string>
     <string name="ui_accent_0">Sistema</string>
     <string name="update_available">atualização disponível</string>
     <string name="updates_available">atualizações disponíveis</string>
@@ -313,21 +313,21 @@
     <string name="server_maintenance">Servidor em manutenção</string>
     <string name="notification_channel_updates">Notificação sobre atualizações</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> atualizações disponíveis</string>
-    <string name="notification_updates_available_desc_1">Está disponível uma nova versão para<xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="notification_updates_available_desc_1">Está disponível uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="checking_for_updates">A procurar atualizações</string>
     <string name="app_links_desc">Permitir abertura de ligações através de Aurora</string>
     <string name="failed_to_fetch_report">Não foi possível obter o relatório de privacidade</string>
     <string name="access_denied_using_vpn">Acesso recusado. Está a usar uma VPN ou Tor\?</string>
     <string name="bad_request">Erro interno. Tente mais tarde.</string>
-    <string name="login_rate_limited">Parece que a sua rede tem limites</string>
+    <string name="login_rate_limited">A sua conta tem limite de utilizações</string>
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão. Código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Verificar ligação</string>
     <string name="app_language">Idioma</string>
     <string name="title_search_suggestion">Sugestão de pesquisa</string>
     <string name="title_search_results">Resultados da pesquisa</string>
-    <string name="failed_to_generate_session">Falha ao gerar a sessão</string>
-    <string name="verifying_new_session">A tentar nova sessão</string>
+    <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
+    <string name="verifying_new_session">A verificar a nova sessão</string>
     <string name="app_links_title">Ligações</string>
     <string name="action_enable">Ativar</string>
     <string name="action_enabled">Ativado</string>
@@ -345,32 +345,59 @@
     <string name="pref_aurora_only_desc">Mostrar apenas aplicações instaladas via Aurora Store</string>
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="title_app_settings">Definições</string>
-    <string name="title_apps_sale_provider">Serviço - bestappsales.com</string>
+    <string name="title_apps_sale_provider">Fornecedor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Não há aplicações à venda</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
-    <string name="pref_download_directory_error">Não é possível guardar no caminho escolhido</string>
+    <string name="pref_download_directory_error">O caminho selecionado não é gravável</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>
-    <string name="pref_network_proxy_enable_desc">Permite que o tráfego da aplicação seja através de um proxy</string>
+    <string name="pref_network_proxy_enable_desc">Permitir que todo o tráfego da aplicação passe pelo proxy</string>
     <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação\?</string>
-    <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-fi</string>
+    <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-Fi</string>
     <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão Google Play</string>
     <string name="device_doze_description">Por favor, desative as otimizações de bateria para permitir operações em plano de fundo.</string>
-    <string name="onboarding_permission_doze">Descargas de fundo</string>
+    <string name="onboarding_permission_doze">Descargas em segundo plano</string>
     <string name="device_doze_title">Otimizações de bateria detetadas!</string>
-    <string name="device_doze_extra">Opcionalmente, pode escolher a manter as otimizações ativas, mas não será capaz de fazer uso das decargas em plano de fundo e atualizações automáticas, a escolha é a sua.</string>
-    <string name="onboarding_permission_doze_desc">Permitir que a Aurora Store descarregue e atualize apps em segundo plano</string>
-    <string name="device_doze_subtitle">Aurora Store não pode instalar, descarregar ou atualizar apps no plano de fundo devido a otimizações de bateria.</string>
-    <string name="pref_updates_auto">Atualizar apps automaticamente</string>
+    <string name="device_doze_extra">Opcionalmente, pode optar por manter as otimizações ativadas, mas nesse caso não poderá beneficiar das descargas em segundo plano e das atualizações automáticas, pelo que a escolha é sua.</string>
+    <string name="onboarding_permission_doze_desc">Permitir que a Aurora Store descarregue e atualize aplicações em segundo plano</string>
+    <string name="device_doze_subtitle">Aurora Store não pode instalar, descarregar ou atualizar aplicações em segundo plano devido a otimizações da bateria.</string>
+    <string name="pref_updates_auto">Atualizar aplicações automaticamente</string>
     <string name="pref_updates_auto_desc">Configurar comportamento da atualização automática</string>
     <string name="pref_updates_auto_notify">Verificar e notificar sobre atualizações disponíveis</string>
     <string name="pref_updates_auto_install">Verificar e instalar atualizações disponíveis automaticamente</string>
-    <string name="pref_updates_auto_off">Não atualizar apps automaticamente</string>
+    <string name="pref_updates_auto_off">Não atualizar automaticamente as aplicações</string>
     <string name="action_request_analysis">Requisitar nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APK</string>
     <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
     <string name="action_manage">Gerir</string>
-    <string name="action_home_screen">Adicionar ao ecrã</string>
+    <string name="action_home_screen">Adicionar ao ecrã inicial</string>
     <string name="download_clear_finished">Limpeza efetuada</string>
     <string name="pref_updates_incompatible_desc">Mostrar atualizações para aplicações incompatíveis ou desativadas</string>
+    <string name="failed_app_link">Não suportado, tente associar as ligações manualmente</string>
+    <string name="manual_download_hint">Introduza o código da versão que pretende descarregar</string>
+    <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
+    <string name="source_code_title">Código-fonte</string>
+    <string name="source_code_subtitle">Descubra o que está no interior</string>
+    <string name="privacy_policy_title">Política de privacidade</string>
+    <string name="privacy_policy_subtitle">Saiba como a Aurora Store utiliza os seus dados</string>
+    <string name="disclaimer_subtitle">Responsabilidade e obrigação de prestar contas</string>
+    <string name="pref_download_cache_title">Manter a cache de descargas</string>
+    <string name="pref_download_cache_summary">Quanto tempo deve ser preservada a cache das descargas (falhadas, canceladas e concluídas), em horas</string>
+    <string name="services_installer_desc">Requer que os serviços Aurora sejam instalados como uma aplicação de sistema privilegiado</string>
+    <string name="native_installer_desc">Mais adequado para dispositivos com versões inferiores ao Android 4.4</string>
+    <string name="services_installer_subtitle">Instalador para instalações em segundo plano</string>
+    <string name="shizuku_installer_subtitle">Utilizar as APIs do sistema diretamente com privilégios adb / root</string>
+    <string name="shizuku_installer_desc">Requer Shizuku ou Sui, precisa de ser configurado e de ter permissão concedida</string>
+    <string name="session_installer_subtitle">Instalador baseado em sessão para APKs agrupados / divididos</string>
+    <string name="session_installer_desc">Recomendado, incorporado e compatível com todas as versões do Android</string>
+    <string name="root_installer_subtitle">Instalador baseado em shell usando permissões de root</string>
+    <string name="root_installer_desc">Requer privilégios de root / superutilizador, suporta todas as versões do Android.</string>
+    <string name="native_installer_subtitle">Instalador baseado em intenções, disponível em todos os dispositivos</string>
+    <string name="title_more">Mais</string>
+    <string name="manage_account">Gerir a sua conta</string>
+    <string name="pref_clear_device_owner_title">Limpar o proprietário do dispositivo</string>
+    <string name="pref_clear_device_owner_summary">Remove a Aurora Store como a aplicação do proprietário do dispositivo</string>
+    <string name="pref_clear_device_owner_desc">Isto irá revogar a permissão do instalador da sessão para instalar silenciosamente a aplicação. Continuar com a limpeza da propriedade do dispositivo?</string>
+    <string name="am_installer_subtitle">Gestor de pacotes de código aberto com todas as funcionalidades</string>
+    <string name="am_installer_desc">Requer o App Manager, precisa do modo adb / root para instalar quando a otimização do MIUI está ativada</string>
 </resources>
