@@ -229,7 +229,7 @@
     <string name="pref_filter_google_title">飛起 Google 啲 app</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
     <string name="exodus_substring">個已知追蹤器發現潛伏喺</string>
-    <string name="exodus_powered">由 Exodus 技術協力</string>
+    <string name="exodus_powered">技術協力：Exodus 私隱</string>
     <string name="app_language">個 App 用咩文</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
     <string name="pref_common_extra">其他</string>
@@ -252,7 +252,7 @@
     <string name="toast_proxy_failed">設定唔到代理伺服器</string>
     <string name="pref_network_proxy_enable_desc">等個 app 所有網絡通訊都流經代理伺服器</string>
     <string name="pref_install_mode_title">安裝方法</string>
-    <string name="pref_install_delete_summary">預設會剷走啲 APK</string>
+    <string name="pref_install_delete_summary">下載嘅 APK 一安裝完就即刻剷走</string>
     <string name="action_uninstall_confirmation">係咪要解除安裝呢個 app？</string>
     <string name="pref_downloader_wifi_title">淨係用 WiFi 下載</string>
     <string name="pref_install_delete_title">安裝之後剷走 APK</string>
