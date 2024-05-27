@@ -1,3 +1,3 @@
-• Corrige apps não instalando após a descarga
-• Permite escolher diretório personalizado de descargas
-• Adiciona opção de descargas usando apenas Wi-Fi
+• Corrigir aplicações que não são instaladas após a descarga
+• Permitir a escolha de um diretório de descarga personalizado
+• Adicionar opção de descarregamento apenas via Wi-Fi

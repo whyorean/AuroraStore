@@ -1,0 +1,4 @@
+• Corrigido o problema com o início de sessão relacionado com as contas Google
+• Deslocação dos itens da gaveta de navegação para uma caixa de diálogo separada
+• Mudança para o NavigationRail em dispositivos com ecrã grande
+• Capacidade de exportar as descargas para uma localização externa

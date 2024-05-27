@@ -1,0 +1,7 @@
+• Alvo Android 14
+• Melhorar o filtro de pacotes F-Droid para atualizações
+• Reivindicar a responsabilidade por futuras atualizações ao instalar aplicações utilizando o SessionInstaller (Android 14+)
+• Renomear "Atualizações alargadas" para "Atualizações incompatíveis"
+• Adicionar ação de menu para criar um atalho para a aplicação instalada
+• Correções de erros e melhorias
+• Atualizações nas traduções
