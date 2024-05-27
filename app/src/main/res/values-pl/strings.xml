@@ -397,4 +397,7 @@
     <string name="manage_account">Zarządzaj swoim kontem</string>
     <string name="pref_download_cache_summary">Jak długo ma być przechowywana pamięć podręczna pobrań (nieudanych, anulowanych i ukończonych), w godzinach</string>
     <string name="pref_download_cache_title">Zachowaj pamięć podręczną pobrań</string>
+    <string name="pref_clear_device_owner_title">Usuń właściciela urządzenia</string>
+    <string name="pref_clear_device_owner_summary">Usuwa Aurora Store z listy właścicieli urządzeń</string>
+    <string name="pref_clear_device_owner_desc">Ta czynność cofnie uprawnienia instalatora do instalowania aplikacji w tle. Jesteś pewien, że chcesz kontynuować?</string>
 </resources>
