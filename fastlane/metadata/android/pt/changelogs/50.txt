@@ -1,9 +1,9 @@
 • Mudar para o tema do sistema dum tema escuro atualiza a IU corretamente
-• Diálogos no ecrã inicial não mais escondem certas visualizações
-• Abrir uma ligação do Google Play garante uma conta válida e funcional presente
-• Gaveta de navegação agora abre só do ecrã inicial
-• Botão Voltar agora sai do app corretamente em certos ecrãs
-• Botão Ajustes tem um tom correto no tema escuro
-• Nome do app é visível de novo na toolbar para denúncias de exodus
+• Diálogos no ecrã inicial já não escondem certas vistas
+• Abrir uma ligação do Google Play garante agora uma conta válida e funcional
+• Gaveta de navegação só pode ser aberta no ecrã inicial
+• Botão Voltar agora sai corretamente em certos ecrãs
+• Botões nas definições têm um tom correto no tema escuro
+• Nome da aplicação visível de novo nos relatórios do exodus
 • Melhorias internas em imagens
 • Traduções atualizadas

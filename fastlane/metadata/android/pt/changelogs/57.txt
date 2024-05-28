@@ -1,0 +1,7 @@
+• Várias correções de erros e melhorias na IU/UX
+• As novas permissões são agora destacadas na folha de permissões
+• Novas configurações de disfarce para dispositivos x86
+• Alterações ao sistema de descargas
+  • A localização predefinida das descargas foi alterada para o diretório de cache interno
+  • As descargas são agora retomadas automaticamente quando reiniciadas, se existirem ficheiros
+• Atualizações nas traduções

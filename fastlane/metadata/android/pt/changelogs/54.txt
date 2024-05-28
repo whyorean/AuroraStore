@@ -1,0 +1,18 @@
+• Alterações no sistema de descargas
+  • Requerida nova permissão para descarregar em segundo plano
+  • Funcionalidades Pausa e Retomar descontinuadas para as descargas
+  • Descargas simultâneas descontinuadas (limitado a 1)
+  • Verificação automática SHA256 e SHA1 de ficheiros descarregados
+  • Melhor suporte a aplicações com bibliotecas partilhadas, como Chrome e WebView
+• Alterações no sistema de atualizações
+  • Novas atualizações automáticas para aplicações
+  • Nova verificação automática de certificados para atualizações
+  • Suporte para atualizações com rotação da chave de assinatura (após o Android 9.0+)
+  • As atualizações automáticas foram desativadas por predefinição (ativar em Definições > Atualizar)
+• O Instalador nativo e os Serviços Aurora foram descontinuados
+• A exportação de aplicações instaladas já não requer permissão de armazenamento
+• Versão mínima necessária do Android para as aplicações é agora visível na página de detalhes da aplicação
+• Traduções e correções várias
+• Suporte a instalação de aplicações com Sui (módulo Shizuku Magisk)
+• Possibilidade de substituir a versão do GMS em Definições > Rede
+• Material3 utilizado em mais locais
