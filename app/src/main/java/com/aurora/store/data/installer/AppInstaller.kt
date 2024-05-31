@@ -28,9 +28,9 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
@@ -108,19 +108,17 @@ class AppInstaller @Inject constructor(
         }
 
         fun hasAuroraService(context: Context): Boolean {
-            val isInstalled = PackageUtil.isInstalled(
-                context,
-                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
-            )
-
-            val isCorrectVersionInstalled =
-                PackageUtil.isInstalled(
+            return try {
+                val packageInfo = PackageUtil.getPackageInfo(
                     context,
-                    ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME,
-                    if (BuildConfig.VERSION_CODE < 31) 8 else 9
+                    ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
                 )
+                val version = PackageInfoCompat.getLongVersionCode(packageInfo)
 
-            return isInstalled && isCorrectVersionInstalled
+                packageInfo.applicationInfo.enabled && version >= 9
+            } catch (exception: Exception) {
+                false
+            }
         }
 
         fun hasAppManager(context: Context): Boolean {
