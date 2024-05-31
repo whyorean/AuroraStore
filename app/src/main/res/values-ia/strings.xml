@@ -133,7 +133,6 @@
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="notification_updates_available_desc_1">Un nove version de <xliff:g id="app_one_name">%1$s</xliff:g> es disponibile</string>
     <string name="action_enable">Activar</string>
-    <string name="checking_for_updates">Verificante actualisationes</string>
     <string name="update_available">actualisation disponibile</string>
     <string name="menu">Menu</string>
     <string name="pref_network_title">Retes</string>

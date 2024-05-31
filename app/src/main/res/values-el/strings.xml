@@ -336,7 +336,6 @@
     <string name="update_available">διαθέσιμη ενημέρωση</string>
     <string name="downloading_dep">Λήψη επιπρόσθετων αρχείων για <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> και <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="checking_for_updates">Γίνεται έλεγχος για ενημερώσεις</string>
     <string name="pref_updates_check_frequency">Συχνότητα αυτόματων ενημερώσεων</string>
     <string name="notification_channel_updates">Ειδοποιήσεις ενημέρωσης</string>
     <string name="notification_updates_available_desc_1">Μια νέα έκδοση της <xliff:g id="app_one_name">%1$s</xliff:g> είναι διαθέσιμη</string>

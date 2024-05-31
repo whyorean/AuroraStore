@@ -306,7 +306,6 @@
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> සඳහා අතිරේක ගොනු බාගැනෙමින්</string>
     <string name="onboarding_permission_notifications_desc">ස්ථාපන තත්‍වය පිළිබඳව දැනුම්දීම් එවන්න</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> හි නව අනුවාදයක් තිබේ</string>
-    <string name="checking_for_updates">යාවත්කාල බලමින්</string>
     <string name="notification_updates_available">යාවත්කාල <xliff:g id="apps_count">%1$d</xliff:g> ක් තිබේ</string>
     <string name="installer_shizuku_unavailable">ෂිසුකු හරියාකාරව සකසා හෝ ස්ථාපනය කර නැත.</string>
     <string name="pref_install_mode_shizuku">ෂිසුකු ස්ථාපකය</string>

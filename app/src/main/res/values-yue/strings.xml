@@ -207,7 +207,6 @@
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> 出咗更新喇</string>
     <string name="action_enable">啟用</string>
     <string name="pref_filter_fdroid_title">飛起 F-Droid 啲 app</string>
-    <string name="checking_for_updates">睇緊有冇更新</string>
     <string name="exodus_progress">檢查緊有冇追蹤器…</string>
     <string name="update_available">個更新出咗喇</string>
     <string name="toast_page_unavailable">遊覽頁欠奉</string>

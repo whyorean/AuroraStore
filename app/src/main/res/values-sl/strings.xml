@@ -292,7 +292,6 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> posodobitev na voljo</string>
     <string name="notification_updates_available_desc_1">Nova različica <xliff:g id="app_one_name">%1$s</xliff:g> je na voljo</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> in <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="checking_for_updates">Preverjanje posodobitev</string>
     <string name="failed_to_fetch_report">Poročila o zasebnosti ni bilo mogoče pridobiti</string>
     <string name="access_denied_using_vpn">Dostop zavrnjen! Ali uporabljate VPN ali Tor\?</string>
     <string name="server_unreachable">Strežnik nedosegljiv</string>

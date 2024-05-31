@@ -315,7 +315,6 @@
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_install_mode_shizuku">Shizuku instalatzailea</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> aplikazioaren bertsio berri bat eskuragarri dago</string>
-    <string name="checking_for_updates">Eguneratzeen bila</string>
     <string name="onboarding_permission_doze">Atzeko planoko deskargak</string>
     <string name="toast_proxy_invalid">Proxy-aren URL baliogabea, egiaztatu formatua.</string>
     <string name="title_search_suggestion">Bilaketarako iradokizuna</string>

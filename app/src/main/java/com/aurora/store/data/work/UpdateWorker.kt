@@ -7,7 +7,6 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy.KEEP
-import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
@@ -83,7 +82,6 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     private val notificationID = 100
-    private val workerID = 101
 
     override suspend fun doWork(): Result {
         Log.i(TAG, "Checking for app updates")
@@ -138,9 +136,5 @@ class UpdateWorker @AssistedInject constructor(
             }
         }
         return Result.success()
-    }
-
-    override suspend fun getForegroundInfo(): ForegroundInfo {
-        return ForegroundInfo(workerID, NotificationUtil.getOngoingUpdateNotification(appContext))
     }
 }

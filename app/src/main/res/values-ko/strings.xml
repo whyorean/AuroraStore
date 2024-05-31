@@ -253,7 +253,6 @@
     <string name="rate_limited">Oops, 이 계정은 제한됩니다!</string>
     <string name="pref_updates_check_frequency">자동 업데이트 작동주기</string>
     <string name="tab_top_free">인기 무료</string>
-    <string name="checking_for_updates">업데이트 확인</string>
     <string name="ui_accent_10">오렌지</string>
     <string name="expand">확장됨</string>
     <string name="open_in_aurora">오로라 스토어로 열기</string>

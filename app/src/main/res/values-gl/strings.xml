@@ -306,7 +306,6 @@
     <string name="server_maintenance">O servidor non está dispoñíbel por mantemento</string>
     <string name="ui_accent_0">Sistema</string>
     <string name="notification_channel_updates">Notificacións das actualizacións</string>
-    <string name="checking_for_updates">A procurar actualizacións</string>
     <string name="title_search_suggestion">Suxestións de busca</string>
     <string name="title_search_results">Resultados da busca</string>
     <string name="notification_updates_available_desc_1">Unha nova versión de <xliff:g id="app_one_name">%1$s</xliff:g> está dispoñíbel</string>

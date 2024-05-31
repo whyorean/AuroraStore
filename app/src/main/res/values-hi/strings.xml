@@ -293,7 +293,6 @@
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> के लिए अतिरिक्त फाइलें डाउनलोड की जा रही हैं</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> अपडेट उपलब्ध है</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> और <xliff:g id="apps_count">%4$d</xliff:g> अन्य</string>
-    <string name="checking_for_updates">अपडेट के लिए जांच की जा रही है</string>
     <string name="onboarding_permission_notifications_desc">इंस्टॉलेशन स्थिति के संबंध में सूचनाएं भेजें</string>
     <string name="onboarding_permission_notifications">सूचनाएं</string>
     <string name="session_enjoy">लॉगिन करें और आनंद लें।</string>

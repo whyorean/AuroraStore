@@ -296,7 +296,6 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> frissítés elérhető</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> és <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> és <xliff:g id="apps_count">%4$d</xliff:g> mégtöbb</string>
-    <string name="checking_for_updates">Frissítések keresése</string>
     <string name="failed_to_fetch_report">Nem sikerült lekérni az adatvédelmi jelentést</string>
     <string name="access_denied_using_vpn">Hozzáférés megtagadva! VPN-t vagy Tor-t használ\?</string>
     <string name="bad_request">Belső hiba! Kérjük, próbálja meg később</string>

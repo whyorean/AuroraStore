@@ -29,8 +29,6 @@ import java.util.UUID
 
 object NotificationUtil {
 
-    private const val TAG = "NotificationUtil"
-
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationManager =
@@ -178,27 +176,6 @@ object NotificationUtil {
             .setContentTitle(download.displayName)
             .setContentText(content)
             .setContentIntent(getContentIntentForDetails(context, download.packageName))
-            .build()
-    }
-
-    fun getOngoingUpdateNotification(context: Context): Notification {
-        val contentIntent = PendingIntent.getActivity(
-            context,
-            0,
-            Intent(context, MainActivity::class.java),
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
-            .setSmallIcon(R.drawable.ic_logo)
-            .setContentTitle(context.getString(R.string.checking_for_updates))
-            .setContentIntent(contentIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
-            .setProgress(100, 0, true)
-            .setOngoing(true)
             .build()
     }
 

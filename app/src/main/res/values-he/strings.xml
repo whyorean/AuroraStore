@@ -278,7 +278,6 @@
     <string name="notification_updates_available_desc_1">קיימת גרסה חדשה ל <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="action_enable">אפשר</string>
     <string name="toast_import_failed">לא הצליח לייבא תצורת מכשיר</string>
-    <string name="checking_for_updates">מחפש עדכונים</string>
     <string name="download_eta_sec">%1$dשנ נותרו</string>
     <string name="ui_accent_12">כחול דיסקורד</string>
     <string name="app_links_desc">אשר לחנות Aurora לפתוח קישורים נתמכים</string>

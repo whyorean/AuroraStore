@@ -305,7 +305,6 @@
     <string name="toast_import_failed">Cihaz yapılandırması içe aktarılamadı</string>
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> için ek dosyalar indiriliyor</string>
     <string name="action_import">İçe Aktar</string>
-    <string name="checking_for_updates">Güncellemeler denetleniyor</string>
     <string name="notification_channel_updates">Güncelleme bildirimleri</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> güncelleme var</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> güncelleme var</string>
