@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.aurora.store.data.work.CleanCacheWorker
+import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_MIGRATION_VERSION
@@ -38,7 +38,7 @@ class MigrationReceiver: BroadcastReceiver() {
 
         // 58 -> 59
         if (currentVersion == 0) {
-            CleanCacheWorker.scheduleAutomatedCacheCleanup(context)
+            CacheWorker.scheduleAutomatedCacheCleanup(context)
             currentVersion++
         }
 

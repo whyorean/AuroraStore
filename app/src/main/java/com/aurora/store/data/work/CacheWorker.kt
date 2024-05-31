@@ -19,7 +19,7 @@ import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
 @HiltWorker
-class CleanCacheWorker @AssistedInject constructor(
+class CacheWorker @AssistedInject constructor(
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
@@ -29,7 +29,7 @@ class CleanCacheWorker @AssistedInject constructor(
         private const val CLEAN_CACHE_WORKER = "CLEAN_CACHE_WORKER"
 
         fun scheduleAutomatedCacheCleanup(context: Context) {
-            val periodicWorkRequest = PeriodicWorkRequestBuilder<CleanCacheWorker>(
+            val periodicWorkRequest = PeriodicWorkRequestBuilder<CacheWorker>(
                 repeatInterval = 1,
                 repeatIntervalTimeUnit = HOURS,
                 flexTimeInterval = 30,

@@ -30,7 +30,7 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
-import com.aurora.store.data.work.CleanCacheWorker
+import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.PackageUtil
@@ -147,7 +147,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun finishOnboarding() {
         setupAutoUpdates()
-        CleanCacheWorker.scheduleAutomatedCacheCleanup(requireContext())
+        CacheWorker.scheduleAutomatedCacheCleanup(requireContext())
         save(PREFERENCE_INTRO, true)
         findNavController().navigate(
             OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
