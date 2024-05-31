@@ -4,10 +4,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.aurora.extensions.isSAndAbove
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_MIGRATION_VERSION
+import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
+import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,6 +42,7 @@ class MigrationReceiver: BroadcastReceiver() {
         // 58 -> 59
         if (currentVersion == 0) {
             CacheWorker.scheduleAutomatedCacheCleanup(context)
+            if (isSAndAbove()) context.save(PREFERENCE_THEME_ACCENT, 0)
             currentVersion++
         }
 

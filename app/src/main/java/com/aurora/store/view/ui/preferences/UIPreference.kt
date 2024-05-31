@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.preferences
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -77,6 +78,7 @@ class UIPreference : BasePreferenceFragment() {
 
         val accentPreference: ListPreference? = findPreference(Preferences.PREFERENCE_THEME_ACCENT)
         accentPreference?.let {
+            it.isVisible = Build.VERSION.SDK_INT < Build.VERSION_CODES.S
             it.setOnPreferenceChangeListener { _, newValue ->
                 val accentId = Integer.parseInt(newValue.toString())
 
