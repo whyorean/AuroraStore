@@ -374,7 +374,6 @@
     <string name="failed_app_link">E pambuluar, ju lutemi, provoni të përshoqëroni dorazi lidhjet</string>
     <string name="privacy_policy_title">Rregulla privatësie</string>
     <string name="privacy_policy_subtitle">Mësoni se si përdoren të dhënat tuaja nga Aurora Store</string>
-    <string name="pref_download_cache_summary">Sa kohë të ruhet fshehtinë shkarkimesh (të dështuara, të anuluara dhe të plotësuara), në orë</string>
     <string name="session_installer_subtitle">Instalues me bazë sesionin, për APK-ra të paketuara/të ndara</string>
     <string name="services_installer_subtitle">Instalues për instalime në prapaskenë</string>
     <string name="services_installer_desc">Lyp që Aurora Services të jetë instaluar si një aplikacione me privilegje sistemi</string>
@@ -386,7 +385,6 @@
     <string name="faqs_subtitle">Keni pyetje? Gjeni përgjigjet</string>
     <string name="source_code_title">Kod burim</string>
     <string name="source_code_subtitle">Shihni ç’ka brenda</string>
-    <string name="pref_download_cache_title">Mbaj fshehtinë shkarkimesh</string>
     <string name="session_scrapped">Sesioni i fundit u hodh tej</string>
     <string name="session_installer_desc">I rekomanduar, i brendshëm dhe mbulon krejt versionet Android</string>
     <string name="root_installer_subtitle">Instalues me bazë shell, që përdor leje rrënje</string>

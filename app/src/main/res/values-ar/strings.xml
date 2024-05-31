@@ -395,8 +395,6 @@
     <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
     <string name="title_more">المزيد</string>
     <string name="manage_account">إدارة حسابك</string>
-    <string name="pref_download_cache_title">إبقاء سجل التخزين المؤقت لتحميلات</string>
-    <string name="pref_download_cache_summary">ما هي مدة الاحتفاظ بذاكرة التخزين المؤقت للتنزيلات (الفاشلة والملغاة والمكتملة) بالساعات</string>
     <string name="pref_clear_device_owner_title">مسح مالك الجهاز</string>
     <string name="pref_clear_device_owner_summary">يزيل Aurora Store باعتباره تطبيق مالك الجهاز</string>
     <string name="pref_clear_device_owner_desc">سيؤدي هذا إلى إلغاء إذن مثبت الجلسة لتثبيت التطبيق بصمت. هل ترغب في متابعة مسح ملكية الجهاز؟</string>

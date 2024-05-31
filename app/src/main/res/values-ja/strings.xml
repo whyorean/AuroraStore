@@ -381,8 +381,6 @@
     <string name="privacy_policy_title">プライバシーポリシー</string>
     <string name="privacy_policy_subtitle">Aurora Store がデータをどのように使用するかを知る</string>
     <string name="disclaimer_subtitle">免責事項</string>
-    <string name="pref_download_cache_title">ダウンロードキャッシュを保持</string>
-    <string name="pref_download_cache_summary">ダウンロード キャッシュ（失敗、中断、完了）を保持する期間（時間単位）</string>
     <string name="native_installer_desc">Android 4.4 以下のデバイスに最適</string>
     <string name="services_installer_subtitle">バックグラウンドインストール用のインストーラー</string>
     <string name="am_installer_subtitle">フル機能のオープンソースパッケージマネージャー</string>

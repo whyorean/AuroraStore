@@ -395,9 +395,7 @@
     <string name="am_installer_subtitle">ਪੂਰੀ ਵਿਸ਼ੇਸ਼ਤਾ ਵਾਲਾ ਓਪਨ ਸ੍ਰੋਤ ਪੈਕੇਜ ਮੈਨੇਜਰ</string>
     <string name="shizuku_installer_subtitle">adb/root ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰਾਂ ਨਾਲ ਸਿੱਧੇ ਸਿਸਟਮ API ਦੀ ਵਰਤੋਂ ਕਰਨਾ</string>
     <string name="shizuku_installer_desc">Shizuku ਜਾਂ Sui ਦੀ ਲੋੜ ਹੈ, ਸੈੱਟਅੱਪ ਕਰਨ ਅਤੇ ਇਜਾਜ਼ਤ ਦੇਣ ਦੀ ਲੋੜ ਹੈ</string>
-    <string name="pref_download_cache_title">ਡਾਊਨਲੋਡ ਕੈਸ਼ ਰੱਖੋ</string>
     <string name="pref_clear_device_owner_title">ਡਿਵਾਈਸ ਮਾਲਕ ਕਲੀਅਰ ਕਰੋ</string>
     <string name="pref_clear_device_owner_summary">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਡਿਵਾਈਸ ਮਾਲਕ ਐਪ ਵਜੋਂ ਹਟਾਉਂਦੀ ਹੈ</string>
     <string name="pref_clear_device_owner_desc">ਇਹ ਸ਼ੈਸ਼ਨ ਇੰਸਟਾਲਰ ਦੀ ਐਪ ਨੂੰ ਚੁੱਪਚਾਪ ਸਥਾਪਿਤ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਨੂੰ ਰੱਦ ਕਰ ਦੇਵੇਗਾ। ਕੀ ਡਿਵਾਈਸ ਮਲਕੀਅਤ ਨੂੰ ਕਲੀਅਰ ਕਰਨ ਦੇ ਨਾਲ ਅੱਗੇ ਵਧਣਾ ਹੈ?</string>
-    <string name="pref_download_cache_summary">ਡਾਊਨਲੋਡ ਕੈਸ਼ (ਅਸਫ਼ਲ, ਰੱਦ ਅਤੇ ਮੁਕੰਮਲ) ਨੂੰ ਕਿੰਨੀ ਦੇਰ ਤੱਕ ਸੁਰੱਖਿਅਤ ਰੱਖਣਾ ਹੈ ਘੰਟਿਆਂ ਵਿੱਚ</string>
 </resources>

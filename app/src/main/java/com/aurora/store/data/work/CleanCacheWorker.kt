@@ -9,8 +9,6 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.store.util.PathUtil
-import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOADS_CACHE_TIME
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.io.File
@@ -44,9 +42,7 @@ class CleanCacheWorker @AssistedInject constructor(
         }
     }
 
-    private val cacheDuration = Preferences.getInteger(appContext, PREFERENCE_DOWNLOADS_CACHE_TIME, 6)
-        .toLong()
-        .toDuration(DurationUnit.HOURS)
+    private val cacheDuration = 6.toDuration(DurationUnit.HOURS)
 
     override suspend fun doWork(): Result {
         Log.i(TAG, "Cleaning cache")

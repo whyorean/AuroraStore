@@ -381,8 +381,6 @@
     <string name="privacy_policy_title">Política de privacidade</string>
     <string name="privacy_policy_subtitle">Saiba como a Aurora Store utiliza os seus dados</string>
     <string name="disclaimer_subtitle">Responsabilidade e obrigação de prestar contas</string>
-    <string name="pref_download_cache_title">Manter a cache de descargas</string>
-    <string name="pref_download_cache_summary">Quanto tempo deve ser preservada a cache das descargas (falhadas, canceladas e concluídas), em horas</string>
     <string name="services_installer_desc">Requer que os serviços Aurora sejam instalados como uma aplicação de sistema privilegiado</string>
     <string name="native_installer_desc">Mais adequado para dispositivos com versões inferiores ao Android 4.4</string>
     <string name="services_installer_subtitle">Instalador para instalações em segundo plano</string>

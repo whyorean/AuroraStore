@@ -379,9 +379,7 @@
     <string name="faqs_subtitle">Hast du Fragen? Hier findest du die Antworten</string>
     <string name="privacy_policy_subtitle">Erfahre, wie Aurora Store deine Daten verwendet</string>
     <string name="disclaimer_subtitle">Haftung und Verantwortung</string>
-    <string name="pref_download_cache_summary">Wie lange, in Stunden, Downloads (fehlgeschlagene, abgebrochene und beendete) im Cache behalten werden sollen</string>
     <string name="title_more">Mehr</string>
-    <string name="pref_download_cache_title">Downloads im Cache behalten</string>
     <string name="manage_account">Dein Konto verwalten</string>
     <string name="failed_app_link">Nicht unterstützt, bitte versuche die Links manuell zuzuordnen</string>
     <string name="manual_download_hint">Gib den Code der Version ein, die du herunterladen möchtest</string>

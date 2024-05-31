@@ -395,8 +395,6 @@
     <string name="privacy_policy_subtitle">Дізнайтеся, як Aurora Store використовує ваші дані</string>
     <string name="title_more">Докладніше</string>
     <string name="manage_account">Керувати обліковим записом</string>
-    <string name="pref_download_cache_title">Зберігати кеш завантажень</string>
-    <string name="pref_download_cache_summary">Як довго зберігати кеш завантажень (невдалих, скасованих і завершених), у годинах</string>
     <string name="pref_clear_device_owner_title">Видалити власника пристрою</string>
     <string name="pref_clear_device_owner_summary">Видаляє застосунок Aurora Store зі списку власників пристроїв</string>
     <string name="pref_clear_device_owner_desc">Ця дія відкличе дозвіл встановлювача на встановлення застосунків у фоні. Впевнені, що хочете продовжити?</string>

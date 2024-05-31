@@ -431,8 +431,6 @@
     <string name="privacy_policy_subtitle">Сазнајте како Aurora Store користи ваше податке</string>
     <string name="title_more">Више</string>
     <string name="manage_account">Управљајте својим налогом</string>
-    <string name="pref_download_cache_title">Чувај кеш преузимања</string>
-    <string name="pref_download_cache_summary">Колико дуго чувати кеш преузимања (неуспешно, отказано и завршено), у сатима</string>
     <string name="pref_clear_device_owner_title">Уклони власника уређаја</string>
     <string name="pref_clear_device_owner_desc">Ово ће опозвати дозволу програма за инсталацију „Сесија“ да тихо инсталира апликацију. Наставити с уклањањем власништва над уређајем?</string>
     <string name="pref_clear_device_owner_summary">Уклања Aurora Store као апликацију власника уређаја</string>
