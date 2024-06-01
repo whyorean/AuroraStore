@@ -117,15 +117,6 @@
                 android:layout_height="wrap_content"
                 app:btnStateIcon="@drawable/ic_anonymous"
                 app:btnStateText="@string/account_anonymous_insecure" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txt_footer"
-                style="@style/AuroraTextStyle.Line3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:textAlignment="center"
-                tools:text="Version 4.0.1" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

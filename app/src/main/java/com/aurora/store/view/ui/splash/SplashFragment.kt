@@ -79,6 +79,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                     R.id.menu_settings -> {
                         findNavController().navigate(R.id.settingsFragment)
                     }
+
+                    R.id.menu_about -> findNavController().navigate(R.id.aboutFragment)
                 }
                 true
             }
