@@ -16,7 +16,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">अज्ञात</string>
     <string name="about_xda_summary">चर्चा या सुझाव के लिए Aurora Store XDA थ्रेड देखें।</string>
-    <string name="about_xda">डेवलपर थ्रेड</string>
+    <string name="about_xda">XDA फोरम</string>
     <string name="about_telegram_summary">चर्चा या सुझाव के लिए Aurora सहायता समूह में शामिल हों।</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">PayPal के द्वारा दान करें</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">डिवाइस स्वामी हटाएं</string>
     <string name="pref_clear_device_owner_summary">ऑरोरा स्टोर को डिवाइस स्वामी ऐप के रूप में हटाता है</string>
     <string name="pref_clear_device_owner_desc">इससे ऐप को चुपचाप इंस्टॉल करने के लिए सेशन इंस्टॉलर की अनुमति रद्द हो जाएगी। डिवाइस स्वामित्व साफ़ करने के साथ आगे बढ़ें?</string>
+    <string name="about_wiki_title">विकि</string>
+    <string name="about_wiki_summary">अक्सर पूछे जाने वाले प्रश्नों (F.A.Q.) के उत्तर, समस्या निवारण चरण और बहुत कुछ खोजें</string>
+    <string name="pref_dispenser_title">डिस्पेंसर प्रबंधित करें</string>
+    <string name="pref_dispenser_summary">अनाम लॉगिन के लिए टोकन डिस्पेंसर देखें और प्रबंधित करें</string>
+    <string name="no_dispensers_available">कोई डिस्पेंसर उपलब्ध नहीं</string>
+    <string name="add_dispenser_title">डिस्पेंसर जोड़ें</string>
+    <string name="add_dispenser_summary">ऑरोरा स्टोर में टोकन डिस्पेंसर जोड़ें। टोकन डिस्पेंसर ऑरोरा स्टोर को गुमनाम रूप से लॉग इन करने के लिए खाता क्रेडेंशियल प्रदान करते हैं।</string>
+    <string name="add_dispenser_error">अमान्य URL</string>
+    <string name="add_dispenser_hint">डिस्पेंसर URL</string>
+    <string name="remove_dispenser_title">डिस्पेंसर हटाएं</string>
+    <string name="remove_dispenser_summary">क्या आप डिस्पेंसर \"<xliff:g id="url">%1$s</xliff:g>\" को हटाना चाहते हैं?</string>
+    <string name="add">जोड़ें</string>
+    <string name="remove">हटाएं</string>
 </resources>
