@@ -25,7 +25,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size_category"
-        android:layout_height="@dimen/icon_size_category" />
+        android:layout_height="@dimen/icon_size_category"
+        android:layout_centerVertical="true" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/line1"
