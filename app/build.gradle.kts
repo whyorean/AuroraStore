@@ -200,6 +200,7 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
 
+    // TODO: Re-enable when fixed: https://github.com/square/leakcanary/issues/2677
     // LeakCanary
-    debugImplementation(libs.squareup.leakcanary.android)
+    // debugImplementation(libs.squareup.leakcanary.android)
 }
