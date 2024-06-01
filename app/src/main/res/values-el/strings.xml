@@ -131,7 +131,7 @@
     <string name="exodus_view_report">Προβολή αναφοράς</string>
     <string name="action_get_local_apk">Αποθήκευση πακέτου εφαρμογής</string>
     <string name="installer_root_unavailable">Δεν υπάρχει πρόσβαση Root. Επιτρέψτε το ή αλλάξτε το πρόγραμμα εγκατάστασης.</string>
-    <string name="about_xda">Νήμα προγραμματιστή</string>
+    <string name="about_xda">Φόρουμ XDA</string>
     <string name="action_post">Δημοσιεύω</string>
     <string name="filter_review_four">Τέσσερις</string>
     <string name="filter_review_one">Ένα</string>
@@ -396,4 +396,8 @@
     <string name="pref_clear_device_owner_summary">Καταργεί το Aurora Store ως εφαρμογή κατόχου της συσκευής</string>
     <string name="pref_clear_device_owner_desc">Αυτό θα ανακαλέσει την άδεια του εγκαταστάτη συνεδρίας να εγκαταστήσει σιωπηρά την εφαρμογή. Να γίνει εκκαθάριση της ιδιοκτησίας της συσκευής;</string>
     <string name="pref_clear_device_owner_title">Εκκαθάριση ιδιοκτήτη συσκευής</string>
+    <string name="about_wiki_summary">Βρείτε απαντήσεις σε συχνές ερωτήσεις (F.A.Q.), βήματα αντιμετώπισης προβλημάτων και πολλά άλλα</string>
+    <string name="add_dispenser_error">Μη έγκυρο URL</string>
+    <string name="add">Πρόσθεσε</string>
+    <string name="remove">Αφαίρεσε</string>
 </resources>
