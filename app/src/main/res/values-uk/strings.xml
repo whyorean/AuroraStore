@@ -396,4 +396,15 @@
     <string name="pref_clear_device_owner_title">Видалити власника пристрою</string>
     <string name="pref_clear_device_owner_summary">Видаляє застосунок Aurora Store зі списку власників пристроїв</string>
     <string name="pref_clear_device_owner_desc">Ця дія відкличе дозвіл встановлювача на встановлення застосунків у фоні. Впевнені, що хочете продовжити?</string>
+    <string name="add_dispenser_title">Додати розподільник</string>
+    <string name="pref_dispenser_title">Керування розподільниками</string>
+    <string name="pref_dispenser_summary">Перегляд розподільників токенів для анонімного входу та керування ними</string>
+    <string name="no_dispensers_available">Немає доступних розподільників</string>
+    <string name="remove_dispenser_title">Видалити розподільник</string>
+    <string name="add_dispenser_summary">Додайте розподільник жетонів до Aurora Store. Розподільники токенів надають облікові дані Aurora Store для анонімного входу.</string>
+    <string name="add_dispenser_hint">URL розподільника</string>
+    <string name="add_dispenser_error">Недійсний URL</string>
+    <string name="remove_dispenser_summary">Видалити розподільник \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="add">Додати</string>
+    <string name="remove">Видалити</string>
 </resources>
