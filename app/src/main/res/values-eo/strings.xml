@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="account_logged_out">Vi estas elsalutita</string>
     <string name="account_google">Google</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal">PayPal</string>

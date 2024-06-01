@@ -118,7 +118,6 @@
     <string name="action_copy">Kopyalayın</string>
     <string name="action_copy_link">Linki Kopyalayın</string>
     <string name="action_disable">Deaktiv edin</string>
-    <string name="account_logged_out">Çıxıldı</string>
     <string name="account_anonymous_insecure">Anonim (təhlükəli)</string>
     <string name="details_no_app_match">Uyğun tətbiq tapılmadı</string>
     <string name="details_no_dependencies">Asılılıq yoxdur</string>

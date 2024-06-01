@@ -24,7 +24,6 @@
     <string name="about_telegram_summary">토론이나 제안을 위해 Aurora 지원 그룹에 가입하세요.</string>
     <string name="account_anonymous">익명</string>
     <string name="account_google">구글</string>
-    <string name="account_logged_out">로그아웃되었습니다</string>
     <string name="action_blacklist_add">블랙리스트에 추가</string>
     <string name="action_blacklist">블랙리스트</string>
     <string name="action_open">열기</string>

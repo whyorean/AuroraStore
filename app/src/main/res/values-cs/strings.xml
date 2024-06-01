@@ -223,7 +223,6 @@
     <string name="action_back">Zpět</string>
     <string name="account_logout">Odhlásit se z Aurory</string>
     <string name="account_login_using">Přihlaste se pomocí</string>
-    <string name="account_logged_out">Jste odhlášeni</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonymní</string>
     <string name="about_xda_summary">Diskuze a návrhy najdete na XDA stránce Aurora Store.</string>

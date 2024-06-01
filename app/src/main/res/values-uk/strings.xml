@@ -97,7 +97,6 @@
     <string name="action_back">Назад</string>
     <string name="account_logout">Вийти з Aurora</string>
     <string name="account_login_using">Увійти за допомогою</string>
-    <string name="account_logged_out">Ви вийшли з акаунта</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Анонімно</string>
     <string name="about_xda_summary">Переглянути розділ Aurora Store на XDA для обговорень чи пропозицій.</string>

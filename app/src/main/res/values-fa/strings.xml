@@ -112,7 +112,6 @@
     <string name="action_update_all">به‌روزرسانی همه</string>
     <string name="action_back">عقب</string>
     <string name="about_bitcoin_bch_summary">حمایت از طریق بیتکوین کش (BCH)</string>
-    <string name="account_logged_out">شما خارج شدید</string>
     <string name="action_granted">مجوز داده شد</string>
     <string name="action_close">بستن</string>
     <string name="account_logout">خروج از آرورا</string>

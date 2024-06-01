@@ -69,7 +69,6 @@
     <string name="action_filter_paid_apps">Cu plată</string>
     <string name="action_filter_rating">Evaluări</string>
     <string name="action_finish">Finalizare</string>
-    <string name="account_logged_out">Ești deconectat</string>
     <string name="account_login_using">Conectează-te utilizând</string>
     <string name="download_force_clear_all">Șterge forțat totul</string>
     <string name="account_logout">Deconectează-te de la Aurora</string>

@@ -21,7 +21,6 @@
     <string name="action_blacklist_add">অবরোধ তালিকায় যোগ</string>
     <string name="account_logout">অরোরা থেকে প্রস্থান করো</string>
     <string name="account_login_using">প্রবেশের জন্য ব্যবহার করো</string>
-    <string name="account_logged_out">তুমি প্রস্থানকৃত</string>
     <string name="about_xda">ডেভ সূত্র</string>
     <string name="about_paypal_summary">পেপাল দিয়ে অনুদান দাও</string>
     <string name="about_libera_summary">লিবেরাপে এ সমর্থক হও</string>

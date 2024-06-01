@@ -185,7 +185,6 @@
     <string name="action_blacklist">Svartlista</string>
     <string name="action_back">Bakåt</string>
     <string name="account_logout">Logga ut från Aurora</string>
-    <string name="account_logged_out">Du är utloggad</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonym</string>
     <string name="about_xda_summary">Se Aurora-butikens XDA-tråd för diskussioner eller förslag.</string>

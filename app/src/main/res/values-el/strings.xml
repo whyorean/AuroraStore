@@ -37,7 +37,6 @@
     <string name="action_back">Επιστροφή</string>
     <string name="account_logout">Αποσύνδεση από το Aurora</string>
     <string name="account_login_using">Σύνδεση με</string>
-    <string name="account_logged_out">Έχετε αποσυνδεθεί</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Ανώνυμος</string>
     <string name="about_telegram_summary">Γίνετε μέλος της ομάδας Υποστήριξης Aurora για συζητήσεις ή προτάσεις.</string>

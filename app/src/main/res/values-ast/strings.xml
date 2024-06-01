@@ -133,7 +133,6 @@
     <string name="action_install">Instalar</string>
     <string name="toast_anonymous_restriction">Nun ta disponible nes cuentes anónimes</string>
     <string name="action_share">Compartir</string>
-    <string name="account_logged_out">Zarresti la sesión</string>
     <string name="onboarding_permission_select">Aurora Store rique los permisos siguientes</string>
     <string name="download_cancel_all">Encaboxar too</string>
     <string name="details_no_app_match">Nun s\'atopó nenguna aplicación que concasare</string>

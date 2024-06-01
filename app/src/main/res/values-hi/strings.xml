@@ -13,7 +13,6 @@
     <string name="action_back">वापस जाएं</string>
     <string name="account_logout">Aurora से लॉगआउट करें</string>
     <string name="account_login_using">इसके द्वारा लॉगिन करें</string>
-    <string name="account_logged_out">आप लॉगआउट हैं</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">अज्ञात</string>
     <string name="about_xda_summary">चर्चा या सुझाव के लिए Aurora Store XDA थ्रेड देखें।</string>

@@ -41,7 +41,6 @@
     <string name="action_back">Atpakaļ</string>
     <string name="account_logout">Atteikties no Aurora</string>
     <string name="account_login_using">Pieteikties ar</string>
-    <string name="account_logged_out">Atteicies</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonīms</string>
     <string name="about_telegram_summary">Pievienojaties Aurora Atbalsta grupai priekš diskusijām vai ieteikumiem.</string>

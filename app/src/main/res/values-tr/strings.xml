@@ -12,7 +12,6 @@
     <string name="action_back">Geri</string>
     <string name="account_logout">Aurora\'dan çıkış yap</string>
     <string name="account_login_using">Şununla giriş yap</string>
-    <string name="account_logged_out">Çıkış yaptınız</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
     <string name="about_xda_summary">Tartışmalar veya öneriler için Aurora Store XDA başlığına bakın.</string>

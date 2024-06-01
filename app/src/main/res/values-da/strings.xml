@@ -257,7 +257,6 @@
     <string name="about_xda">Udviklertråd</string>
     <string name="about_xda_summary">Se Aurora Store XDA thread (engelsksproget) for diskussioner eller forslag.</string>
     <string name="account_anonymous">Anonym</string>
-    <string name="account_logged_out">Du er logget ud</string>
     <string name="account_login_using">Log ind med</string>
     <string name="details_paid">Betalt</string>
     <string name="toast_manual_unavailable">Versionskoden du beder om er utilgængelig.</string>

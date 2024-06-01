@@ -250,7 +250,6 @@
     <string name="action_back">Recuar</string>
     <string name="account_logout">Terminar sessão</string>
     <string name="account_login_using">Iniciar sessão com</string>
-    <string name="account_logged_out">Sem sessão iniciada</string>
     <string name="toast_export_failed">Não foi possível exportar a configuração do dispositivo</string>
     <string name="toast_export_success">Configuração do dispositivo exportada</string>
     <string name="app_updater_service_notif_text">Permite descarregar aplicações em segundo plano</string>

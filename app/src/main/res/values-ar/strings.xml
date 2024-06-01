@@ -201,7 +201,6 @@
     <string name="action_back">رجوع</string>
     <string name="account_logout">تسجيل الخروج من Aurora</string>
     <string name="account_login_using">تسجيل الدخول باستخدام</string>
-    <string name="account_logged_out">لقد تم تسجيل خروجك</string>
     <string name="account_anonymous">حساب مجهول</string>
     <string name="about_xda_summary">اطلع على موضوع Aurora Store على XDA للمناقشات أو الاقتراحات.</string>
     <string name="about_xda">موضوع المطور</string>

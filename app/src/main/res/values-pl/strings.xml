@@ -68,7 +68,6 @@
     <string name="action_back">Wstecz</string>
     <string name="account_logout">Wyloguj się z Aurory</string>
     <string name="account_login_using">Zaloguj się za pomocą konta</string>
-    <string name="account_logged_out">Nie jesteś zalogowany</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonimowe</string>
     <string name="about_xda_summary">Zobacz wątek Aurora Store XDA, aby móc dyskutować i proponować sugestie.</string>

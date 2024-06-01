@@ -206,7 +206,6 @@
     <string name="action_back">Назад</string>
     <string name="account_logout">Одјавите се из Aurore</string>
     <string name="account_login_using">Пријавите се користећи</string>
-    <string name="account_logged_out">Одјављени сте</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Анонимно</string>
     <string name="about_xda_summary">Погледајте Aurora Store XDA форум за дискусије или предлоге.</string>

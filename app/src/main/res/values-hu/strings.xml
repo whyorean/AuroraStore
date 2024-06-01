@@ -59,7 +59,6 @@
     <string name="action_back">Vissza</string>
     <string name="account_logout">Kijelentkezés az Aurorából</string>
     <string name="account_login_using">Bejelentkezés ezzel</string>
-    <string name="account_logged_out">Kijelentkeztél</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
     <string name="about_xda_summary">Nézd meg az Aurora Store XDA témát beszélgetéshez és javaslatokért.</string>

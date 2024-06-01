@@ -156,7 +156,6 @@
     <string name="tab_editor_choice">Choix de l’équipe</string>
     <string name="title_apps">Applis</string>
     <string name="title_account_manager">Comptes</string>
-    <string name="account_logged_out">Vous êtes déconnecté·e</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonyme</string>
     <string name="about_xda">Fil de développement</string>

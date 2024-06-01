@@ -214,7 +214,6 @@
     <string name="action_export">Exportieren</string>
     <string name="account_logout">Von Aurora abmelden</string>
     <string name="account_login_using">Anmelden mit</string>
-    <string name="account_logged_out">Du bist nicht angemeldet</string>
     <string name="about_paypal_summary">Mit PayPal spenden</string>
     <string name="tab_top_grossing">Erfolgreich</string>
     <string name="tab_editor_choice">Auswahl der Redaktion</string>

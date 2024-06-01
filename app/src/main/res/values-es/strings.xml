@@ -202,7 +202,6 @@
     <string name="action_back">Atrás</string>
     <string name="account_logout">Cerrar sesión de Aurora</string>
     <string name="account_login_using">Iniciar sesión con</string>
-    <string name="account_logged_out">Ha cerrado la sesión</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anónimo</string>
     <string name="about_xda_summary">Consulte el hilo de Aurora Store en XDA para debatir o hacer sugerencias.</string>

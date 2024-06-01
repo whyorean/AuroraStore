@@ -27,7 +27,6 @@
     <string name="about_paypal_summary">Dona a través de PayPal</string>
     <string name="account_anonymous_insecure">Anònim (insegur)</string>
     <string name="account_google">Google</string>
-    <string name="account_logged_out">Heu tancat la sessió</string>
     <string name="account_login_using">Inicia la sessió via</string>
     <string name="account_logout">Sortir d\'Aurora</string>
     <string name="action_next">Següent</string>

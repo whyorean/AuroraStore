@@ -106,90 +106,31 @@
             tools:text="auroraoss@gmail.com" />
     </RelativeLayout>
 
-    <ViewFlipper
-        android:id="@+id/view_flipper"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_large">
 
-        <RelativeLayout
-            android:id="@+id/layout_action"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_large"
-            android:visibility="invisible"
-            tools:visibility="visible">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_logout_action"
+            style="@style/AuroraTextStyle.Line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_logout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/account_logout"
+            android:textAlignment="center" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txt_action"
-                style="@style/AuroraTextStyle.Line1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/margin_normal"
-                android:text="@string/account_login_using"
-                android:textAlignment="center" />
-
-            <com.aurora.store.view.custom.layouts.button.StateButton
-                android:id="@+id/btn_google"
-                android:layout_width="@dimen/width_button"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_action"
-                android:layout_centerHorizontal="true"
-                app:btnStateIcon="@drawable/ic_google"
-                app:btnStateText="@string/account_google" />
-
-            <com.aurora.store.view.custom.layouts.button.StateButton
-                android:id="@+id/btn_anonymous"
-                android:layout_width="@dimen/width_button"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_google"
-                android:layout_centerHorizontal="true"
-                app:btnStateIcon="@drawable/ic_anonymous"
-                app:btnStateText="@string/account_anonymous" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txt_status"
-                style="@style/AuroraTextStyle.Line2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_small"
-                android:textAlignment="center"
-                tools:text="Status" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_large"
-            android:visibility="invisible"
-            tools:visibility="visible">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txt_logout_action"
-                style="@style/AuroraTextStyle.Line1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/btn_logout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/margin_normal"
-                android:text="@string/account_logout"
-                android:textAlignment="center" />
-
-            <com.aurora.store.view.custom.layouts.button.StateButton
-                android:id="@+id/btn_logout"
-                android:layout_width="@dimen/width_button"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                app:btnStateIcon="@drawable/ic_logout"
-                app:btnStateText="@string/action_logout" />
-        </RelativeLayout>
-
-    </ViewFlipper>
+        <com.aurora.store.view.custom.layouts.button.StateButton
+            android:id="@+id/btn_logout"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:btnStateIcon="@drawable/ic_logout"
+            app:btnStateText="@string/action_logout" />
+    </RelativeLayout>
 </LinearLayout>

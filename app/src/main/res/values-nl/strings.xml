@@ -13,7 +13,6 @@
     <string name="details_dev_address">Adres</string>
     <string name="details_description">Beschrijving</string>
     <string name="details_dev_email">E-mail</string>
-    <string name="account_logged_out">U bent afgemeld</string>
     <string name="about_bitcoin_bch_summary">Doneer met Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_btc_summary">Doneer met Bitcoin (BTC)</string>
     <string name="about_bhim_summary">Doneer met UPI</string>

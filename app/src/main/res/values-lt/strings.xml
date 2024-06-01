@@ -117,7 +117,6 @@
     <string name="notification_channel_updater_service">Foninio programėlių atsisiuntimo tarnyba</string>
     <string name="title_library">Biblioteka</string>
     <string name="about_paypal_summary">Paaukoti per „PayPal“</string>
-    <string name="account_logged_out">Esate atsijungę</string>
     <string name="account_login_using">Prisijungti naudojant</string>
     <string name="action_blacklist">Juodasis sąrašas</string>
     <string name="action_blacklist_add">Pridėti į juodąjį sąrašą</string>

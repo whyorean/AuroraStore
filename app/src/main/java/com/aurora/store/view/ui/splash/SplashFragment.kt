@@ -162,11 +162,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private fun updateStatus(string: String?) {
-        activity?.runOnUiThread {
-            binding.txtStatus.apply {
-                text = string
-            }
-        }
+        activity?.runOnUiThread { binding.txtStatus.text = string }
     }
 
     private fun updateActionLayout(isVisible: Boolean) {
@@ -197,11 +193,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         binding.btnGoogle.addOnClickListener {
             if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
-                findNavController().navigate(
-                    SplashFragmentDirections.actionSplashFragmentToGoogleFragment(
-                        R.id.splashFragment
-                    )
-                )
+                findNavController().navigate(R.id.googleFragment)
             }
         }
     }
@@ -230,6 +222,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 2 -> SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
                 else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
             }
+        activity?.viewModelStore?.clear() // Clear ViewModelStore to avoid bugs with logout
         findNavController().navigate(directions)
     }
 

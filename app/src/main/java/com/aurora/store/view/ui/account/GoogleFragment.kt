@@ -32,7 +32,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGoogleBinding
@@ -46,7 +45,6 @@ import org.greenrobot.eventbus.ThreadMode
 @AndroidEntryPoint
 class GoogleFragment : Fragment(R.layout.fragment_google) {
 
-    private val args: GoogleFragmentArgs by navArgs()
     private val viewModel: AuthViewModel by activityViewModels()
 
     companion object {
@@ -146,19 +144,9 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
                     ).show()
                 }
 
-                when (args.destination) {
-                    R.id.splashFragment -> {
-                        findNavController().navigate(
-                            GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
-                        )
-                    }
-
-                    R.id.accountFragment -> {
-                        findNavController().navigate(
-                            GoogleFragmentDirections.actionGoogleFragmentToAccountFragment()
-                        )
-                    }
-                }
+                findNavController().navigate(
+                    GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
+                )
             }
 
             else -> {}

@@ -99,8 +99,11 @@
         android:label="@string/title_account_manager"
         tools:layout="@layout/fragment_account" >
         <action
-            android:id="@+id/action_accountFragment_to_googleFragment"
-            app:destination="@id/googleFragment" />
+            android:id="@+id/action_accountFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -352,9 +355,6 @@
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_splashFragment_to_googleFragment"
-            app:destination="@id/googleFragment" />
-        <action
             android:id="@+id/action_splashFragment_to_appDetailsFragment"
             app:destination="@id/appDetailsFragment"
             app:launchSingleTop="true"
@@ -370,13 +370,6 @@
             app:destination="@id/splashFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_googleFragment_to_accountFragment"
-            app:destination="@id/accountFragment"
-            app:popUpTo="@id/accountFragment"
-            app:popUpToInclusive="true" />
-        <argument android:name="destination"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"

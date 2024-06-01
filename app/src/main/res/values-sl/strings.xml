@@ -21,7 +21,6 @@
     <string name="about_xda_summary">Za razpravo in predloge obiščite Aurora Store XDA forum.</string>
     <string name="account_anonymous">Anonimno</string>
     <string name="account_anonymous_insecure">Anonimno (ni varno)</string>
-    <string name="account_logged_out">Trenutno ste odjavljeni</string>
     <string name="account_logout">Odjavite se iz Aurora</string>
     <string name="action_back">Nazaj</string>
     <string name="action_blacklist">Črni seznam</string>

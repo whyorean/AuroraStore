@@ -48,7 +48,6 @@
     <string name="action_back">Назад</string>
     <string name="account_logout">Выйти из Aurora</string>
     <string name="account_login_using">Войти с помощью</string>
-    <string name="account_logged_out">Вы вышли из аккаунта</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Анонимный</string>
     <string name="about_telegram_summary">Присоединяйтесь к группе поддержки Aurora для обсуждения или предложений.</string>

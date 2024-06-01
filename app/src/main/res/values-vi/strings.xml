@@ -63,7 +63,6 @@
     <string name="action_back">Trở về</string>
     <string name="account_logout">Đăng xuất khỏi Aurora</string>
     <string name="account_login_using">Đăng nhập bằng</string>
-    <string name="account_logged_out">Bạn đã đăng xuất</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Ẩn danh</string>
     <string name="about_xda_summary">Xem chủ đề XDA Aurora Store để thảo luận và góp ý.</string>

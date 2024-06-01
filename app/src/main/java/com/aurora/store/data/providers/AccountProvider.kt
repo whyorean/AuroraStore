@@ -29,14 +29,6 @@ class AccountProvider private constructor(var context: Context) {
 
     companion object : SingletonHolder<AccountProvider, Context>(::AccountProvider)
 
-    fun isSignedIn(): Boolean {
-        return Preferences.getBoolean(context, Constants.ACCOUNT_SIGNED_IN)
-    }
-
-    fun getSignInTimeStamp(): Long {
-        return Preferences.getLong(context, Constants.ACCOUNT_SIGNED_TIMESTAMP)
-    }
-
     fun getAccountType(): AccountType {
         val rawType = Preferences.getString(context, Constants.ACCOUNT_TYPE)
         return when (rawType) {

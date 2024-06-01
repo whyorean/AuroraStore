@@ -10,7 +10,6 @@
     <string name="action_back">Takaisin</string>
     <string name="account_logout">Kirjaudu ulos Aurorasta</string>
     <string name="account_login_using">Kirjaudu sisään käyttäen</string>
-    <string name="account_logged_out">Olet kirjautunut ulos</string>
     <string name="account_google">Google</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal">PayPal</string>
