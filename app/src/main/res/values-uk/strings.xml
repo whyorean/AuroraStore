@@ -100,7 +100,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Анонімно</string>
     <string name="about_xda_summary">Переглянути розділ Aurora Store на XDA для обговорень чи пропозицій.</string>
-    <string name="about_xda">XDA</string>
+    <string name="about_xda">Форуми XDA</string>
     <string name="about_telegram_summary">Приєднатися до групи Aurora Support для обговорень чи пропозицій.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Допомогти через PayPal</string>
@@ -407,4 +407,6 @@
     <string name="remove_dispenser_summary">Видалити розподільник \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Додати</string>
     <string name="remove">Видалити</string>
+    <string name="about_wiki_title">Вікі</string>
+    <string name="about_wiki_summary">Знайти відповіді на поширені запитання (F.A.Q.), кроки з усунення несправностей та багато іншого</string>
 </resources>
