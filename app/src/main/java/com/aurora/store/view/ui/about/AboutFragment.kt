@@ -78,16 +78,16 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
 
         val linkIcons = intArrayOf(
             R.drawable.ic_help,
+            R.drawable.ic_xda,
+            R.drawable.ic_telegram,
+            R.drawable.ic_gitlab,
+            R.drawable.ic_fdroid,
             R.drawable.ic_bitcoin_btc,
             R.drawable.ic_bitcoin_bch,
             R.drawable.ic_ethereum_eth,
             R.drawable.ic_bhim,
             R.drawable.ic_paypal,
             R.drawable.ic_libera_pay,
-            R.drawable.ic_gitlab,
-            R.drawable.ic_xda,
-            R.drawable.ic_telegram,
-            R.drawable.ic_fdroid
         )
 
         binding.epoxyRecycler.withModels {
