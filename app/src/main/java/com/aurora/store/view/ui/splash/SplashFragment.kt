@@ -25,8 +25,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import coil.load
-import coil.transform.RoundedCornersTransformation
 import com.aurora.extensions.hide
 import com.aurora.extensions.isValidPackageName
 import com.aurora.extensions.show
@@ -56,10 +54,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 SplashFragmentDirections.actionSplashFragmentToOnboardingFragment()
             )
             return
-        }
-
-        binding.imgIcon.load(R.mipmap.ic_launcher) {
-            transformations(RoundedCornersTransformation(32F))
         }
 
         // Toolbar

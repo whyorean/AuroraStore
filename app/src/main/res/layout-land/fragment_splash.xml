@@ -52,7 +52,7 @@
                 android:layout_above="@id/txt_title"
                 android:layout_centerHorizontal="true"
                 android:minWidth="176dp"
-                app:srcCompat="@drawable/bg_placeholder" />
+                android:src="@mipmap/ic_launcher" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_title"
