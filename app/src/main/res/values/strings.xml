@@ -442,6 +442,7 @@
     <string name="pref_dispenser_summary">View and manage token dispensers for anonymous logins</string>
 
     <!-- DialogDispenserInput-->
+    <string name="no_dispensers_available">No dispensers available</string>
     <string name="add_dispenser_title">Add dispenser</string>
     <string name="add_dispenser_summary">Add a token dispenser to Aurora Store. Token dispensers provide account credentials to Aurora Store for logging in anonymously.</string>
     <string name="add_dispenser_error">Invalid URL</string>

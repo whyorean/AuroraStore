@@ -36,7 +36,7 @@ class DispenserFragment : Fragment(R.layout.fragment_dispenser),
             findNavController().navigate(R.id.inputDispenserDialog)
         }
 
-        setupRecyclerView()
+        setupDispensers()
     }
 
     override fun onDestroyView() {
@@ -46,26 +46,34 @@ class DispenserFragment : Fragment(R.layout.fragment_dispenser),
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == PREFERENCE_DISPENSER_URLS) setupRecyclerView()
+        if (key == PREFERENCE_DISPENSER_URLS) setupDispensers()
     }
 
-    private fun setupRecyclerView() {
-        binding.epoxyRecycler.withModels {
-            setFilterDuplicates(true)
-            dispensers.forEachIndexed { index, url ->
-                add(
-                    DispenserViewModel_()
-                        .id(index)
-                        .url(url)
-                        .copy { _ -> requireContext().copyToClipBoard(url) }
-                        .clear { _ ->
-                            findNavController().navigate(
-                                DispenserFragmentDirections
-                                    .actionDispenserFragmentToRemoveDispenserDialog(url)
-                            )
-                        }
-                )
+    private fun setupDispensers() {
+        if (dispensers.isNotEmpty()) {
+            binding.noDispensersTextView.visibility = View.GONE
+
+            binding.epoxyRecycler.visibility = View.VISIBLE
+            binding.epoxyRecycler.withModels {
+                setFilterDuplicates(true)
+                dispensers.forEachIndexed { index, url ->
+                    add(
+                        DispenserViewModel_()
+                            .id(index)
+                            .url(url)
+                            .copy { _ -> requireContext().copyToClipBoard(url) }
+                            .clear { _ ->
+                                findNavController().navigate(
+                                    DispenserFragmentDirections
+                                        .actionDispenserFragmentToRemoveDispenserDialog(url)
+                                )
+                            }
+                    )
+                }
             }
+        } else {
+            binding.epoxyRecycler.visibility = View.GONE
+            binding.noDispensersTextView.visibility = View.VISIBLE
         }
     }
 }
