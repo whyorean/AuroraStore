@@ -408,4 +408,5 @@
     <string name="pref_dispenser_summary">Wyświetl i zarządzaj dozownikami tokenów do anonimowego logowania</string>
     <string name="no_dispensers_available">Brak dostępnych dozowników</string>
     <string name="remove_dispenser_title">Usuń dozownik</string>
+    <string name="add_dispenser_summary">Dodaj dozownik tokenów do Aurora Store. Dozowniki tokenów udostępniają dane logowania do konta Aurora Store w celu anonimowego logowania.</string>
 </resources>
