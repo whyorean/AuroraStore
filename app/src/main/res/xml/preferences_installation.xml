@@ -26,6 +26,11 @@
         app:summary="@string/pref_install_mode_summary"
         app:title="@string/pref_install_mode_title" />
 
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false"
+        app:title="@string/pref_common_extra" />
+
     <Preference
         app:iconSpaceReserved="false"
         app:key="INSTALLATION_ABANDON_SESSION"

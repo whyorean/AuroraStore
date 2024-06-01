@@ -20,13 +20,6 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_UPDATES_EXTENDED"
-        app:summary="@string/pref_updates_incompatible_desc"
-        app:title="@string/pref_updates_incompatible" />
-
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="2"
         app:entries="@array/pref_updates_auto"
@@ -46,4 +39,16 @@
         app:iconSpaceReserved="false"
         app:min="1"
         app:showSeekBarValue="true" />
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false"
+        app:title="@string/pref_common_extra" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_UPDATES_EXTENDED"
+        app:summary="@string/pref_updates_incompatible_desc"
+        app:title="@string/pref_updates_incompatible" />
 </androidx.preference.PreferenceScreen>

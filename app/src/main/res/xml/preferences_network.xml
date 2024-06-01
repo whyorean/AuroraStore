@@ -20,33 +20,34 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
-        app:allowDividerBelow="true"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_DISPENSER_URLS"
         app:summary="@string/pref_dispenser_summary"
         app:title="@string/pref_dispenser_title" />
 
     <PreferenceCategory
-        app:allowDividerAbove="true"
-        app:allowDividerBelow="true"
         app:iconSpaceReserved="false"
-        app:key="PREFERENCE_CATEGORY_PROXY"
+        app:singleLineTitle="false"
         app:summary="protocol://user:password@host:port"
-        app:title="@string/pref_network_proxy_title">
+        app:title="@string/pref_network_proxy_title" />
 
-        <SwitchPreferenceCompat
-            app:disableDependentsState="false"
-            app:iconSpaceReserved="false"
-            app:key="PREFERENCE_PROXY_ENABLED"
-            app:summary="@string/pref_network_proxy_enable_desc"
-            app:title="@string/pref_network_proxy_enable" />
+    <SwitchPreferenceCompat
+        app:disableDependentsState="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_PROXY_ENABLED"
+        app:summary="@string/pref_network_proxy_enable_desc"
+        app:title="@string/pref_network_proxy_enable" />
 
-        <EditTextPreference
-            app:dependency="PREFERENCE_PROXY_ENABLED"
-            app:iconSpaceReserved="false"
-            app:key="PREFERENCE_PROXY_URL"
-            app:title="@string/pref_network_proxy_url" />
-    </PreferenceCategory>
+    <EditTextPreference
+        app:dependency="PREFERENCE_PROXY_ENABLED"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_PROXY_URL"
+        app:title="@string/pref_network_proxy_url" />
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false"
+        app:title="@string/pref_common_extra" />
 
     <SwitchPreferenceCompat
         app:defaultValue="false"
