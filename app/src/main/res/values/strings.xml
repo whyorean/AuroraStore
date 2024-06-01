@@ -19,6 +19,8 @@
   ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   ~
   --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Find answers to frequently asked questions (F.A.Q.), troubleshooting steps and more</string>
     <string name="about_bhim">"BHIM - UPI"</string>
     <string name="about_bhim_summary">"Donate via UPI"</string>
     <string name="about_bitcoin_bch">"Bitcoin Cash"</string>

@@ -123,6 +123,7 @@
     </string-array>
 
     <string-array name="link_urls">
+        <item>https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home</item>
         <item>"bc1qu7cy9fepjj309y4r2x3rymve7mw4ff39c8cpe0"</item>
         <item>"qpqus3qdlz8guf476vwz0fjl8s34fseukcmrl6eknl"</item>
         <item>"0x6977446933EC8b5964D921f7377950992337B1C6"</item>
@@ -136,6 +137,7 @@
     </string-array>
 
     <string-array name="link_titles">
+        <item>@string/about_wiki_title</item>
         <item>@string/about_bitcoin_btc</item>
         <item>@string/about_bitcoin_bch</item>
         <item>@string/about_bitcoin_eth</item>
@@ -149,6 +151,7 @@
     </string-array>
 
     <string-array name="link_subtitle">
+        <item>@string/about_wiki_summary</item>
         <item>@string/about_bitcoin_btc_summary</item>
         <item>@string/about_bitcoin_bch_summary</item>
         <item>@string/about_bitcoin_eth_summary</item>

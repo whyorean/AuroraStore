@@ -77,6 +77,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         val linkSummary = resources.getStringArray(R.array.link_subtitle)
 
         val linkIcons = intArrayOf(
+            R.drawable.ic_help,
             R.drawable.ic_bitcoin_btc,
             R.drawable.ic_bitcoin_bch,
             R.drawable.ic_ethereum_eth,
