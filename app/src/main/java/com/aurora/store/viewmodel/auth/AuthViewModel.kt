@@ -290,9 +290,8 @@ class AuthViewModel @Inject constructor(
             authData.locale = Locale.getDefault()
         }
 
-        val versionId =
-            Preferences.getInteger(context, Preferences.PREFERENCE_VENDING_VERSION)
-        if (versionId != 0) {
+        val versionId = Preferences.getInteger(context, Preferences.PREFERENCE_VENDING_VERSION)
+        if (versionId > 0) {
             val resources = context.resources
 
             authData.deviceInfoProvider?.properties?.let {
