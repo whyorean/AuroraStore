@@ -226,7 +226,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonymní</string>
     <string name="about_xda_summary">Diskuze a návrhy najdete na XDA stránce Aurora Store.</string>
-    <string name="about_xda">Vývojářské vlákno</string>
+    <string name="about_xda">XDA Forums</string>
     <string name="about_telegram_summary">Připojte se ke skupině Aurora Support, kde můžete diskutovat nebo podávat návrhy.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Přispějte prostřednictvím PayPal</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">Odstranit majitele zařízení</string>
     <string name="pref_clear_device_owner_summary">Odebere aplikaci Aurora Store ze seznamu majitelů zařízení</string>
     <string name="pref_clear_device_owner_desc">Tato akce zruší oprávnění instalátoru k instalaci aplikací na pozadí. Opravdu chcete pokračovat?</string>
+    <string name="add_dispenser_error">Neplatná adresa URL</string>
+    <string name="add_dispenser_hint">Adresa URL vydavače</string>
+    <string name="remove_dispenser_title">Odstranit vydavač</string>
+    <string name="remove_dispenser_summary">Chcete odebrat vydavač „<xliff:g id="url">%1$s</xliff:g>“?</string>
+    <string name="add">Přidat</string>
+    <string name="remove">Odstranit</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Najděte odpovědi na často kladené dotazy (FAQ), kroky k řešení problémů a další</string>
+    <string name="pref_dispenser_title">Spravovat vydavače</string>
+    <string name="pref_dispenser_summary">Zobrazit a spravovat vydavače tokenů pro anonymní přihlášení</string>
+    <string name="no_dispensers_available">Nejsou dostupné žádné vydavače</string>
+    <string name="add_dispenser_title">Přidat vydavač</string>
+    <string name="add_dispenser_summary">Přidat vydavač tokenů do Aurora Store. Vydavače tokenů poskytují údaje o účtech, které Aurora Store používá pro anonymní přihlašování.</string>
 </resources>
