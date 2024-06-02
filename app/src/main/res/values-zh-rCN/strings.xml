@@ -94,7 +94,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">匿名</string>
     <string name="about_xda_summary">前往 Aurora Store 的 XDA 主题以参与讨论或提出建议。</string>
-    <string name="about_xda">XDA 主题</string>
+    <string name="about_xda">XDA 论坛</string>
     <string name="about_telegram_summary">加入 Aurora 群组以参与讨论或提出建议。</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">通过 PayPal 捐款</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_desc">这会撤销会话安装程序静默安装应用的权限。要继续清除设备所有权吗？</string>
     <string name="pref_clear_device_owner_title">清除设备所有者</string>
     <string name="pref_clear_device_owner_summary">不再将 Aurora Store 作为设备所有者应用</string>
+    <string name="no_dispensers_available">无分发器可用</string>
+    <string name="add_dispenser_title">添加分发器</string>
+    <string name="about_wiki_title">维基</string>
+    <string name="about_wiki_summary">寻找常见问题（F.A.Q）的答案、故障排除步骤和更多</string>
+    <string name="pref_dispenser_title">管理分发程序</string>
+    <string name="pref_dispenser_summary">查看并管理匿名登录的令牌分发程序</string>
+    <string name="add_dispenser_summary">添加令牌分发程序到 Aurora 商店。令牌分发程序向 Aurora 商店提供账户凭据用于匿名登录。</string>
+    <string name="add_dispenser_error">无效 URL</string>
+    <string name="add_dispenser_hint">分发程序 URL</string>
+    <string name="remove">删除</string>
+    <string name="remove_dispenser_title">删除分发程序</string>
+    <string name="add">添加</string>
+    <string name="remove_dispenser_summary">你希望删除分发程序 \"<xliff:g id="url">%1$s</xliff:g>\"吗？</string>
 </resources>

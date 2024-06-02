@@ -205,7 +205,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anónimo</string>
     <string name="about_xda_summary">Consulte el hilo de Aurora Store en XDA para debatir o hacer sugerencias.</string>
-    <string name="about_xda">Hilo de desarrollo</string>
+    <string name="about_xda">Foros XDA</string>
     <string name="about_telegram_summary">Únase al grupo de asistencia de Aurora para debatir o hacer sugerencias.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Donar vía Paypal</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">Borrar el propietario del dispositivo</string>
     <string name="pref_clear_device_owner_summary">Elimina Aurora Store como aplicación propietaria del dispositivo</string>
     <string name="pref_clear_device_owner_desc">Esto revocará el permiso del instalador de sesión para instalar silenciosamente la aplicación. ¿Proceder a borrar la propiedad del dispositivo?</string>
+    <string name="no_dispensers_available">No hay dispensadores disponibles</string>
+    <string name="add_dispenser_title">Añadir dispensador</string>
+    <string name="add_dispenser_error">URL invalida</string>
+    <string name="remove_dispenser_title">Quitar dispensador</string>
+    <string name="add">Añadir</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Encuentra respuestas a preguntas frecuentes (FAQ), pasos para la solución de problemas y más</string>
+    <string name="pref_dispenser_title">Gestionar dispensadores</string>
+    <string name="pref_dispenser_summary">Ver y administrar dispensadores de tokens para inicios de sesión anónimos</string>
+    <string name="add_dispenser_summary">Agregue un dispensador de tokens a Aurora Store. Los dispensadores de tokens proporcionan credenciales de cuenta a Aurora Store para iniciar sesión de forma anónima.</string>
+    <string name="add_dispenser_hint">URL del dispensador</string>
+    <string name="remove_dispenser_summary">¿Deseas quitar el dispensador \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="remove">Quitar</string>
 </resources>

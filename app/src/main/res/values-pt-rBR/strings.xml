@@ -34,7 +34,7 @@
     <string name="account_logout">Sair da Aurora</string>
     <string name="account_login_using">Entrar usando</string>
     <string name="account_google">Google</string>
-    <string name="about_xda">Tópico de Desenvolvimento</string>
+    <string name="about_xda">Fóruns XDA</string>
     <string name="about_libera">Liberapay</string>
     <string name="toast_purchase_blocked">As compras de apps não estão disponíveis em contas anônimas.</string>
     <string name="toast_spoof_applied">Simulação de dispositivo aplicada.</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">Limpar proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_summary">Remove a Aurora Store como o app proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_desc">Isso irá revogar a permissão do instalador da sessão de silenciosamente instalar apps. Prosseguir com a limpeza da propriedade do dispositivo?</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="add_dispenser_title">Adicionar dispensador</string>
+    <string name="pref_dispenser_title">Gerenciar dispensadores</string>
+    <string name="add_dispenser_error">URL inválida</string>
+    <string name="remove_dispenser_title">Remover dispensador</string>
+    <string name="remove">Remover</string>
+    <string name="about_wiki_summary">Encontre respostas para perguntas frequentes (FAQ), passos para diagnosticar problemas e mais</string>
+    <string name="pref_dispenser_summary">Veja e gerencie dispensadores de token para logins anônimos</string>
+    <string name="no_dispensers_available">Nenhum dispensador disponível</string>
+    <string name="add_dispenser_summary">Adicione um dispensador de token à Aurora Store. Dispensadores de token providenciam credenciais de conta para a Aurora Store para entrar anonimamente.</string>
+    <string name="add_dispenser_hint">URL do dispensador</string>
+    <string name="remove_dispenser_summary">Deseja remover o dispensador \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="add">Adicionar</string>
 </resources>

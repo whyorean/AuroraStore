@@ -209,7 +209,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Анонимно</string>
     <string name="about_xda_summary">Погледајте Aurora Store XDA форум за дискусије или предлоге.</string>
-    <string name="about_xda">Форум програмера</string>
+    <string name="about_xda">XDA форум</string>
     <string name="about_telegram_summary">Придружите се Aurora групи за подршку за дискусије или предлоге.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Донирајте преко PayPal-а</string>
@@ -429,7 +429,20 @@
     <string name="privacy_policy_subtitle">Сазнајте како Aurora Store користи ваше податке</string>
     <string name="title_more">Више</string>
     <string name="manage_account">Управљајте својим налогом</string>
-    <string name="pref_clear_device_owner_title">Уклони власника уређаја</string>
+    <string name="pref_clear_device_owner_title">Уклањање власника уређаја</string>
     <string name="pref_clear_device_owner_desc">Ово ће опозвати дозволу програма за инсталацију „Сесија“ да тихо инсталира апликацију. Наставити с уклањањем власништва над уређајем?</string>
     <string name="pref_clear_device_owner_summary">Уклања Aurora Store као апликацију власника уређаја</string>
+    <string name="about_wiki_title">Вики</string>
+    <string name="about_wiki_summary">Пронађите одговоре на често постављана питања (ЧПП), кораке за решавање проблема и још много тога</string>
+    <string name="pref_dispenser_title">Управљање дозаторима</string>
+    <string name="add">Додај</string>
+    <string name="remove">Уклони</string>
+    <string name="pref_dispenser_summary">Прегледајте и управљајте дозаторима токена за анонимне пријаве</string>
+    <string name="no_dispensers_available">Ниједан дозатор није доступан</string>
+    <string name="add_dispenser_title">Додавање дозатора</string>
+    <string name="add_dispenser_summary">Додајте дозатор токена у Aurora Store. Дозатори токена пружају акредитиве налога Aurora Store-у за анонимно пријављивање.</string>
+    <string name="remove_dispenser_summary">Желите ли заиста да уклоните дозатор „&lt;xliff:g id=\"url\"%1$s&lt;xliff:g&gt;“?</string>
+    <string name="add_dispenser_error">Неважећа URL адреса</string>
+    <string name="add_dispenser_hint">URL адреса дозатора</string>
+    <string name="remove_dispenser_title">Уклањање дозатора</string>
 </resources>

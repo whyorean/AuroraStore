@@ -71,7 +71,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonimowe</string>
     <string name="about_xda_summary">Zobacz wątek Aurora Store XDA, aby móc dyskutować i proponować sugestie.</string>
-    <string name="about_xda">Wątek Dev</string>
+    <string name="about_xda">Forum XDA</string>
     <string name="about_telegram_summary">Dołącz do grupy Aurora Support, aby móc dyskutować i proponować sugestie.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Przekaż darowiznę za pomocą PayPal</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">Usuń właściciela urządzenia</string>
     <string name="pref_clear_device_owner_summary">Usuwa Aurora Store z listy właścicieli urządzeń</string>
     <string name="pref_clear_device_owner_desc">Ta czynność cofnie uprawnienia instalatora do instalowania aplikacji w tle. Jesteś pewien, że chcesz kontynuować?</string>
+    <string name="pref_dispenser_title">Zarządzaj dozownikami</string>
+    <string name="add_dispenser_title">Dodaj dozownik</string>
+    <string name="add_dispenser_hint">Adres URL dozownika</string>
+    <string name="add">Dodaj</string>
+    <string name="remove_dispenser_summary">Czy chcesz usunąć dozownik \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="remove">Usuń</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="add_dispenser_error">Nieprawidłowy adres URL</string>
+    <string name="about_wiki_summary">Znajdź odpowiedzi na często zadawane pytania (FAQ), kroki rozwiązywania problemów i nie tylko</string>
+    <string name="pref_dispenser_summary">Wyświetl i zarządzaj dozownikami tokenów do anonimowego logowania</string>
+    <string name="no_dispensers_available">Brak dostępnych dozowników</string>
+    <string name="remove_dispenser_title">Usuń dozownik</string>
+    <string name="add_dispenser_summary">Dodaj dozownik tokenów do Aurora Store. Dozowniki tokenów udostępniają dane logowania do konta Aurora Store w celu anonimowego logowania.</string>
 </resources>

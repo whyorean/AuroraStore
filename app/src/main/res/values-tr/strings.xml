@@ -4,7 +4,7 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="details_dev_website">Web sitesi</string>
-    <string name="about_xda">Geliştirici Konuları</string>
+    <string name="about_xda">XDA Forumları</string>
     <string name="action_clear">Temizle</string>
     <string name="action_cancel">İptal et</string>
     <string name="action_blacklist">Kara Liste</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">Aygıt sahibini temizle</string>
     <string name="pref_clear_device_owner_summary">Aurora Store\'un aygıt sahibi uygulaması olmasını kaldırır</string>
     <string name="pref_clear_device_owner_desc">Bu, oturum kurucunun uygulamayı sessizce kurma iznini iptal edecektir. Aygıt sahipliğini temizlemeye devam edilsin mi?</string>
+    <string name="pref_dispenser_title">Dağıtıcıları yönet</string>
+    <string name="pref_dispenser_summary">Anonim oturum açmak için belirteç dağıtıcılarını görüntüleyin ve yönetin</string>
+    <string name="remove_dispenser_title">Dağıtıcıyı kaldır</string>
+    <string name="remove">Kaldır</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Sık sorulan soruların (SSS) yanıtlarını, sorun giderme adımlarını ve daha fazlasını bulun</string>
+    <string name="no_dispensers_available">Kullanılabilir dağıtıcı yok</string>
+    <string name="remove_dispenser_summary">\"<xliff:g id="url">%1$s</xliff:g>\" dağıtıcısını kaldırmak istiyor musunuz?</string>
+    <string name="add">Ekle</string>
+    <string name="add_dispenser_title">Dağıtıcı ekle</string>
+    <string name="add_dispenser_summary">Aurora Store\'a bir belirteç dağıtıcı ekleyin. Belirteç dağıtıcıları, anonim olarak oturum açmak için Aurora Store\'a hesap kimlik bilgileri sağlar.</string>
+    <string name="add_dispenser_error">Geçersiz URL</string>
+    <string name="add_dispenser_hint">Dağıtıcı URL\'si</string>
 </resources>
