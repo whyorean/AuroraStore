@@ -1,8 +1,9 @@
 # Aurora Store
 
-Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, reviews, and download the APK directly from Google Play to your device with just a tap. 
+Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, reviews, and download the APK directly from Google Play to your device. 
 
 To use Aurora Store, you need to have a Google Play account, and log in to your Google Play account when you first open and configure Aurora Store.
+(Alternatively Aurora Store also allow you to login anonymously)
 
 Unlike a traditional app store, Aurora Store does not own, license or distribute any apps. All the apps, app descriptions, screenshots and other content in Aurora Store are directly accessed, downloaded and/or displayed from Google Play. 
 
