@@ -1,3 +1,12 @@
+Changelog : v4.5.0 (59)
+• Support for third-party token dispensers
+• Multiple UI/UX improvements and bug fixes
+• New automatic cache cleanup feature to remove old downloads
+• Accent color setting has been retired for Android 12+ devices
+• SessionInstaller: Ability to set Aurora Store as device owner using ADB (credits: @s1204IT)
+• SessionInstaller: Installation queue support
+
+
 Changelog : v4.4.4 (58)
 • Fixed issue with login related to Google Accounts
 • Moved navigation drawer items into a separate dialog
