@@ -1,8 +1,14 @@
 # Aurora Store
 
-**Aurora Store** is an unofficial, FOSS client to Google Play with bare minimum features. Aurora Store
-allows users to download, update, and search for apps like the Play Store. It works perfectly fine
-with or without Google Play Services or MicroG.
+Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, reviews, and download the APK directly from Google Play to your device with just a tap. 
+
+To use Aurora Store, you need to have a Google Play account, and log in to your Google Play account when you first open and configure Aurora Store.
+
+Unlike a traditional app store, Aurora Store does not own, license or distribute any apps. All the apps, app descriptions, screenshots and other content in Aurora Store are directly accessed, downloaded and/or displayed from Google Play. 
+
+Aurora Store works exactly like a door or a browser, allowing you to log in to your Google Play account and find the apps from Google Play. 
+
+*_Please note that Aurora Store does not have any approval, sponsorship or authorization from Google, Google Play, any apps downloaded through Aurora Store or any app developers; neither does Aurora Store have any affiliation, cooperation or connection with them._*
 
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/en/packages/com.aurora.store/)
 
