@@ -1,0 +1,6 @@
+• Podpora vydavačů tokenů třetích stran
+• Spousta vylepšení rozhraní a UX a oprav chyb
+• Nová funkce automatického vymazání paměti pro odstranění starých stažených souborů
+• Nastavení barvy bylo odebráno pro Android 12+
+• SessionInstaller: možnost nastavení aplikace Aurora Store jako majitele zařízení pomocí ADB (poděkování: @s1204IT)
+• SessionInstaller: podpora instalační fronty
