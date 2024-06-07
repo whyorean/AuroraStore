@@ -1,0 +1,6 @@
+• Üçüncü taraf belirteç dağıtıcıları desteği
+• Çok sayıda kullanıcı arayüzü/ kullanıcı deneyimi iyileştirmesi ve hata düzeltmesi
+• Eski indirmeleri kaldırmak için yeni otomatik önbellek temizleme özelliği
+• Vurgu rengi ayarı Android 12+ aygıtlar için kullanımdan kaldırıldı
+• SessionInstaller: ADB kullanarak Aurora Store'u aygıt sahibi olarak ayarlayabilme (teşekkürler: @s1204IT)
+• SessionInstaller: Kurulum kuyruğu desteği
