@@ -4,7 +4,7 @@
     <string name="about_bitcoin_btc_summary">Bitcoin (BTC) দ্বারা ডোনাট করুন</string>
     <string name="about_bitcoin_bch_summary">Bitcoin Cash (BHC) এ ডোনেট করুণ</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
-    <string name="about_bhim_summary">UPI দ্বারা ডোনাট করুন</string>
+    <string name="about_bhim_summary">UPI দ্বারা দান করুন</string>
     <string name="details_dev_website">ওয়েবসাইটি</string>
     <string name="account_anonymous">নামহীন</string>
     <string name="about_telegram">টেলিগ্রাম</string>
@@ -99,4 +99,9 @@
     <string name="menu_license">অনুমতিপত্র</string>
     <string name="onboarding_title_welcome">স্বাগতম</string>
     <string name="pref_app_download">ডাউনলোড</string>
+    <string name="about_bhim">ভীম - UPI</string>
+    <string name="action_enable">চালু করো</string>
+    <string name="action_enabled">কাজ করছে</string>
+    <string name="about_wiki_title">উইকি</string>
+    <string name="account_anonymous_insecure">নামহীন (বিপজ্জনক)</string>
 </resources>
