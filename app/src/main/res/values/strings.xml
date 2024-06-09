@@ -426,6 +426,9 @@
 
     <!-- AboutFragment -->
     <string name="version" translatable="false">v<xliff:g id="version_name">%1$s</xliff:g> (<xliff:g id="version_code">%2$d</xliff:g>)</string>
+    <string name="about_aurora_store_title">About Aurora Store</string>
+    <string name="about_aurora_store_subtitle">Learn more about Aurora Store</string>
+    <string name="about_aurora_store_summary">Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, other users\' comments, and download the APK directly from Google Play to your device. To use Aurora Store, you need to have a Google Play account, and log in to your Google Play account when you first open and configure Aurora Store.\n\nUnlike a traditional app store, Aurora Store does not own, license or distribute any apps. All the apps, app descriptions, screenshots and other content in Aurora Store are directly accessed, downloaded and/or displayed from Google Play. Aurora Store works exactly like a door or a browser, allowing you to log in to your Google Play account and find the apps from Google Play.\n\nPlease note that Aurora Store does not have any approval, sponsorship or authorization from Google, Google Play, any apps downloaded through Aurora Store or any app developers; neither does Aurora Store have any affiliation, cooperation or connection with them.</string>
 
     <!-- MoreDialogFragment -->
     <string name="title_more">More</string>

@@ -77,6 +77,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         val linkSummary = resources.getStringArray(R.array.link_subtitle)
 
         val linkIcons = intArrayOf(
+            R.drawable.ic_menu_about,
             R.drawable.ic_help,
             R.drawable.ic_xda,
             R.drawable.ic_telegram,
@@ -103,7 +104,13 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
                     LinkViewModel_()
                         .id(i)
                         .link(link)
-                        .click { _ -> processUrl(link.url) }
+                        .click { _ ->
+                            if (link.id == 0) {
+                                findNavController().navigate(R.id.aboutDialog)
+                            } else {
+                                processUrl(link.url)
+                            }
+                        }
                 )
             }
         }

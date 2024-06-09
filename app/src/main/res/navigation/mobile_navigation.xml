@@ -492,4 +492,8 @@
         <argument android:name="url"
             app:argType="string" />
     </dialog>
+    <dialog
+        android:id="@+id/aboutDialog"
+        android:name="com.aurora.store.view.ui.about.AboutDialog"
+        android:label="@string/title_about" />
 </navigation>

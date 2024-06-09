@@ -123,6 +123,7 @@
     </string-array>
 
     <string-array name="link_urls">
+        <item>https://auroraoss.com/</item>
         <item>https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home</item>
         <item>"https://xdaforums.com/t/app-5-0-aurora-store-open-source-google-play-client.3739733/"</item>
         <item>"https://t.me/AuroraSupport"</item>
@@ -137,6 +138,7 @@
     </string-array>
 
     <string-array name="link_titles">
+        <item>@string/title_about</item>
         <item>@string/about_wiki_title</item>
         <item>@string/about_xda</item>
         <item>@string/about_telegram</item>
@@ -151,6 +153,7 @@
     </string-array>
 
     <string-array name="link_subtitle">
+        <item>@string/about_aurora_store_subtitle</item>
         <item>@string/about_wiki_summary</item>
         <item>@string/about_xda_summary</item>
         <item>@string/about_telegram_summary</item>
