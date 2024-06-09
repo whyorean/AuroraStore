@@ -9,7 +9,9 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.save
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RemoveDispenserDialog : DialogFragment() {
 
     private val args: RemoveDispenserDialogArgs by navArgs()
