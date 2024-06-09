@@ -154,7 +154,7 @@
     <string name="ui_accent_13">තද නිල්</string>
     <string name="ui_accent_11">ලා නිල්</string>
     <string name="ui_accent_9">දෙහි කොළ</string>
-    <string name="about_xda">සංවර්ධන පිටුව</string>
+    <string name="about_xda">XDA සංසදය</string>
     <string name="about_bhim_summary">UPI මගින් පරිත්‍යාග</string>
     <string name="about_bitcoin_bch">බිට්කොයින් මුදල්</string>
     <string name="about_fdroid_summary">එෆ්-ඩ්‍රොයිඩ් හරහා අවුරෝරා ස්ටෝර් ගන්න.</string>
@@ -258,7 +258,7 @@
     <string name="pref_install_mode_native">නිසග ස්ථාපකය</string>
     <string name="device_miui_subtitle">MIUI ප්‍රශස්තිකරණය නිසා වාර ස්ථාපකයට යෙදුම් ස්ථාපනය කළ නොහැකිය.</string>
     <string name="device_miui_description">ස්ථාපන සඳහා ඉඩදීමට MIUI ප්‍රශස්තිකරණය අබල කරන්න, නැතහොත් මූල හෝ සේවා ස්ථාපක තෝරාගත හැකිය.</string>
-    <string name="pref_install_mode_am">AM ස්ථාපකය.</string>
+    <string name="pref_install_mode_am">AM ස්ථාපකය</string>
     <string name="pref_abandon_session_desc">අතහැර දැමූ හෝ බලාසිටින ස්ථාපන වාර හිස් කරන්න</string>
     <string name="dialog_desc_native_split">නිසග ස්ථාපකය හරහා පොදි(පංගු) යෙදුම් ස්ථාපනය කිරීමට නොහැකිය. ස්ථාපකය මූල, සේවා හෝ වාරය ට වෙනස් කරන්න.</string>
     <string name="device_miui_extra">වෛකල්පිතව, ඔබට නිසග ස්ථාපකය තේරීමට හැකිය නමුත් ඊළඟට ඔබට පොදි(පංගු) APKs ස්ථානය කිරීමට නොහැකිය, තීරණය ඔබ සතුය.</string>

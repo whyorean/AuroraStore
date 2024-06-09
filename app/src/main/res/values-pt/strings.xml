@@ -5,7 +5,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anónimo</string>
     <string name="about_xda_summary">Visite o tópico Aurora Store no XDA para participar em discussões e sugestões.</string>
-    <string name="about_xda">Tópico de desenvolvimento</string>
+    <string name="about_xda">Fóruns XDA</string>
     <string name="about_telegram_summary">Junte-se ao grupo Aurora Support para participar em discussões e sugestões.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Doar através de Paypal</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_desc">Isto irá revogar a permissão do instalador da sessão para instalar silenciosamente a aplicação. Continuar com a limpeza da propriedade do dispositivo?</string>
     <string name="am_installer_subtitle">Gestor de pacotes de código aberto com todas as funcionalidades</string>
     <string name="am_installer_desc">Requer o App Manager, precisa do modo adb / root para instalar quando a otimização do MIUI está ativada</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="pref_dispenser_title">Gerir os distribuidores</string>
+    <string name="pref_dispenser_summary">Ver e gerir distribuidores de token para inícios de sessão anónimos</string>
+    <string name="no_dispensers_available">Não existem distribuidores disponíveis</string>
+    <string name="add_dispenser_title">Adicionar distribuidor</string>
+    <string name="add_dispenser_hint">URL do distribuidor</string>
+    <string name="remove_dispenser_title">Remover distribuidor</string>
+    <string name="about_wiki_summary">Encontre respostas a perguntas frequentes (F.A.Q.), passos de resolução de problemas e muito mais</string>
+    <string name="add_dispenser_summary">Adicionar um distribuidor de tokens ao Aurora Store. Os distribuidores de tokens fornecem credenciais de conta à Aurora Store para iniciar sessão anonimamente.</string>
+    <string name="add_dispenser_error">URL inválido</string>
+    <string name="remove">Remover</string>
+    <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="add">Adicionar</string>
 </resources>

@@ -37,7 +37,7 @@
     <string name="action_blacklist_add">Zur Sperrliste hinzufügen</string>
     <string name="action_blacklist">Sperrliste</string>
     <string name="action_back">Zurück</string>
-    <string name="about_gitlab_summary">Aurora Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
+    <string name="about_gitlab_summary">Aurora-Store-Quellcode von Aurora OSS bei GitLab herunterladen</string>
     <string name="about_bitcoin_btc_summary">Mit Bitcoin spenden (BTC)</string>
     <string name="about_bitcoin_bch_summary">Mit Bitcoin Cash spenden (BCH)</string>
     <string name="about_bhim_summary">Mit UPI spenden</string>
@@ -195,8 +195,8 @@
     <string name="action_next">Weiter</string>
     <string name="action_join">Beitreten</string>
     <string name="action_get_local_apk">App-Paket speichern</string>
-    <string name="about_xda_summary">Den Aurora Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
-    <string name="about_xda">XDA Entwickler-Forum</string>
+    <string name="about_xda_summary">Den Aurora-Store-XDA-Themenbereich für Diskussionen oder Vorschläge besuchen</string>
+    <string name="about_xda">XDA-Foren</string>
     <string name="about_telegram_summary">Der Aurora-Support-Gruppe für Diskussionen oder Vorschläge beitreten</string>
     <string name="action_uninstall">Deinstallieren</string>
     <string name="action_share">Teilen</string>
@@ -396,4 +396,17 @@
     <string name="pref_clear_device_owner_title">Geräteeigentümer löschen</string>
     <string name="pref_clear_device_owner_summary">Entfernt Aurora Store als Geräteeigentümer-App</string>
     <string name="pref_clear_device_owner_desc">Dadurch wird dem Sitzungsinstallationsprogramm die Erlaubnis entzogen, die App im Hintergrund zu installieren. Mit dem Löschen der Geräteeigentümerschaft fortfahren?</string>
+    <string name="add_dispenser_error">URL ungültig</string>
+    <string name="pref_dispenser_title">Dispenser verwalten</string>
+    <string name="no_dispensers_available">Keine Dispenser verfügbar</string>
+    <string name="pref_dispenser_summary">Anzeige und Verwaltung von Token-Dispenser für anonyme Anmeldungen</string>
+    <string name="add_dispenser_hint">Dispenser-URL</string>
+    <string name="add">Hinzufügen</string>
+    <string name="remove">Entfernen</string>
+    <string name="remove_dispenser_summary">Möchtest du den Dispenser „&lt;xliff:g id=“url„&gt;%1$s&lt;/xliff:g&gt;“ entfernen?</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Antworten auf häufig gestellte Fragen (FAQs) finden, Maßahmen zur Fehlerbehebung und mehr</string>
+    <string name="add_dispenser_title">Dispenser hinzufügen</string>
+    <string name="add_dispenser_summary">Hinzufügen eines Token-Dispensers zum Aurora Store. Token-Dispenser stellen dem Aurora Store Kontodaten zur Verfügung, um sich anonym anzumelden.</string>
+    <string name="remove_dispenser_title">Dispenser entfernen</string>
 </resources>

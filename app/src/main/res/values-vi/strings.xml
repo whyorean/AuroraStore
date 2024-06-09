@@ -66,7 +66,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Ẩn danh</string>
     <string name="about_xda_summary">Xem chủ đề XDA Aurora Store để thảo luận và góp ý.</string>
-    <string name="about_xda">Bài viết của Nhà phát triển</string>
+    <string name="about_xda">Diễn đàn XDA</string>
     <string name="about_telegram_summary">Tham gia nhóm Hỗ trợ Aurora để thảo luận và đề xuất.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Ủng hộ qua PayPal</string>
@@ -153,7 +153,7 @@
     <string name="pref_install_mode_root">Trình cài đặt root</string>
     <string name="pref_install_mode_native">Trình cài đặt gốc (Không dùng nữa)</string>
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
-    <string name="pref_install_delete_summary">APK sẽ bị xóa theo mặc định</string>
+    <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
     <string name="pref_insecure_anonymous_title">Phiên ẩn danh không an toàn</string>
     <string name="pref_filter_google_title">Lọc các ứng dụng của Google</string>
     <string name="pref_filter_google_summary">Bỏ qua các ứng dụng Google khỏi Cập nhật và Ứng dụng đã cài đặt</string>
@@ -393,4 +393,15 @@
     <string name="native_installer_desc">Phù hợp nhất cho các thiết bị chạy dưới Android 4.4</string>
     <string name="title_more">Nhiều hơn</string>
     <string name="manage_account">Quản lý tài khoản của bạn</string>
+    <string name="pref_clear_device_owner_title">Xóa chủ sở hữu thiết bị</string>
+    <string name="pref_clear_device_owner_summary">Xóa Aurora Store làm ứng dụng của chủ sở hữu thiết bị</string>
+    <string name="pref_clear_device_owner_desc">Điều này sẽ thu hồi quyền cài đặt ứng dụng một cách âm thầm của trình cài đặt phiên. Tiếp tục xóa quyền sở hữu thiết bị?</string>
+    <string name="add_dispenser_title">Thêm bộ phân phối</string>
+    <string name="add_dispenser_error">URL không hợp lệ</string>
+    <string name="remove_dispenser_title">Loại bỏ bộ phân phối</string>
+    <string name="about_wiki_summary">Tìm câu trả lời cho các câu hỏi thường gặp (F.A.Q.), các bước khắc phục sự cố và hơn thế nữa</string>
+    <string name="pref_dispenser_summary">Xem và quản lý bộ phân phối mã thông báo cho thông tin đăng nhập ẩn danh</string>
+    <string name="remove">Loại bỏ</string>
+    <string name="no_dispensers_available">Không có sẵn bộ phân phối</string>
+    <string name="add">Thêm</string>
 </resources>
