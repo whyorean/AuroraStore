@@ -6,7 +6,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">匿名</string>
     <string name="about_xda_summary">Aurora Store の XDA スレッドを見て、議論や提案をしましょう。</string>
-    <string name="about_xda">開発スレッド</string>
+    <string name="about_xda">XDA Forums</string>
     <string name="about_telegram_summary">Aurora のサポートグループに参加して、議論や提案をしましょう</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">PayPal で寄付する</string>
@@ -395,4 +395,17 @@
     <string name="action_home_screen">ホーム画面に追加</string>
     <string name="title_more">更に</string>
     <string name="manage_account">アカウントを管理</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="pref_dispenser_title">ディスペンサーの管理</string>
+    <string name="pref_dispenser_summary">匿名ログイン用のトークンディスペンサーを管理</string>
+    <string name="no_dispensers_available">ディスペンサーは存在しません</string>
+    <string name="add_dispenser_title">ディスペンサーを追加</string>
+    <string name="add_dispenser_summary">トークンディスペンサーを Aurora Store に追加します。トークンディスペンサーは、匿名アカウントでログインするための認証情報を Aurora Store に提供します。</string>
+    <string name="add_dispenser_error">不正な URL です</string>
+    <string name="add_dispenser_hint">ディスペンサーの URL</string>
+    <string name="remove_dispenser_title">ディスペンサーを削除</string>
+    <string name="remove_dispenser_summary">ディスペンサー「<xliff:g id="url">%1$s</xliff:g>」を削除しますか？</string>
+    <string name="add">追加</string>
+    <string name="remove">削除</string>
+    <string name="about_wiki_summary">よくある質問や、トラブルシューティングの手順などをご覧ください</string>
 </resources>
