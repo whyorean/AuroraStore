@@ -7,6 +7,7 @@ import android.util.Log
 import com.aurora.Constants
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.data.work.CacheWorker
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
@@ -21,7 +22,7 @@ class MigrationReceiver: BroadcastReceiver() {
 
     private val TAG = MigrationReceiver::class.java.simpleName
 
-    private val prefVersion = 1 // BUMP THIS MANUALLY ON ADDING NEW MIGRATION STEP
+    private val prefVersion = 2 // BUMP THIS MANUALLY ON ADDING NEW MIGRATION STEP
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null && intent?.action == Intent.ACTION_MY_PACKAGE_REPLACED) {
@@ -49,6 +50,17 @@ class MigrationReceiver: BroadcastReceiver() {
             context.save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER)) // !1117
             if (Preferences.getInteger(context, PREFERENCE_VENDING_VERSION) == -1) {
                 context.save(PREFERENCE_VENDING_VERSION, 0) // !1049
+            }
+            currentVersion++
+        }
+
+        // 59 -> 60
+        if (currentVersion == 1) {
+            if (CertUtil.isAppGalleryApp(context, context.packageName)) {
+                val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
+                    .toMutableSet()
+                    .remove(Constants.URL_DISPENSER)
+                context.save(PREFERENCE_DISPENSER_URLS, dispensers)
             }
             currentVersion++
         }
