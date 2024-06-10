@@ -237,8 +237,6 @@
     <string name="pref_ui_no_for_you_desc">Afficher les pages « Pour vous » sur l’écran d’accueil</string>
     <string name="pref_ui_layout_tab">Sélectionner l’onglet par défaut</string>
     <string name="pref_ui_layout">Disposition</string>
-    <string name="pref_filter_search_title">Utiliser un filtre de recherche non persistant</string>
-    <string name="pref_filter_search_summary">Les filtres de recherche sont réinitialisés à chaque recherche. Désactiver pour enregistrer les filtres de recherche</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">Aucune correspondance trouvée</string>
     <string name="toast_manual_available">Félicitations, le code de version demandé est disponible ; téléchargement en cours.</string>

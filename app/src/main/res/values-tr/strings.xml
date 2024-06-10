@@ -106,8 +106,6 @@
     <string name="pref_install_delete_summary">İndirilen APK\'lar kurulumdan hemen sonra silinecek</string>
     <string name="pref_insecure_anonymous_title">Güvensiz anonim oturum</string>
     <string name="pref_insecure_anonymous_summary">Aygıtta yerel olarak GSF kimliği oluştur</string>
-    <string name="pref_filter_search_title">Kalıcı olmayan arama filtresini kullan</string>
-    <string name="pref_filter_search_summary">Arama filtreleri her aramada sıfırlanır. Arama filtrelerini kaydetmek için bunu kapatın</string>
     <string name="pref_filter_google_title">Google uygulamalarını filtrele</string>
     <string name="pref_filter_google_summary">Google uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>

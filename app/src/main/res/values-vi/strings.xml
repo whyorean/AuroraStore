@@ -241,8 +241,6 @@
     <string name="toast_manual_available">Chúc mừng, mã phiên bản được yêu cầu đang có sẵn, đang tải xuống ngay bây giờ.</string>
     <string name="toast_manual_unavailable">Mã phiên bản bạn đang yêu cầu không có sẵn.</string>
     <string name="title_manual_download">Tải xuống thủ công</string>
-    <string name="pref_filter_search_title">Sử dụng bộ lọc tìm kiếm không kiên định</string>
-    <string name="pref_filter_search_summary">Các bộ lọc tìm kiếm được đặt lại vào mỗi lần tìm kiếm. Tắt để lưu các bộ lọc tìm kiếm</string>
     <string name="pref_ui_similar_apps_desc">Hiển thị các cụm tương tự và liên quan trên trang chi tiết ứng dụng</string>
     <string name="pref_ui_similar_apps">Các ứng dụng tương tự và liên quan</string>
     <string name="pref_ui_no_for_you_desc">Hiển thị trang Cho bạn trên màn hình chính</string>

@@ -308,8 +308,6 @@
     <string name="pref_filter_fdroid_summary">Odstrani F-Droid aplikacije s seznamov aplikacij</string>
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>
     <string name="pref_filter_google_summary">Odstrani vse Googlove aplikacije iz rezultatov iskanja in kategorij aplikacij</string>
-    <string name="pref_filter_search_summary">Iskalni filtri se ponastavijo ob vsakem iskanju. Izklopite, da shranite iskalne filtre</string>
-    <string name="pref_filter_search_title">Uporabi neobstojni iskalni filter</string>
     <string name="pref_insecure_anonymous_summary">Ustvari GSF ID lokalno v napravi</string>
     <string name="pref_insecure_anonymous_title">Nevarna anonimna seja</string>
     <string name="pref_ui_title">Prilagajanje</string>

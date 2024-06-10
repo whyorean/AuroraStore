@@ -186,7 +186,6 @@
     <string name="pref_filter_fdroid_title">Filtra sas aplicatziones de F-Droid</string>
     <string name="pref_filter_google_summary">Bogat sas aplicatziones de Google dae sos risultados e dae sa lista de sas aplicatziones</string>
     <string name="pref_filter_google_title">Filtra sas aplicatziones de Google</string>
-    <string name="pref_filter_search_title">Imprea filtros de chirca non persistentes</string>
     <string name="pref_install_delete_title">Iscantzella sos apk a pustis de s\'installatzione</string>
     <string name="pref_install_mode_summary">Ischerta sa manera de installatzione de sos APK</string>
     <string name="pref_install_mode_title">Manera de installatzione</string>
@@ -244,7 +243,6 @@
     <string name="download_metadata">Retzende meta-datos</string>
     <string name="pref_ui_similar_apps_desc">Ammustra sos grupos de aplicatziones simigiantes e ligados in sa pàgina de sos detàllios de s\'aplicatzione</string>
     <string name="about_fdroid_summary">Otene Aurora Store pro mèdiu de F-Droid.</string>
-    <string name="pref_filter_search_summary">Sos filtros de chirca benint resetados pro cada chirca. Istuda·lu pro sarvare sos filtros de chirca</string>
     <string name="pref_install_mode_services">Servìtzios de Aurora</string>
     <string name="title_installation">Installatzione</string>
     <string name="title_library">Biblioteca</string>

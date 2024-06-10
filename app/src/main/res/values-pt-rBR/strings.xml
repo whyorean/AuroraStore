@@ -237,8 +237,6 @@
     <string name="pref_network_title">Rede</string>
     <string name="pref_insecure_anonymous_title">Sessão anônima insegura</string>
     <string name="pref_insecure_anonymous_summary">Gerar o ID do GSF localmente no dispositivo</string>
-    <string name="pref_filter_search_title">Usar um filtro de pesquisa temporário</string>
-    <string name="pref_filter_search_summary">Os filtros de pesquisa são redefinidos em cada pesquisa. Desative para salvar os filtros de pesquisa</string>
     <string name="details_no_app_match">Nenhum app correspondente encontrado</string>
     <string name="pref_ui_similar_apps">Apps relacionados ou semelhantes</string>
     <string name="pref_ui_layout_tab">Aba padrão</string>

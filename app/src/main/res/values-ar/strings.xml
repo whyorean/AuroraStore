@@ -237,8 +237,6 @@
     <string name="pref_ui_no_for_you">صفحات لك</string>
     <string name="pref_ui_layout_tab">حدد علامة التبويب الافتراضية</string>
     <string name="pref_ui_layout">التخطيط</string>
-    <string name="pref_filter_search_title">استخدام عامل تصفية البحث غير الدائم</string>
-    <string name="pref_filter_search_summary">يتم إعادة تعيين عوامل تصفية البحث في كل بحث. قم بإيقاف التشغيل لحفظ عوامل تصفية البحث</string>
     <string name="pref_common_extra">الإضافات</string>
     <string name="details_no_app_match">لم يتم العثور على تطبيق مماثل</string>
     <string name="action_check">فحص</string>

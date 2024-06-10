@@ -182,8 +182,6 @@
     <string name="pref_filter_fdroid_title">F-Droid tətbiqlərini süzün</string>
     <string name="pref_filter_google_summary">Bütün Google Tətbiqlərini axtarış nəticələrindən və kateqoriya tətbiqlərindən silir</string>
     <string name="pref_filter_google_title">Google tətbiqlərini filtrləyin</string>
-    <string name="pref_filter_search_summary">Axtarış filtrləri hər axtarışda sıfırlanır. Axtarış filtrlərini saxlamaq üçün söndürün</string>
-    <string name="pref_filter_search_title">Davamsız axtarış filtrindən istifadə edin</string>
     <string name="pref_insecure_anonymous_summary">Cihazda yerli olaraq GSF ID yaradın</string>
     <string name="pref_insecure_anonymous_title">Təhlükəli anonim hesab</string>
     <string name="pref_install_delete_summary">APK-lar defolt olaraq silinəcək</string>

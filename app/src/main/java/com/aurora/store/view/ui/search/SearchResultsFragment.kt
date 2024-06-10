@@ -122,11 +122,7 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     }
 
     override fun onDestroy() {
-        context?.let {
-            if (Preferences.getBoolean(it, Preferences.PREFERENCE_FILTER_SEARCH)) {
-                viewModel.filterProvider.saveFilter(Filter())
-            }
-        }
+        viewModel.filterProvider.saveFilter(Filter())
         super.onDestroy()
     }
 

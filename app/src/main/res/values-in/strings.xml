@@ -237,8 +237,6 @@
     <string name="pref_install_delete_summary">APK akan dihapus secara default</string>
     <string name="pref_insecure_anonymous_title">Sesi anonim tidak aman</string>
     <string name="pref_insecure_anonymous_summary">Buat ID GSF lokal di perangkat</string>
-    <string name="pref_filter_search_title">Gunakan filter pencarian non-persisten</string>
-    <string name="pref_filter_search_summary">Filter pencarian diatur ulang pada setiap pencarian. Matikan untuk menyimpan filter pencarian</string>
     <string name="dialog_desc_native_split">Anda tidak dapat memasang aplikasi bundled(split) melalui Native Installer. Ubah pemasang Anda ke Sesi, Layanan, atau Root.</string>
     <string name="device_miui_extra">Anda juga dapat memilih Pemasang asli, tetapi Anda tidak akan dapat menginstal APK yang dibundel (terpisah), jadi pilihan ada di tangan Anda.</string>
     <string name="device_miui_description">Harap nonaktifkan optimisasi MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>

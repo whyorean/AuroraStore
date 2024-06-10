@@ -241,10 +241,8 @@
     <string name="installer_status_failure_invalid">APK වලංගු නොවේ හෝ හානි වී ඇත</string>
     <string name="pref_common_extra">අමතර වැඩ</string>
     <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>
-    <string name="pref_filter_search_title">නොනිබැඳි සෙවුම් පෙරහන භාවිතය</string>
     <string name="pref_ui_accent_title">උදාත්තය</string>
     <string name="purchase_invalid">යෙදුම මිලදී ගෙන නැත</string>
-    <string name="pref_filter_search_summary">සෙවුම් පෙරහන් එක් සෙවීමකට පසු යළි සැකසේ. සෙවුම් පෙරහන් සුරැකීමට මෙය අක්‍රිය කරන්න</string>
     <string name="pref_install_mode_summary">APK ස්ථාපන ආකාරය තෝරන්න</string>
     <string name="tab_top_paid">ප්‍රචලිත ගෙවන</string>
     <string name="pref_install_mode_session">වාර ස්ථාපකය</string>

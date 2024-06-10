@@ -89,8 +89,6 @@
     <string name="pref_install_delete_summary">ਐਪ ਇੰਸਟਾਲ ਹੋਣ ਦੇ ਤੁਰੰਤ ਬਾਅਦ ਉਸਦਾ APK ਸੈੱਟਅਪ ਮਿਟਾ ਦਿਤਾ ਜਾਵੇਗਾ</string>
     <string name="pref_insecure_anonymous_title">ਅਸੁਰੱਖਿਅਤ ਅਗਿਆਤ ਸੈਸ਼ਨ</string>
     <string name="pref_insecure_anonymous_summary">ਇਸ ਡਿਵਾਈਜ਼ ਅਨੁਸਾਰ ਬਣੀ GSF ਆਈਡੀ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
-    <string name="pref_filter_search_title">ਨਿਰੰਤਰ ਨਾ ਰਹਿਣ ਵਾਲੇ ਖ਼ੋਜ ਫਿਲਟਰ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
-    <string name="pref_filter_search_summary">ਖ਼ੋਜ ਫਿਲਟਰ ਹਰੇਕ ਖ਼ੋਜ ਉਤੇ ਰੀਸੈਟ ਕੀਤੇ ਜਾਣਗੇ। ਖ਼ੋਜ ਫਿਲਟਰਸ ਨੂੰ ਯਾਦ ਰੱਖਣ ਲਈ ਇਸਨੂੰ ਬੰਦ ਕਰੋ</string>
     <string name="pref_filter_google_title">ਫਿਲਟਰ ਗੂਗਲ ਐਪਸ</string>
     <string name="pref_filter_google_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ ਗੂਗਲ ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_filter_fdroid_title">ਫਿਲਟਰ F-Droid ਐਪਸ</string>

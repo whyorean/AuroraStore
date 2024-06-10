@@ -177,8 +177,6 @@
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>
     <string name="pref_filter_fdroid_title">Filtra les aplicacions de F-Droid</string>
     <string name="pref_filter_google_title">Filtra les aplicacions de Google</string>
-    <string name="pref_filter_search_summary">Els filtres de cerca es restableixen a cada cerca. Desactivar per desar els filtres de cerca</string>
-    <string name="pref_filter_search_title">Utilitza un filtre de cerca no persistent</string>
     <string name="pref_insecure_anonymous_summary">Genera un identificador GSF localment al dispositiu</string>
     <string name="pref_install_delete_summary">Els APKs se suprimiran per defecte</string>
     <string name="pref_install_delete_title">Elimina l\'APK després de la instal·lació</string>

@@ -79,8 +79,6 @@
     <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
     <string name="pref_insecure_anonymous_title">Nezabezpečená anonymní relace</string>
     <string name="pref_insecure_anonymous_summary">Generujte GSF ID lokálně na zařízení</string>
-    <string name="pref_filter_search_title">Použít neperzistentní vyhledávací filtr</string>
-    <string name="pref_filter_search_summary">Filtry vyhledávání se při každém vyhledávání resetují. Vypnutím uložíte filtry vyhledávání</string>
     <string name="pref_filter_google_title">Filtrovat aplikace Google</string>
     <string name="pref_filter_google_summary">Ignorovat aplikace od společnosti Google z karty Aktualizace a Nainstalované</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>

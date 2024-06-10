@@ -241,12 +241,10 @@
     <string name="pref_ui_no_for_you_desc">Прикажите странице за вас на почетном екрану</string>
     <string name="pref_ui_no_for_you">Странице за вас</string>
     <string name="pref_ui_layout">Распоред</string>
-    <string name="pref_filter_search_summary">Филтeри за претрагу се ресетују при свакој претрази. Искључите да бисте сачували филтере за претрагу</string>
     <string name="pref_ui_layout_tab">Избор подразумеване картице</string>
     <string name="pref_network_title">Умрежавање</string>
     <string name="pref_insecure_anonymous_title">Несигурна анонимна сесија</string>
     <string name="pref_insecure_anonymous_summary">Генерисање GSF ID-а локално на уређају</string>
-    <string name="pref_filter_search_title">Користи филтер за претрагу који није постојан</string>
     <string name="pref_common_extra">Додатно</string>
     <string name="details_no_app_match">Није пронађена ниједна одговарајућа апликација</string>
     <string name="action_check">Провери</string>

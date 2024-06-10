@@ -40,10 +40,4 @@
         app:summary="@string/pref_filter_fdroid_summary"
         app:title="@string/pref_filter_fdroid_title" />
 
-    <SwitchPreferenceCompat
-        app:defaultValue="true"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_FILTER_SEARCH"
-        app:summary="@string/pref_filter_search_summary"
-        app:title="@string/pref_filter_search_title" />
 </PreferenceScreen>

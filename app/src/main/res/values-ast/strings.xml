@@ -74,7 +74,6 @@
     <string name="account_logout">Zarru de la sesión d\'Aurora</string>
     <string name="action_check">Comprobar</string>
     <string name="installer_service_available">Los servicios d\'Aurora tán disponibles ya xá se puen instalar.</string>
-    <string name="pref_filter_search_title">Usar una peñera temporal de busca</string>
     <string name="purchase_invalid">Nun se compró l\'aplicación</string>
     <string name="action_next">Siguiente</string>
     <string name="about_libera_summary">Conviértite en mecenes en Liberapay</string>
@@ -203,7 +202,6 @@
     <string name="details_think_this_app">¿Qué pienses d\'esta aplicación\?</string>
     <string name="exodus_substring">ye\'l númberu de rastrexadores atopaos</string>
     <string name="filter_review_critical">Reseña crítica</string>
-    <string name="pref_filter_search_summary">Search filters are reset on each search. Turn off to save search filters</string>
     <string name="pref_install_delete_summary">Les APKs desaníciense por defeutu</string>
     <string name="pref_install_mode_am">AM installer.</string>
     <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los ficheros APK</string>

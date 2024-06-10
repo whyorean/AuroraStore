@@ -246,8 +246,6 @@
     <string name="pref_network_title">Torandin</string>
     <string name="pref_insecure_anonymous_title">Danişîna bênav a bêewle</string>
     <string name="pref_insecure_anonymous_summary">Li ser amûrê Nasnameya GSF-ê ya herêmî çêbike</string>
-    <string name="pref_filter_search_title">Parzûna lêgerînê ya ne-domdar bikar bînin</string>
-    <string name="pref_filter_search_summary">Parzûnên lêgerînê li ser her lêgerînê têne vegerandin. Ji bo tomarkirina parzûnên lêgerînê bigirin</string>
     <string name="pref_common_extra">Zêde</string>
     <string name="dialog_desc_native_split">Hûn nikarin bi navgîniya Sazkerê Xwecihî sepanên hevgirtî (parvekirî) saz bikin. Sazkerê xwe bi Danişîn, Xizmet an Rehê biguherînin.</string>
     <string name="details_no_app_match">Sepaneke lihevhatî nehat dîtin</string>

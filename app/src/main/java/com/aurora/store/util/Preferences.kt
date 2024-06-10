@@ -40,7 +40,6 @@ object Preferences {
 
     const val PREFERENCE_FILTER_GOOGLE = "PREFERENCE_FILTER_GOOGLE"
     const val PREFERENCE_FILTER_FDROID = "PREFERENCE_FILTER_FDROID"
-    const val PREFERENCE_FILTER_SEARCH = "PREFERENCE_FILTER_SEARCH"
     const val PREFERENCE_FILTER_AURORA_ONLY = "PREFERENCE_FILTER_AURORA_ONLY"
 
     const val PREFERENCE_AUTO_DELETE = "PREFERENCE_AUTO_DELETE"
@@ -69,6 +68,10 @@ object Preferences {
             prefs = PreferenceManager.getDefaultSharedPreferences(context)
         }
         return prefs!!
+    }
+
+    fun remove(context: Context, key: String) {
+        getPrefs(context).edit().remove(key).apply()
     }
 
     fun putString(context: Context, key: String, value: String) {
@@ -130,6 +133,8 @@ fun Context.save(key: String, value: String) = Preferences.putString(this, key, 
 
 fun Context.save(key: String, value: Set<String>) = Preferences.putStringSet(this, key, value)
 
+fun Context.remove(key: String) = Preferences.remove(this, key)
+
 
 fun Fragment.save(key: String, value: Int) = requireContext().save(key, value)
 
@@ -138,3 +143,5 @@ fun Fragment.save(key: String, value: Boolean) = requireContext().save(key, valu
 fun Fragment.save(key: String, value: String) = requireContext().save(key, value)
 
 fun Fragment.save(key: String, value: Set<String>) = requireContext().save(key, value)
+
+fun Fragment.remove(key: String) = requireContext().remove(key)

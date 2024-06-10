@@ -246,8 +246,6 @@
     <string name="pref_network_title">Sarea</string>
     <string name="pref_insecure_anonymous_title">Saio anonimo ez segurua</string>
     <string name="pref_insecure_anonymous_summary">GSF ID-a gailuan lokalki sortu</string>
-    <string name="pref_filter_search_title">Iraunkorra ez den bilaketa-iragazkia erabili</string>
-    <string name="pref_filter_search_summary">Bilaketa-iragazkiak bilaketa bakoitzean berrezartzen dira. Desaktibatu bilaketa-iragazkiak gordetzeko</string>
     <string name="pref_common_extra">Extrak</string>
     <string name="dialog_desc_native_split">Aplikazio elkartuak (zatituak) ezin dira instalatzaile natiboaren bidez instalatu. Aldatu instalatzailea Session, Services edo Root-era.</string>
     <string name="details_no_app_match">Ez da aurkitu bat datorren aplikaziorik</string>

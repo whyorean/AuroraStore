@@ -220,8 +220,6 @@
     <string name="pref_install_delete_summary">APK:t poistetaan oletuksena</string>
     <string name="pref_insecure_anonymous_title">Turvaton anonyymi sessio</string>
     <string name="pref_insecure_anonymous_summary">Luo GSF ID paikallisesti tällä laitteella</string>
-    <string name="pref_filter_search_title">Käytä väliaikaista hakujen suodatusta</string>
-    <string name="pref_filter_search_summary">Hakusuodattimet nollataan jokaisella haulla. Ottamalla tämän pois käytöstä hakusuodattimet tallennetaan</string>
     <string name="pref_filter_google_title">Suodata Googlen sovellukset</string>
     <string name="pref_filter_google_summary">Poistaa kaikki Googlen sovellukset hakutuloksista ja sovelluskategorioista</string>
     <string name="pref_dialog_to_apply_restart">Tämä asetus otetaan käyttöön, kun käynnistät sovelluksen uudelleen</string>

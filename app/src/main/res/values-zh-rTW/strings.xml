@@ -147,8 +147,6 @@
     <string name="pref_install_delete_summary">預設情況下 APK 將會被刪除</string>
     <string name="pref_insecure_anonymous_title">不安全的匿名階段</string>
     <string name="pref_insecure_anonymous_summary">在本地裝置上產生 Google 服務代碼</string>
-    <string name="pref_filter_search_title">使用非永久搜尋過濾器</string>
-    <string name="pref_filter_search_summary">搜尋過濾每次都會重設。關閉以保存搜尋過濾</string>
     <string name="pref_filter_google_title">過濾 Google 應用程式</string>
     <string name="pref_filter_google_summary">在更新與已安裝的應用程式中，忽略所有 Google 應用程式</string>
     <string name="pref_filter_fdroid_title">過濾 F-Droid 應用程式</string>

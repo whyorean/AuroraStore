@@ -237,8 +237,6 @@
     <string name="pref_ui_no_for_you">»Für dich«-Tab</string>
     <string name="pref_ui_layout_tab">Startseite</string>
     <string name="pref_ui_layout">Seitengestaltung</string>
-    <string name="pref_filter_search_title">Suchfilter jedes Mal zurücksetzen</string>
-    <string name="pref_filter_search_summary">Suchfilter bei jeder Suche zurücksetzen. Ausschalten, um Suchfilter zu speichern</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">Keine passende App gefunden</string>
     <string name="toast_manual_available">Glückwunsch, der angeforderte Versionscode ist verfügbar und wird jetzt heruntergeladen.</string>

@@ -240,8 +240,6 @@
     <string name="pref_ui_no_for_you">Páginas para ti</string>
     <string name="pref_ui_layout_tab">Elegir pestaña predeterminada</string>
     <string name="pref_ui_layout">Disposición</string>
-    <string name="pref_filter_search_title">Utilizar un filtro de búsqueda no persistente</string>
-    <string name="pref_filter_search_summary">Los filtros de búsqueda se restablecen en cada búsqueda. Desactivar para guardar los filtros de búsqueda</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">No se ha encontrado ninguna aplicación que coincida</string>
     <string name="action_check">Comprobar</string>

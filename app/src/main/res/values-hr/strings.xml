@@ -244,8 +244,6 @@
     <string name="action_check">Označi</string>
     <string name="pref_common_extra">Dodatno</string>
     <string name="dialog_desc_native_split">Paketirane (podijeljene) programe ne možeš instalirati putem nativnog programa za insatliranje instalacije. Promijeni instalatera u sesija, usluge ili administrator.</string>
-    <string name="pref_filter_search_title">Koristi ne trajni filtar pretrage</string>
-    <string name="pref_filter_search_summary">Filtri pretrage obnavljaju se nakon svakog pretraživanja. Isključi za spremanje filtara pretrage</string>
     <string name="toast_page_unavailable">Stranica pretraživanja nedostupna</string>
     <string name="toast_aas_token_failed">Neuspjelo generiranje AAS tokena</string>
     <string name="toast_rated_failed">Neuspjelo slanje ocjene</string>

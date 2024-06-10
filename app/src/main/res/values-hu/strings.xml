@@ -237,8 +237,6 @@
     <string name="pref_ui_no_for_you">Önnek ajánlott</string>
     <string name="pref_ui_layout_tab">Alapértelmezett fül kiválasztása</string>
     <string name="pref_ui_layout">Elrendezés</string>
-    <string name="pref_filter_search_title">Átmeneti szűrő használata</string>
-    <string name="pref_filter_search_summary">A szűrők minden keresés után alaphelyzetbe állnak. Deaktiválja a keresési szűrők mentéséhez</string>
     <string name="pref_common_extra">Extrák</string>
     <string name="details_no_app_match">Nem található app egyezés</string>
     <string name="toast_manual_available">Gratulálunk, a kért verziókód elérhető, letöltése folyamatban van.</string>

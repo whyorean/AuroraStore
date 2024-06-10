@@ -177,7 +177,6 @@
     <string name="pref_ui_theme_system">Όπως το σύστημα</string>
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
     <string name="pref_filter_google_title">Φιλτράρετε τις εφαρμογές Google</string>
-    <string name="pref_filter_search_summary">Τα φίλτρα αναζήτησης επαναφέρονται σε κάθε αναζήτηση. Απενεργοποιήστε τα για να τα αποθηκεύσετε</string>
     <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
     <string name="pref_ui_title">Προσαρμογή</string>
@@ -226,7 +225,6 @@
     <string name="title_apps_library">Εφαρμογές στη βιβλιοθήκη</string>
     <string name="title_about">Σχετικά με</string>
     <string name="pref_ui_no_for_you">Σελίδες για Εσάς</string>
-    <string name="pref_filter_search_title">Χρήση μη μόνιμου φίλτρου αναζήτησης</string>
     <string name="title_installation">Εγκατάσταση</string>
     <string name="pref_ui_theme_black">Μαύρο</string>
     <string name="tab_top_charts">Κορυφαίες εφαρμογές</string>

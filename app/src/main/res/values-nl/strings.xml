@@ -99,8 +99,6 @@
     <string name="pref_install_delete_summary">APKs worden standaard verwijderd</string>
     <string name="pref_insecure_anonymous_title">Onveilige anonieme sessie</string>
     <string name="pref_insecure_anonymous_summary">Genereer GSF ID lokaal op apparaat</string>
-    <string name="pref_filter_search_title">Gebruik niet-permanente zoek filter</string>
-    <string name="pref_filter_search_summary">Zoekfilters worden na elke zoekopdracht gereset. Schakel uit om de filters op te slaan</string>
     <string name="pref_filter_google_title">Filter Google apps</string>
     <string name="pref_filter_google_summary">Verwijdert alle Google Apps van zoekresultaten en categorie apps</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>

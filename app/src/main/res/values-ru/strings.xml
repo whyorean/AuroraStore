@@ -235,11 +235,9 @@
     <string name="pref_ui_no_for_you_desc">Показать страницу рекомендаций на основном экране</string>
     <string name="pref_ui_layout_tab">Вкладка по умолчанию</string>
     <string name="pref_ui_layout">Вкладки</string>
-    <string name="pref_filter_search_title">Не сохранять поисковый фильтр</string>
     <string name="pref_common_extra">Дополнительно</string>
     <string name="pref_ui_similar_apps">Похожие и связанные приложения</string>
     <string name="pref_ui_no_for_you">Страница рекомендаций</string>
-    <string name="pref_filter_search_summary">Поисковые фильтры сбрасываются при каждом поиске. Отключите, чтобы сохранить их</string>
     <string name="details_no_app_match">Приложения не найдены</string>
     <string name="toast_manual_available">Поздравляем, запрошенный код версии доступен. Начинаем загрузку.</string>
     <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>

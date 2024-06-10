@@ -237,8 +237,6 @@
     <string name="pref_ui_no_for_you">For You 页面</string>
     <string name="pref_ui_layout_tab">选择默认标签</string>
     <string name="pref_ui_layout">布局</string>
-    <string name="pref_filter_search_title">使用非永久性搜索过滤器</string>
-    <string name="pref_filter_search_summary">搜索过滤器会在每次搜索时重置。 关闭以保存搜索过滤器</string>
     <string name="pref_common_extra">附加</string>
     <string name="details_no_app_match">没找到匹配的应用</string>
     <string name="toast_manual_available">恭喜，你请求的版本代码可用，现在下载。</string>

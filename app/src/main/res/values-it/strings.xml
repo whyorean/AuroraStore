@@ -237,8 +237,6 @@
     <string name="pref_ui_no_for_you">Pagine «Per te»</string>
     <string name="pref_ui_layout_tab">Seleziona la scheda predefinita</string>
     <string name="pref_ui_layout">Disposizione</string>
-    <string name="pref_filter_search_title">Usa filtro di ricerca non persistente</string>
-    <string name="pref_filter_search_summary">I filtri di ricerca vengono reimpostati ad ogni ricerca. Disattivare per salvare i filtri di ricerca</string>
     <string name="pref_common_extra">Extra</string>
     <string name="details_no_app_match">Nessuna corrispondenza trovata</string>
     <string name="toast_manual_available">Congratulazioni, il codice di versione richiesto è disponibile; scaricamento in corso.</string>

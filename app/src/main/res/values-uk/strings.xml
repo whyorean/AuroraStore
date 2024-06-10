@@ -194,8 +194,6 @@
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
     <string name="pref_insecure_anonymous_title">Небезпечний анонімний сеанс</string>
     <string name="pref_insecure_anonymous_summary">Локальне створення ідентифікатора GSF на пристрої</string>
-    <string name="pref_filter_search_title">Використовувати непостійний фільтр пошуку</string>
-    <string name="pref_filter_search_summary">Фільтри пошуку скидаються за кожного пошуку. Вимкніть, щоб зберегти фільтри пошуку</string>
     <string name="pref_filter_google_title">Фільтрувати застосунки Google</string>
     <string name="pref_filter_google_summary">Ігнорувати застосунки Google з Оновлень та Встановлених застосунків</string>
     <string name="pref_app_download">Завантаження</string>

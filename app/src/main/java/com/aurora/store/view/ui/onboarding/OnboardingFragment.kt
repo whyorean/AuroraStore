@@ -44,7 +44,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
-import com.aurora.store.util.Preferences.PREFERENCE_FILTER_SEARCH
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
@@ -162,7 +161,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         save(PREFERENCE_FILTER_AURORA_ONLY, false)
         save(PREFERENCE_FILTER_FDROID, true)
         save(PREFERENCE_FILTER_GOOGLE, false)
-        save(PREFERENCE_FILTER_SEARCH, true)
 
         /*Network*/
         // TODO: Gather feedback and drop setting default dispenser for all builds

@@ -213,7 +213,6 @@
     <string name="pref_abandon_session_desc">Išvalyti nutrauktus ar laukiančius diegimo seansus</string>
     <string name="pref_filter_google_summary">Pašalina visas „Google“ programėles iš paieškos rezultatų bei programėlių kategorijų</string>
     <string name="pref_filter_google_title">Filtruoti „Google“ programėles</string>
-    <string name="pref_filter_search_title">Naudoti neišliekantį paieškos filtrą</string>
     <string name="pref_insecure_anonymous_summary">Generuoti GSF ID vietiniu mastu įrenginyje</string>
     <string name="pref_install_delete_summary">Pagal numatymą APK paketai bus ištrinami</string>
     <string name="pref_install_mode_summary">Pasirinkti APK paketų diegimo veikseną</string>
@@ -242,7 +241,6 @@
     <string name="onboarding_permission_esa">Prieiga prie išorinės saugyklos</string>
     <string name="pref_install_delete_title">Po įdiegimo ištrinti APK paketus</string>
     <string name="pref_ui_no_for_you_desc">Rodyti pradžios ekrane puslapius „Jums“</string>
-    <string name="pref_filter_search_summary">Paieškos filtrai bus atstatomi kiekvienos paieškos metu. Išjunkite šią parinktį norėdami išsaugoti paieškos filtrus</string>
     <string name="onboarding_permission_esm">Išorinės saugyklos tvarkytuvė</string>
     <string name="title_apps_sale">Išparduodamos programėlės</string>
     <string name="toast_apk_blacklisted">Pridėta į juodąjį sąrašą</string>

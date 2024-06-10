@@ -22,6 +22,7 @@ package com.aurora.store.data.providers
 import android.content.Context
 import com.aurora.store.data.Filter
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.remove
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -35,6 +36,11 @@ class FilterProvider @Inject constructor(
 
     companion object {
         const val PREFERENCE_FILTER = "PREFERENCE_FILTER"
+    }
+
+    init {
+        // Clean any last saved filter
+        context.remove(PREFERENCE_FILTER)
     }
 
     fun getSavedFilter(): Filter {

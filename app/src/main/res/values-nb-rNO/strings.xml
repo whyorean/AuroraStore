@@ -203,7 +203,6 @@
     <string name="pref_ui_no_for_you_desc">Vis For You-sider på startskjermen</string>
     <string name="pref_ui_theme_darkord">Uenighet</string>
     <string name="pref_ui_accent_title">Aksent</string>
-    <string name="pref_filter_search_summary">Søkefiltre tilbakestilles ved hvert søk. Slå av for å lagre søkefiltre</string>
     <string name="pref_abandon_session_desc">Fjern forlatte eller ventende installasjonsøkter</string>
     <string name="pref_abandon_session">Tving frem klare installasjonsøkter</string>
     <string name="installer_service_misconfigured">Sett opp Aurora-tjenester og innvilg alle tilganger først.</string>
@@ -226,7 +225,6 @@
     <string name="purchase_no_file">Kunne ikke hente filer</string>
     <string name="pref_ui_theme_dark_x">Mørk X</string>
     <string name="pref_ui_theme_light">Lys</string>
-    <string name="pref_filter_search_title">Bruk ikke-vedvarende søkefilter</string>
     <string name="pref_filter_fdroid_summary">Fjerner F-Droid-programmer fra programlistene</string>
     <string name="pref_dialog_to_apply_restart">Denne innstillinger vil tre i kraft etter at du starter programmet igjen</string>
     <string name="pref_common_extra">Ekstra</string>

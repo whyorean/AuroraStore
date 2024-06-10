@@ -154,7 +154,6 @@
     <string name="toast_purchase_blocked">बेनामी खातों पर ऐप खरीदारी उपलब्ध नहीं है।</string>
     <string name="details_gsf_dependent">GSF आवश्यकता है</string>
     <string name="menu_terms">सेवा शर्तें</string>
-    <string name="pref_filter_search_title">गैर-निरंतर खोज फिल्टर का उपयोग करें</string>
     <string name="tab_categories">श्रेणियां</string>
     <string name="title_spoof_manager">छलावरण प्रबंधक</string>
     <string name="title_about">ऐप के बारे में</string>
@@ -249,7 +248,6 @@
     <string name="pref_abandon_session_desc">परित्याग या लंबित स्थापना सत्र साफ करें</string>
     <string name="pref_dialog_to_apply_restart">यह सेटिंग आपके ऐप को पुनरारंभ करने के बाद लागू की जाएगी</string>
     <string name="pref_insecure_anonymous_title">असुरक्षित अनाम सत्र</string>
-    <string name="pref_filter_search_summary">प्रत्येक खोज पर खोज फिल्टर रीसेट कर दिए जाते हैं। खोज फिल्टर सहेजने के लिए बंद करें</string>
     <string name="pref_install_delete_summary">डाउनलोड किए गए APK इंस्टालेशन के तुरंत बाद मिटा दिए जाएंगे</string>
     <string name="pref_install_delete_title">इंस्टॉल के बाद APK मिटाएं</string>
     <string name="pref_ui_theme_system">सिस्टम का अनुसरण करें</string>

@@ -211,7 +211,6 @@
     <string name="tab_for_you">För dig</string>
     <string name="pref_ui_no_for_you_desc">Visa för dig-sidor på startskärmen</string>
     <string name="pref_ui_no_for_you">För dig sidor</string>
-    <string name="pref_filter_search_title">Använd icke-beständigt sökfilter</string>
     <string name="pref_filter_fdroid_summary">Ignorera F-Droid-appar från uppdateringar och installerade appar</string>
     <string name="onboarding_permission_installer">Installatörsbehörighet</string>
     <string name="onboarding_permission_esa">Extern lagringsåtkomst</string>
@@ -224,7 +223,6 @@
     <string name="toast_export_success">Enhetens konfiguration exporterades</string>
     <string name="toast_apk_blacklisted">Svartlistad</string>
     <string name="pref_ui_similar_apps_desc">Visa liknande och relaterade klustrar på appens detaljsida</string>
-    <string name="pref_filter_search_summary">Sök-filtren återställs vid varje sökning. Stäng av för att spara sök-filter</string>
     <string name="pref_filter_google_summary">Ignorera Google-appar från Uppdateringar och Installerade appar</string>
     <string name="onboarding_permission_esm">Hanterare av externt lagringsutrymme</string>
     <string name="details_no_permission">Inga tillstånd</string>

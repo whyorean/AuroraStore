@@ -167,10 +167,8 @@
     <string name="pref_filter_fdroid_summary">업데이트 및 설치된 앱에서 F-Droid 앱 무시</string>
     <string name="pref_filter_fdroid_title">F-Droid 앱 필터링</string>
     <string name="pref_filter_google_summary">업데이트 및 설치된 앱에서 Google 앱 무시</string>
-    <string name="pref_filter_search_title">비영구 검색 필터 사용</string>
     <string name="pref_insecure_anonymous_summary">기기에서 로컬로 GSF ID 생성</string>
     <string name="pref_filter_google_title">Google 앱 필터링</string>
-    <string name="pref_filter_search_summary">검색 필터는 검색할 때마다 재설정됩니다. 검색 필터를 저장하려면 사용 중지하기</string>
     <string name="installer_status_failure">설치 실패</string>
     <string name="installer_status_failure_storage">저장 공간이 충분하지 않음</string>
     <string name="installer_status_failure_incompatible">호환되지 않는 앱</string>

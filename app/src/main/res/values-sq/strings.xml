@@ -170,8 +170,6 @@
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_filter_google_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga Google</string>
     <string name="pref_filter_google_title">Filtro aplikacione Google</string>
-    <string name="pref_filter_search_summary">Filtrat e kërkimit zerohen pas çdo kërkimi. Çaktivizojeni, që të ruhen filtrat e kërkimit</string>
-    <string name="pref_filter_search_title">Përdor filtër kërkimi që s’ruhet</string>
     <string name="pref_insecure_anonymous_summary">Prodho ID GSF lokalisht në pajisje</string>
     <string name="pref_insecure_anonymous_title">Sesion anonim i pasigurt</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>

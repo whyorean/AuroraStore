@@ -43,8 +43,6 @@
     <string name="pref_install_delete_summary">As APKs serán eliminadas por defecto</string>
     <string name="pref_insecure_anonymous_title">Sesión anónima insergura</string>
     <string name="pref_insecure_anonymous_summary">Xerar ID de GSF localmente no dispositivo</string>
-    <string name="pref_filter_search_title">Usar filtros de busca non persistentes</string>
-    <string name="pref_filter_search_summary">Os filtros de busca serán restabelecidos en cada procura. Desactive esta opción para gardalos</string>
     <string name="pref_filter_google_title">Filtrar aplicacións de Google</string>
     <string name="pref_filter_google_summary">Borra todas as aplicacións de Google dos resultados de busca e catergorías</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicacións de F-Droid</string>
