@@ -77,6 +77,15 @@ Don't see your preferred language? Click on the widget below to help translate A
   <img src="https://hosted.weblate.org/widgets/aurora-store/-/287x66-grey.png" alt="Translation status" />
 </a>
 
+## Donations
+
+You can support Aurora Store's development financially via options below. For more options, checkout the **About** page within the Aurora Store.
+
+[![Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/whyorean)
+<a href="https://www.paypal.com/paypalme/AuroraDev">
+  <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" height="45" alt="PayPal">
+</a>
+
 ## Project references
 
 Aurora Store is based on these projects
