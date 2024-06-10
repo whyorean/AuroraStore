@@ -44,7 +44,7 @@ object AppUtil {
             appUpdatesList
         }
 
-        if (!CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
+        if (canSelfUpdate(context)) {
             getSelfUpdate(context, gson)?.let { verifiedUpdatesList.add(it) }
         }
 
@@ -69,6 +69,11 @@ object AppUtil {
                     .map { it.isInstalled = true; it }
             }
         }
+    }
+
+    private fun canSelfUpdate(context: Context): Boolean {
+        return !CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID) &&
+                !CertUtil.isAppGalleryApp(context, BuildConfig.APPLICATION_ID)
     }
 
     private suspend fun getSelfUpdate(context: Context, gson: Gson): App? {
