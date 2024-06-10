@@ -116,14 +116,18 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     }
 
     override fun onDestroyView() {
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onDestroy() {
         context?.let {
-            sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
             if (Preferences.getBoolean(it, Preferences.PREFERENCE_FILTER_SEARCH)) {
                 viewModel.filterProvider.saveFilter(Filter())
             }
         }
-        super.onDestroyView()
-        _binding = null
+        super.onDestroy()
     }
 
     private fun updateController(searchBundle: SearchBundle?) {
