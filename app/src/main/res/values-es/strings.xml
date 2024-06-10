@@ -415,4 +415,5 @@
 \nA diferencia de una tienda de aplicaciones tradicional, Aurora Store no posee, licencia ni distribuye ninguna aplicación. Se accede, descarga y/o muestra directamente desde Google Play a todas las aplicaciones, descripciones de aplicaciones, capturas de pantalla y otro contenido de Aurora Store. Aurora Store funciona exactamente como una puerta o un navegador, permitiéndole iniciar sesión en su cuenta de Google Play y encontrar las aplicaciones de Google Play.
 \n
 \nTenga en cuenta que Aurora Store no cuenta con ninguna aprobación, patrocinio o autorización de Google, Google Play, ninguna aplicación descargada a través de Aurora Store ni ningún desarrollador de aplicaciones; Aurora Store tampoco tiene ninguna afiliación, cooperación o conexión con ellos.</string>
+    <string name="session_login">Por favor, inicia sesión con tu cuenta de Google Play</string>
 </resources>
