@@ -415,4 +415,5 @@
 \nNa rozdíl od tradičního obchodu s aplikacemi aplikace Aurora Store nevlastní, nelicencuje ani nedistribuuje žádné aplikace. Všechny aplikace, popisy aplikací, snímky obrazovky a další obsah v aplikaci Aurora Store jsou přímo přístupné, stažené a/nebo zobrazené z Obchodu Google Play. Aplikace Aurora Store funguje přesně jako dveře nebo prohlížeč, umožňuje přihlášení k účtu Google a vyhledávání aplikací z Obchodu Google Play.
 \n
 \nUpozornění: aplikace Aurora Store nemá žádné schválení, sponzoring ani autorizaci od společnosti Google, Google Play, aplikací stažených prostřednictvím aplikace Aurora Store ani od vývojářů aplikací; aplikace Aurora Store s nimi také nemá žádné spojení, spolupráci ani vazbu.</string>
+    <string name="session_login">Přihlaste se prosím do vašeho účtu Google</string>
 </resources>
