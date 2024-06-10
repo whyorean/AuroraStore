@@ -303,7 +303,6 @@
     <string name="session_enjoy">Accedi e goditi.</string>
     <string name="session_good">Wow! Tutto bene.</string>
     <string name="session_init">Preparazione delle cose…</string>
-    <string name="session_login">Prima effettua l’accesso</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> aggiornamenti disponibili</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_install_mode_shizuku">Installatore Shizuku</string>

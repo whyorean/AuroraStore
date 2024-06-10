@@ -286,7 +286,6 @@
     <string name="permissions_denied">تم رفض الإذن المطلوب يرجى منحها لمواصلة العمل</string>
     <string name="search_hint">البحث عن التطبيقات والألعاب</string>
     <string name="download_progress">جار التحميل • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>
-    <string name="session_login">سجيل الدخول أولا</string>
     <string name="onboarding_permission_notifications">الإشعارات</string>
     <string name="onboarding_permission_notifications_desc">إرسال إشعارات بخصوص حالة التثبيت</string>
     <string name="session_enjoy">سجيل الدخول واستمتع.</string>

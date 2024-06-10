@@ -270,7 +270,6 @@
     <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
     <string name="ui_accent_0">מערכת</string>
     <string name="pref_network_proxy_title">פרוקסי</string>
-    <string name="session_login">קודם כל תיכנס</string>
     <string name="pref_install_mode_shizuku">מתקין Shizuku</string>
     <string name="action_post">פרסום</string>
     <string name="onboarding_permission_notifications">התראות</string>

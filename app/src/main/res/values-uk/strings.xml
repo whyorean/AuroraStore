@@ -273,7 +273,6 @@
     <string name="ui_accent_13">Темно-синій</string>
     <string name="download_eta_min">Залишилося %1$dхв %2$dс</string>
     <string name="session_init">Приготування…</string>
-    <string name="session_login">Спочатку ввійдіть</string>
     <string name="session_login_failed_google">Не вдалось увійти через Google</string>
     <string name="session_scrapped">Останній сеанс скасовано</string>
     <string name="session_verifying">Перевірка сеансу</string>

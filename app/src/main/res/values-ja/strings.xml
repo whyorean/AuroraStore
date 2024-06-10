@@ -288,7 +288,6 @@
     <string name="onboarding_permission_notifications">通知</string>
     <string name="onboarding_permission_notifications_desc">インストール状況の通知を送る</string>
     <string name="session_init">準備中…</string>
-    <string name="session_login">まずはログインしましょう</string>
     <string name="session_login_failed_google">Google でログインできませんでした</string>
     <string name="session_scrapped">セッションを破棄しました</string>
     <string name="session_verifying">セッションを認証中</string>

@@ -278,7 +278,6 @@
     <string name="session_enjoy">Hasi saioa eta gozatu.</string>
     <string name="session_good">Itzel! Dena ondo.</string>
     <string name="session_init">Prestatzen eta txukuntzen…</string>
-    <string name="session_login">Hasi saioa lehenik</string>
     <string name="session_login_failed_google">Ezin izan da saioa hasi Google bidez</string>
     <string name="title_advanced">Aurreratua</string>
     <string name="toast_import_success">Gailuaren konfigurazioa inportatuta</string>

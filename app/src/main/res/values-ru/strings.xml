@@ -287,7 +287,6 @@
     <string name="onboarding_permission_notifications">Уведомления</string>
     <string name="session_good">Отлично.</string>
     <string name="session_init">Подготовка…</string>
-    <string name="session_login">Сначала войдите</string>
     <string name="session_login_failed_google">Не удалось войти через Google</string>
     <string name="title_advanced">Дополнительно</string>
     <string name="update_available">обновление</string>

@@ -290,7 +290,6 @@
     <string name="download_eta_min">%1$d min %2$d s jäljellä</string>
     <string name="download_eta_sec">%1$d s jäljellä</string>
     <string name="onboarding_permission_notifications_desc">Lähetä ilmoituksia asennusten tilasta</string>
-    <string name="session_login">Kirjaudu sisään ensin</string>
     <string name="session_verifying">Vahvistetaan istuntoa</string>
     <string name="session_verifying_google">Googlen istuntoa tarkistetaan</string>
     <string name="title_advanced">Edistynyt</string>

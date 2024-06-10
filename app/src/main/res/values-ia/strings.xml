@@ -201,7 +201,6 @@
     <string name="session_verifying_google">Verificante le session de Google</string>
     <string name="toast_anonymous_restriction">Non disponibile in contos anonyme</string>
     <string name="action_post">Publicar</string>
-    <string name="session_login">Prime initia le session</string>
     <string name="installer_am_unavailable">Installar Gestor de applicationes o cambiar le installator.</string>
     <string name="installer_status_failure_session">Non poteva crear le session</string>
     <string name="onboarding_permission_esa">Acceso a immagazinage externe</string>

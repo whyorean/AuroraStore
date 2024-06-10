@@ -291,7 +291,6 @@
     <string name="download_progress">A descarregar • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Notificações</string>
     <string name="onboarding_permission_notifications_desc">Permitir notificações acerca do estado das instalações</string>
-    <string name="session_login">Tem que iniciar sessão</string>
     <string name="session_enjoy">Inicie sessão e desfrute.</string>
     <string name="title_advanced">Avançado</string>
     <string name="installer_shizuku_unavailable">Shizuku não instalado ou configurado erradamente.</string>

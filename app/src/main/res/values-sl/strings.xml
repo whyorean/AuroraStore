@@ -239,7 +239,6 @@
     <string name="session_enjoy">Prijavite se in uživajte.</string>
     <string name="session_good">Vau! Vse v redu.</string>
     <string name="session_init">Priprava stvari …</string>
-    <string name="session_login">Najprej se morate prijaviti</string>
     <string name="session_login_failed_google">Prijava prek Googla ni uspela</string>
     <string name="session_verifying">Preverjanje seje</string>
     <string name="session_verifying_google">Preverjanje Googlove seje</string>

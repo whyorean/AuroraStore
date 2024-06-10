@@ -264,7 +264,6 @@
     <string name="pref_network_proxy_url">Įgaliotojo serverio URL</string>
     <string name="ui_accent_0">Sistema</string>
     <string name="pref_network_proxy_title">Įgaliotasis serveris</string>
-    <string name="session_login">Iš pradžių, prisijunkite</string>
     <string name="onboarding_permission_notifications">Pranešimai</string>
     <string name="notification_updates_available_desc_1">Yra prieinama nauja <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>
     <string name="action_enable">Įjungti</string>

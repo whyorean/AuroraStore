@@ -273,7 +273,6 @@
     <string name="ui_accent_11">Svjetloplava</string>
     <string name="download_eta_sec">Preostalo: %1$d s</string>
     <string name="session_init">Pripremanje …</string>
-    <string name="session_login">Najprije se prijavite</string>
     <string name="session_scrapped">Zadnja izbrisana sesija</string>
     <string name="session_verifying">Provjeravanje sesije</string>
     <string name="session_verifying_google">Provjeravanje Google sesije</string>

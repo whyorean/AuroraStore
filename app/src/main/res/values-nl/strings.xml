@@ -284,7 +284,6 @@
     <string name="download_progress">Aan het downloaden • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku is niet geïnstalleerd of niet goed ingesteld.</string>
     <string name="onboarding_permission_notifications">Meldingen</string>
-    <string name="session_login">U moet eerst aanmelden</string>
     <string name="session_login_failed_google">Aanmelden via Google mislukt</string>
     <string name="toast_import_success">Apparaatconfiguratie geïmporteerd</string>
     <string name="toast_import_failed">Kon de apparaatconfiguratie niet importeren</string>

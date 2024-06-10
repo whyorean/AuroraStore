@@ -66,8 +66,9 @@
             android:layout_below="@id/txt_title"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="@dimen/margin_xlarge"
+            android:maxLines="2"
             android:textAlignment="center"
-            tools:text="Sign in first" />
+            tools:text="@string/session_login" />
     </RelativeLayout>
 
     <LinearLayout

@@ -287,7 +287,6 @@
     <string name="download_eta_min">还剩 %1$d分钟 %2$d秒</string>
     <string name="session_enjoy">登录并享受。</string>
     <string name="session_good">哇哦！一切正常。</string>
-    <string name="session_login">请先登录</string>
     <string name="session_login_failed_google">通过 Google 登录失败</string>
     <string name="session_scrapped">上次会话报废</string>
     <string name="session_init">准备中…</string>

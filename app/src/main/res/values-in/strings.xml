@@ -286,7 +286,6 @@
     <string name="search_hint">Cari Aplikasi &amp; Permainan</string>
     <string name="download_eta_hrs">%1$dj %2$dm %3$dd tersisa</string>
     <string name="updates_available">Pembaruan tersedia</string>
-    <string name="session_login">Login terlebih dahulu</string>
     <string name="rate_limited">Ups, Akun ini dibatasi!</string>
     <string name="download_eta_sec">%1$dd tersisa</string>
     <string name="download_progress">Mengunduh • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>

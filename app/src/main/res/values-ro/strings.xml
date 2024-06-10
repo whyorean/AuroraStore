@@ -253,7 +253,6 @@
     <string name="purchase_unsupported">Aplicație neacceptată</string>
     <string name="purchase_not_found">Aplicația nu a fost găsită</string>
     <string name="session_init">Se pregătesc lucrurile…</string>
-    <string name="session_login">Trebuie să te autentifici mai întâi</string>
     <string name="session_verifying">Verificare sesiune</string>
     <string name="title_settings">Setări</string>
     <string name="session_verifying_google">Se verifică sesiunea Google</string>

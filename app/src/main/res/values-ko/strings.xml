@@ -235,7 +235,6 @@
     <string name="details_no_apps_on_sale">판매에서 발견되는 앱 없음</string>
     <string name="title_download_manager">다운로드</string>
     <string name="pref_install_mode_am">AM 인스톨러</string>
-    <string name="session_login">먼저 로그인</string>
     <string name="session_init">준비하는 것들 …</string>
     <string name="title_account_manager">계정</string>
     <string name="title_apps">앱스</string>

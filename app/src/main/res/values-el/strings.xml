@@ -300,7 +300,6 @@
     <string name="pref_network_proxy_enable_desc">Επιτρέψτε όλη την κίνηση από την εφαρμογή να περνάει από τη μεσολάβηση</string>
     <string name="pref_network_proxy_url">URL μεσολάβησης</string>
     <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
-    <string name="session_login">Συνδεθείτε πρώτα</string>
     <string name="session_login_failed_google">Δεν ήταν δυνατή η σύνδεση μέσω Google</string>
     <string name="title_apps_sale_provider">Προμηθευτής - bestappsales.com</string>
     <string name="session_good">Ουαου! Όλα καλά.</string>

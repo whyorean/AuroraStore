@@ -291,7 +291,6 @@
     <string name="requesting_new_session">Demande d’une nouvelle session</string>
     <string name="download_eta_sec">%1$d s restantes</string>
     <string name="session_init">Préparation en cours…</string>
-    <string name="session_login">Connectez-vous d’abord</string>
     <string name="session_login_failed_google">Impossible de se connecter via Google</string>
     <string name="session_scrapped">Dernière session supprimée</string>
     <string name="update_available">mise à jour disponible</string>

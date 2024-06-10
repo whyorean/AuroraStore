@@ -279,7 +279,6 @@
     <string name="download_eta_min">%1$dm %2$ds restando</string>
     <string name="download_eta_sec">%1$ds restando</string>
     <string name="session_good">Aê! Tudo certo.</string>
-    <string name="session_login">Faça login primeiro</string>
     <string name="session_login_failed_google">Não foi possível fazer login via Google</string>
     <string name="session_verifying">Verificando sessão</string>
     <string name="session_scrapped">Última sessão foi descartada</string>

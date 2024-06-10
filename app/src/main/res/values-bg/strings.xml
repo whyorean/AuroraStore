@@ -209,7 +209,6 @@
     <string name="pref_ui_accent_title">Акцент</string>
     <string name="purchase_no_file">Файловете не могат да бъдат получени</string>
     <string name="session_good">Уау! Всичко е наред.</string>
-    <string name="session_login">Първо трябва да влезете</string>
     <string name="session_verifying">Сесията се проверява</string>
     <string name="session_verifying_google">Потвърждаване на Google сесия</string>
     <string name="tab_top_free">Топ безплатно</string>

@@ -279,7 +279,6 @@
     <string name="onboarding_permission_notifications">Notificaciones</string>
     <string name="session_good">¡Guau! Todo está bien.</string>
     <string name="session_init">Preparando las cosas…</string>
-    <string name="session_login">Conéctate primero</string>
     <string name="session_scrapped">Última sesión eliminada</string>
     <string name="session_verifying">Verificando la sesión</string>
     <string name="session_verifying_google">Verificando la sesión de Google</string>

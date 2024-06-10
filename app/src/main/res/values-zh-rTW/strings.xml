@@ -290,7 +290,6 @@
     <string name="onboarding_permission_notifications">通知</string>
     <string name="onboarding_permission_notifications_desc">發送有關安裝狀態的通知</string>
     <string name="session_init">正在準備…</string>
-    <string name="session_login">請先登入</string>
     <string name="session_login_failed_google">無法透過 Google 登入</string>
     <string name="session_scrapped">最後的工作階段已被取消</string>
     <string name="session_verifying">正在驗證工作階段</string>

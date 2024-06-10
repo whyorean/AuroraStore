@@ -191,7 +191,6 @@
     <string name="session_enjoy">Login and enjoy.</string>
     <string name="session_good">¡Meca! Ta too bien.</string>
     <string name="session_init">Getting things ready…</string>
-    <string name="session_login">Tienes d\'aniciar la sesión primero</string>
     <string name="session_login_failed_google">L\'aniciu de la sesión per Google falló</string>
     <string name="session_scrapped">Last session scrapped</string>
     <string name="session_verifying">Verifying session</string>

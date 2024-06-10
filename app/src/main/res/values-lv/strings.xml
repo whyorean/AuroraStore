@@ -211,7 +211,6 @@
     <string name="toast_apk_whitelisted">Ievietots baltajā sarakstā</string>
     <string name="session_good">Vā! Viss kārtībā.</string>
     <string name="session_init">Tiek sagatavots nepieciešamais…</string>
-    <string name="session_login">Vispirms ir jāpiesakās</string>
     <string name="session_scrapped">Pēdējā sesija tika atmesta</string>
     <string name="session_verifying_google">Pārbauda Google sesiju</string>
     <string name="insecure_anonymous_apply">Jānodrošina atkārtota pieteikšanās un pārsāknēšana, lai pielietotu izmaiņas.</string>

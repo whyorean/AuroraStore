@@ -274,7 +274,6 @@
     <string name="session_enjoy">Anmelden und genießen.</string>
     <string name="session_good">Boah! Alles gut.</string>
     <string name="session_init">Vorbereitung läuft …</string>
-    <string name="session_login">Zuerst anmelden</string>
     <string name="session_login_failed_google">Anmeldung via Google fehlgeschlagen</string>
     <string name="session_scrapped">Letzte Sitzung wurde abgebrochen</string>
     <string name="session_verifying">Sitzung wird überprüft</string>

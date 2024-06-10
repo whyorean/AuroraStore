@@ -292,7 +292,6 @@
     <string name="session_verifying_google">Weryfikacja sesji Google</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_good">Łał! Wszystko dobrze.</string>
-    <string name="session_login">Najpierw zaloguj się</string>
     <string name="session_init">Przygotowuję…</string>
     <string name="session_scrapped">Ostatnia sesja została zezłomowana</string>
     <string name="rate_limited">Ups, to konto ma ograniczoną liczbę żądań!</string>

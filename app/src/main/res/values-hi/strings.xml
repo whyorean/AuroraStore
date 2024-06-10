@@ -275,7 +275,6 @@
     <string name="download_progress">डाउनलोड हो रहे • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku ठीक से इंस्टॉल या सेटअप नहीं है।</string>
     <string name="pref_install_mode_shizuku">Shizuku इंस्टॉलर</string>
-    <string name="session_login">पहले लॉगिन करें</string>
     <string name="ui_accent_0">सिस्टम</string>
     <string name="rate_limited">उफ़, इस खाते की दर सीमित है!</string>
     <string name="error">एक त्रुटि पाई गई!</string>

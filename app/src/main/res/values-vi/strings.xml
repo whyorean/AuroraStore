@@ -300,7 +300,6 @@
     <string name="pref_install_mode_shizuku">Cài đặt bằng Shizuku</string>
     <string name="session_enjoy">Đăng nhập và tận hưởng.</string>
     <string name="session_init">Chuẩn bị…</string>
-    <string name="session_login">Đăng nhập trước đã</string>
     <string name="session_scrapped">Phiên dùng trước đã bị bỏ</string>
     <string name="session_verifying">Xác minh phiên dùng</string>
     <string name="session_verifying_google">Xác minh phiên dùng Google</string>

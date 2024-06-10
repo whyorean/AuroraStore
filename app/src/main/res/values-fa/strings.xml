@@ -307,7 +307,6 @@
     <string name="download_paused">مکث شده • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="toast_import_success">پیکربندی دستگاه وارد شد</string>
     <string name="pref_install_mode_shizuku">نصب کننده شیزوکو</string>
-    <string name="session_login">ابتدا باید وارد شوید</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="notification_updates_available">به‌روزرسانی‌های <xliff:g id="apps_count">%1$d</xliff:g> موجود است</string>
     <string name="notification_updates_available_1">به‌روزرسانی <xliff:g id="apps_count">%1$d</xliff:g> در دسترس است</string>

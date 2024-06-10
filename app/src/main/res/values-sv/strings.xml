@@ -282,7 +282,6 @@
     <string name="session_verifying">Bekräftar sessionen</string>
     <string name="app_link_enabled">App-länkningen aktiverades!</string>
     <string name="ui_accent_0">System</string>
-    <string name="session_login">Logga in först</string>
     <string name="onboarding_permission_notifications">Aviseringar</string>
     <string name="notification_updates_available_desc_1">En ny version av <xliff:g id="app_one_name">%1$s</xliff:g> är tillgänglig</string>
     <string name="action_enable">Aktivera</string>

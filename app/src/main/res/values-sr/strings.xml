@@ -291,7 +291,6 @@
     <string name="installer_am_unavailable">Инсталирајте App Manager или промените програм за инсталацију.</string>
     <string name="onboarding_permission_notifications">Обавештења</string>
     <string name="onboarding_permission_notifications_desc">Слање обавештења о статусу инсталације</string>
-    <string name="session_login">Прво се пријавите</string>
     <string name="session_scrapped">Последња сесија је отказана</string>
     <string name="session_verifying">Верификација сесије</string>
     <string name="title_advanced">Напредно</string>

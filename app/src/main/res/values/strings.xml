@@ -258,7 +258,7 @@
     <string name="session_enjoy">Log in and enjoy.</string>
     <string name="session_good">Woah! All good.</string>
     <string name="session_init">Getting things ready…</string>
-    <string name="session_login">Log in first</string>
+    <string name="session_login">Please log in to your Google Play account</string>
     <string name="session_login_failed_google">Could not log in via Google</string>
     <string name="session_scrapped">Last session scrapped</string>
     <string name="session_verifying">Verifying session</string>

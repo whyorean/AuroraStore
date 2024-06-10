@@ -291,7 +291,6 @@
     <string name="pref_install_mode_shizuku">Shizuku ਇੰਸਟਾਲਰ</string>
     <string name="session_enjoy">ਲੌਗਇਨ ਕਰੋ ਤੇ ਆਨੰਦ ਮਾਣੋ।</string>
     <string name="session_good">ਵਾਹ! ਸਭ ਕੁਝ ਵਧੀਆ।</string>
-    <string name="session_login">ਪਹਿਲਾਂ ਲਾਗ-ਇਨ ਕਰੋ</string>
     <string name="session_verifying_google">ਗੂਗਲ ਸੈਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਹੋ ਰਹੀ</string>
     <string name="session_init">ਤਿਆਰੀ ਹੋ ਰਹੀ…</string>
     <string name="title_advanced">ਐਡਵਾਂਸਡ</string>

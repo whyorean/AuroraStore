@@ -264,7 +264,6 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_verifying">Bekrefter økt …</string>
     <string name="ui_accent_0">System</string>
-    <string name="session_login">Logg inn først</string>
     <string name="onboarding_permission_notifications">Merknader</string>
     <string name="toast_import_failed">Kunne ikke importere enhetsoppsett</string>
     <string name="ui_accent_5">Grønn</string>

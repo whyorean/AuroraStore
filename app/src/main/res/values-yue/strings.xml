@@ -127,7 +127,6 @@
     <string name="installer_status_user_action">等緊使用者確認</string>
     <string name="installer_status_failure_incompatible">個 app 唔兼容</string>
     <string name="purchase_failed">下載失敗</string>
-    <string name="session_login">登入先再講</string>
     <string name="title_settings">設定</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="action_granted">畀咗權限</string>
