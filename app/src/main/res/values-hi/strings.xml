@@ -11,21 +11,21 @@
     <string name="action_blacklist_add">कालीसूची में डालें</string>
     <string name="action_blacklist">कालीसूची</string>
     <string name="action_back">वापस जाएं</string>
-    <string name="account_logout">Aurora से लॉगआउट करें</string>
+    <string name="account_logout">ऑरोरा से लॉगआउट करें</string>
     <string name="account_login_using">इसके द्वारा लॉगिन करें</string>
-    <string name="account_google">Google</string>
+    <string name="account_google">गूगल</string>
     <string name="account_anonymous">अज्ञात</string>
-    <string name="about_xda_summary">चर्चा या सुझाव के लिए Aurora Store XDA थ्रेड देखें।</string>
+    <string name="about_xda_summary">चर्चा या सुझाव के लिए ऑरोरा स्टोर XDA थ्रेड देखें।</string>
     <string name="about_xda">XDA फोरम</string>
-    <string name="about_telegram_summary">चर्चा या सुझाव के लिए Aurora सहायता समूह में शामिल हों।</string>
+    <string name="about_telegram_summary">चर्चा या सुझाव के लिए ऑरोरा सहायता समूह में शामिल हों।</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">PayPal के द्वारा दान करें</string>
     <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Liberapay पर संरक्षक बनें</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">GitLab पर Aurora OSS से Aurora स्टोर का स्रोत कोड प्राप्त करें।</string>
+    <string name="about_gitlab_summary">GitLab पर ऑरोरा OSS से ऑरोरा स्टोर का स्रोत कोड प्राप्त करें।</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid_summary">F-Droid के माध्यम से Aurora स्टोर प्राप्त करें।</string>
+    <string name="about_fdroid_summary">F-Droid के माध्यम से ऑरोरा स्टोर प्राप्त करें।</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">Ethereum (ETH) के द्वारा दान करें</string>
     <string name="about_bitcoin_eth">Ethereum</string>
@@ -81,7 +81,7 @@
     <string name="tab_for_you">आपके लिए</string>
     <string name="purchase_invalid">ऐप खरीदा नहीं गया</string>
     <string name="details_contains_ads">विज्ञापन शामिल हैं</string>
-    <string name="pref_filter_google_summary">अपडेट और इंस्टॉल किए गए ऐप्स में से Google ऐप्स को अनदेखा करें</string>
+    <string name="pref_filter_google_summary">अपडेट और इंस्टॉल किए गए ऐप्स में से गूगल ऐप्स को अनदेखा करें</string>
     <string name="details_think_this_app">आप इस ऐप के बारे में क्या सोचते हैं\?</string>
     <string name="onboarding_welcome_select">क्या हालचाल है\?</string>
     <string name="onboarding_permission_esm">बाहरी स्टोरेज मैनेजर</string>
@@ -98,7 +98,7 @@
     <string name="pref_ui_no_for_you">\'आपके लिए\' पृष्ठ</string>
     <string name="pref_ui_similar_apps">समान और संबंधित ऐप्स</string>
     <string name="ui_accent_9">नीबू हरा</string>
-    <string name="pref_filter_google_title">Google ऐप्स फिल्टर करें</string>
+    <string name="pref_filter_google_title">गूगल ऐप्स फिल्टर करें</string>
     <string name="pref_install_mode_native">मूल इंस्टॉलर (अस्वीकृत)</string>
     <string name="pref_ui_layout_tab">तयशुदा टैब चुनें</string>
     <string name="dialog_title_self_update">नया अपडेट उपलब्ध है</string>
@@ -110,7 +110,7 @@
     <string name="download_pause_all">सभी को रोकें</string>
     <string name="pref_abandon_session">इंस्टॉलेशन सत्रों को बलपूर्वक साफ करें</string>
     <string name="action_update_all">सभी अपडेट करें</string>
-    <string name="installer_service_unavailable">1.0.9 या ऊपर की Aurora services इंस्टॉल करें, या इंस्टॉलर बदलें।</string>
+    <string name="installer_service_unavailable">1.0.9 या ऊपर की ऑरोरा सेवाएं इंस्टॉल करें, या इंस्टॉलर बदलें।</string>
     <string name="details_permission">अनुमति</string>
     <string name="title_apps_games">मेरे ऐप्स और गेम्स</string>
     <string name="ui_accent_8">गुलाबी</string>
@@ -188,7 +188,7 @@
     <string name="details_dev_profile">विकासकर्ता प्रोफाइल</string>
     <string name="toast_anonymous_restriction">अनाम खातों पर उपलब्ध नहीं है</string>
     <string name="installer_status_failure_conflict">विरोधाभासी पैकेज मौजूद है</string>
-    <string name="onboarding_permission_installer_desc">Aurora स्टोर से ऐप इंस्टॉल करने की अनुमति दें</string>
+    <string name="onboarding_permission_installer_desc">ऑरोरा स्टोर से ऐप इंस्टॉल करने की अनुमति दें</string>
     <string name="ui_accent_2">फ्यूशिया</string>
     <string name="details_ratings">रेटिंग और समीक्षाएं</string>
     <string name="ui_accent_3">लाल</string>
@@ -198,9 +198,9 @@
     <string name="ui_accent_7">स्लेटी</string>
     <string name="download_none">कोई डाउनलोड नहीं</string>
     <string name="download_queued">कतारबद्ध</string>
-    <string name="installer_service_available">Aurora सेवाएं उपलब्ध हैं और इंस्टॉल करने के लिए तैयार हैं।</string>
+    <string name="installer_service_available">ऑरोरा सेवाएं उपलब्ध हैं और इंस्टॉल करने के लिए तैयार हैं।</string>
     <string name="installer_status_failure_blocked">इंस्टालेशन अवरुद्ध किया गया</string>
-    <string name="onboarding_permission_select">Aurora स्टोर को निम्नलिखित अनुमतियों की आवश्यकता है</string>
+    <string name="onboarding_permission_select">ऑरोरा स्टोर को निम्नलिखित अनुमतियों की आवश्यकता है</string>
     <string name="onboarding_title_permissions">अनुमतियां</string>
     <string name="pref_network_title">नेटवर्क</string>
     <string name="pref_ui_theme_light">हल्का</string>
@@ -235,7 +235,7 @@
     <string name="filter_review_positive">सकारात्मक</string>
     <string name="filter_review_critical">गंभीर</string>
     <string name="installer_am_unavailable">ऐप मैनेजर इंस्टॉल करें या इंस्टॉलर बदलें।</string>
-    <string name="installer_service_misconfigured">Aurora सेवाएं स्थापित करें और पहले सभी अनुमतियां प्रदान करें।</string>
+    <string name="installer_service_misconfigured">ऑरोरा सेवाएं स्थापित करें और पहले सभी अनुमतियां प्रदान करें।</string>
     <string name="installer_status_failure">इंस्टॉलर असफल</string>
     <string name="installer_status_failure_session">सत्र नहीं बना सके</string>
     <string name="installer_status_failure_storage">अपर्याप्त मेमोरी स्थान</string>
@@ -254,7 +254,7 @@
     <string name="pref_install_delete_title">इंस्टॉल के बाद APK मिटाएं</string>
     <string name="pref_ui_theme_system">सिस्टम का अनुसरण करें</string>
     <string name="pref_install_mode_root">रूट इंस्टॉलर</string>
-    <string name="pref_install_mode_services">Aurora सेवाएं (अस्वीकृत)</string>
+    <string name="pref_install_mode_services">ऑरोरा सेवाएं (अस्वीकृत)</string>
     <string name="pref_ui_theme_darkord">डिस्कॉर्ड</string>
     <string name="purchase_session_expired">सत्र समाप्त हो गया, नया सत्र प्राप्त करने के लिए पुनः लॉगिन करें।</string>
     <string name="pref_ui_similar_apps_desc">ऐप विवरण पृष्ठ पर समान और संबंधित समूह प्रदर्शित करें</string>
@@ -287,7 +287,7 @@
     <string name="download_eta_min">%1$dm %2$ds शेष</string>
     <string name="download_eta_sec">%1$ds शेष</string>
     <string name="title_advanced">उन्नत</string>
-    <string name="open_in_aurora">Aurora स्टोर में खोलें</string>
+    <string name="open_in_aurora">ऑरोरा स्टोर में खोलें</string>
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> के लिए अतिरिक्त फाइलें डाउनलोड की जा रही हैं</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> अपडेट उपलब्ध है</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> और <xliff:g id="apps_count">%4$d</xliff:g> अन्य</string>
@@ -296,10 +296,10 @@
     <string name="session_enjoy">लॉगिन करें और आनंद लें।</string>
     <string name="session_good">वाह! सब अच्छा।</string>
     <string name="session_init">चीजें तैयार हो रही हैं…</string>
-    <string name="session_login_failed_google">Google के माध्यम से लॉगिन नहीं किया जा सका</string>
+    <string name="session_login_failed_google">गूगल के माध्यम से लॉगिन नहीं किया जा सका</string>
     <string name="session_scrapped">पिछला सत्र ख़त्म कर दिया गया</string>
     <string name="session_verifying">सत्र का सत्यापन किया जा रहा है</string>
-    <string name="session_verifying_google">Google सत्र सत्यापित किया जा रहा है</string>
+    <string name="session_verifying_google">गूगल सत्र सत्यापित किया जा रहा है</string>
     <string name="toast_import_success">डिवाइस विन्यास आयात किया गया</string>
     <string name="toast_import_failed">डिवाइस विन्यास आयात नहीं किया जा सका</string>
     <string name="update_available">अपडेट उपलब्ध है</string>
@@ -325,17 +325,17 @@
     <string name="failed_to_generate_session">सत्र उत्पन्न नहीं किया जा सका</string>
     <string name="verifying_new_session">नये सत्र का सत्यापन किया जा रहा है</string>
     <string name="app_links_title">ऐप लिंक</string>
-    <string name="app_links_desc">Aurora स्टोर को समर्थित लिंक खोलने की अनुमति दें</string>
+    <string name="app_links_desc">ऑरोरा स्टोर को समर्थित लिंक खोलने की अनुमति दें</string>
     <string name="action_enabled">सक्षम किया गया</string>
     <string name="action_enable">सक्षम करें</string>
     <string name="app_link_enabled">ऐप लिंक सक्रिय किया गया!</string>
-    <string name="google_play_store_desc">Google Play, जिसे Google Play Store और पूर्व में Android Market के नाम से भी जाना जाता है।</string>
+    <string name="google_play_store_desc">गूगल प्ले, जिसे गूगल प्ले स्टोर और पूर्व में एंड्रॉइड मार्केट के नाम से भी जाना जाता है।</string>
     <string name="amazon_appstore_desc">Amazon Appstore Amazon द्वारा संचालित Android-संगत प्लेटफार्मों के लिए एक ऐप स्टोर है।</string>
     <string name="android_market_desc">Android Market Android डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
     <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
     <string name="action_uninstall_confirmation">क्या आप इस ऐप को अनइंस्टॉल करना चाहते हैं\?</string>
-    <string name="pref_aurora_only">केवल Aurora स्टोर ऐप्स</string>
-    <string name="pref_aurora_only_desc">अपडेट और इंस्टॉल किए गए ऐप्स में केवल Aurora स्टोर से इंस्टॉल किए गए ऐप्स दिखाएं</string>
+    <string name="pref_aurora_only">केवल ऑरोरा स्टोर ऐप्स</string>
+    <string name="pref_aurora_only_desc">अपडेट और इंस्टॉल किए गए ऐप्स में केवल ऑरोरा स्टोर से इंस्टॉल किए गए ऐप्स दिखाएं</string>
     <string name="title_app_settings">ऐप सेटिंग्स</string>
     <string name="title_apps_sale_provider">प्रदाता - bestappsales.com</string>
     <string name="details_no_apps_on_sale">बिक्री पर कोई ऐप नहीं मिला</string>
@@ -353,11 +353,11 @@
     <string name="pref_vending_version_device">तयशुदा (डिवाइस विन्यास से)</string>
     <string name="pref_vending_version_title">गूगल प्ले संस्करण</string>
     <string name="onboarding_permission_doze">बेकग्राउंड डाउनलोड</string>
-    <string name="onboarding_permission_doze_desc">Aurora स्टोर को पृष्ठभूमि में ऐप्स डाउनलोड करने और अपडेट करने की अनुमति दें</string>
+    <string name="onboarding_permission_doze_desc">ऑरोरा स्टोर को पृष्ठभूमि में ऐप्स डाउनलोड करने और अपडेट करने की अनुमति दें</string>
     <string name="device_doze_description">कृपया, पृष्ठभूमि संचालन की अनुमति देने के लिए बैटरी अनुकूलन अक्षम करें।</string>
     <string name="device_doze_title">बैटरी अनुकूलन का पता चला!</string>
     <string name="device_doze_extra">वैकल्पिक रूप से आप अनुकूलन को सक्षम रखना चुन सकते हैं, लेकिन तब आप पृष्ठभूमि डाउनलोड और स्वचालित अपडेट का लाभ नहीं उठा पाएंगे, इसलिए विकल्प आपका है।</string>
-    <string name="device_doze_subtitle">बैटरी अनुकूलन के कारण Aurora स्टोर पृष्ठभूमि में डाउनलोड या अपडेट ऐप्स इंस्टॉल नहीं कर सकता है।</string>
+    <string name="device_doze_subtitle">बैटरी अनुकूलन के कारण ऑरोरा स्टोर पृष्ठभूमि में डाउनलोड या अपडेट ऐप्स इंस्टॉल नहीं कर सकता है।</string>
     <string name="pref_updates_auto">ऐप्स को स्वतः अपडेट करें</string>
     <string name="pref_updates_auto_notify">उपलब्ध अपडेट की जाँच करें और सूचित करें</string>
     <string name="pref_updates_auto_off">ऐप्स को स्वतः अपडेट न करें</string>
@@ -378,7 +378,7 @@
     <string name="native_installer_subtitle">आशय आधारित इंस्टॉलर, सभी उपकरणों पर उपलब्ध है</string>
     <string name="native_installer_desc">Android 4.4 से नीचे चलने वाले उपकरणों के लिए सबसे उपयुक्त</string>
     <string name="services_installer_subtitle">पृष्ठभूमि स्थापनाओं के लिए इंस्टॉलर</string>
-    <string name="services_installer_desc">Aurora Services को एक विशेषाधिकार प्राप्त-सिस्टम ऐप के रूप में स्थापित करने की आवश्यकता है</string>
+    <string name="services_installer_desc">ऑरोरा Services को एक विशेषाधिकार प्राप्त-सिस्टम ऐप के रूप में स्थापित करने की आवश्यकता है</string>
     <string name="am_installer_desc">ऐप मैनेजर की आवश्यकता है, MIUI अनुकूलन चालू होने पर इंस्टॉल करने के लिए adb/रूट मोड की आवश्यकता है</string>
     <string name="shizuku_installer_desc">Shizuku या Sui की आवश्यकता है, इसे स्थापित करने और अनुमति देने की आवश्यकता है</string>
     <string name="am_installer_subtitle">पूर्ण विशेषताओं वाला ओपन सोर्स पैकेज प्रबंधक</string>
@@ -386,7 +386,7 @@
     <string name="manual_download_hint">वह संस्करण कोड दर्ज करें जिसे आप डाउनलोड करना चाहते हैं</string>
     <string name="faqs_subtitle">कोई सवाल? उत्तर खोजें</string>
     <string name="source_code_title">स्रोत कोड</string>
-    <string name="privacy_policy_subtitle">जानें कि Aurora स्टोर आपके डेटा का उपयोग कैसे करता है</string>
+    <string name="privacy_policy_subtitle">जानें कि ऑरोरा स्टोर आपके डेटा का उपयोग कैसे करता है</string>
     <string name="disclaimer_subtitle">जवाबदेही और जिम्मेदारी</string>
     <string name="source_code_subtitle">जानिए अंदर क्या है</string>
     <string name="privacy_policy_title">गोपनीयता नीति</string>
@@ -408,4 +408,12 @@
     <string name="remove_dispenser_summary">क्या आप डिस्पेंसर \"<xliff:g id="url">%1$s</xliff:g>\" को हटाना चाहते हैं?</string>
     <string name="add">जोड़ें</string>
     <string name="remove">हटाएं</string>
+    <string name="session_login">कृपया अपने गूगल प्ले खाते में लॉग इन करें</string>
+    <string name="about_aurora_store_title">ऑरोरा स्टोर के बारे में</string>
+    <string name="about_aurora_store_subtitle">ऑरोरा स्टोर के बारे में अधिक जानें</string>
+    <string name="about_aurora_store_summary">ओरोरा स्टोर आपको आधिकारिक गूगल प्ले स्टोर से ऐप्स खोजने और डाउनलोड करने में सक्षम बनाता है। आप ऐप विवरण, स्क्रीनशॉट, अपडेट, अन्य उपयोगकर्ताओं की टिप्पणियाँ देख सकते हैं और गूगल प्ले से सीधे अपने डिवाइस पर APK डाउनलोड कर सकते हैं। ओरोरा स्टोर का उपयोग करने के लिए, आपके पास गूगल प्ले खाता होना चाहिए, और जब आप पहली बार ओरोरा स्टोर खोलते और कॉन्फ़िगर करते हैं तो अपने गूगल प्ले खाते में लॉग इन करें।
+\n
+\nपारंपरिक ऐप स्टोर के विपरीत, ऑरोरा स्टोर किसी भी ऐप का स्वामित्व, लाइसेंस या वितरण नहीं करता है। ऑरोरा स्टोर में सभी ऐप, ऐप विवरण, स्क्रीनशॉट और अन्य सामग्री सीधे गूगल प्ले से एक्सेस, डाउनलोड और/या प्रदर्शित की जाती है। ऑरोरा स्टोर बिल्कुल एक दरवाजे या ब्राउज़र की तरह काम करता है, जिससे आप अपने गूगल प्ले खाते में लॉग इन कर सकते हैं और गूगल प्ले से ऐप ढूंढ सकते हैं।
+\n
+\nकृपया ध्यान दें कि ऑरोरा स्टोर के पास गूगल, गूगल प्ले, ऑरोरा स्टोर के माध्यम से डाउनलोड किए गए किसी भी ऐप या किसी भी ऐप डेवलपर से कोई अनुमोदन, प्रायोजन या प्राधिकरण नहीं है; न ही ऑरोरा स्टोर का उनके साथ कोई संबद्धता, सहयोग या संबंध है।</string>
 </resources>
