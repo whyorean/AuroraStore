@@ -2,5 +2,5 @@
 • Multiple UI/UX improvements and bug fixes
 • New automatic cache cleanup feature to remove old downloads
 • Accent color setting has been retired for Android 12+ devices
-• SessionInstaller: Ability to set Aurora Store as device owner using ADB (credits: @s1204IT)
+• SessionInstaller: Ability to set Aurora Store as device owner and install silently (credits: @s1204IT)
 • SessionInstaller: Installation queue support

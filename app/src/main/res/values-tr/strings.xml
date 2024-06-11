@@ -408,4 +408,12 @@
     <string name="add_dispenser_summary">Aurora Store\'a bir belirteç dağıtıcı ekleyin. Belirteç dağıtıcıları, anonim olarak oturum açmak için Aurora Store\'a hesap kimlik bilgileri sağlar.</string>
     <string name="add_dispenser_error">Geçersiz URL</string>
     <string name="add_dispenser_hint">Dağıtıcı URL\'si</string>
+    <string name="about_aurora_store_title">Aurora Store Hakkında</string>
+    <string name="about_aurora_store_subtitle">Aurora Store hakkında daha fazla bilgi edinin</string>
+    <string name="about_aurora_store_summary">Aurora Store, resmi Google Play mağazasından uygulama aramanızı ve indirmenizi sağlar. Uygulama açıklamalarını, ekran görüntülerini, güncellemeleri, diğer kullanıcıların yorumlarını görebilir ve APK\'yı doğrudan Google Play\'den aygıtınıza indirebilirsiniz. Aurora Store\'u kullanmak için bir Google Play hesabınızın olması ve Aurora Store\'u ilk açtığınızda ve yapılandırdığınızda Google Play hesabınızda oturum açmanız gerekir.
+\n
+\nGeleneksel bir uygulama mağazasının aksine, Aurora Store herhangi bir uygulamaya sahip değildir, lisanslamaz veya dağıtmaz. Aurora Store\'daki tüm uygulamalara, uygulama açıklamalarına, ekran görüntülerine ve diğer içeriğe doğrudan Google Play\'den erişilir, indirilir ve/veya görüntülenir. Aurora Store, tıpkı bir kapı veya tarayıcı gibi çalışarak Google Play hesabınızda oturum açmanıza ve Google Play\'deki uygulamaları bulmanıza olanak tanır.
+\n
+\nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
+    <string name="session_login">Lütfen Google Play hesabınızda oturum açın</string>
 </resources>

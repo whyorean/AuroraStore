@@ -444,4 +444,12 @@
     <string name="add_dispenser_error">Неважећа URL адреса</string>
     <string name="add_dispenser_hint">URL адреса дозатора</string>
     <string name="remove_dispenser_title">Уклањање дозатора</string>
+    <string name="session_login">Prijavite se na vaš Google Play nalog</string>
+    <string name="about_aurora_store_subtitle">Saznajte više o Aurora Store</string>
+    <string name="about_aurora_store_summary">Aurora Store вам омогућава да претражујете и преузимате апликације из званичне Google Play продавнице. Можете да проверите описе апликација, снимке екрана, ажурирања, коментаре других корисника и преузмете APK директно са Google Play-а на свој уређај. Да бисте користили Aurora Store, морате да имате Google Play налог и да се пријавите на свој Google Play налог када први пут отворите и конфигуришете Aurora Store.
+\n
+\nЗа разлику од традиционалне продавнице апликација, Aurora Store не поседује, не лиценцира нити дистрибуира ниједну апликацију. Свим апликацијама, описима апликација, снимцима екрана и другом садржају у Аурора продавници се директно приступа, преузима се и/или приказује са Google Play-а. Aurora Store функционише баш као врата или претраживач, омогућавајући вам да се пријавите на свој Google Play налог и пронађете апликације са Google Play-а.
+\n
+\nИмајте на уму да Aurora Store нема одобрење, спонзорство или овлашћење од Google-а, Google Play-а, било које апликације преузете преко Aurora Store-а или било ког програмера апликација; нити Aurora Store има некакву повезаност, сарадњу или везу са њима.</string>
+    <string name="about_aurora_store_title">O Aurora Store</string>
 </resources>

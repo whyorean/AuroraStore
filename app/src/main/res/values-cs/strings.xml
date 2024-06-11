@@ -408,4 +408,12 @@
     <string name="no_dispensers_available">Nejsou dostupné žádné vydavače</string>
     <string name="add_dispenser_title">Přidat vydavač</string>
     <string name="add_dispenser_summary">Přidat vydavač tokenů do Aurora Store. Vydavače tokenů poskytují údaje o účtech, které Aurora Store používá pro anonymní přihlašování.</string>
+    <string name="about_aurora_store_title">O aplikaci Aurora Store</string>
+    <string name="about_aurora_store_subtitle">Zjistěte více informací o aplikaci Aurora Store</string>
+    <string name="about_aurora_store_summary">Aplikace Aurora Store umožňuje vyhledávat a stahovat aplikace z oficiálního Obchodu Google Play. Můžete si prohlédnout popisy aplikací, snímky obrazovky, aktualizace, komentáře ostatních uživatelů a stáhnout APK přímo z Google Play do svého zařízení. Chcete-li aplikaci Aurora Store používat, musíte mít účet Google a při prvním otevření a konfiguraci aplikace Aurora Store se k němu přihlásit.
+\n
+\nNa rozdíl od tradičního obchodu s aplikacemi aplikace Aurora Store nevlastní, nelicencuje ani nedistribuuje žádné aplikace. Všechny aplikace, popisy aplikací, snímky obrazovky a další obsah v aplikaci Aurora Store jsou přímo přístupné, stažené a/nebo zobrazené z Obchodu Google Play. Aplikace Aurora Store funguje přesně jako dveře nebo prohlížeč, umožňuje přihlášení k účtu Google a vyhledávání aplikací z Obchodu Google Play.
+\n
+\nUpozornění: aplikace Aurora Store nemá žádné schválení, sponzoring ani autorizaci od společnosti Google, Google Play, aplikací stažených prostřednictvím aplikace Aurora Store ani od vývojářů aplikací; aplikace Aurora Store s nimi také nemá žádné spojení, spolupráci ani vazbu.</string>
+    <string name="session_login">Přihlaste se prosím do vašeho účtu Google</string>
 </resources>
