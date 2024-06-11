@@ -154,28 +154,33 @@ object NotificationUtil {
         return builder.build()
     }
 
-    fun getInstallNotification(context: Context, download: AuroraDownload): Notification {
+    fun getInstallNotification(
+        context: Context,
+        displayName: String,
+        packageName: String
+    ): Notification {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
             .setSmallIcon(R.drawable.ic_install)
-            .setLargeIcon(PackageUtil.getIconForPackage(context, download.packageName))
+            .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
             .setColor(context.getStyledAttributeColor(R.color.colorAccent))
-            .setContentTitle(download.displayName)
+            .setContentTitle(displayName)
             .setContentText(context.getString(R.string.installer_status_success))
-            .setContentIntent(getContentIntentForDetails(context, download.packageName))
+            .setContentIntent(getContentIntentForDetails(context, packageName))
             .build()
     }
 
     fun getInstallerStatusNotification(
         context: Context,
-        download: Download,
+        packageName: String,
+        displayName: String,
         content: String?
     ): Notification {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
             .setSmallIcon(R.drawable.ic_install)
             .setColor(context.getStyledAttributeColor(R.color.colorAccent))
-            .setContentTitle(download.displayName)
+            .setContentTitle(displayName)
             .setContentText(content)
-            .setContentIntent(getContentIntentForDetails(context, download.packageName))
+            .setContentIntent(getContentIntentForDetails(context, packageName))
             .build()
     }
 

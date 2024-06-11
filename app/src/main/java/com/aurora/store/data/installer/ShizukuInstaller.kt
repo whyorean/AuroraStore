@@ -32,7 +32,10 @@ import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
-import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
+import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
@@ -97,14 +100,27 @@ class ShizukuInstaller @Inject constructor(
             download.sharedLibs.forEach {
                 // Shared library packages cannot be updated
                 if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
-                    install(download.packageName, download.versionCode, it.packageName)
+                    install(
+                        packageName = download.packageName,
+                        versionCode = download.versionCode,
+                        sharedLibPkgName = it.packageName
+                    )
                 }
             }
-            install(download.packageName, download.versionCode)
+            install(
+                packageName = download.packageName,
+                versionCode = download.versionCode,
+                displayName = download.displayName
+            )
         }
     }
 
-    private fun install(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
+    private fun install(
+        packageName: String,
+        versionCode: Int,
+        sharedLibPkgName: String = "",
+        displayName: String = ""
+    ) {
         Log.i("Received session install request for ${sharedLibPkgName.ifBlank { packageName }}")
 
         val (sessionId, session) = kotlin.runCatching {
@@ -148,11 +164,12 @@ class ShizukuInstaller @Inject constructor(
             }
 
             val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
-                action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
+                action = ACTION_INSTALL_STATUS
                 setPackage(context.packageName)
                 addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
-                putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, sharedLibPkgName.ifBlank { packageName })
-                putExtra(EXTRA_DOWNLOAD, download)
+                putExtra(EXTRA_PACKAGE_NAME, sharedLibPkgName.ifBlank { packageName })
+                putExtra(EXTRA_VERSION_CODE, versionCode)
+                putExtra(EXTRA_DISPLAY_NAME, displayName)
             }
 
             val pendingIntent = PendingIntentCompat.getBroadcast(

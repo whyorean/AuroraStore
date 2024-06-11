@@ -37,7 +37,10 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
-import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
+import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
@@ -195,10 +198,11 @@ class SessionInstaller @Inject constructor(
 
     private fun getCallBackIntent(packageName: String, sessionId: Int): PendingIntent? {
         val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
-            action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
+            action = ACTION_INSTALL_STATUS
             setPackage(context.packageName)
-            putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, packageName)
-            putExtra(EXTRA_DOWNLOAD, download)
+            putExtra(EXTRA_PACKAGE_NAME, packageName)
+            putExtra(EXTRA_VERSION_CODE, download!!.versionCode)
+            putExtra(EXTRA_DISPLAY_NAME, download!!.displayName)
             addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
         }
 

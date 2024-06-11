@@ -57,7 +57,11 @@ class AppInstaller @Inject constructor(
 ) {
 
     companion object {
-        const val EXTRA_DOWNLOAD = "com.aurora.store.data.installer.AppInstaller.EXTRA_DOWNLOAD"
+        const val ACTION_INSTALL_STATUS = "com.aurora.store.data.installer.AppInstaller.INSTALL_STATUS"
+
+        const val EXTRA_PACKAGE_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_PACKAGE_NAME"
+        const val EXTRA_VERSION_CODE = "com.aurora.store.data.installer.AppInstaller.EXTRA_VERSION_CODE"
+        const val EXTRA_DISPLAY_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_DISPLAY_NAME"
 
         fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> {
             val installers = mutableListOf(
@@ -84,11 +88,11 @@ class AppInstaller @Inject constructor(
             return installers
         }
 
-        fun notifyInstallation(context: Context, download: Download) {
+        fun notifyInstallation(context: Context, displayName: String, packageName: String) {
             val notificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            val notification = NotificationUtil.getInstallNotification(context, download)
-            notificationManager.notify(download.packageName.hashCode(), notification)
+            val notification = NotificationUtil.getInstallNotification(context, displayName, packageName)
+            notificationManager.notify(packageName.hashCode(), notification)
         }
 
         fun getErrorString(context: Context, status: Int): String {

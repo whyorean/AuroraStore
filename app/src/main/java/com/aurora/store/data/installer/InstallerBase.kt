@@ -56,7 +56,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
 
     open fun onInstallationSuccess() {
         download?.let {
-            AppInstaller.notifyInstallation(context, it)
+            AppInstaller.notifyInstallation(context, it.displayName, it.packageName)
             if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                 PathUtil.getAppDownloadDir(context, it.packageName, it.versionCode)
                     .deleteRecursively()

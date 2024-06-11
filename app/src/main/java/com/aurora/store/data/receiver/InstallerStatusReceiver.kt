@@ -29,8 +29,10 @@ import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DOWNLOAD
-import com.aurora.store.data.room.download.Download
+import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
+import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.util.CommonUtil.inForeground
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
@@ -43,30 +45,25 @@ import org.greenrobot.eventbus.EventBus
 @AndroidEntryPoint
 class InstallerStatusReceiver : BroadcastReceiver() {
 
-    companion object {
-        const val ACTION_INSTALL_STATUS =
-            "com.aurora.store.data.receiver.InstallReceiver.INSTALL_STATUS"
-    }
-
     private val TAG = InstallerStatusReceiver::class.java.simpleName
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null && intent?.action == ACTION_INSTALL_STATUS) {
-            val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)!!
+            val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)!!
+            val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME)!!
+            val versionCode = intent.getIntExtra(EXTRA_VERSION_CODE, -1)
+
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
-            val download = IntentCompat.getParcelableExtra(
-                intent, EXTRA_DOWNLOAD, Download::class.java
-            )!!
 
             // If package was successfully installed, exit after notifying user and doing cleanup
             if (status == PackageInstaller.STATUS_SUCCESS) {
                 // No post-install steps for shared libraries
                 if (PackageUtil.isSharedLibrary(context, packageName)) return
 
-                AppInstaller.notifyInstallation(context, download)
+                AppInstaller.notifyInstallation(context, displayName, packageName)
                 if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
-                    PathUtil.getAppDownloadDir(context, download.packageName, download.versionCode)
+                    PathUtil.getAppDownloadDir(context, packageName, versionCode)
                         .deleteRecursively()
                 }
                 return
@@ -76,20 +73,21 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 promptUser(intent, context)
             } else {
                 postStatus(status, packageName, extra, context)
-                notifyUser(context, download, status)
+                notifyUser(context, packageName, displayName, status)
             }
         }
     }
 
-    private fun notifyUser(context: Context, download: Download, status: Int) {
+    private fun notifyUser(context: Context, packageName: String, displayName: String, status: Int) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = NotificationUtil.getInstallerStatusNotification(
             context,
-            download,
+            packageName,
+            displayName,
             AppInstaller.getErrorString(context, status)
         )
-        notificationManager.notify(download.packageName.hashCode(), notification)
+        notificationManager.notify(packageName.hashCode(), notification)
     }
 
     private fun promptUser(intent: Intent, context: Context) {
