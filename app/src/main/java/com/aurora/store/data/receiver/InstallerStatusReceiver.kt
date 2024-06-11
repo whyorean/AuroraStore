@@ -50,8 +50,8 @@ class InstallerStatusReceiver : BroadcastReceiver() {
 
     private val TAG = InstallerStatusReceiver::class.java.simpleName
 
-    override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == ACTION_INSTALL_STATUS) {
+    override fun onReceive(context: Context?, intent: Intent?) {
+        if (context != null && intent?.action == ACTION_INSTALL_STATUS) {
             val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)!!
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
