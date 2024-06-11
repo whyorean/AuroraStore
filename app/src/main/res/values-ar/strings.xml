@@ -408,4 +408,12 @@
     <string name="add_dispenser_summary">أضف موزع العملات الرمزية إلى متجر Aurora. توفر موزعات الرمز المميز بيانات اعتماد الحساب إلى Aurora Store لتسجيل الدخول بشكل مجهول.</string>
     <string name="add">إضافة</string>
     <string name="remove">إزالة</string>
+    <string name="session_login">يُرجى تسجيل الدخول إلى حساب Google Play الخاص بك</string>
+    <string name="about_aurora_store_title">عن متجر Aurora</string>
+    <string name="about_aurora_store_subtitle">اعرف المزيد عن متجر Aurora</string>
+    <string name="about_aurora_store_summary">يمكّنك متجر Aurora من البحث عن التطبيقات وتنزيلها من متجر Google Play الرسمي. يمكنك التحقق من أوصاف التطبيق ولقطات الشاشة والتحديثات وتعليقات المستخدمين الآخرين وتنزيل APK مباشرة من Google Play على جهازك. لاستخدام متجر Aurora، يجب أن يكون لديك حساب Google Play، وأن تقوم بتسجيل الدخول إلى حساب Google Play الخاص بك عند فتح متجر Aurora وتكوينه لأول مرة.
+\n
+\nعلى عكس متجر التطبيقات التقليدي، لا يمتلك متجر Aurora أي تطبيقات أو يرخصها أو يوزعها. يمكن الوصول إلى جميع التطبيقات وأوصاف التطبيقات ولقطات الشاشة والمحتويات الأخرى الموجودة في متجر Aurora مباشرة و/أو تنزيلها و/أو عرضها من Google Play. يعمل متجر Aurora تمامًا مثل الباب أو المتصفح، مما يسمح لك بتسجيل الدخول إلى حساب Google Play الخاص بك والعثور على التطبيقات من Google Play.
+\n
+\nيُرجى ملاحظة أن متجر Aurora لا يحصل على أي موافقة أو رعاية أو ترخيص من Google أو Google Play أو أي تطبيقات تم تنزيلها من خلال متجر Aurora أو أي من مطوري التطبيقات؛ ولا يوجد لدى متجر Aurora أي انتماء أو تعاون أو اتصال معهم.</string>
 </resources>
