@@ -19,8 +19,6 @@
 
 package com.aurora.extensions
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -29,7 +27,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.PowerManager
-import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
@@ -43,13 +40,9 @@ import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import kotlin.system.exitProcess
 
 val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
-
-val Context.displayMetrics: DisplayMetrics
-    get() = resources.displayMetrics
 
 fun Context.browse(url: String, showOpenInAuroraAction: Boolean = false) {
     try {
@@ -110,29 +103,6 @@ fun <T> Context.open(className: Class<T>, newTask: Boolean = false) {
     startActivity(
         intent,
         getEmptyActivityBundle()
-    )
-}
-
-fun Context.restartApp() {
-    val flags = if (isMAndAbove()) PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-    else PendingIntent.FLAG_CANCEL_CURRENT
-    val pendingIntent = PendingIntent.getActivity(
-        this,
-        1337,
-        Intent(this, MainActivity::class.java),
-        flags
-    )
-
-    val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 100, pendingIntent)
-    exitProcess(0)
-}
-
-fun Context.getEmptyActivityAnimation(): ActivityOptionsCompat {
-    return ActivityOptionsCompat.makeCustomAnimation(
-        this,
-        android.R.anim.fade_in,
-        android.R.anim.fade_out
     )
 }
 
