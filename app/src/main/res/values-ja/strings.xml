@@ -408,4 +408,12 @@
     <string name="add">追加</string>
     <string name="remove">削除</string>
     <string name="about_wiki_summary">よくある質問や、トラブルシューティングの手順などをご覧ください</string>
+    <string name="session_login">Google Play のアカウントにログインしてください</string>
+    <string name="about_aurora_store_title">Aurora Store について</string>
+    <string name="about_aurora_store_subtitle">Aurora Store の詳細を知る</string>
+    <string name="about_aurora_store_summary">Aurora Store を使用すると、公式の Google Playストア からアプリの検索やダウンロードができます。アプリの詳細、スクリーンショット、更新、レビューを確認したり、Google Play からデバイスに直接 APK をダウンロードしたりできます。Aurora Store を使用するには、Google Play アカウントが必要であり、Aurora Store を初めて開いたときに Google アカウントでログインする必要があります。
+\n
+\n従来のアプリ ストアとは異なり、Aurora Store はアプリを所有、ライセンス供与、配布しません。Aurora Store のすべてのアプリ、アプリの説明、スクリーンショット、その他のコンテンツは、Google Play から直接アクセス、ダウンロード、表示されます。Aurora Store は架け橋やブラウザのように機能し、Google Play アカウントにログインして Google Play からアプリを見つけることができます。
+\n
+\nAurora Store は、Google、Google Play、Aurora Store を通じてダウンロードされたアプリは、アプリ開発者から承認、広告、または許可を受けておらず、また、Aurora Store はそれらと提携、協力、及び関係も一切ありませんのでご了承ください。</string>
 </resources>
