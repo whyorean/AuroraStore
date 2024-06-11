@@ -297,7 +297,6 @@
     <string name="toast_proxy_success">פרוקסי הוגדר בהצלחה</string>
     <string name="app_links_title">קישורי האפליקציה</string>
     <string name="toast_export_success">ייצוא תצורת מכשיר בוצעה בהצלחה</string>
-    <string name="open_in_aurora">בפתח בחנות Aurora</string>
     <string name="download_paused">מושהה • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="toast_rated_success">דורג, אולי יקח לזה זמן עד שיוצג</string>
     <string name="pref_filter_search_title">השתמש הפילטרים לא קבועים בחיפוש</string>

@@ -279,7 +279,6 @@
     <string name="session_enjoy">Войдите и наслаждайтесь.</string>
     <string name="menu">Меню</string>
     <string name="expand">Развернуть</string>
-    <string name="open_in_aurora">Открыть в Aurora Store</string>
     <string name="onboarding_permission_notifications_desc">Показывать уведомления о состоянии установки</string>
     <string name="download_eta_hrs">Осталось %1$d час %2$d мин %3$d сек</string>
     <string name="download_eta_min">Осталось %1$d мин %2$d сек</string>

@@ -315,7 +315,6 @@
     <string name="downloading_dep">További fájlok letöltése ehhez <xliff:g id="app">%1$s</xliff:g></string>
     <string name="failed_generating_session">Nem sikerült létrehozni munkamenetet, hibakód: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="rate_limited">Hoppá, ez a fiók limitált!</string>
-    <string name="open_in_aurora">Megnyitás Aurora Store-ral</string>
     <string name="onboarding_permission_notifications_desc">Értesítések küldése a telepítések állapotáról</string>
     <string name="pref_install_mode_shizuku">Shizuku telepítő</string>
     <string name="session_good">Azta! Minden rendben.</string>

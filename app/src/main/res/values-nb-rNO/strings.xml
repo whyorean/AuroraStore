@@ -278,7 +278,6 @@
     <string name="download_eta_min">%1$dm %2$ds igjen</string>
     <string name="ui_accent_6">Lilla</string>
     <string name="app_links_title">Programlenker</string>
-    <string name="open_in_aurora">Åpne i Aurora Store</string>
     <string name="ui_accent_11">Lyseblå</string>
     <string name="verifying_new_session">Bekrefter ny økt …</string>
     <string name="download_eta_hrs">%1$dt %2$dm %3$ds igjen</string>

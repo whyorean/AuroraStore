@@ -279,7 +279,6 @@
     <string name="error">Ocorreu um erro!</string>
     <string name="menu">Menu</string>
     <string name="expand">Expandir</string>
-    <string name="open_in_aurora">Abrir em Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="downloading_dep">A descarregar ficheiros extra para <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>

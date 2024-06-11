@@ -277,7 +277,6 @@
     <string name="onboarding_permission_notifications_desc">Kirim notifikasi perihal status instalasi</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_good">Wow! Semuanya bagus.</string>
-    <string name="open_in_aurora">Buka di dalam Aurora Store</string>
     <string name="error">Terjadi kesalahan!</string>
     <string name="permissions_denied">Izin yang diperlukan telah ditolak. Mohon berikan izin untuk melanjutkan</string>
     <string name="menu">Menu</string>

@@ -293,7 +293,6 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> và <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> và <xliff:g id="apps_count">%4$d</xliff:g> nữa</string>
     <string name="expand">Mở rộng</string>
-    <string name="open_in_aurora">Mở bằng Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku không được cài đặt hay được thiết lập đúng.</string>
     <string name="onboarding_permission_notifications">Thông báo</string>

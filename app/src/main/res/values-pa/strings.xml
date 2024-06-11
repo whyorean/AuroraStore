@@ -285,7 +285,6 @@
     <string name="onboarding_permission_notifications">ਸੂਚਨਾ</string>
     <string name="onboarding_permission_notifications_desc">ਇੰਸਟਾਲੇਸ਼ਨ ਸਥਿਤੀ ਦੀ ਸੂਚਨਾ</string>
     <string name="expand">ਵਿਸਥਾਰ ਕਰੋ</string>
-    <string name="open_in_aurora">ਔਰੋਰਾ ਸਟੋਰ ਵਿੱਚ ਖੋਲ੍ਹੋ</string>
     <string name="permissions_denied">ਲੋੜੀਂਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਅਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ ਸੀ। ਕਿਰਪਾ ਕਰਕੇ ਕਾਰਵਾਈ ਜਾਰੀ ਰੱਖਣ ਲਈ ਉਹਨਾਂ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿਓ</string>
     <string name="installer_shizuku_unavailable">Shizuku ਜਾਂ ਤਾਂ ਇੰਸਟਾਲ ਨਹੀਂ ਜਾਂ ਸਹੀ ਢੰਗ ਨਾਲ ਸੈੱਟਅੱਪ ਨਹੀਂ ਕੀਤਾ।</string>
     <string name="pref_install_mode_shizuku">Shizuku ਇੰਸਟਾਲਰ</string>

@@ -294,7 +294,6 @@
     <string name="ui_accent_0">Системна</string>
     <string name="updates_available">доступні оновлення</string>
     <string name="expand">Розгорнути</string>
-    <string name="open_in_aurora">Відкрити в Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">У наданні необхідних дозволів відмовлено. Надайте їх, щоб продовжити дію</string>
     <string name="server_maintenance">Сервер вимкнено для технічного обслуговування</string>

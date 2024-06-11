@@ -279,7 +279,6 @@
     <string name="onboarding_permission_notifications_desc">不论何种安装状态均发送通知</string>
     <string name="onboarding_permission_notifications">通知</string>
     <string name="session_verifying">正在验证会话</string>
-    <string name="open_in_aurora">在 Aurora Store 中打开</string>
     <string name="session_verifying_google">正在验证 Google 会话</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">必需的权限被拒绝。为了继续操作请授予这些权限</string>

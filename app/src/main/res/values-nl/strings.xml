@@ -303,7 +303,6 @@
     <string name="error">Er is een fout opgetreden!</string>
     <string name="menu">Menu</string>
     <string name="expand">Uitbreiden</string>
-    <string name="open_in_aurora">In Aurora Store openen</string>
     <string name="permissions_denied">Vereiste rechten zijn geweigerd. Verleen deze alstublieft om verder te gaan met de actie</string>
     <string name="search_hint">Zoeken naar Apps &amp; Spellen</string>
     <string name="requesting_new_session">Nieuwe sessie aanvragen</string>

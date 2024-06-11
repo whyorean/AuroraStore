@@ -299,7 +299,6 @@
     <string name="error">Tapahtui virhe!</string>
     <string name="menu">Valikko</string>
     <string name="expand">Laajenna</string>
-    <string name="open_in_aurora">Avaa Aurora Storessa</string>
     <string name="permissions_denied">Tarvittavat oikeudet evättiin. Myönnä ne, jotta voit jatkaa toimenpidettä</string>
     <string name="search_hint">Etsi sovelluksia ja pelejä</string>
     <string name="downloading_dep">Lisätiedostoja ladataan kohteelle <xliff:g id="app">%1$s</xliff:g></string>

@@ -292,7 +292,6 @@
     <string name="ui_accent_12">Albastru intens</string>
     <string name="rate_limited">Hopa, acest cont este limitat!</string>
     <string name="error">A aparut o eroare!</string>
-    <string name="open_in_aurora">Deschide în Aurora Store</string>
     <string name="permissions_denied">Permisiunile necesare au fost refuzate. Acordă-le pentru a continua acțiunea</string>
     <string name="ui_accent_13">Albastru închis</string>
     <string name="update_available">actualizare disponibilă</string>

@@ -294,7 +294,6 @@
     <string name="title_advanced">پیشرفته</string>
     <string name="toast_import_failed">پیکربندی دستگاه وارد نشد</string>
     <string name="expand">گسترش</string>
-    <string name="open_in_aurora">باز کردن در فروشگاه آرورا</string>
     <string name="permissions_denied">اجازه های لازم رد شد. لطفا به آنها اجازه دهید تا به عمل ادامه دهند</string>
     <string name="search_hint">جستجو برای نرم افزار و بازی</string>
     <string name="requesting_new_session">درخواست نشست جدید</string>

@@ -290,7 +290,6 @@
     <string name="session_good">Vay canına! Her şey yolunda.</string>
     <string name="session_login_failed_google">Google aracılığıyla oturum açılamadı</string>
     <string name="session_init">Hazırlanıyor…</string>
-    <string name="open_in_aurora">Aurora Store\'da Aç</string>
     <string name="ui_accent_0">Sistem</string>
     <string name="search_hint">Uygulama ve Oyun Ara</string>
     <string name="update_available">güncelleme var</string>

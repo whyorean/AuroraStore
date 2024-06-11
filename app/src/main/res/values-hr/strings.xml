@@ -279,7 +279,6 @@
     <string name="rate_limited">Nažalost, za ovaj račun postoji ograničenje!</string>
     <string name="menu">Izbronik</string>
     <string name="expand">Proširi</string>
-    <string name="open_in_aurora">Otvori u Aurora Store</string>
     <string name="permissions_denied">Potrebne dozvole su odbijene. Odobri ih za nastavljanje radnje</string>
     <string name="search_hint">Traži programe i igre</string>
     <string name="title_advanced">Napredno</string>

@@ -303,7 +303,6 @@
     <string name="update_available">atualização disponível</string>
     <string name="search_hint">Pesquisar por Apps &amp; Jogos</string>
     <string name="expand">Expandir</string>
-    <string name="open_in_aurora">Abrir na Aurora Store</string>
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
     <string name="notification_updates_available_desc_1">Uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g> está disponível</string>

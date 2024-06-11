@@ -286,7 +286,6 @@
     <string name="title_advanced">Avancé</string>
     <string name="ui_accent_0">Système</string>
     <string name="menu">Menu</string>
-    <string name="open_in_aurora">Ouvrir dans Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Demande d’une nouvelle session</string>
     <string name="download_eta_sec">%1$d s restantes</string>

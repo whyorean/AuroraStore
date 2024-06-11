@@ -324,7 +324,6 @@
     <string name="toast_proxy_invalid">Μη έγκυρο URL μεσολάβησης, ελέγξτε τη μορφή!</string>
     <string name="rate_limited">Ουπς, αυτός ο λογαριασμός έχει όριο!</string>
     <string name="permissions_denied">Αρνήθηκαν απαιτούμενα δικαιώματα. Παρακαλώ παραχωρήστε τα για να προχωρήσει η ενέργεια</string>
-    <string name="open_in_aurora">Άνοιγμα στο Κατάστημα Aurora</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Αιτείται νέα συνεδρία</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> διαθέσιμη ενημέρωση</string>

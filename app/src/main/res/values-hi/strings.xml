@@ -287,7 +287,6 @@
     <string name="download_eta_min">%1$dm %2$ds शेष</string>
     <string name="download_eta_sec">%1$ds शेष</string>
     <string name="title_advanced">उन्नत</string>
-    <string name="open_in_aurora">Aurora स्टोर में खोलें</string>
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> के लिए अतिरिक्त फाइलें डाउनलोड की जा रही हैं</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> अपडेट उपलब्ध है</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> और <xliff:g id="apps_count">%4$d</xliff:g> अन्य</string>

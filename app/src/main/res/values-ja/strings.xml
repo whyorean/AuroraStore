@@ -297,7 +297,6 @@
     <string name="error">エラーが発生しました！</string>
     <string name="menu">メニュー</string>
     <string name="expand">展開する</string>
-    <string name="open_in_aurora">Aurora Storeで開く</string>
     <string name="permissions_denied">必要な権限が拒否されました。続けるためには許可してください</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g>個の更新があります</string>
     <string name="pref_install_mode_shizuku">Shizuku インストーラー</string>

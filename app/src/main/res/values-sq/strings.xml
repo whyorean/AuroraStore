@@ -309,7 +309,6 @@
     <string name="error">Ndodhi një gabim!</string>
     <string name="menu">Menu</string>
     <string name="expand">Zgjeroje</string>
-    <string name="open_in_aurora">Hape në Shitoren Aurora</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">U mohuan leje të domosdoshme. Ju lutemi, që të mund të vazhdohet veprimi, akordojini</string>
     <string name="notification_updates_available_desc_1">Ka gati një version të ri të <xliff:g id="app_one_name">%1$s</xliff:g></string>

@@ -284,7 +284,6 @@
     <string name="update_available">posodobitev na voljo</string>
     <string name="error">Pojavila se je napaka!</string>
     <string name="expand">Razširi</string>
-    <string name="open_in_aurora">Odpri v trgovini Aurora</string>
     <string name="server_maintenance">Strežnik ne deluje zaradi vzdrževanja</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> posodobitve na voljo</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> posodobitev na voljo</string>

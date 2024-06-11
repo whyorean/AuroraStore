@@ -306,7 +306,6 @@
     <string name="error">Дошло је до грешке!</string>
     <string name="menu">Мени</string>
     <string name="ui_accent_3">Црвена</string>
-    <string name="open_in_aurora">Отвори у Aurora Store-у</string>
     <string name="ui_accent_4">Златна</string>
     <string name="spoof_property"><xliff:g id="manufacturer">
 \n%1$s</xliff:g> • API

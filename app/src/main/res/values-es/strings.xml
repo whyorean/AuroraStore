@@ -289,7 +289,6 @@
     <string name="search_hint">Buscar las aplicaciones y los juegos</string>
     <string name="onboarding_permission_notifications_desc">Enviar notificaciones sobre el estado de las instalaciones</string>
     <string name="rate_limited">Vaya, ¡esta cuenta tiene una tarifa limitada!</string>
-    <string name="open_in_aurora">Abrir en Aurora Store</string>
     <string name="session_enjoy">Inicia sesión y disfruta.</string>
     <string name="update_available">actualización disponible</string>
     <string name="error">¡Ocurrió un error!</string>

@@ -168,7 +168,6 @@
     <string name="updates_available">Налични актуализации</string>
     <string name="menu">Меню</string>
     <string name="expand">Разширяване</string>
-    <string name="open_in_aurora">Отворете в Aurora Store</string>
     <string name="permissions_denied">Необходимите разрешения бяха отказани. Моля, отпуснете ги, за да продължите действието</string>
     <string name="search_hint">Търсене на приложения и игри</string>
     <string name="requesting_new_session">Заявка за нова сесия</string>

@@ -289,7 +289,6 @@
     <string name="menu">වට්ටෝරුව</string>
     <string name="error">දෝෂයක් සිදු විය!</string>
     <string name="rate_limited">මෙම ගිණුම අනුපාතනය වී ඇත!</string>
-    <string name="open_in_aurora">අවුරෝරා ස්ටෝර් හි බලන්න</string>
     <string name="search_hint">යෙදුම් හා ක්‍රීඩා සොයන්න</string>
     <string name="session_login_failed_google">ගූගල් හරහා පිවිසීමට අසමත්!</string>
     <string name="session_scrapped">අවසාන වාරය ඉවතලිණි</string>

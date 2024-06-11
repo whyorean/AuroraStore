@@ -287,7 +287,6 @@
     <string name="error">Errore bat gertatu da!</string>
     <string name="menu">Menua</string>
     <string name="expand">Zabaldu</string>
-    <string name="open_in_aurora">Ireki Aurora Storen</string>
     <string name="permissions_denied">Beharrezko baimenak ukatuak izan dira. Mesedez, baimendu itzazu ekintzarekin jarraitzeko.</string>
     <string name="search_hint">Bilatu aplikazioak eta jokoak</string>
     <string name="requesting_new_session">Saio berria eskatzen</string>

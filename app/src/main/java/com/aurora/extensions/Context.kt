@@ -31,12 +31,9 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.app.PendingIntentCompat
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
@@ -44,26 +41,9 @@ import com.aurora.store.util.Preferences
 val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
 
-fun Context.browse(url: String, showOpenInAuroraAction: Boolean = false) {
+fun Context.browse(url: String) {
     try {
         val customTabsIntent = CustomTabsIntent.Builder()
-        if (showOpenInAuroraAction) {
-            val icon =
-                ContextCompat.getDrawable(this, R.drawable.ic_open_in_new)?.toBitmap()
-            val pendingIntent = PendingIntentCompat.getActivity(
-                this,
-                0,
-                Intent(this, MainActivity::class.java),
-                0,
-                false
-            )
-            customTabsIntent.setActionButton(
-                icon!!,
-                this.getString(R.string.open_in_aurora),
-                pendingIntent!!,
-                true
-            )
-        }
         customTabsIntent.build().launchUrl(this, Uri.parse(url))
     } catch (e: Exception) {
         Log.e(e.message)

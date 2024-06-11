@@ -280,7 +280,6 @@
     <string name="toast_import_failed">Impossibile importare la configurazione del dispositivo</string>
     <string name="ui_accent_0">Sistema</string>
     <string name="updates_available">aggiornamenti disponibili</string>
-    <string name="open_in_aurora">Apri nell’Aurora Store</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="downloading_dep">Scaricamento di file aggiuntivi per <xliff:g id="app">%1$s</xliff:g></string>
     <string name="download_paused">In pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>

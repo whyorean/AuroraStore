@@ -282,7 +282,6 @@
     <string name="error">حدث خطأ!</string>
     <string name="menu">القائمة</string>
     <string name="expand">توسع</string>
-    <string name="open_in_aurora">افتح في متجر Aurora</string>
     <string name="permissions_denied">تم رفض الإذن المطلوب يرجى منحها لمواصلة العمل</string>
     <string name="search_hint">البحث عن التطبيقات والألعاب</string>
     <string name="download_progress">جار التحميل • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>

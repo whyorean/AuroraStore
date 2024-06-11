@@ -282,7 +282,6 @@
     <string name="update_available">dostępna aktualizacja</string>
     <string name="updates_available">dostępne aktualizacje</string>
     <string name="error">Wystąpił błąd!</string>
-    <string name="open_in_aurora">Otwórz w Aurora Store</string>
     <string name="download_eta_hrs">Pozostało %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">Pozostało %1$dm %2$ds</string>
     <string name="onboarding_permission_notifications">Powiadomienia</string>

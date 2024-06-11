@@ -273,7 +273,6 @@
     <string name="ui_accent_13">Tmavě modrá</string>
     <string name="download_progress">Stahování • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="download_eta_hrs">Zbývá %1$dh %2$dm %3$ds</string>
-    <string name="open_in_aurora">Otevřít v Aurora Store</string>
     <string name="search_hint">Hledat aplikace a hry</string>
     <string name="download_eta_min">Zbývá %1$dm %2$ds</string>
     <string name="download_eta_sec">Zbývá %1$ds</string>
