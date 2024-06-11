@@ -28,6 +28,7 @@ import android.os.Build
 import android.os.IBinder
 import android.os.IInterface
 import androidx.annotation.RequiresApi
+import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
@@ -153,21 +154,17 @@ class ShizukuInstaller @Inject constructor(
                 putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, sharedLibPkgName.ifBlank { packageName })
                 putExtra(EXTRA_DOWNLOAD, download)
             }
-            val flags = if (isSAndAbove()) {
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-            } else {
-                PendingIntent.FLAG_UPDATE_CURRENT
-            }
 
-            val pendingIntent = PendingIntent.getBroadcast(
+            val pendingIntent = PendingIntentCompat.getBroadcast(
                 context,
                 sessionId,
                 callBackIntent,
-                flags
+                PendingIntent.FLAG_UPDATE_CURRENT,
+                true
             )
 
             Log.i("Starting install session for $packageName")
-            session.commit(pendingIntent.intentSender)
+            session.commit(pendingIntent!!.intentSender)
             session.close()
         } catch (exception: Exception) {
             session.abandon()

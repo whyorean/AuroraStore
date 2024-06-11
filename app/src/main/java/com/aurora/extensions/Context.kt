@@ -34,6 +34,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.app.PendingIntentCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.aurora.Constants
@@ -56,16 +57,17 @@ fun Context.browse(url: String, showOpenInAuroraAction: Boolean = false) {
         if (showOpenInAuroraAction) {
             val icon =
                 ContextCompat.getDrawable(this, R.drawable.ic_open_in_new)?.toBitmap()
-            val pendingIntent = PendingIntent.getActivity(
+            val pendingIntent = PendingIntentCompat.getActivity(
                 this,
                 0,
                 Intent(this, MainActivity::class.java),
-                PendingIntent.FLAG_MUTABLE
+                0,
+                false
             )
             customTabsIntent.setActionButton(
                 icon!!,
                 this.getString(R.string.open_in_aurora),
-                pendingIntent,
+                pendingIntent!!,
                 true
             )
         }

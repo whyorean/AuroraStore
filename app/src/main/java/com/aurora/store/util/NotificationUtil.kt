@@ -11,13 +11,13 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.core.app.PendingIntentCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.WorkManager
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.extensions.isMAndAbove
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
 import com.aurora.store.data.room.download.Download as AuroraDownload
@@ -262,17 +262,16 @@ object NotificationUtil {
             .createPendingIntent()
     }
 
-    private fun getInstallIntent(context: Context, download: Download): PendingIntent {
+    private fun getInstallIntent(context: Context, download: Download): PendingIntent? {
         val intent = Intent(context, InstallActivity::class.java).apply {
             putExtra(Constants.PARCEL_DOWNLOAD, download)
         }
-        val flags = if (isMAndAbove()) {
-            PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        } else {
-            PendingIntent.FLAG_CANCEL_CURRENT
-        }
-        return PendingIntent.getActivity(
-            context, download.packageName.hashCode(), intent, flags
+        return PendingIntentCompat.getActivity(
+            context,
+            download.packageName.hashCode(),
+            intent,
+            PendingIntent.FLAG_CANCEL_CURRENT,
+            false
         )
     }
 }

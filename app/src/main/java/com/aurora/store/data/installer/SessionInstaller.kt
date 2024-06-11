@@ -29,6 +29,7 @@ import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.os.Process
+import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -188,11 +189,11 @@ class SessionInstaller @Inject constructor(
     private fun commitInstall(packageName: String, sessionId: Int) {
         Log.i("Starting install session for $packageName")
         val session = packageInstaller.openSession(sessionId)
-        session.commit(getCallBackIntent(packageName, sessionId).intentSender)
+        session.commit(getCallBackIntent(packageName, sessionId)!!.intentSender)
         session.close()
     }
 
-    private fun getCallBackIntent(packageName: String, sessionId: Int): PendingIntent {
+    private fun getCallBackIntent(packageName: String, sessionId: Int): PendingIntent? {
         val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
             action = InstallerStatusReceiver.ACTION_INSTALL_STATUS
             setPackage(context.packageName)
@@ -200,12 +201,13 @@ class SessionInstaller @Inject constructor(
             putExtra(EXTRA_DOWNLOAD, download)
             addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
         }
-        val flags = if (isSAndAbove()) {
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
-        } else {
-            PendingIntent.FLAG_UPDATE_CURRENT
-        }
 
-        return PendingIntent.getBroadcast(context, sessionId, callBackIntent, flags)
+        return PendingIntentCompat.getBroadcast(
+            context,
+            sessionId,
+            callBackIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            true
+        )
     }
 }
