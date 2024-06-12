@@ -22,21 +22,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="?selectableItemBackground"
-    android:paddingStart="@dimen/padding_large"
-    android:paddingTop="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_large"
-    android:paddingBottom="@dimen/padding_small">
+    android:padding="@dimen/padding_large">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
         android:layout_width="@dimen/icon_size_default"
         android:layout_height="@dimen/icon_size_default"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/margin_normal"
+        tools:src="@drawable/ic_search_suggestion" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_title"
-        style="@style/AuroraTextStyle.Line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -44,7 +43,9 @@
         android:layout_marginEnd="@dimen/margin_small"
         android:layout_toStartOf="@id/action"
         android:layout_toEndOf="@id/img"
-        android:gravity="start|center" />
+        android:gravity="start|center"
+        android:textSize="16sp"
+        tools:text="Aurora Store" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/action"
