@@ -407,4 +407,12 @@
     <string name="remove_dispenser_title">删除分发程序</string>
     <string name="add">添加</string>
     <string name="remove_dispenser_summary">你希望删除分发程序 \"<xliff:g id="url">%1$s</xliff:g>\"吗？</string>
+    <string name="session_login">请登录你的 Google 账户</string>
+    <string name="about_aurora_store_title">关于 Aurora 商店</string>
+    <string name="about_aurora_store_subtitle">了解更多有关 Aurora 商店的信息</string>
+    <string name="about_aurora_store_summary">Aurora 商店允许你从官方 Google Play 商店搜索并下载应用。你可以查看应用描述、截图、更新和其他用户的评论并直接将 APK 从 Google Play 下载到你的设备上。要使用 Aurora 商店，你需要有 Google Play 账户，并在你首次打开并配置 Aurora 商店时登录你的 Google Play 商店。
+\n
+\n和传统的应用商店不同， Aurora 商店并不拥有、许可或分发任何应用。所有的应用、应用描述、截图以及 Aurora 商店中的其他内容均直接从 Google Play 访问、下载并/或展示。Aurora 商店的工作方式就像一扇门或一个浏览器，允许你登录你的 Google Play 账户并从 Google Play 寻找应用。
+\n
+\n请注意 Aurora 商店没有来自 Google、Google Play、任何经 Aurora 商店下载的应用或任何应用开发者的任何批准、赞助或授权； Aurora 商店也与它们没有任何从属、合作或联系。</string>
 </resources>

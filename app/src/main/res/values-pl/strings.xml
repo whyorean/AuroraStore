@@ -407,4 +407,7 @@
     <string name="no_dispensers_available">Brak dostępnych dozowników</string>
     <string name="remove_dispenser_title">Usuń dozownik</string>
     <string name="add_dispenser_summary">Dodaj dozownik tokenów do Aurora Store. Dozowniki tokenów udostępniają dane logowania do konta Aurora Store w celu anonimowego logowania.</string>
+    <string name="session_login">Zaloguj się na swoje konto Google Play</string>
+    <string name="about_aurora_store_title">O aplikacji Aurora Store</string>
+    <string name="about_aurora_store_subtitle">Więcej informacji o Aurora Store</string>
 </resources>
