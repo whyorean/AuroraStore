@@ -408,4 +408,12 @@
     <string name="add_dispenser_hint">URL do dispensador</string>
     <string name="remove_dispenser_summary">Deseja remover o dispensador \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Adicionar</string>
+    <string name="session_login">Por favor entre em sua conta Google Play</string>
+    <string name="about_aurora_store_title">Sobre a Aurora Store</string>
+    <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
+    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da loja Google Play. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play para o seu dispositivo. Para usar a Aurora Store, você deve ter uma conta Google Play e entrar na conta quando abrir e configurar a Aurora Store.
+\n
+\nDiferentemente de uma loja de apps tradicional, a Aurora Store não possui, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos da Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Playe encontre os apps da Google Play.
+\n
+\nPor favor note que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados na Aurora Store ou desenvolvedores de apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
 </resources>
