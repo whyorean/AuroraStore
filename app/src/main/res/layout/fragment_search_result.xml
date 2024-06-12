@@ -34,12 +34,20 @@
             android:id="@+id/layout_view_toolbar"
             layout="@layout/view_toolbar_search" />
 
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_view_toolbar" />
+
         <com.airbnb.epoxy.EpoxyRecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/layout_view_toolbar"
-            app:itemSpacing="@dimen/margin_normal" />
+            android:layout_below="@+id/divider"
+            android:paddingTop="@dimen/padding_normal"
+            app:itemSpacing="@dimen/margin_normal"
+            tools:listitem="@layout/view_app_list" />
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

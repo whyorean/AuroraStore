@@ -43,7 +43,7 @@
         android:layout_centerVertical="true"
         android:layout_toStartOf="@id/img_action_secondary"
         android:layout_toEndOf="@id/img_action_primary"
-        android:background="@drawable/bg_search"
+        android:background="@null"
         android:hint="@string/search_hint"
         android:imeOptions="flagNoExtractUi|actionSearch"
         android:inputType="text"
