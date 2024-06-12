@@ -289,9 +289,9 @@
     <string name="session_init">准备中…</string>
     <string name="title_advanced">高级</string>
     <string name="ui_accent_0">系统</string>
-    <string name="updates_available">有更新可用</string>
+    <string name="updates_available">个更新可用</string>
     <string name="rate_limited">哎呦，此账户被限制速率了！</string>
-    <string name="update_available">有更新可用</string>
+    <string name="update_available">个更新可用</string>
     <string name="error">出错了！</string>
     <string name="menu">菜单</string>
     <string name="expand">展开</string>
