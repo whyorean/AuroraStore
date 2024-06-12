@@ -1,0 +1,2 @@
+• Fixed a bug causing SessionInstaller to crash on old Android versions
+• Translation updates
