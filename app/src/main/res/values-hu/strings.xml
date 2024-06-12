@@ -62,7 +62,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
     <string name="about_xda_summary">Nézd meg az Aurora Store XDA témát beszélgetéshez és javaslatokért.</string>
-    <string name="about_xda">Fejlesztői fórum</string>
+    <string name="about_xda">XDA fórum</string>
     <string name="about_telegram_summary">Csatlakozz az Aurora Támogató csoporthoz beszélgetéshez és javaslatokért.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">PayPal adományozás</string>
@@ -211,7 +211,7 @@
     <string name="pref_install_mode_root">Root telepítő</string>
     <string name="pref_install_mode_native">Natív telepítő (Elavult)</string>
     <string name="pref_install_delete_title">APK törlés telepítés után</string>
-    <string name="pref_install_delete_summary">Az APK-k törlődnek alapértelmezés szerint</string>
+    <string name="pref_install_delete_summary">A letöltött APK-k törlődnek alapértelmezés telepítés után azonnal</string>
     <string name="pref_insecure_anonymous_title">Nem biztonságos anonim munkamenet</string>
     <string name="pref_insecure_anonymous_summary">GSF azonosító generálása helyben az eszközön</string>
     <string name="pref_filter_google_title">Google app szűrő</string>
@@ -387,4 +387,9 @@
     <string name="root_installer_desc">Root/superuser jogosultságokat igényel, támogatja az összes Android verziót.</string>
     <string name="native_installer_subtitle">Intent alapú telepítő, minden eszközön elérhető</string>
     <string name="am_installer_desc">App Manager szükséges, adb/root mód szükséges a telepítéshez, ha a miui optimalizálás be van kapcsolva</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="session_login">Kérem jelentkezzen be a Google Play fiókjába</string>
+    <string name="title_more">Több</string>
+    <string name="manage_account">Fiók kezelése</string>
+    <string name="about_aurora_store_title">Az Aurora Store-ról</string>
 </resources>
