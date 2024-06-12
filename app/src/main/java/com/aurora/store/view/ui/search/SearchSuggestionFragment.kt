@@ -65,6 +65,10 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
             imgActionSecondary.setOnClickListener {
                 findNavController().navigate(R.id.downloadFragment)
             }
+            clearButton.apply {
+                visibility = if (query.isBlank()) View.GONE else View.VISIBLE
+                setOnClickListener { searchView.text?.clear() }
+            }
         }
 
         viewModel.liveSearchSuggestions.observe(viewLifecycleOwner) {
@@ -115,6 +119,9 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
                     if (query.isNotEmpty()) {
                         viewModel.observeStreamBundles(query)
                     }
+                    binding.layoutToolbarSearch.clearButton.visibility = View.VISIBLE
+                } else {
+                    binding.layoutToolbarSearch.clearButton.visibility = View.GONE
                 }
             }
 

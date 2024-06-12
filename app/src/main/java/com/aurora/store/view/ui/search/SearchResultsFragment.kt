@@ -83,6 +83,10 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
             imgActionSecondary.setOnClickListener {
                 findNavController().navigate(R.id.downloadFragment)
             }
+            clearButton.apply {
+                visibility = if (query.isNullOrBlank()) View.GONE else View.VISIBLE
+                setOnClickListener { searchView.text?.clear() }
+            }
         }
 
         // Search
@@ -209,7 +213,11 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
+                if (s.isNotEmpty()) {
+                    binding.layoutViewToolbar.clearButton.visibility = View.VISIBLE
+                } else {
+                    binding.layoutViewToolbar.clearButton.visibility = View.GONE
+                }
             }
 
             override fun afterTextChanged(s: Editable) {}
