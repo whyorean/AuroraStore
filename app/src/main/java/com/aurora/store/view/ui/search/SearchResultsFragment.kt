@@ -112,7 +112,13 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
         }
 
         query = requireArguments().getString("query")
-        query?.let { updateQuery(it) }
+
+        // Don't fetch search results again when coming back to fragment
+        if (searchBundle.appList.isEmpty()) {
+            query?.let { updateQuery(it) }
+        } else {
+            updateController(searchBundle)
+        }
     }
 
     override fun onDestroyView() {
