@@ -1,0 +1,2 @@
+• Foi corrigido um bug aonde o Instalador de sessão crashava em versões antigas do Android
+• Atualizações às traduções
