@@ -69,10 +69,6 @@
             android:indeterminate="false"
             android:max="100"
             app:indicatorColor="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:trackColor="@android:color/darker_gray"
             app:trackCornerRadius="10dp"
             tools:progress="75" />

@@ -69,14 +69,9 @@
                 android:indeterminate="true"
                 android:indeterminateTint="@color/colorScrimAlt"
                 app:indicatorColor="@color/colorScrimAlt"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:trackColor="@color/colorScrim"
                 app:trackCornerRadius="10dp"
-                app:trackThickness="@dimen/icon_size_small"
-                tools:progress="40" />
+                app:trackThickness="@dimen/icon_size_small" />
 
             <LinearLayout
                 android:layout_width="match_parent"
