@@ -225,7 +225,7 @@
     <string name="installer_shizuku_unavailable">Shizuku nav uzstādīta vai pareizi iestatīta.</string>
     <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora Store XDA pavedienā.</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="about_xda">Izstrādātāju pavediens</string>
+    <string name="about_xda">XDA forumi</string>
     <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
     <string name="account_anonymous_insecure">Anonīms (nedrošs)</string>
     <string name="dialog_desc_native_split">Nav iespējams uzstādīt apvienotās (sastāvošas no vairākām daļām) lietotnes ar iebūvēto uzstādītāju. Tas ir jānomaina uz sesijas, pakalpojumu vai superlietotāja uzstādītāju.</string>
@@ -255,7 +255,7 @@
     <string name="ui_accent_3">Sarkans</string>
     <string name="ui_accent_4">Zelta</string>
     <string name="download_progress">Lejupielādē • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="pref_install_delete_summary">APK tiks izdzēsti pēc noklusējuma</string>
+    <string name="pref_install_delete_summary">Lejupielādētie APK tiks izdzēsti uzreiz pēc uzstādīšanas</string>
     <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
     <string name="details_dependencies">Atkarības</string>
     <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
@@ -389,4 +389,28 @@
     <string name="privacy_policy_title">Privātuma nosacījumi</string>
     <string name="title_more">Vairāk</string>
     <string name="manage_account">Pārvaldīt savu kontu</string>
+    <string name="about_wiki_title">Viki vietne</string>
+    <string name="about_wiki_summary">Atrodi atbildes uz biežāk uzdotajiem jautājumiem (BUJ), sarežģījumu novēršanas soļiem un vēl</string>
+    <string name="pref_clear_device_owner_summary">Noņem Aurora Store kā ierīces īpašnieka lietotni</string>
+    <string name="pref_dispenser_title">Pārvaldīt izkliedētājus</string>
+    <string name="pref_clear_device_owner_title">Notīrīt ierīces īpašnieku</string>
+    <string name="remove_dispenser_summary">Vai tiešām noņemt izkliedētāju \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="session_login">Lūgums pieteikties savā Google Play kontā</string>
+    <string name="pref_dispenser_summary">Skatīt un pārvaldīt anonīmās pieteikšanās pilnvaru izkliedētājus</string>
+    <string name="no_dispensers_available">Nav pieejamu izkliedētāju</string>
+    <string name="add_dispenser_title">Pievienot izkliedētāju</string>
+    <string name="add_dispenser_summary">Pievienot pilnvaru izkliedētāju Aurora Store. Pilnvaru izkliedētāji nodrošina Aurora Store ar konta pieteikšanās informāciju, lai pieteiktos anonīmi.</string>
+    <string name="add_dispenser_error">Nederīgs URL</string>
+    <string name="add_dispenser_hint">Izkliedētāja URL</string>
+    <string name="remove_dispenser_title">Noņemt izkliedētāju</string>
+    <string name="about_aurora_store_subtitle">Uzzināt vairāk par Aurora Store</string>
+    <string name="remove">Noņemt</string>
+    <string name="about_aurora_store_summary">Aurora Store ļauj meklēt un lejupielādēt lietotnes no Google Play veikala. Ir pieejams lietotņu apraksts, ekrānuzņēmumi, atjauninājumi, citu lietotāju piebildes, kā arī var lejupielādēt ierīcē APK tieši no Google Play. Lai izmantotu Aurora Store, ir nepieciešams Google Play konts, un tajā ir jāpiesakās, kad Aurora Store tiek pirmo reizi atvērta un konfigurēta.
+\n
+\nAtšķirībā no ierasta lietotņu veikala, Aurora Store nepieder, nelicencē un neizplata lietotnes. Visas lietotnes un to aprakstam, ekrānuzņēmumiem un citam Aurora Store pieejamajam saturam tiek tieši piekļūts, lejupielādēts un/vai attēlots no Google Play. Aurora Store darbojas kā durvis vai pārlūks, ļaujot pieteikties savā Google Play kontā un atrast Google Play lietotnes.
+\n
+\nLūgums ņemt vērā, ka Aurora Store nav nekādas piekrišanas, pabalstītājdarbības vai autorizācijas no Google, Google Play, jebkuras ar Aurora Store starpniecību lejupielādētas lietotnes vai lietotņu izstrādātājiem; tāpat Aurora Store nav nekādas piederības, sadarbības vai sasaistes ar tiem.</string>
+    <string name="about_aurora_store_title">Par Aurora Store</string>
+    <string name="pref_clear_device_owner_desc">Tas atsauks sesijas uzstādītāja atļauju klusām uzstādīt lietotnes. Turpināt ar ierīces īpašumtiesību notīrīšanu?</string>
+    <string name="add">Pievienot</string>
 </resources>

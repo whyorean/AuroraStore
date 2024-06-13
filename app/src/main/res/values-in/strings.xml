@@ -47,7 +47,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
     <string name="about_xda_summary">Lihat utas Aurora Store XDA untuk diskusi atau saran.</string>
-    <string name="about_xda">Utas Pengembang</string>
+    <string name="about_xda">Forum XDA</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">Donasi via Ethereum (ETH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
@@ -126,7 +126,7 @@
     <string name="onboarding_permission_installer_desc">Izinkan menginstal aplikasi dari Aurora Store</string>
     <string name="onboarding_permission_installer">Izin Pemasang</string>
     <string name="onboarding_permission_esm">Manajer Penyimpanan Eksternal</string>
-    <string name="onboarding_permission_esa_desc">Untuk menyimpan unduhan (APK &amp; OBB), ekspor &amp; impor konfigurasi perangkat ke dan dari penyimpanan eksternal.</string>
+    <string name="onboarding_permission_esa_desc">Untuk menyimpan file ekspansi APK (OBB) untuk aplikasi &amp; game berukuran besar.</string>
     <string name="onboarding_permission_esa">Akses Penyimpanan Eksternal</string>
     <string name="onboarding_welcome_select">Apa kabar\?</string>
     <string name="onboarding_title_welcome">Selamat Datang</string>
@@ -160,7 +160,7 @@
     <string name="exodus_view_report">Lihat laporan</string>
     <string name="exodus_substring">pelacak yang diketahui ditemukan di</string>
     <string name="exodus_progress">Memeriksa pelacak…</string>
-    <string name="exodus_powered">Diberdayakan oleh Exodus</string>
+    <string name="exodus_powered">Didukung oleh Exodus Privacy</string>
     <string name="exodus_no_tracker">Tidak mengandung pelacak yang diketahui</string>
     <string name="download_speed_estimating">Memperkirakan</string>
     <string name="download_resume_all">Lanjutkan semua</string>
@@ -234,7 +234,7 @@
     <string name="pref_install_mode_root">Pemasang root</string>
     <string name="pref_install_mode_native">Pemasang native (Tidak digunakan lagi)</string>
     <string name="pref_install_delete_title">Hapus APK setelah pemasangan</string>
-    <string name="pref_install_delete_summary">APK akan dihapus secara default</string>
+    <string name="pref_install_delete_summary">APK yang diunduh akan segera dihapus setelah penginstalan</string>
     <string name="pref_insecure_anonymous_title">Sesi anonim tidak aman</string>
     <string name="pref_insecure_anonymous_summary">Buat ID GSF lokal di perangkat</string>
     <string name="dialog_desc_native_split">Anda tidak dapat memasang aplikasi bundled(split) melalui Native Installer. Ubah pemasang Anda ke Sesi, Layanan, atau Root.</string>
@@ -326,7 +326,7 @@
     <string name="details_ratings_title_hint">Judul ulasan</string>
     <string name="app_link_enabled">Tautan aplikasi diaktifkan!</string>
     <string name="pref_network_proxy_url">URL Proksi</string>
-    <string name="pref_updates_check_frequency_desc">Konfigurasikan interval untuk pembaruan otomatis, dalam satuan jam.</string>
+    <string name="pref_updates_check_frequency_desc">Mengonfigurasi interval untuk pembaruan otomatis dan mandiri, dalam jam.</string>
     <string name="pref_aurora_only">Hanya aplikasi Aurora Store</string>
     <string name="pref_network_proxy_title">Proksi</string>
     <string name="action_enable">Aktifkan</string>
@@ -360,4 +360,48 @@
     <string name="pref_updates_auto_off">Jangan auto-update aplikasi</string>
     <string name="pref_updates_auto_notify">Cek &amp; beritau apabila update tersedia</string>
     <string name="pref_updates_auto_install">Otomatis cek &amp; install update tersedia</string>
+    <string name="title_more">Lebih lanjut</string>
+    <string name="about_wiki_summary">Temukan jawaban atas pertanyaan yang sering diajukan (FAQ), langkah-langkah pemecahan masalah, dan lainnya</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="download_clear_finished">Hapus selesai</string>
+    <string name="root_installer_desc">Membutuhkan hak akses root/pengguna super, mendukung semua versi Android.</string>
+    <string name="native_installer_desc">Paling cocok untuk perangkat yang berjalan di bawah Android 4.4</string>
+    <string name="services_installer_subtitle">Penginstal untuk penginstalan latar belakang</string>
+    <string name="shizuku_installer_subtitle">Menggunakan API sistem secara langsung dengan hak istimewa adb/root</string>
+    <string name="shizuku_installer_desc">Membutuhkan Shizuku atau Sui, perlu pengaturan dan izin yang diberikan</string>
+    <string name="manage_account">Mengelola akun Anda</string>
+    <string name="pref_dispenser_summary">Melihat dan mengelola dispenser token untuk login anonim</string>
+    <string name="pref_clear_device_owner_desc">Ini akan mencabut izin penginstal sesi untuk menginstal aplikasi secara diam-diam. Melanjutkan dengan menghapus kepemilikan perangkat?</string>
+    <string name="add_dispenser_summary">Menambahkan dispenser token ke Aurora Store. Dispenser token memberikan kredensial akun ke Aurora Store untuk masuk secara anonim.</string>
+    <string name="add_dispenser_error">URL tidak valid</string>
+    <string name="add">Tambah</string>
+    <string name="action_manage">Kelola</string>
+    <string name="failed_app_link">Tidak didukung, coba kaitkan tautan secara manual</string>
+    <string name="pref_updates_incompatible_desc">Menampilkan pembaruan untuk aplikasi yang tidak kompatibel atau dinonaktifkan yang mungkin gagal diinstal</string>
+    <string name="manual_download_hint">Masukkan kode versi yang ingin Anda unduh</string>
+    <string name="source_code_title">Kode sumber</string>
+    <string name="source_code_subtitle">Cari tahu apa yang ada di dalamnya</string>
+    <string name="faqs_subtitle">Ada pertanyaan? Temukan jawabannya</string>
+    <string name="privacy_policy_title">Kebijakan privasi</string>
+    <string name="privacy_policy_subtitle">Ketahui bagaimana Aurora Store menggunakan data Anda</string>
+    <string name="disclaimer_subtitle">Akuntabilitas dan tanggung jawab</string>
+    <string name="session_login">Silakan masuk ke akun Google Play Anda</string>
+    <string name="about_aurora_store_title">Tentang Aurora Store</string>
+    <string name="about_aurora_store_subtitle">Pelajari lebih lanjut tentang Aurora Store</string>
+    <string name="pref_updates_incompatible">Pembaruan yang tidak kompatibel</string>
+    <string name="failed_apk_export">Gagal mengekspor APK</string>
+    <string name="session_installer_subtitle">Penginstal berbasis sesi untuk APK yang dibundel/dipisahkan</string>
+    <string name="session_installer_desc">Direkomendasikan, sudah terpasang dan mendukung semua versi Android</string>
+    <string name="root_installer_subtitle">Penginstal berbasis shell menggunakan izin root</string>
+    <string name="action_request_analysis">Minta analisis baru</string>
+    <string name="action_home_screen">Tambahkan ke layar Beranda</string>
+    <string name="remove_dispenser_summary">Apakah Anda ingin menghapus dispenser \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="remove">Menghapus</string>
+    <string name="am_installer_subtitle">Manajer paket sumber terbuka dengan fitur lengkap</string>
+    <string name="am_installer_desc">Membutuhkan Manajer Aplikasi, perlu mode adb / root untuk menginstal ketika pengoptimalan miui aktif</string>
+    <string name="about_aurora_store_summary">Aurora Store memungkinkan Anda untuk mencari dan mengunduh aplikasi dari toko resmi Google Play. Anda dapat memeriksa deskripsi aplikasi, tangkapan layar, pembaruan, komentar pengguna lain, dan mengunduh APK langsung dari Google Play ke perangkat Anda. Untuk menggunakan Aurora Store, Anda harus memiliki akun Google Play, dan masuk ke akun Google Play saat pertama kali membuka dan mengonfigurasi Aurora Store.
+\n
+\nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lainnya di Aurora Store diakses, diunduh, dan/atau ditampilkan secara langsung dari Google Play. Aurora Store berfungsi persis seperti pintu atau browser, memungkinkan Anda untuk masuk ke akun Google Play dan menemukan aplikasi dari Google Play.
+\n
+\nHarap diperhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi apa pun dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, atau pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
 </resources>

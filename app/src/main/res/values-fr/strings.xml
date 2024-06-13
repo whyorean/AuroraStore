@@ -158,7 +158,7 @@
     <string name="title_account_manager">Comptes</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonyme</string>
-    <string name="about_xda">Fil de développement</string>
+    <string name="about_xda">Forums XDA</string>
     <string name="about_telegram_summary">Rejoignez le groupe d’assistance Aurora pour des discussions ou des suggestions.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Faire un don via Paypal</string>
@@ -389,4 +389,27 @@
     <string name="am_installer_desc">Exige App Manager, nécessite adb/mode root pour installer lorsque l\'optimisation MIUI est activé</string>
     <string name="title_more">Plus</string>
     <string name="manage_account">Gérer mon compte</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Trouvez des réponses dans la foire aux questions, des pistes de résolution de problèmes et bien d\'autres</string>
+    <string name="pref_dispenser_title">Gérer les fournisseurs de jetons</string>
+    <string name="pref_clear_device_owner_summary">Retirer Aurora Store en tant qu\'application d’administration de l\'appareil</string>
+    <string name="add_dispenser_title">Ajouter un fournisseur de jetons</string>
+    <string name="add_dispenser_error">URL invalide</string>
+    <string name="remove">Supprimer</string>
+    <string name="remove_dispenser_summary">Souhaitez-vous supprimer le fournisseur \"<xliff:g id="url">%1$s</xliff:g>\" ?</string>
+    <string name="session_login">Veuillez vous connecter à votre compte Google Play</string>
+    <string name="add_dispenser_summary">Ajouter un fournisseur de jetons dans Aurora Store. Les fournisseurs de jetons d\'authentifications permettent de récupérer des identifiants pour les connexions anonymes.</string>
+    <string name="add_dispenser_hint">URL du fournisseur de jetons</string>
+    <string name="remove_dispenser_title">Supprimer le fournisseur de jetons</string>
+    <string name="add">Ajouter</string>
+    <string name="pref_dispenser_summary">Consulter et gérer les jetons d\'authentification pour les connexions anonymes</string>
+    <string name="no_dispensers_available">Aucun fournisseur de jetons disponible</string>
+    <string name="about_aurora_store_summary">Aurora Store vous permet de rechercher et télécharger des applications proposées sur la boutique d\'application officielle de Google (Play Store). Vous avez ainsi la possibilité de consulter les descriptifs, les captures d\'écran, les mises à jours, les commentaires et de télécharger les fichiers APK directement sur votre appareil. Pour utiliser Aurora Store, vous aurez besoin d\'un compte Google Play et de vous y connecter quand vous démarrez et configurez Aurora Store pour la première fois.
+\n
+\nContrairement à d\'autres boutiques d\'applications, Aurora Store ne détient ni ne commercialise ou distribue d\'applications. Tout le contenu disponible et présenté dans Aurora Store provient directement de Google Play. Aurora Store fonctionne exactement comme une porte d\'accès ou un navigateur qui vous permet de vous connecter à votre compte Google Play et de naviguer parmi les applications proposées dans le Play Store.
+\n
+\nGardez à l\'esprit qu\'Aurora Store opère sans aucun accord, lien commercial ou autorisation de la part de Google, Google Play, des applications téléchargées via Aurora Store ou des personnes en charge du développement des application. Aurora Store n\'entretient aucun lien de parrainage, de collaboration ou de relation quelconque avec ces entités.</string>
+    <string name="about_aurora_store_title">À propos d\'Aurora Store</string>
+    <string name="about_aurora_store_subtitle">En savoir plus sur Aurora Store</string>
+    <string name="pref_clear_device_owner_desc">Cette action supprimera la possibilité accordée à l\'installateur d\'opérer des installations silencieuses. Êtes-vous sûr de révoquer l\'administration de l\'appareil ?</string>
 </resources>
