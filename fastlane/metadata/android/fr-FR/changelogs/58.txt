@@ -1,0 +1,4 @@
+• Correction d'un problème de connexion aux comptes Google
+• Déplacement du panneau de navigation dans une fenêtre dédiée
+• Prise en charge du composant NavigationRail pour les écrans larges
+• Possibilité d'exporter les téléchargements vers un stockage externe

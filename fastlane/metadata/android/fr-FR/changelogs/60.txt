@@ -1,0 +1,2 @@
+• Correction du crash lié à l'installateur de session sur des versions anciennes d'Android
+• Mise à jour des traductions
