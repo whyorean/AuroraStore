@@ -237,6 +237,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         }
 
         // Downloads
+        binding.layoutDetailsInstall.progressDownload.clipToOutline = true
         binding.layoutDetailsInstall.imgCancel.setOnClickListener {
             viewModel.cancelDownload(app)
             if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)

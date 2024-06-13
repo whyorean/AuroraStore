@@ -62,15 +62,16 @@
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress_download"
+                style="@style/Widget.Material3.LinearProgressIndicator.Legacy"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/img_cancel"
+                android:background="@drawable/bg_rounded_transparent"
                 android:indeterminate="true"
                 android:indeterminateTint="@color/colorScrimAlt"
                 app:indicatorColor="@color/colorScrimAlt"
                 app:trackColor="@color/colorScrim"
-                app:trackCornerRadius="10dp"
                 app:trackThickness="@dimen/icon_size_small" />
 
             <LinearLayout
