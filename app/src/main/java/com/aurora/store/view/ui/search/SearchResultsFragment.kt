@@ -30,6 +30,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.R
@@ -85,7 +86,10 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
             }
             clearButton.apply {
                 visibility = if (query.isNullOrBlank()) View.GONE else View.VISIBLE
-                setOnClickListener { searchView.text?.clear() }
+                setOnClickListener {
+                    searchView.text?.clear()
+                    searchView.showKeyboard()
+                }
             }
         }
 
