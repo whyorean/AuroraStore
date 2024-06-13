@@ -1,0 +1,2 @@
+• Opravena chyba způsobující pár relačního instalátoru na starších verzích systému Android
+• Aktualizace překladů
