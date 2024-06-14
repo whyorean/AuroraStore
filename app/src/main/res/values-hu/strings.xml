@@ -392,4 +392,6 @@
     <string name="title_more">Több</string>
     <string name="manage_account">Fiók kezelése</string>
     <string name="about_aurora_store_title">Az Aurora Store-ról</string>
+    <string name="pref_clear_device_owner_summary">Eltávolítja az Aurora Store-t eszköztulajdonos appként</string>
+    <string name="about_aurora_store_subtitle">Tudj meg többet az Aurora Store-ról</string>
 </resources>
