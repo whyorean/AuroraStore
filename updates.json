@@ -1,9 +1,9 @@
 {
-  "version_name": "4.4.4",
-  "version_code": 58,
-  "aurora_build": "https://auroraoss.com/downloads/AuroraStore/Release/AuroraStore-4.4.4.apk",
+  "version_name": "4.5.1",
+  "version_code": 60,
+  "aurora_build": "https://www.auroraoss.com/AuroraStore/Release/AuroraStore-4.5.1.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.4.4\n • Fixed issue with login related to Google Accounts\n • Moved navigation drawer items into a separate dialog\n • Ability to export downloads to an external location\n • Translation updates & major bug fixes",
-  "size": 7032399,
-  "updated_on": "Apr 29, 2024"
+  "changelog": "Changelog : v4.5.0\n • New automatic cache cleanup feature\n • Ability to use third-party token dispensers\n • Translation updates & bug fixes",
+  "size": 7055671,
+  "updated_on": "Jun 12, 2024"
 }
