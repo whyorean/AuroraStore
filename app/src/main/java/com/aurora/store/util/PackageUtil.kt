@@ -34,6 +34,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.aurora.extensions.getInstallerPackageNameCompat
+import com.aurora.extensions.isApp
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
@@ -198,9 +199,7 @@ object PackageUtil {
             Preferences.PREFERENCE_UPDATES_EXTENDED
         )
 
-        packageInfoList = packageInfoList.filter {
-            it.packageName != null && it.applicationInfo != null
-        }
+        packageInfoList = packageInfoList.filter { it.isApp() }
 
         /*Filter google apps*/
         if (isGoogleFilterEnabled) {
