@@ -26,6 +26,7 @@ import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.isApp
 import com.aurora.store.data.model.Black
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
@@ -62,11 +63,7 @@ class BlacklistViewModel @Inject constructor(
                 try {
                     val packageInfoMap = PackageUtil.getPackageInfoMap(context)
                     packageInfoMap.values
-                        .filter {
-                            it.packageName != null
-                                    && it.versionName != null
-                                    && it.applicationInfo != null
-                        }
+                        .filter { it.isApp() }
                         .forEach {
                             val black = Black(it.packageName).apply {
                                 displayName = packageManager.getApplicationLabel(it.applicationInfo)
