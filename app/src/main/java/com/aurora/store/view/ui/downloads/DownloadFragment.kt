@@ -27,7 +27,6 @@ import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.Constants.GITLAB_URL
 import com.aurora.extensions.browse
-import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentDownloadBinding
@@ -129,7 +128,6 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                 }
             }
         }
-        binding.swipeRefreshLayout.isRefreshing = false
     }
 
     private fun openDownloadMenuSheet(packageName: String) {

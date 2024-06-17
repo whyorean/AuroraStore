@@ -29,21 +29,14 @@
         android:id="@+id/layout_toolbar_action"
         layout="@layout/view_toolbar_native" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.airbnb.epoxy.EpoxyRecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/appbar_layout"
-            android:clipToPadding="true"
-            android:paddingBottom="@dimen/height_bottom_adj"
-            app:itemSpacing="@dimen/margin_normal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:stackFromEnd="false"
-            tools:listitem="@layout/view_download" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:paddingBottom="@dimen/height_bottom_adj"
+        app:itemSpacing="@dimen/margin_normal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:stackFromEnd="false"
+        tools:listitem="@layout/view_download" />
 </LinearLayout>
