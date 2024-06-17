@@ -21,7 +21,12 @@ object AppUtil {
     private const val TAG = "AppUtil"
     private const val RELEASE = "release"
 
-    suspend fun getUpdatableApps(context: Context, gson: Gson, verifyCert: Boolean): List<App> {
+    suspend fun getUpdatableApps(
+        context: Context,
+        gson: Gson,
+        verifyCert: Boolean,
+        selfUpdate: Boolean = true
+    ): List<App> {
         val packageInfoMap = PackageUtil.getPackageInfoMap(context)
         val appUpdatesList = getFilteredInstalledApps(context, packageInfoMap).filter {
             val packageInfo = packageInfoMap[it.packageName]
@@ -44,7 +49,7 @@ object AppUtil {
             appUpdatesList
         }
 
-        if (canSelfUpdate(context)) {
+        if (canSelfUpdate(context) && selfUpdate) {
             getSelfUpdate(context, gson)?.let { verifiedUpdatesList.add(it) }
         }
 

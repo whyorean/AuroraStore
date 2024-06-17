@@ -103,7 +103,12 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             try {
-                val updatesList = AppUtil.getUpdatableApps(appContext, gson, true)
+                val updatesList = AppUtil.getUpdatableApps(
+                    context = appContext,
+                    gson = gson,
+                    verifyCert = true,
+                    selfUpdate = false
+                )
 
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
