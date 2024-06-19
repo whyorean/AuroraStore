@@ -393,24 +393,24 @@
     <string name="pref_clear_device_owner_summary">Remove a Aurora Store como o app proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_desc">Isso irá revogar a permissão do instalador da sessão de silenciosamente instalar apps. Prosseguir com a limpeza da propriedade do dispositivo?</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="add_dispenser_title">Adicionar dispensador</string>
-    <string name="pref_dispenser_title">Gerenciar dispensadores</string>
+    <string name="add_dispenser_title">Adicionar distribuidor</string>
+    <string name="pref_dispenser_title">Gerenciar distribuidores</string>
     <string name="add_dispenser_error">URL inválida</string>
-    <string name="remove_dispenser_title">Remover dispensador</string>
+    <string name="remove_dispenser_title">Remover distribuidor</string>
     <string name="remove">Remover</string>
     <string name="about_wiki_summary">Encontre respostas para perguntas frequentes (FAQ), passos para diagnosticar problemas e mais</string>
-    <string name="pref_dispenser_summary">Veja e gerencie dispensadores de token para logins anônimos</string>
-    <string name="no_dispensers_available">Nenhum dispensador disponível</string>
-    <string name="add_dispenser_summary">Adicione um dispensador de token à Aurora Store. Dispensadores de token providenciam credenciais de conta para a Aurora Store para entrar anonimamente.</string>
-    <string name="add_dispenser_hint">URL do dispensador</string>
-    <string name="remove_dispenser_summary">Deseja remover o dispensador \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="pref_dispenser_summary">Veja e gerencie distribuidores de token para logins anônimos</string>
+    <string name="no_dispensers_available">Nenhum distribuidor disponível</string>
+    <string name="add_dispenser_summary">Adicione um distribuidor de token à Aurora Store. Distribuidores de token providenciam credenciais de conta para a Aurora Store para entrar anonimamente.</string>
+    <string name="add_dispenser_hint">URL do distribuidor</string>
+    <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Adicionar</string>
     <string name="session_login">Por favor entre em sua conta Google Play</string>
     <string name="about_aurora_store_title">Sobre a Aurora Store</string>
     <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
     <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da loja Google Play. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play para o seu dispositivo. Para usar a Aurora Store, você deve ter uma conta Google Play e entrar na conta quando abrir e configurar a Aurora Store.
 \n
-\nDiferentemente de uma loja de apps tradicional, a Aurora Store não possui, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos da Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Playe encontre os apps da Google Play.
+\nDiferentemente de uma loja de apps tradicional, a Aurora Store não possui, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos da Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Play e encontre os apps da Google Play.
 \n
-\nPor favor note que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados na Aurora Store ou desenvolvedores de apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
+\nPor favor note que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor de app, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
 </resources>
