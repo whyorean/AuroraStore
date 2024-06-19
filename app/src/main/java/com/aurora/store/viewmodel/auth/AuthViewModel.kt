@@ -30,7 +30,6 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
-import com.aurora.gplayapi.helpers.AuthValidator
 import com.aurora.store.AccountType
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
@@ -38,6 +37,7 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.model.InsecureAuth
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.AC2DMTask
@@ -60,7 +60,8 @@ import javax.inject.Inject
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class AuthViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val gson: Gson
+    private val gson: Gson,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
     private val TAG = AuthViewModel::class.java.simpleName
@@ -106,7 +107,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun buildAnonymousAuthData() {
+    private fun buildAnonymousAuthData() {
         if (Preferences.getBoolean(context, Preferences.PREFERENCE_INSECURE_ANONYMOUS)) {
             buildInSecureAnonymousAuthData()
         } else {
@@ -220,10 +221,7 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    //Load & validate saved AuthData
-                    val savedAuthData = getSavedAuthData()
-
-                    if (isValid(savedAuthData)) {
+                    if (authProvider.isSavedAuthDataValid()) {
                         liveData.postValue(AuthState.Valid)
                     } else {
                         //Generate and validate new auth
@@ -260,24 +258,6 @@ class AuthViewModel @Inject constructor(
                     liveData.postValue(AuthState.Failed(error))
                 }
             }
-        }
-    }
-
-    private fun getSavedAuthData(): AuthData {
-        val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
-        return if (rawAuth.isNotBlank())
-            gson.fromJson(rawAuth, AuthData::class.java)
-        else
-            AuthData("", "")
-    }
-
-    private fun isValid(authData: AuthData): Boolean {
-        return try {
-            AuthValidator(authData)
-                .using(HttpClient.getPreferredClient(context))
-                .isValid()
-        } catch (e: Exception) {
-            false
         }
     }
 

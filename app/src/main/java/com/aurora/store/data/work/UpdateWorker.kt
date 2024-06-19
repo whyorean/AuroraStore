@@ -97,7 +97,7 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         withContext(Dispatchers.IO) {
-            if (!authProvider.isAuthDataValid()) {
+            if (!authProvider.isSavedAuthDataValid()) {
                 Log.i(TAG, "AuthData is not valid, retrying later!")
                 return@withContext Result.retry()
             }

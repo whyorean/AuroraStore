@@ -49,7 +49,7 @@ class AuthProvider @Inject constructor(
             return AccountType.valueOf(name) == AccountType.ANONYMOUS
         }
 
-    suspend fun isAuthDataValid(): Boolean {
+    suspend fun isSavedAuthDataValid(): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 AuthValidator(getSavedAuthData())
