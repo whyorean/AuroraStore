@@ -61,7 +61,7 @@ class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
 
         inflateDescription(args.app)
         inflateFiles(args.app)
-        viewModel.fetchDependentApps(view.context, args.app)
+        viewModel.fetchDependentApps(args.app)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.dependentApps.collect { list ->

@@ -14,7 +14,6 @@ import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isMAndAbove
-import com.aurora.extensions.isValid
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
 import com.aurora.store.util.DownloadWorkerUtil
@@ -35,6 +34,7 @@ import java.util.concurrent.TimeUnit.MINUTES
 class UpdateWorker @AssistedInject constructor(
     private val downloadWorkerUtil: DownloadWorkerUtil,
     private val gson: Gson,
+    private val authProvider: AuthProvider,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
@@ -97,7 +97,7 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         withContext(Dispatchers.IO) {
-            if (!AuthProvider.with(appContext).getAuthData().isValid(appContext)) {
+            if (!authProvider.isAuthDataValid()) {
                 Log.i(TAG, "AuthData is not valid, retrying later!")
                 return@withContext Result.retry()
             }
@@ -105,6 +105,7 @@ class UpdateWorker @AssistedInject constructor(
             try {
                 val updatesList = AppUtil.getUpdatableApps(
                     context = appContext,
+                    authData = authProvider.authData,
                     gson = gson,
                     verifyCert = true,
                     selfUpdate = false

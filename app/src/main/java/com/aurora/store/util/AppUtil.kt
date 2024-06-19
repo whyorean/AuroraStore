@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.SelfUpdate
@@ -23,12 +24,13 @@ object AppUtil {
 
     suspend fun getUpdatableApps(
         context: Context,
+        authData: AuthData,
         gson: Gson,
         verifyCert: Boolean,
         selfUpdate: Boolean = true
     ): List<App> {
         val packageInfoMap = PackageUtil.getPackageInfoMap(context)
-        val appUpdatesList = getFilteredInstalledApps(context, packageInfoMap).filter {
+        val appUpdatesList = getFilteredInstalledApps(context, authData, packageInfoMap).filter {
             val packageInfo = packageInfoMap[it.packageName]
             if (packageInfo != null) {
                 it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
@@ -58,13 +60,13 @@ object AppUtil {
 
     suspend fun getFilteredInstalledApps(
         context: Context,
+        authData: AuthData,
         packageInfoMap: MutableMap<String, PackageInfo>? = null
     ): List<App> {
         return withContext(Dispatchers.IO) {
-            val authData = AuthProvider.with(context).getAuthData()
             val blackList = BlacklistProvider.with(context).getBlackList()
-            val appDetailsHelper =
-                AppDetailsHelper(authData).using(HttpClient.getPreferredClient(context))
+            val appDetailsHelper = AppDetailsHelper(authData)
+                .using(HttpClient.getPreferredClient(context))
 
             (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->
                 val filtersPackages = packages.filter { !blackList.contains(it) }

@@ -61,6 +61,7 @@ class DownloadWorker @AssistedInject constructor(
     private val downloadDao: DownloadDao,
     private val gson: Gson,
     private val appInstaller: AppInstaller,
+    private val authProvider: AuthProvider,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
@@ -98,8 +99,7 @@ class DownloadWorker @AssistedInject constructor(
         setForeground(getForegroundInfo())
 
         // Purchase the app (free apps needs to be purchased too)
-        val authData = AuthProvider.with(appContext).getAuthData()
-        purchaseHelper = PurchaseHelper(authData)
+        purchaseHelper = PurchaseHelper(authProvider.authData)
             .using(HttpClient.getPreferredClient(appContext))
 
         notificationManager =

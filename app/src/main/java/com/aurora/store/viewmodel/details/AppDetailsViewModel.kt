@@ -26,7 +26,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
-    private val downloadWorkerUtil: DownloadWorkerUtil
+    private val downloadWorkerUtil: DownloadWorkerUtil,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
@@ -54,9 +55,9 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchAppDetails(context: Context, packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val authData = AuthProvider.with(context).getAuthData()
                 _app.emit(
-                    AppDetailsHelper(authData).using(HttpClient.getPreferredClient(context))
+                    AppDetailsHelper(authProvider.authData)
+                        .using(HttpClient.getPreferredClient(context))
                         .getAppByPackageName(packageName)
                 )
             } catch (exception: Exception) {
@@ -69,8 +70,8 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchAppReviews(context: Context, packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val authData = AuthProvider.with(context).getAuthData()
-                _reviews.emit(ReviewsHelper(authData).using(HttpClient.getPreferredClient(context))
+                _reviews.emit(ReviewsHelper(authProvider.authData)
+                    .using(HttpClient.getPreferredClient(context))
                     .getReviewSummary(packageName))
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app reviews", exception)
@@ -82,8 +83,7 @@ class AppDetailsViewModel @Inject constructor(
     fun postAppReview(context: Context, packageName: String, review: Review, isBeta: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val authData = AuthProvider.with(context).getAuthData()
-                _userReview.emit(ReviewsHelper(authData)
+                _userReview.emit(ReviewsHelper(authProvider.authData)
                     .using(HttpClient.getPreferredClient(context))
                     .addOrEditReview(
                         packageName,
@@ -122,9 +122,8 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchTestingProgramStatus(context: Context, packageName: String, subscribe: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val authData = AuthProvider.with(context).getAuthData()
                 _testingProgramStatus.emit(
-                    AppDetailsHelper(authData).testingProgram(
+                    AppDetailsHelper(authProvider.authData).testingProgram(
                         packageName,
                         subscribe
                     )

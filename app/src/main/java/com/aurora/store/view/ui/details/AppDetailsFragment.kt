@@ -93,6 +93,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Locale
+import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
 
@@ -107,6 +108,9 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private val detailsClusterViewModel: DetailsClusterViewModel by viewModels()
 
     private val args: AppDetailsFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var authProvider: AuthProvider
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
@@ -129,7 +133,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             }
         }
 
-    private lateinit var authData: AuthData
     private lateinit var app: App
 
     private var isExternal = false
@@ -204,9 +207,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
-
-        // TODO: Move to viewModel
-        authData = AuthProvider.with(view.context).getAuthData()
 
         if (args.app != null) {
             app = args.app!!
@@ -511,7 +511,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
             inflateAppPrivacy(app)
             inflateAppPermission(binding.layoutDetailsPermissions, app)
 
-            if (!authData.isAnonymous) {
+            if (!authProvider.isAnonymous) {
                 app.testingProgram?.let {
                     if (it.isAvailable && it.isSubscribed) {
                         binding.layoutDetailsApp.txtLine1.text = it.displayName
@@ -631,7 +631,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     }
 
                     btn.addOnClickListener {
-                        if (authData.isAnonymous && !app.isFree) {
+                        if (authProvider.isAnonymous && !app.isFree) {
                             toast(R.string.toast_purchase_blocked)
                         } else {
                             btn.setText(R.string.download_metadata)
@@ -764,12 +764,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         B.averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
         B.txtReviewCount.text = app.rating.abbreviatedLabel
 
-        val authData = AuthProvider.with(requireContext()).getAuthData()
-
-        B.layoutUserReview.visibility = if (authData.isAnonymous) View.GONE else View.VISIBLE
+        B.layoutUserReview.visibility = if (authProvider.isAnonymous) View.GONE else View.VISIBLE
 
         B.btnPostReview.setOnClickListener {
-            if (authData.isAnonymous) {
+            if (authProvider.isAnonymous) {
                 toast(R.string.toast_anonymous_restriction)
             } else {
                 addOrUpdateReview(app, Review().apply {

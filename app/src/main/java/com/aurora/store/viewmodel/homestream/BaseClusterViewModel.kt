@@ -42,13 +42,12 @@ import kotlinx.coroutines.supervisorScope
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class BaseClusterViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    var authData: AuthData = AuthProvider.with(context).getAuthData()
-
-    var streamHelper: StreamHelper =
-        StreamHelper(authData).using(HttpClient.getPreferredClient(context))
+    var streamHelper: StreamHelper = StreamHelper(authProvider.authData)
+        .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()

@@ -24,7 +24,6 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.gplayapi.helpers.ReviewsHelper
@@ -40,14 +39,11 @@ import kotlinx.coroutines.supervisorScope
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class ReviewViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    var authData: AuthData = AuthProvider
-        .with(context)
-        .getAuthData()
-
-    var reviewsHelper: ReviewsHelper = ReviewsHelper(authData)
+    var reviewsHelper: ReviewsHelper = ReviewsHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ReviewCluster> = MutableLiveData()

@@ -10,13 +10,18 @@ import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.ApkCopier
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 
-class SheetsViewModel : ViewModel() {
+@HiltViewModel
+class SheetsViewModel @Inject constructor(
+    private val authProvider: AuthProvider
+) : ViewModel() {
 
     private val TAG = SheetsViewModel::class.java.simpleName
 
@@ -26,7 +31,7 @@ class SheetsViewModel : ViewModel() {
     fun purchase(context: Context, app: App, customVersion: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val purchaseHelper = PurchaseHelper(AuthProvider.with(context).getAuthData())
+                val purchaseHelper = PurchaseHelper(authProvider.authData)
                 val files = purchaseHelper.purchase(app.packageName, customVersion, app.offerType)
                 if (files.isNotEmpty()) {
                     EventBus.getDefault()

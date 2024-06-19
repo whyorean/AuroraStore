@@ -34,6 +34,7 @@ import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AccountFragment : Fragment(R.layout.fragment_account) {
@@ -42,11 +43,12 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     private val binding: FragmentAccountBinding
         get() = _binding!!
 
+    @Inject
+    lateinit var authProvider: AuthProvider
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAccountBinding.bind(view)
-
-        val authData = AuthProvider.with(view.context).getAuthData()
 
         // Toolbar
         binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_account_manager)
@@ -61,14 +63,14 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
             binding.chipTos.setOnClickListener { browse(URL_TOS) }
         }
 
-        authData.userProfile?.let {
-            val avatar = if (authData.isAnonymous) R.mipmap.ic_launcher else it.artwork.url
+        authProvider.authData.userProfile?.let {
+            val avatar = if (authProvider.isAnonymous) R.mipmap.ic_launcher else it.artwork.url
             binding.imgAvatar.load(avatar) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(RoundedCornersTransformation(32F))
             }
-            binding.txtName.text = if (authData.isAnonymous) "Anonymous" else it.name
-            binding.txtEmail.text = if (authData.isAnonymous) "anonymous@gmail.com" else it.email
+            binding.txtName.text = if (authProvider.isAnonymous) "Anonymous" else it.name
+            binding.txtEmail.text = if (authProvider.isAnonymous) "anonymous@gmail.com" else it.email
         }
 
         binding.btnLogout.addOnClickListener {

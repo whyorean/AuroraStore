@@ -25,12 +25,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Locale
+import javax.inject.Inject
 
-class InstalledViewModel : ViewModel() {
+@HiltViewModel
+class InstalledViewModel @Inject constructor(
+    private val authProvider: AuthProvider
+) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
@@ -40,7 +46,7 @@ class InstalledViewModel : ViewModel() {
     fun getInstalledApps(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                appList = AppUtil.getFilteredInstalledApps(context).toMutableList()
+                appList = AppUtil.getFilteredInstalledApps(context, authProvider.authData).toMutableList()
                 liveData.postValue(appList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to get installed apps", exception)

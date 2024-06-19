@@ -26,7 +26,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.flushAndAdd
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.WebSearchHelper
@@ -44,16 +43,14 @@ import kotlinx.coroutines.supervisorScope
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class SearchResultViewModel @Inject constructor(
     val filterProvider: FilterProvider,
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
     private val TAG = SearchResultViewModel::class.java.simpleName
-    private val authData: AuthData = AuthProvider
-        .with(context)
-        .getAuthData()
 
-    private val webSearchHelper: WebSearchHelper = WebSearchHelper(authData)
-    private val searchHelper: SearchHelper = SearchHelper(authData)
+    private val webSearchHelper: WebSearchHelper = WebSearchHelper(authProvider.authData)
+    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()
@@ -61,7 +58,7 @@ class SearchResultViewModel @Inject constructor(
     private var searchBundle: SearchBundle = SearchBundle()
 
     fun helper(): SearchHelper {
-        return if (authData.isAnonymous) {
+        return if (authProvider.isAnonymous) {
             webSearchHelper
         } else {
             searchHelper

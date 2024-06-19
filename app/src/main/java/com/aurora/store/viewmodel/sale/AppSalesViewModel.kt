@@ -25,7 +25,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppSalesHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
@@ -40,12 +39,12 @@ import kotlinx.coroutines.supervisorScope
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class AppSalesViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private val authData: AuthData = AuthProvider.with(context).getAuthData()
-    private val appSalesHelper: AppSalesHelper =
-        AppSalesHelper(authData).using(HttpClient.getPreferredClient(context))
+    private val appSalesHelper: AppSalesHelper = AppSalesHelper(authProvider.authData)
+        .using(HttpClient.getPreferredClient(context))
 
     private var page: Int = 0
     private val appList: MutableList<App> = mutableListOf()

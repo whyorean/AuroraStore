@@ -39,16 +39,13 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class CategoryViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
     private val TAG = CategoryViewModel::class.java.simpleName
 
-    private val authData: AuthData = AuthProvider
-        .with(context)
-        .getAuthData()
-
-    private val streamHelper: CategoryHelper = CategoryHelper(authData)
+    private val streamHelper: CategoryHelper = CategoryHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<List<Category>> = MutableLiveData()

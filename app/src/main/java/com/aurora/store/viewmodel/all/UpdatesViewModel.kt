@@ -25,6 +25,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.Preferences
@@ -43,7 +44,8 @@ import kotlinx.coroutines.launch
 class UpdatesViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val gson: Gson,
-    private val downloadWorkerUtil: DownloadWorkerUtil
+    private val downloadWorkerUtil: DownloadWorkerUtil,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
     private val TAG = UpdatesViewModel::class.java.simpleName
@@ -61,9 +63,12 @@ class UpdatesViewModel @Inject constructor(
                 val isExtendedUpdateEnabled = Preferences.getBoolean(
                     context, Preferences.PREFERENCE_UPDATES_EXTENDED
                 )
-                val updates =
-                    AppUtil.getUpdatableApps(context, gson, !isExtendedUpdateEnabled)
-                        .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
+                val updates = AppUtil.getUpdatableApps(
+                    context,
+                    authProvider.authData,
+                    gson,
+                    !isExtendedUpdateEnabled
+                ).sortedBy { it.displayName.lowercase(Locale.getDefault()) }
                 _updates.emit(updates)
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)

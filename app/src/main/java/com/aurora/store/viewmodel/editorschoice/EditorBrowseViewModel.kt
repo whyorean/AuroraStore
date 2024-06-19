@@ -39,11 +39,11 @@ import kotlinx.coroutines.supervisorScope
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class EditorBrowseViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private val authData: AuthData = AuthProvider.with(context).getAuthData()
-    private val streamHelper: StreamHelper = StreamHelper(authData)
+    private val streamHelper: StreamHelper = StreamHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<MutableList<App>> = MutableLiveData()

@@ -20,34 +20,54 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.store.data.SingletonHolder
+import com.aurora.gplayapi.helpers.AuthValidator
+import com.aurora.store.AccountType
+import com.aurora.store.data.network.HttpClient
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class AuthProvider private constructor(var context: Context) {
+@Singleton
+class AuthProvider @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val gson: Gson
+) {
 
-    companion object : SingletonHolder<AuthProvider, Context>(::AuthProvider)
+    val authData: AuthData get() = getSavedAuthData()
 
-    private var gson: Gson = GsonBuilder()
-        .excludeFieldsWithModifiers(Modifier.TRANSIENT)
-        .create()
+    val isAnonymous: Boolean
+        get() {
+            val name = Preferences.getString(context, Constants.ACCOUNT_TYPE, AccountType.GOOGLE.name)
+            return AccountType.valueOf(name) == AccountType.ANONYMOUS
+        }
 
-    fun getAuthData(): AuthData {
-        return getSavedAuthData()
+    suspend fun isAuthDataValid(): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                AuthValidator(getSavedAuthData())
+                    .using(HttpClient.getPreferredClient(context))
+                    .isValid()
+            } catch (e: Exception) {
+                false
+            }
+        }
     }
 
     private fun getSavedAuthData(): AuthData {
         Log.i("Loading saved AuthData")
-
         val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
-        return if (rawAuth.isNotEmpty())
+        return if (rawAuth.isNotEmpty()) {
             gson.fromJson(rawAuth, AuthData::class.java)
-        else
+        } else {
             AuthData("", "")
+        }
     }
 }

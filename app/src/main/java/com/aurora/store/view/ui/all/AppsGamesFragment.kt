@@ -33,6 +33,7 @@ import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
@@ -41,11 +42,12 @@ class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
     private val binding: ActivityGenericPagerBinding
         get() = _binding!!
 
+    @Inject
+    lateinit var authProvider: AuthProvider
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = ActivityGenericPagerBinding.bind(view)
-
-        val authData = AuthProvider.with(view.context).getAuthData()
 
         // Toolbar
         binding.layoutActionToolbar.toolbar.apply {
@@ -58,7 +60,7 @@ class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
         // ViewPager
         binding.pager.apply {
             isUserInputEnabled = false
-            adapter = ViewPagerAdapter(childFragmentManager, lifecycle, authData.isAnonymous)
+            adapter = ViewPagerAdapter(childFragmentManager, lifecycle, authProvider.isAnonymous)
         }
 
         TabLayoutMediator(

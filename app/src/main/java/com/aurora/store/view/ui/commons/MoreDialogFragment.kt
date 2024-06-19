@@ -55,8 +55,14 @@ import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.view.theme.AuroraTheme
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MoreDialogFragment : DialogFragment() {
+
+    @Inject
+    lateinit var authProvider: AuthProvider
 
     private data class Option(
         @StringRes val title: Int,
@@ -171,7 +177,6 @@ class MoreDialogFragment : DialogFragment() {
 
     @Composable
     private fun AccountHeader(backgroundColor: Color) {
-        val authData = AuthProvider.with(LocalContext.current).getAuthData()
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -193,7 +198,7 @@ class MoreDialogFragment : DialogFragment() {
             ) {
                 SubcomposeAsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(if (authData.isAnonymous) R.mipmap.ic_launcher else authData.userProfile?.artwork?.url)
+                        .data(if (authProvider.isAnonymous) R.mipmap.ic_launcher else authProvider.authData.userProfile?.artwork?.url)
                         .placeholder(R.drawable.ic_account)
                         .crossfade(true)
                         .build(),
@@ -208,12 +213,12 @@ class MoreDialogFragment : DialogFragment() {
                     horizontalAlignment = Alignment.Start
                 ) {
                     Text(
-                        text = if (authData.isAnonymous) "anonymous" else authData.userProfile!!.name,
+                        text = if (authProvider.isAnonymous) "anonymous" else authProvider.authData.userProfile!!.name,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 16.sp
                     )
                     Text(
-                        text = if (authData.isAnonymous) "anonymous@gmail.com" else authData.userProfile!!.email,
+                        text = if (authProvider.isAnonymous) "anonymous@gmail.com" else authProvider.authData.userProfile!!.email,
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp
                     )

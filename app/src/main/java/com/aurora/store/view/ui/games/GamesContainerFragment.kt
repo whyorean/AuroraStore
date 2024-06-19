@@ -38,12 +38,16 @@ import com.aurora.store.view.ui.commons.TopChartContainerFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GamesContainerFragment : Fragment(R.layout.fragment_apps_games) {
 
     private var _binding: FragmentAppsGamesBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var authProvider: AuthProvider
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,12 +77,10 @@ class GamesContainerFragment : Fragment(R.layout.fragment_apps_games) {
             Preferences.PREFERENCE_FOR_YOU
         )
 
-        val isGoogleAccount = !AuthProvider.with(requireContext()).getAuthData().isAnonymous
-
         binding.pager.adapter = ViewPagerAdapter(
             childFragmentManager,
             viewLifecycleOwner.lifecycle,
-            isGoogleAccount,
+            !authProvider.isAnonymous,
             isForYouEnabled
         )
 
@@ -92,7 +94,7 @@ class GamesContainerFragment : Fragment(R.layout.fragment_apps_games) {
             add(getString(R.string.tab_top_charts))
             add(getString(R.string.tab_categories))
 
-            if (isGoogleAccount) {
+            if (!authProvider.isAnonymous) {
                 add(getString(R.string.tab_editor_choice))
             }
         }

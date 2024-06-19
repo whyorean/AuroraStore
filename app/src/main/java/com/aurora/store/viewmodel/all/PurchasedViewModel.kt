@@ -43,12 +43,12 @@ data class PaginatedAppList(
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class PurchasedViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private val authData = AuthProvider.with(context).getAuthData()
-
-    private val purchaseHelper = PurchaseHelper(authData).using(HttpClient.getPreferredClient(context))
+    private val purchaseHelper = PurchaseHelper(authProvider.authData)
+        .using(HttpClient.getPreferredClient(context))
 
     private var appList: MutableList<App> = mutableListOf()
 
