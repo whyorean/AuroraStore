@@ -51,7 +51,7 @@ class AuroraListPreference : ListPreference {
     }
 
     override fun getPersistedString(defaultReturnValue: String?): String? {
-        return getPersistedInt(-1).toString()
+        return getPersistedInt(defaultReturnValue?.toInt() ?: -1).toString()
     }
 
     override fun persistString(value: String?): Boolean {
