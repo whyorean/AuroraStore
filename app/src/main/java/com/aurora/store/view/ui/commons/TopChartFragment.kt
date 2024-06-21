@@ -24,8 +24,8 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.TopChartsHelper.Chart
-import com.aurora.gplayapi.helpers.TopChartsHelper.Type
+import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Chart
+import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Type
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentTopContainerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener

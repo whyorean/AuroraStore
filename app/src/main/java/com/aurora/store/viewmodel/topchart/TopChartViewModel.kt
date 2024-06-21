@@ -26,14 +26,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.TopChartsHelper
+import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
@@ -48,10 +49,10 @@ class TopChartViewModel @Inject constructor(
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()
 
-    fun getStreamCluster(type: TopChartsHelper.Type, chart: TopChartsHelper.Chart) {
+    fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                streamCluster = topChartsHelper.getCluster(type, chart)
+                streamCluster = topChartsHelper.getCluster(type.value, chart.value)
                 liveData.postValue(streamCluster)
             } catch (_: Exception) {
             }

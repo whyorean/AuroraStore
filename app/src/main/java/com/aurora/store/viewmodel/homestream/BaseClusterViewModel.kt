@@ -28,15 +28,16 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.store.data.model.ViewState
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
@@ -51,10 +52,10 @@ class BaseClusterViewModel @Inject constructor(
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()
 
-    lateinit var type: StreamHelper.Type
-    lateinit var category: StreamHelper.Category
+    lateinit var type: StreamContract.Type
+    lateinit var category: StreamContract.Category
 
-    fun getStreamBundle(category: StreamHelper.Category, type: StreamHelper.Type) {
+    fun getStreamBundle(category: StreamContract.Category, type: StreamContract.Type) {
         this.type = type
         this.category = category
         liveData.postValue(ViewState.Loading)

@@ -26,14 +26,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.helpers.SearchHelper
-import com.aurora.gplayapi.helpers.WebSearchHelper
+import com.aurora.gplayapi.helpers.contracts.SearchContract
+import com.aurora.gplayapi.helpers.web.WebSearchHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
@@ -42,13 +43,13 @@ class SearchSuggestionViewModel @Inject constructor(
     private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private val webSearchHelper: WebSearchHelper = WebSearchHelper(authProvider.authData)
+    private val webSearchHelper: WebSearchHelper = WebSearchHelper()
     private val searchHelper: SearchHelper = SearchHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
     val liveSearchSuggestions: MutableLiveData<List<SearchSuggestEntry>> = MutableLiveData()
 
-    fun helper(): SearchHelper {
+    fun helper(): SearchContract {
         return if (authProvider.isAnonymous) {
             webSearchHelper
         } else {

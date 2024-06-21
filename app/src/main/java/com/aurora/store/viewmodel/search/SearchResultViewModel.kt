@@ -28,7 +28,8 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.flushAndAdd
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
-import com.aurora.gplayapi.helpers.WebSearchHelper
+import com.aurora.gplayapi.helpers.contracts.SearchContract
+import com.aurora.gplayapi.helpers.web.WebSearchHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.FilterProvider
@@ -49,7 +50,7 @@ class SearchResultViewModel @Inject constructor(
 
     private val TAG = SearchResultViewModel::class.java.simpleName
 
-    private val webSearchHelper: WebSearchHelper = WebSearchHelper(authProvider.authData)
+    private val webSearchHelper: WebSearchHelper = WebSearchHelper()
     private val searchHelper: SearchHelper = SearchHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
@@ -57,7 +58,7 @@ class SearchResultViewModel @Inject constructor(
 
     private var searchBundle: SearchBundle = SearchBundle()
 
-    fun helper(): SearchHelper {
+    fun helper(): SearchContract {
         return if (authProvider.isAnonymous) {
             webSearchHelper
         } else {

@@ -121,12 +121,7 @@ object OkHttpClient : IProxyHttpClient {
 
     @Throws(IOException::class)
     override fun post(url: String, headers: Map<String, String>, body: ByteArray): PlayResponse {
-        val requestBody = body.toRequestBody(
-            "application/x-protobuf".toMediaType(),
-            0,
-            body.size
-        )
-        return post(url, headers, requestBody)
+        return post(url, headers, body.toRequestBody())
     }
 
     @Throws(IOException::class)

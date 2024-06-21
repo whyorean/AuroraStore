@@ -27,6 +27,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.editor.EditorChoiceBundle
 import com.aurora.gplayapi.helpers.StreamHelper
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -50,7 +51,7 @@ class EditorChoiceViewModel @Inject constructor(
 
     val liveData: MutableLiveData<List<EditorChoiceBundle>> = MutableLiveData()
 
-    fun getEditorChoiceStream(category: StreamHelper.Category) {
+    fun getEditorChoiceStream(category: StreamContract.Category) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {

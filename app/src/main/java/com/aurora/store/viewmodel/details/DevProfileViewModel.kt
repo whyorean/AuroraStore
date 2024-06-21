@@ -30,6 +30,7 @@ import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.store.data.model.ViewState
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
@@ -55,8 +56,8 @@ class DevProfileViewModel @Inject constructor(
     var devStream:DevStream = DevStream()
     var streamBundle: StreamBundle = StreamBundle()
 
-    lateinit var type: StreamHelper.Type
-    lateinit var category: StreamHelper.Category
+    lateinit var type: StreamContract.Type
+    lateinit var category: StreamContract.Category
 
     fun getStreamBundle(devId: String) {
         viewModelScope.launch(Dispatchers.IO) {

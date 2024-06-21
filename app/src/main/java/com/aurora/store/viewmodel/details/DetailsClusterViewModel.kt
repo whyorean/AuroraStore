@@ -29,6 +29,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.store.data.model.ViewState
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
@@ -53,8 +54,8 @@ class DetailsClusterViewModel @Inject constructor(
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()
 
-    lateinit var type: StreamHelper.Type
-    lateinit var category: StreamHelper.Category
+    lateinit var type: StreamContract.Type
+    lateinit var category: StreamContract.Category
 
     fun getStreamBundle(streamUrl: String) {
         viewModelScope.launch(Dispatchers.IO) {

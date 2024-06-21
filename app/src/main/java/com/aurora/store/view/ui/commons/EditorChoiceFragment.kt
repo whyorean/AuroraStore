@@ -25,6 +25,7 @@ import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.editor.EditorChoiceCluster
 import com.aurora.gplayapi.helpers.StreamHelper
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.epoxy.controller.EditorChoiceController
@@ -65,8 +66,8 @@ class EditorChoiceFragment : BaseFragment(R.layout.fragment_for_you),
         binding.recycler.setController(editorChoiceController)
 
         when (pageType) {
-            0 -> viewModel.getEditorChoiceStream(StreamHelper.Category.APPLICATION)
-            1 -> viewModel.getEditorChoiceStream(StreamHelper.Category.GAME)
+            0 -> viewModel.getEditorChoiceStream(StreamContract.Category.APPLICATION)
+            1 -> viewModel.getEditorChoiceStream(StreamContract.Category.GAME)
         }
 
         viewModel.liveData.observe(viewLifecycleOwner) {
