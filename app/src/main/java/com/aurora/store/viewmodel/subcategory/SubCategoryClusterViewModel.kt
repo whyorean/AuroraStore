@@ -28,30 +28,33 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.store.data.model.ViewState
+import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class SubCategoryClusterViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    var categoryHelper: CategoryHelper = CategoryHelper(authProvider.authData)
+    var contract: StreamContract = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var streamBundle: StreamBundle = StreamBundle()
 
-    lateinit var homeUrl: String
+    private lateinit var homeUrl: String
+    private lateinit var type: StreamContract.Type
+    private lateinit var category: StreamContract.Category
 
     init {
         liveData.postValue(ViewState.Loading)
@@ -61,13 +64,21 @@ class SubCategoryClusterViewModel @Inject constructor(
         nextPageUrl: String
     ): StreamBundle {
         return if (streamBundle.streamClusters.isEmpty())
-            categoryHelper.getSubCategoryBundle(homeUrl)
+            contract.fetch(type, category)
         else
-            categoryHelper.getSubCategoryBundle(nextPageUrl)
+            contract.nextStreamBundle(category, nextPageUrl)
     }
 
     fun observeCategory(homeUrl: String) {
         this.homeUrl = homeUrl
+
+        val rawCategory = homeUrl.split("/").last()
+
+        type = StreamContract.Type.HOME
+        category = StreamContract.Category.NONE.apply {
+            value = rawCategory
+        }
+
         observe()
     }
 
@@ -106,7 +117,7 @@ class SubCategoryClusterViewModel @Inject constructor(
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
-                            categoryHelper.getNextStreamCluster(streamCluster.clusterNextPageUrl)
+                            contract.nextStreamCluster(streamCluster.clusterNextPageUrl)
                         updateCluster(newCluster)
                         liveData.postValue(ViewState.Success(streamBundle))
                     } else {

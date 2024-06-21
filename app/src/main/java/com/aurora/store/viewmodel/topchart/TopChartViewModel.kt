@@ -27,6 +27,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.TopChartsHelper
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
+import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -46,13 +47,24 @@ class TopChartViewModel @Inject constructor(
     private val topChartsHelper: TopChartsHelper = TopChartsHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
+    private val webTopChartsHelper: TopChartsContract = WebTopChartsHelper()
+        .using(HttpClient.getPreferredClient(context))
+
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()
+
+    private fun contract(): TopChartsContract {
+        return if(authProvider.isAnonymous){
+            webTopChartsHelper
+        } else {
+            topChartsHelper
+        }
+    }
 
     fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                streamCluster = topChartsHelper.getCluster(type.value, chart.value)
+                streamCluster = contract().getCluster(type.value, chart.value)
                 liveData.postValue(streamCluster)
             } catch (_: Exception) {
             }

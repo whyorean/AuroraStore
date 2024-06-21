@@ -29,6 +29,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.store.data.model.ViewState
 import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
@@ -46,7 +47,10 @@ class BaseClusterViewModel @Inject constructor(
     private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    var streamHelper: StreamHelper = StreamHelper(authProvider.authData)
+    private var streamHelper: StreamContract = StreamHelper(authProvider.authData)
+        .using(HttpClient.getPreferredClient(context))
+
+    private var webStreamHelper: StreamContract = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
@@ -54,6 +58,14 @@ class BaseClusterViewModel @Inject constructor(
 
     lateinit var type: StreamContract.Type
     lateinit var category: StreamContract.Category
+
+    fun contract(): StreamContract {
+        return if (authProvider.isAnonymous) {
+            webStreamHelper
+        } else {
+            streamHelper
+        }
+    }
 
     fun getStreamBundle(category: StreamContract.Category, type: StreamContract.Type) {
         this.type = type
@@ -70,9 +82,9 @@ class BaseClusterViewModel @Inject constructor(
 
                         //Fetch new stream bundle
                         val newBundle = if (streamBundle.streamClusters.isEmpty()) {
-                            streamHelper.getNavStream(type, category)
+                            contract().fetch(type, category)
                         } else {
-                            streamHelper.next(streamBundle.streamNextPageUrl)
+                            contract().nextStreamBundle(category, streamBundle.streamNextPageUrl)
                         }
 
                         //Update old bundle
@@ -99,7 +111,7 @@ class BaseClusterViewModel @Inject constructor(
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
-                            streamHelper.getNextStreamCluster(streamCluster.clusterNextPageUrl)
+                            contract().nextStreamCluster(streamCluster.clusterNextPageUrl)
                         updateCluster(streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(streamBundle))
                     } else {

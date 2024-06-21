@@ -25,9 +25,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.helpers.CategoryHelper
+import com.aurora.gplayapi.helpers.contracts.CategoryContract
+import com.aurora.gplayapi.helpers.web.WebCategoryHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,15 +46,25 @@ class CategoryViewModel @Inject constructor(
 
     private val TAG = CategoryViewModel::class.java.simpleName
 
-    private val streamHelper: CategoryHelper = CategoryHelper(authProvider.authData)
+    private val categoryHelper: CategoryHelper = CategoryHelper(authProvider.authData)
+        .using(HttpClient.getPreferredClient(context))
+
+    private val webCategoryHelper: CategoryContract = WebCategoryHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<List<Category>> = MutableLiveData()
 
+    private fun contract(): CategoryContract {
+        return if(authProvider.isAnonymous){
+            webCategoryHelper
+        } else {
+            categoryHelper
+        }
+    }
     fun getCategoryList(type: Category.Type) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                liveData.postValue(streamHelper.getAllCategoriesList(type))
+                liveData.postValue(contract().getAllCategoriesList(type))
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed fetching list of categories", exception)
             }
