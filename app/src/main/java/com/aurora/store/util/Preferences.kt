@@ -37,6 +37,7 @@ object Preferences {
     const val PREFERENCE_DEFAULT_SELECTED_TAB = "PREFERENCE_DEFAULT_SELECTED_TAB"
     const val PREFERENCE_SIMILAR = "PREFERENCE_SIMILAR"
     const val PREFERENCE_INTRO = "PREFERENCE_INTRO"
+    const val PREFERENCE_SCOPED_RESTART = "PREFERENCE_SCOPED_RESTART"
 
     const val PREFERENCE_FILTER_GOOGLE = "PREFERENCE_FILTER_GOOGLE"
     const val PREFERENCE_FILTER_FDROID = "PREFERENCE_FILTER_FDROID"
@@ -96,6 +97,10 @@ object Preferences {
 
     fun putBoolean(context: Context, key: String, value: Boolean) {
         getPrefs(context).edit().putBoolean(key, value).apply()
+    }
+
+    fun putBooleanNow(context: Context, key: String, value: Boolean) {
+        getPrefs(context).edit().putBoolean(key, value).commit()
     }
 
     fun getString(context: Context, key: String, default: String = ""): String {

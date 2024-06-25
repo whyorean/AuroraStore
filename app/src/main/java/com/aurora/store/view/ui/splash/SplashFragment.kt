@@ -27,6 +27,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
 import com.aurora.extensions.isValidPackageName
+import com.aurora.extensions.restartApp
 import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.AuthState
@@ -34,6 +35,7 @@ import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
+import com.aurora.store.util.Preferences.PREFERENCE_SCOPED_RESTART
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,6 +55,14 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             findNavController().navigate(
                 SplashFragmentDirections.actionSplashFragmentToOnboardingFragment()
             )
+            return
+        }
+
+        if (!Preferences.getBoolean(requireContext(), PREFERENCE_SCOPED_RESTART)) {
+            // DO NOT REPLACE THIS WITH Context.save()
+            Preferences.putBooleanNow(requireContext(), PREFERENCE_SCOPED_RESTART, true)
+
+            requireContext().restartApp()
             return
         }
 
