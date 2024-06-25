@@ -294,14 +294,19 @@ class DownloadWorker @AssistedInject constructor(
                     this.speed = downloadInfo.speed
                     this.timeRemaining = bytesRemaining / speed * 1000
                 }
-                downloadDao.updateProgress(
-                    download.packageName,
-                    download.progress,
-                    download.speed,
-                    download.timeRemaining
-                )
 
-                notifyStatus(DownloadStatus.DOWNLOADING, NOTIFICATION_ID)
+                // Update progress every 5% to avoid noise
+                if (totalProgress % 5 == 0) {
+                    downloadDao.updateProgress(
+                        download.packageName,
+                        download.progress,
+                        download.speed,
+                        download.timeRemaining
+                    )
+
+                    notifyStatus(DownloadStatus.DOWNLOADING, NOTIFICATION_ID)
+                }
+
                 totalProgress = progress
             }
         }
