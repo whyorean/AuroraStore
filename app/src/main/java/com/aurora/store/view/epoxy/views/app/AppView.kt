@@ -19,6 +19,7 @@
 
 package com.aurora.store.view.epoxy.views.app
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
@@ -70,6 +71,10 @@ class AppView : RelativeLayout {
             placeholder(R.drawable.bg_placeholder)
             transformations(RoundedCornersTransformation(32F))
         }
+
+        B.txtSize.text = context
+            .getString(R.string.app_view_rating)
+            .format(app.downloadString, app.rating.abbreviatedLabel)
 
         if (app.size > 0)
             B.txtSize.text = CommonUtil.addSiPrefix(app.size)

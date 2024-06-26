@@ -74,7 +74,7 @@ class AppListView : RelativeLayout {
         B.txtLine2.text = app.developerName
 
         val extras: MutableList<String> = mutableListOf()
-        extras.add(CommonUtil.addSiPrefix(app.size))
+        extras.add(app.downloadString)
         extras.add("${app.labeledRating}★")
         extras.add(
             if (app.isFree)
