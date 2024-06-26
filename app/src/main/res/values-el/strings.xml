@@ -396,4 +396,12 @@
     <string name="add_dispenser_error">Μη έγκυρο URL</string>
     <string name="add">Πρόσθεσε</string>
     <string name="remove">Αφαίρεσε</string>
+    <string name="session_login">Παρακαλώ συνδεθείτε στο λογαριασμό σας στο Google Play</string>
+    <string name="remove_dispenser_summary">Θέλετε να αφαιρέσετε τον διανομέα \"<xliff:g id="url">%1$s</xliff:g>\";</string>
+    <string name="pref_dispenser_title">Διαχείριση διανομέων</string>
+    <string name="remove_dispenser_title">Αφαιρέστε τον διανομέα</string>
+    <string name="about_aurora_store_title">Σχετικά με το κατάστημα Aurora</string>
+    <string name="about_aurora_store_subtitle">Μάθετε περισσότερα για το κατάστημα Aurora</string>
+    <string name="no_dispensers_available">Δεν υπάρχουν διαθέσιμοι διανομείς</string>
+    <string name="add_dispenser_title">Προσθήκη διανομέα</string>
 </resources>
