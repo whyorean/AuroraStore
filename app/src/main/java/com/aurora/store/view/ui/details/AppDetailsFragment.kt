@@ -53,7 +53,6 @@ import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -88,14 +87,14 @@ import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.Locale
 import javax.inject.Inject
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filter
 
 @AndroidEntryPoint
 class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
@@ -223,12 +222,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
         viewModel.fetchAppDetails(view.context, app.packageName)
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.app.collect {
-                if (app.packageName.isNotBlank()) {
-                    if (isExternal) {
-                        app = it
-                        inflatePartialApp()
-                    }
-                    inflateExtraDetails(it)
+                if (it.packageName.isNotBlank()) {
+                    app = it
+                    inflatePartialApp() // Re-inflate the app details, as web data may vary.
+                    inflateExtraDetails(app)
                     viewModel.fetchAppReviews(view.context, app.packageName)
                 } else {
                     toast("Failed to fetch app details")
@@ -256,6 +253,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                             DownloadStatus.QUEUED -> {
                                 updateProgress(it.progress)
                             }
+
                             DownloadStatus.DOWNLOADING -> {
                                 updateProgress(it.progress, it.speed, it.timeRemaining)
                             }
@@ -612,7 +610,13 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         binding.layoutDetailsApp.txtLine3.text =
                             ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
                         btn.setText(R.string.action_update)
-                        btn.addOnClickListener { startDownload() }
+                        btn.addOnClickListener {
+                            if (app.versionCode == 0) {
+                                toast(R.string.toast_app_unavailable)
+                            } else {
+                                startDownload()
+                            }
+                        }
                     } else {
                         binding.layoutDetailsApp.txtLine3.text = installedVersion
                         btn.setText(R.string.action_open)
@@ -633,6 +637,8 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     btn.addOnClickListener {
                         if (authProvider.isAnonymous && !app.isFree) {
                             toast(R.string.toast_purchase_blocked)
+                        } else if (app.versionCode == 0) {
+                            toast(R.string.toast_app_unavailable)
                         } else {
                             btn.setText(R.string.download_metadata)
                             startDownload()

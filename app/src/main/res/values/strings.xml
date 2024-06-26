@@ -302,6 +302,7 @@
     <string name="toast_anonymous_restriction">"Not available on anonymous accounts"</string>
     <string name="toast_apk_blacklisted">"Blacklisted"</string>
     <string name="toast_apk_whitelisted">"Whitelisted"</string>
+    <string name="toast_app_unavailable">"App not available for your device"</string>
     <string name="toast_clipboard_copied">"Copied to clipboard"</string>
     <string name="toast_developer_setting_failed">Turn on developer settings from the device settings to open them.</string>
     <string name="toast_permission_granted">"Permission granted"</string>
