@@ -42,7 +42,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
-class BaseClusterViewModel @Inject constructor(
+class StreamViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider
 ) : ViewModel() {
@@ -54,10 +54,11 @@ class BaseClusterViewModel @Inject constructor(
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
-    var streamBundle: StreamBundle = StreamBundle()
 
-    lateinit var type: StreamContract.Type
-    lateinit var category: StreamContract.Category
+    private var streamBundleMap: MutableMap<StreamContract.Category, StreamBundle> = mutableMapOf(
+        StreamContract.Category.APPLICATION to StreamBundle(),
+        StreamContract.Category.GAME to StreamBundle()
+    )
 
     fun contract(): StreamContract {
         return if (authProvider.isAnonymous) {
@@ -68,33 +69,38 @@ class BaseClusterViewModel @Inject constructor(
     }
 
     fun getStreamBundle(category: StreamContract.Category, type: StreamContract.Type) {
-        this.type = type
-        this.category = category
         liveData.postValue(ViewState.Loading)
-        observe()
+        observe(category, type)
     }
 
-    fun observe() {
+    fun observe(category: StreamContract.Category, type: StreamContract.Type) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
+                if (targetBundle(category).streamClusters.isNotEmpty()) {
+                    liveData.postValue(ViewState.Success(targetBundle(category)))
+                }
+
                 try {
-                    if (!streamBundle.hasCluster() || streamBundle.hasNext()) {
+                    if (!targetBundle(category).hasCluster() || targetBundle(category).hasNext()) {
 
                         //Fetch new stream bundle
-                        val newBundle = if (streamBundle.streamClusters.isEmpty()) {
+                        val newBundle = if (targetBundle(category).streamClusters.isEmpty()) {
                             contract().fetch(type, category)
                         } else {
-                            contract().nextStreamBundle(category, streamBundle.streamNextPageUrl)
+                            contract().nextStreamBundle(
+                                category,
+                                targetBundle((category)).streamNextPageUrl
+                            )
                         }
 
                         //Update old bundle
-                        streamBundle.apply {
+                        targetBundle(category).apply {
                             streamClusters.putAll(newBundle.streamClusters)
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         }
 
                         //Post updated to UI
-                        liveData.postValue(ViewState.Success(streamBundle))
+                        liveData.postValue(ViewState.Success(targetBundle(category)))
                     } else {
                         Log.i("End of Bundle")
                     }
@@ -105,15 +111,15 @@ class BaseClusterViewModel @Inject constructor(
         }
     }
 
-    fun observeCluster(streamCluster: StreamCluster) {
+    fun observeCluster(category: StreamContract.Category, streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
                             contract().nextStreamCluster(streamCluster.clusterNextPageUrl)
-                        updateCluster(streamCluster.id, newCluster)
-                        liveData.postValue(ViewState.Success(streamBundle))
+                        updateCluster(category, streamCluster.id, newCluster)
+                        liveData.postValue(ViewState.Success(targetBundle(category)))
                     } else {
                         Log.i("End of cluster")
                         streamCluster.clusterNextPageUrl = String()
@@ -125,10 +131,20 @@ class BaseClusterViewModel @Inject constructor(
         }
     }
 
-    private fun updateCluster(clusterID: Int, newCluster: StreamCluster) {
-        streamBundle.streamClusters[clusterID]?.apply {
+    private fun updateCluster(
+        category: StreamContract.Category,
+        clusterID: Int,
+        newCluster: StreamCluster
+    ) {
+        targetBundle(category).streamClusters[clusterID]?.apply {
             clusterAppList.addAll(newCluster.clusterAppList)
             clusterNextPageUrl = newCluster.clusterNextPageUrl
         }
+    }
+
+    private fun targetBundle(category: StreamContract.Category): StreamBundle {
+        val streamBundle = streamBundleMap[category]
+
+        return streamBundle!!
     }
 }

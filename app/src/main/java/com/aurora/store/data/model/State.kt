@@ -21,20 +21,20 @@ package com.aurora.store.data.model
 
 
 sealed class ViewState {
-    object Loading : ViewState()
-    object Empty : ViewState()
+    data object Loading : ViewState()
+    data object Empty : ViewState()
     data class Error(val error: String?) : ViewState()
     data class Status(val status: String?) : ViewState()
     data class Success<T>(val data: T) : ViewState()
 }
 
 sealed class AuthState {
-    object Available : AuthState()
-    object Unavailable : AuthState()
-    object SignedIn : AuthState()
-    object SignedOut : AuthState()
-    object Valid : AuthState()
-    object Fetching: AuthState()
-    object Verifying: AuthState()
+    data object Available : AuthState()
+    data object Unavailable : AuthState()
+    data object SignedIn : AuthState()
+    data object SignedOut : AuthState()
+    data object Valid : AuthState()
+    data object Fetching: AuthState()
+    data object Verifying: AuthState()
     data class Failed(val status: String) : AuthState()
 }

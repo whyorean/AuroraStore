@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
@@ -33,7 +33,7 @@ import com.aurora.store.data.model.ViewState
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.viewmodel.homestream.BaseClusterViewModel
+import com.aurora.store.viewmodel.homestream.StreamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +43,8 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
     private var _binding: FragmentForYouBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: BaseClusterViewModel by viewModels()
+    private var category: Category = Category.APPLICATION
+    private val viewModel: StreamViewModel by activityViewModels()
 
     private lateinit var streamBundle: StreamBundle
 
@@ -71,27 +72,23 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
         }
 
         when (pageType) {
-            0 -> viewModel.getStreamBundle(Category.APPLICATION, Type.HOME)
-            1 -> viewModel.getStreamBundle(Category.GAME, Type.HOME)
+            0 -> {
+                category = Category.APPLICATION
+                viewModel.getStreamBundle(category, Type.HOME)
+            }
+
+            1 -> {
+                category = Category.GAME
+                viewModel.getStreamBundle(category, Type.HOME)
+            }
         }
 
         binding.recycler.setController(genericCarouselController)
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
-                is ViewState.Empty -> {
-                }
-
                 is ViewState.Loading -> {
                     genericCarouselController.setData(null)
-                }
-
-                is ViewState.Error -> {
-
-                }
-
-                is ViewState.Status -> {
-
                 }
 
                 is ViewState.Success<*> -> {
@@ -99,7 +96,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
                         binding.recycler.addOnScrollListener(
                             object : EndlessRecyclerOnScrollListener() {
                                 override fun onLoadMore(currentPage: Int) {
-                                    viewModel.observe()
+                                    viewModel.observe(category, Type.HOME)
                                 }
                             }
                         )
@@ -108,6 +105,8 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
                     streamBundle = it.data as StreamBundle
                     genericCarouselController.setData(streamBundle)
                 }
+
+                else -> {}
             }
         }
     }
@@ -123,7 +122,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        viewModel.observeCluster(streamCluster)
+        viewModel.observeCluster(category, streamCluster)
     }
 
     override fun onAppClick(app: App) {
