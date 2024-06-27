@@ -26,6 +26,7 @@ import android.content.pm.PackageInstaller
 import android.util.Log
 import androidx.core.content.IntentCompat
 import com.aurora.extensions.runOnUiThread
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -61,6 +62,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 // No post-install steps for shared libraries
                 if (PackageUtil.isSharedLibrary(context, packageName)) return
 
+                AuroraApp.enqueuedInstalls.remove(packageName)
                 AppInstaller.notifyInstallation(context, displayName, packageName)
                 if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                     PathUtil.getAppDownloadDir(context, packageName, versionCode)
@@ -72,6 +74,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
             if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
                 promptUser(intent, context)
             } else {
+                AuroraApp.enqueuedInstalls.remove(packageName)
                 postStatus(status, packageName, extra, context)
                 notifyUser(context, packageName, displayName, status)
             }
