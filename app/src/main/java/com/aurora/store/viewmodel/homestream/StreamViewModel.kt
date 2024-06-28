@@ -56,10 +56,7 @@ class StreamViewModel @Inject constructor(
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
-    private var stash: HomeStash = mutableMapOf(
-        StreamContract.Category.APPLICATION to StreamBundle(),
-        StreamContract.Category.GAME to StreamBundle()
-    )
+    private var stash: HomeStash = mutableMapOf()
 
     fun contract(): StreamContract {
         return if (authProvider.isAnonymous) {
@@ -145,8 +142,9 @@ class StreamViewModel @Inject constructor(
     }
 
     private fun targetBundle(category: StreamContract.Category): StreamBundle {
-        // stash is initialized with empty StreamBundle so this will never return null or throw an exception
-        val streamBundle = stash.getValue(category)
+        val streamBundle = stash.getOrPut(category){
+            StreamBundle()
+        }
 
         return streamBundle
     }

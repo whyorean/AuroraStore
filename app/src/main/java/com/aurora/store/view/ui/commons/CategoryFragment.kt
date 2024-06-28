@@ -24,9 +24,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Category
+import com.aurora.store.CategoryStash
 import com.aurora.store.R
+import com.aurora.store.data.ViewState
+import com.aurora.store.data.ViewState.Empty.getDataAs
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.CategoryViewModel_
+import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.category.CategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,10 +68,37 @@ class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
             1 -> viewModel.getCategoryList(Category.Type.GAME)
         }
 
-        viewModel.liveData.observe(viewLifecycleOwner) { categoryList ->
-            binding.recycler.withModels {
+        val categoryType = when (pageType) {
+            1 -> Category.Type.GAME
+            else -> Category.Type.APPLICATION
+        }
+
+        viewModel.liveData.observe(viewLifecycleOwner) {
+            when (it) {
+                is ViewState.Success<*> -> {
+                    val stash = it.getDataAs<CategoryStash>()
+                    updateController(stash[categoryType])
+                }
+
+                else -> {
+                    updateController(emptyList())
+                }
+            }
+        }
+    }
+
+    fun updateController(categories: List<Category>?) {
+        binding.recycler.withModels {
+            if (categories == null) {
+                for (i in 1..10) {
+                    add(
+                        AppListViewShimmerModel_()
+                            .id(i)
+                    )
+                }
+            } else {
                 setFilterDuplicates(true)
-                categoryList.forEach {
+                categories.forEach {
                     add(
                         CategoryViewModel_()
                             .id(it.title)

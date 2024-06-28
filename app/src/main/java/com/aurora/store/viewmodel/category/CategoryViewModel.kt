@@ -29,13 +29,15 @@ import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.contracts.CategoryContract
 import com.aurora.gplayapi.helpers.web.WebCategoryHelper
+import com.aurora.store.CategoryStash
+import com.aurora.store.data.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
@@ -43,7 +45,6 @@ class CategoryViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider
 ) : ViewModel() {
-
     private val TAG = CategoryViewModel::class.java.simpleName
 
     private val categoryHelper: CategoryHelper = CategoryHelper(authProvider.authData)
@@ -52,22 +53,41 @@ class CategoryViewModel @Inject constructor(
     private val webCategoryHelper: CategoryContract = WebCategoryHelper()
         .using(HttpClient.getPreferredClient(context))
 
-    val liveData: MutableLiveData<List<Category>> = MutableLiveData()
+    private var stash: CategoryStash = mutableMapOf(
+        Category.Type.APPLICATION to emptyList(),
+        Category.Type.GAME to emptyList()
+    )
+
+    val liveData = MutableLiveData<ViewState>()
 
     private fun contract(): CategoryContract {
-        return if(authProvider.isAnonymous){
+        return if (authProvider.isAnonymous) {
             webCategoryHelper
         } else {
             categoryHelper
         }
     }
+
     fun getCategoryList(type: Category.Type) {
         viewModelScope.launch(Dispatchers.IO) {
+            val categories = getCategories(type)
+
+            if (categories.isNotEmpty()) {
+                liveData.postValue(ViewState.Success(stash))
+            }
+
             try {
-                liveData.postValue(contract().getAllCategoriesList(type))
+                stash[type] = contract().getAllCategoriesList(type)
+                liveData.postValue(ViewState.Success(stash))
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed fetching list of categories", exception)
             }
+        }
+    }
+
+    private fun getCategories(type: Category.Type): List<Category> {
+        return stash.getOrPut(type) {
+            mutableListOf()
         }
     }
 }

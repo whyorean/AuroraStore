@@ -52,17 +52,7 @@ class TopChartViewModel @Inject constructor(
     private val webTopChartsHelper: TopChartsContract = WebTopChartsHelper()
         .using(HttpClient.getPreferredClient(context))
 
-    private val dummyChart = mapOf(
-        TopChartsContract.Chart.TOP_GROSSING to StreamCluster(),
-        TopChartsContract.Chart.TOP_SELLING_FREE to StreamCluster(),
-        TopChartsContract.Chart.TOP_SELLING_PAID to StreamCluster(),
-        TopChartsContract.Chart.MOVERS_SHAKERS to StreamCluster(),
-    )
-
-    private var stash: TopChartStash = mapOf(
-        TopChartsContract.Type.APPLICATION to dummyChart,
-        TopChartsContract.Type.GAME to dummyChart
-    )
+    private var stash: TopChartStash = mutableMapOf()
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
@@ -124,8 +114,9 @@ class TopChartViewModel @Inject constructor(
         type: TopChartsContract.Type,
         chart: TopChartsContract.Chart
     ): StreamCluster {
-        // Stash is initialized with empty clusters so this will never return null or throw an exception
-        val cluster = stash.getValue(type).getValue(chart)
+        val cluster = stash
+            .getOrPut(type) { mutableMapOf() }
+            .getOrPut(chart) { StreamCluster() }
         return cluster
     }
 }
