@@ -77,25 +77,26 @@ class StreamViewModel @Inject constructor(
     fun observe(category: StreamContract.Category, type: StreamContract.Type) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
-                if (targetBundle(category).streamClusters.isNotEmpty()) {
+                val bundle = targetBundle(category)
+                if (bundle.streamClusters.isNotEmpty()) {
                     liveData.postValue(ViewState.Success(stash))
                 }
 
                 try {
-                    if (!targetBundle(category).hasCluster() || targetBundle(category).hasNext()) {
+                    if (!bundle.hasCluster() || bundle.hasNext()) {
 
                         //Fetch new stream bundle
-                        val newBundle = if (targetBundle(category).streamClusters.isEmpty()) {
+                        val newBundle = if (bundle.streamClusters.isEmpty()) {
                             contract().fetch(type, category)
                         } else {
                             contract().nextStreamBundle(
                                 category,
-                                targetBundle((category)).streamNextPageUrl
+                                bundle.streamNextPageUrl
                             )
                         }
 
                         //Update old bundle
-                        targetBundle(category).apply {
+                        bundle.apply {
                             streamClusters.putAll(newBundle.streamClusters)
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         }

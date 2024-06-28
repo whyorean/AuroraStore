@@ -21,15 +21,16 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.CategoryCarouselController
@@ -46,16 +47,20 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
         get() = _binding!!
 
     private val args: CategoryBrowseFragmentArgs by navArgs()
-    private val viewModel: SubCategoryClusterViewModel by viewModels()
+    private val viewModel: SubCategoryClusterViewModel by activityViewModels()
 
-    private lateinit var genericCarouselController: GenericCarouselController
-    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
+    private lateinit var category: StreamContract.Category
+    private var streamBundle: StreamBundle? = StreamBundle()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        genericCarouselController = CategoryCarouselController(this)
+
+        val rawCategory = args.browseUrl.split("/").last()
+        category = StreamContract.Category.NONE.apply { value = rawCategory }
+
+        val genericCarouselController = CategoryCarouselController(this)
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -65,39 +70,30 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
 
         // RecyclerView
         binding.recycler.setController(genericCarouselController)
+        binding.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.observe(category)
+            }
+        })
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
-                is ViewState.Empty -> {
-                }
-
                 is ViewState.Loading -> {
-                    updateController(null)
-                }
-
-                is ViewState.Error -> {
-
+                    genericCarouselController.setData(null)
                 }
 
                 is ViewState.Success<*> -> {
-                    updateController(it.data as StreamBundle)
+                    val stash = it.getDataAs<Map<String, StreamBundle>>()
+                    streamBundle = stash[category.value]
+
+                    genericCarouselController.setData(streamBundle)
                 }
 
                 else -> {}
             }
         }
 
-        endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                viewModel.observe()
-            }
-        }
-
-        endlessRecyclerOnScrollListener.disable()
-        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
-
-        viewModel.observeCategory(args.browseUrl)
-        updateController(null)
+        viewModel.observe(category)
     }
 
     override fun onDestroyView() {
@@ -105,25 +101,12 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
         _binding = null
     }
 
-    private fun updateController(streamBundle: StreamBundle?) {
-        if (streamBundle != null) endlessRecyclerOnScrollListener.enable()
-        genericCarouselController.setData(streamBundle)
-    }
-
     override fun onHeaderClicked(streamCluster: StreamCluster) {
-        if (streamCluster.clusterBrowseUrl.isNotEmpty())
-            openStreamBrowseFragment(streamCluster.clusterBrowseUrl)
-        else
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.toast_page_unavailable),
-                Toast.LENGTH_SHORT
-            )
-                .show()
+
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        viewModel.observeCluster(streamCluster)
+        viewModel.observeCluster(category, streamCluster)
     }
 
     override fun onAppClick(app: App) {

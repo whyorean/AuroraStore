@@ -118,8 +118,7 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
-        if (streamCluster.clusterBrowseUrl.isNotEmpty())
-            openStreamBrowseFragment(streamCluster.clusterBrowseUrl, streamCluster.clusterTitle)
+
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

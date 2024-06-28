@@ -31,7 +31,6 @@ import com.aurora.store.data.model.ViewState
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.data.network.HttpClient
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -50,76 +49,64 @@ class SubCategoryClusterViewModel @Inject constructor(
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
-    var streamBundle: StreamBundle = StreamBundle()
 
-    private lateinit var homeUrl: String
-    private lateinit var type: StreamContract.Type
-    private lateinit var category: StreamContract.Category
-
-    init {
-        liveData.postValue(ViewState.Loading)
-    }
+    private var stash: MutableMap<String, StreamBundle> = mutableMapOf()
 
     private fun getCategoryStreamBundle(
+        category: StreamContract.Category,
         nextPageUrl: String
     ): StreamBundle {
-        return if (streamBundle.streamClusters.isEmpty())
-            contract.fetch(type, category)
+        return if (targetBundle(category).streamClusters.isEmpty())
+            contract.fetch(StreamContract.Type.HOME, category)
         else
             contract.nextStreamBundle(category, nextPageUrl)
     }
 
-    fun observeCategory(homeUrl: String) {
-        this.homeUrl = homeUrl
-
-        val rawCategory = homeUrl.split("/").last()
-
-        type = StreamContract.Type.HOME
-        category = StreamContract.Category.NONE.apply {
-            value = rawCategory
-        }
-
-        observe()
-    }
-
-    fun observe() {
+    fun observe(category: StreamContract.Category) {
+        liveData.postValue(ViewState.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
+                val bundle = targetBundle(category)
+
+                if (bundle.streamClusters.isNotEmpty()) {
+                    liveData.postValue(ViewState.Success(stash))
+                }
+
                 try {
-                    if (!streamBundle.hasCluster() || streamBundle.hasNext()) {
+                    if (!bundle.hasCluster() || bundle.hasNext()) {
                         //Fetch new stream bundle
                         val newBundle = getCategoryStreamBundle(
-                            streamBundle.streamNextPageUrl
+                            category,
+                            bundle.streamNextPageUrl
                         )
 
                         //Update old bundle
-                        streamBundle.apply {
+                        bundle.apply {
                             streamClusters.putAll(newBundle.streamClusters)
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         }
 
                         //Post updated to UI
-                        liveData.postValue(ViewState.Success(streamBundle))
+                        liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i("End of Bundle")
                     }
                 } catch (e: Exception) {
-                    e.printStackTrace()
                     liveData.postValue(ViewState.Error(e.message))
                 }
             }
         }
     }
 
-    fun observeCluster(streamCluster: StreamCluster) {
+    fun observeCluster(category: StreamContract.Category, streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
                             contract.nextStreamCluster(streamCluster.clusterNextPageUrl)
-                        updateCluster(newCluster)
-                        liveData.postValue(ViewState.Success(streamBundle))
+                        updateCluster(category, streamCluster.id, newCluster)
+                        liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i("End of cluster")
                         streamCluster.clusterNextPageUrl = String()
@@ -131,10 +118,22 @@ class SubCategoryClusterViewModel @Inject constructor(
         }
     }
 
-    private fun updateCluster(newCluster: StreamCluster) {
-        streamBundle.streamClusters[newCluster.id]?.apply {
+    private fun updateCluster(
+        category: StreamContract.Category,
+        clusterID: Int,
+        newCluster: StreamCluster
+    ) {
+        targetBundle(category).streamClusters[clusterID]?.apply {
             clusterAppList.addAll(newCluster.clusterAppList)
             clusterNextPageUrl = newCluster.clusterNextPageUrl
         }
+    }
+
+    private fun targetBundle(category: StreamContract.Category): StreamBundle {
+        val streamBundle = stash.getOrPut(category.value) {
+            StreamBundle()
+        }
+
+        return streamBundle
     }
 }
