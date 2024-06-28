@@ -21,6 +21,10 @@ package com.aurora.store.data.model
 
 
 sealed class ViewState {
+    inline fun <reified T> ViewState.getDataAs(): T {
+        return (this as? Success<*>)?.data as T
+    }
+
     data object Loading : ViewState()
     data object Empty : ViewState()
     data class Error(val error: String?) : ViewState()
@@ -34,7 +38,7 @@ sealed class AuthState {
     data object SignedIn : AuthState()
     data object SignedOut : AuthState()
     data object Valid : AuthState()
-    data object Fetching: AuthState()
-    data object Verifying: AuthState()
+    data object Fetching : AuthState()
+    data object Verifying : AuthState()
     data class Failed(val status: String) : AuthState()
 }

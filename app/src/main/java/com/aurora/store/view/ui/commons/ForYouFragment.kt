@@ -28,8 +28,10 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract.Category
 import com.aurora.gplayapi.helpers.contracts.StreamContract.Type
+import com.aurora.store.HomeStash
 import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -43,10 +45,10 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
     private var _binding: FragmentForYouBinding? = null
     private val binding get() = _binding!!
 
-    private var category: Category = Category.APPLICATION
     private val viewModel: StreamViewModel by activityViewModels()
 
-    private lateinit var streamBundle: StreamBundle
+    private var category: Category = Category.APPLICATION
+    private var streamBundle: StreamBundle? = StreamBundle()
 
     companion object {
         @JvmStatic
@@ -84,6 +86,13 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
         }
 
         binding.recycler.setController(genericCarouselController)
+        binding.recycler.addOnScrollListener(
+            object : EndlessRecyclerOnScrollListener() {
+                override fun onLoadMore(currentPage: Int) {
+                    viewModel.observe(category, Type.HOME)
+                }
+            }
+        )
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
@@ -92,17 +101,9 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
                 }
 
                 is ViewState.Success<*> -> {
-                    if (!::streamBundle.isInitialized) {
-                        binding.recycler.addOnScrollListener(
-                            object : EndlessRecyclerOnScrollListener() {
-                                override fun onLoadMore(currentPage: Int) {
-                                    viewModel.observe(category, Type.HOME)
-                                }
-                            }
-                        )
-                    }
+                    val stash = it.getDataAs<HomeStash>()
+                    streamBundle = stash[category]
 
-                    streamBundle = it.data as StreamBundle
                     genericCarouselController.setData(streamBundle)
                 }
 

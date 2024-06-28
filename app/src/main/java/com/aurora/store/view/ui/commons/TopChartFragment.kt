@@ -21,12 +21,15 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Chart
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Type
 import com.aurora.store.R
+import com.aurora.store.TopChartStash
+import com.aurora.store.data.ViewState
+import com.aurora.store.data.ViewState.Empty.getDataAs
 import com.aurora.store.databinding.FragmentTopContainerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -41,7 +44,9 @@ class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
     private var _binding: FragmentTopContainerBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: TopChartViewModel by viewModels()
+    private val viewModel: TopChartViewModel by activityViewModels()
+
+    private var streamCluster: StreamCluster? = StreamCluster()
 
     companion object {
         @JvmStatic
@@ -59,42 +64,52 @@ class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTopContainerBinding.bind(view)
 
-        var chartType = 0
-        var chartCategory = 0
+        var type = 0
+        var category = 0
         val bundle = arguments
 
         if (bundle != null) {
-            chartType = bundle.getInt(Constants.TOP_CHART_TYPE, 0)
-            chartCategory = bundle.getInt(Constants.TOP_CHART_CATEGORY, 0)
+            type = bundle.getInt(Constants.TOP_CHART_TYPE, 0)
+            category = bundle.getInt(Constants.TOP_CHART_CATEGORY, 0)
         }
 
-        when (chartType) {
-            0 -> when (chartCategory) {
-                0 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.TOP_SELLING_FREE)
-                1 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.TOP_GROSSING)
-                2 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.MOVERS_SHAKERS)
-                3 -> viewModel.getStreamCluster(Type.APPLICATION, Chart.TOP_SELLING_PAID)
-            }
-
-            1 -> when (chartCategory) {
-                0 -> viewModel.getStreamCluster(Type.GAME, Chart.TOP_SELLING_FREE)
-                1 -> viewModel.getStreamCluster(Type.GAME, Chart.TOP_GROSSING)
-                2 -> viewModel.getStreamCluster(Type.GAME, Chart.MOVERS_SHAKERS)
-                3 -> viewModel.getStreamCluster(Type.GAME, Chart.TOP_SELLING_PAID)
-            }
+        val chartType = when (type) {
+            1 -> Type.GAME
+            else -> Type.APPLICATION
         }
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
+        val chartCategory = when (category) {
+            1 -> Chart.TOP_GROSSING
+            2 -> Chart.MOVERS_SHAKERS
+            3 -> Chart.TOP_SELLING_PAID
+            else -> Chart.TOP_SELLING_FREE
         }
 
         binding.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                viewModel.nextCluster()
+                viewModel.nextCluster(chartType, chartCategory)
             }
         })
 
         updateController(null)
+
+        viewModel.getStreamCluster(chartType, chartCategory)
+        viewModel.liveData.observe(viewLifecycleOwner) {
+            when (it) {
+                is ViewState.Loading, is ViewState.Error -> {
+                    updateController(null)
+                }
+
+                is ViewState.Success<*> -> {
+                    val stash = it.getDataAs<TopChartStash>()
+                    streamCluster = stash[chartType]?.get(chartCategory)
+
+                    updateController(streamCluster)
+                }
+
+                else -> {}
+            }
+        }
     }
 
     override fun onDestroyView() {

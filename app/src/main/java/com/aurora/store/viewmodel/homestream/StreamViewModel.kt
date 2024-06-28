@@ -30,6 +30,7 @@ import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.store.data.model.ViewState
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.store.HomeStash
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
@@ -55,7 +56,7 @@ class StreamViewModel @Inject constructor(
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
-    private var streamBundleMap: MutableMap<StreamContract.Category, StreamBundle> = mutableMapOf(
+    private var stash: HomeStash = mutableMapOf(
         StreamContract.Category.APPLICATION to StreamBundle(),
         StreamContract.Category.GAME to StreamBundle()
     )
@@ -77,7 +78,7 @@ class StreamViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 if (targetBundle(category).streamClusters.isNotEmpty()) {
-                    liveData.postValue(ViewState.Success(targetBundle(category)))
+                    liveData.postValue(ViewState.Success(stash))
                 }
 
                 try {
@@ -100,7 +101,7 @@ class StreamViewModel @Inject constructor(
                         }
 
                         //Post updated to UI
-                        liveData.postValue(ViewState.Success(targetBundle(category)))
+                        liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i("End of Bundle")
                     }
@@ -119,7 +120,7 @@ class StreamViewModel @Inject constructor(
                         val newCluster =
                             contract().nextStreamCluster(streamCluster.clusterNextPageUrl)
                         updateCluster(category, streamCluster.id, newCluster)
-                        liveData.postValue(ViewState.Success(targetBundle(category)))
+                        liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i("End of cluster")
                         streamCluster.clusterNextPageUrl = String()
@@ -143,8 +144,9 @@ class StreamViewModel @Inject constructor(
     }
 
     private fun targetBundle(category: StreamContract.Category): StreamBundle {
-        val streamBundle = streamBundleMap[category]
+        // stash is initialized with empty StreamBundle so this will never return null or throw an exception
+        val streamBundle = stash.getValue(category)
 
-        return streamBundle!!
+        return streamBundle
     }
 }
