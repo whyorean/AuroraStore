@@ -413,4 +413,5 @@
 \n
 \nUpozornění: aplikace Aurora Store nemá žádné schválení, sponzoring ani autorizaci od společnosti Google, Google Play, aplikací stažených prostřednictvím aplikace Aurora Store ani od vývojářů aplikací; aplikace Aurora Store s nimi také nemá žádné spojení, spolupráci ani vazbu.</string>
     <string name="session_login">Přihlaste se prosím do vašeho účtu Google</string>
+    <string name="toast_app_unavailable">Aplikace není dostupná pro vaše zařízení</string>
 </resources>
