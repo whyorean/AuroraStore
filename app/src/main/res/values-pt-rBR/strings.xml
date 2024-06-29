@@ -413,4 +413,5 @@
 \nDiferentemente de uma loja de apps tradicional, a Aurora Store não possui, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos da Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Play e encontre os apps da Google Play.
 \n
 \nPor favor note que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor de app, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
+    <string name="toast_app_unavailable">App não disponível para seu dispositivo</string>
 </resources>

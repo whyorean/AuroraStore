@@ -413,4 +413,5 @@
 \n
 \nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
     <string name="session_login">Lütfen Google Play hesabınızda oturum açın</string>
+    <string name="toast_app_unavailable">Uygulama aygıtınız için kullanılabilir değil</string>
 </resources>
