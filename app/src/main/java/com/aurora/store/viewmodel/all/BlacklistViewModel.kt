@@ -21,18 +21,19 @@ package com.aurora.store.viewmodel.all
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageManager
-import androidx.core.content.pm.PackageInfoCompat
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.isApp
-import com.aurora.store.data.model.Black
+import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
-import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import java.util.Locale
@@ -41,40 +42,36 @@ import javax.inject.Inject
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class BlacklistViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    authProvider: AuthProvider
 ) : ViewModel() {
-
-    private val packageManager: PackageManager = context.packageManager
     private val blacklistProvider: BlacklistProvider = BlacklistProvider.with(context)
+    private val appDetailsHelper = AppDetailsHelper(authProvider.authData)
+        .using(HttpClient.getPreferredClient(context))
 
-    var blackList: MutableList<Black> = mutableListOf()
+    private val _blacklistedApps = MutableStateFlow<List<App>?>(null)
+    val blackListedApps = _blacklistedApps.asStateFlow()
+
     var selected: MutableSet<String> = mutableSetOf()
-
-    val liveData: MutableLiveData<List<Black>> = MutableLiveData()
 
     init {
         selected = blacklistProvider.getBlackList()
-        observe()
+        fetchApps()
     }
 
-    fun observe() {
+    private fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    val packageInfoMap = PackageUtil.getPackageInfoMap(context)
-                    packageInfoMap.values
+                    val packageNames = context.packageManager.getInstalledPackages(0)
                         .filter { it.isApp() }
-                        .forEach {
-                            val black = Black(it.packageName).apply {
-                                displayName = packageManager.getApplicationLabel(it.applicationInfo)
-                                    .toString()
-                                versionCode = PackageInfoCompat.getLongVersionCode(it)
-                                versionName = it.versionName
-                                drawable = packageManager.getApplicationIcon(packageName)
-                            }
-                            blackList.add(black)
-                        }
-                    liveData.postValue(blackList.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
+                        .map { it.packageName }
+
+                    val apps = appDetailsHelper
+                        .getAppByPackageName(packageNames)
+                        .filter { it.displayName.isNotBlank() }
+
+                    _blacklistedApps.emit(apps.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

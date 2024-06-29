@@ -28,8 +28,8 @@ import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.data.model.Black
 import com.aurora.store.databinding.ViewBlackBinding
 
 @ModelView(
@@ -62,15 +62,15 @@ class BlackListView : RelativeLayout {
     }
 
     @ModelProp
-    fun black(black: Black) {
-        B.imgIcon.load(black.drawable) {
+    fun app(app: App) {
+        B.imgIcon.load(app.iconArtwork.url) {
             placeholder(R.drawable.bg_placeholder)
             transformations(RoundedCornersTransformation(25F))
         }
 
-        B.txtLine1.text = black.displayName
-        B.txtLine2.text = black.packageName
-        B.txtLine3.text = ("${black.versionName}.${black.versionCode}")
+        B.txtLine1.text = app.displayName
+        B.txtLine2.text = app.packageName
+        B.txtLine3.text = ("${app.versionName}.${app.versionCode}")
     }
 
     @ModelProp

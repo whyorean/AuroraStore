@@ -97,52 +97,53 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
             true
         }
 
-        viewModel.observe()
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.updates.combine(viewModel.downloadsList) { uList, dList ->
-                uList?.associateWith { a ->
-                    dList.find { it.packageName == a.packageName && it.versionCode == a.versionCode }
-                }
-            }.collectLatest { map ->
-                updateController(map)
-                binding.swipeRefreshLayout.isRefreshing = false
-                viewModel.updateAllEnqueued = map?.values?.all { it?.isRunning == true } ?: false
-
-                if (!map.isNullOrEmpty()) {
-                    binding.updateFab.apply {
-                        visibility = View.VISIBLE
-                        if (viewModel.updateAllEnqueued) {
-                            setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    requireContext(),
-                                    R.drawable.ic_cancel
-                                )
-                            )
-                        } else {
-                            setImageDrawable(
-                                ContextCompat.getDrawable(
-                                    requireContext(),
-                                    R.drawable.ic_installation
-                                )
-                            )
-                        }
-                        setOnClickListener {
-                            if (viewModel.updateAllEnqueued) {
-                                cancelAll()
-                            } else {
-                                map.keys.forEach { updateSingle(it, true) }
-                            }
-                            binding.recycler.requestModelBuild()
-                        }
+            viewModel.updates
+                .combine(viewModel.downloadsList) { uList, dList ->
+                    uList?.associateWith { a ->
+                        dList.find { it.packageName == a.packageName && it.versionCode == a.versionCode }
                     }
-                } else {
-                    binding.updateFab.visibility = View.GONE
+                }.collectLatest { map ->
+                    updateController(map)
+                    binding.swipeRefreshLayout.isRefreshing = false
+                    viewModel.updateAllEnqueued =
+                        map?.values?.all { it?.isRunning == true } ?: false
+
+                    if (!map.isNullOrEmpty()) {
+                        binding.updateFab.apply {
+                            visibility = View.VISIBLE
+                            if (viewModel.updateAllEnqueued) {
+                                setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.ic_cancel
+                                    )
+                                )
+                            } else {
+                                setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.ic_installation
+                                    )
+                                )
+                            }
+                            setOnClickListener {
+                                if (viewModel.updateAllEnqueued) {
+                                    cancelAll()
+                                } else {
+                                    map.keys.forEach { updateSingle(it, true) }
+                                }
+                                binding.recycler.requestModelBuild()
+                            }
+                        }
+                    } else {
+                        binding.updateFab.visibility = View.GONE
+                    }
                 }
-            }
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.observe(true)
+            viewModel.fetchUpdates()
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -158,7 +159,7 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
     private fun onEvent(event: BusEvent) {
         when (event) {
             is BusEvent.InstallEvent, is BusEvent.UninstallEvent -> {
-                viewModel.observe(true)
+                viewModel.fetchUpdates()
             }
 
             else -> {}

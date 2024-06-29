@@ -33,11 +33,10 @@ import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.supervisorScope
 import java.util.Locale
 import javax.inject.Inject
 
@@ -56,34 +55,31 @@ class UpdatesViewModel @Inject constructor(
     private val _updates = MutableStateFlow<List<App>?>(null)
     val updates = _updates.asStateFlow()
 
-    val stash: MutableList<App> = mutableListOf()
-
     val downloadsList get() = downloadWorkerUtil.downloadsList
 
-    fun observe(forceRefresh: Boolean = false) {
+    init {
+        fetchUpdates()
+    }
+
+    fun fetchUpdates() {
         viewModelScope.launch(Dispatchers.IO) {
-            if (stash.isNotEmpty() && !forceRefresh) {
-                _updates.emit(stash)
-            }
+            supervisorScope {
+                try {
+                    val isExtendedUpdateEnabled = Preferences.getBoolean(
+                        context, Preferences.PREFERENCE_UPDATES_EXTENDED
+                    )
 
-            try {
-                val isExtendedUpdateEnabled = Preferences.getBoolean(
-                    context, Preferences.PREFERENCE_UPDATES_EXTENDED
-                )
+                    val updates = AppUtil.getUpdatableApps(
+                        context,
+                        authProvider.authData,
+                        gson,
+                        !isExtendedUpdateEnabled
+                    ).sortedBy { it.displayName.lowercase(Locale.getDefault()) }
 
-                val updates = AppUtil.getUpdatableApps(
-                    context,
-                    authProvider.authData,
-                    gson,
-                    !isExtendedUpdateEnabled
-                ).sortedBy { it.displayName.lowercase(Locale.getDefault()) }
-
-                stash.clear()
-                stash.addAll(updates)
-
-                _updates.emit(updates)
-            } catch (exception: Exception) {
-                Log.d(TAG, "Failed to get updates", exception)
+                    _updates.emit(updates)
+                } catch (exception: Exception) {
+                    Log.d(TAG, "Failed to get updates", exception)
+                }
             }
         }
     }

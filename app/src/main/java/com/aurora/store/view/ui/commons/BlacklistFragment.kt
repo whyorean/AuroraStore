@@ -22,16 +22,18 @@ package com.aurora.store.view.ui.commons
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.data.model.Black
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
@@ -40,7 +42,7 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
     private val binding: ActivityGenericRecyclerBinding
         get() = _binding!!
 
-    private val viewModel: BlacklistViewModel by viewModels()
+    private val viewModel: BlacklistViewModel by activityViewModels()
 
     private lateinit var blacklistProvider: BlacklistProvider
 
@@ -48,12 +50,12 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = ActivityGenericRecyclerBinding.bind(view)
-        blacklistProvider = BlacklistProvider.with(view.context)
+        blacklistProvider = BlacklistProvider.with(requireContext())
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(it.sortedByDescending { app ->
-                blacklistProvider.isBlacklisted(app.packageName)
-            })
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.blackListedApps.collect {
+                updateController(it)
+            }
         }
 
         // Toolbar
@@ -61,8 +63,6 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
         binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
             findNavController().navigateUp()
         }
-
-        updateController(null)
     }
 
     override fun onPause() {
@@ -75,7 +75,7 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
         _binding = null
     }
 
-    private fun updateController(blackList: List<Black>?) {
+    private fun updateController(blackList: List<App>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (blackList == null) {
@@ -86,22 +86,24 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
                     )
                 }
             } else {
-                blackList.forEach {
-                    add(
-                        BlackListViewModel_()
-                            .id(it.packageName.hashCode())
-                            .black(it)
-                            .markChecked(viewModel.selected.contains(it.packageName))
-                            .checked { _, isChecked ->
-                                if (isChecked)
-                                    viewModel.selected.add(it.packageName)
-                                else
-                                    viewModel.selected.remove(it.packageName)
+                blackList
+                    .sortedByDescending { app -> blacklistProvider.isBlacklisted(app.packageName) }
+                    .forEach {
+                        add(
+                            BlackListViewModel_()
+                                .id(it.packageName.hashCode())
+                                .app(it)
+                                .markChecked(viewModel.selected.contains(it.packageName))
+                                .checked { _, isChecked ->
+                                    if (isChecked)
+                                        viewModel.selected.add(it.packageName)
+                                    else
+                                        viewModel.selected.remove(it.packageName)
 
-                                requestModelBuild()
-                            }
-                    )
-                }
+                                    requestModelBuild()
+                                }
+                        )
+                    }
             }
         }
     }

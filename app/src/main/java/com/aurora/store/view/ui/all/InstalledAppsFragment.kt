@@ -22,7 +22,7 @@ package com.aurora.store.view.ui.all
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
@@ -46,7 +46,7 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
     private val binding: FragmentAppsBinding
         get() = _binding!!
 
-    private val viewModel: InstalledViewModel by viewModels()
+    private val viewModel: InstalledViewModel by activityViewModels()
 
     companion object {
         @JvmStatic
@@ -60,7 +60,7 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
             is BusEvent.InstallEvent,
             is BusEvent.UninstallEvent,
             is BusEvent.Blacklisted -> {
-                viewModel.getInstalledApps(requireContext())
+                viewModel.fetchApps()
             }
 
             else -> {
@@ -73,13 +73,11 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAppsBinding.bind(view)
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.installedApps.collect {
+                updateController(it)
+            }
         }
-
-        updateController(null)
-
-        viewModel.getInstalledApps(view.context)
 
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
