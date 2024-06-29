@@ -413,4 +413,5 @@
 \n和传统的应用商店不同， Aurora 商店并不拥有、许可或分发任何应用。所有的应用、应用描述、截图以及 Aurora 商店中的其他内容均直接从 Google Play 访问、下载并/或展示。Aurora 商店的工作方式就像一扇门或一个浏览器，允许你登录你的 Google Play 账户并从 Google Play 寻找应用。
 \n
 \n请注意 Aurora 商店没有来自 Google、Google Play、任何经 Aurora 商店下载的应用或任何应用开发者的任何批准、赞助或授权； Aurora 商店也与它们没有任何从属、合作或联系。</string>
+    <string name="toast_app_unavailable">应用对你的设备不可用</string>
 </resources>
