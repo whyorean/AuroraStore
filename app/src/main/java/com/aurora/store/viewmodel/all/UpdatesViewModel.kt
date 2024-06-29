@@ -32,12 +32,14 @@ import com.aurora.store.util.Preferences
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.Locale
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.util.Locale
+import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
@@ -47,28 +49,38 @@ class UpdatesViewModel @Inject constructor(
     private val downloadWorkerUtil: DownloadWorkerUtil,
     private val authProvider: AuthProvider
 ) : ViewModel() {
-
     private val TAG = UpdatesViewModel::class.java.simpleName
 
     var updateAllEnqueued: Boolean = false
 
-    private val _updates = MutableSharedFlow<List<App>?>()
-    val updates = _updates.asSharedFlow()
+    private val _updates = MutableStateFlow<List<App>?>(null)
+    val updates = _updates.asStateFlow()
+
+    val stash: MutableList<App> = mutableListOf()
 
     val downloadsList get() = downloadWorkerUtil.downloadsList
 
-    fun observe() {
+    fun observe(forceRefresh: Boolean = false) {
         viewModelScope.launch(Dispatchers.IO) {
+            if (stash.isNotEmpty() && !forceRefresh) {
+                _updates.emit(stash)
+            }
+
             try {
                 val isExtendedUpdateEnabled = Preferences.getBoolean(
                     context, Preferences.PREFERENCE_UPDATES_EXTENDED
                 )
+
                 val updates = AppUtil.getUpdatableApps(
                     context,
                     authProvider.authData,
                     gson,
                     !isExtendedUpdateEnabled
                 ).sortedBy { it.displayName.lowercase(Locale.getDefault()) }
+
+                stash.clear()
+                stash.addAll(updates)
+
                 _updates.emit(updates)
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)
