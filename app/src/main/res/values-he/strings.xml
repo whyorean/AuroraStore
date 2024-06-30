@@ -184,7 +184,7 @@
     <string name="exodus_progress">מתבצעת בדיקת עוקבנים…</string>
     <string name="onboarding_permission_esa">גישה לאחסון חיצוני</string>
     <string name="pref_filter_google_title">סינון יישומי Google</string>
-    <string name="pref_install_delete_summary">קובצי ה־APK יימחקו כברירת מחדל</string>
+    <string name="pref_install_delete_summary">חבילות APK שהורדת יימחקו מיד לאחר ההתקנה</string>
     <string name="title_download_playstore">חנות Play</string>
     <string name="pref_insecure_anonymous_title">הפעלה לא מאובטחת בעילום שם</string>
     <string name="pref_ui_title">התאמה אישית</string>
@@ -199,7 +199,7 @@
     <string name="details_gsf_dependent">נדרש GSF</string>
     <string name="download_force_clear_all">לכפות ניקוי של הכול</string>
     <string name="exodus_no_tracker">לא מכילה עוקבנים ידועים</string>
-    <string name="exodus_powered">מופעל באמצעות Exodus</string>
+    <string name="exodus_powered">מופעל על ידי Exodus Privacy</string>
     <string name="installer_status_failure_conflict">קיימת חבילה מתנגשת</string>
     <string name="installer_status_failure_session">לא היה ניתן ליצור הפעלה</string>
     <string name="pref_filter_fdroid_title">סינון יישומי F-Droid</string>
@@ -223,7 +223,7 @@
     <string name="toast_manual_unavailable">קוד הגרסה שביקשת לא זמין.</string>
     <string name="insecure_anonymous_apply">וודא שאתה מתחבר מחדש ומפעיל מחדש את האפליקציה כדי להחיל א ת השינויים.</string>
     <string name="toast_developer_setting_failed">הפעל את הגדרות מפתח דרך הגדרות המכשיר כדי לפתוח אותם.</string>
-    <string name="onboarding_permission_esa_desc">כדי לשמור הורדות (קבצי APK ו-OBB), ייצוא וייבוא של תצורות מכשיר אל ומאחסון חיצוני.</string>
+    <string name="onboarding_permission_esa_desc">כדי לשמור קבצי הרחבת APK (OBBs) עבור אפליקציות ומשחקים גדולים.</string>
     <string name="pref_ui_theme_darkord">דיסקורד</string>
     <string name="onboarding_permission_installer">הרשאות מתקין</string>
     <string name="details_no_app_match">לא נמצא יישום תואם</string>
@@ -264,7 +264,7 @@
     <string name="failed_to_generate_session">לא הצליח ליצור כניסה</string>
     <string name="session_verifying">מאמת כניסה</string>
     <string name="details_ratings_title_hint">כותרת סקירה</string>
-    <string name="app_link_enabled">קישורי אפליקציה מופעלים!</string>
+    <string name="app_link_enabled">קישור לאפליקציה מופעל!</string>
     <string name="pref_network_proxy_url">URL פרוקסי</string>
     <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים ועדכון עצמי, כל שעה.</string>
     <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
@@ -285,7 +285,7 @@
     <string name="update_available">עדכון נמצא</string>
     <string name="search_hint">‬חפש אפליקציות ומשחקים</string>
     <string name="action_import">ייבוא</string>
-    <string name="toast_proxy_invalid">URL פרוקסי לא תקין, בדוק פורמט</string>
+    <string name="toast_proxy_invalid">כתובת אתר פרוקסי לא חוקית, בדוק פורמט!</string>
     <string name="toast_page_unavailable">עמוד הדפדוף לא קיים</string>
     <string name="title_search_suggestion">הצעות חיפוש</string>
     <string name="title_advanced">מתקדם</string>
@@ -304,7 +304,7 @@
     <string name="google_play_store_desc">גוגל פליי, ידוע גם כ-Play Store של גוגל ובתור החנות האידיאלית של אנדרואיד.</string>
     <string name="session_good">וואה! הכל טוב.</string>
     <string name="failed_to_fetch_report">לא הצליח להשיג דיווח פרטיות</string>
-    <string name="toast_abandon_sessions">עונות התקנה ישנות ננטשו</string>
+    <string name="toast_abandon_sessions">הפעלות התקנה ישנות ננטשו</string>
     <string name="action_get_local_apk">שמור באנדל של אפליקציה</string>
     <string name="verifying_new_session">מאמת כניסה חדשה</string>
     <string name="action_enabled">מאופשר</string>
@@ -313,14 +313,14 @@
     <string name="title_app_settings">הגדרות יישום</string>
     <string name="notification_channel_updater_service">שרות הורדת יישום ברקע</string>
     <string name="dialog_desc_native_split">אתה לא יכול להתקין אפליקציות באנדל (מפוצלות) עם מתקין Native Installer, שנה את המתקין ל-Session, Services או Root.</string>
-    <string name="title_apps_sale_provider">משווק - bestappsales.com</string>
+    <string name="title_apps_sale_provider">ספק - bestappsales.com</string>
     <string name="session_init">מכין כמה דברים…</string>
-    <string name="about_xda">עמוד המפתח</string>
+    <string name="about_xda">פורומים של XDA</string>
     <string name="details_no_apps_on_sale">לא נמצאו אפליקציות במבצע</string>
-    <string name="session_enjoy">כנס ותהנה.</string>
+    <string name="session_enjoy">היכנסו ותהנו.</string>
     <string name="server_maintenance">השרת מושבת לצורך תחזוקה</string>
     <string name="pref_abandon_session">‏כפה ניקוי עונות התקנה</string>
-    <string name="toast_manual_available">אחלה, קוד הגרסה המבוקשת קיים, מוריד עכשיו.</string>
+    <string name="toast_manual_available">מזל טוב, קוד הגרסה המבוקש זמין, מוריד עכשיו.</string>
     <string name="session_verifying_google">מאמת כניסת גוגל</string>
     <string name="rate_limited">אופס, החשבון הזה בעל דירוג מוגבל!</string>
     <string name="pref_updates_check_frequency">תכיפות עדכונים אוטומטיים</string>
@@ -345,9 +345,9 @@
     <string name="pref_downloader_wifi_title">הורד רק דרך WiFi</string>
     <string name="app_language">שפת האפליקציה</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="purchase_session_expired">פג תוקף כניסה, הכנס מחדש כדי לקבל כניסה חדשה.</string>
+    <string name="purchase_session_expired">פג תוקף ההפעלה, התחבר מחדש כדי לקבל הפעלה חדשה.</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> עדכון נמצא</string>
-    <string name="pref_updates_incompatible">עדכונים לא נתמכים</string>
+    <string name="pref_updates_incompatible">עדכונים לא תואמים</string>
     <string name="pref_updates_incompatible_desc">הצג עדכונים ליישומים לא נתמכים או מושבתים שעלולים להיכשל בהתקנה</string>
     <string name="pref_updates_auto_off">אל תעדכן-אוטומטית יישומים</string>
     <string name="pref_updates_auto_notify">בדוק ותודיע על עדכונים זמינים</string>
@@ -357,14 +357,46 @@
     <string name="failed_apk_export">נכשל בייצוא קבצי Apk</string>
     <string name="onboarding_permission_doze">הורדות ברקע</string>
     <string name="pref_updates_auto">עדכון-אוטומטי ליישומים</string>
-    <string name="pref_updates_auto_desc">הגדר התנהגות עדכון-אוטומטי</string>
+    <string name="pref_updates_auto_desc">הגדר התנהגות של עדכונים אוטומטיים</string>
     <string name="action_manage">נהל</string>
     <string name="action_home_screen">הוסף למסך הבית</string>
     <string name="download_clear_finished">נקה הורדות שהסתיימו</string>
     <string name="onboarding_permission_doze_desc">אפשר לחנות Aurora להוריד ולעדכן יישומים ברקע</string>
     <string name="device_doze_description">בבקשה, השבת אופטימיזציית סוללה כדי לאפשר פעולות ברקע.</string>
-    <string name="device_doze_extra">אופציונלית תוכל לבחור להשאיר את אופטימיזציית הסוללה מופעלת, אבל אז לא תוכל להרוויח את האפשרות להורדות ברקע ועדכונים אוטומטיים, אז הבחירה שלך.</string>
+    <string name="device_doze_extra">לחלופין, אתה יכול לבחור להשאיר את האופטימיזציות מופעלות, אבל אז לא תוכל להפיק תועלת מהורדות ברקע ועדכונים אוטומטיים, אז הבחירה היא שלך.</string>
     <string name="pref_vending_version_title">גרסת גוגל פליי</string>
     <string name="pref_vending_version_device">ברירת מחדל (מתוך תצורת המכשיר)</string>
     <string name="action_request_analysis">בקש ניתוח חדש</string>
+    <string name="session_login">אנא היכנס לחשבון Google Play שלך</string>
+    <string name="session_installer_desc">מומלץ, מובנה ותומך בכל גרסאות האנדרואיד</string>
+    <string name="root_installer_desc">דורש הרשאות שורש/משתמש-על, תומך בכל גרסאות האנדרואיד.</string>
+    <string name="services_installer_subtitle">מתקין להתקנות רקע</string>
+    <string name="source_code_title">קוד מקור</string>
+    <string name="about_aurora_store_title">על חנות אורורה</string>
+    <string name="about_aurora_store_subtitle">למידע נוסף על חנות אורורה</string>
+    <string name="failed_app_link">לא נתמך, אנא נסה לשייך קישורים באופן ידני</string>
+    <string name="source_code_subtitle">גלה מה יש בפנים</string>
+    <string name="privacy_policy_title">מדיניות הפרטיות</string>
+    <string name="disclaimer_subtitle">אחריות ואחריות</string>
+    <string name="privacy_policy_subtitle">למד כיצד חנות אורורה משתמש בנתונים שלך</string>
+    <string name="toast_app_unavailable">האפליקציה לא זמינה עבור המכשיר שלך</string>
+    <string name="root_installer_subtitle">מתקין מבוסס מעטפת המשתמש בהרשאות שורש</string>
+    <string name="session_installer_subtitle">מתקין מבוסס הפעלה עבור חבילות APK מצורפות/מפוצלות</string>
+    <string name="manual_download_hint">הזן את קוד הגרסה שברצונך להוריד</string>
+    <string name="faqs_subtitle">יש שאלות? גלה את התשובות</string>
+    <string name="about_wiki_title">ויקי</string>
+    <string name="about_wiki_summary">מצא תשובות לשאלות נפוצות (F.A.Q.), שלבי פתרון בעיות ועוד</string>
+    <string name="native_installer_subtitle">מתקין מבוסס כוונות, זמין בכל המכשירים</string>
+    <string name="am_installer_desc">דורש מנהל אפליקציות, צריך מצב adb/root כדי להתקין כאשר אופטימיזציית miui פועלת</string>
+    <string name="shizuku_installer_subtitle">שימוש בממשקי API של מערכת ישירות עם הרשאות adb/root</string>
+    <string name="shizuku_installer_desc">דורש Shizuku או Sui, צריך להיות מוגדר ולהעניק אישור</string>
+    <string name="native_installer_desc">המתאים ביותר למכשירים הפועלים מתחת ל-Android 4.4</string>
+    <string name="services_installer_desc">דורש התקנה של שירותי אורורה כאפליקציית מערכת מיוחסת</string>
+    <string name="am_installer_subtitle">מנהל חבילות קוד פתוח מלא</string>
+    <string name="title_more">יותר</string>
+    <string name="about_aurora_store_summary">"חנות אורורה מאפשר לך לחפש ולהוריד אפליקציות מחנות Google Play הרשמית.  אתה יכול לבדוק תיאורי אפליקציה, צילומי מסך, עדכונים, הערות של משתמשים אחרים, ולהוריד את ה-APK ישירות מ-Google Play למכשיר שלך.  כדי להשתמש ב-חנות אורורה, עליך להיות בעל חשבון Google Play ולהיכנס לחשבון Google Play שלך כאשר אתה פותח ומגדיר את חנות אורורה לראשונה.
+\n
+\n בניגוד לחנות אפליקציות מסורתית, חנות אורורה אינה מחזיקה, מעניקה רישיון או מפיצה אפליקציות כלשהן.  כל האפליקציות, תיאורי האפליקציות, צילומי המסך ותוכן אחר ב-חנות אורורה נגישים, מורידים ו/או מוצגים ישירות מ-Google Play.  חנות אורורה פועלת בדיוק כמו דלת או דפדפן, ומאפשרת לך להיכנס לחשבון Google Play שלך ולמצוא את האפליקציות מ- Google Play.
+\n
+\n לידיעתך, אין ל-חנות אורורה כל אישור, חסות או הרשאה מ-Google, Google Play, אפליקציות שהורדה דרך חנות אורורה או מפתחי אפליקציות כלשהם;  גם ל-חנות אורורה אין שום זיקה, שיתוף פעולה או קשר איתם."</string>
 </resources>
