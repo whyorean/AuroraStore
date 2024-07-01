@@ -408,4 +408,5 @@
     <string name="session_login">Zaloguj się na swoje konto Google Play</string>
     <string name="about_aurora_store_title">O aplikacji Aurora Store</string>
     <string name="about_aurora_store_subtitle">Więcej informacji o Aurora Store</string>
+    <string name="toast_app_unavailable">Aplikacja nie jest dostępna dla Twojego urządzenia</string>
 </resources>

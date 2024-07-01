@@ -413,4 +413,5 @@
 \n
 \nTenga en cuenta que Aurora Store no cuenta con ninguna aprobación, patrocinio o autorización de Google, Google Play, ninguna aplicación descargada a través de Aurora Store ni ningún desarrollador de aplicaciones; Aurora Store tampoco tiene ninguna afiliación, cooperación o conexión con ellos.</string>
     <string name="session_login">Por favor, inicia sesión con tu cuenta de Google Play</string>
+    <string name="toast_app_unavailable">Aplicación no disponible para tu dispositivo</string>
 </resources>

@@ -449,4 +449,5 @@
 \n
 \nИмајте на уму да Aurora Store нема одобрење, спонзорство или овлашћење од Google-а, Google Play-а, било које апликације преузете преко Aurora Store-а или било ког програмера апликација; нити Aurora Store има некакву повезаност, сарадњу или везу са њима.</string>
     <string name="about_aurora_store_title">O Aurora Store</string>
+    <string name="toast_app_unavailable">Апликација није доступна за ваш уређај</string>
 </resources>
