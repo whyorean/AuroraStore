@@ -134,14 +134,7 @@ class MoreDialogFragment : DialogFragment() {
 
     @Composable
     fun AppBar(tintColor: Color) {
-        Box(contentAlignment = Alignment.CenterStart) {
-            IconButton(onClick = { findNavController().navigateUp() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_cancel),
-                    contentDescription = stringResource(id = R.string.action_cancel),
-                    tint = tintColor
-                )
-            }
+        Box(contentAlignment = Alignment.CenterEnd) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = R.string.app_name),
@@ -149,6 +142,13 @@ class MoreDialogFragment : DialogFragment() {
                 color = tintColor,
                 textAlign = TextAlign.Center
             )
+            IconButton(onClick = { findNavController().navigateUp() }) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_cancel),
+                    contentDescription = stringResource(id = R.string.action_cancel),
+                    tint = tintColor
+                )
+            }
         }
     }
 
