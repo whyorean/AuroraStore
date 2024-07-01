@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~  Aurora Store is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Aurora Store is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/padding_normal"
+    android:paddingEnd="@dimen/padding_small">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_icon"
+        android:layout_width="@dimen/icon_size_medium"
+        android:layout_height="@dimen/icon_size_medium"
+        android:layout_centerVertical="true" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line1"
+        style="@style/AuroraTextStyle.Line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_toStartOf="@id/btn_favourite"
+        android:layout_toEndOf="@id/img_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line2"
+        style="@style/AuroraTextStyle.Line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_line1"
+        android:layout_alignStart="@id/txt_line1"
+        android:layout_alignEnd="@id/txt_line1"
+        android:layout_marginTop="@dimen/margin_xxsmall" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line3"
+        style="@style/AuroraTextStyle.Line3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_line2"
+        android:layout_alignStart="@id/txt_line1"
+        android:layout_alignEnd="@id/txt_line1"
+        android:layout_marginTop="@dimen/margin_xxsmall" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_favourite"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/action_favourite"
+        android:padding="@dimen/padding_large"
+        app:icon="@drawable/ic_favorite_checked" />
+</RelativeLayout>

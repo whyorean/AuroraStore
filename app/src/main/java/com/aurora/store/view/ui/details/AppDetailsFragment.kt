@@ -368,6 +368,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                     findNavController().navigateUp()
                 }
             }
+
             inflateMenu(R.menu.menu_details)
 
             setOnMenuItemClickListener {
@@ -381,6 +382,10 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
                     R.id.action_share -> {
                         view.context.share(app)
+                    }
+
+                    R.id.action_favourite -> {
+                        viewModel.toggleFavourite(app)
                     }
 
                     R.id.action_uninstall -> {
@@ -426,6 +431,20 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
                 menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
                 uninstallActionEnabled = app.isInstalled
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.favourite.collect {
+                if (it) {
+                    binding.layoutDetailsToolbar.toolbar.menu
+                        ?.findItem(R.id.action_favourite)
+                        ?.setIcon(R.drawable.ic_favorite_checked)
+                } else {
+                    binding.layoutDetailsToolbar.toolbar.menu
+                        ?.findItem(R.id.action_favourite)
+                        ?.setIcon(R.drawable.ic_favorite_unchecked)
+                }
             }
         }
     }

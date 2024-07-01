@@ -13,12 +13,16 @@ import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.room.favourites.Favourite
+import com.aurora.store.data.room.favourites.FavouriteDao
 import com.aurora.store.util.DownloadWorkerUtil
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.reflect.Modifier
@@ -27,7 +31,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
     private val downloadWorkerUtil: DownloadWorkerUtil,
-    private val authProvider: AuthProvider
+    private val authProvider: AuthProvider,
+    private val favouriteDao: FavouriteDao
 ) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
@@ -50,11 +55,16 @@ class AppDetailsViewModel @Inject constructor(
     private val _testingProgramStatus = MutableSharedFlow<TestingProgramStatus?>()
     val testingProgramStatus = _testingProgramStatus.asSharedFlow()
 
+    private val _favourite = MutableStateFlow<Boolean>(false)
+    val favourite = _favourite.asStateFlow()
+
     val downloadsList get() = downloadWorkerUtil.downloadsList
 
     fun fetchAppDetails(context: Context, packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                isFavourite(packageName)
+
                 _app.emit(
                     AppDetailsHelper(authProvider.authData)
                         .using(HttpClient.getPreferredClient(context))
@@ -70,9 +80,11 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchAppReviews(context: Context, packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _reviews.emit(ReviewsHelper(authProvider.authData)
-                    .using(HttpClient.getPreferredClient(context))
-                    .getReviewSummary(packageName))
+                _reviews.emit(
+                    ReviewsHelper(authProvider.authData)
+                        .using(HttpClient.getPreferredClient(context))
+                        .getReviewSummary(packageName)
+                )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app reviews", exception)
                 _reviews.emit(emptyList())
@@ -83,15 +95,17 @@ class AppDetailsViewModel @Inject constructor(
     fun postAppReview(context: Context, packageName: String, review: Review, isBeta: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _userReview.emit(ReviewsHelper(authProvider.authData)
-                    .using(HttpClient.getPreferredClient(context))
-                    .addOrEditReview(
-                        packageName,
-                        review.title,
-                        review.comment,
-                        review.rating,
-                        isBeta
-                    )!!)
+                _userReview.emit(
+                    ReviewsHelper(authProvider.authData)
+                        .using(HttpClient.getPreferredClient(context))
+                        .addOrEditReview(
+                            packageName,
+                            review.title,
+                            review.comment,
+                            review.rating,
+                            isBeta
+                        )!!
+                )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to post review", exception)
                 _userReview.emit(Review())
@@ -100,7 +114,7 @@ class AppDetailsViewModel @Inject constructor(
     }
 
 
-    fun fetchAppReport(context: Context,packageName: String) {
+    fun fetchAppReport(context: Context, packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val headers: MutableMap<String, String> = mutableMapOf()
@@ -143,10 +157,36 @@ class AppDetailsViewModel @Inject constructor(
         viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
     }
 
+    private fun isFavourite(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _favourite.value = favouriteDao.isFavourite(packageName)
+        }
+    }
+
+    fun toggleFavourite(app: App) {
+        viewModelScope.launch(Dispatchers.IO) {
+            if (favourite.value) {
+                favouriteDao.delete(app.packageName)
+            } else {
+                favouriteDao.insert(
+                    Favourite(
+                        packageName = app.packageName,
+                        displayName = app.displayName,
+                        iconURL = app.iconArtwork.url,
+                        mode = Favourite.Mode.MANUAL,
+                        added = System.currentTimeMillis(),
+                    )
+                )
+            }
+
+            _favourite.value = !favourite.value
+        }
+    }
+
     private fun parseResponse(response: String, packageName: String): List<Report> {
         try {
             val gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
-                    .create()
+                .create()
 
             val jsonObject = JSONObject(response)
             val exodusObject = jsonObject.getJSONObject(packageName)

@@ -19,6 +19,11 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_favourite"
+        android:icon="@drawable/ic_favorite_unchecked"
+        android:title="@string/action_favourite"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_share"

@@ -281,6 +281,11 @@ class MoreDialogFragment : DialogFragment() {
                 destinationID = R.id.blacklistFragment
             ),
             Option(
+                title = R.string.title_favourites_manager,
+                icon = R.drawable.ic_favorite_unchecked,
+                destinationID = R.id.favouriteFragment
+            ),
+            Option(
                 title = R.string.title_spoof_manager,
                 icon = R.drawable.ic_spoof,
                 destinationID = R.id.spoofFragment

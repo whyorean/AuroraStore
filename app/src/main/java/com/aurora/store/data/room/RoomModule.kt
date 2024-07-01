@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
+import com.aurora.store.data.room.favourites.FavouriteDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,5 +33,10 @@ object RoomModule {
     @Provides
     fun providesDownloadDao(auroraDatabase: AuroraDatabase): DownloadDao {
         return auroraDatabase.downloadDao()
+    }
+
+    @Provides
+    fun providesFavouriteDao(auroraDatabase: AuroraDatabase): FavouriteDao {
+        return auroraDatabase.favouriteDao()
     }
 }

@@ -58,6 +58,7 @@
     <string name="action_disable">"Disable"</string>
     <string name="action_export">"Export"</string>
     <string name="action_import">"Import"</string>
+    <string name="action_favourite">"Favourite"</string>
     <string name="action_filter">"Filters"</string>
     <string name="action_filter_all">"All"</string>
     <string name="action_filter_apply">"Apply"</string>
@@ -119,6 +120,7 @@
     <string name="details_more_about_app">"More about app"</string>
     <string name="details_no_ads">"No ads"</string>
     <string name="details_no_app_match">"No app match found"</string>
+    <string name="details_no_favourites">"No favourite apps found"</string>
     <string name="details_no_dependencies">"No Dependencies"</string>
     <string name="details_no_permission">"No permissions"</string>
     <string name="details_no_updates">"No updates available"</string>
@@ -280,6 +282,7 @@
     <string name="title_apps_sale">"Apps on sale"</string>
     <string name="title_apps_sale_provider">"Provider - bestappsales.com"</string>
     <string name="title_blacklist_manager">"Blacklist manager"</string>
+    <string name="title_favourites_manager">"Favourite Apps"</string>
     <string name="title_device">"Device"</string>
     <string name="title_download_manager">"Downloads"</string>
     <string name="title_download_playstore">"Play Store"</string>

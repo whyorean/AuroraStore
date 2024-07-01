@@ -89,6 +89,11 @@
         android:label="@string/title_spoof_manager"
         tools:layout="@layout/activity_generic_pager" />
     <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.aurora.store.view.ui.commons.FavouriteFragment"
+        android:label="@string/title_favourites_manager"
+        tools:layout="@layout/activity_generic_recycler" />
+    <fragment
         android:id="@+id/blacklistFragment"
         android:name="com.aurora.store.view.ui.commons.BlacklistFragment"
         android:label="@string/title_blacklist_manager"
