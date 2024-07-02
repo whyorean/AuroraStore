@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:menu="@menu/menu_import_export"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:title="@string/title_favourites_manager" />
 

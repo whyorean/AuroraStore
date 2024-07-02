@@ -19,11 +19,14 @@
 
 package com.aurora.store.view.ui.commons
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.room.favourites.Favourite
 import com.aurora.store.databinding.FragmentFavouriteBinding
@@ -33,6 +36,7 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.FavouriteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
@@ -42,6 +46,16 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
         get() = _binding!!
 
     private val viewModel: FavouriteViewModel by viewModels()
+
+    private val mimeType = "application/json"
+    private val startForDocumentImport =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+            if (it != null) importDeviceConfig(it) else toast(R.string.toast_fav_import_failed)
+        }
+    private val startForDocumentExport =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(mimeType)) {
+            if (it != null) exportDeviceConfig(it) else toast(R.string.toast_fav_export_failed)
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,8 +69,21 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
         }
 
         // Toolbar
-        binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+        binding.toolbar.apply {
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_import -> startForDocumentImport.launch(arrayOf(mimeType))
+                    R.id.action_export -> {
+                        startForDocumentExport.launch(
+                            "aurora_store_favourites_${Calendar.getInstance().time.time}.json"
+                        )
+                    }
+
+                    else -> {}
+                }
+                true
+            }
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
     }
 
@@ -75,7 +102,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
                             .id(i)
                     )
                 }
-            } else if(favourites.isEmpty()) {
+            } else if (favourites.isEmpty()) {
                 add(
                     NoAppViewModel_()
                         .id("no_app")
@@ -94,5 +121,16 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
                 }
             }
         }
+    }
+
+    private fun importDeviceConfig(uri: Uri) {
+        viewModel.importFavourites(requireContext(), uri)
+        binding.recycler.requestModelBuild()
+        toast(R.string.toast_fav_import_success)
+    }
+
+    private fun exportDeviceConfig(uri: Uri) {
+        viewModel.exportFavourites(requireContext(), uri)
+        toast(R.string.toast_fav_export_success)
     }
 }

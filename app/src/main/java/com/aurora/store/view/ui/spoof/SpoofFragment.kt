@@ -72,7 +72,7 @@ class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
             elevation = 0f
             title = getString(R.string.title_spoof_manager)
             navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
-            inflateMenu(R.menu.menu_spoof)
+            inflateMenu(R.menu.menu_import_export)
             setNavigationOnClickListener { findNavController().navigateUp() }
             setOnMenuItemClickListener {
                 when (it.itemId) {

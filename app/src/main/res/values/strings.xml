@@ -456,4 +456,10 @@
     <string name="remove_dispenser_summary">Do you wish to remove the dispenser \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Add</string>
     <string name="remove">Remove</string>
+
+    <!-- FavouriteFragment-->
+    <string name="toast_fav_import_failed">Failed to import favourites!</string>
+    <string name="toast_fav_export_failed">Failed to export favourites!</string>
+    <string name="toast_fav_import_success">Favourites imported!</string>
+    <string name="toast_fav_export_success">Favourites exported!</string>
 </resources>
