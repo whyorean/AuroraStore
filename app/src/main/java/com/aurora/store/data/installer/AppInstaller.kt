@@ -63,6 +63,19 @@ class AppInstaller @Inject constructor(
         const val EXTRA_VERSION_CODE = "com.aurora.store.data.installer.AppInstaller.EXTRA_VERSION_CODE"
         const val EXTRA_DISPLAY_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_DISPLAY_NAME"
 
+        enum class Installer {
+            SESSION,
+            NATIVE,
+            ROOT,
+            SERVICE,
+            AM,
+            SHIZUKU
+        }
+
+        fun getCurrentInstaller(context: Context): Installer {
+            return Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
+        }
+
         fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> {
             val installers = mutableListOf(
                 SessionInstaller.getInstallerInfo(context),
@@ -162,20 +175,19 @@ class AppInstaller @Inject constructor(
         get() = sessionInstaller
 
     fun getPreferredInstaller(): IInstaller {
-        return when (Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)) {
-            0 -> sessionInstaller
-            1 -> nativeInstaller
-            2 -> if (hasRootAccess()) rootInstaller else defaultInstaller
-            3 -> if (hasAuroraService(context)) serviceInstaller else defaultInstaller
-            4 -> if (hasAppManager(context)) amInstaller else defaultInstaller
-            5 -> {
+        return when (getCurrentInstaller(context)) {
+            Installer.SESSION -> sessionInstaller
+            Installer.NATIVE -> nativeInstaller
+            Installer.ROOT -> if (hasRootAccess()) rootInstaller else defaultInstaller
+            Installer.SERVICE -> if (hasAuroraService(context)) serviceInstaller else defaultInstaller
+            Installer.AM -> if (hasAppManager(context)) amInstaller else defaultInstaller
+            Installer.SHIZUKU -> {
                 if (isOAndAbove() && hasShizukuOrSui(context) && hasShizukuPerm()) {
                     shizukuInstaller
                 } else {
                     defaultInstaller
                 }
             }
-            else -> defaultInstaller
         }
     }
 }

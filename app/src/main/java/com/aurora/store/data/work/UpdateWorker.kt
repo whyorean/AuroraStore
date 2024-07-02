@@ -14,8 +14,13 @@ import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isMAndAbove
+import com.aurora.extensions.isOAndAbove
+import com.aurora.extensions.isSAndAbove
+import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.installer.AppInstaller.Companion.Installer
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.Preferences
@@ -120,8 +125,24 @@ class UpdateWorker @AssistedInject constructor(
                         )
                     } else {
                         if (appContext.isIgnoringBatteryOptimizations()) {
-                            Log.i(TAG, "Found updates, updating!")
-                            updatesList.forEach { downloadWorkerUtil.enqueueApp(it) }
+                            // Trigger download for apps if they can be auto-updated (if any)
+                            updatesList.filter { canAutoUpdate(it.packageName) }.let { list ->
+                                if (list.isEmpty()) return@let
+
+                                Log.i(TAG, "Found auto-update enabled apps, updating!")
+                                list.forEach { downloadWorkerUtil.enqueueApp(it) }
+                            }
+
+                            // Notify about remaining apps (if any)
+                            updatesList.filterNot { canAutoUpdate(it.packageName) }.let {  list ->
+                                if (list.isEmpty()) return@let
+
+                                Log.i(TAG, "Found apps that cannot be auto-updated, notifying!")
+                                notifyManager.notify(
+                                    notificationID,
+                                    NotificationUtil.getUpdateNotification(appContext, list)
+                                )
+                            }
                         } else {
                             // Fallback to notification if battery optimizations are enabled
                             Log.i(TAG, "Found updates, but battery optimizations are enabled!")
@@ -142,5 +163,17 @@ class UpdateWorker @AssistedInject constructor(
             }
         }
         return Result.success()
+    }
+
+    private fun canAutoUpdate(packageName: String): Boolean {
+        return when (AppInstaller.getCurrentInstaller(appContext)) {
+            Installer.SESSION -> isSAndAbove() && CertUtil.isAuroraStoreApp(appContext, packageName)
+            Installer.NATIVE -> false
+            Installer.ROOT -> AppInstaller.hasRootAccess()
+            Installer.SERVICE -> AppInstaller.hasAuroraService(appContext)
+            Installer.AM -> false // We cannot check if AppManager has ability to auto-update
+            Installer.SHIZUKU -> isOAndAbove() && AppInstaller.hasShizukuOrSui(appContext) &&
+                    AppInstaller.hasShizukuPerm()
+        }
     }
 }

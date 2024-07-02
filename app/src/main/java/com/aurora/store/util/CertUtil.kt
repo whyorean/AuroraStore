@@ -24,6 +24,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.util.Base64
 import android.util.Log
+import com.aurora.Constants
 import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isPAndAbove
@@ -34,6 +35,10 @@ import java.security.cert.X509Certificate
 object CertUtil {
 
     private val TAG = "CertUtil"
+
+    fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
+        return context.packageManager.getInstallerPackageNameCompat(packageName) == context.packageName
+    }
 
     fun isFDroidApp(context: Context, packageName: String): Boolean {
         return isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
