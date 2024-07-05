@@ -400,4 +400,11 @@
     <string name="remove">Loại bỏ</string>
     <string name="no_dispensers_available">Không có sẵn bộ phân phối</string>
     <string name="add">Thêm</string>
+    <string name="remove_dispenser_summary">Bạn có muốn loại bỏ bộ phân phối \"<xliff:g id="url">%1$s</xliff:g>\" không?</string>
+    <string name="session_login">Vui lòng đăng nhập vào tài khoản Google Play của bạn</string>
+    <string name="about_aurora_store_subtitle">Tìm hiểu thêm về Cửa hàng Aurora</string>
+    <string name="toast_app_unavailable">Ứng dụng không có sẵn cho thiết bị của bạn</string>
+    <string name="about_aurora_store_title">Giới thiệu về cửa hàng Aurora</string>
+    <string name="add_dispenser_summary">Thêm bộ phân phối mã thông báo vào Aurora Store. Bộ phân phối mã thông báo cung cấp thông tin xác thực tài khoản cho Aurora Store để đăng nhập ẩn danh.</string>
+    <string name="add_dispenser_hint">URL bộ phân phối</string>
 </resources>
