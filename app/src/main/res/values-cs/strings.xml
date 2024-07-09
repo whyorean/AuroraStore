@@ -414,4 +414,11 @@
 \nUpozornění: aplikace Aurora Store nemá žádné schválení, sponzoring ani autorizaci od společnosti Google, Google Play, aplikací stažených prostřednictvím aplikace Aurora Store ani od vývojářů aplikací; aplikace Aurora Store s nimi také nemá žádné spojení, spolupráci ani vazbu.</string>
     <string name="session_login">Přihlaste se prosím do vašeho účtu Google</string>
     <string name="toast_app_unavailable">Aplikace není dostupná pro vaše zařízení</string>
+    <string name="details_no_favourites">Nenalezeny žádné oblíbené aplikace</string>
+    <string name="title_favourites_manager">Oblíbené aplikace</string>
+    <string name="toast_fav_export_success">Oblíbené exportovány!</string>
+    <string name="action_favourite">Oblíbené</string>
+    <string name="toast_fav_import_failed">Nepodařilo se importovat oblíbené!</string>
+    <string name="toast_fav_export_failed">Nepodařilo se exportovat oblíbené!</string>
+    <string name="toast_fav_import_success">Oblíbené importovány!</string>
 </resources>
