@@ -26,8 +26,8 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.CategoryStash
 import com.aurora.store.R
-import com.aurora.store.data.ViewState
-import com.aurora.store.data.ViewState.Empty.getDataAs
+import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.model.ViewState.Empty.getDataAs
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.CategoryViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_

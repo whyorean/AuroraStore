@@ -29,7 +29,7 @@ import com.aurora.gplayapi.helpers.TopChartsHelper
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
 import com.aurora.store.TopChartStash
-import com.aurora.store.data.ViewState
+import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel

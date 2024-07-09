@@ -28,8 +28,8 @@ import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Chart
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Type
 import com.aurora.store.R
 import com.aurora.store.TopChartStash
-import com.aurora.store.data.ViewState
-import com.aurora.store.data.ViewState.Empty.getDataAs
+import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.model.ViewState.Empty.getDataAs
 import com.aurora.store.databinding.FragmentTopContainerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_

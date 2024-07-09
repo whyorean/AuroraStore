@@ -31,7 +31,7 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract.Type
 import com.aurora.store.HomeStash
 import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.ViewState.Loading.getDataAs
+import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
