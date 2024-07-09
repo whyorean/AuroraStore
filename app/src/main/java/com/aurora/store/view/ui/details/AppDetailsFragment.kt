@@ -57,8 +57,8 @@ import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
-import com.aurora.store.State
-import com.aurora.store.data.ViewState
+import com.aurora.store.data.model.State
+import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller

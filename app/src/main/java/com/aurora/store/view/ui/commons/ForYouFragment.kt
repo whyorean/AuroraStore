@@ -29,7 +29,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.StreamHelper.Category
 import com.aurora.gplayapi.helpers.StreamHelper.Type
 import com.aurora.store.R
-import com.aurora.store.data.ViewState
+import com.aurora.store.data.model.ViewState
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController

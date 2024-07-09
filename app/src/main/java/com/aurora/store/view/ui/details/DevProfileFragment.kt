@@ -29,7 +29,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.store.R
-import com.aurora.store.data.ViewState
+import com.aurora.store.data.model.ViewState
 import com.aurora.store.databinding.FragmentDevProfileBinding
 import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController

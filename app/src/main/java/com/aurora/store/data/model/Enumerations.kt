@@ -17,24 +17,17 @@
  *
  */
 
-package com.aurora.store.data
+package com.aurora.store.data.model
 
-
-sealed class ViewState {
-    object Loading : ViewState()
-    object Empty : ViewState()
-    data class Error(val error: String?) : ViewState()
-    data class Status(val status: String?) : ViewState()
-    data class Success<T>(val data: T) : ViewState()
+enum class AccountType {
+    ANONYMOUS,
+    GOOGLE
 }
 
-sealed class AuthState {
-    object Available : AuthState()
-    object Unavailable : AuthState()
-    object SignedIn : AuthState()
-    object SignedOut : AuthState()
-    object Valid : AuthState()
-    object Fetching: AuthState()
-    object Verifying: AuthState()
-    data class Failed(val status: String) : AuthState()
+enum class State {
+    IDLE,
+    QUEUED,
+    PROGRESS,
+    COMPLETE,
+    CANCELED
 }

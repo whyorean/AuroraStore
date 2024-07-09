@@ -27,7 +27,7 @@ import androidx.core.content.ContextCompat
 import com.aurora.extensions.getString
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
-import com.aurora.store.State
+import com.aurora.store.data.model.State
 import com.aurora.store.databinding.ViewActionButtonBinding
 
 class ActionButton : RelativeLayout {

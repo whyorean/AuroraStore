@@ -23,7 +23,7 @@ import android.content.Context
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AuthValidator
-import com.aurora.store.AccountType
+import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences

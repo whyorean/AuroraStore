@@ -30,7 +30,7 @@ import com.aurora.extensions.isValidPackageName
 import com.aurora.extensions.restartApp
 import com.aurora.extensions.show
 import com.aurora.store.R
-import com.aurora.store.data.AuthState
+import com.aurora.store.data.model.AuthState
 import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
