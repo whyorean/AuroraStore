@@ -20,34 +20,23 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
-import com.aurora.store.data.SingletonHolder
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import org.json.JSONArray
 import org.json.JSONObject
 import java.nio.charset.StandardCharsets
+import javax.inject.Singleton
 
-class ExodusDataProvider private constructor(val context: Context) {
+@Module
+@InstallIn(SingletonComponent::class)
+object ExodusDataProvider {
 
-    companion object : SingletonHolder<ExodusDataProvider, Context>(::ExodusDataProvider)
-
-    private val exodusTrackers: JSONObject
-
-    init {
-        exodusTrackers = loadLocalTrackers()
-    }
-
-    fun getLocalTrackers(): JSONObject {
-        return exodusTrackers
-    }
-
-    fun getFilteredTrackers(trackerIds: List<Int>): List<JSONObject> {
-        return trackerIds.map {
-            exodusTrackers.getJSONObject(
-                it.toString()
-            )
-        }.toList()
-    }
-
-    private fun loadLocalTrackers(): JSONObject {
+    @Provides
+    @Singleton
+    fun providesLocalTrackersInfo(@ApplicationContext context: Context): JSONObject {
         val inputStream = context.assets.open("exodus_trackers.json")
         val bytes = ByteArray(inputStream.available())
         inputStream.read(bytes)

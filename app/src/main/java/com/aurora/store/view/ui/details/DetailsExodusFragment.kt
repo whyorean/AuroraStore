@@ -29,12 +29,12 @@ import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
-import com.aurora.store.data.providers.ExodusDataProvider
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
@@ -44,6 +44,9 @@ class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
         get() = _binding!!
 
     private val args: DetailsExodusFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var exodusTrackers: JSONObject
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -88,7 +91,10 @@ class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
     }
 
     private fun getExodusTrackersFromReport(report: Report): List<ExodusTracker> {
-        val trackerObjects: List<JSONObject> = fetchLocalTrackers(report.trackers)
+        val trackerObjects = report.trackers.map {
+            exodusTrackers.getJSONObject(it.toString())
+        }.toList()
+
         return trackerObjects.map {
             ExodusTracker().apply {
                 id = it.getInt("id")
@@ -102,15 +108,5 @@ class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
                 categories = listOf(it.getString("categories"))
             }
         }.toList()
-    }
-
-    private fun fetchLocalTrackers(trackerIds: List<Int>): List<JSONObject> {
-        return try {
-            ExodusDataProvider
-                .with(requireContext())
-                .getFilteredTrackers(trackerIds)
-        } catch (e: Exception) {
-            emptyList()
-        }
     }
 }
