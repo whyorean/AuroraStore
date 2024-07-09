@@ -33,7 +33,6 @@ import com.aurora.store.databinding.SheetPermissionsBinding
 import com.aurora.store.view.custom.layouts.PermissionGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissions) {

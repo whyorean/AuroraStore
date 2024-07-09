@@ -58,13 +58,13 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
-import com.aurora.store.data.model.State
-import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.model.State
+import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.databinding.LayoutDetailsBetaBinding

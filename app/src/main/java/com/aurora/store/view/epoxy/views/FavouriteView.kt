@@ -27,7 +27,6 @@ import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.room.favourites.Favourite
 import com.aurora.store.databinding.ViewFavBinding

@@ -31,10 +31,10 @@ import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
-import com.aurora.store.data.model.AccountType
 import com.aurora.store.R
-import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.model.AccountType
+import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.model.InsecureAuth
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider

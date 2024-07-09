@@ -22,7 +22,7 @@ package com.aurora.extensions
 
 import android.annotation.SuppressLint
 import android.os.Build
-import java.util.*
+import java.util.Locale
 
 
 fun isMAndAbove(): Boolean {

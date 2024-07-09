@@ -35,10 +35,10 @@ import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DownloadFragment : BaseFragment(R.layout.fragment_download) {

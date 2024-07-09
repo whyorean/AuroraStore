@@ -13,11 +13,11 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.work.ExportWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class SheetsViewModel @Inject constructor(

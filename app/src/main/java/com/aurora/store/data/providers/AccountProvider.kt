@@ -21,8 +21,8 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import com.aurora.Constants
-import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.SingletonHolder
+import com.aurora.store.data.model.AccountType
 import com.aurora.store.util.Preferences
 
 class AccountProvider private constructor(var context: Context) {

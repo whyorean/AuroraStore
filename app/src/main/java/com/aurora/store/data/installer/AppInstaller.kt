@@ -33,7 +33,6 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.model.InstallerInfo
-import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences

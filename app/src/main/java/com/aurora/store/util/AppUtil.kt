@@ -11,7 +11,6 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.network.HttpClient
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers

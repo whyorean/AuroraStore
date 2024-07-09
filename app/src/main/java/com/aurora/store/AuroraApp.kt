@@ -34,8 +34,8 @@ import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
-import javax.inject.Inject
 import org.lsposed.hiddenapibypass.HiddenApiBypass
+import javax.inject.Inject
 
 @HiltAndroidApp
 class AuroraApp : Application(), Configuration.Provider {

@@ -24,7 +24,6 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.util.Base64
 import android.util.Log
-import com.aurora.Constants
 import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isPAndAbove

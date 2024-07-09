@@ -15,13 +15,13 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.work.DownloadWorker
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Helper class to work with the [DownloadWorker].

@@ -21,12 +21,12 @@ import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
-import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import java.util.UUID
+import com.aurora.store.data.room.download.Download as AuroraDownload
 
 object NotificationUtil {
 

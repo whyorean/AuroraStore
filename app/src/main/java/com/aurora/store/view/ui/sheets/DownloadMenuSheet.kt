@@ -38,9 +38,9 @@ import com.aurora.store.util.PathUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu) {

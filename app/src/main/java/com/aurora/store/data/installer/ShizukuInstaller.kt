@@ -22,8 +22,13 @@ package com.aurora.store.data.installer
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.*
+import android.content.pm.IPackageInstaller
+import android.content.pm.IPackageInstallerSession
+import android.content.pm.IPackageManager
+import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams
+import android.content.pm.PackageInstallerHidden
+import android.content.pm.PackageManagerHidden
 import android.os.Build
 import android.os.IBinder
 import android.os.IInterface

@@ -26,10 +26,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.CategoryHelper
-import com.aurora.store.data.model.ViewState
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
