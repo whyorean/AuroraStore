@@ -225,6 +225,7 @@ object PackageUtil {
                     val packageInstaller = packageManager.getInstallerPackageNameCompat(it.packageName)
                     listOf(
                         "com.aurora.store",
+                        "com.aurora.store.debug",
                         "com.aurora.store.nightly",
                         "com.aurora.services"
                     ).contains(packageInstaller)
