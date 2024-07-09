@@ -237,7 +237,7 @@
     <string name="action_filter_apply">Uygula</string>
     <string name="action_filter_all">Tümü</string>
     <string name="action_filter">Süzgeçler</string>
-    <string name="action_export">Dışa Aktar</string>
+    <string name="action_export">Dışa aktar</string>
     <string name="action_disable">Devre dışı bırak</string>
     <string name="action_copy_link">Bağlantıyı kopyala</string>
     <string name="action_copy">Kopyala</string>
@@ -299,7 +299,7 @@
     <string name="toast_import_success">Cihaz yapılandırması içe aktarıldı</string>
     <string name="toast_import_failed">Cihaz yapılandırması içe aktarılamadı</string>
     <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> için ek dosyalar indiriliyor</string>
-    <string name="action_import">İçe Aktar</string>
+    <string name="action_import">İçe aktar</string>
     <string name="notification_channel_updates">Güncelleme bildirimleri</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> güncelleme var</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> güncelleme var</string>
@@ -414,4 +414,11 @@
 \nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
     <string name="session_login">Lütfen Google Play hesabınızda oturum açın</string>
     <string name="toast_app_unavailable">Uygulama aygıtınız için kullanılabilir değil</string>
+    <string name="toast_fav_export_failed">Sık kullanılanlar dışa aktarılamadı!</string>
+    <string name="toast_fav_import_success">Sık kullanılanlar içe aktarıldı!</string>
+    <string name="toast_fav_export_success">Sık kullanılanlar dışa aktarıldı!</string>
+    <string name="title_favourites_manager">Sık Kullanılan Uygulamalar</string>
+    <string name="action_favourite">Sık kullanılanlara ekle</string>
+    <string name="details_no_favourites">Sık kullanılan uygulama bulunamadı</string>
+    <string name="toast_fav_import_failed">Sık kullanılanlar içe aktarılamadı!</string>
 </resources>
