@@ -4,7 +4,6 @@ androidGradlePlugin = "8.5.0"
 browserVersion = "1.8.0"
 coilVersion = "2.6.0"
 composeBom = "2024.06.00"
-core = "5.0.5"
 coreVersion = "1.13.1"
 epoxyVersion = "5.1.4"
 espressoVersion = "3.6.1"
@@ -20,7 +19,8 @@ kotlinVersion = "2.0.0"
 kspVersion = "2.0.0-1.0.22"
 ktlintVersion = "12.1.0"
 leakcanaryAndroidVersion = "2.14"
-lifeVersion = "2.8.2"
+libsu = "6.0.0"
+lifeVersion = "2.8.3"
 materialVersion = "1.12.0"
 navVersion = "2.7.7"
 okhttpVersion = "4.12.0"
@@ -66,7 +66,7 @@ coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
 facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersion" }
 gitlab-auroraoss-gplayapi = { module = "com.gitlab.AuroraOSS:gplayapi", version.ref = "gplayapiVersion" }
-github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.ref = "core" }
+github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.ref = "libsu" }
 google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gsonVersion" }
 google-protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavaliteVersion" }
