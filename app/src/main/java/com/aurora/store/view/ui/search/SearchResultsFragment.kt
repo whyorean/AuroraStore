@@ -34,7 +34,7 @@ import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.R
-import com.aurora.store.data.Filter
+import com.aurora.store.data.model.Filter
 import com.aurora.store.data.providers.FilterProvider.Companion.PREFERENCE_FILTER
 import com.aurora.store.databinding.FragmentSearchResultBinding
 import com.aurora.store.util.Preferences

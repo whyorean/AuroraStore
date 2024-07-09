@@ -22,7 +22,7 @@ package com.aurora.store.view.ui.sheets
 import android.os.Bundle
 import android.view.View
 import com.aurora.store.R
-import com.aurora.store.data.Filter
+import com.aurora.store.data.model.Filter
 import com.aurora.store.data.providers.FilterProvider
 import com.aurora.store.databinding.SheetFilterBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

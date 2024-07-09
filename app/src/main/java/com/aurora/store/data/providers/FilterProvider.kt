@@ -20,7 +20,7 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
-import com.aurora.store.data.Filter
+import com.aurora.store.data.model.Filter
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.remove
 import com.google.gson.Gson

@@ -17,13 +17,13 @@
  *
  */
 
-package com.aurora.store.data
+package com.aurora.store.data.model
 
-class Filter {
-    var appsWithAds = true
-    var appsWithIAP = true
-    var paidApps = true
-    var gsfDependentApps = true
-    var rating = 0.0f
-    var downloads = 0
-}
+data class Filter(
+    val appsWithAds: Boolean = true,
+    val appsWithIAP: Boolean = true,
+    val paidApps: Boolean = true,
+    val gsfDependentApps: Boolean = true,
+    val rating: Float = 0.0f,
+    val downloads: Int = 0
+)
