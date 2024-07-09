@@ -72,7 +72,7 @@ class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
             isChecked = filter.gsfDependentApps
             setOnCheckedChangeListener { _, checked ->
                 isChecked = checked
-                filter.gsfDependentApps = checked
+                filter = filter.copy(gsfDependentApps = checked)
             }
         }
 
@@ -80,7 +80,7 @@ class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
             isChecked = filter.paidApps
             setOnCheckedChangeListener { _, checked ->
                 isChecked = checked
-                filter.paidApps = checked
+                filter = filter.copy(paidApps = checked)
             }
         }
 
@@ -88,7 +88,7 @@ class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
             isChecked = filter.appsWithAds
             setOnCheckedChangeListener { _, checked ->
                 isChecked = checked
-                filter.appsWithAds = checked
+                filter = filter.copy(appsWithAds = checked)
             }
         }
     }
@@ -110,7 +110,7 @@ class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
         }
 
         binding.downloadChips.setOnCheckedStateChangeListener { _, checkedIds ->
-            filter.downloads = downloadValues[checkedIds[0]].toInt()
+            filter = filter.copy(downloads = downloadValues[checkedIds[0]].toInt())
         }
 
         i = 0
@@ -124,7 +124,7 @@ class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
         }
 
         binding.ratingChips.setOnCheckedStateChangeListener { _, checkedIds ->
-            filter.rating = ratingValues[checkedIds[0]].toFloat()
+            filter = filter.copy(rating = ratingValues[checkedIds[0]].toFloat())
         }
     }
 }
