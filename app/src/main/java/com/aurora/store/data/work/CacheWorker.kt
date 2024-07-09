@@ -18,6 +18,9 @@ import java.util.concurrent.TimeUnit.MINUTES
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
+/**
+ * A periodic worker to automatically clear the old downloads cache periodically.
+ */
 @HiltWorker
 class CacheWorker @AssistedInject constructor(
     @Assisted private val appContext: Context,
@@ -28,6 +31,11 @@ class CacheWorker @AssistedInject constructor(
         private const val TAG = "CleanCacheWorker"
         private const val CLEAN_CACHE_WORKER = "CLEAN_CACHE_WORKER"
 
+        /**
+         * Schedules the automated cache cleanup
+         * @param context Current [Context]
+         * @see [CacheWorker]
+         */
         fun scheduleAutomatedCacheCleanup(context: Context) {
             val periodicWorkRequest = PeriodicWorkRequestBuilder<CacheWorker>(
                 repeatInterval = 1,
@@ -42,6 +50,9 @@ class CacheWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Duration to cache files, defaults to 6 hours
+     */
     private val cacheDuration = 6.toDuration(DurationUnit.HOURS)
 
     override suspend fun doWork(): Result {
@@ -73,6 +84,9 @@ class CacheWorker @AssistedInject constructor(
         return Result.success()
     }
 
+    /**
+     * Deletes the file if it's older than $[cacheDuration]
+     */
     private fun File.deleteIfOld() {
         val elapsedTime = Calendar.getInstance().timeInMillis - this.lastModified()
         if (elapsedTime.toDuration(DurationUnit.HOURS) > cacheDuration) {

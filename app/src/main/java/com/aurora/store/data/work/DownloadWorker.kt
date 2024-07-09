@@ -56,6 +56,11 @@ import javax.net.ssl.HttpsURLConnection
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
+/**
+ * An expedited long-running worker to download and trigger installation for given apps.
+ *
+ * Avoid using this worker directly and prefer using [DownloadWorkerUtil] instead.
+ */
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
     private val downloadDao: DownloadDao,
@@ -202,6 +207,13 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Purchases the app to get the download URL of the required files
+     * @param packageName The packageName of the app
+     * @param versionCode Required version of the app
+     * @param offerType Offer type of the app (free/paid)
+     * @return A list of purchased files
+     */
     private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
         // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
         return if (isPAndAbove() && download.isInstalled) {
@@ -235,6 +247,12 @@ class DownloadWorker @AssistedInject constructor(
         return downloadList
     }
 
+    /**
+     * Downloads the file from the given request.
+     * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
+     * @param request A [Request] to download
+     * @return A [Result] indicating whether the file was downloaded or not.
+     */
     private suspend fun downloadFile(request: Request): Result {
         return withContext(Dispatchers.IO) {
             val algorithm = if (request.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
@@ -278,6 +296,10 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Updates the progress data of the download in the local database and notifies user.
+     * @param downloadInfo An instance of [DownloadInfo]
+     */
     private suspend fun onProgress(downloadInfo: DownloadInfo) {
         if (!isStopped && !download.isFinished) {
             downloadedBytes += downloadInfo.bytesCopied
@@ -325,6 +347,11 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Notifies the user of the current status of the download.
+     * @param status Current [DownloadStatus]
+     * @param dID ID of the notification, defaults to hashCode of the download's packageName
+     */
     private suspend fun notifyStatus(status: DownloadStatus, dID: Int = -1) {
         // Update status in database
         download.downloadStatus = status
@@ -346,6 +373,13 @@ class DownloadWorker @AssistedInject constructor(
         notificationManager.notify(notificationID, notification)
     }
 
+    /**
+     * Validates whether given file has the expected SHA hash sum.
+     * @param file [File] to check
+     * @param expectedSha Expected SHA hash sum
+     * @param algorithm [Algorithm] of the SHA
+     * @return A boolean whether the given file has the expected SHA or not.
+     */
     @OptIn(ExperimentalStdlibApi::class)
     private suspend fun validSha(file: File, expectedSha: String, algorithm: Algorithm): Boolean {
         return withContext(Dispatchers.IO) {
@@ -362,6 +396,10 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Gets the current [Proxy] configuration.
+     * @return An instance of [Proxy] if configured by the user, null otherwise
+     */
     private fun getProxy(): Proxy? {
         val proxyEnabled = Preferences.getBoolean(appContext, PREFERENCE_PROXY_ENABLED)
         val proxyInfoString = Preferences.getString(appContext, PREFERENCE_PROXY_INFO)

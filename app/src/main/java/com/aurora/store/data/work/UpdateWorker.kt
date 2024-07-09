@@ -35,6 +35,11 @@ import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit.HOURS
 import java.util.concurrent.TimeUnit.MINUTES
 
+/**
+ * A periodic worker to check for updates for installed apps based on
+ * filters and the auto-updates mode selected by the user. The repeat interval
+ * is configurable by the user, defaulting to 3 hours with a flex time of 30 minutes.
+ */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
     private val downloadWorkerUtil: DownloadWorkerUtil,
@@ -48,17 +53,32 @@ class UpdateWorker @AssistedInject constructor(
         private const val TAG = "UpdateWorker"
         private const val UPDATE_WORKER = "UPDATE_WORKER"
 
+        /**
+         * Cancels the automated updates check
+         * @param context Current [Context]
+         * @see [UpdateWorker]
+         */
         fun cancelAutomatedCheck(context: Context) {
             Log.i(TAG, "Cancelling periodic app updates!")
             WorkManager.getInstance(context).cancelUniqueWork(UPDATE_WORKER)
         }
 
+        /**
+         * Schedules the automated updates check
+         * @param context Current [Context]
+         * @see [UpdateWorker]
+         */
         fun scheduleAutomatedCheck(context: Context) {
             Log.i(TAG,"Scheduling periodic app updates!")
             WorkManager.getInstance(context)
                 .enqueueUniquePeriodicWork(UPDATE_WORKER, KEEP, buildUpdateWork(context))
         }
 
+        /**
+         * Updates the automated updates check to reconsider the new user preferences
+         * @param context Current [Context]
+         * @see [UpdateWorker]
+         */
         fun updateAutomatedCheck(context: Context) {
             Log.i(TAG,"Updating periodic app updates!")
             WorkManager.getInstance(context).updateWork(buildUpdateWork(context))
@@ -165,6 +185,9 @@ class UpdateWorker @AssistedInject constructor(
         return Result.success()
     }
 
+    /**
+     * Checks if the given package can be auto-updated or not
+     */
     private fun canAutoUpdate(packageName: String): Boolean {
         return when (AppInstaller.getCurrentInstaller(appContext)) {
             Installer.SESSION -> isSAndAbove() && CertUtil.isAuroraStoreApp(appContext, packageName)

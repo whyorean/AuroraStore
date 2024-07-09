@@ -23,6 +23,9 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+/**
+ * Helper class to work with the [DownloadWorker].
+ */
 class DownloadWorkerUtil @Inject constructor(
     @ApplicationContext private val context: Context,
     private val downloadDao: DownloadDao,
@@ -44,6 +47,9 @@ class DownloadWorkerUtil @Inject constructor(
 
     private val TAG = DownloadWorkerUtil::class.java.simpleName
 
+    /**
+     * Removes failed download from the queue and starts observing for newly enqueued apps.
+     */
     fun init() {
         AuroraApp.scope.launch {
             cancelFailedDownloads(downloadDao.downloads().firstOrNull() ?: emptyList())
@@ -72,10 +78,18 @@ class DownloadWorkerUtil @Inject constructor(
         }
     }
 
+    /**
+     * Enqueues an app for download & install
+     * @param app [App] to download
+     */
     suspend fun enqueueApp(app: App) {
         downloadDao.insert(Download.fromApp(app))
     }
 
+    /**
+     * Cancels the download for the given package
+     * @param packageName Name of the package to cancel download
+     */
     suspend fun cancelDownload(packageName: String) {
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
@@ -84,6 +98,11 @@ class DownloadWorkerUtil @Inject constructor(
             ?.let { downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED) }
     }
 
+    /**
+     * Clears the entry & downloaded files for the given package
+     * @param packageName Name of the package of the app
+     * @param versionCode Version of the package
+     */
     suspend fun clearDownload(packageName: String, versionCode: Int) {
         Log.i(TAG, "Clearing downloads for $packageName ($versionCode)")
         downloadDao.delete(packageName)
@@ -91,6 +110,9 @@ class DownloadWorkerUtil @Inject constructor(
             .deleteRecursively()
     }
 
+    /**
+     * Clears all the downloads and their downloaded files
+     */
     suspend fun clearAllDownloads() {
         Log.i(TAG, "Clearing all downloads!")
         downloadDao.deleteAll()
@@ -98,12 +120,19 @@ class DownloadWorkerUtil @Inject constructor(
         PathUtil.getOldDownloadDirectories(context).forEach { it.deleteRecursively() }
     }
 
+    /**
+     * Clears finished downloads and their downloaded files
+     */
     suspend fun clearFinishedDownloads() {
         downloadsList.value.filter { it.isFinished }.forEach {
             clearDownload(it.packageName, it.versionCode)
         }
     }
 
+    /**
+     * Cancels all the ongoing and queued downloads
+     * @param updatesOnly Whether to cancel only updates, defaults to false
+     */
     suspend fun cancelAll(updatesOnly: Boolean = false) {
         // Cancel all enqueued downloads first to avoid triggering re-download
         downloadsList.value.filter { it.downloadStatus == DownloadStatus.QUEUED }
