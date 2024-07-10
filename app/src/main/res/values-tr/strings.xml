@@ -421,4 +421,6 @@
     <string name="action_favourite">Sık kullanılanlara ekle</string>
     <string name="details_no_favourites">Sık kullanılan uygulama bulunamadı</string>
     <string name="toast_fav_import_failed">Sık kullanılanlar içe aktarılamadı!</string>
+    <string name="export_app_summary_success">Uygulama paketi başarıyla dışa aktarıldı</string>
+    <string name="export_app_summary_fail">Uygulama paketi dışa aktarılamadı</string>
 </resources>
