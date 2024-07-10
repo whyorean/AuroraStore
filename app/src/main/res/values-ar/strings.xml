@@ -414,4 +414,13 @@
 \n
 \nيُرجى ملاحظة أن متجر Aurora لا يحصل على أي موافقة أو رعاية أو ترخيص من Google أو Google Play أو أي تطبيقات تم تنزيلها من خلال متجر Aurora أو أي من مطوري التطبيقات؛ ولا يوجد لدى متجر Aurora أي انتماء أو تعاون أو اتصال معهم.</string>
     <string name="toast_app_unavailable">التطبيق غير متوفر لجهازك</string>
+    <string name="action_favourite">المفضلة</string>
+    <string name="toast_fav_export_success">تم تصدير المفضلة!</string>
+    <string name="export_app_summary_success">تم تصدير حزمة التطبيق بنجاح</string>
+    <string name="export_app_summary_fail">تعذر تصدير حزمة التطبيق</string>
+    <string name="details_no_favourites">لم يتم العثور على تطبيقات مفضلة</string>
+    <string name="title_favourites_manager">التطبيقات المفضلة</string>
+    <string name="toast_fav_import_failed">فشل استيراد المفضلة!</string>
+    <string name="toast_fav_export_failed">فشل تصدير المفضلة!</string>
+    <string name="toast_fav_import_success">‌تم استيراد المفضلة!</string>
 </resources>
