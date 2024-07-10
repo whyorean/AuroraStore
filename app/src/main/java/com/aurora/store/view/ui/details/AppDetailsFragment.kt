@@ -41,7 +41,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.airbnb.epoxy.EpoxyRecyclerView
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
@@ -67,11 +66,6 @@ import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
-import com.aurora.store.databinding.LayoutDetailsBetaBinding
-import com.aurora.store.databinding.LayoutDetailsDescriptionBinding
-import com.aurora.store.databinding.LayoutDetailsDevBinding
-import com.aurora.store.databinding.LayoutDetailsPermissionsBinding
-import com.aurora.store.databinding.LayoutDetailsReviewBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
@@ -195,11 +189,15 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             app = App(args.packageName)
         }
 
+        // Toolbar
+        attachToolbar()
+
         // Check whether app is installed or not
         app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
         // App Details
         viewModel.fetchAppDetails(view.context, app.packageName)
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.app.collect {
                 if (it.packageName.isNotBlank()) {
@@ -211,13 +209,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     toast("Failed to fetch app details")
                 }
             }
-        }
-
-        // Downloads
-        binding.layoutDetailsInstall.progressDownload.clipToOutline = true
-        binding.layoutDetailsInstall.imgCancel.setOnClickListener {
-            viewModel.cancelDownload(app)
-            if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -253,6 +244,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
         }
 
+        // User Rating
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userReview.collect {
                 if (it.commentId.isNotEmpty()) {
@@ -272,10 +264,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
         }
 
-        // Report (Exodus Privacy)
-        binding.layoutDetailsPrivacy.btnRequestAnalysis.setOnClickListener {
-            it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
-        }
+        // Exodus Privacy Report
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.report.collect { report ->
                 if (report == null) {
@@ -323,24 +312,67 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 if (it != null) {
                     binding.layoutDetailsBeta.btnBetaAction.isEnabled = true
                     if (it.subscribed) {
-                        updateBetaActions(binding.layoutDetailsBeta, true)
+                        updateBetaActions(true)
                     }
                     if (it.unsubscribed) {
-                        updateBetaActions(binding.layoutDetailsBeta, false)
+                        updateBetaActions(false)
                     }
                 } else {
                     app.testingProgram?.let { testingProgram ->
-                        updateBetaActions(binding.layoutDetailsBeta, testingProgram.isSubscribed)
+                        updateBetaActions(testingProgram.isSubscribed)
                         toast(getString(R.string.details_beta_delay))
                     }
                 }
             }
         }
 
-        // Toolbar
+        // Favorites
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.favourite.collect {
+                if (it) {
+                    binding.layoutDetailsToolbar.toolbar.menu
+                        ?.findItem(R.id.action_favourite)
+                        ?.setIcon(R.drawable.ic_favorite_checked)
+                } else {
+                    binding.layoutDetailsToolbar.toolbar.menu
+                        ?.findItem(R.id.action_favourite)
+                        ?.setIcon(R.drawable.ic_favorite_unchecked)
+                }
+            }
+        }
+
+        // Misc Bindings
+        binding.layoutDetailsPrivacy.btnRequestAnalysis.setOnClickListener {
+            it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
+        }
+        binding.layoutDetailsInstall.progressDownload.clipToOutline = true
+        binding.layoutDetailsInstall.imgCancel.setOnClickListener {
+            viewModel.cancelDownload(app)
+            if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.installerEvent.collect { onEvent(it) }
+        }
+    }
+
+    override fun onResume() {
+        checkAndSetupInstall()
+        super.onResume()
+    }
+
+    private fun attachActions() {
+        flip(0)
+        checkAndSetupInstall()
+    }
+
+    private fun attachToolbar() {
         binding.layoutDetailsToolbar.toolbar.apply {
             elevation = 0f
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back)
             setNavigationOnClickListener {
                 if (isExternal) {
                     activity?.finish()
@@ -361,7 +393,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     }
 
                     R.id.action_share -> {
-                        view.context.share(app)
+                        requireContext().share(app)
                     }
 
                     R.id.action_favourite -> {
@@ -393,7 +425,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     }
 
                     R.id.action_playstore -> {
-                        view.context.browse("${Constants.SHARE_URL}${app.packageName}")
+                        requireContext().browse("${Constants.SHARE_URL}${app.packageName}")
                     }
                 }
                 true
@@ -411,64 +443,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
                 menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
                 uninstallActionEnabled = app.isInstalled
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.favourite.collect {
-                if (it) {
-                    binding.layoutDetailsToolbar.toolbar.menu
-                        ?.findItem(R.id.action_favourite)
-                        ?.setIcon(R.drawable.ic_favorite_checked)
-                } else {
-                    binding.layoutDetailsToolbar.toolbar.menu
-                        ?.findItem(R.id.action_favourite)
-                        ?.setIcon(R.drawable.ic_favorite_unchecked)
-                }
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.installerEvent.collect { onEvent(it) }
-        }
-    }
-
-    override fun onResume() {
-        checkAndSetupInstall()
-        super.onResume()
-    }
-
-    private fun attachActions() {
-        flip(0)
-        checkAndSetupInstall()
-    }
-
-    private fun updateActionState(state: State) {
-        binding.layoutDetailsInstall.btnDownload.updateState(state)
-    }
-
-    private fun openApp() {
-        val intent = PackageUtil.getLaunchIntent(requireContext(), app.packageName)
-        if (intent != null) {
-            try {
-                startActivity(intent)
-            } catch (e: ActivityNotFoundException) {
-                toast("Unable to open app")
-            }
-        }
-    }
-
-    private fun inflatePartialApp() {
-        if (::app.isInitialized) {
-            attachHeader()
-            attachBottomSheet()
-            attachActions()
-
-            if (autoDownload) {
-                purchase()
             }
         }
     }
@@ -506,27 +480,39 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateExtraDetails(app: App?) {
-        app?.let {
-            binding.viewFlipper.displayedChild = 1
-            inflateAppDescription(binding.layoutDetailDescription, app)
-            inflateAppRatingAndReviews(binding.layoutDetailsReview, app)
-            inflateAppDevInfo(binding.layoutDetailsDev, app)
-            inflateAppPrivacy(app)
-            inflateAppPermission(binding.layoutDetailsPermissions, app)
+    private fun attachBottomSheet() {
+        binding.layoutDetailsInstall.apply {
+            viewFlipper.setInAnimation(requireContext(), R.anim.fade_in)
+            viewFlipper.setOutAnimation(requireContext(), R.anim.fade_out)
+        }
 
-            if (!authProvider.isAnonymous) {
-                app.testingProgram?.let {
-                    if (it.isAvailable && it.isSubscribed) {
-                        binding.layoutDetailsApp.txtLine1.text = it.displayName
-                    }
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.layoutDetailsInstall.bottomSheet)
+        bottomSheetBehavior.isDraggable = false
+
+        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setDraggable(true)
+                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    bottomSheetBehavior.isDraggable = false
                 }
-
-                inflateBetaSubscription(binding.layoutDetailsBeta, app)
             }
 
-            if (Preferences.getBoolean(requireContext(), Preferences.PREFERENCE_SIMILAR)) {
-                inflateAppStream(binding.epoxyRecyclerStream, app)
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
+    }
+
+    private fun updateActionState(state: State) {
+        binding.layoutDetailsInstall.btnDownload.updateState(state)
+    }
+
+    private fun openApp() {
+        val intent = PackageUtil.getLaunchIntent(requireContext(), app.packageName)
+        if (intent != null) {
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                toast("Unable to open app")
             }
         }
     }
@@ -669,129 +655,148 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun attachBottomSheet() {
-        binding.layoutDetailsInstall.apply {
-            viewFlipper.setInAnimation(requireContext(), R.anim.fade_in)
-            viewFlipper.setOutAnimation(requireContext(), R.anim.fade_out)
-        }
+    private fun inflatePartialApp() {
+        if (::app.isInitialized) {
+            attachHeader()
+            attachBottomSheet()
+            attachActions()
 
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.layoutDetailsInstall.bottomSheet)
-        bottomSheetBehavior.isDraggable = false
-
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setDraggable(true)
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottomSheetBehavior.isDraggable = false
-                }
+            if (autoDownload) {
+                purchase()
             }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
+        }
     }
 
-    //Sub Section Inflation
-    private fun inflateAppDescription(B: LayoutDetailsDescriptionBinding, app: App) {
-        val installs = CommonUtil.addDiPrefix(app.installs)
+    private fun inflateExtraDetails(app: App?) {
+        app?.let {
+            binding.viewFlipper.displayedChild = 1
+            inflateAppDescription(app)
+            inflateAppRatingAndReviews(app)
+            inflateAppDevInfo(app)
+            inflateAppPrivacy(app)
+            inflateAppPermission(app)
 
-        if (installs != "NA") {
-            B.txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
-        } else {
-            B.txtInstalls.hide()
-        }
+            if (!authProvider.isAnonymous) {
+                app.testingProgram?.let {
+                    if (it.isAvailable && it.isSubscribed) {
+                        binding.layoutDetailsApp.txtLine1.text = it.displayName
+                    }
+                }
 
-        B.txtSize.text = CommonUtil.addSiPrefix(app.size)
-        B.txtRating.text = app.labeledRating
-        B.txtSdk.text = ("Target SDK ${app.targetSdk}")
-        B.txtUpdated.text = app.updatedOn
-        B.txtDescription.text = HtmlCompat.fromHtml(
-            app.shortDescription,
-            HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS
-        )
+                inflateBetaSubscription(app)
+            }
 
-        app.changes.apply {
-            if (isEmpty()) {
-                B.txtChangelog.text = getString(R.string.details_changelog_unavailable)
-            } else {
-                B.txtChangelog.text = HtmlCompat.fromHtml(
-                    this,
-                    HtmlCompat.FROM_HTML_MODE_COMPACT
-                )
+            if (Preferences.getBoolean(requireContext(), Preferences.PREFERENCE_SIMILAR)) {
+                inflateAppStream(app)
             }
         }
+    }
 
-        B.headerDescription.addClickListener {
-            findNavController().navigate(
-                AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsMoreFragment(app)
+    private fun inflateAppDescription(app: App) {
+        binding.layoutDetailDescription.apply {
+            val installs = CommonUtil.addDiPrefix(app.installs)
+
+            if (installs != "NA") {
+                txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
+            } else {
+                txtInstalls.hide()
+            }
+
+            txtSize.text = CommonUtil.addSiPrefix(app.size)
+            txtRating.text = app.labeledRating
+            txtSdk.text = ("Target SDK ${app.targetSdk}")
+            txtUpdated.text = app.updatedOn
+            txtDescription.text = HtmlCompat.fromHtml(
+                app.shortDescription,
+                HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS
             )
-        }
 
-        B.epoxyRecycler.withModels {
-            setFilterDuplicates(true)
-            var position = 0
-            app.screenshots
-                //.sortedWith { o1, o2 -> o2.height.compareTo(o1.height) }
-                .forEach { artwork ->
-                    add(
-                        ScreenshotViewModel_()
-                            .id(artwork.url)
-                            .artwork(artwork)
-                            .position(position++)
-                            .callback(object : ScreenshotView.ScreenshotCallback {
-                                override fun onClick(position: Int) {
-                                    openScreenshotFragment(app, position)
-                                }
-                            })
+            app.changes.apply {
+                if (isEmpty()) {
+                    txtChangelog.text = getString(R.string.details_changelog_unavailable)
+                } else {
+                    txtChangelog.text = HtmlCompat.fromHtml(
+                        this,
+                        HtmlCompat.FROM_HTML_MODE_COMPACT
                     )
                 }
+            }
+
+            headerDescription.addClickListener {
+                findNavController().navigate(
+                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsMoreFragment(app)
+                )
+            }
+
+            epoxyRecycler.withModels {
+                setFilterDuplicates(true)
+                var position = 0
+                app.screenshots
+                    //.sortedWith { o1, o2 -> o2.height.compareTo(o1.height) }
+                    .forEach { artwork ->
+                        add(
+                            ScreenshotViewModel_()
+                                .id(artwork.url)
+                                .artwork(artwork)
+                                .position(position++)
+                                .callback(object : ScreenshotView.ScreenshotCallback {
+                                    override fun onClick(position: Int) {
+                                        openScreenshotFragment(app, position)
+                                    }
+                                })
+                        )
+                    }
+            }
         }
     }
 
-    private fun inflateAppRatingAndReviews(B: LayoutDetailsReviewBinding, app: App) {
-        B.averageRating.text = app.rating.average.toString()
-        B.txtReviewCount.text = app.rating.abbreviatedLabel
+    private fun inflateAppRatingAndReviews(app: App) {
+        binding.layoutDetailsReview.apply {
+            averageRating.text = app.rating.average.toString()
+            txtReviewCount.text = app.rating.abbreviatedLabel
 
-        var totalStars = 0L
-        totalStars += app.rating.oneStar
-        totalStars += app.rating.twoStar
-        totalStars += app.rating.threeStar
-        totalStars += app.rating.fourStar
-        totalStars += app.rating.fiveStar
+            var totalStars = 0L
+            totalStars += app.rating.oneStar
+            totalStars += app.rating.twoStar
+            totalStars += app.rating.threeStar
+            totalStars += app.rating.fourStar
+            totalStars += app.rating.fiveStar
 
-        B.avgRatingLayout.apply {
-            removeAllViews()
-            addView(addAvgReviews(5, totalStars, app.rating.fiveStar))
-            addView(addAvgReviews(4, totalStars, app.rating.fourStar))
-            addView(addAvgReviews(3, totalStars, app.rating.threeStar))
-            addView(addAvgReviews(2, totalStars, app.rating.twoStar))
-            addView(addAvgReviews(1, totalStars, app.rating.oneStar))
-        }
-
-        B.averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
-        B.txtReviewCount.text = app.rating.abbreviatedLabel
-
-        B.layoutUserReview.visibility = if (authProvider.isAnonymous) View.GONE else View.VISIBLE
-
-        B.btnPostReview.setOnClickListener {
-            if (authProvider.isAnonymous) {
-                toast(R.string.toast_anonymous_restriction)
-            } else {
-                addOrUpdateReview(app, Review().apply {
-                    title = B.inputTitle.text.toString()
-                    rating = B.userStars.rating.toInt()
-                    comment = B.inputReview.text.toString()
-                })
+            avgRatingLayout.apply {
+                removeAllViews()
+                addView(addAvgReviews(5, totalStars, app.rating.fiveStar))
+                addView(addAvgReviews(4, totalStars, app.rating.fourStar))
+                addView(addAvgReviews(3, totalStars, app.rating.threeStar))
+                addView(addAvgReviews(2, totalStars, app.rating.twoStar))
+                addView(addAvgReviews(1, totalStars, app.rating.oneStar))
             }
-        }
 
-        B.headerRatingReviews.addClickListener {
-            findNavController().navigate(
-                AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
-                    app.displayName,
-                    app.packageName
+            averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
+            txtReviewCount.text = app.rating.abbreviatedLabel
+
+            layoutUserReview.visibility =
+                if (authProvider.isAnonymous) View.GONE else View.VISIBLE
+
+            btnPostReview.setOnClickListener {
+                if (authProvider.isAnonymous) {
+                    toast(R.string.toast_anonymous_restriction)
+                } else {
+                    addOrUpdateReview(app, Review().apply {
+                        title = inputTitle.text.toString()
+                        rating = userStars.rating.toInt()
+                        comment = inputReview.text.toString()
+                    })
+                }
+            }
+
+            headerRatingReviews.addClickListener {
+                findNavController().navigate(
+                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
+                        app.displayName,
+                        app.packageName
+                    )
                 )
-            )
+            }
         }
     }
 
@@ -799,65 +804,69 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewModel.fetchAppReport(requireContext(), app.packageName)
     }
 
-    private fun inflateAppDevInfo(B: LayoutDetailsDevBinding, app: App) {
-        if (app.developerAddress.isNotEmpty()) {
-            B.devAddress.apply {
-                setTxtSubtitle(
-                    HtmlCompat.fromHtml(
-                        app.developerAddress,
-                        HtmlCompat.FROM_HTML_MODE_LEGACY
-                    ).toString()
-                )
-                visibility = View.VISIBLE
-            }
-        }
-
-        if (app.developerWebsite.isNotEmpty()) {
-            B.devWeb.apply {
-                setTxtSubtitle(app.developerWebsite)
-                visibility = View.VISIBLE
-            }
-        }
-
-        if (app.developerEmail.isNotEmpty()) {
-            B.devMail.apply {
-                setTxtSubtitle(app.developerEmail)
-                visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun inflateBetaSubscription(B: LayoutDetailsBetaBinding, app: App) {
-        app.testingProgram?.let { betaProgram ->
-            if (betaProgram.isAvailable) {
-                B.root.show()
-
-                updateBetaActions(B, betaProgram.isSubscribed)
-
-                if (betaProgram.isSubscribedAndInstalled) {
-
-                }
-
-                B.imgBeta.load(betaProgram.artwork.url) {
-
-                }
-
-                B.btnBetaAction.setOnClickListener {
-                    B.btnBetaAction.text = getString(R.string.action_pending)
-                    B.btnBetaAction.isEnabled = false
-                    viewModel.fetchTestingProgramStatus(
-                        requireContext(),
-                        app.packageName,
-                        !betaProgram.isSubscribed
+    private fun inflateAppDevInfo(app: App) {
+        binding.layoutDetailsDev.apply {
+            if (app.developerAddress.isNotEmpty()) {
+                devAddress.apply {
+                    setTxtSubtitle(
+                        HtmlCompat.fromHtml(
+                            app.developerAddress,
+                            HtmlCompat.FROM_HTML_MODE_LEGACY
+                        ).toString()
                     )
+                    visibility = View.VISIBLE
                 }
-            } else {
-                B.root.hide()
+            }
+
+            if (app.developerWebsite.isNotEmpty()) {
+                devWeb.apply {
+                    setTxtSubtitle(app.developerWebsite)
+                    visibility = View.VISIBLE
+                }
+            }
+
+            if (app.developerEmail.isNotEmpty()) {
+                devMail.apply {
+                    setTxtSubtitle(app.developerEmail)
+                    visibility = View.VISIBLE
+                }
             }
         }
     }
 
-    private fun inflateAppStream(epoxyRecyclerView: EpoxyRecyclerView, app: App) {
+    private fun inflateBetaSubscription(app: App) {
+        binding.layoutDetailsBeta.apply {
+            app.testingProgram?.let { betaProgram ->
+                if (betaProgram.isAvailable) {
+                    root.show()
+
+                    updateBetaActions(betaProgram.isSubscribed)
+
+                    if (betaProgram.isSubscribedAndInstalled) {
+
+                    }
+
+                    imgBeta.load(betaProgram.artwork.url) {
+
+                    }
+
+                    btnBetaAction.setOnClickListener {
+                        btnBetaAction.text = getString(R.string.action_pending)
+                        btnBetaAction.isEnabled = false
+                        viewModel.fetchTestingProgramStatus(
+                            requireContext(),
+                            app.packageName,
+                            !betaProgram.isSubscribed
+                        )
+                    }
+                } else {
+                    root.hide()
+                }
+            }
+        }
+    }
+
+    private fun inflateAppStream(app: App) {
         app.detailsStreamUrl?.let {
             val carouselController =
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {
@@ -907,32 +916,36 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
-            epoxyRecyclerView.setController(carouselController)
+            binding.epoxyRecyclerStream.setController(carouselController)
 
             detailsClusterViewModel.getStreamBundle(it)
         }
     }
 
-    private fun inflateAppPermission(B: LayoutDetailsPermissionsBinding, app: App) {
-        B.headerPermission.addClickListener {
-            if (app.permissions.size > 0) {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToPermissionBottomSheet(
-                        app
+    private fun inflateAppPermission(app: App) {
+        binding.layoutDetailsPermissions.apply {
+            headerPermission.addClickListener {
+                if (app.permissions.size > 0) {
+                    findNavController().navigate(
+                        AppDetailsFragmentDirections.actionAppDetailsFragmentToPermissionBottomSheet(
+                            app
+                        )
                     )
-                )
+                }
             }
+            txtPermissionCount.text = ("${app.permissions.size} permissions")
         }
-        B.txtPermissionCount.text = ("${app.permissions.size} permissions")
     }
 
-    private fun updateBetaActions(B: LayoutDetailsBetaBinding, isSubscribed: Boolean) {
-        if (isSubscribed) {
-            B.btnBetaAction.text = getString(R.string.action_leave)
-            B.txtBetaTitle.text = getString(R.string.details_beta_subscribed)
-        } else {
-            B.btnBetaAction.text = getString(R.string.action_join)
-            B.txtBetaTitle.text = getString(R.string.details_beta_available)
+    private fun updateBetaActions(isSubscribed: Boolean) {
+        binding.layoutDetailsBeta.apply {
+            if (isSubscribed) {
+                btnBetaAction.text = getString(R.string.action_leave)
+                txtBetaTitle.text = getString(R.string.details_beta_subscribed)
+            } else {
+                btnBetaAction.text = getString(R.string.action_join)
+                txtBetaTitle.text = getString(R.string.details_beta_available)
+            }
         }
     }
 
