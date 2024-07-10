@@ -9,7 +9,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.util.ApkCopier
+import com.aurora.store.data.work.ExportWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +28,7 @@ class SheetsViewModel @Inject constructor(
     private val _purchaseStatus = MutableSharedFlow<Boolean>()
     val purchaseStatus = _purchaseStatus.asSharedFlow()
 
-    fun purchase(context: Context, app: App, customVersion: Int) {
+    fun purchase(app: App, customVersion: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val purchaseHelper = PurchaseHelper(authProvider.authData)
@@ -46,18 +46,10 @@ class SheetsViewModel @Inject constructor(
     }
 
     fun copyInstalledApp(context: Context, packageName: String, uri: Uri) {
-        viewModelScope.launch(Dispatchers.IO) {
-            ApkCopier.copyInstalledApp(context, packageName, uri)
-        }
+        ExportWorker.exportInstalledApp(context, packageName, uri)
     }
 
     fun copyDownloadedApp(context: Context, packageName: String, versionCode: Int, uri: Uri) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                ApkCopier.copyDownloadedApp(context, packageName, versionCode, uri)
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to copy downloads", exception)
-            }
-        }
+        ExportWorker.exportDownloadedApp(context, packageName, versionCode, uri)
     }
 }

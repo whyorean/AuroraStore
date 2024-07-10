@@ -104,7 +104,7 @@ class ManualDownloadSheet : BottomSheetDialogFragment(R.layout.sheet_manual_down
             if (customVersionString.isEmpty())
                 binding.versionCodeInp.error = "Enter version code"
             else {
-                viewModel.purchase(requireContext(), args.app, customVersionString.toInt())
+                viewModel.purchase(args.app, customVersionString.toInt())
             }
         }
 
