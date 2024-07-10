@@ -22,7 +22,6 @@ package com.aurora.store.view.epoxy.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.CompoundButton
-import android.widget.RelativeLayout
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
@@ -34,62 +33,43 @@ import com.aurora.store.databinding.ViewBlackBinding
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
-    baseModelClass = BaseView::class
+    baseModelClass = BaseModel::class
 )
-class BlackListView : RelativeLayout {
-
-    private lateinit var B: ViewBlackBinding
-
-    constructor(context: Context?) : super(context) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context)
-    }
-
-    private fun init(context: Context?) {
-        val view = inflate(context, R.layout.view_black, this)
-        B = ViewBlackBinding.bind(view)
-    }
+class BlackListView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewBlackBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp
     fun app(app: App) {
-        B.imgIcon.load(app.iconArtwork.url) {
+        binding.imgIcon.load(app.iconArtwork.url) {
             placeholder(R.drawable.bg_placeholder)
             transformations(RoundedCornersTransformation(25F))
         }
 
-        B.txtLine1.text = app.displayName
-        B.txtLine2.text = app.packageName
-        B.txtLine3.text = ("${app.versionName}.${app.versionCode}")
+        binding.txtLine1.text = app.displayName
+        binding.txtLine2.text = app.packageName
+        binding.txtLine3.text = ("${app.versionName}.${app.versionCode}")
     }
 
     @ModelProp
     fun markChecked(isChecked: Boolean) {
-        B.checkbox.isChecked = isChecked
+        binding.checkbox.isChecked = isChecked
     }
 
     @CallbackProp
     fun checked(onCheckedChangeListener: CompoundButton.OnCheckedChangeListener?) {
-        B.checkbox.setOnCheckedChangeListener(onCheckedChangeListener)
+        binding.checkbox.setOnCheckedChangeListener(onCheckedChangeListener)
     }
 
     @CallbackProp
     fun click(onClickListener: OnClickListener?) {
-        B.root.setOnClickListener(onClickListener)
+        binding.root.setOnClickListener(onClickListener)
     }
 
     @CallbackProp
     fun longClick(onClickListener: OnLongClickListener?) {
-        B.root.setOnLongClickListener(onClickListener)
+        binding.root.setOnLongClickListener(onClickListener)
     }
 }

@@ -25,44 +25,31 @@ import android.widget.RelativeLayout
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewRatingBinding
 
-class RatingView : RelativeLayout {
+class RatingView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : RelativeLayout(context, attrs, defStyleAttr) {
 
-    private lateinit var B: ViewRatingBinding
+    private lateinit var binding: ViewRatingBinding
 
     var number = 0
     var max = 0
     var rating = 0
 
-    constructor(context: Context, number: Int, max: Int, rating: Int) : super(context) {
+    constructor(context: Context, number: Int, max: Int, rating: Int) : this(context) {
         this.number = number
         this.max = max
         this.rating = rating
         init(context)
     }
 
-    constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-    }
-
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-    }
-
     private fun init(context: Context) {
         val view = inflate(context, R.layout.view_rating, this)
-        B = ViewRatingBinding.bind(view)
+        binding = ViewRatingBinding.bind(view)
 
-        B.avgNum.text = number.toString()
-        B.avgRating.max = max
-        B.avgRating.progress = rating
+        binding.avgNum.text = number.toString()
+        binding.avgRating.max = max
+        binding.avgRating.progress = rating
     }
 }

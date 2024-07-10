@@ -29,7 +29,7 @@ import com.aurora.store.databinding.ViewStateButtonBinding
 
 class StateButton : RelativeLayout {
 
-    private lateinit var B: ViewStateButtonBinding
+    private lateinit var binding: ViewStateButtonBinding
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -47,18 +47,9 @@ class StateButton : RelativeLayout {
         init(context, attrs)
     }
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(context, attrs)
-    }
-
     private fun init(context: Context, attrs: AttributeSet?) {
         val view = inflate(context, R.layout.view_state_button, this)
-        B = ViewStateButtonBinding.bind(view)
+        binding = ViewStateButtonBinding.bind(view)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.StateButton)
         val btnTxt = typedArray.getString(R.styleable.StateButton_btnStateText)
@@ -67,20 +58,20 @@ class StateButton : RelativeLayout {
             R.drawable.ic_arrow_right
         )
 
-        B.btn.text = btnTxt
-        B.btn.icon = ContextCompat.getDrawable(context, btnIcon)
+        binding.btn.text = btnTxt
+        binding.btn.icon = ContextCompat.getDrawable(context, btnIcon)
         typedArray.recycle()
     }
 
     fun updateProgress(isVisible: Boolean) {
         if (isVisible)
-            B.progress.visibility = View.VISIBLE
+            binding.progress.visibility = View.VISIBLE
         else
 
-            B.progress.visibility = View.INVISIBLE
+            binding.progress.visibility = View.INVISIBLE
     }
 
     fun addOnClickListener(onClickListener: OnClickListener) {
-        B.btn.setOnClickListener(onClickListener)
+        binding.btn.setOnClickListener(onClickListener)
     }
 }

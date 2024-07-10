@@ -23,7 +23,6 @@ import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.hide
 import com.aurora.extensions.show
@@ -53,8 +52,7 @@ class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
             emptyList()
         }
 
-        val permissionGroupWidgets: MutableMap<String, PermissionGroup?> =
-            HashMap<String, PermissionGroup?>()
+        val permissionGroupWidgets: MutableMap<String, PermissionGroup?> = mutableMapOf()
         for (permissionName in args.app.permissions) {
 
             val permissionInfo = getPermissionInfo(permissionName) ?: continue
@@ -64,12 +62,7 @@ class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
             if (permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
                 permissionGroup = permissionGroupWidgets[permissionGroupInfo.name]
             } else {
-                permissionGroup = PermissionGroup(context)
-                permissionGroup.setPermissionGroupInfo(permissionGroupInfo)
-                permissionGroup.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
+                permissionGroup = PermissionGroup(context, permissionGroupInfo)
                 permissionGroupWidgets[permissionGroupInfo.name] = permissionGroup
             }
 

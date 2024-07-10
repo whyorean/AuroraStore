@@ -1,50 +1,51 @@
-/*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
-
 package com.aurora.store.view.epoxy.views
 
-import android.view.View
-import android.view.animation.AnimationUtils
-import com.airbnb.epoxy.EpoxyModel
-import com.aurora.store.view.epoxy.views.app.AppListView
+import android.content.Context
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.RelativeLayout
+import androidx.viewbinding.ViewBinding
+import java.lang.reflect.ParameterizedType
 
-abstract class BaseView<T : View> : EpoxyModel<T>() {
+abstract class BaseView<ViewBindingType : ViewBinding> : RelativeLayout {
 
-    override fun bind(view: T) {
-        super.bind(view)
-        when (view) {
-            is AppListView -> {
-                view.startAnimation(
-                    AnimationUtils.loadAnimation(
-                        view.context,
-                        android.R.anim.fade_in
-                    )
-                )
-            }
+    private lateinit var _binding: ViewBindingType
+    protected val binding get() = _binding
+
+    constructor(context: Context?) : super(context) {
+        init(context)
+    }
+
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        init(context)
+    }
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        init(context)
+    }
+
+    private fun init(context: Context?) {
+        if (context != null) {
+            _binding = inflateViewBinding(LayoutInflater.from(context))
+            addView(_binding.root)
         }
     }
 
-    override fun unbind(view: T) {
-        when (view) {
-            is AppListView -> {
-                view.clearAnimation()
-            }
-        }
+    @Suppress("UNCHECKED_CAST")
+    private fun inflateViewBinding(inflater: LayoutInflater): ViewBindingType {
+        val type =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<ViewBindingType>
+        val method = type.getMethod(
+            "inflate",
+            LayoutInflater::class.java,
+            ViewGroup::class.java,
+            Boolean::class.java
+        )
+        return method.invoke(null, inflater, this, false) as ViewBindingType
     }
 }

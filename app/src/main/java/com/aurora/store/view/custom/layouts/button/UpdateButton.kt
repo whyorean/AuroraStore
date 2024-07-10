@@ -30,7 +30,7 @@ import com.aurora.store.databinding.ViewUpdateButtonBinding
 
 class UpdateButton : RelativeLayout {
 
-    private lateinit var B: ViewUpdateButtonBinding
+    private lateinit var binding: ViewUpdateButtonBinding
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -48,49 +48,41 @@ class UpdateButton : RelativeLayout {
         init(context)
     }
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(context)
-    }
-
     private fun init(context: Context) {
         val view = inflate(context, R.layout.view_update_button, this)
-        B = ViewUpdateButtonBinding.bind(view)
+        binding = ViewUpdateButtonBinding.bind(view)
     }
 
     fun setText(text: String) {
-        B.viewFlipper.displayedChild = 0
-        B.btnPositive.text = text
+        binding.viewFlipper.displayedChild = 0
+        binding.btnPositive.text = text
     }
 
     fun setText(text: Int) {
-        B.viewFlipper.displayedChild = 0
-        B.btnPositive.text = getString(text)
+        binding.viewFlipper.displayedChild = 0
+        binding.btnPositive.text = getString(text)
     }
 
     fun updateState(downloadStatus: DownloadStatus) {
         val displayChild = when (downloadStatus) {
             DownloadStatus.QUEUED,
             DownloadStatus.DOWNLOADING -> 2
+
             else -> 0
         }
 
-        if (B.viewFlipper.displayedChild != displayChild) {
+        if (binding.viewFlipper.displayedChild != displayChild) {
             runOnUiThread {
-                B.viewFlipper.displayedChild = displayChild
+                binding.viewFlipper.displayedChild = displayChild
             }
         }
     }
 
     fun addPositiveOnClickListener(onClickListener: OnClickListener?) {
-        B.btnPositive.setOnClickListener(onClickListener)
+        binding.btnPositive.setOnClickListener(onClickListener)
     }
 
     fun addNegativeOnClickListener(onClickListener: OnClickListener?) {
-        B.btnNegative.setOnClickListener(onClickListener)
+        binding.btnNegative.setOnClickListener(onClickListener)
     }
 }

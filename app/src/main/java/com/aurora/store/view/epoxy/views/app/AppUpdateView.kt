@@ -22,7 +22,6 @@ package com.aurora.store.view.epoxy.views.app
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -40,51 +39,33 @@ import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.ViewAppUpdateBinding
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
-    baseModelClass = BaseView::class
+    baseModelClass = BaseModel::class
 )
-class AppUpdateView : RelativeLayout {
-
-    private lateinit var B: ViewAppUpdateBinding
-
-    constructor(context: Context?) : super(context) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context)
-    }
-
-    private fun init(context: Context?) {
-        val view = inflate(context, R.layout.view_app_update, this)
-        B = ViewAppUpdateBinding.bind(view)
-    }
+class AppUpdateView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewAppUpdateBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp
     fun app(app: App) {
         /*Inflate App details*/
         with(app) {
-            B.txtLine1.text = displayName
-            B.imgIcon.load(iconArtwork.url) {
+            binding.txtLine1.text = displayName
+            binding.imgIcon.load(iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(RoundedCornersTransformation(8.px.toFloat()))
             }
 
-            B.txtLine2.text = developerName
-            B.txtLine3.text = ("${CommonUtil.addSiPrefix(size)}  •  $updatedOn")
-            B.txtLine4.text = ("$versionName (${versionCode})")
-            B.txtChangelog.text = if (changes.isNotEmpty())
+            binding.txtLine2.text = developerName
+            binding.txtLine3.text = ("${CommonUtil.addSiPrefix(size)}  •  $updatedOn")
+            binding.txtLine4.text = ("$versionName (${versionCode})")
+            binding.txtChangelog.text = if (changes.isNotEmpty())
                 HtmlCompat.fromHtml(
                     changes,
                     HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS
@@ -92,13 +73,15 @@ class AppUpdateView : RelativeLayout {
             else
                 context.getString(R.string.details_changelog_unavailable)
 
-            B.headerIndicator.setOnClickListener {
-                if (B.txtChangelog.isVisible) {
-                    B.headerIndicator.icon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_down)
-                    B.txtChangelog.visibility = View.GONE
+            binding.headerIndicator.setOnClickListener {
+                if (binding.txtChangelog.isVisible) {
+                    binding.headerIndicator.icon =
+                        ContextCompat.getDrawable(context, R.drawable.ic_arrow_down)
+                    binding.txtChangelog.visibility = View.GONE
                 } else {
-                    B.headerIndicator.icon = ContextCompat.getDrawable(context, R.drawable.ic_arrow_up)
-                    B.txtChangelog.visibility = View.VISIBLE
+                    binding.headerIndicator.icon =
+                        ContextCompat.getDrawable(context, R.drawable.ic_arrow_up)
+                    binding.txtChangelog.visibility = View.VISIBLE
                 }
             }
         }
@@ -108,26 +91,28 @@ class AppUpdateView : RelativeLayout {
     fun download(download: Download?) {
         if (download != null) {
             /*Inflate Download details*/
-            B.btnAction.updateState(download.downloadStatus)
-            B.progressDownload.isIndeterminate = download.progress < 1
+            binding.btnAction.updateState(download.downloadStatus)
+            binding.progressDownload.isIndeterminate = download.progress < 1
             when (download.downloadStatus) {
                 DownloadStatus.QUEUED -> {
-                    B.progressDownload.progress = 0
-                    B.progressDownload.show()
+                    binding.progressDownload.progress = 0
+                    binding.progressDownload.show()
                 }
+
                 DownloadStatus.DOWNLOADING -> {
                     if (download.progress > 0) {
                         if (download.progress == 100) {
-                            B.progressDownload.invisible()
+                            binding.progressDownload.invisible()
                         } else {
-                            B.progressDownload.progress = download.progress
-                            B.progressDownload.show()
+                            binding.progressDownload.progress = download.progress
+                            binding.progressDownload.show()
                         }
                     }
                 }
+
                 else -> {
-                    B.progressDownload.progress = 0
-                    B.progressDownload.invisible()
+                    binding.progressDownload.progress = 0
+                    binding.progressDownload.invisible()
                 }
             }
         }
@@ -135,28 +120,28 @@ class AppUpdateView : RelativeLayout {
 
     @CallbackProp
     fun click(onClickListener: OnClickListener?) {
-        B.layoutContent.setOnClickListener(onClickListener)
+        binding.layoutContent.setOnClickListener(onClickListener)
     }
 
     @CallbackProp
     fun positiveAction(onClickListener: OnClickListener?) {
-        B.btnAction.addPositiveOnClickListener(onClickListener)
+        binding.btnAction.addPositiveOnClickListener(onClickListener)
     }
 
     @CallbackProp
     fun negativeAction(onClickListener: OnClickListener?) {
-        B.btnAction.addNegativeOnClickListener(onClickListener)
+        binding.btnAction.addNegativeOnClickListener(onClickListener)
     }
 
     @CallbackProp
     fun longClick(onClickListener: OnLongClickListener?) {
-        B.layoutContent.setOnLongClickListener(onClickListener)
+        binding.layoutContent.setOnLongClickListener(onClickListener)
     }
 
     @OnViewRecycled
     fun clear() {
-        B.headerIndicator.removeCallbacks { }
-        B.progressDownload.progress = 0
-        B.progressDownload.invisible()
+        binding.headerIndicator.removeCallbacks { }
+        binding.progressDownload.progress = 0
+        binding.progressDownload.invisible()
     }
 }

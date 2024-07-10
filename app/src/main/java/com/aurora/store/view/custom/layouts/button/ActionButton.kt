@@ -32,7 +32,7 @@ import com.aurora.store.databinding.ViewActionButtonBinding
 
 class ActionButton : RelativeLayout {
 
-    private lateinit var B: ViewActionButtonBinding
+    private lateinit var binding: ViewActionButtonBinding
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -50,18 +50,9 @@ class ActionButton : RelativeLayout {
         init(context, attrs)
     }
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(context, attrs)
-    }
-
     private fun init(context: Context, attrs: AttributeSet?) {
         val view = inflate(context, R.layout.view_action_button, this)
-        B = ViewActionButtonBinding.bind(view)
+        binding = ViewActionButtonBinding.bind(view)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ActionButton)
         val btnTxt = typedArray.getString(R.styleable.ActionButton_btnActionText)
@@ -87,27 +78,27 @@ class ActionButton : RelativeLayout {
             }
 
         stateBackground?.let {
-            B.root.background = ContextCompat.getDrawable(context, it)
+            binding.root.background = ContextCompat.getDrawable(context, it)
         }
 
         val stateColor = ContextCompat.getColor(context, btnTxtColor)
 
-        B.btn.text = btnTxt
-        B.btn.setTextColor(stateColor)
-        B.img.setImageDrawable(ContextCompat.getDrawable(context, stateIcon))
-        B.img.imageTintList = ColorStateList.valueOf(stateColor)
+        binding.btn.text = btnTxt
+        binding.btn.setTextColor(stateColor)
+        binding.img.setImageDrawable(ContextCompat.getDrawable(context, stateIcon))
+        binding.img.imageTintList = ColorStateList.valueOf(stateColor)
 
         typedArray.recycle()
     }
 
     fun setText(text: String) {
-        B.viewFlipper.displayedChild = 0
-        B.btn.text = text
+        binding.viewFlipper.displayedChild = 0
+        binding.btn.text = text
     }
 
     fun setText(text: Int) {
-        B.viewFlipper.displayedChild = 0
-        B.btn.text = getString(text)
+        binding.viewFlipper.displayedChild = 0
+        binding.btn.text = getString(text)
     }
 
     fun updateState(state: State) {
@@ -118,15 +109,15 @@ class ActionButton : RelativeLayout {
             else -> 0
         }
 
-        if (B.viewFlipper.displayedChild != displayChild) {
+        if (binding.viewFlipper.displayedChild != displayChild) {
             runOnUiThread {
-                B.viewFlipper.displayedChild = displayChild
+                binding.viewFlipper.displayedChild = displayChild
                 if (displayChild == 2) updateState(State.IDLE)
             }
         }
     }
 
     fun addOnClickListener(onClickListener: OnClickListener?) {
-        B.btn.setOnClickListener(onClickListener)
+        binding.btn.setOnClickListener(onClickListener)
     }
 }

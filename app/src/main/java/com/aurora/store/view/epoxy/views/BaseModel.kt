@@ -19,14 +19,32 @@
 
 package com.aurora.store.view.epoxy.views
 
-import android.content.Context
-import android.util.AttributeSet
-import com.airbnb.epoxy.ModelView
-import com.aurora.store.databinding.ViewAppProgressBinding
+import android.view.View
+import android.view.animation.AnimationUtils
+import com.airbnb.epoxy.EpoxyModel
+import com.aurora.store.view.epoxy.views.app.AppListView
 
-@ModelView(autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT)
-class AppProgressView @JvmOverloads constructor(
-    context: Context?,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : BaseView<ViewAppProgressBinding>(context, attrs, defStyleAttr)
+abstract class BaseModel<T : View> : EpoxyModel<T>() {
+
+    override fun bind(view: T) {
+        super.bind(view)
+        when (view) {
+            is AppListView -> {
+                view.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        view.context,
+                        android.R.anim.fade_in
+                    )
+                )
+            }
+        }
+    }
+
+    override fun unbind(view: T) {
+        when (view) {
+            is AppListView -> {
+                view.clearAnimation()
+            }
+        }
+    }
+}

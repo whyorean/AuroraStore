@@ -33,48 +33,32 @@ import com.aurora.store.R
 import com.aurora.store.data.model.PermissionGroupInfo
 import java.util.Locale
 
-class PermissionGroup : LinearLayout {
+class PermissionGroup @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     private lateinit var permissionGroupInfo: PermissionGroupInfo
     private lateinit var packageManager: PackageManager
 
     private val permissionMap: MutableMap<String, String> = HashMap()
 
-    constructor(context: Context?) : super(context) {
-        init()
-    }
+    constructor(context: Context?, permissionGroupInfo: PermissionGroupInfo) : this(context) {
+        if (context != null) {
+            inflate(context, R.layout.layout_permission, this)
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init()
-    }
+            layoutParams = LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+            )
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init()
-    }
+            this.packageManager = context.packageManager
+            this.permissionGroupInfo = permissionGroupInfo
 
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init()
-    }
-
-    private fun init() {
-        inflate(context, R.layout.layout_permission, this)
-        packageManager = context.packageManager
-    }
-
-    fun setPermissionGroupInfo(permissionGroupInfo: PermissionGroupInfo) {
-        this.permissionGroupInfo = permissionGroupInfo
-        val imageView = findViewById<ImageView>(R.id.img)
-        imageView.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo))
-        //imageView.setColorFilter(getContext().getStyledAttributeColor(imageView.getContext(), android.R.attr.colorAccent));
+            val imageView = findViewById<ImageView>(R.id.img)
+            imageView.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo))
+        }
     }
 
     fun addPermission(permissionInfo: PermissionInfo, currentPerms: List<String> = emptyList()) {
@@ -166,11 +150,7 @@ class PermissionGroup : LinearLayout {
             }
 
         return label.replaceFirstChar {
-            if (it.isLowerCase()) {
-                it.titlecase(Locale.getDefault())
-            } else {
-                it.toString()
-            }
+            it.titlecase(Locale.getDefault())
         }
     }
 }

@@ -21,47 +21,27 @@ package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.RelativeLayout
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.store.R
 import com.aurora.store.databinding.ViewInfoBinding
+import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
 import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
-    baseModelClass = BaseView::class
+    baseModelClass = BaseModel::class
 )
-class InfoView : RelativeLayout {
-
-    private lateinit var B: ViewInfoBinding
-
-    constructor(context: Context?) : super(context) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context)
-    }
-
-    private fun init(context: Context?) {
-        val view = inflate(context, R.layout.view_info, this)
-        B = ViewInfoBinding.bind(view)
-    }
+class InfoView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewInfoBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp(options = [ModelProp.Option.IgnoreRequireHashCode])
     fun badge(info: Map.Entry<String, String>) {
-        B.txtTitle.text = info.key
+        binding.txtTitle.text = info.key
             .replace("_", " ")
             .lowercase(Locale.getDefault())
             .replaceFirstChar {
@@ -71,10 +51,12 @@ class InfoView : RelativeLayout {
                     it.toString()
                 }
             }
-        B.txtSubtitle.text = info.value
+        binding.txtSubtitle.text = info.value
     }
 
     @OnViewRecycled
     fun clear() {
+        binding.txtTitle.text = null
+        binding.txtSubtitle.text = null
     }
 }

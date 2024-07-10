@@ -40,6 +40,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
     private var _binding: ViewBindingType? = null
     protected val binding get() = _binding!!
 
+    @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

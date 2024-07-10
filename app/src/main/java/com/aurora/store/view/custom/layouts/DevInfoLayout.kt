@@ -27,7 +27,7 @@ import com.aurora.store.databinding.ViewDevInfoBinding
 
 class DevInfoLayout : RelativeLayout {
 
-    private lateinit var B: ViewDevInfoBinding
+    private lateinit var binding: ViewDevInfoBinding
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -45,18 +45,9 @@ class DevInfoLayout : RelativeLayout {
         init(context, attrs)
     }
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init(context, attrs)
-    }
-
     private fun init(context: Context, attrs: AttributeSet?) {
         val view = inflate(context, R.layout.view_dev_info, this)
-        B = ViewDevInfoBinding.bind(view)
+        binding = ViewDevInfoBinding.bind(view)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DevInfoLayout)
         val icon = typedArray.getResourceId(
@@ -67,14 +58,14 @@ class DevInfoLayout : RelativeLayout {
         val textPrimary = typedArray.getString(R.styleable.DevInfoLayout_txtTitle)
         val textSecondary = typedArray.getString(R.styleable.DevInfoLayout_txtSubtitle)
 
-        B.img.setImageResource(icon)
-        B.txtTitle.text = textPrimary
-        B.txtSubtitle.text = textSecondary
+        binding.img.setImageResource(icon)
+        binding.txtTitle.text = textPrimary
+        binding.txtSubtitle.text = textSecondary
         typedArray.recycle()
     }
 
     fun setTxtSubtitle(text: String?) {
-        B.txtSubtitle.text = text
+        binding.txtSubtitle.text = text
         invalidate()
     }
 }

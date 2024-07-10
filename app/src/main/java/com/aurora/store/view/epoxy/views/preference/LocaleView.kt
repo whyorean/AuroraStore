@@ -22,57 +22,37 @@ package com.aurora.store.view.epoxy.views.preference
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.CompoundButton
-import android.widget.RelativeLayout
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.store.R
 import com.aurora.store.databinding.ViewLocaleBinding
+import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
 import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
-    baseModelClass = BaseView::class
+    baseModelClass = BaseModel::class
 )
-class LocaleView : RelativeLayout {
-
-    private lateinit var B: ViewLocaleBinding
-
-    constructor(context: Context?) : super(context) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context)
-    }
-
-    private fun init(context: Context?) {
-        val view = inflate(context, R.layout.view_locale, this)
-        B = ViewLocaleBinding.bind(view)
-    }
+class LocaleView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewLocaleBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp
     fun locale(locale: Locale) {
-        B.line1.text = locale.displayName
-        B.line2.text = locale.getDisplayLanguage(locale)
+        binding.line1.text = locale.displayName
+        binding.line2.text = locale.getDisplayLanguage(locale)
     }
 
     @ModelProp
     fun markChecked(isChecked: Boolean) {
-        B.checkbox.isChecked = isChecked
+        binding.checkbox.isChecked = isChecked
     }
 
     @CallbackProp
     fun checked(onCheckedChangeListener: CompoundButton.OnCheckedChangeListener?) {
-        B.checkbox.setOnCheckedChangeListener(onCheckedChangeListener)
+        binding.checkbox.setOnCheckedChangeListener(onCheckedChangeListener)
     }
 }

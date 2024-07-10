@@ -21,7 +21,6 @@ package com.aurora.store.view.ui.details
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
@@ -29,8 +28,7 @@ import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
-import com.aurora.store.databinding.ActivityGenericPagerBinding
-import com.aurora.store.databinding.ActivityGenericRecyclerBinding
+import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -39,7 +37,7 @@ import org.json.JSONObject
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsExodusFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
+class DetailsExodusFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
 
     private val args: DetailsExodusFragmentArgs by navArgs()
 

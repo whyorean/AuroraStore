@@ -29,7 +29,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.databinding.ActivityGenericPagerBinding
+import com.aurora.store.databinding.FragmentGenericWithPagerBinding
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -37,7 +37,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppsGamesFragment : BaseFragment<ActivityGenericPagerBinding>() {
+class AppsGamesFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 

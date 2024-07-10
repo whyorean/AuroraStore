@@ -25,8 +25,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.SearchBundle
-import com.aurora.store.R
-import com.aurora.store.databinding.ActivityGenericRecyclerBinding
+import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
@@ -35,7 +34,7 @@ import com.aurora.store.viewmodel.search.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DevAppsFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
+class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
 
     private val args: DevAppsFragmentArgs by navArgs()
     private val viewModel: SearchResultViewModel by viewModels()
@@ -73,15 +72,15 @@ class DevAppsFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
                 searchBundle.appList
                     .filter { it.displayName.isNotEmpty() }
                     .forEach { app ->
-                    add(
-                        AppListViewModel_()
-                            .id(app.id)
-                            .app(app)
-                            .click(View.OnClickListener {
-                                openDetailsFragment(app.packageName, app)
-                            })
-                    )
-                }
+                        add(
+                            AppListViewModel_()
+                                .id(app.id)
+                                .app(app)
+                                .click(View.OnClickListener {
+                                    openDetailsFragment(app.packageName, app)
+                                })
+                        )
+                    }
 
                 if (searchBundle.subBundles.isNotEmpty()) {
                     add(

@@ -25,7 +25,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.databinding.ActivityGenericRecyclerBinding
+import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
@@ -34,7 +34,7 @@ import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StreamBrowseFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
+class StreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
     private val args: StreamBrowseFragmentArgs by navArgs()
     private val viewModel: StreamBrowseViewModel by viewModels()
 

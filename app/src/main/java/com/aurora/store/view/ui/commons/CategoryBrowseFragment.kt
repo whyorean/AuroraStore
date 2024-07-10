@@ -30,7 +30,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
-import com.aurora.store.databinding.ActivityGenericRecyclerBinding
+import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.CategoryCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
@@ -38,7 +38,7 @@ import com.aurora.store.viewmodel.subcategory.SubCategoryClusterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryBrowseFragment : BaseFragment<ActivityGenericRecyclerBinding>(),
+class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
     GenericCarouselController.Callbacks {
     private val args: CategoryBrowseFragmentArgs by navArgs()
     private val viewModel: SubCategoryClusterViewModel by activityViewModels()

@@ -33,6 +33,7 @@ abstract class BaseDialogSheet<ViewBindingType : ViewBinding> : BottomSheetDialo
     private var _binding: ViewBindingType? = null
     protected val binding get() = _binding!!
 
+    @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

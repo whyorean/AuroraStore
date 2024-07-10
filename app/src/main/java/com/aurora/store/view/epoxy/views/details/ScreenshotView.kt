@@ -21,7 +21,6 @@ package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.RelativeLayout
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
@@ -31,41 +30,23 @@ import com.aurora.extensions.px
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewScreenshotBinding
+import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
 
 @ModelView(
     autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT,
-    baseModelClass = BaseView::class
+    baseModelClass = BaseModel::class
 )
-class ScreenshotView : RelativeLayout {
-
-    private lateinit var B: ViewScreenshotBinding
+class ScreenshotView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewScreenshotBinding>(context, attrs, defStyleAttr) {
 
     private var position: Int = 0
 
     interface ScreenshotCallback {
         fun onClick(position: Int = 0)
-    }
-
-    constructor(context: Context?) : super(context) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context)
-    }
-
-    private fun init(context: Context?) {
-        val view = inflate(context, R.layout.view_screenshot, this)
-        B = ViewScreenshotBinding.bind(view)
     }
 
     @ModelProp
@@ -76,7 +57,7 @@ class ScreenshotView : RelativeLayout {
     @ModelProp
     fun artwork(artwork: Artwork) {
         normalizeSize(artwork)
-        B.img.load("${artwork.url}=rw-w480-v1-e15") {
+        binding.img.load("${artwork.url}=rw-w480-v1-e15") {
             placeholder(R.drawable.bg_rounded)
             transformations(RoundedCornersTransformation(8.px.toFloat()))
         }
@@ -96,6 +77,7 @@ class ScreenshotView : RelativeLayout {
                     normalizedHeight = 192f
                     normalizedWidth = 192f
                 }
+
                 else -> {
                     val factor = artworkHeight / 192f
                     normalizedHeight = 192f
@@ -103,15 +85,15 @@ class ScreenshotView : RelativeLayout {
                 }
             }
 
-            B.img.layoutParams.height = normalizedHeight.px.toInt()
-            B.img.layoutParams.width = normalizedWidth.px.toInt()
-            B.img.requestLayout()
+            binding.img.layoutParams.height = normalizedHeight.px.toInt()
+            binding.img.layoutParams.width = normalizedWidth.px.toInt()
+            binding.img.requestLayout()
         }
     }
 
     @CallbackProp
     fun callback(screenshotCallback: ScreenshotCallback?) {
-        B.img.setOnClickListener {
+        binding.img.setOnClickListener {
             screenshotCallback?.onClick(position)
         }
     }

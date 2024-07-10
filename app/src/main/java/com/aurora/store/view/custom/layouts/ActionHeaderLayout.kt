@@ -28,7 +28,7 @@ import com.aurora.store.databinding.ViewActionHeaderBinding
 
 class ActionHeaderLayout : RelativeLayout {
 
-    private lateinit var B: ViewActionHeaderBinding
+    private lateinit var binding: ViewActionHeaderBinding
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -48,22 +48,24 @@ class ActionHeaderLayout : RelativeLayout {
 
     private fun init(context: Context, attrs: AttributeSet?) {
         val view = inflate(context, R.layout.view_action_header, this)
-        B = ViewActionHeaderBinding.bind(view)
+        binding = ViewActionHeaderBinding.bind(view)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ActionHeaderLayout)
         val textPrimary = typedArray.getString(R.styleable.ActionHeaderLayout_headerTitle)
 
+        typedArray.recycle()
+
         textPrimary?.let {
-            B.txtTitle.text = it
+            binding.txtTitle.text = it
         }
     }
 
     fun setHeader(header: String?) {
-        B.txtTitle.text = header
+        binding.txtTitle.text = header
     }
 
     fun addClickListener(onclickListener: OnClickListener?) {
-        B.imgAction.visibility = View.VISIBLE
-        B.imgAction.setOnClickListener(onclickListener)
+        binding.imgAction.visibility = View.VISIBLE
+        binding.imgAction.setOnClickListener(onclickListener)
     }
 }

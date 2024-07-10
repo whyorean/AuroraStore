@@ -21,7 +21,6 @@ package com.aurora.store.view.epoxy.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.RelativeLayout
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
@@ -37,42 +36,23 @@ import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
-    baseModelClass = BaseView::class
+    baseModelClass = BaseModel::class
 )
-class DownloadView : RelativeLayout {
-
-    private lateinit var B: ViewDownloadBinding
-
-    constructor(context: Context?) : super(context) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init(context)
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context)
-    }
-
-    private fun init(context: Context?) {
-        val view = inflate(context, R.layout.view_download, this)
-        B = ViewDownloadBinding.bind(view)
-    }
+class DownloadView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewDownloadBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp
     fun download(download: Download) {
-        B.imgDownload.load(download.iconURL) {
+        binding.imgDownload.load(download.iconURL) {
             placeholder(R.drawable.bg_placeholder)
             transformations(RoundedCornersTransformation(32F))
         }
-        B.txtTitle.text = download.displayName
+        binding.txtTitle.text = download.displayName
 
-        B.txtStatus.text = download.downloadStatus.name
+        binding.txtStatus.text = download.downloadStatus.name
             .lowercase(Locale.getDefault())
             .replaceFirstChar {
                 if (it.isLowerCase()) {
@@ -82,38 +62,38 @@ class DownloadView : RelativeLayout {
                 }
             }
 
-        B.progressDownload.apply {
+        binding.progressDownload.apply {
             progress = download.progress
             isIndeterminate = download.progress <= 0 && !download.isFinished
         }
-        B.txtProgress.text = ("${download.progress}%")
+        binding.txtProgress.text = ("${download.progress}%")
 
-        B.txtEta.text = getETAString(context, download.timeRemaining)
-        B.txtSpeed.text = getDownloadSpeedString(
+        binding.txtEta.text = getETAString(context, download.timeRemaining)
+        binding.txtSpeed.text = getDownloadSpeedString(
             context,
             download.speed
         )
 
         when (download.downloadStatus) {
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
-                B.txtSpeed.visibility = VISIBLE
-                B.txtEta.visibility = VISIBLE
+                binding.txtSpeed.visibility = VISIBLE
+                binding.txtEta.visibility = VISIBLE
             }
 
             else -> {
-                B.txtSpeed.visibility = INVISIBLE
-                B.txtEta.visibility = INVISIBLE
+                binding.txtSpeed.visibility = INVISIBLE
+                binding.txtEta.visibility = INVISIBLE
             }
         }
     }
 
     @CallbackProp
     fun click(onClickListener: OnClickListener?) {
-        B.root.setOnClickListener(onClickListener)
+        binding.root.setOnClickListener(onClickListener)
     }
 
     @CallbackProp
     fun longClick(onClickListener: OnLongClickListener?) {
-        B.root.setOnLongClickListener(onClickListener)
+        binding.root.setOnLongClickListener(onClickListener)
     }
 }

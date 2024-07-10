@@ -24,7 +24,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.store.R
-import com.aurora.store.databinding.ActivityGenericRecyclerBinding
+import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
@@ -37,7 +37,7 @@ import com.aurora.store.viewmodel.sale.AppSalesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AppSalesFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
+class AppSalesFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
 
     private val viewModel: AppSalesViewModel by viewModels()
 

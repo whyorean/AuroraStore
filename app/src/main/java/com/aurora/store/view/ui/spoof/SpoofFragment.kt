@@ -34,7 +34,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
-import com.aurora.store.databinding.ActivityGenericPagerBinding
+import com.aurora.store.databinding.FragmentGenericWithPagerBinding
 import com.aurora.store.util.PathUtil
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayout
@@ -42,7 +42,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SpoofFragment : BaseFragment<ActivityGenericPagerBinding>() {
+class SpoofFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
     private val TAG = SpoofFragment::class.java.simpleName
 
     // Android is weird, even if export device config with proper mime type, it will refuse to open
