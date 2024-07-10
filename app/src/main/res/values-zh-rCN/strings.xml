@@ -414,4 +414,11 @@
 \n
 \n请注意 Aurora 商店没有来自 Google、Google Play、任何经 Aurora 商店下载的应用或任何应用开发者的任何批准、赞助或授权； Aurora 商店也与它们没有任何从属、合作或联系。</string>
     <string name="toast_app_unavailable">应用对你的设备不可用</string>
+    <string name="action_favourite">收藏</string>
+    <string name="title_favourites_manager">收藏应用</string>
+    <string name="toast_fav_export_failed">导出收藏失败！</string>
+    <string name="toast_fav_import_success">已导入收藏！</string>
+    <string name="toast_fav_export_success">导出了收藏！</string>
+    <string name="details_no_favourites">未找到收藏应用</string>
+    <string name="toast_fav_import_failed">导入收藏失败！</string>
 </resources>

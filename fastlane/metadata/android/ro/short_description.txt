@@ -1,0 +1,1 @@
+Un client FOSS neoficial pentru conectare la Google Play cu o interfață modernă

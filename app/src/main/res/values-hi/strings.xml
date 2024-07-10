@@ -414,4 +414,11 @@
 \n
 \nकृपया ध्यान दें कि ऑरोरा स्टोर के पास गूगल, गूगल प्ले, ऑरोरा स्टोर के माध्यम से डाउनलोड किए गए किसी भी ऐप या किसी भी ऐप डेवलपर से कोई अनुमोदन, प्रायोजन या प्राधिकरण नहीं है; न ही ऑरोरा स्टोर का उनके साथ कोई संबद्धता, सहयोग या संबंध है।</string>
     <string name="toast_app_unavailable">ऐप आपके डिवाइस के लिए उपलब्ध नहीं है</string>
+    <string name="action_favourite">पसंदीदा</string>
+    <string name="details_no_favourites">कोई पसंदीदा ऐप नहीं मिला</string>
+    <string name="toast_fav_import_failed">पसंदीदा आयात करने में विफल!</string>
+    <string name="title_favourites_manager">पसंदीदा ऐप</string>
+    <string name="toast_fav_export_failed">पसंदीदा निर्यात करने में विफल!</string>
+    <string name="toast_fav_import_success">पसंदीदा आयातित!</string>
+    <string name="toast_fav_export_success">पसंदीदा निर्यातित!</string>
 </resources>
