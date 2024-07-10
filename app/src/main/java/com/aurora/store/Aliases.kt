@@ -9,3 +9,4 @@ import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 typealias TopChartStash = MutableMap<TopChartsContract.Type, MutableMap<TopChartsContract.Chart, StreamCluster>>
 typealias HomeStash = MutableMap<StreamContract.Category, StreamBundle>
 typealias CategoryStash = MutableMap<Category.Type, List<Category>>
+typealias AppStreamStash = MutableMap<String, StreamBundle>

@@ -35,7 +35,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -56,6 +56,7 @@ import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.AuroraApp
+import com.aurora.store.AppStreamStash
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
@@ -64,6 +65,7 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CommonUtil
@@ -92,8 +94,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
-    private val viewModel: AppDetailsViewModel by viewModels()
-    private val detailsClusterViewModel: DetailsClusterViewModel by viewModels()
+    private val viewModel: AppDetailsViewModel by activityViewModels()
+    private val detailsClusterViewModel: DetailsClusterViewModel by activityViewModels()
 
     private val args: AppDetailsFragmentArgs by navArgs()
 
@@ -122,6 +124,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
 
     private lateinit var app: App
+
+    private var streamBundle: StreamBundle? = StreamBundle()
 
     private var isExternal = false
     private var downloadStatus = DownloadStatus.UNAVAILABLE
@@ -196,7 +200,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
         // App Details
-        viewModel.fetchAppDetails(view.context, app.packageName)
+        viewModel.fetchAppDetails(app.packageName)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.app.collect {
@@ -204,7 +208,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     app = it
                     inflatePartialApp() // Re-inflate the app details, as web data may vary.
                     inflateExtraDetails(app)
-                    viewModel.fetchAppReviews(view.context, app.packageName)
+                    viewModel.fetchAppReviews(app.packageName)
                 } else {
                     toast("Failed to fetch app details")
                 }
@@ -266,7 +270,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         // Exodus Privacy Report
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.report.collect { report ->
+            viewModel.exodusReport.collect { report ->
                 if (report == null) {
                     binding.layoutDetailsPrivacy.txtStatus.text =
                         getString(R.string.failed_to_fetch_report)
@@ -801,7 +805,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun inflateAppPrivacy(app: App) {
-        viewModel.fetchAppReport(requireContext(), app.packageName)
+        viewModel.fetchAppReport(app.packageName)
     }
 
     private fun inflateAppDevInfo(app: App) {
@@ -854,7 +858,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         btnBetaAction.text = getString(R.string.action_pending)
                         btnBetaAction.isEnabled = false
                         viewModel.fetchTestingProgramStatus(
-                            requireContext(),
                             app.packageName,
                             !betaProgram.isSubscribed
                         )
@@ -881,43 +884,34 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     }
 
                     override fun onClusterScrolled(streamCluster: StreamCluster) {
-                        detailsClusterViewModel.observeCluster(streamCluster)
+                        detailsClusterViewModel.observeCluster(
+                            it,
+                            streamCluster
+                        )
                     }
 
                     override fun onAppClick(app: App) {
                         openDetailsFragment(app.packageName, app)
                     }
 
-                    override fun onAppLongClick(app: App) {
-
-                    }
+                    override fun onAppLongClick(app: App) {}
                 })
 
-            detailsClusterViewModel.liveData.observe(viewLifecycleOwner) {
-                when (it) {
-                    is ViewState.Empty -> {
-                    }
-
-                    is ViewState.Loading -> {
-
-                    }
-
-                    is ViewState.Error -> {
-
-                    }
-
-                    is ViewState.Status -> {
-
-                    }
-
+            detailsClusterViewModel.liveData.observe(viewLifecycleOwner) { state ->
+                when (state) {
                     is ViewState.Success<*> -> {
-                        carouselController.setData(it.data as StreamBundle)
+                        val stash = state.getDataAs<AppStreamStash>()
+                        streamBundle = stash[it]
+                        carouselController.setData(streamBundle)
+                    }
+
+                    else -> {
+
                     }
                 }
             }
 
             binding.epoxyRecyclerStream.setController(carouselController)
-
             detailsClusterViewModel.getStreamBundle(it)
         }
     }
@@ -925,7 +919,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private fun inflateAppPermission(app: App) {
         binding.layoutDetailsPermissions.apply {
             headerPermission.addClickListener {
-                if (app.permissions.size > 0) {
+                if (app.permissions.isNotEmpty()) {
                     findNavController().navigate(
                         AppDetailsFragmentDirections.actionAppDetailsFragmentToPermissionBottomSheet(
                             app
@@ -956,6 +950,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun addOrUpdateReview(app: App, review: Review, isBeta: Boolean = false) {
-        viewModel.postAppReview(requireContext(), app.packageName, review, isBeta)
+        viewModel.postAppReview(app.packageName, review, isBeta)
     }
 }

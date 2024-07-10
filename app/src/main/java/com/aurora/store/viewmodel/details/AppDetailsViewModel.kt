@@ -18,6 +18,7 @@ import com.aurora.store.data.room.favourites.FavouriteDao
 import com.aurora.store.util.DownloadWorkerUtil
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,6 +31,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val downloadWorkerUtil: DownloadWorkerUtil,
     private val authProvider: AuthProvider,
     private val favouriteDao: FavouriteDao
@@ -40,18 +42,27 @@ class AppDetailsViewModel @Inject constructor(
     private val exodusBaseUrl = "https://reports.exodus-privacy.eu.org/api/search/"
     private val exodusApiKey = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae"
 
+    private val httpClient = HttpClient.getPreferredClient(context)
+    private val appDetailsHelper = AppDetailsHelper(authProvider.authData).using(httpClient)
+    private val reviewsHelper = ReviewsHelper(authProvider.authData).using(httpClient)
+
+    private val appStash: MutableMap<String, App> = mutableMapOf()
     private val _app = MutableSharedFlow<App>()
     val app = _app.asSharedFlow()
 
+    private val reviewsStash = mutableMapOf<String, List<Review>>()
     private val _reviews = MutableSharedFlow<List<Review>>()
     val reviews = _reviews.asSharedFlow()
 
+    private val userReviewStash = mutableMapOf<String, Review?>()
     private val _userReview = MutableSharedFlow<Review>()
     val userReview = _userReview.asSharedFlow()
 
-    private val _report = MutableSharedFlow<Report?>()
-    val report = _report.asSharedFlow()
+    private val exodusReportStash = mutableMapOf<String, Report?>()
+    private val _exodusReport = MutableSharedFlow<Report?>()
+    val exodusReport = _exodusReport.asSharedFlow()
 
+    private val testProgramStatusStash = mutableMapOf<String, TestingProgramStatus?>()
     private val _testingProgramStatus = MutableSharedFlow<TestingProgramStatus?>()
     val testingProgramStatus = _testingProgramStatus.asSharedFlow()
 
@@ -60,16 +71,16 @@ class AppDetailsViewModel @Inject constructor(
 
     val downloadsList get() = downloadWorkerUtil.downloadsList
 
-    fun fetchAppDetails(context: Context, packageName: String) {
+    fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                isFavourite(packageName)
+                checkFavourite(packageName)
 
-                _app.emit(
-                    AppDetailsHelper(authProvider.authData)
-                        .using(HttpClient.getPreferredClient(context))
-                        .getAppByPackageName(packageName)
-                )
+                val app: App = appStash.getOrPut(packageName) {
+                    appDetailsHelper.getAppByPackageName(packageName)
+                }
+
+                _app.emit(app)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app details", exception)
                 _app.emit(App(""))
@@ -77,14 +88,14 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
-    fun fetchAppReviews(context: Context, packageName: String) {
+    fun fetchAppReviews(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _reviews.emit(
-                    ReviewsHelper(authProvider.authData)
-                        .using(HttpClient.getPreferredClient(context))
-                        .getReviewSummary(packageName)
-                )
+                val reviews = reviewsStash.getOrPut(packageName) {
+                    reviewsHelper.getReviewSummary(packageName)
+                }
+
+                _reviews.emit(reviews)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app reviews", exception)
                 _reviews.emit(emptyList())
@@ -92,59 +103,56 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
-    fun postAppReview(context: Context, packageName: String, review: Review, isBeta: Boolean) {
+    fun fetchAppReport(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _userReview.emit(
-                    ReviewsHelper(authProvider.authData)
-                        .using(HttpClient.getPreferredClient(context))
-                        .addOrEditReview(
-                            packageName,
-                            review.title,
-                            review.comment,
-                            review.rating,
-                            isBeta
-                        )!!
-                )
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to post review", exception)
-                _userReview.emit(Review())
-            }
-        }
-    }
+                val exodusReport = exodusReportStash.getOrPut(packageName) {
+                    getLatestExodusReport(packageName)
+                }
 
-
-    fun fetchAppReport(context: Context, packageName: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val headers: MutableMap<String, String> = mutableMapOf()
-                headers["Content-Type"] = "application/json"
-                headers["Accept"] = "application/json"
-                headers["Authorization"] = exodusApiKey
-
-                val url = exodusBaseUrl + packageName
-                val playResponse = HttpClient.getPreferredClient(context).get(url, headers)
-
-                _report.emit(parseResponse(String(playResponse.responseBytes), packageName)[0])
+                _exodusReport.emit(exodusReport)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch privacy report", exception)
-                _report.emit(null)
+                exodusReportStash[packageName] = null
+                _exodusReport.emit(null)
             }
         }
     }
 
-    fun fetchTestingProgramStatus(context: Context, packageName: String, subscribe: Boolean) {
+    fun fetchTestingProgramStatus(packageName: String, subscribe: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _testingProgramStatus.emit(
-                    AppDetailsHelper(authProvider.authData).testingProgram(
-                        packageName,
-                        subscribe
-                    )
-                )
+                val testingProgramStatus = testProgramStatusStash.getOrPut(packageName) {
+                    appDetailsHelper.testingProgram(packageName, subscribe)
+                }
+
+                _testingProgramStatus.emit(testingProgramStatus)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch testing program status", exception)
+                testProgramStatusStash[packageName] = null
                 _testingProgramStatus.emit(null)
+            }
+        }
+    }
+
+    fun postAppReview(packageName: String, review: Review, isBeta: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val userReview = userReviewStash.getOrPut(packageName) {
+                    reviewsHelper.addOrEditReview(
+                        packageName,
+                        review.title,
+                        review.comment,
+                        review.rating,
+                        isBeta
+                    )
+                }
+
+                if (userReview != null) {
+                    _userReview.emit(userReview)
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to post review", exception)
             }
         }
     }
@@ -155,12 +163,6 @@ class AppDetailsViewModel @Inject constructor(
 
     fun cancelDownload(app: App) {
         viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
-    }
-
-    private fun isFavourite(packageName: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _favourite.value = favouriteDao.isFavourite(packageName)
-        }
     }
 
     fun toggleFavourite(app: App) {
@@ -183,9 +185,31 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
-    private fun parseResponse(response: String, packageName: String): List<Report> {
+    private fun checkFavourite(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _favourite.value = favouriteDao.isFavourite(packageName)
+        }
+    }
+
+    private fun getLatestExodusReport(packageName: String): Report? {
+        val headers: MutableMap<String, String> = mutableMapOf()
+        headers["Content-Type"] = "application/json"
+        headers["Accept"] = "application/json"
+        headers["Authorization"] = exodusApiKey
+
+        val url = exodusBaseUrl + packageName
+        val playResponse = httpClient.get(url, headers)
+
+        val report = parseExodusResponse(String(playResponse.responseBytes), packageName)
+            .firstOrNull()
+
+        return report
+    }
+
+    private fun parseExodusResponse(response: String, packageName: String): List<Report> {
         try {
-            val gson = GsonBuilder().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
+            val gson = GsonBuilder()
+                .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
                 .create()
 
             val jsonObject = JSONObject(response)
@@ -193,9 +217,10 @@ class AppDetailsViewModel @Inject constructor(
             val exodusReport: ExodusReport = gson.fromJson(
                 exodusObject.toString(), ExodusReport::class.java
             )
+
             return exodusReport.reports
         } catch (e: Exception) {
-            throw Exception("No reports found")
+            return emptyList()
         }
     }
 }

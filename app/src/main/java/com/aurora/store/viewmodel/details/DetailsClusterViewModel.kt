@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.details
 
-import android.annotation.SuppressLint
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,6 +28,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.store.AppStreamStash
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
@@ -41,18 +41,18 @@ import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
 
 @HiltViewModel
-@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class DetailsClusterViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider
+    authProvider: AuthProvider
 ) : ViewModel() {
 
     private var appDetailsHelper = AppDetailsHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
     private var streamHelper = StreamHelper(authProvider.authData)
 
+
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
-    var streamBundle: StreamBundle = StreamBundle()
+    private val stash: AppStreamStash = mutableMapOf()
 
     lateinit var type: StreamContract.Type
     lateinit var category: StreamContract.Category
@@ -60,9 +60,22 @@ class DetailsClusterViewModel @Inject constructor(
     fun getStreamBundle(streamUrl: String) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
+                val bundle = targetBundle(streamUrl)
+                if (bundle.streamClusters.isNotEmpty()) {
+                    liveData.postValue(ViewState.Success(stash))
+                }
+
                 try {
-                    streamBundle = appDetailsHelper.getDetailsStream(streamUrl)
-                    liveData.postValue(ViewState.Success(streamBundle))
+                    if (!bundle.hasCluster() || bundle.hasNext()) {
+                        val newBundle = appDetailsHelper.getDetailsStream(streamUrl)
+
+                        bundle.apply {
+                            streamClusters.putAll(newBundle.streamClusters)
+                            streamNextPageUrl = newBundle.streamNextPageUrl
+                        }
+
+                        liveData.postValue(ViewState.Success(stash))
+                    }
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
                 }
@@ -70,15 +83,15 @@ class DetailsClusterViewModel @Inject constructor(
         }
     }
 
-    fun observeCluster(streamCluster: StreamCluster) {
+    fun observeCluster(url: String, streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
                             streamHelper.getNextStreamCluster(streamCluster.clusterNextPageUrl)
-                        updateCluster(newCluster)
-                        liveData.postValue(ViewState.Success(streamBundle))
+                        updateCluster(url, streamCluster.id, newCluster)
+                        liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i("End of cluster")
                         streamCluster.clusterNextPageUrl = String()
@@ -90,10 +103,22 @@ class DetailsClusterViewModel @Inject constructor(
         }
     }
 
-    private fun updateCluster(newCluster: StreamCluster) {
-        streamBundle.streamClusters[newCluster.id]?.apply {
+    private fun updateCluster(
+        url: String,
+        clusterID: Int,
+        newCluster: StreamCluster
+    ) {
+        targetBundle(url).streamClusters[clusterID]?.apply {
             clusterAppList.addAll(newCluster.clusterAppList)
             clusterNextPageUrl = newCluster.clusterNextPageUrl
         }
+    }
+
+    private fun targetBundle(url: String): StreamBundle {
+        val streamBundle = stash.getOrPut(url) {
+            StreamBundle()
+        }
+
+        return streamBundle
     }
 }
