@@ -32,15 +32,12 @@ import com.aurora.store.databinding.FragmentDetailsReviewBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.review.ReviewViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
-
-    private var _binding: FragmentDetailsReviewBinding? = null
-    private val binding: FragmentDetailsReviewBinding
-        get() = _binding!!
+class DetailsReviewFragment : BaseFragment<FragmentDetailsReviewBinding>() {
 
     private val args: DetailsReviewFragmentArgs by navArgs()
     private val viewModel: ReviewViewModel by viewModels()
@@ -51,7 +48,6 @@ class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentDetailsReviewBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarActionReview.apply {
@@ -99,11 +95,6 @@ class DetailsReviewFragment : Fragment(R.layout.fragment_details_review) {
             endlessRecyclerOnScrollListener.resetPageCount()
             viewModel.fetchReview(args.packageName, filter)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(reviewCluster: ReviewCluster) {

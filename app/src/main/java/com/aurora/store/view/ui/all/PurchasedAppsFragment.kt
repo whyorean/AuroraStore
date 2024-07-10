@@ -34,12 +34,7 @@ import com.aurora.store.viewmodel.all.PurchasedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PurchasedAppsFragment : BaseFragment(R.layout.fragment_apps) {
-
-    private var _binding: FragmentAppsBinding? = null
-    private val binding: FragmentAppsBinding
-        get() = _binding!!
-
+class PurchasedAppsFragment : BaseFragment<FragmentAppsBinding>() {
     private val viewModel: PurchasedViewModel by viewModels()
 
     companion object {
@@ -51,7 +46,6 @@ class PurchasedAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentAppsBinding.bind(view)
 
         val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener(8) {
             override fun onLoadMore(currentPage: Int) {
@@ -67,12 +61,6 @@ class PurchasedAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
         updateController(null)
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 
     private fun updateController(paginatedAppList: PaginatedAppList?) {
         binding.recycler.withModels {
@@ -98,7 +86,7 @@ class PurchasedAppsFragment : BaseFragment(R.layout.fragment_apps) {
                     )
                 }
 
-                if (paginatedAppList.hasMore){
+                if (paginatedAppList.hasMore) {
                     add(
                         AppProgressViewModel_()
                             .id("progress")

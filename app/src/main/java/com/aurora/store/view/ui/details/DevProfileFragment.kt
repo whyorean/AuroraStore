@@ -38,19 +38,14 @@ import com.aurora.store.viewmodel.details.DevProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
+class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
     GenericCarouselController.Callbacks {
-
-    private var _binding: FragmentDevProfileBinding? = null
-    private val binding: FragmentDevProfileBinding
-        get() = _binding!!
 
     private val args: DevProfileFragmentArgs by navArgs()
     private val viewModel: DevProfileViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentDevProfileBinding.bind(view)
 
         val developerCarouselController = DeveloperCarouselController(this)
 
@@ -96,11 +91,6 @@ class DevProfileFragment : BaseFragment(R.layout.fragment_dev_profile),
 
         binding.viewFlipper.displayedChild = 1
         viewModel.getStreamBundle(args.devId)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {

@@ -25,7 +25,6 @@ import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.CategoryStash
-import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Empty.getDataAs
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
@@ -35,11 +34,7 @@ import com.aurora.store.viewmodel.category.CategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
-
-    private var _binding: FragmentGenericRecyclerBinding? = null
-    private val binding get() = _binding!!
-
+class CategoryFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
     private val viewModel: CategoryViewModel by viewModels()
 
     companion object {
@@ -55,7 +50,6 @@ class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentGenericRecyclerBinding.bind(view)
 
         var pageType = 0
         val bundle = arguments
@@ -108,10 +102,5 @@ class CategoryFragment : BaseFragment(R.layout.fragment_generic_recycler) {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -29,7 +29,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -38,12 +37,13 @@ import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGoogleBinding
 import com.aurora.store.util.AC2DMUtil
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class GoogleFragment : Fragment(R.layout.fragment_google) {
+class GoogleFragment : BaseFragment<FragmentGoogleBinding>() {
 
     private val viewModel: AuthViewModel by activityViewModels()
 
@@ -54,13 +54,8 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
             "(function() { return document.getElementById('profileIdentifier').innerHTML; })();"
     }
 
-    private var _binding: FragmentGoogleBinding? = null
-    private val binding: FragmentGoogleBinding
-        get() = _binding!!
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentGoogleBinding.bind(view)
 
         val cookieManager = CookieManager.getInstance()
 
@@ -117,11 +112,6 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.flowEvent.busEvent.collect { onEventReceived(it) }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun onEventReceived(event: BusEvent) {

@@ -35,12 +35,7 @@ import com.aurora.store.viewmodel.all.LibraryAppsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LibraryAppsFragment : BaseFragment(R.layout.fragment_apps) {
-
-    private var _binding: FragmentAppsBinding? = null
-    private val binding: FragmentAppsBinding
-        get() = _binding!!
-
+class LibraryAppsFragment : BaseFragment<FragmentAppsBinding>() {
     private val viewModel: LibraryAppsViewModel by viewModels()
 
     companion object {
@@ -54,7 +49,6 @@ class LibraryAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentAppsBinding.bind(view)
 
         val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
@@ -68,11 +62,6 @@ class LibraryAppsFragment : BaseFragment(R.layout.fragment_apps) {
         }
 
         updateController(null)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(streamCluster: StreamCluster?) {

@@ -25,7 +25,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.R
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -35,12 +34,7 @@ import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
-
-    private var _binding: ActivityGenericRecyclerBinding? = null
-    private val binding: ActivityGenericRecyclerBinding
-        get() = _binding!!
-
+class StreamBrowseFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
     private val args: StreamBrowseFragmentArgs by navArgs()
     private val viewModel: StreamBrowseViewModel by viewModels()
 
@@ -49,7 +43,6 @@ class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = ActivityGenericRecyclerBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -77,11 +70,6 @@ class StreamBrowseFragment : BaseFragment(R.layout.activity_generic_recycler) {
 
         viewModel.getStreamBundle(args.browseUrl)
         updateController(null)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(streamCluster: StreamCluster?) {

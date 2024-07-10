@@ -22,7 +22,6 @@ package com.aurora.store.view.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
@@ -36,20 +35,17 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_SCOPED_RESTART
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashFragment : Fragment(R.layout.fragment_splash) {
-
-    private var _binding: FragmentSplashBinding? = null
-    private val binding get() = _binding!!
+class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     private val viewModel: AuthViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentSplashBinding.bind(view)
 
         if (!Preferences.getBoolean(requireContext(), PREFERENCE_INTRO)) {
             findNavController().navigate(
@@ -164,11 +160,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         // Check authentication status
         viewModel.observe()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateStatus(string: String?) {

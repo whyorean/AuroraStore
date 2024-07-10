@@ -21,7 +21,6 @@ package com.aurora.store.view.ui.about
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,18 +32,14 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Link
 import com.aurora.store.databinding.FragmentAboutBinding
 import com.aurora.store.view.epoxy.views.preference.LinkViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AboutFragment : Fragment(R.layout.fragment_about) {
-
-    private var _binding: FragmentAboutBinding? = null
-    private val binding: FragmentAboutBinding
-        get() = _binding!!
+class AboutFragment : BaseFragment<FragmentAboutBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentAboutBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_about)
@@ -64,11 +59,6 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
             LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)
 
         updateController()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController() {

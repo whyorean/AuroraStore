@@ -48,10 +48,7 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permissions) {
-
-    private var _binding: FragmentOnboardingPermissionsBinding? = null
-    private val binding get() = _binding!!
+class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>() {
 
     private val startForDozeResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -89,7 +86,6 @@ class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permission
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentOnboardingPermissionsBinding.bind(view)
 
         // RecyclerView
         val installerList = mutableListOf(
@@ -186,11 +182,6 @@ class PermissionsFragment : BaseFragment(R.layout.fragment_onboarding_permission
                 )
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun requestDozePermission() {

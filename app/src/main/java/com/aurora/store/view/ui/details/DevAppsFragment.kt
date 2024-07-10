@@ -35,18 +35,13 @@ import com.aurora.store.viewmodel.search.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
-
-    private var _binding: ActivityGenericRecyclerBinding? = null
-    private val binding: ActivityGenericRecyclerBinding
-        get() = _binding!!
+class DevAppsFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
 
     private val args: DevAppsFragmentArgs by navArgs()
     private val viewModel: SearchResultViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = ActivityGenericRecyclerBinding.bind(view)
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
@@ -69,11 +64,6 @@ class DevAppsFragment : BaseFragment(R.layout.activity_generic_recycler) {
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
         viewModel.observeSearchResults("pub:${args.developerName}")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(searchBundle: SearchBundle) {

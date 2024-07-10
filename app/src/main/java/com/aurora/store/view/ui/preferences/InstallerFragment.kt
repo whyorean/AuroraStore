@@ -41,10 +41,7 @@ import rikka.shizuku.Shizuku
 import rikka.sui.Sui
 
 @AndroidEntryPoint
-class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
-
-    private var _binding: FragmentInstallerBinding? = null
-    private val binding get() = _binding!!
+class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
 
     private var installerId: Int = 0
 
@@ -74,7 +71,6 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentInstallerBinding.bind(view)
 
         // Toolbar
         binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
@@ -109,11 +105,6 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onDestroy() {
         if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
@@ -132,6 +123,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
                 this.installerId = installerId
                 save(PREFERENCE_INSTALLER_ID, installerId)
             }
+
             2 -> {
                 if (AppInstaller.hasRootAccess()) {
                     this.installerId = installerId
@@ -143,6 +135,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
                     )
                 }
             }
+
             3 -> {
                 if (AppInstaller.hasAuroraService(requireContext())) {
                     this.installerId = installerId
@@ -154,6 +147,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
                     )
                 }
             }
+
             4 -> {
                 if (AppInstaller.hasAppManager(requireContext())) {
                     this.installerId = installerId
@@ -165,6 +159,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
                     )
                 }
             }
+
             5 -> {
                 if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
                     if (shizukuAlive && AppInstaller.hasShizukuPerm()) {
@@ -185,6 +180,7 @@ class InstallerFragment : BaseFragment(R.layout.fragment_installer) {
                     )
                 }
             }
+
             else -> {
                 this.installerId = installerId
                 save(PREFERENCE_INSTALLER_ID, installerId)

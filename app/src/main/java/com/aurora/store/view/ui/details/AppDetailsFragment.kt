@@ -96,11 +96,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
-
-    private var _binding: FragmentDetailsBinding? = null
-    private val binding: FragmentDetailsBinding
-        get() = _binding!!
+class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private val viewModel: AppDetailsViewModel by viewModels()
     private val detailsClusterViewModel: DetailsClusterViewModel by viewModels()
@@ -190,7 +186,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentDetailsBinding.bind(view)
 
         if (args.app != null) {
             app = args.app!!
@@ -672,11 +667,6 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                 if (nextView == 0) checkAndSetupInstall()
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun attachBottomSheet() {

@@ -49,12 +49,8 @@ import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
+class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     OnSharedPreferenceChangeListener {
-
-    private var _binding: FragmentSearchResultBinding? = null
-    private val binding: FragmentSearchResultBinding
-        get() = _binding!!
 
     private val viewModel: SearchResultViewModel by viewModels()
 
@@ -69,8 +65,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = FragmentSearchResultBinding.bind(view)
 
         sharedPreferences = Preferences.getPrefs(view.context)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
@@ -132,7 +126,6 @@ class SearchResultsFragment : BaseFragment(R.layout.fragment_search_result),
     override fun onDestroyView() {
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroyView()
-        _binding = null
     }
 
     override fun onDestroy() {

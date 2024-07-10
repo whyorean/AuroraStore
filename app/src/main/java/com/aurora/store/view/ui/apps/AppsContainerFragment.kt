@@ -31,6 +31,7 @@ import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.commons.CategoryFragment
 import com.aurora.store.view.ui.commons.EditorChoiceFragment
 import com.aurora.store.view.ui.commons.ForYouFragment
@@ -41,17 +42,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppsContainerFragment : Fragment(R.layout.fragment_apps_games) {
-
-    private var _binding: FragmentAppsGamesBinding? = null
-    private val binding get() = _binding!!
+class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
 
     @Inject
     lateinit var authProvider: AuthProvider
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentAppsGamesBinding.bind(view)
 
         // Toolbar
         binding.toolbar.apply {
@@ -61,6 +58,7 @@ class AppsContainerFragment : Fragment(R.layout.fragment_apps_games) {
                     R.id.menu_download_manager -> {
                         findNavController().navigate(R.id.downloadFragment)
                     }
+
                     R.id.menu_more -> {
                         findNavController().navigate(
                             MobileNavigationDirections.actionGlobalMoreDialogFragment()
@@ -114,9 +112,8 @@ class AppsContainerFragment : Fragment(R.layout.fragment_apps_games) {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         binding.pager.adapter = null
-        _binding = null
+        super.onDestroyView()
     }
 
     internal class ViewPagerAdapter(

@@ -41,11 +41,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DownloadFragment : BaseFragment(R.layout.fragment_download) {
-
-    private var _binding: FragmentDownloadBinding? = null
-    private val binding: FragmentDownloadBinding
-        get() = _binding!!
+class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
 
     @Inject
     lateinit var downloadWorkerUtil: DownloadWorkerUtil
@@ -54,8 +50,6 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = FragmentDownloadBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarAction.toolbar.apply {
@@ -71,11 +65,13 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                             downloadWorkerUtil.clearAllDownloads()
                         }
                     }
+
                     R.id.action_cancel_all -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
                             downloadWorkerUtil.cancelAll()
                         }
                     }
+
                     R.id.action_clear_completed -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
                             downloadWorkerUtil.clearFinishedDownloads()
@@ -92,11 +88,6 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                 updateController(it.reversed())
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(downloads: List<Download>) {

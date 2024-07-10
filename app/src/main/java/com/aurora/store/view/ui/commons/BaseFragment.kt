@@ -19,23 +19,48 @@
 
 package com.aurora.store.view.ui.commons
 
-import androidx.annotation.LayoutRes
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.MobileNavigationDirections
 import com.google.gson.Gson
+import java.lang.reflect.ParameterizedType
 import javax.inject.Inject
 
-abstract class BaseFragment : Fragment {
-
-    constructor(): super()
-
-    constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
-
+abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
     @Inject
     lateinit var gson: Gson
+
+    private var _binding: ViewBindingType? = null
+    protected val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val type =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<ViewBindingType>
+        val method = type.getMethod(
+            "inflate",
+            LayoutInflater::class.java,
+            ViewGroup::class.java,
+            Boolean::class.java
+        )
+        _binding = method.invoke(null, inflater, container, false) as ViewBindingType
+
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 
     fun openDetailsFragment(packageName: String, app: App? = null) {
         findNavController().navigate(

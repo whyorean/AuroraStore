@@ -39,10 +39,7 @@ import com.aurora.store.viewmodel.topchart.TopChartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
-
-    private var _binding: FragmentTopContainerBinding? = null
-    private val binding get() = _binding!!
+class TopChartFragment : BaseFragment<FragmentTopContainerBinding>() {
 
     private val viewModel: TopChartViewModel by activityViewModels()
 
@@ -62,7 +59,6 @@ class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentTopContainerBinding.bind(view)
 
         var type = 0
         var category = 0
@@ -110,11 +106,6 @@ class TopChartFragment : BaseFragment(R.layout.fragment_top_container) {
                 else -> {}
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(streamCluster: StreamCluster?) {

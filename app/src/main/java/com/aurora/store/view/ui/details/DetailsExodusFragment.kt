@@ -29,19 +29,17 @@ import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
+import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
-
-    private var _binding: ActivityGenericRecyclerBinding? = null
-    private val binding: ActivityGenericRecyclerBinding
-        get() = _binding!!
+class DetailsExodusFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
 
     private val args: DetailsExodusFragmentArgs by navArgs()
 
@@ -50,7 +48,6 @@ class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = ActivityGenericRecyclerBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarAction.apply {
@@ -61,11 +58,6 @@ class DetailsExodusFragment : Fragment(R.layout.activity_generic_recycler) {
         }
 
         updateController(getExodusTrackersFromReport(args.report))
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(reviews: List<ExodusTracker>) {

@@ -38,11 +38,7 @@ import kotlinx.coroutines.launch
 import java.util.Properties
 
 @AndroidEntryPoint
-class DeviceSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
-
-    private var _binding: FragmentGenericRecyclerBinding? = null
-    private val binding get() = _binding!!
-
+class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
     private val viewModel: SpoofViewModel by viewModels()
 
     private lateinit var spoofProvider: SpoofProvider
@@ -59,7 +55,6 @@ class DeviceSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentGenericRecyclerBinding.bind(view)
 
         spoofProvider = SpoofProvider(requireContext())
         properties = if (spoofProvider.isDeviceSpoofEnabled()) {
@@ -74,11 +69,6 @@ class DeviceSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
             }
         }
         viewModel.fetchAvailableDevices(view.context)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(locales: List<Properties>) {

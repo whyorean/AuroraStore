@@ -31,14 +31,10 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WelcomeFragment : BaseFragment(R.layout.fragment_onboarding_welcome) {
-
-    private var _binding: FragmentOnboardingWelcomeBinding? = null
-    private val binding get() = _binding!!
+class WelcomeFragment : BaseFragment<FragmentOnboardingWelcomeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentOnboardingWelcomeBinding.bind(view)
 
         // RecyclerView
         binding.epoxyRecycler.withModels {
@@ -105,10 +101,5 @@ class WelcomeFragment : BaseFragment(R.layout.fragment_onboarding_welcome) {
                 url = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/DISCLAIMER.md"
             )
         )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

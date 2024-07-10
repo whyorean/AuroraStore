@@ -36,17 +36,13 @@ import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
 import com.aurora.store.util.PathUtil
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
-
-    private var _binding: ActivityGenericPagerBinding? = null
-    private val binding: ActivityGenericPagerBinding
-        get() = _binding!!
-
+class SpoofFragment : BaseFragment<ActivityGenericPagerBinding>() {
     private val TAG = SpoofFragment::class.java.simpleName
 
     // Android is weird, even if export device config with proper mime type, it will refuse to open
@@ -65,7 +61,6 @@ class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = ActivityGenericPagerBinding.bind(view)
 
         // Toolbar
         binding.layoutActionToolbar.toolbar.apply {
@@ -107,9 +102,8 @@ class SpoofFragment : Fragment(R.layout.activity_generic_pager) {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         binding.pager.adapter = null
-        _binding = null
+        super.onDestroyView()
     }
 
     private fun importDeviceConfig(uri: Uri) {

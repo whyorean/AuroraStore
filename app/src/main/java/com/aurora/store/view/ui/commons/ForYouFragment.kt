@@ -29,7 +29,6 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract.Category
 import com.aurora.gplayapi.helpers.contracts.StreamContract.Type
 import com.aurora.store.HomeStash
-import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentForYouBinding
@@ -39,12 +38,8 @@ import com.aurora.store.viewmodel.homestream.StreamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
+class ForYouFragment : BaseFragment<FragmentForYouBinding>(),
     GenericCarouselController.Callbacks {
-
-    private var _binding: FragmentForYouBinding? = null
-    private val binding get() = _binding!!
-
     private val viewModel: StreamViewModel by activityViewModels()
 
     private var category: Category = Category.APPLICATION
@@ -63,7 +58,6 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentForYouBinding.bind(view)
 
         val genericCarouselController = GenericCarouselController(this)
 
@@ -110,11 +104,6 @@ class ForYouFragment : BaseFragment(R.layout.fragment_for_you),
                 else -> {}
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {

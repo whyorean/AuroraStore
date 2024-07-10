@@ -37,18 +37,12 @@ import com.aurora.store.viewmodel.sale.AppSalesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
-
-    private var _binding: ActivityGenericRecyclerBinding? = null
-    private val binding: ActivityGenericRecyclerBinding
-        get() = _binding!!
+class AppSalesFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
 
     private val viewModel: AppSalesViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = ActivityGenericRecyclerBinding.bind(view)
 
         binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_apps_sale)
         binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
@@ -66,11 +60,6 @@ class AppSalesFragment : BaseFragment(R.layout.activity_generic_recycler) {
         viewModel.liveData.observe(viewLifecycleOwner) {
             updateController(it)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(paginatedAppList: PaginatedAppList?) {

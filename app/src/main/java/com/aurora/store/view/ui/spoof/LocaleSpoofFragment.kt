@@ -32,13 +32,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
 @AndroidEntryPoint
-class LocaleSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
+class LocaleSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
 
     private val TAG = LocaleSpoofFragment::class.java.simpleName
-
-    private var _binding: FragmentGenericRecyclerBinding? = null
-    private val binding get() = _binding!!
-
     private lateinit var spoofProvider: SpoofProvider
     private lateinit var locale: Locale
 
@@ -53,7 +49,6 @@ class LocaleSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentGenericRecyclerBinding.bind(view)
 
         spoofProvider = SpoofProvider(requireContext())
         locale = if (spoofProvider.isLocaleSpoofEnabled()) {
@@ -67,11 +62,6 @@ class LocaleSpoofFragment : BaseFragment(R.layout.fragment_generic_recycler) {
         } catch (exception: Exception) {
             Log.e(TAG, "Could not get available locales", exception)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(locales: List<Locale>) {

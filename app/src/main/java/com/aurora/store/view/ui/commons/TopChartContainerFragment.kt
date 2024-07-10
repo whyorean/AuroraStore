@@ -32,11 +32,7 @@ import com.aurora.store.databinding.FragmentTopChartBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TopChartContainerFragment : Fragment(R.layout.fragment_top_chart) {
-
-    private var _binding: FragmentTopChartBinding? = null
-    private val binding get() = _binding!!
-
+class TopChartContainerFragment : BaseFragment<FragmentTopChartBinding>() {
     companion object {
         @JvmStatic
         fun newInstance(chartType: Int): TopChartContainerFragment {
@@ -50,7 +46,6 @@ class TopChartContainerFragment : Fragment(R.layout.fragment_top_chart) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentTopChartBinding.bind(view)
 
         var chartType = 0
         val bundle = arguments
@@ -84,9 +79,8 @@ class TopChartContainerFragment : Fragment(R.layout.fragment_top_chart) {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         binding.pager.adapter = null
-        _binding = null
+        super.onDestroyView()
     }
 
     internal class ViewPagerAdapter(

@@ -56,14 +56,12 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
-
-    private var _binding: FragmentOnboardingBinding? = null
-    private val binding get() = _binding!!
+class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
     private var lastPosition = 0
 
@@ -85,7 +83,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentOnboardingBinding.bind(view)
 
         val isDefaultPrefLoaded = Preferences.getBoolean(requireContext(), PREFERENCE_DEFAULT)
         if (!isDefaultPrefLoaded) {
@@ -122,11 +119,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         binding.btnBackward.setOnClickListener {
             binding.viewpager2.setCurrentItem(binding.viewpager2.currentItem - 1, true)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     fun refreshButtonState() {

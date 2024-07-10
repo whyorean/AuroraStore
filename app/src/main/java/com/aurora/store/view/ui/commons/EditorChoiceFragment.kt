@@ -25,19 +25,14 @@ import androidx.fragment.app.viewModels
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.editor.EditorChoiceCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.store.R
 import com.aurora.store.databinding.FragmentForYouBinding
 import com.aurora.store.view.epoxy.controller.EditorChoiceController
 import com.aurora.store.viewmodel.editorschoice.EditorChoiceViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EditorChoiceFragment : BaseFragment(R.layout.fragment_for_you),
+class EditorChoiceFragment : BaseFragment<FragmentForYouBinding>(),
     EditorChoiceController.Callbacks {
-
-    private var _binding: FragmentForYouBinding? = null
-    private val binding get() = _binding!!
-
     private val viewModel: EditorChoiceViewModel by viewModels()
 
     companion object {
@@ -53,7 +48,6 @@ class EditorChoiceFragment : BaseFragment(R.layout.fragment_for_you),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentForYouBinding.bind(view)
 
         var pageType = 0
         val bundle = arguments
@@ -72,11 +66,6 @@ class EditorChoiceFragment : BaseFragment(R.layout.fragment_for_you),
         viewModel.liveData.observe(viewLifecycleOwner) {
             editorChoiceController.setData(it)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onClick(editorChoiceCluster: EditorChoiceCluster) {

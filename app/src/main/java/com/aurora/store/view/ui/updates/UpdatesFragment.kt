@@ -54,12 +54,9 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
+class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
     private lateinit var app: App
-
-    private var _binding: FragmentUpdatesBinding? = null
-    private val binding get() = _binding!!
 
     private val viewModel: UpdatesViewModel by activityViewModels()
 
@@ -79,7 +76,6 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentUpdatesBinding.bind(view)
 
         // Toolbar
         binding.toolbar.setOnMenuItemClickListener {
@@ -149,11 +145,6 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun onEvent(event: BusEvent) {

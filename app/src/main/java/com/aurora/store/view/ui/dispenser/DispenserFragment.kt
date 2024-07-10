@@ -3,7 +3,6 @@ package com.aurora.store.view.ui.dispenser
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.store.R
@@ -11,14 +10,12 @@ import com.aurora.store.databinding.FragmentDispenserBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.view.epoxy.views.DispenserViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DispenserFragment : Fragment(R.layout.fragment_dispenser),
+class DispenserFragment : BaseFragment<FragmentDispenserBinding>(),
     SharedPreferences.OnSharedPreferenceChangeListener {
-
-    private var _binding: FragmentDispenserBinding? = null
-    private val binding get() = _binding!!
 
     private val dispensers: Set<String>
         get() = Preferences.getStringSet(requireContext(), PREFERENCE_DISPENSER_URLS)
@@ -27,7 +24,6 @@ class DispenserFragment : Fragment(R.layout.fragment_dispenser),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentDispenserBinding.bind(view)
 
         sharedPreferences = Preferences.getPrefs(view.context)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
@@ -40,9 +36,8 @@ class DispenserFragment : Fragment(R.layout.fragment_dispenser),
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
-        _binding = null
+        super.onDestroyView()
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {

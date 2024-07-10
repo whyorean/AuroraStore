@@ -41,18 +41,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
-
-    private var _binding: FragmentDetailsMoreBinding? = null
-    private val binding: FragmentDetailsMoreBinding
-        get() = _binding!!
+class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {
 
     private val viewModel: DetailsMoreViewModel by viewModels()
     private val args: DetailsMoreFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentDetailsMoreBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarActionMore.toolbar.setOnClickListener {
@@ -87,11 +82,6 @@ class DetailsMoreFragment : BaseFragment(R.layout.fragment_details_more) {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun inflateDescription(app: App) {

@@ -28,7 +28,6 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.ActivityGenericRecyclerBinding
@@ -39,13 +38,8 @@ import com.aurora.store.viewmodel.subcategory.SubCategoryClusterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
+class CategoryBrowseFragment : BaseFragment<ActivityGenericRecyclerBinding>(),
     GenericCarouselController.Callbacks {
-
-    private var _binding: ActivityGenericRecyclerBinding? = null
-    private val binding: ActivityGenericRecyclerBinding
-        get() = _binding!!
-
     private val args: CategoryBrowseFragmentArgs by navArgs()
     private val viewModel: SubCategoryClusterViewModel by activityViewModels()
 
@@ -54,8 +48,6 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = ActivityGenericRecyclerBinding.bind(view)
 
         val rawCategory = args.browseUrl.split("/").last()
         category = StreamContract.Category.NONE.apply { value = rawCategory }
@@ -94,11 +86,6 @@ class CategoryBrowseFragment : BaseFragment(R.layout.activity_generic_recycler),
         }
 
         viewModel.observe(category)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {

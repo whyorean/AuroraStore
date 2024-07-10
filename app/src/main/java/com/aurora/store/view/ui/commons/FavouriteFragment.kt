@@ -39,12 +39,7 @@ import kotlinx.coroutines.launch
 import java.util.Calendar
 
 @AndroidEntryPoint
-class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
-
-    private var _binding: FragmentFavouriteBinding? = null
-    private val binding: FragmentFavouriteBinding
-        get() = _binding!!
-
+class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
     private val viewModel: FavouriteViewModel by viewModels()
 
     private val mimeType = "application/json"
@@ -59,8 +54,6 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = FragmentFavouriteBinding.bind(view)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favouritesList.collect {
@@ -85,11 +78,6 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite) {
             }
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(favourites: List<Favourite>?) {

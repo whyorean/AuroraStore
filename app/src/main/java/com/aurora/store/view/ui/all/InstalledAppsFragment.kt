@@ -26,7 +26,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
-import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
@@ -38,14 +37,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
+class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
 
     private val TAG = InstalledAppsFragment::class.java.simpleName
-
-    private var _binding: FragmentAppsBinding? = null
-    private val binding: FragmentAppsBinding
-        get() = _binding!!
-
     private val viewModel: InstalledViewModel by activityViewModels()
 
     companion object {
@@ -71,7 +65,6 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentAppsBinding.bind(view)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.installedApps.collect {
@@ -82,11 +75,6 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(appList: List<App>?) {

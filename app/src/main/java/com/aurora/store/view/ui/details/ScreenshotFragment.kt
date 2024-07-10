@@ -32,20 +32,16 @@ import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentScreenshotBinding
 import com.aurora.store.view.epoxy.views.details.LargeScreenshotViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ScreenshotFragment : Fragment(R.layout.fragment_screenshot) {
-
-    private var _binding: FragmentScreenshotBinding? = null
-    private val binding: FragmentScreenshotBinding
-        get() = _binding!!
+class ScreenshotFragment : BaseFragment<FragmentScreenshotBinding>() {
 
     private val args: ScreenshotFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentScreenshotBinding.bind(view)
 
         // Toolbar
         binding.toolbar.apply {
@@ -61,11 +57,6 @@ class ScreenshotFragment : Fragment(R.layout.fragment_screenshot) {
         }
 
         updateController(args.arrayOfArtwork, args.position)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(artworks: Array<Artwork>, position: Int) {

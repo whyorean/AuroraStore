@@ -21,7 +21,6 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -36,12 +35,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
-
-    private var _binding: ActivityGenericRecyclerBinding? = null
-    private val binding: ActivityGenericRecyclerBinding
-        get() = _binding!!
-
+class BlacklistFragment : BaseFragment<ActivityGenericRecyclerBinding>() {
     private val viewModel: BlacklistViewModel by activityViewModels()
 
     private lateinit var blacklistProvider: BlacklistProvider
@@ -49,7 +43,6 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = ActivityGenericRecyclerBinding.bind(view)
         blacklistProvider = BlacklistProvider.with(requireContext())
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -68,11 +61,6 @@ class BlacklistFragment : Fragment(R.layout.activity_generic_recycler) {
     override fun onPause() {
         super.onPause()
         blacklistProvider.save(viewModel.selected)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(blackList: List<App>?) {

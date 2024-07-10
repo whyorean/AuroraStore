@@ -30,24 +30,19 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.ActivityGenericPagerBinding
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
-
-    private var _binding: ActivityGenericPagerBinding? = null
-    private val binding: ActivityGenericPagerBinding
-        get() = _binding!!
-
+class AppsGamesFragment : BaseFragment<ActivityGenericPagerBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = ActivityGenericPagerBinding.bind(view)
 
         // Toolbar
         binding.layoutActionToolbar.toolbar.apply {
@@ -75,11 +70,6 @@ class AppsGamesFragment : Fragment(R.layout.activity_generic_pager) {
                 else -> {}
             }
         }.attach()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     internal class ViewPagerAdapter(

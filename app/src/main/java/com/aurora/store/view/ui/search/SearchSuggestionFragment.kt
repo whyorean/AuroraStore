@@ -26,7 +26,6 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.showKeyboard
@@ -34,16 +33,13 @@ import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
 import com.aurora.store.databinding.FragmentSearchSuggestionBinding
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
+import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
-
-    private var _binding: FragmentSearchSuggestionBinding? = null
-    private val binding: FragmentSearchSuggestionBinding
-        get() = _binding!!
+class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>() {
 
     private val viewModel: SearchSuggestionViewModel by viewModels()
 
@@ -53,8 +49,6 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        _binding = FragmentSearchSuggestionBinding.bind(view)
 
         // Toolbar
         binding.layoutToolbarSearch.apply {
@@ -83,11 +77,6 @@ class SearchSuggestionFragment : Fragment(R.layout.fragment_search_suggestion) {
         if (::searchView.isInitialized) {
             searchView.showKeyboard()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun updateController(searchSuggestions: List<SearchSuggestEntry>) {
