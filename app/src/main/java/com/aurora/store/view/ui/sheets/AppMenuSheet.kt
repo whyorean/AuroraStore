@@ -57,7 +57,7 @@ class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
     private val requestDocumentCreation =
         registerForActivityResult(ActivityResultContracts.CreateDocument(exportMimeType)) {
             if (it != null) {
-                viewModel.copyInstalledApp(requireContext(), args.app.packageName, it)
+                viewModel.copyInstalledApp(requireContext(), args.app, it)
             } else {
                 toast(R.string.failed_apk_export)
             }

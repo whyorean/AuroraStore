@@ -59,12 +59,7 @@ class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu
     private val requestDocumentCreation =
         registerForActivityResult(ActivityResultContracts.CreateDocument(exportMimeType)) {
             if (it != null) {
-                viewModel.copyDownloadedApp(
-                    requireContext(),
-                    args.download.packageName,
-                    args.download.versionCode,
-                    it
-                )
+                viewModel.copyDownloadedApp(requireContext(), args.download, it)
             } else {
                 toast(R.string.failed_apk_export)
             }

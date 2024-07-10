@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.PendingIntentCompat
@@ -248,6 +249,64 @@ object NotificationUtil {
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setAutoCancel(true)
             .build()
+    }
+
+    fun getExportStatusNotification(
+        context: Context,
+        displayName: String,
+        uri: Uri,
+        success: Boolean
+    ): Notification {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            setDataAndType(uri, "application/zip")
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION
+            putExtra(Intent.EXTRA_STREAM, uri)
+        }
+        val pendingIntent = PendingIntentCompat.getActivity(
+            context,
+            UUID.randomUUID().hashCode(),
+            Intent.createChooser(intent, null),
+            PendingIntent.FLAG_CANCEL_CURRENT,
+            false
+        )
+
+        val content = if (success) {
+            context.getString(R.string.export_app_summary_success)
+        } else {
+            context.getString(R.string.export_app_summary_fail)
+        }
+
+        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+            .setSmallIcon(R.drawable.ic_file_copy)
+            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
+            .setContentTitle(displayName).setContentText(content)
+            .setContentIntent(getContentIntentForExport(context, uri))
+            .setAutoCancel(true)
+
+        if (success) {
+            builder.addAction(
+                NotificationCompat.Action.Builder(
+                    R.drawable.ic_share,
+                    context.getString(R.string.action_share),
+                    pendingIntent
+                ).build()
+            )
+        }
+        return builder.build()
+    }
+
+    private fun getContentIntentForExport(context: Context, uri: Uri): PendingIntent? {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/zip")
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION
+        }
+        return PendingIntentCompat.getActivity(
+            context,
+            UUID.randomUUID().hashCode(),
+            intent,
+            PendingIntent.FLAG_CANCEL_CURRENT,
+            false
+        )
     }
 
     private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {

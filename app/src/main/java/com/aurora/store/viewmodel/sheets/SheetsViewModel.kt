@@ -9,6 +9,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.work.ExportWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -45,11 +46,11 @@ class SheetsViewModel @Inject constructor(
         }
     }
 
-    fun copyInstalledApp(context: Context, packageName: String, uri: Uri) {
-        ExportWorker.exportInstalledApp(context, packageName, uri)
+    fun copyInstalledApp(context: Context, app: App, uri: Uri) {
+        ExportWorker.exportInstalledApp(context, app, uri)
     }
 
-    fun copyDownloadedApp(context: Context, packageName: String, versionCode: Int, uri: Uri) {
-        ExportWorker.exportDownloadedApp(context, packageName, versionCode, uri)
+    fun copyDownloadedApp(context: Context, download: Download, uri: Uri) {
+        ExportWorker.exportDownloadedApp(context, download, uri)
     }
 }

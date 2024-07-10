@@ -1,5 +1,7 @@
 package com.aurora.store.data.work
 
+import android.app.NotificationManager
+import android.app.Service
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -11,6 +13,9 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
+import com.aurora.gplayapi.data.models.App
+import com.aurora.store.data.room.download.Download
+import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil.getPackageInfo
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
@@ -35,17 +40,19 @@ class ExportWorker @AssistedInject constructor(
         private const val IS_DOWNLOAD = "IS_DOWNLOAD"
         private const val PACKAGE_NAME = "PACKAGE_NAME"
         private const val VERSION_CODE = "VERSION_CODE"
+        private const val DISPLAY_NAME = "DISPLAY_NAME"
 
         /**
          * Exports the installed package to the given URI
-         * @param packageName packageName of the app to export
+         * @param app App to export
          * @see [ExportWorker]
          */
-        fun exportInstalledApp(context: Context, packageName: String, uri: Uri) {
+        fun exportInstalledApp(context: Context, app: App, uri: Uri) {
             val inputData = Data.Builder()
                 .putBoolean(IS_DOWNLOAD, false)
                 .putString(URI, uri.toString())
-                .putString(PACKAGE_NAME, packageName)
+                .putString(DISPLAY_NAME, app.displayName)
+                .putString(PACKAGE_NAME, app.packageName)
                 .build()
 
             val oneTimeWorkRequest = OneTimeWorkRequestBuilder<ExportWorker>()
@@ -53,22 +60,22 @@ class ExportWorker @AssistedInject constructor(
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .build()
 
-            Log.i(TAG, "Exporting $packageName")
+            Log.i(TAG, "Exporting $app.packageName")
             WorkManager.getInstance(context).enqueue(oneTimeWorkRequest)
         }
 
         /**
          * Exports the given download to the URI
-         * @param packageName Name of the package to export
-         * @param versionCode version of the package
+         * @param download Download to export
          * @see [ExportWorker]
          */
-        fun exportDownloadedApp(context: Context, packageName: String, versionCode: Int, uri: Uri) {
+        fun exportDownloadedApp(context: Context, download: Download, uri: Uri) {
             val inputData = Data.Builder()
                 .putBoolean(IS_DOWNLOAD, true)
                 .putString(URI, uri.toString())
-                .putString(PACKAGE_NAME, packageName)
-                .putInt(VERSION_CODE, versionCode)
+                .putString(DISPLAY_NAME, download.displayName)
+                .putString(PACKAGE_NAME, download.packageName)
+                .putInt(VERSION_CODE, download.versionCode)
                 .build()
 
             val oneTimeWorkRequest = OneTimeWorkRequestBuilder<ExportWorker>()
@@ -76,19 +83,27 @@ class ExportWorker @AssistedInject constructor(
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .build()
 
-            Log.i(TAG, "Exporting download for ${packageName}/${versionCode}")
+            Log.i(TAG, "Exporting download for ${download.packageName}/${download.versionCode}")
             WorkManager.getInstance(context).enqueue(oneTimeWorkRequest)
         }
     }
+
+    private lateinit var notificationManager: NotificationManager
+    private val NOTIFICATION_ID = 500
 
     override suspend fun doWork(): Result {
         val isDownload = inputData.getBoolean(IS_DOWNLOAD, false)
         val uri = Uri.parse(inputData.getString(URI))
         val packageName = inputData.getString(PACKAGE_NAME)
+        val displayName = inputData.getString(DISPLAY_NAME)
         val versionCode = inputData.getInt(VERSION_CODE, -1)
+
+        notificationManager =
+            appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
 
         if (packageName.isNullOrEmpty() || isDownload && versionCode == -1) {
             Log.e(TAG, "Input data is corrupt, bailing out!")
+            notifyStatus(displayName?: String(), uri, false)
             return Result.failure()
         }
 
@@ -98,12 +113,26 @@ class ExportWorker @AssistedInject constructor(
             } else {
                 copyInstalledApp(packageName, uri)
             }
+            notifyStatus(displayName ?: packageName, uri)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to export $packageName", exception)
+            notifyStatus(displayName?: packageName, uri, false)
             return Result.failure()
         }
 
         return Result.success()
+    }
+
+    private fun notifyStatus(packageName: String, uri: Uri, success: Boolean = true) {
+        notificationManager.notify(
+            NOTIFICATION_ID,
+            NotificationUtil.getExportStatusNotification(
+                appContext,
+                packageName,
+                uri,
+                success
+            )
+        )
     }
 
     private fun copyInstalledApp(packageName: String, uri: Uri) {
