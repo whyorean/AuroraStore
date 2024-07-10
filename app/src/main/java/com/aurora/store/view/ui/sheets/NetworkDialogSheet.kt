@@ -26,18 +26,13 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import com.aurora.extensions.isQAndAbove
-import com.aurora.store.R
 import com.aurora.store.databinding.SheetNetworkBinding
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NetworkDialogSheet : BottomSheetDialogFragment(R.layout.sheet_network) {
+class NetworkDialogSheet : BaseDialogSheet<SheetNetworkBinding>() {
 
     private val TAG = NetworkDialogSheet::class.java.simpleName
-
-    private var _binding: SheetNetworkBinding? = null
-    private val binding get() = _binding!!
 
     companion object {
 
@@ -53,8 +48,6 @@ class NetworkDialogSheet : BottomSheetDialogFragment(R.layout.sheet_network) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetNetworkBinding.bind(view)
-
         binding.btnAction.setOnClickListener {
             if (isQAndAbove()) {
                 startActivity(Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY))
@@ -67,10 +60,5 @@ class NetworkDialogSheet : BottomSheetDialogFragment(R.layout.sheet_network) {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

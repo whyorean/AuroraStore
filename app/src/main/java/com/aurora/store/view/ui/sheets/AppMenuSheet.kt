@@ -36,18 +36,14 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
+class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
 
     companion object {
         const val TAG = "APP_MENU_SHEET"
     }
-
-    private var _binding: SheetAppMenuBinding? = null
-    private val binding get() = _binding!!
 
     private val viewModel: SheetsViewModel by viewModels()
     private val args: AppMenuSheetArgs by navArgs()
@@ -66,7 +62,6 @@ class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetAppMenuBinding.bind(view)
 
         val blacklistProvider = BlacklistProvider.with(requireContext())
         val isBlacklisted: Boolean = blacklistProvider.isBlacklisted(args.app.packageName)
@@ -121,10 +116,5 @@ class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
                 false
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -27,20 +27,14 @@ import coil.transform.RoundedCornersTransformation
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetAppPeekBinding
 import com.aurora.store.util.CommonUtil
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AppPeekDialogSheet : BottomSheetDialogFragment(R.layout.sheet_app_peek) {
-
-    private var _binding: SheetAppPeekBinding? = null
-    private val binding get() = _binding!!
-
+class AppPeekDialogSheet : BaseDialogSheet<SheetAppPeekBinding>() {
     private val args: AppPeekDialogSheetArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetAppPeekBinding.bind(view)
 
         binding.txtLine1.text = args.app.displayName
         binding.imgIcon.load(args.app.iconArtwork.url) {
@@ -53,10 +47,5 @@ class AppPeekDialogSheet : BottomSheetDialogFragment(R.layout.sheet_app_peek) {
             args.app.labeledRating,
             if (args.app.isFree) "Free" else "Paid"
         )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -36,20 +36,15 @@ import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu) {
+class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
 
     private val TAG = DownloadMenuSheet::class.java.simpleName
-
-    private var _binding: SheetDownloadMenuBinding? = null
-    private val binding get() = _binding!!
-
     private val viewModel: SheetsViewModel by viewModels()
     private val args: DownloadMenuSheetArgs by navArgs()
     private val playStoreURL = "https://play.google.com/store/apps/details?id="
@@ -74,7 +69,6 @@ class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetDownloadMenuBinding.bind(view)
 
         with(binding.navigationView) {
             val downloadCompleted = args.download.downloadStatus == DownloadStatus.COMPLETED
@@ -96,6 +90,7 @@ class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu
                         install()
                         dismissAllowingStateLoss()
                     }
+
                     R.id.action_copy -> {
                         requireContext().copyToClipBoard(
                             "${playStoreURL}${args.download.packageName}"
@@ -103,12 +98,14 @@ class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu
                         requireContext().toast(requireContext().getString(R.string.toast_clipboard_copied))
                         dismissAllowingStateLoss()
                     }
+
                     R.id.action_cancel -> {
                         findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
                             downloadWorkerUtil.cancelDownload(args.download.packageName)
                         }
                         dismissAllowingStateLoss()
                     }
+
                     R.id.action_clear -> {
                         findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
                             downloadWorkerUtil.clearDownload(
@@ -118,6 +115,7 @@ class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu
                         }
                         dismissAllowingStateLoss()
                     }
+
                     R.id.action_local -> {
                         requestDocumentCreation.launch("${args.download.packageName}.zip")
                     }
@@ -125,11 +123,6 @@ class DownloadMenuSheet : BottomSheetDialogFragment(R.layout.sheet_download_menu
                 false
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun install() {

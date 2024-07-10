@@ -15,9 +15,8 @@ import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.SheetDozeWarningBinding
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.save
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DozeWarningSheet : BottomSheetDialogFragment(R.layout.sheet_doze_warning) {
+class DozeWarningSheet : BaseDialogSheet<SheetDozeWarningBinding>() {
 
     private val args: DozeWarningSheetArgs by navArgs()
 
@@ -38,12 +37,8 @@ class DozeWarningSheet : BottomSheetDialogFragment(R.layout.sheet_doze_warning) 
             }
         }
 
-    private var _binding: SheetDozeWarningBinding? = null
-    private val binding get() = _binding!!
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetDozeWarningBinding.bind(view)
 
         binding.btnSecondary.setOnClickListener { dismissAllowingStateLoss() }
         binding.btnPrimary.setOnClickListener {
@@ -54,10 +49,5 @@ class DozeWarningSheet : BottomSheetDialogFragment(R.layout.sheet_doze_warning) 
                 startForDozeResult.launch(intent)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

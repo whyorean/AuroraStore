@@ -28,18 +28,13 @@ import coil.transform.CircleCropTransformation
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetDeviceMiuiBinding
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DeviceMiuiSheet : BottomSheetDialogFragment(R.layout.sheet_device_miui) {
-
-    private var _binding: SheetDeviceMiuiBinding? = null
-    private val binding get() = _binding!!
+class DeviceMiuiSheet : BaseDialogSheet<SheetDeviceMiuiBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetDeviceMiuiBinding.bind(view)
 
         binding.imgIcon.load(R.drawable.ic_xiaomi_logo) {
             transformations(CircleCropTransformation())
@@ -56,10 +51,5 @@ class DeviceMiuiSheet : BottomSheetDialogFragment(R.layout.sheet_device_miui) {
         binding.btnSecondary.setOnClickListener {
             dismissAllowingStateLoss()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

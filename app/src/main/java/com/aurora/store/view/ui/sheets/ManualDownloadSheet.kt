@@ -31,23 +31,17 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetManualDownloadBinding
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ManualDownloadSheet : BottomSheetDialogFragment(R.layout.sheet_manual_download) {
-
-    private var _binding: SheetManualDownloadBinding? = null
-    private val binding get() = _binding!!
-
+class ManualDownloadSheet : BaseDialogSheet<SheetManualDownloadBinding>() {
     private val viewModel: SheetsViewModel by viewModels()
     private val args: ManualDownloadSheetArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetManualDownloadBinding.bind(view)
         isCancelable = false
 
         inflateData()
@@ -63,11 +57,6 @@ class ManualDownloadSheet : BottomSheetDialogFragment(R.layout.sheet_manual_down
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

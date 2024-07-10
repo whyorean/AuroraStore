@@ -28,20 +28,15 @@ import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetInstallErrorBinding
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InstallErrorDialogSheet : BottomSheetDialogFragment(R.layout.sheet_install_error) {
-
-    private var _binding: SheetInstallErrorBinding? = null
-    private val binding get() = _binding!!
+class InstallErrorDialogSheet : BaseDialogSheet<SheetInstallErrorBinding>() {
 
     private val args: InstallErrorDialogSheetArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetInstallErrorBinding.bind(view)
 
         binding.imgIcon.load(args.app.iconArtwork.url) {
             transformations(CircleCropTransformation())
@@ -59,10 +54,5 @@ class InstallErrorDialogSheet : BottomSheetDialogFragment(R.layout.sheet_install
             requireContext().copyToClipBoard(args.extra)
             requireContext().toast(R.string.toast_clipboard_copied)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

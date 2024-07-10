@@ -25,16 +25,12 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Filter
 import com.aurora.store.data.providers.FilterProvider
 import com.aurora.store.databinding.SheetFilterBinding
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
-
-    private var _binding: SheetFilterBinding? = null
-    private val binding get() = _binding!!
+class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
 
     @Inject
     lateinit var filterProvider: FilterProvider
@@ -43,17 +39,11 @@ class FilterSheet : BottomSheetDialogFragment(R.layout.sheet_filter) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetFilterBinding.bind(view)
         filter = filterProvider.getSavedFilter()
 
         attachSingleChips()
         attachMultipleChips()
         attachActions()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun attachActions() {

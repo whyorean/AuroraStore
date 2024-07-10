@@ -31,14 +31,10 @@ import com.aurora.store.R
 import com.aurora.store.data.model.PermissionGroupInfo
 import com.aurora.store.databinding.SheetPermissionsBinding
 import com.aurora.store.view.custom.layouts.PermissionGroup
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissions) {
-
-    private var _binding: SheetPermissionsBinding? = null
-    private val binding get() = _binding!!
+class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
 
     private lateinit var packageManager: PackageManager
     private lateinit var currentPerms: List<String>
@@ -47,7 +43,6 @@ class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissio
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = SheetPermissionsBinding.bind(view)
 
         packageManager = requireContext().packageManager
         currentPerms = try {
@@ -93,11 +88,6 @@ class PermissionBottomSheet : BottomSheetDialogFragment(R.layout.sheet_permissio
         } else {
             binding.permissionsNone.hide()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun getPermissionInfo(permissionName: String): PermissionInfo? {
