@@ -56,10 +56,12 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.Event
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
@@ -90,9 +92,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 import java.util.Locale
 import javax.inject.Inject
 
@@ -140,21 +139,7 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
     private var autoDownload: Boolean = false
     private var uninstallActionEnabled = false
 
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-        if (autoDownload) {
-            purchase()
-        }
-    }
-
-    override fun onStop() {
-        EventBus.getDefault().unregister(this)
-        super.onStop()
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventMainThread(event: Any) {
+    private fun onEvent(event: Event) {
         when (event) {
             is BusEvent.InstallEvent -> {
                 if (app.packageName == event.packageName) {
@@ -446,6 +431,13 @@ class AppDetailsFragment : BaseFragment(R.layout.fragment_details) {
                         ?.setIcon(R.drawable.ic_favorite_unchecked)
                 }
             }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.installerEvent.collect { onEvent(it) }
         }
     }
 

@@ -30,6 +30,7 @@ import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.R
 import com.aurora.store.data.model.AuthState
@@ -50,7 +51,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import org.greenrobot.eventbus.EventBus
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.util.*
@@ -201,18 +201,18 @@ class AuthViewModel @Inject constructor(
                     if (aasToken != null) {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, email)
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, aasToken)
-                        EventBus.getDefault().post(BusEvent.GoogleAAS(true, email, aasToken))
+                        AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(true, email, aasToken))
                     } else {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, "")
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, "")
-                        EventBus.getDefault().post(BusEvent.GoogleAAS(false))
+                        AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(false))
                     }
                 } else {
-                    EventBus.getDefault().post(BusEvent.GoogleAAS(false))
+                    AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(false))
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to build AuthData", exception)
-                EventBus.getDefault().post(BusEvent.GoogleAAS(false))
+                AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(false))
             }
         }
     }

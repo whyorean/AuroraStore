@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.aurora.extensions.isPAndAbove
+import com.aurora.store.data.event.FlowEvent
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.DownloadWorkerUtil
@@ -57,6 +58,7 @@ class AuroraApp : Application(), Configuration.Provider {
             private set
 
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
+        val flowEvent = FlowEvent()
     }
 
     override fun onCreate() {

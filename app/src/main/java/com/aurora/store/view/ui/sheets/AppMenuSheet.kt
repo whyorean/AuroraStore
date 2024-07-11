@@ -28,6 +28,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.openInfo
 import com.aurora.extensions.toast
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -37,7 +38,6 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
 class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
@@ -99,8 +99,9 @@ class AppMenuSheet : BottomSheetDialogFragment(R.layout.sheet_app_menu) {
                         }
 
                         dismissAllowingStateLoss()
-                        EventBus.getDefault()
-                            .post(BusEvent.Blacklisted(args.app.packageName, ""))
+                        AuroraApp.flowEvent.emitEvent(
+                            BusEvent.Blacklisted(args.app.packageName, "")
+                        )
                     }
 
                     R.id.action_local -> {

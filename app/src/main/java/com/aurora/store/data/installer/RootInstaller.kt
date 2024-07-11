@@ -20,6 +20,7 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.InstallerInfo
@@ -28,7 +29,6 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.qualifiers.ApplicationContext
-import org.greenrobot.eventbus.EventBus
 import java.util.regex.Pattern
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -109,7 +109,7 @@ class RootInstaller @Inject constructor(
                         context.getString(R.string.installer_status_failure),
                         parseError(shellResult)
                     )
-                    EventBus.getDefault().post(event)
+                    AuroraApp.flowEvent.emitEvent(event)
                 }
             } else {
                 removeFromInstallQueue(packageName)

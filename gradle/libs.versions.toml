@@ -7,7 +7,6 @@ composeBom = "2024.06.00"
 coreVersion = "1.13.1"
 epoxyVersion = "5.1.4"
 espressoVersion = "3.6.1"
-eventbusVersion = "3.3.1"
 gplayapiVersion = "3.2.12"
 gsonVersion = "2.10.1"
 hiddenapibypassVersion = "4.3"
@@ -70,7 +69,6 @@ github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.r
 google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gsonVersion" }
 google-protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavaliteVersion" }
-greenrobot-eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbusVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
 hilt-android-core = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
 hilt-androidx-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltWorkVersion" }

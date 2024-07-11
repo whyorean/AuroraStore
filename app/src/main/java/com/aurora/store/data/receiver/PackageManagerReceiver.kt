@@ -22,12 +22,12 @@ package com.aurora.store.data.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent.InstallEvent
 import com.aurora.store.data.event.BusEvent.UninstallEvent
 import com.aurora.store.data.installer.AppInstaller
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
 open class PackageManagerReceiver : BroadcastReceiver() {
@@ -41,11 +41,11 @@ open class PackageManagerReceiver : BroadcastReceiver() {
 
             when (intent.action) {
                 Intent.ACTION_PACKAGE_ADDED -> {
-                    EventBus.getDefault().post(InstallEvent(packageName, ""))
+                    AuroraApp.flowEvent.emitEvent(InstallEvent(packageName, ""))
                 }
 
                 Intent.ACTION_PACKAGE_REMOVED -> {
-                    EventBus.getDefault().post(UninstallEvent(packageName, ""))
+                    AuroraApp.flowEvent.emitEvent(UninstallEvent(packageName, ""))
                 }
             }
 

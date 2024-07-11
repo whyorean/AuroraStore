@@ -34,6 +34,7 @@ import com.aurora.extensions.browse
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.AuroraApp
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
@@ -51,9 +52,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 @AndroidEntryPoint
 class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
@@ -77,11 +75,6 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { perm ->
             if (perm) viewModel.download(app) else toast(R.string.permissions_denied)
         }
-
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -151,6 +144,10 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
         }
 
         updateController(null)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+        }
     }
 
     override fun onDestroyView() {
@@ -158,13 +155,7 @@ class UpdatesFragment : BaseFragment(R.layout.fragment_updates) {
         _binding = null
     }
 
-    override fun onStop() {
-        EventBus.getDefault().unregister(this)
-        super.onStop()
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventMainThread(event: Any) {
+    private fun onEvent(event: BusEvent) {
         when (event) {
             is BusEvent.InstallEvent, is BusEvent.UninstallEvent -> {
                 viewModel.observe()

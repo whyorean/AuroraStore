@@ -167,9 +167,6 @@ dependencies {
     //HTTP Clients
     implementation(libs.squareup.okhttp)
 
-    //EventBus
-    implementation(libs.greenrobot.eventbus)
-
     //Lib-SU
     implementation(libs.github.topjohnwu.libsu)
 

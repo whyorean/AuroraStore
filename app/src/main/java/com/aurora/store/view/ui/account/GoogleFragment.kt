@@ -31,16 +31,16 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGoogleBinding
 import com.aurora.store.util.AC2DMUtil
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GoogleFragment : Fragment(R.layout.fragment_google) {
@@ -113,6 +113,10 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
             }
             loadUrl(EMBEDDED_SETUP_URL)
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.busEvent.collect { onEventReceived(it) }
+        }
     }
 
     override fun onDestroyView() {
@@ -120,18 +124,7 @@ class GoogleFragment : Fragment(R.layout.fragment_google) {
         _binding = null
     }
 
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        EventBus.getDefault().unregister(this)
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventReceived(event: BusEvent) {
+    private fun onEventReceived(event: BusEvent) {
         when (event) {
             is BusEvent.GoogleAAS -> {
                 if (event.success) {

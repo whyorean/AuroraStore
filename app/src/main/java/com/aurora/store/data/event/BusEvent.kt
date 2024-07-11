@@ -19,7 +19,9 @@
 
 package com.aurora.store.data.event
 
-sealed class BusEvent {
+abstract class Event
+
+sealed class BusEvent: Event() {
     data class InstallEvent(
         var packageName: String,
         var extra: String? = ""
@@ -47,7 +49,7 @@ sealed class BusEvent {
     ) : BusEvent()
 }
 
-sealed class InstallerEvent {
+sealed class InstallerEvent: Event() {
     data class Success(
         var packageName: String? = "",
         var extra: String? = ""

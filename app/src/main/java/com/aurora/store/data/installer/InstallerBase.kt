@@ -30,7 +30,6 @@ import com.aurora.store.util.Log
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
-import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 abstract class InstallerBase(protected var context: Context) : IInstaller {
@@ -73,7 +72,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
             extra
         )
 
-        EventBus.getDefault().post(event)
+        AuroraApp.flowEvent.emitEvent(event)
     }
 
     open fun getFiles(packageName: String, versionCode: Int, sharedLibPackageName: String = ""): List<File> {

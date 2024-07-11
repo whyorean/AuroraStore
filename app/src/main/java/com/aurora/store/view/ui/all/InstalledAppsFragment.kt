@@ -23,7 +23,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentAppsBinding
@@ -33,9 +35,7 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
@@ -55,18 +55,7 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onStop() {
-        EventBus.getDefault().unregister(this)
-        super.onStop()
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEvent(event: BusEvent) {
+    private fun onEvent(event: BusEvent) {
         when (event) {
             is BusEvent.InstallEvent,
             is BusEvent.UninstallEvent,
@@ -91,6 +80,10 @@ class InstalledAppsFragment : BaseFragment(R.layout.fragment_apps) {
         updateController(null)
 
         viewModel.getInstalledApps(view.context)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+        }
     }
 
     override fun onDestroyView() {

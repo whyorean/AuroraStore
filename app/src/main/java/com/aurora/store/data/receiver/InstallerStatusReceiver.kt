@@ -41,7 +41,6 @@ import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import dagger.hilt.android.AndroidEntryPoint
-import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
 class InstallerStatusReceiver : BroadcastReceiver() {
@@ -108,34 +107,25 @@ class InstallerStatusReceiver : BroadcastReceiver() {
     }
 
     private fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
-        when (status) {
+        val event = when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
-                EventBus.getDefault().post(
-                    InstallerEvent.Success(
-                        packageName,
-                        context.getString(R.string.installer_status_success)
-                    )
+                InstallerEvent.Success(
+                    packageName, context.getString(R.string.installer_status_success)
                 )
             }
 
             PackageInstaller.STATUS_FAILURE_ABORTED -> {
-                EventBus.getDefault().post(
-                    InstallerEvent.Cancelled(
-                        packageName,
-                        AppInstaller.getErrorString(context, status)
-                    )
+                InstallerEvent.Cancelled(
+                    packageName, AppInstaller.getErrorString(context, status)
                 )
             }
 
             else -> {
-                EventBus.getDefault().post(
-                    InstallerEvent.Failed(
-                        packageName,
-                        AppInstaller.getErrorString(context, status),
-                        extra
-                    )
+                InstallerEvent.Failed(
+                    packageName, AppInstaller.getErrorString(context, status), extra
                 )
             }
         }
+        AuroraApp.flowEvent.emitEvent(event)
     }
 }

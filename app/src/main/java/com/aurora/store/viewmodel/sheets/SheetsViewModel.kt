@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
@@ -17,7 +18,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import org.greenrobot.eventbus.EventBus
 
 @HiltViewModel
 class SheetsViewModel @Inject constructor(
@@ -35,8 +35,9 @@ class SheetsViewModel @Inject constructor(
                 val purchaseHelper = PurchaseHelper(authProvider.authData)
                 val files = purchaseHelper.purchase(app.packageName, customVersion, app.offerType)
                 if (files.isNotEmpty()) {
-                    EventBus.getDefault()
-                        .post(BusEvent.ManualDownload(app.packageName, customVersion))
+                    AuroraApp.flowEvent.emitEvent(
+                        BusEvent.ManualDownload(app.packageName, customVersion)
+                    )
                 }
                 _purchaseStatus.emit(files.isNotEmpty())
             } catch (exception: Exception) {

@@ -42,7 +42,6 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
-import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
@@ -211,7 +210,7 @@ class ServiceInstaller @Inject constructor(
         try {
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    EventBus.getDefault().post(
+                    AuroraApp.flowEvent.emitEvent(
                         BusEvent.UninstallEvent(
                             packageName,
                             context.getString(R.string.installer_status_success)
@@ -241,7 +240,7 @@ class ServiceInstaller @Inject constructor(
         try {
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    EventBus.getDefault().post(
+                    AuroraApp.flowEvent.emitEvent(
                         InstallerEvent.Success(
                             packageName,
                             context.getString(R.string.installer_status_success)
