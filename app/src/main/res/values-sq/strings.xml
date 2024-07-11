@@ -393,4 +393,16 @@
     <string name="remove">Hiqe</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Merrni përgjigje për pyetje të bëra rëndom (PBR), hapa diagnostikimi, etj</string>
+    <string name="details_no_favourites">S’u gjetën aplikacione të parapëlqyer</string>
+    <string name="title_favourites_manager">Aplikacione të Parapëlqyer</string>
+    <string name="toast_app_unavailable">Aplikacion jo gati për pajisjen tuaj</string>
+    <string name="about_aurora_store_title">Mbi Aurora Store-in</string>
+    <string name="about_aurora_store_subtitle">Mësoni më tepër mbi Aurora Store-in</string>
+    <string name="pref_clear_device_owner_title">Spastro të zot pajisjeje</string>
+    <string name="pref_clear_device_owner_summary">Heq Aurora Store-in si aplikacion zot të pajisjes</string>
+    <string name="toast_fav_import_failed">S’u arrit të importohen të parapëlqyer!</string>
+    <string name="toast_fav_export_failed">S’u arrit të eksportohen të parapëlqyer!</string>
+    <string name="toast_fav_import_success">Të parapëlqyerit u importuan!</string>
+    <string name="toast_fav_export_success">Të parapëlqyerit u eksportuan!</string>
+    <string name="session_login">Ju lutemi, bëni hyrjen te llogaria juaj Google Play</string>
 </resources>
