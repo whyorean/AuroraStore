@@ -421,4 +421,6 @@
     <string name="toast_fav_export_success">导出了收藏！</string>
     <string name="details_no_favourites">未找到收藏应用</string>
     <string name="toast_fav_import_failed">导入收藏失败！</string>
+    <string name="export_app_summary_success">成功导出了 app bundle</string>
+    <string name="export_app_summary_fail">导出 app bundle 失败了</string>
 </resources>
