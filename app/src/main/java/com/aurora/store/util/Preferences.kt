@@ -21,9 +21,9 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
-
 
 object Preferences {
 
@@ -72,35 +72,35 @@ object Preferences {
     }
 
     fun remove(context: Context, key: String) {
-        getPrefs(context).edit().remove(key).apply()
+        getPrefs(context).edit { remove(key) }
     }
 
     fun putString(context: Context, key: String, value: String) {
-        getPrefs(context).edit().putString(key, value).apply()
+        getPrefs(context).edit { putString(key, value) }
     }
 
     fun putStringSet(context: Context, key: String, value: Set<String>) {
-        getPrefs(context).edit().putStringSet(key, value).apply()
+        getPrefs(context).edit { putStringSet(key, value) }
     }
 
     fun putInteger(context: Context, key: String, value: Int) {
-        getPrefs(context).edit().putInt(key, value).apply()
+        getPrefs(context).edit { putInt(key, value) }
     }
 
     fun putFloat(context: Context, key: String, value: Float) {
-        getPrefs(context).edit().putFloat(key, value).apply()
+        getPrefs(context).edit { putFloat(key, value) }
     }
 
     fun putLong(context: Context, key: String, value: Long) {
-        getPrefs(context).edit().putLong(key, value).apply()
+        getPrefs(context).edit { putLong(key, value) }
     }
 
     fun putBoolean(context: Context, key: String, value: Boolean) {
-        getPrefs(context).edit().putBoolean(key, value).apply()
+        getPrefs(context).edit { putBoolean(key, value) }
     }
 
     fun putBooleanNow(context: Context, key: String, value: Boolean) {
-        getPrefs(context).edit().putBoolean(key, value).commit()
+        getPrefs(context).edit(true) { putBoolean(key, value) }
     }
 
     fun getString(context: Context, key: String, default: String = ""): String {
