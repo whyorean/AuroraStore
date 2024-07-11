@@ -55,7 +55,8 @@ class AppUpdateView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : BaseView<ViewAppUpdateBinding>(context, attrs, defStyleAttr) {
-    private lateinit var iconDrawable: Drawable
+    private var iconDrawable: Drawable? = null
+    private val cornersTransformation = RoundedCornersTransformation(8.px.toFloat())
 
     @ModelProp
     fun app(app: App) {
@@ -64,7 +65,7 @@ class AppUpdateView @JvmOverloads constructor(
             binding.txtLine1.text = displayName
             binding.imgIcon.load(iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
-                transformations(RoundedCornersTransformation(8.px.toFloat()))
+                transformations(cornersTransformation)
                 listener { _, result ->
                     result.drawable.let { iconDrawable = it }
                 }
@@ -99,27 +100,21 @@ class AppUpdateView @JvmOverloads constructor(
     fun download(download: Download?) {
         if (download != null) {
             binding.btnAction.updateState(download.downloadStatus)
-            binding.progressDownload.isIndeterminate = download.progress < 1
             when (download.downloadStatus) {
                 DownloadStatus.QUEUED -> {
-                    binding.progressDownload.progress = 0
+                    binding.progressDownload.isIndeterminate = true
                     animateImageView(scaleFactor = 0.75f)
                 }
 
                 DownloadStatus.DOWNLOADING -> {
-                    if (download.progress > 0) {
-                        if (download.progress == 100) {
-                            binding.progressDownload.invisible()
-                        } else {
-                            binding.progressDownload.progress = download.progress
-                            animateImageView(scaleFactor = 0.75f)
-                        }
-                    }
+                    binding.progressDownload.isIndeterminate = false
+                    binding.progressDownload.progress = download.progress
+                    animateImageView(scaleFactor = 0.75f)
                 }
 
                 else -> {
-                    binding.progressDownload.progress = 0
-                    animateImageView()
+                    binding.progressDownload.isIndeterminate = true
+                    animateImageView(scaleFactor = 1f)
                 }
             }
         }
@@ -148,13 +143,14 @@ class AppUpdateView @JvmOverloads constructor(
     @OnViewRecycled
     fun clear() {
         binding.headerIndicator.removeCallbacks { }
-        binding.progressDownload.progress = 0
-        animateImageView()
+        binding.progressDownload.invisible()
+        iconDrawable = null
     }
 
     private fun animateImageView(scaleFactor: Float = 1f) {
         val isDownloadVisible = binding.progressDownload.isShown
 
+        // Avoids flickering when the download is in progress
         if (isDownloadVisible && scaleFactor != 1f)
             return
 
@@ -164,7 +160,7 @@ class AppUpdateView @JvmOverloads constructor(
         if (scaleFactor == 1f) {
             binding.progressDownload.invisible()
         } else {
-            binding.progressDownload.postDelayed({ binding.progressDownload.show() }, 250)
+            binding.progressDownload.show()
         }
 
         val scale = listOf(
@@ -172,22 +168,23 @@ class AppUpdateView @JvmOverloads constructor(
             ObjectAnimator.ofFloat(binding.imgIcon, "scaleY", scaleFactor)
         )
 
-        scale.forEach { animator ->
-            animator.interpolator = AccelerateDecelerateInterpolator()
-            animator.duration = 500
-            animator.start()
+        scale.forEach { animation ->
+            animation.apply {
+                interpolator = AccelerateDecelerateInterpolator()
+                duration = 250
+                start()
+            }
         }
 
         iconDrawable?.let {
             binding.imgIcon.load(it) {
                 transformations(
                     if (scaleFactor == 1f)
-                        RoundedCornersTransformation(8.px.toFloat())
+                        cornersTransformation
                     else
                         CircleCropTransformation()
                 )
             }
         }
     }
-
 }
