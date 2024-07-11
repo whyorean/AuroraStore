@@ -19,13 +19,17 @@
 
 package com.aurora.store.view.epoxy.views.app
 
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import coil.load
+import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
@@ -51,6 +55,7 @@ class AppUpdateView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : BaseView<ViewAppUpdateBinding>(context, attrs, defStyleAttr) {
+    private lateinit var iconDrawable: Drawable
 
     @ModelProp
     fun app(app: App) {
@@ -60,6 +65,9 @@ class AppUpdateView @JvmOverloads constructor(
             binding.imgIcon.load(iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(RoundedCornersTransformation(8.px.toFloat()))
+                listener { _, result ->
+                    result.drawable.let { iconDrawable = it }
+                }
             }
 
             binding.txtLine2.text = developerName
@@ -90,13 +98,12 @@ class AppUpdateView @JvmOverloads constructor(
     @ModelProp
     fun download(download: Download?) {
         if (download != null) {
-            /*Inflate Download details*/
             binding.btnAction.updateState(download.downloadStatus)
             binding.progressDownload.isIndeterminate = download.progress < 1
             when (download.downloadStatus) {
                 DownloadStatus.QUEUED -> {
                     binding.progressDownload.progress = 0
-                    binding.progressDownload.show()
+                    animateImageView(scaleFactor = 0.75f)
                 }
 
                 DownloadStatus.DOWNLOADING -> {
@@ -105,14 +112,14 @@ class AppUpdateView @JvmOverloads constructor(
                             binding.progressDownload.invisible()
                         } else {
                             binding.progressDownload.progress = download.progress
-                            binding.progressDownload.show()
+                            animateImageView(scaleFactor = 0.75f)
                         }
                     }
                 }
 
                 else -> {
                     binding.progressDownload.progress = 0
-                    binding.progressDownload.invisible()
+                    animateImageView()
                 }
             }
         }
@@ -142,6 +149,45 @@ class AppUpdateView @JvmOverloads constructor(
     fun clear() {
         binding.headerIndicator.removeCallbacks { }
         binding.progressDownload.progress = 0
-        binding.progressDownload.invisible()
+        animateImageView()
     }
+
+    private fun animateImageView(scaleFactor: Float = 1f) {
+        val isDownloadVisible = binding.progressDownload.isShown
+
+        if (isDownloadVisible && scaleFactor != 1f)
+            return
+
+        if (!isDownloadVisible && scaleFactor == 1f)
+            return
+
+        if (scaleFactor == 1f) {
+            binding.progressDownload.invisible()
+        } else {
+            binding.progressDownload.postDelayed({ binding.progressDownload.show() }, 250)
+        }
+
+        val scale = listOf(
+            ObjectAnimator.ofFloat(binding.imgIcon, "scaleX", scaleFactor),
+            ObjectAnimator.ofFloat(binding.imgIcon, "scaleY", scaleFactor)
+        )
+
+        scale.forEach { animator ->
+            animator.interpolator = AccelerateDecelerateInterpolator()
+            animator.duration = 500
+            animator.start()
+        }
+
+        iconDrawable?.let {
+            binding.imgIcon.load(it) {
+                transformations(
+                    if (scaleFactor == 1f)
+                        RoundedCornersTransformation(8.px.toFloat())
+                    else
+                        CircleCropTransformation()
+                )
+            }
+        }
+    }
+
 }
