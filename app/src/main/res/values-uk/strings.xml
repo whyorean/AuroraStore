@@ -414,4 +414,13 @@
 \n
 \nЗверніть увагу, що Aurora Store не має жодного схвалення, спонсорства чи авторизації від Google, Google Play, будь-яких застосунків, завантажених через Aurora Store, або будь-яких розробників програм; також Aurora Store не має жодного зв’язку, співпраці чи зв’язку з ними.</string>
     <string name="toast_app_unavailable">Застосунок недоступний для вашого пристрою</string>
+    <string name="action_favourite">Улюблене</string>
+    <string name="details_no_favourites">Не знайдено улюблених застосунків</string>
+    <string name="toast_fav_import_failed">Помилка імпортування улюбленого!</string>
+    <string name="toast_fav_export_failed">Помилка експортування улюбленого!</string>
+    <string name="toast_fav_import_success">«Улюблені» імпортовано!</string>
+    <string name="toast_fav_export_success">«Улюблені» експортовано!</string>
+    <string name="export_app_summary_success">Набір застосунків успішно еспортовано</string>
+    <string name="export_app_summary_fail">Набір застосунків не вдалося експортувати</string>
+    <string name="title_favourites_manager">Улюблені застосунки</string>
 </resources>
