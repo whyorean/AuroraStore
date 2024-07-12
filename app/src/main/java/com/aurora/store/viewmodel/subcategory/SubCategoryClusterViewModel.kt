@@ -40,9 +40,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
-class SubCategoryClusterViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
-) : ViewModel() {
+class SubCategoryClusterViewModel @Inject constructor(@ApplicationContext private val context: Context) :
+    ViewModel() {
 
     var contract: StreamContract = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
