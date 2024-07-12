@@ -90,7 +90,7 @@
     <string name="title_account_manager">Akun</string>
     <string name="title_about">Tentang</string>
     <string name="title_updates">Pembaruan</string>
-    <string name="title_spoof_manager">Manajer Spoof</string>
+    <string name="title_spoof_manager">Manajer pemalsuan</string>
     <string name="title_settings">Pengaturan</string>
     <string name="title_purchase_history">Riwayat pembelian</string>
     <string name="title_no_network">Tidak ada jaringan</string>
@@ -110,7 +110,7 @@
     <string name="toast_manual_available">Selamat, kode versi yang diminta tersedia, unduh sekarang.</string>
     <string name="toast_manual_unavailable">Kode versi yang Anda minta tidak tersedia.</string>
     <string name="toast_purchase_blocked">Pembelian aplikasi tidak tersedia di akun Anonim.</string>
-    <string name="toast_spoof_applied">Spoof perangkat diterapkan.</string>
+    <string name="toast_spoof_applied">Pemalsuan perangkat diterapkan.</string>
     <string name="toast_permission_granted">Izin diberikan</string>
     <string name="toast_aas_token_failed">Tidak dapat membuat Token AAS</string>
     <string name="pref_install_mode_title">Metode pemasangan</string>
@@ -206,7 +206,7 @@
     <string name="tab_editor_choice">Pilihan Editor</string>
     <string name="tab_categories">Kategori</string>
     <string name="insecure_anonymous_apply">Pastikan Anda masuk kembali dan memulai ulang aplikasi untuk menerapkan perubahan.</string>
-    <string name="spoof_apply">Pastikan Anda masuk kembali untuk menerapkan spoof</string>
+    <string name="spoof_apply">Pastikan Anda masuk kembali untuk menerapkan pemalsuan</string>
     <string name="purchase_session_expired">Sesi berakhir, masuk kembali untuk mendapatkan sesi baru.</string>
     <string name="purchase_no_file">Tidak dapat mendapatkan berkas</string>
     <string name="purchase_not_found">Aplikasi tidak ditemukan</string>
@@ -390,7 +390,7 @@
     <string name="about_aurora_store_subtitle">Pelajari lebih lanjut tentang Aurora Store</string>
     <string name="pref_updates_incompatible">Pembaruan yang tidak kompatibel</string>
     <string name="failed_apk_export">Gagal mengekspor APK</string>
-    <string name="session_installer_subtitle">Penginstal berbasis sesi untuk APK yang dibundel/dipisahkan</string>
+    <string name="session_installer_subtitle">Penginstal berbasis sesi untuk APK gabungan/terpisah</string>
     <string name="session_installer_desc">Direkomendasikan, sudah terpasang dan mendukung semua versi Android</string>
     <string name="root_installer_subtitle">Penginstal berbasis shell menggunakan izin root</string>
     <string name="action_request_analysis">Minta analisis baru</string>
@@ -404,4 +404,23 @@
 \nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lainnya di Aurora Store diakses, diunduh, dan/atau ditampilkan secara langsung dari Google Play. Aurora Store berfungsi persis seperti pintu atau browser, memungkinkan Anda untuk masuk ke akun Google Play dan menemukan aplikasi dari Google Play.
 \n
 \nHarap diperhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi apa pun dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, atau pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
+    <string name="toast_app_unavailable">Aplikasi tidak tersedia untuk perangkat Anda</string>
+    <string name="services_installer_desc">Memerlukan Layanan Aurora untuk diinstal sebagai aplikasi sistem dengan hak istimewa</string>
+    <string name="remove_dispenser_title">Hapus dispenser</string>
+    <string name="action_favourite">Kesukaan</string>
+    <string name="details_no_favourites">Tidak ada aplikasi kesukaan yang ditemukan</string>
+    <string name="title_favourites_manager">Aplikasi Kesukaan</string>
+    <string name="pref_clear_device_owner_title">Hapus pemilik perangkat</string>
+    <string name="add_dispenser_hint">URL Dispenser</string>
+    <string name="toast_fav_import_failed">Gagal mengimpor favorit!</string>
+    <string name="toast_fav_export_failed">Gagal mengekspor favorit!</string>
+    <string name="toast_fav_import_success">Favorit diimpor!</string>
+    <string name="toast_fav_export_success">Favorit diekspor!</string>
+    <string name="native_installer_subtitle">Penginstal berbasis intent, tersedia di semua perangkat</string>
+    <string name="pref_clear_device_owner_summary">Menghapus Aurora Store sebagai aplikasi pemilik perangkat</string>
+    <string name="export_app_summary_success">Paket aplikasi berhasil diekspor</string>
+    <string name="export_app_summary_fail">Gagal mengekspor app bundle</string>
+    <string name="add_dispenser_title">Tambah dispenser</string>
+    <string name="pref_dispenser_title">Kelola dispenser</string>
+    <string name="no_dispensers_available">Tidak ditemukan dispenser</string>
 </resources>
