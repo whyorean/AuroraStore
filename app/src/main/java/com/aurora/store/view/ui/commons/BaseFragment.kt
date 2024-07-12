@@ -103,12 +103,6 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
         }
     }
 
-    fun openEditorStreamBrowseFragment(browseUrl: String, title: String = "") {
-        findNavController().navigate(
-            MobileNavigationDirections.actionGlobalEditorStreamBrowseFragment(title, browseUrl)
-        )
-    }
-
     fun openScreenshotFragment(app: App, position: Int) {
         findNavController().navigate(
             MobileNavigationDirections.actionGlobalScreenshotFragment(

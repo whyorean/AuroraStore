@@ -271,11 +271,6 @@ class MoreDialogFragment : DialogFragment() {
                 destinationID = R.id.appsGamesFragment
             ),
             Option(
-                title = R.string.title_apps_sale,
-                icon = R.drawable.ic_sale,
-                destinationID = R.id.appSalesFragment
-            ),
-            Option(
                 title = R.string.title_blacklist_manager,
                 icon = R.drawable.ic_blacklist,
                 destinationID = R.id.blacklistFragment

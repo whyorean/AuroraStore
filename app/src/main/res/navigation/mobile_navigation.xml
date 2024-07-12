@@ -30,9 +30,6 @@
         android:id="@+id/action_global_categoryBrowseFragment"
         app:destination="@id/categoryBrowseFragment" />
     <action
-        android:id="@+id/action_global_editorStreamBrowseFragment"
-        app:destination="@id/editorStreamBrowseFragment" />
-    <action
         android:id="@+id/action_global_expandedStreamBrowseFragment"
         app:destination="@id/expandedStreamBrowseFragment" />
     <action
@@ -78,11 +75,6 @@
         android:name="com.aurora.store.view.ui.all.AppsGamesFragment"
         android:label="@string/title_apps_games"
         tools:layout="@layout/fragment_generic_with_pager" />
-    <fragment
-        android:id="@+id/appSalesFragment"
-        android:name="com.aurora.store.view.ui.sale.AppSalesFragment"
-        android:label="@string/title_apps_sale"
-        tools:layout="@layout/fragment_generic_with_toolbar" />
     <fragment
         android:id="@+id/spoofFragment"
         android:name="com.aurora.store.view.ui.spoof.SpoofFragment"
@@ -219,16 +211,6 @@
         <action
             android:id="@+id/action_categoryBrowseFragment_to_appPeekDialogSheet"
             app:destination="@id/appPeekDialogSheet" />
-    </fragment>
-    <fragment
-        android:id="@+id/editorStreamBrowseFragment"
-        android:name="com.aurora.store.view.ui.commons.EditorStreamBrowseFragment"
-        tools:layout="@layout/fragment_generic_with_toolbar" >
-        <argument android:name="title"
-            app:argType="string" />
-        <argument
-            android:name="browseUrl"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/expandedStreamBrowseFragment"
