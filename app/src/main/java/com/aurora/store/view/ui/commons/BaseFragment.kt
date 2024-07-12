@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
+import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
 import com.google.gson.Gson
 import java.lang.reflect.ParameterizedType
@@ -93,19 +94,12 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
                     title
                 )
             )
-        } else {
-            findNavController().navigate(
-                MobileNavigationDirections.actionGlobalStreamBrowseFragment(
-                    browseUrl,
-                    title
-                )
-            )
         }
     }
 
-    fun openEditorStreamBrowseFragment(browseUrl: String, title: String = "") {
+    fun openStreamBrowseFragment(streamCluster: StreamCluster) {
         findNavController().navigate(
-            MobileNavigationDirections.actionGlobalEditorStreamBrowseFragment(title, browseUrl)
+            MobileNavigationDirections.actionGlobalStreamBrowseFragment(streamCluster)
         )
     }
 

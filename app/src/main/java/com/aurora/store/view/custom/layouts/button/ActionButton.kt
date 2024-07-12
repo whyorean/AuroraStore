@@ -25,7 +25,6 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import com.aurora.extensions.getString
-import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.model.State
 import com.aurora.store.databinding.ViewActionButtonBinding
@@ -101,19 +100,21 @@ class ActionButton : RelativeLayout {
         binding.btn.text = getString(text)
     }
 
+    fun setButtonState(enabled: Boolean = true) {
+        binding.btn.isEnabled = enabled
+    }
+
     fun updateState(state: State) {
         val displayChild = when (state) {
-            State.IDLE -> 0
             State.PROGRESS -> 1
             State.COMPLETE -> 2
             else -> 0
         }
 
         if (binding.viewFlipper.displayedChild != displayChild) {
-            runOnUiThread {
-                binding.viewFlipper.displayedChild = displayChild
-                if (displayChild == 2) updateState(State.IDLE)
-            }
+            binding.viewFlipper.displayedChild = displayChild
+
+            if (displayChild == 2) updateState(State.IDLE)
         }
     }
 

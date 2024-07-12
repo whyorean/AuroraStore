@@ -25,7 +25,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.StreamHelper
+import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
@@ -43,31 +44,16 @@ class StreamBrowseViewModel @Inject constructor(
     private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private val streamHelper: StreamHelper = StreamHelper(authProvider.authData)
+    private val streamHelper: StreamContract = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
-    var streamCluster: StreamCluster = StreamCluster()
 
-    fun getStreamBundle(browseUrl: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            liveData.postValue(getInitialCluster(browseUrl))
-        }
-    }
+    private lateinit var streamCluster: StreamCluster
 
-    private fun getInitialCluster(browseUrl: String): StreamCluster {
-        val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)
-
-        if (browseResponse.contentsUrl.isNotEmpty())
-            streamCluster = streamHelper.getNextStreamCluster(browseResponse.contentsUrl)
-        else if (browseResponse.hasBrowseTab())
-            streamCluster = streamHelper.getNextStreamCluster(browseResponse.browseTab.listUrl)
-
-        streamCluster.apply {
-            clusterTitle = browseResponse.title
-        }
-
-        return streamCluster
+    fun initCluster(cluster: StreamCluster) {
+        streamCluster = cluster
+        liveData.postValue(streamCluster)
     }
 
     fun nextCluster() {
@@ -75,18 +61,18 @@ class StreamBrowseViewModel @Inject constructor(
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
-                        val newCluster = streamHelper.getNextStreamCluster(
+                        val nextCluster = streamHelper.nextStreamCluster(
                             streamCluster.clusterNextPageUrl
                         )
 
                         streamCluster.apply {
-                            clusterAppList.addAll(newCluster.clusterAppList)
-                            clusterNextPageUrl = newCluster.clusterNextPageUrl
+                            clusterAppList.addAll(nextCluster.clusterAppList)
+                            clusterNextPageUrl = nextCluster.clusterNextPageUrl
                         }
 
                         liveData.postValue(streamCluster)
                     } else {
-                        Log.i("End of Bundle")
+                        Log.i("End of Cluster")
                     }
                 } catch (_: Exception) {
                 }

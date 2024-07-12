@@ -38,38 +38,32 @@ class StreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
     private val args: StreamBrowseFragmentArgs by navArgs()
     private val viewModel: StreamBrowseViewModel by viewModels()
 
-    private lateinit var endlessRecyclerOnScrollListener: EndlessRecyclerOnScrollListener
-    private lateinit var cluster: StreamCluster
+    private lateinit var streamCluster: StreamCluster
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        streamCluster = args.cluster
+
         // Toolbar
         binding.layoutToolbarAction.apply {
-            txtTitle.text = args.title
+            txtTitle.text = streamCluster.clusterTitle
             imgActionPrimary.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            if (!::cluster.isInitialized) {
-                endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-                    override fun onLoadMore(currentPage: Int) {
-                        viewModel.nextCluster()
-                    }
-                }
-                binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+        binding.recycler.addOnScrollListener(object :
+            EndlessRecyclerOnScrollListener(visibleThreshold = 4) {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.nextCluster()
             }
+        })
 
-            cluster = it
-
-            updateController(cluster)
-            binding.layoutToolbarAction.txtTitle.text = it.clusterTitle
+        viewModel.initCluster(streamCluster)
+        viewModel.liveData.observe(viewLifecycleOwner) {
+            updateController(streamCluster)
         }
-
-        viewModel.getStreamBundle(args.browseUrl)
-        updateController(null)
     }
 
     private fun updateController(streamCluster: StreamCluster?) {

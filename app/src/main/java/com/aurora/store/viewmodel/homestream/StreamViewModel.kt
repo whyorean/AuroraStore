@@ -26,13 +26,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -44,14 +42,10 @@ import javax.inject.Inject
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class StreamViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    private var streamHelper: StreamContract = StreamHelper(authProvider.authData)
-        .using(HttpClient.getPreferredClient(context))
-
-    private var webStreamHelper: StreamContract = WebStreamHelper()
+    private var webStreamHelper = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
@@ -59,11 +53,7 @@ class StreamViewModel @Inject constructor(
     private var stash: HomeStash = mutableMapOf()
 
     fun contract(): StreamContract {
-        return if (authProvider.isAnonymous) {
-            webStreamHelper
-        } else {
-            streamHelper
-        }
+        return webStreamHelper
     }
 
     fun getStreamBundle(category: StreamContract.Category, type: StreamContract.Type) {
@@ -75,7 +65,7 @@ class StreamViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 val bundle = targetBundle(category)
-                if (bundle.streamClusters.isNotEmpty()) {
+                if (bundle.hasCluster()) {
                     liveData.postValue(ViewState.Success(stash))
                 }
 
@@ -83,13 +73,13 @@ class StreamViewModel @Inject constructor(
                     if (!bundle.hasCluster() || bundle.hasNext()) {
 
                         //Fetch new stream bundle
-                        val newBundle = if (bundle.streamClusters.isEmpty()) {
-                            contract().fetch(type, category)
-                        } else {
+                        val newBundle = if (bundle.hasCluster()) {
                             contract().nextStreamBundle(
                                 category,
                                 bundle.streamNextPageUrl
                             )
+                        } else {
+                            contract().fetch(type, category)
                         }
 
                         //Update old bundle
@@ -142,7 +132,7 @@ class StreamViewModel @Inject constructor(
     }
 
     private fun targetBundle(category: StreamContract.Category): StreamBundle {
-        val streamBundle = stash.getOrPut(category){
+        val streamBundle = stash.getOrPut(category) {
             StreamBundle()
         }
 

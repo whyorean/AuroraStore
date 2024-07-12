@@ -94,8 +94,8 @@ class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
                         }
 
                         dismissAllowingStateLoss()
-                        AuroraApp.flowEvent.emitEvent(
-                            BusEvent.Blacklisted(args.app.packageName, "")
+                        AuroraApp.events.send(
+                            BusEvent.Blacklisted(args.app.packageName)
                         )
                     }
 

@@ -37,7 +37,8 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
-import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.Event
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.PackageUtil
@@ -143,13 +144,13 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+            AuroraApp.events.busEvent.collect { onEvent(it) }
         }
     }
 
-    private fun onEvent(event: BusEvent) {
+    private fun onEvent(event: Event) {
         when (event) {
-            is BusEvent.InstallEvent, is BusEvent.UninstallEvent -> {
+            is InstallerEvent.Installed, is InstallerEvent.Uninstalled -> {
                 viewModel.fetchUpdates()
             }
 

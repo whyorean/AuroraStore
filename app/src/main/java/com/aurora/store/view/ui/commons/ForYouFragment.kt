@@ -67,27 +67,18 @@ class ForYouFragment : BaseFragment<FragmentForYouBinding>(),
             pageType = bundle.getInt(Constants.PAGE_TYPE, 0)
         }
 
-        when (pageType) {
-            0 -> {
-                category = Category.APPLICATION
-                viewModel.getStreamBundle(category, Type.HOME)
-            }
-
-            1 -> {
-                category = Category.GAME
-                viewModel.getStreamBundle(category, Type.HOME)
-            }
-        }
+        category = if (pageType == 0) Category.APPLICATION else Category.GAME
 
         binding.recycler.setController(genericCarouselController)
         binding.recycler.addOnScrollListener(
-            object : EndlessRecyclerOnScrollListener() {
+            object : EndlessRecyclerOnScrollListener(visibleThreshold = 4) {
                 override fun onLoadMore(currentPage: Int) {
                     viewModel.observe(category, Type.HOME)
                 }
             }
         )
 
+        viewModel.getStreamBundle(category, Type.HOME)
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Loading -> {
@@ -107,7 +98,7 @@ class ForYouFragment : BaseFragment<FragmentForYouBinding>(),
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
-
+        openStreamBrowseFragment(streamCluster)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

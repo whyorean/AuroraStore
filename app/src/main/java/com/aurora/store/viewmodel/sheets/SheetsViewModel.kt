@@ -35,7 +35,7 @@ class SheetsViewModel @Inject constructor(
                 val purchaseHelper = PurchaseHelper(authProvider.authData)
                 val files = purchaseHelper.purchase(app.packageName, customVersion, app.offerType)
                 if (files.isNotEmpty()) {
-                    AuroraApp.flowEvent.emitEvent(
+                    AuroraApp.events.send(
                         BusEvent.ManualDownload(app.packageName, customVersion)
                     )
                 }

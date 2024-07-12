@@ -19,13 +19,17 @@
 
 package com.aurora.store.view.epoxy.views.app
 
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import coil.load
+import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
@@ -51,6 +55,8 @@ class AppUpdateView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : BaseView<ViewAppUpdateBinding>(context, attrs, defStyleAttr) {
+    private var iconDrawable: Drawable? = null
+    private val cornersTransformation = RoundedCornersTransformation(8.px.toFloat())
 
     @ModelProp
     fun app(app: App) {
@@ -59,7 +65,10 @@ class AppUpdateView @JvmOverloads constructor(
             binding.txtLine1.text = displayName
             binding.imgIcon.load(iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
-                transformations(RoundedCornersTransformation(8.px.toFloat()))
+                transformations(cornersTransformation)
+                listener { _, result ->
+                    result.drawable.let { iconDrawable = it }
+                }
             }
 
             binding.txtLine2.text = developerName
@@ -90,29 +99,22 @@ class AppUpdateView @JvmOverloads constructor(
     @ModelProp
     fun download(download: Download?) {
         if (download != null) {
-            /*Inflate Download details*/
             binding.btnAction.updateState(download.downloadStatus)
-            binding.progressDownload.isIndeterminate = download.progress < 1
             when (download.downloadStatus) {
                 DownloadStatus.QUEUED -> {
-                    binding.progressDownload.progress = 0
-                    binding.progressDownload.show()
+                    binding.progressDownload.isIndeterminate = true
+                    animateImageView(scaleFactor = 0.75f)
                 }
 
                 DownloadStatus.DOWNLOADING -> {
-                    if (download.progress > 0) {
-                        if (download.progress == 100) {
-                            binding.progressDownload.invisible()
-                        } else {
-                            binding.progressDownload.progress = download.progress
-                            binding.progressDownload.show()
-                        }
-                    }
+                    binding.progressDownload.isIndeterminate = false
+                    binding.progressDownload.progress = download.progress
+                    animateImageView(scaleFactor = 0.75f)
                 }
 
                 else -> {
-                    binding.progressDownload.progress = 0
-                    binding.progressDownload.invisible()
+                    binding.progressDownload.isIndeterminate = true
+                    animateImageView(scaleFactor = 1f)
                 }
             }
         }
@@ -141,7 +143,48 @@ class AppUpdateView @JvmOverloads constructor(
     @OnViewRecycled
     fun clear() {
         binding.headerIndicator.removeCallbacks { }
-        binding.progressDownload.progress = 0
         binding.progressDownload.invisible()
+        iconDrawable = null
+    }
+
+    private fun animateImageView(scaleFactor: Float = 1f) {
+        val isDownloadVisible = binding.progressDownload.isShown
+
+        // Avoids flickering when the download is in progress
+        if (isDownloadVisible && scaleFactor != 1f)
+            return
+
+        if (!isDownloadVisible && scaleFactor == 1f)
+            return
+
+        if (scaleFactor == 1f) {
+            binding.progressDownload.invisible()
+        } else {
+            binding.progressDownload.show()
+        }
+
+        val scale = listOf(
+            ObjectAnimator.ofFloat(binding.imgIcon, "scaleX", scaleFactor),
+            ObjectAnimator.ofFloat(binding.imgIcon, "scaleY", scaleFactor)
+        )
+
+        scale.forEach { animation ->
+            animation.apply {
+                interpolator = AccelerateDecelerateInterpolator()
+                duration = 250
+                start()
+            }
+        }
+
+        iconDrawable?.let {
+            binding.imgIcon.load(it) {
+                transformations(
+                    if (scaleFactor == 1f)
+                        cornersTransformation
+                    else
+                        CircleCropTransformation()
+                )
+            }
+        }
     }
 }

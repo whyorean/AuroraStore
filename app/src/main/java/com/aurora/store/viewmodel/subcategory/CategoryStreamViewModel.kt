@@ -26,8 +26,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.helpers.contracts.CategoryStreamContract
 import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.util.Log
@@ -40,25 +41,24 @@ import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
-class SubCategoryClusterViewModel @Inject constructor(
+class CategoryStreamViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    var contract: StreamContract = WebStreamHelper()
+    private var webCategoryStreamHelper = WebCategoryStreamHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
     private var stash: MutableMap<String, StreamBundle> = mutableMapOf()
 
-    private fun getCategoryStreamBundle(
-        category: StreamContract.Category,
-        nextPageUrl: String
-    ): StreamBundle {
-        return if (targetBundle(category).streamClusters.isEmpty())
-            contract.fetch(StreamContract.Type.HOME, category)
-        else
-            contract.nextStreamBundle(category, nextPageUrl)
+    fun contract(): CategoryStreamContract {
+        return webCategoryStreamHelper
+    }
+
+    fun getStreamBundle(category: StreamContract.Category) {
+        liveData.postValue(ViewState.Loading)
+        observe(category)
     }
 
     fun observe(category: StreamContract.Category) {
@@ -66,18 +66,22 @@ class SubCategoryClusterViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 val bundle = targetBundle(category)
-
                 if (bundle.streamClusters.isNotEmpty()) {
                     liveData.postValue(ViewState.Success(stash))
                 }
 
                 try {
                     if (!bundle.hasCluster() || bundle.hasNext()) {
+
                         //Fetch new stream bundle
-                        val newBundle = getCategoryStreamBundle(
-                            category,
-                            bundle.streamNextPageUrl
-                        )
+                        val newBundle = if (bundle.streamClusters.isEmpty()) {
+                            contract().fetch(category.value)
+                        } else {
+                            contract().nextStreamBundle(
+                                category,
+                                bundle.streamNextPageUrl
+                            )
+                        }
 
                         //Update old bundle
                         bundle.apply {
@@ -103,7 +107,7 @@ class SubCategoryClusterViewModel @Inject constructor(
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
-                            contract.nextStreamCluster(streamCluster.clusterNextPageUrl)
+                            contract().nextStreamCluster(streamCluster.clusterNextPageUrl)
                         updateCluster(category, streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(stash))
                     } else {

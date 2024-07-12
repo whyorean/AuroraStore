@@ -66,16 +66,19 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
     open fun postError(packageName: String, error: String?, extra: String?) {
         Log.e("Service Error :$error")
 
-        val event = InstallerEvent.Failed(
-            packageName,
-            error,
-            extra
-        )
+        val event = InstallerEvent.Failed(packageName).apply {
+            this.error = error ?: ""
+            this.extra = extra ?: ""
+        }
 
-        AuroraApp.flowEvent.emitEvent(event)
+        AuroraApp.events.send(event)
     }
 
-    open fun getFiles(packageName: String, versionCode: Int, sharedLibPackageName: String = ""): List<File> {
+    open fun getFiles(
+        packageName: String,
+        versionCode: Int,
+        sharedLibPackageName: String = ""
+    ): List<File> {
         val downloadDir = if (sharedLibPackageName.isNotBlank()) {
             PathUtil.getLibDownloadDir(context, packageName, versionCode, sharedLibPackageName)
         } else {

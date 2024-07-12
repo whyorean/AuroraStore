@@ -55,8 +55,8 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.AuroraApp
 import com.aurora.store.AppStreamStash
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
@@ -135,7 +135,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun onEvent(event: Event) {
         when (event) {
-            is BusEvent.InstallEvent -> {
+            is InstallerEvent.Installed -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
@@ -147,7 +147,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
-            is BusEvent.UninstallEvent -> {
+            is InstallerEvent.Uninstalled -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
@@ -166,14 +166,23 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
 
             is InstallerEvent.Failed -> {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
-                        app,
-                        event.packageName ?: "",
-                        event.error ?: "",
-                        event.extra ?: ""
+                if (app.packageName == event.packageName) {
+                    findNavController().navigate(
+                        AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
+                            app,
+                            event.packageName ?: "",
+                            event.error ?: "",
+                            event.extra ?: ""
+                        )
                     )
-                )
+                }
+            }
+
+            is InstallerEvent.Installing -> {
+                if (event.packageName == app.packageName) {
+                    attachActions()
+                    updateActionState(State.INSTALLING)
+                }
             }
 
             else -> {
@@ -356,10 +365,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+            AuroraApp.events.busEvent.collect { onEvent(it) }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.installerEvent.collect { onEvent(it) }
+            AuroraApp.events.installerEvent.collect { onEvent(it) }
         }
     }
 
@@ -507,7 +516,15 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun updateActionState(state: State) {
-        binding.layoutDetailsInstall.btnDownload.updateState(state)
+        runOnUiThread {
+            binding.layoutDetailsInstall.btnDownload.apply {
+                updateState(state)
+                if (state == State.INSTALLING) {
+                    setButtonState(false)
+                    setText(R.string.action_installing)
+                }
+            }
+        }
     }
 
     private fun openApp() {
@@ -589,9 +606,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
         runOnUiThread {
-            app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
             binding.layoutDetailsInstall.btnDownload.let { btn ->
+                btn.setButtonState(true)
                 if (app.isInstalled) {
                     isUpdatable = PackageUtil.isUpdatable(
                         requireContext(),

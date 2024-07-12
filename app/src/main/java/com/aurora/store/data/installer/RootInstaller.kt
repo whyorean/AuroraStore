@@ -104,12 +104,11 @@ class RootInstaller @Inject constructor(
                     if (packageName == download?.packageName) onInstallationSuccess()
                 } else {
                     removeFromInstallQueue(packageName)
-                    val event = InstallerEvent.Failed(
-                        packageName,
-                        context.getString(R.string.installer_status_failure),
-                        parseError(shellResult)
-                    )
-                    AuroraApp.flowEvent.emitEvent(event)
+                    val event = InstallerEvent.Failed(packageName).apply {
+                        this.extra = context.getString(R.string.installer_status_failure)
+                        this.error = parseError(shellResult)
+                    }
+                    AuroraApp.events.send(event)
                 }
             } else {
                 removeFromInstallQueue(packageName)

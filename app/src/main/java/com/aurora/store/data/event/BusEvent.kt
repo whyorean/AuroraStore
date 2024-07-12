@@ -21,48 +21,27 @@ package com.aurora.store.data.event
 
 abstract class Event
 
-sealed class BusEvent: Event() {
-    data class InstallEvent(
-        var packageName: String,
-        var extra: String? = ""
-    ) : BusEvent()
+sealed class BusEvent : Event() {
+    lateinit var extra: String
+    lateinit var error: String
 
-    data class UninstallEvent(
-        var packageName: String,
-        var extra: String? = ""
-    ) : BusEvent()
-
-    data class Blacklisted(
-        var packageName: String,
-        var error: String? = ""
-    ) : BusEvent()
-
-    data class GoogleAAS(
-        var success: Boolean,
-        var email: String = String(),
-        var aasToken: String = String()
-    ) : BusEvent()
-
-    data class ManualDownload(
-        var packageName: String,
-        var versionCode: Int
-    ) : BusEvent()
+    data class Blacklisted(val packageName: String) : BusEvent()
+    data class ManualDownload(val packageName: String, val versionCode: Int) : BusEvent()
 }
 
-sealed class InstallerEvent: Event() {
-    data class Success(
-        var packageName: String? = "",
-        var extra: String? = ""
-    ) : InstallerEvent()
+sealed class AuthEvent : Event() {
+    data class GoogleLogin(val success: Boolean, val email: String, val token: String) : AuthEvent()
+}
 
-    data class Cancelled(
-        var packageName: String? = "",
-        var extra: String? = ""
-    ) : InstallerEvent()
+sealed class InstallerEvent : Event() {
+    lateinit var extra: String
+    lateinit var error: String
 
-    data class Failed(
-        var packageName: String? = "",
-        var error: String? = "",
-        var extra: String? = ""
-    ) : InstallerEvent()
+    var progress: Int = -1
+
+    data class Installed(val packageName: String) : InstallerEvent()
+    data class Uninstalled(val packageName: String) : InstallerEvent()
+    data class Installing(val packageName: String) : InstallerEvent()
+    data class Cancelled(val packageName: String) : InstallerEvent()
+    data class Failed(val packageName: String) : InstallerEvent()
 }
