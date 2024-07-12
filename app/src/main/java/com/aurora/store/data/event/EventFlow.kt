@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Singleton
 
 @Singleton
-class FlowEvent {
+class EventFlow {
 
-    private val TAG = FlowEvent::class.java.simpleName
+    private val TAG = EventFlow::class.java.simpleName
 
     private val _busEvent = MutableSharedFlow<BusEvent>(extraBufferCapacity = 1)
     val busEvent = _busEvent.asSharedFlow()
