@@ -48,6 +48,7 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -72,16 +73,17 @@ class SessionInstaller @Inject constructor(
         override fun onProgressChanged(sessionId: Int, progress: Float) {}
 
         override fun onFinished(sessionId: Int, success: Boolean) {
-            enqueuedSessions.find { set -> set.any { it.sessionId == sessionId } }?.let { sessionSet ->
-                sessionSet.remove(sessionSet.first { it.sessionId == sessionId })
+            enqueuedSessions.find { set -> set.any { it.sessionId == sessionId } }
+                ?.let { sessionSet ->
+                    sessionSet.remove(sessionSet.first { it.sessionId == sessionId })
 
-                // If this was a shared lib, proceed installing other libs or actual package
-                if (sessionSet.isNotEmpty() && success) {
-                    commitInstall(sessionSet.first()); return
-                } else {
-                    enqueuedSessions.remove(sessionSet)
+                    // If this was a shared lib, proceed installing other libs or actual package
+                    if (sessionSet.isNotEmpty() && success) {
+                        commitInstall(sessionSet.first()); return
+                    } else {
+                        enqueuedSessions.remove(sessionSet)
+                    }
                 }
-            }
 
             if (enqueuedSessions.isNotEmpty()) {
                 enqueuedSessions.firstOrNull()?.let { sessionSet ->
@@ -113,7 +115,8 @@ class SessionInstaller @Inject constructor(
     override fun install(download: Download) {
         super.install(download)
 
-        val sessionSet = enqueuedSessions.find { set -> set.any { it.packageName == download.packageName } }
+        val sessionSet =
+            enqueuedSessions.find { set -> set.any { it.packageName == download.packageName } }
         if (sessionSet != null) {
             Log.i("${download.packageName} already queued")
             commitInstall(sessionSet.first())
@@ -124,7 +127,11 @@ class SessionInstaller @Inject constructor(
             download.sharedLibs.forEach {
                 // Shared library packages cannot be updated
                 if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
-                    stageInstall(download.packageName, download.versionCode, it.packageName)?.let { sessionID ->
+                    stageInstall(
+                        download.packageName,
+                        download.versionCode,
+                        it.packageName
+                    )?.let { sessionID ->
                         sessionInfoSet.add(SessionInfo(sessionID, it.packageName, it.versionCode))
                     }
                 }
@@ -147,17 +154,49 @@ class SessionInstaller @Inject constructor(
         }
     }
 
-    private fun stageInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = ""): Int? {
-        val packageInstaller = context.packageManager.packageInstaller
+    private fun stageInstall(
+        packageName: String,
+        versionCode: Int,
+        sharedLibPkgName: String = ""
+    ): Int? {
+        val resolvedPackageName = sharedLibPkgName.ifBlank { packageName }
 
-        val sessionParams = SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
-            setAppPackageName(sharedLibPkgName.ifBlank { packageName })
-            setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
-            if (isOAndAbove()) {
-                setInstallReason(PackageManager.INSTALL_REASON_USER)
+        val sessionParams = buildSessionParams(resolvedPackageName)
+        val sessionId = packageInstaller.createSession(sessionParams)
+        val session = packageInstaller.openSession(sessionId)
+
+        return try {
+            Log.i("Writing splits to session for $packageName")
+            getFiles(packageName, versionCode, sharedLibPkgName).forEach { file ->
+                file.inputStream().use { input ->
+                    session.openWrite(
+                        "${resolvedPackageName}_${file.name}",
+                        0,
+                        file.length()
+                    ).use { output ->
+                        input.copyTo(output)
+                        session.fsync(output)
+                    }
+                }
             }
+            sessionId
+        } catch (exception: IOException) {
+            session.abandon()
+            removeFromInstallQueue(packageName)
+            postError(packageName, exception.localizedMessage, exception.stackTraceToString())
+            null
+        }
+    }
+
+    private fun buildSessionParams(packageName: String): SessionParams {
+        return SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
+            setAppPackageName(packageName)
+            setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
             if (isNAndAbove()) {
                 setOriginatingUid(Process.myUid())
+            }
+            if (isOAndAbove()) {
+                setInstallReason(PackageManager.INSTALL_REASON_USER)
             }
             if (isSAndAbove()) {
                 setRequireUserAction(SessionParams.USER_ACTION_NOT_REQUIRED)
@@ -169,26 +208,6 @@ class SessionInstaller @Inject constructor(
                 setInstallerPackageName(context.packageName)
                 setRequestUpdateOwnership(true)
             }
-        }
-        val sessionId = packageInstaller.createSession(sessionParams)
-        val session = packageInstaller.openSession(sessionId)
-
-        return try {
-            Log.i("Writing splits to session for $packageName")
-            getFiles(packageName, versionCode, sharedLibPkgName).forEach {
-                it.inputStream().use { input ->
-                    session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${it.name}", 0, it.length()).use { output ->
-                        input.copyTo(output)
-                        session.fsync(output)
-                    }
-                }
-            }
-            sessionId
-        } catch (exception: Exception) {
-            session.abandon()
-            removeFromInstallQueue(packageName)
-            postError(packageName, exception.localizedMessage, exception.stackTraceToString())
-            null
         }
     }
 
