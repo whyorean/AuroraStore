@@ -88,7 +88,7 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {
-
+        openStreamBrowseFragment(streamCluster)
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {

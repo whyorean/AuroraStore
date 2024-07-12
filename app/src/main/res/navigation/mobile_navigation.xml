@@ -255,11 +255,8 @@
         android:name="com.aurora.store.view.ui.commons.StreamBrowseFragment"
         tools:layout="@layout/fragment_generic_with_toolbar" >
         <argument
-            android:name="browseUrl"
-            app:argType="string" />
-        <argument
-            android:name="title"
-            app:argType="string" />
+            android:name="cluster"
+            app:argType="com.aurora.gplayapi.data.models.StreamCluster" />
     </fragment>
     <fragment
         android:id="@+id/devAppsFragment"
