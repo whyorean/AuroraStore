@@ -28,20 +28,21 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.utils.CategoryUtil
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.CategoryCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.viewmodel.subcategory.SubCategoryClusterViewModel
+import com.aurora.store.viewmodel.subcategory.CategoryStreamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
     GenericCarouselController.Callbacks {
     private val args: CategoryBrowseFragmentArgs by navArgs()
-    private val viewModel: SubCategoryClusterViewModel by activityViewModels()
+    private val viewModel: CategoryStreamViewModel by activityViewModels()
 
     private lateinit var category: StreamContract.Category
     private var streamBundle: StreamBundle? = StreamBundle()
@@ -49,8 +50,7 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val rawCategory = args.browseUrl.split("/").last()
-        category = StreamContract.Category.NONE.apply { value = rawCategory }
+        category = CategoryUtil.getCategoryFromUrl(args.browseUrl)
 
         val genericCarouselController = CategoryCarouselController(this)
 
@@ -68,6 +68,7 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
             }
         })
 
+        viewModel.getStreamBundle(category)
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Loading -> {
@@ -84,8 +85,6 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
                 else -> {}
             }
         }
-
-        viewModel.observe(category)
     }
 
     override fun onHeaderClicked(streamCluster: StreamCluster) {

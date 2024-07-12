@@ -47,7 +47,7 @@ class CarouselModelGroup(
             val models = ArrayList<EpoxyModel<*>>()
             val clusterViewModels = mutableListOf<EpoxyModel<*>>()
 
-            val idPrefix = streamCluster.id
+            val idPrefix = streamCluster.clusterTitle.hashCode()
 
             models.add(
                 HeaderViewModel_()

@@ -41,10 +41,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
-class StreamViewModel @Inject constructor(@ApplicationContext private val context: Context) :
-    ViewModel() {
+class StreamViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
-    private var webStreamHelper: StreamContract = WebStreamHelper()
+    private var webStreamHelper = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
@@ -64,7 +65,7 @@ class StreamViewModel @Inject constructor(@ApplicationContext private val contex
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 val bundle = targetBundle(category)
-                if (bundle.streamClusters.isNotEmpty()) {
+                if (bundle.hasCluster()) {
                     liveData.postValue(ViewState.Success(stash))
                 }
 
@@ -72,13 +73,13 @@ class StreamViewModel @Inject constructor(@ApplicationContext private val contex
                     if (!bundle.hasCluster() || bundle.hasNext()) {
 
                         //Fetch new stream bundle
-                        val newBundle = if (bundle.streamClusters.isEmpty()) {
-                            contract().fetch(type, category)
-                        } else {
+                        val newBundle = if (bundle.hasCluster()) {
                             contract().nextStreamBundle(
                                 category,
                                 bundle.streamNextPageUrl
                             )
+                        } else {
+                            contract().fetch(type, category)
                         }
 
                         //Update old bundle

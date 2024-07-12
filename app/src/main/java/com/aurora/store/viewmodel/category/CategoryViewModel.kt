@@ -28,7 +28,6 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.contracts.CategoryContract
-import com.aurora.gplayapi.helpers.web.WebCategoryHelper
 import com.aurora.store.CategoryStash
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
@@ -50,9 +49,6 @@ class CategoryViewModel @Inject constructor(
     private val categoryHelper: CategoryHelper = CategoryHelper(authProvider.authData)
         .using(HttpClient.getPreferredClient(context))
 
-    private val webCategoryHelper: CategoryContract = WebCategoryHelper()
-        .using(HttpClient.getPreferredClient(context))
-
     private var stash: CategoryStash = mutableMapOf(
         Category.Type.APPLICATION to emptyList(),
         Category.Type.GAME to emptyList()
@@ -61,11 +57,7 @@ class CategoryViewModel @Inject constructor(
     val liveData = MutableLiveData<ViewState>()
 
     private fun contract(): CategoryContract {
-        return if (authProvider.isAnonymous) {
-            webCategoryHelper
-        } else {
-            categoryHelper
-        }
+        return categoryHelper
     }
 
     fun getCategoryList(type: Category.Type) {
@@ -74,10 +66,11 @@ class CategoryViewModel @Inject constructor(
 
             if (categories.isNotEmpty()) {
                 liveData.postValue(ViewState.Success(stash))
+                return@launch
             }
 
             try {
-                stash[type] = contract().getAllCategoriesList(type)
+                stash[type] = contract().getAllCategories(type)
                 liveData.postValue(ViewState.Success(stash))
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed fetching list of categories", exception)
