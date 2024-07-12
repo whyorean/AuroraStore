@@ -30,6 +30,7 @@ import com.aurora.extensions.getString
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewAppListBinding
+import com.aurora.store.util.CommonUtil
 import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
 
@@ -54,7 +55,7 @@ class AppListView @JvmOverloads constructor(
         binding.txtLine2.text = app.developerName
 
         val extras: MutableList<String> = mutableListOf()
-        extras.add(app.downloadString)
+        extras.add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
         extras.add("${app.labeledRating}★")
         extras.add(
             if (app.isFree)

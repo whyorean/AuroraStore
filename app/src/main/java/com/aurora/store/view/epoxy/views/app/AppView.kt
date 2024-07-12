@@ -51,12 +51,10 @@ class AppView @JvmOverloads constructor(
             transformations(RoundedCornersTransformation(32F))
         }
 
-        binding.txtSize.text = context
-            .getString(R.string.app_view_rating)
-            .format(app.downloadString, app.rating.abbreviatedLabel)
-
         if (app.size > 0)
             binding.txtSize.text = CommonUtil.addSiPrefix(app.size)
+        else
+            binding.txtSize.text = app.downloadString
     }
 
     @CallbackProp
