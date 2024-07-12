@@ -65,8 +65,6 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
         ) { tab: TabLayout.Tab, position: Int ->
             when (position) {
                 0 -> tab.text = getString(R.string.title_installed)
-                1 -> tab.text = getString(R.string.title_library)
-                2 -> tab.text = getString(R.string.title_purchase_history)
                 else -> {}
             }
         }.attach()
@@ -81,14 +79,12 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> InstalledAppsFragment.newInstance()
-                1 -> LibraryAppsFragment.newInstance()
-                2 -> PurchasedAppsFragment.newInstance()
                 else -> Fragment()
             }
         }
 
         override fun getItemCount(): Int {
-            return if (isAnonymous) 1 else 3
+            return 1
         }
     }
 }

@@ -33,7 +33,6 @@ import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.commons.CategoryFragment
-import com.aurora.store.view.ui.commons.EditorChoiceFragment
 import com.aurora.store.view.ui.commons.ForYouFragment
 import com.aurora.store.view.ui.commons.TopChartContainerFragment
 import com.google.android.material.tabs.TabLayout
@@ -91,10 +90,6 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
 
             add(getString(R.string.tab_top_charts))
             add(getString(R.string.tab_categories))
-
-            if (!authProvider.isAnonymous) {
-                add(getString(R.string.tab_editor_choice))
-            }
         }
 
         TabLayoutMediator(
@@ -129,10 +124,6 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
 
             add(TopChartContainerFragment.newInstance(1))
             add(CategoryFragment.newInstance(1))
-
-            if (isGoogleAccount) {
-                add(EditorChoiceFragment.newInstance(1))
-            }
         }
 
         override fun createFragment(position: Int): Fragment {

@@ -26,9 +26,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppSalesHelper
+import com.aurora.store.data.model.PaginatedAppList
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.viewmodel.all.PaginatedAppList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
