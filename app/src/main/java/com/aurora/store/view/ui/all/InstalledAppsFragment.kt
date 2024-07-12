@@ -27,6 +27,8 @@ import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.Event
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
@@ -49,10 +51,10 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
         }
     }
 
-    private fun onEvent(event: BusEvent) {
+    private fun onEvent(event: Event) {
         when (event) {
-            is BusEvent.InstallEvent,
-            is BusEvent.UninstallEvent,
+            is InstallerEvent.Installed,
+            is InstallerEvent.Uninstalled,
             is BusEvent.Blacklisted -> {
                 viewModel.fetchApps()
             }

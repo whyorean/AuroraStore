@@ -34,7 +34,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
-import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.databinding.FragmentGoogleBinding
 import com.aurora.store.util.AC2DMUtil
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -110,15 +110,15 @@ class GoogleFragment : BaseFragment<FragmentGoogleBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.busEvent.collect { onEventReceived(it) }
+            AuroraApp.flowEvent.authEvent.collect { onEventReceived(it) }
         }
     }
 
-    private fun onEventReceived(event: BusEvent) {
+    private fun onEventReceived(event: AuthEvent) {
         when (event) {
-            is BusEvent.GoogleAAS -> {
+            is AuthEvent.GoogleLogin -> {
                 if (event.success) {
-                    viewModel.buildGoogleAuthData(event.email, event.aasToken)
+                    viewModel.buildGoogleAuthData(event.email, event.token)
                 } else {
                     Toast.makeText(
                         requireContext(),

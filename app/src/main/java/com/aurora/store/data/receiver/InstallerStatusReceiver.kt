@@ -80,7 +80,12 @@ class InstallerStatusReceiver : BroadcastReceiver() {
         }
     }
 
-    private fun notifyUser(context: Context, packageName: String, displayName: String, status: Int) {
+    private fun notifyUser(
+        context: Context,
+        packageName: String,
+        displayName: String,
+        status: Int
+    ) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = NotificationUtil.getInstallerStatusNotification(
@@ -109,21 +114,22 @@ class InstallerStatusReceiver : BroadcastReceiver() {
     private fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
         val event = when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
-                InstallerEvent.Success(
-                    packageName, context.getString(R.string.installer_status_success)
-                )
+                InstallerEvent.Installed(packageName!!).apply {
+                    this.extra = context.getString(R.string.installer_status_success)
+                }
             }
 
             PackageInstaller.STATUS_FAILURE_ABORTED -> {
-                InstallerEvent.Cancelled(
-                    packageName, AppInstaller.getErrorString(context, status)
-                )
+                InstallerEvent.Cancelled(packageName!!).apply {
+                    this.extra = AppInstaller.getErrorString(context, status)
+                }
             }
 
             else -> {
-                InstallerEvent.Failed(
-                    packageName, AppInstaller.getErrorString(context, status), extra
-                )
+                InstallerEvent.Failed(packageName!!).apply {
+                    this.error = AppInstaller.getErrorString(context, status)
+                    this.extra = extra ?: ""
+                }
             }
         }
         AuroraApp.flowEvent.emitEvent(event)

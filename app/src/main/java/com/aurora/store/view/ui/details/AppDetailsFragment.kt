@@ -136,7 +136,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun onEvent(event: Event) {
         when (event) {
-            is BusEvent.InstallEvent -> {
+            is InstallerEvent.Installed -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
@@ -148,7 +148,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
-            is BusEvent.UninstallEvent -> {
+            is InstallerEvent.Uninstalled -> {
                 if (app.packageName == event.packageName) {
                     attachActions()
                     binding.layoutDetailsToolbar.toolbar.menu.apply {

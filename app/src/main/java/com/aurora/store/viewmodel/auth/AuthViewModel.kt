@@ -32,7 +32,7 @@ import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
-import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.model.InsecureAuth
@@ -201,18 +201,18 @@ class AuthViewModel @Inject constructor(
                     if (aasToken != null) {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, email)
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, aasToken)
-                        AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(true, email, aasToken))
+                        AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(true, email, aasToken))
                     } else {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, "")
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, "")
-                        AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(false))
+                        AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(false, "", ""))
                     }
                 } else {
-                    AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(false))
+                    AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(false, "", ""))
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to build AuthData", exception)
-                AuroraApp.flowEvent.emitEvent(BusEvent.GoogleAAS(false))
+                AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(false, "", ""))
             }
         }
     }
@@ -238,6 +238,7 @@ class AuthViewModel @Inject constructor(
                                 )
                                 buildGoogleAuthData(email, aasToken)
                             }
+
                             AccountType.ANONYMOUS -> {
                                 buildAnonymousAuthData()
                             }
@@ -248,9 +249,11 @@ class AuthViewModel @Inject constructor(
                         is UnknownHostException -> {
                             context.getString(R.string.title_no_network)
                         }
+
                         is ConnectException -> {
                             context.getString(R.string.server_unreachable)
                         }
+
                         else -> {
                             context.getString(R.string.bad_request)
                         }

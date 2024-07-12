@@ -35,7 +35,6 @@ import com.aurora.services.IPrivilegedService
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
@@ -91,6 +90,7 @@ class ServiceInstaller @Inject constructor(
                     fileList.map { it.absolutePath }
                 )
             }
+
             else -> {
                 postError(
                     download.packageName,
@@ -148,7 +148,11 @@ class ServiceInstaller @Inject constructor(
                                         )
                                     } catch (e: RemoteException) {
                                         removeFromInstallQueue(packageName)
-                                        postError(packageName, e.localizedMessage, e.stackTraceToString())
+                                        postError(
+                                            packageName,
+                                            e.localizedMessage,
+                                            e.stackTraceToString()
+                                        )
                                         readyWithAction.set(true)
                                     }
                                 } else {
@@ -166,7 +170,11 @@ class ServiceInstaller @Inject constructor(
                                     )
                                 } catch (e: RemoteException) {
                                     removeFromInstallQueue(packageName)
-                                    postError(packageName, e.localizedMessage, e.stackTraceToString())
+                                    postError(
+                                        packageName,
+                                        e.localizedMessage,
+                                        e.stackTraceToString()
+                                    )
                                     readyWithAction.set(true)
                                 }
                             }
@@ -211,12 +219,12 @@ class ServiceInstaller @Inject constructor(
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
                     AuroraApp.flowEvent.emitEvent(
-                        BusEvent.UninstallEvent(
-                            packageName,
-                            context.getString(R.string.installer_status_success)
-                        )
+                        InstallerEvent.Uninstalled(packageName).apply {
+                            this.extra = context.getString(R.string.action_uninstall_success)
+                        }
                     )
                 }
+
                 else -> {
                     val error = AppInstaller.getErrorString(
                         context,
@@ -241,14 +249,14 @@ class ServiceInstaller @Inject constructor(
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
                     AuroraApp.flowEvent.emitEvent(
-                        InstallerEvent.Success(
-                            packageName,
-                            context.getString(R.string.installer_status_success)
-                        )
+                        InstallerEvent.Installed(packageName).apply {
+                            this.extra = context.getString(R.string.installer_status_success)
+                        }
                     )
                     // Installation is not yet finished if this is a shared library
                     if (packageName == download?.packageName) onInstallationSuccess()
                 }
+
                 else -> {
                     val error = AppInstaller.getErrorString(
                         context,
