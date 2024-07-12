@@ -108,7 +108,7 @@ class RootInstaller @Inject constructor(
                         this.extra = context.getString(R.string.installer_status_failure)
                         this.error = parseError(shellResult)
                     }
-                    AuroraApp.flowEvent.emitEvent(event)
+                    AuroraApp.events.send(event)
                 }
             } else {
                 removeFromInstallQueue(packageName)

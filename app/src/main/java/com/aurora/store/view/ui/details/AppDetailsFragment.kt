@@ -69,7 +69,6 @@ import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
@@ -366,10 +365,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+            AuroraApp.events.busEvent.collect { onEvent(it) }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.installerEvent.collect { onEvent(it) }
+            AuroraApp.events.installerEvent.collect { onEvent(it) }
         }
     }
 

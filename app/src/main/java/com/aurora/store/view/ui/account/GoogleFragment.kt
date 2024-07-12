@@ -110,7 +110,7 @@ class GoogleFragment : BaseFragment<FragmentGoogleBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.authEvent.collect { onEventReceived(it) }
+            AuroraApp.events.authEvent.collect { onEventReceived(it) }
         }
     }
 

@@ -40,11 +40,11 @@ open class PackageManagerReceiver : BroadcastReceiver() {
 
             when (intent.action) {
                 Intent.ACTION_PACKAGE_ADDED -> {
-                    AuroraApp.flowEvent.emitEvent(InstallerEvent.Installed(packageName))
+                    AuroraApp.events.send(InstallerEvent.Installed(packageName))
                 }
 
                 Intent.ACTION_PACKAGE_REMOVED -> {
-                    AuroraApp.flowEvent.emitEvent(InstallerEvent.Uninstalled(packageName))
+                    AuroraApp.events.send(InstallerEvent.Uninstalled(packageName))
                 }
             }
 

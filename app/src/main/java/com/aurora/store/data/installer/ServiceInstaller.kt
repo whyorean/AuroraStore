@@ -218,7 +218,7 @@ class ServiceInstaller @Inject constructor(
         try {
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    AuroraApp.flowEvent.emitEvent(
+                    AuroraApp.events.send(
                         InstallerEvent.Uninstalled(packageName).apply {
                             this.extra = context.getString(R.string.action_uninstall_success)
                         }
@@ -248,7 +248,7 @@ class ServiceInstaller @Inject constructor(
         try {
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    AuroraApp.flowEvent.emitEvent(
+                    AuroraApp.events.send(
                         InstallerEvent.Installed(packageName).apply {
                             this.extra = context.getString(R.string.installer_status_success)
                         }

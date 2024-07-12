@@ -58,7 +58,7 @@ class AuroraApp : Application(), Configuration.Provider {
             private set
 
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
-        val flowEvent = FlowEvent()
+        val events = FlowEvent()
     }
 
     override fun onCreate() {

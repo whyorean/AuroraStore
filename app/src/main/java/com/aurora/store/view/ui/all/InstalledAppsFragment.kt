@@ -75,7 +75,7 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.flowEvent.busEvent.collect { onEvent(it) }
+            AuroraApp.events.busEvent.collect { onEvent(it) }
         }
     }
 

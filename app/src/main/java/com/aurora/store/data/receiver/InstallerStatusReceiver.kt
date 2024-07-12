@@ -132,6 +132,6 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 }
             }
         }
-        AuroraApp.flowEvent.emitEvent(event)
+        AuroraApp.events.send(event)
     }
 }

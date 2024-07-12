@@ -71,7 +71,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
             this.extra = extra ?: ""
         }
 
-        AuroraApp.flowEvent.emitEvent(event)
+        AuroraApp.events.send(event)
     }
 
     open fun getFiles(

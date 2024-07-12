@@ -201,18 +201,18 @@ class AuthViewModel @Inject constructor(
                     if (aasToken != null) {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, email)
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, aasToken)
-                        AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(true, email, aasToken))
+                        AuroraApp.events.send(AuthEvent.GoogleLogin(true, email, aasToken))
                     } else {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, "")
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, "")
-                        AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(false, "", ""))
+                        AuroraApp.events.send(AuthEvent.GoogleLogin(false, "", ""))
                     }
                 } else {
-                    AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(false, "", ""))
+                    AuroraApp.events.send(AuthEvent.GoogleLogin(false, "", ""))
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to build AuthData", exception)
-                AuroraApp.flowEvent.emitEvent(AuthEvent.GoogleLogin(false, "", ""))
+                AuroraApp.events.send(AuthEvent.GoogleLogin(false, "", ""))
             }
         }
     }
