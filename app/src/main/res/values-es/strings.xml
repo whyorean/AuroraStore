@@ -414,4 +414,13 @@
 \nTenga en cuenta que Aurora Store no cuenta con ninguna aprobación, patrocinio o autorización de Google, Google Play, ninguna aplicación descargada a través de Aurora Store ni ningún desarrollador de aplicaciones; Aurora Store tampoco tiene ninguna afiliación, cooperación o conexión con ellos.</string>
     <string name="session_login">Por favor, inicia sesión con tu cuenta de Google Play</string>
     <string name="toast_app_unavailable">Aplicación no disponible para tu dispositivo</string>
+    <string name="toast_fav_export_failed">¡No se han podido exportar los favoritos!</string>
+    <string name="toast_fav_import_success">¡Favoritas importados!</string>
+    <string name="toast_fav_export_success">¡Favoritas exportadas!</string>
+    <string name="export_app_summary_success">El paquete de aplicaciones se ha exportado correctamente</string>
+    <string name="export_app_summary_fail">Error al exportar el paquete de aplicaciones</string>
+    <string name="action_favourite">Favorita</string>
+    <string name="details_no_favourites">No se encontraron aplicaciones favoritas</string>
+    <string name="title_favourites_manager">Aplicaciones favoritas</string>
+    <string name="toast_fav_import_failed">¡Error al importar favoritas!</string>
 </resources>

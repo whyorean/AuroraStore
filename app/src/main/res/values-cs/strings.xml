@@ -421,4 +421,6 @@
     <string name="toast_fav_import_failed">Nepodařilo se importovat oblíbené!</string>
     <string name="toast_fav_export_failed">Nepodařilo se exportovat oblíbené!</string>
     <string name="toast_fav_import_success">Oblíbené importovány!</string>
+    <string name="export_app_summary_success">Aplikační balíček úspěšně exportován</string>
+    <string name="export_app_summary_fail">Nepodařilo se exportovat aplikační balíček</string>
 </resources>
