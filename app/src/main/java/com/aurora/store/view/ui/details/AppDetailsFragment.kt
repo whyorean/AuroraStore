@@ -55,8 +55,8 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.AuroraApp
 import com.aurora.store.AppStreamStash
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
@@ -69,6 +69,7 @@ import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
@@ -166,14 +167,23 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
 
             is InstallerEvent.Failed -> {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
-                        app,
-                        event.packageName ?: "",
-                        event.error ?: "",
-                        event.extra ?: ""
+                if (app.packageName == event.packageName) {
+                    findNavController().navigate(
+                        AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
+                            app,
+                            event.packageName ?: "",
+                            event.error ?: "",
+                            event.extra ?: ""
+                        )
                     )
-                )
+                }
+            }
+
+            is InstallerEvent.Installing -> {
+                if (event.packageName == app.packageName) {
+                    attachActions()
+                    updateActionState(State.INSTALLING)
+                }
             }
 
             else -> {
@@ -507,7 +517,15 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun updateActionState(state: State) {
-        binding.layoutDetailsInstall.btnDownload.updateState(state)
+        runOnUiThread {
+            binding.layoutDetailsInstall.btnDownload.apply {
+                updateState(state)
+                if (state == State.INSTALLING) {
+                    setButtonState(false)
+                    setText(R.string.action_installing)
+                }
+            }
+        }
     }
 
     private fun openApp() {
@@ -589,9 +607,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
         runOnUiThread {
-            app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
             binding.layoutDetailsInstall.btnDownload.let { btn ->
+                btn.setButtonState(true)
                 if (app.isInstalled) {
                     isUpdatable = PackageUtil.isUpdatable(
                         requireContext(),

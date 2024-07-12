@@ -36,7 +36,9 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.runOnUiThread
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
@@ -70,7 +72,21 @@ class SessionInstaller @Inject constructor(
 
         override fun onActiveChanged(sessionId: Int, active: Boolean) {}
 
-        override fun onProgressChanged(sessionId: Int, progress: Float) {}
+        override fun onProgressChanged(sessionId: Int, progress: Float) {
+            val packageName = enqueuedSessions
+                .find { set -> set.any { it.sessionId == sessionId } }
+                ?.first()
+                ?.packageName
+
+            if (packageName != null && progress > 0.0) {
+                AuroraApp.flowEvent.emitEvent(
+                    InstallerEvent.Installing(
+                        packageName = packageName,
+                        progress = (progress * 100).toInt()
+                    )
+                )
+            }
+        }
 
         override fun onFinished(sessionId: Int, success: Boolean) {
             enqueuedSessions.find { set -> set.any { it.sessionId == sessionId } }
@@ -89,9 +105,6 @@ class SessionInstaller @Inject constructor(
                 enqueuedSessions.firstOrNull()?.let { sessionSet ->
                     commitInstall(sessionSet.first())
                 }
-            } else {
-                // Nothing else in queue, unregister callback
-                packageInstaller.unregisterSessionCallback(this)
             }
         }
     }
