@@ -423,4 +423,5 @@
     <string name="toast_fav_import_failed">Importul favoritelor a eșuat!</string>
     <string name="export_app_summary_success">Pachet de aplicații exportat cu succes</string>
     <string name="export_app_summary_fail">Exportul pachetului de aplicații a eșuat</string>
+    <string name="action_uninstall_success">Dezinstalare reușită</string>
 </resources>
