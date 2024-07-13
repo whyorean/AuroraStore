@@ -405,4 +405,6 @@
     <string name="toast_fav_import_success">Të parapëlqyerit u importuan!</string>
     <string name="toast_fav_export_success">Të parapëlqyerit u eksportuan!</string>
     <string name="session_login">Ju lutemi, bëni hyrjen te llogaria juaj Google Play</string>
+    <string name="disclaimer_subtitle">Përgjegjësi</string>
+    <string name="action_favourite">E preferuara</string>
 </resources>
