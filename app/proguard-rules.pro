@@ -109,3 +109,14 @@
 
 # Keep Parcelable classes
 -keep @kotlinx.parcelize.Parcelize public class *
+
+# Keep the view binding classes and their methods
+-keepclassmembers class ** implements androidx.viewbinding.ViewBinding {
+    public static *** inflate(...);
+}
+
+# Keep generic superclass information
+-keepattributes Signature
+-keep class * extends androidx.viewbinding.ViewBinding {
+    *;
+}
