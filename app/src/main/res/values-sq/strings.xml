@@ -405,4 +405,10 @@
     <string name="toast_fav_import_success">Të parapëlqyerit u importuan!</string>
     <string name="toast_fav_export_success">Të parapëlqyerit u eksportuan!</string>
     <string name="session_login">Ju lutemi, bëni hyrjen te llogaria juaj Google Play</string>
+    <string name="action_favourite">E preferuara</string>
+    <string name="about_aurora_store_summary">"Dyqani Aurora ju mundëson të kërkoni dhe shkarkoni aplikacione nga dyqani zyrtar i Google Play. Mund të kontrolloni përshkrimet e aplikacioneve, Screenshots, përditësime, komentet e përdoruesve dhe të shkarkoni APK-në direkt nga Google Play në pajisjen tuaj. Për të përdorur Dyqanin Aurora, duhet të keni një llogari në Google Play dhe të identifikoheni në llogarinë e Google Play kur të hapni dhe konfiguroni për herë të parë Dyqanin Aurora.
+\n
+\nNdryshe nga një dyqan aplikacionesh tradicional, Dyqani Aurora nuk zotëron, liçenson ose shpërndan asnjë aplikacion. Të gjitha aplikacionet, përshkrimet e aplikacioneve, screenshot-et dhe përmbajtjet e tjera në Dyqanin Aurora aksesohen, shkarkohen dhe/ose shfaqen drejtpërdrejt nga Google Play. Dyqani Aurora funksionon saktësisht si një derë ose një Browser, duke ju lejuar të identifikoheni në llogarinë tuaj të Google Play dhe të gjeni aplikacionet nga Google Play.
+\n
+\nJu lutemi vini re se Dyqani Aurora nuk ka asnjë miratim, sponsorizim ose autorizim nga Google. Dyqani Aurora nuk ka ndonjë lidhje apo bashkëpunim me ndonjë aplikacion të shkarkuar përmes  Dyqanit Aurora  apo ndonjë zhvillues aplikacioni."</string>
 </resources>
