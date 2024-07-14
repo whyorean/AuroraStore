@@ -424,4 +424,7 @@
     <string name="export_app_summary_success">Pacote de app exportado com sucesso</string>
     <string name="export_app_summary_fail">Falha ao exportar pacote de app</string>
     <string name="action_uninstall_success">Desinstalado com sucesso</string>
+    <string name="pref_network_proxy_url_message">Insira uma URL de proxy válida para passar todos os dados pelo proxy.</string>
+    <string name="action_logout_confirmation_title">Sair?</string>
+    <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
 </resources>
