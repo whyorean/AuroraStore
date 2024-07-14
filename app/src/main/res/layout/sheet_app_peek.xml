@@ -86,21 +86,21 @@
             android:paddingEnd="@dimen/padding_large">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/tab_top_free"
+                android:id="@+id/chip_favourite"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_wishlist_add" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/tab_top_grossing"
+                android:id="@+id/chip_blacklist"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_blacklist_add" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/tab_trending"
+                android:id="@+id/chip_ignore_version"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

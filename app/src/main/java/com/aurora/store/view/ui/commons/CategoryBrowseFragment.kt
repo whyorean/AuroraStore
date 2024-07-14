@@ -100,8 +100,6 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     }
 
     override fun onAppLongClick(app: App) {
-        findNavController().navigate(
-            CategoryBrowseFragmentDirections.actionCategoryBrowseFragmentToAppPeekDialogSheet(app)
-        )
+
     }
 }
