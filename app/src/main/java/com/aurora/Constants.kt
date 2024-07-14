@@ -43,8 +43,6 @@ object Constants {
     const val GITLAB_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
     const val URL_DISPENSER = "https://auroraoss.com/api/auth"
 
-    const val ANDROID_CONNECTIVITY_URL = "https://connectivitycheck.android.com/generate_204"
-
     //ACCOUNTS
     const val ACCOUNT_SIGNED_IN = "ACCOUNT_SIGNED_IN"
     const val ACCOUNT_SIGNED_TIMESTAMP = "ACCOUNT_SIGNED_TIMESTAMP"

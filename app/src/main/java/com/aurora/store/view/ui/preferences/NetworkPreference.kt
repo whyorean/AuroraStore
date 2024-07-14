@@ -19,32 +19,35 @@
 
 package com.aurora.store.view.ui.preferences
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
+import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
+import com.aurora.store.util.remove
 import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NetworkPreference : BasePreferenceFragment() {
+class NetworkPreference : BasePreferenceFragment(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val viewModel: SettingsViewModel by viewModels()
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_network, rootKey)
+
+        sharedPreferences = Preferences.getPrefs(requireContext())
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
         findPreference<Preference>(Preferences.PREFERENCE_DISPENSER_URLS)?.apply {
             setOnPreferenceClickListener {
@@ -53,18 +56,14 @@ class NetworkPreference : BasePreferenceFragment() {
             }
         }
 
-        findPreference<EditTextPreference>(Preferences.PREFERENCE_PROXY_URL)?.let {
-            it.summary =
-                Preferences.getString(requireContext(), Preferences.PREFERENCE_PROXY_URL, "")
-
-            it.setOnPreferenceChangeListener { _, newValue ->
-                val newProxyUrl = newValue.toString()
-                val newProxyInfo = CommonUtil.parseProxyUrl(newProxyUrl)
-
-                if (newProxyInfo == null) {
-                    requireContext().toast(getString(R.string.toast_proxy_invalid))
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_PROXY_ENABLED)?.apply {
+            isChecked = Preferences.getString(context, PREFERENCE_PROXY_URL).isNotBlank()
+            setOnPreferenceChangeListener { _, newValue ->
+                if (newValue.toString().toBoolean()) {
+                    findNavController().navigate(R.id.proxyURLDialog)
                 } else {
-                    viewModel.saveProxyDetails(newProxyUrl, newProxyInfo)
+                    remove(PREFERENCE_PROXY_URL)
+                    remove(PREFERENCE_PROXY_INFO)
                 }
                 false
             }
@@ -96,23 +95,17 @@ class NetworkPreference : BasePreferenceFragment() {
             title = getString(R.string.pref_network_title)
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
+    }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.proxyURL.filter { it.isNotBlank() }.collect { pURL ->
-                findPreference<EditTextPreference>(Preferences.PREFERENCE_PROXY_URL)?.let {
-                    it.summary = pURL
-                }
-            }
-        }
+    override fun onDestroyView() {
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        super.onDestroyView()
+    }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.proxyInfo.collect {
-                if (it == null) {
-                    requireContext().toast(getText(R.string.toast_proxy_failed))
-                } else {
-                    requireContext().toast(getString(R.string.toast_proxy_success))
-                }
-            }
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        if (key == PREFERENCE_PROXY_URL) {
+            findPreference<SwitchPreferenceCompat>(PREFERENCE_PROXY_ENABLED)?.isChecked =
+                Preferences.getString(requireContext(), PREFERENCE_PROXY_URL).isNotBlank()
         }
     }
 }

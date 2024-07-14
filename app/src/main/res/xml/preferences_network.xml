@@ -38,12 +38,6 @@
         app:summary="@string/pref_network_proxy_enable_desc"
         app:title="@string/pref_network_proxy_enable" />
 
-    <EditTextPreference
-        app:dependency="PREFERENCE_PROXY_ENABLED"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_PROXY_URL"
-        app:title="@string/pref_network_proxy_url" />
-
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"

@@ -484,4 +484,8 @@
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
     </dialog>
+    <dialog
+        android:id="@+id/proxyURLDialog"
+        android:name="com.aurora.store.view.ui.preferences.ProxyURLDialog"
+        android:label="@string/pref_network_proxy_url" />
 </navigation>
