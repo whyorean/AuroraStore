@@ -467,4 +467,8 @@
     <!-- ExportWorker -->
     <string name="export_app_summary_success">Successfully exported app bundle</string>
     <string name="export_app_summary_fail">Failed to exported app bundle</string>
+
+    <!-- LogoutDialog -->
+    <string name="action_logout_confirmation_title">Log out?</string>
+    <string name="action_logout_confirmation_message">Are you sure you want to log out?</string>
 </resources>

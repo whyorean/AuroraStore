@@ -29,7 +29,6 @@ import com.aurora.Constants.URL_LICENSE
 import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.store.R
-import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAccountBinding
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -70,11 +69,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>() {
         }
 
         binding.btnLogout.addOnClickListener {
-            binding.btnLogout.updateProgress(true)
-            AccountProvider.with(view.context).logout()
-            findNavController().navigate(
-                AccountFragmentDirections.actionAccountFragmentToSplashFragment()
-            )
+            findNavController().navigate(R.id.logoutDialog)
         }
     }
 }
