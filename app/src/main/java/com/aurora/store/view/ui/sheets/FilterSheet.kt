@@ -19,6 +19,7 @@
 
 package com.aurora.store.view.ui.sheets
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import com.aurora.store.R
@@ -43,18 +44,11 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
 
         attachSingleChips()
         attachMultipleChips()
-        attachActions()
     }
 
-    private fun attachActions() {
-        binding.btnPositive.setOnClickListener {
-            filterProvider.saveFilter(filter)
-            dismissAllowingStateLoss()
-        }
-
-        binding.btnNegative.setOnClickListener {
-            dismissAllowingStateLoss()
-        }
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        filterProvider.saveFilter(filter)
     }
 
     private fun attachSingleChips() {
@@ -88,29 +82,25 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
         val downloadValues = resources.getStringArray(R.array.filterDownloadsValues)
         val ratingLabels = resources.getStringArray(R.array.filterRatingLabels)
         val ratingValues = resources.getStringArray(R.array.filterRatingValues)
-        var i = 0
 
-        for (downloadLabel in downloadLabels) {
+        downloadLabels.forEachIndexed { index, value ->
             val chip = Chip(requireContext())
-            chip.id = i
-            chip.text = downloadLabel
-            chip.isChecked = filter.downloads == downloadValues[i].toInt()
+            chip.id = index
+            chip.text = value
+            chip.isChecked = filter.downloads == downloadValues[index].toInt()
             binding.downloadChips.addView(chip)
-            i++
         }
 
         binding.downloadChips.setOnCheckedStateChangeListener { _, checkedIds ->
             filter = filter.copy(downloads = downloadValues[checkedIds[0]].toInt())
         }
 
-        i = 0
-        for (ratingLabel in ratingLabels) {
-            val chip = Chip(requireContext())
-            chip.id = i
-            chip.text = ratingLabel
-            chip.isChecked = filter.rating == ratingValues[i].toFloat()
+        ratingLabels.forEachIndexed { index, value ->
+            val chip = Chip(requireActivity())
+            chip.id = index
+            chip.text = value
+            chip.isChecked = filter.rating == ratingValues[index].toFloat()
             binding.ratingChips.addView(chip)
-            i++
         }
 
         binding.ratingChips.setOnCheckedStateChangeListener { _, checkedIds ->

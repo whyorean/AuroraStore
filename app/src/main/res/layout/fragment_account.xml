@@ -43,9 +43,7 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingStart="@dimen/margin_small"
-            android:paddingTop="@dimen/margin_normal"
             android:paddingEnd="@dimen/margin_small"
-            android:paddingBottom="@dimen/margin_small"
             android:scrollbars="none">
 
             <com.google.android.material.chip.ChipGroup
@@ -54,21 +52,21 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_tos"
-                    style="@style/Widget.Aurora.Chip.Info"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/menu_terms" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_disclaimer"
-                    style="@style/Widget.Aurora.Chip.Info"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/menu_disclaimer" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_license"
-                    style="@style/Widget.Aurora.Chip.Info"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/menu_license" />

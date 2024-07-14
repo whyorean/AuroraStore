@@ -42,14 +42,14 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_free"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_top_free" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_grossing"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_top_grossing" />
@@ -57,14 +57,14 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_trending"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_trending" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_paid"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_top_paid" />

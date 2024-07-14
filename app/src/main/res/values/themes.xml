@@ -30,7 +30,7 @@
         <item name="scrimBlack">@color/colorScrimBlack</item>
         <item name="colorShimmer">@color/colorShimmer</item>
         <item name="colorStroke">@color/colorStroke</item>
-        <item name="chipStyle">@style/Widget.Aurora.Chip</item>
+        <item name="chipStyle">@style/Widget.Material3.Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
@@ -60,7 +60,7 @@
         <item name="scrimBlack">@color/colorScrimBlack</item>
         <item name="colorShimmer">@color/colorShimmer</item>
         <item name="colorStroke">@color/colorStroke</item>
-        <item name="chipStyle">@style/Widget.Aurora.Chip</item>
+        <item name="chipStyle">@style/Widget.Material3.Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
@@ -78,7 +78,7 @@
         <item name="scrimBlack">@color/colorScrimBlack</item>
         <item name="colorShimmer">@color/colorShimmerDark</item>
         <item name="colorStroke">@color/colorStrokeDark</item>
-        <item name="chipStyle">@style/Widget.Aurora.Chip</item>
+        <item name="chipStyle">@style/Widget.Material3.Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 

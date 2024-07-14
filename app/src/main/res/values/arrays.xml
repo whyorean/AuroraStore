@@ -191,12 +191,12 @@
 
     <string-array name="filterRatingLabels" translatable="false">
         <item>@string/action_filter_all</item>
-        <item> 1 + </item>
-        <item> 2 + </item>
-        <item> 3 + </item>
-        <item> 4 + </item>
-        <item> 4.5 + </item>
-        <item> 4.7 + </item>
+        <item> 1★ + </item>
+        <item> 2★ + </item>
+        <item> 3★ + </item>
+        <item> 4★ + </item>
+        <item> 4.5★ + </item>
+        <item> 4.7★ + </item>
     </string-array>
 
     <string-array name="filterDownloadsValues" translatable="false">
@@ -214,15 +214,15 @@
 
     <string-array name="filterDownloadsLabels" translatable="false">
         <item>@string/action_filter_all</item>
-        <item> > 100 </item>
-        <item> > 1 K </item>
-        <item> > 10 K </item>
-        <item> > 50 K </item>
-        <item> > 100 K </item>
-        <item> > 1 M </item>
-        <item> > 10 M </item>
-        <item> > 50 M </item>
-        <item> > 100 M </item>
+        <item> 100 + </item>
+        <item> 1K + </item>
+        <item> 10K + </item>
+        <item> 50K + </item>
+        <item> 100K + </item>
+        <item> 1M + </item>
+        <item> 10M + </item>
+        <item> 50M + </item>
+        <item> 100M + </item>
     </string-array>
 
     <string-array name="pref_vending_version" translatable="false">

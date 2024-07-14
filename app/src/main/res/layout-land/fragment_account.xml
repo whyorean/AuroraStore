@@ -31,6 +31,45 @@
         android:id="@+id/layout_toolbar_action"
         layout="@layout/view_toolbar_action" />
 
+    <HorizontalScrollView
+        android:id="@+id/chip_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/margin_small"
+        android:paddingTop="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_small"
+        android:paddingBottom="@dimen/margin_small"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_tos"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_terms" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_disclaimer"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_disclaimer" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_license"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_license" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -43,56 +82,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <HorizontalScrollView
-                android:id="@+id/chip_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="@dimen/margin_small"
-                android:paddingTop="@dimen/margin_normal"
-                android:paddingEnd="@dimen/margin_small"
-                android:paddingBottom="@dimen/margin_small"
-                android:scrollbars="none">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_tos"
-                        style="@style/Widget.Aurora.Chip.Info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/menu_terms" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_disclaimer"
-                        style="@style/Widget.Aurora.Chip.Info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/menu_disclaimer" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_license"
-                        style="@style/Widget.Aurora.Chip.Info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/menu_license" />
-
-                </com.google.android.material.chip.ChipGroup>
-            </HorizontalScrollView>
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_avatar"
                 android:layout_width="@dimen/icon_size_avatar"
                 android:layout_height="@dimen/icon_size_avatar"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 app:srcCompat="@drawable/bg_placeholder" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_name"
                 style="@style/TextAppearance.Aurora.Title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img_avatar"
                 android:layout_centerHorizontal="true"
@@ -104,7 +104,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_email"
                 style="@style/TextAppearance.Aurora.Line1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_name"
                 android:layout_centerHorizontal="true"
@@ -125,7 +125,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_logout_action"
                 style="@style/AuroraTextStyle.Line1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/btn_logout"
                 android:layout_centerHorizontal="true"

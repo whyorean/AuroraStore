@@ -18,7 +18,6 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -84,30 +83,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_large"
-            android:paddingEnd="@dimen/padding_large"
-            app:chipSpacingHorizontal="@dimen/margin_small"
-            app:selectionRequired="true"
-            app:singleLine="true"
-            app:singleSelection="true">
+            android:paddingEnd="@dimen/padding_large">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_free"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_wishlist_add" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_grossing"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_blacklist_add" />
 
-
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_trending"
-                style="@style/Widget.Aurora.Chip"
+                style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/action_ignore_version" />
@@ -119,5 +113,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_button"
         android:layout_margin="@dimen/margin_large"
-        android:text="Install" />
+        android:text="@string/action_install" />
 </LinearLayout>

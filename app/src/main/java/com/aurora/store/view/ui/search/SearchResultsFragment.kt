@@ -247,21 +247,21 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
         viewModel.observeSearchResults(query)
     }
 
-    private fun filter(appList: MutableList<App>): List<App> {
-        val tempList:MutableList<App> = mutableListOf()
-        tempList.addAll(appList)
-
+    private fun filter(appList: List<App>): List<App> {
         val filter = viewModel.filterProvider.getSavedFilter()
-        return tempList
+        return appList
             .asSequence()
-            .filter { it.displayName.isNotEmpty() } // Some of the apps may not have metadata
-            .filter { if (!filter.paidApps) it.isFree else true }
-            .filter { if (!filter.appsWithAds) !it.containsAds else true }
-            .filter { if (!filter.gsfDependentApps) it.dependencies.dependentPackages.isEmpty() else true }
-            .filter { if (filter.rating > 0) it.rating.average >= filter.rating else true }
-            .filter { if (filter.downloads > 0) it.installs >= filter.downloads else true }
+            .filter { app ->
+                app.displayName.isNotEmpty() &&
+                        (filter.paidApps || app.isFree) &&
+                        (filter.appsWithAds || !app.containsAds) &&
+                        (filter.gsfDependentApps || app.dependencies.dependentPackages.isEmpty()) &&
+                        (filter.rating <= 0 || app.rating.average >= filter.rating) &&
+                        (filter.downloads <= 0 || app.installs >= filter.downloads)
+            }
             .toList()
     }
+
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if (key == PREFERENCE_FILTER) query?.let { queryViewModel(it) }

@@ -37,8 +37,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/layout_bottom"
+        android:layout_height="wrap_content"
         android:layout_below="@id/txt_title"
         android:padding="@dimen/padding_medium"
         android:scrollbars="none">
@@ -48,47 +47,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:targetApi="o">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/action_filter_misc"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                app:chipSpacingHorizontal="@dimen/margin_small"
-                app:chipSpacingVertical="@dimen/margin_normal">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_gfs"
-                    style="@style/Widget.Aurora.Chip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/action_filter_gsf_dependent_apps" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_paid"
-                    style="@style/Widget.Aurora.Chip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/action_filter_paid_apps" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_ads"
-                    style="@style/Widget.Aurora.Chip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/action_filter_apps_with_ads" />
-
-            </com.google.android.material.chip.ChipGroup>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -131,38 +89,45 @@
                 app:chipSpacingVertical="@dimen/margin_xsmall"
                 app:selectionRequired="true"
                 app:singleSelection="true" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/action_filter_misc"
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_gfs"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_filter_gsf_dependent_apps" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_paid"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_filter_paid_apps" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filter_ads"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_filter_apps_with_ads" />
+
+            </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_positive"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/height_button"
-            android:text="@string/action_filter_apply"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_negative"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:rippleColor="@color/colorTransparent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_negative"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/height_button"
-            android:text="@string/action_close"
-            android:textColor="@color/colorRed"
-            app:layout_constraintEnd_toStartOf="@id/btn_positive"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:rippleColor="@color/colorTransparent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

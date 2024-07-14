@@ -18,52 +18,6 @@
   -->
 
 <resources>
-    <!-- Chips -->
-    <style name="Widget.Aurora.Chip.Info" parent="@style/Widget.MaterialComponents.Chip.Action">
-        <item name="iconStartPadding">2dp</item>
-        <item name="enforceTextAppearance">true</item>
-        <item name="rippleColor">@color/colorTransparent</item>
-        <item name="chipEndPadding">@dimen/margin_xxsmall</item>
-        <item name="chipStartPadding">@dimen/margin_xxsmall</item>
-        <item name="chipStrokeWidth">1dp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Chip</item>
-        <item name="chipBackgroundColor">?android:colorBackground</item>
-    </style>
-
-    <style name="Widget.Aurora.Chip.Review" parent="@style/Widget.MaterialComponents.Chip.Filter">
-        <item name="iconStartPadding">2dp</item>
-        <item name="enforceTextAppearance">true</item>
-        <item name="rippleColor">@color/colorTransparent</item>
-        <item name="chipBackgroundColor">?android:colorBackground</item>
-        <item name="chipEndPadding">@dimen/margin_xxsmall</item>
-        <item name="chipStartPadding">@dimen/margin_xxsmall</item>
-        <item name="chipStrokeWidth">1dp</item>
-        <item name="chipStrokeColor">?android:attr/strokeColor</item>
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Chip</item>
-    </style>
-
-    <style name="Widget.Aurora.Chip" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@android:color/transparent</item>
-        <item name="chipStrokeColor">@color/chip_stroke_selector</item>
-        <item name="android:textColor">@color/chip_txt_selector</item>
-        <item name="chipSurfaceColor">@color/chip_surface_selector</item>
-        <item name="chipStrokeWidth">1dp</item>
-        <item name="chipStartPadding">@dimen/margin_normal</item>
-        <item name="chipEndPadding">@dimen/margin_normal</item>
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Chip</item>
-    </style>
-
-    <style name="ViewStyle.Aurora.Chip" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@android:color/transparent</item>
-        <item name="chipStrokeColor">@color/chip_stroke_selector</item>
-        <item name="android:textColor">@color/chip_txt_selector</item>
-        <item name="chipSurfaceColor">@color/chip_surface_selector</item>
-        <item name="chipStrokeWidth">1dp</item>
-        <item name="chipStartPadding">@dimen/padding_normal</item>
-        <item name="chipEndPadding">@dimen/padding_normal</item>
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Chip</item>
-    </style>
-
     <style name="AuroraProgressView">
         <item name="minWidth">32dp</item>
         <item name="maxWidth">46dp</item>
