@@ -414,4 +414,17 @@
     <string name="add">ਜੋੜ੍ਹੋ</string>
     <string name="about_aurora_store_title">ਔਰੋਰਾ ਸਟੋਰ ਬਾਰੇ</string>
     <string name="remove">ਹਟਾਓ</string>
+    <string name="action_favourite">ਪਸੰਦੀਦਾ</string>
+    <string name="title_favourites_manager">ਪਸੰਦੀਦਾ ਐਪਸ</string>
+    <string name="action_uninstall_success">ਸਫਲਤਾਪੂਰਵਕ ਅਣਇੰਸਟਾਲ ਕੀਤਾ</string>
+    <string name="toast_fav_import_failed">ਪਸੰਦੀਦਾ ਇੰਪੋਰਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ!</string>
+    <string name="toast_fav_export_failed">ਪਸੰਦੀਦਾ ਐਕਸਪੋਰਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ!</string>
+    <string name="toast_fav_export_success">ਪਸੰਦੀਦਾ ਐਕਸਪੋਰਟ ਕੀਤੇ ਗਏ!</string>
+    <string name="export_app_summary_fail">ਐਪ ਬੰਡਲ ਐਕਸਪੋਰਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
+    <string name="action_logout_confirmation_title">ਲਾਗ ਆਊਟ ਕਰਨਾ ਹੈ?</string>
+    <string name="action_logout_confirmation_message">ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਲਾਗ ਆਊਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
+    <string name="details_no_favourites">ਕੋਈ ਪਸੰਦੀਦਾ ਐਪ ਨਹੀਂ ਮਿਲੀ</string>
+    <string name="pref_network_proxy_url_message">ਸਾਰਾ ਡਾਟਾ ਪ੍ਰੌਕਸੀ ਵਿੱਚੋਂ ਦੀ ਲੰਘਾਉਣ ਵਾਸਤੇ ਵੈਧ ਪ੍ਰੌਕਸੀ URL ਭਰੋ।</string>
+    <string name="toast_fav_import_success">ਪਸੰਦੀਦਾ ਇੰਪੋਰਟ ਕੀਤੇ ਗਏ!</string>
+    <string name="export_app_summary_success">ਸਫਲਤਾਪੂਰਵਕ ਐਪ ਬੰਡਲ ਐਕਸਪੋਰਟ ਕੀਤੇ</string>
 </resources>
