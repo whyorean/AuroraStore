@@ -44,7 +44,7 @@ class SearchSuggestionViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val webSearchHelper: WebSearchHelper = WebSearchHelper()
-    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData)
+    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     val liveSearchSuggestions: MutableLiveData<List<SearchSuggestEntry>> = MutableLiveData()

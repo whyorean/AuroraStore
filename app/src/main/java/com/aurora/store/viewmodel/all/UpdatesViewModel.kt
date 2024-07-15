@@ -71,7 +71,7 @@ class UpdatesViewModel @Inject constructor(
 
                     val updates = AppUtil.getUpdatableApps(
                         context,
-                        authProvider.authData,
+                        authProvider.authData!!,
                         gson,
                         !isExtendedUpdateEnabled
                     ).sortedBy { it.displayName.lowercase(Locale.getDefault()) }

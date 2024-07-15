@@ -51,7 +51,7 @@ class SearchResultViewModel @Inject constructor(
     private val TAG = SearchResultViewModel::class.java.simpleName
 
     private val webSearchHelper: WebSearchHelper = WebSearchHelper()
-    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData)
+    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()

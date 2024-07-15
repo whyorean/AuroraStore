@@ -130,7 +130,7 @@ class UpdateWorker @AssistedInject constructor(
             try {
                 val updatesList = AppUtil.getUpdatableApps(
                     context = appContext,
-                    authData = authProvider.authData,
+                    authData = authProvider.authData!!,
                     gson = gson,
                     verifyCert = true,
                     selfUpdate = false

@@ -43,8 +43,8 @@ class AppDetailsViewModel @Inject constructor(
     private val exodusApiKey = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae"
 
     private val httpClient = HttpClient.getPreferredClient(context)
-    private val appDetailsHelper = AppDetailsHelper(authProvider.authData).using(httpClient)
-    private val reviewsHelper = ReviewsHelper(authProvider.authData).using(httpClient)
+    private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!).using(httpClient)
+    private val reviewsHelper = ReviewsHelper(authProvider.authData!!).using(httpClient)
 
     private val appStash: MutableMap<String, App> = mutableMapOf()
     private val _app = MutableSharedFlow<App>()

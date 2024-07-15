@@ -32,7 +32,7 @@ class SheetsViewModel @Inject constructor(
     fun purchase(app: App, customVersion: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val purchaseHelper = PurchaseHelper(authProvider.authData)
+                val purchaseHelper = PurchaseHelper(authProvider.authData!!)
                 val files = purchaseHelper.purchase(app.packageName, customVersion, app.offerType)
                 if (files.isNotEmpty()) {
                     AuroraApp.events.send(

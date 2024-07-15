@@ -46,7 +46,7 @@ class CategoryViewModel @Inject constructor(
 ) : ViewModel() {
     private val TAG = CategoryViewModel::class.java.simpleName
 
-    private val categoryHelper: CategoryHelper = CategoryHelper(authProvider.authData)
+    private val categoryHelper: CategoryHelper = CategoryHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     private var stash: CategoryStash = mutableMapOf(

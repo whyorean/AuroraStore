@@ -41,7 +41,7 @@ class AuthProvider @Inject constructor(
     private val gson: Gson
 ) {
 
-    val authData: AuthData get() = getSavedAuthData()
+    val authData: AuthData? get() = getSavedAuthData()
 
     val isAnonymous: Boolean
         get() {
@@ -52,22 +52,22 @@ class AuthProvider @Inject constructor(
     suspend fun isSavedAuthDataValid(): Boolean {
         return withContext(Dispatchers.IO) {
             try {
-                AuthValidator(getSavedAuthData())
+                AuthValidator(authData ?: return@withContext false)
                     .using(HttpClient.getPreferredClient(context))
                     .isValid()
-            } catch (e: Exception) {
+            } catch (exception: Exception) {
                 false
             }
         }
     }
 
-    private fun getSavedAuthData(): AuthData {
+    private fun getSavedAuthData(): AuthData? {
         Log.i("Loading saved AuthData")
         val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
         return if (rawAuth.isNotEmpty()) {
             gson.fromJson(rawAuth, AuthData::class.java)
         } else {
-            AuthData("", "")
+            null
         }
     }
 }

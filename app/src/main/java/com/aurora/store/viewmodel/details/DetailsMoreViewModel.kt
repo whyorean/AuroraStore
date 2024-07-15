@@ -24,7 +24,7 @@ class DetailsMoreViewModel @Inject constructor(
 
     private val TAG = DetailsMoreViewModel::class.java.simpleName
 
-    private val appDetailsHelper = AppDetailsHelper(authProvider.authData)
+    private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     private val dependantAppsStash = mutableMapOf<String, List<App>>()

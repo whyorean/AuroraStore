@@ -57,7 +57,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>() {
             binding.chipTos.setOnClickListener { browse(URL_TOS) }
         }
 
-        authProvider.authData.userProfile?.let {
+        authProvider.authData?.userProfile?.let {
             val avatar = if (authProvider.isAnonymous) R.mipmap.ic_launcher else it.artwork.url
             binding.imgAvatar.load(avatar) {
                 placeholder(R.drawable.bg_placeholder)

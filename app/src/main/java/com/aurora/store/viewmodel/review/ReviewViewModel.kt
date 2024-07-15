@@ -43,7 +43,7 @@ class ReviewViewModel @Inject constructor(
     private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    var reviewsHelper: ReviewsHelper = ReviewsHelper(authProvider.authData)
+    var reviewsHelper: ReviewsHelper = ReviewsHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<ReviewCluster> = MutableLiveData()

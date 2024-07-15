@@ -88,6 +88,13 @@ class DownloadWorker @AssistedInject constructor(
     private val TAG = DownloadWorker::class.java.simpleName
 
     override suspend fun doWork(): Result {
+        // Bail out immediately if authData is not valid
+        if (!authProvider.isSavedAuthDataValid()) {
+            Log.e(TAG, "AuthData is not valid, exiting!")
+            onFailure()
+            return Result.failure()
+        }
+
         // Try to parse input data into a valid app
         try {
             val downloadData = inputData.getString(DownloadWorkerUtil.DOWNLOAD_DATA)
@@ -97,6 +104,7 @@ class DownloadWorker @AssistedInject constructor(
             icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to parse download data", exception)
+            onFailure()
             return Result.failure()
         }
 
@@ -104,7 +112,7 @@ class DownloadWorker @AssistedInject constructor(
         setForeground(getForegroundInfo())
 
         // Purchase the app (free apps needs to be purchased too)
-        purchaseHelper = PurchaseHelper(authProvider.authData)
+        purchaseHelper = PurchaseHelper(authProvider.authData!!)
             .using(HttpClient.getPreferredClient(appContext))
 
         notificationManager =
@@ -116,7 +124,7 @@ class DownloadWorker @AssistedInject constructor(
         }
         if (download.fileList.isEmpty()) {
             Log.i(TAG, "Nothing to download!")
-            notifyStatus(DownloadStatus.FAILED)
+            onFailure()
             return Result.failure()
         }
 
@@ -171,7 +179,11 @@ class DownloadWorker @AssistedInject constructor(
             }
         }
 
-        if (!requestList.all { it.file.exists() }) return Result.failure()
+        if (!requestList.all { it.file.exists() }) {
+            Log.e(TAG, "Downloaded files are missing")
+            onFailure()
+            return Result.failure()
+        }
 
         // Mark download as completed
         onSuccess()

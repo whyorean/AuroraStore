@@ -56,11 +56,7 @@ class InstalledViewModel @Inject constructor(
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val apps = AppUtil.getFilteredInstalledApps(
-                    context,
-                    authProvider.authData
-                )
-
+                val apps = AppUtil.getFilteredInstalledApps(context, authProvider.authData!!)
                 _installedApps.emit(apps.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to get installed apps", exception)

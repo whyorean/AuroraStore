@@ -48,9 +48,9 @@ class DevProfileViewModel @Inject constructor(
     private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private var appDetailsHelper = AppDetailsHelper(authProvider.authData)
+    private var appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
-    private var streamHelper = StreamHelper(authProvider.authData)
+    private var streamHelper = StreamHelper(authProvider.authData!!)
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var devStream:DevStream = DevStream()

@@ -46,7 +46,7 @@ class BlacklistViewModel @Inject constructor(
     authProvider: AuthProvider
 ) : ViewModel() {
     private val blacklistProvider: BlacklistProvider = BlacklistProvider.with(context)
-    private val appDetailsHelper = AppDetailsHelper(authProvider.authData)
+    private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     private val _blacklistedApps = MutableStateFlow<List<App>?>(null)

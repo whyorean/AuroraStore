@@ -43,7 +43,7 @@ class ExpandedStreamBrowseViewModel @Inject constructor(
     private val authProvider: AuthProvider
 ) : ViewModel() {
 
-    private val streamHelper: ExpandedBrowseHelper = ExpandedBrowseHelper(authProvider.authData)
+    private val streamHelper: ExpandedBrowseHelper = ExpandedBrowseHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
