@@ -1,6 +1,6 @@
 [versions]
 activityCompose = "1.9.0"
-androidGradlePlugin = "8.5.0"
+androidGradlePlugin = "8.5.1"
 browserVersion = "1.8.0"
 coilVersion = "2.6.0"
 composeBom = "2024.06.00"
