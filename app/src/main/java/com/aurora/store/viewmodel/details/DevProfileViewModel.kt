@@ -80,7 +80,7 @@ class DevProfileViewModel @Inject constructor(
                     if (streamCluster.hasNext()) {
                         val newCluster = streamHelper.getNextStreamCluster(streamCluster.clusterNextPageUrl)
                         updateCluster(newCluster)
-                        devStream.streamBundle = streamBundle
+                        devStream = devStream.copy(streamBundle = streamBundle)
                         liveData.postValue(ViewState.Success(devStream))
                     } else {
                         Log.i("End of cluster")

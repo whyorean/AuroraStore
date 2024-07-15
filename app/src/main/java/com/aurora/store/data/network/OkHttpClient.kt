@@ -186,18 +186,12 @@ object OkHttpClient : IProxyHttpClient {
     }
 
     private fun buildPlayResponse(response: Response): PlayResponse {
-        return PlayResponse().apply {
-            isSuccessful = response.isSuccessful
-            code = response.code
-
-            if (response.body != null) {
-                responseBytes = response.body!!.bytes()
-            }
-
-            if (!isSuccessful) {
-                errorString = response.message
-            }
-        }.also {
+        return PlayResponse(
+            isSuccessful = response.isSuccessful,
+            code = response.code,
+            responseBytes = response.body?.bytes() ?: byteArrayOf(),
+            errorString = if (!response.isSuccessful) response.message else String()
+        ).also {
             _responseCode.value = response.code
             Log.i("OKHTTP [${response.code}] ${response.request.url}")
         }
