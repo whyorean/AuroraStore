@@ -424,4 +424,7 @@
     <string name="export_app_summary_success">Pachet de aplicații exportat cu succes</string>
     <string name="export_app_summary_fail">Exportul pachetului de aplicații a eșuat</string>
     <string name="action_uninstall_success">Dezinstalare reușită</string>
+    <string name="action_logout_confirmation_title">Deconectați-vă?</string>
+    <string name="pref_network_proxy_url_message">Introduceți o adresă URL proxy validă pentru a trece toate datele printr-un proxy.</string>
+    <string name="action_logout_confirmation_message">Sunteți sigur(ă) că vreți să vă deconectați?</string>
 </resources>
