@@ -424,4 +424,7 @@
     <string name="export_app_summary_success">成功导出了 app bundle</string>
     <string name="export_app_summary_fail">导出 app bundle 失败了</string>
     <string name="action_uninstall_success">成功卸载</string>
+    <string name="action_logout_confirmation_message">你确定要注销登录吗？</string>
+    <string name="action_logout_confirmation_title">注销登录？</string>
+    <string name="pref_network_proxy_url_message">输入有效的代理 URL 让所有数据都经过代理。</string>
 </resources>
