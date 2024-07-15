@@ -212,8 +212,6 @@
     <string name="pref_install_mode_native">Natív telepítő (Elavult)</string>
     <string name="pref_install_delete_title">APK törlés telepítés után</string>
     <string name="pref_install_delete_summary">A letöltött APK-k törlődnek alapértelmezés telepítés után azonnal</string>
-    <string name="pref_insecure_anonymous_title">Nem biztonságos anonim munkamenet</string>
-    <string name="pref_insecure_anonymous_summary">GSF azonosító generálása helyben az eszközön</string>
     <string name="pref_filter_google_title">Google app szűrő</string>
     <string name="pref_filter_google_summary">Google alkalmazások kihagyása a \"frissítés\" és \"telepített alkalmazás\" listákról</string>
     <string name="pref_filter_fdroid_title">F-Droid appok szűrése</string>
@@ -263,7 +261,6 @@
     <string name="ui_accent_12">Viszálykék</string>
     <string name="ui_accent_2">Fukszia</string>
     <string name="ui_accent_13">Mélykék</string>
-    <string name="account_anonymous_insecure">Anonim (nem biztonságos)</string>
     <string name="installer_am_unavailable">Telepítse az App Manager-t vagy változtassa meg a telepítőt.</string>
     <string name="pref_install_mode_am">AM telepítő</string>
     <string name="ui_accent_6">Lila</string>

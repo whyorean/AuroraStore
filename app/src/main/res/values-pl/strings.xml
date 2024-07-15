@@ -228,9 +228,7 @@
     <string name="details_no_updates">Brak dostępnych aktualizacji</string>
     <string name="toast_purchase_blocked">Zakup aplikacji nie jest dostępny na kontach anonimowych.</string>
     <string name="insecure_anonymous_apply">Zaloguj się ponownie i zrestartuj aplikację, aby zastosować zmiany.</string>
-    <string name="pref_insecure_anonymous_summary">Wygeneruj identyfikator GSF na urządzeniu</string>
     <string name="pref_network_title">Sieć</string>
-    <string name="pref_insecure_anonymous_title">Niezabezpieczona sesja anonimowa</string>
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony Dla Ciebie na ekranie głównym</string>
@@ -255,7 +253,6 @@
     <string name="notification_channel_updater_service">Usługa pobierania aplikacji w tle</string>
     <string name="pref_install_mode_am">Instalator menedżera aplikacji</string>
     <string name="installer_am_unavailable">Zainstaluj Menedżera Aplikacji lub zmień instalator.</string>
-    <string name="account_anonymous_insecure">Anonimowe (niezabezpieczone)</string>
     <string name="ui_accent_1">Niebieski</string>
     <string name="ui_accent_2">Fuksja</string>
     <string name="ui_accent_4">Złoty</string>

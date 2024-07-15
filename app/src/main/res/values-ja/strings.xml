@@ -229,8 +229,6 @@
     <string name="onboarding_permission_esm">外部ストレージマネージャー</string>
     <string name="insecure_anonymous_apply">変更を反映するにはアプリを再起動し、ログインし直してください。</string>
     <string name="pref_network_title">ネットワーク</string>
-    <string name="pref_insecure_anonymous_title">安全でない匿名セッション</string>
-    <string name="pref_insecure_anonymous_summary">デバイスで GSF ID を生成する</string>
     <string name="pref_common_extra">その他</string>
     <string name="toast_manual_unavailable">要求したバージョン番号は利用できません。</string>
     <string name="toast_manual_available">おめでとう！要求したバージョンコードが利用できます。ダウンロード中。</string>
@@ -253,7 +251,6 @@
     <string name="notification_channel_updater_service">アプリのバックグラウンドダウンロードサービス</string>
     <string name="toast_export_failed">デバイス設定をエクスポートできませんでした</string>
     <string name="toast_export_success">デバイス設定をエクスポートしました</string>
-    <string name="account_anonymous_insecure">匿名 (非セキュア)</string>
     <string name="installer_am_unavailable">App Manager をインストールするかインストーラーを変更してください。</string>
     <string name="pref_install_mode_am">AM インストーラー:</string>
     <string name="ui_accent_6">紫</string>

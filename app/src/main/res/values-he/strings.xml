@@ -186,12 +186,10 @@
     <string name="pref_filter_google_title">סינון יישומי Google</string>
     <string name="pref_install_delete_summary">חבילות APK שהורדת יימחקו מיד לאחר ההתקנה</string>
     <string name="title_download_playstore">חנות Play</string>
-    <string name="pref_insecure_anonymous_title">הפעלה לא מאובטחת בעילום שם</string>
     <string name="pref_ui_title">התאמה אישית</string>
     <string name="title_installed">מותקן</string>
     <string name="pref_install_mode_root">התקנה באמצעות Root</string>
     <string name="purchase_no_file">לא היה ניתן להוריד את הקבצים</string>
-    <string name="account_anonymous_insecure">בעילום שם (לא מאובטח)</string>
     <string name="action_ignore_version">התעלמות מהגרסה</string>
     <string name="action_info">מידע על היישום</string>
     <string name="details_beta">תוכנית גרסת הביתא</string>
@@ -293,7 +291,6 @@
     <string name="session_login_failed_google">‏לא הצליח להיכנס עם גוגל</string>
     <string name="menu">תפריט</string>
     <string name="download_eta_min">%1$dדק %2$dשנ נותרו</string>
-    <string name="pref_insecure_anonymous_summary">צור מזהה GSF מקומי על המכשיר</string>
     <string name="toast_proxy_success">פרוקסי הוגדר בהצלחה</string>
     <string name="app_links_title">קישורי האפליקציה</string>
     <string name="toast_export_success">ייצוא תצורת מכשיר בוצעה בהצלחה</string>

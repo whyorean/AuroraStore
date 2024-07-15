@@ -199,7 +199,6 @@
     <string name="tab_for_you">Για εσάς</string>
     <string name="pref_common_extra">Πρόσθετα</string>
     <string name="onboarding_welcome_select">Πώς είσαι;</string>
-    <string name="pref_insecure_anonymous_title">Μη ασφαλής ανώνυμη συνεδρία</string>
     <string name="pref_install_mode_native">Εγγενής εγκαταστάτης (Απαρχαιωμένος)</string>
     <string name="toast_spoof_applied">Εφαρμόστηκε spoof συσκευής.</string>
     <string name="title_updates">Ενημερώσεις</string>
@@ -229,7 +228,6 @@
     <string name="pref_ui_theme_black">Μαύρο</string>
     <string name="tab_top_charts">Κορυφαίες εφαρμογές</string>
     <string name="pref_ui_theme_title">Θέμα</string>
-    <string name="pref_insecure_anonymous_summary">Δημιουργήστε GSF ID τοπικά στη συσκευή</string>
     <string name="tab_trending">Τάσεις</string>
     <string name="title_apps_sale">Eφαρμογές προς πώληση</string>
     <string name="title_games">Παιχνίδια</string>
@@ -265,7 +263,6 @@
     <string name="ui_accent_11">Ανοιχτό μπλε</string>
     <string name="ui_accent_12">Disskord μπλε</string>
     <string name="ui_accent_13">Βαθύ μπλε</string>
-    <string name="account_anonymous_insecure">Ανώνυμος (μη ασφαλές)</string>
     <string name="installer_am_unavailable">Εγκατάστησε το Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
     <string name="pref_abandon_session">Εξαναγκασμός εκκαθάρισης συνεδριάσεων</string>
     <string name="action_home_screen">Προσθήκη στην Αρχική οθόνη</string>

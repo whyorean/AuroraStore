@@ -97,8 +97,6 @@
     <string name="pref_install_mode_native">Native installateur</string>
     <string name="pref_install_delete_title">Verwijder APK na installatie</string>
     <string name="pref_install_delete_summary">APKs worden standaard verwijderd</string>
-    <string name="pref_insecure_anonymous_title">Onveilige anonieme sessie</string>
-    <string name="pref_insecure_anonymous_summary">Genereer GSF ID lokaal op apparaat</string>
     <string name="pref_filter_google_title">Filter Google apps</string>
     <string name="pref_filter_google_summary">Verwijdert alle Google Apps van zoekresultaten en categorie apps</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>
@@ -253,7 +251,6 @@
     <string name="toast_rated_success">Beoordeeld</string>
     <string name="title_manual_download">Handmatige installatie</string>
     <string name="title_updates">Updates</string>
-    <string name="account_anonymous_insecure">Anoniem (onveilig)</string>
     <string name="installer_am_unavailable">Installeer App Manager of verander de installatiewijze.</string>
     <string name="pref_install_mode_am">AM-installatieprogramma.</string>
     <string name="ui_accent_1">Blauw</string>

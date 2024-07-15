@@ -45,7 +45,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
-import com.aurora.store.util.Preferences.PREFERENCE_INSECURE_ANONYMOUS
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
@@ -159,7 +158,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         if (!CertUtil.isAppGalleryApp(requireContext(), requireContext().packageName)) {
             save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER))
         }
-        save(PREFERENCE_INSECURE_ANONYMOUS, false)
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/

@@ -28,14 +28,13 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
-import com.aurora.gplayapi.data.providers.DeviceInfoProvider
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.AuthState
-import com.aurora.store.data.model.InsecureAuth
+import com.aurora.store.data.model.Auth
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
@@ -66,7 +65,19 @@ class AuthViewModel @Inject constructor(
 
     private val TAG = AuthViewModel::class.java.simpleName
 
-    private val spoofProvider = SpoofProvider(context)
+    private val spoofProvider: SpoofProvider get() = SpoofProvider(context)
+    val properties: Properties
+        get() = if (spoofProvider.isDeviceSpoofEnabled()) {
+            spoofProvider.getSpoofDeviceProperties()
+        } else {
+            NativeDeviceInfoProvider(context).getNativeDeviceProperties()
+        }
+    val locale: Locale
+        get() = if (spoofProvider.isLocaleSpoofEnabled()) {
+            spoofProvider.getSpoofLocale()
+        } else {
+            Locale.getDefault()
+        }
 
     val dispenserURL: String?
         get() {
@@ -92,11 +103,13 @@ class AuthViewModel @Inject constructor(
         liveData.postValue(AuthState.Fetching)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                var properties = NativeDeviceInfoProvider(context).getNativeDeviceProperties()
-                if (spoofProvider.isDeviceSpoofEnabled())
-                    properties = spoofProvider.getSpoofDeviceProperties()
-
-                val authData = AuthHelper.build(email, aasToken, properties)
+                val authData = AuthHelper.build(
+                    email = email,
+                    token = aasToken,
+                    tokenType = AuthHelper.Token.AAS,
+                    properties = properties,
+                    locale = locale
+                )
                 verifyAndSaveAuth(authData, AccountType.GOOGLE)
             } catch (exception: Exception) {
                 liveData.postValue(
@@ -107,80 +120,28 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun buildAnonymousAuthData() {
-        if (Preferences.getBoolean(context, Preferences.PREFERENCE_INSECURE_ANONYMOUS)) {
-            buildInSecureAnonymousAuthData()
-        } else {
-            buildSecureAnonymousAuthData()
-        }
-    }
-
-    fun buildSecureAnonymousAuthData() {
+    fun buildAnonymousAuthData() {
         liveData.postValue(AuthState.Fetching)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                var properties = NativeDeviceInfoProvider(context).getNativeDeviceProperties()
-
-                if (spoofProvider.isDeviceSpoofEnabled())
-                    properties = spoofProvider.getSpoofDeviceProperties()
-
-                val playResponse = HttpClient
-                    .getPreferredClient(context)
-                    .postAuth(
-                        dispenserURL!!,
-                        gson.toJson(properties).toByteArray()
-                    )
-
-                if (playResponse.isSuccessful) {
-                    val authData = gson.fromJson(
-                        String(playResponse.responseBytes),
-                        AuthData::class.java
-                    )
-
-                    //Set AuthData as anonymous
-                    authData.isAnonymous = true
-                    verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
-                } else {
-                    throwError(playResponse, context)
-                }
-            } catch (exception: Exception) {
-                liveData.postValue(AuthState.Failed(exception.message.toString()))
-                Log.e(TAG, "Failed to generate Session", exception)
-            }
-        }
-    }
-
-    fun buildInSecureAnonymousAuthData() {
-        liveData.postValue(AuthState.Fetching)
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                var properties = NativeDeviceInfoProvider(context)
-                    .getNativeDeviceProperties()
-
-                if (spoofProvider.isDeviceSpoofEnabled())
-                    properties = spoofProvider.getSpoofDeviceProperties()
-
                 val playResponse = HttpClient
                     .getPreferredClient(context)
                     .getAuth(dispenserURL!!)
 
                 if (playResponse.isSuccessful) {
-                    val insecureAuth = gson.fromJson(
+                    val tmpAuthData = gson.fromJson(
                         String(playResponse.responseBytes),
-                        InsecureAuth::class.java
+                        Auth::class.java
                     )
 
-                    val deviceInfoProvider =
-                        DeviceInfoProvider(properties, Locale.getDefault().toString())
-                    val authData = AuthHelper.buildInsecure(
-                        insecureAuth.email,
-                        insecureAuth.auth,
-                        Locale.getDefault(),
-                        deviceInfoProvider
+                    val authData = AuthHelper.build(
+                        email = tmpAuthData.email,
+                        token = tmpAuthData.auth,
+                        tokenType = AuthHelper.Token.AUTH,
+                        isAnonymous = true,
+                        properties = properties,
+                        locale = locale
                     )
-
-                    //Set AuthData as anonymous
-                    authData.isAnonymous = true
                     verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
                 } else {
                     throwError(playResponse, context)
@@ -266,12 +227,6 @@ class AuthViewModel @Inject constructor(
 
     private fun verifyAndSaveAuth(authData: AuthData, type: AccountType) {
         liveData.postValue(AuthState.Verifying)
-
-        if (spoofProvider.isLocaleSpoofEnabled()) {
-            authData.locale = spoofProvider.getSpoofLocale()
-        } else {
-            authData.locale = Locale.getDefault()
-        }
 
         val versionId = Preferences.getInteger(context, Preferences.PREFERENCE_VENDING_VERSION)
         if (versionId > 0) {

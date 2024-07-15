@@ -106,7 +106,6 @@
     <string name="pref_network_title">Darbas tinkle</string>
     <string name="pref_ui_theme_black">Juodas</string>
     <string name="onboarding_title_permissions">Leidimai</string>
-    <string name="pref_insecure_anonymous_title">Nesaugus anoniminis seansas</string>
     <string name="pref_install_mode_title">Įdiegimo būdas</string>
     <string name="purchase_unsupported">Programėlė nepalaikoma</string>
     <string name="title_account_manager">Paskyros</string>
@@ -182,7 +181,6 @@
     <string name="ui_accent_12">Blankiai mėlyna</string>
     <string name="ui_accent_13">Tamsiai mėlyna</string>
     <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="account_anonymous_insecure">Anonimas (nesaugu)</string>
     <string name="action_cancel">Atsisakyti</string>
     <string name="action_filter_misc">Įvairūs</string>
     <string name="action_grant">Suteikti</string>
@@ -213,7 +211,6 @@
     <string name="pref_abandon_session_desc">Išvalyti nutrauktus ar laukiančius diegimo seansus</string>
     <string name="pref_filter_google_summary">Pašalina visas „Google“ programėles iš paieškos rezultatų bei programėlių kategorijų</string>
     <string name="pref_filter_google_title">Filtruoti „Google“ programėles</string>
-    <string name="pref_insecure_anonymous_summary">Generuoti GSF ID vietiniu mastu įrenginyje</string>
     <string name="pref_install_delete_summary">Pagal numatymą APK paketai bus ištrinami</string>
     <string name="pref_install_mode_summary">Pasirinkti APK paketų diegimo veikseną</string>
     <string name="tab_top_charts">Geriausios</string>

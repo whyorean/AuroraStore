@@ -3,7 +3,6 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_libera_summary">Diveni unu sustenidore in Liberapay</string>
     <string name="about_paypal">PayPal</string>
-    <string name="account_anonymous_insecure">Anònimu (non seguru)</string>
     <string name="account_login_using">Intra impreende</string>
     <string name="account_logout">Essi dae Aurora</string>
     <string name="action_back">In segus</string>
@@ -77,8 +76,6 @@
     <string name="pref_abandon_session_desc">Isbòida sas sessiones de installatzione in suspesu o abbandonadas</string>
     <string name="pref_dialog_to_apply_restart">Custa impostatzione at a èssere aplicada cando as a torrare a allùghere s\'aplicatzione</string>
     <string name="pref_common_extra">Extras</string>
-    <string name="pref_insecure_anonymous_summary">Gènera un\'ID GSF in locale in su dispositivu</string>
-    <string name="pref_insecure_anonymous_title">Sessione anònima non segura</string>
     <string name="pref_install_delete_summary">Sos APK s\'ant a iscantzellare comente impostatzione predefinida</string>
     <string name="pref_install_mode_am">Installadore AM.</string>
     <string name="pref_install_mode_native">Installadore nativu</string>

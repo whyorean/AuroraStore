@@ -91,7 +91,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         // Show anonymous logins if we have dispenser URL
         if (!viewModel.dispenserURL.isNullOrBlank()) {
             binding.btnAnonymous.visibility = View.VISIBLE
-            binding.btnAnonymousInsecure.visibility = View.VISIBLE
         }
 
         //Initial status
@@ -180,14 +179,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         binding.btnAnonymous.addOnClickListener {
             if (viewModel.liveData.value != AuthState.Fetching) {
                 binding.btnAnonymous.updateProgress(true)
-                viewModel.buildSecureAnonymousAuthData()
-            }
-        }
-
-        binding.btnAnonymousInsecure.addOnClickListener {
-            if (viewModel.liveData.value != AuthState.Fetching) {
-                binding.btnAnonymousInsecure.updateProgress(true)
-                viewModel.buildInSecureAnonymousAuthData()
+                viewModel.buildAnonymousAuthData()
             }
         }
 
@@ -206,11 +198,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         }
 
         binding.btnAnonymous.apply {
-            updateProgress(false)
-            isEnabled = true
-        }
-
-        binding.btnAnonymousInsecure.apply {
             updateProgress(false)
             isEnabled = true
         }

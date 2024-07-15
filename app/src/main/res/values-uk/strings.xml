@@ -192,8 +192,6 @@
     <string name="pref_install_mode_native">Власний встановлювач (Застарілий)</string>
     <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
-    <string name="pref_insecure_anonymous_title">Небезпечний анонімний сеанс</string>
-    <string name="pref_insecure_anonymous_summary">Локальне створення ідентифікатора GSF на пристрої</string>
     <string name="pref_filter_google_title">Фільтрувати застосунки Google</string>
     <string name="pref_filter_google_summary">Ігнорувати застосунки Google з Оновлень та Встановлених застосунків</string>
     <string name="pref_app_download">Завантаження</string>
@@ -254,7 +252,6 @@
     <string name="app_updater_service_notif_title">Фонове завантаження застосунку</string>
     <string name="notification_channel_updater_service">Служба фонового завантаження застосунків</string>
     <string name="pref_install_mode_am">Інсталятор менеджера застосунків</string>
-    <string name="account_anonymous_insecure">Анонімно (незахищено)</string>
     <string name="installer_am_unavailable">Встановити Менеджер застосунків або змінити встановлювач.</string>
     <string name="ui_accent_1">Синій</string>
     <string name="ui_accent_4">Золотий</string>

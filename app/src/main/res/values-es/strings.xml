@@ -229,8 +229,6 @@
     <string name="toast_purchase_blocked">Las compras de aplicaciones no están disponibles en cuentas anónimas.</string>
     <string name="insecure_anonymous_apply">Asegúrese de volver a iniciar sesión y reiniciar la aplicación para aplicar los cambios.</string>
     <string name="pref_network_title">Redes</string>
-    <string name="pref_insecure_anonymous_title">Sesión anónima insegura</string>
-    <string name="pref_insecure_anonymous_summary">Generar el ID GSF localmente en el dispositivo</string>
     <string name="toast_manual_available">Felicidades, el código de la versión solicitada está disponible, descargándolo ahora.</string>
     <string name="toast_manual_unavailable">El código de la versión que solicita no está disponible.</string>
     <string name="title_manual_download">Descarga manual</string>
@@ -253,7 +251,6 @@
     <string name="app_updater_service_notif_text">Activa la descarga de aplicaciones en segundo plano</string>
     <string name="app_updater_service_notif_title">Descarga de aplicaciones en segundo plano</string>
     <string name="notification_channel_updater_service">Servicio de descargas de aplicaciones en segundo plano</string>
-    <string name="account_anonymous_insecure">Anónima (insegura)</string>
     <string name="installer_am_unavailable">Instalar Gestor de aplicaciones o cambiar el instalador.</string>
     <string name="pref_install_mode_am">Instalador AM</string>
     <string name="ui_accent_1">Azul</string>

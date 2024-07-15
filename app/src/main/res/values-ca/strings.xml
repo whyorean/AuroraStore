@@ -25,7 +25,6 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_gitlab_summary">Obteniu el codi font de l\'Aurora Store des d\'Aurora OSS a GitLab.</string>
     <string name="about_paypal_summary">Dona a través de PayPal</string>
-    <string name="account_anonymous_insecure">Anònim (insegur)</string>
     <string name="account_google">Google</string>
     <string name="account_login_using">Inicia la sessió via</string>
     <string name="account_logout">Sortir d\'Aurora</string>
@@ -159,7 +158,6 @@
     <string name="dialog_title_self_update">Nova actualització disponible</string>
     <string name="onboarding_welcome_select">Com va\?</string>
     <string name="app_updater_service_notif_text">Habilita la baixada d\'aplicacions en segon pla</string>
-    <string name="pref_insecure_anonymous_title">Sessió anònima insegura</string>
     <string name="onboarding_permission_esm">Gestor d\'emmagatzematge extern</string>
     <string name="onboarding_permission_esa_desc">Per desar les descàrregues (APKs i OBBs), exporteu i importeu les configuracions del dispositiu a i des d\'emmagatzematge extern.</string>
     <string name="pref_filter_google_summary">Elimina totes les aplicacions de Google dels resultats de cerca i de les categories d\'aplicacions</string>
@@ -177,7 +175,6 @@
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>
     <string name="pref_filter_fdroid_title">Filtra les aplicacions de F-Droid</string>
     <string name="pref_filter_google_title">Filtra les aplicacions de Google</string>
-    <string name="pref_insecure_anonymous_summary">Genera un identificador GSF localment al dispositiu</string>
     <string name="pref_install_delete_summary">Els APKs se suprimiran per defecte</string>
     <string name="pref_install_delete_title">Elimina l\'APK després de la instal·lació</string>
     <string name="pref_install_mode_am">Instal·lador GA.</string>

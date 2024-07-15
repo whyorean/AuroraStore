@@ -243,14 +243,11 @@
     <string name="pref_ui_layout">Распоред</string>
     <string name="pref_ui_layout_tab">Избор подразумеване картице</string>
     <string name="pref_network_title">Умрежавање</string>
-    <string name="pref_insecure_anonymous_title">Несигурна анонимна сесија</string>
-    <string name="pref_insecure_anonymous_summary">Генерисање GSF ID-а локално на уређају</string>
     <string name="pref_common_extra">Додатно</string>
     <string name="details_no_app_match">Није пронађена ниједна одговарајућа апликација</string>
     <string name="action_check">Провери</string>
     <string name="toast_export_failed">Није могуће извести конфигурацију уређаја</string>
     <string name="toast_export_success">Конфигурација уређаја је извезена</string>
-    <string name="account_anonymous_insecure">Анонимно (несигурно)</string>
     <string name="download_paused">Паузирано •
 \n<xliff:g id="completed_downloads">
 \n%1$d</xliff:g> /

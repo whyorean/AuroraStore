@@ -185,7 +185,6 @@
     <string name="onboarding_permission_installer_desc">Permitter le installation de applicationes ab Aurora Store</string>
     <string name="details_more_about_app">Plus super le application</string>
     <string name="account_anonymous">Anonyme</string>
-    <string name="pref_insecure_anonymous_title">Session anonyme non secur</string>
     <string name="pref_filter_fdroid_summary">Ignorar applicationes de F-Droid ab le Actualisationes e applicationes installate</string>
     <string name="action_granted">Concedite</string>
     <string name="device_miui_title">MIUI detegite!</string>

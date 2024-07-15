@@ -69,15 +69,6 @@ class NetworkPreference : BasePreferenceFragment(),
             }
         }
 
-        findPreference<SwitchPreferenceCompat>(Preferences.PREFERENCE_INSECURE_ANONYMOUS)?.let {
-            it.setOnPreferenceChangeListener { _, _ ->
-                runOnUiThread {
-                    requireContext().toast(R.string.insecure_anonymous_apply)
-                }
-                false
-            }
-        }
-
         findPreference<Preference>(Preferences.PREFERENCE_VENDING_VERSION)?.let {
             it.setOnPreferenceChangeListener { _, newValue ->
                 save(Preferences.PREFERENCE_VENDING_VERSION, Integer.parseInt(newValue.toString()))

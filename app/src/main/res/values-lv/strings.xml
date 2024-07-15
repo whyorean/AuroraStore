@@ -227,7 +227,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_xda">XDA forumi</string>
     <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
-    <string name="account_anonymous_insecure">Anonīms (nedrošs)</string>
     <string name="dialog_desc_native_split">Nav iespējams uzstādīt apvienotās (sastāvošas no vairākām daļām) lietotnes ar iebūvēto uzstādītāju. Tas ir jānomaina uz sesijas, pakalpojumu vai superlietotāja uzstādītāju.</string>
     <string name="action_get_local_apk">Saglabāt lietotnes kopu</string>
     <string name="action_filter_misc">Dažādi</string>
@@ -268,7 +267,6 @@
     <string name="download_eta_min">Atlicis %1$dm %2$ds</string>
     <string name="download_eta_sec">Atlikušas %1$ds</string>
     <string name="installer_service_misconfigured">Vispirms jāuzstāda Aurora pakalpojumi un jānodrošina visas atļaujas.</string>
-    <string name="pref_insecure_anonymous_title">Nedroša anonīmā sesija</string>
     <string name="toast_export_success">Ierīces uzstādījumi ir izgūti</string>
     <string name="ui_accent_7">Pelēks</string>
     <string name="details_no_dependencies">Nav atkarību</string>
@@ -288,7 +286,6 @@
     <string name="onboarding_permission_esa_desc">Lai saglabātu APK paplašināšanas datnes (OBB) lielām lietotnēm un spēlēm.</string>
     <string name="onboarding_permission_notifications">Paziņojumi</string>
     <string name="pref_filter_fdroid_title">Atlasīt F-Droid lietotnes</string>
-    <string name="pref_insecure_anonymous_summary">Veidot vietēju GSF ID ierīcē</string>
     <string name="pref_network_title">Tīklošana</string>
     <string name="pref_ui_accent_title">Uzsvara krāsa</string>
     <string name="toast_page_unavailable">Pārlūkošanas lapa nav pieejama</string>

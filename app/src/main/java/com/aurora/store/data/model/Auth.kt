@@ -19,7 +19,7 @@
 
 package com.aurora.store.data.model
 
-data class InsecureAuth(
+data class Auth(
     val email: String,
     val auth: String
 )

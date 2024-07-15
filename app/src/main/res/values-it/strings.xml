@@ -229,8 +229,6 @@
     <string name="toast_purchase_blocked">Acquisti di applicazioni non disponibili su profili anonimi.</string>
     <string name="insecure_anonymous_apply">Assicurati di effettuare nuovamente l’accesso e riavviare l’applicazione per applicare le modifiche.</string>
     <string name="pref_network_title">Rete</string>
-    <string name="pref_insecure_anonymous_title">Sessione anonima non sicura</string>
-    <string name="pref_insecure_anonymous_summary">Genera l’ID GSF localmente sul dispositivo</string>
     <string name="pref_ui_similar_apps_desc">Visualizza i gruppi di app simili e correlati sulla pagina dei dettagli dell’app</string>
     <string name="pref_ui_similar_apps">Applicazioni simili e correlate</string>
     <string name="pref_ui_no_for_you_desc">Visualizza le pagine «Per te» sulla schermata iniziale</string>
@@ -254,7 +252,6 @@
     <string name="app_updater_service_notif_title">Scaricamento delle app in background</string>
     <string name="notification_channel_updater_service">Servizio di scaricamento delle app in background</string>
     <string name="pref_install_mode_am">Installatore AM</string>
-    <string name="account_anonymous_insecure">Anonimo (non sicuro)</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia l\'installatore.</string>
     <string name="ui_accent_1">Blu</string>
     <string name="ui_accent_8">Rosa</string>

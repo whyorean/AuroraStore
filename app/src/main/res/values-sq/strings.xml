@@ -170,8 +170,6 @@
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_filter_google_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga Google</string>
     <string name="pref_filter_google_title">Filtro aplikacione Google</string>
-    <string name="pref_insecure_anonymous_summary">Prodho ID GSF lokalisht në pajisje</string>
-    <string name="pref_insecure_anonymous_title">Sesion anonim i pasigurt</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
     <string name="pref_install_mode_native">Instalues i vetë sistemit (Nxjerrë nga përdorimi)</string>
@@ -265,7 +263,6 @@
     <string name="ui_accent_11">E kaltër</string>
     <string name="ui_accent_12">Blu Disskord-i</string>
     <string name="ui_accent_13">Blu e zënë</string>
-    <string name="account_anonymous_insecure">Anonime (jo e sigurt)</string>
     <string name="pref_install_mode_am">Instalues AM</string>
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
     <string name="app_links_desc">Lejojeni Shitoren Aurora të hapë lidhjet që mbulohen</string>

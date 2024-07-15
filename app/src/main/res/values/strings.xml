@@ -42,7 +42,6 @@
     <string name="about_xda">"XDA Forums"</string>
     <string name="about_xda_summary">"See the Aurora Store XDA thread for discussions or suggestions."</string>
     <string name="account_anonymous">"Anonymous"</string>
-    <string name="account_anonymous_insecure">"Anonymous (insecure)"</string>
     <string name="account_google">"Google"</string>
     <string name="account_login_using">Log in using</string>
     <string name="account_logout">Log out from Aurora</string>
@@ -214,8 +213,6 @@
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_filter_google_summary">"Ignore Google apps from Updates and Installed apps"</string>
     <string name="pref_filter_google_title">"Filter Google apps"</string>
-    <string name="pref_insecure_anonymous_summary">"Generate GSF ID locally on device"</string>
-    <string name="pref_insecure_anonymous_title">"Insecure anonymous session"</string>
     <string name="pref_install_delete_summary">Downloaded APKs will be deleted immediately after installation</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
     <string name="pref_install_mode_am">AM installer</string>

@@ -235,8 +235,6 @@
     <string name="pref_install_mode_native">Pemasang native (Tidak digunakan lagi)</string>
     <string name="pref_install_delete_title">Hapus APK setelah pemasangan</string>
     <string name="pref_install_delete_summary">APK yang diunduh akan segera dihapus setelah penginstalan</string>
-    <string name="pref_insecure_anonymous_title">Sesi anonim tidak aman</string>
-    <string name="pref_insecure_anonymous_summary">Buat ID GSF lokal di perangkat</string>
     <string name="dialog_desc_native_split">Anda tidak dapat memasang aplikasi bundled(split) melalui Native Installer. Ubah pemasang Anda ke Sesi, Layanan, atau Root.</string>
     <string name="device_miui_extra">Anda juga dapat memilih Pemasang asli, tetapi Anda tidak akan dapat menginstal APK yang dibundel (terpisah), jadi pilihan ada di tangan Anda.</string>
     <string name="device_miui_description">Harap nonaktifkan optimisasi MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>
@@ -254,7 +252,6 @@
     <string name="app_updater_service_notif_title">Unduhan aplikasi di latar belakang</string>
     <string name="notification_channel_updater_service">Layanan unduhan aplikasi di latar belakang</string>
     <string name="pref_install_mode_am">Pemasang AM</string>
-    <string name="account_anonymous_insecure">Anonim (tidak aman)</string>
     <string name="installer_am_unavailable">Pasang App Manager atau ubah pemasang.</string>
     <string name="ui_accent_1">Biru</string>
     <string name="ui_accent_3">Merah</string>

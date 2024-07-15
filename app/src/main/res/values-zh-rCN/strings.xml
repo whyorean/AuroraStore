@@ -229,8 +229,6 @@
     <string name="installer_service_unavailable">安装 Aurora 服务 1.09 或以上版本，或更改安装程序。</string>
     <string name="insecure_anonymous_apply">确保你重新登录并重新启动应用程序以应用更改。</string>
     <string name="pref_network_title">网络</string>
-    <string name="pref_insecure_anonymous_title">不安全的匿名会话</string>
-    <string name="pref_insecure_anonymous_summary">在设备上本地生成 GSF ID</string>
     <string name="pref_ui_similar_apps_desc">在应用程序详细信息页面上显示相似和相关的集群</string>
     <string name="pref_ui_similar_apps">相似及相关应用</string>
     <string name="pref_ui_no_for_you_desc">在主页展示 For You 页面</string>
@@ -255,7 +253,6 @@
     <string name="notification_channel_updater_service">应用后台下载服务</string>
     <string name="pref_install_mode_am">应用管理器</string>
     <string name="installer_am_unavailable">安装 App Manager 或更改安装程序。</string>
-    <string name="account_anonymous_insecure">匿名（不安全）</string>
     <string name="ui_accent_1">蓝色</string>
     <string name="ui_accent_2">紫红</string>
     <string name="ui_accent_4">金色</string>

@@ -118,7 +118,6 @@
     <string name="action_copy">Kopyalayın</string>
     <string name="action_copy_link">Linki Kopyalayın</string>
     <string name="action_disable">Deaktiv edin</string>
-    <string name="account_anonymous_insecure">Anonim (təhlükəli)</string>
     <string name="details_no_app_match">Uyğun tətbiq tapılmadı</string>
     <string name="details_no_dependencies">Asılılıq yoxdur</string>
     <string name="details_no_permission">İcazə yoxdur</string>
@@ -182,8 +181,6 @@
     <string name="pref_filter_fdroid_title">F-Droid tətbiqlərini süzün</string>
     <string name="pref_filter_google_summary">Bütün Google Tətbiqlərini axtarış nəticələrindən və kateqoriya tətbiqlərindən silir</string>
     <string name="pref_filter_google_title">Google tətbiqlərini filtrləyin</string>
-    <string name="pref_insecure_anonymous_summary">Cihazda yerli olaraq GSF ID yaradın</string>
-    <string name="pref_insecure_anonymous_title">Təhlükəli anonim hesab</string>
     <string name="pref_install_delete_summary">APK-lar defolt olaraq silinəcək</string>
     <string name="pref_install_delete_title">Quraşdırıldıqdan sonra APK-ni silin</string>
     <string name="pref_install_mode_am">AM quraşdırıcısı.</string>

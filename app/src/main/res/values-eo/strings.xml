@@ -119,7 +119,6 @@
     <string name="pref_filter_fdroid_title">Filtri F-Droid aplikaĵojn</string>
     <string name="pref_filter_google_summary">Forigas ĉiujn Googlajn aplikaĵojn el serĉrezultoj kaj kategoriaj aplikaĵoj</string>
     <string name="pref_filter_google_title">Filtri Googlajn aplikaĵojn</string>
-    <string name="pref_insecure_anonymous_title">Nesekura anonima seanco</string>
     <string name="pref_install_delete_summary">APKojn detektos defaŭlte</string>
     <string name="pref_install_delete_title">Forigi APK post instalado</string>
     <string name="pref_install_mode_native">Operaciuma instalilo</string>

@@ -148,13 +148,11 @@
     <string name="pref_install_mode_title">Phương thức cài đặt</string>
     <string name="pref_install_mode_summary">Chọn chế độ cài đặt APK</string>
     <string name="pref_install_mode_session">Trình cài đặt phiên</string>
-    <string name="pref_insecure_anonymous_summary">Tạo ID GSF ngay trên thiết bị</string>
     <string name="pref_install_mode_services">Dịch vụ Aurora (Không dùng nữa)</string>
     <string name="pref_install_mode_root">Trình cài đặt root</string>
     <string name="pref_install_mode_native">Trình cài đặt gốc (Không dùng nữa)</string>
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
     <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
-    <string name="pref_insecure_anonymous_title">Phiên ẩn danh không an toàn</string>
     <string name="pref_filter_google_title">Lọc các ứng dụng của Google</string>
     <string name="pref_filter_google_summary">Bỏ qua các ứng dụng Google khỏi Cập nhật và Ứng dụng đã cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
@@ -253,7 +251,6 @@
     <string name="app_updater_service_notif_text">Bật tải xuống ứng dụng trong nền</string>
     <string name="app_updater_service_notif_title">Tải xuống ứng dụng trong nền</string>
     <string name="notification_channel_updater_service">Dịch vụ tải xuống trong nền của ứng dụng</string>
-    <string name="account_anonymous_insecure">Ẩn danh (không bảo mật)</string>
     <string name="pref_install_mode_am">Trình cài đặt AM</string>
     <string name="installer_am_unavailable">Hãy cài đặt App Manager hoặc đổi trình cài đặt.</string>
     <string name="ui_accent_1">Xanh lam</string>

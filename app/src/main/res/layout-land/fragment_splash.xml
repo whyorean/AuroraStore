@@ -110,14 +110,6 @@
                 android:layout_height="wrap_content"
                 app:btnStateIcon="@drawable/ic_anonymous"
                 app:btnStateText="@string/account_anonymous" />
-
-            <com.aurora.store.view.custom.layouts.button.StateButton
-                android:visibility="gone"
-                android:id="@+id/btn_anonymous_insecure"
-                android:layout_width="@dimen/width_button"
-                android:layout_height="wrap_content"
-                app:btnStateIcon="@drawable/ic_anonymous"
-                app:btnStateText="@string/account_anonymous_insecure" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

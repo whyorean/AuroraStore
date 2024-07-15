@@ -244,8 +244,6 @@
     <string name="pref_ui_layout_tab">Hilpekîna jixweber hilbijêre</string>
     <string name="pref_ui_layout">Pergal</string>
     <string name="pref_network_title">Torandin</string>
-    <string name="pref_insecure_anonymous_title">Danişîna bênav a bêewle</string>
-    <string name="pref_insecure_anonymous_summary">Li ser amûrê Nasnameya GSF-ê ya herêmî çêbike</string>
     <string name="pref_common_extra">Zêde</string>
     <string name="dialog_desc_native_split">Hûn nikarin bi navgîniya Sazkerê Xwecihî sepanên hevgirtî (parvekirî) saz bikin. Sazkerê xwe bi Danişîn, Xizmet an Rehê biguherînin.</string>
     <string name="details_no_app_match">Sepaneke lihevhatî nehat dîtin</string>

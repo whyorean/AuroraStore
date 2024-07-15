@@ -25,7 +25,6 @@
     <string name="account_anonymous">Анонимен</string>
     <string name="action_export">Експортиране</string>
     <string name="action_filter_apply">Прилагане</string>
-    <string name="account_anonymous_insecure">Анонимен (несигурен)</string>
     <string name="account_google">Google</string>
     <string name="account_login_using">Влизане чрез</string>
     <string name="account_logout">Излизане от Aurora</string>
@@ -144,7 +143,6 @@
     <string name="exodus_powered">Осъществено от Exodus</string>
     <string name="exodus_progress">Проверява се за тракери…</string>
     <string name="pref_filter_fdroid_summary">Премахва приложенията на F-Droid от списъците с приложения</string>
-    <string name="pref_insecure_anonymous_summary">Генерирайте GSF ID локално на устройството</string>
     <string name="pref_install_mode_am">AM инсталатор.</string>
     <string name="pref_install_mode_root">Root инсталатор</string>
     <string name="pref_install_mode_services">Услуги на Aurora</string>
@@ -201,7 +199,6 @@
     <string name="onboarding_permission_notifications_desc">Изпращайте известия относно състоянието на инсталациите</string>
     <string name="pref_abandon_session_desc">Изчистване на изоставени или предстоящи инсталационни сесии</string>
     <string name="pref_dialog_to_apply_restart">Тази настройка ще се приложи, след като рестартирате приложението</string>
-    <string name="pref_insecure_anonymous_title">Несигурна анонимна сесия</string>
     <string name="pref_install_mode_shizuku">Shizuku инсталатор</string>
     <string name="pref_install_mode_title">Метод на инсталиране</string>
     <string name="pref_ui_accent_title">Акцент</string>
