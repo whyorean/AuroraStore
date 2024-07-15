@@ -423,4 +423,8 @@
     <string name="export_app_summary_success">Набір застосунків успішно еспортовано</string>
     <string name="export_app_summary_fail">Набір застосунків не вдалося експортувати</string>
     <string name="title_favourites_manager">Улюблені застосунки</string>
+    <string name="action_uninstall_success">Успішно видалено</string>
+    <string name="action_logout_confirmation_message">Хочете вийти з облікового запису?</string>
+    <string name="pref_network_proxy_url_message">Введіть дійсну URL-адресу проксі-сервера, щоби передавати всі дані через нього.</string>
+    <string name="action_logout_confirmation_title">Вийти з облікового запису?</string>
 </resources>
