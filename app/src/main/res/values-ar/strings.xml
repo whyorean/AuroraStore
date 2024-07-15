@@ -423,4 +423,8 @@
     <string name="toast_fav_import_failed">فشل استيراد المفضلة!</string>
     <string name="toast_fav_export_failed">فشل تصدير المفضلة!</string>
     <string name="toast_fav_import_success">‌تم استيراد المفضلة!</string>
+    <string name="action_uninstall_success">تم إلغاء تثبيت التطبيق بنجاح</string>
+    <string name="pref_network_proxy_url_message">أدخل عنوان URL صالح للوكيل لتمرير جميع البيانات من خلال الوكيل.</string>
+    <string name="action_logout_confirmation_title">تسجيل الخروج؟</string>
+    <string name="action_logout_confirmation_message">هل أنت متأكد من أنك تريد تسجيل الخروج؟</string>
 </resources>

@@ -404,4 +404,17 @@
     <string name="about_aurora_store_subtitle">Μάθετε περισσότερα για το κατάστημα Aurora</string>
     <string name="no_dispensers_available">Δεν υπάρχουν διαθέσιμοι διανομείς</string>
     <string name="add_dispenser_title">Προσθήκη διανομέα</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="action_favourite">Αγαπημένο</string>
+    <string name="title_favourites_manager">Αγαπημένες Εφαρμογές</string>
+    <string name="action_uninstall_success">Απεγκαταστάθηκε επιτυχώς</string>
+    <string name="details_no_favourites">Δε βρέθηκαν αγαπημένες εφαρμογές</string>
+    <string name="toast_app_unavailable">Η εφαρμογή δεν είναι διαθέσιμη για τη συσκευή σου</string>
+    <string name="about_aurora_store_summary">Το Aurora Store σού δίνει τη δυνατότητα να κάνεις αναζήτηση και λήψη εφαρμογών από το επίσημο κατάστημα Google Play. Μπορείς να ελέγξεις περιγραφές εφαρμογών, στιγμιότυπα οθόνης, ενημερώσεις, σχόλια άλλων χρηστών και να κάνεις λήψη του APK απευθείας από το Google Play στη συσκευή σου. Για να χρησιμοποιήσεις το Aurora Store, πρέπει να έχεις λογαριασμό Google Play και να συνδεθείς σε αυτόν όταν ανοίγεις και ρυθμίζεις για πρώτη φορά το Aurora Store.
+\n
+\nΣε αντίθεση με ένα παραδοσιακό κατάστημα εφαρμογών, το Aurora Store δεν κατέχει, δεν διαθέτει άδεια χρήσης ή δεν διανέμει κάποια εφαρμογή. Όλες οι εφαρμογές, οι περιγραφές εφαρμογών, τα στιγμιότυπα οθόνης και άλλο περιεχόμενο στο Aurora Store έχουν άμεση πρόσβαση, λήψη και/ή προβολή από το Google Play. Το Aurora Store λειτουργεί ακριβώς όπως μια πόρτα ή ένα πρόγραμμα περιήγησης, επιτρέποντάς σου να συνδεθείς στον λογαριασμό σου στο Google Play και να βρείτε τις εφαρμογές από το Google Play.
+\n
+\nΛάβε υπόψη ότι το Aurora Store δεν έχει καμία έγκριση, χορηγία ή εξουσιοδότηση από την Google, το Google Play, τυχόν εφαρμογές που έχουν ληφθεί μέσω του Aurora Store ή οποιονδήποτε προγραμματιστή εφαρμογών, ούτε το Aurora Store έχει καμία σχέση, συνεργασία ή σχέση μαζί τους.</string>
+    <string name="pref_dispenser_summary">Δες και διαχειρίσου απορρίμματα διακριτικών από ανώνυμες συνδέσεις</string>
+    <string name="pref_network_proxy_url_message">Εισήγαγε μια έγκυρη διεύθυνση URL διακομιστή μεσολάβησης για να περνάνε όλα τα δεδομένα μέσω αυτού.</string>
 </resources>

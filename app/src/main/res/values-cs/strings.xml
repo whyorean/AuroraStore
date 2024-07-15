@@ -423,4 +423,5 @@
     <string name="toast_fav_import_success">Oblíbené importovány!</string>
     <string name="export_app_summary_success">Aplikační balíček úspěšně exportován</string>
     <string name="export_app_summary_fail">Nepodařilo se exportovat aplikační balíček</string>
+    <string name="action_uninstall_success">Úspěšně odinstalováno</string>
 </resources>

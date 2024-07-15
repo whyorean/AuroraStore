@@ -424,4 +424,7 @@
     <string name="title_favourites_manager">Aplicaciones favoritas</string>
     <string name="toast_fav_import_failed">¡Error al importar favoritas!</string>
     <string name="action_uninstall_success">Desinstalado correctamente</string>
+    <string name="pref_network_proxy_url_message">Introduzca una URL de un proxy válida para pasar todos los datos a través del.</string>
+    <string name="action_logout_confirmation_title">¿Cerrar sesión?</string>
+    <string name="action_logout_confirmation_message">¿Estás seguro que deseas cerrar la sesión?</string>
 </resources>

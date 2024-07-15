@@ -409,4 +409,15 @@
     <string name="about_aurora_store_title">O aplikacji Aurora Store</string>
     <string name="about_aurora_store_subtitle">Więcej informacji o Aurora Store</string>
     <string name="toast_app_unavailable">Aplikacja nie jest dostępna dla Twojego urządzenia</string>
+    <string name="action_favourite">Ulubione</string>
+    <string name="details_no_favourites">Nie znaleziono ulubionych aplikacji</string>
+    <string name="action_uninstall_success">Odinstalowano pomyślnie</string>
+    <string name="toast_fav_export_failed">Nie udało się wyeksportować ulubionych!</string>
+    <string name="title_favourites_manager">Ulubione aplikacje</string>
+    <string name="toast_fav_import_success">Zaimportowano ulubione!</string>
+    <string name="toast_fav_export_success">Wyeksportowano ulubione!</string>
+    <string name="action_logout_confirmation_message">Czy na pewno chcesz się wylogować?</string>
+    <string name="action_logout_confirmation_title">Wylogować się?</string>
+    <string name="toast_fav_import_failed">Nie udało się zaimportować ulubionych!</string>
+    <string name="pref_network_proxy_url_message">Wprowadź prawidłowy adres URL serwera proxy, aby przekazać wszystkie dane przez serwer proxy.</string>
 </resources>

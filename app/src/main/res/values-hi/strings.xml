@@ -421,4 +421,10 @@
     <string name="toast_fav_export_failed">पसंदीदा निर्यात करने में विफल!</string>
     <string name="toast_fav_import_success">पसंदीदा आयातित!</string>
     <string name="toast_fav_export_success">पसंदीदा निर्यातित!</string>
+    <string name="export_app_summary_success">सफलतापूर्वक ऐप ब॔डल निर्यात हुआ</string>
+    <string name="export_app_summary_fail">ऐप ब॔डल निर्यात करने में विफल</string>
+    <string name="action_uninstall_success">सफलतापूर्वक अनइंस्टॉल हूई</string>
+    <string name="pref_network_proxy_url_message">प्रॉक्सी में से सारा डाटा गुजारने के लिए एक वैध प्रॉक्सी का पता भरें।</string>
+    <string name="action_logout_confirmation_title">लागआऊट करें?</string>
+    <string name="action_logout_confirmation_message">क्या वाकई आप लागआऊट करना चाहतें हैं?</string>
 </resources>
