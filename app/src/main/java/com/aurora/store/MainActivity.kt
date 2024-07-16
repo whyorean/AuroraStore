@@ -41,7 +41,6 @@ import com.aurora.store.util.AppUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
-import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -100,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        (B.navView as NavigationBarView).apply {
+        B.navView.apply {
             val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
             setupWithNavController(navController)
             itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
@@ -150,7 +149,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             appUtil.updates.collectLatest { list ->
-                (B.navView as NavigationBarView).getOrCreateBadge(R.id.updatesFragment).apply {
+                B.navView.getOrCreateBadge(R.id.updatesFragment).apply {
                     isVisible = !list.isNullOrEmpty()
                     number = list?.size ?: 0
                 }
