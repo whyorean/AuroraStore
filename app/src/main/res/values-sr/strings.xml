@@ -459,4 +459,8 @@
     <string name="toast_fav_export_success">Омиљени извезени!</string>
     <string name="export_app_summary_success">Успешан извоз пакета апликација</string>
     <string name="export_app_summary_fail">Неуспешан извоз пакета апликација</string>
+    <string name="action_uninstall_success">Успешно деинсталирано</string>
+    <string name="pref_network_proxy_url_message">Унесите важећу URL адресу проксија да бисте проследили све податке кроз прокси.</string>
+    <string name="action_logout_confirmation_title">Одјавити се?</string>
+    <string name="action_logout_confirmation_message">Желите ли заиста да се одјавите?</string>
 </resources>
