@@ -19,16 +19,13 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,10 +34,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class InstalledViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider
-) : ViewModel() {
+class InstalledViewModel @Inject constructor(private val appUtil: AppUtil) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
@@ -56,7 +50,7 @@ class InstalledViewModel @Inject constructor(
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val apps = AppUtil.getFilteredInstalledApps(context, authProvider.authData!!)
+                val apps = appUtil.getFilteredInstalledApps()
                 _installedApps.emit(apps.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to get installed apps", exception)

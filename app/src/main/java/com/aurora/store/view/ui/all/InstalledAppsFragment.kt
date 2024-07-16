@@ -26,8 +26,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
-import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.event.Event
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
@@ -51,20 +49,6 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
         }
     }
 
-    private fun onEvent(event: Event) {
-        when (event) {
-            is InstallerEvent.Installed,
-            is InstallerEvent.Uninstalled,
-            is BusEvent.Blacklisted -> {
-                viewModel.fetchApps()
-            }
-
-            else -> {
-                Log.i(TAG, "Got an unhandled event: $event")
-            }
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -75,7 +59,18 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.events.busEvent.collect { onEvent(it) }
+            AuroraApp.events.installerEvent.collect {
+                when (it) {
+                    is InstallerEvent.Installed,
+                    is InstallerEvent.Uninstalled -> {
+                        viewModel.fetchApps()
+                    }
+
+                    else -> {
+                        Log.i(TAG, "Got an unhandled event: $it")
+                    }
+                }
+            }
         }
     }
 

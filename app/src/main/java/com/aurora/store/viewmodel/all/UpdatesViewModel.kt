@@ -20,76 +20,52 @@
 package com.aurora.store.viewmodel.all
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.data.models.App
-import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.room.update.Update
 import com.aurora.store.util.AppUtil
 import com.aurora.store.util.DownloadWorkerUtil
-import com.aurora.store.util.Preferences
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class UpdatesViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val gson: Gson,
+    private val appUtil: AppUtil,
     private val downloadWorkerUtil: DownloadWorkerUtil,
-    private val authProvider: AuthProvider
 ) : ViewModel() {
     private val TAG = UpdatesViewModel::class.java.simpleName
 
     var updateAllEnqueued: Boolean = false
 
-    private val _updates = MutableStateFlow<List<App>?>(null)
-    val updates = _updates.asStateFlow()
-
     val downloadsList get() = downloadWorkerUtil.downloadsList
+    val updates get() = appUtil.updates
 
-    init {
-        fetchUpdates()
-    }
+    private val _fetchingUpdates = MutableStateFlow(false)
+    val fetchingUpdates = _fetchingUpdates.asStateFlow()
 
     fun fetchUpdates() {
+        _fetchingUpdates.value = true
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    val isExtendedUpdateEnabled = Preferences.getBoolean(
-                        context, Preferences.PREFERENCE_UPDATES_EXTENDED
-                    )
-
-                    val updates = AppUtil.getUpdatableApps(
-                        context,
-                        authProvider.authData!!,
-                        gson,
-                        !isExtendedUpdateEnabled
-                    ).sortedBy { it.displayName.lowercase(Locale.getDefault()) }
-
-                    _updates.emit(updates)
-                } catch (exception: Exception) {
-                    Log.d(TAG, "Failed to get updates", exception)
-                }
+            try {
+                appUtil.checkUpdates()
+            } catch (exception: Exception) {
+                Log.d(TAG, "Failed to get updates", exception)
             }
-        }
+        }.invokeOnCompletion { _fetchingUpdates.value = false }
     }
 
-    fun download(app: App) {
-        viewModelScope.launch { downloadWorkerUtil.enqueueApp(app) }
+    fun download(update: Update) {
+        viewModelScope.launch { downloadWorkerUtil.enqueueUpdate(update) }
     }
 
-    fun cancelDownload(app: App) {
-        viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
+    fun cancelDownload(packageName: String) {
+        viewModelScope.launch { downloadWorkerUtil.cancelDownload(packageName) }
     }
 
     fun cancelAll() {

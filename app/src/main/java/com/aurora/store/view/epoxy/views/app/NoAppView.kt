@@ -22,12 +22,13 @@ package com.aurora.store.view.epoxy.views.app
 import android.content.Context
 import android.util.AttributeSet
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.store.databinding.ViewNoAppBinding
 import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
-
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_MATCH_HEIGHT,
@@ -49,5 +50,20 @@ class NoAppView @JvmOverloads constructor(
         icon?.let {
             binding.img.setImageDrawable(ContextCompat.getDrawable(context, icon))
         }
+    }
+
+    @ModelProp
+    fun showAction(visibility: Boolean) {
+        binding.button.isVisible = visibility
+    }
+
+    @ModelProp
+    fun actionMessage(message: String) {
+        binding.button.text = message
+    }
+
+    @CallbackProp
+    fun actionCallback(viewOnClickListener: OnClickListener?) {
+        binding.button.setOnClickListener(viewOnClickListener)
     }
 }

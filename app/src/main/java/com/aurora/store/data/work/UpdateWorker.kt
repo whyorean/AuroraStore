@@ -27,7 +27,6 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.save
-import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
@@ -42,8 +41,8 @@ import java.util.concurrent.TimeUnit.MINUTES
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
+    private val appUtil: AppUtil,
     private val downloadWorkerUtil: DownloadWorkerUtil,
-    private val gson: Gson,
     private val authProvider: AuthProvider,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
@@ -128,13 +127,7 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             try {
-                val updatesList = AppUtil.getUpdatableApps(
-                    context = appContext,
-                    authData = authProvider.authData!!,
-                    gson = gson,
-                    verifyCert = true,
-                    selfUpdate = false
-                )
+                val updatesList = appUtil.checkUpdates().filterNot { it.isSelfUpdate() }
 
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
@@ -150,7 +143,7 @@ class UpdateWorker @AssistedInject constructor(
                                 if (list.isEmpty()) return@let
 
                                 Log.i(TAG, "Found auto-update enabled apps, updating!")
-                                list.forEach { downloadWorkerUtil.enqueueApp(it) }
+                                list.forEach { downloadWorkerUtil.enqueueUpdate(it) }
                             }
 
                             // Notify about remaining apps (if any)

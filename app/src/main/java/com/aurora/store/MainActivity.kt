@@ -33,18 +33,25 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.applyThemeAccent
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.databinding.ActivityMainBinding
+import com.aurora.store.util.AppUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var appUtil: AppUtil
 
     private lateinit var B: ActivityMainBinding
     private lateinit var navController: NavController
@@ -126,6 +133,26 @@ class MainActivity : AppCompatActivity() {
                 when (navDestination.id) {
                     in topLevelFrags -> B.navView.visibility = View.VISIBLE
                     else -> B.navView.visibility = View.GONE
+                }
+            }
+        }
+
+        // Updates
+        lifecycleScope.launch {
+            AuroraApp.events.installerEvent.collectLatest {
+                when (it) {
+                    is InstallerEvent.Installed -> appUtil.deleteUpdate(it.packageName)
+                    is InstallerEvent.Uninstalled -> appUtil.deleteUpdate(it.packageName)
+                    else -> {}
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            appUtil.updates.collectLatest { list ->
+                (B.navView as NavigationBarView).getOrCreateBadge(R.id.updatesFragment).apply {
+                    isVisible = !list.isNullOrEmpty()
+                    number = list?.size ?: 0
                 }
             }
         }

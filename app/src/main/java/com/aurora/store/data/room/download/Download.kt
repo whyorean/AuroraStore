@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.File
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.room.update.Update
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -50,6 +51,27 @@ data class Download(
                 0,
                 app.fileList.filterNot { it.url.isBlank() },
                 app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) }
+            )
+        }
+
+        fun fromUpdate(update: Update): Download {
+            return Download(
+                update.packageName,
+                update.versionCode,
+                update.offerType,
+                true,
+                update.displayName,
+                update.iconURL,
+                update.size,
+                update.id,
+                DownloadStatus.QUEUED,
+                0,
+                0L,
+                0L,
+                0,
+                0,
+                update.fileList,
+                update.sharedLibs
             )
         }
     }

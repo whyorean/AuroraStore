@@ -6,30 +6,47 @@ import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.data.room.update.Update
+import com.aurora.store.data.room.update.UpdateDao
 import com.google.gson.Gson
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-object AppUtil {
+class AppUtil @Inject constructor(
+    private val gson: Gson,
+    private val authProvider: AuthProvider,
+    private val updateDao: UpdateDao,
+    @ApplicationContext private val context: Context
+) {
 
-    private const val TAG = "AppUtil"
-    private const val RELEASE = "release"
+    private val TAG = AppUtil::class.java.simpleName
+    private val RELEASE = "release"
 
-    suspend fun getUpdatableApps(
-        context: Context,
-        authData: AuthData,
-        gson: Gson,
-        verifyCert: Boolean,
-        selfUpdate: Boolean = true
-    ): List<App> {
+    private val isExtendedUpdateEnabled get() = Preferences.getBoolean(
+        context, Preferences.PREFERENCE_UPDATES_EXTENDED
+    )
+    val updates = updateDao.updates()
+        .map { list -> list.filter { it.isInstalled(context) } }
+        .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
+        .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
+
+    suspend fun checkUpdates(): List<Update> {
+        Log.i(TAG, "Checking for updates")
         val packageInfoMap = PackageUtil.getPackageInfoMap(context)
-        val appUpdatesList = getFilteredInstalledApps(context, authData, packageInfoMap).filter {
+        val appUpdatesList = getFilteredInstalledApps(packageInfoMap).filter {
             val packageInfo = packageInfoMap[it.packageName]
             if (packageInfo != null) {
                 it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
@@ -38,33 +55,26 @@ object AppUtil {
             }
         }.toMutableList()
 
-        val verifiedUpdatesList = if (verifyCert) {
-            appUpdatesList.filter { app ->
-                app.certificateSetList.any {
-                    it.certificateSet in CertUtil.getEncodedCertificateHashes(
-                        context, app.packageName
-                    )
-                }
-            }.toMutableList()
-        } else {
-            appUpdatesList
+        if (canSelfUpdate(context)) {
+            getSelfUpdate(context, gson)?.let { appUpdatesList.add(it) }
         }
 
-        if (canSelfUpdate(context) && selfUpdate) {
-            getSelfUpdate(context, gson)?.let { verifiedUpdatesList.add(it) }
+        return appUpdatesList.map { Update.fromApp(context, it) }.also {
+            // Cache the updates into the database
+            updateDao.insertUpdates(it)
         }
+    }
 
-        return verifiedUpdatesList
+    suspend fun deleteUpdate(packageName: String) {
+        updateDao.delete(packageName)
     }
 
     suspend fun getFilteredInstalledApps(
-        context: Context,
-        authData: AuthData,
         packageInfoMap: MutableMap<String, PackageInfo>? = null
     ): List<App> {
         return withContext(Dispatchers.IO) {
             val blackList = BlacklistProvider.with(context).getBlackList()
-            val appDetailsHelper = AppDetailsHelper(authData)
+            val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
                 .using(HttpClient.getPreferredClient(context))
 
             (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->

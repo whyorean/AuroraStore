@@ -12,6 +12,7 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
+import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -84,6 +85,14 @@ class DownloadWorkerUtil @Inject constructor(
      */
     suspend fun enqueueApp(app: App) {
         downloadDao.insert(Download.fromApp(app))
+    }
+
+    /**
+     * Enqueues an update for download & install
+     * @param update [Update] to download
+     */
+    suspend fun enqueueUpdate(update: Update) {
+        downloadDao.insert(Download.fromUpdate(update))
     }
 
     /**

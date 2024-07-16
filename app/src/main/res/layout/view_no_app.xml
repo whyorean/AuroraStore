@@ -28,7 +28,8 @@
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_centerInParent="true"
-        app:tint="?android:textColorPrimary" />
+        app:tint="?android:textColorPrimary"
+        tools:src="@drawable/ic_updates" />
 
     <TextView
         android:id="@+id/txt"
@@ -36,7 +37,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/img"
         android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_small"
         android:textAppearance="@style/TextAppearance.Aurora.Line1"
         tools:text="No updates available" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:text="@string/check_updates" />
 </RelativeLayout>

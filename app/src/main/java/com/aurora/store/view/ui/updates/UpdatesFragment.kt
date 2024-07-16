@@ -26,20 +26,17 @@ import android.os.Environment
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
-import com.aurora.store.AuroraApp
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
-import com.aurora.store.data.event.Event
-import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.room.download.Download
+import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
@@ -57,14 +54,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
-    private lateinit var app: App
+    private lateinit var update: Update
 
-    private val viewModel: UpdatesViewModel by activityViewModels()
+    private val viewModel: UpdatesViewModel by viewModels()
 
     private val startForStorageManagerResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (isRAndAbove() && Environment.isExternalStorageManager()) {
-                viewModel.download(app)
+                viewModel.download(update)
             } else {
                 toast(R.string.permissions_denied)
             }
@@ -72,7 +69,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
     private val startForPermissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { perm ->
-            if (perm) viewModel.download(app) else toast(R.string.permissions_denied)
+            if (perm) viewModel.download(update) else toast(R.string.permissions_denied)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -102,7 +99,6 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                     }
                 }.collectLatest { map ->
                     updateController(map)
-                    binding.swipeRefreshLayout.isRefreshing = false
                     viewModel.updateAllEnqueued =
                         map?.values?.all { it?.isRunning == true } ?: false
 
@@ -139,26 +135,19 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                 }
         }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.fetchingUpdates.collect {
+                binding.swipeRefreshLayout.isRefreshing = it
+                if (it && viewModel.updates.value.isNullOrEmpty()) updateController(null)
+            }
+        }
+
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.fetchUpdates()
         }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.events.busEvent.collect { onEvent(it) }
-        }
     }
 
-    private fun onEvent(event: Event) {
-        when (event) {
-            is InstallerEvent.Installed, is InstallerEvent.Uninstalled -> {
-                viewModel.fetchUpdates()
-            }
-
-            else -> {}
-        }
-    }
-
-    private fun updateController(appList: Map<App, Download?>?) {
+    private fun updateController(appList: Map<Update, Download?>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (appList == null) {
@@ -175,6 +164,9 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                             .id("no_update")
                             .icon(R.drawable.ic_updates)
                             .message(getString(R.string.details_no_updates))
+                            .showAction(true)
+                            .actionMessage(getString(R.string.check_updates))
+                            .actionCallback { _ -> viewModel.fetchUpdates() }
                     )
                 } else {
                     add(
@@ -193,25 +185,21 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                             }
                     )
 
-                    for ((app, download) in appList) {
+                    for ((update, download) in appList) {
                         add(
                             AppUpdateViewModel_()
-                                .id(app.packageName)
-                                .app(app)
+                                .id(update.packageName)
+                                .update(update)
                                 .download(download)
                                 .click { _ ->
-                                    if (app.packageName == Constants.APP_ID) {
+                                    if (update.packageName == Constants.APP_ID) {
                                         requireContext().browse(Constants.GITLAB_URL)
                                     } else {
-                                        openDetailsFragment(app.packageName, app)
+                                        openDetailsFragment(update.packageName)
                                     }
                                 }
-                                .longClick { _ ->
-                                    openAppMenuSheet(app)
-                                    false
-                                }
-                                .positiveAction { _ -> updateSingle(app) }
-                                .negativeAction { _ -> cancelSingle(app) }
+                                .positiveAction { _ -> updateSingle(update) }
+                                .negativeAction { _ -> cancelSingle(update) }
                         )
                     }
                 }
@@ -219,18 +207,18 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         }
     }
 
-    private fun updateSingle(app: App, updateAll: Boolean = false) {
-        this.app = app
+    private fun updateSingle(update: Update, updateAll: Boolean = false) {
+        this.update = update
         viewModel.updateAllEnqueued = updateAll
 
-        if (PathUtil.needsStorageManagerPerm(app.fileList)) {
+        if (PathUtil.needsStorageManagerPerm(update.fileList)) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
                     startForStorageManagerResult.launch(
                         PackageUtil.getStorageManagerIntent(requireContext())
                     )
                 } else {
-                    viewModel.download(app)
+                    viewModel.download(update)
                 }
             } else {
                 if (ContextCompat.checkSelfPermission(
@@ -238,18 +226,18 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                     ) == PackageManager.PERMISSION_GRANTED
                 ) {
-                    viewModel.download(app)
+                    viewModel.download(update)
                 } else {
                     startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 }
             }
         } else {
-            viewModel.download(app)
+            viewModel.download(update)
         }
     }
 
-    private fun cancelSingle(app: App) {
-        viewModel.cancelDownload(app)
+    private fun cancelSingle(update: Update) {
+        viewModel.cancelDownload(update.packageName)
     }
 
     private fun cancelAll() {

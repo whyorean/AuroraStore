@@ -469,4 +469,7 @@
     <!-- LogoutDialog -->
     <string name="action_logout_confirmation_title">Log out?</string>
     <string name="action_logout_confirmation_message">Are you sure you want to log out?</string>
+
+    <!-- UpdatesFragment -->
+    <string name="check_updates">Check updates</string>
 </resources>

@@ -41,6 +41,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
+import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.ViewAppUpdateBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.view.epoxy.views.BaseModel
@@ -59,11 +60,11 @@ class AppUpdateView @JvmOverloads constructor(
     private val cornersTransformation = RoundedCornersTransformation(8.px.toFloat())
 
     @ModelProp
-    fun app(app: App) {
+    fun update(update: Update) {
         /*Inflate App details*/
-        with(app) {
+        with(update) {
             binding.txtLine1.text = displayName
-            binding.imgIcon.load(iconArtwork.url) {
+            binding.imgIcon.load(iconURL) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(cornersTransformation)
                 listener { _, result ->
@@ -74,9 +75,9 @@ class AppUpdateView @JvmOverloads constructor(
             binding.txtLine2.text = developerName
             binding.txtLine3.text = ("${CommonUtil.addSiPrefix(size)}  •  $updatedOn")
             binding.txtLine4.text = ("$versionName (${versionCode})")
-            binding.txtChangelog.text = if (changes.isNotEmpty())
+            binding.txtChangelog.text = if (changelog.isNotEmpty())
                 HtmlCompat.fromHtml(
-                    changes,
+                    changelog,
                     HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS
                 )
             else
