@@ -26,7 +26,6 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Chart
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract.Type
-import com.aurora.store.R
 import com.aurora.store.TopChartStash
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Empty.getDataAs

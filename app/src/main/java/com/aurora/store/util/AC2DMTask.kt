@@ -21,7 +21,7 @@ package com.aurora.store.util
 
 import com.aurora.store.data.network.OkHttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
-import java.util.*
+import java.util.Locale
 
 class AC2DMTask {
     @Throws(Exception::class)

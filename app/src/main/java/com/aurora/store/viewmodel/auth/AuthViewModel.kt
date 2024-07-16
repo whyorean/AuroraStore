@@ -33,8 +33,8 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.AccountType
-import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.model.Auth
+import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
@@ -52,7 +52,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import java.net.ConnectException
 import java.net.UnknownHostException
-import java.util.*
+import java.util.Locale
+import java.util.Properties
 import javax.inject.Inject
 
 @HiltViewModel
