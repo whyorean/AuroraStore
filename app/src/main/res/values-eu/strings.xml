@@ -224,7 +224,7 @@
     <string name="about_bitcoin_btc_summary">Eman Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Dohaintza Bitcoin Cash (BCH) bidez</string>
-    <string name="about_bitcoin_bch">Bitcoin</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Egin doaintza UPI-ren bidez</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_export_failed">Ezin izan da esportatu gailuaren konfigurazioa</string>
@@ -330,4 +330,5 @@
     <string name="pref_downloader_wifi_title">Deskargatu Wi-Fi bidez soilik</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> eta <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
+    <string name="about_wiki_title">Wiki</string>
 </resources>
