@@ -33,6 +33,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.applyThemeAccent
+import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.providers.NetworkProvider
@@ -42,6 +43,7 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -138,12 +140,18 @@ class MainActivity : AppCompatActivity() {
 
         // Updates
         lifecycleScope.launch {
-            AuroraApp.events.installerEvent.collectLatest {
+            AuroraApp.events.installerEvent.collect {
                 when (it) {
                     is InstallerEvent.Installed -> appUtil.deleteUpdate(it.packageName)
                     is InstallerEvent.Uninstalled -> appUtil.deleteUpdate(it.packageName)
                     else -> {}
                 }
+            }
+        }
+
+        lifecycleScope.launch {
+            AuroraApp.events.busEvent.collect {
+                if (it is BusEvent.Blacklisted) appUtil.deleteUpdate(it.packageName)
             }
         }
 

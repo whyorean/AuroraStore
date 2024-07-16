@@ -25,7 +25,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.AuroraApp
 import com.aurora.store.R
+import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
@@ -83,10 +85,12 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
                                 .app(it)
                                 .markChecked(viewModel.selected.contains(it.packageName))
                                 .checked { _, isChecked ->
-                                    if (isChecked)
+                                    if (isChecked) {
                                         viewModel.selected.add(it.packageName)
-                                    else
+                                        AuroraApp.events.send(BusEvent.Blacklisted(it.packageName))
+                                    } else {
                                         viewModel.selected.remove(it.packageName)
+                                    }
 
                                     requestModelBuild()
                                 }
