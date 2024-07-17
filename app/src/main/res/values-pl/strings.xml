@@ -419,4 +419,5 @@
     <string name="pref_network_proxy_url_message">Wprowadź prawidłowy adres URL serwera proxy, aby przekazać wszystkie dane przez serwer proxy.</string>
     <string name="export_app_summary_success">Wyeksportowano pakiet aplikacji</string>
     <string name="export_app_summary_fail">Nie udało się wyeksportować pakietu aplikacji</string>
+    <string name="check_updates">Sprawdź aktualizacje</string>
 </resources>
