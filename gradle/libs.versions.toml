@@ -7,7 +7,7 @@ composeBom = "2024.06.00"
 coreVersion = "1.13.1"
 epoxyVersion = "5.1.4"
 espressoVersion = "3.6.1"
-gplayapiVersion = "5c81ca3f71" #TODO: Switch to stable version on master
+gplayapiVersion = "3.4.0"
 gsonVersion = "2.10.1"
 hiddenapibypassVersion = "4.3"
 hiltVersion = "2.51.1"
@@ -61,10 +61,10 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2Version" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workVersion" }
+auroraoss-gplayapi = { module = "com.auroraoss:gplayapi", version.ref = "gplayapiVersion" }
 coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
 facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersion" }
-gitlab-auroraoss-gplayapi = { module = "com.gitlab.AuroraOSS:gplayapi", version.ref = "gplayapiVersion" }
 github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.ref = "libsu" }
 google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gsonVersion" }

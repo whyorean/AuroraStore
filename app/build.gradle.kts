@@ -171,7 +171,7 @@ dependencies {
     implementation(libs.github.topjohnwu.libsu)
 
     //GPlayApi
-    implementation(libs.gitlab.auroraoss.gplayapi)
+    implementation(libs.auroraoss.gplayapi)
 
     //Shizuku
     compileOnly(libs.rikka.hidden.stub)
