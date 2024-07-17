@@ -353,10 +353,10 @@
     <string name="device_doze_extra">Opcionalmente, você pode escolher em manter as otimizações ativas, mas dessa forma não será possível usar os downloads em segundo plano e as atualizações automáticas, a escolha é sua.</string>
     <string name="device_doze_subtitle">Aurora Store não pode instalar, baixar ou atualizar apps no plano de fundo devido às otimizações de bateria.</string>
     <string name="pref_updates_auto">Atualizar apps automaticamente</string>
-    <string name="pref_updates_auto_notify">Verificar por atualizações disponíveis e notificar</string>
+    <string name="pref_updates_auto_notify">Buscar atualizações e enviar notificações</string>
     <string name="pref_updates_auto_off">Não atualizar apps automaticamente</string>
     <string name="pref_updates_auto_desc">Configurar comportamento das atualizações automáticas</string>
-    <string name="pref_updates_auto_install">Verificar e instalar atualizações disponíveis automaticamente</string>
+    <string name="pref_updates_auto_install">Buscar e instalar atualizações disponíveis automaticamente</string>
     <string name="action_request_analysis">Solicitar nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APKs</string>
     <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
