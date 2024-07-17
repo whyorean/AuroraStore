@@ -224,9 +224,9 @@
     <string name="pref_install_delete_title">Excluir APK após a instalação</string>
     <string name="pref_install_delete_summary">APKs baixados serão excluídos após a instalação</string>
     <string name="pref_filter_google_title">Filtrar apps do Google</string>
-    <string name="pref_filter_google_summary">Ignorar apps do Google ao atualizar e remover da lista de instalados</string>
+    <string name="pref_filter_google_summary">Ignorar apps do Google nas atualizações e nos apps instalados</string>
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ignorar apps do F-Droid ao atualizar e remover da lista de apps instalados</string>
+    <string name="pref_filter_fdroid_summary">Ignorar apps do F-Droid nas atualizações e nos apps instalados</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o app para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Páginas de Recomendações</string>
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
@@ -333,7 +333,7 @@
     <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>
     <string name="pref_updates_check_frequency_desc">Configurar os intervalos das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
-    <string name="pref_aurora_only_desc">Mostrar apenas apps instalados pelo Aurora Store nas atualizações e nos apps instalados</string>
+    <string name="pref_aurora_only_desc">Mostrar apenas apps instalados pela Aurora Store nas atualizações e nos apps instalados</string>
     <string name="title_app_settings">Configurações do App</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_downloader_wifi_title">Fazer download apenas no Wi-Fi</string>
@@ -360,7 +360,7 @@
     <string name="action_request_analysis">Solicitar nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APKs</string>
     <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
-    <string name="pref_updates_incompatible_desc">Mostrar atualizações para apps incompatíveis ou desativados que podem falhar na instalação</string>
+    <string name="pref_updates_incompatible_desc">Mostrar atualizações para apps incompatíveis ou desativados que podem falhar ao instalar</string>
     <string name="download_clear_finished">Limpar finalizados</string>
     <string name="action_home_screen">Adicionar à Tela inicial</string>
     <string name="action_manage">Gerenciar</string>
@@ -424,5 +424,5 @@
     <string name="pref_network_proxy_url_message">Insira uma URL de proxy válida para passar todos os dados pela proxy.</string>
     <string name="action_logout_confirmation_title">Sair?</string>
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
-    <string name="check_updates">Verificar atualizações</string>
+    <string name="check_updates">Buscar atualizações</string>
 </resources>
