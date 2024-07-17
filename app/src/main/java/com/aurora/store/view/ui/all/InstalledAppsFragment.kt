@@ -22,7 +22,7 @@ package com.aurora.store.view.ui.all
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
@@ -40,7 +40,7 @@ import kotlinx.coroutines.launch
 class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
 
     private val TAG = InstalledAppsFragment::class.java.simpleName
-    private val viewModel: InstalledViewModel by activityViewModels()
+    private val viewModel: InstalledViewModel by viewModels()
 
     companion object {
         @JvmStatic

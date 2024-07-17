@@ -21,7 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.gplayapi.data.models.App
@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
-    private val viewModel: BlacklistViewModel by activityViewModels()
+    private val viewModel: BlacklistViewModel by viewModels()
 
     private lateinit var blacklistProvider: BlacklistProvider
 
