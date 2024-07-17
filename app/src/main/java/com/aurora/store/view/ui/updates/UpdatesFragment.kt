@@ -101,37 +101,6 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                     updateController(map)
                     viewModel.updateAllEnqueued =
                         map?.values?.all { it?.isRunning == true } ?: false
-
-                    if (!map.isNullOrEmpty()) {
-                        binding.updateFab.apply {
-                            visibility = View.VISIBLE
-                            if (viewModel.updateAllEnqueued) {
-                                setImageDrawable(
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.ic_cancel
-                                    )
-                                )
-                            } else {
-                                setImageDrawable(
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.ic_installation
-                                    )
-                                )
-                            }
-                            setOnClickListener {
-                                if (viewModel.updateAllEnqueued) {
-                                    cancelAll()
-                                } else {
-                                    map.keys.forEach { updateSingle(it, true) }
-                                }
-                                binding.recycler.requestModelBuild()
-                            }
-                        }
-                    } else {
-                        binding.updateFab.visibility = View.GONE
-                    }
                 }
         }
 
@@ -144,6 +113,10 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.fetchUpdates()
+        }
+
+        binding.searchFab.setOnClickListener {
+            findNavController().navigate(R.id.searchSuggestionFragment)
         }
     }
 
@@ -179,9 +152,20 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                                         else
                                             getString(R.string.updates_available)
                             )
-                            .action(getString(R.string.action_manage))
+                            .action(
+                                if (viewModel.updateAllEnqueued) {
+                                    getString(R.string.action_cancel)
+                                } else {
+                                    getString(R.string.action_update_all)
+                                }
+                            )
                             .click { _ ->
-                                findNavController().navigate(R.id.blacklistFragment)
+                                if (viewModel.updateAllEnqueued) {
+                                    cancelAll()
+                                } else {
+                                    appList.keys.forEach { updateSingle(it, true) }
+                                }
+                                requestModelBuild()
                             }
                     )
 

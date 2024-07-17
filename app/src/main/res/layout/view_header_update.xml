@@ -51,13 +51,11 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_action"
-        style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/icon_size_category"
-        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
-        android:padding="@dimen/padding_xsmall"
-        android:text="@string/action_manage" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_xsmall"
+        android:text="@string/action_update_all" />
 </RelativeLayout>
