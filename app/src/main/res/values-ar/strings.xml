@@ -424,4 +424,5 @@
     <string name="pref_network_proxy_url_message">أدخل عنوان URL صالح للوكيل لتمرير جميع البيانات من خلال الوكيل.</string>
     <string name="action_logout_confirmation_title">تسجيل الخروج؟</string>
     <string name="action_logout_confirmation_message">هل أنت متأكد من أنك تريد تسجيل الخروج؟</string>
+    <string name="check_updates">التحقق من التحديثات</string>
 </resources>
