@@ -424,4 +424,5 @@
     <string name="pref_network_proxy_url_message">Tüm verileri vekil sunucu üzerinden geçirmek için geçerli bir vekil sunucu URL\'si girin.</string>
     <string name="action_logout_confirmation_title">Oturum kapatılsın mı?</string>
     <string name="action_logout_confirmation_message">Oturumu kapatmak istediğinizden emin misiniz?</string>
+    <string name="check_updates">Güncellemeleri denetle</string>
 </resources>
