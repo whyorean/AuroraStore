@@ -118,9 +118,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical"
-            android:padding="@dimen/padding_large"
-            android:visibility="invisible"
-            tools:visibility="visible">
+            android:padding="@dimen/padding_large">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_logout_action"
