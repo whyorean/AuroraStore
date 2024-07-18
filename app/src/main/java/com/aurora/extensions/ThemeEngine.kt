@@ -51,7 +51,7 @@ fun AppCompatActivity.applyThemeAccent() {
         }
 
         1 -> {
-            setSystemBarConfiguration(light = true)
+            if (!isVAndAbove()) setSystemBarConfiguration(light = true)
             if (isSAndAbove()) {
                 uiModeManager.setApplicationNightMode(UiModeManager.MODE_NIGHT_NO)
             } else {
@@ -60,7 +60,7 @@ fun AppCompatActivity.applyThemeAccent() {
         }
 
         else -> {
-            setSystemBarConfiguration(light = false)
+            if (!isVAndAbove()) setSystemBarConfiguration(light = false)
             if (isSAndAbove()) {
                 uiModeManager.setApplicationNightMode(UiModeManager.MODE_NIGHT_YES)
             } else {
@@ -70,6 +70,7 @@ fun AppCompatActivity.applyThemeAccent() {
     }
 }
 
+@Suppress("DEPRECATION")
 private fun AppCompatActivity.setSystemBarConfiguration(light: Boolean) {
     WindowInsetsControllerCompat(this.window, this.window.decorView.rootView).apply {
         // Status bar color
