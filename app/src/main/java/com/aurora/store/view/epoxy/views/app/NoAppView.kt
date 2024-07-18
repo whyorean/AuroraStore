@@ -52,18 +52,21 @@ class NoAppView @JvmOverloads constructor(
         }
     }
 
+    @JvmOverloads
     @ModelProp
-    fun showAction(visibility: Boolean) {
+    fun showAction(visibility: Boolean = false) {
         binding.button.isVisible = visibility
     }
 
+    @JvmOverloads
     @ModelProp
-    fun actionMessage(message: String) {
+    fun actionMessage(message: String = String()) {
         binding.button.text = message
     }
 
+    @JvmOverloads
     @CallbackProp
-    fun actionCallback(viewOnClickListener: OnClickListener?) {
+    fun actionCallback(viewOnClickListener: OnClickListener? = null) {
         binding.button.setOnClickListener(viewOnClickListener)
     }
 }
