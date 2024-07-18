@@ -100,7 +100,6 @@ class GoogleFragment : BaseFragment<FragmentGoogleBinding>() {
 
             settings.apply {
                 allowContentAccess = true
-                databaseEnabled = true
                 domStorageEnabled = true
                 javaScriptEnabled = true
                 cacheMode = WebSettings.LOAD_DEFAULT
