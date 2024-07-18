@@ -424,4 +424,5 @@
     <string name="pref_network_proxy_url_message">Introduzca una URL de un proxy válida para pasar todos los datos a través del.</string>
     <string name="action_logout_confirmation_title">¿Cerrar sesión?</string>
     <string name="action_logout_confirmation_message">¿Estás seguro que deseas cerrar la sesión?</string>
+    <string name="check_updates">Buscar actualizaciones</string>
 </resources>
