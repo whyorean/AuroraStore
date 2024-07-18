@@ -150,7 +150,7 @@ object PackageUtil {
     fun getIconForPackage(context: Context, packageName: String): Bitmap? {
         return try {
             val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
-            val icon = packageInfo.applicationInfo.loadIcon(context.packageManager)
+            val icon = packageInfo.applicationInfo!!.loadIcon(context.packageManager)
             if (icon.intrinsicWidth > 0 && icon.intrinsicHeight > 0) {
                 icon.toBitmap(96, 96)
             } else {
@@ -214,7 +214,7 @@ object PackageUtil {
                         "com.google.toontastic",
                     ).contains(it.packageName)
                 }.filter {
-                    it.packageName?.contains("com.google") == false
+                    !it.packageName.contains("com.google")
                 }
         }
 
@@ -233,7 +233,7 @@ object PackageUtil {
         }
 
         if (!isExtendedUpdateEnabled) {
-            packageInfoList = packageInfoList.filter { it.applicationInfo.enabled }
+            packageInfoList = packageInfoList.filter { it.applicationInfo!!.enabled }
         }
 
         /*Filter F-Droid apps*/

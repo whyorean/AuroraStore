@@ -131,7 +131,7 @@ class AppInstaller @Inject constructor(
                 )
                 val version = PackageInfoCompat.getLongVersionCode(packageInfo)
 
-                packageInfo.applicationInfo.enabled && version >= 9
+                packageInfo.applicationInfo!!.enabled && version >= 9
             } catch (exception: Exception) {
                 false
             }

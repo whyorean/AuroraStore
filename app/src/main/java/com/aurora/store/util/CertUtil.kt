@@ -92,14 +92,14 @@ object CertUtil {
         return try {
             val packageInfo = getPackageInfoWithSignature(context, packageName)
             if (isPAndAbove()) {
-                if (packageInfo.signingInfo.hasMultipleSigners()) {
-                    packageInfo.signingInfo.apkContentsSigners.map { it.generateX509Certificate() }
+                if (packageInfo.signingInfo!!.hasMultipleSigners()) {
+                    packageInfo.signingInfo!!.apkContentsSigners.map { it.generateX509Certificate() }
                 } else {
-                    packageInfo.signingInfo.signingCertificateHistory.map { it.generateX509Certificate() }
+                    packageInfo.signingInfo!!.signingCertificateHistory.map { it.generateX509Certificate() }
                 }
             } else {
                 @Suppress("DEPRECATION")
-                packageInfo.signatures.map { it.generateX509Certificate() }
+                packageInfo.signatures!!.map { it.generateX509Certificate() }
             }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to get X509 certificates", exception)

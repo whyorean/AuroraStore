@@ -140,8 +140,8 @@ class ExportWorker @AssistedInject constructor(
         val packageInfo = getPackageInfo(appContext, packageName, PackageManager.GET_META_DATA)
         val fileList: MutableList<File?> = mutableListOf()
 
-        fileList.add(File(packageInfo.applicationInfo.sourceDir))
-        packageInfo.applicationInfo.splitSourceDirs?.let { splits ->
+        fileList.add(File(packageInfo.applicationInfo!!.sourceDir))
+        packageInfo.applicationInfo!!.splitSourceDirs?.let { splits ->
             fileList.addAll(splits.map { File(it) })
         }
 

@@ -47,7 +47,7 @@ class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
         currentPerms = try {
             packageManager.getPackageInfo(
                 args.app.packageName, PackageManager.GET_PERMISSIONS
-            ).requestedPermissions.toList()
+            ).requestedPermissions!!.toList()
         } catch (_: Exception) {
             emptyList()
         }

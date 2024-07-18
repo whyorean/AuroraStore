@@ -8,10 +8,10 @@ fun PackageInfo.isApp(): Boolean {
 
     return when {
         isQAndAbove() -> {
-            Process.isApplicationUid(this.applicationInfo.uid) &&
-                    !this.applicationInfo.isResourceOverlay && !this.isApex
+            Process.isApplicationUid(this.applicationInfo!!.uid) &&
+                    !this.applicationInfo!!.isResourceOverlay && !this.isApex
         }
-        isNAndAbove() -> Process.isApplicationUid(this.applicationInfo.uid)
-        else -> this.packageName != null && this.versionName != null
+        isNAndAbove() -> Process.isApplicationUid(this.applicationInfo!!.uid)
+        else -> this.versionName != null
     }
 }
