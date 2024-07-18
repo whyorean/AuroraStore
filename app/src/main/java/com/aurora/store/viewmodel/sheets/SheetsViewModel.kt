@@ -9,6 +9,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.work.ExportWorker
@@ -47,7 +48,7 @@ class SheetsViewModel @Inject constructor(
         }
     }
 
-    fun copyInstalledApp(context: Context, app: App, uri: Uri) {
+    fun copyInstalledApp(context: Context, app: MinimalApp, uri: Uri) {
         ExportWorker.exportInstalledApp(context, app, uri)
     }
 

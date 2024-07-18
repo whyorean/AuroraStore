@@ -35,6 +35,7 @@ import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
+import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
@@ -181,6 +182,10 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                                     } else {
                                         openDetailsFragment(update.packageName)
                                     }
+                                }
+                                .longClick { _ ->
+                                    openAppMenuSheet(MinimalApp.fromUpdate(update))
+                                    false
                                 }
                                 .positiveAction { _ -> updateSingle(update) }
                                 .negativeAction { _ -> cancelSingle(update) }

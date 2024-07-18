@@ -380,7 +380,7 @@
         tools:layout="@layout/sheet_app_menu" >
         <argument
             android:name="app"
-            app:argType="com.aurora.gplayapi.data.models.App" />
+            app:argType="com.aurora.store.data.model.MinimalApp" />
     </dialog>
     <dialog
         android:id="@+id/appPeekDialogSheet"

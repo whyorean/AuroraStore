@@ -27,6 +27,7 @@ import androidx.lifecycle.lifecycleScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
@@ -97,7 +98,7 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
                             .app(app)
                             .click { _ -> openDetailsFragment(app.packageName, app) }
                             .longClick { _ ->
-                                openAppMenuSheet(app)
+                                openAppMenuSheet(MinimalApp.fromApp(app))
                                 false
                             }
                     )

@@ -30,6 +30,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
+import com.aurora.store.data.model.MinimalApp
 import com.google.gson.Gson
 import java.lang.reflect.ParameterizedType
 import javax.inject.Inject
@@ -112,7 +113,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
         )
     }
 
-    fun openAppMenuSheet(app: App) {
+    fun openAppMenuSheet(app: MinimalApp) {
         findNavController().navigate(MobileNavigationDirections.actionGlobalAppMenuSheet(app))
     }
 }

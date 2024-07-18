@@ -14,6 +14,7 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil.getPackageInfo
@@ -47,7 +48,7 @@ class ExportWorker @AssistedInject constructor(
          * @param app App to export
          * @see [ExportWorker]
          */
-        fun exportInstalledApp(context: Context, app: App, uri: Uri) {
+        fun exportInstalledApp(context: Context, app: MinimalApp, uri: Uri) {
             val inputData = Data.Builder()
                 .putBoolean(IS_DOWNLOAD, false)
                 .putString(URI, uri.toString())
