@@ -108,7 +108,11 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.fetchingUpdates.collect {
                 binding.swipeRefreshLayout.isRefreshing = it
-                if (it && viewModel.updates.value.isNullOrEmpty()) updateController(null)
+                if (it && viewModel.updates.value.isNullOrEmpty()) {
+                    updateController(null)
+                } else {
+                    updateController(emptyMap())
+                }
             }
         }
 
