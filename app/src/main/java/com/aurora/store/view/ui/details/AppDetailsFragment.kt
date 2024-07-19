@@ -68,6 +68,7 @@ import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
@@ -609,6 +610,14 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             binding.layoutDetailsInstall.btnDownload.let { btn ->
                 btn.setButtonState(true)
                 if (app.isInstalled) {
+                    val isExtendedUpdateEnabled = Preferences.getBoolean(
+                        requireContext(), Preferences.PREFERENCE_UPDATES_EXTENDED
+                    )
+                    val needsExtendedUpdate = !app.certificateSetList.any {
+                        it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                            requireContext(), app.packageName
+                        )
+                    }
                     isUpdatable = PackageUtil.isUpdatable(
                         requireContext(),
                         app.packageName,
@@ -618,7 +627,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     val installedVersion =
                         PackageUtil.getInstalledVersion(requireContext(), app.packageName)
 
-                    if (isUpdatable) {
+                    if (isUpdatable && !needsExtendedUpdate || isUpdatable && isExtendedUpdateEnabled) {
                         binding.layoutDetailsApp.txtLine3.text =
                             ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
                         btn.setText(R.string.action_update)
