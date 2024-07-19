@@ -34,7 +34,6 @@
         android:layout_below="@+id/layout_toolbar_action"
         android:clipToPadding="true"
         android:paddingBottom="@dimen/height_bottom_adj"
-        app:itemSpacing="@dimen/margin_normal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:stackFromEnd="false" />
 </RelativeLayout>

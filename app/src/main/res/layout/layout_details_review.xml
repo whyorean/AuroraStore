@@ -153,7 +153,6 @@
         android:orientation="vertical"
         android:overScrollMode="never"
         android:scrollbars="none"
-        app:itemSpacing="@dimen/margin_normal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="4"
         tools:listitem="@layout/view_review" />

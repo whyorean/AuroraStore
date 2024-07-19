@@ -22,122 +22,105 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?selectableItemBackground"
     android:orientation="vertical"
-    android:paddingStart="@dimen/padding_normal"
-    android:paddingEnd="@dimen/padding_small">
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingEnd="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_small">
 
-    <FrameLayout
-        android:id="@+id/expansion_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/head_flipper"
+        android:layout_width="@dimen/icon_size_medium"
+        android:layout_height="@dimen/icon_size_medium">
 
-        <RelativeLayout
-            android:id="@+id/layout_content"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_download"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:indicatorSize="@dimen/icon_size_medium"
+            app:trackThickness="3dp"
+            tools:progress="40" />
+    </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/head_flipper"
-                android:layout_width="@dimen/icon_size_medium"
-                android:layout_height="@dimen/icon_size_medium">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_toStartOf="@+id/headerIndicator"
+        android:layout_toEndOf="@id/head_flipper"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_icon"
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_line1"
+        android:layout_alignStart="@+id/txt_line1"
+        android:layout_alignEnd="@id/txt_line1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/progress_download"
-                    android:layout_width="@dimen/icon_size_medium"
-                    android:layout_height="@dimen/icon_size_medium"
-                    android:layout_centerInParent="true"
-                    android:visibility="gone"
-                    app:indicatorSize="@dimen/icon_size_medium"
-                    app:trackThickness="3dp"
-                    tools:progress="40" />
-            </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_line2"
+        android:layout_alignStart="@+id/txt_line1"
+        android:layout_alignEnd="@id/txt_line1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_line1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_toStartOf="@+id/headerIndicator"
-                android:layout_toEndOf="@id/head_flipper"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_line4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_line3"
+        android:layout_alignStart="@+id/txt_line1"
+        android:layout_alignEnd="@id/txt_line1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_line2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_line1"
-                android:layout_alignStart="@+id/txt_line1"
-                android:layout_alignEnd="@id/txt_line1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/headerIndicator"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/txt_line1"
+        android:layout_toStartOf="@id/btn_action"
+        android:contentDescription="@string/details_changelog"
+        app:icon="@drawable/ic_arrow_down" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_line3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_line2"
-                android:layout_alignStart="@+id/txt_line1"
-                android:layout_alignEnd="@id/txt_line1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_line4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_line3"
-                android:layout_alignStart="@+id/txt_line1"
-                android:layout_alignEnd="@id/txt_line1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.Line3" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/headerIndicator"
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/layout_action"
-                android:layout_toStartOf="@id/layout_action"
-                android:contentDescription="@string/details_changelog"
-                app:icon="@drawable/ic_arrow_down" />
-
-            <LinearLayout
-                android:id="@+id/layout_action"
-                android:layout_width="115dp"
-                android:layout_height="@dimen/height_button"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <com.aurora.store.view.custom.layouts.button.UpdateButton
-                    android:id="@+id/btn_action"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
+    <com.aurora.store.view.custom.layouts.button.UpdateButton
+        android:id="@+id/btn_action"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/txt_line1"
+        android:layout_alignParentEnd="true"
+        android:gravity="center" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_changelog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/expansion_header"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_below="@id/txt_line4"
         android:background="@drawable/bg_changelog"
         android:ellipsize="end"
         android:minHeight="?actionBarSize"

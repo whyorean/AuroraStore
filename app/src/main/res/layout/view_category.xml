@@ -21,8 +21,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_small">
+    android:padding="@dimen/padding_small"
+    >
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_background"
@@ -40,8 +40,6 @@
         android:layout_toEndOf="@id/img_background"
         android:ellipsize="end"
         android:maxLines="2"
-        android:paddingStart="@dimen/padding_small"
-        android:paddingEnd="@dimen/padding_small"
         android:textSize="16sp"
         tools:text="Category" />
 </RelativeLayout>

@@ -20,42 +20,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingEnd="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_xsmall">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txt_title"
+        style="@style/AuroraTextStyle.Subtitle.Alt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_toStartOf="@id/btn_action"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="4dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/padding_normal"
-            android:background="?colorAccent" />
-
-        <TextView
-            android:id="@+id/txt_title"
-            style="@style/AuroraTextStyle.Subtitle.Alt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_normal"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            tools:text="Header" />
-    </LinearLayout>
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        tools:text="Header" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_action"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="@dimen/margin_small"
-        android:layout_marginVertical="@dimen/margin_xsmall"
+        android:layout_centerVertical="true"
         android:text="@string/action_update_all" />
 </RelativeLayout>

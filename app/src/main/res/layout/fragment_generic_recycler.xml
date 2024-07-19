@@ -28,7 +28,6 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/height_bottom_adj"
-        app:itemSpacing="@dimen/padding_small"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:stackFromEnd="false" />
 </RelativeLayout>

@@ -32,15 +32,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_action_toolbar"
         android:background="@android:color/transparent"
-        android:paddingStart="@dimen/margin_large"
-        android:paddingEnd="@dimen/margin_large"
-        android:paddingBottom="@dimen/padding_small"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal"
         app:tabGravity="fill"
         app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"
-        app:tabPaddingEnd="@dimen/padding_normal"
-        app:tabPaddingStart="@dimen/padding_normal"
+        app:tabPaddingEnd="@dimen/padding_small"
+        app:tabPaddingStart="@dimen/padding_small"
         app:tabTextAppearance="@style/TextAppearance.Aurora.Tab.Title" />
 
     <androidx.viewpager2.widget.ViewPager2

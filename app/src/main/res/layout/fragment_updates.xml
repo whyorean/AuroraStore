@@ -45,7 +45,6 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/height_bottom_adj"
-            app:itemSpacing="@dimen/margin_normal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:stackFromEnd="false"
             tools:listitem="@layout/view_app_list" />
