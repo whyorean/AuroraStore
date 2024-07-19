@@ -27,7 +27,7 @@
     android:layout_height="wrap_content"
     android:divider="@drawable/divider"
     android:orientation="vertical"
-    android:paddingStart="@dimen/padding_large"
+    android:paddingStart="@dimen/padding_small"
     android:paddingEnd="@dimen/padding_small"
     android:showDividers="middle">
 

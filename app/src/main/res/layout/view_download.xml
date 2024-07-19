@@ -18,99 +18,101 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?android:attr/selectableItemBackground"
-    android:paddingStart="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_small">
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingEnd="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_download"
         android:layout_width="@dimen/icon_size_medium"
         android:layout_height="@dimen/icon_size_medium"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/margin_small"
         android:src="@drawable/bg_placeholder" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_title"
+        style="@style/AuroraTextStyle.Line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_toEndOf="@id/img_download"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        tools:text="App Name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_status"
+        style="@style/AuroraTextStyle.Line2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        android:layout_alignStart="@id/txt_title"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        tools:text="Status" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_download"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txt_status"
+        android:layout_alignStart="@id/txt_title"
+        android:indeterminate="false"
+        android:max="100"
+        android:paddingTop="@dimen/padding_xxsmall"
+        android:paddingBottom="@dimen/padding_xxsmall"
+        app:indicatorColor="@color/colorAccent"
+        app:trackColor="@android:color/darker_gray"
+        app:trackCornerRadius="10dp"
+        tools:progress="75" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/img_download"
-        android:divider="@drawable/divider_alt"
-        android:orientation="vertical"
-        android:showDividers="middle">
+        android:layout_below="@id/progress_download"
+        android:layout_alignStart="@id/txt_title"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_title"
-            style="@style/AuroraTextStyle.Line1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textAlignment="viewStart"
-            tools:text="App Name" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_status"
+            android:id="@+id/txt_progress"
             style="@style/AuroraTextStyle.Line2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ellipsize="end"
             android:singleLine="true"
             android:textAlignment="viewStart"
-            tools:text="Status" />
+            tools:text="75%" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progress_download"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:indeterminate="false"
-            android:max="100"
-            app:indicatorColor="@color/colorAccent"
-            app:trackColor="@android:color/darker_gray"
-            app:trackCornerRadius="10dp"
-            tools:progress="75" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_eta"
+            style="@style/AuroraTextStyle.Line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAlignment="center"
+            tools:text="15 sec" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_progress"
-                style="@style/AuroraTextStyle.Line2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="viewStart"
-                tools:text="75%" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_eta"
-                style="@style/AuroraTextStyle.Line2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="center"
-                tools:text="15 sec" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_speed"
-                style="@style/AuroraTextStyle.Line2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAlignment="viewEnd"
-                tools:text="1.5Mb/s" />
-        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_speed"
+            style="@style/AuroraTextStyle.Line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAlignment="viewEnd"
+            tools:text="1.5Mb/s" />
     </LinearLayout>
 </RelativeLayout>

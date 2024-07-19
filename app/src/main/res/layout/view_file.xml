@@ -21,13 +21,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/padding_xsmall">
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingEnd="@dimen/padding_small">
 
     <TextView
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_small"
         android:maxLines="1"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.Aurora.Line1"

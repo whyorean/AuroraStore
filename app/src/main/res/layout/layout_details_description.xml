@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:divider="@drawable/divider"
             android:orientation="vertical"
-            android:paddingStart="@dimen/padding_large"
+            android:paddingStart="@dimen/padding_medium"
             android:paddingTop="@dimen/padding_small"
             android:paddingEnd="@dimen/padding_small"
             android:showDividers="middle">
@@ -155,12 +155,9 @@
             android:id="@+id/epoxy_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_normal"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:paddingStart="@dimen/padding_large"
-            android:paddingEnd="@dimen/padding_large"
+            android:padding="@dimen/padding_medium"
             app:itemSpacing="@dimen/margin_small"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/view_screenshot" />
