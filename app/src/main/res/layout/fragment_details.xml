@@ -98,8 +98,6 @@
                             android:clipToPadding="false"
                             android:orientation="vertical"
                             android:overScrollMode="never"
-                            android:paddingStart="@dimen/padding_small"
-                            android:paddingEnd="@dimen/padding_small"
                             android:scrollbars="none"
                             app:itemSpacing="@dimen/margin_small"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
