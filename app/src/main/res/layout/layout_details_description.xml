@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:divider="@drawable/divider_line"
+                android:dividerPadding="@dimen/padding_xsmall"
                 android:orientation="horizontal"
                 android:showDividers="middle">
 
@@ -108,7 +109,6 @@
                     android:textAppearance="@style/TextAppearance.Aurora.Line1"
                     app:drawableTint="?colorAccent"
                     tools:text="Jan 21 2020" />
-
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -134,8 +134,8 @@
                 android:id="@+id/txt_changelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textIsSelectable="true"
-                android:background="@drawable/bg_changelog" />
+                android:background="@drawable/bg_changelog"
+                android:textIsSelectable="true" />
 
             <com.aurora.store.view.custom.layouts.ActionHeaderLayout
                 android:id="@+id/header_description"
@@ -147,8 +147,8 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_description"
                 android:layout_width="match_parent"
-                android:textIsSelectable="true"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true" />
         </LinearLayout>
 
         <com.airbnb.epoxy.EpoxyRecyclerView
