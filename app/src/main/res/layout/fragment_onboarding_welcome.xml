@@ -54,8 +54,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:padding="@dimen/padding_normal"
+        android:padding="@dimen/padding_medium"
         android:scrollbars="none"
-        app:itemSpacing="@dimen/margin_small"
-        tools:listitem="@layout/view_theme" />
+        tools:listitem="@layout/view_dash" />
 </LinearLayout>

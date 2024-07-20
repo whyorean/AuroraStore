@@ -17,37 +17,38 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_outlined_padded"
-    android:orientation="horizontal">
+    android:background="?selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line1"
         style="@style/AuroraTextStyle.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/btn_action" />
+        tools:text="Title" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line2"
-        style="@style/AuroraTextStyle.Line1"
+        style="@style/AuroraTextStyle.Line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line1"
-        android:layout_alignStart="@id/line1"
-        android:layout_alignEnd="@id/line1"
         android:maxLines="5"
-        android:layout_marginTop="@dimen/margin_xxsmall" />
+        tools:text="Description" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_action"
-        style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+        style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/margin_small"
-        android:text="@string/action_grant" />
-</RelativeLayout>
+        android:insetTop="@dimen/margin_small"
+        android:insetBottom="@dimen/margin_xsmall"
+        android:text="@string/action_grant"
+        android:textColorHighlight="?colorOnPrimary"
+        app:cornerRadius="@dimen/margin_small" />
+</LinearLayout>

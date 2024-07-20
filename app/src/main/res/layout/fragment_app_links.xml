@@ -10,7 +10,6 @@
         android:id="@+id/appCompatTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_small"
         android:includeFontPadding="true"
         android:paddingStart="@dimen/padding_normal"
         android:paddingEnd="@dimen/padding_normal"
@@ -45,18 +44,17 @@
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium">
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/playStoreLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_normal"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:background="@drawable/bg_outlined_padded"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
@@ -66,40 +64,34 @@
                     style="@style/AuroraTextStyle.Subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/playStoreButton"
                     android:text="@string/app_link_play_store" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/playStoreDesc"
-                    style="@style/AuroraTextStyle.Line1"
+                    style="@style/AuroraTextStyle.Line2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/playStoreTitle"
-                    android:layout_alignStart="@id/playStoreTitle"
-                    android:layout_alignEnd="@id/playStoreTitle"
-                    android:layout_marginTop="@dimen/margin_xxsmall"
                     android:maxLines="5"
                     android:text="@string/google_play_store_desc" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/playStoreButton"
-                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:text="@string/action_enable" />
-            </RelativeLayout>
+                    android:insetTop="@dimen/margin_small"
+                    android:insetBottom="@dimen/margin_xsmall"
+                    android:text="@string/action_enable"
+                    android:textColorHighlight="?colorOnPrimary"
+                    app:cornerRadius="@dimen/margin_small" />
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/marketLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_normal"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:background="@drawable/bg_outlined_padded"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/playStoreLayout">
@@ -109,31 +101,27 @@
                     style="@style/AuroraTextStyle.Subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/marketButton"
                     android:text="@string/app_link_android_market" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/marketDesc"
-                    style="@style/AuroraTextStyle.Line1"
+                    style="@style/AuroraTextStyle.Line2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/marketTitle"
-                    android:layout_alignStart="@id/marketTitle"
-                    android:layout_alignEnd="@id/marketTitle"
-                    android:layout_marginTop="@dimen/margin_xxsmall"
                     android:maxLines="5"
                     android:text="@string/android_market_desc" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/marketButton"
-                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:text="@string/action_enable" />
-            </RelativeLayout>
+                    android:insetTop="@dimen/margin_small"
+                    android:insetBottom="@dimen/margin_xsmall"
+                    android:text="@string/action_enable"
+                    android:textColorHighlight="?colorOnPrimary"
+                    app:cornerRadius="@dimen/margin_small" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,12 +20,9 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:divider="@drawable/divider"
-    android:orientation="horizontal"
     android:showDividers="middle">
 
     <LinearLayout
@@ -39,8 +36,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="true"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
             android:text="@string/onboarding_title_permissions"
             android:textAlignment="textStart"
             android:textColor="?colorAccent"
@@ -50,8 +45,6 @@
             style="@style/AuroraTextStyle.Subtitle.Alt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
             android:text="@string/onboarding_permission_select"
             android:textAlignment="textStart" />
     </LinearLayout>
@@ -63,9 +56,7 @@
         android:layout_weight="1"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:padding="@dimen/padding_normal"
+        android:padding="@dimen/padding_medium"
         android:scrollbars="none"
-        app:itemSpacing="@dimen/margin_small"
-        tools:listitem="@layout/view_installer" />
-
+        tools:listitem="@layout/view_permission" />
 </LinearLayout>
