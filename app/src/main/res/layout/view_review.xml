@@ -30,7 +30,6 @@
         android:id="@+id/img"
         android:layout_width="@dimen/icon_size_small"
         android:layout_height="@dimen/icon_size_small"
-        android:layout_marginStart="@dimen/margin_xxsmall"
         android:layout_marginEnd="@dimen/margin_small" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -73,7 +72,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_alignStart="@id/txt_author"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:ellipsize="end"
         android:maxLines="10"
         android:textIsSelectable="true"
