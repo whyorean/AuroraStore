@@ -23,7 +23,8 @@
     android:id="@+id/layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/padding_xsmall">
+    android:padding="@dimen/padding_xsmall"
+    >
 
     <TextView
         android:id="@+id/txt_title"
@@ -34,7 +35,6 @@
         android:layout_toStartOf="@id/img_action"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="?colorAccent"
         tools:text="Header" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -43,11 +43,10 @@
         android:layout_height="@dimen/icon_size_category"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/margin_small"
         android:background="?selectableItemBackgroundBorderless"
         android:contentDescription="@string/expand"
         android:padding="@dimen/padding_xsmall"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_arrow_right"
-        app:tint="?android:colorAccent" />
+        app:tint="?android:textColorPrimary" />
 </RelativeLayout>

@@ -37,7 +37,6 @@
         android:layout_toStartOf="@id/img_action"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="?colorAccent"
         tools:text="Header" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -51,5 +50,5 @@
         android:contentDescription="@string/expand"
         android:padding="@dimen/padding_xsmall"
         app:srcCompat="@drawable/ic_arrow_right"
-        app:tint="?android:colorAccent" />
+        app:tint="?android:textColorPrimary" />
 </RelativeLayout>
