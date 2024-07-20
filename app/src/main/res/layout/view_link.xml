@@ -17,47 +17,59 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_outlined_padded">
+    android:background="?android:selectableItemBackground"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_small">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_icon"
-        android:layout_width="@dimen/icon_size_category"
-        android:layout_height="@dimen/icon_size_category"
-        android:layout_centerVertical="true" />
+        android:layout_width="@dimen/icon_size_default"
+        android:layout_height="@dimen/icon_size_default"
+        android:layout_gravity="center_vertical"
+        tools:src="@drawable/ic_menu_about" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/line1"
+    <View
+        android:layout_width="@dimen/margin_xxsmall"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_xlarge"
+        android:layout_marginEnd="@dimen/margin_xlarge"
+        android:background="@drawable/divider_line"
+        android:backgroundTint="?colorControlHighlight" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/img_icon"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_toEndOf="@+id/img_icon"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+        android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/line2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line1"
-        android:layout_alignStart="@id/line1"
-        android:layout_toEndOf="@+id/img_icon"
-        android:maxLines="2"
-        android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+            tools:text="Title" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/line3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line2"
-        android:layout_alignStart="@id/line1"
-        android:layout_toEndOf="@+id/img_icon"
-        android:maxLines="2"
-        android:textAppearance="@style/TextAppearance.Aurora.Line3"
-        android:textColor="?colorAccent"
-        android:textIsSelectable="true"
-        android:visibility="gone" />
-</RelativeLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.Aurora.Line2"
+            tools:text="Subtitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.Aurora.Line3"
+            android:textColor="?colorAccent"
+            android:textIsSelectable="true"
+            android:visibility="gone"
+            tools:text="Link" />
+    </LinearLayout>
+</LinearLayout>
