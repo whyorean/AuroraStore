@@ -127,7 +127,9 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             try {
-                val updatesList = appUtil.checkUpdates().filterNot { it.isSelfUpdate() }
+                val updatesList = appUtil.checkUpdates()
+                    .filter { it.hasValidCert }
+                    .filterNot { it.isSelfUpdate() }
 
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
