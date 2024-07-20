@@ -116,23 +116,23 @@
         android:layout_alignParentEnd="true"
         android:gravity="center" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_changelog"
-        style="@style/Widget.Material3.CardView.Outlined"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_line4"
-        android:visibility="gone">
+        android:layout_marginTop="@dimen/margin_small"
+        android:visibility="gone"
+        app:contentPadding="@dimen/padding_small">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_changelog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_changelog"
             android:ellipsize="end"
-            android:minHeight="?actionBarSize"
             android:singleLine="false"
             android:textAppearance="@style/TextAppearance.Aurora.Line2"
             android:textIsSelectable="true" />
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
