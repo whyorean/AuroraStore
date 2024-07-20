@@ -410,4 +410,19 @@
 \n
 \nОбратите внимание, что Aurora Store не имеет никакого соглашения, спонсорства или разрешения от Google, Google Play, любых приложений, загружаемых через Aurora Store, или разработчиков приложений; Aurora Store также не имеет с ними никакого родства, сотрудничества или связи.</string>
     <string name="add_dispenser_summary">Добавьте распределитель токенов в Aurora Store. Распределители токенов обеспечивают Aurora Store аккаунтами для анонимной авторизации.</string>
+    <string name="pref_network_proxy_url_message">Введите действительный URL прокси, чтобы передавать все данные через неё.</string>
+    <string name="action_favourite">Избранное</string>
+    <string name="details_no_favourites">Избранные приложения не найдены</string>
+    <string name="title_favourites_manager">Избранные приложения</string>
+    <string name="toast_app_unavailable">Приложение недоступно для вашего устройства</string>
+    <string name="toast_fav_import_failed">Не удалось импортировать избранное!</string>
+    <string name="toast_fav_export_failed">Не удалось экспортировать избранное!</string>
+    <string name="toast_fav_import_success">Избранное импортировано!</string>
+    <string name="toast_fav_export_success">Избранное экспортировано!</string>
+    <string name="export_app_summary_success">Пакетое приложение успешно экспортировано</string>
+    <string name="export_app_summary_fail">Не удалось экспортировать пакетное приложение</string>
+    <string name="action_uninstall_success">Успешно удалено</string>
+    <string name="action_logout_confirmation_title">Выйти?</string>
+    <string name="action_logout_confirmation_message">Вы действительно хотите выйти?</string>
+    <string name="check_updates">Проверить обновления</string>
 </resources>
