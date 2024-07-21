@@ -23,10 +23,10 @@
     android:id="@+id/layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_medium"
-    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingStart="@dimen/padding_small"
+    android:paddingTop="@dimen/padding_xxsmall"
     android:paddingEnd="@dimen/padding_small"
-    android:paddingBottom="@dimen/padding_xsmall">
+    android:paddingBottom="@dimen/padding_xxsmall">
 
     <TextView
         android:id="@+id/txt_title"
