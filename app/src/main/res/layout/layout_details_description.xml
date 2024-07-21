@@ -37,10 +37,10 @@
             android:id="@+id/layout_extras"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
             android:scrollbars="none">
 
             <LinearLayout
+                android:padding="@dimen/padding_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:divider="@drawable/divider_line"

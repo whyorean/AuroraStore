@@ -31,7 +31,8 @@
         android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size_medium"
         android:layout_height="@dimen/icon_size_medium"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        tools:src="@drawable/bg_placeholder" />
 
     <TextView
         android:id="@+id/txt_line1"
