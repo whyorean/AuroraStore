@@ -421,4 +421,8 @@
     <string name="export_app_summary_success">Aplikační balíček úspěšně exportován</string>
     <string name="export_app_summary_fail">Nepodařilo se exportovat aplikační balíček</string>
     <string name="action_uninstall_success">Úspěšně odinstalováno</string>
+    <string name="action_logout_confirmation_message">Opravdu se chcete odhlásit?</string>
+    <string name="pref_network_proxy_url_message">Zadejte platnou adresu URL proxy, přes kterou budou směrována všechna data.</string>
+    <string name="action_logout_confirmation_title">Odhlásit se?</string>
+    <string name="check_updates">Zkontrolovat aktualizace</string>
 </resources>

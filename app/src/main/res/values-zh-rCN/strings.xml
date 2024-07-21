@@ -424,4 +424,5 @@
     <string name="action_logout_confirmation_message">你确定要注销登录吗？</string>
     <string name="action_logout_confirmation_title">注销登录？</string>
     <string name="pref_network_proxy_url_message">输入有效的代理 URL 让所有数据都经过代理。</string>
+    <string name="check_updates">检查更新</string>
 </resources>

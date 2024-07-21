@@ -424,4 +424,5 @@
     <string name="pref_network_proxy_url_message">प्रॉक्सी में से सारा डाटा गुजारने के लिए एक वैध प्रॉक्सी का पता भरें।</string>
     <string name="action_logout_confirmation_title">लागआऊट करें?</string>
     <string name="action_logout_confirmation_message">क्या वाकई आप लागआऊट करना चाहतें हैं?</string>
+    <string name="check_updates">अपडेट के लिए जांचें</string>
 </resources>

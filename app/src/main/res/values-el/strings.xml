@@ -414,4 +414,15 @@
 \nΛάβε υπόψη ότι το Aurora Store δεν έχει καμία έγκριση, χορηγία ή εξουσιοδότηση από την Google, το Google Play, τυχόν εφαρμογές που έχουν ληφθεί μέσω του Aurora Store ή οποιονδήποτε προγραμματιστή εφαρμογών, ούτε το Aurora Store έχει καμία σχέση, συνεργασία ή σχέση μαζί τους.</string>
     <string name="pref_dispenser_summary">Δες και διαχειρίσου απορρίμματα διακριτικών από ανώνυμες συνδέσεις</string>
     <string name="pref_network_proxy_url_message">Εισήγαγε μια έγκυρη διεύθυνση URL διακομιστή μεσολάβησης για να περνάνε όλα τα δεδομένα μέσω αυτού.</string>
+    <string name="add_dispenser_summary">Προσθέστε ένα διανομέα διακριτικού στο Aurora Store. Οι διανομείς Διακριτικών παρέχουν διαπιστευτήρια λογαριασμού στο Aurora Store για την ανώνυμη καταγραφή.</string>
+    <string name="add_dispenser_hint">Διανομέας URL</string>
+    <string name="toast_fav_import_failed">Αποτυχία εισαγωγής αγαπημένων!</string>
+    <string name="toast_fav_export_failed">Αποτυχία εξαγωγής αγαπημένων!</string>
+    <string name="toast_fav_import_success">Τα αγαπημένα εισήχθησαν!</string>
+    <string name="toast_fav_export_success">Τα αγαπημένα εξήχθησαν!</string>
+    <string name="export_app_summary_success">Επιτυχής εξαγωγή πακέτου app</string>
+    <string name="export_app_summary_fail">Αποτυχία εξαγωγής πακέτου app</string>
+    <string name="action_logout_confirmation_title">Αποσύνδεση;</string>
+    <string name="action_logout_confirmation_message">Είστε σίγουροι ότι θέλετε να αποσυνδεθείτε;</string>
+    <string name="check_updates">Έλεγχος για ενημερώσεις</string>
 </resources>

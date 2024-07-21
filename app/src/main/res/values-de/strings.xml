@@ -411,4 +411,18 @@
 \nBitte beachte, dass der Aurora Store weder von Google, Google Play, den über den Aurora Store heruntergeladenen Apps oder den App-Entwicklern genehmigt, gesponsert oder autorisiert wurde, noch steht der Aurora Store in irgendeiner Verbindung mit ihnen.</string>
     <string name="session_login">Bitte melde dich bei deinem Google-Play-Konto an</string>
     <string name="toast_app_unavailable">App für das Gerät nicht verfügbar</string>
+    <string name="action_favourite">Favorit</string>
+    <string name="details_no_favourites">Keine Lieblingsapps gefunden</string>
+    <string name="action_uninstall_success">Erfolgreich deinstalliert</string>
+    <string name="title_favourites_manager">Lieblingsapps</string>
+    <string name="toast_fav_import_failed">Importieren von Favoriten fehlgeschlagen!</string>
+    <string name="toast_fav_export_failed">Fehler beim exportieren von Favoriten!</string>
+    <string name="toast_fav_import_success">Favoriten importiert!</string>
+    <string name="toast_fav_export_success">Favoriten exportiert!</string>
+    <string name="export_app_summary_fail">Fehler beim exportieren von App Bundle</string>
+    <string name="action_logout_confirmation_title">Ausloggen?</string>
+    <string name="action_logout_confirmation_message">Sind Sie sicher, dass Sie sich ausloggen wollen?</string>
+    <string name="pref_network_proxy_url_message">Geben Sie eine gültige Proxy-URL ein, um alle Daten durch den Proxy zu leiten.</string>
+    <string name="export_app_summary_success">App Bundle erfolgreich exportiert</string>
+    <string name="check_updates">Überprüfe auf Aktualisierungen</string>
 </resources>

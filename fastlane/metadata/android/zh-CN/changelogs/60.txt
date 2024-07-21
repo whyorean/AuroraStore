@@ -1,0 +1,2 @@
+• 修复了一个导致 SessionInstaller 在旧版本 Android 系统上奔溃的故障
+• 翻译更新
