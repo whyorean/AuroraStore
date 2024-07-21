@@ -29,6 +29,7 @@
 
     <declare-styleable name="ActionHeaderLayout">
         <attr name="headerTitle" format="string" />
+        <attr name="headerSubtitle" format="string" />
     </declare-styleable>
 
     <declare-styleable name="StateButton">

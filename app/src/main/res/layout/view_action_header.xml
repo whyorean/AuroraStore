@@ -31,11 +31,23 @@
         style="@style/AuroraTextStyle.Subtitle.Alt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_toStartOf="@id/img_action"
         android:ellipsize="end"
         android:maxLines="1"
-        tools:text="Header" />
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/txt_subtitle"
+        style="@style/AuroraTextStyle.Line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        android:layout_toStartOf="@id/img_action"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:visibility="gone"
+        tools:text="Subtitle"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_action"

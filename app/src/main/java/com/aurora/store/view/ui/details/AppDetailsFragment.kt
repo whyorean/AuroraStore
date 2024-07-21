@@ -952,7 +952,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     )
                 }
             }
-            txtPermissionCount.text = ("${app.permissions.size} permissions")
+            headerPermission.setSubTitle(("${app.permissions.size} permissions"))
         }
     }
 

@@ -34,23 +34,14 @@
         android:id="@+id/header_privacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:headerSubtitle="@string/exodus_powered"
         app:headerTitle="@string/details_privacy" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_subtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/header_privacy"
-        android:text="@string/exodus_powered"
-        android:textAppearance="@style/TextAppearance.Aurora.Line3" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_subtitle"
-        android:layout_alignStart="@id/txt_subtitle"
-        android:layout_alignEnd="@id/txt_subtitle"
+        android:layout_below="@id/header_privacy"
         android:text="@string/exodus_progress"
         android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
@@ -60,8 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_status"
-        android:layout_alignStart="@id/txt_subtitle"
-        android:layout_alignEnd="@id/txt_subtitle"
         android:layout_gravity="center_vertical"
         android:text="@string/action_request_analysis"
         app:cornerRadius="@dimen/margin_small" />
