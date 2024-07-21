@@ -84,10 +84,6 @@
                             layout="@layout/layout_details_review" />
 
                         <include
-                            android:id="@+id/layout_details_privacy"
-                            layout="@layout/layout_details_privacy" />
-
-                        <include
                             android:id="@+id/layout_details_beta"
                             layout="@layout/layout_details_beta" />
 
@@ -106,6 +102,10 @@
                         <include
                             android:id="@+id/layout_details_permissions"
                             layout="@layout/layout_details_permissions" />
+
+                        <include
+                            android:id="@+id/layout_details_privacy"
+                            layout="@layout/layout_details_privacy" />
 
                         <include
                             android:id="@+id/layout_details_dev"
