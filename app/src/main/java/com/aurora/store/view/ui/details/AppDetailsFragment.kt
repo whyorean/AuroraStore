@@ -171,9 +171,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     findNavController().navigate(
                         AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
                             app,
-                            event.packageName ?: "",
-                            event.error ?: "",
-                            event.extra ?: ""
+                            event.packageName,
+                            event.error,
+                            event.extra
                         )
                     )
                 }
@@ -960,10 +960,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.layoutDetailsBeta.apply {
             if (isSubscribed) {
                 btnBetaAction.text = getString(R.string.action_leave)
-                txtBetaTitle.text = getString(R.string.details_beta_subscribed)
+                headerRatingReviews.setSubTitle(getString(R.string.details_beta_subscribed))
             } else {
                 btnBetaAction.text = getString(R.string.action_join)
-                txtBetaTitle.text = getString(R.string.details_beta_available)
+                headerRatingReviews.setSubTitle(getString(R.string.details_beta_available))
             }
         }
     }

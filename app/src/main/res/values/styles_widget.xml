@@ -18,6 +18,7 @@
   -->
 
 <resources>
+
     <style name="AuroraProgressView">
         <item name="minWidth">32dp</item>
         <item name="maxWidth">46dp</item>

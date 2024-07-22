@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
   ~  Copyright (C) 2022, The Calyx Institute
@@ -18,7 +17,8 @@
   ~  You should have received a copy of the GNU General Public License
   ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   ~
-  --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Find answers to frequently asked questions (F.A.Q.), troubleshooting steps and more</string>
     <string name="about_bhim">"BHIM - UPI"</string>

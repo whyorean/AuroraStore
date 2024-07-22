@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
-    <exclude domain="file" path="Downloads/"/>
-    <exclude domain="external" path="Downloads/"/>
+    <exclude
+        domain="file"
+        path="Downloads/" />
+    <exclude
+        domain="external"
+        path="Downloads/" />
 </full-backup-content>

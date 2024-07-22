@@ -45,5 +45,4 @@
         android:scrollbars="none"
         app:itemSpacing="@dimen/margin_small"
         tools:listitem="@layout/view_installer" />
-
 </LinearLayout>

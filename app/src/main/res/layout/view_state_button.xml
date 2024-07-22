@@ -25,20 +25,14 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn"
-        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        style="@style/Widget.Material3.Button.IconButton.Outlined"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="?android:colorBackground"
-        android:paddingVertical="@dimen/padding_normal"
-        android:paddingStart="24dp"
-        android:paddingEnd="48dp"
         android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1"
-        android:textColor="?android:textColorPrimary"
-        app:iconPadding="@dimen/padding_large"
+        app:iconPadding="@dimen/padding_normal"
         app:iconTint="?colorAccent"
+        app:strokeColor="?colorAccent"
         tools:icon="@drawable/ic_anonymous"
         tools:text="Button Name" />
 
@@ -49,11 +43,7 @@
         android:layout_height="@dimen/icon_size_default"
         android:layout_alignEnd="@id/btn"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/icon_size_default"
+        android:layout_marginEnd="@dimen/margin_large"
         android:elevation="8dp"
         android:visibility="invisible" />
 </RelativeLayout>
-
-
-
-

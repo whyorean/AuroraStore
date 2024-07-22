@@ -21,10 +21,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_medium"
-    android:paddingTop="@dimen/padding_xsmall"
-    android:paddingEnd="@dimen/padding_small"
-    android:paddingBottom="@dimen/padding_xsmall">
+    android:padding="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_title"

@@ -40,12 +40,12 @@
             android:scrollbars="none">
 
             <LinearLayout
-                android:padding="@dimen/padding_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:divider="@drawable/divider_line"
                 android:dividerPadding="@dimen/padding_xsmall"
                 android:orientation="horizontal"
+                android:padding="@dimen/padding_small"
                 android:showDividers="middle">
 
                 <androidx.appcompat.widget.AppCompatTextView

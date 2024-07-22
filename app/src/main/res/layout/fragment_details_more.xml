@@ -61,8 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="all"
-                    android:textIsSelectable="true"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
+                    android:textIsSelectable="true" />
 
                 <com.aurora.store.view.custom.layouts.ActionHeaderLayout
                     android:layout_width="match_parent"

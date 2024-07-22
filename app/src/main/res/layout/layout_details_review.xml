@@ -56,15 +56,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/margin_normal"
-            android:orientation="vertical"
             android:divider="@drawable/divider"
+            android:orientation="vertical"
             android:showDividers="middle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_title"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
-                android:background="@drawable/bg_search"
+                android:background="@drawable/bg_changelog"
                 android:gravity="center_vertical|center_horizontal"
                 android:hint="@string/details_ratings_title_hint"
                 android:imeOptions="flagNoExtractUi|actionDone"
@@ -78,7 +78,7 @@
                 android:id="@+id/input_review"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
-                android:background="@drawable/bg_search"
+                android:background="@drawable/bg_changelog"
                 android:gravity="center_vertical|center_horizontal"
                 android:hint="@string/details_think_this_app"
                 android:imeOptions="flagNoExtractUi|actionDone"
@@ -90,12 +90,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_post_review"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                app:cornerRadius="@dimen/margin_small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/action_post" />
+                android:text="@string/action_post"
+                app:cornerRadius="@dimen/margin_small" />
         </LinearLayout>
     </LinearLayout>
 
@@ -141,7 +140,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:divider="@drawable/divider_alt"
+            android:divider="@drawable/divider"
             android:orientation="vertical"
             android:showDividers="middle" />
     </LinearLayout>

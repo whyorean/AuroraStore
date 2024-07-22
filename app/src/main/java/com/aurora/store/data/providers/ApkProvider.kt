@@ -21,6 +21,4 @@ package com.aurora.store.data.providers
 
 import androidx.core.content.FileProvider
 
-class ApkProvider : FileProvider() {
-
-}
+class ApkProvider : FileProvider()

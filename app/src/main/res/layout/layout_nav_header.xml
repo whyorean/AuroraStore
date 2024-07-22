@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -26,8 +25,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
-        android:src="@mipmap/ic_launcher"
         android:layout_width="@dimen/icon_size_small"
         android:layout_height="@dimen/icon_size_small"
+        android:src="@mipmap/ic_launcher"
         app:srcCompat="@drawable/bg_placeholder" />
 </RelativeLayout>

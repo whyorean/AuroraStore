@@ -46,9 +46,9 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:insetTop="@dimen/margin_small"
+        android:insetTop="@dimen/margin_xsmall"
         android:insetBottom="@dimen/margin_xsmall"
         android:text="@string/action_grant"
-        android:textColorHighlight="?colorOnPrimary"
-        app:cornerRadius="@dimen/margin_small" />
+        android:textColor="?colorSurface"
+        app:cornerRadius="@dimen/radius_small" />
 </LinearLayout>

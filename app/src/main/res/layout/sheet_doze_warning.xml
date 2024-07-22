@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,8 +21,8 @@
                 android:id="@+id/img_icon"
                 android:layout_width="@dimen/icon_size_category"
                 android:layout_height="@dimen/icon_size_category"
-                android:src="@drawable/ic_download_manager"
                 android:layout_centerVertical="true"
+                android:src="@drawable/ic_download_manager"
                 app:tint="@color/colorAccent" />
 
             <TextView
