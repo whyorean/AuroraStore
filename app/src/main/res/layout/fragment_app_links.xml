@@ -81,7 +81,7 @@
                     android:insetTop="@dimen/margin_xsmall"
                     android:insetBottom="@dimen/margin_xsmall"
                     android:text="@string/action_enable"
-                    android:textColorHighlight="?colorOnPrimary"
+                    android:textColor="?colorSurface"
                     app:cornerRadius="@dimen/margin_small" />
             </LinearLayout>
 
@@ -117,7 +117,7 @@
                     android:insetTop="@dimen/margin_xsmall"
                     android:insetBottom="@dimen/margin_xsmall"
                     android:text="@string/action_enable"
-                    android:textColorHighlight="?colorOnPrimary"
+                    android:textColor="?colorSurface"
                     app:cornerRadius="@dimen/margin_small" />
             </LinearLayout>
         </LinearLayout>
