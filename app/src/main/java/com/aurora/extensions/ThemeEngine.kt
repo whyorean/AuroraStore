@@ -77,7 +77,9 @@ private fun AppCompatActivity.setSystemBarConfiguration(light: Boolean) {
         if (isMAndAbove()) {
             isAppearanceLightStatusBars = light
         } else {
+            // Add a semi-transparent black color to the status bar & navigation bar
             window.statusBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
+            window.navigationBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
         }
 
         // Navigation bar color
