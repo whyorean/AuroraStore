@@ -562,9 +562,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         if (PathUtil.needsStorageManagerPerm(app.fileList)) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
-                    startForStorageManagerResult.launch(
-                        PackageUtil.getStorageManagerIntent()
-                    )
+                    try {
+                        startForStorageManagerResult.launch(PackageUtil.getStorageManagerIntent())
+                    } catch (_: ActivityNotFoundException) {
+                        startForStorageManagerResult.launch(PackageUtil.getStorageManagerIntent(true))
+                    }
                 } else {
                     viewModel.download(app)
                 }

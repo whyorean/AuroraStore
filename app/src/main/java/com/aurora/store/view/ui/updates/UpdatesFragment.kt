@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.updates
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
@@ -205,9 +206,11 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         if (PathUtil.needsStorageManagerPerm(update.fileList)) {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
-                    startForStorageManagerResult.launch(
-                        PackageUtil.getStorageManagerIntent()
-                    )
+                    try {
+                        startForStorageManagerResult.launch(PackageUtil.getStorageManagerIntent())
+                    } catch (_: ActivityNotFoundException) {
+                        startForStorageManagerResult.launch(PackageUtil.getStorageManagerIntent(true))
+                    }
                 } else {
                     viewModel.download(update)
                 }

@@ -124,11 +124,15 @@ object PackageUtil {
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    fun getStorageManagerIntent(): Intent {
-        return Intent(
-            Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-        )
+    fun getStorageManagerIntent(safe: Boolean = false): Intent {
+        return if (safe) {
+            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+        } else {
+            Intent(
+                Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
+        }
     }
 
     @Throws(Exception::class)

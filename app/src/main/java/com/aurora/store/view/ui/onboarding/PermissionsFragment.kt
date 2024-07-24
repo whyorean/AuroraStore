@@ -21,6 +21,7 @@
 package com.aurora.store.view.ui.onboarding
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -216,9 +217,11 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
     private fun requestStorageManagerPermission() {
         if (isRAndAbove()) {
             if (canInstallPackages()) {
-                startForStorageManagerResult.launch(
-                    PackageUtil.getStorageManagerIntent()
-                )
+                try {
+                    startForStorageManagerResult.launch(PackageUtil.getStorageManagerIntent())
+                } catch (_: ActivityNotFoundException) {
+                    startForStorageManagerResult.launch(PackageUtil.getStorageManagerIntent(true))
+                }
             } else {
                 toast(R.string.toast_permission_installer_required)
             }
