@@ -141,18 +141,16 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             } else {
                 true
             }
+
             val writeExternalStorage =
                 if (!isRAndAbove()) isExternalStorageAccessible(requireContext()) else true
+
             val postNotifications = if (isTAndAbove()) ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.POST_NOTIFICATIONS
             ) == PackageManager.PERMISSION_GRANTED else true
+
             val storageManager = if (isRAndAbove()) Environment.isExternalStorageManager() else true
-            val canInstallPackages = if (isOAndAbove()) {
-                requireContext().packageManager.canRequestPackageInstalls()
-            } else {
-                true
-            }
 
             setFilterDuplicates(true)
             installerList.forEach {
@@ -164,7 +162,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
                             when (it.id) {
                                 0 -> writeExternalStorage
                                 1 -> storageManager
-                                2 -> canInstallPackages
+                                2 -> canInstallPackages()
                                 3 -> postNotifications
                                 4 -> dozeDisabled
                                 else -> false
@@ -184,6 +182,14 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
         }
     }
 
+    private fun canInstallPackages(): Boolean {
+        if (isOAndAbove()) {
+            return requireContext().packageManager.canRequestPackageInstalls()
+        } else {
+            return true
+        }
+    }
+
     private fun requestDozePermission() {
         if (isMAndAbove()) {
             val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
@@ -194,7 +200,11 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
     }
 
     private fun checkStorageAccessPermission() {
-        startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (canInstallPackages()) {
+            startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        } else {
+            toast(R.string.toast_permission_installer_required)
+        }
     }
 
     private fun checkPostNotificationsPermission() {
@@ -205,9 +215,13 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
 
     private fun requestStorageManagerPermission() {
         if (isRAndAbove()) {
-            startForStorageManagerResult.launch(
-                PackageUtil.getStorageManagerIntent()
-            )
+            if (canInstallPackages()) {
+                startForStorageManagerResult.launch(
+                    PackageUtil.getStorageManagerIntent()
+                )
+            } else {
+                toast(R.string.toast_permission_installer_required)
+            }
         }
     }
 
