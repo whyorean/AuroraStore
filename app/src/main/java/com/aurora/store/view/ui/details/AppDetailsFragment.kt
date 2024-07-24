@@ -563,7 +563,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
                     startForStorageManagerResult.launch(
-                        PackageUtil.getStorageManagerIntent(requireContext())
+                        PackageUtil.getStorageManagerIntent()
                     )
                 } else {
                     viewModel.download(app)

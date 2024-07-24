@@ -124,15 +124,11 @@ object PackageUtil {
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    fun getStorageManagerIntent(context: Context): Intent {
-        return if (isTv(context)) {
-            Intent(
-                Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-            )
-        } else {
-            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
-        }
+    fun getStorageManagerIntent(): Intent {
+        return Intent(
+            Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+        )
     }
 
     @Throws(Exception::class)
@@ -222,7 +218,8 @@ object PackageUtil {
         if (isAuroraOnlyUpdateEnabled) {
             packageInfoList = packageInfoList
                 .filter {
-                    val packageInstaller = packageManager.getInstallerPackageNameCompat(it.packageName)
+                    val packageInstaller =
+                        packageManager.getInstallerPackageNameCompat(it.packageName)
                     listOf(
                         "com.aurora.store",
                         "com.aurora.store.debug",

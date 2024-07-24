@@ -206,7 +206,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             if (isRAndAbove()) {
                 if (!Environment.isExternalStorageManager()) {
                     startForStorageManagerResult.launch(
-                        PackageUtil.getStorageManagerIntent(requireContext())
+                        PackageUtil.getStorageManagerIntent()
                     )
                 } else {
                     viewModel.download(update)

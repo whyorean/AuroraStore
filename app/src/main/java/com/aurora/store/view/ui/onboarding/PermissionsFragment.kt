@@ -206,7 +206,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
     private fun requestStorageManagerPermission() {
         if (isRAndAbove()) {
             startForStorageManagerResult.launch(
-                PackageUtil.getStorageManagerIntent(requireContext())
+                PackageUtil.getStorageManagerIntent()
             )
         }
     }
