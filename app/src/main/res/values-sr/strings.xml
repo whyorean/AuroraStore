@@ -460,4 +460,5 @@
     <string name="pref_network_proxy_url_message">Унесите важећу URL адресу проксија да бисте проследили све податке кроз прокси.</string>
     <string name="action_logout_confirmation_title">Одјавити се?</string>
     <string name="action_logout_confirmation_message">Желите ли заиста да се одјавите?</string>
+    <string name="check_updates">Провера ажурирања</string>
 </resources>

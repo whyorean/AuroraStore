@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="action_filter_paid_apps">Köpt</string>
     <string name="account_login_using">Logga in med</string>
-    <string name="about_xda">Utv. tråd</string>
+    <string name="about_xda">XDA Forum</string>
     <string name="about_telegram_summary">Gå med i Aurora\'s hjälp-grupp för diskussioner eller förslag.</string>
     <string name="about_libera_summary">Bli en patron i Liberapay</string>
     <string name="about_gitlab_summary">Hämta källkoden för Aurora-butiken från Aurora OSS i GitLab.</string>
@@ -133,10 +133,10 @@
     <string name="details_changelog_unavailable">Ändringslogg tillhandahålls inte</string>
     <string name="details_changelog">Ändringslogg</string>
     <string name="details_beta_delay">Inskrivningen kan ta lite tid, du kan kontrollera din status senare.</string>
-    <string name="details_beta_description">Du kommer att få se nya funktioner och buggar före allmänheten gör det. Ge din feedback till utvecklarna för att hjälpa dem att förbättra.</string>
-    <string name="details_beta_available">Gå med i beta-programmet \?</string>
-    <string name="details_beta_subscribed">Du är en beta-testare</string>
-    <string name="details_beta">Beta-program</string>
+    <string name="details_beta_description">Du kommer att få se nya funktioner och buggar innan allmänheten gör det. Ge din feedback till utvecklarna för att hjälpa dem att förbättra.</string>
+    <string name="details_beta_available">Gå med i betaprogrammet ?</string>
+    <string name="details_beta_subscribed">Du är en betatestare</string>
+    <string name="details_beta">Betaprogram</string>
     <string name="action_wishlist_add">Lägg till i Vitlista</string>
     <string name="action_whitelist">Vitlista</string>
     <string name="action_update_all">Uppdatera alla</string>
@@ -361,4 +361,10 @@
     <string name="failed_apk_export">Misslyckades med att exportera APKs</string>
     <string name="download_clear_finished">Rensa slutförda</string>
     <string name="pref_updates_incompatible">Inkompatibla uppdateringar</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Hitta svar till vanligt frågade frågpr (F.A.Q.), felsökningssteg och mer</string>
+    <string name="action_favourite">Favorit</string>
+    <string name="action_home_screen">Lägg till på hemskärmen</string>
+    <string name="action_uninstall_success">Avinstallationen lyckades</string>
+    <string name="details_no_favourites">Inga favoritappar hittades</string>
 </resources>

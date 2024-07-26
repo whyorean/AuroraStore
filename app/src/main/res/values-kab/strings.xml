@@ -67,4 +67,16 @@
     <string name="details_permission">Tasiregt</string>
     <string name="action_next">Ɣer zdat</string>
     <string name="action_restart">Ales tanekra</string>
+    <string name="menu_license">Turagt</string>
+    <string name="onboarding_title_welcome">Ansuf</string>
+    <string name="pref_app_download">Isidar</string>
+    <string name="action_ignore">Zgel-it</string>
+    <string name="action_join">Zeddi</string>
+    <string name="pref_ui_accent_title">Ini</string>
+    <string name="pref_ui_theme_black">Ubrik</string>
+    <string name="pref_ui_theme_dark">Ubrik</string>
+    <string name="pref_ui_theme_light">Aceɛlal</string>
+    <string name="pref_ui_theme_title">Asentel</string>
+    <string name="action_pending">Yettṛaǧu</string>
+    <string name="onboarding_title_permissions">Tisirag</string>
 </resources>
