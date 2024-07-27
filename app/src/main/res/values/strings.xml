@@ -348,6 +348,8 @@
     <string name="menu">Menu</string>
     <string name="expand">Expand</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="item_required">Required</string>
+    <string name="item_optional">Optional</string>
     <string name="permissions_denied">Required permissions were denied. Please grant them in order to continue the action</string>
     <string name="search_hint">Search for Apps &amp; Games</string>
     <string name="requesting_new_session">Requesting new session</string>

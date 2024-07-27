@@ -17,24 +17,26 @@
  *
  */
 
-package com.aurora.store.data.model
+package com.aurora.store.view.epoxy.views
 
-import com.aurora.store.PermissionType
+import android.content.Context
+import android.util.AttributeSet
+import com.airbnb.epoxy.ModelProp
+import com.airbnb.epoxy.ModelView
+import com.aurora.store.databinding.ViewTextDividerBinding
 
-data class Permission(
-    val type: PermissionType,
-    val title: String,
-    val subtitle: String,
-    val optional: Boolean = false,
-) {
-    override fun equals(other: Any?): Boolean {
-        return when (other) {
-            is Permission -> other.type == type
-            else -> false
-        }
-    }
+@ModelView(
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
+    baseModelClass = BaseModel::class
+)
+class TextDividerView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewTextDividerBinding>(context, attrs, defStyleAttr) {
 
-    override fun hashCode(): Int {
-        return type.hashCode()
+    @ModelProp
+    fun title(title: String) {
+        binding.txtTitle.text = title
     }
 }
