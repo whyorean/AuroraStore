@@ -410,4 +410,17 @@
     <string name="about_aurora_store_subtitle">En savoir plus sur Aurora Store</string>
     <string name="pref_clear_device_owner_desc">Cette action supprimera la possibilité accordée à l’installateur d’opérer des installations silencieuses. Êtes-vous sûr·e de révoquer l’administration de l’appareil ?</string>
     <string name="pref_clear_device_owner_title">Révoquer le droit d’administration de l’appareil</string>
+    <string name="toast_app_unavailable">L\'application n\'est pas disponible pour votre appareil</string>
+    <string name="toast_fav_import_failed">Échec lors de l\'import des favoris !</string>
+    <string name="toast_fav_export_failed">Échec lors de l\'export des favoris !</string>
+    <string name="action_favourite">Favoris</string>
+    <string name="details_no_favourites">Aucune application favorite trouvée</string>
+    <string name="toast_fav_import_success">Favoris importés !</string>
+    <string name="action_uninstall_success">Désinstallation réussie</string>
+    <string name="pref_network_proxy_url_message">Entrez une URL de proxy valide pour transmettre toute les données via le proxy.</string>
+    <string name="title_favourites_manager">Applications favorites</string>
+    <string name="toast_fav_export_success">Favoris exportés !</string>
+    <string name="action_logout_confirmation_title">Se déconnecter ?</string>
+    <string name="action_logout_confirmation_message">Êtes-vous sûr de vouloir vous déconnecter ?</string>
+    <string name="check_updates">Vérification des mises à jour</string>
 </resources>
