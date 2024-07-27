@@ -550,10 +550,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         updateActionState(State.PROGRESS)
 
         if (PathUtil.needsStorageManagerPerm(app.fileList)) {
-            if (permissionProvider.isPermissionGranted(PermissionType.STORAGE_MANAGER)) {
+            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
             } else {
-                permissionProvider.requestPermission(PermissionType.STORAGE_MANAGER)
+                permissionProvider.request(PermissionType.STORAGE_MANAGER)
             }
         } else {
             viewModel.download(app)

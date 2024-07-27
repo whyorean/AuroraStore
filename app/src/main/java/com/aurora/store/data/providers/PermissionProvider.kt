@@ -2,6 +2,7 @@ package com.aurora.store.data.providers
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -20,8 +21,11 @@ import com.aurora.extensions.isDomainVerified
 import com.aurora.extensions.isExternalStorageAccessible
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isOAndAbove
+import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
+import com.aurora.store.PermissionCallback
 import com.aurora.store.PermissionType
+import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 
@@ -31,33 +35,47 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
     private var intentLauncher: ActivityResultLauncher<Intent>
     private var permissionLauncher: ActivityResultLauncher<String>
 
-    constructor(activity: AppCompatActivity) {
-        context = activity
+    private var permissionCallback: PermissionCallback? = null
+
+    constructor(activity: AppCompatActivity, callback: PermissionCallback? = null) {
+        this.context = activity
+        permissionCallback = callback
         intentLauncher = activity.registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
             this
         )
+
         permissionLauncher =
-            activity.registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
+            activity.registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+                permissionCallback?.invoke(
+                    ActivityResult(
+                        if (it) Activity.RESULT_OK else Activity.RESULT_CANCELED,
+                        null
+                    )
+                )
+            }
     }
 
-    constructor(fragment: Fragment) {
-        context = fragment.requireContext()
+    constructor(fragment: Fragment, callback: PermissionCallback? = null) {
+        this.context = fragment.requireContext()
+        permissionCallback = callback
         intentLauncher = fragment.registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
             this
         )
         permissionLauncher =
-            fragment.registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
-    }
-
-    fun unregister() {
-        intentLauncher.unregister()
-        permissionLauncher.unregister()
+            fragment.registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+                permissionCallback?.invoke(
+                    ActivityResult(
+                        if (it) Activity.RESULT_OK else Activity.RESULT_CANCELED,
+                        null
+                    )
+                )
+            }
     }
 
     private val permissionMap: Map<PermissionType, Intent> = mapOf(
-        PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(safe = true),
+        PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(safe = false),
         PermissionType.INSTALL_UNKNOWN_APPS to Intent(
             Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
             Uri.parse("package:${BuildConfig.APPLICATION_ID}")
@@ -72,32 +90,42 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
         )
     )
 
-    fun requestPermission(permissionType: PermissionType) {
+    fun request(permissionType: PermissionType) {
         try {
             when (permissionType) {
                 PermissionType.EXTERNAL_STORAGE -> permissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 PermissionType.POST_NOTIFICATIONS -> permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 else -> {
                     val intent = permissionMap[permissionType] ?: return
-                    intentLauncher.launch(intent)
+
+                    if (permissionType == PermissionType.STORAGE_MANAGER
+                        && !isGranted(PermissionType.INSTALL_UNKNOWN_APPS)
+                    ) {
+                        context.toast(R.string.toast_permission_installer_required)
+                    } else {
+                        intentLauncher.launch(intent)
+                    }
                 }
             }
         } catch (e: ActivityNotFoundException) {
-            Log.e("PermissionProvider", "Activity not found for $permissionType")
+            Log.e("PermissionProvider", "Activity not found for $permissionType: ${e.message}")
+        } catch (e: Exception) {
+            Log.e("PermissionProvider", "Error requesting permission: ${e.message}")
         }
     }
 
-    fun isPermissionGranted(permissionType: PermissionType): Boolean {
+    fun isGranted(permissionType: PermissionType): Boolean {
         return when (permissionType) {
             PermissionType.EXTERNAL_STORAGE,
             PermissionType.STORAGE_MANAGER -> context.isExternalStorageAccessible()
 
             PermissionType.POST_NOTIFICATIONS -> context.checkManifestPermission(Manifest.permission.POST_NOTIFICATIONS)
             PermissionType.INSTALL_UNKNOWN_APPS -> {
-                if (isOAndAbove())
+                if (isOAndAbove()) {
                     context.packageManager.canRequestPackageInstalls()
-                else
+                } else {
                     true
+                }
             }
 
             PermissionType.DOZE_WHITELIST -> {
@@ -116,7 +144,12 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
         }
     }
 
+    fun unregister() {
+        intentLauncher.unregister()
+        permissionLauncher.unregister()
+    }
+
     override fun onActivityResult(result: ActivityResult) {
-        // We don't need to do anything here, as we anyway do permission re-checks using @isPermissionGranted
+        permissionCallback?.invoke(result)
     }
 }

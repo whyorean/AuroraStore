@@ -194,10 +194,10 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         viewModel.updateAllEnqueued = updateAll
 
         if (PathUtil.needsStorageManagerPerm(update.fileList)) {
-            if (permissionProvider.isPermissionGranted(PermissionType.STORAGE_MANAGER)) {
+            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(update)
             } else {
-                permissionProvider.requestPermission(PermissionType.STORAGE_MANAGER)
+                permissionProvider.request(PermissionType.STORAGE_MANAGER)
             }
         } else {
             viewModel.download(update)

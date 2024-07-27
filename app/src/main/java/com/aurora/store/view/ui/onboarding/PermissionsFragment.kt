@@ -156,7 +156,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
         return PermissionViewModel_()
             .id(permission.type.name)
             .permission(permission)
-            .isGranted(permissionProvider.isPermissionGranted(permission.type))
-            .click { _ -> permissionProvider.requestPermission(permission.type) }
+            .isGranted(permissionProvider.isGranted(permission.type))
+            .click { _ -> permissionProvider.request(permission.type) }
     }
 }
