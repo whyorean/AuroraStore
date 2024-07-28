@@ -75,7 +75,7 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
     }
 
     private val permissionMap: Map<PermissionType, Intent> = mapOf(
-        PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(safe = false),
+        PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(safe = true),
         PermissionType.INSTALL_UNKNOWN_APPS to Intent(
             Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
             Uri.parse("package:${BuildConfig.APPLICATION_ID}")
