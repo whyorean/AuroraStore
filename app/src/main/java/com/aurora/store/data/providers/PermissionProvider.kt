@@ -74,21 +74,23 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
             }
     }
 
-    private val permissionMap: Map<PermissionType, Intent> = mapOf(
-        PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(safe = true),
-        PermissionType.INSTALL_UNKNOWN_APPS to Intent(
-            Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-        ),
-        PermissionType.DOZE_WHITELIST to Intent(
-            Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-        ),
-        PermissionType.APP_LINKS to Intent(
-            ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
-            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+    private fun knownPermissions(): Map<PermissionType, Intent> {
+        return mapOf(
+            PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(context),
+            PermissionType.INSTALL_UNKNOWN_APPS to Intent(
+                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            ),
+            PermissionType.DOZE_WHITELIST to Intent(
+                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            ),
+            PermissionType.APP_LINKS to Intent(
+                ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
         )
-    )
+    }
 
     fun request(permissionType: PermissionType) {
         try {
@@ -96,7 +98,7 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
                 PermissionType.EXTERNAL_STORAGE -> permissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 PermissionType.POST_NOTIFICATIONS -> permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 else -> {
-                    val intent = permissionMap[permissionType] ?: return
+                    val intent = knownPermissions()[permissionType] ?: return
 
                     if (permissionType == PermissionType.STORAGE_MANAGER
                         && !isGranted(PermissionType.INSTALL_UNKNOWN_APPS)

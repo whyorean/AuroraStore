@@ -124,14 +124,23 @@ object PackageUtil {
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    fun getStorageManagerIntent(safe: Boolean = false): Intent {
-        return if (safe) {
-            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+    fun getStorageManagerIntent(context: Context): Intent {
+        val intent = Intent(
+            Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+        )
+
+        // Check if the intent can be resolved
+        val packageManager = context.packageManager
+        val isIntentAvailable = packageManager.queryIntentActivities(
+            intent,
+            PackageManager.MATCH_DEFAULT_ONLY
+        ).isNotEmpty()
+
+        return if (isIntentAvailable) {
+            intent
         } else {
-            Intent(
-                Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-            )
+            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
         }
     }
 
