@@ -47,6 +47,7 @@ import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.File
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -639,8 +640,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         } else if (app.versionCode == 0) {
                             toast(R.string.toast_app_unavailable)
                         } else {
-                            btn.setText(R.string.download_metadata)
-                            startDownload()
+                            val hasOBB = app.fileList.any { it.type == File.FileType.OBB }
+                            if (hasOBB && !PathUtil.canReadWriteOBB()) {
+                                permissionProvider.request(PermissionType.STORAGE_MANAGER)
+                            } else {
+                                btn.setText(R.string.download_metadata)
+                                startDownload()
+                            }
                         }
                     }
 

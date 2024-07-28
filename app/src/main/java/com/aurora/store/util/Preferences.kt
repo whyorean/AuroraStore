@@ -105,7 +105,11 @@ object Preferences {
         return getPrefs(context).getString(key, default).toString()
     }
 
-    fun getStringSet(context: Context, key: String, default: Set<String> = emptySet()): Set<String> {
+    fun getStringSet(
+        context: Context,
+        key: String,
+        default: Set<String> = emptySet()
+    ): Set<String> {
         return getPrefs(context).getStringSet(key, default) ?: emptySet()
     }
 

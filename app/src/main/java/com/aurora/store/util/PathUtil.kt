@@ -69,7 +69,7 @@ object PathUtil {
         file: GPlayFile,
         sharedLibPackageName: String? = null
     ): File {
-        val downloadDir =  if (!sharedLibPackageName.isNullOrBlank()) {
+        val downloadDir = if (!sharedLibPackageName.isNullOrBlank()) {
             getLibDownloadDir(context, packageName, versionCode, sharedLibPackageName)
         } else {
             File(getPackageDirectory(context, packageName), versionCode.toString())
@@ -108,6 +108,16 @@ object PathUtil {
         file.parentFile?.mkdirs()
         file.createNewFile()
         return file
+    }
+
+    fun canReadWriteOBB(): Boolean {
+        return canReadWriteDir(
+            Environment.getExternalStorageDirectory().toString() + "/Android/obb/"
+        )
+    }
+
+    private fun canReadWriteDir(dir: String): Boolean {
+        return File(dir).let { it.exists() && it.canRead() && it.canWrite() }
     }
 }
 

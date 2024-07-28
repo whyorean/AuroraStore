@@ -27,6 +27,7 @@ import com.aurora.store.PermissionType
 import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.PathUtil
 
 @SuppressLint("NewApi")
 class PermissionProvider : ActivityResultCallback<ActivityResult> {
@@ -96,10 +97,13 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
                 else -> {
                     val intent = knownPermissions()[permissionType] ?: return
 
-                    if (permissionType == PermissionType.STORAGE_MANAGER
-                        && !isGranted(PermissionType.INSTALL_UNKNOWN_APPS)
-                    ) {
-                        context.toast(R.string.toast_permission_installer_required)
+                    if (permissionType == PermissionType.STORAGE_MANAGER) {
+                        if (!isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
+                            context.toast(R.string.toast_permission_installer_required)
+                        } else {
+                            context.toast(R.string.toast_permission_esm_caution)
+                            intentLauncher.launch(intent)
+                        }
                     } else {
                         intentLauncher.launch(intent)
                     }
@@ -115,7 +119,7 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
     fun isGranted(permissionType: PermissionType): Boolean {
         return when (permissionType) {
             PermissionType.EXTERNAL_STORAGE,
-            PermissionType.STORAGE_MANAGER -> context.isExternalStorageAccessible()
+            PermissionType.STORAGE_MANAGER -> context.isExternalStorageAccessible() && PathUtil.canReadWriteOBB()
 
             PermissionType.POST_NOTIFICATIONS -> context.checkManifestPermission(Manifest.permission.POST_NOTIFICATIONS)
             PermissionType.INSTALL_UNKNOWN_APPS -> PackageUtil.canRequestPackageInstalls(context)
