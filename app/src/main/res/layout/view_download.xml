@@ -18,7 +18,6 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -61,6 +60,7 @@
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_download"
+        style="@style/Widget.Material3.LinearProgressIndicator.Legacy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txt_status"
@@ -69,9 +69,6 @@
         android:max="100"
         android:paddingTop="@dimen/padding_xxsmall"
         android:paddingBottom="@dimen/padding_xxsmall"
-        app:indicatorColor="@color/colorAccent"
-        app:trackColor="@android:color/darker_gray"
-        app:trackCornerRadius="10dp"
         tools:progress="75" />
 
     <LinearLayout
