@@ -198,6 +198,7 @@
     <string name="onboarding_permission_esm">"External Storage Manager"</string>
     <string name="onboarding_permission_installer">"Installer Permission"</string>
     <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
+    <string name="onboarding_permission_installer_legacy_desc">"Allow installation of apps from unknown sources"</string>
     <string name="onboarding_permission_notifications">"Notifications"</string>
     <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
     <string name="onboarding_permission_doze">"Background Downloads"</string>

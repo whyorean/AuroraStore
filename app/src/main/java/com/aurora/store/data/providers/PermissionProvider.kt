@@ -20,7 +20,6 @@ import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
 import com.aurora.extensions.isExternalStorageAccessible
 import com.aurora.extensions.isMAndAbove
-import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
 import com.aurora.store.PermissionCallback
@@ -77,10 +76,7 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
     private fun knownPermissions(): Map<PermissionType, Intent> {
         return mapOf(
             PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(context),
-            PermissionType.INSTALL_UNKNOWN_APPS to Intent(
-                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
-            ),
+            PermissionType.INSTALL_UNKNOWN_APPS to PackageUtil.getInstallUnknownAppsIntent(),
             PermissionType.DOZE_WHITELIST to Intent(
                 Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
                 Uri.parse("package:${BuildConfig.APPLICATION_ID}")
@@ -122,14 +118,7 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
             PermissionType.STORAGE_MANAGER -> context.isExternalStorageAccessible()
 
             PermissionType.POST_NOTIFICATIONS -> context.checkManifestPermission(Manifest.permission.POST_NOTIFICATIONS)
-            PermissionType.INSTALL_UNKNOWN_APPS -> {
-                if (isOAndAbove()) {
-                    context.packageManager.canRequestPackageInstalls()
-                } else {
-                    true
-                }
-            }
-
+            PermissionType.INSTALL_UNKNOWN_APPS -> PackageUtil.canRequestPackageInstalls(context)
             PermissionType.DOZE_WHITELIST -> {
                 if (isMAndAbove()) {
                     val powerManager =

@@ -632,7 +632,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     }
 
                     btn.addOnClickListener {
-                        if (authProvider.isAnonymous && !app.isFree) {
+                        if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
+                            permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS)
+                        } else if (authProvider.isAnonymous && !app.isFree) {
                             toast(R.string.toast_purchase_blocked)
                         } else if (app.versionCode == 0) {
                             toast(R.string.toast_app_unavailable)
@@ -641,6 +643,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                             startDownload()
                         }
                     }
+
                     if (uninstallActionEnabled) {
                         binding.layoutDetailsToolbar.toolbar.invalidateMenu()
                     }

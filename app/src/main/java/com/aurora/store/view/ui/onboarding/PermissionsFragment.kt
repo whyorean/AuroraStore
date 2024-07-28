@@ -23,6 +23,7 @@ package com.aurora.store.view.ui.onboarding
 import android.os.Bundle
 import android.view.View
 import com.aurora.extensions.isMAndAbove
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
@@ -65,7 +66,11 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             Permission(
                 PermissionType.INSTALL_UNKNOWN_APPS,
                 getString(R.string.onboarding_permission_installer),
-                getString(R.string.onboarding_permission_installer_desc)
+                if (isOAndAbove()) {
+                    getString(R.string.onboarding_permission_installer_desc)
+                } else {
+                    getString(R.string.onboarding_permission_installer_legacy_desc)
+                }
             )
         )
 

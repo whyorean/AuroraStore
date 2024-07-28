@@ -144,6 +144,30 @@ object PackageUtil {
         }
     }
 
+    fun getInstallUnknownAppsIntent(): Intent {
+        return if (isOAndAbove()) {
+            Intent(
+                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
+        } else {
+            Intent(Settings.ACTION_SECURITY_SETTINGS)
+        }
+    }
+
+    fun canRequestPackageInstalls(context: Context): Boolean {
+        return if (isOAndAbove()) {
+            context.packageManager.canRequestPackageInstalls()
+        } else {
+            val secureResult = Settings.Secure.getInt(
+                context.contentResolver,
+                Settings.Secure.INSTALL_NON_MARKET_APPS, 0
+            )
+
+            return secureResult == 1
+        }
+    }
+
     @Throws(Exception::class)
     fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo {
         return if (isTAndAbove()) {
