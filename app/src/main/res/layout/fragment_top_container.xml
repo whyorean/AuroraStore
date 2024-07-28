@@ -19,6 +19,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -29,7 +30,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="true"
         android:paddingBottom="@dimen/height_bottom_adj"
-        app:itemSpacing="@dimen/margin_normal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:stackFromEnd="false" />
+        app:stackFromEnd="false"
+        tools:listitem="@layout/view_app_list" />
 </RelativeLayout>

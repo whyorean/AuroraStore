@@ -28,15 +28,14 @@
         android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/padding_xsmall">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_icon"
             android:layout_width="@dimen/icon_size_cluster"
             android:layout_height="@dimen/icon_size_cluster"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="@dimen/padding_xsmall"
-            android:layout_marginEnd="@dimen/padding_xsmall"
             android:background="@drawable/bg_rounded" />
 
         <TextView

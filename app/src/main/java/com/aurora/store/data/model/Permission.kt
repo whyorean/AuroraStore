@@ -19,19 +19,22 @@
 
 package com.aurora.store.data.model
 
+import com.aurora.store.PermissionType
+
 data class Permission(
-    var id: Int,
-    var title: String,
-    var subtitle: String
+    val type: PermissionType,
+    val title: String,
+    val subtitle: String,
+    val optional: Boolean = false,
 ) {
     override fun equals(other: Any?): Boolean {
         return when (other) {
-            is Permission -> other.id == id
+            is Permission -> other.type == type
             else -> false
         }
     }
 
     override fun hashCode(): Int {
-        return id.hashCode()
+        return type.hashCode()
     }
 }

@@ -84,10 +84,6 @@
                             layout="@layout/layout_details_review" />
 
                         <include
-                            android:id="@+id/layout_details_privacy"
-                            layout="@layout/layout_details_privacy" />
-
-                        <include
                             android:id="@+id/layout_details_beta"
                             layout="@layout/layout_details_beta" />
 
@@ -98,8 +94,6 @@
                             android:clipToPadding="false"
                             android:orientation="vertical"
                             android:overScrollMode="never"
-                            android:paddingStart="@dimen/padding_small"
-                            android:paddingEnd="@dimen/padding_small"
                             android:scrollbars="none"
                             app:itemSpacing="@dimen/margin_small"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -108,6 +102,10 @@
                         <include
                             android:id="@+id/layout_details_permissions"
                             layout="@layout/layout_details_permissions" />
+
+                        <include
+                            android:id="@+id/layout_details_privacy"
+                            layout="@layout/layout_details_privacy" />
 
                         <include
                             android:id="@+id/layout_details_dev"

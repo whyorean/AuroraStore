@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.ui.onboarding.AppLinksFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_small"
         android:includeFontPadding="true"
         android:paddingStart="@dimen/padding_normal"
         android:paddingEnd="@dimen/padding_normal"
@@ -36,104 +36,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
-    <ScrollView
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/epoxyRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:id="@+id/playStoreLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_normal"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:background="@drawable/bg_outlined_padded"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/playStoreTitle"
-                    style="@style/AuroraTextStyle.Subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/playStoreButton"
-                    android:text="@string/app_link_play_store" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/playStoreDesc"
-                    style="@style/AuroraTextStyle.Line1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/playStoreTitle"
-                    android:layout_alignStart="@id/playStoreTitle"
-                    android:layout_alignEnd="@id/playStoreTitle"
-                    android:layout_marginTop="@dimen/margin_xxsmall"
-                    android:maxLines="5"
-                    android:text="@string/google_play_store_desc" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/playStoreButton"
-                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:text="@string/action_enable" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/marketLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_normal"
-                android:layout_marginVertical="@dimen/margin_small"
-                android:background="@drawable/bg_outlined_padded"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playStoreLayout">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/marketTitle"
-                    style="@style/AuroraTextStyle.Subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/marketButton"
-                    android:text="@string/app_link_android_market" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/marketDesc"
-                    style="@style/AuroraTextStyle.Line1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/marketTitle"
-                    android:layout_alignStart="@id/marketTitle"
-                    android:layout_alignEnd="@id/marketTitle"
-                    android:layout_marginTop="@dimen/margin_xxsmall"
-                    android:maxLines="5"
-                    android:text="@string/android_market_desc" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/marketButton"
-                    style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:text="@string/action_enable" />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:padding="@dimen/padding_medium"
+        tools:listitem="@layout/view_permission_switch" />
+</LinearLayout>

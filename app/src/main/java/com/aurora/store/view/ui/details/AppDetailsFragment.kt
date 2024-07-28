@@ -20,19 +20,15 @@
 
 package com.aurora.store.view.ui.details
 
-import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.Settings
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.activityViewModels
@@ -46,7 +42,6 @@ import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.getString
 import com.aurora.extensions.hide
-import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
@@ -57,6 +52,7 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.AppStreamStash
 import com.aurora.store.AuroraApp
+import com.aurora.store.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
@@ -67,6 +63,7 @@ import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
@@ -103,26 +100,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
-    private val startForStorageManagerResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (isRAndAbove() && Environment.isExternalStorageManager()) {
-                viewModel.download(app)
-            } else {
-                flip(0)
-                toast(R.string.permissions_denied)
-            }
-        }
-    private val startForPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (it) {
-                viewModel.download(app)
-            } else {
-                flip(0)
-                toast(R.string.permissions_denied)
-            }
-        }
+    private lateinit var permissionProvider: PermissionProvider
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
     private lateinit var app: App
 
@@ -171,9 +151,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     findNavController().navigate(
                         AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
                             app,
-                            event.packageName ?: "",
-                            event.error ?: "",
-                            event.extra ?: ""
+                            event.packageName,
+                            event.error,
+                            event.extra
                         )
                     )
                 }
@@ -190,6 +170,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        permissionProvider = PermissionProvider(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -378,6 +363,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         super.onResume()
     }
 
+    override fun onDestroy() {
+        permissionProvider.unregister()
+        super.onDestroy()
+    }
+
     private fun attachActions() {
         flip(0)
         checkAndSetupInstall()
@@ -560,24 +550,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         updateActionState(State.PROGRESS)
 
         if (PathUtil.needsStorageManagerPerm(app.fileList)) {
-            if (isRAndAbove()) {
-                if (!Environment.isExternalStorageManager()) {
-                    startForStorageManagerResult.launch(
-                        PackageUtil.getStorageManagerIntent(requireContext())
-                    )
-                } else {
-                    viewModel.download(app)
-                }
+            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+                viewModel.download(app)
             } else {
-                if (ContextCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    viewModel.download(app)
-                } else {
-                    startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                }
+                permissionProvider.request(PermissionType.STORAGE_MANAGER)
             }
         } else {
             viewModel.download(app)
@@ -656,7 +632,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     }
 
                     btn.addOnClickListener {
-                        if (authProvider.isAnonymous && !app.isFree) {
+                        if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
+                            permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS)
+                        } else if (authProvider.isAnonymous && !app.isFree) {
                             toast(R.string.toast_purchase_blocked)
                         } else if (app.versionCode == 0) {
                             toast(R.string.toast_app_unavailable)
@@ -665,6 +643,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                             startDownload()
                         }
                     }
+
                     if (uninstallActionEnabled) {
                         binding.layoutDetailsToolbar.toolbar.invalidateMenu()
                     }
@@ -952,7 +931,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     )
                 }
             }
-            txtPermissionCount.text = ("${app.permissions.size} permissions")
+            headerPermission.setSubTitle(("${app.permissions.size} permissions"))
         }
     }
 
@@ -960,10 +939,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.layoutDetailsBeta.apply {
             if (isSubscribed) {
                 btnBetaAction.text = getString(R.string.action_leave)
-                txtBetaTitle.text = getString(R.string.details_beta_subscribed)
+                headerRatingReviews.setSubTitle(getString(R.string.details_beta_subscribed))
             } else {
                 btnBetaAction.text = getString(R.string.action_join)
-                txtBetaTitle.text = getString(R.string.details_beta_available)
+                headerRatingReviews.setSubTitle(getString(R.string.details_beta_available))
             }
         }
     }

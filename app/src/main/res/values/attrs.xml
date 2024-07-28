@@ -29,6 +29,7 @@
 
     <declare-styleable name="ActionHeaderLayout">
         <attr name="headerTitle" format="string" />
+        <attr name="headerSubtitle" format="string" />
     </declare-styleable>
 
     <declare-styleable name="StateButton">
@@ -40,13 +41,6 @@
         <attr name="btnActionText" format="string" />
         <attr name="btnActionTextColor" format="string" />
         <attr name="btnActionIcon" format="string" />
-        <attr name="btnActionBackground" format="enum">
-            <enum name="outlined" value="0" />
-            <enum name="roundedOutlined" value="1" />
-            <enum name="flat" value="2" />
-            <enum name="roundedFlat" value="3" />
-            <enum name="none" value="4" />
-        </attr>
     </declare-styleable>
 
     <declare-styleable name="AuroraProgressView">

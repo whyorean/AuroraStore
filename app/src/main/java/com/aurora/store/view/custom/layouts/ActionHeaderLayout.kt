@@ -51,17 +51,28 @@ class ActionHeaderLayout : RelativeLayout {
         binding = ViewActionHeaderBinding.bind(view)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ActionHeaderLayout)
-        val textPrimary = typedArray.getString(R.styleable.ActionHeaderLayout_headerTitle)
+        val textTitle = typedArray.getString(R.styleable.ActionHeaderLayout_headerTitle)
+        val textSubtitle = typedArray.getString(R.styleable.ActionHeaderLayout_headerSubtitle)
 
         typedArray.recycle()
 
-        textPrimary?.let {
+        textTitle?.let {
             binding.txtTitle.text = it
+        }
+
+        textSubtitle?.let {
+            binding.txtSubtitle.visibility = View.VISIBLE
+            binding.txtSubtitle.text = it
         }
     }
 
-    fun setHeader(header: String?) {
+    fun setTitle(header: String?) {
         binding.txtTitle.text = header
+    }
+
+    fun setSubTitle(subHeader: String?) {
+        binding.txtSubtitle.visibility = View.VISIBLE
+        binding.txtSubtitle.text = subHeader
     }
 
     fun addClickListener(onclickListener: OnClickListener?) {

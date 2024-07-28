@@ -29,7 +29,7 @@
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -56,7 +56,7 @@
 
     <uses-feature
         android:name="android.hardware.gamepad"
-        android:required="false"/>
+        android:required="false" />
 
     <uses-feature
         android:name="android.software.device_admin"
@@ -66,16 +66,17 @@
         android:name=".AuroraApp"
         android:allowBackup="true"
         android:banner="@drawable/ic_tv_banner"
+        android:dataExtractionRules="@xml/backup_rules"
         android:enableOnBackInvokedCallback="true"
+        android:fullBackupContent="@xml/backup_rules_legacy"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:preserveLegacyExternalStorage="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_rules_legacy"
-        android:dataExtractionRules="@xml/backup_rules"
         tools:targetApi="tiramisu">
 
         <activity
@@ -92,8 +93,9 @@
                 <action android:name="android.intent.action.SEND" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/plain" />
             </intent-filter>
+
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
 
@@ -124,9 +126,9 @@
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
             android:authorities="${applicationId}.shizuku"
-            android:multiprocess="false"
             android:enabled="true"
             android:exported="true"
+            android:multiprocess="false"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
             tools:ignore="MissingClass" />
 
@@ -151,8 +153,8 @@
         <!-- SessionInstaller (as device owner) -->
         <receiver
             android:name=".data.receiver.DeviceOwnerReceiver"
-            android:permission="android.permission.BIND_DEVICE_ADMIN"
-            android:exported="true">
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_owner_receiver" />

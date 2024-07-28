@@ -59,8 +59,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/img_icon"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_normal"
-                android:layout_marginBottom="@dimen/margin_xsmall"
                 android:text="@string/app_name" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -79,7 +77,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/line2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_xsmall"
                 android:gravity="center_vertical"
                 android:text="Made with ❤ in India" />
         </RelativeLayout>

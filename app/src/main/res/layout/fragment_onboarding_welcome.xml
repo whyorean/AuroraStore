@@ -20,7 +20,6 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -54,8 +53,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:padding="@dimen/padding_normal"
+        android:padding="@dimen/padding_medium"
         android:scrollbars="none"
-        app:itemSpacing="@dimen/margin_small"
-        tools:listitem="@layout/view_theme" />
+        tools:listitem="@layout/view_dash" />
 </LinearLayout>

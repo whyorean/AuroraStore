@@ -27,7 +27,6 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_small"
         android:maxLines="1"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.Aurora.Line1"

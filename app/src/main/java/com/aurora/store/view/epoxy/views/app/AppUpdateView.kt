@@ -84,14 +84,14 @@ class AppUpdateView @JvmOverloads constructor(
                 context.getString(R.string.details_changelog_unavailable)
 
             binding.headerIndicator.setOnClickListener {
-                if (binding.txtChangelog.isVisible) {
+                if (binding.cardChangelog.isVisible) {
                     binding.headerIndicator.icon =
                         ContextCompat.getDrawable(context, R.drawable.ic_arrow_down)
-                    binding.txtChangelog.visibility = View.GONE
+                    binding.cardChangelog.visibility = View.GONE
                 } else {
                     binding.headerIndicator.icon =
                         ContextCompat.getDrawable(context, R.drawable.ic_arrow_up)
-                    binding.txtChangelog.visibility = View.VISIBLE
+                    binding.cardChangelog.visibility = View.VISIBLE
                 }
             }
         }

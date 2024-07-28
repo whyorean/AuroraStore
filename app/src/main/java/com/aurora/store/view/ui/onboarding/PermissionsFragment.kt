@@ -20,206 +20,148 @@
 
 package com.aurora.store.view.ui.onboarding
 
-import android.Manifest
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.os.PowerManager
-import android.provider.Settings
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isRAndAbove
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
-import com.aurora.extensions.toast
-import com.aurora.store.BuildConfig
+import com.aurora.store.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
+import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
-import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.isExternalStorageAccessible
+import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>() {
+    private lateinit var permissionProvider: PermissionProvider
 
-    private val startForDozeResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            context?.let {
-                val powerManager = it.getSystemService(Context.POWER_SERVICE) as PowerManager
-                if (isMAndAbove() && powerManager.isIgnoringBatteryOptimizations(it.packageName)) {
-                    toast(R.string.toast_permission_granted)
-                    binding.epoxyRecycler.requestModelBuild()
-                }
-            }
-        }
-    private val startForPackageManagerResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (isOAndAbove() && requireContext().packageManager.canRequestPackageInstalls()) {
-                toast(R.string.toast_permission_granted)
-                binding.epoxyRecycler.requestModelBuild()
-            }
-        }
-    private val startForStorageManagerResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (isRAndAbove() && Environment.isExternalStorageManager()) {
-                toast(R.string.toast_permission_granted)
-                binding.epoxyRecycler.requestModelBuild()
-            }
-        }
-    private val startForPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (it) {
-                toast(R.string.toast_permission_granted)
-                binding.epoxyRecycler.requestModelBuild()
-            } else {
-                toast(R.string.permissions_denied)
-            }
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        permissionProvider = PermissionProvider(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        updateController()
+    }
 
-        // RecyclerView
-        val installerList = mutableListOf(
+    override fun onResume() {
+        super.onResume()
+        updateController()
+    }
+
+    override fun onDestroy() {
+        permissionProvider.unregister()
+        super.onDestroy()
+    }
+
+    private fun permissionList(): List<Permission> {
+        val permissions = mutableListOf(
             Permission(
-                2,
+                PermissionType.INSTALL_UNKNOWN_APPS,
                 getString(R.string.onboarding_permission_installer),
-                getString(R.string.onboarding_permission_installer_desc)
+                if (isOAndAbove()) {
+                    getString(R.string.onboarding_permission_installer_desc)
+                } else {
+                    getString(R.string.onboarding_permission_installer_legacy_desc)
+                }
             )
         )
 
-        if (isMAndAbove()) {
-            installerList.add(
-                Permission(
-                    4,
-                    getString(R.string.onboarding_permission_doze),
-                    getString(R.string.onboarding_permission_doze_desc)
-                )
-            )
-        }
-
         if (isRAndAbove()) {
-            installerList.add(
+            permissions.add(
                 Permission(
-                    1,
+                    PermissionType.STORAGE_MANAGER,
                     getString(R.string.onboarding_permission_esm),
-                    getString(R.string.onboarding_permission_esa_desc)
+                    getString(R.string.onboarding_permission_esa_desc),
+                    false
                 )
             )
         } else {
-            installerList.add(
+            permissions.add(
                 Permission(
-                    0,
+                    PermissionType.EXTERNAL_STORAGE,
                     getString(R.string.onboarding_permission_esa),
-                    getString(R.string.onboarding_permission_esa_desc)
+                    getString(R.string.onboarding_permission_esa_desc),
+                    false
                 )
             )
         }
 
-        if (isTAndAbove()) {
-            installerList.add(
-                Permission(
-                    3,
-                    getString(R.string.onboarding_permission_notifications),
-                    getString(R.string.onboarding_permission_notifications_desc)
-                )
-            )
-        }
-
-        binding.epoxyRecycler.withModels {
-            val dozeDisabled = if (isMAndAbove()) {
-                val powerManager = context?.getSystemService(Context.POWER_SERVICE) as PowerManager
-                powerManager.isIgnoringBatteryOptimizations(requireContext().packageName)
-            } else {
-                true
-            }
-            val writeExternalStorage =
-                if (!isRAndAbove()) isExternalStorageAccessible(requireContext()) else true
-            val postNotifications = if (isTAndAbove()) ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED else true
-            val storageManager = if (isRAndAbove()) Environment.isExternalStorageManager() else true
-            val canInstallPackages = if (isOAndAbove()) {
-                requireContext().packageManager.canRequestPackageInstalls()
-            } else {
-                true
-            }
-
-            setFilterDuplicates(true)
-            installerList.forEach {
-                add(
-                    PermissionViewModel_()
-                        .id(it.id)
-                        .permission(it)
-                        .isGranted(
-                            when (it.id) {
-                                0 -> writeExternalStorage
-                                1 -> storageManager
-                                2 -> canInstallPackages
-                                3 -> postNotifications
-                                4 -> dozeDisabled
-                                else -> false
-                            }
-                        )
-                        .click { _ ->
-                            when (it.id) {
-                                0 -> checkStorageAccessPermission()
-                                1 -> requestStorageManagerPermission()
-                                2 -> requestPackageManagerPermission()
-                                3 -> checkPostNotificationsPermission()
-                                4 -> requestDozePermission()
-                            }
-                        }
-                )
-            }
-        }
-    }
-
-    private fun requestDozePermission() {
         if (isMAndAbove()) {
-            val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
-                data = Uri.parse("package:${requireContext().packageName}")
-            }
-            startForDozeResult.launch(intent)
-        }
-    }
-
-    private fun checkStorageAccessPermission() {
-        startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    }
-
-    private fun checkPostNotificationsPermission() {
-        if (isTAndAbove()) {
-            startForPermissions.launch(Manifest.permission.POST_NOTIFICATIONS)
-        }
-    }
-
-    private fun requestStorageManagerPermission() {
-        if (isRAndAbove()) {
-            startForStorageManagerResult.launch(
-                PackageUtil.getStorageManagerIntent(requireContext())
-            )
-        }
-    }
-
-    private fun requestPackageManagerPermission() {
-        if (isOAndAbove()) {
-            startForPackageManagerResult.launch(
-                Intent(
-                    Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-                    Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            permissions.add(
+                Permission(
+                    PermissionType.DOZE_WHITELIST,
+                    getString(R.string.onboarding_permission_doze),
+                    getString(R.string.onboarding_permission_doze_desc),
+                    true
                 )
             )
         }
+
+        if (isTAndAbove()) {
+            permissions.add(
+                Permission(
+                    PermissionType.POST_NOTIFICATIONS,
+                    getString(R.string.onboarding_permission_notifications),
+                    getString(R.string.onboarding_permission_notifications_desc),
+                    true
+                )
+            )
+        }
+
+        if (isSAndAbove()) {
+            permissions.add(
+                Permission(
+                    PermissionType.APP_LINKS,
+                    "App Links",
+                    "Enable Aurora Store to open links from the Play Store",
+                    optional = true
+                ),
+            )
+        }
+
+        return permissions
     }
 
+    private fun updateController() {
+        binding.epoxyRecycler.withModels {
+            setFilterDuplicates(true)
+
+            add(
+                TextDividerViewModel_()
+                    .id("required_divider")
+                    .title(getString(R.string.item_required))
+            )
+
+            permissionList()
+                .filterNot { it.optional }
+                .forEach { add(renderPermissionView(it)) }
+
+            val optionalPermissions = permissionList().filter { it.optional }
+            if (optionalPermissions.isNotEmpty()) {
+                add(
+                    TextDividerViewModel_()
+                        .id("optional_divider")
+                        .title(getString(R.string.item_optional))
+                )
+
+                optionalPermissions.forEach { add(renderPermissionView(it)) }
+            }
+        }
+    }
+
+    private fun renderPermissionView(permission: Permission): PermissionViewModel_ {
+        return PermissionViewModel_()
+            .id(permission.type.name)
+            .permission(permission)
+            .isGranted(permissionProvider.isGranted(permission.type))
+            .click { _ -> permissionProvider.request(permission.type) }
+    }
 }

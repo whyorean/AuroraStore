@@ -19,17 +19,23 @@
 
 package com.aurora.extensions
 
+import android.Manifest
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.verify.domain.DomainVerificationManager
+import android.content.pm.verify.domain.DomainVerificationUserState
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.PowerManager
 import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import com.aurora.Constants
@@ -131,7 +137,9 @@ fun Context.accentColor(): Int {
 
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
     return if (isMAndAbove()) {
-        (getSystemService(Context.POWER_SERVICE) as PowerManager).isIgnoringBatteryOptimizations(packageName)
+        (getSystemService(Context.POWER_SERVICE) as PowerManager).isIgnoringBatteryOptimizations(
+            packageName
+        )
     } else {
         true
     }
@@ -147,4 +155,27 @@ fun Context.restartApp() {
     startActivity(newIntent)
 
     exitProcess(0)
+}
+
+fun Context.checkManifestPermission(permission: String): Boolean {
+    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
+
+fun Context.isExternalStorageAccessible(): Boolean {
+    return if (isRAndAbove()) {
+        Environment.isExternalStorageManager()
+    } else {
+        checkManifestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    }
+}
+
+fun Context.isDomainVerified(domain: String): Boolean {
+    return if (isSAndAbove()) {
+        val domainVerificationManager = getSystemService(DomainVerificationManager::class.java)
+        val userState = domainVerificationManager.getDomainVerificationUserState(packageName)
+        val domainMap = userState?.hostToStateMap?.filterKeys { it == domain }
+        domainMap?.values?.first() == DomainVerificationUserState.DOMAIN_STATE_SELECTED
+    } else {
+        true
+    }
 }

@@ -17,8 +17,26 @@
  *
  */
 
-package com.aurora.store.data.providers
+package com.aurora.store.view.epoxy.views
 
-import androidx.core.content.FileProvider
+import android.content.Context
+import android.util.AttributeSet
+import com.airbnb.epoxy.ModelProp
+import com.airbnb.epoxy.ModelView
+import com.aurora.store.databinding.ViewTextDividerBinding
 
-class ApkProvider : FileProvider()
+@ModelView(
+    autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
+    baseModelClass = BaseModel::class
+)
+class TextDividerView @JvmOverloads constructor(
+    context: Context?,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : BaseView<ViewTextDividerBinding>(context, attrs, defStyleAttr) {
+
+    @ModelProp
+    fun title(title: String) {
+        binding.txtTitle.text = title
+    }
+}

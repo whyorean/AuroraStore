@@ -18,17 +18,19 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_small">
+    android:background="?android:selectableItemBackground"
+    android:padding="@dimen/padding_small">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_background"
-        android:layout_width="@dimen/icon_size_category"
-        android:layout_height="@dimen/icon_size_category"
-        android:layout_centerVertical="true" />
+        android:layout_width="@dimen/icon_size_default"
+        android:layout_height="@dimen/icon_size_default"
+        android:layout_centerVertical="true"
+        app:tint="?colorAccent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_name"
@@ -39,9 +41,8 @@
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_toEndOf="@id/img_background"
         android:ellipsize="end"
-        android:maxLines="2"
-        android:paddingStart="@dimen/padding_small"
-        android:paddingEnd="@dimen/padding_small"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textSize="16sp"
         tools:text="Category" />
 </RelativeLayout>

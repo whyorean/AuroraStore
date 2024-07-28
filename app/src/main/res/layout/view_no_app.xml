@@ -28,7 +28,7 @@
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_centerInParent="true"
-        app:tint="?android:textColorPrimary"
+        app:tint="?colorPrimary"
         tools:src="@drawable/ic_updates" />
 
     <TextView

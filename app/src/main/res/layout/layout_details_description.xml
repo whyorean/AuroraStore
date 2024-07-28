@@ -37,14 +37,15 @@
             android:id="@+id/layout_extras"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
             android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:divider="@drawable/divider_line"
+                android:dividerPadding="@dimen/padding_xsmall"
                 android:orientation="horizontal"
+                android:padding="@dimen/padding_small"
                 android:showDividers="middle">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -108,7 +109,6 @@
                     android:textAppearance="@style/TextAppearance.Aurora.Line1"
                     app:drawableTint="?colorAccent"
                     tools:text="Jan 21 2020" />
-
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:divider="@drawable/divider"
             android:orientation="vertical"
-            android:paddingStart="@dimen/padding_large"
+            android:paddingStart="@dimen/padding_medium"
             android:paddingTop="@dimen/padding_small"
             android:paddingEnd="@dimen/padding_small"
             android:showDividers="middle">
@@ -134,8 +134,8 @@
                 android:id="@+id/txt_changelog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textIsSelectable="true"
-                android:background="@drawable/bg_changelog" />
+                android:background="@drawable/bg_changelog"
+                android:textIsSelectable="true" />
 
             <com.aurora.store.view.custom.layouts.ActionHeaderLayout
                 android:id="@+id/header_description"
@@ -147,20 +147,17 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_description"
                 android:layout_width="match_parent"
-                android:textIsSelectable="true"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textIsSelectable="true" />
         </LinearLayout>
 
         <com.airbnb.epoxy.EpoxyRecyclerView
             android:id="@+id/epoxy_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_normal"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:paddingStart="@dimen/padding_large"
-            android:paddingEnd="@dimen/padding_large"
+            android:padding="@dimen/padding_medium"
             app:itemSpacing="@dimen/margin_small"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/view_screenshot" />

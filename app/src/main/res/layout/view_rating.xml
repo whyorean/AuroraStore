@@ -34,7 +34,8 @@
         android:layout_marginEnd="@dimen/margin_small"
         android:textAppearance="@style/TextAppearance.Aurora.Line1"
         android:textColor="?android:attr/textColorPrimary"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="4.0" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/avg_rating"
@@ -44,8 +45,8 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/avg_num"
         android:indeterminate="false"
-        app:indicatorColor="@color/colorAccent"
-        app:trackColor="@android:color/darker_gray"
+        app:indicatorColor="?colorPrimary"
+        app:trackColor="?colorControlNormal"
         app:trackCornerRadius="10dp"
         app:trackThickness="8dp"
         tools:progress="40" />

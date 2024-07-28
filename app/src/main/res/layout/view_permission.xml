@@ -18,28 +18,30 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_outlined_padded"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line1"
         style="@style/AuroraTextStyle.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/btn_action" />
+        android:layout_toStartOf="@id/btn_action"
+        tools:text="Permission Title" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/line2"
-        style="@style/AuroraTextStyle.Line1"
+        style="@style/AuroraTextStyle.Line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line1"
-        android:layout_alignStart="@id/line1"
-        android:layout_alignEnd="@id/line1"
-        android:maxLines="5"
-        android:layout_marginTop="@dimen/margin_xxsmall" />
+        android:layout_below="@id/line1"
+        android:layout_toStartOf="@id/btn_action"
+        android:maxLines="3"
+        tools:text="Permission Description" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_action"
@@ -47,7 +49,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/margin_small"
-        android:text="@string/action_grant" />
+        android:text="@string/action_grant"
+        app:iconPadding="@dimen/padding_small" />
 </RelativeLayout>

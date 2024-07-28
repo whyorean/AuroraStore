@@ -125,13 +125,46 @@ object PackageUtil {
 
     @RequiresApi(Build.VERSION_CODES.R)
     fun getStorageManagerIntent(context: Context): Intent {
-        return if (isTv(context)) {
+        val intent = Intent(
+            Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+        )
+
+        // Check if the intent can be resolved
+        val packageManager = context.packageManager
+        val isIntentAvailable = packageManager.queryIntentActivities(
+            intent,
+            PackageManager.MATCH_DEFAULT_ONLY
+        ).isNotEmpty()
+
+        return if (isIntentAvailable) {
+            intent
+        } else {
+            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+        }
+    }
+
+    fun getInstallUnknownAppsIntent(): Intent {
+        return if (isOAndAbove()) {
             Intent(
-                Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
                 Uri.parse("package:${BuildConfig.APPLICATION_ID}")
             )
         } else {
-            Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+            Intent(Settings.ACTION_SECURITY_SETTINGS)
+        }
+    }
+
+    fun canRequestPackageInstalls(context: Context): Boolean {
+        return if (isOAndAbove()) {
+            context.packageManager.canRequestPackageInstalls()
+        } else {
+            val secureResult = Settings.Secure.getInt(
+                context.contentResolver,
+                Settings.Secure.INSTALL_NON_MARKET_APPS, 0
+            )
+
+            return secureResult == 1
         }
     }
 
@@ -222,7 +255,8 @@ object PackageUtil {
         if (isAuroraOnlyUpdateEnabled) {
             packageInfoList = packageInfoList
                 .filter {
-                    val packageInstaller = packageManager.getInstallerPackageNameCompat(it.packageName)
+                    val packageInstaller =
+                        packageManager.getInstallerPackageNameCompat(it.packageName)
                     listOf(
                         "com.aurora.store",
                         "com.aurora.store.debug",

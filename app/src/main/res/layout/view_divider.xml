@@ -24,9 +24,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/title"
-        android:backgroundTint="?colorControlNormal"
         android:layout_width="48dp"
         android:layout_height="2dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/divider_line" />
+        android:background="@drawable/divider_line"
+        android:backgroundTint="?colorControlNormal" />
 </RelativeLayout>

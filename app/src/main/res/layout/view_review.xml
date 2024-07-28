@@ -24,51 +24,47 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingStart="@dimen/padding_xsmall"
-    android:paddingEnd="@dimen/padding_xsmall">
+    android:padding="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
         android:layout_width="@dimen/icon_size_small"
         android:layout_height="@dimen/icon_size_small"
-        android:layout_marginStart="@dimen/margin_xxsmall"
-        android:layout_marginEnd="@dimen/margin_normal" />
+        android:layout_marginEnd="@dimen/margin_small" />
 
-    <LinearLayout
-        android:id="@+id/layout_review"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_author"
+        style="@style/TextAppearance.Aurora.Line1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/img"
-        android:orientation="vertical">
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
+        tools:text="Author Name" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_author"
-            style="@style/TextAppearance.Aurora.Line1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textAlignment="viewStart"
-            android:textSize="14sp"
-            tools:text="Author Name" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_time"
+        style="@style/TextAppearance.Aurora.Line3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_author"
+        android:layout_alignStart="@id/txt_author"
+        android:layout_alignEnd="@id/txt_author"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        tools:text="Date" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_time"
-            style="@style/TextAppearance.Aurora.Line3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textAlignment="viewStart"
-            tools:text="Date" />
-
-        <RatingBar
-            android:id="@+id/rating"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5" />
-    </LinearLayout>
+    <RatingBar
+        android:id="@+id/rating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_time"
+        android:layout_alignStart="@id/txt_author"
+        android:numStars="5" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_comment"
@@ -76,7 +72,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_alignStart="@id/txt_author"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:ellipsize="end"
         android:maxLines="10"
         android:textIsSelectable="true"

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
   ~  Copyright (C) 2022, The Calyx Institute
@@ -18,7 +17,8 @@
   ~  You should have received a copy of the GNU General Public License
   ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   ~
-  --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Find answers to frequently asked questions (F.A.Q.), troubleshooting steps and more</string>
     <string name="about_bhim">"BHIM - UPI"</string>
@@ -198,6 +198,7 @@
     <string name="onboarding_permission_esm">"External Storage Manager"</string>
     <string name="onboarding_permission_installer">"Installer Permission"</string>
     <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
+    <string name="onboarding_permission_installer_legacy_desc">"Allow installation of apps from unknown sources"</string>
     <string name="onboarding_permission_notifications">"Notifications"</string>
     <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
     <string name="onboarding_permission_doze">"Background Downloads"</string>
@@ -308,6 +309,7 @@
     <string name="toast_clipboard_copied">"Copied to clipboard"</string>
     <string name="toast_developer_setting_failed">Turn on developer settings from the device settings to open them.</string>
     <string name="toast_permission_granted">"Permission granted"</string>
+    <string name="toast_permission_installer_required">"You need to grant Installer Permission first"</string>
     <string name="toast_spoof_applied">Device spoof applied.</string>
     <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
@@ -347,6 +349,8 @@
     <string name="menu">Menu</string>
     <string name="expand">Expand</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="item_required">Required</string>
+    <string name="item_optional">Optional</string>
     <string name="permissions_denied">Required permissions were denied. Please grant them in order to continue the action</string>
     <string name="search_hint">Search for Apps &amp; Games</string>
     <string name="requesting_new_session">Requesting new session</string>

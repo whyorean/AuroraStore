@@ -27,7 +27,7 @@ import java.lang.reflect.Modifier
 import java.util.Locale
 import java.util.Properties
 
-class SpoofProvider constructor(var context: Context) {
+class SpoofProvider(var context: Context) {
 
     companion object {
         const val LOCALE_SPOOF_ENABLED = "LOCALE_SPOOF_ENABLED"

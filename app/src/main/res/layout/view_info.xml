@@ -21,33 +21,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_normal"
-    android:paddingEnd="@dimen/padding_normal"
-    android:paddingTop="@dimen/padding_xsmall"
-    android:paddingBottom="@dimen/padding_xsmall">
+    android:padding="@dimen/padding_xsmall">
 
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_title"
+        style="@style/AuroraTextStyle.Line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
-        tools:ignore="UselessParent">
+        android:textAlignment="viewStart"
+        tools:text="Title" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_title"
-            style="@style/AuroraTextStyle.Line1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="viewStart"
-            tools:text="Title" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_subtitle"
-            style="@style/AuroraTextStyle.Line2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="viewEnd"
-            tools:text="Subtitle" />
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_subtitle"
+        style="@style/AuroraTextStyle.Line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        tools:text="Subtitle" />
 </RelativeLayout>

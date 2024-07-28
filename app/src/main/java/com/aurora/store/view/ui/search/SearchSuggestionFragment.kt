@@ -28,6 +28,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.aurora.extensions.hideKeyboard
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
@@ -54,6 +55,7 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
         binding.layoutToolbarSearch.apply {
             searchView = inputSearch
             imgActionPrimary.setOnClickListener {
+                searchView.hideKeyboard()
                 findNavController().navigateUp()
             }
             imgActionSecondary.setOnClickListener {
@@ -91,6 +93,7 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
                             updateQuery(it.title)
                         }
                         .click { _ ->
+                            searchView.hideKeyboard()
                             search(it.title)
                         }
                 )
@@ -124,6 +127,7 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
             ) {
                 query = searchView.text.toString()
                 if (query.isNotEmpty()) {
+                    searchView.hideKeyboard()
                     search(query)
                     return@setOnEditorActionListener true
                 }

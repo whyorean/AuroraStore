@@ -17,14 +17,19 @@
   ~
   -->
 
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape>
-            <gradient
-                android:angle="90"
-                android:endColor="#66000000"
-                android:startColor="#00FFFFFF"
-                android:type="linear" />
-        </shape>
-    </item>
-</layer-list>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_small">
+
+    <TextView
+        android:id="@+id/txt_title"
+        style="@style/AuroraTextStyle.Line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="?colorPrimary"
+        tools:text="Text" />
+</RelativeLayout>

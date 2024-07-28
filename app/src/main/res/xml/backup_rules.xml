@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-extraction-rules>
     <cloud-backup>
-        <exclude domain="file" path="Downloads/"/>
-        <exclude domain="external" path="Downloads/"/>
+        <exclude
+            domain="file"
+            path="Downloads/" />
+        <exclude
+            domain="external"
+            path="Downloads/" />
     </cloud-backup>
     <device-transfer>
-        <exclude domain="file" path="Downloads/"/>
-        <exclude domain="external" path="Downloads/"/>
+        <exclude
+            domain="file"
+            path="Downloads/" />
+        <exclude
+            domain="external"
+            path="Downloads/" />
     </device-transfer>
 </data-extraction-rules>

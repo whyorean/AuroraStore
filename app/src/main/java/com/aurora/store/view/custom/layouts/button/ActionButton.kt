@@ -66,20 +66,6 @@ class ActionButton : RelativeLayout {
             R.drawable.ic_check
         )
 
-        val stateBackground =
-            when (typedArray.getString(R.styleable.ActionButton_btnActionBackground)) {
-                "0" -> R.drawable.bg_state_outline
-                "1" -> R.drawable.bg_state_outline_rounded
-                "2" -> R.drawable.bg_state_flat
-                "3" -> R.drawable.bg_state_flat_rounded
-                "4" -> null
-                else -> null
-            }
-
-        stateBackground?.let {
-            binding.root.background = ContextCompat.getDrawable(context, it)
-        }
-
         val stateColor = ContextCompat.getColor(context, btnTxtColor)
 
         binding.btn.text = btnTxt

@@ -21,7 +21,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_large"
+    android:paddingStart="@dimen/padding_medium"
     android:paddingTop="@dimen/padding_small"
     android:paddingEnd="@dimen/padding_small"
     android:paddingBottom="@dimen/padding_small">
@@ -29,13 +29,14 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size" />
+        android:layout_height="@dimen/icon_size"
+        tools:src="@drawable/bg_placeholder" />
 
     <TextView
         android:id="@+id/txt_line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/margin_small"
         android:layout_toEndOf="@id/img_icon"
         android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Aurora.SubTitle"

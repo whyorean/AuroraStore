@@ -22,14 +22,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?selectableItemBackground"
-    android:paddingStart="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_xsmall">
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingEnd="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size_medium"
         android:layout_height="@dimen/icon_size_medium"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        tools:src="@drawable/bg_placeholder" />
 
     <TextView
         android:id="@+id/txt_line1"

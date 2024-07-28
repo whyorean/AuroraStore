@@ -30,6 +30,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.aurora.extensions.hideKeyboard
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
@@ -182,6 +183,7 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
                                 .id(app.id)
                                 .app(app)
                                 .click(View.OnClickListener {
+                                    searchView.hideKeyboard()
                                     openDetailsFragment(app.packageName, app)
                                 })
                         )

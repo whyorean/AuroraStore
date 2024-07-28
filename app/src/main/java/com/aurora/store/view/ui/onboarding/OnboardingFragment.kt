@@ -76,7 +76,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         }
 
         override fun getItemCount(): Int {
-            return 3
+            return 2
         }
     }
 
@@ -122,9 +122,9 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
     fun refreshButtonState() {
         binding.btnBackward.isEnabled = lastPosition != 0
-        binding.btnForward.isEnabled = lastPosition != 2
+        binding.btnForward.isEnabled = lastPosition != 1
 
-        if (lastPosition == 2) {
+        if (lastPosition == 1) {
             binding.btnForward.text = getString(R.string.action_finish)
             binding.btnForward.isEnabled = true
             binding.btnForward.setOnClickListener { finishOnboarding() }
@@ -177,7 +177,10 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
     }
 
     private fun setupAutoUpdates() {
-        save(PREFERENCE_UPDATES_AUTO, if (requireContext().isIgnoringBatteryOptimizations()) 2 else 1)
+        save(
+            PREFERENCE_UPDATES_AUTO,
+            if (requireContext().isIgnoringBatteryOptimizations()) 2 else 1
+        )
         UpdateWorker.scheduleAutomatedCheck(requireContext())
     }
 }

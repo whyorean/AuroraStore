@@ -26,7 +26,7 @@
     android:layout_height="wrap_content"
     android:divider="@drawable/divider"
     android:orientation="vertical"
-    android:paddingStart="@dimen/padding_large"
+    android:paddingStart="@dimen/padding_small"
     android:paddingEnd="@dimen/padding_small"
     android:showDividers="middle">
 
@@ -34,12 +34,6 @@
         android:id="@+id/header_permission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:headerTitle="@string/details_permission" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_permission_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1"
-        tools:text="16 permissions" />
+        app:headerTitle="@string/details_permission"
+        tools:headerSubtitle="36 permissions" />
 </LinearLayout>

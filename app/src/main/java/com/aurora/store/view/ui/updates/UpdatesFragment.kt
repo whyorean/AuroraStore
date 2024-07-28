@@ -19,27 +19,21 @@
 
 package com.aurora.store.view.ui.updates
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
-import com.aurora.extensions.isRAndAbove
-import com.aurora.extensions.toast
 import com.aurora.store.MobileNavigationDirections
+import com.aurora.store.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.model.MinimalApp
+import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
-import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
@@ -55,23 +49,15 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
+    private lateinit var permissionProvider: PermissionProvider
     private lateinit var update: Update
 
     private val viewModel: UpdatesViewModel by viewModels()
 
-    private val startForStorageManagerResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (isRAndAbove() && Environment.isExternalStorageManager()) {
-                viewModel.download(update)
-            } else {
-                toast(R.string.permissions_denied)
-            }
-        }
-
-    private val startForPermissions =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { perm ->
-            if (perm) viewModel.download(update) else toast(R.string.permissions_denied)
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        permissionProvider = PermissionProvider(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -109,8 +95,6 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             viewModel.fetchingUpdates.collect {
                 binding.swipeRefreshLayout.isRefreshing = it
                 if (it && viewModel.updates.value.isNullOrEmpty()) {
-                    updateController(null)
-                } else {
                     updateController(emptyMap())
                 }
             }
@@ -123,6 +107,11 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         binding.searchFab.setOnClickListener {
             findNavController().navigate(R.id.searchSuggestionFragment)
         }
+    }
+
+    override fun onDestroy() {
+        permissionProvider.unregister()
+        super.onDestroy()
     }
 
     private fun updateController(appList: Map<Update, Download?>?) {
@@ -205,24 +194,10 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         viewModel.updateAllEnqueued = updateAll
 
         if (PathUtil.needsStorageManagerPerm(update.fileList)) {
-            if (isRAndAbove()) {
-                if (!Environment.isExternalStorageManager()) {
-                    startForStorageManagerResult.launch(
-                        PackageUtil.getStorageManagerIntent(requireContext())
-                    )
-                } else {
-                    viewModel.download(update)
-                }
+            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+                viewModel.download(update)
             } else {
-                if (ContextCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    viewModel.download(update)
-                } else {
-                    startForPermissions.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                }
+                permissionProvider.request(PermissionType.STORAGE_MANAGER)
             }
         } else {
             viewModel.download(update)

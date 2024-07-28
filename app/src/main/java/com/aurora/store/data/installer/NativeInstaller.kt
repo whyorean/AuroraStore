@@ -70,7 +70,7 @@ class NativeInstaller @Inject constructor(
             intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK
         } else {
             intent = Intent(Intent.ACTION_VIEW)
-            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive")
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
 

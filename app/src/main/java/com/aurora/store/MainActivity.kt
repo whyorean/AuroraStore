@@ -69,8 +69,9 @@ class MainActivity : AppCompatActivity() {
         // This is needed thanks to OEMs breaking the MY_PACKAGE_REPLACED API
         MigrationReceiver.runMigrationsIfRequired(this)
 
-        applyThemeAccent()
         super.onCreate(savedInstanceState)
+
+        applyThemeAccent()
 
         B = ActivityMainBinding.inflate(layoutInflater)
         setContentView(B.root)

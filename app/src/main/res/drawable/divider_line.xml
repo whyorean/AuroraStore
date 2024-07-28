@@ -21,6 +21,6 @@
     android:shape="rectangle">
     <solid android:color="?colorAccent" />
     <size
-        android:width="1.25dp"
+        android:width="1.5dp"
         android:height="12dp" />
 </shape>

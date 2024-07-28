@@ -18,12 +18,10 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_small">
+    android:padding="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
@@ -36,12 +34,12 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/margin_small"
         android:layout_toEndOf="@id/img"
         android:maxLines="1"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.Aurora.Line1"
-        tools:text="File Name" />
+        tools:text="Line1" />
 
     <TextView
         android:id="@+id/line2"
@@ -53,5 +51,5 @@
         android:maxLines="1"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.Aurora.Line2"
-        tools:text="File Size" />
+        tools:text="Line2" />
 </RelativeLayout>

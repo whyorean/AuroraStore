@@ -47,7 +47,6 @@
     <dimen name="screenshot_height">192dp</dimen>
     <dimen name="screenshot_width">108dp</dimen>
 
-
     <dimen name="screenshot_height_mini">120dp</dimen>
     <dimen name="screenshot_width_mini">68dp</dimen>
 
@@ -63,4 +62,9 @@
     <dimen name="height_bottomsheet_button">52dp</dimen>
     <dimen name="height_peek">64dp</dimen>
     <dimen name="height_nav_header">148dp</dimen>
+
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="radius_medium">10dp</dimen>
+    <dimen name="radius_normal">12dp</dimen>
+    <dimen name="radius_large">16dp</dimen>
 </resources>
