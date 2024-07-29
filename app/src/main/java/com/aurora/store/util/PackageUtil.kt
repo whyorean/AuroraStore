@@ -159,6 +159,7 @@ object PackageUtil {
         return if (isOAndAbove()) {
             context.packageManager.canRequestPackageInstalls()
         } else {
+            @Suppress("DEPRECATION")
             val secureResult = Settings.Secure.getInt(
                 context.contentResolver,
                 Settings.Secure.INSTALL_NON_MARKET_APPS, 0
