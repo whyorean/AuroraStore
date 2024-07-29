@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -54,6 +55,7 @@ import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.browse
 import com.aurora.extensions.darkenColor
+import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.lightenColor
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
@@ -68,10 +70,10 @@ class MoreDialogFragment : DialogFragment() {
     @Inject
     lateinit var authProvider: AuthProvider
 
-    var primaryColor: Color = Color.White
-    var onPrimaryColor: Color = Color.Black
-    var secondaryColor: Color = Color.White
-    var onSecondaryColor: Color = Color.Black
+    private var primaryColor: Color = Color.White
+    private var onPrimaryColor: Color = Color.Black
+    private var secondaryColor: Color = Color.White
+    private var onSecondaryColor: Color = Color.Black
 
     private data class Option(
         @StringRes val title: Int,
@@ -108,7 +110,10 @@ class MoreDialogFragment : DialogFragment() {
                             .background(color = primaryColor)
                             .verticalScroll(rememberScrollState())
                             .padding(10.dp),
-                        verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)
+                        verticalArrangement = Arrangement.spacedBy(
+                            5.dp,
+                            Alignment.CenterVertically
+                        )
                     ) {
                         AppBar(
                             backgroundColor = primaryColor,
@@ -175,11 +180,12 @@ class MoreDialogFragment : DialogFragment() {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally)
+            horizontalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterHorizontally)
         ) {
             TextButton(onClick = { requireContext().browse(Constants.URL_POLICY) }) {
                 Text(
                     text = stringResource(id = R.string.privacy_policy_title),
+                    fontWeight = FontWeight.Light,
                     color = tintColor
                 )
             }
@@ -187,6 +193,7 @@ class MoreDialogFragment : DialogFragment() {
             TextButton(onClick = { requireContext().browse(URL_TOS) }) {
                 Text(
                     text = stringResource(id = R.string.menu_terms),
+                    fontWeight = FontWeight.Light,
                     color = tintColor
                 )
             }
@@ -200,7 +207,10 @@ class MoreDialogFragment : DialogFragment() {
                 .fillMaxWidth()
                 .clip(
                     RoundedCornerShape(
-                        topStart = 20.dp, topEnd = 20.dp, bottomStart = 5.dp, bottomEnd = 5.dp
+                        topStart = 20.dp,
+                        topEnd = 20.dp,
+                        bottomStart = 5.dp,
+                        bottomEnd = 5.dp
                     )
                 )
                 .background(color = backgroundColor)
@@ -223,7 +233,7 @@ class MoreDialogFragment : DialogFragment() {
                     contentDescription = stringResource(id = R.string.title_account_manager),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .requiredSize(48.dp)
+                        .requiredSize(36.dp)
                         .clip(CircleShape)
                 )
                 Column(
@@ -231,14 +241,14 @@ class MoreDialogFragment : DialogFragment() {
                     horizontalAlignment = Alignment.Start
                 ) {
                     Text(
-                        text = if (authProvider.isAnonymous) "anonymous" else authProvider.authData!!.userProfile!!.name,
-                        fontWeight = FontWeight.SemiBold,
+                        text = if (authProvider.isAnonymous) "Anonymous" else authProvider.authData!!.userProfile!!.name,
+                        fontWeight = FontWeight.Normal,
                         fontSize = 16.sp,
                         color = onBackgroundColor
                     )
                     Text(
                         text = if (authProvider.isAnonymous) "anonymous@gmail.com" else authProvider.authData!!.userProfile!!.email,
-                        fontWeight = FontWeight.Normal,
+                        fontWeight = FontWeight.Light,
                         fontSize = 14.sp,
                         color = onBackgroundColor
                     )
@@ -246,11 +256,17 @@ class MoreDialogFragment : DialogFragment() {
             }
             OutlinedButton(
                 onClick = { findNavController().navigate(R.id.accountFragment) },
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(12.dp),
+                border = BorderStroke(
+                    1.dp,
+                    Color(requireContext().getStyledAttributeColor(androidx.appcompat.R.attr.colorControlHighlight))
+                ),
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
                     text = stringResource(id = R.string.manage_account),
-                    color = onBackgroundColor
+                    color = onBackgroundColor,
+                    fontWeight = FontWeight.Medium
                 )
             }
         }
