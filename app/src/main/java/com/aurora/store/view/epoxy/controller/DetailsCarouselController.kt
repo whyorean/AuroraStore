@@ -22,9 +22,8 @@ package com.aurora.store.view.epoxy.controller
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.store.view.epoxy.groups.CarouselModelGroup
 import com.aurora.store.view.epoxy.groups.CarouselShimmerGroup
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 
-open class DetailsCarouselController(private val callbacks: Callbacks) :
+class DetailsCarouselController(private val callbacks: Callbacks) :
     GenericCarouselController(callbacks) {
 
     override fun buildModels(streamBundle: StreamBundle?) {
@@ -37,34 +36,10 @@ open class DetailsCarouselController(private val callbacks: Callbacks) :
                 )
             }
         } else {
-            if (streamBundle.streamClusters.isNotEmpty()) {
-                if (streamBundle.streamClusters.size == 1) {
-                    streamBundle
-                        .streamClusters
-                        .values
-                        .filter { applyFilter(it) }
-                        .forEach { streamCluster ->
-                            streamCluster.clusterAppList.forEach {
-                                add(
-                                    AppListViewModel_()
-                                        .id(it.id)
-                                        .app(it)
-                                        .click { _ -> callbacks.onAppClick(it) }
-                                )
-                            }
-                        }
-
-                } else {
-                    streamBundle
-                        .streamClusters
-                        .values
-                        .filter { applyFilter(it) }
-                        .forEach { streamCluster ->
-                            add(CarouselModelGroup(streamCluster, callbacks))
-                        }
-
+            streamBundle.streamClusters.values.filter { applyFilter(it) }
+                .forEach { streamCluster ->
+                    add(CarouselModelGroup(streamCluster, callbacks))
                 }
-            }
         }
     }
 }
