@@ -129,7 +129,7 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
                 }
             }
 
-            PermissionType.APP_LINKS -> context.isDomainVerified("play.google.com") || context.isDomainVerified(
+            PermissionType.APP_LINKS -> context.isDomainVerified("play.google.com") && context.isDomainVerified(
                 "market.android.com"
             )
         }
