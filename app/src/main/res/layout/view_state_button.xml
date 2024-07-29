@@ -25,14 +25,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn"
-        style="@style/Widget.Material3.Button.IconButton.Outlined"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textAlignment="viewStart"
+        android:textColor="?colorControlNormal"
         app:iconPadding="@dimen/padding_normal"
-        app:iconTint="?colorAccent"
-        app:strokeColor="?colorAccent"
+        app:iconTint="?colorControlNormal"
+        app:strokeColor="?colorControlHighlight"
+        app:strokeWidth="1dp"
         tools:icon="@drawable/ic_anonymous"
         tools:text="Button Name" />
 

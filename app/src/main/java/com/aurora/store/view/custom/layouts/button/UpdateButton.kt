@@ -20,9 +20,13 @@
 package com.aurora.store.view.custom.layouts.button
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import com.aurora.extensions.accentColor
+import com.aurora.extensions.darkenColor
 import com.aurora.extensions.getString
+import com.aurora.extensions.lightenColor
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.model.DownloadStatus
@@ -51,6 +55,15 @@ class UpdateButton : RelativeLayout {
     private fun init(context: Context) {
         val view = inflate(context, R.layout.view_update_button, this)
         binding = ViewUpdateButtonBinding.bind(view)
+
+        // Apply primaryColor tint to all buttons with alpha
+        val alphaAccent = lightenColor(context.accentColor(), alpha = 200)
+        binding.btnPositive.backgroundTintList = ColorStateList.valueOf(alphaAccent)
+        binding.btnNegative.backgroundTintList = ColorStateList.valueOf(alphaAccent)
+
+        val textColor = darkenColor(context.accentColor())
+        binding.btnPositive.setTextColor(textColor)
+        binding.btnNegative.setTextColor(textColor)
     }
 
     fun setText(text: String) {
@@ -65,9 +78,8 @@ class UpdateButton : RelativeLayout {
 
     fun updateState(downloadStatus: DownloadStatus) {
         val displayChild = when (downloadStatus) {
-            DownloadStatus.QUEUED,
+            DownloadStatus.QUEUED -> 1
             DownloadStatus.DOWNLOADING -> 2
-
             else -> 0
         }
 

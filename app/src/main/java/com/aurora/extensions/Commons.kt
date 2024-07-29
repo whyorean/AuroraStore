@@ -19,11 +19,14 @@
 
 package com.aurora.extensions
 
+import android.graphics.Color
 import android.text.format.DateFormat
+import androidx.annotation.ColorInt
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.Calendar
 import java.util.Locale
+import javax.annotation.Nullable
 
 fun Long.toDate(): String {
     val calendar = Calendar.getInstance(Locale.getDefault())
@@ -42,4 +45,51 @@ fun Throwable.stackTraceToString(): String {
 fun isValidPackageName(packageName: String): Boolean {
     val packageRegex = "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)*$".toRegex()
     return packageName.matches(packageRegex)
+}
+
+/**
+ * Computes a darker color from the given color.
+ * @param color The color to darken.
+ * @param factor The factor to darken the color by.
+ *  - higher factor values will result in a lighter color.
+ * @return The darker color.
+ */
+fun darkenColor(@ColorInt color: Int, factor: Float = 0.25f): Int {
+    val a = Color.alpha(color)
+    val r = (Color.red(color) * factor).coerceIn(0f, 255f).toInt()
+    val g = (Color.green(color) * factor).coerceIn(0f, 255f).toInt()
+    val b = (Color.blue(color) * factor).coerceIn(0f, 255f).toInt()
+
+    return Color.argb(a, r, g, b)
+}
+
+/**
+ * Computes a lighter color from the given color.
+ * @param color The color to lighten.
+ * @param factor The factor to lighten the color by.
+ *  - higher factor values will result in a lighter color.
+ * @param alpha The alpha value to use for the lighter color.
+ * @return The lighter color.
+ */
+fun lightenColor(@ColorInt color: Int, factor: Float = 0.5f, @Nullable alpha: Int? = null): Int {
+    val a = alpha ?: Color.alpha(color)
+    val r = (Color.red(color) + (255 - Color.red(color)) * factor).toInt()
+    val g = (Color.green(color) + (255 - Color.green(color)) * factor).toInt()
+    val b = (Color.blue(color) + (255 - Color.blue(color)) * factor).toInt()
+
+    return Color.argb(a, r, g, b)
+}
+
+/**
+ * Computes a contrasting color from the given color.
+ * @param color The color to contrast.
+ * @return The contrasting color.
+ */
+fun contrastingColor(@ColorInt color: Int): Int {
+    val red = Color.red(color)
+    val green = Color.green(color)
+    val blue = Color.blue(color)
+    val yiq = ((red * 299) + (green * 587) + (blue * 114)) / 1000
+
+    return if (yiq >= 128) Color.BLACK else Color.WHITE
 }
