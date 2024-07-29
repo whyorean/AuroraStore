@@ -95,13 +95,11 @@ class MoreDialogFragment : DialogFragment() {
                         onPrimaryColor = Color(lightenColor(primaryColor.toArgb()))
                         secondaryColor = Color(darkenColor(requireContext().accentColor(), 0.15f))
                         onSecondaryColor = Color(lightenColor(primaryColor.toArgb()))
-                        primaryColor to onPrimaryColor to secondaryColor to onSecondaryColor
                     } else {
                         primaryColor = Color(lightenColor(requireContext().accentColor(), 0.85f))
                         onPrimaryColor = Color(darkenColor(primaryColor.toArgb()))
                         secondaryColor = Color(lightenColor(requireContext().accentColor(), 0.95f))
                         onSecondaryColor = Color(darkenColor(primaryColor.toArgb()))
-                        primaryColor to onPrimaryColor to secondaryColor to onSecondaryColor
                     }
 
                     Column(
