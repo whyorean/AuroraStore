@@ -43,7 +43,6 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
-import kotlin.system.exitProcess
 
 val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
@@ -143,18 +142,6 @@ fun Context.isIgnoringBatteryOptimizations(): Boolean {
     } else {
         true
     }
-}
-
-fun Context.restartApp() {
-    val intent = packageManager.getLaunchIntentForPackage(packageName)
-    val componentName = intent?.component
-
-    val newIntent = Intent.makeRestartActivityTask(componentName)
-    newIntent.setPackage(packageName)
-
-    startActivity(newIntent)
-
-    exitProcess(0)
 }
 
 fun Context.checkManifestPermission(permission: String): Boolean {
