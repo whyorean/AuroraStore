@@ -45,5 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:text="@string/action_update_all" />
+        android:text="@string/action_update_all"
+        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 </RelativeLayout>

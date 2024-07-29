@@ -106,6 +106,7 @@
         android:layout_alignTop="@id/txt_line1"
         android:layout_toStartOf="@id/btn_action"
         android:contentDescription="@string/details_changelog"
+        app:iconTint="?colorControlNormal"
         app:icon="@drawable/ic_arrow_down" />
 
     <com.aurora.store.view.custom.layouts.button.UpdateButton

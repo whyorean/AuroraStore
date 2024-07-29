@@ -104,6 +104,10 @@
                             layout="@layout/layout_details_permissions" />
 
                         <include
+                            android:id="@+id/layout_details_data_safety"
+                            layout="@layout/layout_details_data_safety" />
+
+                        <include
                             android:id="@+id/layout_details_privacy"
                             layout="@layout/layout_details_privacy" />
 

@@ -22,12 +22,24 @@ package com.aurora.store.view.custom.layouts
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.isVisible
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewDevInfoBinding
 
 class DevInfoLayout : RelativeLayout {
 
     private lateinit var binding: ViewDevInfoBinding
+
+    val icon: AppCompatImageView get() = binding.img
+
+    var title: String
+        get() = binding.txtTitle.text.toString()
+        set(value) = setTxtTitle(value)
+
+    var subTitle: String?
+        get() = binding.txtSubtitle.text.toString()
+        set(value) = setTxtSubtitle(value)
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -64,8 +76,15 @@ class DevInfoLayout : RelativeLayout {
         typedArray.recycle()
     }
 
+    fun setTxtTitle(text: String?) {
+        binding.txtTitle.text = text
+        binding.txtTitle.isVisible = text != null
+        invalidate()
+    }
+
     fun setTxtSubtitle(text: String?) {
         binding.txtSubtitle.text = text
+        binding.txtSubtitle.isVisible = text != null
         invalidate()
     }
 }

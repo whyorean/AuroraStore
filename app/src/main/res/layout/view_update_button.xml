@@ -36,6 +36,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPositive"
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/action_update"
@@ -48,6 +49,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnQueued"
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
@@ -61,15 +63,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnNegative"
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/action_cancel"
                 android:textAppearance="@style/TextAppearance.Aurora.Line1" />
         </RelativeLayout>
-
     </ViewFlipper>
 </RelativeLayout>
-
-
-
-

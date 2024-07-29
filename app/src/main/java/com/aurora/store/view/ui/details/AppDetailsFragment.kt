@@ -39,7 +39,9 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
+import com.aurora.extensions.accentColor
 import com.aurora.extensions.browse
+import com.aurora.extensions.contrastingColor
 import com.aurora.extensions.getString
 import com.aurora.extensions.hide
 import com.aurora.extensions.runOnUiThread
@@ -51,6 +53,7 @@ import com.aurora.gplayapi.data.models.File
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.store.AppStreamStash
 import com.aurora.store.AuroraApp
 import com.aurora.store.PermissionType
@@ -89,6 +92,7 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import java.util.Locale
 import javax.inject.Inject
+import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @AndroidEntryPoint
 class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
@@ -264,6 +268,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
         }
 
+        // Data Safety Report
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.dataSafetyReport.collect { updateDataSafetyViews(it) }
+        }
+
         // Exodus Privacy Report
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.exodusReport.collect { report ->
@@ -310,7 +319,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.testingProgramStatus.collect {
                 if (it != null) {
-                    binding.layoutDetailsBeta.btnBetaAction.isEnabled = true
+                    binding.layoutDetailsBeta.btnBetaAction.apply {
+                        isEnabled = true
+                        setTextColor(contrastingColor(requireContext().accentColor()))
+                    }
                     if (it.subscribed) {
                         updateBetaActions(true)
                     }
@@ -342,8 +354,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
 
         // Misc Bindings
-        binding.layoutDetailsPrivacy.btnRequestAnalysis.setOnClickListener {
-            it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
+        binding.layoutDetailsPrivacy.btnRequestAnalysis.apply {
+            setOnClickListener {
+                it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
+            }
+            setTextColor(contrastingColor(requireContext().accentColor()))
         }
         binding.layoutDetailsInstall.progressDownload.clipToOutline = true
         binding.layoutDetailsInstall.imgCancel.setOnClickListener {
@@ -687,6 +702,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             inflateAppDescription(app)
             inflateAppRatingAndReviews(app)
             inflateAppDevInfo(app)
+            inflateAppDataSafety(app)
             inflateAppPrivacy(app)
             inflateAppPermission(app)
 
@@ -812,6 +828,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 )
             }
         }
+    }
+
+    private fun inflateAppDataSafety(app: App) {
+        viewModel.fetchAppDataSafetyReport(app.packageName)
     }
 
     private fun inflateAppPrivacy(app: App) {
@@ -949,6 +969,32 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             } else {
                 btnBetaAction.text = getString(R.string.action_join)
                 headerRatingReviews.setSubTitle(getString(R.string.details_beta_available))
+            }
+        }
+    }
+
+    private fun updateDataSafetyViews(report: DataSafetyReport) {
+        report.entries.groupBy { it.type }.forEach { (type, entries) ->
+            when (type) {
+                EntryType.DATA_COLLECTED -> {
+                    binding.layoutDetailsDataSafety.dataCollect.title = HtmlCompat.fromHtml(
+                        entries.first().description,
+                        HtmlCompat.FROM_HTML_MODE_COMPACT
+                    ).toString()
+                    binding.layoutDetailsDataSafety.dataCollect.subTitle =
+                        entries.first().subEntries.joinToString(", ") { it.name }.ifBlank { null }
+                }
+
+                EntryType.DATA_SHARED -> {
+                    binding.layoutDetailsDataSafety.dataShare.title = HtmlCompat.fromHtml(
+                        entries.first().description,
+                        HtmlCompat.FROM_HTML_MODE_COMPACT
+                    ).toString()
+                    binding.layoutDetailsDataSafety.dataShare.subTitle =
+                        entries.first().subEntries.joinToString(", ") { it.name }.ifBlank { null }
+                }
+
+                else -> {}
             }
         }
     }
