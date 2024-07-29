@@ -127,6 +127,8 @@
     <string name="details_no_apps_on_sale">"No apps found on sale"</string>
     <string name="details_paid">"Paid"</string>
     <string name="details_permission">"Permission"</string>
+    <string name="details_data_safety_title">Data safety</string>
+    <string name="details_data_safety_subtitle">Data privacy and security practices declared by developer</string>
     <string name="details_privacy">"Privacy"</string>
     <string name="details_ratings">"Rating and reviews"</string>
     <string name="details_ratings_title_hint">"Review title"</string>

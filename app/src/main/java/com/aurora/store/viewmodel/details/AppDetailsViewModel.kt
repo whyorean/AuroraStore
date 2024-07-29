@@ -9,6 +9,7 @@ import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
+import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.network.HttpClient
@@ -28,6 +29,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.reflect.Modifier
 import javax.inject.Inject
+import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
@@ -57,6 +59,10 @@ class AppDetailsViewModel @Inject constructor(
     private val userReviewStash = mutableMapOf<String, Review?>()
     private val _userReview = MutableSharedFlow<Review>()
     val userReview = _userReview.asSharedFlow()
+
+    private val dataSafetyReportStash = mutableMapOf<String, DataSafetyReport>()
+    private val _dataSafetyReport = MutableSharedFlow<DataSafetyReport>()
+    val dataSafetyReport = _dataSafetyReport.asSharedFlow()
 
     private val exodusReportStash = mutableMapOf<String, Report?>()
     private val _exodusReport = MutableSharedFlow<Report?>()
@@ -99,6 +105,21 @@ class AppDetailsViewModel @Inject constructor(
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app reviews", exception)
                 _reviews.emit(emptyList())
+            }
+        }
+    }
+
+    fun fetchAppDataSafetyReport(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val report = dataSafetyReportStash.getOrPut(packageName) {
+                    WebDataSafetyHelper()
+                        .using(httpClient)
+                        .fetch(packageName)
+                }
+                _dataSafetyReport.emit(report)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch data safety report", exception)
             }
         }
     }
