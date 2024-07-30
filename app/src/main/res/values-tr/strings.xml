@@ -425,4 +425,11 @@
     <string name="action_logout_confirmation_title">Oturum kapatılsın mı?</string>
     <string name="action_logout_confirmation_message">Oturumu kapatmak istediğinizden emin misiniz?</string>
     <string name="check_updates">Güncellemeleri denetle</string>
+    <string name="onboarding_permission_installer_legacy_desc">Bilinmeyen kaynaklardan uygulamaların kurulmasına izin ver</string>
+    <string name="details_data_safety_title">Veri güvenliği</string>
+    <string name="details_data_safety_subtitle">Geliştirici tarafından açıklanan veri gizliliği ve güvenliği uygulamaları</string>
+    <string name="toast_permission_installer_required">Önce kurucu izni vermeniz gerekir</string>
+    <string name="toast_permission_esm_caution">Depolama Erişim Çerçevesindeki bir hata nedeniyle izni yeniden vermeniz gerekebilir</string>
+    <string name="item_required">Gerekli</string>
+    <string name="item_optional">İsteğe bağlı</string>
 </resources>
