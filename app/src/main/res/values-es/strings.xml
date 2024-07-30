@@ -425,4 +425,11 @@
     <string name="action_logout_confirmation_title">¿Cerrar sesión?</string>
     <string name="action_logout_confirmation_message">¿Estás seguro que deseas cerrar la sesión?</string>
     <string name="check_updates">Buscar actualizaciones</string>
+    <string name="item_required">Obligatorio</string>
+    <string name="details_data_safety_title">Seguridad de los datos</string>
+    <string name="details_data_safety_subtitle">Prácticas de seguridad y privacidad de datos declaradas por el desarrollador</string>
+    <string name="onboarding_permission_installer_legacy_desc">Permitir la instalación de aplicaciones desde fuentes desconocidas</string>
+    <string name="toast_permission_installer_required">Primero debes otorgar permisos de instalación</string>
+    <string name="toast_permission_esm_caution">Es posible que tengas que volver a otorgar el permiso debido a un error en el marco de acceso al almacenamiento</string>
+    <string name="item_optional">Opcional</string>
 </resources>
