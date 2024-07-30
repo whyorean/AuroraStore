@@ -68,10 +68,14 @@ class AuthViewModel @Inject constructor(
 
     private val spoofProvider: SpoofProvider get() = SpoofProvider(context)
     val properties: Properties
-        get() = if (spoofProvider.isDeviceSpoofEnabled()) {
-            spoofProvider.getSpoofDeviceProperties()
-        } else {
-            NativeDeviceInfoProvider(context).getNativeDeviceProperties()
+        get() {
+            val currentProperties = if (spoofProvider.isDeviceSpoofEnabled()) {
+                spoofProvider.getSpoofDeviceProperties()
+            } else {
+                NativeDeviceInfoProvider(context).getNativeDeviceProperties()
+            }
+            setVendingVersion(currentProperties)
+            return currentProperties
         }
     val locale: Locale
         get() = if (spoofProvider.isLocaleSpoofEnabled()) {
@@ -228,24 +232,6 @@ class AuthViewModel @Inject constructor(
 
     private fun verifyAndSaveAuth(authData: AuthData, type: AccountType) {
         liveData.postValue(AuthState.Verifying)
-
-        val versionId = Preferences.getInteger(context, Preferences.PREFERENCE_VENDING_VERSION)
-        if (versionId > 0) {
-            val resources = context.resources
-
-            authData.deviceInfoProvider?.properties?.let {
-                it.setProperty(
-                    "Vending.version",
-                    resources.getStringArray(R.array.pref_vending_version_codes)[versionId]
-                )
-
-                it.setProperty(
-                    "Vending.versionString",
-                    resources.getStringArray(R.array.pref_vending_version)[versionId]
-                )
-            }
-        }
-
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             configAuthPref(authData, type, true)
             liveData.postValue(AuthState.SignedIn)
@@ -256,6 +242,18 @@ class AuthViewModel @Inject constructor(
             liveData.postValue(
                 AuthState.Failed(context.getString(R.string.failed_to_generate_session))
             )
+        }
+    }
+
+    private fun setVendingVersion(currentProperties: Properties) {
+        val vendingVersionIndex = Preferences.getInteger(context, Preferences.PREFERENCE_VENDING_VERSION)
+        if (vendingVersionIndex > 0) {
+            val resources = context.resources
+            val versionCodes = resources.getStringArray(R.array.pref_vending_version_codes)
+            val versionStrings = resources.getStringArray(R.array.pref_vending_version)
+
+            currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
+            currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
         }
     }
 
