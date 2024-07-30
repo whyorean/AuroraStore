@@ -67,7 +67,7 @@
     <string name="onboarding_title_welcome">Bem vindo</string>
     <string name="onboarding_title_permissions">Permissões</string>
     <string name="onboarding_title_installer">Instalador</string>
-    <string name="onboarding_permission_select">A Aurora Store requer as seguintes permissões</string>
+    <string name="onboarding_permission_select">A Aurora Store exige as seguintes permissões</string>
     <string name="notification_channel_general">Notificação geral</string>
     <string name="notification_channel_alert">Notificação rápida</string>
     <string name="dialog_title_self_update">Nova atualização disponível</string>
@@ -126,7 +126,7 @@
     <string name="details_no_dependencies">Nenhuma Dependência</string>
     <string name="details_no_ads">Sem anúncios</string>
     <string name="details_more_about_app">Mais sobre o app</string>
-    <string name="details_gsf_dependent">Requer GSF</string>
+    <string name="details_gsf_dependent">Usa o GSF</string>
     <string name="details_free">Gratuito</string>
     <string name="details_dependencies">Dependências</string>
     <string name="details_contains_ads">Contém Anúncios</string>
@@ -278,7 +278,7 @@
     <string name="session_verifying">Verificando sessão</string>
     <string name="session_scrapped">Última sessão foi descartada</string>
     <string name="updates_available">atualizações disponíveis</string>
-    <string name="permissions_denied">Permissões necessárias foram negadas. Conceda as mesmas para continuar a ação</string>
+    <string name="permissions_denied">Permissões obrigatórias foram negadas. Conceda-as para continuar a ação</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> atualizações disponíveis</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> mais</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
@@ -366,14 +366,14 @@
     <string name="action_manage">Gerenciar</string>
     <string name="failed_app_link">Não suportado, tente associar os links manualmente</string>
     <string name="root_installer_subtitle">Instalador baseado em shell usando permissões root</string>
-    <string name="root_installer_desc">Requer privilégios root, suporta todas as versões do Android.</string>
+    <string name="root_installer_desc">Precisa de privilégios root, suporta todas as versões do Android.</string>
     <string name="native_installer_subtitle">Instalador baseado em intent, disponível em todos os dispositivos</string>
     <string name="native_installer_desc">Melhor para dispositivos rodando versões anteriores ao Android 4.4</string>
     <string name="services_installer_subtitle">Instalador para instalações em segundo plano</string>
-    <string name="services_installer_desc">Requer que os Serviços Aurora estejam instalados como um app do sistema privilegiado</string>
-    <string name="shizuku_installer_desc">Requer Shizuku ou Sui, precisa ser configurado e que a permissão seja concedida</string>
+    <string name="services_installer_desc">Precisa que os Serviços Aurora estejam instalados como um app do sistema privilegiado</string>
+    <string name="shizuku_installer_desc">Precisa do Shizuku ou Sui, precisa ser configurado e que a permissão seja concedida</string>
     <string name="am_installer_subtitle">Gerenciador de pacotes completo de código aberto</string>
-    <string name="am_installer_desc">Requer o App Manager, precisa do modo adb/root para instalar quando a otimização MIUI estiver ligada</string>
+    <string name="am_installer_desc">Precisa do App Manager, precisa do modo adb/root para instalar quando a otimização da MIUI está ligada</string>
     <string name="shizuku_installer_subtitle">Usando APIs do sistema diretamente com privilégios de adb/root</string>
     <string name="session_installer_subtitle">Instalador baseado em sessão para APKs bundled/split</string>
     <string name="session_installer_desc">Recomendado, é integrado e suporta todas as versões do Android</string>
@@ -425,4 +425,11 @@
     <string name="action_logout_confirmation_title">Sair?</string>
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
     <string name="check_updates">Buscar atualizações</string>
+    <string name="details_data_safety_title">Segurança de dados</string>
+    <string name="toast_permission_esm_caution">Você pode ter que conceder a permissão novamente devido a um bug no \"Storage Access Framework\"</string>
+    <string name="item_required">Obrigatório</string>
+    <string name="details_data_safety_subtitle">Práticas de segurança e privacidade de dados declaradas pelo desenvolvedor</string>
+    <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de apps de fontes desconhecidas</string>
+    <string name="toast_permission_installer_required">Você precisa conceder a permissão de instalador primeiro</string>
+    <string name="item_optional">Opcional</string>
 </resources>
