@@ -21,10 +21,12 @@ package com.aurora.store.view.ui.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.SearchBundle
+import com.aurora.store.R
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -47,11 +49,10 @@ class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarAction.apply {
-            txtTitle.text = args.developerName
-            toolbar.setOnClickListener {
-                findNavController().navigateUp()
-            }
+        binding.layoutToolbarNative.toolbar.apply {
+            title = args.developerName
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         // Recycler View

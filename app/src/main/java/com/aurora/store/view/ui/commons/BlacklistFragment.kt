@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -54,9 +55,10 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_blacklist_manager)
-        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            findNavController().navigateUp()
+        binding.layoutToolbarNative.toolbar.apply {
+            title = getString(R.string.title_blacklist_manager)
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
     }
 

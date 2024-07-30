@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -29,6 +30,7 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.utils.CategoryUtil
+import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
@@ -55,9 +57,10 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
         val genericCarouselController = CategoryCarouselController(this)
 
         // Toolbar
-        binding.layoutToolbarAction.apply {
-            txtTitle.text = args.title
-            imgActionPrimary.setOnClickListener { findNavController().navigateUp() }
+        binding.layoutToolbarNative.toolbar.apply {
+            title = args.title
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         // RecyclerView

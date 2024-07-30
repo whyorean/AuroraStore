@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
@@ -48,11 +49,10 @@ class DetailsExodusFragment : BaseFragment<FragmentGenericWithToolbarBinding>() 
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutToolbarAction.apply {
-            txtTitle.text = args.displayName
-            toolbar.setOnClickListener {
-                findNavController().navigateUp()
-            }
+        binding.layoutToolbarNative.toolbar.apply {
+            title = args.displayName
+            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         updateController(getExodusTrackersFromReport(args.report))
