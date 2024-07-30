@@ -23,81 +23,69 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.aurora.extensions.isNAndAbove
-import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
-import java.lang.reflect.Modifier
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class BlacklistProvider private constructor(var context: Context) {
+@Singleton
+class BlacklistProvider @Inject constructor(
+    private val gson: Gson,
+    @ApplicationContext val context: Context,
+) {
 
-    companion object : SingletonHolder<BlacklistProvider, Context>(::BlacklistProvider) {
-        const val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
+    private val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
+
+    var blacklist: MutableSet<String>
+        set(value) = Preferences.putString(context, PREFERENCE_BLACKLIST, gson.toJson(value))
+        get() {
+            return try {
+                val rawBlacklist = if (isNAndAbove()) {
+                    val refMethod = Context::class.java.getDeclaredMethod(
+                        "getSharedPreferences",
+                        File::class.java,
+                        Int::class.java
+                    )
+                    val refSharedPreferences = refMethod.invoke(
+                        context,
+                        File("/product/etc/com.aurora.store/blacklist.xml"),
+                        Context.MODE_PRIVATE
+                    ) as SharedPreferences
+
+                    PreferenceManager.getDefaultSharedPreferences(context)
+                        .getString(
+                            PREFERENCE_BLACKLIST,
+                            refSharedPreferences.getString(PREFERENCE_BLACKLIST, "")
+                        )
+                } else {
+                    Preferences.getString(context, PREFERENCE_BLACKLIST)
+                }
+                if (rawBlacklist!!.isEmpty())
+                    mutableSetOf()
+                else
+                    gson.fromJson(rawBlacklist, object : TypeToken<Set<String?>?>() {}.type)
+            } catch (e: Exception) {
+                mutableSetOf()
+            }
+        }
+
+    fun isBlacklisted(packageName: String): Boolean {
+        return blacklist.contains(packageName)
     }
 
-    private var gson: Gson = GsonBuilder()
-        .excludeFieldsWithModifiers(Modifier.TRANSIENT)
-        .create()
 
-    fun getBlackList(): MutableSet<String> {
-        return try {
-            val rawBlacklist = if (isNAndAbove()) {
-                val refMethod = Context::class.java.getDeclaredMethod(
-                    "getSharedPreferences",
-                    File::class.java,
-                    Int::class.java
-                )
-                val refSharedPreferences = refMethod.invoke(
-                    context,
-                    File("/product/etc/com.aurora.store/blacklist.xml"),
-                    Context.MODE_PRIVATE
-                ) as SharedPreferences
-
-                PreferenceManager.getDefaultSharedPreferences(context)
-                    .getString(
-                        PREFERENCE_BLACKLIST,
-                        refSharedPreferences.getString(PREFERENCE_BLACKLIST, "")
-                    )
-            } else {
-                Preferences.getString(context, PREFERENCE_BLACKLIST)
-            }
-            if (rawBlacklist!!.isEmpty())
-                mutableSetOf()
-            else
-                gson.fromJson(rawBlacklist, object : TypeToken<Set<String?>?>() {}.type)
-        } catch (e: Exception) {
-            mutableSetOf()
+    fun blacklist(packageName: String) {
+        blacklist = blacklist.apply {
+            add(packageName)
         }
     }
 
-    fun isBlacklisted(packageName: String): Boolean {
-        return getBlackList().contains(packageName)
-    }
-
-    fun blacklist(packageName: String) {
-        blacklist(setOf(packageName))
-    }
-
     fun whitelist(packageName: String) {
-        whitelist(setOf(packageName))
-    }
-
-    fun blacklist(packageNames: Set<String>) {
-        val oldBlackList: MutableSet<String> = getBlackList()
-        oldBlackList.addAll(packageNames)
-        save(oldBlackList)
-    }
-
-    fun whitelist(packageNames: Set<String>) {
-        val oldBlackList: MutableSet<String> = getBlackList()
-        oldBlackList.removeAll(packageNames)
-        save(oldBlackList)
-    }
-
-    @Synchronized
-    fun save(blacklist: Set<String>) {
-        Preferences.putString(context, PREFERENCE_BLACKLIST, gson.toJson(blacklist))
+        blacklist = blacklist.apply {
+            remove(packageName)
+        }
     }
 }

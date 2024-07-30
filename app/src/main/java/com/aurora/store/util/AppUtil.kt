@@ -20,7 +20,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -29,6 +28,7 @@ class AppUtil @Inject constructor(
     private val gson: Gson,
     private val authProvider: AuthProvider,
     private val updateDao: UpdateDao,
+    private val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context
 ) {
 
@@ -73,12 +73,11 @@ class AppUtil @Inject constructor(
         packageInfoMap: MutableMap<String, PackageInfo>? = null
     ): List<App> {
         return withContext(Dispatchers.IO) {
-            val blackList = BlacklistProvider.with(context).getBlackList()
             val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
                 .using(HttpClient.getPreferredClient(context))
 
             (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->
-                val filtersPackages = packages.filter { !blackList.contains(it) }
+                val filtersPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
 
                 appDetailsHelper.getAppByPackageName(filtersPackages)
                     .filter { it.displayName.isNotEmpty() }

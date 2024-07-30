@@ -37,6 +37,7 @@ import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
@@ -44,6 +45,9 @@ class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
     companion object {
         const val TAG = "APP_MENU_SHEET"
     }
+
+    @Inject
+    lateinit var blacklistProvider: BlacklistProvider
 
     private val viewModel: SheetsViewModel by viewModels()
     private val args: AppMenuSheetArgs by navArgs()
@@ -63,7 +67,6 @@ class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val blacklistProvider = BlacklistProvider.with(requireContext())
         val isBlacklisted: Boolean = blacklistProvider.isBlacklisted(args.app.packageName)
 
         with(binding.navigationView) {

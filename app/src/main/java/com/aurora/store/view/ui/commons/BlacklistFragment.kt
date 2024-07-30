@@ -29,7 +29,6 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
@@ -41,12 +40,8 @@ import kotlinx.coroutines.launch
 class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
     private val viewModel: BlacklistViewModel by viewModels()
 
-    private lateinit var blacklistProvider: BlacklistProvider
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        blacklistProvider = BlacklistProvider.with(requireContext())
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.blackListedApps.collect {
@@ -64,7 +59,7 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
 
     override fun onPause() {
         super.onPause()
-        blacklistProvider.save(viewModel.selected)
+        viewModel.blacklistProvider.blacklist = viewModel.selected
     }
 
     private fun updateController(blackList: List<App>?) {
@@ -79,7 +74,9 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
                 }
             } else {
                 blackList
-                    .sortedByDescending { app -> blacklistProvider.isBlacklisted(app.packageName) }
+                    .sortedByDescending { app ->
+                        viewModel.blacklistProvider.isBlacklisted(app.packageName)
+                    }
                     .forEach {
                         add(
                             BlackListViewModel_()

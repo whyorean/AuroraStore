@@ -42,10 +42,10 @@ import javax.inject.Inject
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class BlacklistViewModel @Inject constructor(
+    val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context,
     authProvider: AuthProvider
 ) : ViewModel() {
-    private val blacklistProvider: BlacklistProvider = BlacklistProvider.with(context)
     private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
 
@@ -55,7 +55,7 @@ class BlacklistViewModel @Inject constructor(
     var selected: MutableSet<String> = mutableSetOf()
 
     init {
-        selected = blacklistProvider.getBlackList()
+        selected = blacklistProvider.blacklist
         fetchApps()
     }
 
