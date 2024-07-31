@@ -425,4 +425,11 @@
     <string name="pref_network_proxy_url_message">Geben Sie eine gültige Proxy-URL ein, um alle Daten durch den Proxy zu leiten.</string>
     <string name="export_app_summary_success">App Bundle erfolgreich exportiert</string>
     <string name="check_updates">Überprüfe auf Aktualisierungen</string>
+    <string name="onboarding_permission_installer_legacy_desc">Installation von Apps aus unbekannten Quellen zulassen</string>
+    <string name="item_required">Erforderlich</string>
+    <string name="item_optional">Optional</string>
+    <string name="toast_permission_esm_caution">Möglicherweise musst du die Berechtigung aufgrund eines Fehlers im Storage Access Framework erneut erteilen</string>
+    <string name="details_data_safety_title">Datensicherheit</string>
+    <string name="details_data_safety_subtitle">Vom Entwickler erklärte Datenschutz- und Sicherheitspraktiken</string>
+    <string name="toast_permission_installer_required">Du musst zuerst die Installer-Berechtigung erteilen</string>
 </resources>
