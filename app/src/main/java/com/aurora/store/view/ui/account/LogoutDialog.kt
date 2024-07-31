@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.aurora.store.R
 import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.work.UpdateWorker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +24,7 @@ class LogoutDialog: DialogFragment() {
 
     private fun logout() {
         AccountProvider.with(requireContext()).logout()
+        UpdateWorker.cancelAutomatedCheck(requireContext())
         findNavController().navigate(LogoutDialogDirections.actionLogoutDialogToSplashFragment())
     }
 }
