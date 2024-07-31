@@ -425,4 +425,11 @@
     <string name="action_logout_confirmation_title">注销登录？</string>
     <string name="pref_network_proxy_url_message">输入有效的代理 URL 让所有数据都经过代理。</string>
     <string name="check_updates">检查更新</string>
+    <string name="onboarding_permission_installer_legacy_desc">允许从未知来源安装应用</string>
+    <string name="toast_permission_esm_caution">由于存储访问框架的故障，你可能必须重新授予此权限</string>
+    <string name="item_required">必需的</string>
+    <string name="item_optional">可选</string>
+    <string name="details_data_safety_title">数据安全</string>
+    <string name="details_data_safety_subtitle">开发者宣告的数据隐私和安全实践</string>
+    <string name="toast_permission_installer_required">你需要先授予安装器权限</string>
 </resources>
