@@ -79,7 +79,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         attachActions()
 
         // Show anonymous logins if we have dispenser URL
-        if (!viewModel.dispenserURL.isNullOrBlank()) {
+        if (!viewModel.authProvider.dispenserURL.isNullOrBlank()) {
             binding.btnAnonymous.visibility = View.VISIBLE
         }
 

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
@@ -43,17 +44,18 @@ class AppUtil @Inject constructor(
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
 
-    suspend fun checkUpdates(): List<Update> {
+    suspend fun checkUpdates(tmpAuthData: AuthData? = null): List<Update> {
         Log.i(TAG, "Checking for updates")
         val packageInfoMap = PackageUtil.getPackageInfoMap(context)
-        val appUpdatesList = getFilteredInstalledApps(packageInfoMap).filter {
-            val packageInfo = packageInfoMap[it.packageName]
-            if (packageInfo != null) {
-                it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
-            } else {
-                false
-            }
-        }.toMutableList()
+        val appUpdatesList = getFilteredInstalledApps(tmpAuthData, packageInfoMap)
+            .filter {
+                val packageInfo = packageInfoMap[it.packageName]
+                if (packageInfo != null) {
+                    it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
+                } else {
+                    false
+                }
+            }.toMutableList()
 
         if (canSelfUpdate(context)) {
             getSelfUpdate(context, gson)?.let { appUpdatesList.add(it) }
@@ -70,10 +72,11 @@ class AppUtil @Inject constructor(
     }
 
     suspend fun getFilteredInstalledApps(
+        tmpAuthData: AuthData? = null,
         packageInfoMap: MutableMap<String, PackageInfo>? = null
     ): List<App> {
         return withContext(Dispatchers.IO) {
-            val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
+            val appDetailsHelper = AppDetailsHelper(tmpAuthData?: authProvider.authData!!)
                 .using(HttpClient.getPreferredClient(context))
 
             (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->

@@ -38,12 +38,9 @@ import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.providers.NativeDeviceInfoProvider
-import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
-import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -52,43 +49,17 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import java.net.ConnectException
 import java.net.UnknownHostException
-import java.util.Locale
-import java.util.Properties
 import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class AuthViewModel @Inject constructor(
+    val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,
-    private val gson: Gson,
-    private val authProvider: AuthProvider
+    private val gson: Gson
 ) : ViewModel() {
 
     private val TAG = AuthViewModel::class.java.simpleName
-
-    private val spoofProvider: SpoofProvider get() = SpoofProvider(context)
-    val properties: Properties
-        get() {
-            val currentProperties = if (spoofProvider.isDeviceSpoofEnabled()) {
-                spoofProvider.getSpoofDeviceProperties()
-            } else {
-                NativeDeviceInfoProvider(context).getNativeDeviceProperties()
-            }
-            setVendingVersion(currentProperties)
-            return currentProperties
-        }
-    val locale: Locale
-        get() = if (spoofProvider.isLocaleSpoofEnabled()) {
-            spoofProvider.getSpoofLocale()
-        } else {
-            Locale.getDefault()
-        }
-
-    val dispenserURL: String?
-        get() {
-            val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
-            return if (dispensers.isNotEmpty()) dispensers.random() else null
-        }
 
     val liveData: MutableLiveData<AuthState> = MutableLiveData()
 
@@ -112,8 +83,8 @@ class AuthViewModel @Inject constructor(
                     email = email,
                     token = aasToken,
                     tokenType = AuthHelper.Token.AAS,
-                    properties = properties,
-                    locale = locale
+                    properties = authProvider.properties,
+                    locale = authProvider.locale
                 )
                 verifyAndSaveAuth(authData, AccountType.GOOGLE)
             } catch (exception: Exception) {
@@ -131,7 +102,7 @@ class AuthViewModel @Inject constructor(
             try {
                 val playResponse = HttpClient
                     .getPreferredClient(context)
-                    .getAuth(dispenserURL!!)
+                    .getAuth(authProvider.dispenserURL!!)
 
                 if (playResponse.isSuccessful) {
                     val tmpAuthData = gson.fromJson(
@@ -144,8 +115,8 @@ class AuthViewModel @Inject constructor(
                         token = tmpAuthData.auth,
                         tokenType = AuthHelper.Token.AUTH,
                         isAnonymous = true,
-                        properties = properties,
-                        locale = locale
+                        properties = authProvider.properties,
+                        locale = authProvider.locale
                     )
                     verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
                 } else {
@@ -242,18 +213,6 @@ class AuthViewModel @Inject constructor(
             liveData.postValue(
                 AuthState.Failed(context.getString(R.string.failed_to_generate_session))
             )
-        }
-    }
-
-    private fun setVendingVersion(currentProperties: Properties) {
-        val vendingVersionIndex = Preferences.getInteger(context, Preferences.PREFERENCE_VENDING_VERSION)
-        if (vendingVersionIndex > 0) {
-            val resources = context.resources
-            val versionCodes = resources.getStringArray(R.array.pref_vending_version_codes)
-            val versionStrings = resources.getStringArray(R.array.pref_vending_version)
-
-            currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
-            currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
         }
     }
 
