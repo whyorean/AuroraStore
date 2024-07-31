@@ -425,4 +425,11 @@
     <string name="pref_network_proxy_url_message">Введіть дійсну URL-адресу проксі-сервера, щоби передавати всі дані через нього.</string>
     <string name="action_logout_confirmation_title">Вийти з облікового запису?</string>
     <string name="check_updates">Перевірити оновлення</string>
+    <string name="onboarding_permission_installer_legacy_desc">Дозволяє встановлювати застосунки з невідомих джерел</string>
+    <string name="details_data_safety_title">Безпека даних</string>
+    <string name="details_data_safety_subtitle">Задекларовані розробником практики приватності та безпеки даних</string>
+    <string name="toast_permission_installer_required">Спочатку вам потрібно надати дозвіл на встановлення</string>
+    <string name="toast_permission_esm_caution">Можливо, вам доведеться повторно надати дозвіл через помилку в Storage Access Framework</string>
+    <string name="item_required">Необхідний</string>
+    <string name="item_optional">Необов\'язковий</string>
 </resources>

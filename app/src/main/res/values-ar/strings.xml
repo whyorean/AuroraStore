@@ -425,4 +425,11 @@
     <string name="action_logout_confirmation_title">تسجيل الخروج؟</string>
     <string name="action_logout_confirmation_message">هل أنت متأكد من أنك تريد تسجيل الخروج؟</string>
     <string name="check_updates">التحقق من التحديثات</string>
+    <string name="item_required">المطلوبة</string>
+    <string name="details_data_safety_title">سلامة البيانات</string>
+    <string name="details_data_safety_subtitle">خصوصية البيانات والممارسات الأمنية التي أعلنها المطور</string>
+    <string name="onboarding_permission_installer_legacy_desc">السماح بتركيب التطبيقات من مصادر مجهولة</string>
+    <string name="item_optional">الاختياري</string>
+    <string name="toast_permission_installer_required">عليك أن تمنح الإذن بالإنتقال أولاً</string>
+    <string name="toast_permission_esm_caution">قد تضطر إلى إعادة منح الإذن بسبب خطأ في إطار الوصول إلى التخزين</string>
 </resources>
