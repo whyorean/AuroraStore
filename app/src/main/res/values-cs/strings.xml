@@ -425,4 +425,11 @@
     <string name="pref_network_proxy_url_message">Zadejte platnou adresu URL proxy, přes kterou budou směrována všechna data.</string>
     <string name="action_logout_confirmation_title">Odhlásit se?</string>
     <string name="check_updates">Zkontrolovat aktualizace</string>
+    <string name="details_data_safety_title">Zabezpečení údajů</string>
+    <string name="onboarding_permission_installer_legacy_desc">Povolit instalaci aplikací z neznámých zdrojů</string>
+    <string name="item_required">Vyžadováno</string>
+    <string name="item_optional">Volitelné</string>
+    <string name="toast_permission_installer_required">Nejprve musíte udělit oprávnění instalátoru</string>
+    <string name="details_data_safety_subtitle">Postupy ochrany soukromí a zabezpečení dat poskytnuté vývojářem</string>
+    <string name="toast_permission_esm_caution">Možná budete muset oprávnění znovu udělit z důvodu chyby ve Storage Access Framework</string>
 </resources>
