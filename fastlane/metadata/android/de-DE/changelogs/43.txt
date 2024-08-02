@@ -1,2 +1,2 @@
 • Immer die Schaltfläche „Fertig stellen“ im Berechtigungsfragment aktivieren (behebt das Onboarding neuer Benutzer).
-• TypeToken der GSON-Bibliothek beibehalten, während Sie den Build optimieren (behebt Startabstürze)
+• TypeToken der GSON-Bibliothek beim Optimieren des Builds beibehalten (behebt Startabstürze)

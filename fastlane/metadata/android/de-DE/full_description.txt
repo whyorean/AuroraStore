@@ -6,7 +6,7 @@ mit oder ohne Google Play Services oder MicroG.
 
 • FOSS: Verfügt über eine GPLv3-Lizenz
 • Schönes Design: Basierend auf den neuesten Material 3-Richtlinien
-• Kontoanmeldung: Sie können sich entweder mit einem persönlichen oder einem anonymen Konto anmelden
-• Geräte- und Gebietsschema-Spoofing: Ändern Sie Ihr Gerät und/oder Ihr Gebietsschema, um auf geografisch gesperrte Apps zuzugreifen
+• Kontoanmeldung: Du kannst dich entweder mit einem persönlichen oder einem anonymen Konto anmelden
+• Geräte- und Gebietsschema-Spoofing: Ändere dein Gerät und/oder Ihr Gebietsschema, um auf geografisch gesperrte Apps zuzugreifen
 • [Exodus Privacy](https://exodus-privacy.eu.org/) Integration: Tracker sofort in der App sehen
 • Blacklisting für Updates: Updates für bestimmte Apps ignorieren

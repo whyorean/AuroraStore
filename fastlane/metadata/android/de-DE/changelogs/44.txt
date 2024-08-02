@@ -1,6 +1,6 @@
 • Absturz im Zusammenhang mit der Benachrichtigung über Installationsdienste behoben
 • Nur gültige Spoofing-Eigenschaften in der App anzeigen
-• Benachrichtigen Sie Benutzer, wenn bei der Suche eine Ratenbeschränkung vorliegt
-• Zeigen Sie während der Suche eine schimmernde Animation an, um den Fortschritt anzuzeigen
+• Benutzer werden benachrichtigt, wenn bei der Suche eine Ratenbeschränkung vorliegt
+• Während der Suche wird eine schimmernde Animation angezeigt, um den Fortschritt anzuzeigen
 • Navigationsverhalten korrigieren, wenn die Standardregisterkarte geändert wird
 • Option zum schnellen Beenden behoben
