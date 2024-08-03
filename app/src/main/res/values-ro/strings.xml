@@ -425,4 +425,11 @@
     <string name="pref_network_proxy_url_message">Introduceți o adresă URL proxy validă pentru a trece toate datele printr-un proxy.</string>
     <string name="action_logout_confirmation_message">Sunteți sigur(ă) că vreți să vă deconectați?</string>
     <string name="check_updates">Verifică actualizări</string>
+    <string name="details_data_safety_title">Siguranța datelor</string>
+    <string name="toast_permission_installer_required">Mai întâi trebuie să acordați permisiunea instalatorului</string>
+    <string name="item_required">Necesar</string>
+    <string name="item_optional">Opțional</string>
+    <string name="details_data_safety_subtitle">Practici privind confidențialitatea și securitatea datelor declarate de producător</string>
+    <string name="toast_permission_esm_caution">Este posibil să trebuiască să acordați din nou permisiunea din cauza unei erori în cadrul de acces la stocare</string>
+    <string name="onboarding_permission_installer_legacy_desc">Permite instalarea aplicațiilor din surse necunoscute</string>
 </resources>

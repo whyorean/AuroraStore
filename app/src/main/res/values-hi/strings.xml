@@ -425,4 +425,11 @@
     <string name="action_logout_confirmation_title">लागआऊट करें?</string>
     <string name="action_logout_confirmation_message">क्या वाकई आप लागआऊट करना चाहतें हैं?</string>
     <string name="check_updates">अपडेट के लिए जांचें</string>
+    <string name="details_data_safety_title">डेटा सुरक्षा</string>
+    <string name="details_data_safety_subtitle">डेवलपर द्वारा घोषित डेटा गोपनीयता और सुरक्षा प्रथाएँ</string>
+    <string name="item_required">आवश्यक</string>
+    <string name="item_optional">वैकल्पिक</string>
+    <string name="onboarding_permission_installer_legacy_desc">अज्ञात स्रोतों से ऐप्स इंस्टॉल करने की अनुमति दें</string>
+    <string name="toast_permission_installer_required">आपको पहले इंस्टॉलर की अनुमति देनी होगी</string>
+    <string name="toast_permission_esm_caution">स्टोरेज एक्सेस फ्रेमवर्क में बग के कारण आपको अनुमति पुनः देनी पड़ सकती है</string>
 </resources>

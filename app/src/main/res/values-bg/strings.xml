@@ -20,7 +20,7 @@
     <string name="about_paypal_summary">Дарете чрез PayPal</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_telegram_summary">Присъединете се към групата за подкрепа на Aurora за дискусии или предложения.</string>
-    <string name="about_xda">Нишка за разработване</string>
+    <string name="about_xda">XDA Форум</string>
     <string name="about_xda_summary">Вижте темата на Aurora Store XDA за дискусии или предложения.</string>
     <string name="account_anonymous">Анонимен</string>
     <string name="action_export">Експортиране</string>
@@ -109,7 +109,7 @@
     <string name="installer_status_failure_storage">Недостатъчно място в паметта</string>
     <string name="onboarding_permission_installer_desc">Разрешете инсталирането на приложения от Aurora Store</string>
     <string name="pref_common_extra">Екстри</string>
-    <string name="details_privacy">поверителност</string>
+    <string name="details_privacy">Поверителност</string>
     <string name="toast_abandon_sessions">Старите инсталационни сесии са изоставени</string>
     <string name="download_cancel_all">Отмени всички</string>
     <string name="action_search">Търси</string>
@@ -298,4 +298,8 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> налична актуализация</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> и <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> и <xliff:g id="apps_count">%4$d</xliff:g> още</string>
+    <string name="about_wiki_title">Уики</string>
+    <string name="action_home_screen">Добавяне към началния екран</string>
+    <string name="action_favourite">Любими</string>
+    <string name="action_uninstall_success">Успешно деинсталиране</string>
 </resources>
