@@ -461,4 +461,11 @@
     <string name="action_logout_confirmation_title">Одјавити се?</string>
     <string name="action_logout_confirmation_message">Желите ли заиста да се одјавите?</string>
     <string name="check_updates">Провера ажурирања</string>
+    <string name="details_data_safety_title">Безбедност података</string>
+    <string name="details_data_safety_subtitle">Приватност података и безбедносне праксе које је објавио програмер</string>
+    <string name="toast_permission_installer_required">Прво морате да дате дозволу програму за инсталацију</string>
+    <string name="toast_permission_esm_caution">Можда ћете морати поново да дате дозволу због грешке у радном простору за приступ меморији</string>
+    <string name="item_optional">Опционално</string>
+    <string name="onboarding_permission_installer_legacy_desc">Дозволите инсталацију апликација из непознатих извора</string>
+    <string name="item_required">Неопходно</string>
 </resources>
