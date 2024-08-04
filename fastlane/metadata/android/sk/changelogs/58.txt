@@ -1,0 +1,4 @@
+• Opravený problém s prihlásením súvisiacim s účtami Google
+• Presunuté položky navigačnej zásuvky do samostatného dialógového okna
+• Prepnuté na NavigationRail pre zariadenia s veľkou obrazovkou
+• Možnosť exportovať stiahnuté súbory do externého umiestnenia

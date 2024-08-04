@@ -1,0 +1,2 @@
+• Vždy povoliť tlačidlo Dokončiť na fragmente povolení (opravuje registráciu nového používateľa)
+• Ponechať TypeToken knižnice GSON pri optimalizácii zostavy (opravuje zlyhanie pri spustení)

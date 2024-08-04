@@ -1,0 +1,7 @@
+• Opravy viacerých chýb a vylepšenia používateľského rozhrania a používateľského rozhrania
+• Nové povolenia sú teraz zvýraznené v hárku povolení
+• Nové konfigurácie spoof pre x86 zariadenia
+• Zmeny v systéme sťahovania
+ • Predvolené umiestnenie sťahovania zmenené na interný adresár vyrovnávacej pamäte
+ • Sťahovanie sa teraz automaticky obnoví po reštarte, ak existujú súbory
+• Aktualizácie prekladov
