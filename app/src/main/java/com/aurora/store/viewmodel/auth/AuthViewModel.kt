@@ -166,8 +166,7 @@ class AuthViewModel @Inject constructor(
                         liveData.postValue(AuthState.Valid)
                     } else {
                         //Generate and validate new auth
-                        val type = AccountProvider.with(context).getAccountType()
-                        when (type) {
+                        when (AccountProvider.getAccountType(context)) {
                             AccountType.GOOGLE -> {
                                 val email = Preferences.getString(
                                     context,

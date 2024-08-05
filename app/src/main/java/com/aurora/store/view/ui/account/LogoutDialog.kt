@@ -23,7 +23,7 @@ class LogoutDialog: DialogFragment() {
     }
 
     private fun logout() {
-        AccountProvider.with(requireContext()).logout()
+        AccountProvider.logout(requireContext())
         UpdateWorker.cancelAutomatedCheck(requireContext())
         findNavController().navigate(LogoutDialogDirections.actionLogoutDialogToSplashFragment())
     }

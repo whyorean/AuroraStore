@@ -21,15 +21,12 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import com.aurora.Constants
-import com.aurora.store.data.SingletonHolder
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.util.Preferences
 
-class AccountProvider private constructor(var context: Context) {
+object AccountProvider {
 
-    companion object : SingletonHolder<AccountProvider, Context>(::AccountProvider)
-
-    fun getAccountType(): AccountType {
+    fun getAccountType(context: Context): AccountType {
         val rawType = Preferences.getString(context, Constants.ACCOUNT_TYPE)
         return when (rawType) {
             "GOOGLE" -> AccountType.GOOGLE
@@ -37,7 +34,7 @@ class AccountProvider private constructor(var context: Context) {
         }
     }
 
-    fun logout() {
+    fun logout(context: Context) {
         Preferences.putBoolean(context, Constants.ACCOUNT_SIGNED_IN, false)
         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, "")
         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, "")
