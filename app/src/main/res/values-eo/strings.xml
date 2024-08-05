@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="account_google">Google</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal">PayPal</string>
@@ -91,7 +91,7 @@
     <string name="details_ratings">Taksoj kaj revizoj</string>
     <string name="details_think_this_app">Kion vi opinias pri ĉi-aplikaĵo\?</string>
     <string name="download_metadata">Akiradas metadatumojn</string>
-    <string name="exodus_no_tracker">Ne enhavas sekvilojn</string>
+    <string name="exodus_no_tracker">Ne enhavas konatajn sekvilojn</string>
     <string name="exodus_progress">Kontrolas ĉu estas sekviloj…</string>
     <string name="exodus_substring">sekvilo(j) trovita</string>
     <string name="exodus_view_report">Montri raporton</string>
@@ -115,13 +115,13 @@
     <string name="onboarding_welcome_select">Kiel vi fartas\?</string>
     <string name="onboarding_permission_installer">Instalila permeso</string>
     <string name="pref_app_download">Elŝutoj</string>
-    <string name="pref_filter_fdroid_summary">Forigas F-Droid aplikaĵojn el aplikaĵlistoj</string>
+    <string name="pref_filter_fdroid_summary">Ignoras F-Droid aplikaĵojn el ĝisdatigoj kaj instalitaj Aplikaĵoj</string>
     <string name="pref_filter_fdroid_title">Filtri F-Droid aplikaĵojn</string>
-    <string name="pref_filter_google_summary">Forigas ĉiujn Googlajn aplikaĵojn el serĉrezultoj kaj kategoriaj aplikaĵoj</string>
+    <string name="pref_filter_google_summary">Ignoras ĉiujn Googlajn aplikaĵojn el ĝisdatigoj kaj instalitaj Aplikaĵoj</string>
     <string name="pref_filter_google_title">Filtri Googlajn aplikaĵojn</string>
-    <string name="pref_install_delete_summary">APKojn detektos defaŭlte</string>
+    <string name="pref_install_delete_summary">Elŝutitajn APKojn forigos tuj post instalado</string>
     <string name="pref_install_delete_title">Forigi APK post instalado</string>
-    <string name="pref_install_mode_native">Operaciuma instalilo</string>
+    <string name="pref_install_mode_native">Operaciuma instalilo (malaktuala)</string>
     <string name="pref_install_mode_root">Ĉefuzanta instalilo</string>
     <string name="pref_install_mode_summary">Elekti reĝimon de APK instalado</string>
     <string name="pref_install_mode_title">Instalada maniero</string>
@@ -180,4 +180,35 @@
     <string name="action_import">Enporti</string>
     <string name="action_enable">Ŝalti</string>
     <string name="about_wiki_title">Viki</string>
+    <string name="pref_install_mode_services"></string>
+    <string name="download_eta_hrs">ankoraŭ %1$d h %2$d m %3$d s</string>
+    <string name="menu_terms">Servkondiĉaro</string>
+    <string name="about_bitcoin_btc_summary">Donaci per Bitcoin (BTC)</string>
+    <string name="about_paypal_summary">Donaci per PayPal</string>
+    <string name="about_fdroid_summary">Elŝuti Aurora store per F-Droid.</string>
+    <string name="about_bitcoin_bch_summary">Donaci per Bitcoin Cash (BCH)</string>
+    <string name="about_bitcoin_eth_summary">Donaci per Ethereum (ETH)</string>
+    <string name="about_xda">XDA Forumoj</string>
+    <string name="about_bhim_summary">Donaci per UPI</string>
+    <string name="pref_aurora_only">Nur Aurora-store-aplikaĵoj</string>
+    <string name="pref_ui_no_for_you_desc">Afiŝi \"Por vi\" paĝojn en hejmpaĝo</string>
+    <string name="pref_ui_similar_apps">Similaj kaj rilataj aplikaĵoj</string>
+    <string name="action_uninstall_confirmation">Ĉu vi volas malinstali tiun Aplikaĵon?</string>
+    <string name="download_eta_min">ankoraŭ %1$d m %2$d s</string>
+    <string name="pref_ui_title">Agordo</string>
+    <string name="pref_ui_no_for_you">\"Por vi\" paĝoj</string>
+    <string name="pref_ui_similar_apps_desc">Afiŝi similajn kaj rilatajn aplikaĵojn sur la aplikaĵon detalpaĝo</string>
+    <string name="pref_install_mode_shizuku">Shizuku instalilo</string>
+    <string name="pref_install_mode_am">AM instalilo</string>
+    <string name="action_request_analysis">Peti novan analizon</string>
+    <string name="download_speed_estimating">Taksas</string>
+    <string name="download_paused">Paŭzigita • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="purchase_no_file">Dosieroj ne ekhavita</string>
+    <string name="tab_for_you">Por</string>
+    <string name="title_app_settings">Aplikaĵojn agordoj</string>
+    <string name="details_beta">Beta programo</string>
+    <string name="action_uninstall_success">Sukcese malinstaliti</string>
+    <string name="pref_vending_version_device">Defaŭlto (laŭ aparatagordoj)</string>
+    <string name="download_eta_sec">ankoraŭ %1$d s</string>
+    <string name="download_progress">Elŝutas • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
 </resources>
