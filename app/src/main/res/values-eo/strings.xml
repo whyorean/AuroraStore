@@ -60,7 +60,7 @@
     <string name="details_dependencies">Dependenco</string>
     <string name="details_contains_ads">Enhavas reklamojn</string>
     <string name="details_changelog">Ŝanĝprotokolo</string>
-    <string name="action_wishlist_add">Aldoni al blanka listo</string>
+    <string name="action_wishlist_add">Aldoni al dezirlisto</string>
     <string name="action_whitelist">Blanka listo</string>
     <string name="action_update_all">Ĉiujn ĝisdatigi</string>
     <string name="action_update">Ĝisdatigi</string>
@@ -71,7 +71,7 @@
     <string name="action_resume">Malpaŭzigi</string>
     <string name="action_pause">Paŭzigi</string>
     <string name="action_open">Malfermi</string>
-    <string name="action_ok">Bone</string>
+    <string name="action_ok">En ordo</string>
     <string name="action_next">Sekva</string>
     <string name="action_logout">Elsaluti</string>
     <string name="action_leave">Eliri</string>
@@ -88,7 +88,7 @@
     <string name="details_no_updates">Nenia ĝisdatigo disponebla</string>
     <string name="download_eta_calculating">Kalkulas</string>
     <string name="details_permission">Permeso</string>
-    <string name="details_ratings">Taksoj kaj revizoj</string>
+    <string name="details_ratings">Taksoj kaj recenzoj</string>
     <string name="details_think_this_app">Kion vi opinias pri ĉi-aplikaĵo\?</string>
     <string name="download_metadata">Akiradas metadatumojn</string>
     <string name="exodus_no_tracker">Ne enhavas konatajn sekvilojn</string>
@@ -210,4 +210,6 @@
     <string name="pref_vending_version_device">Defaŭlto (laŭ aparatagordoj)</string>
     <string name="download_eta_sec">ankoraŭ %1$d s</string>
     <string name="download_progress">Elŝutas • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="details_data_safety_title">Sekureco de la datumoj</string>
+    <string name="action_home_screen">Aldoni al hejmpaĝo</string>
 </resources>
