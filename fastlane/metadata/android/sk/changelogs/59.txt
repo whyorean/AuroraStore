@@ -1,0 +1,6 @@
+• Podpora pre automaty na tokeny tretích strán
+• Viaceré vylepšenia UI/UX a opravy chýb
+• Nová funkcia automatického čistenia vyrovnávacej pamäte na odstránenie starých stiahnutých súborov
+• Nastavenie farby zvýraznenia bolo zrušené pre zariadenia s Androidom 12 alebo novším
+• SessionInstaller: Možnosť nastaviť Aurora Store ako vlastníka zariadenia a ticho nainštalovať (poďakovanie: @s1204IT)
+• SessionInstaller: Podpora frontu inštalácie

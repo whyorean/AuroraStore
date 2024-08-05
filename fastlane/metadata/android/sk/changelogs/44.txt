@@ -1,0 +1,6 @@
+• Oprava zlyhania súvisiaceho s upozornením na inštalačné služby
+• V aplikácii zobrazovať iba platné spoofingové vlastnosti
+• Upozorniť používateľov, keď sú počas vyhľadávania obmedzení
+• Počas vyhľadávania zobrazte trblietavú animáciu na označenie pokroku
+• Opraviť správanie navigácie pri zmene predvolenej karty
+• Opraviť možnosť rýchleho ukončenia

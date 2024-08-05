@@ -1,0 +1,7 @@
+• Podpora Android 14
+• Vylepšený filter balíkov F-Droid pre aktualizácie
+• Nárokujte si zodpovednosť za budúce aktualizácie pri inštalácii aplikácií pomocou SessionInstaller (Android 14+)
+• Premenované „Rozšírené aktualizácie“ na „Nekompatibilné aktualizácie“
+• Pridať akciu ponuky na vytvorenie skratky pre nainštalovanú aplikáciu
+• Opravy chýb a vylepšenia
+• Aktualizácie prekladov

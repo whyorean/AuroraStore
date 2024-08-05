@@ -1,0 +1,8 @@
+• Nežiadať o povolenie úložiska, kým ho nebudete potrebovať
+• Prepracovaná konfigurácia spoof, aby sa zabránilo oprávneniu na ukladanie pre import-export
+• Pridať možnosť na automatickú kontrolu aktualizácií aplikácií (vyžaduje prihlásený pracovný účet)
+• Opravený problém, kedy sa požadované knižnice neinštalovali s aplikáciami ako chrome & trichrome library
+• Ignorovať stiahnuté adresáre zo záloh pri zálohovaní Aurora Store
+• Implementujte inštalačný program Shizuku (vyžaduje Android 8.0+)
+• Zrušte podporu pre Android 4.4. Minimálna požadovaná verzia Androidu je 5.0+.
+• Opravy menších chýb a vylepšenia

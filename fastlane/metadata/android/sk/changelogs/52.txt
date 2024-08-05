@@ -1,0 +1,6 @@
+• Opravený pád na niektorých zariadeniach pri vyhľadávaní neanglických kľúčových slov
+• Vylepšená stránka Aplikácie a hry
+• Pridaný prepínač späť na automatickú inštaláciu po stiahnutí aplikácie
+• Neprehrávať zvuk upozornenia, keď je aplikácia nainštalovaná alebo aktualizovaná
+• Opravené zlyhanie na niektorých zariadeniach pri otváraní podrobností aplikácie
+• Pridané dialógové okno na potvrdenie odinštalovania, ak používate koreňový inštalačný program

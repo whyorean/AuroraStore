@@ -1,0 +1,18 @@
+• Veľké interné zmeny v systéme sťahovania
+• Aurora Store teraz vyžaduje nové povolenie na sťahovanie na pozadí
+• Funkcie pozastavenia a obnovenia boli pre sťahovanie zastarané
+• Súbežné sťahovanie bolo zastarané (obmedzené na jedno sťahovanie naraz)
+• Automatické overenie SHA256 a SHA1 pre stiahnuté súbory
+• Lepšia podpora pre aplikácie so zdieľanými knižnicami, ako sú Chrome a WebView
+• Veľké zmeny v systéme aktualizácií
+• Nové automatické aktualizácie aplikácií (v predvolenom nastavení povolené)
+• Nové automatické overovanie aktualizácií certifikátov
+• Podpora aktualizácií s rotáciou podpisového kľúča (zavedené po Androide 9.0+)
+• Automatické aktualizácie (Aurora Store) sú predvolene zakázané (povoliť v nastaveniach > aktualizovať)
+• Native Installer a Aurora Services boli zastarané
+• Export nainštalovaných aplikácií už nevyžaduje povolenia na ukladanie
+• Minimálna požadovaná verzia Androidu pre aplikácie je teraz viditeľná na stránke podrobností aplikácie (Viac o tejto aplikácii > Informácie)
+• Aktualizácie prekladov a opravy hlavných chýb
+• Podpora inštalácie aplikácií pomocou Sui (modul Shizuku Magisk)
+• Možnosť prepísať verziu GMS z Nastavenia > Sieť
+• Material3 sa teraz používa na viacerých miestach
