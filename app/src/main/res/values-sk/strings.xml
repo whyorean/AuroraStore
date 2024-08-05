@@ -358,7 +358,7 @@
     <string name="installer_service_unavailable">Nainštalujte služby Aurora 1.0.9 alebo vyššie, alebo zmeňte inštalačný program.</string>
     <string name="installer_status_failure_invalid">Neplatný alebo poškodený súbor APK</string>
     <string name="installer_status_failure_storage">Nedostatok miesta v pamäti</string>
-    <string name="installer_status_success">Úspešne nainštalované</string>
+    <string name="installer_status_success">Nainštalované</string>
     <string name="pref_ui_theme_title">Motív</string>
     <string name="onboarding_permission_esm">Správca externého úložiska</string>
     <string name="pref_ui_title">Prispôsobenie</string>
