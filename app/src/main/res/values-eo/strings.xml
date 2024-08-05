@@ -180,7 +180,6 @@
     <string name="action_import">Enporti</string>
     <string name="action_enable">Ŝalti</string>
     <string name="about_wiki_title">Viki</string>
-    <string name="pref_install_mode_services"></string>
     <string name="download_eta_hrs">ankoraŭ %1$d h %2$d m %3$d s</string>
     <string name="menu_terms">Servkondiĉaro</string>
     <string name="about_bitcoin_btc_summary">Donaci per Bitcoin (BTC)</string>
