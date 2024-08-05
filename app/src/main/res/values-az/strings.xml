@@ -79,7 +79,7 @@
     <string name="title_settings">Tənzimləmələr</string>
     <string name="toast_clipboard_copied">Buferə yapışdırıldı</string>
     <string name="toast_permission_granted">İcazə verildi</string>
-    <string name="device_miui_extra">İstəkə bağlı olaraq, Yerli quraşdırıcını seçə bilərsiniz, lakin sonra birləşdirilmiş (bölünmüş) APK-ları quraşdıra bilməzsiniz, buna görə seçim sizindir.</string>
+    <string name="device_miui_extra">İstəyə görə, Yerli quraşdırıcını seçə bilərsiniz, lakin sonra birləşmiş (ayrı) APK-ları quraşdıra bilməzsiniz, beləliklə seçim sizindir.</string>
     <string name="device_miui_subtitle">Hesab qurucu MIUI Optimizasiyasına görə tətbiqləri quraşdıra bilmir.</string>
     <string name="ui_accent_1">Mavi</string>
     <string name="ui_accent_7">Boz</string>
@@ -162,12 +162,12 @@
     <string name="menu_license">Lisenziya</string>
     <string name="menu_terms">Xidmət Şərtləri</string>
     <string name="device_miui_title">MIUI aşkar edildi!</string>
-    <string name="device_miui_description">Quraşdırmalara icazə vermək üçün MIUI optimallaşdırmasını deaktiv edin, əks halda Kök və ya Xidmətlər quraşdırıcısını seçə bilərsiniz.</string>
+    <string name="device_miui_description">Quraşdırmalara icazə vermək üçün MIUI optimallaşmasın bağla, əks halda Root və ya Xidmətlər quraşdırıcısın seçə bilərsiniz.</string>
     <string name="dialog_title_self_update">Yeni yeniləmə mövcuddur</string>
-    <string name="dialog_desc_native_split">Siz Yerli quraşdırıcı vasitəsilə birləşdirilmiş (bölünmüş) tətbiqləri quraşdıra bilməzsiniz. Quraşdırıcınızı Hesab, Xidmətlər və ya Kökə dəyişdirin.</string>
+    <string name="dialog_desc_native_split">Yerli quraşdırıcı vasitəsilə birləşmiş (ayrı) tətbiqləri quraşdıra bilməzsiniz. Quraşdırıcınızı Hesab, Xidmətlər və ya Root-a dəyişdirin.</string>
     <string name="notification_channel_alert">Sürətli bildiriş</string>
     <string name="notification_channel_general">Ümumi bildiriş</string>
-    <string name="onboarding_permission_select">Aurora Mağazası aşağıdakı icazələri tələb edir</string>
+    <string name="onboarding_permission_select">Aurora Store aşağıdakı icazələri tələb edir</string>
     <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
     <string name="onboarding_welcome_select">Nə etmək istəyirsən\?</string>
     <string name="onboarding_permission_esa">Xarici Yaddaş Girişi</string>
