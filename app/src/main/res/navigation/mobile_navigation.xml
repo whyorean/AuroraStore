@@ -491,4 +491,8 @@
         android:id="@+id/proxyURLDialog"
         android:name="com.aurora.store.view.ui.preferences.ProxyURLDialog"
         android:label="@string/pref_network_proxy_url" />
+    <dialog
+        android:id="@+id/forceRestartDialog"
+        android:name="com.aurora.store.view.ui.commons.ForceRestartDialog"
+        android:label="@string/force_restart_title" />
 </navigation>

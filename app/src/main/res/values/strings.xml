@@ -479,4 +479,8 @@
 
     <!-- UpdatesFragment -->
     <string name="check_updates">Check for updates</string>
+
+    <!-- ForceRestartDialog -->
+    <string name="force_restart_title">Restart Aurora Store</string>
+    <string name="force_restart_summary">Aurora Store needs to be restarted to apply the newly changed settings</string>
 </resources>

@@ -64,6 +64,7 @@ class NetworkPreference : BasePreferenceFragment(),
                 } else {
                     remove(PREFERENCE_PROXY_URL)
                     remove(PREFERENCE_PROXY_INFO)
+                    findNavController().navigate(R.id.forceRestartDialog)
                 }
                 false
             }

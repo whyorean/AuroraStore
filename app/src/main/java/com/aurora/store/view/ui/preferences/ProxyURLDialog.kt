@@ -1,10 +1,12 @@
 package com.aurora.store.view.ui.preferences
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.showKeyboard
 import com.aurora.extensions.toast
 import com.aurora.store.R
@@ -30,13 +32,18 @@ class ProxyURLDialog: DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = layoutInflater.inflate(R.layout.dialog_text_input_edit_text, null)
-        return MaterialAlertDialogBuilder(requireContext())
+        val alertDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.pref_network_proxy_url)
             .setMessage(R.string.pref_network_proxy_url_message)
             .setView(view)
-            .setPositiveButton(getString(R.string.add)) { _, _ -> saveProxyUrl() }
+            .setPositiveButton(getString(R.string.add), null)
             .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> dialog?.dismiss()}
             .create()
+
+        alertDialog.setOnShowListener {
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { saveProxyUrl() }
+        }
+        return alertDialog
     }
 
     @SuppressLint("AuthLeak") // False-positive
@@ -62,6 +69,7 @@ class ProxyURLDialog: DialogFragment() {
             save(PREFERENCE_PROXY_URL, url)
             save(PREFERENCE_PROXY_INFO, gson.toJson(proxyInfo))
             toast(R.string.toast_proxy_success)
+            findNavController().navigate(R.id.forceRestartDialog)
             return
         } else {
             toast(R.string.toast_proxy_failed)
