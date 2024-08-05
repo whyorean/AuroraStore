@@ -68,7 +68,7 @@ class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
                 viewModel.availableDevices.collect { updateController(it) }
             }
         }
-        viewModel.fetchAvailableDevices(view.context)
+        viewModel.fetchAvailableDevices()
     }
 
     private fun updateController(locales: List<Properties>) {

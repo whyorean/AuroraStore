@@ -21,9 +21,9 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import com.aurora.store.BuildConfig
-import com.aurora.store.data.SingletonHolder
 import com.aurora.store.util.Log
 import com.aurora.store.util.PathUtil
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileInputStream
@@ -31,16 +31,13 @@ import java.io.IOException
 import java.util.Properties
 import java.util.jar.JarEntry
 import java.util.jar.JarFile
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SpoofDeviceProvider private constructor(var context: Context) {
+@Singleton
+class SpoofDeviceProvider @Inject constructor(@ApplicationContext val context: Context) {
 
-    companion object : SingletonHolder<SpoofDeviceProvider, Context>(::SpoofDeviceProvider) {
-        private const val SUFFIX = ".properties"
-
-        fun filenameValid(filename: String): Boolean {
-            return filename.endsWith(SUFFIX)
-        }
-    }
+    private val SUFFIX = ".properties"
 
     val availableDevice: List<Properties>
         get() {
@@ -139,4 +136,7 @@ class SpoofDeviceProvider private constructor(var context: Context) {
             return null
         }
 
+    private fun filenameValid(filename: String): Boolean {
+        return filename.endsWith(SUFFIX)
+    }
 }
