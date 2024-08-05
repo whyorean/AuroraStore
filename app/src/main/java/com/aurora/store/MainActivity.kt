@@ -28,7 +28,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.extensions.accentColor
@@ -55,7 +54,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var appUtil: AppUtil
 
     private lateinit var B: ActivityMainBinding
-    private lateinit var navController: NavController
 
     // TopLevelFragments
     private val topLevelFrags = listOf(
@@ -78,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+        val navController = navHostFragment.navController
 
         this.lifecycleScope.launch {
             NetworkProvider(applicationContext).networkStatus.collect {
