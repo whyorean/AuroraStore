@@ -23,7 +23,7 @@
     <string name="action_filter_rating">Taksoj</string>
     <string name="action_filter_paid_apps">Pagenda</string>
     <string name="action_filter_downloads">Elŝutnombro</string>
-    <string name="action_filter_apps_with_ads">Aplikaĵoj kun reklamoj</string>
+    <string name="action_filter_apps_with_ads">Apoj kun reklamoj</string>
     <string name="action_filter_apply">Apliki</string>
     <string name="action_filter_all">Ĉiuj</string>
     <string name="action_filter">Filtriloj</string>
@@ -64,7 +64,7 @@
     <string name="action_whitelist">Blanka listo</string>
     <string name="action_update_all">Ĉiujn ĝisdatigi</string>
     <string name="action_update">Ĝisdatigi</string>
-    <string name="action_info">Aplikaĵa informo</string>
+    <string name="action_info">Apon informo</string>
     <string name="action_uninstall">Malinstali</string>
     <string name="action_share">Kunigi</string>
     <string name="action_search">Serĉi</string>
@@ -130,18 +130,18 @@
     <string name="pref_ui_theme_system">Laŭ operaciumo</string>
     <string name="pref_ui_layout">Aranĝo</string>
     <string name="purchase_failed">Elŝuto malsukcesa</string>
-    <string name="purchase_unsupported">Aplikaĵo ne subtenata</string>
-    <string name="purchase_not_found">Aplikaĵo netrovita</string>
+    <string name="purchase_unsupported">Apo ne subtenata</string>
+    <string name="purchase_not_found">Apo netrovita</string>
     <string name="tab_categories">Kategorioj</string>
-    <string name="tab_top_free">Supraj senkostaj</string>
+    <string name="tab_top_free">Senkostaj</string>
     <string name="title_about">Pri</string>
     <string name="title_apps_games">Miaj aplikaĵoj kaj ludoj</string>
-    <string name="title_apps_library">Aplikaĵoj biblioteke</string>
-    <string name="title_apps_sale">Aplikaĵoj vendataj</string>
+    <string name="title_apps_library">Apoj biblioteke</string>
+    <string name="title_apps_sale">Apoj rabataj</string>
     <string name="title_device">Aparato</string>
     <string name="title_games">Ludoj</string>
     <string name="title_installation">Instalado</string>
-    <string name="title_installer">Aplikaĵa instalilo</string>
+    <string name="title_installer">Aplikaĵinstalilo</string>
     <string name="title_language">Lingvo</string>
     <string name="title_no_network">Sen reto</string>
     <string name="title_updates">Ĝisdatigoj</string>
@@ -156,7 +156,7 @@
     <string name="pref_ui_theme_light">Luma</string>
     <string name="pref_ui_theme_title">Etoso</string>
     <string name="pref_ui_theme_black">Nigra</string>
-    <string name="purchase_invalid">Aplikaĵo ne aĉetita</string>
+    <string name="purchase_invalid">Apo ne aĉetita</string>
     <string name="pref_install_mode_session">Seanca instalilo</string>
     <string name="pref_ui_accent_title">Emfazo</string>
     <string name="pref_ui_theme_dark">Malluma</string>
@@ -164,7 +164,7 @@
     <string name="title_installed">Instalitaj</string>
     <string name="title_settings">Agordoj</string>
     <string name="toast_apk_blacklisted">Nigrlistigita</string>
-    <string name="title_apps">Aplikaĵoj</string>
+    <string name="title_apps">Apoj</string>
     <string name="title_download_manager">Elŝutoj</string>
     <string name="title_library">Biblioteko</string>
     <string name="about_libera_summary">Fariĝi donacanto ĉe Liberpay</string>
@@ -204,7 +204,7 @@
     <string name="download_paused">Paŭzigita • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="purchase_no_file">Dosieroj ne ekhavita</string>
     <string name="tab_for_you">“For you”</string>
-    <string name="title_app_settings">Aplikaĵojn agordoj</string>
+    <string name="title_app_settings">Apojn agordoj</string>
     <string name="details_beta">Beta programo</string>
     <string name="action_uninstall_success">Sukcese malinstaliti</string>
     <string name="pref_vending_version_device">Defaŭlto (laŭ aparatagordoj)</string>
@@ -220,7 +220,7 @@
     <string name="pref_updates_incompatible_desc">Vidigi ĝisdatigojn al neakordigeblaj aŭ malaktivigitaj aplikaĵoj kiujn eble malsukcesu instali</string>
     <string name="pref_aurora_only_desc">Vidigi nur aplikaĵojn instalitajn per Aurora store en “Ĝisdatigo” kaj “Instalita aplikaĵoj”</string>
     <string name="tab_editor_choice">Eldonanton elekto</string>
-    <string name="installer_service_misconfigured">Akomodu Aurora services kaj rajtigu ĉiujn permesojn unue.</string>
+    <string name="installer_service_misconfigured">Akomodu Aurora services kaj donu ĉiujn permesojn unue.</string>
     <string name="pref_network_title">Reto-konekto</string>
     <string name="installer_service_unavailable">Instalu Aurora services 1.0.9 aŭ supra, aŭ ŝanĝu la instalilon.</string>
     <string name="installer_service_available">Aurora services estas havebla kaj preta por la instalado.</string>
@@ -247,4 +247,110 @@
     <string name="onboarding_permission_installer_desc">Permesi instali aplikaĵojn el Aurora store</string>
     <string name="pref_downloader_wifi_title">Elŝuti nur per vifio</string>
     <string name="action_logout_confirmation_title">Ĉu vi volas elsaluti?</string>
+    <string name="action_enabled">Ŝaltita</string>
+    <string name="ui_accent_3">Ruĝa</string>
+    <string name="title_download_playstore">Play Store</string>
+    <string name="ui_accent_13">Malhelblua</string>
+    <string name="spoof_apply">Bonvolu reensaluti por startigi la ŝajnigo</string>
+    <string name="title_spoof_manager">Ŝajnigilo</string>
+    <string name="title_search_suggestion">Serĉsugesto</string>
+    <string name="title_search_results">Serĉrezultoj</string>
+    <string name="toast_purchase_blocked">Apojn aĉetoj maldisponebla per anonimaj kontoj.</string>
+    <string name="toast_import_success">Aparaton agordo importita</string>
+    <string name="app_updater_service_notif_text">Ebligi fone elŝutadon de apoj</string>
+    <string name="ui_accent_6">Viola</string>
+    <string name="bad_request">Interna miso! Bonvolu reprovi pli malfrue</string>
+    <string name="check_connectivity">Kontrolas interretan konekton</string>
+    <string name="action_get_local_apk">Apon kunligaĵon konservi</string>
+    <string name="toast_manual_unavailable">La versiokodaĵo petita estas maldisponebla.</string>
+    <string name="tab_top_charts">Plej popularaj</string>
+    <string name="toast_abandon_sessions">Malnovaj instalseancoj adiaŭitaj</string>
+    <string name="menu">Menuo</string>
+    <string name="expand">Vastigi</string>
+    <string name="permissions_denied">Necesaj permesoj estas rifuzitaj. Bonvolu doni ilin por daŭrigi la agon</string>
+    <string name="downloading_dep">Elŝutas aldonitajn dosierojn por <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="notification_channel_updates">Sciigoj pri ĝisdatigoj</string>
+    <string name="pref_updates_auto_desc">Agordi kondukton de aŭtomataj ĝisdatigoj</string>
+    <string name="pref_updates_auto_off">Ne aŭtomate ĝisdatigi la apojn</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> kaj <xliff:g id="apps_count">%4$d</xliff:g> pli</string>
+    <string name="verifying_new_session">Kontrolas novan seancon</string>
+    <string name="app_language">Apon Lingvo</string>
+    <string name="app_links_title">Apon ligiloj</string>
+    <string name="privacy_policy_subtitle">Eksciu, kiel Aurora Store uzas viajn datumojn</string>
+    <string name="source_code_subtitle">Trovu kio estas ene</string>
+    <string name="privacy_policy_title">Politiko de privateco</string>
+    <string name="title_purchase_history">Aĉethistorio</string>
+    <string name="tab_top_grossing">Sukcesaj</string>
+    <string name="toast_export_success">Aparaton agordo eksportita</string>
+    <string name="ui_accent_5">Verda</string>
+    <string name="notification_updates_available_desc_1">Nova versio de <xliff:g id="app_one_name">%1$s</xliff:g> estas disponebla</string>
+    <string name="login_rate_limited">Ups, via ofeco de petoj estas limigata</string>
+    <string name="purchase_session_expired">La seanca estas finita, reensalutu por eki novan seancon.</string>
+    <string name="ui_accent_10">Oranĝa</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> ĝisdatigoj disponeblaj</string>
+    <string name="pref_updates_auto">Apojn aŭtomate ĝisdatigi</string>
+    <string name="toast_export_failed">Eksporto de la aparaton agordo fiaskis</string>
+    <string name="title_blacklist_manager">Nigran liston administri</string>
+    <string name="ui_accent_0">Sistema</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="action_favourite">Preferata</string>
+    <string name="toast_anonymous_restriction">Maldisponebla per anonimaj kontoj</string>
+    <string name="ui_accent_12">Disskordblua</string>
+    <string name="rate_limited">Ups, la ofteco de petoj de tiu konto estas limigata!</string>
+    <string name="update_available">ĝisdatigo disponebla</string>
+    <string name="error">Miso okasis!</string>
+    <string name="updates_available">ĝisdatigoj disponeblaj</string>
+    <string name="shizuku_installer_desc">Necesigas Shizuku aŭ Sui, akomodita kaj permesata</string>
+    <string name="faqs_subtitle">Ĉu vi havas demandoj? Vi povas trovi tie respondoj</string>
+    <string name="toast_page_unavailable">Paĝo maldisponebla</string>
+    <string name="toast_rated_failed">Takson publikigo fiaskis</string>
+    <string name="toast_aas_token_failed">Generado de la AAS Token fiaskis</string>
+    <string name="toast_manual_available">Gratulo, la petita versiokodaĵo estas disponebla kaj nun elŝutata.</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> kaj <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="requesting_new_session">Petas novan seancon</string>
+    <string name="server_maintenance">Servilo maldisponebla por bontenado</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> ĝisdatigo disponebla</string>
+    <string name="insecure_anonymous_apply">Bonvolu reensaluti kay restartigi la aplikaĵo por aktivigi la ŝanĝoj.</string>
+    <string name="tab_trending">Modaj</string>
+    <string name="title_favourites_manager">Preferataj apoj</string>
+    <string name="toast_permission_granted">Permeso donita</string>
+    <string name="toast_permission_installer_required">Vi devas doni la Instalilo-Permeso unue</string>
+    <string name="toast_app_unavailable">Apo maldisponebla por via aparato</string>
+    <string name="toast_permission_esm_caution">Vi eble devas redoni la permeson kaŭze de cimo en Storage Access Framework</string>
+    <string name="toast_spoof_applied">Aparaton ŝajnigo aktivata.</string>
+    <string name="toast_import_failed">Importo de la aparaton agordo fiaskis</string>
+    <string name="notification_channel_updater_service">Fone-apon-elŝutilo</string>
+    <string name="app_updater_service_notif_title">Fone apon elŝutado</string>
+    <string name="ui_accent_9">Limekolora</string>
+    <string name="ui_accent_11">Helblua</string>
+    <string name="item_required">Necesa</string>
+    <string name="item_optional">Fakultativa</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> kaj <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="pref_updates_auto_notify">Serĉi kaj sciigi pri disponeblaj ĝisdatigoj</string>
+    <string name="pref_updates_auto_install">Serĉi kaj aŭtomate instali disponeblaj ĝisdatigoj</string>
+    <string name="pref_updates_check_frequency">Aŭtomatajn ĝisdatigojn ofto</string>
+    <string name="pref_updates_check_frequency_desc">Agordi intervalon (je horoj) de aŭtomataj ĝisdatigoj.</string>
+    <string name="failed_to_fetch_report">Privatecraporton alportado fiaskis</string>
+    <string name="app_link_enabled">Apon ligilo ŝaltita!</string>
+    <string name="check_updates">Serĉas ĝidatigojn</string>
+    <string name="ui_accent_1">Blua</string>
+    <string name="ui_accent_4">Ora</string>
+    <string name="ui_accent_7">Griza</string>
+    <string name="ui_accent_8">Roza</string>
+    <string name="access_denied_using_vpn">Atingon rifuzita! Ĉu vi uzas VPN aŭ Tor?</string>
+    <string name="failed_to_generate_session">Seancon generado fiaskis</string>
+    <string name="pref_ui_layout_tab">Elekti defaŭltan paĝon</string>
+    <string name="manual_download_hint">Enigu la versiokodaĵon ke vi deziras elŝuti</string>
+    <string name="about_aurora_store_title">Pri Aurora Store</string>
+    <string name="source_code_title">Fontkodo</string>
+    <string name="about_aurora_store_subtitle">Eksciu pli pri Aurora Store</string>
+    <string name="search_hint">Serĉi apojn kaj ludojn</string>
+    <string name="tab_top_paid">Pagendaj</string>
+    <string name="details_no_favourites">Neniu preferataj aplikaĵoj trovitaj</string>
+    <string name="toast_fav_export_success">Preferatoj eksportitaj!</string>
+    <string name="action_logout_confirmation_message">Ĉu vi estas certa ke vi volas elsaluti?</string>
+    <string name="toast_fav_export_failed">Eksportado de la preferatoj fiaskis!</string>
+    <string name="toast_fav_import_failed">Importado de la preferatoj fiaskis!</string>
+    <string name="toast_fav_import_success">Preferatoj importitaj!</string>
+    <string name="failed_generating_session">Seancon generado fiaskis, erorkodaĵo: <xliff:g id="status_code">%1$d</xliff:g></string>
 </resources>
