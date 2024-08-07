@@ -429,4 +429,5 @@
     <string name="toast_permission_esm_caution">Vous devrez peut-être ré-accorder la permission en raison d\'un beugue du Storage Access Framework</string>
     <string name="item_required">Requis</string>
     <string name="item_optional">Optionnel</string>
+    <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
 </resources>
