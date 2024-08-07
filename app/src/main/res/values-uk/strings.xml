@@ -418,7 +418,7 @@
     <string name="toast_fav_import_success">«Улюблені» імпортовано!</string>
     <string name="toast_fav_export_success">«Улюблені» експортовано!</string>
     <string name="export_app_summary_success">Набір застосунків успішно еспортовано</string>
-    <string name="export_app_summary_fail">Набір застосунків не вдалося експортувати</string>
+    <string name="export_app_summary_fail">Не вдалося експортувати набір застосунків</string>
     <string name="title_favourites_manager">Улюблені застосунки</string>
     <string name="action_uninstall_success">Успішно видалено</string>
     <string name="action_logout_confirmation_message">Хочете вийти з облікового запису?</string>
