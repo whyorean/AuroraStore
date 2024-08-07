@@ -121,7 +121,7 @@
     <string name="pref_filter_google_title">Filtri Googlajn aplikaĵojn</string>
     <string name="pref_install_delete_summary">Elŝutitajn APKojn forigos tuj post instalado</string>
     <string name="pref_install_delete_title">Forigi APK post instalado</string>
-    <string name="pref_install_mode_native">Operaciuma instalilo (malaktuala)</string>
+    <string name="pref_install_mode_native">Operaciuma instalilo (troantikva)</string>
     <string name="pref_install_mode_root">Ĉefuzanta instalilo</string>
     <string name="pref_install_mode_summary">Elekti reĝimon de APK instalado</string>
     <string name="pref_install_mode_title">Instalada maniero</string>
@@ -212,7 +212,7 @@
     <string name="download_progress">Elŝutas • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="details_data_safety_title">Sekureco de la datumoj</string>
     <string name="action_home_screen">Aldoni al hejmpaĝo</string>
-    <string name="pref_install_mode_services">Aurora services (malaktuala)</string>
+    <string name="pref_install_mode_services">Aurora services (tro antikva)</string>
     <string name="pref_vending_version_title">Google Play versio</string>
     <string name="session_verifying_google">Kontrolas la Google-seancon</string>
     <string name="session_verifying">Kontrolas la seancon</string>
@@ -220,7 +220,7 @@
     <string name="pref_updates_incompatible_desc">Vidigi ĝisdatigojn al neakordigeblaj aŭ malaktivigitaj aplikaĵoj kiujn eble malsukcesu instali</string>
     <string name="pref_aurora_only_desc">Vidigi nur aplikaĵojn instalitajn per Aurora store en “Ĝisdatigo” kaj “Instalita aplikaĵoj”</string>
     <string name="tab_editor_choice">Eldonanton elekto</string>
-    <string name="installer_service_misconfigured">Akomodu Aurora services kaj donu ĉiujn permesojn unue.</string>
+    <string name="installer_service_misconfigured">Agordu Aurora services kaj donu ĉiujn permesojn unue.</string>
     <string name="pref_network_title">Reto-konekto</string>
     <string name="installer_service_unavailable">Instalu Aurora services 1.0.9 aŭ supra, aŭ ŝanĝu la instalilon.</string>
     <string name="installer_service_available">Aurora services estas havebla kaj preta por la instalado.</string>
@@ -238,7 +238,7 @@
     <string name="installer_am_unavailable">Instalu App Manager aŭ ŝanĝu la instalilon.</string>
     <string name="installer_shizuku_unavailable">Shizuku estas ne instalita aŭ ne ĝuste akimodita.</string>
     <string name="onboarding_permission_installer_legacy_desc">Permesi instali aplikaĵojn el nekonataj devenoj</string>
-    <string name="pref_abandon_session">Devigi vakigi la seancojn de instaladoj</string>
+    <string name="pref_abandon_session">Forte elvaŝi instaladajn seancojn</string>
     <string name="session_login">Bonvolu ensaluti al Google Play-konto</string>
     <string name="session_scrapped">Lasta seanco interrompis sin</string>
     <string name="device_miui_description">Bonvolu malaktivigi MIUI-optimumigoj por permisi instaladoj, alie vi povas elekti Ĉefuzanta aŭ Servo instalilo.</string>
@@ -393,4 +393,15 @@
     <string name="export_app_summary_success">Eksportis sukcese apkunligaĵon</string>
     <string name="export_app_summary_fail">Eksportado apkunligaĵon fiaskis</string>
     <string name="force_restart_title">Restarti Aurora Store</string>
+    <string name="pref_network_proxy_title">Prokura servilo (aŭ “proxy”)</string>
+    <string name="toast_proxy_success">Prokuran servilon sukcese finaranĝis</string>
+    <string name="toast_clipboard_copied">Kopita en la poŝon</string>
+    <string name="toast_proxy_failed">Prokuran servilon agordado fiaskis</string>
+    <string name="pref_network_proxy_enable">Aktivigi prokuran servilon</string>
+    <string name="pref_network_proxy_enable_desc">Permisi tutan datumtrafikon pasi tra la prokura servilo</string>
+    <string name="pref_network_proxy_url">Prokuran servilon URL</string>
+    <string name="toast_proxy_invalid">Malvalida prokuran servilon URL, kontrolu la formaton!</string>
+    <string name="pref_network_proxy_url_message">Enigu validan prokuran servilon URL por pasigi ĉiujn datuĵmojn tra la prokura servilo.</string>
+    <string name="pref_abandon_session_desc">Elviŝi forlasitajn aŭ pritrakatajn instaladajn seancojn</string>
+    <string name="pref_download_directory_error">Elektita vojo estas protektata kontraŭ skribado</string>
 </resources>
