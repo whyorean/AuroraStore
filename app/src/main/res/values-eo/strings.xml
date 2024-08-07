@@ -14,7 +14,7 @@
     <string name="details_dev_website">Retejo</string>
     <string name="details_description">Priskribo</string>
     <string name="details_dev_address">Adreso</string>
-    <string name="details_dev_email">Retpoŝto</string>
+    <string name="details_dev_email">Retadreso</string>
     <string name="action_ignore_version">Ignori version</string>
     <string name="action_ignore">Ignori</string>
     <string name="action_granted">Rajtigita</string>
@@ -57,7 +57,7 @@
     <string name="details_no_dependencies">Sen dependencoj</string>
     <string name="details_no_ads">Sen reklamoj</string>
     <string name="details_more_about_app">Pli pri aplikaĵo</string>
-    <string name="details_dependencies">Dependenco</string>
+    <string name="details_dependencies">Dependencoj</string>
     <string name="details_contains_ads">Enhavas reklamojn</string>
     <string name="details_changelog">Ŝanĝprotokolo</string>
     <string name="action_wishlist_add">Aldoni al dezirlisto</string>
@@ -89,7 +89,7 @@
     <string name="download_eta_calculating">Kalkulas</string>
     <string name="details_permission">Permeso</string>
     <string name="details_ratings">Taksoj kaj recenzoj</string>
-    <string name="details_think_this_app">Kion vi opinias pri ĉi-aplikaĵo\?</string>
+    <string name="details_think_this_app">Kion vi opinias pri tiu apo?</string>
     <string name="download_metadata">Akiradas metadatumojn</string>
     <string name="exodus_no_tracker">Ne enhavas konatajn sekvilojn</string>
     <string name="exodus_progress">Kontrolas ĉu estas sekviloj…</string>
@@ -234,7 +234,7 @@
     <string name="session_init">Preparado…</string>
     <string name="onboarding_permission_doze">Fonaj elŝutadoj</string>
     <string name="pref_dialog_to_apply_restart">Tiu agordo estos aplikita post la restarto de la aplikaĵo</string>
-    <string name="download_force_clear_all">Vakigi ciujn</string>
+    <string name="download_force_clear_all">Elviŝi ciujn</string>
     <string name="installer_am_unavailable">Instalu App Manager aŭ ŝanĝu la instalilon.</string>
     <string name="installer_shizuku_unavailable">Shizuku estas ne instalita aŭ ne ĝuste akimodita.</string>
     <string name="onboarding_permission_installer_legacy_desc">Permesi instali aplikaĵojn el nekonataj devenoj</string>
@@ -293,7 +293,7 @@
     <string name="title_blacklist_manager">Nigran liston administri</string>
     <string name="ui_accent_0">Sistema</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="action_favourite">Preferata</string>
+    <string name="action_favourite">Preferi</string>
     <string name="toast_anonymous_restriction">Maldisponebla per anonimaj kontoj</string>
     <string name="ui_accent_12">Disskordblua</string>
     <string name="rate_limited">Ups, la ofteco de petoj de tiu konto estas limigata!</string>
@@ -346,11 +346,51 @@
     <string name="about_aurora_store_subtitle">Eksciu pli pri Aurora Store</string>
     <string name="search_hint">Serĉi apojn kaj ludojn</string>
     <string name="tab_top_paid">Pagendaj</string>
-    <string name="details_no_favourites">Neniu preferataj aplikaĵoj trovitaj</string>
+    <string name="details_no_favourites">Neniuj preferataj aplikaĵoj trovitaj</string>
     <string name="toast_fav_export_success">Preferatoj eksportitaj!</string>
     <string name="action_logout_confirmation_message">Ĉu vi estas certa ke vi volas elsaluti?</string>
     <string name="toast_fav_export_failed">Eksportado de la preferatoj fiaskis!</string>
     <string name="toast_fav_import_failed">Importado de la preferatoj fiaskis!</string>
     <string name="toast_fav_import_success">Preferatoj importitaj!</string>
     <string name="failed_generating_session">Seancon generado fiaskis, erorkodaĵo: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="pref_clear_device_owner_title">Aparatpropulon elviŝi</string>
+    <string name="manage_account">Administri vian konton</string>
+    <string name="title_more">Pli</string>
+    <string name="shizuku_installer_subtitle">Uzas sistemajn APIjn rekte per abd/ĉefuzantaj privilegioj</string>
+    <string name="add">Aldoni</string>
+    <string name="device_doze_title">Baterion optimumigo detekita!</string>
+    <string name="details_ratings_title_hint">Recenzon titolo</string>
+    <string name="device_doze_subtitle">Aurora Store ne povas instali, elŝuti aŭ ĝisdatigi apojn fone kaŭze de baterion optimumigoj.</string>
+    <string name="device_doze_description">Bonvolu malaktivigi baterioptimumigojn por ebligi fonajn operaciojn.</string>
+    <string name="action_filter_gsf_dependent_apps">Dependa de GSF</string>
+    <string name="failed_apk_export">APKjn eksportado fiaskis</string>
+    <string name="force_restart_summary">La restarto de Aurora Store estas necesa por apliki la nove ŝanĝitajn agordojn</string>
+    <string name="details_no_apps_on_sale">Neniuj rabataj apoj trovita</string>
+    <string name="dialog_desc_native_split">Vi ne povas instali kunligitajn (splitajn) apojn per Operaciuma Instalilo. Ŝanĝu vian instalilon al Seanca, Services aŭ Ĉefuzanta.</string>
+    <string name="failed_app_link">Ne subtena, bonvolu provi manan kombinadon de ligilojn</string>
+    <string name="am_installer_desc">Necesigas App Manager, bezonas adb/ĉefuzantan moduson por instali kiam MIUI-optimumigo estas enŝalta</string>
+    <string name="pref_clear_device_owner_summary">Eksigi Aurora Store je aparatpropula apo</string>
+    <string name="add_dispenser_title">Aldoni distribuilon</string>
+    <string name="root_installer_subtitle">Shellbaziĝa instalilo uzanta ĉefuzantajn permesojn</string>
+    <string name="session_installer_desc">Rekomendata, integra kaj subtenas ĉiujn Androidversiojn</string>
+    <string name="session_installer_subtitle">Seancbaziĝa instalilo por kunligaĵaj/splitaj APKj</string>
+    <string name="action_manage">Administri</string>
+    <string name="services_installer_subtitle">Instalilo por fonaj instaladoj</string>
+    <string name="services_installer_desc">Necesigas Aurora Services instalita estkiel privilegihavanta sistema apo</string>
+    <string name="pref_clear_device_owner_desc">Tio revokos la seancan instalilon permeso silente instali apojn. Ĉu vi volas daŭrigi la elviŝon je la aparaton propeco ?</string>
+    <string name="pref_dispenser_title">Administri distribuilojn</string>
+    <string name="no_dispensers_available">Neniuj distribuiloj disponeblaj</string>
+    <string name="add_dispenser_error">Malvalida URL</string>
+    <string name="add_dispenser_hint">Distribuilon URL</string>
+    <string name="remove_dispenser_title">Forigi distribuilon</string>
+    <string name="remove_dispenser_summary">Ĉu vi volas forigi la distribuilon \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="details_gsf_dependent">Necesigas GSF</string>
+    <string name="native_installer_subtitle">Intencbaziĝa instalilo, disponebla en ĉiuj aparatoj</string>
+    <string name="root_installer_desc">Necesigas ĉefuzantajn privilegiojn, subtenas ĉiujn Androidversiojn.</string>
+    <string name="am_installer_subtitle">Plenkapabla pakadministrilo kun aperta fontkodo</string>
+    <string name="native_installer_desc">Pli taŭga por aparatoj funkciantaj sub Android 4.4</string>
+    <string name="remove">Forigi</string>
+    <string name="export_app_summary_success">Eksportis sukcese apkunligaĵon</string>
+    <string name="export_app_summary_fail">Eksportado apkunligaĵon fiaskis</string>
+    <string name="force_restart_title">Restarti Aurora Store</string>
 </resources>
