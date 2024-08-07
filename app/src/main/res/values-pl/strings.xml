@@ -151,7 +151,7 @@
     <string name="pref_install_mode_root">Instalator root</string>
     <string name="pref_install_mode_native">Instalator natywny (przestarzały)</string>
     <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
-    <string name="pref_install_delete_summary">Pobrane pliki APK zostaną usunięte zaraz po zakończonej instalacji</string>
+    <string name="pref_install_delete_summary">Pobrany plik APKs zostanie usunięty zaraz po zakończonej instalacji</string>
     <string name="pref_filter_google_title">Filtruj aplikacje Google</string>
     <string name="pref_filter_google_summary">Ignoruj aplikacje od Google w Aktualizacjach i Zainstalowanych aplikacjach</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
@@ -195,10 +195,10 @@
     <string name="installer_service_available">Usługi Aurora są dostępne i gotowe do instalacji.</string>
     <string name="installer_root_unavailable">Brak dostępu do roota. Przyznaj go lub zmień instalator.</string>
     <string name="title_installed">Zainstalowane</string>
-    <string name="filter_review_two">Dwa</string>
+    <string name="filter_review_two">Dwie</string>
     <string name="filter_review_three">Trzy</string>
     <string name="filter_review_positive">Pozytywne</string>
-    <string name="filter_review_one">Jeden</string>
+    <string name="filter_review_one">Jedna</string>
     <string name="filter_review_four">Cztery</string>
     <string name="filter_review_five">Pięć</string>
     <string name="filter_review_critical">Negatywne</string>
@@ -358,7 +358,7 @@
     <string name="pref_updates_auto_desc">Skonfiguruj zachowanie automatycznych aktualizacji</string>
     <string name="pref_updates_auto_install">Sprawdź i automatycznie zainstaluj dostępne aktualizacje</string>
     <string name="action_request_analysis">Poproś o nową analizę</string>
-    <string name="failed_apk_export">Nie udało się wyeksportować plików APK</string>
+    <string name="failed_apk_export">Nie udało się wyeksportować pliku APKs</string>
     <string name="pref_updates_incompatible">Niekompatybilne aktualizacje</string>
     <string name="pref_updates_incompatible_desc">Pokaż aktualizacje dla niekompatybilnych lub wyłączonych aplikacji, których instalacja może się nie udać</string>
     <string name="download_clear_finished">Wyczyść zakończone</string>
@@ -376,7 +376,7 @@
     <string name="services_installer_subtitle">Instalator do instalacji w tle</string>
     <string name="failed_app_link">Nieobsługiwane, spróbuj powiązać linki ręcznie</string>
     <string name="session_installer_desc">Zalecany, wbudowany i obsługujący wszystkie wersje Androida</string>
-    <string name="session_installer_subtitle">Instalator oparty na sesji dla dołączonych/rozdzielonych plików APK</string>
+    <string name="session_installer_subtitle">Instalator oparty na sesji dla dołączonych/rozdzielonych plików APKs</string>
     <string name="root_installer_subtitle">Instalator oparty na powłoce z uprawnieniami roota</string>
     <string name="root_installer_desc">Wymaga uprawnień roota/superużytkownika, obsługuje wszystkie wersje Androida.</string>
     <string name="shizuku_installer_subtitle">Bezpośrednie korzystanie z systemowych interfejsów API z uprawnieniami adb/root</string>

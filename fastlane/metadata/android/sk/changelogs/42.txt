@@ -1,15 +1,15 @@
 • Android 13
 • Povoliť lokalizáciu viacerých reťazcov
-• Pridajte monochromatickú ikonu pre Android 13
-• Aktualizujte závislosti na najnovšiu verziu
-• Pri spustení okamžite zobraziť výzvu so zmluvnými podmienkami
-• Povoliť prechod vpred bez udelenia povolení počas úvodného nastavenia
+• Pridaná monochromatická ikona pre Android 13
+• Aktualizované závislosti na najnovšiu verziu
+• Pri spustení okamžite zobrazená výzva so zmluvnými podmienkami
+• Povolený prechod vpred bez udelenia povolení počas úvodného nastavenia
 • Čítať systémový xml denylist ako predvolený pre vylúčenie z aktualizácií
-• Zobrazte správny názov na 5. stránke nastavenia
-• Pri návrate späť povoľte pri nastavení tlačidlo dopredu
-• Nahraďte začiarkavacie políčka v inštalačnom programe prepínačmi
-• Použite farbu ťahu pre pozadie kariet nastavení
-• Opravte chybu bez témy v nastavení pomocou prepínačov
-• Nepoužívajte nové verzie GSF & Vending
-• Refaktorujte nastavenie povolení súvisiacich s ukladaním
+• Zobrazený správny názov na 5. stránke nastavenia
+• Pri návrate späť povolené pri nastavení tlačidlo dopredu
+• Nahradené začiarkavacie políčka v inštalačnom programe prepínačmi
+• Použitá farba ťahu pre pozadie kariet nastavení
+• Opravená chyba bez témy v nastavení pomocou prepínačov
+• Nepoužívané nové verzie GSF & Vending
+• Refaktorované nastavenie povolení súvisiacich s ukladaním
 • Aktualizácie prekladov
