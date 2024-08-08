@@ -432,4 +432,6 @@
     <string name="toast_permission_esm_caution">Можливо, вам доведеться повторно надати дозвіл через помилку в Storage Access Framework</string>
     <string name="item_required">Необхідний</string>
     <string name="item_optional">Необов\'язковий</string>
+    <string name="force_restart_title">Перезапустити Aurora Store</string>
+    <string name="force_restart_summary">Aurora Store потрібно перезапустити, щоб застосувати змінені налаштування</string>
 </resources>
