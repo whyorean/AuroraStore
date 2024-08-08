@@ -184,7 +184,7 @@
     <string name="tab_top_free">Top gratuit</string>
     <string name="tab_top_charts">Palmarès</string>
     <string name="spoof_apply">Assurez-vous de vous reconnecter pour appliquer l’usurpation d’identité</string>
-    <string name="device_miui_extra">Si vous voulez, vous pouvez choisir le programme d’installation natif, mais vous ne pouvez pas installer d’APK groupés (fractionnés) ; c’est vous qui avez le choix.</string>
+    <string name="device_miui_extra">Si vous voulez, vous pouvez choisir le programme d’installation natif, mais dans ce cas, vous ne pourrez pas installer d’APK groupés (fractionnés) ; vous êtes libre de choisir.</string>
     <string name="device_miui_description">Veuillez désactiver les optimisations MIUI pour autoriser les installations, sinon vous pouvez choisir le programme d’installation racine ou services.</string>
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
     <string name="pref_ui_theme_darkord">Discord</string>
@@ -430,4 +430,6 @@
     <string name="item_required">Requis</string>
     <string name="item_optional">Optionnel</string>
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
+    <string name="force_restart_title">Redémarrer Aurora Store</string>
+    <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
 </resources>
