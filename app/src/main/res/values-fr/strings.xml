@@ -423,13 +423,15 @@
     <string name="action_logout_confirmation_title">Se déconnecter ?</string>
     <string name="action_logout_confirmation_message">Êtes-vous sûr de vouloir vous déconnecter ?</string>
     <string name="check_updates">Vérification des mises à jour</string>
-    <string name="details_data_safety_title">Sécurité des données</string>
+    <string name="details_data_safety_title">Protection des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l\'installation d\'applications de sources inconnues</string>
     <string name="toast_permission_installer_required">Vous devez d\'abord accorder la permission d\'installation d\'applications</string>
-    <string name="toast_permission_esm_caution">Vous devrez peut-être ré-accorder la permission en raison d\'un beugue du Storage Access Framework</string>
+    <string name="toast_permission_esm_caution">Il sera peut-être nécessaire d\'accorder à nouveau cette permission en raison d\'un bogue dans l\'infrastructure qui gère l\'accès au stockage</string>
     <string name="item_required">Requis</string>
     <string name="item_optional">Optionnel</string>
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
+    <string name="export_app_summary_success">La collection d\'applications a été exportée avec succès</string>
+    <string name="export_app_summary_fail">L\'export de la collection d\'applications a échoué</string>
 </resources>
