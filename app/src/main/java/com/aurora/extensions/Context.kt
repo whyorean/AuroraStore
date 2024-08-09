@@ -134,6 +134,23 @@ fun Context.accentColor(): Int {
     return ContextCompat.getColor(this, color)
 }
 
+fun Context.backgroundColor(): Int {
+    val color = when (Preferences.getInteger(this, Preferences.PREFERENCE_THEME_TYPE)) {
+        1 -> R.color.colorWhite
+        2 -> R.color.colorDarkBackground
+        3 -> R.color.colorBlack
+        4 -> R.color.colorDarkXBackground
+        5 -> R.color.colorDarkordBackground
+        else -> null
+    }
+
+    if (color == null) {
+        return getStyledAttributeColor(com.google.android.material.R.attr.colorSurface)
+    }
+
+    return ContextCompat.getColor(this, color)
+}
+
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
     return if (isMAndAbove()) {
         (getSystemService(Context.POWER_SERVICE) as PowerManager).isIgnoringBatteryOptimizations(
