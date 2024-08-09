@@ -293,7 +293,7 @@
     <string name="title_blacklist_manager">Nigran liston administri</string>
     <string name="ui_accent_0">Sistema</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="action_favourite">Preferi</string>
+    <string name="action_favourite">Marki kiel preferato</string>
     <string name="toast_anonymous_restriction">Maldisponebla per anonimaj kontoj</string>
     <string name="ui_accent_12">Disskordblua</string>
     <string name="rate_limited">Ups, la ofteco de petoj de tiu konto estas limigata!</string>
@@ -410,4 +410,16 @@
     <string name="details_beta_description">Vi vidos novajn funkciarojn kaj cimojn pli frue ol la publiko. Donu vian opinion al programistoj por helpi ilin plibonigi la apon.</string>
     <string name="details_beta_delay">Anigado eble daŭros iom tempon, vi povos kontroli la anigstaton poste.</string>
     <string name="title_apps_sale_provider">Provizanto - bestappsales.com</string>
+    <string name="about_xda_summary">Vidi la Aurora Store XDA fadenon por priparoloj aŭ sugestoj.</string>
+    <string name="android_market_desc">Android Market estis reta butiko ofertinta programaraplikaĵojn dizajnitajn por Androidaparatojn, retirigita en 2017.</string>
+    <string name="toast_developer_setting_failed">Ŝaltu la programistajn agordojn en la aparaton agordoj por malfermi ĝin.</string>
+    <string name="toast_rated_success">Taksita, la afiŝado eble necesigos iom tempon</string>
+    <string name="onboarding_permission_esm">Eksteran storon administrilo</string>
+    <string name="google_play_store_desc">Google Play, ankaŭ konata tiel Google Play Store kaj estinte Android market.</string>
+    <string name="onboarding_permission_esa">Eksteran storon atingo</string>
+    <string name="about_aurora_store_summary">Aurora Store ebligi serĉi kaj elŝuti apojn el la oficiala Google Play Store. Vi povas vidi apojn priskribojn, ekrankopiojn, ĝisdatigojn, komentojn kaj elŝuti la APKjn rekte el Google Play al via aparato. Por uzi Aurora Store, necesas, ke vi havas Google Play konton kaj ensalutas tiun konton kiam vi malfermi kaj agordi Aurora Store je la unua fojo.
+\n
+\nMalkiel tradiciaj apbutikoj, Aurora Store ne posedas, donas permesilon aŭ disdonas iun ajn apon. Ĉiuj apoj, appriskriboj, ekrankopiojn kaj aliaj enhavoj en Aurora Store estas rekte atingataj, elŝutataj aŭ montriĝataj el Google Play. Aurora Store funkcias ekzakte tiel pordo aŭ retumilo, ebligante vin saluti vian Google Play konton kaj trovi apojn el Google Play.
+\n
+\nBonvolu rimarki ke Aurora Store ne havas ajn aprobon, patronadon aŭ rajtigon el Google, Google Play, iu ajn apo elŝutita tra Aurora Store aŭ iu ajn approgramisto; nek havas Aurora Store iun ajn filion, kunlaboron aŭ interligecon kun ili.</string>
 </resources>
