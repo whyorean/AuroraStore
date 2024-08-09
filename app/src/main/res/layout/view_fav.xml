@@ -19,18 +19,19 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingStart="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_small">
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingEnd="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_icon"
         android:layout_width="@dimen/icon_size_medium"
-        android:layout_height="@dimen/icon_size_medium"
-        android:layout_centerVertical="true" />
-
+        android:layout_height="@dimen/icon_size_medium" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_line1"
@@ -39,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_toStartOf="@id/btn_favourite"
-        android:layout_toEndOf="@id/img_icon" />
+        android:layout_toEndOf="@id/img_icon"
+        tools:text="Line1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_line2"
@@ -49,7 +51,7 @@
         android:layout_below="@+id/txt_line1"
         android:layout_alignStart="@id/txt_line1"
         android:layout_alignEnd="@id/txt_line1"
-        android:layout_marginTop="@dimen/margin_xxsmall" />
+        tools:text="Line2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_line3"
@@ -59,7 +61,7 @@
         android:layout_below="@+id/txt_line2"
         android:layout_alignStart="@id/txt_line1"
         android:layout_alignEnd="@id/txt_line1"
-        android:layout_marginTop="@dimen/margin_xxsmall" />
+        tools:text="Line3" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_favourite"

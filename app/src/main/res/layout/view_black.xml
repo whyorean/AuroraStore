@@ -22,7 +22,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingStart="@dimen/padding_normal"
-    android:paddingEnd="@dimen/padding_small">
+    android:paddingTop="@dimen/padding_xsmall"
+    android:paddingEnd="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_xsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_icon"

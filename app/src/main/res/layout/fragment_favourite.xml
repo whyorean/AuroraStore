@@ -21,6 +21,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -41,5 +42,6 @@
         android:clipToPadding="true"
         android:paddingBottom="@dimen/height_bottom_adj"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/view_app_list"
         app:stackFromEnd="false" />
 </RelativeLayout>
