@@ -9,11 +9,11 @@ import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.Data
+import androidx.work.ForegroundInfo
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.NotificationUtil
@@ -104,7 +104,7 @@ class ExportWorker @AssistedInject constructor(
 
         if (packageName.isNullOrEmpty() || isDownload && versionCode == -1) {
             Log.e(TAG, "Input data is corrupt, bailing out!")
-            notifyStatus(displayName?: String(), uri, false)
+            notifyStatus(displayName ?: String(), uri, false)
             return Result.failure()
         }
 
@@ -117,11 +117,18 @@ class ExportWorker @AssistedInject constructor(
             notifyStatus(displayName ?: packageName, uri)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to export $packageName", exception)
-            notifyStatus(displayName?: packageName, uri, false)
+            notifyStatus(displayName ?: packageName, uri, false)
             return Result.failure()
         }
 
         return Result.success()
+    }
+
+    override suspend fun getForegroundInfo(): ForegroundInfo {
+        return ForegroundInfo(
+            NOTIFICATION_ID,
+            NotificationUtil.getExportNotification(appContext)
+        )
     }
 
     private fun notifyStatus(packageName: String, uri: Uri, success: Boolean = true) {

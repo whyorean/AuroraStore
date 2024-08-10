@@ -304,7 +304,7 @@ class DownloadWorker @AssistedInject constructor(
                     Log.e(TAG, "Incorrect hash for ${request.file}")
                     throw Exception("Incorrect hash")
                 }
-                
+
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to download ${request.file}!", exception)
                 notifyStatus(DownloadStatus.FAILED)
@@ -357,6 +357,7 @@ class DownloadWorker @AssistedInject constructor(
         } else {
             NotificationUtil.getDownloadNotification(appContext)
         }
+
         return if (isQAndAbove()) {
             ForegroundInfo(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
         } else {
@@ -441,7 +442,7 @@ class DownloadWorker @AssistedInject constructor(
             }
             return proxy
         } else {
-            Log.i(TAG,"Proxy is disabled")
+            Log.i(TAG, "Proxy is disabled")
             return null
         }
     }

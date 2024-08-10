@@ -470,6 +470,8 @@
     <string name="toast_fav_export_success">Favourites exported!</string>
 
     <!-- ExportWorker -->
+    <string name="export_app_title">File Exporter</string>
+    <string name="export_app_summary">Hold on, exporting your file</string>
     <string name="export_app_summary_success">Successfully exported app bundle</string>
     <string name="export_app_summary_fail">Failed to exported app bundle</string>
 

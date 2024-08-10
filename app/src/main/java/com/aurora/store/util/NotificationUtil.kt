@@ -19,7 +19,6 @@ import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.WorkManager
 import com.aurora.Constants
 import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
@@ -249,6 +248,16 @@ object NotificationUtil {
             .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setAutoCancel(true)
+            .build()
+    }
+
+    fun getExportNotification(context: Context): Notification {
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+            .setSmallIcon(R.drawable.ic_file_copy)
+            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
+            .setContentTitle(context.getString(R.string.export_app_title))
+            .setContentText(context.getString(R.string.export_app_summary))
+            .setOngoing(false)
             .build()
     }
 
