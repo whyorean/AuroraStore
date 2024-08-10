@@ -108,7 +108,7 @@ class SpoofFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
 
     private fun importDeviceConfig(uri: Uri) {
         try {
-            context?.contentResolver?.openInputStream(uri)?.use { input ->
+            requireContext().contentResolver?.openInputStream(uri)?.use { input ->
                 PathUtil.getNewEmptySpoofConfig(requireContext()).outputStream().use {
                     input.copyTo(it)
                 }
@@ -124,8 +124,8 @@ class SpoofFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
     private fun exportDeviceConfig(uri: Uri) {
         try {
             NativeDeviceInfoProvider(requireContext())
-                .getNativeDeviceProperties()
-                .store(context?.contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
+                .getNativeDeviceProperties(true)
+                .store(requireContext().contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
             toast(R.string.toast_export_success)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to export device config", exception)

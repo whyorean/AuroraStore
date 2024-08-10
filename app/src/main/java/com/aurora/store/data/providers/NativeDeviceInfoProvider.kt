@@ -20,16 +20,15 @@ package com.aurora.store.data.providers
 
 import android.app.ActivityManager
 import android.content.Context
-import android.content.ContextWrapper
+import android.content.Context.ACTIVITY_SERVICE
 import android.content.res.Configuration
 import android.os.Build
-import android.text.TextUtils
 import com.aurora.extensions.isHuawei
 import java.util.Properties
 
-class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
+class NativeDeviceInfoProvider(val context: Context) {
 
-    fun getNativeDeviceProperties(): Properties {
+    fun getNativeDeviceProperties(isExport: Boolean = false): Properties {
         val properties = Properties().apply {
             //Build Props
             setProperty("UserReadableName", "${Build.DEVICE}-default")
@@ -52,7 +51,7 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
             setProperty("Build.ID", Build.ID)
             setProperty("Build.BOOTLOADER", Build.BOOTLOADER)
 
-            val config = applicationContext.resources.configuration
+            val config = context.resources.configuration
             setProperty("TouchScreen", "${config.touchscreen}")
             setProperty("Keyboard", "${config.keyboard}")
             setProperty("Navigation", "${config.navigation}")
@@ -64,11 +63,10 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
             )
 
             //Display Metrics
-            val metrics = applicationContext.resources.displayMetrics
+            val metrics = context.resources.displayMetrics
             setProperty("Screen.Density", "${metrics.densityDpi}")
             setProperty("Screen.Width", "${metrics.widthPixels}")
             setProperty("Screen.Height", "${metrics.heightPixels}")
-
 
             //Supported Platforms
             setProperty("Platforms", Build.SUPPORTED_ABIS.joinToString(separator = ","))
@@ -80,7 +78,7 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
             setProperty("SharedLibraries", getSharedLibraries().joinToString(separator = ","))
             //GL Extensions
             val activityManager =
-                applicationContext.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+                context.getSystemService(ACTIVITY_SERVICE) as ActivityManager
             setProperty(
                 "GL.Version",
                 activityManager.deviceConfigurationInfo.reqGlEsVersion.toString()
@@ -92,9 +90,11 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
 
             //Google Related Props
             setProperty("Client", "android-google")
-            setProperty("GSF.version", "203615037")
-            setProperty("Vending.version", "82201710")
-            setProperty("Vending.versionString", "22.0.17-21 [0] [PR] 332555730")
+
+            val gsfVersionProvider = NativeGsfVersionProvider(context, isExport)
+            setProperty("GSF.version", gsfVersionProvider.gsfVersionCode.toString())
+            setProperty("Vending.version", gsfVersionProvider.vendingVersionCode.toString())
+            setProperty("Vending.versionString", gsfVersionProvider.vendingVersionString)
 
             //MISC
             setProperty("Roaming", "mobile-notroaming")
@@ -105,51 +105,31 @@ class NativeDeviceInfoProvider(context: Context) : ContextWrapper(context) {
             setProperty("SimOperator", "38")
         }
 
-        if (isHuawei())
+        if (isHuawei() && !isExport)
             stripHuaweiProperties(properties)
 
         return properties
     }
 
     private fun getFeatures(): List<String> {
-        val featureStringList: MutableList<String> = ArrayList()
-        try {
-            val availableFeatures = applicationContext.packageManager.systemAvailableFeatures
-            for (feature in availableFeatures) {
-                if (feature.name.isNotEmpty()) {
-                    featureStringList.add(feature.name)
-                }
-            }
-        } catch (e: Exception) {
-
-        }
-        return featureStringList
+        return context
+            .packageManager
+            .systemAvailableFeatures
+            ?.mapNotNull { it.name } ?: emptyList()
     }
 
     private fun getLocales(): List<String> {
-        val localeList: MutableList<String> = ArrayList()
-        localeList.addAll(listOf(*applicationContext.assets.locales))
-        val locales: MutableList<String> = ArrayList()
-        for (locale in localeList) {
-            if (TextUtils.isEmpty(locale)) {
-                continue
-            }
-            locales.add(locale.replace("-", "_"))
-        }
-        return locales
+        return context
+            .assets
+            .locales
+            .mapNotNull { it.replace("-", "_") }
     }
 
     private fun getSharedLibraries(): List<String> {
-        val systemSharedLibraryNames = applicationContext.packageManager.systemSharedLibraryNames
-        val libraries: MutableList<String> = ArrayList()
-        try {
-            if (systemSharedLibraryNames != null) {
-                libraries.addAll(listOf(*systemSharedLibraryNames))
-            }
-        } catch (e: Exception) {
-
-        }
-        return libraries
+        return context
+            .packageManager
+            .systemSharedLibraryNames
+            ?.toList() ?: emptyList()
     }
 
     private fun stripHuaweiProperties(properties: Properties): Properties {

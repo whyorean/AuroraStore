@@ -24,53 +24,28 @@ import android.content.pm.PackageManager
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.store.util.PackageUtil.getPackageInfo
 
-class NativeGsfVersionProvider(context: Context) {
-    private var gsfVersionCode = 0L
-    private var vendingVersionCode = 0L
-    private var vendingVersionString = ""
+class NativeGsfVersionProvider(context: Context, isExport: Boolean = false) {
+    private val GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms"
+    private val GOOGLE_VENDING_PACKAGE_ID = "com.android.vending"
+
+    // Preferred defaults, not any specific reason they just work fine.
+    var gsfVersionCode = 203019037L
+    var vendingVersionCode = 82151710L
+    var vendingVersionString = "21.5.17-21 [0] [PR] 326734551"
 
     init {
         try {
-            val gsfPackageInfo = getPackageInfo(context, GOOGLE_SERVICES_PACKAGE_ID)
-            gsfVersionCode = PackageInfoCompat.getLongVersionCode(gsfPackageInfo)
-        } catch (e: PackageManager.NameNotFoundException) {
-            // com.google.android.gms not found
+            if (isExport) {
+                getPackageInfo(context, GOOGLE_SERVICES_PACKAGE_ID).let {
+                    gsfVersionCode = PackageInfoCompat.getLongVersionCode(it)
+                }
+
+                getPackageInfo(context, GOOGLE_VENDING_PACKAGE_ID).let {
+                    vendingVersionCode = PackageInfoCompat.getLongVersionCode(it)
+                    vendingVersionString = it.versionName ?: vendingVersionString
+                }
+            }
+        } catch (_: PackageManager.NameNotFoundException) {
         }
-        try {
-            val packageInfo = getPackageInfo(context, GOOGLE_VENDING_PACKAGE_ID)
-            vendingVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-            vendingVersionString = packageInfo.versionName!!
-        } catch (e: PackageManager.NameNotFoundException) {
-            // com.android.vending not found
-        }
-    }
-
-    fun getGsfVersionCode(defaultIfNotFound: Boolean): Long {
-        return if (defaultIfNotFound && gsfVersionCode < GOOGLE_SERVICES_VERSION_CODE)
-            GOOGLE_SERVICES_VERSION_CODE
-        else
-            gsfVersionCode
-    }
-
-    fun getVendingVersionCode(defaultIfNotFound: Boolean): Long {
-        return if (defaultIfNotFound && vendingVersionCode < GOOGLE_VENDING_VERSION_CODE)
-            GOOGLE_VENDING_VERSION_CODE
-        else
-            vendingVersionCode
-    }
-
-    fun getVendingVersionString(defaultIfNotFound: Boolean): String {
-        return if (defaultIfNotFound && vendingVersionCode < GOOGLE_VENDING_VERSION_CODE)
-            GOOGLE_VENDING_VERSION_STRING
-        else
-            vendingVersionString
-    }
-
-    companion object {
-        private const val GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms"
-        private const val GOOGLE_VENDING_PACKAGE_ID = "com.android.vending"
-        private const val GOOGLE_SERVICES_VERSION_CODE = 203019037L
-        private const val GOOGLE_VENDING_VERSION_CODE = 82151710L
-        private const val GOOGLE_VENDING_VERSION_STRING = "21.5.17-21 [0] [PR] 326734551"
     }
 }
