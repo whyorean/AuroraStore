@@ -26,11 +26,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.airbnb.epoxy.EpoxyRecyclerView
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.data.model.MinimalApp
+import com.aurora.store.util.Log
 import com.google.gson.Gson
 import java.lang.reflect.ParameterizedType
 import javax.inject.Inject
@@ -61,6 +63,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
     }
 
     override fun onDestroyView() {
+        cleanupRecyclerViews(findAllRecyclerViews(requireView()))
         _binding = null
         super.onDestroyView()
     }
@@ -115,5 +118,31 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     fun openAppMenuSheet(app: MinimalApp) {
         findNavController().navigate(MobileNavigationDirections.actionGlobalAppMenuSheet(app))
+    }
+
+    private fun cleanupRecyclerViews(recyclerViews: List<EpoxyRecyclerView>) {
+        recyclerViews.forEach { recyclerView ->
+            runCatching {
+                recyclerView.adapter?.let {
+                    recyclerView.swapAdapter(it, true)
+                }
+            }.onFailure {
+                Log.e("Failed to cleanup RecyclerView", it.message)
+            }
+        }
+    }
+
+    private fun findAllRecyclerViews(view: View): List<EpoxyRecyclerView> {
+        val recyclerViews = mutableListOf<EpoxyRecyclerView>()
+
+        if (view is EpoxyRecyclerView) {
+            recyclerViews.add(view)
+        } else if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                recyclerViews.addAll(findAllRecyclerViews(view.getChildAt(i)))
+            }
+        }
+
+        return recyclerViews
     }
 }
