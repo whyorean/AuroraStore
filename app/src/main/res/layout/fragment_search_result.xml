@@ -58,8 +58,6 @@
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/action_filter"
         android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Alt"
-        android:textColor="@color/colorWhite"
-        app:backgroundTint="@color/colorAccent"
-        app:icon="@drawable/ic_filter"
-        app:iconTint="@color/colorWhite" />
+        app:iconPadding="@dimen/padding_small"
+        app:icon="@drawable/ic_filter" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
