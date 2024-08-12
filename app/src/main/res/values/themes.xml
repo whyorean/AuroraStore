@@ -30,7 +30,7 @@
         <item name="scrimBlack">@color/colorScrimBlack</item>
         <item name="colorShimmer">@color/colorShimmer</item>
         <item name="colorStroke">@color/colorStroke</item>
-        <item name="chipStyle">@style/Widget.Material3.Chip.Filter</item>
+        <item name="chipStyle">@style/AppTheme.FilterChip</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
@@ -60,7 +60,7 @@
         <item name="scrimBlack">@color/colorScrimBlack</item>
         <item name="colorShimmer">@color/colorShimmer</item>
         <item name="colorStroke">@color/colorStroke</item>
-        <item name="chipStyle">@style/Widget.Material3.Chip.Filter</item>
+        <item name="chipStyle">@style/AppTheme.FilterChip</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
@@ -78,7 +78,7 @@
         <item name="scrimBlack">@color/colorScrimBlack</item>
         <item name="colorShimmer">@color/colorShimmerDark</item>
         <item name="colorStroke">@color/colorStrokeDark</item>
-        <item name="chipStyle">@style/Widget.Material3.Chip.Filter</item>
+        <item name="chipStyle">@style/AppTheme.FilterChip</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
     </style>
 
@@ -119,5 +119,11 @@
 
     <style name="AppTheme.SwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
         <item name="widgetLayout">@layout/preference_material_switch</item>
+    </style>
+
+    <style name="AppTheme.FilterChip" parent="@style/Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@drawable/filter_chip_background</item>
+        <item name="chipStrokeColor">?colorControlHighlight</item>
+        <item name="chipCornerRadius">32dp</item>
     </style>
 </resources>

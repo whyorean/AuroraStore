@@ -20,8 +20,12 @@
 package com.aurora.store.view.ui.sheets
 
 import android.content.DialogInterface
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import com.aurora.extensions.accentColor
+import com.aurora.extensions.backgroundColor
+import com.aurora.extensions.contrastingColor
 import com.aurora.store.R
 import com.aurora.store.data.model.Filter
 import com.aurora.store.data.providers.FilterProvider
@@ -53,6 +57,7 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
 
     private fun attachSingleChips() {
         binding.filterGfs.apply {
+            applyColors()
             isChecked = filter.gsfDependentApps
             setOnCheckedChangeListener { _, checked ->
                 isChecked = checked
@@ -61,6 +66,7 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
         }
 
         binding.filterPaid.apply {
+            applyColors()
             isChecked = filter.paidApps
             setOnCheckedChangeListener { _, checked ->
                 isChecked = checked
@@ -69,6 +75,7 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
         }
 
         binding.filterAds.apply {
+            applyColors()
             isChecked = filter.appsWithAds
             setOnCheckedChangeListener { _, checked ->
                 isChecked = checked
@@ -87,6 +94,8 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
             val chip = Chip(requireContext())
             chip.id = index
             chip.text = value
+            chip.textColors
+            chip.applyColors()
             chip.isChecked = filter.downloads == downloadValues[index].toInt()
             binding.downloadChips.addView(chip)
         }
@@ -96,9 +105,10 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
         }
 
         ratingLabels.forEachIndexed { index, value ->
-            val chip = Chip(requireActivity())
+            val chip = Chip(requireContext())
             chip.id = index
             chip.text = value
+            chip.applyColors()
             chip.isChecked = filter.rating == ratingValues[index].toFloat()
             binding.ratingChips.addView(chip)
         }
@@ -106,5 +116,22 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
         binding.ratingChips.setOnCheckedStateChangeListener { _, checkedIds ->
             filter = filter.copy(rating = ratingValues[checkedIds[0]].toFloat())
         }
+    }
+
+    private fun Chip.applyColors() {
+        setTextColor(
+            ColorStateList(
+                arrayOf(
+                    intArrayOf(android.R.attr.state_checked),
+                    intArrayOf()
+                ),
+                intArrayOf(
+                    contrastingColor(requireContext().accentColor()),
+                    contrastingColor(requireContext().backgroundColor())
+                )
+            )
+        )
+
+        checkedIconTint = ColorStateList.valueOf(contrastingColor(requireContext().accentColor()))
     }
 }
