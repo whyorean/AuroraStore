@@ -20,8 +20,10 @@
 package com.aurora.extensions
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 fun View.isVisible() = visibility == View.VISIBLE
 
@@ -81,5 +83,11 @@ fun View.flip(resetToZero: Boolean = true, duration: Long = 400) {
 
 fun View.getString(resourceId: Int): String {
     return context.getString(resourceId)
+}
+
+fun FloatingActionButton.applyColors() {
+    val accentColor = context.accentColor()
+    backgroundTintList = ColorStateList.valueOf(accentColor)
+    imageTintList = ColorStateList.valueOf(contrastingColor(accentColor))
 }
 

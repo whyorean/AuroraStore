@@ -81,7 +81,7 @@ fun lightenColor(@ColorInt color: Int, factor: Float = 0.5f, @Nullable alpha: In
 }
 
 /**
- * Computes a contrasting color from the given color.
+ * Computes a contrasting color (B & W only) from the given color.
  * @param color The color to contrast.
  * @return The contrasting color.
  */
