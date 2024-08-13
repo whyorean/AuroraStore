@@ -432,4 +432,6 @@
     <string name="toast_permission_installer_required">Nejprve musíte udělit oprávnění instalátoru</string>
     <string name="details_data_safety_subtitle">Postupy ochrany soukromí a zabezpečení dat poskytnuté vývojářem</string>
     <string name="toast_permission_esm_caution">Možná budete muset oprávnění znovu udělit z důvodu chyby ve Storage Access Framework</string>
+    <string name="force_restart_title">Restartovat Aurora Store</string>
+    <string name="force_restart_summary">Aplikace Aurora Store, potřebuje restartovat pro použití nového nastavení</string>
 </resources>

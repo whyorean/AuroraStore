@@ -432,4 +432,6 @@
     <string name="toast_permission_esm_caution">Depolama Erişim Çerçevesindeki bir hata nedeniyle izni yeniden vermeniz gerekebilir</string>
     <string name="item_required">Gerekli</string>
     <string name="item_optional">İsteğe bağlı</string>
+    <string name="force_restart_title">Aurora Store\'u yeniden başlat</string>
+    <string name="force_restart_summary">Aurora Store\'un yeni değiştirilen ayarları uygulamak için yeniden başlatılması gerekir</string>
 </resources>

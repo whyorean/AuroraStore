@@ -9,5 +9,5 @@ Il est capable de fonctionner avec ou sans les services Google Play ou MicroG.
 • Conception et design élégants - bâti avec les normes du référentiel Material Design 3
 • Prise en charge des comptes Google - Vous pouvez vous connecter à un compte personnel ou de manière anonyme
 • Mode furtif - Changez votre profil d'appareil et/ou vos informations de localisation afin de contourner les limitations régionales et accéder à toutes les applications géo-verrouillées
-• Intégration d'[Exodus Privacy](https://exodus-privacy.eu.org/) - Repérez instantanément les traqueurs de données dans les applications
-• Fonction liste noire des mises à jour - Choisissez les applications spécifiques dont vous souhaitez ignorer les mises-à-jour
+• Intégration d'[Exodus Privacy](https://exodus-privacy.eu.org/) - Repérez instantanément les traqueurs de données personnelles dans les applications
+• Fonction liste noire des mises à jour - Choisissez les applications pour lesquelles vous souhaitez ignorer les mises à jour

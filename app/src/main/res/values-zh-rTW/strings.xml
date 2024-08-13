@@ -157,7 +157,7 @@
     <string name="onboarding_permission_installer_desc">允許從 Aurora Store 安裝應用程式</string>
     <string name="onboarding_permission_installer">安裝器權限</string>
     <string name="onboarding_permission_esm">外部儲存管理</string>
-    <string name="onboarding_permission_esa_desc">若要保存下載（APK &amp; OBB），匯出/匯入 設備配置 至/自 外部存儲。</string>
+    <string name="onboarding_permission_esa_desc">儲存大型應用程式與遊戲的 APK 擴展檔案 (OBBs)。</string>
     <string name="onboarding_permission_esa">外部儲存空間存取</string>
     <string name="onboarding_welcome_select">食飽未？</string>
     <string name="onboarding_title_welcome">歡迎</string>
@@ -378,4 +378,48 @@
     <string name="privacy_policy_title">隱私權政策</string>
     <string name="add">新增</string>
     <string name="remove">移除</string>
+    <string name="details_data_safety_subtitle">開發者聲明的資料隱私與安全措施</string>
+    <string name="about_wiki_summary">尋找常見問題 (F.A.Q.)、故障排除步驟等的解答</string>
+    <string name="shizuku_installer_subtitle">直接使用具有 adb/Root 權限的系統 API 進行操作</string>
+    <string name="manual_download_hint">輸入您想下載的版本代號</string>
+    <string name="faqs_subtitle">有疑問嗎？在這裡找到答案</string>
+    <string name="action_favourite">最愛</string>
+    <string name="details_no_favourites">未找到最愛的應用程式</string>
+    <string name="title_favourites_manager">最愛的應用程式</string>
+    <string name="root_installer_subtitle">使用 root 權限的 Shell 安裝工具</string>
+    <string name="root_installer_desc">需要 root/超級使用者權限，支援所有 Android 版本。</string>
+    <string name="native_installer_subtitle">基於 Intent 的安裝工具，適用於所有裝置</string>
+    <string name="failed_app_link">不支援，請嘗試手動關聯連結</string>
+    <string name="native_installer_desc">最適合給 Android 4.4 以下版本的裝置使用</string>
+    <string name="session_installer_subtitle">基於工作階段的安裝程式，用於安裝整合或分割的 APK</string>
+    <string name="details_data_safety_title">資料安全</string>
+    <string name="onboarding_permission_installer_legacy_desc">允許安裝來自未知來源的應用程式</string>
+    <string name="toast_permission_installer_required">您需要先授予安裝程式權限</string>
+    <string name="toast_permission_esm_caution">由於儲存存取框架的錯誤，您可能需要重新授予權限</string>
+    <string name="toast_fav_import_failed">無法匯入我的最愛！</string>
+    <string name="toast_fav_export_failed">匯出我的最愛失敗！</string>
+    <string name="toast_fav_import_success">已匯入我的最愛！</string>
+    <string name="toast_fav_export_success">已匯出我的最愛！</string>
+    <string name="export_app_summary_success">成功匯出應用程式套件</string>
+    <string name="services_installer_desc">需要將 Aurora Services 安裝為系統特權應用程式</string>
+    <string name="am_installer_subtitle">全功能開源套件管理器</string>
+    <string name="am_installer_desc">需要 App Manager，當 MIUI 最佳化啟用時，安裝需要 adb/root 模式</string>
+    <string name="about_aurora_store_subtitle">了解更多有關 Aurora Store 的資訊</string>
+    <string name="pref_clear_device_owner_summary">解除 Aurora Store 的裝置管理員權限</string>
+    <string name="action_uninstall_success">成功解除安裝</string>
+    <string name="pref_network_proxy_url_message">輸入有效的代理伺服器 URL 以透過代理伺服器傳輸所有資料。</string>
+    <string name="export_app_summary_fail">應用程式套件匯出失敗</string>
+    <string name="shizuku_installer_desc">需要 Shizuku 或 Sui，並且需要設定及授予權限</string>
+    <string name="services_installer_subtitle">背景安裝程式</string>
+    <string name="privacy_policy_subtitle">了解 Aurora Store 是如何使用您的資料</string>
+    <string name="about_aurora_store_summary">Aurora Store 讓您可以搜尋並下載來自官方 Google Play 商店的應用程式。您可以檢視應用程式的描述、截圖、更新內容、其他使用者的評論，並直接從 Google Play 下載 APK 到您的裝置上。要使用 Aurora Store，您需要擁有 Google Play 帳戶，並在首次開啟和設定 Aurora Store 時登入您的 Google Play 帳戶。
+\n
+\n與傳統的應用程式商店不同，Aurora Store 不擁有、授權或散佈任何應用程式。Aurora Store 中的所有應用程式、應用程式描述、截圖及其他內容，都是直接從 Google Play 取得、下載及顯示。Aurora Store 的運作方式與入口網站或瀏覽器相似，讓您可以登入 Google Play 帳戶並從 Google Play 尋找應用程式。
+\n
+\n請注意，Aurora Store 未經 Google、Google Play、透過 Aurora Store 下載的任何應用程式或其開發者的核准、贊助或授權；Aurora Store 也與他們沒有任何關聯、合作或連結。</string>
+    <string name="action_logout_confirmation_title">登出？</string>
+    <string name="action_logout_confirmation_message">您確定要登出嗎？</string>
+    <string name="check_updates">檢查更新</string>
+    <string name="force_restart_title">重新啟動 Aurora Store</string>
+    <string name="force_restart_summary">需要重新啟動 Aurora Store 以套用新變更的設定</string>
 </resources>

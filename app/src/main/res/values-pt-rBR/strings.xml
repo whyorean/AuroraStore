@@ -432,4 +432,6 @@
     <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de apps de fontes desconhecidas</string>
     <string name="toast_permission_installer_required">Você precisa conceder a permissão de instalador primeiro</string>
     <string name="item_optional">Opcional</string>
+    <string name="force_restart_title">Reiniciar a Aurora Store</string>
+    <string name="force_restart_summary">A Aurora Store precisa ser reiniciada para aplicar as novas configurações</string>
 </resources>

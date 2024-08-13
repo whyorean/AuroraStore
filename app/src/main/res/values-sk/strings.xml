@@ -432,4 +432,6 @@
     <string name="toast_fav_export_success">Obľúbené položky boli exportované!</string>
     <string name="action_logout_confirmation_title">Odhlásiť sa?</string>
     <string name="check_updates">Skontrolovať aktualizácie</string>
+    <string name="force_restart_summary">Aurora obchod je potrebné reštartovať, aby ste mohli použiť novo zmenené nastavenia</string>
+    <string name="force_restart_title">Reštartovať Aurora obchod</string>
 </resources>

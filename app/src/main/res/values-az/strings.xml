@@ -169,7 +169,7 @@
     <string name="notification_channel_general">Ümumi bildiriş</string>
     <string name="onboarding_permission_select">Aurora Store aşağıdakı icazələri tələb edir</string>
     <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
-    <string name="onboarding_welcome_select">Nə etmək istəyirsən\?</string>
+    <string name="onboarding_welcome_select">Nə etmək istəyirsiz?</string>
     <string name="onboarding_permission_esa">Xarici Yaddaş Girişi</string>
     <string name="onboarding_permission_esa_desc">Böyük tətbiqlər &amp; oyunlar üçün APK genişlətmə faylların (OBB) saxlamaq üçün.</string>
     <string name="onboarding_permission_esm">Xarici Yaddaş Meneceri</string>

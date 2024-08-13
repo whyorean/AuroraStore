@@ -468,4 +468,6 @@
     <string name="item_optional">Опционално</string>
     <string name="onboarding_permission_installer_legacy_desc">Дозволите инсталацију апликација из непознатих извора</string>
     <string name="item_required">Неопходно</string>
+    <string name="force_restart_title">Рестартујте Aurora Store</string>
+    <string name="force_restart_summary">Aurora Store се мора рестартовати да би се применила новопромењена подешавања</string>
 </resources>
