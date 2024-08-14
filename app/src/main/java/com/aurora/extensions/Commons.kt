@@ -22,8 +22,6 @@ package com.aurora.extensions
 import android.graphics.Color
 import android.text.format.DateFormat
 import androidx.annotation.ColorInt
-import java.io.PrintWriter
-import java.io.StringWriter
 import java.util.Calendar
 import java.util.Locale
 import javax.annotation.Nullable
@@ -32,19 +30,6 @@ fun Long.toDate(): String {
     val calendar = Calendar.getInstance(Locale.getDefault())
     calendar.timeInMillis = this
     return DateFormat.format("dd/MM/yy", calendar).toString()
-}
-
-fun Throwable.stackTraceToString(): String {
-    val stringWriter = StringWriter(1024)
-    val printWriter = PrintWriter(stringWriter)
-    printStackTrace(printWriter)
-    printWriter.close()
-    return stringWriter.toString()
-}
-
-fun isValidPackageName(packageName: String): Boolean {
-    val packageRegex = "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)*$".toRegex()
-    return packageName.matches(packageRegex)
 }
 
 /**

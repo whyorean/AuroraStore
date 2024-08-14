@@ -20,12 +20,12 @@
 package com.aurora.store.view.ui.splash
 
 import android.content.Intent
+import android.net.UrlQuerySanitizer
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
-import com.aurora.extensions.isValidPackageName
 import com.aurora.extensions.show
 import com.aurora.store.R
 import com.aurora.store.data.model.AuthState
@@ -209,13 +209,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         return if (activity?.intent != null && activity?.intent?.scheme == "market") {
             requireActivity().intent.data!!.getQueryParameter("id") ?: ""
         } else if (activity?.intent != null && activity?.intent?.action == Intent.ACTION_SEND) {
-            val clipData = requireActivity().intent.clipData?.getItemAt(0)?.text.toString()
-            if (clipData.contains("/store/apps/details?id=")) {
-                val packageName = clipData.split("id=").last().trim()
-                if (isValidPackageName(packageName)) packageName else ""
-            } else {
-                ""
-            }
+            val clipData = activity?.intent?.getStringExtra(Intent.EXTRA_TEXT) ?: ""
+            UrlQuerySanitizer(clipData).getValue("id") ?: ""
         } else {
             requireArguments().getString("packageName") ?: ""
         }
