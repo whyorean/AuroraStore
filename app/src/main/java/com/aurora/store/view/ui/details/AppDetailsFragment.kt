@@ -113,7 +113,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private var streamBundle: StreamBundle? = StreamBundle()
 
-    private var isExternal = false
+    private val isExternal get() = activity?.intent?.action != Intent.ACTION_MAIN
+
     private var downloadStatus = DownloadStatus.UNAVAILABLE
     private var isUpdatable: Boolean = false
     private var autoDownload: Boolean = false
@@ -189,7 +190,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             app = args.app!!
             inflatePartialApp()
         } else {
-            isExternal = true
             app = App(args.packageName)
         }
 
