@@ -434,6 +434,6 @@
     <string name="toast_permission_installer_required">Du musst zuerst die Installer-Berechtigung erteilen</string>
     <string name="force_restart_title">Aurora Store neu starten</string>
     <string name="force_restart_summary">Aurora Store muss neu gestartet werden, um die geänderten Einstellungen zu übernehmen</string>
-    <string name="export_app_title">Dateiexporteur</string>
-    <string name="export_app_summary">Moment, exportiere meine Datei</string>
+    <string name="export_app_title">Dateiexportierer</string>
+    <string name="export_app_summary">Moment, die Datei wird exportiert</string>
 </resources>
