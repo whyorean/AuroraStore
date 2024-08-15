@@ -434,4 +434,6 @@
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
     <string name="export_app_summary_success">La collection d\'applications a été exportée avec succès</string>
     <string name="export_app_summary_fail">L\'export de la collection d\'applications a échoué</string>
+    <string name="export_app_title">Exporter dans un fichier</string>
+    <string name="export_app_summary">Export en cours, veuillez patienter</string>
 </resources>
