@@ -434,4 +434,6 @@
     <string name="toast_permission_installer_required">你需要先授予安装器权限</string>
     <string name="force_restart_title">重启 Aurora 商店</string>
     <string name="force_restart_summary">需要重启 Aurora 商店来应用新更改的设置</string>
+    <string name="export_app_title">文件导出工具</string>
+    <string name="export_app_summary">请稍等，正导出你的文件</string>
 </resources>
