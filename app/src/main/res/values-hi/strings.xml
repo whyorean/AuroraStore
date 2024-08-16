@@ -434,4 +434,6 @@
     <string name="toast_permission_esm_caution">स्टोरेज एक्सेस फ्रेमवर्क में बग के कारण आपको अनुमति पुनः देनी पड़ सकती है</string>
     <string name="force_restart_title">ऑरोरा स्टोर रीस्टार्ट करें</string>
     <string name="force_restart_summary">नई बदली गई सेटिंग्स को लागू करने के लिए ऑरोरा स्टोर को रीस्टार्ट करना होगा</string>
+    <string name="export_app_summary">रुकिए, आपकी फाइल निर्यात हो रही है</string>
+    <string name="export_app_title">फाइल निर्यातक</string>
 </resources>

@@ -434,4 +434,5 @@
     <string name="onboarding_permission_installer_legacy_desc">Permite instalarea aplicațiilor din surse necunoscute</string>
     <string name="force_restart_title">Repornește Aurora Store</string>
     <string name="force_restart_summary">Aurora Store trebuie să fie repornită pentru ca noile schimbări să intre în efect</string>
+    <string name="export_app_summary">Așteptați, fișier in curs de exportare</string>
 </resources>

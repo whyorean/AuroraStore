@@ -434,4 +434,6 @@
     <string name="toast_permission_esm_caution">قد تضطر إلى إعادة منح الإذن بسبب خطأ في إطار الوصول إلى التخزين</string>
     <string name="force_restart_title">إعادة تشغيل متجر أورورا</string>
     <string name="force_restart_summary">يجب إعادة تشغيل متجر أورورا لتطبيق الإعدادات التي تم تغييرها حديثًا</string>
+    <string name="export_app_title">مصدِّر الملفات</string>
+    <string name="export_app_summary">انتظر، يتم تصدير ملفك</string>
 </resources>
