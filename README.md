@@ -33,8 +33,8 @@ For those concerned with privacy, **Aurora Store** does not require Google's pro
 Please only download the latest stable releases from GitLab or one of these sources:
 
 - GitLab: [Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
-- AuroraOSS: [Downloads](https://auroraoss.com/downloads.php)
-- AuroraOSS: [Stable](https://auroraoss.com/AuroraStore/Stable/)
+- AuroraOSS: [Downloads](https://auroraoss.com/downloads/AuroraStore/)
+- AuroraOSS: [Release](https://auroraoss.com/downloads/AuroraStore/Release/)
 - F-Droid: [Link](https://f-droid.org/en/packages/com.aurora.store/)
 - Telegram: [Channel](https://t.me/AuroraOfficial)
 - XDA Forum: [Thread](https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733)
