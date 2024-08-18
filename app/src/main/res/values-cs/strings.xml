@@ -434,4 +434,6 @@
     <string name="toast_permission_esm_caution">Možná budete muset oprávnění znovu udělit z důvodu chyby ve Storage Access Framework</string>
     <string name="force_restart_title">Restartovat Aurora Store</string>
     <string name="force_restart_summary">Aplikace Aurora Store, potřebuje restartovat pro použití nového nastavení</string>
+    <string name="export_app_summary">Čekejte prosím, probíhá export vašeho souboru</string>
+    <string name="export_app_title">Export souboru</string>
 </resources>

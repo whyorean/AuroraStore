@@ -434,4 +434,6 @@
     <string name="toast_permission_esm_caution">Może być konieczne ponowne przyznanie uprawnień z powodu błędu w Storage Access Framework</string>
     <string name="force_restart_title">Uruchom ponownie Aurora Store</string>
     <string name="force_restart_summary">Aby zastosować nowe ustawienia, należy uruchomić ponownie Aurora Store</string>
+    <string name="export_app_summary">Poczekaj, eksportuję plik</string>
+    <string name="export_app_title">Eksport pliku</string>
 </resources>
