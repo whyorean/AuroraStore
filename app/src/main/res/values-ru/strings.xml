@@ -425,4 +425,15 @@
     <string name="action_logout_confirmation_title">Выйти?</string>
     <string name="action_logout_confirmation_message">Вы действительно хотите выйти?</string>
     <string name="check_updates">Проверить обновления</string>
+    <string name="export_app_title">Экспортер Файлов</string>
+    <string name="export_app_summary">Подождите, экспортируем ваш файл</string>
+    <string name="force_restart_title">Перезапустить Aurora Store</string>
+    <string name="onboarding_permission_installer_legacy_desc">Разрешать установку приложений из неизвестных источников</string>
+    <string name="toast_permission_installer_required">Вы должны предоставить разрешение установщику сначала</string>
+    <string name="toast_permission_esm_caution">Вам может придется повторно предоставить разрешение из-за бага в Storage Access Framework</string>
+    <string name="item_required">Требуется</string>
+    <string name="item_optional">Не обязательно</string>
+    <string name="details_data_safety_title">Безопасность данных</string>
+    <string name="details_data_safety_subtitle">Практика конфиденциальности и безопасности данных, заявленная разработчиком</string>
+    <string name="force_restart_summary">Aurora Store должен быть перезапущен для применения новых настроек</string>
 </resources>
