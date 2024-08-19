@@ -429,7 +429,7 @@
     <string name="export_app_summary">Подождите, экспортируем ваш файл</string>
     <string name="force_restart_title">Перезапустить Aurora Store</string>
     <string name="onboarding_permission_installer_legacy_desc">Разрешать установку приложений из неизвестных источников</string>
-    <string name="toast_permission_installer_required">Вы должны предоставить разрешение установщику сначала</string>
+    <string name="toast_permission_installer_required">Сначала вам необходимо предоставить разрешение установщику</string>
     <string name="toast_permission_esm_caution">Вам может придется повторно предоставить разрешение из-за бага в Storage Access Framework</string>
     <string name="item_required">Требуется</string>
     <string name="item_optional">Не обязательно</string>
