@@ -83,4 +83,15 @@ class SpoofProvider @Inject constructor(
         Preferences.putBoolean(context, DEVICE_SPOOF_ENABLED, true)
         Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, gson.toJson(properties))
     }
+
+    fun removeSpoofLocale() {
+        Preferences.remove(context, LOCALE_SPOOF_ENABLED)
+        Preferences.remove(context, LOCALE_SPOOF_LANG)
+        Preferences.remove(context, LOCALE_SPOOF_COUNTRY)
+    }
+
+    fun removeSpoofDeviceProperties() {
+        Preferences.remove(context, DEVICE_SPOOF_ENABLED)
+        Preferences.remove(context, DEVICE_SPOOF_PROPERTIES)
+    }
 }
