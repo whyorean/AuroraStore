@@ -39,15 +39,15 @@ data class Report(
 ) : Parcelable
 
 data class ExodusTracker(
-    var id: Int = 0,
-    var name: String = String(),
-    var url: String = String(),
-    var signature: String = String(),
-    var date: String = String(),
-    var description: String = String(),
-    var networkSignature: String = String(),
-    var documentation: List<String> = emptyList(),
-    var categories: List<String> = emptyList()
+    val id: Int = 0,
+    val name: String = String(),
+    val url: String = String(),
+    val signature: String = String(),
+    val date: String = String(),
+    val description: String = String(),
+    val networkSignature: String = String(),
+    val documentation: List<String> = emptyList(),
+    val categories: List<String> = emptyList()
 ) {
 
     override fun hashCode(): Int {

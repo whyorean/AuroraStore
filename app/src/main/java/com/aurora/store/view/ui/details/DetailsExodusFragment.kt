@@ -86,17 +86,17 @@ class DetailsExodusFragment : BaseFragment<FragmentGenericWithToolbarBinding>() 
         }.toList()
 
         return trackerObjects.map {
-            ExodusTracker().apply {
-                id = it.getInt("id")
-                name = it.getString("name")
-                url = it.getString("website")
-                signature = it.getString("code_signature")
-                date = it.getString("creation_date")
-                description = it.getString("description")
-                networkSignature = it.getString("network_signature")
-                documentation = listOf(it.getString("documentation"))
+            ExodusTracker(
+                id = it.getInt("id"),
+                name = it.getString("name"),
+                url = it.getString("website"),
+                signature = it.getString("code_signature"),
+                date = it.getString("creation_date"),
+                description = it.getString("description"),
+                networkSignature = it.getString("network_signature"),
+                documentation = listOf(it.getString("documentation")),
                 categories = listOf(it.getString("categories"))
-            }
+            )
         }.toList()
     }
 }
