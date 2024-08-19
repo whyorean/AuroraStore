@@ -434,4 +434,6 @@
     <string name="item_optional">Opcional</string>
     <string name="force_restart_title">Reiniciar a Aurora Store</string>
     <string name="force_restart_summary">A Aurora Store precisa ser reiniciada para aplicar as novas configurações</string>
+    <string name="export_app_title">Exportador de Arquivos</string>
+    <string name="export_app_summary">Aguarde, exportando seu arquivo</string>
 </resources>
