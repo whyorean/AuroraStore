@@ -1,0 +1,8 @@
+• Targets Android 15
+• Switch to Web APIs for anonymous mode (better performance, more anonymous)
+• Support for data safety section in app details page
+• Set insecure anonymous mode as the default anonymous mode
+• New feature to add favorites apps to importable/exportable list
+• Implement Material You for remaining components with major UI and UX improvements
+• Multiple bug fixes and performance improvements
+• Translation updates
