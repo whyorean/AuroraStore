@@ -49,7 +49,8 @@ android {
         versionCode = 61
         versionName = "4.6.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.aurora.store.HiltInstrumentationTestRunner"
+        testInstrumentationRunnerArguments["disableAnalytics"] = "true"
     }
 
     signingConfigs {
@@ -183,7 +184,10 @@ dependencies {
 
     //Test
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.junit)
+    testImplementation(libs.google.truth)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.google.truth)
     androidTestImplementation(libs.androidx.espresso.core)
 
     //Hilt
@@ -192,11 +196,14 @@ dependencies {
     implementation(libs.hilt.android.core)
     implementation(libs.hilt.androidx.work)
 
+    kspAndroidTest(libs.hilt.android.compiler)
+    androidTestImplementation(libs.hilt.android.testing)
+
     //Room
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
 
     // LeakCanary
-     debugImplementation(libs.squareup.leakcanary.android)
+    debugImplementation(libs.squareup.leakcanary.android)
 }

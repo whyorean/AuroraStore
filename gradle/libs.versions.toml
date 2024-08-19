@@ -31,6 +31,7 @@ roomVersion = "2.6.1"
 shimmerVersion = "0.5.0"
 shizukuVersion = "13.1.5"
 swiperefreshlayoutVersion = "1.1.0"
+truth = "1.4.4"
 viewpager2Version = "1.1.0"
 workVersion = "2.9.1"
 
@@ -42,7 +43,7 @@ androidx-browser = { module = "androidx.browser:browser", version.ref = "browser
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreVersion" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }
-androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+androidx-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "junitVersion" }
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifeVersion" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifeVersion" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -69,8 +70,10 @@ github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.r
 google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gsonVersion" }
 google-protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavaliteVersion" }
+google-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
 hilt-android-core = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltVersion" }
 hilt-androidx-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltWorkVersion" }
 hilt-androidx-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWorkVersion" }
 junit = { module = "junit:junit", version.ref = "junit" }
