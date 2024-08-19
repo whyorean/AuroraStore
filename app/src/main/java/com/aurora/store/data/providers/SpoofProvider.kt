@@ -22,12 +22,17 @@ package com.aurora.store.data.providers
 import android.content.Context
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import java.lang.reflect.Modifier
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
 import java.util.Properties
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SpoofProvider(var context: Context) {
+@Singleton
+class SpoofProvider @Inject constructor(
+    @ApplicationContext val context: Context,
+    private val gson: Gson
+) {
 
     companion object {
         const val LOCALE_SPOOF_ENABLED = "LOCALE_SPOOF_ENABLED"
@@ -59,9 +64,6 @@ class SpoofProvider(var context: Context) {
 
     fun getSpoofDeviceProperties(): Properties {
         return if (isDeviceSpoofEnabled()) {
-            val gson: Gson =
-                GsonBuilder().excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT)
-                    .create()
             return gson.fromJson(
                 Preferences.getString(context, DEVICE_SPOOF_PROPERTIES),
                 Properties::class.java
@@ -78,9 +80,6 @@ class SpoofProvider(var context: Context) {
     }
 
     fun setSpoofDeviceProperties(properties: Properties) {
-        val gson: Gson =
-            GsonBuilder().excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT)
-                .create()
         Preferences.putBoolean(context, DEVICE_SPOOF_ENABLED, true)
         Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, gson.toJson(properties))
     }

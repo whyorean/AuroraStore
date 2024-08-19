@@ -30,12 +30,16 @@ import com.aurora.store.view.epoxy.views.preference.LocaleViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LocaleSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
 
     private val TAG = LocaleSpoofFragment::class.java.simpleName
-    private lateinit var spoofProvider: SpoofProvider
+
+    @Inject
+    lateinit var spoofProvider: SpoofProvider
+
     private lateinit var locale: Locale
 
     companion object {
@@ -50,7 +54,6 @@ class LocaleSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        spoofProvider = SpoofProvider(requireContext())
         locale = if (spoofProvider.isLocaleSpoofEnabled()) {
             spoofProvider.getSpoofLocale()
         } else {

@@ -36,12 +36,15 @@ import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Properties
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
     private val viewModel: SpoofViewModel by viewModels()
 
-    private lateinit var spoofProvider: SpoofProvider
+    @Inject
+    lateinit var spoofProvider: SpoofProvider
+
     private lateinit var properties: Properties
 
     companion object {
@@ -56,7 +59,6 @@ class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        spoofProvider = SpoofProvider(requireContext())
         properties = if (spoofProvider.isDeviceSpoofEnabled()) {
             spoofProvider.getSpoofDeviceProperties()
         } else {

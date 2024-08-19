@@ -46,12 +46,12 @@ import javax.inject.Singleton
 @Singleton
 class AuthProvider @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val gson: Gson
+    private val gson: Gson,
+    private val spoofProvider: SpoofProvider
 ) {
 
     private val TAG = AuthProvider::class.java.simpleName
 
-    private val spoofProvider: SpoofProvider get() = SpoofProvider(context)
     val properties: Properties
         get() {
             val currentProperties = if (spoofProvider.isDeviceSpoofEnabled()) {
