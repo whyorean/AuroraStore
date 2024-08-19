@@ -24,8 +24,11 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
@@ -67,12 +70,20 @@ class MainActivity : AppCompatActivity() {
         // This is needed thanks to OEMs breaking the MY_PACKAGE_REPLACED API
         MigrationReceiver.runMigrationsIfRequired(this)
 
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         applyThemeAccent()
 
         B = ActivityMainBinding.inflate(layoutInflater)
         setContentView(B.root)
+
+        // Adjust root view's paddings for edgeToEdge display
+        ViewCompat.setOnApplyWindowInsetsListener(B.root) { root, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            root.setPadding(insets.left, insets.top, insets.right, 0)
+            windowInsets
+        }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
