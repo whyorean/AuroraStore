@@ -21,6 +21,7 @@ package com.aurora.store.viewmodel.browse
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,7 +30,6 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +43,8 @@ class StreamBrowseViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider
 ) : ViewModel() {
+
+    private val TAG = StreamBrowseViewModel::class.java.simpleName
 
     private val streamHelper: StreamContract = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
@@ -72,7 +74,7 @@ class StreamBrowseViewModel @Inject constructor(
 
                         liveData.postValue(streamCluster)
                     } else {
-                        Log.i("End of Cluster")
+                        Log.i(TAG, "End of Cluster")
                     }
                 } catch (_: Exception) {
                 }

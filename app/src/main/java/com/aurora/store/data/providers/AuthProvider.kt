@@ -20,6 +20,7 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import android.util.Log
 import com.aurora.Constants
 import com.aurora.Constants.ACCOUNT_SIGNED_IN
 import com.aurora.gplayapi.data.models.AuthData
@@ -29,7 +30,6 @@ import com.aurora.store.R
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.Auth
 import com.aurora.store.data.network.HttpClient
-import com.aurora.store.util.Log
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
@@ -48,6 +48,8 @@ class AuthProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val gson: Gson
 ) {
+
+    private val TAG = AuthProvider::class.java.simpleName
 
     private val spoofProvider: SpoofProvider get() = SpoofProvider(context)
     val properties: Properties
@@ -111,7 +113,7 @@ class AuthProvider @Inject constructor(
     }
 
     private fun getSavedAuthData(): AuthData? {
-        Log.i("Loading saved AuthData")
+        Log.i(TAG, "Loading saved AuthData")
         val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
         return if (rawAuth.isNotEmpty()) {
             gson.fromJson(rawAuth, AuthData::class.java)
@@ -134,7 +136,7 @@ class AuthProvider @Inject constructor(
                     locale = locale
                 )
             } catch (exception: Exception) {
-                Log.e("Failed to generate Session", exception)
+                Log.e(TAG, "Failed to generate Session", exception)
                 return@withContext null
             }
         }
@@ -157,7 +159,7 @@ class AuthProvider @Inject constructor(
                     locale = locale
                 )
             } catch (exception: Exception) {
-                Log.e("Failed to generate AuthData", exception)
+                Log.e(TAG, "Failed to generate AuthData", exception)
                 return@withContext null
             }
         }

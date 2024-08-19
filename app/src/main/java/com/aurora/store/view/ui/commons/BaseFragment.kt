@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,12 +33,14 @@ import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.data.model.MinimalApp
-import com.aurora.store.util.Log
 import com.google.gson.Gson
 import java.lang.reflect.ParameterizedType
 import javax.inject.Inject
 
 abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
+
+    private val TAG = BaseFragment::class.java.simpleName
+
     @Inject
     lateinit var gson: Gson
 
@@ -127,7 +130,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
                     recyclerView.swapAdapter(it, true)
                 }
             }.onFailure {
-                Log.e("Failed to cleanup RecyclerView", it.message)
+                Log.e(TAG, "Failed to cleanup RecyclerView", it)
             }
         }
     }

@@ -29,6 +29,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.os.RemoteException
+import android.util.Log
 import androidx.core.content.FileProvider
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
@@ -38,7 +39,6 @@ import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
@@ -73,16 +73,18 @@ class ServiceInstaller @Inject constructor(
         }
     }
 
+    private val TAG = ServiceInstaller::class.java.simpleName
+
     override fun install(download: Download) {
         super.install(download)
 
         when {
             isAlreadyQueued(download.packageName) -> {
-                Log.i("${download.packageName} already queued")
+                Log.i(TAG, "${download.packageName} already queued")
             }
 
             PackageUtil.isInstalled(context, PRIVILEGED_EXTENSION_PACKAGE_NAME) -> {
-                Log.i("Received service install request for ${download.packageName}")
+                Log.i(TAG, "Received service install request for ${download.packageName}")
                 val fileList = getFiles(download.packageName, download.versionCode)
                 xInstall(
                     download.packageName,
@@ -118,7 +120,7 @@ class ServiceInstaller @Inject constructor(
                         val service = IPrivilegedService.Stub.asInterface(binder)
 
                         if (service.hasPrivilegedPermissions()) {
-                            Log.i(context.getString(R.string.installer_service_available))
+                            Log.i(TAG, context.getString(R.string.installer_service_available))
 
                             val callback = object : IPrivilegedCallback.Stub() {
 
@@ -192,7 +194,7 @@ class ServiceInstaller @Inject constructor(
                     override fun onServiceDisconnected(name: ComponentName) {
                         removeFromInstallQueue(packageName)
                         readyWithAction.set(true)
-                        Log.e("Disconnected from Aurora Services")
+                        Log.e(TAG, "Disconnected from Aurora Services")
                     }
                 }
 
@@ -208,12 +210,12 @@ class ServiceInstaller @Inject constructor(
             while (!readyWithAction.get()) {
                 Thread.sleep(1000)
             }
-            Log.i("Services Callback : install wait done")
+            Log.i(TAG, "Services Callback : install wait done")
         }
     }
 
     private fun handleCallbackUninstall(packageName: String, returnCode: Int, extra: String?) {
-        Log.i("Services Callback : $packageName $returnCode $extra")
+        Log.i(TAG, "Services Callback : $packageName $returnCode $extra")
 
         try {
             when (returnCode) {
@@ -243,7 +245,7 @@ class ServiceInstaller @Inject constructor(
     }
 
     private fun handleCallback(packageName: String, returnCode: Int, extra: String?) {
-        Log.i("Services Callback : $packageName $returnCode $extra")
+        Log.i(TAG, "Services Callback : $packageName $returnCode $extra")
 
         try {
             when (returnCode) {

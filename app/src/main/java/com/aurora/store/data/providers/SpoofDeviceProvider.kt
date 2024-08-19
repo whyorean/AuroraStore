@@ -20,8 +20,8 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import android.util.Log
 import com.aurora.store.BuildConfig
-import com.aurora.store.util.Log
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.BufferedInputStream
@@ -36,6 +36,8 @@ import javax.inject.Singleton
 
 @Singleton
 class SpoofDeviceProvider @Inject constructor(@ApplicationContext val context: Context) {
+
+    private val TAG = SpoofDeviceProvider::class.java.simpleName
 
     private val SUFFIX = ".properties"
 
@@ -89,8 +91,8 @@ class SpoofDeviceProvider @Inject constructor(@ApplicationContext val context: C
         try {
             properties.load(jarFile.getInputStream(entry))
             properties.setProperty("CONFIG_NAME", entry.name)
-        } catch (e: IOException) {
-            Log.e("Could not read %s", entry.name)
+        } catch (exception: IOException) {
+            Log.e(TAG, "Could not read ${entry.name}", exception)
         }
         return properties
     }
@@ -100,8 +102,8 @@ class SpoofDeviceProvider @Inject constructor(@ApplicationContext val context: C
         try {
             properties.load(BufferedInputStream(FileInputStream(file)))
             properties.setProperty("CONFIG_NAME", file.name)
-        } catch (e: IOException) {
-            Log.e("Could not read %s", file.name)
+        } catch (exception: IOException) {
+            Log.e(TAG, "Could not read ${file.name}", exception)
         }
         return properties
     }
@@ -114,7 +116,7 @@ class SpoofDeviceProvider @Inject constructor(@ApplicationContext val context: C
                     return JarFile(file)
                 }
             } catch (e: IOException) {
-                Log.e("Could not open Aurora Store apk as a jar file")
+                Log.e(TAG, "Could not open Aurora Store apk as a jar file")
             }
             return null
         }

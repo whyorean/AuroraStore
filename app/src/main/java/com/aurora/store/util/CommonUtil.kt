@@ -20,6 +20,7 @@
 package com.aurora.store.util
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.aurora.extensions.isSAndAbove
@@ -31,6 +32,8 @@ import kotlin.math.ln
 import kotlin.math.pow
 
 object CommonUtil {
+
+    private const val TAG = "CommonUtil"
 
     private val siPrefixes: Map<Int, String> = hashMapOf(
         Pair(0, ""),
@@ -148,9 +151,9 @@ object CommonUtil {
             try {
                 val sessionId = sessionInfo.sessionId
                 packageInstaller.abandonSession(sessionInfo.sessionId)
-                Log.i("Abandoned session id -> %d", sessionId)
-            } catch (e: Exception) {
-
+                Log.i(TAG, "Abandoned session id -> $sessionId")
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to cleanup installation sessions")
             }
         }
     }

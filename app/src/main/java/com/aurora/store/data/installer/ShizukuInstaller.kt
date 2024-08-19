@@ -32,6 +32,7 @@ import android.content.pm.PackageManagerHidden
 import android.os.Build
 import android.os.IBinder
 import android.os.IInterface
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.isOAndAbove
@@ -44,7 +45,6 @@ import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.rikka.tools.refine.Refine
@@ -71,6 +71,8 @@ class ShizukuInstaller @Inject constructor(
             )
         }
     }
+
+    private val TAG = ShizukuInstaller::class.java.simpleName
 
     // Taken from LSPatch (https://github.com/LSPosed/LSPatch)
     private fun IBinder.wrap() = ShizukuBinderWrapper(this)
@@ -100,7 +102,7 @@ class ShizukuInstaller @Inject constructor(
         super.install(download)
 
         if (isAlreadyQueued(download.packageName)) {
-            Log.i("${download.packageName} already queued")
+            Log.i(TAG, "${download.packageName} already queued")
         } else {
             download.sharedLibs.forEach {
                 // Shared library packages cannot be updated
@@ -126,7 +128,7 @@ class ShizukuInstaller @Inject constructor(
         sharedLibPkgName: String = "",
         displayName: String = ""
     ) {
-        Log.i("Received session install request for ${sharedLibPkgName.ifBlank { packageName }}")
+        Log.i(TAG, "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}")
 
         val (sessionId, session) = kotlin.runCatching {
             val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
@@ -158,7 +160,7 @@ class ShizukuInstaller @Inject constructor(
         }
 
         try {
-            Log.i("Writing splits to session for ${sharedLibPkgName.ifBlank { packageName }}")
+            Log.i(TAG, "Writing splits to session for ${sharedLibPkgName.ifBlank { packageName }}")
             getFiles(packageName, versionCode, sharedLibPkgName).forEach {
                 it.inputStream().use { input ->
                     session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}", 0, -1).use { output ->
@@ -185,7 +187,7 @@ class ShizukuInstaller @Inject constructor(
                 true
             )
 
-            Log.i("Starting install session for $packageName")
+            Log.i(TAG, "Starting install session for $packageName")
             session.commit(pendingIntent!!.intentSender)
             session.close()
         } catch (exception: Exception) {

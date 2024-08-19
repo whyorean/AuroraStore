@@ -20,12 +20,12 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
+import android.util.Log
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -50,9 +50,11 @@ class RootInstaller @Inject constructor(
         }
     }
 
+    private val TAG = RootInstaller::class.java.simpleName
+
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {
-            Log.i("${download.packageName} already queued")
+            Log.i(TAG, "${download.packageName} already queued")
         } else {
             if (Shell.getShell().isRoot) {
                 download.sharedLibs.forEach {
@@ -68,7 +70,7 @@ class RootInstaller @Inject constructor(
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
                 )
-                Log.e(" >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+                Log.e(TAG, " >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
             }
         }
     }

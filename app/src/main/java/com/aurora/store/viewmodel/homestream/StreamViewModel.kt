@@ -21,6 +21,7 @@ package com.aurora.store.viewmodel.homestream
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,7 +32,6 @@ import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.network.HttpClient
-import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +44,8 @@ import javax.inject.Inject
 class StreamViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
+
+    private val TAG = StreamViewModel::class.java.simpleName
 
     private var webStreamHelper = WebStreamHelper()
         .using(HttpClient.getPreferredClient(context))
@@ -91,7 +93,7 @@ class StreamViewModel @Inject constructor(
                         //Post updated to UI
                         liveData.postValue(ViewState.Success(stash))
                     } else {
-                        Log.i("End of Bundle")
+                        Log.i(TAG, "End of Bundle")
                     }
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
@@ -110,7 +112,7 @@ class StreamViewModel @Inject constructor(
                         updateCluster(category, streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(stash))
                     } else {
-                        Log.i("End of cluster")
+                        Log.i(TAG, "End of cluster")
                         streamCluster.clusterNextPageUrl = String()
                     }
                 } catch (e: Exception) {

@@ -29,6 +29,7 @@ import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.os.Process
+import android.util.Log
 import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
@@ -47,7 +48,6 @@ import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.model.SessionInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
@@ -58,6 +58,8 @@ import javax.inject.Singleton
 class SessionInstaller @Inject constructor(
     @ApplicationContext context: Context
 ) : InstallerBase(context) {
+
+    private val TAG = SessionInstaller::class.java.simpleName
 
     val currentSessionId: Int?
         get() = enqueuedSessions.firstOrNull()?.last()?.sessionId
@@ -130,10 +132,10 @@ class SessionInstaller @Inject constructor(
         val sessionSet =
             enqueuedSessions.find { set -> set.any { it.packageName == download.packageName } }
         if (sessionSet != null) {
-            Log.i("${download.packageName} already queued")
+            Log.i(TAG, "${download.packageName} already queued")
             commitInstall(sessionSet.first())
         } else {
-            Log.i("Received session install request for ${download.packageName}")
+            Log.i(TAG, "Received session install request for ${download.packageName}")
             val sessionInfoSet = mutableSetOf<SessionInfo>()
 
             download.sharedLibs.forEach {
@@ -178,7 +180,7 @@ class SessionInstaller @Inject constructor(
         val session = packageInstaller.openSession(sessionId)
 
         return try {
-            Log.i("Writing splits to session for $packageName")
+            Log.i(TAG, "Writing splits to session for $packageName")
             getFiles(packageName, versionCode, sharedLibPkgName).forEach { file ->
                 file.inputStream().use { input ->
                     session.openWrite(
@@ -224,7 +226,7 @@ class SessionInstaller @Inject constructor(
     }
 
     private fun commitInstall(sessionInfo: SessionInfo) {
-        Log.i("Starting install session for ${sessionInfo.packageName}")
+        Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
         val session = packageInstaller.openSession(sessionInfo.sessionId)
         session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
         session.close()

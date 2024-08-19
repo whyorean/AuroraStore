@@ -21,6 +21,7 @@ package com.aurora.store.viewmodel.browse
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,7 +29,6 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +42,8 @@ class ExpandedStreamBrowseViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider
 ) : ViewModel() {
+
+    private val TAG = ExpandedStreamBrowseViewModel::class.java.simpleName
 
     private val streamHelper: ExpandedBrowseHelper = ExpandedBrowseHelper(authProvider.authData!!)
         .using(HttpClient.getPreferredClient(context))
@@ -67,7 +69,7 @@ class ExpandedStreamBrowseViewModel @Inject constructor(
     }
 
     fun next() {
-        Log.e("NEXT CALED")
+        Log.e(TAG, "NEXT CALED")
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
@@ -83,9 +85,10 @@ class ExpandedStreamBrowseViewModel @Inject constructor(
                     liveData.postValue(streamCluster)
 
                     if (!streamCluster.hasNext()) {
-                        Log.i("End of Bundle")
+                        Log.i(TAG, "End of Bundle")
                     }
-                } catch (e: Exception) {
+                } catch (exception: Exception) {
+                    Log.e(TAG, "Failed to fetch next stream", exception)
                 }
             }
         }

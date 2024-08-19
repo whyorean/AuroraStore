@@ -23,11 +23,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
@@ -51,11 +51,13 @@ class NativeInstaller @Inject constructor(
         }
     }
 
+    private val TAG = NativeInstaller::class.java.simpleName
+
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {
-            Log.i("${download.packageName} already queued")
+            Log.i(TAG, "${download.packageName} already queued")
         } else {
-            Log.i("Received native install request for ${download.packageName}")
+            Log.i(TAG, "Received native install request for ${download.packageName}")
             getFiles(download.packageName, download.versionCode).forEach { xInstall(it) }
         }
     }

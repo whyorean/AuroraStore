@@ -1,6 +1,7 @@
 package com.aurora.store.util
 
 import android.content.Context
+import android.util.Log
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat

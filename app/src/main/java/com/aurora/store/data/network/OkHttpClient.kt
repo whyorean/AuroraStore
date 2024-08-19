@@ -19,10 +19,10 @@
 
 package com.aurora.store.data.network
 
+import android.util.Log
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.ProxyInfo
-import com.aurora.store.util.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,6 +37,8 @@ import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
 object OkHttpClient : IProxyHttpClient {
+
+    private const val TAG = "OkHttpClient"
 
     private const val POST = "POST"
     private const val GET = "GET"
@@ -193,7 +195,7 @@ object OkHttpClient : IProxyHttpClient {
             errorString = if (!response.isSuccessful) response.message else String()
         ).also {
             _responseCode.value = response.code
-            Log.i("OKHTTP [${response.code}] ${response.request.url}")
+            Log.i(TAG, "OKHTTP [${response.code}] ${response.request.url}")
         }
     }
 }

@@ -2,10 +2,10 @@ package com.aurora.store.data.installer
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import com.aurora.store.R
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -34,11 +34,13 @@ class AMInstaller @Inject constructor(
         }
     }
 
+    private val TAG = AMInstaller::class.java.simpleName
+
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {
-            Log.i("${download.packageName} already queued")
+            Log.i(TAG, "${download.packageName} already queued")
         } else {
-            Log.i("Received AM install request for ${download.packageName}")
+            Log.i(TAG, "Received AM install request for ${download.packageName}")
             val fileList = mutableListOf<File>()
 
             download.sharedLibs.forEach {

@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.PowerManager
 import android.provider.Settings
 import android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
+import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -25,12 +26,14 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.PermissionCallback
 import com.aurora.store.PermissionType
 import com.aurora.store.R
-import com.aurora.store.util.Log
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 
 @SuppressLint("NewApi")
 class PermissionProvider : ActivityResultCallback<ActivityResult> {
+
+    private val TAG = PermissionProvider::class.java.simpleName
+
     private var context: Context
     private var intentLauncher: ActivityResultLauncher<Intent>
     private var permissionLauncher: ActivityResultLauncher<String>
@@ -109,10 +112,10 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
                     }
                 }
             }
-        } catch (e: ActivityNotFoundException) {
-            Log.e("PermissionProvider", "Activity not found for $permissionType: ${e.message}")
-        } catch (e: Exception) {
-            Log.e("PermissionProvider", "Error requesting permission: ${e.message}")
+        } catch (activityNotFoundException: ActivityNotFoundException) {
+            Log.e(TAG, "Activity not found for $permissionType", activityNotFoundException)
+        } catch (exception: Exception) {
+            Log.e(TAG, "Error requesting permission", exception)
         }
     }
 

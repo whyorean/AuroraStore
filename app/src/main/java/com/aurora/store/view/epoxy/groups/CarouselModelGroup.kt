@@ -19,11 +19,11 @@
 
 package com.aurora.store.view.epoxy.groups
 
+import android.util.Log
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.EpoxyModelGroup
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
-import com.aurora.store.util.Log
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppViewModel_
@@ -40,6 +40,8 @@ class CarouselModelGroup(
         )
     ) {
     companion object {
+        private const val TAG = "CarouselModelGroup"
+
         private fun buildModels(
             streamCluster: StreamCluster,
             callbacks: GenericCarouselController.Callbacks
@@ -76,7 +78,7 @@ class CarouselModelGroup(
                             if (itemCount >= 2) {
                                 if (position == clusterViewModels.count() - 2) {
                                     callbacks.onClusterScrolled(streamCluster)
-                                    Log.i("Cluster %s Scrolled", streamCluster.clusterTitle)
+                                    Log.i(TAG, "Cluster ${streamCluster.clusterTitle} Scrolled")
                                 }
                             }
                         }

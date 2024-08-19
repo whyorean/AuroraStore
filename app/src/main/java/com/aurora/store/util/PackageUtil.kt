@@ -30,6 +30,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -41,6 +42,8 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.store.BuildConfig
 
 object PackageUtil {
+
+    private const val TAG = "PackageUtil"
 
     fun isInstalled(context: Context, packageName: String): Boolean {
         return try {
@@ -191,7 +194,7 @@ object PackageUtil {
                 context.packageManager.defaultActivityIcon.toBitmap(96, 96)
             }
         } catch (exception: Exception) {
-            Log.e("Failed to get icon for package!", exception)
+            Log.e(TAG, "Failed to get icon for package!", exception)
             null
         }
     }
