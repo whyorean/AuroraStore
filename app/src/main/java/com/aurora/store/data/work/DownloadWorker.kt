@@ -25,7 +25,7 @@ import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.data.model.Request
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
@@ -67,6 +67,7 @@ class DownloadWorker @AssistedInject constructor(
     private val gson: Gson,
     private val appInstaller: AppInstaller,
     private val authProvider: AuthProvider,
+    private val httpClient: IProxyHttpClient,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
@@ -113,7 +114,7 @@ class DownloadWorker @AssistedInject constructor(
 
         // Purchase the app (free apps needs to be purchased too)
         purchaseHelper = PurchaseHelper(authProvider.authData!!)
-            .using(HttpClient.getPreferredClient(appContext))
+            .using(httpClient)
 
         notificationManager =
             appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager

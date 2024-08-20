@@ -11,7 +11,7 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.SelfUpdate
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.data.room.update.Update
@@ -30,6 +30,7 @@ class AppUtil @Inject constructor(
     private val authProvider: AuthProvider,
     private val updateDao: UpdateDao,
     private val blacklistProvider: BlacklistProvider,
+    private val httpClient: IProxyHttpClient,
     @ApplicationContext private val context: Context
 ) {
 
@@ -77,7 +78,7 @@ class AppUtil @Inject constructor(
     ): List<App> {
         return withContext(Dispatchers.IO) {
             val appDetailsHelper = AppDetailsHelper(tmpAuthData?: authProvider.authData!!)
-                .using(HttpClient.getPreferredClient(context))
+                .using(httpClient)
 
             (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->
                 val filtersPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
@@ -103,8 +104,7 @@ class AppUtil @Inject constructor(
             }
 
             try {
-                val response =
-                    HttpClient.getPreferredClient(context).get(Constants.UPDATE_URL, mapOf())
+                val response = httpClient.get(Constants.UPDATE_URL, mapOf())
                 val selfUpdate =
                     gson.fromJson(String(response.responseBytes), SelfUpdate::class.java)
 

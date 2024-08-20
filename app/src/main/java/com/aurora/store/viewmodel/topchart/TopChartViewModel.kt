@@ -29,7 +29,7 @@ import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
 import com.aurora.store.TopChartStash
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -39,11 +39,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
-class TopChartViewModel @Inject constructor(@ApplicationContext private val context: Context) :
-    ViewModel() {
+class TopChartViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val httpClient: IProxyHttpClient
+): ViewModel() {
 
     private val webTopChartsHelper: TopChartsContract = WebTopChartsHelper()
-        .using(HttpClient.getPreferredClient(context))
+        .using(httpClient)
 
     private var stash: TopChartStash = mutableMapOf()
 

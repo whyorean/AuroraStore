@@ -29,7 +29,7 @@ import com.aurora.gplayapi.helpers.AuthValidator
 import com.aurora.store.R
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.Auth
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
@@ -47,7 +47,8 @@ import javax.inject.Singleton
 class AuthProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val gson: Gson,
-    private val spoofProvider: SpoofProvider
+    private val spoofProvider: SpoofProvider,
+    private val httpClient: IProxyHttpClient
 ) {
 
     private val TAG = AuthProvider::class.java.simpleName
@@ -104,7 +105,7 @@ class AuthProvider @Inject constructor(
         return withContext(Dispatchers.IO) {
             try {
                 AuthValidator(authData ?: return@withContext false)
-                    .using(HttpClient.getPreferredClient(context))
+                    .using(httpClient)
                     .isValid()
             } catch (exception: Exception) {
                 false
@@ -145,10 +146,7 @@ class AuthProvider @Inject constructor(
     private suspend fun buildAnonymousAuthData(): AuthData? {
         return withContext(Dispatchers.IO) {
             try {
-                val playResponse = HttpClient
-                    .getPreferredClient(context)
-                    .getAuth(dispenserURL!!)
-
+                val playResponse = httpClient.getAuth(dispenserURL!!)
                 val auth = gson.fromJson(String(playResponse.responseBytes), Auth::class.java)
                 return@withContext AuthHelper.build(
                     email = auth.email,

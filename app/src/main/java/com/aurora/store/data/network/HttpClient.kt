@@ -24,17 +24,27 @@ import android.util.Log
 import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.util.Preferences
 import com.google.gson.Gson
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object HttpClient {
 
     private const val TAG = "HttpClient"
 
-    fun getPreferredClient(context: Context): IProxyHttpClient {
+    @Provides
+    @Singleton
+    fun getPreferredClient(@ApplicationContext context: Context, gson: Gson): IProxyHttpClient {
         val proxyEnabled = Preferences.getBoolean(context, Preferences.PREFERENCE_PROXY_ENABLED)
         val proxyInfoString = Preferences.getString(context, Preferences.PREFERENCE_PROXY_INFO)
 
         return if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
-            val proxyInfo = Gson().fromJson(proxyInfoString, ProxyInfo::class.java)
+            val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
 
             if (proxyInfo != null) {
                 OkHttpClient.setProxy(proxyInfo)

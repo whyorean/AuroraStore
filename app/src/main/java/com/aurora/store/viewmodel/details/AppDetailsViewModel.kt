@@ -12,7 +12,7 @@ import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourites.Favourite
 import com.aurora.store.data.room.favourites.FavouriteDao
@@ -36,7 +36,8 @@ class AppDetailsViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val downloadWorkerUtil: DownloadWorkerUtil,
     private val authProvider: AuthProvider,
-    private val favouriteDao: FavouriteDao
+    private val favouriteDao: FavouriteDao,
+    private val httpClient: IProxyHttpClient
 ) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
@@ -44,7 +45,6 @@ class AppDetailsViewModel @Inject constructor(
     private val exodusBaseUrl = "https://reports.exodus-privacy.eu.org/api/search/"
     private val exodusApiKey = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae"
 
-    private val httpClient = HttpClient.getPreferredClient(context)
     private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!).using(httpClient)
     private val reviewsHelper = ReviewsHelper(authProvider.authData!!).using(httpClient)
 

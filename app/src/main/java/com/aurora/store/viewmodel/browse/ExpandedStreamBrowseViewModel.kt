@@ -27,7 +27,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -40,13 +40,14 @@ import javax.inject.Inject
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class ExpandedStreamBrowseViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider
+    private val authProvider: AuthProvider,
+    private val httpClient: IProxyHttpClient
 ) : ViewModel() {
 
     private val TAG = ExpandedStreamBrowseViewModel::class.java.simpleName
 
     private val streamHelper: ExpandedBrowseHelper = ExpandedBrowseHelper(authProvider.authData!!)
-        .using(HttpClient.getPreferredClient(context))
+        .using(httpClient)
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -19,13 +19,14 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsMoreViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider
+    private val authProvider: AuthProvider,
+    private val httpClient: IProxyHttpClient
 ) : ViewModel() {
 
     private val TAG = DetailsMoreViewModel::class.java.simpleName
 
     private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
-        .using(HttpClient.getPreferredClient(context))
+        .using(httpClient)
 
     private val dependantAppsStash = mutableMapOf<String, List<App>>()
     private val _dependentApps = MutableSharedFlow<List<App>>()

@@ -31,7 +31,7 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -42,13 +42,14 @@ import javax.inject.Inject
 @HiltViewModel
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class StreamViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val httpClient: IProxyHttpClient
 ) : ViewModel() {
 
     private val TAG = StreamViewModel::class.java.simpleName
 
     private var webStreamHelper = WebStreamHelper()
-        .using(HttpClient.getPreferredClient(context))
+        .using(httpClient)
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 

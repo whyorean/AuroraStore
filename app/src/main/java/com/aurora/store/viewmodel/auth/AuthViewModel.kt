@@ -36,7 +36,7 @@ import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.Auth
 import com.aurora.store.data.model.AuthState
-import com.aurora.store.data.network.HttpClient
+import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.work.UpdateWorker
@@ -60,7 +60,8 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,
-    private val gson: Gson
+    private val gson: Gson,
+    private val httpClient: IProxyHttpClient
 ) : ViewModel() {
 
     private val TAG = AuthViewModel::class.java.simpleName
@@ -104,10 +105,7 @@ class AuthViewModel @Inject constructor(
         liveData.postValue(AuthState.Fetching)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val playResponse = HttpClient
-                    .getPreferredClient(context)
-                    .getAuth(authProvider.dispenserURL!!)
-
+                val playResponse = httpClient.getAuth(authProvider.dispenserURL!!)
                 if (playResponse.isSuccessful) {
                     val tmpAuthData = gson.fromJson(
                         String(playResponse.responseBytes),
