@@ -432,7 +432,7 @@
     <string name="toast_permission_installer_required">Сначала вам необходимо предоставить разрешение установщику</string>
     <string name="toast_permission_esm_caution">Возможно, вам придется повторно предоставить разрешение из-за ошибки в Storage Access Framework</string>
     <string name="item_required">Обязательно</string>
-    <string name="item_optional">Опционально</string>
+    <string name="item_optional">Не обязательно</string>
     <string name="details_data_safety_title">Безопасность данных</string>
     <string name="details_data_safety_subtitle">Практика конфиденциальности и безопасности данных, заявленная разработчиком</string>
     <string name="force_restart_summary">Необходимо перезапустить Aurora Store для применения новых настроек</string>
