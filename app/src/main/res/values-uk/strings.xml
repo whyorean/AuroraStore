@@ -394,7 +394,7 @@
     <string name="pref_dispenser_summary">Перегляд розподільників токенів для анонімного входу та керування ними</string>
     <string name="no_dispensers_available">Немає доступних розподільників</string>
     <string name="remove_dispenser_title">Видалити розподільник</string>
-    <string name="add_dispenser_summary">Додайте розподільник жетонів до Aurora Store. Розподільники токенів надають облікові дані Aurora Store для анонімного входу.</string>
+    <string name="add_dispenser_summary">Додайте розподільник токенів до Aurora Store. Розподільники токенів надають облікові дані Aurora Store для анонімного входу.</string>
     <string name="add_dispenser_hint">URL розподільника</string>
     <string name="add_dispenser_error">Недійсний URL</string>
     <string name="remove_dispenser_summary">Видалити розподільник \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
