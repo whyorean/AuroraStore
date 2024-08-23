@@ -434,4 +434,6 @@
     <string name="check_updates">Skontrolovať aktualizácie</string>
     <string name="force_restart_summary">Aurora obchod je potrebné reštartovať, aby ste mohli použiť novo zmenené nastavenia</string>
     <string name="force_restart_title">Reštartovať Aurora obchod</string>
+    <string name="export_app_title">Exportér súboru</string>
+    <string name="export_app_summary">Počkajte exportujem súbor</string>
 </resources>
