@@ -424,4 +424,16 @@
     <string name="pref_network_proxy_url_message">ਸਾਰਾ ਡਾਟਾ ਪ੍ਰੌਕਸੀ ਵਿੱਚੋਂ ਦੀ ਲੰਘਾਉਣ ਵਾਸਤੇ ਵੈਧ ਪ੍ਰੌਕਸੀ URL ਭਰੋ।</string>
     <string name="toast_fav_import_success">ਪਸੰਦੀਦਾ ਇੰਪੋਰਟ ਕੀਤੇ ਗਏ!</string>
     <string name="export_app_summary_success">ਸਫਲਤਾਪੂਰਵਕ ਐਪ ਬੰਡਲ ਐਕਸਪੋਰਟ ਕੀਤੇ</string>
+    <string name="export_app_title">ਫਾਈਲ ਐਕਸਪੋਰਟਰ</string>
+    <string name="export_app_summary">ਹੋਲਡ ਕਰੋ, ਤੁਹਾਡੀ ਫ਼ਾਈਲ ਨੂੰ ਐਕਸਪੋਰਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ</string>
+    <string name="force_restart_title">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰੋ</string>
+    <string name="force_restart_summary">ਨਵੀਂਆਂ ਬਦਲੀਆਂ ਹੋਈਆਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਲਾਗੂ ਕਰਨ ਲਈ ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ</string>
+    <string name="toast_permission_installer_required">ਤੁਹਾਨੂੰ ਪਹਿਲਾਂ ਇੰਸਟਾਲਰ ਦੀ ਅਨੁਮਤੀ ਦੇਣੀ ਹੋਵੇਗੀ</string>
+    <string name="details_data_safety_title">ਡਾਟਾ ਸੁਰੱਖਿਆ</string>
+    <string name="details_data_safety_subtitle">ਡਿਵੈਲਪਰ ਦੁਆਰਾ ਘੋਸ਼ਿਤ ਡਾਟਾ ਗੋਪਨੀਯਤਾ ਅਤੇ ਸੁਰੱਖਿਆ ਅਮਲ</string>
+    <string name="onboarding_permission_installer_legacy_desc">ਅਗਿਆਤ ਸਰੋਤਾਂ ਤੋਂ ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿਓ</string>
+    <string name="toast_permission_esm_caution">ਸਟੋਰੇਜ਼ ਐਕਸੈਸ ਫਰੇਮਵਰਕ ਵਿੱਚ ਬੱਗ ਦੇ ਕਾਰਨ ਤੁਹਾਨੂੰ ਅਨੁਮਤੀ ਨੂੰ ਦੁਬਾਰਾ ਦੇਣਾ ਪੈ ਸਕਦਾ ਹੈ</string>
+    <string name="item_optional">ਵਿਕਲਪਿਕ</string>
+    <string name="item_required">ਲੋੜੀਂਦੀ</string>
+    <string name="check_updates">ਅੱਪਡੇਟ ਲਈ ਚੈੱਕ ਕਰੋ</string>
 </resources>

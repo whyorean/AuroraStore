@@ -404,4 +404,36 @@
     <string name="about_aurora_store_title">Giới thiệu về cửa hàng Aurora</string>
     <string name="add_dispenser_summary">Thêm bộ phân phối mã thông báo vào Aurora Store. Bộ phân phối mã thông báo cung cấp thông tin xác thực tài khoản cho Aurora Store để đăng nhập ẩn danh.</string>
     <string name="add_dispenser_hint">URL bộ phân phối</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="export_app_title">Xuất ra tệp</string>
+    <string name="export_app_summary">Xin chờ, đang xuất ra tệp của bạn</string>
+    <string name="check_updates">Kiểm tra cập nhật</string>
+    <string name="force_restart_title">Khởi động lại Aurora Store</string>
+    <string name="force_restart_summary">Aurora Store cần được khởi động lại để áp những cài đặt mới</string>
+    <string name="pref_network_proxy_url_message">Nhập URL proxy hợp lệ để truyền dữ liệu qua proxy</string>
+    <string name="onboarding_permission_installer_legacy_desc">Cho phép tải những app từ những nguồn không xác định</string>
+    <string name="toast_fav_import_success">Dữ liệu yêu thích đã được nhập vào!</string>
+    <string name="action_favourite">Yêu thích</string>
+    <string name="details_data_safety_title">An toàn của dữ liệu</string>
+    <string name="title_favourites_manager">Những app yêu thích</string>
+    <string name="toast_permission_installer_required">Trước tiên, bạn cần cấp quyền cho phép “Cài đặt ứng dụng\"</string>
+    <string name="toast_permission_esm_caution">Bạn chắc phải cần cấp lại quyền cho phép bởi vì lỗi trong \"Khung truy cập lưu trữ\"</string>
+    <string name="item_required">Bắt buộc</string>
+    <string name="item_optional">Không bắt buộc</string>
+    <string name="details_data_safety_subtitle">Quyền riêng tư của dữ liệu và những thực hành bảo mật được tuyên bố bởi nhà phát triển</string>
+    <string name="toast_fav_import_failed">Không thể nhập được những dữ liệu yêu thích!</string>
+    <string name="toast_fav_export_failed">Không thể xuất ra dữ liệu yêu thích!</string>
+    <string name="export_app_summary_success">Xuất ra gói ứng dụng thành công</string>
+    <string name="export_app_summary_fail">Không thể xuất ra gói ứng dụng</string>
+    <string name="action_uninstall_success">Đã xoá hoàn công</string>
+    <string name="details_no_favourites">Không có app yêu thích</string>
+    <string name="pref_dispenser_title">Quản lý bộ phân phối</string>
+    <string name="about_aurora_store_summary">Aurora Store cho phép bạn tìm kiếm và tải về những ứng dụng bạn thích từ chính Cửa hàng Google Play. Bạn có thể kiểm tra mô tả ứng dụng, những ảnh chụp ứng dụng, những cập nhật ứng dụng, những đánh giá từ những người khác, và tải về APK của ứng dụng từ Google Play vào máy của bạn. Để dùng Aurora Store, bạn cần có một tài khoản Google Play, và đăng nhập vào tài khoản Google Play của bạn khi bạn đã vào và chỉnh cài đặt của Aurora Store lần đầu tiên.
+\n
+\nKhông giống như một cửa hàng ứng dụng bình thường, Aurora Store không có sở hữu, cấp phép li-xăng hay phát ra ứng dụng nào hết. Tất cả các ứng dụng, mô tả ứng dụng và những nội dung ứng dụng khác trong Aurora Store đều được trực tiếp truy cập, tải về, và/hay hiển thị từ Google Play. Aurora Store hoạt động như một cái cửa hay là một trình duyệt, cho phép bạn để đăng nhập vào tài khoản Google Play của bạn và tìm những ứng dụng từ Google Play.
+\n
+\nXin lưu ý rằng Aurora Store không có quyền cho phép, tiền tài trợ, hay quyền phép từ Google, Google Play, những ứng dụng tải qua Aurora Store, hay bất cứ nhà phát triển nào; Aurora Store cũng không có liên kết nào, hợp tác hay kết nồi nào với họ.</string>
+    <string name="toast_fav_export_success">Dữ liệu yêu thích đã được xuất ra!</string>
+    <string name="action_logout_confirmation_title">Đăng xuất?</string>
+    <string name="action_logout_confirmation_message">Bạn có chắc muốn đăng xuất hay không?</string>
 </resources>
