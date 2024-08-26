@@ -37,7 +37,6 @@ import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.extensions.invisible
 import com.aurora.extensions.px
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
@@ -143,9 +142,16 @@ class AppUpdateView @JvmOverloads constructor(
 
     @OnViewRecycled
     fun clear() {
-        binding.headerIndicator.removeCallbacks { }
-        binding.progressDownload.invisible()
         iconDrawable = null
+
+        binding.apply {
+            headerIndicator.removeCallbacks {}
+            progressDownload.invisible()
+            btnAction.apply {
+                removeCallbacks { }
+                updateState(DownloadStatus.UNAVAILABLE)
+            }
+        }
     }
 
     private fun animateImageView(scaleFactor: Float = 1f) {

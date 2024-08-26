@@ -51,7 +51,6 @@ import kotlinx.coroutines.launch
 class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
     private lateinit var permissionProvider: PermissionProvider
-    private lateinit var update: Update
 
     private val viewModel: UpdatesViewModel by viewModels()
 
@@ -194,7 +193,6 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
     }
 
     private fun updateSingle(update: Update, updateAll: Boolean = false) {
-        this.update = update
         viewModel.updateAllEnqueued = updateAll
 
         if (PathUtil.needsStorageManagerPerm(update.fileList)) {

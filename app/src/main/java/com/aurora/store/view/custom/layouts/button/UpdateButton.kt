@@ -25,7 +25,6 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.aurora.extensions.accentColor
 import com.aurora.extensions.darkenColor
-import com.aurora.extensions.getString
 import com.aurora.extensions.lightenColor
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
@@ -64,16 +63,6 @@ class UpdateButton : RelativeLayout {
         val textColor = darkenColor(context.accentColor())
         binding.btnPositive.setTextColor(textColor)
         binding.btnNegative.setTextColor(textColor)
-    }
-
-    fun setText(text: String) {
-        binding.viewFlipper.displayedChild = 0
-        binding.btnPositive.text = text
-    }
-
-    fun setText(text: Int) {
-        binding.viewFlipper.displayedChild = 0
-        binding.btnPositive.text = getString(text)
     }
 
     fun updateState(downloadStatus: DownloadStatus) {
