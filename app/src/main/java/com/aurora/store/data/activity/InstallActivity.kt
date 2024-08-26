@@ -3,7 +3,6 @@ package com.aurora.store.data.activity
 import android.content.pm.PackageInstaller.SessionCallback
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import com.aurora.Constants
@@ -23,7 +22,6 @@ class InstallActivity : AppCompatActivity() {
     private lateinit var sessionCallback: SessionCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         val download =

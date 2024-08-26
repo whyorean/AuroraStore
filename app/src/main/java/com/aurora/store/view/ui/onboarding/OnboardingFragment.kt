@@ -21,8 +21,6 @@ package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -81,13 +79,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Adjust layout margins for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutBottom) { layout, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            layout.setPadding(0, 0, 0, insets.bottom)
-            windowInsets
-        }
 
         val isDefaultPrefLoaded = Preferences.getBoolean(requireContext(), PREFERENCE_DEFAULT)
         if (!isDefaultPrefLoaded) {

@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
@@ -71,19 +72,25 @@ class MainActivity : AppCompatActivity() {
         MigrationReceiver.runMigrationsIfRequired(this)
 
         enableEdgeToEdge()
+
         super.onCreate(savedInstanceState)
 
         applyThemeAccent()
 
         B = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(B.root)
 
-        // Adjust root view's paddings for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(B.root) { root, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            root.setPadding(insets.left, insets.top, insets.right, 0)
-            windowInsets
+        ViewCompat.setOnApplyWindowInsetsListener(B.root) { view, windowInsets ->
+            val statusBarInset = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val navigationBarInset =
+                windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
+
+            view.updatePadding(0, statusBarInset.top, 0, navigationBarInset.bottom)
+
+            WindowInsetsCompat.CONSUMED
         }
+
+
+        setContentView(B.root)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
