@@ -20,16 +20,16 @@
 package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
-import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
-import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
+import com.aurora.store.databinding.FragmentGenericWithSearchBinding
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel
@@ -37,23 +37,56 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BlacklistFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
+class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
     private val viewModel: BlacklistViewModel by viewModels()
+
+    private var blackList: List<App>? = emptyList()
+    private var query: String = String()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.blackListedApps.collect {
-                updateController(it)
+                blackList = it
+                updateController(blackList)
             }
         }
 
         // Toolbar
-        binding.layoutToolbarNative.toolbar.apply {
-            title = getString(R.string.title_blacklist_manager)
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
-            setNavigationOnClickListener { findNavController().navigateUp() }
+        binding.layoutToolbarNative.apply {
+            imgActionPrimary.visibility = View.VISIBLE
+            imgActionSecondary.visibility = View.GONE
+
+            imgActionPrimary.setOnClickListener {
+                viewModel.blacklistProvider.blacklist = viewModel.selected
+                findNavController().navigateUp()
+            }
+
+            inputSearch.addTextChangedListener(object : TextWatcher {
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (s.isNullOrEmpty()) {
+                        updateController(blackList)
+                    } else {
+                        query = s.toString()
+
+                        val filtered = blackList?.filter {
+                            it.displayName.contains(query, true)
+                        }
+
+                        updateController(filtered)
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {}
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+            })
         }
     }
 
