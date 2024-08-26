@@ -44,8 +44,8 @@
         android:layout_toStartOf="@id/action"
         android:layout_toEndOf="@id/img"
         android:gravity="start|center"
-        android:textSize="16sp"
-        tools:text="Aurora Store" />
+        android:textAppearance="@style/TextAppearance.Aurora.Line1"
+        tools:text="Line1" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/action"

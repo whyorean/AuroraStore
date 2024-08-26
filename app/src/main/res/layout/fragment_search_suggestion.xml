@@ -43,6 +43,7 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/divider" />
+            android:layout_below="@+id/divider"
+            tools:listitem="@layout/view_search_suggestion" />
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
