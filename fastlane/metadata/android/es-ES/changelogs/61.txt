@@ -1,0 +1,8 @@
+• Objetivos Android 15
+• Web APIs para el modo anónimo (mejor rendimiento, más anónimo)
+• Soporte para la seguridad en la página de detalles de la aplicación
+• Establecer el modo anónimo inseguro como modo anónimo por defecto
+• Nueva función para añadir aplicaciones favoritas a la lista importable/exportable
+• Material You para el resto de componentes con importantes mejoras de UI y UX
+• Correcciones de errores y mejoras del rendimiento
+• Actualizaciones en las traducciones
