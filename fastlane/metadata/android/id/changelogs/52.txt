@@ -1,0 +1,6 @@
+• Memperbaiki kerusakan di beberapa perangkat saat mencari memakai kata non-inggris
+• Memperbaiki halaman Aplikasi dan Permainan
+• Menambahkan opsi kembali untuk pemasangan otomatis setelah mengunduh aplikasi
+• Tidak menyalakan suara notifikasi saat aplikasi dipasang atau diperbarui
+• Memperbaiki kerusakan di beberapa perangkat saat membuka rincian aplikasi
+• Menambahkan dialog konfirmasi pencopotan jika menggunakan penginstal root

@@ -1,0 +1,8 @@
+• Hindari meminta izin penyimpanan
+• Konfigurasi spoof dikerjakan ulang untuk menghindari izin penyimpanan impor-ekspor
+• Menambah opsi untuk periksa pembaruan aplikasi secara otomatis (perlu akun)
+• Memperbaiki masalah pustaka yang tidak diinstal dengan aplikasi seperti pustaka chrome & trichrome
+• Abaikan direktori unduhan dari cadangan saat mencadangkan Aurora Store
+• Menerapkan penginstal Shizuku (perlu Android 8.0+)
+• Menghentikan dukungan untuk Android 4.4.
+• Perbaikan kecil & peningkatan

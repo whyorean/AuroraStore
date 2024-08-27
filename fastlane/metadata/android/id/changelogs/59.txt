@@ -1,0 +1,6 @@
+• Dukungan untuk dispenser token pihak ketiga
+• Beberapa peningkatan UI/UX dan perbaikan kesalahan
+• Fitur pembersihan tembolok otomatis yang baru untuk menghapus unduhan lama
+• Pengaturan warna aksen telah dihentikan untuk perangkat Android 12+
+• SessionInstaller: Kemampuan untuk menetapkan Aurora Store sebagai pemilik perangkat dan menginstal secara diam-diam (terima kasih: @s1204IT)
+• SessionInstaller: Dukungan antrean instalasi

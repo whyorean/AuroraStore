@@ -1,0 +1,2 @@
+• Selalu aktifkan tombol selesai pada fragmen izin (memperbaiki orientasi pengguna baru)
+• Mempertahankan TypeToken pustaka GSON sambil mengoptimalkan build (memperbaiki kerusakan startup)

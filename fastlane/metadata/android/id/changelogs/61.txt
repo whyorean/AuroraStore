@@ -1,0 +1,8 @@
+• Menargetkan Android 15
+• Beralih ke API Web untuk mode anonim (kinerja lebih baik, lebih anonim)
+• Dukungan untuk bagian keamanan data di halaman rincian aplikasi
+• Menetapkan mode anonim tidak aman sebagai mode anonim bawaan
+• Fitur baru untuk menambahkan aplikasi favorit ke daftar yang dapat diimpor/diekspor
+• Menerapkan Material You untuk komponen yang tersisa dengan peningkatan UI/UX
+• Beberapa perbaikan kesalahan dan peningkatan performa
+• Memperbarui terjemahan
