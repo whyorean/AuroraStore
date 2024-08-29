@@ -51,20 +51,14 @@ class SearchResultViewModel @Inject constructor(
 
     private val TAG = SearchResultViewModel::class.java.simpleName
 
-    private val webSearchHelper: WebSearchHelper = WebSearchHelper()
-    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData!!)
-        .using(httpClient)
-
     val liveData: MutableLiveData<SearchBundle> = MutableLiveData()
 
     private var searchBundle: SearchBundle = SearchBundle()
 
-    fun helper(): SearchContract {
-        return if (authProvider.isAnonymous) {
-            webSearchHelper
-        } else {
-            searchHelper
-        }
+    private val helper: SearchContract = if (authProvider.isAnonymous) {
+        WebSearchHelper().using(httpClient)
+    } else {
+        SearchHelper(authProvider.authData!!).using(httpClient)
     }
 
     fun observeSearchResults(query: String) {
@@ -84,10 +78,8 @@ class SearchResultViewModel @Inject constructor(
         }
     }
 
-    private fun search(
-        query: String
-    ): SearchBundle {
-        return helper().searchResults(query)
+    private fun search(query: String): SearchBundle {
+        return helper.searchResults(query)
     }
 
     @Synchronized
@@ -96,7 +88,7 @@ class SearchResultViewModel @Inject constructor(
             supervisorScope {
                 try {
                     if (nextSubBundleSet.isNotEmpty()) {
-                        val newSearchBundle = helper().next(nextSubBundleSet)
+                        val newSearchBundle = helper.next(nextSubBundleSet)
                         if (newSearchBundle.appList.isNotEmpty()) {
                             searchBundle.apply {
                                 subBundles.flushAndAdd(newSearchBundle.subBundles)

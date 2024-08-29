@@ -44,18 +44,12 @@ class SearchSuggestionViewModel @Inject constructor(
     private val httpClient: IProxyHttpClient
 ) : ViewModel() {
 
-    private val webSearchHelper: WebSearchHelper = WebSearchHelper()
-    private val searchHelper: SearchHelper = SearchHelper(authProvider.authData!!)
-        .using(httpClient)
-
     val liveSearchSuggestions: MutableLiveData<List<SearchSuggestEntry>> = MutableLiveData()
 
-    fun helper(): SearchContract {
-        return if (authProvider.isAnonymous) {
-            webSearchHelper
-        } else {
-            searchHelper
-        }
+    private val helper: SearchContract = if (authProvider.isAnonymous) {
+        WebSearchHelper().using(httpClient)
+    } else {
+        SearchHelper(authProvider.authData!!).using(httpClient)
     }
 
     fun observeStreamBundles(query: String) {
@@ -64,9 +58,7 @@ class SearchSuggestionViewModel @Inject constructor(
         }
     }
 
-    private fun getSearchSuggestions(
-        query: String
-    ): List<SearchSuggestEntry> {
-        return helper().searchSuggestions(query)
+    private fun getSearchSuggestions(query: String): List<SearchSuggestEntry> {
+        return helper.searchSuggestions(query)
     }
 }
