@@ -1,0 +1,4 @@
+• Memperbaiki masalah akses masuk terkait dengan Akun Google
+• Memindahkan unit laci navigasi ke dialog terpisah
+• Mengalihkan ke NavigationRail untuk perangkat berlayar besar
+• Kemampuan untuk mengekspor unduhan ke lokasi eksternal

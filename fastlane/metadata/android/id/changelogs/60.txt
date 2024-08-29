@@ -1,0 +1,2 @@
+• Memperbaiki kesalahan yang menyebabkan SessionInstaller mengalami kerusakan di Android versi lama
+• Memperbarui terjemahan

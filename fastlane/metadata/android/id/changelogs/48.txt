@@ -1,0 +1,3 @@
+• Perubahan internal utama terkait dengan antarmuka
+• Memperbarui terjemahan
+• Perbaikan kecil & peningkatan

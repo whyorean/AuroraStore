@@ -1,0 +1,8 @@
+• Pridaná podpora Android 15
+ • Prepnutie na webové rozhrania API pre anonymný režim (lepší výkon, viac anonymnosti)
+ • Podpora sekcie bezpečnosti údajov na stránke s podrobnosťami aplikácie
+ • Možnosť nastaviť nezabezpečený anonymný režim ako predvolený anonymný režim
+ • Nová funkcia na pridávanie obľúbených aplikácií do zoznamu importovateľných/exportovateľných aplikácií 
+ • Pridaný Material You pre zostávajúce komponenty s hlavnými vylepšeniami používateľského rozhrania a používateľského rozhrania
+ • Opravy viacerých chýb a vylepšenia výkonu
+ • Aktualizácie prekladov

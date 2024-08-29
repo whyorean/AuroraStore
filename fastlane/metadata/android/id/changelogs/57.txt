@@ -1,0 +1,7 @@
+• Beberapa perbaikan kesalahan dan peningkatan UI/UX
+• Izin baru sekarang disorot di lembar izin
+• Konfigurasi spoof baru untuk perangkat x86
+• Perubahan pada sistem unduhan
+  • Lokasi unduhan bawaan diubah ke direktori tembolok internal
+  • Pengunduhan sekarang dilanjutkan secara otomatis ketika dimulai ulang jika berkasnya ada
+• Memperbarui terjemahan

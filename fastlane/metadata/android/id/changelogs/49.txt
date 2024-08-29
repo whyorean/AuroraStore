@@ -1,0 +1,4 @@
+• Perubahan internal utama terkait dengan antarmuka
+• Mengizinkan pengguna untuk mengaktifkan tautan aplikasi selama pengaturan awal
+• Memperbarui terjemahan
+• Perbaikan kecil dan peningkatan

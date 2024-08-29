@@ -1,0 +1,6 @@
+• Memperbaiki kerusakan yang terkait dengan pemberitahuan layanan instalasi
+• Hanya tampilkan properti spoofing yang valid di aplikasi
+• Memberi tahu pengguna ketika mereka dibatasi kecepatannya selama pencarian
+• Menampilkan animasi kilau saat mencari untuk menunjukkan kemajuan
+• Memperbaiki perilaku navigasi saat tab bawaan diubah
+• Memperbaiki opsi keluar cepat

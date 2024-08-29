@@ -1,0 +1,8 @@
+• Optimisé pour Android 15
+• Le mode anonyme s'appuie désormais sur les APIs Web (meilleures performances et anonymisation accrue)
+• Le détail des apps affiche désormais les informations de sécurité des données issues du Play Store.
+• Le mode anonyme non-sécurisé devient le mode anonyme par défaut.
+• Possibilité d'importer/exporter la liste des favoris.
+• Migration des composants restants sur Material You avec à la clé des améliorations UI/UX majeures.
+• Corrections de bugs multiples et améliorations des performances
+• Mise à jour des traductions

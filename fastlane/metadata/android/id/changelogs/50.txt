@@ -1,0 +1,9 @@
+• Beralih dari tema gelap ke tema sistem benar-benar memperbarui UI
+• Dialog di layar beranda tak lagi menyembunyikan tampilan tertentu
+• Membuka tautan Google Play sekarang memastikan akun valid & berfungsi
+• Laci navigasi hanya dapat dibuka di layar utama
+• Tindakan kembali sekarang keluar dari aplikasi dengan benar
+• Tombol pengaturan punya warna yang tepat dalam tema gelap
+• Nama aplikasi muncul di bilah alat untuk laporan keluar
+• Perbaikan internal terkait gambar
+• Memperbarui terjemahan

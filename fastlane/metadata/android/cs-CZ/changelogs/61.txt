@@ -1,0 +1,8 @@
+• Aktualizováno pro Android 15
+• Přepnutí na Web API pro anonymní režim (lepší výkon, více anonymní)
+• Podpora sekce Zabezpečení údajů v podrobnostech o aplikaci
+• Nastavení nezabezpečeného anonymního režimu jako výchozího anon. režimu
+• Nová funkce přidávání oblíbených aplikací do importovartelného/exportovatelného seznamu
+• Implementace Material You pro zbývající části s velkými vylepšeními UI a UX
+• Spousta oprav chyb a zlepšení výkonu
+• Aktualizace překladů

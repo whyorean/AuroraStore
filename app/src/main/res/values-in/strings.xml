@@ -425,4 +425,15 @@
     <string name="action_logout_confirmation_message">Anda yakin ingin keluar log?</string>
     <string name="action_logout_confirmation_title">Keluar log?</string>
     <string name="check_updates">Periksa apakah ada pembaruan</string>
+    <string name="export_app_title">Eksportir Berkas</string>
+    <string name="export_app_summary">Tunggu sebentar, mengekspor berkas Anda</string>
+    <string name="force_restart_title">Memulai Ulang Aurora Store</string>
+    <string name="details_data_safety_title">Keamanan data</string>
+    <string name="details_data_safety_subtitle">Praktik privasi dan keamanan data yang diumumkan oleh pengembang</string>
+    <string name="onboarding_permission_installer_legacy_desc">Mengizinkan memasang aplikasi dari sumber yang tidak dikenal</string>
+    <string name="toast_permission_installer_required">Anda perlu memberikan Izin Instalasi terlebih dahulu</string>
+    <string name="item_required">Dibutuhkan</string>
+    <string name="item_optional">Opsional</string>
+    <string name="toast_permission_esm_caution">Anda mungkin harus memberikan izin kembali karena adanya kesalahan dalam Kerangka Kerja Akses Penyimpanan</string>
+    <string name="force_restart_summary">Aurora Store perlu dimulai ulang untuk menerapkan pengaturan terbaru</string>
 </resources>

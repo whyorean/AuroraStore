@@ -1,0 +1,7 @@
+• Menargetkan Android 14
+• Meningkatkan filter paket F-Droid untuk pembaruan
+• Klaim tanggung jawab atas pembaruan di masa mendatang saat menginstal aplikasi menggunakan SessionInstaller (Android 14+)
+• Mengganti "Perpanjangan Pembaruan" dengan "Pembaruan Tidak Kompatibel"
+• Menambahkan menu aksi untuk membuat pintasan untuk aplikasi yang diinstal
+• Perbaikan kesalahan dan peningkatan
+• Memperbarui terjemahan
