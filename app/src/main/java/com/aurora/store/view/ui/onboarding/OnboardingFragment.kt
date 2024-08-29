@@ -28,9 +28,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
+import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.work.CacheWorker
+import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
@@ -48,6 +50,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_TYPE
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
@@ -136,6 +139,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
     }
 
     private fun finishOnboarding() {
+        setupAutoUpdates()
         CacheWorker.scheduleAutomatedCacheCleanup(requireContext())
         save(PREFERENCE_INTRO, true)
         findNavController().navigate(
@@ -170,5 +174,13 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         /*Updates*/
         save(PREFERENCE_UPDATES_EXTENDED, false)
         save(PREFERENCE_UPDATES_CHECK_INTERVAL, 3)
+    }
+
+    private fun setupAutoUpdates() {
+        save(
+            PREFERENCE_UPDATES_AUTO,
+            if (requireContext().isIgnoringBatteryOptimizations()) 2 else 1
+        )
+        UpdateWorker.scheduleAutomatedCheck(requireContext())
     }
 }

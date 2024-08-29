@@ -26,7 +26,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
-import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.helpers.AuthHelper
@@ -39,12 +38,9 @@ import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
-import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
-import com.aurora.store.util.save
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -206,7 +202,6 @@ class AuthViewModel @Inject constructor(
         liveData.postValue(AuthState.Verifying)
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             configAuthPref(authData, type, true)
-            setupAutoUpdates()
             liveData.postValue(AuthState.SignedIn)
         } else {
             configAuthPref(authData, type, false)
@@ -229,11 +224,6 @@ class AuthViewModel @Inject constructor(
 
         //Save Auth Status
         Preferences.putBoolean(context, Constants.ACCOUNT_SIGNED_IN, signedIn)
-    }
-
-    private fun setupAutoUpdates() {
-        context.save(PREFERENCE_UPDATES_AUTO, if (context.isIgnoringBatteryOptimizations()) 2 else 1)
-        UpdateWorker.scheduleAutomatedCheck(context)
     }
 
     @Throws(Exception::class)
