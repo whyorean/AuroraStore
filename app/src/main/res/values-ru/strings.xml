@@ -172,14 +172,6 @@
     <string name="purchase_invalid">Приложение не куплено</string>
     <string name="purchase_failed">Ошибка загрузки</string>
     <string name="pref_ui_title">Внешний вид</string>
-    <string name="pref_ui_theme_title">Тема</string>
-    <string name="pref_ui_theme_system">Определяется системой</string>
-    <string name="pref_ui_theme_dark_x">Темная X</string>
-    <string name="pref_ui_theme_dark">Темная</string>
-    <string name="pref_ui_theme_black">Черная</string>
-    <string name="pref_ui_theme_light">Светлая</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_accent_title">Акцент</string>
     <string name="pref_install_mode_title">Способ установки</string>
     <string name="pref_install_mode_summary">Выберите режим установки APK</string>
     <string name="pref_install_mode_services">Сервисы Aurora (Устарел)</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Служба фоновой загрузки приложений</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
     <string name="pref_install_mode_am">AppManager</string>
-    <string name="ui_accent_1">Синий</string>
-    <string name="ui_accent_2">Пурпурный</string>
-    <string name="ui_accent_3">Красный</string>
-    <string name="ui_accent_4">Золотой</string>
-    <string name="ui_accent_5">Зеленый</string>
-    <string name="ui_accent_6">Фиолетовый</string>
-    <string name="ui_accent_7">Серый</string>
-    <string name="ui_accent_8">Розовый</string>
-    <string name="ui_accent_9">Лайм</string>
-    <string name="ui_accent_10">Оранжевый</string>
-    <string name="ui_accent_11">Светло-синий</string>
-    <string name="ui_accent_13">Темно-синий</string>
-    <string name="ui_accent_12">Насыщенно-синий</string>
     <string name="download_paused">Приостановлено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">Загрузка • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Последний сеанс отменен</string>
@@ -286,7 +265,6 @@
     <string name="update_available">обновление</string>
     <string name="updates_available">обновления(-ий)</string>
     <string name="error">Произошла ошибка!</string>
-    <string name="ui_accent_0">Система</string>
     <string name="rate_limited">Сожалеем, аккаунт имеет слишком много попыток входа!</string>
     <string name="permissions_denied">Необходимые разрешения были отклонены. Пожалуйста, предоставьте их, чтобы продолжить действие</string>
     <string name="search_hint">Поиск в Приложениях и Играх</string>

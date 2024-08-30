@@ -19,25 +19,6 @@
 
 <androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.aurora.store.view.custom.preference.AuroraListPreference
-        app:defaultValue="0"
-        app:entries="@array/pref_themes"
-        app:entryValues="@array/pref_themes_values"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_THEME_TYPE"
-        app:title="@string/pref_ui_theme_title"
-        app:useSimpleSummaryProvider="true" />
-
-    <com.aurora.store.view.custom.preference.AuroraListPreference
-        app:defaultValue="1"
-        app:entries="@array/pref_accent"
-        app:entryValues="@array/pref_accent_values"
-        app:iconSpaceReserved="false"
-        app:isPreferenceVisible="false"
-        app:key="PREFERENCE_THEME_ACCENT"
-        app:title="@string/pref_ui_accent_title"
-        app:useSimpleSummaryProvider="true" />
-
     <Preference
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_APP_LANGUAGE"

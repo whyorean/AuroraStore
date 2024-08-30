@@ -163,8 +163,6 @@
     <string name="pref_filter_google_summary">Elimina totes les aplicacions de Google dels resultats de cerca i de les categories d\'aplicacions</string>
     <string name="pref_install_mode_root">Instal·lador root</string>
     <string name="pref_network_title">Xarxes</string>
-    <string name="pref_ui_theme_dark_x">Fosc X</string>
-    <string name="pref_ui_accent_title">Color</string>
     <string name="onboarding_permission_installer">Permís de l\'instal·lador</string>
     <string name="onboarding_permission_installer_desc">Permet instal·lar aplicacions des d\'Aurora Store</string>
     <string name="pref_abandon_session">Forçar la neteja de les sessions d’instal·lació</string>
@@ -183,11 +181,6 @@
     <string name="pref_install_mode_session">Instal·lador de sessió</string>
     <string name="pref_install_mode_summary">Seleccionar el mode d\'instal·lació de l\'APK</string>
     <string name="pref_install_mode_title">Mètode d\'instal·lació</string>
-    <string name="pref_ui_theme_black">Negre</string>
-    <string name="pref_ui_theme_dark">Fosc</string>
-    <string name="pref_ui_theme_light">Clar</string>
-    <string name="pref_ui_theme_system">Seguir el sistema</string>
-    <string name="pref_ui_theme_title">Tema</string>
     <string name="pref_ui_title">Personalització</string>
     <string name="pref_ui_layout">Disposició</string>
     <string name="pref_ui_layout_tab">Seleccionar la pestanya per defecte</string>
@@ -249,21 +242,7 @@
     <string name="toast_anonymous_restriction">No disponible en comptes anònims</string>
     <string name="toast_developer_setting_failed">Activa la configuració de desenvolupador des de les del dispositiu per a obrir-la.</string>
     <string name="notification_channel_updater_service">Servei de descàrregues d\'aplicacions en segon pla</string>
-    <string name="ui_accent_1">Blau</string>
-    <string name="ui_accent_3">Vermell</string>
-    <string name="ui_accent_5">Verd</string>
-    <string name="ui_accent_6">Porpra</string>
-    <string name="ui_accent_2">Fúcsia</string>
-    <string name="ui_accent_4">Daurat</string>
-    <string name="ui_accent_7">Gris</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_9">Llima</string>
-    <string name="ui_accent_10">Taronja</string>
-    <string name="ui_accent_11">Blau clar</string>
-    <string name="ui_accent_13">Blau intens</string>
-    <string name="ui_accent_12">Blau Disskord</string>
     <string name="title_spoof_manager">Gestor de falsificacions</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="purchase_invalid">Aplicació no comprada</string>
     <string name="title_about">Quant a</string>
     <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>

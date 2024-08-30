@@ -87,14 +87,6 @@
     <string name="pref_ui_layout_tab">Varsayılan sekmeyi seç</string>
     <string name="pref_ui_layout">Yerleşim</string>
     <string name="pref_ui_title">Özelleştirme</string>
-    <string name="pref_ui_theme_title">Tema</string>
-    <string name="pref_ui_theme_system">Sistemi İzle</string>
-    <string name="pref_ui_theme_light">Açık</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_dark_x">Gelişmiş Koyu</string>
-    <string name="pref_ui_theme_dark">Koyu</string>
-    <string name="pref_ui_theme_black">Siyah</string>
-    <string name="pref_ui_accent_title">Vurgu</string>
     <string name="pref_network_title">Ağ oluşturma</string>
     <string name="pref_install_mode_title">Kurulum yöntemi</string>
     <string name="pref_install_mode_summary">APK kurulum kipini seç</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Arka planda uygulama indirme hizmeti</string>
     <string name="installer_am_unavailable">App Manager kurun veya kurucuyu değiştirin.</string>
     <string name="pref_install_mode_am">AM kurucu</string>
-    <string name="ui_accent_1">Mavi</string>
-    <string name="ui_accent_2">Fuşya</string>
-    <string name="ui_accent_3">Kırmızı</string>
-    <string name="ui_accent_4">Altın</string>
-    <string name="ui_accent_5">Yeşil</string>
-    <string name="ui_accent_6">Mor</string>
-    <string name="ui_accent_7">Gri</string>
-    <string name="ui_accent_8">Pembe</string>
-    <string name="ui_accent_9">Kireç</string>
-    <string name="ui_accent_11">Açık mavi</string>
-    <string name="ui_accent_10">Turuncu</string>
-    <string name="ui_accent_12">Disskord mavisi</string>
-    <string name="ui_accent_13">Koyu mavi</string>
     <string name="download_paused">Duraklatıldı • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_scrapped">Son oturum iptal edildi</string>
     <string name="session_verifying">Oturum doğrulanıyor</string>
@@ -285,7 +264,6 @@
     <string name="session_good">Vay canına! Her şey yolunda.</string>
     <string name="session_login_failed_google">Google aracılığıyla oturum açılamadı</string>
     <string name="session_init">Hazırlanıyor…</string>
-    <string name="ui_accent_0">Sistem</string>
     <string name="search_hint">Uygulama ve Oyun Ara</string>
     <string name="update_available">güncelleme var</string>
     <string name="expand">Genişlet</string>

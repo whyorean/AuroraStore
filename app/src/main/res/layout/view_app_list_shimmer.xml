@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_toEndOf="@id/img_icon"
-            android:background="?colorShimmer"
+            android:background="?colorControlHighlight"
             android:maxLines="1"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.Aurora.Line1" />
@@ -59,7 +59,7 @@
             android:layout_alignStart="@id/txt_line1"
             android:layout_alignEnd="@id/txt_line1"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:background="?colorShimmer"
+            android:background="?colorControlHighlight"
             android:maxLines="1"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.Aurora.Line2" />
@@ -72,7 +72,7 @@
             android:layout_alignStart="@id/txt_line1"
             android:layout_alignEnd="@id/txt_line1"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:background="?colorShimmer"
+            android:background="?colorControlHighlight"
             android:maxLines="1"
             android:textAlignment="viewStart"
             android:textAppearance="@style/TextAppearance.Aurora.Line3" />

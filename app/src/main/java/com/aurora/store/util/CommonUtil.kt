@@ -23,7 +23,6 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.model.ProxyInfo
 import java.text.DecimalFormat
@@ -155,38 +154,6 @@ object CommonUtil {
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to cleanup installation sessions")
             }
-        }
-    }
-
-    fun getThemeStyleById(themeId: Int): Int {
-        return when (themeId) {
-            0 -> R.style.AppTheme
-            1 -> R.style.AppTheme_Light
-            2 -> R.style.AppTheme_Dark
-            3 -> R.style.AppTheme_Black
-            4 -> R.style.AppTheme_DarkX
-            5 -> R.style.AppTheme_Darkord
-            else -> R.style.AppTheme
-        }
-    }
-
-    fun getAccentStyleById(accentId: Int): Int {
-        return when (accentId) {
-            0 -> R.style.Accent00
-            1 -> R.style.Accent01
-            2 -> R.style.Accent02
-            3 -> R.style.Accent03
-            4 -> R.style.Accent04
-            5 -> R.style.Accent05
-            6 -> R.style.Accent06
-            7 -> R.style.Accent07
-            8 -> R.style.Accent08
-            9 -> R.style.Accent09
-            10 -> R.style.Accent10
-            11 -> R.style.Accent11
-            12 -> R.style.Accent12
-            13 -> R.style.Accent13
-            else -> if (isSAndAbove()) R.style.Accent00 else R.style.Accent01
         }
     }
 

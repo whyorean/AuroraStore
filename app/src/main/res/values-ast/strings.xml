@@ -15,7 +15,6 @@
     <string name="onboarding_title_installer">Instalador</string>
     <string name="onboarding_title_permissions">Permisos</string>
     <string name="pref_ui_title">Personalización</string>
-    <string name="pref_ui_theme_title">Estilu</string>
     <string name="tab_categories">Categoríes</string>
     <string name="title_account_manager">Cuentes</string>
     <string name="title_apps">Aplicaciones</string>
@@ -36,7 +35,6 @@
     <string name="device_miui_extra">D\'otramiente, pues escoyer l\'instalador nativu mas nun vas poder instalar APKs en paquetes, polo que tu decides.</string>
     <string name="filter_review_positive">Reseña positiva</string>
     <string name="about_xda">Filu del desendolcu</string>
-    <string name="pref_ui_theme_light">Claridá</string>
     <string name="about_bhim_summary">Dona per UPI</string>
     <string name="about_bitcoin_btc_summary">Dona per Bitcoin (BTC)</string>
     <string name="action_update">Anovar</string>
@@ -48,7 +46,6 @@
     <string name="pref_filter_fdroid_title">Peñerar les aplicaciones de F-Droid</string>
     <string name="title_apps_games">Aplicaciones ya xuegos de mio</string>
     <string name="title_apps_library">Aplicaciones na biblioteca</string>
-    <string name="ui_accent_12">Azul Disskord</string>
     <string name="action_filter_all">Too</string>
     <string name="details_dev_details">Contautu</string>
     <string name="details_beta_subscribed">You\'re a beta tester</string>
@@ -57,7 +54,6 @@
     <string name="action_get_local_apk">Save App bundle</string>
     <string name="filter_review_all">Too</string>
     <string name="action_filter_rating">Valoraciones</string>
-    <string name="pref_ui_theme_darkord">Disskord</string>
     <string name="toast_apk_whitelisted">Whitelisted</string>
     <string name="pref_ui_no_for_you">Páxines «Pa ti»</string>
     <string name="filter_review_one">Una estrella</string>
@@ -88,7 +84,6 @@
     <string name="action_close">Zarrar</string>
     <string name="action_filter_gsf_dependent_apps">GSF</string>
     <string name="download_speed_estimating">Estimando</string>
-    <string name="ui_accent_1">Azul</string>
     <string name="action_granted">Concedióse</string>
     <string name="installer_status_failure">L\'instalador falló</string>
     <string name="toast_apk_blacklisted">Blacklisted</string>
@@ -104,7 +99,6 @@
     <string name="download_failed">La descarga falló</string>
     <string name="exodus_view_report">Ver l\'informe</string>
     <string name="pref_dialog_to_apply_restart">Esti parámetru va aplicase dempués de que reanicies l\'aplicación</string>
-    <string name="pref_ui_theme_system">Estilu del sistema</string>
     <string name="about_paypal_summary">Dona per PayPal</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="action_blacklist">Blacklist</string>
@@ -181,7 +175,6 @@
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_filter_google_summary">Quita toles aplicaciones de Google de los resultaos de busca ya de les categoríes d\'aplicaciones</string>
     <string name="pref_ui_no_for_you_desc">Amuesa les páxines «Pa ti» na pantalla d\'aniciu</string>
-    <string name="pref_ui_accent_title">Color de l\'acentuación</string>
     <string name="purchase_failed">La descarga falló</string>
     <string name="purchase_not_found">Nun s\'atopó l\'aplicación</string>
     <string name="purchase_no_file">Nun se pudieron consiguir los ficheros</string>
@@ -204,8 +197,6 @@
     <string name="pref_install_delete_summary">Les APKs desaníciense por defeutu</string>
     <string name="pref_install_mode_am">AM installer.</string>
     <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los ficheros APK</string>
-    <string name="pref_ui_theme_black">Prietu</string>
-    <string name="pref_ui_theme_dark_x">Escuridá X</string>
     <string name="pref_ui_similar_apps">Aplicaciones asemeyaes ya rellacionaes</string>
     <string name="pref_ui_similar_apps_desc">Amuesa les aplicaciones asemeyaes ya rellacionaes nes páxines de detalles de les aplicaciones</string>
     <string name="tab_for_you">Pa ti</string>
@@ -216,10 +207,6 @@
     <string name="title_advanced">Advanced</string>
     <string name="toast_abandon_sessions">Abandonáronse les sesiones d\'instalación antigües</string>
     <string name="toast_developer_setting_failed">Activa la configuración pa desendolcadores del preséu p\'abrila.</string>
-    <string name="ui_accent_6">Moráu</string>
-    <string name="ui_accent_7">Buxu</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_9">Llima</string>
     <string name="action_cancel">Encaboxar</string>
     <string name="exodus_powered">Cola potencia d\'Exodus</string>
     <string name="exodus_progress">Comprobando los rastrexadores…</string>
@@ -227,7 +214,6 @@
     <string name="pref_install_mode_services">Servicios d\'Aurora</string>
     <string name="pref_install_mode_session">Instalador de la sesión</string>
     <string name="pref_network_title">Networking</string>
-    <string name="pref_ui_theme_dark">Escuridá</string>
     <string name="pref_ui_layout_tab">Llingüeta predeterminada</string>
     <string name="download_paused">En posa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">En descarga • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -273,14 +259,6 @@
     <string name="notification_channel_updater_service">Serviciu de descarga d\'aplicaciones en segundu planu</string>
     <string name="app_updater_service_notif_title">Descarga d\'aplicaciones en segundu planu</string>
     <string name="app_updater_service_notif_text">Permite la descarga d\'aplicaciones en segundu planu</string>
-    <string name="ui_accent_0">System</string>
-    <string name="ui_accent_2">Fucsia</string>
-    <string name="ui_accent_3">Coloráu</string>
-    <string name="ui_accent_4">Oru</string>
-    <string name="ui_accent_5">Verde</string>
-    <string name="ui_accent_10">Naranxa</string>
-    <string name="ui_accent_11">Azul claro</string>
-    <string name="ui_accent_13">Azul escuro</string>
     <string name="update_available">anovamientu disponible</string>
     <string name="updates_available">anovamientos disponibles</string>
     <string name="rate_limited">Oops, This account is rate limited!</string>

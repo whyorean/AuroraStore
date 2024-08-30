@@ -48,13 +48,6 @@
     <string name="pref_ui_layout_tab">Välj standardflik</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="pref_ui_title">Anpassning</string>
-    <string name="pref_ui_theme_title">Tema</string>
-    <string name="pref_ui_theme_system">Följ systemet</string>
-    <string name="pref_ui_theme_light">Ljus</string>
-    <string name="pref_ui_theme_darkord">Darkord</string>
-    <string name="pref_ui_theme_dark_x">Mörk X</string>
-    <string name="pref_ui_theme_dark">Mörk</string>
-    <string name="pref_ui_theme_black">Svart</string>
     <string name="pref_network_title">Nätverk</string>
     <string name="pref_install_mode_title">Installationsmetod</string>
     <string name="pref_install_mode_summary">Välj läge för APK-installation</string>
@@ -243,24 +236,10 @@
     <string name="title_installer">App-installerare</string>
     <string name="dialog_desc_native_split">Du kan inte installera medföljande (delade) appar via Systemspecifik installerare. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
     <string name="spoof_apply">Se till att du loggar in igen för att verkställa fusket</string>
-    <string name="ui_accent_1">Blå</string>
-    <string name="ui_accent_2">Fuchsia</string>
-    <string name="ui_accent_3">Röd</string>
-    <string name="ui_accent_4">Gyllene</string>
-    <string name="ui_accent_5">Grön</string>
-    <string name="ui_accent_6">Lila</string>
-    <string name="ui_accent_7">Grå</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_9">Lime</string>
-    <string name="ui_accent_10">Orange</string>
-    <string name="ui_accent_11">Ljusblå</string>
-    <string name="ui_accent_13">Djupblå</string>
     <string name="title_blacklist_manager">Hanterare av svartlista</string>
     <string name="app_updater_service_notif_title">Ladda ner appen i bakgrunden</string>
     <string name="toast_permission_granted">Åtkomst godkändes</string>
     <string name="toast_aas_token_failed">Kunde inte generera AAS-symbol</string>
-    <string name="ui_accent_12">Disskord-blå</string>
-    <string name="pref_ui_accent_title">Brytning</string>
     <string name="title_spoof_manager">Hanterare av lurendrejeri</string>
     <string name="toast_abandon_sessions">Gamla installationssessioner övergavs</string>
     <string name="toast_developer_setting_failed">Aktivera utvecklingsinställningarna från enhetens inställningar för att öppna dem.</string>
@@ -276,7 +255,6 @@
     <string name="failed_to_generate_session">Sessionen kunde inte genereras</string>
     <string name="session_verifying">Bekräftar sessionen</string>
     <string name="app_link_enabled">App-länkningen aktiverades!</string>
-    <string name="ui_accent_0">System</string>
     <string name="onboarding_permission_notifications">Aviseringar</string>
     <string name="notification_updates_available_desc_1">En ny version av <xliff:g id="app_one_name">%1$s</xliff:g> är tillgänglig</string>
     <string name="action_enable">Aktivera</string>

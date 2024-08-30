@@ -200,14 +200,6 @@
     <string name="purchase_invalid">アプリが購入されていません</string>
     <string name="purchase_failed">ダウンロード失敗</string>
     <string name="pref_ui_title">カスタマイズ</string>
-    <string name="pref_ui_theme_title">テーマ</string>
-    <string name="pref_ui_theme_system">システム設定に従う</string>
-    <string name="pref_ui_theme_light">ライト</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_dark_x">ダーク X</string>
-    <string name="pref_ui_theme_black">ブラック</string>
-    <string name="pref_ui_theme_dark">ダーク</string>
-    <string name="pref_ui_accent_title">アクセント</string>
     <string name="pref_install_mode_title">インストール方法</string>
     <string name="pref_install_mode_summary">APK インストールモードを選択</string>
     <string name="pref_install_mode_session">セッションインストーラー</string>
@@ -253,19 +245,6 @@
     <string name="toast_export_success">デバイス設定をエクスポートしました</string>
     <string name="installer_am_unavailable">App Manager をインストールするかインストーラーを変更してください。</string>
     <string name="pref_install_mode_am">AM インストーラー:</string>
-    <string name="ui_accent_6">紫</string>
-    <string name="ui_accent_1">ブルー</string>
-    <string name="ui_accent_2">フクシャ</string>
-    <string name="ui_accent_3">赤</string>
-    <string name="ui_accent_4">ゴールド</string>
-    <string name="ui_accent_5">緑</string>
-    <string name="ui_accent_7">灰色</string>
-    <string name="ui_accent_8">ピンク</string>
-    <string name="ui_accent_9">ライム</string>
-    <string name="ui_accent_10">オレンジ</string>
-    <string name="ui_accent_12">Disskord ブルー</string>
-    <string name="ui_accent_13">ディープブルー</string>
-    <string name="ui_accent_11">ライトブルー</string>
     <string name="download_progress">ダウンロード中 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="download_paused">一時停止 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="server_maintenance">サーバーがメンテナンスのため停止しています</string>
@@ -288,7 +267,6 @@
     <string name="session_verifying">セッションを認証中</string>
     <string name="title_advanced">高度な設定</string>
     <string name="session_good">おお！すべて順調。</string>
-    <string name="ui_accent_0">システム</string>
     <string name="error">エラーが発生しました！</string>
     <string name="menu">メニュー</string>
     <string name="expand">展開する</string>

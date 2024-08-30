@@ -86,11 +86,6 @@
     <string name="toast_apk_whitelisted">සුදු ලේඛනගතයි</string>
     <string name="pref_ui_no_for_you">ඔබගේ පිටු සඳහා</string>
     <string name="purchase_failed">බාගැනීම අසාර්ථකයි</string>
-    <string name="pref_ui_theme_title">තේමාව</string>
-    <string name="pref_ui_theme_darkord">ඩිස්කෝඩ්</string>
-    <string name="pref_ui_theme_dark_x">අඳුරු එක්ස්</string>
-    <string name="pref_ui_theme_dark">අඳුරු</string>
-    <string name="pref_ui_theme_black">කළු</string>
     <string name="pref_filter_google_title">ගූගල් යෙදුම් පෙරන්න</string>
     <string name="pref_filter_google_summary">සෙවුම් ප්‍රතිඵල සහ යෙදුම් ප්‍රවර්ග වලින් සියළුම ගූගල් යෙදුම් ඉවත් කරයි</string>
     <string name="pref_filter_fdroid_title">එෆ්-ඩ්‍රොයිඩ් යෙදුම් පෙරන්න</string>
@@ -126,8 +121,6 @@
     <string name="title_games">ක්‍රීඩා</string>
     <string name="title_apps_games">මාගේ යෙදුම් සහ ක්‍රීඩා</string>
     <string name="pref_install_mode_title">ස්ථාපන ක්‍රමය</string>
-    <string name="pref_ui_theme_light">දීප්තිමත්</string>
-    <string name="pref_ui_theme_system">පද්ධතිය අනුගමනය කරන්න</string>
     <string name="pref_ui_title">අභිරුචිකරණය</string>
     <string name="pref_ui_layout">පිරිසැලසුම</string>
     <string name="pref_ui_no_for_you_desc">මුල් තිරය මත ඔබ සඳහා පිටු ප්‍රදර්ශනය කරන්න</string>
@@ -142,18 +135,6 @@
     <string name="about_bitcoin_eth">ඊතරම්</string>
     <string name="onboarding_permission_esa_desc">බාගැනීම් (APKs හා OBBs) සුරැකීමට හා බාහිර ආචයනයෙන් උපාංග වින්‍යාස ආයාත හෝ නිර්යාත කිරීමට.</string>
     <string name="toast_export_success">උපාංගයේ වින්‍යාසය නිර්යාත කෙරිණි</string>
-    <string name="ui_accent_1">නිල්</string>
-    <string name="ui_accent_3">රතු</string>
-    <string name="ui_accent_2">ෆුච්සියා</string>
-    <string name="ui_accent_10">තැඹිලි</string>
-    <string name="ui_accent_5">කොළ</string>
-    <string name="ui_accent_6">දම්</string>
-    <string name="ui_accent_7">අළු</string>
-    <string name="ui_accent_8">රෝස</string>
-    <string name="ui_accent_12">ඩිස්කෝර්ඩ් නිල්</string>
-    <string name="ui_accent_13">තද නිල්</string>
-    <string name="ui_accent_11">ලා නිල්</string>
-    <string name="ui_accent_9">දෙහි කොළ</string>
     <string name="about_xda">XDA සංසදය</string>
     <string name="about_bhim_summary">UPI මගින් පරිත්‍යාග</string>
     <string name="about_bitcoin_bch">බිට්කොයින් මුදල්</string>
@@ -202,7 +183,6 @@
     <string name="about_xda_summary">සාකච්ඡා හා යෝජනා සඳහා අවුරෝරා ස්ටෝර් XDA පිටුව බලන්න.</string>
     <string name="action_filter_gsf_dependent_apps">GSF මත යැපෙයි</string>
     <string name="action_filter_misc">ප්‍රකීර්ණ</string>
-    <string name="ui_accent_4">රත්රන්</string>
     <string name="title_spoof_manager">රැවටීම් කළමණාකරු</string>
     <string name="toast_manual_unavailable">ඔබ ඉල්ලන අනුවාද කේතය නැත.</string>
     <string name="toast_permission_granted">අවසරය ලැබුණි</string>
@@ -238,7 +218,6 @@
     <string name="installer_status_failure_invalid">APK වලංගු නොවේ හෝ හානි වී ඇත</string>
     <string name="pref_common_extra">අමතර වැඩ</string>
     <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>
-    <string name="pref_ui_accent_title">උදාත්තය</string>
     <string name="purchase_invalid">යෙදුම මිලදී ගෙන නැත</string>
     <string name="pref_install_mode_summary">APK ස්ථාපන ආකාරය තෝරන්න</string>
     <string name="tab_top_paid">ප්‍රචලිත ගෙවන</string>
@@ -289,7 +268,6 @@
     <string name="session_scrapped">අවසාන වාරය ඉවතලිණි</string>
     <string name="session_verifying_google">ගූගල් වාරය සත්‍යාපනය</string>
     <string name="session_verifying">වාරය සත්‍යාපනය</string>
-    <string name="ui_accent_0">පද්ධතිය</string>
     <string name="download_paused">විරාමයි • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">බාගැනෙමින් • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="expand">විහිදන්න</string>

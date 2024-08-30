@@ -58,58 +58,6 @@
         <item>48sp</item>
     </array>
 
-    <string-array name="pref_themes">
-        <item>@string/pref_ui_theme_system</item>
-        <item>@string/pref_ui_theme_light</item>
-        <item>@string/pref_ui_theme_dark</item>
-        <item>@string/pref_ui_theme_black</item>
-        <item>@string/pref_ui_theme_dark_x</item>
-        <item>@string/pref_ui_theme_darkord</item>
-    </string-array>
-
-    <string-array name="pref_themes_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
-
-    <string-array name="pref_accent">
-        <item>@string/ui_accent_0</item>
-        <item>@string/ui_accent_1</item>
-        <item>@string/ui_accent_2</item>
-        <item>@string/ui_accent_3</item>
-        <item>@string/ui_accent_4</item>
-        <item>@string/ui_accent_5</item>
-        <item>@string/ui_accent_6</item>
-        <item>@string/ui_accent_7</item>
-        <item>@string/ui_accent_8</item>
-        <item>@string/ui_accent_9</item>
-        <item>@string/ui_accent_10</item>
-        <item>@string/ui_accent_11</item>
-        <item>@string/ui_accent_12</item>
-        <item>@string/ui_accent_13</item>
-    </string-array>
-
-    <string-array name="pref_accent_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-    </string-array>
-
     <string-array name="pref_updates_auto_values">
         <item>0</item>
         <item>1</item>

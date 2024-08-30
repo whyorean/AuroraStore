@@ -23,10 +23,6 @@
     <string name="title_account_manager">Kontoer</string>
     <string name="title_about">Om</string>
     <string name="tab_categories">Kategorier</string>
-    <string name="pref_ui_theme_title">Drakt</string>
-    <string name="pref_ui_theme_system">Følg systemet</string>
-    <string name="pref_ui_theme_dark">Mørk</string>
-    <string name="pref_ui_theme_black">Svart</string>
     <string name="pref_install_mode_services">Aurora-tjenester</string>
     <string name="pref_app_download">Nedlastinger</string>
     <string name="onboarding_title_welcome">Velkommen</string>
@@ -200,8 +196,6 @@
     <string name="toast_spoof_applied">Enhetslureri i bruk.</string>
     <string name="pref_ui_similar_apps_desc">Vis lignende og relaterte klynger på appdetaljsiden</string>
     <string name="pref_ui_no_for_you_desc">Vis For You-sider på startskjermen</string>
-    <string name="pref_ui_theme_darkord">Uenighet</string>
-    <string name="pref_ui_accent_title">Aksent</string>
     <string name="pref_abandon_session_desc">Fjern forlatte eller ventende installasjonsøkter</string>
     <string name="pref_abandon_session">Tving frem klare installasjonsøkter</string>
     <string name="installer_service_misconfigured">Sett opp Aurora-tjenester og innvilg alle tilganger først.</string>
@@ -221,8 +215,6 @@
     <string name="title_installer">Program-installerer</string>
     <string name="title_blacklist_manager">Svarteliste-håndterer</string>
     <string name="purchase_no_file">Kunne ikke hente filer</string>
-    <string name="pref_ui_theme_dark_x">Mørk X</string>
-    <string name="pref_ui_theme_light">Lys</string>
     <string name="pref_filter_fdroid_summary">Fjerner F-Droid-programmer fra programlistene</string>
     <string name="pref_dialog_to_apply_restart">Denne innstillinger vil tre i kraft etter at du starter programmet igjen</string>
     <string name="pref_common_extra">Ekstra</string>
@@ -254,35 +246,26 @@
     <string name="pref_install_mode_am">AM installatør.</string>
     <string name="installer_am_unavailable">Installer App Manager eller endre installasjonsprogrammet.</string>
     <string name="installer_shizuku_unavailable">Shizuku er enten ikke installert eller satt opp på riktig vis.</string>
-    <string name="ui_accent_7">Grå</string>
-    <string name="ui_accent_1">Blå</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="session_verifying">Bekrefter økt …</string>
-    <string name="ui_accent_0">System</string>
     <string name="onboarding_permission_notifications">Merknader</string>
     <string name="toast_import_failed">Kunne ikke importere enhetsoppsett</string>
-    <string name="ui_accent_5">Grønn</string>
     <string name="download_eta_sec">%1$ds igjen</string>
     <string name="app_links_desc">Tillat Aurora Store å åpne støttede lenker</string>
     <string name="requesting_new_session">Forespør ny økt …</string>
     <string name="action_import">Importer</string>
     <string name="title_search_suggestion">Søkeforslag</string>
     <string name="title_advanced">Avansert</string>
-    <string name="ui_accent_8">Rosa</string>
     <string name="menu">Meny</string>
     <string name="download_eta_min">%1$dm %2$ds igjen</string>
-    <string name="ui_accent_6">Lilla</string>
     <string name="app_links_title">Programlenker</string>
-    <string name="ui_accent_11">Lyseblå</string>
     <string name="verifying_new_session">Bekrefter ny økt …</string>
     <string name="download_eta_hrs">%1$dt %2$dm %3$ds igjen</string>
     <string name="session_init">Klargjør …</string>
     <string name="session_verifying_google">Bekrefter Google-økt …</string>
     <string name="expand">Utvid</string>
     <string name="title_search_results">Søkeresultater</string>
-    <string name="ui_accent_3">Rød</string>
     <string name="onboarding_permission_notifications_desc">Send merknader om installasjonsstatus.</string>
-    <string name="ui_accent_10">Oransje</string>
     <string name="app_language">Programspråk</string>
     <string name="action_uninstall_confirmation">Vil du avinstallere denne appen?</string>
     <string name="download_paused">Pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>

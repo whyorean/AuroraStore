@@ -38,11 +38,9 @@ import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.util.Preferences
 
 private const val TAG = "Context"
 
@@ -113,44 +111,6 @@ fun Context.getStyledAttributeColor(id: Int): Int {
     val styledAttr = arr.getColor(0, Color.WHITE)
     arr.recycle()
     return styledAttr
-}
-
-fun Context.accentColor(): Int {
-    val color = when (Preferences.getInteger(this, Preferences.PREFERENCE_THEME_ACCENT)) {
-        0 -> R.color.colorAccent
-        1 -> R.color.colorAccent01
-        2 -> R.color.colorAccent02
-        3 -> R.color.colorAccent03
-        4 -> R.color.colorAccent04
-        5 -> R.color.colorAccent05
-        6 -> R.color.colorAccent06
-        7 -> R.color.colorAccent07
-        8 -> R.color.colorAccent08
-        9 -> R.color.colorAccent09
-        10 -> R.color.colorAccent10
-        11 -> R.color.colorAccent11
-        12 -> R.color.colorAccent12
-        13 -> R.color.colorAccent13
-        else -> if (isSAndAbove()) R.color.colorAccent else R.color.colorAccent01
-    }
-    return ContextCompat.getColor(this, color)
-}
-
-fun Context.backgroundColor(): Int {
-    val color = when (Preferences.getInteger(this, Preferences.PREFERENCE_THEME_TYPE)) {
-        1 -> R.color.colorWhite
-        2 -> R.color.colorDarkBackground
-        3 -> R.color.colorBlack
-        4 -> R.color.colorDarkXBackground
-        5 -> R.color.colorDarkordBackground
-        else -> null
-    }
-
-    if (color == null) {
-        return getStyledAttributeColor(com.google.android.material.R.attr.colorSurface)
-    }
-
-    return ContextCompat.getColor(this, color)
 }
 
 fun Context.isIgnoringBatteryOptimizations(): Boolean {

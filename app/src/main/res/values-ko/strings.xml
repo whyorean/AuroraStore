@@ -193,25 +193,17 @@
     <string name="pref_install_mode_services">오로라 서비스 (지원 중단)</string>
     <string name="pref_install_mode_session">세션 설치기</string>
     <string name="pref_install_mode_title">설치 방식</string>
-    <string name="pref_ui_theme_dark">다크</string>
     <string name="pref_vending_version_title">Google Play 버전</string>
     <string name="pref_network_proxy_enable">프록시 켜기</string>
     <string name="pref_network_proxy_enable_desc">앱의 모든 트래픽이 프록시를 통과하도록 허용</string>
     <string name="pref_network_proxy_url">프록시 URL</string>
-    <string name="pref_ui_accent_title">테마색</string>
-    <string name="pref_ui_theme_light">엷은 색</string>
-    <string name="pref_ui_theme_system">시스템 설정을 따름</string>
-    <string name="pref_ui_theme_title">테마</string>
     <string name="pref_network_title">네트워킹</string>
     <string name="pref_network_proxy_title">프록시</string>
-    <string name="pref_ui_theme_black">검정</string>
-    <string name="pref_ui_theme_dark_x">다크 X</string>
     <string name="pref_ui_title">맞춤화</string>
     <string name="pref_ui_no_for_you">For You 페이지</string>
     <string name="pref_vending_version_device">기본값(장치 구성에서)</string>
     <string name="pref_ui_similar_apps">유사한 및 관련 앱</string>
     <string name="title_about">소개</string>
-    <string name="pref_ui_theme_darkord">디스코드</string>
     <string name="pref_ui_no_for_you_desc">홈 화면에 페이지 표시</string>
     <string name="pref_updates_incompatible">호환되지 않는 업데이트</string>
     <string name="pref_aurora_only">Aurora Store 앱 전용</string>
@@ -242,13 +234,10 @@
     <string name="purchase_invalid">구매하지 않은 앱</string>
     <string name="title_apps_sale_provider">공급자 - bestappsales.com</string>
     <string name="title_no_network">네트워크 없음</string>
-    <string name="ui_accent_0">시스템</string>
     <string name="rate_limited">Oops, 이 계정은 제한됩니다!</string>
     <string name="pref_updates_check_frequency">자동 업데이트 작동주기</string>
     <string name="tab_top_free">인기 무료</string>
-    <string name="ui_accent_10">오렌지</string>
     <string name="expand">확장됨</string>
-    <string name="ui_accent_6">퍼플</string>
     <string name="tab_editor_choice">편집자선택</string>
     <string name="tab_for_you">맞춤 추천</string>
     <string name="title_download_playstore">플레이 스토어</string>
@@ -266,16 +255,9 @@
     <string name="toast_proxy_success">프록시가 성공적으로 설정됨</string>
     <string name="toast_proxy_failed">프록시 설정 실패</string>
     <string name="app_updater_service_notif_text">활성화 백그라운드 앱 다운로드</string>
-    <string name="ui_accent_1">블루</string>
     <string name="update_available">업데이트 사용 가능</string>
     <string name="updates_available">업데이트 사용 가능</string>
     <string name="error">오류가 발생했습니다!</string>
-    <string name="ui_accent_5">그린</string>
-    <string name="ui_accent_7">회색</string>
-    <string name="ui_accent_2">푸크시아</string>
-    <string name="ui_accent_3">레드</string>
-    <string name="ui_accent_4">골든</string>
-    <string name="ui_accent_13">딥 블루</string>
     <string name="pref_updates_auto_off">앱을 자동-업데이트 안함</string>
     <string name="pref_updates_check_frequency_desc">자동 및 직접 업데이트에 대한 확인 간격을 구성하며, 시간단위입니다.</string>
     <string name="search_hint">앱 &amp; 게임을 검색</string>
@@ -292,7 +274,6 @@
     <string name="failed_to_fetch_report">개인 정보 보호 보고서를 가져오지 못함</string>
     <string name="bad_request">내부 오류! 잠시 후 다시 시도하십시오</string>
     <string name="tab_top_grossing">최고 매출</string>
-    <string name="ui_accent_11">밝은 파란색</string>
     <string name="app_links_title">앱 링크</string>
     <string name="session_scrapped">마지막 세션이 폐기됨</string>
     <string name="session_verifying">세션 검증중</string>
@@ -327,8 +308,6 @@
     <string name="title_spoof_manager">눈속임 관리자</string>
     <string name="title_search_suggestion">검색 제안</string>
     <string name="title_advanced">고급</string>
-    <string name="ui_accent_8">핑크</string>
-    <string name="ui_accent_9">라임</string>
     <string name="pref_ui_layout">레이아웃</string>
     <string name="pref_ui_layout_tab">기본 탭 선택</string>
     <string name="action_enable">사용</string>
@@ -358,7 +337,6 @@
     <string name="toast_rated_success">등급(표시하려면 시간이 걸릴 수 있음)</string>
     <string name="toast_import_success">장치 구성 가져오기</string>
     <string name="toast_proxy_invalid">프록시 URL이 잘못되었습니다. 형식을 확인하십시오!</string>
-    <string name="ui_accent_12">디스코드 블루</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="downloading_dep">&lt;xliff:gid=\"app\"&gt;%1$s&lt;/xliff:g&gt;에 대한 추가 파일 다운로드 중</string>
     <string name="faqs_subtitle">문제가 있습니까? 답을 찾으십시오</string>

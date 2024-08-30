@@ -13,12 +13,10 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.PendingIntentCompat
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.WorkManager
 import com.aurora.Constants
-import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
@@ -74,7 +72,6 @@ object NotificationUtil {
     fun getDownloadNotification(context: Context): Notification {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
             .setSmallIcon(android.R.drawable.stat_sys_download)
-            .setColor(ContextCompat.getColor(context, R.color.colorAccent))
             .setContentTitle(context.getString(R.string.app_updater_service_notif_title))
             .setContentText(context.getString(R.string.app_updater_service_notif_text))
             .setOngoing(true)
@@ -89,7 +86,6 @@ object NotificationUtil {
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
         builder.setContentTitle(download.displayName)
-        builder.color = ContextCompat.getColor(context, R.color.colorAccent)
         builder.setContentIntent(getContentIntentForDownloads(context))
         builder.setLargeIcon(largeIcon)
 
@@ -163,7 +159,6 @@ object NotificationUtil {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
             .setSmallIcon(R.drawable.ic_install)
             .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
-            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
             .setContentTitle(displayName)
             .setContentText(context.getString(R.string.installer_status_success))
             .setContentIntent(getContentIntentForDetails(context, packageName))
@@ -178,7 +173,6 @@ object NotificationUtil {
     ): Notification {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
             .setSmallIcon(R.drawable.ic_install)
-            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
             .setContentTitle(displayName)
             .setContentText(content)
             .setContentIntent(getContentIntentForDetails(context, packageName))
@@ -254,7 +248,6 @@ object NotificationUtil {
     fun getExportNotification(context: Context): Notification {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
             .setSmallIcon(R.drawable.ic_file_copy)
-            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
             .setContentTitle(context.getString(R.string.export_app_title))
             .setContentText(context.getString(R.string.export_app_summary))
             .setOngoing(false)
@@ -288,7 +281,6 @@ object NotificationUtil {
 
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
             .setSmallIcon(R.drawable.ic_file_copy)
-            .setColor(context.getStyledAttributeColor(R.color.colorAccent))
             .setContentTitle(displayName).setContentText(content)
             .setContentIntent(getContentIntentForExport(context, uri))
             .setAutoCancel(true)

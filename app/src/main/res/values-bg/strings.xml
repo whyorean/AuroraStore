@@ -91,8 +91,6 @@
     <string name="title_settings">Настройки</string>
     <string name="title_updates">Актуализации</string>
     <string name="title_language">Език</string>
-    <string name="ui_accent_1">Син</string>
-    <string name="ui_accent_7">Сив</string>
     <string name="menu_disclaimer">Опровержение</string>
     <string name="pref_ui_similar_apps">Подобни и свързани приложения</string>
     <string name="title_installation">Инсталация</string>
@@ -113,12 +111,10 @@
     <string name="toast_abandon_sessions">Старите инсталационни сесии са изоставени</string>
     <string name="download_cancel_all">Отмени всички</string>
     <string name="action_search">Търси</string>
-    <string name="pref_ui_theme_light">Светло</string>
     <string name="details_beta_delay">Записването може да отнеме известно време, можете да проверите състоянието по-късно.</string>
     <string name="details_dev_address">Адрес</string>
     <string name="details_permission">разрешение</string>
     <string name="installer_status_user_action">Изчаква се потвърждение от потребителя</string>
-    <string name="pref_ui_theme_system">Следвайте системата</string>
     <string name="tab_editor_choice">Избор на редакторите</string>
     <string name="exodus_substring">тракер(и), намерени в</string>
     <string name="download_pause_all">Пауза на всички</string>
@@ -129,7 +125,6 @@
     <string name="action_share">Сподели</string>
     <string name="details_gsf_dependent">Изисква GSF</string>
     <string name="download_completed">Изтеглянето завърши</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="download_speed_estimating">Оценяване</string>
     <string name="download_queued">На опашка</string>
     <string name="download_force_clear_all">Принудително изчистване на всички</string>
@@ -201,7 +196,6 @@
     <string name="pref_dialog_to_apply_restart">Тази настройка ще се приложи, след като рестартирате приложението</string>
     <string name="pref_install_mode_shizuku">Shizuku инсталатор</string>
     <string name="pref_install_mode_title">Метод на инсталиране</string>
-    <string name="pref_ui_accent_title">Акцент</string>
     <string name="purchase_no_file">Файловете не могат да бъдат получени</string>
     <string name="session_good">Уау! Всичко е наред.</string>
     <string name="session_verifying">Сесията се проверява</string>
@@ -254,13 +248,9 @@
     <string name="pref_install_delete_summary">APK файловете ще бъдат изтрити по подразбиране</string>
     <string name="pref_abandon_session">Принудително изчистване на инсталационните сесии</string>
     <string name="pref_filter_fdroid_title">Филтриране на F-Droid приложения</string>
-    <string name="pref_ui_theme_black">черен</string>
-    <string name="pref_ui_theme_dark_x">Тъмен X</string>
     <string name="pref_filter_google_summary">Премахва всички приложения на Google от резултатите от търсенето и категоризираните приложения</string>
     <string name="pref_filter_google_title">Филтрирайте приложенията на Google</string>
     <string name="pref_install_delete_title">Изтриване на APK след инсталиране</string>
-    <string name="pref_ui_theme_dark">Тъмно</string>
-    <string name="pref_ui_theme_title">Тема</string>
     <string name="pref_ui_title">Персонализиране</string>
     <string name="pref_ui_no_for_you">Страници за вас</string>
     <string name="session_init">Подготвяме нещата…</string>
@@ -272,28 +262,16 @@
     <string name="device_miui_extra">По желание можете да изберете Native installer, но тогава не можете да инсталирате пакетни (разделени) APK файлове, така че изборът е ваш.</string>
     <string name="title_no_network">Няма мрежа</string>
     <string name="title_purchase_history">История на покупките</string>
-    <string name="ui_accent_11">Светло синьо</string>
     <string name="toast_apk_blacklisted">В черния списък</string>
     <string name="toast_apk_whitelisted">В белия списък</string>
     <string name="toast_clipboard_copied">Копирано в клипборда</string>
     <string name="title_manual_download">Ръчно изтегляне</string>
-    <string name="ui_accent_10">Оранжев</string>
     <string name="app_updater_service_notif_title">Изтегляне на фоново приложение</string>
     <string name="toast_rated_success">Оценен</string>
-    <string name="ui_accent_2">Фуксия</string>
-    <string name="ui_accent_3">Червен</string>
-    <string name="ui_accent_4">Златен</string>
     <string name="toast_rated_failed">Не може да се изпрати оценка</string>
     <string name="toast_import_failed">Конфигурацията на устройството не можа да се импортира</string>
-    <string name="ui_accent_0">Система</string>
     <string name="toast_aas_token_failed">Не можа да се генерира AAS Token</string>
     <string name="toast_import_success">Конфигурацията на устройството е импортирана</string>
-    <string name="ui_accent_5">Зелено</string>
-    <string name="ui_accent_6">Лилаво</string>
-    <string name="ui_accent_8">Розово</string>
-    <string name="ui_accent_9">Лайм</string>
-    <string name="ui_accent_12">Disskord син</string>
-    <string name="ui_accent_13">Тъмносин</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> налични актуализации</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> налична актуализация</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> и <xliff:g id="app_three_name">%3$s</xliff:g></string>

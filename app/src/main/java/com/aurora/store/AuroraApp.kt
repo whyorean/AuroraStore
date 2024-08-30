@@ -31,6 +31,7 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
+import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -63,6 +64,9 @@ class AuroraApp : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Apply dynamic colors to activities0
+        DynamicColors.applyToActivitiesIfAvailable(this);
 
         // Required for Shizuku installer
         if (isPAndAbove()) HiddenApiBypass.addHiddenApiExemptions("I", "L")

@@ -17,104 +17,111 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@drawable/divider"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_large"
-        android:showDividers="middle">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_large"
+            android:showDividers="middle">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_icon"
-                android:layout_width="@dimen/icon_size_category"
-                android:layout_height="@dimen/icon_size_category"
-                android:layout_centerVertical="true"
-                tools:src="@drawable/ic_xiaomi_logo" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="@dimen/icon_size_category"
+                    android:layout_height="@dimen/icon_size_category"
+                    android:layout_centerVertical="true"
+                    tools:src="@drawable/ic_xiaomi_logo" />
+
+                <TextView
+                    android:id="@+id/txt_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginBottom="@dimen/margin_normal"
+                    android:layout_toEndOf="@id/img_icon"
+                    android:maxLines="1"
+                    android:text="@string/title_installer"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/txt_header"
+                android:id="@+id/txt_line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginBottom="@dimen/margin_normal"
-                android:layout_toEndOf="@id/img_icon"
-                android:maxLines="1"
-                android:text="@string/title_installer"
+                android:maxLines="3"
+                android:text="@string/device_miui_title"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-        </RelativeLayout>
+                android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
-        <TextView
-            android:id="@+id/txt_line1"
+            <TextView
+                android:id="@+id/txt_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="10"
+                android:text="@string/device_miui_subtitle"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+
+            <TextView
+                android:id="@+id/txt_line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_changelog"
+                android:maxLines="10"
+                android:text="@string/device_miui_description"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+
+            <TextView
+                android:id="@+id/txt_line4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="10"
+                android:text="@string/device_miui_extra"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Aurora.Line2"
+                android:textColor="@color/colorRed" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:text="@string/device_miui_title"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView
-            android:id="@+id/txt_line2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="10"
-            android:text="@string/device_miui_subtitle"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_secondary"
+                style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_button"
+                android:layout_weight="1"
+                android:text="@string/action_ignore" />
 
-        <TextView
-            android:id="@+id/txt_line3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_changelog"
-            android:maxLines="10"
-            android:text="@string/device_miui_description"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2" />
-
-        <TextView
-            android:id="@+id/txt_line4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="10"
-            android:text="@string/device_miui_extra"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2"
-            android:textColor="@color/colorRed" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_primary"
+                style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_button"
+                android:layout_weight="1"
+                android:text="@string/action_disable" />
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_secondary"
-            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/height_button"
-            android:layout_weight="1"
-            android:text="@string/action_ignore" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_primary"
-            style="@style/Widget.Material3.Button.TextButton.Dialog.Flush"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/height_button"
-            android:layout_weight="1"
-            android:text="@string/action_disable" />
-    </LinearLayout>
-</LinearLayout>
+</FrameLayout>

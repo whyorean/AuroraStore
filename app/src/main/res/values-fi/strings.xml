@@ -64,8 +64,6 @@
     <string name="pref_app_download">Lataukset</string>
     <string name="pref_filter_fdroid_summary">Poistaa F-Droid-sovellukset sovellusluetteloista</string>
     <string name="pref_filter_fdroid_title">Suodata F-Droidi-sovellukset</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_black">Musta</string>
     <string name="pref_ui_no_for_you">Sinulle-sivut</string>
     <string name="pref_ui_similar_apps">Samankaltaiset ja vastaavat sovellukset</string>
     <string name="purchase_failed">Lataaminen epäonnistui</string>
@@ -203,12 +201,6 @@
     <string name="pref_ui_layout_tab">Valitse oletusvälilehti</string>
     <string name="pref_ui_layout">Ulkoasu</string>
     <string name="pref_ui_title">Mukauttaminen</string>
-    <string name="pref_ui_theme_title">Teema</string>
-    <string name="pref_ui_theme_system">Järjestelmän mukainen</string>
-    <string name="pref_ui_theme_light">Vaalea</string>
-    <string name="pref_ui_theme_dark_x">Tumma X</string>
-    <string name="pref_ui_theme_dark">Tumma</string>
-    <string name="pref_ui_accent_title">Korostus</string>
     <string name="pref_network_title">Verkkoyhteys</string>
     <string name="pref_install_mode_title">Asennustapa</string>
     <string name="pref_install_mode_summary">Valitse APK-asennustapa</string>
@@ -253,19 +245,6 @@
     <string name="app_updater_service_notif_title">Taustalla sovelluksen lataaminen</string>
     <string name="installer_am_unavailable">Asenna App Manager tai vaihda asennusohjelmaa.</string>
     <string name="pref_install_mode_am">AM-asennusohjelma</string>
-    <string name="ui_accent_11">Vaaleansininen</string>
-    <string name="ui_accent_1">Sininen</string>
-    <string name="ui_accent_4">Kultainen</string>
-    <string name="ui_accent_10">Oranssi</string>
-    <string name="ui_accent_2">Fuksia</string>
-    <string name="ui_accent_3">Punainen</string>
-    <string name="ui_accent_5">Vihreä</string>
-    <string name="ui_accent_6">Violetti</string>
-    <string name="ui_accent_7">Harmaa</string>
-    <string name="ui_accent_8">Vaaleanpunainen</string>
-    <string name="ui_accent_9">Limetinvihreä</string>
-    <string name="ui_accent_12">Disskord-sininen</string>
-    <string name="ui_accent_13">Tummansininen</string>
     <string name="download_progress">Lataus • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Ilmoitukset</string>
     <string name="session_enjoy">Kirjaudu sisään ja nauti.</string>
@@ -288,7 +267,6 @@
     <string name="session_verifying">Vahvistetaan istuntoa</string>
     <string name="session_verifying_google">Googlen istuntoa tarkistetaan</string>
     <string name="title_advanced">Edistynyt</string>
-    <string name="ui_accent_0">Järjestelmä</string>
     <string name="updates_available">päivityksiä saatavilla</string>
     <string name="rate_limited">Upsi, tämä tili on rajoitettu!</string>
     <string name="error">Tapahtui virhe!</string>

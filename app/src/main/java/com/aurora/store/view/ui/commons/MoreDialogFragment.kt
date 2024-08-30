@@ -10,7 +10,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,7 +33,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
@@ -52,12 +50,9 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.aurora.Constants
 import com.aurora.Constants.URL_TOS
-import com.aurora.extensions.accentColor
-import com.aurora.extensions.backgroundColor
 import com.aurora.extensions.browse
-import com.aurora.extensions.darkenColor
 import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.extensions.lightenColor
+import com.aurora.store.MR
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.view.theme.AuroraTheme
@@ -93,17 +88,14 @@ class MoreDialogFragment : DialogFragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 AuroraTheme {
-                    if (isSystemInDarkTheme()) {
-                        primaryColor = Color(requireContext().backgroundColor())
-                        onPrimaryColor = Color(lightenColor(primaryColor.toArgb(), 0.85f))
-                        secondaryColor = Color(darkenColor(primaryColor.toArgb(), 0.75f))
-                        onSecondaryColor = Color(lightenColor(secondaryColor.toArgb(), 0.85f))
-                    } else {
-                        primaryColor = Color(lightenColor(requireContext().accentColor(), 0.85f))
-                        onPrimaryColor = Color(darkenColor(primaryColor.toArgb(), 0.15f))
-                        secondaryColor = Color(lightenColor(primaryColor.toArgb(), 0.75f))
-                        onSecondaryColor = Color(darkenColor(secondaryColor.toArgb(), 0.15f))
-                    }
+                    primaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorSurface))
+                    onPrimaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorOnSurface))
+                    secondaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorSecondaryContainer))
+                    onSecondaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorOnSecondaryContainer))
 
                     Column(
                         modifier = Modifier

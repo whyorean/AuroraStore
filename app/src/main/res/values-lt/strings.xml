@@ -41,11 +41,6 @@
     <string name="onboarding_title_welcome">Sveiki</string>
     <string name="onboarding_permission_installer">Diegimo programos leidimas</string>
     <string name="pref_dialog_to_apply_restart">Šis nustatymas įsigalios po to, kai paleisite programėlę iš naujo</string>
-    <string name="pref_ui_accent_title">Paryškinimas</string>
-    <string name="pref_ui_theme_dark">Tamsus</string>
-    <string name="pref_ui_theme_light">Šviesus</string>
-    <string name="pref_ui_theme_system">Pagal sistemą</string>
-    <string name="pref_ui_theme_title">Apipavidalinimas</string>
     <string name="pref_ui_layout">Išdėstymas</string>
     <string name="pref_ui_layout_tab">Pasirinkti numatytąją kortelę</string>
     <string name="pref_ui_similar_apps">Panašios ir susijusios programėlės</string>
@@ -101,10 +96,8 @@
     <string name="installer_status_failure_conflict">Yra konfliktuojantis paketas</string>
     <string name="installer_status_failure_incompatible">Nesuderinama programėlė</string>
     <string name="pref_app_download">Atsiuntimai</string>
-    <string name="pref_ui_theme_dark_x">Tamsus X</string>
     <string name="onboarding_title_installer">Diegimo programa</string>
     <string name="pref_network_title">Darbas tinkle</string>
-    <string name="pref_ui_theme_black">Juodas</string>
     <string name="onboarding_title_permissions">Leidimai</string>
     <string name="pref_install_mode_title">Įdiegimo būdas</string>
     <string name="purchase_unsupported">Programėlė nepalaikoma</string>
@@ -172,15 +165,6 @@
     <string name="tab_for_you">Jums</string>
     <string name="title_apps_library">Programėlės bibliotekoje</string>
     <string name="toast_abandon_sessions">Seni diegimo seansai nutraukti</string>
-    <string name="ui_accent_4">Auksinė</string>
-    <string name="ui_accent_6">Violetinė</string>
-    <string name="ui_accent_7">Pilka</string>
-    <string name="ui_accent_8">Rožinė</string>
-    <string name="ui_accent_9">Citrininė</string>
-    <string name="ui_accent_10">Oranžinė</string>
-    <string name="ui_accent_12">Blankiai mėlyna</string>
-    <string name="ui_accent_13">Tamsiai mėlyna</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="action_cancel">Atsisakyti</string>
     <string name="action_filter_misc">Įvairūs</string>
     <string name="action_grant">Suteikti</string>
@@ -243,11 +227,6 @@
     <string name="toast_apk_blacklisted">Pridėta į juodąjį sąrašą</string>
     <string name="toast_apk_whitelisted">Pridėta į baltąjį sąrašą</string>
     <string name="toast_page_unavailable">Naršomas puslapis neprieinamas</string>
-    <string name="ui_accent_3">Raudona</string>
-    <string name="ui_accent_1">Mėlyna</string>
-    <string name="ui_accent_2">Purpurinė</string>
-    <string name="ui_accent_5">Žalia</string>
-    <string name="ui_accent_11">Šviesiai mėlyna</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="server_unreachable">Serveris nepasiekiamas</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ir dar <xliff:g id="apps_count">%4$d</xliff:g></string>
@@ -257,7 +236,6 @@
     <string name="failed_generating_session">Nepavyko sugeneruoti seanso, klaidos kodas: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_generate_session">Nepavyko sugeneruoti seanso</string>
     <string name="pref_network_proxy_url">Įgaliotojo serverio URL</string>
-    <string name="ui_accent_0">Sistema</string>
     <string name="pref_network_proxy_title">Įgaliotasis serveris</string>
     <string name="onboarding_permission_notifications">Pranešimai</string>
     <string name="notification_updates_available_desc_1">Yra prieinama nauja <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>

@@ -25,8 +25,6 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
-import com.aurora.extensions.accentColor
-import com.aurora.extensions.contrastingColor
 import com.aurora.store.databinding.ViewHeaderUpdateBinding
 
 
@@ -48,7 +46,6 @@ class UpdateHeaderView @JvmOverloads constructor(
     @ModelProp
     fun action(action: String) {
         binding.btnAction.text = action
-        binding.btnAction.setTextColor(contrastingColor(context.accentColor()))
     }
 
     @CallbackProp

@@ -29,8 +29,6 @@
     <string name="pref_filter_fdroid_title">Filtrer les applications F-droid</string>
     <string name="pref_filter_google_title">Filtrer les applications Google</string>
     <string name="pref_install_mode_title">Méthode d’installation</string>
-    <string name="pref_ui_theme_black">Noir</string>
-    <string name="pref_ui_theme_dark_x">Sombre X</string>
     <string name="title_about">À propos</string>
     <string name="tab_trending">Tendances</string>
     <string name="title_apps_games">Mes applis et jeux</string>
@@ -143,14 +141,10 @@
     <string name="action_back">Retour</string>
     <string name="account_logout">Se déconnecter d’Aurora</string>
     <string name="account_login_using">Se connecter via</string>
-    <string name="pref_ui_theme_dark">Sombre</string>
     <string name="purchase_no_file">Impossible d’obtenir les fichiers</string>
     <string name="purchase_invalid">Application non achetée</string>
     <string name="purchase_failed">Le téléchargement a échoué</string>
     <string name="pref_ui_title">Personnalisation</string>
-    <string name="pref_ui_theme_title">Thème</string>
-    <string name="pref_ui_theme_system">Selon le système</string>
-    <string name="pref_ui_theme_light">Clair</string>
     <string name="tab_categories">Catégories</string>
     <string name="tab_for_you">Pour vous</string>
     <string name="tab_editor_choice">Choix de l’équipe</string>
@@ -187,8 +181,6 @@
     <string name="device_miui_extra">Si vous voulez, vous pouvez choisir le programme d’installation natif, mais dans ce cas, vous ne pourrez pas installer d’APK groupés (fractionnés) ; vous êtes libre de choisir.</string>
     <string name="device_miui_description">Veuillez désactiver les optimisations MIUI pour autoriser les installations, sinon vous pouvez choisir le programme d’installation racine ou services.</string>
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_accent_title">Couleur</string>
     <string name="pref_install_mode_summary">Sélectionnez le mode d’installation de l’APK</string>
     <string name="pref_install_mode_session">Installateur de session</string>
     <string name="pref_install_mode_services">Aurora Services (Déprécié)</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Service de téléchargement en arrière-plan des applis</string>
     <string name="pref_install_mode_am">Installateur AM</string>
     <string name="installer_am_unavailable">Installez App Manager ou changez le programme d’installation.</string>
-    <string name="ui_accent_5">Vert</string>
-    <string name="ui_accent_4">Doré</string>
-    <string name="ui_accent_2">Fuchsia</string>
-    <string name="ui_accent_1">Bleu</string>
-    <string name="ui_accent_7">Gris</string>
-    <string name="ui_accent_8">Rose</string>
-    <string name="ui_accent_3">Rouge</string>
-    <string name="ui_accent_6">Violet</string>
-    <string name="ui_accent_9">Vert citron</string>
-    <string name="ui_accent_10">Orange</string>
-    <string name="ui_accent_12">Bleu Disskord</string>
-    <string name="ui_accent_13">Bleu foncé</string>
-    <string name="ui_accent_11">Bleu clair</string>
     <string name="download_paused">En pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_enjoy">Connectez-vous et profitez.</string>
     <string name="session_verifying">Vérification de la session</string>
@@ -279,7 +258,6 @@
     <string name="expand">Développer</string>
     <string name="server_maintenance">Serveur indisponible pour maintenance</string>
     <string name="title_advanced">Avancé</string>
-    <string name="ui_accent_0">Système</string>
     <string name="menu">Menu</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Demande d’une nouvelle session</string>

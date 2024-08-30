@@ -168,14 +168,6 @@
     <string name="spoof_apply">Assicurarsi di effettuare di nuovo l’accesso per applicare la simulazione</string>
     <string name="purchase_session_expired">Sessione scaduta, effettuare di nuovo l’accesso per ottenere una nuova sessione.</string>
     <string name="pref_ui_title">Personalizzazione</string>
-    <string name="pref_ui_theme_title">Tema</string>
-    <string name="pref_ui_theme_system">Segui il sistema</string>
-    <string name="pref_ui_theme_light">Chiaro</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_dark_x">Scuro X</string>
-    <string name="pref_ui_theme_dark">Scuro</string>
-    <string name="pref_ui_theme_black">Nero</string>
-    <string name="pref_ui_accent_title">Colore</string>
     <string name="pref_install_mode_title">Metodo di installazione</string>
     <string name="pref_install_mode_summary">Seleziona la modalità di installazione degli APK</string>
     <string name="pref_install_mode_session">Installatore di sessione</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Servizio di scaricamento delle app in background</string>
     <string name="pref_install_mode_am">Installatore AM</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia l\'installatore.</string>
-    <string name="ui_accent_1">Blu</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_9">Verde limone</string>
-    <string name="ui_accent_10">Arancione</string>
-    <string name="ui_accent_11">Azzurro</string>
-    <string name="ui_accent_12">Blu Disskord</string>
-    <string name="ui_accent_13">Blu scuro</string>
-    <string name="ui_accent_3">Rosso</string>
-    <string name="ui_accent_6">Viola</string>
-    <string name="ui_accent_5">Verde</string>
-    <string name="ui_accent_7">Grigio</string>
-    <string name="ui_accent_2">Fucsia</string>
-    <string name="ui_accent_4">Dorato</string>
     <string name="action_import">Importa</string>
     <string name="download_progress">Scaricamento • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Invia notifiche sullo stato delle installazioni</string>
@@ -273,7 +252,6 @@
     <string name="title_advanced">Avanzato</string>
     <string name="toast_import_success">Configurazione del dispositivo importata</string>
     <string name="toast_import_failed">Impossibile importare la configurazione del dispositivo</string>
-    <string name="ui_accent_0">Sistema</string>
     <string name="updates_available">aggiornamenti disponibili</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="downloading_dep">Scaricamento di file aggiuntivi per <xliff:g id="app">%1$s</xliff:g></string>

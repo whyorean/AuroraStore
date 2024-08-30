@@ -25,7 +25,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
-import com.aurora.extensions.applyColors
 import com.aurora.extensions.browse
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.PermissionType
@@ -104,11 +103,8 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             viewModel.fetchUpdates()
         }
 
-        binding.searchFab.apply {
-            applyColors()
-            setOnClickListener {
-                findNavController().navigate(R.id.searchSuggestionFragment)
-            }
+        binding.searchFab.setOnClickListener {
+            findNavController().navigate(R.id.searchSuggestionFragment)
         }
     }
 

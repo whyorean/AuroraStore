@@ -16,118 +16,122 @@
   ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
   ~
   -->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:paddingHorizontal="@dimen/margin_normal"
-        android:text="@string/action_filter"
-        android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Alt" />
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_title"
-        android:padding="@dimen/padding_medium"
-        android:scrollbars="none">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:paddingHorizontal="@dimen/margin_normal"
+            android:text="@string/action_filter"
+            android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Alt" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:targetApi="o">
+            android:layout_below="@id/txt_title"
+            android:padding="@dimen/padding_medium"
+            android:scrollbars="none">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/action_filter_rating"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/rating_chips"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                app:chipSpacingHorizontal="@dimen/margin_small"
-                app:chipSpacingVertical="@dimen/margin_xsmall"
-                app:selectionRequired="true"
-                app:singleSelection="true" />
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/action_filter_downloads"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/download_chips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                app:chipSpacingHorizontal="@dimen/margin_small"
-                app:chipSpacingVertical="@dimen/margin_xsmall"
-                app:selectionRequired="true"
-                app:singleSelection="true" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/action_filter_misc"
-                android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_gfs"
-                    style="@style/AppTheme.FilterChip"
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter_gsf_dependent_apps" />
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/action_filter_rating"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_paid"
-                    style="@style/AppTheme.FilterChip"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/rating_chips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    app:chipSpacingHorizontal="@dimen/margin_small"
+                    app:chipSpacingVertical="@dimen/margin_xsmall"
+                    app:selectionRequired="true"
+                    app:singleSelection="true" />
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter_paid_apps" />
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/action_filter_downloads"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/filter_ads"
-                    style="@style/AppTheme.FilterChip"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/download_chips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    app:chipSpacingHorizontal="@dimen/margin_small"
+                    app:chipSpacingVertical="@dimen/margin_xsmall"
+                    app:selectionRequired="true"
+                    app:singleSelection="true" />
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter_apps_with_ads" />
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/action_filter_misc"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
 
-            </com.google.android.material.chip.ChipGroup>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</RelativeLayout>
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filter_gfs"
+                        style="@style/AppTheme.FilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_filter_gsf_dependent_apps" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filter_paid"
+                        style="@style/AppTheme.FilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_filter_paid_apps" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/filter_ads"
+                        style="@style/AppTheme.FilterChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_filter_apps_with_ads" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</FrameLayout>

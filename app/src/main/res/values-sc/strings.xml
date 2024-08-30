@@ -82,10 +82,6 @@
     <string name="pref_install_mode_root">Installadore de raighina</string>
     <string name="pref_install_mode_session">Installadore de sessione</string>
     <string name="pref_network_title">Retze</string>
-    <string name="pref_ui_accent_title">Colore</string>
-    <string name="pref_ui_theme_dark_x">Iscuru X</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_system">Sighi su sistema</string>
     <string name="pref_ui_title">Personalizatzione</string>
     <string name="pref_ui_layout">Dispositzione</string>
     <string name="pref_ui_no_for_you">Pàginas pro tene</string>
@@ -186,7 +182,6 @@
     <string name="pref_install_delete_title">Iscantzella sos apk a pustis de s\'installatzione</string>
     <string name="pref_install_mode_summary">Ischerta sa manera de installatzione de sos APK</string>
     <string name="pref_install_mode_title">Manera de installatzione</string>
-    <string name="pref_ui_theme_title">Tema</string>
     <string name="action_join">Auni·ti</string>
     <string name="action_leave">Abbandona</string>
     <string name="details_beta_subscribed">Ses unu proadore beta</string>
@@ -203,9 +198,6 @@
     <string name="about_telegram_summary">Auni·ti a su grupu de suportu de Aurora Store pro arresonos e impòsitos.</string>
     <string name="about_xda">Discussione Isvilupadores</string>
     <string name="about_xda_summary">Pòmpia·ti sa discussione de Aurora Store in XDA pro arresonos o impòsitos.</string>
-    <string name="pref_ui_theme_light">Craru</string>
-    <string name="pref_ui_theme_dark">Iscuru</string>
-    <string name="pref_ui_theme_black">Nieddu</string>
     <string name="action_close">Serra</string>
     <string name="pref_ui_layout_tab">Ischerta s\'ischeda prefefinida</string>
     <string name="download_none">Perunu iscarrigamentu</string>
@@ -252,18 +244,5 @@
     <string name="toast_page_unavailable">Pàgina de navigatzione no a disponimentu</string>
     <string name="toast_export_success">Configuratzione de su dispositivu esportada</string>
     <string name="toast_export_failed">Esportatzione de sa configuratzione de su dispositivu fallida</string>
-    <string name="ui_accent_1">Biaitu</string>
-    <string name="ui_accent_3">Ruju</string>
-    <string name="ui_accent_4">Oro</string>
-    <string name="ui_accent_5">Birde</string>
-    <string name="ui_accent_6">Tanadu</string>
-    <string name="ui_accent_7">Murru</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_9">Lime</string>
-    <string name="ui_accent_13">Asuletu</string>
-    <string name="ui_accent_10">Arantzu</string>
-    <string name="ui_accent_11">Biaitu craru</string>
-    <string name="ui_accent_12">Biaitu Disskord</string>
-    <string name="ui_accent_2">Frùsia</string>
     <string name="title_about">Informatziones</string>
 </resources>

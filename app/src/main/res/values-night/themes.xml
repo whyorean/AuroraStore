@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="BaseTheme" />
+    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Dark.NoActionBar">
+        <item name="chipStyle">@style/AppTheme.FilterChip</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
+    </style>
 </resources>

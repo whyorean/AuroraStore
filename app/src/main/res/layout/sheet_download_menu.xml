@@ -17,10 +17,11 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
@@ -31,4 +32,4 @@
         app:elevation="0dp"
         app:itemTextAppearance="@style/TextAppearance.Aurora.Line1"
         app:menu="@menu/menu_download_single" />
-</LinearLayout>
+</FrameLayout>
