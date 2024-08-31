@@ -25,7 +25,7 @@
     <string name="action_blacklist">Čierna listina</string>
     <string name="action_blacklist_add">Pridať na čiernu listinu</string>
     <string name="action_cancel">Zrušiť</string>
-    <string name="action_check">Skontrolujte</string>
+    <string name="action_check">Skontrolovať</string>
     <string name="action_close">Zavrieť</string>
     <string name="action_copy">Kopírovať</string>
     <string name="action_copy_link">Kopírovať odkaz</string>
@@ -36,7 +36,7 @@
     <string name="action_clear">Vymazať</string>
     <string name="action_resume">Pokračovať</string>
     <string name="download_progress">Sťahujem • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="download_queued">Vo fronte</string>
+    <string name="download_queued">V poradí</string>
     <string name="download_resume_all">Pokračovať všetko</string>
     <string name="download_speed_estimating">Odhadujem</string>
     <string name="exodus_no_tracker">Neobsahuje žiadne známe sledovače</string>
@@ -51,9 +51,9 @@
     <string name="device_miui_subtitle">Inštalátor relácie nemôže nainštalovať aplikácie kvôli optimalizácii MIUI.</string>
     <string name="dialog_desc_native_split">Prostredníctvom natívneho inštalátora nemôžete nainštalovať pribalené (rozdelené) aplikácie. Zmeňte inštalačný program na Reláciu, Služby alebo Root.</string>
     <string name="pref_download_directory_error">Vybraná cesta nie je zapisovateľná</string>
-    <string name="pref_filter_fdroid_summary">Ignorujte aplikácie F-Droid z aktualizácií a nainštalovaných aplikácií</string>
+    <string name="pref_filter_fdroid_summary">Ignorovať F-Droid aplikácie z aktualizácií a nainštalovaných aplikácií</string>
     <string name="pref_install_mode_am">AM inštalátor</string>
-    <string name="pref_vending_version_title">Google Play Verzia</string>
+    <string name="pref_vending_version_title">Google obchod verzia</string>
     <string name="pref_ui_no_for_you_desc">Zobraziť stránky pre vás na domovskej obrazovke</string>
     <string name="pref_ui_similar_apps">Podobné a súvisiace aplikácie</string>
     <string name="tab_trending">Populárne</string>
@@ -77,10 +77,10 @@
     <string name="failed_to_fetch_report">Nepodarilo sa načítať správu o ochrane osobných údajov</string>
     <string name="access_denied_using_vpn">Prístup zamietnutý! Používate VPN alebo Tor?</string>
     <string name="bad_request">Vnútorná chyba! Skúste to neskôr</string>
-    <string name="app_links_desc">Povoľte Aurora Store otvárať podporované odkazy</string>
+    <string name="app_links_desc">Povoľte Aurore otvárať podporované odkazy</string>
     <string name="action_enable">Povoliť</string>
     <string name="pref_clear_device_owner_desc">Týmto sa zruší povolenie inštalátora relácie na tichú inštaláciu aplikácie. Pokračovať v odstraňovaní?</string>
-    <string name="pref_clear_device_owner_summary">Odstráni Aurora Store ako aplikáciu vlastníka zariadenia</string>
+    <string name="pref_clear_device_owner_summary">Odstráni Aurora ako aplikáciu vlastníka zariadenia</string>
     <string name="action_favourite">Obľúbené</string>
     <string name="action_filter_apply">Použiť</string>
     <string name="action_filter_apps_with_ads">Aplikácie s reklamami</string>
@@ -160,9 +160,9 @@
     <string name="pref_ui_accent_title">Farba</string>
     <string name="pref_ui_theme_black">Čierna</string>
     <string name="pref_ui_similar_apps_desc">Zobraziť podobné a súvisiace skupiny na stránke podrobností aplikácie</string>
-    <string name="pref_updates_incompatible">Aktualizovať nekompatibilné</string>
-    <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré sa nemusia nainštalovať</string>
-    <string name="pref_aurora_only">Iba aplikácie Aurora Store</string>
+    <string name="pref_updates_incompatible">Nekompatibilné aktualizácie</string>
+    <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré môžu zlyhať pri nštalovaní</string>
+    <string name="pref_aurora_only">Iba aplikácie Aurora obchod</string>
     <string name="session_verifying_google">Overujem reláciu Google</string>
     <string name="insecure_anonymous_apply">Uistite sa, že sa znova prihlásite a reštartujete aplikáciu, aby ste použili zmeny.</string>
     <string name="title_installed">Nainštalované</string>
@@ -171,7 +171,7 @@
     <string name="ui_accent_0">Systémová</string>
     <string name="ui_accent_1">Modrá</string>
     <string name="ui_accent_3">Červená</string>
-    <string name="requesting_new_session">Žiadosť o novú reláciu</string>
+    <string name="requesting_new_session">Požiadať o novú reláciu</string>
     <string name="downloading_dep">Sťahovanie dodatočných súborov pre <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostupná aktualizácia</string>
     <string name="pref_updates_auto_desc">Nakonfigurujte správanie automatických aktualizácií</string>
@@ -182,7 +182,7 @@
     <string name="app_links_title">Odkazy aplikácie</string>
     <string name="android_market_desc">Android Market bol internetový obchod ponúkajúci softvérové aplikácie určené pre zariadenia so systémom Android, ukončený v roku 2017.</string>
     <string name="amazon_appstore_desc">Amazon Appstore je obchod s aplikáciami pre platformy kompatibilné s Androidom prevádzkovaný spoločnosťou Amazon.</string>
-    <string name="device_doze_title">Bolo zistené optimalizácie batérie!</string>
+    <string name="device_doze_title">Bola zistená optimalizácia batérie!</string>
     <string name="device_doze_description">Prosím zakážte optimalizáciu batérie, aby ste umožnili operácie na pozadí.</string>
     <string name="root_installer_subtitle">Inštalátor založený na shell s oprávneniami root</string>
     <string name="root_installer_desc">Vyžaduje oprávnenia root/superuser, podporuje všetky verzie systému Android.</string>
@@ -197,7 +197,7 @@
     <string name="account_login_using">Prihláste sa pomocou</string>
     <string name="action_back">Späť</string>
     <string name="details_data_safety_subtitle">Postupy ochrany osobných údajov a zabezpečenia deklarované vývojárom</string>
-    <string name="download_eta_calculating">Výpočet</string>
+    <string name="download_eta_calculating">Výpočitávam</string>
     <string name="download_pause_all">Pozastaviť všetko</string>
     <string name="download_paused">Pozastavené • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_status_user_action">Čaká sa na potvrdenie používateľa</string>
@@ -213,13 +213,13 @@
     <string name="pref_install_mode_services">Aurora Služby (zastarané)</string>
     <string name="pref_install_mode_summary">Vyberte režim inštalácie APK</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
-    <string name="pref_aurora_only_desc">Zobraziť iba nainštalované aplikácie Aurora Store v položkách Aktualizácie a Nainštalované aplikácie</string>
+    <string name="pref_aurora_only_desc">Zobraziť iba nainštalované aplikácie Aurora obchod v položkách Aktualizácie a Nainštalované aplikácie</string>
     <string name="purchase_unsupported">Aplikácia nie je podporovaná</string>
-    <string name="session_login">Prosím prihláste sa do svojho účtu Google Play</string>
+    <string name="session_login">Prosím prihláste sa do svojho účtu Google obchod</string>
     <string name="session_verifying">Overujem reláciu</string>
     <string name="session_login_failed_google">Nepodarilo sa prihlásiť cez Google</string>
     <string name="session_scrapped">Posledná relácia bola zrušená</string>
-    <string name="spoof_apply">Ak chcete použiť spoof, nezabudnite sa znova prihlásiť</string>
+    <string name="spoof_apply">Ak chcete použiť falšovanie, nezabudnite sa znova prihlásiť</string>
     <string name="tab_categories">Kategórie</string>
     <string name="tab_top_charts">Najlepšie rebríčky</string>
     <string name="title_apps">Aplikácie</string>
@@ -234,7 +234,7 @@
     <string name="ui_accent_2">Fuchsiová</string>
     <string name="ui_accent_4">Zlatá</string>
     <string name="toast_permission_installer_required">Najprv musíte udeliť povolenie inštalátorovi</string>
-    <string name="toast_permission_esm_caution">Možno budete musieť znova udeliť povolenie kvôli chybe v Storage Access Framework</string>
+    <string name="toast_permission_esm_caution">Možno budete musieť znova udeliť povolenie kvôli chybe v prístupe úložiska</string>
     <string name="item_required">Požadované</string>
     <string name="title_apps_sale_provider">Poskytovateľ - bestappsales.com</string>
     <string name="ui_accent_8">Ružová</string>
@@ -250,28 +250,28 @@
     <string name="pref_updates_auto_notify">Skontrolovať dostupné aktualizácie a informovať o nich</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="aplikácia_jedna_názov">%1$s</xliff:g>, <xliff:g id="aplikácia_dva_názov">%2$s</xliff:g>, <xliff:g id="aplikácia_tri_názov">%3$s</xliff:g> a <xliff:g id="počet_aplikácií">%4$d</xliff:g> viac</string>
     <string name="pref_updates_auto_off">Neaktualizovať aplikácie automaticky</string>
-    <string name="pref_updates_check_frequency_desc">nastaviť intervaly pre automatické a vlastné aktualizácie v hodinách.</string>
+    <string name="pref_updates_check_frequency_desc">Nastaviť intervaly pre automatické a vlastné aktualizácie v hodinách.</string>
     <string name="login_rate_limited">Ups, váš účet je obmedzený</string>
     <string name="failed_to_generate_session">Nepodarilo sa vygenerovať reláciu</string>
     <string name="verifying_new_session">Overuje sa nová relácia</string>
-    <string name="pref_updates_auto_install">Automaticky skontrolujte a nainštalujte dostupné aktualizácie</string>
+    <string name="pref_updates_auto_install">Automaticky skontrolovať a nainštalovať dostupné aktualizácie</string>
     <string name="pref_ui_layout_tab">Vyberte predvolenú kartu</string>
     <string name="failed_apk_export">Export súborov APK zlyhal</string>
     <string name="action_enabled">Povolené</string>
     <string name="app_link_enabled">Odkaz aplikácie je povolený!</string>
     <string name="google_play_store_desc">Google Play, tiež známy ako Obchod Google Play a predtým Android Market.</string>
-    <string name="device_doze_subtitle">Aurora Store nemôže sťahovať, inštalovať alebo aktualizovať aplikácie na pozadí kvôli optimalizácii batérie.</string>
-    <string name="device_doze_extra">Voliteľne sa môžete rozhodnúť ponechať optimalizácie povolené, ale potom nebudete môcť využívať výhody sťahovania na pozadí a automatických aktualizácií, takže výber je na vás.</string>
+    <string name="device_doze_subtitle">Aurora obchod nemôže sťahovať, inštalovať alebo aktualizovať aplikácie na pozadí kvôli optimalizácii batérie.</string>
+    <string name="device_doze_extra">Voliteľne sa môžete rozhodnúť ponechať optimalizáciu povolenú, ale potom nebudete môcť využívať výhody sťahovania na pozadí a automatických aktualizácií, takže výber je na vás.</string>
     <string name="action_manage">Spravovať</string>
     <string name="failed_app_link">Nepodporované, skúste odkazy priradiť manuálne</string>
     <string name="session_installer_subtitle">Inštalátor balíkov/rozdelených súborov APK založený na relácii</string>
     <string name="session_installer_desc">Odporúčané, vstavané a podporuje všetky verzie systému Android</string>
-    <string name="native_installer_subtitle">Inštalačný program založený, dostupný na všetkých zariadeniach</string>
-    <string name="about_aurora_store_summary">Aurora Store vám umožňuje vyhľadávať a sťahovať aplikácie z oficiálneho obchodu Google Play. Môžete skontrolovať popisy aplikácií, snímky obrazovky, aktualizácie, komentáre ostatných používateľov a stiahnuť si súbor APK priamo zo služby Google Play do svojho zariadenia. Ak chcete používať Aurora Store, musíte mať účet Google Play a prihlásiť sa do svojho účtu Google Play pri prvom otvorení a konfigurácii obchodu Aurora.
+    <string name="native_installer_subtitle">Inštalátor založený, dostupný na všetkých zariadeniach</string>
+    <string name="about_aurora_store_summary">Aurora vám umožňuje vyhľadávať a sťahovať aplikácie z oficiálneho obchodu Google Play. Môžete skontrolovať popisy aplikácií, snímky obrazovky, aktualizácie, komentáre ostatných používateľov a stiahnuť si súbor APK priamo zo služby Google Play do svojho zariadenia. Ak chcete používať Aurora Store, musíte mať účet Google Play a prihlásiť sa do svojho účtu Google Play pri prvom otvorení a konfigurácii obchodu Aurora.
 \n
 \nNa rozdiel od tradičného obchodu s aplikáciami Aurora Store nevlastní, nelicencuje ani nedistribuuje žiadne aplikácie. Všetky aplikácie, popisy aplikácií, snímky obrazovky a ďalší obsah v obchode Aurora sú priamo prístupné, stiahnuté a/alebo zobrazené z Google Play. Aurora Store funguje presne ako dvere alebo prehliadač, vďaka čomu sa môžete prihlásiť do svojho účtu Google Play a nájsť aplikácie zo služby Google Play.
 \n
-\nUpozorňujeme, že Aurora Store nemá žiadne schválenie, sponzorstvo ani autorizáciu od spoločnosti Google, Google Play, žiadnych aplikácií stiahnutých cez Aurora Store ani žiadnych vývojárov aplikácií; ani Aurora Store s nimi nemá žiadne spojenie, spoluprácu alebo spojenie.</string>
+\nUpozorňujeme, že Aurora nemá žiadne schválenie, sponzorstvo ani autorizáciu od spoločnosti Google, Google Play, žiadnych aplikácií stiahnutých cez Aurora ani žiadnych vývojárov aplikácií; ani Aurora Store s nimi nemá žiadne spojenie, spoluprácu alebo spojenie.</string>
     <string name="export_app_summary_success">Balík aplikácie bol úspešne exportovaný</string>
     <string name="details_no_favourites">Nenašli sa žiadne obľúbené aplikácie</string>
     <string name="details_no_dependencies">Žiadne závislosti</string>
@@ -280,7 +280,7 @@
     <string name="details_no_apps_on_sale">Nenašli sa žiadne aplikácie v zľave</string>
     <string name="details_paid">Platené</string>
     <string name="action_uninstall_success">Úspešne odinštalované</string>
-    <string name="details_permission">Oprávnenia</string>
+    <string name="details_permission">Oprávnenie</string>
     <string name="details_privacy">Ochrana osobných údajov</string>
     <string name="details_ratings">Hodnotenie a recenzie</string>
     <string name="details_ratings_title_hint">Názov recenzie</string>
@@ -289,11 +289,11 @@
     <string name="download_canceled">Zrušené</string>
     <string name="onboarding_permission_notifications">Oznámenia</string>
     <string name="onboarding_permission_notifications_desc">Odosielanie oznámení o stave inštalácie</string>
-    <string name="onboarding_permission_doze">Sťahovanie na pozadí</string>
-    <string name="onboarding_permission_doze_desc">Povoľte Aurora Store sťahovať a aktualizovať aplikácie na pozadí</string>
+    <string name="onboarding_permission_doze">Stiahnuté na pozadí</string>
+    <string name="onboarding_permission_doze_desc">Povoľte Aurore sťahovať a aktualizovať aplikácie na pozadí</string>
     <string name="pref_abandon_session">Vynútiť vymazanie relácií inštalácie</string>
     <string name="onboarding_permission_installer">Povolenie inštalátora</string>
-    <string name="onboarding_permission_installer_desc">Povoliť inštaláciu aplikácií z obchodu Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Povoliť inštaláciu aplikácií z obchodu Aurora</string>
     <string name="pref_abandon_session_desc">Vymazať prerušené alebo čakajúce relácie inštalácie</string>
     <string name="pref_app_download">Stiahnuté</string>
     <string name="pref_common_extra">Doplnky</string>
@@ -304,7 +304,7 @@
     <string name="pref_ui_theme_dark_x">Tmavá X</string>
     <string name="pref_ui_theme_darkord">Discord</string>
     <string name="title_more">Viac</string>
-    <string name="manage_account">Správa účtu</string>
+    <string name="manage_account">Spravovať účet</string>
     <string name="pref_clear_device_owner_title">Odstrániť majiteľa zariadenia</string>
     <string name="about_aurora_store_subtitle">Zistite viac o obchode Aurora</string>
     <string name="add">Pridať</string>
@@ -319,8 +319,8 @@
     <string name="action_ignore">Ignorovať</string>
     <string name="action_ignore_version">Ignorovať verziu</string>
     <string name="action_install">Inštalovať</string>
-    <string name="action_grant">Povoliť</string>
-    <string name="action_granted">Povolené</string>
+    <string name="action_grant">Udeliť</string>
+    <string name="action_granted">Udelené</string>
     <string name="action_installations">Inštalácie</string>
     <string name="action_installing">Inštalujem</string>
     <string name="action_join">Pripojiť</string>
@@ -336,7 +336,7 @@
     <string name="action_wishlist_add">Pridať do zoznamu prianí</string>
     <string name="details_beta">Beta program</string>
     <string name="details_beta_subscribed">Ste beta testerom</string>
-    <string name="exodus_powered">Využíva službu Exodus Privacy</string>
+    <string name="exodus_powered">Využívané službou Exodus Privacy</string>
     <string name="exodus_progress">Kontrolujem sledovače…</string>
     <string name="exodus_substring">známe sledovače nájdené v</string>
     <string name="download_eta_min">Zostáva %1$dm %2$ds</string>
@@ -371,7 +371,7 @@
     <string name="title_manual_download">Manuálne stiahnutie</string>
     <string name="toast_abandon_sessions">Staré inštalačné relácie boli zrušené</string>
     <string name="toast_app_unavailable">Aplikácia nie je k dispozícii pre vaše zariadenie</string>
-    <string name="toast_spoof_applied">Bolo použité spoof zariadenia.</string>
+    <string name="toast_spoof_applied">Bolo použité falšovanie zariadenia.</string>
     <string name="toast_purchase_blocked">Nákupy aplikácií nie sú dostupné na anonymných účtoch.</string>
     <string name="purchase_not_found">Aplikácia sa nenašla</string>
     <string name="purchase_no_file">Nepodarilo sa získať súbory</string>
@@ -412,15 +412,15 @@
     <string name="updates_available">dostupné aktualizácie</string>
     <string name="pref_ui_layout">Rozloženie</string>
     <string name="am_installer_subtitle">Plne vybavený správca balíkov s otvoreným zdrojovým kódom</string>
-    <string name="am_installer_desc">Vyžaduje App Manager, keď je zapnutá optimalizácia MIUI, je potrebné nainštalovať režim adb/root</string>
+    <string name="am_installer_desc">Vyžaduje správcu aplikácií, keď je zapnutá optimalizácia MIUI, je potrebné nainštalovať režim adb/root</string>
     <string name="shizuku_installer_subtitle">Používanie systémových rozhraní API priamo s oprávneniami adb/root</string>
     <string name="shizuku_installer_desc">Vyžaduje Shizuku alebo Sui, je potrebné nastaviť a udeliť povolenie</string>
     <string name="faqs_subtitle">Máte otázky? Pozrite odpovede</string>
     <string name="source_code_title">Zdrojový kód</string>
     <string name="source_code_subtitle">Zistite, čo je vo vnútri</string>
-    <string name="privacy_policy_subtitle">Zistite, ako Aurora Store používa vaše údaje</string>
+    <string name="privacy_policy_subtitle">Zistite ako Aurora používa vaše údaje</string>
     <string name="disclaimer_subtitle">Zodpovednosť</string>
-    <string name="about_aurora_store_title">O aplikácií Aurora Store</string>
+    <string name="about_aurora_store_title">O aplikácií Aurora</string>
     <string name="add_dispenser_error">Neplatná URL adresa</string>
     <string name="pref_dispenser_title">Spravovať vydávače</string>
     <string name="pref_dispenser_summary">Zobraziť a spravovať vydávače tokenov pre anonymné prihlásenia</string>
