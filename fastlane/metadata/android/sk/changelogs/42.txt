@@ -1,5 +1,5 @@
-• Android 13
-• Povoliť lokalizáciu viacerých reťazcov
+• Podpora pre Android 13
+• Povolená lokalizácia viacerých reťazcov
 • Pridaná monochromatická ikona pre Android 13
 • Aktualizované závislosti na najnovšiu verziu
 • Pri spustení okamžite zobrazená výzva so zmluvnými podmienkami
