@@ -21,10 +21,10 @@ package com.aurora.store.view.epoxy.views.preference
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.extensions.getString
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
 import com.aurora.store.databinding.ViewPermissionBinding
@@ -51,10 +51,10 @@ class PermissionView @JvmOverloads constructor(
     fun isGranted(granted: Boolean) {
         if (granted) {
             binding.btnAction.isEnabled = false
-            binding.btnAction.text = getString(R.string.action_granted)
+            binding.btnAction.text = ContextCompat.getString(context, R.string.action_granted)
         } else {
             binding.btnAction.isEnabled = true
-            binding.btnAction.text = getString(R.string.action_grant)
+            binding.btnAction.text = ContextCompat.getString(context, R.string.action_grant)
         }
     }
 

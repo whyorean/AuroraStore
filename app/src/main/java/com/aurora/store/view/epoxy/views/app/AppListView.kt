@@ -21,12 +21,12 @@ package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.extensions.getString
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewAppListBinding
@@ -59,16 +59,16 @@ class AppListView @JvmOverloads constructor(
         extras.add("${app.labeledRating}★")
         extras.add(
             if (app.isFree)
-                getString(R.string.details_free)
+                ContextCompat.getString(context, R.string.details_free)
             else
-                getString(R.string.details_paid)
+                ContextCompat.getString(context, R.string.details_paid)
         )
 
         if (app.containsAds)
-            extras.add(getString(R.string.details_contains_ads))
+            extras.add(ContextCompat.getString(context, R.string.details_contains_ads))
 
         if (app.dependencies.dependentPackages.isNotEmpty())
-            extras.add(getString(R.string.details_gsf_dependent))
+            extras.add(ContextCompat.getString(context, R.string.details_gsf_dependent))
 
         binding.txtLine3.text = extras.joinToString(separator = "  •  ")
     }

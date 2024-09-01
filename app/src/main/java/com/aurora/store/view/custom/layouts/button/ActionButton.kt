@@ -24,7 +24,6 @@ import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
-import com.aurora.extensions.getString
 import com.aurora.store.R
 import com.aurora.store.data.model.State
 import com.aurora.store.databinding.ViewActionButtonBinding
@@ -83,7 +82,7 @@ class ActionButton : RelativeLayout {
 
     fun setText(text: Int) {
         binding.viewFlipper.displayedChild = 0
-        binding.btn.text = getString(text)
+        binding.btn.text = ContextCompat.getString(context, text)
     }
 
     fun setButtonState(enabled: Boolean = true) {

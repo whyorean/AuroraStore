@@ -24,7 +24,6 @@ import android.annotation.SuppressLint
 import android.os.Build
 import java.util.Locale
 
-
 fun isMAndAbove(): Boolean {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 }

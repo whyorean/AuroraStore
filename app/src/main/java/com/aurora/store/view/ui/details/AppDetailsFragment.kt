@@ -40,7 +40,6 @@ import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
-import com.aurora.extensions.getString
 import com.aurora.extensions.hide
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share

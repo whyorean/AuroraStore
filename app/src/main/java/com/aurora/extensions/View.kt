@@ -25,10 +25,6 @@ import android.view.inputmethod.InputMethodManager
 
 fun View.isVisible() = visibility == View.VISIBLE
 
-fun View.isGone() = visibility == View.GONE
-
-fun View.isInvisible() = visibility == View.INVISIBLE
-
 fun View.show() {
     visibility = View.VISIBLE
 }
@@ -54,31 +50,4 @@ fun View.hideKeyboard(): Boolean {
     } catch (ignored: RuntimeException) {
     }
     return false
-}
-
-fun View.setOnSingleClickListener(tolerance: Long = 500, onClick: (v: View) -> Unit) {
-    var lastClicked = 0L
-    val currentTimeMillis = System.currentTimeMillis()
-    setOnClickListener {
-        if (currentTimeMillis - lastClicked > tolerance) {
-            onClick(it)
-            lastClicked = currentTimeMillis
-        }
-    }
-}
-
-fun View.rotate(resetToZero: Boolean = true, duration: Long = 400) {
-    if (resetToZero)
-        rotation = 0f
-    animate().rotation(360f).setDuration(duration).start()
-}
-
-fun View.flip(resetToZero: Boolean = true, duration: Long = 400) {
-    if (resetToZero)
-        rotation = 0f
-    animate().rotation(180f).setDuration(duration).start()
-}
-
-fun View.getString(resourceId: Int): String {
-    return context.getString(resourceId)
 }
