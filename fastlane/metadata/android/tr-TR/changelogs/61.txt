@@ -1,0 +1,8 @@
+• Android 15 hedef alındı
+• Anonim kip için Web API'lerine geçildi (daha iyi performans, daha anonim)
+• Uygulama ayrıntıları sayfasında veri güvenliği bölümü desteği
+• Güvensiz anonim kipi öntanımlı anonim kip olarak ayarlandı
+• Sık kullanılan uygulamaları içe/dışa aktarılabilir listeye ekleme özelliği
+• Önemli kullanıcı arayüzü ve kullanıcı deneyimi iyileştirmeleri ile kalan bileşenler için Material You kullanıldı
+• Çok sayıda hata düzeltmesi ve performans iyileştirmesi
+• Çeviri güncellemeleri
