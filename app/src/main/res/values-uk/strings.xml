@@ -175,14 +175,6 @@
     <string name="pref_ui_layout_tab">Виберіть типову вкладку</string>
     <string name="pref_ui_layout">Макет</string>
     <string name="pref_ui_title">Зовнішній вигляд</string>
-    <string name="pref_ui_theme_light">Світла</string>
-    <string name="pref_ui_theme_dark_x">Темна X</string>
-    <string name="pref_ui_theme_dark">Темна</string>
-    <string name="pref_ui_theme_black">Чорна</string>
-    <string name="pref_ui_theme_title">Тема</string>
-    <string name="pref_ui_theme_system">Визначається системою</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_accent_title">Основний колір</string>
     <string name="pref_network_title">Мережа</string>
     <string name="pref_install_mode_title">Спосіб встановлення</string>
     <string name="pref_install_mode_summary">Виберіть режим встановлення APK</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Служба фонового завантаження застосунків</string>
     <string name="pref_install_mode_am">Інсталятор менеджера застосунків</string>
     <string name="installer_am_unavailable">Встановити Менеджер застосунків або змінити встановлювач.</string>
-    <string name="ui_accent_1">Синій</string>
-    <string name="ui_accent_4">Золотий</string>
-    <string name="ui_accent_2">Пурпуровий</string>
-    <string name="ui_accent_3">Червоний</string>
-    <string name="ui_accent_5">Зелений</string>
-    <string name="ui_accent_6">Фіолетовий</string>
-    <string name="ui_accent_7">Сірий</string>
-    <string name="ui_accent_8">Рожевий</string>
-    <string name="ui_accent_9">Лаймовий</string>
-    <string name="ui_accent_11">Блакитний</string>
-    <string name="ui_accent_10">Жовтогарячий</string>
-    <string name="ui_accent_12">Насичений синій</string>
-    <string name="ui_accent_13">Темно-синій</string>
     <string name="download_eta_min">Залишилося %1$dхв %2$dс</string>
     <string name="session_init">Приготування…</string>
     <string name="session_login_failed_google">Не вдалось увійти через Google</string>
@@ -286,7 +265,6 @@
     <string name="update_available">доступне оновлення</string>
     <string name="session_enjoy">Увійдіть і насолоджуйтесь.</string>
     <string name="title_advanced">Розширені</string>
-    <string name="ui_accent_0">Системна</string>
     <string name="updates_available">доступні оновлення</string>
     <string name="expand">Розгорнути</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>

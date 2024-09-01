@@ -19,24 +19,13 @@
 
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="scrim">@color/colorScrim</item>
-        <item name="scrimAccent">@color/colorScrimAccent</item>
-        <item name="scrimAlt">@color/colorScrimAlt</item>
-        <item name="scrimBlack">@color/colorScrimBlack</item>
-        <item name="colorShimmer">@color/colorShimmer</item>
-        <item name="colorStroke">@color/colorStroke</item>
+    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Light.NoActionBar">
         <item name="chipStyle">@style/AppTheme.FilterChip</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
+        <item name="bottomSheetStyle">@style/AppTheme.BottomSheetStyle</item>
     </style>
 
-    <style name="AppTheme" parent="BaseTheme" />
-
-    <style name="AppTheme.Translucent" parent="BaseTheme">
+    <style name="AppTheme.Translucent" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -46,71 +35,7 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-    <!-- Custom Themes -->
-    <style name="AppTheme.Light" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorWhite</item>
-        <item name="android:windowBackground">@color/colorWhite</item>
-        <item name="android:colorBackground">@color/colorWhite</item>
-        <item name="android:navigationBarColor">@color/colorWhite</item>
-        <item name="scrim">@color/colorScrim</item>
-        <item name="scrimAccent">@color/colorScrimAccent</item>
-        <item name="scrimAlt">@color/colorScrimAlt</item>
-        <item name="scrimBlack">@color/colorScrimBlack</item>
-        <item name="colorShimmer">@color/colorShimmer</item>
-        <item name="colorStroke">@color/colorStroke</item>
-        <item name="chipStyle">@style/AppTheme.FilterChip</item>
-        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
-    </style>
-
-    <style name="AppTheme.Dark" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorDarkPrimaryDark</item>
-        <item name="colorBackgroundFloating">@color/colorDarkBackground</item>
-        <item name="android:windowBackground">@color/colorDarkWindowBackground</item>
-        <item name="android:colorBackground">@color/colorDarkBackground</item>
-        <item name="android:navigationBarColor">@color/colorDarkPrimaryDark</item>
-        <item name="scrim">@color/colorScrim</item>
-        <item name="scrimAccent">@color/colorScrimAccent</item>
-        <item name="scrimAlt">@color/colorScrimAlt</item>
-        <item name="scrimBlack">@color/colorScrimBlack</item>
-        <item name="colorShimmer">@color/colorShimmerDark</item>
-        <item name="colorStroke">@color/colorStrokeDark</item>
-        <item name="chipStyle">@style/AppTheme.FilterChip</item>
-        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
-    </style>
-
-    <style name="AppTheme.DarkX" parent="AppTheme.Dark">
-        <item name="colorPrimaryDark">@color/colorDarkXPrimaryDark</item>
-        <item name="colorBackgroundFloating">@color/colorDarkXBackground</item>
-        <item name="android:windowBackground">@color/colorDarkXWindowBackground</item>
-        <item name="android:colorBackground">@color/colorDarkXBackground</item>
-        <item name="android:navigationBarColor">@color/colorDarkXPrimaryDark</item>
-        <item name="colorShimmer">@color/colorShimmerDarkX</item>
-        <item name="colorStroke">@color/colorStrokeDarkX</item>
-    </style>
-
-    <style name="AppTheme.Darkord" parent="AppTheme.Dark">
-        <item name="colorPrimaryDark">@color/colorDarkordPrimaryDark</item>
-        <item name="colorBackgroundFloating">@color/colorDarkordBackground</item>
-        <item name="android:windowBackground">@color/colorDarkordWindowBackground</item>
-        <item name="android:colorBackground">@color/colorDarkordBackground</item>
-        <item name="android:navigationBarColor">@color/colorDarkordPrimaryDark</item>
-        <item name="colorShimmer">@color/colorShimmerDarkord</item>
-        <item name="colorStroke">@color/colorStrokeDarkord</item>
-    </style>
-
-    <style name="AppTheme.Black" parent="AppTheme.Dark">
-        <item name="colorPrimaryDark">@color/colorBlack</item>
-        <item name="android:windowBackground">@color/colorBlack</item>
-        <item name="android:colorBackground">@color/colorBlack</item>
-        <item name="colorBackgroundFloating">@color/colorBlack</item>
-        <item name="android:navigationBarColor">@color/colorBlack</item>
-        <item name="colorShimmer">@color/colorShimmerBlack</item>
-        <item name="colorStroke">@color/colorStrokeBlack</item>
-    </style>
+    <style name="AppTheme.BottomSheetStyle" parent="Widget.Material3.BottomSheet" />
 
     <style name="AppTheme.PreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay">
         <item name="android:layout">@layout/fragment_setting</item>
@@ -121,9 +46,5 @@
         <item name="widgetLayout">@layout/preference_material_switch</item>
     </style>
 
-    <style name="AppTheme.FilterChip" parent="@style/Widget.Material3.Chip.Filter">
-        <item name="chipBackgroundColor">@drawable/filter_chip_background</item>
-        <item name="chipStrokeColor">?colorControlHighlight</item>
-        <item name="chipCornerRadius">32dp</item>
-    </style>
+    <style name="AppTheme.FilterChip" parent="@style/Widget.Material3.Chip.Filter" />
 </resources>

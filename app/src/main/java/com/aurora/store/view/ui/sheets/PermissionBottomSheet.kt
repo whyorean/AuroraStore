@@ -45,9 +45,8 @@ class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
 
         packageManager = requireContext().packageManager
         currentPerms = try {
-            packageManager.getPackageInfo(
-                args.app.packageName, PackageManager.GET_PERMISSIONS
-            ).requestedPermissions!!.toList()
+            packageManager.getPackageInfo(args.app.packageName, PackageManager.GET_PERMISSIONS)
+                .requestedPermissions!!.toList()
         } catch (_: Exception) {
             emptyList()
         }
@@ -62,7 +61,7 @@ class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
             if (permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
                 permissionGroup = permissionGroupWidgets[permissionGroupInfo.name]
             } else {
-                permissionGroup = PermissionGroup(context, permissionGroupInfo)
+                permissionGroup = PermissionGroup(requireContext(), permissionGroupInfo)
                 permissionGroupWidgets[permissionGroupInfo.name] = permissionGroup
             }
 
@@ -86,29 +85,34 @@ class PermissionBottomSheet : BaseDialogSheet<SheetPermissionsBinding>() {
     private fun getPermissionInfo(permissionName: String): PermissionInfo? {
         return try {
             packageManager.getPermissionInfo(permissionName, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (_: PackageManager.NameNotFoundException) {
             null
         }
     }
 
     private fun getPermissionGroupInfo(permissionInfo: PermissionInfo): PermissionGroupInfo {
-        val permissionGroupInfo: PermissionGroupInfo = if (null == permissionInfo.group) {
-            getFakePermissionGroupInfo(permissionInfo.packageName)
-        } else {
-            try {
-                val platformGroup = packageManager.getPermissionGroupInfo(permissionInfo.group!!, 0)
-                PermissionGroupInfo(
-                    platformGroup.name,
-                    platformGroup.icon,
-                    platformGroup.loadLabel(packageManager).toString()
-                )
-            } catch (e: PackageManager.NameNotFoundException) {
+        val permissionGroup = permissionInfo.group
+        val permissionGroupInfo: PermissionGroupInfo =
+            if (permissionGroup == null) {
                 getFakePermissionGroupInfo(permissionInfo.packageName)
+            } else {
+                try {
+                    val platformGroup = packageManager.getPermissionGroupInfo(permissionGroup, 0)
+
+                    PermissionGroupInfo(
+                        platformGroup.name,
+                        platformGroup.icon,
+                        platformGroup.loadLabel(packageManager).toString()
+                    )
+                } catch (_: PackageManager.NameNotFoundException) {
+                    getFakePermissionGroupInfo(permissionInfo.packageName)
+                }
             }
-        }
+
         if (permissionGroupInfo.icon == 0) {
             permissionGroupInfo.icon = R.drawable.ic_permission_android
         }
+
         return permissionGroupInfo
     }
 

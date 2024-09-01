@@ -15,7 +15,6 @@
     <string name="about_gitlab">GitLab</string>
     <string name="title_updates">Actualisationes</string>
     <string name="pref_vending_version_device">Predefinite (ab le configuration de apparato)</string>
-    <string name="pref_ui_theme_light">Clar</string>
     <string name="pref_vending_version_title">Version pro Google Play</string>
     <string name="action_resume">Resumer</string>
     <string name="action_installations">Installationes</string>
@@ -23,10 +22,8 @@
     <string name="onboarding_title_welcome">Benvenite</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="action_share">Compartir</string>
-    <string name="pref_ui_theme_black">Nigre</string>
     <string name="pref_install_mode_shizuku">Installator Shizuku</string>
     <string name="menu_license">Licentia</string>
-    <string name="pref_ui_theme_system">Sequer le systema</string>
     <string name="pref_install_mode_session">Installator de session</string>
     <string name="title_download_manager">Discargamentos</string>
     <string name="purchase_unsupported">Application non supportate</string>
@@ -38,7 +35,6 @@
     <string name="title_advanced">Avantiate</string>
     <string name="action_filter_all">Toto</string>
     <string name="title_about">A proposito de</string>
-    <string name="pref_ui_theme_dark_x">Obscur X</string>
     <string name="pref_app_download">Discargamentos</string>
     <string name="onboarding_permission_installer">Permission del installator</string>
     <string name="purchase_failed">Falleva le discargamento</string>
@@ -62,7 +58,6 @@
     <string name="action_info">Information de application</string>
     <string name="action_search">Cercar</string>
     <string name="error">Occurreva un error!</string>
-    <string name="pref_ui_theme_title">Thema</string>
     <string name="title_games">Jocos</string>
     <string name="download_failed">Falleva le discarga</string>
     <string name="action_next">Sequente</string>
@@ -77,7 +72,6 @@
     <string name="onboarding_title_installer">Installator</string>
     <string name="dialog_title_self_update">Nove actualisation disponibile</string>
     <string name="details_dev_website">Sito web</string>
-    <string name="pref_ui_theme_dark">Obscur</string>
     <string name="pref_downloader_wifi_title">Discargar solmente usante WiFi</string>
     <string name="action_update">Actualisar</string>
     <string name="action_disable">Disactivar</string>
@@ -128,7 +122,6 @@
     <string name="check_connectivity">Verificar connexion a Internet</string>
     <string name="pref_network_proxy_url">URL de proxy</string>
     <string name="pref_aurora_only">Solmente applicationes de Aurora Store</string>
-    <string name="ui_accent_0">Systema</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="notification_updates_available_desc_1">Un nove version de <xliff:g id="app_one_name">%1$s</xliff:g> es disponibile</string>
     <string name="action_enable">Activar</string>
@@ -169,7 +162,6 @@
     <string name="download_progress">Discargante • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_status_failure_incompatible">Application non compatibile</string>
     <string name="download_metadata">⁹</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="installer_service_available">Le servicios de Aurora es disponibile e preste pro installar.</string>
     <string name="title_installer">Installator de applicationes</string>
     <string name="action_check">Verificar</string>
@@ -214,7 +206,6 @@
     <string name="failed_apk_export">Falleva le exportation de APKs</string>
     <string name="pref_updates_auto_notify">Verificar e notificar le actualisationes disponibile</string>
     <string name="toast_apk_whitelisted">In le lista blanc</string>
-    <string name="pref_ui_accent_title">Accento</string>
     <string name="exodus_view_report">Vider reporto</string>
     <string name="action_home_screen">Adder al schermo de initio</string>
     <string name="pref_updates_incompatible">Actualisationes incompatibile</string>

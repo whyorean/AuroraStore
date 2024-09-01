@@ -23,8 +23,6 @@
         <attr name="scrimAccent" format="color" />
         <attr name="scrimAlt" format="color" />
         <attr name="scrimBlack" format="color" />
-        <attr name="colorStroke" format="color" />
-        <attr name="colorShimmer" format="color" />
     </declare-styleable>
 
     <declare-styleable name="ActionHeaderLayout">

@@ -42,14 +42,6 @@
     <string name="purchase_invalid">Aplicación no adquirida</string>
     <string name="purchase_failed">La descarga falló</string>
     <string name="pref_ui_title">Personalización</string>
-    <string name="pref_ui_theme_title">Tema</string>
-    <string name="pref_ui_theme_system">Seguir al sistema</string>
-    <string name="pref_ui_theme_light">Claro</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_dark_x">Oscuro X</string>
-    <string name="pref_ui_theme_dark">Oscuro</string>
-    <string name="pref_ui_theme_black">Negro</string>
-    <string name="pref_ui_accent_title">Acento</string>
     <string name="pref_install_mode_title">Método de instalación</string>
     <string name="pref_install_mode_summary">Seleccione el modo de instalación del APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Servicio de descargas de aplicaciones en segundo plano</string>
     <string name="installer_am_unavailable">Instalar Gestor de aplicaciones o cambiar el instalador.</string>
     <string name="pref_install_mode_am">Instalador AM</string>
-    <string name="ui_accent_1">Azul</string>
-    <string name="ui_accent_3">Rojo</string>
-    <string name="ui_accent_5">Verde</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_11">Azul claro</string>
-    <string name="ui_accent_12">Azul Disskord</string>
-    <string name="ui_accent_7">Gris</string>
-    <string name="ui_accent_2">Fucsia</string>
-    <string name="ui_accent_4">Dorado</string>
-    <string name="ui_accent_6">Morado</string>
-    <string name="ui_accent_9">Lima</string>
-    <string name="ui_accent_10">Naranja</string>
-    <string name="ui_accent_13">Azul oscuro</string>
     <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_eta_hrs">Quedan %1$d horas, %2$d minutos, %3$d segundos</string>
     <string name="download_eta_min">Quedan %1$d minutos %2$d segundos</string>
@@ -278,7 +257,6 @@
     <string name="session_verifying">Verificando la sesión</string>
     <string name="session_verifying_google">Verificando la sesión de Google</string>
     <string name="title_advanced">Avanzado</string>
-    <string name="ui_accent_0">Sistema</string>
     <string name="expand">Expandir</string>
     <string name="permissions_denied">Se han denegado los permisos necesarios. Por favor, concédelos para continuar la acción</string>
     <string name="search_hint">Buscar las aplicaciones y los juegos</string>

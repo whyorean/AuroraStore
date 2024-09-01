@@ -85,14 +85,6 @@
     <string name="purchase_invalid">Sepan ne kirî</string>
     <string name="purchase_failed">Barkirin hilneweşe</string>
     <string name="pref_ui_title">Xwemalîkirin</string>
-    <string name="pref_ui_theme_title">Mijad</string>
-    <string name="pref_ui_theme_system">Pergalê bişopînin</string>
-    <string name="pref_ui_theme_light">Ronî</string>
-    <string name="pref_ui_theme_darkord">Bergirî</string>
-    <string name="pref_ui_theme_dark_x">Tarî X</string>
-    <string name="pref_ui_theme_dark">Tarî</string>
-    <string name="pref_ui_theme_black">Reş</string>
-    <string name="pref_ui_accent_title">Devok</string>
     <string name="pref_install_mode_title">Rêbaza sazkirinê</string>
     <string name="pref_install_mode_summary">Modeya sazkirinê ya APK hilbijêrin</string>
     <string name="pref_install_mode_session">Sazkerê danişînê</string>

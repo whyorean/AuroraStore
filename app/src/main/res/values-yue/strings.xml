@@ -47,8 +47,6 @@
     <string name="onboarding_permission_esa">外置儲存空間存取</string>
     <string name="onboarding_permission_notifications">通知</string>
     <string name="pref_app_download">下載</string>
-    <string name="pref_ui_theme_light">白頭浪</string>
-    <string name="pref_ui_theme_title">色系</string>
     <string name="pref_ui_layout">版面</string>
     <string name="purchase_no_file">攞唔到啲檔案</string>
     <string name="tab_categories">分類</string>
@@ -68,7 +66,6 @@
     <string name="notification_channel_updater_service">App 幕後下載服務</string>
     <string name="app_updater_service_notif_title">幕後 app 下載</string>
     <string name="app_updater_service_notif_text">啟用幕後 app 下載</string>
-    <string name="ui_accent_0">系統</string>
     <string name="error">發生錯誤！</string>
     <string name="menu">功能表</string>
     <string name="search_hint">搵 App 同遊戲</string>
@@ -104,13 +101,10 @@
     <string name="dialog_title_self_update">出咗更新喇</string>
     <string name="notification_channel_alert">速報通知</string>
     <string name="notification_channel_general">一般通知</string>
-    <string name="pref_ui_theme_system">跟返系統噉樣</string>
     <string name="toast_permission_granted">畀咗權限</string>
     <string name="toast_clipboard_copied">複製咗去剪貼簿</string>
     <string name="details_changelog">變動表</string>
     <string name="details_changelog_unavailable">變動表欠奉</string>
-    <string name="pref_ui_theme_dark">黑眼睛</string>
-    <string name="pref_ui_theme_dark_x">黑眼睛 X</string>
     <string name="downloading_dep">下載緊 <xliff:g id="app">%1$s</xliff:g> 嘅額外檔案</string>
     <string name="action_ok">確定</string>
     <string name="action_open">開啟</string>
@@ -156,7 +150,6 @@
     <string name="details_no_app_match">搵唔到啱合尺嘅 app</string>
     <string name="download_completed">下載搞掂</string>
     <string name="pref_dialog_to_apply_restart">您重新開過個 app 之後，呢個設定至會生效</string>
-    <string name="ui_accent_1">藍色</string>
     <string name="title_purchase_history">購買紀錄</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>、<xliff:g id="app_two_name">%2$s</xliff:g> 同 <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="about_bhim">印度 BHIM - UPI</string>
@@ -179,20 +172,11 @@
     <string name="action_info">個 app 詳細</string>
     <string name="details_gsf_dependent">要有 GSF 至得</string>
     <string name="details_beta_delay">報名要啲時間處理，您可以轉頭返嚟再睇過個狀態吖。</string>
-    <string name="pref_ui_theme_black">黑色</string>
-    <string name="pref_ui_accent_title">配色</string>
     <string name="title_no_network">上唔到網</string>
     <string name="installer_service_available">Aurora 服務有得用兼準備好安裝。</string>
     <string name="pref_install_mode_services">Aurora 服務 (已過氣)</string>
     <string name="purchase_invalid">個 app 未有購買</string>
     <string name="purchase_unsupported">個 app 唔支援</string>
-    <string name="ui_accent_3">紅色</string>
-    <string name="ui_accent_4">金色</string>
-    <string name="ui_accent_5">綠色</string>
-    <string name="ui_accent_6">紫色</string>
-    <string name="ui_accent_7">灰色</string>
-    <string name="ui_accent_8">粉紅</string>
-    <string name="ui_accent_10">橙色</string>
     <string name="installer_shizuku_unavailable">Shizuku 未安裝或者未設定好。</string>
     <string name="check_connectivity">睇下上唔上到網</string>
     <string name="failed_generating_session">產生唔到工作階段，錯誤碼：<xliff:g id="status_code">%1$d</xliff:g></string>
@@ -233,12 +217,8 @@
     <string name="pref_network_proxy_url">代理伺服器 URL</string>
     <string name="pref_network_proxy_title">代理伺服器</string>
     <string name="pref_ui_title">自訂</string>
-    <string name="ui_accent_2">紫紅</string>
-    <string name="ui_accent_13">深藍</string>
     <string name="toast_proxy_invalid">代理伺服器 URL 無效，請睇過個格式！</string>
-    <string name="ui_accent_9">青綠</string>
     <string name="toast_proxy_success">代理伺服器設定成功</string>
-    <string name="ui_accent_11">淺藍</string>
     <string name="session_scrapped">對上一個工作階段已經報銷</string>
     <string name="title_app_settings">App 設定</string>
     <string name="title_apps_sale_provider">提供：bestappsales.com</string>

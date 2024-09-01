@@ -17,101 +17,108 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_large"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:paddingStart="@dimen/padding_large"
-        android:paddingEnd="@dimen/padding_large">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_icon"
-            android:layout_width="@dimen/icon_size_medium"
-            android:layout_height="@dimen/icon_size_medium" />
-
-        <TextView
-            android:id="@+id/txt_line1"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_toEndOf="@id/img_icon"
-            android:maxLines="2"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
-            tools:text="App Name" />
-
-        <TextView
-            android:id="@+id/txt_line2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_line1"
-            android:layout_alignStart="@id/txt_line1"
-            android:layout_alignEnd="@id/txt_line1"
-            android:maxLines="1"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line2"
-            tools:text="Company Name" />
-
-        <TextView
-            android:id="@+id/txt_line3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_line2"
-            android:layout_alignStart="@id/txt_line1"
-            android:layout_alignEnd="@id/txt_line1"
-            android:maxLines="1"
-            android:textAlignment="viewStart"
-            android:textAppearance="@style/TextAppearance.Aurora.Line3"
-            tools:text="4.2 45MB" />
-    </RelativeLayout>
-
-    <HorizontalScrollView
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/top_tab_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_large"
             android:paddingStart="@dimen/padding_large"
             android:paddingEnd="@dimen/padding_large">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_favourite"
-                style="@style/Widget.MaterialComponents.Chip.Action"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_icon"
+                android:layout_width="@dimen/icon_size_medium"
+                android:layout_height="@dimen/icon_size_medium" />
+
+            <TextView
+                android:id="@+id/txt_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_toEndOf="@id/img_icon"
+                android:maxLines="2"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
+                tools:text="App Name" />
+
+            <TextView
+                android:id="@+id/txt_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_line1"
+                android:layout_alignStart="@id/txt_line1"
+                android:layout_alignEnd="@id/txt_line1"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Aurora.Line2"
+                tools:text="Company Name" />
+
+            <TextView
+                android:id="@+id/txt_line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_line2"
+                android:layout_alignStart="@id/txt_line1"
+                android:layout_alignEnd="@id/txt_line1"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Aurora.Line3"
+                tools:text="4.2 45MB" />
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/top_tab_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/action_wishlist_add" />
+                android:paddingStart="@dimen/padding_large"
+                android:paddingEnd="@dimen/padding_large">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_blacklist"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/action_blacklist_add" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_favourite"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_wishlist_add" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_ignore_version"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/action_ignore_version" />
-        </com.google.android.material.chip.ChipGroup>
-    </HorizontalScrollView>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_blacklist"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_blacklist_add" />
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button.UnelevatedButton"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_button"
-        android:layout_margin="@dimen/margin_large"
-        android:text="@string/action_install" />
-</LinearLayout>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ignore_version"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_ignore_version" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button"
+            android:layout_margin="@dimen/margin_large"
+            android:text="@string/action_install" />
+    </LinearLayout>
+</FrameLayout>

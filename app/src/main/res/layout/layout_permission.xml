@@ -20,11 +20,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="@dimen/margin_xxsmall"
     android:paddingBottom="@dimen/margin_xxsmall">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img"
+        app:tint="?colorAccent"
         android:layout_width="@dimen/icon_size_default"
         android:layout_height="@dimen/icon_size_default"
         android:layout_marginStart="@dimen/margin_small"

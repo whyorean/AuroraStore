@@ -113,9 +113,6 @@
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_welcome">Laipni lūgti</string>
     <string name="pref_app_download">Lejupielādes</string>
-    <string name="pref_ui_theme_black">Melns</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_title">Motīvs</string>
     <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
     <string name="pref_ui_no_for_you">For You lapa</string>
     <string name="pref_ui_no_for_you_desc">Rādīt For You lapu sākuma ekrānā</string>
@@ -172,13 +169,9 @@
     <string name="pref_common_extra">Papildus</string>
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
     <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>
-    <string name="pref_ui_theme_light">Gaišs</string>
     <string name="pref_ui_layout">Izkārtojums</string>
     <string name="pref_filter_google_summary">Neņemt vērā Google lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
     <string name="pref_filter_google_title">Filtrēt Google lietotnes</string>
-    <string name="pref_ui_theme_dark">Tumšs</string>
-    <string name="pref_ui_theme_dark_x">Tumšs X</string>
-    <string name="pref_ui_theme_system">Sekot sistēmai</string>
     <string name="pref_ui_title">Pielāgošana</string>
     <string name="purchase_no_file">Nevarēja iegūt failus</string>
     <string name="purchase_session_expired">Sesija ir beigusies, izejiet no lietotnes, lai iegūtu jaunu sesiju.</string>
@@ -251,15 +244,12 @@
     <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
     <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
     <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir paša ziņā.</string>
-    <string name="ui_accent_3">Sarkans</string>
-    <string name="ui_accent_4">Zelta</string>
     <string name="download_progress">Lejupielādē • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_delete_summary">Lejupielādētie APK tiks izdzēsti uzreiz pēc uzstādīšanas</string>
     <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
     <string name="details_dependencies">Atkarības</string>
     <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
     <string name="pref_filter_fdroid_summary">Neņemt vērā F-Droid lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
-    <string name="ui_accent_12">Discord zils</string>
     <string name="download_paused">Apturēta • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="details_beta_description">Būs pieejamas jaunas iespējas un nepilnības pirms publicēšanas. Sniedzot atgriezenisko saiti izstrādātājiem tiks palīdzēts viņiem veikt uzlabojumus.</string>
     <string name="details_gsf_dependent">Nepieciešams GSF</string>
@@ -268,14 +258,10 @@
     <string name="download_eta_sec">Atlikušas %1$ds</string>
     <string name="installer_service_misconfigured">Vispirms jāuzstāda Aurora pakalpojumi un jānodrošina visas atļaujas.</string>
     <string name="toast_export_success">Ierīces uzstādījumi ir izgūti</string>
-    <string name="ui_accent_7">Pelēks</string>
     <string name="details_no_dependencies">Nav atkarību</string>
     <string name="details_no_app_match">Atbilstība lietotnei netika atrasta</string>
     <string name="toast_export_failed">Nebija iespējams izgūt ierīces uzstādījumus</string>
-    <string name="ui_accent_5">Zaļš</string>
-    <string name="ui_accent_8">Rozā</string>
     <string name="server_maintenance">Serveris nav pieejams uzturēšanas darbu dēļ</string>
-    <string name="ui_accent_6">Violets</string>
     <string name="notification_channel_updates">Atjauninājumu paziņojumi</string>
     <string name="requesting_new_session">Pieprasa jaunu sesiju</string>
     <string name="downloading_dep">Lejupielādē <xliff:g id="app">%1$s</xliff:g> papildu datnes</string>
@@ -287,18 +273,10 @@
     <string name="onboarding_permission_notifications">Paziņojumi</string>
     <string name="pref_filter_fdroid_title">Atlasīt F-Droid lietotnes</string>
     <string name="pref_network_title">Tīklošana</string>
-    <string name="pref_ui_accent_title">Uzsvara krāsa</string>
     <string name="toast_page_unavailable">Pārlūkošanas lapa nav pieejama</string>
     <string name="toast_aas_token_failed">Nebija iespējams izveidot AAS piekļuves pilnvaru</string>
     <string name="toast_import_success">Ierīces uzstādījumi ir ievietoti</string>
     <string name="toast_import_failed">Nebija iespējams ievietot ierīces uzstādījumus</string>
-    <string name="ui_accent_0">Sistēmas</string>
-    <string name="ui_accent_1">Zils</string>
-    <string name="ui_accent_2">Fuksija</string>
-    <string name="ui_accent_9">Gaiši zaļš</string>
-    <string name="ui_accent_10">Oranžs</string>
-    <string name="ui_accent_11">Gaiši zils</string>
-    <string name="ui_accent_13">Dziļi zils</string>
     <string name="rate_limited">Ak vai, šis konts ir ierobežots!</string>
     <string name="error">Gadījās kļūda.</string>
     <string name="menu">Izvēlne</string>

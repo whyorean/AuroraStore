@@ -8,9 +8,6 @@
     <string name="title_account_manager">حساب ها</string>
     <string name="title_about">درباره</string>
     <string name="tab_for_you">برای شما</string>
-    <string name="pref_ui_theme_light">روشَن</string>
-    <string name="pref_ui_theme_dark">تیره</string>
-    <string name="pref_ui_theme_black">سیاه</string>
     <string name="pref_filter_fdroid_summary">حذف برنامه های F-Droid از لیست برنامه‌ها</string>
     <string name="onboarding_title_welcome">خوش‌آمَدید</string>
     <string name="filter_review_five">پنج</string>
@@ -53,7 +50,6 @@
     <string name="pref_ui_no_for_you">برگه‌های برای شما</string>
     <string name="pref_ui_layout_tab">برگزیدن برگه پیش فرض</string>
     <string name="pref_ui_title">سفارشی سازی</string>
-    <string name="pref_ui_theme_title">پوسته</string>
     <string name="pref_ui_layout">چیدمان</string>
     <string name="purchase_failed">بارگیری شکست خورد</string>
     <string name="tab_trending">پرطرفدار</string>
@@ -154,7 +150,6 @@
     <string name="details_more_about_app">بیشتر درباره ی برنامه</string>
     <string name="details_privacy">حریم شخصی</string>
     <string name="details_no_updates">هیچ آپدیتی وجود ندارد</string>
-    <string name="ui_accent_13">آبی پررنگ</string>
     <string name="details_changelog_unavailable">تغییرات ارائه نشده است</string>
     <string name="details_contains_ads">حاوی آگهی است</string>
     <string name="details_no_app_match">برنامه ای پیدا نشد</string>
@@ -178,13 +173,11 @@
     <string name="tab_categories">دسته بندی ها</string>
     <string name="download_speed_estimating">برآورد</string>
     <string name="installer_status_failure_session">جلسه ایجاد نشد</string>
-    <string name="pref_ui_accent_title">تم</string>
     <string name="pref_abandon_session_desc">پاک کردن جلسات نصب رها شده یا در انتظار</string>
     <string name="exodus_substring">ردیاب(های) موجود در</string>
     <string name="filter_review_positive">مثبت</string>
     <string name="installer_status_user_action">در انتظار تایید کاربر</string>
     <string name="pref_install_delete_summary">فایل های APKs به طور پیش فرض حذف خواهند شد</string>
-    <string name="pref_ui_theme_system">پیروی از سیستم</string>
     <string name="exodus_view_report">مشاهده گزارش</string>
     <string name="dialog_title_self_update">بروزرسانی جدید در دسترس</string>
     <string name="installer_status_failure_invalid">APK نامعتبر یا خراب است</string>
@@ -217,18 +210,6 @@
     <string name="toast_developer_setting_failed">تنظیمات توسعه دهنده را از تنظیمات دستگاه روشن کنید تا آنها را باز کنید.</string>
     <string name="toast_rated_failed">نمی تواند امتیاز را ارسال کند</string>
     <string name="installer_status_failure">نصب کننده ناموفق بود</string>
-    <string name="ui_accent_1">آبی</string>
-    <string name="ui_accent_3">قرمز</string>
-    <string name="ui_accent_4">طلایی</string>
-    <string name="ui_accent_5">سبز</string>
-    <string name="ui_accent_2">ارغوانی</string>
-    <string name="ui_accent_6">بنفش</string>
-    <string name="ui_accent_7">خاکستری</string>
-    <string name="ui_accent_12">آبی تند</string>
-    <string name="ui_accent_8">صورتی</string>
-    <string name="ui_accent_9">لیمویی</string>
-    <string name="ui_accent_10">نارنجی</string>
-    <string name="ui_accent_11">آبی روشن</string>
     <string name="purchase_invalid">برنامه خریداری نشده است</string>
     <string name="purchase_unsupported">برنامه پشتیبانی نمی شود</string>
     <string name="purchase_session_expired">جلسه منقضی شد، برای دریافت جلسه جدید دوباره وارد شوید.</string>
@@ -255,7 +236,6 @@
     <string name="pref_filter_google_title">فیلتر کردن برنامه های گوگل</string>
     <string name="pref_install_delete_title">حذف APK پس از نصب</string>
     <string name="pref_install_mode_am">نصب کننده AM.</string>
-    <string name="pref_ui_theme_dark_x">دارک ایکس</string>
     <string name="pref_ui_similar_apps_desc">نمایش خوشه های مشابه و مرتبط در صفحه جزئیات برنامه</string>
     <string name="spoof_apply">اطمینان حاصل کنید که برای اعمال پارامتر جعلی دوباره وارد سیستم شوید</string>
     <string name="tab_editor_choice">انتخاب سردبیران</string>
@@ -265,10 +245,8 @@
     <string name="toast_export_success">پیکربندی دستگاه صادر شد</string>
     <string name="notification_channel_updater_service">سرویس دانلود پس زمینه برنامه</string>
     <string name="app_updater_service_notif_text">امکان دانلود برنامه پس زمینه را فراهم می کند</string>
-    <string name="pref_ui_theme_darkord">دیسکورد</string>
     <string name="session_enjoy">وارد شوید و لذت ببرید.</string>
     <string name="session_good">وای! همه چی خوبه.</string>
-    <string name="ui_accent_0">سیستم</string>
     <string name="menu">منو</string>
     <string name="update_available">به روز رسانی موجود است</string>
     <string name="updates_available">به روز رسانی در دسترس است</string>

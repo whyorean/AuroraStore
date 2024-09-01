@@ -69,9 +69,6 @@
                 android:layout_toStartOf="@id/img_cancel"
                 android:background="@drawable/bg_rounded_transparent"
                 android:indeterminate="true"
-                android:indeterminateTint="@color/colorScrimAlt"
-                app:indicatorColor="@color/colorScrimAlt"
-                app:trackColor="@color/colorScrim"
                 app:trackThickness="@dimen/icon_size_small" />
 
             <LinearLayout

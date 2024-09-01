@@ -123,15 +123,8 @@
     <string name="details_no_app_match">Nenašla sa žiadna zhoda aplikácie</string>
     <string name="pref_network_title">Sieť</string>
     <string name="pref_network_proxy_title">Proxy</string>
-    <string name="pref_ui_theme_dark">Tmavá</string>
     <string name="app_updater_service_notif_title">Sťahovanie aplikácie na pozadí</string>
     <string name="app_updater_service_notif_text">Umožňuje sťahovanie aplikácie na pozadí</string>
-    <string name="ui_accent_5">Zelená</string>
-    <string name="ui_accent_6">Fialová</string>
-    <string name="ui_accent_7">Šedá</string>
-    <string name="ui_accent_10">Oranžová</string>
-    <string name="ui_accent_11">Svetlo modrá</string>
-    <string name="ui_accent_12">Disskord modrá</string>
     <string name="privacy_policy_title">Zásady ochrany osobných údajov</string>
     <string name="details_data_safety_title">Bezpečnosť údajov</string>
     <string name="download_clear_finished">Vymazané</string>
@@ -157,8 +150,6 @@
     <string name="pref_vending_version_device">Predvolené (z konfigurácie zariadenia)</string>
     <string name="pref_network_proxy_enable">Povoliť proxy</string>
     <string name="pref_network_proxy_enable_desc">Povoliť všetku sieťovú prevádzku aplikácie cez server proxy</string>
-    <string name="pref_ui_accent_title">Farba</string>
-    <string name="pref_ui_theme_black">Čierna</string>
     <string name="pref_ui_similar_apps_desc">Zobraziť podobné a súvisiace skupiny na stránke podrobností aplikácie</string>
     <string name="pref_updates_incompatible">Aktualizovať nekompatibilné</string>
     <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré sa nemusia nainštalovať</string>
@@ -168,9 +159,6 @@
     <string name="title_installed">Nainštalované</string>
     <string name="title_advanced">Pokročilé</string>
     <string name="toast_manual_unavailable">Kód verzie, ktorý požadujete, nie je k dispozícii.</string>
-    <string name="ui_accent_0">Systémová</string>
-    <string name="ui_accent_1">Modrá</string>
-    <string name="ui_accent_3">Červená</string>
     <string name="requesting_new_session">Žiadosť o novú reláciu</string>
     <string name="downloading_dep">Sťahovanie dodatočných súborov pre <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostupná aktualizácia</string>
@@ -231,17 +219,13 @@
     <string name="title_apps_library">Aplikácie v knižnici</string>
     <string name="title_apps_sale">Aplikácie v zľave</string>
     <string name="title_installer">Inštalačný program aplikácie</string>
-    <string name="ui_accent_2">Fuchsiová</string>
-    <string name="ui_accent_4">Zlatá</string>
     <string name="toast_permission_installer_required">Najprv musíte udeliť povolenie inštalátorovi</string>
     <string name="toast_permission_esm_caution">Možno budete musieť znova udeliť povolenie kvôli chybe v Storage Access Framework</string>
     <string name="item_required">Požadované</string>
     <string name="title_apps_sale_provider">Poskytovateľ - bestappsales.com</string>
-    <string name="ui_accent_8">Ružová</string>
     <string name="item_optional">Voliteľné</string>
     <string name="server_maintenance">Server je mimo prevádzky z dôvodu údržby</string>
     <string name="title_games">Hry</string>
-    <string name="ui_accent_9">Limetková</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> dostupných aktualizácií</string>
     <string name="app_language">Jazyk aplikácie</string>
     <string name="title_installation">Inštalácia</string>
@@ -301,8 +285,6 @@
     <string name="pref_downloader_wifi_title">Sťahovať iba cez WiFi</string>
     <string name="pref_install_delete_summary">Stiahnuté súbory APK budú odstránené ihneď po inštalácii</string>
     <string name="pref_install_mode_title">Spôsob inštalácie</string>
-    <string name="pref_ui_theme_dark_x">Tmavá X</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="title_more">Viac</string>
     <string name="manage_account">Správa účtu</string>
     <string name="pref_clear_device_owner_title">Odstrániť majiteľa zariadenia</string>
@@ -359,14 +341,11 @@
     <string name="installer_status_failure_invalid">Neplatný alebo poškodený súbor APK</string>
     <string name="installer_status_failure_storage">Nedostatok miesta v pamäti</string>
     <string name="installer_status_success">Nainštalované</string>
-    <string name="pref_ui_theme_title">Motív</string>
     <string name="onboarding_permission_esm">Správca externého úložiska</string>
     <string name="pref_ui_title">Prispôsobenie</string>
     <string name="purchase_failed">Sťahovanie zlyhalo</string>
     <string name="purchase_invalid">Aplikácia nie je zakúpená</string>
     <string name="pref_network_proxy_url_message">Zadajte platnú adresu URL servera proxy, aby sa všetky údaje preniesli cez server proxy.</string>
-    <string name="pref_ui_theme_light">Svetlý</string>
-    <string name="pref_ui_theme_system">Podľa systému</string>
     <string name="pref_ui_no_for_you">Stránky pre vás</string>
     <string name="title_manual_download">Manuálne stiahnutie</string>
     <string name="toast_abandon_sessions">Staré inštalačné relácie boli zrušené</string>
@@ -407,7 +386,6 @@
     <string name="toast_proxy_success">Proxy bol úspešne nastavený</string>
     <string name="toast_proxy_failed">Nepodarilo sa nastaviť proxy</string>
     <string name="notification_channel_updater_service">Služba sťahovania aplikácií na pozadí</string>
-    <string name="ui_accent_13">Tmavo modrá</string>
     <string name="update_available">aktualizácia je dostupná</string>
     <string name="updates_available">dostupné aktualizácie</string>
     <string name="pref_ui_layout">Rozloženie</string>

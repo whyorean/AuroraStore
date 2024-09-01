@@ -21,14 +21,12 @@ package com.aurora.store.view.custom.layouts
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
-import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.aurora.extensions.accentColor
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
 import com.aurora.store.data.model.PermissionGroupInfo
@@ -59,7 +57,6 @@ class PermissionGroup @JvmOverloads constructor(
 
             val imageView = findViewById<ImageView>(R.id.img)
             imageView.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo))
-            imageView.imageTintList = ColorStateList.valueOf(context.accentColor())
         }
     }
 
@@ -98,7 +95,7 @@ class PermissionGroup @JvmOverloads constructor(
     ) {
         val textView = TextView(context)
         textView.text = label
-        if (isNewPerm) textView.setTextColor(context.accentColor())
+        if (isNewPerm) textView.setTextColor(ContextCompat.getColor(context, R.color.colorGreen))
         textView.setOnClickListener {
             var title: String = permissionGroupInfo.label
 

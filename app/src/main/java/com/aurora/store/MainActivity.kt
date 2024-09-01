@@ -20,13 +20,11 @@
 
 package com.aurora.store
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -34,8 +32,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.aurora.extensions.accentColor
-import com.aurora.extensions.applyThemeAccent
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.NetworkStatus
@@ -74,8 +70,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         super.onCreate(savedInstanceState)
-
-        applyThemeAccent()
 
         B = ActivityMainBinding.inflate(layoutInflater)
 
@@ -122,11 +116,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        B.navView.apply {
-            val alphaColor = ColorUtils.setAlphaComponent(this@MainActivity.accentColor(), 100)
-            setupWithNavController(navController)
-            itemActiveIndicatorColor = ColorStateList.valueOf(alphaColor)
-        }
+        B.navView.setupWithNavController(navController)
 
         // Handle quick exit from back actions
         val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {

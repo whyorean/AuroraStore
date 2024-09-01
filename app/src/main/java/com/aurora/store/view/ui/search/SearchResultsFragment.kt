@@ -21,7 +21,6 @@ package com.aurora.store.view.ui.search
 
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -31,8 +30,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.aurora.extensions.accentColor
-import com.aurora.extensions.contrastingColor
 import com.aurora.extensions.hideKeyboard
 import com.aurora.extensions.showKeyboard
 import com.aurora.gplayapi.data.models.App
@@ -103,15 +100,8 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
         // Filter
-        binding.filterFab.apply {
-            val onSurfaceColor = contrastingColor(requireContext().accentColor())
-            setTextColor(onSurfaceColor)
-            iconTint = ColorStateList.valueOf(onSurfaceColor)
-            backgroundTintList = ColorStateList.valueOf(requireContext().accentColor())
-
-            setOnClickListener {
-                findNavController().navigate(R.id.filterSheet)
-            }
+        binding.filterFab.setOnClickListener {
+            findNavController().navigate(R.id.filterSheet)
         }
 
         viewModel.liveData.observe(viewLifecycleOwner) {

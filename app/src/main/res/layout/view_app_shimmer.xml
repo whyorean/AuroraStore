@@ -47,7 +47,7 @@
             android:layout_alignEnd="@id/img_icon"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_small"
-            android:background="?colorShimmer"
+            android:background="?colorControlHighlight"
             android:textAppearance="@style/TextAppearance.Aurora.Line2" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_alignEnd="@id/txt_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_xxsmall"
-            android:background="?colorShimmer"
+            android:background="?colorControlHighlight"
             android:textAppearance="@style/TextAppearance.Aurora.Line3" />
     </RelativeLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>

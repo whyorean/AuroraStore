@@ -85,7 +85,6 @@
     <string name="details_think_this_app">आप इस ऐप के बारे में क्या सोचते हैं\?</string>
     <string name="onboarding_welcome_select">क्या हालचाल है\?</string>
     <string name="onboarding_permission_esm">बाहरी स्टोरेज मैनेजर</string>
-    <string name="pref_ui_theme_dark_x">गहरा X</string>
     <string name="details_beta">बीटा प्रोग्राम</string>
     <string name="action_uninstall">अनइंस्टॉल करें</string>
     <string name="download_cancel_all">सभी रद्द करें</string>
@@ -97,12 +96,10 @@
     <string name="exodus_substring">ज्ञात ट्रैकर्स पाए गए</string>
     <string name="pref_ui_no_for_you">\'आपके लिए\' पृष्ठ</string>
     <string name="pref_ui_similar_apps">समान और संबंधित ऐप्स</string>
-    <string name="ui_accent_9">नीबू हरा</string>
     <string name="pref_filter_google_title">गूगल ऐप्स फिल्टर करें</string>
     <string name="pref_install_mode_native">मूल इंस्टॉलर (अस्वीकृत)</string>
     <string name="pref_ui_layout_tab">तयशुदा टैब चुनें</string>
     <string name="dialog_title_self_update">नया अपडेट उपलब्ध है</string>
-    <string name="ui_accent_10">नारंगी</string>
     <string name="pref_ui_no_for_you_desc">होम स्क्रीन पर \'आपके लिए\' पृष्ठ प्रदर्शित करें</string>
     <string name="details_beta_delay">नामांकन में कुछ समय लग सकता है, आप स्थिति बाद में देख सकते हैं।</string>
     <string name="toast_clipboard_copied">क्लिपबोर्ड पर कॉपी किया गया</string>
@@ -113,13 +110,10 @@
     <string name="installer_service_unavailable">1.0.9 या ऊपर की ऑरोरा सेवाएं इंस्टॉल करें, या इंस्टॉलर बदलें।</string>
     <string name="details_permission">अनुमति</string>
     <string name="title_apps_games">मेरे ऐप्स और गेम्स</string>
-    <string name="ui_accent_8">गुलाबी</string>
     <string name="title_library">लाईब्रेरी</string>
-    <string name="pref_ui_accent_title">रंग</string>
     <string name="title_language">भाषा</string>
     <string name="notification_channel_alert">त्वरित सूचना</string>
     <string name="pref_ui_layout">अभिन्यास</string>
-    <string name="ui_accent_13">गहरा नीला</string>
     <string name="action_update">अपडेट करें</string>
     <string name="filter_review_one">एक</string>
     <string name="pref_filter_fdroid_title">F-Droid एप्स को फिल्टर करें</string>
@@ -139,15 +133,12 @@
     <string name="notification_channel_updater_service">ऐप पृष्ठभूमि में डाउनलोड सेवा</string>
     <string name="tab_trending">रुझान में</string>
     <string name="pref_filter_fdroid_summary">अपडेट और इंस्टॉल किए गए ऐप्स में से F-Droid ऐप्स को अनदेखा करें</string>
-    <string name="pref_ui_theme_title">थीम</string>
     <string name="title_games">गेम्स</string>
     <string name="title_settings">सेटिंग</string>
-    <string name="ui_accent_12">डिस्कॉर्ड नीला</string>
     <string name="onboarding_title_installer">इंस्टॉलर</string>
     <string name="onboarding_permission_installer">इंस्टॉलर अनुमति</string>
     <string name="title_apps_library">लाइब्रेरी में ऐप्स</string>
     <string name="device_miui_title">MIUI का पता चला!</string>
-    <string name="pref_ui_theme_black">काला</string>
     <string name="tab_top_grossing">शीर्ष कमाई</string>
     <string name="title_installation">इंस्टॉलेशन</string>
     <string name="toast_purchase_blocked">बेनामी खातों पर ऐप खरीदारी उपलब्ध नहीं है।</string>
@@ -156,11 +147,9 @@
     <string name="tab_categories">श्रेणियां</string>
     <string name="title_spoof_manager">छलावरण प्रबंधक</string>
     <string name="title_about">ऐप के बारे में</string>
-    <string name="ui_accent_1">नीला</string>
     <string name="details_dev_details">विकासकर्ता संपर्क</string>
     <string name="details_no_updates">कोई अपडेट मौजूद नहीं</string>
     <string name="pref_common_extra">अतिरिक्त</string>
-    <string name="pref_ui_theme_dark">गहरा</string>
     <string name="toast_page_unavailable">ब्राउज़ पृष्ठ अनुपलब्ध है</string>
     <string name="pref_install_mode_session">सत्र इंस्टॉलर</string>
     <string name="pref_ui_title">अनुकूलन</string>
@@ -187,13 +176,7 @@
     <string name="toast_anonymous_restriction">अनाम खातों पर उपलब्ध नहीं है</string>
     <string name="installer_status_failure_conflict">विरोधाभासी पैकेज मौजूद है</string>
     <string name="onboarding_permission_installer_desc">ऑरोरा स्टोर से ऐप इंस्टॉल करने की अनुमति दें</string>
-    <string name="ui_accent_2">फ्यूशिया</string>
     <string name="details_ratings">रेटिंग और समीक्षाएं</string>
-    <string name="ui_accent_3">लाल</string>
-    <string name="ui_accent_4">सुनहरा</string>
-    <string name="ui_accent_5">हरा</string>
-    <string name="ui_accent_6">बैंगनी</string>
-    <string name="ui_accent_7">स्लेटी</string>
     <string name="download_none">कोई डाउनलोड नहीं</string>
     <string name="download_queued">कतारबद्ध</string>
     <string name="installer_service_available">ऑरोरा सेवाएं उपलब्ध हैं और इंस्टॉल करने के लिए तैयार हैं।</string>
@@ -201,7 +184,6 @@
     <string name="onboarding_permission_select">ऑरोरा स्टोर को निम्नलिखित अनुमतियों की आवश्यकता है</string>
     <string name="onboarding_title_permissions">अनुमतियां</string>
     <string name="pref_network_title">नेटवर्क</string>
-    <string name="pref_ui_theme_light">हल्का</string>
     <string name="purchase_failed">डाउनलोड असफल</string>
     <string name="purchase_no_file">फाइलें नहीं मिल सकी</string>
     <string name="insecure_anonymous_apply">सुनिश्चित करें कि आप परिवर्तनों को लागू करने के लिए पुनः लॉगिन करें और ऐप को पुनरारंभ करें।</string>
@@ -248,10 +230,8 @@
     <string name="pref_dialog_to_apply_restart">यह सेटिंग आपके ऐप को पुनरारंभ करने के बाद लागू की जाएगी</string>
     <string name="pref_install_delete_summary">डाउनलोड किए गए APK इंस्टालेशन के तुरंत बाद मिटा दिए जाएंगे</string>
     <string name="pref_install_delete_title">इंस्टॉल के बाद APK मिटाएं</string>
-    <string name="pref_ui_theme_system">सिस्टम का अनुसरण करें</string>
     <string name="pref_install_mode_root">रूट इंस्टॉलर</string>
     <string name="pref_install_mode_services">ऑरोरा सेवाएं (अस्वीकृत)</string>
-    <string name="pref_ui_theme_darkord">डिस्कॉर्ड</string>
     <string name="purchase_session_expired">सत्र समाप्त हो गया, नया सत्र प्राप्त करने के लिए पुनः लॉगिन करें।</string>
     <string name="pref_ui_similar_apps_desc">ऐप विवरण पृष्ठ पर समान और संबंधित समूह प्रदर्शित करें</string>
     <string name="spoof_apply">सुनिश्चित करें कि आप छलावरण लागू करने के लिए पुनः लॉगिन करें</string>
@@ -264,13 +244,11 @@
     <string name="toast_developer_setting_failed">उन्हें खोलने के लिए डिवाइस सेटिंग्स से डेवलपर सेटिंग्स चालू करें।</string>
     <string name="toast_manual_unavailable">आप जिस संस्करण कोड का अनुरोध कर रहे हैं वह उपलब्ध नहीं है।</string>
     <string name="toast_rated_success">रेट किया गया, इसे प्रदर्शित होने में कुछ समय लग सकता है</string>
-    <string name="ui_accent_11">हलका नीला</string>
     <string name="toast_aas_token_failed">AAS टोकन उत्पन्न नहीं किया जा सका</string>
     <string name="app_updater_service_notif_text">पृष्ठभूमि में ऐप डाउनलोड सक्षम करता है</string>
     <string name="download_progress">डाउनलोड हो रहे • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku ठीक से इंस्टॉल या सेटअप नहीं है।</string>
     <string name="pref_install_mode_shizuku">Shizuku इंस्टॉलर</string>
-    <string name="ui_accent_0">सिस्टम</string>
     <string name="rate_limited">उफ़, इस खाते की दर सीमित है!</string>
     <string name="error">एक त्रुटि पाई गई!</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>

@@ -65,14 +65,6 @@
     <string name="pref_ui_layout_tab">ਮੂਲ Tab ਚੁਣੋ</string>
     <string name="pref_ui_layout">ਇੰਟਰਫੇਸ ਸਟਾਈਲ</string>
     <string name="pref_ui_title">ਪਸੰਦੀਦਾ ਇੰਟਰਫੇਸ</string>
-    <string name="pref_ui_theme_title">ਥੀਮ</string>
-    <string name="pref_ui_theme_system">ਸਿਸਟਮ ਅਨੁਸਾਰ</string>
-    <string name="pref_ui_theme_light">ਸਫ਼ੈਦ</string>
-    <string name="pref_ui_theme_darkord">ਡਿਸਕੌਰਡ</string>
-    <string name="pref_ui_theme_dark_x">ਗੂੜ੍ਹਾ X</string>
-    <string name="pref_ui_theme_dark">ਗੂੜ੍ਹਾ</string>
-    <string name="pref_ui_theme_black">ਕਾਲ੍ਹਾ</string>
-    <string name="pref_ui_accent_title">ਰੰਗ</string>
     <string name="pref_network_title">ਨੈਟਵਰਕਿੰਗ</string>
     <string name="dialog_desc_native_split">ਤੁਸੀਂ ਨੇਟਿਵ ਇੰਸਟਾਲਰ ਰਾਹੀਂ Bundled/Split ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਕਰ ਸਕਦੇ। ਕਿਰਪਾ ਕਰਕੇ ਇੰਸਟਾਲੇਸ਼ਨ ਲਈ ਸੈਸ਼ਨ, ਔਰੋਰਾ ਸਰਵੀਸਿਜ਼ ਜਾਂ ਰੂਟ ਵਿਚੋਂ ਕੋਈ ਇਕ ਚੁਣੋ।</string>
     <string name="device_miui_description">ਸੈਸ਼ਨ ਐਪ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਵਰਤਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ MIUI optimizations ਨੂੰ ਬੰਦ ਕਰੋ, ਜਾਂ ਫਿਰ ਰੂਟ ਜਾਂ ਔਰੋਰਾ ਸਰਵੀਸਿਜ਼ ਵਿਚੋਂ ਕੋਈ ਇੱਕ ਤਰੀਕਾ ਵਰਤੋ।</string>
@@ -261,15 +253,8 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ਅਤੇ <xliff:g id="apps_count">%4$d</xliff:g> ਹੋਰ</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="download_progress">ਡਾਊਨਲੋਡ ਕਰ ਰਿਹਾ • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="ui_accent_13">ਗੂੜ੍ਹਾ ਨੀਲਾ</string>
     <string name="pref_install_mode_am">AM ਇੰਸਟਾਲਰ</string>
-    <string name="ui_accent_3">ਲਾਲ</string>
-    <string name="ui_accent_1">ਨੀਲਾ</string>
-    <string name="ui_accent_5">ਹਰਾ</string>
-    <string name="ui_accent_6">ਬੈਂਗਣੀਂ</string>
-    <string name="ui_accent_4">ਸੁਨਿਹਰੀ</string>
     <string name="installer_am_unavailable">ਐਪ ਮੈਨੇਜਰ ਨੂੰ ਇੰਸਟਾਲ ਕਰੋ ਜਾਂ ਇੰਸਟਾਲਰ ਬਦਲੋ।</string>
-    <string name="ui_accent_7">ਸਲੇਟੀ</string>
     <string name="requesting_new_session">ਨਵੇਂ ਸੈਸ਼ਨ ਲਈ ਬੇਨਤੀ ਕੀਤੀ ਜਾ ਰਹੀ</string>
     <string name="session_login_failed_google">ਗੂਗਲ ਰਾਹੀਂ ਲਾਗ-ਇਨ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
     <string name="session_scrapped">ਪਿਛਲਾ ਸੈਸ਼ਨ ਰੱਦ</string>
@@ -289,18 +274,11 @@
     <string name="session_init">ਤਿਆਰੀ ਹੋ ਰਹੀ…</string>
     <string name="title_advanced">ਐਡਵਾਂਸਡ</string>
     <string name="toast_import_success">ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਇੰਮਪੋਰਟ ਹੋਈ</string>
-    <string name="ui_accent_0">ਸਿਸਟਮ</string>
     <string name="rate_limited">ਓਹੋ, ਇਸ ਖਾਤੇ ਤੇ ਰੇਟ ਲਿਮਟ ਹੈ!</string>
     <string name="update_available">ਅੱਪਡੇਟ ਉਪਲਬਧ ਹੈ</string>
     <string name="updates_available">ਅੱਪਡੇਟਸ ਉਪਲਬਧ ਹਨ</string>
     <string name="notification_channel_updates">ਅੱਪਡੇਟਸ ਦੀ ਸੂਚਨਾ</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> ਅੱਪਡੇਟ ਉਪਲਬਧ</string>
-    <string name="ui_accent_2">ਚਮਕਦਾਰ ਜਾਮਣੀ</string>
-    <string name="ui_accent_8">ਗੁਲਾਬੀ</string>
-    <string name="ui_accent_9">ਨਿੰਬੂ ਰੰਗਾ</string>
-    <string name="ui_accent_10">ਸੰਤਰੀ</string>
-    <string name="ui_accent_11">ਹਲਕਾ ਨੀਲਾ</string>
-    <string name="ui_accent_12">ਵੈਂਗਣੀ ਨੀਲਾ</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ਅਤੇ <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="download_eta_hrs">%1$dh %2$dm %3$ds ਬਾਕੀ</string>
     <string name="download_eta_min">%1$dm %2$ds ਬਾਕੀ</string>

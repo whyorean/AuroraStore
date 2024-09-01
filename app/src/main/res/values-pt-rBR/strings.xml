@@ -9,13 +9,9 @@
     <string name="title_spoof_manager">Gerenciar simulação</string>
     <string name="action_whitelist">Lista branca</string>
     <string name="title_blacklist_manager">Gerenciar lista negra</string>
-    <string name="pref_ui_theme_black">Preto</string>
-    <string name="pref_ui_accent_title">Cor de Destaque</string>
-    <string name="pref_ui_theme_dark_x">Escuro X</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Apps</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="pref_install_mode_services">Serviços Aurora (Depreciado)</string>
     <string name="pref_app_download">Downloads</string>
     <string name="action_filter_downloads">Download</string>
@@ -212,10 +208,6 @@
     <string name="purchase_invalid">App não foi comprado</string>
     <string name="purchase_failed">Download Falhou</string>
     <string name="pref_ui_title">Customização</string>
-    <string name="pref_ui_theme_title">Tema</string>
-    <string name="pref_ui_theme_system">Seguir o Sistema</string>
-    <string name="pref_ui_theme_light">Claro</string>
-    <string name="pref_ui_theme_dark">Escuro</string>
     <string name="pref_install_mode_title">Método de instalação</string>
     <string name="pref_install_mode_summary">Selecione o modo de instalação para APKs</string>
     <string name="pref_install_mode_session">Instalador de Sessão</string>
@@ -251,21 +243,8 @@
     <string name="app_updater_service_notif_text">Ativa o download de apps em segundo plano</string>
     <string name="app_updater_service_notif_title">Download de app em segundo plano</string>
     <string name="notification_channel_updater_service">Serviço de download de apps em segundo plano</string>
-    <string name="ui_accent_1">Azul</string>
-    <string name="ui_accent_3">Vermelho</string>
-    <string name="ui_accent_4">Dourado</string>
-    <string name="ui_accent_5">Verde</string>
-    <string name="ui_accent_6">Roxo</string>
-    <string name="ui_accent_7">Cinza</string>
-    <string name="ui_accent_8">Rosa</string>
-    <string name="ui_accent_9">Lima</string>
-    <string name="ui_accent_10">Laranja</string>
-    <string name="ui_accent_11">Azul claro</string>
-    <string name="ui_accent_13">Azul escuro</string>
     <string name="pref_install_mode_am">Instalador AM</string>
     <string name="installer_am_unavailable">Instale o App Manager ou mude de instalador.</string>
-    <string name="ui_accent_2">Fúcsia</string>
-    <string name="ui_accent_12">Azul disskord</string>
     <string name="onboarding_permission_notifications">Notificações</string>
     <string name="session_init">Deixando tudo certo…</string>
     <string name="download_paused">Pausado • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
@@ -301,7 +280,6 @@
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
     <string name="notification_updates_available_desc_1">Uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g> está disponível</string>
-    <string name="ui_accent_0">Sistema</string>
     <string name="rate_limited">Oops, esta conta foi limitada!</string>
     <string name="downloading_dep">Baixando arquivos adicionais para <xliff:g id="app">%1$s</xliff:g></string>
     <string name="menu">Menu</string>

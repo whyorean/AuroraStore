@@ -100,7 +100,6 @@
     <string name="purchase_unsupported">பயன்பாடு ஆதரிக்கப்படவில்லை</string>
     <string name="purchase_session_expired">அமர்வு காலாவதியானது, புதிய அமர்வைப் பெற மீண்டும் உள்நுழைக.</string>
     <string name="spoof_apply">ஸ்பூப்பைப் பயன்படுத்த நீங்கள் மீண்டும் உள்நுழைந்திருப்பதை உறுதிசெய்யவும்</string>
-    <string name="pref_ui_theme_light">ஒளிர்ந்த</string>
     <string name="pref_ui_layout">தளவமைப்பு</string>
     <string name="pref_ui_layout_tab">இயல்புநிலை தாவலைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_ui_similar_apps">ஒத்த மற்றும் தொடர்புடைய பயன்பாடுகள்</string>
@@ -200,13 +199,6 @@
     <string name="pref_install_mode_session">அமர்வு நிறுவி</string>
     <string name="pref_install_mode_title">நிறுவல் பயன்முறை</string>
     <string name="pref_network_title">பிணையமாக்கம்</string>
-    <string name="pref_ui_accent_title">உரப்பு</string>
-    <string name="pref_ui_theme_black">கருப்பு</string>
-    <string name="pref_ui_theme_dark">இருள்</string>
-    <string name="pref_ui_theme_dark_x">இருள் X</string>
-    <string name="pref_ui_theme_darkord">டிசுகார்டு</string>
-    <string name="pref_ui_theme_system">முறைமையைப் பின்பற்றவும்</string>
-    <string name="pref_ui_theme_title">தோற்றம்</string>
     <string name="pref_ui_no_for_you">உங்களுக்கான பக்கங்கள்</string>
     <string name="pref_ui_no_for_you_desc">முகப்புத் திரையில் உங்களுக்கான பக்கங்களைக் காட்டவும்</string>
     <string name="purchase_failed">பதிவிறக்கம் தோல்வியடைந்தது</string>
@@ -252,17 +244,4 @@
     <string name="action_resume">மீண்டுந்தொடர்</string>
     <string name="action_grant">வழங்கு</string>
     <string name="pref_install_mode_am">AM நிறுவி.</string>
-    <string name="ui_accent_1">நீலம்</string>
-    <string name="ui_accent_3">சிவப்பு</string>
-    <string name="ui_accent_4">தங்கமான</string>
-    <string name="ui_accent_5">பச்சை</string>
-    <string name="ui_accent_6">கத்திரிப்பு</string>
-    <string name="ui_accent_7">சாம்பல்</string>
-    <string name="ui_accent_8">இளஞ்சிவப்பு</string>
-    <string name="ui_accent_9">சுண்ணாம்பு</string>
-    <string name="ui_accent_10">ஆரஞ்சு</string>
-    <string name="ui_accent_11">வெளிர் நீலம்</string>
-    <string name="ui_accent_12">டிசுகார்டு நீலம்</string>
-    <string name="ui_accent_13">கரு நீலம்</string>
-    <string name="ui_accent_2">ஃபியூசியா</string>
 </resources>

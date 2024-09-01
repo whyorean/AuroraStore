@@ -25,12 +25,15 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.aurora.extensions.isPAndAbove
+import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.Preferences
+import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -63,6 +66,13 @@ class AuroraApp : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        // Set the app theme
+        val themeStyle = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_STYLE)
+        setAppTheme(themeStyle)
+
+        // Apply dynamic colors to activities0
+        DynamicColors.applyToActivitiesIfAvailable(this)
+        DynamicColors.wrapContextIfAvailable(this)
 
         // Required for Shizuku installer
         if (isPAndAbove()) HiddenApiBypass.addHiddenApiExemptions("I", "L")

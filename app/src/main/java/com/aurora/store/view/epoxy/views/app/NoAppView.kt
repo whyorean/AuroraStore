@@ -26,8 +26,6 @@ import androidx.core.view.isVisible
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.extensions.accentColor
-import com.aurora.extensions.contrastingColor
 import com.aurora.store.databinding.ViewNoAppBinding
 import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
@@ -64,7 +62,6 @@ class NoAppView @JvmOverloads constructor(
     @ModelProp
     fun actionMessage(message: String = String()) {
         binding.button.text = message
-        binding.button.setTextColor(contrastingColor(context.accentColor()))
     }
 
     @JvmOverloads

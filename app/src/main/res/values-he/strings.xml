@@ -13,12 +13,6 @@
     <string name="about_bitcoin_btc">ביטקוין</string>
     <string name="title_games">משחקים</string>
     <string name="title_apps_games">היישומים והמשחקים שלי</string>
-    <string name="pref_ui_theme_title">ערכת נושא</string>
-    <string name="pref_ui_theme_system">לפי המערכת</string>
-    <string name="pref_ui_theme_light">בהירה</string>
-    <string name="pref_ui_theme_dark_x">כהה X</string>
-    <string name="pref_ui_theme_dark">כהה</string>
-    <string name="pref_ui_theme_black">שחורה</string>
     <string name="title_language">שפה</string>
     <string name="title_account_manager">חשבונות</string>
     <string name="account_logout">התנתקות מ־Aurora</string>
@@ -156,7 +150,6 @@
     <string name="onboarding_title_installer">שיטת התקנה</string>
     <string name="download_completed">הורדה הושלמה</string>
     <string name="download_canceled">בוטל</string>
-    <string name="pref_ui_accent_title">צבע נושא</string>
     <string name="download_none">אין הורדות</string>
     <string name="tab_top_grossing">הגרועים ביותר</string>
     <string name="onboarding_permission_esm">מנהל אחסון חיצוני</string>
@@ -168,18 +161,6 @@
     <string name="pref_install_mode_services">שירותי Aurora (לא עדכני)</string>
     <string name="pref_network_title">תעבורת רשת</string>
     <string name="title_manual_download">הורדה ידנית</string>
-    <string name="ui_accent_1">כחול</string>
-    <string name="ui_accent_2">פוקסיה</string>
-    <string name="ui_accent_3">אדום</string>
-    <string name="ui_accent_4">זהב</string>
-    <string name="ui_accent_5">ירוק</string>
-    <string name="ui_accent_6">סגול</string>
-    <string name="ui_accent_7">אפור</string>
-    <string name="ui_accent_8">ורוד</string>
-    <string name="ui_accent_9">ירקרק</string>
-    <string name="ui_accent_10">כתום</string>
-    <string name="ui_accent_11">תכלת</string>
-    <string name="ui_accent_13">כחול כהה</string>
     <string name="purchase_invalid">לא רכשת את היישום</string>
     <string name="exodus_progress">מתבצעת בדיקת עוקבנים…</string>
     <string name="onboarding_permission_esa">גישה לאחסון חיצוני</string>
@@ -222,7 +203,6 @@
     <string name="insecure_anonymous_apply">וודא שאתה מתחבר מחדש ומפעיל מחדש את האפליקציה כדי להחיל א ת השינויים.</string>
     <string name="toast_developer_setting_failed">הפעל את הגדרות מפתח דרך הגדרות המכשיר כדי לפתוח אותם.</string>
     <string name="onboarding_permission_esa_desc">כדי לשמור קבצי הרחבת APK (OBBs) עבור אפליקציות ומשחקים גדולים.</string>
-    <string name="pref_ui_theme_darkord">דיסקורד</string>
     <string name="onboarding_permission_installer">הרשאות מתקין</string>
     <string name="details_no_app_match">לא נמצא יישום תואם</string>
     <string name="title_no_network">אין רשת</string>
@@ -266,7 +246,6 @@
     <string name="pref_network_proxy_url">URL פרוקסי</string>
     <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים ועדכון עצמי, כל שעה.</string>
     <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
-    <string name="ui_accent_0">מערכת</string>
     <string name="pref_network_proxy_title">פרוקסי</string>
     <string name="pref_install_mode_shizuku">מתקין Shizuku</string>
     <string name="action_post">פרסום</string>
@@ -275,7 +254,6 @@
     <string name="action_enable">אפשר</string>
     <string name="toast_import_failed">לא הצליח לייבא תצורת מכשיר</string>
     <string name="download_eta_sec">%1$dשנ נותרו</string>
-    <string name="ui_accent_12">כחול דיסקורד</string>
     <string name="app_links_desc">אשר לחנות Aurora לפתוח קישורים נתמכים</string>
     <string name="requesting_new_session">מבקש כניסה חדשה</string>
     <string name="amazon_appstore_desc">Amazon Appstore זאת חנות היישומים לפלטפורמות תואמות אנדרואיד שמופעלת ע\"י אמזון.</string>

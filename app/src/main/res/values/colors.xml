@@ -18,72 +18,19 @@
   -->
 
 <resources>
-    <!--Light Theme-->
-    <color name="colorPrimaryDark">@color/colorAccent</color>
-    <color name="colorPrimaryAlt">#9D9D9D</color>
-    <color name="colorShimmer">#ABABAB</color>
-    <color name="colorStroke">#D6D6D6</color>
-
-    <!--Dark Theme-->
-    <color name="colorDarkPrimaryDark">#202124</color>
-    <color name="colorDarkBackground">#2d2e31</color>
-    <color name="colorDarkWindowBackground">#202124</color>
-    <color name="colorShimmerDark">#373a40</color>
-    <color name="colorStrokeDark">#373a40</color>
-
-    <!--DarkX Theme-->
-    <color name="colorDarkXPrimaryDark">#1C2733</color>
-    <color name="colorDarkXBackground">#222E3C</color>
-    <color name="colorDarkXWindowBackground">#1C2733</color>
-    <color name="colorShimmerDarkX">#425a75</color>
-    <color name="colorStrokeDarkX">#425a75</color>
-
-    <!--Darkord Theme-->
-    <color name="colorDarkordPrimaryDark">#23272a</color>
-    <color name="colorDarkordBackground">#2c2f33</color>
-    <color name="colorDarkordWindowBackground">#23272a</color>
-    <color name="colorShimmerDarkord">#99aab5</color>
-    <color name="colorStrokeDarkord">#99aab5</color>
-
-    <!--Black Theme-->
-    <color name="colorBlack">#000</color>
-    <color name="colorShimmerBlack">#646464</color>
-    <color name="colorStrokeBlack">#343434</color>
-
     <!--Common Colors-->
     <color name="colorAccent">#6C63FF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparent">#00000000</color>
 
     <!--Tab Colors-->
-    <color name="colorTabSelected">@color/colorAccent</color>
-    <color name="colorTabDefault">@color/colorScrim</color>
+    <color name="colorTabSelected">?colorAccent</color>
     <color name="txtTabDefault">#44F2F2F2</color>
     <color name="txtTabSelected">#F2F2F2</color>
-
-    <!--Scrim Colors-->
-    <color name="colorScrim">#22000000</color>
-    <color name="colorScrimAlt">#99000000</color>
-    <color name="colorScrimAccent">#446C63FF</color>
-    <color name="colorScrimBlack">#30000000</color>
 
     <color name="colorBlue">#4768FD</color>
     <color name="colorRed">#E4002B</color>
     <color name="colorRedAlt">#ff4c4c</color>
     <color name="colorOrange">#FF9933</color>
     <color name="colorGreen">#49A942</color>
-
-    <color name="colorAccent01">#6C63FF</color>
-    <color name="colorAccent02">#FF00FF</color>
-    <color name="colorAccent03">#E4002B</color>
-    <color name="colorAccent04">#F9A826</color>
-    <color name="colorAccent05">#49A942</color>
-    <color name="colorAccent06">#6633cc</color>
-    <color name="colorAccent07">#52565e</color>
-    <color name="colorAccent08">#ee70a6</color>
-    <color name="colorAccent09">#b5c327</color>
-    <color name="colorAccent10">#f38654</color>
-    <color name="colorAccent11">#59A8E2</color>
-    <color name="colorAccent12">#7289da</color>
-    <color name="colorAccent13">#0078D7</color>
 </resources>

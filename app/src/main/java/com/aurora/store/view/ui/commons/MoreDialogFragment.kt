@@ -10,31 +10,31 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
@@ -52,14 +52,13 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.aurora.Constants
 import com.aurora.Constants.URL_TOS
-import com.aurora.extensions.accentColor
-import com.aurora.extensions.backgroundColor
 import com.aurora.extensions.browse
-import com.aurora.extensions.darkenColor
 import com.aurora.extensions.getStyledAttributeColor
-import com.aurora.extensions.lightenColor
+import com.aurora.extensions.setAppTheme
+import com.aurora.store.MR
 import com.aurora.store.R
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.util.Preferences
 import com.aurora.store.view.theme.AuroraTheme
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -93,17 +92,14 @@ class MoreDialogFragment : DialogFragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 AuroraTheme {
-                    if (isSystemInDarkTheme()) {
-                        primaryColor = Color(requireContext().backgroundColor())
-                        onPrimaryColor = Color(lightenColor(primaryColor.toArgb(), 0.85f))
-                        secondaryColor = Color(darkenColor(primaryColor.toArgb(), 0.75f))
-                        onSecondaryColor = Color(lightenColor(secondaryColor.toArgb(), 0.85f))
-                    } else {
-                        primaryColor = Color(lightenColor(requireContext().accentColor(), 0.85f))
-                        onPrimaryColor = Color(darkenColor(primaryColor.toArgb(), 0.15f))
-                        secondaryColor = Color(lightenColor(primaryColor.toArgb(), 0.75f))
-                        onSecondaryColor = Color(darkenColor(secondaryColor.toArgb(), 0.15f))
-                    }
+                    primaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorSurface))
+                    onPrimaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorOnSurface))
+                    secondaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorSecondaryContainer))
+                    onSecondaryColor =
+                        Color(requireContext().getStyledAttributeColor(MR.colorOnSecondaryContainer))
 
                     Column(
                         modifier = Modifier
@@ -160,21 +156,30 @@ class MoreDialogFragment : DialogFragment() {
 
     @Composable
     fun AppBar(backgroundColor: Color = Color.Transparent, onBackgroundColor: Color) {
-        Box(contentAlignment = Alignment.CenterEnd) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp, 10.dp, 4.dp, 10.dp)
+        ) {
+            ThreeStateIconButton(tint = onBackgroundColor)
             Text(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.wrapContentWidth(),
                 text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.titleMedium,
                 color = onBackgroundColor,
                 textAlign = TextAlign.Center
             )
-            IconButton(onClick = { findNavController().navigateUp() }) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_cancel),
-                    contentDescription = stringResource(id = R.string.action_cancel),
-                    tint = onBackgroundColor
-                )
-            }
+
+            Image(
+                painter = painterResource(id = R.drawable.ic_cancel),
+                contentDescription = stringResource(id = R.string.action_cancel),
+                modifier = Modifier.clickable {
+                    findNavController().navigateUp()
+                },
+                colorFilter = ColorFilter.tint(onBackgroundColor)
+            )
         }
     }
 
@@ -304,6 +309,56 @@ class MoreDialogFragment : DialogFragment() {
                 fontSize = 15.sp,
             )
         }
+    }
+
+    @Composable
+    fun ThreeStateIconButton(
+        tint: Color = Color.White
+    ) {
+        var currentState by remember {
+            mutableStateOf(
+                Preferences.getInteger(
+                    requireContext(),
+                    Preferences.PREFERENCE_THEME_STYLE
+                ).let {
+                    State.entries.getOrNull(it)
+                } ?: State.Auto
+            )
+        }
+
+        val iconRes = when (currentState) {
+            State.Light -> R.drawable.ic_light
+            State.Dark -> R.drawable.ic_dark
+            else -> R.drawable.ic_auto
+        }
+
+        Image(
+            painter = painterResource(id = iconRes),
+            contentDescription = null,
+            modifier = Modifier.clickable {
+                currentState = when (currentState) {
+                    State.Light -> State.Dark
+                    State.Dark -> State.Auto
+                    State.Auto -> State.Light
+                }
+
+                Preferences.putInteger(
+                    requireContext(),
+                    Preferences.PREFERENCE_THEME_STYLE,
+                    currentState.value
+                )
+
+                setAppTheme(currentState.value)
+                findNavController().navigateUp()
+            },
+            colorFilter = ColorFilter.tint(tint)
+        )
+    }
+
+    enum class State(val value: Int) {
+        Auto(0),
+        Light(1),
+        Dark(2),
     }
 
     private fun getOptions(): List<Option> {

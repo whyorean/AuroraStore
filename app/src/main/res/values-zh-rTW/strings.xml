@@ -129,13 +129,6 @@
     <string name="pref_ui_layout_tab">選擇預設標籤</string>
     <string name="pref_ui_layout">佈局</string>
     <string name="pref_ui_title">個人化</string>
-    <string name="pref_ui_theme_title">主題</string>
-    <string name="pref_ui_theme_system">跟隨系統</string>
-    <string name="pref_ui_theme_light">淺色</string>
-    <string name="pref_ui_theme_dark_x">深色 X</string>
-    <string name="pref_ui_theme_dark">深色</string>
-    <string name="pref_ui_theme_black">黑色</string>
-    <string name="pref_ui_accent_title">強調色</string>
     <string name="pref_network_title">網路</string>
     <string name="pref_install_mode_title">安裝方式</string>
     <string name="pref_install_mode_summary">選擇 APK 安裝方式</string>
@@ -250,10 +243,7 @@
     <string name="onboarding_title_permissions">權限</string>
     <string name="onboarding_title_installer">安裝方式</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="ui_accent_2">紫紅色</string>
     <string name="download_progress">正在下載 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="ui_accent_1">藍色</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
     <string name="rate_limited">哎呀，此帳戶已達到速率限制！</string>
     <string name="search_hint">搜尋應用程式與遊戲</string>
     <string name="pref_install_mode_am">AM 安裝程式</string>
@@ -262,7 +252,6 @@
     <string name="title_advanced">進階</string>
     <string name="toast_import_success">已匯入裝置設定</string>
     <string name="toast_import_failed">無法匯入裝置設定</string>
-    <string name="ui_accent_0">系統</string>
     <string name="updates_available">有多個更新可用</string>
     <string name="error">發生錯誤！</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -289,22 +278,11 @@
     <string name="session_scrapped">最後的工作階段已被取消</string>
     <string name="session_verifying">正在驗證工作階段</string>
     <string name="session_verifying_google">正在驗證 Google 工作階段</string>
-    <string name="ui_accent_4">金色</string>
-    <string name="ui_accent_5">綠色</string>
-    <string name="ui_accent_10">橙色</string>
-    <string name="ui_accent_11">淺藍色</string>
-    <string name="ui_accent_12">Disskord 藍色</string>
-    <string name="ui_accent_13">深藍色</string>
     <string name="menu">選單</string>
     <string name="expand">展開</string>
     <string name="notification_channel_updates">更新通知</string>
-    <string name="ui_accent_6">紫色</string>
-    <string name="ui_accent_7">灰色</string>
-    <string name="ui_accent_8">粉紅色</string>
-    <string name="ui_accent_9">萊姆色</string>
     <string name="installer_shizuku_unavailable">Shizuku 未安裝或設定不正確。</string>
     <string name="session_enjoy">登入並享用。</string>
-    <string name="ui_accent_3">紅色</string>
     <string name="update_available">有更新可用</string>
     <string name="action_uninstall_confirmation">你確定要解除安裝此應用程式嗎？</string>
     <string name="pref_download_directory_error">無法寫入選擇的檔案路徑</string>

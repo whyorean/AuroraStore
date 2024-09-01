@@ -196,14 +196,6 @@
     <string name="purchase_invalid">Az app nincs megvásárolva</string>
     <string name="purchase_failed">Sikertelen letöltés</string>
     <string name="pref_ui_title">Testreszabás</string>
-    <string name="pref_ui_theme_title">Téma</string>
-    <string name="pref_ui_theme_system">Eszközbeállítás</string>
-    <string name="pref_ui_theme_light">Világos</string>
-    <string name="pref_ui_theme_darkord">Viszály</string>
-    <string name="pref_ui_theme_dark_x">Sötét X</string>
-    <string name="pref_ui_theme_dark">Sötét</string>
-    <string name="pref_ui_theme_black">Fekete</string>
-    <string name="pref_ui_accent_title">Tónus</string>
     <string name="pref_network_title">Hálózat</string>
     <string name="pref_install_mode_title">Telepítési mód</string>
     <string name="pref_install_mode_summary">APK fájlok telepítési módja</string>
@@ -251,21 +243,8 @@
     <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
     <string name="app_updater_service_notif_title">Háttérbeli alkalmazásletöltés</string>
     <string name="notification_channel_updater_service">Háttérbeli alkalmazásletöltési szolgáltatás</string>
-    <string name="ui_accent_1">Kék</string>
-    <string name="ui_accent_3">Piros</string>
-    <string name="ui_accent_4">Arany</string>
-    <string name="ui_accent_5">Zöld</string>
-    <string name="ui_accent_7">Szürke</string>
-    <string name="ui_accent_10">Narancs</string>
-    <string name="ui_accent_11">Világoskék</string>
-    <string name="ui_accent_12">Viszálykék</string>
-    <string name="ui_accent_2">Fukszia</string>
-    <string name="ui_accent_13">Mélykék</string>
     <string name="installer_am_unavailable">Telepítse az App Manager-t vagy változtassa meg a telepítőt.</string>
     <string name="pref_install_mode_am">AM telepítő</string>
-    <string name="ui_accent_6">Lila</string>
-    <string name="ui_accent_8">Rózsaszín</string>
-    <string name="ui_accent_9">Lime</string>
     <string name="onboarding_permission_notifications">Értesítések</string>
     <string name="session_enjoy">Jelentkezzen be és élvezze.</string>
     <string name="toast_import_failed">Eszközkonfiguráció importálása sikeretelen</string>
@@ -282,7 +261,6 @@
     <string name="title_search_results">Keresési eredmények</string>
     <string name="title_advanced">Haladó</string>
     <string name="toast_import_success">Eszközkonfiguráció importálva</string>
-    <string name="ui_accent_0">Rendszer</string>
     <string name="updates_available">Frissítések elérhetők</string>
     <string name="menu">Menü</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> frissítések érhetők el</string>

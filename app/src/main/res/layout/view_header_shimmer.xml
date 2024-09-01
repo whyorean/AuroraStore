@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/img_action"
-            android:background="?colorShimmer"
+            android:background="?colorControlHighlight"
             android:ellipsize="end"
             android:maxLines="1" />
 
@@ -54,6 +54,6 @@
             android:contentDescription="@string/expand"
             android:padding="@dimen/padding_xsmall"
             app:srcCompat="@drawable/ic_arrow_right"
-            app:tint="?colorShimmer" />
+            app:tint="?colorControlHighlight" />
     </RelativeLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>

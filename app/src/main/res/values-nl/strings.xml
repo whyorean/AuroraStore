@@ -80,14 +80,6 @@
     <string name="pref_ui_layout_tab">Selecteer standaard tabblad</string>
     <string name="pref_ui_layout">Lay-out</string>
     <string name="pref_ui_title">Aanpassing</string>
-    <string name="pref_ui_theme_title">Thema</string>
-    <string name="pref_ui_theme_system">Volg systeem</string>
-    <string name="pref_ui_theme_light">Licht</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_dark_x">Donker X</string>
-    <string name="pref_ui_theme_dark">Donker</string>
-    <string name="pref_ui_theme_black">Zwart</string>
-    <string name="pref_ui_accent_title">Accent</string>
     <string name="pref_network_title">Netwerken</string>
     <string name="pref_install_mode_title">Installatie methode</string>
     <string name="pref_install_mode_summary">Selecteer modus van APK installatie</string>
@@ -253,19 +245,6 @@
     <string name="title_updates">Updates</string>
     <string name="installer_am_unavailable">Installeer App Manager of verander de installatiewijze.</string>
     <string name="pref_install_mode_am">AM-installatieprogramma.</string>
-    <string name="ui_accent_1">Blauw</string>
-    <string name="ui_accent_2">Fuchsia</string>
-    <string name="ui_accent_3">Rood</string>
-    <string name="ui_accent_4">Goud</string>
-    <string name="ui_accent_5">Groen</string>
-    <string name="ui_accent_9">Limoen</string>
-    <string name="ui_accent_10">Oranje</string>
-    <string name="ui_accent_11">Lightblauw</string>
-    <string name="ui_accent_12">Disskord-blauw</string>
-    <string name="ui_accent_13">Diep blauw</string>
-    <string name="ui_accent_8">Roze</string>
-    <string name="ui_accent_6">Paars</string>
-    <string name="ui_accent_7">Grijs</string>
     <string name="action_import">Importeren</string>
     <string name="download_eta_min">nog %1$dm %2$ds</string>
     <string name="download_eta_hrs">nog %1$dh %2$dm %3$ds</string>
@@ -274,7 +253,6 @@
     <string name="session_scrapped">Laatste sessie afgebroken</string>
     <string name="session_verifying">Sessie verifiëren</string>
     <string name="session_verifying_google">Google-sessie verifiëren</string>
-    <string name="ui_accent_0">Systeem</string>
     <string name="server_maintenance">Server buiten gebruik voor werkzaamheden</string>
     <string name="download_progress">Aan het downloaden • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku is niet geïnstalleerd of niet goed ingesteld.</string>

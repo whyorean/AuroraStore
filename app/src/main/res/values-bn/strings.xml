@@ -81,12 +81,6 @@
     <string name="filter_review_one">এক</string>
     <string name="download_canceled">বাতিলকৃত</string>
     <string name="menu_disclaimer">দ্রষ্টব্য</string>
-    <string name="pref_ui_accent_title">একসেন্ট</string>
-    <string name="pref_ui_theme_black">কালো</string>
-    <string name="pref_ui_theme_dark">অন্ধকার</string>
-    <string name="pref_ui_theme_title">রঙ</string>
-    <string name="pref_ui_theme_darkord">ডিসকোর্ড</string>
-    <string name="pref_ui_theme_light">আলো</string>
     <string name="details_permission">অনুমতি</string>
     <string name="details_privacy">গোপনীয়তা</string>
     <string name="filter_review_positive">ধনাত্মক</string>

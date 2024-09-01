@@ -39,9 +39,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
-import com.aurora.extensions.accentColor
 import com.aurora.extensions.browse
-import com.aurora.extensions.contrastingColor
 import com.aurora.extensions.getString
 import com.aurora.extensions.hide
 import com.aurora.extensions.runOnUiThread
@@ -321,7 +319,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 if (it != null) {
                     binding.layoutDetailsBeta.btnBetaAction.apply {
                         isEnabled = true
-                        setTextColor(contrastingColor(requireContext().accentColor()))
                     }
                     if (it.subscribed) {
                         updateBetaActions(true)
@@ -358,8 +355,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             setOnClickListener {
                 it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
             }
-            setTextColor(contrastingColor(requireContext().accentColor()))
         }
+
         binding.layoutDetailsInstall.progressDownload.clipToOutline = true
         binding.layoutDetailsInstall.imgCancel.setOnClickListener {
             viewModel.cancelDownload(app)

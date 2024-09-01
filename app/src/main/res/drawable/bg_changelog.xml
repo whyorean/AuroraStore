@@ -20,7 +20,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="8dp" />
-    <solid android:color="@color/colorScrim" />
+    <solid android:color="?colorControlHighlight" />
     <padding
         android:bottom="@dimen/margin_medium"
         android:left="@dimen/margin_medium"

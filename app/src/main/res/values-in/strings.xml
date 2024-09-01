@@ -219,14 +219,6 @@
     <string name="pref_ui_layout_tab">Pilih tab bawaan</string>
     <string name="pref_ui_layout">Tata letak</string>
     <string name="pref_ui_title">Kostumisasi</string>
-    <string name="pref_ui_theme_title">Tema</string>
-    <string name="pref_ui_theme_system">Mengikuti Sistem</string>
-    <string name="pref_ui_theme_light">Terang</string>
-    <string name="pref_ui_theme_darkord">Discord</string>
-    <string name="pref_ui_theme_dark_x">Gelap X</string>
-    <string name="pref_ui_theme_dark">Gelap</string>
-    <string name="pref_ui_theme_black">Hitam</string>
-    <string name="pref_ui_accent_title">Aksen</string>
     <string name="pref_network_title">Jaringan</string>
     <string name="pref_install_mode_summary">Pilih mode pemasangan APK</string>
     <string name="pref_install_mode_session">Pemasang sesi</string>
@@ -253,19 +245,6 @@
     <string name="notification_channel_updater_service">Layanan unduhan aplikasi di latar belakang</string>
     <string name="pref_install_mode_am">Pemasang AM</string>
     <string name="installer_am_unavailable">Pasang App Manager atau ubah pemasang.</string>
-    <string name="ui_accent_1">Biru</string>
-    <string name="ui_accent_3">Merah</string>
-    <string name="ui_accent_4">Emas</string>
-    <string name="ui_accent_5">Hijau</string>
-    <string name="ui_accent_6">Ungu</string>
-    <string name="ui_accent_7">Abu-Abu</string>
-    <string name="ui_accent_8">Merah Muda</string>
-    <string name="ui_accent_10">Jingga</string>
-    <string name="ui_accent_11">Biru Muda</string>
-    <string name="ui_accent_12">Biru Disskord</string>
-    <string name="ui_accent_13">Biru Laut Tua</string>
-    <string name="ui_accent_2">Fuchsia</string>
-    <string name="ui_accent_9">Jeruk nipis</string>
     <string name="download_paused">Jeda • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_eta_min">%1$dm %2$dd tersisa</string>
     <string name="onboarding_permission_notifications">Notifikasi</string>
@@ -289,7 +268,6 @@
     <string name="session_verifying_google">Memverifikasi sesi Google</string>
     <string name="title_advanced">Lanjutan</string>
     <string name="update_available">Pembaruan tersedia</string>
-    <string name="ui_accent_0">Sistem</string>
     <string name="expand">Memperluas</string>
     <string name="pref_install_mode_shizuku">Pemasang Shizuku</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> pembaruan tersedia</string>
