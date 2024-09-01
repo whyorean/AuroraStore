@@ -23,34 +23,39 @@
     android:layout_height="wrap_content"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img"
-        android:layout_width="@dimen/icon_size_avatar"
-        android:layout_height="@dimen/icon_size_avatar"
-        android:layout_marginTop="@dimen/margin_xlarge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_network"
-        app:tint="?android:attr/colorControlNormal" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_warning"
-        style="@style/AuroraTextStyle.Subtitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title_no_network"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img" />
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/check_connectivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_warning" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/icon_size_avatar"
+            android:layout_height="@dimen/icon_size_avatar"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_network"
+            app:tint="?android:attr/colorControlNormal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_warning"
+            style="@style/AuroraTextStyle.Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_no_network"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_connectivity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_warning" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
