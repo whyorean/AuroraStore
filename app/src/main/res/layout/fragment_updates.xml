@@ -58,7 +58,5 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/margin_large"
         android:contentDescription="@string/action_search"
-        app:backgroundTint="?colorAccent"
-        app:srcCompat="@drawable/ic_round_search"
-        app:tint="@color/colorWhite" />
+        app:srcCompat="@drawable/ic_round_search" />
 </RelativeLayout>
