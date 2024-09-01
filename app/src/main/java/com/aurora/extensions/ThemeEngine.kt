@@ -19,27 +19,12 @@
 
 package com.aurora.extensions
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.ColorUtils
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.appcompat.app.AppCompatDelegate
 
-@Suppress("DEPRECATION")
-private fun AppCompatActivity.setSystemBarConfiguration(light: Boolean) {
-    WindowInsetsControllerCompat(this.window, this.window.decorView.rootView).apply {
-        // Status bar color
-        if (isMAndAbove()) {
-            isAppearanceLightStatusBars = light
-        } else {
-            // Add a semi-transparent black color to the status bar & navigation bar
-            window.statusBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
-            window.navigationBarColor = ColorUtils.setAlphaComponent(Color.BLACK, 120)
-        }
-
-        // Navigation bar color
-        if (isOMR1AndAbove()) {
-            isAppearanceLightNavigationBars = light
-            window.navigationBarColor = getStyledAttributeColor(android.R.attr.colorBackground)
-        }
+fun setAppTheme(themeStyle: Int) {
+    when (themeStyle) {
+        1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        2 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 }

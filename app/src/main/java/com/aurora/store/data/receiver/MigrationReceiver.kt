@@ -5,20 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.aurora.Constants
-import com.aurora.extensions.isSAndAbove
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_MIGRATION_VERSION
-import com.aurora.store.util.Preferences.PREFERENCE_THEME_ACCENT
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MigrationReceiver: BroadcastReceiver() {
+class MigrationReceiver : BroadcastReceiver() {
 
     companion object {
         private const val TAG = "MigrationReceiver"
@@ -47,7 +45,6 @@ class MigrationReceiver: BroadcastReceiver() {
             // 58 -> 59
             if (currentVersion == 0) {
                 CacheWorker.scheduleAutomatedCacheCleanup(context) // !1089
-                if (isSAndAbove()) context.save(PREFERENCE_THEME_ACCENT, 0)
                 context.save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER)) // !1117
                 if (Preferences.getInteger(context, PREFERENCE_VENDING_VERSION) == -1) {
                     context.save(PREFERENCE_VENDING_VERSION, 0) // !1049
