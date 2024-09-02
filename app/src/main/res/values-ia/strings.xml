@@ -109,7 +109,7 @@
     <string name="details_contains_ads">Contine avisos publicitari</string>
     <string name="details_paid">De pagamento</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
-    <string name="about_xda">Topico de disveloppamento</string>
+    <string name="about_xda">Foros XDA</string>
     <string name="action_filter_misc">Miscellanea</string>
     <string name="action_filter_apps_with_ads">Applicationes con publicitate</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
@@ -210,4 +210,8 @@
     <string name="action_home_screen">Adder al schermo de initio</string>
     <string name="pref_updates_incompatible">Actualisationes incompatibile</string>
     <string name="pref_updates_auto_install">Verificar e installar actualisationes disponibile automaticamente</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="add">Adder</string>
+    <string name="remove">Remover</string>
+    <string name="session_login">Initia session con tu conto de Google Play</string>
 </resources>
