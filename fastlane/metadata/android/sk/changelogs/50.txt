@@ -1,4 +1,4 @@
-• Prepnutie na systémový motív z tmavého motívu aktualizuje používateľské rozhranie správne
+• Prepnutie na systémový motív z tmavého motívu správne aktualizované používateľské rozhranie
 • Dialógové okná na domovskej obrazovke už neskrývajú určité zobrazenia
 • Otvorením odkazu Google Play teraz zaistíte, že je prítomný platný a funkčný účet
 • Zásuvku navigácie je možné otvoriť iba na hlavnej obrazovke

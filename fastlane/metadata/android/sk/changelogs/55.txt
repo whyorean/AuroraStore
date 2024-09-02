@@ -1,5 +1,5 @@
 • Veľké interné zmeny v systéme sťahovania
-• Aurora Store teraz vyžaduje nové povolenie na sťahovanie na pozadí
+• Aurora obchod teraz vyžaduje nové povolenie na sťahovanie na pozadí
 • Funkcie pozastavenia a obnovenia boli pre sťahovanie zastarané
 • Súbežné sťahovanie bolo zastarané (obmedzené na jedno sťahovanie naraz)
 • Automatické overenie SHA256 a SHA1 pre stiahnuté súbory

@@ -1,0 +1,8 @@
+• Android 15
+• Wechsel zu Web-APIs für den anonymen Modus (bessere Leistung, mehr Anonymität)
+• Unterstützung für den Datensicherheitsbereich auf der App-Detailseite
+• Festlegen des unsicheren anonymen Modus als anonymen Standardmodus
+• Neue Funktion zum Hinzufügen von Favoriten-Apps zur Import-/Export-Liste
+• Implementierung von Material You für die übrigen Komponenten mit wichtigen UI- und UX-Verbesserungen
+• Mehrere Fehlerbehebungen und Leistungsverbesserungen
+• Übersetzungsaktualisierungen

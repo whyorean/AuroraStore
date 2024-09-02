@@ -1,4 +1,4 @@
-• Zielvorgabe Android 13
+• Android 13
 • Die Lokalisierung mehrerer Zeichenfolgen aktiviert
 • Monochromes Symbol für Android 13 hinzugefügt
 • Abhängigkeiten auf die neueste Version aktualisiert
