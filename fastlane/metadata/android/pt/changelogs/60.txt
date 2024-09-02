@@ -1,2 +1,2 @@
-• Um bug foi corrigido onde o instalador de sessão travava em versões antigas do Android
+• Corrigido um erro que fazia com que o SessionInstaller falhasse em versões antigas do Android
 • Atualizações nas traduções

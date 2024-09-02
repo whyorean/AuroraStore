@@ -2,5 +2,5 @@
 - Várias melhorias na IU/UX e correções de erros
 - Nova funcionalidade de limpeza automática da cache para remover descarregamentos antigos
 - A definição da cor de destaque foi retirada para dispositivos Android 12+
-- SessionInstaller: capacidade de definir a Aurora Store como proprietária do dispositivo utilizando ADB (créditos: @s1204IT)
+- SessionInstaller: capacidade de definir a Aurora Store como proprietária do dispositivo e instalar silenciosamente (créditos: @s1204IT)
 - SessionInstaller: suporte a fila de instalação
