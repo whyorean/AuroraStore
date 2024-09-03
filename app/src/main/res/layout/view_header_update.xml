@@ -41,10 +41,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_action"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:text="@string/action_update_all"
-        android:textAppearance="@style/TextAppearance.Aurora.Line1" />
+        android:ellipsize="end"
+        android:text="@string/action_update_all" />
 </RelativeLayout>

@@ -42,8 +42,7 @@
         app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"
         app:tabPaddingEnd="@dimen/padding_normal"
-        app:tabPaddingStart="@dimen/padding_normal"
-        app:tabTextAppearance="@style/TextAppearance.Aurora.Tab.Title" />
+        app:tabPaddingStart="@dimen/padding_normal" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"

@@ -111,8 +111,8 @@
 
     <com.aurora.store.view.custom.layouts.button.UpdateButton
         android:id="@+id/btn_action"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_button"
         android:layout_alignTop="@id/txt_line1"
         android:layout_alignParentEnd="true"
         android:gravity="center" />
