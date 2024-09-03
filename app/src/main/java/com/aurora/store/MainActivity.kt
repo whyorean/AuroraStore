@@ -24,6 +24,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -35,13 +36,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.NetworkStatus
-import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.AppUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
+import com.aurora.store.viewmodel.network.NetworkViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var appUtil: AppUtil
+
+    private val networkViewModel: NetworkViewModel by viewModels()
 
     private lateinit var B: ActivityMainBinding
 
@@ -90,29 +93,30 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        this.lifecycleScope.launch {
-            NetworkProvider(applicationContext).networkStatus.collect {
-                when (it) {
-                    NetworkStatus.AVAILABLE -> {
-                        if (!supportFragmentManager.isDestroyed && isIntroDone()) {
-                            val fragment = supportFragmentManager
-                                .findFragmentByTag(NetworkDialogSheet.TAG)
-                            fragment?.let {
-                                supportFragmentManager.beginTransaction()
-                                    .remove(fragment)
-                                    .commitAllowingStateLoss()
-                            }
-                        }
-                    }
-
-                    NetworkStatus.LOST -> {
-                        if (!supportFragmentManager.isDestroyed && isIntroDone()) {
+        networkViewModel.register()
+        networkViewModel.status.observe(this) { networkStatus ->
+            when (networkStatus) {
+                NetworkStatus.AVAILABLE -> {
+                    if (!supportFragmentManager.isDestroyed && isIntroDone()) {
+                        val fragment = supportFragmentManager
+                            .findFragmentByTag(NetworkDialogSheet.TAG)
+                        fragment?.let {
                             supportFragmentManager.beginTransaction()
-                                .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                                .remove(fragment)
                                 .commitAllowingStateLoss()
                         }
                     }
                 }
+
+                NetworkStatus.LOST -> {
+                    if (!supportFragmentManager.isDestroyed && isIntroDone()) {
+                        supportFragmentManager.beginTransaction()
+                            .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
+                            .commitAllowingStateLoss()
+                    }
+                }
+
+                else -> {}
             }
         }
 
@@ -174,6 +178,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        networkViewModel.unregister()
+        super.onDestroy()
     }
 
     private fun isIntroDone(): Boolean {

@@ -17,49 +17,47 @@
  *
  */
 
-package com.aurora.store.data.providers
+package com.aurora.store.viewmodel.network
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.aurora.extensions.isMAndAbove
-import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.NetworkStatus
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.launchIn
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class NetworkProvider(context: Context) {
-
-    private val TAG = NetworkProvider::class.java.simpleName
-
-    private val _networkStatus = MutableStateFlow(NetworkStatus.AVAILABLE)
-    val networkStatus = _networkStatus.asStateFlow()
+@HiltViewModel
+class NetworkViewModel @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ViewModel() {
+    val status: MutableLiveData<NetworkStatus> = MutableLiveData(NetworkStatus.UNAVAILABLE)
 
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private val networkCallback = object : ConnectivityManager.NetworkCallback() {
+        override fun onAvailable(network: Network) {
+            super.onAvailable(network)
+            status.postValue(NetworkStatus.AVAILABLE)
+        }
 
-    init {
-        networkStatus.launchIn(AuroraApp.scope)
+        override fun onLost(network: Network) {
+            super.onLost(network)
+            status.postValue(NetworkStatus.LOST)
+        }
+    }
 
-        // Monitor network
-        connectivityManager.registerNetworkCallback(getNetworkRequest(),
-            object : ConnectivityManager.NetworkCallback() {
-                override fun onAvailable(network: Network) {
-                    super.onAvailable(network)
-                    Log.d(TAG, "Network available!")
-                    _networkStatus.value = NetworkStatus.AVAILABLE
-                }
+    fun register() {
+        connectivityManager.registerNetworkCallback(getNetworkRequest(), networkCallback)
+    }
 
-                override fun onLost(network: Network) {
-                    super.onLost(network)
-                    Log.d(TAG, "Network unavailable!")
-                    _networkStatus.value = NetworkStatus.LOST
-                }
-            })
+    fun unregister() {
+        connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 
     private fun getNetworkRequest(): NetworkRequest {
@@ -69,6 +67,7 @@ class NetworkProvider(context: Context) {
         if (isMAndAbove()) {
             networkRequest.addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
         }
-        return  networkRequest.build()
+
+        return networkRequest.build()
     }
 }
