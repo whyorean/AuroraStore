@@ -49,7 +49,8 @@
             android:layout_marginTop="@dimen/margin_xsmall"
             android:layout_marginBottom="@dimen/margin_xsmall"
             android:text="@string/action_install"
-            app:btnActionText="@string/action_install" />
+            app:btnActionText="@string/action_install"
+            app:btnActionTextColor="?colorOnPrimary" />
 
         <RelativeLayout
             android:id="@+id/progress_layout"
@@ -69,6 +70,9 @@
                 android:layout_toStartOf="@id/img_cancel"
                 android:background="@drawable/bg_rounded_transparent"
                 android:indeterminate="true"
+                android:indeterminateTint="?colorOnPrimary"
+                app:indicatorColor="?colorControlHighlight"
+                app:trackColor="?colorAccent"
                 app:trackThickness="@dimen/icon_size_small" />
 
             <LinearLayout
@@ -90,7 +94,7 @@
                     android:text="0%"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.Aurora.Title"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="?colorOnPrimary"
                     android:textSize="32sp" />
 
                 <LinearLayout
@@ -106,7 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/download_speed_estimating"
-                        android:textColor="@color/colorWhite" />
+                        android:textColor="?colorOnPrimary" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/txt_eta"
@@ -114,7 +118,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/download_eta_calculating"
-                        android:textColor="@color/colorWhite" />
+                        android:textColor="?colorOnPrimary" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -149,7 +153,8 @@
             android:layout_height="wrap_content"
             android:alpha=".75"
             android:text="@string/purchase_failed"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="?colorOnPrimary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_purchase_error"
@@ -157,7 +162,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@color/colorWhite"
+            android:textColor="?colorOnPrimary"
             tools:text="@string/purchase_invalid" />
     </LinearLayout>
 </LinearLayout>
