@@ -45,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/divider"
+            android:layout_marginTop="5dp"
             android:paddingTop="@dimen/padding_normal"
             tools:listitem="@layout/view_app_list" />
     </RelativeLayout>
@@ -57,6 +58,5 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/action_filter"
-        app:iconPadding="@dimen/padding_small"
         app:icon="@drawable/ic_filter" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
