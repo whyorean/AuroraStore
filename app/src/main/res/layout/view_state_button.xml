@@ -27,7 +27,7 @@
         android:id="@+id/btn"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_button"
         android:layout_centerHorizontal="true"
         android:textAlignment="viewStart"
         android:textColor="?colorControlNormal"

@@ -19,124 +19,108 @@
 
 <resources>
     <!-- Title Styles -->
-
     <style name="AuroraTextStyle" parent="Widget.AppCompat.TextView">
         <item name="autoSizeTextType">uniform</item>
         <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
         <item name="autoSizeStepGranularity">1sp</item>
         <item name="autoSizePresetSizes">@array/auto_size_text_sizes</item>
     </style>
 
-    <style name="AuroraTextStyle.Rating" parent="AuroraTextStyle">
+    <style name="AuroraTextStyle.Rating" parent="@style/AuroraTextStyle">
         <item name="autoSizeMinTextSize">24sp</item>
+        <item name="autoSizeMaxTextSize">48sp</item>
         <item name="autoSizeStepGranularity">1sp</item>
         <item name="autoSizePresetSizes">@array/auto_size_text_sizes_large</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Title.Rating</item>
     </style>
 
-    <style name="AuroraTextStyle.Title" parent="AuroraTextStyle">
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-        <item name="autoSizeMaxTextSize">20sp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Title</item>
-    </style>
-
-    <style name="AuroraTextStyle.Title.Primary" parent="AuroraTextStyle.Title">
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Title.Primary</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.Title" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:letterSpacing">0.05</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.Title.Rating" parent="TextAppearance.Aurora.Title.Primary">
-        <item name="android:textSize">48sp</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.Title.Primary" parent="TextAppearance.Aurora.Title">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="textAllCaps">true</item>
-    </style>
-
     <!--  Subtitle Styles  -->
-
-    <style name="AuroraTextStyle.Subtitle" parent="AuroraTextStyle">
+    <style name="AuroraTextStyle.Subtitle" parent="@style/AuroraTextStyle">
         <item name="autoSizeMaxTextSize">16sp</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.SubTitle</item>
     </style>
 
-    <style name="AuroraTextStyle.Subtitle.Alt" parent="AuroraTextStyle">
+    <style name="AuroraTextStyle.Subtitle.Alt" parent="@style/AuroraTextStyle">
         <item name="autoSizeMaxTextSize">18sp</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.SubTitle.Alt</item>
     </style>
 
-    <style name="AuroraTextStyle.Subtitle.Secondary" parent="AuroraTextStyle">
-        <item name="autoSizeMaxTextSize">16sp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.SubTitle" parent="TextAppearance.Aurora.Title">
-        <item name="android:letterSpacing">0.025</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.SubTitle.Alt" parent="TextAppearance.Aurora.Title">
-        <item name="android:letterSpacing">0.005</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
     <!-- Line Styles -->
-    <style name="AuroraTextStyle.Line1" parent="AuroraTextStyle">
+    <style name="AuroraTextStyle.Line1" parent="@style/AuroraTextStyle">
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
-        <item name="autoSizeMaxTextSize">14sp</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
     </style>
 
-    <style name="AuroraTextStyle.Line2" parent="AuroraTextStyle.Line1">
+    <style name="AuroraTextStyle.Line2" parent="@style/AuroraTextStyle.Line1">
         <item name="autoSizeMaxTextSize">12sp</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
     </style>
 
-    <style name="AuroraTextStyle.Line3" parent="AuroraTextStyle.Line1">
+    <style name="AuroraTextStyle.Line3" parent="@style/AuroraTextStyle.Line1">
         <item name="autoSizeMaxTextSize">10sp</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Line3</item>
     </style>
 
-    <style name="TextAppearance.Aurora.Line1" parent="TextAppearance.AppCompat.Medium">
+    <!-- Title Appearances -->
+    <style name="TextAppearance.Base" parent="TextAppearance.AppCompat.Medium">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+        <item name="autoSizePresetSizes">@array/auto_size_text_sizes</item>
+
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Title" parent="@style/TextAppearance.Base">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Title.Primary" parent="@style/TextAppearance.Aurora.Title">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.Title.Rating" parent="@style/TextAppearance.Aurora.Title.Primary">
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <!-- Subtitle Appearances -->
+    <style name="TextAppearance.Aurora.SubTitle" parent="@style/TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.025</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Aurora.SubTitle.Alt" parent="@style/TextAppearance.Aurora.Title">
+        <item name="android:letterSpacing">0.005</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Line Appearances -->
+    <style name="TextAppearance.Aurora.Line1" parent="@style/TextAppearance.Base">
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
-    <style name="TextAppearance.Aurora.Line2" parent="TextAppearance.Aurora.Line1">
+    <style name="TextAppearance.Aurora.Line2" parent="@style/TextAppearance.Aurora.Line1">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
-    <style name="TextAppearance.Aurora.Line3" parent="TextAppearance.Aurora.Line2">
+    <style name="TextAppearance.Aurora.Line3" parent="@style/TextAppearance.Aurora.Line2">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">?android:attr/textColorTertiary</item>
     </style>
 
+    <!-- Tab Appearances -->
     <style name="TextAppearance.Aurora.Tab" parent="Widget.AppCompat.Light.ActionBar.TabText">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.Tab.Title" parent="TextAppearance.Aurora.Tab">
-        <item name="android:letterSpacing">0.075</item>
-        <item name="textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextAppearance.Aurora.Chip" parent="TextAppearance.Aurora.SubTitle">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

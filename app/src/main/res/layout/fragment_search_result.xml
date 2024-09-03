@@ -57,7 +57,6 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/action_filter"
-        android:textAppearance="@style/TextAppearance.Aurora.SubTitle.Alt"
         app:iconPadding="@dimen/padding_small"
         app:icon="@drawable/ic_filter" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
