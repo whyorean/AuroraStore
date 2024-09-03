@@ -280,7 +280,6 @@
     <string name="privacy_policy_subtitle">Sužinokite, kaip Auror Store naudoja jūsų duomenis</string>
     <string name="toast_app_unavailable">Programėlė neprieinama jūsų įrenginiui</string>
     <string name="verifying_new_session">Tikrinamas naujas seansas</string>
-    <string name="update_available"></string>
     <string name="action_manage">Tvarkyti</string>
     <string name="manual_download_hint">Įveskite versijos, kurią norite atsisiųsti, kodą</string>
     <string name="details_data_safety_title">Duomenų saugumas</string>
