@@ -14,118 +14,109 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 package com.aurora.store.data.providers
 
 import android.opengl.GLES10
 import android.text.TextUtils
-import java.util.Collections
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.egl.EGLContext
 import javax.microedition.khronos.egl.EGLDisplay
 
 object EglExtensionProvider {
+
     @JvmStatic
     val eglExtensions: List<String>
         get() {
-            val glExtensions: MutableSet<String> = HashSet()
-            val egl10 = EGLContext.getEGL() as EGL10
-            val display = egl10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY)
-            egl10.eglInitialize(display, IntArray(2))
-            val cf = IntArray(1)
-            if (egl10.eglGetConfigs(display, null, 0, cf)) {
-                val configs = arrayOfNulls<EGLConfig>(cf[0])
-                if (egl10.eglGetConfigs(display, configs, cf[0], cf)) {
-                    val a1 = intArrayOf(
-                        EGL10.EGL_WIDTH,
-                        EGL10.EGL_PBUFFER_BIT,
-                        EGL10.EGL_HEIGHT,
-                        EGL10.EGL_PBUFFER_BIT,
+            val extensions = mutableSetOf<String>()
+            val egl = EGLContext.getEGL() as EGL10
+            val display = egl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY)
+
+            egl.eglInitialize(display, null)
+            val configCount = IntArray(1)
+
+            if (egl.eglGetConfigs(display, null, 0, configCount)) {
+                val configs = arrayOfNulls<EGLConfig>(configCount[0])
+                if (egl.eglGetConfigs(display, configs, configCount[0], configCount)) {
+                    val pbufferAttribs = intArrayOf(
+                        EGL10.EGL_WIDTH, EGL10.EGL_PBUFFER_BIT,
+                        EGL10.EGL_HEIGHT, EGL10.EGL_PBUFFER_BIT,
                         EGL10.EGL_NONE
                     )
-                    val a2 = intArrayOf(12440, EGL10.EGL_PIXMAP_BIT, EGL10.EGL_NONE)
-                    val a3 = IntArray(1)
-                    for (i in 0 until cf[0]) {
-                        egl10.eglGetConfigAttrib(display, configs[i], EGL10.EGL_CONFIG_CAVEAT, a3)
-                        if (a3[0] != EGL10.EGL_SLOW_CONFIG) {
-                            egl10.eglGetConfigAttrib(
+                    val contextAttributes = intArrayOf(12440, EGL10.EGL_PIXMAP_BIT, EGL10.EGL_NONE)
+
+                    for (config in configs) {
+                        if (isValidConfig(egl, display, config)) {
+                            addExtensionsForConfig(
+                                egl,
                                 display,
-                                configs[i],
-                                EGL10.EGL_SURFACE_TYPE,
-                                a3
+                                config,
+                                pbufferAttribs,
+                                null,
+                                extensions
                             )
-                            if (1 and a3[0] != 0) {
-                                egl10.eglGetConfigAttrib(
-                                    display,
-                                    configs[i],
-                                    EGL10.EGL_RENDERABLE_TYPE,
-                                    a3
-                                )
-                                if (1 and a3[0] != 0) {
-                                    addExtensionsForConfig(
-                                        egl10,
-                                        display,
-                                        configs[i],
-                                        a1,
-                                        null,
-                                        glExtensions
-                                    )
-                                }
-                                if (4 and a3[0] != 0) {
-                                    addExtensionsForConfig(
-                                        egl10,
-                                        display,
-                                        configs[i],
-                                        a1,
-                                        a2,
-                                        glExtensions
-                                    )
-                                }
-                            }
+                            addExtensionsForConfig(
+                                egl,
+                                display,
+                                config,
+                                pbufferAttribs,
+                                contextAttributes,
+                                extensions
+                            )
                         }
                     }
                 }
             }
-            egl10.eglTerminate(display)
-            val sorted: List<String> = ArrayList(glExtensions)
-            Collections.sort(sorted)
-            return sorted
+
+            egl.eglTerminate(display)
+            return extensions.sorted()
         }
 
+    private fun isValidConfig(egl: EGL10, display: EGLDisplay, config: EGLConfig?): Boolean {
+        val configAttrib = IntArray(1)
+        egl.eglGetConfigAttrib(display, config, EGL10.EGL_CONFIG_CAVEAT, configAttrib)
+        if (configAttrib[0] == EGL10.EGL_SLOW_CONFIG) return false
+
+        egl.eglGetConfigAttrib(display, config, EGL10.EGL_SURFACE_TYPE, configAttrib)
+        if (configAttrib[0] and 1 == 0) return false
+
+        egl.eglGetConfigAttrib(display, config, EGL10.EGL_RENDERABLE_TYPE, configAttrib)
+        return configAttrib[0] and 1 != 0
+    }
+
     private fun addExtensionsForConfig(
-        egl10: EGL10,
-        eglDisplay: EGLDisplay,
-        eglConfig: EGLConfig?,
-        ai: IntArray,
-        ai1: IntArray?,
-        set: MutableSet<String>
+        egl: EGL10,
+        display: EGLDisplay,
+        config: EGLConfig?,
+        pbufferAttribs: IntArray,
+        contextAttribs: IntArray?,
+        extensions: MutableSet<String>
     ) {
-        val eglContext = egl10.eglCreateContext(eglDisplay, eglConfig, EGL10.EGL_NO_CONTEXT, ai1)
-        if (eglContext === EGL10.EGL_NO_CONTEXT) {
+        val context = egl.eglCreateContext(display, config, EGL10.EGL_NO_CONTEXT, contextAttribs)
+        if (context == EGL10.EGL_NO_CONTEXT) return
+
+        val surface = egl.eglCreatePbufferSurface(display, config, pbufferAttribs)
+        if (surface == EGL10.EGL_NO_SURFACE) {
+            egl.eglDestroyContext(display, context)
             return
         }
-        val eglSurface = egl10.eglCreatePbufferSurface(eglDisplay, eglConfig, ai)
-        if (eglSurface === EGL10.EGL_NO_SURFACE) {
-            egl10.eglDestroyContext(eglDisplay, eglContext)
-        } else {
-            egl10.eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext)
-            val s = GLES10.glGetString(7939)
-            if (!TextUtils.isEmpty(s)) {
-                val `as` = s.split(" ".toRegex()).toTypedArray()
-                val i = `as`.size
-                set.addAll(listOf(*`as`).subList(0, i))
-            }
-            egl10.eglMakeCurrent(
-                eglDisplay,
-                EGL10.EGL_NO_SURFACE,
-                EGL10.EGL_NO_SURFACE,
-                EGL10.EGL_NO_CONTEXT
-            )
-            egl10.eglDestroySurface(eglDisplay, eglSurface)
-            egl10.eglDestroyContext(eglDisplay, eglContext)
+
+        egl.eglMakeCurrent(display, surface, surface, context)
+        val extensionString = GLES10.glGetString(GLES10.GL_EXTENSIONS)
+
+        if (!TextUtils.isEmpty(extensionString)) {
+            extensions.addAll(extensionString.split(" "))
         }
+
+        egl.eglMakeCurrent(
+            display,
+            EGL10.EGL_NO_SURFACE,
+            EGL10.EGL_NO_SURFACE,
+            EGL10.EGL_NO_CONTEXT
+        )
+        egl.eglDestroySurface(display, surface)
+        egl.eglDestroyContext(display, context)
     }
 }
