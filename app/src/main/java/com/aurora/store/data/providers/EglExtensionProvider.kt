@@ -71,7 +71,10 @@ object EglExtensionProvider {
             }
 
             egl.eglTerminate(display)
-            return extensions.sorted()
+
+            return extensions
+                .filter { it.isNotEmpty() }
+                .sorted()
         }
 
     private fun isValidConfig(egl: EGL10, display: EGLDisplay, config: EGLConfig?): Boolean {
