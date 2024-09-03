@@ -43,6 +43,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastForEach
@@ -112,10 +113,7 @@ class MoreDialogFragment : DialogFragment() {
                             Alignment.CenterVertically
                         )
                     ) {
-                        AppBar(
-                            backgroundColor = primaryColor,
-                            onBackgroundColor = onPrimaryColor
-                        )
+                        AppBar(onBackgroundColor = onPrimaryColor)
                         AccountHeader(
                             backgroundColor = secondaryColor,
                             onBackgroundColor = onSecondaryColor
@@ -155,7 +153,7 @@ class MoreDialogFragment : DialogFragment() {
     }
 
     @Composable
-    fun AppBar(backgroundColor: Color = Color.Transparent, onBackgroundColor: Color) {
+    fun AppBar(onBackgroundColor: Color) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -194,7 +192,10 @@ class MoreDialogFragment : DialogFragment() {
                 Text(
                     text = stringResource(id = R.string.privacy_policy_title),
                     fontWeight = FontWeight.Light,
-                    color = tintColor
+                    color = tintColor,
+                    fontSize = 12.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
             Text(text = "•", color = tintColor)
@@ -202,7 +203,10 @@ class MoreDialogFragment : DialogFragment() {
                 Text(
                     text = stringResource(id = R.string.menu_terms),
                     fontWeight = FontWeight.Light,
-                    color = tintColor
+                    color = tintColor,
+                    fontSize = 12.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
@@ -234,7 +238,13 @@ class MoreDialogFragment : DialogFragment() {
             ) {
                 SubcomposeAsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(if (authProvider.isAnonymous) R.mipmap.ic_launcher else authProvider.authData?.userProfile?.artwork?.url)
+                        .data(
+                            if (authProvider.isAnonymous) {
+                                R.mipmap.ic_launcher
+                            } else {
+                                authProvider.authData?.userProfile?.artwork?.url
+                            }
+                        )
                         .placeholder(R.drawable.ic_account)
                         .crossfade(true)
                         .build(),
@@ -249,16 +259,28 @@ class MoreDialogFragment : DialogFragment() {
                     horizontalAlignment = Alignment.Start
                 ) {
                     Text(
-                        text = if (authProvider.isAnonymous) "Anonymous" else authProvider.authData!!.userProfile!!.name,
+                        text = if (authProvider.isAnonymous) {
+                            "Anonymous"
+                        } else {
+                            authProvider.authData!!.userProfile!!.name
+                        },
                         fontWeight = FontWeight.Normal,
-                        fontSize = 16.sp,
-                        color = onBackgroundColor
+                        color = onBackgroundColor,
+                        fontSize = 15.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                     Text(
-                        text = if (authProvider.isAnonymous) "anonymous@gmail.com" else authProvider.authData!!.userProfile!!.email,
+                        text = if (authProvider.isAnonymous) {
+                            "anonymous@gmail.com"
+                        } else {
+                            authProvider.authData!!.userProfile!!.email
+                        },
                         fontWeight = FontWeight.Light,
+                        color = onBackgroundColor,
                         fontSize = 14.sp,
-                        color = onBackgroundColor
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }
@@ -274,7 +296,9 @@ class MoreDialogFragment : DialogFragment() {
                 Text(
                     text = stringResource(id = R.string.manage_account),
                     color = onBackgroundColor,
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.Normal,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         }
@@ -306,7 +330,9 @@ class MoreDialogFragment : DialogFragment() {
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = option.title),
                 color = textColor,
-                fontSize = 15.sp,
+                fontSize = 14.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
