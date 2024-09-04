@@ -1,0 +1,8 @@
+• Feito para o Android 15
+• Mudar para APIs Web para o modo anônimo (performance melhor, mais anônimo)
+• Suporte para seção de segurança de dados na página do app
+• Configurar modo anônimo inseguro como o modo padrão
+• Nova função para adicionar apps favoritos à lista importável/exportável
+• Implementar Material You no restante dos componentes com melhoras significativas de UI e UX
+• Várias correções de bug e melhorias na performance
+• Traduções atualizados
