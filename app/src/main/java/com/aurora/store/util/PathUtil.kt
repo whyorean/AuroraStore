@@ -72,7 +72,7 @@ object PathUtil {
         val downloadDir = if (!sharedLibPackageName.isNullOrBlank()) {
             getLibDownloadDir(context, packageName, versionCode, sharedLibPackageName)
         } else {
-            File(getPackageDirectory(context, packageName), versionCode.toString())
+            getAppDownloadDir(context, packageName, versionCode)
         }
         return File(downloadDir, file.name)
     }
