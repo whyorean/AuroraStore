@@ -154,6 +154,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Archive Patcher
+    implementation(libs.eidu.archive.patcher.android)
+
     //Coil
     implementation(libs.coil.kt)
     implementation(libs.coil.compose)
@@ -172,7 +175,8 @@ dependencies {
     implementation(libs.github.topjohnwu.libsu)
 
     //GPlayApi
-    implementation(libs.auroraoss.gplayapi)
+    implementation(libs.gitlab.auroraoss.gplayapi)
+//    implementation(libs.auroraoss.gplayapi)
 
     //Shizuku
     compileOnly(libs.rikka.hidden.stub)

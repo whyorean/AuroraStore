@@ -1,6 +1,7 @@
 [versions]
 activityCompose = "1.9.1"
 androidGradlePlugin = "8.6.0"
+archivePatcherAndroid = "2.0.1"
 browserVersion = "1.8.0"
 coilVersion = "2.7.0"
 composeBom = "2024.08.00"
@@ -8,6 +9,7 @@ coreVersion = "1.13.1"
 epoxyVersion = "5.1.4"
 espressoVersion = "3.6.1"
 gplayapiVersion = "3.4.1"
+gplayApiSnapshot = "dev-SNAPSHOT"
 gsonVersion = "2.11.0"
 hiddenapibypassVersion = "4.3"
 hiltVersion = "2.52"
@@ -65,7 +67,9 @@ androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version
 auroraoss-gplayapi = { module = "com.auroraoss:gplayapi", version.ref = "gplayapiVersion" }
 coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
+eidu-archive-patcher-android = { module = "com.eidu:archive-patcher-android", version.ref = "archivePatcherAndroid" }
 facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmerVersion" }
+gitlab-auroraoss-gplayapi = { module = "com.gitlab.AuroraOSS:gplayapi", version.ref = "gplayApiSnapshot" }
 github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.ref = "libsu" }
 google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gsonVersion" }

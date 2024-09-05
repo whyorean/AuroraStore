@@ -7,6 +7,7 @@ import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
@@ -32,6 +33,7 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
@@ -230,11 +232,15 @@ class DownloadWorker @AssistedInject constructor(
     private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
         // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
         return if (isPAndAbove() && download.isInstalled) {
+            val packageInfo = PackageUtil.getPackageInfo(appContext, download.packageName)
+            val certHashes = CertUtil.getEncodedCertificateHashes(appContext, download.packageName)
+
             purchaseHelper.purchase(
-                packageName,
-                versionCode,
-                offerType,
-                CertUtil.getEncodedCertificateHashes(appContext, download.packageName).last()
+                packageName = packageName,
+                versionCode = versionCode,
+                offerType = offerType,
+                certificateHash = certHashes.last(),
+                installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo).toInt()
             )
         } else {
             purchaseHelper.purchase(packageName, versionCode, offerType)
