@@ -43,18 +43,17 @@ object HttpClient {
         val proxyEnabled = Preferences.getBoolean(context, Preferences.PREFERENCE_PROXY_ENABLED)
         val proxyInfoString = Preferences.getString(context, Preferences.PREFERENCE_PROXY_INFO)
 
-        return if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
+        val okHttpClient = OkHttpClient.builder(context)
+        if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
             val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
-
             if (proxyInfo != null) {
                 OkHttpClient.setProxy(proxyInfo)
             } else {
                 Log.e(TAG, "Proxy info is unavailable, using default client")
-                OkHttpClient
             }
         } else {
             Log.i(TAG, "Proxy is disabled")
-            OkHttpClient
         }
+        return okHttpClient.build()
     }
 }

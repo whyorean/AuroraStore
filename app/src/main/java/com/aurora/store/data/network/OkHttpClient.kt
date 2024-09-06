@@ -19,10 +19,12 @@
 
 package com.aurora.store.data.network
 
+import android.content.Context
 import android.util.Log
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.ProxyInfo
+import com.aurora.store.util.CertUtil
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -47,7 +49,7 @@ object OkHttpClient : IProxyHttpClient {
     override val responseCode: StateFlow<Int>
         get() = _responseCode.asStateFlow()
 
-    private var okHttpClient = OkHttpClient()
+    private lateinit var okHttpClient: okhttp3.OkHttpClient
     private val okHttpClientBuilder = OkHttpClient().newBuilder()
         .connectTimeout(25, TimeUnit.SECONDS)
         .readTimeout(25, TimeUnit.SECONDS)
@@ -55,6 +57,16 @@ object OkHttpClient : IProxyHttpClient {
         .retryOnConnectionFailure(true)
         .followRedirects(true)
         .followSslRedirects(true)
+
+    fun builder(context: Context): OkHttpClient {
+        setupSSLPinning(context)
+        return this
+    }
+
+    fun build(): OkHttpClient {
+        okHttpClient = okHttpClientBuilder.build()
+        return this
+    }
 
     override fun setProxy(proxyInfo: ProxyInfo): OkHttpClient {
         val proxy = Proxy(
@@ -80,8 +92,20 @@ object OkHttpClient : IProxyHttpClient {
         }
 
         okHttpClientBuilder.proxy(proxy)
-        okHttpClient = okHttpClientBuilder.build()
         return this
+    }
+
+    private fun setupSSLPinning(context: Context) {
+        // Google needs special handling, see: https://pki.goog/faq/#faq-27
+        val googleRootCerts = CertUtil.getGoogleRootCertHashes(context).map { "sha256/$it" }
+            .toTypedArray()
+
+        val certificatePinner = CertificatePinner.Builder()
+            .add("*.googleapis.com", *googleRootCerts)
+            .add("*.google.com", *googleRootCerts)
+            .build()
+
+        okHttpClientBuilder.certificatePinner(certificatePinner)
     }
 
     @Throws(IOException::class)

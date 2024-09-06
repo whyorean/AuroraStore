@@ -27,8 +27,13 @@ import android.util.Log
 import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isPAndAbove
+import com.aurora.store.R
+import com.aurora.store.data.model.Algorithm
 import com.aurora.store.util.PackageUtil.getPackageInfo
+import java.io.ByteArrayInputStream
+import java.io.InputStream
 import java.security.MessageDigest
+import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
 
 object CertUtil {
@@ -52,12 +57,26 @@ object CertUtil {
         return try {
             val certificates = getX509Certificates(context, packageName)
             certificates.map {
-                val messageDigest = MessageDigest.getInstance("SHA")
+                val messageDigest = MessageDigest.getInstance(Algorithm.SHA.value)
                 messageDigest.update(it.encoded)
                 Base64.encodeToString(
                     messageDigest.digest(),
                     Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
                 )
+            }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
+            emptyList()
+        }
+    }
+
+    fun getGoogleRootCertHashes(context: Context): List<String> {
+        return try {
+            val certs = getX509Certificates(context.resources.openRawResource(R.raw.google_roots_ca))
+            certs.map {
+                val messageDigest = MessageDigest.getInstance(Algorithm.SHA256.value)
+                messageDigest.update(it.publicKey.encoded)
+                Base64.encodeToString(messageDigest.digest(), Base64.NO_WRAP)
             }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
@@ -86,6 +105,24 @@ object CertUtil {
         return fdroidPackages.contains(
             context.packageManager.getInstallerPackageNameCompat(packageName)
         )
+    }
+
+    private fun getX509Certificates(inputStream: InputStream): List<X509Certificate> {
+        val certificateFactory = CertificateFactory.getInstance("X509")
+        val rawCerts = inputStream
+            .bufferedReader()
+            .use { it.readText() }
+            .split("-----END CERTIFICATE-----")
+            .map {
+                it.substringAfter("-----BEGIN CERTIFICATE-----")
+                    .substringBefore("-----END CERTIFICATE-----")
+                    .replace("\n", "")
+            }
+            .filterNot { it.isBlank() }
+        val decodedCerts = rawCerts.map { Base64.decode(it, Base64.DEFAULT) }
+        return decodedCerts.map {
+            certificateFactory.generateCertificate(ByteArrayInputStream(it)) as X509Certificate
+        }
     }
 
     private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> {
