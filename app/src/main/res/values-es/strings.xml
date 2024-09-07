@@ -9,7 +9,7 @@
     <string name="toast_anonymous_restriction">No disponible en cuentas anónimas</string>
     <string name="toast_abandon_sessions">Instalación de sesiones antiguas abandonadas</string>
     <string name="title_updates">Actualizaciones</string>
-    <string name="title_spoof_manager">Gestor de suplantación de dispositivo</string>
+    <string name="title_spoof_manager">Gestor del simulador de dispositivo</string>
     <string name="title_settings">Ajustes</string>
     <string name="title_purchase_history">Historial de compras</string>
     <string name="title_no_network">Sin conexión</string>
@@ -34,7 +34,7 @@
     <string name="tab_top_grossing">Top en ingresos</string>
     <string name="tab_top_free">Top gratis</string>
     <string name="tab_top_charts">Ranking top</string>
-    <string name="tab_for_you">Para usted</string>
+    <string name="tab_for_you">Para ti</string>
     <string name="tab_editor_choice">Selección de los editores</string>
     <string name="tab_categories">Categorías</string>
     <string name="spoof_apply">Asegúrese de volver a acceder a su cuenta para aplicar la suplantación de dispositivo</string>
@@ -226,7 +226,7 @@
     <string name="title_manual_download">Descarga manual</string>
     <string name="pref_ui_similar_apps_desc">Mostrar grupos similares y relacionados en la página de detalles de la aplicación</string>
     <string name="pref_ui_similar_apps">Aplicaciones similares y relacionadas</string>
-    <string name="pref_ui_no_for_you_desc">Mostrar páginas Para usted en la pantalla de inicio</string>
+    <string name="pref_ui_no_for_you_desc">Mostrar las páginas Para ti en la pantalla de inicio</string>
     <string name="pref_ui_no_for_you">Páginas para ti</string>
     <string name="pref_ui_layout_tab">Elegir pestaña predeterminada</string>
     <string name="pref_ui_layout">Disposición</string>
@@ -243,7 +243,7 @@
     <string name="app_updater_service_notif_text">Activa la descarga de aplicaciones en segundo plano</string>
     <string name="app_updater_service_notif_title">Descarga de aplicaciones en segundo plano</string>
     <string name="notification_channel_updater_service">Servicio de descargas de aplicaciones en segundo plano</string>
-    <string name="installer_am_unavailable">Instalar Gestor de aplicaciones o cambiar el instalador.</string>
+    <string name="installer_am_unavailable">Instala App Manager o cambia el instalador.</string>
     <string name="pref_install_mode_am">Instalador AM</string>
     <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_eta_hrs">Quedan %1$d horas, %2$d minutos, %3$d segundos</string>
@@ -259,7 +259,7 @@
     <string name="title_advanced">Avanzado</string>
     <string name="expand">Expandir</string>
     <string name="permissions_denied">Se han denegado los permisos necesarios. Por favor, concédelos para continuar la acción</string>
-    <string name="search_hint">Buscar las aplicaciones y los juegos</string>
+    <string name="search_hint">Buscar apps y juegos</string>
     <string name="onboarding_permission_notifications_desc">Enviar notificaciones sobre el estado de las instalaciones</string>
     <string name="rate_limited">Vaya, ¡esta cuenta tiene una tarifa limitada!</string>
     <string name="session_enjoy">Inicia sesión y disfruta.</string>
@@ -337,18 +337,18 @@
     <string name="pref_updates_auto_install">Compruebe e instale automáticamente las actualizaciones disponibles</string>
     <string name="action_request_analysis">Solicitar un nuevo análisis</string>
     <string name="failed_apk_export">Error exportando APKs</string>
-    <string name="download_clear_finished">Limpieza terminada</string>
+    <string name="download_clear_finished">Limpiar lo que terminó</string>
     <string name="pref_updates_incompatible">Actualizaciones no compatibles</string>
     <string name="pref_updates_incompatible_desc">Mostrar actualizaciones de aplicaciones incompatibles o desactivadas que pueden fallar al instalarse</string>
     <string name="action_home_screen">Añadir a la pantalla de inicio</string>
     <string name="action_manage">Gestionar</string>
     <string name="failed_app_link">No compatible, por favor intente asociar los enlaces manualmente</string>
-    <string name="session_installer_subtitle">Instalador basado en sesión para APK empaquetados/divididos</string>
+    <string name="session_installer_subtitle">Instalador en segundo plano para APKs empaquetados/divididos</string>
     <string name="session_installer_desc">Recomendado, integrado y compatible con todas las versiones de Android</string>
     <string name="root_installer_desc">Requiere privilegios de root/superusuario, es compatible con todas las versiones de Android.</string>
     <string name="services_installer_subtitle">Instalador para instalaciones en segundo plano</string>
-    <string name="root_installer_subtitle">Instalador basado en Shell que utiliza permisos de root</string>
-    <string name="native_installer_desc">Ideal para dispositivos con versiones anreriores a Android 4.4</string>
+    <string name="root_installer_subtitle">Instalador basado en la terminal que utiliza permisos de root</string>
+    <string name="native_installer_desc">Ideal para dispositivos con versiones anteriores a Android 4.4</string>
     <string name="source_code_title">Código fuente</string>
     <string name="privacy_policy_title">Política de privacidad</string>
     <string name="privacy_policy_subtitle">Conozca cómo Aurora Store utiliza sus datos</string>
@@ -356,12 +356,12 @@
     <string name="am_installer_subtitle">Completo gestor de paquetes de código abierto</string>
     <string name="am_installer_desc">Requiere App Manager, necesita modo adb/root para instalar cuando la optimización de miui está activada</string>
     <string name="shizuku_installer_subtitle">Uso directo de las API del sistema con privilegios adb/root</string>
-    <string name="shizuku_installer_desc">Requiere Shizuku o Sui, necesita ser configurado y permiso concedido</string>
+    <string name="shizuku_installer_desc">Requiere Shizuku o Sui, necesita ser configurado y que los permisos se concedan</string>
     <string name="manual_download_hint">Introduzca el código de la versión que desea descargar</string>
     <string name="faqs_subtitle">¿Tiene preguntas? Descubra las respuestas</string>
     <string name="source_code_subtitle">Descubra qué hay dentro</string>
     <string name="disclaimer_subtitle">Responsabilidad</string>
-    <string name="native_installer_subtitle">Instalador basado disponible en todos los dispositivos</string>
+    <string name="native_installer_subtitle">Instalador disponible en todos los dispositivos</string>
     <string name="title_more">Más</string>
     <string name="manage_account">Gestiona tu cuenta</string>
     <string name="pref_clear_device_owner_title">Borrar el propietario del dispositivo</string>
@@ -413,5 +413,5 @@
     <string name="force_restart_title">Reiniciar Aurora Store</string>
     <string name="force_restart_summary">Es necesario reiniciar Aurora Store para aplicar la configuración recién modificada</string>
     <string name="export_app_summary">Espera, exportando tu archivo</string>
-    <string name="export_app_title">File Exporter</string>
+    <string name="export_app_title">Exportador de archivos</string>
 </resources>
