@@ -410,4 +410,8 @@
     <string name="title_favourites_manager">Lietotņu izlase</string>
     <string name="toast_fav_import_success">Izlase ievietota.</string>
     <string name="force_restart_summary">Aurora Store ir jāpārsāknē, lai pielietotu tikko mainītos iestatījumus</string>
+    <string name="action_favourite">Izlasē</string>
+    <string name="details_data_safety_subtitle">Izstrādātāja noteikta datu privātuma un drošības prakse</string>
+    <string name="toast_permission_esm_caution">Var būt nepieciešams atkārtoti nodrošināt atļauju krātuves piekļuves ietvara nepilnības dēļ</string>
+    <string name="pref_network_proxy_url_message">Jāievada derīgs starpniekservera URL, lai sūtītu visus datus caur to.</string>
 </resources>
