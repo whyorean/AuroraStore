@@ -381,7 +381,7 @@
     <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Adicionar</string>
     <string name="force_restart_title">Reiniciar a Aurora Store</string>
-    <string name="force_restart_summary">A Aurora Store tem de ser reiniciada para aplicar as novas configurações</string>
+    <string name="force_restart_summary">A Aurora Store tem de ser reiniciado para aplicar as definições recentemente alteradas</string>
     <string name="session_login">Inicie sessão na sua conta Google Play</string>
     <string name="action_favourite">Favoritar</string>
     <string name="details_data_safety_title">Segurança de dados</string>
