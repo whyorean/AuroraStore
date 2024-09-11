@@ -30,8 +30,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io/")
-        maven("https://maven.google.com/")
+        // libsu is only available via jitpack
+        maven("https://jitpack.io/") {
+            content {
+                includeModule("com.github.topjohnwu.libsu", "core")
+            }
+        }
     }
 }
 include(":app")
