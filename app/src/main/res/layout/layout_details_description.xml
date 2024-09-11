@@ -87,18 +87,6 @@
                     tools:text="25 MB" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_sdk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:drawablePadding="@dimen/padding_small"
-                    android:gravity="center_vertical"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                    app:drawableTint="?colorAccent"
-                    tools:text="Android 7+" />
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txt_updated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

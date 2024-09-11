@@ -730,7 +730,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             txtSize.text = CommonUtil.addSiPrefix(app.size)
             txtRating.text = app.labeledRating
-            txtSdk.text = ("Target SDK ${app.targetSdk}")
             txtUpdated.text = app.updatedOn
             txtDescription.text = HtmlCompat.fromHtml(
                 app.shortDescription,

@@ -38,6 +38,7 @@ import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.DetailsMoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -153,6 +154,11 @@ class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {
                             .badge(it)
                     )
                 }
+                add(
+                    InfoViewModel_()
+                        .id(UUID.randomUUID().toString())
+                        .badge(mapOf("targets" to "API ${app.targetSdk}").entries.first())
+                )
             }
         }
     }
