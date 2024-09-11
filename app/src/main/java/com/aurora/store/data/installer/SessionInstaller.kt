@@ -221,6 +221,7 @@ class SessionInstaller @Inject constructor(
             if (isUAndAbove()) {
                 setInstallerPackageName(context.packageName)
                 setRequestUpdateOwnership(true)
+                setApplicationEnabledSettingPersistent()
             }
         }
     }
