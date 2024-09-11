@@ -23,9 +23,9 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
-import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.IProxyHttpClient
+import com.aurora.store.data.network.OkHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
@@ -33,9 +33,6 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
-import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
-import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -45,14 +42,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
-import java.net.Authenticator
-import java.net.InetSocketAddress
-import java.net.PasswordAuthentication
-import java.net.Proxy
 import java.net.URL
 import java.security.DigestInputStream
 import java.security.MessageDigest
-import javax.net.ssl.HttpsURLConnection
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
@@ -76,8 +68,6 @@ class DownloadWorker @AssistedInject constructor(
     private lateinit var notificationManager: NotificationManager
     private lateinit var icon: Bitmap
     private lateinit var purchaseHelper: PurchaseHelper
-
-    private val proxy: Proxy? = getProxy()
 
     private val NOTIFICATION_ID = 200
 
@@ -280,19 +270,17 @@ class DownloadWorker @AssistedInject constructor(
 
             try {
                 val isNewFile = request.file.createNewFile()
-                val connection = if (proxy != null) {
-                    URL(request.url).openConnection(proxy) as HttpsURLConnection
-                } else {
-                    URL(request.url).openConnection() as HttpsURLConnection
-                }
+
+                val okHttpClient = httpClient as OkHttpClient
+                val headers = mutableMapOf<String, String>()
 
                 if (!isNewFile) {
                     Log.i(TAG, "${request.file} has an unfinished download, resuming!")
                     downloadedBytes += request.file.length()
-                    connection.setRequestProperty("Range", "bytes=${request.file.length()}-")
+                    headers["Range"] = "bytes=${request.file.length()}-"
                 }
 
-                connection.inputStream.use { input ->
+                okHttpClient.call(request.url, headers).body?.byteStream()?.use { input ->
                     FileOutputStream(request.file, !isNewFile).use {
                         input.copyTo(it, request.size).collect { p -> onProgress(p) }
                     }
@@ -412,39 +400,6 @@ class DownloadWorker @AssistedInject constructor(
             }
             val sha = messageDigest.digest().toHexString()
             return@withContext sha == expectedSha
-        }
-    }
-
-    /**
-     * Gets the current [Proxy] configuration.
-     * @return An instance of [Proxy] if configured by the user, null otherwise
-     */
-    private fun getProxy(): Proxy? {
-        val proxyEnabled = Preferences.getBoolean(appContext, PREFERENCE_PROXY_ENABLED)
-        val proxyInfoString = Preferences.getString(appContext, PREFERENCE_PROXY_INFO)
-
-        if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
-            val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
-
-            val proxy = Proxy(
-                if (proxyInfo.protocol == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,
-                InetSocketAddress.createUnresolved(proxyInfo.host, proxyInfo.port)
-            )
-
-            val proxyUser = proxyInfo.proxyUser
-            val proxyPassword = proxyInfo.proxyPassword
-
-            if (!proxyUser.isNullOrBlank() && !proxyPassword.isNullOrBlank()) {
-                Authenticator.setDefault(object : Authenticator() {
-                    override fun getPasswordAuthentication(): PasswordAuthentication {
-                        return PasswordAuthentication(proxyUser, proxyPassword.toCharArray())
-                    }
-                })
-            }
-            return proxy
-        } else {
-            Log.i(TAG, "Proxy is disabled")
-            return null
         }
     }
 }

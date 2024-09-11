@@ -198,6 +198,14 @@ object OkHttpClient : IProxyHttpClient {
         return processRequest(request)
     }
 
+    fun call(url: String, headers: Map<String, String> = emptyMap()): Response {
+        val request = Request.Builder()
+            .url(url)
+            .headers(headers.toHeaders())
+            .build()
+        return okHttpClient.newCall(request).execute()
+    }
+
     private fun processRequest(request: Request): PlayResponse {
         // Reset response code as flow doesn't sends the same value twice
         _responseCode.value = 0
