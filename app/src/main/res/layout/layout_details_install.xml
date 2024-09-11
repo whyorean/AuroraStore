@@ -72,7 +72,7 @@
                 android:indeterminate="true"
                 android:indeterminateTint="?colorOnPrimary"
                 app:indicatorColor="?colorControlHighlight"
-                app:trackColor="?colorAccent"
+                app:trackColor="?colorPrimary"
                 app:trackThickness="@dimen/icon_size_small" />
 
             <LinearLayout
