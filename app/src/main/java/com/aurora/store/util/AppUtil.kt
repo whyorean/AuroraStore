@@ -24,6 +24,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
 
 class AppUtil @Inject constructor(
     private val gson: Gson,
@@ -41,9 +43,18 @@ class AppUtil @Inject constructor(
         context, Preferences.PREFERENCE_UPDATES_EXTENDED
     )
     val updates = updateDao.updates()
-        .map { list -> list.filter { it.isInstalled(context) } }
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
+
+    init {
+        AuroraApp.scope.launch {
+            updateDao.updates().firstOrNull()?.forEach { update ->
+                if (!update.isInstalled(context) || update.isUpToDate(context)) {
+                    deleteUpdate(update.packageName)
+                }
+            }
+        }
+    }
 
     suspend fun checkUpdates(tmpAuthData: AuthData? = null): List<Update> {
         Log.i(TAG, "Checking for updates")

@@ -64,4 +64,8 @@ data class Update(
     fun isInstalled(context: Context): Boolean {
         return PackageUtil.isInstalled(context, packageName)
     }
+
+    fun isUpToDate(context: Context): Boolean {
+        return PackageUtil.isInstalled(context, packageName, versionCode)
+    }
 }
