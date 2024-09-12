@@ -36,15 +36,14 @@ import com.aurora.store.util.PathUtil
 import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import java.io.File
+import java.io.FileOutputStream
+import java.security.DigestInputStream
+import java.security.MessageDigest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import java.io.File
-import java.io.FileOutputStream
-import java.net.URL
-import java.security.DigestInputStream
-import java.security.MessageDigest
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
@@ -93,7 +92,9 @@ class DownloadWorker @AssistedInject constructor(
             val downloadData = inputData.getString(DownloadWorkerUtil.DOWNLOAD_DATA)
             download = gson.fromJson(downloadData, Download::class.java)
 
-            val bitmap = BitmapFactory.decodeStream(URL(download.iconURL).openStream())
+            val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
+                (httpClient as OkHttpClient).call(download.iconURL).body!!.byteStream()
+            })
             icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to parse download data", exception)
