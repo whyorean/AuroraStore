@@ -16,6 +16,7 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
@@ -128,9 +129,8 @@ class PermissionProvider : ActivityResultCallback<ActivityResult> {
             PermissionType.INSTALL_UNKNOWN_APPS -> PackageUtil.canRequestPackageInstalls(context)
             PermissionType.DOZE_WHITELIST -> {
                 if (isMAndAbove()) {
-                    val powerManager =
-                        context.getSystemService(Context.POWER_SERVICE) as PowerManager
-                    powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
+                    val powerManager = context.getSystemService<PowerManager>()
+                    powerManager?.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID) ?: false
                 } else {
                     true
                 }

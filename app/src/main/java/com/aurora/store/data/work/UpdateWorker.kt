@@ -3,6 +3,7 @@ package com.aurora.store.data.work
 import android.app.NotificationManager
 import android.content.Context
 import android.util.Log
+import androidx.core.content.getSystemService
 import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
@@ -111,8 +112,7 @@ class UpdateWorker @AssistedInject constructor(
         Log.i(TAG, "Checking for app updates")
 
         val autoUpdatesMode = Preferences.getInteger(appContext, PREFERENCE_UPDATES_AUTO, 3)
-        val notifyManager =
-            appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager = appContext.getSystemService<NotificationManager>()
 
         // Exit if auto-updates is turned off in settings
         if (autoUpdatesMode == 0) {
@@ -140,7 +140,7 @@ class UpdateWorker @AssistedInject constructor(
                 if (updatesList.isNotEmpty()) {
                     if (autoUpdatesMode == 1) {
                         Log.i(TAG, "Found updates, notifying!")
-                        notifyManager.notify(
+                        notificationManager!!.notify(
                             notificationID,
                             NotificationUtil.getUpdateNotification(appContext, updatesList)
                         )
@@ -159,7 +159,7 @@ class UpdateWorker @AssistedInject constructor(
                                 if (list.isEmpty()) return@let
 
                                 Log.i(TAG, "Found apps that cannot be auto-updated, notifying!")
-                                notifyManager.notify(
+                                notificationManager!!.notify(
                                     notificationID,
                                     NotificationUtil.getUpdateNotification(appContext, list)
                                 )
@@ -167,7 +167,7 @@ class UpdateWorker @AssistedInject constructor(
                         } else {
                             // Fallback to notification if battery optimizations are enabled
                             Log.i(TAG, "Found updates, but battery optimizations are enabled!")
-                            notifyManager.notify(
+                            notificationManager!!.notify(
                                 notificationID,
                                 NotificationUtil.getUpdateNotification(appContext, updatesList)
                             )

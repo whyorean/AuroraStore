@@ -25,6 +25,7 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.util.Log
 import androidx.core.content.IntentCompat
+import androidx.core.content.getSystemService
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
@@ -86,15 +87,14 @@ class InstallerStatusReceiver : BroadcastReceiver() {
         displayName: String,
         status: Int
     ) {
-        val notificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager = context.getSystemService<NotificationManager>()
         val notification = NotificationUtil.getInstallerStatusNotification(
             context,
             packageName,
             displayName,
             AppInstaller.getErrorString(context, status)
         )
-        notificationManager.notify(packageName.hashCode(), notification)
+        notificationManager!!.notify(packageName.hashCode(), notification)
     }
 
     private fun promptUser(intent: Intent, context: Context) {

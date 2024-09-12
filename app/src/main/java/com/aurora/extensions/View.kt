@@ -19,9 +19,9 @@
 
 package com.aurora.extensions
 
-import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.getSystemService
 
 fun View.isVisible() = visibility == View.VISIBLE
 
@@ -38,15 +38,15 @@ fun View.invisible() {
 }
 
 fun View.showKeyboard() {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val imm = context.getSystemService<InputMethodManager>()
     this.requestFocus()
-    imm.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
 
 fun View.hideKeyboard(): Boolean {
     try {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        return imm.hideSoftInputFromWindow(windowToken, 0)
+        val imm = context.getSystemService<InputMethodManager>()
+        return imm?.hideSoftInputFromWindow(windowToken, 0) ?: false
     } catch (ignored: RuntimeException) {
     }
     return false

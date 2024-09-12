@@ -20,9 +20,9 @@ package com.aurora.store.data.providers
 
 import android.app.ActivityManager
 import android.content.Context
-import android.content.Context.ACTIVITY_SERVICE
 import android.content.res.Configuration
 import android.os.Build
+import androidx.core.content.getSystemService
 import com.aurora.extensions.isHuawei
 import java.util.Properties
 
@@ -77,11 +77,10 @@ class NativeDeviceInfoProvider(val context: Context) {
             //Shared Libraries
             setProperty("SharedLibraries", getSharedLibraries().joinToString(separator = ","))
             //GL Extensions
-            val activityManager =
-                context.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+            val activityManager = context.getSystemService<ActivityManager>()
             setProperty(
                 "GL.Version",
-                activityManager.deviceConfigurationInfo.reqGlEsVersion.toString()
+                activityManager!!.deviceConfigurationInfo.reqGlEsVersion.toString()
             )
             setProperty(
                 "GL.Extensions",

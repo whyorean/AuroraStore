@@ -28,6 +28,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
@@ -101,10 +102,9 @@ class AppInstaller @Inject constructor(
         }
 
         fun notifyInstallation(context: Context, displayName: String, packageName: String) {
-            val notificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager = context.getSystemService<NotificationManager>()
             val notification = NotificationUtil.getInstallNotification(context, displayName, packageName)
-            notificationManager.notify(packageName.hashCode(), notification)
+            notificationManager!!.notify(packageName.hashCode(), notification)
         }
 
         fun getErrorString(context: Context, status: Int): String {

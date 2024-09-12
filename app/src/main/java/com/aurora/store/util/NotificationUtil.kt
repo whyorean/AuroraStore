@@ -1,6 +1,5 @@
 package com.aurora.store.util
 
-import android.app.Application
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -13,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.PendingIntentCompat
+import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.work.WorkManager
@@ -30,8 +30,7 @@ object NotificationUtil {
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationManager =
-                context.getSystemService(Application.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager = context.getSystemService<NotificationManager>()
             val channels = ArrayList<NotificationChannel>()
             channels.add(
                 NotificationChannel(
@@ -65,7 +64,7 @@ object NotificationUtil {
                     setSound(null, null)
                 }
             )
-            notificationManager.createNotificationChannels(channels)
+            notificationManager!!.createNotificationChannels(channels)
         }
     }
 

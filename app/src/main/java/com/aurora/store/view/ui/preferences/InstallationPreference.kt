@@ -20,11 +20,11 @@
 package com.aurora.store.view.ui.preferences
 
 import android.app.admin.DevicePolicyManager
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -63,17 +63,16 @@ class InstallationPreference : PreferenceFragmentCompat() {
 
         findPreference<Preference>(PREFERENCE_INSTALLATION_DEVICE_OWNER)?.apply {
             val packageName = context.packageName
-            val devicePolicyManager =
-                context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+            val devicePolicyManager = context.getSystemService<DevicePolicyManager>()
 
-            isVisible = devicePolicyManager.isDeviceOwnerApp(packageName)
+            isVisible = devicePolicyManager?.isDeviceOwnerApp(packageName) ?: false
             setOnPreferenceClickListener {
                 context.showDialog(
                     context.getString(R.string.pref_clear_device_owner_title),
                     context.getString(R.string.pref_clear_device_owner_desc),
                     { _: DialogInterface, _: Int ->
                         @Suppress("DEPRECATION")
-                        devicePolicyManager.clearDeviceOwnerApp(packageName)
+                        devicePolicyManager!!.clearDeviceOwnerApp(packageName)
                         activity?.recreate()
                     },
                     { dialog: DialogInterface, _: Int -> dialog.dismiss() }

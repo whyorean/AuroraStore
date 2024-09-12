@@ -1,12 +1,12 @@
 package com.aurora.store.data.work
 
 import android.app.NotificationManager
-import android.app.Service
 import android.content.Context
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
+import androidx.core.content.getSystemService
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
@@ -79,6 +79,8 @@ class DownloadWorker @AssistedInject constructor(
     private val TAG = DownloadWorker::class.java.simpleName
 
     override suspend fun doWork(): Result {
+        notificationManager = appContext.getSystemService<NotificationManager>()!!
+
         // Bail out immediately if authData is not valid
         if (!authProvider.isSavedAuthDataValid()) {
             Log.e(TAG, "AuthData is not valid, exiting!")
@@ -105,9 +107,6 @@ class DownloadWorker @AssistedInject constructor(
         // Purchase the app (free apps needs to be purchased too)
         purchaseHelper = PurchaseHelper(authProvider.authData!!)
             .using(httpClient)
-
-        notificationManager =
-            appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
 
         // Bail out if file list is empty
         download.fileList = download.fileList.ifEmpty {
@@ -204,9 +203,7 @@ class DownloadWorker @AssistedInject constructor(
                 notifyStatus(DownloadStatus.FAILED)
             }
 
-            with(appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager) {
-                cancel(NOTIFICATION_ID)
-            }
+            notificationManager.cancel(NOTIFICATION_ID)
         }
     }
 

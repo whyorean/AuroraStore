@@ -38,6 +38,7 @@ import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.getSystemService
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -101,9 +102,9 @@ fun Context.getEmptyActivityBundle(): Bundle? {
 }
 
 fun Context.copyToClipBoard(data: String?) {
-    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clipboard = getSystemService<ClipboardManager>()
     val clip = ClipData.newPlainText("Download Url", data)
-    clipboard.setPrimaryClip(clip)
+    clipboard?.setPrimaryClip(clip)
 }
 
 fun Context.getStyledAttributeColor(id: Int): Int {
@@ -115,9 +116,7 @@ fun Context.getStyledAttributeColor(id: Int): Int {
 
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
     return if (isMAndAbove()) {
-        (getSystemService(Context.POWER_SERVICE) as PowerManager).isIgnoringBatteryOptimizations(
-            packageName
-        )
+        (getSystemService<PowerManager>())?.isIgnoringBatteryOptimizations(packageName) ?: true
     } else {
         true
     }
@@ -137,8 +136,8 @@ fun Context.isExternalStorageAccessible(): Boolean {
 
 fun Context.isDomainVerified(domain: String): Boolean {
     return if (isSAndAbove()) {
-        val domainVerificationManager = getSystemService(DomainVerificationManager::class.java)
-        val userState = domainVerificationManager.getDomainVerificationUserState(packageName)
+        val domainVerificationManager = getSystemService<DomainVerificationManager>()
+        val userState = domainVerificationManager!!.getDomainVerificationUserState(packageName)
         val domainMap = userState?.hostToStateMap?.filterKeys { it == domain }
         domainMap?.values?.first() == DomainVerificationUserState.DOMAIN_STATE_SELECTED
     } else {

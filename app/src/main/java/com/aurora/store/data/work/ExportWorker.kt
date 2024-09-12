@@ -1,11 +1,11 @@
 package com.aurora.store.data.work
 
 import android.app.NotificationManager
-import android.app.Service
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
+import androidx.core.content.getSystemService
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.Data
@@ -99,8 +99,7 @@ class ExportWorker @AssistedInject constructor(
         val displayName = inputData.getString(DISPLAY_NAME)
         val versionCode = inputData.getInt(VERSION_CODE, -1)
 
-        notificationManager =
-            appContext.getSystemService(Service.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager = appContext.getSystemService<NotificationManager>()!!
 
         if (packageName.isNullOrEmpty() || isDownload && versionCode == -1) {
             Log.e(TAG, "Input data is corrupt, bailing out!")

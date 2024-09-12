@@ -24,6 +24,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aurora.extensions.isMAndAbove
@@ -38,8 +39,7 @@ class NetworkViewModel @Inject constructor(
 ) : ViewModel() {
     val status: MutableLiveData<NetworkStatus> = MutableLiveData(NetworkStatus.UNAVAILABLE)
 
-    private val connectivityManager =
-        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    private val connectivityManager = context.getSystemService<ConnectivityManager>()
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
             super.onAvailable(network)
@@ -53,11 +53,11 @@ class NetworkViewModel @Inject constructor(
     }
 
     fun register() {
-        connectivityManager.registerNetworkCallback(getNetworkRequest(), networkCallback)
+        connectivityManager?.registerNetworkCallback(getNetworkRequest(), networkCallback)
     }
 
     fun unregister() {
-        connectivityManager.unregisterNetworkCallback(networkCallback)
+        connectivityManager?.unregisterNetworkCallback(networkCallback)
     }
 
     private fun getNetworkRequest(): NetworkRequest {
