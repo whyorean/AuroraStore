@@ -10,9 +10,9 @@ import com.aurora.gplayapi.data.models.details.TestingProgramStatus
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
-import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourites.Favourite
 import com.aurora.store.data.room.favourites.FavouriteDao
@@ -37,7 +37,7 @@ class AppDetailsViewModel @Inject constructor(
     private val downloadWorkerUtil: DownloadWorkerUtil,
     private val authProvider: AuthProvider,
     private val favouriteDao: FavouriteDao,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName

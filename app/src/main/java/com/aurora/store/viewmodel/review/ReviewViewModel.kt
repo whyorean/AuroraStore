@@ -27,7 +27,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.store.data.network.IProxyHttpClient
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -41,7 +41,7 @@ import javax.inject.Inject
 class ReviewViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) : ViewModel() {
 
     var reviewsHelper: ReviewsHelper = ReviewsHelper(authProvider.authData!!)

@@ -31,8 +31,8 @@ import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -46,7 +46,7 @@ import javax.inject.Inject
 class DevProfileViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) : ViewModel() {
 
     private val TAG = DevProfileViewModel::class.java.simpleName

@@ -26,7 +26,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.isApp
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.store.data.network.IProxyHttpClient
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,7 +44,7 @@ import javax.inject.Inject
 class BlacklistViewModel @Inject constructor(
     val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context,
-    private val httpClient: IProxyHttpClient,
+    private val httpClient: IHttpClient,
     authProvider: AuthProvider
 ) : ViewModel() {
     private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)

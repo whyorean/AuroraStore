@@ -27,7 +27,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
-import com.aurora.store.data.network.IProxyHttpClient
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -41,7 +41,7 @@ import javax.inject.Inject
 class ExpandedStreamBrowseViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) : ViewModel() {
 
     private val TAG = ExpandedStreamBrowseViewModel::class.java.simpleName

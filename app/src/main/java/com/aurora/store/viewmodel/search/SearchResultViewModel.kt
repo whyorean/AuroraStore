@@ -30,7 +30,7 @@ import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
-import com.aurora.store.data.network.IProxyHttpClient
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.FilterProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -46,7 +46,7 @@ class SearchResultViewModel @Inject constructor(
     val filterProvider: FilterProvider,
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) : ViewModel() {
 
     private val TAG = SearchResultViewModel::class.java.simpleName

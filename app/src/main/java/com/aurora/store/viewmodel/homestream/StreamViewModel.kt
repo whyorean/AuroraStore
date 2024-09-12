@@ -29,9 +29,9 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.network.IProxyHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +43,7 @@ import javax.inject.Inject
 @SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class StreamViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) : ViewModel() {
 
     private val TAG = StreamViewModel::class.java.simpleName

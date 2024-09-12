@@ -19,11 +19,13 @@
 
 package com.aurora.store.util
 
-import com.aurora.store.data.network.OkHttpClient
+import com.aurora.store.data.network.HttpClient
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.util.Locale
+import javax.inject.Inject
 
-class AC2DMTask {
+class AC2DMTask @Inject constructor(private val httpClient: HttpClient) {
+
     @Throws(Exception::class)
     fun getAC2DMResponse(email: String?, oAuthToken: String?): Map<String, String> {
         if (email == null || oAuthToken == null)
@@ -51,7 +53,7 @@ class AC2DMTask {
             "Content-Type" to "application/x-www-form-urlencoded"
         )
 
-        val response = OkHttpClient.post(TOKEN_AUTH_URL, header, body.toRequestBody())
+        val response = httpClient.post(TOKEN_AUTH_URL, header, body.toRequestBody())
 
         return if (response.isSuccessful) {
             AC2DMUtil.parseResponse(String(response.responseBytes))

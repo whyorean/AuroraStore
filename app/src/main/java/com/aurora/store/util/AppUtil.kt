@@ -8,10 +8,10 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.SelfUpdate
-import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.data.room.update.Update
@@ -32,7 +32,7 @@ class AppUtil @Inject constructor(
     private val authProvider: AuthProvider,
     private val updateDao: UpdateDao,
     private val blacklistProvider: BlacklistProvider,
-    private val httpClient: IProxyHttpClient,
+    private val httpClient: IHttpClient,
     @ApplicationContext private val context: Context
 ) {
 

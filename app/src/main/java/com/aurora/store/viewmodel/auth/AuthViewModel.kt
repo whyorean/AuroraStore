@@ -29,13 +29,13 @@ import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.Auth
 import com.aurora.store.data.model.AuthState
-import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AC2DMTask
@@ -57,7 +57,8 @@ class AuthViewModel @Inject constructor(
     val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,
     private val gson: Gson,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient,
+    private val aC2DMTask: AC2DMTask
 ) : ViewModel() {
 
     private val TAG = AuthViewModel::class.java.simpleName
@@ -130,7 +131,7 @@ class AuthViewModel @Inject constructor(
     fun buildAuthData(context: Context, email: String, oauthToken: String?) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = AC2DMTask().getAC2DMResponse(email, oauthToken)
+                val response = aC2DMTask.getAC2DMResponse(email, oauthToken)
                 if (response.isNotEmpty()) {
                     val aasToken = response["Token"]
                     if (aasToken != null) {

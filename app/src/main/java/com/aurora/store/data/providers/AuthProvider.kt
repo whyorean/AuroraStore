@@ -26,10 +26,10 @@ import com.aurora.Constants.ACCOUNT_SIGNED_IN
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.AuthValidator
+import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.R
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.Auth
-import com.aurora.store.data.network.IProxyHttpClient
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
@@ -48,7 +48,7 @@ class AuthProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val gson: Gson,
     private val spoofProvider: SpoofProvider,
-    private val httpClient: IProxyHttpClient
+    private val httpClient: IHttpClient
 ) {
 
     private val TAG = AuthProvider::class.java.simpleName
