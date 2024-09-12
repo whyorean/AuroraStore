@@ -24,6 +24,8 @@ import android.app.Application
 import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
+import coil.ImageLoader
+import coil.ImageLoaderFactory
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
@@ -39,9 +41,13 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import javax.inject.Inject
+import okhttp3.OkHttpClient
 
 @HiltAndroidApp
-class AuroraApp : Application(), Configuration.Provider {
+class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
+
+    @Inject
+    lateinit var okHttpClient: OkHttpClient
 
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
@@ -98,5 +104,11 @@ class AuroraApp : Application(), Configuration.Provider {
         super.onLowMemory()
         scope.cancel("onLowMemory() called by system")
         scope = MainScope()
+    }
+
+    override fun newImageLoader(): ImageLoader {
+        return ImageLoader(this).newBuilder()
+            .okHttpClient(okHttpClient)
+            .build()
     }
 }
