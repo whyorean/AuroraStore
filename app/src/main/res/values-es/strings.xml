@@ -72,7 +72,7 @@
     <string name="notification_channel_alert">Notificación rápida</string>
     <string name="dialog_title_self_update">Nueva actualización disponible</string>
     <string name="device_miui_extra">Opcionalmente puede elegir el instalador nativo, pero entonces no podrá instalar los APKs empaquetados (divididos), así que la elección es suya.</string>
-    <string name="device_miui_description">Por favor, desactive la optimización de MIUI para permitir las instalaciones o seleccione el instalador de root o de los servicios.</string>
+    <string name="device_miui_description">Por favor, desactive las optimizaciones de MIUI para permitir las instalaciones, de lo contrario puede elegir el instalador Root o Servicios.</string>
     <string name="device_miui_subtitle">El instalador de sesión no puede instalar aplicaciones debido a la optimización de MIUI.</string>
     <string name="device_miui_title">¡MIUI detectado!</string>
     <string name="menu_terms">Términos del servicio</string>
