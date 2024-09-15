@@ -33,7 +33,7 @@
     <string name="tab_top_paid">Top en ventas</string>
     <string name="tab_top_grossing">Top en ingresos</string>
     <string name="tab_top_free">Top gratis</string>
-    <string name="tab_top_charts">Éxitos</string>
+    <string name="tab_top_charts">Destacadas</string>
     <string name="tab_for_you">Para ti</string>
     <string name="tab_editor_choice">Selección de los editores</string>
     <string name="tab_categories">Categorías</string>
@@ -202,7 +202,7 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Donar vía Paypal</string>
     <string name="about_paypal">PayPal</string>
-    <string name="about_libera_summary">Conviértete en patrocinador en Liberapay</string>
+    <string name="about_libera_summary">Conviértete en patrocinador con Liberapay</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_fdroid_summary">Consigue Aurora Store a través de F-Droid.</string>
     <string name="about_gitlab_summary">Obtenga el código fuente de Aurora Store desde Aurora OSS en GitLab.</string>
@@ -259,7 +259,7 @@
     <string name="title_advanced">Avanzado</string>
     <string name="expand">Expandir</string>
     <string name="permissions_denied">Se han denegado los permisos necesarios. Por favor, concédelos para continuar la acción</string>
-    <string name="search_hint">Buscar apps y juegos</string>
+    <string name="search_hint">Buscar aplicaciones y juegos</string>
     <string name="onboarding_permission_notifications_desc">Enviar notificaciones sobre el estado de las instalaciones</string>
     <string name="rate_limited">Vaya, ¡esta cuenta tiene una tarifa limitada!</string>
     <string name="session_enjoy">Inicia sesión y disfruta.</string>
@@ -337,7 +337,7 @@
     <string name="pref_updates_auto_install">Compruebe e instale automáticamente las actualizaciones disponibles</string>
     <string name="action_request_analysis">Solicitar un nuevo análisis</string>
     <string name="failed_apk_export">Error exportando APKs</string>
-    <string name="download_clear_finished">Limpiar lo que terminó</string>
+    <string name="download_clear_finished">Limpiar lo finalizado</string>
     <string name="pref_updates_incompatible">Actualizaciones no compatibles</string>
     <string name="pref_updates_incompatible_desc">Mostrar actualizaciones de aplicaciones incompatibles o desactivadas que pueden fallar al instalarse</string>
     <string name="action_home_screen">Añadir a la pantalla de inicio</string>
@@ -347,7 +347,7 @@
     <string name="session_installer_desc">Recomendado, integrado y compatible con todas las versiones de Android</string>
     <string name="root_installer_desc">Requiere privilegios de root/superusuario, es compatible con todas las versiones de Android.</string>
     <string name="services_installer_subtitle">Instalador para instalaciones en segundo plano</string>
-    <string name="root_installer_subtitle">Instalador basado en la terminal que utiliza permisos de root</string>
+    <string name="root_installer_subtitle">Instalador basado en shell que utiliza permisos de root</string>
     <string name="native_installer_desc">Ideal para dispositivos con versiones anteriores a Android 4.4</string>
     <string name="source_code_title">Código fuente</string>
     <string name="privacy_policy_title">Política de privacidad</string>
@@ -356,7 +356,7 @@
     <string name="am_installer_subtitle">Completo gestor de paquetes de código abierto</string>
     <string name="am_installer_desc">Requiere App Manager, necesita modo adb/root para instalar cuando la optimización de miui está activada</string>
     <string name="shizuku_installer_subtitle">Uso directo de las API del sistema con privilegios adb/root</string>
-    <string name="shizuku_installer_desc">Requiere Shizuku o Sui, necesita ser configurado y que los permisos se concedan</string>
+    <string name="shizuku_installer_desc">Requiere que primero se configure y se le otorguen permisos a la aplicación Shizuku o Sui</string>
     <string name="manual_download_hint">Introduzca el código de la versión que desea descargar</string>
     <string name="faqs_subtitle">¿Tiene preguntas? Descubra las respuestas</string>
     <string name="source_code_subtitle">Descubra qué hay dentro</string>
