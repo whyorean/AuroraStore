@@ -388,4 +388,30 @@
 \n従来のアプリ ストアとは異なり、Aurora Store はアプリを所有、ライセンス供与、配布しません。Aurora Store のすべてのアプリ、アプリの説明、スクリーンショット、その他のコンテンツは、Google Play から直接アクセス、ダウンロード、表示されます。Aurora Store は架け橋やブラウザのように機能し、Google Play アカウントにログインして Google Play からアプリを見つけることができます。
 \n
 \nAurora Store は、Google、Google Play、Aurora Store を通じてダウンロードされたアプリは、アプリ開発者から承認、広告、または許可を受けておらず、また、Aurora Store はそれらと提携、協力、及び関係も一切ありませんのでご了承ください。</string>
+    <string name="toast_app_unavailable">このアプリはこの端末で使用できません</string>
+    <string name="action_logout_confirmation_message">本当にログアウトしますか？</string>
+    <string name="check_updates">更新を確認</string>
+    <string name="force_restart_title">Aurora Store を再起動</string>
+    <string name="force_restart_summary">設定を適用するには、Aurora Store を再起動する必要があります</string>
+    <string name="toast_fav_import_failed">お気に入りのインポートに失敗しました！</string>
+    <string name="export_app_summary">お待ちください。ファイルをエクスポートしています</string>
+    <string name="action_favourite">お気に入り</string>
+    <string name="details_no_favourites">お気に入りのアプリがありません</string>
+    <string name="title_favourites_manager">お気に入りのアプリ</string>
+    <string name="toast_fav_export_failed">お気に入りのエクスポートに失敗しました！</string>
+    <string name="toast_fav_import_success">お気に入りをインポートしました！</string>
+    <string name="toast_fav_export_success">お気に入りをエクスポートしました！</string>
+    <string name="details_data_safety_title">データの安全性</string>
+    <string name="details_data_safety_subtitle">開発者が宣言したデータのプライバシーと安全対策</string>
+    <string name="onboarding_permission_installer_legacy_desc">不明なソースからのアプリのインストールを許可</string>
+    <string name="toast_permission_installer_required">まずインストーラーの権限を付与する必要があります</string>
+    <string name="toast_permission_esm_caution">権限要求のバグのため、権限を再度付与する必要がある可能性があります</string>
+    <string name="action_uninstall_success">アンインストールに成功しました</string>
+    <string name="pref_network_proxy_url_message">すべてのデータを Proxy 経由で渡すには、有効な Proxy の URL を入力します。</string>
+    <string name="item_required">必須</string>
+    <string name="item_optional">任意</string>
+    <string name="export_app_title">ファイルのエクスポート</string>
+    <string name="export_app_summary_success">App bundle のエクスポートに成功しました</string>
+    <string name="export_app_summary_fail">App bundle のエクスポートに失敗しました</string>
+    <string name="action_logout_confirmation_title">ログアウトしますか？</string>
 </resources>
