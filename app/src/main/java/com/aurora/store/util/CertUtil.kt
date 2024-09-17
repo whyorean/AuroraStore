@@ -40,6 +40,9 @@ object CertUtil {
 
     private val TAG = "CertUtil"
 
+    private const val CERT_BEGIN = "-----BEGIN CERTIFICATE-----"
+    private const val CERT_END = "-----END CERTIFICATE-----"
+
     fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
         return context.packageManager.getInstallerPackageNameCompat(packageName) == context.packageName
     }
@@ -112,12 +115,8 @@ object CertUtil {
         val rawCerts = inputStream
             .bufferedReader()
             .use { it.readText() }
-            .split("-----END CERTIFICATE-----")
-            .map {
-                it.substringAfter("-----BEGIN CERTIFICATE-----")
-                    .substringBefore("-----END CERTIFICATE-----")
-                    .replace("\n", "")
-            }
+            .split(CERT_END)
+            .map { it.substringAfter(CERT_BEGIN).substringBefore(CERT_END).replace("\n", "") }
             .filterNot { it.isBlank() }
         val decodedCerts = rawCerts.map { Base64.decode(it, Base64.DEFAULT) }
         return decodedCerts.map {
