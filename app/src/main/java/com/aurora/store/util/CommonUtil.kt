@@ -158,7 +158,7 @@ object CommonUtil {
     }
 
     fun parseProxyUrl(proxyUrl: String): ProxyInfo? {
-        val pattern = """^(https?|socks)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$""".toRegex()
+        val pattern = """^(https?|socks5?)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$""".toRegex()
         val match = pattern.find(proxyUrl)
 
         return when {
