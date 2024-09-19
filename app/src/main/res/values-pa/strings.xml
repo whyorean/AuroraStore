@@ -157,7 +157,7 @@
     <string name="details_more_about_app">ਐਪ ਬਾਰੇ ਹੋਰ ਜਾਣਕਾਰੀ</string>
     <string name="details_gsf_dependent">GSF ਤੇ ਨਿਰਭਰ</string>
     <string name="details_free">ਮੁਫ਼ਤ</string>
-    <string name="about_fdroid_summary">ਐਫ਼-ਡਰਾਇਡ ਜ਼ਰੀਏ ਔਰੋਰਾ ਸਟੋਰ ਪ੍ਰਾਪਤ ਕਰੋ।</string>
+    <string name="about_fdroid_summary">F-Droid ਜ਼ਰੀਏ ਔਰੋਰਾ ਸਟੋਰ ਪ੍ਰਾਪਤ ਕਰੋ।</string>
     <string name="details_dev_website">ਵੈਬਸਾਈਟ</string>
     <string name="details_dev_profile">ਡਿਵੈਲਪਰ ਪ੍ਰੋਫਾਈਲ</string>
     <string name="details_dev_email">ਈ-ਮੇਲ</string>
@@ -196,8 +196,8 @@
     <string name="action_installing">ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ</string>
     <string name="action_installations">ਇੰਸਟਾਲ ਕੀਤੀਆਂ ਐਪਾਂ</string>
     <string name="action_install">ਇੰਸਟਾਲ ਕਰੋ</string>
-    <string name="action_ignore_version">ਇਸ ਵਰਜ਼ਨ ਨੂੰ ਛੱਡੋ</string>
-    <string name="action_ignore">ਛੱਡੋ</string>
+    <string name="action_ignore_version">ਇਸ ਵਰਜ਼ਨ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ</string>
+    <string name="action_ignore">ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="action_granted">ਇਜਾਜ਼ਤ ਦਿੱਤੀ ਗਈ</string>
     <string name="action_grant">ਇਜਾਜ਼ਤ ਦਿਓ</string>
     <string name="action_get_local_apk">ਐਪ ਬੰਡਲ ਸੇਵ ਕਰੋ</string>
@@ -222,7 +222,7 @@
     <string name="action_blacklist_add">ਬਲੈਕ ਲਿਸਟ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕਰੋ</string>
     <string name="action_blacklist">ਬਲੈਕ ਲਿਸਟ</string>
     <string name="action_back">ਪਿੱਛੇ</string>
-    <string name="account_logout">ਲਾਗ-ਆਊਟ ਕਰੋ</string>
+    <string name="account_logout">ਔਰੋਰਾ ਤੋਂ ਲਾਗ-ਆਊਟ ਕਰੋ</string>
     <string name="account_login_using">ਲਾਗ-ਇਨ ਕਰਨ ਦਾ ਜ਼ਰੀਆ ਚੁਣੋ</string>
     <string name="account_google">ਗੂਗਲ</string>
     <string name="account_anonymous">ਅਨਾਮ</string>
@@ -230,10 +230,10 @@
     <string name="about_xda">XDA ਫ਼ੋਰਮ</string>
     <string name="about_telegram_summary">ਕੋਈ ਚਰਚਾ ਜਾਂ ਸੁਝਾਅ ਵਾਸਤੇ ਔਰੋਰਾ ਸਹਾਇਤਾ ਟੈਲੀਗ੍ਰਾਮ ਗਰੁੱਪ ਨਾਲ ਜੁੜੋ।</string>
     <string name="about_bitcoin_btc_summary">ਬਿੱਟ-ਕੋਇਨ (BTC) ਜ਼ਰੀਏ ਦਾਨ ਕਰੋ</string>
-    <string name="about_libera_summary">ਲਾਇਬਰਾ-ਪੇਅ ਤੇ ਸਰਪ੍ਰਸਤ ਬਣੋ</string>
-    <string name="about_libera">ਲਾਇਬਰਾ-ਪੇਅ</string>
+    <string name="about_libera_summary">Liberapay ਤੇ ਸਰਪ੍ਰਸਤ ਬਣੋ</string>
+    <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid">ਐਫ਼-ਡਰਾਇਡ</string>
+    <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth">ਐਥੇਰੀਅਮ</string>
     <string name="about_bitcoin_btc">ਬਿੱਟ-ਕੋਇਨ</string>
     <string name="about_bitcoin_bch_summary">ਬਿੱਟ-ਕੋਆਇਨ ਕੈਸ਼ (BCH) ਜ਼ਰੀਏ ਦਾਨ ਕਰੋ</string>
@@ -368,7 +368,7 @@
     <string name="pref_clear_device_owner_summary">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਡਿਵਾਈਸ ਮਾਲਕ ਐਪ ਵਜੋਂ ਹਟਾਉਂਦੀ ਹੈ</string>
     <string name="pref_clear_device_owner_desc">ਇਹ ਸ਼ੈਸ਼ਨ ਇੰਸਟਾਲਰ ਦੀ ਐਪ ਨੂੰ ਚੁੱਪਚਾਪ ਸਥਾਪਿਤ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਨੂੰ ਰੱਦ ਕਰ ਦੇਵੇਗਾ। ਕੀ ਡਿਵਾਈਸ ਮਲਕੀਅਤ ਨੂੰ ਕਲੀਅਰ ਕਰਨ ਦੇ ਨਾਲ ਅੱਗੇ ਵਧਣਾ ਹੈ?</string>
     <string name="pref_dispenser_title">ਡਿਸਪੈਂਸਰਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ</string>
-    <string name="about_wiki_title">ਵਿਕੀ</string>
+    <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">(F.A.Q.) ਵਿੱਚ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਸਵਾਲਾਂ, ਸਮੱਸਿਆ ਹੱਲ ਕਰਨ ਦੇ ਕਦਮ ਅਤੇ ਹੋਰਨਾਂ ਗੱਲਾਂ ਦੇ ਜਵਾਬ ਲੱਭੋ</string>
     <string name="session_login">ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ Google Play ਖਾਤੇ ਵਿੱਚ ਲੌਗ ਇਨ ਕਰੋ</string>
     <string name="toast_app_unavailable">ਐਪ ਤੁਹਾਡੇ ਡਿਵਾਈਸ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੈ</string>

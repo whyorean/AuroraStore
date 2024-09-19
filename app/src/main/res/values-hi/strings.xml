@@ -367,7 +367,7 @@
     <string name="pref_clear_device_owner_title">डिवाइस स्वामी हटाएं</string>
     <string name="pref_clear_device_owner_summary">ऑरोरा स्टोर को डिवाइस स्वामी ऐप के रूप में हटाता है</string>
     <string name="pref_clear_device_owner_desc">इससे ऐप को चुपचाप इंस्टॉल करने के लिए सेशन इंस्टॉलर की अनुमति रद्द हो जाएगी। डिवाइस स्वामित्व साफ़ करने के साथ आगे बढ़ें?</string>
-    <string name="about_wiki_title">विकि</string>
+    <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">अक्सर पूछे जाने वाले प्रश्नों (F.A.Q.) के उत्तर, समस्या निवारण चरण और बहुत कुछ खोजें</string>
     <string name="pref_dispenser_title">डिस्पेंसर प्रबंधित करें</string>
     <string name="pref_dispenser_summary">अनाम लॉगिन के लिए टोकन डिस्पेंसर देखें और प्रबंधित करें</string>

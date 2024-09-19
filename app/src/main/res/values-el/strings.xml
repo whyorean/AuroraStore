@@ -412,4 +412,6 @@
     <string name="item_optional">Προαιρετικό</string>
     <string name="force_restart_title">Επανεκκίνηση Aurora Store</string>
     <string name="force_restart_summary">Το Aurora Store χρείαζεται να επανεκκινηθεί για να εφαρμοστούν οι πρόσφατες αλλαγές</string>
+    <string name="export_app_title">Εξαγωγέας Αρχείου</string>
+    <string name="export_app_summary">Περίμενε λίγο, εξάγουμε το αρχείο σου</string>
 </resources>
