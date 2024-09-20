@@ -1,0 +1,6 @@
+• Fixed UI issue on Android 15
+• Improvements to proxy configuration and usage
+• SSL pinning for known domains using root certificates
+• Better support for Dynamic themes on supported devices
+• Dropped support for custom themes and accent colors
+• Translation updates
