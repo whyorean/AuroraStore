@@ -1,9 +1,9 @@
 {
-  "version_name": "4.5.1",
-  "version_code": 60,
-  "aurora_build": "https://www.auroraoss.com/AuroraStore/Release/AuroraStore-4.5.1.apk",
+  "version_name": "4.6.1",
+  "version_code": 62,
+  "aurora_build": "https://www.auroraoss.com/AuroraStore/Release/AuroraStore-4.6.1.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.5.0\n • New automatic cache cleanup feature\n • Ability to use third-party token dispensers\n • Translation updates & bug fixes",
-  "size": 7055671,
-  "updated_on": "Jun 12, 2024"
+  "changelog": "Changelog : v4.6.1\n • Improvements to proxy configuration and usage\n • SSL pinning for known domains using root certificates\n • Translation updates & bug fixes",
+  "size": 7398049,
+  "updated_on": "Sep 21, 2024"
 }
