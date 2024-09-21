@@ -20,6 +20,9 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.store.AuroraApp
+import com.aurora.store.R
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.DownloadInfo
@@ -115,7 +118,7 @@ class DownloadWorker @AssistedInject constructor(
         }
         if (download.fileList.isEmpty()) {
             Log.i(TAG, "Nothing to download!")
-            onFailure()
+            onFailure(appContext.getString(R.string.purchase_failed))
             return Result.failure()
         }
 
@@ -194,7 +197,7 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun onFailure() {
+    private suspend fun onFailure(errorMessage: String? = null, exception: Exception? = null) {
         withContext(NonCancellable) {
             Log.i(TAG, "Failed downloading ${download.packageName}")
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
@@ -202,6 +205,10 @@ class DownloadWorker @AssistedInject constructor(
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
                 notifyStatus(DownloadStatus.FAILED)
+                AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
+                    extra = errorMessage ?: appContext.getString(R.string.download_failed)
+                    error = exception?.stackTraceToString() ?: String()
+                })
             }
 
             notificationManager.cancel(NOTIFICATION_ID)
@@ -216,16 +223,21 @@ class DownloadWorker @AssistedInject constructor(
      * @return A list of purchased files
      */
     private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
-        // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-        return if (isPAndAbove() && download.isInstalled) {
-            purchaseHelper.purchase(
-                packageName,
-                versionCode,
-                offerType,
-                CertUtil.getEncodedCertificateHashes(appContext, download.packageName).last()
-            )
-        } else {
-            purchaseHelper.purchase(packageName, versionCode, offerType)
+        try {
+            // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
+            return if (isPAndAbove() && download.isInstalled) {
+                purchaseHelper.purchase(
+                    packageName,
+                    versionCode,
+                    offerType,
+                    CertUtil.getEncodedCertificateHashes(appContext, download.packageName).last()
+                )
+            } else {
+                purchaseHelper.purchase(packageName, versionCode, offerType)
+            }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to purchase $packageName", exception)
+            return emptyList()
         }
     }
 
