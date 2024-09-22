@@ -37,7 +37,9 @@ class AppUtil @Inject constructor(
 ) {
 
     private val TAG = AppUtil::class.java.simpleName
+
     private val RELEASE = "release"
+    private val NIGHTLY = "nightly"
 
     private val isExtendedUpdateEnabled get() = Preferences.getBoolean(
         context, Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -109,13 +111,17 @@ class AppUtil @Inject constructor(
     private suspend fun getSelfUpdate(context: Context, gson: Gson): App? {
         return withContext(Dispatchers.IO) {
             @Suppress("KotlinConstantConditions") // False-positive for build type always not being release
-            if (BuildConfig.BUILD_TYPE != RELEASE) {
-                Log.i(TAG, "Self-updates are not available for this build!")
-                return@withContext null
+            val updateUrl = when (BuildConfig.BUILD_TYPE) {
+                RELEASE -> Constants.UPDATE_URL_STABLE
+                NIGHTLY -> Constants.UPDATE_URL_NIGHTLY
+                else -> {
+                    Log.i(TAG, "Self-updates are not available for this build!")
+                    return@withContext null
+                }
             }
 
             try {
-                val response = httpClient.get(Constants.UPDATE_URL, mapOf())
+                val response = httpClient.get(updateUrl, mapOf())
                 val selfUpdate =
                     gson.fromJson(String(response.responseBytes), SelfUpdate::class.java)
 
