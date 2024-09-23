@@ -1,0 +1,6 @@
+• Opraven problém rozhraní v Androidu 15
+• Vylepšeno nastavení a použití proxy
+• SSL pinning pro známé domény používající kořenové certifikáty
+• Lepší podpora dynamických motivů na podporovaných zařízeních
+• Zrušena podpora pro vlastní motivy a barvy
+• Aktualizace překladů
