@@ -1,0 +1,6 @@
+• Android 15'teki kullanıcı arayüzü sorunu düzeltildi
+• Vekil sunucu yapılandırması ve kullanımında iyileştirmeler
+• Kök sertifikaları kullanarak bilinen etki alanları için SSL sabitleme
+• Desteklenen aygıtlarda daha iyi değişken tema desteği
+• Özel temalar ve vurgu renkleri desteği kaldırıldı
+• Çeviri güncellemeleri
