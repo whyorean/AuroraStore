@@ -71,7 +71,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">Az Aurora Store forráskódjának beszerzése GitLabról.</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid_summary">Az Aurora Store beszerzése F-Droidról.</string>
+    <string name="about_fdroid_summary">Az Aurora Store beszerzése az F-Droidból.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">Ethereum (ETH) adományozás</string>
     <string name="about_bitcoin_eth">Ethereum</string>
