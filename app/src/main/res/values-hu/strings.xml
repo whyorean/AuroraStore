@@ -366,7 +366,29 @@
     <string name="session_login">Kérem jelentkezzen be a Google Play fiókjába</string>
     <string name="title_more">Több</string>
     <string name="manage_account">Fiók kezelése</string>
-    <string name="about_aurora_store_title">Az Aurora Store-ról</string>
+    <string name="about_aurora_store_title">Az Aurora Store névjegye</string>
     <string name="pref_clear_device_owner_summary">Eltávolítja az Aurora Store-t eszköztulajdonos appként</string>
     <string name="about_aurora_store_subtitle">Tudj meg többet az Aurora Store-ról</string>
+    <string name="about_wiki_summary">Találja meg válaszait a gyakran ismételt kérdések között (GY.I.K.), hibaelhárítási lépések és egyebek</string>
+    <string name="about_aurora_store_summary">Az Aurora Store lehetővé teszi az alkalmazások keresését és letöltését a hivatalos Google Play áruházból. Ellenőrizheti az alkalmazások leírását, képernyőképeit, frissítéseit, más felhasználók megjegyzéseit, és letöltheti az APK-t közvetlenül a Google Play-ből a készülékére. Az Aurora Store használatához Google Play fiókkal kell rendelkeznie, és az Aurora Store első megnyitásakor és konfigurálásakor be kell jelentkeznie a Google Play fiókjába.
+\n
+\nA hagyományos alkalmazásboltokkal ellentétben az Aurora Store nem birtokol, nem licencel és nem terjeszt semmilyen alkalmazást. Az Aurora Store-ban található összes alkalmazás, alkalmazásleírás, képernyőkép és egyéb tartalom közvetlenül a Google Play-ből érhető el, tölthető le és/vagy jeleníthető meg. Az Aurora Store pontosan úgy működik, mint egy ajtó vagy egy böngésző, amely lehetővé teszi, hogy bejelentkezzen a Google Play fiókjába, és megtalálja az alkalmazásokat a Google Play-ből.
+\n
+\nFelhívjuk figyelmét, hogy az Aurora Store nem rendelkezik a Google, a Google Play, az Aurora Store-on keresztül letöltött alkalmazások vagy bármely alkalmazásfejlesztő jóváhagyásával, szponzorálásával vagy engedélyével; az Aurora Store nem áll velük semmilyen kapcsolatban, együttműködésben vagy kapcsolatban.</string>
+    <string name="action_favourite">Kedvenc</string>
+    <string name="details_no_favourites">Nem található kedvenc alkalmazás</string>
+    <string name="pref_clear_device_owner_title">Az eszköz tulajdonjogának törlése</string>
+    <string name="details_data_safety_title">Adatbiztonság</string>
+    <string name="details_data_safety_subtitle">A fejlesztő által bejelentett adatvédelmi és biztonsági gyakorlatok</string>
+    <string name="onboarding_permission_installer_legacy_desc">Ismeretlen forrásból származó alkalmazások telepítésének engedélyezése</string>
+    <string name="toast_permission_installer_required">Először adja meg a telepítési engedélyt</string>
+    <string name="toast_permission_esm_caution">Előfordulhat, hogy a Storage Access Framework hibája miatt újra meg kell adnia az engedélyt</string>
+    <string name="item_required">Szükséges</string>
+    <string name="action_uninstall_success">Sikeresen eltávolítva</string>
+    <string name="pref_clear_device_owner_desc">Ez visszavonja a munkamenet telepítő engedélyét az alkalmazás csendes telepítésére. Folytassa az eszköz tulajdonjogának törlését?</string>
+    <string name="pref_network_proxy_url_message">Adjon meg egy érvényes proxy URL-címet, hogy minden adatot a proxy-n keresztül továbbítson.</string>
+    <string name="toast_app_unavailable">Az alkalmazás nem elérhető a készülékére</string>
+    <string name="title_favourites_manager">Kedvenc alkalmazások</string>
+    <string name="item_optional">Választható</string>
+    <string name="pref_dispenser_title">Adagolók kezelése</string>
 </resources>

@@ -1,0 +1,6 @@
+• Solucionado un problema de interfaz de usuario en Android 15
+• Mejoras en la configuración y proxy
+• SSL para dominios conocidos mediante certificados raíz
+• Mejor compatibilidad con temas dinámicos en los dispositivos compatibles
+• Eliminada la compatibilidad con temas personalizados y colores de acento
+• Actualizaciones de traducción
