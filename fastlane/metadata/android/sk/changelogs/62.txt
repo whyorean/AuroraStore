@@ -1,0 +1,6 @@
+• Opravený UI problém na Android 15
+• Zlepšenie konfigurácie proxy a použitia
+• SSL pinning pre známe domény pomocou koreňových certifikátov
+• Lepšia podpora pre dynamické témy na podporovaných zariadeniach
+• Dropped podpora pre vlastné témy a prízvuk farby
+• Informácie o preklade
