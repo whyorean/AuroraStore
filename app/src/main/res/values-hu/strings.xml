@@ -38,7 +38,7 @@
     <string name="action_ignore">Mellőzés</string>
     <string name="action_granted">Megadva</string>
     <string name="action_grant">Megad</string>
-    <string name="action_get_local_apk">Alkalmazás csomag elmentése</string>
+    <string name="action_get_local_apk">Alkalmazáscsomag mentése</string>
     <string name="action_finish">Kész</string>
     <string name="action_filter_rating">Értékelések</string>
     <string name="action_filter_paid_apps">Fizetős</string>
