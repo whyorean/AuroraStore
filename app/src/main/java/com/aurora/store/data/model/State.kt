@@ -33,6 +33,7 @@ sealed class ViewState {
 }
 
 sealed class AuthState {
+    data object Init: AuthState()
     data object Available : AuthState()
     data object Unavailable : AuthState()
     data object SignedIn : AuthState()

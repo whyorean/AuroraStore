@@ -24,6 +24,7 @@ import android.net.UrlQuerySanitizer
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
 import com.aurora.extensions.show
@@ -36,6 +37,8 @@ import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
@@ -83,72 +86,70 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             binding.btnAnonymous.visibility = View.VISIBLE
         }
 
-        //Initial status
-        updateStatus(getString(R.string.session_init))
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.authState.collectLatest {
+                when (it) {
+                    AuthState.Init -> updateStatus(getString(R.string.session_init))
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            when (it) {
-                AuthState.Fetching -> {
-                    updateStatus(getString(R.string.requesting_new_session))
-                }
-
-                AuthState.Valid -> {
-                    val packageName = getPackageName()
-                    if (packageName.isBlank()) {
-                        navigateToDefaultTab()
-                    } else {
-                        requireArguments().remove("packageName")
-                        findNavController().navigate(
-                            SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
-                                packageName
-                            )
-                        )
+                    AuthState.Fetching -> {
+                        updateStatus(getString(R.string.requesting_new_session))
                     }
-                }
 
-                AuthState.Available -> {
-                    updateStatus(getString(R.string.session_verifying))
-                    updateActionLayout(false)
-                }
-
-                AuthState.Unavailable -> {
-                    updateStatus(getString(R.string.session_login))
-                    updateActionLayout(true)
-                }
-
-                AuthState.SignedIn -> {
-                    val packageName = getPackageName()
-                    if (packageName.isBlank()) {
-                        navigateToDefaultTab()
-                    } else {
-                        requireArguments().remove("packageName")
-                        findNavController().navigate(
-                            SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
-                                packageName
+                    AuthState.Valid -> {
+                        val packageName = getPackageName()
+                        if (packageName.isBlank()) {
+                            navigateToDefaultTab()
+                        } else {
+                            requireArguments().remove("packageName")
+                            findNavController().navigate(
+                                SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
+                                    packageName
+                                )
                             )
-                        )
+                        }
                     }
-                }
 
-                AuthState.SignedOut -> {
-                    updateStatus(getString(R.string.session_scrapped))
-                    updateActionLayout(true)
-                }
+                    AuthState.Available -> {
+                        updateStatus(getString(R.string.session_verifying))
+                        updateActionLayout(false)
+                    }
 
-                AuthState.Verifying -> {
-                    updateStatus(getString(R.string.verifying_new_session))
-                }
+                    AuthState.Unavailable -> {
+                        updateStatus(getString(R.string.session_login))
+                        updateActionLayout(true)
+                    }
 
-                is AuthState.Failed -> {
-                    updateStatus(it.status)
-                    updateActionLayout(true)
-                    resetActions()
+                    AuthState.SignedIn -> {
+                        val packageName = getPackageName()
+                        if (packageName.isBlank()) {
+                            navigateToDefaultTab()
+                        } else {
+                            requireArguments().remove("packageName")
+                            findNavController().navigate(
+                                SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
+                                    packageName
+                                )
+                            )
+                        }
+                    }
+
+                    AuthState.SignedOut -> {
+                        updateStatus(getString(R.string.session_scrapped))
+                        updateActionLayout(true)
+                    }
+
+                    AuthState.Verifying -> {
+                        updateStatus(getString(R.string.verifying_new_session))
+                    }
+
+                    is AuthState.Failed -> {
+                        updateStatus(it.status)
+                        updateActionLayout(true)
+                        resetActions()
+                    }
                 }
             }
         }
-
-        // Check authentication status
-        viewModel.observe()
     }
 
     private fun updateStatus(string: String?) {
@@ -167,14 +168,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     private fun attachActions() {
         binding.btnAnonymous.addOnClickListener {
-            if (viewModel.liveData.value != AuthState.Fetching) {
+            if (viewModel.authState.value != AuthState.Fetching) {
                 binding.btnAnonymous.updateProgress(true)
                 viewModel.buildAnonymousAuthData()
             }
         }
 
         binding.btnGoogle.addOnClickListener {
-            if (viewModel.liveData.value != AuthState.Fetching) {
+            if (viewModel.authState.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
                 findNavController().navigate(R.id.googleFragment)
             }

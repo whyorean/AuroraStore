@@ -22,7 +22,6 @@ package com.aurora.store.viewmodel.auth
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
@@ -40,6 +39,8 @@ import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -55,21 +56,15 @@ class AuthViewModel @Inject constructor(
 
     private val TAG = AuthViewModel::class.java.simpleName
 
-    val liveData: MutableLiveData<AuthState> = MutableLiveData()
+    private val _authState: MutableStateFlow<AuthState> = MutableStateFlow(AuthState.Init)
+    val authState = _authState.asStateFlow()
 
-    fun observe() {
-        if (liveData.value != AuthState.Fetching) {
-            if (AccountProvider.isLoggedIn(context)) {
-                liveData.postValue(AuthState.Available)
-                buildSavedAuthData()
-            } else {
-                liveData.postValue(AuthState.Unavailable)
-            }
-        }
+    init {
+        updateAuthState()
     }
 
     fun buildGoogleAuthData(email: String, token: String, tokenType: AuthHelper.Token) {
-        liveData.postValue(AuthState.Fetching)
+        _authState.value = AuthState.Fetching
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 verifyAndSaveAuth(
@@ -77,16 +72,15 @@ class AuthViewModel @Inject constructor(
                     AccountType.GOOGLE
                 )
             } catch (exception: Exception) {
-                liveData.postValue(
+                _authState.value =
                     AuthState.Failed(context.getString(R.string.failed_to_generate_session))
-                )
                 Log.e(TAG, "Failed to generate Session", exception)
             }
         }
     }
 
     fun buildAnonymousAuthData() {
-        liveData.postValue(AuthState.Fetching)
+        _authState.value = AuthState.Fetching
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 verifyAndSaveAuth(
@@ -95,7 +89,7 @@ class AuthViewModel @Inject constructor(
                 )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to generate Session", exception)
-                liveData.postValue(AuthState.Failed(exception.message.toString()))
+                _authState.value = AuthState.Failed(exception.message.toString())
             }
         }
     }
@@ -125,11 +119,22 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    private fun updateAuthState() {
+        if (_authState.value != AuthState.Fetching) {
+            if (AccountProvider.isLoggedIn(context)) {
+                _authState.value = AuthState.Available
+                buildSavedAuthData()
+            } else {
+                _authState.value = AuthState.Unavailable
+            }
+        }
+    }
+
     private fun buildSavedAuthData() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 if (authProvider.isSavedAuthDataValid()) {
-                    liveData.postValue(AuthState.Valid)
+                    _authState.value = AuthState.Valid
                 } else {
                     // Generate and validate new auth
                     when (AccountProvider.getAccountType(context)) {
@@ -152,13 +157,13 @@ class AuthViewModel @Inject constructor(
                     is ConnectException -> context.getString(R.string.server_unreachable)
                     else -> context.getString(R.string.bad_request)
                 }
-                liveData.postValue(AuthState.Failed(error))
+                _authState.value = AuthState.Failed(error)
             }
         }
     }
 
     private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType) {
-        liveData.postValue(AuthState.Verifying)
+        _authState.value = AuthState.Verifying
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             authProvider.saveAuthData(authData)
             AccountProvider.login(
@@ -168,13 +173,12 @@ class AuthViewModel @Inject constructor(
                 if (authData.aasToken.isBlank()) AuthHelper.Token.AUTH else AuthHelper.Token.AAS,
                 accountType
             )
-            liveData.postValue(AuthState.SignedIn)
+            _authState.value = AuthState.SignedIn
         } else {
             authProvider.removeAuthData(context)
             AccountProvider.logout(context)
-            liveData.postValue(
+            _authState.value =
                 AuthState.Failed(context.getString(R.string.failed_to_generate_session))
-            )
         }
     }
 }
