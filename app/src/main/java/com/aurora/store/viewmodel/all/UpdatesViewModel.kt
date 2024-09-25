@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.all
 
-import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,7 +33,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class UpdatesViewModel @Inject constructor(
     private val appUtil: AppUtil,
     private val downloadWorkerUtil: DownloadWorkerUtil,

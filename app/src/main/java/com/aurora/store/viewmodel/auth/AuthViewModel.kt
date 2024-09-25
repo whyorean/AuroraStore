@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.auth
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -47,7 +46,6 @@ import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
-@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class AuthViewModel @Inject constructor(
     val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,

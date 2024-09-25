@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.homestream
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -40,7 +39,6 @@ import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
 
 @HiltViewModel
-@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class StreamViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val httpClient: IHttpClient

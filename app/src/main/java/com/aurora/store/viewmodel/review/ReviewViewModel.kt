@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.review
 
-import android.annotation.SuppressLint
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,7 +36,6 @@ import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
 
 @HiltViewModel
-@SuppressLint("StaticFieldLeak") // false positive, see https://github.com/google/dagger/issues/3253
 class ReviewViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val authProvider: AuthProvider,
