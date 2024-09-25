@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
@@ -58,10 +57,10 @@ class AppUtil @Inject constructor(
         }
     }
 
-    suspend fun checkUpdates(tmpAuthData: AuthData? = null): List<Update> {
+    suspend fun checkUpdates(): List<Update> {
         Log.i(TAG, "Checking for updates")
         val packageInfoMap = PackageUtil.getPackageInfoMap(context)
-        val appUpdatesList = getFilteredInstalledApps(tmpAuthData, packageInfoMap)
+        val appUpdatesList = getFilteredInstalledApps(packageInfoMap)
             .filter {
                 val packageInfo = packageInfoMap[it.packageName]
                 if (packageInfo != null) {
@@ -86,11 +85,10 @@ class AppUtil @Inject constructor(
     }
 
     suspend fun getFilteredInstalledApps(
-        tmpAuthData: AuthData? = null,
         packageInfoMap: MutableMap<String, PackageInfo>? = null
     ): List<App> {
         return withContext(Dispatchers.IO) {
-            val appDetailsHelper = AppDetailsHelper(tmpAuthData?: authProvider.authData!!)
+            val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
                 .using(httpClient)
 
             (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->

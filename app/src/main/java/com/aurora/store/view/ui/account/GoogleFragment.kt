@@ -32,6 +32,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.AuthEvent
@@ -117,7 +118,7 @@ class GoogleFragment : BaseFragment<FragmentGoogleBinding>() {
         when (event) {
             is AuthEvent.GoogleLogin -> {
                 if (event.success) {
-                    viewModel.buildGoogleAuthData(event.email, event.token)
+                    viewModel.buildGoogleAuthData(event.email, event.token, AuthHelper.Token.AAS)
                 } else {
                     Toast.makeText(
                         requireContext(),

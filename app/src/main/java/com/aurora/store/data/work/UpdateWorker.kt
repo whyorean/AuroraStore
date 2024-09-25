@@ -121,19 +121,13 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         withContext(Dispatchers.IO) {
-            val authData = if (authProvider.isSavedAuthDataValid()) {
-                authProvider.authData
-            } else {
-                authProvider.getTmpAuthData()
-            }
-
-            if (authData == null) {
+            if (!authProvider.isSavedAuthDataValid()) {
                 Log.i(TAG, "AuthData is not valid, retrying later!")
                 return@withContext Result.retry()
             }
 
             try {
-                val updatesList = appUtil.checkUpdates(authData)
+                val updatesList = appUtil.checkUpdates()
                     .filter { it.hasValidCert }
                     .filterNot { it.isSelfUpdate() }
 

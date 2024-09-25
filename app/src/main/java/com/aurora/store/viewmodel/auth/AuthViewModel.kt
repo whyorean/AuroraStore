@@ -27,26 +27,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.helpers.AuthHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.AccountType
-import com.aurora.store.data.model.Auth
 import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 import java.net.ConnectException
 import java.net.UnknownHostException
 import javax.inject.Inject
@@ -56,8 +50,6 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,
-    private val gson: Gson,
-    private val httpClient: IHttpClient,
     private val aC2DMTask: AC2DMTask
 ) : ViewModel() {
 
@@ -67,8 +59,7 @@ class AuthViewModel @Inject constructor(
 
     fun observe() {
         if (liveData.value != AuthState.Fetching) {
-            val signedIn = Preferences.getBoolean(context, Constants.ACCOUNT_SIGNED_IN)
-            if (signedIn) {
+            if (AccountProvider.isLoggedIn(context)) {
                 liveData.postValue(AuthState.Available)
                 buildSavedAuthData()
             } else {
@@ -77,18 +68,14 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun buildGoogleAuthData(email: String, aasToken: String) {
+    fun buildGoogleAuthData(email: String, token: String, tokenType: AuthHelper.Token) {
         liveData.postValue(AuthState.Fetching)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val authData = AuthHelper.build(
-                    email = email,
-                    token = aasToken,
-                    tokenType = AuthHelper.Token.AAS,
-                    properties = authProvider.properties,
-                    locale = authProvider.locale
+                verifyAndSaveAuth(
+                    authProvider.buildGoogleAuthData(email, token, tokenType).getOrThrow(),
+                    AccountType.GOOGLE
                 )
-                verifyAndSaveAuth(authData, AccountType.GOOGLE)
             } catch (exception: Exception) {
                 liveData.postValue(
                     AuthState.Failed(context.getString(R.string.failed_to_generate_session))
@@ -102,28 +89,13 @@ class AuthViewModel @Inject constructor(
         liveData.postValue(AuthState.Fetching)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val playResponse = httpClient.getAuth(authProvider.dispenserURL!!)
-                if (playResponse.isSuccessful) {
-                    val tmpAuthData = gson.fromJson(
-                        String(playResponse.responseBytes),
-                        Auth::class.java
-                    )
-
-                    val authData = AuthHelper.build(
-                        email = tmpAuthData.email,
-                        token = tmpAuthData.auth,
-                        tokenType = AuthHelper.Token.AUTH,
-                        isAnonymous = true,
-                        properties = authProvider.properties,
-                        locale = authProvider.locale
-                    )
-                    verifyAndSaveAuth(authData, AccountType.ANONYMOUS)
-                } else {
-                    throwError(playResponse, context)
-                }
+                verifyAndSaveAuth(
+                    authProvider.buildAnonymousAuthData().getOrThrow(),
+                    AccountType.ANONYMOUS
+                )
             } catch (exception: Exception) {
-                liveData.postValue(AuthState.Failed(exception.message.toString()))
                 Log.e(TAG, "Failed to generate Session", exception)
+                liveData.postValue(AuthState.Failed(exception.message.toString()))
             }
         }
     }
@@ -155,98 +127,54 @@ class AuthViewModel @Inject constructor(
 
     private fun buildSavedAuthData() {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    if (authProvider.isSavedAuthDataValid()) {
-                        liveData.postValue(AuthState.Valid)
-                    } else {
-                        //Generate and validate new auth
-                        when (AccountProvider.getAccountType(context)) {
-                            AccountType.GOOGLE -> {
-                                val email = Preferences.getString(
-                                    context,
-                                    Constants.ACCOUNT_EMAIL_PLAIN
-                                )
-                                val aasToken = Preferences.getString(
-                                    context,
-                                    Constants.ACCOUNT_AAS_PLAIN
-                                )
-                                buildGoogleAuthData(email, aasToken)
-                            }
+            try {
+                if (authProvider.isSavedAuthDataValid()) {
+                    liveData.postValue(AuthState.Valid)
+                } else {
+                    // Generate and validate new auth
+                    when (AccountProvider.getAccountType(context)) {
+                        AccountType.GOOGLE -> {
+                            buildGoogleAuthData(
+                                AccountProvider.getLoginEmail(context)!!,
+                                AccountProvider.getLoginToken(context)!!.first,
+                                AccountProvider.getLoginToken(context)!!.second
+                            )
+                        }
 
-                            AccountType.ANONYMOUS -> {
-                                buildAnonymousAuthData()
-                            }
+                        AccountType.ANONYMOUS -> {
+                            buildAnonymousAuthData()
                         }
                     }
-                } catch (e: Exception) {
-                    val error = when (e) {
-                        is UnknownHostException -> {
-                            context.getString(R.string.title_no_network)
-                        }
-
-                        is ConnectException -> {
-                            context.getString(R.string.server_unreachable)
-                        }
-
-                        else -> {
-                            context.getString(R.string.bad_request)
-                        }
-                    }
-                    liveData.postValue(AuthState.Failed(error))
                 }
+            } catch (exception: Exception) {
+                val error = when (exception) {
+                    is UnknownHostException -> context.getString(R.string.title_no_network)
+                    is ConnectException -> context.getString(R.string.server_unreachable)
+                    else -> context.getString(R.string.bad_request)
+                }
+                liveData.postValue(AuthState.Failed(error))
             }
         }
     }
 
-    private fun verifyAndSaveAuth(authData: AuthData, type: AccountType) {
+    private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType) {
         liveData.postValue(AuthState.Verifying)
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
-            configAuthPref(authData, type, true)
+            authProvider.saveAuthData(authData)
+            AccountProvider.login(
+                context,
+                authData.email,
+                authData.aasToken.ifBlank { authData.authToken },
+                if (authData.aasToken.isBlank()) AuthHelper.Token.AUTH else AuthHelper.Token.AAS,
+                accountType
+            )
             liveData.postValue(AuthState.SignedIn)
         } else {
-            configAuthPref(authData, type, false)
-            liveData.postValue(AuthState.SignedOut)
-
+            authProvider.removeAuthData(context)
+            AccountProvider.logout(context)
             liveData.postValue(
                 AuthState.Failed(context.getString(R.string.failed_to_generate_session))
             )
-        }
-    }
-
-    private fun configAuthPref(authData: AuthData, type: AccountType, signedIn: Boolean) {
-        if (signedIn) {
-            //Save Auth Data
-            Preferences.putString(context, PREFERENCE_AUTH_DATA, gson.toJson(authData))
-        }
-
-        //Save Auth Type
-        Preferences.putString(context, Constants.ACCOUNT_TYPE, type.name)
-
-        //Save Auth Status
-        Preferences.putBoolean(context, Constants.ACCOUNT_SIGNED_IN, signedIn)
-    }
-
-    @Throws(Exception::class)
-    private fun throwError(playResponse: PlayResponse, context: Context) {
-        when (playResponse.code) {
-            400 -> throw Exception(context.getString(R.string.bad_request))
-            403 -> throw Exception(context.getString(R.string.access_denied_using_vpn))
-            404 -> throw Exception(context.getString(R.string.server_unreachable))
-            429 -> throw Exception(context.getString(R.string.login_rate_limited))
-            503 -> throw Exception(context.getString(R.string.server_maintenance))
-            else -> {
-                if (playResponse.errorString.isNotBlank()) {
-                    throw Exception(playResponse.errorString)
-                } else {
-                    throw Exception(
-                        context.getString(
-                            R.string.failed_generating_session,
-                            playResponse.code
-                        )
-                    )
-                }
-            }
         }
     }
 }

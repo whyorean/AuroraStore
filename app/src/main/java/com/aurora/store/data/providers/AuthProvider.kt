@@ -21,9 +21,8 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.util.Log
-import com.aurora.Constants
-import com.aurora.Constants.ACCOUNT_SIGNED_IN
 import com.aurora.gplayapi.data.models.AuthData
+import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.AuthValidator
 import com.aurora.gplayapi.network.IHttpClient
@@ -53,7 +52,27 @@ class AuthProvider @Inject constructor(
 
     private val TAG = AuthProvider::class.java.simpleName
 
-    val properties: Properties
+    val dispenserURL: String?
+        get() {
+            val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
+            return if (dispensers.isNotEmpty()) dispensers.random() else null
+        }
+
+    val authData: AuthData?
+        get() {
+            Log.i(TAG, "Loading saved AuthData")
+            val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
+            return if (rawAuth.isNotBlank()) {
+                gson.fromJson(rawAuth, AuthData::class.java)
+            } else {
+                null
+            }
+        }
+
+    val isAnonymous: Boolean
+        get() = AccountProvider.getAccountType(context) == AccountType.ANONYMOUS
+
+    private val properties: Properties
         get() {
             val currentProperties = if (spoofProvider.isDeviceSpoofEnabled()) {
                 spoofProvider.getSpoofDeviceProperties()
@@ -63,40 +82,13 @@ class AuthProvider @Inject constructor(
             setVendingVersion(currentProperties)
             return currentProperties
         }
-    val locale: Locale
+
+    private val locale: Locale
         get() = if (spoofProvider.isLocaleSpoofEnabled()) {
             spoofProvider.getSpoofLocale()
         } else {
             Locale.getDefault()
         }
-
-    val dispenserURL: String?
-        get() {
-            val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
-            return if (dispensers.isNotEmpty()) dispensers.random() else null
-        }
-
-    val authData: AuthData? get() = getSavedAuthData()
-
-    val isAnonymous: Boolean
-        get() {
-            val name = Preferences.getString(context, Constants.ACCOUNT_TYPE, AccountType.GOOGLE.name)
-            return AccountType.valueOf(name) == AccountType.ANONYMOUS
-        }
-
-    private val signedIn: Boolean
-        get() = Preferences.getBoolean(context, ACCOUNT_SIGNED_IN)
-
-    /**
-     * Builds and returns AuthData based on signed-in account type
-     */
-    suspend fun getTmpAuthData(): AuthData? {
-        return when {
-            !signedIn -> null
-            !isAnonymous -> buildGoogleAuthData()
-            else -> buildAnonymousAuthData()
-        }
-    }
 
     /**
      * Checks whether saved AuthData is valid or not
@@ -113,54 +105,77 @@ class AuthProvider @Inject constructor(
         }
     }
 
-    private fun getSavedAuthData(): AuthData? {
-        Log.i(TAG, "Loading saved AuthData")
-        val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
-        return if (rawAuth.isNotEmpty()) {
-            gson.fromJson(rawAuth, AuthData::class.java)
-        } else {
-            null
-        }
-    }
-
-    private suspend fun buildGoogleAuthData(): AuthData? {
+    /**
+     * Builds [AuthData] for login using personal Google account
+     * @param email E-mail ID
+     * @param token AAS or Auth token
+     * @param tokenType Type of the token, one from [AuthHelper.Token]
+     * @return Result encapsulating [AuthData] or exception
+     */
+    suspend fun buildGoogleAuthData(
+        email: String,
+        token: String,
+        tokenType: AuthHelper.Token
+    ): Result<AuthData> {
         return withContext(Dispatchers.IO) {
             try {
-                val email = Preferences.getString(context, Constants.ACCOUNT_EMAIL_PLAIN)
-                val aasToken = Preferences.getString(context, Constants.ACCOUNT_AAS_PLAIN)
-
-                return@withContext AuthHelper.build(
-                    email = email,
-                    token = aasToken,
-                    tokenType = AuthHelper.Token.AAS,
-                    properties = properties,
-                    locale = locale
+                return@withContext Result.success(
+                    AuthHelper.build(
+                        email = email,
+                        token = token,
+                        tokenType = tokenType,
+                        properties = properties,
+                        locale = locale,
+                    )
                 )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to generate Session", exception)
-                return@withContext null
+                return@withContext Result.failure(exception)
             }
         }
     }
 
-    private suspend fun buildAnonymousAuthData(): AuthData? {
+    /**
+     * Builds [AuthData] for login using one of the dispensers
+     * @return Result encapsulating [AuthData] or exception
+     */
+    suspend fun buildAnonymousAuthData(): Result<AuthData> {
         return withContext(Dispatchers.IO) {
             try {
-                val playResponse = httpClient.getAuth(dispenserURL!!)
+                val playResponse = httpClient.getAuth(dispenserURL!!).also {
+                    if (!it.isSuccessful) throwError(it, context)
+                }
+
                 val auth = gson.fromJson(String(playResponse.responseBytes), Auth::class.java)
-                return@withContext AuthHelper.build(
-                    email = auth.email,
-                    token = auth.auth,
-                    tokenType = AuthHelper.Token.AUTH,
-                    isAnonymous = true,
-                    properties = properties,
-                    locale = locale
+                return@withContext Result.success(
+                    AuthHelper.build(
+                        email = auth.email,
+                        token = auth.auth,
+                        tokenType = AuthHelper.Token.AUTH,
+                        isAnonymous = true,
+                        properties = properties,
+                        locale = locale
+                    )
                 )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to generate AuthData", exception)
-                return@withContext null
+                return@withContext Result.failure(exception)
             }
         }
+    }
+
+    /**
+     * Saves given [AuthData]
+     */
+    fun saveAuthData(authData: AuthData) {
+        Preferences.putString(context, PREFERENCE_AUTH_DATA, gson.toJson(authData))
+    }
+
+    /**
+     * Removes saved [AuthData]
+     */
+    fun removeAuthData(context: Context) {
+        Preferences.remove(context, PREFERENCE_AUTH_DATA)
     }
 
     private fun setVendingVersion(currentProperties: Properties) {
@@ -172,6 +187,29 @@ class AuthProvider @Inject constructor(
 
             currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
             currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
+        }
+    }
+
+    @Throws(Exception::class)
+    private fun throwError(playResponse: PlayResponse, context: Context) {
+        when (playResponse.code) {
+            400 -> throw Exception(context.getString(R.string.bad_request))
+            403 -> throw Exception(context.getString(R.string.access_denied_using_vpn))
+            404 -> throw Exception(context.getString(R.string.server_unreachable))
+            429 -> throw Exception(context.getString(R.string.login_rate_limited))
+            503 -> throw Exception(context.getString(R.string.server_maintenance))
+            else -> {
+                if (playResponse.errorString.isNotBlank()) {
+                    throw Exception(playResponse.errorString)
+                } else {
+                    throw Exception(
+                        context.getString(
+                            R.string.failed_generating_session,
+                            playResponse.code
+                        )
+                    )
+                }
+            }
         }
     }
 }
