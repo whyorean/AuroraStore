@@ -1,0 +1,6 @@
+• Corrigido um problema de interface no Android 15
+• Melhorias à configuração e ao uso de proxy
+• "TLS Pinning" para domínios conhecidos usando certificados root
+• Suporte melhor à temas dinâmicos em dispositivos suportados
+• Suporte à temas customizados e cores destaques removido
+• Traduções atualizadas
