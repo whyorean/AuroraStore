@@ -88,7 +88,7 @@ object OkHttpClientModule {
             val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
 
             val proxy = Proxy(
-                if (proxyInfo.protocol == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,
+                if (proxyInfo.protocol.removeSuffix("5") == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,
                 InetSocketAddress.createUnresolved(proxyInfo.host, proxyInfo.port)
             )
 
