@@ -45,6 +45,13 @@ object PackageUtil {
 
     private const val TAG = "PackageUtil"
 
+    private const val PACKAGE_NAME_MICRO_G = "com.google.android.gms"
+    private const val VERSION_CODE_MICRO_G = 240913004
+
+    fun hasSupportedMicroG(context: Context): Boolean {
+        return isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G)
+    }
+
     fun isInstalled(context: Context, packageName: String): Boolean {
         return try {
             getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
