@@ -46,6 +46,10 @@ object PackageUtil {
 
     private const val TAG = "PackageUtil"
 
+    private const val PACKAGE_NAME_MICRO_G = "com.google.android.gms"
+    private const val VERSION_CODE_MICRO_G = 240913402
+    private const val VERSION_CODE_MICRO_G_HUAWEI = 240913007
+
     fun getAllValidPackages(context: Context): List<PackageInfo> {
         val sharedLibs = context.packageManager.systemSharedLibraryNames ?: emptyArray()
         return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
@@ -55,6 +59,14 @@ object PackageUtil {
                 it.applicationInfo!!.loadLabel(context.packageManager).toString()
                     .lowercase(Locale.getDefault())
             }
+    }
+
+    fun hasSupportedMicroG(context: Context): Boolean {
+        return if (isHuawei) {
+            isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G_HUAWEI)
+        } else {
+            isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G)
+        }
     }
 
     fun isInstalled(context: Context, packageName: String): Boolean {
