@@ -1,0 +1,6 @@
+• Probleme mit der Bedienoberfläche auf Android 15 behoben
+• Verbesserungen bei der Proxy-Konfiguration und -Nutzung
+• SSL-Pinning für bekannte Domains mit Root-Zertifikaten
+• Bessere Unterstützung für dynamische Designs auf unterstützten Geräten
+• Unterstützung für benutzerdefinierte Designs und Akzentfarben entfällt
+• Übersetzungen aktualisiert

@@ -308,7 +308,7 @@
     <string name="pref_aurora_only">Csak Aurora Store alkalmazások</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="amazon_appstore_desc">Az Amazon Appstore egy alkalmazásbolt Amazon által üzemeltetett Android-kompatibilis platformokhoz.</string>
-    <string name="toast_proxy_invalid">Érvénytelen proxy URL, ellenőrizze a formátumot!</string>
+    <string name="toast_proxy_invalid">Érvénytelen proxy webcím, ellenőrizze a formátumot!</string>
     <string name="pref_aurora_only_desc">Csak Aurora Store által telepített alkalmazások megjelenítése a frissítésekben és a telepített alkalmazásokban</string>
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
     <string name="title_app_settings">Alkalmazásbeállítások</string>
@@ -391,12 +391,12 @@
     <string name="title_favourites_manager">Kedvenc alkalmazások</string>
     <string name="item_optional">Választható</string>
     <string name="pref_dispenser_title">Kiosztott tokenek kezelése</string>
-    <string name="add_dispenser_error">Érvénytelen hivatkozás</string>
+    <string name="add_dispenser_error">Érvénytelen webcím</string>
     <string name="export_app_title">Fájlexportáló</string>
     <string name="export_app_summary">Várjon, a fájl exportálása</string>
     <string name="force_restart_title">Aurora Store újraindítása</string>
     <string name="add">Hozzáadás</string>
-    <string name="add_dispenser_hint">Kiosztó URL</string>
+    <string name="add_dispenser_hint">Kiosztó webcím</string>
     <string name="remove_dispenser_title">Kiosztó eltávolítása</string>
     <string name="remove_dispenser_summary">Szeretné eltávolítani a(z) „&lt;xliff:g id=”url„&gt;%1$s&lt;/xliff:g&gt;” kiosztót?</string>
     <string name="remove">Eltávolítás</string>
