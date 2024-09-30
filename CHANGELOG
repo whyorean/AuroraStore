@@ -1,3 +1,8 @@
+Changelog : v4.6.2 (63)
+• Fixed minor migration issue
+• Added auto update for Nightly builds
+• Translation updates
+
 Changelog : v4.6.1 (62)
 • Fixed UI issue on Android 15
 • Improvements to proxy configuration and usage
