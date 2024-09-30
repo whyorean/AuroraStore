@@ -57,7 +57,9 @@ class MigrationReceiver : BroadcastReceiver() {
                 if (CertUtil.isAppGalleryApp(context, context.packageName)) {
                     val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
                         .toMutableSet()
-                        .remove(Constants.URL_DISPENSER)
+                    
+                    dispensers.remove(Constants.URL_DISPENSER)
+
                     context.save(PREFERENCE_DISPENSER_URLS, dispensers)
                 }
                 currentVersion++
