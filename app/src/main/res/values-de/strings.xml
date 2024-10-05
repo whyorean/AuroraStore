@@ -180,7 +180,7 @@
     <string name="details_changelog">Änderungen</string>
     <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern. Der Status der Registrierung kann später überprüft werden.</string>
     <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Hilf den Entwicklern mit deiner Rückmeldung, die App zu verbessern.</string>
-    <string name="details_beta_available">Am Betatest teilnehmen\?</string>
+    <string name="details_beta_available">Am Betatest teilnehmen?</string>
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta-Programm</string>
     <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
@@ -305,7 +305,7 @@
     <string name="amazon_appstore_desc">Amazon Appstore ist ein von Amazon betriebener App-Store für Android-kompatible Plattformen.</string>
     <string name="android_market_desc">Android Market war ein Online-Store, der Softwareanwendungen für Android-Geräte anbot und 2017 eingestellt wurde.</string>
     <string name="details_ratings_title_hint">Titel bewerten</string>
-    <string name="action_uninstall_confirmation">Soll diese App deinstalliert werden\?</string>
+    <string name="action_uninstall_confirmation">Soll diese App deinstalliert werden?</string>
     <string name="title_apps_sale_provider">Anbieter: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Keine Apps im Angebot gefunden</string>
     <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
