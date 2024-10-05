@@ -43,7 +43,7 @@
     <string name="details_changelog">Список змін</string>
     <string name="details_beta_delay">Реєстрація може тривати трохи часу, стан можна перевірити пізніше.</string>
     <string name="details_beta_description">Ви побачите нові функції та помилки перед тим, як це стане загальнодоступним. Надішліть свій відгук розробникам, щоб допомогти їм вдосконалити застосунок.</string>
-    <string name="details_beta_available">Приєднатися до бета тестування\?</string>
+    <string name="details_beta_available">Приєднатися до бета тестування?</string>
     <string name="details_beta_subscribed">Ви бета тестувальник</string>
     <string name="details_beta">Бета тестування</string>
     <string name="action_wishlist_add">Додати до білого списку</string>
@@ -313,7 +313,7 @@
     <string name="details_no_apps_on_sale">На розпродажі не знайдено жодного застосунку</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
     <string name="pref_download_directory_error">Вибраний шлях недоступний для запису</string>
-    <string name="action_uninstall_confirmation">Ви хочете видалити цей застосунок\?</string>
+    <string name="action_uninstall_confirmation">Ви хочете видалити цей застосунок?</string>
     <string name="pref_downloader_wifi_title">Завантаження лише за допомогою Wi-Fi</string>
     <string name="pref_network_proxy_enable">Увімкнути проксі</string>
     <string name="pref_network_proxy_url">URL проксі</string>
