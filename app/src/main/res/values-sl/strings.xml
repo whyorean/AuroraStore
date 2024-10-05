@@ -51,7 +51,7 @@
     <string name="action_wishlist_add">Dodaj na seznam želja</string>
     <string name="details_beta">Program Beta</string>
     <string name="details_beta_subscribed">Zdaj ste Beta uporabnik</string>
-    <string name="details_beta_available">Se želite pridružiti v Beta program\?</string>
+    <string name="details_beta_available">Se želite pridružiti v Beta program?</string>
     <string name="details_beta_delay">Včlanitev lahko traja nekaj časa. Status preverite kasneje.</string>
     <string name="details_changelog">Spremembe</string>
     <string name="details_dependencies">Odvisnosti</string>
