@@ -146,7 +146,7 @@
     <string name="details_changelog">Евиденција промена</string>
     <string name="details_beta_delay">Упис може потрајати, статус можете проверити касније.</string>
     <string name="details_beta_description">Видећете нове функције и грешке пре него што их јавност види. Пошаљите повратне информације програмерима како бисте им помогли да побољшају апликацију.</string>
-    <string name="details_beta_available">Придружите се бета програму\?</string>
+    <string name="details_beta_available">Придружите се бета програму?</string>
     <string name="details_beta_subscribed">Ви сте бета тестер</string>
     <string name="details_beta">Бета програм</string>
     <string name="action_wishlist_add">Додај на листу жеља</string>
@@ -308,9 +308,7 @@
     <string name="updates_available">ажурирања су доступна</string>
     <string name="access_denied_using_vpn">Приступ одбијен! Да ли користите VPN или Tor\?</string>
     <string name="server_unreachable">Сервер недоступан</string>
-    <string name="failed_generating_session">Генерисање сесије није успело, кôд грешке:
-\n<xliff:g id="status_code">
-\n%1$d</xliff:g></string>
+    <string name="failed_generating_session">Генерисање сесије није успело, кôд грешке: \n<xliff:g id="status_code"> \n%1$d</xliff:g></string>
     <string name="check_connectivity">Проверите интернет везу</string>
     <string name="download_progress">Преузимање •
 \n<xliff:g id="completed_downloads">
@@ -341,7 +339,7 @@
     <string name="amazon_appstore_desc">Amazon Appstore је продавница апликација за платформе компатибилне са Android-ом, којом управља Amazon.</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
-    <string name="action_uninstall_confirmation">Желите ли да деинсталирате ову апликацију\?</string>
+    <string name="action_uninstall_confirmation">Желите ли да деинсталирате ову апликацију?</string>
     <string name="title_apps_sale_provider">Пружалац - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Није пронађена ниједна апликација на распродаји</string>
     <string name="pref_download_directory_error">Изабрана путања није уписива</string>
