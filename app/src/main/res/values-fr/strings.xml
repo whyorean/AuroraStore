@@ -90,7 +90,7 @@
     <string name="details_changelog_unavailable">Journal non fourni</string>
     <string name="details_changelog">Journal des modifications</string>
     <string name="details_dev_email">Courriel</string>
-    <string name="details_beta_available">Rejoindre le programme bêta \?</string>
+    <string name="details_beta_available">Rejoindre le programme bêta ?</string>
     <string name="details_beta_subscribed">Vous êtes bêta-testeur</string>
     <string name="details_beta">Programme bêta</string>
     <string name="action_wishlist_add">Ajouter à la liste de souhaits</string>
