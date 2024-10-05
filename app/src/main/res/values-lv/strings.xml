@@ -51,7 +51,7 @@
     <string name="about_bitcoin_eth_summary">Ziedot ar Ethereum (ETH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_telegram">Telegram</string>
-    <string name="details_beta_available">Pievienoties Beta programmai\?</string>
+    <string name="details_beta_available">Pievienoties Beta programmai?</string>
     <string name="action_pause">Pauzēt</string>
     <string name="action_post">Publicēt</string>
     <string name="action_restart">Restartēt</string>
@@ -306,7 +306,7 @@
     <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, pārstāja darboties 2017. gadā.</string>
     <string name="details_ratings_title_hint">Apskata nosaukums</string>
     <string name="details_no_apps_on_sale">Netika atrastas izpārdošanā esošas lietotnes</string>
-    <string name="action_uninstall_confirmation">Vai noņemt šo lietotni\?</string>
+    <string name="action_uninstall_confirmation">Vai noņemt šo lietotni?</string>
     <string name="pref_network_proxy_enable">Iespējot starpniekserveri</string>
     <string name="pref_network_proxy_url">Starpniekservera URL</string>
     <string name="pref_updates_check_frequency_desc">Norādīt starpposmu stundās automātiskajiem un pašatjauninājumiem.</string>
