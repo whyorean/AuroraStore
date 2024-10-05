@@ -170,7 +170,7 @@
     <string name="onboarding_permission_esa">बाहरी स्टोरेज एक्सेस</string>
     <string name="toast_permission_granted">अनुमति दी गई</string>
     <string name="details_free">निःशुल्क</string>
-    <string name="details_beta_available">बीटा प्रोग्राम से जुड़ें\?</string>
+    <string name="details_beta_available">बीटा प्रोग्राम से जुड़ें?</string>
     <string name="details_description">जानकारी</string>
     <string name="details_dev_profile">विकासकर्ता प्रोफाइल</string>
     <string name="toast_anonymous_restriction">अनाम खातों पर उपलब्ध नहीं है</string>
@@ -305,7 +305,7 @@
     <string name="amazon_appstore_desc">Amazon Appstore Amazon द्वारा संचालित Android-संगत प्लेटफार्मों के लिए एक ऐप स्टोर है।</string>
     <string name="android_market_desc">Android Market Android डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
     <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
-    <string name="action_uninstall_confirmation">क्या आप इस ऐप को अनइंस्टॉल करना चाहते हैं\?</string>
+    <string name="action_uninstall_confirmation">क्या आप इस ऐप को अनइंस्टॉल करना चाहते हैं?</string>
     <string name="pref_aurora_only">केवल ऑरोरा स्टोर ऐप्स</string>
     <string name="pref_aurora_only_desc">अपडेट और इंस्टॉल किए गए ऐप्स में केवल ऑरोरा स्टोर से इंस्टॉल किए गए ऐप्स दिखाएं</string>
     <string name="title_app_settings">ऐप सेटिंग्स</string>
