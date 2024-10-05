@@ -142,7 +142,7 @@
     <string name="title_apps_library">יישומים בספרייה</string>
     <string name="title_blacklist_manager">מנהל רשימת החסימה</string>
     <string name="title_device">מכשיר</string>
-    <string name="details_beta_available">להצטרף לתוכנית גרסת הביתא \?</string>
+    <string name="details_beta_available">להצטרף לתוכנית גרסת הביתא ?</string>
     <string name="details_beta_subscribed">נרשמת לתוכנית הבדיקה של גרסת הביתא</string>
     <string name="exodus_view_report">הצגת הדו״ח</string>
     <string name="download_metadata">נתוני העל מתקבלים</string>
