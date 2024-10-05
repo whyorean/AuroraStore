@@ -39,7 +39,7 @@
     <string name="about_bitcoin_btc_summary">Dona per Bitcoin (BTC)</string>
     <string name="action_update">Anovar</string>
     <string name="action_update_all">Anovar too</string>
-    <string name="details_beta_available">¿Quies xunite al programa Beta\?</string>
+    <string name="details_beta_available">¿Quies xunite al programa Beta?</string>
     <string name="details_no_ads">Nun contién anuncios</string>
     <string name="details_no_updates">Nun hai nengún anovamientu disponible</string>
     <string name="pref_filter_fdroid_summary">Quita les aplicaciones de F-Droid de les llistes</string>
