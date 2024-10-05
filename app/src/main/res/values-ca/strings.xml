@@ -36,7 +36,7 @@
     <string name="notification_channel_general">Notificació general</string>
     <string name="action_whitelist">Llista blanca</string>
     <string name="action_wishlist_add">Afegir a la llista blanca</string>
-    <string name="details_beta_available">Unir-se al programa beta\?</string>
+    <string name="details_beta_available">Unir-se al programa beta?</string>
     <string name="details_beta">Programa beta</string>
     <string name="details_beta_subscribed">Ets un provador beta</string>
     <string name="details_dev_details">Contacte del desenvolupador</string>
