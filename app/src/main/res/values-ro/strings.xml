@@ -31,7 +31,7 @@
     <string name="action_wishlist_add">Adaugă la lista de dorințe</string>
     <string name="details_beta">Programul Beta</string>
     <string name="details_beta_subscribed">Ești un tester beta</string>
-    <string name="details_beta_available">Te alături programului beta\?</string>
+    <string name="details_beta_available">Te alături programului beta?</string>
     <string name="details_beta_delay">Înscrierea poate dura ceva timp, poți verifica starea mai târziu.</string>
     <string name="details_dev_website">Pagina web</string>
     <string name="download_eta_hrs">%1$d h %2$d m %3$d s rămas</string>
