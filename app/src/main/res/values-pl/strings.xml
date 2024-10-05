@@ -18,7 +18,7 @@
     <string name="details_changelog">Lista zmian</string>
     <string name="details_beta_delay">Rekrutacja może trochę potrwać. Status zgłoszenia możesz sprawdzić później.</string>
     <string name="details_beta_description">Zobaczysz nowe funkcje i błędy zanim zrobi to opinia publiczna. Przekaż swoją opinię programistom, aby pomóc im wprowadzić ulepszenia.</string>
-    <string name="details_beta_available">Chcesz dołączyć do programu beta\?</string>
+    <string name="details_beta_available">Chcesz dołączyć do programu beta?</string>
     <string name="details_beta_subscribed">Jesteś betatesterem</string>
     <string name="details_beta">Program beta</string>
     <string name="action_wishlist_add">Dodaj do listy życzeń</string>
@@ -305,7 +305,7 @@
     <string name="amazon_appstore_desc">Amazon Appstore to sklep z aplikacjami dla platform kompatybilnych z systemem Android obsługiwany przez Amazon.</string>
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
     <string name="details_ratings_title_hint">Tytuł recenzji</string>
-    <string name="action_uninstall_confirmation">Czy chcesz odinstalować tę aplikację\?</string>
+    <string name="action_uninstall_confirmation">Czy chcesz odinstalować tę aplikację?</string>
     <string name="title_apps_sale_provider">Dostawca - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nie znaleziono aplikacji na wyprzedaży</string>
     <string name="pref_download_directory_error">Wybrana ścieżka nie umożliwia zapisu</string>
