@@ -187,7 +187,7 @@
     <string name="details_changelog">Novidades</string>
     <string name="details_beta_delay">A adesão poderá levar algum tempo. Pode verificar o estado mais tarde.</string>
     <string name="details_beta_description">Verá novas funcionalidades e erros antes do público. Dê a sua opinião aos programadores para os ajudar a melhorar.</string>
-    <string name="details_beta_available">Aderir ao programa beta\?</string>
+    <string name="details_beta_available">Aderir ao programa beta?</string>
     <string name="details_beta_subscribed">É um beta tester</string>
     <string name="details_beta">Programa beta</string>
     <string name="action_wishlist_add">Adicionar à lista de desejos</string>
@@ -320,7 +320,7 @@
     <string name="pref_download_directory_error">O caminho selecionado não é gravável</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir que todo o tráfego da aplicação passe pelo proxy</string>
-    <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação\?</string>
+    <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação?</string>
     <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-Fi</string>
     <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão Google Play</string>

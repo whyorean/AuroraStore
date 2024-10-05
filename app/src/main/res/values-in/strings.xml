@@ -197,7 +197,7 @@
     <string name="details_changelog">Daftar perubahan</string>
     <string name="details_beta_delay">Pendaftaran mungkin membutuhkan waktu, Anda dapat memeriksa statusnya nanti.</string>
     <string name="details_beta_description">Anda akan melihat fitur baru dan bug sebelum dirilis ke publik, Berikan masukan Anda ke pengembang untuk bantu mereka meningkatkannya.</string>
-    <string name="details_beta_available">Bergabung dengan program beta\?</string>
+    <string name="details_beta_available">Bergabung dengan program beta?</string>
     <string name="details_beta_subscribed">Anda adalah penguji beta</string>
     <string name="tab_top_grossing">Terlaris</string>
     <string name="tab_top_free">Teratas gratis</string>

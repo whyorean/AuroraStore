@@ -144,7 +144,7 @@
     <string name="details_changelog">Berriak</string>
     <string name="details_beta_delay">Izen emateak denbora luzea hartu dezake, egoera geroago egiaztatu dezakezu.</string>
     <string name="details_beta_description">Besteak baino lehenago ikusiko dituzu funtzio berriak eta akatsak. Eman eritzia programatzailei hobetzen laguntzeko.</string>
-    <string name="details_beta_available">Sartu beta programan\?</string>
+    <string name="details_beta_available">Sartu beta programan?</string>
     <string name="details_beta_subscribed">Beta erabiltzaile zara</string>
     <string name="details_beta">Beta programa</string>
     <string name="action_wishlist_add">Zerrenda zurian sartu</string>

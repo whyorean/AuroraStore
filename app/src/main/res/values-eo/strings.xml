@@ -165,7 +165,7 @@
     <string name="action_post">Afiŝi</string>
     <string name="action_restart">Restarti</string>
     <string name="details_beta_subscribed">Vi estas beta testanto</string>
-    <string name="details_beta_available">Ĉu aniĝi betan programon\?</string>
+    <string name="details_beta_available">Ĉu aniĝi betan programon?</string>
     <string name="details_no_permission">Sen permesoj</string>
     <string name="about_gitlab_summary">Akiri la Aurora Store fontkodon el Aurora OSS ĉe GitLab.</string>
     <string name="app_links_desc">Lasu Aurora Store malfermi apogitajn ligilojn</string>

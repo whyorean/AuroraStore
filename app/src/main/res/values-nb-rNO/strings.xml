@@ -175,7 +175,7 @@
     <string name="download_speed_estimating">Estimering</string>
     <string name="details_beta_delay">Påmelding kan ta litt tid, du kan sjekke status senere.</string>
     <string name="details_beta_description">Du vil se nye funksjoner og feil før offentligheten gjør det. Gi tilbakemelding til utviklere for å hjelpe dem med å forbedre seg.</string>
-    <string name="details_beta_available">Bli med i beta-programmet \?</string>
+    <string name="details_beta_available">Bli med i beta-programmet ?</string>
     <string name="action_logout">Logg ut</string>
     <string name="action_filter_gsf_dependent_apps">GSF avhengig</string>
     <string name="action_disable">Deaktiver</string>

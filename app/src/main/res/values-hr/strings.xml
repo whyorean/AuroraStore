@@ -8,7 +8,7 @@
     <string name="details_changelog">Dnevnik promjena</string>
     <string name="details_beta_delay">Upis može ponešto potrajati, stoga provjeri status kasnije.</string>
     <string name="details_beta_description">Vidjet ćeš nove funkcije i greške prije nego što se objave. Šalji poboljšanja programerima putem povratnih informacija.</string>
-    <string name="details_beta_available">Želiš se pridružiti beta programu\?</string>
+    <string name="details_beta_available">Želiš se pridružiti beta programu?</string>
     <string name="details_beta_subscribed">Ti si član beta programa</string>
     <string name="details_beta">Beta program</string>
     <string name="action_wishlist_add">Dodaj u popis želja</string>

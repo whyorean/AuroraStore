@@ -127,7 +127,7 @@
     <string name="action_update">புதுப்பிப்புகள்</string>
     <string name="action_wishlist_add">விருப்பப்பட்டியலில் சேர்</string>
     <string name="details_beta_subscribed">நீங்கள் ஒரு பீட்டா சோதனையாளர்</string>
-    <string name="details_beta_available">பீட்டா திட்டத்தில் சேரவா\?</string>
+    <string name="details_beta_available">பீட்டா திட்டத்தில் சேரவா?</string>
     <string name="details_changelog">மாற்றப்பதிவு</string>
     <string name="details_changelog_unavailable">மாற்றப்பதிவு வழங்கப்படவில்லை</string>
     <string name="details_contains_ads">விளம்பரங்களைக் கொண்டுள்ளது</string>

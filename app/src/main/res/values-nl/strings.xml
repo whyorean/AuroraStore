@@ -174,7 +174,7 @@
     <string name="details_changelog">Wijzigingslog</string>
     <string name="details_beta_delay">Inschrijving kan even duren, u kunt de status later bekijken.</string>
     <string name="details_beta_description">U zal nieuwe functies en fouten zien voordat het publiek het ziet. Geef uw commentaar aan ontwikkelaars om hen helpen te verbeteren.</string>
-    <string name="details_beta_available">Aanmelden bij bèta-programma\?</string>
+    <string name="details_beta_available">Aanmelden bij bèta-programma?</string>
     <string name="details_beta_subscribed">Je bent een bèta tester</string>
     <string name="details_beta">Bèta-programma</string>
     <string name="action_wishlist_add">Toevoegen aan verlanglijst</string>

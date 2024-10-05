@@ -130,7 +130,7 @@
     <string name="details_changelog">Mudanças</string>
     <string name="details_beta_delay">A inscrição pode levar algum tempo, você pode verificar o status mais tarde.</string>
     <string name="details_beta_description">Você verá novos recursos e bugs antes dos outros. Dê seu feedback aos desenvolvedores para ajudá-los a melhorar.</string>
-    <string name="details_beta_available">Participar do programa beta\?</string>
+    <string name="details_beta_available">Participar do programa beta?</string>
     <string name="details_beta_subscribed">Você é um testador beta</string>
     <string name="details_beta">Programa beta</string>
     <string name="action_wishlist_add">Adicionar à lista de desejos</string>
@@ -305,7 +305,7 @@
     <string name="amazon_appstore_desc">A Amazon Appstore é uma loja de apps para dispositivos compatíveis com Android operada pela Amazon.</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps de software feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
-    <string name="action_uninstall_confirmation">Deseja desinstalar este app\?</string>
+    <string name="action_uninstall_confirmation">Deseja desinstalar este app?</string>
     <string name="title_apps_sale_provider">Provedor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nenhum app em promoção encontrado</string>
     <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>

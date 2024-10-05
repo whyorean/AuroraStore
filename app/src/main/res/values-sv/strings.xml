@@ -308,7 +308,7 @@
     <string name="title_apps_sale_provider">Leverantör - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Inga appar hittades på rea</string>
     <string name="pref_download_directory_error">Den valda sökvägen är inte skrivbar</string>
-    <string name="action_uninstall_confirmation">Vill du avinstallera denna app \?</string>
+    <string name="action_uninstall_confirmation">Vill du avinstallera denna app ?</string>
     <string name="pref_network_proxy_enable">Aktivera proxy</string>
     <string name="pref_network_proxy_url">Proxy URL</string>
     <string name="pref_updates_check_frequency_desc">Konfigurera intervall för automatiska uppdateringar, i timmar.</string>
