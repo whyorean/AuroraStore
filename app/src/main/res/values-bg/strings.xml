@@ -217,7 +217,7 @@
     <string name="action_whitelist">списък с желания</string>
     <string name="action_ok">Добре</string>
     <string name="details_beta">Бета програма</string>
-    <string name="details_beta_available">Присъединяване към бета програма\?</string>
+    <string name="details_beta_available">Присъединяване към бета програма?</string>
     <string name="details_no_dependencies">Без зависимости</string>
     <string name="action_resume">Продължи</string>
     <string name="action_wishlist_add">Добавяне към списък с желания</string>
