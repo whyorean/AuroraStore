@@ -170,7 +170,7 @@
     <string name="details_changelog">ਬਦਲਾਵ ਸੂਚੀ</string>
     <string name="details_beta_delay">ਬੀਟਾ ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੁੜਨ ਲਈ ਥੋੜਾ ਟਾਈਮ ਲਗ ਸਕਦਾ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਥੋੜੀ ਦੇਰ ਬਾਅਦ ਇਸਦੇ ਸਟੇਟਸ ਦੀ ਜਾਂਚ ਕਰੋ।</string>
     <string name="details_beta_description">ਤੁਸੀਂ ਇਸ ਐਪ ਦੀਆਂ ਨਵੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਅਤੇ ਬੱਗ ਜਨਤਕ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਟੈਸਟ ਕਰ ਸਕੋਗੇ। ਇਸ ਐਪ ਵਿਚ ਹੋਰ ਲੋੜੀਂਦੇ ਸੁਧਾਰਾਂ ਵਾਸਤੇ ਤੁਸੀਂ ਆਪਣੇ ਸੁਝਾਅ ਸਿੱਧੇ ਇਸਦੇ ਐਪ ਡਿਵੈਲਪਰ ਨੂੰ ਭੇਜ ਸਕੋਗੇ।</string>
-    <string name="details_beta_available">ਕੀ ਤੁਸੀਂ ਬੀਟਾ ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੁੜਨਾ ਚਾਹੁੰਦੇ ਹੋ \?</string>
+    <string name="details_beta_available">ਕੀ ਤੁਸੀਂ ਬੀਟਾ ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੁੜਨਾ ਚਾਹੁੰਦੇ ਹੋ ?</string>
     <string name="details_beta_subscribed">ਤੁਸੀਂ ਹੁਣ ਇੱਕ ਬੀਟਾ ਟੈਸਟਰ ਹੋ</string>
     <string name="details_beta">ਬੀਟਾ ਪ੍ਰੋਗਰਾਮ</string>
     <string name="action_wishlist_add">ਇੱਛੁਕ ਸੂਚੀ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕਰੋ</string>
@@ -305,7 +305,7 @@
     <string name="amazon_appstore_desc">ਐਮੇਜ਼ੌਨ ਐਪਸਟੋਰ, ਐਮੇਜ਼ੌਨ ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਐਂਡਰਾਇਡ ਪਲੇਟਫਾਰਮਾਂ ਲਈ ਇੱਕ ਐਪ ਸਟੋਰ ਹੈ।</string>
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
     <string name="details_ratings_title_hint">ਸਮੀਖਿਆ ਸਿਰਲੇਖ</string>
-    <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
+    <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
     <string name="pref_updates_check_frequency_desc">ਘੰਟਿਆਂ ਵਿੱਚ, ਆਟੋ ਤੇ ਸਵੈ ਅੱਪਡੇਟਸ ਲਈ ਅੰਤਰਾਲ ਕੌਂਫਿਗਰ ਕਰੋ।</string>
     <string name="pref_aurora_only">ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਐਪਸ</string>
     <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
