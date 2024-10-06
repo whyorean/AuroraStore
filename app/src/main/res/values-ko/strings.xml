@@ -286,7 +286,6 @@
     <string name="title_installer">앱 인스톨러</string>
     <string name="title_language">언어</string>
     <string name="toast_apk_blacklisted">블랙리스트됨</string>
-    <string name="notification_channel_updater_service">앱 백그라운드 다운로드 서비스</string>
     <string name="notification_channel_updates">업데이트 알림</string>
     <string name="server_maintenance">유지 보수를 위해 서버가 다운</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 업데이트 대기 중</string>

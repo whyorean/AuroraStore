@@ -243,7 +243,6 @@
     <string name="installer_am_unavailable">Instalatu App Manager edo aldatu instalatzailea.</string>
     <string name="app_updater_service_notif_text">Aplikazioak bigarren mailan deskargatzeko aukera ematen du</string>
     <string name="pref_install_mode_am">AM instalatzailea</string>
-    <string name="notification_channel_updater_service">Aplikazioak bigarren mailan deskargatzeko zerbitzua</string>
     <string name="app_updater_service_notif_title">Bigarren mailako aplikazio deskarga</string>
     <string name="download_paused">Geldituta • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">Deskargatzen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>

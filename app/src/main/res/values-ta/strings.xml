@@ -237,7 +237,6 @@
     <string name="toast_aas_token_failed">AAS கிள்ளாக்குகளைப் உருவாக்க முடியவில்லை</string>
     <string name="toast_export_success">சாதன கட்டமைப்பு ஏற்றுமதியானது</string>
     <string name="toast_export_failed">சாதன கட்டமைப்பை ஏற்றுமதி செய்ய முடியவில்லை</string>
-    <string name="notification_channel_updater_service">பயன்பாட்டின் பின்னணி பதிவிறக்க சேவை</string>
     <string name="app_updater_service_notif_text">பின்னணி பயன்பாடு பதிவிறக்கத்தை இயக்குகிறது</string>
     <string name="installer_am_unavailable">செயலி நிர்வகியை நிறுவு அ நிறுவியை மாற்று.</string>
     <string name="title_installation">நிறுவல்</string>

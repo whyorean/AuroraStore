@@ -256,7 +256,6 @@
     <string name="toast_rated_failed">Nun se pudo unviar la valoración</string>
     <string name="toast_aas_token_failed">Nun se pudo xenerar el pase AAS</string>
     <string name="toast_export_success">Esportóse la configuración del preséu</string>
-    <string name="notification_channel_updater_service">Serviciu de descarga d\'aplicaciones en segundu planu</string>
     <string name="app_updater_service_notif_title">Descarga d\'aplicaciones en segundu planu</string>
     <string name="app_updater_service_notif_text">Permite la descarga d\'aplicaciones en segundu planu</string>
     <string name="update_available">anovamientu disponible</string>

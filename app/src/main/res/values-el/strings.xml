@@ -66,7 +66,6 @@
     <string name="download_completed">Η λήψη ολοκληρώθηκε</string>
     <string name="app_updater_service_notif_text">Ενεργοποιεί τη λήψη εφαρμογών στο παρασκήνιο</string>
     <string name="app_updater_service_notif_title">Λήψη εφαρμογής στο παρασκήνιο</string>
-    <string name="notification_channel_updater_service">Υπηρεσία λήψης εφαρμογών στο παρασκήνιο</string>
     <string name="title_download_playstore">Play Stοre</string>
     <string name="download_speed_estimating">Εκτίμηση</string>
     <string name="download_resume_all">Συνέχιση όλων</string>

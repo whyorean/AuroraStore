@@ -240,7 +240,6 @@
     <string name="device_miui_subtitle">Session Installer kan ikke installere apper på grunn av MIUI-optimaliseringer.</string>
     <string name="installer_status_failure_storage">Utilstrekkelig minneplass</string>
     <string name="action_get_local_apk">Lagre programknippe</string>
-    <string name="notification_channel_updater_service">Tjeneste for nedlasting av programmer i bakgrunnen</string>
     <string name="app_updater_service_notif_title">Last ned bakgrunnsapp</string>
     <string name="app_updater_service_notif_text">Aktiverer bakgrunnsappnedlasting</string>
     <string name="pref_install_mode_am">AM installatør.</string>

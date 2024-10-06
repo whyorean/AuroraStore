@@ -241,7 +241,6 @@
     <string name="toast_abandon_sessions">S\'han abandonat les antigues sessions d\'instal·lació</string>
     <string name="toast_anonymous_restriction">No disponible en comptes anònims</string>
     <string name="toast_developer_setting_failed">Activa la configuració de desenvolupador des de les del dispositiu per a obrir-la.</string>
-    <string name="notification_channel_updater_service">Servei de descàrregues d\'aplicacions en segon pla</string>
     <string name="title_spoof_manager">Gestor de falsificacions</string>
     <string name="purchase_invalid">Aplicació no comprada</string>
     <string name="title_about">Quant a</string>

@@ -242,7 +242,6 @@
     <string name="toast_export_success">Configurazione del dispositivo esportata</string>
     <string name="app_updater_service_notif_text">Abilita lo scaricamento di app in background</string>
     <string name="app_updater_service_notif_title">Scaricamento delle app in background</string>
-    <string name="notification_channel_updater_service">Servizio di scaricamento delle app in background</string>
     <string name="pref_install_mode_am">Installatore AM</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia l\'installatore.</string>
     <string name="action_import">Importa</string>
