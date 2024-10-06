@@ -1,0 +1,3 @@
+• Küçük geçiş sorunu düzeltildi
+• Gecelik derlemeler için otomatik güncelleme eklendi
+• Çeviri güncellemeleri
