@@ -130,7 +130,6 @@
     <string name="installer_service_available">Aurora 서비스를 사용할 수 있으며 설치할 준비가 되었습니다.</string>
     <string name="installer_status_user_action">사용자의 승인 대기 중</string>
     <string name="menu_disclaimer">면책 조항</string>
-    <string name="notification_channel_general">일반 알림</string>
     <string name="installer_service_misconfigured">먼저 Aurora 서비스를 설정하고 모든 권한을 부여하세요.</string>
     <string name="installer_service_unavailable">1.0.9 이상의 Aurora 서비스를 설치하거나 설치 프로그램을 변경하세요.</string>
     <string name="onboarding_permission_esa_desc">대형 앱 및 게임용 APK 확장 파일(OBB)을 저장합니다.</string>

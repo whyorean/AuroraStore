@@ -43,8 +43,8 @@ object NotificationUtil {
             )
             channels.add(
                 NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_GENERAL,
-                    context.getString(R.string.notification_channel_general),
+                    Constants.NOTIFICATION_CHANNEL_DOWNLOADS,
+                    context.getString(R.string.notification_channel_downloads),
                     NotificationManager.IMPORTANCE_MIN
                 )
             )
@@ -62,7 +62,7 @@ object NotificationUtil {
     }
 
     fun getDownloadNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
             .setSmallIcon(android.R.drawable.stat_sys_download)
             .setContentTitle(context.getString(R.string.app_updater_service_notif_title))
             .setContentText(context.getString(R.string.app_updater_service_notif_text))
@@ -76,7 +76,7 @@ object NotificationUtil {
         workID: UUID,
         largeIcon: Bitmap? = null
     ): Notification {
-        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_GENERAL)
+        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
         builder.setContentTitle(download.displayName)
         builder.setContentIntent(getContentIntentForDownloads(context))
         builder.setLargeIcon(largeIcon)

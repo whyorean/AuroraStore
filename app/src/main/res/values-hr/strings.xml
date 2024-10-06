@@ -161,7 +161,6 @@
     <string name="onboarding_title_permissions">Dozvole</string>
     <string name="onboarding_title_installer">Instalacija</string>
     <string name="onboarding_permission_select">Aurora trgovina zahtijeva sljedeće dozvole</string>
-    <string name="notification_channel_general">Opće obavijesti</string>
     <string name="notification_channel_alert">Kratke obavijesti</string>
     <string name="dialog_title_self_update">Dostupna je nova verzija</string>
     <string name="device_miui_extra">Opcionalno možeš odabrati izvornu instalaciju, ali tada ne možeš instalirati povezane (podijeljene) APK datoteke. Izbor je tvoj.</string>

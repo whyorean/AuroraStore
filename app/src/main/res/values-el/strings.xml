@@ -155,7 +155,6 @@
     <string name="device_miui_extra">Προαιρετικά, μπορείτε να επιλέξετε τοπικό πρόγραμμα εγκατάστασης, αλλά στη συνέχεια δεν μπορείτε να εγκαταστήσετε πακέτα (χωρισμένα) APK, οπότε η επιλογή είναι δική σας.</string>
     <string name="onboarding_title_installer">Εγκαταστάτης</string>
     <string name="dialog_desc_native_split">Δεν μπορείτε να εγκαταστήσετε ομαδοποιημένες (διαχωρισμένες) εφαρμογές με τοπική εγκατάσταση. Αλλάξτε το πρόγραμμα εγκατάστασης σε Session, Services ή Root.</string>
-    <string name="notification_channel_general">Γενική ειδοποίηση</string>
     <string name="installer_status_failure_invalid">Μη έγκυρο ή κατεστραμμένο APK</string>
     <string name="device_miui_description">Απενεργοποιήστε τις βελτιστοποιήσεις MIUI για να επιτρέψετε της εγκαταστάσεις, διαφορετικά μπορείτε να επιλέξετε το πρόγραμμα εγκατάστασης Root ή Services.</string>
     <string name="onboarding_title_permissions">Δικαιώματα</string>

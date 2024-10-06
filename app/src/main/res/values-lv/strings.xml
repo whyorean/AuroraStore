@@ -164,7 +164,6 @@
     <string name="download_pause_all">Apturēt visas</string>
     <string name="download_resume_all">Turpināt visas</string>
     <string name="menu_disclaimer">Brīdinājums</string>
-    <string name="notification_channel_general">Ģenerālā notifikācija</string>
     <string name="pref_common_extra">Papildu</string>
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
     <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>

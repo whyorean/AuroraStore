@@ -219,7 +219,6 @@
     <string name="tab_categories">Categorias</string>
     <string name="filter_review_positive">Positiva</string>
     <string name="notification_channel_alert">Notìficas lestras</string>
-    <string name="notification_channel_general">Notìficas generales</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_btc_summary">Dona pro mèdiu de Bitcoin (BTC)</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>

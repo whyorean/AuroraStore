@@ -132,7 +132,6 @@
     <string name="onboarding_title_welcome">Selamat Datang</string>
     <string name="onboarding_title_permissions">Perizinan</string>
     <string name="dialog_title_self_update">Pembaruan tersedia</string>
-    <string name="notification_channel_general">Pemberitahuan umum</string>
     <string name="notification_channel_alert">Pemberitahuan cepat</string>
     <string name="device_miui_title">MIUI terdeteksi!</string>
     <string name="installer_status_user_action">Menunggu konfirmasi pengguna</string>

@@ -75,7 +75,6 @@
     <string name="onboarding_title_permissions">Baimenak</string>
     <string name="onboarding_title_installer">Instalatzailea</string>
     <string name="onboarding_permission_select">Aukera Store-k honako baimenak behar ditu</string>
-    <string name="notification_channel_general">Jakinarazpen orokorra</string>
     <string name="notification_channel_alert">Jakinarazpen arina</string>
     <string name="dialog_title_self_update">Eguneratze berria aurkitu da</string>
     <string name="device_miui_extra">Berezko instalatzailea ere aukera dezakezu, baina holan egiten baduzu, ezin izango dituzu zatitutako APK-ak instalatu. Zurea da erabakia.</string>

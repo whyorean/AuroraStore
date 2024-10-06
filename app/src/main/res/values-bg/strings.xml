@@ -184,7 +184,6 @@
     <string name="installer_status_success">Успешно инсталиранe</string>
     <string name="menu_terms">Условия за ползване</string>
     <string name="device_miui_subtitle">Програмата за инсталиране на сесии не може да инсталира приложения поради MIUI оптимизации.</string>
-    <string name="notification_channel_general">Общо известие</string>
     <string name="onboarding_permission_select">Aurora Store изисква следните разрешения</string>
     <string name="onboarding_title_installer">Инсталатор</string>
     <string name="onboarding_title_permissions">Разрешения</string>

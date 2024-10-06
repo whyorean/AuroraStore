@@ -224,7 +224,6 @@
     <string name="details_beta_delay">התהליך עלול לקחת זמן, אתה יכול לבדוק את הסטטוס שלך מאוחר יותר.</string>
     <string name="installer_service_available">שירותי אורורה זמין ומוכן להתקנה.</string>
     <string name="installer_status_failure_storage">האחסון כמעט מלא</string>
-    <string name="notification_channel_general">התראות כלליות</string>
     <string name="toast_spoof_applied">זיוף המכשיר הוחל.</string>
     <string name="installer_shizuku_unavailable">Shizuku לא מותקן או לא הוגדר כראוי.</string>
     <string name="login_rate_limited">אופס, אתה בעל דירוג מוגבל</string>

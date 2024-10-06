@@ -165,7 +165,6 @@
     <string name="onboarding_welcome_select">Jak się masz\?</string>
     <string name="onboarding_title_welcome">Witamy</string>
     <string name="onboarding_title_installer">Instalator</string>
-    <string name="notification_channel_general">Ogólne powiadomienie</string>
     <string name="notification_channel_alert">Szybkie powiadomienie</string>
     <string name="dialog_title_self_update">Dostępna jest nowa aktualizacja</string>
     <string name="device_miui_subtitle">Instalator sesji nie może zainstalować aplikacji z powodu Optymalizacji MIUI.</string>

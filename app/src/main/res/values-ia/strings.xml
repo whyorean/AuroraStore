@@ -149,7 +149,6 @@
     <string name="onboarding_permission_notifications">Notificationes</string>
     <string name="action_leave">Sortir</string>
     <string name="toast_import_failed">Non poteva importar le configuration del apparato</string>
-    <string name="notification_channel_general">Notification general</string>
     <string name="toast_page_unavailable">Pagina de navigation non disponibile</string>
     <string name="pref_updates_auto">Actualisation automatic del applicationes</string>
     <string name="pref_install_mode_am">Installator AM</string>

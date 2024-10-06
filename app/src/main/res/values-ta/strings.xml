@@ -177,7 +177,6 @@
     <string name="dialog_title_self_update">புதிய புதுப்பிப்பு கிடைக்கிறது</string>
     <string name="dialog_desc_native_split">நேட்டிவ் இன்ஸ்டாலர் மூலம் தொகுக்கப்பட்ட (பிளவு) பயன்பாடுகளை நிறுவ முடியாது. உங்கள் நிறுவியை அமர்வு, சேவைகள் அல்லது ரூட்டிற்கு மாற்றவும்.</string>
     <string name="notification_channel_alert">விரைவான அறிவிப்பு</string>
-    <string name="notification_channel_general">பொது அறிவிப்பு</string>
     <string name="onboarding_permission_select">அரோரா ஸ்டோருக்கு பின்வரும் அனுமதிகள் தேவை</string>
     <string name="onboarding_title_installer">நிறுவி</string>
     <string name="onboarding_title_permissions">அனுமதிகள்</string>

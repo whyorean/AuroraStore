@@ -61,7 +61,6 @@
     <string name="onboarding_title_welcome">أهلًا وسهلًا</string>
     <string name="onboarding_title_permissions">الأذونات</string>
     <string name="onboarding_title_installer">المثبت</string>
-    <string name="notification_channel_general">إشعار عام</string>
     <string name="notification_channel_alert">إشعار سريع</string>
     <string name="dialog_title_self_update">متوفر تحديث جديد</string>
     <string name="device_miui_description">الرجاء تعطيل تحسينات MIUI للسماح بالتثبيتات، وإلا يمكنك اختيار مثبت الجذر أو الخدمات.</string>

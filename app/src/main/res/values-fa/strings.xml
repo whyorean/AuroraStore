@@ -229,7 +229,6 @@
     <string name="device_miui_subtitle">نصب کننده سشن به دلیل بهینه سازی MIUI نمی تواند برنامه ها را نصب کند.</string>
     <string name="device_miui_description">لطفاً بهینه‌سازی‌های MIUI را غیرفعال کنید تا امکان نصب وجود داشته باشد، در غیر این صورت می‌توانید روت یا خدمات نصب کننده را انتخاب کنید.</string>
     <string name="dialog_desc_native_split">نمی‌توانید برنامه‌های باندل (تقسیم‌شده) APKs را از طریق نصب کننده بومی نصب کنید. نصب کننده خود را به سشن، خدمات یا روت تغییر دهید.</string>
-    <string name="notification_channel_general">اطلاع رسانی عمومی</string>
     <string name="onboarding_title_installer">نصب کننده</string>
     <string name="onboarding_permission_installer_desc">اجازه نصب برنامه‌ها از فروشگاه آرورا</string>
     <string name="pref_filter_google_summary">حذف همه برنامه‌های گوگل از نتایج جستجو و دسته‌بندی برنامه‌ها</string>

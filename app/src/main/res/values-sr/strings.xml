@@ -74,7 +74,6 @@
     <string name="onboarding_title_permissions">Дозволе</string>
     <string name="onboarding_title_installer">Програм за инсталацију</string>
     <string name="onboarding_permission_select">Aurora Store захтева следеће дозволе</string>
-    <string name="notification_channel_general">Опште обавештење</string>
     <string name="notification_channel_alert">Брзо обавештење</string>
     <string name="dialog_title_self_update">Ново ажурирање је доступно</string>
     <string name="device_miui_extra">Опционо можете изабрати „Изворни” програм за инсталацију, али тада не можете инсталирати пакете (подељене) APK-ова, тако да је избор на вама.</string>

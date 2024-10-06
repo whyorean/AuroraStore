@@ -203,7 +203,6 @@
     <string name="installer_status_failure_incompatible">අනනුකූල යෙදුමකි</string>
     <string name="device_miui_title">MIUI අනාවරණය විය!</string>
     <string name="pref_dialog_to_apply_restart">ඔබ යෙදුම යළිි ඇරඹූ පසු මෙම සැකසුම් යෙදෙනු ඇත</string>
-    <string name="notification_channel_general">පොදු දැනුම්දීම</string>
     <string name="onboarding_permission_select">අවුරෝරා ස්ටෝර් සඳහා පහත අවසර වුවමනාය</string>
     <string name="onboarding_permission_esm">බාහිර ආචයන කළමණාකරු</string>
     <string name="spoof_apply">රැවටීම යෙදීමට නැවත පිවිසෙන්න</string>

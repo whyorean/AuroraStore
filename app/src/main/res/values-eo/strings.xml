@@ -110,7 +110,6 @@
     <string name="device_miui_title">MIUI detektata!</string>
     <string name="dialog_title_self_update">Nova ĝisdatigo disponebla</string>
     <string name="notification_channel_alert">Rapida sciigo</string>
-    <string name="notification_channel_general">Ĝenerala sciigo</string>
     <string name="onboarding_title_welcome">Bonvenon</string>
     <string name="onboarding_welcome_select">Kiel vi fartas\?</string>
     <string name="onboarding_permission_installer">Instalila permeso</string>

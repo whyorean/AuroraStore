@@ -115,7 +115,6 @@
     <string name="onboarding_title_permissions">İzinler</string>
     <string name="onboarding_title_installer">Kurucu</string>
     <string name="onboarding_permission_select">Aurora Mağazası aşağıdaki izinleri gerektirir</string>
-    <string name="notification_channel_general">Genel bildirim</string>
     <string name="notification_channel_alert">Hızlı bildirim</string>
     <string name="dialog_title_self_update">Yeni güncelleme var</string>
     <string name="device_miui_extra">İsteğe bağlı olarak Yerel kurucuyu seçebilirsiniz, ancak daha sonra paketlenmiş (bölünmüş) APK\'ları kuramazsınız, bu nedenle seçim sizin.</string>

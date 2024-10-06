@@ -155,7 +155,6 @@
     <string name="device_miui_description">Deaktiver venligst MIUI-optimeringer for at tillade installationer. Ellers kan du vælge Root- eller Services-installationsprogrammet.</string>
     <string name="dialog_title_self_update">Ny opdatering tilgængelig</string>
     <string name="notification_channel_alert">Hurtig notifikation</string>
-    <string name="notification_channel_general">Generel notifikation</string>
     <string name="onboarding_permission_select">Aurora Store kræver de følgende tilladelser</string>
     <string name="onboarding_title_installer">Installationsprogram</string>
     <string name="onboarding_title_permissions">Tilladelser</string>
