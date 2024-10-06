@@ -167,7 +167,6 @@
     <string name="details_dev_details">Contacto del disveloppator</string>
     <string name="action_wishlist_add">Adder al lista blanc</string>
     <string name="onboarding_permission_esm">Gestor de immagazinage externe</string>
-    <string name="notification_channel_alert">Notification rapide</string>
     <string name="pref_ui_title">Personalisation</string>
     <string name="onboarding_permission_select">Aurora Store require le sequente permissiones</string>
     <string name="action_blacklist_add">Adder al lista nigre</string>

@@ -270,7 +270,6 @@
     <string name="server_unreachable">Strežnik nedosegljiv</string>
     <string name="failed_generating_session">Seje ni bilo mogoče ustvariti, koda napake: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku ni nameščen ali pravilno nastavljen.</string>
-    <string name="notification_channel_alert">Hitro obvestilo</string>
     <string name="onboarding_title_welcome">Dobrodošli</string>
     <string name="onboarding_permission_esa_desc">Če želite shraniti prenose (APK-je in OBB-je), izvozite in uvozite nastavitve naprave v zunanji pomnilnik in iz njega.</string>
     <string name="onboarding_permission_esm">Upravitelj zunanjega pomnilnika</string>

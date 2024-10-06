@@ -149,7 +149,6 @@
     <string name="device_miui_description">Ju lutemi, çaktivizoni optimizimet MIUI, që të lejohen instalime, ndryshe mund të zgjidhni instalues Rrënjë ose Shërbimesh.</string>
     <string name="dialog_title_self_update">Përditësim i ri i gatshëm</string>
     <string name="dialog_desc_native_split">S’mund të instaloni aplikacione të paketuara (të ndara) përmes Instaluesit të vetë pajisjes. Ndryshoni instaluesin tuaj në instalues Sesioni, Shërbimesh ose Rrënjë.</string>
-    <string name="notification_channel_alert">Njoftim i shpejtë</string>
     <string name="onboarding_permission_select">Aurora Store lyp lejet vijuese</string>
     <string name="onboarding_title_installer">Instalues</string>
     <string name="onboarding_title_permissions">Leje</string>

@@ -108,7 +108,6 @@
     <string name="installer_status_success">Veiksmīgi uzstādīta</string>
     <string name="installer_status_user_action">Gaida lietotāja apstiprinājumu</string>
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
-    <string name="notification_channel_alert">Ātrā notifikācija</string>
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_welcome">Laipni lūgti</string>

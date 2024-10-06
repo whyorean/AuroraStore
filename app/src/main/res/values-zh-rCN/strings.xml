@@ -198,7 +198,6 @@
     <string name="onboarding_title_permissions">权限</string>
     <string name="onboarding_title_installer">安装包</string>
     <string name="onboarding_permission_select">Aurora 商店需要以下权限</string>
-    <string name="notification_channel_alert">快速通知</string>
     <string name="dialog_title_self_update">有新更新可用</string>
     <string name="device_miui_extra">可选：您可选择原生安装程序 (Native)，但这将无法安装拆分 APK (Split APKs)，因此任凭君意。</string>
     <string name="device_miui_description">请禁用 MIUI 优化以允许安装，否则，您可以选择 Root 或 Services 安装程序。</string>

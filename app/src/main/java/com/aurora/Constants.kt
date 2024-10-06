@@ -37,7 +37,8 @@ object Constants {
     const val UPDATE_URL_STABLE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json"
     const val UPDATE_URL_NIGHTLY = "https://auroraoss.com/downloads/AuroraStore/Feeds/nightly_feed.json"
 
-    const val NOTIFICATION_CHANNEL_ALERT = "NOTIFICATION_CHANNEL_ALERT"
+    const val NOTIFICATION_CHANNEL_EXPORT = "NOTIFICATION_CHANNEL_EXPORT"
+    const val NOTIFICATION_CHANNEL_INSTALL = "NOTIFICATION_CHANNEL_INSTALL"
     const val NOTIFICATION_CHANNEL_DOWNLOADS = "NOTIFICATION_CHANNEL_DOWNLOADS"
     const val NOTIFICATION_CHANNEL_UPDATES = "NOTIFICATION_CHANNEL_UPDATES"
 

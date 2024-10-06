@@ -86,7 +86,6 @@
     <string name="onboarding_title_permissions">Engedélyek</string>
     <string name="onboarding_title_installer">Telepítő</string>
     <string name="onboarding_permission_select">Az Aurora Store a következő engedélyeket igényli</string>
-    <string name="notification_channel_alert">Gyors értesítés</string>
     <string name="dialog_title_self_update">Új frissítés érhető el</string>
     <string name="device_miui_extra">Választhatja a natív telepítőt is, viszont így nem fog tudni kötegelt (osztott) APK-kat telepíteni, a választás az öné.</string>
     <string name="device_miui_description">Tiltsa le a MIUI optimalizálást a telepítések engedélyezéséhez, vagy válassza a root vagy Szolgáltatások telepítési módszert.</string>

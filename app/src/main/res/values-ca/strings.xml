@@ -64,7 +64,6 @@
     <string name="onboarding_permission_select">Aurora Store requereix els permisos següents</string>
     <string name="installer_status_success">Instal·lat correctament</string>
     <string name="dialog_desc_native_split">No podeu instal·lar aplicacions agrupades (dividir) mitjançant l\'instal·lador natiu. Canvieu el vostre instal·lador a Sessió, Serveis o Root.</string>
-    <string name="notification_channel_alert">Notificació ràpida</string>
     <string name="onboarding_title_installer">Instal·lador</string>
     <string name="onboarding_title_permissions">Permisos</string>
     <string name="onboarding_title_welcome">Benvingut</string>

@@ -199,7 +199,6 @@
     <string name="onboarding_title_permissions">Дозволи</string>
     <string name="onboarding_title_installer">Встановлювач</string>
     <string name="onboarding_permission_select">Aurora Store використовує такі дозволи</string>
-    <string name="notification_channel_alert">Швидке сповіщення</string>
     <string name="dialog_desc_native_split">Неможливо встановити пакети застосунків (split) через системний встановлювач Android. Змініть встановлювач на Session, служби Aurora або Root.</string>
     <string name="dialog_title_self_update">Доступне нове оновлення</string>
     <string name="device_miui_extra">За бажанням ви можете вибрати власний встановлювач, але тоді ви не можете встановлювати розділені (split) APK, тому вибір за вами.</string>

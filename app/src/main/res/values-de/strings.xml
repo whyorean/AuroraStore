@@ -119,7 +119,6 @@
     <string name="onboarding_title_welcome">Willkommen</string>
     <string name="onboarding_title_permissions">Berechtigungen</string>
     <string name="onboarding_permission_select">Bitte die erforderlichen Berechtigungen erteilen</string>
-    <string name="notification_channel_alert">Kurzbenachrichtigung</string>
     <string name="dialog_title_self_update">Neues Update verfügbar</string>
     <string name="device_miui_extra">Optional kann die systemeigene Installationsmethode ausgewählt werden, jedoch können dann keine gebündelten/geteilten (Split-)APK-Dateien installiert werden.</string>
     <string name="device_miui_description">Um Installationen zu ermöglichen, bitte die MIUI-Optimierungen deaktivieren oder die Root- oder Services-Installationsmethode auswählen.</string>

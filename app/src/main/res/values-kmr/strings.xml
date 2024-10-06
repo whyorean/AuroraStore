@@ -111,7 +111,6 @@
     <string name="onboarding_title_permissions">Destûrên</string>
     <string name="onboarding_title_installer">Sazker</string>
     <string name="onboarding_permission_select">Aurora Store destûrên jêrîn hewce dike</string>
-    <string name="notification_channel_alert">Agahdariya bilez</string>
     <string name="dialog_title_self_update">Nûvekirina nû heye</string>
     <string name="device_miui_extra">Bi vebijarkî hûn dikarin sazkarê Niştimanî hilbijêrin, lê hingê hûn nekarin APK-anên (dabeşkirî) saz bikin, ji ber vê yekê hilbijartin ya we ye.</string>
     <string name="device_miui_description">Ji kerema xwe, optimîzasyonên MIUI-yê nehêlin ku destûrê bidin sazkirinê, nexwe hûn dikarin sazkerê Root an Xizmetan hilbijêrin.</string>

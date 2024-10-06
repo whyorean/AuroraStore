@@ -197,7 +197,6 @@
     <string name="onboarding_title_permissions">Разрешения</string>
     <string name="onboarding_title_installer">Установщик</string>
     <string name="onboarding_permission_select">Aurora Store требует следующих разрешений</string>
-    <string name="notification_channel_alert">Быстрое уведомление</string>
     <string name="dialog_title_self_update">Доступно обновление</string>
     <string name="device_miui_extra">При желании вы можете выбрать системный установщик, но тогда вы не сможете устанавливать split APK, поэтому выбор за вами.</string>
     <string name="device_miui_description">Отключите оптимизацию MIUI, чтобы разрешить установку. В ином случае вы можете выбрать root-установщик или сервисы Aurora.</string>

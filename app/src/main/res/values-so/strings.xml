@@ -118,7 +118,6 @@
     <string name="onboarding_title_permissions">Ogolaanshaha</string>
     <string name="onboarding_title_installer">Kushubaha</string>
     <string name="onboarding_permission_select">Dukaanka Aurora wuxuu ubaahan yahay inaad u oglaato kuwan</string>
-    <string name="notification_channel_alert">Ogaysiin dagdaga</string>
     <string name="dialog_desc_native_split">Kuma shubi kartid appska xidhmada (lakala jajabiyay) adoo isticmaalaya kushubaha barnaamijka aallada. Ubadal kushubahaaga Xidhiidka, Adeega ama Root.</string>
     <string name="dialog_title_self_update">Cusboonaysiin ayaa jirta</string>
     <string name="device_miui_extra">Sidoo kale waxaad dooran kartaa kushubaha barnaamijka aallada, markaasna APK-yada nooca xidhmada (kala qaybqaybsan) iskugu jira kuma shubi kartid. Sidaa darteed mid uun doorro.</string>

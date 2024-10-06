@@ -232,7 +232,6 @@
     <string name="onboarding_permission_installer">Tilgang for installerer</string>
     <string name="onboarding_permission_esa">Tilgang til eksternlagring</string>
     <string name="onboarding_title_installer">Installerer</string>
-    <string name="notification_channel_alert">Hurtigmerknad</string>
     <string name="dialog_desc_native_split">Du kan ikke installere medfølgende (delte) apper via Native Installer. Endre installasjonsprogrammet til Session, Services eller Root.</string>
     <string name="device_miui_extra">Eventuelt kan du velge Native installasjonsprogram, men da kan du ikke installere medfølgende (delte) APK-er, så valget er ditt.</string>
     <string name="device_miui_description">Vennligst deaktiver MIUI-optimaliseringer for å tillate installasjoner, ellers kan du velge Root- eller Services-installasjonsprogram.</string>
