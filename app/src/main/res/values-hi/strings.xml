@@ -119,7 +119,6 @@
     <string name="pref_filter_fdroid_title">F-Droid एप्स को फिल्टर करें</string>
     <string name="action_next">अगला</string>
     <string name="menu_disclaimer">अस्वीकरण</string>
-    <string name="notification_channel_general">सामान्य सूचना</string>
     <string name="title_installer">ऐप इंस्टॉलर</string>
     <string name="download_resume_all">सभी पुनः आरंभ करें</string>
     <string name="pref_app_download">डाउनलोड</string>

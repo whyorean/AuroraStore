@@ -140,7 +140,6 @@
     <string name="menu_disclaimer">Odmietnutie zodpovednosti</string>
     <string name="menu_terms">Podmienky služby</string>
     <string name="notification_channel_alert">Rýchle oznámenie</string>
-    <string name="notification_channel_general">Všeobecné oznámenie</string>
     <string name="onboarding_permission_esa">Prístup k externému úložisku</string>
     <string name="onboarding_permission_installer_legacy_desc">Povoliť inštaláciu aplikácií z neznámych zdrojov</string>
     <string name="pref_filter_google_title">Filtrovať aplikácie Google</string>

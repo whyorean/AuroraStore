@@ -58,7 +58,6 @@
     <string name="menu_terms">Käyttöehdot</string>
     <string name="menu_license">Lisenssi</string>
     <string name="dialog_title_self_update">Uusi päivitys saatavilla</string>
-    <string name="notification_channel_general">Yleinen ilmoitus</string>
     <string name="notification_channel_alert">Nopea ilmoitus</string>
     <string name="onboarding_title_welcome">Tervetuloa</string>
     <string name="pref_app_download">Lataukset</string>

@@ -162,7 +162,6 @@
     <string name="onboarding_title_welcome">Chào mừng</string>
     <string name="onboarding_title_permissions">Quyền</string>
     <string name="onboarding_title_installer">Trình cài đặt</string>
-    <string name="notification_channel_general">Thông báo chung</string>
     <string name="notification_channel_alert">Thông báo nhanh</string>
     <string name="dialog_title_self_update">Có bản cập nhật mới</string>
     <string name="device_miui_description">Vui lòng tắt tối ưu hóa MIUI để có thể cài đặt, nếu không, bạn có thể chọn trình cài đặt Root hoặc Trình cài đặt dịch vụ.</string>

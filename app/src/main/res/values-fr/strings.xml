@@ -24,7 +24,6 @@
     <string name="onboarding_welcome_select">Comment ça va \?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Installateur</string>
-    <string name="notification_channel_general">Notification générale</string>
     <string name="pref_app_download">Téléchargements</string>
     <string name="pref_filter_fdroid_title">Filtrer les applications F-droid</string>
     <string name="pref_filter_google_title">Filtrer les applications Google</string>

@@ -154,7 +154,6 @@
     <string name="onboarding_welcome_select">食飽未？</string>
     <string name="onboarding_title_welcome">歡迎</string>
     <string name="onboarding_permission_select">Aurora Store 需要以下權限</string>
-    <string name="notification_channel_general">一般通知</string>
     <string name="notification_channel_alert">快速通知</string>
     <string name="dialog_desc_native_split">你無法透過原生安裝器安裝捆包（分裂的）應用程式。請將你的安裝方式改成階段、Aurora 服務或 Root。</string>
     <string name="device_miui_subtitle">由於 MIUI 最佳化，階段安裝器無法安裝應用程式。</string>

@@ -131,7 +131,6 @@
     <string name="exodus_view_report">Rodyti ataskaitą</string>
     <string name="download_eta_calculating">Skaičiuojama</string>
     <string name="pref_filter_fdroid_summary">Pašalina F-Droid programėles iš programėlių sąrašo</string>
-    <string name="notification_channel_general">Bendras pranešimas</string>
     <string name="pref_filter_fdroid_title">Filtruoti F-Droid programėles</string>
     <string name="action_filter_paid_apps">Mokamos</string>
     <string name="action_info">Informacija apie programėlę</string>

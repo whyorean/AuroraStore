@@ -99,7 +99,6 @@
     <string name="download_metadata">攞緊元資料</string>
     <string name="dialog_title_self_update">出咗更新喇</string>
     <string name="notification_channel_alert">速報通知</string>
-    <string name="notification_channel_general">一般通知</string>
     <string name="toast_permission_granted">畀咗權限</string>
     <string name="toast_clipboard_copied">複製咗去剪貼簿</string>
     <string name="details_changelog">變動表</string>

@@ -162,7 +162,6 @@
     <string name="dialog_title_self_update">Yeni yeniləmə mövcuddur</string>
     <string name="dialog_desc_native_split">Yerli quraşdırıcı vasitəsilə birləşmiş (ayrı) tətbiqləri quraşdıra bilməzsiniz. Quraşdırıcınızı Hesab, Xidmətlər və ya Root-a dəyişdirin.</string>
     <string name="notification_channel_alert">Sürətli bildiriş</string>
-    <string name="notification_channel_general">Ümumi bildiriş</string>
     <string name="onboarding_permission_select">Aurora Store aşağıdakı icazələri tələb edir</string>
     <string name="onboarding_title_welcome">Xoş Gəldiniz</string>
     <string name="onboarding_welcome_select">Nə etmək istəyirsiz?</string>
