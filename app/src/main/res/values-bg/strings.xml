@@ -211,7 +211,6 @@
     <string name="title_installer">Инсталатор на приложения</string>
     <string name="title_library">Библиотека</string>
     <string name="title_advanced">Разширено</string>
-    <string name="notification_channel_updater_service">Услуга за фоново изтегляне на приложения</string>
     <string name="notification_channel_updates">Известия за актуализации</string>
     <string name="notification_updates_available_desc_1">Налична е нова версия на <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="action_whitelist">списък с желания</string>

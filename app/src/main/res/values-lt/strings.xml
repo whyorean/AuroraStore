@@ -106,7 +106,6 @@
     <string name="title_apps">Programėlės</string>
     <string name="title_apps_games">Mano programėlės ir žaidimai</string>
     <string name="toast_manual_available">Sveikiname, jūsų užklaustas versijos kodas yra prieinamas, atsisiunčiama.</string>
-    <string name="notification_channel_updater_service">Foninio programėlių atsisiuntimo tarnyba</string>
     <string name="title_library">Biblioteka</string>
     <string name="about_paypal_summary">Paaukoti per „PayPal“</string>
     <string name="account_login_using">Prisijungti naudojant</string>

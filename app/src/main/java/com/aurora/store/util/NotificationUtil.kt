@@ -50,13 +50,6 @@ object NotificationUtil {
             )
             channels.add(
                 NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_UPDATER_SERVICE,
-                    context.getString(R.string.notification_channel_updater_service),
-                    NotificationManager.IMPORTANCE_MIN
-                )
-            )
-            channels.add(
-                NotificationChannel(
                     Constants.NOTIFICATION_CHANNEL_UPDATES,
                     context.getString(R.string.notification_channel_updates),
                     NotificationManager.IMPORTANCE_DEFAULT

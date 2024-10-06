@@ -385,7 +385,6 @@
     <string name="toast_proxy_invalid">Neplatná adresa URL servera proxy, skontrolujte formát!</string>
     <string name="toast_proxy_success">Proxy bol úspešne nastavený</string>
     <string name="toast_proxy_failed">Nepodarilo sa nastaviť proxy</string>
-    <string name="notification_channel_updater_service">Služba sťahovania aplikácií na pozadí</string>
     <string name="update_available">aktualizácia je dostupná</string>
     <string name="updates_available">dostupné aktualizácie</string>
     <string name="pref_ui_layout">Rozloženie</string>

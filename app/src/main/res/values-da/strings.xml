@@ -241,7 +241,6 @@
     <string name="toast_aas_token_failed">Kunne ikke generere AAS-token</string>
     <string name="toast_export_failed">Kunne ikke eksportere enhedskonfigurationen</string>
     <string name="toast_export_success">Enhedskonfiguration eksporteret</string>
-    <string name="notification_channel_updater_service">Tjeneste som downloader apps i baggrunden</string>
     <string name="app_updater_service_notif_title">Downloader app i baggrund</string>
     <string name="app_updater_service_notif_text">Slå download af app i baggrunden til</string>
     <string name="pref_network_proxy_enable">Aktivér proxy</string>

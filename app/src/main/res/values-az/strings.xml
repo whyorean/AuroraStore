@@ -237,7 +237,6 @@
     <string name="toast_aas_token_failed">AAS Tokeni yaratmaq mümkün olmadı</string>
     <string name="toast_export_failed">Cihaz tənzimləməsini ixrac etmək alınmadı</string>
     <string name="app_updater_service_notif_title">Arxa planda tətbiq endirmə</string>
-    <string name="notification_channel_updater_service">Arxa planda tətbiq endirmə xidməti</string>
     <string name="app_updater_service_notif_text">Arxa planda tətbiq endirilməsini aktivləşdirir</string>
     <string name="about_bhim_summary">UPI vasitəsilə ianə edin</string>
     <string name="about_bitcoin_btc_summary">Bitcoin (BTC) vasitəsilə ianə edin</string>

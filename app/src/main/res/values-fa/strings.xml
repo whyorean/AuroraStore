@@ -243,7 +243,6 @@
     <string name="toast_abandon_sessions">جلسات نصب قدیمی رها شده</string>
     <string name="toast_apk_blacklisted">در لیست سیاه بودن</string>
     <string name="toast_export_success">پیکربندی دستگاه صادر شد</string>
-    <string name="notification_channel_updater_service">سرویس دانلود پس زمینه برنامه</string>
     <string name="app_updater_service_notif_text">امکان دانلود برنامه پس زمینه را فراهم می کند</string>
     <string name="session_enjoy">وارد شوید و لذت ببرید.</string>
     <string name="session_good">وای! همه چی خوبه.</string>

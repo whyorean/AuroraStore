@@ -257,7 +257,6 @@
     <string name="toast_manual_unavailable">Koda različice, ki jo zahtevate, ni na voljo.</string>
     <string name="toast_manual_available">Čestitamo, zahtevana koda različice je na voljo, zdaj se prenaša.</string>
     <string name="toast_export_success">Konfiguracija naprave je izvožena</string>
-    <string name="notification_channel_updater_service">Storitev prenosa aplikacij v ozadju</string>
     <string name="update_available">posodobitev na voljo</string>
     <string name="error">Pojavila se je napaka!</string>
     <string name="expand">Razširi</string>

@@ -117,7 +117,6 @@
     <string name="toast_rated_success">Valutadu</string>
     <string name="toast_rated_failed">Imbiu de sa valutatzione fallidu</string>
     <string name="toast_aas_token_failed">Generatzione de su getone AAS fallidu</string>
-    <string name="notification_channel_updater_service">Servìtziu de iscarrigamentu de sas aplicatziones in s\'isfundu</string>
     <string name="account_anonymous">Anònimu</string>
     <string name="app_updater_service_notif_text">Abìlita s\'iscarrigamentu de sas aplicatziones in s\'isfundu</string>
     <string name="account_google">Contu de Google</string>

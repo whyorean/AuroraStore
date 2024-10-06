@@ -240,7 +240,6 @@
     <string name="toast_aas_token_failed">AAS-Token konnte nicht erstellt werden</string>
     <string name="toast_export_failed">Gerätekonfiguration konnte nicht exportiert werden</string>
     <string name="toast_export_success">Gerätekonfiguration wurde exportiert</string>
-    <string name="notification_channel_updater_service">Service zum Herunterladen von Apps im Hintergrund</string>
     <string name="app_updater_service_notif_title">Download von Apps im Hintergrund</string>
     <string name="app_updater_service_notif_text">Ermöglicht das Herunterladen von Apps im Hintergrund</string>
     <string name="installer_am_unavailable">Diese Methode ist für Installationen nicht verfügbar. Den „App Manager“ installieren oder die Installationsmethode ändern.</string>
