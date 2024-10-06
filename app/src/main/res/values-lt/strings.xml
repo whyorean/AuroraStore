@@ -140,7 +140,6 @@
     <string name="details_ratings">Įvertinimai ir apžvalgos</string>
     <string name="installer_service_unavailable">Įdiekite Aurora tarnybų 1.0.9 ar naujesnę versiją, arba pakeiskite diegimo programą.</string>
     <string name="installer_service_misconfigured">Iš pradžių, nustatykite Aurora tarnybas ir suteikite visus leidimus.</string>
-    <string name="notification_channel_alert">Greitas pranešimas</string>
     <string name="pref_install_mode_services">Aurora tarnybos</string>
     <string name="tab_trending">Populiarėjančios</string>
     <string name="about_fdroid_summary">Gauti Aurora Store per F-Droid.</string>

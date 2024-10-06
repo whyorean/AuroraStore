@@ -10,7 +10,6 @@
     <string name="filter_review_two">Dos estrelles</string>
     <string name="filter_review_three">Trés estrelles</string>
     <string name="menu_license">Llicencia</string>
-    <string name="notification_channel_alert">Avisu rápidu</string>
     <string name="onboarding_title_installer">Instalador</string>
     <string name="onboarding_title_permissions">Permisos</string>
     <string name="pref_ui_title">Personalización</string>

@@ -186,7 +186,6 @@
     <string name="onboarding_title_permissions">Autorizzazioni</string>
     <string name="onboarding_title_installer">Installatore</string>
     <string name="onboarding_permission_select">Aurora Store richiede le autorizzazioni seguenti</string>
-    <string name="notification_channel_alert">Notifica rapida</string>
     <string name="dialog_title_self_update">Nuovo aggiornamento disponibile</string>
     <string name="device_miui_extra">Facoltativamente è possibile scegliere l’installatore nativo, ma in tal caso non sarà possibile installare gli APK aggregati (divisi).</string>
     <string name="device_miui_description">Si prega di disabilitare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere l’installatore Root o Servizi.</string>

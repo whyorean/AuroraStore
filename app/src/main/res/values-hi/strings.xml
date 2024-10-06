@@ -112,7 +112,6 @@
     <string name="title_apps_games">मेरे ऐप्स और गेम्स</string>
     <string name="title_library">लाईब्रेरी</string>
     <string name="title_language">भाषा</string>
-    <string name="notification_channel_alert">त्वरित सूचना</string>
     <string name="pref_ui_layout">अभिन्यास</string>
     <string name="action_update">अपडेट करें</string>
     <string name="filter_review_one">एक</string>

@@ -67,7 +67,6 @@
     <string name="onboarding_title_permissions">Behörigheter</string>
     <string name="onboarding_title_installer">Installatör</string>
     <string name="onboarding_permission_select">Aurora-butiken behöver följande tillstånd</string>
-    <string name="notification_channel_alert">Snabb avisering</string>
     <string name="dialog_title_self_update">Ny uppdatering tillgänglig</string>
     <string name="device_miui_title">MIUI upptäckt!</string>
     <string name="menu_terms">Villkor för användning</string>

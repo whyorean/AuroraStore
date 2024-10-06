@@ -126,7 +126,6 @@
     <string name="filter_review_five">별 5개</string>
     <string name="filter_review_one">별 1개</string>
     <string name="filter_review_three">별 3개</string>
-    <string name="notification_channel_alert">빠른 알림</string>
     <string name="installer_service_available">Aurora 서비스를 사용할 수 있으며 설치할 준비가 되었습니다.</string>
     <string name="installer_status_user_action">사용자의 승인 대기 중</string>
     <string name="menu_disclaimer">면책 조항</string>

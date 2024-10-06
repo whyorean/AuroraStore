@@ -169,7 +169,6 @@
     <string name="onboarding_permission_esa">دسترسی به حافظه خارجی</string>
     <string name="pref_abandon_session">پاکسازی اجباری جلسات نصب</string>
     <string name="installer_service_available">خدمات آرورا در دسترس و آماده نصب است.</string>
-    <string name="notification_channel_alert">اطلاع رسانی سریع</string>
     <string name="tab_categories">دسته بندی ها</string>
     <string name="download_speed_estimating">برآورد</string>
     <string name="installer_status_failure_session">جلسه ایجاد نشد</string>

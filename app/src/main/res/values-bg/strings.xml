@@ -240,7 +240,6 @@
     <string name="onboarding_permission_esm">Мениджър на външно съхранение</string>
     <string name="dialog_title_self_update">Налична е нова актуализация</string>
     <string name="dialog_desc_native_split">Не можете да инсталирате пакетни (разделени) приложения чрез Native Installer. Променете инсталатора си на Session, Services или Root.</string>
-    <string name="notification_channel_alert">Бързо известяване</string>
     <string name="onboarding_permission_esa_desc">За да запазите изтеглянията (APK и OBB), експортирайте и импортирайте конфигурациите на устройството към и от външно хранилище.</string>
     <string name="onboarding_permission_installer">Разрешение за инсталиране</string>
     <string name="pref_install_delete_summary">APK файловете ще бъдат изтрити по подразбиране</string>

@@ -88,7 +88,6 @@
     <string name="onboarding_title_permissions">Oprávnění</string>
     <string name="onboarding_title_installer">Instalátor</string>
     <string name="onboarding_permission_select">Obchod Aurora vyžaduje následující oprávnění</string>
-    <string name="notification_channel_alert">Rychlé oznámení</string>
     <string name="dialog_title_self_update">Byla nalezena nová aktualizace</string>
     <string name="device_miui_extra">Volitelně můžete zvolit Nativní instalátor, pak ale nebude možné instalovat skupiny APK, takže výběr je na vás.</string>
     <string name="device_miui_description">Pro povolení instalací, deaktivujte optimalizaci MIUI, v opačném případě si můžete vybrat mezi Root instalátor nebo Services instalátor.</string>

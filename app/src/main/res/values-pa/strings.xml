@@ -98,7 +98,6 @@
     <string name="onboarding_title_installer">ਇੰਸਟਾਲਰ</string>
     <string name="onboarding_title_permissions">ਅਗਿਆਵਾਂ</string>
     <string name="onboarding_permission_select">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਹੇਠ ਲਿਖੀਆਂ ਇਜਾਜ਼ਤਾਂ ਦੀ ਲੋੜ ਹੈ</string>
-    <string name="notification_channel_alert">ਤੁਰੰਤ ਸੂਚਨਾ</string>
     <string name="dialog_title_self_update">ਨਵਾਂ ਅੱਪਡੇਟ ਉਪਲਬੱਧ</string>
     <string name="device_miui_extra">ਤੁਸੀਂ ਨੇਟਿਵ ਇੰਸਟਾਲਰ ਵੀ ਵਰਤ ਸਕਦੇ ਹੋ, ਪਰ ਉਸ ਜ਼ਰੀਏ ਤੁਸੀਂ split/bundled APK ਇੰਸਟਾਲ ਨਹੀਂ ਕਰ ਸਕਦੇ। ਸੋ ਫੈਸਲਾ ਤੁਹਾਡਾ ਹੈ ਤੁਸੀਂ ਕਿਸ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਨਾਲ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ।</string>
     <string name="device_miui_subtitle">MIUI Optimizations ਕਾਰਨ ਤੁਸੀਂ ਸੈਸ਼ਨ ਐਪ ਇੰਸਟਾਲੇਸ਼ਨ ਵਿਧੀ ਜ਼ਰੀਏ ਐਪਸ ਇੰਸਟਾਲ ਨਹੀਂ ਕਰ ਸਕਦੇ।</string>

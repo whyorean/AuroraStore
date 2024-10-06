@@ -20,7 +20,6 @@
     <string name="device_miui_title">MIUI détecté !</string>
     <string name="menu_terms">Conditions d’utilisation</string>
     <string name="menu_license">Licence</string>
-    <string name="notification_channel_alert">Notification rapide</string>
     <string name="onboarding_welcome_select">Comment ça va \?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Installateur</string>

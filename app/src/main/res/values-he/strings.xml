@@ -206,7 +206,6 @@
     <string name="onboarding_permission_installer">הרשאות מתקין</string>
     <string name="details_no_app_match">לא נמצא יישום תואם</string>
     <string name="title_no_network">אין רשת</string>
-    <string name="notification_channel_alert">התראות מהירות</string>
     <string name="onboarding_permission_select">חנות אורורה דורשת את ההרשאות הבאות</string>
     <string name="details_changelog_unavailable">רשימת שנויים לא סופקו</string>
     <string name="installer_am_unavailable">התקן את מנהל האפליקציות או שנה סוג מתקין.</string>

@@ -188,7 +188,8 @@
     <string name="device_miui_extra">"Optionally you can choose Native installer, but then you can not install bundled (split) APKs, so choice is yours."</string>
     <string name="dialog_title_self_update">"New update available"</string>
     <string name="dialog_desc_native_split">"You can not install bundled(split) apps via Native Installer. Change your installer to Session, Services or Root."</string>
-    <string name="notification_channel_alert">"Quick notification"</string>
+    <string name="notification_channel_export">App export notification</string>
+    <string name="notification_channel_install">Install notification</string>
     <string name="notification_channel_downloads">Downloads notification</string>
     <string name="onboarding_permission_select">"Aurora Store requires following permissions"</string>
     <string name="onboarding_title_installer">"Installer"</string>

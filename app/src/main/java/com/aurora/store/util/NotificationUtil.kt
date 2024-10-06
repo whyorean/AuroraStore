@@ -34,12 +34,19 @@ object NotificationUtil {
             val channels = ArrayList<NotificationChannel>()
             channels.add(
                 NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_ALERT,
-                    context.getString(R.string.notification_channel_alert),
+                    Constants.NOTIFICATION_CHANNEL_INSTALL,
+                    context.getString(R.string.notification_channel_install),
                     NotificationManager.IMPORTANCE_HIGH
                 ).apply {
                     setSound(null, null)
                 }
+            )
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_EXPORT,
+                    context.getString(R.string.notification_channel_export),
+                    NotificationManager.IMPORTANCE_HIGH
+                )
             )
             channels.add(
                 NotificationChannel(
@@ -148,7 +155,7 @@ object NotificationUtil {
         displayName: String,
         packageName: String
     ): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
             .setSmallIcon(R.drawable.ic_install)
             .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
             .setContentTitle(displayName)
@@ -163,7 +170,7 @@ object NotificationUtil {
         displayName: String,
         content: String?
     ): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
             .setSmallIcon(R.drawable.ic_install)
             .setContentTitle(displayName)
             .setContentText(content)
@@ -238,7 +245,7 @@ object NotificationUtil {
     }
 
     fun getExportNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
             .setSmallIcon(R.drawable.ic_file_copy)
             .setContentTitle(context.getString(R.string.export_app_title))
             .setContentText(context.getString(R.string.export_app_summary))
@@ -271,7 +278,7 @@ object NotificationUtil {
             context.getString(R.string.export_app_summary_fail)
         }
 
-        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERT)
+        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
             .setSmallIcon(R.drawable.ic_file_copy)
             .setContentTitle(displayName).setContentText(content)
             .setContentIntent(getContentIntentForExport(context, uri))

@@ -21,7 +21,6 @@
     <string name="about_bitcoin_btc">බිට්කොයින්</string>
     <string name="onboarding_title_welcome">සාදරයෙන් පිළිගනිමු</string>
     <string name="onboarding_title_permissions">අවසර</string>
-    <string name="notification_channel_alert">ක්‍ෂණික දැනුම්දීම</string>
     <string name="menu_terms">සේවාවේ නියම</string>
     <string name="menu_license">බලපත්‍රය</string>
     <string name="menu_disclaimer">වියාචනය</string>

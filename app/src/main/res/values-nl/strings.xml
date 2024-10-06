@@ -107,7 +107,6 @@
     <string name="onboarding_title_permissions">Toestemmingen</string>
     <string name="onboarding_title_installer">Installateur</string>
     <string name="onboarding_permission_select">Aurora Store vereist de volgende toestemmingen</string>
-    <string name="notification_channel_alert">Snelle melding</string>
     <string name="dialog_desc_native_split">U kan geen gebundelde(split) applicaties installeren met Native Installer. Verander uw installatiemethode naar Session, Service of Root.</string>
     <string name="dialog_title_self_update">Nieuwe update beschikbaar</string>
     <string name="device_miui_extra">Optioneel kan u kiezen voor de Native installateur, maar dan kan u geen gebundelde (gesplitste) APKs installeren, de keuze is aan u.</string>

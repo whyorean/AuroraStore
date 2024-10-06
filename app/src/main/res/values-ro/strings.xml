@@ -55,7 +55,6 @@
     <string name="device_miui_extra">Opțional, poți alege programul de instalare nativ, dar apoi nu vei putea instala APK-uri incluse (împărțite), astfel alegerea este a ta.</string>
     <string name="dialog_title_self_update">Nouă actualizare disponibilă</string>
     <string name="dialog_desc_native_split">Nu poți instala aplicații incluse (divizate) prin intermediul programului de instalare nativ. Schimbă programul de instalare la Sesiune, Servicii sau Root.</string>
-    <string name="notification_channel_alert">Notificare rapidă</string>
     <string name="onboarding_welcome_select">Ce mai faci\?</string>
     <string name="onboarding_permission_esa">Acces la stocare</string>
     <string name="onboarding_permission_esm">Manager de stocare externă</string>
