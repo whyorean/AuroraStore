@@ -1,0 +1,3 @@
+• Kleines Migrationsproblem behoben
+• Automatisches Update für Nightly-Builds hinzugefügt
+• Übersetzungen aktualisiert
