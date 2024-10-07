@@ -29,7 +29,8 @@ data class Update(
     val hasValidCert: Boolean,
     val offerType: Int,
     var fileList: List<File>,
-    val sharedLibs: List<SharedLib>
+    val sharedLibs: List<SharedLib>,
+    val targetSdk: Int
 ) : Parcelable {
 
     companion object {
@@ -52,7 +53,8 @@ data class Update(
                 },
                 app.offerType,
                 app.fileList.filterNot { it.url.isBlank() },
-                app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) }
+                app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) },
+                app.targetSdk
             )
         }
     }

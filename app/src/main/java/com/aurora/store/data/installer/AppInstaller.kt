@@ -30,10 +30,17 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
+import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
+import com.aurora.extensions.isSAndAbove
+import com.aurora.extensions.isTAndAbove
+import com.aurora.extensions.isUAndAbove
+import com.aurora.extensions.isVAndAbove
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.InstallerInfo
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
@@ -99,6 +106,37 @@ class AppInstaller @Inject constructor(
             }
 
             return installers
+        }
+
+        /**
+         * Checks if the given package can be silently installed
+         * @param context [Context]
+         * @param packageName Package to silently install
+         */
+        fun canInstallSilently(context: Context, packageName: String, targetSdk: Int): Boolean {
+            return when (getCurrentInstaller(context)) {
+                Installer.SESSION -> {
+                    // Silent install cannot be done on initial install and below A12
+                    if (!PackageUtil.isInstalled(context, packageName) || !isSAndAbove()) return false
+
+                    // We cannot do silent updates if we are not the update owner
+                    if (context.packageManager.getUpdateOwnerPackageNameCompat(packageName) != BuildConfig.APPLICATION_ID) return false
+
+                    // Ensure app being installed satisfies Android's requirement for targetSdk level
+                    when (Build.VERSION.SDK_INT) {
+                        Build.VERSION_CODES.VANILLA_ICE_CREAM -> targetSdk == Build.VERSION_CODES.TIRAMISU
+                        Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> targetSdk == Build.VERSION_CODES.S
+                        Build.VERSION_CODES.TIRAMISU -> targetSdk == Build.VERSION_CODES.R
+                        Build.VERSION_CODES.S -> targetSdk == Build.VERSION_CODES.Q
+                        else -> false // Only Android version above 12 can silently update apps
+                    }
+                }
+                Installer.NATIVE -> false // Deprecated
+                Installer.ROOT -> hasRootAccess()
+                Installer.SERVICE -> false // Deprecated
+                Installer.AM -> false // We cannot check if AppManager has ability to auto-update
+                Installer.SHIZUKU -> isOAndAbove() && hasShizukuOrSui(context) && hasShizukuPerm()
+            }
         }
 
         fun notifyInstallation(context: Context, displayName: String, packageName: String) {

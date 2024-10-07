@@ -15,13 +15,9 @@ import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isMAndAbove
-import com.aurora.extensions.isOAndAbove
-import com.aurora.extensions.isSAndAbove
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.installer.AppInstaller.Companion.Installer
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
-import com.aurora.store.util.CertUtil
 import com.aurora.store.util.DownloadWorkerUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.Preferences
@@ -141,7 +137,9 @@ class UpdateWorker @AssistedInject constructor(
                     } else {
                         if (appContext.isIgnoringBatteryOptimizations()) {
                             // Trigger download for apps if they can be auto-updated (if any)
-                            updatesList.filter { canAutoUpdate(it.packageName) }.let { list ->
+                            updatesList.filter {
+                                AppInstaller.canInstallSilently(appContext, it.packageName, it.targetSdk)
+                            }.let { list ->
                                 if (list.isEmpty()) return@let
 
                                 Log.i(TAG, "Found auto-update enabled apps, updating!")
@@ -149,7 +147,9 @@ class UpdateWorker @AssistedInject constructor(
                             }
 
                             // Notify about remaining apps (if any)
-                            updatesList.filterNot { canAutoUpdate(it.packageName) }.let {  list ->
+                            updatesList.filterNot {
+                                AppInstaller.canInstallSilently(appContext, it.packageName, it.targetSdk)
+                            }.let { list ->
                                 if (list.isEmpty()) return@let
 
                                 Log.i(TAG, "Found apps that cannot be auto-updated, notifying!")
@@ -178,20 +178,5 @@ class UpdateWorker @AssistedInject constructor(
             }
         }
         return Result.success()
-    }
-
-    /**
-     * Checks if the given package can be auto-updated or not
-     */
-    private fun canAutoUpdate(packageName: String): Boolean {
-        return when (AppInstaller.getCurrentInstaller(appContext)) {
-            Installer.SESSION -> isSAndAbove() && CertUtil.isAuroraStoreApp(appContext, packageName)
-            Installer.NATIVE -> false
-            Installer.ROOT -> AppInstaller.hasRootAccess()
-            Installer.SERVICE -> AppInstaller.hasAuroraService(appContext)
-            Installer.AM -> false // We cannot check if AppManager has ability to auto-update
-            Installer.SHIZUKU -> isOAndAbove() && AppInstaller.hasShizukuOrSui(appContext) &&
-                    AppInstaller.hasShizukuPerm()
-        }
     }
 }
