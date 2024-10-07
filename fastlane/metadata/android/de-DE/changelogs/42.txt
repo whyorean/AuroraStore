@@ -12,4 +12,4 @@
 • Den No-Theme-Fehler im Setup mithilfe von Optionsfeldern behoben
 • Keine neuen GSF- & Vending-Versionen verwendet
 • Einrichtung von Refactor-Speicherberechtigungen
-• Übersetzungsaktualisierungen
+• Übersetzungen aktualisiert

@@ -4,4 +4,4 @@
 • Umbenennung von "Erweiterte Updates" in "Inkompatible Updates"
 • Hinzufügen einer Menüaktion zum Erstellen einer Verknüpfung für die installierte App
 • Fehlerkorrekturen und Verbesserungen
-• Aktualisierungen der Übersetzung
+• Übersetzungen aktualisiert

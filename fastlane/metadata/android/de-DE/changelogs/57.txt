@@ -4,4 +4,4 @@
 • Änderungen am Downloadsystem
 • Der Standard-Download-Speicherort wurde auf das interne Cache-Verzeichnis geändert
 • Downloads werden jetzt beim Neustart automatisch fortgesetzt, wenn Dateien vorhanden sind
-• Aktualisierungen der Übersetzung
+• Übersetzungen aktualisiert

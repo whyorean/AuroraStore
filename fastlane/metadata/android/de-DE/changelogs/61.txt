@@ -5,4 +5,4 @@
 • Neue Funktion zum Hinzufügen von Favoriten-Apps zur Import-/Export-Liste
 • Implementierung von Material You für die übrigen Komponenten mit wichtigen UI- und UX-Verbesserungen
 • Mehrere Fehlerbehebungen und Leistungsverbesserungen
-• Übersetzungsaktualisierungen
+• Übersetzungen aktualisiert

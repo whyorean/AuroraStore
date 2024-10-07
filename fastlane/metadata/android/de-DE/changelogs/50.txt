@@ -6,4 +6,4 @@
 • Die Einstellungsschaltflächen haben im dunklen Design jetzt den richtigen Farbton
 • Der App-Name ist in der Symbolleiste für Exodus-Berichte wieder sichtbar
 • Interne Verbesserungen im Zusammenhang mit Bildern
-• Übersetzungsaktualisierungen
+• Übersetzungen aktualisiert
