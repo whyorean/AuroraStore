@@ -10,7 +10,7 @@
     <string name="details_beta_delay">A jelentkezés eltarthat egy ideig, később ellenőrizheti az állapotot.</string>
     <string name="details_beta_description">Új funkciókkal és hibákkal találkozhat mindenki más előtt. Adjon visszajelzést a fejlesztőknek, hogy segítse őket a fejlesztésben.</string>
     <string name="details_beta">Bétaprogram</string>
-    <string name="details_beta_available">Csatlakozik a bétaprogramhoz?</string>
+    <string name="details_beta_available">Csatlakozik a bétaprogramhoz ?</string>
     <string name="details_beta_subscribed">Ön bétatesztelő</string>
     <string name="action_wishlist_add">Hozzáadás a kívánságlistához</string>
     <string name="action_whitelist">Engedélyezési lista</string>
