@@ -1,10 +1,13 @@
 package com.aurora.store.data.receiver
 
+import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import androidx.core.content.getSystemService
 import com.aurora.Constants
+import com.aurora.extensions.isOAndAbove
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences
@@ -21,7 +24,7 @@ class MigrationReceiver : BroadcastReceiver() {
     companion object {
         private const val TAG = "MigrationReceiver"
 
-        private const val PREF_VERSION = 2 // BUMP THIS MANUALLY ON ADDING NEW MIGRATION STEP
+        private const val PREF_VERSION = 3 // BUMP THIS MANUALLY ON ADDING NEW MIGRATION STEP
 
         fun runMigrationsIfRequired(context: Context) {
             val oldVersion = Preferences.getInteger(context, PREFERENCE_MIGRATION_VERSION)
@@ -61,6 +64,17 @@ class MigrationReceiver : BroadcastReceiver() {
                     dispensers.remove(Constants.URL_DISPENSER)
 
                     context.save(PREFERENCE_DISPENSER_URLS, dispensers)
+                }
+                currentVersion++
+            }
+
+            // 63 -> 64
+            if (currentVersion == 2) {
+                if (isOAndAbove()) {
+                    with(context.getSystemService<NotificationManager>()!!) { // !1189
+                        deleteNotificationChannel("NOTIFICATION_CHANNEL_GENERAL")
+                        deleteNotificationChannel("NOTIFICATION_CHANNEL_ALERT")
+                    }
                 }
                 currentVersion++
             }
