@@ -27,7 +27,6 @@ object RoomModule {
     ): AuroraDatabase {
         return Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
             .addTypeConverter(downloadConverter)
-            .fallbackToDestructiveMigration()
             .build()
     }
 
