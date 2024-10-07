@@ -407,8 +407,8 @@
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
-    <string name="export_app_summary_success">La collection d\'applications a été exportée avec succès</string>
-    <string name="export_app_summary_fail">L\'exportation de la collection d\'applications a échoué</string>
+    <string name="export_app_summary_success">Exportation du paquet d\'application réussie</string>
+    <string name="export_app_summary_fail">Échec de l\'exportation du paquet d\'application</string>
     <string name="export_app_title">Exportateur de fichier</string>
     <string name="export_app_summary">Exportation en cours, veuillez patienter</string>
 </resources>
