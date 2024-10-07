@@ -43,10 +43,6 @@ object CertUtil {
     private const val CERT_BEGIN = "-----BEGIN CERTIFICATE-----"
     private const val CERT_END = "-----END CERTIFICATE-----"
 
-    fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
-        return context.packageManager.getInstallerPackageNameCompat(packageName) == context.packageName
-    }
-
     fun isFDroidApp(context: Context, packageName: String): Boolean {
         return isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
     }

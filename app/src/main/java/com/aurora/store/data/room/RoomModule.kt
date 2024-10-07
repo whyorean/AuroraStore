@@ -2,6 +2,8 @@ package com.aurora.store.data.room
 
 import android.content.Context
 import androidx.room.Room
+import com.aurora.store.data.room.MigrationHelper.MIGRATION_1_4
+import com.aurora.store.data.room.MigrationHelper.MIGRATION_3_4
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.favourites.FavouriteDao
@@ -26,6 +28,7 @@ object RoomModule {
         downloadConverter: DownloadConverter
     ): AuroraDatabase {
         return Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
+            .addMigrations(MIGRATION_3_4, MIGRATION_1_4)
             .addTypeConverter(downloadConverter)
             .build()
     }

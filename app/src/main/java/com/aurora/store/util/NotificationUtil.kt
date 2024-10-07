@@ -20,6 +20,7 @@ import com.aurora.Constants
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
@@ -109,13 +110,17 @@ object NotificationUtil {
                 builder.setAutoCancel(true)
                 builder.setCategory(Notification.CATEGORY_STATUS)
                 builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
-                builder.addAction(
-                    NotificationCompat.Action.Builder(
-                        R.drawable.ic_install,
-                        context.getString(R.string.action_install),
-                        getInstallIntent(context, download)
-                    ).build()
-                )
+
+                // Show install action if app cannot be silently installed
+                if (!AppInstaller.canInstallSilently(context, download.packageName, download.targetSdk)) {
+                    builder.addAction(
+                        NotificationCompat.Action.Builder(
+                            R.drawable.ic_install,
+                            context.getString(R.string.action_install),
+                            getInstallIntent(context, download)
+                        ).build()
+                    )
+                }
             }
 
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
