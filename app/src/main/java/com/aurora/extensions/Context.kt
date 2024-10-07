@@ -20,6 +20,7 @@
 package com.aurora.extensions
 
 import android.Manifest
+import android.app.NotificationManager
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -117,6 +118,14 @@ fun Context.getStyledAttributeColor(id: Int): Int {
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
     return if (isMAndAbove()) {
         (getSystemService<PowerManager>())?.isIgnoringBatteryOptimizations(packageName) ?: true
+    } else {
+        true
+    }
+}
+
+fun Context.areNotificationsEnabled(): Boolean {
+    return if (isNAndAbove()) {
+        getSystemService<NotificationManager>()!!.areNotificationsEnabled()
     } else {
         true
     }

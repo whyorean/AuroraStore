@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
+import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
 import com.aurora.store.data.work.CacheWorker
@@ -174,10 +175,12 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
     }
 
     private fun setupAutoUpdates() {
-        save(
-            PREFERENCE_UPDATES_AUTO,
-            if (requireContext().isIgnoringBatteryOptimizations()) 2 else 1
-        )
+        val updateMode = when {
+            requireContext().isIgnoringBatteryOptimizations() -> 2 // Auto-update
+            requireContext().areNotificationsEnabled() -> 1 // Notify update
+            else -> 0 // Disable
+        }
+        save(PREFERENCE_UPDATES_AUTO, updateMode)
         UpdateWorker.scheduleAutomatedCheck(requireContext())
     }
 }
