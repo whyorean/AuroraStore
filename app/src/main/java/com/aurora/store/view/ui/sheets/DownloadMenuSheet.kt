@@ -33,7 +33,7 @@ import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.util.PathUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +62,7 @@ class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
         }
 
     @Inject
-    lateinit var downloadWorkerUtil: DownloadWorkerUtil
+    lateinit var downloadHelper: DownloadHelper
 
     @Inject
     lateinit var appInstaller: AppInstaller
@@ -101,14 +101,14 @@ class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
 
                     R.id.action_cancel -> {
                         findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
-                            downloadWorkerUtil.cancelDownload(args.download.packageName)
+                            downloadHelper.cancelDownload(args.download.packageName)
                         }
                         dismissAllowingStateLoss()
                     }
 
                     R.id.action_clear -> {
                         findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
-                            downloadWorkerUtil.clearDownload(
+                            downloadHelper.clearDownload(
                                 args.download.packageName,
                                 args.download.versionCode
                             )

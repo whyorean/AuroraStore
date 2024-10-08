@@ -30,7 +30,7 @@ import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentDownloadBinding
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -44,7 +44,7 @@ import javax.inject.Inject
 class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
 
     @Inject
-    lateinit var downloadWorkerUtil: DownloadWorkerUtil
+    lateinit var downloadHelper: DownloadHelper
 
     private lateinit var downloadList: List<Download>
 
@@ -62,19 +62,19 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
                 when (it.itemId) {
                     R.id.action_force_clear_all -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
-                            downloadWorkerUtil.clearAllDownloads()
+                            downloadHelper.clearAllDownloads()
                         }
                     }
 
                     R.id.action_cancel_all -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
-                            downloadWorkerUtil.cancelAll()
+                            downloadHelper.cancelAll()
                         }
                     }
 
                     R.id.action_clear_completed -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
-                            downloadWorkerUtil.clearFinishedDownloads()
+                            downloadHelper.clearFinishedDownloads()
                         }
                     }
                 }
@@ -83,7 +83,7 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            downloadWorkerUtil.downloadsList.collectLatest {
+            downloadHelper.downloadsList.collectLatest {
                 downloadList = it
                 updateController(it.reversed())
             }

@@ -31,7 +31,7 @@ import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
@@ -53,7 +53,7 @@ class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
     lateinit var workerFactory: HiltWorkerFactory
 
     @Inject
-    lateinit var downloadWorkerUtil: DownloadWorkerUtil
+    lateinit var downloadHelper: DownloadHelper
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
@@ -87,7 +87,7 @@ class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
         NotificationUtil.createNotificationChannel(this)
 
         // Initialize DownloadWorker to observe and trigger downloads
-        downloadWorkerUtil.init()
+        downloadHelper.init()
 
         //Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(

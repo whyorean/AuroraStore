@@ -16,7 +16,7 @@ import com.aurora.store.data.model.Report
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourites.Favourite
 import com.aurora.store.data.room.favourites.FavouriteDao
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -34,7 +34,7 @@ import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val downloadWorkerUtil: DownloadWorkerUtil,
+    private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     private val favouriteDao: FavouriteDao,
     private val httpClient: IHttpClient
@@ -75,7 +75,7 @@ class AppDetailsViewModel @Inject constructor(
     private val _favourite = MutableStateFlow<Boolean>(false)
     val favourite = _favourite.asStateFlow()
 
-    val downloadsList get() = downloadWorkerUtil.downloadsList
+    val downloadsList get() = downloadHelper.downloadsList
 
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -179,11 +179,11 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     fun download(app: App) {
-        viewModelScope.launch { downloadWorkerUtil.enqueueApp(app) }
+        viewModelScope.launch { downloadHelper.enqueueApp(app) }
     }
 
     fun cancelDownload(app: App) {
-        viewModelScope.launch { downloadWorkerUtil.cancelDownload(app.packageName) }
+        viewModelScope.launch { downloadHelper.cancelDownload(app.packageName) }
     }
 
     fun toggleFavourite(app: App) {

@@ -1,4 +1,4 @@
-package com.aurora.store.util
+package com.aurora.store.data.helper
 
 import android.content.Context
 import android.util.Log
@@ -14,6 +14,7 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
+import com.aurora.store.util.PathUtil
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
@@ -27,7 +28,7 @@ import javax.inject.Inject
 /**
  * Helper class to work with the [DownloadWorker].
  */
-class DownloadWorkerUtil @Inject constructor(
+class DownloadHelper @Inject constructor(
     @ApplicationContext private val context: Context,
     private val downloadDao: DownloadDao,
     private val gson: Gson
@@ -46,7 +47,7 @@ class DownloadWorkerUtil @Inject constructor(
     val downloadsList = downloadDao.downloads()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
-    private val TAG = DownloadWorkerUtil::class.java.simpleName
+    private val TAG = DownloadHelper::class.java.simpleName
 
     /**
      * Removes failed download from the queue and starts observing for newly enqueued apps.
@@ -180,7 +181,7 @@ class DownloadWorkerUtil @Inject constructor(
         // Ensure all app downloads are unique to preserve individual records
         WorkManager.getInstance(context)
             .enqueueUniqueWork(
-                "${DOWNLOAD_WORKER}/${download.packageName}",
+                "$DOWNLOAD_WORKER/${download.packageName}",
                 ExistingWorkPolicy.KEEP, work
             )
     }

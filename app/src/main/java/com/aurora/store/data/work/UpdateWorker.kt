@@ -18,7 +18,7 @@ import com.aurora.extensions.isMAndAbove
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.AppUtil
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit.MINUTES
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
     private val appUtil: AppUtil,
-    private val downloadWorkerUtil: DownloadWorkerUtil,
+    private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
@@ -143,7 +143,7 @@ class UpdateWorker @AssistedInject constructor(
                                 if (list.isEmpty()) return@let
 
                                 Log.i(TAG, "Found auto-update enabled apps, updating!")
-                                list.forEach { downloadWorkerUtil.enqueueUpdate(it) }
+                                list.forEach { downloadHelper.enqueueUpdate(it) }
                             }
 
                             // Notify about remaining apps (if any)

@@ -33,7 +33,7 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
 import com.google.gson.Gson
@@ -53,7 +53,7 @@ import com.aurora.gplayapi.data.models.File as GPlayFile
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
  *
- * Avoid using this worker directly and prefer using [DownloadWorkerUtil] instead.
+ * Avoid using this worker directly and prefer using [DownloadHelper] instead.
  */
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
@@ -92,7 +92,7 @@ class DownloadWorker @AssistedInject constructor(
 
         // Try to parse input data into a valid app
         try {
-            val downloadData = inputData.getString(DownloadWorkerUtil.DOWNLOAD_DATA)
+            val downloadData = inputData.getString(DownloadHelper.DOWNLOAD_DATA)
             download = gson.fromJson(downloadData, Download::class.java)
 
             val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {

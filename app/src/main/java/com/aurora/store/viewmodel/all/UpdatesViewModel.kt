@@ -24,7 +24,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.util.AppUtil
-import com.aurora.store.util.DownloadWorkerUtil
+import com.aurora.store.data.helper.DownloadHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,13 +35,13 @@ import javax.inject.Inject
 @HiltViewModel
 class UpdatesViewModel @Inject constructor(
     private val appUtil: AppUtil,
-    private val downloadWorkerUtil: DownloadWorkerUtil,
+    private val downloadHelper: DownloadHelper,
 ) : ViewModel() {
     private val TAG = UpdatesViewModel::class.java.simpleName
 
     var updateAllEnqueued: Boolean = false
 
-    val downloadsList get() = downloadWorkerUtil.downloadsList
+    val downloadsList get() = downloadHelper.downloadsList
     val updates get() = appUtil.updates
 
     private val _fetchingUpdates = MutableStateFlow(false)
@@ -59,14 +59,14 @@ class UpdatesViewModel @Inject constructor(
     }
 
     fun download(update: Update) {
-        viewModelScope.launch { downloadWorkerUtil.enqueueUpdate(update) }
+        viewModelScope.launch { downloadHelper.enqueueUpdate(update) }
     }
 
     fun cancelDownload(packageName: String) {
-        viewModelScope.launch { downloadWorkerUtil.cancelDownload(packageName) }
+        viewModelScope.launch { downloadHelper.cancelDownload(packageName) }
     }
 
     fun cancelAll() {
-        viewModelScope.launch { downloadWorkerUtil.cancelAll(true) }
+        viewModelScope.launch { downloadHelper.cancelAll(true) }
     }
 }
