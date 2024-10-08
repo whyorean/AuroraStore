@@ -7,7 +7,6 @@
     <string name="toast_apk_whitelisted">En la lista blanca</string>
     <string name="toast_apk_blacklisted">En la lista negra</string>
     <string name="toast_anonymous_restriction">No disponible en cuentas anónimas</string>
-    <string name="toast_abandon_sessions">Instalación de sesiones antiguas abandonadas</string>
     <string name="title_updates">Actualizaciones</string>
     <string name="title_spoof_manager">Gestor del simulador de dispositivo</string>
     <string name="title_settings">Ajustes</string>
@@ -55,8 +54,6 @@
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorar las aplicaciones de F-Droid en Actualizaciones y aplicaciones instaladas</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración se aplicará después de reiniciar la app</string>
-    <string name="pref_abandon_session_desc">Limpiar las sesiones de instalación abandonadas o pendientes</string>
-    <string name="pref_abandon_session">Forzar la limpieza de las sesiones de instalación</string>
     <string name="onboarding_permission_installer_desc">Permitir la instalación de aplicaciones desde Aurora Store</string>
     <string name="onboarding_permission_installer">Permiso del instalador</string>
     <string name="onboarding_permission_esm">Gestor de almacenamiento externo</string>

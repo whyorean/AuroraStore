@@ -16,7 +16,6 @@
     <string name="toast_developer_setting_failed">Chcete-li otevřít nastavení pro vývojáře, zapněte je v nastavení zařízení.</string>
     <string name="toast_clipboard_copied">Zkopírováno do schránky</string>
     <string name="toast_anonymous_restriction">Není k dispozici na anonymních účtech</string>
-    <string name="toast_abandon_sessions">Staré relace instalací zrušeny</string>
     <string name="title_manual_download">Ruční stažení</string>
     <string name="title_updates">Aktualizace</string>
     <string name="title_spoof_manager">Správa falšování</string>
@@ -75,8 +74,6 @@
     <string name="pref_filter_fdroid_summary">Ignorovat aplikace ze služby F-Droid z karty Aktualizace a Nainstalované</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>
     <string name="pref_common_extra">Doplňky</string>
-    <string name="pref_abandon_session_desc">Odstranit přerušené nebo čekající instalace</string>
-    <string name="pref_abandon_session">Vynutit vymazání relací instalátoru</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
     <string name="onboarding_permission_esm">Správce externího úložiště</string>

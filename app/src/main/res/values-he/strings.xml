@@ -276,7 +276,6 @@
     <string name="google_play_store_desc">גוגל פליי, ידוע גם כ-Play Store של גוגל ובתור החנות האידיאלית של אנדרואיד.</string>
     <string name="session_good">וואה! הכל טוב.</string>
     <string name="failed_to_fetch_report">לא הצליח להשיג דיווח פרטיות</string>
-    <string name="toast_abandon_sessions">הפעלות התקנה ישנות ננטשו</string>
     <string name="action_get_local_apk">שמור באנדל של אפליקציה</string>
     <string name="verifying_new_session">מאמת כניסה חדשה</string>
     <string name="action_enabled">מאופשר</string>
@@ -290,7 +289,6 @@
     <string name="details_no_apps_on_sale">לא נמצאו אפליקציות במבצע</string>
     <string name="session_enjoy">היכנסו ותהנו.</string>
     <string name="server_maintenance">השרת מושבת לצורך תחזוקה</string>
-    <string name="pref_abandon_session">‏כפה ניקוי עונות התקנה</string>
     <string name="toast_manual_available">מזל טוב, קוד הגרסה המבוקש זמין, מוריד עכשיו.</string>
     <string name="session_verifying_google">מאמת כניסת גוגל</string>
     <string name="rate_limited">אופס, החשבון הזה בעל דירוג מוגבל!</string>
@@ -312,7 +310,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="permissions_denied">ההרשאות הנדרשות נדחו. אנא אשר אותן בשביל המשך הפעולה</string>
     <string name="access_denied_using_vpn">גישה נדחתה! אתה משתמש ב-VPN או Tor?</string>
-    <string name="pref_abandon_session_desc">הסר התקנות מושהות או נטושות</string>
     <string name="pref_downloader_wifi_title">הורד רק דרך WiFi</string>
     <string name="app_language">שפת האפליקציה</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>

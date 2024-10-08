@@ -167,8 +167,6 @@
     <string name="onboarding_permission_esa_desc">Böyük tətbiqlər &amp; oyunlar üçün APK genişlətmə faylların (OBB) saxlamaq üçün.</string>
     <string name="onboarding_permission_esm">Xarici Yaddaş Meneceri</string>
     <string name="onboarding_permission_installer">Quraşdırıcı İcazəsi</string>
-    <string name="pref_abandon_session">Quraşdırılmış olanları silməyə zorla</string>
-    <string name="pref_abandon_session_desc">İmtina edilmiş və ya gözlənilən quraşdırmaları silin</string>
     <string name="pref_common_extra">Əlavələr</string>
     <string name="pref_dialog_to_apply_restart">Bu seçim tətbiqi yenidən başlatdıqdan sonra tətbiq olunacaq</string>
     <string name="pref_filter_fdroid_title">F-Droid tətbiqlərini filtrlə</string>
@@ -220,7 +218,6 @@
     <string name="title_spoof_manager">Saxtalaşdırma meneceri</string>
     <string name="title_updates">Yeniləmələr</string>
     <string name="title_manual_download">Əl ilə yükləmə</string>
-    <string name="toast_abandon_sessions">Köhnə quraşdırma hesablardan çıxıldı</string>
     <string name="toast_anonymous_restriction">Gizli hesablarda mövcud deyil</string>
     <string name="toast_apk_blacklisted">Qara siyahıya salındı</string>
     <string name="toast_developer_setting_failed">Açmaq üçün cihaz tənzimləmələrindən yaradıcı seçimlərini aktiv edin.</string>

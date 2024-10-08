@@ -213,14 +213,12 @@
     <string name="installer_service_misconfigured">අවුරෝරා සේවා පිහිටුවන්න හා පළමුව සියළු අවසර පිරිනමන්න.</string>
     <string name="installer_status_failure_invalid">APK වලංගු නොවේ හෝ හානි වී ඇත</string>
     <string name="pref_common_extra">අමතර වැඩ</string>
-    <string name="pref_abandon_session">ස්ථාපන වාර බලෙන් හිස් කරන්න</string>
     <string name="purchase_invalid">යෙදුම මිලදී ගෙන නැත</string>
     <string name="pref_install_mode_summary">APK ස්ථාපන ආකාරය තෝරන්න</string>
     <string name="tab_top_paid">ප්‍රචලිත ගෙවන</string>
     <string name="pref_install_mode_session">වාර ස්ථාපකය</string>
     <string name="purchase_session_expired">වාරය කල් ඉකුත්ය, නව වාරයක් අත්කර ගැනීමට යළි පිවිසෙන්න.</string>
     <string name="pref_install_mode_root">මූල ස්ථාපකය</string>
-    <string name="toast_abandon_sessions">පරණ ස්ථාපන වාරය අතහැරී ඇත</string>
     <string name="installer_status_failure_session">වාරය සෑදීමට නොහැකි විය</string>
     <string name="action_resume">නැවතත්</string>
     <string name="tab_editor_choice">සම්පාදකගේ තේරීම</string>
@@ -229,7 +227,6 @@
     <string name="device_miui_subtitle">MIUI ප්‍රශස්තිකරණය නිසා වාර ස්ථාපකයට යෙදුම් ස්ථාපනය කළ නොහැකිය.</string>
     <string name="device_miui_description">ස්ථාපන සඳහා ඉඩදීමට MIUI ප්‍රශස්තිකරණය අබල කරන්න, නැතහොත් මූල හෝ සේවා ස්ථාපක තෝරාගත හැකිය.</string>
     <string name="pref_install_mode_am">AM ස්ථාපකය</string>
-    <string name="pref_abandon_session_desc">අතහැර දැමූ හෝ බලාසිටින ස්ථාපන වාර හිස් කරන්න</string>
     <string name="dialog_desc_native_split">නිසග ස්ථාපකය හරහා පොදි(පංගු) යෙදුම් ස්ථාපනය කිරීමට නොහැකිය. ස්ථාපකය මූල, සේවා හෝ වාරය ට වෙනස් කරන්න.</string>
     <string name="device_miui_extra">වෛකල්පිතව, ඔබට නිසග ස්ථාපකය තේරීමට හැකිය නමුත් ඊළඟට ඔබට පොදි(පංගු) APKs ස්ථානය කිරීමට නොහැකිය, තීරණය ඔබ සතුය.</string>
     <string name="toast_page_unavailable">පිරික්සන ලද පිටුව නොතිබේ</string>

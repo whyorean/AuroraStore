@@ -167,12 +167,10 @@
     <string name="purchase_no_file">نمی توان فایل ها را دریافت کرد</string>
     <string name="onboarding_permission_installer">مجوز نصب کننده</string>
     <string name="onboarding_permission_esa">دسترسی به حافظه خارجی</string>
-    <string name="pref_abandon_session">پاکسازی اجباری جلسات نصب</string>
     <string name="installer_service_available">خدمات آرورا در دسترس و آماده نصب است.</string>
     <string name="tab_categories">دسته بندی ها</string>
     <string name="download_speed_estimating">برآورد</string>
     <string name="installer_status_failure_session">جلسه ایجاد نشد</string>
-    <string name="pref_abandon_session_desc">پاک کردن جلسات نصب رها شده یا در انتظار</string>
     <string name="exodus_substring">ردیاب(های) موجود در</string>
     <string name="filter_review_positive">مثبت</string>
     <string name="installer_status_user_action">در انتظار تایید کاربر</string>
@@ -237,7 +235,6 @@
     <string name="spoof_apply">اطمینان حاصل کنید که برای اعمال پارامتر جعلی دوباره وارد سیستم شوید</string>
     <string name="tab_editor_choice">انتخاب سردبیران</string>
     <string name="title_no_network">بدون شبکه</string>
-    <string name="toast_abandon_sessions">جلسات نصب قدیمی رها شده</string>
     <string name="toast_apk_blacklisted">در لیست سیاه بودن</string>
     <string name="toast_export_success">پیکربندی دستگاه صادر شد</string>
     <string name="app_updater_service_notif_text">امکان دانلود برنامه پس زمینه را فراهم می کند</string>

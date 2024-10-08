@@ -163,7 +163,6 @@
     <string name="purchase_no_file">Δεν ήταν δυνατή η λήψη αρχείων</string>
     <string name="onboarding_permission_esa">Πρόσβαση εξωτερικού χώρου αποθήκευσης</string>
     <string name="onboarding_permission_esm">Εξωτερική αποθήκευση</string>
-    <string name="pref_abandon_session_desc">Καθαρισμός παρατημένων ή εκκρεμών εγκαταστάσεων</string>
     <string name="onboarding_permission_installer_desc">Επιτρέψτε την εγκατάσταση εφαρμογών από το Aurora Store</string>
     <string name="pref_filter_google_summary">Αγνοεί τις εφαρμογές Google από τις Ενημερώσεις και εγκατεστημένες εφαρμογές</string>
     <string name="pref_install_mode_session">Εγκαταστάτης συνεδρίας</string>
@@ -196,7 +195,6 @@
     <string name="pref_install_mode_native">Εγγενής εγκαταστάτης (Απαρχαιωμένος)</string>
     <string name="toast_spoof_applied">Εφαρμόστηκε spoof συσκευής.</string>
     <string name="title_updates">Ενημερώσεις</string>
-    <string name="toast_abandon_sessions">Οι παλιές συνεδρίες εγκατάστασης εγκαταλήφθηκαν</string>
     <string name="pref_filter_fdroid_title">Φιλτράρετε εφαρμογές F-Droid</string>
     <string name="pref_ui_layout">Διάταξη</string>
     <string name="pref_install_mode_summary">Επιλέξτε τον τρόπο εγκατάστασης του APK</string>
@@ -239,7 +237,6 @@
     <string name="toast_aas_token_failed">Δεν ήταν δυνατή η δημιουργία AAS Token</string>
     <string name="toast_purchase_blocked">Οι αγορές εφαρμογών δεν είναι διαθέσιμες σε ανώνυμους λογαριασμούς.</string>
     <string name="installer_am_unavailable">Εγκατάστησε το Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
-    <string name="pref_abandon_session">Εξαναγκασμός εκκαθάρισης συνεδριάσεων</string>
     <string name="action_home_screen">Προσθήκη στην Αρχική οθόνη</string>
     <string name="action_uninstall_confirmation">Θέλετε να απεγκαταστήσετε την εφαρμογή;</string>
     <string name="download_eta_sec">Απομένουν %1$dδλ</string>

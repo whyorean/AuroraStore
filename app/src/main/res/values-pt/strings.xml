@@ -49,7 +49,6 @@
     <string name="toast_apk_whitelisted">Adicionada à lista branca</string>
     <string name="toast_apk_blacklisted">Adicionada à lista negra</string>
     <string name="toast_anonymous_restriction">Não disponível em contas anónimas</string>
-    <string name="toast_abandon_sessions">As sessões de instalação antigas foram limpas</string>
     <string name="title_manual_download">Descarga manual</string>
     <string name="title_updates">Atualizações</string>
     <string name="title_spoof_manager">Gerir disfarce</string>
@@ -106,8 +105,6 @@
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Esta definição será aplicada após reiniciar a aplicação</string>
     <string name="pref_common_extra">Extras</string>
-    <string name="pref_abandon_session_desc">Limpar sessões de instalação abandonadas ou pendentes</string>
-    <string name="pref_abandon_session">Forçar limpeza de sessões de instalação</string>
     <string name="onboarding_permission_installer">Permissão do instalador</string>
     <string name="onboarding_permission_esm">Gestor de armazenamento externo</string>
     <string name="onboarding_permission_esa_desc">Para guardar ficheiros de expansão APK (OBBs) para aplicações e jogos de grande dimensão.</string>

@@ -59,7 +59,6 @@
     <string name="toast_clipboard_copied">Dhakada ayaa lagu qabtay</string>
     <string name="toast_apk_whitelisted">Lagu daray La ogolaaday</string>
     <string name="toast_anonymous_restriction">Looma heli karo akoonada garanwaaga ah</string>
-    <string name="toast_abandon_sessions">Xidhiidhyo kushubid oo duug ah ayaa la iska dhaafay</string>
     <string name="title_manual_download">Dajin gacanta ah</string>
     <string name="title_purchase_history">Kaydka iibsiga</string>
     <string name="title_no_network">Khad majiro</string>
@@ -105,8 +104,6 @@
     <string name="pref_filter_fdroid_summary">Wuxuu liistada kasaaraa appska F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Fadhigan waxaa la fulin doonaa markaad appka dibusoo bilowdo</string>
     <string name="pref_common_extra">Dheeraad</string>
-    <string name="pref_abandon_session_desc">Nadiifi kuwa layska daayay ama kushubida hormada kujira</string>
-    <string name="pref_abandon_session">Xoog kunadiifi xidhiidhka kushubida</string>
     <string name="onboarding_permission_installer_desc">Ogolow in Dukaanka Aurora appska lagaga sooshubo</string>
     <string name="onboarding_permission_installer">Fasaxa Kushubaha</string>
     <string name="onboarding_permission_esm">Maamulaha Kayka Dibada</string>

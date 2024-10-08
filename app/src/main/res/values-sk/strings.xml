@@ -273,10 +273,8 @@
     <string name="onboarding_permission_notifications_desc">Odosielanie oznámení o stave inštalácie</string>
     <string name="onboarding_permission_doze">Stiahnuté na pozadí</string>
     <string name="onboarding_permission_doze_desc">Povoľte Aurore sťahovať a aktualizovať aplikácie na pozadí</string>
-    <string name="pref_abandon_session">Vynútiť vymazanie relácií inštalácie</string>
     <string name="onboarding_permission_installer">Povolenie inštalátora</string>
     <string name="onboarding_permission_installer_desc">Povoliť inštaláciu aplikácií z obchodu Aurora</string>
-    <string name="pref_abandon_session_desc">Vymazať prerušené alebo čakajúce relácie inštalácie</string>
     <string name="pref_common_extra">Doplnky</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavenie sa použije po reštartovaní aplikácie</string>
     <string name="pref_downloader_wifi_title">Sťahovať iba cez WiFi</string>
@@ -345,7 +343,6 @@
     <string name="pref_network_proxy_url_message">Zadajte platnú adresu URL servera proxy, aby sa všetky údaje preniesli cez server proxy.</string>
     <string name="pref_ui_no_for_you">Stránky pre vás</string>
     <string name="title_manual_download">Manuálne stiahnutie</string>
-    <string name="toast_abandon_sessions">Staré inštalačné relácie boli zrušené</string>
     <string name="toast_app_unavailable">Aplikácia nie je k dispozícii pre vaše zariadenie</string>
     <string name="toast_spoof_applied">Bolo použité falšovanie zariadenia.</string>
     <string name="toast_purchase_blocked">Nákupy aplikácií nie sú dostupné na anonymných účtoch.</string>

@@ -135,7 +135,6 @@
     <string name="toast_apk_whitelisted">已加入白名单</string>
     <string name="toast_apk_blacklisted">已拉黑</string>
     <string name="toast_anonymous_restriction">对匿名帐号不可用</string>
-    <string name="toast_abandon_sessions">旧的安装会话已废弃</string>
     <string name="title_updates">更新</string>
     <string name="title_spoof_manager">伪装</string>
     <string name="title_settings">设置</string>
@@ -186,8 +185,6 @@
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">在更新和已安装应用中忽略 F-Droid 应用</string>
     <string name="pref_dialog_to_apply_restart">在您重新启动应用后，此设置将被应用</string>
-    <string name="pref_abandon_session_desc">清除放弃或挂起的安装会话</string>
-    <string name="pref_abandon_session">强制清除安装会话</string>
     <string name="onboarding_permission_installer_desc">允许 Aurora 商店安装应用</string>
     <string name="onboarding_permission_installer">安装权限</string>
     <string name="onboarding_permission_esm">外部存储管理器</string>

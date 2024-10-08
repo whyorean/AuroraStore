@@ -33,7 +33,6 @@
     <string name="title_apps_sale">Applications en promo</string>
     <string name="title_apps_library">Applications dans la bibliothèque</string>
     <string name="toast_anonymous_restriction">Non disponible sur les comptes anonymes</string>
-    <string name="toast_abandon_sessions">Anciennes sessions d’installation abandonnées</string>
     <string name="title_settings">Paramètres</string>
     <string name="title_purchase_history">Historique des achats</string>
     <string name="title_library">Bibliothèque</string>
@@ -188,8 +187,6 @@
     <string name="pref_filter_google_summary">Ignore les applications Google dans Mises à jour et Applications installées</string>
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>
-    <string name="pref_abandon_session_desc">Effacer les sessions d’installation abandonnées ou en attente</string>
-    <string name="pref_abandon_session">Forcer l’effacement des sessions d’installation</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications depuis Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation de l’installateur</string>
     <string name="onboarding_permission_esm">Gestionnaire de stockage externe</string>

@@ -161,7 +161,6 @@
     <string name="toast_apk_whitelisted">ホワイトリスト</string>
     <string name="toast_apk_blacklisted">ブラックリスト</string>
     <string name="toast_anonymous_restriction">匿名アカウントでは使用できません</string>
-    <string name="toast_abandon_sessions">過去のインストールセッションを削除しました</string>
     <string name="title_updates">更新</string>
     <string name="title_spoof_manager">偽装マネージャー</string>
     <string name="title_settings">設定</string>
@@ -211,8 +210,6 @@
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
     <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
     <string name="pref_dialog_to_apply_restart">この設定はアプリの再起動後に適用されます</string>
-    <string name="pref_abandon_session_desc">中止、中断したインストールセッションをクリア</string>
-    <string name="pref_abandon_session">インストールセッションを強制クリア</string>
     <string name="onboarding_permission_installer_desc">Aurora Store からのアプリのインストールを許可</string>
     <string name="onboarding_permission_installer">インストーラー権限</string>
     <string name="onboarding_permission_esm">外部ストレージマネージャー</string>

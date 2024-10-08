@@ -90,7 +90,6 @@
     <string name="device_miui_extra">விருப்பமாக நீங்கள் நேட்டிவ் இன்ஸ்டாலரைத் தேர்வு செய்யலாம், ஆனால் நீங்கள் தொகுக்கப்பட்ட (பிளவு) APKகளை நிறுவ முடியாது, எனவே தேர்வு உங்களுடையது.</string>
     <string name="onboarding_permission_esa_desc">பதிவிறக்கங்களைச் சேமிக்க (APKகள் &amp; OBBகள்), வெளிப்புறச் சேமிப்பகத்திற்கு மற்றும் அதிலிருந்து சாதன கட்டமைப்புகளை ஏற்றுமதி மற்றும் இறக்குமதி செய்யவும்.</string>
     <string name="pref_filter_google_title">கூகுள் செயலிகளை வடிகட்டு</string>
-    <string name="pref_abandon_session">நிறுவல் அமர்வுகள் துடைப்பதைக் கட்டாயப்படுத்து</string>
     <string name="pref_filter_fdroid_title">F-Droid செயலிகளை வடிகட்டு</string>
     <string name="pref_filter_google_summary">தேடல் முடிவுகள் மற்றும் வகைப் பயன்பாடுகளில் இருந்து எல்லா Google Apps களையும் நீக்குகிறது</string>
     <string name="pref_install_mode_services">அரோரா சேவைகள்</string>
@@ -185,7 +184,6 @@
     <string name="onboarding_permission_esm">வெளிப்புற சேமிப்பக மேலாளர்</string>
     <string name="onboarding_permission_installer">நிறுவி அனுமதி</string>
     <string name="onboarding_permission_installer_desc">அரோரா ஸ்டோரிலிருந்து செயலிகள் நிறுவ அனுமதி</string>
-    <string name="pref_abandon_session_desc">கைவிடப்பட்ட அல்லது நிலுவை நிறுவல் அமர்வுகளைத் துடை</string>
     <string name="pref_common_extra">கூடுதல்</string>
     <string name="pref_dialog_to_apply_restart">நீங்கள் பயன்பாட்டை மறுதொடக்கம் செய்த பிறகு இந்த அமைப்பு பயன்படுத்தப்படும்</string>
     <string name="pref_filter_fdroid_summary">பயன்பாட்டு பட்டியல்களில் இருந்து F-Droid பயன்பாடுகளை நீக்குகிறது</string>
@@ -221,7 +219,6 @@
     <string name="title_spoof_manager">ஏமாற்ற நிர்வாகி</string>
     <string name="title_updates">புதுப்பிப்புகள்</string>
     <string name="title_manual_download">கைமுறையாக பதிவிறக்கம்</string>
-    <string name="toast_abandon_sessions">பழைய நிறுவல் அமர்வுகள் கைவிடப்பட்டன</string>
     <string name="toast_anonymous_restriction">அநாமதேய கணக்குகளில் கிடைக்காது</string>
     <string name="toast_apk_whitelisted">வெண்பட்டியலிடப்பட்டது</string>
     <string name="toast_clipboard_copied">நகலகத்திற்கு நகலெடுக்கப்பட்டது</string>

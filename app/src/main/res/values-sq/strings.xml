@@ -154,8 +154,6 @@
     <string name="onboarding_title_permissions">Leje</string>
     <string name="onboarding_title_welcome">Mirë se vini</string>
     <string name="onboarding_welcome_select">Si ia çoni\?</string>
-    <string name="pref_abandon_session">Spastro me detyrim sesione instalimi</string>
-    <string name="pref_abandon_session_desc">Spastro sesione instalimesh të braktisur ose pezull</string>
     <string name="onboarding_permission_esa">Hyrje Në Depozitë të Jashtme</string>
     <string name="onboarding_permission_esa_desc">Për ruajtje kartelash zgjerimi APK (OBBs) për aplikacione &amp; lojëra të mëdha.</string>
     <string name="onboarding_permission_esm">Përgjegjësi Depozitash të Jashtme</string>
@@ -220,7 +218,6 @@
     <string name="title_spoof_manager">Përgjegjës maskimesh</string>
     <string name="title_updates">Përditësime</string>
     <string name="title_manual_download">Shkarkim dorazi</string>
-    <string name="toast_abandon_sessions">U braktisën sesione të vjetër instalimi</string>
     <string name="toast_anonymous_restriction">Jo i passhëm në llogari anonime</string>
     <string name="toast_apk_blacklisted">Në listë bllokimesh</string>
     <string name="toast_apk_whitelisted">Në listë lejimesh</string>

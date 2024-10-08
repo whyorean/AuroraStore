@@ -227,7 +227,6 @@
     <string name="installer_am_unavailable">Instalu App Manager aŭ ŝanĝu la instalilon.</string>
     <string name="installer_shizuku_unavailable">Shizuku estas ne instalita aŭ ne ĝuste agordita.</string>
     <string name="onboarding_permission_installer_legacy_desc">Permesi instali apojn el nekonataj fontoj</string>
-    <string name="pref_abandon_session">Forte elvaŝi instaladajn seancojn</string>
     <string name="session_login">Bonvolu ensaluti al Google Play-konto</string>
     <string name="session_scrapped">Lasta seanco interrompis sin</string>
     <string name="device_miui_description">Bonvolu malaktivigi MIUI-optimumigoj por permisi instaladoj, alie vi povas elekti Ĉefuzanta aŭ Servo instalilo.</string>
@@ -250,7 +249,6 @@
     <string name="action_get_local_apk">Apon kunligaĵon konservi</string>
     <string name="toast_manual_unavailable">La versiokodaĵo petita estas maldisponebla.</string>
     <string name="tab_top_charts">Plej popularaj</string>
-    <string name="toast_abandon_sessions">Malnovaj instalseancoj adiaŭitaj</string>
     <string name="menu">Menuo</string>
     <string name="expand">Vastigi</string>
     <string name="permissions_denied">Necesaj permesoj estas rifuzitaj. Bonvolu doni ilin por daŭrigi la agon</string>
@@ -377,7 +375,6 @@
     <string name="pref_network_proxy_url">Prokuran servilon URL</string>
     <string name="toast_proxy_invalid">Malvalida prokuran servilon URL, kontrolu la formaton!</string>
     <string name="pref_network_proxy_url_message">Enigu validan prokuran servilon URL por pasigi ĉiujn datuĵmojn tra la prokura servilo.</string>
-    <string name="pref_abandon_session_desc">Elviŝi forlasitajn aŭ pritrakatajn instaladajn seancojn</string>
     <string name="pref_download_directory_error">Elektita vojo estas protektata kontraŭ skribado</string>
     <string name="device_miui_extra">Vi povas ankaŭ elekti la operaciuman instalilon, sed la instalado kunligaĵajn (splitajn) APKjn estas neebla per ĝi.</string>
     <string name="pref_common_extra">Ekstraĵoj</string>

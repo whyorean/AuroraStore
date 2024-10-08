@@ -182,8 +182,6 @@
     <string name="device_miui_title">Noteikts MIUI.</string>
     <string name="device_miui_subtitle">Sesijas uzstādītājs nevar uzstādīt lietotnes MIUI uzlabojumu dēļ.</string>
     <string name="onboarding_permission_esa">Ārējās krātuves piekļuve</string>
-    <string name="pref_abandon_session">Piespiest notīrīt uzstādīšanas sesijas</string>
-    <string name="pref_abandon_session_desc">Notīrīt pamestās vai neuzsāktās uzstādīšanas sesijas</string>
     <string name="tab_for_you">Tev</string>
     <string name="toast_apk_blacklisted">Ievietots melnajā sarakstā</string>
     <string name="spoof_apply">Jānodrošina atkārtota pieteikšanās, lai pielietotu atdarināšanu</string>
@@ -205,7 +203,6 @@
     <string name="insecure_anonymous_apply">Jānodrošina atkārtota pieteikšanās un pārsāknēšana, lai pielietotu izmaiņas.</string>
     <string name="title_download_playstore">Play veikals</string>
     <string name="title_advanced">Papildu</string>
-    <string name="toast_abandon_sessions">Vecās uzstādīšanas sesijas tika atmestas</string>
     <string name="toast_anonymous_restriction">Nav pieejams anonīmiem kontiem</string>
     <string name="toast_developer_setting_failed">Ierīcē jāieslēdz izstrādātāja iestatījumi, lai tos varētu atvērt.</string>
     <string name="toast_spoof_applied">Ierīces atdarināšana ir spēkā.</string>

@@ -39,7 +39,6 @@
     <string name="toast_clipboard_copied">Gekopieerd naar klembord</string>
     <string name="toast_apk_whitelisted">Op witte lijst</string>
     <string name="toast_anonymous_restriction">Niet beschikbaar op anonieme accounts</string>
-    <string name="toast_abandon_sessions">Oude installatie sessies verlaten</string>
     <string name="title_spoof_manager">Vervals beheerder</string>
     <string name="title_settings">Instellingen</string>
     <string name="title_purchase_history">Aankoop geschiedenis</string>
@@ -94,8 +93,6 @@
     <string name="pref_filter_fdroid_summary">Negeer F-Droid-apps van Updates en Geïnstalleerde apps</string>
     <string name="pref_dialog_to_apply_restart">Deze optie word toegepast nadat u de app herstart</string>
     <string name="pref_common_extra">Extra\'s</string>
-    <string name="pref_abandon_session_desc">Verwijder verlaat of afwachtende installatie sessies</string>
-    <string name="pref_abandon_session">Forceer verwijder installatie sessies</string>
     <string name="onboarding_permission_installer_desc">Sta installeren van apps van Aurora Store toe</string>
     <string name="onboarding_permission_installer">Installateur Recht</string>
     <string name="onboarding_permission_esm">Externe Opslag Beheerder</string>

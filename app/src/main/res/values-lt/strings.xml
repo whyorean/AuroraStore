@@ -160,7 +160,6 @@
     <string name="tab_editor_choice">Redaktoriaus pasirinkimas</string>
     <string name="tab_for_you">Jums</string>
     <string name="title_apps_library">Programėlės bibliotekoje</string>
-    <string name="toast_abandon_sessions">Seni diegimo seansai nutraukti</string>
     <string name="action_cancel">Atsisakyti</string>
     <string name="action_filter_misc">Įvairūs</string>
     <string name="action_grant">Suteikti</string>
@@ -187,8 +186,6 @@
     <string name="installer_status_failure_storage">Nepakanka atminties</string>
     <string name="onboarding_permission_esa_desc">Kad būtų įrašomi atsiuntimai (APK ir OBB), eksportuojamos ir importuojamos įrenginio konfigūracijos į išorinę saugyklą ir iš jos.</string>
     <string name="onboarding_permission_installer_desc">Leisti diegti programėles iš Aurora Store</string>
-    <string name="pref_abandon_session">Priverstinai išvalyti diegimo seansus</string>
-    <string name="pref_abandon_session_desc">Išvalyti nutrauktus ar laukiančius diegimo seansus</string>
     <string name="pref_filter_google_summary">Pašalina visas „Google“ programėles iš paieškos rezultatų bei programėlių kategorijų</string>
     <string name="pref_filter_google_title">Filtruoti „Google“ programėles</string>
     <string name="pref_install_delete_summary">Pagal numatymą APK paketai bus ištrinami</string>

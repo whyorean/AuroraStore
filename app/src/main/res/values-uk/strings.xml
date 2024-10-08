@@ -129,7 +129,6 @@
     <string name="toast_apk_whitelisted">У білому списку</string>
     <string name="toast_apk_blacklisted">В чорному списку</string>
     <string name="toast_anonymous_restriction">Недоступно для знеособлених облікових записів</string>
-    <string name="toast_abandon_sessions">Старі сеанси встановлення очищено</string>
     <string name="title_manual_download">Власноручне завантаження</string>
     <string name="title_updates">Оновлення</string>
     <string name="title_spoof_manager">Менеджер підміни</string>
@@ -186,8 +185,6 @@
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
     <string name="pref_filter_google_title">Фільтрувати застосунки Google</string>
     <string name="pref_filter_google_summary">Ігнорувати застосунки Google з Оновлень та Встановлених застосунків</string>
-    <string name="pref_abandon_session_desc">Видалення сеансів черги встановлень або відкладених</string>
-    <string name="pref_abandon_session">Примусово очистити сеанси встановлення</string>
     <string name="onboarding_permission_installer_desc">Дозволити встановлення застосунків з Aurora Store</string>
     <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
     <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>

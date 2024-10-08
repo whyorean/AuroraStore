@@ -153,7 +153,6 @@
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف حزم التطبيقات المحملة والتي قد تم تثبيتها بشكل مباشر</string>
     <string name="pref_filter_fdroid_summary">تجاهل تطبيقات F-Droid من التحديثات والتطبيقات المثبتة</string>
-    <string name="pref_abandon_session_desc">مسح جلسات التثبيت المعلقة أو التي تم التخلي عنها</string>
     <string name="onboarding_permission_installer_desc">السماح بتثبيت التطبيقات من متجر Aurora</string>
     <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيقات على الحسابات المجهولة.</string>
     <string name="purchase_session_expired">انتهت صلاحية جلسة العمل، إعادة تسجيل الدخول للحصول على جلسة عمل جديدة.</string>
@@ -172,10 +171,8 @@
     <string name="details_beta_description">سترى ميزات وأخطاء جديدة قبل أن يراها المستخدمون. قدم ملاحظاتك للمطورين لمساعدتهم على التحسين من جودة تطبيقاتهم.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز .</string>
-    <string name="toast_abandon_sessions">جلسات التثبيت القديمة التي تم التخلي عنها</string>
     <string name="title_apps_games">تطبيقاتي وألعابي</string>
     <string name="purchase_no_file">تعذر الحصول على الملفات</string>
-    <string name="pref_abandon_session">فرض مسح جلسات التثبيت</string>
     <string name="installer_status_user_action">في انتظار تأكيد المستخدم</string>
     <string name="installer_status_failure_invalid">حزمة APK غير صالحة أو تالفة</string>
     <string name="action_export">تصدير</string>

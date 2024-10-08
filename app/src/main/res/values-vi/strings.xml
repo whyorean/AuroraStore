@@ -87,7 +87,6 @@
     <string name="about_bhim_summary">Ủng hộ bằng UPI</string>
     <string name="details_dev_website">Trang web</string>
     <string name="filter_review_critical">Quan trọng</string>
-    <string name="pref_abandon_session_desc">Xóa các phiên cài đặt đã bị bỏ đi hoặc đang chờ xử lý</string>
     <string name="device_miui_extra">Tuỳ bạn có thể chọn trình cài đặt Gốc, nhưng bạn sẽ không cài được gói APKs (tách rời), lựa chọn là của bạn.</string>
     <string name="action_later">Để sau</string>
     <string name="toast_purchase_blocked">Mua ứng dụng không khả dụng trên tài khoản Ẩn danh.</string>
@@ -98,7 +97,6 @@
     <string name="toast_apk_whitelisted">Đã vào danh sách trắng</string>
     <string name="toast_apk_blacklisted">Đã vào danh dách đen</string>
     <string name="toast_anonymous_restriction">Không khả dụng trên tài khoản ẩn danh</string>
-    <string name="toast_abandon_sessions">Các phiên cài đặt cũ đã bị bỏ</string>
     <string name="title_updates">Bản cập nhật</string>
     <string name="title_spoof_manager">Trình quản lý giả mạo</string>
     <string name="title_settings">Thiết đặt</string>
@@ -151,7 +149,6 @@
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
     <string name="pref_filter_fdroid_summary">Bỏ qua các ứng dụng F-Droid khỏi Cập nhật và Ứng dụng đã cài đặt</string>
     <string name="pref_dialog_to_apply_restart">Thiết đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
-    <string name="pref_abandon_session">Buộc xóa các phiên cài đặt</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>

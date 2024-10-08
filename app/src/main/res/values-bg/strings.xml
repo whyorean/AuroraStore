@@ -107,7 +107,6 @@
     <string name="onboarding_permission_installer_desc">Разрешете инсталирането на приложения от Aurora Store</string>
     <string name="pref_common_extra">Екстри</string>
     <string name="details_privacy">Поверителност</string>
-    <string name="toast_abandon_sessions">Старите инсталационни сесии са изоставени</string>
     <string name="download_cancel_all">Отмени всички</string>
     <string name="action_search">Търси</string>
     <string name="details_beta_delay">Записването може да отнеме известно време, можете да проверите състоянието по-късно.</string>
@@ -190,7 +189,6 @@
     <string name="onboarding_permission_esa">Достъп до външно хранилище</string>
     <string name="onboarding_permission_notifications">Известия</string>
     <string name="onboarding_permission_notifications_desc">Изпращайте известия относно състоянието на инсталациите</string>
-    <string name="pref_abandon_session_desc">Изчистване на изоставени или предстоящи инсталационни сесии</string>
     <string name="pref_dialog_to_apply_restart">Тази настройка ще се приложи, след като рестартирате приложението</string>
     <string name="pref_install_mode_shizuku">Shizuku инсталатор</string>
     <string name="pref_install_mode_title">Метод на инсталиране</string>
@@ -242,7 +240,6 @@
     <string name="onboarding_permission_esa_desc">За да запазите изтеглянията (APK и OBB), експортирайте и импортирайте конфигурациите на устройството към и от външно хранилище.</string>
     <string name="onboarding_permission_installer">Разрешение за инсталиране</string>
     <string name="pref_install_delete_summary">APK файловете ще бъдат изтрити по подразбиране</string>
-    <string name="pref_abandon_session">Принудително изчистване на инсталационните сесии</string>
     <string name="pref_filter_fdroid_title">Филтриране на F-Droid приложения</string>
     <string name="pref_filter_google_summary">Премахва всички приложения на Google от резултатите от търсенето и категоризираните приложения</string>
     <string name="pref_filter_google_title">Филтрирайте приложенията на Google</string>

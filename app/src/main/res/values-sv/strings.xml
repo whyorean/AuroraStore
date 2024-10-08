@@ -218,7 +218,6 @@
     <string name="download_force_clear_all">Påtvinga rensning av allt</string>
     <string name="menu_disclaimer">Ansvarsfriskrivning</string>
     <string name="device_miui_subtitle">Sessions-installatören kan inte installera appar på grund av MIUI-optimiseringar.</string>
-    <string name="pref_abandon_session">Påtvinga rensning av installations-sessioner</string>
     <string name="action_post">Skicka in</string>
     <string name="device_miui_extra">Alternativt kan du välja Inbyggt installationsprogram, men då kan du inte installera buntade (delade) APK-filer, så valet är ditt.</string>
     <string name="installer_service_misconfigured">Ställ in Aurora-tjänster och godkänn alla åtkomster först.</string>
@@ -227,7 +226,6 @@
     <string name="action_get_local_apk">Spara program-paket</string>
     <string name="pref_common_extra">Extra</string>
     <string name="pref_install_mode_am">AM-installatör</string>
-    <string name="pref_abandon_session_desc">Ta bort övergivna eller väntande installationssessioner</string>
     <string name="pref_install_mode_native">Inbyggt installationsprogram (föråldrat)</string>
     <string name="title_installer">App-installerare</string>
     <string name="dialog_desc_native_split">Du kan inte installera medföljande (delade) appar via Systemspecifik installerare. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
@@ -237,7 +235,6 @@
     <string name="toast_permission_granted">Åtkomst godkändes</string>
     <string name="toast_aas_token_failed">Kunde inte generera AAS-symbol</string>
     <string name="title_spoof_manager">Hanterare av lurendrejeri</string>
-    <string name="toast_abandon_sessions">Gamla installationssessioner övergavs</string>
     <string name="toast_developer_setting_failed">Aktivera utvecklingsinställningarna från enhetens inställningar för att öppna dem.</string>
     <string name="toast_spoof_applied">Enhetsförfalskning tillämpades.</string>
     <string name="app_updater_service_notif_text">Aktiverar app-nedladdningar i bakgrunden</string>

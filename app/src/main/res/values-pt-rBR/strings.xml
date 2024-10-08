@@ -39,7 +39,6 @@
     <string name="toast_apk_whitelisted">Na lista branca</string>
     <string name="toast_apk_blacklisted">Na lista negra</string>
     <string name="toast_anonymous_restriction">Não está disponível em contas anônimas</string>
-    <string name="toast_abandon_sessions">Sessões de instalações antigas foram abandonadas</string>
     <string name="title_updates">Atualizações</string>
     <string name="title_settings">Configurações</string>
     <string name="title_purchase_history">Histórico de compras</string>
@@ -51,8 +50,6 @@
     <string name="title_installation">Instalação</string>
     <string name="title_games">Jogos</string>
     <string name="pref_dialog_to_apply_restart">Esta configuração será aplicada depois que você reiniciar o app</string>
-    <string name="pref_abandon_session_desc">Limpar as sessões de instalações abandonadas ou pendentes</string>
-    <string name="pref_abandon_session">Forçar limpeza das sessões de instalações</string>
     <string name="onboarding_permission_installer_desc">Permita a instalação de apps da Aurora Store</string>
     <string name="onboarding_permission_installer">Permissão de Instalação</string>
     <string name="onboarding_permission_esm">Gerenciador de Armazenamento Externo</string>

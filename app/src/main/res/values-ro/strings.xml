@@ -156,10 +156,8 @@
     <string name="onboarding_permission_installer_desc">Permite instalarea aplicațiilor din Aurora Store</string>
     <string name="onboarding_permission_esa_desc">Pentru a salva fișierele de extindere APK (OBB) pentru aplicații și jocuri mari.</string>
     <string name="onboarding_permission_installer">Permisiune de instalare</string>
-    <string name="pref_abandon_session_desc">Șterge sesiunile de instalare abandonate sau în așteptare</string>
     <string name="onboarding_permission_notifications">Notificări</string>
     <string name="onboarding_permission_notifications_desc">Trimite notificări cu privire la starea instalărilor</string>
-    <string name="pref_abandon_session">Forțează ștergerea sesiunilor de instalare</string>
     <string name="pref_common_extra">Extra</string>
     <string name="pref_dialog_to_apply_restart">Această setare va fi aplicată după repornirea aplicației</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
@@ -251,7 +249,6 @@
     <string name="title_no_network">Fără rețea</string>
     <string name="title_spoof_manager">Manager de falsificare</string>
     <string name="title_manual_download">Descărcare manuală</string>
-    <string name="toast_abandon_sessions">Sesiuni de instalare vechi abandonate</string>
     <string name="toast_export_success">Configurația dispozitivului a fost exportată</string>
     <string name="app_updater_service_notif_text">Activează descărcarea aplicațiilor în fundal</string>
     <string name="toast_anonymous_restriction">Nu este disponibil pentru conturile anonime</string>

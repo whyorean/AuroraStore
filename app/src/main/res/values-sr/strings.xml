@@ -10,7 +10,6 @@
     <string name="toast_apk_whitelisted">На белој листи</string>
     <string name="toast_apk_blacklisted">На црној листи</string>
     <string name="toast_anonymous_restriction">Није доступно на анонимним налозима</string>
-    <string name="toast_abandon_sessions">Старе инсталационе сесије су напуштене</string>
     <string name="title_updates">Ажурирања</string>
     <string name="title_spoof_manager">Менаџер лажне верзије</string>
     <string name="title_settings">Подешавања</string>
@@ -61,8 +60,6 @@
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>
     <string name="pref_filter_fdroid_summary">Игноришите F-Droid апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_dialog_to_apply_restart">Ово подешавање ће се применити након што поново покренете апликацију</string>
-    <string name="pref_abandon_session_desc">Очистите напуштене инсталационе сесије или инсталационе сесије на чекању</string>
-    <string name="pref_abandon_session">Присилно очисти инсталационе сесије</string>
     <string name="onboarding_permission_installer_desc">Дозволите инсталирање апликација из Aurora Store-а</string>
     <string name="onboarding_permission_installer">Дозвола програма за инсталацију</string>
     <string name="onboarding_permission_esm">Менаџер спољне меморије</string>

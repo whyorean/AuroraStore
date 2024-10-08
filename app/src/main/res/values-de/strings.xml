@@ -76,7 +76,6 @@
     <string name="toast_developer_setting_failed">Entwickleroptionen in den Geräteeinstellungen aktivieren, um sie zu öffnen.</string>
     <string name="toast_apk_blacklisted">Auf der Sperrliste</string>
     <string name="toast_anonymous_restriction">Bei anonymen Konten nicht verfügbar</string>
-    <string name="toast_abandon_sessions">Ausstehende Installationen beendet</string>
     <string name="title_updates">Updates</string>
     <string name="title_spoof_manager">Vortäuschungen</string>
     <string name="title_settings">Einstellungen</string>
@@ -109,8 +108,6 @@
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
     <string name="pref_install_delete_summary">Heruntergeladene APKs werden sofort nach der Installation gelöscht</string>
-    <string name="pref_abandon_session_desc">Abgebrochene oder ausstehende Installationen jetzt sofort beenden</string>
-    <string name="pref_abandon_session">Beenden von Installationen erzwingen</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
     <string name="onboarding_permission_esa_desc">Zum Speichern von APK-Erweiterungsdateien (OBBs) für große Apps und Spiele.</string>
     <string name="onboarding_permission_esa">Speicherzugriff</string>

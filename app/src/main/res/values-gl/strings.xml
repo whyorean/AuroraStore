@@ -39,8 +39,6 @@
     <string name="pref_filter_fdroid_summary">Borra as aplicacións instaladas por F-Droid da lista de aplicacións</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración será aplicada após reiniciar a aplicación</string>
     <string name="pref_common_extra">Extras</string>
-    <string name="pref_abandon_session_desc">Limpar as sesións de instalación abandonadas ou pendentes</string>
-    <string name="pref_abandon_session">Forzar a limpeza das sesións de instalación</string>
     <string name="onboarding_permission_installer_desc">Permitir instalación de aplicacións desde a Aurora Store</string>
     <string name="onboarding_permission_installer">Permiso do Instalador</string>
     <string name="onboarding_permission_esm">Xestor de Almacenamento Externo</string>
@@ -204,7 +202,6 @@
     <string name="toast_apk_whitelisted">Engadida á lista branca</string>
     <string name="toast_apk_blacklisted">Engadido á lista negra</string>
     <string name="toast_anonymous_restriction">Non dispoñíbel en contas anónimas</string>
-    <string name="toast_abandon_sessions">Sesións de instalación antigas abandonadas</string>
     <string name="title_manual_download">Descarga manual</string>
     <string name="title_updates">Actualizacións</string>
     <string name="title_settings">Configuración</string>

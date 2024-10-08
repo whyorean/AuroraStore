@@ -82,7 +82,6 @@
     <string name="toast_apk_whitelisted">已列入白名單</string>
     <string name="toast_apk_blacklisted">已列入黑名單</string>
     <string name="toast_anonymous_restriction">匿名帳戶中不可用</string>
-    <string name="toast_abandon_sessions">已捨棄舊安裝階段</string>
     <string name="title_manual_download">手冊下載</string>
     <string name="title_updates">更新</string>
     <string name="title_spoof_manager">偽裝管理</string>
@@ -143,8 +142,6 @@
     <string name="pref_filter_fdroid_summary">在更新與已安裝的應用程式中，忽略 F-Droid 應用程式</string>
     <string name="pref_dialog_to_apply_restart">設定將會在你重新啟動應用程式後生效</string>
     <string name="pref_common_extra">額外功能</string>
-    <string name="pref_abandon_session_desc">清除已遺棄或等待中的安裝階段</string>
-    <string name="pref_abandon_session">強制清除安裝階段</string>
     <string name="onboarding_permission_installer_desc">允許從 Aurora Store 安裝應用程式</string>
     <string name="onboarding_permission_installer">安裝器權限</string>
     <string name="onboarding_permission_esm">外部儲存管理</string>

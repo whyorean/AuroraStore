@@ -156,7 +156,6 @@
     <string name="toast_apk_whitelisted">Engedélyezési listán</string>
     <string name="toast_apk_blacklisted">Tiltólistán</string>
     <string name="toast_anonymous_restriction">Nem elérhető névtelen fiókoknál</string>
-    <string name="toast_abandon_sessions">Régi telepítési munkamenetek elhagyva</string>
     <string name="title_updates">Frissítések</string>
     <string name="title_spoof_manager">Álnévkezelő</string>
     <string name="title_settings">Beállítások</string>
@@ -207,8 +206,6 @@
     <string name="pref_filter_fdroid_title">F-Droid alkalmazások szűrése</string>
     <string name="pref_filter_fdroid_summary">F-Droid alkalmazások kihagyása a \"frissítés\" és \"telepített alkalmazás\" listákról</string>
     <string name="pref_dialog_to_apply_restart">Ez a beállítás az alkalmazás újraindítása után kerül alkalmazásra</string>
-    <string name="pref_abandon_session_desc">Elhagyatott vagy függőben lévő telepítések törlése</string>
-    <string name="pref_abandon_session">Telepítési folyamatok kényszerített törlése</string>
     <string name="onboarding_permission_installer_desc">Lehetővé teszi az Aurora Store-ból származó alkalmazások telepítését</string>
     <string name="onboarding_permission_installer">Telepítési engedély</string>
     <string name="onboarding_permission_esm">Külső tárhely kezelő</string>

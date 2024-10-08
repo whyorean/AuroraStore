@@ -166,8 +166,6 @@
     <string name="onboarding_permission_installer_desc">Permite la instalación d\'aplicaciones dende Aurora Store</string>
     <string name="onboarding_permission_notifications">Avisos</string>
     <string name="onboarding_permission_notifications_desc">Send notifications regarding installations status</string>
-    <string name="pref_abandon_session">Forciar el borráu de les sesiones d\'instalación</string>
-    <string name="pref_abandon_session_desc">Borra les sesiones d\'instalación abandonaes o pendientes</string>
     <string name="pref_common_extra">Configuración adicional</string>
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_filter_google_summary">Quita toles aplicaciones de Google de los resultaos de busca ya de les categoríes d\'aplicaciones</string>
@@ -202,7 +200,6 @@
     <string name="title_no_network">No network</string>
     <string name="title_purchase_history">Historial de compres</string>
     <string name="title_advanced">Advanced</string>
-    <string name="toast_abandon_sessions">Abandonáronse les sesiones d\'instalación antigües</string>
     <string name="toast_developer_setting_failed">Activa la configuración pa desendolcadores del preséu p\'abrila.</string>
     <string name="action_cancel">Encaboxar</string>
     <string name="exodus_powered">Cola potencia d\'Exodus</string>

@@ -102,7 +102,6 @@
     <string name="toast_apk_whitelisted">Dodano do białej listy</string>
     <string name="toast_apk_blacklisted">Dodano do czarnej listy</string>
     <string name="toast_anonymous_restriction">Niedostępne na kontach anonimowych</string>
-    <string name="toast_abandon_sessions">Porzucono stare sesje instalacyjne</string>
     <string name="title_updates">Aktualizacje</string>
     <string name="title_spoof_manager">Menedżer podmiany</string>
     <string name="title_settings">Ustawienia</string>
@@ -152,8 +151,6 @@
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
-    <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
-    <string name="pref_abandon_session">Wymuś czyszczenie sesji instalacyjnych</string>
     <string name="onboarding_permission_installer_desc">Zezwól na instalację aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>

@@ -11,7 +11,6 @@
     <string name="toast_apk_whitelisted">Zerrenda zurian</string>
     <string name="toast_apk_blacklisted">Zerrenda beltzan</string>
     <string name="toast_anonymous_restriction">Ezin da erabili kontu ezezagunekin</string>
-    <string name="toast_abandon_sessions">Bertan behera utzitako Instalazio saioak</string>
     <string name="title_updates">Eguneratzeak</string>
     <string name="title_spoof_manager">Simulazio gestorea</string>
     <string name="title_settings">Doikuntzak</string>
@@ -62,8 +61,6 @@
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
     <string name="pref_filter_fdroid_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako F-Droid-en aplikazioak</string>
     <string name="pref_dialog_to_apply_restart">Konfigurazio hau aplikatuko da aplikazioa berriro ireki ondoren</string>
-    <string name="pref_abandon_session_desc">Bertan utzitako instalazio saioak garbitu</string>
-    <string name="pref_abandon_session">Instalazio saioen garbiketa behartu</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-ri aplikazioak instalatzeko baimena eman</string>
     <string name="onboarding_permission_installer">Instalatzailearen baimena</string>
     <string name="onboarding_permission_esm">Kanpoko memoriaren gestorea</string>

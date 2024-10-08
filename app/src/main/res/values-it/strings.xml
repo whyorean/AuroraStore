@@ -152,7 +152,6 @@
     <string name="toast_permission_granted">Autorizzazione concessa</string>
     <string name="toast_developer_setting_failed">Attiva le impostazioni sviluppatore dalle impostazioni del dispositivo per aprirle.</string>
     <string name="toast_anonymous_restriction">Non disponibile su profili anonimi</string>
-    <string name="toast_abandon_sessions">Vecchie sessioni di installazione abbandonate</string>
     <string name="title_spoof_manager">Gestore simulazione</string>
     <string name="title_account_manager">Profili</string>
     <string name="title_about">Informazioni</string>
@@ -175,8 +174,6 @@
     <string name="pref_install_mode_native">Installatore nativo (Deprecato)</string>
     <string name="pref_install_delete_title">Elimina gli APK dopo l’installazione</string>
     <string name="pref_install_delete_summary">Gli APK scaricati verranno eliminati immediatamente dopo l\'installazione</string>
-    <string name="pref_abandon_session_desc">Rimuovi le sessioni di installazione abbandonate o in sospeso</string>
-    <string name="pref_abandon_session">Cancella sessioni di installazione forzatamente</string>
     <string name="onboarding_permission_installer">Autorizzazione installatore</string>
     <string name="onboarding_permission_esm">Gestore archiviazione esterna</string>
     <string name="onboarding_permission_esa">Accesso archiviazione esterna</string>

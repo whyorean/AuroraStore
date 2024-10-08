@@ -41,7 +41,6 @@
     <string name="toast_apk_whitelisted">Beyaz listeye alındı</string>
     <string name="toast_apk_blacklisted">Kara listeye alındı</string>
     <string name="toast_anonymous_restriction">Anonim hesaplarda kullanılamaz</string>
-    <string name="toast_abandon_sessions">Eski kurulum oturumları kapatıldı</string>
     <string name="title_manual_download">Elle indir</string>
     <string name="title_updates">Güncellemeler</string>
     <string name="title_spoof_manager">Kandırma yöneticisi</string>
@@ -102,8 +101,6 @@
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
     <string name="pref_dialog_to_apply_restart">Bu seçenek uygulamayı yeniden başlattıktan sonra uygulanacak</string>
     <string name="pref_common_extra">Ekler</string>
-    <string name="pref_abandon_session_desc">İptal edilmiş veya bekleyen kurulum oturumlarını temizle</string>
-    <string name="pref_abandon_session">Kurulum oturumlarını zorla temizle</string>
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
     <string name="onboarding_permission_installer">Kurucu İzni</string>
     <string name="onboarding_permission_esm">Harici Depolama Yöneticisi</string>

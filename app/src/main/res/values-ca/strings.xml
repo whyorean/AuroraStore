@@ -163,8 +163,6 @@
     <string name="pref_network_title">Xarxes</string>
     <string name="onboarding_permission_installer">Permís de l\'instal·lador</string>
     <string name="onboarding_permission_installer_desc">Permet instal·lar aplicacions des d\'Aurora Store</string>
-    <string name="pref_abandon_session">Forçar la neteja de les sessions d’instal·lació</string>
-    <string name="pref_abandon_session_desc">Netejar les sessions d’instal·lació abandonades o pendents</string>
     <string name="pref_common_extra">Extres</string>
     <string name="pref_dialog_to_apply_restart">Aquesta configuració s\'aplicarà després de reiniciar l\'aplicació</string>
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>
@@ -235,7 +233,6 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="title_installed">Instal·lat</string>
     <string name="toast_apk_blacklisted">Posat a la llista negra</string>
-    <string name="toast_abandon_sessions">S\'han abandonat les antigues sessions d\'instal·lació</string>
     <string name="toast_anonymous_restriction">No disponible en comptes anònims</string>
     <string name="toast_developer_setting_failed">Activa la configuració de desenvolupador des de les del dispositiu per a obrir-la.</string>
     <string name="title_spoof_manager">Gestor de falsificacions</string>

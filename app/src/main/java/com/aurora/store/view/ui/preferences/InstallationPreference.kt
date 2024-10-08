@@ -28,12 +28,8 @@ import androidx.core.content.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.showDialog
-import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.Preferences.INSTALLATION_ABANDON_SESSION
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLATION_DEVICE_OWNER
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,16 +44,6 @@ class InstallationPreference : PreferenceFragmentCompat() {
             setOnPreferenceClickListener {
                 findNavController().navigate(R.id.installerFragment)
                 true
-            }
-        }
-
-        findPreference<Preference>(INSTALLATION_ABANDON_SESSION)?.apply {
-            setOnPreferenceClickListener {
-                CommonUtil.cleanupInstallationSessions(requireContext())
-                runOnUiThread {
-                    requireContext().toast(R.string.toast_abandon_sessions)
-                }
-                false
             }
         }
 

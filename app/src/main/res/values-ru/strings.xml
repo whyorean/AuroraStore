@@ -137,7 +137,6 @@
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
     <string name="toast_apk_blacklisted">Добавлен в черный список</string>
     <string name="toast_anonymous_restriction">Недоступно на анонимных аккаунтах</string>
-    <string name="toast_abandon_sessions">Предыдущие сеансы установки отменены</string>
     <string name="title_updates">Обновления</string>
     <string name="title_settings">Настройки</string>
     <string name="title_purchase_history">История покупок</string>
@@ -184,8 +183,6 @@
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
     <string name="pref_filter_fdroid_summary">Игнорировать F-Droid приложения в Обновлениях и Установленных приложениях</string>
     <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>
-    <string name="pref_abandon_session_desc">Очистить отмененные или ожидающие сеансы установки</string>
-    <string name="pref_abandon_session">Принудительно очистить сеансы установки</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>

@@ -105,7 +105,6 @@
     <string name="toast_clipboard_copied">क्लिपबोर्ड पर कॉपी किया गया</string>
     <string name="title_no_network">कोई नेटवर्क नहीं</string>
     <string name="download_pause_all">सभी को रोकें</string>
-    <string name="pref_abandon_session">इंस्टॉलेशन सत्रों को बलपूर्वक साफ करें</string>
     <string name="action_update_all">सभी अपडेट करें</string>
     <string name="installer_service_unavailable">1.0.9 या ऊपर की ऑरोरा सेवाएं इंस्टॉल करें, या इंस्टॉलर बदलें।</string>
     <string name="details_permission">अनुमति</string>
@@ -126,7 +125,6 @@
     <string name="pref_install_mode_am">AM इंस्टॉलर</string>
     <string name="title_download_manager">डाउनलोड</string>
     <string name="tab_editor_choice">संपादकों की पसंद</string>
-    <string name="toast_abandon_sessions">पुराने इंस्टॉलेशन सत्र छोड़े गए</string>
     <string name="tab_trending">रुझान में</string>
     <string name="pref_filter_fdroid_summary">अपडेट और इंस्टॉल किए गए ऐप्स में से F-Droid ऐप्स को अनदेखा करें</string>
     <string name="title_games">गेम्स</string>
@@ -222,7 +220,6 @@
     <string name="device_miui_extra">वैकल्पिक रूप से आप नेटिव इंस्टॉलर चुन सकते हैं, लेकिन तब आप बंडल (स्प्लिट) APK इंस्टॉल नहीं कर सकते, इसलिए चुनाव आपका है।</string>
     <string name="dialog_desc_native_split">आप नेटिव इंस्टालर के माध्यम से बंडल्ड (स्प्लिट) ऐप्स इंस्टॉल नहीं कर सकते। अपने इंस्टॉलर को सेशन, सर्विसेज या रूट में बदलें।</string>
     <string name="onboarding_permission_esa_desc">बड़े ऐप्स और गेम के लिए APK विस्तार फाइलें (OBB) सहेजने के लिए।</string>
-    <string name="pref_abandon_session_desc">परित्याग या लंबित स्थापना सत्र साफ करें</string>
     <string name="pref_dialog_to_apply_restart">यह सेटिंग आपके ऐप को पुनरारंभ करने के बाद लागू की जाएगी</string>
     <string name="pref_install_delete_summary">डाउनलोड किए गए APK इंस्टालेशन के तुरंत बाद मिटा दिए जाएंगे</string>
     <string name="pref_install_delete_title">इंस्टॉल के बाद APK मिटाएं</string>

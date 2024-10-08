@@ -192,7 +192,6 @@
     <string name="notification_channel_updates">Obvestila o posodobitvah</string>
     <string name="onboarding_welcome_select">Kako si kaj\?</string>
     <string name="onboarding_permission_esa">Dostop do zunanjega pomnilnika</string>
-    <string name="pref_abandon_session_desc">Počistite opuščene ali čakajoče namestitvene seje</string>
     <string name="pref_ui_no_for_you_desc">Prikaži strani za vas na domačem zaslonu</string>
     <string name="session_scrapped">Zadnja seja je odpadla</string>
     <string name="title_download_manager">Prenosi</string>
@@ -201,7 +200,6 @@
     <string name="title_spoof_manager">Upravitelj prevare</string>
     <string name="title_updates">Posodobitve</string>
     <string name="title_advanced">Napredno</string>
-    <string name="toast_abandon_sessions">Stare namestitvene seje so opuščene</string>
     <string name="toast_anonymous_restriction">Ni na voljo za anonimne račune</string>
     <string name="toast_apk_blacklisted">Na črnem seznamu</string>
     <string name="toast_spoof_applied">Uporabljena je prevara naprave.</string>
@@ -276,7 +274,6 @@
     <string name="onboarding_permission_installer_desc">Dovoli namestitev aplikacij iz trgovine Aurora</string>
     <string name="onboarding_permission_notifications">Obvestila</string>
     <string name="onboarding_permission_notifications_desc">Pošiljanje obvestil o statusu namestitve</string>
-    <string name="pref_abandon_session">Vsili brisanje namestitvenih sej</string>
     <string name="pref_dialog_to_apply_restart">Ta nastavitev bo uporabljena, ko znova zaženete aplikacijo</string>
     <string name="pref_filter_fdroid_summary">Odstrani F-Droid aplikacije s seznamov aplikacij</string>
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>

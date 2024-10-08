@@ -47,7 +47,6 @@
     <string name="toast_apk_whitelisted">Li lîsteya spî zêde kirin</string>
     <string name="toast_apk_blacklisted">Di lîsteya reş de ye</string>
     <string name="toast_anonymous_restriction">Li ser hesabên bênav tune</string>
-    <string name="toast_abandon_sessions">Danişînên sazkirinê yên kevn hatine terikandin</string>
     <string name="title_updates">Nûvekirin</string>
     <string name="title_spoof_manager">Gerînendeyê hîlekirin</string>
     <string name="title_settings">Mîhengên</string>
@@ -98,8 +97,6 @@
     <string name="pref_filter_fdroid_title">Fîlterkirin sepanên F-Droid</string>
     <string name="pref_filter_fdroid_summary">Sepanên F-Droid-ê ji navnîşên sepanan radike</string>
     <string name="pref_dialog_to_apply_restart">Ev mîheng dê piştî ku hûn sepanê ji nû ve bidin dest pê kirin</string>
-    <string name="pref_abandon_session_desc">Danişînên sazkirinê yên dev jê berdidin an jî li bendê ne</string>
-    <string name="pref_abandon_session">Danişînên sazkirinê yên zelal ferz bikin</string>
     <string name="onboarding_permission_installer_desc">Destûrê bidin sazkirina sepanan ji Aurora Store</string>
     <string name="onboarding_permission_installer">Destûra Sazker</string>
     <string name="onboarding_permission_esm">Gerînendeyê Stoka Derve</string>

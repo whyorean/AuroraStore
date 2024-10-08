@@ -19,7 +19,6 @@
     <string name="toast_apk_whitelisted">ਵਾਈਟ ਲਿਸਟ ਕੀਤੀ ਗਈ</string>
     <string name="toast_apk_blacklisted">ਬਲੈਕ ਲਿਸਟ ਕੀਤੀ ਗਈ</string>
     <string name="toast_anonymous_restriction">ਇਹ ਅਗਿਆਤ ਖਾਤਾ ਲੌਗ-ਇਨ ਵਿਧੀ ਵਿੱਚ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ</string>
-    <string name="toast_abandon_sessions">ਪੁਰਾਣਾ ਇੰਸਟਾਲੇਸ਼ਨ ਸੈਸ਼ਨ ਮਿਟਾਇਆ ਗਿਆ</string>
     <string name="title_manual_download">ਖੁਦ ਡਾਊਨਲੋਡ ਕਰੋ</string>
     <string name="title_updates">ਅੱਪਡੇਟਾਂ</string>
     <string name="title_spoof_manager">ਧੋਖਾ ਸੈਟਿੰਗਾਂ</string>
@@ -84,8 +83,6 @@
     <string name="pref_filter_fdroid_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ F-Droid ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_dialog_to_apply_restart">ਐਪ ਦੇ ਮੁੜ ਚਾਲੂ ਹੋਣ ਤੇ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਵੇਗੀ</string>
     <string name="pref_common_extra">ਕੁੱਝ ਹੋਰ</string>
-    <string name="pref_abandon_session_desc">ਖ਼ਰਾਬ ਜਾਂ ਅਧੂਰੇ ਪਏ ਸਾਰੇ ਇੰਸਟਾਲੇਸ਼ਨ ਸੈਸ਼ਨ ਮਿਟਾਓ</string>
-    <string name="pref_abandon_session">ਜਬਰੀ ਸਾਰੇ ਇੰਸਟਾਲੇਸ਼ਨ ਸੈਸ਼ਨ ਮਿਟਾਓ</string>
     <string name="toast_permission_granted">ਆਗਿਆ ਪ੍ਰਵਾਨ</string>
     <string name="onboarding_permission_installer_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਦਿਓ</string>
     <string name="onboarding_permission_installer">ਇੰਸਟਾਲਰ ਦੇ ਅਧਿਕਾਰ</string>

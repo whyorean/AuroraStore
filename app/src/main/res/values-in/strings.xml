@@ -81,7 +81,6 @@
     <string name="toast_apk_whitelisted">Masuk daftar putih</string>
     <string name="toast_apk_blacklisted">Dalam daftar hitam</string>
     <string name="toast_anonymous_restriction">Tidak tersedia di akun anonim</string>
-    <string name="toast_abandon_sessions">Sesi instalasi lama ditinggalkan</string>
     <string name="title_blacklist_manager">Manajer daftar hitam</string>
     <string name="title_apps_sale">Aplikasi obral</string>
     <string name="title_apps_library">Aplikasi di perpustakaan</string>
@@ -120,8 +119,6 @@
     <string name="pref_filter_fdroid_summary">Abaikan aplikasi F-Droid dari Pembaruan dan Aplikasi yang terpasang</string>
     <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>
     <string name="pref_common_extra">Ekstra</string>
-    <string name="pref_abandon_session_desc">Bersihkan sesi pengabaian atau pemasangan yang tertunda</string>
-    <string name="pref_abandon_session">Paksa sesi instalasi yang jelas</string>
     <string name="onboarding_permission_installer_desc">Izinkan menginstal aplikasi dari Aurora Store</string>
     <string name="onboarding_permission_installer">Izin Pemasang</string>
     <string name="onboarding_permission_esm">Manajer Penyimpanan Eksternal</string>

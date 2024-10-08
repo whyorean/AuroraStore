@@ -179,7 +179,6 @@
     <string name="toast_apk_whitelisted">Lisätty valkolistalle</string>
     <string name="toast_apk_blacklisted">Lisätty mustalle listalle</string>
     <string name="toast_anonymous_restriction">Ei saatavilla anonyymeillä tileillä</string>
-    <string name="toast_abandon_sessions">Vanhat asennussessiot hylättiin</string>
     <string name="title_manual_download">Manuaalinen lataus</string>
     <string name="title_updates">Päivitykset</string>
     <string name="title_spoof_manager">Huijausten hallinta</string>
@@ -211,8 +210,6 @@
     <string name="pref_filter_google_summary">Poistaa kaikki Googlen sovellukset hakutuloksista ja sovelluskategorioista</string>
     <string name="pref_dialog_to_apply_restart">Tämä asetus otetaan käyttöön, kun käynnistät sovelluksen uudelleen</string>
     <string name="pref_common_extra">Extrat</string>
-    <string name="pref_abandon_session_desc">Tyhjennä hylätyt ja odottavat asennussessiot</string>
-    <string name="pref_abandon_session">Pakota asennussessioiden tyhjennys</string>
     <string name="onboarding_permission_installer_desc">Hyväksy sovellusten asentaminen Aurora Storen kautta</string>
     <string name="onboarding_permission_installer">Asentajan käyttöoikeus</string>
     <string name="onboarding_permission_esm">Ulkoisen tallennustilan hallinta</string>

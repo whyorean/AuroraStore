@@ -206,8 +206,6 @@
     <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
     <string name="onboarding_permission_doze">"Background Downloads"</string>
     <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
-    <string name="pref_abandon_session">"Force clear installation sessions"</string>
-    <string name="pref_abandon_session_desc">"Clear abandon or pending installation sessions"</string>
     <string name="pref_common_extra">"Extras"</string>
     <string name="pref_dialog_to_apply_restart">"This setting will be applied after you restart the app"</string>
     <string name="pref_downloader_wifi_title">"Download using WiFi only"</string>
@@ -295,7 +293,6 @@
     <string name="title_updates">"Updates"</string>
     <string name="title_advanced">"Advanced"</string>
     <string name="title_manual_download">"Manual download"</string>
-    <string name="toast_abandon_sessions">"Old installation sessions abandoned"</string>
     <string name="toast_anonymous_restriction">"Not available on anonymous accounts"</string>
     <string name="toast_apk_blacklisted">"Blacklisted"</string>
     <string name="toast_apk_whitelisted">"Whitelisted"</string>

@@ -131,8 +131,6 @@
     <string name="details_no_app_match">Ingen matchende app fundet</string>
     <string name="details_no_dependencies">Ingen Afhængigheder</string>
     <string name="details_no_permission">Ingen tilladelser</string>
-    <string name="pref_abandon_session">Tving rydning af installationssessioner</string>
-    <string name="pref_abandon_session_desc">Ryd forladte eller afventende installationssessioner</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Denne indstilling anvendes, når du genstarter appen</string>
     <string name="toast_apk_blacklisted">Blacklistet</string>
@@ -195,7 +193,6 @@
     <string name="title_settings">Indstillinger</string>
     <string name="title_spoof_manager">Forfalskningsmanager</string>
     <string name="title_updates">Opdateringer</string>
-    <string name="toast_abandon_sessions">Gamle installationssessioner forladte</string>
     <string name="toast_anonymous_restriction">Ikke tilgængelig på anonyme konti</string>
     <string name="toast_permission_granted">Tilladelse godkendt</string>
     <string name="action_finish">Afslut</string>
