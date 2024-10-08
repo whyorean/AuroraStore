@@ -287,7 +287,7 @@
     <string name="failed_generating_session">Neizdevās izveidot sesiju. Kļūdas kods: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="title_search_suggestion">Meklēšanas ieteikums</string>
     <string name="bad_request">Iekšēja kļūda. Lūgums pēc kāda laika mēģināt vēlreiz</string>
-    <string name="login_rate_limited">Ak vai, piemērots ierobežojums!</string>
+    <string name="login_rate_limited">Ak vai, piemērots ierobežojums</string>
     <string name="server_unreachable">Serveris nav sasniedzams</string>
     <string name="check_connectivity">Pārbaudīt interneta savienojumu</string>
     <string name="app_language">Lietotnes valoda</string>
