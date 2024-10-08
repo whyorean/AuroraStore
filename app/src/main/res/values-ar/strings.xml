@@ -53,7 +53,6 @@
     <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
     <string name="pref_filter_google_title">تصفية تطبيقات قوقل</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
-    <string name="pref_app_download">التنزيلات</string>
     <string name="onboarding_permission_installer">إذن المثبت</string>
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
     <string name="onboarding_permission_esa">الوصول إلى وحدة التخزين الخارجية</string>

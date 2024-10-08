@@ -106,7 +106,6 @@
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Esta definição será aplicada após reiniciar a aplicação</string>
     <string name="pref_common_extra">Extras</string>
-    <string name="pref_app_download">Descargas</string>
     <string name="pref_abandon_session_desc">Limpar sessões de instalação abandonadas ou pendentes</string>
     <string name="pref_abandon_session">Forçar limpeza de sessões de instalação</string>
     <string name="onboarding_permission_installer">Permissão do instalador</string>

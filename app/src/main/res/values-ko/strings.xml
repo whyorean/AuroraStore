@@ -158,7 +158,6 @@
     <string name="onboarding_permission_notifications_desc">설치 상태에 대한 알림 보내기</string>
     <string name="pref_abandon_session">설치 세션 강제 지우기</string>
     <string name="pref_abandon_session_desc">중단되었거나 보류 중인 설치 세션 지우기</string>
-    <string name="pref_app_download">다운로드</string>
     <string name="pref_common_extra">추가 기능</string>
     <string name="pref_dialog_to_apply_restart">이 설정은 앱을 다시 시작한 후에 적용됩니다</string>
     <string name="pref_filter_fdroid_summary">업데이트 및 설치된 앱에서 F-Droid 앱 무시</string>

@@ -120,7 +120,6 @@
     <string name="menu_disclaimer">अस्वीकरण</string>
     <string name="title_installer">ऐप इंस्टॉलर</string>
     <string name="download_resume_all">सभी पुनः आरंभ करें</string>
-    <string name="pref_app_download">डाउनलोड</string>
     <string name="title_updates">अपडेट</string>
     <string name="details_beta_subscribed">आप बीटा परीक्षक हैं</string>
     <string name="exodus_powered">Exodus Privacy द्वारा संचालित</string>

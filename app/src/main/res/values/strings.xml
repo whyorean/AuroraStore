@@ -208,7 +208,6 @@
     <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
     <string name="pref_abandon_session">"Force clear installation sessions"</string>
     <string name="pref_abandon_session_desc">"Clear abandon or pending installation sessions"</string>
-    <string name="pref_app_download">"Downloads"</string>
     <string name="pref_common_extra">"Extras"</string>
     <string name="pref_dialog_to_apply_restart">"This setting will be applied after you restart the app"</string>
     <string name="pref_downloader_wifi_title">"Download using WiFi only"</string>

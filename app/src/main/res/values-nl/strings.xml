@@ -94,7 +94,6 @@
     <string name="pref_filter_fdroid_summary">Negeer F-Droid-apps van Updates en Geïnstalleerde apps</string>
     <string name="pref_dialog_to_apply_restart">Deze optie word toegepast nadat u de app herstart</string>
     <string name="pref_common_extra">Extra\'s</string>
-    <string name="pref_app_download">Downloads</string>
     <string name="pref_abandon_session_desc">Verwijder verlaat of afwachtende installatie sessies</string>
     <string name="pref_abandon_session">Forceer verwijder installatie sessies</string>
     <string name="onboarding_permission_installer_desc">Sta installeren van apps van Aurora Store toe</string>

@@ -51,7 +51,6 @@
     <string name="pref_filter_fdroid_title">Filtra le applicazioni F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignora le applicazioni F-Droid dalle liste degli Aggiornamenti e delle applicazioni già installate</string>
     <string name="pref_dialog_to_apply_restart">Questa impostazione verrà applicata dopo il riavvio dell’applicazione</string>
-    <string name="pref_app_download">Scaricamenti</string>
     <string name="onboarding_permission_installer_desc">Consenti l’installazione di app da Aurora Store</string>
     <string name="installer_status_failure_incompatible">Applicazione incompatibile</string>
     <string name="details_think_this_app">Cosa pensi di questa applicazione?</string>

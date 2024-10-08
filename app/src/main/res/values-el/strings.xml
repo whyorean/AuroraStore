@@ -59,7 +59,6 @@
     <string name="title_manual_download">Χειροκίνητη λήψη</string>
     <string name="title_download_manager">Λήψεις</string>
     <string name="purchase_failed">Αποτυχία λήψης</string>
-    <string name="pref_app_download">Λήψεις</string>
     <string name="onboarding_permission_esa_desc">Για την αποθήκευση αρχείων επέκτασης APK (OBB) για μεγάλα παιχνίδια &amp; εφαρμογές.</string>
     <string name="download_none">Δεν υπάρχουν λήψεις</string>
     <string name="download_failed">Αποτυχία λήψης</string>

@@ -13,7 +13,6 @@
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Apps</string>
     <string name="pref_install_mode_services">Serviços Aurora (Depreciado)</string>
-    <string name="pref_app_download">Downloads</string>
     <string name="action_filter_downloads">Download</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal">PayPal</string>

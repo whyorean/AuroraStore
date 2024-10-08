@@ -186,7 +186,6 @@
     <string name="onboarding_permission_installer">நிறுவி அனுமதி</string>
     <string name="onboarding_permission_installer_desc">அரோரா ஸ்டோரிலிருந்து செயலிகள் நிறுவ அனுமதி</string>
     <string name="pref_abandon_session_desc">கைவிடப்பட்ட அல்லது நிலுவை நிறுவல் அமர்வுகளைத் துடை</string>
-    <string name="pref_app_download">பதிவிறக்கங்கள்</string>
     <string name="pref_common_extra">கூடுதல்</string>
     <string name="pref_dialog_to_apply_restart">நீங்கள் பயன்பாட்டை மறுதொடக்கம் செய்த பிறகு இந்த அமைப்பு பயன்படுத்தப்படும்</string>
     <string name="pref_filter_fdroid_summary">பயன்பாட்டு பட்டியல்களில் இருந்து F-Droid பயன்பாடுகளை நீக்குகிறது</string>

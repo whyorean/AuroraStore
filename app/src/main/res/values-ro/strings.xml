@@ -159,7 +159,6 @@
     <string name="pref_abandon_session_desc">Șterge sesiunile de instalare abandonate sau în așteptare</string>
     <string name="onboarding_permission_notifications">Notificări</string>
     <string name="onboarding_permission_notifications_desc">Trimite notificări cu privire la starea instalărilor</string>
-    <string name="pref_app_download">Descărcări</string>
     <string name="pref_abandon_session">Forțează ștergerea sesiunilor de instalare</string>
     <string name="pref_common_extra">Extra</string>
     <string name="pref_dialog_to_apply_restart">Această setare va fi aplicată după repornirea aplicației</string>

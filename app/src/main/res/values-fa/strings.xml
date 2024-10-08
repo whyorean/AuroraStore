@@ -189,7 +189,6 @@
     <string name="pref_network_title">شبکه سازی</string>
     <string name="insecure_anonymous_apply">مطمئن شوید که مجددا وارد سیستم شده اید و برنامه را مجددا راه اندازی کرده اید تا تغییرات اعمال شوند.</string>
     <string name="pref_install_mode_summary">انتخاب حالت نصب APK</string>
-    <string name="pref_app_download">بارگیری‌ها</string>
     <string name="pref_install_mode_session">نصب کننده جلسه</string>
     <string name="purchase_not_found">برنامه پیدا نشد</string>
     <string name="about_xda_summary">برای بحث ها یا پیشنهادها به تاپیک XDA فروشگاه آرورا نگاه کنید.</string>

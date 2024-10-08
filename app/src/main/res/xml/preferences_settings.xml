@@ -39,13 +39,6 @@
         app:title="@string/pref_ui_title" />
 
     <Preference
-        app:icon="@drawable/ic_download_manager"
-        app:iconSpaceReserved="false"
-        app:key="pref_download"
-        app:layout="@layout/item_preference"
-        app:title="@string/pref_app_download" />
-
-    <Preference
         app:icon="@drawable/ic_network"
         app:iconSpaceReserved="false"
         app:key="pref_network"

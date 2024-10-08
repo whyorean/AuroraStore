@@ -173,7 +173,6 @@
     <string name="menu_license">Litzèntzia</string>
     <string name="title_settings">Impostatziones</string>
     <string name="menu_terms">Tèrmines de impreu</string>
-    <string name="pref_app_download">Iscarrigamentos</string>
     <string name="pref_filter_fdroid_summary">Bogat sas aplicatziones de F-Droid dae sa lista de sas aplicatziones</string>
     <string name="pref_filter_fdroid_title">Filtra sas aplicatziones de F-Droid</string>
     <string name="pref_filter_google_summary">Bogat sas aplicatziones de Google dae sos risultados e dae sa lista de sas aplicatziones</string>

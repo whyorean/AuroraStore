@@ -151,7 +151,6 @@
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
-    <string name="pref_app_download">Pobrane</string>
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
     <string name="pref_abandon_session_desc">Wyczyść porzucone lub oczekujące sesje instalacyjne</string>
     <string name="pref_abandon_session">Wymuś czyszczenie sesji instalacyjnych</string>

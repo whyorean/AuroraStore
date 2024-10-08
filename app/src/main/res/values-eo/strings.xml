@@ -112,7 +112,6 @@
     <string name="onboarding_title_welcome">Bonvenon</string>
     <string name="onboarding_welcome_select">Kiel vi fartas\?</string>
     <string name="onboarding_permission_installer">Instalila permeso</string>
-    <string name="pref_app_download">Elŝutoj</string>
     <string name="pref_filter_fdroid_summary">Ne vidigi F-Droid apojn en “Ĝisdatigoj” kaj “Instalitaj Apoj”</string>
     <string name="pref_filter_fdroid_title">Filtri F-Droid apojn</string>
     <string name="pref_filter_google_summary">Ne vidigi Googlajn apojn en “Ĝisdatigoj” kaj “Instalitaj Apoj”</string>

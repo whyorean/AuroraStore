@@ -120,7 +120,6 @@
     <string name="pref_filter_fdroid_summary">Abaikan aplikasi F-Droid dari Pembaruan dan Aplikasi yang terpasang</string>
     <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>
     <string name="pref_common_extra">Ekstra</string>
-    <string name="pref_app_download">Unduhan</string>
     <string name="pref_abandon_session_desc">Bersihkan sesi pengabaian atau pemasangan yang tertunda</string>
     <string name="pref_abandon_session">Paksa sesi instalasi yang jelas</string>
     <string name="onboarding_permission_installer_desc">Izinkan menginstal aplikasi dari Aurora Store</string>

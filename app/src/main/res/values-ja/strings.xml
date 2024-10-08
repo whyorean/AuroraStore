@@ -211,7 +211,6 @@
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
     <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
     <string name="pref_dialog_to_apply_restart">この設定はアプリの再起動後に適用されます</string>
-    <string name="pref_app_download">ダウンロード</string>
     <string name="pref_abandon_session_desc">中止、中断したインストールセッションをクリア</string>
     <string name="pref_abandon_session">インストールセッションを強制クリア</string>
     <string name="onboarding_permission_installer_desc">Aurora Store からのアプリのインストールを許可</string>

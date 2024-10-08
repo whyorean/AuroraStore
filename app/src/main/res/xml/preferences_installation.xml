@@ -31,6 +31,13 @@
         app:singleLineTitle="false"
         app:title="@string/pref_common_extra" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_AUTO_DELETE"
+        app:summary="@string/pref_install_delete_summary"
+        app:title="@string/pref_install_delete_title" />
+
     <Preference
         app:iconSpaceReserved="false"
         app:key="INSTALLATION_ABANDON_SESSION"

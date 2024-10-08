@@ -46,7 +46,6 @@
     <string name="onboarding_permission_select">Aurora Store 須要下列權限</string>
     <string name="onboarding_permission_esa">外置儲存空間存取</string>
     <string name="onboarding_permission_notifications">通知</string>
-    <string name="pref_app_download">下載</string>
     <string name="pref_ui_layout">版面</string>
     <string name="purchase_no_file">攞唔到啲檔案</string>
     <string name="tab_categories">分類</string>

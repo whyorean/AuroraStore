@@ -165,7 +165,6 @@
     <string name="onboarding_permission_installer_desc">Permet instal·lar aplicacions des d\'Aurora Store</string>
     <string name="pref_abandon_session">Forçar la neteja de les sessions d’instal·lació</string>
     <string name="pref_abandon_session_desc">Netejar les sessions d’instal·lació abandonades o pendents</string>
-    <string name="pref_app_download">Baixades</string>
     <string name="pref_common_extra">Extres</string>
     <string name="pref_dialog_to_apply_restart">Aquesta configuració s\'aplicarà després de reiniciar l\'aplicació</string>
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>

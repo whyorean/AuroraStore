@@ -24,7 +24,6 @@
     <string name="title_about">Om</string>
     <string name="tab_categories">Kategorier</string>
     <string name="pref_install_mode_services">Aurora-tjenester</string>
-    <string name="pref_app_download">Nedlastinger</string>
     <string name="onboarding_title_welcome">Velkommen</string>
     <string name="onboarding_title_permissions">Tilganger</string>
     <string name="menu_terms">Tjenestevilkår</string>

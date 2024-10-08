@@ -117,7 +117,6 @@
     <string name="tab_trending">En tendencia</string>
     <string name="download_force_clear_all">Forciar el borráu de too</string>
     <string name="action_leave">Colar</string>
-    <string name="pref_app_download">Descargues</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="toast_export_failed">Nun se pudo esportar la configuración del preséu</string>
     <string name="action_install">Instalar</string>

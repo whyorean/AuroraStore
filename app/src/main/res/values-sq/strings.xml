@@ -161,7 +161,6 @@
     <string name="onboarding_permission_esm">Përgjegjësi Depozitash të Jashtme</string>
     <string name="onboarding_permission_installer">Leje Instaluesi</string>
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
-    <string name="pref_app_download">Shkarkime</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Ky rregullim do të aplikohet pasi të rinisni aplikacionin</string>
     <string name="pref_filter_fdroid_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga F-Droid</string>

@@ -55,7 +55,6 @@
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorar las aplicaciones de F-Droid en Actualizaciones y aplicaciones instaladas</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración se aplicará después de reiniciar la app</string>
-    <string name="pref_app_download">Descargas</string>
     <string name="pref_abandon_session_desc">Limpiar las sesiones de instalación abandonadas o pendientes</string>
     <string name="pref_abandon_session">Forzar la limpieza de las sesiones de instalación</string>
     <string name="onboarding_permission_installer_desc">Permitir la instalación de aplicaciones desde Aurora Store</string>

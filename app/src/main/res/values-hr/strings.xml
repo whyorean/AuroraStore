@@ -148,7 +148,6 @@
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid programe</string>
     <string name="pref_filter_fdroid_summary">Zanemari F-Droid aplikacije s popisa ažuriranih i instaliranih programa</string>
     <string name="pref_dialog_to_apply_restart">Ova će se postavka primijeniti nakon ponovnog pokretanja programa</string>
-    <string name="pref_app_download">Preuzimanja</string>
     <string name="pref_abandon_session_desc">Izbriši napuštene ili čekajuće instalacije</string>
     <string name="pref_abandon_session">Prisilno izbriši sesije instaliranja</string>
     <string name="onboarding_permission_installer_desc">Dozvoli instaliranje programa iz Aurora trgovine</string>

@@ -186,7 +186,6 @@
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
     <string name="pref_filter_google_title">Фільтрувати застосунки Google</string>
     <string name="pref_filter_google_summary">Ігнорувати застосунки Google з Оновлень та Встановлених застосунків</string>
-    <string name="pref_app_download">Завантаження</string>
     <string name="pref_abandon_session_desc">Видалення сеансів черги встановлень або відкладених</string>
     <string name="pref_abandon_session">Примусово очистити сеанси встановлення</string>
     <string name="onboarding_permission_installer_desc">Дозволити встановлення застосунків з Aurora Store</string>

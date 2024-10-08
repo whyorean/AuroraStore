@@ -151,7 +151,6 @@
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
     <string name="pref_filter_fdroid_summary">Bỏ qua các ứng dụng F-Droid khỏi Cập nhật và Ứng dụng đã cài đặt</string>
     <string name="pref_dialog_to_apply_restart">Thiết đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
-    <string name="pref_app_download">Tải xuống</string>
     <string name="pref_abandon_session">Buộc xóa các phiên cài đặt</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>

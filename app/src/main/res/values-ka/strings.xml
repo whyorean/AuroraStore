@@ -62,7 +62,6 @@
     <string name="filter_review_two">ორი</string>
     <string name="menu_disclaimer">პასუხისმგებლობის უარყოფა</string>
     <string name="menu_license">ლიცენზია</string>
-    <string name="pref_app_download">გადმოწერები</string>
     <string name="pref_common_extra">დამატებით</string>
     <string name="pref_network_title">ქსელი</string>
     <string name="pref_network_proxy_title">პროქსი</string>

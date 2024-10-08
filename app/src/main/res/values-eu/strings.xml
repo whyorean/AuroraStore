@@ -62,7 +62,6 @@
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
     <string name="pref_filter_fdroid_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako F-Droid-en aplikazioak</string>
     <string name="pref_dialog_to_apply_restart">Konfigurazio hau aplikatuko da aplikazioa berriro ireki ondoren</string>
-    <string name="pref_app_download">Deskargak</string>
     <string name="pref_abandon_session_desc">Bertan utzitako instalazio saioak garbitu</string>
     <string name="pref_abandon_session">Instalazio saioen garbiketa behartu</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-ri aplikazioak instalatzeko baimena eman</string>

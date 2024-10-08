@@ -75,7 +75,6 @@
     <string name="pref_filter_fdroid_summary">Ignorovat aplikace ze služby F-Droid z karty Aktualizace a Nainstalované</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>
     <string name="pref_common_extra">Doplňky</string>
-    <string name="pref_app_download">Stahované soubory</string>
     <string name="pref_abandon_session_desc">Odstranit přerušené nebo čekající instalace</string>
     <string name="pref_abandon_session">Vynutit vymazání relací instalátoru</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>

@@ -46,10 +46,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
             findNavController().navigate(R.id.UIPreference)
             true
         }
-        findPreference<Preference>("pref_download")?.setOnPreferenceClickListener {
-            findNavController().navigate(R.id.downloadPreference)
-            true
-        }
         findPreference<Preference>("pref_network")?.setOnPreferenceClickListener {
             findNavController().navigate(R.id.networkPreference)
             true

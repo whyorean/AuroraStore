@@ -35,7 +35,6 @@
     <string name="title_advanced">Avantiate</string>
     <string name="action_filter_all">Toto</string>
     <string name="title_about">A proposito de</string>
-    <string name="pref_app_download">Discargamentos</string>
     <string name="onboarding_permission_installer">Permission del installator</string>
     <string name="purchase_failed">Falleva le discargamento</string>
     <string name="action_filter_paid_apps">De pagamento</string>

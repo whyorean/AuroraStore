@@ -277,7 +277,6 @@
     <string name="onboarding_permission_installer">Povolenie inštalátora</string>
     <string name="onboarding_permission_installer_desc">Povoliť inštaláciu aplikácií z obchodu Aurora</string>
     <string name="pref_abandon_session_desc">Vymazať prerušené alebo čakajúce relácie inštalácie</string>
-    <string name="pref_app_download">Stiahnuté</string>
     <string name="pref_common_extra">Doplnky</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavenie sa použije po reštartovaní aplikácie</string>
     <string name="pref_downloader_wifi_title">Sťahovať iba cez WiFi</string>

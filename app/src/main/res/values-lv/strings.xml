@@ -111,7 +111,6 @@
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_welcome">Laipni lūgti</string>
-    <string name="pref_app_download">Lejupielādes</string>
     <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
     <string name="pref_ui_no_for_you">For You lapa</string>
     <string name="pref_ui_no_for_you_desc">Rādīt For You lapu sākuma ekrānā</string>

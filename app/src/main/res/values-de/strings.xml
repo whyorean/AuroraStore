@@ -65,7 +65,6 @@
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps aus Updates und Installationen ausblenden</string>
     <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach einem Neustart der App übernommen</string>
-    <string name="pref_app_download">Downloads</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
     <string name="details_more_about_app">Mehr über die App</string>

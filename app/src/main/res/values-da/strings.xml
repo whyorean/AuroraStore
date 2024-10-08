@@ -133,7 +133,6 @@
     <string name="details_no_permission">Ingen tilladelser</string>
     <string name="pref_abandon_session">Tving rydning af installationssessioner</string>
     <string name="pref_abandon_session_desc">Ryd forladte eller afventende installationssessioner</string>
-    <string name="pref_app_download">Downloads</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Denne indstilling anvendes, når du genstarter appen</string>
     <string name="toast_apk_blacklisted">Blacklistet</string>

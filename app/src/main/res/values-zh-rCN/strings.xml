@@ -186,7 +186,6 @@
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">在更新和已安装应用中忽略 F-Droid 应用</string>
     <string name="pref_dialog_to_apply_restart">在您重新启动应用后，此设置将被应用</string>
-    <string name="pref_app_download">下载</string>
     <string name="pref_abandon_session_desc">清除放弃或挂起的安装会话</string>
     <string name="pref_abandon_session">强制清除安装会话</string>
     <string name="onboarding_permission_installer_desc">允许 Aurora 商店安装应用</string>

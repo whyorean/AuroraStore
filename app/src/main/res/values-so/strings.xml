@@ -105,7 +105,6 @@
     <string name="pref_filter_fdroid_summary">Wuxuu liistada kasaaraa appska F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Fadhigan waxaa la fulin doonaa markaad appka dibusoo bilowdo</string>
     <string name="pref_common_extra">Dheeraad</string>
-    <string name="pref_app_download">Soodajinta</string>
     <string name="pref_abandon_session_desc">Nadiifi kuwa layska daayay ama kushubida hormada kujira</string>
     <string name="pref_abandon_session">Xoog kunadiifi xidhiidhka kushubida</string>
     <string name="onboarding_permission_installer_desc">Ogolow in Dukaanka Aurora appska lagaga sooshubo</string>

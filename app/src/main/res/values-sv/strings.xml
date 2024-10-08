@@ -59,7 +59,6 @@
     <string name="pref_filter_google_title">Filtrera Google-appar</string>
     <string name="pref_filter_fdroid_title">Filtrera F-Droid-appar</string>
     <string name="pref_dialog_to_apply_restart">Den här inställningen kommer att verkställas efter att du har startat om appen</string>
-    <string name="pref_app_download">Nerladdningar</string>
     <string name="onboarding_permission_installer_desc">Tillåt att installera appar från Aurora-butiken</string>
     <string name="onboarding_permission_esa_desc">För att spara nerladdningar (APK:er och OBB:er), exportera och importera enhetskonfigurationer till och från externt lagringsutrymme.</string>
     <string name="onboarding_welcome_select">Hur går det\?</string>

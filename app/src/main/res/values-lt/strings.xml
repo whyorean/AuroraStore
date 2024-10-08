@@ -95,7 +95,6 @@
     <string name="details_privacy">Privatumas</string>
     <string name="installer_status_failure_conflict">Yra konfliktuojantis paketas</string>
     <string name="installer_status_failure_incompatible">Nesuderinama programėlė</string>
-    <string name="pref_app_download">Atsiuntimai</string>
     <string name="onboarding_title_installer">Diegimo programa</string>
     <string name="pref_network_title">Darbas tinkle</string>
     <string name="onboarding_title_permissions">Leidimai</string>
