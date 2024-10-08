@@ -20,7 +20,6 @@
 package com.aurora.store.viewmodel.all
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
@@ -40,8 +39,6 @@ class InstalledViewModel @Inject constructor(private val appUtil: AppUtil) : Vie
 
     private val _installedApps = MutableStateFlow<List<App>?>(null)
     val installedApps = _installedApps.asStateFlow()
-
-    val liveData: MutableLiveData<List<App>> = MutableLiveData()
 
     init {
         fetchApps()
