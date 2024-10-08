@@ -27,6 +27,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hideKeyboard
 import com.aurora.extensions.showKeyboard
@@ -38,6 +39,8 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>() {
@@ -67,8 +70,10 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
             }
         }
 
-        viewModel.liveSearchSuggestions.observe(viewLifecycleOwner) {
-            updateController(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.searchSuggestions.collectLatest {
+                updateController(it)
+            }
         }
 
         setupSearch()

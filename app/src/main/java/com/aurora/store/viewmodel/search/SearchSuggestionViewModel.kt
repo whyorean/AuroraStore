@@ -20,7 +20,6 @@
 package com.aurora.store.viewmodel.search
 
 import android.content.Context
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.SearchSuggestEntry
@@ -34,6 +33,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
 class SearchSuggestionViewModel @Inject constructor(
@@ -42,7 +43,8 @@ class SearchSuggestionViewModel @Inject constructor(
     private val httpClient: IHttpClient
 ) : ViewModel() {
 
-    val liveSearchSuggestions: MutableLiveData<List<SearchSuggestEntry>> = MutableLiveData()
+    private val _searchSuggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
+    val searchSuggestions = _searchSuggestions.asStateFlow()
 
     private val helper: SearchContract = if (authProvider.isAnonymous) {
         WebSearchHelper().using(httpClient)
@@ -52,11 +54,7 @@ class SearchSuggestionViewModel @Inject constructor(
 
     fun observeStreamBundles(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            liveSearchSuggestions.postValue(getSearchSuggestions(query))
+            _searchSuggestions.value = helper.searchSuggestions(query)
         }
-    }
-
-    private fun getSearchSuggestions(query: String): List<SearchSuggestEntry> {
-        return helper.searchSuggestions(query)
     }
 }
