@@ -407,4 +407,7 @@
     <string name="force_restart_summary">يجب إعادة تشغيل متجر أورورا لتطبيق الإعدادات التي تم تغييرها حديثًا</string>
     <string name="export_app_title">مصدِّر الملفات</string>
     <string name="export_app_summary">انتظر، يتم تصدير ملفك</string>
+    <string name="notification_channel_downloads">إشعار التنزيلات</string>
+    <string name="notification_channel_export">إشعار تصدير التطبيق</string>
+    <string name="notification_channel_install">إشعار التثبيت</string>
 </resources>
