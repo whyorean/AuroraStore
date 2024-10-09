@@ -51,6 +51,13 @@ object NotificationUtil {
             )
             channels.add(
                 NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_ACCOUNT,
+                    context.getString(R.string.notification_channel_account),
+                    NotificationManager.IMPORTANCE_HIGH
+                )
+            )
+            channels.add(
+                NotificationChannel(
                     Constants.NOTIFICATION_CHANNEL_DOWNLOADS,
                     context.getString(R.string.notification_channel_downloads),
                     NotificationManager.IMPORTANCE_MIN
@@ -254,7 +261,18 @@ object NotificationUtil {
             .setSmallIcon(R.drawable.ic_file_copy)
             .setContentTitle(context.getString(R.string.export_app_title))
             .setContentText(context.getString(R.string.export_app_summary))
-            .setOngoing(false)
+            .build()
+    }
+
+    fun getAuthDataExpiredNotification(context: Context, packageName: String): Notification {
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
+            .setSmallIcon(R.drawable.ic_account)
+            .setContentTitle(context.getString(R.string.authentication_required_title))
+            .setContentText(context.getString(R.string.authentication_required_unarchive))
+            .setAutoCancel(true)
+            .setContentIntent(getContentIntentForSplash(context, packageName))
+            .setCategory(NotificationCompat.CATEGORY_ERROR)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
     }
 
@@ -313,6 +331,15 @@ object NotificationUtil {
             PendingIntent.FLAG_CANCEL_CURRENT,
             false
         )
+    }
+
+    private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent {
+        return NavDeepLinkBuilder(context)
+            .setGraph(R.navigation.mobile_navigation)
+            .setDestination(R.id.splashFragment)
+            .setComponentName(MainActivity::class.java)
+            .setArguments(bundleOf("packageName" to packageName))
+            .createPendingIntent()
     }
 
     private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
