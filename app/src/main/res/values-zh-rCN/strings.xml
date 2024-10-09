@@ -407,4 +407,7 @@
     <string name="force_restart_summary">需要重启 Aurora 商店来应用新更改的设置</string>
     <string name="export_app_title">文件导出工具</string>
     <string name="export_app_summary">请稍等，正导出你的文件</string>
+    <string name="notification_channel_export">应用导出通知</string>
+    <string name="notification_channel_install">安装通知</string>
+    <string name="notification_channel_downloads">下载通知</string>
 </resources>

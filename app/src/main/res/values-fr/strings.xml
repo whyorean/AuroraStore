@@ -114,7 +114,7 @@
     <string name="action_install">Installer</string>
     <string name="action_ignore_version">Ignorer la version</string>
     <string name="action_ignore">Ignorer</string>
-    <string name="action_get_local_apk">Enregistrer l’offre groupée</string>
+    <string name="action_get_local_apk">Enregistrer le paquet d\'application</string>
     <string name="action_finish">Terminer</string>
     <string name="action_filter_rating">Évaluations</string>
     <string name="action_filter_paid_apps">Payant</string>
@@ -174,7 +174,7 @@
     <string name="tab_top_free">Top gratuit</string>
     <string name="tab_top_charts">Palmarès</string>
     <string name="spoof_apply">Assurez-vous de vous reconnecter pour appliquer l’usurpation d’identité</string>
-    <string name="device_miui_extra">Si vous voulez, vous pouvez choisir le programme d’installation natif, mais dans ce cas, vous ne pourrez pas installer d’APK groupés (fractionnés) ; vous êtes libre de choisir.</string>
+    <string name="device_miui_extra">Vous pouvez éventuellement choisir l\'installateur natif mais dans ce cas vous ne pourrez pas installer de paquets APK (fractionnés), c\'est à vous de décider.</string>
     <string name="device_miui_description">Veuillez désactiver les optimisations MIUI pour autoriser les installations, sinon vous pouvez choisir le programme d’installation racine ou services.</string>
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
     <string name="pref_install_mode_summary">Sélectionnez le mode d’installation de l’APK</string>
@@ -227,12 +227,12 @@
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas disponible.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
     <string name="action_check">Vérifier</string>
-    <string name="dialog_desc_native_split">Vous ne pouvez pas installer d’applications groupées (fractionnées) via le programme d’installation natif. Changez de méthode d’installation pour Session, Services ou Racine.</string>
+    <string name="dialog_desc_native_split">Vous ne pouvez pas installer de paquet d\'application (fractionnées) avec l\'installateur natif. Veuillez opter pour une autre méthode d\'installation (Session, Services ou Racine).</string>
     <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
     <string name="toast_rated_failed">Impossible de soumettre l’évaluation</string>
     <string name="toast_rated_success">Évalué, l’affichage peut prendre un certain temps</string>
     <string name="toast_page_unavailable">Page de navigation indisponible</string>
-    <string name="toast_export_failed">Impossible d’exporter la configuration du dispositif</string>
+    <string name="toast_export_failed">Impossible d’exporter la configuration de l\'appareil</string>
     <string name="toast_export_success">Configuration de l’appareil exportée</string>
     <string name="app_updater_service_notif_text">Permet le téléchargement d’applis en arrière-plan</string>
     <string name="app_updater_service_notif_title">Téléchargement des applis en arrière-plan</string>
@@ -329,7 +329,7 @@
     <string name="pref_updates_auto_desc">Configurer le comportement des mises à jour auto</string>
     <string name="pref_updates_auto_install">Vérifier les mises à jour disponibles automatiquement</string>
     <string name="action_request_analysis">Demander une nouvelle analyse</string>
-    <string name="failed_apk_export">Échec de l’exportation des APK</string>
+    <string name="failed_apk_export">L\'exportation des APKs a échoué</string>
     <string name="download_clear_finished">Effacer les terminés</string>
     <string name="pref_updates_incompatible">Mises à jour incompatibles</string>
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applications incompatibles ou désactivées dont l’installation peut échouer</string>
@@ -345,7 +345,7 @@
     <string name="failed_app_link">Non supporté, veuillez essayer d\'associer les liens manuellement</string>
     <string name="shizuku_installer_desc">Exige Shizuku ou Sui, nécessite d\'être configuré et l\'autorisation doit être accordée</string>
     <string name="root_installer_desc">Exige des privilèges racine/super-utilisateur, supporté par toutes les version d\'Android.</string>
-    <string name="session_installer_subtitle">Installateur basé sur la session pour les APKs empaqueté/scindé</string>
+    <string name="session_installer_subtitle">Installateur basé sur la session pour les APKs empaquetés/fractionnés</string>
     <string name="native_installer_subtitle">Installateur basé sur l\'intention, disponible sur tous les appareils</string>
     <string name="shizuku_installer_subtitle">Utilisant directement les API système avec les privilèges adb/root</string>
     <string name="root_installer_subtitle">Installateur basé sur le shell en utilisant les permissions root</string>
@@ -383,7 +383,7 @@
     <string name="pref_clear_device_owner_title">Révoquer le droit d’administration de l’appareil</string>
     <string name="toast_app_unavailable">L\'application n\'est pas disponible pour votre appareil</string>
     <string name="toast_fav_import_failed">Échec lors de l\'import des favoris !</string>
-    <string name="toast_fav_export_failed">Échec lors de l\'export des favoris !</string>
+    <string name="toast_fav_export_failed">L\'exportation des favoris a échoué !</string>
     <string name="action_favourite">Favoris</string>
     <string name="details_no_favourites">Aucune application favorite trouvée</string>
     <string name="toast_fav_import_success">Favoris importés !</string>
@@ -403,8 +403,11 @@
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
-    <string name="export_app_summary_success">La collection d\'applications a été exportée avec succès</string>
-    <string name="export_app_summary_fail">L\'exportation de la collection d\'applications a échoué</string>
-    <string name="export_app_title">Exporter dans un fichier</string>
+    <string name="export_app_summary_success">Exportation du paquet d\'application réussie</string>
+    <string name="export_app_summary_fail">Échec de l\'exportation du paquet d\'application</string>
+    <string name="export_app_title">Exportateur de fichier</string>
     <string name="export_app_summary">Exportation en cours, veuillez patienter</string>
+    <string name="notification_channel_install">Notification d\'installation</string>
+    <string name="notification_channel_export">Notification d\'exportation d\'application</string>
+    <string name="notification_channel_downloads">Notification de téléchargement</string>
 </resources>

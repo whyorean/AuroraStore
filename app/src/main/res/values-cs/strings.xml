@@ -407,4 +407,7 @@
     <string name="force_restart_summary">Aplikace Aurora Store, potřebuje restartovat pro použití nového nastavení</string>
     <string name="export_app_summary">Čekejte prosím, probíhá export vašeho souboru</string>
     <string name="export_app_title">Export souboru</string>
+    <string name="notification_channel_export">Oznámení o exportu aplikace</string>
+    <string name="notification_channel_install">Oznámení o instalaci</string>
+    <string name="notification_channel_downloads">Oznámení o stahování</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="filter_review_critical">Kritisch</string>
     <string name="filter_review_all">Alle</string>
     <string name="exodus_view_report">Bericht ansehen</string>
-    <string name="exodus_substring">bekannte Tracker gefunden in</string>
+    <string name="exodus_substring">bekannte(r) Tracker gefunden in</string>
     <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
     <string name="exodus_powered">Bereitgestellt von Exodus Privacy</string>
     <string name="exodus_no_tracker">Enthält keine bekannten Tracker</string>
@@ -172,7 +172,7 @@
     <string name="details_contains_ads">Enthält Werbung</string>
     <string name="details_changelog_unavailable">Keine Änderungen vorhanden</string>
     <string name="details_changelog">Änderungen</string>
-    <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern. Der Status der Registrierung kann später überprüft werden.</string>
+    <string name="details_beta_delay">Die Registrierung kann einige Zeit dauern, du kannst den Status später überprüfen.</string>
     <string name="details_beta_description">Du bekommst neue Funktionen sowie Fehler vor der Öffentlichkeit zu sehen. Hilf den Entwicklern mit deiner Rückmeldung, die App zu verbessern.</string>
     <string name="details_beta_available">Am Betatest teilnehmen?</string>
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
@@ -258,7 +258,7 @@
     <string name="error">Es ist ein Fehler aufgetreten!</string>
     <string name="update_available">Update verfügbar</string>
     <string name="expand">Erweitern</string>
-    <string name="permissions_denied">Erforderliche Berechtigungen wurden verweigert. Bitte erteile diese, um die Aktion fortzusetzen.</string>
+    <string name="permissions_denied">Erforderliche Berechtigungen wurden verweigert. Bitte erteile diese, um die Aktion fortzusetzen</string>
     <string name="download_eta_hrs">noch %1$d h %2$d min %3$d s</string>
     <string name="download_eta_min">noch %1$d min %2$d s</string>
     <string name="download_eta_sec">noch %1$d s</string>
@@ -282,7 +282,7 @@
     <string name="failed_to_fetch_report">Datenschutzbericht konnte nicht abgerufen werden</string>
     <string name="title_search_suggestion">Suchvorschlag</string>
     <string name="title_search_results">Suchergebnisse</string>
-    <string name="bad_request">Interner Fehler! Bitte versuche es nach einiger Zeit erneut.</string>
+    <string name="bad_request">Interner Fehler! Bitte versuche es nach einiger Zeit erneut</string>
     <string name="failed_generating_session">Sitzung konnte nicht erstellt werden, Fehlercode: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="server_unreachable">Server nicht erreichbar</string>
     <string name="check_connectivity">Überprüfe die Internetverbindung</string>

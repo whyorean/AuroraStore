@@ -407,4 +407,7 @@
     <string name="force_restart_summary">Es necesario reiniciar Aurora Store para aplicar la configuración recién modificada</string>
     <string name="export_app_summary">Espera, exportando tu archivo</string>
     <string name="export_app_title">Exportador de archivos</string>
+    <string name="notification_channel_install">Notificación de instalación</string>
+    <string name="notification_channel_downloads">Notificación de descargas</string>
+    <string name="notification_channel_export">Notificación de exportación de la aplicación</string>
 </resources>
