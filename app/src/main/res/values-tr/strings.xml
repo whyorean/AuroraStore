@@ -407,4 +407,7 @@
     <string name="force_restart_summary">Aurora Store\'un yeni değiştirilen ayarları uygulamak için yeniden başlatılması gerekir</string>
     <string name="export_app_title">Dosya Dışa Aktarıcı</string>
     <string name="export_app_summary">Bekleyin, dosyanız dışa aktarılıyor</string>
+    <string name="notification_channel_export">Uygulama dışa aktarma bildirimi</string>
+    <string name="notification_channel_install">Kurulum bildirimi</string>
+    <string name="notification_channel_downloads">İndirme bildirimi</string>
 </resources>
