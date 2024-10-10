@@ -1,0 +1,15 @@
+- Dukungan Android 13
+- Aktifkan pelokalan beberapa string
+- Tambahkan ikon monokrom untuk Android 13
+- Perbarui dependensi ke versi terbaru
+- Tampilkan segera Ketentuan Layanan saat peluncuran
+- Izinkan untuk melanjutkan tanpa memberikan izin selama penyiapan awal
+- Baca daftar tolak xml sistem sebagai default untuk mengecualikan dari pembaruan
+- Tampilkan judul yang benar pada halaman penyiapan ke-5
+- Aktifkan tombol maju pada penyiapan saat kembali
+- Ganti kotak centang pada penginstalasi penyiapan dengan tombol radio
+- Gunakan warna goresan untuk latar belakang tab pengaturan
+- Perbaiki bug tanpa tema di pengaturan dengan menggunakan tombol radio
+- Jangan gunakan versi GSF & Vending yang baru
+- Memperbaiki pengaturan izin terkait penyimpanan
+- Pembaruan terjemahan
