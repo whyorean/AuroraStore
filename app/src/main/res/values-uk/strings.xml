@@ -407,4 +407,7 @@
     <string name="force_restart_summary">Aurora Store потрібно перезапустити, щоб застосувати змінені налаштування</string>
     <string name="export_app_title">File Exporter</string>
     <string name="export_app_summary">Зачекайте, експортуємо файл</string>
+    <string name="notification_channel_downloads">Сповіщення про завантаження</string>
+    <string name="notification_channel_install">Сповіщення про встановлення</string>
+    <string name="notification_channel_export">Сповіщення про експорт застосунку</string>
 </resources>
