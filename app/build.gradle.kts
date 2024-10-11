@@ -37,10 +37,6 @@ kotlin {
     jvmToolchain(17)
 }
 
-val gitHash: String
-    get() = project.providers.exec { commandLine("git", "rev-parse", "--short", "HEAD") }
-        .standardOutput.asText.get().trim()
-
 android {
     namespace = "com.aurora.store"
     compileSdk = 35
@@ -96,13 +92,11 @@ android {
         register("nightly") {
             initWith(getByName("release"))
             applicationIdSuffix = ".nightly"
-            versionNameSuffix = "-$gitHash"
         }
 
         debug {
             applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("aosp")
-            versionNameSuffix = "-$gitHash"
         }
     }
 
