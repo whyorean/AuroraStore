@@ -309,4 +309,5 @@
     <string name="am_installer_subtitle">Visiškai parengta atvirojo kodo paketų tvarkytuvė</string>
     <string name="faqs_subtitle">Turite klausimų? Sužinokite atsakymus</string>
     <string name="export_app_summary">Palaukite, eksportuojamas jūsų failas</string>
+    <string name="about_wiki_title">Viki</string>
 </resources>
