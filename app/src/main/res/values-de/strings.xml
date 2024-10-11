@@ -353,7 +353,7 @@
     <string name="native_installer_desc">Am besten geeignet für Geräte, die unter Android 4.4 laufen</string>
     <string name="services_installer_subtitle">Installationsprogramm für Hintergrundinstallationen</string>
     <string name="services_installer_desc">Benötigt die Installation von Aurora Services als privilegierte System-App</string>
-    <string name="am_installer_subtitle">Vollwertiger Open-Source-Paketmanager</string>
+    <string name="am_installer_subtitle">Vollwertiger quelloffener Paketmanager</string>
     <string name="am_installer_desc">Benötigt App Manager, braucht den adb/root-Modus zur Installation, wenn die Miui-Optimierung an ist</string>
     <string name="shizuku_installer_subtitle">Direkte Verwendung von System-APIs mit adb/root-Rechten</string>
     <string name="shizuku_installer_desc">Benötigt Shizuku oder Sui, muss eingerichtet und berechtigt werden</string>
