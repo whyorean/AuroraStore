@@ -402,4 +402,7 @@
     <string name="force_restart_summary">Aurora Store deve essere riavviato per applicare le nuove impostazioni</string>
     <string name="export_app_summary_success">Pacchetto dell\'app esportato con successo</string>
     <string name="export_app_summary_fail">Esportazione del pacchetto dell\'app fallita</string>
+    <string name="notification_channel_export">Notifica di esportazione dell’applicazione</string>
+    <string name="notification_channel_install">Notifica di installazione</string>
+    <string name="notification_channel_downloads">Notifica di scaricamento</string>
 </resources>
