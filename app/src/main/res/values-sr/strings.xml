@@ -441,4 +441,7 @@
     <string name="force_restart_summary">Aurora Store се мора рестартовати да би се применила новопромењена подешавања</string>
     <string name="export_app_summary">Сачекајте, извози се ваш фајл</string>
     <string name="export_app_title">Извозник фајлова</string>
+    <string name="notification_channel_export">Обавештење о извозу апликације</string>
+    <string name="notification_channel_install">Обавештење о инсталирању</string>
+    <string name="notification_channel_downloads">Обавештење о преузимању</string>
 </resources>

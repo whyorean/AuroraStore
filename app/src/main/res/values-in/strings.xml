@@ -407,4 +407,7 @@
     <string name="item_optional">Opsional</string>
     <string name="toast_permission_esm_caution">Anda mungkin harus memberikan izin kembali karena adanya kesalahan dalam Kerangka Kerja Akses Penyimpanan</string>
     <string name="force_restart_summary">Aurora Store perlu dimulai ulang untuk menerapkan pengaturan terbaru</string>
+    <string name="notification_channel_export">Pemberitahuan ekspor aplikasi</string>
+    <string name="notification_channel_install">Pemberitahuan pemasangan</string>
+    <string name="notification_channel_downloads">Pemberitahuan unduhan</string>
 </resources>

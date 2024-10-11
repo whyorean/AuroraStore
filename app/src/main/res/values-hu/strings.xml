@@ -407,4 +407,7 @@
     <string name="export_app_summary_fail">Nem sikerült az alkalmazáscsomag exportálása</string>
     <string name="action_logout_confirmation_title">Kijelentkezik?</string>
     <string name="force_restart_summary">Az Aurora Store-t újra kell indítani az újonnan módosított beállítások alkalmazásához</string>
+    <string name="notification_channel_export">Értesítés alkalmazás exportálásáról</string>
+    <string name="notification_channel_install">Értesítés telepítése</string>
+    <string name="notification_channel_downloads">Letöltések értesítése</string>
 </resources>

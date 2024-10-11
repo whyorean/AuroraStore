@@ -106,7 +106,7 @@
     <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
     <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
-    <string name="pref_install_delete_title">APK-Datei nach der Installation löschen</string>
+    <string name="pref_install_delete_title">APK-Datei nach Installation löschen</string>
     <string name="pref_install_delete_summary">Heruntergeladene APKs werden sofort nach der Installation gelöscht</string>
     <string name="onboarding_permission_esm">Speicherverwaltung</string>
     <string name="onboarding_permission_esa_desc">Zum Speichern von APK-Erweiterungsdateien (OBBs) für große Apps und Spiele.</string>
@@ -118,7 +118,7 @@
     <string name="dialog_title_self_update">Neues Update verfügbar</string>
     <string name="device_miui_extra">Optional kann die systemeigene Installationsmethode ausgewählt werden, jedoch können dann keine gebündelten/geteilten (Split-)APK-Dateien installiert werden.</string>
     <string name="device_miui_description">Um Installationen zu ermöglichen, bitte die MIUI-Optimierungen deaktivieren oder die Root- oder Services-Installationsmethode auswählen.</string>
-    <string name="device_miui_subtitle">Die Sitzungs-Installation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
+    <string name="device_miui_subtitle">Die Sitzungsinstallation kann aufgrund von MIUI-Optimierungen keine Apps installieren.</string>
     <string name="device_miui_title">MIUI erkannt!</string>
     <string name="menu_terms">Nutzungsbedingungen</string>
     <string name="menu_license">Lizenz</string>
@@ -207,7 +207,7 @@
     <string name="about_paypal_summary">Mit PayPal spenden</string>
     <string name="tab_top_grossing">Erfolgreich</string>
     <string name="tab_editor_choice">Auswahl der Redaktion</string>
-    <string name="pref_install_mode_session">Sitzungs-Installation</string>
+    <string name="pref_install_mode_session">Sitzungsinstallation</string>
     <string name="pref_install_mode_root">Root-Installation</string>
     <string name="pref_install_mode_native">Systemeigene Installation (Veraltet)</string>
     <string name="onboarding_permission_installer">Installation unbekannter Apps</string>
@@ -307,7 +307,7 @@
     <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur durch Aurora Store installierte Apps unter Updates und Installationen anzeigen</string>
-    <string name="pref_updates_check_frequency">Häufigkeit für automatische Updates</string>
+    <string name="pref_updates_check_frequency">Häufigkeit der automatischen Updates</string>
     <string name="pref_network_proxy_enable">Proxy aktivieren</string>
     <string name="pref_network_proxy_url">URL des Proxyservers</string>
     <string name="pref_network_proxy_title">Proxy</string>
@@ -323,7 +323,7 @@
     <string name="device_doze_title">Akkuoptimierungen erkannt!</string>
     <string name="device_doze_extra">Optional kannst du die Optimierungen aktiviert lassen, jedoch können dann die Vorteile von Downloads im Hintergrund und automatischen Updates nicht genutzt werden – du hast also die Wahl.</string>
     <string name="device_doze_subtitle">Aurora Store kann aufgrund von Akkuoptimierungen keine Apps im Hintergrund herunterladen oder aktualisieren.</string>
-    <string name="pref_updates_auto">Apps automatisch aktualisieren</string>
+    <string name="pref_updates_auto">Automatisches App-Update</string>
     <string name="pref_updates_auto_notify">Bei verfügbaren Updates nur benachrichtigen</string>
     <string name="pref_updates_auto_off">Apps nicht automatisch aktualisieren</string>
     <string name="pref_updates_auto_install">Verfügbare Updates automatisch installieren</string>
@@ -407,4 +407,7 @@
     <string name="force_restart_summary">Aurora Store muss neu gestartet werden, um die geänderten Einstellungen zu übernehmen</string>
     <string name="export_app_title">Dateiexportierer</string>
     <string name="export_app_summary">Moment, die Datei wird exportiert</string>
+    <string name="notification_channel_downloads">Downloadbenachrichtigung</string>
+    <string name="notification_channel_export">App-Export-Benachrichtigung</string>
+    <string name="notification_channel_install">Installationsbenachrichtigung</string>
 </resources>
