@@ -28,7 +28,7 @@ data class Download(
     var downloadedFiles: Int,
     var fileList: List<File>,
     val sharedLibs: List<SharedLib>,
-    val targetSdk: Int,
+    val targetSdk: Int = 1,
 ) : Parcelable {
     val isFinished get() = downloadStatus in DownloadStatus.finished
     val isRunning get() = downloadStatus in DownloadStatus.running

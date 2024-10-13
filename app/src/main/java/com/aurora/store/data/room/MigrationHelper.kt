@@ -30,8 +30,7 @@ object MigrationHelper {
         database.beginTransaction()
         try {
             listOf("download", "update").forEach {
-                database.execSQL("ALTER TABLE `$it` ADD COLUMN targetSdk INTEGER NOT NULL")
-                database.execSQL("UPDATE `$it` SET targetSdk=1")
+                database.execSQL("ALTER TABLE `$it` ADD COLUMN targetSdk INTEGER NOT NULL DEFAULT 1")
             }
             database.setTransactionSuccessful()
         } catch (exception: Exception) {

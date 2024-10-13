@@ -30,7 +30,7 @@ data class Update(
     val offerType: Int,
     var fileList: List<File>,
     val sharedLibs: List<SharedLib>,
-    val targetSdk: Int
+    val targetSdk: Int = 1
 ) : Parcelable {
 
     companion object {
