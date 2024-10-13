@@ -407,4 +407,13 @@
     <string name="force_restart_summary">Aurora Store trebuie să fie repornită pentru ca noile schimbări să intre în efect</string>
     <string name="export_app_summary">Așteptați, fișier in curs de exportare</string>
     <string name="export_app_title">Exportator fișier(e)</string>
+    <string name="status_queued">În așteptare</string>
+    <string name="status_downloading">În curs de descărcare</string>
+    <string name="status_failed">Eșuat</string>
+    <string name="status_completed">Completată</string>
+    <string name="status_unavailable">Indisponibil</string>
+    <string name="status_cancelled">Anulat</string>
+    <string name="notification_channel_install">Notificare de instalare</string>
+    <string name="notification_channel_downloads">Notificare pentru descărcări</string>
+    <string name="notification_channel_export">Notificare export aplicație</string>
 </resources>
