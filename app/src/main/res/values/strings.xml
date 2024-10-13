@@ -415,8 +415,6 @@
     <string name="title_more">More</string>
     <string name="manage_account">Manage your account</string>
 
-    <!-- DownloadPreference -->
-
     <!-- InstallationPreference -->
     <string name="pref_clear_device_owner_title">Clear device owner</string>
     <string name="pref_clear_device_owner_summary">Removes Aurora Store as the device owner app</string>
@@ -459,4 +457,12 @@
     <!-- ForceRestartDialog -->
     <string name="force_restart_title">Restart Aurora Store</string>
     <string name="force_restart_summary">Aurora Store needs to be restarted to apply the newly changed settings</string>
+
+    <!-- DownloadFragment -->
+    <string name="status_downloading">Downloading</string>
+    <string name="status_failed">Failed</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_queued">Queued</string>
+    <string name="status_unavailable">Unavailable</string>
 </resources>

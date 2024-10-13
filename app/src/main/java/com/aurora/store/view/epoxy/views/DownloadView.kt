@@ -32,7 +32,6 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.ViewDownloadBinding
 import com.aurora.store.util.CommonUtil.getDownloadSpeedString
 import com.aurora.store.util.CommonUtil.getETAString
-import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -51,16 +50,7 @@ class DownloadView @JvmOverloads constructor(
             transformations(RoundedCornersTransformation(32F))
         }
         binding.txtTitle.text = download.displayName
-
-        binding.txtStatus.text = download.downloadStatus.name
-            .lowercase(Locale.getDefault())
-            .replaceFirstChar {
-                if (it.isLowerCase()) {
-                    it.titlecase(Locale.getDefault())
-                } else {
-                    it.toString()
-                }
-            }
+        binding.txtStatus.text = context.getString(download.downloadStatus.localized)
 
         binding.progressDownload.apply {
             progress = download.progress
