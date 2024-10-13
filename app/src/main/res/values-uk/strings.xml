@@ -410,4 +410,10 @@
     <string name="notification_channel_downloads">Сповіщення про завантаження</string>
     <string name="notification_channel_install">Сповіщення про встановлення</string>
     <string name="notification_channel_export">Сповіщення про експорт застосунку</string>
+    <string name="status_failed">Не вдалося</string>
+    <string name="status_completed">Завершено</string>
+    <string name="status_queued">Очікування</string>
+    <string name="status_unavailable">Недоступно</string>
+    <string name="status_downloading">Завантажується</string>
+    <string name="status_cancelled">Скасовано</string>
 </resources>
