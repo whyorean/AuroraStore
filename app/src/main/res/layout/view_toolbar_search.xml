@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/img_action_secondary"
+        android:layout_toStartOf="@id/clearButton"
         android:layout_toEndOf="@id/img_action_primary"
         android:background="@null"
         android:hint="@string/search_hint"
