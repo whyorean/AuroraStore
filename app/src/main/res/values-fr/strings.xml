@@ -174,7 +174,7 @@
     <string name="tab_top_free">Top gratuit</string>
     <string name="tab_top_charts">Palmarès</string>
     <string name="spoof_apply">Assurez-vous de vous reconnecter pour appliquer l’usurpation d’identité</string>
-    <string name="device_miui_extra">Vous pouvez éventuellement choisir l\'installateur natif mais dans ce cas vous ne pourrez pas installer de paquets APK (fractionnés), c\'est à vous de décider.</string>
+    <string name="device_miui_extra">Vous pouvez éventuellement choisir l’installateur natif, mais dans ce cas vous ne pourrez pas installer de paquets APK (fractionnés), c’est à vous de décider.</string>
     <string name="device_miui_description">Veuillez désactiver les optimisations MIUI pour autoriser les installations, sinon vous pouvez choisir le programme d’installation racine ou services.</string>
     <string name="device_miui_subtitle">Le programme d’installation de session ne peut pas installer d’applications en raison des optimisations MIUI.</string>
     <string name="pref_install_mode_summary">Sélectionnez le mode d’installation de l’APK</string>
@@ -227,12 +227,12 @@
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas disponible.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
     <string name="action_check">Vérifier</string>
-    <string name="dialog_desc_native_split">Vous ne pouvez pas installer de paquet d\'application (fractionnées) avec l\'installateur natif. Veuillez opter pour une autre méthode d\'installation (Session, Services ou Racine).</string>
+    <string name="dialog_desc_native_split">Vous ne pouvez pas installer de paquet d’application (fractionnées) avec l’installateur natif. Veuillez opter pour une autre méthode d’installation (Session, Services ou Racine).</string>
     <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
     <string name="toast_rated_failed">Impossible de soumettre l’évaluation</string>
     <string name="toast_rated_success">Évalué, l’affichage peut prendre un certain temps</string>
     <string name="toast_page_unavailable">Page de navigation indisponible</string>
-    <string name="toast_export_failed">Impossible d’exporter la configuration de l\'appareil</string>
+    <string name="toast_export_failed">Impossible d’exporter la configuration de l’appareil</string>
     <string name="toast_export_success">Configuration de l’appareil exportée</string>
     <string name="app_updater_service_notif_text">Permet le téléchargement d’applis en arrière-plan</string>
     <string name="app_updater_service_notif_title">Téléchargement des applis en arrière-plan</string>
@@ -329,7 +329,7 @@
     <string name="pref_updates_auto_desc">Configurer le comportement des mises à jour auto</string>
     <string name="pref_updates_auto_install">Vérifier les mises à jour disponibles automatiquement</string>
     <string name="action_request_analysis">Demander une nouvelle analyse</string>
-    <string name="failed_apk_export">L\'exportation des APKs a échoué</string>
+    <string name="failed_apk_export">L’exportation des APK a échoué</string>
     <string name="download_clear_finished">Effacer les terminés</string>
     <string name="pref_updates_incompatible">Mises à jour incompatibles</string>
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applications incompatibles ou désactivées dont l’installation peut échouer</string>
@@ -339,22 +339,22 @@
     <string name="source_code_title">Code source</string>
     <string name="privacy_policy_subtitle">Découvrez comment Aurora Store utilise vos données</string>
     <string name="manual_download_hint">Entrez le code de version que vous souhaitez installer</string>
-    <string name="source_code_subtitle">Découvrez ce qu\'il y a à l\'intérieur</string>
+    <string name="source_code_subtitle">Découvrez ce qu’il y a à l’intérieur</string>
     <string name="privacy_policy_title">Politique de confidentialité</string>
     <string name="disclaimer_subtitle">Obligation de transparence et responsabilité</string>
-    <string name="failed_app_link">Non supporté, veuillez essayer d\'associer les liens manuellement</string>
-    <string name="shizuku_installer_desc">Exige Shizuku ou Sui, nécessite d\'être configuré et l\'autorisation doit être accordée</string>
+    <string name="failed_app_link">Non pris en charge, veuillez essayer d’associer les liens manuellement</string>
+    <string name="shizuku_installer_desc">Exige Shizuku ou Sui, nécessite d’être configuré et l’autorisation doit être accordée</string>
     <string name="root_installer_desc">Exige des privilèges racine/super-utilisateur, supporté par toutes les version d\'Android.</string>
-    <string name="session_installer_subtitle">Installateur basé sur la session pour les APKs empaquetés/fractionnés</string>
+    <string name="session_installer_subtitle">Installateur basé sur la session pour les APK empaquetés/fractionnés</string>
     <string name="native_installer_subtitle">Installateur basé sur l\'intention, disponible sur tous les appareils</string>
     <string name="shizuku_installer_subtitle">Utilisant directement les API système avec les privilèges adb/root</string>
     <string name="root_installer_subtitle">Installateur basé sur le shell en utilisant les permissions root</string>
-    <string name="session_installer_desc">Recommandé, intégré et supporté pour toutes les versions d\'Android</string>
+    <string name="session_installer_desc">Recommandé, intégré et pris en charge pour toutes les versions d’Android</string>
     <string name="native_installer_desc">Adapté aux appareils fonctionnant sous Android 4.4</string>
-    <string name="services_installer_desc">Exige qu\'Aurora Services soit installé en tant qu\'application système privilégiée</string>
+    <string name="services_installer_desc">Exige qu’Aurora Services soit installé en tant qu’application système privilégiée</string>
     <string name="services_installer_subtitle">Installateur pour les installations en arrière-plan</string>
-    <string name="am_installer_subtitle">Gestionnaire de paquet complet et open-source</string>
-    <string name="am_installer_desc">Exige App Manager, nécessite adb/mode root pour installer lorsque l\'optimisation MIUI est activé</string>
+    <string name="am_installer_subtitle">Gestionnaire de paquet complet et à code ouvert</string>
+    <string name="am_installer_desc">Exige App Manager, nécessite adb/mode root pour installer lorsque l’optimisation MIUI est activé</string>
     <string name="title_more">Plus</string>
     <string name="manage_account">Gérer mon compte</string>
     <string name="about_wiki_title">Wiki</string>
@@ -372,11 +372,7 @@
     <string name="add">Ajouter</string>
     <string name="pref_dispenser_summary">Consulter et gérer les jetons d\'authentification pour les connexions anonymes</string>
     <string name="no_dispensers_available">Aucun fournisseur de jetons disponible</string>
-    <string name="about_aurora_store_summary">Aurora Store vous permet de rechercher et télécharger des applications proposées sur la boutique d\'application officielle de Google (Play Store). Vous avez ainsi la possibilité de consulter les descriptifs, les captures d\'écran, les mises à jours, les commentaires et de télécharger les fichiers APK directement sur votre appareil. Pour utiliser Aurora Store, vous aurez besoin d\'un compte Google Play et de vous y connecter quand vous démarrez et configurez Aurora Store pour la première fois.
-\n
-\nContrairement à d\'autres boutiques d\'applications, Aurora Store ne détient ni ne commercialise ou distribue d\'applications. Tout le contenu disponible et présenté dans Aurora Store provient directement de Google Play. Aurora Store fonctionne exactement comme une porte d\'accès ou un navigateur qui vous permet de vous connecter à votre compte Google Play et de naviguer parmi les applications proposées dans le Play Store.
-\n
-\nGardez à l\'esprit qu\'Aurora Store opère sans aucun accord, lien commercial ou autorisation de la part de Google, Google Play, des applications téléchargées via Aurora Store ou des personnes en charge du développement des application. Aurora Store n\'entretient aucun lien de parrainage, de collaboration ou de relation quelconque avec ces entités.</string>
+    <string name="about_aurora_store_summary">Aurora Store vous permet de rechercher et télécharger des applications proposées sur la boutique d’application officielle de Google (Play Store). Vous avez ainsi la possibilité de consulter les descriptifs, les captures d’écran, les mises à jours, les commentaires et de télécharger les fichiers APK directement sur votre appareil. Pour utiliser Aurora Store, vous aurez besoin d’un compte Google Play et de vous y connecter quand vous démarrez et configurez Aurora Store pour la première fois.\n\nContrairement à d’autres boutiques d\'applications, Aurora Store ne détient ni ne commercialise ou distribue d’applications. Tout le contenu disponible et présenté dans Aurora Store provient directement de Google Play. Aurora Store fonctionne exactement comme une porte d’accès ou un navigateur qui vous permet de vous connecter à votre compte Google Play et de naviguer parmi les applications proposées dans le Play Store.\n\nGardez à l’esprit qu’Aurora Store opère sans aucun accord, lien commercial ou autorisation de la part de Google, Google Play, des applications téléchargées via Aurora Store ou des personnes en charge du développement des application. Aurora Store n’entretient aucun lien de parrainage, de collaboration ou de relation quelconque avec ces entités.</string>
     <string name="about_aurora_store_title">À propos d’Aurora Store</string>
     <string name="about_aurora_store_subtitle">En savoir plus sur Aurora Store</string>
     <string name="pref_clear_device_owner_desc">Cette action supprimera la possibilité accordée à l’installateur d’opérer des installations silencieuses. Êtes-vous sûr·e de révoquer l’administration de l’appareil ?</string>
@@ -403,11 +399,11 @@
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
-    <string name="export_app_summary_success">Exportation du paquet d\'application réussie</string>
-    <string name="export_app_summary_fail">Échec de l\'exportation du paquet d\'application</string>
+    <string name="export_app_summary_success">Exportation du paquet d’application réussie</string>
+    <string name="export_app_summary_fail">Échec de l’exportation du paquet d’application</string>
     <string name="export_app_title">Exportateur de fichier</string>
     <string name="export_app_summary">Exportation en cours, veuillez patienter</string>
-    <string name="notification_channel_install">Notification d\'installation</string>
-    <string name="notification_channel_export">Notification d\'exportation d\'application</string>
+    <string name="notification_channel_install">Notification d’installation</string>
+    <string name="notification_channel_export">Notification d’exportation d’application</string>
     <string name="notification_channel_downloads">Notification de téléchargement</string>
 </resources>

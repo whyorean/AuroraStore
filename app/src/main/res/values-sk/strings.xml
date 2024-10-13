@@ -407,4 +407,7 @@
     <string name="force_restart_title">Reštartovať Aurora obchod</string>
     <string name="export_app_title">Exportér súboru</string>
     <string name="export_app_summary">Počkajte exportujem súbor</string>
+    <string name="notification_channel_export">Oznámenie o vývoze aplikácie</string>
+    <string name="notification_channel_install">Nainštalujte oznámenie</string>
+    <string name="notification_channel_downloads">Na stiahnutie oznámenia</string>
 </resources>

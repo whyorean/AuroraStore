@@ -120,7 +120,7 @@
     <string name="details_free">Gratuito</string>
     <string name="details_dependencies">Dependências</string>
     <string name="details_contains_ads">Contém Anúncios</string>
-    <string name="details_changelog_unavailable">Registro de alterações não forcenido</string>
+    <string name="details_changelog_unavailable">Registro de alterações não fornecido</string>
     <string name="details_changelog">Mudanças</string>
     <string name="details_beta_delay">A inscrição pode levar algum tempo, você pode verificar o status mais tarde.</string>
     <string name="details_beta_description">Você verá novos recursos e bugs antes dos outros. Dê seu feedback aos desenvolvedores para ajudá-los a melhorar.</string>
