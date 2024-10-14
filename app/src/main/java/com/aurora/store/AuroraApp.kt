@@ -76,9 +76,8 @@ class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
         val themeStyle = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_STYLE)
         setAppTheme(themeStyle)
 
-        // Apply dynamic colors to activities0
+        // Apply dynamic colors to activities
         DynamicColors.applyToActivitiesIfAvailable(this)
-        DynamicColors.wrapContextIfAvailable(this)
 
         // Required for Shizuku installer
         if (isPAndAbove()) HiddenApiBypass.addHiddenApiExemptions("I", "L")
