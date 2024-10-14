@@ -410,4 +410,10 @@
     <string name="notification_channel_export">应用导出通知</string>
     <string name="notification_channel_install">安装通知</string>
     <string name="notification_channel_downloads">下载通知</string>
+    <string name="status_cancelled">已取消</string>
+    <string name="status_completed">已完成</string>
+    <string name="status_unavailable">不可用</string>
+    <string name="status_downloading">下载中</string>
+    <string name="status_failed">失败了</string>
+    <string name="status_queued">已加入队列</string>
 </resources>

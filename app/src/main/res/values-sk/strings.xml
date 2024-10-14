@@ -407,7 +407,13 @@
     <string name="force_restart_title">Reštartovať Aurora obchod</string>
     <string name="export_app_title">Exportér súboru</string>
     <string name="export_app_summary">Počkajte exportujem súbor</string>
-    <string name="notification_channel_export">Oznámenie o vývoze aplikácie</string>
-    <string name="notification_channel_install">Nainštalujte oznámenie</string>
-    <string name="notification_channel_downloads">Na stiahnutie oznámenia</string>
+    <string name="notification_channel_export">Upozornenie na export aplikácie</string>
+    <string name="notification_channel_install">Nainštalovať oznámenie</string>
+    <string name="notification_channel_downloads">Oznámenie o stiahnutí</string>
+    <string name="status_failed">Chyba</string>
+    <string name="status_queued">Vo fronte</string>
+    <string name="status_downloading">Sťahujem</string>
+    <string name="status_cancelled">Zrušené</string>
+    <string name="status_completed">Dokončené</string>
+    <string name="status_unavailable">Nedostupné</string>
 </resources>

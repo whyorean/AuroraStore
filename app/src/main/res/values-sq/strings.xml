@@ -381,4 +381,28 @@
 \nJu lutemi, kini parasysh se Aurora Store nuk ka ndonjë miratim, sponsorizim apo autorizim nga Google, Google Play, nga çfarëdo aplikacionesh të shkarkuar përmes Aurora Store apo nga çfarëdo zhvilluesish aplikacionesh; as ka Aurora Store ndonjë përshoqërim, bashkëpunim apo lidhje me ta.</string>
     <string name="action_uninstall_success">U çinstalua me sukses</string>
     <string name="pref_network_proxy_url_message">Jepni një URL ndërmjetësi të vlefshme për të kaluar krejt të dhënat përmes ndërmjetësit.</string>
+    <string name="check_updates">Kontrollo për përditësime</string>
+    <string name="export_app_summary">Prisni, po eksportohet kartela juaj</string>
+    <string name="force_restart_title">Rinis Aurora Store-in</string>
+    <string name="action_logout_confirmation_message">Jeni i sigurt se doni të dilet?</string>
+    <string name="force_restart_summary">Lypset të riniset Aurora Store, që të aplikohen rregullimet e ndryshuara rishtazi</string>
+    <string name="status_downloading">Po shkarkohet</string>
+    <string name="status_failed">U dështua</string>
+    <string name="status_cancelled">U anulua</string>
+    <string name="status_completed">U plotësua</string>
+    <string name="status_queued">U vu në radhë</string>
+    <string name="details_data_safety_subtitle">Privatësi të dhënash dhe praktika sigurie të deklaruara nga zhvilluesi</string>
+    <string name="details_data_safety_title">Siguri të dhënash</string>
+    <string name="onboarding_permission_installer_legacy_desc">Lejo instalim aplikacionesh nga burime të panjohura</string>
+    <string name="toast_permission_esm_caution">Mund t’ju duhet të riakordoni lejen, për shkak të mete te Platformë Hyrjeje Në Depozitë</string>
+    <string name="toast_permission_installer_required">Së pari lypset të akordoni Leje Instaluesi</string>
+    <string name="item_required">E domosdoshme</string>
+    <string name="item_optional">Opsionale</string>
+    <string name="export_app_summary_fail">S’u arrit të eksportohej paketë aplikacioni</string>
+    <string name="action_logout_confirmation_title">Të dilet?</string>
+    <string name="export_app_summary_success">U eksportua me sukses paketë aplikacioni</string>
+    <string name="notification_channel_export">Shënim rreth eksportimi aplikacionesh</string>
+    <string name="notification_channel_install">Shënim instalimi</string>
+    <string name="notification_channel_downloads">Shënim rreth shkarkimesh</string>
+    <string name="export_app_title">Eksportues Kartelash</string>
 </resources>

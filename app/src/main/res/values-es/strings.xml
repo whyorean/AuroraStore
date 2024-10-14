@@ -410,4 +410,10 @@
     <string name="notification_channel_install">Notificación de instalación</string>
     <string name="notification_channel_downloads">Notificación de descargas</string>
     <string name="notification_channel_export">Notificación de exportación de la aplicación</string>
+    <string name="status_failed">Fallida</string>
+    <string name="status_cancelled">Cancelada</string>
+    <string name="status_completed">Completada</string>
+    <string name="status_unavailable">No disponible</string>
+    <string name="status_queued">En espera</string>
+    <string name="status_downloading">Descargando</string>
 </resources>

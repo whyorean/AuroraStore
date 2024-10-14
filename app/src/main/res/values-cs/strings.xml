@@ -410,4 +410,10 @@
     <string name="notification_channel_export">Oznámení o exportu aplikace</string>
     <string name="notification_channel_install">Oznámení o instalaci</string>
     <string name="notification_channel_downloads">Oznámení o stahování</string>
+    <string name="status_failed">Chyba</string>
+    <string name="status_downloading">Stahování</string>
+    <string name="status_cancelled">Zrušeno</string>
+    <string name="status_completed">Dokončeno</string>
+    <string name="status_queued">Ve frontě</string>
+    <string name="status_unavailable">Nedostupné</string>
 </resources>

@@ -410,4 +410,10 @@
     <string name="notification_channel_export">Értesítés alkalmazás exportálásáról</string>
     <string name="notification_channel_install">Értesítés telepítése</string>
     <string name="notification_channel_downloads">Letöltések értesítése</string>
+    <string name="status_cancelled">Megszakítva</string>
+    <string name="status_completed">Elkészült</string>
+    <string name="status_queued">Sorba állítva</string>
+    <string name="status_downloading">Letöltés</string>
+    <string name="status_unavailable">Nem elérhető</string>
+    <string name="status_failed">Meghiúsult</string>
 </resources>

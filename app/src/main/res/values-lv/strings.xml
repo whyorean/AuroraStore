@@ -407,4 +407,13 @@
     <string name="details_data_safety_subtitle">Izstrādātāja noteikta datu privātuma un drošības prakse</string>
     <string name="toast_permission_esm_caution">Var būt nepieciešams atkārtoti nodrošināt atļauju krātuves piekļuves ietvara nepilnības dēļ</string>
     <string name="pref_network_proxy_url_message">Jāievada derīgs starpniekservera URL, lai sūtītu visus datus caur to.</string>
+    <string name="status_failed">Neizdevās</string>
+    <string name="status_unavailable">Nepieejams</string>
+    <string name="status_downloading">Lejupielādē</string>
+    <string name="status_cancelled">Atcelts</string>
+    <string name="status_completed">Pabeigts</string>
+    <string name="status_queued">Ierindots</string>
+    <string name="notification_channel_export">Lietotnes izgūšanas paziņojums</string>
+    <string name="notification_channel_install">Uzstādīšanas paziņojums</string>
+    <string name="notification_channel_downloads">Lejupielāžu paziņojums</string>
 </resources>
