@@ -79,7 +79,9 @@
         android:clipToPadding="false"
         android:orientation="vertical"
         android:overScrollMode="never"
-        android:padding="@dimen/padding_small"
+        android:paddingHorizontal="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_small"
+        android:paddingBottom="@dimen/height_bottom_adj"
         app:itemSpacing="@dimen/margin_small"
         tools:listitem="@layout/view_link" />
 </LinearLayout>

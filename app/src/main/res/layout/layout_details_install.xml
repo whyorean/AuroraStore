@@ -30,7 +30,6 @@
     android:paddingEnd="@dimen/padding_small"
     android:showDividers="middle"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="@dimen/height_peek"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <ViewFlipper
@@ -135,34 +134,4 @@
                 app:srcCompat="@drawable/ic_cancel" />
         </RelativeLayout>
     </ViewFlipper>
-
-    <LinearLayout
-        android:id="@+id/bottomsheet_body"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="false"
-        android:divider="@drawable/divider"
-        android:focusable="false"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/padding_normal"
-        android:showDividers="middle">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/TextAppearance.Aurora.Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alpha=".75"
-            android:text="@string/purchase_failed"
-            android:textAlignment="center"
-            android:textColor="?colorOnPrimary" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_purchase_error"
-            style="@style/TextAppearance.Aurora.Line1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="?colorOnPrimary"
-            tools:text="@string/purchase_invalid" />
-    </LinearLayout>
 </LinearLayout>

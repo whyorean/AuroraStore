@@ -50,7 +50,7 @@
     <dimen name="screenshot_height_mini">120dp</dimen>
     <dimen name="screenshot_width_mini">68dp</dimen>
 
-    <dimen name="height_bottom_adj">100dp</dimen>
+    <dimen name="height_bottom_adj">125dp</dimen>
 
     <dimen name="cluster_size">128dp</dimen>
     <dimen name="elevation_small">3dp</dimen>

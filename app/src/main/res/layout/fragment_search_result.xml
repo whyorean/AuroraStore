@@ -45,8 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/divider"
-            android:layout_marginTop="5dp"
+            android:clipToPadding="true"
             android:paddingTop="@dimen/padding_normal"
+            android:paddingBottom="@dimen/height_bottom_adj"
             tools:listitem="@layout/view_app_list" />
     </RelativeLayout>
 
