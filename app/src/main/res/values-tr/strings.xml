@@ -410,4 +410,6 @@
     <string name="notification_channel_export">Uygulama dışa aktarma bildirimi</string>
     <string name="notification_channel_install">Kurulum bildirimi</string>
     <string name="notification_channel_downloads">İndirme bildirimi</string>
+    <string name="status_downloading">İndiriliyor</string>
+    <string name="status_failed">Hata verdi</string>
 </resources>
