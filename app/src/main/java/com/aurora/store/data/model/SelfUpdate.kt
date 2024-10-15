@@ -36,7 +36,8 @@ data class SelfUpdate(
     @SerializedName("fdroid_build") var fdroidBuild: String = String(),
     @SerializedName("updated_on") var updatedOn: String = String(),
     val changelog: String = String(),
-    val size: Long = 0L
+    val size: Long = 0L,
+    val timestamp: Long = 0L
 ) {
     companion object {
         private const val BASE_URL = "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master"

@@ -123,7 +123,13 @@ class AppUtil @Inject constructor(
                 val selfUpdate =
                     gson.fromJson(String(response.responseBytes), SelfUpdate::class.java)
 
-                if (selfUpdate.versionCode > BuildConfig.VERSION_CODE) {
+                val isUpdate = when (BuildConfig.BUILD_TYPE) {
+                    RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
+                    NIGHTLY -> selfUpdate.timestamp > BuildConfig.TIMESTAMP
+                    else -> false
+                }
+
+                if (isUpdate) {
                     if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
                         if (selfUpdate.fdroidBuild.isNotEmpty()) {
                             return@withContext SelfUpdate.toApp(selfUpdate, context)
