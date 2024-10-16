@@ -20,16 +20,18 @@
 package com.aurora.store.view.epoxy.views
 
 import android.content.Context
+import android.content.pm.PackageInfo
 import android.util.AttributeSet
 import android.widget.CompoundButton
+import androidx.core.content.pm.PackageInfoCompat
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewBlackBinding
+import com.aurora.store.util.PackageUtil
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -41,16 +43,17 @@ class BlackListView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : BaseView<ViewBlackBinding>(context, attrs, defStyleAttr) {
 
-    @ModelProp
-    fun app(app: App) {
-        binding.imgIcon.load(app.iconArtwork.url) {
+    @ModelProp(options = [ModelProp.Option.IgnoreRequireHashCode])
+    fun packageInfo(packageInfo: PackageInfo) {
+        val appInfo = packageInfo.applicationInfo!!
+        binding.imgIcon.load(PackageUtil.getIconForPackage(context, appInfo.packageName)) {
             placeholder(R.drawable.bg_placeholder)
             transformations(RoundedCornersTransformation(25F))
         }
 
-        binding.txtLine1.text = app.displayName
-        binding.txtLine2.text = app.packageName
-        binding.txtLine3.text = ("${app.versionName}.${app.versionCode}")
+        binding.txtLine1.text = appInfo.loadLabel(context.packageManager)
+        binding.txtLine2.text = appInfo.packageName
+        binding.txtLine3.text = ("${packageInfo.versionName}.${PackageInfoCompat.getLongVersionCode(packageInfo)}")
     }
 
     @ModelProp

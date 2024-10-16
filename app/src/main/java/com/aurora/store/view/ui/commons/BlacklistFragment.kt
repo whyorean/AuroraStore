@@ -19,6 +19,7 @@
 
 package com.aurora.store.view.ui.commons
 
+import android.content.pm.PackageInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,7 +27,6 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
@@ -38,18 +38,15 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
-    private val viewModel: BlacklistViewModel by viewModels()
 
-    private var blackList: List<App>? = emptyList()
-    private var query: String = String()
+    private val viewModel: BlacklistViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.blackListedApps.collect {
-                blackList = it
-                updateController(blackList)
+            viewModel.packages.collect {
+                updateController(it)
             }
         }
 
@@ -66,15 +63,12 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
             inputSearch.addTextChangedListener(object : TextWatcher {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (s.isNullOrEmpty()) {
-                        updateController(blackList)
+                        updateController(viewModel.packages.value)
                     } else {
-                        query = s.toString()
-
-                        val filtered = blackList?.filter {
-                            it.displayName.contains(query, true)
+                        val filteredPackages = viewModel.packages.value?.filter {
+                            it.applicationInfo!!.loadLabel(requireContext().packageManager).contains(s, true)
                         }
-
-                        updateController(filtered)
+                        updateController(filteredPackages)
                     }
                 }
 
@@ -84,8 +78,7 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     start: Int,
                     count: Int,
                     after: Int
-                ) {
-                }
+                ) {}
             })
         }
     }
@@ -95,10 +88,10 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         viewModel.blacklistProvider.blacklist = viewModel.selected
     }
 
-    private fun updateController(blackList: List<App>?) {
+    private fun updateController(packages: List<PackageInfo>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
-            if (blackList == null) {
+            if (packages == null) {
                 for (i in 1..10) {
                     add(
                         AppListViewShimmerModel_()
@@ -106,7 +99,7 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     )
                 }
             } else {
-                blackList
+                packages
                     .sortedByDescending { app ->
                         viewModel.blacklistProvider.isBlacklisted(app.packageName)
                     }
@@ -114,7 +107,7 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                         add(
                             BlackListViewModel_()
                                 .id(it.packageName.hashCode())
-                                .app(it)
+                                .packageInfo(it)
                                 .markChecked(viewModel.selected.contains(it.packageName))
                                 .checked { _, isChecked ->
                                     if (isChecked) {

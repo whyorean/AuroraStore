@@ -20,41 +20,36 @@
 package com.aurora.store.viewmodel.all
 
 import android.content.Context
+import android.content.pm.PackageInfo
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.isValidApp
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.network.IHttpClient
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class BlacklistViewModel @Inject constructor(
     val blacklistProvider: BlacklistProvider,
-    @ApplicationContext private val context: Context,
-    private val httpClient: IHttpClient,
-    authProvider: AuthProvider
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
-    private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
-        .using(httpClient)
 
-    private val _blacklistedApps = MutableStateFlow<List<App>?>(null)
-    val blackListedApps = _blacklistedApps.asStateFlow()
+    private val TAG = BlacklistViewModel::class.java.simpleName
 
-    var selected: MutableSet<String> = mutableSetOf()
+    private val _packages = MutableStateFlow<List<PackageInfo>?>(null)
+    val packages = _packages.asStateFlow()
+
+    var selected: MutableSet<String> = blacklistProvider.blacklist
 
     init {
-        selected = blacklistProvider.blacklist
         fetchApps()
     }
 
@@ -62,17 +57,18 @@ class BlacklistViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    val packageNames = context.packageManager.getInstalledPackages(0)
+                    _packages.value = context.packageManager.getInstalledPackages(0)
                         .filter { it.isValidApp() }
-                        .map { it.packageName }
-
-                    val apps = appDetailsHelper
-                        .getAppByPackageName(packageNames)
-                        .filter { it.displayName.isNotBlank() }
-
-                    _blacklistedApps.emit(apps.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                        .filter {
+                            // Most core AOSP system apps use their package name as label
+                            it.applicationInfo!!.loadLabel(context.packageManager) != it.packageName
+                        }
+                        .sortedBy {
+                            it.applicationInfo!!.loadLabel(context.packageManager).toString()
+                                .lowercase(Locale.getDefault())
+                        }
+                } catch (exception: Exception) {
+                    Log.e(TAG, "Failed to fetch apps", exception)
                 }
             }
         }
