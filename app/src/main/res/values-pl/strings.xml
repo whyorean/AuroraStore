@@ -410,4 +410,10 @@
     <string name="notification_channel_export">Powiadomienie o eksporcie aplikacji</string>
     <string name="notification_channel_install">Powiadomienie o instalacji</string>
     <string name="notification_channel_downloads">Powiadomienie o pobieraniu</string>
+    <string name="status_downloading">Pobieranie</string>
+    <string name="status_cancelled">Anulowano</string>
+    <string name="status_completed">Ukończono</string>
+    <string name="status_queued">W kolejce</string>
+    <string name="status_unavailable">Niedostępne</string>
+    <string name="status_failed">Nieudane</string>
 </resources>

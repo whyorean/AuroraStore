@@ -412,4 +412,8 @@
     <string name="notification_channel_downloads">İndirme bildirimi</string>
     <string name="status_downloading">İndiriliyor</string>
     <string name="status_failed">Hata verdi</string>
+    <string name="status_unavailable">Kullanılabilir değil</string>
+    <string name="status_cancelled">İptal edildi</string>
+    <string name="status_completed">Tamamlandı</string>
+    <string name="status_queued">Kuyruğa alındı</string>
 </resources>
