@@ -3,7 +3,7 @@ package com.aurora.extensions
 import android.content.pm.PackageInfo
 import android.os.Process
 
-fun PackageInfo.isApp(): Boolean {
+fun PackageInfo.isValidApp(): Boolean {
     if (this.applicationInfo == null || this.packageName.isEmpty()) return false
 
     return when {

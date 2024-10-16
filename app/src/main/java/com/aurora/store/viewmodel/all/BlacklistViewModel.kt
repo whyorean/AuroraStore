@@ -22,7 +22,7 @@ package com.aurora.store.viewmodel.all
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.extensions.isApp
+import com.aurora.extensions.isValidApp
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.network.IHttpClient
@@ -63,7 +63,7 @@ class BlacklistViewModel @Inject constructor(
             supervisorScope {
                 try {
                     val packageNames = context.packageManager.getInstalledPackages(0)
-                        .filter { it.isApp() }
+                        .filter { it.isValidApp() }
                         .map { it.packageName }
 
                     val apps = appDetailsHelper
