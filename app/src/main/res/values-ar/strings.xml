@@ -410,4 +410,10 @@
     <string name="notification_channel_downloads">إشعار التنزيلات</string>
     <string name="notification_channel_export">إشعار تصدير التطبيق</string>
     <string name="notification_channel_install">إشعار التثبيت</string>
+    <string name="status_unavailable">غير متاح</string>
+    <string name="status_failed">فشل</string>
+    <string name="status_completed">مكتمل</string>
+    <string name="status_queued">في قائمة الانتظار</string>
+    <string name="status_cancelled">ملغي</string>
+    <string name="status_downloading">تنزيل</string>
 </resources>
