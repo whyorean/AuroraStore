@@ -19,12 +19,18 @@
 
 package com.aurora.store.viewmodel.all
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.util.AppUtil
+import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,7 +39,12 @@ import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class InstalledViewModel @Inject constructor(private val appUtil: AppUtil) : ViewModel() {
+class InstalledViewModel @Inject constructor(
+    private val authProvider: AuthProvider,
+    private val httpClient: IHttpClient,
+    private val blacklistProvider: BlacklistProvider,
+    @ApplicationContext private val context: Context
+) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
@@ -47,8 +58,17 @@ class InstalledViewModel @Inject constructor(private val appUtil: AppUtil) : Vie
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val apps = appUtil.getFilteredInstalledApps()
-                _installedApps.emit(apps.sortedBy { it.displayName.lowercase(Locale.getDefault()) })
+                val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
+                    .using(httpClient)
+
+                PackageUtil.getPackageInfoMap(context).keys.let { packages ->
+                    val filtersPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
+
+                    _installedApps.value = appDetailsHelper.getAppByPackageName(filtersPackages)
+                        .filter { it.displayName.isNotEmpty() }
+                        .map { it.isInstalled = true; it }
+                        .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
+                }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to get installed apps", exception)
             }
