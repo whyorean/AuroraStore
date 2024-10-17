@@ -23,7 +23,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.room.update.Update
-import com.aurora.store.util.AppUtil
+import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.helper.DownloadHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +34,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UpdatesViewModel @Inject constructor(
-    private val appUtil: AppUtil,
+    private val updateHelper: UpdateHelper,
     private val downloadHelper: DownloadHelper,
 ) : ViewModel() {
     private val TAG = UpdatesViewModel::class.java.simpleName
@@ -42,7 +42,7 @@ class UpdatesViewModel @Inject constructor(
     var updateAllEnqueued: Boolean = false
 
     val downloadsList get() = downloadHelper.downloadsList
-    val updates get() = appUtil.updates
+    val updates get() = updateHelper.updates
 
     private val _fetchingUpdates = MutableStateFlow(false)
     val fetchingUpdates = _fetchingUpdates.asStateFlow()
@@ -51,7 +51,7 @@ class UpdatesViewModel @Inject constructor(
         _fetchingUpdates.value = true
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                appUtil.checkUpdates()
+                updateHelper.checkUpdates()
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)
             }

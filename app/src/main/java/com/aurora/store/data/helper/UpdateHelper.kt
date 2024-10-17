@@ -1,4 +1,4 @@
-package com.aurora.store.util
+package com.aurora.store.data.helper
 
 import android.content.Context
 import android.content.pm.PackageInfo
@@ -15,6 +15,9 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao
+import com.aurora.store.util.CertUtil
+import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.Preferences
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +29,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-class AppUtil @Inject constructor(
+class UpdateHelper @Inject constructor(
     private val gson: Gson,
     private val authProvider: AuthProvider,
     private val updateDao: UpdateDao,
@@ -35,7 +38,7 @@ class AppUtil @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
-    private val TAG = AppUtil::class.java.simpleName
+    private val TAG = UpdateHelper::class.java.simpleName
 
     private val RELEASE = "release"
     private val NIGHTLY = "nightly"
@@ -84,7 +87,7 @@ class AppUtil @Inject constructor(
         updateDao.delete(packageName)
     }
 
-    suspend fun getFilteredInstalledApps(
+    private suspend fun getFilteredInstalledApps(
         packageInfoMap: MutableMap<String, PackageInfo>? = null
     ): List<App> {
         return withContext(Dispatchers.IO) {

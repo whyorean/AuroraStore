@@ -17,7 +17,7 @@ import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isMAndAbove
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.util.AppUtil
+import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.Preferences
@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit.MINUTES
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
-    private val appUtil: AppUtil,
+    private val updateHelper: UpdateHelper,
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     @Assisted private val appContext: Context,
@@ -123,7 +123,7 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             try {
-                val updatesList = appUtil.checkUpdates()
+                val updatesList = updateHelper.checkUpdates()
                     .filter { it.hasValidCert }
                     .filterNot { it.isSelfUpdate() }
 

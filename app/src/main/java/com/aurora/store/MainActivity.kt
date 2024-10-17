@@ -27,7 +27,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.displayCutout
 import androidx.core.view.WindowInsetsCompat.Type.ime
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
@@ -40,7 +39,7 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.databinding.ActivityMainBinding
-import com.aurora.store.util.AppUtil
+import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
@@ -54,7 +53,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var appUtil: AppUtil
+    lateinit var updateHelper: UpdateHelper
 
     private val networkViewModel: NetworkViewModel by viewModels()
 
@@ -153,8 +152,8 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             AuroraApp.events.installerEvent.collect {
                 when (it) {
-                    is InstallerEvent.Installed -> appUtil.deleteUpdate(it.packageName)
-                    is InstallerEvent.Uninstalled -> appUtil.deleteUpdate(it.packageName)
+                    is InstallerEvent.Installed -> updateHelper.deleteUpdate(it.packageName)
+                    is InstallerEvent.Uninstalled -> updateHelper.deleteUpdate(it.packageName)
                     else -> {}
                 }
             }
@@ -162,12 +161,12 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             AuroraApp.events.busEvent.collect {
-                if (it is BusEvent.Blacklisted) appUtil.deleteUpdate(it.packageName)
+                if (it is BusEvent.Blacklisted) updateHelper.deleteUpdate(it.packageName)
             }
         }
 
         lifecycleScope.launch {
-            appUtil.updates.collectLatest { list ->
+            updateHelper.updates.collectLatest { list ->
                 B.navView.getOrCreateBadge(R.id.updatesFragment).apply {
                     isVisible = !list.isNullOrEmpty()
                     number = list?.size ?: 0
