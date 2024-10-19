@@ -190,6 +190,14 @@ object NotificationUtil {
             .build()
     }
 
+    fun getUpdateNotification(context: Context): Notification {
+        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
+            .setSmallIcon(R.drawable.ic_updates)
+            .setContentTitle(context.getString(R.string.checking_updates))
+            .setOngoing(true)
+            .build()
+    }
+
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
         val contentIntent = NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
@@ -261,6 +269,7 @@ object NotificationUtil {
             .setSmallIcon(R.drawable.ic_file_copy)
             .setContentTitle(context.getString(R.string.export_app_title))
             .setContentText(context.getString(R.string.export_app_summary))
+            .setOngoing(true)
             .build()
     }
 

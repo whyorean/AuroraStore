@@ -105,7 +105,7 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
                             .id(it.packageName)
                             .download(it)
                             .click { _ ->
-                                if (it.packageName == Constants.APP_ID) {
+                                if (it.packageName == requireContext().packageName) {
                                     requireContext().browse(GITLAB_URL)
                                 } else {
                                     openDetailsFragment(it.packageName)

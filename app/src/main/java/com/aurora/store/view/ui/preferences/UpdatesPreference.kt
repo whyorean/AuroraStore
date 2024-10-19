@@ -28,13 +28,17 @@ import androidx.preference.SeekBarPreference
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
-import com.aurora.store.data.work.UpdateWorker
+import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class UpdatesPreference : BasePreferenceFragment() {
+
+    @Inject
+    lateinit var updateHelper: UpdateHelper
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
@@ -43,11 +47,11 @@ class UpdatesPreference : BasePreferenceFragment() {
             ?.setOnPreferenceChangeListener { _, newValue ->
                 val value = newValue.toString().toInt()
                 when (value) {
-                    0 -> UpdateWorker.cancelAutomatedCheck(requireContext())
-                    1 -> UpdateWorker.scheduleAutomatedCheck(requireContext())
+                    0 -> updateHelper.cancelAutomatedCheck()
+                    1 -> updateHelper.scheduleAutomatedCheck()
                     else -> {
                         if (requireContext().isIgnoringBatteryOptimizations()) {
-                            UpdateWorker.scheduleAutomatedCheck(requireContext())
+                            updateHelper.scheduleAutomatedCheck()
                             return@setOnPreferenceChangeListener true
                         } else {
                             findNavController().navigate(
@@ -61,7 +65,7 @@ class UpdatesPreference : BasePreferenceFragment() {
 
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
             ?.setOnPreferenceChangeListener { _, _ ->
-                UpdateWorker.updateAutomatedCheck(requireContext())
+                updateHelper.updateAutomatedCheck()
                 true
             }
     }

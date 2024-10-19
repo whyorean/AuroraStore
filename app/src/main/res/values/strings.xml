@@ -454,6 +454,7 @@
 
     <!-- UpdatesFragment -->
     <string name="check_updates">Check for updates</string>
+    <string name="checking_updates">Checking for updates</string>
 
     <!-- ForceRestartDialog -->
     <string name="force_restart_title">Restart Aurora Store</string>

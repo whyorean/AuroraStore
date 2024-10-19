@@ -33,8 +33,8 @@ import com.aurora.Constants
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
+import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.work.CacheWorker
-import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
@@ -59,9 +59,13 @@ import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
+
+    @Inject
+    lateinit var updateHelper: UpdateHelper
 
     private var lastPosition = 0
 
@@ -190,6 +194,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
             else -> 0 // Disable
         }
         save(PREFERENCE_UPDATES_AUTO, updateMode)
-        UpdateWorker.scheduleAutomatedCheck(requireContext())
+        updateHelper.scheduleAutomatedCheck()
     }
 }

@@ -1,156 +1,168 @@
 package com.aurora.store.data.helper
 
 import android.content.Context
-import android.content.pm.PackageInfo
 import android.util.Log
-import androidx.core.content.pm.PackageInfoCompat
-import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.network.IHttpClient
+import androidx.work.Constraints
+import androidx.work.Data
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OutOfQuotaPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.aurora.extensions.isMAndAbove
 import com.aurora.store.AuroraApp
-import com.aurora.store.BuildConfig
-import com.aurora.store.data.model.SelfUpdate
-import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.providers.BlacklistProvider
-import com.aurora.store.data.room.update.Update
+import com.aurora.store.data.event.BusEvent
+import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.room.update.UpdateDao
-import com.aurora.store.util.CertUtil
-import com.aurora.store.util.PackageUtil
+import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.Preferences
-import com.google.gson.Gson
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit.HOURS
+import java.util.concurrent.TimeUnit.MINUTES
+import javax.inject.Inject
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+/**
+ * Helper class to work with the [UpdateWorker].
+ */
 class UpdateHelper @Inject constructor(
-    private val gson: Gson,
-    private val authProvider: AuthProvider,
     private val updateDao: UpdateDao,
-    private val blacklistProvider: BlacklistProvider,
-    private val httpClient: IHttpClient,
     @ApplicationContext private val context: Context
 ) {
 
+    companion object {
+        const val UPDATE_MODE = "UPDATE_MODE"
+
+        private const val UPDATE_WORKER = "UPDATE_WORKER"
+        private const val EXPEDITED_UPDATE_WORKER = "EXPEDITED_UPDATE_WORKER"
+    }
+
     private val TAG = UpdateHelper::class.java.simpleName
 
-    private val RELEASE = "release"
-    private val NIGHTLY = "nightly"
+    private val isExtendedUpdateEnabled
+        get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
-    private val isExtendedUpdateEnabled get() = Preferences.getBoolean(
-        context, Preferences.PREFERENCE_UPDATES_EXTENDED
-    )
     val updates = updateDao.updates()
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
 
     init {
         AuroraApp.scope.launch {
-            updateDao.updates().firstOrNull()?.forEach { update ->
-                if (!update.isInstalled(context) || update.isUpToDate(context)) {
-                    deleteUpdate(update.packageName)
-                }
+            deleteInvalidUpdates()
+        }.invokeOnCompletion {
+            observeUpdates()
+        }
+    }
+
+    private fun observeUpdates() {
+        AuroraApp.events.installerEvent.onEach {
+            when (it) {
+                is InstallerEvent.Installed -> deleteUpdate(it.packageName)
+                is InstallerEvent.Uninstalled -> deleteUpdate(it.packageName)
+                else -> {}
             }
-        }
+        }.launchIn(AuroraApp.scope)
+
+        AuroraApp.events.busEvent.onEach {
+            if (it is BusEvent.Blacklisted) deleteUpdate(it.packageName)
+        }.launchIn(AuroraApp.scope)
     }
 
-    suspend fun checkUpdates(): List<Update> {
-        Log.i(TAG, "Checking for updates")
-        val packageInfoMap = PackageUtil.getPackageInfoMap(context)
-        val appUpdatesList = getFilteredInstalledApps(packageInfoMap)
-            .filter {
-                val packageInfo = packageInfoMap[it.packageName]
-                if (packageInfo != null) {
-                    it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
-                } else {
-                    false
-                }
-            }.toMutableList()
+    /**
+     * Checks for updates using an expedited worker
+     */
+    fun checkUpdatesNow() {
+        val inputData = Data.Builder()
+            .putInt(UPDATE_MODE, UpdateMode.CHECK_ONLY.ordinal)
+            .build()
 
-        if (canSelfUpdate(context)) {
-            getSelfUpdate(context, gson)?.let { appUpdatesList.add(it) }
-        }
+        val work = OneTimeWorkRequestBuilder<UpdateWorker>()
+            .addTag(EXPEDITED_UPDATE_WORKER)
+            .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
+            .setInputData(inputData)
+            .build()
 
-        return appUpdatesList.map { Update.fromApp(context, it) }.also {
-            // Cache the updates into the database
-            updateDao.insertUpdates(it)
-        }
+        WorkManager.getInstance(context)
+            .enqueueUniqueWork(EXPEDITED_UPDATE_WORKER, ExistingWorkPolicy.KEEP, work)
     }
 
-    suspend fun deleteUpdate(packageName: String) {
+    /**
+     * Delete update for a package from the database
+     * @param packageName Name of the package
+     */
+    private suspend fun deleteUpdate(packageName: String) {
         updateDao.delete(packageName)
     }
 
-    private suspend fun getFilteredInstalledApps(
-        packageInfoMap: MutableMap<String, PackageInfo>? = null
-    ): List<App> {
-        return withContext(Dispatchers.IO) {
-            val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
-                .using(httpClient)
-
-            (packageInfoMap ?: PackageUtil.getPackageInfoMap(context)).keys.let { packages ->
-                val filtersPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
-
-                appDetailsHelper.getAppByPackageName(filtersPackages)
-                    .filter { it.displayName.isNotEmpty() }
-                    .map { it.isInstalled = true; it }
-            }
-        }
+    /**
+     * Cancels the automated updates check
+     * @see [UpdateWorker]
+     */
+    fun cancelAutomatedCheck() {
+        Log.i(TAG, "Cancelling periodic app updates!")
+        WorkManager.getInstance(context).cancelUniqueWork(UPDATE_WORKER)
     }
 
-    private fun canSelfUpdate(context: Context): Boolean {
-        return !CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID) &&
-                !CertUtil.isAppGalleryApp(context, BuildConfig.APPLICATION_ID)
+    /**
+     * Schedules the automated updates check
+     * @see [UpdateWorker]
+     */
+    fun scheduleAutomatedCheck() {
+        Log.i(TAG,"Scheduling periodic app updates!")
+        WorkManager.getInstance(context)
+            .enqueueUniquePeriodicWork(
+                UPDATE_WORKER,
+                ExistingPeriodicWorkPolicy.KEEP,
+                getAutoUpdateWork()
+            )
     }
 
-    private suspend fun getSelfUpdate(context: Context, gson: Gson): App? {
-        return withContext(Dispatchers.IO) {
-            @Suppress("KotlinConstantConditions") // False-positive for build type always not being release
-            val updateUrl = when (BuildConfig.BUILD_TYPE) {
-                RELEASE -> Constants.UPDATE_URL_STABLE
-                NIGHTLY -> Constants.UPDATE_URL_NIGHTLY
-                else -> {
-                    Log.i(TAG, "Self-updates are not available for this build!")
-                    return@withContext null
-                }
+    /**
+     * Updates the automated updates check to reconsider the new user preferences
+     * @see [UpdateWorker]
+     */
+    fun updateAutomatedCheck() {
+        Log.i(TAG,"Updating periodic app updates!")
+        WorkManager.getInstance(context).updateWork(getAutoUpdateWork())
+    }
+
+    private fun getAutoUpdateWork(): PeriodicWorkRequest {
+        val updateCheckInterval = Preferences.getInteger(
+            context,
+            PREFERENCE_UPDATES_CHECK_INTERVAL,
+            3
+        ).toLong()
+
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.UNMETERED)
+            .setRequiresBatteryNotLow(true)
+
+        if (isMAndAbove()) constraints.setRequiresDeviceIdle(true)
+
+        return PeriodicWorkRequestBuilder<UpdateWorker>(
+            repeatInterval = updateCheckInterval,
+            repeatIntervalTimeUnit = HOURS,
+            flexTimeInterval = 30,
+            flexTimeIntervalUnit = MINUTES
+        ).setConstraints(constraints.build()).build()
+    }
+
+    private suspend fun deleteInvalidUpdates() {
+        updateDao.updates().firstOrNull()?.forEach { update ->
+            if (!update.isInstalled(context) || update.isUpToDate(context)) {
+                deleteUpdate(update.packageName)
             }
-
-            try {
-                val response = httpClient.get(updateUrl, mapOf())
-                val selfUpdate =
-                    gson.fromJson(String(response.responseBytes), SelfUpdate::class.java)
-
-                val isUpdate = when (BuildConfig.BUILD_TYPE) {
-                    RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
-                    NIGHTLY -> selfUpdate.timestamp > BuildConfig.TIMESTAMP
-                    else -> false
-                }
-
-                if (isUpdate) {
-                    if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
-                        if (selfUpdate.fdroidBuild.isNotEmpty()) {
-                            return@withContext SelfUpdate.toApp(selfUpdate, context)
-                        }
-                    } else if (selfUpdate.auroraBuild.isNotEmpty()) {
-                        return@withContext SelfUpdate.toApp(selfUpdate, context)
-                    } else {
-                        Log.e(TAG, "Update file is missing!")
-                        return@withContext null
-                    }
-                }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to check self-updates", exception)
-                return@withContext null
-            }
-
-            Log.i(TAG, "No self-updates found!")
-            return@withContext null
         }
     }
 }

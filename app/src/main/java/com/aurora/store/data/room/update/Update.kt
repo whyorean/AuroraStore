@@ -59,8 +59,8 @@ data class Update(
         }
     }
 
-    fun isSelfUpdate(): Boolean {
-        return packageName == Constants.APP_ID
+    fun isSelfUpdate(context: Context): Boolean {
+        return packageName == context.packageName
     }
 
     fun isInstalled(context: Context): Boolean {

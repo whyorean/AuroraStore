@@ -169,7 +169,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                                 .update(update)
                                 .download(download)
                                 .click { _ ->
-                                    if (update.packageName == Constants.APP_ID) {
+                                    if (update.packageName == requireContext().packageName) {
                                         requireContext().browse(Constants.GITLAB_URL)
                                     } else {
                                         openDetailsFragment(update.packageName)

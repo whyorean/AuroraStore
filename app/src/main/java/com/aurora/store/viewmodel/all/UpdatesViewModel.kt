@@ -51,7 +51,7 @@ class UpdatesViewModel @Inject constructor(
         _fetchingUpdates.value = true
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                updateHelper.checkUpdates()
+                updateHelper.checkUpdatesNow()
             } catch (exception: Exception) {
                 Log.d(TAG, "Failed to get updates", exception)
             }

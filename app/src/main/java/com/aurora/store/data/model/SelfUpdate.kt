@@ -53,7 +53,7 @@ data class SelfUpdate(
             }
 
             return App(
-                packageName = Constants.APP_ID,
+                packageName = context.packageName,
                 versionCode = selfUpdate.versionCode,
                 versionName = selfUpdate.versionName,
                 changes = selfUpdate.changelog,
@@ -64,7 +64,7 @@ data class SelfUpdate(
                 iconArtwork = Artwork(url = "$BASE_URL/$icon"),
                 fileList = mutableListOf(
                     File(
-                        name = "${Constants.APP_ID}.apk",
+                        name = "${context.packageName}.apk",
                         url = downloadURL,
                         size = selfUpdate.size
                     )

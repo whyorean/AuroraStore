@@ -23,8 +23,6 @@ object Constants {
 
     const val PARCEL_DOWNLOAD = "PARCEL_DOWNLOAD"
 
-    const val APP_ID = "com.aurora.store"
-
     const val URL_TOS = "https://play.google.com/about/play-terms/"
     const val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/LICENSE"
     const val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"

@@ -7,13 +7,19 @@ import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.toast
 import com.aurora.store.PermissionType
 import com.aurora.store.R
+import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.providers.PermissionProvider
-import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.databinding.SheetDozeWarningBinding
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.save
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DozeWarningSheet : BaseDialogSheet<SheetDozeWarningBinding>() {
+
+    @Inject
+    lateinit var updateHelper: UpdateHelper
 
     private val args: DozeWarningSheetArgs by navArgs()
 
@@ -26,7 +32,7 @@ class DozeWarningSheet : BaseDialogSheet<SheetDozeWarningBinding>() {
             if (requireContext().isIgnoringBatteryOptimizations()) {
                 if (args.enableAutoUpdate) {
                     requireContext().save(PREFERENCE_UPDATES_AUTO, 2)
-                    UpdateWorker.scheduleAutomatedCheck(requireContext())
+                    updateHelper.scheduleAutomatedCheck()
                 }
                 toast(R.string.toast_permission_granted)
                 activity?.recreate()

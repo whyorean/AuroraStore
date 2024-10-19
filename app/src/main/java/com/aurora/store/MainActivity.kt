@@ -34,8 +34,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.aurora.store.data.event.BusEvent
-import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.databinding.ActivityMainBinding
@@ -149,22 +147,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Updates
-        lifecycleScope.launch {
-            AuroraApp.events.installerEvent.collect {
-                when (it) {
-                    is InstallerEvent.Installed -> updateHelper.deleteUpdate(it.packageName)
-                    is InstallerEvent.Uninstalled -> updateHelper.deleteUpdate(it.packageName)
-                    else -> {}
-                }
-            }
-        }
-
-        lifecycleScope.launch {
-            AuroraApp.events.busEvent.collect {
-                if (it is BusEvent.Blacklisted) updateHelper.deleteUpdate(it.packageName)
-            }
-        }
-
         lifecycleScope.launch {
             updateHelper.updates.collectLatest { list ->
                 B.navView.getOrCreateBadge(R.id.updatesFragment).apply {
