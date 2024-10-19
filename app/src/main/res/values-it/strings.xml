@@ -405,4 +405,10 @@
     <string name="notification_channel_export">Notifica di esportazione dell’applicazione</string>
     <string name="notification_channel_install">Notifica di installazione</string>
     <string name="notification_channel_downloads">Notifica di scaricamento</string>
+    <string name="status_queued">In coda</string>
+    <string name="status_downloading">Scaricamento in corso</string>
+    <string name="status_failed">Fallito</string>
+    <string name="status_cancelled">Annullato</string>
+    <string name="status_completed">Completato</string>
+    <string name="status_unavailable">Non disponibile</string>
 </resources>
