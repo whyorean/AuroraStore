@@ -416,4 +416,7 @@
     <string name="status_unavailable">No disponible</string>
     <string name="status_queued">En espera</string>
     <string name="status_downloading">Descargando</string>
+    <string name="authentication_required_title">Autenticación obligatoria</string>
+    <string name="authentication_required_unarchive">¡Por favor, inicie sesión en su cuenta de Google Play para descomprimir la aplicación!</string>
+    <string name="notification_channel_account">Notificación relacionada con la cuenta</string>
 </resources>
