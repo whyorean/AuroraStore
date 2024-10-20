@@ -23,6 +23,7 @@ import android.content.Intent
 import android.net.UrlQuerySanitizer
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -82,10 +83,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         attachActions()
 
         // Show anonymous logins if we have dispenser URL
-        binding.btnAnonymous.visibility = if (viewModel.authProvider.dispenserURL.isNullOrBlank())
-            View.GONE
-        else
-            View.VISIBLE
+        binding.btnAnonymous.isVisible = !viewModel.authProvider.dispenserURL.isNullOrBlank()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.authState.collectLatest {
