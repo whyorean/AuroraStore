@@ -407,4 +407,13 @@
     <string name="export_app_summary_success">App bundle のエクスポートに成功しました</string>
     <string name="export_app_summary_fail">App bundle のエクスポートに失敗しました</string>
     <string name="action_logout_confirmation_title">ログアウトしますか？</string>
+    <string name="status_downloading">ダウンロード中</string>
+    <string name="status_failed">失敗</string>
+    <string name="status_cancelled">キャンセル</string>
+    <string name="status_completed">完了</string>
+    <string name="status_queued">キューに追加</string>
+    <string name="status_unavailable">利用不可</string>
+    <string name="notification_channel_export">アプリエクスポート通知</string>
+    <string name="notification_channel_install">インストール通知</string>
+    <string name="notification_channel_downloads">ダウンロード通知</string>
 </resources>

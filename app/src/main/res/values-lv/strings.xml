@@ -65,7 +65,7 @@
     <string name="details_beta">Beta lietotne</string>
     <string name="details_beta_subscribed">Jūs esat Beta testētājs</string>
     <string name="menu_license">Licence</string>
-    <string name="action_filter_paid_apps">Apmaksāts</string>
+    <string name="action_filter_paid_apps">Nopirkta</string>
     <string name="action_finish">Pabeigt</string>
     <string name="action_pending">Gaida</string>
     <string name="details_changelog">Izmaiņas</string>
@@ -77,7 +77,7 @@
     <string name="details_no_ads">Nav reklāmu</string>
     <string name="details_no_permission">Nav atļauju</string>
     <string name="details_no_updates">Nav atjauninājumu</string>
-    <string name="details_paid">Maksāts</string>
+    <string name="details_paid">Nopirkta</string>
     <string name="details_permission">Atļauja</string>
     <string name="details_privacy">Privātums</string>
     <string name="details_ratings">Vērtējumi un atsauksmes</string>

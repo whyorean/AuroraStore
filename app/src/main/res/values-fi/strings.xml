@@ -321,4 +321,21 @@
     <string name="download_clear_finished">Poista valmistuneet</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>
     <string name="action_manage">Hallinnoi</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="status_cancelled">Peruutettu</string>
+    <string name="status_unavailable">Ei käytettävissä</string>
+    <string name="status_queued">Jonossa</string>
+    <string name="status_downloading">Ladataan</string>
+    <string name="status_failed">Epäonnistunut</string>
+    <string name="status_completed">Valmistettu</string>
+    <string name="action_favourite">Suosikkeihin</string>
+    <string name="details_no_favourites">Suosikkisovelluksia ei löytynyt</string>
+    <string name="action_request_analysis">Pyydä uutta analyysiä</string>
+    <string name="details_data_safety_title">Tietoturvallisuus</string>
+    <string name="details_data_safety_subtitle">Kehittäjän ilmoittamat tietosuoja- ja turvallisuuskäytännöt</string>
+    <string name="check_updates">Tarkista päivitykset</string>
+    <string name="action_uninstall_success">Onnistuneesti asentamaton</string>
+    <string name="notification_channel_export">Sovelluksen vienti-ilmoitus</string>
+    <string name="action_logout_confirmation_message">Oletko varma, että haluat kirjautua ulos?</string>
+    <string name="force_restart_summary">Aurora Store on aloitettava uudelleen äskettäin muutettujen asetusten soveltamiseksi</string>
 </resources>

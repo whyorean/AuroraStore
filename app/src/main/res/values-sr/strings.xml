@@ -444,4 +444,10 @@
     <string name="notification_channel_export">Обавештење о извозу апликације</string>
     <string name="notification_channel_install">Обавештење о инсталирању</string>
     <string name="notification_channel_downloads">Обавештење о преузимању</string>
+    <string name="status_queued">Заказано</string>
+    <string name="status_unavailable">Недоступно</string>
+    <string name="status_downloading">Преузимање</string>
+    <string name="status_failed">Неуспешно</string>
+    <string name="status_cancelled">Отказано</string>
+    <string name="status_completed">Завршено</string>
 </resources>
