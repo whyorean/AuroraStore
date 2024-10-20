@@ -416,4 +416,7 @@
     <string name="status_downloading">Mengunduh</string>
     <string name="status_failed">Gagal</string>
     <string name="status_unavailable">Tidak tersedia</string>
+    <string name="authentication_required_title">Autentikasi diperlukan</string>
+    <string name="notification_channel_account">Notifikasi berkaitan dengan akun</string>
+    <string name="authentication_required_unarchive">Silakan masuk ke akun Google Play Anda untuk membuka arsip aplikasi!</string>
 </resources>
