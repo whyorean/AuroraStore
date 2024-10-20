@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.hilt.work.HiltWorker
-import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import com.aurora.Constants
@@ -38,11 +37,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * A worker to check for updates for installed apps based on
+ * A worker to check for updates for installed apps based on saved authentication data,
  * filters and the auto-updates mode selected by the user. The repeat interval
  * is configurable by the user, defaulting to 3 hours with a flex time of 30 minutes.
- * 
+ *
  * Avoid using this worker directly and prefer using [UpdateHelper] instead.
+ * @see AuthWorker
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
@@ -54,7 +54,7 @@ class UpdateWorker @AssistedInject constructor(
     private val authProvider: AuthProvider,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams) {
+) : AuthWorker(authProvider, appContext, workerParams) {
 
     private val TAG = UpdateWorker::class.java.simpleName
 
@@ -72,6 +72,8 @@ class UpdateWorker @AssistedInject constructor(
             buildType != BuildType.DEBUG
 
     override suspend fun doWork(): Result {
+        super.doWork()
+
         Log.i(TAG, "Checking for app updates")
         val updateMode = UpdateMode.entries[inputData.getInt(
             UpdateHelper.UPDATE_MODE,
