@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.core.content.getSystemService
 import androidx.hilt.work.HiltWorker
-import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
 import androidx.work.WorkInfo.Companion.STOP_REASON_USER
@@ -64,7 +63,7 @@ class DownloadWorker @AssistedInject constructor(
     private val httpClient: IHttpClient,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams) {
+) : AuthWorker(authProvider, appContext, workerParams) {
 
     private lateinit var download: Download
     private lateinit var notificationManager: NotificationManager
@@ -81,6 +80,8 @@ class DownloadWorker @AssistedInject constructor(
     private val TAG = DownloadWorker::class.java.simpleName
 
     override suspend fun doWork(): Result {
+        super.doWork()
+
         notificationManager = appContext.getSystemService<NotificationManager>()!!
 
         // Bail out immediately if authData is not valid
