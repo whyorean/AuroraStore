@@ -57,7 +57,10 @@ class UpdateHelper @Inject constructor(
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
 
-    init {
+    /**
+     * Deletes invalid updates from database and starts observing events
+     */
+    fun init() {
         AuroraApp.scope.launch {
             deleteInvalidUpdates()
         }.invokeOnCompletion {
