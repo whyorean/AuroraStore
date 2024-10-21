@@ -375,10 +375,10 @@
     <string name="remove_dispenser_title">הסר את המתקן</string>
     <string name="no_dispensers_available">אין מתקנים זמינים</string>
     <string name="add_dispenser_hint">כתובת אתר של מתקן</string>
-    <string name="add">להוסיף</string>
+    <string name="add">הוסף</string>
     <string name="add_dispenser_summary">הוסף מתקן אסימונים לחנות אורורה. מכשירי אסימונים מספקים אישורי חשבון לחנות Aurora לצורך כניסה אנונימית.</string>
     <string name="remove_dispenser_summary">האם ברצונך להסיר את המתקן \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
-    <string name="remove">להסיר</string>
+    <string name="remove">הסר</string>
     <string name="pref_clear_device_owner_desc">פעולה זו תבטל את ההרשאה של מתקין ההפעלה להתקין אפליקציה בשקט. להמשיך בניקוי הבעלות על המכשיר?</string>
     <string name="manage_account">נהל את החשבון שלך</string>
     <string name="add_dispenser_error">כתובת אתר לא חוקית</string>
@@ -407,4 +407,16 @@
     <string name="toast_fav_import_failed">ייבוא המועדפים נכשל!</string>
     <string name="action_logout_confirmation_message">האם אתה בטוח שאתה רוצה להתנתק?</string>
     <string name="check_updates">חפש עדכונים</string>
+    <string name="status_failed">תקלה</string>
+    <string name="status_completed">הושלם</string>
+    <string name="status_queued">בתור</string>
+    <string name="status_unavailable">לא זמין</string>
+    <string name="authentication_required_unarchive">אנא היכנס לחשבון Google Play שלך כדי להסיר את האפליקציה מהארכיון!</string>
+    <string name="status_downloading">מוריד</string>
+    <string name="status_cancelled">בוטל</string>
+    <string name="authentication_required_title">נדרש אימות</string>
+    <string name="notification_channel_account">התראות אודות החשבון</string>
+    <string name="notification_channel_export">התראת ייצוא אפליקציה</string>
+    <string name="notification_channel_install">התראת התקנה</string>
+    <string name="notification_channel_downloads">התראת הורדה</string>
 </resources>
