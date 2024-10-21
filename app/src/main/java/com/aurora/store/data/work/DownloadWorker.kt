@@ -66,9 +66,11 @@ class DownloadWorker @AssistedInject constructor(
 ) : AuthWorker(authProvider, appContext, workerParams) {
 
     private lateinit var download: Download
-    private lateinit var notificationManager: NotificationManager
     private lateinit var icon: Bitmap
-    private lateinit var purchaseHelper: PurchaseHelper
+
+    private val notificationManager = appContext.getSystemService<NotificationManager>()!!
+    private val purchaseHelper: PurchaseHelper
+        get() = PurchaseHelper(authProvider.authData!!).using(httpClient)
 
     private val NOTIFICATION_ID = 200
 
@@ -81,8 +83,6 @@ class DownloadWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         super.doWork()
-
-        notificationManager = appContext.getSystemService<NotificationManager>()!!
 
         // Bail out immediately if authData is not valid
         if (!authProvider.isSavedAuthDataValid()) {
@@ -109,10 +109,6 @@ class DownloadWorker @AssistedInject constructor(
         // Set work/service to foreground on < Android 12.0
         setForeground(getForegroundInfo())
 
-        // Purchase the app (free apps needs to be purchased too)
-        purchaseHelper = PurchaseHelper(authProvider.authData!!)
-            .using(httpClient)
-
         // Bail out if file list is empty
         download.fileList = download.fileList.ifEmpty {
             purchase(download.packageName, download.versionCode, download.offerType)
@@ -129,9 +125,9 @@ class DownloadWorker @AssistedInject constructor(
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
+        // Purchase the app (free apps needs to be purchased too)
         val requestList = mutableListOf<Request>()
         if (download.sharedLibs.isNotEmpty()) {
-            // Purchase and append shared libs data to existing request
             download.sharedLibs.forEach {
                 PathUtil.getLibDownloadDir(
                     appContext,
