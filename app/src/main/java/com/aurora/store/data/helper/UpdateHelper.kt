@@ -11,6 +11,7 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.aurora.extensions.isMAndAbove
 import com.aurora.store.AuroraApp
@@ -56,6 +57,11 @@ class UpdateHelper @Inject constructor(
     val updates = updateDao.updates()
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
+
+    val isCheckingUpdates = WorkManager.getInstance(context)
+        .getWorkInfosForUniqueWorkFlow(EXPEDITED_UPDATE_WORKER)
+        .map { list -> !list.all { it.state.isFinished } }
+        .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), false)
 
     /**
      * Deletes invalid updates from database and starts observing events
