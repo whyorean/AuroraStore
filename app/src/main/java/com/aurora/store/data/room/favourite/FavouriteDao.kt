@@ -1,4 +1,4 @@
-package com.aurora.store.data.room.favourites
+package com.aurora.store.data.room.favourite
 
 import androidx.room.Dao
 import androidx.room.Insert

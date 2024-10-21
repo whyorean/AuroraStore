@@ -6,7 +6,7 @@ import com.aurora.store.data.room.MigrationHelper.MIGRATION_1_4
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_3_4
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
-import com.aurora.store.data.room.favourites.FavouriteDao
+import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.update.UpdateDao
 import dagger.Module
 import dagger.Provides

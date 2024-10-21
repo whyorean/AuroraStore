@@ -6,8 +6,8 @@ import androidx.room.TypeConverters
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
-import com.aurora.store.data.room.favourites.Favourite
-import com.aurora.store.data.room.favourites.FavouriteDao
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao
 

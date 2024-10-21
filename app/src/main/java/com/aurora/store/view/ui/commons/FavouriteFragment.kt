@@ -28,7 +28,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.data.room.favourites.Favourite
+import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.databinding.FragmentFavouriteBinding
 import com.aurora.store.view.epoxy.views.FavouriteViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_

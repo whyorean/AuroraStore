@@ -23,9 +23,9 @@ import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.store.data.room.favourites.Favourite
-import com.aurora.store.data.room.favourites.FavouriteDao
-import com.aurora.store.data.room.favourites.ImportExport
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.FavouriteDao
+import com.aurora.store.data.room.favourite.ImportExport
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel

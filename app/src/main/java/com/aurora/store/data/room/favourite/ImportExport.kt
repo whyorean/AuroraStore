@@ -1,4 +1,4 @@
-package com.aurora.store.data.room.favourites
+package com.aurora.store.data.room.favourite
 
 import com.aurora.store.BuildConfig
 

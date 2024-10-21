@@ -1,4 +1,4 @@
-package com.aurora.store.data.room.favourites
+package com.aurora.store.data.room.favourite
 
 import android.os.Parcelable
 import androidx.room.Entity

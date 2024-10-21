@@ -14,8 +14,8 @@ import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.room.favourites.Favourite
-import com.aurora.store.data.room.favourites.FavouriteDao
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.helper.DownloadHelper
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
