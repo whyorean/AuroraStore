@@ -416,4 +416,7 @@
     <string name="notification_channel_export">Lietotnes izgūšanas paziņojums</string>
     <string name="notification_channel_install">Uzstādīšanas paziņojums</string>
     <string name="notification_channel_downloads">Lejupielāžu paziņojums</string>
+    <string name="notification_channel_account">Ar kontu saistīts paziņojums</string>
+    <string name="authentication_required_title">Nepieciešama autentificēšanās</string>
+    <string name="authentication_required_unarchive">Lūgums pieteikties savā Google Play kontā, lai atceltu lietotnes arhivēšanu.</string>
 </resources>
