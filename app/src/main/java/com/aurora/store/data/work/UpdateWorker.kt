@@ -35,6 +35,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.Locale
 
 /**
  * A worker to check for updates for installed apps based on saved authentication data,
@@ -91,7 +92,10 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         try {
-            val updates = checkUpdates()
+            val updates = checkUpdates().also {
+                // Cache the updates into the database
+                updateDao.insertUpdates(it)
+            }
 
             if (updates.isEmpty()) {
                 Log.i(TAG, "No updates found!")
@@ -158,10 +162,8 @@ class UpdateWorker @AssistedInject constructor(
 
             if (canSelfUpdate) getSelfUpdate()?.let { updates.add(it) }
 
-            return@withContext updates.map { Update.fromApp(appContext, it) }.also {
-                // Cache the updates into the database
-                updateDao.insertUpdates(it)
-            }
+            return@withContext updates.map { Update.fromApp(appContext, it) }
+                .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
         }
     }
 
