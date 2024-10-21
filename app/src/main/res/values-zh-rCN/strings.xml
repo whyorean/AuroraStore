@@ -416,4 +416,7 @@
     <string name="status_downloading">下载中</string>
     <string name="status_failed">失败了</string>
     <string name="status_queued">已加入队列</string>
+    <string name="notification_channel_account">账户相关的通知</string>
+    <string name="authentication_required_title">需要身份验证</string>
+    <string name="authentication_required_unarchive">请登录 Google Play 账户取消存档该应用！</string>
 </resources>
