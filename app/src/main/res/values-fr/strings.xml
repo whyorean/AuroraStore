@@ -412,4 +412,7 @@
     <string name="status_cancelled">Annulé</string>
     <string name="status_failed">Échoué</string>
     <string name="status_unavailable">Indisponible</string>
+    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver cette application</string>
+    <string name="notification_channel_account">Notification liée au compte</string>
+    <string name="authentication_required_title">Identification requise</string>
 </resources>

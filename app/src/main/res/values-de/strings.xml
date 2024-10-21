@@ -416,4 +416,7 @@
     <string name="status_failed">Fehlgeschlagen</string>
     <string name="status_queued">In der Warteschlange</string>
     <string name="status_cancelled">Abgebrochen</string>
+    <string name="authentication_required_unarchive">Bitte melde dich bei deinem Google Play-Konto an, um die App zu entpacken!</string>
+    <string name="notification_channel_account">Kontobezogene Benachrichtigung</string>
+    <string name="authentication_required_title">Authentifizierung erforderlich</string>
 </resources>

@@ -405,4 +405,7 @@
     <string name="notification_channel_install">Shënim instalimi</string>
     <string name="notification_channel_downloads">Shënim rreth shkarkimesh</string>
     <string name="export_app_title">Eksportues Kartelash</string>
+    <string name="authentication_required_unarchive">Që të çarkivoni aplikacionin, ju lutemi, bëni hyrjen në llogarinë tuaj Google Play!</string>
+    <string name="notification_channel_account">Njoftim lidhur me llogari</string>
+    <string name="authentication_required_title">Lyp mirëfilltësim</string>
 </resources>

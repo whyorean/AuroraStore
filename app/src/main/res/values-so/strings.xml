@@ -236,4 +236,6 @@
     <string name="about_paypal_summary">Ugu deeq xaga PayPal</string>
     <string name="about_paypal">PayPal</string>
     <string name="about_libera_summary">Noqo taageere xaga Liberapay</string>
+    <string name="about_wiki_title">wiki</string>
+    <string name="about_wiki_summary">Ka hel jawaabaha su\'aalaha inta badan la is weydiiyo (F.A.Q.), tallaabooyinka xallinta khaladdadka iyo waxyaabo kale.</string>
 </resources>

@@ -416,4 +416,7 @@
     <string name="status_cancelled">Zrušené</string>
     <string name="status_completed">Dokončené</string>
     <string name="status_unavailable">Nedostupné</string>
+    <string name="notification_channel_account">Upozornenie týkajúce sa účtu</string>
+    <string name="authentication_required_title">Vyžaduje sa overenie</string>
+    <string name="authentication_required_unarchive">Ak chcete zrušiť archiváciu aplikácie, prihláste sa do svojho účtu Google Play!</string>
 </resources>
