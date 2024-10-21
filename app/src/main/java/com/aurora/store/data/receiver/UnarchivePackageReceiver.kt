@@ -43,12 +43,12 @@ class UnarchivePackageReceiver: BroadcastReceiver() {
             Log.i(TAG, "Received request to unarchive $packageName")
 
             AuroraApp.scope.launch(Dispatchers.IO) {
-                if (!authProvider.isSavedAuthDataValid() || !AccountProvider.isLoggedIn(context)) {
+                if (!AccountProvider.isLoggedIn(context)) {
                     Log.e(TAG, "Failed to authenticate user!")
                     with(context.getSystemService<NotificationManager>()!!) {
                         notify(
                             packageName.hashCode(),
-                            NotificationUtil.getAuthDataExpiredNotification(context, packageName)
+                            NotificationUtil.getUnarchiveAuthNotification(context, packageName)
                         )
                     }
                     return@launch

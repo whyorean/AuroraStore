@@ -273,7 +273,7 @@ object NotificationUtil {
             .build()
     }
 
-    fun getAuthDataExpiredNotification(context: Context, packageName: String): Notification {
+    fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
             .setSmallIcon(R.drawable.ic_account)
             .setContentTitle(context.getString(R.string.authentication_required_title))
