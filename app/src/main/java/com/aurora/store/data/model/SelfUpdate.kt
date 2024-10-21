@@ -23,6 +23,7 @@ import android.content.Context
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.gplayapi.data.models.EncodedCertificateSet
 import com.aurora.gplayapi.data.models.File
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
@@ -70,7 +71,12 @@ data class SelfUpdate(
                     )
                 ),
                 isFree = true,
-                isInstalled = true
+                isInstalled = true,
+                certificateSetList = CertUtil.getEncodedCertificateHashes(
+                    context, context.packageName
+                ).map {
+                    EncodedCertificateSet(certificateSet = it, sha256 = String())
+                }.toMutableList()
             )
         }
     }
