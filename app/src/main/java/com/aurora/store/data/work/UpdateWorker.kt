@@ -18,6 +18,7 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.helper.UpdateHelper.Companion.UPDATE_SHOULD_NOTIFY
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.model.UpdateMode
@@ -68,6 +69,7 @@ class UpdateWorker @AssistedInject constructor(
         else -> BuildType.DEBUG
     }
 
+    private val shouldNotify = inputData.getBoolean(UPDATE_SHOULD_NOTIFY, true)
     private val canSelfUpdate = !CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID) &&
             !CertUtil.isAppGalleryApp(appContext, BuildConfig.APPLICATION_ID) &&
             buildType != BuildType.DEBUG
@@ -217,6 +219,7 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     private fun notifyUpdates(updates: List<Update>) {
+        if (!shouldNotify) return
         with(appContext.getSystemService<NotificationManager>()!!) {
             notify(
                 notificationID,
