@@ -25,12 +25,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.SeekBarPreference
+import androidx.preference.SwitchPreferenceCompat
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -66,6 +68,12 @@ class UpdatesPreference : BasePreferenceFragment() {
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
             ?.setOnPreferenceChangeListener { _, _ ->
                 updateHelper.updateAutomatedCheck()
+                true
+            }
+
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_UPDATES_EXTENDED)
+            ?.setOnPreferenceChangeListener { _, _ ->
+                updateHelper.checkUpdatesNow()
                 true
             }
     }
