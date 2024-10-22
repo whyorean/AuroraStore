@@ -236,7 +236,7 @@ object PackageUtil {
             Preferences.PREFERENCE_UPDATES_EXTENDED
         )
 
-        packageInfoList = packageInfoList.filter { it.isValidApp() }
+        packageInfoList = packageInfoList.filter { it.isValidApp(packageManager) }
 
         /*Filter google apps*/
         if (isGoogleFilterEnabled) {

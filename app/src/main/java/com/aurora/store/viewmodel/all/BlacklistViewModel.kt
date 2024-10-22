@@ -58,11 +58,7 @@ class BlacklistViewModel @Inject constructor(
             supervisorScope {
                 try {
                     _packages.value = context.packageManager.getInstalledPackages(0)
-                        .filter { it.isValidApp() }
-                        .filter {
-                            // Most core AOSP system apps use their package name as label
-                            it.applicationInfo!!.loadLabel(context.packageManager) != it.packageName
-                        }
+                        .filter { it.isValidApp(context.packageManager) }
                         .sortedBy {
                             it.applicationInfo!!.loadLabel(context.packageManager).toString()
                                 .lowercase(Locale.getDefault())
