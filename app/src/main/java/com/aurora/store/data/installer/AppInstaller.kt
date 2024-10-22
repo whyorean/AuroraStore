@@ -39,6 +39,7 @@ import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.isVAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
@@ -69,15 +70,6 @@ class AppInstaller @Inject constructor(
         const val EXTRA_PACKAGE_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_PACKAGE_NAME"
         const val EXTRA_VERSION_CODE = "com.aurora.store.data.installer.AppInstaller.EXTRA_VERSION_CODE"
         const val EXTRA_DISPLAY_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_DISPLAY_NAME"
-
-        enum class Installer {
-            SESSION,
-            NATIVE,
-            ROOT,
-            SERVICE,
-            AM,
-            SHIZUKU
-        }
 
         fun getCurrentInstaller(context: Context): Installer {
             return Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
