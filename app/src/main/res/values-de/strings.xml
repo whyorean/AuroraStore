@@ -395,7 +395,7 @@
     <string name="action_logout_confirmation_message">Möchtest du dich wirklich abmelden?</string>
     <string name="pref_network_proxy_url_message">Gib eine gültige Proxy-URL ein, um alle Daten durch den Proxy zu leiten.</string>
     <string name="export_app_summary_success">App-Bundle erfolgreich exportiert</string>
-    <string name="check_updates">Auf Updates überprüfen</string>
+    <string name="check_updates">Nach Updates suchen</string>
     <string name="onboarding_permission_installer_legacy_desc">Installation von Apps aus unbekannten Quellen zulassen</string>
     <string name="item_required">Erforderlich</string>
     <string name="item_optional">Optional</string>
@@ -419,4 +419,5 @@
     <string name="authentication_required_unarchive">Bitte melde dich bei deinem Google Play-Konto an, um die App zu entpacken!</string>
     <string name="notification_channel_account">Kontobezogene Benachrichtigung</string>
     <string name="authentication_required_title">Authentifizierung erforderlich</string>
+    <string name="checking_updates">Suche nach Updates</string>
 </resources>
