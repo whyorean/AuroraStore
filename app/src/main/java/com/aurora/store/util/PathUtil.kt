@@ -95,10 +95,6 @@ object PathUtil {
         return File(getObbDownloadDir(packageName), file.name)
     }
 
-    fun needsStorageManagerPerm(fileList: List<GPlayFile>): Boolean {
-        return fileList.any { it.type == GPlayFile.FileType.OBB || it.type == GPlayFile.FileType.PATCH }
-    }
-
     fun getSpoofDirectory(context: Context): File {
         return File(context.filesDir, SPOOF)
     }

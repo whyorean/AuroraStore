@@ -45,6 +45,7 @@ import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
+import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
@@ -582,7 +583,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         updateActionState(State.PROGRESS)
 
-        if (PathUtil.needsStorageManagerPerm(app.fileList)) {
+        if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
             } else {

@@ -26,6 +26,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
+import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.PermissionType
 import com.aurora.store.R
@@ -34,7 +35,6 @@ import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
-import com.aurora.store.util.PathUtil
 import com.aurora.store.view.epoxy.views.UpdateHeaderViewModel_
 import com.aurora.store.view.epoxy.views.app.AppUpdateViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
@@ -156,7 +156,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                                 if (viewModel.updateAllEnqueued) {
                                     cancelAll()
                                 } else {
-                                    appList.keys.forEach { updateSingle(it, true) }
+                                    updateAll()
                                 }
                                 requestModelBuild()
                             }
@@ -188,10 +188,8 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         }
     }
 
-    private fun updateSingle(update: Update, updateAll: Boolean = false) {
-        viewModel.updateAllEnqueued = updateAll
-
-        if (PathUtil.needsStorageManagerPerm(update.fileList)) {
+    private fun updateSingle(update: Update) {
+        if (update.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(update)
             } else {
@@ -199,6 +197,19 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             }
         } else {
             viewModel.download(update)
+        }
+    }
+
+    private fun updateAll() {
+        viewModel.updateAllEnqueued = true
+        if (viewModel.updates.value?.any { it.fileList.requiresObbDir() } == true) {
+            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+                viewModel.downloadAll()
+            } else {
+                permissionProvider.request(PermissionType.STORAGE_MANAGER)
+            }
+        } else {
+            viewModel.downloadAll()
         }
     }
 

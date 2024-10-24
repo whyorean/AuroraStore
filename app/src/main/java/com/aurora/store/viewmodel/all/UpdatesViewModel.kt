@@ -49,6 +49,12 @@ class UpdatesViewModel @Inject constructor(
         viewModelScope.launch { downloadHelper.enqueueUpdate(update) }
     }
 
+    fun downloadAll() {
+        viewModelScope.launch {
+            updates.value?.forEach { downloadHelper.enqueueUpdate(it) }
+        }
+    }
+
     fun cancelDownload(packageName: String) {
         viewModelScope.launch { downloadHelper.cancelDownload(packageName) }
     }
