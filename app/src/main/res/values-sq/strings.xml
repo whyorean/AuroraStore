@@ -408,4 +408,5 @@
     <string name="authentication_required_unarchive">Që të çarkivoni aplikacionin, ju lutemi, bëni hyrjen në llogarinë tuaj Google Play!</string>
     <string name="notification_channel_account">Njoftim lidhur me llogari</string>
     <string name="authentication_required_title">Lyp mirëfilltësim</string>
+    <string name="checking_updates">Po kontrollohet për përditësime</string>
 </resources>
