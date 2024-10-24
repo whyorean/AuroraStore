@@ -19,8 +19,6 @@
 
 package com.aurora.store.data.model
 
-import com.aurora.store.PermissionType
-
 data class Permission(
     val type: PermissionType,
     val title: String,

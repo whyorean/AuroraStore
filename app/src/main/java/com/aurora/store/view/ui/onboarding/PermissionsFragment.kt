@@ -27,10 +27,9 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
-import com.aurora.store.PermissionType
+import com.aurora.store.data.model.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
-import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
 import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
@@ -39,26 +38,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>() {
-    private lateinit var permissionProvider: PermissionProvider
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        permissionProvider = PermissionProvider(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateController()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        updateController()
-    }
-
-    override fun onDestroy() {
-        permissionProvider.unregister()
-        super.onDestroy()
     }
 
     private fun permissionList(): List<Permission> {
@@ -162,6 +145,10 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             .id(permission.type.name)
             .permission(permission)
             .isGranted(permissionProvider.isGranted(permission.type))
-            .click { _ -> permissionProvider.request(permission.type) }
+            .click { _ ->
+                permissionProvider.request(permission.type) {
+                    if (it) updateController()
+                }
+            }
     }
 }

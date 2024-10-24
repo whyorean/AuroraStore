@@ -1,4 +1,4 @@
-package com.aurora.store
+package com.aurora.store.data.model
 
 enum class PermissionType {
     EXTERNAL_STORAGE,

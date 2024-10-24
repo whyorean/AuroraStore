@@ -28,10 +28,9 @@ import com.aurora.Constants
 import com.aurora.extensions.browse
 import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MobileNavigationDirections
-import com.aurora.store.PermissionType
+import com.aurora.store.data.model.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.model.MinimalApp
-import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
@@ -49,14 +48,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
-    private lateinit var permissionProvider: PermissionProvider
-
     private val viewModel: UpdatesViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        permissionProvider = PermissionProvider(this)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -106,11 +98,6 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         binding.searchFab.setOnClickListener {
             findNavController().navigate(R.id.searchSuggestionFragment)
         }
-    }
-
-    override fun onDestroy() {
-        permissionProvider.unregister()
-        super.onDestroy()
     }
 
     private fun updateController(appList: Map<Update, Download?>?) {
@@ -193,7 +180,9 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(update)
             } else {
-                permissionProvider.request(PermissionType.STORAGE_MANAGER)
+                permissionProvider.request(PermissionType.STORAGE_MANAGER) {
+                    if (it) viewModel.download(update)
+                }
             }
         } else {
             viewModel.download(update)
@@ -206,7 +195,9 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.downloadAll()
             } else {
-                permissionProvider.request(PermissionType.STORAGE_MANAGER)
+                permissionProvider.request(PermissionType.STORAGE_MANAGER) {
+                    if (it) viewModel.downloadAll()
+                }
             }
         } else {
             viewModel.downloadAll()

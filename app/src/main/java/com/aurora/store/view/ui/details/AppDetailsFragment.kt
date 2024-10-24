@@ -51,14 +51,13 @@ import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.File
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.store.AppStreamStash
 import com.aurora.store.AuroraApp
-import com.aurora.store.PermissionType
+import com.aurora.store.data.model.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
@@ -69,12 +68,10 @@ import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.view.custom.RatingView
@@ -107,10 +104,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 
-
-    private lateinit var permissionProvider: PermissionProvider
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
-
     private lateinit var app: App
 
     private var streamBundle: StreamBundle? = StreamBundle()
@@ -178,11 +172,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             }
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        permissionProvider = PermissionProvider(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -397,11 +386,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         super.onResume()
     }
 
-    override fun onDestroy() {
-        permissionProvider.unregister()
-        super.onDestroy()
-    }
-
     private fun attachActions() {
         flip(0)
         checkAndSetupInstall()
@@ -587,7 +571,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
             } else {
-                permissionProvider.request(PermissionType.STORAGE_MANAGER)
+                permissionProvider.request(PermissionType.STORAGE_MANAGER) {
+                    if (it) viewModel.download(app)
+                }
             }
         } else {
             viewModel.download(app)
@@ -667,15 +653,25 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     btn.addOnClickListener {
                         if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
-                            permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS)
+                            permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS) {
+                                if (it) {
+                                    btn.setText(R.string.download_metadata)
+                                    startDownload()
+                                }
+                            }
                         } else if (authProvider.isAnonymous && !app.isFree) {
                             toast(R.string.toast_purchase_blocked)
                         } else if (app.versionCode == 0) {
                             toast(R.string.toast_app_unavailable)
                         } else {
-                            val hasOBB = app.fileList.any { it.type == File.FileType.OBB }
-                            if (hasOBB && !PathUtil.canReadWriteOBB()) {
-                                permissionProvider.request(PermissionType.STORAGE_MANAGER)
+                            if (app.fileList.requiresObbDir() && permissionProvider.isGranted(
+                                    PermissionType.STORAGE_MANAGER)) {
+                                permissionProvider.request(PermissionType.STORAGE_MANAGER) {
+                                    if (it) {
+                                        btn.setText(R.string.download_metadata)
+                                        startDownload()
+                                    }
+                                }
                             } else {
                                 btn.setText(R.string.download_metadata)
                                 startDownload()

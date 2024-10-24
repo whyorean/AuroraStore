@@ -25,6 +25,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import com.aurora.store.data.providers.PermissionProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.lang.reflect.ParameterizedType
 
@@ -32,6 +33,13 @@ abstract class BaseDialogSheet<ViewBindingType : ViewBinding> : BottomSheetDialo
 
     private var _binding: ViewBindingType? = null
     protected val binding get() = _binding!!
+
+    lateinit var permissionProvider: PermissionProvider
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        permissionProvider = PermissionProvider(this)
+    }
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
@@ -55,6 +63,7 @@ abstract class BaseDialogSheet<ViewBindingType : ViewBinding> : BottomSheetDialo
     }
 
     override fun onDestroyView() {
+        permissionProvider.unregister()
         _binding = null
         super.onDestroyView()
     }
