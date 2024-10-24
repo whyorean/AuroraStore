@@ -419,4 +419,5 @@
     <string name="notification_channel_account">إشعار متعلق بالحساب</string>
     <string name="authentication_required_title">التوثيق مطلوب</string>
     <string name="authentication_required_unarchive">يرجى تسجيل الدخول إلى حساب Google Play الخاص بك لإلغاء أرشفة التطبيق!</string>
+    <string name="checking_updates">البحث عن تحديثات</string>
 </resources>
