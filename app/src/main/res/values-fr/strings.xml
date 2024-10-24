@@ -184,7 +184,7 @@
     <string name="pref_install_mode_native">Installateur natif (déprécié)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les fichiers APK seront supprimés immédiatement après l\'installation</string>
-    <string name="pref_filter_google_summary">Ignore les applications Google dans Mises à jour et Applications installées</string>
+    <string name="pref_filter_google_summary">Ignorer les applications Google dans Mises à jour et Applications installées</string>
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications depuis Aurora Store</string>
@@ -389,7 +389,7 @@
     <string name="toast_fav_export_success">Favoris exportés !</string>
     <string name="action_logout_confirmation_title">Se déconnecter ?</string>
     <string name="action_logout_confirmation_message">Êtes-vous sûr·e de vouloir vous déconnecter ?</string>
-    <string name="check_updates">Vérification des mises à jour</string>
+    <string name="check_updates">Vérifier les mises à jour</string>
     <string name="details_data_safety_title">Traitement des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l\'installation d\'applications de sources inconnues</string>
     <string name="toast_permission_installer_required">Vous devez d\'abord accorder la permission d\'installation d\'applications</string>
@@ -415,4 +415,5 @@
     <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver cette application</string>
     <string name="notification_channel_account">Notification liée au compte</string>
     <string name="authentication_required_title">Identification requise</string>
+    <string name="checking_updates">Vérification des mises à jour</string>
 </resources>

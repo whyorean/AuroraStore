@@ -450,4 +450,8 @@
     <string name="status_failed">Неуспешно</string>
     <string name="status_cancelled">Отказано</string>
     <string name="status_completed">Завршено</string>
+    <string name="notification_channel_account">Обавештење у вези са налогом</string>
+    <string name="checking_updates">Провера ажурирања</string>
+    <string name="authentication_required_title">Аутентификација неопходна</string>
+    <string name="authentication_required_unarchive">Пријавите се на свој Google Play налог да бисте поништили архивирање апликације!</string>
 </resources>

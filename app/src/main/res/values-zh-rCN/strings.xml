@@ -419,4 +419,5 @@
     <string name="notification_channel_account">账户相关的通知</string>
     <string name="authentication_required_title">需要身份验证</string>
     <string name="authentication_required_unarchive">请登录 Google Play 账户取消存档该应用！</string>
+    <string name="checking_updates">正在检查更新</string>
 </resources>

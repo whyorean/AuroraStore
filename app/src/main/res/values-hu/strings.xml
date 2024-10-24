@@ -416,4 +416,8 @@
     <string name="status_downloading">Letöltés</string>
     <string name="status_unavailable">Nem elérhető</string>
     <string name="status_failed">Meghiúsult</string>
+    <string name="notification_channel_account">Fiókkal kapcsolatos értesítés</string>
+    <string name="authentication_required_unarchive">Jelentkezzen be Google Play fiókjába az alkalmazás archiválásának feloldásához!</string>
+    <string name="authentication_required_title">Hitelesítés szükséges</string>
+    <string name="checking_updates">Frissítések ellenőrzése</string>
 </resources>

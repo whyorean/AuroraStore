@@ -419,4 +419,5 @@
     <string name="notification_channel_account">Ar kontu saistīts paziņojums</string>
     <string name="authentication_required_title">Nepieciešama autentificēšanās</string>
     <string name="authentication_required_unarchive">Lūgums pieteikties savā Google Play kontā, lai atceltu lietotnes arhivēšanu.</string>
+    <string name="checking_updates">Pārbauda atjauninājumus</string>
 </resources>

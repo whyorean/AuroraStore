@@ -419,4 +419,5 @@
     <string name="notification_channel_account">Notificação relacionada à conta</string>
     <string name="authentication_required_unarchive">Por favor, faça login em sua conta do Google Play para desarquivar o app!</string>
     <string name="authentication_required_title">Autenticação necessária</string>
+    <string name="checking_updates">Checando atualizações</string>
 </resources>

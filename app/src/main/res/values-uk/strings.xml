@@ -419,4 +419,5 @@
     <string name="notification_channel_account">Сповіщення, пов\'язані з обліковим записом</string>
     <string name="authentication_required_title">Потрібна автентифікація</string>
     <string name="authentication_required_unarchive">Увійдіть до свого облікового запису Google Play, щоб розархівувати застосунок!</string>
+    <string name="checking_updates">Перевірка оновлень</string>
 </resources>
