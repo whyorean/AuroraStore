@@ -74,6 +74,9 @@ class UpdateWorker @AssistedInject constructor(
             !CertUtil.isAppGalleryApp(appContext, BuildConfig.APPLICATION_ID) &&
             buildType != BuildType.DEBUG
 
+    private val isExtendedUpdateEnabled: Boolean
+        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_UPDATES_EXTENDED)
+
     override suspend fun doWork(): Result {
         super.doWork()
 
@@ -94,10 +97,9 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         try {
-            val updates = checkUpdates().also {
-                // Cache the updates into the database
-                updateDao.insertUpdates(it)
-            }
+            val updates = checkUpdates()
+                .also { updateDao.insertUpdates(it) }
+                .filter { if (!isExtendedUpdateEnabled) it.hasValidCert else true }
 
             if (updates.isEmpty()) {
                 Log.i(TAG, "No updates found!")
