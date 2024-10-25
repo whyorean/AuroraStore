@@ -1,0 +1,3 @@
+• Naprawiono drobny problem z migracją
+• Dodano automatyczną aktualizację dla kompilacji Nightly
+• Zaktualizowano tłumaczenia
