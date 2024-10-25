@@ -193,8 +193,8 @@ class UpdateWorker @AssistedInject constructor(
                 )
 
                 val isUpdate = when (buildType) {
+                    BuildType.NIGHTLY,
                     BuildType.RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
-                    BuildType.NIGHTLY -> selfUpdate.timestamp > BuildConfig.TIMESTAMP
                     else -> false
                 }
 

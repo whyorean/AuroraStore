@@ -19,7 +19,6 @@
  *
  */
 
-import java.time.Instant
 import java.util.Properties
 
 plugins {
@@ -52,7 +51,6 @@ android {
 
         testInstrumentationRunner = "com.aurora.store.HiltInstrumentationTestRunner"
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
-        buildConfigField("long", "TIMESTAMP", "${Instant.now().epochSecond}")
     }
 
     signingConfigs {
