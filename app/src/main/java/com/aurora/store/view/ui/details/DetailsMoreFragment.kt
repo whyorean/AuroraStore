@@ -22,6 +22,8 @@ package com.aurora.store.view.ui.details
 import android.os.Bundle
 import android.view.View
 import androidx.core.text.HtmlCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -49,6 +51,13 @@ class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Adjust layout for edgeToEdge display
+        ViewCompat.setOnApplyWindowInsetsListener(binding.recyclerMore) { layout, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            layout.setPadding(0, 0, 0, insets.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
 
         // Toolbar
         binding.layoutToolbarActionMore.toolbar.setOnClickListener {
