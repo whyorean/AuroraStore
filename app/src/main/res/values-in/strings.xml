@@ -11,7 +11,7 @@
     <string name="details_dev_website">Situs web</string>
     <string name="details_dev_email">Surel</string>
     <string name="action_filter_paid_apps">Berbayar</string>
-    <string name="action_filter_misc">Lainnya</string>
+    <string name="action_filter_misc">Lain-lain</string>
     <string name="action_filter_gsf_dependent_apps">Bergantung dengan GSF</string>
     <string name="action_filter_downloads">Unduhan</string>
     <string name="action_filter">Saring</string>
@@ -313,13 +313,13 @@
     <string name="onboarding_permission_doze_desc">Izinkan Aurora Store untuk mengunduh dan memperbarui aplikasi di latar belakang</string>
     <string name="title_app_settings">Pengaturan Aplikasi</string>
     <string name="title_apps_sale_provider">Penyedia - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Tidak ada aplikasi yang dijual</string>
+    <string name="details_no_apps_on_sale">Tidak ada aplikasi yang di-diskon</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
     <string name="pref_download_directory_error">Jalur yang dipilih tidah bisa ditulis</string>
     <string name="device_doze_subtitle">Aurora Store tidak dapat menginstal pengunduhan atau memperbarui aplikasi di latar belakang karena pengoptimalan baterai.</string>
     <string name="toast_proxy_failed">Gagal menyetel proksi</string>
     <string name="pref_network_proxy_enable_desc">Izinkan semua lalu lintas dari aplikasi melewati proxy</string>
-    <string name="action_uninstall_confirmation">Apakah Anda ingin menguninstall aplikasi ini?</string>
+    <string name="action_uninstall_confirmation">Apakah Anda ingin menghapus aplikasi ini?</string>
     <string name="android_market_desc">Android Market adalah toko online yang menawarkan aplikasi perangkat lunak yang dirancang untuk perangkat Android, dihentikan pada tahun 2017.</string>
     <string name="pref_downloader_wifi_title">Unduh hanya menggunakan WiFi</string>
     <string name="app_language">Bahasa Aplikasi</string>
@@ -419,4 +419,5 @@
     <string name="authentication_required_title">Autentikasi diperlukan</string>
     <string name="notification_channel_account">Notifikasi berkaitan dengan akun</string>
     <string name="authentication_required_unarchive">Silakan masuk ke akun Google Play Anda untuk membuka arsip aplikasi!</string>
+    <string name="checking_updates">Memeriksa pembaruan</string>
 </resources>
