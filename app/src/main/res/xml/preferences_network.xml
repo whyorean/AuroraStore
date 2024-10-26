@@ -27,6 +27,7 @@
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
+        app:key="PREFERENCE_PROXY_URL"
         app:singleLineTitle="false"
         app:summary="protocol://user:password@host:port"
         app:title="@string/pref_network_proxy_title" />

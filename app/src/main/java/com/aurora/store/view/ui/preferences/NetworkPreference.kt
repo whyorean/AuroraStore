@@ -46,6 +46,7 @@ class NetworkPreference : BasePreferenceFragment(),
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_network, rootKey)
 
+        val proxyURL = Preferences.getString(requireContext(), PREFERENCE_PROXY_URL)
         sharedPreferences = Preferences.getPrefs(requireContext())
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
@@ -56,8 +57,12 @@ class NetworkPreference : BasePreferenceFragment(),
             }
         }
 
+        findPreference<Preference>(PREFERENCE_PROXY_URL)?.apply {
+            if (proxyURL.isNotBlank()) summary = proxyURL
+        }
+
         findPreference<SwitchPreferenceCompat>(PREFERENCE_PROXY_ENABLED)?.apply {
-            isChecked = Preferences.getString(context, PREFERENCE_PROXY_URL).isNotBlank()
+            isChecked = proxyURL.isNotBlank()
             setOnPreferenceChangeListener { _, newValue ->
                 if (newValue.toString().toBoolean()) {
                     findNavController().navigate(R.id.proxyURLDialog)
