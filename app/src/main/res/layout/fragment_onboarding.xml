@@ -38,7 +38,7 @@
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp"
             app:tabTextAppearance="@style/TextAppearance.Aurora.Tab"
-            app:tabSelectedTextColor="?colorOnSurface"
+            app:tabSelectedTextColor="@android:color/white"
             app:tabTextColor="@android:color/transparent" />
 
         <androidx.viewpager2.widget.ViewPager2
