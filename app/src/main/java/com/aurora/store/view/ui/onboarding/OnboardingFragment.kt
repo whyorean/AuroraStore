@@ -176,7 +176,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         save(PREFERENCE_THEME_STYLE, 0)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
-        save(PREFERENCE_SIMILAR, true)
+        save(PREFERENCE_SIMILAR, false)
 
         /*Installer*/
         save(PREFERENCE_AUTO_DELETE, true)

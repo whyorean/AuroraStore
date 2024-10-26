@@ -51,7 +51,7 @@
         app:title="@string/pref_ui_no_for_you" />
 
     <SwitchPreferenceCompat
-        app:defaultValue="true"
+        app:defaultValue="false"
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_SIMILAR"
         app:summary="@string/pref_ui_similar_apps_desc"
