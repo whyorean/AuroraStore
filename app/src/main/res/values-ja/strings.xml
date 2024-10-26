@@ -226,7 +226,6 @@
     <string name="pref_ui_layout_tab">デフォルトタブを設定</string>
     <string name="pref_ui_layout">レイアウト</string>
     <string name="details_no_app_match">アプリが見つかりませんでした</string>
-    <string name="action_check">確認</string>
     <string name="dialog_desc_native_split">ネイティブインストーラーではバンドル(分割された)アプリをインストールできません。インストーラーをセッション、Service、Root のいずれかに変更してください。</string>
     <string name="toast_aas_token_failed">AASトークンを生成できませんでした</string>
     <string name="toast_rated_failed">評価に失敗しました</string>

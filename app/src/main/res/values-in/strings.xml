@@ -21,7 +21,6 @@
     <string name="action_copy">Salin</string>
     <string name="action_close">Tutup</string>
     <string name="action_clear">Hapus</string>
-    <string name="action_check">Periksa</string>
     <string name="action_cancel">Batal</string>
     <string name="action_blacklist_add">Tambahkan ke daftar blokir</string>
     <string name="action_blacklist">Daftar blokir</string>

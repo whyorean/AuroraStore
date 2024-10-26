@@ -226,7 +226,6 @@
     <string name="toast_manual_available">Gratulálunk, a kért verziókód elérhető, letöltése folyamatban van.</string>
     <string name="toast_manual_unavailable">A kért verziókód nem elérhető.</string>
     <string name="title_manual_download">Kézi letöltés</string>
-    <string name="action_check">Ellenőrzés</string>
     <string name="toast_aas_token_failed">Az AAS token előállítása sikertelen</string>
     <string name="toast_rated_failed">Az értékelés elküldése sikertelen</string>
     <string name="toast_rated_success">Értékelve, időbe telhet míg megjelenik</string>

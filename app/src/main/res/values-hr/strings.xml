@@ -225,7 +225,6 @@
     <string name="pref_ui_layout_tab">Odaberi standardnu karticu</string>
     <string name="pref_ui_layout">Raspored</string>
     <string name="details_no_app_match">Nema odgovarajućeg programa</string>
-    <string name="action_check">Označi</string>
     <string name="pref_common_extra">Dodatno</string>
     <string name="dialog_desc_native_split">Paketirane (podijeljene) programe ne možeš instalirati putem nativnog programa za insatliranje instalacije. Promijeni instalatera u sesija, usluge ili administrator.</string>
     <string name="toast_page_unavailable">Stranica pretraživanja nedostupna</string>

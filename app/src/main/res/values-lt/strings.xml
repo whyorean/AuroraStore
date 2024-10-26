@@ -71,7 +71,6 @@
     <string name="app_updater_service_notif_title">Foninis programėlių atsisiuntimas</string>
     <string name="app_updater_service_notif_text">Įgalina foninį programėlių atsisiuntimą</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
-    <string name="action_check">Tikrinti</string>
     <string name="action_close">Užverti</string>
     <string name="action_copy">Kopijuoti</string>
     <string name="action_copy_link">Kopijuoti nuorodą</string>

@@ -226,7 +226,6 @@
     <string name="toast_manual_available">Glückwunsch, der angeforderte Versionscode ist verfügbar und wird jetzt heruntergeladen.</string>
     <string name="toast_manual_unavailable">Der angeforderte Versionscode ist nicht verfügbar.</string>
     <string name="title_manual_download">Version auswählen</string>
-    <string name="action_check">Prüfen</string>
     <string name="dialog_desc_native_split">Gebündelte/geteilte (Split-)APK-Dateien können nicht mit der systemeigenen Installationsmethode installiert werden. Bitte die Installationsmethode zu Sitzung, Services oder Root ändern.</string>
     <string name="toast_page_unavailable">Seite nicht verfügbar</string>
     <string name="toast_rated_success">Bewertet (es kann bis zur Anzeige etwas dauern)</string>

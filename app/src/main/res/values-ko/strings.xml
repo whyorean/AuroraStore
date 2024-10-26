@@ -40,7 +40,6 @@
     <string name="action_copy_link">링크 복사</string>
     <string name="account_login_using">다음을 사용하여 로그인</string>
     <string name="account_logout">오로라에서 로그아웃</string>
-    <string name="action_check">검사</string>
     <string name="action_clear">지우기</string>
     <string name="action_close">닫기</string>
     <string name="action_disable">사용 안함</string>

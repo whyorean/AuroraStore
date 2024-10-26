@@ -196,7 +196,6 @@
     <string name="action_copy">Copiar</string>
     <string name="action_close">Fechar</string>
     <string name="action_clear">Limpar</string>
-    <string name="action_check">Verificar</string>
     <string name="toast_purchase_blocked">As compras de aplicacións non están dispoñíbeis para contas Anónimas.</string>
     <string name="toast_permission_granted">Permiso concedido</string>
     <string name="toast_apk_whitelisted">Engadida á lista branca</string>

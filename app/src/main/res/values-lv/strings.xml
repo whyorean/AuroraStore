@@ -34,7 +34,6 @@
     <string name="action_copy">Kopēt</string>
     <string name="action_close">Aizvērt</string>
     <string name="action_clear">Notīrīt</string>
-    <string name="action_check">Pārbaudīt</string>
     <string name="action_cancel">Atcelt</string>
     <string name="action_blacklist_add">Pievienot Melnajam sarakstam</string>
     <string name="action_blacklist">Melnais saraksts</string>

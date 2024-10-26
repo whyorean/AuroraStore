@@ -90,7 +90,6 @@
     <string name="action_copy">Копіювати</string>
     <string name="action_close">Закрити</string>
     <string name="action_clear">Очистити</string>
-    <string name="action_check">Перевірити</string>
     <string name="action_cancel">Скасувати</string>
     <string name="action_blacklist_add">Додати до чорного списку</string>
     <string name="action_blacklist">Чорний список</string>

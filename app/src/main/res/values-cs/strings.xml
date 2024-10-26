@@ -200,7 +200,6 @@
     <string name="action_copy">Kopírovat</string>
     <string name="action_close">Zavřít</string>
     <string name="action_clear">Vymazat</string>
-    <string name="action_check">Obnovit</string>
     <string name="action_cancel">Zrušit</string>
     <string name="action_back">Zpět</string>
     <string name="account_logout">Odhlásit se z Aurory</string>

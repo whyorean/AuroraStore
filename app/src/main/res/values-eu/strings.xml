@@ -233,7 +233,6 @@
     <string name="pref_common_extra">Extrak</string>
     <string name="dialog_desc_native_split">Aplikazio elkartuak (zatituak) ezin dira instalatzaile natiboaren bidez instalatu. Aldatu instalatzailea Session, Services edo Root-era.</string>
     <string name="details_no_app_match">Ez da aurkitu bat datorren aplikaziorik</string>
-    <string name="action_check">Egiaztatu</string>
     <string name="installer_am_unavailable">Instalatu App Manager edo aldatu instalatzailea.</string>
     <string name="app_updater_service_notif_text">Aplikazioak bigarren mailan deskargatzeko aukera ematen du</string>
     <string name="pref_install_mode_am">AM instalatzailea</string>

@@ -32,7 +32,6 @@
     <string name="action_blacklist">Черен списък</string>
     <string name="action_blacklist_add">Добавяне към черен списък</string>
     <string name="action_cancel">Отказ</string>
-    <string name="action_check">Проверка</string>
     <string name="action_clear">Изчистване</string>
     <string name="action_close">Затваряне</string>
     <string name="action_copy">Копиране</string>

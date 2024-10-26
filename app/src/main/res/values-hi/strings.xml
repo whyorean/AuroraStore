@@ -184,7 +184,6 @@
     <string name="tab_top_paid">शीर्ष सशुल्क</string>
     <string name="toast_export_success">डिवाइस विन्यास निर्यात किया गया</string>
     <string name="toast_export_failed">डिवाइस विन्यास निर्यात नहीं किया जा सका</string>
-    <string name="action_check">जांच करें</string>
     <string name="action_pause">रोकें</string>
     <string name="action_post">पोस्ट करें</string>
     <string name="action_restart">पुनः प्रारंभ करें</string>

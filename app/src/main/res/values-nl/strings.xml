@@ -210,7 +210,6 @@
     <string name="action_copy">Kopieër</string>
     <string name="action_close">Sluit</string>
     <string name="action_clear">Wis</string>
-    <string name="action_check">Kijk na</string>
     <string name="action_cancel">Afbreken</string>
     <string name="action_back">Terug</string>
     <string name="account_logout">Log uit van Aurora</string>

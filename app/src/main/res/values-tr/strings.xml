@@ -226,7 +226,6 @@
     <string name="action_copy_link">Bağlantıyı kopyala</string>
     <string name="action_copy">Kopyala</string>
     <string name="action_close">Kapat</string>
-    <string name="action_check">Denetle</string>
     <string name="toast_aas_token_failed">AAS Belirteci oluşturulamadı</string>
     <string name="toast_rated_failed">Derecelendirme gönderilemedi</string>
     <string name="toast_rated_success">Derecelendirildi, gösterilmesi biraz zaman alabilir</string>

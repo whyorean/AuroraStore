@@ -90,7 +90,6 @@
     <string name="title_no_network">Ei verkkoa</string>
     <string name="toast_permission_granted">Lupa myönnetty</string>
     <string name="toast_manual_unavailable">Pyytämäsi versiokoodi ei ole saatavilla.</string>
-    <string name="action_check">Tarkista</string>
     <string name="filter_review_critical">Kriittinen</string>
     <string name="exodus_substring">tunnettu(a) seurantasovellus(ta) löydetty versiossa</string>
     <string name="exodus_progress">Tarkistetaan seurantasovelluksia…</string>

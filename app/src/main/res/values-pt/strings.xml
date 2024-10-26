@@ -225,7 +225,6 @@
     <string name="action_copy">Copiar</string>
     <string name="action_close">Fechar</string>
     <string name="action_clear">Limpar</string>
-    <string name="action_check">Verificar</string>
     <string name="action_cancel">Cancelar</string>
     <string name="action_blacklist_add">Adicionar à lista negra</string>
     <string name="action_blacklist">Lista negra</string>

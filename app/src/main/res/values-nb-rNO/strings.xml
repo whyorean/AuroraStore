@@ -187,7 +187,6 @@
     <string name="details_no_app_match">Ingen app-samsvar funnet</string>
     <string name="details_gsf_dependent">Krever GSF</string>
     <string name="details_changelog_unavailable">Endringslogg ikke inkludert</string>
-    <string name="action_check">Sjekk</string>
     <string name="about_libera_summary">Bli patron på Liberapay</string>
     <string name="installer_service_unavailable">Installer Aurora Services 1.0.9 eller nyere, eller endre installasjonsprogrammet.</string>
     <string name="toast_developer_setting_failed">Skru på utviklingsinnstillingene fra enhetsinnstillingene for å åpne dem.</string>

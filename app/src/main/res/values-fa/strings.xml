@@ -65,7 +65,6 @@
     <string name="toast_spoof_applied">پارامتر دستگاه جعلی اعمال شد.</string>
     <string name="toast_permission_granted">مجوز اعطا شده</string>
     <string name="details_dev_email">پست الکترونیک</string>
-    <string name="action_check">مطابقت</string>
     <string name="action_filter_paid_apps">پرداخت شده</string>
     <string name="action_join">پیوستن</string>
     <string name="action_later">بعدا</string>

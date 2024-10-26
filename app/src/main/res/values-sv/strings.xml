@@ -167,7 +167,6 @@
     <string name="action_copy">Kopiera</string>
     <string name="action_close">Stäng</string>
     <string name="action_clear">Rensa</string>
-    <string name="action_check">Kontrollera</string>
     <string name="action_cancel">Avbryt</string>
     <string name="action_blacklist_add">Lägg till i Svartlista</string>
     <string name="action_blacklist">Svartlista</string>

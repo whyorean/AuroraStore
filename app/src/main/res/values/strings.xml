@@ -49,7 +49,6 @@
     <string name="action_blacklist">"Blacklist"</string>
     <string name="action_blacklist_add">"Add to Blacklist"</string>
     <string name="action_cancel">"Cancel"</string>
-    <string name="action_check">"Check"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_close">"Close"</string>
     <string name="action_copy">"Copy"</string>

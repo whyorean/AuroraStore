@@ -223,7 +223,6 @@
     <string name="pref_ui_layout">التخطيط</string>
     <string name="pref_common_extra">الإضافات</string>
     <string name="details_no_app_match">لم يتم العثور على تطبيق مماثل</string>
-    <string name="action_check">فحص</string>
     <string name="toast_manual_available">تهانينا ، كود الإصدار المطلوب متاح ، يتم تنزيله الآن.</string>
     <string name="toast_manual_unavailable">رمز الإصدار الذي تطلبه غير متوفر.</string>
     <string name="title_manual_download">تحميل يدوي</string>

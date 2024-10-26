@@ -226,7 +226,6 @@
     <string name="pref_ui_layout_tab">Aba padrão</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="pref_common_extra">Extras</string>
-    <string name="action_check">Verificar</string>
     <string name="dialog_desc_native_split">Você não pode instalar apps em pacote (divididos) por meio do Instalador nativo. Mude seu instalador para Sessão, Serviços ou Root.</string>
     <string name="toast_aas_token_failed">Não foi possível gerar Token AAS</string>
     <string name="toast_rated_failed">Não foi possível enviar a classificação</string>

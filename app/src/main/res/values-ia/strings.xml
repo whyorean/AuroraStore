@@ -162,7 +162,6 @@
     <string name="download_metadata">⁹</string>
     <string name="installer_service_available">Le servicios de Aurora es disponibile e preste pro installar.</string>
     <string name="title_installer">Installator de applicationes</string>
-    <string name="action_check">Verificar</string>
     <string name="details_dev_details">Contacto del disveloppator</string>
     <string name="action_wishlist_add">Adder al lista blanc</string>
     <string name="onboarding_permission_esm">Gestor de immagazinage externe</string>

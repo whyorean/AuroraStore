@@ -226,7 +226,6 @@
     <string name="toast_manual_available">Congratulazioni, il codice di versione richiesto è disponibile; scaricamento in corso.</string>
     <string name="toast_manual_unavailable">Il codice di versione richiesto non è disponibile.</string>
     <string name="title_manual_download">Scaricamento manuale</string>
-    <string name="action_check">Verifica</string>
     <string name="dialog_desc_native_split">Non puoi installare le applicazioni aggregate (divise) con l’installatore nativo. Cambia l’installatore in Sessione, Servizi o Root.</string>
     <string name="toast_aas_token_failed">Impossibile generare un token AAS</string>
     <string name="toast_rated_failed">Impossibile inviare la valutazione</string>

@@ -226,7 +226,6 @@
     <string name="toast_manual_available">Félicitations, le code de version demandé est disponible ; téléchargement en cours.</string>
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas disponible.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
-    <string name="action_check">Vérifier</string>
     <string name="dialog_desc_native_split">Vous ne pouvez pas installer de paquet d’application (fractionnées) avec l’installateur natif. Veuillez opter pour une autre méthode d’installation (Session, Services ou Racine).</string>
     <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
     <string name="toast_rated_failed">Impossible de soumettre l’évaluation</string>

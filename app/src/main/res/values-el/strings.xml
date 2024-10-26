@@ -30,7 +30,6 @@
     <string name="action_copy">Αντιγραφή</string>
     <string name="action_close">Κλείσιμο</string>
     <string name="action_clear">Εκκαθάριση</string>
-    <string name="action_check">Έλεγχος</string>
     <string name="action_cancel">Ακύρωση</string>
     <string name="action_blacklist_add">Προσθήκη στη μαύρη λίστα</string>
     <string name="action_blacklist">Μαύρη λίστα</string>

@@ -29,7 +29,6 @@
     <string name="about_bitcoin_bch_summary">பிட்காயின் பணம் (பி.சி.எச்) வழியாக நன்கொடை</string>
     <string name="action_close">மூடுக</string>
     <string name="action_clear">நீக்கு</string>
-    <string name="action_check">சரிபார்ப்பு</string>
     <string name="action_cancel">ரத்துசெய்</string>
     <string name="action_blacklist_add">தடுப்புப்பட்டியலில் சேர்க்கவும்</string>
     <string name="action_blacklist">தடுப்புப்பட்டியல்</string>

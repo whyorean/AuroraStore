@@ -226,7 +226,6 @@
     <string name="toast_manual_available">Gratulacje, żądany kod wersji jest dostępny, rozpoczynam pobieranie.</string>
     <string name="toast_manual_unavailable">Żądany kod wersji jest niedostępny.</string>
     <string name="title_manual_download">Pobierz ręcznie</string>
-    <string name="action_check">Sprawdź</string>
     <string name="dialog_desc_native_split">Nie można instalować pakietów aplikacji (dzielonych) za pośrednictwem Natywnego instalatora. Zmień instalator na Sesję, Usługi lub Root.</string>
     <string name="toast_page_unavailable">Przeglądana strona jest niedostępna</string>
     <string name="toast_rated_success">Oceniono (może upłynąć trochę czasu, zanim recenzja się pojawi)</string>

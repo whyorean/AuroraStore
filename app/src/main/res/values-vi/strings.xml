@@ -215,7 +215,6 @@
     <string name="details_more_about_app">Thêm về ứng dụng</string>
     <string name="details_gsf_dependent">Yêu cầu GSF</string>
     <string name="details_free">Miễn phí</string>
-    <string name="action_check">Kiểm tra</string>
     <string name="pref_common_extra">Thêm</string>
     <string name="toast_aas_token_failed">Không thể tạo Token AAS</string>
     <string name="toast_rated_failed">Không thể gửi đánh giá</string>

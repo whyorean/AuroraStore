@@ -107,7 +107,6 @@
     <string name="title_apps">යෙදුම්</string>
     <string name="title_account_manager">ගිණුම්</string>
     <string name="title_about">පිළිබඳව</string>
-    <string name="action_check">පරීක්ෂා කරන්න</string>
     <string name="action_blacklist_add">කළු ලේඛනයට දමන්න</string>
     <string name="action_blacklist">කළු ලේඛනය</string>
     <string name="account_logout">අවුරෝරා වෙතින් නික්මෙන්න</string>
