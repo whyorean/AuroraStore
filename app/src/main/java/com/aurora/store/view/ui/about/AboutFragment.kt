@@ -54,6 +54,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
             BuildConfig.VERSION_NAME,
             BuildConfig.VERSION_CODE
         )
+        binding.line3.text = getString(R.string.made_with_love, String(Character.toChars(0x2764)))
 
         binding.epoxyRecycler.layoutManager =
             LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)

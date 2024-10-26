@@ -64,12 +64,12 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/line3"
             style="@style/TextAppearance.Aurora.Line3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/line2"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="Made with ❤ in India" />
+            android:textAlignment="center" />
     </RelativeLayout>
 
     <com.airbnb.epoxy.EpoxyRecyclerView

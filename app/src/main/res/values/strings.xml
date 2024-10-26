@@ -407,6 +407,7 @@
     <string name="disclaimer_subtitle">Accountability and responsibility</string>
 
     <!-- AboutFragment -->
+    <string name="made_with_love">Made with <xliff:g id="heart_emoji">%1$s</xliff:g> in India</string>
     <string name="version" translatable="false">v<xliff:g id="version_name">%1$s</xliff:g> (<xliff:g id="version_code">%2$d</xliff:g>)</string>
     <string name="about_aurora_store_title">About Aurora Store</string>
     <string name="about_aurora_store_subtitle">Learn more about Aurora Store</string>
