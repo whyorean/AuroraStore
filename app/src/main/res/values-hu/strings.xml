@@ -419,4 +419,5 @@
     <string name="authentication_required_unarchive">Jelentkezzen be Google Play fiókjába az alkalmazás archiválásának feloldásához!</string>
     <string name="authentication_required_title">Hitelesítés szükséges</string>
     <string name="checking_updates">Frissítések ellenőrzése</string>
+    <string name="made_with_love">Indiából &lt;xliff:g id=„heart_emoji”&gt;%1$s&lt;/xliff:g&gt;</string>
 </resources>

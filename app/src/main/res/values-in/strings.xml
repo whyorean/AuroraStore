@@ -419,4 +419,5 @@
     <string name="notification_channel_account">Notifikasi berkaitan dengan akun</string>
     <string name="authentication_required_unarchive">Silakan masuk ke akun Google Play Anda untuk membuka arsip aplikasi!</string>
     <string name="checking_updates">Memeriksa pembaruan</string>
+    <string name="made_with_love">Dibuat dengan <xliff:g id="heart_emoji">%1$s</xliff:g> di India</string>
 </resources>

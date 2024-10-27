@@ -419,4 +419,5 @@
     <string name="authentication_required_unarchive">¡Por favor, inicie sesión en su cuenta de Google Play para descomprimir la aplicación!</string>
     <string name="notification_channel_account">Notificación relacionada con la cuenta</string>
     <string name="checking_updates">Buscando actualizaciones</string>
+    <string name="made_with_love">Fabricado con <xliff:g id="heart_emoji">%1$s</xliff:g> en la India</string>
 </resources>

@@ -419,4 +419,5 @@
     <string name="authentication_required_title">Vyžadováno ověření</string>
     <string name="authentication_required_unarchive">Pro vyjmutí této aplikace z archivu se prosím přihlaste do svého účtu Google Play!</string>
     <string name="checking_updates">Kontrola aktualizací</string>
+    <string name="made_with_love">Vytvořeno s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
 </resources>

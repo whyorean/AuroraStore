@@ -415,4 +415,5 @@
     <string name="notification_channel_account">Notification liée au compte</string>
     <string name="authentication_required_title">Identification requise</string>
     <string name="checking_updates">Vérification des mises à jour</string>
+    <string name="made_with_love">Fait avec <xliff:g id="heart_emoji">%1$s</xliff:g> en Inde</string>
 </resources>

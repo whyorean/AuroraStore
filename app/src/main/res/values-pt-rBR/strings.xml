@@ -419,4 +419,5 @@
     <string name="authentication_required_unarchive">Por favor, faça login em sua conta do Google Play para desarquivar o app!</string>
     <string name="authentication_required_title">Autenticação necessária</string>
     <string name="checking_updates">Checando atualizações</string>
+    <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
 </resources>

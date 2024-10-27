@@ -419,4 +419,5 @@
     <string name="notification_channel_account">Kontobezogene Benachrichtigung</string>
     <string name="authentication_required_title">Authentifizierung erforderlich</string>
     <string name="checking_updates">Suche nach Updates</string>
+    <string name="made_with_love">Hergestellt mit <xliff:g id="heart_emoji">%1$s</xliff:g> in Indien</string>
 </resources>

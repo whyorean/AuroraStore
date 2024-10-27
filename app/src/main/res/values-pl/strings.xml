@@ -415,4 +415,5 @@
     <string name="notification_channel_account">Powiadomienie związane z kontem</string>
     <string name="authentication_required_unarchive">Zaloguj się na swoje konto Google Play, aby przywrócić aplikację z archiwum!</string>
     <string name="checking_updates">Sprawdzanie aktualizacji</string>
+    <string name="made_with_love">Stworzono z <xliff:g id="heart_emoji">%1$s</xliff:g> w Indiach</string>
 </resources>
