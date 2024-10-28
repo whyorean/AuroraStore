@@ -49,7 +49,6 @@
     <string name="details_beta_subscribed">Inscribiéstite nel programa beta</string>
     <string name="tab_top_free">De baldre</string>
     <string name="action_wishlist_add">Add to wishlist</string>
-    <string name="action_get_local_apk"></string>
     <string name="filter_review_all">Too</string>
     <string name="action_filter_rating">Valoraciones</string>
     <string name="toast_apk_whitelisted">Amestóse a la llista blanca</string>
@@ -74,7 +73,6 @@
     <string name="title_updates">Anovamientos</string>
     <string name="about_gitlab_summary">Consigui\'l códigu fonte d\'Aurora Store dende\'l depósitu d\'Aurora OSS en GitLab.</string>
     <string name="action_clear">Borrar</string>
-    <string name="action_installing"></string>
     <string name="pref_install_mode_native">Instalador nativu (obsoletu)</string>
     <string name="account_anonymous">Cuenta anónima</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
@@ -98,7 +96,6 @@
     <string name="pref_dialog_to_apply_restart">Esti parámetru va aplicase dempués de que reanicies l\'aplicación</string>
     <string name="about_paypal_summary">Dona per PayPal</string>
     <string name="about_fdroid">F-Droid</string>
-    <string name="action_blacklist"></string>
     <string name="details_ratings">Valoración y reseñes</string>
     <string name="action_ignore_version">Inorar la versión</string>
     <string name="action_filter">Peñeres</string>
@@ -133,7 +130,6 @@
     <string name="action_grant">Conceder</string>
     <string name="about_xda_summary">Visita\'l filu d\'Aurora Store en XDA p\'aldericar o consiguir suxerencies.</string>
     <string name="account_login_using">Aniciar la sesión con</string>
-    <string name="action_blacklist_add"></string>
     <string name="action_ignore">Inorar</string>
     <string name="action_installations">Instalación</string>
     <string name="action_later">Dempués</string>
@@ -149,7 +145,6 @@
     <string name="action_resume">Siguir</string>
     <string name="action_search">Buscar</string>
     <string name="action_uninstall">Desinstalar</string>
-    <string name="action_info"></string>
     <string name="action_whitelist">Whitelist</string>
     <string name="details_beta">Programa Beta</string>
     <string name="download_eta_calculating">Calculando</string>
@@ -180,7 +175,6 @@
     <string name="session_scrapped">Last session scrapped</string>
     <string name="session_verifying">Verificando la sesión</string>
     <string name="session_verifying_google">Verificando la sesión de Google</string>
-    <string name="action_filter_misc"></string>
     <string name="action_finish">Finar</string>
     <string name="details_contains_ads">Contién anuncios</string>
     <string name="details_dependencies">Dependencies</string>
