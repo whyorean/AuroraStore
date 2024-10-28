@@ -275,7 +275,7 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> aggiornamento disponibile</string>
     <string name="notification_updates_available_desc_1">È disponibile una nuova versione di <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> , <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> più</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e altre <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="title_search_suggestion">Suggerimenti di ricerca</string>
     <string name="title_search_results">Risultati della ricerca</string>
     <string name="access_denied_using_vpn">Accesso negato! Stai usando VPN o Tor\?</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_title">Autenticazione richiesta</string>
     <string name="authentication_required_unarchive">Accedi al tuo account Google Play per disarchiviare l\'applicazione!</string>
     <string name="about_aurora_store_summary">Aurora Store consente di cercare e scaricare applicazioni da canali ufficiali di Google Play. È possibile controllare le descrizioni delle app, gli screenshot, gli aggiornamenti, i commenti degli altri utenti e scaricare l\'APK direttamente da Google Play sul proprio dispositivo. Per utilizzare Aurora Store, è necessario disporre di un account Google Play e accedere al proprio account Google Play quando si apre e si configura Aurora Store.\n\nA differenza di un app store tradizionale, Aurora Store non possiede, non concede in licenza e non distribuisce alcuna app. Tutte le app, le descrizioni delle app, le schermate e gli altri contenuti di Aurora Store sono direttamente accessibili, scaricati e/o visualizzati da Google Play. Aurora Store funziona esattamente come un client o un browser, consentendo di accedere al proprio account Google Play e di trovare le app da Google Play.\n\nNota bene che Aurora Store non ha alcuna approvazione, sponsorizzazione o autorizzazione da parte di Google, di Google Play, delle app scaricate attraverso Aurora Store o degli sviluppatori di app; Aurora Store non ha alcuna affiliazione, collaborazione o collegamento con loro.</string>
+    <string name="made_with_love">Fatto con <xliff:g id="heart_emoji">%1$s</xliff:g> in India</string>
+    <string name="checking_updates">Controllo degli aggiornamenti in corso</string>
 </resources>
