@@ -64,7 +64,7 @@ class NetworkViewModel @Inject constructor(
         val networkRequest = NetworkRequest.Builder()
             .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
 
-        if (isMAndAbove()) {
+        if (isMAndAbove) {
             networkRequest.addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
         }
 

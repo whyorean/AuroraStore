@@ -43,7 +43,7 @@ class BlacklistProvider @Inject constructor(
         set(value) = Preferences.putString(context, PREFERENCE_BLACKLIST, gson.toJson(value))
         get() {
             return try {
-                val rawBlacklist = if (isNAndAbove()) {
+                val rawBlacklist = if (isNAndAbove) {
                     val refMethod = Context::class.java.getDeclaredMethod(
                         "getSharedPreferences",
                         File::class.java,

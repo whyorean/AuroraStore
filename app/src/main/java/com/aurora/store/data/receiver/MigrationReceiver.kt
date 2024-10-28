@@ -70,7 +70,7 @@ class MigrationReceiver : BroadcastReceiver() {
 
             // 63 -> 64
             if (currentVersion == 2) {
-                if (isOAndAbove()) {
+                if (isOAndAbove) {
                     with(context.getSystemService<NotificationManager>()!!) { // !1189
                         deleteNotificationChannel("NOTIFICATION_CHANNEL_GENERAL")
                         deleteNotificationChannel("NOTIFICATION_CHANNEL_ALERT")

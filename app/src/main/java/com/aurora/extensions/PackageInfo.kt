@@ -11,11 +11,11 @@ fun PackageInfo.isValidApp(packageManager: PackageManager): Boolean {
     if (this.applicationInfo!!.loadLabel(packageManager).startsWith(this.packageName)) return false
 
     return when {
-        isQAndAbove() -> {
+        isQAndAbove -> {
             Process.isApplicationUid(this.applicationInfo!!.uid) &&
                     !this.applicationInfo!!.isResourceOverlay && !this.isApex
         }
-        isNAndAbove() -> Process.isApplicationUid(this.applicationInfo!!.uid)
+        isNAndAbove -> Process.isApplicationUid(this.applicationInfo!!.uid)
         else -> this.versionName != null
     }
 }

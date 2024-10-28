@@ -84,7 +84,7 @@ class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
         DynamicColors.applyToActivitiesIfAvailable(this)
 
         // Required for Shizuku installer
-        if (isPAndAbove()) HiddenApiBypass.addHiddenApiExemptions("I", "L")
+        if (isPAndAbove) HiddenApiBypass.addHiddenApiExemptions("I", "L")
 
         //Create Notification Channels
         NotificationUtil.createNotificationChannel(this)

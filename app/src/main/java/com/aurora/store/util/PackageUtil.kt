@@ -64,7 +64,7 @@ object PackageUtil {
     }
 
     fun isSharedLibrary(context: Context, packageName: String): Boolean {
-        return if (isOAndAbove()) {
+        return if (isOAndAbove) {
             getAllSharedLibraries(context).any { it.name == packageName }
         } else {
             false
@@ -72,9 +72,9 @@ object PackageUtil {
     }
 
     fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
-        return if (isOAndAbove()) {
+        return if (isOAndAbove) {
             val sharedLibraries = getAllSharedLibraries(context)
-            if (isPAndAbove()) {
+            if (isPAndAbove) {
                 sharedLibraries.any {
                     it.name == packageName && it.longVersion == versionCode.toLong()
                 }
@@ -148,7 +148,7 @@ object PackageUtil {
     }
 
     fun getInstallUnknownAppsIntent(): Intent {
-        return if (isOAndAbove()) {
+        return if (isOAndAbove) {
             Intent(
                 Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
                 Uri.parse("package:${BuildConfig.APPLICATION_ID}")
@@ -159,7 +159,7 @@ object PackageUtil {
     }
 
     fun canRequestPackageInstalls(context: Context): Boolean {
-        return if (isOAndAbove()) {
+        return if (isOAndAbove) {
             context.packageManager.canRequestPackageInstalls()
         } else {
             @Suppress("DEPRECATION")
@@ -174,7 +174,7 @@ object PackageUtil {
 
     @Throws(Exception::class)
     fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo {
-        return if (isTAndAbove()) {
+        return if (isTAndAbove) {
             context.packageManager.getPackageInfo(
                 packageName,
                 PackageInfoFlags.of(flags.toLong())
@@ -200,9 +200,9 @@ object PackageUtil {
     }
 
     private fun getAllSharedLibraries(context: Context, flags: Int = 0): List<SharedLibraryInfo> {
-        return if (isTAndAbove()) {
+        return if (isTAndAbove) {
             context.packageManager.getSharedLibraries(PackageInfoFlags.of(flags.toLong()))
-        } else if (isOAndAbove()) {
+        } else if (isOAndAbove) {
             context.packageManager.getSharedLibraries(flags)
         } else {
             emptyList()

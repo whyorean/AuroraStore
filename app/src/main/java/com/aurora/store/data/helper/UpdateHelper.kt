@@ -159,7 +159,7 @@ class UpdateHelper @Inject constructor(
             .setRequiredNetworkType(NetworkType.UNMETERED)
             .setRequiresBatteryNotLow(true)
 
-        if (isMAndAbove()) constraints.setRequiresDeviceIdle(true)
+        if (isMAndAbove) constraints.setRequiresDeviceIdle(true)
 
         return PeriodicWorkRequestBuilder<UpdateWorker>(
             repeatInterval = updateCheckInterval,

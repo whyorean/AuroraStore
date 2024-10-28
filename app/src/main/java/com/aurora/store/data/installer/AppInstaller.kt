@@ -93,7 +93,7 @@ class AppInstaller @Inject constructor(
                 installers.add(AMInstaller.getInstallerInfo(context))
             }
 
-            if (isOAndAbove() && hasShizukuOrSui(context)) {
+            if (isOAndAbove && hasShizukuOrSui(context)) {
                 installers.add(ShizukuInstaller.getInstallerInfo(context))
             }
 
@@ -109,7 +109,7 @@ class AppInstaller @Inject constructor(
             return when (getCurrentInstaller(context)) {
                 Installer.SESSION -> {
                     // Silent install cannot be done on initial install and below A12
-                    if (!PackageUtil.isInstalled(context, packageName) || !isSAndAbove()) return false
+                    if (!PackageUtil.isInstalled(context, packageName) || !isSAndAbove) return false
 
                     // We cannot do silent updates if we are not the update owner
                     if (context.packageManager.getUpdateOwnerPackageNameCompat(packageName) != BuildConfig.APPLICATION_ID) return false
@@ -127,7 +127,7 @@ class AppInstaller @Inject constructor(
                 Installer.ROOT -> hasRootAccess()
                 Installer.SERVICE -> false // Deprecated
                 Installer.AM -> false // We cannot check if AppManager has ability to auto-update
-                Installer.SHIZUKU -> isOAndAbove() && hasShizukuOrSui(context) && hasShizukuPerm()
+                Installer.SHIZUKU -> isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()
             }
         }
 
@@ -188,7 +188,7 @@ class AppInstaller @Inject constructor(
             val intent = Intent().apply {
                 data = Uri.fromParts("package", packageName, null)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                if (isPAndAbove()) {
+                if (isPAndAbove) {
                     action = Intent.ACTION_DELETE
                 } else {
                     @Suppress("DEPRECATION")
@@ -211,7 +211,7 @@ class AppInstaller @Inject constructor(
             Installer.SERVICE -> if (hasAuroraService(context)) serviceInstaller else defaultInstaller
             Installer.AM -> if (hasAppManager(context)) amInstaller else defaultInstaller
             Installer.SHIZUKU -> {
-                if (isOAndAbove() && hasShizukuOrSui(context) && hasShizukuPerm()) {
+                if (isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()) {
                     shizukuInstaller
                 } else {
                     defaultInstaller

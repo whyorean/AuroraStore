@@ -87,11 +87,11 @@ class ShizukuInstaller @Inject constructor(
     }
 
     private val packageInstaller: PackageInstaller? by lazy {
-        if (isSAndAbove()) {
+        if (isSAndAbove) {
             Refine.unsafeCast<PackageInstaller>(
                 PackageInstallerHidden(iPackageInstaller, "com.android.vending", null, 0)
             )
-        } else if (isOAndAbove()) {
+        } else if (isOAndAbove) {
             Refine.unsafeCast<PackageInstaller>(
                 PackageInstallerHidden(iPackageInstaller, "com.android.vending", 0)
             )

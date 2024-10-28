@@ -39,7 +39,7 @@ class UIPreference : BasePreferenceFragment() {
         setPreferencesFromResource(R.xml.preferences_ui, rootKey)
 
         findPreference<Preference>("PREFERENCE_APP_LANGUAGE")?.apply {
-            if (isTAndAbove()) {
+            if (isTAndAbove) {
                 summary = Locale.getDefault().displayName
                 setOnPreferenceClickListener {
                     startActivity(Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {

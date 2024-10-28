@@ -116,7 +116,7 @@ fun Context.getStyledAttributeColor(id: Int): Int {
 }
 
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
-    return if (isMAndAbove()) {
+    return if (isMAndAbove) {
         (getSystemService<PowerManager>())?.isIgnoringBatteryOptimizations(packageName) ?: true
     } else {
         true
@@ -124,7 +124,7 @@ fun Context.isIgnoringBatteryOptimizations(): Boolean {
 }
 
 fun Context.areNotificationsEnabled(): Boolean {
-    return if (isNAndAbove()) {
+    return if (isNAndAbove) {
         getSystemService<NotificationManager>()!!.areNotificationsEnabled()
     } else {
         true
@@ -136,7 +136,7 @@ fun Context.checkManifestPermission(permission: String): Boolean {
 }
 
 fun Context.isExternalStorageAccessible(): Boolean {
-    return if (isRAndAbove()) {
+    return if (isRAndAbove) {
         Environment.isExternalStorageManager()
     } else {
         checkManifestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -144,7 +144,7 @@ fun Context.isExternalStorageAccessible(): Boolean {
 }
 
 fun Context.isDomainVerified(domain: String): Boolean {
-    return if (isSAndAbove()) {
+    return if (isSAndAbove) {
         val domainVerificationManager = getSystemService<DomainVerificationManager>()
         val userState = domainVerificationManager!!.getDomainVerificationUserState(packageName)
         val domainMap = userState?.hostToStateMap?.filterKeys { it == domain }

@@ -104,7 +104,7 @@ class NativeDeviceInfoProvider(val context: Context) {
             setProperty("SimOperator", "38")
         }
 
-        if (isHuawei() && !isExport)
+        if (isHuawei && !isExport)
             stripHuaweiProperties(properties)
 
         return properties

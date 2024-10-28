@@ -198,7 +198,7 @@ class DownloadWorker @AssistedInject constructor(
         withContext(NonCancellable) {
             Log.i(TAG, "Failed downloading ${download.packageName}")
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
-            if (isSAndAbove() && stopReason in cancelReasons) {
+            if (isSAndAbove && stopReason in cancelReasons) {
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
                 notifyStatus(DownloadStatus.FAILED)
@@ -222,7 +222,7 @@ class DownloadWorker @AssistedInject constructor(
     private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
         try {
             // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-            return if (isPAndAbove() && download.isInstalled) {
+            return if (isPAndAbove && download.isInstalled) {
                 purchaseHelper.purchase(
                     packageName,
                     versionCode,
@@ -349,7 +349,7 @@ class DownloadWorker @AssistedInject constructor(
             NotificationUtil.getDownloadNotification(appContext)
         }
 
-        return if (isQAndAbove()) {
+        return if (isQAndAbove) {
             ForegroundInfo(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
         } else {
             ForegroundInfo(NOTIFICATION_ID, notification)

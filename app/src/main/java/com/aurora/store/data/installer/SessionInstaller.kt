@@ -206,19 +206,19 @@ class SessionInstaller @Inject constructor(
         return SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
             setAppPackageName(packageName)
             setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
-            if (isNAndAbove()) {
+            if (isNAndAbove) {
                 setOriginatingUid(Process.myUid())
             }
-            if (isOAndAbove()) {
+            if (isOAndAbove) {
                 setInstallReason(PackageManager.INSTALL_REASON_USER)
             }
-            if (isSAndAbove()) {
+            if (isSAndAbove) {
                 setRequireUserAction(SessionParams.USER_ACTION_NOT_REQUIRED)
             }
-            if (isTAndAbove()) {
+            if (isTAndAbove) {
                 setPackageSource(PACKAGE_SOURCE_STORE)
             }
-            if (isUAndAbove()) {
+            if (isUAndAbove) {
                 setInstallerPackageName(context.packageName)
                 setRequestUpdateOwnership(true)
                 setApplicationEnabledSettingPersistent()

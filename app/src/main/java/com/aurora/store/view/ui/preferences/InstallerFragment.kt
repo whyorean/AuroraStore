@@ -79,7 +79,7 @@ class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
 
         installerId = Preferences.getInteger(requireContext(), PREFERENCE_INSTALLER_ID)
 
-        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
+        if (isOAndAbove && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -102,13 +102,13 @@ class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
             }
         }
 
-        if (isMIUI() && !isMiuiOptimizationDisabled()) {
+        if (isMIUI && !isMiuiOptimizationDisabled) {
             findNavController().navigate(R.id.deviceMiuiSheet)
         }
     }
 
     override fun onDestroy() {
-        if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
+        if (isOAndAbove && AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)
@@ -119,7 +119,7 @@ class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
     private fun save(installerId: Int) {
         when (installerId) {
             0 -> {
-                if (isMIUI() && !isMiuiOptimizationDisabled()) {
+                if (isMIUI && !isMiuiOptimizationDisabled) {
                     findNavController().navigate(R.id.deviceMiuiSheet)
                 }
                 this.installerId = installerId
@@ -163,7 +163,7 @@ class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
             }
 
             5 -> {
-                if (isOAndAbove() && AppInstaller.hasShizukuOrSui(requireContext())) {
+                if (isOAndAbove && AppInstaller.hasShizukuOrSui(requireContext())) {
                     if (shizukuAlive && AppInstaller.hasShizukuPerm()) {
                         this.installerId = installerId
                         save(PREFERENCE_INSTALLER_ID, installerId)

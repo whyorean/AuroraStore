@@ -62,7 +62,7 @@ class PermissionProvider(private val fragment: Fragment) :
                 }
 
                 PermissionType.POST_NOTIFICATIONS -> {
-                   if (isTAndAbove()) {
+                   if (isTAndAbove) {
                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                    }
                 }
@@ -99,7 +99,7 @@ class PermissionProvider(private val fragment: Fragment) :
             PermissionType.INSTALL_UNKNOWN_APPS -> PackageUtil.canRequestPackageInstalls(context)
 
             PermissionType.POST_NOTIFICATIONS -> {
-                if (isTAndAbove()) {
+                if (isTAndAbove) {
                     context.checkManifestPermission(Manifest.permission.POST_NOTIFICATIONS)
                 } else {
                     true
@@ -107,7 +107,7 @@ class PermissionProvider(private val fragment: Fragment) :
             }
 
             PermissionType.DOZE_WHITELIST -> {
-                if (isMAndAbove()) context.isIgnoringBatteryOptimizations() else true
+                if (isMAndAbove) context.isIgnoringBatteryOptimizations() else true
             }
 
             PermissionType.APP_LINKS -> context.isDomainVerified("play.google.com") &&

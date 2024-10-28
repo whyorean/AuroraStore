@@ -38,7 +38,7 @@ class UnarchivePackageReceiver: BroadcastReceiver() {
     lateinit var downloadHelper: DownloadHelper
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        if (isVAndAbove() && context != null && intent?.action == Intent.ACTION_UNARCHIVE_PACKAGE) {
+        if (isVAndAbove && context != null && intent?.action == Intent.ACTION_UNARCHIVE_PACKAGE) {
             val packageName = intent.getStringExtra(EXTRA_UNARCHIVE_PACKAGE_NAME)!!
             Log.i(TAG, "Received request to unarchive $packageName")
 

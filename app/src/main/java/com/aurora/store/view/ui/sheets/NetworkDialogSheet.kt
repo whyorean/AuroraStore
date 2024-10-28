@@ -49,7 +49,7 @@ class NetworkDialogSheet : BaseDialogSheet<SheetNetworkBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnAction.setOnClickListener {
-            if (isQAndAbove()) {
+            if (isQAndAbove) {
                 startActivity(Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY))
             } else {
                 try {

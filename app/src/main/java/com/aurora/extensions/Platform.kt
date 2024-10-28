@@ -24,89 +24,65 @@ import android.annotation.SuppressLint
 import android.os.Build
 import java.util.Locale
 
-fun isMAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-}
+val isMAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 
-fun isNAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-}
+val isNAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
-fun isOAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-}
+val isOAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 
-fun isOMR1AndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
-}
+val isPAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
 
-fun isPAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-}
+val isQAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
-fun isQAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-}
+val isRAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
 
-fun isRAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
-}
+val isSAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
-fun isSAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-}
+val isTAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
 
-fun isTAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-}
+val isUAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 
-fun isUAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
-}
+val isVAndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM
 
-fun isVAndAbove(): Boolean {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM
-}
+val isMIUI: Boolean
+    get() = !getSystemProperty("ro.miui.ui.version.name").isNullOrBlank()
 
-fun isMIUI(): Boolean {
-    return getSystemProperty("ro.miui.ui.version.name").isNotEmpty()
-}
-
-fun isHuawei(): Boolean {
-    return Build.MANUFACTURER.lowercase(Locale.getDefault()).contains("huawei")
+val isHuawei: Boolean
+    get() = Build.MANUFACTURER.lowercase(Locale.getDefault()).contains("huawei")
             || Build.HARDWARE.lowercase(Locale.getDefault()).contains("kirin")
             || Build.HARDWARE.lowercase(Locale.getDefault()).contains("hi3")
-}
 
-fun getMIUIVersion(): String {
-    val version = getSystemProperty("ro.miui.ui.version.name")
-    val versionCode = getSystemProperty("ro.miui.ui.version.code")
-    return if (version.isNotEmpty() && versionCode.isNotEmpty())
-        "$version.$versionCode"
-    else
-        "unknown"
-}
-
-@SuppressLint("PrivateApi")
-fun isMiuiOptimizationDisabled(): Boolean {
-    if ("0" == getSystemProperty("persist.sys.miui_optimization")) {
-        return true
-    } else try {
-        return Class.forName("android.miui.AppOpsUtils")
-            .getDeclaredMethod("isXOptMode")
-            .invoke(null) as Boolean
-    } catch (e: java.lang.Exception) {
-        return false
+@get:SuppressLint("PrivateApi")
+val isMiuiOptimizationDisabled: Boolean
+    get() {
+        return if ("0" == getSystemProperty("persist.sys.miui_optimization")) {
+            true
+        } else try {
+            Class.forName("android.miui.AppOpsUtils")
+                .getDeclaredMethod("isXOptMode")
+                .invoke(null) as Boolean
+        } catch (_: java.lang.Exception) {
+            false
+        }
     }
-}
 
 @SuppressLint("PrivateApi")
-fun getSystemProperty(key: String): String {
+private fun getSystemProperty(key: String): String? {
     return try {
         Class.forName("android.os.SystemProperties")
             .getDeclaredMethod("get", String::class.java)
             .invoke(null, key) as String
     } catch (e: Exception) {
-        ""
+        null
     }
 }

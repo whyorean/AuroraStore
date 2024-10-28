@@ -123,7 +123,7 @@ object CertUtil {
     private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> {
         return try {
             val packageInfo = getPackageInfoWithSignature(context, packageName)
-            if (isPAndAbove()) {
+            if (isPAndAbove) {
                 if (packageInfo.signingInfo!!.hasMultipleSigners()) {
                     packageInfo.signingInfo!!.apkContentsSigners.map { it.generateX509Certificate() }
                 } else {
@@ -140,7 +140,7 @@ object CertUtil {
     }
 
     private fun getPackageInfoWithSignature(context: Context, packageName: String): PackageInfo {
-        return if (isPAndAbove()) {
+        return if (isPAndAbove) {
             getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
         } else {
             @Suppress("DEPRECATION")

@@ -49,7 +49,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             Permission(
                 PermissionType.INSTALL_UNKNOWN_APPS,
                 getString(R.string.onboarding_permission_installer),
-                if (isOAndAbove()) {
+                if (isOAndAbove) {
                     getString(R.string.onboarding_permission_installer_desc)
                 } else {
                     getString(R.string.onboarding_permission_installer_legacy_desc)
@@ -57,7 +57,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             )
         )
 
-        if (isRAndAbove()) {
+        if (isRAndAbove) {
             permissions.add(
                 Permission(
                     PermissionType.STORAGE_MANAGER,
@@ -77,7 +77,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             )
         }
 
-        if (isMAndAbove()) {
+        if (isMAndAbove) {
             permissions.add(
                 Permission(
                     PermissionType.DOZE_WHITELIST,
@@ -88,7 +88,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             )
         }
 
-        if (isTAndAbove()) {
+        if (isTAndAbove) {
             permissions.add(
                 Permission(
                     PermissionType.POST_NOTIFICATIONS,
@@ -99,7 +99,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             )
         }
 
-        if (isSAndAbove()) {
+        if (isSAndAbove) {
             permissions.add(
                 Permission(
                     PermissionType.APP_LINKS,
