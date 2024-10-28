@@ -453,4 +453,5 @@
     <string name="checking_updates">Провера ажурирања</string>
     <string name="authentication_required_title">Аутентификација неопходна</string>
     <string name="authentication_required_unarchive">Пријавите се на свој Google Play налог да бисте поништили архивирање апликације!</string>
+    <string name="made_with_love">Направљено од <xliff:g id="heart_emoji">%1$s</xliff:g> у Индији</string>
 </resources>
