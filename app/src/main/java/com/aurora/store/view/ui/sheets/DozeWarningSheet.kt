@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.toast
-import com.aurora.store.data.model.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.model.PermissionType
 import com.aurora.store.databinding.SheetDozeWarningBinding
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.save

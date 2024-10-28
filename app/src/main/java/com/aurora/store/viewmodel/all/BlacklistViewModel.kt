@@ -28,12 +28,12 @@ import com.aurora.extensions.isValidApp
 import com.aurora.store.data.providers.BlacklistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel

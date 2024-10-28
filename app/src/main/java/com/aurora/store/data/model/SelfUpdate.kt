@@ -20,7 +20,6 @@
 package com.aurora.store.data.model
 
 import android.content.Context
-import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.EncodedCertificateSet

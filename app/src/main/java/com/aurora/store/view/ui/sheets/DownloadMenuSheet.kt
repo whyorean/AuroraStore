@@ -30,10 +30,10 @@ import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
-import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.util.PathUtil
 import com.aurora.store.viewmodel.sheets.SheetsViewModel
 import dagger.hilt.android.AndroidEntryPoint

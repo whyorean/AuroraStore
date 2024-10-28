@@ -14,15 +14,15 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig
-import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.helper.UpdateHelper.Companion.UPDATE_SHOULD_NOTIFY
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao

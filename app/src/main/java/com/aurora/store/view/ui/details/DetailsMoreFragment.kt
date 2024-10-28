@@ -40,8 +40,8 @@ import com.aurora.store.view.epoxy.views.details.MoreBadgeViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.DetailsMoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.UUID
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 @AndroidEntryPoint
 class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {

@@ -35,10 +35,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.aurora.extensions.getInstallerPackageNameCompat
-import com.aurora.extensions.isValidApp
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
+import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
 
 object PackageUtil {

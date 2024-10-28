@@ -29,10 +29,10 @@ import coil.ImageLoaderFactory
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
-import com.aurora.store.data.receiver.PackageManagerReceiver
-import com.aurora.store.util.CommonUtil
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.receiver.PackageManagerReceiver
+import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
@@ -40,9 +40,9 @@ import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
+import okhttp3.OkHttpClient
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import javax.inject.Inject
-import okhttp3.OkHttpClient
 
 @HiltAndroidApp
 class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {

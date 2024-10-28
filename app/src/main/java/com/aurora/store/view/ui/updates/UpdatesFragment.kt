@@ -28,9 +28,9 @@ import com.aurora.Constants
 import com.aurora.extensions.browse
 import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MobileNavigationDirections
-import com.aurora.store.data.model.PermissionType
 import com.aurora.store.R
 import com.aurora.store.data.model.MinimalApp
+import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding

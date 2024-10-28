@@ -24,13 +24,12 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.aurora.Constants
 import com.aurora.Constants.GITLAB_URL
 import com.aurora.extensions.browse
 import com.aurora.store.R
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentDownloadBinding
-import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment

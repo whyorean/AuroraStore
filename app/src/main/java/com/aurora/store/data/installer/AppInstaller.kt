@@ -34,14 +34,10 @@ import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isSAndAbove
-import com.aurora.extensions.isTAndAbove
-import com.aurora.extensions.isUAndAbove
-import com.aurora.extensions.isVAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
-import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences

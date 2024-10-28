@@ -21,9 +21,9 @@ package com.aurora.store.viewmodel.all
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.store.data.room.update.Update
-import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.helper.DownloadHelper
+import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.room.update.Update
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

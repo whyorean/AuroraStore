@@ -32,14 +32,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
+import okhttp3.OkHttpClient
 import java.net.Authenticator
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
 import java.net.Proxy
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import okhttp3.CertificatePinner
-import okhttp3.OkHttpClient
 
 @Module
 @InstallIn(SingletonComponent::class)
