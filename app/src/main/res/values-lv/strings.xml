@@ -419,4 +419,5 @@
     <string name="authentication_required_title">Nepieciešama autentificēšanās</string>
     <string name="authentication_required_unarchive">Lūgums pieteikties savā Google Play kontā, lai atceltu lietotnes arhivēšanu.</string>
     <string name="checking_updates">Pārbauda atjauninājumus</string>
+    <string name="made_with_love">Ar <xliff:g id="heart_emoji">%1$s</xliff:g> radīta Indijā</string>
 </resources>

@@ -7,7 +7,7 @@
     <string name="toast_apk_blacklisted">Na blacklist</string>
     <string name="action_whitelist">Bílá Listina</string>
     <string name="toast_manual_unavailable">Kód verze, který požadujete, není k dispozici.</string>
-    <string name="toast_spoof_applied">Device spoof byl použit.</string>
+    <string name="toast_spoof_applied">Byl použit spoofing zařízení.</string>
     <string name="toast_apk_whitelisted">Na whitelistu</string>
     <string name="insecure_anonymous_apply">Chcete-li použít změny, nezapomeňte se znovu přihlásit a restartovat aplikaci.</string>
     <string name="toast_manual_available">Gratuluji, požadovaný kód verze je k dispozici, nyní stahuji.</string>
@@ -18,7 +18,7 @@
     <string name="toast_anonymous_restriction">Není k dispozici na anonymních účtech</string>
     <string name="title_manual_download">Ruční stažení</string>
     <string name="title_updates">Aktualizace</string>
-    <string name="title_spoof_manager">Správa falšování</string>
+    <string name="title_spoof_manager">Správa spoofingu</string>
     <string name="title_settings">Nastavení</string>
     <string name="title_purchase_history">Historie nákupů</string>
     <string name="title_no_network">Žádná síť</string>
@@ -45,7 +45,7 @@
     <string name="tab_for_you">Pro vás</string>
     <string name="tab_editor_choice">Výběr redakce</string>
     <string name="tab_categories">Kategorie</string>
-    <string name="spoof_apply">Chcete-li použít device spoof, nezapomeňte se znovu přihlásit</string>
+    <string name="spoof_apply">Pro použití spoofingu se nezapomeňte znovu přihlásit</string>
     <string name="purchase_session_expired">Relace vypršela, pro vytvoření nové se znovu přihlaste.</string>
     <string name="purchase_no_file">Nelze získat soubory</string>
     <string name="purchase_not_found">Aplikace nebyla nalezena</string>
