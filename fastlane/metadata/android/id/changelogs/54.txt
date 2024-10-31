@@ -1,0 +1,18 @@
+• Perubahan internal utama pada sistem unduhan
+• Aurora Store kini memerlukan izin baru untuk mengunduh di latar belakang
+• Fitur Jeda dan Lanjutkan telah ditinggalkan untuk unduhan
+• Unduhan serentak telah ditinggalkan (terbatas pada satu unduhan dalam satu waktu)
+• Verifikasi SHA256 & SHA1 otomatis untuk file yang diunduh
+• Dukungan yang lebih baik untuk aplikasi dengan pustaka bersama seperti Chrome dan WebView
+• Perubahan utama pada sistem pembaruan
+• Pembaruan otomatis baru untuk aplikasi (diaktifkan secara default)
+• Verifikasi sertifikat otomatis baru untuk pembaruan
+• Dukungan untuk pembaruan dengan rotasi kunci penandatanganan (diperkenalkan setelah Android 9.0+)
+• Pembaruan Mandiri (Aurora Store) telah dinonaktifkan secara default (aktifkan di setelan > pembaruan)
+• Penginstal Asli dan Layanan Aurora telah ditinggalkan
+• Mengekspor aplikasi yang diinstal tidak lagi memerlukan izin penyimpanan
+• Versi Android minimum yang diperlukan untuk aplikasi sekarang terlihat di halaman detail aplikasi (Informasi lebih lanjut tentang aplikasi ini > Info)
+• Pembaruan terjemahan & perbaikan bug utama
+• Dukungan untuk menginstal aplikasi dengan Sui (Modul Shizuku Magisk)
+• Kemampuan untuk mengganti versi GMS dari Setelan > Jaringan
+• Material3 sekarang digunakan di lebih banyak tempat
