@@ -1,0 +1,3 @@
+• Memperbaiki masalah migrasi minor
+• Menambahkan pembaruan otomatis untuk versi Nightly
+• Pembaruan terjemahan

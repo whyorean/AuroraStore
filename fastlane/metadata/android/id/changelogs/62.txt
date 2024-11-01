@@ -1,0 +1,6 @@
+• Memperbaiki masalah UI di Android 15
+• Peningkatan pada konfigurasi dan penggunaan proxy
+• Penyematan SSL untuk domain yang dikenal menggunakan sertifikat root
+• Dukungan yang lebih baik untuk tema Dinamis pada perangkat yang didukung
+• Menghentikan dukungan untuk tema kustom dan warna aksen
+• Pembaruan terjemahan
