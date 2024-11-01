@@ -34,18 +34,13 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.providers.PermissionProvider
-import com.google.gson.Gson
 import java.lang.reflect.ParameterizedType
-import javax.inject.Inject
 
 abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     private val TAG = BaseFragment::class.java.simpleName
 
     lateinit var permissionProvider: PermissionProvider
-
-    @Inject
-    lateinit var gson: Gson
 
     private var _binding: ViewBindingType? = null
     protected val binding get() = _binding!!
