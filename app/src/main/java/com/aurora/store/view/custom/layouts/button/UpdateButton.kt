@@ -55,7 +55,7 @@ class UpdateButton : RelativeLayout {
     fun updateState(downloadStatus: DownloadStatus) {
         val displayChild = when (downloadStatus) {
             DownloadStatus.QUEUED,
-            DownloadStatus.DOWNLOADING -> 2
+            DownloadStatus.DOWNLOADING -> 1
             else -> 0
         }
 
