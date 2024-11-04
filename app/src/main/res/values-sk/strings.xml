@@ -418,4 +418,6 @@
     <string name="notification_channel_account">Upozornenie týkajúce sa účtu</string>
     <string name="authentication_required_title">Vyžaduje sa overenie</string>
     <string name="authentication_required_unarchive">Ak chcete zrušiť archiváciu aplikácie, prihláste sa do svojho účtu Google Play!</string>
+    <string name="checking_updates">Kontrola aktualizácie</string>
+    <string name="made_with_love">Vyrobené s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
 </resources>
