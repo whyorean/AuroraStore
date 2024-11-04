@@ -20,13 +20,16 @@
 
 package com.aurora.store.view.ui.details
 
+import android.animation.ObjectAnimator
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -40,11 +43,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
+import com.aurora.extensions.invisible
+import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
@@ -104,16 +110,15 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
     private lateinit var app: App
+    private var iconDrawable: Drawable? = null
+    private val cornersTransformation = RoundedCornersTransformation(8.px.toFloat())
 
     private var streamBundle: StreamBundle? = StreamBundle()
 
     private val isExternal get() = activity?.intent?.action != Intent.ACTION_MAIN
 
     private var downloadStatus = DownloadStatus.UNAVAILABLE
-    private var isUpdatable: Boolean = false
-    private var autoDownload: Boolean = false
     private var uninstallActionEnabled = false
 
     private fun onEvent(event: Event) {
@@ -181,15 +186,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.layoutDetailsDev.root) { v, w ->
             val insets = w.getInsets(WindowInsetsCompat.Type.navigationBars())
             v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
-            }
-            WindowInsetsCompat.CONSUMED
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutDetailsInstall.viewFlipper) { v, w ->
-            val insets = w.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
+                bottomMargin = insets.bottom
             }
             WindowInsetsCompat.CONSUMED
         }
@@ -238,7 +235,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                             }
 
                             DownloadStatus.DOWNLOADING -> {
-                                updateProgress(it.progress, it.speed, it.timeRemaining)
+                                updateProgress(it.progress)
                             }
 
                             else -> {}
@@ -367,10 +364,14 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
         }
 
-        binding.layoutDetailsInstall.progressDownload.clipToOutline = true
-        binding.layoutDetailsInstall.imgCancel.setOnClickListener {
-            viewModel.cancelDownload(app)
-            if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)
+        binding.layoutDetailDescription.btnOpen.setOnClickListener { openApp() }
+
+        binding.layoutDetailDescription.btnNegative.setOnClickListener {
+            if (downloadStatus !in DownloadStatus.finished) {
+                viewModel.cancelDownload(app)
+            } else {
+                AppInstaller.uninstall(requireContext(), app.packageName)
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -384,11 +385,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     override fun onResume() {
         checkAndSetupInstall()
         super.onResume()
-    }
-
-    private fun attachActions() {
-        flip(0)
-        checkAndSetupInstall()
     }
 
     private fun attachToolbar() {
@@ -473,7 +469,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.layoutDetailsApp.apply {
             imgIcon.load(app.iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
-                transformations(RoundedCornersTransformation(32F))
+                transformations(cornersTransformation)
+                listener { _, result ->
+                    result.drawable.let { iconDrawable = it }
+                }
             }
 
             txtLine1.text = app.displayName
@@ -499,40 +498,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 tags.add(getString(R.string.details_no_ads))
 
             txtLine4.text = tags.joinToString(separator = " • ")
-        }
-    }
-
-    private fun attachBottomSheet() {
-        binding.layoutDetailsInstall.apply {
-            viewFlipper.setInAnimation(requireContext(), R.anim.fade_in)
-            viewFlipper.setOutAnimation(requireContext(), R.anim.fade_out)
-        }
-
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.layoutDetailsInstall.bottomSheet)
-        bottomSheetBehavior.isDraggable = false
-
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setDraggable(true)
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottomSheetBehavior.isDraggable = false
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
-    }
-
-    private fun updateActionState(state: State) {
-        runOnUiThread {
-            binding.layoutDetailsInstall.btnDownload.apply {
-                updateState(state)
-                if (state == State.INSTALLING) {
-                    setButtonState(false)
-                    setText(R.string.action_installing)
-                }
-            }
         }
     }
 
@@ -563,10 +528,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun purchase() {
-        bottomSheetBehavior.isHideable = false
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        updateActionState(State.PROGRESS)
-
         if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
@@ -580,26 +541,23 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun updateProgress(progress: Int, speed: Long = -1, timeRemaining: Long = -1) {
+    private fun updateProgress(progress: Int) {
         runOnUiThread {
             if (progress == 100) {
-                binding.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
+                binding.layoutDetailsApp.progressDownload.isIndeterminate = true
                 return@runOnUiThread
             }
 
-            binding.layoutDetailsInstall.apply {
-                txtProgressPercent.text = ("${progress}%")
+            binding.layoutDetailsApp.apply {
                 progressDownload.apply {
                     this.progress = progress
                     isIndeterminate = progress < 1
                 }
-                txtEta.text = CommonUtil.getETAString(requireContext(), timeRemaining)
-                txtSpeed.text = CommonUtil.getDownloadSpeedString(requireContext(), speed)
             }
         }
     }
 
-    private fun checkAndSetupInstall() {
+    private fun checkAndSetupInstall(downloadStatus: DownloadStatus = DownloadStatus.UNAVAILABLE) {
         app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
         runOnUiThread {
@@ -614,7 +572,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                             requireContext(), app.packageName
                         )
                     }
-                    isUpdatable = PackageUtil.isUpdatable(
+                    val isUpdatable = PackageUtil.isUpdatable(
                         requireContext(),
                         app.packageName,
                         app.versionCode.toLong()
@@ -687,26 +645,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    @Synchronized
-    private fun flip(nextView: Int) {
-        runOnUiThread {
-            val displayChild = binding.layoutDetailsInstall.viewFlipper.displayedChild
-            if (displayChild != nextView) {
-                binding.layoutDetailsInstall.viewFlipper.displayedChild = nextView
-                if (nextView == 0) checkAndSetupInstall()
-            }
-        }
-    }
-
     private fun inflatePartialApp() {
         if (::app.isInitialized) {
             attachHeader()
-            attachBottomSheet()
             attachActions()
-
-            if (autoDownload) {
-                purchase()
-            }
         }
     }
 
@@ -1020,5 +962,38 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun addOrUpdateReview(app: App, review: Review, isBeta: Boolean = false) {
         viewModel.postAppReview(app.packageName, review, isBeta)
+    }
+
+    private fun animateImageView(scaleFactor: Float = 1f) {
+        val imgIcon = binding.layoutDetailsApp.imgIcon
+        val progressDownload = binding.layoutDetailsApp.progressDownload
+        val isDownloadVisible = progressDownload.isShown
+
+        // Avoids flickering when the download is in progress
+        if (isDownloadVisible && scaleFactor != 1f) return
+        if (!isDownloadVisible && scaleFactor == 1f) return
+
+        if (scaleFactor == 1f) progressDownload.invisible() else progressDownload.show()
+
+        val scale = listOf(
+            ObjectAnimator.ofFloat(imgIcon, "scaleX", scaleFactor),
+            ObjectAnimator.ofFloat(imgIcon, "scaleY", scaleFactor)
+        )
+
+        scale.forEach { animation ->
+            animation.apply {
+                interpolator = AccelerateDecelerateInterpolator()
+                duration = 250
+                start()
+            }
+        }
+
+        iconDrawable?.let {
+            imgIcon.load(it) {
+                transformations(
+                    if (scaleFactor == 1f) cornersTransformation else CircleCropTransformation()
+                )
+            }
+        }
     }
 }

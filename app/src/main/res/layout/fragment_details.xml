@@ -119,8 +119,4 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-
-    <include
-        android:id="@+id/layout_details_install"
-        layout="@layout/layout_details_install" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -21,23 +21,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingStart="@dimen/padding_medium"
     android:paddingTop="@dimen/padding_small"
     android:paddingEnd="@dimen/padding_small"
     android:paddingBottom="@dimen/padding_small">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_icon"
+    <RelativeLayout
+        android:id="@+id/head_flipper"
         android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        tools:src="@drawable/bg_placeholder" />
+        android:layout_height="@dimen/icon_size">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            tools:src="@drawable/bg_placeholder" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_download"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:indicatorSize="@dimen/icon_size_medium"
+            app:trackThickness="3dp"
+            tools:progress="40" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/txt_line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_toEndOf="@id/img_icon"
+        android:layout_toEndOf="@id/head_flipper"
         android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
         tools:text="App Name" />

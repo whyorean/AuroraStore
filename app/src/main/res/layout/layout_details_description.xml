@@ -100,6 +100,54 @@
             </LinearLayout>
         </HorizontalScrollView>
 
+        <ViewFlipper
+            android:id="@+id/view_flipper"
+            android:layout_marginHorizontal="@dimen/margin_large"
+            android:layout_marginVertical="@dimen/margin_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateFirstView="true"
+            android:inAnimation="@anim/fade_in"
+            android:outAnimation="@anim/fade_out">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPositive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_install"
+                    android:textAppearance="@style/TextAppearance.Aurora.SubTitle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNegative"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_weight="1"
+                    android:text="@string/action_cancel" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_weight="1"
+                    android:text="@string/action_open" />
+            </LinearLayout>
+        </ViewFlipper>
+
         <LinearLayout
             android:id="@+id/layout_description"
             android:layout_width="match_parent"
