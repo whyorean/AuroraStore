@@ -318,10 +318,6 @@
     <string name="pref_vending_version_title">Версія Google Play</string>
     <string name="onboarding_permission_doze">Завантаження у фоні</string>
     <string name="onboarding_permission_doze_desc">Дозволити Aurora Store завантажувати й оновлювати застосунки у фоновому режимі</string>
-    <string name="device_doze_description">Вимкніть оптимізацію акумулятора, щоб увімкнути фонові операції.</string>
-    <string name="device_doze_title">Виявлено оптимізацію акумулятора!</string>
-    <string name="device_doze_extra">За бажанням ви можете залишити оптимізацію увімкненою, але тоді ви не зможете скористатися перевагами фонових завантажень та автоматичних оновлень, тому вибір за вами.</string>
-    <string name="device_doze_subtitle">Aurora Store не може встановлювати, завантажувати або оновлювати застосунки у фоновому режимі через оптимізацію роботи акумулятора.</string>
     <string name="pref_updates_auto">Автооновлення застосунків</string>
     <string name="pref_updates_auto_notify">Перевіряти та повідомляти про доступні оновлення</string>
     <string name="pref_updates_auto_off">Не оновлювати застосунки автоматично</string>

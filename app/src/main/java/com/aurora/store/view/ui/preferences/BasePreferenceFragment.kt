@@ -1,13 +1,22 @@
 package com.aurora.store.view.ui.preferences
 
+import android.os.Bundle
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.view.custom.preference.M3EditTextPreference
 import com.aurora.store.view.custom.preference.M3ListPreference
 
 abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
+
+    lateinit var permissionProvider: PermissionProvider
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        permissionProvider = PermissionProvider(this)
+    }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
         when (preference) {
@@ -29,5 +38,10 @@ abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
             }
             else -> super.onDisplayPreferenceDialog(preference)
         }
+    }
+
+    override fun onDestroy() {
+        permissionProvider.unregister()
+        super.onDestroy()
     }
 }

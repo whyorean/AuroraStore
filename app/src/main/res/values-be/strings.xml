@@ -167,9 +167,6 @@
     <string name="action_enabled">Задзейнічана</string>
     <string name="app_link_enabled">Спасылка прыкладання задзейнічана!</string>
     <string name="amazon_appstore_desc">Amazon Appstore - анлайн крама прыкладанняў для андройд-сумяшчальных платформам, што працуюць на Amazon.</string>
-    <string name="device_doze_title">Выяўлены аптымізатар батарэі!</string>
-    <string name="device_doze_subtitle">Aurora Store можа усталёўваць, альбо абнаўляць прыкладанні ў фоне праз аптымізацыю батарэі.</string>
-    <string name="device_doze_extra">Па жаданні можна пакінуць аптымізацыю ўключанай, але тады не атрымаецца скарыстацца фонавымі загрузкамі і аўтаматычнымі абнаўленнямі, выбар за карыстальнікам.</string>
     <string name="session_installer_subtitle">прыкладанняўа ўсталёўкі на аснове сеанса для пакетных/падзеленых APK</string>
     <string name="root_installer_subtitle">Усталёўка на аснове абалонкі з выкарыстаннем root правоў</string>
     <string name="root_installer_desc">Патрабуе прывілеяў root/superuser, падтрымлівае ўсе Android версіі.</string>
@@ -347,7 +344,6 @@
     <string name="server_unreachable">Сервер недаступны</string>
     <string name="app_links_title">Спасылкі прыкладання</string>
     <string name="google_play_store_desc">Google Play, гэтак жа вядомы як Google Play Store, а раней - Android Market.</string>
-    <string name="device_doze_description">Калі ласка, Адключыце аптымізатар батарэі для дазволу фонавых аперацый.</string>
     <string name="action_manage">Кіраваць</string>
     <string name="failed_app_link">Не падтрымліваецца, паспрабуце звязаць спасылкі ўласнаруч</string>
     <string name="native_installer_desc">Лепш за ўсё падыходзіць для прылад з Android ніжэй 4.4</string>

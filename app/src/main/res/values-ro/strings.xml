@@ -316,15 +316,11 @@
     <string name="action_uninstall_confirmation">Dorești să dezinstalezi această aplicație?</string>
     <string name="android_market_desc">Android Market a fost un magazin online care oferea aplicații software concepute pentru dispozitive Android, retras în 2017.</string>
     <string name="pref_downloader_wifi_title">Descarcă numai utilizând Wi-Fi</string>
-    <string name="device_doze_title">A fost detectată optimizarea bateriei!</string>
-    <string name="device_doze_subtitle">Magazinul Aurora nu poate instala, descărca sau actualiza aplicațiile în fundal din cauza optimizărilor bateriei.</string>
-    <string name="device_doze_description">Dezactivează optimizările bateriei pentru a permite operațiunile în fundal.</string>
     <string name="pref_updates_auto">Actualizări automate ale aplicațiilor</string>
     <string name="pref_updates_auto_notify">Verifică și notifică despre actualizările disponibile</string>
     <string name="pref_updates_auto_install">Verifică și instalează automat actualizările disponibile</string>
     <string name="pref_updates_auto_off">Nu se actualizează automat aplicațiile</string>
     <string name="pref_updates_auto_desc">Configurează comportamentul actualizărilor automate</string>
-    <string name="device_doze_extra">Opțional, poți alege să păstrezi optimizările activate, dar apoi nu vei putea beneficia de descărcări în fundal și de actualizări automate, așa că alegerea îți aparține.</string>
     <string name="action_request_analysis">Solicită o nouă analiză</string>
     <string name="onboarding_permission_doze">Descărcări în fundal</string>
     <string name="onboarding_permission_doze_desc">Permite magazinului Aurora să descarce și să actualizeze aplicațiile în fundal</string>

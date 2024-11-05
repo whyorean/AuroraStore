@@ -335,9 +335,7 @@
     <string name="failed_generating_session">Αποτυχία δημιουργίας συνεδρίας, κώδικας σφάλματος: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="login_rate_limited">Ουπς, αυτός ο λογαριασμός έχει όριο</string>
     <string name="google_play_store_desc">Google Play, ή αλλιώς Google Play Store και πρώην Android Market.</string>
-    <string name="device_doze_title">Εντοπίστηκαν βελτιστοποιήσεις μπαταρίας!</string>
     <string name="server_unreachable">Διακομιστής μη διαθέσιμος</string>
-    <string name="device_doze_description">Παρακαλούμε, απενεργοποιήστε τις βελτιστοποιήσεις μπαταρίας για να επιτρέψετε λειτουργίες στο παρασκήνιο.</string>
     <string name="verifying_new_session">Επαλήθευση νέας συνεδρίας</string>
     <string name="shizuku_installer_subtitle">Χρήση των API του συστήματος απευθείας με προνόμια adb/root</string>
     <string name="session_installer_subtitle">Συνεδρία εγκατάστασης για bundled/split APKs</string>
@@ -352,8 +350,6 @@
     <string name="title_more">Περισσότερα</string>
     <string name="source_code_title">Πηγαίος κώδικας</string>
     <string name="source_code_subtitle">Μάθετε τι υπάρχει μέσα</string>
-    <string name="device_doze_subtitle">Το Aurora Store δεν μπορεί να εγκαταστήσει λήψη ή ενημέρωση εφαρμογών στο παρασκήνιο λόγω βελτιστοποίησης της μπαταρίας.</string>
-    <string name="device_doze_extra">Προαιρετικά μπορείτε να επιλέξετε να διατηρήσετε τις βελτιστοποιήσεις ενεργοποιημένες, αλλά τότε δεν θα μπορείτε να επωφεληθείτε από τις λήψεις στο παρασκήνιο και τις αυτοματοποιημένες ενημερώσεις, οπότε η επιλογή είναι δική σας.</string>
     <string name="action_manage">Διαχείριση</string>
     <string name="am_installer_desc">Απαιτεί App Manager, χρειάζεται λειτουργία adb/root για την εγκατάσταση όταν η βελτιστοποίηση miui είναι ενεργοποιημένη</string>
     <string name="pref_clear_device_owner_summary">Καταργεί το Aurora Store ως εφαρμογή κατόχου της συσκευής</string>

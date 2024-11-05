@@ -318,13 +318,9 @@
     <string name="pref_vending_version_title">Google Play-version</string>
     <string name="onboarding_permission_doze">Hämtningar i bakgrunden</string>
     <string name="onboarding_permission_doze_desc">Tillåt Aurora-butiken att hämta och uppdatera appar i bakgrunden</string>
-    <string name="device_doze_title">Batterioptimeringar har upptäckts!</string>
     <string name="pref_updates_auto_desc">Konfigurera beteende för automatiska uppdateringar</string>
     <string name="pref_updates_auto_notify">Kontrollera &amp; meddela om tillgängliga uppdateringar</string>
     <string name="pref_updates_auto_install">Kontrollera &amp; installera tillgängliga uppdateringar automatiskt</string>
-    <string name="device_doze_subtitle">Aurora-butiken kan inte installera ladda ner eller uppdatera appar i bakgrunden på grund av batterioptimeringar.</string>
-    <string name="device_doze_description">Vänligen inaktivera batterioptimering för att tillåta bakgrundsoperationer.</string>
-    <string name="device_doze_extra">Alternativt så kan du välja att behålla optimeringarna aktiverade, men då kommer du inte att kunna dra nytta av bakgrundsnedladdningar och automatiska uppdateringar, så valet är ditt.</string>
     <string name="pref_updates_auto">Uppdatera appar automatiskt</string>
     <string name="pref_updates_auto_off">Uppdatera inte alla appar automatiskt</string>
     <string name="action_request_analysis">Begär ny analys</string>

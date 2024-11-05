@@ -294,7 +294,6 @@
     <string name="action_enabled">Aktiveret</string>
     <string name="check_connectivity">Tjek internetforbindelse</string>
     <string name="privacy_policy_title">Privatlivspolitik</string>
-    <string name="device_doze_extra">Du kan også vælge at holde optimeringerne aktiveret, men så mister du muligheden for baggrundsdownloads og automatiske opdateringer. Valget er dit.</string>
     <string name="about_aurora_store_summary">Aurora Store lader dig søge efter og downloade apps fra den officielle Google Play-butik. Du kan se app-beskrivelser, skærmbilleder, opdateringer, andre brugeres anmeldelser og downloade APK\'en direkte fra Google Play til din enhed. For at bruge Aurora Store skal du have en Google Play-konto og logge ind på den, når du åbner og konfigurerer Aurora Store første gang.
 \n
 \nAurora Store hverken ejer, licenserer eller distribuerer apps ligesom en traditionel app-butik. Alle apps, app-beskrivelser, skærmbilleder og andet indhold i Aurora Store er direkte tilgået, downloadet og/eller vist fra Google Play. Aurora Store fungerer præcis som en dør eller browser, og lader dig logge ind på din Google Play-konto og finde apps fra Google Play.
@@ -302,7 +301,6 @@
 \nBemærk, at Aurora Store ikke har nogen godkendelse, sponsorering eller tilladelse fra Google, Google Play, nogen app downloadet via Aurora Store eller nogen app-udviklere; Aurora Store har heller ikke nogen tilknytning, samarbejde eller forbindelse med dem.</string>
     <string name="force_restart_title">Genstart Aurora Store</string>
     <string name="failed_to_generate_session">Kunne ikke generere session</string>
-    <string name="device_doze_description">Deaktivér venligst batterioptimeringer for at tillade baggrundsoperationer.</string>
     <string name="action_manage">Administrer</string>
     <string name="pref_clear_device_owner_title">Ryd enhedens ejer</string>
     <string name="session_installer_desc">Anbefalet, indbygget og understøtter alle Android-versioner</string>
@@ -321,7 +319,6 @@
     <string name="check_updates">Tjek for opdateringer</string>
     <string name="access_denied_using_vpn">Adgang nægtet! Bruger du VPN eller Tor?</string>
     <string name="bad_request">Intern fejl! Prøv venligst igen senere</string>
-    <string name="device_doze_subtitle">Aurora Store kan ikke installere, downloade eller opdatere apps i baggrunden grundet batterioptimeringer.</string>
     <string name="title_more">Mere</string>
     <string name="manage_account">Administrer din konto</string>
     <string name="toast_fav_import_failed">Kunne ikke importere favoritter!</string>

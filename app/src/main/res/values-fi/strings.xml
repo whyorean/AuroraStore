@@ -304,16 +304,13 @@
     <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
     <string name="title_apps_sale_provider">Tarjoaja - bestappsales.com</string>
     <string name="pref_downloader_wifi_title">Lataa vain Wifi-verkon kautta</string>
-    <string name="device_doze_description">Ole hyvä ja poista akkujen optimoinnit taustatoimintojen sallimiseksi.</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
     <string name="onboarding_permission_doze">Taustalla lataukset</string>
     <string name="pref_updates_auto">Päivitä sovellukset automaattisesti</string>
-    <string name="device_doze_title">Akun optimointi on havaittu!</string>
     <string name="pref_updates_auto_notify">Tarkista ja ilmoita saatavilla olevista päivityksistä</string>
     <string name="pref_updates_auto_off">Älä päivitä sovelluksia automaattisesti</string>
     <string name="title_app_settings">Sovellusasetukset</string>
     <string name="details_no_apps_on_sale">Ei sovelluksia myynnissä</string>
-    <string name="device_doze_subtitle">Aurora Store ei voi asentaa lataus- tai päivityssovelluksia taustalla johtuen akun optimoinnista.</string>
     <string name="pref_updates_auto_desc">Automaattisten päivitysten määrittäminen</string>
     <string name="action_uninstall_confirmation">Haluatko poistaa tämän sovelluksen?</string>
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>

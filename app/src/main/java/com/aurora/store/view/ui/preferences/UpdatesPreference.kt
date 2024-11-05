@@ -26,13 +26,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.SeekBarPreference
 import androidx.preference.SwitchPreferenceCompat
-import com.aurora.extensions.isIgnoringBatteryOptimizations
-import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
+import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -47,22 +48,45 @@ class UpdatesPreference : BasePreferenceFragment() {
 
         findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)
             ?.setOnPreferenceChangeListener { _, newValue ->
-                val value = newValue.toString().toInt()
-                when (value) {
-                    0 -> updateHelper.cancelAutomatedCheck()
-                    1 -> updateHelper.scheduleAutomatedCheck()
-                    else -> {
-                        if (requireContext().isIgnoringBatteryOptimizations()) {
+                when (UpdateMode.entries[newValue.toString().toInt()]) {
+                    UpdateMode.DISABLED -> {
+                        updateHelper.cancelAutomatedCheck()
+                        requireContext().save(PREFERENCE_UPDATES_AUTO, 0)
+                        true
+                    }
+
+                    UpdateMode.CHECK_AND_NOTIFY -> {
+                        if (permissionProvider.isGranted(PermissionType.POST_NOTIFICATIONS)) {
                             updateHelper.scheduleAutomatedCheck()
-                            return@setOnPreferenceChangeListener true
+                            true
                         } else {
-                            findNavController().navigate(
-                                MobileNavigationDirections.actionGlobalDozeWarningSheet(true)
-                            )
+                            permissionProvider.request(PermissionType.POST_NOTIFICATIONS) {
+                                if (it) {
+                                    requireContext().save(PREFERENCE_UPDATES_AUTO, 1)
+                                    updateHelper.scheduleAutomatedCheck()
+                                    activity?.recreate()
+                                }
+                            }
+                            false
+                        }
+                    }
+
+                    UpdateMode.CHECK_AND_INSTALL -> {
+                        if (permissionProvider.isGranted(PermissionType.DOZE_WHITELIST)) {
+                            updateHelper.scheduleAutomatedCheck()
+                            true
+                        } else {
+                            permissionProvider.request(PermissionType.DOZE_WHITELIST) {
+                                if (it) {
+                                    requireContext().save(PREFERENCE_UPDATES_AUTO, 2)
+                                    updateHelper.scheduleAutomatedCheck()
+                                    activity?.recreate()
+                                }
+                            }
+                            false
                         }
                     }
                 }
-                value != 2
             }
 
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)

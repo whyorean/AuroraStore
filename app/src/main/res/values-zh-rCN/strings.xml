@@ -318,10 +318,6 @@
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="onboarding_permission_doze">后台下载</string>
     <string name="onboarding_permission_doze_desc">允许 Aurora Store 在后台下载并更新应用</string>
-    <string name="device_doze_description">请停用电池优化来允许后台操作。</string>
-    <string name="device_doze_title">检测到电池优化！</string>
-    <string name="device_doze_extra">你也可以选择保持优化开启，但你将无法获益于后台下载和自定更新。怎么选由你决定。</string>
-    <string name="device_doze_subtitle">由于电池优化，Aurora Store 无法在后台安装已下载或更新的应用。</string>
     <string name="pref_updates_auto">自动更新应用</string>
     <string name="pref_updates_auto_notify">检查并提示可用更新</string>
     <string name="pref_updates_auto_off">不自动更新应用</string>

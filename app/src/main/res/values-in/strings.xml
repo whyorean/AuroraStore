@@ -284,7 +284,6 @@
     <string name="failed_to_fetch_report">Gagal mengambil laporan privasi</string>
     <string name="server_unreachable">Server tidak dapat dijangkau</string>
     <string name="failed_generating_session">Gagal membuat sesi, kode error: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="device_doze_description">Harap nonaktifkan pengoptimalan baterai untuk mengizinkan operasi latar belakang.</string>
     <string name="pref_vending_version_device">Bawaan (dari konfigurasi perangkat)</string>
     <string name="pref_network_proxy_enable">Aktifkan proksi</string>
     <string name="check_connectivity">Periksa koneksi internet</string>
@@ -302,10 +301,8 @@
     <string name="onboarding_permission_doze">Unduhan Latar Belakang</string>
     <string name="toast_proxy_invalid">URL proksi invalid, periksa format!</string>
     <string name="pref_aurora_only_desc">Hanya tampilkan aplikasi yang di install dari Aurora Store di Pembaruan dan Aplikasi yang terpasang</string>
-    <string name="device_doze_title">Pengoptimalan baterai terdeteksi!</string>
     <string name="toast_proxy_success">Proksi berhasil disetel</string>
     <string name="app_links_title">Tautan Aplikasi</string>
-    <string name="device_doze_extra">Secara opsional Anda dapat memilih untuk tetap mengaktifkan pengoptimalan, namun Anda tidak bisa memanfaatkan unduhan di latar belakang dan pembaruan otomatis, jadi pilihan ada di tangan Anda.</string>
     <string name="google_play_store_desc">Google Play, juga dikenal sebagai Google Play Store dan sebelumnya Android Market.</string>
     <string name="verifying_new_session">Memverifikasi sesi baru</string>
     <string name="action_enabled">Diaktifkan</string>
@@ -315,7 +312,6 @@
     <string name="details_no_apps_on_sale">Tidak ada aplikasi yang di-diskon</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
     <string name="pref_download_directory_error">Jalur yang dipilih tidah bisa ditulis</string>
-    <string name="device_doze_subtitle">Aurora Store tidak dapat menginstal pengunduhan atau memperbarui aplikasi di latar belakang karena pengoptimalan baterai.</string>
     <string name="toast_proxy_failed">Gagal menyetel proksi</string>
     <string name="pref_network_proxy_enable_desc">Izinkan semua lalu lintas dari aplikasi melewati proxy</string>
     <string name="action_uninstall_confirmation">Apakah Anda ingin menghapus aplikasi ini?</string>

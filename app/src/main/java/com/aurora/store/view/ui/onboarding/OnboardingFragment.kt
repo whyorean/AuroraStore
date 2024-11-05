@@ -34,6 +34,7 @@ import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
 import com.aurora.store.util.CertUtil
@@ -189,11 +190,11 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
     private fun setupAutoUpdates() {
         val updateMode = when {
-            requireContext().isIgnoringBatteryOptimizations() -> 2 // Auto-update
-            requireContext().areNotificationsEnabled() -> 1 // Notify update
-            else -> 0 // Disable
+            requireContext().isIgnoringBatteryOptimizations() -> UpdateMode.CHECK_AND_INSTALL
+            requireContext().areNotificationsEnabled() -> UpdateMode.CHECK_AND_NOTIFY
+            else -> UpdateMode.DISABLED
         }
-        save(PREFERENCE_UPDATES_AUTO, updateMode)
+        save(PREFERENCE_UPDATES_AUTO, updateMode.ordinal)
         updateHelper.scheduleAutomatedCheck()
     }
 }

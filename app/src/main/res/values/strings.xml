@@ -370,10 +370,6 @@
     <string name="android_market_desc">Android Market was an online store offering software applications designed for Android devices, retired in 2017.</string>
     <string name="app_link_amazon_appstore" translatable="false">www.amazon.com</string>
     <string name="amazon_appstore_desc">Amazon Appstore is an app store for Android-compatible platforms operated by Amazon.</string>
-    <string name="device_doze_title">Battery optimizations detected!</string>
-    <string name="device_doze_subtitle">Aurora Store can not install download or update apps in background due to battery optimizations.</string>
-    <string name="device_doze_description">Please, disable battery optimizations to allow background operations.</string>
-    <string name="device_doze_extra">Optionally you can choose to keep the optimizations enabled, but then you won\'t be able to take benefit of background downloads and automated updates, so choice is yours.</string>
     <string name="failed_apk_export">Failed to export APKs</string>
     <string name="action_manage">Manage</string>
     <string name="failed_app_link">Unsupported, please try associating links manually</string>

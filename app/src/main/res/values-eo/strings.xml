@@ -330,10 +330,7 @@
     <string name="title_more">Pli</string>
     <string name="shizuku_installer_subtitle">Uzas sistemajn APIjn rekte per abd/ĉefuzantaj privilegioj</string>
     <string name="add">Aldoni</string>
-    <string name="device_doze_title">Baterion optimumigo detekita!</string>
     <string name="details_ratings_title_hint">Recenzon titolo</string>
-    <string name="device_doze_subtitle">Aurora Store ne povas instali, elŝuti aŭ ĝisdatigi apojn fone kaŭze de baterion optimumigoj.</string>
-    <string name="device_doze_description">Bonvolu malaktivigi baterioptimumigojn por ebligi fonajn operaciojn.</string>
     <string name="action_filter_gsf_dependent_apps">Dependa de GSF</string>
     <string name="failed_apk_export">APKjn eksportado fiaskis</string>
     <string name="force_restart_summary">La restarto de Aurora Store estas necesa por apliki la nove ŝanĝitajn agordojn</string>

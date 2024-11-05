@@ -316,12 +316,8 @@
     <string name="pref_network_proxy_enable_desc">Разрешить трафику приложения проходить через прокси</string>
     <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
     <string name="pref_vending_version_title">Версия Google Play</string>
-    <string name="device_doze_description">Пожалуйста, отключите оптимизацию батареи, чтобы разрешить фоновые операции.</string>
     <string name="onboarding_permission_doze">Фоновые загрузки</string>
-    <string name="device_doze_title">Обнаружена оптимизация батареи!</string>
-    <string name="device_doze_extra">При желании вы можете оставить оптимизацию включенной, но тогда вы не сможете воспользоваться фоновыми загрузками и автоматическими обновлениями, так что выбор за вами.</string>
     <string name="onboarding_permission_doze_desc">Разрешить Aurora Store загружать и обновлять приложения в фоне</string>
-    <string name="device_doze_subtitle">Из-за оптимизации батареи Aurora Store не может загружать или обновлять приложения в фоне.</string>
     <string name="pref_updates_auto">Автообновление приложений</string>
     <string name="pref_updates_auto_notify">Проверять доступные обновления и уведомлять о них</string>
     <string name="pref_updates_auto_off">Не обновлять приложения автоматически</string>

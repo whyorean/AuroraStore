@@ -93,7 +93,7 @@ class UpdateHelper @Inject constructor(
      */
     fun checkUpdatesNow() {
         val inputData = Data.Builder()
-            .putInt(UPDATE_MODE, UpdateMode.CHECK_ONLY.ordinal)
+            .putInt(UPDATE_MODE, UpdateMode.CHECK_AND_NOTIFY.ordinal)
             .putBoolean(UPDATE_SHOULD_NOTIFY, false)
             .build()
 

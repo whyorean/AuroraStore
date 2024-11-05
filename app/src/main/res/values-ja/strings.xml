@@ -317,17 +317,13 @@
     <string name="pref_updates_auto">アプリの自動更新</string>
     <string name="onboarding_permission_doze">バックグラウンドダウンロード</string>
     <string name="pref_updates_auto_desc">自動更新の動作を設定する</string>
-    <string name="device_doze_title">バッテリーの最適化を検知しました！</string>
     <string name="action_request_analysis">分析を要求</string>
     <string name="pref_vending_version_title">Google Play バージョン</string>
     <string name="pref_vending_version_device">デフォルト (端末設定による)</string>
-    <string name="device_doze_subtitle">バッテリーの最適化のためAurora Storeはバックグラウンドでアプリをダウンロード、インストールできません。</string>
     <string name="pref_updates_auto_install">更新を確認して自動でインストールする</string>
     <string name="pref_updates_auto_notify">更新を確認して通知する</string>
     <string name="pref_updates_auto_off">自動更新しない</string>
     <string name="onboarding_permission_doze_desc">Aurora Storeがバックグラウンドでダウンロード、更新することを許可する</string>
-    <string name="device_doze_description">バックグラウンドの動作を許可するにはバッテリーの最適化を無効化してください。</string>
-    <string name="device_doze_extra">最適化を有効にしておくこともできますが、バックグラウンドのダウンロードと自動更新を利用することはできません。</string>
     <string name="failed_apk_export">APKのエクスポートに失敗しました</string>
     <string name="pref_updates_incompatible">互換性のない更新</string>
     <string name="pref_updates_incompatible_desc">インストールに失敗する可能性がある非互換、または無効化したアプリの更新を表示する</string>

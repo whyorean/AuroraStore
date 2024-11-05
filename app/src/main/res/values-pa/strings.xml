@@ -318,10 +318,6 @@
     <string name="pref_vending_version_title">ਗੂਗਲ ਪਲੇ ਸੰਸਕਰਣ</string>
     <string name="onboarding_permission_doze">ਬੈਕਗ੍ਰਾਊਂਡ ਡਾਊਨਲੋਡ</string>
     <string name="onboarding_permission_doze_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਬੈਕਗ੍ਰਾਊਂਡ ਵਿੱਚ ਐਪਸ ਨੂੰ ਡਾਊਨਲੋਡ ਅਤੇ ਅੱਪਡੇਟ ਕਰਨ ਦਿਓ</string>
-    <string name="device_doze_description">ਕਿਰਪਾ ਕਰਕੇ, ਬੈਕਗ੍ਰਾਊਂਡ ਓਪਰੇਸ਼ਨਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣ ਲਈ ਬੈਟਰੀ ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਨੂੰ ਅਸਮਰੱਥ ਕਰੋ।</string>
-    <string name="device_doze_title">ਬੈਟਰੀ ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਦਾ ਪਤਾ ਲਗਾਇਆ ਗਿਆ!</string>
-    <string name="device_doze_extra">ਵਿਕਲਪਿਕ ਤੌਰ \'ਤੇ ਤੁਸੀਂ ਆਪਟੀਮਾਈਜ਼ੇਸ਼ਨਾਂ ਨੂੰ ਸਮਰੱਥ ਰੱਖਣ ਦੀ ਚੋਣ ਕਰ ਸਕਦੇ ਹੋ, ਪਰ ਫਿਰ ਤੁਸੀਂ ਬੈਕਗ੍ਰਾਉਂਡ ਡਾਉਨਲੋਡਸ ਅਤੇ ਸਵੈਚਲਿਤ ਅਪਡੇਟਾਂ ਦਾ ਲਾਭ ਲੈਣ ਦੇ ਯੋਗ ਨਹੀਂ ਹੋਵੋਗੇ, ਇਸ ਲਈ ਚੋਣ ਤੁਹਾਡੀ ਹੈ।</string>
-    <string name="device_doze_subtitle">ਔਰੋਰਾ ਸਟੋਰ ਬੈਟਰੀ ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਦੇ ਕਾਰਨ ਬੈਕਗ੍ਰਾਊਂਡ ਵਿੱਚ ਐਪਸ ਨੂੰ ਡਾਊਨਲੋਡ ਜਾਂ ਅੱਪਡੇਟ ਨਹੀਂ ਕਰ ਸਕਦਾ ਹੈ।</string>
     <string name="pref_updates_auto">ਐਪਾਂ ਆਟੋ ਅੱਪਡੇਟ ਕਰੋ</string>
     <string name="pref_updates_auto_notify">ਉਪਲਬਧ ਅੱਪਡੇਟਾਂ ਲਈ ਜਾਂਚਕੇ ਸੂਚਿਤ ਕਰੋ</string>
     <string name="pref_updates_auto_off">ਐਪਾਂ ਨੂੰ ਆਟੋ-ਅੱਪਡੇਟ ਨਾ ਕਰੋ</string>

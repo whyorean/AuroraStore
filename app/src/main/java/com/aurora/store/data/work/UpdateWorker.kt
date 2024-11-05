@@ -108,7 +108,7 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             // Notify and exit if we are only checking for updates or if battery optimizations are enabled
-            if (updateMode == UpdateMode.CHECK_ONLY || !appContext.isIgnoringBatteryOptimizations()) {
+            if (updateMode == UpdateMode.CHECK_AND_NOTIFY || !appContext.isIgnoringBatteryOptimizations()) {
                 Log.i(TAG, "Found updates, notifying!")
                 notifyUpdates(updates)
                 return Result.success()

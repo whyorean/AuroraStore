@@ -318,10 +318,6 @@
     <string name="pref_vending_version_title">Versión para Google Play</string>
     <string name="onboarding_permission_doze">Descargas en segundo plano</string>
     <string name="onboarding_permission_doze_desc">Permitir que Aurora Store descargue y actualice aplicaciones en segundo plano</string>
-    <string name="device_doze_description">Por favor, desactivar optimizaciones de batería para permitir operaciones en segundo plano.</string>
-    <string name="device_doze_title">¡Se detectaron optimizaciones de la batería!</string>
-    <string name="device_doze_extra">Puede elegir a mantener activada las optimizaciones, pero no disfrutará descargas de segundo plano y actualizas automática. La elección es suya.</string>
-    <string name="device_doze_subtitle">Aurora Store no puede instalar, descargar o actualizar las apps en segundo plano por las optimizaciones de batería.</string>
     <string name="pref_updates_auto">Actualización automática de las aplicaciones</string>
     <string name="pref_updates_auto_notify">Comprobación y notificación de actualizaciones disponibles</string>
     <string name="pref_updates_auto_off">No actualizar automáticamente las aplicaciones</string>

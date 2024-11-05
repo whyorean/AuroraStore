@@ -314,17 +314,13 @@
     <string name="action_uninstall_confirmation">Voulez-vous désinstaller cette application ?</string>
     <string name="android_market_desc">Android Market était un magasin en ligne offrant des applications logicielles conçues pour les appareils Android, retiré en 2017.</string>
     <string name="pref_downloader_wifi_title">Télécharger en utilisant uniquement le réseau Wi-Fi</string>
-    <string name="device_doze_description">Veuillez désactiver les optimisations de la batterie pour permettre les opérations en arrière-plan.</string>
     <string name="pref_vending_version_device">Défaut (de la configuration du périphérique)</string>
     <string name="pref_vending_version_title">Version Google Play</string>
     <string name="onboarding_permission_doze">Téléchargements en arrière-plan</string>
     <string name="pref_updates_auto">Mise à jour automatique des applis</string>
-    <string name="device_doze_title">Optimisation de la batterie détectée !</string>
     <string name="pref_updates_auto_notify">Vérifier et notifier les mises à jour disponibles</string>
     <string name="pref_updates_auto_off">Ne pas mettre les applis à jour automatiquement</string>
-    <string name="device_doze_extra">En option, vous pouvez choisir de garder les optimisations activées, mais vous ne serez pas en mesure de profiter des téléchargements en arrière-plan et des mises à jour automatisées ; c’est à vous de décider.</string>
     <string name="onboarding_permission_doze_desc">Autoriser Aurora Store à télécharger et mettre à jour les applications en arrière-plan</string>
-    <string name="device_doze_subtitle">Aurora Store ne peut pas installer de téléchargements ou mettre à jour d’applications en arrière-plan en raison des optimisations de la batterie.</string>
     <string name="pref_updates_auto_desc">Configurer le comportement des mises à jour auto</string>
     <string name="pref_updates_auto_install">Vérifier et installer les mises à jour automatiquement</string>
     <string name="action_request_analysis">Demander une nouvelle analyse</string>

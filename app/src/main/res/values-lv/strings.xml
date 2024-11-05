@@ -322,11 +322,7 @@
     <string name="pref_updates_auto_off">Neatjaunināt lietotnes automātiski</string>
     <string name="pref_updates_auto_install">Pārbaudīt un automātiski uzstādīt pieejamos atjauninājumus</string>
     <string name="pref_updates_auto_notify">Pārbaudīt un ziņot par pieejamajiem atjauninājumiem</string>
-    <string name="device_doze_description">Lūgums atspējot akumulatora optimizēšanu, lai atļautu darbības fonā.</string>
-    <string name="device_doze_title">Noteikta akumulatora optimizēšana.</string>
-    <string name="device_doze_subtitle">Aurora Store nevar lejupielādēt un uzstādīt vai atjaunināt lietotnes fonā akumulatora optimizēšanas dēļ.</string>
     <string name="pref_updates_auto_desc">Konfigurēt automātisko atjauninājumu uzvedību</string>
-    <string name="device_doze_extra">Pēc izvēles var izvēlēties paturēt optimizēšanu iespējotu, bet tad nebūs iespējams gūt labumu no fona lejupielādēm un automātiskajiem atjauninājumiem, tā ka izvēle ir paša ziņā.</string>
     <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
     <string name="pref_updates_incompatible_desc">Rādīt atjauninājumus nesaderīgām vai atspējotām lietotnēm, kuru uzstādīšana var neizdoties</string>
     <string name="failed_apk_export">Neizdevās izgūt APK</string>

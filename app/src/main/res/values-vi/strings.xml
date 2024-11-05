@@ -293,7 +293,6 @@
     <string name="app_links_desc">Cho phép Aurora Store mở các liên kết được hỗ trợ</string>
     <string name="pref_updates_auto_install">Tự động kiểm tra &amp; cài đặt các bản cập nhật có sẵn</string>
     <string name="amazon_appstore_desc">Amazon Appstore là một cửa hàng ứng dụng dành cho các nền tảng tương thích với Android do Amazon vận hành.</string>
-    <string name="device_doze_title">Đã phát hiện tối ưu hóa pin!</string>
     <string name="failed_apk_export">Không xuất được APK</string>
     <string name="details_no_apps_on_sale">Không tìm thấy ứng dụng nào đang giảm giá</string>
     <string name="title_apps_sale_provider">Nhà cung cấp - bestappsale.com</string>
@@ -307,7 +306,6 @@
     <string name="check_connectivity">Kiểm tra kết nối internet</string>
     <string name="app_links_title">Liên kết ứng dụng</string>
     <string name="action_enable">Bật</string>
-    <string name="device_doze_extra">Theo tùy chọn, bạn có thể chọn tiếp tục bật các tính năng tối ưu hóa, nhưng khi đó bạn sẽ không thể tận dụng lợi ích của việc tải xuống trong nền và cập nhật tự động, vì vậy lựa chọn là của bạn.</string>
     <string name="pref_updates_auto">Tự động cập nhật ứng dụng</string>
     <string name="pref_updates_auto_desc">Định cấu hình hành vi cập nhật tự động</string>
     <string name="pref_download_directory_error">Đường dẫn đã chọn không thể ghi được</string>
@@ -316,7 +314,6 @@
     <string name="pref_updates_auto_off">Không tự động cập nhật ứng dụng</string>
     <string name="pref_updates_auto_notify">Kiểm tra &amp; thông báo các bản cập nhật có sẵn</string>
     <string name="android_market_desc">Android Market là cửa hàng trực tuyến cung cấp các ứng dụng phần mềm được thiết kế cho thiết bị Android, đã ngừng hoạt động vào năm 2017.</string>
-    <string name="device_doze_description">Vui lòng tắt tính năng tối ưu hóa pin để cho phép hoạt động ở chế độ nền.</string>
     <string name="failed_to_generate_session">Không thể tạo phiên</string>
     <string name="verifying_new_session">Xác minh phiên mới</string>
     <string name="app_link_enabled">Đã bật liên kết ứng dụng!</string>
@@ -324,7 +321,6 @@
     <string name="app_language">Ngôn ngữ ứng dụng</string>
     <string name="action_request_analysis">Yêu cầu phân tích mới</string>
     <string name="pref_aurora_only_desc">Chỉ hiển thị các ứng dụng đã cài đặt trên Aurora Store trong Bản cập nhật và Ứng dụng đã cài đặt</string>
-    <string name="device_doze_subtitle">Aurora Store không thể cài đặt ứng dụng tải xuống hoặc cập nhật ở chế độ nền do tối ưu hóa pin.</string>
     <string name="pref_updates_incompatible">Cập nhật không tương thích</string>
     <string name="pref_updates_incompatible_desc">Hiển thị các bản cập nhật cho các ứng dụng không tương thích hoặc bị vô hiệu hóa có thể không cài đặt được</string>
     <string name="action_home_screen">Thêm vào màn hình chính</string>

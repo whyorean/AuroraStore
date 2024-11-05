@@ -259,7 +259,6 @@
     <string name="action_enable">Activar</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> y <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="android_market_desc">Android Market foi una tienda en llinia qu\'ufría aplicaciones de software diseñaes pa preseos Android. Cesó l\'actividá en 2017.</string>
-    <string name="device_doze_title">¡Detectáronse les optimizaciones d\'enerxía!</string>
     <string name="pref_install_mode_shizuku">Instalador Shizuku</string>
     <string name="pref_updates_incompatible">Anovamientos incompatibles</string>
     <string name="downloading_dep">Downloading additional files for <xliff:g id="app">%1$s</xliff:g></string>
@@ -291,7 +290,6 @@
     <string name="status_unavailable">Nun ta disponible</string>
     <string name="notification_channel_updates">Updates notifications</string>
     <string name="server_unreachable">Server unreachable</string>
-    <string name="device_doze_extra">Optionally you can choose to keep the optimizations enabled, but then you won\'t be able to take benefit of background downloads and automated updates, so choice is yours.</string>
     <string name="action_manage">Xestionar</string>
     <string name="details_no_favourites">Nun s\'atopó nenguna aplicación favorita</string>
     <string name="details_no_apps_on_sale">Nun s\'atopó nenguna aplicación a la venta</string>
@@ -367,7 +365,6 @@
     <string name="pref_updates_auto_desc">Configura\'l comportamientu del anovamientu automáticu d\'aplicaciones</string>
     <string name="pref_updates_auto_install">Check &amp; install available updates automatically</string>
     <string name="access_denied_using_vpn">¡Negóse l\'accesu! ¿Tas usando una VPN o Tor?</string>
-    <string name="device_doze_subtitle">Aurora Store nun pue nin instalar, nin baxar, nin anovar les aplicaciones en segundu planu pola mor de les optimizaciones d\'enerxía.</string>
     <string name="failed_app_link">Unsupported, please try associating links manually</string>
     <string name="session_installer_desc">Aconseyáu, integráu y compatible con toles versiones d\'Android</string>
     <string name="root_installer_subtitle">L\'instalador basáu na shell qu\'usa los permisos de superusuariu</string>
@@ -385,7 +382,6 @@
     <string name="pref_clear_device_owner_desc">This will revoke session installer\'s permission to silently install app. Proceed with clearing device ownership?</string>
     <string name="pref_dispenser_title">Xestionar los fornidores de pases</string>
     <string name="toast_fav_import_failed">Failed to import favourites!</string>
-    <string name="device_doze_description">Desactiva les optimizaciones d\'enerxía pa permitir les operaciones en segundu planu.</string>
     <string name="root_installer_desc">Rique los privilexos de superusuariu. Ye compatible con toles versiones d\'Android.</string>
     <string name="session_login">Anicia la sesión na to cuenta de Google Play</string>
     <string name="pref_network_proxy_url_message">Enter a valid proxy URL to pass all data through the proxy.</string>

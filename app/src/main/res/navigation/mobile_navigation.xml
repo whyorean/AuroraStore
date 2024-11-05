@@ -45,9 +45,6 @@
         android:id="@+id/action_global_appMenuSheet"
         app:destination="@id/appMenuSheet" />
     <action
-        android:id="@+id/action_global_dozeWarningSheet"
-        app:destination="@id/dozeWarningSheet" />
-    <action
         android:id="@+id/action_global_moreDialogFragment"
         app:destination="@id/moreDialogFragment" />
     <fragment
@@ -440,16 +437,6 @@
         <argument
             android:name="extra"
             app:argType="string" />
-    </dialog>
-    <dialog
-        android:id="@+id/dozeWarningSheet"
-        android:name="com.aurora.store.view.ui.sheets.DozeWarningSheet"
-        android:label="DozeWarningSheet"
-        tools:layout="@layout/sheet_doze_warning">
-        <argument
-            android:name="enableAutoUpdate"
-            android:defaultValue="false"
-            app:argType="boolean" />
     </dialog>
     <dialog
         android:id="@+id/moreDialogFragment"

@@ -283,10 +283,6 @@
     <string name="access_denied_using_vpn">Hyrje e mohuar! Po përdorni VPN, ose Tor?</string>
     <string name="action_enable">Aktivizoje</string>
     <string name="google_play_store_desc">Google Play, e njohur dhe si Google Play Store dhe ish-Android Market.</string>
-    <string name="device_doze_title">U pikas optimizim baterie!</string>
-    <string name="device_doze_subtitle">Shitorja Aurora s’mund të instalojë shkarkimin, apo të përditësojë aplikacione në sfond, për shkak optimizimesh baterie.</string>
-    <string name="device_doze_description">Ju lutemi, që të lejohen veprime në prapaskenë, çaktivizoni optimizime baterie.</string>
-    <string name="device_doze_extra">Në daçi, mund të zgjidhni t’i mbani të aktivizuara optimizimet, por kështu s’do të jeni në gjendje të përfitoni nga shkarkime në sfond dhe përditësime të automatizuara, e keni vetë në dorë.</string>
     <string name="action_manage">Administroni</string>
     <string name="pref_updates_auto_off">Mos i vetë-përditëso aplikacionet</string>
     <string name="pref_updates_auto_install">Kontrollo &amp; instalo vetvetiu përditësime të gatshme</string>

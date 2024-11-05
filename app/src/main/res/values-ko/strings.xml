@@ -282,16 +282,12 @@
     <string name="notification_channel_updates">업데이트 알림</string>
     <string name="server_maintenance">유지 보수를 위해 서버가 다운</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 업데이트 대기 중</string>
-    <string name="device_doze_subtitle">Aurora Store는 배터리 최적화로 인해 배경의 다운로드 또는 업데이트 앱을 설치할 수 없습니다.</string>
-    <string name="device_doze_title">배터리 최적화 감지됨!</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 개 업데이트 대기 중</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> 과 <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="pref_updates_auto">앱스 자동-업데이트</string>
     <string name="pref_updates_auto_desc">자동-업데이트 동작 구성</string>
     <string name="verifying_new_session">새로운 세션을 검증</string>
     <string name="app_language">앱 언어</string>
-    <string name="device_doze_description">배경 작업을 허용하기 위해, 배터리 최적화를 비활성화하십시오.</string>
-    <string name="device_doze_extra">선택적으로 최적화를 활성화하기 위해 선택할 수 있지만, 배경 다운로드 및 자동화 된 업데이트의 혜택을받을 수 없고, 그 선택은 사용자에게 있습니다.</string>
     <string name="action_manage">관리</string>
     <string name="menu">메뉴</string>
     <string name="failed_to_generate_session">세션을 생성하지 못함</string>
