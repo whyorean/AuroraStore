@@ -16,7 +16,6 @@ import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
-import com.aurora.store.data.helper.UpdateHelper.Companion.UPDATE_SHOULD_NOTIFY
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.SelfUpdate
@@ -70,7 +69,6 @@ class UpdateWorker @AssistedInject constructor(
         else -> BuildType.DEBUG
     }
 
-    private val shouldNotify = inputData.getBoolean(UPDATE_SHOULD_NOTIFY, true)
     private val canSelfUpdate = !CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID) &&
             !CertUtil.isAppGalleryApp(appContext, BuildConfig.APPLICATION_ID) &&
             buildType != BuildType.DEBUG
@@ -102,14 +100,14 @@ class UpdateWorker @AssistedInject constructor(
                 .also { updateDao.insertUpdates(it) }
                 .filter { if (!isExtendedUpdateEnabled) it.hasValidCert else true }
 
-            if (updates.isEmpty()) {
-                Log.i(TAG, "No updates found!")
+            if (updates.isEmpty() || updateMode == UpdateMode.CHECK_ONLY) {
+                Log.i(TAG, "Found ${updates.size} updates")
                 return Result.success()
             }
 
             // Notify and exit if we are only checking for updates or if battery optimizations are enabled
             if (updateMode == UpdateMode.CHECK_AND_NOTIFY || !appContext.isIgnoringBatteryOptimizations()) {
-                Log.i(TAG, "Found updates, notifying!")
+                Log.i(TAG, "Found  ${updates.size} updates, notifying!")
                 notifyUpdates(updates)
                 return Result.success()
             }
@@ -219,7 +217,6 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     private fun notifyUpdates(updates: List<Update>) {
-        if (!shouldNotify) return
         with(appContext.getSystemService<NotificationManager>()!!) {
             notify(
                 notificationID,

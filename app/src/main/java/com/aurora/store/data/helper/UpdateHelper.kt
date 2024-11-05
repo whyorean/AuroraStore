@@ -43,7 +43,6 @@ class UpdateHelper @Inject constructor(
 
     companion object {
         const val UPDATE_MODE = "UPDATE_MODE"
-        const val UPDATE_SHOULD_NOTIFY = "UPDATE_SHOULD_NOTIFY"
 
         private const val UPDATE_WORKER = "UPDATE_WORKER"
         private const val EXPEDITED_UPDATE_WORKER = "EXPEDITED_UPDATE_WORKER"
@@ -93,8 +92,7 @@ class UpdateHelper @Inject constructor(
      */
     fun checkUpdatesNow() {
         val inputData = Data.Builder()
-            .putInt(UPDATE_MODE, UpdateMode.CHECK_AND_NOTIFY.ordinal)
-            .putBoolean(UPDATE_SHOULD_NOTIFY, false)
+            .putInt(UPDATE_MODE, UpdateMode.CHECK_ONLY.ordinal)
             .build()
 
         val work = OneTimeWorkRequestBuilder<UpdateWorker>()

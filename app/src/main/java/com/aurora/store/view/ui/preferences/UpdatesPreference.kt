@@ -86,6 +86,8 @@ class UpdatesPreference : BasePreferenceFragment() {
                             false
                         }
                     }
+
+                    else -> false
                 }
             }
 
