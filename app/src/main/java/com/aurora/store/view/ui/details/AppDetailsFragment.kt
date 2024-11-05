@@ -113,7 +113,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private var downloadStatus = DownloadStatus.UNAVAILABLE
     private var isUpdatable: Boolean = false
-    private var autoDownload: Boolean = false
     private var uninstallActionEnabled = false
 
     private fun onEvent(event: Event) {
@@ -703,10 +702,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             attachHeader()
             attachBottomSheet()
             attachActions()
-
-            if (autoDownload) {
-                purchase()
-            }
         }
     }
 
