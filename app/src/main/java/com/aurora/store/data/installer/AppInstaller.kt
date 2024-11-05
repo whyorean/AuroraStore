@@ -112,16 +112,16 @@ class AppInstaller @Inject constructor(
 
                     // Ensure app being installed satisfies Android's requirement for targetSdk level
                     when (Build.VERSION.SDK_INT) {
-                        Build.VERSION_CODES.VANILLA_ICE_CREAM -> targetSdk == Build.VERSION_CODES.TIRAMISU
-                        Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> targetSdk == Build.VERSION_CODES.S
-                        Build.VERSION_CODES.TIRAMISU -> targetSdk == Build.VERSION_CODES.R
-                        Build.VERSION_CODES.S -> targetSdk == Build.VERSION_CODES.Q
+                        Build.VERSION_CODES.VANILLA_ICE_CREAM -> targetSdk >= Build.VERSION_CODES.TIRAMISU
+                        Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> targetSdk >= Build.VERSION_CODES.S
+                        Build.VERSION_CODES.TIRAMISU -> targetSdk >= Build.VERSION_CODES.R
+                        Build.VERSION_CODES.S -> targetSdk >= Build.VERSION_CODES.Q
                         else -> false // Only Android version above 12 can silently update apps
                     }
                 }
-                Installer.NATIVE -> false // Deprecated
+                Installer.NATIVE -> false // Native installer requires user interaction
                 Installer.ROOT -> hasRootAccess()
-                Installer.SERVICE -> false // Deprecated
+                Installer.SERVICE -> hasAuroraService(context)
                 Installer.AM -> false // We cannot check if AppManager has ability to auto-update
                 Installer.SHIZUKU -> isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()
             }
