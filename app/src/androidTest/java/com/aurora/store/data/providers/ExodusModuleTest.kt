@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
-class ExodusDataProviderTest {
+class ExodusModuleTest {
 
     @get:Rule
     var hiltAndroidRule = HiltAndroidRule(this)

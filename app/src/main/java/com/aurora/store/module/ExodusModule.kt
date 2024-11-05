@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.data.providers
+package com.aurora.store.module
 
 import android.content.Context
 import dagger.Module
@@ -32,7 +32,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ExodusDataProvider {
+object ExodusModule {
 
     @Provides
     @Singleton
