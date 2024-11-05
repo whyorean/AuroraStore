@@ -1,6 +1,5 @@
 package com.aurora.store.viewmodel.details
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,12 +13,10 @@ import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,9 +30,10 @@ import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
+    private val appDetailsHelper: AppDetailsHelper,
+    private val reviewsHelper: ReviewsHelper,
+    private val webDataSafetyHelper: WebDataSafetyHelper,
     private val downloadHelper: DownloadHelper,
-    private val authProvider: AuthProvider,
     private val favouriteDao: FavouriteDao,
     private val httpClient: IHttpClient
 ) : ViewModel() {
@@ -44,9 +42,6 @@ class AppDetailsViewModel @Inject constructor(
 
     private val exodusBaseUrl = "https://reports.exodus-privacy.eu.org/api/search/"
     private val exodusApiKey = "Token bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae"
-
-    private val appDetailsHelper = AppDetailsHelper(authProvider.authData!!).using(httpClient)
-    private val reviewsHelper = ReviewsHelper(authProvider.authData!!).using(httpClient)
 
     private val appStash: MutableMap<String, App> = mutableMapOf()
     private val _app = MutableSharedFlow<App>()
@@ -113,9 +108,7 @@ class AppDetailsViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val report = dataSafetyReportStash.getOrPut(packageName) {
-                    WebDataSafetyHelper()
-                        .using(httpClient)
-                        .fetch(packageName)
+                    webDataSafetyHelper.fetch(packageName)
                 }
                 _dataSafetyReport.emit(report)
             } catch (exception: Exception) {

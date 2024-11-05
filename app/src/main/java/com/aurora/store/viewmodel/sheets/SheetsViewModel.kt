@@ -10,7 +10,6 @@ import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.model.MinimalApp
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.work.ExportWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SheetsViewModel @Inject constructor(
-    private val authProvider: AuthProvider
+    private val purchaseHelper: PurchaseHelper
 ) : ViewModel() {
 
     private val TAG = SheetsViewModel::class.java.simpleName
@@ -33,7 +32,6 @@ class SheetsViewModel @Inject constructor(
     fun purchase(app: App, customVersion: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val purchaseHelper = PurchaseHelper(authProvider.authData!!)
                 val files = purchaseHelper.purchase(app.packageName, customVersion, app.offerType)
                 if (files.isNotEmpty()) {
                     AuroraApp.events.send(

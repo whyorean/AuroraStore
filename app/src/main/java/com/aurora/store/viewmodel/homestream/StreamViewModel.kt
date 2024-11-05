@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.homestream
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,11 +27,9 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -40,14 +37,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StreamViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val httpClient: IHttpClient
+    private val webStreamHelper: WebStreamHelper
 ) : ViewModel() {
 
     private val TAG = StreamViewModel::class.java.simpleName
-
-    private var webStreamHelper = WebStreamHelper()
-        .using(httpClient)
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 

@@ -19,17 +19,13 @@
 
 package com.aurora.store.viewmodel.review
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.ReviewCluster
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.gplayapi.network.IHttpClient
-import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -37,13 +33,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ReviewViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider,
-    private val httpClient: IHttpClient
+    private val reviewsHelper: ReviewsHelper
 ) : ViewModel() {
-
-    var reviewsHelper: ReviewsHelper = ReviewsHelper(authProvider.authData!!)
-        .using(httpClient)
 
     val liveData: MutableLiveData<ReviewCluster> = MutableLiveData()
 

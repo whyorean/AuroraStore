@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.subcategory
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,10 +28,8 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.CategoryStreamContract
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -40,14 +37,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryStreamViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val httpClient: IHttpClient
+    private val webCategoryStreamHelper: WebCategoryStreamHelper
 ) : ViewModel() {
 
     private val TAG = CategoryStreamViewModel::class.java.simpleName
-
-    private var webCategoryStreamHelper = WebCategoryStreamHelper()
-        .using(httpClient)
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 

@@ -61,6 +61,7 @@ class DownloadWorker @AssistedInject constructor(
     private val appInstaller: AppInstaller,
     private val authProvider: AuthProvider,
     private val httpClient: IHttpClient,
+    private val purchaseHelper: PurchaseHelper,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, appContext, workerParams) {
@@ -69,8 +70,6 @@ class DownloadWorker @AssistedInject constructor(
     private lateinit var icon: Bitmap
 
     private val notificationManager = appContext.getSystemService<NotificationManager>()!!
-    private val purchaseHelper: PurchaseHelper
-        get() = PurchaseHelper(authProvider.authData!!).using(httpClient)
 
     private val NOTIFICATION_ID = 200
 

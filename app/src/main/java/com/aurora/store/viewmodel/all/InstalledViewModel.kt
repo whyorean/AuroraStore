@@ -25,8 +25,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.network.IHttpClient
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,8 +38,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InstalledViewModel @Inject constructor(
-    private val authProvider: AuthProvider,
-    private val httpClient: IHttpClient,
+    private val appDetailsHelper: AppDetailsHelper,
     private val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
@@ -58,9 +55,6 @@ class InstalledViewModel @Inject constructor(
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
-                    .using(httpClient)
-
                 PackageUtil.getPackageInfoMap(context).keys.let { packages ->
                     val filtersPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
 

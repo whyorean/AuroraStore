@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.details
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,11 +29,8 @@ import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -42,16 +38,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DevProfileViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider,
-    private val httpClient: IHttpClient
+    private val appDetailsHelper: AppDetailsHelper,
+    private val streamHelper: StreamHelper
 ) : ViewModel() {
 
     private val TAG = DevProfileViewModel::class.java.simpleName
-
-    private var appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
-        .using(httpClient)
-    private var streamHelper = StreamHelper(authProvider.authData!!)
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var devStream:DevStream = DevStream()

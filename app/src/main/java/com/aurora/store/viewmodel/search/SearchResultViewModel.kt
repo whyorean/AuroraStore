@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.search
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,11 +28,9 @@ import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.FilterProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -42,9 +39,9 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchResultViewModel @Inject constructor(
     val filterProvider: FilterProvider,
-    @ApplicationContext private val context: Context,
-    private val authProvider: AuthProvider,
-    private val httpClient: IHttpClient
+    authProvider: AuthProvider,
+    searchHelper: SearchHelper,
+    webSearchHelper: WebSearchHelper
 ) : ViewModel() {
 
     private val TAG = SearchResultViewModel::class.java.simpleName
@@ -54,9 +51,9 @@ class SearchResultViewModel @Inject constructor(
     private var searchBundle: SearchBundle = SearchBundle()
 
     private val helper: SearchContract = if (authProvider.isAnonymous) {
-        WebSearchHelper().using(httpClient)
+        webSearchHelper
     } else {
-        SearchHelper(authProvider.authData!!).using(httpClient)
+        searchHelper
     }
 
     fun observeSearchResults(query: String) {

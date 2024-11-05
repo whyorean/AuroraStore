@@ -19,18 +19,15 @@
 
 package com.aurora.store.viewmodel.topchart
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.TopChartStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
@@ -38,12 +35,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TopChartViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val httpClient: IHttpClient
+    private val webTopChartsHelper: WebTopChartsHelper
 ): ViewModel() {
-
-    private val webTopChartsHelper: TopChartsContract = WebTopChartsHelper()
-        .using(httpClient)
 
     private var stash: TopChartStash = mutableMapOf()
 

@@ -9,11 +9,9 @@ import android.util.Log
 import androidx.core.content.getSystemService
 import com.aurora.extensions.isVAndAbove
 import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.providers.AccountProvider
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.NotificationUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -29,10 +27,7 @@ class UnarchivePackageReceiver: BroadcastReceiver() {
     private val TAG = UnarchivePackageReceiver::class.java.simpleName
 
     @Inject
-    lateinit var httpClient: IHttpClient
-
-    @Inject
-    lateinit var authProvider: AuthProvider
+    lateinit var appDetailsHelper: AppDetailsHelper
 
     @Inject
     lateinit var downloadHelper: DownloadHelper
@@ -54,10 +49,7 @@ class UnarchivePackageReceiver: BroadcastReceiver() {
                     return@launch
                 }
 
-                val app = AppDetailsHelper(authProvider.authData!!)
-                    .using(httpClient)
-                    .getAppByPackageName(packageName)
-
+                val app = appDetailsHelper.getAppByPackageName(packageName)
                 downloadHelper.enqueueApp(app)
             }
         }

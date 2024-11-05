@@ -54,6 +54,7 @@ class UpdateWorker @AssistedInject constructor(
     private val updateDao: UpdateDao,
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
+    private val appDetailsHelper: AppDetailsHelper,
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, appContext, workerParams) {
@@ -147,9 +148,6 @@ class UpdateWorker @AssistedInject constructor(
     private suspend fun checkUpdates(): List<Update> {
         return withContext(Dispatchers.IO) {
             val packageInfoMap = PackageUtil.getPackageInfoMap(appContext)
-            val appDetailsHelper = AppDetailsHelper(authProvider.authData!!)
-                .using(httpClient)
-
             val updates = packageInfoMap.keys.let { packages ->
                 val filteredPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
                 appDetailsHelper.getAppByPackageName(filteredPackages)
