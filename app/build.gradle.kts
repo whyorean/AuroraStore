@@ -124,6 +124,11 @@ android {
     androidResources {
         generateLocaleConfig = true
     }
+
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
 }
 
 dependencies {
