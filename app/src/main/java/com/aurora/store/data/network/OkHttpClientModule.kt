@@ -20,9 +20,11 @@
 package com.aurora.store.data.network
 
 import android.content.Context
+import android.util.Base64
 import android.util.Log
+import com.aurora.store.R
+import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.ProxyInfo
-import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
@@ -32,12 +34,17 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.io.ByteArrayInputStream
+import java.io.InputStream
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import java.net.Authenticator
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
 import java.net.Proxy
+import java.security.MessageDigest
+import java.security.cert.CertificateFactory
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -46,6 +53,9 @@ import javax.inject.Singleton
 object OkHttpClientModule {
 
     private const val TAG = "HttpClient"
+
+    private const val CERT_BEGIN = "-----BEGIN CERTIFICATE-----"
+    private const val CERT_END = "-----END CERTIFICATE-----"
 
     @Provides
     @Singleton
@@ -66,7 +76,7 @@ object OkHttpClientModule {
     @Singleton
     fun providesCertificatePinnerInstance(@ApplicationContext context: Context): CertificatePinner {
         // Google needs special handling, see: https://pki.goog/faq/#faq-27
-        val googleRootCerts = CertUtil.getGoogleRootCertHashes(context).map { "sha256/$it" }
+        val googleRootCerts = getGoogleRootCertHashes(context).map { "sha256/$it" }
             .toTypedArray()
 
         return  CertificatePinner.Builder()
@@ -106,6 +116,34 @@ object OkHttpClientModule {
         } else {
             Log.i(TAG, "Proxy is disabled")
             return null
+        }
+    }
+
+    private fun getGoogleRootCertHashes(context: Context): List<String> {
+        return try {
+            val certs = getX509Certificates(context.resources.openRawResource(R.raw.google_roots_ca))
+            certs.map {
+                val messageDigest = MessageDigest.getInstance(Algorithm.SHA256.value)
+                messageDigest.update(it.publicKey.encoded)
+                Base64.encodeToString(messageDigest.digest(), Base64.NO_WRAP)
+            }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
+            emptyList()
+        }
+    }
+
+    private fun getX509Certificates(inputStream: InputStream): List<X509Certificate> {
+        val certificateFactory = CertificateFactory.getInstance("X509")
+        val rawCerts = inputStream
+            .bufferedReader()
+            .use { it.readText() }
+            .split(CERT_END)
+            .map { it.substringAfter(CERT_BEGIN).substringBefore(CERT_END).replace("\n", "") }
+            .filterNot { it.isBlank() }
+        val decodedCerts = rawCerts.map { Base64.decode(it, Base64.DEFAULT) }
+        return decodedCerts.map {
+            certificateFactory.generateCertificate(ByteArrayInputStream(it)) as X509Certificate
         }
     }
 }
