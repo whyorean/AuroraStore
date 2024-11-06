@@ -44,6 +44,7 @@ import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STA
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
+import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.model.SessionInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
@@ -56,7 +57,7 @@ import javax.inject.Singleton
 
 @Singleton
 class SessionInstaller @Inject constructor(
-    @ApplicationContext context: Context
+    @ApplicationContext private val context: Context
 ) : InstallerBase(context) {
 
     private val TAG = SessionInstaller::class.java.simpleName

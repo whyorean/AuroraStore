@@ -26,6 +26,7 @@ import android.os.Build
 import android.util.Log
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
+import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -36,7 +37,7 @@ import javax.inject.Singleton
 @Singleton
 @Deprecated("Deprecated in favour of SessionInstaller")
 class NativeInstaller @Inject constructor(
-    @ApplicationContext context: Context
+    @ApplicationContext private val context: Context
 ) : InstallerBase(context) {
 
     companion object {

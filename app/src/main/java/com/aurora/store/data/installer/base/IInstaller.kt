@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.data.installer
+package com.aurora.store.data.installer.base
 
 import com.aurora.store.data.room.download.Download
 

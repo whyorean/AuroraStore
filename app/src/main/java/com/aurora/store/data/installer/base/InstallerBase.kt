@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.data.installer
+package com.aurora.store.data.installer.base
 
 import android.content.Context
 import android.net.Uri
@@ -26,13 +26,14 @@ import androidx.core.content.FileProvider
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import java.io.File
 
-abstract class InstallerBase(protected var context: Context) : IInstaller {
+abstract class InstallerBase(private val context: Context) : IInstaller {
 
     private val TAG = InstallerBase::class.java.simpleName
 

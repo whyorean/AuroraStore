@@ -36,6 +36,7 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.NotificationUtil
