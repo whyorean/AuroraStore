@@ -55,7 +55,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
         AuroraApp.enqueuedInstalls.remove(packageName)
     }
 
-    open fun onInstallationSuccess() {
+    fun onInstallationSuccess() {
         download?.let {
             AppInstaller.notifyInstallation(context, it.displayName, it.packageName)
             if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
@@ -76,7 +76,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
         AuroraApp.events.send(event)
     }
 
-    open fun getFiles(
+    fun getFiles(
         packageName: String,
         versionCode: Int,
         sharedLibPackageName: String = ""
