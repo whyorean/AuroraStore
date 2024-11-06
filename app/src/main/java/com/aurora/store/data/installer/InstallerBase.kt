@@ -89,7 +89,7 @@ abstract class InstallerBase(protected var context: Context) : IInstaller {
         return downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
     }
 
-    open fun getUri(file: File): Uri {
+    fun getUri(file: File): Uri {
         return FileProvider.getUriForFile(
             context,
             "${BuildConfig.APPLICATION_ID}.fileProvider",

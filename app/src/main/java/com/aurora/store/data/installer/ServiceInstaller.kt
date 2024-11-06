@@ -88,7 +88,15 @@ class ServiceInstaller @Inject constructor(
                 val fileList = getFiles(download.packageName, download.versionCode)
                 xInstall(
                     download.packageName,
-                    fileList.map { getUri(it) },
+                    fileList.map { file ->
+                        getUri(file).also { uri ->
+                            context.grantUriPermission(
+                                PRIVILEGED_EXTENSION_PACKAGE_NAME,
+                                uri,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION
+                            )
+                        }
+                    },
                     fileList.map { it.absolutePath }
                 )
             }
@@ -285,21 +293,5 @@ class ServiceInstaller @Inject constructor(
         } catch (th: Throwable) {
             th.printStackTrace()
         }
-    }
-
-    override fun getUri(file: File): Uri {
-        val uri = FileProvider.getUriForFile(
-            context,
-            "${BuildConfig.APPLICATION_ID}.fileProvider",
-            file
-        )
-
-        context.grantUriPermission(
-            PRIVILEGED_EXTENSION_PACKAGE_NAME,
-            uri,
-            Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-        )
-
-        return uri
     }
 }
