@@ -402,4 +402,18 @@
     <string name="toast_fav_export_success">Dữ liệu yêu thích đã được xuất ra!</string>
     <string name="action_logout_confirmation_title">Đăng xuất?</string>
     <string name="action_logout_confirmation_message">Bạn có chắc muốn đăng xuất hay không?</string>
+    <string name="made_with_love">Được làm bằng <xliff:g id="heart_emoji">%1$s</xliff:g> ở Ấn Độ</string>
+    <string name="notification_channel_account">Thông báo liên quan đến tài khoản</string>
+    <string name="status_unavailable">Không có sẵn</string>
+    <string name="authentication_required_title">Yêu cầu xác thực</string>
+    <string name="authentication_required_unarchive">Vui lòng đăng nhập vào tài khoản Google Play của bạn để giải nén ứng dụng!</string>
+    <string name="status_downloading">Đang tải xuống</string>
+    <string name="status_failed">Thất bại</string>
+    <string name="status_cancelled">Đã hủy</string>
+    <string name="status_completed">Hoàn thành</string>
+    <string name="status_queued">Đã xếp hàng</string>
+    <string name="checking_updates">Kiểm tra cập nhật</string>
+    <string name="notification_channel_export">Thông báo xuất ứng dụng</string>
+    <string name="notification_channel_downloads">Thông báo tải xuống</string>
+    <string name="notification_channel_install">Thông báo cài đặt</string>
 </resources>
