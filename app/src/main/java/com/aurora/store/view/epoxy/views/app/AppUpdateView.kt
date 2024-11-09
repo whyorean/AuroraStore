@@ -28,9 +28,12 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
-import coil.load
-import coil.transform.CircleCropTransformation
-import coil.transform.RoundedCornersTransformation
+import coil3.asDrawable
+import coil3.load
+import coil3.request.placeholder
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
+import coil3.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -67,7 +70,7 @@ class AppUpdateView @JvmOverloads constructor(
                 placeholder(R.drawable.bg_placeholder)
                 transformations(cornersTransformation)
                 listener { _, result ->
-                    result.drawable.let { iconDrawable = it }
+                    result.image.asDrawable(resources).let { iconDrawable = it }
                 }
             }
 

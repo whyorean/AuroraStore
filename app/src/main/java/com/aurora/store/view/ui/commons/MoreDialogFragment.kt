@@ -49,8 +49,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastForEach
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
-import coil.compose.SubcomposeAsyncImage
-import coil.request.ImageRequest
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.aurora.Constants
 import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
@@ -236,7 +237,7 @@ class MoreDialogFragment : DialogFragment() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.Start)
             ) {
-                SubcomposeAsyncImage(
+                AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
                         .data(
                             if (authProvider.isAnonymous) {
@@ -245,10 +246,10 @@ class MoreDialogFragment : DialogFragment() {
                                 authProvider.authData?.userProfile?.artwork?.url
                             }
                         )
-                        .placeholder(R.drawable.ic_account)
                         .crossfade(true)
                         .build(),
                     contentDescription = stringResource(id = R.string.title_account_manager),
+                    placeholder = painterResource(R.drawable.ic_account),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .requiredSize(36.dp)

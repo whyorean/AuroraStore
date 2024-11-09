@@ -22,8 +22,10 @@ package com.aurora.store.view.ui.account
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import coil.load
-import coil.transform.RoundedCornersTransformation
+import coil3.load
+import coil3.request.placeholder
+import coil3.request.transformations
+import coil3.transform.RoundedCornersTransformation
 import com.aurora.Constants.URL_DISCLAIMER
 import com.aurora.Constants.URL_LICENSE
 import com.aurora.Constants.URL_TOS

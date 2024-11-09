@@ -22,8 +22,9 @@ package com.aurora.store.view.ui.sheets
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
-import coil.load
-import coil.transform.CircleCropTransformation
+import coil3.load
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R

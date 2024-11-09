@@ -21,7 +21,7 @@ package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
-import coil.load
+import coil3.load
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.gplayapi.data.models.details.Badge

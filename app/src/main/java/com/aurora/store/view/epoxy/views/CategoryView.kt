@@ -21,7 +21,7 @@ package com.aurora.store.view.epoxy.views
 
 import android.content.Context
 import android.util.AttributeSet
-import coil.load
+import coil3.load
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView

@@ -24,7 +24,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import coil3.load
 import com.aurora.extensions.browse
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.store.BuildConfig

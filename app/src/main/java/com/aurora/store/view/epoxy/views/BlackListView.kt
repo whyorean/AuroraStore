@@ -24,8 +24,10 @@ import android.content.pm.PackageInfo
 import android.util.AttributeSet
 import android.widget.CompoundButton
 import androidx.core.content.pm.PackageInfoCompat
-import coil.load
-import coil.transform.RoundedCornersTransformation
+import coil3.load
+import coil3.request.placeholder
+import coil3.request.transformations
+import coil3.transform.RoundedCornersTransformation
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView

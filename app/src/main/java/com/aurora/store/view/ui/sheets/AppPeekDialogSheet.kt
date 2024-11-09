@@ -22,8 +22,9 @@ package com.aurora.store.view.ui.sheets
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
-import coil.load
-import coil.transform.RoundedCornersTransformation
+import coil3.load
+import coil3.request.transformations
+import coil3.transform.RoundedCornersTransformation
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetAppPeekBinding
 import com.aurora.store.util.CommonUtil

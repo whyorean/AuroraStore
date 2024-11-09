@@ -22,7 +22,8 @@ package com.aurora.store.view.epoxy.views.details
 import android.content.Context
 import android.content.res.Resources
 import android.util.AttributeSet
-import coil.load
+import coil3.load
+import coil3.request.placeholder
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.gplayapi.data.models.Artwork

@@ -21,11 +21,14 @@
 package com.aurora.store
 
 import android.app.Application
+import android.content.Context
 import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
-import coil.ImageLoader
-import coil.ImageLoaderFactory
+import coil3.ImageLoader
+import coil3.SingletonImageLoader
+import coil3.network.okhttp.OkHttpNetworkFetcherFactory
+import coil3.request.crossfade
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
@@ -45,7 +48,7 @@ import org.lsposed.hiddenapibypass.HiddenApiBypass
 import javax.inject.Inject
 
 @HiltAndroidApp
-class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
+class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Factory {
 
     @Inject
     lateinit var okHttpClient: OkHttpClient
@@ -110,9 +113,10 @@ class AuroraApp : Application(), Configuration.Provider, ImageLoaderFactory {
         scope = MainScope()
     }
 
-    override fun newImageLoader(): ImageLoader {
+    override fun newImageLoader(context: Context): ImageLoader {
         return ImageLoader(this).newBuilder()
-            .okHttpClient(okHttpClient)
+            .crossfade(true)
+            .components { add(OkHttpNetworkFetcherFactory(callFactory = okHttpClient)) }
             .build()
     }
 }
