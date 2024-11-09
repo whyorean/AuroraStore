@@ -24,7 +24,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat.Type.displayCutout
@@ -34,6 +33,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.aurora.extensions.isNAndAbove
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.receiver.MigrationReceiver
@@ -41,19 +41,23 @@ import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
-import com.aurora.store.viewmodel.network.NetworkViewModel
+import com.aurora.store.data.providers.NetworkProvider
+import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var updateHelper: UpdateHelper
+    lateinit var networkProvider: NetworkProvider
 
-    private val networkViewModel: NetworkViewModel by viewModels()
+    @Inject
+    lateinit var updateHelper: UpdateHelper
 
     private lateinit var B: ActivityMainBinding
 
@@ -86,31 +90,31 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        networkViewModel.register()
-        networkViewModel.status.observe(this) { networkStatus ->
-            when (networkStatus) {
-                NetworkStatus.AVAILABLE -> {
-                    if (!supportFragmentManager.isDestroyed && isIntroDone()) {
-                        val fragment = supportFragmentManager
-                            .findFragmentByTag(NetworkDialogSheet.TAG)
-                        fragment?.let {
+        if (isNAndAbove && !PackageUtil.isTv(this)) {
+            networkProvider.status.onEach { networkStatus ->
+                when (networkStatus) {
+                    NetworkStatus.AVAILABLE -> {
+                        if (!supportFragmentManager.isDestroyed && isIntroDone()) {
+                            val fragment = supportFragmentManager
+                                .findFragmentByTag(NetworkDialogSheet.TAG)
+                            fragment?.let {
+                                supportFragmentManager.beginTransaction()
+                                    .remove(fragment)
+                                    .commitAllowingStateLoss()
+                            }
+                        }
+
+                    }
+
+                    NetworkStatus.UNAVAILABLE -> {
+                        if (!supportFragmentManager.isDestroyed && isIntroDone()) {
                             supportFragmentManager.beginTransaction()
-                                .remove(fragment)
+                                .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
                                 .commitAllowingStateLoss()
                         }
                     }
                 }
-
-                NetworkStatus.LOST -> {
-                    if (!supportFragmentManager.isDestroyed && isIntroDone()) {
-                        supportFragmentManager.beginTransaction()
-                            .add(NetworkDialogSheet.newInstance(), NetworkDialogSheet.TAG)
-                            .commitAllowingStateLoss()
-                    }
-                }
-
-                else -> {}
-            }
+            }.launchIn(AuroraApp.scope)
         }
 
         B.navView.setupWithNavController(navController)
@@ -155,11 +159,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    override fun onDestroy() {
-        networkViewModel.unregister()
-        super.onDestroy()
     }
 
     private fun isIntroDone(): Boolean {
