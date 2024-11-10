@@ -82,7 +82,11 @@ class UpdateWorker @AssistedInject constructor(
         Log.i(TAG, "Checking for app updates")
         val updateMode = UpdateMode.entries[inputData.getInt(
             UpdateHelper.UPDATE_MODE,
-            Preferences.getInteger(appContext, PREFERENCE_UPDATES_AUTO, 3)
+            Preferences.getInteger(
+                appContext,
+                PREFERENCE_UPDATES_AUTO,
+                UpdateMode.CHECK_AND_INSTALL.ordinal
+            )
         )]
 
         if (updateMode == UpdateMode.DISABLED || !AccountProvider.isLoggedIn(appContext)) {
