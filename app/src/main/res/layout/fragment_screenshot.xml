@@ -17,20 +17,21 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.ui.details.ScreenshotFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTransparent"
+        android:minHeight="?attr/actionBarSize"
         android:translationZ="1dp"
-        app:layout_scrollFlags="enterAlways|exitUntilCollapsed" />
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/recycler_view"
@@ -39,4 +40,4 @@
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/view_screenshot" />
-</RelativeLayout>
+</LinearLayout>
