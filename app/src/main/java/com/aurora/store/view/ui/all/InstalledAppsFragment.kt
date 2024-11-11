@@ -19,18 +19,18 @@
 
 package com.aurora.store.view.ui.all
 
+import android.content.pm.PackageInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.FragmentAppsBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
+import com.aurora.store.view.epoxy.views.PackageInfoViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.InstalledViewModel
@@ -54,7 +54,7 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.installedApps.collect {
+            viewModel.packages.collect {
                 updateController(it)
             }
         }
@@ -75,10 +75,10 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
         }
     }
 
-    private fun updateController(appList: List<App>?) {
+    private fun updateController(packages: List<PackageInfo>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
-            if (appList == null) {
+            if (packages == null) {
                 for (i in 1..10) {
                     add(
                         AppListViewShimmerModel_()
@@ -89,16 +89,16 @@ class InstalledAppsFragment : BaseFragment<FragmentAppsBinding>() {
                 add(
                     HeaderViewModel_()
                         .id("header")
-                        .title("${appList.size} apps installed")
+                        .title("${packages.size} apps installed")
                 )
-                appList.forEach { app ->
+                packages.forEach { app ->
                     add(
-                        AppListViewModel_()
-                            .id(app.id)
-                            .app(app)
-                            .click { _ -> openDetailsFragment(app.packageName, app) }
+                        PackageInfoViewModel_()
+                            .id(app.packageName.hashCode())
+                            .packageInfo(app)
+                            .click { _ -> openDetailsFragment(app.packageName) }
                             .longClick { _ ->
-                                openAppMenuSheet(MinimalApp.fromApp(app))
+                                openAppMenuSheet(MinimalApp.fromPackageInfo(requireContext(), app))
                                 false
                             }
                     )

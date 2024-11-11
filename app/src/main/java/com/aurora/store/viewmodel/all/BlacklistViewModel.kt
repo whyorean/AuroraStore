@@ -24,16 +24,14 @@ import android.content.pm.PackageInfo
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.extensions.isValidApp
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -55,17 +53,10 @@ class BlacklistViewModel @Inject constructor(
 
     private fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    _packages.value = context.packageManager.getInstalledPackages(0)
-                        .filter { it.isValidApp(context.packageManager) }
-                        .sortedBy {
-                            it.applicationInfo!!.loadLabel(context.packageManager).toString()
-                                .lowercase(Locale.getDefault())
-                        }
-                } catch (exception: Exception) {
-                    Log.e(TAG, "Failed to fetch apps", exception)
-                }
+            try {
+                _packages.value = PackageUtil.getAllValidPackages(context)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch apps", exception)
             }
         }
     }

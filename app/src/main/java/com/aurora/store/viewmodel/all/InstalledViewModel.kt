@@ -20,12 +20,10 @@
 package com.aurora.store.viewmodel.all
 
 import android.content.Context
+import android.content.pm.PackageInfo
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -33,20 +31,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class InstalledViewModel @Inject constructor(
-    private val appDetailsHelper: AppDetailsHelper,
-    private val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
-    private val _installedApps = MutableStateFlow<List<App>?>(null)
-    val installedApps = _installedApps.asStateFlow()
+    private val _packages = MutableStateFlow<List<PackageInfo>?>(null)
+    val packages = _packages.asStateFlow()
 
     init {
         fetchApps()
@@ -55,16 +50,9 @@ class InstalledViewModel @Inject constructor(
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                PackageUtil.getPackageInfoMap(context).keys.let { packages ->
-                    val filtersPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
-
-                    _installedApps.value = appDetailsHelper.getAppByPackageName(filtersPackages)
-                        .filter { it.displayName.isNotEmpty() }
-                        .map { it.isInstalled = true; it }
-                        .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
-                }
+                _packages.value = PackageUtil.getAllValidPackages(context)
             } catch (exception: Exception) {
-                Log.e(TAG, "Failed to get installed apps", exception)
+                Log.e(TAG, "Failed to fetch apps", exception)
             }
         }
     }

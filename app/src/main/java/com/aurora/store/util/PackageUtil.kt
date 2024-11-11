@@ -40,10 +40,20 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
+import java.util.Locale
 
 object PackageUtil {
 
     private const val TAG = "PackageUtil"
+
+    fun getAllValidPackages(context: Context): List<PackageInfo> {
+        return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
+            .filter { it.isValidApp(context.packageManager) }
+            .sortedBy {
+                it.applicationInfo!!.loadLabel(context.packageManager).toString()
+                    .lowercase(Locale.getDefault())
+            }
+    }
 
     fun isInstalled(context: Context, packageName: String): Boolean {
         return try {
