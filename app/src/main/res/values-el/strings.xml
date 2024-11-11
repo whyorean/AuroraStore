@@ -402,4 +402,18 @@
     <string name="force_restart_summary">Το Aurora Store χρείαζεται να επανεκκινηθεί για να εφαρμοστούν οι πρόσφατες αλλαγές</string>
     <string name="export_app_title">Εξαγωγέας Αρχείου</string>
     <string name="export_app_summary">Περίμενε λίγο, εξάγουμε το αρχείο σου</string>
+    <string name="made_with_love">Φτιαγμένο με <xliff:g id="heart_emoji">%1$s</xliff:g> στην Ινδία</string>
+    <string name="notification_channel_account">Ειδοποίηση σχετική με λογαριασμό</string>
+    <string name="status_downloading">Γίνεται λήψη</string>
+    <string name="status_failed">Απέτυχε</string>
+    <string name="status_unavailable">Μη διαθέσιμη</string>
+    <string name="status_completed">Ολοκληρώθηκε</string>
+    <string name="status_queued">Στην ουρά</string>
+    <string name="status_cancelled">Ακυρώθηκε</string>
+    <string name="checking_updates">Γίνεται έλεγχος για ενημερώσεις</string>
+    <string name="authentication_required_title">Απαιτείται ταυτοποίηση</string>
+    <string name="authentication_required_unarchive">Συνδέσου στον λογαριασμό σου στο Google Play για να καταργήσεις την αρχειοθέτηση της εφαρμογής!</string>
+    <string name="notification_channel_export">Ειδοποίηση εξαγωγής εφαρμογής</string>
+    <string name="notification_channel_install">Ειδοποίηση εγκατάστασης</string>
+    <string name="notification_channel_downloads">Ειδοποίηση λήψεων</string>
 </resources>

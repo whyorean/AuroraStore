@@ -17,7 +17,7 @@
     <string name="about_paypal_summary">PayPal donacija</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_telegram_summary">Za razpravo in predloge se pridružite skupini Aurora Support.</string>
-    <string name="about_xda">Dev Thread</string>
+    <string name="about_xda">XDA forumi</string>
     <string name="about_xda_summary">Za razpravo in predloge obiščite Aurora Store XDA forum.</string>
     <string name="account_anonymous">Anonimno</string>
     <string name="account_logout">Odjavite se iz Aurora</string>
@@ -282,4 +282,14 @@
     <string name="pref_ui_similar_apps_desc">Prikaži podobne in sorodne gruče na strani s podrobnostmi o aplikaciji</string>
     <string name="rate_limited">Ups, ta račun ima omejeno stopnjo!</string>
     <string name="menu">Meni</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Poiščite odgovore na pogosto zastavljena vprašanja (F.A.Q.), korake za odpravljanje težav in več</string>
+    <string name="details_no_favourites">Ni najdenih priljubljenih aplikacij</string>
+    <string name="action_favourite">Priljubljeno</string>
+    <string name="action_request_analysis">Zahtevaj novo analizo</string>
+    <string name="details_data_safety_title">Varnost podatkov</string>
+    <string name="details_data_safety_subtitle">Zasebnost podatkov in varnostne prakse deklarirane iz strani razvijalca</string>
+    <string name="action_home_screen">Dodaj na Domači zaslon</string>
+    <string name="action_uninstall_confirmation">Želite odstraniti to aplikacijo?</string>
+    <string name="action_uninstall_success">Uspešno odstranjeno</string>
 </resources>
