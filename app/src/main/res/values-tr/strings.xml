@@ -411,4 +411,9 @@
     <string name="status_cancelled">İptal edildi</string>
     <string name="status_completed">Tamamlandı</string>
     <string name="status_queued">Kuyruğa alındı</string>
+    <string name="notification_channel_account">Hesap ile ilişkili bildirim</string>
+    <string name="authentication_required_title">Yetkilendirme gerekli</string>
+    <string name="made_with_love">Hindistanda <xliff:g id="heart_emoji">%1$s</xliff:g> ile yapıldı</string>
+    <string name="authentication_required_unarchive">Uygulamayı arşivden kaldırmak için lütfen Google Play hesabnınızla giriş yapın!</string>
+    <string name="checking_updates">Güncelleştirmeler için kontrol ediliyor</string>
 </resources>
