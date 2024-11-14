@@ -344,4 +344,8 @@
     <string name="notification_channel_export">Obvestilo izvoza aplikacije</string>
     <string name="notification_channel_install">Obvestilo namestitve</string>
     <string name="notification_channel_downloads">Obvestilo prenosov</string>
+    <string name="verifying_new_session">Preverjanje nove seje</string>
+    <string name="check_connectivity">Preverite povezavo z internetom</string>
+    <string name="failed_to_generate_session">Seje ni mogoče ustvariti</string>
+    <string name="android_market_desc">Android Market je bila spletna trgovina, ki je ponujala programske aplikacije, ustvarjene za Android naprave, zaprta v 2017.</string>
 </resources>
