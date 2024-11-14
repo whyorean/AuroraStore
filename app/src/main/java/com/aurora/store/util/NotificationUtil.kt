@@ -201,8 +201,9 @@ object NotificationUtil {
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
         val contentIntent = NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.updatesFragment)
+            .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
+            .setArguments(bundleOf("destinationId" to R.id.updatesFragment))
             .createPendingIntent()
 
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)

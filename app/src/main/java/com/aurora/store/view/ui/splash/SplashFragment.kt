@@ -194,8 +194,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun navigateToDefaultTab() {
+        val defaultDestination = Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
         val directions =
-            when (Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)) {
+            when (requireArguments().getInt("destinationId", defaultDestination)) {
+                R.id.updatesFragment -> {
+                    requireArguments().remove("destinationId")
+                    SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
+                }
+
                 1 -> SplashFragmentDirections.actionSplashFragmentToGamesContainerFragment()
                 2 -> SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
                 else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
