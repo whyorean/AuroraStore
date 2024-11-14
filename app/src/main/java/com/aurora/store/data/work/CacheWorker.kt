@@ -58,9 +58,9 @@ class CacheWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         Log.i(TAG, "Cleaning cache")
 
-        PathUtil.getOldDownloadDirectories(appContext).forEach { downloadDir -> // Downloads
-            Log.i(TAG, "Deleting old unused download directory: $downloadDir")
-            downloadDir.deleteRecursively()
+        PathUtil.getOldDownloadDirectories(appContext).filter { it.exists() }.forEach { dir -> // Downloads
+            Log.i(TAG, "Deleting old unused download directory: $dir")
+            dir.deleteRecursively()
         }
 
         PathUtil.getDownloadDirectory(appContext).listFiles()?.forEach { download -> // com.example.app
