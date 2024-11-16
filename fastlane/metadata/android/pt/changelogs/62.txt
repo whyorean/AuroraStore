@@ -1,0 +1,6 @@
+• Problema de IU corrigido no Android 15
+• Melhorias na configuração e uso de proxy
+• Fixação SSL para domínios conhecidos usando certificados raiz
+• Melhor suporte para temas dinâmicos em dispositivos compatíveis
+• Suporte abandonado para temas personalizados e cores de destaque
+• Atualizações de tradução

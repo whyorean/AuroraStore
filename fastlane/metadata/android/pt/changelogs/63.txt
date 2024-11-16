@@ -1,0 +1,3 @@
+• Corrigido um pequeno problema de migração
+• Adicionada atualização automática para versões noturnas
+• Atualizações de tradução
