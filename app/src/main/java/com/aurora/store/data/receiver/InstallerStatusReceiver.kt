@@ -30,11 +30,11 @@ import com.aurora.extensions.runOnUiThread
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
+import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.util.CommonUtil.inForeground
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
@@ -63,7 +63,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 if (PackageUtil.isSharedLibrary(context, packageName)) return
 
                 AuroraApp.enqueuedInstalls.remove(packageName)
-                AppInstaller.notifyInstallation(context, displayName, packageName)
+                InstallerBase.notifyInstallation(context, displayName, packageName)
                 if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                     PathUtil.getAppDownloadDir(context, packageName, versionCode)
                         .deleteRecursively()
@@ -92,7 +92,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
             context,
             packageName,
             displayName,
-            AppInstaller.getErrorString(context, status)
+            InstallerBase.getErrorString(context, status)
         )
         notificationManager!!.notify(packageName.hashCode(), notification)
     }
@@ -121,13 +121,13 @@ class InstallerStatusReceiver : BroadcastReceiver() {
 
             PackageInstaller.STATUS_FAILURE_ABORTED -> {
                 InstallerEvent.Cancelled(packageName!!).apply {
-                    this.extra = AppInstaller.getErrorString(context, status)
+                    this.extra = InstallerBase.getErrorString(context, status)
                 }
             }
 
             else -> {
                 InstallerEvent.Failed(packageName!!).apply {
-                    this.error = AppInstaller.getErrorString(context, status)
+                    this.error = InstallerBase.getErrorString(context, status)
                     this.extra = extra ?: ""
                 }
             }

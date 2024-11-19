@@ -20,26 +20,21 @@
 
 package com.aurora.store.data.installer
 
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.BuildConfig
-import com.aurora.store.R
 import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
-import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
@@ -125,24 +120,6 @@ class AppInstaller @Inject constructor(
                 Installer.SERVICE -> hasAuroraService(context)
                 Installer.AM -> false // We cannot check if AppManager has ability to auto-update
                 Installer.SHIZUKU -> isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()
-            }
-        }
-
-        fun notifyInstallation(context: Context, displayName: String, packageName: String) {
-            val notificationManager = context.getSystemService<NotificationManager>()
-            val notification = NotificationUtil.getInstallNotification(context, displayName, packageName)
-            notificationManager!!.notify(packageName.hashCode(), notification)
-        }
-
-        fun getErrorString(context: Context, status: Int): String {
-            return when (status) {
-                PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
-                PackageInstaller.STATUS_FAILURE_BLOCKED -> context.getString(R.string.installer_status_failure_blocked)
-                PackageInstaller.STATUS_FAILURE_CONFLICT -> context.getString(R.string.installer_status_failure_conflict)
-                PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> context.getString(R.string.installer_status_failure_incompatible)
-                PackageInstaller.STATUS_FAILURE_INVALID -> context.getString(R.string.installer_status_failure_invalid)
-                PackageInstaller.STATUS_FAILURE_STORAGE -> context.getString(R.string.installer_status_failure_storage)
-                else -> context.getString(R.string.installer_status_failure)
             }
         }
 

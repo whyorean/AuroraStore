@@ -234,14 +234,7 @@ class ServiceInstaller @Inject constructor(
                     )
                 }
 
-                else -> {
-                    val error = AppInstaller.getErrorString(
-                        context,
-                        returnCode
-                    )
-
-                    postError(packageName, error, extra)
-                }
+                else -> postError(packageName, getErrorString(context, returnCode), extra)
             }
             if (::serviceConnection.isInitialized) {
                 context.unbindService(serviceConnection)
@@ -266,14 +259,7 @@ class ServiceInstaller @Inject constructor(
                     if (packageName == download?.packageName) onInstallationSuccess()
                 }
 
-                else -> {
-                    val error = AppInstaller.getErrorString(
-                        context,
-                        returnCode
-                    )
-
-                    postError(packageName, error, extra)
-                }
+                else -> postError(packageName, getErrorString(context, returnCode), extra)
             }
             if (::serviceConnection.isInitialized) {
                 context.unbindService(serviceConnection)

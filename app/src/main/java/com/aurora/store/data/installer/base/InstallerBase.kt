@@ -19,21 +19,46 @@
 
 package com.aurora.store.data.installer.base
 
+import android.app.NotificationManager
 import android.content.Context
+import android.content.pm.PackageInstaller
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.FileProvider
+import androidx.core.content.getSystemService
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.room.download.Download
+import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import java.io.File
 
 abstract class InstallerBase(private val context: Context) : IInstaller {
+
+    companion object {
+        fun notifyInstallation(context: Context, displayName: String, packageName: String) {
+            val notificationManager = context.getSystemService<NotificationManager>()
+            val notification = NotificationUtil.getInstallNotification(context, displayName, packageName)
+            notificationManager!!.notify(packageName.hashCode(), notification)
+        }
+
+        fun getErrorString(context: Context, status: Int): String {
+            return when (status) {
+                PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
+                PackageInstaller.STATUS_FAILURE_BLOCKED -> context.getString(R.string.installer_status_failure_blocked)
+                PackageInstaller.STATUS_FAILURE_CONFLICT -> context.getString(R.string.installer_status_failure_conflict)
+                PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> context.getString(R.string.installer_status_failure_incompatible)
+                PackageInstaller.STATUS_FAILURE_INVALID -> context.getString(R.string.installer_status_failure_invalid)
+                PackageInstaller.STATUS_FAILURE_STORAGE -> context.getString(R.string.installer_status_failure_storage)
+                else -> context.getString(R.string.installer_status_failure)
+            }
+        }
+    }
 
     private val TAG = InstallerBase::class.java.simpleName
 
@@ -58,7 +83,7 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
 
     fun onInstallationSuccess() {
         download?.let {
-            AppInstaller.notifyInstallation(context, it.displayName, it.packageName)
+            notifyInstallation(context, it.displayName, it.packageName)
             if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                 PathUtil.getAppDownloadDir(context, it.packageName, it.versionCode)
                     .deleteRecursively()
