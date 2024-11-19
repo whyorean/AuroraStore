@@ -123,8 +123,7 @@ class SpoofFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
 
     private fun exportDeviceConfig(uri: Uri) {
         try {
-            NativeDeviceInfoProvider(requireContext())
-                .getNativeDeviceProperties(true)
+            NativeDeviceInfoProvider.getNativeDeviceProperties(requireContext(), true)
                 .store(requireContext().contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
             toast(R.string.toast_export_success)
         } catch (exception: Exception) {

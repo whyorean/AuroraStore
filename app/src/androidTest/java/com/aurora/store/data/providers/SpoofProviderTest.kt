@@ -36,22 +36,22 @@ class SpoofProviderTest {
 
     @Test
     fun testSpoofingDeviceLocale() {
-        assertThat(spoofProvider.isLocaleSpoofEnabled()).isFalse()
+        assertThat(spoofProvider.isLocaleSpoofEnabled).isFalse()
 
         spoofProvider.setSpoofLocale(Locale.JAPAN)
-        assertThat(spoofProvider.isLocaleSpoofEnabled()).isTrue()
-        assertThat(spoofProvider.getSpoofLocale() == Locale.JAPAN).isTrue()
+        assertThat(spoofProvider.isLocaleSpoofEnabled).isTrue()
+        assertThat(spoofProvider.locale == Locale.JAPAN).isTrue()
     }
 
     @Test
     fun testSpoofingDeviceProperties() {
-        assertThat(spoofProvider.isDeviceSpoofEnabled()).isFalse()
+        assertThat(spoofProvider.isDeviceSpoofEnabled).isFalse()
 
         val properties = Properties().apply {
             setProperty("UserReadableName", "Test")
         }
         spoofProvider.setSpoofDeviceProperties(properties)
-        assertThat(spoofProvider.isDeviceSpoofEnabled()).isTrue()
-        assertThat(spoofProvider.getSpoofDeviceProperties() == properties).isTrue()
+        assertThat(spoofProvider.isDeviceSpoofEnabled).isTrue()
+        assertThat(spoofProvider.deviceProperties == properties).isTrue()
     }
 }

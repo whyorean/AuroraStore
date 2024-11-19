@@ -20,86 +20,88 @@
 package com.aurora.store.view.ui.spoof
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
+import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.LocaleViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.Locale
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LocaleSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
 
-    private val TAG = LocaleSpoofFragment::class.java.simpleName
-
-    @Inject
-    lateinit var spoofProvider: SpoofProvider
-
-    private lateinit var locale: Locale
+    private val viewModel: SpoofViewModel by viewModels()
 
     companion object {
         @JvmStatic
         fun newInstance(): LocaleSpoofFragment {
-            return LocaleSpoofFragment().apply {
-
-            }
+            return LocaleSpoofFragment()
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        locale = if (spoofProvider.isLocaleSpoofEnabled()) {
-            spoofProvider.getSpoofLocale()
-        } else {
-            Locale.getDefault()
-        }
-
-        try {
-            updateController(fetchAvailableLocales())
-        } catch (exception: Exception) {
-            Log.e(TAG, "Could not get available locales", exception)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.availableLocales.collect {
+                updateController(it)
+            }
         }
     }
 
     private fun updateController(locales: List<Locale>) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
-            locales
-                .sortedBy { it.displayName }
-                .forEach {
+
+            add(
+                TextDividerViewModel_()
+                    .id("default_divider")
+                    .title(getString(R.string.default_spoof))
+            )
+
+            add(
+                LocaleViewModel_()
+                    .id(viewModel.defaultLocale.language)
+                    .markChecked(viewModel.isLocaleSelected(viewModel.defaultLocale))
+                    .checked { _, checked ->
+                        if (checked) {
+                            viewModel.onLocaleSelected(viewModel.defaultLocale)
+                            requestModelBuild()
+                            findNavController().navigate(R.id.forceRestartDialog)
+                        }
+                    }
+                    .locale(viewModel.defaultLocale)
+            )
+
+            add(
+                TextDividerViewModel_()
+                    .id("available_divider")
+                    .title(getString(R.string.available_spoof))
+            )
+
+            locales.forEach {
                 add(
                     LocaleViewModel_()
                         .id(it.language)
-                        .markChecked(locale == it)
+                        .markChecked(viewModel.spoofProvider.locale == it)
                         .checked { _, checked ->
                             if (checked) {
-                                locale = it
-                                saveSelection(it)
+                                viewModel.onLocaleSelected(it)
                                 requestModelBuild()
+                                findNavController().navigate(R.id.forceRestartDialog)
                             }
                         }
                         .locale(it)
                 )
             }
         }
-    }
-
-    private fun fetchAvailableLocales(): List<Locale> {
-        val locales = Locale.getAvailableLocales()
-        val localeList: MutableList<Locale> = ArrayList()
-        localeList.addAll(locales)
-        localeList.add(0, Locale.getDefault())
-        return localeList
-    }
-
-    private fun saveSelection(locale: Locale) {
-        requireContext().toast(R.string.spoof_apply)
-        spoofProvider.setSpoofLocale(locale)
     }
 }

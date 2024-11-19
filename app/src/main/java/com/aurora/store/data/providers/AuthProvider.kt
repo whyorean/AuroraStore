@@ -32,13 +32,10 @@ import com.aurora.store.data.model.Auth
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
-import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.Locale
-import java.util.Properties
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -71,24 +68,6 @@ class AuthProvider @Inject constructor(
 
     val isAnonymous: Boolean
         get() = AccountProvider.getAccountType(context) == AccountType.ANONYMOUS
-
-    private val properties: Properties
-        get() {
-            val currentProperties = if (spoofProvider.isDeviceSpoofEnabled()) {
-                spoofProvider.getSpoofDeviceProperties()
-            } else {
-                NativeDeviceInfoProvider(context).getNativeDeviceProperties()
-            }
-            setVendingVersion(currentProperties)
-            return currentProperties
-        }
-
-    private val locale: Locale
-        get() = if (spoofProvider.isLocaleSpoofEnabled()) {
-            spoofProvider.getSpoofLocale()
-        } else {
-            Locale.getDefault()
-        }
 
     /**
      * Checks whether saved AuthData is valid or not
@@ -124,8 +103,8 @@ class AuthProvider @Inject constructor(
                         email = email,
                         token = token,
                         tokenType = tokenType,
-                        properties = properties,
-                        locale = locale,
+                        properties = spoofProvider.deviceProperties,
+                        locale = spoofProvider.locale,
                     )
                 )
             } catch (exception: Exception) {
@@ -153,8 +132,8 @@ class AuthProvider @Inject constructor(
                         token = auth.auth,
                         tokenType = AuthHelper.Token.AUTH,
                         isAnonymous = true,
-                        properties = properties,
-                        locale = locale
+                        properties = spoofProvider.deviceProperties,
+                        locale = spoofProvider.locale
                     )
                 )
             } catch (exception: Exception) {
@@ -176,18 +155,6 @@ class AuthProvider @Inject constructor(
      */
     fun removeAuthData(context: Context) {
         Preferences.remove(context, PREFERENCE_AUTH_DATA)
-    }
-
-    private fun setVendingVersion(currentProperties: Properties) {
-        val vendingVersionIndex = Preferences.getInteger(context, PREFERENCE_VENDING_VERSION)
-        if (vendingVersionIndex > 0) {
-            val resources = context.resources
-            val versionCodes = resources.getStringArray(R.array.pref_vending_version_codes)
-            val versionStrings = resources.getStringArray(R.array.pref_vending_version)
-
-            currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
-            currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
-        }
     }
 
     @Throws(Exception::class)

@@ -25,83 +25,85 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.data.providers.NativeDeviceInfoProvider
-import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
+import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.DeviceViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Properties
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
+
     private val viewModel: SpoofViewModel by viewModels()
-
-    @Inject
-    lateinit var spoofProvider: SpoofProvider
-
-    private lateinit var properties: Properties
 
     companion object {
         @JvmStatic
         fun newInstance(): DeviceSpoofFragment {
-            return DeviceSpoofFragment().apply {
-
-            }
+            return DeviceSpoofFragment()
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        properties = if (spoofProvider.isDeviceSpoofEnabled()) {
-            spoofProvider.getSpoofDeviceProperties()
-        } else {
-            NativeDeviceInfoProvider(requireContext()).getNativeDeviceProperties()
-        }
-
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.availableDevices.collect { updateController(it) }
             }
         }
-        viewModel.fetchAvailableDevices()
     }
 
-    private fun updateController(locales: List<Properties>) {
+    private fun updateController(devices: List<Properties>) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
-            locales
-                .sortedBy { it.getProperty("UserReadableName") }
-                .forEach {
-                    add(
-                        DeviceViewModel_()
-                            .id(it.hashCode())
-                            .markChecked(
-                                properties.getProperty("UserReadableName") == it.getProperty(
-                                    "UserReadableName"
-                                )
-                            )
-                            .checked { _, checked ->
-                                if (checked) {
-                                    properties = it
-                                    saveSelection(it)
-                                    requestModelBuild()
-                                }
-                            }
-                            .properties(it)
-                    )
-                }
-        }
-    }
 
-    private fun saveSelection(properties: Properties) {
-        requireContext().toast(R.string.spoof_apply)
-        spoofProvider.setSpoofDeviceProperties(properties)
+            add(
+                TextDividerViewModel_()
+                    .id("default_divider")
+                    .title(getString(R.string.default_spoof))
+            )
+
+            add(
+                DeviceViewModel_()
+                    .id(viewModel.defaultProperties.hashCode())
+                    .markChecked(viewModel.isDeviceSelected(viewModel.defaultProperties))
+                    .checked { _, checked ->
+                        if (checked) {
+                            viewModel.onDeviceSelected(viewModel.defaultProperties)
+                            requestModelBuild()
+                            findNavController().navigate(R.id.forceRestartDialog)
+                        }
+                    }
+                    .properties(viewModel.defaultProperties)
+            )
+
+            add(
+                TextDividerViewModel_()
+                    .id("available_divider")
+                    .title(getString(R.string.available_spoof))
+            )
+
+            devices.forEach {
+                add(
+                    DeviceViewModel_()
+                        .id(it.hashCode())
+                        .markChecked(viewModel.isDeviceSelected(it))
+                        .checked { _, checked ->
+                            if (checked) {
+                                viewModel.onDeviceSelected(it)
+                                requestModelBuild()
+                                findNavController().navigate(R.id.forceRestartDialog)
+                            }
+                        }
+                        .properties(it)
+                )
+            }
+        }
     }
 }

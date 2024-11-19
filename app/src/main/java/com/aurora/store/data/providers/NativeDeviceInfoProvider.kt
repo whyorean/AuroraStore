@@ -26,12 +26,12 @@ import androidx.core.content.getSystemService
 import com.aurora.extensions.isHuawei
 import java.util.Properties
 
-class NativeDeviceInfoProvider(val context: Context) {
+object NativeDeviceInfoProvider {
 
-    fun getNativeDeviceProperties(isExport: Boolean = false): Properties {
+    fun getNativeDeviceProperties(context: Context, isExport: Boolean = false): Properties {
         val properties = Properties().apply {
             //Build Props
-            setProperty("UserReadableName", "${Build.DEVICE}-default")
+            setProperty("UserReadableName", "${Build.MANUFACTURER} ${Build.MODEL}")
             setProperty("Build.HARDWARE", Build.HARDWARE)
             setProperty(
                 "Build.RADIO",
@@ -71,11 +71,11 @@ class NativeDeviceInfoProvider(val context: Context) {
             //Supported Platforms
             setProperty("Platforms", Build.SUPPORTED_ABIS.joinToString(separator = ","))
             //Supported Features
-            setProperty("Features", getFeatures().joinToString(separator = ","))
+            setProperty("Features", getFeatures(context).joinToString(separator = ","))
             //Shared Locales
-            setProperty("Locales", getLocales().joinToString(separator = ","))
+            setProperty("Locales", getLocales(context).joinToString(separator = ","))
             //Shared Libraries
-            setProperty("SharedLibraries", getSharedLibraries().joinToString(separator = ","))
+            setProperty("SharedLibraries", getSharedLibraries(context).joinToString(separator = ","))
             //GL Extensions
             val activityManager = context.getSystemService<ActivityManager>()
             setProperty(
@@ -104,27 +104,25 @@ class NativeDeviceInfoProvider(val context: Context) {
             setProperty("SimOperator", "38")
         }
 
-        if (isHuawei && !isExport)
-            stripHuaweiProperties(properties)
-
+        if (isHuawei && !isExport) stripHuaweiProperties(properties)
         return properties
     }
 
-    private fun getFeatures(): List<String> {
+    private fun getFeatures(context: Context): List<String> {
         return context
             .packageManager
             .systemAvailableFeatures
-            ?.mapNotNull { it.name } ?: emptyList()
+            .mapNotNull { it.name }
     }
 
-    private fun getLocales(): List<String> {
+    private fun getLocales(context: Context): List<String> {
         return context
             .assets
             .locales
             .mapNotNull { it.replace("-", "_") }
     }
 
-    private fun getSharedLibraries(): List<String> {
+    private fun getSharedLibraries(context: Context): List<String> {
         return context
             .packageManager
             .systemSharedLibraryNames

@@ -20,7 +20,9 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import com.aurora.store.R
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
@@ -28,50 +30,65 @@ import java.util.Properties
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Provider class to work with device and locale spoofs
+ */
 @Singleton
 class SpoofProvider @Inject constructor(
+    private val gson: Gson,
     @ApplicationContext val context: Context,
-    private val gson: Gson
-) {
+) : SpoofDeviceProvider(context) {
 
     companion object {
-        const val LOCALE_SPOOF_ENABLED = "LOCALE_SPOOF_ENABLED"
-        const val LOCALE_SPOOF_LANG = "LOCALE_SPOOF_LANG"
-        const val LOCALE_SPOOF_COUNTRY = "LOCALE_SPOOF_COUNTRY"
+        private const val LOCALE_SPOOF_ENABLED = "LOCALE_SPOOF_ENABLED"
+        private const val LOCALE_SPOOF_LANG = "LOCALE_SPOOF_LANG"
+        private const val LOCALE_SPOOF_COUNTRY = "LOCALE_SPOOF_COUNTRY"
 
-        const val DEVICE_SPOOF_ENABLED = "DEVICE_SPOOF_ENABLED"
-        const val DEVICE_SPOOF_PROPERTIES = "DEVICE_SPOOF_PROPERTIES"
+        private const val DEVICE_SPOOF_ENABLED = "DEVICE_SPOOF_ENABLED"
+        private const val DEVICE_SPOOF_PROPERTIES = "DEVICE_SPOOF_PROPERTIES"
     }
 
-    fun isLocaleSpoofEnabled(): Boolean {
-        return Preferences.getBoolean(context, LOCALE_SPOOF_ENABLED)
+    val availableSpoofDeviceProperties get() = availableDeviceProperties
+    val availableSpoofLocales = Locale.getAvailableLocales().toMutableList().apply {
+        remove(Locale.getDefault())
+        sortBy { it.displayName }
     }
 
-    fun isDeviceSpoofEnabled(): Boolean {
-        return Preferences.getBoolean(context, DEVICE_SPOOF_ENABLED)
-    }
+    val deviceProperties: Properties
+        get() {
+            val currentProperties = if (isDeviceSpoofEnabled) {
+                spoofDeviceProperties
+            } else {
+                NativeDeviceInfoProvider.getNativeDeviceProperties(context)
+            }
+            setVendingVersion(currentProperties)
+            return currentProperties
+        }
 
-    fun getSpoofLocale(): Locale {
-        return if (isLocaleSpoofEnabled()) {
-            Locale(
-                Preferences.getString(context, LOCALE_SPOOF_LANG),
-                Preferences.getString(context, LOCALE_SPOOF_COUNTRY)
-            )
+    val locale: Locale
+        get() = if (isLocaleSpoofEnabled) {
+            spoofLocale
         } else {
             Locale.getDefault()
         }
-    }
 
-    fun getSpoofDeviceProperties(): Properties {
-        return if (isDeviceSpoofEnabled()) {
-            return gson.fromJson(
-                Preferences.getString(context, DEVICE_SPOOF_PROPERTIES),
-                Properties::class.java
-            )
-        } else {
-            Properties()
-        }
-    }
+    val isLocaleSpoofEnabled: Boolean
+        get() = Preferences.getBoolean(context, LOCALE_SPOOF_ENABLED)
+
+    val isDeviceSpoofEnabled: Boolean
+        get() = Preferences.getBoolean(context, DEVICE_SPOOF_ENABLED)
+
+    private val spoofLocale: Locale
+        get() = Locale(
+            Preferences.getString(context, LOCALE_SPOOF_LANG),
+            Preferences.getString(context, LOCALE_SPOOF_COUNTRY)
+        )
+
+    private val spoofDeviceProperties: Properties
+        get() = gson.fromJson(
+            Preferences.getString(context, DEVICE_SPOOF_PROPERTIES),
+            Properties::class.java
+        )
 
     fun setSpoofLocale(locale: Locale) {
         Preferences.putBoolean(context, LOCALE_SPOOF_ENABLED, true)
@@ -93,5 +110,17 @@ class SpoofProvider @Inject constructor(
     fun removeSpoofDeviceProperties() {
         Preferences.remove(context, DEVICE_SPOOF_ENABLED)
         Preferences.remove(context, DEVICE_SPOOF_PROPERTIES)
+    }
+
+    private fun setVendingVersion(currentProperties: Properties) {
+        val vendingVersionIndex = Preferences.getInteger(context, PREFERENCE_VENDING_VERSION)
+        if (vendingVersionIndex > 0) {
+            val resources = context.resources
+            val versionCodes = resources.getStringArray(R.array.pref_vending_version_codes)
+            val versionStrings = resources.getStringArray(R.array.pref_vending_version)
+
+            currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
+            currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
+        }
     }
 }

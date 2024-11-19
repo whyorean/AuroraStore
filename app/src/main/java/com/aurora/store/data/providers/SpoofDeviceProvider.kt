@@ -23,7 +23,6 @@ import android.content.Context
 import android.util.Log
 import com.aurora.store.BuildConfig
 import com.aurora.store.util.PathUtil
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileInputStream
@@ -31,22 +30,26 @@ import java.io.IOException
 import java.util.Properties
 import java.util.jar.JarEntry
 import java.util.jar.JarFile
-import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Provider class to work with device spoof configs imported by users & shipped by GPlayAPI library
+ *
+ * Do not use this class directly. Consider using [SpoofProvider] instead.
+ */
 @Singleton
-class SpoofDeviceProvider @Inject constructor(@ApplicationContext val context: Context) {
+open class SpoofDeviceProvider(private val context: Context) {
 
     private val TAG = SpoofDeviceProvider::class.java.simpleName
 
     private val SUFFIX = ".properties"
 
-    val availableDevice: List<Properties>
+    val availableDeviceProperties: MutableList<Properties>
         get() {
             val propertiesList: MutableList<Properties> = ArrayList()
-            propertiesList.add(0, NativeDeviceInfoProvider(context).getNativeDeviceProperties())
             propertiesList.addAll(spoofDevicesFromApk)
             propertiesList.addAll(spoofDevicesFromUser)
+            propertiesList.sortBy { it.getProperty("UserReadableName") }
             return propertiesList
         }
 

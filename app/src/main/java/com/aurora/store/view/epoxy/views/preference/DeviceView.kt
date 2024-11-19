@@ -55,6 +55,7 @@ class DeviceView @JvmOverloads constructor(
     @ModelProp
     fun markChecked(isChecked: Boolean) {
         binding.checkbox.isChecked = isChecked
+        binding.checkbox.isEnabled = !isChecked
     }
 
     @CallbackProp

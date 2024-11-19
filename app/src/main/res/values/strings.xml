@@ -467,4 +467,8 @@
     <!-- UnarchivePackageReceiver -->
     <string name="authentication_required_title">Authentication required</string>
     <string name="authentication_required_unarchive">Please log in to your Google Play account to unarchive the app!</string>
+
+    <!-- SpoofFragment -->
+    <string name="default_spoof">Default</string>
+    <string name="available_spoof">Available</string>
 </resources>
