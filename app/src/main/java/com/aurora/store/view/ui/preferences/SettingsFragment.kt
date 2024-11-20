@@ -34,10 +34,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_settings, rootKey)
 
-        findPreference<Preference>("pref_filter")?.setOnPreferenceClickListener {
-            findNavController().navigate(R.id.filterPreference)
-            true
-        }
         findPreference<Preference>("pref_install")?.setOnPreferenceClickListener {
             findNavController().navigate(R.id.installationPreference)
             true

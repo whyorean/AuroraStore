@@ -43,6 +43,32 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
+        app:title="@string/action_filter" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_FILTER_FDROID"
+        app:summary="@string/pref_filter_fdroid_summary"
+        app:title="@string/pref_filter_fdroid_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_FILTER_GOOGLE"
+        app:summary="@string/pref_filter_google_summary"
+        app:title="@string/pref_filter_google_title" />
+
+    <SwitchPreferenceCompat
+        app:defaultValue="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_FILTER_AURORA_ONLY"
+        app:summary="@string/pref_aurora_only_desc"
+        app:title="@string/pref_aurora_only" />
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false"
         app:title="@string/pref_common_extra" />
 
     <SwitchPreferenceCompat

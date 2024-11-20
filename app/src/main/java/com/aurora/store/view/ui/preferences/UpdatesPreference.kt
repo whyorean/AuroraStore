@@ -30,6 +30,10 @@ import com.aurora.store.R
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.UpdateMode
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -46,10 +50,19 @@ class UpdatesPreference : BasePreferenceFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
 
+        val nonAuroraFilters: List<SwitchPreferenceCompat> = listOfNotNull(
+            findPreference(PREFERENCE_FILTER_FDROID),
+            findPreference(PREFERENCE_FILTER_GOOGLE)
+        )
+
         findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)
             ?.setOnPreferenceChangeListener { _, newValue ->
+                val updateCheckIntervalPref =
+                    findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
+
                 when (UpdateMode.entries[newValue.toString().toInt()]) {
                     UpdateMode.DISABLED -> {
+                        updateCheckIntervalPref?.isEnabled = false
                         updateHelper.cancelAutomatedCheck()
                         requireContext().save(PREFERENCE_UPDATES_AUTO, 0)
                         true
@@ -57,11 +70,13 @@ class UpdatesPreference : BasePreferenceFragment() {
 
                     UpdateMode.CHECK_AND_NOTIFY -> {
                         if (permissionProvider.isGranted(PermissionType.POST_NOTIFICATIONS)) {
+                            updateCheckIntervalPref?.isEnabled = true
                             updateHelper.scheduleAutomatedCheck()
                             true
                         } else {
                             permissionProvider.request(PermissionType.POST_NOTIFICATIONS) {
                                 if (it) {
+                                    updateCheckIntervalPref?.isEnabled = true
                                     requireContext().save(PREFERENCE_UPDATES_AUTO, 1)
                                     updateHelper.scheduleAutomatedCheck()
                                     activity?.recreate()
@@ -73,11 +88,13 @@ class UpdatesPreference : BasePreferenceFragment() {
 
                     UpdateMode.CHECK_AND_INSTALL -> {
                         if (permissionProvider.isGranted(PermissionType.DOZE_WHITELIST)) {
+                            updateCheckIntervalPref?.isEnabled = true
                             updateHelper.scheduleAutomatedCheck()
                             true
                         } else {
                             permissionProvider.request(PermissionType.DOZE_WHITELIST) {
                                 if (it) {
+                                    updateCheckIntervalPref?.isEnabled = true
                                     requireContext().save(PREFERENCE_UPDATES_AUTO, 2)
                                     updateHelper.scheduleAutomatedCheck()
                                     activity?.recreate()
@@ -91,11 +108,28 @@ class UpdatesPreference : BasePreferenceFragment() {
                 }
             }
 
-        findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
-            ?.setOnPreferenceChangeListener { _, _ ->
+        findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)?.apply {
+            isEnabled = Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO) != 0
+            setOnPreferenceChangeListener { _, _ ->
                 updateHelper.updateAutomatedCheck()
                 true
             }
+        }
+
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_FILTER_AURORA_ONLY)
+            ?.setOnPreferenceChangeListener { _, newValue ->
+                nonAuroraFilters.forEach { it.isEnabled = !newValue.toString().toBoolean() }
+                updateHelper.checkUpdatesNow()
+                true
+            }
+
+        nonAuroraFilters.forEach {
+            it.isEnabled = !Preferences.getBoolean(requireContext(), PREFERENCE_FILTER_AURORA_ONLY)
+            it.setOnPreferenceChangeListener { _, _ ->
+                updateHelper.checkUpdatesNow()
+                true
+            }
+        }
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_UPDATES_EXTENDED)
             ?.setOnPreferenceChangeListener { _, _ ->

@@ -18,11 +18,6 @@
   -->
 
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Preference
-        app:icon="@drawable/ic_filter"
-        app:key="pref_filter"
-        app:layout="@layout/item_preference"
-        app:title="@string/action_filter" />
 
     <Preference
         app:icon="@drawable/ic_installation"
