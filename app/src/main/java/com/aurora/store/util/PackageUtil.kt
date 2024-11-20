@@ -47,8 +47,10 @@ object PackageUtil {
     private const val TAG = "PackageUtil"
 
     fun getAllValidPackages(context: Context): List<PackageInfo> {
+        val sharedLibs = context.packageManager.systemSharedLibraryNames ?: emptyArray()
         return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
             .filter { it.isValidApp(context.packageManager) }
+            .filterNot { it.packageName in sharedLibs }
             .sortedBy {
                 it.applicationInfo!!.loadLabel(context.packageManager).toString()
                     .lowercase(Locale.getDefault())
