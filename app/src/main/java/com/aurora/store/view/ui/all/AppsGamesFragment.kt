@@ -19,72 +19,115 @@
 
 package com.aurora.store.view.ui.all
 
+import android.content.pm.PackageInfo
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.aurora.store.R
-import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.databinding.FragmentGenericWithPagerBinding
+import com.aurora.store.AuroraApp
+import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.model.MinimalApp
+import com.aurora.store.databinding.FragmentGenericWithSearchBinding
+import com.aurora.store.view.epoxy.views.HeaderViewModel_
+import com.aurora.store.view.epoxy.views.PackageInfoViewModel_
+import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.aurora.store.viewmodel.all.InstalledViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AppsGamesFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
-    @Inject
-    lateinit var authProvider: AuthProvider
+class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
+
+    private val viewModel: InstalledViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.packages.collect {
+                updateController(it)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            AuroraApp.events.installerEvent.collect {
+                when (it) {
+                    is InstallerEvent.Installed,
+                    is InstallerEvent.Uninstalled -> {
+                        viewModel.fetchApps()
+                    }
+
+                    else -> {}
+                }
+            }
+        }
+
         // Toolbar
-        binding.layoutActionToolbar.toolbar.apply {
-            elevation = 0f
-            title = getString(R.string.title_apps_games)
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
-            setNavigationOnClickListener { findNavController().navigateUp() }
-        }
+        binding.layoutToolbarNative.apply {
+            imgActionPrimary.visibility = View.VISIBLE
+            imgActionSecondary.visibility = View.GONE
 
-        // ViewPager
-        binding.pager.apply {
-            isUserInputEnabled = false
-            adapter = ViewPagerAdapter(childFragmentManager, lifecycle, authProvider.isAnonymous)
-        }
+            imgActionPrimary.setOnClickListener { findNavController().navigateUp() }
 
-        TabLayoutMediator(
-            binding.tabLayout,
-            binding.pager,
-            true
-        ) { tab: TabLayout.Tab, position: Int ->
-            when (position) {
-                0 -> tab.text = getString(R.string.title_installed)
-                else -> {}
-            }
-        }.attach()
-    }
+            inputSearch.addTextChangedListener(object : TextWatcher {
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (s.isNullOrEmpty()) {
+                        updateController(viewModel.packages.value)
+                    } else {
+                        val filteredPackages = viewModel.packages.value?.filter {
+                            it.applicationInfo!!.loadLabel(requireContext().packageManager)
+                                .contains(s, true)
+                        }
+                        updateController(filteredPackages)
+                    }
+                }
 
-    internal class ViewPagerAdapter(
-        fragment: FragmentManager,
-        lifecycle: Lifecycle,
-        private val isAnonymous: Boolean
-    ) :
-        FragmentStateAdapter(fragment, lifecycle) {
-        override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                0 -> InstalledAppsFragment.newInstance()
-                else -> Fragment()
-            }
-        }
-
-        override fun getItemCount(): Int {
-            return 1
+                override fun afterTextChanged(s: Editable?) {}
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+            })
         }
     }
+
+    private fun updateController(packages: List<PackageInfo>?) {
+        binding.recycler.withModels {
+            setFilterDuplicates(true)
+            if (packages == null) {
+                for (i in 1..10) {
+                    add(
+                        AppListViewShimmerModel_()
+                            .id(i)
+                    )
+                }
+            } else {
+                add(
+                    HeaderViewModel_()
+                        .id("header")
+                        .title("${packages.size} apps installed")
+                )
+                packages.forEach { app ->
+                    add(
+                        PackageInfoViewModel_()
+                            .id(app.packageName.hashCode())
+                            .packageInfo(app)
+                            .click { _ -> openDetailsFragment(app.packageName) }
+                            .longClick { _ ->
+                                openAppMenuSheet(MinimalApp.fromPackageInfo(requireContext(), app))
+                                false
+                            }
+                    )
+                }
+            }
+        }
+    }
+
 }
