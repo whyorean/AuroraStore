@@ -28,6 +28,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.DeviceViewModel_
@@ -77,6 +78,7 @@ class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
                         if (checked) {
                             viewModel.onDeviceSelected(viewModel.defaultProperties)
                             requestModelBuild()
+                            AccountProvider.logout(requireContext())
                             findNavController().navigate(R.id.forceRestartDialog)
                         }
                     }
@@ -98,6 +100,7 @@ class DeviceSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
                             if (checked) {
                                 viewModel.onDeviceSelected(it)
                                 requestModelBuild()
+                                AccountProvider.logout(requireContext())
                                 findNavController().navigate(R.id.forceRestartDialog)
                             }
                         }

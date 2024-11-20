@@ -26,6 +26,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding
 import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.LocaleViewModel_
@@ -96,6 +97,7 @@ class LocaleSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
                             if (checked) {
                                 viewModel.onLocaleSelected(it)
                                 requestModelBuild()
+                                AccountProvider.logout(requireContext())
                                 findNavController().navigate(R.id.forceRestartDialog)
                             }
                         }

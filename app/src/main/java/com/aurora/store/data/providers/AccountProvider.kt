@@ -24,6 +24,7 @@ import com.aurora.Constants
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 
 object AccountProvider {
 
@@ -74,6 +75,7 @@ object AccountProvider {
     }
 
     fun logout(context: Context) {
+        Preferences.remove(context, PREFERENCE_AUTH_DATA)
         Preferences.remove(context, Constants.ACCOUNT_SIGNED_IN)
         Preferences.remove(context, Constants.ACCOUNT_TYPE)
         Preferences.remove(context, Constants.ACCOUNT_EMAIL_PLAIN)
