@@ -25,7 +25,7 @@ import android.content.pm.PackageManager
 import android.util.Base64
 import android.util.Log
 import com.aurora.extensions.generateX509Certificate
-import com.aurora.extensions.getInstallerPackageNameCompat
+import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isPAndAbove
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.util.PackageUtil.getPackageInfo
@@ -41,8 +41,27 @@ object CertUtil {
     }
 
     fun isAppGalleryApp(context: Context, packageName: String): Boolean {
-        val appGalleryPackageName = "com.huawei.appmarket"
-        return context.packageManager.getInstallerPackageNameCompat(packageName) == appGalleryPackageName
+        return context.packageManager.getUpdateOwnerPackageNameCompat(packageName) == "com.huawei.appmarket"
+    }
+
+    fun isGoogleApp(packageName: String): Boolean {
+        return packageName.contains("com.google") || listOf(
+            "com.chrome.beta",
+            "com.chrome.canary",
+            "com.chrome.dev",
+            "com.android.chrome",
+            "com.niksoftware.snapseed"
+        ).contains(packageName)
+    }
+
+    fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
+        val packageInstaller = context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
+        return listOf(
+            "com.aurora.store",
+            "com.aurora.store.debug",
+            "com.aurora.store.nightly",
+            "com.aurora.services"
+        ).contains(packageInstaller)
     }
 
     fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> {
@@ -81,7 +100,7 @@ object CertUtil {
             "org.fdroid.basic", "org.fdroid.fdroid", "org.fdroid.fdroid.privileged"
         )
         return fdroidPackages.contains(
-            context.packageManager.getInstallerPackageNameCompat(packageName)
+            context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
         )
     }
 

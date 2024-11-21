@@ -4,7 +4,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.util.Log
 import androidx.core.content.getSystemService
-import androidx.core.content.pm.PackageInfoCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
@@ -72,6 +71,15 @@ class UpdateWorker @AssistedInject constructor(
     private val canSelfUpdate = !CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID) &&
             !CertUtil.isAppGalleryApp(appContext, BuildConfig.APPLICATION_ID) &&
             buildType != BuildType.DEBUG
+
+    private val isAuroraOnlyFilterEnabled: Boolean
+        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
+
+    private val isGoogleFilterEnabled: Boolean
+        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_GOOGLE)
+
+    private val isFDroidFilterEnabled: Boolean
+        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_FDROID)
 
     private val isExtendedUpdateEnabled: Boolean
         get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_UPDATES_EXTENDED)
@@ -149,20 +157,23 @@ class UpdateWorker @AssistedInject constructor(
      */
     private suspend fun checkUpdates(): List<Update> {
         return withContext(Dispatchers.IO) {
-            val packageInfoMap = PackageUtil.getPackageInfoMap(appContext)
-            val updates = packageInfoMap.keys.let { packages ->
-                val filteredPackages = packages.filter { !blacklistProvider.isBlacklisted(it) }
-                appDetailsHelper.getAppByPackageName(filteredPackages)
-                    .filter { it.displayName.isNotEmpty() }
-                    .map { it.isInstalled = true; it }
-            }.filter {
-                val packageInfo = packageInfoMap[it.packageName]
-                if (packageInfo != null) {
-                    it.versionCode.toLong() > PackageInfoCompat.getLongVersionCode(packageInfo)
-                } else {
-                    false
-                }
-            }.toMutableList()
+            val packages = PackageUtil.getAllValidPackages(appContext)
+                .filterNot { blacklistProvider.isBlacklisted(it.packageName) }
+                .filter { if (!isExtendedUpdateEnabled) it.applicationInfo!!.enabled else true }
+
+            // Filter out packages based on user's preferences
+            val filteredPackages = if (isAuroraOnlyFilterEnabled) {
+                packages.filter { CertUtil.isAuroraStoreApp(appContext, it.packageName) }
+            } else {
+                packages
+                    .filterNot { if (isFDroidFilterEnabled) CertUtil.isFDroidApp(appContext, it.packageName) else false }
+                    .filterNot { if (isGoogleFilterEnabled) CertUtil.isGoogleApp(it.packageName) else false }
+            }
+
+            val updates = appDetailsHelper.getAppByPackageName(filteredPackages.map { it.packageName })
+                .filter { it.displayName.isNotEmpty() }
+                .filter { PackageUtil.isUpdatable(appContext, it.packageName, it.versionCode.toLong()) }
+                .toMutableList()
 
             if (canSelfUpdate) getSelfUpdate()?.let { updates.add(it) }
 

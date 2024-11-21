@@ -34,7 +34,6 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
-import com.aurora.extensions.getInstallerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
@@ -220,86 +219,6 @@ object PackageUtil {
             emptyList()
         }
     }
-
-    fun getPackageInfoMap(context: Context): MutableMap<String, PackageInfo> {
-        val packageInfoSet: MutableMap<String, PackageInfo> = mutableMapOf()
-        val packageManager: PackageManager = context.packageManager
-        val flags: Int = PackageManager.GET_META_DATA
-        var packageInfoList: List<PackageInfo> = packageManager.getInstalledPackages(flags)
-
-        val isGoogleFilterEnabled = Preferences.getBoolean(
-            context,
-            Preferences.PREFERENCE_FILTER_GOOGLE
-        )
-
-        val isAuroraOnlyUpdateEnabled = Preferences.getBoolean(
-            context,
-            Preferences.PREFERENCE_FILTER_AURORA_ONLY,
-            false
-        )
-
-        val isFDroidFilterEnabled = Preferences.getBoolean(
-            context,
-            Preferences.PREFERENCE_FILTER_FDROID
-        )
-
-        val isExtendedUpdateEnabled = Preferences.getBoolean(
-            context,
-            Preferences.PREFERENCE_UPDATES_EXTENDED
-        )
-
-        packageInfoList = packageInfoList.filter { it.isValidApp(packageManager) }
-
-        /*Filter google apps*/
-        if (isGoogleFilterEnabled) {
-            packageInfoList = packageInfoList
-                .filter {
-                    !listOf(
-                        "com.chrome.beta",
-                        "com.chrome.canary",
-                        "com.chrome.dev",
-                        "com.android.chrome",
-                        "com.niksoftware.snapseed",
-                        "com.google.toontastic",
-                    ).contains(it.packageName)
-                }.filter {
-                    !it.packageName.contains("com.google")
-                }
-        }
-
-        /*Select only Aurora STore installed apps*/
-        if (isAuroraOnlyUpdateEnabled) {
-            packageInfoList = packageInfoList
-                .filter {
-                    val packageInstaller =
-                        packageManager.getInstallerPackageNameCompat(it.packageName)
-                    listOf(
-                        "com.aurora.store",
-                        "com.aurora.store.debug",
-                        "com.aurora.store.nightly",
-                        "com.aurora.services"
-                    ).contains(packageInstaller)
-                }
-        }
-
-        if (!isExtendedUpdateEnabled) {
-            packageInfoList = packageInfoList.filter { it.applicationInfo!!.enabled }
-        }
-
-        /*Filter F-Droid apps*/
-        if (isFDroidFilterEnabled) {
-            packageInfoList = packageInfoList.filter {
-                !CertUtil.isFDroidApp(context, it.packageName)
-            }
-        }
-
-        packageInfoList.forEach {
-            packageInfoSet[it.packageName] = it
-        }
-
-        return packageInfoSet
-    }
-
 
     fun getFilter(): IntentFilter {
         val filter = IntentFilter()

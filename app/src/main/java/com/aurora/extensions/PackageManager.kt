@@ -1,29 +1,27 @@
 package com.aurora.extensions
 
 import android.content.pm.PackageManager
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.aurora.store.BuildConfig
 
-fun PackageManager.getInstallerPackageNameCompat(packageName: String): String? {
-    return if (isRAndAbove) {
-        getInstallSourceInfo(packageName).installingPackageName
-    } else {
-        @Suppress("DEPRECATION")
-        return getInstallerPackageName(packageName)
-    }
-}
-
-@RequiresApi(Build.VERSION_CODES.S)
+/**
+ * Gets the name of package responsible for installing/updating given package
+ */
 fun PackageManager.getUpdateOwnerPackageNameCompat(packageName: String): String? {
-    // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
-    val installSourceInfo = getInstallSourceInfo(packageName)
+    // Self-updates can be managed by ourselves
+    if (packageName == BuildConfig.APPLICATION_ID) return BuildConfig.APPLICATION_ID
+
     return when {
         isUAndAbove -> {
             // If update ownership is null, we can still silently update it if we installed it
+            val installSourceInfo = getInstallSourceInfo(packageName)
             installSourceInfo.updateOwnerPackageName ?: installSourceInfo.installingPackageName
         }
-        isSAndAbove -> installSourceInfo.installingPackageName
-        else -> if (packageName == BuildConfig.APPLICATION_ID) BuildConfig.APPLICATION_ID else null
+
+        isRAndAbove -> {
+            val installSourceInfo = getInstallSourceInfo(packageName)
+            installSourceInfo.installingPackageName
+        }
+
+        else -> @Suppress("DEPRECATION") getInstallerPackageName(packageName)
     }
 }
