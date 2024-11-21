@@ -27,6 +27,7 @@ import android.util.Log
 import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isPAndAbove
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.util.PackageUtil.getPackageInfo
 import java.security.MessageDigest
@@ -45,13 +46,11 @@ object CertUtil {
     }
 
     fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
+        val installerPackageNames = AppInstaller.getAvailableInstallersInfo(context)
+            .flatMap { it.installerPackageNames }
+            .toSet()
         val packageInstaller = context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
-        return listOf(
-            "com.aurora.store",
-            "com.aurora.store.debug",
-            "com.aurora.store.nightly",
-            "com.aurora.services"
-        ).contains(packageInstaller)
+        return installerPackageNames.contains(packageInstaller)
     }
 
     fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> {
