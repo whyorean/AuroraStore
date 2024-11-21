@@ -45,6 +45,8 @@ import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.installer.base.InstallerBase
+import com.aurora.store.data.model.BuildType
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.model.SessionInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
@@ -113,14 +115,16 @@ class SessionInstaller @Inject constructor(
 
     companion object {
 
-        fun getInstallerInfo(context: Context): InstallerInfo {
-            return InstallerInfo(
+        val installerInfo: InstallerInfo
+            get() = InstallerInfo(
                 id = 0,
-                title = context.getString(R.string.pref_install_mode_session),
-                subtitle = context.getString(R.string.session_installer_subtitle),
-                description = context.getString(R.string.session_installer_desc)
+                installer = Installer.SESSION,
+                packageNames = BuildType.PACKAGE_NAMES,
+                installerPackageNames = BuildType.PACKAGE_NAMES,
+                title = R.string.pref_install_mode_session,
+                subtitle = R.string.session_installer_subtitle,
+                description = R.string.session_installer_desc
             )
-        }
     }
 
     init {

@@ -79,7 +79,7 @@ class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
 
         installerId = Preferences.getInteger(requireContext(), PREFERENCE_INSTALLER_ID)
 
-        if (isOAndAbove && AppInstaller.hasShizukuOrSui(requireContext())) {
+        if (AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.addBinderReceivedListenerSticky(shizukuAliveListener)
             Shizuku.addBinderDeadListener(shizukuDeadListener)
             Shizuku.addRequestPermissionResultListener(shizukuResultListener)
@@ -108,7 +108,7 @@ class InstallerFragment : BaseFragment<FragmentInstallerBinding>() {
     }
 
     override fun onDestroy() {
-        if (isOAndAbove && AppInstaller.hasShizukuOrSui(requireContext())) {
+        if (AppInstaller.hasShizukuOrSui(requireContext())) {
             Shizuku.removeBinderReceivedListener(shizukuAliveListener)
             Shizuku.removeBinderDeadListener(shizukuDeadListener)
             Shizuku.removeRequestPermissionResultListener(shizukuResultListener)

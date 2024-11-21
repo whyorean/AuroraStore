@@ -42,9 +42,9 @@ class InstallerView @JvmOverloads constructor(
 
     @ModelProp
     fun installer(installer: InstallerInfo) {
-        binding.line1.text = installer.title
-        binding.line2.text = installer.subtitle
-        binding.line3.text = installer.description
+        binding.line1.text = context.getString(installer.title)
+        binding.line2.text = context.getString(installer.subtitle)
+        binding.line3.text = context.getString(installer.description)
     }
 
     @ModelProp

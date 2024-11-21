@@ -43,6 +43,7 @@ import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.installer.base.InstallerBase
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
@@ -62,15 +63,18 @@ class ShizukuInstaller @Inject constructor(
 
     companion object {
         const val SHIZUKU_PACKAGE_NAME = "moe.shizuku.privileged.api"
+        const val PLAY_PACKAGE_NAME = "com.android.vending"
 
-        fun getInstallerInfo(context: Context): InstallerInfo {
-            return InstallerInfo(
+        val installerInfo: InstallerInfo
+            get() = InstallerInfo(
                 id = 5,
-                title = context.getString(R.string.pref_install_mode_shizuku),
-                subtitle = context.getString(R.string.shizuku_installer_subtitle),
-                description = context.getString(R.string.shizuku_installer_desc)
+                installer = Installer.SHIZUKU,
+                packageNames = listOf(SHIZUKU_PACKAGE_NAME),
+                installerPackageNames = listOf(PLAY_PACKAGE_NAME),
+                title = R.string.pref_install_mode_shizuku,
+                subtitle = R.string.shizuku_installer_subtitle,
+                description = R.string.shizuku_installer_desc
             )
-        }
     }
 
     private val TAG = ShizukuInstaller::class.java.simpleName
@@ -90,11 +94,11 @@ class ShizukuInstaller @Inject constructor(
     private val packageInstaller: PackageInstaller? by lazy {
         if (isSAndAbove) {
             Refine.unsafeCast<PackageInstaller>(
-                PackageInstallerHidden(iPackageInstaller, "com.android.vending", null, 0)
+                PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, null, 0)
             )
         } else if (isOAndAbove) {
             Refine.unsafeCast<PackageInstaller>(
-                PackageInstallerHidden(iPackageInstaller, "com.android.vending", 0)
+                PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, 0)
             )
         } else null
     }

@@ -25,7 +25,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
@@ -68,28 +67,14 @@ class AppInstaller @Inject constructor(
         }
 
         fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> {
-            val installers = mutableListOf(
-                SessionInstaller.getInstallerInfo(context),
-                NativeInstaller.getInstallerInfo(context)
+            return listOfNotNull(
+                SessionInstaller.installerInfo,
+                NativeInstaller.installerInfo,
+                if (hasRootAccess()) RootInstaller.installerInfo else null,
+                if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
+                if (hasAppManager(context)) AMInstaller.installerInfo else null,
+                if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null
             )
-
-            if (hasRootAccess()) {
-                installers.add(RootInstaller.getInstallerInfo(context))
-            }
-
-            if (hasAuroraService(context)) {
-                installers.add(ServiceInstaller.getInstallerInfo(context))
-            }
-
-            if (hasAppManager(context)) {
-                installers.add(AMInstaller.getInstallerInfo(context))
-            }
-
-            if (isOAndAbove && hasShizukuOrSui(context)) {
-                installers.add(ShizukuInstaller.getInstallerInfo(context))
-            }
-
-            return installers
         }
 
         /**
@@ -146,12 +131,11 @@ class AppInstaller @Inject constructor(
                     PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
         }
 
-        @RequiresApi(Build.VERSION_CODES.O)
         fun hasShizukuOrSui(context: Context): Boolean {
-            return PackageUtil.isInstalled(
+            return isOAndAbove && (PackageUtil.isInstalled(
                 context,
                 ShizukuInstaller.SHIZUKU_PACKAGE_NAME
-            ) || Sui.isSui()
+            ) || Sui.isSui())
         }
 
         fun hasShizukuPerm(): Boolean {
@@ -185,7 +169,7 @@ class AppInstaller @Inject constructor(
             Installer.SERVICE -> if (hasAuroraService(context)) serviceInstaller else defaultInstaller
             Installer.AM -> if (hasAppManager(context)) amInstaller else defaultInstaller
             Installer.SHIZUKU -> {
-                if (isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()) {
+                if (hasShizukuOrSui(context) && hasShizukuPerm()) {
                     shizukuInstaller
                 } else {
                     defaultInstaller

@@ -19,11 +19,19 @@
 
 package com.aurora.store.data.model
 
+import androidx.annotation.StringRes
+
+/**
+ * Class holding information on a supported installer
+ */
 data class InstallerInfo(
-    var id: Int,
-    var title: String,
-    var subtitle: String,
-    var description: String
+    val id: Int,
+    val installer: Installer,
+    val packageNames: List<String>,
+    val installerPackageNames: List<String>,
+    @StringRes val title: Int,
+    @StringRes val subtitle: Int,
+    @StringRes val description: Int
 ) {
     override fun equals(other: Any?): Boolean {
         return when (other) {

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import com.aurora.store.R
 import com.aurora.store.data.installer.base.InstallerBase
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
@@ -25,14 +26,16 @@ class AMInstaller @Inject constructor(
         const val AM_PACKAGE_NAME = "io.github.muntashirakon.AppManager"
         const val AM_DEBUG_PACKAGE_NAME = "io.github.muntashirakon.AppManager.debug"
 
-        fun getInstallerInfo(context: Context): InstallerInfo {
-            return InstallerInfo(
+        val installerInfo: InstallerInfo
+            get() = InstallerInfo(
                 id = 4,
-                title = context.getString(R.string.pref_install_mode_am),
-                subtitle = context.getString(R.string.am_installer_subtitle),
-                description = context.getString(R.string.am_installer_desc)
+                installer = Installer.AM,
+                packageNames = listOf(AM_PACKAGE_NAME, AM_DEBUG_PACKAGE_NAME),
+                installerPackageNames = listOf(AM_PACKAGE_NAME, AM_DEBUG_PACKAGE_NAME),
+                title = R.string.pref_install_mode_am,
+                subtitle = R.string.am_installer_subtitle,
+                description = R.string.am_installer_desc
             )
-        }
     }
 
     private val TAG = AMInstaller::class.java.simpleName

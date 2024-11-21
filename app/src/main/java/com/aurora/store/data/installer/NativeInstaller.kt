@@ -27,6 +27,8 @@ import android.util.Log
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.installer.base.InstallerBase
+import com.aurora.store.data.model.BuildType
+import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -42,14 +44,16 @@ class NativeInstaller @Inject constructor(
 
     companion object {
 
-        fun getInstallerInfo(context: Context): InstallerInfo {
-            return InstallerInfo(
+        val installerInfo: InstallerInfo
+            get() = InstallerInfo(
                 id = 1,
-                title = context.getString(R.string.pref_install_mode_native),
-                subtitle = context.getString(R.string.native_installer_subtitle),
-                description = context.getString(R.string.native_installer_desc)
+                installer = Installer.NATIVE,
+                packageNames = BuildType.PACKAGE_NAMES,
+                installerPackageNames = BuildType.PACKAGE_NAMES,
+                title = R.string.pref_install_mode_native,
+                subtitle = R.string.native_installer_subtitle,
+                description = R.string.native_installer_desc
             )
-        }
     }
 
     private val TAG = NativeInstaller::class.java.simpleName

@@ -61,16 +61,9 @@ class UpdateWorker @AssistedInject constructor(
 
     private val notificationID = 100
 
-    @Suppress("KotlinConstantConditions")
-    private val buildType = when (BuildConfig.BUILD_TYPE) {
-        "release" -> BuildType.RELEASE
-        "nightly" -> BuildType.NIGHTLY
-        else -> BuildType.DEBUG
-    }
-
     private val canSelfUpdate = !CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID) &&
             !CertUtil.isAppGalleryApp(appContext, BuildConfig.APPLICATION_ID) &&
-            buildType != BuildType.DEBUG
+            BuildType.CURRENT != BuildType.DEBUG
 
     private val isAuroraOnlyFilterEnabled: Boolean
         get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
@@ -182,7 +175,7 @@ class UpdateWorker @AssistedInject constructor(
      */
     private suspend fun getSelfUpdate(): App? {
         return withContext(Dispatchers.IO) {
-            val updateUrl = when (buildType) {
+            val updateUrl = when (BuildType.CURRENT) {
                 BuildType.RELEASE -> Constants.UPDATE_URL_STABLE
                 BuildType.NIGHTLY -> Constants.UPDATE_URL_NIGHTLY
                 else -> {
@@ -198,7 +191,7 @@ class UpdateWorker @AssistedInject constructor(
                     SelfUpdate::class.java
                 )
 
-                val isUpdate = when (buildType) {
+                val isUpdate = when (BuildType.CURRENT) {
                     BuildType.NIGHTLY,
                     BuildType.RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
                     else -> false
