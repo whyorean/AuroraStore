@@ -162,7 +162,6 @@
     <string name="onboarding_permission_notifications_desc">Unvia avisos rellacionaos col estáu de los procesos d\'instalación</string>
     <string name="pref_common_extra">Configuración adicional</string>
     <string name="pref_install_mode_root">Instalador de superusuariu</string>
-    <string name="pref_filter_google_summary">Inora les aplicaciones instalaes de Google y los sos anovamientos</string>
     <string name="pref_ui_no_for_you_desc">Amuesa les páxines «Pa ti» na pantalla d\'aniciu</string>
     <string name="purchase_failed">La descarga falló</string>
     <string name="purchase_not_found">Nun s\'atopó l\'aplicación</string>
@@ -197,7 +196,6 @@
     <string name="action_cancel">Encaboxar</string>
     <string name="exodus_powered">Cola teunoloxía d\'Exodus Privacy</string>
     <string name="exodus_progress">Comprobando los rastrexadores…</string>
-    <string name="pref_filter_google_title">Peñerar les aplicaciones de Google</string>
     <string name="pref_install_mode_services">Servicios d\'Aurora (obsoletos)</string>
     <string name="pref_install_mode_session">Instalador de la sesión</string>
     <string name="pref_network_title">Rede</string>

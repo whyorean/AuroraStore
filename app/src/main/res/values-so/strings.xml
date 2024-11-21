@@ -98,8 +98,6 @@
     <string name="pref_install_mode_native">Kushubaha aallada</string>
     <string name="pref_install_delete_title">Saar marka lagushubo</string>
     <string name="pref_install_delete_summary">APK-ga waa lasaari (waa hadaada fadhiga badalin)</string>
-    <string name="pref_filter_google_title">Shaandhee appska Google</string>
-    <string name="pref_filter_google_summary">Wuxuu kasaaraa appska Google natiijada raadinta iyo qaybta noocyada appska</string>
     <string name="pref_filter_fdroid_title">Shaandee appska F-Droid</string>
     <string name="pref_filter_fdroid_summary">Wuxuu liistada kasaaraa appska F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Fadhigan waxaa la fulin doonaa markaad appka dibusoo bilowdo</string>

@@ -180,8 +180,6 @@
     <string name="pref_install_mode_native">原生安装程序（已废弃）</string>
     <string name="pref_install_delete_title">安装后删除 APK</string>
     <string name="pref_install_delete_summary">安装后将立即删除所下载的 APK 文件</string>
-    <string name="pref_filter_google_title">过滤 Google 应用</string>
-    <string name="pref_filter_google_summary">在更新和已安装应用中忽略 Google 出品的应用</string>
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">在更新和已安装应用中忽略 F-Droid 应用</string>
     <string name="pref_dialog_to_apply_restart">在您重新启动应用后，此设置将被应用</string>

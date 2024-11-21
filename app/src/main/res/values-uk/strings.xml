@@ -182,8 +182,6 @@
     <string name="pref_install_mode_native">Власний встановлювач (Застарілий)</string>
     <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
-    <string name="pref_filter_google_title">Фільтрувати застосунки Google</string>
-    <string name="pref_filter_google_summary">Ігнорувати застосунки Google з Оновлень та Встановлених застосунків</string>
     <string name="onboarding_permission_installer_desc">Дозволити встановлення застосунків з Aurora Store</string>
     <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
     <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>

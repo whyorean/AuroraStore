@@ -165,8 +165,6 @@
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
     <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>
     <string name="pref_ui_layout">Izkārtojums</string>
-    <string name="pref_filter_google_summary">Neņemt vērā Google lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
-    <string name="pref_filter_google_title">Atlasīt Google lietotnes</string>
     <string name="pref_ui_title">Pielāgošana</string>
     <string name="purchase_no_file">Nevarēja iegūt failus</string>
     <string name="purchase_session_expired">Sesija ir beigusies, izejiet no lietotnes, lai iegūtu jaunu sesiju.</string>

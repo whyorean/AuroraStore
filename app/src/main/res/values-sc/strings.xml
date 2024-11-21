@@ -173,8 +173,6 @@
     <string name="menu_terms">Tèrmines de impreu</string>
     <string name="pref_filter_fdroid_summary">Bogat sas aplicatziones de F-Droid dae sa lista de sas aplicatziones</string>
     <string name="pref_filter_fdroid_title">Filtra sas aplicatziones de F-Droid</string>
-    <string name="pref_filter_google_summary">Bogat sas aplicatziones de Google dae sos risultados e dae sa lista de sas aplicatziones</string>
-    <string name="pref_filter_google_title">Filtra sas aplicatziones de Google</string>
     <string name="pref_install_delete_title">Iscantzella sos apk a pustis de s\'installatzione</string>
     <string name="pref_install_mode_summary">Ischerta sa manera de installatzione de sos APK</string>
     <string name="pref_install_mode_title">Manera de installatzione</string>

@@ -33,8 +33,6 @@
     <string name="pref_install_mode_native">Instalador nativo</string>
     <string name="pref_install_delete_title">Eliminar APK unha vez instalado</string>
     <string name="pref_install_delete_summary">As APKs serán eliminadas por defecto</string>
-    <string name="pref_filter_google_title">Filtrar aplicacións de Google</string>
-    <string name="pref_filter_google_summary">Borra todas as aplicacións de Google dos resultados de busca e catergorías</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicacións de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Borra as aplicacións instaladas por F-Droid da lista de aplicacións</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración será aplicada após reiniciar a aplicación</string>

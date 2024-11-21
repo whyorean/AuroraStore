@@ -109,7 +109,6 @@
     <string name="onboarding_permission_doze">Фонавая ўсталёўка</string>
     <string name="onboarding_permission_doze_desc">Дазволіць Aurora Store усталёўваць і абнаўляць прыкладанні ў фоне</string>
     <string name="pref_filter_fdroid_title">Фільтар прыкладанняў F-Droid</string>
-    <string name="pref_filter_google_summary">Ігнараваць прыкладанні Google ў Абнаўленні і Усталяваныя прыкладанні</string>
     <string name="pref_download_directory_error">Абраны шлях не магчымы для запісу</string>
     <string name="pref_filter_fdroid_summary">Ігнараваць F-Droid прыкладанні ў Абнаўленні і Усталяваныя прыкладанні</string>
     <string name="pref_install_delete_summary">Спампаваныя APK будуць выдаленыя адразу пасля ўсталявання</string>
@@ -292,7 +291,6 @@
     <string name="pref_common_extra">Дадаткова</string>
     <string name="pref_dialog_to_apply_restart">Гэтая налада будзе ўжыта пасля перазапуску прыкладання</string>
     <string name="pref_downloader_wifi_title">Спампаваць толькі праз Wi-Fi</string>
-    <string name="pref_filter_google_title">Фільтар прыкладанняў Google</string>
     <string name="pref_install_mode_shizuku">Усталёўшчык Shizuku</string>
     <string name="pref_install_mode_native">Родны ўсталёўшчык (Састарэлы)</string>
     <string name="pref_vending_version_device">Па змаўчанні (праз налады прылады)</string>

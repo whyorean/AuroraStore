@@ -49,8 +49,6 @@
     <string name="pref_install_mode_native">Instalador nativo (obsoleto)</string>
     <string name="pref_install_delete_title">Eliminar el APK después de la instalación</string>
     <string name="pref_install_delete_summary">Los APK descargados se eliminarán inmediatamente después de la instalación</string>
-    <string name="pref_filter_google_title">Filtrar las apps de Google</string>
-    <string name="pref_filter_google_summary">Ignorar las aplicaciones de Google en actualizaciones y aplicaciones instaladas</string>
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorar las aplicaciones de F-Droid en Actualizaciones y aplicaciones instaladas</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración se aplicará después de reiniciar la app</string>

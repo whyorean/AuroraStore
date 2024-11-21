@@ -46,7 +46,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
-import com.aurora.store.util.Preferences.PREFERENCE_FILTER_GOOGLE
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
@@ -164,7 +163,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         /*Filters*/
         save(PREFERENCE_FILTER_AURORA_ONLY, false)
         save(PREFERENCE_FILTER_FDROID, true)
-        save(PREFERENCE_FILTER_GOOGLE, false)
 
         /*Network*/
         // TODO: Gather feedback and drop setting default dispenser for all builds

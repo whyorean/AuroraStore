@@ -209,8 +209,6 @@
     <string name="pref_install_mode_native">Instalador Nativo (Depreciado)</string>
     <string name="pref_install_delete_title">Excluir APK após a instalação</string>
     <string name="pref_install_delete_summary">APKs baixados serão excluídos após a instalação</string>
-    <string name="pref_filter_google_title">Filtrar apps do Google</string>
-    <string name="pref_filter_google_summary">Ignorar apps do Google nas atualizações e nos apps instalados</string>
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorar apps do F-Droid nas atualizações e nos apps instalados</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o app para aplicar as mudanças.</string>

@@ -81,7 +81,6 @@
     <string name="tab_for_you">आपके लिए</string>
     <string name="purchase_invalid">ऐप खरीदा नहीं गया</string>
     <string name="details_contains_ads">विज्ञापन शामिल हैं</string>
-    <string name="pref_filter_google_summary">अपडेट और इंस्टॉल किए गए ऐप्स में से गूगल ऐप्स को अनदेखा करें</string>
     <string name="details_think_this_app">आप इस ऐप के बारे में क्या सोचते हैं\?</string>
     <string name="onboarding_welcome_select">क्या हालचाल है\?</string>
     <string name="onboarding_permission_esm">बाहरी स्टोरेज मैनेजर</string>
@@ -96,7 +95,6 @@
     <string name="exodus_substring">ज्ञात ट्रैकर्स पाए गए</string>
     <string name="pref_ui_no_for_you">\'आपके लिए\' पृष्ठ</string>
     <string name="pref_ui_similar_apps">समान और संबंधित ऐप्स</string>
-    <string name="pref_filter_google_title">गूगल ऐप्स फिल्टर करें</string>
     <string name="pref_install_mode_native">मूल इंस्टॉलर (अस्वीकृत)</string>
     <string name="pref_ui_layout_tab">तयशुदा टैब चुनें</string>
     <string name="dialog_title_self_update">नया अपडेट उपलब्ध है</string>

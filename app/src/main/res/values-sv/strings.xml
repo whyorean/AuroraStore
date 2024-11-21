@@ -56,7 +56,6 @@
     <string name="pref_install_mode_root">Installationsprogrammet för Root</string>
     <string name="pref_install_delete_title">Ta bort APK efter installationen</string>
     <string name="pref_install_delete_summary">Hämtade APK:er kommer att tas bort efter installation</string>
-    <string name="pref_filter_google_title">Filtrera Google-appar</string>
     <string name="pref_filter_fdroid_title">Filtrera F-Droid-appar</string>
     <string name="pref_dialog_to_apply_restart">Den här inställningen kommer att verkställas efter att du har startat om appen</string>
     <string name="onboarding_permission_installer_desc">Tillåt att installera appar från Aurora-butiken</string>
@@ -209,7 +208,6 @@
     <string name="toast_export_success">Enhetens konfiguration exporterades</string>
     <string name="toast_apk_blacklisted">Svartlistad</string>
     <string name="pref_ui_similar_apps_desc">Visa liknande och relaterade klustrar på appens detaljsida</string>
-    <string name="pref_filter_google_summary">Ignorera Google-appar från Uppdateringar och Installerade appar</string>
     <string name="onboarding_permission_esm">Hanterare av externt lagringsutrymme</string>
     <string name="details_no_permission">Inga behörigheter</string>
     <string name="action_pending">Avvaktande</string>

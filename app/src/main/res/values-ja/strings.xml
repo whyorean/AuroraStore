@@ -205,8 +205,6 @@
     <string name="pref_install_mode_native">ネイティブインストーラー (非推奨)</string>
     <string name="pref_install_delete_title">インストール後に APK を削除</string>
     <string name="pref_install_delete_summary">ダウンロードしたAPKをインストール後すぐに削除</string>
-    <string name="pref_filter_google_title">Google アプリを除外</string>
-    <string name="pref_filter_google_summary">すべてのGoogleアプリを検索結果、カテゴリ表示から無視する</string>
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
     <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
     <string name="pref_dialog_to_apply_restart">この設定はアプリの再起動後に適用されます</string>

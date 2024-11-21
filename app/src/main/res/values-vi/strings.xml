@@ -144,8 +144,6 @@
     <string name="pref_install_mode_native">Trình cài đặt gốc (Không dùng nữa)</string>
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
     <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
-    <string name="pref_filter_google_title">Lọc các ứng dụng của Google</string>
-    <string name="pref_filter_google_summary">Bỏ qua các ứng dụng Google khỏi Cập nhật và Ứng dụng đã cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
     <string name="pref_filter_fdroid_summary">Bỏ qua các ứng dụng F-Droid khỏi Cập nhật và Ứng dụng đã cài đặt</string>
     <string name="pref_dialog_to_apply_restart">Thiết đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>

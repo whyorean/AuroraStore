@@ -204,9 +204,7 @@
     <string name="pref_install_mode_root">Root-asentaja</string>
     <string name="pref_install_mode_native">Natiiviasentaja</string>
     <string name="pref_install_delete_title">Poista APK:t asennuksen jälkeen</string>
-    <string name="pref_install_delete_summary">Ladatut APK:t poistetaan välittömästi asennuksen jälkeen</string>
-    <string name="pref_filter_google_title">Suodata Googlen sovellukset</string>
-    <string name="pref_filter_google_summary">Poistaa kaikki Googlen sovellukset hakutuloksista ja sovelluskategorioista</string>
+    <string name="pref_install_delete_summary">APK:t poistetaan oletuksena</string>
     <string name="pref_dialog_to_apply_restart">Tämä asetus otetaan käyttöön, kun käynnistät sovelluksen uudelleen</string>
     <string name="pref_common_extra">Extrat</string>
     <string name="onboarding_permission_installer_desc">Hyväksy sovellusten asentaminen Aurora Storen kautta</string>

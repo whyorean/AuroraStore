@@ -140,7 +140,6 @@
     <string name="menu_terms">Podmienky služby</string>
     <string name="onboarding_permission_esa">Prístup k externému úložisku</string>
     <string name="onboarding_permission_installer_legacy_desc">Povoliť inštaláciu aplikácií z neznámych zdrojov</string>
-    <string name="pref_filter_google_title">Filtrovať aplikácie Google</string>
     <string name="pref_install_delete_title">Po inštalácii odstrániť súbor APK</string>
     <string name="pref_install_mode_shizuku">Shizuku inštalátor</string>
     <string name="pref_install_mode_session">Inštalátor relácie</string>
@@ -190,7 +189,6 @@
     <string name="onboarding_title_welcome">Vitajte</string>
     <string name="onboarding_permission_esa_desc">Uloženie súborov rozšírenia APK (OBB) pre veľké aplikácie a hry.</string>
     <string name="pref_filter_fdroid_title">Filtrovať aplikácie F-Droid</string>
-    <string name="pref_filter_google_summary">Ignorovať aplikácie od Google z aktualizácií a nainštalovaných aplikácií</string>
     <string name="pref_install_mode_native">Natívny inštalátor (zastarané)</string>
     <string name="pref_install_mode_root">Root inštalátor</string>
     <string name="pref_install_mode_services">Aurora Služby (zastarané)</string>

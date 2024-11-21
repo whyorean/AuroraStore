@@ -24,7 +24,6 @@
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Installateur</string>
     <string name="pref_filter_fdroid_title">Filtrer les applications F-droid</string>
-    <string name="pref_filter_google_title">Filtrer les applications Google</string>
     <string name="pref_install_mode_title">Méthode d’installation</string>
     <string name="title_about">À propos</string>
     <string name="tab_trending">Tendances</string>
@@ -184,7 +183,6 @@
     <string name="pref_install_mode_native">Installateur natif (déprécié)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les fichiers APK seront supprimés immédiatement après l\'installation</string>
-    <string name="pref_filter_google_summary">Ignorer les applications Google dans Mises à jour et Applications installées</string>
     <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications depuis Aurora Store</string>

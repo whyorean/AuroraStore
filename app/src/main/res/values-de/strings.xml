@@ -60,8 +60,6 @@
     <string name="purchase_not_found">App nicht gefunden</string>
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
-    <string name="pref_filter_google_title">Google-Apps filtern</string>
-    <string name="pref_filter_google_summary">Google-Apps aus Updates und Installationen ausblenden</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">F-Droid-Apps aus Updates und Installationen ausblenden</string>
     <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach einem Neustart der App übernommen</string>

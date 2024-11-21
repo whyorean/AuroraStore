@@ -68,8 +68,6 @@
     <string name="pref_install_mode_native">Nativní instalátor (zastaralý)</string>
     <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
-    <string name="pref_filter_google_title">Filtrovat aplikace Google</string>
-    <string name="pref_filter_google_summary">Ignorovat aplikace od společnosti Google z karty Aktualizace a Nainstalované</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>
     <string name="pref_filter_fdroid_summary">Ignorovat aplikace ze služby F-Droid z karty Aktualizace a Nainstalované</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>

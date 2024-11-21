@@ -113,8 +113,6 @@
     <string name="onboarding_permission_installer">Instalila permeso</string>
     <string name="pref_filter_fdroid_summary">Ne vidigi F-Droid apojn en “Ĝisdatigoj” kaj “Instalitaj Apoj”</string>
     <string name="pref_filter_fdroid_title">Filtri F-Droid apojn</string>
-    <string name="pref_filter_google_summary">Ne vidigi Googlajn apojn en “Ĝisdatigoj” kaj “Instalitaj Apoj”</string>
-    <string name="pref_filter_google_title">Filtri Googlajn apojn</string>
     <string name="pref_install_delete_summary">Elŝutitajn APKojn forigos tuj post instalado</string>
     <string name="pref_install_delete_title">Forigi APK post instalado</string>
     <string name="pref_install_mode_native">Operaciuma instalilo (troantikva)</string>

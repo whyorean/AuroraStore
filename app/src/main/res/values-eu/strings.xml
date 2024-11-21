@@ -56,8 +56,6 @@
     <string name="pref_install_mode_native">Berezko instalatzailea (zaharkitua)</string>
     <string name="pref_install_delete_title">APK ezabatu deskargatu ondoren</string>
     <string name="pref_install_delete_summary">Besterik adierazi ezean, APK-ak ezabatuko dira</string>
-    <string name="pref_filter_google_title">Google aplikazioak kanpoan utzi</string>
-    <string name="pref_filter_google_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako Google-ren aplikazioak</string>
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
     <string name="pref_filter_fdroid_summary">Ez ikusi \"Eguneratzeak\" eta \"Instalatutakoak\" ataletako F-Droid-en aplikazioak</string>
     <string name="pref_dialog_to_apply_restart">Konfigurazio hau aplikatuko da aplikazioa berriro ireki ondoren</string>

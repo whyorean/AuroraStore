@@ -173,7 +173,6 @@
     <string name="download_eta_min">še %1$dm %2$ds</string>
     <string name="download_eta_sec">še %1$ds</string>
     <string name="download_progress">Prenašanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="pref_filter_google_title">Filtrirajte Googlove aplikacije</string>
     <string name="pref_install_mode_session">Sejni namestitveni program</string>
     <string name="pref_install_mode_summary">Izberite način namestitve APK</string>
     <string name="pref_network_title">Omreženje</string>
@@ -276,7 +275,6 @@
     <string name="pref_dialog_to_apply_restart">Ta nastavitev bo uporabljena, ko znova zaženete aplikacijo</string>
     <string name="pref_filter_fdroid_summary">Prezri F-Droid aplikacije v Posodobitvah in Nameščenih aplikacijah</string>
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>
-    <string name="pref_filter_google_summary">Prezri Google aplikacije v Posodobitvah in Nameščenih aplikacijah</string>
     <string name="pref_ui_title">Prilagajanje</string>
     <string name="pref_ui_no_for_you">Strani za vas</string>
     <string name="pref_ui_similar_apps_desc">Prikaži podobne in sorodne gruče na strani s podrobnostmi o aplikaciji</string>

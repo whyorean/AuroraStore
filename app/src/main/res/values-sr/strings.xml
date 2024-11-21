@@ -55,8 +55,6 @@
     <string name="pref_install_mode_native">„Изворни” програм за инсталацију (застарео)</string>
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">Преузети APK-ови ће бити избрисани одмах након инсталације</string>
-    <string name="pref_filter_google_title">Филтрирај Google апликације</string>
-    <string name="pref_filter_google_summary">Игноришите Google апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>
     <string name="pref_filter_fdroid_summary">Игноришите F-Droid апликације из ажурирања и инсталираних апликација</string>
     <string name="pref_dialog_to_apply_restart">Ово подешавање ће се применити након што поново покренете апликацију</string>

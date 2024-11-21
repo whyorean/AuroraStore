@@ -169,8 +169,6 @@
     <string name="account_google">Google</string>
     <string name="pref_filter_fdroid_summary">Ignoră aplicațiile F-Droid din Actualizări și Aplicații instalate</string>
     <string name="pref_filter_fdroid_title">Filtrează aplicațiile F-Droid</string>
-    <string name="pref_filter_google_summary">Ignoră aplicațiile Google din Actualizări și Aplicații instalate</string>
-    <string name="pref_filter_google_title">Filtrează aplicațiile Google</string>
     <string name="pref_install_delete_summary">APK-urile descărcate vor fi șterse imediat după instalare</string>
     <string name="pref_install_delete_title">Șterge fișierul APK după instalare</string>
     <string name="pref_install_mode_am">Instalator AM</string>

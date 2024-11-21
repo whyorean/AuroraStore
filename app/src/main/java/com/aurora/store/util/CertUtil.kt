@@ -44,16 +44,6 @@ object CertUtil {
         return context.packageManager.getUpdateOwnerPackageNameCompat(packageName) == "com.huawei.appmarket"
     }
 
-    fun isGoogleApp(packageName: String): Boolean {
-        return packageName.contains("com.google") || listOf(
-            "com.chrome.beta",
-            "com.chrome.canary",
-            "com.chrome.dev",
-            "com.android.chrome",
-            "com.niksoftware.snapseed"
-        ).contains(packageName)
-    }
-
     fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
         val packageInstaller = context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
         return listOf(

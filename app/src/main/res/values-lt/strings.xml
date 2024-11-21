@@ -185,8 +185,6 @@
     <string name="installer_status_failure_storage">Nepakanka atminties</string>
     <string name="onboarding_permission_esa_desc">Kad būtų įrašomi atsiuntimai (APK ir OBB), eksportuojamos ir importuojamos įrenginio konfigūracijos į išorinę saugyklą ir iš jos.</string>
     <string name="onboarding_permission_installer_desc">Leisti diegti programėles iš Aurora Store</string>
-    <string name="pref_filter_google_summary">Nepaisyti „Google“ programėlių Atnaujinimuose ir Įdiegtų programėlių sąraše</string>
-    <string name="pref_filter_google_title">Filtruoti „Google“ programėles</string>
     <string name="pref_install_delete_summary">Atsiųsti APK paketai bus ištrinami iš karto po įdiegimo</string>
     <string name="pref_install_mode_summary">Pasirinkti APK paketų diegimo veikseną</string>
     <string name="tab_top_charts">Geriausios</string>

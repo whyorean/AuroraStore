@@ -92,8 +92,6 @@
     <string name="pref_install_mode_native">Sazkerê xwemalî</string>
     <string name="pref_install_delete_title">APK-ê piştî sazkirinê jê bibe</string>
     <string name="pref_install_delete_summary">APK dê bi standard werin jêbirin</string>
-    <string name="pref_filter_google_title">Sepanên Google-ê parzûn bikin</string>
-    <string name="pref_filter_google_summary">Hemî Sepanên Google-ê ji encamên lêgerînê û sepanên kategoriyê radike</string>
     <string name="pref_filter_fdroid_title">Fîlterkirin sepanên F-Droid</string>
     <string name="pref_filter_fdroid_summary">Sepanên F-Droid-ê ji navnîşên sepanan radike</string>
     <string name="pref_dialog_to_apply_restart">Ev mîheng dê piştî ku hûn sepanê ji nû ve bidin dest pê kirin</string>

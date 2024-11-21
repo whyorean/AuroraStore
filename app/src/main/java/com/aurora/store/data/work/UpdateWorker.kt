@@ -75,9 +75,6 @@ class UpdateWorker @AssistedInject constructor(
     private val isAuroraOnlyFilterEnabled: Boolean
         get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
 
-    private val isGoogleFilterEnabled: Boolean
-        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_GOOGLE)
-
     private val isFDroidFilterEnabled: Boolean
         get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_FDROID)
 
@@ -165,9 +162,7 @@ class UpdateWorker @AssistedInject constructor(
             val filteredPackages = if (isAuroraOnlyFilterEnabled) {
                 packages.filter { CertUtil.isAuroraStoreApp(appContext, it.packageName) }
             } else {
-                packages
-                    .filterNot { if (isFDroidFilterEnabled) CertUtil.isFDroidApp(appContext, it.packageName) else false }
-                    .filterNot { if (isGoogleFilterEnabled) CertUtil.isGoogleApp(it.packageName) else false }
+                packages.filterNot { if (isFDroidFilterEnabled) CertUtil.isFDroidApp(appContext, it.packageName) else false }
             }
 
             val updates = appDetailsHelper.getAppByPackageName(filteredPackages.map { it.packageName })

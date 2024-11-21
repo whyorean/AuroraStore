@@ -190,7 +190,6 @@
     <string name="installer_am_unavailable">Installar Gestor de applicationes o cambiar le installator.</string>
     <string name="installer_status_failure_session">Non poteva crear le session</string>
     <string name="onboarding_permission_esa">Acceso a immagazinage externe</string>
-    <string name="pref_filter_google_title">Filtrar le applicationes de Google</string>
     <string name="pref_ui_no_for_you_desc">Monstrar le paginas \"Pro te\" in le schermo de initio</string>
     <string name="title_blacklist_manager">Gestor de listas nigre</string>
     <string name="toast_apk_blacklisted">In le lista nigre</string>

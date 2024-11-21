@@ -159,7 +159,6 @@
     <string name="pref_install_mode_title">Installasjonsmetode</string>
     <string name="pref_install_mode_summary">Velg modus for APK-installasjon</string>
     <string name="pref_install_delete_summary">APK-er blir slettet som standard</string>
-    <string name="pref_filter_google_summary">Fjerner alle Google Apps fra søkeresultater og kategori apper</string>
     <string name="onboarding_permission_installer_desc">Tillat å installere apper fra Aurora Store</string>
     <string name="onboarding_welcome_select">Hvordan går det\?</string>
     <string name="onboarding_permission_select">Aurora Store krever følgende tillatelser</string>
@@ -222,7 +221,6 @@
     <string name="pref_install_mode_native">Systemspesifikk installerer</string>
     <string name="pref_install_mode_session">Økt-installerer</string>
     <string name="pref_install_mode_root">Rot-installerer</string>
-    <string name="pref_filter_google_title">Filtrer Google-programmer</string>
     <string name="pref_filter_fdroid_title">Filtrer F-Droid-programmer</string>
     <string name="onboarding_permission_installer">Tilgang for installerer</string>
     <string name="onboarding_permission_esa">Tilgang til eksternlagring</string>

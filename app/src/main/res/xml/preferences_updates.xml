@@ -55,13 +55,6 @@
     <SwitchPreferenceCompat
         app:defaultValue="false"
         app:iconSpaceReserved="false"
-        app:key="PREFERENCE_FILTER_GOOGLE"
-        app:summary="@string/pref_filter_google_summary"
-        app:title="@string/pref_filter_google_title" />
-
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
         app:key="PREFERENCE_FILTER_AURORA_ONLY"
         app:summary="@string/pref_aurora_only_desc"
         app:title="@string/pref_aurora_only" />

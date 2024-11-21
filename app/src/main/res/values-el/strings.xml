@@ -163,12 +163,10 @@
     <string name="onboarding_permission_esa">Πρόσβαση εξωτερικού χώρου αποθήκευσης</string>
     <string name="onboarding_permission_esm">Εξωτερική αποθήκευση</string>
     <string name="onboarding_permission_installer_desc">Επιτρέψτε την εγκατάσταση εφαρμογών από το Aurora Store</string>
-    <string name="pref_filter_google_summary">Αγνοεί τις εφαρμογές Google από τις Ενημερώσεις και εγκατεστημένες εφαρμογές</string>
     <string name="pref_install_mode_session">Εγκαταστάτης συνεδρίας</string>
     <string name="pref_filter_fdroid_summary">Αγνοεί εφαρμογές F-Droid από Ενημερώσεις και Εγκατεστημένες εφαρμογές</string>
     <string name="pref_dialog_to_apply_restart">Αυτή η ρύθμιση θα εφαρμοστεί μετά την επανεκκίνηση της εφαρμογής</string>
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
-    <string name="pref_filter_google_title">Φιλτράρετε τις εφαρμογές Google</string>
     <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
     <string name="pref_ui_title">Προσαρμογή</string>

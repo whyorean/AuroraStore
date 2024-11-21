@@ -95,8 +95,6 @@
     <string name="pref_install_mode_native">Yerel kurucu (Kullanılmıyor)</string>
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
     <string name="pref_install_delete_summary">İndirilen APK\'lar kurulumdan hemen sonra silinecek</string>
-    <string name="pref_filter_google_title">Google uygulamalarını filtrele</string>
-    <string name="pref_filter_google_summary">Google uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
     <string name="pref_dialog_to_apply_restart">Bu seçenek uygulamayı yeniden başlattıktan sonra uygulanacak</string>

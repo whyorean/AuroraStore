@@ -240,8 +240,6 @@
     <string name="onboarding_permission_installer">Разрешение за инсталиране</string>
     <string name="pref_install_delete_summary">APK файловете ще бъдат изтрити по подразбиране</string>
     <string name="pref_filter_fdroid_title">Филтриране на F-Droid приложения</string>
-    <string name="pref_filter_google_summary">Премахва всички приложения на Google от резултатите от търсенето и категоризираните приложения</string>
-    <string name="pref_filter_google_title">Филтрирайте приложенията на Google</string>
     <string name="pref_install_delete_title">Изтриване на APK след инсталиране</string>
     <string name="pref_ui_title">Персонализиране</string>
     <string name="pref_ui_no_for_you">Страници за вас</string>

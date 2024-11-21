@@ -88,9 +88,7 @@
     <string name="menu_disclaimer">பொறுப்புத்துறப்பு</string>
     <string name="device_miui_extra">விருப்பமாக நீங்கள் நேட்டிவ் இன்ஸ்டாலரைத் தேர்வு செய்யலாம், ஆனால் நீங்கள் தொகுக்கப்பட்ட (பிளவு) APKகளை நிறுவ முடியாது, எனவே தேர்வு உங்களுடையது.</string>
     <string name="onboarding_permission_esa_desc">பதிவிறக்கங்களைச் சேமிக்க (APKகள் &amp; OBBகள்), வெளிப்புறச் சேமிப்பகத்திற்கு மற்றும் அதிலிருந்து சாதன கட்டமைப்புகளை ஏற்றுமதி மற்றும் இறக்குமதி செய்யவும்.</string>
-    <string name="pref_filter_google_title">கூகுள் செயலிகளை வடிகட்டு</string>
     <string name="pref_filter_fdroid_title">F-Droid செயலிகளை வடிகட்டு</string>
-    <string name="pref_filter_google_summary">தேடல் முடிவுகள் மற்றும் வகைப் பயன்பாடுகளில் இருந்து எல்லா Google Apps களையும் நீக்குகிறது</string>
     <string name="pref_install_mode_services">அரோரா சேவைகள்</string>
     <string name="purchase_no_file">கோப்புகளைப் பெற முடியவில்லை</string>
     <string name="pref_install_mode_summary">APK நிறுவலின் பயன்முறையைத் தேர்ந்தெடு</string>

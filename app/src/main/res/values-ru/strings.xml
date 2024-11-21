@@ -178,8 +178,6 @@
     <string name="pref_install_mode_native">Системный установщик (Устарел)</string>
     <string name="pref_install_delete_title">Удалить APK-файлы после установки</string>
     <string name="pref_install_delete_summary">Загруженные APK-файлы будут удаляться сразу после установки</string>
-    <string name="pref_filter_google_title">Фильтр приложений Google</string>
-    <string name="pref_filter_google_summary">Игнорировать приложения Google в обновлениях и установленных приложениях</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
     <string name="pref_filter_fdroid_summary">Игнорировать F-Droid приложения в Обновлениях и Установленных приложениях</string>
     <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>

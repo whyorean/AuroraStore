@@ -169,8 +169,6 @@
     <string name="pref_common_extra">Əlavələr</string>
     <string name="pref_dialog_to_apply_restart">Bu seçim tətbiqi yenidən başlatdıqdan sonra tətbiq olunacaq</string>
     <string name="pref_filter_fdroid_title">F-Droid tətbiqlərini filtrlə</string>
-    <string name="pref_filter_google_summary">Yeniləmələr və Quraşdırılanlardan Google tətbiqlərin istəmə</string>
-    <string name="pref_filter_google_title">Google tətbiqlərini filtrlə</string>
     <string name="pref_install_delete_summary">Yüklənən APK-lar quraşdırıldıqdan sonra dərhal silinəcək</string>
     <string name="pref_install_delete_title">Quraşdırıldıqdan sonra APK-nı silin</string>
     <string name="pref_install_mode_am">AM quraşdırıcısı</string>

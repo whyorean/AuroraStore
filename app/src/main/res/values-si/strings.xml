@@ -85,8 +85,6 @@
     <string name="toast_apk_whitelisted">සුදු ලේඛනගතයි</string>
     <string name="pref_ui_no_for_you">ඔබගේ පිටු සඳහා</string>
     <string name="purchase_failed">බාගැනීම අසාර්ථකයි</string>
-    <string name="pref_filter_google_title">ගූගල් යෙදුම් පෙරන්න</string>
-    <string name="pref_filter_google_summary">සෙවුම් ප්‍රතිඵල සහ යෙදුම් ප්‍රවර්ග වලින් සියළුම ගූගල් යෙදුම් ඉවත් කරයි</string>
     <string name="pref_filter_fdroid_title">එෆ්-ඩ්‍රොයිඩ් යෙදුම් පෙරන්න</string>
     <string name="onboarding_title_installer">ස්ථාපකය</string>
     <string name="onboarding_permission_esa">බාහිර ගබඩා ප්‍රවේශය</string>

@@ -201,8 +201,6 @@
     <string name="pref_install_mode_native">Natív telepítő (elavult)</string>
     <string name="pref_install_delete_title">APK törlés telepítés után</string>
     <string name="pref_install_delete_summary">A letöltött APK-k a telepítés után azonnal törlődnek</string>
-    <string name="pref_filter_google_title">Google alkalmazások szűrő</string>
-    <string name="pref_filter_google_summary">Google alkalmazások kihagyása a \"frissítés\" és \"telepített alkalmazás\" listákról</string>
     <string name="pref_filter_fdroid_title">F-Droid alkalmazások szűrése</string>
     <string name="pref_filter_fdroid_summary">F-Droid alkalmazások kihagyása a \"frissítés\" és \"telepített alkalmazás\" listákról</string>
     <string name="pref_dialog_to_apply_restart">Ez a beállítás az alkalmazás újraindítása után kerül alkalmazásra</string>

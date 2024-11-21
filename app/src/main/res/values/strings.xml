@@ -212,8 +212,6 @@
     <string name="pref_download_directory_error">"Selected path is not writable"</string>
     <string name="pref_filter_fdroid_summary">"Don't check updates for apps downloaded or installed from F-Droid"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
-    <string name="pref_filter_google_summary">"Don't check updates for apps developed by Google"</string>
-    <string name="pref_filter_google_title">"Filter Google apps"</string>
     <string name="pref_install_delete_summary">Downloaded APKs will be deleted immediately after installation</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
     <string name="pref_install_mode_am">AM installer</string>

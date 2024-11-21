@@ -162,8 +162,6 @@
     <string name="pref_dialog_to_apply_restart">Ky rregullim do të aplikohet pasi të rinisni aplikacionin</string>
     <string name="pref_filter_fdroid_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
-    <string name="pref_filter_google_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga Google</string>
-    <string name="pref_filter_google_title">Filtro aplikacione Google</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
     <string name="pref_install_mode_native">Instalues i vetë sistemit (Nxjerrë nga përdorimi)</string>

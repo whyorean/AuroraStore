@@ -112,8 +112,6 @@
     <string name="toast_permission_granted">Izin diberikan</string>
     <string name="toast_aas_token_failed">Tidak dapat membuat Token AAS</string>
     <string name="pref_install_mode_title">Metode pemasangan</string>
-    <string name="pref_filter_google_title">Filter aplikasi Google</string>
-    <string name="pref_filter_google_summary">Abaikan Aplikasi Google dari Pembaruan dan Aplikasi yang terpasang</string>
     <string name="pref_filter_fdroid_title">Filter aplikasi F-droid</string>
     <string name="pref_filter_fdroid_summary">Abaikan aplikasi F-Droid dari Pembaruan dan Aplikasi yang terpasang</string>
     <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>

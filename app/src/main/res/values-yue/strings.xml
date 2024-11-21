@@ -200,7 +200,6 @@
     <string name="session_init">幫緊您幫緊您…</string>
     <string name="toast_manual_unavailable">您請求嘅版本號欠奉。</string>
     <string name="session_verifying_google">驗證緊 Google 工作階段</string>
-    <string name="pref_filter_google_title">飛起 Google 啲 app</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
     <string name="exodus_substring">個已知追蹤器發現潛伏喺</string>
     <string name="exodus_powered">技術協力：Exodus 私隱</string>

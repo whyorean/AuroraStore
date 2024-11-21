@@ -162,7 +162,6 @@
     <string name="purchase_invalid">לא רכשת את היישום</string>
     <string name="exodus_progress">מתבצעת בדיקת עוקבנים…</string>
     <string name="onboarding_permission_esa">גישה לאחסון חיצוני</string>
-    <string name="pref_filter_google_title">סינון יישומי Google</string>
     <string name="pref_install_delete_summary">חבילות APK שהורדת יימחקו מיד לאחר ההתקנה</string>
     <string name="title_download_playstore">חנות Play</string>
     <string name="pref_ui_title">התאמה אישית</string>
@@ -185,7 +184,6 @@
     <string name="title_installation">התקנה</string>
     <string name="title_installer">מתקין היישומים</string>
     <string name="title_purchase_history">היסטוריית רכישות</string>
-    <string name="pref_filter_google_summary">התעלם מיישומי Google בעדכונים וביישומים המותקנים</string>
     <string name="toast_permission_granted">הוענקה הרשאת גישה</string>
     <string name="toast_rated_failed">לא היה ניתן לשלוח את הדירוג</string>
     <string name="app_updater_service_notif_title">הורדת יישומים ברקע</string>

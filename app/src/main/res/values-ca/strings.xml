@@ -157,7 +157,6 @@
     <string name="app_updater_service_notif_text">Habilita la baixada d\'aplicacions en segon pla</string>
     <string name="onboarding_permission_esm">Gestor d\'emmagatzematge extern</string>
     <string name="onboarding_permission_esa_desc">Per desar les descàrregues (APKs i OBBs), exporteu i importeu les configuracions del dispositiu a i des d\'emmagatzematge extern.</string>
-    <string name="pref_filter_google_summary">Elimina totes les aplicacions de Google dels resultats de cerca i de les categories d\'aplicacions</string>
     <string name="pref_install_mode_root">Instal·lador root</string>
     <string name="pref_network_title">Xarxes</string>
     <string name="onboarding_permission_installer">Permís de l\'instal·lador</string>
@@ -166,7 +165,6 @@
     <string name="pref_dialog_to_apply_restart">Aquesta configuració s\'aplicarà després de reiniciar l\'aplicació</string>
     <string name="pref_filter_fdroid_summary">Suprimeix les aplicacions F-Droid de les llistes d\'aplicacions</string>
     <string name="pref_filter_fdroid_title">Filtra les aplicacions de F-Droid</string>
-    <string name="pref_filter_google_title">Filtra les aplicacions de Google</string>
     <string name="pref_install_delete_summary">Els APKs se suprimiran per defecte</string>
     <string name="pref_install_delete_title">Elimina l\'APK després de la instal·lació</string>
     <string name="pref_install_mode_am">Instal·lador GA.</string>

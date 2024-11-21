@@ -51,7 +51,6 @@
     <string name="pref_install_mode_root">مثبت الجذر</string>
     <string name="pref_install_mode_native">المثبت الأصلي(مهمل)</string>
     <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
-    <string name="pref_filter_google_title">تصفية تطبيقات قوقل</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
     <string name="onboarding_permission_installer">إذن المثبت</string>
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
@@ -160,7 +159,6 @@
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
     <string name="installer_service_available">خدمات Aurora متاحة وجاهزة للتثبيت.</string>
     <string name="installer_root_unavailable">لا توجد صلاحيات الجذر (root)، امنح حق الوصول إلى الجذر أو قم بتغيير المثبت.</string>
-    <string name="pref_filter_google_summary">تجاهل تطبيقات Google من نتائج البحث وفئات التطبيقات</string>
     <string name="pref_dialog_to_apply_restart">سيتم تطبيق هذا الإعداد بعد إعادة تشغيل التطبيق</string>
     <string name="device_miui_subtitle">لا يمكن لمثبت الجلسة تثبيت التطبيقات بسبب تحسينات MIUI.</string>
     <string name="details_beta_delay">قد يستغرق التسجيل بعض الوقت ، يمكنك التحقق من الحالة لاحقًا.</string>

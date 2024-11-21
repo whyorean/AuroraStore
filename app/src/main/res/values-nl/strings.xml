@@ -87,8 +87,6 @@
     <string name="pref_install_mode_native">Native installateur</string>
     <string name="pref_install_delete_title">Verwijder APK na installatie</string>
     <string name="pref_install_delete_summary">APKs worden standaard verwijderd</string>
-    <string name="pref_filter_google_title">Filter Google apps</string>
-    <string name="pref_filter_google_summary">Verwijdert alle Google Apps van zoekresultaten en categorie apps</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>
     <string name="pref_filter_fdroid_summary">Negeer F-Droid-apps van Updates en Geïnstalleerde apps</string>
     <string name="pref_dialog_to_apply_restart">Deze optie word toegepast nadat u de app herstart</string>

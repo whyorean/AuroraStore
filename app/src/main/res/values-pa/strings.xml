@@ -77,8 +77,6 @@
     <string name="pref_install_mode_native">ਨੇਟਿਵ ਇੰਸਟਾਲਰ (ਡੇਪ੍ਰਕੇਟਡ)</string>
     <string name="pref_install_delete_title">ਇੰਸਟਾਲ ਤੋਂ ਬਾਅਦ APK ਨੂੰ ਮਿਟਾਓ</string>
     <string name="pref_install_delete_summary">ਐਪ ਇੰਸਟਾਲ ਹੋਣ ਦੇ ਤੁਰੰਤ ਬਾਅਦ ਉਸਦਾ APK ਸੈੱਟਅਪ ਮਿਟਾ ਦਿਤਾ ਜਾਵੇਗਾ</string>
-    <string name="pref_filter_google_title">ਫਿਲਟਰ ਗੂਗਲ ਐਪਸ</string>
-    <string name="pref_filter_google_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ ਗੂਗਲ ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_filter_fdroid_title">ਫਿਲਟਰ F-Droid ਐਪਸ</string>
     <string name="pref_filter_fdroid_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ F-Droid ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="pref_dialog_to_apply_restart">ਐਪ ਦੇ ਮੁੜ ਚਾਲੂ ਹੋਣ ਤੇ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਵੇਗੀ</string>
