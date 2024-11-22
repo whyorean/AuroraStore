@@ -93,7 +93,7 @@
     <string name="filter_review_critical">Kriittinen</string>
     <string name="exodus_substring">tunnettu(a) seurantasovellus(ta) löydetty versiossa</string>
     <string name="exodus_progress">Tarkistetaan seurantasovelluksia…</string>
-    <string name="exodus_powered">Voimanlähteenä Exodus</string>
+    <string name="exodus_powered">Voimanlähteenä Exodus Privacy</string>
     <string name="exodus_no_tracker">Ei sisällä tunnettuja seurantasovelluksia</string>
     <string name="download_speed_estimating">Arviointi</string>
     <string name="download_pause_all">Tauota kaikki</string>
@@ -165,7 +165,7 @@
     <string name="action_clear">Tyhjennä</string>
     <string name="account_anonymous">Anonyymi</string>
     <string name="about_telegram_summary">Liity Auroran tukiryhmään keskusteluja tai ehdotuksia varten.</string>
-    <string name="toast_rated_success">Arvioitu</string>
+    <string name="toast_rated_success">Arvosteltu, ilmestyminen voi kestää hetken</string>
     <string name="action_get_local_apk">Tallenna sovellusnippu</string>
     <string name="toast_export_failed">Laitteen määrityksen vienti epäonnistui</string>
     <string name="toast_export_success">Laitteen määritys viety</string>
@@ -204,7 +204,7 @@
     <string name="pref_install_mode_root">Root-asentaja</string>
     <string name="pref_install_mode_native">Natiiviasentaja</string>
     <string name="pref_install_delete_title">Poista APK:t asennuksen jälkeen</string>
-    <string name="pref_install_delete_summary">APK:t poistetaan oletuksena</string>
+    <string name="pref_install_delete_summary">Ladatut APK:t poistetaan välittömästi asennuksen jälkeen</string>
     <string name="pref_filter_google_title">Suodata Googlen sovellukset</string>
     <string name="pref_filter_google_summary">Poistaa kaikki Googlen sovellukset hakutuloksista ja sovelluskategorioista</string>
     <string name="pref_dialog_to_apply_restart">Tämä asetus otetaan käyttöön, kun käynnistät sovelluksen uudelleen</string>
@@ -231,7 +231,7 @@
     <string name="installer_root_unavailable">Ei root-käyttöoikeutta. Anna käyttöoikeus tai muuta asennustapaa.</string>
     <string name="action_filter_gsf_dependent_apps">GSF-riippuvuus</string>
     <string name="about_xda_summary">Avaa Aurora Storen XDA-ketju keskusteluille ja ehdotuksille.</string>
-    <string name="about_xda">Kehityskeskusteluketju</string>
+    <string name="about_xda">XDA -foorumi</string>
     <string name="about_libera_summary">Liity tukijaksi Liberapayssa</string>
     <string name="app_updater_service_notif_text">Mahdollistaa sovellusten lataamisen taustalla</string>
     <string name="app_updater_service_notif_title">Taustalla sovelluksen lataaminen</string>
@@ -305,7 +305,7 @@
     <string name="title_apps_sale_provider">Tarjoaja - bestappsales.com</string>
     <string name="pref_downloader_wifi_title">Lataa vain Wifi-verkon kautta</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
-    <string name="onboarding_permission_doze">Taustalla lataukset</string>
+    <string name="onboarding_permission_doze">Taustalla olevat lataukset</string>
     <string name="pref_updates_auto">Päivitä sovellukset automaattisesti</string>
     <string name="pref_updates_auto_notify">Tarkista ja ilmoita saatavilla olevista päivityksistä</string>
     <string name="pref_updates_auto_off">Älä päivitä sovelluksia automaattisesti</string>
@@ -314,7 +314,7 @@
     <string name="pref_updates_auto_desc">Automaattisten päivitysten määrittäminen</string>
     <string name="action_uninstall_confirmation">Haluatko poistaa tämän sovelluksen?</string>
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
-    <string name="download_clear_finished">Poista valmistuneet</string>
+    <string name="download_clear_finished">Poista valmiit</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>
     <string name="action_manage">Hallinnoi</string>
     <string name="about_wiki_title">Wiki</string>
@@ -330,8 +330,10 @@
     <string name="details_data_safety_title">Tietoturvallisuus</string>
     <string name="details_data_safety_subtitle">Kehittäjän ilmoittamat tietosuoja- ja turvallisuuskäytännöt</string>
     <string name="check_updates">Tarkista päivitykset</string>
-    <string name="action_uninstall_success">Onnistuneesti asentamaton</string>
+    <string name="action_uninstall_success">Sovellus poistettu onnistuneesti</string>
     <string name="notification_channel_export">Sovelluksen vienti-ilmoitus</string>
     <string name="action_logout_confirmation_message">Oletko varma, että haluat kirjautua ulos?</string>
     <string name="force_restart_summary">Aurora Store on aloitettava uudelleen äskettäin muutettujen asetusten soveltamiseksi</string>
+    <string name="session_login">Ole hyvä ja kirjaudu Google Play -tilillesi</string>
+    <string name="onboarding_permission_installer_legacy_desc">Salli sovellusten lataus tuntemattomista lähteistä</string>
 </resources>
