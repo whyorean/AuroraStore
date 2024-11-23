@@ -13,7 +13,7 @@ import com.aurora.store.data.room.update.UpdateDao
 
 @Database(
     entities = [Download::class, Favourite::class, Update::class],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 @TypeConverters(DownloadConverter::class)

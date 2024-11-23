@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.downloads
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -31,12 +32,14 @@ import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentDownloadBinding
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
+import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.Date
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -98,23 +101,37 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
                         .message(getString(R.string.download_none))
                 )
             } else {
-                downloads.forEach {
+                downloads.groupBy {
+                    DateUtils.getRelativeTimeSpanString(
+                        it.downloadedAt,
+                        Date().time,
+                        DateUtils.DAY_IN_MILLIS
+                    ).toString()
+                }.forEach { (date, downloadList) ->
                     add(
-                        DownloadViewModel_()
-                            .id(it.packageName)
-                            .download(it)
-                            .click { _ ->
-                                if (it.packageName == requireContext().packageName) {
-                                    requireContext().browse(GITLAB_URL)
-                                } else {
-                                    openDetailsFragment(it.packageName)
-                                }
-                            }
-                            .longClick { _ ->
-                                openDownloadMenuSheet(it.packageName)
-                                true
-                            }
+                        TextDividerViewModel_()
+                            .id(date)
+                            .title(date)
                     )
+
+                    downloadList.forEach {
+                        add(
+                            DownloadViewModel_()
+                                .id(it.packageName)
+                                .download(it)
+                                .click { _ ->
+                                    if (it.packageName == requireContext().packageName) {
+                                        requireContext().browse(GITLAB_URL)
+                                    } else {
+                                        openDetailsFragment(it.packageName)
+                                    }
+                                }
+                                .longClick { _ ->
+                                    openDownloadMenuSheet(it.packageName)
+                                    true
+                                }
+                        )
+                    }
                 }
             }
         }

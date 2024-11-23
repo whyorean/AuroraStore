@@ -8,6 +8,7 @@ import com.aurora.gplayapi.data.models.File
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.update.Update
 import kotlinx.parcelize.Parcelize
+import java.util.Date
 
 @Parcelize
 @Entity(tableName = "download")
@@ -29,6 +30,7 @@ data class Download(
     var fileList: List<File>,
     val sharedLibs: List<SharedLib>,
     val targetSdk: Int = 1,
+    val downloadedAt: Long = 0
 ) : Parcelable {
     val isFinished get() = downloadStatus in DownloadStatus.finished
     val isRunning get() = downloadStatus in DownloadStatus.running
@@ -52,7 +54,8 @@ data class Download(
                 0,
                 app.fileList.filterNot { it.url.isBlank() },
                 app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) },
-                app.targetSdk
+                app.targetSdk,
+                Date().time
             )
         }
 
@@ -74,7 +77,8 @@ data class Download(
                 0,
                 update.fileList,
                 update.sharedLibs,
-                update.targetSdk
+                update.targetSdk,
+                Date().time
             )
         }
     }
