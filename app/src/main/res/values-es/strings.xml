@@ -50,7 +50,7 @@
     <string name="pref_install_delete_title">Eliminar el APK después de la instalación</string>
     <string name="pref_install_delete_summary">Los APK descargados se eliminarán inmediatamente después de la instalación</string>
     <string name="pref_filter_fdroid_title">Filtrar las apps de F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ignorar las aplicaciones de F-Droid en Actualizaciones y aplicaciones instaladas</string>
+    <string name="pref_filter_fdroid_summary">No comprobar actualizaciones para aplicaciones descargadas o instaladas desde F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Esta configuración se aplicará después de reiniciar la app</string>
     <string name="onboarding_permission_installer_desc">Permitir la instalación de aplicaciones desde Aurora Store</string>
     <string name="onboarding_permission_installer">Permiso del instalador</string>
@@ -301,7 +301,7 @@
     <string name="pref_download_directory_error">La ruta seleccionada no se puede escribir</string>
     <string name="pref_updates_check_frequency_desc">Configure los intervalos para las actualizaciones automáticas y en horas.</string>
     <string name="pref_aurora_only">Sólo aplicaciones de Aurora Store</string>
-    <string name="pref_aurora_only_desc">Mostrar sólo las aplicaciones instaladas en Aurora Store en Actualizaciones y Aplicaciones instaladas</string>
+    <string name="pref_aurora_only_desc">Solo comprobar actualizaciones de aplicaciones instaladas desde la Aurora Store</string>
     <string name="title_app_settings">Ajustes de la aplicación</string>
     <string name="pref_updates_check_frequency">Frecuencia de las actualizaciones automáticas</string>
     <string name="pref_downloader_wifi_title">Descarga sólo por WiFi</string>
@@ -415,4 +415,5 @@
     <string name="checking_updates">Buscando actualizaciones</string>
     <string name="made_with_love">Fabricado con <xliff:g id="heart_emoji">%1$s</xliff:g> en la India</string>
     <string name="available_spoof">Disponible</string>
+    <string name="default_spoof">Por defecto</string>
 </resources>
