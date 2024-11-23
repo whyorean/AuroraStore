@@ -27,7 +27,6 @@ import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.favourite.ImportExport
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
@@ -47,8 +46,8 @@ class FavouriteViewModel @Inject constructor(
     fun importFavourites(context: Context, uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             context.contentResolver.openInputStream(uri)?.use {
-                val type = object : TypeToken<ImportExport>() {}.type
-                val importExport = gson.fromJson<ImportExport>(it.bufferedReader().readText(), type)
+                val importExport =
+                    gson.fromJson(it.bufferedReader().readText(), ImportExport::class.java)
                 favouriteDao.insertAll(
                     importExport.favourites.map { fav -> fav.copy(mode = Favourite.Mode.IMPORT) }
                 )
