@@ -414,4 +414,5 @@
     <string name="notification_channel_account">Notificación relacionada con la cuenta</string>
     <string name="checking_updates">Buscando actualizaciones</string>
     <string name="made_with_love">Fabricado con <xliff:g id="heart_emoji">%1$s</xliff:g> en la India</string>
+    <string name="available_spoof">Disponible</string>
 </resources>
