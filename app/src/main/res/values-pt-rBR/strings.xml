@@ -210,7 +210,7 @@
     <string name="pref_install_delete_title">Excluir APK após a instalação</string>
     <string name="pref_install_delete_summary">APKs baixados serão excluídos após a instalação</string>
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ignorar apps do F-Droid nas atualizações e nos apps instalados</string>
+    <string name="pref_filter_fdroid_summary">Não buscar por atualizações de apps baixados ou instalados do F-Droid</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você se reconectou e reinicie o app para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Páginas de Recomendações</string>
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
@@ -301,7 +301,7 @@
     <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>
     <string name="pref_updates_check_frequency_desc">Configurar os intervalos das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
-    <string name="pref_aurora_only_desc">Mostrar apenas apps instalados pela Aurora Store nas atualizações e nos apps instalados</string>
+    <string name="pref_aurora_only_desc">Buscar atualizações somente para apps instalados pela Aurora Store</string>
     <string name="title_app_settings">Configurações do App</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_downloader_wifi_title">Fazer download apenas no Wi-Fi</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_title">Autenticação necessária</string>
     <string name="checking_updates">Checando atualizações</string>
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
+    <string name="default_spoof">Padrão</string>
+    <string name="available_spoof">Disponível</string>
 </resources>

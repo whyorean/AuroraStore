@@ -160,7 +160,7 @@
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="pref_dialog_to_apply_restart">Ky rregullim do të aplikohet pasi të rinisni aplikacionin</string>
-    <string name="pref_filter_fdroid_summary">Shpërfill prej aplikacionesh Me Përditësime dhe të Instaluar aplikacione nga F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Mos kërko përditësime për shkarkues aplikacionesh, ose të instaluar nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
@@ -310,7 +310,7 @@
     <string name="pref_network_proxy_enable">Aktivizo ndërmjetës</string>
     <string name="pref_network_proxy_enable_desc">Lejo që krejt trafiku prej aplikacionesh të kalojë përmes ndërmjetësit</string>
     <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi</string>
-    <string name="pref_aurora_only_desc">Te Përditësime dhe Aplikacione të Instaluar shfaq vetëm aplikacione të instaluar me Shitoren Aurora</string>
+    <string name="pref_aurora_only_desc">Kërko për përditësime vetëm për aplikacione të instaluar me Shitoren Aurora</string>
     <string name="session_good">Hyaaa! Gjithçka në rregull.</string>
     <string name="session_verifying_google">Po verifikohet Sesion Google</string>
     <string name="title_search_suggestion">Sugjerim kërkimi</string>
@@ -411,4 +411,5 @@
     <string name="add_dispenser_title">Shtoni distributor</string>
     <string name="add_dispenser_summary">Shtoni te Aurora Store një distributor token-ësh. Distributorët e token-ëve i furnizojnë Aurora Store-it kredenciale llogarie për hyrje anonime.</string>
     <string name="remove_dispenser_title">Hiqe distributorin</string>
+    <string name="default_spoof">Parazgjedhje</string>
 </resources>

@@ -69,7 +69,7 @@
     <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ignorovat aplikace ze služby F-Droid z karty Aktualizace a Nainstalované</string>
+    <string name="pref_filter_fdroid_summary">Nekontrolovat aktualizace u aplikací stažených nebo nainstalovaných z obchodu F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Toto nastavení se aplikuje po restartování aplikace</string>
     <string name="pref_common_extra">Doplňky</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
@@ -301,7 +301,7 @@
     <string name="pref_download_directory_error">Vybraná cesta není zapisovatelná</string>
     <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické a vlastní aktualizace, v hodinách.</string>
     <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
-    <string name="pref_aurora_only_desc">V seznamu aktualizací a nainstalovaných aplikací zobrazit pouze aplikace nainstalované z obchodu Aurora Store</string>
+    <string name="pref_aurora_only_desc">Kontrolovat pouze aktualizace aplikací nainstalovaných z aplikace Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
     <string name="pref_updates_check_frequency">Frekvence automatických aktualizací</string>
     <string name="pref_downloader_wifi_title">Stahovat pouze přes Wi-Fi</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">Pro vyjmutí této aplikace z archivu se prosím přihlaste do svého účtu Google Play!</string>
     <string name="checking_updates">Kontrola aktualizací</string>
     <string name="made_with_love">Vytvořeno s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
+    <string name="default_spoof">Výchozí</string>
+    <string name="available_spoof">Dostupné</string>
 </resources>
