@@ -61,7 +61,7 @@
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
-    <string name="pref_filter_fdroid_summary">F-Droid-Apps aus Updates und Installationen ausblenden</string>
+    <string name="pref_filter_fdroid_summary">Keine Updates für Apps, die von F-Droid heruntergeladen oder installiert wurden</string>
     <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach einem Neustart der App übernommen</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
@@ -303,7 +303,7 @@
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
     <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
-    <string name="pref_aurora_only_desc">Nur durch Aurora Store installierte Apps unter Updates und Installationen anzeigen</string>
+    <string name="pref_aurora_only_desc">Nur nach Updates für Apps suchen, die vom Aurora Store installiert wurden</string>
     <string name="pref_updates_check_frequency">Häufigkeit der automatischen Updates</string>
     <string name="pref_network_proxy_enable">Proxy aktivieren</string>
     <string name="pref_network_proxy_url">URL des Proxyservers</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_title">Authentifizierung erforderlich</string>
     <string name="checking_updates">Suche nach Updates</string>
     <string name="made_with_love">Hergestellt mit <xliff:g id="heart_emoji">%1$s</xliff:g> in Indien</string>
+    <string name="default_spoof">Standard</string>
+    <string name="available_spoof">Verfügbar</string>
 </resources>
