@@ -202,7 +202,7 @@
     <string name="pref_install_delete_title">APK törlés telepítés után</string>
     <string name="pref_install_delete_summary">A letöltött APK-k a telepítés után azonnal törlődnek</string>
     <string name="pref_filter_fdroid_title">F-Droid alkalmazások szűrése</string>
-    <string name="pref_filter_fdroid_summary">F-Droid alkalmazások kihagyása a \"frissítés\" és \"telepített alkalmazás\" listákról</string>
+    <string name="pref_filter_fdroid_summary">Ne ellenőrizze az F-Droidról letöltött vagy telepített alkalmazások frissítéseit</string>
     <string name="pref_dialog_to_apply_restart">Ez a beállítás az alkalmazás újraindítása után kerül alkalmazásra</string>
     <string name="onboarding_permission_installer_desc">Lehetővé teszi az Aurora Store-ból származó alkalmazások telepítését</string>
     <string name="onboarding_permission_installer">Telepítési engedély</string>
@@ -299,7 +299,7 @@
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="amazon_appstore_desc">Az Amazon Appstore egy alkalmazásbolt Amazon által üzemeltetett Android-kompatibilis platformokhoz.</string>
     <string name="toast_proxy_invalid">Érvénytelen proxy webcím, ellenőrizze a formátumot!</string>
-    <string name="pref_aurora_only_desc">Csak Aurora Store által telepített alkalmazások megjelenítése a frissítésekben és a telepített alkalmazásokban</string>
+    <string name="pref_aurora_only_desc">Csak az Aurora Store által telepített alkalmazások frissítéseinek ellenőrzése</string>
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
     <string name="title_app_settings">Alkalmazásbeállítások</string>
     <string name="title_apps_sale_provider">Szolgáltató - bestappsales.com</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_title">Hitelesítés szükséges</string>
     <string name="checking_updates">Frissítések ellenőrzése</string>
     <string name="made_with_love">Indiából &lt;xliff:g id=„heart_emoji”&gt;%1$s&lt;/xliff:g&gt;</string>
+    <string name="default_spoof">Alapértelmezett</string>
+    <string name="available_spoof">Elérhető</string>
 </resources>
