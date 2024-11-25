@@ -144,7 +144,7 @@
     <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pobrany plik APKs zostanie usunięty zaraz po zakończonej instalacji</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ignoruj aplikacje od F-Droid w Aktualizacjach i Zainstalowanych aplikacjach</string>
+    <string name="pref_filter_fdroid_summary">Nie sprawdzaj aktualizacji dla aplikacji pobranych lub zainstalowanych z F-Droid</string>
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
@@ -311,7 +311,7 @@
     <string name="toast_proxy_success">Ustawiono serwer proxy</string>
     <string name="toast_proxy_failed">Nie udało się ustawić serwera proxy</string>
     <string name="pref_network_proxy_enable_desc">Zezwól, aby cały ruch z aplikacji przechodził przez serwer proxy</string>
-    <string name="pref_aurora_only_desc">Pokaż tylko aplikacje zainstalowane przez Aurora Store w Aktualizacjach i Zainstalowanych aplikacjach</string>
+    <string name="pref_aurora_only_desc">Sprawdzaj aktualizacje tylko dla aplikacji zainstalowanych przez Aurora Store</string>
     <string name="pref_vending_version_device">Domyślna (z konfiguracji urządzenia)</string>
     <string name="pref_vending_version_title">Wersja Google Play</string>
     <string name="onboarding_permission_doze">Pobieranie w tle</string>
@@ -410,4 +410,6 @@
     <string name="authentication_required_unarchive">Zaloguj się na swoje konto Google Play, aby przywrócić aplikację z archiwum!</string>
     <string name="checking_updates">Sprawdzanie aktualizacji</string>
     <string name="made_with_love">Stworzono z <xliff:g id="heart_emoji">%1$s</xliff:g> w Indiach</string>
+    <string name="default_spoof">Domyślny</string>
+    <string name="available_spoof">Dostępny</string>
 </resources>

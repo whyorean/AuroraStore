@@ -181,7 +181,7 @@
     <string name="pref_install_delete_title">安装后删除 APK</string>
     <string name="pref_install_delete_summary">安装后将立即删除所下载的 APK 文件</string>
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
-    <string name="pref_filter_fdroid_summary">在更新和已安装应用中忽略 F-Droid 应用</string>
+    <string name="pref_filter_fdroid_summary">不检查从 F-Droid 下载或安装的应用的更新</string>
     <string name="pref_dialog_to_apply_restart">在您重新启动应用后，此设置将被应用</string>
     <string name="onboarding_permission_installer_desc">允许 Aurora 商店安装应用</string>
     <string name="onboarding_permission_installer">安装权限</string>
@@ -301,7 +301,7 @@
     <string name="pref_download_directory_error">所选路径不可写入</string>
     <string name="pref_updates_check_frequency_desc">配置小时为单位的自动更新和 Aurora Store 自更新间隔。</string>
     <string name="pref_aurora_only">仅 Aurora Store 应用</string>
-    <string name="pref_aurora_only_desc">在更新和已安装应用中只显示从 Aurora Store 安装的应用</string>
+    <string name="pref_aurora_only_desc">只检查 Aurora Store 安装应用的更新</string>
     <string name="title_app_settings">设置</string>
     <string name="pref_updates_check_frequency">自动更新频率</string>
     <string name="pref_downloader_wifi_title">只使用 WiFi 下载</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">请登录 Google Play 账户取消存档该应用！</string>
     <string name="checking_updates">正在检查更新</string>
     <string name="made_with_love">Made with <xliff:g id="heart_emoji">%1$s</xliff:g> in India</string>
+    <string name="default_spoof">默认</string>
+    <string name="available_spoof">可用</string>
 </resources>

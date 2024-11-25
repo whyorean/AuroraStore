@@ -113,7 +113,7 @@
     <string name="toast_aas_token_failed">Tidak dapat membuat Token AAS</string>
     <string name="pref_install_mode_title">Metode pemasangan</string>
     <string name="pref_filter_fdroid_title">Filter aplikasi F-droid</string>
-    <string name="pref_filter_fdroid_summary">Abaikan aplikasi F-Droid dari Pembaruan dan Aplikasi yang terpasang</string>
+    <string name="pref_filter_fdroid_summary">Jangan periksa pembaruan untuk aplikasi terunduh atau terpasang dari F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="onboarding_permission_installer_desc">Izinkan menginstal aplikasi dari Aurora Store</string>
@@ -298,7 +298,7 @@
     <string name="amazon_appstore_desc">Amazon Appstore adalah toko aplikasi untuk platform yang kompatibel dengan Android yang dioperasikan oleh Amazon.</string>
     <string name="onboarding_permission_doze">Unduhan Latar Belakang</string>
     <string name="toast_proxy_invalid">URL proksi invalid, periksa format!</string>
-    <string name="pref_aurora_only_desc">Hanya tampilkan aplikasi yang di install dari Aurora Store di Pembaruan dan Aplikasi yang terpasang</string>
+    <string name="pref_aurora_only_desc">Hanya periksa pembaruan untuk aplikasi yang terpasang oleh Aurora Store</string>
     <string name="toast_proxy_success">Proksi berhasil disetel</string>
     <string name="app_links_title">Tautan Aplikasi</string>
     <string name="google_play_store_desc">Google Play, juga dikenal sebagai Google Play Store dan sebelumnya Android Market.</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">Silakan masuk ke akun Google Play Anda untuk membuka arsip aplikasi!</string>
     <string name="checking_updates">Memeriksa pembaruan</string>
     <string name="made_with_love">Dibuat dengan <xliff:g id="heart_emoji">%1$s</xliff:g> di India</string>
+    <string name="default_spoof">Bawaan</string>
+    <string name="available_spoof">Tersedia</string>
 </resources>

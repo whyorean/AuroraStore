@@ -183,7 +183,7 @@
     <string name="pref_install_mode_native">Installateur natif (déprécié)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les fichiers APK seront supprimés immédiatement après l\'installation</string>
-    <string name="pref_filter_fdroid_summary">Ignorer les applications F-droid dans Mises à jour et Applications installées</string>
+    <string name="pref_filter_fdroid_summary">Ignorer les mises à jour des applications téléchargées ou installées avec F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après le redémarrage de l’application</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications depuis Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation de l’installateur</string>
@@ -300,7 +300,7 @@
     <string name="pref_network_proxy_title">Serveur mandataire</string>
     <string name="amazon_appstore_desc">Amazon Appstore est un magasin d\'applications pour les plateformes compatibles Android exploitées par Amazon.</string>
     <string name="toast_proxy_invalid">Lien du serveur mandataire incorrect, vérifier le format !</string>
-    <string name="pref_aurora_only_desc">Afficher uniquement les applications Aurora Store dans Mises à jour et Applications installées</string>
+    <string name="pref_aurora_only_desc">Vérifier uniquement les mises à jour des applications installées avec Aurora Store</string>
     <string name="toast_proxy_success">Serveur mandataire correctement paramétré</string>
     <string name="title_app_settings">Paramètres de l\'application</string>
     <string name="title_apps_sale_provider">Fournisseur - bestappsales.com</string>
@@ -410,4 +410,6 @@
     <string name="authentication_required_title">Identification requise</string>
     <string name="checking_updates">Vérification des mises à jour</string>
     <string name="made_with_love">Fait avec <xliff:g id="heart_emoji">%1$s</xliff:g> en Inde</string>
+    <string name="default_spoof">Défaut</string>
+    <string name="available_spoof">Disponible</string>
 </resources>

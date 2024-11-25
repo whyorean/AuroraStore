@@ -239,7 +239,7 @@
     <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
     <string name="details_dependencies">Atkarības</string>
     <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
-    <string name="pref_filter_fdroid_summary">Neņemt vērā F-Droid lietotnes no Atjauninājumi un uzstādītās lietotnes</string>
+    <string name="pref_filter_fdroid_summary">Nepārbaudīt atjauninājumus lietotnēm, kuras ir lejupielādētas vai uzstādītas no F-Droid</string>
     <string name="download_paused">Apturēta • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="details_beta_description">Būs pieejamas jaunas iespējas un nepilnības pirms publicēšanas. Sniedzot atgriezenisko saiti izstrādātājiem tiks palīdzēts viņiem veikt uzlabojumus.</string>
     <string name="details_gsf_dependent">Nepieciešams GSF</string>
@@ -303,7 +303,7 @@
     <string name="pref_aurora_only">Tikai Aurora Store lietotnes</string>
     <string name="pref_network_proxy_title">Starpniekserveris</string>
     <string name="toast_proxy_invalid">Nederīgs starpniekservera URL, jāpārbauda pieraksts.</string>
-    <string name="pref_aurora_only_desc">Sadaļā Atjauninājumi un uzstādītās lietotnes rādīt tikai Aurora Store uzstādītās lietotnes</string>
+    <string name="pref_aurora_only_desc">Pārbaudīt atjauninājumus tikai lietotnēm, kuras ir uzstādītas ar Aurora Store</string>
     <string name="toast_proxy_success">Starpniekserveris veiksmīgi iestatīts</string>
     <string name="title_app_settings">Lietotnes iestatījumi</string>
     <string name="title_apps_sale_provider">Nodrošinātājs - bestappsales.com</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">Lūgums pieteikties savā Google Play kontā, lai atceltu lietotnes arhivēšanu.</string>
     <string name="checking_updates">Pārbauda atjauninājumus</string>
     <string name="made_with_love">Ar <xliff:g id="heart_emoji">%1$s</xliff:g> radīta Indijā</string>
+    <string name="default_spoof">Noklusējums</string>
+    <string name="available_spoof">Pieejams</string>
 </resources>
