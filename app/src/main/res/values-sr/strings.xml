@@ -56,7 +56,7 @@
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">Преузети APK-ови ће бити избрисани одмах након инсталације</string>
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>
-    <string name="pref_filter_fdroid_summary">Игноришите F-Droid апликације из ажурирања и инсталираних апликација</string>
+    <string name="pref_filter_fdroid_summary">Не проверавајте ажурирања за апликације преузете или инсталиране у F-Droid-у</string>
     <string name="pref_dialog_to_apply_restart">Ово подешавање ће се применити након што поново покренете апликацију</string>
     <string name="onboarding_permission_installer_desc">Дозволите инсталирање апликација из Aurora Store-а</string>
     <string name="onboarding_permission_installer">Дозвола програма за инсталацију</string>
@@ -335,7 +335,7 @@
     <string name="pref_download_directory_error">Изабрана путања није уписива</string>
     <string name="pref_updates_check_frequency_desc">Конфигуришите интервале за аутоматска ажурирања, у сатима.</string>
     <string name="pref_aurora_only">Само Aurora Store апликације</string>
-    <string name="pref_aurora_only_desc">Прикажите само инсталиране апликације помоћу Aurora Store у ажурирањима и инсталираним апликацијама</string>
+    <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>
     <string name="title_app_settings">Подешавања апликације</string>
     <string name="pref_updates_check_frequency">Учесталост аутоматског ажурирања</string>
     <string name="pref_downloader_wifi_title">Преузми само користећи Wi-Fi</string>
@@ -448,4 +448,6 @@
     <string name="authentication_required_title">Аутентификација неопходна</string>
     <string name="authentication_required_unarchive">Пријавите се на свој Google Play налог да бисте поништили архивирање апликације!</string>
     <string name="made_with_love">Направљено од <xliff:g id="heart_emoji">%1$s</xliff:g> у Индији</string>
+    <string name="default_spoof">Подразумевана</string>
+    <string name="available_spoof">Доступна</string>
 </resources>
