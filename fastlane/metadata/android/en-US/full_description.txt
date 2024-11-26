@@ -8,5 +8,5 @@ with or without Google Play Services or MicroG.
 • Beautiful design: Built upon latest Material 3 guidelines
 • Account login: You can login with either personal or an anonymous account
 • Device & Locale spoofing: Change your device and/or locale to access geo locked apps
-• [Exodus Privacy](https://exodus-privacy.eu.org/) integration: Instantly see trackers in app
+• Exodus Privacy integration: Instantly see trackers in app
 • Updates blacklisting: Ignore updates for specific apps
