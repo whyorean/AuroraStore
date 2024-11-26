@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">Ak chcete zrušiť archiváciu aplikácie, prihláste sa do svojho účtu Google Play!</string>
     <string name="checking_updates">Kontrola aktualizácie</string>
     <string name="made_with_love">Vyrobené s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
+    <string name="default_spoof">Predvolené</string>
+    <string name="available_spoof">K dispozícií</string>
 </resources>
