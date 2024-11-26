@@ -8,5 +8,5 @@ s i bez Služeb Google Play či MicroG.
 • Nádherný design: postaveno podle nejnovějších pravidel Material 3
 • Přihlášení k účtu: můžete se přihlásit buď s osobním, nebo s anonymním účtem
 • Spoofing zařízení a umístění: změňte své zařízení a/nebo umístění pro přístup k geograficky uzamčeným aplikacím
-• Integrace [Exodus Privacy](https://exodus-privacy.eu.org/): okamžité zobrazení sledovacích prvků v aplikaci
+• Integrace Exodus Privacy: okamžité zobrazení sledovacích prvků v aplikaci
 • Zakázání aktualizací: ignorování aktualizací pro určité aplikace
