@@ -8,5 +8,5 @@ Aurora Store 让用户如同在 Play 商店一样下载、更新和搜索应用�
 ·设计美观：基于最新的 Material 3 指南
 ·帐户登录：您可以使用个人帐户或匿名帐户登录
 ·IP和地区虚拟：更改您的设备和/或区域设置以访问锁区的应用程序
-·Exodus Privacy 集成 (https://exodus-privacy.eu.org/)：在应用程序中即时查看跟踪器
+·Exodus Privacy 集成：即时查看应用程序中的跟踪器
 ·更新黑名单：忽略特定应用程序的更新
