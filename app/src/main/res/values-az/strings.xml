@@ -82,7 +82,7 @@
     <string name="onboarding_title_installer">Quraşdırıcı</string>
     <string name="onboarding_title_permissions">İcazələr</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-dan tətbiqləri quraşdırmağa icazə ver</string>
-    <string name="pref_filter_fdroid_summary">Yeniləmələr və Quraşdırılan tətbiqlərdən F-Droid tətbiqlərin istəmə</string>
+    <string name="pref_filter_fdroid_summary">F-Droid-dən endirilən yaxud quraşdırılan tətbiqlər üçün yeniləmələri yoxlama</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_paypal">PayPal</string>
     <string name="action_export">İxrac et</string>
@@ -273,4 +273,16 @@
     <string name="details_data_safety_title">Məlumat təhlükəsizliyi</string>
     <string name="pref_downloader_wifi_title">Yalnız WiFi işlədərək endir</string>
     <string name="pref_network_proxy_url_message">Bütün məlumatı proksidən ötürmək üçün etibarlı proksi URL daxil et.</string>
+    <string name="session_init">İşlər hazırlanır. . .</string>
+    <string name="session_verifying">Hesab təsdiqlənir</string>
+    <string name="notification_channel_account">Hesabla əlaqəli bildiriş</string>
+    <string name="session_scrapped">Son hesab ləğv edildi</string>
+    <string name="session_good">Gözəl! Hər şey yaxşıdır.</string>
+    <string name="pref_aurora_only_desc">Təkcə Aurora Store ilə quraşdırılan tətbiqlər üçün yeniləmələri yoxla</string>
+    <string name="session_login">Xahiş olunur, Google Play hesabınıza daxil olun</string>
+    <string name="session_login_failed_google">Google ilə daxil olmaq olmadı</string>
+    <string name="notification_channel_export">Tətbiq ixracı bildirişi</string>
+    <string name="notification_channel_install">Quraşdırma bildirişi</string>
+    <string name="notification_channel_downloads">Yükləmə bildirişi</string>
+    <string name="session_enjoy">Daxil olun və həzz alın.</string>
 </resources>
