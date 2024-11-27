@@ -8,5 +8,5 @@ sem o Google Play Services ou MicroG.
 • Design lindo: construído sobre as diretrizes do Material Design 3
 • Login com conta: Você pode iniciar uma sessão com uma conta pessoal ou anônima
 • Mascaramento de dispositivo e localidade: Mude seu dispositivo ou localidade para acessar apps bloqueados por geolocalização
-• Integração com Exodus Privacy (https://exodus-privacy.eu.org/): Instantaneamente veja rastreadores no app
+• Integração com o Exodus Privacy: Instantaneamente veja rastreadores no app
 • Lista negra de atualizações: Ignore atualizações de apps específicos
