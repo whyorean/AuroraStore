@@ -24,7 +24,6 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.PathUtil
 
 class PermissionProvider(private val fragment: Fragment) :
     ActivityResultCallback<ActivityResult> {
@@ -74,7 +73,7 @@ class PermissionProvider(private val fragment: Fragment) :
                         if (!isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
                             context.toast(R.string.toast_permission_installer_required)
                         } else {
-                            context.toast(R.string.toast_permission_esm_caution)
+                            context.toast(R.string.toast_permission_esm_restart)
                             intentLauncher.launch(intent)
                         }
                     } else {
@@ -93,7 +92,7 @@ class PermissionProvider(private val fragment: Fragment) :
         return when (permissionType) {
             PermissionType.EXTERNAL_STORAGE,
             PermissionType.STORAGE_MANAGER -> {
-                context.isExternalStorageAccessible() && PathUtil.canReadWriteOBB(context)
+                context.isExternalStorageAccessible()
             }
 
             PermissionType.INSTALL_UNKNOWN_APPS -> PackageUtil.canRequestPackageInstalls(context)

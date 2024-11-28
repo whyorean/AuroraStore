@@ -26,7 +26,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
@@ -58,6 +57,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.jakewharton.processphoenix.ProcessPhoenix
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -153,10 +153,10 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
     private fun finishOnboarding() {
         setupAutoUpdates()
         CacheWorker.scheduleAutomatedCacheCleanup(requireContext())
-        save(PREFERENCE_INTRO, true)
-        findNavController().navigate(
-            OnboardingFragmentDirections.actionOnboardingFragmentToSplashFragment()
-        )
+        Preferences.putBooleanNow(requireContext(), PREFERENCE_INTRO, true)
+
+        // Restart the app to ensure all permissions are granted
+        ProcessPhoenix.triggerRebirth(context)
     }
 
     private fun loadDefaultPreferences() {

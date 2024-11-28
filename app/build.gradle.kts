@@ -212,6 +212,8 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
 
+    implementation(libs.process.phoenix)
+
     // LeakCanary
     debugImplementation(libs.squareup.leakcanary.android)
 }

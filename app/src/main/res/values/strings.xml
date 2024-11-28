@@ -300,6 +300,7 @@
     <string name="toast_permission_granted">"Permission granted"</string>
     <string name="toast_permission_installer_required">"You need to grant Installer Permission first"</string>
     <string name="toast_permission_esm_caution">"You may have to re-grant the permission due to bug in Storage Access Framework"</string>
+    <string name="toast_permission_esm_restart">"You may have to restart app to reflect the permission grant."</string>
     <string name="toast_spoof_applied">Device spoof applied.</string>
     <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
