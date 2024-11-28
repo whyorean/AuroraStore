@@ -24,6 +24,7 @@ materialVersion = "1.12.0"
 navVersion = "2.8.4"
 okhttpVersion = "4.12.0"
 preferenceVersion = "1.2.1"
+processPhoenix = "3.0.0"
 protobufJavaliteVersion = "4.28.3"
 rikkaHiddenVersion = "4.3.3"
 rikkaToolsVersion = "4.4.0"
@@ -79,6 +80,7 @@ hilt-androidx-compiler = { module = "androidx.hilt:hilt-compiler", version.ref =
 hilt-androidx-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWorkVersion" }
 junit = { module = "junit:junit", version.ref = "junit" }
 lsposed-hiddenapibypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapibypassVersion" }
+process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenix" }
 rikka-hidden-stub = { module = "dev.rikka.hidden:stub", version.ref = "rikkaHiddenVersion" }
 rikka-shizuku-api = { module = "dev.rikka.shizuku:api", version.ref = "shizukuVersion" }
 rikka-shizuku-provider = { module = "dev.rikka.shizuku:provider", version.ref = "shizukuVersion" }
@@ -88,11 +90,11 @@ squareup-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhtt
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-androidx-navigation  = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }
-google-ksp  = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
-hilt-android-plugin  = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
-ktlint  = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintVersion" }
-jetbrains-kotlin-android  = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+androidx-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+hilt-android-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintVersion" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
 jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
-jetbrains-kotlin-parcelize  = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
-rikka-tools-refine-plugin  = { id = "dev.rikka.tools.refine", version.ref = "rikkaToolsVersion" }
+jetbrains-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
+rikka-tools-refine-plugin = { id = "dev.rikka.tools.refine", version.ref = "rikkaToolsVersion" }
