@@ -62,9 +62,9 @@ class PermissionProvider(private val fragment: Fragment) :
                 }
 
                 PermissionType.POST_NOTIFICATIONS -> {
-                   if (isTAndAbove) {
-                       permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                   }
+                    if (isTAndAbove) {
+                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    }
                 }
 
                 else -> {
@@ -93,7 +93,7 @@ class PermissionProvider(private val fragment: Fragment) :
         return when (permissionType) {
             PermissionType.EXTERNAL_STORAGE,
             PermissionType.STORAGE_MANAGER -> {
-                context.isExternalStorageAccessible() && PathUtil.canReadWriteOBB()
+                context.isExternalStorageAccessible() && PathUtil.canReadWriteOBB(context)
             }
 
             PermissionType.INSTALL_UNKNOWN_APPS -> PackageUtil.canRequestPackageInstalls(context)

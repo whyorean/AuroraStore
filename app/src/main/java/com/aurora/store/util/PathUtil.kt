@@ -106,14 +106,14 @@ object PathUtil {
         return file
     }
 
-    fun canReadWriteOBB(): Boolean {
-        return canReadWriteDir(
-            Environment.getExternalStorageDirectory().toString() + "/Android/obb/"
-        )
-    }
+    fun canReadWriteOBB(context: Context): Boolean {
+        val obbDir = context.obbDir.parentFile
 
-    private fun canReadWriteDir(dir: String): Boolean {
-        return File(dir).let { it.exists() && it.canRead() && it.canWrite() }
+        if (obbDir != null) {
+            return obbDir.exists() && obbDir.canRead() && obbDir.canWrite()
+        }
+
+        return false
     }
 }
 

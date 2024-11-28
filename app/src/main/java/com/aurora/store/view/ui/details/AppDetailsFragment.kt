@@ -573,7 +573,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 viewModel.download(app)
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
-                    if (it) viewModel.download(app)
+                    if (it) viewModel.download(app) else flip(0)
                 }
             }
         } else {
@@ -665,18 +665,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         } else if (app.versionCode == 0) {
                             toast(R.string.toast_app_unavailable)
                         } else {
-                            if (app.fileList.requiresObbDir() && permissionProvider.isGranted(
-                                    PermissionType.STORAGE_MANAGER)) {
-                                permissionProvider.request(PermissionType.STORAGE_MANAGER) {
-                                    if (it) {
-                                        btn.setText(R.string.download_metadata)
-                                        startDownload()
-                                    }
-                                }
-                            } else {
-                                btn.setText(R.string.download_metadata)
-                                startDownload()
-                            }
+                            btn.setText(R.string.download_metadata)
+                            startDownload()
                         }
                     }
 
