@@ -34,6 +34,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
+import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
@@ -139,10 +140,17 @@ object PackageUtil {
 
     @RequiresApi(Build.VERSION_CODES.R)
     fun getStorageManagerIntent(context: Context): Intent {
-        val intent = Intent(
+        var intent = Intent(
             Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
             Uri.parse("package:${BuildConfig.APPLICATION_ID}")
         )
+
+        if (isHuawei) {
+            intent = Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
+        }
 
         // Check if the intent can be resolved
         val packageManager = context.packageManager
