@@ -223,7 +223,7 @@
     <string name="toast_manual_unavailable">İstədiyiniz versiya kodu mövcud deyil.</string>
     <string name="toast_manual_available">Təbriklər, tələb olunan versiya kodu mövcuddur, indi endirilir.</string>
     <string name="toast_page_unavailable">Baxış səhifəsi əlçatan deyil</string>
-    <string name="toast_rated_success">Qiymətləndirildi</string>
+    <string name="toast_rated_success">Qiymətləndirildi, göstərilməsi bir az çəkə bilər</string>
     <string name="toast_rated_failed">Qiymətləndirmək mümkün olmadı</string>
     <string name="toast_aas_token_failed">AAS Tokeni yaratmaq mümkün olmadı</string>
     <string name="toast_export_failed">Cihaz tənzimləməsini ixrac etmək alınmadı</string>
@@ -285,4 +285,64 @@
     <string name="notification_channel_install">Quraşdırma bildirişi</string>
     <string name="notification_channel_downloads">Yükləmə bildirişi</string>
     <string name="session_enjoy">Daxil olun və həzz alın.</string>
+    <string name="action_enabled">Aktivdir</string>
+    <string name="menu">Menyu</string>
+    <string name="server_maintenance">Server düzəliş səbəbilə işləmir</string>
+    <string name="pref_updates_auto">Tətbiqləri birbaşa yenilə</string>
+    <string name="failed_to_generate_session">Hesab yaratmaq alınmadı</string>
+    <string name="action_enable">Aktiv et</string>
+    <string name="pref_updates_auto_notify">Mövcud yeniləmələri yoxla və bildir</string>
+    <string name="notification_channel_updates">Yeniləmə bildirişləri</string>
+    <string name="pref_updates_auto_off">Tətbiqləri birbaşa yeniləmir</string>
+    <string name="pref_updates_check_frequency_desc">Birbaşa və özünü yeniləmələr üçün aralıqları saatla qur.</string>
+    <string name="app_link_enabled">Tətbiq linki aktiv edildi!</string>
+    <string name="app_links_title">Tətbiq Linkləri</string>
+    <string name="app_links_desc">Aurora Store-un dəstəklənən linkləri açmasına icazə ver</string>
+    <string name="expand">Genişləndir</string>
+    <string name="pref_updates_auto_desc">Birbaşa yenilənmə davranışın tərtib et</string>
+    <string name="android_market_desc">Android Market, Android cihazları üçün hazırlanan sistem tətbiqlərin təklif edən, 2017-ci ildə sıradan çıxmış onlayn mağaza idi.</string>
+    <string name="title_apps_sale_provider">Təchizatçı - bestappsales.com</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="item_required">Tələb olunur</string>
+    <string name="item_optional">Zəruri deyil</string>
+    <string name="title_search_suggestion">Axtarış təklifi</string>
+    <string name="title_advanced">Qabaqcıl</string>
+    <string name="toast_proxy_failed">Proxy qurmaq olmadı</string>
+    <string name="failed_to_fetch_report">Məxfilik hesabatını almaq olmadı</string>
+    <string name="server_unreachable">Server data ötürmür</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> and <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="bad_request">Daxili xəta! Xahiş olunur, az sonra təkrar sına</string>
+    <string name="search_hint">Tətbiq və Oyunlar axtar</string>
+    <string name="update_available">yeniləmə var</string>
+    <string name="requesting_new_session">Yeni hesab tələb olunur</string>
+    <string name="updates_available">yeniləmələr var</string>
+    <string name="rate_limited">Vay, Bu hesabın sürəti məhduddur!</string>
+    <string name="error">Xəta baş verdi!</string>
+    <string name="permissions_denied">Tələb olunan icazələr ləğv edildi. Fəaliyyəti davam etdirmək üçün onlara icazə ver</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> yeniləmə var</string>
+    <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name"> %1$s</xliff:g> üçün yeni versiya var</string>
+    <string name="app_language">Tətbiq Dili</string>
+    <string name="google_play_store_desc">Google Play, eləcə də Google Play Store və keçmişdə Android Market kimi bilinir.</string>
+    <string name="toast_permission_installer_required">Əvvəlcə quraşdırıcı icazəsi verməlisiniz</string>
+    <string name="toast_import_failed">Cihaz quruluşun idxal etmək olmadı</string>
+    <string name="toast_proxy_invalid">Yanlış proxy URL, formatı yoxla!</string>
+    <string name="pref_updates_check_frequency">Birbaşa yenilənmə tezliyi</string>
+    <string name="access_denied_using_vpn">Giriş ləğv edildi! VPN və ya Tor istifadə edirsiniz?</string>
+    <string name="login_rate_limited">Vay, Sürətiniz məhduddur</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> yeniləmə mövcuddur</string>
+    <string name="failed_generating_session">Hesab yaradılmadı, xəta kodu:<xliff:g id="status_code"> %1$d</xliff:g></string>
+    <string name="title_search_results">Axtarış nəticələri</string>
+    <string name="toast_import_success">Cihaz quruluşu idxal edildi</string>
+    <string name="toast_proxy_success">Proxy qurma uğurlu</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> and <xliff:g id="apps_count">%4$d</xliff:g> more</string>
+    <string name="pref_updates_auto_install">Mövcud yeniləmələri birbaşa yoxla və quraşdır</string>
+    <string name="verifying_new_session">Yeni hesab təsdiqlənir</string>
+    <string name="check_connectivity">İnternet bağlantısın yoxla</string>
+    <string name="session_verifying_google">Google Hesabı Təsdiqlənir</string>
+    <string name="title_app_settings">Tətbiq Tənzimləmələri</string>
+    <string name="title_favourites_manager">Sevimli Tətbiqlər</string>
+    <string name="toast_app_unavailable">Tətbiq cihazınız üçün qüvvədə deyil</string>
+    <string name="toast_permission_esm_caution">Storage Access Framework-dəki səhvə görə təkrar icazə verməli ola bilərsiniz</string>
+    <string name="downloading_dep"><xliff:g id="app"> %1$s</xliff:g> üçün əlavə fayllar endirilir</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> and <xliff:g id="app_two_name">%2$s</xliff:g></string>
 </resources>
