@@ -20,33 +20,40 @@
 
 package com.aurora.store.view.ui.details
 
+import android.animation.ObjectAnimator
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil3.asDrawable
 import coil3.load
 import coil3.request.placeholder
 import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
 import coil3.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
+import com.aurora.extensions.invisible
+import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
@@ -66,7 +73,6 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.PermissionType
-import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
@@ -75,6 +81,8 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
@@ -85,8 +93,6 @@ import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
@@ -106,8 +112,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
     private lateinit var app: App
+    private lateinit var iconDrawable: Drawable
 
     private var streamBundle: StreamBundle? = StreamBundle()
 
@@ -117,11 +123,19 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private var isUpdatable: Boolean = false
     private var uninstallActionEnabled = false
 
+    private val tags = mutableListOf<String>()
+
+    private val isExtendedUpdateEnabled: Boolean
+        get() = Preferences.getBoolean(requireContext(), PREFERENCE_UPDATES_EXTENDED)
+    private val showSimilarApps: Boolean
+        get() = Preferences.getBoolean(requireContext(), PREFERENCE_SIMILAR)
+
     private fun onEvent(event: Event) {
         when (event) {
             is InstallerEvent.Installed -> {
                 if (app.packageName == event.packageName) {
-                    attachActions()
+                    checkAndSetupInstall()
+                    transformIcon(false)
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
                         findItem(R.id.action_home_screen)?.isVisible =
                             ShortcutManagerUtil.canPinShortcut(requireContext(), app.packageName)
@@ -133,7 +147,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             is InstallerEvent.Uninstalled -> {
                 if (app.packageName == event.packageName) {
-                    attachActions()
+                    checkAndSetupInstall()
+                    transformIcon(false)
                     binding.layoutDetailsToolbar.toolbar.menu.apply {
                         findItem(R.id.action_home_screen)?.isVisible = false
                         findItem(R.id.action_uninstall)?.isVisible = false
@@ -164,8 +179,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             is InstallerEvent.Installing -> {
                 if (event.packageName == app.packageName) {
-                    attachActions()
-                    updateActionState(State.INSTALLING)
+                    checkAndSetupInstall()
                 }
             }
 
@@ -177,23 +191,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Adjust margins for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutDetailsDev.root) { v, w ->
-            val insets = w.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
-            }
-            WindowInsetsCompat.CONSUMED
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutDetailsInstall.viewFlipper) { v, w ->
-            val insets = w.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
-            }
-            WindowInsetsCompat.CONSUMED
-        }
 
         if (args.app != null) {
             app = args.app!!
@@ -232,17 +229,20 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     download?.let {
                         downloadStatus = it.downloadStatus
 
-                        if (it.isFinished) flip(0) else flip(1)
                         when (it.downloadStatus) {
                             DownloadStatus.QUEUED -> {
                                 updateProgress(it.progress)
                             }
 
                             DownloadStatus.DOWNLOADING -> {
+                                updateSecondaryAction(true)
                                 updateProgress(it.progress, it.speed, it.timeRemaining)
                             }
 
-                            else -> {}
+                            else -> {
+                                transformIcon(false)
+                                updateSecondaryAction(false)
+                            }
                         }
                     }
                 }
@@ -368,12 +368,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
         }
 
-        binding.layoutDetailsInstall.progressDownload.clipToOutline = true
-        binding.layoutDetailsInstall.imgCancel.setOnClickListener {
-            viewModel.cancelDownload(app)
-            if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)
-        }
-
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.events.busEvent.collect { onEvent(it) }
         }
@@ -385,11 +379,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     override fun onResume() {
         checkAndSetupInstall()
         super.onResume()
-    }
-
-    private fun attachActions() {
-        flip(0)
-        checkAndSetupInstall()
     }
 
     private fun attachToolbar() {
@@ -475,6 +464,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             imgIcon.load(app.iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(RoundedCornersTransformation(32F))
+                listener { _, result ->
+                    result.image.asDrawable(resources).let { iconDrawable = it }
+                }
             }
 
             txtLine1.text = app.displayName
@@ -488,7 +480,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             txtLine3.text = ("${app.versionName} (${app.versionCode})")
             packageName.text = app.packageName
 
-            val tags = mutableListOf<String>()
+
             if (app.isFree)
                 tags.add(getString(R.string.details_free))
             else
@@ -500,40 +492,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 tags.add(getString(R.string.details_no_ads))
 
             txtLine4.text = tags.joinToString(separator = " • ")
-        }
-    }
-
-    private fun attachBottomSheet() {
-        binding.layoutDetailsInstall.apply {
-            viewFlipper.setInAnimation(requireContext(), R.anim.fade_in)
-            viewFlipper.setOutAnimation(requireContext(), R.anim.fade_out)
-        }
-
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.layoutDetailsInstall.bottomSheet)
-        bottomSheetBehavior.isDraggable = false
-
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setDraggable(true)
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottomSheetBehavior.isDraggable = false
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
-    }
-
-    private fun updateActionState(state: State) {
-        runOnUiThread {
-            binding.layoutDetailsInstall.btnDownload.apply {
-                updateState(state)
-                if (state == State.INSTALLING) {
-                    setButtonState(false)
-                    setText(R.string.action_installing)
-                }
-            }
         }
     }
 
@@ -552,28 +510,24 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private fun startDownload() {
         when (downloadStatus) {
             DownloadStatus.DOWNLOADING -> {
-                flip(1)
                 toast("Already downloading")
             }
 
             else -> {
-                flip(1)
                 purchase()
             }
         }
     }
 
     private fun purchase() {
-        bottomSheetBehavior.isHideable = false
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        updateActionState(State.PROGRESS)
-
         if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
-                    if (it) viewModel.download(app) else flip(0)
+                    if (it) viewModel.download(app) else {
+                        // TODO: Ask for permission again or redirect to Permission Manager
+                    }
                 }
             }
         } else {
@@ -583,108 +537,191 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun updateProgress(progress: Int, speed: Long = -1, timeRemaining: Long = -1) {
         runOnUiThread {
+            updatePrimaryAction(false)
+            updateSecondaryAction(true)
+
             if (progress == 100) {
-                binding.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
+                transformIcon(false)
+                binding.layoutDetailsApp.apply {
+                    txtLine3.text = ("${app.versionName} (${app.versionCode})")
+                    txtLine4.text = tags.joinToString(separator = " • ")
+                }
                 return@runOnUiThread
             }
 
-            binding.layoutDetailsInstall.apply {
-                txtProgressPercent.text = ("${progress}%")
-                progressDownload.apply {
-                    this.progress = progress
-                    isIndeterminate = progress < 1
+            transformIcon(true)
+            binding.layoutDetailsApp.apply {
+                if (progress < 1) {
+                    progressDownload.isIndeterminate = true
+                } else {
+                    progressDownload.isIndeterminate = false
+                    progressDownload.progress = progress
+                    txtLine3.text = CommonUtil.getETAString(requireContext(), timeRemaining)
+                    txtLine4.text = CommonUtil.getDownloadSpeedString(requireContext(), speed)
                 }
-                txtEta.text = CommonUtil.getETAString(requireContext(), timeRemaining)
-                txtSpeed.text = CommonUtil.getDownloadSpeedString(requireContext(), speed)
             }
         }
     }
 
-    private fun checkAndSetupInstall() {
-        app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
-        runOnUiThread {
-            binding.layoutDetailsInstall.btnDownload.let { btn ->
-                btn.setButtonState(true)
-                if (app.isInstalled) {
-                    val isExtendedUpdateEnabled = Preferences.getBoolean(
-                        requireContext(), Preferences.PREFERENCE_UPDATES_EXTENDED
-                    )
-                    val needsExtendedUpdate = !app.certificateSetList.any {
-                        it.certificateSet in CertUtil.getEncodedCertificateHashes(
-                            requireContext(), app.packageName
-                        )
-                    }
-                    isUpdatable = PackageUtil.isUpdatable(
-                        requireContext(),
-                        app.packageName,
-                        app.versionCode.toLong()
-                    )
-
-                    val installedVersion =
-                        PackageUtil.getInstalledVersion(requireContext(), app.packageName)
-
-                    if (isUpdatable && !needsExtendedUpdate || isUpdatable && isExtendedUpdateEnabled) {
-                        binding.layoutDetailsApp.txtLine3.text =
-                            ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
-                        btn.setText(R.string.action_update)
-                        btn.addOnClickListener {
-                            if (app.versionCode == 0) {
-                                toast(R.string.toast_app_unavailable)
-                            } else {
-                                startDownload()
-                            }
-                        }
-                    } else {
-                        binding.layoutDetailsApp.txtLine3.text = installedVersion
-                        btn.setText(R.string.action_open)
-                        btn.addOnClickListener { openApp() }
-                    }
-                    if (!uninstallActionEnabled) {
-                        binding.layoutDetailsToolbar.toolbar.invalidateMenu()
-                    }
-                } else {
-                    if (downloadStatus in DownloadStatus.running) {
-                        flip(1)
-                    } else if (app.isFree) {
-                        btn.setText(R.string.action_install)
-                    } else {
-                        btn.setText(app.price)
-                    }
-
-                    btn.addOnClickListener {
-                        if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
-                            permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS) {
-                                if (it) {
-                                    btn.setText(R.string.download_metadata)
-                                    startDownload()
-                                }
-                            }
-                        } else if (authProvider.isAnonymous && !app.isFree) {
-                            toast(R.string.toast_purchase_blocked)
-                        } else if (app.versionCode == 0) {
-                            toast(R.string.toast_app_unavailable)
-                        } else {
-                            btn.setText(R.string.download_metadata)
-                            startDownload()
-                        }
-                    }
-
-                    if (uninstallActionEnabled) {
-                        binding.layoutDetailsToolbar.toolbar.invalidateMenu()
-                    }
-                }
+    private fun updatePrimaryAction(enabled: Boolean = false) {
+        binding.layoutDetailsApp.btnPrimaryAction.apply {
+            isEnabled = enabled
+            text = if (app.isInstalled) {
+                getString(R.string.action_open)
+            } else {
+                getString(R.string.action_install)
             }
         }
     }
 
     @Synchronized
-    private fun flip(nextView: Int) {
+    private fun updateSecondaryAction(enabled: Boolean = false) {
         runOnUiThread {
-            val displayChild = binding.layoutDetailsInstall.viewFlipper.displayedChild
-            if (displayChild != nextView) {
-                binding.layoutDetailsInstall.viewFlipper.displayedChild = nextView
-                if (nextView == 0) checkAndSetupInstall()
+            binding.layoutDetailsApp.btnSecondaryAction.apply {
+                isEnabled = enabled
+                isVisible = enabled
+                text = getString(R.string.action_cancel)
+                setOnClickListener {
+                    viewModel.cancelDownload(app)
+                    updatePrimaryAction(true)
+                }
+            }
+        }
+    }
+
+    private fun transformIcon(ongoing: Boolean = false) {
+        val scaleFactor = if (ongoing) 0.75f else 1f
+        val isDownloadVisible = binding.layoutDetailsApp.progressDownload.isShown
+
+        // Avoids flickering when the download is in progress
+        if (isDownloadVisible && scaleFactor != 1f)
+            return
+
+        if (!isDownloadVisible && scaleFactor == 1f)
+            return
+
+        if (scaleFactor == 1f) {
+            binding.layoutDetailsApp.progressDownload.invisible()
+        } else {
+            binding.layoutDetailsApp.progressDownload.show()
+        }
+
+        val scale = listOf(
+            ObjectAnimator.ofFloat(binding.layoutDetailsApp.imgIcon, "scaleX", scaleFactor),
+            ObjectAnimator.ofFloat(binding.layoutDetailsApp.imgIcon, "scaleY", scaleFactor)
+        )
+
+        scale.forEach { animation ->
+            animation.apply {
+                interpolator = AccelerateDecelerateInterpolator()
+                duration = 250
+                start()
+            }
+        }
+
+        iconDrawable?.let {
+            binding.layoutDetailsApp.imgIcon.load(it) {
+                transformations(
+                    if (scaleFactor == 1f)
+                        RoundedCornersTransformation(8.px.toFloat())
+                    else
+                        CircleCropTransformation()
+                )
+            }
+        }
+    }
+
+    @Synchronized
+    private fun checkAndSetupInstall() {
+        runOnUiThread {
+            app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+
+            if (app.isInstalled) {
+                val needsExtendedUpdate = !app.certificateSetList.any {
+                    it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                        requireContext(),
+                        app.packageName
+                    )
+                }
+
+                isUpdatable = PackageUtil.isUpdatable(
+                    requireContext(),
+                    app.packageName,
+                    app.versionCode.toLong()
+                )
+
+                val installedVersion = PackageUtil.getInstalledVersion(
+                    requireContext(),
+                    app.packageName
+                )
+
+                if ((isUpdatable && !needsExtendedUpdate) || (isUpdatable && isExtendedUpdateEnabled)) {
+                    binding.layoutDetailsApp.apply {
+                        txtLine3.text =
+                            ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
+                        txtLine4.text = tags.joinToString(separator = " • ")
+                        btnPrimaryAction.apply {
+                            isEnabled = true
+                            setText(R.string.action_update)
+                            setOnClickListener {
+                                if (app.versionCode == 0) {
+                                    toast(R.string.toast_app_unavailable)
+                                    btnPrimaryAction.setText(R.string.status_unavailable)
+                                } else {
+                                    startDownload()
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    binding.layoutDetailsApp.apply {
+                        txtLine3.text = installedVersion
+                        btnPrimaryAction.apply {
+                            isEnabled = true
+                            setText(R.string.action_open)
+                            setOnClickListener { openApp() }
+                        }
+                    }
+                }
+
+                if (!uninstallActionEnabled) {
+                    binding.layoutDetailsToolbar.toolbar.invalidateMenu()
+                }
+            } else {
+                if (downloadStatus in DownloadStatus.running) {
+                    updateProgress(-1)
+                } else if (app.isFree) {
+                    binding.layoutDetailsApp.btnPrimaryAction.setText(R.string.action_install)
+                } else {
+                    binding.layoutDetailsApp.btnPrimaryAction.text = app.price
+                }
+
+                binding.layoutDetailsApp.btnPrimaryAction.setOnClickListener {
+                    if (authProvider.isAnonymous && !app.isFree) {
+                        toast(R.string.toast_purchase_blocked)
+                        return@setOnClickListener
+                    } else if (app.versionCode == 0) {
+                        toast(R.string.toast_app_unavailable)
+                        return@setOnClickListener
+                    }
+
+                    if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
+                        permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS) {
+                            if (it) {
+                                startDownload()
+                            } else {
+                                toast(R.string.permissions_denied)
+                                // TODO: Warn & redirect to Permission Manager
+                            }
+                        }
+                    } else {
+                        startDownload()
+                    }
+                }
+
+                if (uninstallActionEnabled) {
+                    binding.layoutDetailsToolbar.toolbar.invalidateMenu()
+                }
             }
         }
     }
@@ -692,8 +729,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private fun inflatePartialApp() {
         if (::app.isInitialized) {
             attachHeader()
-            attachBottomSheet()
-            attachActions()
+            checkAndSetupInstall()
         }
     }
 
@@ -717,7 +753,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 inflateBetaSubscription(app)
             }
 
-            if (Preferences.getBoolean(requireContext(), Preferences.PREFERENCE_SIMILAR)) {
+            if (showSimilarApps) {
                 inflateAppStream(app)
             }
         }

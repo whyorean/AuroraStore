@@ -28,12 +28,6 @@
         <attr name="btnStateIcon" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="ActionButton">
-        <attr name="btnActionText" format="string" />
-        <attr name="btnActionTextColor" format="string" />
-        <attr name="btnActionIcon" format="string" />
-    </declare-styleable>
-
     <declare-styleable name="AuroraProgressView">
         <attr name="minWidth" format="dimension" />
         <attr name="maxWidth" format="dimension" />
