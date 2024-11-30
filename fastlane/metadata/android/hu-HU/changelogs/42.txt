@@ -1,0 +1,10 @@
+• Android 13 célzása
+• További szövegek lokalizációjának lehetővé tétele
+• Monokróm ikon az Android 13-hoz
+• Függőségek frissítése
+• Szolgáltatási feltételek megjelenítése indításkor
+• Továbblépés engedélyezése a jogosultságok megadása nélkül
+• Rendszer kizárási listájának figyelembe vétele a frissítéseknél
+• Cím javítása az 5. beállítólapon
+• Tárhellyel kapcsolatos jogosultságbeállítások refaktorálása
+• Frissített fordítások

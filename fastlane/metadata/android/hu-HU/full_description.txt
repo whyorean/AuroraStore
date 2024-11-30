@@ -1,4 +1,4 @@
-Az Aurora Store egy nem hivatalos, nyílt-forráskódú Google Play kliens, elegáns dizájnnal.
+Az Aurora Store egy nem hivatalos, nyílt forráskódú Google Play kliens, elegáns dizájnnal.
 Az Aurora Store lehetővé teszi alkalmazások frissítését, letöltését és keresését, akárcsak a Google Play.
 Tökéletesen működik Google Play Szolgáltatások, illetve MicroG nélkül is.
 
@@ -7,6 +7,6 @@ Tökéletesen működik Google Play Szolgáltatások, illetve MicroG nélkül is
 • FOSS: GPLv3 licenc
 • Gyönyörű dizájn: A legmodernebb Material 3 irányelvek alapján
 • Fiók és bejelentkezés: Használható saját, illetve anonim fiók is
-• Eszköz és nyelv álcázás: A készülék típusa, illetve nyelve is álcázható, így geo-korlátolt alkalmazások is elérhetők
-• [Exodus Privacy](https://exodus-privacy.eu.org/) integráció: Alkalmazás nyomkövetők azonnali kimutatása
-• Frissítés tiltólista: Egyes alkalmazások frissítései tiltólistára tehetők
+• Eszköz és nyelv álcázása: A készülék típusa, illetve nyelve is álcázható, így a földrajzilag korlátolt alkalmazások is elérhetők
+• Exodus Privacy integráció: Alkalmazások nyomkövetőinek azonnali kimutatása
+• Frissítési tiltólista: Egyes alkalmazások frissítései tiltólistára tehetők
