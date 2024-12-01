@@ -1,5 +1,5 @@
-• Correction d'un problème d'UI avec Android 15
-• La configuration et l'utilisation du proxy ont été améliorées
+• Correction d’un problème d’UI avec Android 15
+• La configuration et l’utilisation du proxy ont été améliorées
 • Épinglage SSL supporté pour les domaines connus qui utilisent des certificats racines
 • Support amélioré des thèmes dynamiques sur les appareils compatibles
 • Retrait des fonctions thèmes personnalisés et couleurs dominantes

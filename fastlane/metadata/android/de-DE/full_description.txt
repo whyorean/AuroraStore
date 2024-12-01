@@ -8,5 +8,5 @@ mit oder ohne Google Play Services oder MicroG.
 • Schönes Design: Basierend auf den neuesten Material 3-Richtlinien
 • Kontoanmeldung: Du kannst dich entweder mit einem persönlichen oder einem anonymen Konto anmelden
 • Geräte- und Gebietsschema-Spoofing: Ändere dein Gerät und/oder Ihr Gebietsschema, um auf geografisch gesperrte Apps zuzugreifen
-• [Exodus Privacy](https://exodus-privacy.eu.org/) Integration: Tracker sofort in der App sehen
+• Exodus-Privacy-Integration: Tracker sofort in der App sehen
 • Blacklisting für Updates: Updates für bestimmte Apps ignorieren

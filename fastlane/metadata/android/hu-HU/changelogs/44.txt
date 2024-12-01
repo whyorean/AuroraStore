@@ -1,0 +1,6 @@
+• A telepítési szolgáltatások értesítéséhez kötődő összeomlás javítása
+• Csak az érvényes álcázási tulajdonságok megjelenítése az alkalmazásban
+• Felhasználók értesítése, ha forgalomkorlátos kapcsolaton keresnek
+• Csillogási animáció megjelenítése kereséskor a folyamat jelzéséhez
+• Navigáció viselkedésének javítása, ha az alapértelmezett lap megváltozik
+• Gyors kilépési lehetőség javítása

@@ -222,7 +222,7 @@
     <string name="filter_review_five">П’ять</string>
     <string name="filter_review_critical">Критичні</string>
     <string name="pref_filter_fdroid_title">Фільтрувати застосунки F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Ігнорувати застосунки F-Droid з Оновлень та Встановлених застосунків</string>
+    <string name="pref_filter_fdroid_summary">Не перевіряти оновлення для застосунків, завантажених або встановлених з F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Цей параметр буде застосовано після перезапуску застосунку</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
@@ -297,7 +297,7 @@
     <string name="details_ratings_title_hint">Назва відгуку</string>
     <string name="pref_updates_check_frequency_desc">Налаштуйте інтервали для автоматичних і самооновлень, у годинах.</string>
     <string name="pref_aurora_only">Тільки застосунки Aurora Store</string>
-    <string name="pref_aurora_only_desc">Показувати лише встановлені застосунки Aurora Store у розділі Оновлення та Встановлені застосунки</string>
+    <string name="pref_aurora_only_desc">Перевіряйте оновлення лише для застосунків, встановлених з Aurora Store</string>
     <string name="title_app_settings">Налаштування застосунку</string>
     <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
     <string name="details_no_apps_on_sale">На розпродажі не знайдено жодного застосунку</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">Увійдіть до свого облікового запису Google Play, щоб розархівувати застосунок!</string>
     <string name="checking_updates">Перевірка оновлень</string>
     <string name="made_with_love">Зроблено з <xliff:g id="heart_emoji">%1$s</xliff:g> в Індії</string>
+    <string name="default_spoof">Типово</string>
+    <string name="available_spoof">Доступно</string>
 </resources>

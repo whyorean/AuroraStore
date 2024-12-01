@@ -8,5 +8,5 @@ con o sin Google Play Services o MicroG.
 • Diseño atractivo: basado en las últimas directrices de Material 3
 • Inicio de sesión con cuenta: puede iniciar sesión con una cuenta personal o anónima
 • Suplantación de dispositivo y configuración regional: Cambia tu dispositivo y/o configuración regional para acceder a aplicaciones bloqueadas geográficamente
-• Integración de [Exodus Privacy] (https://exodus-privacy.eu.org/): Ver instantáneamente los rastreadores en la aplicación
+• Integración a Exodus Privacy ver instantáneamente los rastreadores en la aplicación
 • Lista negra de actualizaciones: Ignorar las actualizaciones para aplicaciones específicas

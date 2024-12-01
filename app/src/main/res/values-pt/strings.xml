@@ -99,7 +99,7 @@
     <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>
     <string name="pref_install_delete_title">Eliminar o APK após a instalação</string>
     <string name="pref_install_delete_summary">Os APKs descarregados serão eliminados imediatamente após a instalação</string>
-    <string name="pref_filter_fdroid_summary">Ignorar aplicações F-Droid das atualizações e das aplicações instaladas</string>
+    <string name="pref_filter_fdroid_summary">Não verifique atualizações de aplicativos baixados ou instalados do F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Esta definição será aplicada após reiniciar a aplicação</string>
     <string name="pref_common_extra">Extras</string>
@@ -301,7 +301,7 @@
     <string name="pref_aurora_only">Apenas aplicações Aurora Store</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_invalid">URL inválido. Verifique o formato!</string>
-    <string name="pref_aurora_only_desc">Mostrar apenas aplicações instaladas via Aurora Store</string>
+    <string name="pref_aurora_only_desc">Verifique apenas atualizações de aplicativos instalados pela Aurora Store</string>
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="title_app_settings">Definições</string>
     <string name="title_apps_sale_provider">Fornecedor - bestappsales.com</string>
@@ -405,4 +405,15 @@
     <string name="notification_channel_export">Notificação de exportação de aplicativo</string>
     <string name="notification_channel_install">Notificação de instalação</string>
     <string name="notification_channel_downloads">Notificação de downloads</string>
+    <string name="default_spoof">Padrão</string>
+    <string name="authentication_required_unarchive">Faça login na sua conta do Google Play para desarquivar o aplicativo!</string>
+    <string name="status_failed">Fracassado</string>
+    <string name="status_queued">Na fila</string>
+    <string name="status_completed">Concluído</string>
+    <string name="status_unavailable">Indisponível</string>
+    <string name="checking_updates">Verificando atualizações</string>
+    <string name="status_downloading">Baixando</string>
+    <string name="status_cancelled">Cancelado</string>
+    <string name="authentication_required_title">Autenticação necessária</string>
+    <string name="available_spoof">Disponível</string>
 </resources>

@@ -50,7 +50,7 @@
     <string name="device_miui_subtitle">Inštalátor relácie nemôže nainštalovať aplikácie kvôli optimalizácii MIUI.</string>
     <string name="dialog_desc_native_split">Prostredníctvom natívneho inštalátora nemôžete nainštalovať pribalené (rozdelené) aplikácie. Zmeňte inštalačný program na Reláciu, Služby alebo Root.</string>
     <string name="pref_download_directory_error">Vybraná cesta nie je zapisovateľná</string>
-    <string name="pref_filter_fdroid_summary">Ignorovať F-Droid aplikácie z aktualizácií a nainštalovaných aplikácií</string>
+    <string name="pref_filter_fdroid_summary">Nekontrolovať F-Droid aplikácie z aktualizácií a nainštalovaných aplikácií</string>
     <string name="pref_install_mode_am">AM inštalátor</string>
     <string name="pref_vending_version_title">Google obchod verzia</string>
     <string name="pref_ui_no_for_you_desc">Zobraziť stránky pre vás na domovskej obrazovke</string>
@@ -194,7 +194,7 @@
     <string name="pref_install_mode_services">Aurora Služby (zastarané)</string>
     <string name="pref_install_mode_summary">Vyberte režim inštalácie APK</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
-    <string name="pref_aurora_only_desc">Zobraziť iba nainštalované aplikácie Aurora obchod v položkách Aktualizácie a Nainštalované aplikácie</string>
+    <string name="pref_aurora_only_desc">Kontrolovať iba aktualizácie pre aplikácie nainštalované v obchode Aurora</string>
     <string name="purchase_unsupported">Aplikácia nie je podporovaná</string>
     <string name="session_login">Prosím prihláste sa do svojho účtu Google obchod</string>
     <string name="session_verifying">Overujem reláciu</string>
@@ -414,4 +414,6 @@
     <string name="authentication_required_unarchive">Ak chcete zrušiť archiváciu aplikácie, prihláste sa do svojho účtu Google Play!</string>
     <string name="checking_updates">Kontrola aktualizácie</string>
     <string name="made_with_love">Vyrobené s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
+    <string name="default_spoof">Predvolené</string>
+    <string name="available_spoof">K dispozícií</string>
 </resources>

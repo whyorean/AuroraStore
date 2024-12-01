@@ -8,5 +8,5 @@ dengan atau tanpa Layanan Google Play atau MicroG.
 • Desain yang indah: Dibangun berdasarkan panduan Material 3 versi terbaru
 • Akun: Anda dapat masuk dengan akun pribadi atau anonim
 • Spoofing Perangkat & Lokal: Mengubah perangkat Anda dan/atau lokal untuk mengakses aplikasi dengan geografis terkunci
-• [Exodus Privacy](https://exodus-privacy.eu.org/) integrasi: pelacak di aplikasi dapat dilihat secara instan
+• Integrasi Exodus Privacy: pelacak di aplikasi dapat dilihat secara instan
 • Memperbarui daftar hitam: Mengabaikan pembaruan untuk aplikasi tertentu

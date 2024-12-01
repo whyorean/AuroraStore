@@ -273,7 +273,7 @@
     <string name="onboarding_permission_notifications">Obvestila</string>
     <string name="onboarding_permission_notifications_desc">Pošiljanje obvestil o statusu namestitve</string>
     <string name="pref_dialog_to_apply_restart">Ta nastavitev bo uporabljena, ko znova zaženete aplikacijo</string>
-    <string name="pref_filter_fdroid_summary">Prezri F-Droid aplikacije v Posodobitvah in Nameščenih aplikacijah</string>
+    <string name="pref_filter_fdroid_summary">Ne preveri posodobitev za aplikacije, prenešene ali nameščene iz F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>
     <string name="pref_ui_title">Prilagajanje</string>
     <string name="pref_ui_no_for_you">Strani za vas</string>
@@ -322,7 +322,7 @@
     <string name="action_enabled">Omogočeno</string>
     <string name="pref_ui_layout">Razporeditev</string>
     <string name="pref_network_proxy_url">URL posrednika</string>
-    <string name="pref_aurora_only_desc">Prikaži samo Aurora Store nameščene aplikacije v Posodobitvah in Nameščenih aplikacijah</string>
+    <string name="pref_aurora_only_desc">Preveri posodobitve samo za aplikacije nameščene od Aurora Store</string>
     <string name="session_login">Prijavite se v vaš Google Play račun</string>
     <string name="pref_aurora_only">Samo Aurora Store aplikacije</string>
     <string name="pref_updates_auto_notify">Preveri in obvesti za razpoložljivimi posodobitvami</string>
@@ -410,4 +410,6 @@
     <string name="pref_dispenser_title">Upravljaj dozirnike</string>
     <string name="pref_dispenser_summary">Pokaži in upravljaj dozirnike žetonov za anonimne prijave</string>
     <string name="no_dispensers_available">Na voljo ni dozirnikov</string>
+    <string name="available_spoof">Na voljo</string>
+    <string name="default_spoof">Privzeto</string>
 </resources>
