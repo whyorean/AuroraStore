@@ -154,7 +154,7 @@
     <string name="action_ok">Labi</string>
     <string name="download_eta_calculating">Aprēķina</string>
     <string name="download_queued">Ierindots</string>
-    <string name="details_changelog_unavailable">Izmaiņas nav dotas</string>
+    <string name="details_changelog_unavailable">Nav izmaiņu apraksta</string>
     <string name="details_description">Apraksts</string>
     <string name="details_dev_address">Adrese</string>
     <string name="download_none">Nav lejupielāžu</string>
