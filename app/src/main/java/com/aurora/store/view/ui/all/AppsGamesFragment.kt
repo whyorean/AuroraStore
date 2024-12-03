@@ -80,7 +80,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     } else {
                         val filteredPackages = viewModel.packages.value?.filter {
                             it.applicationInfo!!.loadLabel(requireContext().packageManager)
-                                .contains(s, true)
+                                .contains(s, true) || it.packageName.contains(s, true)
                         }
                         updateController(filteredPackages)
                     }

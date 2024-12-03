@@ -66,7 +66,8 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                         updateController(viewModel.packages.value)
                     } else {
                         val filteredPackages = viewModel.packages.value?.filter {
-                            it.applicationInfo!!.loadLabel(requireContext().packageManager).contains(s, true)
+                            it.applicationInfo!!.loadLabel(requireContext().packageManager)
+                                .contains(s, true) || it.packageName.contains(s, true)
                         }
                         updateController(filteredPackages)
                     }
