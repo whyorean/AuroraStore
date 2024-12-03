@@ -14,6 +14,7 @@ import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.SpoofProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -99,31 +100,56 @@ object HelperModule {
 
     @Singleton
     @Provides
-    fun providesWebStreamHelperInstance(httpClient: IHttpClient): WebStreamHelper {
-        return WebStreamHelper().using(httpClient)
+    fun providesWebStreamHelperInstance(
+        spoofProvider: SpoofProvider,
+        httpClient: IHttpClient
+    ): WebStreamHelper {
+        return WebStreamHelper()
+            .using(httpClient)
+            .with(spoofProvider.locale)
     }
 
     @Singleton
     @Provides
-    fun providesWebDataSafetyHelperInstance(httpClient: IHttpClient): WebDataSafetyHelper {
-        return WebDataSafetyHelper().using(httpClient)
+    fun providesWebDataSafetyHelperInstance(
+        spoofProvider: SpoofProvider,
+        httpClient: IHttpClient
+    ): WebDataSafetyHelper {
+        return WebDataSafetyHelper()
+            .using(httpClient)
+            .with(spoofProvider.locale)
     }
 
     @Singleton
     @Provides
-    fun providesWebSearchHelperInstance(httpClient: IHttpClient): WebSearchHelper {
-        return WebSearchHelper().using(httpClient)
+    fun providesWebSearchHelperInstance(
+        spoofProvider: SpoofProvider,
+        httpClient: IHttpClient
+    ): WebSearchHelper {
+        return WebSearchHelper()
+            .using(httpClient)
+            .with(spoofProvider.locale)
     }
 
     @Singleton
     @Provides
-    fun providesWebCategoryStreamHelperInstance(httpClient: IHttpClient): WebCategoryStreamHelper {
-        return WebCategoryStreamHelper().using(httpClient)
+    fun providesWebCategoryStreamHelperInstance(
+        spoofProvider: SpoofProvider,
+        httpClient: IHttpClient
+    ): WebCategoryStreamHelper {
+        return WebCategoryStreamHelper()
+            .using(httpClient)
+            .with(spoofProvider.locale)
     }
 
     @Singleton
     @Provides
-    fun providesWebTopChartsHelperInstance(httpClient: IHttpClient): WebTopChartsHelper {
-        return WebTopChartsHelper().using(httpClient)
+    fun providesWebTopChartsHelperInstance(
+        spoofProvider: SpoofProvider,
+        httpClient: IHttpClient
+    ): WebTopChartsHelper {
+        return WebTopChartsHelper()
+            .using(httpClient)
+            .with(spoofProvider.locale)
     }
 }
