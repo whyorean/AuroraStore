@@ -416,4 +416,5 @@
     <string name="made_with_love">Зроблено з <xliff:g id="heart_emoji">%1$s</xliff:g> в Індії</string>
     <string name="default_spoof">Типово</string>
     <string name="available_spoof">Доступно</string>
+    <string name="toast_permission_esm_restart">Можливо, вам доведеться перезапустити застосунок, щоб показати наданий дозвіл.</string>
 </resources>
