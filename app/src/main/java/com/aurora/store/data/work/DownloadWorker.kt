@@ -275,31 +275,36 @@ class DownloadWorker @AssistedInject constructor(
             }
 
             try {
-                val isNewFile = request.file.createNewFile()
+                // Download as a temporary file to avoid installing corrupted files
+                val tmpFileSuffix = ".tmp"
+                val tmpFile = File(request.file.absolutePath + tmpFileSuffix)
+                val isNewFile = tmpFile.createNewFile()
 
                 val okHttpClient = httpClient as HttpClient
                 val headers = mutableMapOf<String, String>()
 
                 if (!isNewFile) {
-                    Log.i(TAG, "${request.file} has an unfinished download, resuming!")
-                    downloadedBytes += request.file.length()
-                    headers["Range"] = "bytes=${request.file.length()}-"
+                    Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
+                    downloadedBytes += tmpFile.length()
+                    headers["Range"] = "bytes=${tmpFile.length()}-"
                 }
 
                 okHttpClient.call(request.url, headers).body?.byteStream()?.use { input ->
-                    FileOutputStream(request.file, !isNewFile).use {
+                    FileOutputStream(tmpFile, !isNewFile).use {
                         input.copyTo(it, request.size).collect { p -> onProgress(p) }
                     }
                 }
 
                 // Ensure downloaded file matches expected sha
-                if (validSha(request.file, expectedSha, algorithm)) {
-                    return@withContext Result.success()
-                } else {
-                    Log.e(TAG, "Incorrect hash for ${request.file}")
-                    throw Exception("Incorrect hash")
+                if (!validSha(tmpFile, expectedSha, algorithm)) {
+                    throw Exception("Incorrect hash for $tmpFile")
                 }
 
+                if (!tmpFile.renameTo(request.file)) {
+                    throw Exception("Failed to remove .tmp extension from $tmpFile")
+                }
+
+                return@withContext Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to download ${request.file}!", exception)
                 notifyStatus(DownloadStatus.FAILED)
