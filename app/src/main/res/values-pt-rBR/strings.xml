@@ -416,4 +416,5 @@
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="default_spoof">Padrão</string>
     <string name="available_spoof">Disponível</string>
+    <string name="toast_permission_esm_restart">Você pode ter que reiniciar o app para refletir o concedimento da permissão.</string>
 </resources>
