@@ -76,6 +76,7 @@ class LocaleSpoofFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
                         if (checked) {
                             viewModel.onLocaleSelected(viewModel.defaultLocale)
                             requestModelBuild()
+                            AccountProvider.logout(requireContext())
                             findNavController().navigate(R.id.forceRestartDialog)
                         }
                     }
