@@ -50,7 +50,7 @@
     <style name="Chip.Filter" parent="@style/Widget.Material3.Chip.Filter" />
 
     <style name="Chip.TopChart" parent="@style/Widget.Material3.Chip.Filter">
-        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line1</item>
         <item name="chipStrokeColor">?colorControlHighlight</item>
     </style>
 
