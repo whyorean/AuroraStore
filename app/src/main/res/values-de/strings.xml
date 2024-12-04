@@ -303,7 +303,7 @@
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
     <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
-    <string name="pref_aurora_only_desc">Nur nach Updates für Apps suchen, die vom Aurora Store installiert wurden</string>
+    <string name="pref_aurora_only_desc">Nur nach Updates für Apps suchen, die von Aurora Store installiert wurden</string>
     <string name="pref_updates_check_frequency">Häufigkeit der automatischen Updates</string>
     <string name="pref_network_proxy_enable">Proxy aktivieren</string>
     <string name="pref_network_proxy_url">URL des Proxyservers</string>
@@ -416,4 +416,5 @@
     <string name="made_with_love">Hergestellt mit <xliff:g id="heart_emoji">%1$s</xliff:g> in Indien</string>
     <string name="default_spoof">Standard</string>
     <string name="available_spoof">Verfügbar</string>
+    <string name="toast_permission_esm_restart">Möglicherweise musst die App neu starten, damit die Berechtigung übernommen wird.</string>
 </resources>
