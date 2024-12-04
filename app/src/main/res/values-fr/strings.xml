@@ -393,7 +393,7 @@
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements récents des paramètres</string>
     <string name="export_app_summary_success">Exportation du paquet d’application réussie</string>
-    <string name="export_app_summary_fail">Échec de l’exportation du paquet d’application</string>
+    <string name="export_app_summary_fail">Échec de l’export du paquet d’application</string>
     <string name="export_app_title">Exportateur de fichier</string>
     <string name="export_app_summary">Exportation en cours, veuillez patienter</string>
     <string name="notification_channel_install">Notification d’installation</string>
