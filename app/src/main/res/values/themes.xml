@@ -20,7 +20,7 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.Material3.DynamicColors.Light.NoActionBar">
-        <item name="chipStyle">@style/AppTheme.FilterChip</item>
+        <item name="chipStyle">@style/Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
         <item name="bottomSheetStyle">@style/AppTheme.BottomSheetStyle</item>
         <item name="android:statusBarColor">@color/colorTransparent</item>
@@ -47,5 +47,12 @@
         <item name="widgetLayout">@layout/preference_material_switch</item>
     </style>
 
-    <style name="AppTheme.FilterChip" parent="@style/Widget.Material3.Chip.Filter" />
+    <style name="Chip.Filter" parent="@style/Widget.Material3.Chip.Filter" />
+
+    <style name="Chip.Tag" parent="@style/Widget.Material3.Chip.Assist.Elevated">
+        <item name="chipBackgroundColor">?colorControlHighlight</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="android:clickable">false</item>
+    </style>
 </resources>

@@ -87,21 +87,21 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/filter_gfs"
-                        style="@style/AppTheme.FilterChip"
+                        style="@style/Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/action_filter_gsf_dependent_apps" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/filter_paid"
-                        style="@style/AppTheme.FilterChip"
+                        style="@style/Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/action_filter_paid_apps" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/filter_ads"
-                        style="@style/AppTheme.FilterChip"
+                        style="@style/Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/action_filter_apps_with_ads" />

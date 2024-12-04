@@ -33,72 +33,45 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <HorizontalScrollView
+        <com.google.android.material.chip.ChipGroup
             android:id="@+id/layout_extras"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:paddingStart="@dimen/padding_medium"
+            android:paddingEnd="@dimen/padding_medium"
+            app:selectionRequired="false"
+            app:singleLine="true">
 
-            <LinearLayout
+            <com.google.android.material.chip.Chip
+                android:id="@+id/txt_rating"
+                style="@style/Chip.Tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:divider="@drawable/divider_line"
-                android:dividerPadding="@dimen/padding_xsmall"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_small"
-                android:showDividers="middle">
+                app:chipIcon="@drawable/ic_star"
+                tools:text="3.5" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:drawablePadding="@dimen/padding_small"
-                    android:gravity="center_vertical"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                    app:drawableStartCompat="@drawable/ic_star"
-                    app:drawableTint="?colorAccent"
-                    tools:text="3.5" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/txt_installs"
+                style="@style/Chip.Tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipIcon="@drawable/ic_download_manager"
+                tools:text="2500" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_installs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:drawablePadding="@dimen/padding_small"
-                    android:gravity="center_vertical"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                    app:drawableStartCompat="@drawable/ic_download_manager"
-                    app:drawableTint="?colorAccent"
-                    tools:text="2500" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/txt_size"
+                style="@style/Chip.Tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="25 MB" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_size"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:drawablePadding="@dimen/padding_small"
-                    android:gravity="center_vertical"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                    app:drawableTint="?colorAccent"
-                    tools:text="25 MB" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_updated"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:drawablePadding="@dimen/padding_small"
-                    android:gravity="center_vertical"
-                    android:textAppearance="@style/TextAppearance.Aurora.Line1"
-                    app:drawableTint="?colorAccent"
-                    tools:text="Jan 21 2020" />
-            </LinearLayout>
-        </HorizontalScrollView>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/txt_updated"
+                style="@style/Chip.Tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Jan 21 2020" />
+        </com.google.android.material.chip.ChipGroup>
 
         <LinearLayout
             android:id="@+id/layout_description"
