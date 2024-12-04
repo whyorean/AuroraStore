@@ -416,4 +416,5 @@
     <string name="made_with_love">Ar <xliff:g id="heart_emoji">%1$s</xliff:g> radīta Indijā</string>
     <string name="default_spoof">Noklusējums</string>
     <string name="available_spoof">Pieejams</string>
+    <string name="toast_permission_esm_restart">Var būt nepieciešams pārsāknēt lietotni, lai atspoguļotu nodrošināto atļauju.</string>
 </resources>
