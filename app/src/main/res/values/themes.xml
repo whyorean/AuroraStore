@@ -49,10 +49,15 @@
 
     <style name="Chip.Filter" parent="@style/Widget.Material3.Chip.Filter" />
 
-    <style name="Chip.Tag" parent="@style/Widget.Material3.Chip.Assist.Elevated">
-        <item name="chipBackgroundColor">?colorControlHighlight</item>
+    <style name="Chip.TopChart" parent="@style/Widget.Material3.Chip.Filter">
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
-        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipStrokeColor">?colorControlHighlight</item>
+    </style>
+
+    <style name="Chip.Tag" parent="@style/Widget.Material3.Chip.Assist.Elevated">
         <item name="android:clickable">false</item>
+        <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
+        <item name="chipBackgroundColor">?colorControlHighlight</item>
+        <item name="chipStrokeWidth">0dp</item>
     </style>
 </resources>
