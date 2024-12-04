@@ -586,6 +586,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun transformIcon(ongoing: Boolean = false) {
+        if (::iconDrawable.isInitialized.not()) return
+
         val scaleFactor = if (ongoing) 0.75f else 1f
         val isDownloadVisible = binding.layoutDetailsApp.progressDownload.isShown
 
@@ -615,7 +617,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
         }
 
-        iconDrawable?.let {
+        iconDrawable.let {
             binding.layoutDetailsApp.imgIcon.load(it) {
                 transformations(
                     if (scaleFactor == 1f)
