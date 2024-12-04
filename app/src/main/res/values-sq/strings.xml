@@ -412,4 +412,5 @@
     <string name="add_dispenser_summary">Shtoni te Aurora Store një distributor token-ësh. Distributorët e token-ëve i furnizojnë Aurora Store-it kredenciale llogarie për hyrje anonime.</string>
     <string name="remove_dispenser_title">Hiqe distributorin</string>
     <string name="default_spoof">Parazgjedhje</string>
+    <string name="toast_permission_esm_restart">Mund t’ju duhet të rinisni aplikacionin, që të pasqyrohet akordimi i lejeve.</string>
 </resources>
