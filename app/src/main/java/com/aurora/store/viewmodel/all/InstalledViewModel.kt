@@ -24,6 +24,7 @@ import android.content.pm.PackageInfo
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -40,7 +41,7 @@ class InstalledViewModel @Inject constructor(
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
-    private val _packages = MutableStateFlow<List<PackageInfo>?>(null)
+    private val _packages = MutableStateFlow<List<MinimalApp>?>(null)
     val packages = _packages.asStateFlow()
 
     init {
@@ -51,6 +52,7 @@ class InstalledViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _packages.value = PackageUtil.getAllValidPackages(context)
+                    .map { MinimalApp.fromPackageInfo(context, it) }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps", exception)
             }
