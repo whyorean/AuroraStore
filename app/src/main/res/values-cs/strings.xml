@@ -416,4 +416,5 @@
     <string name="made_with_love">Vytvořeno s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
     <string name="default_spoof">Výchozí</string>
     <string name="available_spoof">Dostupné</string>
+    <string name="toast_permission_esm_restart">Možná bude nutné restartovat aplikaci, aby se promítlo udělení oprávnění.</string>
 </resources>

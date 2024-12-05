@@ -416,4 +416,5 @@
     <string name="made_with_love">Dibuat dengan <xliff:g id="heart_emoji">%1$s</xliff:g> di India</string>
     <string name="default_spoof">Bawaan</string>
     <string name="available_spoof">Tersedia</string>
+    <string name="toast_permission_esm_restart">Anda mungkin harus memulai ulang aplikasi untuk menyesuaikan dengan pemberian izin.</string>
 </resources>

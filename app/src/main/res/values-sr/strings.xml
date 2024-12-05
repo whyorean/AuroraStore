@@ -450,4 +450,5 @@
     <string name="made_with_love">Направљено од <xliff:g id="heart_emoji">%1$s</xliff:g> у Индији</string>
     <string name="default_spoof">Подразумевана</string>
     <string name="available_spoof">Доступна</string>
+    <string name="toast_permission_esm_restart">Можда ћете морати да рестартујете апликацију да бисте приказали дату дозволу.</string>
 </resources>
