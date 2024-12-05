@@ -20,14 +20,23 @@
 package com.aurora.store.view.ui.commons
 
 import android.content.pm.PackageInfo
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.ContextThemeWrapper
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.extensions.toast
 import com.aurora.store.AuroraApp
+import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
@@ -35,11 +44,22 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
 
     private val viewModel: BlacklistViewModel by viewModels()
+
+    private val mimeType = "application/json"
+    private val startForDocumentImport =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+            if (it != null) importBlacklist(it) else toast(R.string.toast_black_import_failed)
+        }
+    private val startForDocumentExport =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(mimeType)) {
+            if (it != null) exportBlacklist(it) else toast(R.string.toast_black_export_failed)
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,7 +73,15 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         // Toolbar
         binding.layoutToolbarNative.apply {
             imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.visibility = View.GONE
+            imgActionSecondary.apply {
+                visibility = View.VISIBLE
+                setImageDrawable(
+                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_menu)
+                )
+                setOnClickListener {
+                    showMenu(it)
+                }
+            }
 
             imgActionPrimary.setOnClickListener {
                 viewModel.blacklistProvider.blacklist = viewModel.selected
@@ -79,7 +107,8 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     start: Int,
                     count: Int,
                     after: Int
-                ) {}
+                ) {
+                }
             })
         }
     }
@@ -87,6 +116,37 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
     override fun onPause() {
         super.onPause()
         viewModel.blacklistProvider.blacklist = viewModel.selected
+    }
+
+    private fun showMenu(anchor: View) {
+        val popupMenu = PopupMenu(
+            ContextThemeWrapper(
+                requireContext(),
+                R.style.AppTheme_PopupMenu
+            ), anchor
+        )
+
+        val inflater: MenuInflater = popupMenu.menuInflater
+        inflater.inflate(R.menu.menu_import_export, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.action_import -> {
+                    startForDocumentImport.launch(arrayOf(mimeType))
+                    true
+                }
+
+                R.id.action_export -> {
+                    startForDocumentExport.launch(
+                        "aurora_store_blacklist_${Calendar.getInstance().time.time}.json"
+                    )
+                    true
+                }
+
+                else -> false
+            }
+        }
+        popupMenu.show()
     }
 
     private fun updateController(packages: List<PackageInfo>?) {
@@ -124,5 +184,16 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     }
             }
         }
+    }
+
+    private fun importBlacklist(uri: Uri) {
+        viewModel.importBlacklist(requireContext(), uri)
+        binding.recycler.requestModelBuild()
+        toast(R.string.toast_black_import_success)
+    }
+
+    private fun exportBlacklist(uri: Uri) {
+        viewModel.exportBlacklist(requireContext(), uri)
+        toast(R.string.toast_black_export_success)
     }
 }

@@ -437,6 +437,12 @@
     <string name="toast_fav_import_success">Favourites imported!</string>
     <string name="toast_fav_export_success">Favourites exported!</string>
 
+    <!-- BlacklistFragment-->
+    <string name="toast_black_import_failed">Failed to import blacklist!</string>
+    <string name="toast_black_export_failed">Failed to export blacklist!</string>
+    <string name="toast_black_import_success">Blacklist imported!</string>
+    <string name="toast_black_export_success">Blacklist exported!</string>
+
     <!-- ExportWorker -->
     <string name="export_app_title">File Exporter</string>
     <string name="export_app_summary">Hold on, exporting your file</string>
