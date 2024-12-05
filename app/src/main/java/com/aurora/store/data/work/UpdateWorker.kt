@@ -29,6 +29,7 @@ import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
+import com.aurora.store.util.save
 import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -155,13 +156,25 @@ class UpdateWorker @AssistedInject constructor(
             val filteredPackages = if (isAuroraOnlyFilterEnabled) {
                 packages.filter { CertUtil.isAuroraStoreApp(appContext, it.packageName) }
             } else {
-                packages.filterNot { if (isFDroidFilterEnabled) CertUtil.isFDroidApp(appContext, it.packageName) else false }
+                packages.filterNot {
+                    if (isFDroidFilterEnabled)
+                        CertUtil.isFDroidApp(appContext, it.packageName)
+                    else
+                        false
+                }
             }
 
-            val updates = appDetailsHelper.getAppByPackageName(filteredPackages.map { it.packageName })
-                .filter { it.displayName.isNotEmpty() }
-                .filter { PackageUtil.isUpdatable(appContext, it.packageName, it.versionCode.toLong()) }
-                .toMutableList()
+            val updates =
+                appDetailsHelper.getAppByPackageName(filteredPackages.map { it.packageName })
+                    .filter { it.displayName.isNotEmpty() }
+                    .filter {
+                        PackageUtil.isUpdatable(
+                            appContext,
+                            it.packageName,
+                            it.versionCode.toLong()
+                        )
+                    }
+                    .toMutableList()
 
             if (canSelfUpdate) getSelfUpdate()?.let { updates.add(it) }
 
@@ -191,13 +204,30 @@ class UpdateWorker @AssistedInject constructor(
                     SelfUpdate::class.java
                 )
 
+                val lastSelfUpdate = gson.fromJson(
+                    Preferences.getString(
+                        appContext,
+                        Preferences.PREFERENCE_SELF_UPDATE,
+                        "{}"
+                    ),
+                    SelfUpdate::class.java
+                )
+
+                if (lastSelfUpdate.versionCode == 0) {
+                    Log.i(TAG, "No old self-updates entry found, saving current!")
+                    saveSelfUpdate(selfUpdate)
+                    return@withContext null
+                }
+
                 val isUpdate = when (BuildType.CURRENT) {
-                    BuildType.NIGHTLY,
+                    BuildType.NIGHTLY -> selfUpdate.timestamp > lastSelfUpdate.timestamp
                     BuildType.RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
                     else -> false
                 }
 
                 if (isUpdate) {
+                    saveSelfUpdate(selfUpdate)
+
                     if (CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID)) {
                         if (selfUpdate.fdroidBuild.isNotEmpty()) {
                             return@withContext SelfUpdate.toApp(selfUpdate, appContext)
@@ -208,6 +238,9 @@ class UpdateWorker @AssistedInject constructor(
                         Log.e(TAG, "Update file is missing!")
                         return@withContext null
                     }
+                } else {
+                    Log.i(TAG, "No self-updates found!")
+                    return@withContext null
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to check self-updates", exception)
@@ -217,6 +250,13 @@ class UpdateWorker @AssistedInject constructor(
             Log.i(TAG, "No self-updates found!")
             return@withContext null
         }
+    }
+
+    private fun saveSelfUpdate(selfUpdate: SelfUpdate) {
+        appContext.save(
+            Preferences.PREFERENCE_SELF_UPDATE,
+            gson.toJson(selfUpdate)
+        )
     }
 
     private fun notifyUpdates(updates: List<Update>) {
