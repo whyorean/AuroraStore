@@ -65,6 +65,14 @@ class BlacklistViewModel @Inject constructor(
         }
     }
 
+    fun selectAll() {
+        selected.addAll(packages.value?.map { it.packageName } ?: emptyList())
+    }
+
+    fun removeAll() {
+        selected.clear()
+    }
+
     fun importBlacklist(context: Context, uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             try {

@@ -127,7 +127,7 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         )
 
         val inflater: MenuInflater = popupMenu.menuInflater
-        inflater.inflate(R.menu.menu_import_export, popupMenu.menu)
+        inflater.inflate(R.menu.menu_blacklist, popupMenu.menu)
 
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
@@ -140,6 +140,18 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     startForDocumentExport.launch(
                         "aurora_store_blacklist_${Calendar.getInstance().time.time}.json"
                     )
+                    true
+                }
+
+                R.id.action_select_all -> {
+                    viewModel.selectAll()
+                    binding.recycler.requestModelBuild()
+                    true
+                }
+
+                R.id.action_remove_all -> {
+                    viewModel.removeAll()
+                    binding.recycler.requestModelBuild()
                     true
                 }
 

@@ -85,10 +85,12 @@
     <string name="action_pause">"Pause"</string>
     <string name="action_pending">"Pending"</string>
     <string name="action_post">"Post"</string>
+    <string name="action_remove_all">"Remove all"</string>
     <string name="action_request_analysis">Request new analysis</string>
     <string name="action_restart">"Restart"</string>
     <string name="action_resume">"Resume"</string>
     <string name="action_search">"Search"</string>
+    <string name="action_select_all">"Select all"</string>
     <string name="action_share">"Share"</string>
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_uninstall_success">"Successfully uninstalled"</string>
