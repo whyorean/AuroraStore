@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.all
 
-import android.content.pm.PackageInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -32,7 +31,7 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
-import com.aurora.store.view.epoxy.views.PackageInfoViewModel_
+import com.aurora.store.view.epoxy.views.InstalledAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.InstalledViewModel
@@ -79,8 +78,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                         updateController(viewModel.packages.value)
                     } else {
                         val filteredPackages = viewModel.packages.value?.filter {
-                            it.applicationInfo!!.loadLabel(requireContext().packageManager)
-                                .contains(s, true) || it.packageName.contains(s, true)
+                            it.displayName.contains(s, true) || it.packageName.contains(s, true)
                         }
                         updateController(filteredPackages)
                     }
@@ -98,7 +96,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
     }
 
-    private fun updateController(packages: List<PackageInfo>?) {
+    private fun updateController(packages: List<MinimalApp>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (packages == null) {
@@ -116,12 +114,17 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                 )
                 packages.forEach { app ->
                     add(
-                        PackageInfoViewModel_()
+                        InstalledAppViewModel_()
                             .id(app.packageName.hashCode())
                             .packageInfo(app)
-                            .click { _ -> openDetailsFragment(app.packageName) }
+                            .click { _ ->
+                                openDetailsFragment(
+                                    app.packageName,
+                                    MinimalApp.toApp(app)
+                                )
+                            }
                             .longClick { _ ->
-                                openAppMenuSheet(MinimalApp.fromPackageInfo(requireContext(), app))
+                                openAppMenuSheet(app)
                                 false
                             }
                     )

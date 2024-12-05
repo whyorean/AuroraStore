@@ -20,9 +20,7 @@
 package com.aurora.store.view.epoxy.views
 
 import android.content.Context
-import android.content.pm.PackageInfo
 import android.util.AttributeSet
-import androidx.core.content.pm.PackageInfoCompat
 import coil3.load
 import coil3.request.placeholder
 import coil3.request.transformations
@@ -31,30 +29,29 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.aurora.store.R
+import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.ViewPackageBinding
-import com.aurora.store.util.PackageUtil
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseModel::class
 )
-class PackageInfoView @JvmOverloads constructor(
+class InstalledAppView @JvmOverloads constructor(
     context: Context?,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : BaseView<ViewPackageBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp(options = [ModelProp.Option.IgnoreRequireHashCode])
-    fun packageInfo(packageInfo: PackageInfo) {
-        val appInfo = packageInfo.applicationInfo!!
-        binding.imgIcon.load(PackageUtil.getIconForPackage(context, appInfo.packageName)) {
+    fun packageInfo(app: MinimalApp) {
+        binding.imgIcon.load(app.icon) {
             placeholder(R.drawable.bg_placeholder)
             transformations(RoundedCornersTransformation(25F))
         }
 
-        binding.txtLine1.text = appInfo.loadLabel(context.packageManager)
-        binding.txtLine2.text = appInfo.packageName
-        binding.txtLine3.text = ("${packageInfo.versionName}.${PackageInfoCompat.getLongVersionCode(packageInfo)}")
+        binding.txtLine1.text = app.displayName
+        binding.txtLine2.text = app.packageName
+        binding.txtLine3.text = ("${app.versionName} (${app.versionCode})")
     }
 
     @CallbackProp
