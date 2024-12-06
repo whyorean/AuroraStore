@@ -22,15 +22,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/layout_action_toolbar"
-        layout="@layout/view_toolbar_native" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/menu_import_export"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/title_spoof_manager" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_action_toolbar"
+        android:layout_below="@id/toolbar"
         android:background="@android:color/transparent"
         app:tabGravity="fill"
         app:tabIndicator="@drawable/tab_indicator"

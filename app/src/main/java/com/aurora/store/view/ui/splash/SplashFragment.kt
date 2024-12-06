@@ -57,9 +57,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarAction.toolbar.apply {
-            elevation = 0f
-            inflateMenu(R.menu.menu_splash)
+        binding.toolbar.apply {
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_blacklist_manager -> {
@@ -158,10 +156,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     private fun updateActionLayout(isVisible: Boolean) {
         if (isVisible) {
             binding.layoutAction.show()
-            binding.layoutToolbarAction.toolbar.visibility = View.VISIBLE
+            binding.toolbar.visibility = View.VISIBLE
         } else {
             binding.layoutAction.hide()
-            binding.layoutToolbarAction.toolbar.visibility = View.GONE
+            binding.toolbar.visibility = View.GONE
         }
     }
 
