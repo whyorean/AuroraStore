@@ -131,7 +131,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 if (app.packageName == event.packageName) {
                     checkAndSetupInstall()
                     transformIcon(false)
-                    binding.layoutDetailsToolbar.toolbar.menu.apply {
+                    binding.toolbar.menu.apply {
                         findItem(R.id.action_home_screen)?.isVisible =
                             ShortcutManagerUtil.canPinShortcut(requireContext(), app.packageName)
                         findItem(R.id.action_uninstall)?.isVisible = true
@@ -144,7 +144,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 if (app.packageName == event.packageName) {
                     checkAndSetupInstall()
                     transformIcon(false)
-                    binding.layoutDetailsToolbar.toolbar.menu.apply {
+                    binding.toolbar.menu.apply {
                         findItem(R.id.action_home_screen)?.isVisible = false
                         findItem(R.id.action_uninstall)?.isVisible = false
                         findItem(R.id.menu_app_settings)?.isVisible = false
@@ -360,12 +360,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favourite.collect {
                 if (it) {
-                    binding.layoutDetailsToolbar.toolbar.menu
-                        ?.findItem(R.id.action_favourite)
+                    binding.toolbar.menu?.findItem(R.id.action_favourite)
                         ?.setIcon(R.drawable.ic_favorite_checked)
                 } else {
-                    binding.layoutDetailsToolbar.toolbar.menu
-                        ?.findItem(R.id.action_favourite)
+                    binding.toolbar.menu?.findItem(R.id.action_favourite)
                         ?.setIcon(R.drawable.ic_favorite_unchecked)
                 }
             }
@@ -392,7 +390,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun updateToolbar(app: App) {
-        binding.layoutDetailsToolbar.toolbar.apply {
+        binding.toolbar.apply {
             elevation = 0f
             navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back)
 

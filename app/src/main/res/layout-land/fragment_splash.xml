@@ -28,9 +28,13 @@
     android:weightSum="2"
     tools:context=".view.ui.splash.SplashFragment">
 
-    <include
-        android:id="@+id/layout_toolbar_action"
-        layout="@layout/view_toolbar_native" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/menu_splash" />
 
     <LinearLayout
         android:layout_width="match_parent"

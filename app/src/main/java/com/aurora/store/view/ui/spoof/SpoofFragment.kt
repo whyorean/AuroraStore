@@ -25,7 +25,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -34,7 +33,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
-import com.aurora.store.databinding.FragmentGenericWithPagerBinding
+import com.aurora.store.databinding.FragmentSpoofBinding
 import com.aurora.store.util.PathUtil
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.google.android.material.tabs.TabLayout
@@ -42,7 +41,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SpoofFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
+class SpoofFragment : BaseFragment<FragmentSpoofBinding>() {
     private val TAG = SpoofFragment::class.java.simpleName
 
     // Android is weird, even if export device config with proper mime type, it will refuse to open
@@ -63,11 +62,7 @@ class SpoofFragment : BaseFragment<FragmentGenericWithPagerBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutActionToolbar.toolbar.apply {
-            elevation = 0f
-            title = getString(R.string.title_spoof_manager)
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
-            inflateMenu(R.menu.menu_import_export)
+        binding.toolbar.apply {
             setNavigationOnClickListener { findNavController().navigateUp() }
             setOnMenuItemClickListener {
                 when (it.itemId) {

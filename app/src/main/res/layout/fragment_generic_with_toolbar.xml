@@ -23,15 +23,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/layout_toolbar_native"
-        layout="@layout/view_toolbar_native" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout_toolbar_native"
+        android:layout_below="@+id/toolbar"
         android:clipToPadding="true"
         android:paddingBottom="@dimen/height_bottom_adj"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
