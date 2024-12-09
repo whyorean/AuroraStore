@@ -11,6 +11,7 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.ExodusReport
@@ -22,8 +23,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.reflect.Modifier
@@ -69,7 +73,10 @@ class AppDetailsViewModel @Inject constructor(
     private val _favourite = MutableStateFlow<Boolean>(false)
     val favourite = _favourite.asStateFlow()
 
-    val downloadsList get() = downloadHelper.downloadsList
+    val download = combine(app, downloadHelper.downloadsList) { a, list ->
+        if (a.packageName.isBlank()) return@combine null
+        list.find { d -> d.packageName == a.packageName }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {

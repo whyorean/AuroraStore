@@ -109,19 +109,17 @@
         android:layout_below="@id/txt_line4"
         android:divider="@drawable/divider"
         android:orientation="horizontal"
-        android:showDividers="middle">
+        android:showDividers="middle"
+        android:weightSum="2">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_secondary_action"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_weight="1"
-            android:backgroundTint="?colorError"
-            android:textColor="?colorOnError"
-            android:visibility="gone"
-            tools:text="@string/action_cancel"
-            tools:visibility="visible" />
+            tools:text="@string/title_manual_download" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_primary_action"
