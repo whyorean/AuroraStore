@@ -25,9 +25,13 @@
     android:orientation="vertical"
     tools:context=".view.ui.details.DetailsReviewFragment">
 
-    <include
-        android:id="@+id/layout_toolbar_action_review"
-        layout="@layout/view_toolbar_action" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
     <HorizontalScrollView
         android:id="@+id/sort_view"

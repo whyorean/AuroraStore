@@ -27,9 +27,14 @@
     android:orientation="vertical"
     tools:context=".view.ui.account.AccountFragment">
 
-    <include
-        android:id="@+id/layout_toolbar_action"
-        layout="@layout/view_toolbar_action" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/title_account_manager" />
 
     <HorizontalScrollView
         android:id="@+id/chip_layout"

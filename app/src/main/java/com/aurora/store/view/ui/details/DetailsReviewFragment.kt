@@ -58,11 +58,9 @@ class DetailsReviewFragment : BaseFragment<FragmentDetailsReviewBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarActionReview.apply {
-            txtTitle.text = args.displayName
-            toolbar.setOnClickListener {
-                findNavController().navigateUp()
-            }
+        binding.toolbar.apply {
+            title = args.displayName
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         viewModel.liveData.observe(viewLifecycleOwner) {

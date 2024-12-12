@@ -60,9 +60,7 @@ class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarActionMore.toolbar.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.toolbar.setOnClickListener { findNavController().navigateUp() }
 
         inflateDescription(args.app)
         inflateFiles(args.app)
@@ -95,7 +93,7 @@ class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {
     }
 
     private fun inflateDescription(app: App) {
-        binding.layoutToolbarActionMore.txtTitle.text = app.displayName
+        binding.toolbar.title = app.displayName
         binding.txtDescription.text = HtmlCompat.fromHtml(
             app.description,
             HtmlCompat.FROM_HTML_MODE_COMPACT

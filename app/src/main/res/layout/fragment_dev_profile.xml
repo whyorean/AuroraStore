@@ -27,10 +27,13 @@
     android:showDividers="middle"
     tools:context=".view.ui.details.DevProfileFragment">
 
-    <include
-        android:id="@+id/layout_toolbar_action"
-        layout="@layout/view_toolbar_action" />
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
     <ViewFlipper
         android:id="@+id/view_flipper"
