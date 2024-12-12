@@ -50,7 +50,6 @@ import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
-import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,8 +57,6 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     OnSharedPreferenceChangeListener {
 
     private val viewModel: SearchResultViewModel by viewModels()
-
-    private lateinit var searchView: TextInputEditText
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -84,20 +81,20 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
         // Toolbar
-        binding.layoutViewToolbar.apply {
-            searchView = inputSearch
-            imgActionPrimary.setOnClickListener {
+        binding.toolbar.apply {
+            setNavigationOnClickListener {
+                binding.searchBar.hideKeyboard()
                 findNavController().navigateUp()
             }
-            imgActionSecondary.setOnClickListener {
-                findNavController().navigate(R.id.downloadFragment)
-            }
-            clearButton.apply {
-                visibility = if (query.isNullOrBlank()) View.GONE else View.VISIBLE
-                setOnClickListener {
-                    searchView.text?.clear()
-                    searchView.showKeyboard()
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_clear -> {
+                        binding.searchBar.text?.clear()
+                        binding.searchBar.showKeyboard()
+                    }
+                    R.id.action_download -> findNavController().navigate(R.id.downloadFragment)
                 }
+                true
             }
         }
 
@@ -186,29 +183,28 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
                 }
             }
         } else {
-            binding.recycler
-                .withModels {
-                    setFilterDuplicates(true)
+            binding.recycler.withModels {
+                setFilterDuplicates(true)
 
-                    filteredAppList.forEach { app ->
-                        add(
-                            AppListViewModel_()
-                                .id(app.id)
-                                .app(app)
-                                .click(View.OnClickListener {
-                                    searchView.hideKeyboard()
-                                    openDetailsFragment(app.packageName, app)
-                                })
-                        )
-                    }
-
-                    if (searchBundle.subBundles.isNotEmpty()) {
-                        add(
-                            AppProgressViewModel_()
-                                .id("progress")
-                        )
-                    }
+                filteredAppList.forEach { app ->
+                    add(
+                        AppListViewModel_()
+                            .id(app.id)
+                            .app(app)
+                            .click(View.OnClickListener {
+                                binding.searchBar.hideKeyboard()
+                                openDetailsFragment(app.packageName, app)
+                            })
+                    )
                 }
+
+                if (searchBundle.subBundles.isNotEmpty()) {
+                    add(
+                        AppProgressViewModel_()
+                            .id("progress")
+                    )
+                }
+            }
 
             binding.recycler.adapter?.let {
                 if (it.itemCount < 10) {
@@ -219,28 +215,22 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     }
 
     private fun attachSearch() {
-        searchView.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-
-            }
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.isNotEmpty()) {
-                    binding.layoutViewToolbar.clearButton.visibility = View.VISIBLE
-                } else {
-                    binding.layoutViewToolbar.clearButton.visibility = View.GONE
-                }
+                binding.toolbar.menu.findItem(R.id.action_clear)?.isVisible = s.isNotBlank()
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
 
-        searchView.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
+        binding.searchBar.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH
                 || actionId == KeyEvent.ACTION_DOWN
                 || actionId == KeyEvent.KEYCODE_ENTER
             ) {
-                query = searchView.text.toString()
+                query = binding.searchBar.text.toString()
                 query?.let {
                     requireArguments().putString("query", it)
                     queryViewModel(it)
@@ -252,8 +242,8 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     }
 
     private fun updateQuery(query: String) {
-        searchView.text = Editable.Factory.getInstance().newEditable(query)
-        searchView.setSelection(query.length)
+        binding.searchBar.text = Editable.Factory.getInstance().newEditable(query)
+        binding.searchBar.setSelection(query.length)
         queryViewModel(query)
     }
 
@@ -276,7 +266,6 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
             }
             .toList()
     }
-
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if (key == PREFERENCE_FILTER) query?.let { queryViewModel(it) }

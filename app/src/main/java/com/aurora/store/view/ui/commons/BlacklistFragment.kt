@@ -24,13 +24,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.ContextThemeWrapper
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import android.widget.PopupMenu
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -71,94 +66,67 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarNative.apply {
-            imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.apply {
-                visibility = View.VISIBLE
-                setImageDrawable(
-                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_menu)
-                )
-                setOnClickListener {
-                    showMenu(it)
-                }
-            }
-
-            imgActionPrimary.setOnClickListener {
+        binding.toolbar.apply {
+            inflateMenu(R.menu.menu_blacklist)
+            setNavigationOnClickListener {
                 viewModel.blacklistProvider.blacklist = viewModel.selected
                 findNavController().navigateUp()
             }
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_import -> {
+                        startForDocumentImport.launch(arrayOf(Constants.JSON_MIME_TYPE))
+                    }
 
-            inputSearch.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s.isNullOrEmpty()) {
-                        updateController(viewModel.packages.value)
-                    } else {
-                        val filteredPackages = viewModel.packages.value?.filter {
-                            it.applicationInfo!!.loadLabel(requireContext().packageManager)
-                                .contains(s, true) || it.packageName.contains(s, true)
-                        }
-                        updateController(filteredPackages)
+                    R.id.action_export -> {
+                        startForDocumentExport.launch(
+                            "aurora_store_apps_${Calendar.getInstance().time.time}.json"
+                        )
+                    }
+
+                    R.id.action_select_all -> {
+                        viewModel.selectAll()
+                        binding.recycler.requestModelBuild()
+                        true
+                    }
+
+                    R.id.action_remove_all -> {
+                        viewModel.removeAll()
+                        binding.recycler.requestModelBuild()
+                        true
                     }
                 }
-
-                override fun afterTextChanged(s: Editable?) {}
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-            })
+                true
+            }
         }
+
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    updateController(viewModel.packages.value)
+                } else {
+                    val filteredPackages = viewModel.packages.value?.filter {
+                        it.applicationInfo!!.loadLabel(requireContext().packageManager)
+                            .contains(s, true) || it.packageName.contains(s, true)
+                    }
+                    updateController(filteredPackages)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+        })
     }
 
     override fun onPause() {
         super.onPause()
         viewModel.blacklistProvider.blacklist = viewModel.selected
-    }
-
-    private fun showMenu(anchor: View) {
-        val popupMenu = PopupMenu(
-            ContextThemeWrapper(
-                requireContext(),
-                R.style.AppTheme_PopupMenu
-            ), anchor
-        )
-
-        val inflater: MenuInflater = popupMenu.menuInflater
-        inflater.inflate(R.menu.menu_blacklist, popupMenu.menu)
-
-        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
-            when (menuItem.itemId) {
-                R.id.action_import -> {
-                    startForDocumentImport.launch(arrayOf(Constants.JSON_MIME_TYPE))
-                    true
-                }
-
-                R.id.action_export -> {
-                    startForDocumentExport.launch(
-                        "aurora_store_blacklist_${Calendar.getInstance().time.time}.json"
-                    )
-                    true
-                }
-
-                R.id.action_select_all -> {
-                    viewModel.selectAll()
-                    binding.recycler.requestModelBuild()
-                    true
-                }
-
-                R.id.action_remove_all -> {
-                    viewModel.removeAll()
-                    binding.recycler.requestModelBuild()
-                    true
-                }
-
-                else -> false
-            }
-        }
-        popupMenu.show()
     }
 
     private fun updateController(packages: List<PackageInfo>?) {

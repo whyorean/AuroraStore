@@ -24,7 +24,6 @@
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
         <item name="bottomSheetStyle">@style/AppTheme.BottomSheetStyle</item>
         <item name="android:statusBarColor">@color/colorTransparent</item>
-        <item name="popupMenuStyle">@style/AppTheme.PopupMenu</item>
     </style>
 
     <style name="AppTheme.Translucent" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
@@ -46,12 +45,6 @@
 
     <style name="AppTheme.SwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
         <item name="widgetLayout">@layout/preference_material_switch</item>
-    </style>
-
-    <style name="AppTheme.PopupMenu" parent="Widget.Material3.PopupMenu">
-        <item name="android:popupBackground">?attr/colorSurfaceContainer</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:elevation">4dp</item>
     </style>
 
     <style name="Chip.Filter" parent="@style/Widget.Material3.Chip.Filter" />

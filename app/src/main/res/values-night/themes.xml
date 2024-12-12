@@ -5,6 +5,5 @@
         <item name="chipStyle">@style/Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
         <item name="android:statusBarColor">@color/colorTransparent</item>
-        <item name="popupMenuStyle">@style/AppTheme.PopupMenu</item>
     </style>
 </resources>
