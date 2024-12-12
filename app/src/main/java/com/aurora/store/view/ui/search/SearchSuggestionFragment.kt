@@ -37,7 +37,6 @@ import com.aurora.store.databinding.FragmentSearchSuggestionBinding
 import com.aurora.store.view.epoxy.views.SearchSuggestionViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchSuggestionViewModel
-import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -47,26 +46,21 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
 
     private val viewModel: SearchSuggestionViewModel by viewModels()
 
-    private lateinit var searchView: TextInputEditText
-
-    private var query: String = String()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutToolbarSearch.apply {
-            searchView = inputSearch
-            imgActionPrimary.setOnClickListener {
-                searchView.hideKeyboard()
+        binding.toolbar.apply {
+            setNavigationOnClickListener {
+                binding.searchBar.hideKeyboard()
                 findNavController().navigateUp()
             }
-            imgActionSecondary.setOnClickListener {
-                findNavController().navigate(R.id.downloadFragment)
-            }
-            clearButton.apply {
-                visibility = if (query.isBlank()) View.GONE else View.VISIBLE
-                setOnClickListener { searchView.text?.clear() }
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_clear -> binding.searchBar.text?.clear()
+                    R.id.action_download -> findNavController().navigate(R.id.downloadFragment)
+                }
+                true
             }
         }
 
@@ -81,9 +75,7 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
 
     override fun onResume() {
         super.onResume()
-        if (::searchView.isInitialized) {
-            searchView.showKeyboard()
-        }
+        binding.searchBar.showKeyboard()
     }
 
     private fun updateController(searchSuggestions: List<SearchSuggestEntry>) {
@@ -98,7 +90,7 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
                             updateQuery(it.title)
                         }
                         .click { _ ->
-                            searchView.hideKeyboard()
+                            binding.searchBar.hideKeyboard()
                             search(it.title)
                         }
                 )
@@ -107,32 +99,30 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
     }
 
     private fun setupSearch() {
-        searchView.addTextChangedListener(object : TextWatcher {
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.isNotEmpty()) {
-                    query = s.toString()
+                    val query = s.toString()
                     if (query.isNotEmpty()) {
                         viewModel.observeStreamBundles(query)
                     }
-                    binding.layoutToolbarSearch.clearButton.visibility = View.VISIBLE
-                } else {
-                    binding.layoutToolbarSearch.clearButton.visibility = View.GONE
                 }
+                binding.toolbar.menu.findItem(R.id.action_clear)?.isVisible = s.isNotBlank()
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
 
-        searchView.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
+        binding.searchBar.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH
                 || actionId == KeyEvent.ACTION_DOWN
                 || actionId == KeyEvent.KEYCODE_ENTER
             ) {
-                query = searchView.text.toString()
+                val query = binding.searchBar.text.toString()
                 if (query.isNotEmpty()) {
-                    searchView.hideKeyboard()
+                    binding.searchBar.hideKeyboard()
                     search(query)
                     return@setOnEditorActionListener true
                 }
@@ -142,8 +132,8 @@ class SearchSuggestionFragment : BaseFragment<FragmentSearchSuggestionBinding>()
     }
 
     private fun updateQuery(query: String) {
-        searchView.text = Editable.Factory.getInstance().newEditable(query)
-        searchView.setSelection(query.length)
+        binding.searchBar.text = Editable.Factory.getInstance().newEditable(query)
+        binding.searchBar.setSelection(query.length)
     }
 
     private fun search(query: String) {

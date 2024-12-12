@@ -67,13 +67,10 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarNative.apply {
-            imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.visibility = View.GONE
+        binding.toolbar.apply {
+            setNavigationOnClickListener { findNavController().navigateUp() }
 
-            imgActionPrimary.setOnClickListener { findNavController().navigateUp() }
-
-            inputSearch.addTextChangedListener(object : TextWatcher {
+            binding.searchBar.addTextChangedListener(object : TextWatcher {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (s.isNullOrEmpty()) {
                         updateController(viewModel.packages.value)

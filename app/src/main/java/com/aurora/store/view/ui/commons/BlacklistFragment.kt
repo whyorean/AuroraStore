@@ -51,16 +51,13 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarNative.apply {
-            imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.visibility = View.GONE
-
-            imgActionPrimary.setOnClickListener {
+        binding.toolbar.apply {
+            setNavigationOnClickListener {
                 viewModel.blacklistProvider.blacklist = viewModel.selected
                 findNavController().navigateUp()
             }
 
-            inputSearch.addTextChangedListener(object : TextWatcher {
+            binding.searchBar.addTextChangedListener(object : TextWatcher {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (s.isNullOrEmpty()) {
                         updateController(viewModel.packages.value)
