@@ -47,10 +47,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_account_manager)
-        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         // Chips
         view.context.apply {

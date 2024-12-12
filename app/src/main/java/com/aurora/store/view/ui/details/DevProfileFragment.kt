@@ -50,10 +50,9 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
         val developerCarouselController = DeveloperCarouselController(this)
 
         // Toolbar
-        binding.layoutToolbarAction.apply {
-            txtTitle.text =
-                if (args.title.isNullOrBlank()) getString(R.string.details_dev_profile) else args.title
-            toolbar.setOnClickListener { findNavController().navigateUp() }
+        binding.toolbar.apply {
+            title = if (args.title.isNullOrBlank()) getString(R.string.details_dev_profile) else args.title
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         // RecyclerView
@@ -78,7 +77,7 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
 
                 is ViewState.Success<*> -> {
                     (it.data as DevStream).apply {
-                        binding.layoutToolbarAction.txtTitle.text = title
+                        binding.toolbar.title = title
                         binding.txtDevName.text = title
                         binding.txtDevDescription.text = description
                         binding.imgIcon.load(imgUrl)
