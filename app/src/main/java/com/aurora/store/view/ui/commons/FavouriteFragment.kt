@@ -45,11 +45,11 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
     private val mimeType = "application/json"
     private val startForDocumentImport =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) {
-            if (it != null) importDeviceConfig(it) else toast(R.string.toast_fav_import_failed)
+            if (it != null) importFavourites(it) else toast(R.string.toast_fav_import_failed)
         }
     private val startForDocumentExport =
         registerForActivityResult(ActivityResultContracts.CreateDocument(mimeType)) {
-            if (it != null) exportDeviceConfig(it) else toast(R.string.toast_fav_export_failed)
+            if (it != null) exportFavourites(it) else toast(R.string.toast_fav_export_failed)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -111,13 +111,13 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
         }
     }
 
-    private fun importDeviceConfig(uri: Uri) {
+    private fun importFavourites(uri: Uri) {
         viewModel.importFavourites(requireContext(), uri)
         binding.recycler.requestModelBuild()
         toast(R.string.toast_fav_import_success)
     }
 
-    private fun exportDeviceConfig(uri: Uri) {
+    private fun exportFavourites(uri: Uri) {
         viewModel.exportFavourites(requireContext(), uri)
         toast(R.string.toast_fav_export_success)
     }
