@@ -188,18 +188,18 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (args.app != null) {
-            app = args.app!!
-            inflatePartialApp()
-        } else {
-            app = App(args.packageName)
+        app = args.app ?: App(args.packageName)
+        app.apply {
+            // Check whether app is installed or not
+            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+            uninstallActionEnabled = isInstalled
         }
 
-        // Toolbar
-        attachToolbar()
+        // Show the basic app details, while the rest of the data is being fetched
+        updateAppHeader(app)
 
-        // Check whether app is installed or not
-        app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+        // Toolbar
+        attachToolbar(app)
 
         // App Details
         viewModel.fetchAppDetails(app.packageName)
@@ -208,11 +208,27 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             viewModel.app.collect {
                 if (it.packageName.isNotBlank()) {
                     app = it
-                    inflatePartialApp() // Re-inflate the app details, as web data may vary.
-                    inflateExtraDetails(app)
+
+                    // App User Review
+                    // We can not fetch it outside of this block, as we need the testing program status
+                    if (!authProvider.isAnonymous && app.isInstalled) {
+                        viewModel.fetchUserAppReview(app)
+                    }
+
+                    updateAppHeader(app) // Re-inflate the app details, as web data may vary.
+                    updateExtraDetails(app)
+
+                    // Fetch App Reviews
                     viewModel.fetchAppReviews(app.packageName)
+
+                    // Fetch Data Safety Report
+                    viewModel.fetchAppDataSafetyReport(app.packageName)
+
+                    // Fetch Exodus Privacy Report
+                    viewModel.fetchAppReport(app.packageName)
                 } else {
-                    toast("Failed to fetch app details")
+                    toast(getString(R.string.status_unavailable))
+                    // TODO: Redirect to App Unavailable Fragment
                 }
             }
         }
@@ -257,12 +273,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userReview.collect {
                 if (it.commentId.isNotEmpty()) {
-                    binding.layoutDetailsReview.userStars.rating = it.rating.toFloat()
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.toast_rated_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    runOnUiThread { updateUserReview(it) }
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -377,10 +388,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         super.onResume()
     }
 
-    private fun attachToolbar() {
+    private fun attachToolbar(app: App) {
         binding.layoutDetailsToolbar.toolbar.apply {
             elevation = 0f
             navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back)
+
             setNavigationOnClickListener {
                 if (isExternal) {
                     activity?.finish()
@@ -389,8 +401,22 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
+            // Inflate Menu
             inflateMenu(R.menu.menu_details)
 
+            // Adjust Menu Items
+            menu.let {
+                it.findItem(R.id.action_home_screen)?.isVisible =
+                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(
+                        requireContext(),
+                        app.packageName
+                    )
+                it.findItem(R.id.menu_download_manual)?.isVisible = !app.isInstalled
+                it.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
+                it.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
+            }
+
+            // Set Menu Item Clicks
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.action_home_screen -> {
@@ -436,26 +462,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         requireContext().browse("${Constants.SHARE_URL}${app.packageName}")
                     }
                 }
+
                 true
-            }
-
-            if (::app.isInitialized) {
-                app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
-                menu?.findItem(R.id.action_home_screen)?.isVisible =
-                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(
-                        requireContext(),
-                        app.packageName
-                    )
-
-                menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
-                menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
-                uninstallActionEnabled = app.isInstalled
             }
         }
     }
 
-    private fun attachHeader() {
+    private fun updateAppHeader(app: App) {
         binding.layoutDetailsApp.apply {
             imgIcon.load(app.iconArtwork.url) {
                 placeholder(R.drawable.bg_placeholder)
@@ -465,27 +478,20 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
+            packageName.text = app.packageName
             txtLine1.text = app.displayName
             txtLine2.text = app.developerName
+            txtLine3.text = ("${app.versionName} (${app.versionCode})")
+
             txtLine2.setOnClickListener {
                 findNavController().navigate(
                     AppDetailsFragmentDirections
                         .actionAppDetailsFragmentToDevAppsFragment(app.developerName)
                 )
             }
-            txtLine3.text = ("${app.versionName} (${app.versionCode})")
-            packageName.text = app.packageName
 
-
-            if (app.isFree)
-                tags.add(getString(R.string.details_free))
-            else
-                tags.add(getString(R.string.details_paid))
-
-            if (app.containsAds)
-                tags.add(getString(R.string.details_contains_ads))
-            else
-                tags.add(getString(R.string.details_no_ads))
+            tags.add(getString((if (app.isFree) R.string.details_free else R.string.details_paid)))
+            tags.add(getString((if (app.containsAds) R.string.details_contains_ads else R.string.details_no_ads)))
 
             txtLine4.text = tags.joinToString(separator = " • ")
         }
@@ -724,40 +730,34 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflatePartialApp() {
-        if (::app.isInitialized) {
-            attachHeader()
-            checkAndSetupInstall()
-        }
-    }
+    private fun updateExtraDetails(app: App) {
+        binding.viewFlipper.displayedChild = 1
 
-    private fun inflateExtraDetails(app: App?) {
-        app?.let {
-            binding.viewFlipper.displayedChild = 1
-            inflateAppDescription(app)
-            inflateAppRatingAndReviews(app)
-            inflateAppDevInfo(app)
-            inflateAppDataSafety(app)
-            inflateAppPrivacy(app)
-            inflateAppPermission(app)
+        updateAppDescription(app)
+        updateAppRatingAndReviews(app)
+        updateAppDevInfo(app)
+        updateAppPermission(app)
 
-            if (!authProvider.isAnonymous) {
-                app.testingProgram?.let {
-                    if (it.isAvailable && it.isSubscribed) {
-                        binding.layoutDetailsApp.txtLine1.text = it.displayName
-                    }
+        // Allow users to handle beta subscriptions, if logged in by own account.
+        if (!authProvider.isAnonymous) {
+            // Update app name to the testing program name, if subscribed
+            app.testingProgram?.let {
+                if (it.isAvailable && it.isSubscribed) {
+                    binding.layoutDetailsApp.txtLine1.text = it.displayName
                 }
-
-                inflateBetaSubscription(app)
             }
 
-            if (showSimilarApps) {
-                inflateAppStream(app)
-            }
+            updateBetaSubscription(app)
         }
+
+        if (showSimilarApps) {
+            updateAppStream(app)
+        }
+
+        checkAndSetupInstall()
     }
 
-    private fun inflateAppDescription(app: App) {
+    private fun updateAppDescription(app: App) {
         binding.layoutDetailDescription.apply {
             val installs = CommonUtil.addDiPrefix(app.installs)
 
@@ -814,10 +814,16 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateAppRatingAndReviews(app: App) {
+    private fun updateAppRatingAndReviews(app: App) {
         binding.layoutDetailsReview.apply {
-            averageRating.text = app.rating.average.toString()
-            txtReviewCount.text = app.rating.abbreviatedLabel
+            headerRatingReviews.addClickListener {
+                findNavController().navigate(
+                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
+                        app.displayName,
+                        app.packageName
+                    )
+                )
+            }
 
             var totalStars = 0L
             totalStars += app.rating.oneStar
@@ -837,42 +843,34 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
             txtReviewCount.text = app.rating.abbreviatedLabel
+        }
+    }
 
-            layoutUserReview.visibility =
-                if (authProvider.isAnonymous) View.GONE else View.VISIBLE
+    private fun updateUserReview(review: Review) {
+        binding.layoutDetailsReview.apply {
+            layoutUserReview.visibility = View.VISIBLE
+            inputTitle.setText(review.title)
+            inputReview.setText(review.comment)
+            userStars.rating = review.rating.toFloat()
 
-            btnPostReview.setOnClickListener {
-                if (authProvider.isAnonymous) {
-                    toast(R.string.toast_anonymous_restriction)
-                } else {
-                    addOrUpdateReview(app, Review().apply {
-                        title = inputTitle.text.toString()
-                        rating = userStars.rating.toInt()
-                        comment = inputReview.text.toString()
-                    })
-                }
-            }
-
-            headerRatingReviews.addClickListener {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
-                        app.displayName,
-                        app.packageName
+            if (!authProvider.isAnonymous && app.isInstalled) {
+                btnPostReview.setOnClickListener {
+                    addOrUpdateReview(
+                        app,
+                        Review().apply {
+                            title = inputTitle.text.toString()
+                            rating = userStars.rating.toInt()
+                            comment = inputReview.text.toString()
+                        }
                     )
-                )
+                }
+            } else {
+                layoutUserReview.visibility = View.GONE
             }
         }
     }
 
-    private fun inflateAppDataSafety(app: App) {
-        viewModel.fetchAppDataSafetyReport(app.packageName)
-    }
-
-    private fun inflateAppPrivacy(app: App) {
-        viewModel.fetchAppReport(app.packageName)
-    }
-
-    private fun inflateAppDevInfo(app: App) {
+    private fun updateAppDevInfo(app: App) {
         binding.layoutDetailsDev.apply {
             if (app.developerAddress.isNotEmpty()) {
                 devAddress.apply {
@@ -902,7 +900,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateBetaSubscription(app: App) {
+    private fun updateBetaSubscription(app: App) {
         binding.layoutDetailsBeta.apply {
             app.testingProgram?.let { betaProgram ->
                 if (betaProgram.isAvailable) {
@@ -933,7 +931,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateAppStream(app: App) {
+    private fun updateAppStream(app: App) {
         app.detailsStreamUrl?.let {
             val carouselController =
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {
@@ -980,7 +978,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateAppPermission(app: App) {
+    private fun updateAppPermission(app: App) {
         binding.layoutDetailsPermissions.apply {
             headerPermission.addClickListener {
                 if (app.permissions.isNotEmpty()) {

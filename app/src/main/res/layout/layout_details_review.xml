@@ -38,8 +38,9 @@
         android:id="@+id/layout_user_review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <RatingBar
             android:id="@+id/user_stars"
@@ -55,38 +56,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/margin_normal"
             android:divider="@drawable/divider"
             android:orientation="vertical"
             android:showDividers="middle">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_title"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:background="@drawable/bg_changelog"
-                android:gravity="center_vertical|center_horizontal"
-                android:hint="@string/details_ratings_title_hint"
-                android:imeOptions="flagNoExtractUi|actionDone"
-                android:inputType="text"
-                android:paddingStart="@dimen/padding_large"
-                android:paddingEnd="@dimen/padding_normal"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+                android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_review"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:hint="@string/details_ratings_title_hint"
+                    android:inputType="text"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:background="@drawable/bg_changelog"
-                android:gravity="center_vertical|center_horizontal"
-                android:hint="@string/details_think_this_app"
-                android:imeOptions="flagNoExtractUi|actionDone"
-                android:inputType="text"
-                android:paddingStart="@dimen/padding_large"
-                android:paddingEnd="@dimen/padding_normal"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:hint="@string/details_think_this_app"
+                    android:inputType="textMultiLine"
+                    android:textAppearance="@style/TextAppearance.Aurora.Line2" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_post_review"
@@ -94,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/action_post"
-                app:cornerRadius="@dimen/margin_small" />
+                app:cornerRadius="@dimen/radius_small" />
         </LinearLayout>
     </LinearLayout>
 

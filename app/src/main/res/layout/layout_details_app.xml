@@ -29,13 +29,13 @@
 
     <RelativeLayout
         android:id="@+id/img_icon_layout"
-        android:layout_width="@dimen/icon_size_medium"
-        android:layout_height="@dimen/icon_size_medium">
+        android:layout_width="@dimen/icon_size_large"
+        android:layout_height="@dimen/icon_size_large">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_icon"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
+            android:layout_width="@dimen/icon_size_large"
+            android:layout_height="@dimen/icon_size_large"
             tools:src="@drawable/bg_placeholder" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:visibility="gone"
-            app:indicatorSize="@dimen/icon_size_medium"
+            app:indicatorSize="@dimen/icon_size_large"
             app:trackThickness="3dp"
             tools:progress="40" />
     </RelativeLayout>
@@ -120,6 +120,7 @@
             android:backgroundTint="?colorError"
             android:textColor="?colorOnError"
             android:visibility="gone"
+            app:cornerRadius="@dimen/radius_small"
             tools:text="@string/action_cancel"
             tools:visibility="visible" />
 
@@ -129,6 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_weight="1"
+            app:cornerRadius="@dimen/radius_small"
             tools:text="@string/action_install" />
     </LinearLayout>
 
