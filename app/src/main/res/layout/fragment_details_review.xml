@@ -54,6 +54,13 @@
                 android:text="@string/filter_review_all" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/filter_newest_first"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_latest" />
+
+            <com.google.android.material.chip.Chip
                 android:id="@+id/filter_review_critical"
                 style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"

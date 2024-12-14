@@ -158,6 +158,7 @@
     <string name="exodus_substring">known trackers(s) found in</string>
     <string name="exodus_view_report">"View report"</string>
     <string name="filter_review_all">"All"</string>
+    <string name="filter_latest">"Latest"</string>
     <string name="filter_review_critical">"Critical"</string>
     <string name="filter_review_five">"Five"</string>
     <string name="filter_review_four">"Four"</string>
