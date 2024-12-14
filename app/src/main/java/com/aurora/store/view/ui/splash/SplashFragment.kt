@@ -257,16 +257,16 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 2 -> SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
                 else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
             }
-        activity?.viewModelStore?.clear() // Clear ViewModelStore to avoid bugs with logout
+        requireActivity().viewModelStore.clear() // Clear ViewModelStore to avoid bugs with logout
         findNavController().navigate(directions)
     }
 
     private fun getPackageName(): String {
         // Navigation component cannot handle market scheme as its missing a valid host
-        return if (activity?.intent != null && activity?.intent?.scheme == "market") {
+        return if (requireActivity().intent != null && requireActivity().intent.scheme == "market") {
             requireActivity().intent.data!!.getQueryParameter("id") ?: ""
-        } else if (activity?.intent != null && activity?.intent?.action == Intent.ACTION_SEND) {
-            val clipData = activity?.intent?.getStringExtra(Intent.EXTRA_TEXT) ?: ""
+        } else if (requireActivity().intent != null && requireActivity().intent.action == Intent.ACTION_SEND) {
+            val clipData = requireActivity().intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
             UrlQuerySanitizer(clipData).getValue("id") ?: ""
         } else {
             requireArguments().getString("packageName") ?: ""
