@@ -21,6 +21,7 @@ package com.aurora.extensions
 
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.core.content.getSystemService
 
 fun View.isVisible() = visibility == View.VISIBLE
@@ -50,4 +51,14 @@ fun View.hideKeyboard(): Boolean {
     } catch (ignored: RuntimeException) {
     }
     return false
+}
+
+
+fun TextView.updateText(text: String?) {
+    if (text.isNullOrEmpty()) {
+        hide()
+    } else {
+        show()
+        this.text = text
+    }
 }

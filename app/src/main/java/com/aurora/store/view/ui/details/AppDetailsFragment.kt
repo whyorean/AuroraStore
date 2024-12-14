@@ -40,7 +40,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil3.asDrawable
 import coil3.load
-import coil3.request.placeholder
+import coil3.request.error
 import coil3.request.transformations
 import coil3.transform.CircleCropTransformation
 import coil3.transform.RoundedCornersTransformation
@@ -55,6 +55,7 @@ import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.toast
+import com.aurora.extensions.updateText
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
@@ -196,7 +197,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
 
         // Show the basic app details, while the rest of the data is being fetched
-        updateAppHeader(app)
+        updateAppHeader(app, false)
 
         // Toolbar
         attachToolbar(app)
@@ -468,20 +469,25 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun updateAppHeader(app: App) {
+    private fun updateAppHeader(app: App, isFullApp: Boolean = true) {
         binding.layoutDetailsApp.apply {
+            val fallbackDrawable = if (isFullApp)
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_placeholder)
+            else
+                PackageUtil.getIconDrawableForPackage(requireContext(), app.packageName)
+
             imgIcon.load(app.iconArtwork.url) {
-                placeholder(R.drawable.bg_placeholder)
+                error(fallbackDrawable)
                 transformations(RoundedCornersTransformation(32F))
                 listener { _, result ->
                     result.image.asDrawable(resources).let { iconDrawable = it }
                 }
             }
 
-            packageName.text = app.packageName
-            txtLine1.text = app.displayName
-            txtLine2.text = app.developerName
-            txtLine3.text = ("${app.versionName} (${app.versionCode})")
+            packageName.updateText(app.packageName)
+            txtLine1.updateText(app.displayName)
+            txtLine2.updateText(app.developerName)
+            txtLine3.updateText(("${app.versionName} (${app.versionCode})"))
 
             txtLine2.setOnClickListener {
                 findNavController().navigate(
@@ -490,10 +496,12 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 )
             }
 
-            tags.add(getString((if (app.isFree) R.string.details_free else R.string.details_paid)))
-            tags.add(getString((if (app.containsAds) R.string.details_contains_ads else R.string.details_no_ads)))
-
-            txtLine4.text = tags.joinToString(separator = " • ")
+            // Do not show tags for web apps or unknown apps
+            if (isFullApp) {
+                tags.add(getString((if (app.isFree) R.string.details_free else R.string.details_paid)))
+                tags.add(getString((if (app.containsAds) R.string.details_contains_ads else R.string.details_no_ads)))
+                txtLine4.updateText(tags.joinToString(separator = " • "))
+            }
         }
     }
 

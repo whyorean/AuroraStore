@@ -107,6 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_line4"
+        android:layout_marginTop="@dimen/margin_medium"
         android:divider="@drawable/divider"
         android:orientation="horizontal"
         android:showDividers="middle">
@@ -115,7 +116,6 @@
             android:id="@+id/btn_secondary_action"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
             android:layout_weight="1"
             android:backgroundTint="?colorError"
             android:textColor="?colorOnError"
@@ -128,7 +128,6 @@
             android:id="@+id/btn_primary_action"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
             android:layout_weight="1"
             app:cornerRadius="@dimen/radius_small"
             tools:text="@string/action_install" />
