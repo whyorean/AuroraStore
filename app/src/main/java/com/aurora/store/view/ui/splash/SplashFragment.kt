@@ -29,14 +29,15 @@ import android.os.Looper
 import android.util.Base64
 import android.util.Log
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
 import com.aurora.extensions.isMAndAbove
+import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.show
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.R
@@ -69,7 +70,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             if (!accountName.isNullOrBlank()) {
                 requestAuthTokenForGoogle(accountName)
             } else {
-                findNavController().navigate(R.id.googleFragment)
+                runOnUiThread { resetActions() }
             }
         }
 
@@ -204,6 +205,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             if (viewModel.authState.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
                 if (isMAndAbove && PackageUtil.hasSupportedMicroG(requireContext())) {
+                    val accounts = fetchGoogleAccounts()
+
+                    // Do not show selection dialog if there is only one account available
+                    if (accounts.isNotEmpty() && accounts.size == 1) {
+                        requestAuthTokenForGoogle(accounts.first().name)
+                        return@addOnClickListener
+                    }
+
                     Log.i(TAG, "Found supported microG, trying to request credentials")
                     val accountIntent = AccountManager.newChooseAccountIntent(
                         null,
@@ -218,7 +227,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 } else {
                     findNavController().navigate(R.id.googleFragment)
                 }
-
             }
         }
     }
@@ -236,7 +244,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun navigateToDefaultTab() {
-        val defaultDestination = Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
+        val defaultDestination =
+            Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
         val directions =
             when (requireArguments().getInt("destinationId", defaultDestination)) {
                 R.id.updatesFragment -> {
@@ -264,6 +273,11 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         }
     }
 
+    private fun fetchGoogleAccounts(): Array<Account> {
+        val accountManager = AccountManager.get(requireContext())
+        return accountManager.getAccountsByType(GOOGLE_ACCOUNT_TYPE)
+    }
+
     private fun requestAuthTokenForGoogle(accountName: String) {
         try {
             AccountManager.get(requireContext())
@@ -278,7 +292,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     {
                         viewModel.buildGoogleAuthData(
                             accountName,
-                            it.result.getString(AccountManager.KEY_AUTHTOKEN)!!,
+                            it.result.getString(AccountManager.KEY_AUTHTOKEN) ?: "",
                             AuthHelper.Token.AUTH
                         )
                     },
@@ -286,7 +300,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 )
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to get authToken for Google login")
-            findNavController().navigate(R.id.googleFragment)
         }
     }
 }
