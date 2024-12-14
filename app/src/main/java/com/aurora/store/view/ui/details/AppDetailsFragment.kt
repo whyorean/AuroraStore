@@ -471,7 +471,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun updateAppHeader(app: App, isFullApp: Boolean = true) {
         binding.layoutDetailsApp.apply {
-            val fallbackDrawable = if (isFullApp)
+            val fallbackDrawable = if (app.iconArtwork.url.isNotBlank())
                 ContextCompat.getDrawable(requireContext(), R.drawable.bg_placeholder)
             else
                 PackageUtil.getIconDrawableForPackage(requireContext(), app.packageName)
