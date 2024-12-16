@@ -20,13 +20,17 @@
 package com.aurora.store.viewmodel.all
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.ImportExport
 import com.aurora.store.util.PackageUtil
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +43,7 @@ import javax.inject.Inject
 class InstalledViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val blacklistProvider: BlacklistProvider,
+    private val gson: Gson
 ) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
@@ -66,6 +71,21 @@ class InstalledViewModel @Inject constructor(
                 _apps.emit(allApps)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps", exception)
+            }
+        }
+    }
+
+    fun exportApps(context: Context, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val favourites: List<Favourite> = apps.value!!.map { app ->
+                    Favourite.fromApp(app, Favourite.Mode.IMPORT)
+                }
+                context.contentResolver.openOutputStream(uri)?.use {
+                    it.write(gson.toJson(ImportExport(favourites)).encodeToByteArray())
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to installed apps", exception)
             }
         }
     }

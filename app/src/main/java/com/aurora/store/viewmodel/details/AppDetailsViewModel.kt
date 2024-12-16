@@ -236,8 +236,8 @@ class AppDetailsViewModel @Inject constructor(
 
     private fun getLatestExodusReport(packageName: String): Report? {
         val headers: MutableMap<String, String> = mutableMapOf()
-        headers["Content-Type"] = "application/json"
-        headers["Accept"] = "application/json"
+        headers["Content-Type"] = Constants.JSON_MIME_TYPE
+        headers["Accept"] = Constants.JSON_MIME_TYPE
         headers["Authorization"] = "Token ${BuildConfig.EXODUS_API_KEY}"
 
         val url = Constants.EXODUS_SEARCH_URL + packageName

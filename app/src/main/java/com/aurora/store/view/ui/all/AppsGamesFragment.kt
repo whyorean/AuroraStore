@@ -19,15 +19,25 @@
 
 package com.aurora.store.view.ui.all
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.ContextThemeWrapper
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.Constants
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
+import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
@@ -38,11 +48,17 @@ import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
 
     private val viewModel: InstalledViewModel by viewModels()
+
+    private val startForDocumentExport =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(Constants.JSON_MIME_TYPE)) {
+            if (it != null) exportInstalledApps(it) else toast(R.string.toast_fav_export_failed)
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -69,9 +85,17 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         // Toolbar
         binding.layoutToolbarNative.apply {
             imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.visibility = View.GONE
+            imgActionSecondary.visibility = View.VISIBLE
 
             imgActionPrimary.setOnClickListener { findNavController().navigateUp() }
+            imgActionSecondary.apply {
+                setImageDrawable(
+                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_menu)
+                )
+                setOnClickListener {
+                    showMenu(it)
+                }
+            }
 
             inputSearch.addTextChangedListener(object : TextWatcher {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -95,6 +119,35 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                 }
             })
         }
+    }
+
+    private fun showMenu(anchor: View) {
+        val popupMenu = PopupMenu(
+            ContextThemeWrapper(
+                requireContext(),
+                R.style.AppTheme_PopupMenu
+            ), anchor
+        )
+
+        val inflater: MenuInflater = popupMenu.menuInflater
+        inflater.inflate(R.menu.menu_import_export, popupMenu.menu)
+
+        popupMenu.menu.removeItem(R.id.action_import)
+
+        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.action_export -> {
+                    startForDocumentExport.launch(
+                        "aurora_store_apps_${Calendar.getInstance().time.time}.json"
+                    )
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+        popupMenu.show()
     }
 
     private fun updateController(packages: List<App>?) {
@@ -136,5 +189,10 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                 }
             }
         }
+    }
+
+    private fun exportInstalledApps(uri: Uri) {
+        viewModel.exportApps(requireContext(), uri)
+        toast(R.string.toast_fav_export_success)
     }
 }

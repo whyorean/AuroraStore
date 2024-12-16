@@ -34,6 +34,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
@@ -51,13 +52,12 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
 
     private val viewModel: BlacklistViewModel by viewModels()
 
-    private val mimeType = "application/json"
     private val startForDocumentImport =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) {
             if (it != null) importBlacklist(it) else toast(R.string.toast_black_import_failed)
         }
     private val startForDocumentExport =
-        registerForActivityResult(ActivityResultContracts.CreateDocument(mimeType)) {
+        registerForActivityResult(ActivityResultContracts.CreateDocument(Constants.JSON_MIME_TYPE)) {
             if (it != null) exportBlacklist(it) else toast(R.string.toast_black_export_failed)
         }
 
@@ -132,7 +132,7 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
                 R.id.action_import -> {
-                    startForDocumentImport.launch(arrayOf(mimeType))
+                    startForDocumentImport.launch(arrayOf(Constants.JSON_MIME_TYPE))
                     true
                 }
 
