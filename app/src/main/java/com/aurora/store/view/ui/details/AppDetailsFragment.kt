@@ -117,7 +117,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private var downloadStatus = DownloadStatus.UNAVAILABLE
     private var isUpdatable: Boolean = false
-    private var uninstallActionEnabled = false
 
     private val tags = mutableSetOf<String>()
 
@@ -192,7 +191,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         app.apply {
             // Check whether app is installed or not
             isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-            uninstallActionEnabled = isInstalled
         }
 
         // Show the basic app details, while the rest of the data is being fetched
@@ -227,6 +225,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     // Fetch Exodus Privacy Report
                     viewModel.fetchAppReport(app.packageName)
+
+
                 } else {
                     toast(getString(R.string.status_unavailable))
                     // TODO: Redirect to App Unavailable Fragment
@@ -402,11 +402,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
-            // Clear Menu, so that it clears the previous menu items before inflating new ones
-            menu.clear()
-
-            // Inflate Menu
-            inflateMenu(R.menu.menu_details)
+            if (menu.size() == 0) {
+                // Inflate Menu only if it is not already inflated
+                inflateMenu(R.menu.menu_details)
+            }
 
             // Adjust Menu Items
             menu.let {
@@ -697,10 +696,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         }
                     }
                 }
-
-                if (!uninstallActionEnabled) {
-                    binding.layoutDetailsToolbar.toolbar.invalidateMenu()
-                }
             } else {
                 if (downloadStatus in DownloadStatus.running) {
                     updateProgress(-1)
@@ -731,10 +726,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     } else {
                         startDownload()
                     }
-                }
-
-                if (uninstallActionEnabled) {
-                    binding.layoutDetailsToolbar.toolbar.invalidateMenu()
                 }
             }
         }
