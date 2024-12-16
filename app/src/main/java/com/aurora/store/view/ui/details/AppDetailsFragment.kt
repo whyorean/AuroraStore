@@ -412,7 +412,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         requireContext(),
                         app.packageName
                     )
-                it.findItem(R.id.menu_download_manual)?.isVisible = !app.isInstalled
                 it.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
                 it.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
             }
