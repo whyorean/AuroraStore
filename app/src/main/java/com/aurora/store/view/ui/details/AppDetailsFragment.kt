@@ -200,7 +200,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         updateAppHeader(app, false)
 
         // Toolbar
-        attachToolbar(app)
+        updateToolbar(app)
 
         // App Details
         viewModel.fetchAppDetails(app.packageName)
@@ -216,6 +216,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         viewModel.fetchUserAppReview(app)
                     }
 
+                    updateToolbar(app)
                     updateAppHeader(app) // Re-inflate the app details, as web data may vary.
                     updateExtraDetails(app)
 
@@ -389,7 +390,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         super.onResume()
     }
 
-    private fun attachToolbar(app: App) {
+    private fun updateToolbar(app: App) {
         binding.layoutDetailsToolbar.toolbar.apply {
             elevation = 0f
             navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back)
@@ -401,6 +402,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     findNavController().navigateUp()
                 }
             }
+
+            // Clear Menu, so that it clears the previous menu items before inflating new ones
+            menu.clear()
 
             // Inflate Menu
             inflateMenu(R.menu.menu_details)
