@@ -30,6 +30,7 @@ import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.Favourite.Companion.toApp
 import com.aurora.store.databinding.FragmentFavouriteBinding
 import com.aurora.store.view.epoxy.views.FavouriteViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
@@ -103,7 +104,7 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
                         FavouriteViewModel_()
                             .id(it.packageName.hashCode())
                             .favourite(it)
-                            .onClick { _ -> openDetailsFragment(it.packageName) }
+                            .onClick { _ -> openDetailsFragment(it.packageName, it.toApp()) }
                             .onFavourite { _ -> viewModel.removeFavourite(it.packageName) }
                     )
                 }

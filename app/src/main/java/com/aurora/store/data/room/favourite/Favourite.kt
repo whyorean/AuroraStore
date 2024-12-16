@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.Artwork
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -25,6 +26,14 @@ data class Favourite(
                 iconURL = app.iconArtwork.url,
                 added = System.currentTimeMillis(),
                 mode = mode
+            )
+        }
+
+        fun Favourite.toApp(): App {
+            return App(
+                packageName = packageName,
+                displayName = displayName,
+                iconArtwork = Artwork(url = iconURL)
             )
         }
     }
