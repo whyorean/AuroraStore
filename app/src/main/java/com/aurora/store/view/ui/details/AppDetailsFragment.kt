@@ -217,6 +217,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     updateAppHeader(app) // Re-inflate the app details, as web data may vary.
                     updateExtraDetails(app)
 
+                    if (app.versionCode == 0) {
+                        warnAppUnavailable(app)
+                    }
+
                     // Fetch App Reviews
                     viewModel.fetchAppReviews(app.packageName)
 
@@ -225,8 +229,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     // Fetch Exodus Privacy Report
                     viewModel.fetchAppReport(app.packageName)
-
-
                 } else {
                     toast(getString(R.string.status_unavailable))
                     // TODO: Redirect to App Unavailable Fragment
@@ -1030,6 +1032,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 else -> {}
             }
         }
+    }
+
+    private fun warnAppUnavailable(app: App) {
+        AuroraApp.events.send(InstallerEvent.Failed(app.packageName).apply {
+            error = getString(R.string.status_unavailable)
+            extra = getString(R.string.toast_app_unavailable)
+        })
     }
 
     /* App Review Helpers */
