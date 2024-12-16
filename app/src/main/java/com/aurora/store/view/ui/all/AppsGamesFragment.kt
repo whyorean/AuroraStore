@@ -26,12 +26,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
-import com.aurora.store.view.epoxy.views.InstalledAppViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.InstalledViewModel
@@ -47,7 +48,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.packages.collect {
+            viewModel.apps.collect {
                 updateController(it)
             }
         }
@@ -75,9 +76,9 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
             inputSearch.addTextChangedListener(object : TextWatcher {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (s.isNullOrEmpty()) {
-                        updateController(viewModel.packages.value)
+                        updateController(viewModel.apps.value)
                     } else {
-                        val filteredPackages = viewModel.packages.value?.filter {
+                        val filteredPackages = viewModel.apps.value?.filter {
                             it.displayName.contains(s, true) || it.packageName.contains(s, true)
                         }
                         updateController(filteredPackages)
@@ -96,7 +97,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
     }
 
-    private fun updateController(packages: List<MinimalApp>?) {
+    private fun updateController(packages: List<App>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (packages == null) {
@@ -114,17 +115,21 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                 )
                 packages.forEach { app ->
                     add(
-                        InstalledAppViewModel_()
+                        AppListViewModel_()
                             .id(app.packageName.hashCode())
-                            .packageInfo(app)
+                            .app(app)
                             .click { _ ->
                                 openDetailsFragment(
                                     app.packageName,
-                                    MinimalApp.toApp(app)
+                                    app
                                 )
                             }
                             .longClick { _ ->
-                                openAppMenuSheet(app)
+                                openAppMenuSheet(
+                                    MinimalApp.fromApp(
+                                        app
+                                    )
+                                )
                                 false
                             }
                     )
@@ -132,5 +137,4 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
             }
         }
     }
-
 }

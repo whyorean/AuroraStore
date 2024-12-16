@@ -20,11 +20,11 @@
 package com.aurora.store.viewmodel.all
 
 import android.content.Context
-import android.content.pm.PackageInfo
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.store.data.model.MinimalApp
+import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -41,8 +41,8 @@ class InstalledViewModel @Inject constructor(
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
-    private val _packages = MutableStateFlow<List<MinimalApp>?>(null)
-    val packages = _packages.asStateFlow()
+    private val _apps = MutableStateFlow<List<App>?>(null)
+    val apps = _apps.asStateFlow()
 
     init {
         fetchApps()
@@ -51,8 +51,16 @@ class InstalledViewModel @Inject constructor(
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _packages.value = PackageUtil.getAllValidPackages(context)
-                    .map { MinimalApp.fromPackageInfo(context, it) }
+                val packages = PackageUtil.getAllValidPackages(context)
+
+                // Divide the list of packages into chunks of 100 & fetch app details
+                // 50 is a safe number to avoid hitting the rate limit or package size limit
+                val chunkedPackages = packages.chunked(50)
+                val allApps = chunkedPackages.flatMap { chunk ->
+                    WebAppDetailsHelper().getAppDetails(chunk.map { it.packageName })
+                }
+
+                _apps.emit(allApps)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps", exception)
             }
