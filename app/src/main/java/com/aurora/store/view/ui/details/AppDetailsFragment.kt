@@ -55,7 +55,6 @@ import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.toast
-import com.aurora.extensions.updateText
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.StreamBundle
@@ -487,10 +486,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
-            packageName.updateText(app.packageName)
-            txtLine1.updateText(app.displayName)
-            txtLine2.updateText(app.developerName)
-            txtLine3.updateText(("${app.versionName} (${app.versionCode})"))
+            packageName.text = app.packageName
+            txtLine1.text = app.displayName
+            txtLine2.text = app.developerName
+            txtLine3.text = ("${app.versionName} (${app.versionCode})")
 
             txtLine2.setOnClickListener {
                 findNavController().navigate(
@@ -503,7 +502,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             if (isFullApp) {
                 tags.add(getString((if (app.isFree) R.string.details_free else R.string.details_paid)))
                 tags.add(getString((if (app.containsAds) R.string.details_contains_ads else R.string.details_no_ads)))
-                txtLine4.updateText(tags.joinToString(separator = " • "))
+                txtLine4.text = tags.joinToString(separator = " • ")
             }
         }
     }
