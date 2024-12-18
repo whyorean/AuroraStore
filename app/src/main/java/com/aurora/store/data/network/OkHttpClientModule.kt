@@ -22,11 +22,11 @@ package com.aurora.store.data.network
 import android.content.Context
 import android.util.Base64
 import android.util.Log
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_CERTIFICATE_PINNING_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.google.gson.Gson
@@ -35,10 +35,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.CertificatePinner
-import okhttp3.OkHttpClient
 import java.io.ByteArrayInputStream
 import java.io.InputStream
+import okhttp3.CertificatePinner
+import okhttp3.OkHttpClient
 import java.net.Authenticator
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
@@ -60,18 +60,8 @@ object OkHttpClientModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClientInstance(
-        @ApplicationContext context: Context,
-        certPinner: CertificatePinner,
-        proxy: Proxy?
-    ): OkHttpClient {
-        val isCertPinningEnabled = Preferences.getBoolean(
-            context,
-            PREFERENCE_CERTIFICATE_PINNING_ENABLED,
-            true
-        )
-
-        val builder = OkHttpClient().newBuilder()
+    fun providesOkHttpClientInstance(certPinner: CertificatePinner, proxy: Proxy?): OkHttpClient {
+        val okHttpClientBuilder = OkHttpClient().newBuilder()
             .proxy(proxy)
             .connectTimeout(25, TimeUnit.SECONDS)
             .readTimeout(25, TimeUnit.SECONDS)
@@ -80,13 +70,11 @@ object OkHttpClientModule {
             .followRedirects(true)
             .followSslRedirects(true)
 
-        if (isCertPinningEnabled) {
-            builder.certificatePinner(certPinner)
-        } else {
-            Log.i(TAG, "Certificate pinning is disabled")
+        if (!BuildConfig.DEBUG) {
+            okHttpClientBuilder.certificatePinner(certPinner)
         }
 
-        return builder.build()
+        return okHttpClientBuilder.build()
     }
 
     @Provides
@@ -96,21 +84,12 @@ object OkHttpClientModule {
         val googleRootCerts = getGoogleRootCertHashes(context).map { "sha256/$it" }
             .toTypedArray()
 
-        return CertificatePinner.Builder()
+        return  CertificatePinner.Builder()
             .add("*.googleapis.com", *googleRootCerts)
             .add("*.google.com", *googleRootCerts)
-            .add(
-                "auroraoss.com",
-                "sha256/mEflZT5enoR1FuXLgYYGqnVEoZvmf9c2bVBpiOjYQ0c="
-            ) // GTS Root R4
-            .add(
-                "*.exodus-privacy.eu.org",
-                "sha256/C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M="
-            ) // ISRG Root X1
-            .add(
-                "gitlab.com",
-                "sha256/x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4="
-            ) // USERTrust RSA Certification Authority
+            .add("auroraoss.com", "sha256/mEflZT5enoR1FuXLgYYGqnVEoZvmf9c2bVBpiOjYQ0c=") // GTS Root R4
+            .add("*.exodus-privacy.eu.org", "sha256/C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=") // ISRG Root X1
+            .add("gitlab.com", "sha256/x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4=") // USERTrust RSA Certification Authority
             .build()
     }
 
@@ -147,8 +126,7 @@ object OkHttpClientModule {
 
     private fun getGoogleRootCertHashes(context: Context): List<String> {
         return try {
-            val certs =
-                getX509Certificates(context.resources.openRawResource(R.raw.google_roots_ca))
+            val certs = getX509Certificates(context.resources.openRawResource(R.raw.google_roots_ca))
             certs.map {
                 val messageDigest = MessageDigest.getInstance(Algorithm.SHA256.value)
                 messageDigest.update(it.publicKey.encoded)

@@ -31,7 +31,6 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.aurora.Constants
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.UpdateMode
@@ -41,7 +40,6 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
-import com.aurora.store.util.Preferences.PREFERENCE_CERTIFICATE_PINNING_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
@@ -171,7 +169,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         if (!CertUtil.isAppGalleryApp(requireContext(), requireContext().packageName)) {
             save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER))
         }
-        save(PREFERENCE_CERTIFICATE_PINNING_ENABLED, !BuildConfig.DEBUG)
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/

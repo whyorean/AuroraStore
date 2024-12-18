@@ -44,12 +44,6 @@
         app:singleLineTitle="false"
         app:title="@string/pref_common_extra" />
 
-    <SwitchPreferenceCompat
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_CERTIFICATE_PINNING_ENABLED"
-        app:summary="@string/pref_certificate_pinning_enable_desc"
-        app:title="@string/pref_certificate_pinning_enable" />
-
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="0"
         app:entries="@array/pref_vending_version"

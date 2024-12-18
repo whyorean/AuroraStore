@@ -231,8 +231,6 @@
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_network_proxy_enable">"Enable proxy"</string>
     <string name="pref_network_proxy_enable_desc">"Allow all traffic from app to go through the proxy"</string>
-    <string name="pref_certificate_pinning_enable">"Enable certificate pinning"</string>
-    <string name="pref_certificate_pinning_enable_desc">"Locks the app to trust only specific server certificates, preventing connections to untrusted or compromised servers."</string>
     <string name="pref_network_proxy_url">"Proxy URL"</string>
     <string name="pref_network_proxy_url_message">Enter a valid proxy URL to pass all data through the proxy.</string>
     <string name="pref_ui_title">"Customization"</string>
