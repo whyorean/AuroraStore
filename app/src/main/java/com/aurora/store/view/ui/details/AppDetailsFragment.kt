@@ -136,8 +136,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             is BusEvent.ManualDownload -> {
                 if (app.packageName == event.packageName) {
-                    app.versionCode = event.versionCode
-                    purchase()
+                    purchase(app.copy(versionCode = event.versionCode))
                 }
             }
 
@@ -504,7 +503,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun purchase() {
+    private fun purchase(app: App) {
         if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
@@ -589,7 +588,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                             toast(R.string.toast_app_unavailable)
                             setText(R.string.status_unavailable)
                         } else {
-                            purchase()
+                            purchase(app)
                         }
                     }
                 }
@@ -628,13 +627,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
                     permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS) {
                         if (it) {
-                            purchase()
+                            purchase(app)
                         } else {
                             toast(R.string.permissions_denied)
                         }
                     }
                 } else {
-                    purchase()
+                    purchase(app)
                 }
             }
 
