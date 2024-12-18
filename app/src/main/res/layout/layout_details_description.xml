@@ -68,6 +68,7 @@
                     style="@style/Chip.Tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:chipIcon="@drawable/ic_apk_install"
                     tools:text="25 MB" />
 
                 <com.google.android.material.chip.Chip
@@ -75,6 +76,7 @@
                     style="@style/Chip.Tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:chipIcon="@drawable/ic_updates"
                     tools:text="Jan 21 2020" />
             </com.google.android.material.chip.ChipGroup>
 

@@ -54,7 +54,7 @@
         <item name="chipStrokeColor">?attr/colorControlHighlight</item>
     </style>
 
-    <style name="Chip.Tag" parent="@style/Widget.Material3.Chip.Assist.Elevated">
+    <style name="Chip.Tag" parent="@style/Widget.Material3.Chip.Assist">
         <item name="android:clickable">false</item>
         <item name="android:textAppearance">@style/TextAppearance.Aurora.Line2</item>
         <item name="chipBackgroundColor">?attr/colorControlHighlight</item>
