@@ -7,6 +7,7 @@ import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.StreamHelper
+import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
 import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
@@ -149,6 +150,17 @@ object HelperModule {
         httpClient: IHttpClient
     ): WebTopChartsHelper {
         return WebTopChartsHelper()
+            .using(httpClient)
+            .with(spoofProvider.locale)
+    }
+
+    @Singleton
+    @Provides
+    fun providesWebAppDetailsHelperInstance(
+        spoofProvider: SpoofProvider,
+        httpClient: IHttpClient
+    ): WebAppDetailsHelper {
+        return WebAppDetailsHelper()
             .using(httpClient)
             .with(spoofProvider.locale)
     }

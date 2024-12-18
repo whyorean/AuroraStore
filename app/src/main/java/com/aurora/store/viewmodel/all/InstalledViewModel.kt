@@ -43,7 +43,8 @@ import javax.inject.Inject
 class InstalledViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val blacklistProvider: BlacklistProvider,
-    private val gson: Gson
+    private val gson: Gson,
+    private val webAppDetailsHelper: WebAppDetailsHelper
 ) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
@@ -65,7 +66,7 @@ class InstalledViewModel @Inject constructor(
                 // 50 is a safe number to avoid hitting the rate limit or package size limit
                 val chunkedPackages = packages.chunked(50)
                 val allApps = chunkedPackages.flatMap { chunk ->
-                    WebAppDetailsHelper().getAppDetails(chunk.map { it.packageName })
+                    webAppDetailsHelper.getAppDetails(chunk.map { it.packageName })
                 }
 
                 _apps.emit(allApps)
