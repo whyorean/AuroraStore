@@ -2,7 +2,7 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.Material3.DynamicColors.Dark.NoActionBar">
-        <item name="chipStyle">@style/AppTheme.FilterChip</item>
+        <item name="chipStyle">@style/Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
         <item name="android:statusBarColor">@color/colorTransparent</item>
     </style>

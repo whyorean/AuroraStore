@@ -20,33 +20,35 @@
 
 package com.aurora.store.view.ui.details
 
+import android.animation.ObjectAnimator
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil3.asDrawable
 import coil3.load
-import coil3.request.placeholder
+import coil3.request.error
 import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
 import coil3.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
+import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
@@ -66,7 +68,6 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.PermissionType
-import com.aurora.store.data.model.State
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.data.providers.AuthProvider
@@ -75,6 +76,8 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
@@ -85,11 +88,10 @@ import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import java.util.Locale
 import javax.inject.Inject
@@ -106,46 +108,35 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     @Inject
     lateinit var authProvider: AuthProvider
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
     private lateinit var app: App
+    private lateinit var iconDrawable: Drawable
 
     private var streamBundle: StreamBundle? = StreamBundle()
 
     private val isExternal get() = activity?.intent?.action != Intent.ACTION_MAIN
 
-    private var downloadStatus = DownloadStatus.UNAVAILABLE
-    private var isUpdatable: Boolean = false
-    private var uninstallActionEnabled = false
+    private val isExtendedUpdateEnabled: Boolean
+        get() = Preferences.getBoolean(requireContext(), PREFERENCE_UPDATES_EXTENDED)
+    private val showSimilarApps: Boolean
+        get() = Preferences.getBoolean(requireContext(), PREFERENCE_SIMILAR)
 
     private fun onEvent(event: Event) {
         when (event) {
             is InstallerEvent.Installed -> {
                 if (app.packageName == event.packageName) {
-                    attachActions()
-                    binding.layoutDetailsToolbar.toolbar.menu.apply {
-                        findItem(R.id.action_home_screen)?.isVisible =
-                            ShortcutManagerUtil.canPinShortcut(requireContext(), app.packageName)
-                        findItem(R.id.action_uninstall)?.isVisible = true
-                        findItem(R.id.menu_app_settings)?.isVisible = true
-                    }
+                    checkAndSetupInstall()
                 }
             }
 
             is InstallerEvent.Uninstalled -> {
                 if (app.packageName == event.packageName) {
-                    attachActions()
-                    binding.layoutDetailsToolbar.toolbar.menu.apply {
-                        findItem(R.id.action_home_screen)?.isVisible = false
-                        findItem(R.id.action_uninstall)?.isVisible = false
-                        findItem(R.id.menu_app_settings)?.isVisible = false
-                    }
+                    checkAndSetupInstall()
                 }
             }
 
             is BusEvent.ManualDownload -> {
                 if (app.packageName == event.packageName) {
-                    app.versionCode = event.versionCode
-                    purchase()
+                    purchase(app.copy(versionCode = event.versionCode))
                 }
             }
 
@@ -164,8 +155,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             is InstallerEvent.Installing -> {
                 if (event.packageName == app.packageName) {
-                    attachActions()
-                    updateActionState(State.INSTALLING)
+                    checkAndSetupInstall()
                 }
             }
 
@@ -178,35 +168,17 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Adjust margins for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutDetailsDev.root) { v, w ->
-            val insets = w.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
-            }
-            WindowInsetsCompat.CONSUMED
+        app = args.app ?: App(args.packageName)
+        app.apply {
+            // Check whether app is installed or not
+            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutDetailsInstall.viewFlipper) { v, w ->
-            val insets = w.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
-            }
-            WindowInsetsCompat.CONSUMED
-        }
-
-        if (args.app != null) {
-            app = args.app!!
-            inflatePartialApp()
-        } else {
-            app = App(args.packageName)
-        }
+        // Show the basic app details, while the rest of the data is being fetched
+        updateAppHeader(app, false)
 
         // Toolbar
-        attachToolbar()
-
-        // Check whether app is installed or not
-        app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+        updateToolbar(app)
 
         // App Details
         viewModel.fetchAppDetails(app.packageName)
@@ -215,38 +187,55 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             viewModel.app.collect {
                 if (it.packageName.isNotBlank()) {
                     app = it
-                    inflatePartialApp() // Re-inflate the app details, as web data may vary.
-                    inflateExtraDetails(app)
+
+                    // App User Review
+                    // We can not fetch it outside of this block, as we need the testing program status
+                    if (!authProvider.isAnonymous && app.isInstalled) {
+                        viewModel.fetchUserAppReview(app)
+                    }
+
+                    updateToolbar(app)
+                    updateAppHeader(app) // Re-inflate the app details, as web data may vary.
+                    updateExtraDetails(app)
+
+                    if (app.versionCode == 0) {
+                        warnAppUnavailable(app)
+                    }
+
+                    // Fetch App Reviews
                     viewModel.fetchAppReviews(app.packageName)
+
+                    // Fetch Data Safety Report
+                    viewModel.fetchAppDataSafetyReport(app.packageName)
+
+                    // Fetch Exodus Privacy Report
+                    viewModel.fetchAppReport(app.packageName)
                 } else {
-                    toast("Failed to fetch app details")
+                    toast(getString(R.string.status_unavailable))
+                    // TODO: Redirect to App Unavailable Fragment
                 }
             }
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.downloadsList
-                .filter { list -> list.any { it.packageName == app.packageName } }
-                .collectLatest { downloadsList ->
-                    val download = downloadsList.find { it.packageName == app.packageName }
-                    download?.let {
-                        downloadStatus = it.downloadStatus
-
-                        if (it.isFinished) flip(0) else flip(1)
-                        when (it.downloadStatus) {
-                            DownloadStatus.QUEUED -> {
-                                updateProgress(it.progress)
-                            }
-
-                            DownloadStatus.DOWNLOADING -> {
-                                updateProgress(it.progress, it.speed, it.timeRemaining)
-                            }
-
-                            else -> {}
-                        }
+        viewModel.download.filterNotNull().onEach {
+            when (it.downloadStatus) {
+                DownloadStatus.QUEUED,
+                DownloadStatus.DOWNLOADING -> {
+                    updateProgress(it.progress)
+                    binding.layoutDetailsApp.btnPrimaryAction.apply {
+                        isEnabled = false
+                        text = getString(R.string.action_open)
+                        setOnClickListener { openApp() }
+                    }
+                    binding.layoutDetailsApp.btnSecondaryAction.apply {
+                        text = getString(R.string.action_cancel)
+                        setOnClickListener { viewModel.cancelDownload(app) }
                     }
                 }
-        }
+
+                else -> checkAndSetupInstall()
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         // Reviews
         viewLifecycleOwner.lifecycleScope.launch {
@@ -261,12 +250,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userReview.collect {
                 if (it.commentId.isNotEmpty()) {
-                    binding.layoutDetailsReview.userStars.rating = it.rating.toFloat()
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.toast_rated_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    runOnUiThread { updateUserReview(it) }
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -350,12 +334,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favourite.collect {
                 if (it) {
-                    binding.layoutDetailsToolbar.toolbar.menu
-                        ?.findItem(R.id.action_favourite)
+                    binding.toolbar.menu?.findItem(R.id.action_favourite)
                         ?.setIcon(R.drawable.ic_favorite_checked)
                 } else {
-                    binding.layoutDetailsToolbar.toolbar.menu
-                        ?.findItem(R.id.action_favourite)
+                    binding.toolbar.menu?.findItem(R.id.action_favourite)
                         ?.setIcon(R.drawable.ic_favorite_unchecked)
                 }
             }
@@ -366,12 +348,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             setOnClickListener {
                 it.context.browse("${EXODUS_SUBMIT_PAGE}${app.packageName}")
             }
-        }
-
-        binding.layoutDetailsInstall.progressDownload.clipToOutline = true
-        binding.layoutDetailsInstall.imgCancel.setOnClickListener {
-            viewModel.cancelDownload(app)
-            if (downloadStatus != DownloadStatus.DOWNLOADING) flip(0)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -387,15 +363,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         super.onResume()
     }
 
-    private fun attachActions() {
-        flip(0)
-        checkAndSetupInstall()
-    }
-
-    private fun attachToolbar() {
-        binding.layoutDetailsToolbar.toolbar.apply {
+    private fun updateToolbar(app: App) {
+        binding.toolbar.apply {
             elevation = 0f
             navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back)
+
             setNavigationOnClickListener {
                 if (isExternal) {
                     activity?.finish()
@@ -404,8 +376,23 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
 
-            inflateMenu(R.menu.menu_details)
+            if (menu.size() == 0) {
+                // Inflate Menu only if it is not already inflated
+                inflateMenu(R.menu.menu_details)
+            }
 
+            // Adjust Menu Items
+            menu.let {
+                it.findItem(R.id.action_home_screen)?.isVisible =
+                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(
+                        requireContext(),
+                        app.packageName
+                    )
+                it.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
+                it.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
+            }
+
+            // Set Menu Item Clicks
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.action_home_screen -> {
@@ -451,88 +438,56 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         requireContext().browse("${Constants.SHARE_URL}${app.packageName}")
                     }
                 }
+
                 true
-            }
-
-            if (::app.isInitialized) {
-                app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-
-                menu?.findItem(R.id.action_home_screen)?.isVisible =
-                    app.isInstalled && ShortcutManagerUtil.canPinShortcut(
-                        requireContext(),
-                        app.packageName
-                    )
-
-                menu?.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
-                menu?.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
-                uninstallActionEnabled = app.isInstalled
             }
         }
     }
 
-    private fun attachHeader() {
+    private fun updateAppHeader(app: App, isFullApp: Boolean = true) {
         binding.layoutDetailsApp.apply {
+            val fallbackDrawable = if (app.iconArtwork.url.isNotBlank())
+                ContextCompat.getDrawable(requireContext(), R.drawable.bg_placeholder)
+            else
+                PackageUtil.getIconDrawableForPackage(requireContext(), app.packageName)
+
             imgIcon.load(app.iconArtwork.url) {
-                placeholder(R.drawable.bg_placeholder)
+                error(fallbackDrawable)
                 transformations(RoundedCornersTransformation(32F))
+                listener { _, result ->
+                    result.image.asDrawable(resources).let { iconDrawable = it }
+                }
             }
 
+            packageName.text = app.packageName
             txtLine1.text = app.displayName
             txtLine2.text = app.developerName
+            txtLine3.text = ("${app.versionName} (${app.versionCode})")
+
             txtLine2.setOnClickListener {
                 findNavController().navigate(
                     AppDetailsFragmentDirections
                         .actionAppDetailsFragmentToDevAppsFragment(app.developerName)
                 )
             }
-            txtLine3.text = ("${app.versionName} (${app.versionCode})")
-            packageName.text = app.packageName
 
-            val tags = mutableListOf<String>()
-            if (app.isFree)
-                tags.add(getString(R.string.details_free))
-            else
-                tags.add(getString(R.string.details_paid))
+            // Do not show tags for web apps or unknown apps
+            if (isFullApp) {
+                val tags = mutableSetOf<String>().apply {
+                    if (app.isFree) {
+                        add(getString(R.string.details_free))
+                    } else {
+                        add(getString(R.string.details_paid))
+                    }
 
-            if (app.containsAds)
-                tags.add(getString(R.string.details_contains_ads))
-            else
-                tags.add(getString(R.string.details_no_ads))
-
-            txtLine4.text = tags.joinToString(separator = " • ")
-        }
-    }
-
-    private fun attachBottomSheet() {
-        binding.layoutDetailsInstall.apply {
-            viewFlipper.setInAnimation(requireContext(), R.anim.fade_in)
-            viewFlipper.setOutAnimation(requireContext(), R.anim.fade_out)
-        }
-
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.layoutDetailsInstall.bottomSheet)
-        bottomSheetBehavior.isDraggable = false
-
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setDraggable(true)
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    bottomSheetBehavior.isDraggable = false
+                    if (app.containsAds) {
+                        add(getString(R.string.details_contains_ads))
+                    } else {
+                        add(getString(R.string.details_no_ads))
+                    }
                 }
-            }
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
-    }
-
-    private fun updateActionState(state: State) {
-        runOnUiThread {
-            binding.layoutDetailsInstall.btnDownload.apply {
-                updateState(state)
-                if (state == State.INSTALLING) {
-                    setButtonState(false)
-                    setText(R.string.action_installing)
-                }
+                txtLine4.text = tags.joinToString(separator = " • ")
             }
         }
     }
@@ -548,32 +503,15 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    @Synchronized
-    private fun startDownload() {
-        when (downloadStatus) {
-            DownloadStatus.DOWNLOADING -> {
-                flip(1)
-                toast("Already downloading")
-            }
-
-            else -> {
-                flip(1)
-                purchase()
-            }
-        }
-    }
-
-    private fun purchase() {
-        bottomSheetBehavior.isHideable = false
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        updateActionState(State.PROGRESS)
-
+    private fun purchase(app: App) {
         if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
-                    if (it) viewModel.download(app) else flip(0)
+                    if (it) viewModel.download(app) else {
+                        // TODO: Ask for permission again or redirect to Permission Manager
+                    }
                 }
             }
         } else {
@@ -581,149 +519,185 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun updateProgress(progress: Int, speed: Long = -1, timeRemaining: Long = -1) {
-        runOnUiThread {
-            if (progress == 100) {
-                binding.layoutDetailsInstall.btnDownload.setText(getString(R.string.action_installing))
-                return@runOnUiThread
-            }
+    private fun updateProgress(progress: Int) {
+        // No need to update progress if it is already 100% / completed
+        transformIcon(progress != 100)
+        if (progress == 100) return
 
-            binding.layoutDetailsInstall.apply {
-                txtProgressPercent.text = ("${progress}%")
-                progressDownload.apply {
-                    this.progress = progress
-                    isIndeterminate = progress < 1
-                }
-                txtEta.text = CommonUtil.getETAString(requireContext(), timeRemaining)
-                txtSpeed.text = CommonUtil.getDownloadSpeedString(requireContext(), speed)
+        binding.layoutDetailsApp.apply {
+            progressDownload.progress = progress
+            progressDownload.isIndeterminate = progress < 1
+        }
+    }
+
+    private fun transformIcon(ongoing: Boolean = false) {
+        if (::iconDrawable.isInitialized.not()) return
+
+        val imgIcon = binding.layoutDetailsApp.imgIcon
+        val progressDownload = binding.layoutDetailsApp.progressDownload
+
+        // Avoids flickering when the download is in progress
+        if (progressDownload.isShown && ongoing) return
+        if (!progressDownload.isShown && !ongoing) return
+
+        binding.layoutDetailsApp.progressDownload.isVisible = ongoing
+
+        val scaleFactor = if (ongoing) 0.75f else 1f
+        val scale = listOf(
+            ObjectAnimator.ofFloat(imgIcon, "scaleX", scaleFactor),
+            ObjectAnimator.ofFloat(imgIcon, "scaleY", scaleFactor)
+        )
+
+        scale.forEach { animation ->
+            animation.apply {
+                interpolator = AccelerateDecelerateInterpolator()
+                duration = 250
+                start()
             }
+        }
+
+        imgIcon.load(iconDrawable) {
+            transformations(
+                if (ongoing) {
+                    CircleCropTransformation()
+                } else {
+                    RoundedCornersTransformation(8.px.toFloat())
+                }
+            )
         }
     }
 
     private fun checkAndSetupInstall() {
         app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
 
-        runOnUiThread {
-            binding.layoutDetailsInstall.btnDownload.let { btn ->
-                btn.setButtonState(true)
-                if (app.isInstalled) {
-                    val isExtendedUpdateEnabled = Preferences.getBoolean(
-                        requireContext(), Preferences.PREFERENCE_UPDATES_EXTENDED
-                    )
-                    val needsExtendedUpdate = !app.certificateSetList.any {
-                        it.certificateSet in CertUtil.getEncodedCertificateHashes(
-                            requireContext(), app.packageName
-                        )
-                    }
-                    isUpdatable = PackageUtil.isUpdatable(
-                        requireContext(),
-                        app.packageName,
-                        app.versionCode.toLong()
-                    )
+        // Setup primary and secondary action buttons
+        binding.layoutDetailsApp.btnPrimaryAction.isEnabled = true
+        binding.layoutDetailsApp.btnPrimaryAction.isEnabled = true
 
-                    val installedVersion =
-                        PackageUtil.getInstalledVersion(requireContext(), app.packageName)
+        if (app.isInstalled) {
+            val isUpdatable = PackageUtil.isUpdatable(requireContext(), app.packageName, app.versionCode.toLong())
+            val hasValidCert = app.certificateSetList.any {
+                it.certificateSet in CertUtil.getEncodedCertificateHashes(requireContext(), app.packageName)
+            }
 
-                    if (isUpdatable && !needsExtendedUpdate || isUpdatable && isExtendedUpdateEnabled) {
-                        binding.layoutDetailsApp.txtLine3.text =
-                            ("$installedVersion ➔ ${app.versionName} (${app.versionCode})")
-                        btn.setText(R.string.action_update)
-                        btn.addOnClickListener {
-                            if (app.versionCode == 0) {
-                                toast(R.string.toast_app_unavailable)
-                            } else {
-                                startDownload()
-                            }
+            if ((isUpdatable && hasValidCert) || (isUpdatable && isExtendedUpdateEnabled)) {
+                binding.layoutDetailsApp.btnPrimaryAction.apply {
+                    text = getString(R.string.action_update)
+                    setOnClickListener {
+                        if (app.versionCode == 0) {
+                            toast(R.string.toast_app_unavailable)
+                            setText(R.string.status_unavailable)
+                        } else {
+                            purchase(app)
                         }
-                    } else {
-                        binding.layoutDetailsApp.txtLine3.text = installedVersion
-                        btn.setText(R.string.action_open)
-                        btn.addOnClickListener { openApp() }
                     }
-                    if (!uninstallActionEnabled) {
-                        binding.layoutDetailsToolbar.toolbar.invalidateMenu()
+                }
+            } else {
+                binding.layoutDetailsApp.apply {
+                    txtLine3.text = PackageUtil.getInstalledVersion(requireContext(), app.packageName)
+                    btnPrimaryAction.apply {
+                        setText(R.string.action_open)
+                        setOnClickListener { openApp() }
+                    }
+                }
+            }
+
+            binding.layoutDetailsApp.btnSecondaryAction.apply {
+                text = getString(R.string.action_uninstall)
+                setOnClickListener {
+                    AppInstaller.uninstall(requireContext(), app.packageName)
+                }
+            }
+        } else {
+            if (app.isFree) {
+                binding.layoutDetailsApp.btnPrimaryAction.setText(R.string.action_install)
+            } else {
+                binding.layoutDetailsApp.btnPrimaryAction.text = app.price
+            }
+
+            binding.layoutDetailsApp.btnPrimaryAction.setOnClickListener {
+                if (authProvider.isAnonymous && !app.isFree) {
+                    toast(R.string.toast_purchase_blocked)
+                    return@setOnClickListener
+                } else if (app.versionCode == 0) {
+                    toast(R.string.toast_app_unavailable)
+                    return@setOnClickListener
+                }
+
+                if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
+                    permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS) {
+                        if (it) {
+                            purchase(app)
+                        } else {
+                            toast(R.string.permissions_denied)
+                        }
                     }
                 } else {
-                    if (downloadStatus in DownloadStatus.running) {
-                        flip(1)
-                    } else if (app.isFree) {
-                        btn.setText(R.string.action_install)
-                    } else {
-                        btn.setText(app.price)
-                    }
+                    purchase(app)
+                }
+            }
 
-                    btn.addOnClickListener {
-                        if (!permissionProvider.isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
-                            permissionProvider.request(PermissionType.INSTALL_UNKNOWN_APPS) {
-                                if (it) {
-                                    btn.setText(R.string.download_metadata)
-                                    startDownload()
-                                }
-                            }
-                        } else if (authProvider.isAnonymous && !app.isFree) {
-                            toast(R.string.toast_purchase_blocked)
-                        } else if (app.versionCode == 0) {
-                            toast(R.string.toast_app_unavailable)
-                        } else {
-                            btn.setText(R.string.download_metadata)
-                            startDownload()
-                        }
-                    }
-
-                    if (uninstallActionEnabled) {
-                        binding.layoutDetailsToolbar.toolbar.invalidateMenu()
-                    }
+            binding.layoutDetailsApp.btnSecondaryAction.apply {
+                text = getString(R.string.title_manual_download)
+                setOnClickListener {
+                    findNavController().navigate(
+                        AppDetailsFragmentDirections
+                            .actionAppDetailsFragmentToManualDownloadSheet(app)
+                    )
                 }
             }
         }
-    }
 
-    @Synchronized
-    private fun flip(nextView: Int) {
-        runOnUiThread {
-            val displayChild = binding.layoutDetailsInstall.viewFlipper.displayedChild
-            if (displayChild != nextView) {
-                binding.layoutDetailsInstall.viewFlipper.displayedChild = nextView
-                if (nextView == 0) checkAndSetupInstall()
+        // Lay out the toolbar again
+        binding.toolbar.invalidateMenu()
+
+        if (app.isInstalled) {
+            binding.toolbar.menu.apply {
+                findItem(R.id.action_home_screen)?.isVisible =
+                    ShortcutManagerUtil.canPinShortcut(requireContext(), app.packageName)
+                findItem(R.id.action_uninstall)?.isVisible = true
+                findItem(R.id.menu_app_settings)?.isVisible = true
+            }
+        } else {
+            binding.toolbar.menu.apply {
+                findItem(R.id.action_home_screen)?.isVisible = false
+                findItem(R.id.action_uninstall)?.isVisible = false
+                findItem(R.id.menu_app_settings)?.isVisible = false
             }
         }
+
+        // Restore icon and progress
+        updateProgress(100)
     }
 
-    private fun inflatePartialApp() {
-        if (::app.isInitialized) {
-            attachHeader()
-            attachBottomSheet()
-            attachActions()
-        }
-    }
+    private fun updateExtraDetails(app: App) {
+        binding.viewFlipper.displayedChild = 1
 
-    private fun inflateExtraDetails(app: App?) {
-        app?.let {
-            binding.viewFlipper.displayedChild = 1
-            inflateAppDescription(app)
-            inflateAppRatingAndReviews(app)
-            inflateAppDevInfo(app)
-            inflateAppDataSafety(app)
-            inflateAppPrivacy(app)
-            inflateAppPermission(app)
+        updateAppDescription(app)
+        updateAppRatingAndReviews(app)
+        updateAppDevInfo(app)
+        updateAppPermission(app)
 
-            if (!authProvider.isAnonymous) {
-                app.testingProgram?.let {
-                    if (it.isAvailable && it.isSubscribed) {
-                        binding.layoutDetailsApp.txtLine1.text = it.displayName
-                    }
+        // Allow users to handle beta subscriptions, if logged in by own account.
+        if (!authProvider.isAnonymous) {
+            // Update app name to the testing program name, if subscribed
+            app.testingProgram?.let {
+                if (it.isAvailable && it.isSubscribed) {
+                    binding.layoutDetailsApp.txtLine1.text = it.displayName
                 }
-
-                inflateBetaSubscription(app)
             }
 
-            if (Preferences.getBoolean(requireContext(), Preferences.PREFERENCE_SIMILAR)) {
-                inflateAppStream(app)
-            }
+            updateBetaSubscription(app)
         }
+
+        if (showSimilarApps) {
+            updateAppStream(app)
+        }
+
+        checkAndSetupInstall()
     }
 
-    private fun inflateAppDescription(app: App) {
+    private fun updateAppDescription(app: App) {
         binding.layoutDetailDescription.apply {
             val installs = CommonUtil.addDiPrefix(app.installs)
 
@@ -780,10 +754,16 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateAppRatingAndReviews(app: App) {
+    private fun updateAppRatingAndReviews(app: App) {
         binding.layoutDetailsReview.apply {
-            averageRating.text = app.rating.average.toString()
-            txtReviewCount.text = app.rating.abbreviatedLabel
+            headerRatingReviews.addClickListener {
+                findNavController().navigate(
+                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
+                        app.displayName,
+                        app.packageName
+                    )
+                )
+            }
 
             var totalStars = 0L
             totalStars += app.rating.oneStar
@@ -803,42 +783,34 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
             txtReviewCount.text = app.rating.abbreviatedLabel
+        }
+    }
 
-            layoutUserReview.visibility =
-                if (authProvider.isAnonymous) View.GONE else View.VISIBLE
+    private fun updateUserReview(review: Review) {
+        binding.layoutDetailsReview.apply {
+            layoutUserReview.visibility = View.VISIBLE
+            inputTitle.setText(review.title)
+            inputReview.setText(review.comment)
+            userStars.rating = review.rating.toFloat()
 
-            btnPostReview.setOnClickListener {
-                if (authProvider.isAnonymous) {
-                    toast(R.string.toast_anonymous_restriction)
-                } else {
-                    addOrUpdateReview(app, Review().apply {
-                        title = inputTitle.text.toString()
-                        rating = userStars.rating.toInt()
-                        comment = inputReview.text.toString()
-                    })
-                }
-            }
-
-            headerRatingReviews.addClickListener {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
-                        app.displayName,
-                        app.packageName
+            if (!authProvider.isAnonymous && app.isInstalled) {
+                btnPostReview.setOnClickListener {
+                    addOrUpdateReview(
+                        app,
+                        Review().apply {
+                            title = inputTitle.text.toString()
+                            rating = userStars.rating.toInt()
+                            comment = inputReview.text.toString()
+                        }
                     )
-                )
+                }
+            } else {
+                layoutUserReview.visibility = View.GONE
             }
         }
     }
 
-    private fun inflateAppDataSafety(app: App) {
-        viewModel.fetchAppDataSafetyReport(app.packageName)
-    }
-
-    private fun inflateAppPrivacy(app: App) {
-        viewModel.fetchAppReport(app.packageName)
-    }
-
-    private fun inflateAppDevInfo(app: App) {
+    private fun updateAppDevInfo(app: App) {
         binding.layoutDetailsDev.apply {
             if (app.developerAddress.isNotEmpty()) {
                 devAddress.apply {
@@ -868,7 +840,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateBetaSubscription(app: App) {
+    private fun updateBetaSubscription(app: App) {
         binding.layoutDetailsBeta.apply {
             app.testingProgram?.let { betaProgram ->
                 if (betaProgram.isAvailable) {
@@ -899,7 +871,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateAppStream(app: App) {
+    private fun updateAppStream(app: App) {
         app.detailsStreamUrl?.let {
             val carouselController =
                 DetailsCarouselController(object : GenericCarouselController.Callbacks {
@@ -946,7 +918,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun inflateAppPermission(app: App) {
+    private fun updateAppPermission(app: App) {
         binding.layoutDetailsPermissions.apply {
             headerPermission.addClickListener {
                 if (app.permissions.isNotEmpty()) {
@@ -997,6 +969,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 else -> {}
             }
         }
+    }
+
+    private fun warnAppUnavailable(app: App) {
+        AuroraApp.events.send(InstallerEvent.Failed(app.packageName).apply {
+            error = getString(R.string.status_unavailable)
+            extra = getString(R.string.toast_app_unavailable)
+        })
     }
 
     /* App Review Helpers */

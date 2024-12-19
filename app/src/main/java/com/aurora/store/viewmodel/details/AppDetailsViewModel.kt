@@ -1,9 +1,11 @@
 package com.aurora.store.viewmodel.details
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
@@ -11,19 +13,26 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.R
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
+import com.aurora.store.util.PackageUtil
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.lang.reflect.Modifier
@@ -32,6 +41,7 @@ import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val appDetailsHelper: AppDetailsHelper,
     private val reviewsHelper: ReviewsHelper,
     private val webDataSafetyHelper: WebDataSafetyHelper,
@@ -69,7 +79,10 @@ class AppDetailsViewModel @Inject constructor(
     private val _favourite = MutableStateFlow<Boolean>(false)
     val favourite = _favourite.asStateFlow()
 
-    val downloadsList get() = downloadHelper.downloadsList
+    val download = combine(app, downloadHelper.downloadsList) { a, list ->
+        if (a.packageName.isBlank()) return@combine null
+        list.find { d -> d.packageName == a.packageName }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -77,7 +90,9 @@ class AppDetailsViewModel @Inject constructor(
                 checkFavourite(packageName)
 
                 val app: App = appStash.getOrPut(packageName) {
-                    appDetailsHelper.getAppByPackageName(packageName)
+                    appDetailsHelper.getAppByPackageName(packageName).apply {
+                        isInstalled = PackageUtil.isInstalled(context, packageName)
+                    }
                 }
 
                 _app.emit(app)
@@ -148,20 +163,42 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
+    fun fetchUserAppReview(app: App) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val stashedUserReview = userReviewStash[app.packageName]
+                if (stashedUserReview != null) {
+                    _userReview.emit(stashedUserReview)
+                    return@launch
+                }
+
+                val isTesting = app.testingProgram?.isSubscribed ?: false
+                val userReview = reviewsHelper.getUserReview(app.packageName, isTesting)
+
+                if (userReview != null) {
+                    userReviewStash[app.packageName] = userReview
+                    _userReview.emit(userReview)
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch user review", exception)
+            }
+        }
+    }
+
     fun postAppReview(packageName: String, review: Review, isBeta: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val userReview = userReviewStash.getOrPut(packageName) {
-                    reviewsHelper.addOrEditReview(
-                        packageName,
-                        review.title,
-                        review.comment,
-                        review.rating,
-                        isBeta
-                    )
-                }
+                val userReview = reviewsHelper.addOrEditReview(
+                    packageName,
+                    review.title,
+                    review.comment,
+                    review.rating,
+                    isBeta
+                )
 
                 if (userReview != null) {
+                    context.toast(R.string.toast_rated_success)
+                    userReviewStash[packageName] = userReview
                     _userReview.emit(userReview)
                 }
             } catch (exception: Exception) {
@@ -206,8 +243,8 @@ class AppDetailsViewModel @Inject constructor(
 
     private fun getLatestExodusReport(packageName: String): Report? {
         val headers: MutableMap<String, String> = mutableMapOf()
-        headers["Content-Type"] = "application/json"
-        headers["Accept"] = "application/json"
+        headers["Content-Type"] = Constants.JSON_MIME_TYPE
+        headers["Accept"] = Constants.JSON_MIME_TYPE
         headers["Authorization"] = "Token ${BuildConfig.EXODUS_API_KEY}"
 
         val url = Constants.EXODUS_SEARCH_URL + packageName

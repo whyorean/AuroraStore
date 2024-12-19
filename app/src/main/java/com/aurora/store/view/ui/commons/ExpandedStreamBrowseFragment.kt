@@ -21,13 +21,11 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyModel
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.R
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
@@ -51,9 +49,8 @@ class ExpandedStreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBind
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutToolbarNative.toolbar.apply {
+        binding.toolbar.apply {
             title = args.title
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
@@ -71,7 +68,7 @@ class ExpandedStreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBind
 
     private fun updateTitle(streamCluster: StreamCluster) {
         if (streamCluster.clusterTitle.isNotEmpty())
-            binding.layoutToolbarNative.toolbar.title = streamCluster.clusterTitle
+            binding.toolbar.title = streamCluster.clusterTitle
     }
 
     private fun attachRecycler() {

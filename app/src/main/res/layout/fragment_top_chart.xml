@@ -33,8 +33,7 @@
             android:id="@+id/top_tab_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
+            android:padding="@dimen/padding_medium"
             app:chipSpacingHorizontal="@dimen/margin_small"
             app:selectionRequired="true"
             app:singleLine="true"
@@ -42,14 +41,14 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_free"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Chip.TopChart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_top_free" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_grossing"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Chip.TopChart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_top_grossing" />
@@ -57,14 +56,14 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_trending"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Chip.TopChart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_trending" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/tab_top_paid"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Chip.TopChart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_top_paid" />

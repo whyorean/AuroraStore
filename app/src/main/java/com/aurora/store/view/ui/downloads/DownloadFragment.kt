@@ -22,7 +22,6 @@ package com.aurora.store.view.ui.downloads
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants.GITLAB_URL
@@ -54,11 +53,7 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutToolbarAction.toolbar.apply {
-            elevation = 0f
-            title = getString(R.string.title_download_manager)
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
-            inflateMenu(R.menu.menu_download_main)
+        binding.toolbar.apply {
             setNavigationOnClickListener { findNavController().navigateUp() }
             setOnMenuItemClickListener {
                 when (it.itemId) {

@@ -22,9 +22,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:divider="@drawable/divider"
     android:orientation="vertical"
     android:paddingStart="@dimen/padding_small"
     android:paddingEnd="@dimen/padding_small"
+    android:showDividers="middle"
     android:visibility="gone"
     tools:visibility="visible">
 
@@ -40,7 +42,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_small"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -61,11 +62,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_beta_Action"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:insetTop="@dimen/margin_xsmall"
-        android:insetBottom="@dimen/margin_xsmall"
-        android:minWidth="128dp"
         android:text="@string/action_join"
         app:cornerRadius="@dimen/radius_small" />
 </LinearLayout>

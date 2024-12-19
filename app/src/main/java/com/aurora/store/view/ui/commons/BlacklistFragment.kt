@@ -20,14 +20,19 @@
 package com.aurora.store.view.ui.commons
 
 import android.content.pm.PackageInfo
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.Constants
+import com.aurora.extensions.toast
 import com.aurora.store.AuroraApp
+import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
 import com.aurora.store.view.epoxy.views.BlackListViewModel_
@@ -35,11 +40,21 @@ import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.all.BlacklistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
 
     private val viewModel: BlacklistViewModel by viewModels()
+
+    private val startForDocumentImport =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) {
+            if (it != null) importBlacklist(it) else toast(R.string.toast_black_import_failed)
+        }
+    private val startForDocumentExport =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(Constants.JSON_MIME_TYPE)) {
+            if (it != null) exportBlacklist(it) else toast(R.string.toast_black_export_failed)
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,37 +66,62 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarNative.apply {
-            imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.visibility = View.GONE
-
-            imgActionPrimary.setOnClickListener {
+        binding.toolbar.apply {
+            inflateMenu(R.menu.menu_blacklist)
+            setNavigationOnClickListener {
                 viewModel.blacklistProvider.blacklist = viewModel.selected
                 findNavController().navigateUp()
             }
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_import -> {
+                        startForDocumentImport.launch(arrayOf(Constants.JSON_MIME_TYPE))
+                    }
 
-            inputSearch.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s.isNullOrEmpty()) {
-                        updateController(viewModel.packages.value)
-                    } else {
-                        val filteredPackages = viewModel.packages.value?.filter {
-                            it.applicationInfo!!.loadLabel(requireContext().packageManager)
-                                .contains(s, true) || it.packageName.contains(s, true)
-                        }
-                        updateController(filteredPackages)
+                    R.id.action_export -> {
+                        startForDocumentExport.launch(
+                            "aurora_store_apps_${Calendar.getInstance().time.time}.json"
+                        )
+                    }
+
+                    R.id.action_select_all -> {
+                        viewModel.selectAll()
+                        binding.recycler.requestModelBuild()
+                        true
+                    }
+
+                    R.id.action_remove_all -> {
+                        viewModel.removeAll()
+                        binding.recycler.requestModelBuild()
+                        true
                     }
                 }
-
-                override fun afterTextChanged(s: Editable?) {}
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {}
-            })
+                true
+            }
         }
+
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    updateController(viewModel.packages.value)
+                } else {
+                    val filteredPackages = viewModel.packages.value?.filter {
+                        it.applicationInfo!!.loadLabel(requireContext().packageManager)
+                            .contains(s, true) || it.packageName.contains(s, true)
+                    }
+                    updateController(filteredPackages)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+        })
     }
 
     override fun onPause() {
@@ -124,5 +164,16 @@ class BlacklistFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                     }
             }
         }
+    }
+
+    private fun importBlacklist(uri: Uri) {
+        viewModel.importBlacklist(requireContext(), uri)
+        binding.recycler.requestModelBuild()
+        toast(R.string.toast_black_import_success)
+    }
+
+    private fun exportBlacklist(uri: Uri) {
+        viewModel.exportBlacklist(requireContext(), uri)
+        toast(R.string.toast_black_export_success)
     }
 }

@@ -18,6 +18,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,18 +27,35 @@
     android:paddingEnd="@dimen/padding_small"
     android:paddingBottom="@dimen/padding_small">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_icon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        tools:src="@drawable/bg_placeholder" />
+    <RelativeLayout
+        android:id="@+id/img_icon_layout"
+        android:layout_width="@dimen/icon_size_large"
+        android:layout_height="@dimen/icon_size_large">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/icon_size_large"
+            android:layout_height="@dimen/icon_size_large"
+            tools:src="@drawable/bg_placeholder" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_download"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:indicatorSize="@dimen/icon_size_large"
+            app:trackThickness="3dp"
+            tools:progress="40" />
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/txt_line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_toEndOf="@id/img_icon"
+        android:layout_toEndOf="@id/img_icon_layout"
         android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Aurora.SubTitle"
         tools:text="App Name" />
@@ -84,4 +102,31 @@
         android:layout_alignEnd="@id/txt_line1"
         android:textAppearance="@style/TextAppearance.Aurora.Line2"
         tools:text="Free" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_line4"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:divider="@drawable/divider"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:weightSum="2">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_secondary_action"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="@string/title_manual_download" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_primary_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="@string/action_install" />
+    </LinearLayout>
+
 </RelativeLayout>

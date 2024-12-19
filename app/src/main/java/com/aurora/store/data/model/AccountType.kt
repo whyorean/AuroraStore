@@ -23,12 +23,3 @@ enum class AccountType {
     ANONYMOUS,
     GOOGLE
 }
-
-enum class State {
-    IDLE,
-    QUEUED,
-    PROGRESS,
-    COMPLETE,
-    CANCELED,
-    INSTALLING,
-}

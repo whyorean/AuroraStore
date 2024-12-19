@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Aurora Store
   ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
   ~
@@ -17,16 +17,17 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <include
-        android:id="@+id/layout_toolbar_action"
-        layout="@layout/view_toolbar_native" />
-
-    <FrameLayout
-        android:id="@+id/settings"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_select_all"
+        android:title="@string/action_select_all" />
+    <item
+        android:id="@+id/action_remove_all"
+        android:title="@string/action_remove_all" />
+    <item
+        android:id="@+id/action_import"
+        android:title="@string/action_import" />
+    <item
+        android:id="@+id/action_export"
+        android:title="@string/action_export" />
+</menu>

@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         // Adjust root view's paddings for edgeToEdge display
         ViewCompat.setOnApplyWindowInsetsListener(B.root) { root, windowInsets ->
             val insets = windowInsets.getInsets(systemBars() or displayCutout() or ime())
-            root.setPadding(0, insets.top, 0, 0)
+            root.setPadding(insets.left, insets.top, insets.right, 0)
             windowInsets
         }
 

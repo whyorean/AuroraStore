@@ -20,11 +20,17 @@
 package com.aurora.store.viewmodel.all
 
 import android.content.Context
-import android.content.pm.PackageInfo
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
+import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.ImportExport
 import com.aurora.store.util.PackageUtil
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -35,13 +41,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InstalledViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val blacklistProvider: BlacklistProvider,
+    private val gson: Gson,
+    private val webAppDetailsHelper: WebAppDetailsHelper
 ) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
-    private val _packages = MutableStateFlow<List<PackageInfo>?>(null)
-    val packages = _packages.asStateFlow()
+    private val _apps = MutableStateFlow<List<App>?>(null)
+    val apps = _apps.asStateFlow()
 
     init {
         fetchApps()
@@ -50,9 +59,34 @@ class InstalledViewModel @Inject constructor(
     fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _packages.value = PackageUtil.getAllValidPackages(context)
+                val packages = PackageUtil.getAllValidPackages(context)
+                    .filterNot { blacklistProvider.isBlacklisted(it.packageName) }
+
+                // Divide the list of packages into chunks of 100 & fetch app details
+                // 50 is a safe number to avoid hitting the rate limit or package size limit
+                val chunkedPackages = packages.chunked(50)
+                val allApps = chunkedPackages.flatMap { chunk ->
+                    webAppDetailsHelper.getAppDetails(chunk.map { it.packageName })
+                }
+
+                _apps.emit(allApps)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps", exception)
+            }
+        }
+    }
+
+    fun exportApps(context: Context, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val favourites: List<Favourite> = apps.value!!.map { app ->
+                    Favourite.fromApp(app, Favourite.Mode.IMPORT)
+                }
+                context.contentResolver.openOutputStream(uri)?.use {
+                    it.write(gson.toJson(ImportExport(favourites)).encodeToByteArray())
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to installed apps", exception)
             }
         }
     }

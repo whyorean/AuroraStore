@@ -19,7 +19,7 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/exodus_card"
     android:layout_width="match_parent"
@@ -41,20 +41,14 @@
         android:id="@+id/txt_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/header_privacy"
         android:text="@string/exodus_progress"
         android:textAppearance="@style/TextAppearance.Aurora.Line1" />
 
     <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/btn_request_analysis"
-        style="@style/Widget.Material3.Button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_status"
-        android:layout_gravity="center_vertical"
-        android:insetTop="@dimen/padding_small"
-        android:insetBottom="@dimen/padding_xsmall"
         android:text="@string/action_request_analysis"
         app:cornerRadius="@dimen/margin_small" />
-
-</RelativeLayout>
+</LinearLayout>

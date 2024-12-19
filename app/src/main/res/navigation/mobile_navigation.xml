@@ -71,12 +71,12 @@
         android:id="@+id/appsGamesFragment"
         android:name="com.aurora.store.view.ui.all.AppsGamesFragment"
         android:label="@string/title_apps_games"
-        tools:layout="@layout/fragment_generic_with_pager" />
+        tools:layout="@layout/fragment_generic_with_search" />
     <fragment
         android:id="@+id/spoofFragment"
         android:name="com.aurora.store.view.ui.spoof.SpoofFragment"
         android:label="@string/title_spoof_manager"
-        tools:layout="@layout/fragment_generic_with_pager" />
+        tools:layout="@layout/fragment_spoof" />
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.aurora.store.view.ui.commons.FavouriteFragment"

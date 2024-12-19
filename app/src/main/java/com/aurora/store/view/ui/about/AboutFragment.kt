@@ -42,10 +42,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar
-        binding.layoutToolbarAction.txtTitle.text = getString(R.string.title_about)
-        binding.layoutToolbarAction.imgActionPrimary.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         // About Details
         binding.imgIcon.load(R.mipmap.ic_launcher)

@@ -21,6 +21,7 @@ package com.aurora.store.viewmodel.all
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.room.favourite.Favourite
@@ -39,26 +40,38 @@ class FavouriteViewModel @Inject constructor(
     private val favouriteDao: FavouriteDao,
     private val gson: Gson
 ) : ViewModel() {
+    private val TAG = FavouriteViewModel::class.java.simpleName
 
     val favouritesList = favouriteDao.favourites()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     fun importFavourites(context: Context, uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
-            context.contentResolver.openInputStream(uri)?.use {
-                val importExport =
-                    gson.fromJson(it.bufferedReader().readText(), ImportExport::class.java)
-                favouriteDao.insertAll(
-                    importExport.favourites.map { fav -> fav.copy(mode = Favourite.Mode.IMPORT) }
-                )
+            try {
+                context.contentResolver.openInputStream(uri)?.use {
+                    val importExport = gson.fromJson(
+                        it.bufferedReader().readText(),
+                        ImportExport::class.java
+                    )
+
+                    favouriteDao.insertAll(
+                        importExport.favourites.map { fav -> fav.copy(mode = Favourite.Mode.IMPORT) }
+                    )
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to import favourites", exception)
             }
         }
     }
 
     fun exportFavourites(context: Context, uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
-            context.contentResolver.openOutputStream(uri)?.use {
-                it.write(gson.toJson(ImportExport(favouritesList.value!!)).encodeToByteArray())
+            try {
+                context.contentResolver.openOutputStream(uri)?.use {
+                    it.write(gson.toJson(ImportExport(favouritesList.value!!)).encodeToByteArray())
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to export favourites", exception)
             }
         }
     }

@@ -35,7 +35,8 @@ object Constants {
     const val SHARE_URL = "https://play.google.com/store/apps/details?id="
 
     const val UPDATE_URL_STABLE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json"
-    const val UPDATE_URL_NIGHTLY = "https://auroraoss.com/downloads/AuroraStore/Feeds/nightly_feed.json"
+    const val UPDATE_URL_NIGHTLY =
+        "https://auroraoss.com/downloads/AuroraStore/Feeds/nightly_feed.json"
 
     const val NOTIFICATION_CHANNEL_EXPORT = "NOTIFICATION_CHANNEL_EXPORT"
     const val NOTIFICATION_CHANNEL_INSTALL = "NOTIFICATION_CHANNEL_INSTALL"
@@ -56,4 +57,6 @@ object Constants {
     const val PAGE_TYPE = "PAGE_TYPE"
     const val TOP_CHART_TYPE = "TOP_CHART_TYPE"
     const val TOP_CHART_CATEGORY = "TOP_CHART_CATEGORY"
+
+    const val JSON_MIME_TYPE = "application/json"
 }

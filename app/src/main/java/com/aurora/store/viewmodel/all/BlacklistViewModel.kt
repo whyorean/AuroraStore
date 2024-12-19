@@ -21,11 +21,14 @@ package com.aurora.store.viewmodel.all
 
 import android.content.Context
 import android.content.pm.PackageInfo
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +40,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BlacklistViewModel @Inject constructor(
     val blacklistProvider: BlacklistProvider,
+    val gson: Gson,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
@@ -57,6 +61,46 @@ class BlacklistViewModel @Inject constructor(
                 _packages.value = PackageUtil.getAllValidPackages(context)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps", exception)
+            }
+        }
+    }
+
+    fun selectAll() {
+        selected.addAll(packages.value?.map { it.packageName } ?: emptyList())
+    }
+
+    fun removeAll() {
+        selected.clear()
+    }
+
+    fun importBlacklist(context: Context, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                context.contentResolver.openInputStream(uri)?.use {
+                    val importedSet: MutableSet<String> = gson.fromJson(
+                        it.bufferedReader().readText(),
+                        object : TypeToken<MutableSet<String?>?>() {}.type
+                    )
+
+                    val knownSet = blacklistProvider.blacklist
+                    knownSet.addAll(importedSet)
+
+                    selected = knownSet
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to import blacklist", exception)
+            }
+        }
+    }
+
+    fun exportBlacklist(context: Context, uri: Uri) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                context.contentResolver.openOutputStream(uri)?.use {
+                    it.write(gson.toJson(blacklistProvider.blacklist).encodeToByteArray())
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to export blacklist", exception)
             }
         }
     }

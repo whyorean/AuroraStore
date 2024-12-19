@@ -22,6 +22,7 @@ package com.aurora.store.data.network
 import android.content.Context
 import android.util.Base64
 import android.util.Log
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.ProxyInfo
@@ -60,16 +61,20 @@ object OkHttpClientModule {
     @Provides
     @Singleton
     fun providesOkHttpClientInstance(certPinner: CertificatePinner, proxy: Proxy?): OkHttpClient {
-        return OkHttpClient().newBuilder()
+        val okHttpClientBuilder = OkHttpClient().newBuilder()
             .proxy(proxy)
-            .certificatePinner(certPinner)
             .connectTimeout(25, TimeUnit.SECONDS)
             .readTimeout(25, TimeUnit.SECONDS)
             .writeTimeout(25, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .followRedirects(true)
             .followSslRedirects(true)
-            .build()
+
+        if (!BuildConfig.DEBUG) {
+            okHttpClientBuilder.certificatePinner(certPinner)
+        }
+
+        return okHttpClientBuilder.build()
     }
 
     @Provides

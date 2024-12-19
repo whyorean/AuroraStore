@@ -26,9 +26,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.Favourite.Companion.toApp
 import com.aurora.store.databinding.FragmentFavouriteBinding
 import com.aurora.store.view.epoxy.views.FavouriteViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
@@ -42,14 +44,13 @@ import java.util.Calendar
 class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
     private val viewModel: FavouriteViewModel by viewModels()
 
-    private val mimeType = "application/json"
     private val startForDocumentImport =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) {
-            if (it != null) importDeviceConfig(it) else toast(R.string.toast_fav_import_failed)
+            if (it != null) importFavourites(it) else toast(R.string.toast_fav_import_failed)
         }
     private val startForDocumentExport =
-        registerForActivityResult(ActivityResultContracts.CreateDocument(mimeType)) {
-            if (it != null) exportDeviceConfig(it) else toast(R.string.toast_fav_export_failed)
+        registerForActivityResult(ActivityResultContracts.CreateDocument(Constants.JSON_MIME_TYPE)) {
+            if (it != null) exportFavourites(it) else toast(R.string.toast_fav_export_failed)
         }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +66,7 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
         binding.toolbar.apply {
             setOnMenuItemClickListener {
                 when (it.itemId) {
-                    R.id.action_import -> startForDocumentImport.launch(arrayOf(mimeType))
+                    R.id.action_import -> startForDocumentImport.launch(arrayOf(Constants.JSON_MIME_TYPE))
                     R.id.action_export -> {
                         startForDocumentExport.launch(
                             "aurora_store_favourites_${Calendar.getInstance().time.time}.json"
@@ -103,7 +104,7 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
                         FavouriteViewModel_()
                             .id(it.packageName.hashCode())
                             .favourite(it)
-                            .onClick { _ -> openDetailsFragment(it.packageName) }
+                            .onClick { _ -> openDetailsFragment(it.packageName, it.toApp()) }
                             .onFavourite { _ -> viewModel.removeFavourite(it.packageName) }
                     )
                 }
@@ -111,13 +112,13 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
         }
     }
 
-    private fun importDeviceConfig(uri: Uri) {
+    private fun importFavourites(uri: Uri) {
         viewModel.importFavourites(requireContext(), uri)
         binding.recycler.requestModelBuild()
         toast(R.string.toast_fav_import_success)
     }
 
-    private fun exportDeviceConfig(uri: Uri) {
+    private fun exportFavourites(uri: Uri) {
         viewModel.exportFavourites(requireContext(), uri)
         toast(R.string.toast_fav_export_success)
     }

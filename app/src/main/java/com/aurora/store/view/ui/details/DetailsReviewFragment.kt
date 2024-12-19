@@ -58,11 +58,9 @@ class DetailsReviewFragment : BaseFragment<FragmentDetailsReviewBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarActionReview.apply {
-            txtTitle.text = args.displayName
-            toolbar.setOnClickListener {
-                findNavController().navigateUp()
-            }
+        binding.toolbar.apply {
+            title = args.displayName
+            setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         viewModel.liveData.observe(viewLifecycleOwner) {
@@ -91,6 +89,7 @@ class DetailsReviewFragment : BaseFragment<FragmentDetailsReviewBinding>() {
         binding.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             when (checkedIds[0]) {
                 R.id.filter_review_all -> filter = Review.Filter.ALL
+                R.id.filter_newest_first -> filter = Review.Filter.NEWEST
                 R.id.filter_review_critical -> filter = Review.Filter.CRITICAL
                 R.id.filter_review_positive -> filter = Review.Filter.POSITIVE
                 R.id.filter_review_five -> filter = Review.Filter.FIVE

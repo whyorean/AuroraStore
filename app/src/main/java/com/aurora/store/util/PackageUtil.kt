@@ -27,11 +27,13 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.aurora.extensions.isHuawei
@@ -40,11 +42,16 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.R
 import java.util.Locale
 
 object PackageUtil {
 
     private const val TAG = "PackageUtil"
+
+    private const val PACKAGE_NAME_MICRO_G = "com.google.android.gms"
+    private const val VERSION_CODE_MICRO_G = 240913402
+    private const val VERSION_CODE_MICRO_G_HUAWEI = 240913007
 
     fun getAllValidPackages(context: Context): List<PackageInfo> {
         val sharedLibs = context.packageManager.systemSharedLibraryNames ?: emptyArray()
@@ -55,6 +62,19 @@ object PackageUtil {
                 it.applicationInfo!!.loadLabel(context.packageManager).toString()
                     .lowercase(Locale.getDefault())
             }
+    }
+
+    fun hasSupportedMicroG(context: Context): Boolean {
+        val isGoogle = CertUtil.isGoogleGMS(context, PACKAGE_NAME_MICRO_G)
+
+        // Do not check for MicroG if Google Play Services is installed
+        if (isGoogle) return false
+
+        return if (isHuawei) {
+            isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G_HUAWEI)
+        } else {
+            isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G)
+        }
     }
 
     fun isInstalled(context: Context, packageName: String): Boolean {
@@ -215,6 +235,20 @@ object PackageUtil {
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to get icon for package!", exception)
             null
+        }
+    }
+
+    fun getIconDrawableForPackage(context: Context, packageName: String): Drawable? {
+        val placeholder = AppCompatResources.getDrawable(context, R.drawable.bg_placeholder)
+
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
+            val applicationInfo = packageInfo.applicationInfo ?: return placeholder
+
+            applicationInfo.loadIcon(context.packageManager)
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to get icon for package!", exception)
+            placeholder
         }
     }
 

@@ -19,36 +19,47 @@
 
 package com.aurora.store.view.ui.all
 
-import android.content.pm.PackageInfo
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.Constants
+import com.aurora.extensions.toast
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
+import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.databinding.FragmentGenericWithSearchBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
-import com.aurora.store.view.epoxy.views.PackageInfoViewModel_
+import com.aurora.store.view.epoxy.views.app.AppListViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
 
     private val viewModel: InstalledViewModel by viewModels()
 
+    private val startForDocumentExport =
+        registerForActivityResult(ActivityResultContracts.CreateDocument(Constants.JSON_MIME_TYPE)) {
+            if (it != null) exportInstalledApps(it) else toast(R.string.toast_fav_export_failed)
+        }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.packages.collect {
+            viewModel.apps.collect {
                 updateController(it)
             }
         }
@@ -67,38 +78,47 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
 
         // Toolbar
-        binding.layoutToolbarNative.apply {
-            imgActionPrimary.visibility = View.VISIBLE
-            imgActionSecondary.visibility = View.GONE
-
-            imgActionPrimary.setOnClickListener { findNavController().navigateUp() }
-
-            inputSearch.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s.isNullOrEmpty()) {
-                        updateController(viewModel.packages.value)
-                    } else {
-                        val filteredPackages = viewModel.packages.value?.filter {
-                            it.applicationInfo!!.loadLabel(requireContext().packageManager)
-                                .contains(s, true) || it.packageName.contains(s, true)
-                        }
-                        updateController(filteredPackages)
+        binding.toolbar.apply {
+            inflateMenu(R.menu.menu_import_export)
+            setNavigationOnClickListener { findNavController().navigateUp() }
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_export -> {
+                        startForDocumentExport.launch(
+                            "aurora_store_apps_${Calendar.getInstance().time.time}.json"
+                        )
+                        true
                     }
-                }
 
-                override fun afterTextChanged(s: Editable?) {}
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
+                    else -> false
                 }
-            })
+            }
         }
+
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    updateController(viewModel.apps.value)
+                } else {
+                    val filteredPackages = viewModel.apps.value?.filter {
+                        it.displayName.contains(s, true) || it.packageName.contains(s, true)
+                    }
+                    updateController(filteredPackages)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+        })
     }
 
-    private fun updateController(packages: List<PackageInfo>?) {
+    private fun updateController(packages: List<App>?) {
         binding.recycler.withModels {
             setFilterDuplicates(true)
             if (packages == null) {
@@ -116,12 +136,21 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                 )
                 packages.forEach { app ->
                     add(
-                        PackageInfoViewModel_()
+                        AppListViewModel_()
                             .id(app.packageName.hashCode())
-                            .packageInfo(app)
-                            .click { _ -> openDetailsFragment(app.packageName) }
+                            .app(app)
+                            .click { _ ->
+                                openDetailsFragment(
+                                    app.packageName,
+                                    app
+                                )
+                            }
                             .longClick { _ ->
-                                openAppMenuSheet(MinimalApp.fromPackageInfo(requireContext(), app))
+                                openAppMenuSheet(
+                                    MinimalApp.fromApp(
+                                        app
+                                    )
+                                )
                                 false
                             }
                     )
@@ -130,4 +159,8 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         }
     }
 
+    private fun exportInstalledApps(uri: Uri) {
+        viewModel.exportApps(requireContext(), uri)
+        toast(R.string.toast_fav_export_success)
+    }
 }

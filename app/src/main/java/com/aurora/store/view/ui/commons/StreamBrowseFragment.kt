@@ -21,12 +21,10 @@ package com.aurora.store.view.ui.commons
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.R
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
@@ -48,9 +46,8 @@ class StreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
         streamCluster = args.cluster
 
         // Toolbar
-        binding.layoutToolbarNative.toolbar.apply {
+        binding.toolbar.apply {
             title = streamCluster.clusterTitle
-            navigationIcon = ContextCompat.getDrawable(view.context, R.drawable.ic_arrow_back)
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
