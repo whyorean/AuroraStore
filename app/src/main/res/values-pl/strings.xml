@@ -149,7 +149,7 @@
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
     <string name="pref_dialog_to_apply_restart">Zmiany zaczną obowiązywać po ponownym uruchomieniu aplikacji</string>
-    <string name="onboarding_permission_installer_desc">Zezwól na instalację aplikacji z Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
     <string name="onboarding_permission_esa_desc">Do zapisu rozszerzeń APK (plików OBB) dla dużych gier i aplikacji.</string>
@@ -198,7 +198,7 @@
     <string name="download_pause_all">Wstrzymaj wszystkie</string>
     <string name="download_none">Brak pobranych</string>
     <string name="download_metadata">Pobieranie metadanych</string>
-    <string name="download_force_clear_all">Wyczyść wszystkie (wymuś)</string>
+    <string name="download_force_clear_all">Wyczyść wszystkie</string>
     <string name="download_failed">Pobieranie nieudane</string>
     <string name="download_eta_calculating">Obliczanie</string>
     <string name="download_completed">Pobieranie zakończone</string>
@@ -413,4 +413,11 @@
     <string name="default_spoof">Domyślny</string>
     <string name="available_spoof">Dostępny</string>
     <string name="toast_permission_esm_restart">Może być konieczne ponowne uruchomienie aplikacji, aby uwzględnić przyznane uprawnienia.</string>
+    <string name="action_remove_all">Usuń wszystko</string>
+    <string name="action_select_all">Zaznacz wszystko</string>
+    <string name="toast_black_import_failed">Nie udało się zaimportować czarnej listy!</string>
+    <string name="toast_black_export_failed">Nie udało się wyeksportować czarnej listy!</string>
+    <string name="toast_black_import_success">Zaimportowano czarną listę!</string>
+    <string name="toast_black_export_success">Wyeksportowano czarną listę!</string>
+    <string name="filter_latest">Najnowsze</string>
 </resources>
