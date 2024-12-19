@@ -235,11 +235,11 @@
     <string name="app_updater_service_notif_title">Descarga de aplicaciones en segundo plano</string>
     <string name="installer_am_unavailable">Instala App Manager o cambia el instalador.</string>
     <string name="pref_install_mode_am">Instalador AM</string>
-    <string name="download_paused">En pausa • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">En pausa •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_eta_hrs">Quedan %1$d horas, %2$d minutos, %3$d segundos</string>
     <string name="download_eta_min">Quedan %1$d minutos %2$d segundos</string>
     <string name="download_eta_sec">Quedan %1$d segundos</string>
-    <string name="download_progress">Descargando • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Descargando •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Notificaciones</string>
     <string name="session_good">¡Guau! Todo está bien.</string>
     <string name="session_init">Preparando las cosas…</string>
@@ -417,4 +417,11 @@
     <string name="available_spoof">Disponible</string>
     <string name="default_spoof">Por defecto</string>
     <string name="toast_permission_esm_restart">Es posible que tengas que reiniciar la aplicación para que los permisos surtan efecto.</string>
+    <string name="action_select_all">Seleccionar todo</string>
+    <string name="toast_black_export_failed">¡Error al exportar la lista negra!</string>
+    <string name="toast_black_import_success">¡Lista negra importada!</string>
+    <string name="toast_black_export_success">¡Lista negra exportada!</string>
+    <string name="action_remove_all">Eliminar todo</string>
+    <string name="filter_latest">Más reciente</string>
+    <string name="toast_black_import_failed">¡Error al importar la lista negra!</string>
 </resources>
