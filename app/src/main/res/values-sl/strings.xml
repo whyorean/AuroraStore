@@ -147,7 +147,7 @@
     <string name="installer_status_failure_blocked">Namestitev je bila blokirana</string>
     <string name="installer_status_user_action">Čakam na potrditev uporabnika</string>
     <string name="device_miui_description">Prosimo, izključite optimizacije MIUI, da omogočite nameščanje ali uporabite nameščanje s servisom ali korensko nameščanje.</string>
-    <string name="download_paused">Zaustavljeno • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Zaustavljeno •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="pref_install_mode_shizuku">Shizuku namestitveni program</string>
     <string name="pref_install_mode_am">AM namestitveni program</string>
     <string name="pref_install_delete_summary">Prenešeni APK-ji bodo izbrisani takoj po namestitvi</string>
@@ -172,7 +172,7 @@
     <string name="download_eta_hrs">še %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">še %1$dm %2$ds</string>
     <string name="download_eta_sec">še %1$ds</string>
-    <string name="download_progress">Prenašanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Prenašanje •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_mode_session">Sejni namestitveni program</string>
     <string name="pref_install_mode_summary">Izberite način namestitve APK</string>
     <string name="pref_network_title">Omreženje</string>
@@ -415,4 +415,9 @@
     <string name="toast_permission_esm_restart">Morda boste morali vnovično zagnati aplikacijo za uveljavitev odobrenega dovoljenja.</string>
     <string name="action_remove_all">Odstrani vse</string>
     <string name="action_select_all">Izberi vse</string>
+    <string name="filter_latest">Zadnje</string>
+    <string name="toast_black_import_failed">Uvoz črne liste ni uspel!</string>
+    <string name="toast_black_export_failed">Izvoz črne liste ni uspel!</string>
+    <string name="toast_black_import_success">Črna lista uvožena!</string>
+    <string name="toast_black_export_success">Črna lista izvožena!</string>
 </resources>
