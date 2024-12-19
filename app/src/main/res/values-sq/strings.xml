@@ -240,7 +240,7 @@
     <string name="action_enabled">E aktivizuar</string>
     <string name="action_uninstall_confirmation">Doni të çinstalohet ky aplikacion?</string>
     <string name="failed_to_fetch_report">S’u arrit të sillet raport privatësie</string>
-    <string name="download_progress">Po shkarkohet • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Po shkarkohet •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Njoftime</string>
     <string name="pref_vending_version_device">Parazgjedhje (nga formësim pajisjeje)</string>
     <string name="pref_network_proxy_url">URL ndërmjetësi</string>
@@ -299,7 +299,7 @@
     <string name="check_connectivity">Kontrolloni lidhjen në rrjet</string>
     <string name="app_language">Gjuhë Aplikacioni</string>
     <string name="action_request_analysis">Kërkoni analizë të re</string>
-    <string name="download_paused">Ndalur • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Ndalur •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku s’është instaluar, ose s’është ujdisur si duhet.</string>
     <string name="action_home_screen">Shtoje te Skena e Kreut</string>
     <string name="download_clear_finished">Spastrimi përfundoi</string>
@@ -413,4 +413,10 @@
     <string name="remove_dispenser_title">Hiqe distributorin</string>
     <string name="default_spoof">Parazgjedhje</string>
     <string name="toast_permission_esm_restart">Mund t’ju duhet të rinisni aplikacionin, që të pasqyrohet akordimi i lejeve.</string>
+    <string name="toast_black_export_failed">S’u arrit të eksportohej listë ndalimesh!</string>
+    <string name="toast_black_export_success">Lista e ndalimeve u eksportua!</string>
+    <string name="toast_black_import_failed">S’u arrit të importohej listë ndalimesh!</string>
+    <string name="action_select_all">Përzgjidhi krejt</string>
+    <string name="toast_black_import_success">Lista e ndalimeve u importua!</string>
+    <string name="action_remove_all">Hiqi krejt</string>
 </resources>
