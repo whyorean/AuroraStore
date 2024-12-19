@@ -413,4 +413,6 @@
     <string name="available_spoof">Na voljo</string>
     <string name="default_spoof">Privzeto</string>
     <string name="toast_permission_esm_restart">Morda boste morali vnovično zagnati aplikacijo za uveljavitev odobrenega dovoljenja.</string>
+    <string name="action_remove_all">Odstrani vse</string>
+    <string name="action_select_all">Izberi vse</string>
 </resources>
