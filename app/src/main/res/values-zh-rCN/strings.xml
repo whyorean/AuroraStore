@@ -417,4 +417,11 @@
     <string name="default_spoof">默认</string>
     <string name="available_spoof">可用</string>
     <string name="toast_permission_esm_restart">可能必须重启应用权限授予才能生效。</string>
+    <string name="action_remove_all">全部删除</string>
+    <string name="action_select_all">全选</string>
+    <string name="filter_latest">最新</string>
+    <string name="toast_black_export_failed">导出黑名单失败！</string>
+    <string name="toast_black_import_success">已导入黑名单！</string>
+    <string name="toast_black_export_success">已导出黑名单！</string>
+    <string name="toast_black_import_failed">导入黑名单失败！</string>
 </resources>

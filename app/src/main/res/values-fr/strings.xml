@@ -2,11 +2,11 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="filter_review_two">Deux</string>
     <string name="filter_review_three">Trois</string>
-    <string name="filter_review_positive">Positif</string>
+    <string name="filter_review_positive">Favorables</string>
     <string name="filter_review_one">Un</string>
     <string name="filter_review_four">Quatre</string>
     <string name="filter_review_five">Cinq</string>
-    <string name="filter_review_critical">Critique</string>
+    <string name="filter_review_critical">Défavorables</string>
     <string name="installer_status_failure_blocked">L’installation a été bloquée</string>
     <string name="installer_status_failure">Échec de l’installateur</string>
     <string name="installer_status_failure_session">Impossible de créer une session</string>
@@ -235,14 +235,14 @@
     <string name="app_updater_service_notif_title">Téléchargement des applis en arrière-plan</string>
     <string name="pref_install_mode_am">Installateur AM</string>
     <string name="installer_am_unavailable">Installez App Manager ou changez le programme d’installation.</string>
-    <string name="download_paused">En pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">En pause •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_enjoy">Connectez-vous et profitez.</string>
     <string name="session_verifying">Vérification de la session</string>
     <string name="session_verifying_google">Vérification de la Session Google</string>
     <string name="download_eta_hrs">%1$d h %2$d min %3$ds restants</string>
     <string name="onboarding_permission_notifications">Notifications</string>
     <string name="download_eta_min">%1$d min %2$d s restantes</string>
-    <string name="download_progress">Téléchargement • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Téléchargement •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Envoyer des notifications concernant le statut des installations</string>
     <string name="session_good">Waouh ! Tout va bien.</string>
     <string name="expand">Développer</string>
@@ -413,4 +413,11 @@
     <string name="default_spoof">Défaut</string>
     <string name="available_spoof">Disponible</string>
     <string name="toast_permission_esm_restart">Un redémarrage de l’application sera éventuellement nécessaire pour prendre en compte cette nouvelle permission.</string>
+    <string name="filter_latest">Récents</string>
+    <string name="toast_black_export_failed">L\'exportation de la liste noire a échoué.</string>
+    <string name="toast_black_export_success">Liste noire exportée !</string>
+    <string name="action_select_all">Tout sélectionner</string>
+    <string name="action_remove_all">Tout retirer</string>
+    <string name="toast_black_import_failed">L\'importation de la liste noire a échoué.</string>
+    <string name="toast_black_import_success">Liste noire importée !</string>
 </resources>

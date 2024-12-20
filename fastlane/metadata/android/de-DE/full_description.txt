@@ -9,4 +9,4 @@ mit oder ohne Google Play Services oder MicroG.
 • Kontoanmeldung: Du kannst dich entweder mit einem persönlichen oder einem anonymen Konto anmelden
 • Geräte- und Gebietsschema-Spoofing: Ändere dein Gerät und/oder Ihr Gebietsschema, um auf geografisch gesperrte Apps zuzugreifen
 • Exodus-Privacy-Integration: Tracker sofort in der App sehen
-• Blacklisting für Updates: Updates für bestimmte Apps ignorieren
+• Sperrliste für Updates: Updates für bestimmte Apps ignorieren
