@@ -104,6 +104,7 @@ class AppUpdateView @JvmOverloads constructor(
         if (download != null) {
             binding.btnAction.updateState(download.downloadStatus)
             when (download.downloadStatus) {
+                DownloadStatus.VERIFYING,
                 DownloadStatus.QUEUED -> {
                     binding.progressDownload.isIndeterminate = true
                     animateImageView(scaleFactor = 0.75f)

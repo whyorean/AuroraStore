@@ -168,6 +168,17 @@ class DownloadWorker @AssistedInject constructor(
             }
         }
 
+        try {
+            // Verify all downloaded files
+            Log.i(TAG, "Verifying downloaded files")
+            notifyStatus(DownloadStatus.VERIFYING)
+            requestList.forEach { require(verifyFile(it)) }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to verify downloaded files!", exception)
+            onFailure()
+            return Result.failure()
+        }
+
         // Mark download as completed
         onSuccess()
         return Result.success()
@@ -239,11 +250,9 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun downloadFile(gFile: GPlayFile): Result {
         return withContext(Dispatchers.IO) {
             val file = PathUtil.getLocalFile(appContext, gFile, download)
-            val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
-            val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256
 
-            // If file exists and sha matches the request, no need to download again
-            if (file.exists() && validSha(file, expectedSha, algorithm)) {
+            // If file exists and has integrity intact, no need to download again
+            if (file.exists() && verifyFile(gFile)) {
                 Log.i(TAG, "$file is already downloaded!")
                 downloadedBytes += file.length()
                 return@withContext Result.success()
@@ -268,11 +277,6 @@ class DownloadWorker @AssistedInject constructor(
                     FileOutputStream(tmpFile, !isNewFile).use {
                         input.copyTo(it, gFile.size).collect { p -> onProgress(p) }
                     }
-                }
-
-                // Ensure downloaded file matches expected sha
-                if (!validSha(tmpFile, expectedSha, algorithm)) {
-                    throw Exception("Incorrect hash for $tmpFile")
                 }
 
                 if (!tmpFile.renameTo(file)) {
@@ -346,6 +350,7 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {
+            DownloadStatus.VERIFYING,
             DownloadStatus.CANCELLED -> return
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
@@ -362,14 +367,15 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Validates whether given file has the expected SHA hash sum.
-     * @param file [File] to check
-     * @param expectedSha Expected SHA hash sum
-     * @param algorithm [Algorithm] of the SHA
-     * @return A boolean whether the given file has the expected SHA or not.
+     * Verifies integrity of a downloaded [GPlayFile].
+     * @param gFile [GPlayFile] to verify
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun validSha(file: File, expectedSha: String, algorithm: Algorithm): Boolean {
+    private suspend fun verifyFile(gFile: GPlayFile): Boolean {
+        val file = PathUtil.getLocalFile(appContext, gFile, download)
+        val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
+        val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256
+
         return withContext(Dispatchers.IO) {
             val messageDigest = MessageDigest.getInstance(algorithm.value)
             DigestInputStream(file.inputStream(), messageDigest).use { input ->

@@ -9,7 +9,8 @@ enum class DownloadStatus(@StringRes val localized: Int) {
     CANCELLED(R.string.status_cancelled),
     COMPLETED(R.string.status_completed),
     QUEUED(R.string.status_queued),
-    UNAVAILABLE(R.string.status_unavailable);
+    UNAVAILABLE(R.string.status_unavailable),
+    VERIFYING(R.string.status_verifying);
 
     companion object {
         val finished = listOf(FAILED, CANCELLED, COMPLETED)
