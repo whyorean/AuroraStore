@@ -234,13 +234,13 @@
     <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
     <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
     <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir paša ziņā.</string>
-    <string name="download_progress">Lejupielādē • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Lejupielādē •<xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_delete_summary">Lejupielādētie APK tiks izdzēsti uzreiz pēc uzstādīšanas</string>
     <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
     <string name="details_dependencies">Atkarības</string>
     <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
     <string name="pref_filter_fdroid_summary">Nepārbaudīt atjauninājumus lietotnēm, kuras ir lejupielādētas vai uzstādītas no F-Droid</string>
-    <string name="download_paused">Apturēta • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Apturēta •<xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="details_beta_description">Būs pieejamas jaunas iespējas un nepilnības pirms publicēšanas. Sniedzot atgriezenisko saiti izstrādātājiem tiks palīdzēts viņiem veikt uzlabojumus.</string>
     <string name="details_gsf_dependent">Nepieciešams GSF</string>
     <string name="download_eta_hrs">Atlicis %1$dh %2$dm %3$ds</string>
@@ -417,4 +417,11 @@
     <string name="default_spoof">Noklusējums</string>
     <string name="available_spoof">Pieejams</string>
     <string name="toast_permission_esm_restart">Var būt nepieciešams pārsāknēt lietotni, lai atspoguļotu nodrošināto atļauju.</string>
+    <string name="action_remove_all">Noņemt visu</string>
+    <string name="filter_latest">Jaunākās</string>
+    <string name="toast_black_import_failed">Neizdevās ievietot melno sarakstu.</string>
+    <string name="toast_black_import_success">Melnais saraksts ievietots.</string>
+    <string name="toast_black_export_success">Melnais saraksts izgūts.</string>
+    <string name="toast_black_export_failed">Neizdevās izgūt melno sarakstu.</string>
+    <string name="action_select_all">Atlasīt visu</string>
 </resources>
