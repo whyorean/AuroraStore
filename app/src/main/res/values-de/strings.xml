@@ -101,7 +101,7 @@
     <string name="purchase_failed">Download fehlgeschlagen</string>
     <string name="pref_ui_title">Anpassung</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
-    <string name="pref_install_mode_summary">Methode der APK-Installation wählen</string>
+    <string name="pref_install_mode_summary">Methode der APK-Installation auswählen</string>
     <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach Installation löschen</string>
@@ -245,8 +245,8 @@
     <string name="menu">Menü</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="search_hint">Nach Apps und Spielen suchen</string>
-    <string name="download_paused">Angehalten • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Wird heruntergeladen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Angehalten •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Wird heruntergeladen •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Benachrichtigungen</string>
     <string name="onboarding_permission_notifications_desc">Benachrichtigungen zum Stand der Installationen senden</string>
     <string name="session_verifying_google">Google-Sitzung wird überprüft</string>
@@ -298,7 +298,7 @@
     <string name="action_uninstall_confirmation">Soll diese App deinstalliert werden?</string>
     <string name="title_apps_sale_provider">Anbieter: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Keine Apps im Angebot gefunden</string>
-    <string name="pref_download_directory_error">Gewähltes Verzeichnis ist schreibgeschützt</string>
+    <string name="pref_download_directory_error">Ausgewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
     <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
@@ -417,4 +417,11 @@
     <string name="default_spoof">Standard</string>
     <string name="available_spoof">Verfügbar</string>
     <string name="toast_permission_esm_restart">Möglicherweise musst die App neu starten, damit die Berechtigung übernommen wird.</string>
+    <string name="action_remove_all">Alles entfernen</string>
+    <string name="action_select_all">Alles auswählen</string>
+    <string name="toast_black_export_failed">Exportieren der Sperrliste fehlgeschlagen!</string>
+    <string name="toast_black_import_success">Sperrliste importiert!</string>
+    <string name="toast_black_export_success">Sperrliste exportiert!</string>
+    <string name="toast_black_import_failed">Importieren der Sperrliste fehlgeschlagen!</string>
+    <string name="filter_latest">Neueste</string>
 </resources>
