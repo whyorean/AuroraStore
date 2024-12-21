@@ -179,7 +179,7 @@
     <string name="pref_install_delete_title">Удалить APK-файлы после установки</string>
     <string name="pref_install_delete_summary">Загруженные APK-файлы будут удаляться сразу после установки</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Игнорировать F-Droid приложения в Обновлениях и Установленных приложениях</string>
+    <string name="pref_filter_fdroid_summary">Не проверять обновления для приложений, загруженных или установленных с F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
@@ -235,8 +235,8 @@
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
     <string name="pref_install_mode_am">AppManager</string>
-    <string name="download_paused">Приостановлено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Загрузка • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Приостановлено •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Загрузка •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Последний сеанс отменен</string>
     <string name="session_verifying">Проверка сеанса</string>
     <string name="session_verifying_google">Проверка сеанса Google</string>
@@ -301,7 +301,7 @@
     <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического и самостоятельного обновления в часах.</string>
     <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
-    <string name="pref_aurora_only_desc">Показывать в разделе обновлений и установленных приложений только приложения, установленные из Aurora Store</string>
+    <string name="pref_aurora_only_desc">Проверять обновления для приложений, установленных только с Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
     <string name="title_app_settings">Настройки приложения</string>
     <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
@@ -414,4 +414,14 @@
     <string name="notification_channel_install">Уведомление об установке</string>
     <string name="notification_channel_downloads">Уведомление о загрузках</string>
     <string name="notification_channel_export">Уведомление об экспортировании приложения</string>
+    <string name="action_remove_all">Удалить всё</string>
+    <string name="filter_latest">Последнее</string>
+    <string name="toast_black_import_failed">Не удалось импортировать чёрный список!</string>
+    <string name="toast_black_import_success">Чёрный список импортирован!</string>
+    <string name="toast_black_export_success">Чёрный список экспортирован!</string>
+    <string name="default_spoof">По умолчанию</string>
+    <string name="action_select_all">Выбрать всё</string>
+    <string name="toast_permission_esm_restart">Вам может потребоваться перезагрузить приложение, чтобы применить выданное разрешение.</string>
+    <string name="toast_black_export_failed">Не удалось экспортировать чёрный список!</string>
+    <string name="available_spoof">Доступно</string>
 </resources>
