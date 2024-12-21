@@ -471,6 +471,7 @@
     <string name="status_completed">Completed</string>
     <string name="status_queued">Queued</string>
     <string name="status_unavailable">Unavailable</string>
+    <string name="status_verifying">Verifying</string>
 
     <!-- UnarchivePackageReceiver -->
     <string name="authentication_required_title">Authentication required</string>
@@ -479,4 +480,7 @@
     <!-- SpoofFragment -->
     <string name="default_spoof">Default</string>
     <string name="available_spoof">Available</string>
+
+    <!-- AppDetailsFragment -->
+    <string name="action_unarchive">Unarchive</string>
 </resources>

@@ -21,6 +21,7 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Environment
+import com.aurora.store.data.room.download.Download
 import java.io.File
 import java.util.UUID
 import com.aurora.gplayapi.data.models.File as GPlayFile
@@ -62,19 +63,33 @@ object PathUtil {
         )
     }
 
-    fun getApkDownloadFile(
-        context: Context,
-        packageName: String,
-        versionCode: Int,
-        file: GPlayFile,
-        sharedLibPackageName: String? = null
-    ): File {
-        val downloadDir = if (!sharedLibPackageName.isNullOrBlank()) {
-            getLibDownloadDir(context, packageName, versionCode, sharedLibPackageName)
-        } else {
-            getAppDownloadDir(context, packageName, versionCode)
+    /**
+     * Returns an instance of java's [File] class for the given [GPlayFile]
+     * @param context [Context]
+     * @param gFile [GPlayFile] to download
+     * @param download An instance of [Download]
+     */
+    fun getLocalFile(context: Context, gFile: GPlayFile, download: Download): File {
+        val isSharedLib = download.sharedLibs.any { it.fileList.contains(gFile) }
+        return when (gFile.type) {
+            GPlayFile.FileType.BASE, GPlayFile.FileType.SPLIT -> {
+                val downloadDir = if (isSharedLib) {
+                    getLibDownloadDir(
+                        context,
+                        download.packageName,
+                        download.versionCode,
+                        download.packageName
+                    )
+                } else {
+                    getAppDownloadDir(context, download.packageName, download.versionCode)
+                }
+                return File(downloadDir, gFile.name)
+            }
+
+            GPlayFile.FileType.OBB, GPlayFile.FileType.PATCH -> {
+                File(getObbDownloadDir(download.packageName), gFile.name)
+            }
         }
-        return File(downloadDir, file.name)
     }
 
     fun getZipFile(context: Context, packageName: String, versionCode: Int): File {
@@ -91,10 +106,6 @@ object PathUtil {
         return File(Environment.getExternalStorageDirectory(), "/Android/obb/$packageName")
     }
 
-    fun getObbDownloadFile(packageName: String, file: GPlayFile): File {
-        return File(getObbDownloadDir(packageName), file.name)
-    }
-
     fun getSpoofDirectory(context: Context): File {
         return File(context.filesDir, SPOOF)
     }
@@ -104,16 +115,6 @@ object PathUtil {
         file.parentFile?.mkdirs()
         file.createNewFile()
         return file
-    }
-
-    fun canReadWriteOBB(context: Context): Boolean {
-        val obbDir = context.obbDir.parentFile
-
-        if (obbDir != null) {
-            return obbDir.exists() && obbDir.canRead() && obbDir.canWrite()
-        }
-
-        return false
     }
 }
 

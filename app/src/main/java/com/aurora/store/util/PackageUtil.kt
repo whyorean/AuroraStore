@@ -40,6 +40,7 @@ import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isTAndAbove
+import com.aurora.extensions.isVAndAbove
 import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
@@ -90,6 +91,14 @@ object PackageUtil {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
             return PackageInfoCompat.getLongVersionCode(packageInfo) >= versionCode.toLong()
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
+    fun isArchived(context: Context, packageName: String): Boolean {
+        return try {
+            isVAndAbove && context.packageManager.getArchivedPackage(packageName) != null
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }

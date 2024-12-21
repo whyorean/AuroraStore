@@ -27,7 +27,6 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
-import com.aurora.store.data.model.Request
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
@@ -125,7 +124,7 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         // Purchase the app (free apps needs to be purchased too)
-        val requestList = mutableListOf<Request>()
+        val requestList = mutableListOf<GPlayFile>()
         if (download.sharedLibs.isNotEmpty()) {
             download.sharedLibs.forEach {
                 PathUtil.getLibDownloadDir(
@@ -135,10 +134,10 @@ class DownloadWorker @AssistedInject constructor(
                     it.packageName
                 ).mkdirs()
                 it.fileList = it.fileList.ifEmpty { purchase(it.packageName, it.versionCode, 0) }
-                requestList.addAll(getDownloadRequest(it.fileList, it.packageName))
+                requestList.addAll(it.fileList)
             }
         }
-        requestList.addAll(getDownloadRequest(download.fileList, null))
+        requestList.addAll(download.fileList)
 
         // Update data for notification
         download.totalFiles = requestList.size
@@ -169,8 +168,13 @@ class DownloadWorker @AssistedInject constructor(
             }
         }
 
-        if (!requestList.all { it.file.exists() }) {
-            Log.e(TAG, "Downloaded files are missing")
+        try {
+            // Verify all downloaded files
+            Log.i(TAG, "Verifying downloaded files")
+            notifyStatus(DownloadStatus.VERIFYING)
+            requestList.forEach { require(verifyFile(it)) }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to verify downloaded files!", exception)
             onFailure()
             return Result.failure()
         }
@@ -237,47 +241,27 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private fun getDownloadRequest(files: List<GPlayFile>, libPackageName: String?): List<Request> {
-        val downloadList = mutableListOf<Request>()
-        files.filter { it.url.isNotBlank() }.forEach {
-            val file = when (it.type) {
-                GPlayFile.FileType.BASE, GPlayFile.FileType.SPLIT -> {
-                    PathUtil.getApkDownloadFile(
-                        appContext, download.packageName, download.versionCode, it, libPackageName
-                    )
-                }
-
-                GPlayFile.FileType.OBB, GPlayFile.FileType.PATCH -> {
-                    PathUtil.getObbDownloadFile(download.packageName, it)
-                }
-            }
-            downloadList.add(Request(it.url, file, it.size, it.sha1, it.sha256))
-        }
-        return downloadList
-    }
-
     /**
      * Downloads the file from the given request.
      * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
-     * @param request A [Request] to download
+     * @param gFile A [GPlayFile] to download
      * @return A [Result] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(request: Request): Result {
+    private suspend fun downloadFile(gFile: GPlayFile): Result {
         return withContext(Dispatchers.IO) {
-            val algorithm = if (request.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
-            val expectedSha = if (algorithm == Algorithm.SHA1) request.sha1 else request.sha256
+            val file = PathUtil.getLocalFile(appContext, gFile, download)
 
-            // If file exists and sha matches the request, no need to download again
-            if (request.file.exists() && validSha(request.file, expectedSha, algorithm)) {
-                Log.i(TAG, "${request.file} is already downloaded!")
-                downloadedBytes += request.file.length()
+            // If file exists and has integrity intact, no need to download again
+            if (file.exists() && verifyFile(gFile)) {
+                Log.i(TAG, "$file is already downloaded!")
+                downloadedBytes += file.length()
                 return@withContext Result.success()
             }
 
             try {
                 // Download as a temporary file to avoid installing corrupted files
                 val tmpFileSuffix = ".tmp"
-                val tmpFile = File(request.file.absolutePath + tmpFileSuffix)
+                val tmpFile = File(file.absolutePath + tmpFileSuffix)
                 val isNewFile = tmpFile.createNewFile()
 
                 val okHttpClient = httpClient as HttpClient
@@ -289,24 +273,19 @@ class DownloadWorker @AssistedInject constructor(
                     headers["Range"] = "bytes=${tmpFile.length()}-"
                 }
 
-                okHttpClient.call(request.url, headers).body?.byteStream()?.use { input ->
+                okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
                     FileOutputStream(tmpFile, !isNewFile).use {
-                        input.copyTo(it, request.size).collect { p -> onProgress(p) }
+                        input.copyTo(it, gFile.size).collect { p -> onProgress(p) }
                     }
                 }
 
-                // Ensure downloaded file matches expected sha
-                if (!validSha(tmpFile, expectedSha, algorithm)) {
-                    throw Exception("Incorrect hash for $tmpFile")
-                }
-
-                if (!tmpFile.renameTo(request.file)) {
+                if (!tmpFile.renameTo(file)) {
                     throw Exception("Failed to remove .tmp extension from $tmpFile")
                 }
 
                 return@withContext Result.success()
             } catch (exception: Exception) {
-                Log.e(TAG, "Failed to download ${request.file}!", exception)
+                Log.e(TAG, "Failed to download $file!", exception)
                 notifyStatus(DownloadStatus.FAILED)
                 return@withContext Result.failure()
             }
@@ -371,6 +350,7 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {
+            DownloadStatus.VERIFYING,
             DownloadStatus.CANCELLED -> return
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
@@ -387,14 +367,15 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Validates whether given file has the expected SHA hash sum.
-     * @param file [File] to check
-     * @param expectedSha Expected SHA hash sum
-     * @param algorithm [Algorithm] of the SHA
-     * @return A boolean whether the given file has the expected SHA or not.
+     * Verifies integrity of a downloaded [GPlayFile].
+     * @param gFile [GPlayFile] to verify
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun validSha(file: File, expectedSha: String, algorithm: Algorithm): Boolean {
+    private suspend fun verifyFile(gFile: GPlayFile): Boolean {
+        val file = PathUtil.getLocalFile(appContext, gFile, download)
+        val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
+        val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256
+
         return withContext(Dispatchers.IO) {
             val messageDigest = MessageDigest.getInstance(algorithm.value)
             DigestInputStream(file.inputStream(), messageDigest).use { input ->

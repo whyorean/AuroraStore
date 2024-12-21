@@ -228,8 +228,23 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         setOnClickListener { openApp() }
                     }
                     binding.layoutDetailsApp.btnSecondaryAction.apply {
+                        isEnabled = true
                         text = getString(R.string.action_cancel)
                         setOnClickListener { viewModel.cancelDownload(app) }
+                    }
+                }
+
+                DownloadStatus.VERIFYING -> {
+                    transformIcon(true)
+                    binding.layoutDetailsApp.btnPrimaryAction.apply {
+                        isEnabled = false
+                        text = getString(R.string.action_open)
+                        setOnClickListener(null)
+                    }
+                    binding.layoutDetailsApp.btnSecondaryAction.apply {
+                        isEnabled = false
+                        text = getString(R.string.action_cancel)
+                        setOnClickListener(null)
                     }
                 }
 
@@ -572,7 +587,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         // Setup primary and secondary action buttons
         binding.layoutDetailsApp.btnPrimaryAction.isEnabled = true
-        binding.layoutDetailsApp.btnPrimaryAction.isEnabled = true
+        binding.layoutDetailsApp.btnSecondaryAction.isEnabled = true
 
         if (app.isInstalled) {
             val isUpdatable = PackageUtil.isUpdatable(requireContext(), app.packageName, app.versionCode.toLong())
@@ -609,10 +624,16 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
         } else {
-            if (app.isFree) {
-                binding.layoutDetailsApp.btnPrimaryAction.setText(R.string.action_install)
+            if (PackageUtil.isArchived(requireContext(), app.packageName)) {
+                binding.layoutDetailsApp.btnPrimaryAction.text =
+                    getString(R.string.action_unarchive)
             } else {
-                binding.layoutDetailsApp.btnPrimaryAction.text = app.price
+                if (app.isFree) {
+                    binding.layoutDetailsApp.btnPrimaryAction.text =
+                        getString(R.string.action_install)
+                } else {
+                    binding.layoutDetailsApp.btnPrimaryAction.text = app.price
+                }
             }
 
             binding.layoutDetailsApp.btnPrimaryAction.setOnClickListener {

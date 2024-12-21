@@ -55,7 +55,9 @@ class UpdateButton : RelativeLayout {
     fun updateState(downloadStatus: DownloadStatus) {
         val displayChild = when (downloadStatus) {
             DownloadStatus.QUEUED,
-            DownloadStatus.DOWNLOADING -> 1
+            DownloadStatus.DOWNLOADING,
+            DownloadStatus.VERIFYING -> 1
+
             else -> 0
         }
 
@@ -64,6 +66,9 @@ class UpdateButton : RelativeLayout {
                 binding.viewFlipper.displayedChild = displayChild
             }
         }
+
+        // Not allowed to cancel installation at this point
+        binding.btnNegative.isEnabled = downloadStatus != DownloadStatus.VERIFYING
     }
 
     fun addPositiveOnClickListener(onClickListener: OnClickListener?) {
