@@ -624,10 +624,16 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
         } else {
-            if (app.isFree) {
-                binding.layoutDetailsApp.btnPrimaryAction.setText(R.string.action_install)
+            if (PackageUtil.isArchived(requireContext(), app.packageName)) {
+                binding.layoutDetailsApp.btnPrimaryAction.text =
+                    getString(R.string.action_unarchive)
             } else {
-                binding.layoutDetailsApp.btnPrimaryAction.text = app.price
+                if (app.isFree) {
+                    binding.layoutDetailsApp.btnPrimaryAction.text =
+                        getString(R.string.action_install)
+                } else {
+                    binding.layoutDetailsApp.btnPrimaryAction.text = app.price
+                }
             }
 
             binding.layoutDetailsApp.btnPrimaryAction.setOnClickListener {

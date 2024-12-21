@@ -480,4 +480,7 @@
     <!-- SpoofFragment -->
     <string name="default_spoof">Default</string>
     <string name="available_spoof">Available</string>
+
+    <!-- AppDetailsFragment -->
+    <string name="action_unarchive">Unarchive</string>
 </resources>
