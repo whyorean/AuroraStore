@@ -417,4 +417,11 @@
     <string name="default_spoof">Bawaan</string>
     <string name="available_spoof">Tersedia</string>
     <string name="toast_permission_esm_restart">Anda mungkin harus memulai ulang aplikasi untuk menyesuaikan dengan pemberian izin.</string>
+    <string name="action_remove_all">Hapus semua</string>
+    <string name="action_select_all">Pilih semua</string>
+    <string name="filter_latest">Terkini</string>
+    <string name="toast_black_export_failed">Gagal mengekspor daftar hitam!</string>
+    <string name="toast_black_import_success">Daftar hitam diimpor!</string>
+    <string name="toast_black_export_success">Daftar hitam diekspor!</string>
+    <string name="toast_black_import_failed">Gagal mengimpor daftar hitam!</string>
 </resources>
