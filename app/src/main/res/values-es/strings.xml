@@ -424,4 +424,6 @@
     <string name="action_remove_all">Eliminar todo</string>
     <string name="filter_latest">Más reciente</string>
     <string name="toast_black_import_failed">¡Error al importar la lista negra!</string>
+    <string name="status_verifying">Verificando</string>
+    <string name="action_unarchive">Desarchivar</string>
 </resources>
