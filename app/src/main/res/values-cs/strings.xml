@@ -424,4 +424,6 @@
     <string name="toast_black_import_success">Černá listina importována!</string>
     <string name="toast_black_export_success">Černá listina exportována!</string>
     <string name="filter_latest">Nejnovější</string>
+    <string name="status_verifying">Ověřování</string>
+    <string name="action_unarchive">Vyjmout z archivu</string>
 </resources>
