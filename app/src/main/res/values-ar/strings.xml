@@ -424,4 +424,6 @@
     <string name="toast_black_export_success">صُدّرت القائمة السوداء!</string>
     <string name="filter_latest">الأحدث</string>
     <string name="toast_permission_esm_restart">قد يتعين عليك إعادة تشغيل التطبيق ليعكس منحة الأذونات.</string>
+    <string name="status_verifying">جارِ التحقق</string>
+    <string name="action_unarchive">إلغاء الأرشفة</string>
 </resources>
