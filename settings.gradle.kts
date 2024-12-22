@@ -39,4 +39,5 @@ dependencyResolutionManagement {
     }
 }
 include(":app")
+include(":apksig")
 rootProject.name = "AuroraStore4"

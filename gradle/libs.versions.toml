@@ -90,6 +90,7 @@ squareup-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhtt
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 androidx-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hilt-android-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
