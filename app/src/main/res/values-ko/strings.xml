@@ -7,11 +7,11 @@
     <string name="action_back">뒤로</string>
     <string name="about_telegram">텔레그램</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="about_bhim_summary">UPI를 통해서 후원하기</string>
+    <string name="about_bhim_summary">UPI통해서 후원하기</string>
     <string name="about_bitcoin_bch">비트코인 캐시</string>
-    <string name="about_bitcoin_bch_summary">비트코인 캐시(BCH)를 통해서 후원하기</string>
+    <string name="about_bitcoin_bch_summary">Bitcoin Cash(BCH)통해서 후원하기</string>
     <string name="about_bitcoin_btc">비트코인</string>
-    <string name="about_bitcoin_btc_summary">비트코인(BTC)을 통해서 후원하기</string>
+    <string name="about_bitcoin_btc_summary">Bitcoin(BTC) 통해서 후원하기</string>
     <string name="about_bitcoin_eth">이더리움</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_fdroid_summary">F-Droid를 통해 Aurora Store를 가져옵니다.</string>
@@ -53,7 +53,7 @@
     <string name="action_filter_rating">평점</string>
     <string name="action_finish">마치다</string>
     <string name="action_get_local_apk">앱 번들 저장</string>
-    <string name="action_grant">승인하다</string>
+    <string name="action_grant">승인하기</string>
     <string name="action_granted">부여</string>
     <string name="action_ignore">무시하다</string>
     <string name="action_ignore_version">버전 무시</string>
@@ -125,11 +125,11 @@
     <string name="filter_review_five">별 5개</string>
     <string name="filter_review_one">별 1개</string>
     <string name="filter_review_three">별 3개</string>
-    <string name="installer_service_available">Aurora 서비스를 사용할 수 있으며 설치할 준비가 되었습니다.</string>
+    <string name="installer_service_available">Aurora 서비스는 사용 가능하고 설치할 준비가 되었습니다.</string>
     <string name="installer_status_user_action">사용자의 승인 대기 중</string>
     <string name="menu_disclaimer">면책 조항</string>
-    <string name="installer_service_misconfigured">먼저 Aurora 서비스를 설정하고 모든 권한을 부여하세요.</string>
-    <string name="installer_service_unavailable">1.0.9 이상의 Aurora 서비스를 설치하거나 설치 프로그램을 변경하세요.</string>
+    <string name="installer_service_misconfigured">먼저 Aurora services 설정하고 모든 권한을 부여하세요.</string>
+    <string name="installer_service_unavailable">1.0.9 이상의 Aurora services 설치하거나, 설치 프로그램을 변경하세요.</string>
     <string name="onboarding_permission_esa_desc">대형 앱 및 게임용 APK 확장 파일(OBB)을 저장합니다.</string>
     <string name="download_paused">일시 중지됨 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">다운로드 중 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -137,9 +137,9 @@
     <string name="installer_root_unavailable">루트 액세스 권한이 없습니다. 권한을 부여하거나 설치 프로그램을 변경하세요.</string>
     <string name="installer_status_failure_blocked">설치가 차단되었습니다</string>
     <string name="installer_status_failure_session">세션을 생성할 수 없습니다</string>
-    <string name="installer_status_failure_conflict">충돌하는 패키지가 존재합니다</string>
+    <string name="installer_status_failure_conflict">패키지 충돌</string>
     <string name="menu_license">라이선스</string>
-    <string name="device_miui_title">MIUI가 감지되었습니다!</string>
+    <string name="device_miui_title">MIUI 감지됨!</string>
     <string name="device_miui_subtitle">MIUI Optimization으로 인해 세션 설치 프로그램이 앱을 설치할 수 없습니다.</string>
     <string name="dialog_title_self_update">새로운 업데이트 사용 가능</string>
     <string name="device_miui_extra">선택적으로 기본 설치 프로그램을 선택할 수 있지만 번들(분할) APK를 설치할 수 없으므로 선택은 귀하의 몫입니다.</string>
@@ -148,7 +148,7 @@
     <string name="onboarding_title_installer">설치 프로그램</string>
     <string name="onboarding_title_permissions">권한</string>
     <string name="onboarding_title_welcome">환영합니다</string>
-    <string name="onboarding_welcome_select">어떻게 지내세요\?</string>
+    <string name="onboarding_welcome_select">같이 알아볼까요?</string>
     <string name="onboarding_permission_esa">외부 저장소 액세스</string>
     <string name="onboarding_permission_esm">외부 저장소 관리자</string>
     <string name="onboarding_permission_installer">설치 프로그램 권한</string>
@@ -161,8 +161,8 @@
     <string name="pref_filter_fdroid_title">F-Droid 앱 필터링</string>
     <string name="installer_status_failure">설치 실패</string>
     <string name="installer_status_failure_storage">저장 공간이 충분하지 않음</string>
-    <string name="installer_status_failure_incompatible">호환되지 않는 앱</string>
-    <string name="installer_status_success">성공적으로 설치되었습니다</string>
+    <string name="installer_status_failure_incompatible">앱 호환 불가</string>
+    <string name="installer_status_success">성공적으로 설치됨</string>
     <string name="installer_status_failure_invalid">유효하지 않거나 손상된 APK</string>
     <string name="menu_terms">이용 약관</string>
     <string name="action_import">불러오기</string>
@@ -298,7 +298,7 @@
     <string name="pref_ui_layout_tab">기본 탭 선택</string>
     <string name="action_enable">사용</string>
     <string name="app_link_enabled">앱 링크 활성화!</string>
-    <string name="action_enabled">활성화</string>
+    <string name="action_enabled">활성화됨</string>
     <string name="tab_categories">카테고리</string>
     <string name="amazon_appstore_desc">Amazon Appstore는 Amazon에서 운영되는 Android-호환 플랫폼용 앱 스토어입니다.</string>
     <string name="notification_updates_available_desc_1">새로운 버전의 <xliff:g id="app_one_name">%1$s</xliff:g> 가 대기 중</string>
@@ -316,7 +316,7 @@
     <string name="failed_app_link">지원되지 않습니다. 수동으로 링크를 연결해 보십시오</string>
     <string name="pref_updates_incompatible_desc">호환되지 않거나 응용 프로그램이 실행 중지된 업데이트를 표시합니다. 설치가 실패할 수 있습니다</string>
     <string name="toast_developer_setting_failed">장치 설정에서 개발자 옵션을 활성화하여 엽니다.</string>
-    <string name="toast_spoof_applied">장치 미리 보기 사용</string>
+    <string name="toast_spoof_applied">디바이스 스푸프가 적용되었습니다.</string>
     <string name="toast_permission_granted">권한 부여</string>
     <string name="toast_manual_unavailable">요청하신 버전 코드를 사용할 수 없습니다.</string>
     <string name="toast_page_unavailable">페이지 찾아보기를 사용할 수 없음</string>
@@ -403,6 +403,23 @@
     <string name="toast_fav_import_success">Favourites는 수입했습니다!</string>
     <string name="notification_channel_downloads">다운로드 알림</string>
     <string name="notification_channel_export">앱 수출 알림</string>
-    <string name="item_optional">옵션 정보</string>
-    <string name="item_required">견적 요청</string>
+    <string name="item_optional">선택적</string>
+    <string name="item_required">필수적</string>
+    <string name="action_logout_confirmation_message">로그인하시겠습니까?</string>
+    <string name="export_app_summary_success">성공적으로 수출된 app 뭉치</string>
+    <string name="made_with_love">만든 <xliff:g id="heart_emoji">%1$s</xliff:g> 인도</string>
+    <string name="export_app_title">파일 수출</string>
+    <string name="remove_dispenser_summary">디스펜서를 제거하려면 \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="status_verifying">인증 및 인증</string>
+    <string name="force_restart_title">Aurora Store 다시시작</string>
+    <string name="check_updates">업데이트 확인</string>
+    <string name="force_restart_summary">아사쿠사 새로 변경된 설정을 적용하기 위해 다시 시작해야 합니다</string>
+    <string name="checking_updates">업데이트 확인중</string>
+    <string name="action_logout_confirmation_title">로그 아웃 ?</string>
+    <string name="add_dispenser_summary">토큰 분배자를 Aurora Store에 추가하십시오. Token dispensers는 익명으로 로그인하는 Aurora Store에 계정 자격 증명을 제공합니다.</string>
+    <string name="export_app_summary">잠시만요, 파일을 내보내세요</string>
+    <string name="action_unarchive">언아키브</string>
+    <string name="about_aurora_store_summary">아사쿠사 상점은 공식 Google Play 스토어에서 앱을 검색하고 다운로드 할 수 있습니다. 앱 설명, 스크린 샷, 업데이트, 다른 사용자의 의견 및 장치로 Google Play에서 APK를 직접 확인할 수 있습니다. 오로라 스토어를 사용하려면 Google Play 계정이 있어야 하며, 먼저 오로라 스토어를 열고 구성할 때 Google Play 계정에 로그인하십시오.\n\n전통적인 앱 스토어와 달리, Aurora Store는 자체, 라이센스 또는 모든 앱을 배포하지 않습니다. 모든 앱, 앱 설명, 스크린 샷 및 Aurora Store의 기타 콘텐츠는 Google Play에서 직접 액세스, 다운로드 및 / 또는 표시되어 있습니다. Aurora Store는 문이나 브라우저와 정확히 작동하며 Google Play 계정에 로그인하고 Google Play에서 앱을 찾습니다.\n\n오로라 주의 상점은 Google, Google Play, Aurora Store 또는 모든 앱 개발자를 통해 다운로드 한 모든 응용 프로그램에서 승인, 후원 또는 승인이 없습니다. Aurora Store에는 모든 제휴, 협력 또는 연결이 없습니다.</string>
+    <string name="export_app_summary_fail">수출된 앱 번들에 실패</string>
+    <string name="no_dispensers_available">디스펜서 사용 불가</string>
 </resources>
