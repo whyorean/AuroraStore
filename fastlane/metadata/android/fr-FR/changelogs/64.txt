@@ -1,0 +1,6 @@
+• Prise en charge de l’archivage/désarchivage des apps sur Android 15+
+• Prise en charge de l’installation des apps en espace privé sur Android 15+
+• Ajustements de l’interface relatifs à la prise en charge du mode bord à bord
+• Corrections et améliorations multiples
+• Améliorations apportées aux canaux de notification et aux notifications
+• Mise à jour des traductions ; nouvelles chaines de caractères traduites
