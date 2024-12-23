@@ -420,4 +420,6 @@
     <string name="toast_black_export_failed">Izvoz črne liste ni uspel!</string>
     <string name="toast_black_import_success">Črna lista uvožena!</string>
     <string name="toast_black_export_success">Črna lista izvožena!</string>
+    <string name="action_unarchive">Razširi</string>
+    <string name="status_verifying">Preverjanje</string>
 </resources>
