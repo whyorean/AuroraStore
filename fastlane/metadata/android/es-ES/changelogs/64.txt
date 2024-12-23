@@ -1,0 +1,6 @@
+• Soporte para archivar/desarchivar aplicaciones en Android 15 o superior
+• Soporte para instalar aplicaciones en el espacio privado en Android 15 o superior
+• Ajustes de la interfaz de usuario para soporte edge-to-edge (borde a borde)
+• Múltiples correcciones de errores y mejoras
+• Mejoras en las formas, maneras de las notificaciones y en las notificaciones
+• Actualizaciones de traducción; cadenas adicionales traducidas
