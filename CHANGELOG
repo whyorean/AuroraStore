@@ -1,4 +1,12 @@
 Changelog : v4.6.2 (63)
+• Support for archiving/un-archiving apps on Android 15+
+• Support for installing apps into private space on Android 15+
+• UI adjustments for edge-to-edge support
+• Multiple bug fixes and improvements
+• Improvements to notification channels and notifications
+• Translation updates; Additional strings localized
+
+Changelog : v4.6.2 (63)
 • Fixed minor migration issue
 • Added auto update for Nightly builds
 • Translation updates
