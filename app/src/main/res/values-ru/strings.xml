@@ -44,7 +44,7 @@
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
     <string name="action_blacklist_add">Добавить в черный список</string>
-    <string name="action_blacklist">Чёрный список</string>
+    <string name="action_blacklist">Черный список</string>
     <string name="action_back">Назад</string>
     <string name="account_logout">Выйти из Aurora</string>
     <string name="account_login_using">Войти с помощью</string>
@@ -414,14 +414,14 @@
     <string name="notification_channel_install">Уведомление об установке</string>
     <string name="notification_channel_downloads">Уведомление о загрузках</string>
     <string name="notification_channel_export">Уведомление об экспортировании приложения</string>
-    <string name="action_remove_all">Удалить всё</string>
+    <string name="action_remove_all">Удалить все</string>
     <string name="filter_latest">Последнее</string>
-    <string name="toast_black_import_failed">Не удалось импортировать чёрный список!</string>
-    <string name="toast_black_import_success">Чёрный список импортирован!</string>
-    <string name="toast_black_export_success">Чёрный список экспортирован!</string>
+    <string name="toast_black_import_failed">Не удалось импортировать черный список!</string>
+    <string name="toast_black_import_success">Черный список импортирован!</string>
+    <string name="toast_black_export_success">Черный список экспортирован!</string>
     <string name="default_spoof">По умолчанию</string>
-    <string name="action_select_all">Выбрать всё</string>
+    <string name="action_select_all">Выбрать все</string>
     <string name="toast_permission_esm_restart">Вам может потребоваться перезагрузить приложение, чтобы применить выданное разрешение.</string>
-    <string name="toast_black_export_failed">Не удалось экспортировать чёрный список!</string>
+    <string name="toast_black_export_failed">Не удалось экспортировать черный список!</string>
     <string name="available_spoof">Доступно</string>
 </resources>
