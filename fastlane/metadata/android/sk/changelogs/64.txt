@@ -1,0 +1,6 @@
+• Podpora pre archiváciu/zrušenie archivácie aplikácií v systéme Android 15+
+• Podpora inštalácie aplikácií do súkromného priestoru v systéme Android 15+
+• Úpravy používateľského rozhrania pre podporu od okraja po okraj
+• Viaceré opravy chýb a vylepšenia
+• Vylepšenia oznamovacích kanálov a upozornení
+• Aktualizácie prekladov; Lokalizované ďalšie reťazce
