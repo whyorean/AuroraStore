@@ -1,0 +1,6 @@
+• Suporte para arquivar/desarquivar apps no Android 15+
+• Suporte para instalar apps no espaço privado do Android 15+
+• Ajustes na interface para suporte edge-to-edge (borda-a-borda)
+• Várias correções de bugs e melhorias
+• Melhorias aos canais de notificação e notificações
+• Atualização às traduções; textos adicionais traduzíveis
