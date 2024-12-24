@@ -1,0 +1,6 @@
+- Dukungan untuk mengarsipkan/menghapus aplikasi di Android 15+ 
+- Dukungan untuk menginstal aplikasi ke dalam ruang pribadi di Android 15+ 
+- Penyesuaian UI untuk dukungan edge-to-edge 
+- Berbagai perbaikan bug dan peningkatan 
+- Peningkatan pada saluran notifikasi dan notifikasi 
+- Pembaruan terjemahan; String tambahan yang dilokalkan
