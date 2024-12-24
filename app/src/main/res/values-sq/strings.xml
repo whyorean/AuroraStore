@@ -419,4 +419,5 @@
     <string name="action_select_all">Përzgjidhi krejt</string>
     <string name="toast_black_import_success">Lista e ndalimeve u importua!</string>
     <string name="action_remove_all">Hiqi krejt</string>
+    <string name="action_unarchive">Çarkivoje</string>
 </resources>

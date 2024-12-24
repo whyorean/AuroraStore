@@ -424,4 +424,6 @@
     <string name="toast_black_import_success">Daftar hitam diimpor!</string>
     <string name="toast_black_export_success">Daftar hitam diekspor!</string>
     <string name="toast_black_import_failed">Gagal mengimpor daftar hitam!</string>
+    <string name="status_verifying">Memverifikasi</string>
+    <string name="action_unarchive">Buka arsip</string>
 </resources>

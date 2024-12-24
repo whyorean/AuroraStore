@@ -424,4 +424,6 @@
     <string name="toast_black_export_failed">Falha ao exportar lista negra!</string>
     <string name="toast_black_import_success">Lista negra importada!</string>
     <string name="toast_black_export_success">Lista negra exportada!</string>
+    <string name="action_unarchive">Desarquivar</string>
+    <string name="status_verifying">Verificando</string>
 </resources>

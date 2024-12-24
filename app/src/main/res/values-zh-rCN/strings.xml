@@ -424,4 +424,6 @@
     <string name="toast_black_import_success">已导入黑名单！</string>
     <string name="toast_black_export_success">已导出黑名单！</string>
     <string name="toast_black_import_failed">导入黑名单失败！</string>
+    <string name="status_verifying">验证中</string>
+    <string name="action_unarchive">解压缩</string>
 </resources>

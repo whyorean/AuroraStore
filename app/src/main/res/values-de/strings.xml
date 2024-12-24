@@ -424,4 +424,6 @@
     <string name="toast_black_export_success">Sperrliste exportiert!</string>
     <string name="toast_black_import_failed">Importieren der Sperrliste fehlgeschlagen!</string>
     <string name="filter_latest">Neueste</string>
+    <string name="status_verifying">Wird überprüft</string>
+    <string name="action_unarchive">Entpacken</string>
 </resources>

@@ -420,4 +420,6 @@
     <string name="action_remove_all">Tout retirer</string>
     <string name="toast_black_import_failed">L\'importation de la liste noire a échoué.</string>
     <string name="toast_black_import_success">Liste noire importée !</string>
+    <string name="action_unarchive">Désarchiver</string>
+    <string name="status_verifying">Vérification en cours</string>
 </resources>

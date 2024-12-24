@@ -424,4 +424,6 @@
     <string name="toast_black_export_success">Melnais saraksts izgūts.</string>
     <string name="toast_black_export_failed">Neizdevās izgūt melno sarakstu.</string>
     <string name="action_select_all">Atlasīt visu</string>
+    <string name="status_verifying">Apliecina</string>
+    <string name="action_unarchive">Atcelt arhivēšanu</string>
 </resources>

@@ -424,4 +424,6 @@
     <string name="toast_black_export_success">Чорний список експортовано!</string>
     <string name="action_select_all">Вибрати все</string>
     <string name="toast_black_import_success">Чорний список імпортовано!</string>
+    <string name="status_verifying">Перевірка</string>
+    <string name="action_unarchive">Розархівувати</string>
 </resources>
