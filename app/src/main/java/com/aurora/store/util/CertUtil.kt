@@ -47,7 +47,7 @@ object CertUtil {
     // Keep this list updated as & when new signatures are added.
     private val knownGMSSignatures = listOf(
         "bd32424203e0fb25f36b57e5aa356f9bdd1da998",
-        "38918a453d07199354f8b19af05ec6562ced5788,",
+        "38918a453d07199354f8b19af05ec6562ced5788",
         "2169eddb5fbb1fdf241c262681024692c4fc1ecb",
         "58e1c4133f7441ec3d2c270270a14802da47ba0e",
         "4f87463a1ae6f7d71b2c0b0658845790236dba42"
