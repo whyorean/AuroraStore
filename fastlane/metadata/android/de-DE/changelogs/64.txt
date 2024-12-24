@@ -1,0 +1,6 @@
+- Unterstützung für das Archivieren/Dearchivieren von Apps unter Android 15+
+- Unterstützung für die Installation von Apps im privaten Bereich unter Android 15+
+- UI-Anpassungen für Edge-to-Edge-Unterstützung
+- Zahlreiche Fehlerbehebungen und Verbesserungen
+- Verbesserungen an Benachrichtigungskanälen und Benachrichtigungen
+- Übersetzungs-Updates; zusätzliche Strings lokalisiert
