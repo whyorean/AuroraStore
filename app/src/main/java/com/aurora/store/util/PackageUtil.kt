@@ -66,10 +66,10 @@ object PackageUtil {
     }
 
     fun hasSupportedMicroG(context: Context): Boolean {
-        val isGoogle = CertUtil.isGoogleGMS(context, PACKAGE_NAME_MICRO_G)
+        val isMicroG = CertUtil.isMicroGGMS(context, PACKAGE_NAME_MICRO_G)
 
-        // Do not check for MicroG if Google Play Services is installed
-        if (isGoogle) return false
+        // Do not proceed if MicroG variant is not installed
+        if (!isMicroG) return false
 
         return if (isHuawei) {
             isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G_HUAWEI)
