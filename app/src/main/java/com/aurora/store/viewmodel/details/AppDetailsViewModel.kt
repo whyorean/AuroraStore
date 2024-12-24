@@ -13,16 +13,16 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
-import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.ExodusReport
+import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.util.PackageUtil
-import com.google.gson.GsonBuilder
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +35,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.lang.reflect.Modifier
 import javax.inject.Inject
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
@@ -47,7 +46,8 @@ class AppDetailsViewModel @Inject constructor(
     private val webDataSafetyHelper: WebDataSafetyHelper,
     private val downloadHelper: DownloadHelper,
     private val favouriteDao: FavouriteDao,
-    private val httpClient: IHttpClient
+    private val httpClient: IHttpClient,
+    private val gson: Gson
 ) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
@@ -71,6 +71,10 @@ class AppDetailsViewModel @Inject constructor(
     private val exodusReportStash = mutableMapOf<String, Report?>()
     private val _exodusReport = MutableSharedFlow<Report?>()
     val exodusReport = _exodusReport.asSharedFlow()
+
+    private val plexusReportStash = mutableMapOf<String, PlexusReport?>()
+    private val _plexusReport = MutableSharedFlow<PlexusReport?>()
+    val plexusReport = _plexusReport.asSharedFlow()
 
     private val testProgramStatusStash = mutableMapOf<String, TestingProgramStatus?>()
     private val _testingProgramStatus = MutableSharedFlow<TestingProgramStatus?>()
@@ -143,6 +147,24 @@ class AppDetailsViewModel @Inject constructor(
                 Log.e(TAG, "Failed to fetch privacy report", exception)
                 exodusReportStash[packageName] = null
                 _exodusReport.emit(null)
+            }
+        }
+    }
+
+    fun fetchPlexusReport(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val plexusReport = plexusReportStash.getOrPut(packageName) {
+                    val url = "${Constants.PLEXUS_API_URL}/${packageName}/?scores=true"
+                    val playResponse = httpClient.get(url, emptyMap())
+                    gson.fromJson(String(playResponse.responseBytes), PlexusReport::class.java)
+                }
+
+                _plexusReport.emit(plexusReport)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch compatibility report", exception)
+                plexusReportStash[packageName] = null
+                _plexusReport.emit(null)
             }
         }
     }
@@ -258,10 +280,6 @@ class AppDetailsViewModel @Inject constructor(
 
     private fun parseExodusResponse(response: String, packageName: String): List<Report> {
         try {
-            val gson = GsonBuilder()
-                .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
-                .create()
-
             val jsonObject = JSONObject(response)
             val exodusObject = jsonObject.getJSONObject(packageName)
             val exodusReport: ExodusReport = gson.fromJson(

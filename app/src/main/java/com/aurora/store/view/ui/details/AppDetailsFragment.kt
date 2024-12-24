@@ -197,6 +197,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     updateToolbar(app)
                     updateAppHeader(app) // Re-inflate the app details, as web data may vary.
                     updateExtraDetails(app)
+                    updateCompatibilityInfo()
 
                     if (app.versionCode == 0) {
                         warnAppUnavailable(app)
@@ -322,6 +323,27 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
         }
+
+        // Plexus Report
+        viewModel.plexusReport.onEach { plexusReport ->
+            if (plexusReport?.report?.scores == null) {
+                binding.layoutDetailsCompatibility.txtStatusMicroG.subTitle =
+                    getString(R.string.details_compatibility_status_unknown)
+
+                binding.layoutDetailsCompatibility.txtStatusAosp.subTitle =
+                    getString(R.string.details_compatibility_status_unknown)
+            } else {
+                binding.layoutDetailsCompatibility.headerCompatibility.addClickListener {
+                    requireContext().browse("${Constants.PLEXUS_SEARCH_URL}${app.packageName}")
+                }
+
+                binding.layoutDetailsCompatibility.txtStatusMicroG.subTitle =
+                    getString(plexusReport.report.scores.microG.status)
+
+                binding.layoutDetailsCompatibility.txtStatusAosp.subTitle =
+                    getString(plexusReport.report.scores.microG.status)
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         // Beta program
         viewLifecycleOwner.lifecycleScope.launch {
@@ -988,6 +1010,26 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
 
                 else -> {}
+            }
+        }
+    }
+
+    private fun updateCompatibilityInfo() {
+        if (app.dependencies.dependentPackages.contains(PackageUtil.PACKAGE_NAME_GMS)) {
+            viewModel.fetchPlexusReport(app.packageName)
+
+            binding.layoutDetailsCompatibility.txtGmsDependency.apply {
+                title = getString(R.string.details_compatibility_gms_required_title)
+                subTitle = getString(R.string.details_compatibility_gms_required_subtitle)
+                setTitleColor(R.color.colorRed)
+            }
+
+            binding.layoutDetailsCompatibility.compatibilityStatusLayout.isVisible = true
+        } else {
+            binding.layoutDetailsCompatibility.txtGmsDependency.apply {
+                title = getString(R.string.details_compatibility_gms_not_required_title)
+                subTitle = getString(R.string.details_compatibility_gms_not_required_subtitle)
+                setTitleColor(R.color.colorGreen)
             }
         }
     }

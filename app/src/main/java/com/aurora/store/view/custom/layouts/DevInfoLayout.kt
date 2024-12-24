@@ -22,7 +22,9 @@ package com.aurora.store.view.custom.layouts
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import androidx.annotation.ColorRes
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewDevInfoBinding
@@ -86,5 +88,13 @@ class DevInfoLayout : RelativeLayout {
         binding.txtSubtitle.text = text
         binding.txtSubtitle.isVisible = text != null
         invalidate()
+    }
+
+    fun setTitleColor(@ColorRes color: Int) {
+        binding.txtTitle.setTextColor(ContextCompat.getColor(context, color))
+    }
+
+    fun setSubtitleColor(@ColorRes color: Int) {
+        binding.txtSubtitle.setTextColor(ContextCompat.getColor(context, color))
     }
 }
