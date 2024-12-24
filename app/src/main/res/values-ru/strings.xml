@@ -424,4 +424,6 @@
     <string name="toast_permission_esm_restart">Вам может потребоваться перезагрузить приложение, чтобы применить выданное разрешение.</string>
     <string name="toast_black_export_failed">Не удалось экспортировать черный список!</string>
     <string name="available_spoof">Доступно</string>
+    <string name="status_verifying">Проверка</string>
+    <string name="action_unarchive">Разархивировать</string>
 </resources>
