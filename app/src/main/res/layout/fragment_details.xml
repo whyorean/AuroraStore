@@ -104,6 +104,10 @@
                             tools:listitem="@layout/view_app" />
 
                         <include
+                            android:id="@+id/layout_details_compatibility"
+                            layout="@layout/layout_details_compatibility" />
+
+                        <include
                             android:id="@+id/layout_details_permissions"
                             layout="@layout/layout_details_permissions" />
 

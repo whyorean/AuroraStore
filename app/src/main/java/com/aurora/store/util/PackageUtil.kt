@@ -50,7 +50,7 @@ object PackageUtil {
 
     private const val TAG = "PackageUtil"
 
-    private const val PACKAGE_NAME_MICRO_G = "com.google.android.gms"
+    const val PACKAGE_NAME_GMS = "com.google.android.gms"
     private const val VERSION_CODE_MICRO_G = 240913402
     private const val VERSION_CODE_MICRO_G_HUAWEI = 240913007
 
@@ -66,15 +66,15 @@ object PackageUtil {
     }
 
     fun hasSupportedMicroG(context: Context): Boolean {
-        val isMicroG = CertUtil.isMicroGGMS(context, PACKAGE_NAME_MICRO_G)
+        val isMicroG = CertUtil.isMicroGGMS(context, PACKAGE_NAME_GMS)
 
         // Do not proceed if MicroG variant is not installed
         if (!isMicroG) return false
 
         return if (isHuawei) {
-            isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G_HUAWEI)
+            isInstalled(context, PACKAGE_NAME_GMS, VERSION_CODE_MICRO_G_HUAWEI)
         } else {
-            isInstalled(context, PACKAGE_NAME_MICRO_G, VERSION_CODE_MICRO_G)
+            isInstalled(context, PACKAGE_NAME_GMS, VERSION_CODE_MICRO_G)
         }
     }
 
