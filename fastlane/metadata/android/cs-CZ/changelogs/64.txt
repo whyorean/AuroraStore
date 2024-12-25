@@ -1,0 +1,6 @@
+• Podpora archivace aplikací na systému Android 15+
+• Podpora instalace aplikací do soukromého prostoru na systému Android 15+
+• Úpravy rozhraní pro podporu edge-to-edge
+• Opravy chyb a vylepšení
+• Vylepšení oznamovacích kanálů a oznámení
+• Aktualizace překladů; lokalizovány dodatečné řetězce
