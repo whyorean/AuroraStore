@@ -8,5 +8,5 @@ Działa doskonale zarówno z Usługami Google Play lub MicroG, jak i bez nich.
 • Piękny design: zbudowany w oparciu o najnowsze wytyczne Material 3
 • Logowanie do konta: możesz zalogować się za pomocą konta osobistego lub anonimowego
 • Podszywanie się pod urządzenie i lokalizację: zmień swoje urządzenie i/lub lokalizację, aby uzyskać dostęp do aplikacji z blokadą geograficzną
-• Integracja z [Exodus Privacy](https://exodus-privacy.eu.org): natychmiastowe wyświetlanie elementów śledzących w aplikacji
+• Integracja z Exodus Privacy: natychmiastowe wyświetlanie elementów śledzących w aplikacji
 • Czarna lista aktualizacji: ignorowanie aktualizacji dla określonych aplikacji
