@@ -42,7 +42,7 @@
     <string name="title_apps_sale">App in offerta</string>
     <string name="title_apps_library">App nella libreria</string>
     <string name="title_apps_games">Le mie app e i miei giochi</string>
-    <string name="title_apps">Applicazioni</string>
+    <string name="title_apps">App</string>
     <string name="purchase_not_found">Applicazione non trovata</string>
     <string name="purchase_unsupported">Applicazione non supportata</string>
     <string name="purchase_invalid">Applicazione non acquistata</string>
