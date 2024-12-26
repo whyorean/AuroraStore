@@ -1,0 +1,3 @@
+• Novērsta neliela pārcelšanas nepilnība
+• Pievienota automātiska atjaunināšana iknakts būvējumiem
+• Tulkojumu atjauninājumi

@@ -1,0 +1,6 @@
+• Lietotņu arhivēšanas/atarhivēšanas atbalsts Android 15+
+• Lietotņu uzstādīšanas privātā vietā atbalsts Android 15+
+• Lietotāja saskarsnes pielāgojumi "no malas līdz malai" atbalstam
+• Vairāku kļūmju labojumi un uzlabojumi
+• Paziņojumu kanālu un paziņojumu uzlabojumi
+• Tulkojumu atjauninājumi; lokalizētas papildu virknes
