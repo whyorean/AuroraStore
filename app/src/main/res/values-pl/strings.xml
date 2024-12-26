@@ -413,11 +413,13 @@
     <string name="default_spoof">Domyślny</string>
     <string name="available_spoof">Dostępny</string>
     <string name="toast_permission_esm_restart">Może być konieczne ponowne uruchomienie aplikacji, aby uwzględnić przyznane uprawnienia.</string>
-    <string name="action_remove_all">Usuń wszystko</string>
-    <string name="action_select_all">Zaznacz wszystko</string>
+    <string name="action_remove_all">Usuń wszystkie</string>
+    <string name="action_select_all">Wybierz wszystkie</string>
     <string name="toast_black_import_failed">Nie udało się zaimportować czarnej listy!</string>
     <string name="toast_black_export_failed">Nie udało się wyeksportować czarnej listy!</string>
     <string name="toast_black_import_success">Zaimportowano czarną listę!</string>
     <string name="toast_black_export_success">Wyeksportowano czarną listę!</string>
     <string name="filter_latest">Najnowsze</string>
+    <string name="status_verifying">Weryfikacja</string>
+    <string name="action_unarchive">Przywróć z archiwum</string>
 </resources>
