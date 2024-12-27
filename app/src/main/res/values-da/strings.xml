@@ -82,7 +82,7 @@
     <string name="exodus_powered">Drevet af Exodus Privacy</string>
     <string name="exodus_substring">kendt(e) tracker(e) fundet i</string>
     <string name="filter_review_two">To</string>
-    <string name="download_completed">Downloadet</string>
+    <string name="download_completed">Download fuldført</string>
     <string name="download_failed">Download mislykkedes</string>
     <string name="download_metadata">Henter metadata</string>
     <string name="download_none">Ingen downloads</string>
@@ -104,8 +104,8 @@
     <string name="device_miui_title">MIUI registreret!</string>
     <string name="device_miui_extra">Du kan vælge at bruge Native installationsmuligheden, men så kan du ikke installere medfølgende (split) APK-er.</string>
     <string name="dialog_desc_native_split">Du kan ikke installere medfølgende (split) app via Native installatøren. Skift din installatør til Session, Services eller Root.</string>
-    <string name="pref_filter_fdroid_summary">Ignorer F-Droid-apps fra Opdateringer og Installerede apps</string>
-    <string name="pref_install_mode_am">AM installatør.</string>
+    <string name="pref_filter_fdroid_summary">Søg ikke efter opdateringer til apps hentet eller installeret fra F-Droid</string>
+    <string name="pref_install_mode_am">AM-installatør</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="purchase_not_found">Appen blev ikke fundet</string>
     <string name="pref_ui_similar_apps_desc">Vis lignende og relaterede klynger på appens detaljeside</string>
@@ -260,7 +260,7 @@
     <string name="pref_network_proxy_url">Proxy-URL</string>
     <string name="pref_network_proxy_url_message">Indtast en gyldig proxy-URL for at sende alle data gennem proxyen.</string>
     <string name="pref_aurora_only">Kun Aurora Store-apps</string>
-    <string name="pref_aurora_only_desc">Vis kun installerede Aurora Store-apps i Opdateringer og Installerede apps</string>
+    <string name="pref_aurora_only_desc">Søg kun efter opdateringer til apps installeret af Aurora Store</string>
     <string name="session_verifying_google">Verificerer Google-session</string>
     <string name="title_app_settings">App-indstillinger</string>
     <string name="action_home_screen">Føj til Hjemmeskærm</string>
@@ -270,7 +270,7 @@
     <string name="session_login">Log venligst ind på din Google Play-konto</string>
     <string name="details_data_safety_title">Datasikkerhed</string>
     <string name="details_data_safety_subtitle">Databeskyttelse og sikkerhedspraksis erklæret af udvikleren</string>
-    <string name="download_paused">På pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">På pause •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="onboarding_permission_installer_legacy_desc">Tillad at installere apps fra ukendte kilder</string>
     <string name="pref_updates_incompatible_desc">Vis opdateringer til inkompatible eller deaktiverede apps, som muligvis ikke kan installeres</string>
     <string name="session_verifying">Verificerer session</string>
@@ -325,4 +325,55 @@
     <string name="toast_fav_export_success">Favoritter eksporteret!</string>
     <string name="action_logout_confirmation_title">Log ud?</string>
     <string name="action_logout_confirmation_message">Er du sikker på, at du vil logge ud?</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
+    <string name="action_remove_all">Fjern alle</string>
+    <string name="action_select_all">Vælg alle</string>
+    <string name="download_progress">Henter •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="pref_vending_version_device">Standard (fra enhedskonfiguration)</string>
+    <string name="expand">Udvid</string>
+    <string name="notification_updates_available_desc_1">En ny version af <xliff:g id="app_one_name">%1$s</xliff:g> er tilgængelig</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> og <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="failed_app_link">Understøttes ikke; prøv at tilknytte links manuelt</string>
+    <string name="requesting_new_session">Anmoder om ny session</string>
+    <string name="details_no_favourites">Ingen favoritapps fundet</string>
+    <string name="session_scrapped">Sidste session kasseret</string>
+    <string name="rate_limited">Ups, denne konto er hastighedsbegrænset!</string>
+    <string name="manual_download_hint">Indtast den versionskode, du vil hente</string>
+    <string name="notification_channel_account">Konto-relateret meddelelse</string>
+    <string name="pref_install_mode_shizuku">Shizuku-installatør</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> opdatering tilgængelig</string>
+    <string name="faqs_subtitle">Har du spørgsmål? Find ud af svarene</string>
+    <string name="app_language">App-sprog</string>
+    <string name="server_maintenance">Serveren er nede grundet vedligeholdelse</string>
+    <string name="menu">Menu</string>
+    <string name="error">En fejl opstod!</string>
+    <string name="toast_proxy_success">Proxy blev indstillet</string>
+    <string name="item_required">Påkrævet</string>
+    <string name="item_optional">Valgfri</string>
+    <string name="permissions_denied">Påkrævede tilladelser blev nægtet. Giv dem venligst for at fortsætte handlingen</string>
+    <string name="login_rate_limited">Ups, du er hastighedsbegrænset</string>
+    <string name="pref_vending_version_title">Google Play-version</string>
+    <string name="title_favourites_manager">Favoritapps</string>
+    <string name="shizuku_installer_desc">Kræver Shizuku eller Sui; skal opsættes og have tilladelse</string>
+    <string name="source_code_subtitle">Find ud af, hvad der er indeni</string>
+    <string name="app_link_enabled">App-link aktiveret!</string>
+    <string name="native_installer_desc">Bedst egnet til enheder under Android 4.4</string>
+    <string name="downloading_dep">Henter yderligere filer til <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="search_hint">Søg efter apps og spil</string>
+    <string name="app_links_title">App-links</string>
+    <string name="pref_download_directory_error">Den valgte sti er ikke skrivbar</string>
+    <string name="filter_latest">Seneste</string>
+    <string name="updates_available">opdateringer tilgængelige</string>
+    <string name="made_with_love">Lavet med <xliff:g id="heart_emoji">%1$s</xliff:g> i Indien</string>
+    <string name="android_market_desc">Android Market var en onlinebutik med softwareapplikationer designet til Android-enheder, som blev lukket i 2017.</string>
+    <string name="pref_network_proxy_enable_desc">Tillad al trafik fra appen at gå gennem proxyen</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> opdateringer tilgængelige</string>
+    <string name="toast_proxy_failed">Kunne ikke indstille proxy</string>
+    <string name="amazon_appstore_desc">Amazon Appstore er en app-butik til Android-kompatible platforme drevet af Amazon.</string>
+    <string name="am_installer_desc">Kræver App Manager og adb/root-tilstand for at installere, når MIUI-optimering er slået til</string>
+    <string name="shizuku_installer_subtitle">Bruger system-API\'er direkte med adb/root-rettigheder</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> og <xliff:g id="apps_count">%4$d</xliff:g> mere</string>
+    <string name="pref_updates_auto">Auto-opdater apps</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> og <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="google_play_store_desc">Google Play, også kendt som Google Play Butik og tidligere Android Market.</string>
 </resources>
