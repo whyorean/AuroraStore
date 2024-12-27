@@ -30,7 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
         app:menu="@menu/menu_download_main"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:title="@string/title_download_manager" />
