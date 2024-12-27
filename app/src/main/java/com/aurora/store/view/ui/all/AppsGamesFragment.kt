@@ -80,6 +80,10 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
         // Toolbar
         binding.toolbar.apply {
             inflateMenu(R.menu.menu_import_export)
+
+            // TODO: Add support for batch install
+            menu.findItem(R.id.action_import).isEnabled = false
+
             setNavigationOnClickListener { findNavController().navigateUp() }
             setOnMenuItemClickListener {
                 when (it.itemId) {
