@@ -44,15 +44,6 @@ object CertUtil {
     const val GOOGLE_PLAY_CERT =
         "MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK"
 
-    // Keep this list updated as & when new signatures are added.
-    private val knownGMSSignatures = listOf(
-        "bd32424203e0fb25f36b57e5aa356f9bdd1da998",
-        "38918a453d07199354f8b19af05ec6562ced5788,",
-        "2169eddb5fbb1fdf241c262681024692c4fc1ecb",
-        "58e1c4133f7441ec3d2c270270a14802da47ba0e",
-        "4f87463a1ae6f7d71b2c0b0658845790236dba42"
-    )
-
     fun isFDroidApp(context: Context, packageName: String): Boolean {
         return isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
     }
@@ -100,27 +91,16 @@ object CertUtil {
         }
     }
 
-    fun isGoogleGMS(context: Context, packageName: String): Boolean {
+    fun isMicroGGMS(context: Context, packageName: String): Boolean {
         return try {
-            getX509Certificates(context, packageName).any { certificate ->
-                val signatureHash = extractSHA1Fingerprint(certificate)
+            val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_PERMISSIONS)
+            val hasFakePackageSignature = packageInfo.requestedPermissions?.any { permission ->
+                permission == "android.permission.FAKE_PACKAGE_SIGNATURE"
+            } == true
 
-                if (knownGMSSignatures.contains(signatureHash)) return true
-
-                // Follow heuristics to determine if the app is signed by Google, just to ensure we don't miss any.
-                listOf(
-                    certificate.issuerX500Principal,
-                    certificate.subjectX500Principal
-                ).any {
-                    val map = parseX500Principal(it)
-                    map["O"] == "Google LLC" || map["O"] == "Google Inc."
-                            && map["L"] == "Mountain View"
-                            && map["ST"] == "California"
-                            && map["C"] == "US"
-                }
-            }
+            return hasFakePackageSignature
         } catch (exception: Exception) {
-            Log.e(TAG, "Failed to check signing cert for $packageName")
+            Log.e(TAG, "Failed to check origin for $packageName")
             false
         }
     }
