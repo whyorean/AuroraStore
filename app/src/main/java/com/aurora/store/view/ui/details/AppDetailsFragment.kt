@@ -225,7 +225,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     binding.layoutDetailsApp.btnPrimaryAction.apply {
                         isEnabled = false
                         text = getString(R.string.action_open)
-                        setOnClickListener { openApp() }
+                        setOnClickListener(null)
                     }
                     binding.layoutDetailsApp.btnSecondaryAction.apply {
                         isEnabled = true
@@ -507,17 +507,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun openApp() {
-        val intent = PackageUtil.getLaunchIntent(requireContext(), app.packageName)
-        if (intent != null) {
-            try {
-                startActivity(intent)
-            } catch (e: ActivityNotFoundException) {
-                toast("Unable to open app")
-            }
-        }
-    }
-
     private fun purchase(app: App) {
         if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
@@ -611,8 +600,21 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 binding.layoutDetailsApp.apply {
                     txtLine3.text = PackageUtil.getInstalledVersion(requireContext(), app.packageName)
                     btnPrimaryAction.apply {
+                        val intent = PackageUtil.getLaunchIntent(requireContext(), app.packageName)
                         setText(R.string.action_open)
-                        setOnClickListener { openApp() }
+                        if (intent != null) {
+                            isEnabled = true
+                            setOnClickListener {
+                                try {
+                                    startActivity(intent)
+                                } catch (exception: ActivityNotFoundException) {
+                                    toast("Unable to open app")
+                                }
+                            }
+                        } else {
+                            isEnabled = false
+                            setOnClickListener(null)
+                        }
                     }
                 }
             }
