@@ -1,5 +1,5 @@
 • Android 13
-• Die Lokalisierung mehrerer Zeichenfolgen aktiviert
+• Die Lokalisierung mehrerer Zeichenketten aktiviert
 • Monochromes Symbol für Android 13 hinzugefügt
 • Abhängigkeiten auf die neueste Version aktualisiert
 • Beim Start wird sofort die Aufforderung zu den Nutzungsbedingungen angezeigt

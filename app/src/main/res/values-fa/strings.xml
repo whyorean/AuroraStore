@@ -89,7 +89,7 @@
     <string name="action_blacklist">لیست سیاه</string>
     <string name="action_uninstall">حذف نصب</string>
     <string name="action_grant">مجوز دادن</string>
-    <string name="about_xda">مطالب توسعه دهندگان</string>
+    <string name="about_xda">مبحث های (XDA)</string>
     <string name="action_filter_apply">اعمال</string>
     <string name="action_post">پست</string>
     <string name="action_copy">کپی</string>
@@ -292,4 +292,16 @@
     <string name="action_enabled">فعال شد</string>
     <string name="app_link_enabled">لینک برنامه فعال شد!</string>
     <string name="google_play_store_desc">گوگل پلی که با نام فروشگاه گوگل پلی و بازار سابق اندروید نیز شناخته می شود.</string>
+    <string name="about_wiki_title">ویکی</string>
+    <string name="about_wiki_summary">جواب به سوالات مکرر (FAQ) مراحل حل مشکلات تخنیکی و بیشتر را در اینجا دریابید.</string>
+    <string name="action_select_all">همه ای (متن) را انتخاب نمایید</string>
+    <string name="details_no_apps_on_sale">هیچ برنامه ای برای فروش پیدا نشد</string>
+    <string name="details_data_safety_title">حفظ امنیت معلومات</string>
+    <string name="action_favourite">پسندیده</string>
+    <string name="action_uninstall_confirmation">آیا شما میخواهید این برنامه را حذف کنید؟</string>
+    <string name="action_request_analysis">"تحلیل جدیدی را درخواست  نماید"</string>
+    <string name="action_home_screen">به صفحه اصلی بافزاید</string>
+    <string name="details_no_favourites">هیچ برنامه (اپلیکیشن) مورد نظر پیدا نشد</string>
+    <string name="action_uninstall_success">بطور موفقانه حذف گردید</string>
+    <string name="action_remove_all">همه اش را پاک کن</string>
 </resources>
