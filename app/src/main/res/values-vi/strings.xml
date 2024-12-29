@@ -145,7 +145,7 @@
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
     <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Bỏ qua các ứng dụng F-Droid khỏi Cập nhật và Ứng dụng đã cài đặt</string>
+    <string name="pref_filter_fdroid_summary">Không kiểm tra cập nhật cho các ứng dụng được tải xuống hoặc cài đặt từ F-Droid</string>
     <string name="pref_dialog_to_apply_restart">Thiết đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
@@ -248,7 +248,7 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> và <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="download_eta_min">Còn %1$d phút, %2$ds giây</string>
     <string name="download_paused">Đã tạm dừng• <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Đang tải xuống• <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Đang tải xuống • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_login_failed_google">Không thể đăng nhập qua Google</string>
     <string name="toast_import_failed">Không thể nhập cấu hình thiết bị</string>
     <string name="permissions_denied">Những quyền bắt buộc đã không được cho phép. Hãy cho phép để tiếp tục</string>
@@ -318,7 +318,7 @@
     <string name="google_play_store_desc">Google Play, còn được gọi là Cửa hàng Google Play và trước đây là Android Market.</string>
     <string name="app_language">Ngôn ngữ ứng dụng</string>
     <string name="action_request_analysis">Yêu cầu phân tích mới</string>
-    <string name="pref_aurora_only_desc">Chỉ hiển thị các ứng dụng đã cài đặt trên Aurora Store trong Bản cập nhật và Ứng dụng đã cài đặt</string>
+    <string name="pref_aurora_only_desc">Chỉ kiểm tra cập nhật cho các ứng dụng được cài đặt từ Aurora Store</string>
     <string name="pref_updates_incompatible">Cập nhật không tương thích</string>
     <string name="pref_updates_incompatible_desc">Hiển thị các bản cập nhật cho các ứng dụng không tương thích hoặc bị vô hiệu hóa có thể không cài đặt được</string>
     <string name="action_home_screen">Thêm vào màn hình chính</string>
@@ -414,4 +414,16 @@
     <string name="notification_channel_export">Thông báo xuất ứng dụng</string>
     <string name="notification_channel_downloads">Thông báo tải xuống</string>
     <string name="notification_channel_install">Thông báo cài đặt</string>
+    <string name="action_select_all">Chọn tất cả</string>
+    <string name="action_remove_all">Xóa tất cả</string>
+    <string name="filter_latest">Mới nhất</string>
+    <string name="toast_permission_esm_restart">Bạn có thể phải khởi động lại ứng dụng để phản ánh việc cấp quyền.</string>
+    <string name="toast_black_export_failed">Lỗi khi xuất Danh sách đen!</string>
+    <string name="toast_black_import_success">Danh sách đen đã được nhập!</string>
+    <string name="toast_black_import_failed">Lỗi khi nhập Danh sách đen!</string>
+    <string name="toast_black_export_success">Danh sách đen đã được xuất!</string>
+    <string name="default_spoof">Mặc định</string>
+    <string name="status_verifying">Đang xác thực</string>
+    <string name="action_unarchive">Dừng lưu trữ</string>
+    <string name="available_spoof">Có sẵn</string>
 </resources>
