@@ -235,8 +235,8 @@
     <string name="app_updater_service_notif_text">Aplikazioak atzeko planoan deskargatzea ahalbidetzen du</string>
     <string name="pref_install_mode_am">AM instalatzailea</string>
     <string name="app_updater_service_notif_title">Aplikazioak atzeko planoan deskargatu</string>
-    <string name="download_paused">Geldituta • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Deskargatzen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Geldituta • <xliff:g id="burututako_deskargak">%1$d</xliff:g> / <xliff:g id="deskarga_guztiak">%2$d</xliff:g></string>
+    <string name="download_progress">Deskargatzen • <xliff:g id="burututako_deskargak">%1$d</xliff:g> / <xliff:g id="deskarga_guztiak">%2$d</xliff:g> • <xliff:g id="abiadura">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Jakinarazpenak</string>
     <string name="onboarding_permission_notifications_desc">Bidali jakinarazpenak instalazioen egoerari buruz</string>
     <string name="session_enjoy">Hasi saioa eta gozatu.</string>
@@ -413,4 +413,13 @@
     <string name="manage_account">Zure kontua kudeatu</string>
     <string name="pref_clear_device_owner_title">Garbitu gailuaren jabea</string>
     <string name="add_dispenser_summary">Gehitu token-banatzailea Aurora dendan. Token banatzaileek kontu-kredentzialak ematen dizkiote Aurora dendari, modu anonimoan saioa hasteko.</string>
+    <string name="action_remove_all">Kendu denak</string>
+    <string name="action_select_all">Denak hautatu</string>
+    <string name="filter_latest">Azkenak</string>
+    <string name="toast_black_import_failed">Zerrenda beltzaren inportazioak huts egin du!</string>
+    <string name="toast_black_export_failed">Zerrenda beltzaren esportazioak huts egin du!</string>
+    <string name="toast_black_import_success">Zerrenda beltza inportatu da!</string>
+    <string name="toast_black_export_success">Zerrenda beltza esportatu da!</string>
+    <string name="status_verifying">Berifikatzen</string>
+    <string name="action_unarchive">Fitxategitik kendu</string>
 </resources>
