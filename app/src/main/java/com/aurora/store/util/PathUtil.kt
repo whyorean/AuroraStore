@@ -70,15 +70,15 @@ object PathUtil {
      * @param download An instance of [Download]
      */
     fun getLocalFile(context: Context, gFile: GPlayFile, download: Download): File {
-        val isSharedLib = download.sharedLibs.any { it.fileList.contains(gFile) }
+        val sharedLib = download.sharedLibs.find { it.fileList.contains(gFile) }
         return when (gFile.type) {
             GPlayFile.FileType.BASE, GPlayFile.FileType.SPLIT -> {
-                val downloadDir = if (isSharedLib) {
+                val downloadDir = if (sharedLib != null) {
                     getLibDownloadDir(
                         context,
                         download.packageName,
                         download.versionCode,
-                        download.packageName
+                        sharedLib.packageName
                     )
                 } else {
                     getAppDownloadDir(context, download.packageName, download.versionCode)
