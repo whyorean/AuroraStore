@@ -139,12 +139,19 @@ object PackageUtil {
         }
     }
 
-    fun getInstalledVersion(context: Context, packageName: String): String {
+    fun getInstalledVersionName(context: Context, packageName: String): String {
         return try {
-            val packageInfo = getPackageInfo(context, packageName)
-            "${packageInfo.versionName} (${PackageInfoCompat.getLongVersionCode(packageInfo)})"
+            getPackageInfo(context, packageName).versionName ?: ""
         } catch (e: PackageManager.NameNotFoundException) {
             ""
+        }
+    }
+
+    fun getInstalledVersionCode(context: Context, packageName: String): Long {
+        return try {
+            PackageInfoCompat.getLongVersionCode(getPackageInfo(context, packageName))
+        } catch (e: PackageManager.NameNotFoundException) {
+            0
         }
     }
 

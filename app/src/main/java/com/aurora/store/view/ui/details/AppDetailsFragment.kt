@@ -485,7 +485,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             packageName.text = app.packageName
             txtLine1.text = app.displayName
             txtLine2.text = app.developerName
-            txtLine3.text = ("${app.versionName} (${app.versionCode})")
+            txtLine3.text = getString(R.string.version, app.versionName, app.versionCode)
 
             txtLine2.setOnClickListener {
                 findNavController().navigate(
@@ -593,6 +593,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
 
             if ((isUpdatable && hasValidCert) || (isUpdatable && isExtendedUpdateEnabled)) {
+                binding.layoutDetailsApp.txtLine3.text = getString(
+                    R.string.version_update,
+                    PackageUtil.getInstalledVersionName(requireContext(), app.packageName),
+                    PackageUtil.getInstalledVersionCode(requireContext(), app.packageName),
+                    app.versionName,
+                    app.versionCode
+                )
                 binding.layoutDetailsApp.btnPrimaryAction.apply {
                     text = getString(R.string.action_update)
                     setOnClickListener {
@@ -606,7 +613,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             } else {
                 binding.layoutDetailsApp.apply {
-                    txtLine3.text = PackageUtil.getInstalledVersion(requireContext(), app.packageName)
+                    txtLine3.text = getString(
+                        R.string.version,
+                        PackageUtil.getInstalledVersionName(requireContext(), app.packageName),
+                        PackageUtil.getInstalledVersionCode(requireContext(), app.packageName)
+                    )
                     btnPrimaryAction.apply {
                         val intent = PackageUtil.getLaunchIntent(requireContext(), app.packageName)
                         setText(R.string.action_open)
