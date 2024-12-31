@@ -261,9 +261,10 @@ class MoreDialogFragment : DialogFragment() {
                 ) {
                     Text(
                         text = if (authProvider.isAnonymous) {
-                            "Anonymous"
+                            stringResource(R.string.account_anonymous)
                         } else {
-                            authProvider.authData!!.userProfile!!.name
+                            authProvider.authData?.userProfile?.name
+                                ?: stringResource(R.string.status_unavailable)
                         },
                         fontWeight = FontWeight.Normal,
                         color = onBackgroundColor,
@@ -273,9 +274,10 @@ class MoreDialogFragment : DialogFragment() {
                     )
                     Text(
                         text = if (authProvider.isAnonymous) {
-                            "anonymous@gmail.com"
+                            stringResource(R.string.account_anonymous_email)
                         } else {
-                            authProvider.authData!!.userProfile!!.email
+                            authProvider.authData?.userProfile?.email
+                                ?: stringResource(R.string.status_unavailable)
                         },
                         fontWeight = FontWeight.Light,
                         color = onBackgroundColor,
