@@ -23,8 +23,8 @@ import android.content.Context
 import android.util.Log
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
+import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.AuthHelper
-import com.aurora.gplayapi.helpers.AuthValidator
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.R
 import com.aurora.store.data.model.AccountType
@@ -73,11 +73,15 @@ class AuthProvider @Inject constructor(
      * Checks whether saved AuthData is valid or not
      */
     suspend fun isSavedAuthDataValid(): Boolean {
+        // TODO: Switch to the method from gplayapi
         return withContext(Dispatchers.IO) {
             try {
-                AuthValidator(authData ?: return@withContext false)
+                val testPackageName = "com.android.chrome"
+                val app = AppDetailsHelper(authData!!)
                     .using(httpClient)
-                    .isValid()
+                    .getAppByPackageName(testPackageName)
+                app.packageName == testPackageName && app.displayName.isNotBlank()
+                        && app.versionCode != 0
             } catch (exception: Exception) {
                 false
             }
