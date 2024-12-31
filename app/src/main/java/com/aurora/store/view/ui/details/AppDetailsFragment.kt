@@ -136,7 +136,15 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
             is BusEvent.ManualDownload -> {
                 if (app.packageName == event.packageName) {
-                    purchase(app.copy(versionCode = event.versionCode))
+                    val requestedApp = app.copy(
+                        versionCode = event.versionCode,
+                        dependencies = app.dependencies.copy(
+                            dependentLibraries = app.dependencies.dependentLibraries.onEach { lib ->
+                                lib.versionCode = event.versionCode
+                            }
+                        )
+                    )
+                    purchase(requestedApp)
                 }
             }
 
