@@ -20,6 +20,13 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
+        app:icon="@drawable/ic_list_check"
+        app:iconSpaceReserved="false"
+        app:key="pref_perms"
+        app:layout="@layout/item_preference"
+        app:title="@string/onboarding_title_permissions" />
+
+    <Preference
         app:icon="@drawable/ic_installation"
         app:iconSpaceReserved="false"
         app:key="pref_install"

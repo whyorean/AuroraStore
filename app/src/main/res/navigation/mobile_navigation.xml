@@ -96,7 +96,11 @@
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingsFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/installationPreference"
         android:name="com.aurora.store.view.ui.preferences.InstallationPreference"
@@ -361,6 +365,16 @@
         <action
             android:id="@+id/action_dispenserFragment_to_removeDispenserDialog"
             app:destination="@id/removeDispenserDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.aurora.store.view.ui.onboarding.PermissionsFragment"
+        android:label="PermissionsFragment"
+        tools:layout="@layout/fragment_onboarding_permissions">
+        <argument
+            android:name="isOnboarding"
+            android:defaultValue="true"
+            app:argType="boolean" />
     </fragment>
     <dialog
         android:id="@+id/appMenuSheet"

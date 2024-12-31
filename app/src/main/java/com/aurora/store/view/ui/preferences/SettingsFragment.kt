@@ -34,6 +34,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_settings, rootKey)
 
+        findPreference<Preference>("pref_perms")?.setOnPreferenceClickListener {
+            findNavController().navigate(
+                SettingsFragmentDirections.actionSettingsFragmentToPermissionsFragment(false)
+            )
+            true
+        }
         findPreference<Preference>("pref_install")?.setOnPreferenceClickListener {
             findNavController().navigate(R.id.installationPreference)
             true

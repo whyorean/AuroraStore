@@ -22,6 +22,10 @@ package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isRAndAbove
@@ -39,8 +43,27 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>() {
 
+    private val args: PermissionsFragmentArgs by navArgs()
+
+    companion object {
+        fun newInstance(isOnboarding: Boolean = true): PermissionsFragment {
+            return PermissionsFragment().apply {
+                arguments = bundleOf("isOnboarding" to isOnboarding)
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Headers are only visible if we are onboarding
+        binding.title?.isVisible = args.isOnboarding
+        binding.subtitle?.isVisible = args.isOnboarding
+        binding.toolbar?.apply {
+            isVisible = !args.isOnboarding
+            setNavigationOnClickListener { findNavController().navigateUp() }
+        }
+
         updateController()
     }
 

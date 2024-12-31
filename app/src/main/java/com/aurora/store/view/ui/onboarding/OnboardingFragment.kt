@@ -74,7 +74,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         override fun createFragment(position: Int): Fragment {
             when (position) {
                 0 -> return WelcomeFragment()
-                1 -> return PermissionsFragment()
+                1 -> return PermissionsFragment.newInstance()
                 2 -> return AppLinksFragment()
             }
             return Fragment()
