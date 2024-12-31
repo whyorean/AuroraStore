@@ -483,4 +483,5 @@
 
     <!-- AppDetailsFragment -->
     <string name="action_unarchive">Unarchive</string>
+    <string name="unable_to_open">Unable to open app</string>
 </resources>

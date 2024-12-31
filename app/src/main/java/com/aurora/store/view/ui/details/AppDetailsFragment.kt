@@ -616,7 +616,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                                 try {
                                     startActivity(intent)
                                 } catch (exception: ActivityNotFoundException) {
-                                    toast("Unable to open app")
+                                    toast(getString(R.string.unable_to_open))
                                 }
                             }
                         } else {
