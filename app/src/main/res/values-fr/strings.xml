@@ -422,4 +422,5 @@
     <string name="toast_black_import_success">La liste d’exclusion a été importée</string>
     <string name="action_unarchive">Désarchiver</string>
     <string name="status_verifying">Vérification en cours</string>
+    <string name="unable_to_open">Démarrage de l\'app impossible</string>
 </resources>
