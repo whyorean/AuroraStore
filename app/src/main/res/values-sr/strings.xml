@@ -450,4 +450,5 @@
     <string name="filter_latest">Најновије</string>
     <string name="action_select_all">Изабери све</string>
     <string name="toast_black_import_failed">Увоз црне листе није успео!</string>
+    <string name="unable_to_open">Није могуће отворити апликацију</string>
 </resources>
