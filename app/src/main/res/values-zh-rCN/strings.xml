@@ -426,4 +426,5 @@
     <string name="toast_black_import_failed">导入黑名单失败！</string>
     <string name="status_verifying">验证中</string>
     <string name="action_unarchive">解压缩</string>
+    <string name="unable_to_open">无法打开应用</string>
 </resources>
