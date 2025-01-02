@@ -21,7 +21,6 @@
     <string name="details_beta_available">Bernameya beta beşdarî bibin?</string>
     <string name="details_beta_subscribed">Hûn ceribandina betayê ne</string>
     <string name="details_beta">Bernameya Beta</string>
-    <string name="action_wishlist_add">Li lîsteya xwestekên xwe zêde bike</string>
     <string name="action_whitelist">Lîsteya spî</string>
     <string name="action_update_all">Hemî nûve bikin</string>
     <string name="action_update">Nûve bikin</string>
@@ -156,7 +155,6 @@
     <string name="action_installing">Damezirandin</string>
     <string name="action_installations">Sazkirin</string>
     <string name="action_install">Lêkirin</string>
-    <string name="action_ignore_version">Guhertoya paşguh bikin</string>
     <string name="action_ignore">Berçavnegirtin</string>
     <string name="action_granted">Destûrdayîn</string>
     <string name="action_grant">Pişgirî</string>

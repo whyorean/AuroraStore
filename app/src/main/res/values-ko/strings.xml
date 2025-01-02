@@ -56,7 +56,6 @@
     <string name="action_grant">승인하기</string>
     <string name="action_granted">부여</string>
     <string name="action_ignore">무시하다</string>
-    <string name="action_ignore_version">버전 무시</string>
     <string name="action_install">설치</string>
     <string name="action_installations">설치</string>
     <string name="action_filter_misc">기타</string>
@@ -77,7 +76,6 @@
     <string name="action_info">앱 정보</string>
     <string name="action_update">업데이트</string>
     <string name="action_update_all">모두 업데이트</string>
-    <string name="action_wishlist_add">위시리스트에 추가</string>
     <string name="details_beta">베타 프로그램</string>
     <string name="details_beta_subscribed">당신은 베타 테스터입니다</string>
     <string name="details_beta_available">베타 프로그램에 참여하시겠습니까?</string>

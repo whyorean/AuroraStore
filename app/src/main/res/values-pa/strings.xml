@@ -163,7 +163,6 @@
     <string name="details_beta_available">ਕੀ ਤੁਸੀਂ ਬੀਟਾ ਪ੍ਰੋਗਰਾਮ ਵਿੱਚ ਜੁੜਨਾ ਚਾਹੁੰਦੇ ਹੋ ?</string>
     <string name="details_beta_subscribed">ਤੁਸੀਂ ਹੁਣ ਇੱਕ ਬੀਟਾ ਟੈਸਟਰ ਹੋ</string>
     <string name="details_beta">ਬੀਟਾ ਪ੍ਰੋਗਰਾਮ</string>
-    <string name="action_wishlist_add">ਇੱਛੁਕ ਸੂਚੀ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕਰੋ</string>
     <string name="action_whitelist">ਵਾਈਟ ਲਿਸਟ</string>
     <string name="action_update_all">ਸਾਰੇ ਅੱਪਡੇਟ ਕਰੋ</string>
     <string name="action_update">ਅੱਪਡੇਟ</string>
@@ -186,7 +185,6 @@
     <string name="action_installing">ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ</string>
     <string name="action_installations">ਇੰਸਟਾਲ ਕੀਤੀਆਂ ਐਪਾਂ</string>
     <string name="action_install">ਇੰਸਟਾਲ ਕਰੋ</string>
-    <string name="action_ignore_version">ਇਸ ਵਰਜ਼ਨ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="action_ignore">ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="action_granted">ਇਜਾਜ਼ਤ ਦਿੱਤੀ ਗਈ</string>
     <string name="action_grant">ਇਜਾਜ਼ਤ ਦਿਓ</string>

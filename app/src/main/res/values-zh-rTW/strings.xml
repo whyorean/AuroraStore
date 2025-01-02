@@ -19,7 +19,6 @@
     <string name="action_installing">安裝中</string>
     <string name="action_installations">安裝項目</string>
     <string name="action_install">安裝</string>
-    <string name="action_ignore_version">忽略版本</string>
     <string name="action_ignore">忽略</string>
     <string name="action_granted">已授權</string>
     <string name="action_grant">授權</string>
@@ -219,7 +218,6 @@
     <string name="details_beta_available">要加入 beta 項目嗎？</string>
     <string name="details_beta_subscribed">你已經是 beta 測試員啦</string>
     <string name="details_beta">Beta（測試版）項目</string>
-    <string name="action_wishlist_add">加入願望清單</string>
     <string name="action_whitelist">白名單</string>
     <string name="action_update_all">更新全部</string>
     <string name="action_update">更新</string>

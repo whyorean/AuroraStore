@@ -13,7 +13,6 @@
     <string name="action_join">Γίνετε μέλος</string>
     <string name="action_installations">Εγκαταστάσεις</string>
     <string name="action_install">Εγκατάσταση</string>
-    <string name="action_ignore_version">Παράλειψη έκδοσης</string>
     <string name="action_ignore">Παράλειψη</string>
     <string name="action_granted">Παραχωρήθηκε</string>
     <string name="action_grant">Παραχώρηση</string>
@@ -99,7 +98,6 @@
     <string name="details_beta_available">Θα συμμετέχετε στο πρόγραμμα beta;</string>
     <string name="details_beta_subscribed">Είστε δοκιμαστής beta</string>
     <string name="details_beta">Εφαρμογή beta</string>
-    <string name="action_wishlist_add">Προσθήκη στη λίστα επιθυμιών</string>
     <string name="action_whitelist">Λίστα αποδοχής</string>
     <string name="action_update_all">Ενημέρωση όλων</string>
     <string name="action_update">Ενημέρωση</string>

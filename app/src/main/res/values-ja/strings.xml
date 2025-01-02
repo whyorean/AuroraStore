@@ -102,7 +102,6 @@
     <string name="details_beta">ベータプログラム</string>
     <string name="details_beta_available">ベータプログラムに参加しますか？</string>
     <string name="details_beta_subscribed">あなたはベータテスターです</string>
-    <string name="action_wishlist_add">ウィッシュリストに追加</string>
     <string name="action_whitelist">ホワイトリスト</string>
     <string name="action_update_all">すべて更新</string>
     <string name="action_update">更新</string>
@@ -125,7 +124,6 @@
     <string name="action_installing">インストール中</string>
     <string name="action_installations">インストール</string>
     <string name="action_install">インストール</string>
-    <string name="action_ignore_version">このバージョンを無視</string>
     <string name="action_ignore">無視</string>
     <string name="action_granted">付与済み</string>
     <string name="action_grant">付与</string>

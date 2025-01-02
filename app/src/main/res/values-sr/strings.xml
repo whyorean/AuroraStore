@@ -140,7 +140,6 @@
     <string name="details_beta_available">Придружите се бета програму?</string>
     <string name="details_beta_subscribed">Ви сте бета тестер</string>
     <string name="details_beta">Бета програм</string>
-    <string name="action_wishlist_add">Додај на листу жеља</string>
     <string name="action_whitelist">Бела листа</string>
     <string name="action_update_all">Ажурирај све</string>
     <string name="action_update">Ажурирај</string>
@@ -163,7 +162,6 @@
     <string name="action_installing">Инсталирање</string>
     <string name="action_installations">Инсталације</string>
     <string name="action_install">Инсталирај</string>
-    <string name="action_ignore_version">Игнориши верзију</string>
     <string name="action_ignore">Игнориши</string>
     <string name="action_granted">Одобрено</string>
     <string name="action_grant">Одобри</string>

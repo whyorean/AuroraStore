@@ -180,7 +180,6 @@
     <string name="details_beta_available">Ön izleme programına katılmak ister misin\?</string>
     <string name="details_beta_subscribed">Artık ön izleme sürümü kullanıyorsunuz</string>
     <string name="details_beta">Ön izleme programı</string>
-    <string name="action_wishlist_add">İstek listesine ekle</string>
     <string name="action_whitelist">Beyaz liste</string>
     <string name="action_update_all">Tümünü güncelle</string>
     <string name="action_update">Güncelle</string>
@@ -203,7 +202,6 @@
     <string name="action_installing">Kuruluyor</string>
     <string name="action_installations">Kurulumlar</string>
     <string name="action_install">Kur</string>
-    <string name="action_ignore_version">Sürümü göz ardı et</string>
     <string name="action_ignore">Göz ardı et</string>
     <string name="action_granted">İzin verildi</string>
     <string name="action_grant">İzin ver</string>

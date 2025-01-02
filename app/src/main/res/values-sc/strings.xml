@@ -13,12 +13,10 @@
     <string name="action_grant">Fruni</string>
     <string name="action_granted">Frunidu</string>
     <string name="action_ignore">Ignora</string>
-    <string name="action_ignore_version">Ignora sa versione</string>
     <string name="action_ok">AB</string>
     <string name="action_pending">In suspesu</string>
     <string name="action_post">Pùblica</string>
     <string name="action_search">Chirca</string>
-    <string name="action_wishlist_add">Annanghe a sa lista de sos disìgios</string>
     <string name="details_beta">Programma Beta</string>
     <string name="details_beta_available">Pigare parte a su programma beta?</string>
     <string name="details_beta_description">As a bìdere sas funtzionalidades e sas faddinas noas in antis de su pùblicu. Dae s\'opinione tua a sos isvilupadores pro los agiudare a megiorare.</string>

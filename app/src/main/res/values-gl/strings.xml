@@ -132,7 +132,6 @@
     <string name="action_installing">A instalar</string>
     <string name="action_installations">Instalacións</string>
     <string name="action_install">Instalar</string>
-    <string name="action_ignore_version">Ignorar versión</string>
     <string name="action_ignore">Ignorar</string>
     <string name="action_granted">Permitido</string>
     <string name="action_grant">Permitir</string>
@@ -185,7 +184,6 @@
     <string name="details_beta_available">Unirse ao programa beta?</string>
     <string name="details_beta_subscribed">Es un beta tester</string>
     <string name="details_beta">Programa beta</string>
-    <string name="action_wishlist_add">Engadir a favoritos</string>
     <string name="action_whitelist">Lista branca</string>
     <string name="action_update_all">Actualizar todo</string>
     <string name="action_search">Procurar</string>

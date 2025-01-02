@@ -167,7 +167,6 @@
     <string name="details_beta_available">Aanmelden bij bèta-programma?</string>
     <string name="details_beta_subscribed">Je bent een bèta tester</string>
     <string name="details_beta">Bèta-programma</string>
-    <string name="action_wishlist_add">Toevoegen aan verlanglijst</string>
     <string name="action_whitelist">Witte lijst</string>
     <string name="action_update_all">Werk alle bij</string>
     <string name="action_update">Werk bij</string>
@@ -189,7 +188,6 @@
     <string name="action_installing">Aan het installeren</string>
     <string name="action_installations">Installaties</string>
     <string name="action_install">Installeer</string>
-    <string name="action_ignore_version">Negeer versie</string>
     <string name="action_ignore">Negeer</string>
     <string name="action_granted">Verleend</string>
     <string name="action_finish">Afmaken</string>

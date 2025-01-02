@@ -125,7 +125,6 @@
     <string name="details_beta_available">Liity beetaohjelmaan ?</string>
     <string name="details_beta_subscribed">Olet beetatestaaja</string>
     <string name="details_beta">Beetaohjelmisto</string>
-    <string name="action_wishlist_add">Lisää toivelistalle</string>
     <string name="action_whitelist">Valkoinen lista</string>
     <string name="action_update_all">Päivitä kaikki</string>
     <string name="action_update">Päivitä</string>
@@ -148,7 +147,6 @@
     <string name="action_installing">Asennetaan</string>
     <string name="action_installations">Asennukset</string>
     <string name="action_install">Asenna</string>
-    <string name="action_ignore_version">Sivuuta versio</string>
     <string name="action_ignore">Sivuuta</string>
     <string name="action_granted">Myönnetty</string>
     <string name="action_grant">Myönnä</string>

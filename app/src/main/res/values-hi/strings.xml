@@ -43,7 +43,6 @@
     <string name="action_installing">इंस्टॉल हो रहा</string>
     <string name="action_installations">इंस्टालेशनस</string>
     <string name="action_install">इंस्टॉल करें</string>
-    <string name="action_ignore_version">संस्करण नजरअंदाज करें</string>
     <string name="action_ignore">नजरअंदाज करें</string>
     <string name="action_granted">अनुमति दी गयी</string>
     <string name="action_grant">अनुमति दें</string>
@@ -75,7 +74,6 @@
     <string name="toast_rated_failed">रेटिंग जमा नहीं की जा सकी</string>
     <string name="action_share">साझा करें</string>
     <string name="title_manual_download">मैनुअल डाउनलोड</string>
-    <string name="action_wishlist_add">इच्छासूची में जोड़ें</string>
     <string name="toast_apk_blacklisted">कालीसूचीबद्ध</string>
     <string name="download_force_clear_all">सभी को बलपूर्वक साफ करें</string>
     <string name="tab_for_you">आपके लिए</string>

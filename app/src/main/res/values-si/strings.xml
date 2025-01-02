@@ -65,7 +65,6 @@
     <string name="action_installing">ස්ථාපනය වෙමින්</string>
     <string name="action_installations">ස්ථාපනයන්</string>
     <string name="action_export">නිර්යාත කරන්න</string>
-    <string name="action_ignore_version">අනුවාදය නොසලකන්න</string>
     <string name="action_ignore">නොසලකන්න</string>
     <string name="action_filter">පෙරහන්</string>
     <string name="action_disable">අබල කරන්න</string>
@@ -141,7 +140,6 @@
     <string name="action_filter_rating">ඇගැයුම්</string>
     <string name="action_get_local_apk">යෙදුම් පොදිය සුරකින්න</string>
     <string name="action_whitelist">සුදු ලේඛනය</string>
-    <string name="action_wishlist_add">සුදු ලේඛනයට එක්කරන්න</string>
     <string name="details_beta_subscribed">ඔබ බීටා පරීක්‍ෂකයෙකි</string>
     <string name="details_beta_delay">ලියාපදිංචියට මද වේලාවක් ගතවනු ඇත, පසුව තත්‍වය පරීක්‍ෂා කරන්න.</string>
     <string name="details_dev_details">සංවර්ධකගේ සබඳතාව</string>

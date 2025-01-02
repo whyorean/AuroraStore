@@ -119,7 +119,6 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="action_granted">畀咗權限</string>
     <string name="action_ignore">話之得佢</string>
-    <string name="action_ignore_version">呢個版本話之得佢</string>
     <string name="action_installations">安裝過程</string>
     <string name="details_beta">試住先計劃</string>
     <string name="details_beta_subscribed">您擔當試住先測試員</string>
@@ -221,7 +220,6 @@
     <string name="pref_install_delete_title">安裝之後剷走 APK</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="action_whitelist">欽准名單</string>
-    <string name="action_wishlist_add">加落願望清單</string>
     <string name="action_blacklist_add">加落禁制名單</string>
     <string name="action_clear">抹走</string>
     <string name="action_blacklist">禁制名單</string>

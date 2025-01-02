@@ -88,7 +88,6 @@
     <string name="details_beta_available">Participer au programme bêta ?</string>
     <string name="details_beta_subscribed">Vous essayez la version bêta</string>
     <string name="details_beta">Programme bêta</string>
-    <string name="action_wishlist_add">Ajouter à la liste de souhaits</string>
     <string name="action_whitelist">Liste d’inclusion</string>
     <string name="action_update_all">Tout mettre à jour</string>
     <string name="action_update">Mettre à jour</string>
@@ -111,7 +110,6 @@
     <string name="action_installing">Installation</string>
     <string name="action_installations">Installations</string>
     <string name="action_install">Installer</string>
-    <string name="action_ignore_version">Ignorer la version</string>
     <string name="action_ignore">Ignorer</string>
     <string name="action_get_local_apk">Enregistrer le paquet d’appli</string>
     <string name="action_finish">Terminer</string>

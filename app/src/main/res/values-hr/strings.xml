@@ -11,7 +11,6 @@
     <string name="details_beta_available">Želiš se pridružiti beta programu?</string>
     <string name="details_beta_subscribed">Ti si član beta programa</string>
     <string name="details_beta">Beta program</string>
-    <string name="action_wishlist_add">Dodaj u popis želja</string>
     <string name="action_whitelist">Poželjni</string>
     <string name="action_update_all">Aktualiziraj sve</string>
     <string name="action_update">Aktualiziraj</string>
@@ -34,7 +33,6 @@
     <string name="action_installing">Instaliranje</string>
     <string name="action_installations">Instalacije</string>
     <string name="action_install">Instaliraj</string>
-    <string name="action_ignore_version">Zanemari verziju</string>
     <string name="action_ignore">Zanemari</string>
     <string name="action_granted">Odobreno</string>
     <string name="action_grant">Odobri</string>

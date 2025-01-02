@@ -12,7 +12,6 @@
     <string name="details_beta">Bétaprogram</string>
     <string name="details_beta_available">Csatlakozik a bétaprogramhoz?</string>
     <string name="details_beta_subscribed">Ön bétatesztelő</string>
-    <string name="action_wishlist_add">Hozzáadás a kívánságlistához</string>
     <string name="action_whitelist">Engedélyezési lista</string>
     <string name="action_update_all">Összes frissítése</string>
     <string name="action_update">Frissítés</string>
@@ -34,7 +33,6 @@
     <string name="action_join">Csatlakozás</string>
     <string name="action_installing">Telepítés alatt</string>
     <string name="action_install">Telepítés</string>
-    <string name="action_ignore_version">Verzió mellőzése</string>
     <string name="action_ignore">Mellőzés</string>
     <string name="action_granted">Megadva</string>
     <string name="action_grant">Megadás</string>

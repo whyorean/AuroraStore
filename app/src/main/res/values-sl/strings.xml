@@ -48,7 +48,6 @@
     <string name="action_update">Posodobi</string>
     <string name="action_update_all">Posodobi vse</string>
     <string name="action_whitelist">Beli seznam</string>
-    <string name="action_wishlist_add">Dodaj na seznam želja</string>
     <string name="details_beta">Program Beta</string>
     <string name="details_beta_subscribed">Zdaj ste Beta uporabnik</string>
     <string name="details_beta_available">Se želite pridružiti v Beta program?</string>
@@ -121,7 +120,6 @@
     <string name="action_clear">Počisti</string>
     <string name="action_copy">Kopiraj</string>
     <string name="action_filter">Filtri</string>
-    <string name="action_ignore_version">Ignoriraj to različico</string>
     <string name="action_installing">Nameščanje</string>
     <string name="action_filter_apply">Uporabi</string>
     <string name="action_filter_apps_with_ads">Aplikacije z oglasi</string>

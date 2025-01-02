@@ -125,7 +125,6 @@
     <string name="action_installing">جاري التثبيت</string>
     <string name="action_installations">التثبيتات</string>
     <string name="action_install">تثبيت</string>
-    <string name="action_ignore_version">تجاهل الإصدار</string>
     <string name="action_ignore">تجاهل</string>
     <string name="action_filter_paid_apps">مدفوع</string>
     <string name="action_filter_misc">متفرقات</string>
@@ -141,7 +140,6 @@
     <string name="details_no_updates">لا توجد تحديثات متوفرة</string>
     <string name="details_more_about_app">المزيد حول التطبيق</string>
     <string name="details_changelog_unavailable">لم يتم توفير سجل التغيير</string>
-    <string name="action_wishlist_add">إضافة إلى قائمة الأمنيات</string>
     <string name="action_get_local_apk">حفظ حزمة التطبيق</string>
     <string name="action_filter_apps_with_ads">التطبيقات التي تتضمن إعلانات</string>
     <string name="installer_status_failure_session">تعذر إنشاء الجلسة</string>

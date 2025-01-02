@@ -34,7 +34,6 @@
     <string name="action_installing">Memasang</string>
     <string name="action_installations">Pemasangan</string>
     <string name="action_install">Pasang</string>
-    <string name="action_ignore_version">Abaikan versi</string>
     <string name="action_ignore">Abaikan</string>
     <string name="action_granted">Diizinkan</string>
     <string name="action_get_local_apk">Simpan App bundle</string>
@@ -58,7 +57,6 @@
     <string name="account_logout">Keluar dari Aurora</string>
     <string name="about_libera_summary">Jadilah patron di Liberapay</string>
     <string name="details_beta">Program beta</string>
-    <string name="action_wishlist_add">Tambahkan ke daftar keinginan</string>
     <string name="action_whitelist">Daftar Putih</string>
     <string name="action_update_all">Perbarui semua</string>
     <string name="action_update">Perbarui</string>

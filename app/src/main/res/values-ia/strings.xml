@@ -94,7 +94,6 @@
     <string name="about_bitcoin_bch_summary">Facer un donation via Bitcoin Cash (BCH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="details_no_dependencies">Sin dependentias</string>
-    <string name="action_ignore_version">Ignorar le version</string>
     <string name="about_paypal_summary">Facer un donation via PayPal</string>
     <string name="details_no_ads">Sin avisos publicitari</string>
     <string name="details_free">Gratuite</string>
@@ -160,7 +159,6 @@
     <string name="installer_service_available">Le servicios de Aurora es disponibile e preste pro installar.</string>
     <string name="title_installer">Installator de applicationes</string>
     <string name="details_dev_details">Contacto del disveloppator</string>
-    <string name="action_wishlist_add">Adder al lista blanc</string>
     <string name="onboarding_permission_esm">Gestor de immagazinage externe</string>
     <string name="pref_ui_title">Personalisation</string>
     <string name="onboarding_permission_select">Aurora Store require le sequente permissiones</string>

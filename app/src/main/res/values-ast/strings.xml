@@ -48,7 +48,6 @@
     <string name="details_dev_details">Contautu</string>
     <string name="details_beta_subscribed">Inscribiéstite nel programa beta</string>
     <string name="tab_top_free">De baldre</string>
-    <string name="action_wishlist_add">Add to wishlist</string>
     <string name="filter_review_all">Too</string>
     <string name="action_filter_rating">Valoraciones</string>
     <string name="toast_apk_whitelisted">Amestóse a la llista blanca</string>
@@ -96,7 +95,6 @@
     <string name="about_paypal_summary">Dona per PayPal</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="details_ratings">Valoración y reseñes</string>
-    <string name="action_ignore_version">Inorar la versión</string>
     <string name="action_filter">Peñeres</string>
     <string name="details_free">De baldre</string>
     <string name="action_disable">Desactivar</string>

@@ -116,7 +116,6 @@
     <string name="details_beta_available">Войти в программу бета-тестирования?</string>
     <string name="details_beta_subscribed">Вы бета-тестер</string>
     <string name="details_beta">Бета-тестирование</string>
-    <string name="action_wishlist_add">Добавить в белый список</string>
     <string name="action_whitelist">Белый список</string>
     <string name="action_update_all">Обновить все</string>
     <string name="action_update">Обновить</string>
@@ -206,7 +205,6 @@
     <string name="installer_status_failure_session">Невозможно создать сеанс</string>
     <string name="title_no_network">Нет соединения</string>
     <string name="installer_status_failure">Ошибка установки</string>
-    <string name="action_ignore_version">Игнорировать версию</string>
     <string name="action_filter_misc">Разное</string>
     <string name="action_filter_apply">Применить</string>
     <string name="toast_purchase_blocked">Покупка приложений недоступна для анонимных аккаунтов.</string>

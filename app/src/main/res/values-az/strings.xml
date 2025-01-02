@@ -16,7 +16,6 @@
     <string name="action_filter_paid_apps">Ödənişli</string>
     <string name="action_grant">İcazə verin</string>
     <string name="action_ignore">Məhəl qoyma</string>
-    <string name="action_ignore_version">Versiyaya məhəl qoyma</string>
     <string name="action_granted">İcazə verildi</string>
     <string name="action_install">Quraşdır</string>
     <string name="action_later">Daha sonra</string>
@@ -38,7 +37,6 @@
     <string name="details_beta_available">Sınaq proqramına qoşulsun?</string>
     <string name="action_update">Yenilə</string>
     <string name="action_whitelist">Ağ siyahı</string>
-    <string name="action_wishlist_add">İstək siyahısına əlavə et</string>
     <string name="details_beta">Sınaq proqramı</string>
     <string name="details_beta_subscribed">Siz sınaq testində iştirak edirsiniz</string>
     <string name="action_update_all">Hamısını yenilə</string>

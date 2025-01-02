@@ -46,7 +46,6 @@
     <string name="details_beta_available">Приєднатися до бета тестування?</string>
     <string name="details_beta_subscribed">Ви бета тестувальник</string>
     <string name="details_beta">Бета тестування</string>
-    <string name="action_wishlist_add">Додати до білого списку</string>
     <string name="action_whitelist">Білий список</string>
     <string name="action_update_all">Оновити все</string>
     <string name="action_update">Оновити</string>
@@ -69,7 +68,6 @@
     <string name="action_installing">Встановлення</string>
     <string name="action_installations">Установки</string>
     <string name="action_install">Встановити</string>
-    <string name="action_ignore_version">Знехтувати версію</string>
     <string name="action_ignore">Знехтувати</string>
     <string name="action_grant">Надати</string>
     <string name="action_granted">Надано</string>

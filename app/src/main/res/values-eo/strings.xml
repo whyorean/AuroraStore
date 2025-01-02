@@ -15,7 +15,6 @@
     <string name="details_description">Priskribo</string>
     <string name="details_dev_address">Adreso</string>
     <string name="details_dev_email">Retadreso</string>
-    <string name="action_ignore_version">Ignori version</string>
     <string name="action_ignore">Ignori</string>
     <string name="action_granted">Rajtigita</string>
     <string name="action_grant">Rajtigi</string>
@@ -59,7 +58,6 @@
     <string name="details_dependencies">Dependencoj</string>
     <string name="details_contains_ads">Enhavas reklamojn</string>
     <string name="details_changelog">Ŝanĝprotokolo</string>
-    <string name="action_wishlist_add">Aldoni al dezirlisto</string>
     <string name="action_whitelist">Blanka listo</string>
     <string name="action_update_all">Ĉiujn ĝisdatigi</string>
     <string name="action_update">Ĝisdatigi</string>

@@ -80,7 +80,6 @@
     <string name="details_beta_available">Partecipare al programma beta?</string>
     <string name="details_beta_subscribed">Sei un beta tester</string>
     <string name="details_beta">Programma beta</string>
-    <string name="action_wishlist_add">Aggiungi alla lista dei desideri</string>
     <string name="action_whitelist">Rimuovi dalla lista nera</string>
     <string name="action_update_all">Aggiorna tutte</string>
     <string name="action_update">Aggiorna</string>
@@ -105,7 +104,6 @@
     <string name="action_installing">Installazione</string>
     <string name="action_installations">Installazioni</string>
     <string name="action_install">Installa</string>
-    <string name="action_ignore_version">Ignora versione</string>
     <string name="action_ignore">Ignora</string>
     <string name="action_granted">Concesso</string>
     <string name="action_grant">Concedi</string>

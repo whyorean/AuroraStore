@@ -181,7 +181,6 @@
     <string name="details_beta_available">Ku biir barnaamijka tijaabada?</string>
     <string name="details_beta_subscribed">Waxaad tahay tijaabiye</string>
     <string name="details_beta">Barnaamija tijaabada</string>
-    <string name="action_wishlist_add">Kudar kuwaad rajaynayso</string>
     <string name="action_whitelist">La ogolyahay</string>
     <string name="action_update_all">Wada cusboonaysii</string>
     <string name="action_update">Cusboonaysii</string>
@@ -199,7 +198,6 @@
     <string name="action_leave">Ka bax</string>
     <string name="action_later">Hadhow</string>
     <string name="action_join">Ku biir</string>
-    <string name="action_ignore_version">Iskadhaaf tirsigan</string>
     <string name="action_ignore">Iskadhaaf</string>
     <string name="action_granted">Loo ogolaaday</string>
     <string name="action_grant">U ogolow</string>

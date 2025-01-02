@@ -54,7 +54,6 @@
     <string name="details_beta_available">要加入预览版计划吗？</string>
     <string name="details_beta_subscribed">您已成为预览版测试人员</string>
     <string name="details_beta">预览版计划</string>
-    <string name="action_wishlist_add">添加到白名单</string>
     <string name="action_whitelist">白名单</string>
     <string name="action_update_all">更新全部</string>
     <string name="action_update">更新</string>
@@ -70,7 +69,6 @@
     <string name="action_pause">暂停</string>
     <string name="action_installations">应用安装</string>
     <string name="action_install">安装</string>
-    <string name="action_ignore_version">忽略版本</string>
     <string name="action_ignore">忽略</string>
     <string name="action_granted">已允许</string>
     <string name="action_grant">允许</string>

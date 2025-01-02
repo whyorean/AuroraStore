@@ -70,7 +70,6 @@
     <string name="details_beta_subscribed">Du er en betatester</string>
     <string name="details_beta">Betaprogram</string>
     <string name="action_whitelist">Hviteliste</string>
-    <string name="action_wishlist_add">Legg til på hvitliste</string>
     <string name="action_update">Oppgrader</string>
     <string name="action_update_all">Oppgrader alle</string>
     <string name="action_info">Programinfo</string>
@@ -91,7 +90,6 @@
     <string name="action_installing">Installerer …</string>
     <string name="action_installations">Installasjoner</string>
     <string name="action_install">Installer</string>
-    <string name="action_ignore_version">Ignorer versjon</string>
     <string name="action_ignore">Ignorer</string>
     <string name="action_granted">Innvilget</string>
     <string name="action_grant">Innvilg</string>

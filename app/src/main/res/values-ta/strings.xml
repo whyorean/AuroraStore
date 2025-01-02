@@ -12,7 +12,6 @@
     <string name="action_installing">நிறுவுகிறது</string>
     <string name="action_installations">நிறுவல்கள்</string>
     <string name="action_install">நிறுவு</string>
-    <string name="action_ignore_version">பதிப்பை புறக்கணிக்கவும்</string>
     <string name="action_ignore">புறக்கணி</string>
     <string name="action_get_local_apk">பயன்பாட்டு மூட்டை சேமிக்கவும்</string>
     <string name="action_finish">முடிந்தது</string>
@@ -121,7 +120,6 @@
     <string name="action_post">இடுகையிடு</string>
     <string name="action_info">பயன்பாட்டுத் தகவல்</string>
     <string name="action_update">புதுப்பிப்புகள்</string>
-    <string name="action_wishlist_add">விருப்பப்பட்டியலில் சேர்</string>
     <string name="details_beta_subscribed">நீங்கள் பீட்டா சோதனையாளர்</string>
     <string name="details_beta_available">பீட்டா திட்டத்தில் சேரவா?</string>
     <string name="details_changelog">மாற்றப்பதிவு</string>

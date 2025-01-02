@@ -212,11 +212,9 @@
     <string name="action_filter_all">Усё</string>
     <string name="action_filter_gsf_dependent_apps">GSF залежны</string>
     <string name="details_beta">Бэта версія</string>
-    <string name="action_ignore_version">Ігнараваць версію</string>
     <string name="action_install">Усталяваць</string>
     <string name="action_installing">Усталяванне</string>
     <string name="action_share">Падзяліцца</string>
-    <string name="action_wishlist_add">Дадаць да белага спісу</string>
     <string name="action_uninstall">Выдаліць</string>
     <string name="action_info">Падрабязней</string>
     <string name="action_update">Абнавіць</string>

@@ -14,7 +14,6 @@
     <string name="details_beta_available">Tham gia chương trình beta?</string>
     <string name="details_beta_subscribed">Bạn là một người thử nghiệm beta</string>
     <string name="details_beta">Chương trình beta</string>
-    <string name="action_wishlist_add">Thêm vào wishlist</string>
     <string name="action_whitelist">Danh sách trắng</string>
     <string name="action_update_all">Cập nhật tất cả</string>
     <string name="action_update">Cập nhật</string>
@@ -36,7 +35,6 @@
     <string name="action_installing">Đang cài đặt</string>
     <string name="action_installations">Các cài đặt</string>
     <string name="action_install">Cài đặt</string>
-    <string name="action_ignore_version">Bỏ qua phiên bản</string>
     <string name="action_ignore">Từ chối</string>
     <string name="action_granted">Đã cấp</string>
     <string name="action_grant">Cấp</string>

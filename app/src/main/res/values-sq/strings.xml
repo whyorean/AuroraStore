@@ -55,7 +55,6 @@
     <string name="action_grant">Akordoja</string>
     <string name="action_granted">U akordua</string>
     <string name="action_ignore">Shpërfille</string>
-    <string name="action_ignore_version">Shpërfille versionin</string>
     <string name="action_install">Instaloje</string>
     <string name="action_installations">Instalime</string>
     <string name="action_installing">Po instalohet</string>
@@ -78,7 +77,6 @@
     <string name="action_update">Përditësoje</string>
     <string name="action_update_all">Përditësoji krejt</string>
     <string name="action_whitelist">Listë lejimesh</string>
-    <string name="action_wishlist_add">Shtoje te listë dëshirash</string>
     <string name="details_beta">Program Beta</string>
     <string name="details_beta_subscribed">Jeni testues Beta-sh</string>
     <string name="details_beta_description">Do të shihni veçori të reja dhe të meta më herët se publiku. Jepuni zhvilluesve përshtypjet tuaja, për t’i ndihmuar ta përmirësojbnë.</string>

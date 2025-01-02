@@ -20,7 +20,6 @@
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" translatable="false">"Aurora Store"</string>
-    <string name="app_list_rating" translatable="false">"%1$s • %2$s★ • %3$s"</string>
     <string name="download_speed_bytes" translatable="false">%1$d B/s</string>
     <string name="download_speed_kb" translatable="false">%1$s KB/s</string>
     <string name="download_speed_mb" translatable="false">%1$s MB/s</string>
@@ -76,7 +75,6 @@
     <string name="action_grant">"Grant"</string>
     <string name="action_granted">"Granted"</string>
     <string name="action_ignore">"Ignore"</string>
-    <string name="action_ignore_version">Ignore version</string>
     <string name="action_install">"Install"</string>
     <string name="action_installations">"Installations"</string>
     <string name="action_installing">"Installing"</string>
@@ -105,7 +103,6 @@
     <string name="action_update">"Update"</string>
     <string name="action_update_all">"Update all"</string>
     <string name="action_whitelist">"Whitelist"</string>
-    <string name="action_wishlist_add">"Add to wishlist"</string>
     <string name="details_beta">"Beta program"</string>
     <string name="details_beta_subscribed">"You're a beta tester"</string>
     <string name="details_beta_available">"Join beta program ?"</string>

@@ -181,7 +181,6 @@
     <string name="details_beta_available">Aderir ao programa beta?</string>
     <string name="details_beta_subscribed">É um beta tester</string>
     <string name="details_beta">Programa beta</string>
-    <string name="action_wishlist_add">Adicionar à lista de desejos</string>
     <string name="action_whitelist">Lista branca</string>
     <string name="action_update_all">Atualizar tudo</string>
     <string name="action_update">Atualizar</string>
@@ -204,7 +203,6 @@
     <string name="action_installing">A instalar</string>
     <string name="action_installations">Instalações</string>
     <string name="action_install">Instalar</string>
-    <string name="action_ignore_version">Ignorar versão</string>
     <string name="action_ignore">Ignorar</string>
     <string name="action_granted">Permitido</string>
     <string name="action_grant">Permitir</string>

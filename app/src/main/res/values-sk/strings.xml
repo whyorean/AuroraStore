@@ -278,7 +278,6 @@
     <string name="pref_updates_auto">Automaticky aktualizovať aplikácie</string>
     <string name="manual_download_hint">Zadajte kód verzie, ktorú chcete stiahnuť</string>
     <string name="action_ignore">Ignorovať</string>
-    <string name="action_ignore_version">Ignorovať verziu</string>
     <string name="action_install">Inštalovať</string>
     <string name="action_grant">Udeliť</string>
     <string name="action_granted">Udelené</string>
@@ -294,7 +293,6 @@
     <string name="action_update">Aktualizovať</string>
     <string name="action_update_all">Aktualizovať všetko</string>
     <string name="action_whitelist">Biela listina</string>
-    <string name="action_wishlist_add">Pridať do zoznamu prianí</string>
     <string name="details_beta">Beta program</string>
     <string name="details_beta_subscribed">Ste beta testerom</string>
     <string name="exodus_powered">Využívané službou Exodus Privacy</string>

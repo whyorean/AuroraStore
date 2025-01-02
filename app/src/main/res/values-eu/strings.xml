@@ -138,7 +138,6 @@
     <string name="details_beta_available">Sartu beta programan?</string>
     <string name="details_beta_subscribed">Beta erabiltzaile zara</string>
     <string name="details_beta">Beta programa</string>
-    <string name="action_wishlist_add">Zerrenda zurian sartu</string>
     <string name="action_whitelist">Zerrenda zuria</string>
     <string name="action_update_all">Guztiak eguneratu</string>
     <string name="action_update">Eguneratu</string>
@@ -161,7 +160,6 @@
     <string name="action_installing">Instalatzen</string>
     <string name="action_installations">Instalazioak</string>
     <string name="action_install">Instalatu</string>
-    <string name="action_ignore_version">Ez ikusiarena egin bertsioarekin</string>
     <string name="action_ignore">Ez ikusiarena egin</string>
     <string name="action_granted">Onartuta</string>
     <string name="action_grant">Onartu</string>

@@ -4,7 +4,6 @@
     <string name="action_later">Später</string>
     <string name="action_installations">Installationen</string>
     <string name="action_install">Installieren</string>
-    <string name="action_ignore_version">Version überspringen</string>
     <string name="action_ignore">Ignorieren</string>
     <string name="action_granted">Erlaubt</string>
     <string name="action_grant">Erlauben</string>
@@ -174,7 +173,6 @@
     <string name="details_beta_available">Am Betatest teilnehmen?</string>
     <string name="details_beta_subscribed">Du bist ein Beta-Tester</string>
     <string name="details_beta">Beta-Programm</string>
-    <string name="action_wishlist_add">Zur Wunschliste hinzufügen</string>
     <string name="action_whitelist">Erlaubnisliste</string>
     <string name="action_update_all">Alle aktualisieren</string>
     <string name="action_update">Aktualisieren</string>

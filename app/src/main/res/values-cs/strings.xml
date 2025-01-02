@@ -155,7 +155,6 @@
     <string name="details_beta_available">Připojit se k beta programu?</string>
     <string name="details_beta_subscribed">Jste beta tester</string>
     <string name="details_beta">Beta program</string>
-    <string name="action_wishlist_add">Přidat do seznamu přání</string>
     <string name="action_update_all">Aktual. vše</string>
     <string name="action_info">Informace o aplikaci</string>
     <string name="action_uninstall">Odinstalovat</string>
@@ -176,7 +175,6 @@
     <string name="action_installing">Instaluji</string>
     <string name="action_installations">Instalace</string>
     <string name="action_install">Instalovat</string>
-    <string name="action_ignore_version">Ignorovat verzi</string>
     <string name="action_ignore">Ignorovat</string>
     <string name="action_granted">Povoleno</string>
     <string name="action_grant">Povolit</string>

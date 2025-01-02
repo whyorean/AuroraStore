@@ -39,14 +39,12 @@
     <string name="action_granted">Tilladt</string>
     <string name="details_changelog">Ændringer</string>
     <string name="action_grant">Tillad</string>
-    <string name="action_ignore_version">Ignorer version</string>
     <string name="action_install">Installer</string>
     <string name="action_installations">Installationer</string>
     <string name="action_join">Tilslut</string>
     <string name="action_leave">Forlad</string>
     <string name="action_update_all">Opdater alle</string>
     <string name="action_whitelist">Hvidlist</string>
-    <string name="action_wishlist_add">Føj til ønskeliste</string>
     <string name="action_pause">Pause</string>
     <string name="action_info">App-info</string>
     <string name="action_search">Søg</string>

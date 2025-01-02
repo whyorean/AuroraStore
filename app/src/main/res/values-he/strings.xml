@@ -129,7 +129,6 @@
     <string name="details_privacy">פרטיות</string>
     <string name="action_share">שיתוף</string>
     <string name="action_update_all">לעדכן הכול</string>
-    <string name="action_wishlist_add">הוספה לרשימת ההתרה</string>
     <string name="details_permission">הרשאה</string>
     <string name="title_apps_sale">יישומים במבצע</string>
     <string name="details_dev_details">יצירת קשר עם המפתחים</string>
@@ -168,7 +167,6 @@
     <string name="title_installed">מותקן</string>
     <string name="pref_install_mode_root">התקנה באמצעות Root</string>
     <string name="purchase_no_file">לא היה ניתן להוריד את הקבצים</string>
-    <string name="action_ignore_version">התעלמות מהגרסה</string>
     <string name="action_info">מידע על היישום</string>
     <string name="details_beta">תוכנית גרסת הביתא</string>
     <string name="details_dev_profile">פרופיל המפתח</string>

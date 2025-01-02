@@ -51,7 +51,6 @@
     <string name="action_filter_misc">Разни</string>
     <string name="action_filter_paid_apps">Платени</string>
     <string name="action_filter_rating">Отзиви</string>
-    <string name="action_ignore_version">Игнориране на версията</string>
     <string name="action_install">Инсталиране</string>
     <string name="action_later">По-късно</string>
     <string name="toast_purchase_blocked">Купуването на приложения не е налично за анонимни акаунти.</string>
@@ -212,7 +211,6 @@
     <string name="details_beta_available">Присъединяване към бета програма?</string>
     <string name="details_no_dependencies">Без зависимости</string>
     <string name="action_resume">Продължи</string>
-    <string name="action_wishlist_add">Добавяне към списък с желания</string>
     <string name="details_beta_subscribed">Вие сте бета тестер</string>
     <string name="details_changelog_unavailable">Не е предоставен списък на промените</string>
     <string name="action_open">Отвори</string>

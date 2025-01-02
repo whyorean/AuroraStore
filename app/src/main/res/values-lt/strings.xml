@@ -15,7 +15,6 @@
     <string name="action_filter_apply">Taikyti</string>
     <string name="action_filter_downloads">Atsiuntimai</string>
     <string name="action_ignore">Nepaisyti</string>
-    <string name="action_ignore_version">Nepaisyti versijos</string>
     <string name="action_installing">Įdiegiama</string>
     <string name="action_logout">Atsijungti</string>
     <string name="action_next">Kitas</string>
@@ -123,7 +122,6 @@
     <string name="about_telegram_summary">Prisijunkite prie Aurora palaikymo grupės, norėdami diskutuoti ir teikti pasiūlymus.</string>
     <string name="action_filter_rating">Įvertinimai</string>
     <string name="action_whitelist">Baltasis sąrašas</string>
-    <string name="action_wishlist_add">Pridėti į baltąjį sąrašą</string>
     <string name="details_more_about_app">Išsamiau apie programėlę</string>
     <string name="exodus_view_report">Rodyti ataskaitą</string>
     <string name="download_eta_calculating">Skaičiuojama</string>

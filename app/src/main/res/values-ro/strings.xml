@@ -28,7 +28,6 @@
     <string name="action_update">Actualizează</string>
     <string name="action_update_all">Actualizează-le pe toate</string>
     <string name="action_whitelist">Lista albă</string>
-    <string name="action_wishlist_add">Adaugă la lista de dorințe</string>
     <string name="details_beta">Programul Beta</string>
     <string name="details_beta_subscribed">Ești un tester beta</string>
     <string name="details_beta_available">Te alături programului beta?</string>
@@ -81,7 +80,6 @@
     <string name="action_clear">Elimină</string>
     <string name="action_close">Închide</string>
     <string name="action_copy">Copiază</string>
-    <string name="action_ignore_version">Ignoră versiunea</string>
     <string name="action_filter">Filtre</string>
     <string name="action_filter_all">Toate</string>
     <string name="action_filter_apply">Aplică</string>

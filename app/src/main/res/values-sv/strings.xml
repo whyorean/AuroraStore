@@ -125,7 +125,6 @@
     <string name="details_beta_available">Gå med i beta-programmet ?</string>
     <string name="details_beta_subscribed">Du är en beta-testare</string>
     <string name="details_beta">Beta-program</string>
-    <string name="action_wishlist_add">Lägg till i önskelista</string>
     <string name="action_whitelist">Vitlista</string>
     <string name="action_update_all">Uppdatera alla</string>
     <string name="action_update">Uppdatera</string>
@@ -146,7 +145,6 @@
     <string name="action_installing">Installerar</string>
     <string name="action_installations">Installationer</string>
     <string name="action_install">Installera</string>
-    <string name="action_ignore_version">Ignorera version</string>
     <string name="action_ignore">Ignorera</string>
     <string name="action_granted">Godkändes</string>
     <string name="action_grant">Godkänn</string>

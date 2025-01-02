@@ -126,7 +126,6 @@
     <string name="details_beta_available">Participar do programa beta?</string>
     <string name="details_beta_subscribed">Você é um testador beta</string>
     <string name="details_beta">Programa beta</string>
-    <string name="action_wishlist_add">Adicionar à lista de desejos</string>
     <string name="action_update_all">Atualizar todos</string>
     <string name="action_update">Atualizar</string>
     <string name="action_info">Informações do App</string>
@@ -147,7 +146,6 @@
     <string name="action_installing">Instalando</string>
     <string name="action_installations">Instalações</string>
     <string name="action_install">Instalar</string>
-    <string name="action_ignore_version">Ignorar versão</string>
     <string name="action_ignore">Ignorar</string>
     <string name="action_granted">Permitido</string>
     <string name="action_grant">Permitir</string>

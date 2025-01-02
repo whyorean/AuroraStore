@@ -75,7 +75,6 @@
     <string name="action_resume">از سر گیری</string>
     <string name="action_filter_rating">امتیازها</string>
     <string name="about_bitcoin_eth_summary">حمایت از طریق اتریوم (ETH)</string>
-    <string name="action_wishlist_add">افزودن به خواسته ها</string>
     <string name="action_ok">تایید</string>
     <string name="action_whitelist">لیست سفید</string>
     <string name="details_beta_subscribed">شما یه آزمایش کننده هستید</string>
@@ -120,7 +119,6 @@
     <string name="about_libera_summary">در لیبرا پِی حامی ما باشید</string>
     <string name="about_paypal_summary">حمایت از طریق پی پل</string>
     <string name="action_clear">پاک کردن</string>
-    <string name="action_ignore_version">نادیده گرفتن نسخه</string>
     <string name="action_installing">درحال نصب</string>
     <string name="action_leave">خارج شدن</string>
     <string name="action_logout">خروج</string>
