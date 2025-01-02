@@ -426,4 +426,5 @@
     <string name="toast_black_import_failed">Gagal mengimpor daftar hitam!</string>
     <string name="status_verifying">Memverifikasi</string>
     <string name="action_unarchive">Buka arsip</string>
+    <string name="unable_to_open">Tidak dapat membuka aplikasi</string>
 </resources>
