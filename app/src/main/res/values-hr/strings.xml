@@ -144,7 +144,6 @@
     <string name="pref_install_delete_summary">Preuzete APK datoteke će se izbrisati odmah nakon instalacije</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid programe</string>
     <string name="pref_filter_fdroid_summary">Ne provjeravaj ažuriranja za aplikacije preuzete ili instalirane s F-Droida</string>
-    <string name="pref_dialog_to_apply_restart">Ova će se postavka primijeniti nakon ponovnog pokretanja programa</string>
     <string name="onboarding_permission_installer_desc">Dozvoli instaliranje programa iz Aurora trgovine</string>
     <string name="onboarding_permission_installer">Dozvola za instalaciju</string>
     <string name="onboarding_permission_esm">Upravljač vanjske memorije</string>
@@ -240,7 +239,6 @@
     <string name="session_scrapped">Zadnja izbrisana sesija</string>
     <string name="session_verifying">Provjeravanje sesije</string>
     <string name="session_verifying_google">Provjeravanje Google sesije</string>
-    <string name="rate_limited">Nažalost, za ovaj račun postoji ograničenje!</string>
     <string name="menu">Izbronik</string>
     <string name="expand">Proširi</string>
     <string name="permissions_denied">Potrebne dozvole su odbijene. Odobri ih za nastavljanje radnje</string>

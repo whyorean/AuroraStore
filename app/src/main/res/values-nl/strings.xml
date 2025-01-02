@@ -89,7 +89,6 @@
     <string name="pref_install_delete_summary">APKs worden standaard verwijderd</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>
     <string name="pref_filter_fdroid_summary">Negeer F-Droid-apps van Updates en Geïnstalleerde apps</string>
-    <string name="pref_dialog_to_apply_restart">Deze optie word toegepast nadat u de app herstart</string>
     <string name="pref_common_extra">Extra\'s</string>
     <string name="onboarding_permission_installer_desc">Sta installeren van apps van Aurora Store toe</string>
     <string name="onboarding_permission_installer">Installateur Recht</string>
@@ -262,7 +261,6 @@
     <string name="session_good">Wow! Alles goed.</string>
     <string name="session_init">Voorbereiden…</string>
     <string name="title_advanced">Geavanceerd</string>
-    <string name="rate_limited">Oeps, het tarief voor dit account is beperkt!</string>
     <string name="error">Er is een fout opgetreden!</string>
     <string name="menu">Menu</string>
     <string name="expand">Uitbreiden</string>
@@ -276,7 +274,6 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> en <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="check_connectivity">Controleer internetconnectiviteit</string>
     <string name="app_language">App Taal</string>
-    <string name="app_link_enabled">App-link ingeschakeld!</string>
     <string name="app_links_desc">Aurora Store toestaan om ondersteunde links te openen</string>
     <string name="title_search_suggestion">Zoeksuggestie</string>
     <string name="title_search_results">Zoekresultaten</string>
@@ -289,16 +286,12 @@
     <string name="failed_to_generate_session">Sessie kan niet worden gegenereerd</string>
     <string name="verifying_new_session">Nieuwe sessie verifiëren</string>
     <string name="app_links_title">App koppelingen</string>
-    <string name="action_enable">Inschakelen</string>
-    <string name="action_enabled">Ingeschakeld</string>
     <string name="google_play_store_desc">Google Play, ook bekend als de Google Play Store en voorheen Android Market.</string>
     <string name="action_uninstall_confirmation">Wilt u deze app verwijderen?</string>
     <string name="action_request_analysis">Nieuwe analyse aanvragen</string>
     <string name="onboarding_permission_doze">Downloads in achtergrond</string>
     <string name="onboarding_permission_doze_desc">Sta Aurora Store toe om apps te downloaden en updaten in de achtergrond</string>
     <string name="details_no_apps_on_sale">Geen apps gevonden in de uitverkoop</string>
-    <string name="pref_download_directory_error">De geselecteerde map is alleen-lezen</string>
-    <string name="pref_downloader_wifi_title">Alleen downloaden via wifi</string>
     <string name="action_home_screen">Toevoegen aan startpagina</string>
     <string name="details_ratings_title_hint">Titels beoordelen</string>
     <string name="download_clear_finished">Verwijder voltooid</string>

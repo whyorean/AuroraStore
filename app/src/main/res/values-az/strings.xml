@@ -167,7 +167,6 @@
     <string name="onboarding_permission_esm">Xarici Yaddaş Meneceri</string>
     <string name="onboarding_permission_installer">Quraşdırıcı İcazəsi</string>
     <string name="pref_common_extra">Əlavələr</string>
-    <string name="pref_dialog_to_apply_restart">Bu seçim tətbiqi yenidən başlatdıqdan sonra tətbiq olunacaq</string>
     <string name="pref_filter_fdroid_title">F-Droid tətbiqlərini filtrlə</string>
     <string name="pref_install_delete_summary">Yüklənən APK-lar quraşdırıldıqdan sonra dərhal silinəcək</string>
     <string name="pref_install_delete_title">Quraşdırıldıqdan sonra APK-nı silin</string>
@@ -248,7 +247,6 @@
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Tez-tez verilən suallara (FAQ), problemlərin həlli addımlarına və s. cavablar tapın</string>
     <string name="pref_updates_incompatible">Uyuşmaz yeniləmələr</string>
-    <string name="pref_download_directory_error">Seçilən yol qoşula bilməz</string>
     <string name="pref_updates_incompatible_desc">Quraşdırma uğursuz ola biləcək uyuşmaz və ya qeyri-aktiv tətbiqlər üçün yeniləmələri göstər</string>
     <string name="details_no_apps_on_sale">Satışda tətbiq tapılmadı</string>
     <string name="onboarding_permission_doze_desc">Tətbiqləri arxa planda endirmək və yeniləmək üçün Aurora Store-a icazə ver</string>
@@ -271,7 +269,6 @@
     <string name="details_no_favourites">Sevimli tətbiqlər tapılmadı</string>
     <string name="details_data_safety_subtitle">Tərtibatçı tərəfindən bildirilən məlumatların məxfiliyi və təhlükəsizliyi təcrübələri</string>
     <string name="details_data_safety_title">Məlumat təhlükəsizliyi</string>
-    <string name="pref_downloader_wifi_title">Yalnız WiFi işlədərək endir</string>
     <string name="pref_network_proxy_url_message">Bütün məlumatı proksidən ötürmək üçün etibarlı proksi URL daxil et.</string>
     <string name="session_init">İşlər hazırlanır. . .</string>
     <string name="session_verifying">Hesab təsdiqlənir</string>
@@ -285,17 +282,14 @@
     <string name="notification_channel_install">Quraşdırma bildirişi</string>
     <string name="notification_channel_downloads">Yükləmə bildirişi</string>
     <string name="session_enjoy">Daxil olun və həzz alın.</string>
-    <string name="action_enabled">Aktivdir</string>
     <string name="menu">Menyu</string>
     <string name="server_maintenance">Server düzəliş səbəbilə işləmir</string>
     <string name="pref_updates_auto">Tətbiqləri birbaşa yenilə</string>
     <string name="failed_to_generate_session">Hesab yaratmaq alınmadı</string>
-    <string name="action_enable">Aktiv et</string>
     <string name="pref_updates_auto_notify">Mövcud yeniləmələri yoxla və bildir</string>
     <string name="notification_channel_updates">Yeniləmə bildirişləri</string>
     <string name="pref_updates_auto_off">Tətbiqləri birbaşa yeniləmir</string>
     <string name="pref_updates_check_frequency_desc">Birbaşa və özünü yeniləmələr üçün aralıqları saatla qur.</string>
-    <string name="app_link_enabled">Tətbiq linki aktiv edildi!</string>
     <string name="app_links_title">Tətbiq Linkləri</string>
     <string name="app_links_desc">Aurora Store-un dəstəklənən linkləri açmasına icazə ver</string>
     <string name="expand">Genişləndir</string>
@@ -316,7 +310,6 @@
     <string name="update_available">yeniləmə var</string>
     <string name="requesting_new_session">Yeni hesab tələb olunur</string>
     <string name="updates_available">yeniləmələr var</string>
-    <string name="rate_limited">Vay, Bu hesabın sürəti məhduddur!</string>
     <string name="error">Xəta baş verdi!</string>
     <string name="permissions_denied">Tələb olunan icazələr ləğv edildi. Fəaliyyəti davam etdirmək üçün onlara icazə ver</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> yeniləmə var</string>
@@ -349,9 +342,6 @@
     <string name="action_select_all">Hamısın seç</string>
     <string name="filter_latest">Ən son</string>
     <string name="session_installer_subtitle">Paketli/bölük APK-lar üçün hesab əsaslı quraşdırıcı</string>
-    <string name="amazon_appstore_desc">Amazon Appstore, Amazon tərəfindən idarə olunan Androidə xas platformalar üçün tətbiq mağazasıdır.</string>
-    <string name="action_manage">İdarə et</string>
     <string name="failed_apk_export">APK-ları ixrac etmək olmadı</string>
     <string name="toast_permission_esm_restart">İcazə qəbulun öyrənmək üçün tətbiqi təkrar başlatmalı ola bilərsiniz.</string>
-    <string name="failed_app_link">Dəstəklənmir, lütfən, linkləri əl ilə əlaqələndirməyə cəhd et</string>
 </resources>

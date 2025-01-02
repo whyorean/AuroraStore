@@ -180,7 +180,6 @@
     <string name="pref_install_delete_summary">Загруженные APK-файлы будут удаляться сразу после установки</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
     <string name="pref_filter_fdroid_summary">Не проверять обновления для приложений, загруженных или установленных с F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Эта настройка будет применена после перезапуска приложения</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер памяти</string>
@@ -255,7 +254,6 @@
     <string name="update_available">обновление</string>
     <string name="updates_available">обновления(-ий)</string>
     <string name="error">Произошла ошибка!</string>
-    <string name="rate_limited">Сожалеем, аккаунт имеет слишком много попыток входа!</string>
     <string name="permissions_denied">Необходимые разрешения были отклонены. Пожалуйста, предоставьте их, чтобы продолжить действие</string>
     <string name="search_hint">Поиск в Приложениях и Играх</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -284,15 +282,11 @@
     <string name="access_denied_using_vpn">Доступ запрещен! Вы используете VPN или Tor\?</string>
     <string name="check_connectivity">Проверьте соединение с интернетом</string>
     <string name="app_language">Язык приложения</string>
-    <string name="action_enable">Включить</string>
     <string name="failed_to_generate_session">Не удалось создать сессию</string>
     <string name="verifying_new_session">Проверка новой сессии</string>
     <string name="app_links_desc">Разрешить Aurora Store открывать поддерживаемые ссылки</string>
-    <string name="app_link_enabled">Ссылка на приложение включена!</string>
     <string name="app_links_title">Ссылки на приложения</string>
-    <string name="action_enabled">Включено</string>
     <string name="google_play_store_desc">Google Play, также известный как Google Play Store, а ранее - Android Market.</string>
-    <string name="amazon_appstore_desc">Amazon Appstore - это магазин приложений для Android-совместимых платформ, управляемый компанией Amazon.</string>
     <string name="android_market_desc">Android Market - магазин приложений для устройств под управлением ОС Android, закрытый в 2017 году.</string>
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
     <string name="action_uninstall_confirmation">Вы хотите удалить это приложение?</string>
@@ -306,9 +300,7 @@
     <string name="title_app_settings">Настройки приложения</string>
     <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Частота автоматических обновлений</string>
-    <string name="pref_download_directory_error">Выбранный путь недоступен для записи</string>
     <string name="toast_proxy_failed">Не удалось настроить прокси</string>
-    <string name="pref_downloader_wifi_title">Загружать только по Wi-Fi</string>
     <string name="pref_aurora_only">Только приложения из Aurora Store</string>
     <string name="details_no_apps_on_sale">Приложений в продаже не найдено</string>
     <string name="pref_network_proxy_enable_desc">Разрешить трафику приложения проходить через прокси</string>
@@ -327,12 +319,10 @@
     <string name="pref_updates_incompatible">Несовместимые обновления</string>
     <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
     <string name="action_home_screen">Добавить на Главный экран</string>
-    <string name="action_manage">Управлять</string>
     <string name="faqs_subtitle">У вас есть вопросы? Узнайте ответы</string>
     <string name="source_code_title">Исходный код</string>
     <string name="privacy_policy_title">Политика конфиденциальности</string>
     <string name="disclaimer_subtitle">Подотчетность и ответственность</string>
-    <string name="failed_app_link">Не поддерживается, попробуйте связать ссылки вручную</string>
     <string name="session_installer_subtitle">Сеансовый установщик для разделенных/пакетных файлов APK</string>
     <string name="session_installer_desc">Рекомендованный, встроенный и поддерживает все версии Android</string>
     <string name="root_installer_subtitle">Установщик основанный на Shell, использующий Root права</string>

@@ -79,7 +79,6 @@
     <string name="pref_install_delete_summary">ਐਪ ਇੰਸਟਾਲ ਹੋਣ ਦੇ ਤੁਰੰਤ ਬਾਅਦ ਉਸਦਾ APK ਸੈੱਟਅਪ ਮਿਟਾ ਦਿਤਾ ਜਾਵੇਗਾ</string>
     <string name="pref_filter_fdroid_title">ਫਿਲਟਰ F-Droid ਐਪਸ</string>
     <string name="pref_filter_fdroid_summary">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਚੋਂ F-Droid ਐਪਸ ਅਣਡਿੱਠ ਕਰੋ</string>
-    <string name="pref_dialog_to_apply_restart">ਐਪ ਦੇ ਮੁੜ ਚਾਲੂ ਹੋਣ ਤੇ ਇਹ ਸੈਟਿੰਗ ਲਾਗੂ ਕੀਤੀ ਜਾਵੇਗੀ</string>
     <string name="pref_common_extra">ਕੁੱਝ ਹੋਰ</string>
     <string name="toast_permission_granted">ਆਗਿਆ ਪ੍ਰਵਾਨ</string>
     <string name="onboarding_permission_installer_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਦਿਓ</string>
@@ -264,7 +263,6 @@
     <string name="session_init">ਤਿਆਰੀ ਹੋ ਰਹੀ…</string>
     <string name="title_advanced">ਐਡਵਾਂਸਡ</string>
     <string name="toast_import_success">ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਇੰਮਪੋਰਟ ਹੋਈ</string>
-    <string name="rate_limited">ਓਹੋ, ਇਸ ਖਾਤੇ ਤੇ ਰੇਟ ਲਿਮਟ ਹੈ!</string>
     <string name="update_available">ਅੱਪਡੇਟ ਉਪਲਬਧ ਹੈ</string>
     <string name="updates_available">ਅੱਪਡੇਟਸ ਉਪਲਬਧ ਹਨ</string>
     <string name="notification_channel_updates">ਅੱਪਡੇਟਸ ਦੀ ਸੂਚਨਾ</string>
@@ -288,11 +286,7 @@
     <string name="app_links_title">ਐਪ ਲਿੰਕ</string>
     <string name="app_links_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਸਮਰਥਿਤ ਲਿੰਕ ਖੋਲ੍ਹਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ</string>
     <string name="verifying_new_session">ਨਵੇਂ ਸੈਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ</string>
-    <string name="action_enable">ਸਮਰੱਥ ਕਰੋ</string>
-    <string name="app_link_enabled">ਐਪ ਲਿੰਕ ਸਮਰਥਿਤ ਹੈ!</string>
-    <string name="action_enabled">ਸਮਰਥਿਤ ਕੀਤਾ</string>
     <string name="google_play_store_desc">Google Play, ਜੋ ਕਿ Google Play Store ਅਤੇ ਪਹਿਲਾਂ Android Market ਵਜੋਂ ਵੀ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ।</string>
-    <string name="amazon_appstore_desc">ਐਮੇਜ਼ੌਨ ਐਪਸਟੋਰ, ਐਮੇਜ਼ੌਨ ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਐਂਡਰਾਇਡ ਪਲੇਟਫਾਰਮਾਂ ਲਈ ਇੱਕ ਐਪ ਸਟੋਰ ਹੈ।</string>
     <string name="android_market_desc">ਐਂਡਰਾਇਡ ਮਾਰਕੀਟ ਐਂਡਰੌਇਡ ਡਿਵਾਈਸਾਂ ਲਈ ਡਿਜ਼ਾਈਨ ਕੀਤੀਆਂ ਗਈਆਂ ਸਾਫ਼ਟਵੇਅਰ ਐਪਲੀਕੇਸ਼ਨਾਂ ਪੇਸ਼ ਕਰਨ ਵਾਲਾ ਇੱਕ ਆਨਲਾਈਨ ਸਟੋਰ ਸੀ, ਜੋ 2017 ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ।</string>
     <string name="details_ratings_title_hint">ਸਮੀਖਿਆ ਸਿਰਲੇਖ</string>
     <string name="action_uninstall_confirmation">ਕੀ ਤੁਸੀਂ ਇਸ ਐਪ ਨੂੰ ਅਣਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
@@ -303,8 +297,6 @@
     <string name="title_apps_sale_provider">ਪ੍ਰੋਵਾਈਡਰ - bestappsales.com</string>
     <string name="details_no_apps_on_sale">ਵਿਕਰੀ \'ਤੇ ਕੋਈ ਐਪ ਨਹੀਂ ਮਿਲੀ</string>
     <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟ ਆਵ੍ਰਿਤੀ</string>
-    <string name="pref_download_directory_error">ਚੁਣਿਆ ਗਿਆ ਮਾਰਗ ਲਿਖਣਯੋਗ ਨਹੀਂ ਹੈ</string>
-    <string name="pref_downloader_wifi_title">ਸਿਰਫ਼ ਵਾਈਫਾਈ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਡਾਊਨਲੋਡ ਕਰੋ</string>
     <string name="pref_network_proxy_enable">ਪ੍ਰੌਕਸੀ ਚਾਲੂ ਕਰੋ</string>
     <string name="pref_network_proxy_url">ਪ੍ਰੌਕਸੀ URL</string>
     <string name="pref_network_proxy_title">ਪ੍ਰੌਕਸੀ</string>
@@ -327,7 +319,6 @@
     <string name="download_clear_finished">ਮੁਕੰਮਲ ਹੋਏ ਸਾਫ਼ ਕਰੋ</string>
     <string name="pref_updates_incompatible_desc">ਅਸੰਗਤ ਜਾਂ ਅਯੋਗ ਐਪਾਂ ਲਈ ਅੱਪਡੇਟ ਦਿਖਾਓ ਜੋ ਸਥਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਹੋ ਸਕਦੀਆਂ ਹਨ</string>
     <string name="action_home_screen">ਹੋਮ ਸਕ੍ਰੀਨ ਤੇ ਐਡ ਕਰੋ</string>
-    <string name="action_manage">ਮੈਨੇਜ ਕਰੋ</string>
     <string name="session_installer_subtitle">ਬੰਡਲ/ਸਪਲਿਟ ਏਪੀਕੇ ਲਈ ਸੈਸ਼ਨ ਆਧਾਰਿਤ ਇੰਸਟਾਲਰ</string>
     <string name="session_installer_desc">ਸਿਫ਼ਾਰਿਸ਼ ਕੀਤਾ, ਇਨ-ਬਿਲਟ ਹੈ ਅਤੇ ਸਾਰੇ ਐਂਡਰਾਇਡ ਸੰਸਕਰਣਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦਾ ਹੈ</string>
     <string name="root_installer_desc">ਰੂਟ/ਸੁਪਰ ਯੂਜ਼ਰ ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰਾਂ ਦੀ ਲੋੜ ਹੈ, ਸਾਰੇ ਐਂਡਰਾਇਡ ਸੰਸਕਰਣਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦਾ ਹੈ।</string>
@@ -337,7 +328,6 @@
     <string name="manage_account">ਆਪਣੇ ਖਾਤੇ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ</string>
     <string name="services_installer_desc">ਔਰੋਰਾ ਸੇਵਾਵਾਂ ਨੂੰ ਇੱਕ ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ-ਸਿਸਟਮ ਐਪ ਵਜੋਂ ਸਥਾਪਤ ਕਰਨ ਦੀ ਲੋੜ ਹੈ</string>
     <string name="am_installer_desc">ਐਪ ਮੈਨੇਜਰ ਲੋੜੀਂਦਾ ਹੈ, ਜਦੋਂ miui ਓਪਟੀਮਾਈਜੇਸ਼ਨ ਚਾਲੂ ਹੋਵੇ ਤਾਂ ਇੰਸਟਾਲ ਕਰਨ ਲਈ adb/root ਮੋਡ ਦੀ ਲੋੜ ਹੈ</string>
-    <string name="failed_app_link">ਅਸਮਰਥਿਤ, ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂਅਲ ਤੌਰ ਤੇ ਲਿੰਕ ਜੋੜਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ</string>
     <string name="manual_download_hint">ਵਰਸ਼ਨ ਕੋਡ ਦਰਜ ਕਰੋ ਜੋ ਤੁਸੀਂ ਡਾਊਨਲੋਡ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ</string>
     <string name="faqs_subtitle">ਕੋਈ ਸਵਾਲ ਹਨ? ਜਵਾਬ ਲੱਭੋ</string>
     <string name="source_code_title">ਸ੍ਰੋਤ ਕੋਡ</string>

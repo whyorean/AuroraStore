@@ -164,7 +164,6 @@
     <string name="about_gitlab_summary">Akiri la Aurora Store fontkodon el Aurora OSS ĉe GitLab.</string>
     <string name="app_links_desc">Lasu Aurora Store malfermi apogitajn ligilojn</string>
     <string name="action_import">Enporti</string>
-    <string name="action_enable">Ŝalti</string>
     <string name="about_wiki_title">Viki</string>
     <string name="download_eta_hrs">ankoraŭ %1$d h %2$d m %3$d s</string>
     <string name="menu_terms">Servkondiĉaro</string>
@@ -219,7 +218,6 @@
     <string name="session_good">Ŭaŭ! Ĉio estas en ordo.</string>
     <string name="session_init">Preparado…</string>
     <string name="onboarding_permission_doze">Fonaj elŝutadoj</string>
-    <string name="pref_dialog_to_apply_restart">Tiu agordo estos aplikita post apon restarto</string>
     <string name="download_force_clear_all">Elviŝi ciujn</string>
     <string name="installer_am_unavailable">Instalu App Manager aŭ ŝanĝu la instalilon.</string>
     <string name="installer_shizuku_unavailable">Shizuku estas ne instalita aŭ ne ĝuste agordita.</string>
@@ -230,9 +228,7 @@
     <string name="device_miui_subtitle">Seanca instalilo ne povas instali apojn kaŭze de MIUI-optimumigoj.</string>
     <string name="onboarding_permission_select">Aurora Store necisigas ĉi-tiujn permesojn</string>
     <string name="onboarding_permission_installer_desc">Permesi instali apojn el Aurora store</string>
-    <string name="pref_downloader_wifi_title">Elŝuti nur per vifio</string>
     <string name="action_logout_confirmation_title">Ĉu vi volas elsaluti?</string>
-    <string name="action_enabled">Ŝaltita</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="spoof_apply">Bonvolu reensaluti por startigi la ŝajnigo</string>
     <string name="title_spoof_manager">Ŝajnigilo</string>
@@ -273,7 +269,6 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="action_favourite">Marki kiel preferato</string>
     <string name="toast_anonymous_restriction">Maldisponebla per anonimaj kontoj</string>
-    <string name="rate_limited">Ups, la ofteco de petoj de tiu konto estas limigata!</string>
     <string name="update_available">ĝisdatigo disponebla</string>
     <string name="error">Miso okasis!</string>
     <string name="updates_available">ĝisdatigoj disponeblaj</string>
@@ -305,7 +300,6 @@
     <string name="pref_updates_check_frequency">Aŭtomatajn ĝisdatigojn ofto</string>
     <string name="pref_updates_check_frequency_desc">Agordi intervalon (je horoj) de aŭtomataj ĝisdatigoj.</string>
     <string name="failed_to_fetch_report">Privatecraporton alportado fiaskis</string>
-    <string name="app_link_enabled">Apon ligilo ŝaltita!</string>
     <string name="check_updates">Serĉas ĝidatigojn</string>
     <string name="access_denied_using_vpn">Atingon rifuzita! Ĉu vi uzas VPN aŭ Tor?</string>
     <string name="failed_to_generate_session">Seancon generado fiaskis</string>
@@ -334,14 +328,12 @@
     <string name="force_restart_summary">La restarto de Aurora Store estas necesa por apliki la nove ŝanĝitajn agordojn</string>
     <string name="details_no_apps_on_sale">Neniuj rabataj apoj trovita</string>
     <string name="dialog_desc_native_split">Vi ne povas instali kunligitajn (splitajn) apojn per Operaciuma Instalilo. Ŝanĝu vian instalilon al Seanca, Services aŭ Ĉefuzanta.</string>
-    <string name="failed_app_link">Ne subtena, bonvolu provi manan kombinadon de ligilojn</string>
     <string name="am_installer_desc">Necesigas App Manager, bezonas adb/ĉefuzantan moduson por instali kiam MIUI-optimumigo estas enŝalta</string>
     <string name="pref_clear_device_owner_summary">Eksigi Aurora Store je aparatpropula apo</string>
     <string name="add_dispenser_title">Aldoni distribuilon</string>
     <string name="root_installer_subtitle">Shellbaziĝa instalilo uzanta ĉefuzantajn permesojn</string>
     <string name="session_installer_desc">Rekomendata, integra kaj subtenas ĉiujn Androidversiojn</string>
     <string name="session_installer_subtitle">Seancbaziĝa instalilo por kunligaĵaj/splitaj APKj</string>
-    <string name="action_manage">Administri</string>
     <string name="services_installer_subtitle">Instalilo por fonaj instaladoj</string>
     <string name="services_installer_desc">Necesigas Aurora Services instalita estkiel privilegihavanta sistema apo</string>
     <string name="pref_clear_device_owner_desc">Tio revokos la seancan instalilon permeso silente instali apojn. Ĉu vi volas daŭrigi la elviŝon je la aparaton propeco ?</string>
@@ -369,7 +361,6 @@
     <string name="pref_network_proxy_url">Prokuran servilon URL</string>
     <string name="toast_proxy_invalid">Malvalida prokuran servilon URL, kontrolu la formaton!</string>
     <string name="pref_network_proxy_url_message">Enigu validan prokuran servilon URL por pasigi ĉiujn datuĵmojn tra la prokura servilo.</string>
-    <string name="pref_download_directory_error">Elektita vojo estas protektata kontraŭ skribado</string>
     <string name="device_miui_extra">Vi povas ankaŭ elekti la operaciuman instalilon, sed la instalado kunligaĵajn (splitajn) APKjn estas neebla per ĝi.</string>
     <string name="pref_common_extra">Ekstraĵoj</string>
     <string name="pref_dispenser_summary">Vidi kaj administri ĵetondistribuilojn por anonimaj ensalutadoj</string>

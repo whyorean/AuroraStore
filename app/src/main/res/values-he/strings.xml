@@ -207,7 +207,6 @@
     <string name="installer_am_unavailable">התקן את מנהל האפליקציות או שנה סוג מתקין.</string>
     <string name="device_miui_title">זוהתה מערכת הפעלה של שיאומי!</string>
     <string name="device_miui_subtitle">מתקין מקומי לא יכול להתקין אפליקציות בגלל אופטימיזציה של הממשק של שיאומי.</string>
-    <string name="pref_dialog_to_apply_restart">ההגדרה תחול אחרי הפעלה מחדש של האפליקציה</string>
     <string name="pref_install_mode_am">מתקין AM</string>
     <string name="pref_install_mode_session">מתקין מערכת</string>
     <string name="pref_ui_layout_tab">בחר עמוד ברירת מחדל</string>
@@ -236,7 +235,6 @@
     <string name="failed_to_generate_session">לא הצליח ליצור כניסה</string>
     <string name="session_verifying">מאמת כניסה</string>
     <string name="details_ratings_title_hint">כותרת סקירה</string>
-    <string name="app_link_enabled">קישור לאפליקציה מופעל!</string>
     <string name="pref_network_proxy_url">URL פרוקסי</string>
     <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים ועדכון עצמי, כל שעה.</string>
     <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
@@ -245,12 +243,10 @@
     <string name="action_post">פרסום</string>
     <string name="onboarding_permission_notifications">התראות</string>
     <string name="notification_updates_available_desc_1">קיימת גרסה חדשה ל <xliff:g id="app_one_name">%1$s</xliff:g></string>
-    <string name="action_enable">אפשר</string>
     <string name="toast_import_failed">לא הצליח לייבא תצורת מכשיר</string>
     <string name="download_eta_sec">%1$dשנ נותרו</string>
     <string name="app_links_desc">אשר לחנות Aurora לפתוח קישורים נתמכים</string>
     <string name="requesting_new_session">מבקש כניסה חדשה</string>
-    <string name="amazon_appstore_desc">Amazon Appstore זאת חנות היישומים לפלטפורמות תואמות אנדרואיד שמופעלת ע\"י אמזון.</string>
     <string name="bad_request">תקלה פנימית! בבקשה נסה שוב אחרי זמן מה</string>
     <string name="update_available">עדכון נמצא</string>
     <string name="search_hint">‬חפש אפליקציות ומשחקים</string>
@@ -275,7 +271,6 @@
     <string name="failed_to_fetch_report">לא הצליח להשיג דיווח פרטיות</string>
     <string name="action_get_local_apk">שמור באנדל של אפליקציה</string>
     <string name="verifying_new_session">מאמת כניסה חדשה</string>
-    <string name="action_enabled">מאופשר</string>
     <string name="toast_import_success">ייבוא תצורת מכשיר בוצעה בהצלחה</string>
     <string name="download_eta_hrs">%1$dש %2$dדק %3$dשנ left</string>
     <string name="title_app_settings">הגדרות יישום</string>
@@ -288,11 +283,9 @@
     <string name="server_maintenance">השרת מושבת לצורך תחזוקה</string>
     <string name="toast_manual_available">מזל טוב, קוד הגרסה המבוקש זמין, מוריד עכשיו.</string>
     <string name="session_verifying_google">מאמת כניסת גוגל</string>
-    <string name="rate_limited">אופס, החשבון הזה בעל דירוג מוגבל!</string>
     <string name="pref_updates_check_frequency">תכיפות עדכונים אוטומטיים</string>
     <string name="error">קרתה תקלה!</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ו <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_download_directory_error">הנתיב שנבחר חסום לכתיבה</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> עדכונים נמצאים</string>
     <string name="toast_proxy_failed">לא הצליח להגדיר פרוקסי</string>
     <string name="expand">הרחב</string>
@@ -307,7 +300,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="permissions_denied">ההרשאות הנדרשות נדחו. אנא אשר אותן בשביל המשך הפעולה</string>
     <string name="access_denied_using_vpn">גישה נדחתה! אתה משתמש ב-VPN או Tor?</string>
-    <string name="pref_downloader_wifi_title">הורד רק דרך WiFi</string>
     <string name="app_language">שפת האפליקציה</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="purchase_session_expired">פג תוקף ההפעלה, התחבר מחדש כדי לקבל הפעלה חדשה.</string>
@@ -321,7 +313,6 @@
     <string name="onboarding_permission_doze">הורדות ברקע</string>
     <string name="pref_updates_auto">עדכון-אוטומטי ליישומים</string>
     <string name="pref_updates_auto_desc">הגדר התנהגות של עדכונים אוטומטיים</string>
-    <string name="action_manage">נהל</string>
     <string name="action_home_screen">הוסף למסך הבית</string>
     <string name="download_clear_finished">נקה הורדות שהסתיימו</string>
     <string name="onboarding_permission_doze_desc">אפשר לחנות Aurora להוריד ולעדכן יישומים ברקע</string>
@@ -335,7 +326,6 @@
     <string name="source_code_title">קוד מקור</string>
     <string name="about_aurora_store_title">על חנות אורורה</string>
     <string name="about_aurora_store_subtitle">למידע נוסף על חנות אורורה</string>
-    <string name="failed_app_link">לא נתמך, אנא נסה לשייך קישורים באופן ידני</string>
     <string name="source_code_subtitle">גלה מה יש בפנים</string>
     <string name="privacy_policy_title">מדיניות הפרטיות</string>
     <string name="disclaimer_subtitle">אחריות ואחריות</string>

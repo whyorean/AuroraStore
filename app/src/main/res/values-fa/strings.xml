@@ -198,7 +198,6 @@
     <string name="installer_status_success">با موفقیت نصب شد</string>
     <string name="pref_ui_similar_apps">برنامه های مشابه و مرتبط</string>
     <string name="pref_ui_no_for_you_desc">نمایش برگه‌های برای شما در صفحه اصلی</string>
-    <string name="pref_dialog_to_apply_restart">این تنظیم پس از راه اندازی مجدد برنامه اعمال خواهد شد</string>
     <string name="onboarding_permission_select">فروشگاه آرورا به مجوزهای زیر نیاز دارد</string>
     <string name="pref_filter_fdroid_title">فیلتر کردن برنامه های F-Droid</string>
     <string name="menu_terms">شرایط استفاده از خدمات</string>
@@ -240,7 +239,6 @@
     <string name="menu">منو</string>
     <string name="update_available">به روز رسانی موجود است</string>
     <string name="updates_available">به روز رسانی در دسترس است</string>
-    <string name="rate_limited">اوه، این حساب دارای محدودیت است!</string>
     <string name="error">خطایی رخ داد!</string>
     <string name="downloading_dep">دانلود فایل های اضافی برای <xliff:g id="app">%1$s</xliff:g></string>
     <string name="action_import">وارد کردن</string>
@@ -288,9 +286,6 @@
     <string name="failed_to_generate_session">خطا در ایجاد نشست</string>
     <string name="verifying_new_session">در حال تایید جلسه جدید</string>
     <string name="app_links_title">لینک های برنامه</string>
-    <string name="action_enable">فعال کردن</string>
-    <string name="action_enabled">فعال شد</string>
-    <string name="app_link_enabled">لینک برنامه فعال شد!</string>
     <string name="google_play_store_desc">گوگل پلی که با نام فروشگاه گوگل پلی و بازار سابق اندروید نیز شناخته می شود.</string>
     <string name="about_wiki_title">ویکی</string>
     <string name="about_wiki_summary">جواب به سوالات مکرر (FAQ) مراحل حل مشکلات تخنیکی و بیشتر را در اینجا دریابید.</string>

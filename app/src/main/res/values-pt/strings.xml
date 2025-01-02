@@ -101,7 +101,6 @@
     <string name="pref_install_delete_summary">Os APKs descarregados serão eliminados imediatamente após a instalação</string>
     <string name="pref_filter_fdroid_summary">Não verifique atualizações de aplicativos baixados ou instalados do F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Esta definição será aplicada após reiniciar a aplicação</string>
     <string name="pref_common_extra">Extras</string>
     <string name="onboarding_permission_installer">Permissão do instalador</string>
     <string name="onboarding_permission_esm">Gestor de armazenamento externo</string>
@@ -239,7 +238,6 @@
     <string name="download_eta_hrs">Faltam %1$dh %2$dm %3$ds</string>
     <string name="download_eta_sec">Faltam %1$ds</string>
     <string name="toast_import_success">Configuração do dispositivo importada</string>
-    <string name="rate_limited">Esta conta tem limite de utilizações!</string>
     <string name="error">Ocorreu um erro!</string>
     <string name="menu">Menu</string>
     <string name="expand">Expandir</string>
@@ -288,11 +286,7 @@
     <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
     <string name="verifying_new_session">A verificar a nova sessão</string>
     <string name="app_links_title">Ligações</string>
-    <string name="action_enable">Ativar</string>
-    <string name="action_enabled">Ativado</string>
-    <string name="app_link_enabled">Ligações ativadas!</string>
     <string name="google_play_store_desc">Google Play, também conhecida como Google Play Store e, anteriormente, Android Market.</string>
-    <string name="amazon_appstore_desc">A Amazon Appstore é uma loja de aplicações para plataformas compatíveis com Android e é disponibilizada pela Amazon.</string>
     <string name="android_market_desc">O Android Market foi uma loja online que oferecia aplicações para dispositivos Android, descontinuada em 2017.</string>
     <string name="pref_network_proxy_enable">Ativar proxy</string>
     <string name="details_ratings_title_hint">Título da avaliação</string>
@@ -307,11 +301,9 @@
     <string name="title_apps_sale_provider">Fornecedor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Não há aplicações à venda</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
-    <string name="pref_download_directory_error">O caminho selecionado não é gravável</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir que todo o tráfego da aplicação passe pelo proxy</string>
     <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação?</string>
-    <string name="pref_downloader_wifi_title">Descarregar apenas por Wi-Fi</string>
     <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão Google Play</string>
     <string name="onboarding_permission_doze">Descargas em segundo plano</string>
@@ -324,11 +316,9 @@
     <string name="action_request_analysis">Requisitar nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APK</string>
     <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
-    <string name="action_manage">Gerir</string>
     <string name="action_home_screen">Adicionar ao ecrã inicial</string>
     <string name="download_clear_finished">Limpeza efetuada</string>
     <string name="pref_updates_incompatible_desc">Mostrar atualizações para aplicações incompatíveis ou desativadas</string>
-    <string name="failed_app_link">Não suportado, tente associar as ligações manualmente</string>
     <string name="manual_download_hint">Introduza o código da versão que pretende descarregar</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
     <string name="source_code_title">Código-fonte</string>

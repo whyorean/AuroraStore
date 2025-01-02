@@ -48,7 +48,6 @@
     <string name="purchase_invalid">Applicazione non acquistata</string>
     <string name="pref_filter_fdroid_title">Filtra le app da F-Droid</string>
     <string name="pref_filter_fdroid_summary">Non controllare gli aggiornamenti per le app scaricate o installate da F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Questa impostazione verrà applicata dopo aver riavviato l\'app</string>
     <string name="onboarding_permission_installer_desc">Consenti l\'installazione di app da Aurora Store</string>
     <string name="installer_status_failure_incompatible">App incompatibile</string>
     <string name="details_think_this_app">Cosa ne pensi di questa app?</string>
@@ -253,7 +252,6 @@
     <string name="session_scrapped">Ultima sessione eliminata</string>
     <string name="session_verifying_google">Verifica della sessione di Google</string>
     <string name="update_available">aggiornamento disponibile</string>
-    <string name="rate_limited">Ops, questo account è stato limitato!</string>
     <string name="error">Si è verificato un errore!</string>
     <string name="menu">Menù</string>
     <string name="expand">Espandi</string>
@@ -288,15 +286,10 @@
     <string name="failed_to_generate_session">Impossibile generare la sessione</string>
     <string name="verifying_new_session">Verifica della nuova sessione</string>
     <string name="app_links_title">Collegamenti app</string>
-    <string name="action_enable">Abilita</string>
-    <string name="action_enabled">Abilitato</string>
-    <string name="app_link_enabled">Collegamento app abilitato!</string>
     <string name="google_play_store_desc">Google Play, noto anche come Google Play Store e precedentemente Android Market.</string>
     <string name="details_ratings_title_hint">Titolo della recensione</string>
-    <string name="amazon_appstore_desc">Amazon Appstore è un negozio digitale per piattaforme compatibili con Android, gestito da Amazon.</string>
     <string name="title_apps_sale_provider">Provider: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nessuna app in offerta trovata</string>
-    <string name="pref_download_directory_error">Il percorso selezionato non è scrivibile</string>
     <string name="action_uninstall_confirmation">Vuoi disinstallare questa app?</string>
     <string name="android_market_desc">Android Market era un negozio online che offriva applicazioni software progettate per dispositivi Android, chiuso nel 2017.</string>
     <string name="pref_network_proxy_enable">Abilita proxy</string>
@@ -307,7 +300,6 @@
     <string name="title_app_settings">Impostazioni app</string>
     <string name="pref_updates_check_frequency">Frequenza degli aggiornamenti automatici</string>
     <string name="toast_proxy_failed">È stato impossibile impostare il proxy</string>
-    <string name="pref_downloader_wifi_title">Scarica usando esclusivamente il Wi-Fi</string>
     <string name="pref_vending_version_device">Predefinito/a (dalla configurazione del dispositivo)</string>
     <string name="pref_vending_version_title">Versione di Google Play</string>
     <string name="pref_aurora_only">Solo app da Aurora Store</string>
@@ -327,8 +319,6 @@
     <string name="pref_updates_incompatible">Aggiornamenti incompatibili</string>
     <string name="pref_updates_incompatible_desc">Mostra gli aggiornamenti per le app incompatibili o disabilitate che potrebbero non essere installabili</string>
     <string name="action_home_screen">Aggiungi alla pagina principale</string>
-    <string name="action_manage">Gestisci</string>
-    <string name="failed_app_link">Non supportato, prova ad associare i link manualmente</string>
     <string name="manual_download_hint">Inserisci il codice della versione che vuoi scaricare</string>
     <string name="faqs_subtitle">Domande? Trova le risposte</string>
     <string name="source_code_title">Codice sorgente</string>

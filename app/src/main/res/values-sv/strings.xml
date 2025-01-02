@@ -57,7 +57,6 @@
     <string name="pref_install_delete_title">Ta bort APK efter installationen</string>
     <string name="pref_install_delete_summary">Hämtade APK:er kommer att tas bort efter installation</string>
     <string name="pref_filter_fdroid_title">Filtrera F-Droid-appar</string>
-    <string name="pref_dialog_to_apply_restart">Den här inställningen kommer att verkställas efter att du har startat om appen</string>
     <string name="onboarding_permission_installer_desc">Tillåt att installera appar från Aurora-butiken</string>
     <string name="onboarding_permission_esa_desc">För att kunna spara expansionsfiler för APK (OBB:er) till stora appar &amp; spel.</string>
     <string name="onboarding_welcome_select">Hur går det för dig?</string>
@@ -244,10 +243,8 @@
     <string name="failed_generating_session">Genereringen av sessionen misslyckades, fel-kod: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_generate_session">Kunde inte generera session</string>
     <string name="session_verifying">Bekräftar session</string>
-    <string name="app_link_enabled">App-länkningen aktiverades!</string>
     <string name="onboarding_permission_notifications">Aviseringar</string>
     <string name="notification_updates_available_desc_1">En ny version av <xliff:g id="app_one_name">%1$s</xliff:g> är tillgänglig</string>
-    <string name="action_enable">Aktivera</string>
     <string name="toast_import_failed">Kunde inte importera enhetens konfig</string>
     <string name="download_eta_sec">%1$ds kvar</string>
     <string name="app_links_desc">Tillåt Aurora-butiken att öppna länkar som stöds</string>
@@ -268,7 +265,6 @@
     <string name="session_good">Oj! Allt gott.</string>
     <string name="failed_to_fetch_report">Hämtningen av sekretessrapporten misslyckades</string>
     <string name="verifying_new_session">Bekräftar ny session</string>
-    <string name="action_enabled">Aktiverades</string>
     <string name="download_eta_hrs">%1$dh %2$dm %3$ds kvar</string>
     <string name="session_init">Gör saker redo…</string>
     <string name="session_enjoy">Logga in och njut.</string>
@@ -288,16 +284,13 @@
     <string name="check_connectivity">Kolla anslutbarheten mot internet</string>
     <string name="app_links_title">App-länkar</string>
     <string name="toast_import_success">Enhetskonfigurationen importerades</string>
-    <string name="rate_limited">Hoppsan, det här kontot är hastighetsbegränsat!</string>
     <string name="notification_channel_updates">Aviseringar om uppdateringar</string>
     <string name="permissions_denied">Behörigheter som krävs nekades. Vänligen godkänn dessa för att fortsätta åtgärden</string>
     <string name="pref_install_mode_shizuku">Installationsprogrammet Shizuku</string>
-    <string name="amazon_appstore_desc">Amazon Appstore är en app-butik för Android-kompatibla plattformar som sköts av Amazon.</string>
     <string name="android_market_desc">Android Market var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter, gick i pension 2017.</string>
     <string name="details_ratings_title_hint">Recensera titel</string>
     <string name="title_apps_sale_provider">Leverantör - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Inga rea-appar hittades</string>
-    <string name="pref_download_directory_error">Den valda sökvägen är inte skrivbar</string>
     <string name="action_uninstall_confirmation">Vill du avinstallera den här appen ?</string>
     <string name="pref_network_proxy_enable">Aktivera proxy</string>
     <string name="pref_network_proxy_url">Proxyn\'s URL</string>
@@ -311,7 +304,6 @@
     <string name="pref_updates_check_frequency">Automatisk uppdateringsfrekvens</string>
     <string name="toast_proxy_failed">Inställningen av proxy\'n misslyckades</string>
     <string name="pref_network_proxy_enable_desc">Tillåt all trafik från appen att gå genom proxyn</string>
-    <string name="pref_downloader_wifi_title">Hämta endast via WiFi</string>
     <string name="pref_vending_version_device">Standard (från enhetskonfiguration)</string>
     <string name="pref_vending_version_title">Google Play-version</string>
     <string name="onboarding_permission_doze">Hämtningar i bakgrunden</string>
@@ -336,13 +328,11 @@
     <string name="shizuku_installer_subtitle">Använder systemets API:er direkt med privilegier för adb/root</string>
     <string name="manage_account">Hantera ditt konto</string>
     <string name="add">Lägg till</string>
-    <string name="failed_app_link">Stöds inte, vänligen prova att associera länkar manuellt</string>
     <string name="manual_download_hint">Ange versionskoden som du vill hämta</string>
     <string name="source_code_subtitle">Ta reda på vad som finns inuti</string>
     <string name="export_app_title">Fil-exporterare</string>
     <string name="status_unavailable">Ej tillgänglig</string>
     <string name="session_login">Vänligen logga in på ditt Google Play-konto</string>
-    <string name="action_manage">Hantera</string>
     <string name="status_downloading">Hämtar</string>
     <string name="status_failed">Misslyckades</string>
     <string name="status_cancelled">Avbröts</string>

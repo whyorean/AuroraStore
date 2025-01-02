@@ -114,7 +114,6 @@
     <string name="pref_install_mode_title">Metode pemasangan</string>
     <string name="pref_filter_fdroid_title">Filter aplikasi F-droid</string>
     <string name="pref_filter_fdroid_summary">Jangan periksa pembaruan untuk aplikasi terunduh atau terpasang dari F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Pengaturan ini akan diterapkan setelah Anda memulai ulang aplikasi</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="onboarding_permission_installer_desc">Izinkan menginstal aplikasi dari Aurora Store</string>
     <string name="onboarding_permission_installer">Izin Pemasang</string>
@@ -249,7 +248,6 @@
     <string name="search_hint">Cari Aplikasi &amp; Permainan</string>
     <string name="download_eta_hrs">%1$dj %2$dm %3$dd tersisa</string>
     <string name="updates_available">Pembaruan tersedia</string>
-    <string name="rate_limited">Ups, Akun ini dibatasi!</string>
     <string name="download_eta_sec">%1$dd tersisa</string>
     <string name="download_progress">Mengunduh • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Sesi terakhir dihapus</string>
@@ -288,14 +286,11 @@
     <string name="pref_vending_version_title">Versi Google Play</string>
     <string name="failed_to_generate_session">Tidak dapat menghasilkan sesi</string>
     <string name="details_ratings_title_hint">Judul ulasan</string>
-    <string name="app_link_enabled">Tautan aplikasi diaktifkan!</string>
     <string name="pref_network_proxy_url">URL Proksi</string>
     <string name="pref_updates_check_frequency_desc">Mengonfigurasi interval untuk pembaruan otomatis dan mandiri, dalam jam.</string>
     <string name="pref_aurora_only">Hanya aplikasi Aurora Store</string>
     <string name="pref_network_proxy_title">Proksi</string>
-    <string name="action_enable">Aktifkan</string>
     <string name="app_links_desc">Izinkan Aurora Store untuk membuka tautan yang didukung</string>
-    <string name="amazon_appstore_desc">Amazon Appstore adalah toko aplikasi untuk platform yang kompatibel dengan Android yang dioperasikan oleh Amazon.</string>
     <string name="onboarding_permission_doze">Unduhan Latar Belakang</string>
     <string name="toast_proxy_invalid">URL proksi invalid, periksa format!</string>
     <string name="pref_aurora_only_desc">Hanya periksa pembaruan untuk aplikasi yang terpasang oleh Aurora Store</string>
@@ -303,18 +298,15 @@
     <string name="app_links_title">Tautan Aplikasi</string>
     <string name="google_play_store_desc">Google Play, juga dikenal sebagai Google Play Store dan sebelumnya Android Market.</string>
     <string name="verifying_new_session">Memverifikasi sesi baru</string>
-    <string name="action_enabled">Diaktifkan</string>
     <string name="onboarding_permission_doze_desc">Izinkan Aurora Store untuk mengunduh dan memperbarui aplikasi di latar belakang</string>
     <string name="title_app_settings">Pengaturan Aplikasi</string>
     <string name="title_apps_sale_provider">Penyedia - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Tidak ada aplikasi yang di-diskon</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
-    <string name="pref_download_directory_error">Jalur yang dipilih tidah bisa ditulis</string>
     <string name="toast_proxy_failed">Gagal menyetel proksi</string>
     <string name="pref_network_proxy_enable_desc">Izinkan semua lalu lintas dari aplikasi melewati proxy</string>
     <string name="action_uninstall_confirmation">Apakah Anda ingin menghapus aplikasi ini?</string>
     <string name="android_market_desc">Android Market adalah toko online yang menawarkan aplikasi perangkat lunak yang dirancang untuk perangkat Android, dihentikan pada tahun 2017.</string>
-    <string name="pref_downloader_wifi_title">Unduh hanya menggunakan WiFi</string>
     <string name="app_language">Bahasa Aplikasi</string>
     <string name="pref_updates_auto">Auto update aplikasi</string>
     <string name="pref_updates_auto_desc">Setel perilaku auto-update</string>
@@ -336,8 +328,6 @@
     <string name="add_dispenser_summary">Menambahkan dispenser token ke Aurora Store. Dispenser token memberikan kredensial akun ke Aurora Store untuk masuk secara anonim.</string>
     <string name="add_dispenser_error">URL tidak valid</string>
     <string name="add">Tambah</string>
-    <string name="action_manage">Kelola</string>
-    <string name="failed_app_link">Tidak didukung, coba kaitkan tautan secara manual</string>
     <string name="pref_updates_incompatible_desc">Menampilkan pembaruan untuk aplikasi yang tidak kompatibel atau dinonaktifkan yang mungkin gagal diinstal</string>
     <string name="manual_download_hint">Masukkan kode versi yang ingin Anda unduh</string>
     <string name="source_code_title">Kode sumber</string>

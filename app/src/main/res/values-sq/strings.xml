@@ -159,7 +159,6 @@
     <string name="onboarding_permission_installer">Leje Instaluesi</string>
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
     <string name="pref_common_extra">Ekstra</string>
-    <string name="pref_dialog_to_apply_restart">Ky rregullim do të aplikohet pasi të rinisni aplikacionin</string>
     <string name="pref_filter_fdroid_summary">Mos kërko përditësime për shkarkues aplikacionesh, ose të instaluar nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
@@ -237,7 +236,6 @@
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
     <string name="app_links_desc">Lejojeni Shitoren Aurora të hapë lidhjet që mbulohen</string>
     <string name="details_no_apps_on_sale">S’u gjetën aplikacione me ulje çmimi</string>
-    <string name="action_enabled">E aktivizuar</string>
     <string name="action_uninstall_confirmation">Doni të çinstalohet ky aplikacion?</string>
     <string name="failed_to_fetch_report">S’u arrit të sillet raport privatësie</string>
     <string name="download_progress">Po shkarkohet •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -252,7 +250,6 @@
     <string name="pref_updates_auto_desc">Formësoni sjellje vetë-përditësimesh</string>
     <string name="pref_updates_check_frequency">Shpeshti përditësimesh të vetvetishme</string>
     <string name="app_links_title">Lidhje Aplikacionesh</string>
-    <string name="app_link_enabled">Lidhja e aplikacionit u aktivizua!</string>
     <string name="android_market_desc">Android Market qe një shitore internetore aplikacionesh <em>software</em> e ngritur për pajisje Android, mbyllur më 2017.</string>
     <string name="action_import">Importoji</string>
     <string name="requesting_new_session">Po kërkohet sesion i ri</string>
@@ -260,8 +257,6 @@
     <string name="toast_import_success">Formësimi i pajisjes u importua</string>
     <string name="onboarding_permission_doze">Shkarkime Në Prapaskenë</string>
     <string name="onboarding_permission_doze_desc">Lejojeni Shitoren Aurora të shkarkojë dhe përditësojë aplikacione në prapaskenë</string>
-    <string name="pref_downloader_wifi_title">Shkarkoji duke përdorur vetëm Wifi</string>
-    <string name="pref_download_directory_error">Shtegu i përzgjedhur s’është i shkrueshëm</string>
     <string name="pref_vending_version_title">Version Google Play</string>
     <string name="session_init">Po bëhet gjërat gati…</string>
     <string name="session_login_failed_google">S’u bë hyrja me Google</string>
@@ -269,7 +264,6 @@
     <string name="toast_proxy_invalid">URL e pavlefshme ndërmjetësi, kontrollojini formatin!</string>
     <string name="toast_proxy_success">Ndërmjetësi u ujdis me sukses</string>
     <string name="update_available">ka përditësim</string>
-    <string name="rate_limited">Oh, për këtë llogari ka kufzime!</string>
     <string name="error">Ndodhi një gabim!</string>
     <string name="menu">Menu</string>
     <string name="expand">Zgjeroje</string>
@@ -279,9 +273,7 @@
     <string name="pref_updates_check_frequency_desc">Formësoni intervale për përditësime të automatizuara dhe të vetvetishme, në orë.</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dhe <xliff:g id="apps_count">%4$d</xliff:g> të tjerë</string>
     <string name="access_denied_using_vpn">Hyrje e mohuar! Po përdorni VPN, ose Tor?</string>
-    <string name="action_enable">Aktivizoje</string>
     <string name="google_play_store_desc">Google Play, e njohur dhe si Google Play Store dhe ish-Android Market.</string>
-    <string name="action_manage">Administroni</string>
     <string name="pref_updates_auto_off">Mos i vetë-përditëso aplikacionet</string>
     <string name="pref_updates_auto_install">Kontrollo &amp; instalo vetvetiu përditësime të gatshme</string>
     <string name="session_verifying">Po verifikohet sesioni</string>
@@ -324,9 +316,7 @@
     <string name="failed_to_generate_session">S’u prodhua dot sesion</string>
     <string name="verifying_new_session">Po verifikohet sesioni i ri</string>
     <string name="failed_generating_session">S’u arrit të prodhohej sesion, kod gabimi: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="amazon_appstore_desc">Amazon Appstore është një shitore aplikacionesh për platforma të përputhshme me Android, mbajtur në punë nga Amazon.</string>
     <string name="failed_apk_export">S’u arrit të eksportoheshin APK-ra</string>
-    <string name="failed_app_link">E pambuluar, ju lutemi, provoni të përshoqëroni dorazi lidhjet</string>
     <string name="privacy_policy_title">Rregulla privatësie</string>
     <string name="privacy_policy_subtitle">Mësoni se si përdoren të dhënat tuaja nga Aurora Store</string>
     <string name="session_installer_subtitle">Instalues me bazë sesionin, për APK-ra të paketuara/të ndara</string>

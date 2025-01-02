@@ -72,7 +72,6 @@
     <string name="onboarding_permission_esm">Gestore de sa memòria esterna</string>
     <string name="onboarding_permission_installer">Permissu de s\'installadore</string>
     <string name="onboarding_permission_installer_desc">Permite s\'installatzione de aplicatziones dae s\'Aurora Store</string>
-    <string name="pref_dialog_to_apply_restart">Custa impostatzione at a èssere aplicada cando as a torrare a allùghere s\'aplicatzione</string>
     <string name="pref_common_extra">Extras</string>
     <string name="pref_install_delete_summary">Sos APK s\'ant a iscantzellare comente impostatzione predefinida</string>
     <string name="pref_install_mode_am">Installadore AM.</string>

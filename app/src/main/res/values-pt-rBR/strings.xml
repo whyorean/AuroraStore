@@ -49,7 +49,6 @@
     <string name="title_installed">Instalados</string>
     <string name="title_installation">Instalação</string>
     <string name="title_games">Jogos</string>
-    <string name="pref_dialog_to_apply_restart">Esta configuração será aplicada depois que você reiniciar o app</string>
     <string name="onboarding_permission_installer_desc">Permita a instalação de apps da Aurora Store</string>
     <string name="onboarding_permission_installer">Permissão de Instalação</string>
     <string name="onboarding_permission_esm">Gerenciador de Armazenamento Externo</string>
@@ -270,7 +269,6 @@
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
     <string name="notification_updates_available_desc_1">Uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g> está disponível</string>
-    <string name="rate_limited">Oops, esta conta foi limitada!</string>
     <string name="downloading_dep">Baixando arquivos adicionais para <xliff:g id="app">%1$s</xliff:g></string>
     <string name="menu">Menu</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -285,26 +283,20 @@
     <string name="app_language">Idioma do App</string>
     <string name="check_connectivity">Verificar a conexão à internet</string>
     <string name="verifying_new_session">Verificando nova sessão</string>
-    <string name="app_link_enabled">Link de app ativado!</string>
     <string name="app_links_title">Links de App</string>
     <string name="app_links_desc">Permitir que a Aurora Store abra links suportados</string>
-    <string name="action_enabled">Ativado</string>
     <string name="google_play_store_desc">Google Play, também conhecido como a Google Play Store e anteriormente Android Market.</string>
     <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
-    <string name="action_enable">Ativar</string>
-    <string name="amazon_appstore_desc">A Amazon Appstore é uma loja de apps para dispositivos compatíveis com Android operada pela Amazon.</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps de software feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
     <string name="action_uninstall_confirmation">Deseja desinstalar este app?</string>
     <string name="title_apps_sale_provider">Provedor - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nenhum app em promoção encontrado</string>
-    <string name="pref_download_directory_error">O caminho selecionado não pode ser escrito</string>
     <string name="pref_updates_check_frequency_desc">Configurar os intervalos das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
     <string name="pref_aurora_only_desc">Buscar atualizações somente para apps instalados pela Aurora Store</string>
     <string name="title_app_settings">Configurações do App</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
-    <string name="pref_downloader_wifi_title">Fazer download apenas no Wi-Fi</string>
     <string name="pref_network_proxy_enable">Ativar proxy</string>
     <string name="pref_network_proxy_url">URL da proxy</string>
     <string name="pref_network_proxy_title">Proxy</string>
@@ -327,8 +319,6 @@
     <string name="pref_updates_incompatible_desc">Mostrar atualizações para apps incompatíveis ou desativados que podem falhar ao instalar</string>
     <string name="download_clear_finished">Limpar finalizados</string>
     <string name="action_home_screen">Adicionar à Tela inicial</string>
-    <string name="action_manage">Gerenciar</string>
-    <string name="failed_app_link">Não suportado, tente associar os links manualmente</string>
     <string name="root_installer_subtitle">Instalador baseado em shell usando permissões root</string>
     <string name="root_installer_desc">Precisa de privilégios root, suporta todas as versões do Android.</string>
     <string name="native_installer_subtitle">Instalador baseado em intent, disponível em todos os dispositivos</string>

@@ -109,7 +109,6 @@
     <string name="onboarding_permission_doze">Фонавая ўсталёўка</string>
     <string name="onboarding_permission_doze_desc">Дазволіць Aurora Store усталёўваць і абнаўляць прыкладанні ў фоне</string>
     <string name="pref_filter_fdroid_title">Фільтар прыкладанняў F-Droid</string>
-    <string name="pref_download_directory_error">Абраны шлях не магчымы для запісу</string>
     <string name="pref_filter_fdroid_summary">Ігнараваць F-Droid прыкладанні ў Абнаўленні і Усталяваныя прыкладанні</string>
     <string name="pref_install_delete_summary">Спампаваныя APK будуць выдаленыя адразу пасля ўсталявання</string>
     <string name="pref_install_delete_title">Выдаліць APK пасля ўсталявання</string>
@@ -163,9 +162,6 @@
     <string name="failed_generating_session">Атрыманне новай сэсіі, код памылкі: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Праверка інтэрнэт злучэння</string>
     <string name="pref_ui_layout">Макет</string>
-    <string name="action_enabled">Задзейнічана</string>
-    <string name="app_link_enabled">Спасылка прыкладання задзейнічана!</string>
-    <string name="amazon_appstore_desc">Amazon Appstore - анлайн крама прыкладанняў для андройд-сумяшчальных платформам, што працуюць на Amazon.</string>
     <string name="session_installer_subtitle">прыкладанняўа ўсталёўкі на аснове сеанса для пакетных/падзеленых APK</string>
     <string name="root_installer_subtitle">Усталёўка на аснове абалонкі з выкарыстаннем root правоў</string>
     <string name="root_installer_desc">Патрабуе прывілеяў root/superuser, падтрымлівае ўсе Android версіі.</string>
@@ -273,7 +269,6 @@
     <string name="pref_install_mode_title">Варыянт усталявання</string>
     <string name="pref_ui_no_for_you_desc">Паказвае старонку з парадамі на хатнім экране</string>
     <string name="toast_clipboard_copied">Скапіявана ў буфер абмену</string>
-    <string name="rate_limited">Ой, гэты акаўнт мае абмежаванні!</string>
     <string name="permissions_denied">Запыт быў адхілены. Калі ласка надайце іх для працягу</string>
     <string name="action_get_local_apk">Захаваць APK прыкладання</string>
     <string name="device_miui_extra">Па змаўчанні можа выкарыстоўваць убудаваны ўсталёўшчык, але будзе адстунічаць раздзяленне APKs, выбар за карыстальнікам.</string>
@@ -289,8 +284,6 @@
     <string name="notification_channel_install">Апавяшчэнне аб усталяванні</string>
     <string name="notification_channel_downloads">Апавяшчэнне аб спампоўках</string>
     <string name="pref_common_extra">Дадаткова</string>
-    <string name="pref_dialog_to_apply_restart">Гэтая налада будзе ўжыта пасля перазапуску прыкладання</string>
-    <string name="pref_downloader_wifi_title">Спампаваць толькі праз Wi-Fi</string>
     <string name="pref_install_mode_shizuku">Усталёўшчык Shizuku</string>
     <string name="pref_install_mode_native">Родны ўсталёўшчык (Састарэлы)</string>
     <string name="pref_vending_version_device">Па змаўчанні (праз налады прылады)</string>
@@ -342,8 +335,6 @@
     <string name="server_unreachable">Сервер недаступны</string>
     <string name="app_links_title">Спасылкі прыкладання</string>
     <string name="google_play_store_desc">Google Play, гэтак жа вядомы як Google Play Store, а раней - Android Market.</string>
-    <string name="action_manage">Кіраваць</string>
-    <string name="failed_app_link">Не падтрымліваецца, паспрабуце звязаць спасылкі ўласнаруч</string>
     <string name="native_installer_desc">Лепш за ўсё падыходзіць для прылад з Android ніжэй 4.4</string>
     <string name="privacy_policy_subtitle">Даведайцеся, як Aurora Store выкарыстоўвае вашы даныя</string>
     <string name="services_installer_subtitle">Усталёўшчык для фонавай ўстаноўкі</string>
@@ -397,6 +388,5 @@
     <string name="login_rate_limited">Ой, маюцца абмежаванні</string>
     <string name="failed_to_generate_session">Не атырмалася стварыць сэсію</string>
     <string name="verifying_new_session">Праверка новай сэсіі</string>
-    <string name="action_enable">Задзейнічаць</string>
     <string name="about_aurora_store_summary">Aurora Store дазваляе шукаць і спампоўваць прыкладанні з афіцыйнай крамы Google Play. Вы можаце праверыць апісанні прыкладанняў, скрыншоты, абнаўленні, каментарыяў іншых карыстальнікаў і спампуйце APK непасрэдна з Google Play на сваю прыладу, каб выкарыстоўваць Aurora Store, вам неабходна мець уліковы запіс Google Play і ўвайсці ў Google Play уліковы запіс пры першым адкрыцці і наладзе Aurora Store. \n\nУ адрозненне ад традыцыйнай крамы прыкладанняў, Aurora Store не валодае, не ліцэнзуе і не распаўсюджвае якія-небудзь прыкладанні. Усе прыкладанні, апісанні прыкладанняў, скрыншоты і іншы кантэнт у Aurora Store даступны непасрэдна, спампоўваюцца і/або адлюстроўваецца з Google Play. Aurora Store працуе гэтак жа, як дзверы або браўзер, дазваляючы вам трэба ўвайсці ў свой уліковы запіс Google Play і знайсці прыкладанні з Google Play.\n\nЗвярніце ўвагу што Aurora Store не мае адабрэння, спонсарства або аўтарызацыі ад Google, Google Play, любыя прыкладанні, спампаваныя праз Aurora Store або любыя распрацоўшчыкі прыкладанняў; таксама не робіць Aurora Store мае з імі якія-небудзь адносіны, супрацоўніцтва або сувязі.</string>
 </resources>

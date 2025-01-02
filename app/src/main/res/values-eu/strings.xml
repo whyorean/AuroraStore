@@ -58,7 +58,6 @@
     <string name="pref_install_delete_summary">Besterik adierazi ezean, deskargatutako APK-ak ezabatuko dira instalazioa bukatutakoan</string>
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
     <string name="pref_filter_fdroid_summary">Ez egiaztatu F-Droid-etik deskargatutako edo instalatutako aplikazioen eguneraketak</string>
-    <string name="pref_dialog_to_apply_restart">Konfigurazio hau aplikatuko da aplikazioa berriro ireki ondoren</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-ri aplikazioak instalatzeko baimena eman</string>
     <string name="onboarding_permission_installer">Instalatzailearen baimena</string>
     <string name="onboarding_permission_esm">Kanpoko memoriaren gestorea</string>
@@ -246,7 +245,6 @@
     <string name="title_advanced">Aurreratua</string>
     <string name="toast_import_success">Gailuaren konfigurazioa inportatuta</string>
     <string name="toast_import_failed">Ezin izan da gailuaren konfigurazioa inportatu</string>
-    <string name="rate_limited">Hara, kontu honek tasa mugatua du!</string>
     <string name="error">Errore bat gertatu da!</string>
     <string name="menu">Menua</string>
     <string name="expand">Zabaldu</string>
@@ -285,14 +283,12 @@
     <string name="title_apps_sale_provider">Hornitzailea: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Ez da aurkitu salgai dagoen aplikaziorik</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> eta <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_download_directory_error">Hautatutako bide-izena ez da idazgarria</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="toast_proxy_failed">Ezin izan da ezarri proxy-a</string>
     <string name="title_search_results">Bilaketa-emaitzak</string>
     <string name="notification_channel_updates">Eguneratzeen jakinarazpenak</string>
     <string name="pref_network_proxy_enable_desc">Onartu aplikazioko trafiko guztia proxy-tik joan dadin</string>
     <string name="action_uninstall_confirmation">Aplikazio hau desinstalatu nahi duzu?</string>
-    <string name="pref_downloader_wifi_title">Deskargatu Wi-Fi bidez soilik</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> eta <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="about_wiki_title">Wiki</string>
@@ -305,7 +301,6 @@
     <string name="am_installer_desc">Aplikazio kudeatzailea behar du, adb/root modua behar da instalatzeko miui optimizazioa aktibatuta dagoenean</string>
     <string name="export_app_title">Fitxategien esportatzailea</string>
     <string name="export_app_summary">Zaude, zure fitxategoa esportatzen ari da</string>
-    <string name="app_link_enabled">Aplikazioaren esteka gaituta!</string>
     <string name="android_market_desc">Android Market 2017an erretiratu zen. Denda honek Android gailuetarako diseinatutako software aplikazioak eskaintzen zituen.</string>
     <string name="session_login">Hasi saioa zure Google Play kontuan</string>
     <string name="verifying_new_session">Saio berria egiaztatzen</string>
@@ -314,13 +309,11 @@
     <string name="download_clear_finished">Garbiketa bukatu da</string>
     <string name="pref_updates_auto_off">Ez eguneratu automatikoki aplikazioak</string>
     <string name="failed_generating_session">Ezin izan da saioa sortu, errore-kodea: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="failed_app_link">Ez da onartzen, saiatu estekak eskuz lotzen</string>
     <string name="made_with_love">Indian egina honekin: <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="force_restart_summary">Aurora Store berrabiarazi behar da aldatu berri diren ezarpenak aplikatzeko</string>
     <string name="notification_channel_account">Kontuarekin lotutako jakinarazpena</string>
     <string name="toast_permission_esm_caution">Baliteke baimena berriro eman behar izatea Storage Access Framework-eko akats bat dela eta</string>
     <string name="item_optional">Hautazkoa</string>
-    <string name="action_enable">Gaitu</string>
     <string name="app_language">Aplikazioaren hizkuntza</string>
     <string name="session_installer_desc">Gomendatua, eraikia eta Android bertsio guztiak onartzen dituena</string>
     <string name="privacy_policy_subtitle">Ikasi Aurora dendak zure datuak nola erabiltzen dituen</string>
@@ -334,7 +327,6 @@
     <string name="toast_permission_esm_restart">Baliteke aplikazioa berrabiarazi behar izatea baimenaren esleipena islatzeko.</string>
     <string name="item_required">Beharrezkoa</string>
     <string name="pref_updates_check_frequency_desc">Konfiguratu auto-eguneratzeetarako eta auto-eguneratzeetarako tarteak, ordutan.</string>
-    <string name="amazon_appstore_desc">Amazon Appstore Amazon-ek kudeatzen dituen Android-ekin bateragarriak diren plataformetarako aplikazio-denda bat da.</string>
     <string name="session_installer_subtitle">APK bildu/zatituetarako saioan oinarritutako instalatzailea</string>
     <string name="root_installer_subtitle">Shell oinarritutako instalatzailea zeinak root baimenak darabiltzan</string>
     <string name="shizuku_installer_subtitle">Sistemaren APIak zuzenean erabiltzea adb/root pribilegioekin</string>
@@ -367,8 +359,6 @@
     <string name="failed_to_generate_session">Ezin izan da saioa sortu</string>
     <string name="action_favourite">Gustukoena</string>
     <string name="app_links_desc">Baimena eman Aurora Store-i onartzen diren estekak irekitzeko</string>
-    <string name="action_enabled">Gaituta</string>
-    <string name="action_manage">Kudeatu</string>
     <string name="toast_fav_import_success">Gogokoenak inportatu dira!</string>
     <string name="toast_fav_import_failed">Ezin izan dira inportatu zure gogokoenak!</string>
     <string name="toast_fav_export_failed">Ezin izan dira zure gogokoenak esportatu!</string>

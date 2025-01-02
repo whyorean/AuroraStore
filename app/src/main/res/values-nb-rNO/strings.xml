@@ -210,7 +210,6 @@
     <string name="title_blacklist_manager">Svarteliste-håndterer</string>
     <string name="purchase_no_file">Kunne ikke hente filer</string>
     <string name="pref_filter_fdroid_summary">Fjerner F-Droid-programmer fra programlistene</string>
-    <string name="pref_dialog_to_apply_restart">Denne innstillinger vil tre i kraft etter at du starter programmet igjen</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="onboarding_permission_esm">Håndterer for eksternlagring</string>
     <string name="onboarding_permission_esa_desc">Eksporter enhetsoppsett til og fra eksternlagring for å lagre nedlastinger (APK-er og OBB-er).</string>

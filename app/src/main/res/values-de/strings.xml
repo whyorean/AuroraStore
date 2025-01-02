@@ -62,7 +62,6 @@
     <string name="purchase_invalid">App nicht gekauft</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
     <string name="pref_filter_fdroid_summary">Keine Updates für Apps, die von F-Droid heruntergeladen oder installiert wurden</string>
-    <string name="pref_dialog_to_apply_restart">Diese Einstellung wird nach einem Neustart der App übernommen</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
     <string name="details_more_about_app">Mehr über die App</string>
@@ -241,7 +240,6 @@
     <string name="session_login_failed_google">Anmeldung via Google fehlgeschlagen</string>
     <string name="session_scrapped">Letzte Sitzung wurde abgebrochen</string>
     <string name="session_verifying">Sitzung wird überprüft</string>
-    <string name="rate_limited">Hoppla, die Anfragehäufigkeit für dieses Konto ist begrenzt!</string>
     <string name="menu">Menü</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="search_hint">Nach Apps und Spielen suchen</string>
@@ -288,19 +286,13 @@
     <string name="app_links_title">App-Links</string>
     <string name="verifying_new_session">Neue Sitzung wird überprüft</string>
     <string name="app_links_desc">Erlaubt Aurora Store, unterstützte Links zu öffnen</string>
-    <string name="action_enable">Aktivieren</string>
-    <string name="action_enabled">Aktiviert</string>
-    <string name="app_link_enabled">App-Link aktiviert!</string>
     <string name="google_play_store_desc">Google Play, auch bekannt als Google Play Store (ehemals Android Market).</string>
-    <string name="amazon_appstore_desc">Amazon Appstore ist ein von Amazon betriebener App-Store für Android-kompatible Plattformen.</string>
     <string name="android_market_desc">Android Market war ein Online-Store, der Softwareanwendungen für Android-Geräte anbot und 2017 eingestellt wurde.</string>
     <string name="details_ratings_title_hint">Titel bewerten</string>
     <string name="action_uninstall_confirmation">Soll diese App deinstalliert werden?</string>
     <string name="title_apps_sale_provider">Anbieter: bestappsales.com</string>
     <string name="details_no_apps_on_sale">Keine Apps im Angebot gefunden</string>
-    <string name="pref_download_directory_error">Ausgewähltes Verzeichnis ist schreibgeschützt</string>
     <string name="title_app_settings">App-Einstellungen</string>
-    <string name="pref_downloader_wifi_title">Download nur über WLAN</string>
     <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur nach Updates für Apps suchen, die von Aurora Store installiert wurden</string>
@@ -327,7 +319,6 @@
     <string name="pref_updates_incompatible">Inkompatible Updates</string>
     <string name="pref_updates_incompatible_desc">Updates für inkompatible oder deaktivierte Apps anzeigen, die möglicherweise nicht installiert werden können</string>
     <string name="action_home_screen">Zur Startseite hinzufügen</string>
-    <string name="action_manage">Verwalten</string>
     <string name="source_code_title">Quellcode</string>
     <string name="privacy_policy_title">Datenschutzerklärung</string>
     <string name="source_code_subtitle">Finde heraus, was drin steckt</string>
@@ -336,7 +327,6 @@
     <string name="disclaimer_subtitle">Haftung und Verantwortung</string>
     <string name="title_more">Mehr</string>
     <string name="manage_account">Dein Konto verwalten</string>
-    <string name="failed_app_link">Nicht unterstützt, bitte versuche die Links manuell zuzuordnen</string>
     <string name="manual_download_hint">Gib den Code der Version ein, die du herunterladen möchtest</string>
     <string name="session_installer_subtitle">Sitzungsbasiertes Installationsprogramm für gebündelte/geteilte APKs</string>
     <string name="session_installer_desc">Empfohlen, integriert und unterstützt alle Android-Versionen</string>

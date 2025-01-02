@@ -272,13 +272,11 @@
     <string name="onboarding_permission_installer_desc">Dovoli namestitev aplikacij iz trgovine Aurora</string>
     <string name="onboarding_permission_notifications">Obvestila</string>
     <string name="onboarding_permission_notifications_desc">Pošiljanje obvestil o statusu namestitve</string>
-    <string name="pref_dialog_to_apply_restart">Ta nastavitev bo uporabljena, ko znova zaženete aplikacijo</string>
     <string name="pref_filter_fdroid_summary">Ne preveri posodobitev za aplikacije, prenešene ali nameščene iz F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>
     <string name="pref_ui_title">Prilagajanje</string>
     <string name="pref_ui_no_for_you">Strani za vas</string>
     <string name="pref_ui_similar_apps_desc">Prikaži podobne in sorodne gruče na strani s podrobnostmi o aplikaciji</string>
-    <string name="rate_limited">Ups, ta račun ima omejeno stopnjo!</string>
     <string name="menu">Meni</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Poiščite odgovore na pogosto zastavljena vprašanja (F.A.Q.), korake za odpravljanje težav in več</string>
@@ -296,7 +294,6 @@
     <string name="pref_network_proxy_enable_desc">Dovoli ves promet iz aplikacije skozi posrednika</string>
     <string name="pref_updates_incompatible_desc">Pokaži posodobitve za nezdružljive ali onemogočene aplikacije, katerih namestitev lahko spodleti</string>
     <string name="pref_updates_auto">Samodejno posodobi aplikacije</string>
-    <string name="app_link_enabled">Povezava aplikacije omogočena!</string>
     <string name="google_play_store_desc">Google Play, znan tudi kot Google Play Store in prej znan kot Android Market.</string>
     <string name="failed_apk_export">Izvoz APKjev ni uspel</string>
     <string name="details_no_apps_on_sale">Ni najdenih aplikacij na znižanju</string>
@@ -314,12 +311,9 @@
     <string name="pref_updates_auto_install">Preveri in namesti razpoložljive posodobitve samodejno</string>
     <string name="pref_network_proxy_url_message">Vnesite veljaven URL posrednika za prenos vseh podatkov skozi posrednika.</string>
     <string name="title_apps_sale_provider">Ponudnik - bestappsales.com</string>
-    <string name="action_manage">Upravljaj</string>
     <string name="pref_updates_auto_off">Ne posodobi aplikacij samodejno</string>
     <string name="app_language">Jezik aplikacije</string>
     <string name="app_links_title">Povezave aplikacij</string>
-    <string name="action_enable">Omogoči</string>
-    <string name="action_enabled">Omogočeno</string>
     <string name="pref_ui_layout">Razporeditev</string>
     <string name="pref_network_proxy_url">URL posrednika</string>
     <string name="pref_aurora_only_desc">Preveri posodobitve samo za aplikacije nameščene od Aurora Store</string>
@@ -335,8 +329,6 @@
     <string name="toast_permission_esm_caution">Morda boste morali ponovno odobriti dovoljenje zaradi hrošča v Storage Access Framework-u</string>
     <string name="pref_ui_layout_tab">Izberite privzeti zavihek</string>
     <string name="item_optional">Izbirno</string>
-    <string name="pref_downloader_wifi_title">Prenesi samo z uporabo WiFi</string>
-    <string name="pref_download_directory_error">Izbrana pot ni zapisljiva</string>
     <string name="download_clear_finished">Počisti končane</string>
     <string name="toast_app_unavailable">Aplikacija ni na voljo za vašo napravo</string>
     <string name="notification_channel_export">Obvestilo izvoza aplikacije</string>
@@ -372,7 +364,6 @@
     <string name="status_unavailable">Ni na voljo</string>
     <string name="root_installer_desc">Zahteva skrbniške/superuser pravice, podpira vse Android različice.</string>
     <string name="add">Dodaj</string>
-    <string name="failed_app_link">Ni podprto. Poskusite ročno dodeliti povezave</string>
     <string name="made_with_love">Narejeno z <xliff:g id="heart_emoji">%1$s</xliff:g> v Indiji</string>
     <string name="remove_dispenser_title">Odstrani dozirnik</string>
     <string name="checking_updates">Preverjanje za posodobitve</string>
@@ -406,7 +397,6 @@
     <string name="toast_fav_export_failed">Izvoz priljubljenih ni uspel!</string>
     <string name="toast_fav_import_success">Priljubljene uvožene!</string>
     <string name="toast_fav_export_success">Priljubljene izvožene!</string>
-    <string name="amazon_appstore_desc">Amazon Appstore je trgovina aplikacij za Android združljive naprave upravljavca Amazon.</string>
     <string name="pref_dispenser_title">Upravljaj dozirnike</string>
     <string name="pref_dispenser_summary">Pokaži in upravljaj dozirnike žetonov za anonimne prijave</string>
     <string name="no_dispensers_available">Na voljo ni dozirnikov</string>

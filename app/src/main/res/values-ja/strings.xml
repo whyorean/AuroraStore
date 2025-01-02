@@ -207,7 +207,6 @@
     <string name="pref_install_delete_summary">ダウンロードしたAPKをインストール後すぐに削除</string>
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
     <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
-    <string name="pref_dialog_to_apply_restart">この設定はアプリの再起動後に適用されます</string>
     <string name="onboarding_permission_installer_desc">Aurora Store からのアプリのインストールを許可</string>
     <string name="onboarding_permission_installer">インストーラー権限</string>
     <string name="onboarding_permission_esm">外部ストレージマネージャー</string>
@@ -245,7 +244,6 @@
     <string name="update_available">更新があります</string>
     <string name="session_verifying_google">Google セッションを認証中</string>
     <string name="updates_available">個の更新があります</string>
-    <string name="rate_limited">おっと、このアカウントはレート制限されています！</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="search_hint">アプリ・ゲームを検索</string>
     <string name="requesting_new_session">新しいセッションを要求中</string>
@@ -284,20 +282,14 @@
     <string name="failed_generating_session">セッションの生成に失敗しました。エラーコード : <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">インターネット接続を確認してください</string>
     <string name="failed_to_generate_session">セッションを作成できませんでした</string>
-    <string name="app_link_enabled">アプリのリンクが有効です！</string>
-    <string name="action_enable">有効化</string>
     <string name="app_links_desc">Aurora Store に対応リンクを開くことを許可してください</string>
     <string name="app_links_title">アプリのリンク</string>
     <string name="google_play_store_desc">Google Play は Google Play ストアとしても知られ、以前は Android マーケットと呼ばれていました。</string>
     <string name="verifying_new_session">新しいセッションを検証中</string>
-    <string name="action_enabled">有効</string>
     <string name="app_language">アプリの言語</string>
-    <string name="amazon_appstore_desc">Amazon Appstore は、Amazon が運営する Android 対応プラットフォーム向けのアプリストアです。</string>
     <string name="title_app_settings">アプリ設定</string>
-    <string name="pref_download_directory_error">選択されたパスは書き込み可能ではありません</string>
     <string name="action_uninstall_confirmation">このアプリをアンインストールしますか？</string>
     <string name="android_market_desc">Android マーケットは、Android デバイス用にデザインされたソフトウェアアプリケーションを提供するオンラインストアでしたが、2017年に廃止されました。</string>
-    <string name="pref_downloader_wifi_title">Wi-Fi のみを使用してダウンロードする</string>
     <string name="pref_network_proxy_enable">プロキシを有効化</string>
     <string name="details_ratings_title_hint">評価タイトル</string>
     <string name="pref_network_proxy_url">プロキシ URL</string>
@@ -328,7 +320,6 @@
     <string name="pref_clear_device_owner_title">端末所有者を解除</string>
     <string name="pref_clear_device_owner_summary">Aurora Store を端末所有者から解除します</string>
     <string name="pref_clear_device_owner_desc">これにより、アプリをサイレントインストールするための権限が取り消されます。端末所有者の解除を続行しますか？</string>
-    <string name="action_manage">管理</string>
     <string name="manual_download_hint">ダウンロードしたいバージョンコードを入力</string>
     <string name="faqs_subtitle">質問がありますか？回答を探してください</string>
     <string name="source_code_title">ソースコード</string>
@@ -339,7 +330,6 @@
     <string name="native_installer_desc">Android 4.4 以下のデバイスに最適</string>
     <string name="services_installer_subtitle">バックグラウンドインストール用のインストーラー</string>
     <string name="am_installer_subtitle">フル機能のオープンソースパッケージマネージャー</string>
-    <string name="failed_app_link">サポートされていません。リンクを手動で関連付けてください</string>
     <string name="services_installer_desc">Aurora Services をシステム特権アプリとしてインストールする必要があります</string>
     <string name="session_installer_subtitle">同梱/分割 APK 用のセッション ベースのインストーラー</string>
     <string name="session_installer_desc">推奨。ビルトイン等の全てのAndroidバージョンをサポート</string>

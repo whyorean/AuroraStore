@@ -205,7 +205,6 @@
     <string name="pref_install_mode_native">Natiiviasentaja</string>
     <string name="pref_install_delete_title">Poista APK:t asennuksen jälkeen</string>
     <string name="pref_install_delete_summary">APK:t poistetaan oletuksena</string>
-    <string name="pref_dialog_to_apply_restart">Tämä asetus otetaan käyttöön, kun käynnistät sovelluksen uudelleen</string>
     <string name="pref_common_extra">Extrat</string>
     <string name="onboarding_permission_installer_desc">Hyväksy sovellusten asentaminen Aurora Storen kautta</string>
     <string name="onboarding_permission_installer">Asentajan käyttöoikeus</string>
@@ -258,7 +257,6 @@
     <string name="session_verifying_google">Googlen istuntoa tarkistetaan</string>
     <string name="title_advanced">Edistynyt</string>
     <string name="updates_available">päivityksiä saatavilla</string>
-    <string name="rate_limited">Upsi, tämä tili on rajoitettu!</string>
     <string name="error">Tapahtui virhe!</string>
     <string name="menu">Valikko</string>
     <string name="expand">Laajenna</string>
@@ -288,11 +286,7 @@
     <string name="app_links_title">Sovelluslinkit</string>
     <string name="verifying_new_session">Vahvistetaan uutta istuntoa</string>
     <string name="app_links_desc">Salli Aurora Storen avata tuetut linkit</string>
-    <string name="action_enable">Ota käyttöön</string>
-    <string name="action_enabled">Käytössä</string>
-    <string name="app_link_enabled">Sovelluslinkki on käytössä!</string>
     <string name="google_play_store_desc">Google Play, joka tunnetaan myös nimellä Google Play Store ja entinen Android Market.</string>
-    <string name="amazon_appstore_desc">Amazon Appstore on Amazonin ylläpitämä sovelluskauppa Android-yhteensopiville sovelluksille.</string>
     <string name="android_market_desc">Android Market oli vuonna 2017 toimintansa päättänyt verkkokauppa, joka tarjosi sovelluksia Android-laitteille.</string>
     <string name="details_ratings_title_hint">Arvostele sovellus</string>
     <string name="pref_aurora_only">Vain Aurora Storen sovellukset</string>
@@ -301,7 +295,6 @@
     <string name="pref_network_proxy_enable">Ota välityspalvelin käyttöön</string>
     <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
     <string name="title_apps_sale_provider">Tarjoaja - bestappsales.com</string>
-    <string name="pref_downloader_wifi_title">Lataa vain Wifi-verkon kautta</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
     <string name="onboarding_permission_doze">Taustalla olevat lataukset</string>
     <string name="pref_updates_auto">Päivitä sovellukset automaattisesti</string>
@@ -314,7 +307,6 @@
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
     <string name="download_clear_finished">Poista valmiit</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>
-    <string name="action_manage">Hallinnoi</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="status_cancelled">Peruutettu</string>
     <string name="status_unavailable">Ei käytettävissä</string>

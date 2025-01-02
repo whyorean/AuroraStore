@@ -97,7 +97,6 @@
     <string name="pref_install_delete_summary">İndirilen APK\'lar kurulumdan hemen sonra silinecek</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>
     <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
-    <string name="pref_dialog_to_apply_restart">Bu seçenek uygulamayı yeniden başlattıktan sonra uygulanacak</string>
     <string name="pref_common_extra">Ekler</string>
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
     <string name="onboarding_permission_installer">Kurucu İzni</string>
@@ -241,7 +240,6 @@
     <string name="session_verifying_google">Google oturumu doğrulanıyor</string>
     <string name="title_advanced">Gelişmiş</string>
     <string name="updates_available">güncellemeler var</string>
-    <string name="rate_limited">Bu hesapta hız sınırlaması var!</string>
     <string name="error">Hata oluştu!</string>
     <string name="menu">Menü</string>
     <string name="download_eta_sec">%1$dsn kaldı</string>
@@ -286,13 +284,9 @@
     <string name="check_connectivity">İnternet bağlantısını denetle</string>
     <string name="failed_to_generate_session">Oturum oluşturulamadı</string>
     <string name="app_links_desc">Aurora Store\'un desteklenen bağlantıları açmasına izin ver</string>
-    <string name="action_enabled">Etkinleştirildi</string>
-    <string name="app_link_enabled">Uygulama bağlantısı etkinleştirildi!</string>
-    <string name="action_enable">Etkinleştir</string>
     <string name="verifying_new_session">Yeni oturum doğrulanıyor</string>
     <string name="app_links_title">Uygulama Bağlantıları</string>
     <string name="google_play_store_desc">Google Play, Google Play Store ve eski adıyla Android Market olarak da bilinir.</string>
-    <string name="amazon_appstore_desc">Amazon Appstore, Amazon tarafından işletilen Android uyumlu platformlar için bir uygulama mağazasıdır.</string>
     <string name="android_market_desc">Android Market, Android aygıtlar için tasarlanan yazılım uygulamaları sunan çevrim içi mağazaydı ve 2017 yılında yayın yaşamını sonlandırdı.</string>
     <string name="details_ratings_title_hint">İnceleme başlığı</string>
     <string name="action_uninstall_confirmation">Bu uygulamayı kaldırmak istiyor musunuz?</string>
@@ -303,8 +297,6 @@
     <string name="title_apps_sale_provider">Sağlayıcı - bestappsales.com</string>
     <string name="details_no_apps_on_sale">Satışta uygulama yok</string>
     <string name="pref_updates_check_frequency">Kendiliğinden güncelleme sıklığı</string>
-    <string name="pref_download_directory_error">Seçilen yol yazılabilir değil</string>
-    <string name="pref_downloader_wifi_title">Yalnızca WiFi kullanarak indir</string>
     <string name="pref_network_proxy_enable">Vekili etkinleştir</string>
     <string name="pref_network_proxy_url">Vekil URL\'si</string>
     <string name="pref_network_proxy_title">Vekil</string>
@@ -327,8 +319,6 @@
     <string name="pref_updates_incompatible">Uyumsuz güncellemeler</string>
     <string name="pref_updates_incompatible_desc">Kurulamayabilecek uyumsuz veya devre dışı uygulamalar için güncellemeleri göster</string>
     <string name="action_home_screen">Ana ekrana ekle</string>
-    <string name="action_manage">Yönet</string>
-    <string name="failed_app_link">Desteklenmiyor, lütfen bağlantıları elle ilişkilendirmeyi deneyin</string>
     <string name="services_installer_subtitle">Arka planda kurulumlar için kurucu</string>
     <string name="services_installer_desc">Aurora Hizmetlerinin ayrıcalıklı sistem uygulaması olarak kurulmasını gerektirir</string>
     <string name="am_installer_subtitle">Tam özellikli açık kaynaklı paket yöneticisi</string>

@@ -94,7 +94,6 @@
     <string name="pref_install_delete_summary">APK dê bi standard werin jêbirin</string>
     <string name="pref_filter_fdroid_title">Fîlterkirin sepanên F-Droid</string>
     <string name="pref_filter_fdroid_summary">Sepanên F-Droid-ê ji navnîşên sepanan radike</string>
-    <string name="pref_dialog_to_apply_restart">Ev mîheng dê piştî ku hûn sepanê ji nû ve bidin dest pê kirin</string>
     <string name="onboarding_permission_installer_desc">Destûrê bidin sazkirina sepanan ji Aurora Store</string>
     <string name="onboarding_permission_installer">Destûra Sazker</string>
     <string name="onboarding_permission_esm">Gerînendeyê Stoka Derve</string>

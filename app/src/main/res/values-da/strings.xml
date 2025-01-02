@@ -129,7 +129,6 @@
     <string name="details_no_dependencies">Ingen afhængigheder</string>
     <string name="details_no_permission">Ingen tilladelser</string>
     <string name="pref_common_extra">Ekstra</string>
-    <string name="pref_dialog_to_apply_restart">Denne indstilling anvendes, når du genstarter appen</string>
     <string name="toast_apk_blacklisted">Sortlistet</string>
     <string name="action_filter_apply">Anvend</string>
     <string name="installer_am_unavailable">Installer App Manager eller skift installationsprogrammet.</string>
@@ -266,7 +265,6 @@
     <string name="action_home_screen">Føj til hjemmeskærm</string>
     <string name="action_uninstall_success">Afinstalleret</string>
     <string name="action_uninstall_confirmation">Vil du afinstallere denne app?</string>
-    <string name="pref_downloader_wifi_title">Download kun via Wi-Fi</string>
     <string name="session_login">Log venligst ind på din Google Play-konto</string>
     <string name="details_data_safety_title">Datasikkerhed</string>
     <string name="details_data_safety_subtitle">Databeskyttelse og sikkerhedspraksis erklæret af udvikleren</string>
@@ -289,13 +287,11 @@
     <string name="failed_apk_export">Kunne ikke eksportere APK\'er</string>
     <string name="verifying_new_session">Verificerer ny session</string>
     <string name="about_wiki_summary">Find svar på ofte stillede spørgsmål (F.A.Q.), trin til fejlfinding og mere</string>
-    <string name="action_enabled">Aktiveret</string>
     <string name="check_connectivity">Tjek internetforbindelse</string>
     <string name="privacy_policy_title">Privatlivspolitik</string>
     <string name="about_aurora_store_summary">Aurora Store lader dig søge efter og hente apps fra den officielle Google Play-butik. Du kan se app-beskrivelser, skærmbilleder, opdateringer, andre brugeres anmeldelser og hente APK\'en direkte fra Google Play til din enhed. For at bruge Aurora Store skal du have en Google Play-konto og logge ind på den, når du åbner og konfigurerer Aurora Store første gang. \n \nAurora Store hverken ejer, licenserer eller distribuerer apps ligesom en traditionel app-butik. Alle apps, app-beskrivelser, skærmbilleder og andet indhold i Aurora Store er direkte tilgået, downloadet og/eller vist fra Google Play. Aurora Store fungerer præcis som en dør eller browser, og lader dig logge ind på din Google Play-konto og finde apps fra Google Play. \n \nBemærk, at Aurora Store ikke har nogen godkendelse, sponsorering eller tilladelse fra Google, Google Play, nogen app downloadet via Aurora Store eller nogen app-udviklere; Aurora Store har heller ikke nogen tilknytning, samarbejde eller forbindelse med dem.</string>
     <string name="force_restart_title">Genstart Aurora Store</string>
     <string name="failed_to_generate_session">Kunne ikke generere session</string>
-    <string name="action_manage">Administrer</string>
     <string name="pref_clear_device_owner_title">Ryd enhedens ejer</string>
     <string name="session_installer_desc">Anbefalet. Indbygget og understøtter alle Android-versioner</string>
     <string name="source_code_title">Kildekode</string>
@@ -306,7 +302,6 @@
     <string name="failed_to_fetch_report">Kunne ikke hente privatlivsrapport</string>
     <string name="pref_updates_check_frequency_desc">Konfigurer intervaller for auto- og selvopdateringer i timer.</string>
     <string name="failed_generating_session">Kunne ikke generere session. Fejlkode: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="action_enable">Aktivér</string>
     <string name="app_links_desc">Tillad Aurora Store at åbne understøttede links</string>
     <string name="add">Tilføj</string>
     <string name="remove">Fjern</string>
@@ -329,11 +324,9 @@
     <string name="expand">Udvid</string>
     <string name="notification_updates_available_desc_1">En ny version af <xliff:g id="app_one_name">%1$s</xliff:g> er tilgængelig</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> og <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="failed_app_link">Understøttes ikke; prøv at tilknytte links manuelt</string>
     <string name="requesting_new_session">Anmoder om ny session</string>
     <string name="details_no_favourites">Ingen favoritapps fundet</string>
     <string name="session_scrapped">Sidste session kasseret</string>
-    <string name="rate_limited">Ups, denne konto er hastighedsbegrænset!</string>
     <string name="manual_download_hint">Indtast den versionskode, du vil hente</string>
     <string name="notification_channel_account">Konto-relateret meddelelse</string>
     <string name="pref_install_mode_shizuku">Shizuku-installationsprogram</string>
@@ -352,12 +345,10 @@
     <string name="title_favourites_manager">Favoritapps</string>
     <string name="shizuku_installer_desc">Kræver Shizuku eller Sui; skal opsættes og have tilladelse</string>
     <string name="source_code_subtitle">Find ud af, hvad der er indeni</string>
-    <string name="app_link_enabled">App-link aktiveret!</string>
     <string name="native_installer_desc">Bedst egnet til enheder under Android 4.4</string>
     <string name="downloading_dep">Henter yderligere filer til <xliff:g id="app">%1$s</xliff:g></string>
     <string name="search_hint">Søg efter apps og spil</string>
     <string name="app_links_title">App-links</string>
-    <string name="pref_download_directory_error">Den valgte sti er ikke skrivbar</string>
     <string name="filter_latest">Seneste</string>
     <string name="updates_available">opdateringer tilgængelige</string>
     <string name="made_with_love">Lavet med <xliff:g id="heart_emoji">%1$s</xliff:g> i Indien</string>
@@ -365,7 +356,6 @@
     <string name="pref_network_proxy_enable_desc">Tillad al trafik fra appen at gå gennem proxyen</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> opdateringer tilgængelige</string>
     <string name="toast_proxy_failed">Kunne ikke indstille proxy</string>
-    <string name="amazon_appstore_desc">Amazon Appstore er en app-butik til Android-kompatible platforme drevet af Amazon.</string>
     <string name="am_installer_desc">Kræver App Manager. Har brug for adb/root-tilstand for at installere, når MIUI-optimering er slået til</string>
     <string name="shizuku_installer_subtitle">Bruger system-API\'er direkte med adb/root-rettigheder</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> og <xliff:g id="apps_count">%4$d</xliff:g> mere</string>

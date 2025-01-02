@@ -156,7 +156,6 @@
     <string name="onboarding_permission_notifications">알림</string>
     <string name="onboarding_permission_notifications_desc">설치 상태에 대한 알림 보내기</string>
     <string name="pref_common_extra">추가 기능</string>
-    <string name="pref_dialog_to_apply_restart">이 설정은 앱을 다시 시작한 후에 적용됩니다</string>
     <string name="pref_filter_fdroid_summary">업데이트 및 설치된 앱에서 F-Droid 앱 무시</string>
     <string name="pref_filter_fdroid_title">F-Droid 앱 필터링</string>
     <string name="installer_status_failure">설치 실패</string>
@@ -171,7 +170,6 @@
     <string name="download_eta_min">%1$d분 %2$d초 남음</string>
     <string name="download_eta_sec">%1$d초 남음</string>
     <string name="installer_shizuku_unavailable">Shizuku가 설치되지 않았거나 제대로 구성되지 않았습니다.</string>
-    <string name="pref_download_directory_error">선택한 경로에 쓸 수 없습니다</string>
     <string name="action_uninstall_confirmation">이 앱을 제거하시겠습니까?</string>
     <string name="details_ratings_title_hint">리뷰 제목</string>
     <string name="pref_install_delete_title">설치 후 APK 삭제</string>
@@ -181,7 +179,6 @@
     <string name="pref_install_mode_shizuku">Shizuku 설치기</string>
     <string name="pref_install_mode_native">기본 설치 프로그램(소멸됨)</string>
     <string name="pref_install_mode_root">루트 설치기</string>
-    <string name="pref_downloader_wifi_title">Wi-Fi를 통해서만 다운로드</string>
     <string name="pref_install_mode_services">오로라 서비스 (지원 중단)</string>
     <string name="pref_install_mode_session">세션 설치기</string>
     <string name="pref_install_mode_title">설치 방식</string>
@@ -226,7 +223,6 @@
     <string name="purchase_invalid">구매하지 않은 앱</string>
     <string name="title_apps_sale_provider">공급자 - bestappsales.com</string>
     <string name="title_no_network">네트워크 없음</string>
-    <string name="rate_limited">Oops, 이 계정은 제한됩니다!</string>
     <string name="pref_updates_check_frequency">자동 업데이트 작동주기</string>
     <string name="tab_top_free">인기 무료</string>
     <string name="expand">확장됨</string>
@@ -286,7 +282,6 @@
     <string name="pref_updates_auto_desc">자동-업데이트 동작 구성</string>
     <string name="verifying_new_session">새로운 세션을 검증</string>
     <string name="app_language">앱 언어</string>
-    <string name="action_manage">관리</string>
     <string name="menu">메뉴</string>
     <string name="failed_to_generate_session">세션을 생성하지 못함</string>
     <string name="title_installed">설치됨</string>
@@ -296,11 +291,7 @@
     <string name="title_advanced">고급</string>
     <string name="pref_ui_layout">레이아웃</string>
     <string name="pref_ui_layout_tab">기본 탭 선택</string>
-    <string name="action_enable">사용</string>
-    <string name="app_link_enabled">앱 링크 활성화!</string>
-    <string name="action_enabled">활성화됨</string>
     <string name="tab_categories">카테고리</string>
-    <string name="amazon_appstore_desc">Amazon Appstore는 Amazon에서 운영되는 Android-호환 플랫폼용 앱 스토어입니다.</string>
     <string name="notification_updates_available_desc_1">새로운 버전의 <xliff:g id="app_one_name">%1$s</xliff:g> 가 대기 중</string>
     <string name="pref_updates_auto_notify">사용 가능한 업데이트 확인 &amp; 알림</string>
     <string name="requesting_new_session">새 세션 요청</string>
@@ -313,7 +304,6 @@
     <string name="toast_export_failed">장치 구성을 내보낼 수 없습니다</string>
     <string name="pref_updates_auto_install">사용 가능한 업데이트 자동 확인 및 설치</string>
     <string name="failed_generating_session">세션을 생성하지 못했습니다. 오류 코드: &lt;xliff:gid=\"status_code\"&gt;%1$d&lt;/xliff:g&gt;</string>
-    <string name="failed_app_link">지원되지 않습니다. 수동으로 링크를 연결해 보십시오</string>
     <string name="pref_updates_incompatible_desc">호환되지 않거나 응용 프로그램이 실행 중지된 업데이트를 표시합니다. 설치가 실패할 수 있습니다</string>
     <string name="toast_developer_setting_failed">장치 설정에서 개발자 옵션을 활성화하여 엽니다.</string>
     <string name="toast_spoof_applied">디바이스 스푸프가 적용되었습니다.</string>

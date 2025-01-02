@@ -203,7 +203,6 @@
     <string name="pref_install_delete_summary">A letöltött APK-k a telepítés után azonnal törlődnek</string>
     <string name="pref_filter_fdroid_title">F-Droid alkalmazások szűrése</string>
     <string name="pref_filter_fdroid_summary">Ne keressen frissítéseket az F-Droidról letöltött vagy telepített alkalmazásokhoz</string>
-    <string name="pref_dialog_to_apply_restart">Ez a beállítás az alkalmazás újraindítása után kerül alkalmazásra</string>
     <string name="onboarding_permission_installer_desc">Lehetővé teszi az Aurora Store-ból származó alkalmazások telepítését</string>
     <string name="onboarding_permission_installer">Telepítési engedély</string>
     <string name="onboarding_permission_esm">Külső tárhelykezelő</string>
@@ -277,27 +276,22 @@
     <string name="error">Hiba történt!</string>
     <string name="downloading_dep">További fájlok letöltése ehhez: <xliff:g id="app">%1$s</xliff:g></string>
     <string name="failed_generating_session">Nem sikerült létrehozni a munkamenetet, hibakód: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="rate_limited">Hoppá, ez a fiók limitált!</string>
     <string name="onboarding_permission_notifications_desc">Értesítések küldése a telepítések állapotáról</string>
     <string name="pref_install_mode_shizuku">Shizuku telepítő</string>
     <string name="session_good">Azta! Minden rendben.</string>
     <string name="session_scrapped">Utolsó munkamenet törölve</string>
     <string name="app_links_desc">Az Aurora Store által támogatott hivatkozások megnyitásának engedélyezése</string>
     <string name="check_connectivity">Ellenőrizze az internetkapcsolatot</string>
-    <string name="action_enabled">Engedélyezve</string>
     <string name="google_play_store_desc">Google Play, avagy Google Play Store, korábban Android Market.</string>
-    <string name="app_link_enabled">Alkalmazáshivatkozás engedélyezve!</string>
     <string name="failed_to_generate_session">Nem sikerült létrehozni a munkamenetet</string>
     <string name="verifying_new_session">Új munkamenet ellenőrzése</string>
     <string name="app_language">Alkalmazás nyelve</string>
     <string name="app_links_title">Alkalmazáshivatkozások</string>
-    <string name="action_enable">Engedélyezés</string>
     <string name="pref_network_proxy_enable">Proxy engedélyezése</string>
     <string name="pref_network_proxy_url">Proxy webcíme</string>
     <string name="pref_updates_check_frequency_desc">Automatikus frissítések intervallumának konfigurálása, órákban.</string>
     <string name="pref_aurora_only">Csak Aurora Store alkalmazások</string>
     <string name="pref_network_proxy_title">Proxy</string>
-    <string name="amazon_appstore_desc">Az Amazon Appstore egy alkalmazásbolt az Amazon által üzemeltetett Android-kompatibilis platformokhoz.</string>
     <string name="toast_proxy_invalid">Érvénytelen proxy webcím, ellenőrizze a formátumot!</string>
     <string name="pref_aurora_only_desc">Csak az Aurora Store által telepített alkalmazások frissítéseinek ellenőrzése</string>
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
@@ -305,12 +299,10 @@
     <string name="title_apps_sale_provider">Szolgáltató – bestappsales.com</string>
     <string name="details_no_apps_on_sale">Nincs leértékelt alkalmazás</string>
     <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
-    <string name="pref_download_directory_error">A kiválasztott elérési út nem írható</string>
     <string name="toast_proxy_failed">Proxy beállítása sikertelen</string>
     <string name="pref_network_proxy_enable_desc">Alkalmazás forgalmának átirányítása proxyn keresztül</string>
     <string name="action_uninstall_confirmation">Szeretné eltávolítani ezt az alkalmazást?</string>
     <string name="android_market_desc">Az Android Market egy online áruház volt, amely szoftveralkalmazásokat kínált androidos eszközökhöz, és 2017-ben megszűnt.</string>
-    <string name="pref_downloader_wifi_title">Letöltés csak Wi-Fi használatával</string>
     <string name="pref_vending_version_device">Alapértelmezett (eszközkonfiguráció)</string>
     <string name="pref_vending_version_title">Google Play verzió</string>
     <string name="details_ratings_title_hint">Értékelés</string>
@@ -326,9 +318,7 @@
     <string name="download_clear_finished">Törlés befejezve</string>
     <string name="pref_updates_incompatible">Inkompatibilis frissítések</string>
     <string name="pref_updates_incompatible_desc">Inkompatibilis és letiltott alkalmazások frissítésének megjelenítése, a telepítés meghiúsulhat</string>
-    <string name="action_manage">Kezelés</string>
     <string name="action_home_screen">Főképernyőhöz adás</string>
-    <string name="failed_app_link">Nem támogatott, próbálja meg kézileg társítani a hivatkozásokat</string>
     <string name="faqs_subtitle">Kérdései vannak? Itt találja a válaszokat</string>
     <string name="source_code_title">Forráskód</string>
     <string name="source_code_subtitle">Tudja meg, mi van belül</string>

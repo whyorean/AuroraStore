@@ -146,7 +146,6 @@
     <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
     <string name="pref_filter_fdroid_summary">Không kiểm tra cập nhật cho các ứng dụng được tải xuống hoặc cài đặt từ F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Thiết đặt này sẽ được áp dụng sau khi bạn khởi động lại ứng dụng</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>
@@ -268,7 +267,6 @@
     <string name="toast_import_success">Cấu hình thiết bị được nhập</string>
     <string name="update_available">có cập nhật</string>
     <string name="updates_available">có cập nhật</string>
-    <string name="rate_limited">Rất tiếc, tài khoản này đã bị hạn chế!</string>
     <string name="error">Có lỗi xảy ra!</string>
     <string name="menu">Menu</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> có bản cập nhật</string>
@@ -286,15 +284,12 @@
     <string name="toast_proxy_success">Đã đặt proxy thành công</string>
     <string name="pref_updates_check_frequency_desc">Định cấu hình khoảng thời gian để tự động và tự cập nhật, tính bằng giờ.</string>
     <string name="pref_updates_check_frequency">Tần suất cập nhật tự động</string>
-    <string name="action_enabled">Đã bật</string>
     <string name="action_uninstall_confirmation">Bạn có muốn gỡ cài đặt ứng dụng này không?</string>
     <string name="app_links_desc">Cho phép Aurora Store mở các liên kết được hỗ trợ</string>
     <string name="pref_updates_auto_install">Tự động kiểm tra &amp; cài đặt các bản cập nhật có sẵn</string>
-    <string name="amazon_appstore_desc">Amazon Appstore là một cửa hàng ứng dụng dành cho các nền tảng tương thích với Android do Amazon vận hành.</string>
     <string name="failed_apk_export">Không xuất được APK</string>
     <string name="details_no_apps_on_sale">Không tìm thấy ứng dụng nào đang giảm giá</string>
     <string name="title_apps_sale_provider">Nhà cung cấp - bestappsale.com</string>
-    <string name="pref_downloader_wifi_title">Chỉ tải xuống bằng WiFi</string>
     <string name="onboarding_permission_doze_desc">Cho phép Aurora Store tải xuống và cập nhật ứng dụng trong nền</string>
     <string name="pref_vending_version_device">Mặc định (từ cấu hình thiết bị)</string>
     <string name="pref_network_proxy_enable">Bật proxy</string>
@@ -303,10 +298,8 @@
     <string name="toast_proxy_invalid">URL proxy không hợp lệ, hãy kiểm tra định dạng!</string>
     <string name="check_connectivity">Kiểm tra kết nối internet</string>
     <string name="app_links_title">Liên kết ứng dụng</string>
-    <string name="action_enable">Bật</string>
     <string name="pref_updates_auto">Tự động cập nhật ứng dụng</string>
     <string name="pref_updates_auto_desc">Định cấu hình hành vi cập nhật tự động</string>
-    <string name="pref_download_directory_error">Đường dẫn đã chọn không thể ghi được</string>
     <string name="pref_vending_version_title">Phiên bản Google Play</string>
     <string name="pref_aurora_only">Chỉ ứng dụng của Aurora Store</string>
     <string name="pref_updates_auto_off">Không tự động cập nhật ứng dụng</string>
@@ -314,7 +307,6 @@
     <string name="android_market_desc">Android Market là cửa hàng trực tuyến cung cấp các ứng dụng phần mềm được thiết kế cho thiết bị Android, đã ngừng hoạt động vào năm 2017.</string>
     <string name="failed_to_generate_session">Không thể tạo phiên</string>
     <string name="verifying_new_session">Xác minh phiên mới</string>
-    <string name="app_link_enabled">Đã bật liên kết ứng dụng!</string>
     <string name="google_play_store_desc">Google Play, còn được gọi là Cửa hàng Google Play và trước đây là Android Market.</string>
     <string name="app_language">Ngôn ngữ ứng dụng</string>
     <string name="action_request_analysis">Yêu cầu phân tích mới</string>
@@ -327,9 +319,7 @@
     <string name="onboarding_permission_doze">Tải xuống trong nền</string>
     <string name="pref_network_proxy_url">URL proxy</string>
     <string name="pref_network_proxy_title">Proxy</string>
-    <string name="action_manage">Quản lý</string>
     <string name="services_installer_subtitle">Trình cài đặt để cài đặt nền</string>
-    <string name="failed_app_link">Không được hỗ trợ, vui lòng thử liên kết các liên kết theo cách thủ công</string>
     <string name="am_installer_subtitle">Trình quản lý gói nguồn mở đầy đủ tính năng</string>
     <string name="services_installer_desc">Yêu cầu cài đặt Dịch vụ Aurora dưới dạng ứng dụng hệ thống đặc quyền</string>
     <string name="am_installer_desc">Yêu cầu App Manager, cần cài đặt chế độ adb/root khi bật tối ưu hóa miui</string>

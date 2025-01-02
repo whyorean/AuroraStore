@@ -144,7 +144,6 @@
     <string name="details_beta_description">您會搶鮮見到新功能、亦唔會執輸見到有甩漏。請您反映寶貴意見，協助開發者更臻完善。</string>
     <string name="details_no_app_match">搵唔到啱合尺嘅 app</string>
     <string name="download_completed">下載搞掂</string>
-    <string name="pref_dialog_to_apply_restart">您重新開過個 app 之後，呢個設定至會生效</string>
     <string name="title_purchase_history">購買紀錄</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>、<xliff:g id="app_two_name">%2$s</xliff:g> 同 <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="about_bhim">印度 BHIM - UPI</string>
@@ -180,7 +179,6 @@
     <string name="session_verifying">驗證緊工作階段</string>
     <string name="toast_rated_failed">遞交唔到評分</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> 出咗更新喇</string>
-    <string name="action_enable">啟用</string>
     <string name="pref_filter_fdroid_title">飛起 F-Droid 啲 app</string>
     <string name="exodus_progress">檢查緊有冇追蹤器…</string>
     <string name="update_available">個更新出咗喇</string>
@@ -194,7 +192,6 @@
     <string name="failed_to_fetch_report">攞唔到私隱報告</string>
     <string name="pref_ui_layout_tab">揀選預設分頁</string>
     <string name="verifying_new_session">驗證緊新嘅工作階段</string>
-    <string name="action_enabled">已啟用</string>
     <string name="toast_anonymous_restriction">無名氏帳戶冇得用</string>
     <string name="details_think_this_app">呢個 app 您點睇？</string>
     <string name="session_init">幫緊您幫緊您…</string>
@@ -216,13 +213,11 @@
     <string name="session_scrapped">對上一個工作階段已經報銷</string>
     <string name="title_app_settings">App 設定</string>
     <string name="title_apps_sale_provider">提供：bestappsales.com</string>
-    <string name="pref_download_directory_error">揀選嘅路徑寫入唔到</string>
     <string name="toast_proxy_failed">設定唔到代理伺服器</string>
     <string name="pref_network_proxy_enable_desc">等個 app 所有網絡通訊都流經代理伺服器</string>
     <string name="pref_install_mode_title">安裝方法</string>
     <string name="pref_install_delete_summary">下載嘅 APK 一安裝完就即刻剷走</string>
     <string name="action_uninstall_confirmation">係咪要解除安裝呢個 app？</string>
-    <string name="pref_downloader_wifi_title">淨係用 WiFi 下載</string>
     <string name="pref_install_delete_title">安裝之後剷走 APK</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="action_whitelist">欽准名單</string>

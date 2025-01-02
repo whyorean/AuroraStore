@@ -165,7 +165,6 @@
     <string name="onboarding_permission_installer_desc">Επιτρέψτε την εγκατάσταση εφαρμογών από το Aurora Store</string>
     <string name="pref_install_mode_session">Εγκαταστάτης συνεδρίας</string>
     <string name="pref_filter_fdroid_summary">Αγνοεί εφαρμογές F-Droid από Ενημερώσεις και Εγκατεστημένες εφαρμογές</string>
-    <string name="pref_dialog_to_apply_restart">Αυτή η ρύθμιση θα εφαρμοστεί μετά την επανεκκίνηση της εφαρμογής</string>
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
     <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
@@ -244,7 +243,6 @@
     <string name="download_progress">Κατεβαίνει • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="details_no_apps_on_sale">Δεν βρέθηκαν εφαρμογές σε προσφορά</string>
     <string name="download_eta_hrs">Απομένουν %1$dώ %2$dλ %3$dδλ</string>
-    <string name="pref_download_directory_error">Δεν μπορεί να γίνει εγγραφή στην επιλεγμένη διαδρομή</string>
     <string name="pref_install_mode_am">Εγκαταστάτης AM</string>
     <string name="action_import">Εισαγωγή</string>
     <string name="download_eta_min">Απομένουν %1$dλ %2$dδλ</string>
@@ -253,7 +251,6 @@
     <string name="onboarding_permission_doze_desc">Επιτρέψτε στο Aurora Store να κατεβάσει και να ενημερώσει εφαρμογές στο παρασκήνιο</string>
     <string name="pref_vending_version_title">Έκδοση Google Play</string>
     <string name="pref_network_proxy_title">Μεσολάβηση</string>
-    <string name="pref_downloader_wifi_title">Λήψη μόνο μέσω WiFi</string>
     <string name="installer_shizuku_unavailable">Το Shizuku δεν έχει εγκατασταθεί ή ρυθμιστεί σωστά.</string>
     <string name="action_request_analysis">Αίτηση νέας ανάλυσης</string>
     <string name="download_clear_finished">Η εκκαθάριση ολοκληρώθηκε</string>
@@ -286,7 +283,6 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> και <xliff:g id="apps_count">%4$d</xliff:g> άλλες</string>
     <string name="toast_import_failed">Δεν ήταν δυνατή η εισαγωγή παραμέτρων συσκευής</string>
     <string name="toast_proxy_invalid">Μη έγκυρο URL μεσολάβησης, ελέγξτε τη μορφή!</string>
-    <string name="rate_limited">Ουπς, αυτός ο λογαριασμός έχει όριο!</string>
     <string name="permissions_denied">Αρνήθηκαν απαιτούμενα δικαιώματα. Παρακαλώ παραχωρήστε τα για να προχωρήσει η ενέργεια</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Αιτείται νέα συνεδρία</string>
@@ -314,11 +310,7 @@
     <string name="check_connectivity">Έλεγχος σύνδεσης διαδικτύου</string>
     <string name="bad_request">Εσωτερικό λάθος! Προσπαθήστε ξανά αργότερα</string>
     <string name="app_links_title">Σύνδεσμοι εφαρμογής</string>
-    <string name="action_enable">Ενεργοποίηση</string>
-    <string name="action_enabled">Ενεργοποιημένο</string>
-    <string name="app_link_enabled">Σύνδεσμος εφαρμογής ενεργοποιήθηκε!</string>
     <string name="android_market_desc">Το Android Market ήταν ένα ηλεκτρονικό κατάστημα που προσέφερε εφαρμογές λογισμικού σχεδιασμένες για συσκευές Android, το οποίο αποσύρθηκε το 2017.</string>
-    <string name="failed_app_link">Δεν υποστηρίζεται, δοκιμάστε συνδέσμους με μη αυτόματο τρόπο</string>
     <string name="root_installer_desc">Απαιτεί δικαιώματα root/superuser, υποστηρίζει όλες τις εκδόσεις Android.</string>
     <string name="failed_to_generate_session">Δεν μπορεί να δημιουργηθεί συνεδρία</string>
     <string name="app_links_desc">Επιτρέπεται το Aurora Store να ανοίγει συνδέσμους που υποστηρίζονται</string>
@@ -328,7 +320,6 @@
     <string name="privacy_policy_title">Πολιτική απορρήτου</string>
     <string name="privacy_policy_subtitle">Μάθετε πώς χρησιμοποιεί το Aurora Store τα δεδομένα σας</string>
     <string name="native_installer_desc">Κατάλληλο για συσκευές που τρέχουν κάτω από Android 4.4</string>
-    <string name="amazon_appstore_desc">Το Amazon Appstore είναι ένα κατάστημα εφαρμογών για πλατφόρμες συμβατές με Android που λειτουργεί από την Amazon.</string>
     <string name="app_language">Γλώσσα εφαρμογής</string>
     <string name="failed_generating_session">Αποτυχία δημιουργίας συνεδρίας, κώδικας σφάλματος: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="login_rate_limited">Ουπς, αυτός ο λογαριασμός έχει όριο</string>
@@ -348,7 +339,6 @@
     <string name="title_more">Περισσότερα</string>
     <string name="source_code_title">Πηγαίος κώδικας</string>
     <string name="source_code_subtitle">Μάθετε τι υπάρχει μέσα</string>
-    <string name="action_manage">Διαχείριση</string>
     <string name="am_installer_desc">Απαιτεί App Manager, χρειάζεται λειτουργία adb/root για την εγκατάσταση όταν η βελτιστοποίηση miui είναι ενεργοποιημένη</string>
     <string name="pref_clear_device_owner_summary">Καταργεί το Aurora Store ως εφαρμογή κατόχου της συσκευής</string>
     <string name="pref_clear_device_owner_desc">Αυτό θα ανακαλέσει την άδεια του εγκαταστάτη συνεδρίας να εγκαταστήσει σιωπηρά την εφαρμογή. Να γίνει εκκαθάριση της ιδιοκτησίας της συσκευής;</string>

@@ -35,7 +35,6 @@
     <string name="pref_install_delete_summary">As APKs serán eliminadas por defecto</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicacións de F-Droid</string>
     <string name="pref_filter_fdroid_summary">Borra as aplicacións instaladas por F-Droid da lista de aplicacións</string>
-    <string name="pref_dialog_to_apply_restart">Esta configuración será aplicada após reiniciar a aplicación</string>
     <string name="pref_common_extra">Extras</string>
     <string name="onboarding_permission_installer_desc">Permitir instalación de aplicacións desde a Aurora Store</string>
     <string name="onboarding_permission_installer">Permiso do Instalador</string>
@@ -260,7 +259,6 @@
     <string name="title_advanced">Avanzado</string>
     <string name="toast_import_success">Configuración do dispositivo importada</string>
     <string name="updates_available">actualizacións dispoñíbeis</string>
-    <string name="rate_limited">Vaites, esta conta ten limitacións de tempo de uso!</string>
     <string name="error">Un erro aconteceu!</string>
     <string name="menu">Menú</string>
     <string name="search_hint">Buscar aplicacións e xogos</string>

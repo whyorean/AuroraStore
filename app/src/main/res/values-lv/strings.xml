@@ -163,7 +163,6 @@
     <string name="menu_disclaimer">Brīdinājums</string>
     <string name="pref_common_extra">Papildu</string>
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
-    <string name="pref_dialog_to_apply_restart">Šis iestatījums tiks piemērots pēc lietotnes restartēšanas</string>
     <string name="pref_ui_layout">Izkārtojums</string>
     <string name="pref_ui_title">Pielāgošana</string>
     <string name="purchase_no_file">Nevarēja iegūt failus</string>
@@ -267,7 +266,6 @@
     <string name="toast_aas_token_failed">Nebija iespējams izveidot AAS piekļuves pilnvaru</string>
     <string name="toast_import_success">Ierīces uzstādījumi ir ievietoti</string>
     <string name="toast_import_failed">Nebija iespējams ievietot ierīces uzstādījumus</string>
-    <string name="rate_limited">Ak vai, šis konts ir ierobežots!</string>
     <string name="error">Gadījās kļūda.</string>
     <string name="menu">Izvēlne</string>
     <string name="expand">Izvērst</string>
@@ -285,14 +283,10 @@
     <string name="check_connectivity">Pārbaudīt interneta savienojumu</string>
     <string name="app_language">Lietotnes valoda</string>
     <string name="failed_to_generate_session">Neizdevās izveidot sesiju</string>
-    <string name="app_link_enabled">Lietotņu saites iespējotas.</string>
-    <string name="action_enable">Iespējot</string>
     <string name="app_links_desc">Atļaut Aurora Store atvērt atbalstītās saites</string>
-    <string name="amazon_appstore_desc">Amazon Appstore ir Amazon pārvaldīts lietotņu veikals Android saderīgām platformām.</string>
     <string name="app_links_title">Lietotņu saites</string>
     <string name="google_play_store_desc">Google Play, zināms arī kā Google Play Store un agrāk Android Market.</string>
     <string name="verifying_new_session">Pārbauda jauno sesiju</string>
-    <string name="action_enabled">Iespējots</string>
     <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, pārstāja darboties 2017. gadā.</string>
     <string name="details_ratings_title_hint">Apskata nosaukums</string>
     <string name="details_no_apps_on_sale">Netika atrastas izpārdošanā esošas lietotnes</string>
@@ -308,10 +302,8 @@
     <string name="title_app_settings">Lietotnes iestatījumi</string>
     <string name="title_apps_sale_provider">Nodrošinātājs - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Automātisko atjauninājumu biežums</string>
-    <string name="pref_download_directory_error">Izvēlētais ceļš nav rakstāms</string>
     <string name="toast_proxy_failed">Neizdevās iestatīt starpniekserveri</string>
     <string name="pref_network_proxy_enable_desc">Atļaut visu lietotnes datplūsmu sūtīt caur starpniekserveri</string>
-    <string name="pref_downloader_wifi_title">Lejupielādēt tikai izmantojot WiFi</string>
     <string name="action_request_analysis">Pieprasīt jaunu izvērtējumu</string>
     <string name="onboarding_permission_doze">Fona lejupielādes</string>
     <string name="onboarding_permission_doze_desc">Ļaut Aurora Store lejupielādēt un atjaunināt lietotnes fonā</string>
@@ -324,8 +316,6 @@
     <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
     <string name="pref_updates_incompatible_desc">Rādīt atjauninājumus nesaderīgām vai atspējotām lietotnēm, kuru uzstādīšana var neizdoties</string>
     <string name="failed_apk_export">Neizdevās izgūt APK</string>
-    <string name="action_manage">Pārvaldīt</string>
-    <string name="failed_app_link">Neatbalstīta, lūgums mēģināt savienot saites pašrocīgi</string>
     <string name="manual_download_hint">Jāievada versijas, kuru vēlies lejupielādēt, kods</string>
     <string name="faqs_subtitle">Ir jautājumi? Atrodi atbildes</string>
     <string name="source_code_title">Pirmkods</string>

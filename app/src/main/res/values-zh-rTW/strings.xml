@@ -137,7 +137,6 @@
     <string name="pref_install_delete_summary">已下載的 APK 將在安裝後立即刪除</string>
     <string name="pref_filter_fdroid_title">篩選 F-Droid 應用程式</string>
     <string name="pref_filter_fdroid_summary">在更新與已安裝的應用程式中，忽略 F-Droid 應用程式</string>
-    <string name="pref_dialog_to_apply_restart">設定將會在你重新啟動應用程式後生效</string>
     <string name="pref_common_extra">額外功能</string>
     <string name="onboarding_permission_installer_desc">允許從 Aurora Store 安裝應用程式</string>
     <string name="onboarding_permission_installer">安裝器權限</string>
@@ -234,7 +233,6 @@
     <string name="onboarding_title_installer">安裝方式</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="download_progress">正在下載 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="rate_limited">哎呀，此帳戶已達到速率限制！</string>
     <string name="search_hint">搜尋應用程式與遊戲</string>
     <string name="pref_install_mode_am">AM 安裝程式</string>
     <string name="pref_install_mode_shizuku">Shizuku 安裝程式</string>
@@ -275,7 +273,6 @@
     <string name="session_enjoy">登入並享用。</string>
     <string name="update_available">有更新可用</string>
     <string name="action_uninstall_confirmation">你確定要解除安裝此應用程式嗎？</string>
-    <string name="pref_download_directory_error">無法寫入選擇的檔案路徑</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="pref_network_proxy_title">代理伺服器</string>
     <string name="pref_network_proxy_enable">啟用代理伺服器</string>
@@ -292,9 +289,7 @@
     <string name="failed_to_generate_session">無法產生工作階段</string>
     <string name="verifying_new_session">驗證新的工作階段</string>
     <string name="app_language">應用程式語言</string>
-    <string name="amazon_appstore_desc">Amazon Appstore 是一個應用程式商店，專屬於 Amazon 所經營的、相容於 Android 的平臺。</string>
     <string name="failed_apk_export">匯出 APK 失敗</string>
-    <string name="action_manage">管理</string>
     <string name="pref_vending_version_device">預設（來自裝置配置）</string>
     <string name="pref_network_proxy_enable_desc">允許所有來自於應用程式的網路活動經過代理伺服器</string>
     <string name="pref_network_proxy_url">代理伺服器網址</string>
@@ -308,13 +303,9 @@
     <string name="pref_updates_auto">自動更新應用程式</string>
     <string name="pref_updates_auto_install">檢查並自動安裝可用的更新</string>
     <string name="failed_to_fetch_report">取得隱私報告失敗</string>
-    <string name="pref_downloader_wifi_title">僅使用 WiFi 下載</string>
     <string name="pref_updates_check_frequency">自動更新頻率</string>
     <string name="pref_updates_check_frequency_desc">以小時為單位，設定自動與自我更新的時間間隔。</string>
     <string name="app_links_title">應用程式連結</string>
-    <string name="app_link_enabled">應用程式連結已啟用！</string>
-    <string name="action_enable">啟用</string>
-    <string name="action_enabled">已啟用</string>
     <string name="app_links_desc">允許 Aurora Store 開啟支援的連結</string>
     <string name="bad_request">內部錯誤！請一段時間後重試</string>
     <string name="failed_generating_session">產生工作階段失敗，錯誤代碼： <xliff:g id="status_code">%1$d</xliff:g></string>
@@ -353,7 +344,6 @@
     <string name="root_installer_subtitle">使用 root 權限的 Shell 安裝工具</string>
     <string name="root_installer_desc">需要 root/超級使用者權限，支援所有 Android 版本。</string>
     <string name="native_installer_subtitle">基於 Intent 的安裝工具，適用於所有裝置</string>
-    <string name="failed_app_link">不支援，請嘗試手動關聯連結</string>
     <string name="native_installer_desc">最適合給 Android 4.4 以下版本的裝置使用</string>
     <string name="session_installer_subtitle">基於工作階段的安裝程式，用於安裝整合或分割的 APK</string>
     <string name="details_data_safety_title">資料安全</string>

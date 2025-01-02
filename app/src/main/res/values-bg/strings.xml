@@ -152,7 +152,6 @@
     <string name="toast_export_success">Конфигурацията на устройството е експортирана</string>
     <string name="toast_export_failed">Конфигурацията на устройството не можа да бъде експортирана</string>
     <string name="app_updater_service_notif_text">Разрешава изтегляне на фоново приложение</string>
-    <string name="rate_limited">О, не! Този акаунт е с ограничен!</string>
     <string name="error">Възникна грешка!</string>
     <string name="update_available">Налична актуализация</string>
     <string name="updates_available">Налични актуализации</string>
@@ -188,7 +187,6 @@
     <string name="onboarding_permission_esa">Достъп до външно хранилище</string>
     <string name="onboarding_permission_notifications">Известия</string>
     <string name="onboarding_permission_notifications_desc">Изпращайте известия относно състоянието на инсталациите</string>
-    <string name="pref_dialog_to_apply_restart">Тази настройка ще се приложи, след като рестартирате приложението</string>
     <string name="pref_install_mode_shizuku">Shizuku инсталатор</string>
     <string name="pref_install_mode_title">Метод на инсталиране</string>
     <string name="purchase_no_file">Файловете не могат да бъдат получени</string>

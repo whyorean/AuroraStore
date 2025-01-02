@@ -71,7 +71,6 @@
     <string name="onboarding_title_installer">Installator</string>
     <string name="dialog_title_self_update">Nove actualisation disponibile</string>
     <string name="details_dev_website">Sito web</string>
-    <string name="pref_downloader_wifi_title">Discargar solmente usante WiFi</string>
     <string name="action_update">Actualisar</string>
     <string name="action_disable">Disactivar</string>
     <string name="purchase_not_found">Application non trovate</string>
@@ -123,14 +122,12 @@
     <string name="pref_aurora_only">Solmente applicationes de Aurora Store</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="notification_updates_available_desc_1">Un nove version de <xliff:g id="app_one_name">%1$s</xliff:g> es disponibile</string>
-    <string name="action_enable">Activar</string>
     <string name="update_available">actualisation disponibile</string>
     <string name="menu">Menu</string>
     <string name="pref_network_title">Retes</string>
     <string name="app_links_title">Ligamines de application</string>
     <string name="updates_available">actualisationes disponibile</string>
     <string name="pref_ui_layout_tab">Seliger scheda per predefinition</string>
-    <string name="action_enabled">Activate</string>
     <string name="pref_updates_check_frequency">Frequentia de actualisationes automatic</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualisationes disponibile</string>

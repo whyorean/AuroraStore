@@ -182,7 +182,6 @@
     <string name="onboarding_permission_installer">நிறுவி அனுமதி</string>
     <string name="onboarding_permission_installer_desc">அரோரா ஸ்டோரிலிருந்து செயலிகள் நிறுவ அனுமதி</string>
     <string name="pref_common_extra">கூடுதல்</string>
-    <string name="pref_dialog_to_apply_restart">நீங்கள் பயன்பாட்டை மறுதொடக்கம் செய்த பிறகு இந்த அமைப்பு பயன்படுத்தப்படும்</string>
     <string name="pref_filter_fdroid_summary">எஃப்-டிராய்டிலிருந்து பதிவிறக்கம் செய்யப்பட்ட அல்லது நிறுவப்பட்ட பயன்பாடுகளுக்கான புதுப்பிப்புகளை சரிபார்க்க வேண்டாம்</string>
     <string name="pref_install_delete_summary">பதிவிறக்கம் செய்யப்பட்ட APK கள் நிறுவிய உடனேயே நீக்கப்படும்</string>
     <string name="pref_install_delete_title">APK நிறுவலுக்குப் பின் அழி</string>
@@ -237,7 +236,6 @@
     <string name="app_links_title">பயன்பாட்டு இணைப்புகள்</string>
     <string name="about_wiki_title">விக்கி</string>
     <string name="details_no_apps_on_sale">பயன்பாடுகள் எதுவும் விற்பனைக்கு இல்லை</string>
-    <string name="action_manage">நிர்வகிக்கவும்</string>
     <string name="faqs_subtitle">கேள்விகள் உள்ளதா? பதில்களைக் கண்டறியவும்</string>
     <string name="pref_clear_device_owner_title">சாதன உரிமையாளரை அழிக்கவும்</string>
     <string name="status_cancelled">ரத்து செய்யப்பட்டது</string>
@@ -281,7 +279,6 @@
     <string name="google_play_store_desc">கூகிள் பிளே கடை மற்றும் முன்னர் ஆண்ட்ராய்டு சந்தை என்றும் அழைக்கப்படுகிறது.</string>
     <string name="android_market_desc">ஆண்ட்ராய்டு சந்தை என்பது ஆண்ட்ராய்டு சாதனங்களுக்காக வடிவமைக்கப்பட்ட மென்பொருள் பயன்பாடுகளை வழங்கும் நிகழ்நிலை கடை ஆகும், இது 2017 இல் ஓய்வு பெற்றது.</string>
     <string name="failed_apk_export">APKS ஐ ஏற்றுமதி செய்யத் தவறிவிட்டது</string>
-    <string name="failed_app_link">ஆதரிக்கப்படாத, தயவுசெய்து இணைப்புகளை கைமுறையாக இணைக்க முயற்சிக்கவும்</string>
     <string name="session_installer_subtitle">தொகுக்கப்பட்ட/பிளவு APKS க்கான அமர்வு அடிப்படையிலான நிறுவி</string>
     <string name="session_installer_desc">பரிந்துரைக்கப்படுகிறது, உள்ளமைக்கப்பட்ட மற்றும் அனைத்து ஆண்ட்ராய்டு பதிப்புகளையும் ஆதரிக்கிறது</string>
     <string name="services_installer_subtitle">பின்னணி நிறுவல்களுக்கான நிறுவி</string>
@@ -345,7 +342,6 @@
     <string name="session_verifying_google">Google அமர்வை சரிபார்க்கிறது</string>
     <string name="title_search_results">தேடல் முடிவுகள்</string>
     <string name="title_advanced">மேம்பட்ட</string>
-    <string name="rate_limited">அச்சச்சோ, இந்த கணக்கு விகிதம் குறைவாக உள்ளது!</string>
     <string name="pref_updates_check_frequency">தானியங்கி புதுப்பிப்புகள் அதிர்வெண்</string>
     <string name="pref_updates_auto">தானியங்கு புதுப்பிப்பு பயன்பாடுகள்</string>
     <string name="pref_updates_auto_install">கிடைக்கக்கூடிய புதுப்பிப்புகளை சரிபார்த்து நிறுவவும்</string>
@@ -373,8 +369,6 @@
     <string name="updates_available">புதுப்பிப்புகள் கிடைக்கின்றன</string>
     <string name="notification_channel_updates">அறிவிப்புகளைப் புதுப்பிக்கிறது</string>
     <string name="notification_updates_available">&lt;xliff: g ஐடி = \"apps_count\"&gt;%1$d &lt;/xliff: g&gt; புதுப்பிப்புகள் கிடைக்கின்றன</string>
-    <string name="action_enabled">இயக்கப்பட்டது</string>
-    <string name="app_link_enabled">பயன்பாட்டு இணைப்பு இயக்கப்பட்டது!</string>
     <string name="root_installer_subtitle">ரூட் அனுமதிகளைப் பயன்படுத்தி செல் அடிப்படையிலான நிறுவி</string>
     <string name="native_installer_desc">ஆண்ட்ராய்டு 4.4 க்கு கீழே இயங்கும் சாதனங்களுக்கு மிகவும் பொருத்தமானது</string>
     <string name="shizuku_installer_subtitle">கணினி பநிஇ களை நேரடியாக ADB/ROOT சலுகைகளுடன் பயன்படுத்துதல்</string>
@@ -384,15 +378,11 @@
     <string name="toast_permission_installer_required">நீங்கள் முதலில் நிறுவி இசைவு வழங்க வேண்டும்</string>
     <string name="item_required">தேவை</string>
     <string name="verifying_new_session">புதிய அமர்வை சரிபார்க்கிறது</string>
-    <string name="action_enable">இயக்கு</string>
-    <string name="amazon_appstore_desc">அமேசான் ஆப்ச்டோர் என்பது அமேசானால் இயக்கப்படும் ஆண்ட்ராய்டு-இணக்கமான தளங்களுக்கான பயன்பாட்டுக் கடை.</string>
     <string name="add_dispenser_error">தவறான முகவரி</string>
     <string name="bad_request">உள் பிழை! சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்</string>
     <string name="export_app_summary_success">பயன்பாட்டு மூட்டை வெற்றிகரமாக ஏற்றுமதி செய்தது</string>
     <string name="action_uninstall_success">வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது</string>
     <string name="action_uninstall_confirmation">இந்த பயன்பாட்டை நிறுவல் நீக்க விரும்புகிறீர்களா?</string>
-    <string name="pref_downloader_wifi_title">வைஃபை மட்டுமே பயன்படுத்தி பதிவிறக்கவும்</string>
-    <string name="pref_download_directory_error">தேர்ந்தெடுக்கப்பட்ட பாதை எழுத முடியாது</string>
     <string name="pref_network_proxy_title">பதிலாள்</string>
     <string name="about_aurora_store_subtitle">அரோரா கடை பற்றி மேலும் அறிக</string>
     <string name="action_home_screen">முகப்புத் திரையில் சேர்க்கவும்</string>

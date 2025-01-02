@@ -197,7 +197,6 @@
     <string name="installer_service_unavailable">අවුරෝරා සේවා 1.0.9 හෝ ඉහළ ස්ථාපනය, හෝ ස්ථාපකය වෙනස් කරන්න.</string>
     <string name="installer_status_failure_incompatible">අනනුකූල යෙදුමකි</string>
     <string name="device_miui_title">MIUI අනාවරණය විය!</string>
-    <string name="pref_dialog_to_apply_restart">ඔබ යෙදුම යළිි ඇරඹූ පසු මෙම සැකසුම් යෙදෙනු ඇත</string>
     <string name="onboarding_permission_select">අවුරෝරා ස්ටෝර් සඳහා පහත අවසර වුවමනාය</string>
     <string name="onboarding_permission_esm">බාහිර ආචයන කළමණාකරු</string>
     <string name="spoof_apply">රැවටීම යෙදීමට නැවත පිවිසෙන්න</string>
@@ -252,7 +251,6 @@
     <string name="updates_available">යාවත්කාල තිබේ</string>
     <string name="menu">වට්ටෝරුව</string>
     <string name="error">දෝෂයක් සිදු විය!</string>
-    <string name="rate_limited">මෙම ගිණුම අනුපාතනය වී ඇත!</string>
     <string name="search_hint">යෙදුම් හා ක්‍රීඩා සොයන්න</string>
     <string name="session_login_failed_google">ගූගල් හරහා පිවිසීමට අසමත්!</string>
     <string name="session_scrapped">අවසාන වාරය ඉවතලිණි</string>
@@ -285,16 +283,12 @@
     <string name="check_connectivity">සම්බන්ධතාව පරීක්‍ෂා කරන්න</string>
     <string name="app_language">යෙදුමේ භාෂාව</string>
     <string name="failed_to_generate_session">වාරය උත්පාදනයට නොහැකි විය</string>
-    <string name="action_enable">සබල කරන්න</string>
     <string name="app_links_desc">අවුරෝරා ස්ටෝර් සහාය දක්වන සබැඳි ඇරීමට ඉඩදෙන්න</string>
     <string name="app_links_title">යෙදුමේ සබැඳි</string>
     <string name="verifying_new_session">නව වාරය සත්‍යාපනය වෙමින්</string>
-    <string name="action_enabled">සබලයි</string>
     <string name="details_ratings_title_hint">සමාලෝචනයේ සිරැසිය</string>
-    <string name="amazon_appstore_desc">ඇමසන් ඇප් ස්ටෝර් යනු ඇමසන් හරහා ක්‍රියාත්මක කරන ඇන්ඩ්‍රොයිඩ් පාදක වේදිකා සඳහා වන යෙදුම් ගබඩාවකි.</string>
     <string name="google_play_store_desc">ගූගල් ප්ලේ, ගූගල් ප්ලේ ස්ටෝර් සහ කලින් ඇන්ඩ්‍රොයිඩ් මාර්කට් ලෙස හඳුන්වයි.</string>
     <string name="android_market_desc">ඇන්ඩ්‍රොයිඩ් මාර්කට් යනු 2017 දී නවතා දැමූ ඇන්ඩ්‍රොයිඩ් උපාංග සඳහා නිර්මාණය කරන යෙදුම් බෙදාහරින මාර්ගගත වෙළඳසැලකි.</string>
-    <string name="app_link_enabled">යෙදුම් සබැඳීම සබලයි!</string>
     <string name="action_uninstall_confirmation">මෙම යෙදුම අස්ථාපනයට වුවමනාද?</string>
     <string name="remove">ඉවත් කරන්න</string>
     <string name="add">එකතු</string>
@@ -303,7 +297,6 @@
     <string name="about_aurora_store_title">අවුරෝරා ස්ටෝර් ගැන</string>
     <string name="about_aurora_store_subtitle">අවුරෝරා ස්ටෝර් ගැන තව දැනගන්න</string>
     <string name="privacy_policy_title">රහස්‍යතා ප්‍රතිපත්තිය</string>
-    <string name="action_manage">කළමනාකරණය</string>
     <string name="add_dispenser_error">ඒ.ස.නි. වලංගු නොවේ</string>
     <string name="title_more">තවත්</string>
     <string name="manage_account">ගිණුම කළමනාකරණය</string>

@@ -215,9 +215,6 @@
     <string name="onboarding_permission_doze">"Background Downloads"</string>
     <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
     <string name="pref_common_extra">"Extras"</string>
-    <string name="pref_dialog_to_apply_restart">"This setting will be applied after you restart the app"</string>
-    <string name="pref_downloader_wifi_title">"Download using WiFi only"</string>
-    <string name="pref_download_directory_error">"Selected path is not writable"</string>
     <string name="pref_filter_fdroid_summary">"Don't check updates for apps downloaded or installed from F-Droid"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_install_delete_summary">Downloaded APKs will be deleted immediately after installation</string>
@@ -328,7 +325,6 @@
     <string name="app_updater_service_notif_text">Enables background app download</string>
     <string name="update_available">update available</string>
     <string name="updates_available">updates available</string>
-    <string name="rate_limited">Oops, This account is rate limited!</string>
     <string name="error">An error occurred!</string>
     <string name="menu">Menu</string>
     <string name="expand">Expand</string>
@@ -368,18 +364,11 @@
     <string name="pref_ui_layout_tab">Select default tab</string>
     <string name="app_links_title">App Links</string>
     <string name="app_links_desc">Allow Aurora Store to open supported links</string>
-    <string name="action_enable">Enable</string>
-    <string name="action_enabled">Enabled</string>
-    <string name="app_link_enabled">App link enabled!</string>
     <string name="app_link_play_store" translatable="false">play.google.com</string>
     <string name="google_play_store_desc">Google Play, also known as the Google Play Store and formerly Android Market.</string>
     <string name="app_link_android_market" translatable="false">market.android.com</string>
     <string name="android_market_desc">Android Market was an online store offering software applications designed for Android devices, retired in 2017.</string>
-    <string name="app_link_amazon_appstore" translatable="false">www.amazon.com</string>
-    <string name="amazon_appstore_desc">Amazon Appstore is an app store for Android-compatible platforms operated by Amazon.</string>
     <string name="failed_apk_export">Failed to export APKs</string>
-    <string name="action_manage">Manage</string>
-    <string name="failed_app_link">Unsupported, please try associating links manually</string>
 
     <!-- InstallerFragment -->
     <string name="session_installer_subtitle">Session based installer for bundled/split APKs</string>

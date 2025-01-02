@@ -184,7 +184,6 @@
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les APK téléchargés seront supprimés immédiatement après installation</string>
     <string name="pref_filter_fdroid_summary">Ignorer les mises à jour d’applis téléchargées ou installées avec F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Ce paramètre sera appliqué après redémarrage de l’appli</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applis par le Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation du programme d’installation</string>
     <string name="onboarding_permission_esm">Gestionnaire de mémoire externe</string>
@@ -257,7 +256,6 @@
     <string name="session_scrapped">Dernière session supprimée</string>
     <string name="update_available">mise à jour proposée</string>
     <string name="updates_available">mises à jour proposées</string>
-    <string name="rate_limited">Oups, ce compte a un débit limité !</string>
     <string name="error">Une erreur s’est produite !</string>
     <string name="permissions_denied">Les autorisations requises ont été refusées. Accordez-les afin de poursuivre l’action</string>
     <string name="search_hint">Chercher des applis et des jeux</string>
@@ -288,9 +286,6 @@
     <string name="failed_to_generate_session">Impossible de générer la session</string>
     <string name="verifying_new_session">Vérification de la nouvelle session</string>
     <string name="app_links_title">Liens de l’appli</string>
-    <string name="action_enable">Activer</string>
-    <string name="action_enabled">Activé</string>
-    <string name="app_link_enabled">Lien de l’appli activé !</string>
     <string name="google_play_store_desc">Google Play, aussi connu sous le nom de Google Play Store, anciennement Android Market.</string>
     <string name="pref_network_proxy_enable">Activer le mandataire</string>
     <string name="details_ratings_title_hint">Titre de l’avis</string>
@@ -298,7 +293,6 @@
     <string name="pref_updates_check_frequency_desc">Configurer les intervalles des mises à jour automatiques et des automises à jours, en heures.</string>
     <string name="pref_aurora_only">Seulement les applis d’Aurora Store</string>
     <string name="pref_network_proxy_title">Mandataire</string>
-    <string name="amazon_appstore_desc">L’Amazon Appstore est un magasin d’applications pour les plateformes exploitées par Amazon compatibles avec Android.</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
     <string name="pref_aurora_only_desc">Ne vérifier la présence de mises à jour que pour les applis installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
@@ -306,12 +300,10 @@
     <string name="title_apps_sale_provider">Fournisseur – bestappsales.com</string>
     <string name="details_no_apps_on_sale">Aucune appli à prix réduit n’a été trouvée</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
-    <string name="pref_download_directory_error">Impossible d’écrire sur le chemin choisi</string>
     <string name="toast_proxy_failed">Échec de paramétrage du mandataire</string>
     <string name="pref_network_proxy_enable_desc">Faire transiter tout le trafic de l’appli par le mandataire</string>
     <string name="action_uninstall_confirmation">Voulez-vous désinstaller cette appli ?</string>
     <string name="android_market_desc">L’Android Market était un magasin en ligne qui offrait des applications conçues pour les appareils Android, fermé en 2017.</string>
-    <string name="pref_downloader_wifi_title">Ne télécharger qu’avec le Wi-Fi</string>
     <string name="pref_vending_version_device">Par défaut (selon la configuration de l’appareil)</string>
     <string name="pref_vending_version_title">Version de Google Play</string>
     <string name="onboarding_permission_doze">Téléchargements en arrière-plan</string>
@@ -327,7 +319,6 @@
     <string name="pref_updates_incompatible">Mises à jour incompatibles</string>
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applis incompatibles ou désactivées dont l’installation peut échouer</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
-    <string name="action_manage">Gérer</string>
     <string name="faqs_subtitle">Des question ? Trouvez les réponses</string>
     <string name="source_code_title">Code source</string>
     <string name="privacy_policy_subtitle">Découvrez comment Aurora Store utilise vos données</string>
@@ -335,7 +326,6 @@
     <string name="source_code_subtitle">Découvrez ce qu’il y a à l’intérieur</string>
     <string name="privacy_policy_title">Politique de confidentialité</string>
     <string name="disclaimer_subtitle">Obligation de transparence et responsabilité</string>
-    <string name="failed_app_link">Non pris en charge. Essayez d’associer les liens manuellement</string>
     <string name="shizuku_installer_desc">Exige Shizuku ou Sui. Doit être configuré et l’autorisation doit être accordée</string>
     <string name="root_installer_desc">Exige des privilèges racine, superutilisateur. Toutes les versions d’Android sont prises en charge.</string>
     <string name="session_installer_subtitle">Programme d’installation de session pour les paquets APK (fractionnés)</string>

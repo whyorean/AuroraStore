@@ -100,7 +100,6 @@
     <string name="pref_install_delete_summary">APK-ga waa lasaari (waa hadaada fadhiga badalin)</string>
     <string name="pref_filter_fdroid_title">Shaandee appska F-Droid</string>
     <string name="pref_filter_fdroid_summary">Wuxuu liistada kasaaraa appska F-Droid</string>
-    <string name="pref_dialog_to_apply_restart">Fadhigan waxaa la fulin doonaa markaad appka dibusoo bilowdo</string>
     <string name="pref_common_extra">Dheeraad</string>
     <string name="onboarding_permission_installer_desc">Ogolow in Dukaanka Aurora appska lagaga sooshubo</string>
     <string name="onboarding_permission_installer">Fasaxa Kushubaha</string>
