@@ -407,4 +407,5 @@
     <string name="toast_black_export_success">Zerrenda beltza esportatu da!</string>
     <string name="status_verifying">Berifikatzen</string>
     <string name="action_unarchive">Fitxategitik kendu</string>
+    <string name="unable_to_open">Ezin izan da aplikazioa ireki</string>
 </resources>
