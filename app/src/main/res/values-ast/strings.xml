@@ -130,7 +130,6 @@
     <string name="action_ignore">Inorar</string>
     <string name="action_installations">Instalación</string>
     <string name="action_later">Dempués</string>
-    <string name="action_pause">Posar</string>
     <string name="action_pending">Pendiente</string>
     <string name="action_post">Espublizar</string>
     <string name="details_changelog_unavailable">Nun se fornió\'l rexistru de cambeos</string>
@@ -283,7 +282,6 @@
     <string name="notification_channel_updates">Updates notifications</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="details_no_favourites">Nun s\'atopó nenguna aplicación favorita</string>
-    <string name="details_no_apps_on_sale">Nun s\'atopó nenguna aplicación a la venta</string>
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_network_proxy_enable_desc">Permite que tol tránsitu vaiga pel proxy</string>
     <string name="pref_updates_incompatible_desc">Show updates for incompatible or disabled apps that may fail to install</string>
@@ -315,7 +313,6 @@
     <string name="remove_dispenser_summary">¿Quies desaniciar el fornidor de pases «<xliff:g id="url">%1$s</xliff:g>»?</string>
     <string name="remove">Quitar</string>
     <string name="action_favourite">Meter en Favoritos</string>
-    <string name="action_uninstall_confirmation">¿Quies desinstalar esta aplicación?</string>
     <string name="toast_proxy_invalid">¡La URL del proxy ye inválida, revisa\'l formatu!</string>
     <string name="shizuku_installer_subtitle">Esti instalador usa direutamente les APIs del sistema colos privilexos d\'ADB/superusuariu</string>
     <string name="about_aurora_store_title">Tocante a Aurora Store</string>

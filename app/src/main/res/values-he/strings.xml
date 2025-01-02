@@ -79,7 +79,6 @@
     <string name="download_eta_calculating">מתבצע חישוב</string>
     <string name="dialog_title_self_update">עדכון חדש זמין</string>
     <string name="title_updates">עדכונים</string>
-    <string name="action_pause">השהיה</string>
     <string name="details_no_updates">אין עדכונים זמינים</string>
     <string name="tab_top_charts">היישומים המובילים</string>
     <string name="details_dev_address">כתובת</string>
@@ -276,7 +275,6 @@
     <string name="title_apps_sale_provider">ספק - bestappsales.com</string>
     <string name="session_init">מכין כמה דברים…</string>
     <string name="about_xda">פורומים של XDA</string>
-    <string name="details_no_apps_on_sale">לא נמצאו אפליקציות במבצע</string>
     <string name="session_enjoy">היכנסו ותהנו.</string>
     <string name="server_maintenance">השרת מושבת לצורך תחזוקה</string>
     <string name="toast_manual_available">מזל טוב, קוד הגרסה המבוקש זמין, מוריד עכשיו.</string>
@@ -292,7 +290,6 @@
     <string name="download_progress">מוריד • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_network_proxy_enable_desc">אפשר את כל התעבורה מהיישום שתעבור דרך פרוקסי</string>
     <string name="onboarding_permission_notifications_desc">שלח התראות לגבי מצב ההתקנה</string>
-    <string name="action_uninstall_confirmation">‏האם אתה רוצה להסיר את היישום הזה?</string>
     <string name="android_market_desc">החנות של אנדרואיד הייתה חנות אונליין שמציעה אפליקציות שעוצבו למכשירי אנדרואיד, עד 2017.</string>
     <string name="about_xda_summary">הצג את העמוד של Aurora Store בפורום XDA לשוחח ולהציע הצעות.</string>
     <string name="about_bhim">BHIM - UPI</string>

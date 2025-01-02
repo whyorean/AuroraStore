@@ -77,7 +77,6 @@
     <string name="action_installing">安裝緊</string>
     <string name="action_logout">登出</string>
     <string name="action_next">下一步</string>
-    <string name="action_pause">暫停</string>
     <string name="action_restart">重新啟動</string>
     <string name="action_resume">恢復</string>
     <string name="action_share">分享</string>
@@ -216,7 +215,6 @@
     <string name="pref_network_proxy_enable_desc">等個 app 所有網絡通訊都流經代理伺服器</string>
     <string name="pref_install_mode_title">安裝方法</string>
     <string name="pref_install_delete_summary">下載嘅 APK 一安裝完就即刻剷走</string>
-    <string name="action_uninstall_confirmation">係咪要解除安裝呢個 app？</string>
     <string name="pref_install_delete_title">安裝之後剷走 APK</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="action_whitelist">欽准名單</string>

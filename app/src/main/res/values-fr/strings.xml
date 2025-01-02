@@ -99,7 +99,6 @@
     <string name="action_restart">Redémarrer</string>
     <string name="action_post">Publier</string>
     <string name="action_pending">En attente</string>
-    <string name="action_pause">Suspendre</string>
     <string name="action_open">Ouvrir</string>
     <string name="action_ok">Valider</string>
     <string name="action_next">Suivant</string>
@@ -296,11 +295,9 @@
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
     <string name="title_apps_sale_provider">Fournisseur – bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Aucune appli à prix réduit n’a été trouvée</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
     <string name="toast_proxy_failed">Échec de paramétrage du mandataire</string>
     <string name="pref_network_proxy_enable_desc">Faire transiter tout le trafic de l’appli par le mandataire</string>
-    <string name="action_uninstall_confirmation">Voulez-vous désinstaller cette appli ?</string>
     <string name="android_market_desc">L’Android Market était un magasin en ligne qui offrait des applications conçues pour les appareils Android, fermé en 2017.</string>
     <string name="pref_vending_version_device">Par défaut (selon la configuration de l’appareil)</string>
     <string name="pref_vending_version_title">Version de Google Play</string>

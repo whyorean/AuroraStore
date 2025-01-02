@@ -65,7 +65,6 @@
     <string name="action_leave">취소</string>
     <string name="action_logout">로그아웃</string>
     <string name="action_next">다음</string>
-    <string name="action_pause">중지</string>
     <string name="action_pending">보류 중</string>
     <string name="action_post">올리기</string>
     <string name="action_restart">재시작</string>
@@ -168,7 +167,6 @@
     <string name="download_eta_min">%1$d분 %2$d초 남음</string>
     <string name="download_eta_sec">%1$d초 남음</string>
     <string name="installer_shizuku_unavailable">Shizuku가 설치되지 않았거나 제대로 구성되지 않았습니다.</string>
-    <string name="action_uninstall_confirmation">이 앱을 제거하시겠습니까?</string>
     <string name="details_ratings_title_hint">리뷰 제목</string>
     <string name="pref_install_delete_title">설치 후 APK 삭제</string>
     <string name="onboarding_permission_doze">백그라운드 다운로드</string>
@@ -206,7 +204,6 @@
     <string name="session_good">와우! 모두 좋습니다.</string>
     <string name="title_blacklist_manager">블랙리스트 관리자</string>
     <string name="pref_install_mode_summary">APK 설치 모드 선택</string>
-    <string name="details_no_apps_on_sale">판매에서 발견되는 앱 없음</string>
     <string name="title_download_manager">다운로드</string>
     <string name="pref_install_mode_am">AM 인스톨러</string>
     <string name="session_init">준비하는 것들 …</string>

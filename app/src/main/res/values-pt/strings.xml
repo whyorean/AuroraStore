@@ -192,7 +192,6 @@
     <string name="action_restart">Reiniciar</string>
     <string name="action_post">Publicar</string>
     <string name="action_pending">Pendente</string>
-    <string name="action_pause">Pausa</string>
     <string name="action_open">Abrir</string>
     <string name="action_ok">Ok</string>
     <string name="action_next">Seguinte</string>
@@ -297,11 +296,9 @@
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="title_app_settings">Definições</string>
     <string name="title_apps_sale_provider">Fornecedor - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Não há aplicações à venda</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir que todo o tráfego da aplicação passe pelo proxy</string>
-    <string name="action_uninstall_confirmation">Deseja desinstalar esta aplicação?</string>
     <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão Google Play</string>
     <string name="onboarding_permission_doze">Descargas em segundo plano</string>

@@ -134,7 +134,6 @@
     <string name="action_search">Sök</string>
     <string name="action_resume">Återuppta</string>
     <string name="action_restart">Starta om</string>
-    <string name="action_pause">Pausa</string>
     <string name="action_open">Öppna</string>
     <string name="action_ok">Okej</string>
     <string name="action_next">Nästa</string>
@@ -288,8 +287,6 @@
     <string name="android_market_desc">Android Market var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter, gick i pension 2017.</string>
     <string name="details_ratings_title_hint">Recensera titel</string>
     <string name="title_apps_sale_provider">Leverantör - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Inga rea-appar hittades</string>
-    <string name="action_uninstall_confirmation">Vill du avinstallera den här appen ?</string>
     <string name="pref_network_proxy_enable">Aktivera proxy</string>
     <string name="pref_network_proxy_url">Proxyn\'s URL</string>
     <string name="pref_updates_check_frequency_desc">Konfigurera intervall för automatiska själv-uppdateringar, i timmar.</string>

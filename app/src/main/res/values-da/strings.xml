@@ -45,7 +45,6 @@
     <string name="action_leave">Forlad</string>
     <string name="action_update_all">Opdater alle</string>
     <string name="action_whitelist">Hvidlist</string>
-    <string name="action_pause">Pause</string>
     <string name="action_info">App-info</string>
     <string name="action_search">Søg</string>
     <string name="action_share">Del</string>
@@ -238,7 +237,6 @@
     <string name="session_good">Wow! Alt er i orden.</string>
     <string name="session_enjoy">Log ind, og god fornøjelse.</string>
     <string name="action_import">Importér</string>
-    <string name="details_no_apps_on_sale">Ingen apps på tilbud fundet</string>
     <string name="session_login_failed_google">Kunne ikke logge ind via Google</string>
     <string name="force_restart_summary">Aurora Store skal genstartes for at anvende de nyligt ændrede indstillinger</string>
     <string name="onboarding_permission_doze_desc">Tillad Aurora Store at hente og opdatere apps i baggrunden</string>
@@ -262,7 +260,6 @@
     <string name="title_app_settings">App-indstillinger</string>
     <string name="action_home_screen">Føj til hjemmeskærm</string>
     <string name="action_uninstall_success">Afinstalleret</string>
-    <string name="action_uninstall_confirmation">Vil du afinstallere denne app?</string>
     <string name="session_login">Log venligst ind på din Google Play-konto</string>
     <string name="details_data_safety_title">Datasikkerhed</string>
     <string name="details_data_safety_subtitle">Databeskyttelse og sikkerhedspraksis erklæret af udvikleren</string>

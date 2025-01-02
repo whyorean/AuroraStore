@@ -80,7 +80,6 @@
     <string name="action_restart">Start på ny</string>
     <string name="action_post">Post</string>
     <string name="action_pending">Venter</string>
-    <string name="action_pause">Pause</string>
     <string name="action_open">Åpne</string>
     <string name="action_ok">OK</string>
     <string name="action_next">Neste</string>
@@ -254,7 +253,6 @@
     <string name="title_search_results">Søkeresultater</string>
     <string name="onboarding_permission_notifications_desc">Send merknader om installasjonsstatus.</string>
     <string name="app_language">Programspråk</string>
-    <string name="action_uninstall_confirmation">Vil du avinstallere denne appen?</string>
     <string name="download_paused">Pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="action_request_analysis">Be om nye analyser</string>
     <string name="action_home_screen">Legg til på startskjermem</string>

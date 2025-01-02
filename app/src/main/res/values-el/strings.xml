@@ -3,7 +3,6 @@
     <string name="details_dev_website">Ιστότοπος</string>
     <string name="details_dev_email">Ηλεκτρονικό ταχυδρομείο</string>
     <string name="action_pending">Εκκρεμούν</string>
-    <string name="action_pause">Παύση</string>
     <string name="action_open">Άνοιγμα</string>
     <string name="action_ok">Εντάξει</string>
     <string name="action_next">Επόμενο</string>
@@ -232,14 +231,12 @@
     <string name="toast_purchase_blocked">Οι αγορές εφαρμογών δεν είναι διαθέσιμες σε ανώνυμους λογαριασμούς.</string>
     <string name="installer_am_unavailable">Εγκατάστησε το Διαχειριστή εφαρμογών ή άλλαξε το πρόγραμμα εγκατάστασης.</string>
     <string name="action_home_screen">Προσθήκη στην Αρχική οθόνη</string>
-    <string name="action_uninstall_confirmation">Θέλετε να απεγκαταστήσετε την εφαρμογή;</string>
     <string name="download_eta_sec">Απομένουν %1$dδλ</string>
     <string name="pref_install_mode_shizuku">Εγκαταστάτης Shizuku</string>
     <string name="details_ratings_title_hint">Αξιολόγηση τίτλου</string>
     <string name="download_paused">Σε παύση • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="onboarding_permission_notifications">Ειδοποιήσεις</string>
     <string name="download_progress">Κατεβαίνει • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="details_no_apps_on_sale">Δεν βρέθηκαν εφαρμογές σε προσφορά</string>
     <string name="download_eta_hrs">Απομένουν %1$dώ %2$dλ %3$dδλ</string>
     <string name="pref_install_mode_am">Εγκαταστάτης AM</string>
     <string name="action_import">Εισαγωγή</string>

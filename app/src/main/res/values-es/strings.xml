@@ -148,7 +148,6 @@
     <string name="action_restart">Reiniciar</string>
     <string name="action_post">Publicar</string>
     <string name="action_pending">Pendiente</string>
-    <string name="action_pause">Pausar</string>
     <string name="action_open">Abrir</string>
     <string name="action_ok">Vale</string>
     <string name="action_next">Siguiente</string>
@@ -287,9 +286,7 @@
     <string name="google_play_store_desc">Google Play, también conocido como Google Play Store y anteriormente Android Market.</string>
     <string name="android_market_desc">Android Market era una tienda online que ofrecía aplicaciones de software diseñadas para dispositivos Android, retirada en 2017.</string>
     <string name="details_ratings_title_hint">Revisar el título</string>
-    <string name="action_uninstall_confirmation">¿Quieres desinstalar esta aplicación?</string>
     <string name="title_apps_sale_provider">Proveedor - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">No se han encontrado aplicaciones a la venta</string>
     <string name="pref_updates_check_frequency_desc">Configure los intervalos para las actualizaciones automáticas y en horas.</string>
     <string name="pref_aurora_only">Sólo aplicaciones de Aurora Store</string>
     <string name="pref_aurora_only_desc">Solo comprobar actualizaciones de aplicaciones instaladas desde la Aurora Store</string>

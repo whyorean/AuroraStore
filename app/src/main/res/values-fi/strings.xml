@@ -136,7 +136,6 @@
     <string name="action_restart">Aloita uudelleen</string>
     <string name="action_post">Julkaise</string>
     <string name="action_pending">Odottaa</string>
-    <string name="action_pause">Tauko</string>
     <string name="action_open">Avaa</string>
     <string name="action_ok">Okei</string>
     <string name="action_next">Seuraava</string>
@@ -299,9 +298,7 @@
     <string name="pref_updates_auto_notify">Tarkista ja ilmoita saatavilla olevista päivityksistä</string>
     <string name="pref_updates_auto_off">Älä päivitä sovelluksia automaattisesti</string>
     <string name="title_app_settings">Sovellusasetukset</string>
-    <string name="details_no_apps_on_sale">Ei sovelluksia myynnissä</string>
     <string name="pref_updates_auto_desc">Automaattisten päivitysten määrittäminen</string>
-    <string name="action_uninstall_confirmation">Haluatko poistaa tämän sovelluksen?</string>
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
     <string name="download_clear_finished">Poista valmiit</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>

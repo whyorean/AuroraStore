@@ -136,7 +136,6 @@
     <string name="action_restart">Reiniciar</string>
     <string name="action_post">Publicar</string>
     <string name="action_pending">Pendente</string>
-    <string name="action_pause">Pausar</string>
     <string name="action_open">Abrir</string>
     <string name="action_next">Próximo</string>
     <string name="action_logout">Sair</string>
@@ -287,9 +286,7 @@
     <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps de software feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
-    <string name="action_uninstall_confirmation">Deseja desinstalar este app?</string>
     <string name="title_apps_sale_provider">Provedor - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Nenhum app em promoção encontrado</string>
     <string name="pref_updates_check_frequency_desc">Configurar os intervalos das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
     <string name="pref_aurora_only_desc">Buscar atualizações somente para apps instalados pela Aurora Store</string>

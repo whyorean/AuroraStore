@@ -54,7 +54,6 @@
     <string name="action_share">බෙදාගන්න</string>
     <string name="action_search">සොයන්න</string>
     <string name="action_restart">නැවත අරඹන්න</string>
-    <string name="action_pause">විරාම</string>
     <string name="action_open">විවෘත කරන්න</string>
     <string name="action_ok">හරි</string>
     <string name="action_next">ඊළඟ</string>
@@ -287,7 +286,6 @@
     <string name="details_ratings_title_hint">සමාලෝචනයේ සිරැසිය</string>
     <string name="google_play_store_desc">ගූගල් ප්ලේ, ගූගල් ප්ලේ ස්ටෝර් සහ කලින් ඇන්ඩ්‍රොයිඩ් මාර්කට් ලෙස හඳුන්වයි.</string>
     <string name="android_market_desc">ඇන්ඩ්‍රොයිඩ් මාර්කට් යනු 2017 දී නවතා දැමූ ඇන්ඩ්‍රොයිඩ් උපාංග සඳහා නිර්මාණය කරන යෙදුම් බෙදාහරින මාර්ගගත වෙළඳසැලකි.</string>
-    <string name="action_uninstall_confirmation">මෙම යෙදුම අස්ථාපනයට වුවමනාද?</string>
     <string name="remove">ඉවත් කරන්න</string>
     <string name="add">එකතු</string>
     <string name="session_login">ඔබගේ ගූගල් ප්ලේ ගිණුමට පිවිසෙන්න</string>

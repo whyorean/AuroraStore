@@ -85,7 +85,6 @@
     <string name="details_permission">Permission</string>
     <string name="action_installing">Installation in curso</string>
     <string name="account_google">Google</string>
-    <string name="action_pause">Pausar</string>
     <string name="about_telegram">Telegram</string>
     <string name="download_pause_all">Pausar toto</string>
     <string name="action_copy">Copiar</string>
@@ -110,7 +109,6 @@
     <string name="action_filter_misc">Miscellanea</string>
     <string name="action_filter_apps_with_ads">Applicationes con publicitate</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
-    <string name="action_uninstall_confirmation">Desira tu vermente disinstallar iste application?</string>
     <string name="details_no_permission">Sin permissiones</string>
     <string name="details_description">Description</string>
     <string name="downloading_dep">Discargante files additional pro <xliff:g id="app">%1$s</xliff:g></string>

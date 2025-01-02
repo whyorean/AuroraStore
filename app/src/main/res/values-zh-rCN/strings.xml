@@ -66,7 +66,6 @@
     <string name="action_filter_downloads">已下载</string>
     <string name="action_resume">继续</string>
     <string name="action_restart">重启</string>
-    <string name="action_pause">暂停</string>
     <string name="action_installations">应用安装</string>
     <string name="action_install">安装</string>
     <string name="action_ignore">忽略</string>
@@ -287,9 +286,7 @@
     <string name="google_play_store_desc">Google Play，也称 Google Play 商店，之前叫 Android Market。</string>
     <string name="android_market_desc">Android Market 是一个提供为 Android 设备设计的软件应用程序的在线商店，于 2017 年退役。</string>
     <string name="details_ratings_title_hint">评价标题</string>
-    <string name="action_uninstall_confirmation">你想卸载此应用吗？</string>
     <string name="title_apps_sale_provider">提供商 - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">没找到促销应用</string>
     <string name="pref_updates_check_frequency_desc">配置小时为单位的自动更新和 Aurora Store 自更新间隔。</string>
     <string name="pref_aurora_only">仅 Aurora Store 应用</string>
     <string name="pref_aurora_only_desc">只检查 Aurora Store 安装应用的更新</string>

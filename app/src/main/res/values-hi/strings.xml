@@ -180,7 +180,6 @@
     <string name="tab_top_paid">शीर्ष सशुल्क</string>
     <string name="toast_export_success">डिवाइस विन्यास निर्यात किया गया</string>
     <string name="toast_export_failed">डिवाइस विन्यास निर्यात नहीं किया जा सका</string>
-    <string name="action_pause">रोकें</string>
     <string name="action_post">पोस्ट करें</string>
     <string name="action_restart">पुनः प्रारंभ करें</string>
     <string name="action_info">ऐप जानकारी</string>
@@ -287,12 +286,10 @@
     <string name="google_play_store_desc">गूगल प्ले, जिसे गूगल प्ले स्टोर और पूर्व में एंड्रॉइड मार्केट के नाम से भी जाना जाता है।</string>
     <string name="android_market_desc">Android Market Android डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
     <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
-    <string name="action_uninstall_confirmation">क्या आप इस ऐप को अनइंस्टॉल करना चाहते हैं?</string>
     <string name="pref_aurora_only">केवल ऑरोरा स्टोर ऐप्स</string>
     <string name="pref_aurora_only_desc">अपडेट और इंस्टॉल किए गए ऐप्स में केवल ऑरोरा स्टोर से इंस्टॉल किए गए ऐप्स दिखाएं</string>
     <string name="title_app_settings">ऐप सेटिंग्स</string>
     <string name="title_apps_sale_provider">प्रदाता - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">बिक्री पर कोई ऐप नहीं मिला</string>
     <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
     <string name="pref_updates_check_frequency_desc">स्वतः और स्वयं अपडेट के लिए अंतराल कॉन्फिगर करें, घंटे में।</string>
     <string name="pref_network_proxy_enable">प्रॉक्सी चालू करें</string>

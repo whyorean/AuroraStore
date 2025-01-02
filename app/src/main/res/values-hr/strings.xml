@@ -22,7 +22,6 @@
     <string name="action_restart">Pokreni ponovo</string>
     <string name="action_post">Pošalji</string>
     <string name="action_pending">Na čekanju</string>
-    <string name="action_pause">Zaustavi</string>
     <string name="action_open">Otvori</string>
     <string name="action_ok">U redu</string>
     <string name="action_next">Sljedeće</string>
@@ -261,7 +260,6 @@
     <string name="toast_import_success">Konfiguracija uređaja je uvezena</string>
     <string name="action_import">Uvezi</string>
     <string name="toast_import_failed">Nije bilo moguće uvesti konfiguraciju uređaja</string>
-    <string name="action_uninstall_confirmation">Da li želite ukloniti ovu aplikaciju ?</string>
     <string name="action_request_analysis">Zatraži novu analizu</string>
     <string name="action_home_screen">Dodaj na početni zaslon</string>
     <string name="installer_shizuku_unavailable">Shizuku nije instaliran ili postavljen pravilno.</string>

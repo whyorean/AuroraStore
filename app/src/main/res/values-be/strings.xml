@@ -45,7 +45,6 @@
     <string name="action_next">Далей</string>
     <string name="action_ok">Добра</string>
     <string name="action_open">Адкрыць</string>
-    <string name="action_pause">Паўза</string>
     <string name="action_pending">У чаканні</string>
     <string name="action_post">Даслаць</string>
     <string name="action_request_analysis">Запыт на новы аналіз</string>
@@ -59,7 +58,6 @@
     <string name="details_no_app_match">Адсутнічаюць супадзенні</string>
     <string name="details_no_favourites">Адсутнічаюць абраныя</string>
     <string name="details_no_permission">Адсутнічаюць дазволы</string>
-    <string name="details_no_apps_on_sale">Адсутнічаюць прыкладанні на распродажы</string>
     <string name="details_permission">Дазволы</string>
     <string name="details_data_safety_title">Бяспека дадзеных</string>
     <string name="details_privacy">Прыватнасць</string>
@@ -259,7 +257,6 @@
     <string name="shizuku_installer_desc">Патрабуецца Shizuku або Sui, павінен быць усталяваны і дазвол прадастаўлены</string>
     <string name="pref_updates_incompatible_desc">Паказваць абнаўленні для несумяшчальных ці адключаныя прыкладанняў які могуць мець памылку пры ўсталяванні</string>
     <string name="details_beta_delay">Гэта можа заняць пэўны час, статус можна праверыць пазней.</string>
-    <string name="action_uninstall_confirmation">Сапраўды выдаліць?</string>
     <string name="details_beta_available">Далучыцца да бэта тэставання?</string>
     <string name="details_no_dependencies">Адсутнічаюць залежнасці</string>
     <string name="details_contains_ads">Утрымлівае рэкламу</string>

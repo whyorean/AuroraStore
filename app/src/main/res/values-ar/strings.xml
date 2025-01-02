@@ -114,7 +114,6 @@
     <string name="action_resume">إستئناف</string>
     <string name="action_restart">إعادة تشغيل</string>
     <string name="action_pending">قيد الانتظار</string>
-    <string name="action_pause">إيقاف</string>
     <string name="action_open">فتح</string>
     <string name="action_ok">حسناً</string>
     <string name="action_next">التالي</string>
@@ -288,8 +287,6 @@
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
     <string name="title_apps_sale_provider">المزود - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">لم يتم العثور على تطبيقات للبيع</string>
-    <string name="action_uninstall_confirmation">هل تريد إلغاء تثبيت هذا التطبيق؟</string>
     <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
     <string name="pref_aurora_only">تطبيقات متجر Aurora فقط</string>
     <string name="pref_aurora_only_desc">تحقق فقط من تحديثات التطبيقات المثبتة بواسطة متجر أورورا</string>

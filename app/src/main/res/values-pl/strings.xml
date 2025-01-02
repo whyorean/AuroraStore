@@ -32,7 +32,6 @@
     <string name="action_restart">Uruchom ponownie</string>
     <string name="action_post">Wyślij</string>
     <string name="action_pending">Oczekujące</string>
-    <string name="action_pause">Wstrzymaj</string>
     <string name="action_open">Otwórz</string>
     <string name="action_ok">OK</string>
     <string name="action_next">Następna</string>
@@ -287,9 +286,7 @@
     <string name="verifying_new_session">Weryfikowanie nowej sesji</string>
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
     <string name="details_ratings_title_hint">Tytuł recenzji</string>
-    <string name="action_uninstall_confirmation">Czy chcesz odinstalować tę aplikację?</string>
     <string name="title_apps_sale_provider">Dostawca - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Nie znaleziono aplikacji na wyprzedaży</string>
     <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość samoaktualizacji oraz automatycznych aktualizacji (w godzinach)</string>
     <string name="pref_aurora_only">Tylko aplikacje Aurora Store</string>
     <string name="title_app_settings">Ustawienia aplikacji</string>

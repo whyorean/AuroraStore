@@ -177,7 +177,6 @@
     <string name="action_restart">Herstart</string>
     <string name="action_post">Plaats</string>
     <string name="action_pending">In afwachting</string>
-    <string name="action_pause">Pauzeer</string>
     <string name="action_open">Open</string>
     <string name="action_ok">Oké</string>
     <string name="action_next">Volgende</string>
@@ -285,11 +284,9 @@
     <string name="verifying_new_session">Nieuwe sessie verifiëren</string>
     <string name="app_links_title">App koppelingen</string>
     <string name="google_play_store_desc">Google Play, ook bekend als de Google Play Store en voorheen Android Market.</string>
-    <string name="action_uninstall_confirmation">Wilt u deze app verwijderen?</string>
     <string name="action_request_analysis">Nieuwe analyse aanvragen</string>
     <string name="onboarding_permission_doze">Downloads in achtergrond</string>
     <string name="onboarding_permission_doze_desc">Sta Aurora Store toe om apps te downloaden en updaten in de achtergrond</string>
-    <string name="details_no_apps_on_sale">Geen apps gevonden in de uitverkoop</string>
     <string name="action_home_screen">Toevoegen aan startpagina</string>
     <string name="details_ratings_title_hint">Titels beoordelen</string>
     <string name="download_clear_finished">Verwijder voltooid</string>

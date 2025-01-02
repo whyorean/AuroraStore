@@ -23,7 +23,6 @@
     <string name="action_restart">Újraindítás</string>
     <string name="action_post">Közzététel</string>
     <string name="action_pending">Függőben</string>
-    <string name="action_pause">Szüneteltetés</string>
     <string name="action_open">Megnyitás</string>
     <string name="action_ok">Rendben</string>
     <string name="action_next">Következő</string>
@@ -295,11 +294,9 @@
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
     <string name="title_app_settings">Alkalmazásbeállítások</string>
     <string name="title_apps_sale_provider">Szolgáltató – bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Nincs leértékelt alkalmazás</string>
     <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
     <string name="toast_proxy_failed">Proxy beállítása sikertelen</string>
     <string name="pref_network_proxy_enable_desc">Alkalmazás forgalmának átirányítása proxyn keresztül</string>
-    <string name="action_uninstall_confirmation">Szeretné eltávolítani ezt az alkalmazást?</string>
     <string name="android_market_desc">Az Android Market egy online áruház volt, amely szoftveralkalmazásokat kínált androidos eszközökhöz, és 2017-ben megszűnt.</string>
     <string name="pref_vending_version_device">Alapértelmezett (eszközkonfiguráció)</string>
     <string name="pref_vending_version_title">Google Play verzió</string>

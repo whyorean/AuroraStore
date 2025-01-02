@@ -66,7 +66,6 @@
     <string name="action_share">Kunigi</string>
     <string name="action_search">Serĉi</string>
     <string name="action_resume">Malpaŭzigi</string>
-    <string name="action_pause">Paŭzigi</string>
     <string name="action_open">Malfermi</string>
     <string name="action_ok">En ordo</string>
     <string name="action_next">Sekva</string>
@@ -175,7 +174,6 @@
     <string name="pref_aurora_only">Nur Aurora-Store-apoj</string>
     <string name="pref_ui_no_for_you_desc">Vidigi “Por vi” paĝojn en hejmpaĝo</string>
     <string name="pref_ui_similar_apps">Similaj kaj rilataj apoj</string>
-    <string name="action_uninstall_confirmation">Ĉu vi volas malinstali tiun apon?</string>
     <string name="download_eta_min">ankoraŭ %1$d m %2$d s</string>
     <string name="pref_ui_title">Agordo</string>
     <string name="pref_ui_no_for_you">\"Por vi\" paĝoj</string>
@@ -324,7 +322,6 @@
     <string name="action_filter_gsf_dependent_apps">Dependa de GSF</string>
     <string name="failed_apk_export">APKjn eksportado fiaskis</string>
     <string name="force_restart_summary">La restarto de Aurora Store estas necesa por apliki la nove ŝanĝitajn agordojn</string>
-    <string name="details_no_apps_on_sale">Neniuj rabataj apoj trovita</string>
     <string name="dialog_desc_native_split">Vi ne povas instali kunligitajn (splitajn) apojn per Operaciuma Instalilo. Ŝanĝu vian instalilon al Seanca, Services aŭ Ĉefuzanta.</string>
     <string name="am_installer_desc">Necesigas App Manager, bezonas adb/ĉefuzantan moduson por instali kiam MIUI-optimumigo estas enŝalta</string>
     <string name="pref_clear_device_owner_summary">Eksigi Aurora Store je aparatpropula apo</string>

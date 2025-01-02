@@ -149,7 +149,6 @@
     <string name="action_restart">Berrabiatu</string>
     <string name="action_post">Argitaratu</string>
     <string name="action_pending">Egiteke</string>
-    <string name="action_pause">Pausatu</string>
     <string name="action_open">Ireki</string>
     <string name="action_ok">Ados</string>
     <string name="action_next">Hurrengoa</string>
@@ -279,14 +278,12 @@
     <string name="onboarding_permission_doze_desc">Onartu Aurora Store-ri aplikazioak atzeko planoan deskargatzea eta eguneratzea</string>
     <string name="title_app_settings">Aplikazioaren ezarpenak</string>
     <string name="title_apps_sale_provider">Hornitzailea: bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Ez da aurkitu salgai dagoen aplikaziorik</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> eta <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="toast_proxy_failed">Ezin izan da ezarri proxy-a</string>
     <string name="title_search_results">Bilaketa-emaitzak</string>
     <string name="notification_channel_updates">Eguneratzeen jakinarazpenak</string>
     <string name="pref_network_proxy_enable_desc">Onartu aplikazioko trafiko guztia proxy-tik joan dadin</string>
-    <string name="action_uninstall_confirmation">Aplikazio hau desinstalatu nahi duzu?</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> eta <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="about_wiki_title">Wiki</string>

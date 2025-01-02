@@ -5,7 +5,6 @@
     <string name="action_filter_apply">Tətbiq et</string>
     <string name="action_join">Qoşul</string>
     <string name="action_filter_apps_with_ads">Reklamlı tətbiqlər</string>
-    <string name="action_pause">Dayandır</string>
     <string name="action_filter">Filtrlər</string>
     <string name="action_filter_downloads">Endirmələr</string>
     <string name="action_filter_rating">Reytinqlər</string>
@@ -246,7 +245,6 @@
     <string name="about_wiki_summary">Tez-tez verilən suallara (FAQ), problemlərin həlli addımlarına və s. cavablar tapın</string>
     <string name="pref_updates_incompatible">Uyuşmaz yeniləmələr</string>
     <string name="pref_updates_incompatible_desc">Quraşdırma uğursuz ola biləcək uyuşmaz və ya qeyri-aktiv tətbiqlər üçün yeniləmələri göstər</string>
-    <string name="details_no_apps_on_sale">Satışda tətbiq tapılmadı</string>
     <string name="onboarding_permission_doze_desc">Tətbiqləri arxa planda endirmək və yeniləmək üçün Aurora Store-a icazə ver</string>
     <string name="onboarding_permission_doze">Arxa Plan Yükləmələri</string>
     <string name="pref_vending_version_device">İlkin (cihaz quruluşundan)</string>
@@ -263,7 +261,6 @@
     <string name="pref_network_proxy_enable_desc">Tətbiqdən gələn bütün prosesin proksidən keçməsinə icazə ver</string>
     <string name="action_home_screen">Əsas ekrana əlavə et</string>
     <string name="action_uninstall_success">Uğurla silindi</string>
-    <string name="action_uninstall_confirmation">Bu tətbiqi silmək istəyirsiniz?</string>
     <string name="details_no_favourites">Sevimli tətbiqlər tapılmadı</string>
     <string name="details_data_safety_subtitle">Tərtibatçı tərəfindən bildirilən məlumatların məxfiliyi və təhlükəsizliyi təcrübələri</string>
     <string name="details_data_safety_title">Məlumat təhlükəsizliyi</string>

@@ -68,7 +68,6 @@
     <string name="action_filter_paid_apps">پرداخت شده</string>
     <string name="action_join">پیوستن</string>
     <string name="action_later">بعدا</string>
-    <string name="action_pause">توقف</string>
     <string name="about_bitcoin_bch">بیتکوین کش</string>
     <string name="account_login_using">وارد شوید به کمک</string>
     <string name="about_telegram_summary">به گروه پشتیبانی آرورا جهت بحث و پیشنهاد بپیوندید.</string>
@@ -288,10 +287,8 @@
     <string name="about_wiki_title">ویکی</string>
     <string name="about_wiki_summary">جواب به سوالات مکرر (FAQ) مراحل حل مشکلات تخنیکی و بیشتر را در اینجا دریابید.</string>
     <string name="action_select_all">همه ای (متن) را انتخاب نمایید</string>
-    <string name="details_no_apps_on_sale">هیچ برنامه ای برای فروش پیدا نشد</string>
     <string name="details_data_safety_title">حفظ امنیت معلومات</string>
     <string name="action_favourite">پسندیده</string>
-    <string name="action_uninstall_confirmation">آیا شما میخواهید این برنامه را حذف کنید؟</string>
     <string name="action_request_analysis">"تحلیل جدیدی را درخواست  نماید"</string>
     <string name="action_home_screen">به صفحه اصلی بافزاید</string>
     <string name="details_no_favourites">هیچ برنامه (اپلیکیشن) مورد نظر پیدا نشد</string>

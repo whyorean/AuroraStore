@@ -151,7 +151,6 @@
     <string name="action_restart">Рестартуј</string>
     <string name="action_post">Објави</string>
     <string name="action_pending">На чекању</string>
-    <string name="action_pause">Паузирај</string>
     <string name="action_open">Отвори</string>
     <string name="action_ok">у реду</string>
     <string name="action_next">Следеће</string>
@@ -311,9 +310,7 @@
     <string name="app_links_title">Линкови апликација</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
-    <string name="action_uninstall_confirmation">Желите ли да деинсталирате ову апликацију?</string>
     <string name="title_apps_sale_provider">Пружалац - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Није пронађена ниједна апликација на распродаји</string>
     <string name="pref_updates_check_frequency_desc">Конфигуришите интервале за аутоматска ажурирања, у сатима.</string>
     <string name="pref_aurora_only">Само Aurora Store апликације</string>
     <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>

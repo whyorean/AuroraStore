@@ -85,7 +85,6 @@
     <string name="action_next">"Next"</string>
     <string name="action_ok">"Okay"</string>
     <string name="action_open">"Open"</string>
-    <string name="action_pause">"Pause"</string>
     <string name="action_pending">"Pending"</string>
     <string name="action_post">"Post"</string>
     <string name="action_remove_all">"Remove all"</string>
@@ -98,7 +97,6 @@
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_uninstall_success">"Successfully uninstalled"</string>
     <string name="action_home_screen">Add to Home screen</string>
-    <string name="action_uninstall_confirmation">"Do you want to uninstall this app ?"</string>
     <string name="action_info">"App Info"</string>
     <string name="action_update">"Update"</string>
     <string name="action_update_all">"Update all"</string>
@@ -127,7 +125,6 @@
     <string name="details_no_dependencies">"No Dependencies"</string>
     <string name="details_no_permission">"No permissions"</string>
     <string name="details_no_updates">"No updates available"</string>
-    <string name="details_no_apps_on_sale">"No apps found on sale"</string>
     <string name="details_paid">"Paid"</string>
     <string name="details_permission">"Permission"</string>
     <string name="details_data_safety_title">Data safety</string>

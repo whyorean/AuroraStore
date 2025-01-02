@@ -91,7 +91,6 @@
     <string name="action_filter_rating">Hodnotenia</string>
     <string name="action_finish">Dokončiť</string>
     <string name="action_open">Otvoriť</string>
-    <string name="action_pause">Pauza</string>
     <string name="action_pending">Čakajúce</string>
     <string name="action_post">Vložiť</string>
     <string name="action_request_analysis">Požiadať o novú analýzu</string>
@@ -245,7 +244,6 @@
     <string name="details_no_dependencies">Žiadne závislosti</string>
     <string name="details_no_permission">Žiadne povolenia</string>
     <string name="details_no_updates">Nie sú k dispozícii žiadne aktualizácie</string>
-    <string name="details_no_apps_on_sale">Nenašli sa žiadne aplikácie v zľave</string>
     <string name="details_paid">Platené</string>
     <string name="action_uninstall_success">Úspešne odinštalované</string>
     <string name="details_permission">Oprávnenie</string>
@@ -288,7 +286,6 @@
     <string name="action_leave">Opustiť</string>
     <string name="action_logout">Odhlásiť sa</string>
     <string name="action_next">Ďalšie</string>
-    <string name="action_uninstall_confirmation">Chcete odinštalovať túto aplikáciu?</string>
     <string name="action_info">Informácie o aplikácií</string>
     <string name="action_update">Aktualizovať</string>
     <string name="action_update_all">Aktualizovať všetko</string>

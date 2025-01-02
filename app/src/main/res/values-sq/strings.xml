@@ -65,7 +65,6 @@
     <string name="action_next">Pasuesi</string>
     <string name="action_ok">OK</string>
     <string name="action_open">Hape</string>
-    <string name="action_pause">Ndalesë</string>
     <string name="action_pending">Pezull</string>
     <string name="action_post">Postoje</string>
     <string name="action_restart">Rinise</string>
@@ -233,8 +232,6 @@
     <string name="pref_install_mode_am">Instalues AM</string>
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
     <string name="app_links_desc">Lejojeni Shitoren Aurora të hapë lidhjet që mbulohen</string>
-    <string name="details_no_apps_on_sale">S’u gjetën aplikacione me ulje çmimi</string>
-    <string name="action_uninstall_confirmation">Doni të çinstalohet ky aplikacion?</string>
     <string name="failed_to_fetch_report">S’u arrit të sillet raport privatësie</string>
     <string name="download_progress">Po shkarkohet •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Njoftime</string>

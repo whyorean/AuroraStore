@@ -68,7 +68,6 @@
     <string name="action_restart">Mulai ulang</string>
     <string name="action_post">Pos</string>
     <string name="action_pending">Tertunda</string>
-    <string name="action_pause">Jeda</string>
     <string name="action_open">Buka</string>
     <string name="action_ok">Oke</string>
     <string name="action_next">Lanjut</string>
@@ -299,11 +298,9 @@
     <string name="onboarding_permission_doze_desc">Izinkan Aurora Store untuk mengunduh dan memperbarui aplikasi di latar belakang</string>
     <string name="title_app_settings">Pengaturan Aplikasi</string>
     <string name="title_apps_sale_provider">Penyedia - bestappsales.com</string>
-    <string name="details_no_apps_on_sale">Tidak ada aplikasi yang di-diskon</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
     <string name="toast_proxy_failed">Gagal menyetel proksi</string>
     <string name="pref_network_proxy_enable_desc">Izinkan semua lalu lintas dari aplikasi melewati proxy</string>
-    <string name="action_uninstall_confirmation">Apakah Anda ingin menghapus aplikasi ini?</string>
     <string name="android_market_desc">Android Market adalah toko online yang menawarkan aplikasi perangkat lunak yang dirancang untuk perangkat Android, dihentikan pada tahun 2017.</string>
     <string name="app_language">Bahasa Aplikasi</string>
     <string name="pref_updates_auto">Auto update aplikasi</string>

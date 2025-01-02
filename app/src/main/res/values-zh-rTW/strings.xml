@@ -8,7 +8,6 @@
     <string name="action_restart">重新啟動</string>
     <string name="action_post">發佈</string>
     <string name="action_pending">等候</string>
-    <string name="action_pause">暫停</string>
     <string name="action_open">開啟</string>
     <string name="action_ok">確定</string>
     <string name="action_next">下一個</string>
@@ -270,7 +269,6 @@
     <string name="installer_shizuku_unavailable">Shizuku 未安裝或設定不正確。</string>
     <string name="session_enjoy">登入並享用。</string>
     <string name="update_available">有更新可用</string>
-    <string name="action_uninstall_confirmation">你確定要解除安裝此應用程式嗎？</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
     <string name="pref_network_proxy_title">代理伺服器</string>
     <string name="pref_network_proxy_enable">啟用代理伺服器</string>
@@ -295,7 +293,6 @@
     <string name="pref_updates_auto_desc">設定自動更新行為</string>
     <string name="pref_updates_auto_off">不要自動更新應用程式</string>
     <string name="check_connectivity">檢查網路連線</string>
-    <string name="details_no_apps_on_sale">未找到特價中的應用程式</string>
     <string name="details_ratings_title_hint">評論標題</string>
     <string name="access_denied_using_vpn">存取被拒！你是否正開著 VPN 或者 Tor？</string>
     <string name="pref_updates_auto">自動更新應用程式</string>
