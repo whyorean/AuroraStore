@@ -411,4 +411,5 @@
     <string name="filter_latest">Neueste</string>
     <string name="status_verifying">Wird überprüft</string>
     <string name="action_unarchive">Entpacken</string>
+    <string name="unable_to_open">App kann nicht geöffnet werden</string>
 </resources>
