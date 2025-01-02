@@ -64,7 +64,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonimno</string>
     <string name="about_xda_summary">Pregledaj rasprave ili prijedloge u XDA razgovorima Aurora trgovine.</string>
-    <string name="about_xda">Forum programera</string>
+    <string name="about_xda">XDA forumi</string>
     <string name="about_telegram_summary">Pridruži se Aurora grupi podrške za rasprave ili prijedloge.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Doniraj putem usluge PayPal</string>
@@ -141,9 +141,9 @@
     <string name="pref_install_mode_root">Administratorska instalacija</string>
     <string name="pref_install_mode_native">Izvorna instalacija (Zastarjelo)</string>
     <string name="pref_install_delete_title">Izbriši APK datoteke nakon instaliranja</string>
-    <string name="pref_install_delete_summary">APK datoteke će se standardno izbrisati</string>
+    <string name="pref_install_delete_summary">Preuzete APK datoteke će se izbrisati odmah nakon instalacije</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid programe</string>
-    <string name="pref_filter_fdroid_summary">Zanemari F-Droid aplikacije s popisa ažuriranih i instaliranih programa</string>
+    <string name="pref_filter_fdroid_summary">Ne provjeravaj ažuriranja za aplikacije preuzete ili instalirane s F-Droida</string>
     <string name="pref_dialog_to_apply_restart">Ova će se postavka primijeniti nakon ponovnog pokretanja programa</string>
     <string name="onboarding_permission_installer_desc">Dozvoli instaliranje programa iz Aurora trgovine</string>
     <string name="onboarding_permission_installer">Dozvola za instalaciju</string>
@@ -248,8 +248,8 @@
     <string name="title_advanced">Napredno</string>
     <string name="download_eta_hrs">Preostalo: %1$d h %2$d min %3$d s</string>
     <string name="download_eta_min">Preostalo: %1$d min %2$d s</string>
-    <string name="download_paused">Zaustavljeno • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Preuzimanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Zaustavljeno •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Preuzimanje •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Obavijesti</string>
     <string name="onboarding_permission_notifications_desc">Poüalji obavijesti o stanju instalacije</string>
     <string name="session_enjoy">Prijavi se i uživaj.</string>
@@ -269,4 +269,6 @@
     <string name="action_request_analysis">Zatraži novu analizu</string>
     <string name="action_home_screen">Dodaj na početni zaslon</string>
     <string name="installer_shizuku_unavailable">Shizuku nije instaliran ili postavljen pravilno.</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="session_login">Prijavi se na tvoj Google Play račun</string>
 </resources>

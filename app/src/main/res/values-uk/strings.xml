@@ -426,4 +426,5 @@
     <string name="toast_black_import_success">Чорний список імпортовано!</string>
     <string name="status_verifying">Перевірка</string>
     <string name="action_unarchive">Розархівувати</string>
+    <string name="unable_to_open">Не вдається відкрити програму</string>
 </resources>

@@ -235,8 +235,8 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_telegram_summary">Müzakirələr və ya təkliflər üçün Aurora Dəstək qrupuna qoşulun.</string>
     <string name="title_about">Haqqında</string>
-    <string name="download_progress">Yüklənilir • <xliff:g id="completed_downloads"> %1$d</xliff:g> /<xliff:g id="all_downloads"> %2$d</xliff:g> •<xliff:g id="speed"> %3$s</xliff:g></string>
-    <string name="download_paused">Dayandırıldı • <xliff:g id="completed_downloads"> %1$d</xliff:g> /<xliff:g id="all_downloads"> %2$d</xliff:g></string>
+    <string name="download_progress">Endirilir •<xliff:g id="completed_downloads"> %1$d</xliff:g> /<xliff:g id="all_downloads"> %2$d</xliff:g> •<xliff:g id="speed"> %3$s</xliff:g></string>
+    <string name="download_paused">Dayandırıldı •<xliff:g id="completed_downloads"> %1$d</xliff:g> /<xliff:g id="all_downloads"> %2$d</xliff:g></string>
     <string name="download_eta_hrs">%1$dsa %2$ddəq %3$dsn qalıb</string>
     <string name="download_eta_sec">%1$dsan qalıb</string>
     <string name="action_import">İdxal et</string>
@@ -345,4 +345,13 @@
     <string name="toast_permission_esm_caution">Storage Access Framework-dəki səhvə görə təkrar icazə verməli ola bilərsiniz</string>
     <string name="downloading_dep"><xliff:g id="app"> %1$s</xliff:g> üçün əlavə fayllar endirilir</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> and <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="action_remove_all">Hamısın təmizlə</string>
+    <string name="action_select_all">Hamısın seç</string>
+    <string name="filter_latest">Ən son</string>
+    <string name="session_installer_subtitle">Paketli/bölük APK-lar üçün hesab əsaslı quraşdırıcı</string>
+    <string name="amazon_appstore_desc">Amazon Appstore, Amazon tərəfindən idarə olunan Androidə xas platformalar üçün tətbiq mağazasıdır.</string>
+    <string name="action_manage">İdarə et</string>
+    <string name="failed_apk_export">APK-ları ixrac etmək olmadı</string>
+    <string name="toast_permission_esm_restart">İcazə qəbulun öyrənmək üçün tətbiqi təkrar başlatmalı ola bilərsiniz.</string>
+    <string name="failed_app_link">Dəstəklənmir, lütfən, linkləri əl ilə əlaqələndirməyə cəhd et</string>
 </resources>

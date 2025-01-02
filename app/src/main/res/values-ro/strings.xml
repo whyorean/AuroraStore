@@ -167,7 +167,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_telegram">Telegram</string>
     <string name="account_google">Google</string>
-    <string name="pref_filter_fdroid_summary">Ignoră aplicațiile F-Droid din Actualizări și Aplicații instalate</string>
+    <string name="pref_filter_fdroid_summary">Nu se verifică actualizările pentru aplicațiile descărcate sau instalate de pe F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrează aplicațiile F-Droid</string>
     <string name="pref_install_delete_summary">APK-urile descărcate vor fi șterse imediat după instalare</string>
     <string name="pref_install_delete_title">Șterge fișierul APK după instalare</string>
@@ -298,7 +298,7 @@
     <string name="app_links_desc">Permite magazinului Aurora să deschidă linkuri acceptate</string>
     <string name="amazon_appstore_desc">Amazon Appstore este un magazin de aplicații pentru platforme compatibile cu Android operate de Amazon.</string>
     <string name="toast_proxy_invalid">Adresa URL proxy nevalidă, verifică formatul!</string>
-    <string name="pref_aurora_only_desc">Afișează numai aplicațiile instalate Aurora Store în Actualizări și Aplicații instalate</string>
+    <string name="pref_aurora_only_desc">Se verifică doar actualizările pentru aplicațiile instalate de Aurora Store</string>
     <string name="toast_proxy_success">Proxy setat cu succes</string>
     <string name="app_links_title">Link-uri la aplicații</string>
     <string name="google_play_store_desc">Google Play, cunoscut și ca Google Play Store și anterior Android Market.</string>
@@ -409,4 +409,21 @@
     <string name="notification_channel_install">Notificare de instalare</string>
     <string name="notification_channel_downloads">Notificare pentru descărcări</string>
     <string name="notification_channel_export">Notificare export aplicație</string>
+    <string name="action_remove_all">Elimină tot</string>
+    <string name="filter_latest">Cele mai recente</string>
+    <string name="made_with_love">Făcut cu <xliff:g id="heart_emoji">%1$s</xliff:g> în India</string>
+    <string name="toast_black_import_failed">Nu s-a putut importa lista neagră!</string>
+    <string name="toast_black_export_failed">Nu s-a putut exporta lista neagră!</string>
+    <string name="toast_black_import_success">Lista neagră importată!</string>
+    <string name="toast_black_export_success">Lista neagră a fost exportată!</string>
+    <string name="notification_channel_account">Notificare legată de cont</string>
+    <string name="toast_permission_esm_restart">Poate fi necesar să repornești aplicația pentru a reflecta acordarea permisiunii.</string>
+    <string name="default_spoof">Implicit</string>
+    <string name="status_verifying">Se verifică</string>
+    <string name="available_spoof">Disponibil</string>
+    <string name="action_unarchive">Dezarhivează</string>
+    <string name="checking_updates">Se verifică actualizările</string>
+    <string name="authentication_required_title">Este necesară autentificarea</string>
+    <string name="authentication_required_unarchive">Conectează-te la contul Google Play pentru a dezarhiva aplicația!</string>
+    <string name="action_select_all">Selectează tot</string>
 </resources>

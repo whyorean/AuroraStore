@@ -426,4 +426,5 @@
     <string name="filter_latest">Nejnovější</string>
     <string name="status_verifying">Ověřování</string>
     <string name="action_unarchive">Vyjmout z archivu</string>
+    <string name="unable_to_open">Nepodařilo se otevřít aplikaci</string>
 </resources>

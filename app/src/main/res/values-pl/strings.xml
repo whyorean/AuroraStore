@@ -422,4 +422,5 @@
     <string name="filter_latest">Najnowsze</string>
     <string name="status_verifying">Weryfikacja</string>
     <string name="action_unarchive">Przywróć z archiwum</string>
+    <string name="unable_to_open">Nie można otworzyć aplikacji</string>
 </resources>
