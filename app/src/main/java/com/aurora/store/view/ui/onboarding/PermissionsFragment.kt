@@ -57,9 +57,8 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
         super.onViewCreated(view, savedInstanceState)
 
         // Headers are only visible if we are onboarding
-        binding.title?.isVisible = args.isOnboarding
-        binding.subtitle?.isVisible = args.isOnboarding
-        binding.toolbar?.apply {
+        binding.title.isVisible = args.isOnboarding
+        binding.toolbar.apply {
             isVisible = !args.isOnboarding
             setNavigationOnClickListener { findNavController().navigateUp() }
         }

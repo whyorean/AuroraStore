@@ -20,43 +20,61 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:showDividers="middle">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:visibility="gone"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/onboarding_title_permissions" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="true"
-            android:text="@string/onboarding_title_permissions"
-            android:textAlignment="textStart"
-            android:textColor="?colorAccent"
-            android:textSize="42sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/AuroraTextStyle.Subtitle.Alt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/onboarding_permission_select"
-            android:textAlignment="textStart" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="true"
+                android:text="@string/onboarding_title_permissions"
+                android:textAlignment="textStart"
+                android:textColor="?colorAccent"
+                android:textSize="42sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/subtitle"
+                style="@style/AuroraTextStyle.Subtitle.Alt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/onboarding_permission_select"
+                android:textAlignment="textStart" />
+        </LinearLayout>
+
+        <com.airbnb.epoxy.EpoxyRecyclerView
+            android:id="@+id/epoxy_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:padding="@dimen/padding_medium"
+            android:scrollbars="none"
+            tools:listitem="@layout/view_permission" />
     </LinearLayout>
-
-    <com.airbnb.epoxy.EpoxyRecyclerView
-        android:id="@+id/epoxy_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:padding="@dimen/padding_medium"
-        android:scrollbars="none"
-        tools:listitem="@layout/view_permission" />
 </LinearLayout>
