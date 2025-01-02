@@ -20,17 +20,9 @@
 <resources>
     <!--Common Colors-->
     <color name="colorAccent">#6C63FF</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorTransparent">#00000000</color>
 
-    <!--Tab Colors-->
-    <color name="colorTabSelected">?colorAccent</color>
-    <color name="txtTabDefault">#44F2F2F2</color>
-    <color name="txtTabSelected">#F2F2F2</color>
-
-    <color name="colorBlue">#4768FD</color>
+    <!-- AppDetailsFragment | Dialog -->
     <color name="colorRed">#E4002B</color>
-    <color name="colorRedAlt">#ff4c4c</color>
     <color name="colorOrange">#FF9933</color>
     <color name="colorGreen">#49A942</color>
 </resources>

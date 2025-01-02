@@ -23,7 +23,7 @@
         <item name="chipStyle">@style/Chip.Filter</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
         <item name="bottomSheetStyle">@style/AppTheme.BottomSheetStyle</item>
-        <item name="android:statusBarColor">@color/colorTransparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.Translucent" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">

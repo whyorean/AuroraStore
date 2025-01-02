@@ -19,7 +19,7 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/colorTransparent" />
+    <solid android:color="@android:color/transparent" />
     <size
         android:width="@dimen/margin_small"
         android:height="@dimen/margin_small" />
