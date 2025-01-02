@@ -19,6 +19,11 @@
   ~
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" translatable="false">"Aurora Store"</string>
+    <string name="app_list_rating" translatable="false">"%1$s • %2$s★ • %3$s"</string>
+    <string name="download_speed_bytes" translatable="false">%1$d B/s</string>
+    <string name="download_speed_kb" translatable="false">%1$s KB/s</string>
+    <string name="download_speed_mb" translatable="false">%1$s MB/s</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Find answers to frequently asked questions (F.A.Q.), troubleshooting steps and more</string>
     <string name="about_bhim">"BHIM - UPI"</string>
