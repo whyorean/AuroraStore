@@ -411,4 +411,5 @@
     <string name="available_spoof">Доступно</string>
     <string name="status_verifying">Проверка</string>
     <string name="action_unarchive">Разархивировать</string>
+    <string name="unable_to_open">Не удаётся открыть приложение</string>
 </resources>
