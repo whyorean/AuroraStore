@@ -1,0 +1,6 @@
+• 서드파티 토큰 디스펜서 지원
+• 다양한 UI/UX 개선 및 버그 수정
+• 오래된 다운로드를
+제거하는 새로운 자동 캐시 정리 기능• Android 12+ 기기
+용 강조 색상 설정 사용 중지• SessionInstaller: Aurora Store를 기기 소유자로 설정하고 자동으로 설치할 수 있는 기능(크레딧: @s1204IT)
+• SessionInstaller: 설치 대기열 지원

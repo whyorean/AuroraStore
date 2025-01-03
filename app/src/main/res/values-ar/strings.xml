@@ -411,4 +411,5 @@
     <string name="toast_permission_esm_restart">قد يتعين عليك إعادة تشغيل التطبيق ليعكس منحة الأذونات.</string>
     <string name="status_verifying">جارِ التحقق</string>
     <string name="action_unarchive">إلغاء الأرشفة</string>
+    <string name="unable_to_open">غير قادر على فتح التطبيق</string>
 </resources>
