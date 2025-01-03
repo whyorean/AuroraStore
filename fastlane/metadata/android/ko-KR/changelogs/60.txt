@@ -1,0 +1,2 @@
+• 이전 Android 버전
+에서 SessionInstaller가 충돌하는 버그 수정• 번역 업데이트
