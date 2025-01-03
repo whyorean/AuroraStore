@@ -297,7 +297,7 @@
     <string name="toast_rated_failed">검토를 보낼 수 없음</string>
     <string name="toast_export_success">장치 구성 내보내기</string>
     <string name="toast_export_failed">장치 구성을 내보낼 수 없습니다</string>
-    <string name="pref_updates_auto_install">사용 가능한 업데이트 자동 확인 및 설치</string>
+    <string name="pref_updates_auto_install">사용 가능한 업데이트 자동 확인 &amp; 설치</string>
     <string name="failed_generating_session">세션을 생성하지 못했습니다. 오류 코드: &lt;xliff:gid=\"status_code\"&gt;%1$d&lt;/xliff:g&gt;</string>
     <string name="pref_updates_incompatible_desc">호환되지 않거나 응용 프로그램이 실행 중지된 업데이트를 표시합니다. 설치가 실패할 수 있습니다</string>
     <string name="toast_developer_setting_failed">장치 설정에서 개발자 옵션을 활성화하여 엽니다.</string>
