@@ -63,6 +63,24 @@ Please visit [Aurora Wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home
 - [Telegram](https://t.me/AuroraSupport)
 - [XDA Developers](https://forum.xda-developers.com/t/app-5-0-aurora-store-open-source-google-play-client.3739733/)
 
+## Permissions
+
+- `android.permission.INTERNET` to download and install/update apps from the Google Play servers
+- `android.permission.ACCESS_NETWORK_STATE` to check internet availability
+- `android.permission.FOREGROUND_SERVICE` to download apps without interruption
+- `android.permission.FOREGROUND_SERVICE_DATA_SYNC` to download apps without interruption
+- `android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` to auto-update apps without interruption (optional)
+- `android.permission.MANAGE_EXTERNAL_STORAGE` to access the OBB directory to download APK expansion files for games or large apps
+- `android.permission.READ_EXTERNAL_STORAGE` to access the OBB directory to download APK expansion files for games or large apps
+- `android.permission.WRITE_EXTERNAL_STORAGE` to access the OBB directory to download APK expansion files for games or large apps
+- `android.permission.QUERY_ALL_PACKAGES` to check updates for all installed apps
+- `android.permission.REQUEST_INSTALL_PACKAGES` to install and update apps
+- `android.permission.REQUEST_DELETE_PACKAGES` to uninstall apps
+- `android.permission.ENFORCE_UPDATE_OWNERSHIP` to silently update apps
+- `android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION` to silently update apps
+- `android.permission.POST_NOTIFICATIONS` to notify user about ongoing downloads, available updates, and errors (optional)
+- `android.permission.USE_CREDENTIALS` to allow users to sign into their personal Google account via microG
+
 ## Screenshots
 
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/screenshot-01.png" height="400">
