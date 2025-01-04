@@ -136,7 +136,7 @@
     <string name="pref_install_mode_session">Instalacija sesija</string>
     <string name="pref_install_mode_services">Aurora usluge (zastarjelo)</string>
     <string name="pref_install_mode_root">Administratorska instalacija</string>
-    <string name="pref_install_mode_native">Izvorna instalacija (Zastarjelo)</string>
+    <string name="pref_install_mode_native">Izvorna instalacija (zastarjelo)</string>
     <string name="pref_install_delete_title">Izbriši APK datoteke nakon instaliranja</string>
     <string name="pref_install_delete_summary">Preuzete APK datoteke će se izbrisati odmah nakon instalacije</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid aplikacije</string>
@@ -229,7 +229,7 @@
     <string name="toast_export_success">Konfiguracija uređaja izvezena</string>
     <string name="app_updater_service_notif_text">Omogućuje preuzimanje aplikacija u pozadini</string>
     <string name="app_updater_service_notif_title">Preuzimanje aplikacija u pozadini</string>
-    <string name="pref_install_mode_am">AM instalater</string>
+    <string name="pref_install_mode_am">Instalacija s App Manager</string>
     <string name="installer_am_unavailable">Instaliraj App Manager ili promijeni instalacijski program.</string>
     <string name="download_eta_sec">Preostalo: %1$d s</string>
     <string name="session_init">Pripremanje …</string>
@@ -333,4 +333,75 @@
     <string name="action_select_all">Odaberi sve</string>
     <string name="details_data_safety_subtitle">Prakse privatnosti i sigurnosti podataka koje je proglasio programer</string>
     <string name="toast_permission_esm_caution">Možda ćeš morati ponovo odobriti dozvole zbog greške u Storage Access Frameworku</string>
+    <string name="about_wiki_summary">Pronađi odgovore na često postavljana pitanja (ČPP), korake za rješavanje problema i više</string>
+    <string name="pref_clear_device_owner_desc">Ovo će opozvati dozvolu instalera sesije za instaliranje aplikacije u pozadini. Želiš li nastaviti s brisanjem vlasništva nad uređajem?</string>
+    <string name="pref_vending_version_device">Zadano (iz konfiguracije uređaja)</string>
+    <string name="failed_apk_export">Izvoz APK datoteka nije uspio</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> i <xliff:g id="app_three_name">%3$s</xliff:g></string>
+    <string name="session_installer_subtitle">Program za instalaciju temeljen na sesiji za pakete/podijeljene APK datoteke</string>
+    <string name="title_more">Više</string>
+    <string name="pref_clear_device_owner_title">Izbriši vlasnika uređaja</string>
+    <string name="disclaimer_subtitle">Odgovornost</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> aktualiziranja dostupno</string>
+    <string name="failed_to_generate_session">Nije moguće generirati sesiju</string>
+    <string name="services_installer_subtitle">Program za instalaciju instalacija u pozadini</string>
+    <string name="server_unreachable">Server je nedostupan</string>
+    <string name="shizuku_installer_desc">Zahtijeva Shizuku ili Sui, mora se postaviti i odobriti dozvolu</string>
+    <string name="download_clear_finished">Izbriši gotove</string>
+    <string name="notification_channel_account">Obavijest o računu</string>
+    <string name="login_rate_limited">Ups, učestalost tvojih prijava je ograničen</string>
+    <string name="app_links_title">Poveznice aplikacija</string>
+    <string name="google_play_store_desc">Google Play, poznat i kao Google Play Store, a prije Android Market.</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> i <xliff:g id="app_two_name">%2$s</xliff:g></string>
+    <string name="pref_network_proxy_url_message">Upiši ispravni proxy URL za prosljeđivanje svih podataka kroz proxy.</string>
+    <string name="toast_proxy_invalid">Neispravan proxy URL. Provjeri format!</string>
+    <string name="item_optional">Opcionalno</string>
+    <string name="notification_channel_updates">Obavijesti o aktualiziranjima</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> aktualiziranje dostupno</string>
+    <string name="pref_updates_auto_desc">Konfiguriraj automatska aktualiziranja</string>
+    <string name="pref_updates_auto_install">Provjeri i instaliraj dostupna aktualiziranja automatski</string>
+    <string name="bad_request">Interna greška! Pokušaj ponovo kasnije</string>
+    <string name="verifying_new_session">Provjeravanje nove sesije</string>
+    <string name="check_connectivity">Provjeri internetsku vezu</string>
+    <string name="am_installer_subtitle">Potpuni upravljač paketa otvorenog koda</string>
+    <string name="am_installer_desc">Zahtijeva App Manager, za instalaciju je potreban je administratorski modus kada je MIUI optimizacija uključena</string>
+    <string name="manual_download_hint">Upiši kod verzije koju želiš preuzeti</string>
+    <string name="source_code_subtitle">Saznaj što je unutra</string>
+    <string name="notification_updates_available_desc_1">Dostupna je nova verzija za <xliff:g id="app_one_name">%1$s</xliff:g></string>
+    <string name="failed_to_fetch_report">Dohvaćanje izvještaja o privatnosti nije uspjelo</string>
+    <string name="pref_updates_check_frequency_desc">Konfiguriraj intervale za automatska i ručna aktualiziranja, u satima.</string>
+    <string name="shizuku_installer_subtitle">Korištenje API-ja sustava izravno s administratorskim pravima</string>
+    <string name="source_code_title">Izvorni kod</string>
+    <string name="made_with_love">Izrađeno sa <xliff:g id="heart_emoji">%1$s</xliff:g> u Indiji</string>
+    <string name="manage_account">Upravljaj tvojim računom</string>
+    <string name="title_search_suggestion">Prijedlog za pretragu</string>
+    <string name="pref_install_mode_shizuku">Instalacija sa Shizuku</string>
+    <string name="failed_generating_session">Generiranje sesije nije uspjelo. Šifra greške: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="pref_updates_auto_off">Ne aktualiziraj aplikacije automatski</string>
+    <string name="pref_updates_auto_notify">Provjeri i obavijesti o dostupnim aktualiziranjima</string>
+    <string name="android_market_desc">Android Market je bila internetska trgovina koja je nudila softverske aplikacije za Android uređaje. Povučena je 2017.</string>
+    <string name="item_required">Neophodno</string>
+    <string name="native_installer_desc">Najprikladnije za uređaje koji rade s ranijim verzijama od Android 4.4</string>
+    <string name="toast_proxy_failed">Postavljanje proxyja nije uspjelo</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> i još <xliff:g id="apps_count">%4$d</xliff:g></string>
+    <string name="faqs_subtitle">Imaš pitanja? Pronađi odgovore</string>
+    <string name="privacy_policy_title">Politika privatnosti</string>
+    <string name="notification_channel_export">Obavijest o izvozu aplikacija</string>
+    <string name="notification_channel_install">Obavijest o instaliranjima</string>
+    <string name="pref_network_proxy_enable_desc">Dozvoli da sav promet aplikacije ide kroz proxy</string>
+    <string name="notification_channel_downloads">Obavijest o preuzimanjima</string>
+    <string name="pref_network_proxy_enable">Aktiviraj proxy</string>
+    <string name="pref_updates_incompatible">Nekompatibilna aktualiziranja</string>
+    <string name="pref_updates_incompatible_desc">Prikaži aktualiziranja za nekompatibilne ili deaktivirane aplikacije koje se možda neće uspjeti instalirati</string>
+    <string name="pref_updates_auto">Automatko aktualiziranje aplikacija</string>
+    <string name="session_installer_desc">Preporučeno, ugrađeno i podržava sve Android verzije</string>
+    <string name="pref_vending_version_title">Google Play verzija</string>
+    <string name="pref_network_proxy_url">Proxy URL</string>
+    <string name="title_search_results">Rezultati pretrage</string>
+    <string name="toast_proxy_success">Proxy je uspješno postavljen</string>
+    <string name="pref_updates_check_frequency">Učestalost automatkog aktualiziranja</string>
+    <string name="access_denied_using_vpn">Pristup je odbijen! Koristiš li VPN ili Tor?</string>
+    <string name="details_ratings_title_hint">Naslov recenzije</string>
+    <string name="app_language">Jezik aplikacije</string>
 </resources>
