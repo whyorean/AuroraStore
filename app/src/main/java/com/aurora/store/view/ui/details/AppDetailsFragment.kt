@@ -717,6 +717,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         updateAppDescription(app)
         updateAppRatingAndReviews(app)
+        updateUserReview()
         updateAppDevInfo(app)
         updateAppPermission(app)
 
@@ -828,26 +829,25 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
-    private fun updateUserReview(review: Review) {
+    private fun updateUserReview(review: Review? = null) {
         binding.layoutDetailsReview.apply {
-            layoutUserReview.visibility = View.VISIBLE
-            inputTitle.setText(review.title)
-            inputReview.setText(review.comment)
-            userStars.rating = review.rating.toFloat()
+            layoutUserReview.isVisible = !authProvider.isAnonymous
+            btnPostReview.setOnClickListener {
+                viewModel.postAppReview(
+                    app.packageName,
+                    Review(
+                        title = inputTitle.text.toString(),
+                        rating = userStars.rating.toInt(),
+                        comment = inputReview.text.toString()
+                    ),
+                    app.testingProgram?.isSubscribed ?: false
+                )
+            }
 
-            if (!authProvider.isAnonymous && app.isInstalled) {
-                btnPostReview.setOnClickListener {
-                    addOrUpdateReview(
-                        app,
-                        Review().apply {
-                            title = inputTitle.text.toString()
-                            rating = userStars.rating.toInt()
-                            comment = inputReview.text.toString()
-                        }
-                    )
-                }
-            } else {
-                layoutUserReview.visibility = View.GONE
+            if (review != null) {
+                inputTitle.setText(review.title)
+                inputReview.setText(review.comment)
+                userStars.rating = review.rating.toFloat()
             }
         }
     }
@@ -1024,9 +1024,5 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun addAvgReviews(number: Int, max: Long, rating: Long): RelativeLayout {
         return RatingView(requireContext(), number, max.toInt(), rating.toInt())
-    }
-
-    private fun addOrUpdateReview(app: App, review: Review, isBeta: Boolean = false) {
-        viewModel.postAppReview(app.packageName, review, isBeta)
     }
 }
