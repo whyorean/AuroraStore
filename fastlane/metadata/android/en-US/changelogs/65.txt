@@ -1,0 +1,4 @@
+• Fixed issues with shared library installation for apps like Chrome and WebView
+• Support for login into personal account using microG
+• Fixed an issue with auth verification
+• Translation updates; Additional strings localized

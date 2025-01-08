@@ -1,3 +1,9 @@
+Changelog : v4.6.4 (65)
+• Fixed issues with shared library installation for apps like Chrome and WebView
+• Support for login into personal account using microG
+• Fixed an issue with auth verification
+• Translation updates; Additional strings localized
+
 Changelog : v4.6.3 (64)
 • Support for archiving/un-archiving apps on Android 15+
 • Support for installing apps into private space on Android 15+
