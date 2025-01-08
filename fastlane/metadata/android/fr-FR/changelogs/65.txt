@@ -1,0 +1,4 @@
+• Correctifs concernant l’installation de librairies partagées pour des applis comme Chrome ou Webview
+• Prise en charge de la connexion au compte personnel avec microG
+• Correction d’un problème en lien avec la vérification d'authenticité
+• Mise à jour des traductions ; nouvelles chaines de caractères traduites
