@@ -1,0 +1,4 @@
+• Opraveny problémy s instalací sdílené knihovny pro aplikace jako Chrome a WebView
+• Podpora přihlašování do osobního účtu přes microG
+• Opraven problém s ověřováním
+• Aktualizace překladů, přeloženy dodatečné řetězce

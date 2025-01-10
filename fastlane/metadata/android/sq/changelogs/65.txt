@@ -1,0 +1,4 @@
+• U ndreqën probleme me instalim bibliotekash të përbashkëta, për aplikacione si Chrome dhe WebView
+• Mbulim për hyrje në llogari personale duke përdorur microG
+• U ndreq një problem me verifikim autorizimi
+• Përditësime përkthimesh; U përkthyen vargje të tjera

@@ -1,6 +1,6 @@
-• Prise en charge des fournisseurs tiers de jetons d'authentification pour les sessions anonymes
+• Prise en charge des distributeurs tiers de jetons d'authentification pour les sessions anonymes
 • Améliorations UI/UX multiples et corrections de bugs
 • Nouveau système de nettoyage de cache automatique pour supprimer les anciens téléchargements
 • Le réglage de couleur prédominante a été retiré pour les appareils Android 12 et supérieur
-• Installateur de session : Possibilité de configurer Aurora Store en tant qu'administrateur de l'appareil et de faire des installations silencieuses (crédits : @s1204IT)
-• Installateur de session : prise en charge de la file d'attente pour les installations
+• Installateur de session : Possibilité de configurer Aurora Store en tant qu'administrateur de l'appareil et de faire des installations silencieuses (crédits : @s1204IT)
+• Installateur de session : prise en charge de la file d'attente pour les installations
