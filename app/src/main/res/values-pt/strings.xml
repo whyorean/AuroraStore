@@ -401,4 +401,13 @@
     <string name="status_cancelled">Cancelado</string>
     <string name="authentication_required_title">Autenticação necessária</string>
     <string name="available_spoof">Disponível</string>
+    <string name="action_remove_all">Remover tudo</string>
+    <string name="toast_black_export_success">Lista negra exportada!</string>
+    <string name="toast_black_import_failed">A importação da lista negra falhou!</string>
+    <string name="toast_black_import_success">Lista negra importada!</string>
+    <string name="action_unarchive">Desarquivar</string>
+    <string name="toast_black_export_failed">A exportação da lista negra falhou!</string>
+    <string name="unable_to_open">Não é possível abrir a app</string>
+    <string name="action_select_all">Selecionar todos</string>
+    <string name="status_verifying">A verificar</string>
 </resources>
