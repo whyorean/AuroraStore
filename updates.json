@@ -1,9 +1,9 @@
 {
-  "version_name": "4.6.2",
-  "version_code": 63,
-  "aurora_build": "https://www.auroraoss.com/AuroraStore/Release/AuroraStore-4.6.2.apk",
+  "version_name": "4.6.4",
+  "version_code": 65,
+  "aurora_build": "https://www.auroraoss.com/AuroraStore/Release/AuroraStore-4.6.4.apk",
   "fdroid_build": "",
-  "changelog": "Changelog : v4.6.2\n • Fixed minor migration issue\n • Added auto update for Nightly builds\n • Translation updates",
-  "size": 7395843,
-  "updated_on": "Sep 30, 2024"
+  "changelog": "Changelog : v4.6.4\n • Fixed issues with shared library installation for apps like Chrome and WebView\n •Support for login into personal account using microG\n • Fixed an issue with auth verification",
+  "size": 7431013,
+  "updated_on": "Jan 10, 2024"
 }
