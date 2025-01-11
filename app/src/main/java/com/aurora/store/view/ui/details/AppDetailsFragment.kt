@@ -878,26 +878,24 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.layoutDetailsDev.apply {
             if (app.developerAddress.isNotEmpty()) {
                 devAddress.apply {
-                    setTxtSubtitle(
-                        HtmlCompat.fromHtml(
-                            app.developerAddress,
-                            HtmlCompat.FROM_HTML_MODE_LEGACY
-                        ).toString()
-                    )
+                    subTitle = HtmlCompat.fromHtml(
+                        app.developerAddress,
+                        HtmlCompat.FROM_HTML_MODE_LEGACY
+                    ).toString()
                     visibility = View.VISIBLE
                 }
             }
 
             if (app.developerWebsite.isNotEmpty()) {
                 devWeb.apply {
-                    setTxtSubtitle(app.developerWebsite)
+                    subTitle = app.developerWebsite
                     visibility = View.VISIBLE
                 }
             }
 
             if (app.developerEmail.isNotEmpty()) {
                 devMail.apply {
-                    setTxtSubtitle(app.developerEmail)
+                    subTitle = app.developerEmail
                     visibility = View.VISIBLE
                 }
             }
@@ -1042,7 +1040,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             binding.layoutDetailsCompatibility.txtGmsDependency.apply {
                 title = getString(R.string.details_compatibility_gms_required_title)
                 subTitle = getString(R.string.details_compatibility_gms_required_subtitle)
-                setTitleColor(R.color.colorRed)
+                titleColor = ContextCompat.getColor(context, R.color.colorRed)
             }
 
             binding.layoutDetailsCompatibility.compatibilityStatusLayout.isVisible = true
@@ -1050,7 +1048,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             binding.layoutDetailsCompatibility.txtGmsDependency.apply {
                 title = getString(R.string.details_compatibility_gms_not_required_title)
                 subTitle = getString(R.string.details_compatibility_gms_not_required_subtitle)
-                setTitleColor(R.color.colorGreen)
+                titleColor = ContextCompat.getColor(context, R.color.colorRed)
             }
         }
     }

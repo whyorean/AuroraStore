@@ -22,9 +22,8 @@ package com.aurora.store.view.custom.layouts
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import androidx.annotation.ColorRes
+import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.aurora.store.R
 import com.aurora.store.databinding.ViewDevInfoBinding
@@ -42,6 +41,16 @@ class DevInfoLayout : RelativeLayout {
     var subTitle: String?
         get() = binding.txtSubtitle.text.toString()
         set(value) = setTxtSubtitle(value)
+
+    @get:ColorInt
+    var titleColor: Int
+        get() = binding.txtTitle.currentTextColor
+        set(value) = binding.txtTitle.setTextColor(value)
+
+    @get:ColorInt
+    var subTitleColor: Int
+        get() = binding.txtSubtitle.currentTextColor
+        set(value) = binding.txtSubtitle.setTextColor(value)
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -78,23 +87,15 @@ class DevInfoLayout : RelativeLayout {
         typedArray.recycle()
     }
 
-    fun setTxtTitle(text: String?) {
+    private fun setTxtTitle(text: String?) {
         binding.txtTitle.text = text
         binding.txtTitle.isVisible = text != null
         invalidate()
     }
 
-    fun setTxtSubtitle(text: String?) {
+    private fun setTxtSubtitle(text: String?) {
         binding.txtSubtitle.text = text
         binding.txtSubtitle.isVisible = text != null
         invalidate()
-    }
-
-    fun setTitleColor(@ColorRes color: Int) {
-        binding.txtTitle.setTextColor(ContextCompat.getColor(context, color))
-    }
-
-    fun setSubtitleColor(@ColorRes color: Int) {
-        binding.txtSubtitle.setTextColor(ContextCompat.getColor(context, color))
     }
 }
