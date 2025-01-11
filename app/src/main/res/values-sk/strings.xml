@@ -411,4 +411,5 @@
     <string name="action_select_all">Vybrať všetko</string>
     <string name="toast_black_export_failed">Nepodarilo sa exportovať čiernu listinu!</string>
     <string name="toast_black_import_success">Čierna listina bola importovaná!</string>
+    <string name="unable_to_open">Nemožno otvoriť aplikáciu</string>
 </resources>
