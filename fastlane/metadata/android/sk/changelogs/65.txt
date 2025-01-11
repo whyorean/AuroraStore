@@ -1,0 +1,4 @@
+• Opravené problémy s zdieľanou knižnicou pre aplikácie ako Chrome a WebView
+• Podpora pre prihlásenie do osobného účtu pomocou microG
+• Opravený problém s auth overenie
+• Preklad aktualizácie; Ďalšie reťazce lokalizované
