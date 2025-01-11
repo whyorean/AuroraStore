@@ -88,7 +88,7 @@
     <string name="about_bhim_summary">Przekaż darowiznę za pomocą UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="action_installations">Instalacje</string>
-    <string name="action_granted">Zgoda udzielona</string>
+    <string name="action_granted">Zezwolono</string>
     <string name="action_grant">Zezwól</string>
     <string name="device_miui_description">Wyłącz optymalizację MIUI, aby zezwolić na instalacje, w przeciwnym razie wybierz instalator root lub usługi Aurora.</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać Natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do Ciebie.</string>
