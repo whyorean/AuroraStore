@@ -1,0 +1,4 @@
+• Probleme bei der Installation gemeinsamer Bibliotheken für Apps wie Chrome und WebView behoben
+• Unterstützung für die Anmeldung bei einem persönlichen Konto mit microG
+• Problem mit der Authentifizierung behoben
+• Übersetzungen aktualisiert; zusätzliche Zeichenketten lokalisiert
