@@ -1,0 +1,6 @@
+• Android 15+ üstünde uygulamaları arşivleme/arşivden çıkarma desteği
+• Android 15+ üstünde uygulamaları özel alana kurma desteği
+• Kenardan kenara destek için arayüz düzenlemeleri
+• Çoklu hata giderimi ve iyileştirmeler
+• Bildirim kanalları ve bildirimlere iyileştirmeler
+• Çeviri güncellemeleri; Ek dizgeler yerelleştirildi
