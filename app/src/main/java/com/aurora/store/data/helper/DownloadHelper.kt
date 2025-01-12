@@ -15,7 +15,6 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.PathUtil
-import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
@@ -30,17 +29,15 @@ import javax.inject.Inject
  */
 class DownloadHelper @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val downloadDao: DownloadDao,
-    private val gson: Gson
+    private val downloadDao: DownloadDao
 ) {
 
     companion object {
         const val DOWNLOAD_WORKER = "DOWNLOAD_WORKER"
-        const val DOWNLOAD_DATA = "DOWNLOAD_DATA"
+        const val PACKAGE_NAME = "PACKAGE_NAME"
 
         private const val DOWNLOAD_APP = "DOWNLOAD_APP"
         private const val DOWNLOAD_UPDATE = "DOWNLOAD_UPDATE"
-        private const val PACKAGE_NAME = "PACKAGE_NAME"
         private const val VERSION_CODE = "VERSION_CODE"
     }
 
@@ -166,7 +163,7 @@ class DownloadHelper @Inject constructor(
 
     private fun trigger(download: Download) {
         val inputData = Data.Builder()
-            .putString(DOWNLOAD_DATA, gson.toJson(download))
+            .putString(PACKAGE_NAME, download.packageName)
             .build()
 
         val work = OneTimeWorkRequestBuilder<DownloadWorker>()

@@ -34,7 +34,6 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
-import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
@@ -56,7 +55,6 @@ import com.aurora.gplayapi.data.models.File as GPlayFile
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
     private val downloadDao: DownloadDao,
-    private val gson: Gson,
     private val appInstaller: AppInstaller,
     private val authProvider: AuthProvider,
     private val httpClient: IHttpClient,
@@ -89,10 +87,10 @@ class DownloadWorker @AssistedInject constructor(
             return Result.failure()
         }
 
-        // Try to parse input data into a valid app
+        // Fetch required data for download
         try {
-            val downloadData = inputData.getString(DownloadHelper.DOWNLOAD_DATA)
-            download = gson.fromJson(downloadData, Download::class.java)
+            val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
+            download = downloadDao.getDownload(packageName!!)
 
             val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
                 (httpClient as HttpClient).call(download.iconURL).body!!.byteStream()
