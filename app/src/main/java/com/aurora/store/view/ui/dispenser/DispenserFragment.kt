@@ -28,6 +28,7 @@ class DispenserFragment : BaseFragment<FragmentDispenserBinding>(),
         sharedPreferences = Preferences.getPrefs(view.context)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         binding.addFab.setOnClickListener {
             findNavController().navigate(R.id.inputDispenserDialog)
         }
