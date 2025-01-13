@@ -412,4 +412,17 @@
     <string name="toast_black_export_failed">Nepodarilo sa exportovať čiernu listinu!</string>
     <string name="toast_black_import_success">Čierna listina bola importovaná!</string>
     <string name="unable_to_open">Nemožno otvoriť aplikáciu</string>
+    <string name="details_compatibility_title">Kompatibilita</string>
+    <string name="details_compatibility_gms_required_subtitle">Možno budete musieť nainštalovať proprietárnu knižnicu Google alebo reimplementáciu FOSS, ako je microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Funguje bez služieb Google Play</string>
+    <string name="details_compatibility_microg">S projektom microG</string>
+    <string name="details_compatibility_no_gms">Bez Služieb Google Play</string>
+    <string name="details_compatibility_status_limited">Obmedzené: Funguje s obmedzenými funkciami</string>
+    <string name="details_compatibility_status_unsupported">Nepodporované: Nefunkčné</string>
+    <string name="details_compatibility_status_unknown">Neznáme: Zatiaľ nekontrolované</string>
+    <string name="details_compatibility_status_compatible">Kompatibilné: Funguje bez problémov</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Táto aplikácia funguje bez vlastnej knižnice spoločnosti Google. Na správne fungovanie však môže stále vyžadovať ďalšie knižnice tretích strán.</string>
+    <string name="details_compatibility_gms_required_title">Vyžadujú sa Google Play služby</string>
+    <string name="plexus_powered">Vytvorené od Plexus</string>
+    <string name="plexus_progress">Kontrolujem kompatibilitu…</string>
 </resources>
