@@ -436,4 +436,17 @@
     <string name="action_select_all">Изабери све</string>
     <string name="toast_black_import_failed">Увоз црне листе није успео!</string>
     <string name="unable_to_open">Није могуће отворити апликацију</string>
+    <string name="plexus_progress">Проверавање компатибилности…</string>
+    <string name="details_compatibility_gms_required_title">Захтева Google Play услуге</string>
+    <string name="details_compatibility_gms_not_required_title">Ради без Google Play услуга</string>
+    <string name="details_compatibility_status_compatible">Компатибилно: Ради без било каквих проблема</string>
+    <string name="details_compatibility_status_unknown">Непознато: Још није проверено</string>
+    <string name="details_compatibility_title">Компатибилност</string>
+    <string name="details_compatibility_status_unsupported">Неподржано: Није функционално</string>
+    <string name="plexus_powered">Покреће Plexus</string>
+    <string name="details_compatibility_status_limited">Ограничено: Ради с ограниченим функцијама</string>
+    <string name="details_compatibility_no_gms">Без Google Play услуга</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Ова апликација ради без Google-ове власничке библиотеке. Међутим, и даље може бити потребно да друге библиотеке трећих страна раде исправно.</string>
+    <string name="details_compatibility_microg">С пројектом microG</string>
+    <string name="details_compatibility_gms_required_subtitle">Можда ћете морати да инсталирате Google-ову власничку библиотеку или заменску имплементацију FOSS-а као што је microG.</string>
 </resources>
