@@ -408,4 +408,17 @@
     <string name="action_unarchive">Désarchiver</string>
     <string name="status_verifying">Vérification</string>
     <string name="unable_to_open">Impossible d’ouvrir l’appli</string>
+    <string name="details_compatibility_gms_required_title">Services Google Play nécessaires</string>
+    <string name="details_compatibility_gms_not_required_title">Fonctionne sans les services Google Play</string>
+    <string name="details_compatibility_microg">Avec le projet microG</string>
+    <string name="details_compatibility_no_gms">Sans les services Google Play</string>
+    <string name="details_compatibility_status_compatible">Compatible : Fonctionne parfaitement</string>
+    <string name="details_compatibility_status_limited">Partielle : Les fonctions sont limitées</string>
+    <string name="details_compatibility_status_unknown">Indéterminée : Analyse non effectuée à ce jour</string>
+    <string name="plexus_progress">Vérification de la compatibilité…</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Cette appli fonctionne sans la bibliothèque propriétaire de Google. Cependant, elle peut nécessiter d’autres bibliothèques tierces pour être opérationnelle.</string>
+    <string name="plexus_powered">Propulsé par Plexus</string>
+    <string name="details_compatibility_title">Compatibilité</string>
+    <string name="details_compatibility_gms_required_subtitle">Vous aurez probablement besoin d’installer la bibliothèque propriétaire de Google ou bien un logiciel libre équivalent comme microG.</string>
+    <string name="details_compatibility_status_unsupported">Incompatible : L’appli n’est pas fonctionnelle</string>
 </resources>
