@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="MissingTranslation" severity="ignore" />
-    <issue id="ProtectedPermissions" severity="ignore" />
     <issue id="QueryAllPackagesPermission" severity="ignore" />
     <issue id="ScopedStorage" severity="ignore" />
 </lint>
