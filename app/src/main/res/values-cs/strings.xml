@@ -425,4 +425,5 @@
     <string name="details_compatibility_status_compatible">Kompatibilní: funguje bez problémů</string>
     <string name="plexus_progress">Kontrola kompatibility…</string>
     <string name="plexus_powered">Využívá službu Plexus</string>
+    <string name="installed_apps_size">Nainstalováno <xliff:g id="installed_apps_size">%1$d</xliff:g> aplikací</string>
 </resources>
