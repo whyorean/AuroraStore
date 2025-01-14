@@ -125,8 +125,8 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
             permissions.add(
                 Permission(
                     PermissionType.APP_LINKS,
-                    "App Links",
-                    "Enable Aurora Store to open links from the Play Store",
+                    getString(R.string.app_links_title),
+                    getString(R.string.app_links_desc),
                     optional = true
                 ),
             )
