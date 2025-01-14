@@ -145,6 +145,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.viewpager2)
@@ -172,6 +173,7 @@ dependencies {
     //Epoxy
     implementation(libs.airbnb.epoxy.android)
     ksp(libs.airbnb.epoxy.processor)
+    implementation(libs.airbnb.epoxy.paging)
 
     //HTTP Clients
     implementation(libs.squareup.okhttp)

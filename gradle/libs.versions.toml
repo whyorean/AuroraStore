@@ -23,6 +23,7 @@ lifeVersion = "2.8.7"
 materialVersion = "1.12.0"
 navVersion = "2.8.5"
 okhttpVersion = "4.12.0"
+paging = "3.3.5"
 preferenceVersion = "1.2.1"
 processPhoenix = "3.0.0"
 protobufJavaliteVersion = "4.29.3"
@@ -38,6 +39,7 @@ workVersion = "2.10.0"
 
 [libraries]
 airbnb-epoxy-android = { module = "com.airbnb.android:epoxy", version.ref = "epoxyVersion" }
+airbnb-epoxy-paging = { module = "com.airbnb.android:epoxy-paging3", version.ref = "epoxyVersion" }
 airbnb-epoxy-processor = { module = "com.airbnb.android:epoxy-processor", version.ref = "epoxyVersion" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browserVersion" }
@@ -50,6 +52,7 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navVersion" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navVersion" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceVersion" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }

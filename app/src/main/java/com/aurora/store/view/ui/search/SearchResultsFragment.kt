@@ -33,24 +33,21 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hideKeyboard
 import com.aurora.extensions.showKeyboard
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.store.R
 import com.aurora.store.data.model.Filter
 import com.aurora.store.data.providers.FilterProvider.Companion.PREFERENCE_FILTER
 import com.aurora.store.databinding.FragmentSearchResultBinding
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.AppProgressViewModel_
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
-import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
-import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
+import com.aurora.store.view.epoxy.controller.AppListEpoxyController
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
@@ -61,9 +58,6 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     private lateinit var sharedPreferences: SharedPreferences
 
     private var query: String? = null
-    private var searchBundle: SearchBundle = SearchBundle()
-
-    private var shimmerAnimationVisible = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,37 +94,26 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
 
         // Search
         attachSearch()
+        query = requireArguments().getString("query")?.also {
+            binding.searchBar.text = Editable.Factory.getInstance().newEditable(it)
+            binding.searchBar.setSelection(it.length)
+            viewModel.search(it)
+        }
 
         // RecyclerView
-        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                viewModel.next(searchBundle.subBundles)
-            }
+        val epoxyController = AppListEpoxyController(viewLifecycleOwner) { app ->
+            binding.searchBar.hideKeyboard()
+            openDetailsFragment(app.packageName, app)
         }
-        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
+
+        binding.recycler.setController(epoxyController)
+        viewModel.apps.onEach {
+            epoxyController.submitData(it)
+        }.launchIn(lifecycleScope)
 
         // Filter
         binding.filterFab.setOnClickListener {
             findNavController().navigate(R.id.filterSheet)
-        }
-
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            if (shimmerAnimationVisible) {
-                endlessRecyclerOnScrollListener.resetPageCount()
-                binding.recycler.clear()
-                shimmerAnimationVisible = false
-            }
-            searchBundle = it
-            updateController(searchBundle)
-        }
-
-        query = requireArguments().getString("query")
-
-        // Don't fetch search results again when coming back to fragment
-        if (searchBundle.appList.isEmpty()) {
-            query?.let { updateQuery(it) }
-        } else {
-            updateController(searchBundle)
         }
     }
 
@@ -142,76 +125,6 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     override fun onDestroy() {
         viewModel.filterProvider.saveFilter(Filter())
         super.onDestroy()
-    }
-
-    private fun updateController(searchBundle: SearchBundle?) {
-        if (searchBundle == null) {
-            shimmerAnimationVisible = true
-            binding.recycler.withModels {
-                for (i in 1..10) {
-                    add(AppListViewShimmerModel_().id(i))
-                }
-            }
-            return
-        }
-
-        val filteredAppList = filter(searchBundle.appList)
-
-        if (filteredAppList.isEmpty()) {
-            if (searchBundle.subBundles.isNotEmpty()) {
-                viewModel.next(searchBundle.subBundles)
-                binding.recycler.withModels {
-                    setFilterDuplicates(true)
-                    add(
-                        AppProgressViewModel_()
-                            .id("progress")
-                    )
-                }
-            } else {
-                binding.recycler.adapter?.let {
-                    /*Show empty search list if nothing found or no app matches filter criterion*/
-                    if (it.itemCount == 1 && searchBundle.subBundles.isEmpty()) {
-                        binding.recycler.withModels {
-                            add(
-                                NoAppViewModel_()
-                                    .id("no_app")
-                                    .message(R.string.details_no_app_match)
-                                    .icon(R.drawable.ic_round_search)
-                            )
-                        }
-                    }
-                }
-            }
-        } else {
-            binding.recycler.withModels {
-                setFilterDuplicates(true)
-
-                filteredAppList.forEach { app ->
-                    add(
-                        AppListViewModel_()
-                            .id(app.id)
-                            .app(app)
-                            .click(View.OnClickListener {
-                                binding.searchBar.hideKeyboard()
-                                openDetailsFragment(app.packageName, app)
-                            })
-                    )
-                }
-
-                if (searchBundle.subBundles.isNotEmpty()) {
-                    add(
-                        AppProgressViewModel_()
-                            .id("progress")
-                    )
-                }
-            }
-
-            binding.recycler.adapter?.let {
-                if (it.itemCount < 10) {
-                    viewModel.next(searchBundle.subBundles)
-                }
-            }
-        }
     }
 
     private fun attachSearch() {
@@ -226,48 +139,22 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
         })
 
         binding.searchBar.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH
-                || actionId == KeyEvent.ACTION_DOWN
-                || actionId == KeyEvent.KEYCODE_ENTER
-            ) {
-                query = binding.searchBar.text.toString()
-                query?.let {
-                    requireArguments().putString("query", it)
-                    queryViewModel(it)
-                    return@setOnEditorActionListener true
+            when (actionId) {
+                KeyEvent.ACTION_DOWN,
+                KeyEvent.KEYCODE_ENTER,
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    query = binding.searchBar.text?.toString()?.also {
+                        requireArguments().putString("query", it)
+                        viewModel.search(it)
+                        return@setOnEditorActionListener true
+                    }
                 }
             }
             false
         }
     }
 
-    private fun updateQuery(query: String) {
-        binding.searchBar.text = Editable.Factory.getInstance().newEditable(query)
-        binding.searchBar.setSelection(query.length)
-        queryViewModel(query)
-    }
-
-    private fun queryViewModel(query: String) {
-        updateController(null)
-        viewModel.observeSearchResults(query)
-    }
-
-    private fun filter(appList: List<App>): List<App> {
-        val filter = viewModel.filterProvider.getSavedFilter()
-        return appList
-            .asSequence()
-            .filter { app ->
-                app.displayName.isNotEmpty() &&
-                        (filter.paidApps || app.isFree) &&
-                        (filter.appsWithAds || !app.containsAds) &&
-                        (filter.gsfDependentApps || app.dependencies.dependentPackages.isEmpty()) &&
-                        (filter.rating <= 0 || app.rating.average >= filter.rating) &&
-                        (filter.downloads <= 0 || app.installs >= filter.downloads)
-            }
-            .toList()
-    }
-
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == PREFERENCE_FILTER) query?.let { queryViewModel(it) }
+        if (key == PREFERENCE_FILTER) query?.let { viewModel.search(it) }
     }
 }

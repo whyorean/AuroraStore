@@ -42,9 +42,9 @@ class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
-        }
+//        viewModel.liveData.observe(viewLifecycleOwner) {
+//            updateController(it)
+//        }
 
         // Toolbar
         binding.toolbar.apply {
@@ -55,12 +55,12 @@ class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
         // Recycler View
         val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                viewModel.liveData.value?.let { viewModel.next(it.subBundles) }
+//                viewModel.liveData.value?.let { viewModel.next(it.subBundles) }
             }
         }
         binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
-        viewModel.observeSearchResults("pub:${args.developerName}")
+//        viewModel.observeSearchResults("pub:${args.developerName}")
     }
 
     private fun updateController(searchBundle: SearchBundle) {
