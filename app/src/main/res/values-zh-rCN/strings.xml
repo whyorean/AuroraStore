@@ -412,4 +412,18 @@
     <string name="status_verifying">验证中</string>
     <string name="action_unarchive">解压缩</string>
     <string name="unable_to_open">无法打开应用</string>
+    <string name="plexus_powered">由 Plexus 驱动</string>
+    <string name="details_compatibility_gms_not_required_title">没有 Google Play Services 也能运作</string>
+    <string name="details_compatibility_microg">兼容 microG 项目</string>
+    <string name="details_compatibility_no_gms">没有 Google Play Services</string>
+    <string name="details_compatibility_status_limited">受限：可以运作，但功能受限</string>
+    <string name="details_compatibility_gms_not_required_subtitle">本应用没有 Google 的专有库也能运作。不过，要正常运作它可能仍然需要其他第三方库。</string>
+    <string name="details_compatibility_gms_required_title">需要 Google Play Services</string>
+    <string name="details_compatibility_status_unknown">未知：尚未检查</string>
+    <string name="details_compatibility_title">兼容性</string>
+    <string name="details_compatibility_status_unsupported">不受支持：无法运作</string>
+    <string name="plexus_progress">检查兼容性中…</string>
+    <string name="details_compatibility_gms_required_subtitle">你可能需要安装 Google 专有的库或像 microG 这样的 FOSS 再实现。</string>
+    <string name="details_compatibility_status_compatible">兼容：没有任何问题可以运作</string>
+    <string name="installed_apps_size">安装了 <xliff:g id="installed_apps_size">%1$d</xliff:g> 应用</string>
 </resources>
