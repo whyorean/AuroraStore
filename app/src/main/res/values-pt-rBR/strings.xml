@@ -425,4 +425,5 @@
     <string name="details_compatibility_status_limited">Limitado: Funciona com funcionalidade limitada</string>
     <string name="details_compatibility_no_gms">Sem Google Play Services</string>
     <string name="details_compatibility_status_unsupported">Não suportado: Não funcional</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
 </resources>
