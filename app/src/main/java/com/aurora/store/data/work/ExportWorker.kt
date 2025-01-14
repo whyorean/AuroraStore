@@ -61,7 +61,7 @@ class ExportWorker @AssistedInject constructor(
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .build()
 
-            Log.i(TAG, "Exporting $app.packageName")
+            Log.i(TAG, "Exporting ${app.packageName}")
             WorkManager.getInstance(context).enqueue(oneTimeWorkRequest)
         }
 
@@ -91,6 +91,7 @@ class ExportWorker @AssistedInject constructor(
 
     private lateinit var notificationManager: NotificationManager
     private val NOTIFICATION_ID = 500
+    private val NOTIFICATION_ID_FGS = 501
 
     override suspend fun doWork(): Result {
         val isDownload = inputData.getBoolean(IS_DOWNLOAD, false)
@@ -125,7 +126,7 @@ class ExportWorker @AssistedInject constructor(
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
         return ForegroundInfo(
-            NOTIFICATION_ID,
+            NOTIFICATION_ID_FGS,
             NotificationUtil.getExportNotification(appContext)
         )
     }
