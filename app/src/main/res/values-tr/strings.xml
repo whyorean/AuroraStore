@@ -96,7 +96,7 @@
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
     <string name="pref_install_delete_summary">İndirilen APK\'lar kurulumdan hemen sonra silinecek</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>
-    <string name="pref_filter_fdroid_summary">F-Droid uygulamalarını Güncellemeler ve Kurulu uygulamalarda görmezden gel</string>
+    <string name="pref_filter_fdroid_summary">F-Droid\'den indirilen ya da kurulan uygulamaların güncellemelerini denetleme</string>
     <string name="pref_common_extra">Ekler</string>
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
     <string name="onboarding_permission_installer">Kurucu İzni</string>
@@ -231,7 +231,7 @@
     <string name="app_updater_service_notif_title">Arka planda uygulama indirme</string>
     <string name="installer_am_unavailable">App Manager kurun veya kurucuyu değiştirin.</string>
     <string name="pref_install_mode_am">AM kurucu</string>
-    <string name="download_paused">Duraklatıldı • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Duraklatıldı •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_scrapped">Son oturum iptal edildi</string>
     <string name="session_verifying">Oturum doğrulanıyor</string>
     <string name="session_verifying_google">Google oturumu doğrulanıyor</string>
@@ -245,7 +245,7 @@
     <string name="download_eta_min">%1$ddak %2$dsn kaldı</string>
     <string name="onboarding_permission_notifications">Bildirimler</string>
     <string name="onboarding_permission_notifications_desc">Kurulum durumuyla ilgili bildirimler gönder</string>
-    <string name="download_progress">İndiriliyor • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">İndiriliyor •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_good">Vay canına! Her şey yolunda.</string>
     <string name="session_login_failed_google">Google aracılığıyla oturum açılamadı</string>
     <string name="session_init">Hazırlanıyor…</string>
@@ -288,7 +288,7 @@
     <string name="details_ratings_title_hint">İnceleme başlığı</string>
     <string name="pref_updates_check_frequency_desc">Kendiliğinden güncellemeler için saat türünde aralığı yapılandır.</string>
     <string name="pref_aurora_only">Yalnızca Aurora Store uygulamaları</string>
-    <string name="pref_aurora_only_desc">Güncellemeler ve Kurulu uygulamalarda yalnızca Aurora Store uygulamalarını göster</string>
+    <string name="pref_aurora_only_desc">Yalnızca Aurora Store tarafından kurulan uygulamaları denetle</string>
     <string name="title_app_settings">Uygulama Ayarları</string>
     <string name="title_apps_sale_provider">Sağlayıcı - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Kendiliğinden güncelleme sıklığı</string>
@@ -397,6 +397,19 @@
     <string name="notification_channel_account">Hesap ile ilişkili bildirim</string>
     <string name="authentication_required_title">Yetkilendirme gerekli</string>
     <string name="made_with_love">Hindistanda <xliff:g id="heart_emoji">%1$s</xliff:g> ile yapıldı</string>
-    <string name="authentication_required_unarchive">Uygulamayı arşivden kaldırmak için lütfen Google Play hesabnınızla giriş yapın!</string>
+    <string name="authentication_required_unarchive">Uygulamayı arşivden kaldırmak için lütfen Google Play hesabınızla giriş yapın!</string>
     <string name="checking_updates">Güncelleştirmeler için kontrol ediliyor</string>
+    <string name="filter_latest">En Son</string>
+    <string name="action_select_all">Tümünü seç</string>
+    <string name="available_spoof">Uygun</string>
+    <string name="status_verifying">Doğrulanıyor</string>
+    <string name="action_remove_all">Tümünü kaldır</string>
+    <string name="toast_black_import_failed">Kara liste içe aktarılamadı!</string>
+    <string name="toast_black_export_success">Kara liste dışa aktarıldı!</string>
+    <string name="toast_black_export_failed">Kara liste dışa aktarılamadı!</string>
+    <string name="toast_permission_esm_restart">Verilen iznin etkinleşmesi için uygulamayı yeniden başlatmanız gerekebilir.</string>
+    <string name="default_spoof">Öntanımlı</string>
+    <string name="toast_black_import_success">Kara liste içe aktarıldı!</string>
+    <string name="action_unarchive">Arşivden kaldır</string>
+    <string name="unable_to_open">Uygulama açılamıyor</string>
 </resources>

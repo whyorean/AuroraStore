@@ -58,7 +58,7 @@
     <string name="onboarding_title_welcome">Bem vindo</string>
     <string name="onboarding_title_permissions">Permissões</string>
     <string name="onboarding_title_installer">Instalador</string>
-    <string name="onboarding_permission_select">A Aurora Store exige as seguintes permissões</string>
+    <string name="onboarding_permission_select">A Aurora Store requer as seguintes permissões</string>
     <string name="dialog_title_self_update">Nova atualização disponível</string>
     <string name="device_miui_extra">Opcionalmente, você pode escolher o instalador nativo, mas não poderá instalar pacotes APKs (divididos), a escolha é sua.</string>
     <string name="device_miui_description">Desative as Otimizações MIUI para permitir instalações, caso contrário, você pode escolher o instalador Root ou Serviços.</string>
@@ -243,7 +243,7 @@
     <string name="session_verifying">Verificando sessão</string>
     <string name="session_scrapped">Última sessão foi descartada</string>
     <string name="updates_available">atualizações disponíveis</string>
-    <string name="permissions_denied">Permissões obrigatórias foram negadas. Conceda-as para continuar a ação</string>
+    <string name="permissions_denied">Permissões necessárias foram negadas. Conceda-as para continuar a ação</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> atualizações disponíveis</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> mais</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
@@ -376,7 +376,7 @@
     <string name="check_updates">Buscar atualizações</string>
     <string name="details_data_safety_title">Segurança de dados</string>
     <string name="toast_permission_esm_caution">Você pode ter que conceder a permissão novamente devido a um bug no \"Storage Access Framework\"</string>
-    <string name="item_required">Obrigatório</string>
+    <string name="item_required">Necessário</string>
     <string name="details_data_safety_subtitle">Práticas de segurança e privacidade de dados declaradas pelo desenvolvedor</string>
     <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de apps de fontes desconhecidas</string>
     <string name="toast_permission_installer_required">Você precisa conceder a permissão de instalador primeiro</string>
@@ -412,4 +412,17 @@
     <string name="action_unarchive">Desarquivar</string>
     <string name="status_verifying">Verificando</string>
     <string name="unable_to_open">Não é possível abrir o app</string>
+    <string name="plexus_powered">Fornecido pelo Plexus</string>
+    <string name="details_compatibility_title">Compatibilidade</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Esse app funciona sem a biblioteca proprietária do Google. Porém, ele pode ainda precisar de outras bibliotecas de terceiros para funcionar corretamente.</string>
+    <string name="details_compatibility_status_unknown">Desconhecido: Não foi verificado ainda</string>
+    <string name="plexus_progress">Verificando compatibilidade…</string>
+    <string name="details_compatibility_status_compatible">Compatível: Funciona sem problemas</string>
+    <string name="details_compatibility_gms_required_title">Requer o Google Play Services</string>
+    <string name="details_compatibility_gms_required_subtitle">Você pode precisar instalar a biblioteca proprietária do Google, ou uma reimplementação FOSS como o microG.</string>
+    <string name="details_compatibility_microg">Com o projeto microG</string>
+    <string name="details_compatibility_gms_not_required_title">Funciona sem o Google Play Services</string>
+    <string name="details_compatibility_status_limited">Limitado: Funciona com funcionalidade limitada</string>
+    <string name="details_compatibility_no_gms">Sem Google Play Services</string>
+    <string name="details_compatibility_status_unsupported">Não suportado: Não funcional</string>
 </resources>

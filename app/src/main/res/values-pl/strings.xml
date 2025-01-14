@@ -48,10 +48,10 @@
     <string name="action_filter_paid_apps">Płatne</string>
     <string name="action_filter_misc">Różne</string>
     <string name="action_filter_gsf_dependent_apps">Zależne od GSF</string>
-    <string name="action_filter_downloads">Pobrane</string>
+    <string name="action_filter_downloads">Pobrania</string>
     <string name="action_filter_apps_with_ads">Aplikacje z reklamami</string>
     <string name="action_filter_apply">Zastosuj</string>
-    <string name="action_filter_all">Wszystko</string>
+    <string name="action_filter_all">Wszystkie</string>
     <string name="action_filter">Filtry</string>
     <string name="action_export">Eksportuj</string>
     <string name="action_disable">Wyłącz</string>
@@ -88,7 +88,7 @@
     <string name="about_bhim_summary">Przekaż darowiznę za pomocą UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="action_installations">Instalacje</string>
-    <string name="action_granted">Zgoda udzielona</string>
+    <string name="action_granted">Zezwolono</string>
     <string name="action_grant">Zezwól</string>
     <string name="device_miui_description">Wyłącz optymalizację MIUI, aby zezwolić na instalacje, w przeciwnym razie wybierz instalator root lub usługi Aurora.</string>
     <string name="device_miui_extra">Opcjonalnie możesz wybrać Natywny instalator, ale wtedy nie będziesz w stanie instalować pakietów APK (podzielonych), więc wybór należy do Ciebie.</string>
@@ -408,4 +408,17 @@
     <string name="status_verifying">Weryfikacja</string>
     <string name="action_unarchive">Przywróć z archiwum</string>
     <string name="unable_to_open">Nie można otworzyć aplikacji</string>
+    <string name="details_compatibility_gms_required_title">Wymaga usług Google Play</string>
+    <string name="details_compatibility_gms_required_subtitle">Może być konieczna instalacja zastrzeżonej biblioteki Google lub implementacji FOSS, np. microG.</string>
+    <string name="details_compatibility_status_unknown">Nieznana: jeszcze nie sprawdzono</string>
+    <string name="details_compatibility_status_limited">Ograniczona: działa z ograniczonymi funkcjami</string>
+    <string name="plexus_progress">Sprawdzanie kompatybilności…</string>
+    <string name="details_compatibility_status_unsupported">Niewspierana: nie działa</string>
+    <string name="details_compatibility_no_gms">Bez usług Google Play</string>
+    <string name="details_compatibility_title">Kompatybilna</string>
+    <string name="details_compatibility_gms_not_required_title">Działa bez usług Google Play</string>
+    <string name="details_compatibility_microg">Z projektem microG</string>
+    <string name="details_compatibility_status_compatible">Kompatybilna: działa bez żadnych problemów</string>
+    <string name="plexus_powered">Na podstawie Plexus</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Ta aplikacja działa bez zastrzeżonej biblioteki Google. Do prawidłowego działania może jednak wymagać bibliotek innych firm.</string>
 </resources>

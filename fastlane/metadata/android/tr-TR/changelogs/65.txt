@@ -1,0 +1,4 @@
+• Chrome ve WebView gibi uygulamalarda paylaşımlı kitaplık kurulumuyla ilgili sorunlar giderildi
+• microG kullanarak kişisel hesaba giriş yapma desteği
+• Yetkilendirme doğrulamasındaki bir sorun giderildi
+• Çeviri güncellenmeleri; Ek dizgeler yerelleştirildi

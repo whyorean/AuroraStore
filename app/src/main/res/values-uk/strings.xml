@@ -412,4 +412,17 @@
     <string name="status_verifying">Перевірка</string>
     <string name="action_unarchive">Розархівувати</string>
     <string name="unable_to_open">Не вдається відкрити програму</string>
+    <string name="details_compatibility_gms_required_title">Потрібні сервіси Google Play</string>
+    <string name="details_compatibility_microg">З проектом microG</string>
+    <string name="details_compatibility_status_compatible">Сумісність: працює без проблем</string>
+    <string name="details_compatibility_no_gms">Без сервісів Google Play</string>
+    <string name="plexus_powered">Працює від Plexus</string>
+    <string name="details_compatibility_title">Сумісність</string>
+    <string name="details_compatibility_gms_required_subtitle">Можливо, вам знадобиться встановити власну бібліотеку Google або повторну реалізацію FOSS, наприклад microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Працює без сервісів Google Play</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Ця програма працює без власної бібліотеки Google. Однак для належної роботи можуть знадобитися сторонні бібліотеки.</string>
+    <string name="plexus_progress">Перевірка сумісності…</string>
+    <string name="details_compatibility_status_limited">Обмежений: працює з обмеженими можливостями</string>
+    <string name="details_compatibility_status_unsupported">Не підтримується: не працює</string>
+    <string name="details_compatibility_status_unknown">Невідомо: ще не перевірено</string>
 </resources>

@@ -1,0 +1,4 @@
+• Corrigidos problemas com a instalação de bibliotecas compartilhadas para apps como Chrome e WebView
+• Suporte ao login com conta pessoal usando microG
+• Corrigido um problema com a verificação da autenticação
+• Atualizações de tradução; textos adicionais traduzidos
