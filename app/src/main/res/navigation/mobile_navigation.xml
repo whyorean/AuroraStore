@@ -138,6 +138,10 @@
         <argument
             android:name="query"
             app:argType="string" />
+        <!-- Google Play -->
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="play.google.com/store/search?q={query}" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment"
