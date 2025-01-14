@@ -412,4 +412,18 @@
     <string name="status_verifying">Apliecina</string>
     <string name="action_unarchive">Atcelt arhivēšanu</string>
     <string name="unable_to_open">Nebija iespējams atvērt lietotni</string>
+    <string name="plexus_powered">Darbina Plexus</string>
+    <string name="plexus_progress">Pārbauda saderību…</string>
+    <string name="details_compatibility_title">Saderība</string>
+    <string name="details_compatibility_gms_required_title">Nepieciešami Google Play pakalpojumi</string>
+    <string name="details_compatibility_gms_not_required_title">Darbojas bez Google Play pakalpojumiem</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Šī lietotne darbojas bez Google īpašnieciskās bibliotēkas. Tomēr, var būt nepieciešamas citas trešo pušu bibliotēkas, lai tā pienācīgi darbotos.</string>
+    <string name="details_compatibility_microg">Ar microG projektu</string>
+    <string name="details_compatibility_status_compatible">Saderīga: darbojas bez sarežgījumiem</string>
+    <string name="details_compatibility_status_limited">Ierobežota: darbojas ar ierobežotām iespējām</string>
+    <string name="details_compatibility_status_unsupported">Neatbalstīta: nedarbojas</string>
+    <string name="details_compatibility_status_unknown">Nezināma: vēl nav pārbaudīta</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uzstādītu lietotņu</string>
+    <string name="details_compatibility_no_gms">Bez Google Play pakalpojumiem</string>
+    <string name="details_compatibility_gms_required_subtitle">Var būt nepieciešams uzstādīt Google īpašnieciskā bibliotēka vai tās FOSS atdarinājums, piemēram, microG.</string>
 </resources>
