@@ -136,7 +136,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                 add(
                     HeaderViewModel_()
                         .id("header")
-                        .title("${packages.size} apps installed")
+                        .title(getString(R.string.installed_apps_size, packages.size))
                 )
                 packages.forEach { app ->
                     add(

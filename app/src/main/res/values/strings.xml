@@ -487,4 +487,7 @@
     <string name="details_compatibility_status_limited">Limited: Works with limited features</string>
     <string name="details_compatibility_status_unsupported">Unsupported: Not functional</string>
     <string name="details_compatibility_status_unknown">Unknown: Not checked yet</string>
+
+    <!-- AppsGamesFragment -->
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installed</string>
 </resources>
