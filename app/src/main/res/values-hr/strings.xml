@@ -408,4 +408,16 @@
     <string name="native_installer_subtitle">Instalacijski program za sve svrhe, dostupan na svim uređajima</string>
     <string name="root_installer_desc">Zahtijeva administratorske dozvole, podržava sve verzije Androida.</string>
     <string name="about_aurora_store_summary">Aurora Store omogućuje pretraživanje i preuzimanje aplikacija sa službene Google Play trgovine. Pogledaj opise aplikacija, snimke ekrana, aktualiziranja, komentare drugih korisnika i preuzemi APK datoteke izravno s Google Playa na svoj uređaj. Za korištenje Aurora Store, moraš imati Google Play račun i prijaviti se na tvoj Google Play račun kada prvi put otvoriš i konfiguriraš Aurora Store.\n\nZa razliku od tradicionalne trgovine aplikacija, Aurora Store ne posjeduje, ne licencira niti distribuira aplikacije. Svim aplikacijama, opisima aplikacija, snimkama ekrana i drugim sadržajima u Aurora Storeu se pristupa izravno i preuzimaju se i/ili prikazuju s Google Playa. Aurora Store funkcionira baš kao vrata ili preglednik, omogućujući da se prijaviš na tvoj Google Play račun i pronađeš aplikacije s Google Playa.\n\nImaj na umu da Aurora Store nema odobrenje, sponzorstvo ili autorizaciju od Googlea, Google Playa, bilo koje aplikacije preuzete putem Aurora Storea ili bilo kojeg programera aplikacija niti je Aurora Store na bilo koji način s njima povezan.</string>
+    <string name="plexus_powered">Pokreće Plexus</string>
+    <string name="details_compatibility_title">Kompatibilnost</string>
+    <string name="details_compatibility_gms_not_required_title">Radi bez Google Play usluga</string>
+    <string name="details_compatibility_microg">S projektom microG</string>
+    <string name="details_compatibility_no_gms">Bez Google Play usluga</string>
+    <string name="details_compatibility_status_unsupported">Nepodržano: Nije funkcionalno</string>
+    <string name="details_compatibility_status_compatible">Kompatibilno: Radi bez problema</string>
+    <string name="details_compatibility_status_limited">Ograničeno: Radi s ograničenim funkcijama</string>
+    <string name="details_compatibility_status_unknown">Nepoznato: Još nije provjereno</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplikacija instalirano</string>
+    <string name="details_compatibility_gms_required_title">Zahtijeva Google Play usluge</string>
+    <string name="plexus_progress">Provjera kompatibilnosti …</string>
 </resources>
