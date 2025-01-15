@@ -408,4 +408,18 @@
     <string name="status_verifying">Berifikatzen</string>
     <string name="action_unarchive">Fitxategitik kendu</string>
     <string name="unable_to_open">Ezin izan da aplikazioa ireki</string>
+    <string name="plexus_powered">Plexus-en eskutik</string>
+    <string name="details_compatibility_gms_required_subtitle">Baliteke Google-ren jabedun liburutegia edo FOSS berrezarpen bat instalatu behar izatea, adibidez, microG.</string>
+    <string name="details_compatibility_microg">microG Proiektuarekin</string>
+    <string name="details_compatibility_no_gms">Google Play-ren Zerbitzuak gabe</string>
+    <string name="details_compatibility_status_compatible">Bateragarria: arazorik gabe funtzionatzen du</string>
+    <string name="details_compatibility_status_limited">Mugatua: ezaugarri mugatuekin funtzionatzen du</string>
+    <string name="details_compatibility_status_unsupported">Bateraezina: ez du funztionatzen</string>
+    <string name="details_compatibility_status_unknown">Ezezaguna: berifikatu gabe oraindik</string>
+    <string name="installed_apps_size"><xliff:g id="instalatutako aplikazioen tamaina">%1$d</xliff:g> instalatutako aplikazioak</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Aplikazio honek Google-ren jabedun liburutegirik gabe funtzionatzen du. Hala ere, baliteke hirugarrenen beste liburutegi batzuk beharrezkoak izatea ongi funtzionatzeko.</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play-ren zerbitzuak gabe funtzionatzen du</string>
+    <string name="details_compatibility_gms_required_title">Google Play-ren zerbitzuak behar ditu</string>
+    <string name="plexus_progress">Bateragarritasuna aztertzen…</string>
+    <string name="details_compatibility_title">Bateragarritasuna</string>
 </resources>
