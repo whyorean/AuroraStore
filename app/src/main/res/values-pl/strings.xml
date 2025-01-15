@@ -421,4 +421,5 @@
     <string name="details_compatibility_status_compatible">Kompatybilna: działa bez żadnych problemów</string>
     <string name="plexus_powered">Na podstawie Plexus</string>
     <string name="details_compatibility_gms_not_required_subtitle">Ta aplikacja działa bez zastrzeżonej biblioteki Google. Do prawidłowego działania może jednak wymagać bibliotek innych firm.</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> zainstalowanych aplikacji</string>
 </resources>

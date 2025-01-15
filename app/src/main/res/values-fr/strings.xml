@@ -421,4 +421,5 @@
     <string name="details_compatibility_title">Compatibilité</string>
     <string name="details_compatibility_gms_required_subtitle">Vous devrez peut-être installer la bibliothèque propriétaire de Google ou un équivalent libre tel que microG.</string>
     <string name="details_compatibility_status_unsupported">Incompatible : L’appli n’est pas fonctionnelle</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> applis installées</string>
 </resources>

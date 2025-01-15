@@ -425,4 +425,5 @@
     <string name="details_compatibility_status_limited">Обмежений: працює з обмеженими можливостями</string>
     <string name="details_compatibility_status_unsupported">Не підтримується: не працює</string>
     <string name="details_compatibility_status_unknown">Невідомо: ще не перевірено</string>
+    <string name="installed_apps_size">Установлено <xliff:g id="installed_apps_size">%1$d</xliff:g> програм</string>
 </resources>
