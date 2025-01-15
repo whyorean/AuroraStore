@@ -406,4 +406,18 @@
     <string name="action_remove_all">Hiqi krejt</string>
     <string name="action_unarchive">Çarkivoje</string>
     <string name="unable_to_open">S’arrihet të hapet aplikacion</string>
+    <string name="plexus_powered">Bazuar në Plexus</string>
+    <string name="details_compatibility_title">Përputhshmëri</string>
+    <string name="details_compatibility_gms_required_title">Lyp Google Play Services</string>
+    <string name="details_compatibility_gms_not_required_title">Funksionon pa Google Play Services</string>
+    <string name="details_compatibility_microg">Me Projektin microG</string>
+    <string name="details_compatibility_no_gms">Pa Google Play Services</string>
+    <string name="details_compatibility_status_compatible">I përputhshëm: Funksionon pa ndonjë problem</string>
+    <string name="details_compatibility_status_unsupported">I papmbuluar: Jo funksional</string>
+    <string name="details_compatibility_status_unknown">S’dihet: S’është kontrolluar ende</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplikacione të instaluar</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Ky aplikacion funksionon pa bibliotekë pronësore Google. Por, mund të dojë prapë biblioteka palësh të tjera të treta, që të funksionojë si duhet.</string>
+    <string name="details_compatibility_status_limited">I kufizuar: Funksionon me kufizime veçorish</string>
+    <string name="plexus_progress">Po shihet përputhshmëria…</string>
+    <string name="details_compatibility_gms_required_subtitle">Mund t’ju duhet të instaloni bibliotekë pronësore të Google-it, ose një risendërtim FOSS, fjala vjen, microG.</string>
 </resources>
