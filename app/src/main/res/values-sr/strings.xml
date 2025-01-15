@@ -449,4 +449,5 @@
     <string name="details_compatibility_gms_not_required_subtitle">Ова апликација ради без Google-ове власничке библиотеке. Међутим, и даље може бити потребно да друге библиотеке трећих страна раде исправно.</string>
     <string name="details_compatibility_microg">С пројектом microG</string>
     <string name="details_compatibility_gms_required_subtitle">Можда ћете морати да инсталирате Google-ову власничку библиотеку или заменску имплементацију FOSS-а као што је microG.</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> апликација инсталирано</string>
 </resources>
