@@ -412,4 +412,18 @@
     <string name="status_verifying">Memverifikasi</string>
     <string name="action_unarchive">Buka arsip</string>
     <string name="unable_to_open">Tidak dapat membuka aplikasi</string>
+    <string name="plexus_powered">Diberdayakan oleh Plexus</string>
+    <string name="plexus_progress">Memeriksa kompatibilitas…</string>
+    <string name="details_compatibility_title">Kompatibilitas</string>
+    <string name="details_compatibility_gms_required_title">Memerlukan Layanan Google Play</string>
+    <string name="details_compatibility_gms_not_required_title">Bekerja tanpa Layanan Google Play</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Aplikasi ini bekerja tanpa pustaka Google bersumber tertutup. Namun, aplikasi ini mungkin masih memerlukan pustaka pihak ketiga lainnya untuk bekerja.</string>
+    <string name="details_compatibility_no_gms">Tanpa Layanan Google Play</string>
+    <string name="details_compatibility_status_compatible">Kompatibel: Bekerja tanpa masalah</string>
+    <string name="details_compatibility_status_limited">Terbatas: Bekerja dengan fitur terbatas</string>
+    <string name="details_compatibility_status_unsupported">Tidak didukung: Tidak berfungsi</string>
+    <string name="details_compatibility_status_unknown">Tidak diketahui: Belum diperiksa</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplikasi terpasang</string>
+    <string name="details_compatibility_gms_required_subtitle">Anda mungkin perlu memasang pustaka Google yang bersumber tertutup atau reimplementasi FOSS seperti microG.</string>
+    <string name="details_compatibility_microg">Dengan Proyek microG</string>
 </resources>

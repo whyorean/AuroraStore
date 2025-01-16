@@ -141,10 +141,10 @@
     <string name="filter_review_all">Alle</string>
     <string name="exodus_view_report">Bericht ansehen</string>
     <string name="exodus_substring">bekannte(r) Tracker gefunden in</string>
-    <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
+    <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
     <string name="exodus_powered">Bereitgestellt von Exodus Privacy</string>
     <string name="exodus_no_tracker">Enthält keine bekannten Tracker</string>
-    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
+    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
     <string name="download_pause_all">Alle anhalten</string>
@@ -152,7 +152,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
+    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_canceled">Abgebrochen</string>
     <string name="download_cancel_all">Alle abbrechen</string>
@@ -377,7 +377,7 @@
     <string name="onboarding_permission_installer_legacy_desc">Installation von Apps aus unbekannten Quellen zulassen</string>
     <string name="item_required">Erforderlich</string>
     <string name="item_optional">Optional</string>
-    <string name="toast_permission_esm_caution">Möglicherweise musst du die Berechtigung aufgrund eines Fehlers im Storage Access Framework erneut erteilen</string>
+    <string name="toast_permission_esm_caution">Möglicherweise muss die Berechtigung aufgrund eines Fehlers im Storage Access Framework erneut erteilt werden</string>
     <string name="details_data_safety_title">Datensicherheit</string>
     <string name="details_data_safety_subtitle">Vom Entwickler erklärte Datenschutz- und Sicherheitspraktiken</string>
     <string name="toast_permission_installer_required">Du musst zuerst die Installer-Berechtigung erteilen</string>
@@ -412,4 +412,18 @@
     <string name="status_verifying">Wird überprüft</string>
     <string name="action_unarchive">Entpacken</string>
     <string name="unable_to_open">App kann nicht geöffnet werden</string>
+    <string name="plexus_powered">Bereitgestellt von Plexus</string>
+    <string name="plexus_progress">Es wird auf Kompatibilität geprüft …</string>
+    <string name="details_compatibility_title">Kompatibilität</string>
+    <string name="details_compatibility_gms_required_title">Erfordert Google-Play-Dienste</string>
+    <string name="details_compatibility_gms_required_subtitle">Möglicherweise muss Googles proprietäre Bibliothek oder eine FOSS-Neuimplementierung wie microG installiert werden.</string>
+    <string name="details_compatibility_gms_not_required_title">Funktioniert ohne Google-Play-Dienste</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Diese App funktioniert ohne Googles proprietäre Bibliothek. Sie benötigt jedoch möglicherweise noch andere Drittanbieter-Bibliotheken, um ordnungsgemäß zu funktionieren.</string>
+    <string name="details_compatibility_microg">Mit microG-Projekt</string>
+    <string name="details_compatibility_no_gms">Ohne Google-Play-Dienste</string>
+    <string name="details_compatibility_status_compatible">Kompatibel: Funktioniert ohne Probleme</string>
+    <string name="details_compatibility_status_limited">Eingeschränkt: Funktioniert mit begrenzten Funktionen</string>
+    <string name="details_compatibility_status_unsupported">Nicht unterstützt: Nicht funktionsfähig</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> Apps installiert</string>
+    <string name="details_compatibility_status_unknown">Unbekannt: Noch nicht geprüft</string>
 </resources>

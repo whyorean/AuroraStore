@@ -412,4 +412,18 @@
     <string name="status_verifying">جارِ التحقق</string>
     <string name="action_unarchive">إلغاء الأرشفة</string>
     <string name="unable_to_open">غير قادر على فتح التطبيق</string>
+    <string name="plexus_powered">مدعوم من Plexus</string>
+    <string name="plexus_progress">التحقق من التوافق…</string>
+    <string name="details_compatibility_title">التوافق</string>
+    <string name="details_compatibility_gms_required_title">يتطلب خدمات Google Play</string>
+    <string name="details_compatibility_gms_required_subtitle">قد تحتاج إلى تثبيت مكتبة Google الخاصة أو إعادة تنفيذ حُر مثل microG.</string>
+    <string name="details_compatibility_gms_not_required_title">يعمل بدون خدمات Google Play</string>
+    <string name="details_compatibility_microg">مع مشروع microG</string>
+    <string name="details_compatibility_no_gms">بدون خدمات Google Play</string>
+    <string name="details_compatibility_status_compatible">متوافق: يعمل بدون أي مشاكل</string>
+    <string name="details_compatibility_status_limited">محدود: يعمل بميزات محدودة</string>
+    <string name="details_compatibility_status_unsupported">غير مدعوم: غير فعال</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> التطبيقات المثبتة</string>
+    <string name="details_compatibility_status_unknown">غير معروف: لم يتم التحقق منه بعد</string>
+    <string name="details_compatibility_gms_not_required_subtitle">يعمل هذا التطبيق بدون مكتبة Google الخاصة. ومع ذلك، قد يتطلب الأمر استخدام مكتبات أخرى تابعة لجهات خارجية ليعمل بشكل صحيح.</string>
 </resources>

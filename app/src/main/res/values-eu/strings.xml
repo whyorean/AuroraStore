@@ -231,8 +231,8 @@
     <string name="app_updater_service_notif_text">Aplikazioak atzeko planoan deskargatzea ahalbidetzen du</string>
     <string name="pref_install_mode_am">AM instalatzailea</string>
     <string name="app_updater_service_notif_title">Aplikazioak atzeko planoan deskargatu</string>
-    <string name="download_paused">Geldituta • <xliff:g id="burututako_deskargak">%1$d</xliff:g> / <xliff:g id="deskarga_guztiak">%2$d</xliff:g></string>
-    <string name="download_progress">Deskargatzen • <xliff:g id="burututako_deskargak">%1$d</xliff:g> / <xliff:g id="deskarga_guztiak">%2$d</xliff:g> • <xliff:g id="abiadura">%3$s</xliff:g></string>
+    <string name="download_paused">Geldituta • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Deskargatzen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Jakinarazpenak</string>
     <string name="onboarding_permission_notifications_desc">Bidali jakinarazpenak instalazioen egoerari buruz</string>
     <string name="session_enjoy">Hasi saioa eta gozatu.</string>
@@ -408,4 +408,18 @@
     <string name="status_verifying">Berifikatzen</string>
     <string name="action_unarchive">Fitxategitik kendu</string>
     <string name="unable_to_open">Ezin izan da aplikazioa ireki</string>
+    <string name="plexus_powered">Plexus-en eskutik</string>
+    <string name="details_compatibility_gms_required_subtitle">Baliteke Google-ren jabedun liburutegia edo FOSS berrezarpen bat instalatu behar izatea, adibidez, microG.</string>
+    <string name="details_compatibility_microg">microG Proiektuarekin</string>
+    <string name="details_compatibility_no_gms">Google Play-ren Zerbitzuak gabe</string>
+    <string name="details_compatibility_status_compatible">Bateragarria: arazorik gabe funtzionatzen du</string>
+    <string name="details_compatibility_status_limited">Mugatua: ezaugarri mugatuekin funtzionatzen du</string>
+    <string name="details_compatibility_status_unsupported">Bateraezina: ez du funztionatzen</string>
+    <string name="details_compatibility_status_unknown">Ezezaguna: berifikatu gabe oraindik</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> instalatutako aplikazioak</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Aplikazio honek Google-ren jabedun liburutegirik gabe funtzionatzen du. Hala ere, baliteke hirugarrenen beste liburutegi batzuk beharrezkoak izatea ongi funtzionatzeko.</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play-ren zerbitzuak gabe funtzionatzen du</string>
+    <string name="details_compatibility_gms_required_title">Google Play-ren zerbitzuak behar ditu</string>
+    <string name="plexus_progress">Bateragarritasuna aztertzen…</string>
+    <string name="details_compatibility_title">Bateragarritasuna</string>
 </resources>

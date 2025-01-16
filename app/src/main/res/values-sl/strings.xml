@@ -408,4 +408,5 @@
     <string name="action_unarchive">Razširi</string>
     <string name="status_verifying">Preverjanje</string>
     <string name="unable_to_open">Ni mogoče odpreti aplikacije</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplikacij nameščenih</string>
 </resources>
