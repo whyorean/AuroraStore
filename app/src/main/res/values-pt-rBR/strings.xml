@@ -149,7 +149,7 @@
     <string name="action_granted">Permitido</string>
     <string name="action_grant">Permitir</string>
     <string name="action_get_local_apk">Salvar pacote do app</string>
-    <string name="action_finish">Terminar</string>
+    <string name="action_finish">Concluir</string>
     <string name="action_filter_rating">Avaliações</string>
     <string name="action_filter_paid_apps">Pagos</string>
     <string name="action_filter_misc">Diversos</string>
