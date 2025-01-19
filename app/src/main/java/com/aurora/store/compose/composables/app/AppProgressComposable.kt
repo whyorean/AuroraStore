@@ -1,0 +1,41 @@
+/*
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+package com.aurora.store.compose.composables.app
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.aurora.store.R
+
+/**
+ * Composable to display an indeterminate circular progress indicator
+ */
+@Composable
+fun AppProgressComposable() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(dimensionResource(R.dimen.padding_small)),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator(
+            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_small))
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AppProgressComposablePreview() {
+    AppProgressComposable()
+}
