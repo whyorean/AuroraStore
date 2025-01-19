@@ -175,7 +175,7 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
                             add(
                                 NoAppViewModel_()
                                     .id("no_app")
-                                    .message(getString(R.string.details_no_app_match))
+                                    .message(R.string.details_no_app_match)
                                     .icon(R.drawable.ic_round_search)
                             )
                         }

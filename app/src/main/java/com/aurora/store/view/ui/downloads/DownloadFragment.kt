@@ -93,7 +93,7 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
                 add(
                     NoAppViewModel_()
                         .id("no_downloads")
-                        .message(getString(R.string.download_none))
+                        .message(R.string.download_none)
                 )
             } else {
                 downloads.groupBy {

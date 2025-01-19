@@ -363,6 +363,7 @@
     <string name="app_link_android_market" translatable="false">market.android.com</string>
     <string name="android_market_desc">Android Market was an online store offering software applications designed for Android devices, retired in 2017.</string>
     <string name="failed_apk_export">Failed to export APKs</string>
+    <string name="no_apps_available">No apps available</string>
 
     <!-- InstallerFragment -->
     <string name="session_installer_subtitle">Session based installer for bundled/split APKs</string>

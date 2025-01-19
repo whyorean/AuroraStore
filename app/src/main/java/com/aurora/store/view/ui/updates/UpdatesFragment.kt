@@ -116,9 +116,9 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                         NoAppViewModel_()
                             .id("no_update")
                             .icon(R.drawable.ic_updates)
-                            .message(getString(R.string.details_no_updates))
+                            .message(R.string.details_no_updates)
                             .showAction(true)
-                            .actionMessage(getString(R.string.check_updates))
+                            .actionMessage(R.string.check_updates)
                             .actionCallback { _ -> viewModel.fetchUpdates() }
                     )
                 } else {

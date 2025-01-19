@@ -21,6 +21,8 @@ package com.aurora.store.view.epoxy.views.app
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.airbnb.epoxy.CallbackProp
@@ -41,15 +43,13 @@ class NoAppView @JvmOverloads constructor(
 ) : BaseView<ViewNoAppBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp
-    fun message(message: String) {
-        binding.txt.text = message
+    fun message(@StringRes message: Int) {
+        binding.txt.text = context.getString(message)
     }
 
     @ModelProp
-    fun icon(icon: Int?) {
-        icon?.let {
-            binding.img.setImageDrawable(ContextCompat.getDrawable(context, icon))
-        }
+    fun icon(@DrawableRes icon: Int) {
+        binding.img.setImageDrawable(ContextCompat.getDrawable(context, icon))
     }
 
     @JvmOverloads
@@ -60,8 +60,8 @@ class NoAppView @JvmOverloads constructor(
 
     @JvmOverloads
     @ModelProp
-    fun actionMessage(message: String = String()) {
-        binding.button.text = message
+    fun actionMessage(@StringRes message: Int? = null) {
+        message?.let { binding.button.text = context.getString(message) }
     }
 
     @JvmOverloads

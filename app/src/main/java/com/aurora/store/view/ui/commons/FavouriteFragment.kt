@@ -96,7 +96,7 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
                     NoAppViewModel_()
                         .id("no_app")
                         .icon(R.drawable.ic_favorite_unchecked)
-                        .message(getString(R.string.details_no_favourites))
+                        .message(R.string.details_no_favourites)
                 )
             } else {
                 favourites.forEach {

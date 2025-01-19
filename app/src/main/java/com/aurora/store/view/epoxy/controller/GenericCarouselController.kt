@@ -61,7 +61,7 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
                     NoAppViewModel_()
                         .id("no_app")
                         .icon(R.drawable.ic_apps)
-                        .message("No apps available")
+                        .message(R.string.no_apps_available)
                 )
             } else {
                 if (streamBundle.streamClusters.size == 1) {
