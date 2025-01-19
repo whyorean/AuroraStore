@@ -342,7 +342,7 @@
     <string name="add_dispenser_title">Ajouter un distributeur de jetons</string>
     <string name="add_dispenser_error">L’URL est invalide</string>
     <string name="remove">Supprimer</string>
-    <string name="remove_dispenser_summary">Voulez-vous supprimer le distributeur « <xliff:g id="url">%1$s</xliff:g> » ?</string>
+    <string name="remove_dispenser_summary">Voulez-vous supprimer le distributeur « <xliff:g id="url">%1$s</xliff:g> » ?</string>
     <string name="session_login">Connectez-vous à votre compte Google Play</string>
     <string name="add_dispenser_summary">Ajouter un distributeur de jetons à Aurora Store. Les distributeurs de jetons fournissent des identifiants de compte à Aurora Store pour les connexions anonymes.</string>
     <string name="add_dispenser_hint">URL du distributeur de jetons</string>
