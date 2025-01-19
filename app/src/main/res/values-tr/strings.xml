@@ -412,4 +412,18 @@
     <string name="toast_black_import_success">Kara liste içe aktarıldı!</string>
     <string name="action_unarchive">Arşivden kaldır</string>
     <string name="unable_to_open">Uygulama açılamıyor</string>
+    <string name="plexus_powered">Plexus ile desteklenir</string>
+    <string name="plexus_progress">Uyumluluk denetleniyor…</string>
+    <string name="details_compatibility_title">Uyumluluk</string>
+    <string name="details_compatibility_gms_required_title">Google Play Hizmetleri gerektirir</string>
+    <string name="details_compatibility_gms_required_subtitle">Google\'ın sahipli kitaplığını ya da microG gibi özgür uyarlamayı kurmanız gerekebilir.</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play Hizmetleri olmadan çalışır</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Bu uygulama Google\'ın sahipli kitalığı olmadan çalışır. Yine de, düzgün çalışması için üçüncü taraf kitaplıkları gerektirebilir.</string>
+    <string name="details_compatibility_microg">microG Projesi ile birlikte</string>
+    <string name="details_compatibility_no_gms">Google Play Hizmetleri olmadan</string>
+    <string name="details_compatibility_status_compatible">Uyumlu: Sorunsuzca çalışır</string>
+    <string name="details_compatibility_status_limited">Kısıtlı: Kısıtlı özelliklerle çalışır</string>
+    <string name="details_compatibility_status_unsupported">Desteklenmiyor: İşlevsiz</string>
+    <string name="details_compatibility_status_unknown">Bilinmiyor: Henüz denetlenmedi</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uygulama kuruldu</string>
 </resources>

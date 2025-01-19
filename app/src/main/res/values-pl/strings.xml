@@ -415,7 +415,7 @@
     <string name="plexus_progress">Sprawdzanie kompatybilności…</string>
     <string name="details_compatibility_status_unsupported">Niewspierana: nie działa</string>
     <string name="details_compatibility_no_gms">Bez usług Google Play</string>
-    <string name="details_compatibility_title">Kompatybilna</string>
+    <string name="details_compatibility_title">Kompatybilność</string>
     <string name="details_compatibility_gms_not_required_title">Działa bez usług Google Play</string>
     <string name="details_compatibility_microg">Z projektem microG</string>
     <string name="details_compatibility_status_compatible">Kompatybilna: działa bez żadnych problemów</string>
