@@ -231,8 +231,8 @@
     <string name="app_updater_service_notif_title">Фоновая загрузка приложений</string>
     <string name="installer_am_unavailable">Установите Менеджер Приложений или смените установщик.</string>
     <string name="pref_install_mode_am">AppManager</string>
-    <string name="download_paused">Приостановлено •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Загрузка •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Приостановлено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Загрузка • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Последний сеанс отменен</string>
     <string name="session_verifying">Проверка сеанса</string>
     <string name="session_verifying_google">Проверка сеанса Google</string>
@@ -426,4 +426,5 @@
     <string name="installed_apps_size">Установлено <xliff:g id="installed_apps_size">%1$d</xliff:g> приложений</string>
     <string name="details_compatibility_microg">С Проектом microG</string>
     <string name="details_compatibility_no_gms">Без Сервисов Google Play</string>
+    <string name="no_apps_available">Нет доступных приложений</string>
 </resources>
