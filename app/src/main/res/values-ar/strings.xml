@@ -231,7 +231,7 @@
     <string name="app_updater_service_notif_text">تفعيل تنزيل التطبيق في الخلفية</string>
     <string name="installer_am_unavailable">قم بتثبيت مدير التطبيقات أو تغيير المثبت.</string>
     <string name="pref_install_mode_am">مثبِّت AM</string>
-    <string name="download_paused">متوقف مؤقتا •<xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
+    <string name="download_paused">متوقف مؤقتا • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
     <string name="download_eta_min">بقي %1$d دقيقة %2$d ثانية</string>
     <string name="download_eta_sec">بقي %1$d ثانية</string>
     <string name="session_login_failed_google">تعذّر تسجيل الدخول عبر جوجل</string>
@@ -243,7 +243,7 @@
     <string name="expand">توسع</string>
     <string name="permissions_denied">تم رفض الإذن المطلوب يرجى منحها لمواصلة العمل</string>
     <string name="search_hint">البحث عن التطبيقات والألعاب</string>
-    <string name="download_progress">جار التحميل •<xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>
+    <string name="download_progress">جار التحميل • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g> • <xliff:g id="speed"> %3$s </xliff:g></string>
     <string name="onboarding_permission_notifications">الإشعارات</string>
     <string name="onboarding_permission_notifications_desc">إرسال إشعارات بخصوص حالة التثبيت</string>
     <string name="session_enjoy">سجيل الدخول واستمتع.</string>
@@ -426,4 +426,5 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> التطبيقات المثبتة</string>
     <string name="details_compatibility_status_unknown">غير معروف: لم يتم التحقق منه بعد</string>
     <string name="details_compatibility_gms_not_required_subtitle">يعمل هذا التطبيق بدون مكتبة Google الخاصة. ومع ذلك، قد يتطلب الأمر استخدام مكتبات أخرى تابعة لجهات خارجية ليعمل بشكل صحيح.</string>
+    <string name="no_apps_available">لا توجد تطبيقات متاحة</string>
 </resources>
