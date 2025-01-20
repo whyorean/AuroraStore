@@ -231,14 +231,14 @@
     <string name="app_updater_service_notif_title">Téléchargement d’applis en arrière-plan</string>
     <string name="pref_install_mode_am">Programme d’installation AM</string>
     <string name="installer_am_unavailable">Installez le gestionnaire d’applis « App Manager » ou changez le programme d’installation.</string>
-    <string name="download_paused">En pause •<xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">En pause • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_enjoy">Il ne vous reste qu’à vous connecter.</string>
     <string name="session_verifying">Vérification de la session</string>
     <string name="session_verifying_google">Vérification de la session Google</string>
     <string name="download_eta_hrs">Il reste %1$d h %2$d min %3$d s</string>
     <string name="onboarding_permission_notifications">Notifications</string>
     <string name="download_eta_min">Il reste %1$d min %2$d s</string>
-    <string name="download_progress">Téléchargement •<xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Téléchargement • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Envoyer des notifications sur l’état des installations</string>
     <string name="session_good">Super ! Tout va bien.</string>
     <string name="expand">Développer</string>
@@ -422,4 +422,5 @@
     <string name="details_compatibility_gms_required_subtitle">Vous devrez peut-être installer la bibliothèque propriétaire de Google ou un équivalent libre tel que microG.</string>
     <string name="details_compatibility_status_unsupported">Incompatible : L’appli n’est pas fonctionnelle</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> applis installées</string>
+    <string name="no_apps_available">Aucune appli n’est proposée</string>
 </resources>

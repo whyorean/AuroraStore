@@ -231,7 +231,7 @@
     <string name="app_updater_service_notif_title">Stahování na pozadí</string>
     <string name="installer_am_unavailable">Nainstalujte si aplikaci App Manager nebo změnte instalátor.</string>
     <string name="pref_install_mode_am">AM instalátor</string>
-    <string name="download_progress">Stahování •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Stahování • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="download_eta_hrs">Zbývá %1$dh %2$dm %3$ds</string>
     <string name="search_hint">Hledat aplikace a hry</string>
     <string name="download_eta_min">Zbývá %1$dm %2$ds</string>
@@ -241,7 +241,7 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Oznámení</string>
     <string name="session_enjoy">Přihlaste se a užívejte si.</string>
-    <string name="download_paused">Pozastaveno •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Pozastaveno • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Odesílat oznámení o stavu instalace</string>
     <string name="session_init">Příprava…</string>
     <string name="session_login_failed_google">Nepodařilo se přihlásit přes Google</string>
@@ -426,4 +426,5 @@
     <string name="plexus_progress">Kontrola kompatibility…</string>
     <string name="plexus_powered">Využívá službu Plexus</string>
     <string name="installed_apps_size">Nainstalováno <xliff:g id="installed_apps_size">%1$d</xliff:g> aplikací</string>
+    <string name="no_apps_available">Nejsou dostupné žádné aplikace</string>
 </resources>

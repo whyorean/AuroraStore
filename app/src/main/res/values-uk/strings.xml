@@ -242,9 +242,9 @@
     <string name="search_hint">Пошук застосунків та іграх</string>
     <string name="onboarding_permission_notifications">Сповіщення</string>
     <string name="download_eta_sec">Залишилося %1$dс</string>
-    <string name="download_paused">Призупинено •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Призупинено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_eta_hrs">Залишилося %1$dгод %2$dхв %3$dс</string>
-    <string name="download_progress">Завантаження •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Завантаження • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Надсилати сповіщення про стан встановлення</string>
     <string name="session_good">Вау! Усе добре.</string>
     <string name="update_available">доступне оновлення</string>
@@ -426,4 +426,5 @@
     <string name="details_compatibility_status_unsupported">Не підтримується: не працює</string>
     <string name="details_compatibility_status_unknown">Невідомо: ще не перевірено</string>
     <string name="installed_apps_size">Установлено <xliff:g id="installed_apps_size">%1$d</xliff:g> застосунків</string>
+    <string name="no_apps_available">Немає доступних застосунків</string>
 </resources>

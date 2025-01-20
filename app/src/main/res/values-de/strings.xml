@@ -240,8 +240,8 @@
     <string name="menu">Menü</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="search_hint">Nach Apps und Spielen suchen</string>
-    <string name="download_paused">Angehalten •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Wird heruntergeladen •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Angehalten • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Wird heruntergeladen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Benachrichtigungen</string>
     <string name="onboarding_permission_notifications_desc">Benachrichtigungen zum Stand der Installationen senden</string>
     <string name="session_verifying_google">Google-Sitzung wird überprüft</string>
@@ -345,7 +345,7 @@
     <string name="add_dispenser_hint">Dispenser-URL</string>
     <string name="add">Hinzufügen</string>
     <string name="remove">Entfernen</string>
-    <string name="remove_dispenser_summary">Möchtest du den Dispenser „&lt;xliff:g id=“url„&gt;%1$s&lt;/xliff:g&gt;“ entfernen?</string>
+    <string name="remove_dispenser_summary">Möchtest du den Dispenser \\&lt;xliff:g id=“url„&gt;%1$s&lt;/xliff:g&gt;\" entfernen?</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Antworten auf häufig gestellte Fragen (FAQs), Maßnahmen zur Fehlerbehebung und mehr finden</string>
     <string name="add_dispenser_title">Dispenser hinzufügen</string>
@@ -426,4 +426,5 @@
     <string name="details_compatibility_status_unsupported">Nicht unterstützt: Nicht funktionsfähig</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> Apps installiert</string>
     <string name="details_compatibility_status_unknown">Unbekannt: Noch nicht geprüft</string>
+    <string name="no_apps_available">Keine Apps verfügbar</string>
 </resources>

@@ -231,7 +231,7 @@
     <string name="app_updater_service_notif_title">Taustalla sovelluksen lataaminen</string>
     <string name="installer_am_unavailable">Asenna App Manager tai vaihda asennusohjelmaa.</string>
     <string name="pref_install_mode_am">AM-asennusohjelma</string>
-    <string name="download_progress">Lataus •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Lataus • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Ilmoitukset</string>
     <string name="session_enjoy">Kirjaudu sisään ja nauti.</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -243,7 +243,7 @@
     <string name="session_scrapped">Viimeinen istunto romutettu</string>
     <string name="toast_import_success">Laitteen konfiguraatio tuotu</string>
     <string name="update_available">päivitys saatavilla</string>
-    <string name="download_paused">Keskeytetty •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Keskeytetty • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="server_maintenance">Palvelin poissa käytöstä huollon vuoksi</string>
     <string name="action_import">Tuo</string>
     <string name="download_eta_hrs">%1$d t %2$d min %3$d s jäljellä</string>
@@ -422,4 +422,5 @@
     <string name="title_more">Lisää</string>
     <string name="remove_dispenser_title">Poista jakelija</string>
     <string name="about_aurora_store_summary">Aurora Store mahdollistaa sovellusten etsimisen ja lataamisen virallisesta Google Play -kaupasta. Voit tutkia sovellusten kuvaksia, kuvankaappauksia, päivityksiä, muiden käyttäjien kommentteja ja ladata sovelluksia suoraan Google Play:stä laitteellesi. Käyttääksesi Aurora Store:a sinulla on oltava Google Play -tili sekä kirjauduttava sisään Google Play -tilillesi kun avaat ja asetat Aurora Store:n.\n\nToisin kuin perinteiset sovelluskaupat, Aurora Store ei omista, lisensoi tai jakele sovelluksia. Kaikki sovellukset, sovellusten kuvaukset, kuvankaappaukset ja muu sisältö Aurora Storessa ovat suoraan haettu, ladattu ja/tai näytetty Google Play -kaupasta. Aurora Store toimii kuten ovi tai selain, mahdollistaen sisäänkirjautumisen Google Play -tilillesi ja sovellusten hakemiseen Google Play -kaupasta.\n\nHuomaa, että Aurora Store ei ole Googlen tai Google Play:n hyväksymä, sponsoroima tai valtuuttama, eikä myöskään minkään Aurora Storen kautta ladatun sovelluksen tai sovelluksien kehittäjien hyväksymä; Aurora Store:lla ei myöskään ole mitään kytköstä, yhteistyötä tai yhteyttä niihin.</string>
+    <string name="no_apps_available">Sovelluksia ei saatavilla</string>
 </resources>

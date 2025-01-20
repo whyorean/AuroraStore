@@ -233,7 +233,7 @@
     <string name="installer_am_unavailable">Instaloni Përgjegjës Aplikacionesh, ose ndryshoni instaluesin.</string>
     <string name="app_links_desc">Lejojeni Shitoren Aurora të hapë lidhjet që mbulohen</string>
     <string name="failed_to_fetch_report">S’u arrit të sillet raport privatësie</string>
-    <string name="download_progress">Po shkarkohet •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Po shkarkohet • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Njoftime</string>
     <string name="pref_vending_version_device">Parazgjedhje (nga formësim pajisjeje)</string>
     <string name="pref_network_proxy_url">URL ndërmjetësi</string>
@@ -286,7 +286,7 @@
     <string name="check_connectivity">Kontrolloni lidhjen në rrjet</string>
     <string name="app_language">Gjuhë Aplikacioni</string>
     <string name="action_request_analysis">Kërkoni analizë të re</string>
-    <string name="download_paused">Ndalur •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Ndalur • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku s’është instaluar, ose s’është ujdisur si duhet.</string>
     <string name="action_home_screen">Shtoje te Skena e Kreut</string>
     <string name="download_clear_finished">Spastrimi përfundoi</string>
