@@ -23,8 +23,8 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import coil3.load
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -49,7 +49,7 @@ class NoAppView @JvmOverloads constructor(
 
     @ModelProp
     fun icon(@DrawableRes icon: Int) {
-        binding.img.setImageDrawable(ContextCompat.getDrawable(context, icon))
+        binding.img.load(icon)
     }
 
     @JvmOverloads
