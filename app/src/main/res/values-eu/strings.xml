@@ -231,8 +231,8 @@
     <string name="app_updater_service_notif_text">Aplikazioak atzeko planoan deskargatzea ahalbidetzen du</string>
     <string name="pref_install_mode_am">AM instalatzailea</string>
     <string name="app_updater_service_notif_title">Aplikazioak atzeko planoan deskargatu</string>
-    <string name="download_paused">Geldituta • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Deskargatzen • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Geldituta • <xliff:g id="osatutako_deskargak">%1$d</xliff:g> / <xliff:g id="deskarga_guztiak">%2$d</xliff:g></string>
+    <string name="download_progress">Deskargatzen • <xliff:g id="osatutako_deskargak">%1$d</xliff:g> / <xliff:g id="deskarga_guztiak">%2$d</xliff:g> • <xliff:g id="abiadura">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Jakinarazpenak</string>
     <string name="onboarding_permission_notifications_desc">Bidali jakinarazpenak instalazioen egoerari buruz</string>
     <string name="session_enjoy">Hasi saioa eta gozatu.</string>
@@ -422,4 +422,5 @@
     <string name="details_compatibility_gms_required_title">Google Play-ren zerbitzuak behar ditu</string>
     <string name="plexus_progress">Bateragarritasuna aztertzen…</string>
     <string name="details_compatibility_title">Bateragarritasuna</string>
+    <string name="no_apps_available">Aplikazio eskuragarririk ez</string>
 </resources>
