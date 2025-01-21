@@ -243,8 +243,8 @@
     <string name="title_advanced">Napredno</string>
     <string name="download_eta_hrs">Preostalo: %1$d h %2$d min %3$d s</string>
     <string name="download_eta_min">Preostalo: %1$d min %2$d s</string>
-    <string name="download_paused">Zaustavljeno •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="download_progress">Preuzimanje •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_paused">Zaustavljeno • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_progress">Preuzimanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Obavijesti</string>
     <string name="onboarding_permission_notifications_desc">Poüalji obavijesti o stanju instalacije</string>
     <string name="session_enjoy">Prijavi se i uživaj.</string>
@@ -319,7 +319,7 @@
     <string name="toast_permission_installer_required">Najprije moraš dodijeliti dozvolu za instaliranje</string>
     <string name="action_uninstall_success">Uspješno deinstalirano</string>
     <string name="onboarding_permission_installer_legacy_desc">Dozvoli instaliranje aplikacija iz nepoznatih izvora</string>
-    <string name="remove_dispenser_summary">Želiš li ukloniti dozator „<xliff:g id="url">%1$s</xliff:g>”?</string>
+    <string name="remove_dispenser_summary">Želiš li ukloniti dozator \\<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="remove">Ukloni</string>
     <string name="toast_fav_export_failed">Izvoz omiljenih nije uspio!</string>
     <string name="pref_aurora_only_desc">Traži samo aktualiziranja za aplikacije koje su instalirane pomoću Aurora Store</string>
@@ -420,4 +420,6 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplikacija instalirano</string>
     <string name="details_compatibility_gms_required_title">Zahtijeva Google Play usluge</string>
     <string name="plexus_progress">Provjera kompatibilnosti …</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Ova aplikacija radi bez Googleove vlasničke biblioteke. Međutim, još uvijek može trebati druge biblioteke trećih strana da bi pravilno radila.</string>
+    <string name="no_apps_available">Nema dostupnih aplikacija</string>
 </resources>
