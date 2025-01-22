@@ -418,11 +418,11 @@
     <string name="details_compatibility_gms_required_title">Требует Сервисы Google Play</string>
     <string name="details_compatibility_gms_required_subtitle">Вам может потребоваться установить проприетарную библиотеку Google или FOSS реализацию, такую как microG.</string>
     <string name="details_compatibility_gms_not_required_title">Работает без Сервисов Google Play</string>
-    <string name="details_compatibility_gms_not_required_subtitle">Данное приложение работает без проприетарной библиотеки Google. Тем не менее, оно всё ещё может требовать другие сторонние библиотеки для правильной работы.</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Данное приложение работает без проприетарной библиотеки Google. Тем не менее, оно все еще может требовать другие сторонние библиотеки для правильной работы.</string>
     <string name="details_compatibility_status_compatible">Совместимо: Работает без каких-либо проблем</string>
     <string name="details_compatibility_status_limited">Ограничено: Работает только с ограниченным функционалом</string>
     <string name="details_compatibility_status_unsupported">Не поддерживается: Неработоспособно</string>
-    <string name="details_compatibility_status_unknown">Неизвестно: Ещё не проверено</string>
+    <string name="details_compatibility_status_unknown">Неизвестно: Еще не проверено</string>
     <string name="installed_apps_size">Установлено <xliff:g id="installed_apps_size">%1$d</xliff:g> приложений</string>
     <string name="details_compatibility_microg">С Проектом microG</string>
     <string name="details_compatibility_no_gms">Без Сервисов Google Play</string>

@@ -426,4 +426,5 @@
     <string name="details_compatibility_gms_required_subtitle">你可能需要安装 Google 专有的库或像 microG 这样的 FOSS 再实现。</string>
     <string name="details_compatibility_status_compatible">兼容：没有任何问题可以工作</string>
     <string name="installed_apps_size">安装了 <xliff:g id="installed_apps_size">%1$d</xliff:g> 应用</string>
+    <string name="no_apps_available">无应用可用</string>
 </resources>
