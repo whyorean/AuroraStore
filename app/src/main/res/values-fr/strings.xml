@@ -291,7 +291,7 @@
     <string name="pref_aurora_only">Seulement les applis d’Aurora Store</string>
     <string name="pref_network_proxy_title">Mandataire</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
-    <string name="pref_aurora_only_desc">Ne vérifier la présence de mises à jour que pour les applis installées par Aurora Store</string>
+    <string name="pref_aurora_only_desc">Ne chercher les mises à jour que pour les applis installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
     <string name="title_apps_sale_provider">Fournisseur – bestappsales.com</string>
@@ -303,11 +303,11 @@
     <string name="pref_vending_version_title">Version de Google Play</string>
     <string name="onboarding_permission_doze">Téléchargements en arrière-plan</string>
     <string name="pref_updates_auto">Mise à jour automatique des applis</string>
-    <string name="pref_updates_auto_notify">Vérifier et signaler la présence de mises à jour</string>
+    <string name="pref_updates_auto_notify">Chercher les mises à jour et les signaler</string>
     <string name="pref_updates_auto_off">Ne pas mettre les applis à jour automatiquement</string>
     <string name="onboarding_permission_doze_desc">Autoriser Aurora Store à télécharger et à mettre à jour les applis en arrière-plan</string>
     <string name="pref_updates_auto_desc">Configurer les mises à jour automatiques</string>
-    <string name="pref_updates_auto_install">Vérifier la présence de mises à jour et les installer automatiquement</string>
+    <string name="pref_updates_auto_install">Chercher les mises à jour et les installer automatiquement</string>
     <string name="action_request_analysis">Demander une nouvelle analyse</string>
     <string name="failed_apk_export">Échec d’exportation des APK</string>
     <string name="download_clear_finished">Effacer les terminés</string>
@@ -367,7 +367,7 @@
     <string name="toast_fav_export_success">Les favoris ont été exportés</string>
     <string name="action_logout_confirmation_title">Vous déconnecter ?</string>
     <string name="action_logout_confirmation_message">Voulez-vous vous déconnecter ?</string>
-    <string name="check_updates">Vérifier la présence de mises à jour</string>
+    <string name="check_updates">Chercher les mises à jour</string>
     <string name="details_data_safety_title">Sécurité des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l’installation d’applis de sources inconnues</string>
     <string name="toast_permission_installer_required">Vous devez d’abord accorder l’autorisation au programme d’installation</string>
@@ -393,7 +393,7 @@
     <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver cette appli</string>
     <string name="notification_channel_account">Notification liée au compte</string>
     <string name="authentication_required_title">L’authentification est requise</string>
-    <string name="checking_updates">Vérification de la présence de mises à jour</string>
+    <string name="checking_updates">Recherche de mises à jour</string>
     <string name="made_with_love">Conçu en Inde avec <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="default_spoof">Par défaut</string>
     <string name="available_spoof">Proposées</string>
