@@ -23,28 +23,27 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.view.ui.commons.CategoryFragment
 import com.aurora.store.view.ui.commons.ForYouFragment
 import com.aurora.store.view.ui.commons.TopChartContainerFragment
+import com.aurora.store.viewmodel.games.GamesContainerViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
 
-    @Inject
-    lateinit var authProvider: AuthProvider
+    private val viewModel: GamesContainerViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -77,7 +76,7 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         binding.pager.adapter = ViewPagerAdapter(
             childFragmentManager,
             viewLifecycleOwner.lifecycle,
-            !authProvider.isAnonymous,
+            !viewModel.authProvider.isAnonymous,
             isForYouEnabled
         )
 

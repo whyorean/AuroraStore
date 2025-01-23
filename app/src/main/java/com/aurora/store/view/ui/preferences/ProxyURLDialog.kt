@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.showKeyboard
 import com.aurora.extensions.toast
@@ -15,17 +16,15 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
 import com.aurora.store.util.save
+import com.aurora.store.viewmodel.preferences.ProxyURLViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
-import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProxyURLDialog: DialogFragment() {
 
-    @Inject
-    lateinit var gson: Gson
+    private val viewModel: ProxyURLViewModel by viewModels()
 
     private val textInputLayout: TextInputLayout?
         get() = dialog?.findViewById(R.id.textInputLayout)
@@ -67,7 +66,7 @@ class ProxyURLDialog: DialogFragment() {
         val proxyInfo = CommonUtil.parseProxyUrl(url)
         if (proxyInfo != null) {
             save(PREFERENCE_PROXY_URL, url)
-            save(PREFERENCE_PROXY_INFO, gson.toJson(proxyInfo))
+            save(PREFERENCE_PROXY_INFO, viewModel.gson.toJson(proxyInfo))
             toast(R.string.toast_proxy_success)
             findNavController().navigate(R.id.forceRestartDialog)
             return

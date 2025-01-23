@@ -32,12 +32,10 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.installer.AppInstaller
-import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.databinding.SheetAppMenuBinding
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.viewmodel.sheets.SheetsViewModel
+import com.aurora.store.viewmodel.sheets.AppMenuViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
@@ -46,10 +44,7 @@ class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
         const val TAG = "APP_MENU_SHEET"
     }
 
-    @Inject
-    lateinit var blacklistProvider: BlacklistProvider
-
-    private val viewModel: SheetsViewModel by viewModels()
+    private val viewModel: AppMenuViewModel by viewModels()
     private val args: AppMenuSheetArgs by navArgs()
 
     private val exportMimeType = "application/zip"
@@ -67,7 +62,7 @@ class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val isBlacklisted: Boolean = blacklistProvider.isBlacklisted(args.app.packageName)
+        val isBlacklisted: Boolean = viewModel.blacklistProvider.isBlacklisted(args.app.packageName)
 
         with(binding.navigationView) {
             //Switch strings for Add/Remove Blacklist
@@ -89,10 +84,10 @@ class AppMenuSheet : BaseDialogSheet<SheetAppMenuBinding>() {
                     R.id.action_blacklist -> {
 
                         if (isBlacklisted) {
-                            blacklistProvider.whitelist(args.app.packageName)
+                            viewModel.blacklistProvider.whitelist(args.app.packageName)
                             requireContext().toast(R.string.toast_apk_whitelisted)
                         } else {
-                            blacklistProvider.blacklist(args.app.packageName)
+                            viewModel.blacklistProvider.blacklist(args.app.packageName)
                             requireContext().toast(R.string.toast_apk_blacklisted)
                         }
 

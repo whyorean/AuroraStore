@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.aurora.Constants
@@ -32,17 +33,14 @@ import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.epoxy.views.HeaderViewModel_
 import com.aurora.store.view.epoxy.views.details.ExodusViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.details.DetailsExodusViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.json.JSONObject
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailsExodusFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
 
+    private val viewModel: DetailsExodusViewModel by viewModels()
     private val args: DetailsExodusFragmentArgs by navArgs()
-
-    @Inject
-    lateinit var exodusTrackers: JSONObject
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -80,7 +78,7 @@ class DetailsExodusFragment : BaseFragment<FragmentGenericWithToolbarBinding>() 
 
     private fun getExodusTrackersFromReport(report: Report): List<ExodusTracker> {
         val trackerObjects = report.trackers.map {
-            exodusTrackers.getJSONObject(it.toString())
+            viewModel.exodusTrackers.getJSONObject(it.toString())
         }.toList()
 
         return trackerObjects.map {

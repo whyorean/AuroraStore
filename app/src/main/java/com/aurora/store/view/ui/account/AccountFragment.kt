@@ -21,6 +21,7 @@ package com.aurora.store.view.ui.account
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import coil3.load
 import coil3.request.placeholder
@@ -31,17 +32,15 @@ import com.aurora.Constants.URL_LICENSE
 import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.store.R
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentAccountBinding
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.account.AccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class AccountFragment : BaseFragment<FragmentAccountBinding>() {
 
-    @Inject
-    lateinit var authProvider: AuthProvider
+    private val viewModel: AccountViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,15 +55,16 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>() {
             binding.chipTos.setOnClickListener { browse(URL_TOS) }
         }
 
-        authProvider.authData?.userProfile?.let {
-            val avatar = if (authProvider.isAnonymous) R.mipmap.ic_launcher else it.artwork.url
+        viewModel.authProvider.authData?.userProfile?.let {
+            val avatar =
+                if (viewModel.authProvider.isAnonymous) R.mipmap.ic_launcher else it.artwork.url
             binding.imgAvatar.load(avatar) {
                 placeholder(R.drawable.bg_placeholder)
                 transformations(RoundedCornersTransformation(32F))
             }
-            binding.txtName.text = if (authProvider.isAnonymous) "Anonymous" else it.name
+            binding.txtName.text = if (viewModel.authProvider.isAnonymous) "Anonymous" else it.name
             binding.txtEmail.text =
-                if (authProvider.isAnonymous) "anonymous@gmail.com" else it.email
+                if (viewModel.authProvider.isAnonymous) "anonymous@gmail.com" else it.email
         }
 
         binding.btnLogout.addOnClickListener {

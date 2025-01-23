@@ -30,7 +30,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UpdatesViewModel @Inject constructor(
-    private val updateHelper: UpdateHelper,
+    val updateHelper: UpdateHelper,
     private val downloadHelper: DownloadHelper,
 ) : ViewModel() {
 

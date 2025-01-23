@@ -24,6 +24,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat.Type.displayCutout
@@ -34,30 +35,23 @@ import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.aurora.extensions.isNAndAbove
-import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.databinding.ActivityMainBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
-import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var networkProvider: NetworkProvider
-
-    @Inject
-    lateinit var updateHelper: UpdateHelper
+    private val viewModel: MainViewModel by viewModels()
 
     private lateinit var B: ActivityMainBinding
 
@@ -91,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         if (isNAndAbove && !PackageUtil.isTv(this)) {
-            networkProvider.status.onEach { networkStatus ->
+            viewModel.networkProvider.status.onEach { networkStatus ->
                 when (networkStatus) {
                     NetworkStatus.AVAILABLE -> {
                         if (!supportFragmentManager.isDestroyed && isIntroDone()) {
@@ -152,7 +146,7 @@ class MainActivity : AppCompatActivity() {
 
         // Updates
         lifecycleScope.launch {
-            updateHelper.updates.collectLatest { list ->
+            viewModel.updateHelper.updates.collectLatest { list ->
                 B.navView.getOrCreateBadge(R.id.updatesFragment).apply {
                     isVisible = !list.isNullOrEmpty()
                     number = list?.size ?: 0

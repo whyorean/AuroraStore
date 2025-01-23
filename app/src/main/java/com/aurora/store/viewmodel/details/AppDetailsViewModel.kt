@@ -19,6 +19,7 @@ import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.util.PackageUtil
@@ -40,6 +41,7 @@ import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
+    val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,
     private val appDetailsHelper: AppDetailsHelper,
     private val reviewsHelper: ReviewsHelper,

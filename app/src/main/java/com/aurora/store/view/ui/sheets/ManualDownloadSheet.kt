@@ -32,14 +32,14 @@ import coil3.transform.RoundedCornersTransformation
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.databinding.SheetManualDownloadBinding
-import com.aurora.store.viewmodel.sheets.SheetsViewModel
+import com.aurora.store.viewmodel.sheets.ManualDownloadViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ManualDownloadSheet : BaseDialogSheet<SheetManualDownloadBinding>() {
-    private val viewModel: SheetsViewModel by viewModels()
+    private val viewModel: ManualDownloadViewModel by viewModels()
     private val args: ManualDownloadSheetArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

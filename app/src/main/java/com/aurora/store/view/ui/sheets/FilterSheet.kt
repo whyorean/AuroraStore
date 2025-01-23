@@ -22,25 +22,24 @@ package com.aurora.store.view.ui.sheets
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.aurora.store.R
 import com.aurora.store.data.model.Filter
-import com.aurora.store.data.providers.FilterProvider
 import com.aurora.store.databinding.SheetFilterBinding
+import com.aurora.store.viewmodel.sheets.FilterViewModel
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
 
-    @Inject
-    lateinit var filterProvider: FilterProvider
+    private val viewModel: FilterViewModel by viewModels()
 
     private lateinit var filter: Filter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        filter = filterProvider.getSavedFilter()
+        filter = viewModel.filterProvider.getSavedFilter()
 
         attachSingleChips()
         attachMultipleChips()
@@ -48,7 +47,7 @@ class FilterSheet : BaseDialogSheet<SheetFilterBinding>() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        filterProvider.saveFilter(filter)
+        viewModel.filterProvider.saveFilter(filter)
     }
 
     private fun attachSingleChips() {

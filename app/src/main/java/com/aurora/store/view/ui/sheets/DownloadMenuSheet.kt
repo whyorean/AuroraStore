@@ -30,22 +30,20 @@ import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.data.helper.DownloadHelper
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.SheetDownloadMenuBinding
 import com.aurora.store.util.PathUtil
-import com.aurora.store.viewmodel.sheets.SheetsViewModel
+import com.aurora.store.viewmodel.sheets.DownloadMenuViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
 
     private val TAG = DownloadMenuSheet::class.java.simpleName
-    private val viewModel: SheetsViewModel by viewModels()
+
+    private val viewModel: DownloadMenuViewModel by viewModels()
     private val args: DownloadMenuSheetArgs by navArgs()
     private val playStoreURL = "https://play.google.com/store/apps/details?id="
 
@@ -60,12 +58,6 @@ class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
             }
             dismissAllowingStateLoss()
         }
-
-    @Inject
-    lateinit var downloadHelper: DownloadHelper
-
-    @Inject
-    lateinit var appInstaller: AppInstaller
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,14 +93,14 @@ class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
 
                     R.id.action_cancel -> {
                         findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
-                            downloadHelper.cancelDownload(args.download.packageName)
+                            viewModel.downloadHelper.cancelDownload(args.download.packageName)
                         }
                         dismissAllowingStateLoss()
                     }
 
                     R.id.action_clear -> {
                         findViewTreeLifecycleOwner()?.lifecycleScope?.launch(NonCancellable) {
-                            downloadHelper.clearDownload(
+                            viewModel.downloadHelper.clearDownload(
                                 args.download.packageName,
                                 args.download.versionCode
                             )
@@ -127,7 +119,7 @@ class DownloadMenuSheet : BaseDialogSheet<SheetDownloadMenuBinding>() {
 
     private fun install() {
         try {
-            appInstaller.getPreferredInstaller().install(args.download)
+            viewModel.appInstaller.getPreferredInstaller().install(args.download)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to install ${args.download.packageName}", exception)
             if (exception is NullPointerException) {

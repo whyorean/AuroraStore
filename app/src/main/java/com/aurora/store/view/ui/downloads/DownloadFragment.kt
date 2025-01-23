@@ -22,30 +22,29 @@ package com.aurora.store.view.ui.downloads
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants.GITLAB_URL
 import com.aurora.extensions.browse
 import com.aurora.store.R
-import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.FragmentDownloadBinding
 import com.aurora.store.view.epoxy.views.DownloadViewModel_
 import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.downloads.DownloadViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.Date
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
 
-    @Inject
-    lateinit var downloadHelper: DownloadHelper
+    private val viewModel: DownloadViewModel by viewModels()
 
     private lateinit var downloadList: List<Download>
 
@@ -59,19 +58,19 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
                 when (it.itemId) {
                     R.id.action_force_clear_all -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
-                            downloadHelper.clearAllDownloads()
+                            viewModel.downloadHelper.clearAllDownloads()
                         }
                     }
 
                     R.id.action_cancel_all -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
-                            downloadHelper.cancelAll()
+                            viewModel.downloadHelper.cancelAll()
                         }
                     }
 
                     R.id.action_clear_completed -> {
                         viewLifecycleOwner.lifecycleScope.launch(NonCancellable) {
-                            downloadHelper.clearFinishedDownloads()
+                            viewModel.downloadHelper.clearFinishedDownloads()
                         }
                     }
                 }
@@ -80,7 +79,7 @@ class DownloadFragment : BaseFragment<FragmentDownloadBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            downloadHelper.downloadsList.collectLatest {
+            viewModel.downloadHelper.downloadsList.collectLatest {
                 downloadList = it
                 updateController(it.reversed())
             }

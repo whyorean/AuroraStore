@@ -25,6 +25,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
@@ -32,7 +33,6 @@ import com.aurora.Constants
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
-import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
@@ -56,16 +56,15 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.viewmodel.onboarding.OnboardingViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jakewharton.processphoenix.ProcessPhoenix
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
-    @Inject
-    lateinit var updateHelper: UpdateHelper
+    private val viewModel: OnboardingViewModel by viewModels()
 
     private var lastPosition = 0
 
@@ -193,6 +192,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
             else -> UpdateMode.DISABLED
         }
         save(PREFERENCE_UPDATES_AUTO, updateMode.ordinal)
-        updateHelper.scheduleAutomatedCheck()
+        viewModel.updateHelper.scheduleAutomatedCheck()
     }
 }

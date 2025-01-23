@@ -22,12 +22,12 @@ package com.aurora.store.view.ui.preferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.ListPreference
 import androidx.preference.SeekBarPreference
 import androidx.preference.SwitchPreferenceCompat
 import com.aurora.store.R
-import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.util.Preferences
@@ -37,14 +37,13 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
+import com.aurora.store.viewmodel.all.UpdatesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class UpdatesPreference : BasePreferenceFragment() {
 
-    @Inject
-    lateinit var updateHelper: UpdateHelper
+    private val viewModel: UpdatesViewModel by viewModels()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
@@ -56,7 +55,7 @@ class UpdatesPreference : BasePreferenceFragment() {
             when (UpdateMode.entries[newValue.toString().toInt()]) {
                 UpdateMode.DISABLED -> {
                     updateCheckIntervalPref?.isEnabled = false
-                    updateHelper.cancelAutomatedCheck()
+                    viewModel.updateHelper.cancelAutomatedCheck()
                     requireContext().save(PREFERENCE_UPDATES_AUTO, 0)
                     true
                 }
@@ -64,14 +63,14 @@ class UpdatesPreference : BasePreferenceFragment() {
                 UpdateMode.CHECK_AND_NOTIFY -> {
                     if (permissionProvider.isGranted(PermissionType.POST_NOTIFICATIONS)) {
                         updateCheckIntervalPref?.isEnabled = true
-                        updateHelper.scheduleAutomatedCheck()
+                        viewModel.updateHelper.scheduleAutomatedCheck()
                         true
                     } else {
                         permissionProvider.request(PermissionType.POST_NOTIFICATIONS) {
                             if (it) {
                                 updateCheckIntervalPref?.isEnabled = true
                                 requireContext().save(PREFERENCE_UPDATES_AUTO, 1)
-                                updateHelper.scheduleAutomatedCheck()
+                                viewModel.updateHelper.scheduleAutomatedCheck()
                                 activity?.recreate()
                             }
                         }
@@ -82,14 +81,14 @@ class UpdatesPreference : BasePreferenceFragment() {
                 UpdateMode.CHECK_AND_INSTALL -> {
                     if (permissionProvider.isGranted(PermissionType.DOZE_WHITELIST)) {
                         updateCheckIntervalPref?.isEnabled = true
-                        updateHelper.scheduleAutomatedCheck()
+                        viewModel.updateHelper.scheduleAutomatedCheck()
                         true
                     } else {
                         permissionProvider.request(PermissionType.DOZE_WHITELIST) {
                             if (it) {
                                 updateCheckIntervalPref?.isEnabled = true
                                 requireContext().save(PREFERENCE_UPDATES_AUTO, 2)
-                                updateHelper.scheduleAutomatedCheck()
+                                viewModel.updateHelper.scheduleAutomatedCheck()
                                 activity?.recreate()
                             }
                         }
@@ -104,7 +103,7 @@ class UpdatesPreference : BasePreferenceFragment() {
         findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)?.apply {
             isEnabled = Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO) != 0
             setOnPreferenceChangeListener { _, _ ->
-                updateHelper.updateAutomatedCheck()
+                viewModel.updateHelper.updateAutomatedCheck()
                 true
             }
         }
@@ -113,21 +112,21 @@ class UpdatesPreference : BasePreferenceFragment() {
             ?.setOnPreferenceChangeListener { _, newValue ->
                 findPreference<SwitchPreferenceCompat>(PREFERENCE_FILTER_FDROID)?.isEnabled =
                     !newValue.toString().toBoolean()
-                updateHelper.checkUpdatesNow()
+                viewModel.updateHelper.checkUpdatesNow()
                 true
             }
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_FILTER_FDROID)?.apply {
             isEnabled = !Preferences.getBoolean(requireContext(), PREFERENCE_FILTER_AURORA_ONLY)
             setOnPreferenceChangeListener { _, _ ->
-                updateHelper.checkUpdatesNow()
+                viewModel.updateHelper.checkUpdatesNow()
                 true
             }
         }
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_UPDATES_EXTENDED)
             ?.setOnPreferenceChangeListener { _, _ ->
-                updateHelper.checkUpdatesNow()
+                viewModel.updateHelper.checkUpdatesNow()
                 true
             }
     }

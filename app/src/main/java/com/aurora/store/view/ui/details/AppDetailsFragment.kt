@@ -70,7 +70,6 @@ import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
@@ -94,7 +93,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import java.util.Locale
-import javax.inject.Inject
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @AndroidEntryPoint
@@ -104,9 +102,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private val detailsClusterViewModel: DetailsClusterViewModel by activityViewModels()
 
     private val args: AppDetailsFragmentArgs by navArgs()
-
-    @Inject
-    lateinit var authProvider: AuthProvider
 
     private lateinit var app: App
     private lateinit var iconDrawable: Drawable
@@ -198,7 +193,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     // App User Review
                     // We can not fetch it outside of this block, as we need the testing program status
-                    if (!authProvider.isAnonymous && app.isInstalled) {
+                    if (!viewModel.authProvider.isAnonymous && app.isInstalled) {
                         viewModel.fetchUserAppReview(app)
                     }
 
@@ -680,7 +675,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
 
             binding.layoutDetailsApp.btnPrimaryAction.setOnClickListener {
-                if (authProvider.isAnonymous && !app.isFree) {
+                if (viewModel.authProvider.isAnonymous && !app.isFree) {
                     toast(R.string.toast_purchase_blocked)
                     return@setOnClickListener
                 } else if (app.versionCode == 0) {
@@ -744,7 +739,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         updateAppPermission(app)
 
         // Allow users to handle beta subscriptions, if logged in by own account.
-        if (!authProvider.isAnonymous) {
+        if (!viewModel.authProvider.isAnonymous) {
             // Update app name to the testing program name, if subscribed
             app.testingProgram?.let {
                 if (it.isAvailable && it.isSubscribed) {
@@ -853,7 +848,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun updateUserReview(review: Review? = null) {
         binding.layoutDetailsReview.apply {
-            layoutUserReview.isVisible = !authProvider.isAnonymous
+            layoutUserReview.isVisible = !viewModel.authProvider.isAnonymous
             btnPostReview.setOnClickListener {
                 viewModel.postAppReview(
                     app.packageName,

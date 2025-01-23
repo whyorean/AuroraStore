@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastForEach
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
@@ -59,18 +60,16 @@ import com.aurora.extensions.getStyledAttributeColor
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.MR
 import com.aurora.store.R
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.theme.AuroraTheme
+import com.aurora.store.viewmodel.commons.MoreViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MoreDialogFragment : DialogFragment() {
 
-    @Inject
-    lateinit var authProvider: AuthProvider
+    private val viewModel: MoreViewModel by viewModels()
 
     private var primaryColor: Color = Color.White
     private var onPrimaryColor: Color = Color.Black
@@ -240,10 +239,10 @@ class MoreDialogFragment : DialogFragment() {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
                         .data(
-                            if (authProvider.isAnonymous) {
+                            if (viewModel.authProvider.isAnonymous) {
                                 R.mipmap.ic_launcher
                             } else {
-                                authProvider.authData?.userProfile?.artwork?.url
+                                viewModel.authProvider.authData?.userProfile?.artwork?.url
                             }
                         )
                         .crossfade(true)
@@ -260,10 +259,10 @@ class MoreDialogFragment : DialogFragment() {
                     horizontalAlignment = Alignment.Start
                 ) {
                     Text(
-                        text = if (authProvider.isAnonymous) {
+                        text = if (viewModel.authProvider.isAnonymous) {
                             stringResource(R.string.account_anonymous)
                         } else {
-                            authProvider.authData?.userProfile?.name
+                            viewModel.authProvider.authData?.userProfile?.name
                                 ?: stringResource(R.string.status_unavailable)
                         },
                         fontWeight = FontWeight.Normal,
@@ -273,10 +272,10 @@ class MoreDialogFragment : DialogFragment() {
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
-                        text = if (authProvider.isAnonymous) {
+                        text = if (viewModel.authProvider.isAnonymous) {
                             stringResource(R.string.account_anonymous_email)
                         } else {
-                            authProvider.authData?.userProfile?.email
+                            viewModel.authProvider.authData?.userProfile?.email
                                 ?: stringResource(R.string.status_unavailable)
                         },
                         fontWeight = FontWeight.Light,
