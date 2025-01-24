@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_wiki_title">વિકિ</string>
+    <string name="about_wiki_summary">વારંવાર પૂછાતા પ્રશ્નો, મુશ્કેલીનિવારણ પગલાં અને વધુ ના જવાબો શોધો</string>
+    <string name="about_bhim">BHIM - UPI</string>
+    <string name="about_bhim_summary">UPI દ્વારા દાન કરો</string>
+</resources>
