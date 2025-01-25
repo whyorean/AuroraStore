@@ -48,6 +48,7 @@ androidx-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "junitV
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifeVersion" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifeVersion" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navigation-fragment-compose = { module = "androidx.navigation:navigation-fragment-compose", version.ref = "navVersion" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navVersion" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navVersion" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceVersion" }
