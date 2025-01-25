@@ -1,4 +1,9 @@
-package com.aurora.store.view.theme
+/*
+ * SPDX-FileCopyrightText: 2024-2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+package com.aurora.store.compose.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -13,6 +18,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import com.aurora.store.R
 
+/**
+ * App theme for Aurora Store based on [MaterialTheme]
+ */
 @Composable
 fun AuroraTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colorScheme = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

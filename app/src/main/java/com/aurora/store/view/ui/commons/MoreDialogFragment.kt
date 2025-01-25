@@ -61,7 +61,7 @@ import com.aurora.extensions.setAppTheme
 import com.aurora.store.MR
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
-import com.aurora.store.view.theme.AuroraTheme
+import com.aurora.store.compose.theme.AuroraTheme
 import com.aurora.store.viewmodel.commons.MoreViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
