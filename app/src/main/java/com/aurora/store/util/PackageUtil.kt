@@ -55,12 +55,31 @@ object PackageUtil {
     private const val VERSION_CODE_MICRO_G_HUAWEI = 240913007
 
     fun getAllValidPackages(context: Context): List<PackageInfo> {
-        val sharedLibs = context.packageManager.systemSharedLibraryNames ?: emptyArray()
-        return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
-            .filter { it.isValidApp(context.packageManager) }
+        val packageManager = context.packageManager
+        val packageInfoList = mutableListOf<PackageInfo>()
+
+        var offset = 0
+        val limit = 60
+        val total = packageManager.getInstalledPackages(0).size
+
+        val sharedLibs = packageManager.systemSharedLibraryNames ?: emptyArray()
+
+        while (offset < total) {
+            val packages = packageManager
+                .getInstalledPackages(PackageManager.GET_META_DATA)
+                .subList(
+                    offset,
+                    (offset + limit).coerceAtMost(total)
+                )
+            packageInfoList.addAll(packages)
+            offset += limit
+        }
+
+        return packageInfoList
+            .filter { it.isValidApp(packageManager) }
             .filterNot { it.packageName in sharedLibs }
             .sortedBy {
-                it.applicationInfo!!.loadLabel(context.packageManager).toString()
+                it.applicationInfo!!.loadLabel(packageManager).toString()
                     .lowercase(Locale.getDefault())
             }
     }
