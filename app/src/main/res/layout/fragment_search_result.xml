@@ -74,7 +74,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/action_filter"
         app:icon="@drawable/ic_filter" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

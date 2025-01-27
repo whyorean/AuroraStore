@@ -72,7 +72,7 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
         ViewCompat.setOnApplyWindowInsetsListener(binding.filterFab) { _, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
             binding.filterFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin += insets.bottom
+                bottomMargin = insets.bottom + resources.getDimensionPixelSize(R.dimen.margin_normal)
             }
             WindowInsetsCompat.CONSUMED
         }
