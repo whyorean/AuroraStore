@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_wiki_title">વિકિ</string>
     <string name="about_wiki_summary">વારંવાર પૂછાતા પ્રશ્નો, મુશ્કેલીનિવારણ પગલાં અને વધુ ના જવાબો શોધો</string>
     <string name="about_bhim">BHIM - UPI</string>
@@ -20,4 +20,21 @@
     <string name="about_paypal">પેપાલ</string>
     <string name="about_paypal_summary">પેપાલ દ્વારા દાન કરો</string>
     <string name="about_telegram">ટેલિગ્રામ</string>
+    <string name="made_with_love">ભારતમાં <xliff:g id="heart_emoji">%1$s</xliff:g> થી બનેલું</string>
+    <string name="about_xda">XDA Forums</string>
+    <string name="account_anonymous">અનામિક</string>
+    <string name="account_google">ગૂગલ</string>
+    <string name="account_logout">Aurora માંથી લોગ આઉટ કરો</string>
+    <string name="action_back">પાછા જાઓ</string>
+    <string name="action_blacklist">વર્જ્યસૂચિ</string>
+    <string name="action_blacklist_add">વર્જ્યસૂચિમાં ઉમેરો</string>
+    <string name="action_cancel">રદ કરો</string>
+    <string name="action_clear">સાફ કરો</string>
+    <string name="action_close">બંધ કરો</string>
+    <string name="account_login_using">આના દ્વારા પ્રવેશ નોંધો</string>
+    <string name="session_login">કૃપા કરીને તમારા ગૂગલ પ્લે ના ખાતામાં પ્રવેશ નોંધો</string>
+    <string name="title_about">અનુપ્રયોગના વિશે</string>
+    <string name="title_blacklist_manager">વર્જ્યસૂચિનું વ્યવસ્થાપક</string>
+    <string name="title_spoof_manager">છદ્માવરણ વ્યવસ્થાપક</string>
+    <string name="title_settings">ગોઠવણિઓ</string>
 </resources>
