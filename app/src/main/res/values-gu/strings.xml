@@ -4,4 +4,20 @@
     <string name="about_wiki_summary">વારંવાર પૂછાતા પ્રશ્નો, મુશ્કેલીનિવારણ પગલાં અને વધુ ના જવાબો શોધો</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bhim_summary">UPI દ્વારા દાન કરો</string>
+    <string name="about_bitcoin_btc_summary">બિટકોઇન (BTC) દ્વારા દાન કરો</string>
+    <string name="about_gitlab_summary">ગિટલેબ પર Aurora OSS માંથી Aurora OSS નો Source Code મેળવો.</string>
+    <string name="about_telegram_summary">ચર્ચાઓ અથવા સૂચનો માટે Aurora Support જૂથમાં જોડાઓ.</string>
+    <string name="about_bitcoin_bch">બિટકોઇન કેશ</string>
+    <string name="about_bitcoin_bch_summary">બિટકોઇન કેશ (BCH) દ્વારા દાન કરો</string>
+    <string name="about_bitcoin_btc">બિટકોઇન</string>
+    <string name="about_bitcoin_eth">ઇથેરિયમ</string>
+    <string name="about_bitcoin_eth_summary">ઇથેરિયમ (ETH) દ્વારા દાન કરો</string>
+    <string name="about_fdroid">ઍફ઼-ડ્રોઇડ</string>
+    <string name="about_fdroid_summary">ઍફ઼-ડ્રોઇડ દ્વારા Aurora સ્ટોર મેળવો.</string>
+    <string name="about_gitlab">ગિટલેબ</string>
+    <string name="about_libera">લિબેરાપે</string>
+    <string name="about_libera_summary">લિબેરાપે પર આશ્રયદાતા બનો</string>
+    <string name="about_paypal">પેપાલ</string>
+    <string name="about_paypal_summary">પેપાલ દ્વારા દાન કરો</string>
+    <string name="about_telegram">ટેલિગ્રામ</string>
 </resources>
