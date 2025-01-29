@@ -411,4 +411,20 @@
     <string name="authentication_required_title">Este necesară autentificarea</string>
     <string name="authentication_required_unarchive">Conectează-te la contul Google Play pentru a dezarhiva aplicația!</string>
     <string name="action_select_all">Selectează tot</string>
+    <string name="no_apps_available">Nu există aplicații disponibile</string>
+    <string name="details_compatibility_title">Compatibilitate</string>
+    <string name="details_compatibility_gms_required_title">Necesită Servicii Google Play</string>
+    <string name="details_compatibility_microg">Cu proiectul microG</string>
+    <string name="details_compatibility_gms_not_required_title">Funcționează fără serviciile Google Play</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Această aplicație funcționează fără biblioteca proprietară de la a Google. Cu toate acestea, este posibil să solicite în continuare alte biblioteci terțe să funcționeze corect.</string>
+    <string name="details_compatibility_gms_required_subtitle">Este posibil să fie nevoie să instalezi biblioteca proprietară de la Google sau o reimplementare FOSS, cum ar fi Microg.</string>
+    <string name="details_compatibility_no_gms">Fără serviciile Google Play</string>
+    <string name="details_compatibility_status_compatible">Compatibil: funcționează fără probleme</string>
+    <string name="details_compatibility_status_limited">Limitat: funcționează cu caracteristici limitate</string>
+    <string name="details_compatibility_status_unsupported">Neacceptat: nu funcționează</string>
+    <string name="details_compatibility_status_unknown">Necunoscut: nu este verificat încă</string>
+    <string name="unable_to_open">Imposibil de deschis aplicația</string>
+    <string name="plexus_powered">Alimentat de Plex</string>
+    <string name="plexus_progress">Verificarea compatibilității…</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplicații instalate</string>
 </resources>
