@@ -37,4 +37,6 @@
     <string name="title_blacklist_manager">વર્જ્યસૂચિનું વ્યવસ્થાપક</string>
     <string name="title_spoof_manager">છદ્માવરણ વ્યવસ્થાપક</string>
     <string name="title_settings">ગોઠવણિઓ</string>
+    <string name="bad_request">આંતરિક ભૂલ! કૃપા કરીને થોડા સમય પછી ફરી પ્રયાસ કરો</string>
+    <string name="about_aurora_store_subtitle">Aurora Store વિશે વધુ જાણો</string>
 </resources>
