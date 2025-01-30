@@ -210,7 +210,6 @@
     <string name="toast_proxy_success">代理伺服器設定成功</string>
     <string name="session_scrapped">對上一個工作階段已經報銷</string>
     <string name="title_app_settings">App 設定</string>
-    <string name="title_apps_sale_provider">提供：bestappsales.com</string>
     <string name="toast_proxy_failed">設定唔到代理伺服器</string>
     <string name="pref_network_proxy_enable_desc">等個 app 所有網絡通訊都流經代理伺服器</string>
     <string name="pref_install_mode_title">安裝方法</string>

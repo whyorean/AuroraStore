@@ -107,7 +107,6 @@
     <string name="title_download_manager">Preuzimanja</string>
     <string name="title_device">Uređaj</string>
     <string name="title_blacklist_manager">Upravljač nepoželjnih</string>
-    <string name="title_apps_sale">Aplikacije u rasprodaji</string>
     <string name="title_apps_library">Aplikacije u biblioteci</string>
     <string name="title_apps_games">Moje aplikacije i igre</string>
     <string name="title_apps">Aplikacije</string>
@@ -324,7 +323,6 @@
     <string name="toast_fav_export_failed">Izvoz omiljenih nije uspio!</string>
     <string name="pref_aurora_only_desc">Traži samo aktualiziranja za aplikacije koje su instalirane pomoću Aurora Store</string>
     <string name="title_favourites_manager">Omiljene aplikacije</string>
-    <string name="title_apps_sale_provider">Pružatelj – bestappsales.com</string>
     <string name="export_app_summary_fail">Izvoz paket aplikacije nije uspio</string>
     <string name="action_logout_confirmation_title">Odjaviti se?</string>
     <string name="action_logout_confirmation_message">Stvarno se želiš odjaviti?</string>

@@ -29,7 +29,6 @@
     <string name="tab_trending">Tendances</string>
     <string name="title_apps_games">Mes applis et jeux</string>
     <string name="title_blacklist_manager">Gestionnaire de la liste d’exclusion</string>
-    <string name="title_apps_sale">Applis à prix réduit</string>
     <string name="title_apps_library">Applis dans la logithèque</string>
     <string name="toast_anonymous_restriction">N’est pas proposée pour les comptes anonymes</string>
     <string name="title_settings">Paramètres</string>
@@ -294,7 +293,6 @@
     <string name="pref_aurora_only_desc">Ne chercher les mises à jour que pour les applis installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
-    <string name="title_apps_sale_provider">Fournisseur – bestappsales.com</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
     <string name="toast_proxy_failed">Échec de paramétrage du mandataire</string>
     <string name="pref_network_proxy_enable_desc">Faire transiter tout le trafic de l’appli par le mandataire</string>

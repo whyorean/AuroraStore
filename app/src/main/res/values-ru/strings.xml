@@ -148,7 +148,6 @@
     <string name="title_download_manager">Загрузки</string>
     <string name="title_device">Устройство</string>
     <string name="title_blacklist_manager">Менеджер черного списка</string>
-    <string name="title_apps_sale">Приложения со скидкой</string>
     <string name="title_apps_library">Приложения в библиотеке</string>
     <string name="title_apps_games">Мои приложения и игры</string>
     <string name="title_apps">Приложения</string>
@@ -294,7 +293,6 @@
     <string name="pref_aurora_only_desc">Проверять обновления для приложений, установленных только с Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
     <string name="title_app_settings">Настройки приложения</string>
-    <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Частота автоматических обновлений</string>
     <string name="toast_proxy_failed">Не удалось настроить прокси</string>
     <string name="pref_aurora_only">Только приложения из Aurora Store</string>

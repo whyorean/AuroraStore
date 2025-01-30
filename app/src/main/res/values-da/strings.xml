@@ -200,7 +200,6 @@
     <string name="title_apps">Apps</string>
     <string name="title_apps_games">Mine apps og spil</string>
     <string name="title_apps_library">Apps i biblioteket</string>
-    <string name="title_apps_sale">Apps på tilbud</string>
     <string name="title_blacklist_manager">Sortliste-administrator</string>
     <string name="title_device">Enhed</string>
     <string name="title_download_manager">Downloads</string>
@@ -244,7 +243,6 @@
     <string name="installer_shizuku_unavailable">Shizuku er ikke installeret eller opsat korrekt.</string>
     <string name="pref_updates_incompatible">Inkompatible opdateringer</string>
     <string name="session_init">Gør tingene klar…</string>
-    <string name="title_apps_sale_provider">Leverandør - bestappsales.com</string>
     <string name="onboarding_permission_notifications">Notifikationer</string>
     <string name="action_request_analysis">Anmod om ny analyse</string>
     <string name="download_clear_finished">Ryd færdige</string>

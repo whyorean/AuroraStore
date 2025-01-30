@@ -96,7 +96,6 @@
     <string name="title_download_manager">下載</string>
     <string name="title_device">裝置</string>
     <string name="title_blacklist_manager">黑名單管理</string>
-    <string name="title_apps_sale">特價中的應用程式</string>
     <string name="title_apps_games">我的程式和遊戲</string>
     <string name="title_apps">應用程式</string>
     <string name="title_account_manager">帳戶</string>
@@ -276,7 +275,6 @@
     <string name="pref_updates_incompatible_desc">為不相容或已停用的應用程式，顯示可能安裝失敗的更新</string>
     <string name="pref_aurora_only_desc">僅檢查 Aurora Store 安裝的應用程式更新</string>
     <string name="title_app_settings">應用程式設定</string>
-    <string name="title_apps_sale_provider">提供：bestappsales.com</string>
     <string name="title_search_suggestion">搜尋建議</string>
     <string name="toast_proxy_invalid">無效的代理伺服器網址，請檢查格式！</string>
     <string name="toast_proxy_success">已成功設定代理</string>

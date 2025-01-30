@@ -27,7 +27,6 @@
     <string name="title_download_playstore">Play-butiken</string>
     <string name="title_download_manager">Hämtningar</string>
     <string name="title_device">Enhet</string>
-    <string name="title_apps_sale">Rea-appar</string>
     <string name="title_apps_library">Appar i biblioteket</string>
     <string name="title_apps_games">Mina appar &amp; spel</string>
     <string name="title_apps">Appar</string>
@@ -286,7 +285,6 @@
     <string name="pref_install_mode_shizuku">Installationsprogrammet Shizuku</string>
     <string name="android_market_desc">Android Market var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter, gick i pension 2017.</string>
     <string name="details_ratings_title_hint">Recensera titel</string>
-    <string name="title_apps_sale_provider">Leverantör - bestappsales.com</string>
     <string name="pref_network_proxy_enable">Aktivera proxy</string>
     <string name="pref_network_proxy_url">Proxyn\'s URL</string>
     <string name="pref_updates_check_frequency_desc">Konfigurera intervall för automatiska själv-uppdateringar, i timmar.</string>

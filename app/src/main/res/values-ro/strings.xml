@@ -190,7 +190,6 @@
     <string name="title_apps">Aplicații</string>
     <string name="title_apps_games">Aplicațiile și jocurile mele</string>
     <string name="title_apps_library">Aplicații în bibliotecă</string>
-    <string name="title_apps_sale">Aplicații cu reducere</string>
     <string name="title_blacklist_manager">Managerul listei negre</string>
     <string name="title_device">Dispozitiv</string>
     <string name="toast_developer_setting_failed">Activează setările pentru dezvoltatori în setările dispozitivului pentru a le deschide.</string>
@@ -296,7 +295,6 @@
     <string name="google_play_store_desc">Google Play, cunoscut și ca Google Play Store și anterior Android Market.</string>
     <string name="verifying_new_session">Se verifică noua sesiune</string>
     <string name="title_app_settings">Setările aplicației</string>
-    <string name="title_apps_sale_provider">Furnizor - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Frecvența actualizărilor automate</string>
     <string name="toast_proxy_failed">Nu s-a putut seta proxy</string>
     <string name="pref_network_proxy_enable_desc">Permite întregului trafic din aplicație să treacă prin proxy</string>

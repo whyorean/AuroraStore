@@ -221,7 +221,6 @@
     <string name="app_updater_service_notif_title">Descàrrega d\'aplicacions en segon pla</string>
     <string name="purchase_session_expired">La sessió ha caducat, torna a iniciar una sessió nova.</string>
     <string name="toast_spoof_applied">S\'ha aplicat la falsificació del dispositiu.</string>
-    <string name="title_apps_sale">Aplicacions en oferta</string>
     <string name="title_device">Dispositiu</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_installed">Instal·lat</string>

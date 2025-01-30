@@ -143,7 +143,6 @@
     <string name="details_free">Ingyenes</string>
     <string name="details_dev_website">Honlap</string>
     <string name="details_dev_profile">Fejlesztői profil</string>
-    <string name="title_apps_sale">Akciós alkalmazások</string>
     <string name="toast_developer_setting_failed">Az eszköze beállításaiban kapcsolja be a fejlesztői beállításokat, hogy megnyithassa őket.</string>
     <string name="pref_install_mode_session">Munkamenet-alapú telepítő</string>
     <string name="toast_purchase_blocked">Az alkalmazásvásárlások nem érhetőek el a névtelen fiókok használata során.</string>
@@ -293,7 +292,6 @@
     <string name="pref_aurora_only_desc">Csak az Aurora Store által telepített alkalmazások frissítéseinek ellenőrzése</string>
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
     <string name="title_app_settings">Alkalmazásbeállítások</string>
-    <string name="title_apps_sale_provider">Szolgáltató – bestappsales.com</string>
     <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
     <string name="toast_proxy_failed">Proxy beállítása sikertelen</string>
     <string name="pref_network_proxy_enable_desc">Alkalmazás forgalmának átirányítása proxyn keresztül</string>

@@ -109,7 +109,6 @@
     <string name="title_download_manager">Tải xuống</string>
     <string name="title_device">Thiết bị</string>
     <string name="title_blacklist_manager">Trình quản lý danh sách đen</string>
-    <string name="title_apps_sale">Ứng dụng giảm giá</string>
     <string name="title_apps_library">Ứng dụng trong thư viện</string>
     <string name="title_apps_games">Ứng dụng &amp; trò chơi của tôi</string>
     <string name="title_apps">Ứng dụng</string>
@@ -284,7 +283,6 @@
     <string name="app_links_desc">Cho phép Aurora Store mở các liên kết được hỗ trợ</string>
     <string name="pref_updates_auto_install">Tự động kiểm tra &amp; cài đặt các bản cập nhật có sẵn</string>
     <string name="failed_apk_export">Không xuất được APK</string>
-    <string name="title_apps_sale_provider">Nhà cung cấp - bestappsale.com</string>
     <string name="onboarding_permission_doze_desc">Cho phép Aurora Store tải xuống và cập nhật ứng dụng trong nền</string>
     <string name="pref_vending_version_device">Mặc định (từ cấu hình thiết bị)</string>
     <string name="pref_network_proxy_enable">Bật proxy</string>

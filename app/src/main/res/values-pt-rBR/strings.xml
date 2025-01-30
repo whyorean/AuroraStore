@@ -177,7 +177,6 @@
     <string name="about_bitcoin_bch_summary">Doar via Bitcoin Cash (BCH)</string>
     <string name="about_bhim_summary">Doar via UPI</string>
     <string name="title_device">Dispositivo</string>
-    <string name="title_apps_sale">Apps em promoção</string>
     <string name="title_apps_library">Apps na biblioteca</string>
     <string name="title_apps_games">Meus apps e jogos</string>
     <string name="title_account_manager">Contas</string>
@@ -286,7 +285,6 @@
     <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps de software feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
-    <string name="title_apps_sale_provider">Provedor - bestappsales.com</string>
     <string name="pref_updates_check_frequency_desc">Configurar os intervalos das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
     <string name="pref_aurora_only_desc">Buscar atualizações somente para apps instalados pela Aurora Store</string>

@@ -209,7 +209,6 @@
     <string name="title_installation">Εγκατάσταση</string>
     <string name="tab_top_charts">Κορυφαίες εφαρμογές</string>
     <string name="tab_trending">Τάσεις</string>
-    <string name="title_apps_sale">Eφαρμογές προς πώληση</string>
     <string name="title_games">Παιχνίδια</string>
     <string name="toast_anonymous_restriction">Δεν διατίθεται σε ανώνυμους λογαριασμούς</string>
     <string name="toast_clipboard_copied">Αντιγράφηκε στο πρόχειρο</string>
@@ -257,7 +256,6 @@
     <string name="pref_network_proxy_url">URL μεσολάβησης</string>
     <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
     <string name="session_login_failed_google">Δεν ήταν δυνατή η σύνδεση μέσω Google</string>
-    <string name="title_apps_sale_provider">Προμηθευτής - bestappsales.com</string>
     <string name="session_good">Ουαου! Όλα καλά.</string>
     <string name="session_enjoy">Συνδεθείτε και απολαύστε.</string>
     <string name="session_verifying">Επαλήθευση συνεδρίας</string>

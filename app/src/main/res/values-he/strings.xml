@@ -129,7 +129,6 @@
     <string name="action_share">שיתוף</string>
     <string name="action_update_all">לעדכן הכול</string>
     <string name="details_permission">הרשאה</string>
-    <string name="title_apps_sale">יישומים במבצע</string>
     <string name="details_dev_details">יצירת קשר עם המפתחים</string>
     <string name="download_cancel_all">לבטל הכול</string>
     <string name="pref_install_mode_title">שיטת התקנה</string>
@@ -272,7 +271,6 @@
     <string name="download_eta_hrs">%1$dש %2$dדק %3$dשנ left</string>
     <string name="title_app_settings">הגדרות יישום</string>
     <string name="dialog_desc_native_split">אתה לא יכול להתקין אפליקציות באנדל (מפוצלות) עם מתקין Native Installer, שנה את המתקין ל-Session, Services או Root.</string>
-    <string name="title_apps_sale_provider">ספק - bestappsales.com</string>
     <string name="session_init">מכין כמה דברים…</string>
     <string name="about_xda">פורומים של XDA</string>
     <string name="session_enjoy">היכנסו ותהנו.</string>

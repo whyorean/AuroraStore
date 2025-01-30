@@ -147,7 +147,6 @@
     <string name="action_ok">ठीक है</string>
     <string name="pref_install_mode_title">इंस्टॉल करने का तरीका</string>
     <string name="title_account_manager">खाते</string>
-    <string name="title_apps_sale">बिक्री पर ऐप्स</string>
     <string name="download_paused">रोके गए • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_status_failure_incompatible">असंगत ऐप</string>
     <string name="menu_license">लाइसेंस</string>
@@ -289,7 +288,6 @@
     <string name="pref_aurora_only">केवल ऑरोरा स्टोर ऐप्स</string>
     <string name="pref_aurora_only_desc">अपडेट और इंस्टॉल किए गए ऐप्स में केवल ऑरोरा स्टोर से इंस्टॉल किए गए ऐप्स दिखाएं</string>
     <string name="title_app_settings">ऐप सेटिंग्स</string>
-    <string name="title_apps_sale_provider">प्रदाता - bestappsales.com</string>
     <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
     <string name="pref_updates_check_frequency_desc">स्वतः और स्वयं अपडेट के लिए अंतराल कॉन्फिगर करें, घंटे में।</string>
     <string name="pref_network_proxy_enable">प्रॉक्सी चालू करें</string>

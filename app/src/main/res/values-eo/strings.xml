@@ -125,7 +125,6 @@
     <string name="title_about">Pri</string>
     <string name="title_apps_games">Miaj apoj kaj ludoj</string>
     <string name="title_apps_library">Apoj biblioteke</string>
-    <string name="title_apps_sale">Apoj rabataj</string>
     <string name="title_device">Aparato</string>
     <string name="title_games">Ludoj</string>
     <string name="title_installation">Instalado</string>
@@ -361,7 +360,6 @@
     <string name="pref_dispenser_summary">Vidi kaj administri ĵetondistribuilojn por anonimaj ensalutadoj</string>
     <string name="details_beta_description">Vi vidos novajn funkciarojn kaj cimojn pli frue ol la publiko. Donu vian opinion al programistoj por helpi ilin plibonigi la apon.</string>
     <string name="details_beta_delay">Anigado eble daŭros iom tempon, vi povos kontroli la anigstaton poste.</string>
-    <string name="title_apps_sale_provider">Provizanto - bestappsales.com</string>
     <string name="about_xda_summary">Vidi la Aurora Store XDA fadenon por priparoloj aŭ sugestoj.</string>
     <string name="android_market_desc">Android Market estis reta butiko ofertinta programaraplikaĵojn dizajnitajn por Androidaparatojn, retirigita en 2017.</string>
     <string name="toast_developer_setting_failed">Ŝaltu la programistajn agordojn en la aparaton agordoj por malfermi ĝin.</string>

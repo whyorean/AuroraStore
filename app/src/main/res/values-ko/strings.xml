@@ -199,7 +199,6 @@
     <string name="session_enjoy">로그인하고 즐기십시오.</string>
     <string name="title_apps_games">내 앱 &amp; 게임</string>
     <string name="title_apps_library">라이브러리의 앱</string>
-    <string name="title_apps_sale">판매 중인 앱</string>
     <string name="title_device">기기</string>
     <string name="session_good">와우! 모두 좋습니다.</string>
     <string name="title_blacklist_manager">블랙리스트 관리자</string>
@@ -216,7 +215,6 @@
     <string name="action_home_screen">홈 화면에 추가</string>
     <string name="download_clear_finished">완료건 지우기</string>
     <string name="purchase_invalid">구매하지 않은 앱</string>
-    <string name="title_apps_sale_provider">공급자 - bestappsales.com</string>
     <string name="title_no_network">네트워크 없음</string>
     <string name="pref_updates_check_frequency">자동 업데이트 작동주기</string>
     <string name="tab_top_free">인기 무료</string>

@@ -210,7 +210,6 @@
     <string name="title_download_manager">Descargas</string>
     <string name="title_device">Dispositivo</string>
     <string name="title_blacklist_manager">Xestionar lista negra</string>
-    <string name="title_apps_sale">Aplicacións en venda</string>
     <string name="title_apps_library">Aplicacións na biblioteca</string>
     <string name="title_apps_games">As miñas apps &amp; xogos</string>
     <string name="app_updater_service_notif_text">Habilitar servizo de descarga de apps en segundo plano</string>

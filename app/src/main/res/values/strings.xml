@@ -268,8 +268,6 @@
     <string name="title_app_settings">"App Settings"</string>
     <string name="title_apps_games">"My apps &amp; games"</string>
     <string name="title_apps_library">"Apps in library"</string>
-    <string name="title_apps_sale">"Apps on sale"</string>
-    <string name="title_apps_sale_provider">"Provider - bestappsales.com"</string>
     <string name="title_blacklist_manager">"Blacklist manager"</string>
     <string name="title_favourites_manager">"Favourite Apps"</string>
     <string name="title_device">"Device"</string>

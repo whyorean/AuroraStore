@@ -176,7 +176,6 @@
     <string name="tab_top_grossing">Najboljše dobičkonosne</string>
     <string name="tab_top_paid">Najboljše plačane</string>
     <string name="title_apps_library">Aplikacije v knjižnici</string>
-    <string name="title_apps_sale">Aplikacije v prodaji</string>
     <string name="title_blacklist_manager">Upravitelj črnega seznama</string>
     <string name="toast_import_success">Konfiguracija naprave je uvožena</string>
     <string name="toast_import_failed">Ni bilo mogoče uvoziti konfiguracije naprave</string>
@@ -305,7 +304,6 @@
     <string name="toast_permission_installer_required">Najprej morate odobriti dovoljenje za nameščanje</string>
     <string name="pref_updates_auto_install">Preveri in namesti razpoložljive posodobitve samodejno</string>
     <string name="pref_network_proxy_url_message">Vnesite veljaven URL posrednika za prenos vseh podatkov skozi posrednika.</string>
-    <string name="title_apps_sale_provider">Ponudnik - bestappsales.com</string>
     <string name="pref_updates_auto_off">Ne posodobi aplikacij samodejno</string>
     <string name="app_language">Jezik aplikacije</string>
     <string name="app_links_title">Povezave aplikacij</string>

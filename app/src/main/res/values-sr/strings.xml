@@ -25,7 +25,6 @@
     <string name="title_download_manager">Преузимања</string>
     <string name="title_device">Уређај</string>
     <string name="title_blacklist_manager">Менаџер црне листе</string>
-    <string name="title_apps_sale">Апликације на распродаји</string>
     <string name="title_apps_library">Апликације у збирци</string>
     <string name="title_apps_games">Моје апликације и игре</string>
     <string name="title_apps">Апликације</string>
@@ -310,7 +309,6 @@
     <string name="app_links_title">Линкови апликација</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
-    <string name="title_apps_sale_provider">Пружалац - bestappsales.com</string>
     <string name="pref_updates_check_frequency_desc">Конфигуришите интервале за аутоматска ажурирања, у сатима.</string>
     <string name="pref_aurora_only">Само Aurora Store апликације</string>
     <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>

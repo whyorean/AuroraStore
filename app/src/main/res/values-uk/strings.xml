@@ -141,7 +141,6 @@
     <string name="title_download_manager">Завантаження</string>
     <string name="title_device">Пристрій</string>
     <string name="title_blacklist_manager">Менеджер чорного списку</string>
-    <string name="title_apps_sale">Розпродаж застосунків</string>
     <string name="title_apps_library">Застосунки в бібліотеці</string>
     <string name="title_apps_games">Мої застосунки та ігри</string>
     <string name="title_apps">Застосунки</string>
@@ -290,7 +289,6 @@
     <string name="pref_aurora_only">Тільки застосунки Aurora Store</string>
     <string name="pref_aurora_only_desc">Перевіряйте оновлення лише для застосунків, встановлених з Aurora Store</string>
     <string name="title_app_settings">Налаштування застосунку</string>
-    <string name="title_apps_sale_provider">Провайдер - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
     <string name="pref_network_proxy_enable">Увімкнути проксі</string>
     <string name="pref_network_proxy_url">URL проксі</string>

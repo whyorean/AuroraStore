@@ -197,7 +197,6 @@
     <string name="title_apps">Tətbiqlər</string>
     <string name="title_apps_games">Tətbiqlərim və oyunlarım</string>
     <string name="title_apps_library">Kitabxanadakı tətbiqlər</string>
-    <string name="title_apps_sale">Satışdakı tətbiqlər</string>
     <string name="title_blacklist_manager">Qara siyahı meneceri</string>
     <string name="title_device">Cihaz</string>
     <string name="title_download_manager">Endirmələr</string>
@@ -290,7 +289,6 @@
     <string name="expand">Genişləndir</string>
     <string name="pref_updates_auto_desc">Birbaşa yenilənmə davranışın tərtib et</string>
     <string name="android_market_desc">Android Market, Android cihazları üçün hazırlanan sistem tətbiqlərin təklif edən, 2017-ci ildə sıradan çıxmış onlayn mağaza idi.</string>
-    <string name="title_apps_sale_provider">Təchizatçı - bestappsales.com</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="item_required">Tələb olunur</string>
     <string name="item_optional">Zəruri deyil</string>

@@ -56,7 +56,6 @@
     <string name="pref_install_delete_title">Desaniciar los APKs dempués d\'instalales</string>
     <string name="action_ok">D\'acuerdu</string>
     <string name="toast_purchase_blocked">La compra d\'aplicaciones nun ta disponible nes cuentes anónimes.</string>
-    <string name="title_apps_sale">Aplicaciones en venta</string>
     <string name="details_no_dependencies">Nun tien dependencies</string>
     <string name="pref_ui_layout">Distribución</string>
     <string name="onboarding_permission_esa_desc">Pa guardar los ficheros d\'espansión d\'APK (OBBs) p\'aplicaciones y xuegos grandes.</string>
@@ -285,7 +284,6 @@
     <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_network_proxy_enable_desc">Permite que tol tránsitu vaiga pel proxy</string>
     <string name="pref_updates_incompatible_desc">Show updates for incompatible or disabled apps that may fail to install</string>
-    <string name="title_apps_sale_provider">Fornidor - bestappsales.com</string>
     <string name="toast_app_unavailable">L\'aplicación nun ta disponible pa esti preséu</string>
     <string name="toast_import_success">Importóse la configuración del preséu</string>
     <string name="notification_updates_available">Hai <xliff:g id="apps_count">%1$d</xliff:g> anovamientos disponibles</string>

@@ -27,7 +27,6 @@
     <string name="details_description">Descrição</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="title_download_playstore">Play Store</string>
-    <string name="title_apps_sale">Aplicações à venda</string>
     <string name="title_apps_library">Aplicações na biblioteca</string>
     <string name="onboarding_permission_installer_desc">Permitir instalação de aplicações a partir da Aurora Store</string>
     <string name="dialog_desc_native_split">Não é possível instalar conjuntos de aplicações via instalador nativo. Altere para o instalador de sessão, serviços ou root.</string>
@@ -295,7 +294,6 @@
     <string name="pref_aurora_only_desc">Verifique apenas atualizações de aplicativos instalados pela Aurora Store</string>
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="title_app_settings">Definições</string>
-    <string name="title_apps_sale_provider">Fornecedor - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>
     <string name="pref_network_proxy_enable_desc">Permitir que todo o tráfego da aplicação passe pelo proxy</string>

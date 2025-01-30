@@ -52,7 +52,6 @@
     <string name="toast_clipboard_copied">In die Zwischenablage kopiert</string>
     <string name="toast_apk_whitelisted">Auf der Erlaubnisliste</string>
     <string name="title_installer">Installationsmethode</string>
-    <string name="title_apps_sale">Apps im Angebot</string>
     <string name="title_apps_library">Apps in der Bibliothek</string>
     <string name="title_apps_games">Meine Apps &amp; Spiele</string>
     <string name="title_apps">Apps</string>
@@ -286,7 +285,6 @@
     <string name="google_play_store_desc">Google Play, auch bekannt als Google Play Store (ehemals Android Market).</string>
     <string name="android_market_desc">Android Market war ein Online-Store, der Softwareanwendungen für Android-Geräte anbot und 2017 eingestellt wurde.</string>
     <string name="details_ratings_title_hint">Titel bewerten</string>
-    <string name="title_apps_sale_provider">Anbieter: bestappsales.com</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>

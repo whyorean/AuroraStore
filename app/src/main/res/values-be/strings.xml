@@ -130,8 +130,6 @@
     <string name="tab_trending">Прарыўное</string>
     <string name="title_app_settings">Налады праграмы</string>
     <string name="title_apps_games">Мае праграмы і гульні</string>
-    <string name="title_apps_sale">Праграмы на распродажы</string>
-    <string name="title_apps_sale_provider">Прадстаўнік - bestappsales.com</string>
     <string name="title_blacklist_manager">Чорны спіс</string>
     <string name="title_favourites_manager">Абраныя праграмы</string>
     <string name="toast_anonymous_restriction">Не магчыма праз ананімны акаўнт</string>

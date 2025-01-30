@@ -147,7 +147,6 @@
     <string name="title_download_manager">下载</string>
     <string name="title_device">设备</string>
     <string name="title_blacklist_manager">黑名单管理</string>
-    <string name="title_apps_sale">促销应用</string>
     <string name="title_apps_library">库内应用</string>
     <string name="title_apps_games">我的应用和游戏</string>
     <string name="title_apps">应用</string>
@@ -286,7 +285,6 @@
     <string name="google_play_store_desc">Google Play，也称 Google Play 商店，之前叫 Android Market。</string>
     <string name="android_market_desc">Android Market 是一个提供为 Android 设备设计的软件应用程序的在线商店，于 2017 年退役。</string>
     <string name="details_ratings_title_hint">评价标题</string>
-    <string name="title_apps_sale_provider">提供商 - bestappsales.com</string>
     <string name="pref_updates_check_frequency_desc">配置小时为单位的自动更新和 Aurora Store 自更新间隔。</string>
     <string name="pref_aurora_only">仅 Aurora Store 应用</string>
     <string name="pref_aurora_only_desc">只检查 Aurora Store 安装应用的更新</string>

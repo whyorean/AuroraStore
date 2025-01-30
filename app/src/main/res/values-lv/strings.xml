@@ -130,7 +130,6 @@
     <string name="title_apps">Lietotnes</string>
     <string name="title_apps_games">Manas lietotnes un spēles</string>
     <string name="title_apps_library">Lietotnes bibliotēkā</string>
-    <string name="title_apps_sale">Lietotnes izpārdošanā</string>
     <string name="title_device">Ierīce</string>
     <string name="title_download_manager">Lejupielādes</string>
     <string name="title_games">Spēles</string>
@@ -295,7 +294,6 @@
     <string name="pref_aurora_only_desc">Pārbaudīt atjauninājumus tikai lietotnēm, kuras ir uzstādītas ar Aurora Store</string>
     <string name="toast_proxy_success">Starpniekserveris veiksmīgi iestatīts</string>
     <string name="title_app_settings">Lietotnes iestatījumi</string>
-    <string name="title_apps_sale_provider">Nodrošinātājs - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Automātisko atjauninājumu biežums</string>
     <string name="toast_proxy_failed">Neizdevās iestatīt starpniekserveri</string>
     <string name="pref_network_proxy_enable_desc">Atļaut visu lietotnes datplūsmu sūtīt caur starpniekserveri</string>

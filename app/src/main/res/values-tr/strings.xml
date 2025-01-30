@@ -57,7 +57,6 @@
     <string name="title_download_manager">İndirilenler</string>
     <string name="title_device">Cihaz</string>
     <string name="title_blacklist_manager">Kara liste yöneticisi</string>
-    <string name="title_apps_sale">Satıştaki uygulamalar</string>
     <string name="title_apps_library">Kütüphanedeki uygulamalar</string>
     <string name="title_apps_games">Uygulamalarım ve oyunlarım</string>
     <string name="title_apps">Uygulamalar</string>
@@ -290,7 +289,6 @@
     <string name="pref_aurora_only">Yalnızca Aurora Store uygulamaları</string>
     <string name="pref_aurora_only_desc">Yalnızca Aurora Store tarafından kurulan uygulamaları denetle</string>
     <string name="title_app_settings">Uygulama Ayarları</string>
-    <string name="title_apps_sale_provider">Sağlayıcı - bestappsales.com</string>
     <string name="pref_updates_check_frequency">Kendiliğinden güncelleme sıklığı</string>
     <string name="pref_network_proxy_enable">Vekili etkinleştir</string>
     <string name="pref_network_proxy_url">Vekil URL\'si</string>

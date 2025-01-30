@@ -209,7 +209,6 @@
     <string name="pref_install_delete_title">Po įdiegimo ištrinti APK paketus</string>
     <string name="pref_ui_no_for_you_desc">Rodyti pradžios ekrane puslapius „Jums“</string>
     <string name="onboarding_permission_esm">Išorinės saugyklos tvarkytuvė</string>
-    <string name="title_apps_sale">Išparduodamos programėlės</string>
     <string name="toast_apk_blacklisted">Pridėta į juodąjį sąrašą</string>
     <string name="toast_apk_whitelisted">Pridėta į baltąjį sąrašą</string>
     <string name="toast_page_unavailable">Naršomas puslapis neprieinamas</string>
@@ -238,7 +237,6 @@
     <string name="session_good">Valio! Viskas gerai.</string>
     <string name="toast_import_success">Įrenginio konfigūracija importuota</string>
     <string name="title_app_settings">Programėlės nustatymai</string>
-    <string name="title_apps_sale_provider">Teikėjas – bestappsales.com</string>
     <string name="session_enjoy">Prisijunkite ir mėgaukitės.</string>
     <string name="error">Įvyko klaida!</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ir <xliff:g id="app_three_name">%3$s</xliff:g></string>

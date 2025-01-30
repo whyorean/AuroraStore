@@ -179,7 +179,6 @@
     <string name="title_updates">Päivitykset</string>
     <string name="title_spoof_manager">Huijausten hallinta</string>
     <string name="title_blacklist_manager">Mustan listan hallinta</string>
-    <string name="title_apps_sale">Tarjouksessa</string>
     <string name="tab_top_paid">Suosituimmat maksulliset</string>
     <string name="tab_top_grossing">Tuottavimmat</string>
     <string name="tab_top_free">Suosituimmat ilmaiset</string>
@@ -291,7 +290,6 @@
     <string name="onboarding_permission_doze_desc">Salli Aurora Storen ladata ja päivittää sovelluksia taustalla</string>
     <string name="pref_network_proxy_enable">Ota välityspalvelin käyttöön</string>
     <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
-    <string name="title_apps_sale_provider">Tarjoaja - bestappsales.com</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
     <string name="onboarding_permission_doze">Taustalla olevat lataukset</string>
     <string name="pref_updates_auto">Päivitä sovellukset automaattisesti</string>

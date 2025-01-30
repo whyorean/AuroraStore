@@ -78,7 +78,6 @@
     <string name="toast_apk_blacklisted">Masuk daftar hitam</string>
     <string name="toast_anonymous_restriction">Tidak tersedia di akun anonim</string>
     <string name="title_blacklist_manager">Pengelola daftar hitam</string>
-    <string name="title_apps_sale">Aplikasi diobral</string>
     <string name="title_apps_library">Aplikasi di perpustakaan</string>
     <string name="title_apps_games">Aplikasi &amp; permainan Saya</string>
     <string name="title_apps">Aplikasi</string>
@@ -297,7 +296,6 @@
     <string name="verifying_new_session">Memverifikasi sesi baru</string>
     <string name="onboarding_permission_doze_desc">Izinkan Aurora Store untuk mengunduh dan memperbarui aplikasi di latar belakang</string>
     <string name="title_app_settings">Pengaturan Aplikasi</string>
-    <string name="title_apps_sale_provider">Penyedia - bestappsale.com</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
     <string name="toast_proxy_failed">Gagal menyetel proksi</string>
     <string name="pref_network_proxy_enable_desc">Izinkan semua lalu lintas dari aplikasi melewati proksi</string>

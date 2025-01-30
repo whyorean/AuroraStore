@@ -35,7 +35,6 @@
     <string name="title_download_manager">ਡਾਊਨਲੋਡਸ</string>
     <string name="title_device">ਡਿਵਾਈਸ</string>
     <string name="title_blacklist_manager">ਬਲੈਕ ਲਿਸਟ ਮੈਨੇਜਰ</string>
-    <string name="title_apps_sale">ਸੇਲ ਵਾਲੇ ਐਪਸ ਦੀ ਸੂਚੀ</string>
     <string name="title_apps_library">ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚ ਐਪਸ</string>
     <string name="title_apps_games">ਮੇਰੇ ਐਪਸ ਤੇ ਗੇਮਜ਼</string>
     <string name="title_apps">ਐਪਸ</string>
@@ -290,7 +289,6 @@
     <string name="pref_aurora_only">ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਐਪਸ</string>
     <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
     <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
-    <string name="title_apps_sale_provider">ਪ੍ਰੋਵਾਈਡਰ - bestappsales.com</string>
     <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟ ਆਵ੍ਰਿਤੀ</string>
     <string name="pref_network_proxy_enable">ਪ੍ਰੌਕਸੀ ਚਾਲੂ ਕਰੋ</string>
     <string name="pref_network_proxy_url">ਪ੍ਰੌਕਸੀ URL</string>

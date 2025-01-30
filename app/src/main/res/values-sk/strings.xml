@@ -206,12 +206,10 @@
     <string name="tab_for_you">Pre vás</string>
     <string name="tab_top_free">Najlepšie zdarma</string>
     <string name="title_apps_library">Aplikácie v knižnici</string>
-    <string name="title_apps_sale">Aplikácie v zľave</string>
     <string name="title_installer">Inštalačný program aplikácie</string>
     <string name="toast_permission_installer_required">Najprv musíte udeliť povolenie inštalátorovi</string>
     <string name="toast_permission_esm_caution">Možno budete musieť znova udeliť povolenie kvôli chybe v prístupe úložiska</string>
     <string name="item_required">Požadované</string>
-    <string name="title_apps_sale_provider">Poskytovateľ - bestappsales.com</string>
     <string name="item_optional">Voliteľné</string>
     <string name="server_maintenance">Server je mimo prevádzky z dôvodu údržby</string>
     <string name="title_games">Hry</string>

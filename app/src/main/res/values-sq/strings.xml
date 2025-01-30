@@ -194,7 +194,6 @@
     <string name="title_apps">Aplikacione</string>
     <string name="title_apps_games">Apllikacionet &amp; lojërat e mia</string>
     <string name="title_apps_library">Aplikacione në bibliotekë</string>
-    <string name="title_apps_sale">Aplikacione me ulje çmimi</string>
     <string name="title_blacklist_manager">Përgjegjës liste bllokimesh</string>
     <string name="title_device">Pajisje</string>
     <string name="title_download_manager">Shkarkime</string>
@@ -279,7 +278,6 @@
     <string name="server_maintenance">Shërbyesi jashtë funksionimi, për mirëmbajtje</string>
     <string name="notification_channel_updates">Njoftime përditësimesh</string>
     <string name="title_app_settings">Rregullime Aplikacioni</string>
-    <string name="title_apps_sale_provider">Furnizues - bestappsales.com</string>
     <string name="title_advanced">Të mëtejshme</string>
     <string name="login_rate_limited">Oh, për ju ka kufizime</string>
     <string name="server_unreachable">Shërbyes i pakapshëm</string>

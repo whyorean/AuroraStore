@@ -26,7 +26,6 @@
     <string name="title_download_manager">التنزيلات</string>
     <string name="title_device">الجهاز</string>
     <string name="title_blacklist_manager">مدير القائمة السوداء</string>
-    <string name="title_apps_sale">تطبيقات بسعر مخفض</string>
     <string name="title_apps_library">تطبيقات في المكتبة</string>
     <string name="title_apps">التطبيقات</string>
     <string name="title_account_manager">الحسابات</string>
@@ -286,7 +285,6 @@
     <string name="google_play_store_desc">Google Play، المعروف أيضًا باسم متجر Google Play و Android Market سابقًا.</string>
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
-    <string name="title_apps_sale_provider">المزود - bestappsales.com</string>
     <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
     <string name="pref_aurora_only">تطبيقات متجر Aurora فقط</string>
     <string name="pref_aurora_only_desc">تحقق فقط من تحديثات التطبيقات المثبتة بواسطة متجر أورورا</string>
