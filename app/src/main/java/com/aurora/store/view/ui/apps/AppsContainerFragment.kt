@@ -21,6 +21,10 @@ package com.aurora.store.view.ui.apps
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -47,6 +51,15 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Adjust FAB margins for edgeToEdge display
+        ViewCompat.setOnApplyWindowInsetsListener(binding.searchFab) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            binding.searchFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = insets.bottom + resources.getDimensionPixelSize(R.dimen.margin_large)
+            }
+            WindowInsetsCompat.CONSUMED
+        }
 
         // Toolbar
         binding.toolbar.apply {
