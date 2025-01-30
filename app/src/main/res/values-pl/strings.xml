@@ -340,7 +340,7 @@
     <string name="add_dispenser_title">Dodaj dostawcę</string>
     <string name="add_dispenser_hint">Adres URL dostawcy</string>
     <string name="add">Dodaj</string>
-    <string name="remove_dispenser_summary">Czy chcesz usunąć dostawcę <xliff:g id="url">%1$s</xliff:g>\?</string>
+    <string name="remove_dispenser_summary">Czy chcesz usunąć dostawcę \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="remove">Usuń</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="add_dispenser_error">Nieprawidłowy adres URL</string>
