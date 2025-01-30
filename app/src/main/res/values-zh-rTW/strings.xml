@@ -112,7 +112,7 @@
     <string name="insecure_anonymous_apply">請重新登入並重新啟動應用程式以應用變動。</string>
     <string name="spoof_apply">請重新登入以套用偽裝</string>
     <string name="purchase_session_expired">連線階段已過期，請重新登入。</string>
-    <string name="purchase_no_file">無法獲取檔案</string>
+    <string name="purchase_no_file">無法取得檔案</string>
     <string name="purchase_not_found">找不到應用程式</string>
     <string name="purchase_unsupported">尚未支援該應用程式</string>
     <string name="purchase_invalid">尚未購買該應用程式</string>
@@ -134,7 +134,7 @@
     <string name="pref_install_delete_title">安裝後刪除 APK</string>
     <string name="pref_install_delete_summary">已下載的 APK 將在安裝後立即刪除</string>
     <string name="pref_filter_fdroid_title">篩選 F-Droid 應用程式</string>
-    <string name="pref_filter_fdroid_summary">在更新與已安裝的應用程式中，忽略 F-Droid 應用程式</string>
+    <string name="pref_filter_fdroid_summary">不檢查從 F-Droid 下載或安裝的應用程式更新</string>
     <string name="pref_common_extra">額外功能</string>
     <string name="onboarding_permission_installer_desc">允許從 Aurora Store 安裝應用程式</string>
     <string name="onboarding_permission_installer">安裝器權限</string>
@@ -161,7 +161,7 @@
     <string name="installer_status_failure_conflict">與已安裝應用程式衝突</string>
     <string name="installer_status_failure_session">無法建立安裝階段</string>
     <string name="installer_status_failure_blocked">安裝被封鎖</string>
-    <string name="installer_status_failure">安裝器失敗</string>
+    <string name="installer_status_failure">安裝失敗</string>
     <string name="installer_service_misconfigured">請先設定好 Aurora 服務並取得權限。</string>
     <string name="installer_service_unavailable">安裝 Aurora 服務 1.0.9 以上的版本，或者更換安裝器。</string>
     <string name="installer_service_available">Aurora 服務可用並已經準備好安裝。</string>
@@ -191,7 +191,7 @@
     <string name="download_completed">下載完成</string>
     <string name="download_canceled">已取消</string>
     <string name="download_cancel_all">取消全部</string>
-    <string name="details_think_this_app">你覺得這個 app 如何？</string>
+    <string name="details_think_this_app">您覺得這個應用程式如何？</string>
     <string name="details_ratings">評分及評論</string>
     <string name="details_privacy">隱私</string>
     <string name="details_permission">權限</string>
@@ -205,7 +205,7 @@
     <string name="details_gsf_dependent">需要 Google 服務架構</string>
     <string name="details_free">免費</string>
     <string name="details_dev_profile">開發人員資料</string>
-    <string name="details_dev_details">開發人員聯絡資料</string>
+    <string name="details_dev_details">開發人員聯絡資訊</string>
     <string name="details_dev_address">地址</string>
     <string name="details_description">簡介</string>
     <string name="details_dependencies">依賴元件</string>
@@ -222,7 +222,7 @@
     <string name="action_update">更新</string>
     <string name="action_info">應用程式資訊</string>
     <string name="action_uninstall">解除安裝</string>
-    <string name="action_get_local_apk">保存 App bundle（程式捆包）</string>
+    <string name="action_get_local_apk">保存 App bundle</string>
     <string name="action_filter_misc">更多選項</string>
     <string name="about_xda">XDA 論壇</string>
     <string name="about_libera_summary">在 Liberapay 上贊助我們</string>
@@ -274,7 +274,7 @@
     <string name="pref_network_proxy_enable">啟用代理伺服器</string>
     <string name="pref_updates_incompatible">不相容的更新</string>
     <string name="pref_updates_incompatible_desc">為不相容或已停用的應用程式，顯示可能安裝失敗的更新</string>
-    <string name="pref_aurora_only_desc">在更新與已安裝的應用程式中，僅顯示由 Aurora Store 安裝的應用程式</string>
+    <string name="pref_aurora_only_desc">僅檢查 Aurora Store 安裝的應用程式更新</string>
     <string name="title_app_settings">應用程式設定</string>
     <string name="title_apps_sale_provider">提供：bestappsales.com</string>
     <string name="title_search_suggestion">搜尋建議</string>
@@ -383,4 +383,28 @@
     <string name="default_spoof">預設</string>
     <string name="item_required">必要</string>
     <string name="item_optional">選用</string>
+    <string name="action_select_all">選擇全部</string>
+    <string name="action_remove_all">移除全部</string>
+    <string name="filter_latest">最新</string>
+    <string name="toast_black_export_failed">匯出黑名單失敗！</string>
+    <string name="notification_channel_downloads">下載通知</string>
+    <string name="notification_channel_account">帳戶相關通知</string>
+    <string name="export_app_title">檔案匯出工具</string>
+    <string name="export_app_summary">請稍等，正在匯出你的檔案</string>
+    <string name="toast_black_export_success">已匯出黑名單！</string>
+    <string name="status_verifying">驗證中</string>
+    <string name="plexus_progress">檢查相容性中…</string>
+    <string name="plexus_powered">由 Plexus 提供支持</string>
+    <string name="details_compatibility_title">相容性</string>
+    <string name="details_compatibility_gms_required_title">需要 Google Play 服務</string>
+    <string name="details_compatibility_no_gms">沒有 Google Play 服務</string>
+    <string name="notification_channel_install">安裝通知</string>
+    <string name="checking_updates">正在檢查更新</string>
+    <string name="installed_apps_size">安裝了 <xliff:g id="installed_apps_size">%1$d</xliff:g> 應用程式</string>
+    <string name="no_apps_available">無應用程式可用</string>
+    <string name="source_code_subtitle">找出裡面有什麼</string>
+    <string name="unable_to_open">無法打開應用程式</string>
+    <string name="toast_black_import_failed">匯入黑名單失敗！</string>
+    <string name="toast_black_import_success">已匯入黑名單！</string>
+    <string name="notification_channel_export">應用程式匯出通知</string>
 </resources>

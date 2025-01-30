@@ -411,4 +411,20 @@
     <string name="toast_black_import_failed">¡Error al importar la lista negra!</string>
     <string name="status_verifying">Verificando</string>
     <string name="action_unarchive">Desarchivar</string>
+    <string name="plexus_progress">Comprobando compatibilidad…</string>
+    <string name="details_compatibility_gms_required_title">Necesita los Servicios de Google Play</string>
+    <string name="details_compatibility_status_unsupported">No compatible: No funcional</string>
+    <string name="details_compatibility_status_unknown">Desconocido: No comprobado aún</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplicaciones instaladas</string>
+    <string name="unable_to_open">No es posible abrir la aplicación</string>
+    <string name="details_compatibility_title">Compatibilidad</string>
+    <string name="details_compatibility_gms_required_subtitle">Puede que necesites instalar la librería propietaria de Google o una reimplementación FOSS como microG.</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Esta aplicación funciona sin la biblioteca propietaria de Google. Sin embargo, es posible que necesite otras bibliotecas de terceros para funcionar correctamente.</string>
+    <string name="details_compatibility_microg">Con el Proyecto microG</string>
+    <string name="details_compatibility_no_gms">Sin los Servicios de Google Play</string>
+    <string name="details_compatibility_status_compatible">Compatible: Funciona sin ningún problema</string>
+    <string name="details_compatibility_status_limited">Limitado: Funciona con funciones limitadas</string>
+    <string name="plexus_powered">Impulsado por Plexus</string>
+    <string name="details_compatibility_gms_not_required_title">Funciona con los Servicios de Google Play</string>
+    <string name="no_apps_available">No hay aplicaciones disponibles</string>
 </resources>

@@ -1,4 +1,4 @@
-• L'interface s'affiche désormais correctement lors du passage du système en thème sombrey
+• L'interface s'affiche désormais correctement lors du passage du système en thème sombre
 • Les informations sur la page d'accueil ne masquent plus certaines zones
 • L'ouverture d'un lien Google Play est désormais précédée d'une vérification de la présence d'un compte fonctionnel
 • Le panneau de navigation est désormais accessible uniquement depuis l'écran principal

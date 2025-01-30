@@ -17,7 +17,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_paypal">PayPal</string>
     <string name="about_telegram_summary">Uniu-vos al grup d\'ajuda d\'Aurora per a debats o suggeriments.</string>
-    <string name="about_xda">Fil de desenvolupament</string>
+    <string name="about_xda">Fil de desenvolupament XDA Forums</string>
     <string name="about_xda_summary">Consulteu el fil d\'Aurora Store a XDA per a debats o suggeriments.</string>
     <string name="account_anonymous">Anònim</string>
     <string name="about_libera_summary">Feu-vos mecenes a Liberapay</string>
@@ -42,7 +42,7 @@
     <string name="details_ratings">Valoració i revisions</string>
     <string name="details_think_this_app">Què en penses d\'aquesta aplicació\?</string>
     <string name="download_canceled">Cancel·lat</string>
-    <string name="exodus_no_tracker">No conté elements de seguiment</string>
+    <string name="exodus_no_tracker">No conté rastrejadors coneguts</string>
     <string name="exodus_progress">S\'estan comprovant els elements de seguiment…</string>
     <string name="exodus_substring">Element(s) de seguiment trobats a</string>
     <string name="installer_service_unavailable">Instal·li els serveis d\'Aurora 1.0.9 o superior, o canviï l\'instal·lador.</string>
@@ -239,4 +239,19 @@
     <string name="download_progress">Descarregant • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Notificacions</string>
     <string name="pref_install_mode_shizuku">Instal·lador de Shizuku</string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Troba respostes a les preguntes freqüents (F.A.Q.), passos de resolució de problemes i més</string>
+    <string name="action_remove_all">Elimina-ho tot</string>
+    <string name="notification_channel_account">Notificació relacionada amb el compte</string>
+    <string name="action_select_all">Selecciona-ho tot</string>
+    <string name="details_no_favourites">No s\'ha trobat cap aplicació preferida</string>
+    <string name="download_clear_finished">Neteja finalitzada</string>
+    <string name="filter_latest">Últim</string>
+    <string name="installer_shizuku_unavailable">Shizuku no està instal·lat o configurat correctament.</string>
+    <string name="action_favourite">Preferit</string>
+    <string name="action_request_analysis">Sol·licita una nova anàlisi</string>
+    <string name="details_data_safety_title">Seguretat de les dades</string>
+    <string name="details_data_safety_subtitle">Privadesa de dades i pràctiques de seguretat declarades pel desenvolupador</string>
+    <string name="action_home_screen">Afegeix a la pantalla d\'inici</string>
+    <string name="action_uninstall_success">S\'ha desinstal·lat correctament</string>
 </resources>

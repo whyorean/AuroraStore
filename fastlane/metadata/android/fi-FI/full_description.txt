@@ -1,0 +1,12 @@
+Aurora Store on Google Playin epävirallinen FOSS-asiakas, jolla on tyylikäs muotoilu. Aurora Store
+avulla käyttäjät voivat ladata, päivittää ja etsiä sovelluksia, kuten Play Kauppa. Toimii täydellisesti
+Google Play Serviceslla tai MicroG:llä tai ilman.
+
+<b>Ominaisuudet:</b>
+
+• FOSS: Onko GPLv3-lisenssi
+• Kaunis muotoilu: Rakennettu uusimpien Material 3 -ohjeiden mukaan
+• Tilin kirjautuminen: Voit kirjautua sisään joko henkilökohtaisella tai nimettömällä tilillä
+• Laitteen ja kielen huijaus: Vaihda laitettasi ja/tai maa-asetusta, jotta voit käyttää maantieteellisesti lukittuja sovelluksia
+• Exodus Privacy -integraatio: näet välittömästi seurantalaitteet sovelluksessa
+• Päivitykset mustalle listalle: Ohita tiettyjen sovellusten päivitykset

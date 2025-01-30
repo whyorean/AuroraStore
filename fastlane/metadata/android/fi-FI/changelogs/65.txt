@@ -1,0 +1,4 @@
+• Korjattu ongelmat jaetun kirjaston asentamisessa sovelluksille, kuten Chrome ja WebView
+• Tuki sisäänkirjautumiseen henkilökohtaiselle tilille microG:n avulla
+• Korjattu todennusta koskeva ongelma
+• Käännöspäivitykset; Muut merkkijonot lokalisoitu
