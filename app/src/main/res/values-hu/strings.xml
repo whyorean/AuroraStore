@@ -395,4 +395,30 @@
     <string name="made_with_love">Szeretettel &lt;xliff:g id=„heart_emoji”&gt;%1$s&lt;/xliff:g&gt; készült Indiában</string>
     <string name="default_spoof">Alapértelmezett</string>
     <string name="available_spoof">Elérhető</string>
+    <string name="toast_black_import_success">Feketelista importálva.</string>
+    <string name="action_remove_all">Összes eltávolítása</string>
+    <string name="action_select_all">Összes kiválasztása</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> alkalmazás telepítve</string>
+    <string name="status_verifying">Ellenőrzés</string>
+    <string name="unable_to_open">Az alkalmazás nem nyitható meg</string>
+    <string name="details_compatibility_gms_required_subtitle">Lehet, hogy telepítenie kell a Google zárt programkönyvtárát, vagy egy nyílt forráskódú újraimplementációt, például a microG-t.</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Az alkalmazás működik a Google zárt programkönyvtára nélkül. Viszont lehet, hogy a helyes működéséhez más harmadik féltől származó programkönyvtárak szükségesek.</string>
+    <string name="toast_black_export_success">Feketelista exportálva.</string>
+    <string name="details_compatibility_no_gms">Google Play szolgáltatások nélkül</string>
+    <string name="no_apps_available">Nincsenek elérhető alkalmazások</string>
+    <string name="toast_black_export_failed">A feketelista exportálása sikertelen.</string>
+    <string name="plexus_progress">Kompatibilitás ellenőrzése…</string>
+    <string name="details_compatibility_gms_required_title">A Google Play szolgáltatások szükségesek hozzá</string>
+    <string name="details_compatibility_gms_not_required_title">A Google Play szolgáltatások nélkül működik</string>
+    <string name="details_compatibility_microg">A microG projekttel</string>
+    <string name="details_compatibility_status_compatible">Kompatibilis: minden probléma nélkül működik</string>
+    <string name="details_compatibility_status_limited">Korlátozott: korlátozott funkciókkal működik</string>
+    <string name="details_compatibility_status_unsupported">Nem támogatott: nem működőképes</string>
+    <string name="details_compatibility_status_unknown">Ismeretlen: még nem volt ellenőrizve</string>
+    <string name="plexus_powered">A Plexus által működtetve</string>
+    <string name="toast_black_import_failed">A feketelista importálása sikertelen.</string>
+    <string name="filter_latest">Legújabb</string>
+    <string name="toast_permission_esm_restart">Előfordulhat, hogy az engedély megadása után újra kell indítania az alkalmazást.</string>
+    <string name="action_unarchive">Archiválás visszavonása</string>
+    <string name="details_compatibility_title">Kompatibilitás</string>
 </resources>
