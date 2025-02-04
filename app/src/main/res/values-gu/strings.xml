@@ -47,4 +47,9 @@
     <string name="title_games">રમતઓ</string>
     <string name="title_updates">અદ્યતનઓ</string>
     <string name="requesting_new_session">નવા સત્રની વિનંતી કરી રહ્યા છીએ</string>
+    <string name="action_disable">અક્ષમ કરો</string>
+    <string name="action_copy">નકલ કરો</string>
+    <string name="action_export">નિકાસ કરો</string>
+    <string name="action_import">આયાત કરો</string>
+    <string name="action_copy_link">કડી ની નકલ લ્યો</string>
 </resources>
