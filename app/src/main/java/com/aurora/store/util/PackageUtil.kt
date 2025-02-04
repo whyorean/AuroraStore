@@ -62,8 +62,6 @@ object PackageUtil {
         val limit = 60
         val total = packageManager.getInstalledPackages(0).size
 
-        val sharedLibs = packageManager.systemSharedLibraryNames ?: emptyArray()
-
         while (offset < total) {
             val packages = packageManager
                 .getInstalledPackages(PackageManager.GET_META_DATA)
@@ -77,7 +75,6 @@ object PackageUtil {
 
         return packageInfoList
             .filter { it.isValidApp(packageManager) }
-            .filterNot { it.packageName in sharedLibs }
             .sortedBy {
                 it.applicationInfo!!.loadLabel(packageManager).toString()
                     .lowercase(Locale.getDefault())
