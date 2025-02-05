@@ -22,6 +22,8 @@ package com.aurora.store
 
 import android.app.Application
 import android.content.Context
+import android.util.Log.INFO
+import android.util.Log.DEBUG
 import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
@@ -64,7 +66,7 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
-            .setMinimumLoggingLevel(android.util.Log.INFO)
+            .setMinimumLoggingLevel(if (BuildConfig.DEBUG) DEBUG else INFO)
             .setWorkerFactory(workerFactory)
             .build()
 
