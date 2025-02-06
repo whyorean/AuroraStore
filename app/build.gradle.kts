@@ -149,6 +149,7 @@ dependencies {
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.work.runtime.ktx)
+    androidTestImplementation(libs.androidx.work.testing)
 
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))

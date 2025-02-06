@@ -63,6 +63,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2Version" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workVersion" }
+androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workVersion" }
 auroraoss-gplayapi = { module = "com.auroraoss:gplayapi", version.ref = "gplayapiVersion" }
 coil-kt = { module = "io.coil-kt.coil3:coil", version.ref = "coilVersion" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilVersion" }
