@@ -22,6 +22,7 @@ leakcanaryAndroidVersion = "2.14"
 libsu = "6.0.0"
 lifeVersion = "2.8.7"
 materialVersion = "1.12.0"
+mockk = "1.13.16"
 navVersion = "2.8.7"
 okhttpVersion = "4.12.0"
 preferenceVersion = "1.2.1"
@@ -67,6 +68,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2Version" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workVersion" }
+androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "workVersion" }
 auroraoss-gplayapi = { module = "com.auroraoss:gplayapi", version.ref = "gplayapiVersion" }
 coil-kt = { module = "io.coil-kt.coil3:coil", version.ref = "coilVersion" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilVersion" }
@@ -85,6 +87,7 @@ hilt-androidx-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWo
 junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 lsposed-hiddenapibypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapibypassVersion" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenix" }
 rikka-hidden-stub = { module = "dev.rikka.hidden:stub", version.ref = "rikkaHiddenVersion" }
 rikka-shizuku-api = { module = "dev.rikka.shizuku:api", version.ref = "shizukuVersion" }
