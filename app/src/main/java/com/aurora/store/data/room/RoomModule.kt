@@ -2,6 +2,7 @@ package com.aurora.store.data.room
 
 import android.content.Context
 import androidx.room.Room
+import com.aurora.store.data.room.MigrationHelper.MIGRATION_1_2
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_3_4
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_4_5
 import com.aurora.store.data.room.download.DownloadConverter
@@ -28,7 +29,7 @@ object RoomModule {
         downloadConverter: DownloadConverter
     ): AuroraDatabase {
         return Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
-            .addMigrations(MIGRATION_3_4, MIGRATION_4_5)
+            .addMigrations(MIGRATION_1_2, MIGRATION_3_4, MIGRATION_4_5)
             .addTypeConverter(downloadConverter)
             .build()
     }

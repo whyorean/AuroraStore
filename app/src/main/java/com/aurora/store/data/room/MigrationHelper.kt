@@ -10,6 +10,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  */
 object MigrationHelper {
 
+    val MIGRATION_1_2 = object : Migration(1, 2) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom1To2(db)
+    }
+
     val MIGRATION_3_4 = object : Migration(3, 4) {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom3To4(db)
     }
@@ -19,6 +23,18 @@ object MigrationHelper {
     }
 
     private const val TAG = "MigrationHelper"
+
+    private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL("CREATE TABLE `favourite` (`packageName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `added` INTEGER NOT NULL, `mode` TEXT NOT NULL, PRIMARY KEY(`packageName`))")
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 1 to 2", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
 
     /**
      * Add targetSdk column to download and update table for checking if silent install is possible.
