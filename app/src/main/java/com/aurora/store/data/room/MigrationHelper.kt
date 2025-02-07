@@ -14,6 +14,10 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom1To2(db)
     }
 
+    val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom2To3(db)
+    }
+
     val MIGRATION_3_4 = object : Migration(3, 4) {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom3To4(db)
     }
@@ -31,6 +35,18 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 1 to 2", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    private fun migrateFrom2To3(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL("CREATE TABLE `update` (`packageName` TEXT NOT NULL, `versionCode` INTEGER NOT NULL, `versionName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `changelog` TEXT NOT NULL, `id` INTEGER NOT NULL, `developerName` TEXT NOT NULL, `size` INTEGER NOT NULL, `updatedOn` TEXT NOT NULL, `hasValidCert` INTEGER NOT NULL, `offerType` INTEGER NOT NULL, `fileList` TEXT NOT NULL, `sharedLibs` TEXT NOT NULL, PRIMARY KEY(`packageName`))")
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 2 to 3", exception)
         } finally {
             database.endTransaction()
         }
