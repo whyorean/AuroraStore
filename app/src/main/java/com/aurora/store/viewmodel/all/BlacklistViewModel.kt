@@ -23,10 +23,13 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import android.net.Uri
 import android.util.Log
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.Preferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -39,19 +42,27 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BlacklistViewModel @Inject constructor(
-    val blacklistProvider: BlacklistProvider,
-    val gson: Gson,
+    private val blacklistProvider: BlacklistProvider,
+    private val gson: Gson,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     private val TAG = BlacklistViewModel::class.java.simpleName
 
+    private val isAuroraOnlyFilterEnabled =
+        Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
+    private val isFDroidFilterEnabled =
+        Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_FDROID, true)
+    private val isExtendedUpdateEnabled =
+        Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
+
     private val _packages = MutableStateFlow<List<PackageInfo>?>(null)
     val packages = _packages.asStateFlow()
 
-    var selected: MutableSet<String> = blacklistProvider.blacklist
+    val blacklist = mutableStateListOf<String>()
 
     init {
+        blacklist.addAll(blacklistProvider.blacklist)
         fetchApps()
     }
 
@@ -65,12 +76,36 @@ class BlacklistViewModel @Inject constructor(
         }
     }
 
-    fun selectAll() {
-        selected.addAll(packages.value?.map { it.packageName } ?: emptyList())
+    fun isFiltered(packageInfo: PackageInfo): Boolean {
+        return when {
+            !isExtendedUpdateEnabled && !packageInfo.applicationInfo!!.enabled -> true
+            isAuroraOnlyFilterEnabled -> !CertUtil.isAuroraStoreApp(context, packageInfo.packageName)
+            isFDroidFilterEnabled -> CertUtil.isFDroidApp(context, packageInfo.packageName)
+            else -> false
+        }
     }
 
-    fun removeAll() {
-        selected.clear()
+    fun blacklist(packageName: String) {
+        blacklist.add(packageName)
+        blacklistProvider.blacklist(packageName)
+    }
+
+    fun blacklistAll() {
+        blacklistProvider.blacklist = packages.value!!.map { it.packageName }.toMutableSet()
+        blacklist.apply {
+            clear()
+            addAll(blacklistProvider.blacklist)
+        }
+    }
+
+    fun whitelist(packageName: String) {
+        blacklist.remove(packageName)
+        blacklistProvider.whitelist(packageName)
+    }
+
+    fun whitelistAll() {
+        blacklist.clear()
+        blacklistProvider.blacklist = mutableSetOf()
     }
 
     fun importBlacklist(context: Context, uri: Uri) {
@@ -82,10 +117,13 @@ class BlacklistViewModel @Inject constructor(
                         object : TypeToken<MutableSet<String?>?>() {}.type
                     )
 
-                    val knownSet = blacklistProvider.blacklist
-                    knownSet.addAll(importedSet)
-
-                    selected = knownSet
+                    val validImportedSet = importedSet
+                        .filter { pkgName -> packages.value!!.any { it.packageName == pkgName } }
+                    blacklistProvider.blacklist.addAll(validImportedSet)
+                    blacklist.apply {
+                        clear()
+                        addAll(blacklistProvider.blacklist)
+                    }
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to import blacklist", exception)

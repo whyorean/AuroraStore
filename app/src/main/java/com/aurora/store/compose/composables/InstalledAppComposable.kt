@@ -84,7 +84,9 @@ fun InstalledAppComposable(
                 )
                 Text(
                     text = stringResource(R.string.version, versionName, versionCode),
-                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp)
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

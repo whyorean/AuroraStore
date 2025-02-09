@@ -399,7 +399,7 @@ class MoreDialogFragment : DialogFragment() {
             Option(
                 title = R.string.title_blacklist_manager,
                 icon = R.drawable.ic_blacklist,
-                destinationID = R.id.blacklistFragment
+                destinationID = R.id.appsGamesFragment //TODO: Open blacklistScreen
             ),
             Option(
                 title = R.string.title_favourites_manager,
