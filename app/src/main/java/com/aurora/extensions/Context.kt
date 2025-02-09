@@ -42,7 +42,9 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.getSystemService
 import com.aurora.Constants
 import com.aurora.gplayapi.data.models.App
+import com.aurora.store.ComposeActivity
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 
 private const val TAG = "Context"
 
@@ -152,4 +154,11 @@ fun Context.isDomainVerified(domain: String): Boolean {
     } else {
         true
     }
+}
+
+fun Context.navigate(screen: Screen) {
+    val intent = Intent(this, ComposeActivity::class.java).apply {
+        putExtra(Screen.PARCEL_KEY, screen)
+    }
+    startActivity(intent)
 }

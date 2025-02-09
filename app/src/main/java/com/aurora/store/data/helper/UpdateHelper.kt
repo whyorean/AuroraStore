@@ -114,6 +114,13 @@ class UpdateHelper @Inject constructor(
     }
 
     /**
+     * Delete all updates from the database
+     */
+    suspend fun deleteAllUpdates() {
+        updateDao.deleteAll()
+    }
+
+    /**
      * Cancels the automated updates check
      * @see [UpdateWorker]
      */

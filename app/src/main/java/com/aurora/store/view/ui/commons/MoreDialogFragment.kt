@@ -57,9 +57,11 @@ import com.aurora.Constants
 import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.extensions.getStyledAttributeColor
+import com.aurora.extensions.navigate
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.MR
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.util.Preferences
 import com.aurora.store.compose.theme.AuroraTheme
 import com.aurora.store.viewmodel.commons.MoreViewModel
@@ -76,11 +78,22 @@ class MoreDialogFragment : DialogFragment() {
     private var secondaryColor: Color = Color.White
     private var onSecondaryColor: Color = Color.Black
 
-    private data class Option(
-        @StringRes val title: Int,
-        @DrawableRes val icon: Int,
-        @IdRes val destinationID: Int
+    private abstract class Option(
+        @StringRes open val title: Int,
+        @DrawableRes open val icon: Int,
     )
+
+    private data class ViewOption(
+        override val title: Int,
+        override val icon: Int,
+        @IdRes val destinationID: Int
+    ) : Option(title, icon)
+
+    private data class ComposeOption(
+        override val title: Int,
+        override val icon: Int,
+        val screen: Screen
+    ) : Option(title, icon)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(requireContext())
@@ -134,7 +147,16 @@ class MoreDialogFragment : DialogFragment() {
                                 OptionItem(
                                     option = option,
                                     tintColor = onPrimaryColor,
-                                    textColor = onSecondaryColor
+                                    textColor = onSecondaryColor,
+                                    onClick = {
+                                        when (option) {
+                                            is ViewOption -> {
+                                                findNavController().navigate(option.destinationID)
+                                            }
+
+                                            is ComposeOption -> context.navigate(option.screen)
+                                        }
+                                    }
                                 )
                             }
                         }
@@ -142,7 +164,16 @@ class MoreDialogFragment : DialogFragment() {
                             OptionItem(
                                 option = option,
                                 tintColor = onPrimaryColor,
-                                textColor = onPrimaryColor
+                                textColor = onPrimaryColor,
+                                onClick = {
+                                    when (option) {
+                                        is ViewOption -> {
+                                            findNavController().navigate(option.destinationID)
+                                        }
+
+                                        is ComposeOption -> context.navigate(option.screen)
+                                    }
+                                }
                             )
                         }
                         Footer(onPrimaryColor)
@@ -310,12 +341,13 @@ class MoreDialogFragment : DialogFragment() {
     private fun OptionItem(
         option: Option,
         tintColor: Color = Color.Blue,
-        textColor: Color = Color.Black
+        textColor: Color = Color.Black,
+        onClick: () -> Unit
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { findNavController().navigate(option.destinationID) }
+                .clickable { onClick() }
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.Start)
@@ -391,22 +423,22 @@ class MoreDialogFragment : DialogFragment() {
 
     private fun getOptions(): List<Option> {
         return listOf(
-            Option(
+            ViewOption(
                 title = R.string.title_apps_games,
                 icon = R.drawable.ic_apps,
                 destinationID = R.id.appsGamesFragment
             ),
-            Option(
+            ComposeOption(
                 title = R.string.title_blacklist_manager,
                 icon = R.drawable.ic_blacklist,
-                destinationID = R.id.blacklistFragment
+                screen = Screen.Blacklist
             ),
-            Option(
+            ViewOption(
                 title = R.string.title_favourites_manager,
                 icon = R.drawable.ic_favorite_unchecked,
                 destinationID = R.id.favouriteFragment
             ),
-            Option(
+            ViewOption(
                 title = R.string.title_spoof_manager,
                 icon = R.drawable.ic_spoof,
                 destinationID = R.id.spoofFragment
@@ -416,12 +448,12 @@ class MoreDialogFragment : DialogFragment() {
 
     private fun getExtraOptions(): List<Option> {
         return listOf(
-            Option(
+            ViewOption(
                 title = R.string.title_settings,
                 icon = R.drawable.ic_menu_settings,
                 destinationID = R.id.settingsFragment
             ),
-            Option(
+            ViewOption(
                 title = R.string.title_about,
                 icon = R.drawable.ic_menu_about,
                 destinationID = R.id.aboutFragment

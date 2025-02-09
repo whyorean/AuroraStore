@@ -37,9 +37,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
 import com.aurora.extensions.isMAndAbove
+import com.aurora.extensions.navigate
 import com.aurora.extensions.show
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.AuthState
 import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.CertUtil.GOOGLE_ACCOUNT_TYPE
@@ -93,7 +95,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_blacklist_manager -> {
-                        findNavController().navigate(R.id.blacklistFragment)
+                        requireContext().navigate(Screen.Blacklist)
                     }
 
                     R.id.menu_spoof_manager -> {

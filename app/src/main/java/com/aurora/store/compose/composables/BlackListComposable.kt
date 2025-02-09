@@ -41,6 +41,7 @@ import com.aurora.store.R
  * @param versionName versionName of the package
  * @param versionCode versionCode of the package
  * @param isChecked Whether the app is blacklisted
+ * @param isEnabled Whether this app is allowed to be blacklisted
  * @param onClick Callback when the composable is clicked
  */
 @Composable
@@ -51,12 +52,13 @@ fun BlackListComposable(
     versionName: String,
     versionCode: Long,
     isChecked: Boolean = false,
+    isEnabled: Boolean = true,
     onClick: () -> Unit = {}
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(enabled = isEnabled) { onClick() }
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_medium),
                 vertical = dimensionResource(R.dimen.padding_xsmall)
@@ -87,11 +89,13 @@ fun BlackListComposable(
                 )
                 Text(
                     text = stringResource(R.string.version, versionName, versionCode),
-                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp)
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
-        Checkbox(checked = isChecked, onCheckedChange = { onClick() })
+        Checkbox(checked = isChecked, enabled = isEnabled, onCheckedChange = { onClick() })
     }
 }
 
@@ -104,6 +108,7 @@ private fun BlackListComposablePreview() {
         packageName = BuildConfig.APPLICATION_ID,
         versionName = BuildConfig.VERSION_NAME,
         versionCode = BuildConfig.VERSION_CODE.toLong(),
-        isChecked = true
+        isChecked = true,
+        isEnabled = false
     )
 }

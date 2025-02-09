@@ -1,6 +1,7 @@
 [versions]
 activityCompose = "1.10.0"
 androidGradlePlugin = "8.8.0"
+androidx-hilt = "1.2.0"
 browserVersion = "1.8.0"
 coilVersion = "3.1.0"
 composeBom = "2025.01.01"
@@ -29,6 +30,7 @@ protobufJavaliteVersion = "4.29.3"
 rikkaHiddenVersion = "4.3.3"
 rikkaToolsVersion = "4.4.0"
 roomVersion = "2.6.1"
+serialization = "1.8.0"
 shimmerVersion = "0.5.0"
 shizukuVersion = "13.1.5"
 swiperefreshlayoutVersion = "1.1.0"
@@ -44,10 +46,12 @@ androidx-browser = { module = "androidx.browser:browser", version.ref = "browser
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreVersion" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }
+androidx-hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt" }
 androidx-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "junitVersion" }
 androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifeVersion" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifeVersion" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navVersion" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navVersion" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navVersion" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceVersion" }
@@ -79,6 +83,7 @@ hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", vers
 hilt-androidx-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltWorkVersion" }
 hilt-androidx-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWorkVersion" }
 junit = { module = "junit:junit", version.ref = "junit" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 lsposed-hiddenapibypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapibypassVersion" }
 process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenix" }
 rikka-hidden-stub = { module = "dev.rikka.hidden:stub", version.ref = "rikkaHiddenVersion" }
@@ -97,4 +102,5 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintVersion" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
 jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
 jetbrains-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
 rikka-tools-refine-plugin = { id = "dev.rikka.tools.refine", version.ref = "rikkaToolsVersion" }
