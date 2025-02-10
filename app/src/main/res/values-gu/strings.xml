@@ -52,4 +52,10 @@
     <string name="action_export">નિકાસ કરો</string>
     <string name="action_import">આયાત કરો</string>
     <string name="action_copy_link">કડી ની નકલ લ્યો</string>
+    <string name="action_favourite">મનપસંદ તરીકે ચિહ્નિત કરો</string>
+    <string name="action_filter">ગાળકો</string>
+    <string name="action_filter_all">તમામ</string>
+    <string name="action_filter_apply">લાગુ કરો</string>
+    <string name="action_filter_apps_with_ads">જાહેરાતો ધરાવતા અનુપ્રયોગો</string>
+    <string name="action_filter_gsf_dependent_apps">GSF આધારિત</string>
 </resources>
