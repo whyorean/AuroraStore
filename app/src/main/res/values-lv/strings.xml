@@ -19,8 +19,8 @@
     <string name="action_installations">Instalācijas</string>
     <string name="action_install">Uzstādīt</string>
     <string name="action_ignore">Neņemt vērā</string>
-    <string name="action_granted">Iedots</string>
-    <string name="action_grant">Dot</string>
+    <string name="action_granted">Sniegta</string>
+    <string name="action_grant">Sniegt</string>
     <string name="action_filter_rating">Reitingi</string>
     <string name="action_filter_downloads">Lejupielādes</string>
     <string name="action_filter_apps_with_ads">Lietotnes ar reklāmām</string>
@@ -106,7 +106,7 @@
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
-    <string name="onboarding_title_welcome">Laipni lūgti</string>
+    <string name="onboarding_title_welcome">Sveiciens</string>
     <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
     <string name="pref_ui_no_for_you">For You lapa</string>
     <string name="pref_ui_no_for_you_desc">Rādīt For You lapu sākuma ekrānā</string>
@@ -145,7 +145,7 @@
     <string name="app_updater_service_notif_text">Ieslēdz fona lietotņu lejupielādi</string>
     <string name="app_updater_service_notif_title">Lietotne lejupielādēta fonā</string>
     <string name="download_speed_estimating">Aprēķina</string>
-    <string name="action_next">Nākošais</string>
+    <string name="action_next">Nākamais</string>
     <string name="action_open">Atvērt</string>
     <string name="action_ok">Labi</string>
     <string name="download_eta_calculating">Aprēķina</string>
@@ -425,4 +425,6 @@
     <string name="details_compatibility_no_gms">Bez Google Play pakalpojumiem</string>
     <string name="details_compatibility_gms_required_subtitle">Var būt nepieciešams uzstādīt Google īpašnieciskā bibliotēka vai tās FOSS atdarinājums, piemēram, microG.</string>
     <string name="no_apps_available">Nav pieejama neviena lietotne</string>
+    <string name="pref_network_microg_login_title">Izmantot microG, lai pieteiktos kontos</string>
+    <string name="pref_network_microg_login_desc">Autentificēt ar microG, kad piesakās Google kontos, vienkāršākai pieteikšanās plūsmai.</string>
 </resources>
