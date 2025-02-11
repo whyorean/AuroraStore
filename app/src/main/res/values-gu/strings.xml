@@ -59,4 +59,9 @@
     <string name="action_filter_apps_with_ads">જાહેરાતો ધરાવતા અનુપ્રયોગો</string>
     <string name="action_filter_gsf_dependent_apps">GSF આધારિત</string>
     <string name="action_filter_downloads">ડાઉનલોડઓ</string>
+    <string name="action_filter_misc">બીજું બધું</string>
+    <string name="action_filter_paid_apps">સશુલ્ક</string>
+    <string name="action_filter_rating">મુલ્યાંકનો</string>
+    <string name="action_finish">સમાપ્ત કરો</string>
+    <string name="action_get_local_apk">અનુપ્રયોગો નું જૂથ સાચવો</string>
 </resources>
