@@ -50,6 +50,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
+import com.aurora.store.util.Preferences.PREFERENCE_MICROG_AUTH
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,6 +63,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     private val TAG = SplashFragment::class.java.simpleName
 
     private val viewModel: AuthViewModel by activityViewModels()
+
+    private val canLoginWithMicroG: Boolean
+        get() = isMAndAbove && PackageUtil.hasSupportedMicroG(requireContext()) &&
+                Preferences.getBoolean(requireContext(), PREFERENCE_MICROG_AUTH, true)
 
     private val startForAccount =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -201,7 +206,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         binding.btnGoogle.addOnClickListener {
             if (viewModel.authState.value != AuthState.Fetching) {
                 binding.btnGoogle.updateProgress(true)
-                if (isMAndAbove && PackageUtil.hasSupportedMicroG(requireContext())) {
+                if (canLoginWithMicroG) {
                     Log.i(TAG, "Found supported microG, trying to request credentials")
                     val accountIntent = AccountManager.newChooseAccountIntent(
                         null,
@@ -216,7 +221,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 } else {
                     findNavController().navigate(R.id.googleFragment)
                 }
-
             }
         }
     }

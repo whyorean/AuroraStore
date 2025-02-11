@@ -29,7 +29,9 @@ import androidx.preference.SwitchPreferenceCompat
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_MICROG_AUTH
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
@@ -84,6 +86,9 @@ class NetworkPreference : BasePreferenceFragment(),
                 true
             }
         }
+
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_MICROG_AUTH)?.isEnabled =
+            PackageUtil.hasSupportedMicroG(requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

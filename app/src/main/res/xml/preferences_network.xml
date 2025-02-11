@@ -44,6 +44,14 @@
         app:singleLineTitle="false"
         app:title="@string/pref_common_extra" />
 
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:disableDependentsState="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_MICROG_AUTH"
+        app:summary="@string/pref_network_microg_login_desc"
+        app:title="@string/pref_network_microg_login_title" />
+
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="0"
         app:entries="@array/pref_vending_version"

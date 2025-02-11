@@ -489,4 +489,8 @@
 
     <!-- AppsGamesFragment -->
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installed</string>
+
+    <!-- NetworkPreference -->
+    <string name="pref_network_microg_login_title">Use microG to sign-in to accounts</string>
+    <string name="pref_network_microg_login_desc">Authenticate using microG when signing into Google accounts for a simpler sign-in flow.</string>
 </resources>
