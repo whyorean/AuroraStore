@@ -425,4 +425,6 @@
     <string name="plexus_powered">Využívá službu Plexus</string>
     <string name="installed_apps_size">Nainstalováno <xliff:g id="installed_apps_size">%1$d</xliff:g> aplikací</string>
     <string name="no_apps_available">Nejsou dostupné žádné aplikace</string>
+    <string name="pref_network_microg_login_title">Použít microG k přihlášení k účtům</string>
+    <string name="pref_network_microg_login_desc">Během přihlašování do účtů Google použít službu microG pro jednodušší proces přihlášení.</string>
 </resources>
