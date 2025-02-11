@@ -58,4 +58,5 @@
     <string name="action_filter_apply">લાગુ કરો</string>
     <string name="action_filter_apps_with_ads">જાહેરાતો ધરાવતા અનુપ્રયોગો</string>
     <string name="action_filter_gsf_dependent_apps">GSF આધારિત</string>
+    <string name="action_filter_downloads">ડાઉનલોડઓ</string>
 </resources>
