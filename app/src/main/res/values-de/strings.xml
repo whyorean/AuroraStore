@@ -425,4 +425,6 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> Apps installiert</string>
     <string name="details_compatibility_status_unknown">Unbekannt: Noch nicht geprüft</string>
     <string name="no_apps_available">Keine Apps verfügbar</string>
+    <string name="pref_network_microg_login_title">microG zur Anmeldung bei Konten verwenden</string>
+    <string name="pref_network_microg_login_desc">Um den Anmeldevorgang bei Google-Konten zu vereinfachen, authentifiziere dich dort mit microG.</string>
 </resources>
