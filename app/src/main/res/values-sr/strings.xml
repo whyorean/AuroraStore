@@ -449,4 +449,6 @@
     <string name="details_compatibility_gms_required_subtitle">Можда ћете морати да инсталирате Google-ову власничку библиотеку или заменску имплементацију FOSS-а као што је microG.</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> апликација инсталирано</string>
     <string name="no_apps_available">Нема доступних апликација</string>
+    <string name="pref_network_microg_login_title">Користи microG за пријављивање на налоге</string>
+    <string name="pref_network_microg_login_desc">Аутентификација коришћењем microG при пријављивању на Google налоге за једноставнији ток пријављивања.</string>
 </resources>
