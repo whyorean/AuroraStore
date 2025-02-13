@@ -421,4 +421,6 @@
     <string name="plexus_progress">Bateragarritasuna aztertzen…</string>
     <string name="details_compatibility_title">Bateragarritasuna</string>
     <string name="no_apps_available">Aplikazio eskuragarririk ez</string>
+    <string name="pref_network_microg_login_title">Erabili microG kontuetara sartzeko</string>
+    <string name="pref_network_microg_login_desc">Autentifikatu microG erabiliz Google-ko kontuetan saioa hasteko, saioa hasteko fluxu errazagoa izateko.</string>
 </resources>
