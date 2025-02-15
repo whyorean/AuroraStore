@@ -409,4 +409,12 @@
     <string name="status_verifying">Đang xác thực</string>
     <string name="action_unarchive">Dừng lưu trữ</string>
     <string name="available_spoof">Có sẵn</string>
+    <string name="no_apps_available">Không có ứng dụng nào</string>
+    <string name="unable_to_open">Không thể mở được app</string>
+    <string name="plexus_powered">Được hỗ trợ bởi Plexus</string>
+    <string name="plexus_progress">Đang kiểm tra tính tương thích…</string>
+    <string name="details_compatibility_title">Tương Thích</string>
+    <string name="details_compatibility_gms_required_title">Yêu cầu Dịch vụ Google Play</string>
+    <string name="details_compatibility_gms_required_subtitle">Bạn có thể cần phải cài đặt thư viện độc quyền của Google hoặc bản triển khai lại FOSS như microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Hoạt động không cần dịch vụ Google Play</string>
 </resources>
