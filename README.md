@@ -11,7 +11,7 @@ Aurora Store works exactly like a door or a browser, allowing you to log in to y
 
 *_Please note that Aurora Store does not have any approval, sponsorship or authorization from Google, Google Play, any apps downloaded through Aurora Store or any app developers; neither does Aurora Store have any affiliation, cooperation or connection with them._*
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90">](https://f-droid.org/en/packages/com.aurora.store/)
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90">](https://f-droid.org/packages/com.aurora.store/)
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="90">](https://apt.izzysoft.de/fdroid/index/apk/com.aurora.store)
 
 ## Features
@@ -45,7 +45,7 @@ Aurora Store works exactly like a door or a browser, allowing you to log in to y
 
 Please only download the latest stable releases from one of these sources:
 
-- [F-Droid](https://f-droid.org/en/packages/com.aurora.store/) (Recommended)
+- [F-Droid](https://f-droid.org/packages/com.aurora.store/) (Recommended)
 - [GitLab Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
 
 You can also get latest debug builds signed with AOSP test keys for testing latest changes from our [GitLab Package Registry](https://gitlab.com/AuroraOSS/AuroraStore/-/packages/24103616).
