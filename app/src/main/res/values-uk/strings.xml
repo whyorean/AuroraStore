@@ -425,4 +425,6 @@
     <string name="details_compatibility_status_unknown">Невідомо: ще не перевірено</string>
     <string name="installed_apps_size">Установлено <xliff:g id="installed_apps_size">%1$d</xliff:g> застосунків</string>
     <string name="no_apps_available">Немає доступних застосунків</string>
+    <string name="pref_network_microg_login_title">Використовуйте microG для входу в облікові записи</string>
+    <string name="pref_network_microg_login_desc">Автентифікуйте за допомогою microG під час входу в облікові записи Google для простішого процесу входу.</string>
 </resources>

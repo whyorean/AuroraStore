@@ -425,4 +425,6 @@
     <string name="details_compatibility_status_unsupported">Não suportado: Não funcional</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
     <string name="no_apps_available">Nenhum app disponível</string>
+    <string name="pref_network_microg_login_title">Usar o microG para fazer login em contas</string>
+    <string name="pref_network_microg_login_desc">Autentique usando o microG ao fazer login em contas Google para um fluxo de login mais simples.</string>
 </resources>

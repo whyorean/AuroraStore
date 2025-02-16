@@ -425,4 +425,6 @@
     <string name="details_compatibility_status_unknown">Bilinmiyor: Henüz denetlenmedi</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uygulama kuruldu</string>
     <string name="no_apps_available">Uygulama yok</string>
+    <string name="pref_network_microg_login_title">Hesaplara giriş yapmak için microG kullan</string>
+    <string name="pref_network_microg_login_desc">Daha basit bir giriş akışı için Google hesaplarına giriş yaparken microG ile kimliği doğrula</string>
 </resources>

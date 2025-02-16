@@ -144,7 +144,7 @@
     <string name="installer_status_failure_blocked">Namestitev je bila blokirana</string>
     <string name="installer_status_user_action">Čakam na potrditev uporabnika</string>
     <string name="device_miui_description">Prosimo, izključite optimizacije MIUI, da omogočite nameščanje ali uporabite nameščanje s servisom ali korensko nameščanje.</string>
-    <string name="download_paused">Zaustavljeno •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Zaustavljeno • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="pref_install_mode_shizuku">Shizuku namestitveni program</string>
     <string name="pref_install_mode_am">AM namestitveni program</string>
     <string name="pref_install_delete_summary">Prenešeni APK-ji bodo izbrisani takoj po namestitvi</string>
@@ -169,7 +169,7 @@
     <string name="download_eta_hrs">še %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">še %1$dm %2$ds</string>
     <string name="download_eta_sec">še %1$ds</string>
-    <string name="download_progress">Prenašanje •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Prenašanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_mode_session">Sejni namestitveni program</string>
     <string name="pref_install_mode_summary">Izberite način namestitve APK</string>
     <string name="pref_network_title">Omreženje</string>
@@ -407,4 +407,20 @@
     <string name="status_verifying">Preverjanje</string>
     <string name="unable_to_open">Ni mogoče odpreti aplikacije</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplikacij nameščenih</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Ta aplikacija deluje brez Googlove lastniške knjižnice. Kakor koli, morda bo še vedno zahtevala knjižnice tretje osebe za pravilno delovanje.</string>
+    <string name="details_compatibility_no_gms">Brez storitev Google Play</string>
+    <string name="details_compatibility_status_compatible">Združljiva: Deluje brez težav</string>
+    <string name="details_compatibility_status_limited">Omejena: Deluje z omejenimi funkcijami</string>
+    <string name="details_compatibility_title">Združljivost</string>
+    <string name="plexus_powered">Poganja Plexus</string>
+    <string name="plexus_progress">Preverjanje združljivosti…</string>
+    <string name="details_compatibility_status_unsupported">Nepodprta: Ni delujoča</string>
+    <string name="details_compatibility_status_unknown">Neznano: Še ni preverjena</string>
+    <string name="pref_network_microg_login_title">Uporabi microG za vpis v račune</string>
+    <string name="pref_network_microg_login_desc">Overite z uporabo microG, ko se vpisujete v račune Google za preprostejši tok vpisa.</string>
+    <string name="details_compatibility_gms_required_title">Zahteva storitve Google Play</string>
+    <string name="no_apps_available">Na voljo ni nobena aplikacija</string>
+    <string name="details_compatibility_gms_required_subtitle">Morda boste morali namestiti Googlovo lastniško knjižnico ali FOSS izvedbo, kot je microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Deluje brez storitev Google Play</string>
+    <string name="details_compatibility_microg">S projektom microG</string>
 </resources>

@@ -10,7 +10,7 @@
     <string name="filter_review_four">أربع</string>
     <string name="filter_review_five">خمس</string>
     <string name="download_speed_estimating">يتم التقدير</string>
-    <string name="account_google">حساب قوقل</string>
+    <string name="account_google">حساب Google</string>
     <string name="exodus_substring">برمجيات التتبع المعروفة الموجودة في</string>
     <string name="title_spoof_manager">مدير المحاكاة الوهمية</string>
     <string name="toast_permission_granted">الإذن الممنوح</string>
@@ -233,10 +233,10 @@
     <string name="download_paused">متوقف مؤقتا • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
     <string name="download_eta_min">بقي %1$d دقيقة %2$d ثانية</string>
     <string name="download_eta_sec">بقي %1$d ثانية</string>
-    <string name="session_login_failed_google">تعذّر تسجيل الدخول عبر جوجل</string>
+    <string name="session_login_failed_google">تعذّر تسجيل الدخول عبر Google</string>
     <string name="session_scrapped">تم إلغاء الجلسة الأخيرة</string>
     <string name="session_verifying">التحقق من الجلسة</string>
-    <string name="session_verifying_google">التحقق من جلسة قوقل</string>
+    <string name="session_verifying_google">جارِ التحقق من جلسة Google</string>
     <string name="error">حدث خطأ!</string>
     <string name="menu">القائمة</string>
     <string name="expand">توسع</string>
@@ -298,7 +298,7 @@
     <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
     <string name="pref_network_proxy_enable_desc">السماح لجميع حركة المرور من التطبيق بالمرور عبر الوكيل</string>
     <string name="pref_vending_version_device">الافتراضي (من تكوين الجهاز)</string>
-    <string name="pref_vending_version_title">نسخة جوجل بلاي</string>
+    <string name="pref_vending_version_title">نُسخة Google Play</string>
     <string name="onboarding_permission_doze">تنزيلات الخلفية</string>
     <string name="onboarding_permission_doze_desc">السماح لـAurora Store بتنزيل التطبيقات وتحديثها في الخلفية</string>
     <string name="pref_updates_auto">تحديث التطبيقات تلقائيًا</string>
@@ -425,4 +425,6 @@
     <string name="details_compatibility_status_unknown">غير معروف: لم يتم التحقق منه بعد</string>
     <string name="details_compatibility_gms_not_required_subtitle">يعمل هذا التطبيق بدون مكتبة Google الخاصة. ومع ذلك، قد يتطلب الأمر استخدام مكتبات أخرى تابعة لجهات خارجية ليعمل بشكل صحيح.</string>
     <string name="no_apps_available">لا توجد تطبيقات متاحة</string>
+    <string name="pref_network_microg_login_title">استخدم microG لتسجيل الدخول إلى الحسابات</string>
+    <string name="pref_network_microg_login_desc">استوثق باستخدام microG عند تسجيل الدخول إلى حسابات Google لتسهيل عملية تسجيل الدخول.</string>
 </resources>

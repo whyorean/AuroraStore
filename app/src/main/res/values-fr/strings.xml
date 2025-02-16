@@ -421,4 +421,6 @@
     <string name="details_compatibility_status_unsupported">Incompatible : L’appli n’est pas fonctionnelle</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> applis installées</string>
     <string name="no_apps_available">Aucune appli n’est proposée</string>
+    <string name="pref_network_microg_login_title">Utiliser microG pour se connecter aux comptes</string>
+    <string name="pref_network_microg_login_desc">Authentifiez-vous avec microG lors de la connexion aux comptes Google afin de simplifier le processus de connexion.</string>
 </resources>
