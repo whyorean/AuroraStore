@@ -17,6 +17,7 @@ assembleDebug:
   artifacts:
     paths:
     - $DEBUG_BINARY_PATH
+    - 'app/schemas/com.aurora.store.data.room.AuroraDatabase/'
 
 uploadDebug:
   stage: upload
