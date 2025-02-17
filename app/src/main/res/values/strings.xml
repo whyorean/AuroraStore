@@ -335,13 +335,13 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> and <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> and <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> and <xliff:g id="apps_count">%4$d</xliff:g> more</string>
-    <string name="pref_updates_auto">Auto-update apps</string>
-    <string name="pref_updates_auto_desc">Configure auto-updates behaviour</string>
+    <string name="pref_updates_auto">Automatic updates</string>
+    <string name="pref_updates_auto_desc">Configure automatic updates behaviour</string>
     <string name="pref_updates_auto_off">Do not auto-update apps</string>
     <string name="pref_updates_auto_notify">Check &amp; notify for available updates</string>
     <string name="pref_updates_auto_install">Check &amp; install available updates automatically</string>
     <string name="pref_updates_check_frequency">Automatic updates frequency</string>
-    <string name="pref_updates_check_frequency_desc">Configure intervals for auto and self updates, in hour.</string>
+    <string name="pref_updates_check_frequency_desc">Configure time interval for automatic updates, in hour.</string>
     <string name="failed_to_fetch_report">Failed to fetch privacy report</string>
     <string name="access_denied_using_vpn">Access denied! Are you using VPN or Tor?</string>
     <string name="bad_request">Internal error! Please retry after sometime</string>
