@@ -51,15 +51,12 @@ class UpdatesPreference : BasePreferenceFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_updates, rootKey)
 
-        findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)?.setOnPreferenceChangeListener { _, newValue ->
-            val updateRestrictionsPref = findPreference<Preference>(PREFERENCES_UPDATES_RESTRICTIONS)
-            val updateCheckIntervalPref =
-                findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)
+        val updatesEnabled = Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO) != 0
 
+        findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)?.setOnPreferenceChangeListener { _, newValue ->
             when (UpdateMode.entries[newValue.toString().toInt()]) {
                 UpdateMode.DISABLED -> {
-                    updateRestrictionsPref?.isEnabled = false
-                    updateCheckIntervalPref?.isEnabled = false
+                    handleAutoUpdateDependentPrefs(false)
                     viewModel.updateHelper.cancelAutomatedCheck()
                     requireContext().save(PREFERENCE_UPDATES_AUTO, 0)
                     true
@@ -67,15 +64,13 @@ class UpdatesPreference : BasePreferenceFragment() {
 
                 UpdateMode.CHECK_AND_NOTIFY -> {
                     if (permissionProvider.isGranted(PermissionType.POST_NOTIFICATIONS)) {
-                        updateRestrictionsPref?.isEnabled = true
-                        updateCheckIntervalPref?.isEnabled = true
+                        handleAutoUpdateDependentPrefs(true)
                         viewModel.updateHelper.scheduleAutomatedCheck()
                         true
                     } else {
                         permissionProvider.request(PermissionType.POST_NOTIFICATIONS) {
                             if (it) {
-                                updateRestrictionsPref?.isEnabled = true
-                                updateCheckIntervalPref?.isEnabled = true
+                                handleAutoUpdateDependentPrefs(true)
                                 requireContext().save(PREFERENCE_UPDATES_AUTO, 1)
                                 viewModel.updateHelper.scheduleAutomatedCheck()
                                 activity?.recreate()
@@ -87,15 +82,13 @@ class UpdatesPreference : BasePreferenceFragment() {
 
                 UpdateMode.CHECK_AND_INSTALL -> {
                     if (permissionProvider.isGranted(PermissionType.DOZE_WHITELIST)) {
-                        updateRestrictionsPref?.isEnabled = true
-                        updateCheckIntervalPref?.isEnabled = true
+                        handleAutoUpdateDependentPrefs(true)
                         viewModel.updateHelper.scheduleAutomatedCheck()
                         true
                     } else {
                         permissionProvider.request(PermissionType.DOZE_WHITELIST) {
                             if (it) {
-                                updateRestrictionsPref?.isEnabled = true
-                                updateCheckIntervalPref?.isEnabled = true
+                                handleAutoUpdateDependentPrefs(true)
                                 requireContext().save(PREFERENCE_UPDATES_AUTO, 2)
                                 viewModel.updateHelper.scheduleAutomatedCheck()
                                 activity?.recreate()
@@ -109,21 +102,7 @@ class UpdatesPreference : BasePreferenceFragment() {
             }
         }
 
-        findPreference<Preference>(PREFERENCES_UPDATES_RESTRICTIONS)?.apply {
-            isEnabled = Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO) != 0
-            setOnPreferenceClickListener {
-                findNavController().navigate(R.id.updatesRestrictionsDialog)
-                true
-            }
-        }
-
-        findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)?.apply {
-            isEnabled = Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO) != 0
-            setOnPreferenceChangeListener { _, _ ->
-                viewModel.updateHelper.updateAutomatedCheck()
-                true
-            }
-        }
+        handleAutoUpdateDependentPrefs(updatesEnabled)
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_FILTER_AURORA_ONLY)
             ?.setOnPreferenceChangeListener { _, newValue ->
@@ -153,6 +132,26 @@ class UpdatesPreference : BasePreferenceFragment() {
         view.findViewById<Toolbar>(R.id.toolbar)?.apply {
             title = getString(R.string.title_updates)
             setNavigationOnClickListener { findNavController().navigateUp() }
+        }
+    }
+
+    private fun handleAutoUpdateDependentPrefs(enabled: Boolean) {
+        findPreference<Preference>(PREFERENCES_UPDATES_RESTRICTIONS)?.apply {
+            isEnabled = enabled
+            isVisible = enabled
+            setOnPreferenceClickListener {
+                findNavController().navigate(R.id.updatesRestrictionsDialog)
+                true
+            }
+        }
+
+        findPreference<SeekBarPreference>(PREFERENCE_UPDATES_CHECK_INTERVAL)?.apply {
+            isEnabled = enabled
+            isVisible = enabled
+            setOnPreferenceChangeListener { _, _ ->
+                viewModel.updateHelper.updateAutomatedCheck()
+                true
+            }
         }
     }
 }
