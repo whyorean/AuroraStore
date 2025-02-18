@@ -23,14 +23,14 @@
     <string name="action_search">Zoek</string>
     <string name="action_filter_misc">Overig</string>
     <string name="action_get_local_apk">Applicatie bundel opslaan</string>
-    <string name="app_updater_service_notif_text">Schakelt achergrond app download in</string>
-    <string name="app_updater_service_notif_title">Achtergrond app download</string>
+    <string name="app_updater_service_notif_text">Schakelt achergrondinstallatie in</string>
+    <string name="app_updater_service_notif_title">Achtergrondinstallatie</string>
     <string name="toast_export_failed">Kon aparaatconfiguratie niet exporteren</string>
     <string name="toast_export_success">Apparaat configuratie geëxporteerd</string>
     <string name="toast_aas_token_failed">Kon geen AAS Token genereren</string>
     <string name="toast_rated_failed">Kon beoordeling niet versturen</string>
     <string name="toast_page_unavailable">Blader pagina niet beschikbaar</string>
-    <string name="toast_manual_available">Gefeliciteerd, de aangevraagde versie code is beschikbaar, nu aan het downloaden.</string>
+    <string name="toast_manual_available">Gefeliciteerd, de aangevraagde versie code is beschikbaar, nu aan het installeren.</string>
     <string name="toast_manual_unavailable">De versiecode die je verzoekt is niet beschikbaar.</string>
     <string name="toast_purchase_blocked">App aankopen niet beschikbaar op Anonieme accounts.</string>
     <string name="toast_spoof_applied">Apparaat vervalsing toegepast.</string>
@@ -69,7 +69,7 @@
     <string name="purchase_not_found">App niet gevonden</string>
     <string name="purchase_unsupported">App niet ondersteund</string>
     <string name="purchase_invalid">App niet aangeschaft</string>
-    <string name="purchase_failed">Download Mislukt</string>
+    <string name="purchase_failed">Installatie Mislukt</string>
     <string name="pref_ui_similar_apps_desc">Toon vergelijkbare en gerelarteerde clusters op app details pagina</string>
     <string name="pref_ui_similar_apps">Vergelijkbare en gerelateerde apps</string>
     <string name="pref_ui_no_for_you_desc">Toon Voor Jou Pagina\'s op thuisscherm</string>
@@ -87,7 +87,7 @@
     <string name="pref_install_delete_title">Verwijder APK na installatie</string>
     <string name="pref_install_delete_summary">Gedownloade APK\'s zullen onmiddellijk worden verwijderd na installatie</string>
     <string name="pref_filter_fdroid_title">Filter F-Droid apps</string>
-    <string name="pref_filter_fdroid_summary">Controleer geen updates voor apps geïnstalleerd via F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Niet op updates controleren voor apps geïnstalleerd met F-Droid</string>
     <string name="pref_common_extra">Extra\'s</string>
     <string name="onboarding_permission_installer_desc">Sta installeren van apps met Aurora Store toe</string>
     <string name="onboarding_permission_installer">Installatie-recht</string>
@@ -134,12 +134,12 @@
     <string name="exodus_powered">Mogelijk gemaakt door Exodus Privacy</string>
     <string name="exodus_no_tracker">Bevat geen bekende trackers</string>
     <string name="download_speed_estimating">Geschatte</string>
-    <string name="download_resume_all">Alle voortzetten</string>
+    <string name="download_resume_all">Alles voortzetten</string>
     <string name="download_queued">In de wachtrij</string>
     <string name="download_pause_all">Pauzeer alle</string>
     <string name="download_none">Geen installaties</string>
     <string name="download_metadata">Metadata verkrijgen</string>
-    <string name="download_force_clear_all">Forceer verwijder alle</string>
+    <string name="download_force_clear_all">Alles geforceerd wissen</string>
     <string name="download_failed">Installatie mislukt</string>
     <string name="download_eta_calculating">Aan het berekenen</string>
     <string name="download_completed">Geïnstalleerd</string>
@@ -239,7 +239,7 @@
     <string name="session_verifying">Sessie verifiëren</string>
     <string name="session_verifying_google">Google-sessie verifiëren</string>
     <string name="server_maintenance">Server buiten gebruik voor werkzaamheden</string>
-    <string name="download_progress">Aan het downloaden • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Aan het installeren • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku is niet geïnstalleerd of niet goed ingesteld.</string>
     <string name="onboarding_permission_notifications">Meldingen</string>
     <string name="session_login_failed_google">Aanmelden via Google mislukt</string>
@@ -263,7 +263,7 @@
     <string name="permissions_denied">Vereiste rechten zijn geweigerd. Verleen deze alstublieft om verder te gaan met de actie</string>
     <string name="search_hint">Zoeken naar Apps &amp; Spellen</string>
     <string name="requesting_new_session">Nieuwe sessie aanvragen</string>
-    <string name="downloading_dep">Extra bestanden downloaden voor <xliff:g id="app">%1$s</xliff:g></string>
+    <string name="downloading_dep">Extra bestanden installeren voor <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_channel_updates">Meldingen voor updates</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> updates beschikbaar</string>
     <string name="notification_updates_available_desc_1">Een nieuwere versie van <xliff:g id="app_one_name">%1$s</xliff:g> is beschikbaar</string>
@@ -284,8 +284,8 @@
     <string name="app_links_title">App koppelingen</string>
     <string name="google_play_store_desc">Google Play, ook bekend als de Google Play Store en voorheen Android Market.</string>
     <string name="action_request_analysis">Nieuwe analyse aanvragen</string>
-    <string name="onboarding_permission_doze">Downloads in achtergrond</string>
-    <string name="onboarding_permission_doze_desc">Sta Aurora Store toe om apps te downloaden en updaten in de achtergrond</string>
+    <string name="onboarding_permission_doze">Achtergrondinstallaties</string>
+    <string name="onboarding_permission_doze_desc">Sta Aurora Store toe om apps te installeren en te updaten in de achtergrond</string>
     <string name="action_home_screen">Toevoegen aan startpagina</string>
     <string name="details_ratings_title_hint">Titels beoordelen</string>
     <string name="download_clear_finished">Verwijder voltooid</string>
@@ -309,7 +309,7 @@
     <string name="services_installer_subtitle">Installatiemethode voor achtergrondinstallaties</string>
     <string name="am_installer_subtitle">Volledig uitgeruste open bron pakketbeheerder</string>
     <string name="about_wiki_summary">Vind antwoorden op veelgestelde vragen (FAQ), stappen voor probleemoplossing en meer</string>
-    <string name="manual_download_hint">Voer versiecode in die je wenst te installeren</string>
+    <string name="manual_download_hint">Voer versiecode in die je wilt installeren</string>
     <string name="remove_dispenser_summary">Wil je de dispenser verwijderen \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="action_favourite">Favoriet</string>
     <string name="session_login">Meld je aan bij je Google Play-account</string>
@@ -329,4 +329,22 @@
     <string name="details_data_safety_title">Gegevensveiligheid</string>
     <string name="details_data_safety_subtitle">Privacy van gegevens en veiligheidstoepassingen verklaard door de ontwikkelaar</string>
     <string name="pref_updates_auto_install">Controleer &amp; installeer beschikbare updates automatisch</string>
+    <string name="pref_updates_incompatible">Incompatibele updates</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="pref_network_proxy_enable">Proxy aanzetten</string>
+    <string name="pref_network_proxy_url">Proxy-URL</string>
+    <string name="toast_proxy_success">Proxy succesvol ingesteld</string>
+    <string name="pref_vending_version_title">Google Play-versie</string>
+    <string name="toast_permission_esm_caution">Mogelijk moet je de toestemming opnieuw verlenen vanwege een fout in Storage Access Framework</string>
+    <string name="notification_channel_export">App-export melding</string>
+    <string name="status_downloading">Installeren</string>
+    <string name="title_app_settings">App-instellingen</string>
+    <string name="pref_network_proxy_enable_desc">Sta toe dat al het verkeer van de app via de proxy gaat</string>
+    <string name="pref_vending_version_device">Standaard (van apparaatconfiguraties)</string>
+    <string name="pref_network_proxy_url_message">Voer een geldige Proxy-URL in om alle gegevens via de proxy te sturen.</string>
+    <string name="title_favourites_manager">Favoriete Apps</string>
+    <string name="toast_proxy_invalid">Ongeldige proxy-URL, controleer indeling!</string>
+    <string name="toast_permission_esm_restart">Mogelijk moet je de app opnieuw opstarten om de verleende toestemming te bevestigen.</string>
+    <string name="notification_channel_downloads">Installatiemelding</string>
+    <string name="pref_aurora_only">Alleen apps van Aurora Store</string>
 </resources>
