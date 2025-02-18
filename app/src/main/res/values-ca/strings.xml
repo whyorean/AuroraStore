@@ -54,7 +54,7 @@
     <string name="filter_review_five">Cinc</string>
     <string name="installer_status_failure">Ha fallat la instal·lació</string>
     <string name="installer_status_failure_blocked">S\'ha bloquejat la instal·lació</string>
-    <string name="exodus_powered">Propulsat per Exodus</string>
+    <string name="exodus_powered">Propulsat per Exodus ·Privacy</string>
     <string name="exodus_view_report">Veure informe</string>
     <string name="filter_review_three">Tres</string>
     <string name="installer_am_unavailable">Instal·leu App Manager o canvieu l\'instal·lador.</string>
@@ -253,4 +253,26 @@
     <string name="details_data_safety_subtitle">Privadesa de dades i pràctiques de seguretat declarades pel desenvolupador</string>
     <string name="action_home_screen">Afegeix a la pantalla d\'inici</string>
     <string name="action_uninstall_success">S\'ha desinstal·lat correctament</string>
+    <string name="onboarding_permission_doze_desc">Permet que l\'Aurora Store descarregui i actualitzi aplicacions en segon pla</string>
+    <string name="pref_aurora_only">Només aplicacions de l\'Aurora Store</string>
+    <string name="details_ratings_title_hint">Títol de la ressenya</string>
+    <string name="pref_vending_version_device">Per defecte (des de la configuració del dispositiu)</string>
+    <string name="pref_updates_incompatible">Actualitzacions incompatibles</string>
+    <string name="session_good">Ai! Tot bé.</string>
+    <string name="pref_vending_version_title">Versió de Google Play</string>
+    <string name="notification_channel_downloads">Notificació de la descarrega</string>
+    <string name="onboarding_permission_doze">Baixades en segon pla</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="pref_network_proxy_enable">Habilita el Proxy</string>
+    <string name="pref_network_proxy_enable_desc">Permet que tot el trànsit de l\'aplicació passi pel Proxy</string>
+    <string name="session_enjoy">Inicia sessió i gaudeix.</string>
+    <string name="session_init">Preparant les coses…</string>
+    <string name="onboarding_permission_notifications_desc">Envia notificacions sobre l\'estat de les instal·lacions</string>
+    <string name="onboarding_permission_installer_legacy_desc">Permet la instal·lació d\'aplicacions de fonts desconegudes</string>
+    <string name="pref_updates_incompatible_desc">Mostra les actualitzacions d\'aplicacions incompatibles o inhabilitades que poden fallar en la instal·lació</string>
+    <string name="pref_aurora_only_desc">Comprova només les actualitzacions de les aplicacions instal·lades per l\'Aurora Store</string>
+    <string name="pref_network_proxy_url_message">Introduïu una URL del Proxy vàlid per a passar totes les dades a través del servidor intermediari.</string>
+    <string name="notification_channel_export">Notificació d\'exportació d\'aplicacions</string>
+    <string name="notification_channel_install">Notificació de l\'instalació</string>
+    <string name="pref_network_proxy_url">Proxy URL</string>
 </resources>
