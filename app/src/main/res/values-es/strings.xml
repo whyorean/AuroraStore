@@ -230,11 +230,11 @@
     <string name="app_updater_service_notif_title">Descarga de aplicaciones en segundo plano</string>
     <string name="installer_am_unavailable">Instala App Manager o cambia el instalador.</string>
     <string name="pref_install_mode_am">Instalador AM</string>
-    <string name="download_paused">En pausa •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">En pausa •·<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_eta_hrs">Quedan %1$d horas, %2$d minutos, %3$d segundos</string>
     <string name="download_eta_min">Quedan %1$d minutos %2$d segundos</string>
     <string name="download_eta_sec">Quedan %1$d segundos</string>
-    <string name="download_progress">Descargando •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Descargando •·<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications">Notificaciones</string>
     <string name="session_good">¡Guau! Todo está bien.</string>
     <string name="session_init">Preparando las cosas…</string>
@@ -425,4 +425,6 @@
     <string name="plexus_powered">Impulsado por Plexus</string>
     <string name="details_compatibility_gms_not_required_title">Funciona con los Servicios de Google Play</string>
     <string name="no_apps_available">No hay aplicaciones disponibles</string>
+    <string name="pref_network_microg_login_title">Usa microG para acceder a las cuentas</string>
+    <string name="pref_network_microg_login_desc">Autenticación mediante microG al iniciar sesión en cuentas de Google para simplificar el flujo de inicio de sesión.</string>
 </resources>
