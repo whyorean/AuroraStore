@@ -264,7 +264,7 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">U mohuan leje të domosdoshme. Ju lutemi, që të mund të vazhdohet veprimi, akordojini</string>
     <string name="notification_updates_available_desc_1">Ka gati një version të ri të <xliff:g id="app_one_name">%1$s</xliff:g></string>
-    <string name="pref_updates_check_frequency_desc">Formësoni intervale për përditësime të automatizuara dhe të vetvetishme, në orë.</string>
+    <string name="pref_updates_check_frequency_desc">Formësoni intervale kohorë për përditësime të automatizuara, në orë.</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dhe <xliff:g id="apps_count">%4$d</xliff:g> të tjerë</string>
     <string name="access_denied_using_vpn">Hyrje e mohuar! Po përdorni VPN, ose Tor?</string>
     <string name="google_play_store_desc">Google Play, e njohur dhe si Google Play Store dhe ish-Android Market.</string>
@@ -303,7 +303,7 @@
     <string name="updates_available">ka përditësime</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> përditësime gati</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> dhe <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_updates_auto">Vetë-përditësoji aplikacionet</string>
+    <string name="pref_updates_auto">Përditësime të automatizuara</string>
     <string name="pref_updates_auto_notify">Kontrollo &amp; njofto për përditësime të gatshme</string>
     <string name="bad_request">Gabim i brendshëm! Ju lutemi, riprovoni pas ca kohe</string>
     <string name="failed_to_generate_session">S’u prodhua dot sesion</string>
@@ -418,4 +418,6 @@
     <string name="details_compatibility_status_limited">I kufizuar: Funksionon me kufizime veçorish</string>
     <string name="plexus_progress">Po shihet përputhshmëria…</string>
     <string name="details_compatibility_gms_required_subtitle">Mund t’ju duhet të instaloni bibliotekë pronësore të Google-it, ose një risendërtim FOSS, fjala vjen, microG.</string>
+    <string name="pref_network_microg_login_title">Përdor microG për të bërë hyrje në llogari</string>
+    <string name="pref_network_microg_login_desc">Bëni mirëfilltësimin duke përdorur microG, kur bëhet hyrje në llogari Google, për një rrjedhë më të thjeshtë pune me hyrjen.</string>
 </resources>
