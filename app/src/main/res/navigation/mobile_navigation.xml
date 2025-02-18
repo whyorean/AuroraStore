@@ -98,12 +98,12 @@
     </fragment>
     <fragment
         android:id="@+id/installationPreference"
-        android:name="com.aurora.store.view.ui.preferences.InstallationPreference"
+        android:name="com.aurora.store.view.ui.preferences.installation.InstallationPreference"
         android:label="InstallationPreference"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/networkPreference"
-        android:name="com.aurora.store.view.ui.preferences.NetworkPreference"
+        android:name="com.aurora.store.view.ui.preferences.network.NetworkPreference"
         android:label="NetworkPreference"
         tools:layout="@layout/fragment_setting" />
     <fragment
@@ -350,7 +350,7 @@
     </fragment>
     <fragment
         android:id="@+id/installerFragment"
-        android:name="com.aurora.store.view.ui.preferences.InstallerFragment"
+        android:name="com.aurora.store.view.ui.preferences.installation.InstallerFragment"
         android:label="InstallerFragment"
         tools:layout="@layout/fragment_installer" />
     <fragment

@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.ui.preferences
+package com.aurora.store.view.ui.preferences.installation
 
 import android.app.admin.DevicePolicyManager
 import android.content.DialogInterface

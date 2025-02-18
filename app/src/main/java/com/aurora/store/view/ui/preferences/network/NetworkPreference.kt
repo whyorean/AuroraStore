@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.ui.preferences
+package com.aurora.store.view.ui.preferences.network
 
 import android.os.Bundle
 import android.view.View
@@ -34,6 +34,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_MICROG_AUTH
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
+import com.aurora.store.view.ui.preferences.BasePreferenceFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

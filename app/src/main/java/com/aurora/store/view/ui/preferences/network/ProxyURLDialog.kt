@@ -1,4 +1,4 @@
-package com.aurora.store.view.ui.preferences
+package com.aurora.store.view.ui.preferences.network
 
 import android.app.Dialog
 import android.os.Bundle

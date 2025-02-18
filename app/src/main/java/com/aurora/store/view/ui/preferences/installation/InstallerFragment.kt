@@ -17,7 +17,7 @@
  *
  */
 
-package com.aurora.store.view.ui.preferences
+package com.aurora.store.view.ui.preferences.installation
 
 import android.content.pm.PackageManager
 import android.os.Bundle
