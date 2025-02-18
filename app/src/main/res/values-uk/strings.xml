@@ -285,7 +285,7 @@
     <string name="google_play_store_desc">Google Play, також відомий як Google Play Маркет, а раніше - Android Market.</string>
     <string name="android_market_desc">Android Маркет — інтернет-магазин, що пропонував програмне забезпечення для Android-пристроїв, припинив свою діяльність у 2017 році.</string>
     <string name="details_ratings_title_hint">Назва відгуку</string>
-    <string name="pref_updates_check_frequency_desc">Налаштуйте інтервали для автоматичних і самооновлень, у годинах.</string>
+    <string name="pref_updates_check_frequency_desc">Налаштуйте часовий інтервал для автоматичних оновлень у годинах.</string>
     <string name="pref_aurora_only">Тільки застосунки Aurora Store</string>
     <string name="pref_aurora_only_desc">Перевіряйте оновлення лише для застосунків, встановлених з Aurora Store</string>
     <string name="title_app_settings">Налаштування застосунку</string>
@@ -301,10 +301,10 @@
     <string name="pref_vending_version_title">Версія Google Play</string>
     <string name="onboarding_permission_doze">Завантаження у фоні</string>
     <string name="onboarding_permission_doze_desc">Дозволити Aurora Store завантажувати й оновлювати застосунки у фоновому режимі</string>
-    <string name="pref_updates_auto">Автооновлення застосунків</string>
+    <string name="pref_updates_auto">Автоматичні оновлення</string>
     <string name="pref_updates_auto_notify">Перевіряти та повідомляти про доступні оновлення</string>
     <string name="pref_updates_auto_off">Не оновлювати застосунки автоматично</string>
-    <string name="pref_updates_auto_desc">Налаштувати поведінку автооновлень</string>
+    <string name="pref_updates_auto_desc">Налаштувати поведінку автоматичних оновлень</string>
     <string name="pref_updates_auto_install">Автоматична перевірка та встановлення доступних оновлень</string>
     <string name="action_request_analysis">Запросити новий аналіз</string>
     <string name="failed_apk_export">Не вдалося експортувати APK-файли</string>
