@@ -40,6 +40,13 @@
         app:min="1"
         app:showSeekBarValue="true" />
 
+    <Preference
+        app:disableDependentsState="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCES_UPDATES_RESTRICTIONS"
+        app:summary="@string/pref_updates_restrictions_desc"
+        app:title="@string/pref_updates_restrictions_title" />
+
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"

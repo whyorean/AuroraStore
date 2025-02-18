@@ -113,7 +113,7 @@
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/updatesPreference"
-        android:name="com.aurora.store.view.ui.preferences.UpdatesPreference"
+        android:name="com.aurora.store.view.ui.preferences.updates.UpdatesPreference"
         android:label="UpdatesPreference"
         tools:layout="@layout/fragment_setting" />
     <fragment
@@ -468,10 +468,14 @@
     </dialog>
     <dialog
         android:id="@+id/proxyURLDialog"
-        android:name="com.aurora.store.view.ui.preferences.ProxyURLDialog"
+        android:name="com.aurora.store.view.ui.preferences.network.ProxyURLDialog"
         android:label="@string/pref_network_proxy_url" />
     <dialog
         android:id="@+id/forceRestartDialog"
         android:name="com.aurora.store.view.ui.commons.ForceRestartDialog"
         android:label="@string/force_restart_title" />
+    <dialog
+        android:id="@+id/updatesRestrictionsDialog"
+        android:name="com.aurora.store.view.ui.preferences.updates.UpdatesRestrictionsDialog"
+        android:label="@string/pref_updates_restrictions_title" />
 </navigation>

@@ -20,6 +20,9 @@ import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.room.update.UpdateDao
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_BATTERY
+import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_IDLE
+import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_METERED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
@@ -160,10 +163,18 @@ class UpdateHelper @Inject constructor(
         ).toLong()
 
         val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.UNMETERED)
-            .setRequiresBatteryNotLow(true)
 
-        if (isMAndAbove) constraints.setRequiresDeviceIdle(true)
+        if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_METERED, true)) {
+            constraints.setRequiredNetworkType(NetworkType.UNMETERED)
+        }
+
+        if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, true)) {
+            constraints.setRequiresBatteryNotLow(true)
+        }
+
+        if (isMAndAbove && Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)) {
+            constraints.setRequiresDeviceIdle(true)
+        }
 
         return PeriodicWorkRequestBuilder<UpdateWorker>(
             repeatInterval = updateCheckInterval,
