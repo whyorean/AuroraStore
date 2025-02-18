@@ -147,7 +147,7 @@
     <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
-    <string name="onboarding_permission_esa_desc">Do zapisu rozszerzeń APK (plików OBB) dla dużych gier i aplikacji.</string>
+    <string name="onboarding_permission_esa_desc">Do zapisu rozszerzeń APK (plików OBB) dla dużych gier i aplikacji</string>
     <string name="onboarding_permission_esa">Dostęp do pamięci zewnętrznej</string>
     <string name="onboarding_title_permissions">Uprawnienia</string>
     <string name="onboarding_permission_select">Aurora Store wymaga następujących uprawnień</string>
@@ -285,7 +285,7 @@
     <string name="verifying_new_session">Weryfikowanie nowej sesji</string>
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
     <string name="details_ratings_title_hint">Tytuł recenzji</string>
-    <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość samoaktualizacji oraz automatycznych aktualizacji (w godzinach)</string>
+    <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość automatycznych aktualizacji (w godzinach)</string>
     <string name="pref_aurora_only">Tylko aplikacje Aurora Store</string>
     <string name="title_app_settings">Ustawienia aplikacji</string>
     <string name="pref_updates_check_frequency">Częstotliwość automatycznych aktualizacji</string>
@@ -301,7 +301,7 @@
     <string name="pref_vending_version_title">Wersja Google Play</string>
     <string name="onboarding_permission_doze">Pobieranie w tle</string>
     <string name="onboarding_permission_doze_desc">Zezwól Aurora Store na pobieranie i aktualizowanie aplikacji w tle</string>
-    <string name="pref_updates_auto">Automatyczna aktualizacja aplikacji</string>
+    <string name="pref_updates_auto">Automatyczne aktualizacje</string>
     <string name="pref_updates_auto_notify">Sprawdź i powiadom o dostępnych aktualizacjach</string>
     <string name="pref_updates_auto_off">Nie aktualizuj automatycznie aplikacji</string>
     <string name="pref_updates_auto_desc">Skonfiguruj zachowanie automatycznych aktualizacji</string>
