@@ -179,11 +179,8 @@
     <string name="pref_install_mode_session">세션 설치기</string>
     <string name="pref_install_mode_title">설치 방식</string>
     <string name="pref_vending_version_title">Google Play 버전</string>
-    <string name="pref_network_proxy_enable">프록시 켜기</string>
-    <string name="pref_network_proxy_enable_desc">앱의 모든 트래픽이 프록시를 통과하도록 허용</string>
     <string name="pref_network_proxy_url">프록시 URL</string>
     <string name="pref_network_title">네트워킹</string>
-    <string name="pref_network_proxy_title">프록시</string>
     <string name="pref_ui_title">맞춤화</string>
     <string name="pref_ui_no_for_you">For You 페이지</string>
     <string name="pref_vending_version_device">기본값(장치 구성에서)</string>

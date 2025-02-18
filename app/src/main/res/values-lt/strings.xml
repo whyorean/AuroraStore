@@ -216,12 +216,10 @@
     <string name="server_unreachable">Serveris nepasiekiamas</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ir dar <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="downloading_dep">Atsiunčiami papildomi failai, skirti <xliff:g id="app">%1$s</xliff:g></string>
-    <string name="pref_network_proxy_enable">Įjungti įgaliotąjį serverį</string>
     <string name="check_connectivity">Tikrinti interneto jungiamumą</string>
     <string name="failed_generating_session">Nepavyko sugeneruoti seanso, klaidos kodas: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_generate_session">Nepavyko sugeneruoti seanso</string>
     <string name="pref_network_proxy_url">Įgaliotojo serverio URL</string>
-    <string name="pref_network_proxy_title">Įgaliotasis serveris</string>
     <string name="onboarding_permission_notifications">Pranešimai</string>
     <string name="notification_updates_available_desc_1">Yra prieinama nauja <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>
     <string name="toast_import_failed">Nepavyko importuoti įrenginio konfigūracijos</string>
@@ -244,7 +242,6 @@
     <string name="title_search_results">Paieškos rezultatai</string>
     <string name="notification_channel_updates">Pranešimai apie atnaujinimus</string>
     <string name="download_progress">Atsiunčiama • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="pref_network_proxy_enable_desc">Leisti visam interneto duomenų srautui iš programėlės eiti per įgaliotąjį serverį</string>
     <string name="onboarding_permission_notifications_desc">Siųsti pranešimus apie įdiegimo būseną</string>
     <string name="access_denied_using_vpn">Prieiga negalima! Ar jūs naudojate VPN arba Tor\?</string>
     <string name="app_language">Programėlės kalba</string>

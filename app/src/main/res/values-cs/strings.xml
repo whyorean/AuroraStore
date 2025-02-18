@@ -290,13 +290,10 @@
     <string name="pref_aurora_only_desc">Kontrolovat pouze aktualizace aplikací nainstalovaných z aplikace Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
     <string name="pref_updates_check_frequency">Frekvence automatických aktualizací</string>
-    <string name="pref_network_proxy_enable">Zapnout proxy</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_invalid">Neplatná adresa URL proxy, zkontrolujte formát!</string>
     <string name="toast_proxy_success">Proxy úspěšně nastavena</string>
     <string name="toast_proxy_failed">Nepodařilo se nastavit proxy</string>
-    <string name="pref_network_proxy_enable_desc">Přesměrovat veškerý síťový provoz skrz proxy</string>
     <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
     <string name="pref_vending_version_title">Verze Google Play</string>
     <string name="onboarding_permission_doze">Stahování na pozadí</string>

@@ -285,8 +285,6 @@
     <string name="failed_apk_export">Không xuất được APK</string>
     <string name="onboarding_permission_doze_desc">Cho phép Aurora Store tải xuống và cập nhật ứng dụng trong nền</string>
     <string name="pref_vending_version_device">Mặc định (từ cấu hình thiết bị)</string>
-    <string name="pref_network_proxy_enable">Bật proxy</string>
-    <string name="pref_network_proxy_enable_desc">Cho phép tất cả lưu lượng truy cập từ ứng dụng đi qua proxy</string>
     <string name="title_app_settings">Thiết đặt ứng dụng</string>
     <string name="toast_proxy_invalid">URL proxy không hợp lệ, hãy kiểm tra định dạng!</string>
     <string name="check_connectivity">Kiểm tra kết nối internet</string>
@@ -311,7 +309,6 @@
     <string name="details_ratings_title_hint">Tiêu đề đánh giá</string>
     <string name="onboarding_permission_doze">Tải xuống trong nền</string>
     <string name="pref_network_proxy_url">URL proxy</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="services_installer_subtitle">Trình cài đặt để cài đặt nền</string>
     <string name="am_installer_subtitle">Trình quản lý gói nguồn mở đầy đủ tính năng</string>
     <string name="services_installer_desc">Yêu cầu cài đặt Dịch vụ Aurora dưới dạng ứng dụng hệ thống đặc quyền</string>

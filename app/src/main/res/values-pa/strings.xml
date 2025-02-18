@@ -290,13 +290,10 @@
     <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
     <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
     <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟ ਆਵ੍ਰਿਤੀ</string>
-    <string name="pref_network_proxy_enable">ਪ੍ਰੌਕਸੀ ਚਾਲੂ ਕਰੋ</string>
     <string name="pref_network_proxy_url">ਪ੍ਰੌਕਸੀ URL</string>
-    <string name="pref_network_proxy_title">ਪ੍ਰੌਕਸੀ</string>
     <string name="toast_proxy_invalid">ਅਵੈਧ ਪ੍ਰੌਕਸੀ URL, ਫਾਰਮੈਟ ਦੀ ਜਾਂਚ ਕਰੋ!</string>
     <string name="toast_proxy_success">ਪ੍ਰੌਕਸੀ ਸਫਲਤਾਪੂਰਵਕ ਸੈੱਟ ਕੀਤੀ ਗਈ</string>
     <string name="toast_proxy_failed">ਪ੍ਰੌਕਸੀ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
-    <string name="pref_network_proxy_enable_desc">ਐਪ ਤੋਂ ਸਾਰੇ ਟ੍ਰੈਫਿਕ ਨੂੰ ਪ੍ਰੌਕਸੀ ਰਾਹੀਂ ਜਾਣ ਦਿਓ</string>
     <string name="pref_vending_version_device">ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਤੋਂ)</string>
     <string name="pref_vending_version_title">ਗੂਗਲ ਪਲੇ ਸੰਸਕਰਣ</string>
     <string name="onboarding_permission_doze">ਬੈਕਗ੍ਰਾਊਂਡ ਡਾਊਨਲੋਡ</string>

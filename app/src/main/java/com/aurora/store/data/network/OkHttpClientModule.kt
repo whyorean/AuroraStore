@@ -27,7 +27,6 @@ import com.aurora.store.R
 import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.google.gson.Gson
 import dagger.Module
@@ -97,10 +96,8 @@ object OkHttpClientModule {
     @Provides
     @Singleton
     fun providesProxyInstance(@ApplicationContext context: Context, gson: Gson): Proxy? {
-        val proxyEnabled = Preferences.getBoolean(context, PREFERENCE_PROXY_ENABLED)
         val proxyInfoString = Preferences.getString(context, PREFERENCE_PROXY_INFO)
-
-        if (proxyEnabled && proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
+        if (proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
             val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
 
             val proxy = Proxy(

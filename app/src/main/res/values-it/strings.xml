@@ -285,10 +285,8 @@
     <string name="google_play_store_desc">Google Play, noto anche come Google Play Store e precedentemente Android Market.</string>
     <string name="details_ratings_title_hint">Titolo della recensione</string>
     <string name="android_market_desc">Android Market era un negozio online che offriva applicazioni software progettate per dispositivi Android, chiuso nel 2017.</string>
-    <string name="pref_network_proxy_enable">Abilita proxy</string>
     <string name="pref_network_proxy_url">URL del proxy</string>
     <string name="pref_updates_check_frequency_desc">Configura la frequenza degli aggiornamenti automatici (in ore)</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_success">Proxy impostato con successo</string>
     <string name="title_app_settings">Impostazioni app</string>
     <string name="pref_updates_check_frequency">Frequenza degli aggiornamenti automatici</string>
@@ -300,7 +298,6 @@
     <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
     <string name="pref_aurora_only_desc">Controlla gli aggiornamenti solo per le app installate da Aurora Store</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
-    <string name="pref_network_proxy_enable_desc">Permetti a tutti i dati di quest\'app di passare tramite proxy</string>
     <string name="pref_updates_auto">Aggiorna le app automaticamente</string>
     <string name="pref_updates_auto_notify">Controlla e segnala gli aggiornamenti disponibili</string>
     <string name="pref_updates_auto_off">Non aggiornare le app automaticamente</string>

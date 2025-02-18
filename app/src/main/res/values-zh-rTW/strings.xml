@@ -269,8 +269,6 @@
     <string name="session_enjoy">登入並享用。</string>
     <string name="update_available">有更新可用</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
-    <string name="pref_network_proxy_title">代理伺服器</string>
-    <string name="pref_network_proxy_enable">啟用代理伺服器</string>
     <string name="pref_updates_incompatible">不相容的更新</string>
     <string name="pref_updates_incompatible_desc">為不相容或已停用的應用程式，顯示可能安裝失敗的更新</string>
     <string name="pref_aurora_only_desc">僅檢查 Aurora Store 安裝的應用程式更新</string>
@@ -285,7 +283,6 @@
     <string name="app_language">應用程式語言</string>
     <string name="failed_apk_export">匯出 APK 失敗</string>
     <string name="pref_vending_version_device">預設（來自裝置配置）</string>
-    <string name="pref_network_proxy_enable_desc">允許所有來自於應用程式的網路活動經過代理伺服器</string>
     <string name="pref_network_proxy_url">代理伺服器網址</string>
     <string name="pref_aurora_only">僅限 Aurora Store 應用程式</string>
     <string name="pref_updates_auto_desc">設定自動更新行為</string>

@@ -19,7 +19,6 @@
 
 package com.aurora.store.view.ui.preferences
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
@@ -32,25 +31,16 @@ import com.aurora.store.R
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_MICROG_AUTH
-import com.aurora.store.util.Preferences.PREFERENCE_PROXY_ENABLED
-import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
-import com.aurora.store.util.remove
+import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NetworkPreference : BasePreferenceFragment(),
-    SharedPreferences.OnSharedPreferenceChangeListener {
-
-    private lateinit var sharedPreferences: SharedPreferences
+class NetworkPreference : BasePreferenceFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences_network, rootKey)
-
-        val proxyURL = Preferences.getString(requireContext(), PREFERENCE_PROXY_URL)
-        sharedPreferences = Preferences.getPrefs(requireContext())
-        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
         findPreference<Preference>(Preferences.PREFERENCE_DISPENSER_URLS)?.apply {
             setOnPreferenceClickListener {
@@ -59,27 +49,14 @@ class NetworkPreference : BasePreferenceFragment(),
             }
         }
 
-        findPreference<Preference>(PREFERENCE_PROXY_URL)?.apply {
-            if (proxyURL.isNotBlank()) summary = proxyURL
+        findPreference<Preference>(PREFERENCE_PROXY_URL)?.setOnPreferenceClickListener { _ ->
+            findNavController().navigate(R.id.proxyURLDialog)
+            false
         }
 
-        findPreference<SwitchPreferenceCompat>(PREFERENCE_PROXY_ENABLED)?.apply {
-            isChecked = proxyURL.isNotBlank()
-            setOnPreferenceChangeListener { _, newValue ->
-                if (newValue.toString().toBoolean()) {
-                    findNavController().navigate(R.id.proxyURLDialog)
-                } else {
-                    remove(PREFERENCE_PROXY_URL)
-                    remove(PREFERENCE_PROXY_INFO)
-                    findNavController().navigate(R.id.forceRestartDialog)
-                }
-                false
-            }
-        }
-
-        findPreference<Preference>(Preferences.PREFERENCE_VENDING_VERSION)?.let {
+        findPreference<Preference>(PREFERENCE_VENDING_VERSION)?.let {
             it.setOnPreferenceChangeListener { _, newValue ->
-                save(Preferences.PREFERENCE_VENDING_VERSION, Integer.parseInt(newValue.toString()))
+                save(PREFERENCE_VENDING_VERSION, Integer.parseInt(newValue.toString()))
                 runOnUiThread {
                     requireContext().toast(R.string.insecure_anonymous_apply)
                 }
@@ -96,18 +73,6 @@ class NetworkPreference : BasePreferenceFragment(),
         view.findViewById<Toolbar>(R.id.toolbar)?.apply {
             title = getString(R.string.pref_network_title)
             setNavigationOnClickListener { findNavController().navigateUp() }
-        }
-    }
-
-    override fun onDestroyView() {
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
-        super.onDestroyView()
-    }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == PREFERENCE_PROXY_URL) {
-            findPreference<SwitchPreferenceCompat>(PREFERENCE_PROXY_ENABLED)?.isChecked =
-                Preferences.getString(requireContext(), PREFERENCE_PROXY_URL).isNotBlank()
         }
     }
 }

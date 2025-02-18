@@ -290,13 +290,10 @@
     <string name="pref_aurora_only_desc">Перевіряйте оновлення лише для застосунків, встановлених з Aurora Store</string>
     <string name="title_app_settings">Налаштування застосунку</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
-    <string name="pref_network_proxy_enable">Увімкнути проксі</string>
     <string name="pref_network_proxy_url">URL проксі</string>
-    <string name="pref_network_proxy_title">Проксі</string>
     <string name="toast_proxy_invalid">Неправильна URL-адреса проксі, перевірте формат!</string>
     <string name="toast_proxy_success">Проксі успішно налаштовано</string>
     <string name="toast_proxy_failed">Не вдалося налаштувати проксі</string>
-    <string name="pref_network_proxy_enable_desc">Дозволити всьому трафіку із застосунку проходити через проксі</string>
     <string name="pref_vending_version_device">Типово (з конфігурації пристрою)</string>
     <string name="pref_vending_version_title">Версія Google Play</string>
     <string name="onboarding_permission_doze">Завантаження у фоні</string>

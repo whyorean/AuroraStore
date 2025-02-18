@@ -281,9 +281,6 @@
     <string name="pref_install_mode_native">Родны ўсталёўшчык (Састарэлы)</string>
     <string name="pref_vending_version_device">Па змаўчанні (праз налады прылады)</string>
     <string name="pref_network_title">Сетка</string>
-    <string name="pref_network_proxy_title">Проксі</string>
-    <string name="pref_network_proxy_enable">Задзейнічаць проксі</string>
-    <string name="pref_network_proxy_enable_desc">Дазволіць правадзіць увесь трафік з праграмы праз проксі</string>
     <string name="title_search_suggestion">Прапановы пошуку</string>
     <string name="title_search_results">Вынікі пошуку</string>
     <string name="title_updates">Абнаўленні</string>

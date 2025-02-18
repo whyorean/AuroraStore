@@ -290,13 +290,10 @@
     <string name="pref_aurora_only_desc">Solo comprobar actualizaciones de aplicaciones instaladas desde la Aurora Store</string>
     <string name="title_app_settings">Ajustes de la aplicación</string>
     <string name="pref_updates_check_frequency">Frecuencia de las actualizaciones automáticas</string>
-    <string name="pref_network_proxy_enable">Activar el proxy</string>
     <string name="pref_network_proxy_url">Dirección URL del proxy</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_invalid">Dirección URL del proxy no válida, ¡compruebe el formato!</string>
     <string name="toast_proxy_success">Proxy configurado correctamente</string>
     <string name="toast_proxy_failed">Error al establecer el proxy</string>
-    <string name="pref_network_proxy_enable_desc">Permitir que todo el tráfico de la aplicación pase por el proxy</string>
     <string name="pref_vending_version_device">Por defecto (desde la configuración del dispositivo)</string>
     <string name="pref_vending_version_title">Versión para Google Play</string>
     <string name="onboarding_permission_doze">Descargas en segundo plano</string>

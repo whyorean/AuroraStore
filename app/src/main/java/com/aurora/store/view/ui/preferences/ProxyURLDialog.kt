@@ -1,10 +1,10 @@
 package com.aurora.store.view.ui.preferences
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +15,7 @@ import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_URL
+import com.aurora.store.util.remove
 import com.aurora.store.util.save
 import com.aurora.store.viewmodel.preferences.ProxyURLViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -26,6 +27,8 @@ class ProxyURLDialog: DialogFragment() {
 
     private val viewModel: ProxyURLViewModel by viewModels()
 
+    private val currentProxyUrl: String
+        get() = Preferences.getString(requireContext(), PREFERENCE_PROXY_URL)
     private val textInputLayout: TextInputLayout?
         get() = dialog?.findViewById(R.id.textInputLayout)
 
@@ -35,31 +38,41 @@ class ProxyURLDialog: DialogFragment() {
             .setTitle(R.string.pref_network_proxy_url)
             .setMessage(R.string.pref_network_proxy_url_message)
             .setView(view)
-            .setPositiveButton(getString(R.string.add), null)
+            .setPositiveButton(getString(R.string.set), null)
+            .setNeutralButton(getString(R.string.disable), null)
             .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> dialog?.dismiss()}
             .create()
 
         alertDialog.setOnShowListener {
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { saveProxyUrl() }
+            val positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).apply {
+                isEnabled = currentProxyUrl.isNotBlank()
+                setOnClickListener { saveProxyUrl() }
+            }
+            textInputLayout?.editText?.doOnTextChanged { text, _, _, _ ->
+                positiveButton.isEnabled = !text.isNullOrBlank()
+            }
+
+            alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).apply {
+                isEnabled = currentProxyUrl.isNotBlank()
+                setOnClickListener { deleteProxyUrl() }
+            }
         }
         return alertDialog
     }
 
-    @SuppressLint("AuthLeak") // False-positive
     override fun onResume() {
         super.onResume()
         textInputLayout?.editText?.apply {
-            hint = "protocol://user:password@host:port"
-            setText(Preferences.getString(context, PREFERENCE_PROXY_URL))
+            setText(currentProxyUrl)
             showKeyboard()
         }
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
     }
 
     private fun saveProxyUrl() {
-        val url = textInputLayout?.editText?.text?.toString()
+        val url = textInputLayout?.editText?.text?.toString()?.trim()
         if (url.isNullOrEmpty()) {
-            toast(R.string.add_dispenser_error)
+            toast(R.string.toast_proxy_invalid)
             return
         }
 
@@ -73,5 +86,12 @@ class ProxyURLDialog: DialogFragment() {
         } else {
             toast(R.string.toast_proxy_failed)
         }
+    }
+
+    private fun deleteProxyUrl() {
+        remove(PREFERENCE_PROXY_URL)
+        remove(PREFERENCE_PROXY_INFO)
+        toast(R.string.toast_proxy_disabled)
+        findNavController().navigate(R.id.forceRestartDialog)
     }
 }

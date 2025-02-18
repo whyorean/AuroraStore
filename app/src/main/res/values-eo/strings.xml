@@ -346,12 +346,9 @@
     <string name="export_app_summary_success">Eksportis sukcese apkunligaĵon</string>
     <string name="export_app_summary_fail">Eksportado apkunligaĵon fiaskis</string>
     <string name="force_restart_title">Restarti Aurora Store</string>
-    <string name="pref_network_proxy_title">Prokura servilo (aŭ “proxy”)</string>
     <string name="toast_proxy_success">Prokuran servilon sukcese finaranĝis</string>
     <string name="toast_clipboard_copied">Kopita en la poŝon</string>
     <string name="toast_proxy_failed">Prokuran servilon agordado fiaskis</string>
-    <string name="pref_network_proxy_enable">Aktivigi prokuran servilon</string>
-    <string name="pref_network_proxy_enable_desc">Permisi tutan datumtrafikon pasi tra la prokura servilo</string>
     <string name="pref_network_proxy_url">Prokuran servilon URL</string>
     <string name="toast_proxy_invalid">Malvalida prokuran servilon URL, kontrolu la formaton!</string>
     <string name="pref_network_proxy_url_message">Enigu validan prokuran servilon URL por pasigi ĉiujn datuĵmojn tra la prokura servilo.</string>

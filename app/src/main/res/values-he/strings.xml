@@ -223,7 +223,6 @@
     <string name="server_unreachable">לא ניתן לגשת לשרת</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ו <xliff:g id="apps_count">%4$d</xliff:g> ועוד</string>
     <string name="downloading_dep">מוריד קבצים נוספים בשביל <xliff:g id="app">%1$s</xliff:g></string>
-    <string name="pref_network_proxy_enable">הפעל פרוקסי</string>
     <string name="app_updater_service_notif_text">מאפשר הורדת יישום ברקע</string>
     <string name="check_connectivity">בדוק התחברות אינטרנט</string>
     <string name="failed_generating_session">לא הצליח ליצור כניסה, קוד תקלה: <xliff:g id="status_code">%1$d</xliff:g></string>
@@ -234,7 +233,6 @@
     <string name="pref_network_proxy_url">URL פרוקסי</string>
     <string name="pref_updates_check_frequency_desc">הגדר תכיפות עדכונים אוטומטיים ועדכון עצמי, כל שעה.</string>
     <string name="pref_aurora_only">יישומי חנות Aurora בלבד</string>
-    <string name="pref_network_proxy_title">פרוקסי</string>
     <string name="pref_install_mode_shizuku">מתקין Shizuku</string>
     <string name="action_post">פרסום</string>
     <string name="onboarding_permission_notifications">התראות</string>
@@ -286,7 +284,6 @@
     <string name="title_search_results">תוצאות חיפוש</string>
     <string name="notification_channel_updates">התראות עדכונים</string>
     <string name="download_progress">מוריד • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="pref_network_proxy_enable_desc">אפשר את כל התעבורה מהיישום שתעבור דרך פרוקסי</string>
     <string name="onboarding_permission_notifications_desc">שלח התראות לגבי מצב ההתקנה</string>
     <string name="android_market_desc">החנות של אנדרואיד הייתה חנות אונליין שמציעה אפליקציות שעוצבו למכשירי אנדרואיד, עד 2017.</string>
     <string name="about_xda_summary">הצג את העמוד של Aurora Store בפורום XDA לשוחח ולהציע הצעות.</string>

@@ -286,7 +286,6 @@
     <string name="toast_proxy_invalid">Neveljaven URL posrednika, preverite obliko!</string>
     <string name="app_links_desc">Dovoli Aurora Store odpiranje podprtih povezav</string>
     <string name="details_ratings_title_hint">Oceni naslov</string>
-    <string name="pref_network_proxy_enable_desc">Dovoli ves promet iz aplikacije skozi posrednika</string>
     <string name="pref_updates_incompatible_desc">Pokaži posodobitve za nezdružljive ali onemogočene aplikacije, katerih namestitev lahko spodleti</string>
     <string name="pref_updates_auto">Samodejno posodobi aplikacije</string>
     <string name="google_play_store_desc">Google Play, znan tudi kot Google Play Store in prej znan kot Android Market.</string>
@@ -314,9 +313,7 @@
     <string name="pref_aurora_only">Samo Aurora Store aplikacije</string>
     <string name="pref_updates_auto_notify">Preveri in obvesti za razpoložljivimi posodobitvami</string>
     <string name="pref_updates_check_frequency">Pogostost samodejnih posodobitev</string>
-    <string name="pref_network_proxy_title">Posrednik</string>
     <string name="onboarding_permission_installer_legacy_desc">Dovoli namestitev aplikacij iz neznanih virov</string>
-    <string name="pref_network_proxy_enable">Omogoči posrednika</string>
     <string name="pref_updates_incompatible">Nezdružljive posodobitve</string>
     <string name="onboarding_permission_doze_desc">Dovoli Aurora Store prenose in posodobitve aplikacij v ozadju</string>
     <string name="toast_permission_esm_caution">Morda boste morali ponovno odobriti dovoljenje zaradi hrošča v Storage Access Framework-u</string>

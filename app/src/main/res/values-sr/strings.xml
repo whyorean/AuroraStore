@@ -314,13 +314,10 @@
     <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>
     <string name="title_app_settings">Подешавања апликације</string>
     <string name="pref_updates_check_frequency">Учесталост аутоматског ажурирања</string>
-    <string name="pref_network_proxy_enable">Омогући прокси</string>
     <string name="pref_network_proxy_url">URL адреса проксија</string>
-    <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неважећи URL проксија, проверите формат!</string>
     <string name="toast_proxy_success">Прокси је успешно подешен</string>
     <string name="toast_proxy_failed">Подешавање проксија није успело</string>
-    <string name="pref_network_proxy_enable_desc">Дозволите да сав саобраћај из апликације пролази кроз прокси</string>
     <string name="pref_vending_version_device">Подразумевано (из конфигурације уређаја)</string>
     <string name="pref_vending_version_title">Верзија Google Play-а</string>
     <string name="onboarding_permission_doze">Преузимања у позадини</string>

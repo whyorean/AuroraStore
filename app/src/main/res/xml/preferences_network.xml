@@ -25,19 +25,12 @@
         app:summary="@string/pref_dispenser_summary"
         app:title="@string/pref_dispenser_title" />
 
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_PROXY_URL"
-        app:singleLineTitle="false"
-        app:summary="protocol://user:password@host:port"
-        app:title="@string/pref_network_proxy_title" />
-
-    <SwitchPreferenceCompat
+    <Preference
         app:disableDependentsState="false"
         app:iconSpaceReserved="false"
-        app:key="PREFERENCE_PROXY_ENABLED"
-        app:summary="@string/pref_network_proxy_enable_desc"
-        app:title="@string/pref_network_proxy_enable" />
+        app:key="PREFERENCE_PROXY_URL"
+        app:summary="@string/pref_network_proxy_desc"
+        app:title="@string/pref_network_proxy_url" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"

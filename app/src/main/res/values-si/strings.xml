@@ -308,8 +308,6 @@
     <string name="status_failed">අසමත් විය</string>
     <string name="checking_updates">යාවත්කාල සොයමින්</string>
     <string name="status_unavailable">නොතිබේ</string>
-    <string name="pref_network_proxy_title">ප්‍රතියුක්තය</string>
-    <string name="pref_network_proxy_enable">ප්‍රතියුක්තය සබල කරන්න</string>
     <string name="action_favourite">ප්‍රියතම</string>
     <string name="details_data_safety_title">දත්ත ආරක්‍ෂාව</string>
     <string name="check_updates">යාවත්කාල බලන්න</string>

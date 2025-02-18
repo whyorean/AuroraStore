@@ -229,7 +229,6 @@
     <string name="toast_export_success">Enhedskonfiguration eksporteret</string>
     <string name="app_updater_service_notif_title">Henter app i baggrund</string>
     <string name="app_updater_service_notif_text">Aktiverer baggrundsdownload af apps</string>
-    <string name="pref_network_proxy_enable">Aktivér proxy</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="download_eta_sec">%1$ds tilbage</string>
     <string name="onboarding_permission_doze">Baggrundsdownloads</string>
@@ -249,7 +248,6 @@
     <string name="download_eta_hrs">%1$dt %2$dm %3$ds tilbage</string>
     <string name="download_eta_min">%1$dm %2$ds tilbage</string>
     <string name="onboarding_permission_notifications_desc">Send notifikationer om installationsstatus</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_network_proxy_url">Proxy-URL</string>
     <string name="pref_network_proxy_url_message">Indtast en gyldig proxy-URL for at sende alle data gennem proxyen.</string>
     <string name="pref_aurora_only">Kun Aurora Store-apps</string>
@@ -346,7 +344,6 @@
     <string name="updates_available">opdateringer tilgængelige</string>
     <string name="made_with_love">Lavet med <xliff:g id="heart_emoji">%1$s</xliff:g> i Indien</string>
     <string name="android_market_desc">Android Market var en onlinebutik med softwareapplikationer designet til Android-enheder, som blev lukket i 2017.</string>
-    <string name="pref_network_proxy_enable_desc">Tillad al trafik fra appen at gå gennem proxyen</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> opdateringer tilgængelige</string>
     <string name="toast_proxy_failed">Kunne ikke indstille proxy</string>
     <string name="am_installer_desc">Kræver App Manager. Har brug for adb/root-tilstand for at installere, når MIUI-optimering er slået til</string>

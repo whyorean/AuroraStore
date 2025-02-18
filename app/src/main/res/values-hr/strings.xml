@@ -350,7 +350,6 @@
     <string name="login_rate_limited">Ups, učestalost tvojih prijava je ograničen</string>
     <string name="app_links_title">Poveznice aplikacija</string>
     <string name="google_play_store_desc">Google Play, poznat i kao Google Play Store, a prije Android Market.</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> i <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="pref_network_proxy_url_message">Upiši ispravni proxy URL za prosljeđivanje svih podataka kroz proxy.</string>
     <string name="toast_proxy_invalid">Neispravan proxy URL. Provjeri format!</string>
@@ -387,9 +386,7 @@
     <string name="privacy_policy_title">Politika privatnosti</string>
     <string name="notification_channel_export">Obavijest o izvozu aplikacija</string>
     <string name="notification_channel_install">Obavijest o instaliranjima</string>
-    <string name="pref_network_proxy_enable_desc">Dozvoli da sav promet aplikacije ide kroz proxy</string>
     <string name="notification_channel_downloads">Obavijest o preuzimanjima</string>
-    <string name="pref_network_proxy_enable">Aktiviraj proxy</string>
     <string name="pref_updates_incompatible">Nekompatibilna aktualiziranja</string>
     <string name="pref_updates_incompatible_desc">Prikaži aktualiziranja za nekompatibilne ili deaktivirane aplikacije koje se možda neće uspjeti instalirati</string>
     <string name="pref_updates_auto">Automatko aktualiziranje aplikacija</string>

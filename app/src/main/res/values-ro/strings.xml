@@ -279,14 +279,12 @@
     <string name="server_unreachable">Server inaccesibil</string>
     <string name="failed_generating_session">Nu s-a reușit generarea sesiunii, cod de eroare: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="pref_vending_version_device">Implicit (din configurația dispozitivului)</string>
-    <string name="pref_network_proxy_enable">Activează proxy-ul</string>
     <string name="pref_vending_version_title">Versiunea Google Play</string>
     <string name="failed_to_generate_session">Nu s-a putut genera sesiunea</string>
     <string name="details_ratings_title_hint">Titlul recenziei</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
     <string name="pref_updates_check_frequency_desc">Configurează intervale pentru actualizări, în ore.</string>
     <string name="pref_aurora_only">Numai aplicațiile Aurora Store</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="app_links_desc">Permite magazinului Aurora să deschidă linkuri acceptate</string>
     <string name="toast_proxy_invalid">Adresa URL proxy nevalidă, verifică formatul!</string>
     <string name="pref_aurora_only_desc">Se verifică doar actualizările pentru aplicațiile instalate de Aurora Store</string>
@@ -297,7 +295,6 @@
     <string name="title_app_settings">Setările aplicației</string>
     <string name="pref_updates_check_frequency">Frecvența actualizărilor automate</string>
     <string name="toast_proxy_failed">Nu s-a putut seta proxy</string>
-    <string name="pref_network_proxy_enable_desc">Permite întregului trafic din aplicație să treacă prin proxy</string>
     <string name="android_market_desc">Android Market a fost un magazin online care oferea aplicații software concepute pentru dispozitive Android, retras în 2017.</string>
     <string name="pref_updates_auto">Actualizări automate ale aplicațiilor</string>
     <string name="pref_updates_auto_notify">Verifică și notifică despre actualizările disponibile</string>

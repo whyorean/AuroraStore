@@ -286,9 +286,7 @@
     <string name="android_market_desc">Android Market oli vuonna 2017 toimintansa päättänyt verkkokauppa, joka tarjosi sovelluksia Android-laitteille.</string>
     <string name="details_ratings_title_hint">Arvostele sovellus</string>
     <string name="pref_aurora_only">Vain Aurora Storen sovellukset</string>
-    <string name="pref_network_proxy_title">Välityspalvelin</string>
     <string name="onboarding_permission_doze_desc">Salli Aurora Storen ladata ja päivittää sovelluksia taustalla</string>
-    <string name="pref_network_proxy_enable">Ota välityspalvelin käyttöön</string>
     <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
     <string name="onboarding_permission_doze">Taustalla olevat lataukset</string>
@@ -416,7 +414,6 @@
     <string name="native_installer_desc">Parhaiten soveltuva alle Android 4.4:ää käyttäville laitteille</string>
     <string name="pref_updates_incompatible_desc">Näytä yhteensopimattomien tai käytöstä poistettujen sovellusten päivitykset, joiden asennus saattaa epäonnistua</string>
     <string name="pref_network_proxy_url_message">Syötä välityspalvelimen URL-osoite välittääksesi kaiken datan sen kautta.</string>
-    <string name="pref_network_proxy_enable_desc">Salli sovelluksen kaiken tiedonsiirron menevän välityspalvelimen kautta</string>
     <string name="title_more">Lisää</string>
     <string name="remove_dispenser_title">Poista jakelija</string>
     <string name="about_aurora_store_summary">Aurora Store mahdollistaa sovellusten etsimisen ja lataamisen virallisesta Google Play -kaupasta. Voit tutkia sovellusten kuvaksia, kuvankaappauksia, päivityksiä, muiden käyttäjien kommentteja ja ladata sovelluksia suoraan Google Play:stä laitteellesi. Käyttääksesi Aurora Store:a sinulla on oltava Google Play -tili sekä kirjauduttava sisään Google Play -tilillesi kun avaat ja asetat Aurora Store:n.\n\nToisin kuin perinteiset sovelluskaupat, Aurora Store ei omista, lisensoi tai jakele sovelluksia. Kaikki sovellukset, sovellusten kuvaukset, kuvankaappaukset ja muu sisältö Aurora Storessa ovat suoraan haettu, ladattu ja/tai näytetty Google Play -kaupasta. Aurora Store toimii kuten ovi tai selain, mahdollistaen sisäänkirjautumisen Google Play -tilillesi ja sovellusten hakemiseen Google Play -kaupasta.\n\nHuomaa, että Aurora Store ei ole Googlen tai Google Play:n hyväksymä, sponsoroima tai valtuuttama, eikä myöskään minkään Aurora Storen kautta ladatun sovelluksen tai sovelluksien kehittäjien hyväksymä; Aurora Store:lla ei myöskään ole mitään kytköstä, yhteistyötä tai yhteyttä niihin.</string>

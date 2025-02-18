@@ -244,15 +244,12 @@
     <string name="onboarding_permission_doze">Λήψεις Παρασκηνίου</string>
     <string name="onboarding_permission_doze_desc">Επιτρέψτε στο Aurora Store να κατεβάσει και να ενημερώσει εφαρμογές στο παρασκήνιο</string>
     <string name="pref_vending_version_title">Έκδοση Google Play</string>
-    <string name="pref_network_proxy_title">Μεσολάβηση</string>
     <string name="installer_shizuku_unavailable">Το Shizuku δεν έχει εγκατασταθεί ή ρυθμιστεί σωστά.</string>
     <string name="action_request_analysis">Αίτηση νέας ανάλυσης</string>
     <string name="download_clear_finished">Η εκκαθάριση ολοκληρώθηκε</string>
     <string name="pref_updates_incompatible">Μη συμβατές ενημερώσεις</string>
     <string name="pref_updates_incompatible_desc">Εμφάνιση ενημερώσεων από μη συμβατές ή απενεργοποιημένες εγαρμογές που μπορεί να αποτύχουν να εγκατασταθούν</string>
     <string name="pref_vending_version_device">Προεπιλογή (από καταγραφές συσκευής)</string>
-    <string name="pref_network_proxy_enable">Ενεργοποίηση μεσολάβησης</string>
-    <string name="pref_network_proxy_enable_desc">Επιτρέψτε όλη την κίνηση από την εφαρμογή να περνάει από τη μεσολάβηση</string>
     <string name="pref_network_proxy_url">URL μεσολάβησης</string>
     <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
     <string name="session_login_failed_google">Δεν ήταν δυνατή η σύνδεση μέσω Google</string>

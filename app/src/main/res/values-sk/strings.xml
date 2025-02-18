@@ -118,7 +118,6 @@
     <string name="details_more_about_app">Viac o aplikácií</string>
     <string name="details_no_app_match">Nenašla sa žiadna zhoda aplikácie</string>
     <string name="pref_network_title">Sieť</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="app_updater_service_notif_title">Sťahovanie aplikácie na pozadí</string>
     <string name="app_updater_service_notif_text">Umožňuje sťahovanie aplikácie na pozadí</string>
     <string name="privacy_policy_title">Zásady ochrany osobných údajov</string>
@@ -141,8 +140,6 @@
     <string name="pref_install_mode_shizuku">Shizuku inštalátor</string>
     <string name="pref_install_mode_session">Inštalátor relácie</string>
     <string name="pref_vending_version_device">Predvolené (z konfigurácie zariadenia)</string>
-    <string name="pref_network_proxy_enable">Povoliť proxy</string>
-    <string name="pref_network_proxy_enable_desc">Povoliť všetku sieťovú prevádzku aplikácie cez server proxy</string>
     <string name="pref_ui_similar_apps_desc">Zobraziť podobné a súvisiace skupiny na stránke podrobností aplikácie</string>
     <string name="pref_updates_incompatible">Nekompatibilné aktualizácie</string>
     <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré môžu zlyhať pri nštalovaní</string>

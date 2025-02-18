@@ -224,9 +224,6 @@
     <string name="pref_vending_version_title">Google Play Version</string>
     <string name="pref_vending_version_device">Default (from device config)</string>
     <string name="pref_network_title">"Networking"</string>
-    <string name="pref_network_proxy_title">Proxy</string>
-    <string name="pref_network_proxy_enable">"Enable proxy"</string>
-    <string name="pref_network_proxy_enable_desc">"Allow all traffic from app to go through the proxy"</string>
     <string name="pref_network_proxy_url">"Proxy URL"</string>
     <string name="pref_network_proxy_url_message">Enter a valid proxy URL to pass all data through the proxy.</string>
     <string name="pref_ui_title">"Customization"</string>
@@ -493,4 +490,9 @@
     <!-- NetworkPreference -->
     <string name="pref_network_microg_login_title">Use microG to sign-in to accounts</string>
     <string name="pref_network_microg_login_desc">Authenticate using microG when signing into Google accounts for a simpler sign-in flow.</string>
+    <string name="set">Set</string>
+    <string name="disable">Disable</string>
+    <string name="toast_proxy_disabled">Proxy disabled successfully</string>
+    <string name="pref_network_proxy_desc">View and manage proxy configuration</string>
+    <string name="pref_network_proxy_url_hint" translatable="false">protocol://user:password@host:port</string>
 </resources>

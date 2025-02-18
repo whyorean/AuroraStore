@@ -262,11 +262,9 @@
     <string name="installer_shizuku_unavailable">Shizuku ez dago instalatuta edo egoki konfiguratuta.</string>
     <string name="pref_vending_version_device">Lehenetsia (gailuko konfiguraziotik)</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> eta <xliff:g id="apps_count">%4$d</xliff:g> gehiago</string>
-    <string name="pref_network_proxy_enable">Gaitu proxy-a</string>
     <string name="pref_vending_version_title">Google Play-eko bertsioa</string>
     <string name="pref_network_proxy_url">Proxy-aren URLa</string>
     <string name="pref_aurora_only">Aurora Store-ko aplikazioak soilik</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="pref_install_mode_shizuku">Shizuku instalatzailea</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> aplikazioaren bertsio berri bat eskuragarri dago</string>
     <string name="onboarding_permission_doze">Atzeko planoko deskargak</string>
@@ -281,7 +279,6 @@
     <string name="toast_proxy_failed">Ezin izan da ezarri proxy-a</string>
     <string name="title_search_results">Bilaketa-emaitzak</string>
     <string name="notification_channel_updates">Eguneratzeen jakinarazpenak</string>
-    <string name="pref_network_proxy_enable_desc">Onartu aplikazioko trafiko guztia proxy-tik joan dadin</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> eta <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="about_wiki_title">Wiki</string>

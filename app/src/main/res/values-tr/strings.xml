@@ -290,13 +290,10 @@
     <string name="pref_aurora_only_desc">Yalnızca Aurora Store tarafından kurulan uygulamaları denetle</string>
     <string name="title_app_settings">Uygulama Ayarları</string>
     <string name="pref_updates_check_frequency">Kendiliğinden güncelleme sıklığı</string>
-    <string name="pref_network_proxy_enable">Vekili etkinleştir</string>
     <string name="pref_network_proxy_url">Vekil URL\'si</string>
-    <string name="pref_network_proxy_title">Vekil</string>
     <string name="toast_proxy_invalid">Geçersiz vekil URL\'si, biçimi denetle!</string>
     <string name="toast_proxy_success">Vekil belirleme başarılı</string>
     <string name="toast_proxy_failed">Vekil belirlenemedi</string>
-    <string name="pref_network_proxy_enable_desc">Uygulamadan tüm trafiğin vekilden gitmesini sağla</string>
     <string name="pref_vending_version_device">Varsayılan (cihaz yapılandırmasından)</string>
     <string name="pref_vending_version_title">Google Play Sürümü</string>
     <string name="onboarding_permission_doze">Arka Plan İndirmeleri</string>

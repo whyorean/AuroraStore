@@ -285,10 +285,8 @@
     <string name="google_play_store_desc">Google Play, также известный как Google Play Store, а ранее - Android Market.</string>
     <string name="android_market_desc">Android Market - магазин приложений для устройств под управлением ОС Android, закрытый в 2017 году.</string>
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
-    <string name="pref_network_proxy_enable">Включить прокси</string>
     <string name="pref_network_proxy_url">URL прокси</string>
     <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического и самостоятельного обновления в часах.</string>
-    <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
     <string name="pref_aurora_only_desc">Проверять обновления для приложений, установленных только с Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
@@ -296,7 +294,6 @@
     <string name="pref_updates_check_frequency">Частота автоматических обновлений</string>
     <string name="toast_proxy_failed">Не удалось настроить прокси</string>
     <string name="pref_aurora_only">Только приложения из Aurora Store</string>
-    <string name="pref_network_proxy_enable_desc">Разрешить трафику приложения проходить через прокси</string>
     <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
     <string name="pref_vending_version_title">Версия Google Play</string>
     <string name="onboarding_permission_doze">Фоновые загрузки</string>

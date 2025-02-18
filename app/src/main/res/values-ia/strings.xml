@@ -112,12 +112,10 @@
     <string name="details_no_permission">Sin permissiones</string>
     <string name="details_description">Description</string>
     <string name="downloading_dep">Discargante files additional pro <xliff:g id="app">%1$s</xliff:g></string>
-    <string name="pref_network_proxy_enable">Activar le proxy</string>
     <string name="tab_for_you">Pro te</string>
     <string name="check_connectivity">Verificar connexion a Internet</string>
     <string name="pref_network_proxy_url">URL de proxy</string>
     <string name="pref_aurora_only">Solmente applicationes de Aurora Store</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="notification_updates_available_desc_1">Un nove version de <xliff:g id="app_one_name">%1$s</xliff:g> es disponibile</string>
     <string name="update_available">actualisation disponibile</string>
     <string name="menu">Menu</string>

@@ -243,8 +243,6 @@
     <string name="details_ratings_title_hint">மதிப்பாய்வு தலைப்பு</string>
     <string name="onboarding_permission_doze_desc">பயன்பாடுகளை பின்னணியில் பதிவிறக்கம் செய்து புதுப்பிக்க அரோரா கடையை அனுமதிக்கவும்</string>
     <string name="pref_install_mode_shizuku">சிசுகு உறுப்பினர்கள் கோ</string>
-    <string name="pref_network_proxy_enable">ப்ராக்சியை இயக்கவும்</string>
-    <string name="pref_network_proxy_enable_desc">பயன்பாட்டிலிருந்து அனைத்து போக்குவரத்தையும் பதிலாள் வழியாக செல்ல அனுமதிக்கவும்</string>
     <string name="pref_updates_incompatible_desc">நிறுவத் தவறிய பொருந்தாத அல்லது முடக்கப்பட்ட பயன்பாடுகளுக்கான புதுப்பிப்புகளைக் காட்டு</string>
     <string name="pref_aurora_only">அரோரா கடை பயன்பாடுகள் மட்டுமே</string>
     <string name="pref_aurora_only_desc">அரோரா கடை நிறுவிய பயன்பாடுகளுக்கான புதுப்பிப்புகளை மட்டுமே சரிபார்க்கவும்</string>
@@ -377,7 +375,6 @@
     <string name="bad_request">உள் பிழை! சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்</string>
     <string name="export_app_summary_success">பயன்பாட்டு மூட்டை வெற்றிகரமாக ஏற்றுமதி செய்தது</string>
     <string name="action_uninstall_success">வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது</string>
-    <string name="pref_network_proxy_title">பதிலாள்</string>
     <string name="about_aurora_store_subtitle">அரோரா கடை பற்றி மேலும் அறிக</string>
     <string name="action_home_screen">முகப்புத் திரையில் சேர்க்கவும்</string>
     <string name="remove">அகற்று</string>

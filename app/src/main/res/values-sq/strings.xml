@@ -291,9 +291,6 @@
     <string name="download_eta_min">Edhe %1$dm %2$ds</string>
     <string name="download_eta_sec">Edhe %1$ds</string>
     <string name="onboarding_permission_notifications_desc">Dërgo njoftime lidhur me gjendje instalimesh</string>
-    <string name="pref_network_proxy_title">Ndërmjetës</string>
-    <string name="pref_network_proxy_enable">Aktivizo ndërmjetës</string>
-    <string name="pref_network_proxy_enable_desc">Lejo që krejt trafiku prej aplikacionesh të kalojë përmes ndërmjetësit</string>
     <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi</string>
     <string name="pref_aurora_only_desc">Kërko për përditësime vetëm për aplikacione të instaluar me Shitoren Aurora</string>
     <string name="session_good">Hyaaa! Gjithçka në rregull.</string>
