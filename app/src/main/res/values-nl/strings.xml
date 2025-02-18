@@ -341,10 +341,36 @@
     <string name="title_app_settings">App-instellingen</string>
     <string name="pref_network_proxy_enable_desc">Sta toe dat al het verkeer van de app via de proxy gaat</string>
     <string name="pref_vending_version_device">Standaard (van apparaatconfiguraties)</string>
-    <string name="pref_network_proxy_url_message">Voer een geldige Proxy-URL in om alle gegevens via de proxy te sturen.</string>
+    <string name="pref_network_proxy_url_message">Voer een geldige proxy-URL in om alle gegevens via de proxy te sturen.</string>
     <string name="title_favourites_manager">Favoriete Apps</string>
     <string name="toast_proxy_invalid">Ongeldige proxy-URL, controleer indeling!</string>
     <string name="toast_permission_esm_restart">Mogelijk moet je de app opnieuw opstarten om de verleende toestemming te bevestigen.</string>
     <string name="notification_channel_downloads">Installatiemelding</string>
     <string name="pref_aurora_only">Alleen apps van Aurora Store</string>
+    <string name="failed_apk_export">APK\'s exporteren mislukt</string>
+    <string name="source_code_title">Broncode</string>
+    <string name="about_aurora_store_title">Over Aurora Store</string>
+    <string name="no_dispensers_available">Geen distributeurs beschikbaar</string>
+    <string name="source_code_subtitle">Ondek wat erin zit</string>
+    <string name="item_optional">Optioneel</string>
+    <string name="no_apps_available">Geen apps beschikbaar</string>
+    <string name="about_aurora_store_subtitle">Leer meer over Aurora Store</string>
+    <string name="add_dispenser_title">Distributeur toevoegen</string>
+    <string name="pref_updates_auto_notify">Controleer &amp; stuur melding voor beschikbare updates</string>
+    <string name="pref_updates_check_frequency_desc">Stel het tijdsinterval voor automatische updates in, in uren.</string>
+    <string name="pref_updates_auto_off">Apps niet automatisch updaten</string>
+    <string name="made_with_love">Gemaakt met <xliff:g id="heart_emoji">%1$s</xliff:g> in India</string>
+    <string name="item_required">Vereist</string>
+    <string name="android_market_desc">Android Market was een online winkel die softwareapplicaties voor Android-apparaten aanbood. Deze winkel is sinds 2017 niet meer beschikbaar.</string>
+    <string name="toast_proxy_failed">Proxy instellen mislukt</string>
+    <string name="pref_clear_device_owner_title">Apparaateigenaar wissen</string>
+    <string name="pref_updates_auto">Automatische updates</string>
+    <string name="pref_updates_auto_desc">Configureer gedrag van automatische updates</string>
+    <string name="pref_updates_check_frequency">Frequentie van automatische updates</string>
+    <string name="faqs_subtitle">Vragen? Ontdek de antwoorden</string>
+    <string name="title_more">Meer</string>
+    <string name="pref_dispenser_title">Beheer distributeurs</string>
+    <string name="privacy_policy_title">Privacybeleid</string>
+    <string name="disclaimer_subtitle">Verantwoording</string>
+    <string name="pref_clear_device_owner_summary">Verwijderd Aurora Store als de appparaateigenaar-app</string>
 </resources>
