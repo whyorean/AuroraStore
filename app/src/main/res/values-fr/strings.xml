@@ -286,7 +286,7 @@
     <string name="pref_network_proxy_enable">Activer le mandataire</string>
     <string name="details_ratings_title_hint">Titre de l’avis</string>
     <string name="pref_network_proxy_url">URL du mandataire</string>
-    <string name="pref_updates_check_frequency_desc">Configurer les intervalles des mises à jour automatiques et des automises à jours, en heures.</string>
+    <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
     <string name="pref_aurora_only">Seulement les applis d’Aurora Store</string>
     <string name="pref_network_proxy_title">Mandataire</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
@@ -300,11 +300,11 @@
     <string name="pref_vending_version_device">Par défaut (selon la configuration de l’appareil)</string>
     <string name="pref_vending_version_title">Version de Google Play</string>
     <string name="onboarding_permission_doze">Téléchargements en arrière-plan</string>
-    <string name="pref_updates_auto">Mise à jour automatique des applis</string>
+    <string name="pref_updates_auto">Mises à jour automatiques</string>
     <string name="pref_updates_auto_notify">Chercher les mises à jour et les signaler</string>
     <string name="pref_updates_auto_off">Ne pas mettre les applis à jour automatiquement</string>
     <string name="onboarding_permission_doze_desc">Autoriser Aurora Store à télécharger et à mettre à jour les applis en arrière-plan</string>
-    <string name="pref_updates_auto_desc">Configurer les mises à jour automatiques</string>
+    <string name="pref_updates_auto_desc">Configurer le comportement des mises à jour automatiques</string>
     <string name="pref_updates_auto_install">Chercher les mises à jour et les installer automatiquement</string>
     <string name="action_request_analysis">Demander une nouvelle analyse</string>
     <string name="failed_apk_export">Échec d’exportation des APK</string>
