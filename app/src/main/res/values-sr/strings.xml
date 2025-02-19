@@ -309,7 +309,7 @@
     <string name="app_links_title">Линкови апликација</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
-    <string name="pref_updates_check_frequency_desc">Конфигуришите интервале за аутоматска ажурирања, у сатима.</string>
+    <string name="pref_updates_check_frequency_desc">Конфигуришите временски интервал за аутоматска ажурирања, у сатима.</string>
     <string name="pref_aurora_only">Само Aurora Store апликације</string>
     <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>
     <string name="title_app_settings">Подешавања апликације</string>
@@ -325,7 +325,7 @@
     <string name="pref_vending_version_title">Верзија Google Play-а</string>
     <string name="onboarding_permission_doze">Преузимања у позадини</string>
     <string name="onboarding_permission_doze_desc">Дозволите Aurora Store-у да преузима и ажурира апликације у позадини</string>
-    <string name="pref_updates_auto">Аутоматско ажурирање апликација</string>
+    <string name="pref_updates_auto">Аутоматска ажурирања</string>
     <string name="pref_updates_auto_notify">Провера и обавештење о доступним ажурирањима</string>
     <string name="pref_updates_auto_off">Без аутоматског ажурирања апликација</string>
     <string name="pref_updates_auto_desc">Конфигуришите понашање аутоматских ажурирања</string>
