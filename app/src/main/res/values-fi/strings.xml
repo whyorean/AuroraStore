@@ -292,11 +292,11 @@
     <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
     <string name="onboarding_permission_doze">Taustalla olevat lataukset</string>
-    <string name="pref_updates_auto">Päivitä sovellukset automaattisesti</string>
+    <string name="pref_updates_auto">Automaattiset päivitykset</string>
     <string name="pref_updates_auto_notify">Tarkista ja ilmoita saatavilla olevista päivityksistä</string>
     <string name="pref_updates_auto_off">Älä päivitä sovelluksia automaattisesti</string>
     <string name="title_app_settings">Sovellusasetukset</string>
-    <string name="pref_updates_auto_desc">Automaattisten päivitysten määrittäminen</string>
+    <string name="pref_updates_auto_desc">Määritä automaattisten päivitysten toiminta</string>
     <string name="pref_updates_auto_install">Tarkista ja asenna saatavilla olevat päivitykset automaattisesti</string>
     <string name="download_clear_finished">Poista valmiit</string>
     <string name="action_home_screen">Lisää kotinäytölle</string>
@@ -336,7 +336,7 @@
     <string name="toast_permission_installer_required">Sinun täytyy myöntää Asennuslupa ensin</string>
     <string name="pref_updates_check_frequency">Automaattipäivitysten tiheys</string>
     <string name="am_installer_subtitle">Täysiominaisuuksinen avoimen lähdekoodin pakettimanageri</string>
-    <string name="pref_updates_check_frequency_desc">Aseta taajuus automaatti- ja itsepäivityksille, tunneissa.</string>
+    <string name="pref_updates_check_frequency_desc">Määritä aikaväli automaattisille päivityksille, tunteina.</string>
     <string name="plexus_powered">Powered by Plexus</string>
     <string name="details_compatibility_gms_required_title">Vaatii Google Play Palvelut</string>
     <string name="details_compatibility_gms_required_subtitle">Saatat joutua asentamaan Googlen oman kirjaston tai vastaavan FOSS-toteutuksen kuten esim. microG.</string>
