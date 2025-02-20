@@ -47,7 +47,7 @@
     <string name="about_xda_summary">檢視 Aurora 商店的 XDA 討論串來討論或提供意見。</string>
     <string name="about_telegram_summary">加入 Aurora 支援社群來討論或提供建議。</string>
     <string name="about_telegram">Telegram</string>
-    <string name="about_paypal_summary">通過 PayPal 捐贈</string>
+    <string name="about_paypal_summary">通過 PayPal 捐款</string>
     <string name="about_paypal">PayPal</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">從 GitLab 上的 Aurora OSS 取得 Aurora 商店的原始碼。</string>
@@ -198,7 +198,7 @@
     <string name="details_no_updates">暫無更新可用</string>
     <string name="details_no_permission">沒有權限</string>
     <string name="details_no_dependencies">無依賴元件</string>
-    <string name="details_no_app_match">未找到符合的程式</string>
+    <string name="details_no_app_match">未找到符合的應用程式</string>
     <string name="details_no_ads">無廣告</string>
     <string name="details_more_about_app">同類應用程式</string>
     <string name="details_gsf_dependent">需要 Google 服務架構</string>
@@ -212,10 +212,10 @@
     <string name="details_changelog_unavailable">未提供更動記錄</string>
     <string name="details_changelog">更動紀錄</string>
     <string name="details_beta_delay">加入需要一點時間，等一下再回來查看狀態。</string>
-    <string name="details_beta_description">你會先於大眾體驗到新功能以及 bugs，向開發人員回報問題以幫助改進。</string>
+    <string name="details_beta_description">你會比大眾更早體驗到新功能以及錯誤，向開發人員回報問題以幫助改進。</string>
     <string name="details_beta_available">要加入 beta 項目嗎？</string>
     <string name="details_beta_subscribed">你已經是 beta 測試員啦</string>
-    <string name="details_beta">Beta（測試版）項目</string>
+    <string name="details_beta">Beta(測試版)項目</string>
     <string name="action_whitelist">白名單</string>
     <string name="action_update_all">更新全部</string>
     <string name="action_update">更新</string>
