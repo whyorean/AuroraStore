@@ -36,7 +36,7 @@
     <string name="action_install">Pasang</string>
     <string name="action_ignore">Abaikan</string>
     <string name="action_granted">Diizinkan</string>
-    <string name="action_get_local_apk">Simpan App bundle</string>
+    <string name="action_get_local_apk">Simpan paket Aplikasi</string>
     <string name="action_finish">Selesai</string>
     <string name="action_filter_rating">Penilaian</string>
     <string name="action_filter_apps_with_ads">Aplikasi dengan iklan</string>
@@ -52,7 +52,7 @@
     <string name="about_bitcoin_btc_summary">Donasi via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Donasi via Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Bitcoin Tunai</string>
     <string name="account_login_using">Masuk menggunakan</string>
     <string name="account_logout">Keluar dari Aurora</string>
     <string name="about_libera_summary">Jadilah patron di Liberapay</string>
@@ -213,8 +213,8 @@
     <string name="pref_install_mode_native">Pemasang asli (Tidak digunakan lagi)</string>
     <string name="pref_install_delete_title">Hapus APK setelah pemasangan</string>
     <string name="pref_install_delete_summary">APK yang diunduh akan segera dihapus setelah pemasangan</string>
-    <string name="dialog_desc_native_split">Anda tidak dapat memasang aplikasi yang dikemas(split) melalui pemasang Asli. Ubah pemasang Anda ke Sesi, Layanan, atau Root.</string>
-    <string name="device_miui_extra">Pilihan lain Anda dapat memilih pemasang Asli, tapi Anda tidak dapat memasang APK yang dibundel (terpisah), jadi pilihan ada di tangan Anda.</string>
+    <string name="dialog_desc_native_split">Anda tidak dapat memasang aplikasi yang dipaketkan(terpisah) melalui pemasang Asli. Ubah pemasang Anda ke Sesi, Layanan, atau Root.</string>
+    <string name="device_miui_extra">Pilihan lain Anda dapat memilih pemasang Asli, tapi Anda tidak dapat memasang paket APK (terpisah), jadi pilihan ada di tangan Anda.</string>
     <string name="device_miui_description">Harap menonaktifkan optimasi MIUI untuk mengizinkan pemasangan, jika tidak, Anda dapat memilih pemasang Root atau Layanan.</string>
     <string name="device_miui_subtitle">Pemasang sesi tidak dapat memasang aplikasi karena Optimisasi MIUI.</string>
     <string name="installer_service_unavailable">Pasang layanan Aurora 1.0.9 atau lebih baru, atau ubah pemasang.</string>
@@ -283,7 +283,7 @@
     <string name="failed_to_generate_session">Tidak dapat membuat sesi</string>
     <string name="details_ratings_title_hint">Judul ulasan</string>
     <string name="pref_network_proxy_url">URL Proksi</string>
-    <string name="pref_updates_check_frequency_desc">Atur selang waktu untuk pembaruan otomatis dan pembaruan mandiri, dalam jam.</string>
+    <string name="pref_updates_check_frequency_desc">Atur rentang waktu untuk pembaruan otomatis, dalam jam.</string>
     <string name="pref_aurora_only">Hanya aplikasi Aurora Store</string>
     <string name="pref_network_proxy_title">Proksi</string>
     <string name="app_links_desc">Izinkan Aurora Store untuk membuka tautan yang didukung</string>
@@ -301,7 +301,7 @@
     <string name="pref_network_proxy_enable_desc">Izinkan semua lalu lintas dari aplikasi melewati proksi</string>
     <string name="android_market_desc">Android Market adalah toko online yang menyediakan aplikasi perangkat lunak yang dirancang untuk perangkat Android, dihentikan pada tahun 2017.</string>
     <string name="app_language">Bahasa Aplikasi</string>
-    <string name="pref_updates_auto">Perbarui otomatis aplikasi</string>
+    <string name="pref_updates_auto">Pembaruan otomatis</string>
     <string name="pref_updates_auto_desc">Atur perilaku pembaruan otomatis</string>
     <string name="pref_updates_auto_off">Jangan perbarui otomatis aplikasi</string>
     <string name="pref_updates_auto_notify">Cek &amp; beritau apabila update tersedia</string>
@@ -334,7 +334,7 @@
     <string name="about_aurora_store_subtitle">Pelajari lebih lanjut tentang Aurora Store</string>
     <string name="pref_updates_incompatible">Pembaruan tidak kompatibel</string>
     <string name="failed_apk_export">Gagal mengekspor APK</string>
-    <string name="session_installer_subtitle">Pemasang berbasis sesi untuk APK gabungan/terpisah</string>
+    <string name="session_installer_subtitle">Pemasang berbasis sesi untuk APK dipaketkan/terpisah</string>
     <string name="session_installer_desc">Direkomendasikan, sudah terpasang dan mendukung semua versi Android</string>
     <string name="root_installer_subtitle">Pemasang berbasis shell menggunakan izin root</string>
     <string name="action_request_analysis">Minta analisis baru</string>
@@ -358,8 +358,8 @@
     <string name="toast_fav_export_success">Favorit diekspor!</string>
     <string name="native_installer_subtitle">Pemasang berbasis intent, tersedia di semua perangkat</string>
     <string name="pref_clear_device_owner_summary">Hapus Aurora Store sebagai aplikasi pemilik perangkat</string>
-    <string name="export_app_summary_success">Aplikasi yang dikemas berhasil diekspor</string>
-    <string name="export_app_summary_fail">Gagal mengekspor aplikasi yang dikemas</string>
+    <string name="export_app_summary_success">Berhasil mengekspor paket aplikasi</string>
+    <string name="export_app_summary_fail">Gagal mengekspor paket aplikasi</string>
     <string name="add_dispenser_title">Tambah dispenser</string>
     <string name="pref_dispenser_title">Kelola dispenser</string>
     <string name="no_dispensers_available">Tidak ditemukan dispenser</string>
@@ -421,4 +421,6 @@
     <string name="details_compatibility_gms_required_subtitle">Anda mungkin perlu memasang pustaka milik Google atau implementasi ulang FOSS seperti microG.</string>
     <string name="details_compatibility_microg">Dengan Proyek microG</string>
     <string name="no_apps_available">Tidak ada aplikasi yang tersedia</string>
+    <string name="pref_network_microg_login_title">Gunakan microG untuk masuk ke akun</string>
+    <string name="pref_network_microg_login_desc">Autentikasi menggunakan microG saat masuk ke akun Google untuk proses masuk yang lebih sederhana.</string>
 </resources>
