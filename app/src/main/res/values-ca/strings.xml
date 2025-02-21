@@ -262,9 +262,6 @@
     <string name="pref_vending_version_title">Versió de Google Play</string>
     <string name="notification_channel_downloads">Notificació de la descarrega</string>
     <string name="onboarding_permission_doze">Baixades en segon pla</string>
-    <string name="pref_network_proxy_title">Proxy</string>
-    <string name="pref_network_proxy_enable">Habilita el Proxy</string>
-    <string name="pref_network_proxy_enable_desc">Permet que tot el trànsit de l\'aplicació passi pel Proxy</string>
     <string name="session_enjoy">Inicia sessió i gaudeix.</string>
     <string name="session_init">Preparant les coses…</string>
     <string name="onboarding_permission_notifications_desc">Envia notificacions sobre l\'estat de les instal·lacions</string>
