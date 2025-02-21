@@ -57,6 +57,7 @@ class AppInstaller @Inject constructor(
 
     companion object {
         const val ACTION_INSTALL_STATUS = "com.aurora.store.data.installer.AppInstaller.INSTALL_STATUS"
+        const val ACTION_INSTALL_PRE_APPROVE = "com.aurora.store.data.installer.AppInstaller.INSTALL_PRE_APPROVE"
 
         const val EXTRA_PACKAGE_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_PACKAGE_NAME"
         const val EXTRA_VERSION_CODE = "com.aurora.store.data.installer.AppInstaller.EXTRA_VERSION_CODE"

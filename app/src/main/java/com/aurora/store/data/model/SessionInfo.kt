@@ -4,5 +4,6 @@ data class SessionInfo(
     val sessionId: Int,
     val packageName: String,
     val versionCode: Int,
-    val displayName: String = String()
+    val displayName: String = String(),
+    val preApproved: Boolean = false,
 )

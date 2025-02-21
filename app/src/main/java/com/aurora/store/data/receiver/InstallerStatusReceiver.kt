@@ -30,6 +30,7 @@ import com.aurora.extensions.runOnUiThread
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_PRE_APPROVE
 import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
@@ -77,6 +78,17 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 AuroraApp.enqueuedInstalls.remove(packageName)
                 postStatus(status, packageName, extra, context)
                 notifyUser(context, packageName, displayName, status)
+            }
+        } else if (context != null && intent?.action == ACTION_INSTALL_PRE_APPROVE) {
+            val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
+
+            if (status == PackageInstaller.STATUS_SUCCESS) {
+                Log.i(TAG, "Pre-approve success")
+            }
+
+            if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                promptUser(intent, context)
+                Log.i(TAG, "Prompting user for pre-approve")
             }
         }
     }

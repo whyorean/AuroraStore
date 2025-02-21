@@ -190,5 +190,7 @@
                 <action android:name="android.intent.action.UNARCHIVE_PACKAGE" />
             </intent-filter>
         </receiver>
+
+        <service android:exported="false" android:name=".data.service.InstallService"/>
     </application>
 </manifest>

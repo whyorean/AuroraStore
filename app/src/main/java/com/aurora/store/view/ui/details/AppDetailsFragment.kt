@@ -48,6 +48,7 @@ import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
+import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
@@ -67,6 +68,7 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.ViewState
@@ -95,10 +97,15 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import java.util.Locale
+import javax.inject.Inject
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
+
 
 @AndroidEntryPoint
 class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
+
+    @Inject
+    lateinit var sessionInstaller: SessionInstaller
 
     private val viewModel: AppDetailsViewModel by activityViewModels()
     private val detailsClusterViewModel: DetailsClusterViewModel by activityViewModels()
@@ -554,6 +561,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
         } else {
+            if (isUAndAbove) {
+                sessionInstaller.preApprove(app, iconDrawable)
+            }
+
             viewModel.download(app)
         }
     }

@@ -26,10 +26,18 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
+import android.content.pm.PackageInstaller.PreapprovalDetails
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.icu.util.ULocale
+import android.os.Build
 import android.os.Process
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
@@ -37,9 +45,11 @@ import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isUAndAbove
 import com.aurora.extensions.runOnUiThread
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_PRE_APPROVE
 import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
@@ -138,7 +148,12 @@ class SessionInstaller @Inject constructor(
             enqueuedSessions.find { set -> set.any { it.packageName == download.packageName } }
         if (sessionSet != null) {
             Log.i(TAG, "${download.packageName} already queued")
-            commitInstall(sessionSet.first())
+            val sessionInfo = sessionSet.first()
+            if (sessionInfo.preApproved) {
+                preApprovedInstall(sessionInfo)
+            } else {
+                commitInstall(sessionInfo)
+            }
         } else {
             Log.i(TAG, "Received session install request for ${download.packageName}")
             val sessionInfoSet = mutableSetOf<SessionInfo>()
@@ -171,6 +186,44 @@ class SessionInstaller @Inject constructor(
             enqueuedSessions.add(sessionInfoSet)
             commitInstall(sessionInfoSet.first())
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    fun preApprove(app: App, drawable: Drawable) {
+        val sessionParams = buildSessionParams(app.packageName)
+
+        val sessionId = packageInstaller.createSession(sessionParams)
+        val session = packageInstaller.openSession(sessionId)
+
+        val preapprovalDetailsBuilder = PreapprovalDetails.Builder().apply {
+            setPackageName(app.packageName)
+            setLabel(app.displayName)
+            setLocale(ULocale.getDefault())
+            setIcon(drawableToBitmap(drawable))
+        }
+
+        val preapprovalDetails = preapprovalDetailsBuilder.build()
+
+        val sessionInfo = SessionInfo(
+            sessionId,
+            app.packageName,
+            app.versionCode,
+            app.displayName,
+            true
+        )
+
+        val pendingIntent = getPreApprovalCallBackIntent(sessionInfo)
+
+        session.requestUserPreapproval(
+            preapprovalDetails,
+            pendingIntent!!.intentSender
+        )
+
+        enqueuedSessions.add(
+            mutableSetOf(
+                sessionInfo
+            )
+        )
     }
 
     private fun stageInstall(
@@ -207,6 +260,40 @@ class SessionInstaller @Inject constructor(
         }
     }
 
+    private fun preApprovedInstall(
+        sessionInfo: SessionInfo
+    ) {
+        val session = packageInstaller.openSession(sessionInfo.sessionId)
+
+        try {
+            Log.i(TAG, "Writing splits to session for ${sessionInfo.packageName}")
+            val files = getFiles(sessionInfo.packageName, sessionInfo.versionCode, "")
+            files.forEach { file ->
+                file.inputStream().use { input ->
+                    session.openWrite(
+                        "${sessionInfo.packageName}_${file.name}",
+                        0,
+                        file.length()
+                    ).use { output ->
+                        input.copyTo(output)
+                        session.fsync(output)
+                    }
+                }
+            }
+            Log.i(TAG, "${files.size} files written to session for ${sessionInfo.packageName}")
+            commitInstall(sessionInfo)
+        } catch (exception: IOException) {
+            session.abandon()
+            removeFromInstallQueue(sessionInfo.packageName)
+            postError(
+                sessionInfo.packageName,
+                exception.localizedMessage,
+                exception.stackTraceToString()
+            )
+            throw exception
+        }
+    }
+
     private fun buildSessionParams(packageName: String): SessionParams {
         return SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
             setAppPackageName(packageName)
@@ -234,8 +321,16 @@ class SessionInstaller @Inject constructor(
     private fun commitInstall(sessionInfo: SessionInfo) {
         Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
         val session = packageInstaller.openSession(sessionInfo.sessionId)
-        session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
+        val intent = getCallBackIntent(sessionInfo)
+
+        if (intent == null) {
+            Log.e(TAG, "Failed to get callback intent for ${sessionInfo.packageName}")
+            return
+        }
+
+        session.commit(intent.intentSender)
         session.close()
+        Log.i(TAG, "Session committed for ${sessionInfo.packageName}")
     }
 
     private fun getCallBackIntent(sessionInfo: SessionInfo): PendingIntent? {
@@ -255,5 +350,40 @@ class SessionInstaller @Inject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT,
             true
         )
+    }
+
+    private fun getPreApprovalCallBackIntent(
+        sessionInfo: SessionInfo
+    ): PendingIntent? {
+        val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
+            action = ACTION_INSTALL_PRE_APPROVE
+            setPackage(context.packageName)
+        }
+
+        return PendingIntentCompat.getBroadcast(
+            context,
+            sessionInfo.sessionId,
+            callBackIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            true
+        )
+    }
+
+
+    fun drawableToBitmap(drawable: Drawable): Bitmap {
+        if (drawable is BitmapDrawable) {
+            return drawable.bitmap
+        }
+
+        val bitmap = Bitmap.createBitmap(
+            drawable.intrinsicWidth,
+            drawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+
+        return bitmap
     }
 }
