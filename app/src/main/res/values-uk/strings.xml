@@ -424,4 +424,13 @@
     <string name="no_apps_available">Немає доступних застосунків</string>
     <string name="pref_network_microg_login_title">Використовуйте microG для входу в облікові записи</string>
     <string name="pref_network_microg_login_desc">Автентифікуйте за допомогою microG під час входу в облікові записи Google для простішого процесу входу.</string>
+    <string name="set">Встановити</string>
+    <string name="disable">Вимкнути</string>
+    <string name="pref_updates_restrictions_title">Обмеження автоматичного оновлення</string>
+    <string name="pref_updates_restrictions_desc">Налаштуйте обмеження пристрою для автоматичних оновлень.</string>
+    <string name="pref_updates_restrictions_metered">Тільки в мережах без обліку</string>
+    <string name="pref_updates_restrictions_idle">Коли пристрій неактивний</string>
+    <string name="toast_proxy_disabled">Проксі успішно вимкнено</string>
+    <string name="pref_network_proxy_desc">Перегляд конфігурації проксі та керування нею</string>
+    <string name="pref_updates_restrictions_battery">Коли акумулятор не розряджений</string>
 </resources>
