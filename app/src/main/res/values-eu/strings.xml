@@ -316,7 +316,7 @@
     <string name="failed_to_fetch_report">Ezin izan da eskuratu pribatutasun-txostena</string>
     <string name="toast_permission_esm_restart">Baliteke aplikazioa berrabiarazi behar izatea baimenaren esleipena islatzeko.</string>
     <string name="item_required">Beharrezkoa</string>
-    <string name="pref_updates_check_frequency_desc">Konfiguratu auto-eguneratzeetarako eta auto-eguneratzeetarako tarteak, ordutan.</string>
+    <string name="pref_updates_check_frequency_desc">Konfiguratu eguneraketa automatikoentzako denbora-tarteak, ordutan.</string>
     <string name="session_installer_subtitle">APK bildu/zatituetarako saioan oinarritutako instalatzailea</string>
     <string name="root_installer_subtitle">Shell oinarritutako instalatzailea zeinak root baimenak darabiltzan</string>
     <string name="shizuku_installer_subtitle">Sistemaren APIak zuzenean erabiltzea adb/root pribilegioekin</string>
@@ -335,7 +335,7 @@
     <string name="pref_clear_device_owner_desc">Horrek aplikazioa isilean instalatzeko saioaren instalatzailearen baimena kenduko du. Gailuaren jabetza garbitzen jarraitu nahi duzu?</string>
     <string name="onboarding_permission_installer_legacy_desc">Baimendu iturri ezezagunetako aplikazioak instalatzea</string>
     <string name="pref_updates_incompatible_desc">Erakutsi instalatzen huts egin dezaketen aplikazio bateraezinen edo desgaituen eguneraketak</string>
-    <string name="pref_updates_auto">Aplikazioen eguneraketak automatizatu</string>
+    <string name="pref_updates_auto">Eguneraketa automatikoak</string>
     <string name="access_denied_using_vpn">Sarbidea ukatu da! VPN edo Tor erabiltzen ari al zara?</string>
     <string name="pref_clear_device_owner_summary">Aurora Store kentzen du, gailuaren jabearen aplikazio gisa</string>
     <string name="status_cancelled">Ezeztatu egin da</string>

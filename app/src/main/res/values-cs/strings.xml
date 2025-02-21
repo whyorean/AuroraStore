@@ -285,7 +285,7 @@
     <string name="google_play_store_desc">Google Play, také známý jako Obchod Google Play a původně jako Android Market.</string>
     <string name="android_market_desc">Android Market byl online obchod se softwarovými aplikacemi navržený pro zařízení Android, který byl ukončen v roce 2017.</string>
     <string name="details_ratings_title_hint">Nadpis recenze</string>
-    <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické a vlastní aktualizace, v hodinách.</string>
+    <string name="pref_updates_check_frequency_desc">Nastavit časové intervaly pro automatické aktualizace, v hodinách.</string>
     <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
     <string name="pref_aurora_only_desc">Kontrolovat pouze aktualizace aplikací nainstalovaných z aplikace Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
@@ -298,10 +298,10 @@
     <string name="pref_vending_version_title">Verze Google Play</string>
     <string name="onboarding_permission_doze">Stahování na pozadí</string>
     <string name="onboarding_permission_doze_desc">Umožnit aplikaci Aurora Store stahovat a aktualizovat aplikace na pozadí</string>
-    <string name="pref_updates_auto">Automaticky aktualizovat aplikace</string>
+    <string name="pref_updates_auto">Automatické aktualizace</string>
     <string name="pref_updates_auto_notify">Kontrolovat a oznamovat dostupné aktualizace</string>
     <string name="pref_updates_auto_off">Neaktualizovat automaticky aplikace</string>
-    <string name="pref_updates_auto_desc">Nastavení chování automatických aktualizací</string>
+    <string name="pref_updates_auto_desc">Nastavit chování automatických aktualizací</string>
     <string name="pref_updates_auto_install">Kontrolovat a automaticky instalovat dostupné aktualizace</string>
     <string name="action_request_analysis">Požádat o novou analýzu</string>
     <string name="failed_apk_export">Nepodařilo se exportovat soubory APK</string>

@@ -286,7 +286,7 @@
     <string name="android_market_desc">Android Market - магазин приложений для устройств под управлением ОС Android, закрытый в 2017 году.</string>
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
     <string name="pref_network_proxy_url">URL прокси</string>
-    <string name="pref_updates_check_frequency_desc">Настроить интервал автоматического и самостоятельного обновления в часах.</string>
+    <string name="pref_updates_check_frequency_desc">Настроить интервал автоматических обновлений, в часах.</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
     <string name="pref_aurora_only_desc">Проверять обновления для приложений, установленных только с Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
@@ -298,7 +298,7 @@
     <string name="pref_vending_version_title">Версия Google Play</string>
     <string name="onboarding_permission_doze">Фоновые загрузки</string>
     <string name="onboarding_permission_doze_desc">Разрешить Aurora Store загружать и обновлять приложения в фоне</string>
-    <string name="pref_updates_auto">Автообновление приложений</string>
+    <string name="pref_updates_auto">Автоматические обновления</string>
     <string name="pref_updates_auto_notify">Проверять доступные обновления и уведомлять о них</string>
     <string name="pref_updates_auto_off">Не обновлять приложения автоматически</string>
     <string name="pref_updates_auto_desc">Настройка поведения автоматических обновлений</string>
@@ -422,4 +422,6 @@
     <string name="details_compatibility_microg">С Проектом microG</string>
     <string name="details_compatibility_no_gms">Без Сервисов Google Play</string>
     <string name="no_apps_available">Нет доступных приложений</string>
+    <string name="pref_network_microg_login_title">Использовать microG для входа в аккаунты</string>
+    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в аккаунты Google для упрощённого процесса входа.</string>
 </resources>

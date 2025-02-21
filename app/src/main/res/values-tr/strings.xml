@@ -298,7 +298,7 @@
     <string name="pref_vending_version_title">Google Play Sürümü</string>
     <string name="onboarding_permission_doze">Arka Plan İndirmeleri</string>
     <string name="onboarding_permission_doze_desc">Aurora Store\'un arka planda uygulamaları indirmesine ve güncellemesine izin ver</string>
-    <string name="pref_updates_auto">Uygulamaları kendiliğinden güncelle</string>
+    <string name="pref_updates_auto">Otomatik güncellemeler</string>
     <string name="pref_updates_auto_notify">Kullanılabilir güncellemeleri denetle ve bildir</string>
     <string name="pref_updates_auto_off">Uygulamalar kendiliğinden güncellenmesin</string>
     <string name="pref_updates_auto_desc">Kendiliğinden güncelleme davranışını yapılandır</string>

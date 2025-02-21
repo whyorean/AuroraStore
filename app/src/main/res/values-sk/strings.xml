@@ -268,7 +268,7 @@
     <string name="toast_fav_import_failed">Nepodarilo sa importovať obľúbené položky!</string>
     <string name="remove_dispenser_summary">Chcete odstrániť dávkovač \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="session_good">Wau! Všetko funguje.</string>
-    <string name="pref_updates_auto">Automaticky aktualizovať aplikácie</string>
+    <string name="pref_updates_auto">Automatické aktualizácie</string>
     <string name="manual_download_hint">Zadajte kód verzie, ktorú chcete stiahnuť</string>
     <string name="action_ignore">Ignorovať</string>
     <string name="action_install">Inštalovať</string>
@@ -422,4 +422,6 @@
     <string name="plexus_progress">Kontrolujem kompatibilitu…</string>
     <string name="no_apps_available">Nie sú k dispozícii žiadne aplikácie</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> nainštalované aplikácie</string>
+    <string name="pref_network_microg_login_title">Na prihlásenie do účtov použite microG</string>
+    <string name="pref_network_microg_login_desc">Pri prihlasovaní do účtov Google sa overte pomocou microG, čím si zjednodušíte prihlasovací proces.</string>
 </resources>

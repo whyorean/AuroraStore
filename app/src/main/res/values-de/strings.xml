@@ -286,7 +286,7 @@
     <string name="android_market_desc">Android Market war ein Online-Store, der Softwareanwendungen für Android-Geräte anbot und 2017 eingestellt wurde.</string>
     <string name="details_ratings_title_hint">Titel bewerten</string>
     <string name="title_app_settings">App-Einstellungen</string>
-    <string name="pref_updates_check_frequency_desc">Konfiguriere die Intervalle (in Stunden) für automatische und selbsttätige Updates.</string>
+    <string name="pref_updates_check_frequency_desc">Zeitintervall (in Stunden) für automatische Updates konfigurieren.</string>
     <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
     <string name="pref_aurora_only_desc">Nur nach Updates für Apps suchen, die von Aurora Store installiert wurden</string>
     <string name="pref_updates_check_frequency">Häufigkeit der automatischen Updates</string>
@@ -298,7 +298,7 @@
     <string name="pref_vending_version_title">Google-Play-Version</string>
     <string name="onboarding_permission_doze">Downloads im Hintergrund</string>
     <string name="onboarding_permission_doze_desc">Aurora Store das Herunterladen und Aktualisieren von Apps im Hintergrund erlauben</string>
-    <string name="pref_updates_auto">Automatisches App-Update</string>
+    <string name="pref_updates_auto">Automatische Updates</string>
     <string name="pref_updates_auto_notify">Bei verfügbaren Updates nur benachrichtigen</string>
     <string name="pref_updates_auto_off">Apps nicht automatisch aktualisieren</string>
     <string name="pref_updates_auto_install">Verfügbare Updates automatisch installieren</string>
