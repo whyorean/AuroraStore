@@ -424,4 +424,13 @@
     <string name="no_apps_available">Nejsou dostupné žádné aplikace</string>
     <string name="pref_network_microg_login_title">Použít microG k přihlášení k účtům</string>
     <string name="pref_network_microg_login_desc">Během přihlašování do účtů Google použít službu microG pro jednodušší proces přihlášení.</string>
+    <string name="set">Nastavit</string>
+    <string name="pref_updates_restrictions_idle">Když je zařízení nečinné</string>
+    <string name="pref_updates_restrictions_battery">Když je baterie dostatečně nabitá</string>
+    <string name="pref_updates_restrictions_title">Omezení automatických aktualizací</string>
+    <string name="pref_network_proxy_desc">Zobrazit a spravovat nastavení proxy</string>
+    <string name="pref_updates_restrictions_desc">Nastavit omezení zařízení pro automatické aktualizace.</string>
+    <string name="disable">Zakázat</string>
+    <string name="toast_proxy_disabled">Síť proxy úspěšně zakázána</string>
+    <string name="pref_updates_restrictions_metered">Pouze na neměřených sítích</string>
 </resources>
