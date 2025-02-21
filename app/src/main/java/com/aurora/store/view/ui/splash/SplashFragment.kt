@@ -29,9 +29,9 @@ import android.os.Looper
 import android.util.Base64
 import android.util.Log
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -240,7 +240,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun navigateToDefaultTab() {
-        val defaultDestination = Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
+        val defaultDestination =
+            Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
         val directions =
             when (requireArguments().getInt("destinationId", defaultDestination)) {
                 R.id.updatesFragment -> {
@@ -263,6 +264,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         } else if (requireActivity().intent != null && requireActivity().intent.action == Intent.ACTION_SEND) {
             val clipData = requireActivity().intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
             UrlQuerySanitizer(clipData).getValue("id") ?: ""
+        } else if (requireActivity().intent != null && requireActivity().intent.extras != null) {
+            requireActivity().intent.extras?.getString("packageName") ?: ""
         } else {
             requireArguments().getString("packageName") ?: ""
         }

@@ -61,6 +61,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.store.AppStreamStash
 import com.aurora.store.AuroraApp
+import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
@@ -87,6 +88,7 @@ import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
+import com.jakewharton.processphoenix.ProcessPhoenix
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
@@ -538,8 +540,16 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 viewModel.download(app)
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
-                    if (it) viewModel.download(app) else {
-                        // TODO: Ask for permission again or redirect to Permission Manager
+                    if (it) {
+                        // Restart the app to ensure all permissions are granted
+                        val intent = Intent(
+                            requireContext(),
+                            MainActivity::class.java
+                        )
+                        // Pass the packageName so we're back to same app
+                        intent.putExtra("packageName", app.packageName)
+
+                        ProcessPhoenix.triggerRebirth(requireContext(), intent)
                     }
                 }
             }
@@ -604,9 +614,13 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.layoutDetailsApp.btnSecondaryAction.isEnabled = true
 
         if (app.isInstalled) {
-            val isUpdatable = PackageUtil.isUpdatable(requireContext(), app.packageName, app.versionCode.toLong())
+            val isUpdatable =
+                PackageUtil.isUpdatable(requireContext(), app.packageName, app.versionCode.toLong())
             val hasValidCert = app.certificateSetList.any {
-                it.certificateSet in CertUtil.getEncodedCertificateHashes(requireContext(), app.packageName)
+                it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                    requireContext(),
+                    app.packageName
+                )
             }
 
             if ((isUpdatable && hasValidCert) || (isUpdatable && isExtendedUpdateEnabled)) {
