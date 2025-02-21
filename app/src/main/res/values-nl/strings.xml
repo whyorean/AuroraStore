@@ -330,8 +330,6 @@
     <string name="details_data_safety_subtitle">Privacy van gegevens en veiligheidstoepassingen verklaard door de ontwikkelaar</string>
     <string name="pref_updates_auto_install">Controleer &amp; installeer beschikbare updates automatisch</string>
     <string name="pref_updates_incompatible">Incompatibele updates</string>
-    <string name="pref_network_proxy_title">Proxy</string>
-    <string name="pref_network_proxy_enable">Proxy aanzetten</string>
     <string name="pref_network_proxy_url">Proxy-URL</string>
     <string name="toast_proxy_success">Proxy succesvol ingesteld</string>
     <string name="pref_vending_version_title">Google Play-versie</string>
@@ -339,7 +337,6 @@
     <string name="notification_channel_export">App-export melding</string>
     <string name="status_downloading">Installeren</string>
     <string name="title_app_settings">App-instellingen</string>
-    <string name="pref_network_proxy_enable_desc">Sta toe dat al het verkeer van de app via de proxy gaat</string>
     <string name="pref_vending_version_device">Standaard (van apparaatconfiguraties)</string>
     <string name="pref_network_proxy_url_message">Voer een geldige proxy-URL in om alle gegevens via de proxy te sturen.</string>
     <string name="title_favourites_manager">Favoriete Apps</string>
