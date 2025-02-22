@@ -37,7 +37,7 @@ import java.util.Calendar
 
 @Composable
 fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hiltViewModel()) {
-    val ctx = LocalContext.current
+    val context = LocalContext.current
     val packages by viewModel.filteredPackages.collectAsStateWithLifecycle()
 
     ScreenContent(
@@ -46,12 +46,12 @@ fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hi
         isPackageBlacklisted = { pkgName -> pkgName in viewModel.blacklist },
         isPackageFiltered = { pkgInfo -> viewModel.isFiltered(pkgInfo) },
         onBlacklistImport = { uri ->
-            viewModel.importBlacklist(ctx, uri)
-            ctx.toast(R.string.toast_black_import_success)
+            viewModel.importBlacklist(context, uri)
+            context.toast(R.string.toast_black_import_success)
         },
         onBlacklistExport = { uri ->
-            viewModel.exportBlacklist(ctx, uri)
-            ctx.toast(R.string.toast_black_export_success)
+            viewModel.exportBlacklist(context, uri)
+            context.toast(R.string.toast_black_export_success)
         },
         onBlacklist = { packageName -> viewModel.blacklist(packageName) },
         onBlacklistAll = { viewModel.blacklistAll() },
@@ -76,17 +76,25 @@ private fun ScreenContent(
     onSearch: (query: String) -> Unit = {}
 ) {
 
-    val ctx = LocalContext.current
+    val context = LocalContext.current
     val docImportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
         onResult = {
-            if (it != null) onBlacklistImport(it) else ctx.toast(R.string.toast_black_import_failed)
+            if (it != null) {
+                onBlacklistImport(it)
+            } else {
+                context.toast(R.string.toast_black_import_failed)
+            }
         }
     )
     val docExportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.CreateDocument(Constants.JSON_MIME_TYPE),
         onResult = {
-            if (it != null) onBlacklistExport(it) else ctx.toast(R.string.toast_black_export_failed)
+            if (it != null) {
+                onBlacklistExport(it)
+            } else {
+                context.toast(R.string.toast_black_export_failed)
+            }
         }
     )
 
@@ -129,8 +137,8 @@ private fun ScreenContent(
                 val isBlacklisted = isPackageBlacklisted(pkg.packageName)
                 val isFiltered = isPackageFiltered(pkg)
                 BlackListComposable(
-                    icon = PackageUtil.getIconForPackage(ctx, pkg.packageName)!!,
-                    displayName = pkg.applicationInfo!!.loadLabel(ctx.packageManager).toString(),
+                    icon = PackageUtil.getIconForPackage(context, pkg.packageName)!!,
+                    displayName = pkg.applicationInfo!!.loadLabel(context.packageManager).toString(),
                     packageName = pkg.packageName,
                     versionName = pkg.versionName!!,
                     versionCode = PackageInfoCompat.getLongVersionCode(pkg),
