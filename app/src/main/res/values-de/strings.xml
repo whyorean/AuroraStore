@@ -424,4 +424,13 @@
     <string name="no_apps_available">Keine Apps verfügbar</string>
     <string name="pref_network_microg_login_title">microG zur Anmeldung bei Konten verwenden</string>
     <string name="pref_network_microg_login_desc">Um den Anmeldevorgang bei Google-Konten zu vereinfachen, authentifiziere dich dort mit microG.</string>
+    <string name="set">Übernehmen</string>
+    <string name="toast_proxy_disabled">Proxy erfolgreich deaktiviert</string>
+    <string name="pref_network_proxy_desc">Proxy-Konfiguration anzeigen und verwalten</string>
+    <string name="pref_updates_restrictions_title">Einschränkungen für automatische Updates</string>
+    <string name="pref_updates_restrictions_idle">Wenn das Gerät inaktiv ist</string>
+    <string name="pref_updates_restrictions_metered">Nur in nicht getakteten Netzen</string>
+    <string name="pref_updates_restrictions_desc">Konfigurieren von Geräteeinschränkungen für automatische Updates.</string>
+    <string name="disable">Deaktivieren</string>
+    <string name="pref_updates_restrictions_battery">Wenn der Akku nicht schwach ist</string>
 </resources>
