@@ -16,6 +16,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.aurora.store.R
 
 /**
  * A top app bar composable to be used with Scaffold in different Screen
@@ -43,5 +45,14 @@ fun TopAppBarComposable(
             }
         },
         actions = actions
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TopAppBarComposablePreview() {
+    TopAppBarComposable(
+        title = R.string.title_about,
+        onNavigateUp = {}
     )
 }
