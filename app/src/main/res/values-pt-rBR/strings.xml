@@ -307,7 +307,7 @@
     <string name="failed_apk_export">Falha ao exportar APKs</string>
     <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
     <string name="pref_updates_incompatible_desc">Mostrar atualizações para apps incompatíveis ou desativados que podem falhar ao instalar</string>
-    <string name="download_clear_finished">Limpar finalizados</string>
+    <string name="download_clear_finished">Limpar concluídos</string>
     <string name="action_home_screen">Adicionar à Tela inicial</string>
     <string name="root_installer_subtitle">Instalador baseado em shell usando permissões root</string>
     <string name="root_installer_desc">Precisa de privilégios root, suporta todas as versões do Android.</string>
