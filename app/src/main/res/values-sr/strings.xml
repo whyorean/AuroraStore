@@ -448,4 +448,13 @@
     <string name="no_apps_available">Нема доступних апликација</string>
     <string name="pref_network_microg_login_title">Користи microG за пријављивање на налоге</string>
     <string name="pref_network_microg_login_desc">Аутентификација коришћењем microG при пријављивању на Google налоге за једноставнији ток пријављивања.</string>
+    <string name="set">Постави</string>
+    <string name="disable">Онемогући</string>
+    <string name="toast_proxy_disabled">Прокси је успешно онемогућен</string>
+    <string name="pref_network_proxy_desc">Прегледајте и управљајте конфигурацијом проксија</string>
+    <string name="pref_updates_restrictions_desc">Конфигуришите ограничења уређаја за аутоматска ажурирања.</string>
+    <string name="pref_updates_restrictions_metered">Само на мрежама са ограничењем</string>
+    <string name="pref_updates_restrictions_idle">Када је уређај у стању мировања</string>
+    <string name="pref_updates_restrictions_battery">Када батерија није празна</string>
+    <string name="pref_updates_restrictions_title">Ограничења аутоматских ажурирања</string>
 </resources>
