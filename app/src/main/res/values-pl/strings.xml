@@ -418,5 +418,14 @@
     <string name="details_compatibility_gms_not_required_subtitle">Ta aplikacja działa bez zastrzeżonej biblioteki Google. Do prawidłowego działania może jednak wymagać bibliotek innych firm.</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> zainstalowanych aplikacji</string>
     <string name="no_apps_available">Brak dostępnych aplikacji</string>
-    <string name="pref_network_microg_login_title">Użyj microG, aby zalogować się do konta</string>
+    <string name="pref_network_microg_login_title">Użyj microG do logowania się na konto</string>
+    <string name="toast_proxy_disabled">Serwer proxy został wyłączony</string>
+    <string name="disable">Wyłącz</string>
+    <string name="set">Ustaw</string>
+    <string name="pref_updates_restrictions_title">Ograniczenia automatycznych aktualizacji</string>
+    <string name="pref_network_proxy_desc">Wyświetl i zarządzaj konfiguracją serwera proxy</string>
+    <string name="pref_updates_restrictions_desc">Skonfiguruj ograniczenia dla automatycznych aktualizacji.</string>
+    <string name="pref_updates_restrictions_metered">Tylko w sieciach bez limitu</string>
+    <string name="pref_updates_restrictions_idle">Gdy urządzenie jest bezczynne</string>
+    <string name="pref_updates_restrictions_battery">Gdy poziom baterii jest wysoki</string>
 </resources>

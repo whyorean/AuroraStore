@@ -420,4 +420,13 @@
     <string name="no_apps_available">Aucune appli n’est proposée</string>
     <string name="pref_network_microg_login_title">Utiliser microG pour se connecter aux comptes</string>
     <string name="pref_network_microg_login_desc">Authentifiez-vous avec microG lors de la connexion aux comptes Google afin de simplifier le processus de connexion.</string>
+    <string name="set">Définir</string>
+    <string name="disable">Désactiver</string>
+    <string name="toast_proxy_disabled">Le mandataire a été désactivé</string>
+    <string name="pref_network_proxy_desc">Afficher et gérer la configuration du mandataire</string>
+    <string name="pref_updates_restrictions_desc">Configurer les restrictions de l’appareil relatives aux mises à jour automatiques.</string>
+    <string name="pref_updates_restrictions_metered">Seulement sur les réseaux illimités</string>
+    <string name="pref_updates_restrictions_idle">Quand l’appareil est au repos</string>
+    <string name="pref_updates_restrictions_battery">Quand le niveau de la batterie est suffisant</string>
+    <string name="pref_updates_restrictions_title">Restrictions des mises à jour automatiques</string>
 </resources>
