@@ -30,6 +30,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
+import com.aurora.store.R
 
 /**
  * A top app bar composable to be used with Scaffold in different Screen
@@ -92,5 +94,15 @@ fun SearchAppBarComposable(
             }
             actions()
         }
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SearchAppBarComposablePreview() {
+    SearchAppBarComposable(
+        searchHint = R.string.search_hint,
+        onNavigateUp = {},
+        onSearch = {}
     )
 }

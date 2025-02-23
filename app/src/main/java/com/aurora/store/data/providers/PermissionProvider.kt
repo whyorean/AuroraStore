@@ -12,6 +12,7 @@ import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
@@ -73,7 +74,22 @@ class PermissionProvider(private val fragment: Fragment) :
                         if (!isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
                             context.toast(R.string.toast_permission_installer_required)
                         } else {
+                            /**
+                             * I don't know why, but for storage manager permission on Android 11 & 12,
+                             * we need to request both permissions otherwise the permission is not granted,
+                             * even though OS says it is granted.
+                             */
+                            ActivityCompat.requestPermissions(
+                                fragment.requireActivity(),
+                                arrayOf(
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                ),
+                                1
+                            )
+
+                            // TODO: Verify & remove this after testing
                             context.toast(R.string.toast_permission_esm_restart)
+
                             intentLauncher.launch(intent)
                         }
                     } else {

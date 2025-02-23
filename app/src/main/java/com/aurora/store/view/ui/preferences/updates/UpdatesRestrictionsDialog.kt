@@ -45,25 +45,27 @@ class UpdatesRestrictionsDialog : DialogFragment() {
         super.onDestroy()
     }
 
-    private fun setupRestrictions(ctx: Context) {
+    private fun setupRestrictions(context: Context) {
         dialog?.findViewById<MaterialCheckBox>(R.id.checkboxMetered)?.apply {
-            isChecked = Preferences.getBoolean(ctx, PREFERENCES_UPDATES_RESTRICTIONS_METERED, true)
+            isChecked =
+                Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_METERED, true)
             setOnCheckedChangeListener { _, isChecked ->
-                Preferences.putBoolean(ctx, PREFERENCES_UPDATES_RESTRICTIONS_METERED, isChecked)
+                Preferences.putBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_METERED, isChecked)
             }
         }
 
         dialog?.findViewById<MaterialCheckBox>(R.id.checkboxIdle)?.apply {
-            isChecked = Preferences.getBoolean(ctx, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)
+            isChecked = Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)
             setOnCheckedChangeListener { _, isChecked ->
-                Preferences.putBoolean(ctx, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, isChecked)
+                Preferences.putBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, isChecked)
             }
         }
 
         dialog?.findViewById<MaterialCheckBox>(R.id.checkboxBattery)?.apply {
-            isChecked = Preferences.getBoolean(ctx, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, true)
+            isChecked =
+                Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, true)
             setOnCheckedChangeListener { _, isChecked ->
-                Preferences.putBoolean(ctx, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, isChecked)
+                Preferences.putBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, isChecked)
             }
         }
     }
