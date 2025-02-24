@@ -424,4 +424,13 @@
     <string name="no_apps_available">Нет доступных приложений</string>
     <string name="pref_network_microg_login_title">Использовать microG для входа в аккаунты</string>
     <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в аккаунты Google для упрощенного процесса входа.</string>
+    <string name="set">Настроить</string>
+    <string name="disable">Отключить</string>
+    <string name="toast_proxy_disabled">Прокси отключен успешно</string>
+    <string name="pref_network_proxy_desc">Просмотр и управление конфигурацией прокси</string>
+    <string name="pref_updates_restrictions_title">Ограничения автоматического обновления</string>
+    <string name="pref_updates_restrictions_metered">Только в сетях без ограничения трафика</string>
+    <string name="pref_updates_restrictions_idle">Когда устройство не используется</string>
+    <string name="pref_updates_restrictions_desc">Настроить ограничения устройства для автоматических обновлений.</string>
+    <string name="pref_updates_restrictions_battery">Когда батарея не разряжена</string>
 </resources>
