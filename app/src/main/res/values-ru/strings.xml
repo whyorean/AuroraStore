@@ -423,5 +423,5 @@
     <string name="details_compatibility_no_gms">Без Сервисов Google Play</string>
     <string name="no_apps_available">Нет доступных приложений</string>
     <string name="pref_network_microg_login_title">Использовать microG для входа в аккаунты</string>
-    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в аккаунты Google для упрощённого процесса входа.</string>
+    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в аккаунты Google для упрощенного процесса входа.</string>
 </resources>
