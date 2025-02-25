@@ -44,6 +44,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.security.DigestInputStream
 import java.security.MessageDigest
+import kotlin.coroutines.cancellation.CancellationException
 import kotlin.properties.Delegates
 import com.aurora.gplayapi.data.models.File as GPlayFile
 
@@ -98,7 +99,7 @@ class DownloadWorker @AssistedInject constructor(
             icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to parse download data", exception)
-            onFailure()
+            onFailure(exception)
             return Result.failure()
         }
 
@@ -109,9 +110,10 @@ class DownloadWorker @AssistedInject constructor(
         download.fileList = download.fileList.ifEmpty {
             purchase(download.packageName, download.versionCode, download.offerType)
         }
+
         if (download.fileList.isEmpty()) {
             Log.i(TAG, "Nothing to download!")
-            onFailure(appContext.getString(R.string.purchase_failed))
+            onFailure()
             return Result.failure()
         }
 
@@ -153,14 +155,16 @@ class DownloadWorker @AssistedInject constructor(
                 .onFailure {
                     Log.e(TAG, "Failed to download ${download.packageName}", it)
                     downloading = false
-                    onFailure()
+
+                    onFailure(it as Exception)
+
                     return Result.failure()
                 }
             while (downloading) {
                 delay(1000)
                 val d = downloadDao.getDownload(download.packageName)
                 if (isStopped || d.downloadStatus == DownloadStatus.CANCELLED) {
-                    onFailure()
+                    onFailure(CancellationException())
                     break
                 }
             }
@@ -173,7 +177,7 @@ class DownloadWorker @AssistedInject constructor(
             requestList.forEach { require(verifyFile(it)) }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify downloaded files!", exception)
-            onFailure()
+            onFailure(exception)
             return Result.failure()
         }
 
@@ -195,18 +199,22 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun onFailure(errorMessage: String? = null, exception: Exception? = null) {
+    private suspend fun onFailure(exception: Exception = Exception("Something went wrong!")) {
         withContext(NonCancellable) {
             Log.i(TAG, "Failed downloading ${download.packageName}")
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
             if (isSAndAbove && stopReason in cancelReasons) {
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
-                notifyStatus(DownloadStatus.FAILED)
-                AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
-                    extra = errorMessage ?: appContext.getString(R.string.download_failed)
-                    error = exception?.stackTraceToString() ?: String()
-                })
+                if (exception is CancellationException) {
+                    notifyStatus(DownloadStatus.CANCELLED)
+                } else {
+                    notifyStatus(DownloadStatus.FAILED)
+                    AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
+                        extra = exception.message ?: appContext.getString(R.string.download_failed)
+                        error = exception.stackTraceToString()
+                    })
+                }
             }
 
             notificationManager.cancel(NOTIFICATION_ID)
