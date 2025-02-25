@@ -65,12 +65,11 @@ class DownloadWorker @AssistedInject constructor(
 ) : AuthWorker(authProvider, appContext, workerParams) {
 
     private lateinit var download: Download
-    private lateinit var icon: Bitmap
 
     private val notificationManager = appContext.getSystemService<NotificationManager>()!!
 
-    private val NOTIFICATION_ID = 200
-
+    private var notificationId: Int = 200
+    private var icon: Bitmap? = null
     private var downloading = false
     private var totalBytes by Delegates.notNull<Long>()
     private var totalProgress = 0
@@ -90,13 +89,18 @@ class DownloadWorker @AssistedInject constructor(
 
         // Fetch required data for download
         try {
-            val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
-            download = downloadDao.getDownload(packageName!!)
+            val packageName =
+                inputData.getString(DownloadHelper.PACKAGE_NAME) ?: return Result.failure()
 
-            val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
-                (httpClient as HttpClient).call(download.iconURL).body!!.byteStream()
-            })
-            icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
+            notificationId = packageName.hashCode()
+            download = downloadDao.getDownload(packageName)
+
+            val response = (httpClient as HttpClient).call(download.iconURL).body
+            if (response != null) {
+                val bitmap =
+                    BitmapFactory.decodeStream(withContext(Dispatchers.IO) { response.byteStream() })
+                icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
+            }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to parse download data", exception)
             onFailure(exception)
@@ -217,7 +221,7 @@ class DownloadWorker @AssistedInject constructor(
                 }
             }
 
-            notificationManager.cancel(NOTIFICATION_ID)
+            notificationManager.cancel(notificationId)
         }
     }
 
@@ -318,6 +322,7 @@ class DownloadWorker @AssistedInject constructor(
                     this.speed = downloadInfo.speed
                     this.timeRemaining = bytesRemaining / speed * 1000
                 }
+
                 downloadDao.updateProgress(
                     download.packageName,
                     download.progress,
@@ -325,7 +330,7 @@ class DownloadWorker @AssistedInject constructor(
                     download.timeRemaining
                 )
 
-                notifyStatus(DownloadStatus.DOWNLOADING, NOTIFICATION_ID)
+                notifyStatus(DownloadStatus.DOWNLOADING)
                 totalProgress = progress
             }
         }
@@ -339,9 +344,9 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         return if (isQAndAbove) {
-            ForegroundInfo(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+            ForegroundInfo(notificationId, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
         } else {
-            ForegroundInfo(NOTIFICATION_ID, notification)
+            ForegroundInfo(notificationId, notification)
         }
     }
 
@@ -350,7 +355,7 @@ class DownloadWorker @AssistedInject constructor(
      * @param status Current [DownloadStatus]
      * @param dID ID of the notification, defaults to hashCode of the download's packageName
      */
-    private suspend fun notifyStatus(status: DownloadStatus, dID: Int = -1) {
+    private suspend fun notifyStatus(status: DownloadStatus) {
         // Update status in database
         download.downloadStatus = status
         downloadDao.updateStatus(download.packageName, status)
@@ -369,8 +374,7 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         val notification = NotificationUtil.getDownloadNotification(appContext, download, id, icon)
-        val notificationID = if (dID != -1) dID else download.packageName.hashCode()
-        notificationManager.notify(notificationID, notification)
+        notificationManager.notify(notificationId, notification)
     }
 
     /**
