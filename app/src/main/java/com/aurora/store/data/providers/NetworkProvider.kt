@@ -20,20 +20,22 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.Network
-import android.os.Build
-import androidx.annotation.RequiresApi
+import android.net.NetworkRequest
 import androidx.core.content.getSystemService
+import com.aurora.extensions.isMAndAbove
+import com.aurora.extensions.isNAndAbove
 import com.aurora.store.data.model.NetworkStatus
+import com.aurora.store.data.receiver.NetworkBroadcastReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.launch
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * A simple provider with a flow to observe internet connectivity changes
@@ -41,26 +43,43 @@ import kotlinx.coroutines.launch
 @Singleton
 class NetworkProvider @Inject constructor(@ApplicationContext private val context: Context) {
 
-    private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
+    private val connectivityManager =
+        context.getSystemService<ConnectivityManager>() as ConnectivityManager
 
-    @get:RequiresApi(Build.VERSION_CODES.N)
     val status: Flow<NetworkStatus>
-        get() {
-            return callbackFlow {
+        get() = callbackFlow {
+            if (isMAndAbove) {
                 val networkCallback = object : ConnectivityManager.NetworkCallback() {
                     override fun onAvailable(network: Network) {
-                        super.onAvailable(network)
-                        launch { send(NetworkStatus.AVAILABLE) }
+                        trySend(NetworkStatus.AVAILABLE).isSuccess
                     }
 
                     override fun onLost(network: Network) {
-                        super.onLost(network)
-                        launch { send(NetworkStatus.UNAVAILABLE) }
+                        trySend(NetworkStatus.UNAVAILABLE).isSuccess
                     }
                 }
 
-                connectivityManager.registerDefaultNetworkCallback(networkCallback)
+                if (isNAndAbove) {
+                    connectivityManager.registerDefaultNetworkCallback(networkCallback)
+                } else {
+                    connectivityManager.registerNetworkCallback(
+                        NetworkRequest.Builder().build(),
+                        networkCallback
+                    )
+                }
+
                 awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
-            }.distinctUntilChanged()
-        }
+            } else {
+                val receiver = NetworkBroadcastReceiver { isConnected ->
+                    trySend(if (isConnected) NetworkStatus.AVAILABLE else NetworkStatus.UNAVAILABLE).isSuccess
+                }
+
+                context.registerReceiver(
+                    receiver,
+                    IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+                )
+
+                awaitClose { context.unregisterReceiver(receiver) }
+            }
+        }.distinctUntilChanged()
 }

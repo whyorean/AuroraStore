@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        if (isNAndAbove && !PackageUtil.isTv(this)) {
+        if (!PackageUtil.isTv(this)) {
             viewModel.networkProvider.status.onEach { networkStatus ->
                 when (networkStatus) {
                     NetworkStatus.AVAILABLE -> {
