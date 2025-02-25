@@ -358,6 +358,7 @@ class DownloadWorker @AssistedInject constructor(
         when (status) {
             DownloadStatus.VERIFYING,
             DownloadStatus.CANCELLED -> return
+
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
                 download.progress = 100
@@ -379,20 +380,28 @@ class DownloadWorker @AssistedInject constructor(
     @OptIn(ExperimentalStdlibApi::class)
     private suspend fun verifyFile(gFile: GPlayFile): Boolean {
         val file = PathUtil.getLocalFile(appContext, gFile, download)
+
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
         val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256
 
+        if (expectedSha.isBlank()) return false
+
         return withContext(Dispatchers.IO) {
-            val messageDigest = MessageDigest.getInstance(algorithm.value)
-            DigestInputStream(file.inputStream(), messageDigest).use { input ->
-                val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-                var read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
-                while (read > -1) {
-                    read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
+            try {
+                val messageDigest = MessageDigest.getInstance(algorithm.value)
+                file.inputStream().use { fis ->
+                    DigestInputStream(fis, messageDigest).use { dis ->
+                        val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                        while (dis.read(buffer) != -1) { /* Just read, digest updates automatically */
+                        }
+                    }
                 }
+
+                messageDigest.digest().toHexString() == expectedSha
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to verify $file", e)
+                false
             }
-            val sha = messageDigest.digest().toHexString()
-            return@withContext sha == expectedSha
         }
     }
 }
