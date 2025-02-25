@@ -137,6 +137,9 @@
         <deepLink
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/search?q={query}" />
+        <action
+            android:id="@+id/action_searchSuggestionFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment"
