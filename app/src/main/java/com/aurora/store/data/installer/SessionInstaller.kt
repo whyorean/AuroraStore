@@ -93,23 +93,31 @@ class SessionInstaller @Inject constructor(
         }
 
         override fun onFinished(sessionId: Int, success: Boolean) {
-            enqueuedSessions.find { set -> set.any { it.sessionId == sessionId } }
-                ?.let { sessionSet ->
-                    sessionSet.remove(sessionSet.first { it.sessionId == sessionId })
+            val sessionSet =
+                enqueuedSessions.find { it.any { session -> session.sessionId == sessionId } }
+                    ?: return
 
-                    // If this was a shared lib, proceed installing other libs or actual package
-                    if (sessionSet.isNotEmpty() && success) {
-                        commitInstall(sessionSet.first()); return
-                    } else {
-                        enqueuedSessions.remove(sessionSet)
-                    }
-                }
+            // Find session safely, if not found return
+            val sessionToRemove = sessionSet.firstOrNull { it.sessionId == sessionId } ?: return
 
-            if (enqueuedSessions.isNotEmpty()) {
-                enqueuedSessions.firstOrNull()?.let { sessionSet ->
-                    commitInstall(sessionSet.first())
+            // Remove the session safely
+            sessionSet.remove(sessionToRemove)
+
+            if (success && sessionSet.isNotEmpty()) {
+                commitInstall(sessionSet.first()) // Proceed with next session (shared lib), if any
+                return
+            }
+
+            // Manually remove empty sets using iterator (for API 21 support)
+            val iterator = enqueuedSessions.iterator()
+            while (iterator.hasNext()) {
+                if (iterator.next().isEmpty()) {
+                    iterator.remove()
                 }
             }
+
+            // Proceed with the next available session
+            enqueuedSessions.firstOrNull()?.firstOrNull()?.let(::commitInstall)
         }
     }
 
@@ -233,9 +241,25 @@ class SessionInstaller @Inject constructor(
 
     private fun commitInstall(sessionInfo: SessionInfo) {
         Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
-        val session = packageInstaller.openSession(sessionInfo.sessionId)
-        session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
-        session.close()
+
+        val sessionId = sessionInfo.sessionId
+        packageInstaller.getSessionInfo(sessionId) ?: run {
+            Log.e(TAG, "Session $sessionId is no longer valid, skipping commit.")
+            removeFromInstallQueue(sessionInfo.packageName)
+            return
+        }
+
+        try {
+            val session = packageInstaller.openSession(sessionId)
+            session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
+            session.close()
+        } catch (e: SecurityException) {
+            Log.e(TAG, "Failed to commit session $sessionId: ${e.message}")
+            removeFromInstallQueue(sessionInfo.packageName)
+        } catch (e: Exception) {
+            Log.e(TAG, "Unexpected error in commitInstall for session $sessionId", e)
+            removeFromInstallQueue(sessionInfo.packageName)
+        }
     }
 
     private fun getCallBackIntent(sessionInfo: SessionInfo): PendingIntent? {
