@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="about_wiki_title">Вікі</string>
-    <string name="about_wiki_summary">Знайдзіце адказы на частыя пытанні (Ч.П.), непаладакі і шмат іншага</string>
+    <string name="about_wiki_summary">Знайдзіце адказы на частыя пытанні (Ч.П.), непаладкі і шмат іншага</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bhim_summary">Ахвяраваць праз UPI</string>
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
@@ -17,7 +17,7 @@
     <string name="about_telegram">Telegram</string>
     <string name="about_telegram_summary">Далучыцца да суполкі Aurora Support для абмеркавання альбо прапаноў.</string>
     <string name="about_xda">Форумы XDA</string>
-    <string name="about_xda_summary">Праглядзець абмеркаванне ў Aurora Store XDA.</string>
+    <string name="about_xda_summary">Праглядзець абмеркаванне ў гутарцы Aurora Store на XDA.</string>
     <string name="account_login_using">Увайсці з дапамогаю</string>
     <string name="account_logout">Выйсці з Aurora</string>
     <string name="action_back">Вярнуцца</string>
