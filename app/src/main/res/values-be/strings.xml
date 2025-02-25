@@ -235,7 +235,7 @@
     <string name="details_data_safety_subtitle">Інфармацыя аб прыватнасці і бяспецы дадзеных, задэклараваная распрацоўшчыкам</string>
     <string name="download_cancel_all">Скасаваць усё</string>
     <string name="download_clear_finished">Ачысціць завершаныя</string>
-    <string name="download_none">Адсутнічаюць спампоўкі</string>
+    <string name="download_none">Спампоўкі адсутнічаюць</string>
     <string name="download_eta_hrs">засталося %1$d гадзін %2$d хвілін %3$d секунд</string>
     <string name="download_eta_min">засталося %1$d хвілін %2$d секунд</string>
     <string name="download_metadata">Атрыманне метададзеных</string>
