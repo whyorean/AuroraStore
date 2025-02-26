@@ -43,8 +43,7 @@ import javax.inject.Singleton
 @Singleton
 class NetworkProvider @Inject constructor(@ApplicationContext private val context: Context) {
 
-    private val connectivityManager =
-        context.getSystemService<ConnectivityManager>() as ConnectivityManager
+    private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
 
     val status: Flow<NetworkStatus>
         get() = callbackFlow {
@@ -71,9 +70,15 @@ class NetworkProvider @Inject constructor(@ApplicationContext private val contex
                 awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
             } else {
                 val receiver = NetworkBroadcastReceiver { isConnected ->
-                    trySend(if (isConnected) NetworkStatus.AVAILABLE else NetworkStatus.UNAVAILABLE).isSuccess
+                    val status = if (isConnected) {
+                        NetworkStatus.AVAILABLE
+                    } else {
+                        NetworkStatus.UNAVAILABLE
+                    }
+                    trySend(status).isSuccess
                 }
 
+                @Suppress("DEPRECATION")
                 context.registerReceiver(
                     receiver,
                     IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
