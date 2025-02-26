@@ -15,13 +15,14 @@ import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
-import androidx.work.WorkManager
 import com.aurora.Constants
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import java.util.UUID
@@ -88,13 +89,23 @@ object NotificationUtil {
     fun getDownloadNotification(
         context: Context,
         download: AuroraDownload,
-        workID: UUID,
         largeIcon: Bitmap? = null
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
         builder.setContentTitle(download.displayName)
         builder.setContentIntent(getContentIntentForDownloads(context))
         builder.setLargeIcon(largeIcon)
+
+        val cancelIntent = Intent(context, DownloadCancelReceiver::class.java).apply {
+            putExtra(DownloadHelper.PACKAGE_NAME, download.packageName)
+        }
+
+        val pendingCancelIntent = PendingIntent.getBroadcast(
+            context,
+            0,
+            cancelIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
 
         when (download.downloadStatus) {
             DownloadStatus.CANCELLED -> {
@@ -152,7 +163,7 @@ object NotificationUtil {
                     NotificationCompat.Action.Builder(
                         R.drawable.ic_download_cancel,
                         context.getString(R.string.action_cancel),
-                        WorkManager.getInstance(context).createCancelPendingIntent(workID)
+                        pendingCancelIntent
                     ).build()
                 )
             }
