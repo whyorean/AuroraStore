@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Aurora OSS
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 package com.aurora.store.data.work
 
 import android.app.NotificationManager
@@ -38,7 +44,6 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
@@ -70,27 +75,32 @@ class DownloadWorker @AssistedInject constructor(
 
     private var notificationId: Int = 200
     private var icon: Bitmap? = null
-    private var downloading = false
     private var totalBytes by Delegates.notNull<Long>()
     private var totalProgress = 0
     private var downloadedBytes = 0L
 
     private val TAG = DownloadWorker::class.java.simpleName
 
+    object Exceptions {
+        val InvalidAuthDataException = Exception("AuthData is invalid")
+        val NoPackageNameException = Exception("No packagename provided")
+        val NothingToDownloadException = Exception("Failed to purchase app")
+        val DownloadFailedException = Exception("Download was failed or cancelled")
+        val VerificationFailedException = Exception("Verification of downloaded files failed")
+    }
+
     override suspend fun doWork(): Result {
         super.doWork()
 
         // Bail out immediately if authData is not valid
-        if (!authProvider.isSavedAuthDataValid()) {
-            Log.e(TAG, "AuthData is not valid, exiting!")
-            onFailure()
-            return Result.failure()
-        }
+        if (!authProvider.isSavedAuthDataValid()) return onFailure(Exceptions.InvalidAuthDataException)
 
         // Fetch required data for download
         try {
-            val packageName =
-                inputData.getString(DownloadHelper.PACKAGE_NAME) ?: return Result.failure()
+            val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
+
+            // Bail out if no package name is provided
+            if (packageName.isNullOrBlank()) return onFailure(Exceptions.NoPackageNameException)
 
             notificationId = packageName.hashCode()
             download = downloadDao.getDownload(packageName)
@@ -102,110 +112,131 @@ class DownloadWorker @AssistedInject constructor(
                 icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
             }
         } catch (exception: Exception) {
-            Log.e(TAG, "Failed to parse download data", exception)
-            onFailure(exception)
-            return Result.failure()
+            return onFailure(exception)
         }
 
         // Set work/service to foreground on < Android 12.0
         setForeground(getForegroundInfo())
 
-        // Bail out if file list is empty
+        // Try to purchase the app if file list is empty
         download.fileList = download.fileList.ifEmpty {
             purchase(download.packageName, download.versionCode, download.offerType)
         }
 
-        if (download.fileList.isEmpty()) {
-            Log.i(TAG, "Nothing to download!")
-            onFailure()
-            return Result.failure()
-        }
+        // Bail out if file list is empty after purchase
+        if (download.fileList.isEmpty()) return onFailure(Exceptions.NothingToDownloadException)
 
         // Create dirs & generate download request for files and shared libs (if any)
         PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
+
+        // Create OBB dir if required
         if (download.fileList.requiresObbDir()) {
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
-        // Purchase the app (free apps needs to be purchased too)
-        val requestList = mutableListOf<GPlayFile>()
+        val files = mutableListOf<GPlayFile>()
+
+        // Check if shared libs are present, if yes, handle them first
         if (download.sharedLibs.isNotEmpty()) {
             download.sharedLibs.forEach {
+                // Create shared lib download dir
                 PathUtil.getLibDownloadDir(
                     appContext,
                     download.packageName,
                     download.versionCode,
                     it.packageName
                 ).mkdirs()
-                it.fileList = it.fileList.ifEmpty { purchase(it.packageName, it.versionCode, 0) }
-                requestList.addAll(it.fileList)
+
+                // Purchase shared lib if file list is empty
+                it.fileList = it.fileList.ifEmpty {
+                    purchase(it.packageName, it.versionCode, 0)
+                }
+                files.addAll(it.fileList)
             }
         }
-        requestList.addAll(download.fileList)
+        files.addAll(download.fileList)
 
         // Update data for notification
-        download.totalFiles = requestList.size
-        totalBytes = requestList.sumOf { it.size }
+        download.totalFiles = files.size
+        totalBytes = files.sumOf { it.size }
 
         // Update database with all latest purchases
         downloadDao.updateFiles(download.packageName, download.fileList)
         downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
-        // Download and verify all files exists
-        requestList.forEach { request ->
-            downloading = true
-            runCatching { downloadFile(request); download.downloadedFiles++ }
-                .onSuccess { downloading = false }
-                .onFailure {
-                    Log.e(TAG, "Failed to download ${download.packageName}", it)
-                    downloading = false
+        // Download files
+        val downloadSuccess = downloadFiles(download.packageName, files)
 
-                    onFailure(it as Exception)
+        // Report failure if download was stopped or failed
+        if (!downloadSuccess || isStopped) return onFailure(Exceptions.DownloadFailedException)
 
-                    return Result.failure()
-                }
-            while (downloading) {
-                delay(1000)
-                val d = downloadDao.getDownload(download.packageName)
-                if (isStopped || d.downloadStatus == DownloadStatus.CANCELLED) {
-                    onFailure(CancellationException())
-                    break
-                }
-            }
-        }
+        // Verify downloaded files
+        val verifySuccess = verifyFiles(download.packageName, files)
 
-        try {
-            // Verify all downloaded files
-            Log.i(TAG, "Verifying downloaded files")
-            notifyStatus(DownloadStatus.VERIFYING)
-            requestList.forEach { require(verifyFile(it)) }
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to verify downloaded files!", exception)
-            onFailure(exception)
-            return Result.failure()
-        }
+        // Report failure if verification failed
+        if (!verifySuccess || isStopped) return onFailure(Exceptions.VerificationFailedException)
 
-        // Mark download as completed
-        onSuccess()
-        return Result.success()
+        Log.i(TAG, "Finished downloading & verifying ${download.packageName}")
+        notifyStatus(DownloadStatus.COMPLETED)
+
+        return onSuccess()
     }
 
-    private suspend fun onSuccess() {
-        withContext(NonCancellable) {
-            Log.i(TAG, "Finished downloading ${download.packageName}")
-            notifyStatus(DownloadStatus.COMPLETED)
-
+    private suspend fun downloadFiles(
+        packageName: String,
+        files: List<GPlayFile>
+    ): Boolean = withContext(Dispatchers.IO) {
+        for (file in files) {
             try {
-                appInstaller.getPreferredInstaller().install(download)
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to install ${download.packageName}", exception)
+                downloadFile(file)
+
+                if (isStopped) {
+                    Log.w(TAG, "Download cancelled for $packageName")
+                    return@withContext false
+                }
+
+                download.downloadedFiles++
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to download $packageName", e)
+                return@withContext false
             }
+        }
+
+        true
+    }
+
+    private suspend fun verifyFiles(
+        packageName: String,
+        files: List<GPlayFile>
+    ): Boolean = withContext(NonCancellable) {
+        notifyStatus(DownloadStatus.VERIFYING)
+
+        for (file in files) {
+            try {
+                verifyFile(file)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to verify $packageName : ${file.name}", e)
+                return@withContext false
+            }
+        }
+
+        true
+    }
+
+    private suspend fun onSuccess(): Result = withContext(NonCancellable) {
+        return@withContext try {
+            appInstaller.getPreferredInstaller().install(download)
+            Result.success()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to install ${download.packageName}", exception)
+            onFailure(exception)
         }
     }
 
-    private suspend fun onFailure(exception: Exception = Exception("Something went wrong!")) {
+    private suspend fun onFailure(exception: Exception = Exception("Something went wrong!")): Result =
         withContext(NonCancellable) {
-            Log.i(TAG, "Failed downloading ${download.packageName}")
+            Log.e(TAG, "Job failed: ${download.packageName}", exception)
+
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
             if (isSAndAbove && stopReason in cancelReasons) {
                 notifyStatus(DownloadStatus.CANCELLED)
@@ -221,9 +252,11 @@ class DownloadWorker @AssistedInject constructor(
                 }
             }
 
+            // Remove all notifications
             notificationManager.cancel(notificationId)
+
+            return@withContext Result.failure()
         }
-    }
 
     /**
      * Purchases the app to get the download URL of the required files
@@ -258,6 +291,7 @@ class DownloadWorker @AssistedInject constructor(
      * @return A [Result] indicating whether the file was downloaded or not.
      */
     private suspend fun downloadFile(gFile: GPlayFile): Result {
+        Log.i(TAG, "Downloading ${gFile.name}")
         return withContext(Dispatchers.IO) {
             val file = PathUtil.getLocalFile(appContext, gFile, download)
 
@@ -338,7 +372,7 @@ class DownloadWorker @AssistedInject constructor(
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
         val notification = if (this::download.isInitialized) {
-            NotificationUtil.getDownloadNotification(appContext, download, id, icon)
+            NotificationUtil.getDownloadNotification(appContext, download, icon)
         } else {
             NotificationUtil.getDownloadNotification(appContext)
         }
@@ -353,7 +387,6 @@ class DownloadWorker @AssistedInject constructor(
     /**
      * Notifies the user of the current status of the download.
      * @param status Current [DownloadStatus]
-     * @param dID ID of the notification, defaults to hashCode of the download's packageName
      */
     private suspend fun notifyStatus(status: DownloadStatus) {
         // Update status in database
@@ -373,7 +406,7 @@ class DownloadWorker @AssistedInject constructor(
             else -> {}
         }
 
-        val notification = NotificationUtil.getDownloadNotification(appContext, download, id, icon)
+        val notification = NotificationUtil.getDownloadNotification(appContext, download, icon)
         notificationManager.notify(notificationId, notification)
     }
 
@@ -384,6 +417,7 @@ class DownloadWorker @AssistedInject constructor(
     @OptIn(ExperimentalStdlibApi::class)
     private suspend fun verifyFile(gFile: GPlayFile): Boolean {
         val file = PathUtil.getLocalFile(appContext, gFile, download)
+        Log.i(TAG, "Verifying $file")
 
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
         val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256

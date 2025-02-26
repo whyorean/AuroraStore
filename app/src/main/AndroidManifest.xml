@@ -160,6 +160,11 @@
             android:name=".data.receiver.InstallerStatusReceiver"
             android:exported="false" />
 
+        <!-- Cancel Download Receiver-->
+        <receiver
+            android:name=".data.receiver.DownloadCancelReceiver"
+            android:exported="false" />
+
         <!-- SessionInstaller (as device owner) -->
         <receiver
             android:name=".data.receiver.DeviceOwnerReceiver"
