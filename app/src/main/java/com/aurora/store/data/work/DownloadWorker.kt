@@ -344,17 +344,26 @@ class DownloadWorker @AssistedInject constructor(
         if (!isStopped && !download.isFinished) {
             downloadedBytes += downloadInfo.bytesCopied
 
-            val progress = (downloadedBytes * 100 / totalBytes).toInt()
+            val progress = ((downloadedBytes * 100L) / totalBytes).toInt()
             val bytesRemaining = totalBytes - downloadedBytes
-            val speed = if (downloadInfo.speed == 0L) 1 else downloadInfo.speed
+            val speed = if (downloadInfo.speed == 0L) 1L else downloadInfo.speed
+
+            // Consider a 10% change in speed
+            val speedChanged = if (download.speed > 0) {
+                val speedDifference = kotlin.math.abs(download.speed - speed)
+                (speedDifference * 100.0 / download.speed) >= 10
+            } else {
+                // If previous speed was zero, any change matters
+                speed != download.speed
+            }
 
             // Individual file progress can be negligible in contrast to total progress
-            // Only notify the UI if progress is greater or speed has changed to avoid being rate-limited by Android
-            if (progress > totalProgress || speed != download.speed) {
+            // Only notify the UI if progress/speed change considerably to avoid being rate-limited by Android
+            if ((progress - totalProgress) >= 5 || speedChanged) {
                 download.apply {
                     this.progress = progress
-                    this.speed = downloadInfo.speed
-                    this.timeRemaining = bytesRemaining / speed * 1000
+                    this.speed = speed
+                    this.timeRemaining = (bytesRemaining / speed) * 1000
                 }
 
                 downloadDao.updateProgress(

@@ -149,7 +149,7 @@ object NotificationUtil {
                     } else {
                         context.getString(
                             R.string.download_progress,
-                            download.downloadedFiles,
+                            download.downloadedFiles + 1,
                             download.totalFiles,
                             CommonUtil.humanReadableByteSpeed(download.speed, true)
                         )
