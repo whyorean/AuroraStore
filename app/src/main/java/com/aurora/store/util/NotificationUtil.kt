@@ -26,6 +26,7 @@ import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import java.util.UUID
+import kotlin.math.absoluteValue
 import com.aurora.store.data.room.download.Download as AuroraDownload
 
 object NotificationUtil {
@@ -100,11 +101,12 @@ object NotificationUtil {
             putExtra(DownloadHelper.PACKAGE_NAME, download.packageName)
         }
 
-        val pendingCancelIntent = PendingIntent.getBroadcast(
+        val pendingCancelIntent = PendingIntentCompat.getBroadcast(
             context,
-            0,
+            download.packageName.hashCode().absoluteValue,
             cancelIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            false
         )
 
         when (download.downloadStatus) {
