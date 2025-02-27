@@ -372,7 +372,6 @@
     <string name="onboarding_permission_installer_legacy_desc">Installation von Apps aus unbekannten Quellen zulassen</string>
     <string name="item_required">Erforderlich</string>
     <string name="item_optional">Optional</string>
-    <string name="toast_permission_esm_caution">Möglicherweise muss die Berechtigung aufgrund eines Fehlers im Storage Access Framework erneut erteilt werden</string>
     <string name="details_data_safety_title">Datensicherheit</string>
     <string name="details_data_safety_subtitle">Vom Entwickler erklärte Datenschutz- und Sicherheitspraktiken</string>
     <string name="toast_permission_installer_required">Du musst zuerst die Installer-Berechtigung erteilen</string>
@@ -396,7 +395,6 @@
     <string name="made_with_love">Hergestellt mit <xliff:g id="heart_emoji">%1$s</xliff:g> in Indien</string>
     <string name="default_spoof">Standard</string>
     <string name="available_spoof">Verfügbar</string>
-    <string name="toast_permission_esm_restart">Möglicherweise muss die App neu gestartet werden, damit die Berechtigung übernommen wird.</string>
     <string name="action_remove_all">Alles entfernen</string>
     <string name="action_select_all">Alles auswählen</string>
     <string name="toast_black_export_failed">Exportieren der Sperrliste fehlgeschlagen!</string>

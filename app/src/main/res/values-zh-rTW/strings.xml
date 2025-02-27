@@ -339,7 +339,6 @@
     <string name="details_data_safety_title">資料安全</string>
     <string name="onboarding_permission_installer_legacy_desc">允許安裝來自未知來源的應用程式</string>
     <string name="toast_permission_installer_required">您需要先授予安裝程式權限</string>
-    <string name="toast_permission_esm_caution">由於儲存存取框架 (Storage Access Framework) 的問題，您可能需要重新授予權限</string>
     <string name="toast_fav_import_failed">無法匯入我的最愛！</string>
     <string name="toast_fav_export_failed">匯出我的最愛失敗！</string>
     <string name="toast_fav_import_success">已匯入我的最愛！</string>

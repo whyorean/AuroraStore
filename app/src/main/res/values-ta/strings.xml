@@ -250,8 +250,6 @@
     <string name="title_about">பற்றி</string>
     <string name="title_favourites_manager">பிடித்த பயன்பாடுகள்</string>
     <string name="toast_app_unavailable">உங்கள் சாதனத்திற்கு பயன்பாடு கிடைக்கவில்லை</string>
-    <string name="toast_permission_esm_caution">சேமிப்பக அணுகல் கட்டமைப்பில் பிழை காரணமாக நீங்கள் அனுமதியை மீண்டும் வழங்க வேண்டியிருக்கும்</string>
-    <string name="toast_permission_esm_restart">இசைவு மானியத்தை பிரதிபலிக்க நீங்கள் பயன்பாட்டை மறுதொடக்கம் செய்ய வேண்டியிருக்கும்.</string>
     <string name="toast_proxy_invalid">தவறான பதிலாள் முகவரி, வடிவத்தை சரிபார்க்கவும்!</string>
     <string name="toast_proxy_success">பதிலாள் வெற்றிகரமாக அமைக்கப்படுகிறது</string>
     <string name="item_optional">விரும்பினால்</string>

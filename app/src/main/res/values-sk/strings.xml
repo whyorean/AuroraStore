@@ -205,7 +205,6 @@
     <string name="title_apps_library">Aplikácie v knižnici</string>
     <string name="title_installer">Inštalačný program aplikácie</string>
     <string name="toast_permission_installer_required">Najprv musíte udeliť povolenie inštalátorovi</string>
-    <string name="toast_permission_esm_caution">Možno budete musieť znova udeliť povolenie kvôli chybe v prístupe úložiska</string>
     <string name="item_required">Požadované</string>
     <string name="item_optional">Voliteľné</string>
     <string name="server_maintenance">Server je mimo prevádzky z dôvodu údržby</string>
@@ -396,7 +395,6 @@
     <string name="made_with_love">Vyrobené s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
     <string name="default_spoof">Predvolené</string>
     <string name="available_spoof">K dispozícií</string>
-    <string name="toast_permission_esm_restart">Možno budete musieť reštartovať aplikáciu, aby odrážal grant.</string>
     <string name="filter_latest">Najnovšia</string>
     <string name="toast_black_import_failed">Nepodarilo sa importovať čiernu listinu!</string>
     <string name="status_verifying">Overujem</string>

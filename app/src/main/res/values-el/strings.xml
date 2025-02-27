@@ -373,7 +373,6 @@
     <string name="details_data_safety_subtitle">Ιδιωτικότητα δεδομένων και πρακτικές ασφάλειες ορισμένες από τον προγραμματιστή</string>
     <string name="onboarding_permission_installer_legacy_desc">Να επιτρέπεται η εγκατάσταση εφαρμογών από άγνωστες πηγές</string>
     <string name="toast_permission_installer_required">Πρέπει να αποδεχτείς την Άδεια Εγκατάστασης πρώτα</string>
-    <string name="toast_permission_esm_caution">ίσως χρειαστεί να τη παραχωρήσεις ξανά εξαιτίας ενός σφάλματος στο Πλαίσιο Πρόσβασης Μνήμης</string>
     <string name="item_required">Απαιτείται</string>
     <string name="item_optional">Προαιρετικό</string>
     <string name="force_restart_title">Επανεκκίνηση Aurora Store</string>

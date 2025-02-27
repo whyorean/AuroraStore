@@ -364,7 +364,6 @@
     <string name="export_app_summary_success">App-pakke eksporteret</string>
     <string name="status_cancelled">Annulleret</string>
     <string name="status_completed">Fuldført</string>
-    <string name="toast_permission_esm_restart">Du skal muligvis genstarte appen før tilladelsen gælder.</string>
     <string name="notification_channel_updates">Meddelelser om opdateringer</string>
     <string name="status_downloading">Henter</string>
     <string name="status_failed">Mislykket</string>
@@ -386,7 +385,6 @@
     <string name="toast_black_export_success">Sortliste eksporteret!</string>
     <string name="toast_black_import_failed">Kunne ikke importere sortliste!</string>
     <string name="toast_black_import_success">Sortliste importeret!</string>
-    <string name="toast_permission_esm_caution">Du skal muligvis give tilladelsen igen grundet en fejl i Storage Access Framework</string>
     <string name="notification_channel_export">Meddelelse om app-eksport</string>
     <string name="notification_channel_install">Installationsmeddelelse</string>
 </resources>

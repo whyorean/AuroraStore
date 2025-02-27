@@ -316,7 +316,6 @@
     <string name="onboarding_permission_installer_legacy_desc">Dovoli namestitev aplikacij iz neznanih virov</string>
     <string name="pref_updates_incompatible">Nezdružljive posodobitve</string>
     <string name="onboarding_permission_doze_desc">Dovoli Aurora Store prenose in posodobitve aplikacij v ozadju</string>
-    <string name="toast_permission_esm_caution">Morda boste morali ponovno odobriti dovoljenje zaradi hrošča v Storage Access Framework-u</string>
     <string name="pref_ui_layout_tab">Izberite privzeti zavihek</string>
     <string name="item_optional">Izbirno</string>
     <string name="download_clear_finished">Počisti končane</string>
@@ -392,7 +391,6 @@
     <string name="no_dispensers_available">Na voljo ni dozirnikov</string>
     <string name="available_spoof">Na voljo</string>
     <string name="default_spoof">Privzeto</string>
-    <string name="toast_permission_esm_restart">Morda boste morali vnovično zagnati aplikacijo za uveljavitev odobrenega dovoljenja.</string>
     <string name="action_remove_all">Odstrani vse</string>
     <string name="action_select_all">Izberi vse</string>
     <string name="filter_latest">Zadnje</string>

@@ -394,9 +394,7 @@
     <string name="toast_fav_import_success">Suosikit tuotu!</string>
     <string name="title_favourites_manager">Suosikkisovellukset</string>
     <string name="toast_proxy_success">Välityspalvelin asetettu onnistuneesti</string>
-    <string name="toast_permission_esm_caution">Saatat joutua myöntämään luvan uudestaan Storage Access Frameworkin bugista johtuen</string>
     <string name="root_installer_subtitle">Komentotulkkipohjainen asentaja root-oikeuksia käyttäen</string>
-    <string name="toast_permission_esm_restart">Saatat joutua uudelleenkäynnistämään sovelluksen lupien muutosten käyttöönottamiseksi.</string>
     <string name="native_installer_subtitle">Aikomuspohjainen asentaja, saatavilla kaikilla laitteilla</string>
     <string name="details_compatibility_title">Yhteensopivuus</string>
     <string name="details_compatibility_status_limited">Rajoitettu: Toimii rajoitetuilla ominaisuuksilla</string>

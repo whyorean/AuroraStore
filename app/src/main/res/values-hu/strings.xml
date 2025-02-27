@@ -344,7 +344,6 @@
     <string name="details_data_safety_subtitle">A fejlesztő által bejelentett adatvédelmi és biztonsági gyakorlatok</string>
     <string name="onboarding_permission_installer_legacy_desc">Ismeretlen forrásból származó alkalmazások telepítésének engedélyezése</string>
     <string name="toast_permission_installer_required">Először adja meg a telepítési engedélyt</string>
-    <string name="toast_permission_esm_caution">Előfordulhat, hogy a Storage Access Framework hibája miatt újra meg kell adnia az engedélyt</string>
     <string name="item_required">Szükséges</string>
     <string name="action_uninstall_success">Sikeresen eltávolítva</string>
     <string name="pref_clear_device_owner_desc">Ez visszavonja a munkamenet-alapú telepítő engedélyét az alkalmazás csendes telepítésére. Folytatja az eszköz tulajdonjogának törlését?</string>
@@ -415,7 +414,6 @@
     <string name="plexus_powered">A Plexus által működtetve</string>
     <string name="toast_black_import_failed">A feketelista importálása sikertelen.</string>
     <string name="filter_latest">Legújabb</string>
-    <string name="toast_permission_esm_restart">Előfordulhat, hogy az engedély megadása után újra kell indítania az alkalmazást.</string>
     <string name="action_unarchive">Archiválás visszavonása</string>
     <string name="details_compatibility_title">Kompatibilitás</string>
 </resources>

@@ -333,7 +333,6 @@
     <string name="pref_network_proxy_url">Proxy-URL</string>
     <string name="toast_proxy_success">Proxy succesvol ingesteld</string>
     <string name="pref_vending_version_title">Google Play-versie</string>
-    <string name="toast_permission_esm_caution">Mogelijk moet je de toestemming opnieuw verlenen vanwege een fout in Storage Access Framework</string>
     <string name="notification_channel_export">App-export melding</string>
     <string name="status_downloading">Installeren</string>
     <string name="title_app_settings">App-instellingen</string>
@@ -341,7 +340,6 @@
     <string name="pref_network_proxy_url_message">Voer een geldige proxy-URL in om alle gegevens via de proxy te sturen.</string>
     <string name="title_favourites_manager">Favoriete Apps</string>
     <string name="toast_proxy_invalid">Ongeldige proxy-URL, controleer indeling!</string>
-    <string name="toast_permission_esm_restart">Mogelijk moet je de app opnieuw opstarten om de verleende toestemming te bevestigen.</string>
     <string name="notification_channel_downloads">Installatiemelding</string>
     <string name="pref_aurora_only">Alleen apps van Aurora Store</string>
     <string name="failed_apk_export">APK\'s exporteren mislukt</string>

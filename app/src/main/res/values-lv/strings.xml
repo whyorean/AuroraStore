@@ -378,7 +378,6 @@
     <string name="force_restart_summary">Aurora Store ir jāpārsāknē, lai pielietotu tikko mainītos iestatījumus</string>
     <string name="action_favourite">Izlasē</string>
     <string name="details_data_safety_subtitle">Izstrādātāja noteikta datu privātuma un drošības prakse</string>
-    <string name="toast_permission_esm_caution">Var būt nepieciešams atkārtoti nodrošināt atļauju krātuves piekļuves ietvara nepilnības dēļ</string>
     <string name="pref_network_proxy_url_message">Jāievada derīgs starpniekservera URL, lai sūtītu visus datus caur to.</string>
     <string name="status_failed">Neizdevās</string>
     <string name="status_unavailable">Nepieejams</string>
@@ -396,7 +395,6 @@
     <string name="made_with_love">Ar <xliff:g id="heart_emoji">%1$s</xliff:g> radīta Indijā</string>
     <string name="default_spoof">Noklusējums</string>
     <string name="available_spoof">Pieejams</string>
-    <string name="toast_permission_esm_restart">Var būt nepieciešams pārsāknēt lietotni, lai atspoguļotu nodrošināto atļauju.</string>
     <string name="action_remove_all">Noņemt visu</string>
     <string name="filter_latest">Jaunākās</string>
     <string name="toast_black_import_failed">Neizdevās ievietot izņēmumus.</string>

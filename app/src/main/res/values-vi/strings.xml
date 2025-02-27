@@ -361,7 +361,6 @@
     <string name="details_data_safety_title">An toàn của dữ liệu</string>
     <string name="title_favourites_manager">Những app yêu thích</string>
     <string name="toast_permission_installer_required">Trước tiên, bạn cần cấp quyền cho phép “Cài đặt ứng dụng\"</string>
-    <string name="toast_permission_esm_caution">Bạn chắc phải cần cấp lại quyền cho phép bởi vì lỗi trong \"Khung truy cập lưu trữ\"</string>
     <string name="item_required">Bắt buộc</string>
     <string name="item_optional">Không bắt buộc</string>
     <string name="details_data_safety_subtitle">Quyền riêng tư của dữ liệu và những thực hành bảo mật được tuyên bố bởi nhà phát triển</string>
@@ -397,7 +396,6 @@
     <string name="action_select_all">Chọn tất cả</string>
     <string name="action_remove_all">Xóa tất cả</string>
     <string name="filter_latest">Mới nhất</string>
-    <string name="toast_permission_esm_restart">Bạn có thể phải khởi động lại ứng dụng để phản ánh việc cấp quyền.</string>
     <string name="toast_black_export_failed">Lỗi khi xuất Danh sách đen!</string>
     <string name="toast_black_import_success">Danh sách đen đã được nhập!</string>
     <string name="toast_black_import_failed">Lỗi khi nhập Danh sách đen!</string>

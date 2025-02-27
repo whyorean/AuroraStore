@@ -370,7 +370,6 @@
     <string name="pref_network_proxy_url_message">输入有效的代理 URL 让所有数据都经过代理。</string>
     <string name="check_updates">检查更新</string>
     <string name="onboarding_permission_installer_legacy_desc">允许从未知来源安装应用</string>
-    <string name="toast_permission_esm_caution">由于存储访问框架的故障，你可能必须重新授予此权限</string>
     <string name="item_required">必需的</string>
     <string name="item_optional">可选</string>
     <string name="details_data_safety_title">数据安全</string>
@@ -396,7 +395,6 @@
     <string name="made_with_love">印度制作 <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="default_spoof">默认</string>
     <string name="available_spoof">可用</string>
-    <string name="toast_permission_esm_restart">可能必须重启应用权限授予才能生效。</string>
     <string name="action_remove_all">全部删除</string>
     <string name="action_select_all">全选</string>
     <string name="filter_latest">最新</string>

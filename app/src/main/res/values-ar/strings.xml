@@ -375,7 +375,6 @@
     <string name="onboarding_permission_installer_legacy_desc">السماح بتركيب التطبيقات من مصادر مجهولة</string>
     <string name="item_optional">الاختياري</string>
     <string name="toast_permission_installer_required">عليك أن تمنح الإذن بالإنتقال أولاً</string>
-    <string name="toast_permission_esm_caution">قد تضطر إلى إعادة منح الإذن بسبب خطأ في إطار الوصول إلى التخزين</string>
     <string name="force_restart_title">إعادة تشغيل متجر أورورا</string>
     <string name="force_restart_summary">يجب إعادة تشغيل متجر أورورا لتطبيق الإعدادات التي تم تغييرها حديثًا</string>
     <string name="export_app_title">مصدِّر الملفات</string>
@@ -403,7 +402,6 @@
     <string name="toast_black_import_failed">فشل استيراد القائمة السوداء!</string>
     <string name="toast_black_export_success">صُدّرت القائمة السوداء!</string>
     <string name="filter_latest">الأحدث</string>
-    <string name="toast_permission_esm_restart">قد يتعين عليك إعادة تشغيل التطبيق ليعكس منحة الأذونات.</string>
     <string name="status_verifying">جارِ التحقق</string>
     <string name="action_unarchive">إلغاء الأرشفة</string>
     <string name="unable_to_open">غير قادر على فتح التطبيق</string>

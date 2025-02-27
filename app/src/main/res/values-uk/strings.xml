@@ -373,7 +373,6 @@
     <string name="details_data_safety_title">Безпека даних</string>
     <string name="details_data_safety_subtitle">Задекларовані розробником практики приватності та безпеки даних</string>
     <string name="toast_permission_installer_required">Спочатку вам потрібно надати дозвіл на встановлення</string>
-    <string name="toast_permission_esm_caution">Можливо, вам доведеться повторно надати дозвіл через помилку в Storage Access Framework</string>
     <string name="item_required">Необхідний</string>
     <string name="item_optional">Необов\'язковий</string>
     <string name="force_restart_title">Перезапустити Aurora Store</string>
@@ -396,7 +395,6 @@
     <string name="made_with_love">Зроблено з <xliff:g id="heart_emoji">%1$s</xliff:g> в Індії</string>
     <string name="default_spoof">Типово</string>
     <string name="available_spoof">Доступно</string>
-    <string name="toast_permission_esm_restart">Можливо, вам доведеться перезапустити застосунок, щоб показати наданий дозвіл.</string>
     <string name="action_remove_all">Видалити все</string>
     <string name="filter_latest">Останнє</string>
     <string name="toast_black_import_failed">Не вдалося імпортувати чорний список!</string>

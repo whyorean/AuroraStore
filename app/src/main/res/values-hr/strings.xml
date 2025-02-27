@@ -286,7 +286,6 @@
     <string name="status_completed">Završeno</string>
     <string name="onboarding_permission_doze">Preuzimanja u pozadini</string>
     <string name="onboarding_permission_doze_desc">Dozvoli Aurora Storeu da preuzima i aktualizira aplikacije u pozadini</string>
-    <string name="toast_permission_esm_restart">Možda ćeš morati ponovo pokrenuti aplikaciju kako bi se odrazilo odobrenje dozvole.</string>
     <string name="pref_dispenser_summary">Pregledaj i upravljaj dozatorima tokena za anonimne prijave</string>
     <string name="no_dispensers_available">Nema dozatora</string>
     <string name="add_dispenser_error">Neispravan URL</string>
@@ -330,7 +329,6 @@
     <string name="toast_app_unavailable">Aplikacija nije dostupna za tvoj uređaj</string>
     <string name="action_select_all">Odaberi sve</string>
     <string name="details_data_safety_subtitle">Prakse privatnosti i sigurnosti podataka koje je proglasio programer</string>
-    <string name="toast_permission_esm_caution">Možda ćeš morati ponovo odobriti dozvole zbog greške u Storage Access Frameworku</string>
     <string name="about_wiki_summary">Pronađi odgovore na često postavljana pitanja (ČPP), korake za rješavanje problema i više</string>
     <string name="pref_clear_device_owner_desc">Ovo će opozvati dozvolu instalera sesije za instaliranje aplikacije u pozadini. Želiš li nastaviti s brisanjem vlasništva nad uređajem?</string>
     <string name="pref_vending_version_device">Zadano (iz konfiguracije uređaja)</string>

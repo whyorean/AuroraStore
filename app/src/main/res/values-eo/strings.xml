@@ -283,7 +283,6 @@
     <string name="toast_permission_granted">Permeso donita</string>
     <string name="toast_permission_installer_required">Vi devas doni la Instalilo-Permeso unue</string>
     <string name="toast_app_unavailable">Apo maldisponebla por via aparato</string>
-    <string name="toast_permission_esm_caution">Vi eble devas redoni la permeson kaŭze de cimo en Storage Access Framework</string>
     <string name="toast_spoof_applied">Aparaton ŝajnigo aktivata.</string>
     <string name="toast_import_failed">Importo de la aparaton agordo fiaskis</string>
     <string name="app_updater_service_notif_title">Fone apon elŝutado</string>

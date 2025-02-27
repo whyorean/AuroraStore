@@ -302,7 +302,6 @@
     <string name="made_with_love">Indian egina honekin: <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="force_restart_summary">Aurora Store berrabiarazi behar da aldatu berri diren ezarpenak aplikatzeko</string>
     <string name="notification_channel_account">Kontuarekin lotutako jakinarazpena</string>
-    <string name="toast_permission_esm_caution">Baliteke baimena berriro eman behar izatea Storage Access Framework-eko akats bat dela eta</string>
     <string name="item_optional">Hautazkoa</string>
     <string name="app_language">Aplikazioaren hizkuntza</string>
     <string name="session_installer_desc">Gomendatua, eraikia eta Android bertsio guztiak onartzen dituena</string>
@@ -314,7 +313,6 @@
     <string name="server_unreachable">Zerbitzaria eskuraezina</string>
     <string name="pref_updates_check_frequency">Eguneratze automatikoen maiztasuna</string>
     <string name="failed_to_fetch_report">Ezin izan da eskuratu pribatutasun-txostena</string>
-    <string name="toast_permission_esm_restart">Baliteke aplikazioa berrabiarazi behar izatea baimenaren esleipena islatzeko.</string>
     <string name="item_required">Beharrezkoa</string>
     <string name="pref_updates_check_frequency_desc">Konfiguratu eguneraketa automatikoentzako denbora-tarteak, ordutan.</string>
     <string name="session_installer_subtitle">APK bildu/zatituetarako saioan oinarritutako instalatzailea</string>

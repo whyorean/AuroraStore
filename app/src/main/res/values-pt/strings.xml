@@ -354,7 +354,6 @@
     <string name="details_data_safety_subtitle">Práticas de privacidade e segurança dos dados declaradas pelo programador</string>
     <string name="pref_network_proxy_url_message">Introduza um URL de proxy válido para passar todos os dados através do proxy.</string>
     <string name="title_favourites_manager">Aplicações favoritas</string>
-    <string name="toast_permission_esm_caution">Poderá ter de voltar a conceder a permissão devido a um erro no Storage Access Framework</string>
     <string name="item_required">Obrigatório</string>
     <string name="item_optional">Opcional</string>
     <string name="action_logout_confirmation_title">Terminar sessão?</string>

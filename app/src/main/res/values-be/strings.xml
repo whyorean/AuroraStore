@@ -294,8 +294,7 @@
     <string name="toast_apk_whitelisted">У белым спісе</string>
     <string name="toast_app_unavailable">Праграма недаступная на гэтай прыладзе</string>
     <string name="toast_permission_granted">Дазвол атрыманы</string>
-    <string name="toast_permission_installer_required">Найперш неабходна даць дазвол на ўсталяванне</string>
-    <string name="toast_permission_esm_caution">Магчыма спатрэбіцца паўторна даць дазвол у фрэймворку доступу да памяці</string>
+    <string name="toast_permission_installer_required">Найперш неабходна атрымаць дазвол на ўсталяванне</string>
     <string name="toast_spoof_applied">Прыменена падмена прылады.</string>
     <string name="toast_manual_available">Віншуем, версія даступная, пачынаем спампоўку.</string>
     <string name="toast_rated_success">Адзнака адасланая, можа прайсці пэўны час перад тым, як яна пакажацца</string>
