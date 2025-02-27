@@ -43,9 +43,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
@@ -74,7 +72,7 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
             .build()
 
     companion object {
-        var scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+        var scope = MainScope()
             private set
 
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
@@ -116,7 +114,7 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
     override fun onLowMemory() {
         super.onLowMemory()
         scope.cancel("onLowMemory() called by system")
-        scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+        scope = MainScope()
     }
 
     override fun onTerminate() {
