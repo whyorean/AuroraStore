@@ -287,14 +287,14 @@
     <string name="app_links_desc">Dovoli Aurora Store odpiranje podprtih povezav</string>
     <string name="details_ratings_title_hint">Oceni naslov</string>
     <string name="pref_updates_incompatible_desc">Pokaži posodobitve za nezdružljive ali onemogočene aplikacije, katerih namestitev lahko spodleti</string>
-    <string name="pref_updates_auto">Samodejno posodobi aplikacije</string>
+    <string name="pref_updates_auto">Samodejne posodobitve</string>
     <string name="google_play_store_desc">Google Play, znan tudi kot Google Play Store in prej znan kot Android Market.</string>
     <string name="failed_apk_export">Izvoz APKjev ni uspel</string>
     <string name="title_favourites_manager">Priljubljene aplikacije</string>
     <string name="title_app_settings">Nastavitve aplikacije</string>
     <string name="toast_proxy_success">Posrednik uspešno nastavljen</string>
     <string name="toast_proxy_failed">Nastavitev posrednika ni uspela</string>
-    <string name="pref_updates_auto_desc">Nastavi obnašanje samodejnega posodabljanja</string>
+    <string name="pref_updates_auto_desc">Nastavi obnašanje samodejnih posodobitev</string>
     <string name="item_required">Zahtevano</string>
     <string name="notification_channel_account">Obvestilo v povezavi z računom</string>
     <string name="onboarding_permission_doze">Prenosi v ozadju</string>
@@ -333,7 +333,7 @@
     <string name="force_restart_title">Vnovično zaženi Aurora Store</string>
     <string name="add_dispenser_summary">Dodaj dozirnik žetona v Aurora Store. Dozirnik žetona priskrbi podatke računa v Aurora Store, za anonimno prijavljanje.</string>
     <string name="remove_dispenser_summary">Ali želite odstraniti dozirnik \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
-    <string name="pref_updates_check_frequency_desc">Nastavite intervale za samodejne posodobitve, v uri.</string>
+    <string name="pref_updates_check_frequency_desc">Nastavite časovni interval za samodejne posodobitve, v uri.</string>
     <string name="manual_download_hint">Vnesite kodo različice, ki jo želite prenesti</string>
     <string name="source_code_title">Izvorna koda</string>
     <string name="source_code_subtitle">Odkrijte, kaj se skriva znotraj</string>
@@ -420,4 +420,13 @@
     <string name="details_compatibility_gms_required_subtitle">Morda boste morali namestiti Googlovo lastniško knjižnico ali FOSS izvedbo, kot je microG.</string>
     <string name="details_compatibility_gms_not_required_title">Deluje brez storitev Google Play</string>
     <string name="details_compatibility_microg">S projektom microG</string>
+    <string name="set">Nastavi</string>
+    <string name="disable">Onemogoči</string>
+    <string name="toast_proxy_disabled">Posrednik uspešno onemogočen</string>
+    <string name="pref_network_proxy_desc">Preglej in upravljaj nastavitev posrednika</string>
+    <string name="pref_updates_restrictions_title">Omejitve samodejnih posodobitev</string>
+    <string name="pref_updates_restrictions_desc">Nastavi omejitve naprave za samodejne posodobitve.</string>
+    <string name="pref_updates_restrictions_metered">Samo na nemerjenih omrežjih</string>
+    <string name="pref_updates_restrictions_idle">Ko je naprava v pripravljenosti</string>
+    <string name="pref_updates_restrictions_battery">Ko napolnjenost baterije ni nizka</string>
 </resources>
