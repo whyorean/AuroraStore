@@ -14,8 +14,7 @@ fun InputStream.copyTo(out: OutputStream, streamSize: Long): Flow<DownloadInfo> 
         var bytesCopied: Long = 0
         val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
         var bytes = read(buffer)
-
-        var lastTotalBytesRead = 0L
+        var lastTotalBytesRead: Long = 0
         var speed: Long = 0
         @Suppress("KotlinConstantConditions") // False-positive for bytesCopied always being zero
         val timer = fixedRateTimer("timer", true, 0L, 1000) {
@@ -26,6 +25,8 @@ fun InputStream.copyTo(out: OutputStream, streamSize: Long): Flow<DownloadInfo> 
 
         while (bytes >= 0) {
             out.write(buffer, 0, bytes)
+            out.flush()
+
             bytesCopied += bytes
             // Emit stream progress in percentage
             emit(DownloadInfo((bytesCopied * 100 / streamSize).toInt(), bytes.toLong(), speed))
