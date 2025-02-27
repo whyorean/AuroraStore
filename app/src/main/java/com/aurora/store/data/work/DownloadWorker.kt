@@ -47,6 +47,9 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import java.net.SocketException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import java.security.DigestInputStream
 import java.security.MessageDigest
 import kotlin.coroutines.cancellation.CancellationException
@@ -82,25 +85,27 @@ class DownloadWorker @AssistedInject constructor(
     private val TAG = DownloadWorker::class.java.simpleName
 
     object Exceptions {
-        val InvalidAuthDataException = Exception("AuthData is invalid")
-        val NoPackageNameException = Exception("No packagename provided")
-        val NothingToDownloadException = Exception("Failed to purchase app")
-        val DownloadFailedException = Exception("Download was failed or cancelled")
-        val VerificationFailedException = Exception("Verification of downloaded files failed")
+        class InvalidAuthDataException : Exception("AuthData is invalid")
+        class NoPackageNameException : Exception("No packagename provided")
+        class NoNetworkException : Exception("No network available")
+        class NothingToDownloadException : Exception("Failed to purchase app")
+        class DownloadFailedException : Exception("Download failed")
+        class DownloadCancelledException : Exception("Download was cancelled")
+        class VerificationFailedException : Exception("Verification of downloaded files failed")
     }
 
     override suspend fun doWork(): Result {
         super.doWork()
 
         // Bail out immediately if authData is not valid
-        if (!authProvider.isSavedAuthDataValid()) return onFailure(Exceptions.InvalidAuthDataException)
+        if (!authProvider.isSavedAuthDataValid()) return onFailure(Exceptions.InvalidAuthDataException())
 
         // Fetch required data for download
         try {
             val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
 
             // Bail out if no package name is provided
-            if (packageName.isNullOrBlank()) return onFailure(Exceptions.NoPackageNameException)
+            if (packageName.isNullOrBlank()) return onFailure(Exceptions.NoPackageNameException())
 
             notificationId = packageName.hashCode()
             download = downloadDao.getDownload(packageName)
@@ -124,7 +129,7 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         // Bail out if file list is empty after purchase
-        if (download.fileList.isEmpty()) return onFailure(Exceptions.NothingToDownloadException)
+        if (download.fileList.isEmpty()) return onFailure(Exceptions.NothingToDownloadException())
 
         // Create dirs & generate download request for files and shared libs (if any)
         PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
@@ -165,49 +170,38 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
         // Download files
-        val downloadSuccess = downloadFiles(download.packageName, files)
+        try {
+            for (file in files) {
+                if (isStopped) {
+                    throw Exceptions.DownloadCancelledException()
+                }
+
+                downloadFile(file)
+                download.downloadedFiles++
+            }
+        } catch (exception: Exception) {
+            if (exception is Exceptions.DownloadCancelledException) {
+                Log.i(TAG, "Download cancelled for ${download.packageName}")
+                // Try to delete all downloaded files
+                runCatching { files.forEach { deleteFile(it) } }
+            }
+
+            return onFailure(exception)
+        }
 
         // Report failure if download was stopped or failed
-        if (!downloadSuccess || isStopped) return onFailure(Exceptions.DownloadFailedException)
+        if (isStopped) return onFailure(Exceptions.DownloadFailedException())
 
         // Verify downloaded files
         val verifySuccess = verifyFiles(download.packageName, files)
 
         // Report failure if verification failed
-        if (!verifySuccess || isStopped) return onFailure(Exceptions.VerificationFailedException)
+        if (!verifySuccess || isStopped) return onFailure(Exceptions.VerificationFailedException())
 
         Log.i(TAG, "Finished downloading & verifying ${download.packageName}")
         notifyStatus(DownloadStatus.COMPLETED)
 
         return onSuccess()
-    }
-
-    private suspend fun downloadFiles(
-        packageName: String,
-        files: List<GPlayFile>
-    ): Boolean = withContext(Dispatchers.IO) {
-        for (file in files) {
-            try {
-                val success = downloadFile(file)
-
-                if (!success) {
-                    Log.w(TAG, "Download failed for $packageName")
-                    return@withContext false
-                }
-
-                if (isStopped) {
-                    Log.w(TAG, "Download cancelled for $packageName")
-                    return@withContext false
-                }
-
-                download.downloadedFiles++
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to download $packageName", e)
-                return@withContext false
-            }
-        }
-
-        true
     }
 
     private suspend fun verifyFiles(
@@ -240,20 +234,29 @@ class DownloadWorker @AssistedInject constructor(
 
     private suspend fun onFailure(exception: Exception = Exception("Something went wrong!")): Result =
         withContext(NonCancellable) {
-            Log.e(TAG, "Job failed: ${download.packageName}", exception)
+            Log.i(TAG, "Job failed: ${download.packageName}", exception)
 
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
             if (isSAndAbove && stopReason in cancelReasons) {
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
-                if (exception is CancellationException) {
-                    notifyStatus(DownloadStatus.CANCELLED)
-                } else {
-                    notifyStatus(DownloadStatus.FAILED)
-                    AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
-                        extra = exception.message ?: appContext.getString(R.string.download_failed)
-                        error = exception.stackTraceToString()
-                    })
+                when (exception) {
+                    is Exceptions.DownloadCancelledException -> {
+                        notifyStatus(DownloadStatus.CANCELLED)
+                    }
+
+                    is Exceptions.NoNetworkException -> {
+                        // TODO: Notify user of network failure, maybe a notification & retry option
+                    }
+
+                    else -> {
+                        notifyStatus(DownloadStatus.FAILED)
+                        AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
+                            extra =
+                                exception.message ?: appContext.getString(R.string.download_failed)
+                            error = exception.stackTraceToString()
+                        })
+                    }
                 }
             }
 
@@ -306,10 +309,10 @@ class DownloadWorker @AssistedInject constructor(
             return@withContext true
         }
 
-        val tmpFileSuffix = ".tmp"
-        val tmpFile = File(file.absolutePath + tmpFileSuffix)
-
         try {
+            val tmpFileSuffix = ".tmp"
+            val tmpFile = File(file.absolutePath + tmpFileSuffix)
+
             // Download as a temporary file to avoid installing corrupted files
             val isNewFile = tmpFile.createNewFile()
 
@@ -334,10 +337,19 @@ class DownloadWorker @AssistedInject constructor(
 
             return@withContext true
         } catch (exception: Exception) {
-            Log.e(TAG, "Failed to download $file!", exception)
-            tmpFile.delete()
-            notifyStatus(DownloadStatus.FAILED)
-            return@withContext true
+            when (exception) {
+                is SocketException,
+                is SocketTimeoutException,
+                is UnknownHostException -> {
+                    throw Exceptions.NoNetworkException()
+                }
+
+                is CancellationException -> {
+                    throw Exceptions.DownloadCancelledException()
+                }
+
+                else -> throw exception
+            }
         }
     }
 
@@ -454,6 +466,20 @@ class DownloadWorker @AssistedInject constructor(
                 Log.e(TAG, "Failed to verify $file", e)
                 false
             }
+        }
+    }
+
+    private fun deleteFile(file: GPlayFile) {
+        val apkFile = PathUtil.getLocalFile(appContext, file, download)
+        if (apkFile.exists()) {
+            apkFile.delete()
+            Log.i(TAG, "Deleted Apk: $apkFile")
+        }
+
+        val tmpFile = File(apkFile.absolutePath + ".tmp")
+        if (tmpFile.exists()) {
+            tmpFile.delete()
+            Log.i(TAG, "Deleted Temp: $tmpFile")
         }
     }
 }
