@@ -188,7 +188,12 @@ class DownloadWorker @AssistedInject constructor(
     ): Boolean = withContext(Dispatchers.IO) {
         for (file in files) {
             try {
-                downloadFile(file)
+                val success = downloadFile(file)
+
+                if (!success) {
+                    Log.w(TAG, "Download failed for $packageName")
+                    return@withContext false
+                }
 
                 if (isStopped) {
                     Log.w(TAG, "Download cancelled for $packageName")
@@ -288,51 +293,51 @@ class DownloadWorker @AssistedInject constructor(
      * Downloads the file from the given request.
      * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
      * @param gFile A [GPlayFile] to download
-     * @return A [Result] indicating whether the file was downloaded or not.
+     * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(gFile: GPlayFile): Result {
+    private suspend fun downloadFile(gFile: GPlayFile): Boolean = withContext(Dispatchers.IO) {
         Log.i(TAG, "Downloading ${gFile.name}")
-        return withContext(Dispatchers.IO) {
-            val file = PathUtil.getLocalFile(appContext, gFile, download)
+        val file = PathUtil.getLocalFile(appContext, gFile, download)
 
-            // If file exists and has integrity intact, no need to download again
-            if (file.exists() && verifyFile(gFile)) {
-                Log.i(TAG, "$file is already downloaded!")
-                downloadedBytes += file.length()
-                return@withContext Result.success()
+        // If file exists and has integrity intact, no need to download again
+        if (file.exists() && verifyFile(gFile)) {
+            Log.i(TAG, "$file is already downloaded!")
+            downloadedBytes += file.length()
+            return@withContext true
+        }
+
+        val tmpFileSuffix = ".tmp"
+        val tmpFile = File(file.absolutePath + tmpFileSuffix)
+
+        try {
+            // Download as a temporary file to avoid installing corrupted files
+            val isNewFile = tmpFile.createNewFile()
+
+            val okHttpClient = httpClient as HttpClient
+            val headers = mutableMapOf<String, String>()
+
+            if (!isNewFile) {
+                Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
+                downloadedBytes += tmpFile.length()
+                headers["Range"] = "bytes=${tmpFile.length()}-"
             }
 
-            try {
-                // Download as a temporary file to avoid installing corrupted files
-                val tmpFileSuffix = ".tmp"
-                val tmpFile = File(file.absolutePath + tmpFileSuffix)
-                val isNewFile = tmpFile.createNewFile()
-
-                val okHttpClient = httpClient as HttpClient
-                val headers = mutableMapOf<String, String>()
-
-                if (!isNewFile) {
-                    Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
-                    downloadedBytes += tmpFile.length()
-                    headers["Range"] = "bytes=${tmpFile.length()}-"
+            okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
+                FileOutputStream(tmpFile, !isNewFile).use {
+                    input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
                 }
-
-                okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
-                    FileOutputStream(tmpFile, !isNewFile).use {
-                        input.copyTo(it, gFile.size).collect { p -> onProgress(p) }
-                    }
-                }
-
-                if (!tmpFile.renameTo(file)) {
-                    throw Exception("Failed to remove .tmp extension from $tmpFile")
-                }
-
-                return@withContext Result.success()
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to download $file!", exception)
-                notifyStatus(DownloadStatus.FAILED)
-                return@withContext Result.failure()
             }
+
+            if (!tmpFile.renameTo(file)) {
+                throw Exception("Failed to remove .tmp extension from $tmpFile")
+            }
+
+            return@withContext true
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to download $file!", exception)
+            tmpFile.delete()
+            notifyStatus(DownloadStatus.FAILED)
+            return@withContext true
         }
     }
 
