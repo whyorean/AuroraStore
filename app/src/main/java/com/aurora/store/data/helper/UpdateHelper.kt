@@ -25,13 +25,14 @@ import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_IDLE
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_METERED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit.HOURS
 import java.util.concurrent.TimeUnit.MINUTES
 import javax.inject.Inject
@@ -68,12 +69,12 @@ class UpdateHelper @Inject constructor(
     /**
      * Deletes invalid updates from database and starts observing events
      */
-    fun init() {
-        AuroraApp.scope.launch {
+    suspend fun init() {
+        withContext(Dispatchers.IO) {
             deleteInvalidUpdates()
-        }.invokeOnCompletion {
-            observeUpdates()
         }
+
+        observeUpdates()
     }
 
     private fun observeUpdates() {
@@ -137,7 +138,7 @@ class UpdateHelper @Inject constructor(
      * @see [UpdateWorker]
      */
     fun scheduleAutomatedCheck() {
-        Log.i(TAG,"Scheduling periodic app updates!")
+        Log.i(TAG, "Scheduling periodic app updates!")
         WorkManager.getInstance(context)
             .enqueueUniquePeriodicWork(
                 UPDATE_WORKER,
@@ -151,7 +152,7 @@ class UpdateHelper @Inject constructor(
      * @see [UpdateWorker]
      */
     fun updateAutomatedCheck() {
-        Log.i(TAG,"Updating periodic app updates!")
+        Log.i(TAG, "Updating periodic app updates!")
         WorkManager.getInstance(context).updateWork(getAutoUpdateWork())
     }
 

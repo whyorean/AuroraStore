@@ -16,12 +16,12 @@ import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -49,30 +49,26 @@ class DownloadHelper @Inject constructor(
     /**
      * Removes failed download from the queue and starts observing for newly enqueued apps.
      */
-    fun init() {
-        AuroraApp.scope.launch {
+    suspend fun init() {
+        withContext(Dispatchers.IO) {
             cancelFailedDownloads(downloadDao.downloads().firstOrNull() ?: emptyList())
-        }.invokeOnCompletion {
-            observeDownloads()
         }
+
+        observeDownloads()
     }
 
-    private fun observeDownloads() {
-        AuroraApp.scope.launch {
-            downloadDao.downloads().collectLatest { list ->
-                // Check and trigger next download in queue, if any
-                if (!list.any { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
-                    val enqueuedDownloads = list.filter { it.downloadStatus == DownloadStatus.QUEUED }
-                    enqueuedDownloads.firstOrNull()?.let {
-                        try {
-                            Log.i(DOWNLOAD_WORKER, "Downloading ${it.packageName}")
-                            trigger(it)
-                        } catch (exception: Exception) {
-                            Log.i(DOWNLOAD_WORKER, "Failed to download app", exception)
-                            downloadDao.updateStatus(it.packageName, DownloadStatus.FAILED)
+    private suspend fun observeDownloads() {
+        downloadDao.downloads().collect { list ->
+            try {
+                if (list.none { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
+                    list.find { it.downloadStatus == DownloadStatus.QUEUED }
+                        ?.let { queuedDownload ->
+                            Log.i(TAG, "Enqueued download worker for ${queuedDownload.packageName}")
+                            trigger(queuedDownload)
                         }
-                    }
                 }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to enqueue download worker", exception)
             }
         }
     }
@@ -178,8 +174,9 @@ class DownloadHelper @Inject constructor(
         // Ensure all app downloads are unique to preserve individual records
         WorkManager.getInstance(context)
             .enqueueUniqueWork(
-                "$DOWNLOAD_WORKER/${download.packageName}",
-                ExistingWorkPolicy.KEEP, work
+                "$DOWNLOAD_WORKER/${download.packageName}/${download.versionCode}",
+                ExistingWorkPolicy.KEEP,
+                work
             )
     }
 }

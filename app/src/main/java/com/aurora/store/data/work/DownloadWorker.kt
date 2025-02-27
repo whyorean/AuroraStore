@@ -176,7 +176,7 @@ class DownloadWorker @AssistedInject constructor(
                     throw Exceptions.DownloadCancelledException()
                 }
 
-                downloadFile(file)
+                downloadFile(download.packageName, file)
                 download.downloadedFiles++
             }
         } catch (exception: Exception) {
@@ -298,8 +298,8 @@ class DownloadWorker @AssistedInject constructor(
      * @param gFile A [GPlayFile] to download
      * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(gFile: GPlayFile): Boolean = withContext(Dispatchers.IO) {
-        Log.i(TAG, "Downloading ${gFile.name}")
+    private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean = withContext(Dispatchers.IO) {
+        Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
         val file = PathUtil.getLocalFile(appContext, gFile, download)
 
         // If file exists and has integrity intact, no need to download again

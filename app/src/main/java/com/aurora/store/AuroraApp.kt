@@ -22,8 +22,8 @@ package com.aurora.store
 
 import android.app.Application
 import android.content.Context
-import android.util.Log.INFO
 import android.util.Log.DEBUG
+import android.util.Log.INFO
 import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
@@ -43,8 +43,11 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import javax.inject.Inject
@@ -71,8 +74,7 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
             .build()
 
     companion object {
-        // Alternative to GlobalScope
-        var scope = MainScope()
+        var scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
             private set
 
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
@@ -95,8 +97,10 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         NotificationUtil.createNotificationChannel(this)
 
         // Initialize Download and Update helpers to observe and trigger downloads
-        downloadHelper.init()
-        updateHelper.init()
+        scope.launch {
+            downloadHelper.init()
+            updateHelper.init()
+        }
 
         //Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(
@@ -112,7 +116,12 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
     override fun onLowMemory() {
         super.onLowMemory()
         scope.cancel("onLowMemory() called by system")
-        scope = MainScope()
+        scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        scope.cancel()
     }
 
     override fun newImageLoader(context: Context): ImageLoader {
