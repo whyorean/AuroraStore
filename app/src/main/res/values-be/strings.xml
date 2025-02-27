@@ -75,9 +75,9 @@
     <string name="download_speed_estimating">Ацэньванне</string>
     <string name="exodus_no_tracker">Не ўтрымлівае вядомых трэкераў</string>
     <string name="exodus_powered">Пры падтрымцы Exodus Privacy</string>
-    <string name="exodus_progress">Праверка трэкераў…</string>
-    <string name="exodus_substring">вядомы трэкер(ы) знайдзены ў</string>
-    <string name="filter_review_critical">Крытычны</string>
+    <string name="exodus_progress">Праверка на трэкеры…</string>
+    <string name="exodus_substring">вядомы(я) трэкер(ы) знайдзены(я) ў</string>
+    <string name="filter_review_critical">Крытычныя</string>
     <string name="filter_review_five">Пяць</string>
     <string name="filter_review_four">Чатыры</string>
     <string name="filter_review_one">Адна</string>
@@ -381,4 +381,5 @@
     <string name="about_aurora_store_summary">Aurora Store дазваляе шукаць і спампоўваць праграмы з афіцыйнай крамы Google Play. Вы можаце праверыць апісанні праграм, скрыншоты, абнаўленні, каментарыі іншых карыстальнікаў і спампаваць APK непасрэдна з Google Play на сваю прыладу, каб выкарыстоўваць Aurora Store, вам неабходна мець уліковы запіс Google Play і ўвайсці ў уліковы запіс Google Play пры першым адкрыцці і наладзе Aurora Store. \n\nУ адрозненне ад традыцыйнай крамы праграм, Aurora Store не валодае, не ліцэнзуе і не распаўсюджвае аніякія праграмы. Усе праграмы, апісанні праграм, скрыншоты і іншы кантэнт у Aurora Store даступны, спампоўваецца і/або адлюстроўваецца з Google Play. Aurora Store працуе гэтак жа, як дзверы, або браўзер, дазваляючы вам ўвайсці ў свой уліковы запіс Google Play і знайсці праграмы з Google Play.\n\nЗвярніце ўвагу, што Aurora Store не мае адабрэння, спонсарства або аўтарызацыі ад Google, Google Play, аніякіх праграм, спампаваных праз Aurora Store або аніякіх распрацоўшчыкаў праграм; таксама Aurora Store не мае з імі ніякіх адносін, супрацоўніцтва або сувязі.</string>
     <string name="action_select_all">Выбраць усё</string>
     <string name="action_remove_all">Выдаліць усё</string>
+    <string name="filter_latest">Апошнія</string>
 </resources>
