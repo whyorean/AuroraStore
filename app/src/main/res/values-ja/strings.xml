@@ -371,7 +371,6 @@
     <string name="details_data_safety_subtitle">開発者が宣言したデータのプライバシーと安全対策</string>
     <string name="onboarding_permission_installer_legacy_desc">不明なソースからのアプリのインストールを許可</string>
     <string name="toast_permission_installer_required">まずインストーラーの権限を付与する必要があります</string>
-    <string name="toast_permission_esm_caution">権限要求のバグのため、権限を再度付与する必要がある可能性があります</string>
     <string name="action_uninstall_success">アンインストールに成功しました</string>
     <string name="pref_network_proxy_url_message">すべてのデータを Proxy 経由で渡すには、有効な Proxy の URL を入力します。</string>
     <string name="item_required">必須</string>

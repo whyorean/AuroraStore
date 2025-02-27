@@ -366,7 +366,6 @@
     <string name="details_data_safety_title">Sécurité des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l’installation d’applis de sources inconnues</string>
     <string name="toast_permission_installer_required">Vous devez d’abord accorder l’autorisation au programme d’installation</string>
-    <string name="toast_permission_esm_caution">Vous devrez peut-être accorder cette autorisation de nouveau en raison d\'un bogue de l’infrastructure d’accès à la mémoire</string>
     <string name="item_required">Requis</string>
     <string name="item_optional">Optionnel</string>
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
@@ -392,7 +391,6 @@
     <string name="made_with_love">Conçu en Inde avec <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="default_spoof">Par défaut</string>
     <string name="available_spoof">Proposées</string>
-    <string name="toast_permission_esm_restart">L’autorisation ne sera peut-être effective qu’après redémarrage de l’appli.</string>
     <string name="filter_latest">Récents</string>
     <string name="toast_black_export_failed">Échec d’exportation de la liste d’exclusion</string>
     <string name="toast_black_export_success">La liste d’exclusion a été exportée</string>

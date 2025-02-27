@@ -370,7 +370,6 @@
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
     <string name="check_updates">Buscar atualizações</string>
     <string name="details_data_safety_title">Segurança de dados</string>
-    <string name="toast_permission_esm_caution">Você pode ter que conceder a permissão novamente devido a um bug no \"Storage Access Framework\"</string>
     <string name="item_required">Necessário</string>
     <string name="details_data_safety_subtitle">Práticas de segurança e privacidade de dados declaradas pelo desenvolvedor</string>
     <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de apps de fontes desconhecidas</string>
@@ -396,7 +395,6 @@
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="default_spoof">Padrão</string>
     <string name="available_spoof">Disponível</string>
-    <string name="toast_permission_esm_restart">Você pode ter que reiniciar o app para refletir o concedimento da permissão.</string>
     <string name="action_remove_all">Remover todos</string>
     <string name="action_select_all">Selecionar todos</string>
     <string name="filter_latest">Últimas</string>

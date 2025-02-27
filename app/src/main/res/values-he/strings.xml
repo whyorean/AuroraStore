@@ -365,7 +365,6 @@
     <string name="details_data_safety_subtitle">נהלי פרטיות ואבטחה שהוכרזו על ידי המפתח</string>
     <string name="onboarding_permission_installer_legacy_desc">אפשר התקנה של אפליקציות ממקורות לא ידועים</string>
     <string name="toast_permission_installer_required">תחילה עליך להעניק הרשאת התקנה</string>
-    <string name="toast_permission_esm_caution">ייתכן שיהיה עליך להעניק מחדש את ההרשאה עקב באג במסגרת Storage Access Framework</string>
     <string name="item_required">נדרש</string>
     <string name="item_optional">אופציונלי</string>
     <string name="export_app_summary_fail">ייצוא חבילת האפליקציות נכשל</string>

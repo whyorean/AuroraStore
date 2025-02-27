@@ -396,7 +396,6 @@
     <string name="details_data_safety_title">Безбедност података</string>
     <string name="details_data_safety_subtitle">Приватност података и безбедносне праксе које је објавио програмер</string>
     <string name="toast_permission_installer_required">Прво морате да дате дозволу програму за инсталацију</string>
-    <string name="toast_permission_esm_caution">Можда ћете морати поново да дате дозволу због грешке у радном простору за приступ меморији</string>
     <string name="item_optional">Опционално</string>
     <string name="onboarding_permission_installer_legacy_desc">Дозволите инсталацију апликација из непознатих извора</string>
     <string name="item_required">Неопходно</string>
@@ -420,7 +419,6 @@
     <string name="made_with_love">Направљено од <xliff:g id="heart_emoji">%1$s</xliff:g> у Индији</string>
     <string name="default_spoof">Подразумевана</string>
     <string name="available_spoof">Доступна</string>
-    <string name="toast_permission_esm_restart">Можда ћете морати да рестартујете апликацију да бисте приказали дату дозволу.</string>
     <string name="toast_black_import_success">Црна листа је увезена!</string>
     <string name="status_verifying">Верификовање</string>
     <string name="action_unarchive">Деархивирај</string>

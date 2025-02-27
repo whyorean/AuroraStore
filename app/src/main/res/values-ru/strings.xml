@@ -374,7 +374,6 @@
     <string name="force_restart_title">Перезапустить Aurora Store</string>
     <string name="onboarding_permission_installer_legacy_desc">Разрешать установку приложений из неизвестных источников</string>
     <string name="toast_permission_installer_required">Сначала вам необходимо предоставить разрешение установщику</string>
-    <string name="toast_permission_esm_caution">Возможно, вам придется повторно предоставить разрешение из-за ошибки в Storage Access Framework</string>
     <string name="item_required">Обязательно</string>
     <string name="item_optional">Не обязательно</string>
     <string name="details_data_safety_title">Безопасность данных</string>
@@ -401,7 +400,6 @@
     <string name="toast_black_export_success">Черный список экспортирован!</string>
     <string name="default_spoof">По умолчанию</string>
     <string name="action_select_all">Выбрать все</string>
-    <string name="toast_permission_esm_restart">Вам может потребоваться перезагрузить приложение, чтобы применить выданное разрешение.</string>
     <string name="toast_black_export_failed">Не удалось экспортировать черный список!</string>
     <string name="available_spoof">Доступно</string>
     <string name="status_verifying">Проверка</string>

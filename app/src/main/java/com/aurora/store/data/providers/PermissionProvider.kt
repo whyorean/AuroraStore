@@ -67,34 +67,31 @@ class PermissionProvider(private val fragment: Fragment) :
                     }
                 }
 
-                else -> {
-                    val intent = knownPermissions()[permissionType] ?: return
-
-                    if (permissionType == PermissionType.STORAGE_MANAGER) {
-                        if (!isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
-                            context.toast(R.string.toast_permission_installer_required)
-                        } else {
-                            /**
-                             * I don't know why, but for storage manager permission on Android 11 & 12,
-                             * we need to request both permissions otherwise the permission is not granted,
-                             * even though OS says it is granted.
-                             */
-                            ActivityCompat.requestPermissions(
-                                fragment.requireActivity(),
-                                arrayOf(
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                ),
-                                1
-                            )
-
-                            // TODO: Verify & remove this after testing
-                            context.toast(R.string.toast_permission_esm_restart)
-
-                            intentLauncher.launch(intent)
-                        }
+                PermissionType.STORAGE_MANAGER -> {
+                    if (!isGranted(PermissionType.INSTALL_UNKNOWN_APPS)) {
+                        context.toast(R.string.toast_permission_installer_required)
                     } else {
+                        /**
+                         * I don't know why, but for storage manager permission on Android 11 & 12,
+                         * we need to request both permissions otherwise the permission is not granted,
+                         * even though OS says it is granted.
+                         */
+                        ActivityCompat.requestPermissions(
+                            fragment.requireActivity(),
+                            arrayOf(
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                            ),
+                            1
+                        )
+
+                        val intent = knownPermissions()[permissionType] ?: return
                         intentLauncher.launch(intent)
                     }
+                }
+
+                else -> {
+                    val intent = knownPermissions()[permissionType] ?: return
+                    intentLauncher.launch(intent)
                 }
             }
         } catch (activityNotFoundException: ActivityNotFoundException) {

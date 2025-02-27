@@ -361,7 +361,6 @@
     <string name="privacy_policy_subtitle">Lär dig hur Aurora Store använder din data</string>
     <string name="toast_app_unavailable">Appen är inte tillgänglig för din enhet</string>
     <string name="toast_permission_installer_required">Du behöver godkänna behörighet för installationsprogrammet först</string>
-    <string name="toast_permission_esm_caution">Du kan behöva godkänna behörigheten igen till följd av en bugg i ramverket för åtkomst till lagringsutrymmet</string>
     <string name="item_required">Krävs</string>
     <string name="item_optional">Valfritt</string>
 </resources>

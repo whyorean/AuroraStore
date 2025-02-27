@@ -365,7 +365,6 @@
     <string name="pref_dispenser_summary">익명 로그인을 위한 토큰 디스펜서를 보고 관리</string>
     <string name="toast_black_import_failed">블랙리스트를 가져올 실패!</string>
     <string name="status_queued">대기 중</string>
-    <string name="toast_permission_esm_restart">앱을 다시 시작해야 할 수도 있습니다. 권한 부여.</string>
     <string name="status_failed">실패함</string>
     <string name="authentication_required_unarchive">Google Play 계정으로 로그인하여 앱을 알리십시오!</string>
     <string name="add_dispenser_error">잘못된 URL</string>
@@ -376,7 +375,6 @@
     <string name="status_unavailable">사용불가</string>
     <string name="authentication_required_title">인증 필수</string>
     <string name="add_dispenser_hint">디스펜서 URL</string>
-    <string name="toast_permission_esm_caution">스토리지 액세스 프레임워크의 버그로 인해 권한을 다시 부여해야 할 수도 있습니다</string>
     <string name="remove_dispenser_title">Dispenser 제거</string>
     <string name="add">추가</string>
     <string name="about_aurora_store_subtitle">Aurora Store에 대해 자세히 알아보기</string>

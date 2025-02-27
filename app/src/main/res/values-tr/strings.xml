@@ -373,7 +373,6 @@
     <string name="details_data_safety_title">Veri güvenliği</string>
     <string name="details_data_safety_subtitle">Geliştirici tarafından açıklanan veri gizliliği ve güvenliği uygulamaları</string>
     <string name="toast_permission_installer_required">Önce kurucu izni vermeniz gerekir</string>
-    <string name="toast_permission_esm_caution">Depolama Erişim Çerçevesindeki bir hata nedeniyle izni yeniden vermeniz gerekebilir</string>
     <string name="item_required">Gerekli</string>
     <string name="item_optional">İsteğe bağlı</string>
     <string name="force_restart_title">Aurora Store\'u yeniden başlat</string>
@@ -402,7 +401,6 @@
     <string name="toast_black_import_failed">Kara liste içe aktarılamadı!</string>
     <string name="toast_black_export_success">Kara liste dışa aktarıldı!</string>
     <string name="toast_black_export_failed">Kara liste dışa aktarılamadı!</string>
-    <string name="toast_permission_esm_restart">Verilen iznin etkinleşmesi için uygulamayı yeniden başlatmanız gerekebilir.</string>
     <string name="default_spoof">Öntanımlı</string>
     <string name="toast_black_import_success">Kara liste içe aktarıldı!</string>
     <string name="action_unarchive">Arşivden kaldır</string>

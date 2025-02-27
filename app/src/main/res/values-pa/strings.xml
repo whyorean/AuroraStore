@@ -376,7 +376,6 @@
     <string name="details_data_safety_title">ਡਾਟਾ ਸੁਰੱਖਿਆ</string>
     <string name="details_data_safety_subtitle">ਡਿਵੈਲਪਰ ਦੁਆਰਾ ਘੋਸ਼ਿਤ ਡਾਟਾ ਗੋਪਨੀਯਤਾ ਅਤੇ ਸੁਰੱਖਿਆ ਅਮਲ</string>
     <string name="onboarding_permission_installer_legacy_desc">ਅਗਿਆਤ ਸਰੋਤਾਂ ਤੋਂ ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿਓ</string>
-    <string name="toast_permission_esm_caution">ਸਟੋਰੇਜ਼ ਐਕਸੈਸ ਫਰੇਮਵਰਕ ਵਿੱਚ ਬੱਗ ਦੇ ਕਾਰਨ ਤੁਹਾਨੂੰ ਅਨੁਮਤੀ ਨੂੰ ਦੁਬਾਰਾ ਦੇਣਾ ਪੈ ਸਕਦਾ ਹੈ</string>
     <string name="item_optional">ਵਿਕਲਪਿਕ</string>
     <string name="item_required">ਲੋੜੀਂਦੀ</string>
     <string name="check_updates">ਅੱਪਡੇਟ ਲਈ ਚੈੱਕ ਕਰੋ</string>

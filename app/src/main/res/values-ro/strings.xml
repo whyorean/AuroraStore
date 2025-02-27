@@ -374,7 +374,6 @@
     <string name="item_required">Necesar</string>
     <string name="item_optional">Opțional</string>
     <string name="details_data_safety_subtitle">Practici privind confidențialitatea și securitatea datelor declarate de producător</string>
-    <string name="toast_permission_esm_caution">Este posibil să trebuiască să acordați din nou permisiunea din cauza unei erori în cadrul de acces la stocare</string>
     <string name="onboarding_permission_installer_legacy_desc">Permite instalarea aplicațiilor din surse necunoscute</string>
     <string name="force_restart_title">Repornește Aurora Store</string>
     <string name="force_restart_summary">Aurora Store trebuie să fie repornită pentru ca noile schimbări să intre în efect</string>
@@ -397,7 +396,6 @@
     <string name="toast_black_import_success">Lista neagră importată!</string>
     <string name="toast_black_export_success">Lista neagră a fost exportată!</string>
     <string name="notification_channel_account">Notificare legată de cont</string>
-    <string name="toast_permission_esm_restart">Poate fi necesar să repornești aplicația pentru a reflecta acordarea permisiunii.</string>
     <string name="default_spoof">Implicit</string>
     <string name="status_verifying">Se verifică</string>
     <string name="available_spoof">Disponibil</string>

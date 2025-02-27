@@ -375,7 +375,6 @@
     <string name="item_optional">वैकल्पिक</string>
     <string name="onboarding_permission_installer_legacy_desc">अज्ञात स्रोतों से ऐप्स इंस्टॉल करने की अनुमति दें</string>
     <string name="toast_permission_installer_required">आपको पहले इंस्टॉलर की अनुमति देनी होगी</string>
-    <string name="toast_permission_esm_caution">स्टोरेज एक्सेस फ्रेमवर्क में बग के कारण आपको अनुमति पुनः देनी पड़ सकती है</string>
     <string name="force_restart_title">ऑरोरा स्टोर रीस्टार्ट करें</string>
     <string name="force_restart_summary">नई बदली गई सेटिंग्स को लागू करने के लिए ऑरोरा स्टोर को रीस्टार्ट करना होगा</string>
     <string name="export_app_summary">रुकिए, आपकी फाइल निर्यात हो रही है</string>

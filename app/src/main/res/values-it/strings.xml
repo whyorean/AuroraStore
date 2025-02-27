@@ -356,7 +356,6 @@
     <string name="details_data_safety_title">Sicurezza dei dati</string>
     <string name="details_data_safety_subtitle">Privacy e pratiche di sicurezza dei dati dichiarate dallo sviluppatore</string>
     <string name="onboarding_permission_installer_legacy_desc">Consenti l\'installazione di app da fonti sconosciute</string>
-    <string name="toast_permission_esm_caution">Potrebbe essere necessario ripristinare il permesso a causa di un errore nell\'infrastuttura che gestisce l\'accesso all\'archivizione</string>
     <string name="toast_permission_installer_required">È necessario concedere prima il permesso di installazione</string>
     <string name="item_required">Obbligatorio</string>
     <string name="item_optional">Opzionale</string>

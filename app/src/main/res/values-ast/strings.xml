@@ -338,7 +338,6 @@
     <string name="title_search_suggestion">Search suggestion</string>
     <string name="title_search_results">Search results</string>
     <string name="toast_permission_installer_required">You need to grant Installer Permission first</string>
-    <string name="toast_permission_esm_caution">You may have to re-grant the permission due to bug in Storage Access Framework</string>
     <string name="item_required">Required</string>
     <string name="item_optional">Optional</string>
     <string name="notification_updates_available_desc_1">Hai un anovamientu de: <xliff:g id="app_one_name">%1$s</xliff:g></string>

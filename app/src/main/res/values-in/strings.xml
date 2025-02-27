@@ -374,7 +374,6 @@
     <string name="toast_permission_installer_required">Anda perlu memberikan Izin Pemasangan terlebih dahulu</string>
     <string name="item_required">Dibutuhkan</string>
     <string name="item_optional">Opsional</string>
-    <string name="toast_permission_esm_caution">Anda mungkin harus memberikan izin kembali karena adanya kesalahan dalam Kerangka Kerja Akses Penyimpanan</string>
     <string name="force_restart_summary">Aurora Store perlu dimulai ulang untuk menerapkan pengaturan terbaru</string>
     <string name="notification_channel_export">Pemberitahuan ekspor aplikasi</string>
     <string name="notification_channel_install">Pemberitahuan pemasangan</string>
@@ -392,7 +391,6 @@
     <string name="made_with_love">Dibuat dengan <xliff:g id="heart_emoji">%1$s</xliff:g> di India</string>
     <string name="default_spoof">Bawaan</string>
     <string name="available_spoof">Tersedia</string>
-    <string name="toast_permission_esm_restart">Anda mungkin harus memulai ulang aplikasi untuk menyesuaikan pemberian izin.</string>
     <string name="action_remove_all">Hapus semua</string>
     <string name="action_select_all">Pilih semua</string>
     <string name="filter_latest">Terbaru</string>

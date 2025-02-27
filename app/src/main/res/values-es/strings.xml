@@ -370,7 +370,6 @@
     <string name="details_data_safety_subtitle">Prácticas de privacidad y seguridad de datos declaradas por el desarrollador</string>
     <string name="onboarding_permission_installer_legacy_desc">Permitir la instalación de aplicaciones desde fuentes desconocidas</string>
     <string name="toast_permission_installer_required">Primero debes otorgar permisos de instalación</string>
-    <string name="toast_permission_esm_caution">Es posible que tengas que volver a otorgar el permiso debido a un error en el marco de acceso al almacenamiento</string>
     <string name="item_optional">Opcional</string>
     <string name="force_restart_title">Reiniciar Aurora Store</string>
     <string name="force_restart_summary">Es necesario reiniciar Aurora Store para aplicar la configuración recién modificada</string>
@@ -392,7 +391,6 @@
     <string name="made_with_love">Hecho con <xliff:g id="heart_emoji">%1$s</xliff:g> en India</string>
     <string name="available_spoof">Disponible</string>
     <string name="default_spoof">Por defecto</string>
-    <string name="toast_permission_esm_restart">Es posible que tengas que reiniciar la aplicación para que los permisos surtan efecto.</string>
     <string name="action_select_all">Seleccionar todo</string>
     <string name="toast_black_export_failed">¡Error al exportar la lista negra!</string>
     <string name="toast_black_import_success">¡Lista negra importada!</string>
