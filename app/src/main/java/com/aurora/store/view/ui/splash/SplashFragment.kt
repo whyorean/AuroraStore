@@ -174,7 +174,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     }
 
                     is AuthState.PendingAccountManager -> {
-                        requestAuthTokenForGoogle(it.email)
+                        requestAuthTokenForGoogle(it.email, it.token)
                     }
 
                     is AuthState.Failed -> {
@@ -275,8 +275,16 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         }
     }
 
-    private fun requestAuthTokenForGoogle(accountName: String) {
+    private fun requestAuthTokenForGoogle(accountName: String, token: String? = null) {
         try {
+            if (token != null) {
+                // Invalidate the token before requesting a new one
+                AccountManager.get(requireContext()).invalidateAuthToken(
+                    GOOGLE_ACCOUNT_TYPE,
+                    token
+                )
+            }
+
             AccountManager.get(requireContext())
                 .getAuthToken(
                     Account(accountName, GOOGLE_ACCOUNT_TYPE),

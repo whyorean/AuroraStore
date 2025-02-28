@@ -150,7 +150,7 @@ class AuthViewModel @Inject constructor(
                             }
 
                             AuthHelper.Token.AUTH -> {
-                                _authState.value = AuthState.PendingAccountManager(email)
+                                _authState.value = AuthState.PendingAccountManager(email, tokenPair.first)
                             }
                         }
                     }

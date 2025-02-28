@@ -72,7 +72,7 @@ open class AuthWorker @AssistedInject constructor(
 
                         AuthHelper.Token.AUTH -> {
                             Log.i(TAG, "Refreshing AuthData for personal account using AccountManager")
-                            val newToken = fetchAuthTokenSuspend(email)
+                            val newToken = fetchAuthTokenSuspend(email, tokenPair.first)
                             authProvider.buildGoogleAuthData(email, newToken, AuthHelper.Token.AAS).getOrThrow()
                         }
                     }
@@ -93,9 +93,9 @@ open class AuthWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun fetchAuthTokenSuspend(email: String): String {
+    private suspend fun fetchAuthTokenSuspend(email: String, oldToken: String? = null): String {
         return suspendCoroutine { continuation ->
-            fetchAuthToken(email) { future ->
+            fetchAuthToken(email, oldToken) { future ->
                 try {
                     val bundle = future.result
                     val token = bundle.getString(AccountManager.KEY_AUTHTOKEN)
@@ -112,22 +112,40 @@ open class AuthWorker @AssistedInject constructor(
         }
     }
 
-    private fun fetchAuthToken(email: String, callback: AccountManagerCallback<Bundle>) {
-        AccountManager.get(appContext)
-            .getAuthToken(
-                Account(email, GOOGLE_ACCOUNT_TYPE),
-                GOOGLE_PLAY_AUTH_TOKEN_TYPE,
-                bundleOf(
-                    "overridePackage" to GOOGLE_PLAY_PACKAGE_NAME,
-                    "overrideCertificate" to Base64.decode(
-                        GOOGLE_PLAY_CERT,
-                        Base64.DEFAULT
+    private fun fetchAuthToken(
+        email: String,
+        oldToken: String? = null,
+        callback: AccountManagerCallback<Bundle>
+    ) {
+        try {
+            if (oldToken != null) {
+                // Invalidate the token before requesting a new one
+                AccountManager.get(appContext)
+                    .invalidateAuthToken(
+                        GOOGLE_ACCOUNT_TYPE,
+                        oldToken
                     )
-                ),
-                true,
-                callback,
-                Handler(Looper.getMainLooper())
-            )
+            }
+
+            AccountManager.get(appContext)
+                .getAuthToken(
+                    Account(email, GOOGLE_ACCOUNT_TYPE),
+                    GOOGLE_PLAY_AUTH_TOKEN_TYPE,
+                    bundleOf(
+                        "overridePackage" to GOOGLE_PLAY_PACKAGE_NAME,
+                        "overrideCertificate" to Base64.decode(
+                            GOOGLE_PLAY_CERT,
+                            Base64.DEFAULT
+                        )
+                    ),
+                    true,
+                    callback,
+                    Handler(Looper.getMainLooper())
+                )
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to fetch auth token", e)
+            callback.run(null)
+        }
     }
 
     private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType): AuthData? {
