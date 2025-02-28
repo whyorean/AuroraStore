@@ -67,24 +67,13 @@ open class AuthWorker @AssistedInject constructor(
                     when (tokenPair.second) {
                         AuthHelper.Token.AAS -> {
                             Log.i(TAG, "Refreshing AuthData for personal account")
-                            authProvider.buildGoogleAuthData(
-                                email,
-                                tokenPair.first,
-                                AuthHelper.Token.AAS
-                            ).getOrThrow()
+                            authProvider.buildGoogleAuthData(email, tokenPair.first, AuthHelper.Token.AAS).getOrThrow()
                         }
 
                         AuthHelper.Token.AUTH -> {
-                            Log.i(
-                                TAG,
-                                "Refreshing AuthData for personal account using AccountManager"
-                            )
+                            Log.i(TAG, "Refreshing AuthData for personal account using AccountManager")
                             val newToken = fetchAuthTokenSuspend(email)
-                            authProvider.buildGoogleAuthData(
-                                email,
-                                newToken,
-                                AuthHelper.Token.AAS
-                            ).getOrThrow()
+                            authProvider.buildGoogleAuthData(email, newToken, AuthHelper.Token.AAS).getOrThrow()
                         }
                     }
                 }

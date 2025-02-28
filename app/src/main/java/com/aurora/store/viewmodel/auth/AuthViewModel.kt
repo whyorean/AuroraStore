@@ -154,7 +154,6 @@ class AuthViewModel @Inject constructor(
                             }
                         }
                     }
-
                 }
             }
         } catch (exception: Exception) {
