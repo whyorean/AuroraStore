@@ -119,7 +119,7 @@ open class AuthWorker @AssistedInject constructor(
     ) {
         try {
             if (oldToken != null) {
-                // Invalidate the token before requesting a new one
+                // Invalidate the old token before requesting a new one
                 AccountManager.get(appContext)
                     .invalidateAuthToken(
                         GOOGLE_ACCOUNT_TYPE,

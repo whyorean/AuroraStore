@@ -275,13 +275,13 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         }
     }
 
-    private fun requestAuthTokenForGoogle(accountName: String, token: String? = null) {
+    private fun requestAuthTokenForGoogle(accountName: String, oldToken: String? = null) {
         try {
-            if (token != null) {
-                // Invalidate the token before requesting a new one
+            if (oldToken != null) {
+                // Invalidate the old token before requesting a new one
                 AccountManager.get(requireContext()).invalidateAuthToken(
                     GOOGLE_ACCOUNT_TYPE,
-                    token
+                    oldToken
                 )
             }
 
