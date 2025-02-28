@@ -83,10 +83,10 @@
     <string name="filter_review_one">Адна</string>
     <string name="filter_review_positive">Пазітыўныя</string>
     <string name="filter_review_three">Тры</string>
-    <string name="filter_review_two">Два</string>
-    <string name="installer_am_unavailable">Усталюйце мэнаджэр праграм, альбо змяніце ўсталёўшчык.</string>
-    <string name="installer_root_unavailable">Адсутнічае root. Дазвольце яго альбо змяніце ўсталёўшчык.</string>
-    <string name="installer_service_misconfigured">Найперш устлюйце сэрвісы Aurora і дазвольце доступы.</string>
+    <string name="filter_review_two">Дзве</string>
+    <string name="installer_am_unavailable">Усталюйце менеджар праграм, альбо змяніце ўсталёўшчык.</string>
+    <string name="installer_root_unavailable">Адсутнічае root доступ. Дайце дазвол на яго выкарыстоўванне альбо змяніце ўсталёўшчык.</string>
+    <string name="installer_service_misconfigured">Найперш усталюйце сэрвісы Aurora і дайце дазволы.</string>
     <string name="installer_status_failure">Памылка ўсталёўшчыка</string>
     <string name="installer_status_failure_incompatible">Несумяшчальная праграма</string>
     <string name="installer_status_failure_invalid">Пашкоджаны альбо сапсаваны APK</string>
@@ -242,12 +242,12 @@
     <string name="download_paused">Прыпынена • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="download_progress">Спампоўка • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="filter_review_all">Усе</string>
-    <string name="installer_shizuku_unavailable">Shizuku не ўсталяваны альбо мае памылку.</string>
+    <string name="installer_shizuku_unavailable">Shizuku не ўсталяваны альбо няправільна наладжаны.</string>
     <string name="installer_status_failure_conflict">Канфліктуе з існуючым пакетам</string>
-    <string name="installer_service_available">Сэрвісы Aurora даступны і гатовы да ўсталявання.</string>
+    <string name="installer_service_available">Сэрвісы Aurora даступныя і гатовыя да ўсталявання.</string>
     <string name="installer_status_failure_session">Не атрымалася стварыць сеанс</string>
     <string name="installer_service_unavailable">Усталюйце сэрвісы Aurora 1.0.9 ці вышэй, альбо змяніце ўсталёўшчык.</string>
-    <string name="installer_status_failure_blocked">Усталёўка была заблакавана</string>
+    <string name="installer_status_failure_blocked">Усталёўка была заблакіраваная</string>
     <string name="installer_status_success">Паспяхова ўсталявана</string>
     <string name="menu_disclaimer">Адмова ад адказнасці</string>
     <string name="menu_terms">Умовы абслугоўвання</string>
