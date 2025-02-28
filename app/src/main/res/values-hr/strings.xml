@@ -318,7 +318,7 @@
     <string name="toast_permission_installer_required">Najprije moraš dodijeliti dozvolu za instaliranje</string>
     <string name="action_uninstall_success">Uspješno deinstalirano</string>
     <string name="onboarding_permission_installer_legacy_desc">Dozvoli instaliranje aplikacija iz nepoznatih izvora</string>
-    <string name="remove_dispenser_summary">Želiš li ukloniti dozator \\<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="remove_dispenser_summary">Želiš li ukloniti dozator „<xliff:g id="url">%1$s</xliff:g>”?</string>
     <string name="remove">Ukloni</string>
     <string name="toast_fav_export_failed">Izvoz omiljenih nije uspio!</string>
     <string name="pref_aurora_only_desc">Traži samo aktualiziranja za aplikacije koje su instalirane pomoću Aurora Store</string>
@@ -356,7 +356,7 @@
     <string name="item_optional">Opcionalno</string>
     <string name="notification_channel_updates">Obavijesti o aktualiziranjima</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> aktualiziranje dostupno</string>
-    <string name="pref_updates_auto_desc">Konfiguriraj automatska aktualiziranja</string>
+    <string name="pref_updates_auto_desc">Konfiguriraj ponašanje automatskih aktualiziranja</string>
     <string name="pref_updates_auto_install">Provjeri i instaliraj dostupna aktualiziranja automatski</string>
     <string name="bad_request">Interna greška! Pokušaj ponovo kasnije</string>
     <string name="verifying_new_session">Provjeravanje nove sesije</string>
@@ -367,7 +367,7 @@
     <string name="source_code_subtitle">Saznaj što je unutra</string>
     <string name="notification_updates_available_desc_1">Dostupna je nova verzija za <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="failed_to_fetch_report">Dohvaćanje izvještaja o privatnosti nije uspjelo</string>
-    <string name="pref_updates_check_frequency_desc">Konfiguriraj intervale za automatska i ručna aktualiziranja, u satima.</string>
+    <string name="pref_updates_check_frequency_desc">Konfiguriraj vremenske intervale za automatska aktualiziranja, u satima.</string>
     <string name="shizuku_installer_subtitle">Korištenje API-ja sustava izravno s administratorskim pravima</string>
     <string name="source_code_title">Izvorni kod</string>
     <string name="made_with_love">Izrađeno sa <xliff:g id="heart_emoji">%1$s</xliff:g> u Indiji</string>
@@ -389,7 +389,7 @@
     <string name="notification_channel_downloads">Obavijest o preuzimanjima</string>
     <string name="pref_updates_incompatible">Nekompatibilna aktualiziranja</string>
     <string name="pref_updates_incompatible_desc">Prikaži aktualiziranja za nekompatibilne ili deaktivirane aplikacije koje se možda neće uspjeti instalirati</string>
-    <string name="pref_updates_auto">Automatko aktualiziranje aplikacija</string>
+    <string name="pref_updates_auto">Automatka aktualiziranja</string>
     <string name="session_installer_desc">Preporučeno, ugrađeno i podržava sve Android verzije</string>
     <string name="pref_vending_version_title">Google Play verzija</string>
     <string name="pref_network_proxy_url">Proxy URL</string>
@@ -417,4 +417,16 @@
     <string name="plexus_progress">Provjera kompatibilnosti …</string>
     <string name="details_compatibility_gms_not_required_subtitle">Ova aplikacija radi bez Googleove vlasničke biblioteke. Međutim, još uvijek može trebati druge biblioteke trećih strana da bi pravilno radila.</string>
     <string name="no_apps_available">Nema dostupnih aplikacija</string>
+    <string name="pref_network_microg_login_desc">Za jednostavniju prijavu, autentificiraj se pomoću microG-a prilikom prijave na Google račune.</string>
+    <string name="set">Postavi</string>
+    <string name="disable">Deaktiviraj</string>
+    <string name="toast_proxy_disabled">Proxy je uspješno deaktiviran</string>
+    <string name="pref_network_proxy_desc">Pogledaj i upravljaj konfiguracijom proxyja</string>
+    <string name="pref_updates_restrictions_title">Ograničenja za automatska aktualiziranja</string>
+    <string name="pref_updates_restrictions_desc">Konfiguriraj ograničenja uređaja za automatska aktualiziranja.</string>
+    <string name="pref_updates_restrictions_idle">Kad je urađaj neaktivan</string>
+    <string name="pref_updates_restrictions_battery">Kad razina baterije nije niska</string>
+    <string name="pref_network_microg_login_title">Koristi microG za prijavu na račune</string>
+    <string name="pref_updates_restrictions_metered">Samo na nemjerenim mrežama</string>
+    <string name="details_compatibility_gms_required_subtitle">Možda ćeš morati instalirati Googleovu vlasničku biblioteku ili FOSS -ovu implementaciju poput microG.</string>
 </resources>

@@ -152,7 +152,7 @@
     <string name="requesting_new_session">Požiadať o novú reláciu</string>
     <string name="downloading_dep">Sťahovanie dodatočných súborov pre <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostupná aktualizácia</string>
-    <string name="pref_updates_auto_desc">Nakonfigurujte správanie automatických aktualizácií</string>
+    <string name="pref_updates_auto_desc">Nakonfigurovať správanie automatických aktualizácií</string>
     <string name="pref_updates_check_frequency">Frekvencia automatických aktualizácií</string>
     <string name="server_unreachable">Server je nedostupný</string>
     <string name="failed_generating_session">Nepodarilo sa vygenerovať reláciu, kód chyby: <xliff:g id="status_code">%1$d</xliff:g></string>
@@ -218,7 +218,7 @@
     <string name="pref_updates_auto_notify">Skontrolovať dostupné aktualizácie a informovať o nich</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="aplikácia_jedna_názov">%1$s</xliff:g>, <xliff:g id="aplikácia_dva_názov">%2$s</xliff:g>, <xliff:g id="aplikácia_tri_názov">%3$s</xliff:g> a <xliff:g id="počet_aplikácií">%4$d</xliff:g> viac</string>
     <string name="pref_updates_auto_off">Neaktualizovať aplikácie automaticky</string>
-    <string name="pref_updates_check_frequency_desc">Nastaviť intervaly pre automatické a vlastné aktualizácie v hodinách.</string>
+    <string name="pref_updates_check_frequency_desc">Nastaviť interval pre vlastné automatické aktualizácie v hodinách.</string>
     <string name="login_rate_limited">Ups, váš účet je obmedzený</string>
     <string name="failed_to_generate_session">Nepodarilo sa vygenerovať reláciu</string>
     <string name="verifying_new_session">Overuje sa nová relácia</string>
@@ -424,4 +424,13 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> nainštalované aplikácie</string>
     <string name="pref_network_microg_login_title">Na prihlásenie do účtov použite microG</string>
     <string name="pref_network_microg_login_desc">Pri prihlasovaní do účtov Google sa overte pomocou microG, čím si zjednodušíte prihlasovací proces.</string>
+    <string name="disable">Zakázať</string>
+    <string name="toast_proxy_disabled">Proxy bol úspešne deaktivovaný</string>
+    <string name="pref_network_proxy_desc">Zobrazenie a správa konfigurácie servera proxy</string>
+    <string name="pref_updates_restrictions_metered">Len v nemeraných sieťach</string>
+    <string name="pref_updates_restrictions_idle">Keď je zariadenie nečinné</string>
+    <string name="pref_updates_restrictions_desc">Nakonfigurovať obmedzenia zariadenia pre automatické aktualizácie.</string>
+    <string name="set">Nastaviť</string>
+    <string name="pref_updates_restrictions_title">Obmedzenia automatických aktualizácií</string>
+    <string name="pref_updates_restrictions_battery">Keď batéria nie je vybitá</string>
 </resources>

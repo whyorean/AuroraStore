@@ -270,7 +270,7 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="title_search_suggestion">Sugestão de pesquisa</string>
     <string name="title_search_results">Resultados da pesquisa</string>
-    <string name="failed_to_fetch_report">Falhou em obter o relatório de privacidade</string>
+    <string name="failed_to_fetch_report">Falha ao obter relatório de privacidade</string>
     <string name="access_denied_using_vpn">Acesso negado! Está usando uma VPN ou Tor?</string>
     <string name="bad_request">Erro interno! Tente novamente mais tarde</string>
     <string name="login_rate_limited">Oops, você foi limitado</string>
@@ -299,7 +299,7 @@
     <string name="onboarding_permission_doze">Downloads em Segundo Plano</string>
     <string name="onboarding_permission_doze_desc">Permita que a Aurora Store baixe e atualize apps em segundo plano</string>
     <string name="pref_updates_auto">Atualizações automáticas</string>
-    <string name="pref_updates_auto_notify">Buscar atualizações e enviar notificações</string>
+    <string name="pref_updates_auto_notify">Buscar e notificar por atualizações disponíveis</string>
     <string name="pref_updates_auto_off">Não atualizar apps automaticamente</string>
     <string name="pref_updates_auto_desc">Configurar comportamento das atualizações automáticas</string>
     <string name="pref_updates_auto_install">Buscar e instalar atualizações disponíveis automaticamente</string>

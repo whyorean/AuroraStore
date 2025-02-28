@@ -420,4 +420,13 @@
     <string name="no_apps_available">Aplikazio eskuragarririk ez</string>
     <string name="pref_network_microg_login_title">Erabili microG kontuetara sartzeko</string>
     <string name="pref_network_microg_login_desc">Autentifikatu microG erabiliz Google-ko kontuetan saioa hasteko, saioa hasteko fluxu errazagoa izateko.</string>
+    <string name="set">Ezarri</string>
+    <string name="disable">Desgaitu</string>
+    <string name="toast_proxy_disabled">Proxya desgaitu da</string>
+    <string name="pref_network_proxy_desc">Ikusi eta kudeatu proxy konfigurazioa</string>
+    <string name="pref_updates_restrictions_title">Eguneratze automatikoen murrizketak</string>
+    <string name="pref_updates_restrictions_desc">Konfiguratu gailuaren murrizketak eguneratze automatizatuetarako.</string>
+    <string name="pref_updates_restrictions_battery">Bateria gutxi dagoenean</string>
+    <string name="pref_updates_restrictions_idle">Gailua inaktibo dagoenean</string>
+    <string name="pref_updates_restrictions_metered">Neurririk gabeko sareetan bakarrik</string>
 </resources>
