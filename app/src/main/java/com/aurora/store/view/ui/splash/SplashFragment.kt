@@ -173,6 +173,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                         updateStatus(getString(R.string.verifying_new_session))
                     }
 
+                    is AuthState.PendingAccountManager -> {
+                        requestAuthTokenForGoogle(it.email)
+                    }
+
                     is AuthState.Failed -> {
                         updateStatus(it.status)
                         updateActionLayout(true)

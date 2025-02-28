@@ -41,5 +41,6 @@ sealed class AuthState {
     data object Valid : AuthState()
     data object Fetching : AuthState()
     data object Verifying : AuthState()
+    data class PendingAccountManager(val email: String) : AuthState()
     data class Failed(val status: String) : AuthState()
 }

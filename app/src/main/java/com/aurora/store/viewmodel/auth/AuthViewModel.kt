@@ -128,35 +128,42 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun buildSavedAuthData() {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                if (authProvider.isSavedAuthDataValid()) {
-                    _authState.value = AuthState.Valid
-                } else {
-                    // Generate and validate new auth
-                    when (AccountProvider.getAccountType(context)) {
-                        AccountType.GOOGLE -> {
-                            buildGoogleAuthData(
-                                AccountProvider.getLoginEmail(context)!!,
-                                AccountProvider.getLoginToken(context)!!.first,
-                                AccountProvider.getLoginToken(context)!!.second
-                            )
+    private fun buildSavedAuthData() = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            if (authProvider.isSavedAuthDataValid()) {
+                _authState.value = AuthState.Valid
+            } else {
+                // Generate and validate new auth
+                when (AccountProvider.getAccountType(context)) {
+                    AccountType.ANONYMOUS -> buildAnonymousAuthData()
+                    AccountType.GOOGLE -> {
+                        val email = AccountProvider.getLoginEmail(context)
+                        val tokenPair = AccountProvider.getLoginToken(context)
+
+                        if (email == null || tokenPair == null) {
+                            throw Exception()
                         }
 
-                        AccountType.ANONYMOUS -> {
-                            buildAnonymousAuthData()
+                        when (tokenPair.second) {
+                            AuthHelper.Token.AAS -> {
+                                buildGoogleAuthData(email, tokenPair.first, AuthHelper.Token.AAS)
+                            }
+
+                            AuthHelper.Token.AUTH -> {
+                                _authState.value = AuthState.PendingAccountManager(email)
+                            }
                         }
                     }
+
                 }
-            } catch (exception: Exception) {
-                val error = when (exception) {
-                    is UnknownHostException -> context.getString(R.string.title_no_network)
-                    is ConnectException -> context.getString(R.string.server_unreachable)
-                    else -> context.getString(R.string.bad_request)
-                }
-                _authState.value = AuthState.Failed(error)
             }
+        } catch (exception: Exception) {
+            val error = when (exception) {
+                is UnknownHostException -> context.getString(R.string.title_no_network)
+                is ConnectException -> context.getString(R.string.server_unreachable)
+                else -> context.getString(R.string.bad_request)
+            }
+            _authState.value = AuthState.Failed(error)
         }
     }
 
