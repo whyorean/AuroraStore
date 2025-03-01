@@ -26,7 +26,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.databinding.FragmentGenericRecyclerBinding

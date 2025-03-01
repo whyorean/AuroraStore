@@ -34,10 +34,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import java.io.ByteArrayInputStream
-import java.io.InputStream
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
+import java.io.ByteArrayInputStream
+import java.io.InputStream
 import java.net.Authenticator
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
