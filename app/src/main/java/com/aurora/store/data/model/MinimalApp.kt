@@ -3,7 +3,6 @@ package com.aurora.store.data.model
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.gplayapi.data.models.App
