@@ -72,20 +72,8 @@ class AuthProvider @Inject constructor(
     /**
      * Checks whether saved AuthData is valid or not
      */
-    suspend fun isSavedAuthDataValid(): Boolean {
-        // TODO: Switch to the method from gplayapi
-        return withContext(Dispatchers.IO) {
-            try {
-                val testPackageName = "com.android.chrome"
-                val app = AppDetailsHelper(authData!!)
-                    .using(httpClient)
-                    .getAppByPackageName(testPackageName)
-                app.packageName == testPackageName && app.displayName.isNotBlank()
-                        && app.versionCode != 0
-            } catch (exception: Exception) {
-                false
-            }
-        }
+    fun isSavedAuthDataValid(): Boolean {
+        return AuthHelper.isValid(authData!!)
     }
 
     /**
