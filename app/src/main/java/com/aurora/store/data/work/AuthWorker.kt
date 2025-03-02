@@ -2,7 +2,9 @@ package com.aurora.store.data.work
 
 import android.accounts.Account
 import android.accounts.AccountManager
+import android.accounts.AccountManagerCallback
 import android.content.Context
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Base64
@@ -22,10 +24,9 @@ import com.aurora.store.util.CertUtil.GOOGLE_PLAY_CERT
 import com.aurora.store.util.CertUtil.GOOGLE_PLAY_PACKAGE_NAME
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.runBlocking
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * Worker to refresh [AuthData] in background
@@ -39,8 +40,6 @@ open class AuthWorker @AssistedInject constructor(
 ) : CoroutineWorker(appContext, workerParams) {
 
     private val TAG = AuthWorker::class.java.simpleName
-
-    private val authToken: MutableSharedFlow<String?> = MutableSharedFlow(extraBufferCapacity = 1)
 
     override suspend fun doWork(): Result {
         if (!AccountProvider.isLoggedIn(appContext)) {
@@ -58,40 +57,23 @@ open class AuthWorker @AssistedInject constructor(
             val accountType = AccountProvider.getAccountType(appContext)
             val authData = when (accountType) {
                 AccountType.GOOGLE -> {
-                    val email = AccountProvider.getLoginEmail(appContext)!!
-                    val token = AccountProvider.getLoginToken(appContext)!!.first
-                    val tokenType = AccountProvider.getLoginToken(appContext)!!.second
+                    val email = AccountProvider.getLoginEmail(appContext)
+                    val tokenPair = AccountProvider.getLoginToken(appContext)
 
-                    if (tokenType == AuthHelper.Token.AAS) {
-                        Log.i(TAG, "Refreshing AuthData for personal account")
-                        authProvider.buildGoogleAuthData(email, token, tokenType).getOrThrow()
-                    } else {
-                        /*
-                         * We are working with AuthToken here. The only scenario when we will have
-                         * AuthToken and Google login is when the user used microG to login into
-                         * Aurora Store. In this case, we use system's AccountManager to request credentials.
-                         */
-                        Log.i(TAG, "Refreshing AuthData for personal account using AccountManager")
-                        AccountManager.get(appContext)
-                            .getAuthToken(
-                                Account(email, GOOGLE_ACCOUNT_TYPE),
-                                GOOGLE_PLAY_AUTH_TOKEN_TYPE,
-                                bundleOf(
-                                    "overridePackage" to GOOGLE_PLAY_PACKAGE_NAME,
-                                    "overrideCertificate" to Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
-                                ),
-                                true,
-                                {
-                                    authToken.tryEmit(it.result.getString(AccountManager.KEY_AUTHTOKEN))
-                                },
-                                Handler(Looper.getMainLooper())
-                            )
-                        runBlocking {
-                            authProvider.buildGoogleAuthData(
-                                email,
-                                authToken.take(1).first()!!,
-                                tokenType
-                            ).getOrThrow()
+                    if (email == null || tokenPair == null) {
+                        throw Exception()
+                    }
+
+                    when (tokenPair.second) {
+                        AuthHelper.Token.AAS -> {
+                            Log.i(TAG, "Refreshing AuthData for personal account")
+                            authProvider.buildGoogleAuthData(email, tokenPair.first, AuthHelper.Token.AAS).getOrThrow()
+                        }
+
+                        AuthHelper.Token.AUTH -> {
+                            Log.i(TAG, "Refreshing AuthData for personal account using AccountManager")
+                            val newToken = fetchAuthToken(email, tokenPair.first)
+                            authProvider.buildGoogleAuthData(email, newToken, AuthHelper.Token.AAS).getOrThrow()
                         }
                     }
                 }
@@ -108,6 +90,61 @@ open class AuthWorker @AssistedInject constructor(
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to refresh authData!", exception)
             return Result.failure()
+        }
+    }
+
+    private suspend fun fetchAuthToken(email: String, oldToken: String? = null): String {
+        return suspendCoroutine { continuation ->
+            fetchAuthToken(email, oldToken) { future ->
+                try {
+                    val bundle = future.result
+                    val token = bundle.getString(AccountManager.KEY_AUTHTOKEN)
+
+                    if (token != null) {
+                        continuation.resume(token)
+                    } else {
+                        continuation.resumeWithException(IllegalStateException("Auth token is null"))
+                    }
+                } catch (e: Exception) {
+                    continuation.resumeWithException(e)
+                }
+            }
+        }
+    }
+
+    private fun fetchAuthToken(
+        email: String,
+        oldToken: String? = null,
+        callback: AccountManagerCallback<Bundle>
+    ) {
+        try {
+            if (oldToken != null) {
+                // Invalidate the old token before requesting a new one
+                AccountManager.get(appContext)
+                    .invalidateAuthToken(
+                        GOOGLE_ACCOUNT_TYPE,
+                        oldToken
+                    )
+            }
+
+            AccountManager.get(appContext)
+                .getAuthToken(
+                    Account(email, GOOGLE_ACCOUNT_TYPE),
+                    GOOGLE_PLAY_AUTH_TOKEN_TYPE,
+                    bundleOf(
+                        "overridePackage" to GOOGLE_PLAY_PACKAGE_NAME,
+                        "overrideCertificate" to Base64.decode(
+                            GOOGLE_PLAY_CERT,
+                            Base64.DEFAULT
+                        )
+                    ),
+                    true,
+                    callback,
+                    Handler(Looper.getMainLooper())
+                )
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to fetch auth token", e)
+            callback.run(null)
         }
     }
 
