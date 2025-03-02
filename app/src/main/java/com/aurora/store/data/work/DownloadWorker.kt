@@ -298,60 +298,61 @@ class DownloadWorker @AssistedInject constructor(
      * @param gFile A [GPlayFile] to download
      * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean = withContext(Dispatchers.IO) {
-        Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
-        val file = PathUtil.getLocalFile(appContext, gFile, download)
+    private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean =
+        withContext(Dispatchers.IO) {
+            Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
+            val file = PathUtil.getLocalFile(appContext, gFile, download)
 
-        // If file exists and has integrity intact, no need to download again
-        if (file.exists() && verifyFile(gFile)) {
-            Log.i(TAG, "$file is already downloaded!")
-            downloadedBytes += file.length()
-            return@withContext true
+            // If file exists and has integrity intact, no need to download again
+            if (file.exists() && verifyFile(gFile)) {
+                Log.i(TAG, "$file is already downloaded!")
+                downloadedBytes += file.length()
+                return@withContext true
+            }
+
+            try {
+                val tmpFileSuffix = ".tmp"
+                val tmpFile = File(file.absolutePath + tmpFileSuffix)
+
+                // Download as a temporary file to avoid installing corrupted files
+                val isNewFile = tmpFile.createNewFile()
+
+                val okHttpClient = httpClient as HttpClient
+                val headers = mutableMapOf<String, String>()
+
+                if (!isNewFile) {
+                    Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
+                    downloadedBytes += tmpFile.length()
+                    headers["Range"] = "bytes=${tmpFile.length()}-"
+                }
+
+                okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
+                    FileOutputStream(tmpFile, !isNewFile).use {
+                        input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
+                    }
+                }
+
+                if (!tmpFile.renameTo(file)) {
+                    throw Exception("Failed to remove .tmp extension from $tmpFile")
+                }
+
+                return@withContext true
+            } catch (exception: Exception) {
+                when (exception) {
+                    is SocketException,
+                    is SocketTimeoutException,
+                    is UnknownHostException -> {
+                        throw Exceptions.NoNetworkException()
+                    }
+
+                    is CancellationException -> {
+                        throw Exceptions.DownloadCancelledException()
+                    }
+
+                    else -> throw exception
+                }
+            }
         }
-
-        try {
-            val tmpFileSuffix = ".tmp"
-            val tmpFile = File(file.absolutePath + tmpFileSuffix)
-
-            // Download as a temporary file to avoid installing corrupted files
-            val isNewFile = tmpFile.createNewFile()
-
-            val okHttpClient = httpClient as HttpClient
-            val headers = mutableMapOf<String, String>()
-
-            if (!isNewFile) {
-                Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
-                downloadedBytes += tmpFile.length()
-                headers["Range"] = "bytes=${tmpFile.length()}-"
-            }
-
-            okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
-                FileOutputStream(tmpFile, !isNewFile).use {
-                    input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
-                }
-            }
-
-            if (!tmpFile.renameTo(file)) {
-                throw Exception("Failed to remove .tmp extension from $tmpFile")
-            }
-
-            return@withContext true
-        } catch (exception: Exception) {
-            when (exception) {
-                is SocketException,
-                is SocketTimeoutException,
-                is UnknownHostException -> {
-                    throw Exceptions.NoNetworkException()
-                }
-
-                is CancellationException -> {
-                    throw Exceptions.DownloadCancelledException()
-                }
-
-                else -> throw exception
-            }
-        }
-    }
 
     /**
      * Updates the progress data of the download in the local database and notifies user.
