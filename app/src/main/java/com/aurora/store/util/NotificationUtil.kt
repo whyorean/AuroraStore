@@ -132,7 +132,12 @@ object NotificationUtil {
                 builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
 
                 // Show install action if app cannot be silently installed
-                if (!AppInstaller.canInstallSilently(context, download.packageName, download.targetSdk)) {
+                if (!AppInstaller.canInstallSilently(
+                        context,
+                        download.packageName,
+                        download.targetSdk
+                    )
+                ) {
                     builder.addAction(
                         NotificationCompat.Action.Builder(
                             R.drawable.ic_install,
