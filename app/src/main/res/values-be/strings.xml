@@ -170,18 +170,18 @@
     <string name="privacy_policy_title">Палітыка прыватнасці</string>
     <string name="source_code_subtitle">Даведайцеся, што ўнутры</string>
     <string name="title_more">Падрабязней</string>
-    <string name="manage_account">Кіруй сваім акаўнтам</string>
-    <string name="pref_clear_device_owner_title">Ачысціць прыладу уладальніка</string>
+    <string name="manage_account">Кіраванне ўліковым запісам</string>
+    <string name="pref_clear_device_owner_title">Ачысціць прыладу ўладальніка</string>
     <string name="add_dispenser_title">Дадаць размеркавальнік</string>
     <string name="pref_dispenser_summary">Прагляд і кіраванне размеркавальнікамі токенаў для ананімных уваходаў</string>
     <string name="no_dispensers_available">Размеркавальнікі адсутнічаюць</string>
-    <string name="add_dispenser_hint">Размеркавальнік URL</string>
+    <string name="add_dispenser_hint">URL размеркавальніка</string>
     <string name="add_dispenser_error">Памылковы URL</string>
     <string name="toast_fav_import_success">Абранае імпартавана!</string>
     <string name="toast_fav_export_success">Абранае экспартавана!</string>
-    <string name="export_app_summary">Пачакайце, экспартую файл</string>
-    <string name="action_logout_confirmation_message">Сапраўды жадаеш выйсці?</string>
-    <string name="export_app_title">Праглядчык файлаў</string>
+    <string name="export_app_summary">Пачакайце, ідзе экспарт файла</string>
+    <string name="action_logout_confirmation_message">Сапраўды жадаеце выйсці?</string>
+    <string name="export_app_title">Праграма экспарту файлаў</string>
     <string name="action_update_all">Абнавіць усе</string>
     <string name="purchase_session_expired">Сеанс завяршыўся, увайдзіце ізноў, каб пачаць новы.</string>
     <string name="notification_updates_available_1">Даступна <xliff:g id="apps_count">%1$d</xliff:g> абнаўленне</string>
@@ -232,7 +232,7 @@
     <string name="details_more_about_app">Больш аб гэтай праграме</string>
     <string name="details_no_ads">Рэклама адсутнічае</string>
     <string name="exodus_view_report">Праглядзець справаздачу</string>
-    <string name="details_data_safety_subtitle">Інфармацыя аб прыватнасці і бяспецы дадзеных, задэклараваная распрацоўшчыкам</string>
+    <string name="details_data_safety_subtitle">Інфармацыя аб прыватнасці і бяспецы дадзеных, заяўленая распрацоўшчыкам</string>
     <string name="download_cancel_all">Скасаваць усё</string>
     <string name="download_clear_finished">Ачысціць завершаныя</string>
     <string name="download_none">Спампоўкі адсутнічаюць</string>
@@ -335,19 +335,19 @@
     <string name="force_restart_summary">Aurora Store трэба перазапусціць, каб прымяніць змены</string>
     <string name="force_restart_title">Перазапусціць Aurora Store</string>
     <string name="check_updates">Праверыць наяўнасць абнаўленняў</string>
-    <string name="action_logout_confirmation_title">Выходзім?</string>
-    <string name="export_app_summary_fail">Не атрымалася экспартаваць набор праграм</string>
+    <string name="action_logout_confirmation_title">Выйсці?</string>
+    <string name="export_app_summary_fail">Не ўдалося экспартаваць набор праграм</string>
     <string name="export_app_summary_success">Набор праграм паспяхова экспартаваны</string>
     <string name="toast_fav_export_failed">Памылка экспартавання абранага!</string>
     <string name="toast_fav_import_failed">Памылка імпартавання абранага!</string>
     <string name="remove">Выдаліць</string>
     <string name="add">Дадаць</string>
-    <string name="remove_dispenser_summary">Вы хочаце выдаліць размеркавальнік\\\"<xliff:g id="url"> %1$s</xliff:g>\\\"?</string>
+    <string name="remove_dispenser_summary">Вы сапраўды хочаце выдаліць размеркавальнік \"<xliff:g id="url"> %1$s</xliff:g>\"?</string>
     <string name="remove_dispenser_title">Выдаліць размеркавальнік</string>
     <string name="pref_clear_device_owner_summary">Выдаляе Aurora Store як праграму ўладальніка прылады</string>
-    <string name="pref_clear_device_owner_desc">Гэта адкліча дазвол праграмы ўсталёўкі сеанса на бясшумную ўстаноўку праграмы. Працягнуць ачыстку прылады карыстальніка?</string>
+    <string name="pref_clear_device_owner_desc">Гэта скасуе дазвол праграмы ўсталёўкі сеанса на бясшумную ўстаноўку праграмы. Працягнуць ачыстку прылады карыстальніка?</string>
     <string name="pref_dispenser_title">Кіраванне размеркавальнікамі</string>
-    <string name="add_dispenser_summary">Дадайце размеркавальнік жэтонаў у Aurora Store. Размеркавальнік жэтонаў перадае уліковыя даныя ўліковага запісу ў Aurora Store для ананімнага ўваходу.</string>
+    <string name="add_dispenser_summary">Дадайце размеркавальнік токенаў у Aurora Store. Размеркавальнік перадае ўліковыя даныя ў Aurora Store для ананімнага ўваходу.</string>
     <string name="pref_aurora_only">Толькі праграмы Aurora Store</string>
     <string name="purchase_invalid">Праграма не куплёная</string>
     <string name="purchase_unsupported">Праграма не падтрымліваецца</string>
@@ -386,4 +386,47 @@
     <string name="toast_permission_esm_restart">Магчыма спатрэбіцца перазапусціць праграму, каб стан дазвол адлюстравалася правільна.</string>
     <string name="no_apps_available">Няма даступных праграм</string>
     <string name="made_with_love">Зроблена з <xliff:g id="heart_emoji">%1$s</xliff:g> у Індыі</string>
+    <string name="toast_black_export_failed">Памылка экспартавання чорнага спіса!</string>
+    <string name="toast_black_import_success">Чорны спіс імпартаваны!</string>
+    <string name="status_failed">Памылка</string>
+    <string name="status_cancelled">Скасавана</string>
+    <string name="status_completed">Завершана</string>
+    <string name="authentication_required_title">Патрэбная праверка</string>
+    <string name="default_spoof">Прадвызначаны</string>
+    <string name="action_unarchive">Разархіваваць</string>
+    <string name="unable_to_open">Не ўдалося адкрыць праграму</string>
+    <string name="plexus_powered">На платформе Plexus</string>
+    <string name="installed_apps_size">Усталявана <xliff:g id="installed_apps_size">%1$d</xliff:g> праграм</string>
+    <string name="pref_network_microg_login_title">Выкарыстоўваць microG каб выконваць уваход ва ўліковыя запісы</string>
+    <string name="set">Задаць</string>
+    <string name="disable">Выключыць</string>
+    <string name="toast_proxy_disabled">Проксі паспяхова выключана</string>
+    <string name="pref_updates_restrictions_desc">Наладзьце абмежаванні для аўтаматычных абнаўленняў на прыладзе.</string>
+    <string name="pref_updates_restrictions_battery">Калі зарад батарэі не нізкі</string>
+    <string name="pref_network_microg_login_desc">Пацвярджайце сапраўднасць, выкарыстоўваючы microG пры ўваходзе ва ўліковыя запісы Google, каб працэс увахода быў прасцей.</string>
+    <string name="details_compatibility_gms_required_subtitle">Вам можа спатрэбіцца ўсталяваць уласную бібліятэку Google ці свабодную альтэрнатыву, напрыклад microG.</string>
+    <string name="toast_black_export_success">Чорны спіс экспартаваны!</string>
+    <string name="pref_network_proxy_desc">Прагляд і кіраванне наладамі проксі</string>
+    <string name="pref_updates_restrictions_metered">Толькі на неабмежаваных сетках</string>
+    <string name="pref_updates_restrictions_title">Абмежаванні па аўтаматычным абнаўленням</string>
+    <string name="details_compatibility_gms_required_title">Патрабуюцца сэрвісы Google Play</string>
+    <string name="status_verifying">Ідзе верыфікацыя</string>
+    <string name="pref_updates_restrictions_idle">Калі прылада неактыўная</string>
+    <string name="toast_black_import_failed">Памылка імпартавання чорнага спіса!</string>
+    <string name="status_downloading">Ідзе спампоўка</string>
+    <string name="details_compatibility_title">Сумяшчальнасць</string>
+    <string name="plexus_progress">Праверка сумяшчальнасці…</string>
+    <string name="details_compatibility_gms_not_required_title">Працуе без сэрвісаў Google Play</string>
+    <string name="details_compatibility_no_gms">Без сэрвісаў Google Play</string>
+    <string name="details_compatibility_status_compatible">Сумяшчальна: працуе без праблем</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Гэта праграма працуе без уласнай бібліятэкі Google. Але майце на ўвазе, што могуць спатрэбіцца іншыя бібліятэкі для правільнай працы.</string>
+    <string name="details_compatibility_microg">З microG Project</string>
+    <string name="details_compatibility_status_limited">Абмежавана: працуе не са ўсімі функцыямі</string>
+    <string name="details_compatibility_status_unsupported">Не падтрымліваецца: не працуе</string>
+    <string name="details_compatibility_status_unknown">Невядома: яшчэ не было праверана</string>
+    <string name="available_spoof">Даступны</string>
+    <string name="checking_updates">Праверка на абнаўленні</string>
+    <string name="status_queued">У чарзе</string>
+    <string name="status_unavailable">Недаступна</string>
+    <string name="authentication_required_unarchive">Калі ласка, увайдзіце са сваім уліковым запісам Google Play, каб разархіваваць гэтую праграму!</string>
 </resources>
