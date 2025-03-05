@@ -97,7 +97,7 @@ object PackageUtil {
     fun isArchived(context: Context, packageName: String): Boolean {
         return try {
             isVAndAbove && context.packageManager.getArchivedPackage(packageName) != null
-        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (e: Exception) {
             false
         }
     }
