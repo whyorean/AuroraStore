@@ -24,6 +24,7 @@ import dagger.assisted.AssistedInject
 import java.io.File
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
+import androidx.core.net.toUri
 
 /**
  * An expedited worker to export downloaded or installed apps.
@@ -95,7 +96,7 @@ class ExportWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         val isDownload = inputData.getBoolean(IS_DOWNLOAD, false)
-        val uri = Uri.parse(inputData.getString(URI))
+        val uri = inputData.getString(URI)!!.toUri()
         val packageName = inputData.getString(PACKAGE_NAME)
         val displayName = inputData.getString(DISPLAY_NAME)
         val versionCode = inputData.getInt(VERSION_CODE, -1)

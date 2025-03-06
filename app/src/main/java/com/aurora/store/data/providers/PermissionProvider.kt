@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.provider.Settings
 import android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
 import android.util.Log
@@ -25,6 +24,7 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.util.PackageUtil
+import androidx.core.net.toUri
 
 class PermissionProvider(private val fragment: Fragment) :
     ActivityResultCallback<ActivityResult> {
@@ -142,11 +142,11 @@ class PermissionProvider(private val fragment: Fragment) :
             PermissionType.INSTALL_UNKNOWN_APPS to PackageUtil.getInstallUnknownAppsIntent(),
             PermissionType.DOZE_WHITELIST to Intent(
                 Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+                "package:${BuildConfig.APPLICATION_ID}".toUri()
             ),
             PermissionType.APP_LINKS to Intent(
                 ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
-                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+                "package:${BuildConfig.APPLICATION_ID}".toUri()
             )
         )
     }

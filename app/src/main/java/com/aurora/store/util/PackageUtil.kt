@@ -28,7 +28,6 @@ import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
@@ -45,6 +44,7 @@ import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import java.util.Locale
+import androidx.core.net.toUri
 
 object PackageUtil {
 
@@ -176,7 +176,7 @@ object PackageUtil {
     fun getStorageManagerIntent(context: Context): Intent {
         val intent = Intent(
             Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            "package:${BuildConfig.APPLICATION_ID}".toUri()
         )
 
         // Check if the intent can be resolved
@@ -197,7 +197,7 @@ object PackageUtil {
         return if (isOAndAbove) {
             Intent(
                 Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+                "package:${BuildConfig.APPLICATION_ID}".toUri()
             )
         } else {
             Intent(Settings.ACTION_SECURITY_SETTINGS)

@@ -29,7 +29,6 @@ import android.content.pm.PackageManager
 import android.content.pm.verify.domain.DomainVerificationManager
 import android.content.pm.verify.domain.DomainVerificationUserState
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.PowerManager
@@ -45,6 +44,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Screen
+import androidx.core.net.toUri
 
 private const val TAG = "Context"
 
@@ -54,7 +54,7 @@ val Context.inflater: LayoutInflater
 fun Context.browse(url: String) {
     try {
         val customTabsIntent = CustomTabsIntent.Builder()
-        customTabsIntent.build().launchUrl(this, Uri.parse(url))
+        customTabsIntent.build().launchUrl(this, url.toUri())
     } catch (exception: Exception) {
         Log.e(TAG, "Failed to open custom tab", exception)
     }
@@ -78,7 +78,7 @@ fun Context.openInfo(packageName: String) {
     try {
         val intent = Intent(
             "android.settings.APPLICATION_DETAILS_SETTINGS",
-            Uri.parse("package:$packageName")
+            "package:$packageName".toUri()
         )
         startActivity(intent)
     } catch (exception: Exception) {

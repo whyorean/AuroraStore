@@ -20,7 +20,6 @@
 package com.aurora.store.view.ui.preferences
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -31,6 +30,7 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
+import androidx.core.net.toUri
 
 @AndroidEntryPoint
 class UIPreference : BasePreferenceFragment() {
@@ -43,7 +43,7 @@ class UIPreference : BasePreferenceFragment() {
                 summary = Locale.getDefault().displayName
                 setOnPreferenceClickListener {
                     startActivity(Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
-                        data = Uri.parse("package:" + requireContext().packageName)
+                        data = ("package:" + requireContext().packageName).toUri()
                     })
                     true
                 }
