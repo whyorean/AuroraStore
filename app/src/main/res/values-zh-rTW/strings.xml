@@ -402,4 +402,5 @@
     <string name="toast_black_import_failed">匯入黑名單失敗！</string>
     <string name="toast_black_import_success">已匯入黑名單！</string>
     <string name="notification_channel_export">應用程式匯出通知</string>
+    <string name="toast_permission_esm_restart">您可能需要重新啟動應用程式以使權限授予生效。</string>
 </resources>
