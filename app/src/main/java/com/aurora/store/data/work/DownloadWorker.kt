@@ -76,13 +76,13 @@ class DownloadWorker @AssistedInject constructor(
 
     private val notificationManager = appContext.getSystemService<NotificationManager>()!!
 
-    private var notificationId: Int = 200
     private var icon: Bitmap? = null
     private var totalBytes by Delegates.notNull<Long>()
     private var totalProgress = 0
     private var downloadedBytes = 0L
 
     private val TAG = DownloadWorker::class.java.simpleName
+    private val NOTIFICATION_ID: Int = 200
 
     object Exceptions {
         class InvalidAuthDataException : Exception("AuthData is invalid")
@@ -107,7 +107,6 @@ class DownloadWorker @AssistedInject constructor(
             // Bail out if no package name is provided
             if (packageName.isNullOrBlank()) return onFailure(Exceptions.NoPackageNameException())
 
-            notificationId = packageName.hashCode()
             download = downloadDao.getDownload(packageName)
 
             val response = (httpClient as HttpClient).call(download.iconURL).body
@@ -261,7 +260,7 @@ class DownloadWorker @AssistedInject constructor(
             }
 
             // Remove all notifications
-            notificationManager.cancel(notificationId)
+            notificationManager.cancel(NOTIFICATION_ID)
 
             return@withContext Result.failure()
         }
@@ -391,7 +390,7 @@ class DownloadWorker @AssistedInject constructor(
                     download.timeRemaining
                 )
 
-                notifyStatus(DownloadStatus.DOWNLOADING)
+                notifyStatus(DownloadStatus.DOWNLOADING, true)
                 totalProgress = progress
             }
         }
@@ -405,9 +404,9 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         return if (isQAndAbove) {
-            ForegroundInfo(notificationId, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
+            ForegroundInfo(NOTIFICATION_ID, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
         } else {
-            ForegroundInfo(notificationId, notification)
+            ForegroundInfo(NOTIFICATION_ID, notification)
         }
     }
 
@@ -415,7 +414,7 @@ class DownloadWorker @AssistedInject constructor(
      * Notifies the user of the current status of the download.
      * @param status Current [DownloadStatus]
      */
-    private suspend fun notifyStatus(status: DownloadStatus) {
+    private suspend fun notifyStatus(status: DownloadStatus, isProgress: Boolean = false) {
         // Update status in database
         download.downloadStatus = status
         downloadDao.updateStatus(download.packageName, status)
@@ -434,7 +433,10 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         val notification = NotificationUtil.getDownloadNotification(appContext, download, icon)
-        notificationManager.notify(notificationId, notification)
+        notificationManager.notify(
+            if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
+            notification
+        )
     }
 
     /**

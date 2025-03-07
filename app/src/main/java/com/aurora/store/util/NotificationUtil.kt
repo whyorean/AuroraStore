@@ -93,6 +93,7 @@ object NotificationUtil {
         largeIcon: Bitmap? = null
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
+        builder.setSmallIcon(R.drawable.ic_notification_outlined)
         builder.setContentTitle(download.displayName)
         builder.setContentIntent(getContentIntentForDownloads(context))
         builder.setLargeIcon(largeIcon)
@@ -151,7 +152,7 @@ object NotificationUtil {
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
                 builder.setSmallIcon(android.R.drawable.stat_sys_download)
                 builder.setContentText(
-                    if (download.progress == 0) {
+                    if (download.progress <= 0) {
                         context.getString(R.string.download_queued)
                     } else {
                         context.getString(
@@ -164,7 +165,7 @@ object NotificationUtil {
                 )
                 builder.setOngoing(true)
                 builder.setCategory(Notification.CATEGORY_PROGRESS)
-                builder.setProgress(100, download.progress, download.progress == 0)
+                builder.setProgress(100, download.progress, download.progress <= 0)
                 builder.foregroundServiceBehavior = NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
                 builder.addAction(
                     NotificationCompat.Action.Builder(
