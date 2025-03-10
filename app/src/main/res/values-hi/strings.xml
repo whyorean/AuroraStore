@@ -417,7 +417,6 @@
     <string name="details_compatibility_status_limited">सीमित - सीमित गुणों के साथ काम करता है</string>
     <string name="details_compatibility_status_unsupported">असमर्थित - काम नहीं करता है</string>
     <string name="notification_channel_install">संस्थापन सूचना</string>
-    <string name="toast_permission_esm_restart">दी गयी अनुमति का प्रभाव दिखने के लिये आपको ऐप को पुनरारंभ करना पड़ सकता है।</string>
     <string name="checking_updates">अद्यतन जाँच जारी</string>
     <string name="status_failed">असफल हुआ</string>
     <string name="status_cancelled">रद्द हुआ</string>
