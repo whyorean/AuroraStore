@@ -382,7 +382,6 @@
     <string name="action_remove_all">Выдаліць усё</string>
     <string name="filter_latest">Апошнія</string>
     <string name="notification_channel_account">Апавяшчэнне наконт уліковага запісу</string>
-    <string name="toast_permission_esm_restart">Магчыма спатрэбіцца перазапусціць праграму, каб стан дазвол адлюстравалася правільна.</string>
     <string name="no_apps_available">Няма даступных праграм</string>
     <string name="made_with_love">Зроблена з <xliff:g id="heart_emoji">%1$s</xliff:g> у Індыі</string>
     <string name="toast_black_export_failed">Памылка экспартавання чорнага спіса!</string>
