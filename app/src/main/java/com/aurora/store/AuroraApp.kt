@@ -95,10 +95,8 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         NotificationUtil.createNotificationChannel(this)
 
         // Initialize Download and Update helpers to observe and trigger downloads
-        scope.launch {
-            downloadHelper.init()
-            updateHelper.init()
-        }
+        downloadHelper.init()
+        updateHelper.init()
 
         //Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(

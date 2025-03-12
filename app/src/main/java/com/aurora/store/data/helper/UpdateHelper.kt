@@ -25,14 +25,13 @@ import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_IDLE
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_METERED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit.HOURS
 import java.util.concurrent.TimeUnit.MINUTES
 import javax.inject.Inject
@@ -69,12 +68,12 @@ class UpdateHelper @Inject constructor(
     /**
      * Deletes invalid updates from database and starts observing events
      */
-    suspend fun init() {
-        withContext(Dispatchers.IO) {
+    fun init() {
+        AuroraApp.scope.launch {
             deleteInvalidUpdates()
+        }.invokeOnCompletion {
+            observeUpdates()
         }
-
-        observeUpdates()
     }
 
     private fun observeUpdates() {
