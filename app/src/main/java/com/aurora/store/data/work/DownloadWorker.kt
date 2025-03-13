@@ -63,9 +63,9 @@ import com.aurora.gplayapi.data.models.File as GPlayFile
  */
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
+    authProvider: AuthProvider,
     private val downloadDao: DownloadDao,
     private val appInstaller: AppInstaller,
-    private val authProvider: AuthProvider,
     private val httpClient: IHttpClient,
     private val purchaseHelper: PurchaseHelper,
     @Assisted private val appContext: Context,
@@ -85,7 +85,6 @@ class DownloadWorker @AssistedInject constructor(
     private val NOTIFICATION_ID: Int = 200
 
     object Exceptions {
-        class InvalidAuthDataException : Exception("AuthData is invalid")
         class NoNetworkException : Exception("No network available")
         class NothingToDownloadException : Exception("Failed to purchase app")
         class DownloadFailedException : Exception("Download failed")
@@ -95,9 +94,6 @@ class DownloadWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         super.doWork()
-
-        // Bail out immediately if authData is not valid
-        if (!authProvider.isSavedAuthDataValid()) return onFailure(Exceptions.InvalidAuthDataException())
 
         // Fetch required data for download
         try {
