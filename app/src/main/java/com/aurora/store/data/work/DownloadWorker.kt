@@ -13,6 +13,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.core.content.getSystemService
+import androidx.core.graphics.scale
 import androidx.hilt.work.HiltWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
@@ -103,7 +104,7 @@ class DownloadWorker @AssistedInject constructor(
             if (response != null) {
                 val bitmap =
                     BitmapFactory.decodeStream(withContext(Dispatchers.IO) { response.byteStream() })
-                icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
+                icon = bitmap.scale(96, 96)
             }
         } catch (exception: Exception) {
             return onFailure(exception)
