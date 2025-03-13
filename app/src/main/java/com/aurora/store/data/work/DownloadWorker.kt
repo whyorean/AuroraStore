@@ -86,7 +86,6 @@ class DownloadWorker @AssistedInject constructor(
 
     object Exceptions {
         class InvalidAuthDataException : Exception("AuthData is invalid")
-        class NoPackageNameException : Exception("No packagename provided")
         class NoNetworkException : Exception("No network available")
         class NothingToDownloadException : Exception("Failed to purchase app")
         class DownloadFailedException : Exception("Download failed")
@@ -102,12 +101,7 @@ class DownloadWorker @AssistedInject constructor(
 
         // Fetch required data for download
         try {
-            val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
-
-            // Bail out if no package name is provided
-            if (packageName.isNullOrBlank()) return onFailure(Exceptions.NoPackageNameException())
-
-            download = downloadDao.getDownload(packageName)
+            download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
 
             val response = (httpClient as HttpClient).call(download.iconURL).body
             if (response != null) {
