@@ -27,7 +27,7 @@
     <string name="action_filter_apply">Lietot</string>
     <string name="action_filter_all">Visi</string>
     <string name="action_filter">Filtri</string>
-    <string name="action_export">Eskportēt</string>
+    <string name="action_export">Izgūt</string>
     <string name="action_disable">Izslēgt</string>
     <string name="action_copy_link">Kopēt saiti</string>
     <string name="action_copy">Kopēt</string>
@@ -383,7 +383,7 @@
     <string name="status_unavailable">Nepieejams</string>
     <string name="status_downloading">Lejupielādē</string>
     <string name="status_cancelled">Atcelts</string>
-    <string name="status_completed">Pabeigts</string>
+    <string name="status_completed">Pabeigta</string>
     <string name="status_queued">Ierindots</string>
     <string name="notification_channel_export">Lietotnes izgūšanas paziņojums</string>
     <string name="notification_channel_install">Uzstādīšanas paziņojums</string>
@@ -399,8 +399,8 @@
     <string name="filter_latest">Jaunākās</string>
     <string name="toast_black_import_failed">Neizdevās ievietot izņēmumus.</string>
     <string name="toast_black_import_success">Izņēmumi ievietoti.</string>
-    <string name="toast_black_export_success">Izņēmumi izgūts.</string>
-    <string name="toast_black_export_failed">Neizdevās izgūt izņēmumus.</string>
+    <string name="toast_black_export_success">Izņēmumu saraksts izgūts.</string>
+    <string name="toast_black_export_failed">Neizdevās izgūt izņēmumu sarakstu.</string>
     <string name="action_select_all">Atlasīt visu</string>
     <string name="status_verifying">Apliecina</string>
     <string name="action_unarchive">Atcelt arhivēšanu</string>
