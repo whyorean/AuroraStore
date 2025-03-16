@@ -298,7 +298,7 @@
     <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
     <string name="pref_aurora_only_desc">Controlla gli aggiornamenti solo per le app installate da Aurora Store</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
-    <string name="pref_updates_auto">Aggiorna le app automaticamente</string>
+    <string name="pref_updates_auto">Aggiornamenti automatici</string>
     <string name="pref_updates_auto_notify">Controlla e segnala gli aggiornamenti disponibili</string>
     <string name="pref_updates_auto_off">Non aggiornare le app automaticamente</string>
     <string name="pref_updates_auto_desc">Configura il comportamento degli aggiornamenti automatici</string>
@@ -400,4 +400,15 @@
     <string name="action_unarchive">Annulla archiviazione</string>
     <string name="toast_black_import_failed">Importazione della lista nera non riuscita!</string>
     <string name="toast_black_import_success">Lista nera importata!</string>
+    <string name="pref_updates_restrictions_idle">Quando il dispositivo è inattivo</string>
+    <string name="pref_updates_restrictions_battery">Quando la batteria non è bassa</string>
+    <string name="no_apps_available">Nessuna applicazione disponibile</string>
+    <string name="details_compatibility_microg">Con il Progetto microG</string>
+    <string name="unable_to_open">Impossibile aprire l\'app</string>
+    <string name="details_compatibility_title">Compatibilità</string>
+    <string name="details_compatibility_status_compatible">Compatibile: Funziona senza alcun problema</string>
+    <string name="details_compatibility_status_unknown">Sconosciuto: Non ancora controllato</string>
+    <string name="toast_proxy_disabled">Proxy disattivata con successo</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> app installate</string>
+    <string name="pref_network_microg_login_title">Usa microG per accedere agli account</string>
 </resources>
