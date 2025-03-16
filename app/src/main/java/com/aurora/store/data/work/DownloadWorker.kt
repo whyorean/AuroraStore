@@ -13,6 +13,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.core.content.getSystemService
+import androidx.core.graphics.scale
 import androidx.hilt.work.HiltWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
@@ -63,9 +64,9 @@ import com.aurora.gplayapi.data.models.File as GPlayFile
  */
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
+    authProvider: AuthProvider,
     private val downloadDao: DownloadDao,
     private val appInstaller: AppInstaller,
-    private val authProvider: AuthProvider,
     private val httpClient: IHttpClient,
     private val purchaseHelper: PurchaseHelper,
     @Assisted private val appContext: Context,
@@ -85,8 +86,6 @@ class DownloadWorker @AssistedInject constructor(
     private val NOTIFICATION_ID: Int = 200
 
     object Exceptions {
-        class InvalidAuthDataException : Exception("AuthData is invalid")
-        class NoPackageNameException : Exception("No packagename provided")
         class NoNetworkException : Exception("No network available")
         class NothingToDownloadException : Exception("Failed to purchase app")
         class DownloadFailedException : Exception("Download failed")
@@ -97,23 +96,15 @@ class DownloadWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         super.doWork()
 
-        // Bail out immediately if authData is not valid
-        if (!authProvider.isSavedAuthDataValid()) return onFailure(Exceptions.InvalidAuthDataException())
-
         // Fetch required data for download
         try {
-            val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
-
-            // Bail out if no package name is provided
-            if (packageName.isNullOrBlank()) return onFailure(Exceptions.NoPackageNameException())
-
-            download = downloadDao.getDownload(packageName)
+            download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
 
             val response = (httpClient as HttpClient).call(download.iconURL).body
             if (response != null) {
                 val bitmap =
                     BitmapFactory.decodeStream(withContext(Dispatchers.IO) { response.byteStream() })
-                icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
+                icon = bitmap.scale(96, 96)
             }
         } catch (exception: Exception) {
             return onFailure(exception)
