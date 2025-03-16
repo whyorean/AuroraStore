@@ -25,7 +25,7 @@
     <string name="action_blacklist_add">Tambahkan ke daftar blokir</string>
     <string name="action_blacklist">Daftar blokir</string>
     <string name="action_back">Kembali</string>
-    <string name="about_telegram_summary">Gabung di grup Dukungan Aurora untuk diskusi dan saran.</string>
+    <string name="about_telegram_summary">Gabung di grup Dukungan Aurora untuk diskusi atau saran.</string>
     <string name="about_telegram">Telegram</string>
     <string name="action_logout">Keluar</string>
     <string name="action_leave">Tinggalkan</string>
@@ -51,7 +51,7 @@
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_bitcoin_btc_summary">Donasi via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
-    <string name="about_bitcoin_bch_summary">Donasi via Bitcoin Cash (BCH)</string>
+    <string name="about_bitcoin_bch_summary">Donasi via Bitcoin Tunai (BCH)</string>
     <string name="about_bitcoin_bch">Bitcoin Tunai</string>
     <string name="account_login_using">Masuk menggunakan</string>
     <string name="account_logout">Keluar dari Aurora</string>
@@ -126,12 +126,12 @@
     <string name="installer_status_failure_storage">Ruang memori tidak cukup</string>
     <string name="installer_status_failure_invalid">APK tidak sah atau rusak</string>
     <string name="installer_status_failure_incompatible">Aplikasi tidak cocok</string>
-    <string name="installer_status_failure_conflict">Ada paket yang bemasalah</string>
+    <string name="installer_status_failure_conflict">Terdapat paket yang bemasalah</string>
     <string name="installer_status_failure_session">Tidak dapat membuat sesi</string>
     <string name="installer_status_failure_blocked">Pemasangan diblokir</string>
     <string name="installer_status_failure">Pemasang gagal</string>
     <string name="installer_service_available">Layanan Aurora tersedia dan siap dipasang.</string>
-    <string name="installer_root_unavailable">Tidak ada akses Root. Berikan aksesnya atau ubah pemasang.</string>
+    <string name="installer_root_unavailable">Tidak ada akses root. Berikan aksesnya atau ubah pemasang.</string>
     <string name="menu_terms">Ketentuan layanan</string>
     <string name="menu_license">Lisensi</string>
     <string name="menu_disclaimer">Penyanggahan</string>
@@ -150,7 +150,7 @@
     <string name="exodus_no_tracker">Tidak mengandung pelacak yang diketahui</string>
     <string name="download_speed_estimating">Memperkirakan</string>
     <string name="download_resume_all">Lanjutkan semua</string>
-    <string name="download_queued">Antrian</string>
+    <string name="download_queued">Antrean</string>
     <string name="download_pause_all">Jeda semua</string>
     <string name="download_none">Tidak ada unduhan</string>
     <string name="download_metadata">Mendapatkan metadata</string>
