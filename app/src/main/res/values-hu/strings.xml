@@ -3,14 +3,14 @@
     <string name="details_dev_details">Fejlesztői elérhetőség</string>
     <string name="details_dev_address">Cím</string>
     <string name="details_description">Leírás</string>
-    <string name="details_dependencies">Függőségek</string>
+    <string name="details_dependencies">Dependenciák</string>
     <string name="details_contains_ads">Hirdetéseket tartalmaz</string>
-    <string name="details_changelog_unavailable">Nincs megadva változásnapló</string>
+    <string name="details_changelog_unavailable">Nincs változásnapló mellékelve</string>
     <string name="details_changelog">Változásnapló</string>
     <string name="details_beta_delay">A jelentkezés eltarthat egy ideig, később ellenőrizheti az állapotot.</string>
     <string name="details_beta_description">Új funkciókkal és hibákkal találkozhat mindenki más előtt. Adjon visszajelzést a fejlesztőknek, hogy segítse őket a fejlesztésben.</string>
-    <string name="details_beta">Bétaprogram</string>
-    <string name="details_beta_available">Csatlakozik a bétaprogramhoz?</string>
+    <string name="details_beta">Béta program</string>
+    <string name="details_beta_available">Csatlakozik a béta programhoz?</string>
     <string name="details_beta_subscribed">Ön bétatesztelő</string>
     <string name="action_whitelist">Engedélyezési lista</string>
     <string name="action_update_all">Összes frissítése</string>
@@ -32,9 +32,9 @@
     <string name="action_join">Csatlakozás</string>
     <string name="action_installing">Telepítés alatt</string>
     <string name="action_install">Telepítés</string>
-    <string name="action_ignore">Mellőzés</string>
-    <string name="action_granted">Megadva</string>
-    <string name="action_grant">Megadás</string>
+    <string name="action_ignore">Elutasítás</string>
+    <string name="action_granted">Engedélyezve</string>
+    <string name="action_grant">Engedélyezése</string>
     <string name="action_get_local_apk">Alkalmazáscsomag mentése</string>
     <string name="action_finish">Kész</string>
     <string name="action_filter_rating">Értékelések</string>
@@ -58,7 +58,7 @@
     <string name="account_login_using">Bejelentkezés ezzel</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
-    <string name="about_xda_summary">Tekintse meg az Aurora Store XDA szálat a vitákért vagy javaslatokért.</string>
+    <string name="about_xda_summary">Tekintse meg az Aurora Store XDA fórumrészt a megbeszélésekért vagy javaslatokért.</string>
     <string name="about_xda">XDA fórum</string>
     <string name="about_telegram_summary">Csatlakozzon az Aurora Támogatás csoporthoz beszélgetéshez és javaslatokért.</string>
     <string name="about_telegram">Telegram</string>
@@ -138,7 +138,7 @@
     <string name="details_no_permission">Nincs engedély</string>
     <string name="details_no_dependencies">Nincs függőség</string>
     <string name="details_no_ads">Nincs hirdetés</string>
-    <string name="details_more_about_app">További információ</string>
+    <string name="details_more_about_app">További alkalmazás információ</string>
     <string name="details_gsf_dependent">GSF szükséges</string>
     <string name="details_free">Ingyenes</string>
     <string name="details_dev_website">Honlap</string>
@@ -393,7 +393,7 @@
     <string name="available_spoof">Elérhető</string>
     <string name="toast_black_import_success">Feketelista importálva.</string>
     <string name="action_remove_all">Összes eltávolítása</string>
-    <string name="action_select_all">Összes kiválasztása</string>
+    <string name="action_select_all">Összes kijelölése</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> alkalmazás telepítve</string>
     <string name="status_verifying">Ellenőrzés</string>
     <string name="unable_to_open">Az alkalmazás nem nyitható meg</string>
