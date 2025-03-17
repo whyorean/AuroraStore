@@ -413,4 +413,19 @@
     <string name="unable_to_open">Kan ikke åbne app</string>
     <string name="pref_clear_device_owner_summary">Fjerner Aurora Store som enhedsadministrator</string>
     <string name="pref_dispenser_summary">Se og administrer token-dispensere til anonyme logins</string>
+    <string name="set">Indstil</string>
+    <string name="disable">Deaktivér</string>
+    <string name="pref_network_microg_login_title">Brug microG til at logge ind på konti</string>
+    <string name="pref_network_microg_login_desc">Godkend med microG ved login på Google-konti for et enklere login-flow.</string>
+    <string name="pref_network_proxy_desc">Se og administrer proxy-konfiguration</string>
+    <string name="toast_proxy_disabled">Proxy blev deaktiveret</string>
+    <string name="pref_updates_restrictions_metered">Kun på ubegrænsede netværk</string>
+    <string name="pref_updates_restrictions_title">Restriktioner for automatiske opdateringer</string>
+    <string name="pref_updates_restrictions_battery">Når batteriet ikke er lavt</string>
+    <string name="verification_failed">Kunne ikke verificere hentede filer</string>
+    <string name="details_compatibility_status_unsupported">Ikke understøttet: Virker ikke</string>
+    <string name="details_compatibility_status_unknown">Ukendt: Ikke tjekket endnu</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installeret</string>
+    <string name="pref_updates_restrictions_idle">Når enheden er inaktiv</string>
+    <string name="pref_updates_restrictions_desc">Konfigurer enhedsrestriktioner for automatiske opdateringer.</string>
 </resources>
