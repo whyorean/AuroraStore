@@ -125,7 +125,7 @@
     <string name="download_metadata">Metaadatok beszerzése</string>
     <string name="download_force_clear_all">Összes kényszerített törlése</string>
     <string name="download_failed">Letöltés sikertelen</string>
-    <string name="download_eta_calculating">Számolás</string>
+    <string name="download_eta_calculating">Kalkulálás</string>
     <string name="download_completed">Letöltés befejezve</string>
     <string name="download_canceled">Megszakítva</string>
     <string name="download_cancel_all">Összes megszakítása</string>
@@ -135,8 +135,8 @@
     <string name="details_permission">Engedély</string>
     <string name="details_paid">Fizetős</string>
     <string name="details_no_updates">Nincs elérhető frissítés</string>
-    <string name="details_no_permission">Nincs engedély</string>
-    <string name="details_no_dependencies">Nincs függőség</string>
+    <string name="details_no_permission">Nincsenek engedélyek</string>
+    <string name="details_no_dependencies">Nincs dependencia</string>
     <string name="details_no_ads">Nincs hirdetés</string>
     <string name="details_more_about_app">További alkalmazás információ</string>
     <string name="details_gsf_dependent">GSF szükséges</string>
@@ -295,7 +295,7 @@
     <string name="android_market_desc">Az Android Market egy online áruház volt, amely szoftveralkalmazásokat kínált androidos eszközökhöz, és 2017-ben megszűnt.</string>
     <string name="pref_vending_version_device">Alapértelmezett (eszközkonfiguráció)</string>
     <string name="pref_vending_version_title">Google Play verzió</string>
-    <string name="details_ratings_title_hint">Értékelés</string>
+    <string name="details_ratings_title_hint">Értékelés címe</string>
     <string name="onboarding_permission_doze">Háttérbeli letöltések</string>
     <string name="pref_updates_auto">Automatikus alkalmazásfrissítés</string>
     <string name="pref_updates_auto_notify">Ellenőrizze, és értesítsen a rendelkezésre álló frissítésekről</string>
