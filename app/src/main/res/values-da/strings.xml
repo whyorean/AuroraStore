@@ -259,7 +259,7 @@
     <string name="session_login">Log venligst ind på din Google Play-konto</string>
     <string name="details_data_safety_title">Datasikkerhed</string>
     <string name="details_data_safety_subtitle">Databeskyttelse og sikkerhedspraksis erklæret af udvikleren</string>
-    <string name="download_paused">På pause •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">På pause • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="onboarding_permission_installer_legacy_desc">Tillad at installere apps fra ukendte kilder</string>
     <string name="pref_updates_incompatible_desc">Vis opdateringer til inkompatible eller deaktiverede apps, som muligvis ikke kan installeres</string>
     <string name="session_verifying">Verificerer session</string>
@@ -271,7 +271,7 @@
     <string name="toast_proxy_invalid">Ugyldig proxy-URL. Tjek formatet!</string>
     <string name="toast_app_unavailable">Appen er ikke tilgængelig for din enhed</string>
     <string name="update_available">opdatering tilgængelig</string>
-    <string name="pref_updates_auto_desc">Konfigurer adfærd for auto-opdateringer</string>
+    <string name="pref_updates_auto_desc">Konfigurer adfærd for automatiske opdateringer</string>
     <string name="pref_updates_auto_off">Opdater ikke apps automatisk</string>
     <string name="pref_updates_auto_notify">Søg efter og underret om tilgængelige opdateringer</string>
     <string name="pref_updates_auto_install">Søg efter og installer tilgængelige opdateringer automatisk</string>
@@ -291,7 +291,7 @@
     <string name="about_aurora_store_subtitle">Lær mere om Aurora Store</string>
     <string name="add_dispenser_error">Ugyldig URL</string>
     <string name="failed_to_fetch_report">Kunne ikke hente privatlivsrapport</string>
-    <string name="pref_updates_check_frequency_desc">Konfigurer intervaller for auto- og selvopdateringer i timer.</string>
+    <string name="pref_updates_check_frequency_desc">Konfigurer tidsinterval for automatiske opdateringer i timer.</string>
     <string name="failed_generating_session">Kunne ikke generere session. Fejlkode: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="app_links_desc">Tillad Aurora Store at åbne understøttede links</string>
     <string name="add">Tilføj</string>
@@ -310,7 +310,7 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="action_remove_all">Fjern alle</string>
     <string name="action_select_all">Vælg alle</string>
-    <string name="download_progress">Henter •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Henter • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_vending_version_device">Standard (fra enhedskonfiguration)</string>
     <string name="expand">Udvid</string>
     <string name="notification_updates_available_desc_1">En ny version af <xliff:g id="app_one_name">%1$s</xliff:g> er tilgængelig</string>
@@ -349,7 +349,7 @@
     <string name="am_installer_desc">Kræver App Manager. Har brug for adb/root-tilstand for at installere, når MIUI-optimering er slået til</string>
     <string name="shizuku_installer_subtitle">Bruger system-API\'er direkte med adb/root-rettigheder</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> og <xliff:g id="apps_count">%4$d</xliff:g> mere</string>
-    <string name="pref_updates_auto">Auto-opdater apps</string>
+    <string name="pref_updates_auto">Automatiske opdateringer</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> og <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="google_play_store_desc">Google Play, også kendt som Google Play Butik og tidligere Android Market.</string>
     <string name="details_ratings_title_hint">Titel på anmeldelse</string>
@@ -387,4 +387,30 @@
     <string name="toast_black_import_success">Sortliste importeret!</string>
     <string name="notification_channel_export">Meddelelse om app-eksport</string>
     <string name="notification_channel_install">Installationsmeddelelse</string>
+    <string name="add_dispenser_hint">Dispenser-URL</string>
+    <string name="no_dispensers_available">Ingen tilgængelige dispensere</string>
+    <string name="no_apps_available">Ingen tilgængelige apps</string>
+    <string name="add_dispenser_title">Tilføj dispenser</string>
+    <string name="add_dispenser_summary">Tilføj en token-dispenser til Aurora Store. Token-dispensere leverer kontooplysninger til Aurora Store for anonymt login.</string>
+    <string name="plexus_powered">Drevet af Plexus</string>
+    <string name="details_compatibility_gms_required_title">Kræver Google Play-tjenester</string>
+    <string name="details_compatibility_title">Kompatibilitet</string>
+    <string name="details_compatibility_gms_required_subtitle">Du skal muligvis installere Google’s proprietære bibliotek eller en FOSS-implementering som microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Virker uden Google Play-tjenester</string>
+    <string name="pref_dispenser_title">Administrer dispensere</string>
+    <string name="server_unreachable">Server utilgængelig</string>
+    <string name="pref_clear_device_owner_desc">Dette fjerner sessioninstallatørens tilladelse til at installere apps lydløst. Fortsæt med at fjerne enhedsadministration?</string>
+    <string name="remove_dispenser_title">Fjern dispenser</string>
+    <string name="remove_dispenser_summary">Ønsker du at fjerne dispenseren \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="plexus_progress">Tjekker kompatibilitet…</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Denne app virker uden Google’s proprietære bibliotek. Den kan dog stadig kræve andre tredjepartsbiblioteker for at fungere korrekt.</string>
+    <string name="details_compatibility_microg">Med microG Project</string>
+    <string name="details_compatibility_no_gms">Uden Google Play-tjenester</string>
+    <string name="details_compatibility_status_compatible">Kompatibel: Virker uden problemer</string>
+    <string name="details_compatibility_status_limited">Begrænset: Virker med begrænsede funktioner</string>
+    <string name="action_favourite">Favorit</string>
+    <string name="disclaimer_subtitle">Ansvarlighed og forpligtelse</string>
+    <string name="unable_to_open">Kan ikke åbne app</string>
+    <string name="pref_clear_device_owner_summary">Fjerner Aurora Store som enhedsadministrator</string>
+    <string name="pref_dispenser_summary">Se og administrer token-dispensere til anonyme logins</string>
 </resources>
