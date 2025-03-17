@@ -379,7 +379,7 @@
     <string name="notification_channel_install">Telepítési értesítés</string>
     <string name="notification_channel_downloads">Letöltési értesítés</string>
     <string name="status_cancelled">Megszakítva</string>
-    <string name="status_completed">Elkészült</string>
+    <string name="status_completed">Befejezett</string>
     <string name="status_queued">Sorba állítva</string>
     <string name="status_downloading">Letöltés</string>
     <string name="status_unavailable">Nem érhető el</string>
