@@ -100,7 +100,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
     private fun promptUser(intent: Intent, context: Context) {
         IntentCompat.getParcelableExtra(intent, Intent.EXTRA_INTENT, Intent::class.java)?.let {
             it.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-            it.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, "com.android.vending")
+            it.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
             it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             try {
