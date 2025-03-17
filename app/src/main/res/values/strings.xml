@@ -500,4 +500,7 @@
     <string name="pref_updates_restrictions_metered">Only on unmetered networks</string>
     <string name="pref_updates_restrictions_idle">When device is idle</string>
     <string name="pref_updates_restrictions_battery">When battery is not low</string>
+
+    <!-- DownloadWorker -->
+    <string name="verification_failed">Failed to verify downloaded files</string>
 </resources>

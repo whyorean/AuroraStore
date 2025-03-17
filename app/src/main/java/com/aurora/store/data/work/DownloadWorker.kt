@@ -85,13 +85,11 @@ class DownloadWorker @AssistedInject constructor(
     private val TAG = DownloadWorker::class.java.simpleName
     private val NOTIFICATION_ID: Int = 200
 
-    object Exceptions {
-        class NoNetworkException : Exception("No network available")
-        class NothingToDownloadException : Exception("Failed to purchase app")
-        class DownloadFailedException : Exception("Download failed")
-        class DownloadCancelledException : Exception("Download was cancelled")
-        class VerificationFailedException : Exception("Verification of downloaded files failed")
-    }
+    inner class NoNetworkException : Exception(appContext.getString(R.string.title_no_network))
+    inner class NothingToDownloadException : Exception(appContext.getString(R.string.purchase_no_file))
+    inner class DownloadFailedException : Exception(appContext.getString(R.string.download_failed))
+    inner class DownloadCancelledException : Exception(appContext.getString(R.string.download_canceled))
+    inner class VerificationFailedException : Exception(appContext.getString(R.string.verification_failed))
 
     override suspend fun doWork(): Result {
         super.doWork()
@@ -119,7 +117,7 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         // Bail out if file list is empty after purchase
-        if (download.fileList.isEmpty()) return onFailure(Exceptions.NothingToDownloadException())
+        if (download.fileList.isEmpty()) return onFailure(NothingToDownloadException())
 
         // Create dirs & generate download request for files and shared libs (if any)
         PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
@@ -163,14 +161,14 @@ class DownloadWorker @AssistedInject constructor(
         try {
             for (file in files) {
                 if (isStopped) {
-                    throw Exceptions.DownloadCancelledException()
+                    throw DownloadCancelledException()
                 }
 
                 downloadFile(download.packageName, file)
                 download.downloadedFiles++
             }
         } catch (exception: Exception) {
-            if (exception is Exceptions.DownloadCancelledException) {
+            if (exception is DownloadCancelledException) {
                 Log.i(TAG, "Download cancelled for ${download.packageName}")
                 // Try to delete all downloaded files
                 runCatching { files.forEach { deleteFile(it) } }
@@ -180,7 +178,7 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         // Report failure if download was stopped or failed
-        if (isStopped) return onFailure(Exceptions.DownloadFailedException())
+        if (isStopped) return onFailure(DownloadFailedException())
 
         // Verify downloaded files
         try {
@@ -188,7 +186,7 @@ class DownloadWorker @AssistedInject constructor(
             files.forEach { file -> require(verifyFile(file)) }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify ${download.packageName}", exception)
-            onFailure(Exceptions.VerificationFailedException())
+            onFailure(VerificationFailedException())
         }
 
         Log.i(TAG, "Finished downloading & verifying ${download.packageName}")
@@ -216,11 +214,11 @@ class DownloadWorker @AssistedInject constructor(
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
                 when (exception) {
-                    is Exceptions.DownloadCancelledException -> {
+                    is DownloadCancelledException -> {
                         notifyStatus(DownloadStatus.CANCELLED)
                     }
 
-                    is Exceptions.NoNetworkException -> {
+                    is NoNetworkException -> {
                         // TODO: Notify user of network failure, maybe a notification & retry option
                     }
 
@@ -317,11 +315,11 @@ class DownloadWorker @AssistedInject constructor(
                     is SocketException,
                     is SocketTimeoutException,
                     is UnknownHostException -> {
-                        throw Exceptions.NoNetworkException()
+                        throw NoNetworkException()
                     }
 
                     is CancellationException -> {
-                        throw Exceptions.DownloadCancelledException()
+                        throw DownloadCancelledException()
                     }
 
                     else -> throw exception
