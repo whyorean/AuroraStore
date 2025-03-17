@@ -53,26 +53,26 @@ class UpdateWorker @AssistedInject constructor(
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     private val appDetailsHelper: AppDetailsHelper,
-    @Assisted private val appContext: Context,
+    @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : AuthWorker(authProvider, appContext, workerParams) {
+) : AuthWorker(authProvider, context, workerParams) {
 
     private val TAG = UpdateWorker::class.java.simpleName
 
     private val notificationID = 100
 
-    private val canSelfUpdate = !CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID) &&
-            !CertUtil.isAppGalleryApp(appContext, BuildConfig.APPLICATION_ID) &&
+    private val canSelfUpdate = !CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID) &&
+            !CertUtil.isAppGalleryApp(context, BuildConfig.APPLICATION_ID) &&
             BuildType.CURRENT != BuildType.DEBUG
 
     private val isAuroraOnlyFilterEnabled: Boolean
-        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
+        get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
 
     private val isFDroidFilterEnabled: Boolean
-        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_FILTER_FDROID)
+        get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_FDROID)
 
     private val isExtendedUpdateEnabled: Boolean
-        get() = Preferences.getBoolean(appContext, Preferences.PREFERENCE_UPDATES_EXTENDED)
+        get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
     override suspend fun doWork(): Result {
         super.doWork()
@@ -81,13 +81,13 @@ class UpdateWorker @AssistedInject constructor(
         val updateMode = UpdateMode.entries[inputData.getInt(
             UpdateHelper.UPDATE_MODE,
             Preferences.getInteger(
-                appContext,
+                context,
                 PREFERENCE_UPDATES_AUTO,
                 UpdateMode.CHECK_AND_INSTALL.ordinal
             )
         )]
 
-        if (updateMode == UpdateMode.DISABLED || !AccountProvider.isLoggedIn(appContext)) {
+        if (updateMode == UpdateMode.DISABLED || !AccountProvider.isLoggedIn(context)) {
             Log.i(TAG, "Updates are disabled, bailing out!")
             return Result.failure()
         }
@@ -108,7 +108,7 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             // Notify and exit if we are only checking for updates or if battery optimizations are enabled
-            if (updateMode == UpdateMode.CHECK_AND_NOTIFY || !appContext.isIgnoringBatteryOptimizations()) {
+            if (updateMode == UpdateMode.CHECK_AND_NOTIFY || !context.isIgnoringBatteryOptimizations()) {
                 Log.i(TAG, "Found  ${updates.size} updates, notifying!")
                 notifyUpdates(updates)
                 return Result.success()
@@ -117,9 +117,9 @@ class UpdateWorker @AssistedInject constructor(
             // Clean the update list to prepare for installing
             val filteredUpdates = updates
                 .filter { it.hasValidCert }
-                .filterNot { it.isSelfUpdate(appContext) }
+                .filterNot { it.isSelfUpdate(context) }
                 .partition {
-                    AppInstaller.canInstallSilently(appContext, it.packageName, it.targetSdk)
+                    AppInstaller.canInstallSilently(context, it.packageName, it.targetSdk)
                 }
 
             // Notify about apps that cannot be auto-updated
@@ -139,7 +139,7 @@ class UpdateWorker @AssistedInject constructor(
     override suspend fun getForegroundInfo(): ForegroundInfo {
         return ForegroundInfo(
             notificationID,
-            NotificationUtil.getUpdateNotification(appContext)
+            NotificationUtil.getUpdateNotification(context)
         )
     }
 
@@ -148,25 +148,25 @@ class UpdateWorker @AssistedInject constructor(
      */
     private suspend fun checkUpdates(): List<Update> {
         return withContext(Dispatchers.IO) {
-            val packages = PackageUtil.getAllValidPackages(appContext)
+            val packages = PackageUtil.getAllValidPackages(context)
                 .filterNot { blacklistProvider.isBlacklisted(it.packageName) }
                 .filter { if (!isExtendedUpdateEnabled) it.applicationInfo!!.enabled else true }
 
             // Filter out packages based on user's preferences
             val filteredPackages = if (isAuroraOnlyFilterEnabled) {
-                packages.filter { CertUtil.isAuroraStoreApp(appContext, it.packageName) }
+                packages.filter { CertUtil.isAuroraStoreApp(context, it.packageName) }
             } else {
-                packages.filterNot { if (isFDroidFilterEnabled) CertUtil.isFDroidApp(appContext, it.packageName) else false }
+                packages.filterNot { if (isFDroidFilterEnabled) CertUtil.isFDroidApp(context, it.packageName) else false }
             }
 
             val updates = appDetailsHelper.getAppByPackageName(filteredPackages.map { it.packageName })
                 .filter { it.displayName.isNotEmpty() }
-                .filter { PackageUtil.isUpdatable(appContext, it.packageName, it.versionCode.toLong()) }
+                .filter { PackageUtil.isUpdatable(context, it.packageName, it.versionCode.toLong()) }
                 .toMutableList()
 
             if (canSelfUpdate) getSelfUpdate()?.let { updates.add(it) }
 
-            return@withContext updates.map { Update.fromApp(appContext, it) }
+            return@withContext updates.map { Update.fromApp(context, it) }
                 .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
         }
     }
@@ -199,12 +199,12 @@ class UpdateWorker @AssistedInject constructor(
                 }
 
                 if (isUpdate) {
-                    if (CertUtil.isFDroidApp(appContext, BuildConfig.APPLICATION_ID)) {
+                    if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
                         if (selfUpdate.fdroidBuild.isNotEmpty()) {
-                            return@withContext SelfUpdate.toApp(selfUpdate, appContext)
+                            return@withContext SelfUpdate.toApp(selfUpdate, context)
                         }
                     } else if (selfUpdate.auroraBuild.isNotEmpty()) {
-                        return@withContext SelfUpdate.toApp(selfUpdate, appContext)
+                        return@withContext SelfUpdate.toApp(selfUpdate, context)
                     } else {
                         Log.e(TAG, "Update file is missing!")
                         return@withContext null
@@ -221,10 +221,10 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     private fun notifyUpdates(updates: List<Update>) {
-        with(appContext.getSystemService<NotificationManager>()!!) {
+        with(context.getSystemService<NotificationManager>()!!) {
             notify(
                 notificationID,
-                NotificationUtil.getUpdateNotification(appContext, updates)
+                NotificationUtil.getUpdateNotification(context, updates)
             )
         }
     }

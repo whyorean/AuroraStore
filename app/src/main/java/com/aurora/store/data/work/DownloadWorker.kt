@@ -69,13 +69,13 @@ class DownloadWorker @AssistedInject constructor(
     private val appInstaller: AppInstaller,
     private val httpClient: IHttpClient,
     private val purchaseHelper: PurchaseHelper,
-    @Assisted private val appContext: Context,
+    @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : AuthWorker(authProvider, appContext, workerParams) {
+) : AuthWorker(authProvider, context, workerParams) {
 
     private lateinit var download: Download
 
-    private val notificationManager = appContext.getSystemService<NotificationManager>()!!
+    private val notificationManager = context.getSystemService<NotificationManager>()!!
 
     private var icon: Bitmap? = null
     private var totalBytes by Delegates.notNull<Long>()
@@ -85,11 +85,11 @@ class DownloadWorker @AssistedInject constructor(
     private val TAG = DownloadWorker::class.java.simpleName
     private val NOTIFICATION_ID: Int = 200
 
-    inner class NoNetworkException : Exception(appContext.getString(R.string.title_no_network))
-    inner class NothingToDownloadException : Exception(appContext.getString(R.string.purchase_no_file))
-    inner class DownloadFailedException : Exception(appContext.getString(R.string.download_failed))
-    inner class DownloadCancelledException : Exception(appContext.getString(R.string.download_canceled))
-    inner class VerificationFailedException : Exception(appContext.getString(R.string.verification_failed))
+    inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
+    inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))
+    inner class DownloadFailedException : Exception(context.getString(R.string.download_failed))
+    inner class DownloadCancelledException : Exception(context.getString(R.string.download_canceled))
+    inner class VerificationFailedException : Exception(context.getString(R.string.verification_failed))
 
     override suspend fun doWork(): Result {
         super.doWork()
@@ -120,7 +120,7 @@ class DownloadWorker @AssistedInject constructor(
         if (download.fileList.isEmpty()) return onFailure(NothingToDownloadException())
 
         // Create dirs & generate download request for files and shared libs (if any)
-        PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
+        PathUtil.getAppDownloadDir(context, download.packageName, download.versionCode).mkdirs()
 
         // Create OBB dir if required
         if (download.fileList.requiresObbDir()) {
@@ -134,7 +134,7 @@ class DownloadWorker @AssistedInject constructor(
             download.sharedLibs.forEach {
                 // Create shared lib download dir
                 PathUtil.getLibDownloadDir(
-                    appContext,
+                    context,
                     download.packageName,
                     download.versionCode,
                     it.packageName
@@ -226,7 +226,7 @@ class DownloadWorker @AssistedInject constructor(
                         notifyStatus(DownloadStatus.FAILED)
                         AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
                             extra =
-                                exception.message ?: appContext.getString(R.string.download_failed)
+                                exception.message ?: context.getString(R.string.download_failed)
                             error = exception.stackTraceToString()
                         })
                     }
@@ -254,7 +254,7 @@ class DownloadWorker @AssistedInject constructor(
                     packageName,
                     versionCode,
                     offerType,
-                    CertUtil.getEncodedCertificateHashes(appContext, download.packageName).last()
+                    CertUtil.getEncodedCertificateHashes(context, download.packageName).last()
                 )
             } else {
                 purchaseHelper.purchase(packageName, versionCode, offerType)
@@ -274,7 +274,7 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean =
         withContext(Dispatchers.IO) {
             Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
-            val file = PathUtil.getLocalFile(appContext, gFile, download)
+            val file = PathUtil.getLocalFile(context, gFile, download)
 
             // If file exists and has integrity intact, no need to download again
             if (file.exists() && verifyFile(gFile)) {
@@ -372,9 +372,9 @@ class DownloadWorker @AssistedInject constructor(
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
         val notification = if (this::download.isInitialized) {
-            NotificationUtil.getDownloadNotification(appContext, download, icon)
+            NotificationUtil.getDownloadNotification(context, download, icon)
         } else {
-            NotificationUtil.getDownloadNotification(appContext)
+            NotificationUtil.getDownloadNotification(context)
         }
 
         return if (isQAndAbove) {
@@ -406,7 +406,7 @@ class DownloadWorker @AssistedInject constructor(
             else -> {}
         }
 
-        val notification = NotificationUtil.getDownloadNotification(appContext, download, icon)
+        val notification = NotificationUtil.getDownloadNotification(context, download, icon)
         notificationManager.notify(
             if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
             notification
@@ -419,7 +419,7 @@ class DownloadWorker @AssistedInject constructor(
      */
     @OptIn(ExperimentalStdlibApi::class)
     private suspend fun verifyFile(gFile: GPlayFile): Boolean {
-        val file = PathUtil.getLocalFile(appContext, gFile, download)
+        val file = PathUtil.getLocalFile(context, gFile, download)
         Log.i(TAG, "Verifying $file")
 
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
@@ -447,7 +447,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private fun deleteFile(file: GPlayFile) {
-        val apkFile = PathUtil.getLocalFile(appContext, file, download)
+        val apkFile = PathUtil.getLocalFile(context, file, download)
         if (apkFile.exists()) {
             apkFile.delete()
             Log.i(TAG, "Deleted Apk: $apkFile")

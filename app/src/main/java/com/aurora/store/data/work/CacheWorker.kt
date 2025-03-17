@@ -23,9 +23,9 @@ import kotlin.time.toDuration
  */
 @HiltWorker
 class CacheWorker @AssistedInject constructor(
-    @Assisted private val appContext: Context,
+    @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams) {
+) : CoroutineWorker(context, workerParams) {
 
     companion object {
         private const val TAG = "CleanCacheWorker"
@@ -58,12 +58,12 @@ class CacheWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         Log.i(TAG, "Cleaning cache")
 
-        PathUtil.getOldDownloadDirectories(appContext).filter { it.exists() }.forEach { dir -> // Downloads
+        PathUtil.getOldDownloadDirectories(context).filter { it.exists() }.forEach { dir -> // Downloads
             Log.i(TAG, "Deleting old unused download directory: $dir")
             dir.deleteRecursively()
         }
 
-        PathUtil.getDownloadDirectory(appContext).listFiles()?.forEach { download -> // com.example.app
+        PathUtil.getDownloadDirectory(context).listFiles()?.forEach { download -> // com.example.app
             // Delete if the download directory is empty
             if (download.listFiles().isNullOrEmpty()) {
                 Log.i(TAG, "Removing empty download directory for ${download.name}")

@@ -35,14 +35,14 @@ import kotlin.coroutines.suspendCoroutine
 @HiltWorker
 open class AuthWorker @AssistedInject constructor(
     private val authProvider: AuthProvider,
-    @Assisted private val appContext: Context,
+    @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams) {
+) : CoroutineWorker(context, workerParams) {
 
     private val TAG = AuthWorker::class.java.simpleName
 
     override suspend fun doWork(): Result {
-        if (!AccountProvider.isLoggedIn(appContext)) {
+        if (!AccountProvider.isLoggedIn(context)) {
             Log.i(TAG, "User has logged out!")
             return Result.failure()
         }
@@ -54,11 +54,11 @@ open class AuthWorker @AssistedInject constructor(
 
         // Generate and validate new auth
         try {
-            val accountType = AccountProvider.getAccountType(appContext)
+            val accountType = AccountProvider.getAccountType(context)
             val authData = when (accountType) {
                 AccountType.GOOGLE -> {
-                    val email = AccountProvider.getLoginEmail(appContext)
-                    val tokenPair = AccountProvider.getLoginToken(appContext)
+                    val email = AccountProvider.getLoginEmail(context)
+                    val tokenPair = AccountProvider.getLoginToken(context)
 
                     if (email == null || tokenPair == null) {
                         throw Exception()
@@ -128,14 +128,14 @@ open class AuthWorker @AssistedInject constructor(
         try {
             if (oldToken != null) {
                 // Invalidate the old token before requesting a new one
-                AccountManager.get(appContext)
+                AccountManager.get(context)
                     .invalidateAuthToken(
                         GOOGLE_ACCOUNT_TYPE,
                         oldToken
                     )
             }
 
-            AccountManager.get(appContext)
+            AccountManager.get(context)
                 .getAuthToken(
                     Account(email, GOOGLE_ACCOUNT_TYPE),
                     GOOGLE_PLAY_AUTH_TOKEN_TYPE,
@@ -160,7 +160,7 @@ open class AuthWorker @AssistedInject constructor(
         return if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             authProvider.saveAuthData(authData)
             AccountProvider.login(
-                appContext,
+                context,
                 authData.email,
                 authData.aasToken.ifBlank { authData.authToken },
                 if (authData.aasToken.isBlank()) AuthHelper.Token.AUTH else AuthHelper.Token.AAS,
@@ -168,8 +168,8 @@ open class AuthWorker @AssistedInject constructor(
             )
             authData
         } else {
-            authProvider.removeAuthData(appContext)
-            AccountProvider.logout(appContext)
+            authProvider.removeAuthData(context)
+            AccountProvider.logout(context)
             null
         }
     }
