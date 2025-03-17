@@ -1,3 +1,10 @@
+Changelog : v4.7.0 (66)
+• New app compatibility ratings powered by Plexus
+• Improvements to blacklist manager
+• Ability to change auto-update restrictions
+• Minor bug fixes and improvements
+• Translation updates; additional strings localized
+
 Changelog : v4.6.4 (65)
 • Fixed issues with shared library installation for apps like Chrome and WebView
 • Support for login into personal account using microG
