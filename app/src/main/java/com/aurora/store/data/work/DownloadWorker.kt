@@ -183,33 +183,18 @@ class DownloadWorker @AssistedInject constructor(
         if (isStopped) return onFailure(Exceptions.DownloadFailedException())
 
         // Verify downloaded files
-        val verifySuccess = verifyFiles(download.packageName, files)
-
-        // Report failure if verification failed
-        if (!verifySuccess || isStopped) return onFailure(Exceptions.VerificationFailedException())
+        try {
+            notifyStatus(DownloadStatus.VERIFYING)
+            files.forEach { file -> require(verifyFile(file)) }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to verify ${download.packageName}", exception)
+            onFailure(Exceptions.VerificationFailedException())
+        }
 
         Log.i(TAG, "Finished downloading & verifying ${download.packageName}")
         notifyStatus(DownloadStatus.COMPLETED)
 
         return onSuccess()
-    }
-
-    private suspend fun verifyFiles(
-        packageName: String,
-        files: List<GPlayFile>
-    ): Boolean = withContext(NonCancellable) {
-        notifyStatus(DownloadStatus.VERIFYING)
-
-        for (file in files) {
-            try {
-                verifyFile(file)
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to verify $packageName : ${file.name}", e)
-                return@withContext false
-            }
-        }
-
-        true
     }
 
     private suspend fun onSuccess(): Result = withContext(NonCancellable) {
