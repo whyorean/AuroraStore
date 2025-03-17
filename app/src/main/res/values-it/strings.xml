@@ -423,4 +423,7 @@
     <string name="details_compatibility_gms_not_required_subtitle">Questa applicazione funziona senza la libreria proprietaria di Google. Tuttavia, può ancora richiedere altre librerie di terze parti per funzionare correttamente.</string>
     <string name="plexus_progress">Controllando la compatibilità…</string>
     <string name="disable">Disabilita</string>
+    <string name="details_compatibility_no_gms">Senza i servizi di Google Play (Google Play Services)</string>
+    <string name="details_compatibility_status_unsupported">Non supportato: incompatibile</string>
+    <string name="verification_failed">Verifica dei file scaricati non riuscita</string>
 </resources>
