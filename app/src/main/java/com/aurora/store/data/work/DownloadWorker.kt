@@ -205,7 +205,7 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun onFailure(exception: Exception = Exception("Something went wrong!")): Result =
+    private suspend fun onFailure(exception: Exception): Result =
         withContext(NonCancellable) {
             Log.i(TAG, "Job failed: ${download.packageName}", exception)
 
@@ -216,10 +216,6 @@ class DownloadWorker @AssistedInject constructor(
                 when (exception) {
                     is DownloadCancelledException -> {
                         notifyStatus(DownloadStatus.CANCELLED)
-                    }
-
-                    is NoNetworkException -> {
-                        // TODO: Notify user of network failure, maybe a notification & retry option
                     }
 
                     else -> {
