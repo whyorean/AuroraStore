@@ -31,7 +31,7 @@
     <string name="action_later">Később</string>
     <string name="action_join">Csatlakozás</string>
     <string name="action_installing">Telepítés alatt</string>
-    <string name="action_install">Telepítés</string>
+    <string name="action_install">Telepít</string>
     <string name="action_ignore">Elutasítás</string>
     <string name="action_granted">Engedélyezve</string>
     <string name="action_grant">Engedélyezése</string>
@@ -149,9 +149,9 @@
     <string name="toast_spoof_applied">Eszközálcázás sikeresen alkalmazva.</string>
     <string name="toast_permission_granted">Engedély megadva</string>
     <string name="toast_clipboard_copied">Vágólapra másolva</string>
-    <string name="toast_apk_whitelisted">Engedélyezési listán</string>
-    <string name="toast_apk_blacklisted">Tiltólistán</string>
-    <string name="toast_anonymous_restriction">Nem elérhető névtelen fiókoknál</string>
+    <string name="toast_apk_whitelisted">Engedélyezési listás</string>
+    <string name="toast_apk_blacklisted">Tiltólistás</string>
+    <string name="toast_anonymous_restriction">Nem elérhető anonim fiókoknál</string>
     <string name="title_updates">Frissítések</string>
     <string name="title_spoof_manager">Álcakezelő</string>
     <string name="title_settings">Beállítások</string>
@@ -177,7 +177,7 @@
     <string name="tab_top_grossing">Top bevétel</string>
     <string name="tab_top_free">Top ingyenes</string>
     <string name="tab_top_charts">Toplisták</string>
-    <string name="tab_for_you">Önnek</string>
+    <string name="tab_for_you">Önnek ajánlott</string>
     <string name="tab_editor_choice">Szerkesztők ajánlata</string>
     <string name="tab_categories">Kategóriák</string>
     <string name="insecure_anonymous_apply">A módosítások végrehajtásához jelentkezzen be és indítsa újra az alkalmazást.</string>
@@ -211,27 +211,27 @@
     <string name="pref_ui_similar_apps_desc">Hasonló és releváns csoportok megjelenítése a részletek lapon</string>
     <string name="pref_ui_similar_apps">Hasonló és releváns alkalmazások</string>
     <string name="pref_ui_no_for_you_desc">„Önnek ajánlott” oldal megjelenítése a kezdőlapon</string>
-    <string name="pref_ui_no_for_you">Önnek ajánlott</string>
+    <string name="pref_ui_no_for_you">Önnek ajánlott oldalak</string>
     <string name="pref_ui_layout_tab">Alapértelmezett lap kiválasztása</string>
     <string name="pref_ui_layout">Elrendezés</string>
     <string name="pref_common_extra">Extrák</string>
     <string name="details_no_app_match">Nem található alkalmazásegyezés</string>
     <string name="toast_manual_available">Gratulálunk, a kért verziókód elérhető, letöltése folyamatban van.</string>
-    <string name="toast_manual_unavailable">A kért verziókód nem elérhető.</string>
+    <string name="toast_manual_unavailable">Az Ön által kért verziókód nem elérhető.</string>
     <string name="title_manual_download">Kézi letöltés</string>
-    <string name="toast_aas_token_failed">Az AAS token előállítása sikertelen</string>
+    <string name="toast_aas_token_failed">Az AAS token generálása sikertelen</string>
     <string name="toast_rated_failed">Az értékelés elküldése sikertelen</string>
     <string name="toast_rated_success">Értékelve, időbe telhet míg megjelenik</string>
     <string name="toast_page_unavailable">A böngészőlap nem érhető el</string>
     <string name="dialog_desc_native_split">A natív telepítő segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtassa a telepítőt Session, Services vagy Root-ra.</string>
     <string name="toast_export_failed">Eszközkonfiguráció exportálása sikertelen</string>
-    <string name="toast_export_success">Eszközkonfiguráció sikeresen exportálva</string>
+    <string name="toast_export_success">Eszközkonfiguráció exportálva</string>
     <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
-    <string name="app_updater_service_notif_title">Háttérbeli alkalmazásletöltés</string>
+    <string name="app_updater_service_notif_title">Alkalmazásletöltés a háttérben</string>
     <string name="installer_am_unavailable">Telepítse az App Managert vagy változtassa meg a telepítőt.</string>
     <string name="pref_install_mode_am">AM telepítő</string>
     <string name="onboarding_permission_notifications">Értesítések</string>
-    <string name="session_enjoy">Jelentkezzen be és élvezze.</string>
+    <string name="session_enjoy">Jelentkezzen be és érezze jól magát.</string>
     <string name="toast_import_failed">Az eszközkonfiguráció importálása sikertelen</string>
     <string name="action_import">Importálás</string>
     <string name="download_eta_hrs">%1$d ó %2$d p %3$d mp van hátra</string>
@@ -240,11 +240,11 @@
     <string name="download_paused">Szüneteltetve • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="notification_updates_available_desc_1">A(z) <xliff:g id="app_one_name">%1$s</xliff:g> új verziója elérhető</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> és <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="session_init">Dolgok előkészítése…</string>
+    <string name="session_init">Előkészítés…</string>
     <string name="session_verifying">Munkamenet hitelesítése</string>
     <string name="session_verifying_google">Google-munkamenet hitelesítése</string>
     <string name="title_search_results">Keresési eredmények</string>
-    <string name="title_advanced">Speciális</string>
+    <string name="title_advanced">Haladó</string>
     <string name="toast_import_success">Eszközkonfiguráció importálva</string>
     <string name="updates_available">Frissítések érhetők el</string>
     <string name="menu">Menü</string>
@@ -266,7 +266,7 @@
     <string name="installer_shizuku_unavailable">A Shizuku nincs telepítve vagy megfelelően beállítva.</string>
     <string name="download_progress">Letöltés alatt • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_login_failed_google">Nem sikerült bejelentkezni a Google-lal</string>
-    <string name="update_available">Frissítés érhető el</string>
+    <string name="update_available">frissítés érhető el</string>
     <string name="server_unreachable">A kiszolgáló nem érhető el</string>
     <string name="title_search_suggestion">Keresési javaslat</string>
     <string name="error">Hiba történt!</string>
