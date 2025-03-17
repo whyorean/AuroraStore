@@ -411,4 +411,5 @@
     <string name="toast_proxy_disabled">Proxy disattivata con successo</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> app installate</string>
     <string name="pref_network_microg_login_title">Usa microG per accedere agli account</string>
+    <string name="plexus_powered">Fornito da Plexus</string>
 </resources>
