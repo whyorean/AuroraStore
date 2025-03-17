@@ -412,4 +412,15 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> app installate</string>
     <string name="pref_network_microg_login_title">Usa microG per accedere agli account</string>
     <string name="plexus_powered">Fornito da Plexus</string>
+    <string name="details_compatibility_gms_not_required_title">Funziona senza i servizi Google Play</string>
+    <string name="set">Imposta</string>
+    <string name="pref_updates_restrictions_metered">Solo su reti non limitati</string>
+    <string name="pref_updates_restrictions_desc">Configura le restrizioni del dispositivo per gli aggiornamenti automatizzati.</string>
+    <string name="pref_network_proxy_desc">Visualizza e gestisci la configurazione proxy</string>
+    <string name="details_compatibility_gms_required_subtitle">Potrebbe essere necessario installare la libreria proprietaria di Google o una reimplementazione libera come microG.</string>
+    <string name="pref_updates_restrictions_title">Restrizioni degli aggiornamenti automatici</string>
+    <string name="details_compatibility_gms_required_title">Richiede i servizi Google Play</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Questa applicazione funziona senza la libreria proprietaria di Google. Tuttavia, può ancora richiedere altre librerie di terze parti per funzionare correttamente.</string>
+    <string name="plexus_progress">Controllando la compatibilità…</string>
+    <string name="disable">Disabilita</string>
 </resources>
