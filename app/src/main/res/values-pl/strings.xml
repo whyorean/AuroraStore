@@ -364,7 +364,7 @@
     <string name="export_app_summary_success">Wyeksportowano pakiet aplikacji</string>
     <string name="export_app_summary_fail">Nie udało się wyeksportować pakietu aplikacji</string>
     <string name="check_updates">Sprawdź aktualizacje</string>
-    <string name="onboarding_permission_installer_legacy_desc">Zezwalaj na instalowanie aplikacji z nieznanych źródeł</string>
+    <string name="onboarding_permission_installer_legacy_desc">Zezwól na instalowanie aplikacji z nieznanych źródeł</string>
     <string name="item_required">Wymagane</string>
     <string name="item_optional">Opcjonalne</string>
     <string name="about_aurora_store_summary">Aurora Store umożliwia wyszukiwanie i pobieranie aplikacji z oficjalnego sklepu Google Play. Możesz przeglądać opisy aplikacji, zrzuty ekranu, aktualizacje, komentarze innych użytkowników oraz pobierać pliki APK bezpośrednio z Google Play na swoje urządzenie. Aby korzystać z Aurora Store, musisz posiadać konto Google Play i zalogować się na nie przy pierwszym otwarciu i konfiguracji Aurora Store.\n\nW przeciwieństwie do tradycyjnego sklepu z aplikacjami, Aurora Store nie jest właścicielem, nie licencjonuje ani nie dystrybuuje żadnych aplikacji. Wszystkie aplikacje, ich opisy, zrzuty ekranu oraz inna zawartość w Aurora Store są dostępne, pobierane i/lub wyświetlane bezpośrednio z Google Play. Aurora Store działa jak drzwi lub przeglądarka, umożliwiając zalogowanie się do konta Google Play i znalezienie aplikacji w Google Play.\n\nNależy pamiętać, że Aurora Store nie jest zatwierdzony, sponsorowany ani autoryzowany przez Google, Google Play, aplikacje pobrane za pośrednictwem Aurora Store ani żadnych twórców aplikacji. Aurora Store nie ma z nimi żadnego związku, współpracy ani powiązania.</string>
