@@ -47,8 +47,8 @@ android {
         minSdk = 21
         targetSdk = 35
 
-        versionCode = 65
-        versionName = "4.6.4"
+        versionCode = 66
+        versionName = "4.7.0"
 
         testInstrumentationRunner = "com.aurora.store.HiltInstrumentationTestRunner"
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
