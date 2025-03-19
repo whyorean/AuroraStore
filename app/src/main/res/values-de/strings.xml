@@ -431,4 +431,5 @@
     <string name="pref_updates_restrictions_desc">Konfigurieren von Geräteeinschränkungen für automatische Updates.</string>
     <string name="disable">Deaktivieren</string>
     <string name="pref_updates_restrictions_battery">Wenn der Akkustand nicht niedrig ist</string>
+    <string name="verification_failed">Heruntergeladene Dateien konnten nicht überprüft werden</string>
 </resources>

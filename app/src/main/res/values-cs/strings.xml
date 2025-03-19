@@ -431,4 +431,5 @@
     <string name="disable">Zakázat</string>
     <string name="toast_proxy_disabled">Síť proxy úspěšně zakázána</string>
     <string name="pref_updates_restrictions_metered">Pouze na neměřených sítích</string>
+    <string name="verification_failed">Nepodařilo se ověřit stažené soubory</string>
 </resources>
