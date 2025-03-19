@@ -40,7 +40,7 @@ kotlin {
 
 android {
     namespace = "com.aurora.store"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.aurora.store"
