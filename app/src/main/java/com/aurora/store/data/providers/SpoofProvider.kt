@@ -79,10 +79,10 @@ class SpoofProvider @Inject constructor(
         get() = Preferences.getBoolean(context, DEVICE_SPOOF_ENABLED)
 
     private val spoofLocale: Locale
-        get() = Locale(
-            Preferences.getString(context, LOCALE_SPOOF_LANG),
-            Preferences.getString(context, LOCALE_SPOOF_COUNTRY)
-        )
+        get() = Locale.Builder()
+            .setLanguage(Preferences.getString(context, LOCALE_SPOOF_LANG))
+            .setRegion(Preferences.getString(context, LOCALE_SPOOF_COUNTRY))
+            .build()
 
     private val spoofDeviceProperties: Properties
         get() = gson.fromJson(
