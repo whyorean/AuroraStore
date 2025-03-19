@@ -231,7 +231,7 @@
     <string name="pref_install_mode_am">Installatore AM</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia l\'installatore.</string>
     <string name="action_import">Importa</string>
-    <string name="download_progress">Scaricamento • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">In Download • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Invia notifiche sullo stato delle installazioni</string>
     <string name="session_verifying">Verifica della sessione</string>
     <string name="title_advanced">Avanzato</string>
@@ -426,4 +426,6 @@
     <string name="details_compatibility_no_gms">Senza i servizi di Google Play (Google Play Services)</string>
     <string name="details_compatibility_status_unsupported">Non supportato: incompatibile</string>
     <string name="verification_failed">Verifica dei file scaricati non riuscita</string>
+    <string name="pref_network_microg_login_desc">Autenticati usando microG durante il sign-in con Google per un flow di autenticazione più semplice.</string>
+    <string name="details_compatibility_status_limited">Limitato: Funzionante ma con funzionalità limitate</string>
 </resources>
