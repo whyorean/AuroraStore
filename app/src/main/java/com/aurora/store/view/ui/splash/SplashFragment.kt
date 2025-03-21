@@ -37,6 +37,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.hide
 import com.aurora.extensions.isMAndAbove
+import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.navigate
 import com.aurora.extensions.show
 import com.aurora.gplayapi.helpers.AuthHelper
@@ -127,8 +128,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     }
 
                     AuthState.Valid -> {
-                        val packageName = getPackageName()
-                        if (packageName.isBlank()) {
+                        val packageName = getPackageName(requireActivity().intent)
+                        if (packageName.isNullOrBlank()) {
                             navigateToDefaultTab()
                         } else {
                             requireArguments().remove("packageName")
@@ -151,8 +152,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     }
 
                     AuthState.SignedIn -> {
-                        val packageName = getPackageName()
-                        if (packageName.isBlank()) {
+                        val packageName = getPackageName(requireActivity().intent)
+                        if (packageName.isNullOrBlank()) {
                             navigateToDefaultTab()
                         } else {
                             requireArguments().remove("packageName")
@@ -261,17 +262,26 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         findNavController().navigate(directions)
     }
 
-    private fun getPackageName(): String {
-        // Navigation component cannot handle market scheme as its missing a valid host
-        return if (requireActivity().intent != null && requireActivity().intent.scheme == "market") {
-            requireActivity().intent.data!!.getQueryParameter("id") ?: ""
-        } else if (requireActivity().intent != null && requireActivity().intent.action == Intent.ACTION_SEND) {
-            val clipData = requireActivity().intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
-            UrlQuerySanitizer(clipData).getValue("id") ?: ""
-        } else if (requireActivity().intent != null && requireActivity().intent.extras != null) {
-            requireActivity().intent.extras?.getString("packageName") ?: ""
-        } else {
-            requireArguments().getString("packageName") ?: ""
+    private fun getPackageName(intent: Intent): String? {
+        return when {
+            intent.action == Intent.ACTION_VIEW -> {
+                intent.data!!.getQueryParameter("id")
+            }
+
+            intent.action == Intent.ACTION_SEND -> {
+                val clipData = intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
+                UrlQuerySanitizer(clipData).getValue("id")
+            }
+
+            isNAndAbove && intent.action == Intent.ACTION_SHOW_APP_INFO -> {
+                intent.extras?.getString(Intent.EXTRA_PACKAGE_NAME)
+            }
+
+            intent.extras != null -> {
+                intent.extras?.getString("packageName")
+            }
+
+            else -> requireArguments().getString("packageName")
         }
     }
 
