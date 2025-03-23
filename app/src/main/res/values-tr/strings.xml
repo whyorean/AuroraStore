@@ -421,8 +421,15 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uygulama kuruldu</string>
     <string name="no_apps_available">Uygulama yok</string>
     <string name="pref_network_microg_login_title">Hesaplara giriş yapmak için microG kullan</string>
-    <string name="pref_network_microg_login_desc">Daha basit bir giriş akışı için Google hesaplarına giriş yaparken microG ile kimliği doğrula</string>
+    <string name="pref_network_microg_login_desc">Daha basit bir giriş akışı için Google hesaplarına giriş yaparken microG ile kimliği doğrula.</string>
     <string name="set">Ayarla</string>
     <string name="disable">Devre Dışı Bırak</string>
     <string name="toast_proxy_disabled">Vekil başarıyla devre dışı bırakıldı</string>
+    <string name="verification_failed">İndirilen dosyalar doğrulanamadı</string>
+    <string name="pref_updates_restrictions_metered">Yalnızca ölçülmeyen ağlarda</string>
+    <string name="pref_updates_restrictions_idle">Aygıt boştayken</string>
+    <string name="pref_updates_restrictions_battery">Pil gücü düşük değilken</string>
+    <string name="pref_network_proxy_desc">Vekil yapılandırmasını göster ve yönet</string>
+    <string name="pref_updates_restrictions_title">Kendiliğinden güncelleme kısıtları</string>
+    <string name="pref_updates_restrictions_desc">Kendiliğinden güncellemeler için aygıt kısıtlarını yapılandır.</string>
 </resources>
