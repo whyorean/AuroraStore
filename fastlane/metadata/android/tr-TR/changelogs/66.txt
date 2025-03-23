@@ -1,0 +1,5 @@
+• Plexus tarafından desteklenen yeni uyumluluk oylamaları
+• Kara liste yöneticisinde iyileştirmeler
+• Kendiliğinden güncelleme kısıtlarını değiştirme özelliği
+• Küçük hata giderimleri ve iyileştirmeler
+• Çeviri güncellemeleri; ek dizgeler yerelleştirildi
