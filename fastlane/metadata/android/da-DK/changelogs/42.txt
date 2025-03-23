@@ -1,0 +1,15 @@
+• Android 13 målrettet
+• Aktiver lokalisering af flere strenge
+• Tilføj monokrom ikon til Android 13
+• Opdater afhængigheder for seneste version
+• Vis straks tjenestevilkår ved opstart
+• Tillad at gå fremad uden at give tilladelser under første opsætning
+• Læs system xml afvisningsliste som standard for undtagelser af opdateringer
+• Vis den korrekte titel på den 5. opsætningsside
+• Aktiver fremknap på opsætning, når du går tilbage
+• Udskift afkrydsningsfelterne i installationsprogrammet med radioknapper
+• Brug stregfarve til baggrund af opsætningsfaner
+• Fix no-theme fejl i opsætning ved hjælp af radioknapper
+• Brug ikke nye GSF & Vending versioner
+• Refaktorering af opbevaringsrelaterede tilladelses opsætning
+• Oversættelse opdateringer
