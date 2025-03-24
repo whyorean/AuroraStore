@@ -1,0 +1,4 @@
+• Novērsta problēma saistībā ar pierakstīšanos Google kontos
+• Navigācijas joslas elementi pārvietoti atsevišķā dialoglogā
+• Pārslēgts uz NavigationRail liela ekrāna ierīcēm
+• Iespēja eksportēt lejupielādes uz ārēju krātuvi
