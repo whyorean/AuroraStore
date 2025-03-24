@@ -1,0 +1,2 @@
+• Aktivér altid afslut-knap på tilladelsesside (løser introduktion for nye brugere)
+• Bevar GSON-bibliotekets TypeToken under build-optimering (løser opstartsnedbrud)
