@@ -1,0 +1,3 @@
+• Būtiskas iekšējas izmaiņas saistībā ar lietotāja saskarni
+• Tulkojuma atjauninājumi
+• Nelieli kļūdu labojumi un uzlabojumi

@@ -1,0 +1,4 @@
+• Būtiskas iekšējas izmaiņas saistībā ar lietotāja saskarni
+• Ļauj lietotājiem iespējot lietotņu saites sākotnējā lietotnes iestatīšanas reizē
+• Tulkojuma atjauninājumi
+• Nelieli kļūdu labojumi un uzlabojumi
