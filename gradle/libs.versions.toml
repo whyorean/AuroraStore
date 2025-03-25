@@ -23,6 +23,7 @@ lifecycle = "2.9.1"
 material = "1.12.0"
 navigation = "2.9.0"
 okhttp = "4.12.0"
+paging = "3.3.6"
 preference = "1.2.1"
 processPhoenix = "3.0.0"
 protobufJavalite = "4.31.1"
@@ -53,6 +54,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preference" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }

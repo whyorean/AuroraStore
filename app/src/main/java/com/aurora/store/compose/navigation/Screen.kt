@@ -19,7 +19,10 @@ import kotlinx.serialization.Serializable
  */
 @Parcelize
 @Serializable
-sealed class Screen(@StringRes val label: Int, @DrawableRes val icon: Int? = null): Parcelable {
+sealed class Screen(
+    @StringRes val label: Int? = null,
+    @DrawableRes val icon: Int? = null
+) : Parcelable {
 
     companion object {
         const val PARCEL_KEY = "SCREEN"
@@ -27,4 +30,19 @@ sealed class Screen(@StringRes val label: Int, @DrawableRes val icon: Int? = nul
 
     @Serializable
     data object Blacklist : Screen(label = R.string.title_blacklist_manager)
+
+    @Serializable
+    data class AppDetails(val packageName: String) : Screen()
+
+    @Serializable
+    data object DetailsMore : Screen()
+
+    @Serializable
+    data class DetailsScreenshot(val index: Int) : Screen()
+
+    @Serializable
+    data object DetailsExodus : Screen()
+
+    @Serializable
+    data object DetailsReview : Screen()
 }
