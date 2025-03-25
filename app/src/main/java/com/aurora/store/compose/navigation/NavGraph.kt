@@ -10,7 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
+import com.aurora.extensions.sharedViewModel
 import com.aurora.store.compose.ui.commons.BlacklistScreen
+import com.aurora.store.compose.ui.details.AppDetailsScreen
+import com.aurora.store.compose.ui.details.DetailsExodusScreen
+import com.aurora.store.compose.ui.details.DetailsMoreScreen
+import com.aurora.store.compose.ui.details.DetailsReviewScreen
+import com.aurora.store.compose.ui.details.DetailsScreenshotScreen
 
 /**
  * Navigation graph for compose screens
@@ -32,6 +39,43 @@ fun NavGraph(navHostController: NavHostController, startDestination: Screen) {
     NavHost(navController = navHostController, startDestination = startDestination) {
         composable<Screen.Blacklist> {
             BlacklistScreen(onNavigateUp = { onNavigateUp() })
+        }
+
+        composable<Screen.AppDetails> { backstackEntry ->
+            val appDetails = backstackEntry.toRoute<Screen.AppDetails>()
+            AppDetailsScreen(
+                packageName = appDetails.packageName,
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.sharedViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsExodus> { backstackEntry ->
+            DetailsExodusScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.sharedViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsMore> { backstackEntry ->
+            DetailsMoreScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.sharedViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsScreenshot> { backstackEntry ->
+            DetailsScreenshotScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.sharedViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsReview> { backstackEntry ->
+            DetailsReviewScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.sharedViewModel(navHostController)
+            )
         }
     }
 }

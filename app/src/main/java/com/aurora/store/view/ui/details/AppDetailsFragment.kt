@@ -188,41 +188,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         // App Details
         viewModel.fetchAppDetails(app.packageName)
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.app.collect {
-                if (it.packageName.isNotBlank()) {
-                    app = it
-
-                    // App User Review
-                    // We can not fetch it outside of this block, as we need the testing program status
-                    if (!viewModel.authProvider.isAnonymous && app.isInstalled) {
-                        viewModel.fetchUserAppReview(app)
-                    }
-
-                    updateToolbar(app)
-                    updateAppHeader(app) // Re-inflate the app details, as web data may vary.
-                    updateExtraDetails(app)
-                    updateCompatibilityInfo()
-
-                    if (app.versionCode == 0) {
-                        warnAppUnavailable(app)
-                    }
-
-                    // Fetch App Reviews
-                    viewModel.fetchAppReviews(app.packageName)
-
-                    // Fetch Data Safety Report
-                    viewModel.fetchAppDataSafetyReport(app.packageName)
-
-                    // Fetch Exodus Privacy Report
-                    viewModel.fetchAppReport(app.packageName)
-                } else {
-                    toast(getString(R.string.status_unavailable))
-                    // TODO: Redirect to App Unavailable Fragment
-                }
-            }
-        }
-
         viewModel.download.filterNotNull().onEach {
             when (it.downloadStatus) {
                 DownloadStatus.QUEUED,
@@ -257,35 +222,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 else -> checkAndSetupInstall()
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        // Reviews
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.reviews.collect {
-                binding.layoutDetailsReview.epoxyRecycler.withModels {
-                    it.take(4).forEach { add(ReviewViewModel_().id(it.timeStamp).review(it)) }
-                }
-            }
-        }
-
-        // User Rating
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.userReview.collect {
-                if (it.commentId.isNotEmpty()) {
-                    runOnUiThread { updateUserReview(it) }
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.toast_rated_failed),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
-
-        // Data Safety Report
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.dataSafetyReport.collect { updateDataSafetyViews(it) }
-        }
 
         // Exodus Privacy Report
         viewLifecycleOwner.lifecycleScope.launch {
