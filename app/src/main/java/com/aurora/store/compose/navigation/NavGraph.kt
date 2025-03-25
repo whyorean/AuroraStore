@@ -10,7 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
+import com.aurora.extensions.parentViewModel
 import com.aurora.store.compose.ui.commons.BlacklistScreen
+import com.aurora.store.compose.ui.details.AppDetailsScreen
+import com.aurora.store.compose.ui.details.DetailsExodusScreen
+import com.aurora.store.compose.ui.details.DetailsMoreScreen
+import com.aurora.store.compose.ui.details.DetailsReviewScreen
+import com.aurora.store.compose.ui.details.DetailsScreenshotScreen
 
 /**
  * Navigation graph for compose screens
@@ -32,6 +39,53 @@ fun NavGraph(navHostController: NavHostController, startDestination: Screen) {
     NavHost(navController = navHostController, startDestination = startDestination) {
         composable<Screen.Blacklist> {
             BlacklistScreen(onNavigateUp = { onNavigateUp() })
+        }
+
+        composable<Screen.AppDetails> { backstackEntry ->
+            val appDetails = backstackEntry.toRoute<Screen.AppDetails>()
+            AppDetailsScreen(
+                packageName = appDetails.packageName,
+                viewModel = backstackEntry.parentViewModel(navHostController),
+                onNavigateUp = { onNavigateUp() },
+                onNavigateToDetailsMore = { navHostController.navigate(Screen.DetailsMore) },
+                onNavigateToDetailsReview = { navHostController.navigate(Screen.DetailsReview) },
+                onNavigateToDetailsExodus = { navHostController.navigate(Screen.DetailsExodus) },
+                onNavigateToDetailsScreenshot = { index ->
+                    navHostController.navigate(
+                        Screen.DetailsScreenshot(index)
+                    )
+                }
+            )
+        }
+
+        composable<Screen.DetailsExodus> { backstackEntry ->
+            DetailsExodusScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.parentViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsMore> { backstackEntry ->
+            DetailsMoreScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.parentViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsScreenshot> { backstackEntry ->
+            val screenshotDetails = backstackEntry.toRoute<Screen.DetailsScreenshot>()
+            DetailsScreenshotScreen(
+                index = screenshotDetails.index,
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.parentViewModel(navHostController)
+            )
+        }
+
+        composable<Screen.DetailsReview> { backstackEntry ->
+            DetailsReviewScreen(
+                onNavigateUp = { onNavigateUp() },
+                viewModel = backstackEntry.parentViewModel(navHostController)
+            )
         }
     }
 }

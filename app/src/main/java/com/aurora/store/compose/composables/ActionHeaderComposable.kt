@@ -31,9 +31,9 @@ import com.aurora.store.R
  * @see HeaderComposable
  */
 @Composable
-fun UpdateHeaderComposable(
-    @StringRes title: Int,
-    @StringRes actionTitle: Int,
+fun ActionHeaderComposable(
+    title: String,
+    actionTitle: String,
     onAction: () -> Unit = {}
 ) {
     Row(
@@ -47,14 +47,14 @@ fun UpdateHeaderComposable(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = stringResource(title),
+            text = title,
             style = MaterialTheme.typography.bodyLarge,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
         Button(onClick = onAction) {
             Text(
-                text = stringResource(actionTitle),
+                text = actionTitle,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -64,9 +64,9 @@ fun UpdateHeaderComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun UpdateHeaderComposablePreview() {
-    UpdateHeaderComposable(
-        title = R.string.updates_available,
-        actionTitle = R.string.action_update_all
+private fun ActionHeaderComposablePreview() {
+    ActionHeaderComposable(
+        title = stringResource(R.string.updates_available),
+        actionTitle = stringResource(R.string.action_update_all)
     )
 }

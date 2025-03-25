@@ -127,10 +127,15 @@
     <string name="details_no_updates">"No updates available"</string>
     <string name="details_paid">"Paid"</string>
     <string name="details_permission">"Permission"</string>
+    <string name="details_data_safety_collect">Data that this app may collect</string>
+    <string name="details_data_safety_collect_none">The developer says this app doesn\'t collect user data.</string>
+    <string name="details_data_safety_shared">Data that this app may share</string>
+    <string name="details_data_safety_share_none">The developer says this app doesn\'t share user data with other companies or organizations.</string>
     <string name="details_data_safety_title">Data safety</string>
     <string name="details_data_safety_subtitle">Data privacy and security practices declared by developer</string>
     <string name="details_privacy">"Privacy"</string>
     <string name="details_ratings">"Rating and reviews"</string>
+    <string name="details_ratings_subtitle">Feedback given by other users</string>
     <string name="details_ratings_title_hint">"Review title"</string>
     <string name="details_think_this_app">"What do you think about this app?"</string>
     <string name="download_cancel_all">"Cancel all"</string>
@@ -152,9 +157,11 @@
     <string name="download_resume_all">"Resume all"</string>
     <string name="download_speed_estimating">"Estimating"</string>
     <string name="exodus_no_tracker">"Contains no known trackers"</string>
+    <string name="exodus_tracker_desc">This version of the app may still contain more trackers not present yet in the Exodus Privacy\'s database.</string>
     <string name="exodus_powered">"Powered by Exodus Privacy"</string>
     <string name="exodus_progress">"Checking for trackers…"</string>
     <string name="exodus_substring">known trackers(s) found in</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> known trackers(s) found in <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="exodus_view_report">"View report"</string>
     <string name="filter_review_all">"All"</string>
     <string name="filter_latest">"Latest"</string>
@@ -470,6 +477,10 @@
 
     <!-- AppDetailsFragment -->
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissions</string>
+    <string name="details_more_info">More info</string>
+    <string name="details_more_target_api">Targets</string>
+    <string name="details_more_package_name">Package name</string>
+    <string name="details_more_content_rating">Content rating</string>
     <string name="action_unarchive">Unarchive</string>
     <string name="unable_to_open">Unable to open app</string>
     <string name="version_update" translatable="false"><xliff:g id="installed_version_name">%1$s</xliff:g> (<xliff:g id="installed_version_code">%2$d</xliff:g>) ➔ <xliff:g id="update_version_name">%3$s</xliff:g> (<xliff:g id="update_version_code">%4$d</xliff:g>)</string>
