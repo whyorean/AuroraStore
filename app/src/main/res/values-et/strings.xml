@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="action_back">Tagasi</string>
     <string name="action_filter_downloads">Allalaadimised</string>
     <string name="details_dev_email">Meil</string>
@@ -117,4 +117,69 @@
     <string name="download_cancel_all">Tühista kõik</string>
     <string name="download_canceled">Tühistatud</string>
     <string name="download_eta_min">%1$dm %2$ds jäänud</string>
+    <string name="filter_review_positive">Positiivne</string>
+    <string name="menu_disclaimer">Vastutusest loobumine</string>
+    <string name="notification_channel_export">Rakenduse ekspordi märguanded</string>
+    <string name="installer_service_unavailable">Paigalda Aurora teenused 1.0.9 või uuem või muuda paigaldusrakendust.</string>
+    <string name="exodus_view_report">Vaata aruannet</string>
+    <string name="download_metadata">Metaandmete hankimine</string>
+    <string name="download_force_clear_all">Tühjenda kõik jõuga</string>
+    <string name="download_none">Allalaadimisi pole</string>
+    <string name="download_paused">Peatatud • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="exodus_no_tracker">Ei sisalda teadaolevaid jälgijaid</string>
+    <string name="exodus_powered">Exodus Privacy toetusel</string>
+    <string name="exodus_progress">Jälgijate otsimine…</string>
+    <string name="exodus_substring">teadaolevat jälgijat leiti rakendusest</string>
+    <string name="filter_review_four">Neli</string>
+    <string name="filter_review_three">Kolm</string>
+    <string name="filter_review_two">Kaks</string>
+    <string name="installer_am_unavailable">Paigalda rakenduste haldur või muuda paigaldusrakendust.</string>
+    <string name="installer_root_unavailable">Root-juurdepääsu pole. Luba see või muuda paigaldusrakendust.</string>
+    <string name="installer_shizuku_unavailable">Shizuku pole paigaldatud või korralikult seadistatud.</string>
+    <string name="installer_status_failure">Paigaldamine nurjus</string>
+    <string name="installer_status_failure_blocked">Paigaldamine blokeeriti</string>
+    <string name="installer_status_failure_session">Seansi loomine nurjus</string>
+    <string name="installer_status_failure_conflict">Leiti vastuolus paketid</string>
+    <string name="installer_status_failure_incompatible">Ühildumatu rakendus</string>
+    <string name="installer_status_failure_invalid">Vigane või rikutud APK</string>
+    <string name="installer_status_failure_storage">Ebapiisav mäluruum</string>
+    <string name="installer_status_success">Edukalt paigaldatud</string>
+    <string name="menu_license">Litsents</string>
+    <string name="menu_terms">Kasutustingimused</string>
+    <string name="device_miui_title">Tuvastati MIUI!</string>
+    <string name="device_miui_subtitle">Seansipaigaldaja ei saa MIUI optimeerimiste tõttu rakendusi paigaldada.</string>
+    <string name="dialog_title_self_update">Saadaval on uuendus</string>
+    <string name="notification_channel_downloads">Allalaadimiste märguanded</string>
+    <string name="notification_channel_install">Paigalduse märguanded</string>
+    <string name="notification_channel_account">Kontoga seotud märguanded</string>
+    <string name="onboarding_permission_select">Aurora pood nõuab järgmisi lubasid</string>
+    <string name="onboarding_title_installer">Paigaldaja</string>
+    <string name="onboarding_title_permissions">Load</string>
+    <string name="onboarding_permission_esm">Välise salvestusruumi haldur</string>
+    <string name="onboarding_permission_installer">Paigaldaja load</string>
+    <string name="onboarding_permission_installer_desc">Luba paigaldada rakendusi Aurora poest</string>
+    <string name="onboarding_permission_installer_legacy_desc">Lubage tundmatutest allikatest pärit rakenduste paigaldamine</string>
+    <string name="onboarding_permission_notifications">Märguanded</string>
+    <string name="onboarding_permission_notifications_desc">Saada märguandeid paigaldamise olekust</string>
+    <string name="onboarding_permission_doze">Allalaadimine taustal</string>
+    <string name="onboarding_permission_doze_desc">Luba Aurora poel rakendusi taustal allalaadida ja uuendada</string>
+    <string name="pref_filter_fdroid_summary">Ära kontrolli F-Droidist allalaaditud või paigaldatud rakenduste uuendusi</string>
+    <string name="pref_filter_fdroid_title">Filtreeri F-Droidi rakendused</string>
+    <string name="download_queued">Järjekorras</string>
+    <string name="download_failed">Allalaadimine nurjus</string>
+    <string name="download_eta_sec">%1$ds jäänud</string>
+    <string name="download_pause_all">Peata kõik</string>
+    <string name="download_progress">Allalaadimisel • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_resume_all">Jätka kõiki</string>
+    <string name="filter_review_all">Kõik</string>
+    <string name="filter_review_one">Üks</string>
+    <string name="device_miui_description">Paigaldamise lubamiseks keela MIUI optimeerimised või vali root- või teenustepaigaldaja.</string>
+    <string name="onboarding_welcome_select">Kuidas läheb?</string>
+    <string name="filter_review_five">Viis</string>
+    <string name="installer_service_available">Aurora teenused on saadaval ja paigaldamiseks valmis.</string>
+    <string name="installer_service_misconfigured">Seadista esmalt Aurora teenused ja anna kõik load.</string>
+    <string name="installer_status_user_action">Kasutaja kinnituse ootel</string>
+    <string name="onboarding_title_welcome">Tere tulemast</string>
+    <string name="onboarding_permission_esa">Juurdepääs välisele salvestusruumile</string>
+    <string name="onboarding_permission_esa_desc">APK laiendusfailide (OBB) salvestamiseks suurte rakenduste ja mängude jaoks.</string>
 </resources>
