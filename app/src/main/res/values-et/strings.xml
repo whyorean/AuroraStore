@@ -182,4 +182,14 @@
     <string name="onboarding_title_welcome">Tere tulemast</string>
     <string name="onboarding_permission_esa">Juurdepääs välisele salvestusruumile</string>
     <string name="onboarding_permission_esa_desc">APK laiendusfailide (OBB) salvestamiseks suurte rakenduste ja mängude jaoks.</string>
+    <string name="pref_install_delete_summary">Allalaaditud APK-d kustutatakse kohe pärast paigaldamist</string>
+    <string name="pref_install_mode_title">Paigaldusmeetod</string>
+    <string name="pref_install_mode_services">Aurora teenused (aegunud)</string>
+    <string name="pref_install_mode_summary">Vali APK paigaldamise moodus</string>
+    <string name="pref_install_delete_title">Kustuta APK pärast paigaldamist</string>
+    <string name="pref_install_mode_am">AM paigaldusrakendus</string>
+    <string name="pref_vending_version_title">Google Play versioon</string>
+    <string name="pref_vending_version_device">Vaikimisi (seadme seadetest)</string>
+    <string name="pref_network_title">Võrguühendus</string>
+    <string name="pref_network_proxy_url">Puhverserveri URL</string>
 </resources>
