@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:imgIcon="@drawable/ic_map"
+        app:imgIcon="@drawable/ic_person_location"
         app:txtTitle="@string/details_dev_address"
         tools:visibility="visible" />
 </LinearLayout>

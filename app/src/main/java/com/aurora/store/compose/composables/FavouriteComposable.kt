@@ -19,6 +19,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,13 +30,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
+import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.composables.preview.coilPreviewProvider
 import com.aurora.store.data.room.favourite.Favourite
 
 /**
@@ -68,7 +73,6 @@ fun FavouriteComposable(
                     .crossfade(true)
                     .build(),
                 contentDescription = null,
-                placeholder = painterResource(R.drawable.ic_android),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .requiredSize(dimensionResource(R.dimen.icon_size_medium))
@@ -95,7 +99,7 @@ fun FavouriteComposable(
                         favourite.added,
                         DateUtils.FORMAT_SHOW_DATE
                     ),
-                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp)
+                    style = MaterialTheme.typography.bodyVerySmall
                 )
             }
         }
@@ -110,10 +114,9 @@ fun FavouriteComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun FavouriteComposablePreview() {
-    val app = App(
-        packageName = BuildConfig.APPLICATION_ID,
-        displayName = LocalContext.current.getString(R.string.app_name)
-    )
-    FavouriteComposable(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
+@OptIn(ExperimentalCoilApi::class)
+private fun FavouriteComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+        FavouriteComposable(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
+    }
 }
