@@ -30,7 +30,6 @@ import android.provider.Settings
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -50,7 +49,6 @@ import com.aurora.extensions.browse
 import com.aurora.extensions.hide
 import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
-import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.share
 import com.aurora.extensions.show
 import com.aurora.extensions.toast
@@ -82,7 +80,6 @@ import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -185,44 +182,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         // Toolbar
         updateToolbar(app)
 
-        // App Details
-        viewModel.fetchAppDetails(app.packageName)
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.app.collect {
-                if (it.packageName.isNotBlank()) {
-                    app = it
-
-                    // App User Review
-                    // We can not fetch it outside of this block, as we need the testing program status
-                    if (!viewModel.authProvider.isAnonymous && app.isInstalled) {
-                        viewModel.fetchUserAppReview(app)
-                    }
-
-                    updateToolbar(app)
-                    updateAppHeader(app) // Re-inflate the app details, as web data may vary.
-                    updateExtraDetails(app)
-                    updateCompatibilityInfo()
-
-                    if (app.versionCode == 0) {
-                        warnAppUnavailable(app)
-                    }
-
-                    // Fetch App Reviews
-                    viewModel.fetchAppReviews(app.packageName)
-
-                    // Fetch Data Safety Report
-                    viewModel.fetchAppDataSafetyReport(app.packageName)
-
-                    // Fetch Exodus Privacy Report
-                    viewModel.fetchAppReport(app.packageName)
-                } else {
-                    toast(getString(R.string.status_unavailable))
-                    // TODO: Redirect to App Unavailable Fragment
-                }
-            }
-        }
-
         viewModel.download.filterNotNull().onEach {
             when (it.downloadStatus) {
                 DownloadStatus.QUEUED,
@@ -257,35 +216,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 else -> checkAndSetupInstall()
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        // Reviews
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.reviews.collect {
-                binding.layoutDetailsReview.epoxyRecycler.withModels {
-                    it.take(4).forEach { add(ReviewViewModel_().id(it.timeStamp).review(it)) }
-                }
-            }
-        }
-
-        // User Rating
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.userReview.collect {
-                if (it.commentId.isNotEmpty()) {
-                    runOnUiThread { updateUserReview(it) }
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.toast_rated_failed),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
-
-        // Data Safety Report
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.dataSafetyReport.collect { updateDataSafetyViews(it) }
-        }
 
         // Exodus Privacy Report
         viewLifecycleOwner.lifecycleScope.launch {
@@ -328,27 +258,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 }
             }
         }
-
-        // Plexus Report
-        viewModel.plexusReport.onEach { plexusReport ->
-            if (plexusReport?.report?.scores == null) {
-                binding.layoutDetailsCompatibility.txtStatusMicroG.subTitle =
-                    getString(R.string.details_compatibility_status_unknown)
-
-                binding.layoutDetailsCompatibility.txtStatusAosp.subTitle =
-                    getString(R.string.details_compatibility_status_unknown)
-            } else {
-                binding.layoutDetailsCompatibility.headerCompatibility.addClickListener {
-                    requireContext().browse("${Constants.PLEXUS_SEARCH_URL}${app.packageName}")
-                }
-
-                binding.layoutDetailsCompatibility.txtStatusMicroG.subTitle =
-                    getString(plexusReport.report.scores.microG.status)
-
-                binding.layoutDetailsCompatibility.txtStatusAosp.subTitle =
-                    getString(plexusReport.report.scores.microG.status)
-            }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         // Beta program
         viewLifecycleOwner.lifecycleScope.launch {
@@ -775,7 +684,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         binding.layoutDetailDescription.apply {
             val installs = CommonUtil.addDiPrefix(app.installs)
 
-            if (installs != "NA") {
+            if (installs != null) {
                 txtInstalls.text = CommonUtil.addDiPrefix(app.installs)
             } else {
                 txtInstalls.hide()

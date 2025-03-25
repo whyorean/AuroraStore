@@ -110,7 +110,8 @@
         <!-- Activity to host composable screens -->
         <activity
             android:name=".ComposeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- Notification Action (Download Complete) -->
         <activity

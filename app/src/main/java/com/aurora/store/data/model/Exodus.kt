@@ -29,7 +29,7 @@ data class ExodusReport(
 
 @Parcelize
 data class Report(
-    val id: Int = 0,
+    val id: Int = -1,
     val downloads: String = String(),
     val version: String = String(),
     val creationDate: String = String(),
