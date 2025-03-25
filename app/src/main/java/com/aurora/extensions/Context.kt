@@ -74,6 +74,19 @@ fun Context.share(app: App) {
     }
 }
 
+fun Context.mailTo(email: String) {
+    try {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SENDTO
+            data = "mailto:".toUri()
+            putExtra(Intent.EXTRA_EMAIL, email)
+        }
+        startActivity(Intent.createChooser(sendIntent, getString(R.string.details_dev_email)))
+    } catch (exception: Exception) {
+        Log.e(TAG, "Failed to email", exception)
+    }
+}
+
 fun Context.openInfo(packageName: String) {
     try {
         val intent = Intent(

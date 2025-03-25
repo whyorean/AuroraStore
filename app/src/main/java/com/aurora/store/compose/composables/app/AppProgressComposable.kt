@@ -19,11 +19,12 @@ import com.aurora.store.R
 
 /**
  * Composable to display an indeterminate circular progress indicator
+ * @param modifier Modifier for the composable
  */
 @Composable
-fun AppProgressComposable() {
+fun AppProgressComposable(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(dimensionResource(R.dimen.padding_small)),
         contentAlignment = Alignment.Center
