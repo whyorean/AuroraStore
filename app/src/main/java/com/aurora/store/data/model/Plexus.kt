@@ -22,23 +22,25 @@ data class Data(
 @Serializable
 data class Scores(
     @SerialName("micro_g")
-    val microG: Rating,
+    val microG: Rating = Rating(),
     @SerialName("native")
-    val aosp: Rating
+    val aosp: Rating = Rating()
 )
 
 @Serializable
 data class Rating(
-    val denominator: Float,
-    val numerator: Float,
-    val rating_type: String,
-    val total_count: Long
+    val denominator: Float = -1F,
+    val numerator: Float = -1F,
+    val rating_type: String = String(),
+    val total_count: Long = -1
 ) {
-    private val fraction get() = numerator / denominator
+    private val fraction
+        get() = if (numerator == -1F && denominator == -1F) -1F else numerator / denominator
 
     @get:StringRes
     val status: Int
         get() = when {
+            fraction == -1F -> R.string.plexus_progress
             fraction == 0F -> R.string.details_compatibility_status_unknown
             fraction >= 0.90 -> R.string.details_compatibility_status_compatible
             fraction >= 0.50 -> R.string.details_compatibility_status_limited

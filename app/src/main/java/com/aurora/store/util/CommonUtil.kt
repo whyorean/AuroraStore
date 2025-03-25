@@ -62,9 +62,8 @@ object CommonUtil {
         return tempValue.toString() + siPrefixes[order]
     }
 
-    fun addDiPrefix(value: Long): String {
-        if (value <= 1L)
-            return "NA"
+    fun addDiPrefix(value: Long): String? {
+        if (value <= 1L) return null
         var tempValue = value
         var order = 0
         while (tempValue >= 1000.0) {

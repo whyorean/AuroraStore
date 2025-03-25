@@ -14,18 +14,21 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
+import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.R
+import com.aurora.store.compose.composables.preview.coilPreviewProvider
 
 /**
  * Composable to show a category in a list
@@ -47,7 +50,6 @@ fun CategoryComposable(category: Category, onClick: () -> Unit = {}) {
                 .crossfade(true)
                 .build(),
             contentDescription = null,
-            placeholder = painterResource(R.drawable.ic_android),
             contentScale = ContentScale.Crop,
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_default))
         )
@@ -62,6 +64,9 @@ fun CategoryComposable(category: Category, onClick: () -> Unit = {}) {
 
 @Preview(showBackground = true)
 @Composable
+@OptIn(ExperimentalCoilApi::class)
 private fun CategoryComposablePreview() {
-    CategoryComposable(category = Category(title = "Art & Design"))
+    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+        CategoryComposable(category = Category(title = "Art & Design"))
+    }
 }

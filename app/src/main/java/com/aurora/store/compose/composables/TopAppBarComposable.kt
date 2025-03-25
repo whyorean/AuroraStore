@@ -5,7 +5,6 @@
 
 package com.aurora.store.compose.composables
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -28,14 +27,12 @@ import com.aurora.store.R
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun TopAppBarComposable(
-    @StringRes title: Int? = null,
+    title: String? = null,
     onNavigateUp: () -> Unit,
     actions: @Composable (RowScope.() -> Unit) = {}
 ) {
     TopAppBar(
-        title = {
-            if (title != null) Text(text = stringResource(title))
-        },
+        title = { if (title != null) Text(text = title) },
         navigationIcon = {
             IconButton(onClick = onNavigateUp) {
                 Icon(
@@ -52,7 +49,7 @@ fun TopAppBarComposable(
 @Composable
 private fun TopAppBarComposablePreview() {
     TopAppBarComposable(
-        title = R.string.title_about,
+        title = stringResource(R.string.title_about),
         onNavigateUp = {}
     )
 }

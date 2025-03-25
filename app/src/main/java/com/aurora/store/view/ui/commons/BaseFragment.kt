@@ -28,10 +28,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.airbnb.epoxy.EpoxyRecyclerView
+import com.aurora.extensions.navigate
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.view.ui.details.AppDetailsFragmentDirections
@@ -81,8 +83,8 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
     }
 
     fun openDetailsFragment(packageName: String, app: App? = null) {
-        findNavController().navigate(
-            MobileNavigationDirections.actionGlobalAppDetailsFragment(packageName, app)
+        requireContext().navigate(
+            Screen.AppDetails(packageName)
         )
     }
 

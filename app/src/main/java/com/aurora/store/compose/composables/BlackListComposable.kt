@@ -7,7 +7,6 @@ package com.aurora.store.compose.composables
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,8 +27,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
+import com.aurora.extensions.bodyVerySmall
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 
@@ -89,7 +89,7 @@ fun BlackListComposable(
                 )
                 Text(
                     text = stringResource(R.string.version, versionName, versionCode),
-                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
+                    style = MaterialTheme.typography.bodyVerySmall,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -103,7 +103,7 @@ fun BlackListComposable(
 @Composable
 private fun BlackListComposablePreview() {
     BlackListComposable(
-        icon = ColorDrawable(Color.TRANSPARENT).toBitmap(56, 56),
+        icon = Color.GRAY.toDrawable().toBitmap(56, 56),
         displayName = LocalContext.current.getString(R.string.app_name),
         packageName = BuildConfig.APPLICATION_ID,
         versionName = BuildConfig.VERSION_NAME,
