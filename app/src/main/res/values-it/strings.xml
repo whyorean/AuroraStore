@@ -138,7 +138,7 @@
     <string name="about_bitcoin_btc_summary">Dona via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Dona via Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Contanti</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Dona via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_spoof_applied">Contraffazione dispositivo applicata.</string>
