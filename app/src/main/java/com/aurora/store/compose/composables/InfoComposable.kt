@@ -5,6 +5,7 @@
 
 package com.aurora.store.compose.composables
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,18 +23,25 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composables.preview.AppPreviewProvider
 
 /**
- * Composable to display sticky header in list
- * @param title Title to display
- * @param subtitle Optional subtitle to display
+ * Composable to show some information
+ * @param title Title of the information
+ * @param description Information to show
+ * @param icon Icon representing the information
  * @param onClick Callback when this composable is clicked
- * @see TextDividerComposable
- * @see UpdateHeaderComposable
  */
 @Composable
-fun HeaderComposable(title: String, subtitle: String? = null, onClick: (() -> Unit)? = null) {
+fun InfoComposable(
+    title: String,
+    description: String,
+    @DrawableRes icon: Int,
+    onClick: (() -> Unit)? = null
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -42,30 +50,21 @@ fun HeaderComposable(title: String, subtitle: String? = null, onClick: (() -> Un
                 horizontal = dimensionResource(R.dimen.padding_small),
                 vertical = dimensionResource(R.dimen.padding_xxsmall)
             ),
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(
-            modifier = Modifier.weight(1F),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_xsmall))
-        ) {
+        Icon(painter = painterResource(icon), contentDescription = null)
+        Column(modifier = Modifier.weight(1F)) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            if (!subtitle.isNullOrBlank()) {
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodySmall
-                )
-            }
-        }
-        if (onClick != null) {
-            Icon(
-                painter = painterResource(R.drawable.ic_arrow_right),
-                contentDescription = null,
+            Text(
+                text = description,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.secondary
             )
         }
     }
@@ -73,10 +72,10 @@ fun HeaderComposable(title: String, subtitle: String? = null, onClick: (() -> Un
 
 @Preview(showBackground = true)
 @Composable
-private fun HeaderComposablePreview() {
-    HeaderComposable(
-        title = stringResource(R.string.details_privacy),
-        subtitle = stringResource(R.string.exodus_powered),
-        onClick = {}
+private fun InfoComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+    InfoComposable(
+        title = stringResource(R.string.details_dev_website),
+        description = app.developerWebsite,
+        icon = R.drawable.ic_network
     )
 }
