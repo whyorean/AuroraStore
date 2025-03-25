@@ -23,7 +23,7 @@ import com.aurora.store.R
  * Composable to display a sticky header in a list
  * @param title Title to display
  * @see HeaderComposable
- * @see UpdateHeaderComposable
+ * @see ActionHeaderComposable
  */
 @Composable
 fun TextDividerComposable(@StringRes title: Int) {

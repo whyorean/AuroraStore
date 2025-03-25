@@ -15,22 +15,26 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
+import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.composables.preview.coilPreviewProvider
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 
@@ -57,7 +61,6 @@ fun AppListComposable(app: App, onClick: () -> Unit = {}) {
                 .crossfade(true)
                 .build(),
             contentDescription = null,
-            placeholder = painterResource(R.drawable.ic_android),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .requiredSize(dimensionResource(R.dimen.icon_size_medium))
@@ -75,7 +78,7 @@ fun AppListComposable(app: App, onClick: () -> Unit = {}) {
             Text(text = app.developerName, style = MaterialTheme.typography.bodySmall)
             Text(
                 text = buildExtras(app).joinToString(separator = "  •  "),
-                style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp)
+                style = MaterialTheme.typography.bodyVerySmall
             )
         }
     }
@@ -83,17 +86,11 @@ fun AppListComposable(app: App, onClick: () -> Unit = {}) {
 
 @Preview(showBackground = true)
 @Composable
-fun AppListComposablePreview() {
-    AppListComposable(
-        app = App(
-            packageName = BuildConfig.APPLICATION_ID,
-            displayName = LocalContext.current.getString(R.string.app_name),
-            developerName = "Rahul Kumar Patel",
-            isFree = true,
-            containsAds = false,
-            size = 7431013
-        )
-    )
+@OptIn(ExperimentalCoilApi::class)
+fun AppListComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+        AppListComposable(app = app)
+    }
 }
 
 @Composable
