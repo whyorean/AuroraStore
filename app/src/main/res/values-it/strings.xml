@@ -138,7 +138,7 @@
     <string name="about_bitcoin_btc_summary">Dona via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Dona via Bitcoin Cash (BCH)</string>
-    <string name="about_bitcoin_bch">Bitcoin Contanti</string>
+    <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Dona via UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_spoof_applied">Contraffazione dispositivo applicata.</string>
@@ -231,7 +231,7 @@
     <string name="pref_install_mode_am">Installatore AM</string>
     <string name="installer_am_unavailable">Installa App Manager o cambia l\'installatore.</string>
     <string name="action_import">Importa</string>
-    <string name="download_progress">Scaricamento • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">Download in corso • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Invia notifiche sullo stato delle installazioni</string>
     <string name="session_verifying">Verifica della sessione</string>
     <string name="title_advanced">Avanzato</string>
@@ -286,7 +286,7 @@
     <string name="details_ratings_title_hint">Titolo della recensione</string>
     <string name="android_market_desc">Android Market era un negozio online che offriva applicazioni software progettate per dispositivi Android, chiuso nel 2017.</string>
     <string name="pref_network_proxy_url">URL del proxy</string>
-    <string name="pref_updates_check_frequency_desc">Configura la frequenza degli aggiornamenti automatici (in ore)</string>
+    <string name="pref_updates_check_frequency_desc">Configura la frequenza degli aggiornamenti automatici (in ore).</string>
     <string name="toast_proxy_success">Proxy impostato con successo</string>
     <string name="title_app_settings">Impostazioni app</string>
     <string name="pref_updates_check_frequency">Frequenza degli aggiornamenti automatici</string>
@@ -401,29 +401,31 @@
     <string name="toast_black_import_failed">Importazione della lista nera non riuscita!</string>
     <string name="toast_black_import_success">Lista nera importata!</string>
     <string name="pref_updates_restrictions_idle">Quando il dispositivo è inattivo</string>
-    <string name="pref_updates_restrictions_battery">Quando la batteria non è bassa</string>
+    <string name="pref_updates_restrictions_battery">Quando il livello di carica della batteria non è basso</string>
     <string name="no_apps_available">Nessuna applicazione disponibile</string>
-    <string name="details_compatibility_microg">Con il Progetto microG</string>
+    <string name="details_compatibility_microg">Con il progetto microG</string>
     <string name="unable_to_open">Impossibile aprire l\'app</string>
     <string name="details_compatibility_title">Compatibilità</string>
     <string name="details_compatibility_status_compatible">Compatibile: Funziona senza alcun problema</string>
     <string name="details_compatibility_status_unknown">Sconosciuto: Non ancora controllato</string>
-    <string name="toast_proxy_disabled">Proxy disattivata con successo</string>
+    <string name="toast_proxy_disabled">Proxy disattivato con successo</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> app installate</string>
     <string name="pref_network_microg_login_title">Usa microG per accedere agli account</string>
     <string name="plexus_powered">Fornito da Plexus</string>
-    <string name="details_compatibility_gms_not_required_title">Funziona senza i servizi Google Play</string>
+    <string name="details_compatibility_gms_not_required_title">Funziona senza Google Play Services</string>
     <string name="set">Imposta</string>
-    <string name="pref_updates_restrictions_metered">Solo su reti non limitati</string>
-    <string name="pref_updates_restrictions_desc">Configura le restrizioni del dispositivo per gli aggiornamenti automatizzati.</string>
-    <string name="pref_network_proxy_desc">Visualizza e gestisci la configurazione proxy</string>
+    <string name="pref_updates_restrictions_metered">Solo su reti non a consumo</string>
+    <string name="pref_updates_restrictions_desc">Configura le restrizioni del dispositivo per gli aggiornamenti automatici.</string>
+    <string name="pref_network_proxy_desc">Visualizza e gestisci la configurazione del proxy</string>
     <string name="details_compatibility_gms_required_subtitle">Potrebbe essere necessario installare la libreria proprietaria di Google o una reimplementazione libera come microG.</string>
     <string name="pref_updates_restrictions_title">Restrizioni degli aggiornamenti automatici</string>
-    <string name="details_compatibility_gms_required_title">Richiede i servizi Google Play</string>
-    <string name="details_compatibility_gms_not_required_subtitle">Questa applicazione funziona senza la libreria proprietaria di Google. Tuttavia, può ancora richiedere altre librerie di terze parti per funzionare correttamente.</string>
-    <string name="plexus_progress">Controllando la compatibilità…</string>
+    <string name="details_compatibility_gms_required_title">Richiede Google Play Services</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Questa applicazione funziona senza la libreria proprietaria di Google. Tuttavia, potrebbe richiedere altre librerie di terze parti per funzionare correttamente.</string>
+    <string name="plexus_progress">Controllo della compatibilità in corso…</string>
     <string name="disable">Disabilita</string>
-    <string name="details_compatibility_no_gms">Senza i servizi di Google Play (Google Play Services)</string>
+    <string name="details_compatibility_no_gms">Senza Google Play Services</string>
     <string name="details_compatibility_status_unsupported">Non supportato: incompatibile</string>
     <string name="verification_failed">Verifica dei file scaricati non riuscita</string>
+    <string name="pref_network_microg_login_desc">Effettua l\'autenticazione agli account Google usando microG per semplificare la procedura di accesso.</string>
+    <string name="details_compatibility_status_limited">Limitato: Funzionante ma con funzionalità limitate</string>
 </resources>

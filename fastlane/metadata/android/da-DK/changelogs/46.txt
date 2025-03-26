@@ -1,0 +1,8 @@
+• Undgå at bede om lagertilladelse, før det er nødvendigt
+• Omdesign forfalskningskonfiguration for at undgå lagertilladelse ved import-eksport
+• Tilføj mulighed for at søge efter app-opdateringer automatisk (kræver en aktiv konto)
+• Ret fejl, hvor påkrævede biblioteker ikke blev installeret med apps som chrome- og trichrome-bibliotek
+• Udelad downloads-mappen fra sikkerhedskopiering af Aurora Store
+• Implementer Shizuku-installationsprogram (kræver Android 8.0+)
+• Fjern understøttelse af Android 4.4 — Minimum er Android 5.0+
+• Små fejlrettelser og forbedringer

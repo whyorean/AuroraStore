@@ -1,6 +1,6 @@
 • Novērsta lietotāja saskarnes nepilnība Android 15+
 • Starpniekservera konfigurēšanas un lietošanas uzlabojumi
 • SSL piespraušana zināmiem domēniem izmantojot saknes sertifikātu
-• Labāks mainīgo izskatu nodrošinājums atbalstītajās ierīcēs
-• Noņemts pielāgotu izskatu un uzsvara krāsu atbalsts
+• Labāks mainīgo motīvu nodrošinājums atbalstītajās ierīcēs
+• Noņemts pielāgotu motīvu un uzsvara krāsu atbalsts
 • Tulkojumu atjauninājumi

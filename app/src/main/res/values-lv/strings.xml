@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="details_dev_email">E-pasts</string>
+    <string name="details_dev_email">E-pasta adrese</string>
     <string name="about_paypal">PayPal</string>
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab">GitLab</string>
@@ -43,13 +43,13 @@
     <string name="account_anonymous">Anonīms</string>
     <string name="about_telegram_summary">Pievienojaties Aurora Atbalsta grupai priekš diskusijām vai ieteikumiem.</string>
     <string name="about_paypal_summary">Ziedot ar PayPal</string>
-    <string name="about_libera_summary">Kļūstiet par patronu uz Liberapay</string>
+    <string name="about_libera_summary">Kļūstiet par patronu Liberapay</string>
     <string name="about_gitlab_summary">Iegūt Aurora Store pirmkodu no Aurora OSS GitLab.</string>
     <string name="details_dev_website">Tīmekļa vietne</string>
     <string name="about_bitcoin_eth_summary">Ziedot ar Ethereum (ETH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_telegram">Telegram</string>
-    <string name="details_beta_available">Pievienoties Beta programmai?</string>
+    <string name="details_beta_available">Pievienoties Beta testēšanas komandai?</string>
     <string name="action_post">Publicēt</string>
     <string name="action_restart">Restartēt</string>
     <string name="action_resume">Turpināt</string>
@@ -64,9 +64,9 @@
     <string name="action_filter_paid_apps">Maksas</string>
     <string name="action_finish">Pabeigt</string>
     <string name="action_pending">Gaida</string>
-    <string name="details_changelog">Izmaiņas</string>
+    <string name="details_changelog">Izmaiņu apraksts</string>
     <string name="details_contains_ads">Satur reklāmas</string>
-    <string name="details_dev_details">Izstrādātāja sasniedzamība</string>
+    <string name="details_dev_details">Izstrādātāja saziņas informācija</string>
     <string name="details_dev_profile">Izstrādātāja profils</string>
     <string name="details_free">Bezmaksas</string>
     <string name="details_more_about_app">Vairāk par lietotni</string>
@@ -185,7 +185,7 @@
     <string name="notification_updates_available_desc_1">Ir pieejama jauna <xliff:g id="app_one_name">%1$s</xliff:g> versija</string>
     <string name="tab_editor_choice">Redaktora izvēle</string>
     <string name="session_login_failed_google">Neizdevās pieteikties ar Google</string>
-    <string name="session_enjoy">Piesakies un izbaudi!</string>
+    <string name="session_enjoy">Piesakies un izbaudi.</string>
     <string name="session_verifying">Pārbauda sesiju</string>
     <string name="toast_apk_whitelisted">Ievietots baltajā sarakstā</string>
     <string name="session_good">Vā! Viss kārtībā.</string>
@@ -201,12 +201,12 @@
     <string name="toast_manual_unavailable">Pieprasītā versija nav pieejama.</string>
     <string name="toast_manual_available">Apsveicam! Pieprasītā versija ir pieejama, tā tagad tiek lejupielādēta.</string>
     <string name="installer_shizuku_unavailable">Shizuku nav uzstādīta vai pareizi iestatīta.</string>
-    <string name="about_xda_summary">Skatīt apspriedes un ieteikumus Aurora Store XDA pavedienā.</string>
+    <string name="about_xda_summary">Skatīt XDA forums Aurora Store tēmas diskusijas un ieteikumus.</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="about_xda">XDA forumi</string>
+    <string name="about_xda">XDA forums</string>
     <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
     <string name="dialog_desc_native_split">Nav iespējams uzstādīt apvienotās (sastāvošas no vairākām daļām) lietotnes ar iebūvēto uzstādītāju. Tas ir jānomaina uz sesijas, pakalpojumu vai superlietotāja uzstādītāju.</string>
-    <string name="action_get_local_apk">Saglabāt lietotnes kopu</string>
+    <string name="action_get_local_apk">Saglabāt lietotnes APK</string>
     <string name="action_filter_misc">Dažādi</string>
     <string name="action_filter_gsf_dependent_apps">Atkarīgs no GSF</string>
     <string name="installer_service_available">Aurora pakalpojumi ir pieejami un gatavi uzstādīšanai.</string>
@@ -233,10 +233,10 @@
     <string name="pref_install_delete_summary">Lejupielādētie APK tiks izdzēsti uzreiz pēc uzstādīšanas</string>
     <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
     <string name="details_dependencies">Atkarības</string>
-    <string name="details_beta_delay">Ievietošana sarakstā var aizņemt kādu laiku, vēlāk var pārbaudīt stāvokli.</string>
+    <string name="details_beta_delay">Pieteikšanās var aizņemt kādu laiku, stāvokli var pārbaudīt vēlāk.</string>
     <string name="pref_filter_fdroid_summary">Nepārbaudīt atjauninājumus lietotnēm, kuras ir lejupielādētas vai uzstādītas no F-Droid</string>
     <string name="download_paused">Apturēta • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="details_beta_description">Būs pieejamas jaunas iespējas un nepilnības pirms publicēšanas. Sniedzot atgriezenisko saiti izstrādātājiem tiks palīdzēts viņiem veikt uzlabojumus.</string>
+    <string name="details_beta_description">Būs pieejamas jaunas iespējas un nepilnības pirms laišanas klajā. Atgriezeniskās saites sniegšana izstrādātājiem palīdzēs viņiem veikt uzlabojumus.</string>
     <string name="details_gsf_dependent">Nepieciešams GSF</string>
     <string name="download_eta_hrs">Atlicis %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">Atlicis %1$dm %2$ds</string>
@@ -244,7 +244,7 @@
     <string name="installer_service_misconfigured">Vispirms jāuzstāda Aurora pakalpojumi un jānodrošina visas atļaujas.</string>
     <string name="toast_export_success">Ierīces uzstādījumi ir izgūti</string>
     <string name="details_no_dependencies">Nav atkarību</string>
-    <string name="details_no_app_match">Atbilstība lietotnei netika atrasta</string>
+    <string name="details_no_app_match">Nav atrasta neviena atbilstoša lietotne</string>
     <string name="toast_export_failed">Nebija iespējams izgūt ierīces uzstādījumus</string>
     <string name="server_maintenance">Serveris nav pieejams uzturēšanas darbu dēļ</string>
     <string name="notification_channel_updates">Atjauninājumu paziņojumi</string>
@@ -262,7 +262,7 @@
     <string name="toast_aas_token_failed">Nebija iespējams izveidot AAS piekļuves pilnvaru</string>
     <string name="toast_import_success">Ierīces uzstādījumi ir ievietoti</string>
     <string name="toast_import_failed">Nebija iespējams ievietot ierīces uzstādījumus</string>
-    <string name="error">Gadījās kļūda.</string>
+    <string name="error">Gadījās kļūda!</string>
     <string name="menu">Izvēlne</string>
     <string name="expand">Izvērst</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -288,7 +288,7 @@
     <string name="pref_network_proxy_url">Starpniekservera URL</string>
     <string name="pref_updates_check_frequency_desc">Norādīt starplaiku stundās starp automātiskajiem atjauninājumiem.</string>
     <string name="pref_aurora_only">Tikai Aurora Store lietotnes</string>
-    <string name="toast_proxy_invalid">Nederīgs starpniekservera URL, jāpārbauda pieraksts.</string>
+    <string name="toast_proxy_invalid">Nederīgs starpniekservera URL, pārbaudiet URL struktūras formātu!</string>
     <string name="pref_aurora_only_desc">Pārbaudīt atjauninājumus tikai lietotnēm, kuras ir uzstādītas ar Aurora Store</string>
     <string name="toast_proxy_success">Starpniekserveris sekmīgi iestatīts</string>
     <string name="title_app_settings">Lietotnes iestatījumi</string>
@@ -319,7 +319,7 @@
     <string name="am_installer_subtitle">Pilnu iespēju atvērtā pirmkoda pakotņu pārvaldnieks</string>
     <string name="shizuku_installer_subtitle">Izmantojot sistēmas API ar adb/superlietotāja tiesībām</string>
     <string name="shizuku_installer_desc">Nepieciešams Shizuku vai Sui, jābūt iestatītai un nodrošinātai atļaujai</string>
-    <string name="action_home_screen">Pievienot sākuma ekrānam</string>
+    <string name="action_home_screen">Pievienot Sākuma ekrānam</string>
     <string name="download_clear_finished">Notīrīt pabeigtās</string>
     <string name="pref_updates_incompatible">Nesaderīgi atjauninājumi</string>
     <string name="session_installer_subtitle">Sesijā balstīts uzstādītājs apkopotiem/sadalītiem APK</string>
@@ -390,7 +390,7 @@
     <string name="notification_channel_downloads">Lejupielāžu paziņojums</string>
     <string name="notification_channel_account">Ar kontu saistīts paziņojums</string>
     <string name="authentication_required_title">Nepieciešama autentificēšanās</string>
-    <string name="authentication_required_unarchive">Lūgums pieteikties savā Google Play kontā, lai atceltu lietotnes arhivēšanu.</string>
+    <string name="authentication_required_unarchive">Lūdzu, ieiet savā Google Play kontā, lai atpakotu lietotni!</string>
     <string name="checking_updates">Pārbauda atjauninājumus</string>
     <string name="made_with_love">Ar <xliff:g id="heart_emoji">%1$s</xliff:g> radīta Indijā</string>
     <string name="default_spoof">Noklusējums</string>
@@ -431,4 +431,5 @@
     <string name="pref_updates_restrictions_metered">Tikai neuzskaitāmos tīklos</string>
     <string name="pref_updates_restrictions_idle">Kad ierīce ir dīkstāvē</string>
     <string name="pref_updates_restrictions_battery">Kad akumulators nav tukšs</string>
+    <string name="verification_failed">Lejupielādētos failus nevarēja pārbaudīt</string>
 </resources>

@@ -161,7 +161,7 @@
     <string name="onboarding_permission_esm">Εξωτερική αποθήκευση</string>
     <string name="onboarding_permission_installer_desc">Επιτρέψτε την εγκατάσταση εφαρμογών από το Aurora Store</string>
     <string name="pref_install_mode_session">Εγκαταστάτης συνεδρίας</string>
-    <string name="pref_filter_fdroid_summary">Αγνοεί εφαρμογές F-Droid από Ενημερώσεις και Εγκατεστημένες εφαρμογές</string>
+    <string name="pref_filter_fdroid_summary">Να μην γίνεται έλεγχος για ενημερώσεις για εφαρμογές που λήφθηκαν ή εγκαταστάθηκαν από το F-Droid</string>
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
     <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
@@ -259,7 +259,7 @@
     <string name="session_scrapped">Η τελευταία συνεδρία πετάχτηκε</string>
     <string name="title_search_suggestion">Πρόταση αναζήτησης</string>
     <string name="title_search_results">Αποτελέσματα αναζήτησης</string>
-    <string name="pref_aurora_only_desc">Εμφάνιση μόνο εφαρμογών εγκατεστημένων από το Aurora Store στο Ενημερώσεις και Εγκατεστημένες εφαρμογές</string>
+    <string name="pref_aurora_only_desc">Έλεγχος για ενημερώσεις μόνο για εφαρμογές εγκατεστημένες από το Aurora Store</string>
     <string name="session_init">Ετοιμάζοντας τα πράγματα…</string>
     <string name="toast_import_success">Ρύθμιση συσκευής εισήχθη</string>
     <string name="session_verifying_google">Επαλήθευση Συνεδρίας Google</string>
@@ -286,7 +286,7 @@
     <string name="pref_updates_check_frequency">Συχνότητα αυτόματων ενημερώσεων</string>
     <string name="notification_channel_updates">Ειδοποιήσεις ενημέρωσης</string>
     <string name="notification_updates_available_desc_1">Μια νέα έκδοση της <xliff:g id="app_one_name">%1$s</xliff:g> είναι διαθέσιμη</string>
-    <string name="pref_updates_auto">Αυτόματη ενημέρωση εφαρμογών</string>
+    <string name="pref_updates_auto">Αυτόματες ενημερώσεις</string>
     <string name="pref_updates_auto_desc">Ρύθμιση συμπεριφοράς αυτόματων ενημερώσεων</string>
     <string name="pref_updates_auto_off">Να μη γίνει αυτόματη ενημέρωση εφαρμογών</string>
     <string name="pref_updates_auto_notify">Έλεγχος &amp; ειδοποίηση για διαθέσιμες ενημερώσεις</string>
@@ -393,4 +393,43 @@
     <string name="notification_channel_export">Ειδοποίηση εξαγωγής εφαρμογής</string>
     <string name="notification_channel_install">Ειδοποίηση εγκατάστασης</string>
     <string name="notification_channel_downloads">Ειδοποίηση λήψεων</string>
+    <string name="status_verifying">Επαληθεύεται</string>
+    <string name="action_unarchive">Μη αρχειοθέτηση</string>
+    <string name="details_compatibility_gms_required_title">Απαιτεί Google Play Services</string>
+    <string name="toast_proxy_disabled">Το proxy απενεργοποιήθηκε με επιτυχία</string>
+    <string name="pref_updates_restrictions_metered">Μόνο σε απεριόριστα δίκτυα</string>
+    <string name="pref_updates_restrictions_idle">Όταν η συσκευή είναι αδρανής</string>
+    <string name="action_remove_all">Αφαίρεση όλων</string>
+    <string name="action_select_all">Επιλογή όλων</string>
+    <string name="filter_latest">Τελευταία</string>
+    <string name="verification_failed">Αποτυχία επαλήθευσης αρχείων λήψης</string>
+    <string name="toast_black_export_failed">Αποτυχία εξαγωγής μαύρης λίστας!</string>
+    <string name="default_spoof">Προεπιλογή</string>
+    <string name="available_spoof">Διαθέσιμο</string>
+    <string name="unable_to_open">Αδυναμία ανοίγματος εφαρμογής</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> εγκατεστημένες εφαρμογές</string>
+    <string name="details_compatibility_gms_not_required_title">Λειτουργεί χωρίς Υπηρεσίες Google Play</string>
+    <string name="details_compatibility_gms_required_subtitle">Μπορεί να χρειαστεί να εγκαταστήσετε την ιδιόκτητη βιβλιοθήκη της Google ή μια FOSS επανέκδοση, όπως microG.</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Αυτή η εφαρμογή λειτουργεί χωρίς την ιδιόκτητη βιβλιοθήκη της Google. Ωστόσο, μπορεί να απαιτεί άλλες βιβλιοθήκες τρίτων να λειτουργούν σωστά.</string>
+    <string name="disable">Απενεργοποίηση</string>
+    <string name="toast_black_import_failed">Αποτυχία εισαγωγής σε μαύρη λίστα!</string>
+    <string name="no_apps_available">Δεν υπάρχουν διαθέσιμες εφαρμογές</string>
+    <string name="details_compatibility_title">Συμβατότητα</string>
+    <string name="details_compatibility_status_compatible">Συμβατό: Λειτουργεί χωρίς προβλήματα</string>
+    <string name="details_compatibility_status_unsupported">Δεν υποστηρίζεται: Μη λειτουργική</string>
+    <string name="plexus_progress">Έλεγχος συμβατότητας…</string>
+    <string name="pref_updates_restrictions_battery">Όταν η μπαταρία δεν είναι χαμηλή</string>
+    <string name="pref_network_proxy_desc">Εμφάνιση και διαχείριση της διαμόρφωσης του proxy</string>
+    <string name="toast_black_export_success">Η μαύρη λίστα εξήχθη!</string>
+    <string name="toast_black_import_success">Η μαύρη λίστα εισήχθη!</string>
+    <string name="plexus_powered">Powered by Plexus</string>
+    <string name="details_compatibility_microg">Με το Έργο microG</string>
+    <string name="details_compatibility_no_gms">Χωρίς Υπηρεσίες Google Play</string>
+    <string name="details_compatibility_status_limited">Περιορισμένη: Λειτουργεί με περιορισμένα χαρακτηριστικά</string>
+    <string name="details_compatibility_status_unknown">Άγνωστο: Δεν ελέγχθηκε ακόμα</string>
+    <string name="pref_network_microg_login_title">Χρήση microG για σύνδεση σε λογαριασμούς</string>
+    <string name="pref_network_microg_login_desc">Ταυτοποίηση με microG κατά την σύνδεση σε λογαριασμούς Google για μια απλούστερη ροή εγγραφής.</string>
+    <string name="set">Ορισμός</string>
+    <string name="pref_updates_restrictions_title">Περιορισμοί αυτόματων ενημερώσεων</string>
+    <string name="pref_updates_restrictions_desc">Ρύθμιση περιορισμών συσκευών για αυτοματοποιημένες ενημερώσεις.</string>
 </resources>

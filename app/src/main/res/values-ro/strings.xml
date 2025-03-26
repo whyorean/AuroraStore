@@ -429,4 +429,7 @@
     <string name="pref_updates_restrictions_title">Restricții actualizări automate</string>
     <string name="toast_proxy_disabled">Proxy dezactivat cu succes</string>
     <string name="pref_updates_restrictions_idle">Când dispozitivul este inactiv</string>
+    <string name="pref_network_microg_login_desc">Autentifică-te folosind microG atunci când te conectezi la conturile Google, pentru un proces simplificat de conectare.</string>
+    <string name="pref_network_microg_login_title">Utilizează microG pentru a te conecta la conturi</string>
+    <string name="set">Setează</string>
 </resources>

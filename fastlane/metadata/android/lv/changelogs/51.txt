@@ -1,0 +1,1 @@
+• Novērsta meklēšanas problēma, kad izmantoja WebAPI datus

@@ -1,0 +1,2 @@
+• Abilita sempre il bottone di fine sui frammenti dei permessi (rosolve il setup per i nuovi utenti)
+• Mantieni il TypeToken della libreria GSON durante l'ottimizzazione della build (risolve un crash durante lo startup)
