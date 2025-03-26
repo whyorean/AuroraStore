@@ -1,0 +1,8 @@
+• Tárhely engedély visszatartása, míg valóban szükséges
+• Újradolgozott álca konfiguráció, az importálás-exportáláshoz így nem kell tárhely engedély
+• Opció, hogy automatikusan ellenőrzi az app frissítéseket (szükséges egy működő fiókkal való bejelentkezés)
+• Hiba javítása, amikor szükséges könyvtárak nem kerülnek telepítésre appoknál mint a chrome & trichrome
+• A letöltés mappa figyelmen kívül hagyása az Aurora Bolt biztonsági mentésénél
+• Shizuku telepítő implementálása (Android 8.0+ szükséges)
+• Android 4.4 támogatás kivezetése. A minimum elvárt verziószám immáron 5.0+.
+• Kisebb hibajavítások és fejlesztések

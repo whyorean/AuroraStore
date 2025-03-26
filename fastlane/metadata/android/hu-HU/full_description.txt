@@ -6,7 +6,7 @@ Tökéletesen működik Google Play Szolgáltatások, illetve MicroG nélkül is
 
 • FOSS: GPLv3 licenc
 • Gyönyörű dizájn: A legmodernebb Material 3 irányelvek alapján
-• Fiók és bejelentkezés: Használható saját, illetve anonim fiók is
-• Eszköz és nyelv álcázása: A készülék típusa, illetve nyelve is álcázható, így a földrajzilag korlátolt alkalmazások is elérhetők
+• Fiók bejelentkezés: Használható saját, illetve anonim fiók is
+• Eszköz és nyelv álcázása: A készülék típusa, illetve régiója is álcázható, így a földrajzilag korlátozott alkalmazások is elérhetők
 • Exodus Privacy integráció: Alkalmazások nyomkövetőinek azonnali kimutatása
 • Frissítési tiltólista: Egyes alkalmazások frissítései tiltólistára tehetők
