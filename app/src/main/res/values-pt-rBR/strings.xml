@@ -31,7 +31,7 @@
     <string name="account_google">Google</string>
     <string name="about_xda">Fóruns XDA</string>
     <string name="about_libera">Liberapay</string>
-    <string name="toast_purchase_blocked">As compras de apps não estão disponíveis em contas anônimas.</string>
+    <string name="toast_purchase_blocked">A compra de apps não está disponível em contas anônimas.</string>
     <string name="toast_spoof_applied">Simulação de dispositivo aplicada.</string>
     <string name="toast_permission_granted">Permissão concedida</string>
     <string name="toast_developer_setting_failed">Ative as configurações do desenvolvedor a partir das configurações do dispositivo para abri-las.</string>
@@ -52,7 +52,7 @@
     <string name="onboarding_permission_installer_desc">Permita a instalação de apps pela Aurora Store</string>
     <string name="onboarding_permission_installer">Permissão de instalação</string>
     <string name="onboarding_permission_esm">Gerenciador de armazenamento externo</string>
-    <string name="onboarding_permission_esa_desc">Para salvar arquivos de expansão (OBBs) para apps e jogos grandes.</string>
+    <string name="onboarding_permission_esa_desc">Para salvar arquivos de expansão de APK (OBBs) para apps e jogos grandes.</string>
     <string name="onboarding_permission_esa">Acesso ao armazenamento externo</string>
     <string name="onboarding_welcome_select">Como você está\?</string>
     <string name="onboarding_title_welcome">Boas vindas</string>
@@ -216,8 +216,8 @@
     <string name="pref_network_title">Rede</string>
     <string name="details_no_app_match">Nenhum app correspondente encontrado</string>
     <string name="pref_ui_similar_apps">Apps relacionados ou semelhantes</string>
-    <string name="pref_ui_layout_tab">Aba padrão</string>
-    <string name="pref_ui_layout">Layout</string>
+    <string name="pref_ui_layout_tab">Selecionar aba padrão</string>
+    <string name="pref_ui_layout">Organização</string>
     <string name="pref_common_extra">Extras</string>
     <string name="dialog_desc_native_split">Você não pode instalar apps em pacote (divididos) por meio do Instalador nativo. Mude seu instalador para Sessão, Serviços ou Root.</string>
     <string name="toast_aas_token_failed">Não foi possível gerar o token AAS</string>
@@ -226,7 +226,7 @@
     <string name="toast_page_unavailable">Página indisponível</string>
     <string name="toast_export_failed">Não foi possível exportar a configuração de dispositivo</string>
     <string name="toast_export_success">Configuração de dispositivo exportada</string>
-    <string name="app_updater_service_notif_text">Ativa o download de apps em segundo plano</string>
+    <string name="app_updater_service_notif_text">Permite o download de apps em segundo plano</string>
     <string name="app_updater_service_notif_title">Download de app em segundo plano</string>
     <string name="pref_install_mode_am">Instalador AM</string>
     <string name="installer_am_unavailable">Instale o App Manager ou altere o instalador.</string>
@@ -240,11 +240,11 @@
     <string name="session_good">Aê! Tudo certo.</string>
     <string name="session_login_failed_google">Não foi possível fazer login pelo Google</string>
     <string name="session_verifying">Verificando a sessão</string>
-    <string name="session_scrapped">Última sessão foi descartada</string>
+    <string name="session_scrapped">A ultima sessão foi descartada</string>
     <string name="updates_available">atualizações disponíveis</string>
-    <string name="permissions_denied">Permissões necessárias foram negadas. Conceda-as para continuar a ação</string>
+    <string name="permissions_denied">Permissões necessárias foram negadas. As permita para continuar a ação</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> atualizações disponíveis</string>
-    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> mais</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e mais <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> e <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> e <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="download_progress">Baixando • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -256,34 +256,34 @@
     <string name="title_advanced">Avançado</string>
     <string name="toast_import_failed">Não foi possível importar as configurações de dispositivo</string>
     <string name="toast_import_success">Configurações de dispositivo importadas</string>
-    <string name="requesting_new_session">Solicitando nova sessão</string>
-    <string name="server_maintenance">Servidor fora do ar para manutenção</string>
+    <string name="requesting_new_session">Solicitando uma sessão nova</string>
+    <string name="server_maintenance">O servidor está fora do ar para manutenção</string>
     <string name="error">Ocorreu um erro!</string>
     <string name="update_available">atualização disponível</string>
-    <string name="search_hint">Pesquisar por Apps &amp; Jogos</string>
+    <string name="search_hint">Pesquisar apps &amp; jogos</string>
     <string name="expand">Expandir</string>
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
-    <string name="notification_updates_available_desc_1">Uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g> está disponível</string>
+    <string name="notification_updates_available_desc_1">Há uma nova versão de <xliff:g id="app_one_name">%1$s</xliff:g> disponível</string>
     <string name="downloading_dep">Baixando arquivos adicionais para <xliff:g id="app">%1$s</xliff:g></string>
     <string name="menu">Menu</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="title_search_suggestion">Sugestão de pesquisa</string>
     <string name="title_search_results">Resultados da pesquisa</string>
-    <string name="failed_to_fetch_report">Falha ao obter relatório de privacidade</string>
-    <string name="access_denied_using_vpn">Acesso negado! Está usando uma VPN ou Tor?</string>
+    <string name="failed_to_fetch_report">Falha ao obter o relatório de privacidade</string>
+    <string name="access_denied_using_vpn">Acesso negado! Você está usando uma VPN ou o Tor?</string>
     <string name="bad_request">Erro interno! Tente novamente mais tarde</string>
-    <string name="login_rate_limited">Oops, você foi limitado</string>
+    <string name="login_rate_limited">Opa, você foi limitado</string>
     <string name="server_unreachable">Servidor inacessível</string>
-    <string name="failed_generating_session">Falhou em gerar sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="app_language">Idioma do App</string>
+    <string name="failed_generating_session">Falha ao gerar a sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="app_language">Idioma do app</string>
     <string name="check_connectivity">Verificar a conexão à internet</string>
-    <string name="verifying_new_session">Verificando nova sessão</string>
-    <string name="app_links_title">Links de App</string>
-    <string name="app_links_desc">Permitir que a Aurora Store abra links suportados</string>
-    <string name="google_play_store_desc">Google Play, também conhecido como a Google Play Store e anteriormente Android Market.</string>
+    <string name="verifying_new_session">Verificando a sessão nova</string>
+    <string name="app_links_title">Links do app</string>
+    <string name="app_links_desc">Permita que a Aurora Store abra os links suportados</string>
+    <string name="google_play_store_desc">O Google Play, também conhecido como a Google Play Store e anteriormente Android Market.</string>
     <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
-    <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps de software feitos para dispositivos Android, fechada em 2017.</string>
+    <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
     <string name="pref_updates_check_frequency_desc">Configure o intervalo das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
@@ -292,16 +292,16 @@
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_network_proxy_url">URL da proxy</string>
     <string name="toast_proxy_invalid">URL de proxy inválida, verifique o formato!</string>
-    <string name="toast_proxy_success">Proxy definido com sucesso</string>
-    <string name="toast_proxy_failed">Falhou em definir proxy</string>
+    <string name="toast_proxy_success">Proxy definida com sucesso</string>
+    <string name="toast_proxy_failed">Falha ao definir a proxy</string>
     <string name="pref_vending_version_device">Padrão (da configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão do Google Play</string>
     <string name="onboarding_permission_doze">Downloads em segundo plano</string>
     <string name="onboarding_permission_doze_desc">Permita que a Aurora Store baixe e atualize apps em segundo plano</string>
     <string name="pref_updates_auto">Atualizações automáticas</string>
-    <string name="pref_updates_auto_notify">Buscar e notificar por atualizações disponíveis</string>
-    <string name="pref_updates_auto_off">Não atualizar apps automaticamente</string>
-    <string name="pref_updates_auto_desc">Configurar comportamento das atualizações automáticas</string>
+    <string name="pref_updates_auto_notify">Buscar atualizações disponíveis e enviar notificações</string>
+    <string name="pref_updates_auto_off">Não atualizar os apps automaticamente</string>
+    <string name="pref_updates_auto_desc">Configure o comportamento das atualizações automáticas</string>
     <string name="pref_updates_auto_install">Buscar e instalar atualizações disponíveis automaticamente</string>
     <string name="action_request_analysis">Solicitar uma nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APKs</string>
@@ -319,7 +319,7 @@
     <string name="am_installer_subtitle">Gerenciador de pacotes completo de código aberto</string>
     <string name="am_installer_desc">Precisa do App Manager, precisa do modo adb/root para instalar quando a otimização da MIUI está ligada</string>
     <string name="shizuku_installer_subtitle">Usando APIs do sistema diretamente com privilégios de adb/root</string>
-    <string name="session_installer_subtitle">Instalador baseado em sessão para APKs bundled/split</string>
+    <string name="session_installer_subtitle">Instalador baseado em sessão para APKs em pacote/divididos</string>
     <string name="session_installer_desc">Recomendado, é integrado e suporta todas as versões do Android</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
     <string name="source_code_title">Código-fonte</string>
@@ -327,7 +327,7 @@
     <string name="privacy_policy_title">Política de privacidade</string>
     <string name="disclaimer_subtitle">Responsabilização</string>
     <string name="privacy_policy_subtitle">Descubra como a Aurora Store usa seus dados</string>
-    <string name="manual_download_hint">Insira o código da versão que deseja baixar</string>
+    <string name="manual_download_hint">Digita o código da versão que deseja baixar</string>
     <string name="title_more">Mais</string>
     <string name="manage_account">Gerencie sua conta</string>
     <string name="pref_clear_device_owner_title">Limpar proprietário do dispositivo</string>
@@ -335,33 +335,33 @@
     <string name="pref_clear_device_owner_desc">Isso irá revogar a permissão do instalador da sessão de silenciosamente instalar apps. Prosseguir com a limpeza da propriedade do dispositivo?</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="add_dispenser_title">Adicionar distribuidor</string>
-    <string name="pref_dispenser_title">Gerenciar distribuidores</string>
+    <string name="pref_dispenser_title">Gerenciar os distribuidores</string>
     <string name="add_dispenser_error">URL inválida</string>
     <string name="remove_dispenser_title">Remover distribuidor</string>
     <string name="remove">Remover</string>
     <string name="about_wiki_summary">Encontre respostas para perguntas frequentes (FAQ), soluções para problemas comuns e mais</string>
-    <string name="pref_dispenser_summary">Veja e gerencie distribuidores de token para logins anônimos</string>
+    <string name="pref_dispenser_summary">Veja e gerencie os distribuidores de token de logins anônimos</string>
     <string name="no_dispensers_available">Nenhum distribuidor disponível</string>
-    <string name="add_dispenser_summary">Adicione um distribuidor de token à Aurora Store. Distribuidores de token providenciam credenciais de conta para a Aurora Store para entrar anonimamente.</string>
+    <string name="add_dispenser_summary">Adicione um distribuidor de token à Aurora Store. Distribuidores de token providenciam credenciais de conta para a Aurora Store para fazer login de forma anônima.</string>
     <string name="add_dispenser_hint">URL do distribuidor</string>
     <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Adicionar</string>
-    <string name="session_login">Entre em sua conta Google Play</string>
+    <string name="session_login">Entre em uma sessão na sua conta do Google Play</string>
     <string name="about_aurora_store_title">Sobre a Aurora Store</string>
     <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
-    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da loja Google Play. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play para o seu dispositivo. Para usar a Aurora Store, você deve ter uma conta Google Play e entrar na conta quando abrir e configurar a Aurora Store. \n \nDiferentemente de uma loja de apps tradicional, a Aurora Store não possui, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos da Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Play e encontre os apps da Google Play. \n \nPor favor saiba que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor de app, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
+    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da Google Play Store oficial. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, você precisa ter uma conta do Google Play e entrar na conta quando abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
     <string name="toast_app_unavailable">App não disponível para seu dispositivo</string>
-    <string name="toast_fav_import_failed">Falhou em importar favoritos!</string>
+    <string name="toast_fav_import_failed">Falha ao importar os curtidos!</string>
     <string name="details_no_favourites">Nenhum app curtido encontrado</string>
     <string name="title_favourites_manager">Apps curtidos</string>
     <string name="action_favourite">Curtir</string>
-    <string name="toast_fav_export_success">Favoritos exportados!</string>
-    <string name="toast_fav_export_failed">Falhou ao exportar favoritos!</string>
-    <string name="toast_fav_import_success">Favoritos importados!</string>
+    <string name="toast_fav_export_success">Curtidos exportados!</string>
+    <string name="toast_fav_export_failed">Falha ao exportar os curtidos!</string>
+    <string name="toast_fav_import_success">Curtidos importados!</string>
     <string name="export_app_summary_success">Pacote de app exportado com sucesso</string>
-    <string name="export_app_summary_fail">Falha ao exportar pacote de app</string>
+    <string name="export_app_summary_fail">Falha ao exportar o pacote de app</string>
     <string name="action_uninstall_success">Desinstalado com sucesso</string>
-    <string name="pref_network_proxy_url_message">Digite uma URL de proxy válida para passar todos os dados pela proxy.</string>
+    <string name="pref_network_proxy_url_message">Digite uma URL de proxy válida para passar todo o tráfego pela proxy.</string>
     <string name="action_logout_confirmation_title">Sair?</string>
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
     <string name="check_updates">Buscar atualizações</string>
@@ -372,32 +372,32 @@
     <string name="toast_permission_installer_required">Você precisa conceder a permissão de instalador primeiro</string>
     <string name="item_optional">Opcional</string>
     <string name="force_restart_title">Reiniciar a Aurora Store</string>
-    <string name="force_restart_summary">A Aurora Store precisa ser reiniciada para aplicar as novas configurações</string>
-    <string name="export_app_title">Exportador de Arquivos</string>
-    <string name="export_app_summary">Aguarde, exportando seu arquivo</string>
+    <string name="force_restart_summary">A Aurora Store precisa ser reiniciada para aplicar as configurações novas</string>
+    <string name="export_app_title">Exportador de arquivo</string>
+    <string name="export_app_summary">Aguarde, seu arquivo está sendo exportado</string>
     <string name="notification_channel_export">Notificação de exportação de apps</string>
     <string name="notification_channel_install">Notificação de instalação</string>
     <string name="notification_channel_downloads">Notificação de downloads</string>
-    <string name="status_failed">Falhado</string>
+    <string name="status_failed">Falha</string>
     <string name="status_completed">Concluído</string>
     <string name="status_queued">Na fila</string>
     <string name="status_unavailable">Indisponível</string>
     <string name="status_downloading">Baixando</string>
     <string name="status_cancelled">Cancelado</string>
     <string name="notification_channel_account">Notificação relacionada à conta</string>
-    <string name="authentication_required_unarchive">Por favor, faça login em sua conta do Google Play para desarquivar o app!</string>
+    <string name="authentication_required_unarchive">Faça login na sua conta do Google Play para desarquivar o app!</string>
     <string name="authentication_required_title">Autenticação necessária</string>
-    <string name="checking_updates">Checando atualizações</string>
+    <string name="checking_updates">Buscando atualizações</string>
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="default_spoof">Padrão</string>
     <string name="available_spoof">Disponível</string>
     <string name="action_remove_all">Remover todos</string>
     <string name="action_select_all">Selecionar tudo</string>
     <string name="filter_latest">Mais recentes</string>
-    <string name="toast_black_import_failed">Falha ao importar lista negra!</string>
-    <string name="toast_black_export_failed">Falha ao exportar lista negra!</string>
-    <string name="toast_black_import_success">Lista negra importada!</string>
-    <string name="toast_black_export_success">Lista negra exportada!</string>
+    <string name="toast_black_import_failed">Falha ao importar a lista de bloqueio!</string>
+    <string name="toast_black_export_failed">Falha ao exportar a lista de bloqueio!</string>
+    <string name="toast_black_import_success">A lista de bloqueio foi importada!</string>
+    <string name="toast_black_export_success">A lista de bloqueio foi exportada!</string>
     <string name="action_unarchive">Desarquivar</string>
     <string name="status_verifying">Verificando</string>
     <string name="unable_to_open">Não é possível abrir o app</string>
@@ -405,27 +405,27 @@
     <string name="details_compatibility_title">Compatibilidade</string>
     <string name="details_compatibility_gms_not_required_subtitle">Esse app funciona sem a biblioteca proprietária do Google. Porém, ele pode ainda precisar de outras bibliotecas de terceiros para funcionar corretamente.</string>
     <string name="details_compatibility_status_unknown">Desconhecido: Não foi verificado ainda</string>
-    <string name="plexus_progress">Verificando compatibilidade…</string>
+    <string name="plexus_progress">Verificando a compatibilidade…</string>
     <string name="details_compatibility_status_compatible">Compatível: Funciona sem problemas</string>
     <string name="details_compatibility_gms_required_title">Requer o Google Play Services</string>
     <string name="details_compatibility_gms_required_subtitle">Você pode precisar instalar a biblioteca proprietária do Google, ou uma reimplementação FOSS como o microG.</string>
     <string name="details_compatibility_microg">Com o projeto microG</string>
     <string name="details_compatibility_gms_not_required_title">Funciona sem o Google Play Services</string>
-    <string name="details_compatibility_status_limited">Limitado: Funciona com funcionalidade limitada</string>
+    <string name="details_compatibility_status_limited">Limitado: Funciona mas com os recursos limitados</string>
     <string name="details_compatibility_no_gms">Sem Google Play Services</string>
-    <string name="details_compatibility_status_unsupported">Não suportado: Não funcional</string>
+    <string name="details_compatibility_status_unsupported">Não suportado: Não funciona</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
     <string name="no_apps_available">Nenhum app disponível</string>
     <string name="pref_network_microg_login_title">Usar o microG para fazer login em contas</string>
-    <string name="pref_network_microg_login_desc">Autentique usando o microG ao fazer login em contas Google para um fluxo de login mais simples.</string>
+    <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao fazer login em contas do Google para um fluxo de login mais simples.</string>
     <string name="set">Definir</string>
     <string name="disable">Desativar</string>
     <string name="toast_proxy_disabled">Proxy desativada com sucesso</string>
     <string name="pref_network_proxy_desc">Veja e gerencie a configuração de proxy</string>
-    <string name="pref_updates_restrictions_title">Restrições de atualizações automáticas</string>
-    <string name="pref_updates_restrictions_desc">Configure restrições de dispositivo para atualizações automáticas.</string>
-    <string name="pref_updates_restrictions_metered">Somente em redes não-medidas</string>
-    <string name="pref_updates_restrictions_idle">Quando o dispositivo estiver ocioso</string>
+    <string name="pref_updates_restrictions_title">Restrições das atualizações automáticas</string>
+    <string name="pref_updates_restrictions_desc">Configure as restrições do dispositivo das atualizações automáticas.</string>
+    <string name="pref_updates_restrictions_metered">Somente em redes ilimitadas</string>
+    <string name="pref_updates_restrictions_idle">Quando o dispositivo estiver parado</string>
     <string name="pref_updates_restrictions_battery">Quando a bateria não está baixa</string>
     <string name="verification_failed">Falha ao verificar os arquivos baixados</string>
 </resources>
