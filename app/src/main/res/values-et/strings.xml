@@ -380,4 +380,32 @@
     <string name="bad_request">Sisemine viga! Proovi mõne aja pärast uuesti</string>
     <string name="failed_to_generate_session">Seanssi ei saanud luua</string>
     <string name="status_verifying">Kontrollimine</string>
+    <string name="download_speed_estimating">Hindamine</string>
+    <string name="device_miui_extra">Võid valida ka süsteemse paigaldaja, kuid siis ei saa installida komplekteeritud (split) APK-sid, nii et valik on sinu.</string>
+    <string name="dialog_desc_native_split">Süsteemse paigaldaja abil ei saa paigaldada komplekteeritud (split) rakendusi. Vali paigaldajaks Seanss, Aurora teenused või Root.</string>
+    <string name="pref_common_extra">Lisaks</string>
+    <string name="pref_install_mode_shizuku">Shizuku paigaldaja</string>
+    <string name="pref_install_mode_native">Süsteemne paigaldaja (vananenud)</string>
+    <string name="pref_install_mode_root">Root-paigalgaja</string>
+    <string name="pref_install_mode_session">Seansi paigaldaja</string>
+    <string name="spoof_apply">Pettuse rakendamiseks logi kindlasti uuesti sisse</string>
+    <string name="title_spoof_manager">Pettuse haldur</string>
+    <string name="toast_spoof_applied">Seadmepettus on rakendatud.</string>
+    <string name="toast_page_unavailable">Leht pole saadaval</string>
+    <string name="login_rate_limited">Vabandust, liiga palju sisselogimiskatseid</string>
+    <string name="android_market_desc">Android Market oli Android-seadmetele mõeldud veebipood, mis lõpetas 2017. aastal.</string>
+    <string name="session_installer_subtitle">Seansipõhine paigaldaja komplekteeritud/split APK-de jaoks</string>
+    <string name="session_installer_desc">Soovitatav, sisseehitatud ja toetab kõiki Androidi versioone</string>
+    <string name="root_installer_subtitle">Shellipõhine paigaldaja, mis kasutab juurõigusi</string>
+    <string name="root_installer_desc">Nõuab root/superkasutaja õigusi, toetab kõiki Androidi versioone.</string>
+    <string name="native_installer_desc">Sobib kõige paremini alla Android 4.4 seadmetele</string>
+    <string name="services_installer_subtitle">Paigaldaja,et paigaldada taustal</string>
+    <string name="services_installer_desc">Nõuab, et Aurora teenused oleks paigaldatud privilegeeritud süsteemirakendusena</string>
+    <string name="shizuku_installer_subtitle">Süsteemi API-de kasutamine otse adb/root õigustega</string>
+    <string name="shizuku_installer_desc">Vajalik on Shizuku või Sui, tuleb seadistada ja anda luba</string>
+    <string name="pref_network_microg_login_desc">Protsessi lihtsustamiseks kasuta Google kontodele sisselogimise autentimiseks microG-d.</string>
+    <string name="pref_updates_restrictions_metered">Ainult mahupiiranguteta võrkudes</string>
+    <string name="made_with_love">Loodud <xliff:g id="heart_emoji">%1$s</xliff:g> kasutades Indias</string>
+    <string name="pref_clear_device_owner_desc">See tühistab seansi paigaldaja loa rakendust vaikselt paigaldada. Kas jätkata?</string>
+    <string name="about_aurora_store_summary">Aurora Store võimaldab otsida ja alla laadida rakendusi ametlikust Google Play poest. Saad otsida rakenduste kirjeldusi, ekraanipilte, uuendusi, teiste kasutajate kommentaare ja laadida APK otse teenusest Google Play oma seadmesse. Aurora poe kasutamiseks peab olema Google Play konto ja Aurora poe esmakordsel avamisel ja seadistamisel tuleb Google Play kontole sisse logida.\n\nErinevalt traditsioonilisest rakendustepoest ei oma, litsentsi ega levita Aurora Store ühtegi rakendust. Kõikidele rakendustele, rakenduste kirjeldustele, ekraanipiltidele ja muule Aurora poe sisule pääseb otse juurde, laaditakse alla ja/või kuvatakse Google Playst. Aurora pood töötab täpselt nagu uks või brauser, võimaldades oma Google Play kontole sisse logida ja Google Playst rakendusi leida.\n\nPane tähele, et Aurora poel pole Google, Google Play, Aurora poe kaudu allalaaditud rakenduste ega rakenduste arendajate heakskiitu, sponsorlust ega volitusi; samuti ei ole Aurora poel nendega mingit seost, koostööd ega ühendust.</string>
 </resources>
