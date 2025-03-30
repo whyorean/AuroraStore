@@ -323,7 +323,7 @@
     <string name="requesting_new_session">Requesting new session</string>
     <string name="server_maintenance">Server down for maintenance</string>
     <string name="downloading_dep">Downloading additional files for <xliff:g id="app">%1$s</xliff:g></string>
-    <string name="notification_channel_updates">Updates notifications</string>
+    <string name="notification_channel_updates">Update notifications</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> updates available</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> update available</string>
     <string name="notification_updates_available_desc_1">A new version of <xliff:g id="app_one_name">%1$s</xliff:g> is available</string>
