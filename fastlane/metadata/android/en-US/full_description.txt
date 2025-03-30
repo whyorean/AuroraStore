@@ -7,4 +7,5 @@ Aurora Store is an unofficial, FOSS client to Google Play with an elegant design
 • Account login: You can login with either personal or an anonymous account
 • Device & Locale spoofing: Change your device and/or locale to access geo locked apps
 • Exodus Privacy integration: Instantly see trackers in app
+• Plexus integration: Instantly see app compatibility without Google Play Services or with microG
 • Updates blacklisting: Ignore updates for specific apps
