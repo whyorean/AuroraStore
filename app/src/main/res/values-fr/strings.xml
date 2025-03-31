@@ -84,7 +84,7 @@
     <string name="details_changelog_unavailable">Le journal des changements n’a pas été fourni</string>
     <string name="details_changelog">Journal des changements</string>
     <string name="details_dev_email">Adresse courriel</string>
-    <string name="details_beta_available">Participer au programme bêta ?</string>
+    <string name="details_beta_available">Participer au programme bêta ?</string>
     <string name="details_beta_subscribed">Vous essayez la version bêta</string>
     <string name="details_beta">Programme bêta</string>
     <string name="action_whitelist">Liste d’inclusion</string>
@@ -189,7 +189,7 @@
     <string name="onboarding_permission_select">Aurora Store a besoin des autorisations suivantes</string>
     <string name="dialog_title_self_update">Une nouvelle mise à jour est proposée</string>
     <string name="installer_service_misconfigured">Configurez d’abord les services Aurora et accordez toutes les autorisations.</string>
-    <string name="installer_service_unavailable">Installez les services Aurora 1.0.9 ou version ultérieure, ou changez de programme d’installation.</string>
+    <string name="installer_service_unavailable">Installez les services Aurora 1.0.9 ou version ultérieure, ou changez de programme d’installation.</string>
     <string name="installer_service_available">Les services Aurora sont proposés et prêts à être installés.</string>
     <string name="installer_root_unavailable">L’accès racine manque. Accordez-le ou changez le programme d’installation.</string>
     <string name="filter_review_all">Tout</string>
@@ -208,10 +208,10 @@
     <string name="toast_purchase_blocked">Les achats d’applis ne sont pas possibles pour les comptes anonymes.</string>
     <string name="insecure_anonymous_apply">Reconnectez-vous et redémarrez l’appli pour appliquer les changements.</string>
     <string name="pref_network_title">Mise en réseau</string>
-    <string name="pref_ui_no_for_you">Pages « Pour vous »</string>
+    <string name="pref_ui_no_for_you">Pages « Pour vous »</string>
     <string name="pref_ui_similar_apps_desc">Afficher les grappes semblables et connexes sur la page des détails de l’appli</string>
     <string name="pref_ui_similar_apps">Applis semblables et connexes</string>
-    <string name="pref_ui_no_for_you_desc">Afficher les pages « Pour vous » sur l’écran d’accueil</string>
+    <string name="pref_ui_no_for_you_desc">Afficher les pages « Pour vous » sur l’écran d’accueil</string>
     <string name="pref_ui_layout_tab">Choisir l’onglet par défaut</string>
     <string name="pref_ui_layout">Disposition</string>
     <string name="pref_common_extra">Autres options</string>

@@ -7,7 +7,7 @@
     <string name="details_dev_email">E-mail</string>
     <string name="details_description">Descrição</string>
     <string name="title_spoof_manager">Gerenciador de falsificação</string>
-    <string name="action_whitelist">Lista de permitidos</string>
+    <string name="action_whitelist">Adicionar à lista de permitidos</string>
     <string name="title_blacklist_manager">Gerenciar lista de bloqueio</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
@@ -260,7 +260,7 @@
     <string name="server_maintenance">O servidor está fora do ar para manutenção</string>
     <string name="error">Ocorreu um erro!</string>
     <string name="update_available">atualização disponível</string>
-    <string name="search_hint">Pesquisar apps &amp; jogos</string>
+    <string name="search_hint">Pesquisar por apps &amp; jogos</string>
     <string name="expand">Expandir</string>
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>

@@ -176,7 +176,7 @@
     <string name="details_changelog">Değişiklik günlüğü</string>
     <string name="details_beta_delay">Kayıt işlemi biraz zaman alabilir, burayı sonra gözden geçirebilirsiniz.</string>
     <string name="details_beta_description">Resmî olarak yayınlanmadan önce yeni özellikleri ve hataları görebileceksin. Geri bildirim yaparak geliştiricilere destek olabilirsin.</string>
-    <string name="details_beta_available">Ön izleme programına katılmak ister misin\?</string>
+    <string name="details_beta_available">Ön izleme programına katılmak ister misin?</string>
     <string name="details_beta_subscribed">Artık ön izleme sürümü kullanıyorsunuz</string>
     <string name="details_beta">Ön izleme programı</string>
     <string name="action_whitelist">Beyaz liste</string>
@@ -348,11 +348,7 @@
     <string name="add_dispenser_hint">Dağıtıcı URL\'si</string>
     <string name="about_aurora_store_title">Aurora Store Hakkında</string>
     <string name="about_aurora_store_subtitle">Aurora Store hakkında daha fazla bilgi edinin</string>
-    <string name="about_aurora_store_summary">Aurora Store, resmi Google Play mağazasından uygulama aramanızı ve indirmenizi sağlar. Uygulama açıklamalarını, ekran görüntülerini, güncellemeleri, diğer kullanıcıların yorumlarını görebilir ve APK\'yı doğrudan Google Play\'den aygıtınıza indirebilirsiniz. Aurora Store\'u kullanmak için bir Google Play hesabınızın olması ve Aurora Store\'u ilk açtığınızda ve yapılandırdığınızda Google Play hesabınızda oturum açmanız gerekir.
-\n
-\nGeleneksel bir uygulama mağazasının aksine, Aurora Store herhangi bir uygulamaya sahip değildir, lisanslamaz veya dağıtmaz. Aurora Store\'daki tüm uygulamalara, uygulama açıklamalarına, ekran görüntülerine ve diğer içeriğe doğrudan Google Play\'den erişilir, indirilir ve/veya görüntülenir. Aurora Store, tıpkı bir kapı veya tarayıcı gibi çalışarak Google Play hesabınızda oturum açmanıza ve Google Play\'deki uygulamaları bulmanıza olanak tanır.
-\n
-\nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
+    <string name="about_aurora_store_summary">Aurora Store, resmi Google Play mağazasından uygulama aramanızı ve indirmenizi sağlar. Uygulama açıklamalarını, ekran görüntülerini, güncellemeleri, diğer kullanıcıların yorumlarını görebilir ve APK\'yı doğrudan Google Play\'den aygıtınıza indirebilirsiniz. Aurora Store\'u kullanmak için bir Google Play hesabınızın olması ve Aurora Store\'u ilk açtığınızda ve yapılandırdığınızda Google Play hesabınızda oturum açmanız gerekir. \n \nGeleneksel bir uygulama mağazasının aksine, Aurora Store herhangi bir uygulamaya sahip değildir, lisanslamaz veya dağıtmaz. Aurora Store\'daki tüm uygulamalara, uygulama açıklamalarına, ekran görüntülerine ve diğer içeriğe doğrudan Google Play\'den erişilir, indirilir ve/veya görüntülenir. Aurora Store, tıpkı bir kapı veya tarayıcı gibi çalışarak Google Play hesabınızda oturum açmanıza ve Google Play\'deki uygulamaları bulmanıza olanak tanır. \n \nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
     <string name="session_login">Lütfen Google Play hesabınızda oturum açın</string>
     <string name="toast_app_unavailable">Uygulama aygıtınız için kullanılabilir değil</string>
     <string name="toast_fav_export_failed">Sık kullanılanlar dışa aktarılamadı!</string>

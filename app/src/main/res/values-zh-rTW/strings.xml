@@ -355,11 +355,7 @@
     <string name="shizuku_installer_desc">需要 Shizuku 或 Sui，並且需要設定及授予權限</string>
     <string name="services_installer_subtitle">背景安裝程式</string>
     <string name="privacy_policy_subtitle">了解 Aurora Store 是如何使用您的資料</string>
-    <string name="about_aurora_store_summary">Aurora Store 讓您可以搜尋並下載來自官方 Google Play 商店的應用程式。您可以檢視應用程式的描述、截圖、更新內容、其他使用者的評論，並直接從 Google Play 下載 APK 到您的裝置上。要使用 Aurora Store，您需要擁有 Google Play 帳戶，並在首次開啟和設定 Aurora Store 時登入您的 Google Play 帳戶。
-\n
-\n與傳統的應用程式商店不同，Aurora Store 不擁有、授權或散佈任何應用程式。Aurora Store 中的所有應用程式、應用程式描述、截圖及其他內容，都是直接從 Google Play 取得、下載及顯示。Aurora Store 的運作方式與入口網站或瀏覽器相似，讓您可以登入 Google Play 帳戶並從 Google Play 尋找應用程式。
-\n
-\n請注意，Aurora Store 未經 Google、Google Play、透過 Aurora Store 下載的任何應用程式或其開發者的核准、贊助或授權；Aurora Store 也與他們沒有任何關聯、合作或連結。</string>
+    <string name="about_aurora_store_summary">Aurora Store 讓您可以搜尋並下載來自官方 Google Play 商店的應用程式。您可以檢視應用程式的描述、截圖、更新內容、其他使用者的評論，並直接從 Google Play 下載 APK 到您的裝置上。要使用 Aurora Store，您需要擁有 Google Play 帳戶，並在首次開啟和設定 Aurora Store 時登入您的 Google Play 帳戶。 \n \n與傳統的應用程式商店不同，Aurora Store 不擁有、授權或散佈任何應用程式。Aurora Store 中的所有應用程式、應用程式描述、截圖及其他內容，都是直接從 Google Play 取得、下載及顯示。Aurora Store 的運作方式與入口網站或瀏覽器相似，讓您可以登入 Google Play 帳戶並從 Google Play 尋找應用程式。 \n \n請注意，Aurora Store 未經 Google、Google Play、透過 Aurora Store 下載的任何應用程式或其開發者的核准、贊助或授權；Aurora Store 也與他們沒有任何關聯、合作或連結。</string>
     <string name="action_logout_confirmation_title">登出？</string>
     <string name="action_logout_confirmation_message">您確定要登出嗎？</string>
     <string name="check_updates">檢查更新</string>
