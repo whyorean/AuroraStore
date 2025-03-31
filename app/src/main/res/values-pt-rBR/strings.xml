@@ -7,7 +7,7 @@
     <string name="details_dev_email">E-mail</string>
     <string name="details_description">Descrição</string>
     <string name="title_spoof_manager">Gerenciador de falsificação</string>
-    <string name="action_whitelist">Lista de permitidos</string>
+    <string name="action_whitelist">Adicionar à lista de permitidos</string>
     <string name="title_blacklist_manager">Gerenciar lista de bloqueio</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
