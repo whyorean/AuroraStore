@@ -277,11 +277,11 @@
     <string name="bad_request">Внутрішня помилка! Повторіть спробу трохи згодом</string>
     <string name="server_unreachable">Сервер недоступний</string>
     <string name="check_connectivity">Перевірте інтернет-з\'єднання</string>
-    <string name="app_language">Мова програми</string>
+    <string name="app_language">Мова застосунку</string>
     <string name="failed_to_generate_session">Не вдалося згенерувати сеанс</string>
     <string name="app_links_desc">Дозволити Aurora Store відкривати підтримувані посилання</string>
     <string name="verifying_new_session">Підтвердження нового сеансу</string>
-    <string name="app_links_title">Посилання на додаток</string>
+    <string name="app_links_title">Посилання на застосунки</string>
     <string name="google_play_store_desc">Google Play, також відомий як Google Play Маркет, а раніше - Android Market.</string>
     <string name="android_market_desc">Android Маркет — інтернет-магазин, що пропонував програмне забезпечення для Android-пристроїв, припинив свою діяльність у 2017 році.</string>
     <string name="details_ratings_title_hint">Назва відгуку</string>
@@ -349,7 +349,7 @@
     <string name="about_aurora_store_title">Про Aurora Store</string>
     <string name="about_aurora_store_subtitle">Дізнатися більше про Aurora Store</string>
     <string name="session_login">Увійдіть у свій обліковий запис Google Play</string>
-    <string name="about_aurora_store_summary">Aurora Store дозволяє шукати та завантажувати програми з офіційного магазину Google Play. Ви можете переглянути опис програми, скріншоти, оновлення, коментарі інших користувачів, а також завантажити APK безпосередньо з Google Play на свій пристрій. Щоб користуватися Aurora Store, вам потрібно мати обліковий запис Google Play і увійти до свого облікового запису Google Play під час першого відкриття та налаштування Aurora Store.\n\nНа відміну від традиційних магазинів додатків, Aurora Store не володіє, не ліцензує і не розповсюджує жодних додатків. До всіх програм, описів програм, знімків екрана та іншого контенту в Aurora Store можна отримати доступ, завантажити та/або відобразити безпосередньо з Google Play. Aurora Store працює точно так само, як двері або браузер, дозволяючи вам увійти до свого облікового запису Google Play і знайти програми з Google Play.\n\nЗверніть увагу, що Aurora Store не має жодного схвалення, спонсорства або дозволу від Google, Google Play, будь-яких додатків, завантажених через Aurora Store, або будь-яких розробників додатків; Aurora Store також не має жодної приналежності, співпраці або зв\'язку з ними.</string>
+    <string name="about_aurora_store_summary">Aurora Store дає змогу шукати та завантажувати застосунки з офіційного Google Play Маркету. Ви можете переглядати описи застосунків, знімки екрана, оновлення, коментарі інших користувачів, а також завантажити APK безпосередньо з Google Play на свій пристрій. Щоб користуватися Aurora Store, вам потрібно мати обліковий запис Google Play та ввійти до свого облікового запису Google Play під час першого відкриття та налаштування Aurora Store.\n\nНа відміну від традиційних магазинів застосунків, Aurora Store не володіє, не ліцензує і не розповсюджує застосунків. До всіх застосунків, їхніх описів, знімків екрана та іншого контенту в Aurora Store можна отримати доступ, завантажити та/або переглянути безпосередньо з Google Play. Aurora Store працює так само як двері або браузер, дозволяючи вам увійти до свого облікового запису Google Play і знайти застосунки з Google Play.\n\nЗауважте, що Aurora Store не має жодного схвалення, спонсорства або дозволу від Google, Google Play, будь-яких застосунків, завантажених через Aurora Store, або будь-яких розробників застосунків; Aurora Store також не має з ними жодних відносин, співпраці чи зв\'язків.</string>
     <string name="toast_app_unavailable">Застосунок недоступний для вашого пристрою</string>
     <string name="action_favourite">Улюблене</string>
     <string name="details_no_favourites">Не знайдено улюблених застосунків</string>
