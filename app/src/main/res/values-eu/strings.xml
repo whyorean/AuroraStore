@@ -84,7 +84,7 @@
     <string name="installer_status_failure_blocked">Instalazioa blokeatu da</string>
     <string name="installer_status_failure">Instalatzea huts egin du</string>
     <string name="installer_service_misconfigured">Konfiguratu Aurora zerbitzuak eta baimen guztiak onartu lehenik.</string>
-    <string name="installer_service_unavailable">Instalatu Aurora zerbitzuak 1.0.9 edo altuago, edo aldatu instalatzailea.</string>
+    <string name="installer_service_unavailable">Instalatu Aurora zerbitzuak 1.0.9 edo berriago, edo aldatu instalatzailea.</string>
     <string name="filter_review_two">Bi</string>
     <string name="filter_review_three">Hiru</string>
     <string name="filter_review_positive">Positiboak</string>
