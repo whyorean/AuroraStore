@@ -39,7 +39,7 @@
     <string name="title_installed">Installée</string>
     <string name="title_installation">Installation</string>
     <string name="title_games">Jeux</string>
-    <string name="title_download_playstore">Play Store</string>
+    <string name="title_download_playstore">Magasin Play Store</string>
     <string name="title_download_manager">Téléchargements</string>
     <string name="title_device">Appareil</string>
     <string name="title_no_network">Pas de réseau</string>
@@ -272,7 +272,7 @@
     <string name="title_search_results">Résultats de la recherche</string>
     <string name="failed_generating_session">Échec de génération de la session. Code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Échec de récupération du rapport sur la protection des renseignements personnels</string>
-    <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV ou Tor ?</string>
+    <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor ?</string>
     <string name="bad_request">Erreur interne. Réessayez plus tard</string>
     <string name="login_rate_limited">Oups, votre débit est limité</string>
     <string name="server_unreachable">Impossible d’accéder au serveur</string>
@@ -282,7 +282,7 @@
     <string name="failed_to_generate_session">Impossible de générer la session</string>
     <string name="verifying_new_session">Vérification de la nouvelle session</string>
     <string name="app_links_title">Liens de l’appli</string>
-    <string name="google_play_store_desc">Google Play, aussi connu sous le nom de Google Play Store, anciennement Android Market.</string>
+    <string name="google_play_store_desc">Google Play, aussi connu sous le nom de magasin « Play Store » de Google, anciennement « Android Market ».</string>
     <string name="details_ratings_title_hint">Titre de l’avis</string>
     <string name="pref_network_proxy_url">URL du mandataire</string>
     <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
