@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="installer_service_available">Aurora 服务已可用并准备安装。</string>
+    <string name="installer_service_available">Aurora 服务已可用并准备好安装。</string>
     <string name="installer_root_unavailable">无 Root 权限。授予 Root 权限或更改安装程序。</string>
     <string name="filter_review_two">2★</string>
     <string name="filter_review_three">3★</string>
@@ -124,7 +124,7 @@
     <string name="action_installing">正在安装</string>
     <string name="action_pending">等待中</string>
     <string name="onboarding_welcome_select">你好吗？</string>
-    <string name="toast_purchase_blocked">应用购买在匿名帐号上不可用。</string>
+    <string name="toast_purchase_blocked">应用购买在匿名账户上不可用。</string>
     <string name="toast_spoof_applied">已应用设备伪装。</string>
     <string name="toast_permission_granted">已授予权限</string>
     <string name="toast_developer_setting_failed">从设备设置开启开发者设置来打开它们。</string>
@@ -179,7 +179,7 @@
     <string name="pref_filter_fdroid_title">过滤 F-Droid 应用</string>
     <string name="pref_filter_fdroid_summary">不检查从 F-Droid 下载或安装的应用的更新</string>
     <string name="onboarding_permission_installer_desc">允许 Aurora 商店安装应用</string>
-    <string name="onboarding_permission_installer">安装权限</string>
+    <string name="onboarding_permission_installer">安装器权限</string>
     <string name="onboarding_permission_esm">外部存储管理器</string>
     <string name="onboarding_permission_esa_desc">为了保存大型应用和游戏的 APK 扩展文件（OBBs）。</string>
     <string name="onboarding_permission_esa">访问外部存储</string>
@@ -280,7 +280,7 @@
     <string name="app_language">语言</string>
     <string name="failed_to_generate_session">无法生成会话</string>
     <string name="verifying_new_session">正在验证新会话</string>
-    <string name="app_links_title">应用链接</string>
+    <string name="app_links_title">链接</string>
     <string name="app_links_desc">允许 Aurora 商店打开受支持的链接</string>
     <string name="google_play_store_desc">Google Play，也称 Google Play 商店，之前叫 Android Market。</string>
     <string name="android_market_desc">Android Market 是一个提供为 Android 设备设计的软件应用程序的在线商店，于 2017 年退役。</string>
