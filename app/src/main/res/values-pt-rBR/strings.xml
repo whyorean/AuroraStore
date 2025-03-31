@@ -260,7 +260,7 @@
     <string name="server_maintenance">O servidor está fora do ar para manutenção</string>
     <string name="error">Ocorreu um erro!</string>
     <string name="update_available">atualização disponível</string>
-    <string name="search_hint">Pesquisar apps &amp; jogos</string>
+    <string name="search_hint">Pesquisar por apps &amp; jogos</string>
     <string name="expand">Expandir</string>
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
