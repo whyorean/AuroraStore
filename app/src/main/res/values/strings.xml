@@ -51,12 +51,12 @@
     <string name="account_logout">Log out from Aurora</string>
     <string name="action_back">"Back"</string>
     <string name="action_blacklist">"Blacklist"</string>
-    <string name="action_blacklist_add">"Add to Blacklist"</string>
+    <string name="action_blacklist_add">"Add to blacklist"</string>
     <string name="action_cancel">"Cancel"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_close">"Close"</string>
     <string name="action_copy">"Copy"</string>
-    <string name="action_copy_link">"Copy Link"</string>
+    <string name="action_copy_link">"Copy link"</string>
     <string name="action_disable">"Disable"</string>
     <string name="action_export">"Export"</string>
     <string name="action_import">"Import"</string>
@@ -71,7 +71,7 @@
     <string name="action_filter_paid_apps">"Paid"</string>
     <string name="action_filter_rating">"Ratings"</string>
     <string name="action_finish">"Finish"</string>
-    <string name="action_get_local_apk">"Save App bundle"</string>
+    <string name="action_get_local_apk">"Save app bundle"</string>
     <string name="action_grant">"Grant"</string>
     <string name="action_granted">"Granted"</string>
     <string name="action_ignore">"Ignore"</string>
@@ -96,19 +96,19 @@
     <string name="action_share">"Share"</string>
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_uninstall_success">"Successfully uninstalled"</string>
-    <string name="action_home_screen">Add to Home screen</string>
-    <string name="action_info">"App Info"</string>
+    <string name="action_home_screen">Add to home screen</string>
+    <string name="action_info">"App info"</string>
     <string name="action_update">"Update"</string>
     <string name="action_update_all">"Update all"</string>
     <string name="action_whitelist">"Whitelist"</string>
     <string name="details_beta">"Beta program"</string>
     <string name="details_beta_subscribed">"You're a beta tester"</string>
-    <string name="details_beta_available">"Join beta program ?"</string>
+    <string name="details_beta_available">"Join beta program?"</string>
     <string name="details_beta_description">"You will see new features and bugs before the public does. Give your feedback to developers to help them improve."</string>
     <string name="details_beta_delay">"Enrollment may take some time, you can check status later."</string>
     <string name="details_changelog">"Changelog"</string>
     <string name="details_changelog_unavailable">"Changelog not provided"</string>
-    <string name="details_contains_ads">"Contains Ads"</string>
+    <string name="details_contains_ads">"Contains ads"</string>
     <string name="details_dependencies">"Dependencies"</string>
     <string name="details_description">"Description"</string>
     <string name="details_dev_address">"Address"</string>
@@ -122,7 +122,7 @@
     <string name="details_no_ads">"No ads"</string>
     <string name="details_no_app_match">"No app match found"</string>
     <string name="details_no_favourites">"No favourite apps found"</string>
-    <string name="details_no_dependencies">"No Dependencies"</string>
+    <string name="details_no_dependencies">"No dependencies"</string>
     <string name="details_no_permission">"No permissions"</string>
     <string name="details_no_updates">"No updates available"</string>
     <string name="details_paid">"Paid"</string>
@@ -168,9 +168,9 @@
     <string name="installer_am_unavailable">Install App Manager or change the installer.</string>
     <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
     <string name="installer_shizuku_unavailable">Shizuku is not installed or set up properly.</string>
-    <string name="installer_service_available">"Aurora services is available and ready to install."</string>
-    <string name="installer_service_unavailable">Install Aurora services 1.0.9 or above, or change the installer.</string>
-    <string name="installer_service_misconfigured">Set up Aurora services and grant all permissions first.</string>
+    <string name="installer_service_available">"Aurora Services is available and ready to install."</string>
+    <string name="installer_service_unavailable">Install Aurora Services 1.0.9 or above, or change the installer.</string>
+    <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>
     <string name="installer_status_failure">"Installer failed"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
     <string name="installer_status_failure_session">"Could not create session"</string>
@@ -198,15 +198,15 @@
     <string name="onboarding_title_permissions">"Permissions"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>
     <string name="onboarding_welcome_select">"How you doing?"</string>
-    <string name="onboarding_permission_esa">"External Storage Access"</string>
+    <string name="onboarding_permission_esa">"External storage access"</string>
     <string name="onboarding_permission_esa_desc">To save APK expansion files (OBBs) for large apps &amp; games.</string>
-    <string name="onboarding_permission_esm">"External Storage Manager"</string>
-    <string name="onboarding_permission_installer">"Installer Permission"</string>
+    <string name="onboarding_permission_esm">"External storage manager"</string>
+    <string name="onboarding_permission_installer">"Installer permission"</string>
     <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
     <string name="onboarding_permission_installer_legacy_desc">"Allow installation of apps from unknown sources"</string>
     <string name="onboarding_permission_notifications">"Notifications"</string>
     <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
-    <string name="onboarding_permission_doze">"Background Downloads"</string>
+    <string name="onboarding_permission_doze">"Background downloads"</string>
     <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
     <string name="pref_common_extra">"Extras"</string>
     <string name="pref_filter_fdroid_summary">"Don't check updates for apps downloaded or installed from F-Droid"</string>
@@ -221,21 +221,21 @@
     <string name="pref_install_mode_session">"Session installer"</string>
     <string name="pref_install_mode_summary">"Select mode of APK installation"</string>
     <string name="pref_install_mode_title">"Installation method"</string>
-    <string name="pref_vending_version_title">Google Play Version</string>
+    <string name="pref_vending_version_title">Google Play version</string>
     <string name="pref_vending_version_device">Default (from device config)</string>
     <string name="pref_network_title">"Networking"</string>
     <string name="pref_network_proxy_url">"Proxy URL"</string>
     <string name="pref_network_proxy_url_message">Enter a valid proxy URL to pass all data through the proxy.</string>
     <string name="pref_ui_title">"Customization"</string>
-    <string name="pref_ui_no_for_you">"For You Pages"</string>
-    <string name="pref_ui_no_for_you_desc">"Display For You Pages on home screen"</string>
+    <string name="pref_ui_no_for_you">"For you pages"</string>
+    <string name="pref_ui_no_for_you_desc">"Display For you pages on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
     <string name="pref_updates_incompatible">Incompatible updates</string>
     <string name="pref_updates_incompatible_desc">Show updates for incompatible or disabled apps that may fail to install</string>
     <string name="pref_aurora_only">Aurora Store apps only</string>
     <string name="pref_aurora_only_desc">Only check updates for apps installed by Aurora Store</string>
-    <string name="purchase_failed">"Download Failed"</string>
+    <string name="purchase_failed">"Download failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>
     <string name="purchase_not_found">"App not found"</string>
@@ -248,7 +248,7 @@
     <string name="session_login_failed_google">Could not log in via Google</string>
     <string name="session_scrapped">Last session scrapped</string>
     <string name="session_verifying">Verifying session</string>
-    <string name="session_verifying_google">Verifying Google Session</string>
+    <string name="session_verifying_google">Verifying Google session</string>
     <string name="spoof_apply">"Make sure you re-login to apply the spoof"</string>
     <string name="insecure_anonymous_apply">"Make sure you re-login and restart app to apply changes."</string>
     <string name="tab_categories">"Categories"</string>
@@ -262,18 +262,18 @@
     <string name="title_about">About</string>
     <string name="title_account_manager">"Accounts"</string>
     <string name="title_apps">"Apps"</string>
-    <string name="title_app_settings">"App Settings"</string>
+    <string name="title_app_settings">"App settings"</string>
     <string name="title_apps_games">"My apps &amp; games"</string>
     <string name="title_apps_library">"Apps in library"</string>
     <string name="title_blacklist_manager">"Blacklist manager"</string>
-    <string name="title_favourites_manager">"Favourite Apps"</string>
+    <string name="title_favourites_manager">"Favourite apps"</string>
     <string name="title_device">"Device"</string>
     <string name="title_download_manager">"Downloads"</string>
     <string name="title_download_playstore">"Play Store"</string>
     <string name="title_games">"Games"</string>
     <string name="title_installation">"Installation"</string>
     <string name="title_installed">"Installed"</string>
-    <string name="title_installer">"App Installer"</string>
+    <string name="title_installer">"App installer"</string>
     <string name="title_language">"Language"</string>
     <string name="title_library">"Library"</string>
     <string name="title_no_network">"No network"</string>
@@ -292,9 +292,9 @@
     <string name="toast_clipboard_copied">"Copied to clipboard"</string>
     <string name="toast_developer_setting_failed">Turn on developer settings from the device settings to open them.</string>
     <string name="toast_permission_granted">"Permission granted"</string>
-    <string name="toast_permission_installer_required">"You need to grant Installer Permission first"</string>
+    <string name="toast_permission_installer_required">"You need to grant installer permission first"</string>
     <string name="toast_spoof_applied">Device spoof applied.</string>
-    <string name="toast_purchase_blocked">"App purchases not available on Anonymous accounts."</string>
+    <string name="toast_purchase_blocked">"App purchases not available on anonymous accounts."</string>
     <string name="toast_manual_unavailable">"The version code you are requesting is unavailable."</string>
     <string name="toast_manual_available">"Congrats, requested version code is available, downloading now."</string>
     <string name="toast_page_unavailable">Browse page unavailable</string>
@@ -319,7 +319,7 @@
     <string name="item_required">Required</string>
     <string name="item_optional">Optional</string>
     <string name="permissions_denied">Required permissions were denied. Please grant them in order to continue the action</string>
-    <string name="search_hint">Search for Apps &amp; Games</string>
+    <string name="search_hint">Search for apps &amp; games</string>
     <string name="requesting_new_session">Requesting new session</string>
     <string name="server_maintenance">Server down for maintenance</string>
     <string name="downloading_dep">Downloading additional files for <xliff:g id="app">%1$s</xliff:g></string>
@@ -346,10 +346,10 @@
     <string name="verifying_new_session">Verifying new session</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
-    <string name="app_language">App Language</string>
+    <string name="app_language">App language</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="pref_ui_layout_tab">Select default tab</string>
-    <string name="app_links_title">App Links</string>
+    <string name="app_links_title">App links</string>
     <string name="app_links_desc">Allow Aurora Store to open supported links</string>
     <string name="app_link_play_store" translatable="false">play.google.com</string>
     <string name="google_play_store_desc">Google Play, also known as the Google Play Store and formerly Android Market.</string>
@@ -390,7 +390,7 @@
     <string name="version" translatable="false">v<xliff:g id="version_name">%1$s</xliff:g> (<xliff:g id="version_code">%2$d</xliff:g>)</string>
     <string name="about_aurora_store_title">About Aurora Store</string>
     <string name="about_aurora_store_subtitle">Learn more about Aurora Store</string>
-    <string name="about_aurora_store_summary">Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, other users\' comments, and download the APK directly from Google Play to your device. To use Aurora Store, you need to have a Google Play account, and log in to your Google Play account when you first open and configure Aurora Store.\n\nUnlike a traditional app store, Aurora Store does not own, license or distribute any apps. All the apps, app descriptions, screenshots and other content in Aurora Store are directly accessed, downloaded and/or displayed from Google Play. Aurora Store works exactly like a door or a browser, allowing you to log in to your Google Play account and find the apps from Google Play.\n\nPlease note that Aurora Store does not have any approval, sponsorship or authorization from Google, Google Play, any apps downloaded through Aurora Store or any app developers; neither does Aurora Store have any affiliation, cooperation or connection with them.</string>
+    <string name="about_aurora_store_summary">Aurora Store enables you to search and download apps from the official Google Play Store. You can check app descriptions, screenshots, updates, other users\' comments, and download the APK directly from Google Play to your device. To use Aurora Store, you need to have a Google Play account, and log in to your Google Play account when you first open and configure Aurora Store.\n\nUnlike a traditional app store, Aurora Store does not own, license or distribute any apps. All the apps, app descriptions, screenshots and other content in Aurora Store are directly accessed, downloaded and/or displayed from Google Play. Aurora Store works exactly like a door or a browser, allowing you to log in to your Google Play account and find the apps from Google Play.\n\nPlease note that Aurora Store does not have any approval, sponsorship or authorization from Google, Google Play, any apps downloaded through Aurora Store or any app developers; neither does Aurora Store have any affiliation, cooperation or connection with them.</string>
 
     <!-- MoreDialogFragment -->
     <string name="title_more">More</string>
@@ -430,7 +430,7 @@
     <string name="toast_black_export_success">Blacklist exported!</string>
 
     <!-- ExportWorker -->
-    <string name="export_app_title">File Exporter</string>
+    <string name="export_app_title">File exporter</string>
     <string name="export_app_summary">Hold on, exporting your file</string>
     <string name="export_app_summary_success">Successfully exported app bundle</string>
     <string name="export_app_summary_fail">Failed to exported app bundle</string>
