@@ -189,7 +189,7 @@
     <string name="action_filter">Filtry</string>
     <string name="action_export">Exportovat</string>
     <string name="action_disable">Zakázat</string>
-    <string name="action_copy_link">Kopírovat Link</string>
+    <string name="action_copy_link">Kopírovat odkaz</string>
     <string name="action_copy">Kopírovat</string>
     <string name="action_close">Zavřít</string>
     <string name="action_clear">Vymazat</string>
