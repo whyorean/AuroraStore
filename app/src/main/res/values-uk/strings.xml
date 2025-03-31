@@ -49,7 +49,7 @@
     <string name="action_whitelist">Білий список</string>
     <string name="action_update_all">Оновити все</string>
     <string name="action_update">Оновити</string>
-    <string name="action_info">Інформація про додаток</string>
+    <string name="action_info">Відомості про застосунок</string>
     <string name="action_uninstall">Видалити</string>
     <string name="action_share">Поділитися</string>
     <string name="action_search">Пошук</string>
@@ -70,7 +70,7 @@
     <string name="action_ignore">Знехтувати</string>
     <string name="action_grant">Надати</string>
     <string name="action_granted">Надано</string>
-    <string name="action_get_local_apk">Зберегти набір програм</string>
+    <string name="action_get_local_apk">Зберегти набір застосунків</string>
     <string name="action_finish">Завершити</string>
     <string name="action_filter_rating">Оцінки</string>
     <string name="action_filter_paid_apps">Платні</string>
@@ -117,7 +117,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_manual_available">Вітаємо, запитаний код версії доступний, завантажується зараз.</string>
     <string name="toast_manual_unavailable">Запитуваний код версії недоступний.</string>
-    <string name="toast_purchase_blocked">Покупки програм недоступні в анонімних облікових записах.</string>
+    <string name="toast_purchase_blocked">Придбання застосунків недоступне в анонімних облікових записах.</string>
     <string name="toast_spoof_applied">Підміну пристрою застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
     <string name="toast_developer_setting_failed">Не вдалося відкрити налаштування розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
@@ -133,7 +133,7 @@
     <string name="title_no_network">Немає мережі</string>
     <string name="title_library">Бібліотека</string>
     <string name="title_language">Мова</string>
-    <string name="title_installer">Інсталятор програми</string>
+    <string name="title_installer">Встановлювач застосунків</string>
     <string name="title_installed">Встановлені</string>
     <string name="title_installation">Встановлення</string>
     <string name="title_games">Ігри</string>
@@ -164,8 +164,8 @@
     <string name="purchase_failed">Помилка завантаження</string>
     <string name="pref_ui_similar_apps_desc">Показ подібних і пов\'язаних кластерів на сторінці відомостей про застосунок</string>
     <string name="pref_ui_similar_apps">Подібні та пов’язані застосунки</string>
-    <string name="pref_ui_no_for_you_desc">Відображати сторінки для вас на головному екрані</string>
-    <string name="pref_ui_no_for_you">Для вас сторінки</string>
+    <string name="pref_ui_no_for_you_desc">Показувати сторінки для вас на головному екрані</string>
+    <string name="pref_ui_no_for_you">Сторінки Для вас</string>
     <string name="pref_ui_layout_tab">Виберіть типову вкладку</string>
     <string name="pref_ui_layout">Макет</string>
     <string name="pref_ui_title">Зовнішній вигляд</string>
@@ -179,8 +179,8 @@
     <string name="pref_install_delete_title">Видалити APK після встановлення</string>
     <string name="pref_install_delete_summary">Завантажені APK будуть видалені одразу після встановлення</string>
     <string name="onboarding_permission_installer_desc">Дозволити встановлення застосунків з Aurora Store</string>
-    <string name="onboarding_permission_installer">Дозвіл інсталятора</string>
-    <string name="onboarding_permission_esm">Менеджер зовнішньої пам\'яті</string>
+    <string name="onboarding_permission_installer">Дозвіл встановлювача</string>
+    <string name="onboarding_permission_esm">Менеджер зовнішнього сховища</string>
     <string name="onboarding_permission_esa_desc">Щоб зберігати файли розширення APK (OBB) для великих програм та ігор.</string>
     <string name="onboarding_permission_esa">Доступ до зовнішнього сховища</string>
     <string name="onboarding_welcome_select">Як справи\?</string>
@@ -208,7 +208,7 @@
     <string name="installer_status_failure">Помилка встановлювача</string>
     <string name="installer_service_misconfigured">Спочатку налаштуйте служби Aurora та надайте всі дозволи.</string>
     <string name="installer_service_unavailable">Установіть Aurora Services 1.0.9 або новішої версії або змініть програму встановлення.</string>
-    <string name="installer_service_available">Сервіс Aurora доступний і готовий до встановлення.</string>
+    <string name="installer_service_available">Служби Aurora доступні та готові до встановлення.</string>
     <string name="installer_root_unavailable">Немає root доступу, надайте його або змініть встановлювач.</string>
     <string name="filter_review_two">Два</string>
     <string name="filter_review_three">Три</string>
@@ -235,10 +235,10 @@
     <string name="session_login_failed_google">Не вдалось увійти через Google</string>
     <string name="session_scrapped">Останній сеанс скасовано</string>
     <string name="session_verifying">Перевірка сеансу</string>
-    <string name="session_verifying_google">Перевірка сесії Google</string>
+    <string name="session_verifying_google">Перевірка сеансу Google</string>
     <string name="error">Сталася помилка!</string>
     <string name="menu">Меню</string>
-    <string name="search_hint">Пошук програм та ігор</string>
+    <string name="search_hint">Пошук застосунків та ігор</string>
     <string name="onboarding_permission_notifications">Сповіщення</string>
     <string name="download_eta_sec">Залишилося %1$dс</string>
     <string name="download_paused">Призупинено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
@@ -288,7 +288,7 @@
     <string name="pref_updates_check_frequency_desc">Налаштуйте часовий інтервал для автоматичних оновлень у годинах.</string>
     <string name="pref_aurora_only">Тільки застосунки Aurora Store</string>
     <string name="pref_aurora_only_desc">Перевіряйте оновлення лише для застосунків, встановлених з Aurora Store</string>
-    <string name="title_app_settings">Налаштування програми</string>
+    <string name="title_app_settings">Налаштування застосунку</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
     <string name="pref_network_proxy_url">URL проксі</string>
     <string name="toast_proxy_invalid">Неправильна URL-адреса проксі, перевірте формат!</string>
@@ -359,7 +359,7 @@
     <string name="toast_fav_export_success">«Улюблені» експортовано!</string>
     <string name="export_app_summary_success">Набір застосунків успішно еспортовано</string>
     <string name="export_app_summary_fail">Не вдалося експортувати набір застосунків</string>
-    <string name="title_favourites_manager">Улюблені програми</string>
+    <string name="title_favourites_manager">Улюблені застосунки</string>
     <string name="action_uninstall_success">Успішно видалено</string>
     <string name="action_logout_confirmation_message">Хочете вийти з облікового запису?</string>
     <string name="pref_network_proxy_url_message">Введіть дійсну URL-адресу проксі-сервера, щоби передавати всі дані через нього.</string>
