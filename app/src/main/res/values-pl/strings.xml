@@ -24,7 +24,7 @@
     <string name="action_whitelist">Biała lista</string>
     <string name="action_update_all">Aktualizuj wszystkie</string>
     <string name="action_update">Aktualizuj</string>
-    <string name="action_info">O aplikacji</string>
+    <string name="action_info">Informacje o aplikacji</string>
     <string name="action_uninstall">Odinstaluj</string>
     <string name="action_share">Udostępnij</string>
     <string name="action_search">Szukaj</string>
@@ -169,8 +169,8 @@
     <string name="installer_status_failure_session">Nie można utworzyć sesji</string>
     <string name="installer_status_failure_blocked">Instalacja zablokowana</string>
     <string name="installer_status_failure">Instalacja nieudana</string>
-    <string name="installer_service_misconfigured">Skonfiguruj usługi Aurora i przyznaj wszystkie uprawnienia.</string>
-    <string name="installer_service_unavailable">Zainstaluj usługi Aurora w wersji 1.0.9 lub wyższej albo zmień instalator.</string>
+    <string name="installer_service_misconfigured">Skonfiguruj Usługi Aurora i przyznaj wszystkie uprawnienia.</string>
+    <string name="installer_service_unavailable">Zainstaluj Usługi Aurora w wersji 1.0.9 lub wyższej albo zmień instalator.</string>
     <string name="installer_service_available">Usługi Aurora są dostępne i gotowe do instalacji.</string>
     <string name="installer_root_unavailable">Brak dostępu do roota. Przyznaj go lub zmień instalator.</string>
     <string name="title_installed">Zainstalowane</string>
