@@ -6,13 +6,13 @@
     <string name="details_dev_address">Endereço</string>
     <string name="details_dev_email">E-mail</string>
     <string name="details_description">Descrição</string>
-    <string name="title_spoof_manager">Gerenciar simulação</string>
+    <string name="title_spoof_manager">Gerenciador de falsificação</string>
     <string name="action_whitelist">Lista de permitidos</string>
     <string name="title_blacklist_manager">Gerenciar lista de bloqueio</string>
     <string name="title_download_playstore">Play Store</string>
     <string name="title_download_manager">Downloads</string>
     <string name="title_apps">Apps</string>
-    <string name="pref_install_mode_services">Serviços Aurora (Depreciado)</string>
+    <string name="pref_install_mode_services">Aurora Services (Depreciado)</string>
     <string name="action_filter_downloads">Downloads</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal">PayPal</string>
@@ -32,7 +32,7 @@
     <string name="about_xda">Fóruns XDA</string>
     <string name="about_libera">Liberapay</string>
     <string name="toast_purchase_blocked">A compra de apps não está disponível em contas anônimas.</string>
-    <string name="toast_spoof_applied">Simulação de dispositivo aplicada.</string>
+    <string name="toast_spoof_applied">Falsificação de dispositivo aplicada.</string>
     <string name="toast_permission_granted">Permissão concedida</string>
     <string name="toast_developer_setting_failed">Ative as configurações do desenvolvedor a partir das configurações do dispositivo para abri-las.</string>
     <string name="toast_clipboard_copied">Copiado para a área de transferência</string>
@@ -76,9 +76,9 @@
     <string name="installer_status_failure_session">Não foi possível criar a sessão</string>
     <string name="installer_status_failure_blocked">A instalação foi bloqueada</string>
     <string name="installer_status_failure">O instalador falhou</string>
-    <string name="installer_service_misconfigured">Primeiro, configure os serviços Aurora e permita todas as permissões.</string>
-    <string name="installer_service_unavailable">Instale os serviços Aurora 1.0.9 ou superior, ou altere o instalador.</string>
-    <string name="installer_service_available">Os serviços Aurora estão disponíveis e prontos para instalação.</string>
+    <string name="installer_service_misconfigured">Primeiro, configure o Aurora Services e permita todas as permissões.</string>
+    <string name="installer_service_unavailable">Instale o Aurora Services 1.0.9 ou superior, ou altere o instalador.</string>
+    <string name="installer_service_available">O Aurora Services está disponível e pronto para instalação.</string>
     <string name="installer_root_unavailable">Sem acesso root. Permita-o ou altere o instalador.</string>
     <string name="filter_review_two">Dois</string>
     <string name="filter_review_three">Três</string>
@@ -186,10 +186,10 @@
     <string name="tab_top_grossing">Mais rentáveis</string>
     <string name="tab_top_free">Principais apps gratuitos</string>
     <string name="tab_top_charts">Em alta</string>
-    <string name="tab_for_you">Recomendações</string>
+    <string name="tab_for_you">Para você</string>
     <string name="tab_editor_choice">Escolha dos editores</string>
     <string name="tab_categories">Categorias</string>
-    <string name="spoof_apply">Certifique-se de fazer login novamente para aplicar a simulação</string>
+    <string name="spoof_apply">Certifique-se de fazer login novamente para aplicar a falsificação</string>
     <string name="purchase_session_expired">Sessão expirada, faça login novamente para obter uma nova sessão.</string>
     <string name="purchase_no_file">Não foi possível obter os arquivos</string>
     <string name="purchase_not_found">App não encontrado</string>
@@ -207,12 +207,12 @@
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
     <string name="pref_filter_fdroid_summary">Não buscar por atualizações de apps baixados ou instalados do F-Droid</string>
     <string name="insecure_anonymous_apply">Tenha certeza que você fez login novamente e reinicie o app para aplicar as mudanças.</string>
-    <string name="pref_ui_no_for_you">Páginas de Recomendações</string>
+    <string name="pref_ui_no_for_you">Páginas de recomendação</string>
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
     <string name="toast_manual_unavailable">O código de versão que você solicitou não está disponível.</string>
     <string name="title_manual_download">Baixar manualmente</string>
     <string name="pref_ui_similar_apps_desc">Exibir apps semelhantes e relacionados na página de detalhes do app</string>
-    <string name="pref_ui_no_for_you_desc">Exibir páginas de recomendações na tela inicial</string>
+    <string name="pref_ui_no_for_you_desc">Exibir páginas de recomendação na tela inicial</string>
     <string name="pref_network_title">Rede</string>
     <string name="details_no_app_match">Nenhum app correspondente encontrado</string>
     <string name="pref_ui_similar_apps">Apps relacionados ou semelhantes</string>
@@ -282,7 +282,7 @@
     <string name="app_links_title">Links do app</string>
     <string name="app_links_desc">Permita que a Aurora Store abra os links suportados</string>
     <string name="google_play_store_desc">O Google Play, também conhecido como a Google Play Store e anteriormente Android Market.</string>
-    <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
+    <string name="failed_to_generate_session">Não foi possível gerar uma sessão</string>
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
     <string name="pref_updates_check_frequency_desc">Configure o intervalo das atualizações automáticas, em horas.</string>
@@ -314,7 +314,7 @@
     <string name="native_installer_subtitle">Instalador baseado em intent, disponível em todos os dispositivos</string>
     <string name="native_installer_desc">Melhor para dispositivos rodando versões anteriores ao Android 4.4</string>
     <string name="services_installer_subtitle">Instalador para instalações em segundo plano</string>
-    <string name="services_installer_desc">Precisa que os Serviços Aurora estejam instalados como um app do sistema privilegiado</string>
+    <string name="services_installer_desc">Requer que o Aurora Services seja instalado como um app do sistema privilegiado</string>
     <string name="shizuku_installer_desc">Precisa do Shizuku ou Sui, precisa ser configurado e que a permissão seja concedida</string>
     <string name="am_installer_subtitle">Gerenciador de pacotes completo de código aberto</string>
     <string name="am_installer_desc">Precisa do App Manager, precisa do modo adb/root para instalar quando a otimização da MIUI está ligada</string>
@@ -326,10 +326,10 @@
     <string name="source_code_subtitle">Descubra o que há por dentro</string>
     <string name="privacy_policy_title">Política de privacidade</string>
     <string name="disclaimer_subtitle">Responsabilização</string>
-    <string name="privacy_policy_subtitle">Descubra como a Aurora Store usa seus dados</string>
+    <string name="privacy_policy_subtitle">Saiba mais sobre como a Aurora Store usa seus dados</string>
     <string name="manual_download_hint">Digita o código da versão que deseja baixar</string>
     <string name="title_more">Mais</string>
-    <string name="manage_account">Gerencie sua conta</string>
+    <string name="manage_account">Gerenciar sua conta</string>
     <string name="pref_clear_device_owner_title">Limpar proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_summary">Remove a Aurora Store como o app proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_desc">Isso irá revogar a permissão do instalador da sessão de silenciosamente instalar apps. Prosseguir com a limpeza da propriedade do dispositivo?</string>
@@ -346,7 +346,7 @@
     <string name="add_dispenser_hint">URL do distribuidor</string>
     <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Adicionar</string>
-    <string name="session_login">Entre em uma sessão na sua conta do Google Play</string>
+    <string name="session_login">Faça login na sua conta do Google Play</string>
     <string name="about_aurora_store_title">Sobre a Aurora Store</string>
     <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
     <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da Google Play Store oficial. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, você precisa ter uma conta do Google Play e entrar na conta quando abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre em sua conta Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
@@ -368,7 +368,7 @@
     <string name="details_data_safety_title">Segurança dos dados</string>
     <string name="item_required">Necessário</string>
     <string name="details_data_safety_subtitle">Práticas declaradas pelo desenvolvedor da segurança e privacidade dos dados</string>
-    <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de apps de fontes desconhecidas</string>
+    <string name="onboarding_permission_installer_legacy_desc">Permita a instalação de apps de fontes desconhecidas</string>
     <string name="toast_permission_installer_required">Você precisa conceder a permissão de instalador primeiro</string>
     <string name="item_optional">Opcional</string>
     <string name="force_restart_title">Reiniciar a Aurora Store</string>
