@@ -19,8 +19,8 @@
     <string name="action_installations">Instalācijas</string>
     <string name="action_install">Uzstādīt</string>
     <string name="action_ignore">Neņemt vērā</string>
-    <string name="action_granted">Sniegta</string>
-    <string name="action_grant">Sniegt</string>
+    <string name="action_granted">Nodrošināta</string>
+    <string name="action_grant">Nodrošināt</string>
     <string name="action_filter_rating">Reitingi</string>
     <string name="action_filter_downloads">Lejupielādes</string>
     <string name="action_filter_apps_with_ads">Lietotnes ar reklāmām</string>
@@ -28,8 +28,8 @@
     <string name="action_filter_all">Visi</string>
     <string name="action_filter">Filtri</string>
     <string name="action_export">Izgūt</string>
-    <string name="action_disable">Izslēgt</string>
-    <string name="action_copy_link">Kopēt saiti</string>
+    <string name="action_disable">Atspējot</string>
+    <string name="action_copy_link">Ievietot saiti starpliktuvē</string>
     <string name="action_copy">Kopēt</string>
     <string name="action_close">Aizvērt</string>
     <string name="action_clear">Notīrīt</string>
@@ -49,13 +49,13 @@
     <string name="about_bitcoin_eth_summary">Ziedot ar Ethereum (ETH)</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_telegram">Telegram</string>
-    <string name="details_beta_available">Pievienoties Beta testēšanas komandai?</string>
+    <string name="details_beta_available">Pievienoties beta programmai?</string>
     <string name="action_post">Publicēt</string>
     <string name="action_restart">Restartēt</string>
     <string name="action_resume">Turpināt</string>
-    <string name="action_share">Dalīties</string>
+    <string name="action_share">Kopīgot</string>
     <string name="action_uninstall">Noņemt</string>
-    <string name="action_info">Lietotnes informācija</string>
+    <string name="action_info">Informācija par lietotni</string>
     <string name="action_update">Atjaunināt</string>
     <string name="action_update_all">Atjaunināt visas</string>
     <string name="details_beta">Beta lietotne</string>
@@ -108,8 +108,8 @@
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_welcome">Sveiciens</string>
     <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
-    <string name="pref_ui_no_for_you">For You lapa</string>
-    <string name="pref_ui_no_for_you_desc">Rādīt For You lapu sākuma ekrānā</string>
+    <string name="pref_ui_no_for_you">Lapas \"Tev\"</string>
+    <string name="pref_ui_no_for_you_desc">Rādīt lapas \"Tev\" sākuma ekrānā</string>
     <string name="pref_ui_similar_apps">Līdzīgas un saistītas lietotnes</string>
     <string name="pref_ui_similar_apps_desc">Rādīt līdzīgas un saistītas lietotnes</string>
     <string name="purchase_failed">Lejupielāde neizdevās</string>
@@ -191,7 +191,7 @@
     <string name="session_good">Vā! Viss kārtībā.</string>
     <string name="session_init">Tiek sagatavots nepieciešamais…</string>
     <string name="session_scrapped">Pēdējā sesija tika atmesta</string>
-    <string name="session_verifying_google">Pārbauda Google sesiju</string>
+    <string name="session_verifying_google">Aplicina Google sesiju</string>
     <string name="insecure_anonymous_apply">Jānodrošina atkārtota pieteikšanās un pārsāknēšana, lai pielietotu izmaiņas.</string>
     <string name="title_download_playstore">Play veikals</string>
     <string name="title_advanced">Papildu</string>
@@ -206,7 +206,7 @@
     <string name="about_xda">XDA forums</string>
     <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
     <string name="dialog_desc_native_split">Nav iespējams uzstādīt apvienotās (sastāvošas no vairākām daļām) lietotnes ar iebūvēto uzstādītāju. Tas ir jānomaina uz sesijas, pakalpojumu vai superlietotāja uzstādītāju.</string>
-    <string name="action_get_local_apk">Saglabāt lietotnes APK</string>
+    <string name="action_get_local_apk">Saglabāt lietotnes kopumu</string>
     <string name="action_filter_misc">Dažādi</string>
     <string name="action_filter_gsf_dependent_apps">Atkarīgs no GSF</string>
     <string name="installer_service_available">Aurora pakalpojumi ir pieejami un gatavi uzstādīšanai.</string>
@@ -319,7 +319,7 @@
     <string name="am_installer_subtitle">Pilnu iespēju atvērtā pirmkoda pakotņu pārvaldnieks</string>
     <string name="shizuku_installer_subtitle">Izmantojot sistēmas API ar adb/superlietotāja tiesībām</string>
     <string name="shizuku_installer_desc">Nepieciešams Shizuku vai Sui, jābūt iestatītai un nodrošinātai atļaujai</string>
-    <string name="action_home_screen">Pievienot Sākuma ekrānam</string>
+    <string name="action_home_screen">Pievienot sākuma ekrānam</string>
     <string name="download_clear_finished">Notīrīt pabeigtās</string>
     <string name="pref_updates_incompatible">Nesaderīgi atjauninājumi</string>
     <string name="session_installer_subtitle">Sesijā balstīts uzstādītājs apkopotiem/sadalītiem APK</string>
@@ -354,7 +354,7 @@
     <string name="toast_fav_export_success">Izlase izgūta.</string>
     <string name="export_app_title">Datņu izguvējs</string>
     <string name="export_app_summary">Pacietību, izgūst datni</string>
-    <string name="export_app_summary_fail">Neizdevās izgūt lietotnes kopu</string>
+    <string name="export_app_summary_fail">Neizdevās izgūt lietotnes kopumu</string>
     <string name="check_updates">Pārbaudīt atjauninājumus</string>
     <string name="force_restart_title">Pārsāknēt Aurora Store</string>
     <string name="details_no_favourites">Nav izlasē pievienotu lietotņu</string>
@@ -365,7 +365,7 @@
     <string name="item_required">Nepieciešams</string>
     <string name="item_optional">Izvēles</string>
     <string name="toast_fav_import_failed">Neizdevās ievietot izlasi.</string>
-    <string name="export_app_summary_success">Lietotnes kopa sekmīgi izgūta</string>
+    <string name="export_app_summary_success">Lietotnes kopums sekmīgi izgūts</string>
     <string name="action_logout_confirmation_message">Vai tiešām atteikties?</string>
     <string name="action_logout_confirmation_title">Atteikties?</string>
     <string name="action_uninstall_success">Sekmīgi noņemta</string>
