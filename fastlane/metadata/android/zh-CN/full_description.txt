@@ -1,6 +1,4 @@
-Aurora Store 是一款 Google Play 的非官方、自由及开源软件客户端，设计优雅。
-Aurora Store 让用户如同在 Play 商店一样下载、更新和搜索应用程序。
-无论有没有 Google Play 服务或 MicroG 都能完美运行。
+Aurora Store 是一款 Google Play 的非官方、自由及开源软件客户端，设计优雅。Aurora Store 让用户如同在 Play 商店一样下载、更新和搜索应用程序。无论有没有 Google Play 服务或 MicroG 都能完美运行。
 
 <b>特点：</b>
 
