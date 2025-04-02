@@ -32,7 +32,7 @@
     <string name="toast_page_unavailable">Blader pagina niet beschikbaar</string>
     <string name="toast_manual_available">Gefeliciteerd, de aangevraagde versie code is beschikbaar, nu aan het installeren.</string>
     <string name="toast_manual_unavailable">De versiecode die je verzoekt is niet beschikbaar.</string>
-    <string name="toast_purchase_blocked">App aankopen niet beschikbaar op Anonieme accounts.</string>
+    <string name="toast_purchase_blocked">App aankopen niet beschikbaar op anonieme accounts.</string>
     <string name="toast_spoof_applied">Apparaatvervalsing toegepast.</string>
     <string name="toast_permission_granted">Recht toegestaan</string>
     <string name="toast_developer_setting_failed">Schakel ontwikkelaar instellingen in via de apparaatinstellingen om ze te openen.</string>
@@ -69,11 +69,11 @@
     <string name="purchase_not_found">App niet gevonden</string>
     <string name="purchase_unsupported">App niet ondersteund</string>
     <string name="purchase_invalid">App niet aangeschaft</string>
-    <string name="purchase_failed">Installatie Mislukt</string>
+    <string name="purchase_failed">Installatie mislukt</string>
     <string name="pref_ui_similar_apps_desc">Toon vergelijkbare en gerelateerde clusters op de app-detailspagina</string>
     <string name="pref_ui_similar_apps">Vergelijkbare en gerelateerde apps</string>
-    <string name="pref_ui_no_for_you_desc">Toon Voor Jou Pagina\'s op thuisscherm</string>
-    <string name="pref_ui_no_for_you">Voor Jou Pagina\'s</string>
+    <string name="pref_ui_no_for_you_desc">Voor jou pagina\'s op thuisscherm tonen</string>
+    <string name="pref_ui_no_for_you">Voor jou pagina\'s</string>
     <string name="pref_ui_layout_tab">Selecteer standaard tabblad</string>
     <string name="pref_ui_layout">Lay-out</string>
     <string name="pref_ui_title">Aanpassing</string>
@@ -90,10 +90,10 @@
     <string name="pref_filter_fdroid_summary">Niet op updates controleren voor apps geïnstalleerd met F-Droid</string>
     <string name="pref_common_extra">Extra\'s</string>
     <string name="onboarding_permission_installer_desc">Sta installeren van apps met Aurora Store toe</string>
-    <string name="onboarding_permission_installer">Installatie-recht</string>
-    <string name="onboarding_permission_esm">Externe Opslag Beheerder</string>
+    <string name="onboarding_permission_installer">Installatierecht</string>
+    <string name="onboarding_permission_esm">Beheerder externe opslag</string>
     <string name="onboarding_permission_esa_desc">Voor het opslaan van APK-extensiebestanden (OBB\'s) voor grote apps en spellen</string>
-    <string name="onboarding_permission_esa">Externe Opslag Toegang</string>
+    <string name="onboarding_permission_esa">Toegang externe opslag</string>
     <string name="onboarding_welcome_select">Hoe gaat het met je?</string>
     <string name="onboarding_title_welcome">Welkom</string>
     <string name="onboarding_title_permissions">Toestemmingen</string>
@@ -152,13 +152,13 @@
     <string name="details_paid">Betaald</string>
     <string name="details_no_updates">Geen updates beschikbaar</string>
     <string name="details_no_permission">Geen toestemmingen</string>
-    <string name="details_no_dependencies">Geen Afhankelijkheden</string>
+    <string name="details_no_dependencies">Geen afhankelijkheden</string>
     <string name="details_no_app_match">Geen app overeenkomst gevonden</string>
     <string name="details_no_ads">Geen advertenties</string>
     <string name="details_more_about_app">Meer over app</string>
     <string name="details_gsf_dependent">Vereist GSF</string>
     <string name="details_dependencies">Afhankelijkheden</string>
-    <string name="details_contains_ads">Bevat Advertenties</string>
+    <string name="details_contains_ads">Bevat advertenties</string>
     <string name="details_changelog_unavailable">Niet voorzien van wijzigingslog</string>
     <string name="details_changelog">Wijzigingslog</string>
     <string name="details_beta_delay">Inschrijving kan even duren, je kunt de status later bekijken.</string>
@@ -169,7 +169,7 @@
     <string name="action_whitelist">Witte lijst</string>
     <string name="action_update_all">Werk alle bij</string>
     <string name="action_update">Werk bij</string>
-    <string name="action_info">App Informatie</string>
+    <string name="action_info">App-informatie</string>
     <string name="action_uninstall">Deïnstalleren</string>
     <string name="action_share">Deel</string>
     <string name="action_resume">Hervat</string>
@@ -199,7 +199,7 @@
     <string name="action_filter">Filters</string>
     <string name="action_export">Verzenden</string>
     <string name="action_disable">Schakel uit</string>
-    <string name="action_copy_link">Kopieër de link</string>
+    <string name="action_copy_link">Link kopiëren</string>
     <string name="action_copy">Kopieër</string>
     <string name="action_close">Sluit</string>
     <string name="action_clear">Wis</string>
@@ -261,7 +261,7 @@
     <string name="menu">Menu</string>
     <string name="expand">Uitbreiden</string>
     <string name="permissions_denied">Vereiste rechten zijn geweigerd. Verleen deze alstublieft om verder te gaan met de actie</string>
-    <string name="search_hint">Zoeken naar Apps &amp; Spellen</string>
+    <string name="search_hint">Zoeken naar apps &amp; spellen</string>
     <string name="requesting_new_session">Nieuwe sessie aanvragen</string>
     <string name="downloading_dep">Extra bestanden installeren voor <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_channel_updates">Meldingen voor updates</string>
@@ -269,7 +269,7 @@
     <string name="notification_updates_available_desc_1">Een nieuwere versie van <xliff:g id="app_one_name">%1$s</xliff:g> is beschikbaar</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> en <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="check_connectivity">Controleer internetconnectiviteit</string>
-    <string name="app_language">App Taal</string>
+    <string name="app_language">App-taal</string>
     <string name="app_links_desc">Aurora Store toestaan om ondersteunde links te openen</string>
     <string name="title_search_suggestion">Zoeksuggestie</string>
     <string name="title_search_results">Zoekresultaten</string>
@@ -281,7 +281,7 @@
     <string name="bad_request">Interne fout! Probeer het opnieuw na enige tijd</string>
     <string name="failed_to_generate_session">Sessie kan niet worden gegenereerd</string>
     <string name="verifying_new_session">Nieuwe sessie verifiëren</string>
-    <string name="app_links_title">App koppelingen</string>
+    <string name="app_links_title">App-koppelingen</string>
     <string name="google_play_store_desc">Google Play, ook bekend als de Google Play Store en voorheen Android Market.</string>
     <string name="action_request_analysis">Nieuwe analyse aanvragen</string>
     <string name="onboarding_permission_doze">Achtergrondinstallaties</string>
@@ -338,7 +338,7 @@
     <string name="title_app_settings">App-instellingen</string>
     <string name="pref_vending_version_device">Standaard (van apparaatconfiguraties)</string>
     <string name="pref_network_proxy_url_message">Voer een geldige proxy-URL in om alle gegevens via de proxy te sturen.</string>
-    <string name="title_favourites_manager">Favoriete Apps</string>
+    <string name="title_favourites_manager">Favoriete apps</string>
     <string name="toast_proxy_invalid">Ongeldige proxy-URL, controleer indeling!</string>
     <string name="notification_channel_downloads">Installatiemelding</string>
     <string name="pref_aurora_only">Alleen apps van Aurora Store</string>
