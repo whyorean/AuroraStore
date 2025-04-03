@@ -37,7 +37,7 @@ fun CategoryComposable(category: Category, onClick: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
     ) {

@@ -42,7 +42,7 @@ fun AppComposable(app: App, onClick: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .width(dimensionResource(R.dimen.icon_size_cluster))
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_xsmall))
     ) {
         AsyncImage(

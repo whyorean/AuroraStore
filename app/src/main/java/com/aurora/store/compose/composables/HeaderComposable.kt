@@ -36,7 +36,7 @@ fun HeaderComposable(@StringRes title: Int, onClick: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_small),
                 vertical = dimensionResource(R.dimen.padding_xxsmall)
