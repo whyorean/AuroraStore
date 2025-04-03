@@ -27,7 +27,7 @@
     <string name="details_permission">Дозволи</string>
     <string name="details_no_updates">Немає оновлень</string>
     <string name="details_no_permission">Без дозволів</string>
-    <string name="details_no_dependencies">Немає залежностей</string>
+    <string name="details_no_dependencies">Жодних залежностей</string>
     <string name="details_no_app_match">Застосунок не знайдено</string>
     <string name="details_no_ads">Без оголошень</string>
     <string name="details_more_about_app">Докладніше про застосунок</string>
@@ -38,12 +38,12 @@
     <string name="details_dev_address">Адреса</string>
     <string name="details_description">Опис</string>
     <string name="details_dependencies">Залежності</string>
-    <string name="details_contains_ads">Містить оголошення</string>
+    <string name="details_contains_ads">Містить рекламу</string>
     <string name="details_changelog_unavailable">Список змін не наданий</string>
     <string name="details_changelog">Список змін</string>
     <string name="details_beta_delay">Реєстрація може тривати трохи часу, стан можна перевірити пізніше.</string>
     <string name="details_beta_description">Ви побачите нові функції та помилки перед тим, як це стане загальнодоступним. Надішліть свій відгук розробникам, щоб допомогти їм вдосконалити застосунок.</string>
-    <string name="details_beta_available">Приєднатися до бета тестування?</string>
+    <string name="details_beta_available">Приєднатися до бета-програми?</string>
     <string name="details_beta_subscribed">Ви бета тестувальник</string>
     <string name="details_beta">Бета тестування</string>
     <string name="action_whitelist">Білий список</string>
@@ -70,7 +70,7 @@
     <string name="action_ignore">Знехтувати</string>
     <string name="action_grant">Надати</string>
     <string name="action_granted">Надано</string>
-    <string name="action_get_local_apk">Зберегти APK застосунку</string>
+    <string name="action_get_local_apk">Зберегти набір застосунків</string>
     <string name="action_finish">Завершити</string>
     <string name="action_filter_rating">Оцінки</string>
     <string name="action_filter_paid_apps">Платні</string>
@@ -88,7 +88,7 @@
     <string name="action_close">Закрити</string>
     <string name="action_clear">Очистити</string>
     <string name="action_cancel">Скасувати</string>
-    <string name="action_blacklist_add">Додати до чорного списку</string>
+    <string name="action_blacklist_add">Додати в чорний список</string>
     <string name="action_blacklist">Чорний список</string>
     <string name="action_back">Назад</string>
     <string name="account_logout">Вийти з Aurora</string>
@@ -117,7 +117,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="toast_manual_available">Вітаємо, запитаний код версії доступний, завантажується зараз.</string>
     <string name="toast_manual_unavailable">Запитуваний код версії недоступний.</string>
-    <string name="toast_purchase_blocked">Покупки застосунків недоступні у знеособлених облікових записах.</string>
+    <string name="toast_purchase_blocked">Придбання застосунків недоступне в анонімних облікових записах.</string>
     <string name="toast_spoof_applied">Підміну пристрою застосовано.</string>
     <string name="toast_permission_granted">Дозвіл надано</string>
     <string name="toast_developer_setting_failed">Не вдалося відкрити налаштування розробника, переконайтеся, що ви ввімкнули їх в налаштуваннях пристрою.</string>
@@ -161,11 +161,11 @@
     <string name="purchase_not_found">Застосунок не знайдено</string>
     <string name="purchase_unsupported">Застосунок не підтримується</string>
     <string name="purchase_invalid">Застосунок не придбано</string>
-    <string name="purchase_failed">Збій завантаження</string>
+    <string name="purchase_failed">Помилка завантаження</string>
     <string name="pref_ui_similar_apps_desc">Показ подібних і пов\'язаних кластерів на сторінці відомостей про застосунок</string>
     <string name="pref_ui_similar_apps">Подібні та пов’язані застосунки</string>
-    <string name="pref_ui_no_for_you_desc">Показувати сторінки на головному екрані</string>
-    <string name="pref_ui_no_for_you">Сторінки для вас</string>
+    <string name="pref_ui_no_for_you_desc">Показувати сторінки для вас на головному екрані</string>
+    <string name="pref_ui_no_for_you">Сторінки Для вас</string>
     <string name="pref_ui_layout_tab">Виберіть типову вкладку</string>
     <string name="pref_ui_layout">Макет</string>
     <string name="pref_ui_title">Зовнішній вигляд</string>
@@ -206,8 +206,8 @@
     <string name="installer_status_failure_session">Не вдалося створити сеанс</string>
     <string name="installer_status_failure_blocked">Встановлення було заблоковано</string>
     <string name="installer_status_failure">Помилка встановлювача</string>
-    <string name="installer_service_misconfigured">Налаштуйте служби Aurora, найперше надавши всі дозволи.</string>
-    <string name="installer_service_unavailable">Встановіть служби Aurora 1.0.9 чи новішу версію або змініть встановлювач.</string>
+    <string name="installer_service_misconfigured">Спочатку налаштуйте служби Aurora та надайте всі дозволи.</string>
+    <string name="installer_service_unavailable">Установіть Aurora Services 1.0.9 або новішої версії або змініть програму встановлення.</string>
     <string name="installer_service_available">Служби Aurora доступні та готові до встановлення.</string>
     <string name="installer_root_unavailable">Немає root доступу, надайте його або змініть встановлювач.</string>
     <string name="filter_review_two">Два</string>
@@ -238,7 +238,7 @@
     <string name="session_verifying_google">Перевірка сеансу Google</string>
     <string name="error">Сталася помилка!</string>
     <string name="menu">Меню</string>
-    <string name="search_hint">Пошук застосунків та іграх</string>
+    <string name="search_hint">Пошук застосунків та ігор</string>
     <string name="onboarding_permission_notifications">Сповіщення</string>
     <string name="download_eta_sec">Залишилося %1$dс</string>
     <string name="download_paused">Призупинено • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
@@ -296,7 +296,7 @@
     <string name="toast_proxy_failed">Не вдалося налаштувати проксі</string>
     <string name="pref_vending_version_device">Типово (з конфігурації пристрою)</string>
     <string name="pref_vending_version_title">Версія Google Play</string>
-    <string name="onboarding_permission_doze">Завантаження у фоні</string>
+    <string name="onboarding_permission_doze">Фонове завантаження</string>
     <string name="onboarding_permission_doze_desc">Дозволити Aurora Store завантажувати й оновлювати застосунки у фоновому режимі</string>
     <string name="pref_updates_auto">Автоматичні оновлення</string>
     <string name="pref_updates_auto_notify">Перевіряти та повідомляти про доступні оновлення</string>
@@ -308,7 +308,7 @@
     <string name="download_clear_finished">Очистити завершені</string>
     <string name="pref_updates_incompatible">Несумісні оновлення</string>
     <string name="pref_updates_incompatible_desc">Показувати оновлення для несумісних або вимкнених застосунків, які можуть не встановитися</string>
-    <string name="action_home_screen">Додати на домашній екран</string>
+    <string name="action_home_screen">Додати на головний екран</string>
     <string name="root_installer_desc">Потрібні права root/суперкористувача, підтримуються всі версії Android.</string>
     <string name="session_installer_subtitle">Сеансовий встановлювач для розділених/пакетних файлів APK</string>
     <string name="shizuku_installer_subtitle">Використовує прямі системні API з правами adb/root</string>
@@ -349,7 +349,7 @@
     <string name="about_aurora_store_title">Про Aurora Store</string>
     <string name="about_aurora_store_subtitle">Дізнатися більше про Aurora Store</string>
     <string name="session_login">Увійдіть у свій обліковий запис Google Play</string>
-    <string name="about_aurora_store_summary">Aurora Store дає змогу шукати та завантажувати застосунки з офіційної крамниці Google Play. Ви можете переглядати описи застосунків, знімки екрана, оновлення, коментарі інших користувачів і завантажувати APK безпосередньо з Google Play на свій пристрій. Щоб використовувати Aurora Store, вам потрібно мати обліковий запис Google Play та увійти до нього, коли ви вперше відкриваєте та налаштовуєте Aurora Store. \n \nНа відміну від традиційного магазину застосунків, Aurora Store не володіє, не ліцензує та не розповсюджує жодні застосунки. Усі вони, їхні описи, знімки екрана та інший вміст в Aurora Store доступні, завантажуються та/або показуються безпосередньо з Google Play. Aurora Store працює як двері або браузер, дозволяючи вам увійти у свій обліковий запис Google Play і знайти застосунки з Google Play. \n \nЗауважте, що Aurora Store не має жодного схвалення, спонсорства чи авторизації від Google, Google Play, будь-яких застосунків, завантажених через Aurora Store, або будь-яких розробників програм; також Aurora Store не має жодного зв’язку, співпраці чи зв’язку з ними.</string>
+    <string name="about_aurora_store_summary">Aurora Store дає змогу шукати та завантажувати застосунки з офіційного Google Play Маркету. Ви можете переглядати описи застосунків, знімки екрана, оновлення, коментарі інших користувачів, а також завантажити APK безпосередньо з Google Play на свій пристрій. Щоб користуватися Aurora Store, вам потрібно мати обліковий запис Google Play та ввійти до свого облікового запису Google Play під час першого відкриття та налаштування Aurora Store.\n\nНа відміну від традиційних магазинів застосунків, Aurora Store не володіє, не ліцензує і не розповсюджує застосунків. До всіх застосунків, їхніх описів, знімків екрана та іншого контенту в Aurora Store можна отримати доступ, завантажити та/або переглянути безпосередньо з Google Play. Aurora Store працює так само як двері або браузер, дозволяючи вам увійти до свого облікового запису Google Play і знайти застосунки з Google Play.\n\nЗауважте, що Aurora Store не має жодного схвалення, спонсорства або дозволу від Google, Google Play, будь-яких застосунків, завантажених через Aurora Store, або будь-яких розробників застосунків; Aurora Store також не має з ними жодних відносин, співпраці чи зв\'язків.</string>
     <string name="toast_app_unavailable">Застосунок недоступний для вашого пристрою</string>
     <string name="action_favourite">Улюблене</string>
     <string name="details_no_favourites">Не знайдено улюблених застосунків</string>
@@ -368,12 +368,12 @@
     <string name="onboarding_permission_installer_legacy_desc">Дозволяє встановлювати застосунки з невідомих джерел</string>
     <string name="details_data_safety_title">Безпека даних</string>
     <string name="details_data_safety_subtitle">Задекларовані розробником практики приватності та безпеки даних</string>
-    <string name="toast_permission_installer_required">Спочатку вам потрібно надати дозвіл на встановлення</string>
+    <string name="toast_permission_installer_required">Спершу потрібно надати дозвіл інсталятору</string>
     <string name="item_required">Необхідний</string>
     <string name="item_optional">Необов\'язковий</string>
     <string name="force_restart_title">Перезапустити Aurora Store</string>
     <string name="force_restart_summary">Aurora Store потрібно перезапустити, щоб застосувати змінені налаштування</string>
-    <string name="export_app_title">File Exporter</string>
+    <string name="export_app_title">Експортер файлів</string>
     <string name="export_app_summary">Зачекайте, експортуємо файл</string>
     <string name="notification_channel_downloads">Сповіщення про завантаження</string>
     <string name="notification_channel_install">Сповіщення про встановлення</string>

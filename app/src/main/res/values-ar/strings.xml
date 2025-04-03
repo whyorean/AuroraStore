@@ -149,7 +149,7 @@
     <string name="pref_install_delete_summary">سيتم حذف حزم التطبيقات المحملة والتي قد تم تثبيتها بشكل مباشر</string>
     <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات التي تم تنزيلها أو تثبيتها من F - Droid</string>
     <string name="onboarding_permission_installer_desc">السماح بتثبيت التطبيقات من متجر Aurora</string>
-    <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيقات على الحسابات المجهولة.</string>
+    <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيق على الحسابات المجهولة.</string>
     <string name="purchase_session_expired">انتهت صلاحية جلسة العمل، إعادة تسجيل الدخول للحصول على جلسة عمل جديدة.</string>
     <string name="details_think_this_app">ما رأيك في هذا التطبيق؟</string>
     <string name="spoof_apply">تأكد من إعادة تسجيل الدخول لتطبيق المحاكاة التحايلية</string>
@@ -288,7 +288,7 @@
     <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
     <string name="pref_aurora_only">تطبيقات متجر Aurora فقط</string>
     <string name="pref_aurora_only_desc">تحقق فقط من تحديثات التطبيقات المثبتة بواسطة متجر أورورا</string>
-    <string name="title_app_settings">إعدادات التطبيقات</string>
+    <string name="title_app_settings">إعدادات التطبيق</string>
     <string name="pref_updates_check_frequency">تردد التحديثات التلقائية</string>
     <string name="pref_network_proxy_url">عنوان URL الوكيل</string>
     <string name="toast_proxy_invalid">عنوان URL للوكيل غير صالح، تحقق من التنسيق!</string>
@@ -370,7 +370,7 @@
     <string name="details_data_safety_subtitle">خصوصية البيانات والممارسات الأمنية التي أعلنها المطور</string>
     <string name="onboarding_permission_installer_legacy_desc">السماح بتركيب التطبيقات من مصادر مجهولة</string>
     <string name="item_optional">الاختياري</string>
-    <string name="toast_permission_installer_required">عليك أن تمنح الإذن بالإنتقال أولاً</string>
+    <string name="toast_permission_installer_required">عليك أن تمنح المثبت الإذن أولاً</string>
     <string name="force_restart_title">إعادة تشغيل متجر أورورا</string>
     <string name="force_restart_summary">يجب إعادة تشغيل متجر أورورا لتطبيق الإعدادات التي تم تغييرها حديثًا</string>
     <string name="export_app_title">مصدِّر الملفات</string>

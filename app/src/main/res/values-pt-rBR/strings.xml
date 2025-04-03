@@ -216,7 +216,7 @@
     <string name="pref_network_title">Rede</string>
     <string name="details_no_app_match">Nenhum app correspondente encontrado</string>
     <string name="pref_ui_similar_apps">Apps relacionados ou semelhantes</string>
-    <string name="pref_ui_layout_tab">Selecionar aba padrão</string>
+    <string name="pref_ui_layout_tab">Alterar aba padrão</string>
     <string name="pref_ui_layout">Organização</string>
     <string name="pref_common_extra">Extras</string>
     <string name="dialog_desc_native_split">Você não pode instalar apps em pacote (divididos) por meio do Instalador nativo. Mude seu instalador para Sessão, Serviços ou Root.</string>
@@ -391,7 +391,7 @@
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="default_spoof">Padrão</string>
     <string name="available_spoof">Disponível</string>
-    <string name="action_remove_all">Remover todos</string>
+    <string name="action_remove_all">Remover tudo</string>
     <string name="action_select_all">Selecionar tudo</string>
     <string name="filter_latest">Mais recentes</string>
     <string name="toast_black_import_failed">Falha ao importar a lista de bloqueio!</string>

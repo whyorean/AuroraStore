@@ -42,7 +42,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_blacklist_add">Добавить в черный список</string>
+    <string name="action_blacklist_add">Добавить в чёрный список</string>
     <string name="action_blacklist">Черный список</string>
     <string name="action_back">Назад</string>
     <string name="account_logout">Выйти из Aurora</string>
@@ -61,8 +61,8 @@
     <string name="about_bitcoin_bch_summary">Пожертвовать через Bitcoin Cash (BCH)</string>
     <string name="about_bhim_summary">Пожертвовать через UPI</string>
     <string name="installer_status_failure_blocked">Установка заблокирована</string>
-    <string name="installer_service_misconfigured">Сначала установите сервисы Aurora и предоставьте все разрешения.</string>
-    <string name="installer_service_unavailable">Установите сервисы Aurora 1.0.9 или новее, либо смените установщик.</string>
+    <string name="installer_service_misconfigured">Сначала установите Сервисы Aurora и предоставьте все разрешения.</string>
+    <string name="installer_service_unavailable">Установите Сервисы Aurora 1.0.9 или новее, либо смените установщик.</string>
     <string name="installer_service_available">Сервисы Aurora доступны и готовы к установке.</string>
     <string name="installer_root_unavailable">Нет root-доступа. Предоставьте его или смените программу-установщик.</string>
     <string name="filter_review_two">Две</string>
@@ -127,7 +127,7 @@
     <string name="filter_review_positive">Положительный</string>
     <string name="filter_review_critical">Отрицательный</string>
     <string name="action_post">Отправить</string>
-    <string name="action_get_local_apk">Сохранить APK приложения</string>
+    <string name="action_get_local_apk">Сохранить пакет приложения</string>
     <string name="toast_spoof_applied">Применена подмена устройства.</string>
     <string name="toast_permission_granted">Разрешение выдано</string>
     <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включен в настройках устройства.</string>
@@ -166,7 +166,7 @@
     <string name="purchase_not_found">Приложение не найдено</string>
     <string name="purchase_unsupported">Приложение не поддерживается</string>
     <string name="purchase_invalid">Приложение не куплено</string>
-    <string name="purchase_failed">Ошибка загрузки</string>
+    <string name="purchase_failed">Загрузка не удалась</string>
     <string name="pref_ui_title">Внешний вид</string>
     <string name="pref_install_mode_title">Способ установки</string>
     <string name="pref_install_mode_summary">Выберите режим установки APK</string>
@@ -179,9 +179,9 @@
     <string name="pref_filter_fdroid_summary">Не проверять обновления для приложений, загруженных или установленных с F-Droid</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
-    <string name="onboarding_permission_esm">Менеджер памяти</string>
+    <string name="onboarding_permission_esm">Менеджер внешнего хранилища</string>
     <string name="onboarding_permission_esa_desc">Для сохранения файлов с расширением APK (OBB) для больших приложений и игр.</string>
-    <string name="onboarding_permission_esa">Доступ к памяти</string>
+    <string name="onboarding_permission_esa">Доступ к внешнему хранилищу</string>
     <string name="onboarding_welcome_select">Как дела\?</string>
     <string name="onboarding_title_welcome">Добро пожаловать</string>
     <string name="onboarding_title_permissions">Разрешения</string>
@@ -209,7 +209,7 @@
     <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для применения изменений.</string>
     <string name="pref_network_title">Сеть</string>
     <string name="pref_ui_similar_apps_desc">Показать секции похожих и связанных на странице приложения</string>
-    <string name="pref_ui_no_for_you_desc">Показать страницу рекомендаций на основном экране</string>
+    <string name="pref_ui_no_for_you_desc">Показать страницу рекомендаций на главном экране</string>
     <string name="pref_ui_layout_tab">Вкладка по умолчанию</string>
     <string name="pref_ui_layout">Вкладки</string>
     <string name="pref_common_extra">Дополнительно</string>
@@ -251,7 +251,7 @@
     <string name="updates_available">обновления(-ий)</string>
     <string name="error">Произошла ошибка!</string>
     <string name="permissions_denied">Необходимые разрешения были отклонены. Пожалуйста, предоставьте их, чтобы продолжить действие</string>
-    <string name="search_hint">Поиск в Приложениях и Играх</string>
+    <string name="search_hint">Поиск приложений и игр</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Запрос новой сессии</string>
     <string name="server_maintenance">Сервер отключен на техобслуживание</string>
@@ -261,7 +261,7 @@
     <string name="downloading_dep">Загрузка дополнительных файлов для <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> доступно обновление</string>
     <string name="notification_updates_available_desc_1">Новая версия <xliff:g id="app_one_name">%1$s</xliff:g> доступна</string>
-    <string name="notification_channel_updates">Уведомления об обновлениях</string>
+    <string name="notification_channel_updates">Уведомления об обновлении</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> обновления доступно</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> и <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> и <xliff:g id="app_three_name">%3$s</xliff:g></string>
@@ -295,7 +295,7 @@
     <string name="toast_proxy_failed">Не удалось настроить прокси</string>
     <string name="pref_aurora_only">Только приложения из Aurora Store</string>
     <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
-    <string name="pref_vending_version_title">Версия Google Play</string>
+    <string name="pref_vending_version_title">Google Play версия</string>
     <string name="onboarding_permission_doze">Фоновые загрузки</string>
     <string name="onboarding_permission_doze_desc">Разрешить Aurora Store загружать и обновлять приложения в фоне</string>
     <string name="pref_updates_auto">Автоматические обновления</string>
@@ -308,7 +308,7 @@
     <string name="download_clear_finished">Очистить завершенные</string>
     <string name="pref_updates_incompatible">Несовместимые обновления</string>
     <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
-    <string name="action_home_screen">Добавить на Главный экран</string>
+    <string name="action_home_screen">Добавить на главный экран</string>
     <string name="faqs_subtitle">У вас есть вопросы? Узнайте ответы</string>
     <string name="source_code_title">Исходный код</string>
     <string name="privacy_policy_title">Политика конфиденциальности</string>
@@ -365,7 +365,7 @@
     <string name="action_logout_confirmation_title">Выйти?</string>
     <string name="action_logout_confirmation_message">Вы действительно хотите выйти?</string>
     <string name="check_updates">Проверить обновления</string>
-    <string name="export_app_title">Экспортер файлов</string>
+    <string name="export_app_title">Экспортёр файлов</string>
     <string name="export_app_summary">Подождите, экспортируем ваш файл</string>
     <string name="force_restart_title">Перезапустить Aurora Store</string>
     <string name="onboarding_permission_installer_legacy_desc">Разрешать установку приложений из неизвестных источников</string>
@@ -427,4 +427,5 @@
     <string name="pref_updates_restrictions_idle">Когда устройство не используется</string>
     <string name="pref_updates_restrictions_desc">Настроить ограничения устройства для автоматических обновлений.</string>
     <string name="pref_updates_restrictions_battery">Когда батарея не разряжена</string>
+    <string name="verification_failed">Не удалось проверить загруженные файлы</string>
 </resources>

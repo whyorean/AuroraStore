@@ -14,7 +14,7 @@
     <string name="about_xda_summary">Consultă forumul XDA Aurora Store pentru discuții sau sugestii.</string>
     <string name="account_anonymous">Anonim</string>
     <string name="about_xda">Forumuri XDA</string>
-    <string name="action_get_local_apk">Se salvează pachetul aplicației</string>
+    <string name="action_get_local_apk">Salvează pachetul de aplicații</string>
     <string name="details_changelog">Jurnalul modificărilor</string>
     <string name="exodus_powered">Susținut de Exodus Privacy</string>
     <string name="action_disable">Dezactivează</string>
@@ -56,7 +56,7 @@
     <string name="onboarding_welcome_select">Ce mai faci\?</string>
     <string name="onboarding_permission_esa">Acces la stocare</string>
     <string name="onboarding_permission_esm">Manager de stocare externă</string>
-    <string name="action_copy_link">Copiază legătură</string>
+    <string name="action_copy_link">Copiază link-ul</string>
     <string name="action_blacklist_add">Adaugă la lista neagră</string>
     <string name="action_grant">Acordă</string>
     <string name="action_export">Exportă</string>
@@ -195,7 +195,7 @@
     <string name="toast_developer_setting_failed">Activează setările pentru dezvoltatori în setările dispozitivului pentru a le deschide.</string>
     <string name="toast_permission_granted">Permisiune acordată</string>
     <string name="toast_spoof_applied">S-a aplicat o falsificare a dispozitivului.</string>
-    <string name="toast_purchase_blocked">Achizițiile de aplicații nu sunt disponibile în conturile anonime.</string>
+    <string name="toast_purchase_blocked">Achiziții de aplicații nu sunt disponibile în conturile anonime.</string>
     <string name="toast_manual_unavailable">Codul de versiune pe care îl soliciți nu este disponibil.</string>
     <string name="toast_manual_available">Felicitări, codul versiunii solicitate este disponibil, se descarcă acum.</string>
     <string name="toast_page_unavailable">Pagina de navigare nu este disponibilă</string>
@@ -289,7 +289,7 @@
     <string name="toast_proxy_invalid">Adresa URL proxy nevalidă, verifică formatul!</string>
     <string name="pref_aurora_only_desc">Se verifică doar actualizările pentru aplicațiile instalate de Aurora Store</string>
     <string name="toast_proxy_success">Proxy setat cu succes</string>
-    <string name="app_links_title">Link-uri la aplicații</string>
+    <string name="app_links_title">Link-urile aplicațiilor</string>
     <string name="google_play_store_desc">Google Play, cunoscut și ca Google Play Store și anterior Android Market.</string>
     <string name="verifying_new_session">Se verifică noua sesiune</string>
     <string name="title_app_settings">Setările aplicației</string>
@@ -353,7 +353,7 @@
     <string name="toast_app_unavailable">Aplicația nu este disponibila pentru dispozitivul dvs.</string>
     <string name="action_favourite">Favorit</string>
     <string name="details_no_favourites">Nu s-a găsit nici-o aplicație favorită</string>
-    <string name="title_favourites_manager">Aplicații Favorite</string>
+    <string name="title_favourites_manager">Aplicații favorite</string>
     <string name="toast_fav_export_failed">Exportul favoritelor a eșuat!</string>
     <string name="toast_fav_import_success">Favoritele au fost importate!</string>
     <string name="toast_fav_export_success">Favoritele au fost exportate!</string>
@@ -366,7 +366,7 @@
     <string name="action_logout_confirmation_message">Sunteți sigur(ă) că vreți să vă deconectați?</string>
     <string name="check_updates">Verifică actualizări</string>
     <string name="details_data_safety_title">Siguranța datelor</string>
-    <string name="toast_permission_installer_required">Mai întâi trebuie să acordați permisiunea instalatorului</string>
+    <string name="toast_permission_installer_required">Mai întâi trebuie să acorzi permisiunea instalatorului</string>
     <string name="item_required">Necesar</string>
     <string name="item_optional">Opțional</string>
     <string name="details_data_safety_subtitle">Practici privind confidențialitatea și securitatea datelor declarate de producător</string>
