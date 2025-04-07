@@ -23,12 +23,10 @@ import android.content.Context
 import android.util.Log
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
-import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.R
 import com.aurora.store.data.model.AccountType
-import com.aurora.store.data.model.Auth
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
@@ -113,15 +111,18 @@ class AuthProvider @Inject constructor(
     suspend fun buildAnonymousAuthData(): Result<AuthData> {
         return withContext(Dispatchers.IO) {
             try {
-                val playResponse = httpClient.getAuth(dispenserURL!!).also {
+                val playResponse = httpClient.postAuth(
+                    dispenserURL!!,
+                    gson.toJson(spoofProvider.deviceProperties).toByteArray()
+                ).also {
                     if (!it.isSuccessful) throwError(it, context)
                 }
 
-                val auth = gson.fromJson(String(playResponse.responseBytes), Auth::class.java)
+                val auth = gson.fromJson(String(playResponse.responseBytes), AuthData::class.java)
                 return@withContext Result.success(
                     AuthHelper.build(
                         email = auth.email,
-                        token = auth.auth,
+                        token = auth.authToken,
                         tokenType = AuthHelper.Token.AUTH,
                         isAnonymous = true,
                         properties = spoofProvider.deviceProperties,
