@@ -45,7 +45,7 @@ fun AppListComposable(app: App, onClick: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_medium),
                 vertical = dimensionResource(R.dimen.padding_small)

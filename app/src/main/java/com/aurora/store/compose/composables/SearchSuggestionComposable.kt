@@ -45,7 +45,7 @@ fun SearchSuggestionComposable(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_medium)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
@@ -53,7 +53,7 @@ fun SearchSuggestionComposable(
         Row(
             modifier = Modifier
                 .weight(1F)
-                .clickable { onClick() },
+                .clickable(onClick = onClick),
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
         ) {
             AsyncImage(

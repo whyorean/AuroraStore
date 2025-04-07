@@ -58,7 +58,7 @@ fun BlackListComposable(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(enabled = isEnabled) { onClick() }
+            .clickable(enabled = isEnabled, onClick = onClick)
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_medium),
                 vertical = dimensionResource(R.dimen.padding_xsmall)
