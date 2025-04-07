@@ -42,7 +42,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_blacklist_add">Добавить в чёрный список</string>
+    <string name="action_blacklist_add">Добавить в черный список</string>
     <string name="action_blacklist">Черный список</string>
     <string name="action_back">Назад</string>
     <string name="account_logout">Выйти из Aurora</string>
@@ -365,7 +365,7 @@
     <string name="action_logout_confirmation_title">Выйти?</string>
     <string name="action_logout_confirmation_message">Вы действительно хотите выйти?</string>
     <string name="check_updates">Проверить обновления</string>
-    <string name="export_app_title">Экспортёр файлов</string>
+    <string name="export_app_title">Экспортер файлов</string>
     <string name="export_app_summary">Подождите, экспортируем ваш файл</string>
     <string name="force_restart_title">Перезапустить Aurora Store</string>
     <string name="onboarding_permission_installer_legacy_desc">Разрешать установку приложений из неизвестных источников</string>
