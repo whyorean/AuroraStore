@@ -46,8 +46,11 @@ Aurora Store works exactly like a door or a browser, allowing you to log in to y
 
 Please only download the latest stable releases from one of these sources:
 
-- [F-Droid](https://f-droid.org/packages/com.aurora.store/) (Recommended)
+- [Official Website](https://auroraoss.com/)
 - [GitLab Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
+- [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.aurora.store) (Reproducible Build)
+- [F-Droid](https://f-droid.org/packages/com.aurora.store/) (Signed by F-Droid, [more details](https://f-droid.org/docs/Signing_Process/))
+- [App Gallery](https://appgallery.huawei.com/app/C110907863) (Limited to certain countries)
 
 You can also get latest debug builds signed with AOSP test keys for testing latest changes from our [GitLab Package Registry](https://gitlab.com/AuroraOSS/AuroraStore/-/packages/24103616).
 
