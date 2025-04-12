@@ -86,7 +86,7 @@
     <string name="filter_review_two">Дзве</string>
     <string name="installer_am_unavailable">Усталюйце менеджар праграм, альбо змяніце ўсталёўшчык.</string>
     <string name="installer_root_unavailable">Адсутнічае root доступ. Дайце дазвол на яго выкарыстоўванне альбо змяніце ўсталёўшчык.</string>
-    <string name="installer_service_misconfigured">Найперш усталюйце сэрвісы Aurora і дайце дазволы.</string>
+    <string name="installer_service_misconfigured">Спачатку усталюйце сэрвісы Aurora і дайце дазволы.</string>
     <string name="installer_status_failure">Памылка ўсталёўшчыка</string>
     <string name="installer_status_failure_incompatible">Несумяшчальная праграма</string>
     <string name="installer_status_failure_invalid">Пашкоджаны альбо сапсаваны APK</string>
@@ -193,7 +193,7 @@
     <string name="app_links_desc">Дазволіць Aurora Store адкрываць спасылкі, якія падтрымліваюцца</string>
     <string name="android_market_desc">Android Market - гэта анлайн крама, якая давала праграмы спецыяльна для прылад Android, скончыла падтрымку ў 2017.</string>
     <string name="native_installer_subtitle">Усталёўка на намерах, даступная на ўсіх прыладах</string>
-    <string name="action_copy_link">Скапіяваць спасылку</string>
+    <string name="action_copy_link">Скапіраваць спасылку</string>
     <string name="action_installations">Усталяванні</string>
     <string name="about_bitcoin_eth">Ethereum</string>
     <string name="action_close">Закрыць</string>
@@ -230,7 +230,7 @@
     <string name="details_dev_details">Звязацца з распрацоўшчыкам</string>
     <string name="details_gsf_dependent">Патрабуе GSF</string>
     <string name="details_more_about_app">Больш аб гэтай праграме</string>
-    <string name="details_no_ads">Рэклама адсутнічае</string>
+    <string name="details_no_ads">Без рэкламы</string>
     <string name="exodus_view_report">Праглядзець справаздачу</string>
     <string name="details_data_safety_subtitle">Інфармацыя аб прыватнасці і бяспецы дадзеных, заяўленая распрацоўшчыкам</string>
     <string name="download_cancel_all">Скасаваць усё</string>
@@ -257,7 +257,7 @@
     <string name="details_beta_delay">Гэта можа заняць пэўны час, статус можна праверыць пазней.</string>
     <string name="details_beta_available">Далучыцца да бэта тэставання?</string>
     <string name="details_no_dependencies">Адсутнічаюць залежнасці</string>
-    <string name="details_contains_ads">Утрымлівае рэкламу</string>
+    <string name="details_contains_ads">Ёсць рэклама</string>
     <string name="pref_install_mode_session">Усталёўка праз сеанс</string>
     <string name="pref_install_mode_title">Варыянт усталявання</string>
     <string name="pref_ui_no_for_you_desc">Паказвае старонку \"Для вас\" на дамашнім экране</string>
@@ -294,12 +294,12 @@
     <string name="toast_apk_whitelisted">У белым спісе</string>
     <string name="toast_app_unavailable">Праграма недаступная на гэтай прыладзе</string>
     <string name="toast_permission_granted">Дазвол атрыманы</string>
-    <string name="toast_permission_installer_required">Найперш неабходна атрымаць дазвол на ўсталяванне</string>
+    <string name="toast_permission_installer_required">Спачатку неабходна атрымаць дазвол на ўсталяванне</string>
     <string name="toast_spoof_applied">Прыменена падмена прылады.</string>
     <string name="toast_manual_available">Віншуем, версія даступная, пачынаем спампоўку.</string>
     <string name="toast_rated_success">Адзнака адасланая, можа прайсці пэўны час перад тым, як яна пакажацца</string>
     <string name="pref_ui_title">Знешні выгляд</string>
-    <string name="pref_ui_no_for_you">\"Для вас\"</string>
+    <string name="pref_ui_no_for_you">Для вас</string>
     <string name="tab_top_charts">Самае папулярнае</string>
     <string name="title_about">Пра праграму</string>
     <string name="title_apps_library">Праграмы ў бібліятэцы</string>
@@ -356,7 +356,7 @@
     <string name="session_init">Падрыхтоўка…</string>
     <string name="session_login">Калі ласка, увайдзіце ў свой уліковы запіс Google Play</string>
     <string name="session_login_failed_google">Не атрымалася ўвайсці праз Google</string>
-    <string name="session_verifying_google">Праверка Google сеансу</string>
+    <string name="session_verifying_google">Праверка сеансу Google</string>
     <string name="spoof_apply">Пераканайцеся, што вы ўвайшлі ізноў, каб атрымалася падмена</string>
     <string name="insecure_anonymous_apply">Пераканайцеся, што паўторна ўвайшлі ў сістэму і перазапусціце праграму, каб прымяніць змены.</string>
     <string name="tab_categories">Катэгорыі</string>
@@ -377,7 +377,7 @@
     <string name="login_rate_limited">Ой, вы абмежаваныя па хуткасці</string>
     <string name="failed_to_generate_session">Не ўдалося стварыць сеанс</string>
     <string name="verifying_new_session">Праверка новага сеанса</string>
-    <string name="about_aurora_store_summary">Aurora Store дазваляе шукаць і спампоўваць праграмы з афіцыйнай крамы Google Play. Вы можаце праверыць апісанні праграм, скрыншоты, абнаўленні, каментарыі іншых карыстальнікаў і спампаваць APK непасрэдна з Google Play на сваю прыладу, каб выкарыстоўваць Aurora Store, вам неабходна мець уліковы запіс Google Play і ўвайсці ў уліковы запіс Google Play пры першым адкрыцці і наладзе Aurora Store. \n\nУ адрозненне ад традыцыйнай крамы праграм, Aurora Store не валодае, не ліцэнзуе і не распаўсюджвае аніякія праграмы. Усе праграмы, апісанні праграм, скрыншоты і іншы кантэнт у Aurora Store даступны, спампоўваецца і/або адлюстроўваецца з Google Play. Aurora Store працуе гэтак жа, як дзверы, або браўзер, дазваляючы вам ўвайсці ў свой уліковы запіс Google Play і знайсці праграмы з Google Play.\n\nЗвярніце ўвагу, што Aurora Store не мае адабрэння, спонсарства або аўтарызацыі ад Google, Google Play, аніякіх праграм, спампаваных праз Aurora Store або аніякіх распрацоўшчыкаў праграм; таксама Aurora Store не мае з імі ніякіх адносін, супрацоўніцтва або сувязі.</string>
+    <string name="about_aurora_store_summary">Aurora Store дазваляе шукаць і спампоўваць праграмы з афіцыйнай крамы Google Play. Вы можаце праверыць апісанні праграм, скрыншоты, абнаўленні, каментарыі іншых карыстальнікаў і спампаваць APK непасрэдна з Google Play на сваю прыладу, каб выкарыстоўваць Aurora Store, вам неабходна мець уліковы запіс Google Play і ўвайсці ва ўліковы запіс Google Play пры першым адкрыцці і наладзе Aurora Store. \n\nУ адрозненне ад традыцыйнай крамы праграм, Aurora Store не валодае, не ліцэнзуе і не распаўсюджвае аніякія праграмы. Усе праграмы, апісанні праграм, скрыншоты і іншы кантэнт у Aurora Store даступны, спампоўваецца і/або адлюстроўваецца з Google Play. Aurora Store працуе гэтак жа, як дзверы, або браўзер, дазваляючы вам ўвайсці ў свой уліковы запіс Google Play і знайсці праграмы з Google Play.\n\nЗвярніце ўвагу, што Aurora Store не мае адабрэння, спонсарства або аўтарызацыі ад Google, Google Play, аніякіх праграм, спампаваных праз Aurora Store або аніякіх распрацоўшчыкаў праграм; таксама Aurora Store не мае з імі ніякіх адносін, супрацоўніцтва або сувязі.</string>
     <string name="action_select_all">Выбраць усё</string>
     <string name="action_remove_all">Выдаліць усё</string>
     <string name="filter_latest">Апошнія</string>
@@ -427,4 +427,5 @@
     <string name="status_queued">У чарзе</string>
     <string name="status_unavailable">Недаступна</string>
     <string name="authentication_required_unarchive">Калі ласка, увайдзіце са сваім уліковым запісам Google Play, каб разархіваваць гэтую праграму!</string>
+    <string name="verification_failed">Не ўдалося праверыць спампаваныя файлы</string>
 </resources>
