@@ -43,7 +43,7 @@
     <string name="account_anonymous">Anonīms</string>
     <string name="about_telegram_summary">Pievienojaties Aurora Atbalsta grupai priekš diskusijām vai ieteikumiem.</string>
     <string name="about_paypal_summary">Ziedot ar PayPal</string>
-    <string name="about_libera_summary">Kļūstiet par patronu Liberapay</string>
+    <string name="about_libera_summary">Kļūstiet par Liberapay patronu</string>
     <string name="about_gitlab_summary">Iegūt Aurora Store pirmkodu no Aurora OSS GitLab.</string>
     <string name="details_dev_website">Tīmekļa vietne</string>
     <string name="about_bitcoin_eth_summary">Ziedot ar Ethereum (ETH)</string>
@@ -393,10 +393,10 @@
     <string name="available_spoof">Pieejams</string>
     <string name="action_remove_all">Noņemt visu</string>
     <string name="filter_latest">Jaunākās</string>
-    <string name="toast_black_import_failed">Neizdevās ievietot izņēmumus.</string>
+    <string name="toast_black_import_failed">Neizdevās ievietot izņēmumus!</string>
     <string name="toast_black_import_success">Izņēmumi ievietoti.</string>
     <string name="toast_black_export_success">Izņēmumu saraksts izgūts.</string>
-    <string name="toast_black_export_failed">Neizdevās izgūt izņēmumu sarakstu.</string>
+    <string name="toast_black_export_failed">Neizdevās izgūt izņēmumu sarakstu!</string>
     <string name="action_select_all">Atlasīt visu</string>
     <string name="status_verifying">Apliecina</string>
     <string name="action_unarchive">Atcelt arhivēšanu</string>
