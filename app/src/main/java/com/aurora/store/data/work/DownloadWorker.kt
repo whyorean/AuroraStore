@@ -195,18 +195,20 @@ class DownloadWorker @AssistedInject constructor(
         return onSuccess()
     }
 
-    private suspend fun onSuccess(): Result = withContext(NonCancellable) {
-        return@withContext try {
-            appInstaller.getPreferredInstaller().install(download)
-            Result.success()
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to install ${download.packageName}", exception)
-            onFailure(exception)
+    private suspend fun onSuccess(): Result {
+        return withContext(NonCancellable) {
+            return@withContext try {
+                appInstaller.getPreferredInstaller().install(download)
+                Result.success()
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to install ${download.packageName}", exception)
+                onFailure(exception)
+            }
         }
     }
 
-    private suspend fun onFailure(exception: Exception): Result =
-        withContext(NonCancellable) {
+    private suspend fun onFailure(exception: Exception): Result {
+        return withContext(NonCancellable) {
             Log.i(TAG, "Job failed: ${download.packageName}", exception)
 
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
@@ -234,6 +236,7 @@ class DownloadWorker @AssistedInject constructor(
 
             return@withContext Result.failure()
         }
+    }
 
     /**
      * Purchases the app to get the download URL of the required files
@@ -267,8 +270,8 @@ class DownloadWorker @AssistedInject constructor(
      * @param gFile A [GPlayFile] to download
      * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean =
-        withContext(Dispatchers.IO) {
+    private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean {
+        return withContext(Dispatchers.IO) {
             Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
             val file = PathUtil.getLocalFile(context, gFile, download)
 
@@ -322,6 +325,7 @@ class DownloadWorker @AssistedInject constructor(
                 }
             }
         }
+    }
 
     /**
      * Updates the progress data of the download in the local database and notifies user.
