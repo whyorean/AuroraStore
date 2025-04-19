@@ -1,0 +1,5 @@
+• Nové hodnotenia kompatibility aplikácií od spoločnosti Plexus
+• Vylepšenia správcu čiernej listiny
+• Možnosť zmeniť obmedzenia automatických aktualizácií
+• Opravy menších chýb a vylepšenia
+• Aktualizácie prekladov; lokalizované ďalšie reťazce
