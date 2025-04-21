@@ -44,8 +44,6 @@ import com.aurora.store.util.Preferences
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import javax.inject.Inject
@@ -107,17 +105,6 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         )
 
         CommonUtil.cleanupInstallationSessions(applicationContext)
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        scope.cancel("onLowMemory() called by system")
-        scope = MainScope()
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
-        scope.cancel()
     }
 
     override fun newImageLoader(context: Context): ImageLoader {
