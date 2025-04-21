@@ -1,0 +1,5 @@
+• Jauni lietotņu savietojamības vērtējumi no Plexus
+• Uzlabojumi izņēmumu saraksta pārvaldībā
+• Var mainīt automātisko atjauninājumu ierobežojumus
+• Nelieli kļūdu labojumi un uzlabojumi
+• Tulkojuma atjauninājumi; lokalizētas papildu virknes

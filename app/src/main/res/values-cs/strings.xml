@@ -10,7 +10,7 @@
     <string name="toast_spoof_applied">Byl použit spoofing zařízení.</string>
     <string name="toast_apk_whitelisted">Na whitelistu</string>
     <string name="insecure_anonymous_apply">Chcete-li použít změny, nezapomeňte se znovu přihlásit a restartovat aplikaci.</string>
-    <string name="toast_manual_available">Gratuluji, požadovaný kód verze je k dispozici, nyní stahuji.</string>
+    <string name="toast_manual_available">Gratulujeme, požadovaný kód verze je k dispozici, probíhá stahování.</string>
     <string name="toast_purchase_blocked">Nákupy aplikací nejsou na anonymních účtech dostupné.</string>
     <string name="toast_permission_granted">Oprávnění uděleno</string>
     <string name="toast_developer_setting_failed">Chcete-li otevřít nastavení pro vývojáře, zapněte je v nastavení zařízení.</string>
