@@ -1,7 +1,4 @@
 • Memperbaiki masalah dengan penginstalan pustaka bersama untuk aplikasi seperti Chrome dan WebView
-
 • Dukungan untuk masuk ke akun pribadi menggunakan microG
-
 • Memperbaiki masalah dengan verifikasi autentikasi
-
 • Pembaruan terjemahan; String tambahan dilokalkan
