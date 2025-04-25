@@ -41,9 +41,9 @@
     <string name="account_login_using">Pieteikties ar</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonīms</string>
-    <string name="about_telegram_summary">Pievienojaties Aurora Atbalsta grupai priekš diskusijām vai ieteikumiem.</string>
+    <string name="about_telegram_summary">Pievienoties Aurora atbalsta kopai apspriedēm un ieteikumiem.</string>
     <string name="about_paypal_summary">Ziedot ar PayPal</string>
-    <string name="about_libera_summary">Kļūstiet par Liberapay patronu</string>
+    <string name="about_libera_summary">Kļūt par labvēli Liberapay</string>
     <string name="about_gitlab_summary">Iegūt Aurora Store pirmkodu no Aurora OSS GitLab.</string>
     <string name="details_dev_website">Tīmekļa vietne</string>
     <string name="about_bitcoin_eth_summary">Ziedot ar Ethereum (ETH)</string>
@@ -107,7 +107,7 @@
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
     <string name="onboarding_title_welcome">Sveiciens</string>
-    <string name="pref_ui_layout_tab">Izvēlēties noklusējuma lapu</string>
+    <string name="pref_ui_layout_tab">Atlasīt noklusējuma cilni</string>
     <string name="pref_ui_no_for_you">Lapas \"Tev\"</string>
     <string name="pref_ui_no_for_you_desc">Rādīt lapas \"Tev\" sākuma ekrānā</string>
     <string name="pref_ui_similar_apps">Līdzīgas un saistītas lietotnes</string>
@@ -162,7 +162,7 @@
     <string name="pref_ui_layout">Izkārtojums</string>
     <string name="pref_ui_title">Pielāgošana</string>
     <string name="purchase_no_file">Nevarēja iegūt failus</string>
-    <string name="purchase_session_expired">Sesija ir beigusies, izejiet no lietotnes, lai iegūtu jaunu sesiju.</string>
+    <string name="purchase_session_expired">Sesija ir beigusies, jāpiesakās no jauna, lai iegūtu jaunu sesiju.</string>
     <string name="purchase_not_found">Lietotne nav atrasta</string>
     <string name="tab_top_charts">Top sadaļas</string>
     <string name="tab_top_free">Top bezmaksas</string>
@@ -204,7 +204,7 @@
     <string name="about_xda_summary">Skatīt XDA forums Aurora Store tēmas diskusijas un ieteikumus.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_xda">XDA forums</string>
-    <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļaut uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
+    <string name="device_miui_description">Lūgums atspējot MIUI uzlabojumus, lai ļautu uzstādīšanu, pretējā gadījumā var izvēlēties superlietotāja vai pakalpojumu uzstādītāju.</string>
     <string name="dialog_desc_native_split">Nav iespējams uzstādīt apvienotās (sastāvošas no vairākām daļām) lietotnes ar iebūvēto uzstādītāju. Tas ir jānomaina uz sesijas, pakalpojumu vai superlietotāja uzstādītāju.</string>
     <string name="action_get_local_apk">Saglabāt lietotnes kopumu</string>
     <string name="action_filter_misc">Dažādi</string>
@@ -228,7 +228,7 @@
     <string name="updates_available">pieejami atjauninājumi</string>
     <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
     <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
-    <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir paša ziņā.</string>
+    <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir katra paša ziņā.</string>
     <string name="download_progress">Lejupielādē • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_delete_summary">Lejupielādētie APK tiks izdzēsti uzreiz pēc uzstādīšanas</string>
     <string name="pref_install_mode_services">Aurora pakalpojumi (novecojuši)</string>
@@ -283,7 +283,7 @@
     <string name="app_links_title">Lietotņu saites</string>
     <string name="google_play_store_desc">Google Play, zināms arī kā Google Play Store un agrāk Android Market.</string>
     <string name="verifying_new_session">Pārbauda jauno sesiju</string>
-    <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, pārstāja darboties 2017. gadā.</string>
+    <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, tas pārstāja darboties 2017. gadā.</string>
     <string name="details_ratings_title_hint">Apskata nosaukums</string>
     <string name="pref_network_proxy_url">Starpniekservera URL</string>
     <string name="pref_updates_check_frequency_desc">Norādīt starplaiku stundās starp automātiskajiem atjauninājumiem.</string>
@@ -331,7 +331,7 @@
     <string name="title_more">Vairāk</string>
     <string name="manage_account">Pārvaldīt savu kontu</string>
     <string name="about_wiki_title">Viki vietne</string>
-    <string name="about_wiki_summary">Atrodi atbildes uz biežāk uzdotajiem jautājumiem (BUJ), sarežģījumu novēršanas soļiem un vēl</string>
+    <string name="about_wiki_summary">Atrast atbildes uz biežāk uzdotajiem jautājumiem (BUJ), sarežģījumu novēršanas soļiem un vēl</string>
     <string name="pref_clear_device_owner_summary">Noņem Aurora Store kā ierīces īpašnieka lietotni</string>
     <string name="pref_dispenser_title">Pārvaldīt izkliedētājus</string>
     <string name="pref_clear_device_owner_title">Notīrīt ierīces īpašnieku</string>
@@ -348,7 +348,7 @@
     <string name="remove">Noņemt</string>
     <string name="about_aurora_store_summary">Aurora Store ļauj meklēt un lejupielādēt lietotnes no Google Play veikala. Ir pieejams lietotņu apraksts, ekrānuzņēmumi, atjauninājumi, citu lietotāju piebildes, kā arī var lejupielādēt ierīcē APK tieši no Google Play. Lai izmantotu Aurora Store, ir nepieciešams Google Play konts, un tajā ir jāpiesakās, kad Aurora Store tiek pirmo reizi atvērta un konfigurēta. \n \nAtšķirībā no ierasta lietotņu veikala, Aurora Store nepieder, nelicencē un neizplata lietotnes. Visas lietotnes un to aprakstam, ekrānuzņēmumiem un citam Aurora Store pieejamajam saturam tiek tieši piekļūts, lejupielādēts un/vai attēlots no Google Play. Aurora Store darbojas kā durvis vai pārlūks, ļaujot pieteikties savā Google Play kontā un atrast Google Play lietotnes. \n \nLūgums ņemt vērā, ka Aurora Store nav nekādas piekrišanas, pabalstītājdarbības vai autorizācijas no Google, Google Play, jebkuras ar Aurora Store starpniecību lejupielādētas lietotnes vai lietotņu izstrādātājiem; tāpat Aurora Store nav nekādas piederības, sadarbības vai sasaistes ar tiem.</string>
     <string name="about_aurora_store_title">Par Aurora Store</string>
-    <string name="pref_clear_device_owner_desc">Tas atsauks sesijas uzstādītāja atļauju klusām uzstādīt lietotnes. Turpināt ar ierīces īpašumtiesību notīrīšanu?</string>
+    <string name="pref_clear_device_owner_desc">Tas atsauks sesijas uzstādītāja atļauju nemanāmi uzstādīt lietotnes. Turpināt ar ierīces īpašumtiesību notīrīšanu?</string>
     <string name="add">Pievienot</string>
     <string name="toast_fav_export_failed">Neizdevās izgūt izlasi.</string>
     <string name="toast_fav_export_success">Izlase izgūta.</string>
