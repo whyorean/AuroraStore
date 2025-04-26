@@ -58,6 +58,8 @@ android {
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
 
         buildConfigField("String", "EXODUS_API_KEY", "\"bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae\"")
+
+        missingDimensionStrategy("device", "vanilla")
     }
 
     signingConfigs {
@@ -112,10 +114,11 @@ android {
 
     productFlavors {
         create("vanilla"){
-
+            dimension = "device"
         }
 
         create("huawei") {
+            dimension = "device"
             versionNameSuffix = "-hw"
         }
     }
