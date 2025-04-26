@@ -21,8 +21,6 @@ package com.aurora.store.view.ui.splash
 
 import android.accounts.Account
 import android.accounts.AccountManager
-import android.content.Intent
-import android.net.UrlQuerySanitizer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -35,11 +33,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.aurora.extensions.hide
+import com.aurora.extensions.getPackageName
 import com.aurora.extensions.isMAndAbove
-import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.navigate
-import com.aurora.extensions.show
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Screen
@@ -128,7 +124,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     }
 
                     AuthState.Valid -> {
-                        val packageName = getPackageName(requireActivity().intent)
+                        val packageName =
+                            requireActivity().intent.getPackageName(requireArguments())
                         if (packageName.isNullOrBlank()) {
                             navigateToDefaultTab()
                         } else {
@@ -152,7 +149,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                     }
 
                     AuthState.SignedIn -> {
-                        val packageName = getPackageName(requireActivity().intent)
+                        val packageName =
+                            requireActivity().intent.getPackageName(requireArguments())
                         if (packageName.isNullOrBlank()) {
                             navigateToDefaultTab()
                         } else {
@@ -193,13 +191,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun updateActionLayout(isVisible: Boolean) {
-        if (isVisible) {
-            binding.layoutAction.show()
-            binding.toolbar.visibility = View.VISIBLE
-        } else {
-            binding.layoutAction.hide()
-            binding.toolbar.visibility = View.GONE
-        }
+        binding.layoutAction.isVisible = isVisible
+        binding.toolbar.isVisible = isVisible
     }
 
     private fun attachActions() {
@@ -260,29 +253,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             }
         requireActivity().viewModelStore.clear() // Clear ViewModelStore to avoid bugs with logout
         findNavController().navigate(directions)
-    }
-
-    private fun getPackageName(intent: Intent): String? {
-        return when {
-            intent.action == Intent.ACTION_VIEW -> {
-                intent.data!!.getQueryParameter("id")
-            }
-
-            intent.action == Intent.ACTION_SEND -> {
-                val clipData = intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
-                UrlQuerySanitizer(clipData).getValue("id")
-            }
-
-            isNAndAbove && intent.action == Intent.ACTION_SHOW_APP_INFO -> {
-                intent.extras?.getString(Intent.EXTRA_PACKAGE_NAME)
-            }
-
-            intent.extras != null -> {
-                intent.extras?.getString("packageName")
-            }
-
-            else -> requireArguments().getString("packageName")
-        }
     }
 
     private fun requestAuthTokenForGoogle(accountName: String, oldToken: String? = null) {

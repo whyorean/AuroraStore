@@ -29,14 +29,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.aurora.Constants
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.R
 import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.databinding.FragmentOnboardingBinding
-import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
@@ -74,7 +72,6 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
             when (position) {
                 0 -> return WelcomeFragment()
                 1 -> return PermissionsFragment.newInstance()
-                2 -> return AppLinksFragment()
             }
             return Fragment()
         }
@@ -164,17 +161,14 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
         save(PREFERENCE_FILTER_FDROID, true)
 
         /*Network*/
-        // TODO: Gather feedback and drop setting default dispenser for all builds
-        if (!CertUtil.isAppGalleryApp(requireContext(), requireContext().packageName)) {
-            save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER))
-        }
+        save(PREFERENCE_DISPENSER_URLS, setOf())
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/
         save(PREFERENCE_THEME_STYLE, 0)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
-        save(PREFERENCE_SIMILAR, false)
+        save(PREFERENCE_SIMILAR, true)
 
         /*Installer*/
         save(PREFERENCE_AUTO_DELETE, true)
