@@ -34,6 +34,10 @@ plugins {
     alias(libs.plugins.hilt.android.plugin)
 }
 
+val lastCommitHash = providers.exec {
+    commandLine("git", "rev-parse", "--short", "HEAD")
+}.standardOutput.asText.map { it.trim() }
+
 kotlin {
     jvmToolchain(21)
 }
@@ -95,6 +99,7 @@ android {
         register("nightly") {
             initWith(getByName("release"))
             applicationIdSuffix = ".nightly"
+            versionNameSuffix = "-${lastCommitHash.get()}"
         }
 
         debug {
