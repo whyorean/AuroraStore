@@ -12,7 +12,7 @@
     <string name="action_installations">நிறுவல்கள்</string>
     <string name="action_install">நிறுவு</string>
     <string name="action_ignore">புறக்கணி</string>
-    <string name="action_get_local_apk">பயன்பாட்டு மூட்டை சேமிக்கவும்</string>
+    <string name="action_get_local_apk">பயன்பாட்டு மூட்டைச் சேமி</string>
     <string name="action_finish">முடிந்தது</string>
     <string name="action_filter_rating">மதிப்பீடுகள்</string>
     <string name="action_filter_paid_apps">கட்டணம்</string>
@@ -28,7 +28,7 @@
     <string name="action_close">மூடுக</string>
     <string name="action_clear">நீக்கு</string>
     <string name="action_cancel">ரத்துசெய்</string>
-    <string name="action_blacklist_add">தடுப்புப்பட்டியலில் சேர்க்கவும்</string>
+    <string name="action_blacklist_add">தடுப்புப்பட்டியலில் சேர்</string>
     <string name="action_blacklist">தடுப்புப்பட்டியல்</string>
     <string name="about_fdroid">எஃப்-டிரயோடு</string>
     <string name="about_bhim_summary">யுபிஐ வழியாக கொடையளி</string>
@@ -118,7 +118,7 @@
     <string name="action_granted">வழங்கப்பட்டது</string>
     <string name="action_post">இடுகையிடு</string>
     <string name="action_info">பயன்பாட்டுத் தகவல்</string>
-    <string name="action_update">புதுப்பிப்புகள்</string>
+    <string name="action_update">புதுப்பி</string>
     <string name="details_beta_subscribed">நீங்கள் பீட்டா சோதனையாளர்</string>
     <string name="details_beta_available">பீட்டா திட்டத்தில் சேரவா?</string>
     <string name="details_changelog">மாற்றப்பதிவு</string>
@@ -154,8 +154,8 @@
     <string name="filter_review_five">ஐந்து</string>
     <string name="filter_review_four">நான்கு</string>
     <string name="filter_review_positive">நேர்மறை</string>
-    <string name="installer_service_available">அரோரா சேவைகள் கிடைக்கின்றன மற்றும் நிறுவ தயாராக உள்ளன.</string>
-    <string name="installer_service_unavailable">அரோரா சேவைகளை 1.0.9 அல்லது அதற்கு மேல் நிறுவவும் அல்லது நிறுவியை மாற்றவும்.</string>
+    <string name="installer_service_available">அரோரா சேவைகள் கிடைக்கின்றன மற்றும் நிறுவத் தயாராக உள்ளன.</string>
+    <string name="installer_service_unavailable">அரோரா சேவைகளை 1.0.9 அல்லது அதற்கு மேல் நிறுவவும் அல்லது நிறுவியை மாற்று.</string>
     <string name="installer_service_misconfigured">அரோரா சேவைகளை அமைத்து, முதலில் அனைத்து அனுமதிகளையும் வழங்கவும்.</string>
     <string name="installer_status_failure">நிறுவல் தோல்வியடைந்தது</string>
     <string name="installer_status_failure_session">அமர்வை படைக்க முடியவில்லை</string>
@@ -188,7 +188,7 @@
     <string name="pref_install_mode_title">நிறுவல் பயன்முறை</string>
     <string name="pref_network_title">பிணையமாக்கம்</string>
     <string name="pref_ui_no_for_you">உங்களுக்கான பக்கங்கள்</string>
-    <string name="pref_ui_no_for_you_desc">முகப்புத் திரையில் உங்களுக்கான பக்கங்களைக் காட்டவும்</string>
+    <string name="pref_ui_no_for_you_desc">முகப்புத் திரையில் உங்களுக்கான பக்கங்களைக் காட்டு</string>
     <string name="purchase_failed">பதிவிறக்கம் தோல்வியடைந்தது</string>
     <string name="purchase_invalid">பயன்பாடு வாங்கப்படவில்லை</string>
     <string name="insecure_anonymous_apply">மாற்றங்களைப் பயன்படுத்த, நீங்கள் மீண்டும் உள்நுழைந்து பயன்பாட்டை மறுதொடக்கம் செய்வதை உறுதிசெய்து கொள்ளவும்.</string>
@@ -217,7 +217,7 @@
     <string name="toast_developer_setting_failed">அவற்றைத் திறக்க, சாதன அமைப்புகளில் இருந்து டெவலப்பர் அமைப்புகளை இயக்கவும்.</string>
     <string name="toast_permission_granted">அனுமதி வழங்கப்பட்டது</string>
     <string name="toast_spoof_applied">சாதன ஸ்பூஃப் பயன்படுத்தப்பட்டது.</string>
-    <string name="toast_purchase_blocked">அநாமதேய கணக்குகளில் ஆப்ஸ் வாங்குதல்கள் கிடைக்காது.</string>
+    <string name="toast_purchase_blocked">பெயரிலி கணக்குகளில் பயன்பாடுகள் வாங்குதல்கள் கிடைக்காது.</string>
     <string name="toast_manual_available">வாழ்த்துகள், கோரப்பட்ட பதிப்புக் குறியீடு உள்ளது, இப்போது பதிவிறக்குகிறது.</string>
     <string name="toast_page_unavailable">உலாவல் பக்கம் கிடைக்கவில்லை</string>
     <string name="toast_aas_token_failed">AAS கிள்ளாக்குகளைப் உருவாக்க முடியவில்லை</string>
@@ -235,7 +235,7 @@
     <string name="pref_clear_device_owner_title">சாதன உரிமையாளரை அழிக்கவும்</string>
     <string name="status_cancelled">ரத்து செய்யப்பட்டது</string>
     <string name="menu">பட்டியல்</string>
-    <string name="pref_vending_version_title">கூகிள் பிளே பதிப்பு</string>
+    <string name="pref_vending_version_title">கூகிள் இயக்கு பதிப்பு</string>
     <string name="expand">விரிவாக்கு</string>
     <string name="download_eta_sec">%1$ds இடது</string>
     <string name="about_wiki_summary">அடிக்கடி கேட்கப்படும் கேள்விகள் (F.A.Q.), சரிசெய்தல் படிகள் மற்றும் பலவற்றிற்கான பதில்களைக் கண்டறியவும்</string>
@@ -255,13 +255,13 @@
     <string name="item_optional">விரும்பினால்</string>
     <string name="permissions_denied">தேவையான அனுமதிகள் மறுக்கப்பட்டன. நடவடிக்கையைத் தொடர தயவுசெய்து அவற்றை வழங்கவும்</string>
     <string name="notification_updates_available_desc_2">&lt;xliff: g ஐடி = \"app_one_name\"&gt;%1$s &lt;/xliff: g&gt; மற்றும் &lt;xliff: g ஐடி = \"app_two_name\"&gt;%2$s &lt;/xliff: g&gt;</string>
-    <string name="notification_updates_available_desc_3">&lt;xliff: g ஐடி = \"app_one_name\"&gt;%1$s &lt;/xliff: g&gt;, &lt;xliff: g ஐடி = \"app_two_name\" \"&gt;%3$s &lt;/xliff: g&gt;</string>
+    <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> மற்றும் <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="downloading_dep">&lt;Xliff: g ஐடி = \"app\"&gt;%1$s &lt;/xliff: g&gt; க்கான கூடுதல் கோப்புகளைப் பதிவிறக்குகிறது</string>
     <string name="notification_updates_available_1">&lt;xliff: g ஐடி = \"apps_count\"&gt;%1$d &lt;/xliff: g&gt; புதுப்பிப்பு கிடைக்கிறது</string>
     <string name="notification_updates_available_desc_1">&lt;Xliff: g ஐடி = \"app_one_name\"&gt;%1$s &lt;/xliff: g&gt; இன் புதிய பதிப்பு கிடைக்கிறது</string>
     <string name="pref_updates_auto_notify">கிடைக்கக்கூடிய புதுப்பிப்புகளுக்கு சரிபார்த்து அறிவிக்கவும்</string>
-    <string name="pref_updates_check_frequency_desc">ஆட்டோ மற்றும் தன்வய புதுப்பிப்புகளுக்கான இடைவெளிகளை மணிநேரத்தில் உள்ளமைக்கவும்.</string>
-    <string name="pref_updates_auto_desc">ஆட்டோ புதுப்பிப்புகளின் நடத்தை உள்ளமைக்கவும்</string>
+    <string name="pref_updates_check_frequency_desc">தானி மற்றும் தன்வய புதுப்பிப்புகளுக்கான இடைவெளிகளை மணிநேரத்தில் உள்ளமை.</string>
+    <string name="pref_updates_auto_desc">தானி புதுப்பிப்புகளின் நடத்தை உள்ளமை</string>
     <string name="failed_to_fetch_report">தனியுரிமை அறிக்கையைப் பெறுவதில் தோல்வி</string>
     <string name="login_rate_limited">அச்சச்சோ, நீங்கள் விகிதம் வரையறுக்கப்பட்டவர்</string>
     <string name="failed_to_generate_session">அமர்வை உருவாக்க முடியவில்லை</string>
@@ -289,7 +289,7 @@
     <string name="status_unavailable">கிடைக்கவில்லை</string>
     <string name="authentication_required_title">ஏற்பு தேவை</string>
     <string name="available_spoof">கிடைக்கிறது</string>
-    <string name="about_aurora_store_summary">அதிகாரப்பூர்வ கூகிள் பிளே ச்டோரிலிருந்து பயன்பாடுகளைத் தேடவும் பதிவிறக்கவும் அரோரா கடை உங்களுக்கு உதவுகிறது. பயன்பாட்டு விளக்கங்கள், திரை சாட்கள், புதுப்பிப்புகள், பிற பயனர்களின் கருத்துகளை நீங்கள் சரிபார்க்கலாம் மற்றும் Google Play இலிருந்து உங்கள் சாதனத்திற்கு நேரடியாக APK ஐ பதிவிறக்கம் செய்யலாம். அரோரா ச்டோரைப் பயன்படுத்த, நீங்கள் ஒரு Google Play கணக்கை வைத்திருக்க வேண்டும், மேலும் நீங்கள் முதலில் அரோரா கடையைத் திறந்து உள்ளமைக்கும்போது உங்கள் Google Play கணக்கில் உள்நுழைக.\n\n பாரம்பரிய ஆப் ச்டோரைப் போலன்றி, அரோரா கடை எந்த பயன்பாடுகளையும் சொந்தமாகவோ, உரிமம் பெறவோ அல்லது விநியோகிக்கவோ இல்லை. அரோரா கடையில் உள்ள அனைத்து பயன்பாடுகள், பயன்பாட்டு விளக்கங்கள், திரை சாட்கள் மற்றும் பிற உள்ளடக்கங்கள் நேரடியாக அணுகப்படுகின்றன, பதிவிறக்கம் செய்யப்படுகின்றன மற்றும்/அல்லது கூகிள் பிளேயில் இருந்து காட்டப்படுகின்றன. அரோரா கடை ஒரு கதவு அல்லது உலாவி போன்றது, உங்கள் Google Play கணக்கில் உள்நுழைந்து Google Play இலிருந்து பயன்பாடுகளைக் கண்டறிய உங்களை அனுமதிக்கிறது.\n\n அரோரா ச்டோருக்கு கூகிள், கூகிள் பிளே, அரோரா கடை அல்லது எந்த பயன்பாட்டு உருவாக்குபவர்கள் மூலம் பதிவிறக்கம் செய்யப்பட்ட எந்த பயன்பாடுகளும் ஒப்புதல், ச்பான்சர்சிப் அல்லது ஏற்பு இல்லை என்பதை நினைவில் கொள்க; அரோரா கடைக்கு அவர்களுடன் எந்த தொடர்பும், ஒத்துழைப்பும் அல்லது தொடர்பும் இல்லை.</string>
+    <string name="about_aurora_store_summary">அதிகாரப்பூர்வ கூகிள் பிளே ச்டோரிலிருந்து பயன்பாடுகளைத் தேடவும் பதிவிறக்கவும் அரோரா கடை உங்களுக்கு உதவுகிறது. பயன்பாட்டு விளக்கங்கள், திரை சாட்கள், புதுப்பிப்புகள், பிற பயனர்களின் கருத்துகளை நீங்கள் சரிபார்க்கலாம் மற்றும் Google Play இலிருந்து உங்கள் சாதனத்திற்கு நேரடியாக APK ஐ பதிவிறக்கம் செய்யலாம். அரோரா ச்டோரைப் பயன்படுத்த, நீங்கள் ஒரு Google Play கணக்கை வைத்திருக்க வேண்டும், மேலும் நீங்கள் முதலில் அரோரா கடையைத் திறந்து உள்ளமைக்கும்போது உங்கள் Google Play கணக்கில் உள்நுழைக. \n\nபாரம்பரிய ஆப் ச்டோரைப் போலன்றி, அரோரா கடை எந்த பயன்பாடுகளையும் சொந்தமாகவோ, உரிமம் பெறவோ அல்லது விநியோகிக்கவோ இல்லை. அரோரா கடையில் உள்ள அனைத்து பயன்பாடுகள், பயன்பாட்டு விளக்கங்கள், திரை சாட்கள் மற்றும் பிற உள்ளடக்கங்கள் நேரடியாக அணுகப்படுகின்றன, பதிவிறக்கம் செய்யப்படுகின்றன மற்றும்/அல்லது கூகிள் பிளேயில் இருந்து காட்டப்படுகின்றன. அரோரா கடை ஒரு கதவு அல்லது உலாவி போன்றது, உங்கள் Google Play கணக்கில் உள்நுழைந்து Google Play இலிருந்து பயன்பாடுகளைக் கண்டறிய உங்களை அனுமதிக்கிறது. \n\nஅரோரா ச்டோருக்கு கூகிள், கூகிள் பிளே, அரோரா கடை அல்லது எந்த பயன்பாட்டு உருவாக்குபவர்கள் மூலம் பதிவிறக்கம் செய்யப்பட்ட எந்த பயன்பாடுகளும் ஒப்புதல், ச்பான்சர்சிப் அல்லது ஏற்பு இல்லை என்பதை நினைவில் கொள்க; அரோரா கடைக்கு அவர்களுடன் எந்த தொடர்பும், ஒத்துழைப்பும் அல்லது தொடர்பும் இல்லை.</string>
     <string name="title_more">மேலும்</string>
     <string name="pref_clear_device_owner_desc">பயன்பாட்டை அமைதியாக நிறுவ அமர்வு நிறுவியின் அனுமதியை இது ரத்து செய்யும். சாதன உரிமையை அழிக்க வேண்டுமா?</string>
     <string name="pref_dispenser_title">விநியோகிப்பாளர்களை நிர்வகிக்கவும்</string>
@@ -308,7 +308,7 @@
     <string name="error">பிழை ஏற்பட்டது!</string>
     <string name="requesting_new_session">புதிய அமர்வைக் கோருகிறது</string>
     <string name="download_clear_finished">தெளிவாக முடிந்தது</string>
-    <string name="download_progress">பதிவிறக்கம் • &lt;xliff: g ஐடி = \"நிறைவு செய்யப்பட்ட_டவுண்ட் லோடுகள்\"&gt;%1$d &lt;/xliff: g&gt;/&lt;xliff: g ஐடி = \"all_downloads\"&gt;%2$d &lt;/xliff: g&gt; • &lt;xliff: g ஐடி = \"வேகம்\"&gt;%3$s &lt;/xliff: g&gt;</string>
+    <string name="download_progress">பதிவிறக்கம் • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="manual_download_hint">நீங்கள் பதிவிறக்க விரும்பும் பதிப்பு குறியீட்டை உள்ளிடவும்</string>
     <string name="notification_channel_account">கணக்கு தொடர்பான அறிவிப்பு</string>
     <string name="onboarding_permission_installer_legacy_desc">அறியப்படாத மூலங்களிலிருந்து பயன்பாடுகளை நிறுவ அனுமதிக்கவும்</string>
@@ -316,7 +316,7 @@
     <string name="session_init">விசயங்களை ஆயத்தம் செய்வது…</string>
     <string name="title_app_settings">பயன்பாட்டு அமைப்புகள்</string>
     <string name="server_maintenance">பராமரிப்புக்காக சேவையகம் கீழே</string>
-    <string name="notification_updates_available_desc_4">&lt;xliff: g ஐடி = \"app_one_name\"&gt;%1$s &lt;/xliff: g&gt;, &lt;xliff: g ஐடி = \"app_two_name\" \"&gt;%3$s&lt;/xliff:g&gt; and &lt;xliff:g id=\"apps_count\"&gt;%4$d&lt;/xliff:g&gt; more</string>
+    <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> and <xliff:g id="apps_count">%4$d</xliff:g> மேலும்</string>
     <string name="access_denied_using_vpn">அணுகல் மறுக்கப்பட்டது! நீங்கள் VPN அல்லது TOR ஐப் பயன்படுத்துகிறீர்களா?</string>
     <string name="server_unreachable">சேவையகம் அணுக முடியாதது</string>
     <string name="root_installer_desc">ரூட்/சூப்பர் யூசர் சலுகைகள் தேவை, அனைத்து ஆண்ட்ராய்டு பதிப்புகளையும் ஆதரிக்கிறது.</string>
@@ -330,11 +330,11 @@
     <string name="pref_network_proxy_url">பதிலாள் முகவரி</string>
     <string name="session_good">ஓ! எல்லாம் நல்லது.</string>
     <string name="session_verifying">அமர்வு சரிபார்க்கிறது</string>
-    <string name="session_verifying_google">Google அமர்வை சரிபார்க்கிறது</string>
+    <string name="session_verifying_google">கூகிள் அமர்வைச் சரிபார்க்கிறது</string>
     <string name="title_search_results">தேடல் முடிவுகள்</string>
     <string name="title_advanced">மேம்பட்ட</string>
     <string name="pref_updates_check_frequency">தானியங்கி புதுப்பிப்புகள் அதிர்வெண்</string>
-    <string name="pref_updates_auto">தானியங்கு புதுப்பிப்பு பயன்பாடுகள்</string>
+    <string name="pref_updates_auto">தானியங்கு புதுப்பிப்புகள்</string>
     <string name="pref_updates_auto_install">கிடைக்கக்கூடிய புதுப்பிப்புகளை சரிபார்த்து நிறுவவும்</string>
     <string name="failed_generating_session">அமர்வை உருவாக்குவதில் தோல்வி, பிழைக் குறியீடு: &lt;xliff: g ஐடி = \"status_code\"&gt;%1$d &lt;/xliff: g&gt;</string>
     <string name="status_downloading">பதிவிறக்குகிறது</string>
@@ -350,7 +350,7 @@
     <string name="default_spoof">இயல்புநிலை</string>
     <string name="app_links_desc">உதவி இணைப்புகளைத் திறக்க அரோரா கடையை அனுமதிக்கவும்</string>
     <string name="action_favourite">பிடித்த</string>
-    <string name="search_hint">பயன்பாடுகள் மற்றும் விளையாட்டுகளைத் தேடுங்கள்</string>
+    <string name="search_hint">பயன்பாடுகள் மற்றும் விளையாட்டுகளைத் தேடு</string>
     <string name="spoof_property">&lt;xliff: g ஐடி = \"உற்பத்தியாளர்\"&gt;%1$s &lt;/xliff: g&gt; • பநிஇ &lt;xliff: g ஐடி = \"api\"&gt;%2$s &lt;/xliff: g&gt;</string>
     <string name="pref_updates_auto_off">பயன்பாடுகளை தானாக புதுப்பிக்க வேண்டாம்</string>
     <string name="about_aurora_store_title">அரோரா கடை பற்றி</string>
@@ -358,7 +358,7 @@
     <string name="toast_import_failed">சாதன கட்டமைப்பை இறக்குமதி செய்ய முடியவில்லை</string>
     <string name="update_available">புதுப்பிப்பு கிடைக்கிறது</string>
     <string name="updates_available">புதுப்பிப்புகள் கிடைக்கின்றன</string>
-    <string name="notification_channel_updates">அறிவிப்புகளைப் புதுப்பிக்கிறது</string>
+    <string name="notification_channel_updates">அறிவிப்புகளைப் புதுப்பி</string>
     <string name="notification_updates_available">&lt;xliff: g ஐடி = \"apps_count\"&gt;%1$d &lt;/xliff: g&gt; புதுப்பிப்புகள் கிடைக்கின்றன</string>
     <string name="root_installer_subtitle">ரூட் அனுமதிகளைப் பயன்படுத்தி செல் அடிப்படையிலான நிறுவி</string>
     <string name="native_installer_desc">ஆண்ட்ராய்டு 4.4 க்கு கீழே இயங்கும் சாதனங்களுக்கு மிகவும் பொருத்தமானது</string>
@@ -374,14 +374,14 @@
     <string name="export_app_summary_success">பயன்பாட்டு மூட்டை வெற்றிகரமாக ஏற்றுமதி செய்தது</string>
     <string name="action_uninstall_success">வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது</string>
     <string name="about_aurora_store_subtitle">அரோரா கடை பற்றி மேலும் அறிக</string>
-    <string name="action_home_screen">முகப்புத் திரையில் சேர்க்கவும்</string>
+    <string name="action_home_screen">முகப்புத் திரையில் சேர்</string>
     <string name="remove">அகற்று</string>
     <string name="native_installer_subtitle">நோக்கம் அடிப்படையிலான நிறுவி, எல்லா சாதனங்களிலும் கிடைக்கிறது</string>
     <string name="action_import">இறக்குமதி</string>
     <string name="details_no_favourites">பிடித்த பயன்பாடுகள் எதுவும் கிடைக்கவில்லை</string>
     <string name="download_eta_hrs">%1$dh %2$dm %3$ds மீதமுள்ளது</string>
     <string name="download_eta_min">%1$dm %2$ds மீதமுள்ளது</string>
-    <string name="download_paused">இடைநிறுத்தப்பட்டது • &lt;xliff: g ஐடி = \"நிறைவு செய்யப்பட்ட_டவுண்ட் லோடுகள்\"&gt;%1$d &lt;/xliff: g&gt;/&lt;xliff: g ஐடி = \"all_downloads\"&gt;%2$d &lt;/xliff: g&gt;</string>
+    <string name="download_paused">இடைநிறுத்தப்பட்டது • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_shizuku_unavailable">சிசுகு நிறுவப்படவில்லை அல்லது சரியாக அமைக்கப்படவில்லை.</string>
     <string name="session_enjoy">உள்நுழைந்து மகிழுங்கள்.</string>
     <string name="toast_import_success">சாதன கட்டமைப்பு இறக்குமதி செய்யப்பட்டது</string>
@@ -391,4 +391,41 @@
     <string name="notification_channel_export">பயன்பாட்டு ஏற்றுமதி அறிவிப்பு</string>
     <string name="notification_channel_install">அறிவிப்பை நிறுவவும்</string>
     <string name="notification_channel_downloads">பதிவிறக்க அறிவிப்பு</string>
+    <string name="pref_network_microg_login_title">கணக்குகளில் உள்நுழைய மைக்ரோகைப் பயன்படுத்தவும்</string>
+    <string name="pref_updates_restrictions_metered">அளவிடப்படாத நெட்வொர்க்குகளில் மட்டுமே</string>
+    <string name="action_remove_all">அனைத்தையும் அகற்று</string>
+    <string name="action_select_all">அனைத்தையும் தேர்ந்தெடு</string>
+    <string name="toast_black_export_failed">தடுப்புப்பட்டியலை ஏற்றுமதி செய்வதில் தோல்வி!</string>
+    <string name="toast_black_import_success">பிளாக்லிச்ட் இறக்குமதி செய்யப்பட்டது!</string>
+    <string name="verification_failed">பதிவிறக்கம் செய்யப்பட்ட கோப்புகளை சரிபார்க்கத் தவறிவிட்டது</string>
+    <string name="no_apps_available">பயன்பாடுகள் எதுவும் கிடைக்கவில்லை</string>
+    <string name="status_verifying">சரிபார்க்கும்</string>
+    <string name="action_unarchive">அன்கான்</string>
+    <string name="unable_to_open">பயன்பாட்டைத் திறக்க முடியவில்லை</string>
+    <string name="plexus_progress">பொருந்தக்கூடிய தன்மையைச் சரிபார்க்கிறது…</string>
+    <string name="details_compatibility_title">பொருந்தக்கூடிய தன்மை</string>
+    <string name="details_compatibility_gms_required_title">Google Play சேவைகள் தேவை</string>
+    <string name="details_compatibility_no_gms">கூகிள் பிளே சேவைகள் இல்லாமல்</string>
+    <string name="details_compatibility_status_compatible">இணக்கமானது: எந்த சிக்கலும் இல்லாமல் செயல்படுகிறது</string>
+    <string name="details_compatibility_status_unsupported">ஆதரிக்கப்படாதது: செயல்படவில்லை</string>
+    <string name="filter_latest">அண்மைக் கால</string>
+    <string name="plexus_powered">பிளெக்சசால் இயக்கப்படுகிறது</string>
+    <string name="details_compatibility_microg">மைக்ரோக் திட்டத்துடன்</string>
+    <string name="details_compatibility_gms_required_subtitle">நீங்கள் Google இன் தனியுரிம நூலகம் அல்லது மைக்ரோக் போன்ற FOSS மறுசீரமைப்பை நிறுவ வேண்டியிருக்கலாம்.</string>
+    <string name="details_compatibility_status_limited">லிமிடெட்: வரையறுக்கப்பட்ட அம்சங்களுடன் செயல்படுகிறது</string>
+    <string name="toast_black_import_failed">தடுப்புப்பட்டியலை இறக்குமதி செய்வதில் தோல்வி!</string>
+    <string name="toast_black_export_success">பிளாக்லிச்ட் ஏற்றுமதி!</string>
+    <string name="details_compatibility_gms_not_required_title">கூகிள் பிளே சேவைகள் இல்லாமல் வேலை செய்கிறது</string>
+    <string name="details_compatibility_gms_not_required_subtitle">இந்த பயன்பாடு கூகிளின் தனியுரிம நூலகம் இல்லாமல் செயல்படுகிறது. இருப்பினும், மற்ற மூன்றாம் தரப்பு நூலகங்கள் சரியாக வேலை செய்ய வேண்டும்.</string>
+    <string name="details_compatibility_status_unknown">தெரியவில்லை: இன்னும் சரிபார்க்கப்படவில்லை</string>
+    <string name="pref_network_microg_login_desc">எளிமையான உள்நுழைவு ஓட்டத்திற்கு Google கணக்குகளில் கையொப்பமிடும்போது மைக்ரோகைப் பயன்படுத்தி அங்கீகரிக்கவும்.</string>
+    <string name="set">கணம்</string>
+    <string name="disable">முடக்கு</string>
+    <string name="toast_proxy_disabled">பதிலாள் வெற்றிகரமாக முடக்கப்பட்டது</string>
+    <string name="pref_network_proxy_desc">பதிலாள் உள்ளமைவைக் காணவும் நிர்வகிக்கவும்</string>
+    <string name="installed_apps_size">&lt;xliff: g அடையாளம் = \"install_apps_size\"&gt;%1$d &lt;/xliff: g&gt; பயன்பாடுகள் நிறுவப்பட்டுள்ளன</string>
+    <string name="pref_updates_restrictions_title">தானியங்கி புதுப்பிப்புகள் கட்டுப்பாடுகள்</string>
+    <string name="pref_updates_restrictions_desc">தானியங்கு புதுப்பிப்புகளுக்கான சாதன கட்டுப்பாடுகளை உள்ளமைக்கவும்.</string>
+    <string name="pref_updates_restrictions_idle">சாதனம் சும்மா இருக்கும்போது</string>
+    <string name="pref_updates_restrictions_battery">பேட்டரி குறைவாக இல்லாதபோது</string>
 </resources>
