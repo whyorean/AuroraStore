@@ -198,7 +198,6 @@
     <string name="purchase_not_found">Aplikasi tidak ditemukan</string>
     <string name="purchase_unsupported">Aplikasi tidak didukung</string>
     <string name="purchase_invalid">Aplikasi tidak dibeli</string>
-    <string name="pref_ui_similar_apps_desc">Tampilkan kelompok yang serupa dan terkait pada halaman detail aplikasi</string>
     <string name="pref_ui_similar_apps">Aplikasi serupa dan terkait</string>
     <string name="pref_ui_no_for_you_desc">Tampilkan halaman Untuk Anda di layar beranda</string>
     <string name="pref_ui_no_for_you">Halaman Untuk Anda</string>

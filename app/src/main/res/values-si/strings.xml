@@ -234,7 +234,6 @@
     <string name="download_eta_min">වි. %1$d ත. %2$d ක් ඉතිරිය</string>
     <string name="download_eta_sec">ත. %1$d ක් ඉතිරිය</string>
     <string name="onboarding_permission_notifications">දැනුම්දීම්</string>
-    <string name="pref_ui_similar_apps_desc">යෙදුමේ විස්තර පිටුවේ සමාන හා ආශ්‍රිත පර්ෂද පෙන්වන්න</string>
     <string name="session_good">ඔක්කොම හරි!</string>
     <string name="session_enjoy">ඇතුළු වී අත්විඳින්න.</string>
     <string name="session_init">සූදානම් කෙරෙමින්…</string>
