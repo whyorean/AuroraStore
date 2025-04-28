@@ -97,7 +97,6 @@
     <string name="pref_ui_layout">தளவமைப்பு</string>
     <string name="pref_ui_layout_tab">இயல்புநிலை தாவலைத் தேர்ந்தெடுக்கவும்</string>
     <string name="pref_ui_similar_apps">ஒத்த மற்றும் தொடர்புடைய பயன்பாடுகள்</string>
-    <string name="pref_ui_similar_apps_desc">செயலி விவரங்கள் பக்கத்தில் ஒத்த மற்றும் தொடர்புடைய கொத்துகளைக் காண்பி</string>
     <string name="purchase_not_found">பயன்பாடு கிடைக்கவில்லை</string>
     <string name="title_device">சாதனம்</string>
     <string name="title_installed">நிறவப்பட்டவை</string>

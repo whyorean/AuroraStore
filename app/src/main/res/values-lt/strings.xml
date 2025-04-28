@@ -151,7 +151,6 @@
     <string name="download_force_clear_all">Priverstinai išvalyti visus</string>
     <string name="download_pause_all">Pristabdyti visus</string>
     <string name="pref_ui_no_for_you">„Jums“ puslapiai</string>
-    <string name="pref_ui_similar_apps_desc">Rodyti programėlės puslapyje panašių ir susijusių programėlių rinkinį</string>
     <string name="tab_editor_choice">Redaktoriaus pasirinkimas</string>
     <string name="tab_for_you">Jums</string>
     <string name="title_apps_library">Programėlės bibliotekoje</string>

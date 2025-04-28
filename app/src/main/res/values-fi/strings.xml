@@ -187,7 +187,6 @@
     <string name="insecure_anonymous_apply">Varmista, että kirjaudut uudelleen ja käynnistät sovelluksen uudelleen ottaaksesi muutokset käyttöön.</string>
     <string name="spoof_apply">Varmista, että kirjaudut uudelleen ottaaksesi huijauksen käyttöösi</string>
     <string name="purchase_session_expired">Sessio päättyi, kirjaudu uudelleen uuden session aloittamiseksi.</string>
-    <string name="pref_ui_similar_apps_desc">Näytä sovelluksen lisätietosivulla sen kanssa samankaltaisia ja siihen liittyviä sovelluksia</string>
     <string name="pref_ui_no_for_you_desc">Näytä Sinulle räätälöity-sivut kotinäytöllä</string>
     <string name="pref_ui_layout_tab">Valitse oletusvälilehti</string>
     <string name="pref_ui_layout">Ulkoasu</string>

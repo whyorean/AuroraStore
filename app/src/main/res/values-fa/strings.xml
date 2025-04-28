@@ -223,7 +223,6 @@
     <string name="onboarding_permission_installer_desc">اجازه نصب برنامه‌ها از فروشگاه آرورا</string>
     <string name="pref_install_delete_title">حذف APK پس از نصب</string>
     <string name="pref_install_mode_am">نصب کننده AM.</string>
-    <string name="pref_ui_similar_apps_desc">نمایش خوشه های مشابه و مرتبط در صفحه جزئیات برنامه</string>
     <string name="spoof_apply">اطمینان حاصل کنید که برای اعمال پارامتر جعلی دوباره وارد سیستم شوید</string>
     <string name="tab_editor_choice">انتخاب سردبیران</string>
     <string name="title_no_network">بدون شبکه</string>

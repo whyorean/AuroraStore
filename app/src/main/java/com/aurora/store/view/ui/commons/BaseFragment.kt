@@ -120,15 +120,6 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
         )
     }
 
-    fun openScreenshotFragment(app: App, position: Int) {
-        findNavController().navigate(
-            MobileNavigationDirections.actionGlobalScreenshotFragment(
-                position,
-                app.screenshots.toTypedArray()
-            )
-        )
-    }
-
     fun openAppMenuSheet(app: MinimalApp) {
         findNavController().navigate(MobileNavigationDirections.actionGlobalAppMenuSheet(app))
     }
