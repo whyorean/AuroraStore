@@ -211,7 +211,6 @@
     <string name="toast_manual_available">Felicidades, el código de la versión solicitada está disponible, descargándolo ahora.</string>
     <string name="toast_manual_unavailable">El código de versión que estás solicitando no está disponible.</string>
     <string name="title_manual_download">Descarga manual</string>
-    <string name="pref_ui_similar_apps_desc">Mostrar grupos similares y relacionados en la página de detalles de la aplicación</string>
     <string name="pref_ui_similar_apps">Aplicaciones similares y relacionadas</string>
     <string name="pref_ui_no_for_you_desc">Mostrar las páginas Para ti en la pantalla de inicio</string>
     <string name="pref_ui_no_for_you">Páginas para ti</string>

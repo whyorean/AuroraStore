@@ -180,7 +180,6 @@
     <string name="pref_install_mode_am">Instalador AM</string>
     <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los archivos APK</string>
     <string name="pref_ui_similar_apps">Aplicaciones asemeyaes y rellacionaes</string>
-    <string name="pref_ui_similar_apps_desc">Amuesa les aplicaciones asemeyaes y rellacionaes nes páxines de detalles de les aplicaciones</string>
     <string name="tab_for_you">Pa ti</string>
     <string name="title_installed">Instalóse</string>
     <string name="title_installer">App Installer</string>

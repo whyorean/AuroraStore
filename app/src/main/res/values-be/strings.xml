@@ -118,7 +118,6 @@
     <string name="pref_network_proxy_url">URL проксі</string>
     <string name="pref_network_proxy_url_message">Увядзіце сапраўдны URL для праходжання ўсяго трафіку праз проксі.</string>
     <string name="pref_ui_similar_apps">Падобнае</string>
-    <string name="pref_ui_similar_apps_desc">Паказваць падобныя ці звязаныя кластары на старонцы праграмы</string>
     <string name="pref_aurora_only_desc">Не правяраць наяўнасць абнаўленняў для праграм, усталяваных з крыніц па-за межамі крамы Aurora</string>
     <string name="purchase_failed">Памылка спампоўкі</string>
     <string name="purchase_no_file">Не ўдалося атрымаць файл</string>

@@ -179,7 +179,6 @@
     <string name="pref_ui_layout">Tərtibat</string>
     <string name="pref_ui_layout_tab">İlkin səhifəni seç</string>
     <string name="pref_ui_similar_apps">Oxşar və əlaqəli tətbiqlər</string>
-    <string name="pref_ui_similar_apps_desc">Tətbiq təfərrüatları səhifəsində oxşar və əlaqəli qrupları göstər</string>
     <string name="purchase_failed">Endirmə Alınmadı</string>
     <string name="purchase_invalid">Tətbiq satın alınmayıb</string>
     <string name="purchase_unsupported">Tətbiq dəstəklənmir</string>

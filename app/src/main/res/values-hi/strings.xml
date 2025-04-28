@@ -218,7 +218,6 @@
     <string name="pref_install_mode_root">रूट इंस्टॉलर</string>
     <string name="pref_install_mode_services">ऑरोरा सेवाएं (अस्वीकृत)</string>
     <string name="purchase_session_expired">सत्र समाप्त हो गया, नया सत्र प्राप्त करने के लिए पुनः लॉगिन करें।</string>
-    <string name="pref_ui_similar_apps_desc">ऐप विवरण पृष्ठ पर समान और संबंधित समूह प्रदर्शित करें</string>
     <string name="spoof_apply">सुनिश्चित करें कि आप छलावरण लागू करने के लिए पुनः लॉगिन करें</string>
     <string name="purchase_unsupported">ऐप समर्थित नहीं है</string>
     <string name="toast_apk_whitelisted">श्वेतसूचीबद्ध</string>

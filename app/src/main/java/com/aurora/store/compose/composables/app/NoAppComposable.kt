@@ -31,7 +31,6 @@ import com.aurora.store.R
  * @param message Message for error
  * @param actionMessage Message to show on action button; defaults to null with button not visible
  * @param onAction Callback when action button is clicked
- * @see NoAppAltComposable
  */
 @Composable
 fun NoAppComposable(

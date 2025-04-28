@@ -208,7 +208,6 @@
     <string name="toast_purchase_blocked">Покупка приложений недоступна когда анонимно.</string>
     <string name="insecure_anonymous_apply">Убедитесь, что выполнили новый вход и перезапустили приложение для применения изменений.</string>
     <string name="pref_network_title">Сеть</string>
-    <string name="pref_ui_similar_apps_desc">Показать секции похожих и связанных на странице приложения</string>
     <string name="pref_ui_no_for_you_desc">Показать страницу рекомендаций на главном экране</string>
     <string name="pref_ui_layout_tab">Вкладка по умолчанию</string>
     <string name="pref_ui_layout">Вкладки</string>

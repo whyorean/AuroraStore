@@ -83,7 +83,6 @@
     <string name="purchase_unsupported">Aplicação não suportada</string>
     <string name="purchase_invalid">Aplicação não comprada</string>
     <string name="purchase_failed">Descarga falhou</string>
-    <string name="pref_ui_similar_apps_desc">Mostrar grupos de aplicações semelhantes e relacionadas na página de detalhes das aplicações</string>
     <string name="pref_ui_similar_apps">Aplicações semelhantes e relacionadas</string>
     <string name="pref_ui_no_for_you_desc">Exibir páginas de recomendação no ecrã inicial</string>
     <string name="pref_ui_no_for_you">Páginas de recomendação</string>

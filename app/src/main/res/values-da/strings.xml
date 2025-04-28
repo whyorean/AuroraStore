@@ -105,7 +105,6 @@
     <string name="pref_install_mode_am">AM-installationsprogram</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="purchase_not_found">Appen blev ikke fundet</string>
-    <string name="pref_ui_similar_apps_desc">Vis lignende og relaterede samlinger på appens detaljeside</string>
     <string name="spoof_apply">Sørg for at logge ind igen for at anvende spoofen</string>
     <string name="title_manual_download">Manuel download</string>
     <string name="toast_apk_whitelisted">Hvidlistet</string>

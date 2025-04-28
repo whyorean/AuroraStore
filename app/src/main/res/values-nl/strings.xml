@@ -70,7 +70,6 @@
     <string name="purchase_unsupported">App niet ondersteund</string>
     <string name="purchase_invalid">App niet aangeschaft</string>
     <string name="purchase_failed">Installatie mislukt</string>
-    <string name="pref_ui_similar_apps_desc">Toon vergelijkbare en gerelateerde clusters op de app-detailspagina</string>
     <string name="pref_ui_similar_apps">Vergelijkbare en gerelateerde apps</string>
     <string name="pref_ui_no_for_you_desc">Pagina met aanbevelingen op thuisscherm tonen</string>
     <string name="pref_ui_no_for_you">Voor jou pagina\'s</string>

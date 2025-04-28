@@ -31,7 +31,6 @@ import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.databinding.FragmentDevProfileBinding
-import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.DevProfileViewModel
@@ -47,7 +46,6 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val developerCarouselController = DeveloperCarouselController(this)
 
         // Toolbar
         binding.toolbar.apply {
@@ -56,7 +54,6 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
         }
 
         // RecyclerView
-        binding.recycler.setController(developerCarouselController)
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
@@ -82,7 +79,6 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
                         binding.txtDevDescription.text = description
                         binding.imgIcon.load(imgUrl)
                         binding.viewFlipper.displayedChild = 0
-                        developerCarouselController.setData(streamBundle)
                     }
                 }
             }

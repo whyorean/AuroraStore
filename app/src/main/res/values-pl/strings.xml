@@ -211,7 +211,6 @@
     <string name="pref_common_extra">Dodatkowe</string>
     <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
     <string name="pref_ui_no_for_you_desc">Wyświetl strony Dla Ciebie na ekranie głównym</string>
-    <string name="pref_ui_similar_apps_desc">Wyświetl grupy podobnych i powiązanych na stronie szczegółów aplikacji</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną kartę</string>
     <string name="pref_ui_layout">Układ</string>

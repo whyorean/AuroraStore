@@ -212,7 +212,6 @@
     <string name="toast_manual_unavailable">要求したバージョン番号は利用できません。</string>
     <string name="toast_manual_available">おめでとう！要求したバージョンコードが利用できます。ダウンロード中。</string>
     <string name="title_manual_download">手動ダウンロード</string>
-    <string name="pref_ui_similar_apps_desc">類似のアプリをアプリ詳細ページに表示する</string>
     <string name="pref_ui_similar_apps">類似のアプリ</string>
     <string name="pref_ui_no_for_you_desc">ホーム画面におすすめページを表示する</string>
     <string name="pref_ui_no_for_you">おすすめページ</string>

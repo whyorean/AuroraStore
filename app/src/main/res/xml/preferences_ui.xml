@@ -49,11 +49,4 @@
         app:key="PREFERENCE_FOR_YOU"
         app:summary="@string/pref_ui_no_for_you_desc"
         app:title="@string/pref_ui_no_for_you" />
-
-    <SwitchPreferenceCompat
-        app:defaultValue="false"
-        app:iconSpaceReserved="false"
-        app:key="PREFERENCE_SIMILAR"
-        app:summary="@string/pref_ui_similar_apps_desc"
-        app:title="@string/pref_ui_similar_apps" />
 </androidx.preference.PreferenceScreen>

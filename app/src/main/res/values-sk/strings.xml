@@ -140,7 +140,6 @@
     <string name="pref_install_mode_shizuku">Shizuku inštalátor</string>
     <string name="pref_install_mode_session">Inštalátor relácie</string>
     <string name="pref_vending_version_device">Predvolené (z konfigurácie zariadenia)</string>
-    <string name="pref_ui_similar_apps_desc">Zobraziť podobné a súvisiace skupiny na stránke podrobností aplikácie</string>
     <string name="pref_updates_incompatible">Nekompatibilné aktualizácie</string>
     <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré môžu zlyhať pri nštalovaní</string>
     <string name="pref_aurora_only">Iba aplikácie Aurora obchod</string>

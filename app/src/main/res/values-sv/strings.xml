@@ -202,7 +202,6 @@
     <string name="toast_export_failed">Kunde inte exportera enhetens konfiguration</string>
     <string name="toast_export_success">Enhetens konfiguration exporterades</string>
     <string name="toast_apk_blacklisted">Svartlistad</string>
-    <string name="pref_ui_similar_apps_desc">Visa liknande och relaterade klustrar på appens detaljsida</string>
     <string name="onboarding_permission_esm">Hanterare av externt lagringsutrymme</string>
     <string name="details_no_permission">Inga behörigheter</string>
     <string name="action_pending">Avvaktande</string>

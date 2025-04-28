@@ -207,7 +207,6 @@
     <string name="toast_clipboard_copied">Copiat în clipboard</string>
     <string name="pref_install_mode_session">Instalator sesiune</string>
     <string name="pref_install_mode_title">Metoda de instalare</string>
-    <string name="pref_ui_similar_apps_desc">Afișare grupuri similare și asociate pe pagina de detalii a aplicației</string>
     <string name="pref_network_title">Rețea</string>
     <string name="session_good">Vai! Toate bune.</string>
     <string name="title_purchase_history">Istoricul achizițiilor</string>

@@ -18,6 +18,8 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,26 +36,38 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import androidx.window.core.layout.WindowWidthSizeClass
+import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.details.ReviewComposable
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.aurora.store.viewmodel.review.DetailsReviewViewModel
 import kotlinx.coroutines.flow.flowOf
 
 @Composable
 fun DetailsReviewScreen(
     onNavigateUp: () -> Unit,
-    viewModel: AppDetailsViewModel = hiltViewModel()
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(),
+    detailsReviewViewModel: DetailsReviewViewModel = hiltViewModel { factory: DetailsReviewViewModel.Factory ->
+        factory.create(appDetailsViewModel.app.value!!.packageName)
+    },
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
-    val app by viewModel.app.collectAsStateWithLifecycle()
-    val reviews = viewModel.reviews.collectAsLazyPagingItems()
+    val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
+    val reviews = detailsReviewViewModel.reviews.collectAsLazyPagingItems()
+
+    val topAppBarTitle = when (windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass) {
+        WindowWidthSizeClass.COMPACT -> app!!.displayName
+        else -> stringResource(R.string.details_ratings)
+    }
 
     ScreenContent(
-        topAppBarTitle = app!!.displayName,
+        topAppBarTitle = topAppBarTitle,
         reviews = reviews,
         onNavigateUp = onNavigateUp,
-        onFilter = { filter -> viewModel.fetchReviews(filter) }
+        onFilter = { filter -> detailsReviewViewModel.fetchReviews(filter) }
     )
 }
 
@@ -62,12 +76,17 @@ private fun ScreenContent(
     topAppBarTitle: String? = null,
     onNavigateUp: () -> Unit = {},
     reviews: LazyPagingItems<Review>,
-    onFilter: (filter: Review.Filter) -> Unit = {}
+    onFilter: (filter: Review.Filter) -> Unit = {},
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(title = topAppBarTitle, onNavigateUp = onNavigateUp)
+            TopAppBarComposable(
+                title = topAppBarTitle,
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
+                onNavigateUp = onNavigateUp
+            )
         }
     ) { paddingValues ->
         Column(
@@ -90,7 +109,7 @@ private fun ScreenContent(
                             count = reviews.itemCount,
                             key = reviews.itemKey { it.commentId }
                         ) { index ->
-                            ReviewComposable(review = reviews[index]!!)
+                            reviews[index]?.let { review -> ReviewComposable(review = review) }
                         }
                     }
                 }

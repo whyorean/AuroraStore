@@ -216,7 +216,6 @@
     <string name="toast_manual_unavailable">Eskatzen ari zaren bertsio kodea ez dago erabilgarri.</string>
     <string name="title_manual_download">Eskuzko deskargatzea</string>
     <string name="insecure_anonymous_apply">Ziurtatu berriro hasten duzula saioa eta berrabiarazi aplikazioa aldaketak aplikatzeko.</string>
-    <string name="pref_ui_similar_apps_desc">Erakutsi antzeko taldeak eta erlazionatuak aplikazioaren xehetasunen orrian</string>
     <string name="pref_ui_similar_apps">Antzeko aplikazioak eta erlazionatuak</string>
     <string name="pref_ui_no_for_you_desc">Erakutsi zuretzako orriak hasierako pantailan</string>
     <string name="pref_ui_no_for_you">Zuretzako orrialdeak</string>

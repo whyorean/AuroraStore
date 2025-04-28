@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -20,7 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.window.core.layout.WindowWidthSizeClass
 import com.aurora.Constants.EXODUS_REPORT_URL
+import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.browse
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -30,20 +34,31 @@ import com.aurora.store.compose.composables.details.ExodusComposable
 import com.aurora.store.compose.composables.preview.AppPreviewProvider
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.aurora.store.viewmodel.details.DetailsExodusViewModel
 
 @Composable
 fun DetailsExodusScreen(
     onNavigateUp: () -> Unit,
-    viewModel: AppDetailsViewModel = hiltViewModel()
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(),
+    detailsExodusViewModel: DetailsExodusViewModel = hiltViewModel { factory: DetailsExodusViewModel.Factory ->
+        factory.create(appDetailsViewModel.exodusReport.value!!)
+    },
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
-    val app by viewModel.app.collectAsStateWithLifecycle()
-    val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
+    val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
+    val exodusReport by appDetailsViewModel.exodusReport.collectAsStateWithLifecycle()
+    val trackers by detailsExodusViewModel.trackers.collectAsStateWithLifecycle()
+
+    val topAppBarTitle = when (windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass) {
+        WindowWidthSizeClass.COMPACT -> app!!.displayName
+        else -> stringResource(R.string.details_privacy)
+    }
 
     ScreenContent(
-        topAppBarTitle = app!!.displayName,
+        topAppBarTitle = topAppBarTitle,
         id = exodusReport!!.id,
         version = exodusReport!!.version,
-        trackers = viewModel.getExodusTrackersFromReport(),
+        trackers = trackers,
         onNavigateUp = onNavigateUp,
     )
 }
@@ -55,12 +70,17 @@ private fun ScreenContent(
     version: String = String(),
     trackers: List<ExodusTracker> = emptyList(),
     onNavigateUp: () -> Unit = {},
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val context = LocalContext.current
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(title = topAppBarTitle, onNavigateUp = onNavigateUp)
+            TopAppBarComposable(
+                title = topAppBarTitle,
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
+                onNavigateUp = onNavigateUp
+            )
         }
     ) { paddingValues ->
         LazyColumn(

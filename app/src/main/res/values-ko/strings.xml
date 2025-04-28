@@ -207,7 +207,6 @@
     <string name="title_apps">앱스</string>
     <string name="title_app_settings">앱 설정</string>
     <string name="purchase_failed">다운로드 실패됨</string>
-    <string name="pref_ui_similar_apps_desc">앱 세부 페이지에서 유사한 및 관련 클러스터 표시</string>
     <string name="action_request_analysis">새 분석 요청</string>
     <string name="action_home_screen">홈 화면에 추가</string>
     <string name="download_clear_finished">완료건 지우기</string>

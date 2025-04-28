@@ -32,17 +32,32 @@ sealed class Screen(
     data object Blacklist : Screen(label = R.string.title_blacklist_manager)
 
     @Serializable
+    data class DevProfile(val developerId: String): Screen()
+
+    @Serializable
     data class AppDetails(val packageName: String) : Screen()
 
+    /**
+     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
+     */
     @Serializable
     data object DetailsMore : Screen()
 
+    /**
+     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
+     */
     @Serializable
     data class DetailsScreenshot(val index: Int) : Screen()
 
+    /**
+     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
+     */
     @Serializable
     data object DetailsExodus : Screen()
 
+    /**
+     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
+     */
     @Serializable
     data object DetailsReview : Screen()
 }

@@ -215,7 +215,6 @@
     <string name="toast_manual_unavailable">Кôд верзије који тражите није доступан.</string>
     <string name="title_manual_download">Ручно преузимање</string>
     <string name="insecure_anonymous_apply">Обавезно се поново пријавите и поново покрените апликацију да бисте применили промене.</string>
-    <string name="pref_ui_similar_apps_desc">Прикажите сличне и сродне скупове на страници с детаљима о апликацији</string>
     <string name="pref_ui_similar_apps">Сличне и сродне апликације</string>
     <string name="pref_ui_no_for_you_desc">Прикажите странице за вас на почетном екрану</string>
     <string name="pref_ui_no_for_you">Странице за вас</string>

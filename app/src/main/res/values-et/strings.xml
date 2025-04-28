@@ -201,7 +201,6 @@
     <string name="notification_channel_updates">Uuenduste märguanded</string>
     <string name="permissions_denied">Vajalikud load on keelatud. Toimingu jätkamiseks luba need</string>
     <string name="pref_updates_auto">Automaatsed uuendused</string>
-    <string name="pref_ui_similar_apps_desc">Kuva rakenduse üksikasjade lehel sarnaseid ja seotud rakendusi</string>
     <string name="title_manual_download">Käsitsi allalaadimine</string>
     <string name="toast_clipboard_copied">Kopeeriti lõikelauale</string>
     <string name="toast_manual_available">Õnnitlused, taotletud versioonikood on saadaval, laadime alla.</string>

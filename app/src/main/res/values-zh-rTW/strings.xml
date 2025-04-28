@@ -116,7 +116,6 @@
     <string name="purchase_unsupported">尚未支援該應用程式</string>
     <string name="purchase_invalid">尚未購買該應用程式</string>
     <string name="purchase_failed">下載失敗</string>
-    <string name="pref_ui_similar_apps_desc">在詳細說明頁面顯示「相似及相關」</string>
     <string name="pref_ui_similar_apps">相似及相關的程式</string>
     <string name="pref_ui_no_for_you_desc">在首頁顯示「為你精選」頁面</string>
     <string name="pref_ui_no_for_you">為你精選頁面</string>

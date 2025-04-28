@@ -211,7 +211,6 @@
     <string name="toast_manual_available">Čestitamo, traženi kod verzije je dostupan, preuzima se.</string>
     <string name="toast_manual_unavailable">Zatraženi kod verzije nije dostupan.</string>
     <string name="title_manual_download">Ručno preuzimanje</string>
-    <string name="pref_ui_similar_apps_desc">Prikaži slične i srodne skupove podataka na stranici detalja aplikacije</string>
     <string name="pref_ui_similar_apps">Slične i srodne aplikacije</string>
     <string name="pref_ui_no_for_you_desc">Prikaži „Za tvoje stranice” na početnom ekranu</string>
     <string name="pref_ui_no_for_you">Za tvoje stranice</string>

@@ -30,7 +30,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
-import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_STYLE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -57,7 +56,6 @@ class OnboardingFragment : BaseFlavouredOnboardingFragment() {
         save(PREFERENCE_THEME_STYLE, 0)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
-        save(PREFERENCE_SIMILAR, true)
 
         /*Installer*/
         save(PREFERENCE_AUTO_DELETE, true)

@@ -55,7 +55,6 @@
     <string name="purchase_unsupported">ਐਪ ਸਪੋਰਟਡ ਨਹੀਂ</string>
     <string name="purchase_invalid">ਇਹ ਐਪ ਅਜੇ ਤੁਹਾਡੇ ਵਲੋਂ ਖਰੀਦਿਆ ਨਹੀਂ ਗਿਆ</string>
     <string name="purchase_failed">ਡਾਊਨਲੋਡ ਫੇਲ੍ਹ</string>
-    <string name="pref_ui_similar_apps_desc">ਐਪ ਜਾਣਕਾਰੀ ਵਾਲੇ ਪੇਜ ਤੇ ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ ਵਾਲਾ ਖ਼ਾਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_similar_apps">ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ</string>
     <string name="pref_ui_no_for_you_desc">ਖਾਸ ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ ਵਾਲਾ ਪੰਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_no_for_you">ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ</string>
