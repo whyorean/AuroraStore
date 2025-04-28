@@ -176,7 +176,6 @@
     <string name="pref_ui_similar_apps">Aplicacions similars i relacionades</string>
     <string name="purchase_unsupported">Aplicació no compatible</string>
     <string name="purchase_not_found">No s\'ha trobat l\'aplicació</string>
-    <string name="pref_ui_similar_apps_desc">Mostrar grups similars i relacionats a la pàgina detalls de l\'aplicació</string>
     <string name="purchase_failed">Error en descarregar</string>
     <string name="title_blacklist_manager">Gestor de llistes negres</string>
     <string name="pref_ui_no_for_you_desc">Visualitzar les Pàgines per a tu a la pantalla d\'inici</string>

@@ -211,7 +211,6 @@
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
     <string name="toast_manual_unavailable">O código de versão que você solicitou não está disponível.</string>
     <string name="title_manual_download">Baixar manualmente</string>
-    <string name="pref_ui_similar_apps_desc">Exibir apps semelhantes e relacionados na página de detalhes do app</string>
     <string name="pref_ui_no_for_you_desc">Exibir páginas de recomendação na tela inicial</string>
     <string name="pref_network_title">Rede</string>
     <string name="details_no_app_match">Não há apps correspondentes</string>

@@ -187,7 +187,6 @@
     <string name="toast_developer_setting_failed">Skru på utviklingsinnstillingene fra enhetsinnstillingene for å åpne dem.</string>
     <string name="toast_page_unavailable">Utforskningssiden er utilgjengelig</string>
     <string name="toast_spoof_applied">Enhetslureri i bruk.</string>
-    <string name="pref_ui_similar_apps_desc">Vis lignende og relaterte klynger på appdetaljsiden</string>
     <string name="pref_ui_no_for_you_desc">Vis For You-sider på startskjermen</string>
     <string name="installer_service_misconfigured">Sett opp Aurora-tjenester og innvilg alle tilganger først.</string>
     <string name="title_spoof_manager">Lureri-håndterer</string>

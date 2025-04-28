@@ -207,7 +207,6 @@
     <string name="pref_install_mode_session">מתקין מערכת</string>
     <string name="pref_ui_layout_tab">בחר עמוד ברירת מחדל</string>
     <string name="pref_ui_no_for_you_desc">הצג את \"בשבילך\" במסך הבית</string>
-    <string name="pref_ui_similar_apps_desc">יישומים דומים וקשורים במסך פרטי היישום</string>
     <string name="title_spoof_manager">מנהל הזיוף</string>
     <string name="details_beta_description">אתה תראה תכונות חדשות ובאגים לפני כולם. תן משוב למפתחים כדי לעזור להם להשתפר.</string>
     <string name="device_miui_extra">אפשרי לבחור מתקין נתיב, אבל לא תוכל להתקין התקנות מאוחדות (מפוצלות - split), אז הבחירה בידך.</string>

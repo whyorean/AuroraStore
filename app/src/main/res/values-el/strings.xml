@@ -168,7 +168,6 @@
     <string name="pref_ui_title">Προσαρμογή</string>
     <string name="pref_ui_no_for_you_desc">Εμφάνιση σελίδων για εσάς στην αρχική οθόνη</string>
     <string name="purchase_unsupported">Η εφαρμογή δεν υποστηρίζεται</string>
-    <string name="pref_ui_similar_apps_desc">Εμφάνιση παρόμοιων και σχετικών ομάδων στη σελίδα λεπτομερειών εφαρμογής</string>
     <string name="purchase_session_expired">Η συνεδρία έληξε, συνδεθείτε ξανά για να λάβετε νέα.</string>
     <string name="tab_top_paid">Κορυφαίες επί πληρωμή</string>
     <string name="title_device">Συσκευή</string>
