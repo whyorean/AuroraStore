@@ -33,9 +33,6 @@
         android:id="@+id/action_global_expandedStreamBrowseFragment"
         app:destination="@id/expandedStreamBrowseFragment" />
     <action
-        android:id="@+id/action_global_screenshotFragment"
-        app:destination="@id/screenshotFragment" />
-    <action
         android:id="@+id/action_global_devProfileFragment"
         app:destination="@id/devProfileFragment" />
     <action
@@ -160,23 +157,11 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
             app:destination="@id/devAppsFragment" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_detailsMoreFragment"
-            app:destination="@id/detailsMoreFragment" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_detailsReviewFragment"
-            app:destination="@id/detailsReviewFragment" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_detailsExodusFragment"
-            app:destination="@id/detailsExodusFragment" />
         <argument
             android:name="app"
             android:defaultValue="@null"
             app:argType="com.aurora.gplayapi.data.models.App"
             app:nullable="true" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_manualDownloadSheet"
-            app:destination="@id/manualDownloadSheet" />
         <action
             android:id="@+id/action_appDetailsFragment_to_permissionBottomSheet"
             app:destination="@id/permissionBottomSheet" />
@@ -205,17 +190,6 @@
         <argument
             android:name="expandedStreamUrl"
             app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/screenshotFragment"
-        android:name="com.aurora.store.view.ui.details.ScreenshotFragment"
-        tools:layout="@layout/fragment_screenshot">
-        <argument
-            android:name="position"
-            app:argType="integer" />
-        <argument
-            android:name="arrayOfArtwork"
-            app:argType="com.aurora.gplayapi.data.models.Artwork[]" />
     </fragment>
     <fragment
         android:id="@+id/devProfileFragment"
@@ -249,36 +223,6 @@
         <argument
             android:name="developerName"
             app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsMoreFragment"
-        android:name="com.aurora.store.view.ui.details.DetailsMoreFragment"
-        tools:layout="@layout/fragment_details_more">
-        <argument
-            android:name="app"
-            app:argType="com.aurora.gplayapi.data.models.App" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsReviewFragment"
-        android:name="com.aurora.store.view.ui.details.DetailsReviewFragment"
-        tools:layout="@layout/fragment_details_review">
-        <argument
-            android:name="displayName"
-            app:argType="string" />
-        <argument
-            android:name="packageName"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsExodusFragment"
-        android:name="com.aurora.store.view.ui.details.DetailsExodusFragment"
-        tools:layout="@layout/fragment_generic_with_toolbar">
-        <argument
-            android:name="displayName"
-            app:argType="string" />
-        <argument
-            android:name="report"
-            app:argType="com.aurora.store.data.model.Report" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -389,15 +333,6 @@
         android:name="com.aurora.store.view.ui.sheets.FilterSheet"
         android:label="FilterSheet"
         tools:layout="@layout/sheet_filter" />
-    <dialog
-        android:id="@+id/manualDownloadSheet"
-        android:name="com.aurora.store.view.ui.sheets.ManualDownloadSheet"
-        android:label="ManualDownloadSheet"
-        tools:layout="@layout/sheet_manual_download">
-        <argument
-            android:name="app"
-            app:argType="com.aurora.gplayapi.data.models.App" />
-    </dialog>
     <dialog
         android:id="@+id/permissionBottomSheet"
         android:name="com.aurora.store.view.ui.sheets.PermissionBottomSheet"

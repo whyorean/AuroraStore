@@ -111,7 +111,6 @@
     <string name="pref_ui_no_for_you">Lapas \"Tev\"</string>
     <string name="pref_ui_no_for_you_desc">Rādīt lapas \"Tev\" sākuma ekrānā</string>
     <string name="pref_ui_similar_apps">Līdzīgas un saistītas lietotnes</string>
-    <string name="pref_ui_similar_apps_desc">Rādīt līdzīgas un saistītas lietotnes</string>
     <string name="purchase_failed">Lejupielāde neizdevās</string>
     <string name="tab_top_paid">Top maksas</string>
     <string name="tab_trending">Populāri</string>

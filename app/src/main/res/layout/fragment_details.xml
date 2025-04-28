@@ -56,74 +56,57 @@
                     android:id="@+id/layout_details_app"
                     layout="@layout/layout_details_app" />
 
-                <ViewFlipper
-                    android:id="@+id/view_flipper"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/divider"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
 
-                    <RelativeLayout
+                    <include
+                        android:id="@+id/layout_detail_description"
+                        layout="@layout/layout_details_description" />
+
+                    <include
+                        android:id="@+id/layout_details_review"
+                        layout="@layout/layout_details_review" />
+
+                    <include
+                        android:id="@+id/layout_details_beta"
+                        layout="@layout/layout_details_beta" />
+
+                    <com.airbnb.epoxy.EpoxyRecyclerView
+                        android:id="@+id/epoxy_recycler_stream"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="320dp">
-
-                        <ProgressBar
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true" />
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:divider="@drawable/divider"
+                        android:clipToPadding="false"
                         android:orientation="vertical"
-                        android:showDividers="middle">
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        app:itemSpacing="@dimen/margin_small"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/view_app" />
 
-                        <include
-                            android:id="@+id/layout_detail_description"
-                            layout="@layout/layout_details_description" />
+                    <include
+                        android:id="@+id/layout_details_compatibility"
+                        layout="@layout/layout_details_compatibility" />
 
-                        <include
-                            android:id="@+id/layout_details_review"
-                            layout="@layout/layout_details_review" />
+                    <include
+                        android:id="@+id/layout_details_permissions"
+                        layout="@layout/layout_details_permissions" />
 
-                        <include
-                            android:id="@+id/layout_details_beta"
-                            layout="@layout/layout_details_beta" />
+                    <include
+                        android:id="@+id/layout_details_data_safety"
+                        layout="@layout/layout_details_data_safety" />
 
-                        <com.airbnb.epoxy.EpoxyRecyclerView
-                            android:id="@+id/epoxy_recycler_stream"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clipToPadding="false"
-                            android:orientation="vertical"
-                            android:overScrollMode="never"
-                            android:scrollbars="none"
-                            app:itemSpacing="@dimen/margin_small"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:listitem="@layout/view_app" />
+                    <include
+                        android:id="@+id/layout_details_privacy"
+                        layout="@layout/layout_details_privacy" />
 
-                        <include
-                            android:id="@+id/layout_details_compatibility"
-                            layout="@layout/layout_details_compatibility" />
-
-                        <include
-                            android:id="@+id/layout_details_permissions"
-                            layout="@layout/layout_details_permissions" />
-
-                        <include
-                            android:id="@+id/layout_details_data_safety"
-                            layout="@layout/layout_details_data_safety" />
-
-                        <include
-                            android:id="@+id/layout_details_privacy"
-                            layout="@layout/layout_details_privacy" />
-
-                        <include
-                            android:id="@+id/layout_details_dev"
-                            layout="@layout/layout_details_dev" />
-                    </LinearLayout>
-                </ViewFlipper>
+                    <include
+                        android:id="@+id/layout_details_dev"
+                        layout="@layout/layout_details_dev" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

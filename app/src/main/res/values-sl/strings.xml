@@ -272,7 +272,6 @@
     <string name="pref_filter_fdroid_title">Filtrirajte F-Droid aplikacije</string>
     <string name="pref_ui_title">Prilagajanje</string>
     <string name="pref_ui_no_for_you">Strani za vas</string>
-    <string name="pref_ui_similar_apps_desc">Prikaži podobne in sorodne gruče na strani s podrobnostmi o aplikaciji</string>
     <string name="menu">Meni</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Poiščite odgovore na pogosto zastavljena vprašanja (F.A.Q.), korake za odpravljanje težav in več</string>

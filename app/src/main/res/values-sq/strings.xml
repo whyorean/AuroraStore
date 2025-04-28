@@ -173,7 +173,6 @@
     <string name="pref_ui_no_for_you">Faqe “Për ju”</string>
     <string name="pref_ui_no_for_you_desc">Shfaq te skena e kreut faqe “Për ju”</string>
     <string name="pref_ui_similar_apps">Aplikacione të ngjashme dhe të afërta</string>
-    <string name="pref_ui_similar_apps_desc">Shfaq te faqja e hollësive të aplikacionit grumbuj të ngjashëm dhe të afërt</string>
     <string name="purchase_failed">Shkarkimi dështoi</string>
     <string name="purchase_invalid">Aplikacion jo i blerë</string>
     <string name="purchase_unsupported">Aplikacioni nuk mbulohet</string>
