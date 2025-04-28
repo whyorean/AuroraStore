@@ -1,5 +1,6 @@
 [versions]
 activity = "1.10.1"
+adaptive = "1.1.0"
 androidGradlePlugin = "8.11.0"
 androidx-hilt = "1.2.0"
 androidx-junit = "1.2.1"
@@ -45,6 +46,9 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core" }
+androidx-adaptive-core = { module = "androidx.compose.material3.adaptive:adaptive", version.ref = "adaptive" }
+androidx-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout", version.ref = "adaptive" }
+androidx-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation", version.ref = "adaptive" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidx-hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt" }
 androidx-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-junit" }

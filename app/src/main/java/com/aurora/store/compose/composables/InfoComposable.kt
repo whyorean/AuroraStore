@@ -32,6 +32,7 @@ import com.aurora.store.compose.composables.preview.AppPreviewProvider
 
 /**
  * Composable to show some information
+ * @param modifier Modifier to change the composable
  * @param title Title of the information
  * @param description Information to show
  * @param icon Optional icon representing the information
@@ -39,13 +40,14 @@ import com.aurora.store.compose.composables.preview.AppPreviewProvider
  */
 @Composable
 fun InfoComposable(
+    modifier: Modifier = Modifier,
     title: AnnotatedString,
     description: AnnotatedString? = null,
     @DrawableRes icon: Int? = null,
     onClick: (() -> Unit)? = null
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = { if (onClick != null) onClick() }, enabled = onClick != null)
             .padding(

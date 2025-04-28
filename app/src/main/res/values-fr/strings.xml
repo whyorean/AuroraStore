@@ -209,7 +209,6 @@
     <string name="insecure_anonymous_apply">Reconnectez-vous et redémarrez l’appli pour appliquer les changements.</string>
     <string name="pref_network_title">Mise en réseau</string>
     <string name="pref_ui_no_for_you">Pages « Pour vous »</string>
-    <string name="pref_ui_similar_apps_desc">Afficher les grappes semblables et connexes sur la page des détails de l’appli</string>
     <string name="pref_ui_similar_apps">Applis semblables et connexes</string>
     <string name="pref_ui_no_for_you_desc">Afficher les pages « Pour vous » sur l’écran d’accueil</string>
     <string name="pref_ui_layout_tab">Choisir l’onglet par défaut</string>

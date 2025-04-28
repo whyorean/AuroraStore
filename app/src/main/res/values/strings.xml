@@ -135,7 +135,6 @@
     <string name="details_data_safety_subtitle">Data privacy and security practices declared by developer</string>
     <string name="details_privacy">"Privacy"</string>
     <string name="details_ratings">"Rating and reviews"</string>
-    <string name="details_ratings_subtitle">Feedback given by other users</string>
     <string name="details_ratings_title_hint">"Review title"</string>
     <string name="details_think_this_app">"What do you think about this app?"</string>
     <string name="download_cancel_all">"Cancel all"</string>
@@ -237,7 +236,6 @@
     <string name="pref_ui_no_for_you">"For you pages"</string>
     <string name="pref_ui_no_for_you_desc">"Display For you pages on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
-    <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
     <string name="pref_updates_incompatible">Show updates that may fail</string>
     <string name="pref_updates_incompatible_desc">Display updates for incompatible or disabled apps that may fail to install</string>
     <string name="pref_aurora_only">Filter apps from other sources</string>

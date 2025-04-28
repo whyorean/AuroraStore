@@ -162,7 +162,6 @@
     <string name="purchase_unsupported">Застосунок не підтримується</string>
     <string name="purchase_invalid">Застосунок не придбано</string>
     <string name="purchase_failed">Не вдалося завантажити</string>
-    <string name="pref_ui_similar_apps_desc">Показувати групи подібних та пов\'язаних застосунків на сторінці відомостей про застосунок</string>
     <string name="pref_ui_similar_apps">Подібні та пов’язані застосунки</string>
     <string name="pref_ui_no_for_you_desc">Показувати сторінки для вас на головному екрані</string>
     <string name="pref_ui_no_for_you">Сторінки Для вас</string>
