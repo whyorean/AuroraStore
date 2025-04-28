@@ -216,7 +216,6 @@
     <string name="toast_manual_unavailable">Koda guhertoya ku tu dixwazî tune ye.</string>
     <string name="title_manual_download">Bi destan daxe</string>
     <string name="insecure_anonymous_apply">Ji bo sepandina guhertinan zanibe be ku tu ji nû ve têketiye û sepanê ji nû ve daye destpêkirin.</string>
-    <string name="pref_ui_similar_apps_desc">Komên wekhev û têkildar li ser rûpela hûrgiliyên sepanê nîşan bide</string>
     <string name="pref_ui_similar_apps">Sepanên wekhev û têkildar</string>
     <string name="pref_ui_no_for_you_desc">Rûpelên Bo Te li ser dîmendera malê rê bide</string>
     <string name="pref_ui_no_for_you">Rûpelên Bo Te</string>
