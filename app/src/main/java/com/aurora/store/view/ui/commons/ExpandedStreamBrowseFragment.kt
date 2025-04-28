@@ -24,15 +24,11 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.airbnb.epoxy.EpoxyModel
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.groups.CarouselHorizontalModel_
 import com.aurora.store.view.epoxy.views.AppProgressViewModel_
 import com.aurora.store.view.epoxy.views.app.AppListViewModel_
-import com.aurora.store.view.epoxy.views.details.MiniScreenshotView
-import com.aurora.store.view.epoxy.views.details.MiniScreenshotViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.viewmodel.browse.ExpandedStreamBrowseViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -92,30 +88,6 @@ class ExpandedStreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBind
                 }
             } else {
                 streamCluster.clusterAppList.forEach {
-                    val screenshotsViewModels = mutableListOf<EpoxyModel<*>>()
-
-                    for ((position, artwork) in it.screenshots.withIndex()) {
-                        screenshotsViewModels.add(
-                            MiniScreenshotViewModel_()
-                                .id(artwork.url)
-                                .position(position)
-                                .artwork(artwork)
-                                .callback(object : MiniScreenshotView.ScreenshotCallback {
-                                    override fun onClick(position: Int) {
-                                        openScreenshotFragment(it, position)
-                                    }
-                                })
-                        )
-                    }
-
-                    if (screenshotsViewModels.isNotEmpty()) {
-                        add(
-                            CarouselHorizontalModel_()
-                                .id("${it.id}_screenshots")
-                                .models(screenshotsViewModels)
-                        )
-                    }
-
                     add(
                         AppListViewModel_()
                             .id(it.packageName.hashCode())

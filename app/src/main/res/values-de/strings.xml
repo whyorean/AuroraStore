@@ -208,7 +208,6 @@
     <string name="toast_purchase_blocked">App-Käufe sind für anonyme Konten nicht verfügbar.</string>
     <string name="insecure_anonymous_apply">Bitte neu anmelden und die App neu starten, um die Änderungen zu übernehmen.</string>
     <string name="pref_network_title">Netzwerk</string>
-    <string name="pref_ui_similar_apps_desc">Ähnliche und verwandte Apps in der App-Detailansicht anzeigen</string>
     <string name="pref_ui_similar_apps">Ähnliche Apps</string>
     <string name="pref_ui_no_for_you_desc">„Für dich“-Tab auf der Startseite anzeigen</string>
     <string name="pref_ui_no_for_you">„Für dich“-Tab</string>

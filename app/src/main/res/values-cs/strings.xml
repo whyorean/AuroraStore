@@ -51,7 +51,6 @@
     <string name="purchase_unsupported">Aplikace není kompatibilní</string>
     <string name="purchase_invalid">Aplikace nebyla zakoupena</string>
     <string name="purchase_failed">Stažení se nezdařilo</string>
-    <string name="pref_ui_similar_apps_desc">Zobrazit podobné a související skupiny na stránce s detaily aplikace</string>
     <string name="pref_ui_similar_apps">Podobné a související aplikace</string>
     <string name="pref_ui_no_for_you_desc">Zobrazit stránky pro vás na domovské obrazovce</string>
     <string name="pref_ui_no_for_you">Stránky pro vás</string>

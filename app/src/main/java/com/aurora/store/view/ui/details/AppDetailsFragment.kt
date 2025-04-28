@@ -61,7 +61,6 @@ import com.aurora.store.AppStreamStash
 import com.aurora.store.AuroraApp
 import com.aurora.store.MainActivity
 import com.aurora.store.R
-import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.Event
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -74,14 +73,11 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
-import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
-import com.aurora.store.view.epoxy.views.details.ScreenshotView
-import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
@@ -111,8 +107,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private val isExtendedUpdateEnabled: Boolean
         get() = Preferences.getBoolean(requireContext(), PREFERENCE_UPDATES_EXTENDED)
-    private val showSimilarApps: Boolean
-        get() = Preferences.getBoolean(requireContext(), PREFERENCE_SIMILAR)
 
     private fun onEvent(event: Event) {
         when (event) {
@@ -125,20 +119,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             is InstallerEvent.Uninstalled -> {
                 if (app.packageName == event.packageName) {
                     checkAndSetupInstall()
-                }
-            }
-
-            is BusEvent.ManualDownload -> {
-                if (app.packageName == event.packageName) {
-                    val requestedApp = app.copy(
-                        versionCode = event.versionCode,
-                        dependencies = app.dependencies.copy(
-                            dependentLibraries = app.dependencies.dependentLibraries.onEach { lib ->
-                                lib.versionCode = event.versionCode
-                            }
-                        )
-                    )
-                    purchase(requestedApp)
                 }
             }
 
@@ -239,16 +219,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         )
                         text =
                             "${report.trackers.size} ${getString(R.string.exodus_substring)} ${report.version}"
-                    }
-
-                    binding.layoutDetailsPrivacy.headerPrivacy.addClickListener {
-                        findNavController().navigate(
-                            AppDetailsFragmentDirections
-                                .actionAppDetailsFragmentToDetailsExodusFragment(
-                                    app.displayName,
-                                    report
-                                )
-                        )
                     }
                 } else {
                     binding.layoutDetailsPrivacy.txtStatus.apply {
@@ -363,13 +333,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     R.id.action_uninstall -> {
                         AppInstaller.uninstall(requireContext(), app.packageName)
-                    }
-
-                    R.id.menu_download_manual -> {
-                        findNavController().navigate(
-                            AppDetailsFragmentDirections
-                                .actionAppDetailsFragmentToManualDownloadSheet(app)
-                        )
                     }
 
                     R.id.menu_app_settings -> {
@@ -618,16 +581,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     purchase(app)
                 }
             }
-
-            binding.layoutDetailsApp.btnSecondaryAction.apply {
-                text = getString(R.string.title_manual_download)
-                setOnClickListener {
-                    findNavController().navigate(
-                        AppDetailsFragmentDirections
-                            .actionAppDetailsFragmentToManualDownloadSheet(app)
-                    )
-                }
-            }
         }
 
         // Lay out the toolbar again
@@ -653,7 +606,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun updateExtraDetails(app: App) {
-        binding.viewFlipper.displayedChild = 1
 
         updateAppDescription(app)
         updateAppRatingAndReviews(app)
@@ -671,10 +623,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
 
             updateBetaSubscription(app)
-        }
-
-        if (showSimilarApps) {
-            updateAppStream(app)
         }
 
         checkAndSetupInstall()
@@ -708,45 +656,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     )
                 }
             }
-
-            headerDescription.addClickListener {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsMoreFragment(app)
-                )
-            }
-
-            epoxyRecycler.withModels {
-                setFilterDuplicates(true)
-                var position = 0
-                app.screenshots
-                    //.sortedWith { o1, o2 -> o2.height.compareTo(o1.height) }
-                    .forEach { artwork ->
-                        add(
-                            ScreenshotViewModel_()
-                                .id(artwork.url)
-                                .artwork(artwork)
-                                .position(position++)
-                                .callback(object : ScreenshotView.ScreenshotCallback {
-                                    override fun onClick(position: Int) {
-                                        openScreenshotFragment(app, position)
-                                    }
-                                })
-                        )
-                    }
-            }
         }
     }
 
     private fun updateAppRatingAndReviews(app: App) {
         binding.layoutDetailsReview.apply {
-            headerRatingReviews.addClickListener {
-                findNavController().navigate(
-                    AppDetailsFragmentDirections.actionAppDetailsFragmentToDetailsReviewFragment(
-                        app.displayName,
-                        app.packageName
-                    )
-                )
-            }
 
             var totalStars = 0L
             totalStars += app.rating.oneStar
@@ -834,15 +748,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     imgBeta.load(betaProgram.artwork.url) {
 
-                    }
-
-                    btnBetaAction.setOnClickListener {
-                        btnBetaAction.text = getString(R.string.action_pending)
-                        btnBetaAction.isEnabled = false
-                        viewModel.fetchTestingProgramStatus(
-                            app.packageName,
-                            !betaProgram.isSubscribed
-                        )
                     }
                 } else {
                     root.hide()
@@ -953,7 +858,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun updateCompatibilityInfo() {
         if (app.dependencies.dependentPackages.contains(PackageUtil.PACKAGE_NAME_GMS)) {
-            viewModel.fetchPlexusReport(app.packageName)
 
             binding.layoutDetailsCompatibility.txtGmsDependency.apply {
                 title = getString(R.string.details_compatibility_gms_required_title)
