@@ -79,7 +79,7 @@
     <string name="details_ratings">Vērtējumi un atsauksmes</string>
     <string name="download_cancel_all">Pārtraukt visas</string>
     <string name="download_canceled">Pārtraukts</string>
-    <string name="download_completed">Lejupielādēte pabeigta</string>
+    <string name="download_completed">Lejupielāde pabeigta</string>
     <string name="download_failed">Lejupielāde neizdevās</string>
     <string name="download_force_clear_all">Piespiest notīrīt visas</string>
     <string name="download_metadata">Iegūst metadatus</string>
