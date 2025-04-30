@@ -45,18 +45,20 @@ import com.aurora.store.data.room.favourite.Favourite
 
 /**
  * Composable to display a favourite app in a list
+ * @param modifier The modifier to be applied to the composable
  * @param favourite A [Favourite] app to display
  * @param onClick Callback when this composable is clicked
  * @param onClear Callback when the favourite button is clicked to remove the app from favourites
  */
 @Composable
 fun FavouriteComposable(
+    modifier: Modifier = Modifier,
     favourite: Favourite,
     onClick: () -> Unit = {},
     onClear: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(

@@ -40,14 +40,15 @@ import com.aurora.store.util.PackageUtil
 
 /**
  * Composable for displaying minimal app details in a vertical-scrollable list
+ * @param modifier The modifier to be applied to the composable
  * @param app [App] to display
  * @param onClick Callback when the composable is clicked
  * @see AppComposable
  */
 @Composable
-fun AppListComposable(app: App, onClick: () -> Unit = {}) {
+fun AppListComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(
