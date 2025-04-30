@@ -37,16 +37,17 @@ import com.aurora.store.compose.composables.preview.coilPreviewProvider
 
 /**
  * Composable for displaying minimal app details in a horizontal-scrollable list
+ * @param modifier The modifier to be applied to the composable
  * @param app [App] to display
  * @param onClick Callback when the composable is clicked
  * @see AppListComposable
  */
 @Composable
-fun AppComposable(app: App, onClick: () -> Unit = {}) {
+fun AppComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
     val context = LocalContext.current
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .width(dimensionResource(R.dimen.icon_size_cluster))
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_xsmall))

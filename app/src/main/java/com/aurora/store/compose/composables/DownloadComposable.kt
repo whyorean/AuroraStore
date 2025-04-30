@@ -5,7 +5,6 @@
 
 package com.aurora.store.compose.composables
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,19 +43,20 @@ import com.aurora.store.util.CommonUtil.getETAString
 
 /**
  * Composable to display details of a download in a list
+ * @param modifier The modifier to be applied to the composable
  * @param download [Download] to display
  * @param onClick Callback when this composable is clicked
  * @param onLongClick Callback when this composable is long clicked
  */
 @Composable
-@OptIn(ExperimentalFoundationApi::class)
 fun DownloadComposable(
+    modifier: Modifier = Modifier,
     download: Download,
     onClick: () -> Unit = {},
     onLongClick: (() -> Unit) = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .combinedClickable(onClick = onClick, onLongClick = onLongClick)
             .padding(

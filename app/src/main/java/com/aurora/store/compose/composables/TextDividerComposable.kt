@@ -21,14 +21,15 @@ import com.aurora.store.R
 
 /**
  * Composable to display a sticky header in a list
+ * @param modifier The modifier to be applied to the composable
  * @param title Title to display
  * @see HeaderComposable
  * @see ActionHeaderComposable
  */
 @Composable
-fun TextDividerComposable(@StringRes title: Int) {
+fun TextDividerComposable(modifier: Modifier = Modifier, @StringRes title: Int) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(dimensionResource(R.dimen.padding_small))
     ) {

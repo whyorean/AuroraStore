@@ -5,7 +5,6 @@
 
 package com.aurora.store.compose.composables
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +23,7 @@ import com.aurora.store.R
 
 /**
  * Composable to display sticky header in list
+ * @param modifier The modifier to be applied to the composable
  * @param title Title to display
  * @param actionTitle Title for the action button
  * @param onAction Callback when action button is clicked
@@ -32,12 +32,13 @@ import com.aurora.store.R
  */
 @Composable
 fun ActionHeaderComposable(
+    modifier: Modifier = Modifier,
     title: String,
     actionTitle: String,
     onAction: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_medium),

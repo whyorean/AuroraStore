@@ -35,6 +35,7 @@ import com.aurora.store.R
 
 /**
  * A top app bar composable to be used with Scaffold in different Screen
+ * @param modifier The modifier to be applied to the composable
  * @param searchHint Hint to show to the user in search bar
  * @param onNavigateUp Action when user clicks the navigation icon
  * @param onSearch Callback for a search
@@ -43,6 +44,7 @@ import com.aurora.store.R
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun SearchAppBarComposable(
+    modifier: Modifier = Modifier,
     @StringRes searchHint: Int? = null,
     onNavigateUp: () -> Unit,
     onSearch: (query: String) -> Unit,
@@ -52,6 +54,7 @@ fun SearchAppBarComposable(
     var query by rememberSaveable { mutableStateOf("") }
 
     TopAppBar(
+        modifier = modifier,
         title = {
             TextField(
                 modifier = Modifier.fillMaxWidth(),

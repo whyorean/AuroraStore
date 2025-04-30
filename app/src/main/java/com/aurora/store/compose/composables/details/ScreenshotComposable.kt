@@ -30,8 +30,8 @@ import com.aurora.store.compose.composables.preview.coilPreviewProvider
 
 /**
  * Composable to display a screenshot of an app
+ * @param modifier The modifier to be applied to the composable
  * @param url URL of the screenshot
- * @param modifier Modifier for the composable
  */
 @Composable
 fun ScreenshotComposable(modifier: Modifier = Modifier, url: String) {

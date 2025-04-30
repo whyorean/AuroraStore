@@ -27,18 +27,20 @@ import com.aurora.store.data.model.InstallerInfo
 
 /**
  * Composable to display installer details in a list
+ * @param modifier The modifier to be applied to the composable
  * @param installerInfo A [InstallerInfo] object to display details
  * @param isSelected Whether this installer is selected
  * @param onClick Callback when this composable is clicked
  */
 @Composable
 fun InstallerComposable(
+    modifier: Modifier = Modifier,
     installerInfo: InstallerInfo,
     isSelected: Boolean = false,
     onClick: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),

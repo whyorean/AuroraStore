@@ -28,6 +28,7 @@ import com.aurora.store.R
 
 /**
  * Composable to display sticky header in list
+ * @param modifier The modifier to be applied to the composable
  * @param title Title to display
  * @param subtitle Optional subtitle to display
  * @param onClick Callback when this composable is clicked
@@ -35,9 +36,14 @@ import com.aurora.store.R
  * @see ActionHeaderComposable
  */
 @Composable
-fun HeaderComposable(title: String, subtitle: String? = null, onClick: (() -> Unit)? = null) {
+fun HeaderComposable(
+    modifier: Modifier = Modifier,
+    title: String,
+    subtitle: String? = null,
+    onClick: (() -> Unit)? = null
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
             .clickable(onClick = { if (onClick != null) onClick() }, enabled = onClick != null)

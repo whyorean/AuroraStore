@@ -37,12 +37,13 @@ import com.aurora.store.compose.composables.preview.coilPreviewProvider
 
 /**
  * Composable for viewing a review about an app
+ * @param modifier The modifier to be applied to the composable
  * @param review [Review] about an app
  */
 @Composable
-fun ReviewComposable(review: Review) {
+fun ReviewComposable(modifier: Modifier = Modifier, review: Review) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_medium),

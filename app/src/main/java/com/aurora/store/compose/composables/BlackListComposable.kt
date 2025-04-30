@@ -35,6 +35,7 @@ import com.aurora.store.R
 
 /**
  * Composable for displaying package details in a list for blacklisting
+ * @param modifier The modifier to be applied to the composable
  * @param icon Icon for the package
  * @param displayName User-readable name of the package
  * @param packageName Name of the package
@@ -46,6 +47,7 @@ import com.aurora.store.R
  */
 @Composable
 fun BlackListComposable(
+    modifier: Modifier = Modifier,
     icon: Bitmap,
     displayName: String,
     packageName: String,
@@ -56,7 +58,7 @@ fun BlackListComposable(
     onClick: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(enabled = isEnabled, onClick = onClick)
             .padding(

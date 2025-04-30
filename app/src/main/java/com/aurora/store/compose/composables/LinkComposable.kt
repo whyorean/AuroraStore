@@ -30,13 +30,14 @@ import com.aurora.store.data.model.Link
 
 /**
  * Composable to show link details in a list
+ * @param modifier The modifier to be applied to the composable
  * @param link [Link] to show details
  * @param onClick Callback when the composable is clicked
  */
 @Composable
-fun LinkComposable(link: Link, onClick: () -> Unit = {}) {
+fun LinkComposable(modifier: Modifier = Modifier, link: Link, onClick: () -> Unit = {}) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),
