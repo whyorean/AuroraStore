@@ -26,14 +26,20 @@ import com.aurora.store.R
 
 /**
  * Composable to display dispenser URL in a list
+ * @param modifier The modifier to be applied to the composable
  * @param url URL of the dispenser
  * @param onClick Callback when this URL is clicked
  * @param onClear Callback when the clear button is clicked
  */
 @Composable
-fun DispenserComposable(url: String, onClick: () -> Unit = {}, onClear: () -> Unit = {}) {
+fun DispenserComposable(
+    modifier: Modifier = Modifier,
+    url: String,
+    onClick: () -> Unit = {},
+    onClear: () -> Unit = {}
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),
