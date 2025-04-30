@@ -25,6 +25,7 @@ import com.aurora.store.R
 
 /**
  * Composable to display device details for spoofing in a list
+ * @param modifier The modifier to be applied to the composable
  * @param userReadableName Name of the device, obtained through `UserReadableName` property
  * @param manufacturer Name of the device manufacturer, obtained through `Build.MANUFACTURER` property
  * @param androidVersionSdk Android version on the device, obtained through `Build.VERSION.SDK_INT` property
@@ -34,6 +35,7 @@ import com.aurora.store.R
  */
 @Composable
 fun DeviceComposable(
+    modifier: Modifier = Modifier,
     userReadableName: String,
     manufacturer: String,
     androidVersionSdk: String,
@@ -42,7 +44,7 @@ fun DeviceComposable(
     onClick: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),

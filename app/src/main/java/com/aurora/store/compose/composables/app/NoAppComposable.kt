@@ -26,7 +26,7 @@ import com.aurora.store.R
 
 /**
  * Composable to show error message when no apps are available for a request
- * @param modifier Modifier for the composable
+ * @param modifier The modifier to be applied to the composable
  * @param icon Drawable for error
  * @param message Message for error
  * @param actionMessage Message to show on action button; defaults to null with button not visible
