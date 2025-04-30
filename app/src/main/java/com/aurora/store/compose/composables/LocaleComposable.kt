@@ -25,6 +25,7 @@ import java.util.Locale
 
 /**
  * Composable to display locale details in a list
+ * @param modifier The modifier to be applied to the composable
  * @param displayName Display name of the locale
  * @param displayLanguage Display name of the language in the locale
  * @param isChecked Whether the locale is checked/selected
@@ -32,13 +33,14 @@ import java.util.Locale
  */
 @Composable
 fun LocaleComposable(
+    modifier: Modifier = Modifier,
     displayName: String,
     displayLanguage: String,
     isChecked: Boolean = false,
     onClick: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),

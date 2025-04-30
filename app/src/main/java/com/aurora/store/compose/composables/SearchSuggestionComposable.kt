@@ -32,18 +32,20 @@ import com.aurora.store.R
 
 /**
  * Composable for displaying search suggestions in a list
+ * @param modifier The modifier to be applied to the composable
  * @param searchSuggestEntry A [SearchSuggestEntry] to display search suggestion
  * @param onClick Callback when this composable is clicked
  * @param onAction Callback when action button is clicked
  */
 @Composable
 fun SearchSuggestionComposable(
+    modifier: Modifier = Modifier,
     searchSuggestEntry: SearchSuggestEntry,
     onClick: () -> Unit = {},
     onAction: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_medium)),

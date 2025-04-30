@@ -23,13 +23,14 @@ import com.aurora.store.R
 
 /**
  * Composable to show a progress bar with rating for an app
+ * @param modifier The modifier to be applied to the composable
  * @param label Label of the rating, for e.g. 5
  * @param rating Current rating, for e.g. 0.3
  */
 @Composable
-fun RatingComposable(label: String, rating: Float) {
+fun RatingComposable(modifier: Modifier = Modifier, label: String, rating: Float) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = dimensionResource(R.dimen.padding_small)),
         verticalAlignment = Alignment.CenterVertically,
