@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,18 +29,23 @@ import com.aurora.store.compose.menu.items.BlacklistMenuItem
 
 /**
  * Menu for the blacklist screen
+ * @param modifier The modifier to be applied to the composable
  * @param onMenuItemClicked Callback when a menu item has been clicked
  * @see BlacklistMenuItem
  */
 @Composable
-fun BlacklistMenu(onMenuItemClicked: (blacklistMenuItem: BlacklistMenuItem) -> Unit = {}) {
-    var expanded by remember { mutableStateOf(false) }
+fun BlacklistMenu(
+    modifier: Modifier = Modifier,
+    isExpanded: Boolean = false,
+    onMenuItemClicked: (blacklistMenuItem: BlacklistMenuItem) -> Unit = {}
+) {
+    var expanded by remember { mutableStateOf(isExpanded) }
     fun onClick(blacklistMenuItem: BlacklistMenuItem) {
         onMenuItemClicked(blacklistMenuItem)
         expanded = false
     }
 
-    Box {
+    Box(modifier = modifier) {
         IconButton(onClick = { expanded = true }) {
             Icon(Icons.Default.MoreVert, contentDescription = stringResource(R.string.menu))
         }
@@ -87,5 +93,5 @@ fun BlacklistMenu(onMenuItemClicked: (blacklistMenuItem: BlacklistMenuItem) -> U
 @Preview(showBackground = true)
 @Composable
 private fun BlacklistMenuPreview() {
-    BlacklistMenu()
+    BlacklistMenu(isExpanded = true)
 }
