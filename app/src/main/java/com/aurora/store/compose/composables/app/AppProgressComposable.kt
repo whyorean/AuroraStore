@@ -19,7 +19,7 @@ import com.aurora.store.R
 
 /**
  * Composable to display an indeterminate circular progress indicator
- * @param modifier Modifier for the composable
+ * @param modifier The modifier to be applied to the composable
  */
 @Composable
 fun AppProgressComposable(modifier: Modifier = Modifier) {

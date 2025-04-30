@@ -38,7 +38,7 @@ import com.aurora.store.compose.composables.preview.coilPreviewProvider
 
 /**
  * Composable to show icon for an app that can be animated to also show install progress
- * @param modifier Modifier to alter the composable
+ * @param modifier The modifier to be applied to the composable
  * @param iconUrl URL of the app icon
  * @param progress Progress to show, for e.g. download or install
  * @param inProgress Whether to show indeterminate or determinate progress bar
