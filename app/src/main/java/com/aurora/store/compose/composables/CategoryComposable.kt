@@ -32,13 +32,18 @@ import com.aurora.store.compose.composables.preview.coilPreviewProvider
 
 /**
  * Composable to show a category in a list
+ * @param modifier The modifier to be applied to the composable
  * @param category [Category] details to display
  * @param onClick Callback when this composable is clicked
  */
 @Composable
-fun CategoryComposable(category: Category, onClick: () -> Unit = {}) {
+fun CategoryComposable(
+    modifier: Modifier = Modifier,
+    category: Category,
+    onClick: () -> Unit = {}
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(dimensionResource(R.dimen.padding_small)),

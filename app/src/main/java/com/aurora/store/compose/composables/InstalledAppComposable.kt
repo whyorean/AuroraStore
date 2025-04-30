@@ -7,7 +7,6 @@ package com.aurora.store.compose.composables
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
@@ -33,6 +32,7 @@ import com.aurora.store.R
 
 /**
  * Composable for displaying installed package details in a list
+ * @param modifier The modifier to be applied to the composable
  * @param icon Icon for the package
  * @param displayName User-readable name of the package
  * @param packageName Name of the package
@@ -42,8 +42,8 @@ import com.aurora.store.R
  * @param onLongClick Callback whe composable is long clicked
  */
 @Composable
-@OptIn(ExperimentalFoundationApi::class)
 fun InstalledAppComposable(
+    modifier: Modifier = Modifier,
     icon: Bitmap,
     displayName: String,
     packageName: String,
@@ -53,7 +53,7 @@ fun InstalledAppComposable(
     onLongClick: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .combinedClickable(onClick = onClick, onLongClick = onLongClick)
             .padding(

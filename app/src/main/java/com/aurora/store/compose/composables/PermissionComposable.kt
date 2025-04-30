@@ -27,18 +27,20 @@ import com.aurora.store.data.model.PermissionType
 
 /**
  * Composable to display permission details in a list
+ * @param modifier The modifier to be applied to the composable
  * @param permission [Permission] to display
  * @param isGranted If the permission has been granted
  * @param onAction Callback when the user clicks the action button
  */
 @Composable
 fun PermissionComposable(
+    modifier: Modifier = Modifier,
     permission: Permission,
     isGranted: Boolean = false,
     onAction: () -> Unit = {}
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(dimensionResource(R.dimen.padding_small)),
         verticalAlignment = Alignment.CenterVertically,
