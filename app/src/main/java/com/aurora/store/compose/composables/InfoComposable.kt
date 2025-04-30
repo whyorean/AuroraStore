@@ -32,7 +32,7 @@ import com.aurora.store.compose.composables.preview.AppPreviewProvider
 
 /**
  * Composable to show some information
- * @param modifier Modifier to change the composable
+ * @param modifier The modifier to be applied to the composable
  * @param title Title of the information
  * @param description Information to show
  * @param icon Optional icon representing the information

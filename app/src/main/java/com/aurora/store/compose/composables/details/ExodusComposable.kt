@@ -20,11 +20,12 @@ import com.aurora.store.data.model.ExodusTracker
 
 /**
  * Composable to display details about a tracker reported by Exodus Privacy
+ * @param modifier The modifier to be applied to the composable
  * @param tracker Tracker to display details about
  */
 @Composable
-fun ExodusComposable(tracker: ExodusTracker) {
-    Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
+fun ExodusComposable(modifier: Modifier = Modifier, tracker: ExodusTracker) {
+    Column(modifier = modifier.padding(dimensionResource(R.dimen.padding_small))) {
         Text(
             text = tracker.name,
             style = MaterialTheme.typography.bodyMedium,
