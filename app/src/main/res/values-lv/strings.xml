@@ -30,7 +30,7 @@
     <string name="action_export">Izgūt</string>
     <string name="action_disable">Atspējot</string>
     <string name="action_copy_link">Ievietot saiti starpliktuvē</string>
-    <string name="action_copy">Kopēt</string>
+    <string name="action_copy">Ievietot starpliktuvē</string>
     <string name="action_close">Aizvērt</string>
     <string name="action_clear">Notīrīt</string>
     <string name="action_cancel">Atcelt</string>
@@ -106,7 +106,7 @@
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
-    <string name="onboarding_title_welcome">Sveiciens</string>
+    <string name="onboarding_title_welcome">Laipni lūdzam</string>
     <string name="pref_ui_layout_tab">Atlasīt noklusējuma cilni</string>
     <string name="pref_ui_no_for_you">Lapas \"Tev\"</string>
     <string name="pref_ui_no_for_you_desc">Rādīt lapas \"Tev\" sākuma ekrānā</string>
@@ -142,8 +142,8 @@
     <string name="title_purchase_history">Pirkumu vēsture</string>
     <string name="toast_clipboard_copied">Ievietots starpliktuvē</string>
     <string name="toast_permission_granted">Atļauja nodrošināta</string>
-    <string name="app_updater_service_notif_text">Ieslēdz fona lietotņu lejupielādi</string>
-    <string name="app_updater_service_notif_title">Lietotne lejupielādēta fonā</string>
+    <string name="app_updater_service_notif_text">Iespējo lietotņu lejupielādi fonā</string>
+    <string name="app_updater_service_notif_title">Lietotnes lejupielāde fonā</string>
     <string name="download_speed_estimating">Aprēķina</string>
     <string name="action_next">Nākamais</string>
     <string name="action_open">Atvērt</string>
@@ -161,7 +161,7 @@
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
     <string name="pref_ui_layout">Izkārtojums</string>
     <string name="pref_ui_title">Pielāgošana</string>
-    <string name="purchase_no_file">Nevarēja iegūt failus</string>
+    <string name="purchase_no_file">Nevarēja iegūt datnes</string>
     <string name="purchase_session_expired">Sesija ir beigusies, jāpiesakās no jauna, lai iegūtu jaunu sesiju.</string>
     <string name="purchase_not_found">Lietotne nav atrasta</string>
     <string name="tab_top_charts">Top sadaļas</string>
@@ -281,7 +281,7 @@
     <string name="failed_to_generate_session">Neizdevās izveidot sesiju</string>
     <string name="app_links_desc">Atļaut Aurora Store atvērt atbalstītās saites</string>
     <string name="app_links_title">Lietotņu saites</string>
-    <string name="google_play_store_desc">Google Play, zināms arī kā Google Play Store un agrāk Android Market.</string>
+    <string name="google_play_store_desc">Google Play, zināms arī kā Google Play veikals un iepriekš arī kā Android Market.</string>
     <string name="verifying_new_session">Pārbauda jauno sesiju</string>
     <string name="android_market_desc">Android Market bija tiešsaistes veikals, kas piedāvāja lietotnes, kas ir paredzētas Android ierīcēm, tas pārstāja darboties 2017. gadā.</string>
     <string name="details_ratings_title_hint">Apskata nosaukums</string>
@@ -306,7 +306,7 @@
     <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
     <string name="pref_updates_incompatible_desc">Rādīt atjauninājumus nesaderīgām vai atspējotām lietotnēm, kuru uzstādīšana var neizdoties</string>
     <string name="failed_apk_export">Neizdevās izgūt APK</string>
-    <string name="manual_download_hint">Jāievada versijas, kuru vēlies lejupielādēt, kods</string>
+    <string name="manual_download_hint">Jāievada lejupielādējamās versijas kods</string>
     <string name="faqs_subtitle">Ir jautājumi? Atrodi atbildes</string>
     <string name="source_code_title">Pirmkods</string>
     <string name="source_code_subtitle">Atklāj, kas ir iekšā</string>
@@ -327,7 +327,7 @@
     <string name="native_installer_subtitle">Nolūkā balstīts uzstādītājs, pieejams visās ierīcēs</string>
     <string name="native_installer_desc">Vispiemērotākais ierīcēm, kurās darbojas par Android 4.4 vecāka versija</string>
     <string name="am_installer_desc">Nepieciešams Lietotņu pārvaldnieks, jāizmanto adb/saknes stāvoklis, lai uzstādītu, kad ir ieslēgta miui optimizācija</string>
-    <string name="privacy_policy_title">Privātuma nosacījumi</string>
+    <string name="privacy_policy_title">Privātuma pamatnostādnes</string>
     <string name="title_more">Vairāk</string>
     <string name="manage_account">Pārvaldīt savu kontu</string>
     <string name="about_wiki_title">Viki vietne</string>
@@ -411,7 +411,7 @@
     <string name="details_compatibility_status_compatible">Saderīga: darbojas bez sarežgījumiem</string>
     <string name="details_compatibility_status_limited">Ierobežota: darbojas ar ierobežotām iespējām</string>
     <string name="details_compatibility_status_unsupported">Neatbalstīta: nedarbojas</string>
-    <string name="details_compatibility_status_unknown">Nezināma: vēl nav pārbaudīta</string>
+    <string name="details_compatibility_status_unknown">Nezināms: vēl nav pārbaudīta</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uzstādītu lietotņu</string>
     <string name="details_compatibility_no_gms">Bez Google Play pakalpojumiem</string>
     <string name="details_compatibility_gms_required_subtitle">Var būt nepieciešams uzstādīt Google īpašniecisko bibliotēku vai tās FOSS atveidojumu, piemēram, microG.</string>
@@ -427,5 +427,5 @@
     <string name="pref_updates_restrictions_metered">Tikai neuzskaitāmos tīklos</string>
     <string name="pref_updates_restrictions_idle">Kad ierīce ir dīkstāvē</string>
     <string name="pref_updates_restrictions_battery">Kad akumulators nav tukšs</string>
-    <string name="verification_failed">Lejupielādētos failus nevarēja pārbaudīt</string>
+    <string name="verification_failed">Neizdevās lejupielādēto datņu apliecināšana</string>
 </resources>
