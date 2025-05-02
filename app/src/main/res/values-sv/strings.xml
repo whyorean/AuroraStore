@@ -219,14 +219,14 @@
     <string name="pref_common_extra">Extra</string>
     <string name="pref_install_mode_am">AM-installatör</string>
     <string name="pref_install_mode_native">Inbyggt installationsprogram (Föråldrat)</string>
-    <string name="title_installer">Installationsprogram för app</string>
+    <string name="title_installer">Installationsprogram för appen</string>
     <string name="dialog_desc_native_split">Du kan inte installera medföljande (uppdelade) appar via det inbyggda installationsprogrammet. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
     <string name="spoof_apply">Säkerställ att du loggar in igen för att verkställa imitationen</string>
     <string name="title_blacklist_manager">Hanterare av svartlista</string>
     <string name="app_updater_service_notif_title">Hämta appen i bakgrunden</string>
     <string name="toast_permission_granted">Behörigheten godkändes</string>
     <string name="toast_aas_token_failed">Kunde inte generera AAS-symbol</string>
-    <string name="title_spoof_manager">Hanterare av imitering</string>
+    <string name="title_spoof_manager">Hanterare av spoofing</string>
     <string name="toast_developer_setting_failed">Aktivera utvecklingsinställningarna från enhetens inställningar för att öppna dem.</string>
     <string name="toast_spoof_applied">Enhetsförfalskning tillämpades.</string>
     <string name="app_updater_service_notif_text">Aktiverar app-hämtningar i bakgrunden</string>
@@ -291,7 +291,7 @@
     <string name="toast_proxy_invalid">Ogiltig URL för proxy, kontrollera formatet!</string>
     <string name="pref_aurora_only_desc">Visa endast installerade appar från Aurora-butiken i Uppdateringar och Installerade appar</string>
     <string name="toast_proxy_success">Inställningen av proxy lyckades</string>
-    <string name="title_app_settings">Inställningar för app</string>
+    <string name="title_app_settings">Inställningar för appen</string>
     <string name="pref_updates_check_frequency">Automatisk uppdateringsfrekvens</string>
     <string name="toast_proxy_failed">Inställningen av proxy\'n misslyckades</string>
     <string name="pref_vending_version_device">Standard (från enhetskonfiguration)</string>
@@ -301,11 +301,11 @@
     <string name="pref_updates_auto_desc">Konfigurera beteende för automatiska uppdateringar</string>
     <string name="pref_updates_auto_notify">Kontrollera &amp; meddela om tillgängliga uppdateringar</string>
     <string name="pref_updates_auto_install">Kontrollera &amp; installera tillgängliga uppdateringar automatiskt</string>
-    <string name="pref_updates_auto">Uppdatera appar automatiskt</string>
+    <string name="pref_updates_auto">Automatiska uppdateringar</string>
     <string name="pref_updates_auto_off">Uppdatera inte alla appar automatiskt</string>
     <string name="action_request_analysis">Begär ny analys</string>
     <string name="failed_apk_export">Misslyckades med att exportera APKs</string>
-    <string name="download_clear_finished">Rensningen slutfördes</string>
+    <string name="download_clear_finished">Rensningen misslyckades</string>
     <string name="pref_updates_incompatible">Ej kompatibla uppdateringar</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Hitta svar till frekvent ställda frågor (F.A.Q), steg för felsökning och mer</string>
@@ -363,4 +363,12 @@
     <string name="toast_permission_installer_required">Du behöver godkänna behörighet för installationsprogrammet först</string>
     <string name="item_required">Krävs</string>
     <string name="item_optional">Valfritt</string>
+    <string name="set">Ställ in</string>
+    <string name="notification_channel_account">Konto-relaterad avisering</string>
+    <string name="filter_latest">Senaste</string>
+    <string name="details_compatibility_title">Kompabilitet</string>
+    <string name="default_spoof">Standard</string>
+    <string name="available_spoof">Tillgänglig</string>
+    <string name="disable">Inaktivera</string>
+    <string name="status_verifying">Bekräftar</string>
 </resources>
