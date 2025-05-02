@@ -6,35 +6,14 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
-import android.text.format.Formatter
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
-import androidx.compose.material3.adaptive.WindowAdaptiveInfo
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.SupportingPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.NavigableSupportingPaneScaffold
@@ -47,61 +26,48 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.fromHtml
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
-import androidx.compose.ui.util.fastForEach
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.window.core.layout.WindowWidthSizeClass
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
-import com.aurora.extensions.bodyVerySmall
-import com.aurora.extensions.browse
-import com.aurora.extensions.copyToClipBoard
-import com.aurora.extensions.mailTo
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Artwork
-import com.aurora.gplayapi.data.models.Rating
-import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.InfoComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
-import com.aurora.store.compose.composables.app.AppListComposable
 import com.aurora.store.compose.composables.app.AppProgressComposable
-import com.aurora.store.compose.composables.app.AppTagComposable
 import com.aurora.store.compose.composables.app.NoAppComposable
-import com.aurora.store.compose.composables.details.RatingComposable
-import com.aurora.store.compose.composables.details.ScreenshotComposable
 import com.aurora.store.compose.composables.preview.AppPreviewProvider
 import com.aurora.store.compose.composables.preview.coilPreviewProvider
 import com.aurora.store.compose.navigation.Screen
+import com.aurora.store.compose.ui.details.components.AppActions
+import com.aurora.store.compose.ui.details.components.AppChangelog
+import com.aurora.store.compose.ui.details.components.AppCompatibility
+import com.aurora.store.compose.ui.details.components.AppDataSafety
+import com.aurora.store.compose.ui.details.components.AppDetails
+import com.aurora.store.compose.ui.details.components.AppDeveloperDetails
+import com.aurora.store.compose.ui.details.components.AppPrivacy
+import com.aurora.store.compose.ui.details.components.AppReviews
+import com.aurora.store.compose.ui.details.components.AppScreenshots
+import com.aurora.store.compose.ui.details.components.AppTags
+import com.aurora.store.compose.ui.details.components.AppTesting
 import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.compose.ui.dialogs.ManualDownloadDialog
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.PACKAGE_NAME_GMS
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.launch
-import java.util.Locale
-import kotlin.random.Random
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @Composable
@@ -119,7 +85,6 @@ fun AppDetailsScreen(
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val download by viewModel.download.collectAsStateWithLifecycle()
     val installProgress by viewModel.installProgress.collectAsStateWithLifecycle()
-    val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
 
     var shouldShowManualDownloadDialog by rememberSaveable { mutableStateOf(false) }
 
@@ -158,7 +123,6 @@ fun AppDetailsScreen(
                     ScreenContentApp(
                         app = this,
                         isAnonymous = viewModel.authProvider.isAnonymous,
-                        suggestions = suggestions,
                         download = download,
                         installProgress = installProgress,
                         plexusScores = plexusScores,
@@ -229,11 +193,10 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
 private fun ScreenContentApp(
     app: App,
     isAnonymous: Boolean = true,
-    suggestions: List<App> = emptyList(),
     download: Download? = null,
     installProgress: Float? = null,
     plexusScores: Scores? = null,
-    dataSafetyReport: DataSafetyReport? = null,
+    dataSafetyReport: com.aurora.gplayapi.data.models.datasafety.Report? = null,
     exodusReport: Report? = null,
     hasValidUpdate: Boolean = false,
     onNavigateUp: () -> Unit = {},
@@ -289,9 +252,9 @@ private fun ScreenContentApp(
             }
         },
         supportingPane = {
-            AnimatedPane(modifier = Modifier.safeContentPadding()) {
-                ScreenContentAppSupportingPane(
-                    suggestions = suggestions,
+            AnimatedPane {
+                DetailsSuggestions(
+                    onNavigateUp = null,
                     onNavigateToAppDetails = onNavigateToAppDetails
                 )
             }
@@ -428,7 +391,7 @@ private fun ScreenContentAppMainPane(
                 app = app,
                 inProgress = isDownloading || isInstalling,
                 progress = progress,
-                onNavigateToDetailsDevApps = onNavigateToDetailsDevProfile,
+                onNavigateToDetailsDevProfile = onNavigateToDetailsDevProfile,
                 hasValidUpdate = hasValidUpdate
             )
 
@@ -443,7 +406,7 @@ private fun ScreenContentAppMainPane(
             )
 
             AppScreenshots(
-                list = app.screenshots,
+                screenshots = app.screenshots,
                 onNavigateToScreenshot = onNavigateToDetailsScreenshot
             )
 
@@ -466,7 +429,7 @@ private fun ScreenContentAppMainPane(
                 subtitle = stringResource(R.string.permissions, app.permissions.size)
             )
 
-            if (dataSafetyReport != null) AppDataSafety(dataSafetyReport = dataSafetyReport)
+            if (dataSafetyReport != null) AppDataSafety(report = dataSafetyReport)
 
             AppPrivacy(
                 report = exodusReport,
@@ -486,493 +449,6 @@ private fun ScreenContentAppMainPane(
     }
 }
 
-/**
- * Composable to display similar and related app suggestions
- */
-@Composable
-private fun ScreenContentAppSupportingPane(
-    suggestions: List<App> = emptyList(),
-    onNavigateToAppDetails: (packageName: String) -> Unit = {}
-) {
-    Scaffold(
-        topBar = { TopAppBarComposable() }
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            Row(
-                modifier = Modifier.padding(dimensionResource(R.dimen.margin_medium)),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_suggestions),
-                    contentDescription = null
-                )
-                HeaderComposable(title = stringResource(R.string.pref_ui_similar_apps))
-            }
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
-            ) {
-                items(items = suggestions, key = { item -> item.id }) { app ->
-                    AppListComposable(
-                        app = app,
-                        onClick = { onNavigateToAppDetails(app.packageName) }
-                    )
-                }
-            }
-        }
-    }
-}
-
-/**
- * Composable to display basic app details
- */
-@Composable
-private fun AppDetails(
-    app: App,
-    progress: Float = 0F,
-    inProgress: Boolean = false,
-    onNavigateToDetailsDevApps: (developerName: String) -> Unit,
-    hasValidUpdate: Boolean = false,
-) {
-    val context = LocalContext.current
-
-    Row(modifier = Modifier.fillMaxWidth()) {
-        AnimatedAppIconComposable(
-            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
-            iconUrl = app.iconArtwork.url,
-            inProgress = inProgress,
-            progress = progress
-        )
-        Column(modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small))) {
-            Text(
-                text = app.displayName,
-                style = MaterialTheme.typography.titleLarge,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                modifier = Modifier
-                    .clickable(onClick = { onNavigateToDetailsDevApps(app.developerName) }),
-                text = app.developerName,
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.primary
-            )
-            Text(
-                text = if (!hasValidUpdate) {
-                    stringResource(R.string.version, app.versionName, app.versionCode)
-                } else {
-                    stringResource(
-                        R.string.version_update,
-                        PackageUtil.getInstalledVersionName(context, app.packageName),
-                        PackageUtil.getInstalledVersionCode(context, app.packageName),
-                        app.versionName,
-                        app.versionCode
-                    )
-                },
-                style = MaterialTheme.typography.bodyVerySmall
-            )
-        }
-    }
-}
-
-/**
- * Composable to display primary and secondary actions available for the app
- */
-@Composable
-private fun AppActions(
-    primaryActionDisplayName: String,
-    secondaryActionDisplayName: String,
-    isPrimaryActionEnabled: Boolean = true,
-    isSecondaryActionEnabled: Boolean = true,
-    onPrimaryAction: () -> Unit = {},
-    onSecondaryAction: () -> Unit = {},
-    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
-    ) {
-        val buttonWidthModifier = when (windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass) {
-            WindowWidthSizeClass.COMPACT -> Modifier.weight(1F)
-            else -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
-        }
-
-        FilledTonalButton(
-            modifier = buttonWidthModifier,
-            onClick = onSecondaryAction,
-            enabled = isSecondaryActionEnabled
-        ) {
-            Text(
-                text = secondaryActionDisplayName,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-
-        Button(
-            modifier = buttonWidthModifier,
-            onClick = onPrimaryAction,
-            enabled = isPrimaryActionEnabled
-        ) {
-            Text(
-                text = primaryActionDisplayName,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-    }
-}
-
-/**
- * Composable to display app changelog
- */
-@Composable
-private fun AppChangelog(changelog: String) {
-    HeaderComposable(title = stringResource(R.string.details_changelog))
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
-            .background(color = MaterialTheme.colorScheme.secondaryContainer)
-            .padding(dimensionResource(R.dimen.padding_medium))
-    ) {
-        Text(
-            text = if (changelog.isBlank()) {
-                AnnotatedString(text = stringResource(R.string.details_changelog_unavailable))
-            } else {
-                AnnotatedString.fromHtml(htmlString = changelog)
-            },
-            style = MaterialTheme.typography.bodyMedium
-        )
-    }
-}
-
-/**
- * Composable to display tags related to the app
- */
-@Composable
-private fun AppTags(app: App) {
-    val context = LocalContext.current
-
-    val installsLabel = CommonUtil.addDiPrefix(app.installs)
-    val averageRating = if (app.labeledRating == "0.0" || app.labeledRating.isBlank()) {
-        null
-    } else {
-        app.labeledRating
-    }
-    val paidLabel = if (app.isFree) {
-        stringResource(R.string.details_free)
-    } else {
-        stringResource(R.string.details_paid)
-    }
-    val adsLabel = if (app.containsAds) {
-        stringResource(R.string.details_contains_ads)
-    } else {
-        stringResource(R.string.details_no_ads)
-    }
-
-    val tags = mapOf(
-        averageRating to R.drawable.ic_star,
-        installsLabel to R.drawable.ic_download_manager,
-        Formatter.formatShortFileSize(context, app.size) to R.drawable.ic_apk_install,
-        app.updatedOn to R.drawable.ic_updates,
-        paidLabel to R.drawable.ic_paid,
-        adsLabel to R.drawable.ic_campaign,
-    ).filterKeys { it != null }
-
-    LazyRow(
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
-    ) {
-        items(items = tags.keys.toList()) { label ->
-            AppTagComposable(label = label!!, icon = tags.getValue(label))
-        }
-    }
-}
-
-/**
- * Composable to display details of the app developer
- */
-@Composable
-private fun AppDeveloperDetails(address: String, website: String, email: String) {
-    val context = LocalContext.current
-
-    HeaderComposable(title = stringResource(R.string.details_dev_details))
-    Column {
-        if (website.isNotBlank()) {
-            InfoComposable(
-                title = AnnotatedString(text = stringResource(R.string.details_dev_website)),
-                description = AnnotatedString(text = website),
-                icon = R.drawable.ic_network,
-                onClick = { context.browse(website) }
-            )
-        }
-
-        if (email.isNotBlank()) {
-            InfoComposable(
-                title = AnnotatedString(text = stringResource(R.string.details_dev_email)),
-                description = AnnotatedString(text = email),
-                icon = R.drawable.ic_mail,
-                onClick = { context.mailTo(email) }
-            )
-        }
-
-        if (address.isNotBlank()) {
-            InfoComposable(
-                title = AnnotatedString(text = stringResource(R.string.details_dev_address)),
-                description = AnnotatedString.fromHtml(htmlString = address),
-                icon = R.drawable.ic_person_location,
-                onClick = { context.copyToClipBoard(address) }
-            )
-        }
-    }
-}
-
-/**
- * Composable to display screenshots of the app
- */
-@Composable
-private fun AppScreenshots(list: List<Artwork>, onNavigateToScreenshot: (index: Int) -> Unit) {
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))) {
-        items(items = list, key = { artwork -> artwork.url }) { artwork ->
-            ScreenshotComposable(
-                modifier = Modifier
-                    .height(dimensionResource(R.dimen.screenshot_height))
-                    .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
-                    .clickable { onNavigateToScreenshot(list.indexOf(artwork)) },
-                url = "${artwork.url}=rw-w480-v1-e15"
-            )
-        }
-    }
-}
-
-/**
- * Composable to display reviews of the app
- */
-@Composable
-private fun AppReviews(rating: Rating, onNavigateToDetailsReview: () -> Unit) {
-    val stars = listOf(
-        rating.oneStar, rating.twoStar, rating.threeStar, rating.fourStar, rating.fiveStar
-    ).map { it.toFloat() }.also {
-        // No ratings available, nothing to show
-        if (it.sum() == 0F) return
-    }
-
-    HeaderComposable(
-        title = stringResource(R.string.details_ratings),
-        onClick = onNavigateToDetailsReview
-    )
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
-    ) {
-        Column(
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = String.format(Locale.getDefault(), "%.1f", rating.average),
-                maxLines = 1,
-                style = MaterialTheme.typography.displayMedium,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = rating.abbreviatedLabel,
-                maxLines = 1,
-                style = MaterialTheme.typography.bodySmall,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-
-        Column(
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
-        ) {
-            stars.reversed().fastForEach { star ->
-                RatingComposable(
-                    label = (stars.indexOf(star) + 1).toString(),
-                    rating = star / stars.sum()
-                )
-            }
-        }
-    }
-}
-
-/**
- * Composable to display app compatibility rating from Plexus
- */
-@Composable
-private fun AppCompatibility(needsGms: Boolean, plexusScores: Scores?) {
-    HeaderComposable(
-        title = stringResource(R.string.details_compatibility_title),
-        subtitle = stringResource(R.string.plexus_powered),
-    )
-
-    if (!needsGms) {
-        InfoComposable(
-            icon = R.drawable.ic_menu_about,
-            title = AnnotatedString(
-                text = stringResource(R.string.details_compatibility_gms_not_required_title)
-            ),
-            description = AnnotatedString(
-                text = stringResource(R.string.details_compatibility_gms_not_required_subtitle)
-            )
-        )
-
-        // Nothing more to show
-        return
-    }
-
-    InfoComposable(
-        icon = R.drawable.ic_menu_about,
-        title = AnnotatedString(
-            text = stringResource(R.string.details_compatibility_gms_required_title)
-        ),
-        description = AnnotatedString(
-            text = stringResource(R.string.details_compatibility_gms_required_subtitle)
-        )
-    )
-
-    val scoresStatus = mapOf(
-        R.string.details_compatibility_no_gms to plexusScores?.aosp?.status,
-        R.string.details_compatibility_microg to plexusScores?.microG?.status,
-    )
-    scoresStatus.forEach { (title, description) ->
-        InfoComposable(
-            icon = R.drawable.ic_android,
-            title = AnnotatedString(text = stringResource(title)),
-            description = AnnotatedString(
-                text = stringResource(description ?: R.string.details_compatibility_status_unknown)
-            )
-        )
-    }
-}
-
-/**
- * Composable to display app's data safety report
- */
-@Composable
-private fun AppDataSafety(dataSafetyReport: DataSafetyReport) {
-    HeaderComposable(
-        title = stringResource(R.string.details_data_safety_title),
-        subtitle = stringResource(R.string.details_data_safety_subtitle)
-    )
-
-    dataSafetyReport.entries.groupBy { it.type }.forEach { (type, entries) ->
-        when (type) {
-            EntryType.DATA_COLLECTED -> {
-                InfoComposable(
-                    icon = R.drawable.ic_cloud_upload,
-                    title = AnnotatedString(
-                        text = stringResource(R.string.details_data_safety_collect)
-                    ),
-                    description = AnnotatedString(
-                        text = entries.first().subEntries.joinToString(", ") { it.name }
-                            .ifBlank {
-                                stringResource(R.string.details_data_safety_collect_none)
-                            }
-                    )
-                )
-            }
-
-            EntryType.DATA_SHARED -> {
-                InfoComposable(
-                    icon = R.drawable.ic_share,
-                    title = AnnotatedString(
-                        text = stringResource(R.string.details_data_safety_shared)
-                    ),
-                    description = AnnotatedString(
-                        text = entries.first().subEntries.joinToString(", ") { it.name }
-                            .ifBlank {
-                                stringResource(R.string.details_data_safety_share_none)
-                            }
-                    ),
-                )
-            }
-
-            // We don't care about any other sections
-            else -> {}
-        }
-    }
-}
-
-/**
- * Composable to display app's privacy report from ExodusPrivacy
- */
-@Composable
-private fun AppPrivacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)?) {
-    HeaderComposable(
-        title = stringResource(R.string.details_privacy),
-        subtitle = stringResource(R.string.exodus_powered),
-        onClick = onNavigateToDetailsExodus
-    )
-
-    val reportStatus = when {
-        report == null -> stringResource(R.string.failed_to_fetch_report)
-        report.id == -1 -> stringResource(R.string.exodus_progress)
-        else -> if (report.trackers.isEmpty()) {
-            stringResource(R.string.exodus_no_tracker)
-        } else {
-            stringResource(R.string.exodus_report_trackers, report.trackers.size, report.version)
-        }
-    }
-
-    InfoComposable(
-        icon = R.drawable.ic_visibility,
-        title = AnnotatedString(text = reportStatus),
-        description = AnnotatedString(text = stringResource(R.string.exodus_tracker_desc))
-    )
-}
-
-/**
- * Composable to display app's beta testing status
- */
-@Composable
-private fun AppTesting(
-    isSubscribed: Boolean = false,
-    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit
-) {
-    HeaderComposable(title = stringResource(R.string.details_beta))
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
-    ) {
-        InfoComposable(
-            modifier = Modifier.weight(1F),
-            icon = R.drawable.ic_experiment,
-            title = AnnotatedString(
-                text = if (isSubscribed) {
-                    stringResource(R.string.details_beta_subscribed)
-                } else {
-                    stringResource(R.string.details_beta_available)
-                }
-            ),
-            description = AnnotatedString(text = stringResource(R.string.details_beta_description))
-        )
-        FilledTonalButton(onClick = { onTestingSubscriptionChange(!isSubscribed) }) {
-            Text(
-                text = if (isSubscribed) {
-                    stringResource(R.string.action_leave)
-                } else {
-                    stringResource(R.string.action_join)
-                },
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-    }
-}
-
 @PreviewScreenSizes
 @Composable
 @OptIn(ExperimentalCoilApi::class)
@@ -981,7 +457,6 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
         ScreenContentApp(
             app = app,
             isAnonymous = false,
-            suggestions = List(5) { app.copy(id = Random.nextInt()) },
             hasValidUpdate = false
         )
     }

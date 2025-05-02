@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.Rating
+import com.aurora.gplayapi.data.models.details.TestingProgram
 import com.aurora.store.BuildConfig
 
 /**
@@ -62,12 +63,18 @@ class AppPreviewProvider : PreviewParameterProvider<App> {
                 developerWebsite = "https://auroraoss.com/",
                 developerAddress = "330 N Midland Ave, Mumbai, India",
                 screenshots = MutableList(5) { Artwork(url = "$it") },
+                testingProgram = TestingProgram(
+                    isAvailable = true,
+                    isSubscribed = false
+                ),
                 rating = Rating(
                     fiveStar = 201458104,
                     fourStar = 313829104,
                     threeStar = 204581672,
                     twoStar = 183746829,
-                    oneStar = 96384291
+                    oneStar = 96384291,
+                    average = 4.4F,
+                    abbreviatedLabel = "10 M"
                 ),
                 permissions = mutableListOf(
                     Manifest.permission.INTERNET,
