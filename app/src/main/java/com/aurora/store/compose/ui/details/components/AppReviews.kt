@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.util.fastForEach
+import androidx.window.core.layout.WindowWidthSizeClass
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Rating
 import com.aurora.store.R
@@ -34,14 +37,24 @@ import java.util.Locale
  * of the Column with proper vertical arrangement spacing in the AppDetailsScreen.
  * @param rating Rating of the app
  * @param onNavigateToDetailsReview Callback when the user navigates
+ * @param windowAdaptiveInfo Adaptive window information
  */
 @Composable
-fun AppReviews(rating: Rating, onNavigateToDetailsReview: () -> Unit = {}) {
+fun AppReviews(
+    rating: Rating,
+    onNavigateToDetailsReview: () -> Unit = {},
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
+) {
     val stars = listOf(
         rating.oneStar, rating.twoStar, rating.threeStar, rating.fourStar, rating.fiveStar
     ).map { it.toFloat() }.also {
         // No ratings available, nothing to show
         if (it.sum() == 0F) return
+    }
+
+    val avgRating = when (windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass) {
+        WindowWidthSizeClass.COMPACT -> String.format(Locale.getDefault(), "%.1f", rating.average)
+        else -> String.format(Locale.getDefault(), "%.1f / 5.0", rating.average)
     }
 
     HeaderComposable(
@@ -60,7 +73,7 @@ fun AppReviews(rating: Rating, onNavigateToDetailsReview: () -> Unit = {}) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = String.format(Locale.getDefault(), "%.1f", rating.average),
+                text = avgRating,
                 maxLines = 1,
                 style = MaterialTheme.typography.displayMedium,
                 overflow = TextOverflow.Ellipsis
