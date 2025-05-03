@@ -32,7 +32,7 @@
     <string name="about_bitcoin_btc_summary">Bitcoin (BTC) के द्वारा दान करें</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Bitcoin Cash (BCH) के द्वारा दान करें</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">बिटकॉइन कैश</string>
     <string name="about_bhim_summary">UPI के द्वारा दान करें</string>
     <string name="details_dev_website">वेबसाइट</string>
     <string name="details_dev_address">पता</string>
@@ -102,7 +102,7 @@
     <string name="title_no_network">कोई नेटवर्क नहीं</string>
     <string name="download_pause_all">सभी को रोकें</string>
     <string name="action_update_all">सभी अपडेट करें</string>
-    <string name="installer_service_unavailable">1.0.9 या ऊपर की ऑरोरा सेवाएं इंस्टॉल करें, या इंस्टॉलर बदलें।</string>
+    <string name="installer_service_unavailable">1.0.9 या ऊपर की Aurora Services इंस्टॉल करें, या इंस्टॉलर बदलें।</string>
     <string name="details_permission">अनुमति</string>
     <string name="title_apps_games">मेरे ऐप्स और गेम्स</string>
     <string name="title_library">लाईब्रेरी</string>
@@ -113,7 +113,7 @@
     <string name="pref_filter_fdroid_title">F-Droid एप्स को फिल्टर करें</string>
     <string name="action_next">अगला</string>
     <string name="menu_disclaimer">अस्वीकरण</string>
-    <string name="title_installer">ऐप इंस्टॉलर</string>
+    <string name="title_installer">App इंस्टॉलर</string>
     <string name="download_resume_all">सभी पुनः आरंभ करें</string>
     <string name="title_updates">अपडेट</string>
     <string name="details_beta_subscribed">आप बीटा परीक्षक हैं</string>
@@ -131,7 +131,7 @@
     <string name="device_miui_title">MIUI का पता चला!</string>
     <string name="tab_top_grossing">शीर्ष कमाई</string>
     <string name="title_installation">इंस्टॉलेशन</string>
-    <string name="toast_purchase_blocked">बेनामी खातों पर ऐप खरीदारी उपलब्ध नहीं है।</string>
+    <string name="toast_purchase_blocked">बेनामी खातों पर App खरीदारी उपलब्ध नहीं है।</string>
     <string name="details_gsf_dependent">GSF आवश्यकता है</string>
     <string name="menu_terms">सेवा शर्तें</string>
     <string name="tab_categories">श्रेणियां</string>
@@ -142,7 +142,7 @@
     <string name="pref_common_extra">अतिरिक्त</string>
     <string name="toast_page_unavailable">ब्राउज़ पृष्ठ अनुपलब्ध है</string>
     <string name="pref_install_mode_session">सत्र इंस्टॉलर</string>
-    <string name="pref_ui_title">वैशिष्टिकरण</string>
+    <string name="pref_ui_title">कस्टमाइजेशन</string>
     <string name="download_speed_estimating">आकलन</string>
     <string name="action_ok">ठीक है</string>
     <string name="pref_install_mode_title">इंस्टॉल करने का तरीका</string>
@@ -168,7 +168,7 @@
     <string name="details_ratings">रेटिंग और समीक्षाएं</string>
     <string name="download_none">कोई डाउनलोड नहीं</string>
     <string name="download_queued">कतारबद्ध</string>
-    <string name="installer_service_available">ऑरोरा सेवाएं उपलब्ध हैं और इंस्टॉल करने के लिए तैयार हैं।</string>
+    <string name="installer_service_available">Aurora Services उपलब्ध हैं और इंस्टॉल करने के लिए तैयार हैं।</string>
     <string name="installer_status_failure_blocked">इंस्टालेशन अवरुद्ध किया गया</string>
     <string name="onboarding_permission_select">ऑरोरा स्टोर को निम्नलिखित अनुमतियों की आवश्यकता है</string>
     <string name="onboarding_title_permissions">अनुमतियां</string>
@@ -202,7 +202,7 @@
     <string name="filter_review_positive">सकारात्मक</string>
     <string name="filter_review_critical">गंभीर</string>
     <string name="installer_am_unavailable">ऐप मैनेजर इंस्टॉल करें या इंस्टॉलर बदलें।</string>
-    <string name="installer_service_misconfigured">ऑरोरा सेवाएं स्थापित करें और पहले सभी अनुमतियां प्रदान करें।</string>
+    <string name="installer_service_misconfigured">Aurora Services स्थापित करें और पहले सभी अनुमतियां प्रदान करें।</string>
     <string name="installer_status_failure">इंस्टॉलर असफल</string>
     <string name="installer_status_failure_session">सत्र नहीं बना सके</string>
     <string name="installer_status_failure_storage">अपर्याप्त मेमोरी स्थान</string>
@@ -287,7 +287,7 @@
     <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
     <string name="pref_aurora_only">केवल ऑरोरा स्टोर ऐप्स</string>
     <string name="pref_aurora_only_desc">केवल ऑरोरा स्टोर से संस्थापित किये गये ऐप की अद्यतन-जाँच करें</string>
-    <string name="title_app_settings">ऐप सेटिंग्स</string>
+    <string name="title_app_settings">App सेटिंग्स</string>
     <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
     <string name="pref_updates_check_frequency_desc">स्वतः अद्यतन के लिए घंटे में समय अंतराल विन्यसित करें।</string>
     <string name="pref_network_proxy_url">प्रॉक्सी URL</string>
@@ -296,7 +296,7 @@
     <string name="toast_proxy_failed">प्रॉक्सी निर्धारित करने में विफल</string>
     <string name="pref_vending_version_device">तयशुदा (डिवाइस विन्यास से)</string>
     <string name="pref_vending_version_title">गूगल प्ले संस्करण</string>
-    <string name="onboarding_permission_doze">बेकग्राउंड डाउनलोड</string>
+    <string name="onboarding_permission_doze">बैकग्राउंड डाउनलोड</string>
     <string name="onboarding_permission_doze_desc">ऑरोरा स्टोर को पृष्ठभूमि में ऐप्स डाउनलोड करने और अपडेट करने की अनुमति दें</string>
     <string name="pref_updates_auto">स्वचालित अद्यतन</string>
     <string name="pref_updates_auto_notify">उपलब्ध अपडेट की जाँच करें और सूचित करें</string>
@@ -354,7 +354,7 @@
     <string name="action_favourite">पसंदीदा</string>
     <string name="details_no_favourites">कोई पसंदीदा ऐप नहीं मिला</string>
     <string name="toast_fav_import_failed">पसंदीदा आयात करने में विफल!</string>
-    <string name="title_favourites_manager">पसंदीदा ऐप</string>
+    <string name="title_favourites_manager">पसंदीदा ऐप्स</string>
     <string name="toast_fav_export_failed">पसंदीदा निर्यात करने में विफल!</string>
     <string name="toast_fav_import_success">पसंदीदा आयातित!</string>
     <string name="toast_fav_export_success">पसंदीदा निर्यातित!</string>
@@ -427,4 +427,5 @@
     <string name="details_compatibility_status_compatible">अनुकूल - निर्विवाद काम करता है</string>
     <string name="details_compatibility_status_unknown">अज्ञात - अब तक जाँच नहीं हुई है</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> ऐप संस्थापित</string>
+    <string name="verification_failed">डाउनलोड की गई फ़ाइलें सत्यापित करने में विफल</string>
 </resources>

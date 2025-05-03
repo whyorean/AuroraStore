@@ -364,7 +364,7 @@
     <string name="export_app_summary_success">App-pakke eksporteret</string>
     <string name="status_cancelled">Annulleret</string>
     <string name="status_completed">Fuldført</string>
-    <string name="notification_channel_updates">Meddelelser om opdateringer</string>
+    <string name="notification_channel_updates">Meddelelser om opdatering</string>
     <string name="status_downloading">Henter</string>
     <string name="status_failed">Mislykket</string>
     <string name="default_spoof">Standard</string>

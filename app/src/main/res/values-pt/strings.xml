@@ -183,7 +183,7 @@
     <string name="action_whitelist">Lista branca</string>
     <string name="action_update_all">Atualizar tudo</string>
     <string name="action_update">Atualizar</string>
-    <string name="action_info">Informações do app</string>
+    <string name="action_info">Informações da app</string>
     <string name="action_uninstall">Desinstalar</string>
     <string name="action_share">Partilhar</string>
     <string name="action_search">Pesquisar</string>
@@ -276,7 +276,7 @@
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão. Código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Verificar ligação</string>
-    <string name="app_language">Idioma do app</string>
+    <string name="app_language">Idioma da app</string>
     <string name="title_search_suggestion">Sugestão de pesquisa</string>
     <string name="title_search_results">Resultados da pesquisa</string>
     <string name="failed_to_generate_session">Não foi possível gerar a sessão</string>
@@ -291,7 +291,7 @@
     <string name="toast_proxy_invalid">URL inválido. Verifique o formato!</string>
     <string name="pref_aurora_only_desc">Verifique apenas atualizações de aplicativos instalados pela Aurora Store</string>
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
-    <string name="title_app_settings">Configurações do app</string>
+    <string name="title_app_settings">Configurações da app</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="toast_proxy_failed">Falha ao definir o proxy</string>
     <string name="pref_vending_version_device">Padrão (configuração do dispositivo)</string>
