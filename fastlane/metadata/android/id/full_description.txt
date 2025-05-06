@@ -1,6 +1,6 @@
 Aurora Store adalah klien yang tidak resmi, FOSS untuk Google Play dengan desain yang elegan. Aurora Store
-memungkinkan pengguna mengunduh, memperbarui, dan mencari aplikasi seperti Play Store. Aplikasi ini bekerja dengan sempurna
-dengan atau tanpa Layanan Google Play atau MicroG.
+ memungkinkan pengguna mengunduh, memperbarui, dan mencari aplikasi seperti Play Store. Aplikasi ini bekerja dengan sempurna
+ dengan atau tanpa Layanan Google Play atau microG.
 
 <b>Fitur: </b>
 
@@ -9,4 +9,5 @@ dengan atau tanpa Layanan Google Play atau MicroG.
 • Akun: Anda dapat masuk dengan akun pribadi atau anonim
 • Spoofing Perangkat & Lokal: Mengubah perangkat Anda dan/atau lokal untuk mengakses aplikasi dengan geografis terkunci
 • Integrasi Exodus Privacy: pelacak di aplikasi dapat dilihat secara instan
+• Integrasi Plexus: Lihat kompatibilitas aplikasi tanpa Layanan Google Play atau dengan microG secara langsung
 • Memperbarui daftar hitam: Mengabaikan pembaruan untuk aplikasi tertentu
