@@ -79,7 +79,7 @@
     <string name="toast_anonymous_restriction">Tidak tersedia di akun anonim</string>
     <string name="title_blacklist_manager">Pengelola daftar hitam</string>
     <string name="title_apps_library">Aplikasi di perpustakaan</string>
-    <string name="title_apps_games">Aplikasi &amp; permainan Saya</string>
+    <string name="title_apps_games">Aplikasi &amp; permainan saya</string>
     <string name="title_apps">Aplikasi</string>
     <string name="title_account_manager">Akun</string>
     <string name="title_about">Tentang</string>
@@ -235,7 +235,7 @@
     <string name="onboarding_permission_notifications">Pemberitahuan</string>
     <string name="onboarding_permission_notifications_desc">Mengirim pemberitahuan mengenai status pemasangan</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="session_good">Woah! Semuanya bagus.</string>
+    <string name="session_good">Wah! Semuanya bagus.</string>
     <string name="error">Terjadi kesalahan!</string>
     <string name="permissions_denied">Izin yang diperlukan telah ditolak. Mohon berikan izin untuk melanjutkan tindakan</string>
     <string name="menu">Menu</string>
@@ -248,11 +248,11 @@
     <string name="download_progress">Mengunduh • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_scrapped">Sesi terakhir dihapus</string>
     <string name="session_login_failed_google">Tidak dapat masuk melalui Google</string>
-    <string name="session_init">Menyiapkan segala sesuatunya…</string>
+    <string name="session_init">Menyiapkan segala sesuatu…</string>
     <string name="session_verifying_google">Memverifikasi sesi Google</string>
     <string name="title_advanced">Lanjutan</string>
     <string name="update_available">Pembaruan tersedia</string>
-    <string name="expand">Memperluas</string>
+    <string name="expand">Perluas</string>
     <string name="pref_install_mode_shizuku">Pemasang Shizuku</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> pembaruan tersedia</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> dan <xliff:g id="app_two_name">%2$s</xliff:g></string>
@@ -296,12 +296,12 @@
     <string name="title_app_settings">Pengaturan aplikasi</string>
     <string name="pref_updates_check_frequency">Frekuensi pembaruan otomatis</string>
     <string name="toast_proxy_failed">Gagal menyetel proksi</string>
-    <string name="android_market_desc">Android Market adalah toko online yang menyediakan aplikasi perangkat lunak yang dirancang untuk perangkat Android, dihentikan pada tahun 2017.</string>
+    <string name="android_market_desc">Android Market adalah toko daring yang menyediakan aplikasi perangkat lunak yang dirancang untuk perangkat Android, dihentikan pada tahun 2017.</string>
     <string name="app_language">Bahasa aplikasi</string>
     <string name="pref_updates_auto">Pembaruan otomatis</string>
     <string name="pref_updates_auto_desc">Atur perilaku pembaruan otomatis</string>
     <string name="pref_updates_auto_off">Jangan perbarui otomatis aplikasi</string>
-    <string name="pref_updates_auto_notify">Cek &amp; beritau apabila tersedia pembaruan</string>
+    <string name="pref_updates_auto_notify">Cek &amp; beri tahu apabila tersedia pembaruan</string>
     <string name="pref_updates_auto_install">Periksa &amp; pasang pembaruan yang tersedia secara otomatis</string>
     <string name="title_more">Selengkapnya</string>
     <string name="about_wiki_summary">Temukan jawaban atas pertanyaan yang sering diajukan (FAQ), langkah-langkah pemecahan masalah, dan lainnya</string>
@@ -312,7 +312,7 @@
     <string name="services_installer_subtitle">Pemasang untuk pemasangan latar belakang</string>
     <string name="shizuku_installer_subtitle">Menggunakan API sistem secara langsung dengan hak istimewa adb/root</string>
     <string name="shizuku_installer_desc">Membutuhkan Shizuku atau SUI, perlu pengaturan dan izin yang diberikan</string>
-    <string name="manage_account">Mengelola akun Anda</string>
+    <string name="manage_account">Kelola akun Anda</string>
     <string name="pref_dispenser_summary">Lihat dan kelola dispenser token untuk login anonim</string>
     <string name="pref_clear_device_owner_desc">Ini akan mencabut izin pemasang sesi untuk memasang aplikasi secara diam-diam. Lanjutkan dengan menghapus kepemilikan perangkat?</string>
     <string name="add_dispenser_summary">Tambah dispenser token ke Aurora Store. Dispenser token memberikan kredensial akun ke Aurora Store untuk masuk secara anonim.</string>
@@ -340,7 +340,7 @@
     <string name="remove">Hapus</string>
     <string name="am_installer_subtitle">Pengelola paket sumber terbuka dengan fitur lengkap</string>
     <string name="am_installer_desc">Membutuhkan Aplikasi Manager, perlu mode adb/root untuk dipasang ketika optimasi MIUI aktif</string>
-    <string name="about_aurora_store_summary">Aurora Store memungkinkan Anda untuk mencari dan mengunduh aplikasi dari toko resmi Google Play. Anda dapat memeriksa deskripsi aplikasi, tangkapan layar, pembaruan, komentar pengguna lain, dan mengunduh APK langsung dari Google Play ke perangkat Anda. Untuk menggunakan Aurora Store, Anda harus memiliki akun Google Play, dan masuk ke akun Google Play saat pertama kali membuka dan mengatur Aurora Store. \n \nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lainnya di Aurora Store diakses, diunduh, dan/atau ditampilkan secara langsung dari Google Play. Aurora Store berfungsi persis seperti pintu atau browser, memungkinkan Anda untuk masuk ke akun Google Play dan menemukan aplikasi dari Google Play. \n \nHarap diperhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi apa pun dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, atau pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
+    <string name="about_aurora_store_summary">Aurora Store memungkinkan Anda untuk mencari dan mengunduh aplikasi dari toko resmi Google Play. Anda dapat memeriksa deskripsi aplikasi, tangkapan layar, pembaruan, komentar pengguna lain, dan mengunduh APK langsung dari Google Play ke perangkat Anda. Untuk menggunakan Aurora Store, Anda harus memiliki akun Google Play, dan masuk ke akun Google Play saat pertama kali membuka dan mengatur Aurora Store. \n \nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lainnya di Aurora Store diakses, diunduh, dan/atau ditampilkan secara langsung dari Google Play. Aurora Store berfungsi persis seperti pintu atau peramban, memungkinkan Anda untuk masuk ke akun Google Play dan menemukan aplikasi dari Google Play. \n \nHarap diperhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi apa pun dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, atau pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
     <string name="toast_app_unavailable">Aplikasi tidak tersedia untuk perangkat Anda</string>
     <string name="services_installer_desc">Memerlukan Layanan Aurora yang dipasang sebagai aplikasi sistem dengan hak istimewa</string>
     <string name="remove_dispenser_title">Hapus dispenser</string>
@@ -359,7 +359,7 @@
     <string name="export_app_summary_fail">Gagal mengekspor paket aplikasi</string>
     <string name="add_dispenser_title">Tambah dispenser</string>
     <string name="pref_dispenser_title">Kelola dispenser</string>
-    <string name="no_dispensers_available">Tidak ditemukan dispenser</string>
+    <string name="no_dispensers_available">Tidak ada dispenser yang tersedia</string>
     <string name="action_uninstall_success">Berhasil dicopot</string>
     <string name="pref_network_proxy_url_message">Masukkan proksi URL yang sah supaya data dapat dimuat melalui proksi.</string>
     <string name="action_logout_confirmation_message">Apakah Anda yakin ingin keluar?</string>
@@ -384,7 +384,7 @@
     <string name="status_downloading">Mengunduh</string>
     <string name="status_failed">Gagal</string>
     <string name="status_unavailable">Tidak tersedia</string>
-    <string name="authentication_required_title">Diperlukan otentikasi</string>
+    <string name="authentication_required_title">Autentikasi diperlukan</string>
     <string name="notification_channel_account">Notifikasi berkaitan dengan akun</string>
     <string name="authentication_required_unarchive">Silakan masuk ke akun Google Play Anda untuk membuka arsip aplikasi!</string>
     <string name="checking_updates">Memeriksa pembaruan</string>

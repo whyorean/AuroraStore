@@ -2,4 +2,4 @@
 • Perbaikan untuk manajer daftar hitam
 • Kemampuan untuk mengubah pembatasan pembaruan otomatis
 • Perbaikan dan perbaikan bug minor
-• Pembaruan terjemahan; string tambahan terlokalisasi
+• Pembaruan terjemahan; penambahan teks yang telah diterjemahkan
