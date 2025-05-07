@@ -254,7 +254,7 @@
     <string name="menu">Nabídka</string>
     <string name="error">Vyskytla se chyba!</string>
     <string name="server_maintenance">Výpadek serveru z důvodu údržby</string>
-    <string name="requesting_new_session">Žádost o novou relaci</string>
+    <string name="requesting_new_session">Žádání o novou relaci</string>
     <string name="action_import">Importovat</string>
     <string name="toast_import_success">Konfigurace zařízení importována</string>
     <string name="toast_import_failed">Nepodařilo se importovat konfiguraci zařízení</string>
