@@ -19,8 +19,8 @@
     <string name="action_installations">Instalācijas</string>
     <string name="action_install">Uzstādīt</string>
     <string name="action_ignore">Neņemt vērā</string>
-    <string name="action_granted">Nodrošināta</string>
-    <string name="action_grant">Nodrošināt</string>
+    <string name="action_granted">Piešķirta</string>
+    <string name="action_grant">Piešķirt</string>
     <string name="action_filter_rating">Reitingi</string>
     <string name="action_filter_downloads">Lejupielādes</string>
     <string name="action_filter_apps_with_ads">Lietotnes ar reklāmām</string>
@@ -141,7 +141,7 @@
     <string name="title_no_network">Nav interneta</string>
     <string name="title_purchase_history">Pirkumu vēsture</string>
     <string name="toast_clipboard_copied">Ievietots starpliktuvē</string>
-    <string name="toast_permission_granted">Atļauja nodrošināta</string>
+    <string name="toast_permission_granted">Atļauja piešķirta</string>
     <string name="app_updater_service_notif_text">Iespējo lietotņu lejupielādi fonā</string>
     <string name="app_updater_service_notif_title">Lietotnes lejupielāde fonā</string>
     <string name="download_speed_estimating">Aprēķina</string>
@@ -177,7 +177,7 @@
     <string name="tab_for_you">Tev</string>
     <string name="toast_apk_blacklisted">Pievienota izņēmumiem</string>
     <string name="spoof_apply">Jānodrošina atkārtota pieteikšanās, lai pielietotu atdarināšanu</string>
-    <string name="installer_root_unavailable">Nav superlietotāja piekļuves. Tā ir jānodrošina vai jānomaina uzstādītājs.</string>
+    <string name="installer_root_unavailable">Nav superlietotāja piekļuves. Tā ir jāpiešķir vai jānomaina uzstādītājs.</string>
     <string name="title_spoof_manager">Atdarināšanas pārvaldnieks</string>
     <string name="exodus_powered">Nodrošina Exodus Privacy</string>
     <string name="installer_am_unavailable">Jāuzstāda App Manager vai jānomaina uzstādītājs.</string>
@@ -192,7 +192,7 @@
     <string name="session_init">Tiek sagatavots nepieciešamais…</string>
     <string name="session_scrapped">Pēdējā sesija tika atmesta</string>
     <string name="session_verifying_google">Aplicina Google sesiju</string>
-    <string name="insecure_anonymous_apply">Jānodrošina atkārtota pieteikšanās un pārsāknēšana, lai pielietotu izmaiņas.</string>
+    <string name="insecure_anonymous_apply">Jānodrošina atkārtota pieteikšanās un lietotnes atkārtota palaišana, lai pielietotu izmaiņas.</string>
     <string name="title_download_playstore">Play veikals</string>
     <string name="title_advanced">Papildu</string>
     <string name="toast_anonymous_restriction">Nav pieejams anonīmiem kontiem</string>
@@ -241,7 +241,7 @@
     <string name="download_eta_hrs">Atlicis %1$dh %2$dm %3$ds</string>
     <string name="download_eta_min">Atlicis %1$dm %2$ds</string>
     <string name="download_eta_sec">Atlikušas %1$ds</string>
-    <string name="installer_service_misconfigured">Vispirms jāuzstāda Aurora pakalpojumi un jānodrošina visas atļaujas.</string>
+    <string name="installer_service_misconfigured">Vispirms jāuzstāda Aurora pakalpojumi un jāpiešķirt visas atļaujas.</string>
     <string name="toast_export_success">Ierīces uzstādījumi ir izgūti</string>
     <string name="details_no_dependencies">Nav atkarību</string>
     <string name="details_no_app_match">Nav atrasta neviena atbilstoša lietotne</string>
@@ -266,7 +266,7 @@
     <string name="menu">Izvēlne</string>
     <string name="expand">Izvērst</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="permissions_denied">Nepieciešamās atļaujas tika noraidītas. Lūgums tās nodrošināt, lai turpinātu darbību</string>
+    <string name="permissions_denied">Nepieciešamās atļaujas tika noraidītas. Lūgums piešķirt tās, lai varētu turpināt darbību</string>
     <string name="search_hint">Meklēt lietotnes un spēles</string>
     <string name="access_denied_using_vpn">Piekļuve liegta. Vai tiek izmantots VPN vai Tor\?</string>
     <string name="title_search_results">Meklēšanas iznākums</string>
@@ -318,7 +318,7 @@
     <string name="services_installer_desc">Nepieciešams uzstādīt Aurora pakalpojumus kā neierobežotu sistēmas lietotni</string>
     <string name="am_installer_subtitle">Pilnu iespēju atvērtā pirmkoda pakotņu pārvaldnieks</string>
     <string name="shizuku_installer_subtitle">Izmantojot sistēmas API ar adb/superlietotāja tiesībām</string>
-    <string name="shizuku_installer_desc">Nepieciešams Shizuku vai Sui, jābūt iestatītai un nodrošinātai atļaujai</string>
+    <string name="shizuku_installer_desc">Nepieciešams Shizuku vai Sui, jābūt iestatītai un piešķirtai atļaujai</string>
     <string name="action_home_screen">Pievienot sākuma ekrānam</string>
     <string name="download_clear_finished">Notīrīt pabeigtās</string>
     <string name="pref_updates_incompatible">Nesaderīgi atjauninājumi</string>
@@ -361,7 +361,7 @@
     <string name="details_data_safety_title">Datu drošība</string>
     <string name="onboarding_permission_installer_legacy_desc">Atļaut lietotņu uzstādīšanu no nezināmiem avotiem</string>
     <string name="toast_app_unavailable">Lietotne nav pieejama šajā ierīcē</string>
-    <string name="toast_permission_installer_required">Vispirms jānodrošina uzstādīšanas atļauja</string>
+    <string name="toast_permission_installer_required">Vispirms ir nepieciešams piešķirt uzstādīšanas atļauju</string>
     <string name="item_required">Nepieciešams</string>
     <string name="item_optional">Izvēles</string>
     <string name="toast_fav_import_failed">Neizdevās ievietot izlasi.</string>
