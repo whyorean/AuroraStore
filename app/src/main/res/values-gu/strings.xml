@@ -82,11 +82,24 @@
     <string name="action_remove_all">બધાને કાઢી નાખો</string>
     <string name="action_request_analysis">નવા વિશ્લેષણની વિનંતી કરો</string>
     <string name="action_restart">પુનઃપ્રારંભ કરો</string>
-    <string name="action_resume">ફરી શરૂ કરો</string>
+    <string name="action_resume">ચાલુ રાખો</string>
     <string name="action_search">શોધો</string>
     <string name="action_select_all">બધા પસંદ કરો</string>
     <string name="action_uninstall">કાઢી નાખો</string>
     <string name="action_uninstall_success">સફળતાપૂર્વક કાઢી નાખ્યું</string>
     <string name="action_update">સુધારો</string>
     <string name="action_update_all">બધાને સુધારો</string>
+    <string name="action_post">પોસ્ટ કરો</string>
+    <string name="action_share">શેર કરો</string>
+    <string name="action_home_screen">હોમ સ્ક્રીન પર ઉમેરો</string>
+    <string name="action_whitelist">મંજૂરીની સૂચિ</string>
+    <string name="details_beta">બીટા કાર્યક્રમ</string>
+    <string name="details_beta_subscribed">તમે બીટા પરીક્ષક છો</string>
+    <string name="details_beta_available">બીટા કાર્યક્રમ જોડાઈએ?</string>
+    <string name="details_changelog">સુધારાઓ ની નોંધ</string>
+    <string name="details_changelog_unavailable">સુધારાઓ ની નોંધ આપવામાં આવી નથી</string>
+    <string name="details_contains_ads">જાહેરાતો ધરાવે છે</string>
+    <string name="details_dependencies">નિર્ભરતાઓ</string>
+    <string name="details_description">વર્ણન</string>
+    <string name="details_dev_address">સરનામું</string>
 </resources>
