@@ -225,7 +225,7 @@
     <string name="pref_install_mode_summary">Atlasīt APK uzstādīšanas veidu</string>
     <string name="pref_install_mode_title">Uzstādīšanas veids</string>
     <string name="update_available">pieejams atjauninājums</string>
-    <string name="updates_available">pieejami atjauninājumi</string>
+    <string name="updates_available">atjauninājumi pieejami</string>
     <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
     <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
     <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir katra paša ziņā.</string>
