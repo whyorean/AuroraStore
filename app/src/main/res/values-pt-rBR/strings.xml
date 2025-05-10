@@ -327,7 +327,7 @@
     <string name="privacy_policy_title">Política de privacidade</string>
     <string name="disclaimer_subtitle">Responsabilização</string>
     <string name="privacy_policy_subtitle">Saiba mais sobre como a Aurora Store usa seus dados</string>
-    <string name="manual_download_hint">Digita o código da versão que deseja baixar</string>
+    <string name="manual_download_hint">Digite o código da versão que deseja baixar</string>
     <string name="title_more">Mais</string>
     <string name="manage_account">Gerenciar sua conta</string>
     <string name="pref_clear_device_owner_title">Limpar proprietário do dispositivo</string>

@@ -45,11 +45,11 @@
     <string name="purchase_failed">فشل التنزيل</string>
     <string name="pref_ui_title">التخصيص</string>
     <string name="pref_install_mode_title">طريقة التثبيت</string>
-    <string name="pref_install_mode_session">مثبت الجلسة</string>
-    <string name="pref_install_mode_services">خدمات Aurora(مهمل)</string>
-    <string name="pref_install_mode_root">مثبت الجذر</string>
-    <string name="pref_install_mode_native">المثبت الأصلي(مهمل)</string>
-    <string name="pref_install_delete_title">حذف APK بعد التثبيت</string>
+    <string name="pref_install_mode_session">مثبِّت الجلسة</string>
+    <string name="pref_install_mode_services">خدمات Aurora (مهمل)</string>
+    <string name="pref_install_mode_root">مثبِّت الجذر</string>
+    <string name="pref_install_mode_native">المثبت الأصلي (مهمل)</string>
+    <string name="pref_install_delete_title">احذف APK بعد التثبيت</string>
     <string name="pref_filter_fdroid_title">تصفية تطبيقات F-Droid</string>
     <string name="onboarding_permission_installer">إذن المثبت</string>
     <string name="onboarding_permission_esm">مدير التخزين الخارجي</string>
@@ -64,7 +64,7 @@
     <string name="menu_terms">شروط الخدمة</string>
     <string name="menu_license">الرخصة</string>
     <string name="menu_disclaimer">اخلاء المسؤوليه</string>
-    <string name="installer_status_success">تم التثبيت بنجاح</string>
+    <string name="installer_status_success">ثُبِّت بنجاح</string>
     <string name="installer_status_failure_storage">مساحة التخزين غير كافية</string>
     <string name="installer_status_failure_incompatible">تطبيق غير متوافق</string>
     <string name="installer_status_failure_conflict">توجد حزمة متعارضة</string>
@@ -107,7 +107,7 @@
     <string name="action_update_all">تحديث الكل</string>
     <string name="action_update">تحديث</string>
     <string name="action_info">معلومات التطبيق</string>
-    <string name="action_uninstall">إلغاء التثبيت</string>
+    <string name="action_uninstall">ألغِ التثبيت</string>
     <string name="action_share">مشاركة</string>
     <string name="action_search">البحث</string>
     <string name="action_resume">إستئناف</string>
@@ -120,9 +120,9 @@
     <string name="action_leave">غادر</string>
     <string name="action_later">لاحقا</string>
     <string name="action_join">الانضمام</string>
-    <string name="action_installing">جاري التثبيت</string>
+    <string name="action_installing">جارِ التثبيت</string>
     <string name="action_installations">التثبيتات</string>
-    <string name="action_install">تثبيت</string>
+    <string name="action_install">ثبِّت</string>
     <string name="action_ignore">تجاهل</string>
     <string name="action_filter_paid_apps">مدفوع</string>
     <string name="action_filter_misc">متفرقات</string>
@@ -144,7 +144,7 @@
     <string name="details_beta_available">الانضمام إلى البرنامج التجريبي؟</string>
     <string name="details_beta_subscribed">أنت أحد مختبري الإصدارات التجريبية</string>
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
-    <string name="pref_install_mode_summary">حدد وضع تثبيت حزمة التطبيقات APK</string>
+    <string name="pref_install_mode_summary">حدد وضع تثبيت APK</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف حزم التطبيقات المحملة والتي قد تم تثبيتها بشكل مباشر</string>
     <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات التي تم تنزيلها أو تثبيتها من F - Droid</string>
@@ -266,7 +266,7 @@
     <string name="notification_updates_available">تحديثات <xliff:g id="apps_count"> %1$d </xliff:g> متوفرة</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> و <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> و <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_install_mode_shizuku">مثبت شيزوكو</string>
+    <string name="pref_install_mode_shizuku">مثبِّت شيزوكو</string>
     <string name="installer_shizuku_unavailable">لم يتم تثبيت Shizuku أو إعداده بشكل صحيح.</string>
     <string name="title_search_suggestion">اقتراح البحث</string>
     <string name="bad_request">خطأ داخلي! من فضلك أعد المحاولة بعد فترة</string>
