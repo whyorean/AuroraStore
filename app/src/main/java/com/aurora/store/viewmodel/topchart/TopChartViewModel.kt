@@ -42,9 +42,8 @@ class TopChartViewModel @Inject constructor(
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
-    private fun contract(): TopChartsContract {
-        return webTopChartsHelper
-    }
+    private val topChartsContract: TopChartsContract
+        get() = webTopChartsHelper
 
     fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -53,7 +52,7 @@ class TopChartViewModel @Inject constructor(
             }
 
             try {
-                val cluster = contract().getCluster(type.value, chart.value)
+                val cluster = topChartsContract.getCluster(type.value, chart.value)
                 updateCluster(type, chart, cluster)
                 liveData.postValue(ViewState.Success(stash))
             } catch (_: Exception) {
@@ -67,7 +66,7 @@ class TopChartViewModel @Inject constructor(
                 try {
                     val target = targetCluster(type, chart)
                     if (target.hasNext()) {
-                        val newCluster = contract().getNextStreamCluster(
+                        val newCluster = topChartsContract.getNextStreamCluster(
                             target.clusterNextPageUrl
                         )
 

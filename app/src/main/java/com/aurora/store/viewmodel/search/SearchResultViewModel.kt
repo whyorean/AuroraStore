@@ -39,9 +39,9 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchResultViewModel @Inject constructor(
     val filterProvider: FilterProvider,
-    authProvider: AuthProvider,
-    searchHelper: SearchHelper,
-    webSearchHelper: WebSearchHelper
+    private val authProvider: AuthProvider,
+    private val searchHelper: SearchHelper,
+    private val webSearchHelper: WebSearchHelper
 ) : ViewModel() {
 
     private val TAG = SearchResultViewModel::class.java.simpleName
@@ -50,11 +50,8 @@ class SearchResultViewModel @Inject constructor(
 
     private var searchBundle: SearchBundle = SearchBundle()
 
-    private val helper: SearchContract = if (authProvider.isAnonymous) {
-        webSearchHelper
-    } else {
-        searchHelper
-    }
+    private val helper: SearchContract
+        get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
 
     fun observeSearchResults(query: String) {
         //Clear old results

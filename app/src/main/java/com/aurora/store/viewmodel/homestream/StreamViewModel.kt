@@ -46,9 +46,8 @@ class StreamViewModel @Inject constructor(
 
     private var stash: HomeStash = mutableMapOf()
 
-    fun contract(): StreamContract {
-        return webStreamHelper
-    }
+    private val streamContract: StreamContract
+        get() = webStreamHelper
 
     fun getStreamBundle(category: StreamContract.Category, type: StreamContract.Type) {
         liveData.postValue(ViewState.Loading)
@@ -68,12 +67,12 @@ class StreamViewModel @Inject constructor(
 
                         //Fetch new stream bundle
                         val newBundle = if (bundle.hasCluster()) {
-                            contract().nextStreamBundle(
+                            streamContract.nextStreamBundle(
                                 category,
                                 bundle.streamNextPageUrl
                             )
                         } else {
-                            contract().fetch(type, category)
+                            streamContract.fetch(type, category)
                         }
 
                         //Update old bundle
@@ -100,7 +99,7 @@ class StreamViewModel @Inject constructor(
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster =
-                            contract().nextStreamCluster(streamCluster.clusterNextPageUrl)
+                            streamContract.nextStreamCluster(streamCluster.clusterNextPageUrl)
                         updateCluster(category, streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(stash))
                     } else {
