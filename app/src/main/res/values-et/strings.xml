@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="action_back">Tagasi</string>
     <string name="action_filter_downloads">Allalaadimised</string>
-    <string name="details_dev_email">Meil</string>
+    <string name="details_dev_email">E-post</string>
     <string name="action_cancel">Tühista</string>
     <string name="action_search">Otsi</string>
     <string name="details_dev_profile">Arendaja profiil</string>
