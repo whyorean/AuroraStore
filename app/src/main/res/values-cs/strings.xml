@@ -405,13 +405,13 @@
     <string name="details_compatibility_gms_required_title">Vyžaduje Služby Google Play</string>
     <string name="details_compatibility_gms_required_subtitle">Možná bude nutná instalace proprietární knihovny společnosti Google nebo svobodné implementace, jako je microG.</string>
     <string name="details_compatibility_gms_not_required_subtitle">Tato aplikace funguje bez proprietární knihovny společnosti Google. Může nicméně ke správné funkčnosti stále vyžadovat další knihovny třetích stran.</string>
-    <string name="details_compatibility_microg">S projektem microG</string>
+    <string name="details_compatibility_microg">Se službou microG</string>
     <string name="details_compatibility_no_gms">Bez Služeb Google Play</string>
     <string name="details_compatibility_status_limited">Omezené: funguje s omezeními</string>
     <string name="details_compatibility_status_unsupported">Nepodporované: nefunguje</string>
     <string name="details_compatibility_status_unknown">Neznámé: zatím nezkontrolováno</string>
     <string name="details_compatibility_gms_not_required_title">Funguje bez Služeb Google Play</string>
-    <string name="details_compatibility_status_compatible">Kompatibilní: funguje bez problémů</string>
+    <string name="details_compatibility_status_compatible">Kompatibilní – funguje bez problémů</string>
     <string name="plexus_progress">Kontrola kompatibility…</string>
     <string name="plexus_powered">Využívá službu Plexus</string>
     <string name="installed_apps_size">Nainstalováno <xliff:g id="installed_apps_size">%1$d</xliff:g> aplikací</string>
