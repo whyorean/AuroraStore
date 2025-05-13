@@ -64,7 +64,7 @@
     <string name="action_filter_paid_apps">Maksas</string>
     <string name="action_finish">Pabeigt</string>
     <string name="action_pending">Gaida</string>
-    <string name="details_changelog">Izmaiņu apraksts</string>
+    <string name="details_changelog">Izmaiņu žurnāls</string>
     <string name="details_contains_ads">Satur reklāmas</string>
     <string name="details_dev_details">Izstrādātāja saziņas informācija</string>
     <string name="details_dev_profile">Izstrādātāja profils</string>
@@ -150,7 +150,7 @@
     <string name="action_ok">Labi</string>
     <string name="download_eta_calculating">Aprēķina</string>
     <string name="download_queued">Ierindots</string>
-    <string name="details_changelog_unavailable">Nav izmaiņu apraksta</string>
+    <string name="details_changelog_unavailable">Nav izmaiņu žurnāla</string>
     <string name="details_description">Apraksts</string>
     <string name="details_dev_address">Adrese</string>
     <string name="download_none">Nav lejupielāžu</string>
