@@ -96,9 +96,9 @@ class AppDetailsViewModel @Inject constructor(
                 checkFavourite(packageName)
 
                 val app: App = appStash.getOrPut(packageName) {
-                    appDetailsHelper.getAppByPackageName(packageName).apply {
+                    appDetailsHelper.getAppByPackageName(packageName).copy(
                         isInstalled = PackageUtil.isInstalled(context, packageName)
-                    }
+                    )
                 }
 
                 _app.emit(app)

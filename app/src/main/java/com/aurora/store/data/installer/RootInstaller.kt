@@ -81,7 +81,7 @@ class RootInstaller @Inject constructor(
         }
     }
 
-    private fun xInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
+    private fun xInstall(packageName: String, versionCode: Long, sharedLibPkgName: String = "") {
         var totalSize = 0
 
         for (file in getFiles(packageName, versionCode, sharedLibPkgName))

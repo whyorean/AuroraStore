@@ -107,7 +107,7 @@ class DownloadHelper @Inject constructor(
      * @param packageName Name of the package of the app
      * @param versionCode Version of the package
      */
-    suspend fun clearDownload(packageName: String, versionCode: Int) {
+    suspend fun clearDownload(packageName: String, versionCode: Long) {
         Log.i(TAG, "Clearing downloads for $packageName ($versionCode)")
         downloadDao.delete(packageName)
         PathUtil.getAppDownloadDir(context, packageName, versionCode)

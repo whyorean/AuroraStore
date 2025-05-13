@@ -183,7 +183,7 @@ class SessionInstaller @Inject constructor(
 
     private fun stageInstall(
         packageName: String,
-        versionCode: Int,
+        versionCode: Long,
         sharedLibPkgName: String = ""
     ): Int? {
         val resolvedPackageName = sharedLibPkgName.ifBlank { packageName }

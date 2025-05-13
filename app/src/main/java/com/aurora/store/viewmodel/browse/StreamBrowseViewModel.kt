@@ -56,10 +56,10 @@ class StreamBrowseViewModel @Inject constructor(
                             streamCluster.clusterNextPageUrl
                         )
 
-                        streamCluster.apply {
-                            clusterAppList.addAll(nextCluster.clusterAppList)
-                            clusterNextPageUrl = nextCluster.clusterNextPageUrl
-                        }
+                        streamCluster = streamCluster.copy(
+                            clusterNextPageUrl = nextCluster.clusterNextPageUrl,
+                            clusterAppList = streamCluster.clusterAppList + nextCluster.clusterAppList
+                        )
 
                         liveData.postValue(streamCluster)
                     } else {

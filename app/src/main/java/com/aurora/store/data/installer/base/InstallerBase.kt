@@ -103,7 +103,7 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
 
     fun getFiles(
         packageName: String,
-        versionCode: Int,
+        versionCode: Long,
         sharedLibPackageName: String = ""
     ): List<File> {
         val downloadDir = if (sharedLibPackageName.isNotBlank()) {

@@ -62,10 +62,11 @@ class DetailsClusterViewModel @Inject constructor(
                     if (!bundle.hasCluster() || bundle.hasNext()) {
                         val newBundle = appDetailsHelper.getDetailsStream(streamUrl)
 
-                        bundle.apply {
-                            streamClusters.putAll(newBundle.streamClusters)
+                        val mergedBundle = bundle.copy(
+                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
-                        }
+                        )
+                        stash[streamUrl] = mergedBundle
 
                         liveData.postValue(ViewState.Success(stash))
                     }
@@ -87,7 +88,6 @@ class DetailsClusterViewModel @Inject constructor(
                         liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i(TAG, "End of cluster")
-                        streamCluster.clusterNextPageUrl = String()
                     }
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
@@ -101,9 +101,18 @@ class DetailsClusterViewModel @Inject constructor(
         clusterID: Int,
         newCluster: StreamCluster
     ) {
-        targetBundle(url).streamClusters[clusterID]?.apply {
-            clusterAppList.addAll(newCluster.clusterAppList)
-            clusterNextPageUrl = newCluster.clusterNextPageUrl
+        val bundle = targetBundle(url)
+        bundle.streamClusters[clusterID]?.let { oldCluster ->
+            val mergedCluster = oldCluster.copy(
+                clusterNextPageUrl = newCluster.clusterNextPageUrl,
+                clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+            )
+            val newStreamClusters = bundle.streamClusters.toMutableMap().also {
+                it.remove(clusterID)
+                it[clusterID] = mergedCluster
+            }
+
+            stash.put(url, bundle.copy(streamClusters = newStreamClusters))
         }
     }
 

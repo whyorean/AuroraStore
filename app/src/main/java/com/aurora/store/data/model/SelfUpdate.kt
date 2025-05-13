@@ -23,7 +23,7 @@ import android.content.Context
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.EncodedCertificateSet
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.util.CertUtil
@@ -31,7 +31,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SelfUpdate(
     @SerializedName("version_name") var versionName: String = String(),
-    @SerializedName("version_code") var versionCode: Int = 0,
+    @SerializedName("version_code") var versionCode: Long = 0,
     @SerializedName("aurora_build") var auroraBuild: String = String(),
     @SerializedName("fdroid_build") var fdroidBuild: String = String(),
     @SerializedName("updated_on") var updatedOn: String = String(),
@@ -63,7 +63,7 @@ data class SelfUpdate(
                 developerName = "Rahul Kumar Patel",
                 iconArtwork = Artwork(url = "$BASE_URL/$icon"),
                 fileList = mutableListOf(
-                    File(
+                    PlayFile(
                         name = "${context.packageName}.apk",
                         url = downloadURL,
                         size = selfUpdate.size

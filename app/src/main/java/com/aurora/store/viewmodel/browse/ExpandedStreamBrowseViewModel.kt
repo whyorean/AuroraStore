@@ -67,10 +67,10 @@ class ExpandedStreamBrowseViewModel @Inject constructor(
                         streamCluster.clusterNextPageUrl
                     )
 
-                    streamCluster.apply {
-                        clusterAppList.addAll(newCluster.clusterAppList)
+                    streamCluster = streamCluster.copy(
+                        clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList,
                         clusterNextPageUrl = newCluster.clusterNextPageUrl
-                    }
+                    )
 
                     liveData.postValue(streamCluster)
 

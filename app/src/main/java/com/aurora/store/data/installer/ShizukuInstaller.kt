@@ -129,7 +129,7 @@ class ShizukuInstaller @Inject constructor(
 
     private fun install(
         packageName: String,
-        versionCode: Int,
+        versionCode: Long,
         sharedLibPkgName: String = "",
         displayName: String = ""
     ) {

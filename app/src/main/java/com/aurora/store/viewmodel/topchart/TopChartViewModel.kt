@@ -85,10 +85,13 @@ class TopChartViewModel @Inject constructor(
         chart: TopChartsContract.Chart,
         newCluster: StreamCluster
     ) {
-        targetCluster(type, chart).apply {
-            clusterAppList.addAll(newCluster.clusterAppList)
-            clusterNextPageUrl = newCluster.clusterNextPageUrl
-        }
+        val streamCluster = targetCluster(type, chart)
+        val mergedCluster = streamCluster.copy(
+            clusterNextPageUrl = newCluster.clusterNextPageUrl,
+            clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList
+        )
+
+        stash[type] = mutableMapOf(chart to mergedCluster)
     }
 
     private fun targetCluster(

@@ -76,7 +76,6 @@ class DevProfileViewModel @Inject constructor(
                         liveData.postValue(ViewState.Success(devStream))
                     } else {
                         Log.i(TAG, "End of cluster")
-                        streamCluster.clusterNextPageUrl = String()
                     }
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
@@ -86,9 +85,17 @@ class DevProfileViewModel @Inject constructor(
     }
 
     private fun updateCluster(newCluster: StreamCluster) {
-        streamBundle.streamClusters[newCluster.id]?.apply {
-            clusterAppList.addAll(newCluster.clusterAppList)
-            clusterNextPageUrl = newCluster.clusterNextPageUrl
+        streamBundle.streamClusters[newCluster.id]?.let { oldCluster ->
+            val mergedCluster = oldCluster.copy(
+                clusterNextPageUrl = newCluster.clusterNextPageUrl,
+                clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+            )
+            val newStreamClusters = streamBundle.streamClusters.toMutableMap().also {
+                it.remove(newCluster.id)
+                it[newCluster.id] = mergedCluster
+            }
+
+            streamBundle = streamBundle.copy(streamClusters = newStreamClusters)
         }
     }
 }

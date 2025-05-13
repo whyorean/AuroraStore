@@ -24,6 +24,7 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
@@ -55,7 +56,6 @@ import java.security.DigestInputStream
 import java.security.MessageDigest
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.properties.Delegates
-import com.aurora.gplayapi.data.models.File as GPlayFile
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
@@ -127,7 +127,7 @@ class DownloadWorker @AssistedInject constructor(
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
-        val files = mutableListOf<GPlayFile>()
+        val files = mutableListOf<PlayFile>()
 
         // Check if shared libs are present, if yes, handle them first
         if (download.sharedLibs.isNotEmpty()) {
@@ -245,7 +245,7 @@ class DownloadWorker @AssistedInject constructor(
      * @param offerType Offer type of the app (free/paid)
      * @return A list of purchased files
      */
-    private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
+    private fun purchase(packageName: String, versionCode: Long, offerType: Int): List<PlayFile> {
         try {
             // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
             return if (isPAndAbove && download.isInstalled) {
@@ -267,10 +267,10 @@ class DownloadWorker @AssistedInject constructor(
     /**
      * Downloads the file from the given request.
      * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
-     * @param gFile A [GPlayFile] to download
+     * @param gFile A [PlayFile] to download
      * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(packageName: String, gFile: GPlayFile): Boolean {
+    private suspend fun downloadFile(packageName: String, gFile: PlayFile): Boolean {
         return withContext(Dispatchers.IO) {
             Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
             val file = PathUtil.getLocalFile(context, gFile, download)
@@ -414,11 +414,11 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Verifies integrity of a downloaded [GPlayFile].
-     * @param gFile [GPlayFile] to verify
+     * Verifies integrity of a downloaded [PlayFile].
+     * @param gFile [PlayFile] to verify
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun verifyFile(gFile: GPlayFile): Boolean {
+    private suspend fun verifyFile(gFile: PlayFile): Boolean {
         val file = PathUtil.getLocalFile(context, gFile, download)
         Log.i(TAG, "Verifying $file")
 
@@ -446,7 +446,7 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private fun deleteFile(file: GPlayFile) {
+    private fun deleteFile(file: PlayFile) {
         val apkFile = PathUtil.getLocalFile(context, file, download)
         if (apkFile.exists()) {
             apkFile.delete()

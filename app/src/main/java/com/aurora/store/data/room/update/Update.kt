@@ -5,7 +5,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.room.download.SharedLib
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
@@ -16,7 +16,7 @@ import kotlinx.parcelize.Parcelize
 data class Update(
     @PrimaryKey
     val packageName: String,
-    val versionCode: Int,
+    val versionCode: Long,
     val versionName: String,
     val displayName: String,
     val iconURL: String,
@@ -27,7 +27,7 @@ data class Update(
     val updatedOn: String,
     val hasValidCert: Boolean,
     val offerType: Int,
-    var fileList: List<File>,
+    var fileList: List<PlayFile>,
     val sharedLibs: List<SharedLib>,
     val targetSdk: Int = 1
 ) : Parcelable {
