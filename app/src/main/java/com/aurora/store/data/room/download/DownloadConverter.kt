@@ -2,7 +2,7 @@ package com.aurora.store.data.room.download
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import javax.inject.Inject
@@ -24,13 +24,13 @@ class DownloadConverter @Inject constructor(private val gson: Gson) {
     }
 
     @TypeConverter
-    fun toGPlayFileList(string: String): List<File> {
-        val listType = object : TypeToken<List<File>>() {}.type
+    fun toGPlayFileList(string: String): List<PlayFile> {
+        val listType = object : TypeToken<List<PlayFile>>() {}.type
         return gson.fromJson(string, listType)
     }
 
     @TypeConverter
-    fun fromGPlayFileList(list: List<File>): String {
+    fun fromGPlayFileList(list: List<PlayFile>): String {
         return gson.toJson(list)
     }
 }

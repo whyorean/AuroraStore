@@ -52,7 +52,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
         if (context != null && intent?.action == ACTION_INSTALL_STATUS) {
             val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)!!
             val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME)!!
-            val versionCode = intent.getIntExtra(EXTRA_VERSION_CODE, -1)
+            val versionCode = intent.getLongExtra(EXTRA_VERSION_CODE, -1)
 
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)

@@ -57,11 +57,10 @@ class ReviewViewModel @Inject constructor(
             supervisorScope {
                 try {
                     val nextReviewCluster = reviewsHelper.next(nextReviewPageUrl)
-                    reviewsCluster.copy(
-                        nextPageUrl = nextReviewCluster.nextPageUrl
-                    ).apply {
-                        reviewList.addAll(nextReviewCluster.reviewList)
-                    }
+                    reviewsCluster = reviewsCluster.copy(
+                        nextPageUrl = nextReviewCluster.nextPageUrl,
+                        reviewList = nextReviewCluster.reviewList + nextReviewCluster.reviewList
+                    )
 
                     liveData.postValue(reviewsCluster)
                 } catch (_: Exception) {

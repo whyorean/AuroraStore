@@ -77,7 +77,7 @@ class ExportWorker @AssistedInject constructor(
                 .putString(URI, uri.toString())
                 .putString(DISPLAY_NAME, download.displayName)
                 .putString(PACKAGE_NAME, download.packageName)
-                .putInt(VERSION_CODE, download.versionCode)
+                .putLong(VERSION_CODE, download.versionCode)
                 .build()
 
             val oneTimeWorkRequest = OneTimeWorkRequestBuilder<ExportWorker>()
@@ -99,11 +99,11 @@ class ExportWorker @AssistedInject constructor(
         val uri = inputData.getString(URI)!!.toUri()
         val packageName = inputData.getString(PACKAGE_NAME)
         val displayName = inputData.getString(DISPLAY_NAME)
-        val versionCode = inputData.getInt(VERSION_CODE, -1)
+        val versionCode = inputData.getLong(VERSION_CODE, -1)
 
         notificationManager = context.getSystemService<NotificationManager>()!!
 
-        if (packageName.isNullOrEmpty() || isDownload && versionCode == -1) {
+        if (packageName.isNullOrEmpty() || isDownload && versionCode == -1L) {
             Log.e(TAG, "Input data is corrupt, bailing out!")
             notifyStatus(displayName ?: String(), uri, false)
             return Result.failure()
@@ -156,7 +156,7 @@ class ExportWorker @AssistedInject constructor(
         bundleAllAPKs(fileList.filterNotNull(), uri)
     }
 
-    private fun copyDownloadedApp(packageName: String, versionCode: Int, uri: Uri) {
+    private fun copyDownloadedApp(packageName: String, versionCode: Long, uri: Uri) {
         return bundleAllAPKs(
             PathUtil.getAppDownloadDir(context, packageName, versionCode).listFiles()!!.toList(),
             uri

@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.model.DownloadStatus
 import kotlinx.coroutines.flow.Flow
 
@@ -18,7 +18,7 @@ interface DownloadDao {
     suspend fun updateStatus(packageName: String, downloadStatus: DownloadStatus)
 
     @Query("UPDATE download SET fileList=:fileList WHERE packageName=:packageName")
-    suspend fun updateFiles(packageName: String, fileList: List<File>)
+    suspend fun updateFiles(packageName: String, fileList: List<PlayFile>)
 
     @Query("UPDATE download SET sharedLibs=:sharedLibs WHERE packageName=:packageName")
     suspend fun updateSharedLibs(packageName: String, sharedLibs: List<SharedLib>)

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.update.Update
 import kotlinx.parcelize.Parcelize
@@ -14,7 +14,7 @@ import java.util.Date
 @Entity(tableName = "download")
 data class Download(
     @PrimaryKey val packageName: String,
-    val versionCode: Int,
+    val versionCode: Long,
     val offerType: Int,
     val isInstalled: Boolean,
     val displayName: String,
@@ -27,7 +27,7 @@ data class Download(
     var timeRemaining: Long,
     var totalFiles: Int,
     var downloadedFiles: Int,
-    var fileList: List<File>,
+    var fileList: List<PlayFile>,
     val sharedLibs: List<SharedLib>,
     val targetSdk: Int = 1,
     val downloadedAt: Long = 0

@@ -24,7 +24,7 @@ class ManualDownloadViewModel @Inject constructor(
     private val _purchaseStatus = MutableSharedFlow<Boolean>()
     val purchaseStatus = _purchaseStatus.asSharedFlow()
 
-    fun purchase(app: App, customVersion: Int) {
+    fun purchase(app: App, customVersion: Long) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val files = purchaseHelper.purchase(app.packageName, customVersion, app.offerType)

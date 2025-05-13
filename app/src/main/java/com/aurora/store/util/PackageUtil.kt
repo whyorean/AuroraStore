@@ -51,8 +51,8 @@ object PackageUtil {
     private const val TAG = "PackageUtil"
 
     const val PACKAGE_NAME_GMS = "com.google.android.gms"
-    private const val VERSION_CODE_MICRO_G = 240913402
-    private const val VERSION_CODE_MICRO_G_HUAWEI = 240913007
+    private const val VERSION_CODE_MICRO_G: Long = 240913402
+    private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
 
     fun getAllValidPackages(context: Context): List<PackageInfo> {
         return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
@@ -85,7 +85,7 @@ object PackageUtil {
         }
     }
 
-    fun isInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
+    fun isInstalled(context: Context, packageName: String, versionCode: Long): Boolean {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
             return PackageInfoCompat.getLongVersionCode(packageInfo) >= versionCode.toLong()
@@ -110,17 +110,17 @@ object PackageUtil {
         }
     }
 
-    fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
+    fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Long): Boolean {
         return if (isOAndAbove) {
             val sharedLibraries = getAllSharedLibraries(context)
             if (isPAndAbove) {
                 sharedLibraries.any {
-                    it.name == packageName && it.longVersion == versionCode.toLong()
+                    it.name == packageName && it.longVersion == versionCode
                 }
             } else {
                 sharedLibraries.any {
                     @Suppress("DEPRECATION")
-                    it.name == packageName && it.version == versionCode
+                    it.name == packageName && it.version == versionCode.toInt()
                 }
             }
         } else {

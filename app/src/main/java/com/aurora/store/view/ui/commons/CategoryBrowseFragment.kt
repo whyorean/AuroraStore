@@ -27,8 +27,6 @@ import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.gplayapi.utils.CategoryUtil
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
@@ -44,13 +42,10 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     private val args: CategoryBrowseFragmentArgs by navArgs()
     private val viewModel: CategoryStreamViewModel by activityViewModels()
 
-    private lateinit var category: StreamContract.Category
     private var streamBundle: StreamBundle? = StreamBundle()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        category = CategoryUtil.getCategoryFromUrl(args.browseUrl)
 
         val genericCarouselController = CategoryCarouselController(this)
 
@@ -64,11 +59,11 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
         binding.recycler.setController(genericCarouselController)
         binding.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                viewModel.observe(category)
+                viewModel.observe(args.browseUrl)
             }
         })
 
-        viewModel.getStreamBundle(category)
+        viewModel.getStreamBundle(args.browseUrl)
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Loading -> {
@@ -77,7 +72,7 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
 
                 is ViewState.Success<*> -> {
                     val stash = it.getDataAs<Map<String, StreamBundle>>()
-                    streamBundle = stash[category.value]
+                    streamBundle = stash[args.browseUrl]
 
                     genericCarouselController.setData(streamBundle)
                 }
@@ -92,7 +87,7 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        viewModel.observeCluster(category, streamCluster)
+        viewModel.observeCluster(args.browseUrl, streamCluster)
     }
 
     override fun onAppClick(app: App) {

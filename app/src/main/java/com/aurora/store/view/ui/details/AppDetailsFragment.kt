@@ -136,8 +136,8 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     val requestedApp = app.copy(
                         versionCode = event.versionCode,
                         dependencies = app.dependencies.copy(
-                            dependentLibraries = app.dependencies.dependentLibraries.onEach { lib ->
-                                lib.versionCode = event.versionCode
+                            dependentLibraries = app.dependencies.dependentLibraries.map { lib ->
+                                lib.copy(versionCode = event.versionCode)
                             }
                         )
                     )
@@ -173,11 +173,10 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        app = args.app ?: App(args.packageName)
-        app.apply {
-            // Check whether app is installed or not
+        app = args.app ?: App(
+            packageName = args.packageName,
             isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
-        }
+        )
 
         // Show the basic app details, while the rest of the data is being fetched
         updateAppHeader(app, false)
@@ -204,7 +203,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     updateExtraDetails(app)
                     updateCompatibilityInfo()
 
-                    if (app.versionCode == 0) {
+                    if (app.versionCode == 0L) {
                         warnAppUnavailable(app)
                     }
 
@@ -607,7 +606,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun checkAndSetupInstall() {
-        app.isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+        app = app.copy(isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName))
 
         // Setup primary and secondary action buttons
         binding.layoutDetailsApp.btnPrimaryAction.isEnabled = true
@@ -634,7 +633,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 binding.layoutDetailsApp.btnPrimaryAction.apply {
                     text = getString(R.string.action_update)
                     setOnClickListener {
-                        if (app.versionCode == 0) {
+                        if (app.versionCode == 0L) {
                             toast(R.string.toast_app_unavailable)
                             setText(R.string.status_unavailable)
                         } else {
@@ -692,7 +691,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 if (viewModel.authProvider.isAnonymous && !app.isFree) {
                     toast(R.string.toast_purchase_blocked)
                     return@setOnClickListener
-                } else if (app.versionCode == 0) {
+                } else if (app.versionCode == 0L) {
                     toast(R.string.toast_app_unavailable)
                     return@setOnClickListener
                 }

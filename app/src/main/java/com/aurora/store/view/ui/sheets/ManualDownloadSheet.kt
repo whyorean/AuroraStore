@@ -95,7 +95,7 @@ class ManualDownloadSheet : BaseDialogSheet<SheetManualDownloadBinding>() {
             if (customVersionString.isEmpty())
                 binding.versionCodeInp.error = "Enter version code"
             else {
-                viewModel.purchase(args.app, customVersionString.toInt())
+                viewModel.purchase(args.app, customVersionString.toLong())
             }
         }
 

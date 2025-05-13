@@ -23,7 +23,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.databinding.ViewFileBinding
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.view.epoxy.views.BaseModel
@@ -40,7 +40,7 @@ class FileView @JvmOverloads constructor(
 ) : BaseView<ViewFileBinding>(context, attrs, defStyleAttr) {
 
     @ModelProp
-    fun file(file: File) {
+    fun file(file: PlayFile) {
         binding.line1.text = file.name
         binding.line2.text = CommonUtil.addSiPrefix(file.size)
     }

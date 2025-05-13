@@ -76,10 +76,11 @@ class StreamViewModel @Inject constructor(
                         }
 
                         //Update old bundle
-                        bundle.apply {
-                            streamClusters.putAll(newBundle.streamClusters)
+                        val mergedBundle = bundle.copy(
+                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
-                        }
+                        )
+                        stash[category] = mergedBundle
 
                         //Post updated to UI
                         liveData.postValue(ViewState.Success(stash))
@@ -98,13 +99,13 @@ class StreamViewModel @Inject constructor(
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
-                        val newCluster =
-                            streamContract.nextStreamCluster(streamCluster.clusterNextPageUrl)
+                        val newCluster = streamContract.nextStreamCluster(
+                            streamCluster.clusterNextPageUrl
+                        )
                         updateCluster(category, streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i(TAG, "End of cluster")
-                        streamCluster.clusterNextPageUrl = String()
                     }
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
@@ -118,9 +119,18 @@ class StreamViewModel @Inject constructor(
         clusterID: Int,
         newCluster: StreamCluster
     ) {
-        targetBundle(category).streamClusters[clusterID]?.apply {
-            clusterAppList.addAll(newCluster.clusterAppList)
-            clusterNextPageUrl = newCluster.clusterNextPageUrl
+        val bundle = targetBundle(category)
+        bundle.streamClusters[clusterID]?.let { oldCluster ->
+            val mergedCluster = oldCluster.copy(
+                clusterNextPageUrl = newCluster.clusterNextPageUrl,
+                clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+            )
+            val newStreamClusters = bundle.streamClusters.toMutableMap().also {
+                it.remove(clusterID)
+                it[clusterID] = mergedCluster
+            }
+
+            stash.put(category, bundle.copy(streamClusters = newStreamClusters))
         }
     }
 

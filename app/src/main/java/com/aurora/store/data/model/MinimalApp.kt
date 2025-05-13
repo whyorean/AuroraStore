@@ -1,13 +1,9 @@
 package com.aurora.store.data.model
 
-import android.content.Context
-import android.content.pm.PackageInfo
 import android.graphics.Bitmap
 import android.os.Parcelable
-import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.data.room.update.Update
-import com.aurora.store.util.PackageUtil
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
@@ -15,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 data class MinimalApp(
     val packageName: String,
     val versionName: String,
-    val versionCode: Int,
+    val versionCode: Long,
     val displayName: String,
     @IgnoredOnParcel
     val icon: Bitmap? = null
@@ -32,14 +28,6 @@ data class MinimalApp(
             )
         }
 
-        fun toApp(minimalApp: MinimalApp): App {
-            return App(minimalApp.packageName).apply {
-                versionName = minimalApp.versionName ?: ""
-                versionCode = minimalApp.versionCode
-                displayName = minimalApp.displayName
-            }
-        }
-
         fun fromUpdate(update: Update): MinimalApp {
             return MinimalApp(
                 update.packageName,
@@ -49,14 +37,5 @@ data class MinimalApp(
             )
         }
 
-        fun fromPackageInfo(context: Context, packageInfo: PackageInfo): MinimalApp {
-            return MinimalApp(
-                packageInfo.packageName,
-                packageInfo.versionName ?: "",
-                PackageInfoCompat.getLongVersionCode(packageInfo).toInt(),
-                packageInfo.applicationInfo!!.loadLabel(context.packageManager).toString(),
-                PackageUtil.getIconForPackage(context, packageInfo.packageName)
-            )
-        }
     }
 }

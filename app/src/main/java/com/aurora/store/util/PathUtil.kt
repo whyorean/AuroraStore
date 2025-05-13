@@ -21,10 +21,10 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.os.Environment
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.room.download.Download
 import java.io.File
 import java.util.UUID
-import com.aurora.gplayapi.data.models.File as GPlayFile
 
 object PathUtil {
 
@@ -47,14 +47,14 @@ object PathUtil {
         return File(getDownloadDirectory(context), packageName)
     }
 
-    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Int): File {
+    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Long): File {
         return File(getPackageDirectory(context, packageName), versionCode.toString())
     }
 
     fun getLibDownloadDir(
         context: Context,
         packageName: String,
-        versionCode: Int,
+        versionCode: Long,
         sharedLibPackageName: String
     ): File {
         return File(
@@ -64,15 +64,15 @@ object PathUtil {
     }
 
     /**
-     * Returns an instance of java's [File] class for the given [GPlayFile]
+     * Returns an instance of java's [File] class for the given [PlayFile]
      * @param context [Context]
-     * @param gFile [GPlayFile] to download
+     * @param playFile [PlayFile] to download
      * @param download An instance of [Download]
      */
-    fun getLocalFile(context: Context, gFile: GPlayFile, download: Download): File {
-        val sharedLib = download.sharedLibs.find { it.fileList.contains(gFile) }
-        return when (gFile.type) {
-            GPlayFile.FileType.BASE, GPlayFile.FileType.SPLIT -> {
+    fun getLocalFile(context: Context, playFile: PlayFile, download: Download): File {
+        val sharedLib = download.sharedLibs.find { it.fileList.contains(playFile) }
+        return when (playFile.type) {
+            PlayFile.Type.BASE, PlayFile.Type.SPLIT -> {
                 val downloadDir = if (sharedLib != null) {
                     getLibDownloadDir(
                         context,
@@ -83,16 +83,16 @@ object PathUtil {
                 } else {
                     getAppDownloadDir(context, download.packageName, download.versionCode)
                 }
-                return File(downloadDir, gFile.name)
+                return File(downloadDir, playFile.name)
             }
 
-            GPlayFile.FileType.OBB, GPlayFile.FileType.PATCH -> {
-                File(getObbDownloadDir(download.packageName), gFile.name)
+            PlayFile.Type.OBB, PlayFile.Type.PATCH -> {
+                File(getObbDownloadDir(download.packageName), playFile.name)
             }
         }
     }
 
-    fun getZipFile(context: Context, packageName: String, versionCode: Int): File {
+    fun getZipFile(context: Context, packageName: String, versionCode: Long): File {
         return File(
             getAppDownloadDir(
                 context,

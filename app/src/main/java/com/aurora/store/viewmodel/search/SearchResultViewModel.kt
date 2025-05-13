@@ -23,7 +23,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.extensions.flushAndAdd
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
@@ -54,10 +53,6 @@ class SearchResultViewModel @Inject constructor(
         get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
 
     fun observeSearchResults(query: String) {
-        //Clear old results
-        searchBundle.subBundles.clear()
-        searchBundle.appList.clear()
-        //Fetch new results
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
@@ -75,17 +70,17 @@ class SearchResultViewModel @Inject constructor(
     }
 
     @Synchronized
-    fun next(nextSubBundleSet: MutableSet<SearchBundle.SubBundle>) {
+    fun next(nextSubBundleSet: Set<SearchBundle.SubBundle>) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
                     if (nextSubBundleSet.isNotEmpty()) {
-                        val newSearchBundle = helper.next(nextSubBundleSet)
+                        val newSearchBundle = helper.next(nextSubBundleSet.toMutableSet())
                         if (newSearchBundle.appList.isNotEmpty()) {
-                            searchBundle.apply {
-                                subBundles.flushAndAdd(newSearchBundle.subBundles)
-                                appList.addAll(newSearchBundle.appList)
-                            }
+                            searchBundle = searchBundle.copy(
+                                subBundles = newSearchBundle.subBundles,
+                                appList = searchBundle.appList + newSearchBundle.appList
+                            )
 
                             liveData.postValue(searchBundle)
                         }
