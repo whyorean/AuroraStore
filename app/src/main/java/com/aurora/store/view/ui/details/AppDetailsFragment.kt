@@ -1057,7 +1057,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             binding.layoutDetailsCompatibility.txtGmsDependency.apply {
                 title = getString(R.string.details_compatibility_gms_not_required_title)
                 subTitle = getString(R.string.details_compatibility_gms_not_required_subtitle)
-                titleColor = ContextCompat.getColor(context, R.color.colorRed)
+                titleColor = ContextCompat.getColor(context, R.color.colorGreen)
             }
         }
     }
