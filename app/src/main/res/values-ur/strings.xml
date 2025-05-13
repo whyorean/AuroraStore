@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_wiki_title">وکی</string>
+    <string name="about_wiki_summary">اکثر پوچھے گئے سوالات (F.A.Q.) کے جوابات تلاش کریں، ٹربل شوٹنگ کے اقدامات اور مزید بہت کچھ</string>
+    <string name="about_bhim">بھیم - یو پی آئی</string>
+    <string name="about_bhim_summary">UPI کے ذریعے عطیہ کریں</string>
+    <string name="about_bitcoin_bch">بٹ کوائن کیش</string>
+    <string name="about_bitcoin_bch_summary">بٹ کوائن کیش (BCH) کے ذریعے عطیہ کریں</string>
+    <string name="about_bitcoin_btc">بٹ کوائن</string>
+    <string name="about_bitcoin_btc_summary">بٹ کوائن (BTC) کے ذریعے عطیہ کریں</string>
+    <string name="about_bitcoin_eth">ایتھریم</string>
+</resources>
