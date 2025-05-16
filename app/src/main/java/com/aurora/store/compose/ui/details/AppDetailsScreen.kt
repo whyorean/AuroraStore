@@ -8,6 +8,7 @@ package com.aurora.store.compose.ui.details
 import android.content.ActivityNotFoundException
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -15,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
+import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.layout.SupportingPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.NavigableSupportingPaneScaffold
 import androidx.compose.material3.adaptive.navigation.rememberSupportingPaneScaffoldNavigator
@@ -37,6 +39,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
+import com.aurora.Constants.SHARE_URL
+import com.aurora.extensions.appInfo
+import com.aurora.extensions.browse
+import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -46,6 +52,8 @@ import com.aurora.store.compose.composables.app.AppProgressComposable
 import com.aurora.store.compose.composables.app.NoAppComposable
 import com.aurora.store.compose.composables.preview.AppPreviewProvider
 import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.menu.AppDetailsMenu
+import com.aurora.store.compose.menu.items.AppDetailsMenuItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.ui.details.components.AppActions
 import com.aurora.store.compose.ui.details.components.AppChangelog
@@ -66,6 +74,7 @@ import com.aurora.store.data.model.Scores
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.PACKAGE_NAME_GMS
+import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.launch
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
@@ -80,6 +89,7 @@ fun AppDetailsScreen(
     val context = LocalContext.current
 
     val app by viewModel.app.collectAsStateWithLifecycle()
+    val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
@@ -122,6 +132,7 @@ fun AppDetailsScreen(
                 } else {
                     ScreenContentApp(
                         app = this,
+                        isFavorite = favorite,
                         isAnonymous = viewModel.authProvider.isAnonymous,
                         download = download,
                         installProgress = installProgress,
@@ -132,6 +143,7 @@ fun AppDetailsScreen(
                         onNavigateUp = onNavigateUp,
                         onNavigateToAppDetails = onNavigateToAppDetails,
                         onDownload = { viewModel.download(this) },
+                        onFavorite = { viewModel.toggleFavourite(this) },
                         onManualDownload = { shouldShowManualDownloadDialog = true },
                         onCancelDownload = { viewModel.cancelDownload(this) },
                         onUninstall = { AppInstaller.uninstall(context, packageName) },
@@ -192,6 +204,7 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 private fun ScreenContentApp(
     app: App,
+    isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
     download: Download? = null,
     installProgress: Float? = null,
@@ -203,13 +216,17 @@ private fun ScreenContentApp(
     onNavigateToAppDetails: (packageName: String) -> Unit = {},
     onDownload: () -> Unit = {},
     onManualDownload: () -> Unit = {},
+    onFavorite: () -> Unit = {},
     onCancelDownload: () -> Unit = {},
     onUninstall: () -> Unit = {},
     onOpen: () -> Unit = {},
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}
 ) {
+    val context = LocalContext.current
     val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<Screen>()
     val coroutineScope = rememberCoroutineScope()
+    val shouldShowMenuOnMainPane = scaffoldNavigator
+        .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
 
     fun showMainPane() {
         coroutineScope.launch {
@@ -223,31 +240,48 @@ private fun ScreenContentApp(
         }
     }
 
+    @Composable
+    fun SetupMenu() {
+        AppDetailsMenu(isInstalled = app.isInstalled, isFavorite = isFavorite) { menuItem ->
+            when (menuItem) {
+                AppDetailsMenuItem.FAVORITE -> onFavorite()
+                AppDetailsMenuItem.MANUAL_DOWNLOAD -> onManualDownload()
+                AppDetailsMenuItem.SHARE -> context.share(app)
+                AppDetailsMenuItem.APP_INFO -> context.appInfo(app.packageName)
+                AppDetailsMenuItem.PLAY_STORE -> context.browse("$SHARE_URL${app.packageName}")
+                AppDetailsMenuItem.ADD_TO_HOME -> {
+                    ShortcutManagerUtil.requestPinShortcut(context, app.packageName)
+                }
+            }
+        }
+    }
+
     NavigableSupportingPaneScaffold(
         navigator = scaffoldNavigator,
         mainPane = {
             AnimatedPane {
                 ScreenContentAppMainPane(
                     app = app,
-                    isAnonymous = isAnonymous,
                     download = download,
                     installProgress = installProgress,
+                    isAnonymous = isAnonymous,
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
                     exodusReport = exodusReport,
                     hasValidUpdate = hasValidUpdate,
                     onNavigateUp = onNavigateUp,
+                    onNavigateToDetailsDevProfile = { showExtraPane(Screen.DevProfile(it)) },
+                    onNavigateToDetailsMore = { showExtraPane(Screen.DetailsMore) },
+                    onNavigateToDetailsScreenshot = { showExtraPane(Screen.DetailsScreenshot(it)) },
+                    onNavigateToDetailsReview = { showExtraPane(Screen.DetailsReview) },
+                    onNavigateToDetailsExodus = { showExtraPane(Screen.DetailsExodus) },
                     onDownload = onDownload,
                     onManualDownload = onManualDownload,
                     onCancelDownload = onCancelDownload,
                     onUninstall = onUninstall,
                     onOpen = onOpen,
-                    onNavigateToDetailsDevProfile = { showExtraPane(Screen.DevProfile(it)) },
-                    onNavigateToDetailsMore = { showExtraPane(Screen.DetailsMore) },
-                    onNavigateToDetailsReview = { showExtraPane(Screen.DetailsReview) },
-                    onNavigateToDetailsExodus = { showExtraPane(Screen.DetailsExodus) },
-                    onNavigateToDetailsScreenshot = { showExtraPane(Screen.DetailsScreenshot(it)) },
-                    onTestingSubscriptionChange = onTestingSubscriptionChange
+                    onTestingSubscriptionChange = onTestingSubscriptionChange,
+                    menuActions = { if (shouldShowMenuOnMainPane) SetupMenu() }
                 )
             }
         },
@@ -255,7 +289,8 @@ private fun ScreenContentApp(
             AnimatedPane {
                 DetailsSuggestions(
                     onNavigateUp = null,
-                    onNavigateToAppDetails = onNavigateToAppDetails
+                    onNavigateToAppDetails = onNavigateToAppDetails,
+                    menuActions = { SetupMenu() }
                 )
             }
         },
@@ -313,7 +348,8 @@ private fun ScreenContentAppMainPane(
     onCancelDownload: () -> Unit,
     onUninstall: () -> Unit,
     onOpen: () -> Unit,
-    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit
+    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit,
+    menuActions: @Composable (RowScope.() -> Unit) = {}
 ) {
     val context = LocalContext.current
 
@@ -366,9 +402,7 @@ private fun ScreenContentAppMainPane(
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(
-                onNavigateUp = onNavigateUp
-            )
+            TopAppBarComposable(onNavigateUp = onNavigateUp, actions = menuActions)
         }
     ) { paddingValues ->
         Column(
