@@ -45,6 +45,7 @@ import com.aurora.extensions.browse
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
@@ -62,7 +63,7 @@ import com.aurora.store.compose.ui.details.components.AppDataSafety
 import com.aurora.store.compose.ui.details.components.AppDetails
 import com.aurora.store.compose.ui.details.components.AppDeveloperDetails
 import com.aurora.store.compose.ui.details.components.AppPrivacy
-import com.aurora.store.compose.ui.details.components.AppReviews
+import com.aurora.store.compose.ui.details.components.AppRatingAndReviews
 import com.aurora.store.compose.ui.details.components.AppScreenshots
 import com.aurora.store.compose.ui.details.components.AppTags
 import com.aurora.store.compose.ui.details.components.AppTesting
@@ -89,6 +90,7 @@ fun AppDetailsScreen(
     val context = LocalContext.current
 
     val app by viewModel.app.collectAsStateWithLifecycle()
+    val featuredReviews by viewModel.featuredReviews.collectAsStateWithLifecycle()
     val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
@@ -132,6 +134,7 @@ fun AppDetailsScreen(
                 } else {
                     ScreenContentApp(
                         app = this,
+                        featuredReviews = featuredReviews,
                         isFavorite = favorite,
                         isAnonymous = viewModel.authProvider.isAnonymous,
                         download = download,
@@ -204,6 +207,7 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 private fun ScreenContentApp(
     app: App,
+    featuredReviews: List<Review> = emptyList(),
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
     download: Download? = null,
@@ -262,6 +266,7 @@ private fun ScreenContentApp(
             AnimatedPane {
                 ScreenContentAppMainPane(
                     app = app,
+                    featuredReviews = featuredReviews,
                     download = download,
                     installProgress = installProgress,
                     isAnonymous = isAnonymous,
@@ -329,6 +334,7 @@ private fun ScreenContentApp(
 @Composable
 private fun ScreenContentAppMainPane(
     app: App,
+    featuredReviews: List<Review> = emptyList(),
     download: Download?,
     installProgress: Float?,
     isAnonymous: Boolean,
@@ -443,7 +449,11 @@ private fun ScreenContentAppMainPane(
                 onNavigateToScreenshot = onNavigateToDetailsScreenshot
             )
 
-            AppReviews(rating = app.rating, onNavigateToDetailsReview = onNavigateToDetailsReview)
+            AppRatingAndReviews(
+                rating = app.rating,
+                featuredReviews = featuredReviews,
+                onNavigateToDetailsReview = onNavigateToDetailsReview
+            )
 
             if (!isAnonymous && app.testingProgram?.isAvailable == true) {
                 AppTesting(
