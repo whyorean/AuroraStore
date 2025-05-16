@@ -309,9 +309,8 @@ private fun ScreenContentApp(
                             index = screen.index,
                             onNavigateUp = ::showMainPane
                         )
-                        // TODO: Pass the real developerId
                         is Screen.DevProfile -> DevProfileScreen(
-                            developerId = app.developerName,
+                            publisherId = app.developerName,
                             onNavigateUp = ::showMainPane,
                             onNavigateToAppDetails = { onNavigateToAppDetails(it) }
                         )

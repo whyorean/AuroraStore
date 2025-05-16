@@ -23,6 +23,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.SearchHelper
@@ -33,6 +35,8 @@ import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -53,6 +57,9 @@ class SearchResultViewModel @Inject constructor(
 
     private val contract: SearchContract
         get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
+
+    private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
+    val apps = _apps.asStateFlow()
 
     private val stashMutex = Mutex()
 
