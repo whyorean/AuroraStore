@@ -63,6 +63,8 @@
     <dimen name="height_peek">64dp</dimen>
     <dimen name="height_nav_header">148dp</dimen>
 
+    <dimen name="review_height">200dp</dimen>
+
     <dimen name="radius_small">8dp</dimen>
     <dimen name="radius_medium">10dp</dimen>
     <dimen name="radius_normal">12dp</dimen>
