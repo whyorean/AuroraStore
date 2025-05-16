@@ -7,6 +7,7 @@ package com.aurora.store.compose.ui.details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -44,6 +45,7 @@ import kotlin.random.Random
 @Composable
 fun DetailsSuggestions(
     onNavigateUp: (() -> Unit)?,
+    menuActions: @Composable (RowScope.() -> Unit) = {},
     viewModel: AppDetailsViewModel = hiltViewModel(),
     onNavigateToAppDetails: (packageName: String) -> Unit
 ) {
@@ -51,6 +53,7 @@ fun DetailsSuggestions(
 
     ScreenContent(
         onNavigateUp = onNavigateUp,
+        menuActions = menuActions,
         suggestions = suggestions,
         onNavigateToAppDetails = onNavigateToAppDetails
     )
@@ -59,11 +62,12 @@ fun DetailsSuggestions(
 @Composable
 private fun ScreenContent(
     onNavigateUp: (() -> Unit)? = {},
+    menuActions: @Composable (RowScope.() -> Unit) = {},
     suggestions: List<App> = emptyList(),
     onNavigateToAppDetails: (packageName: String) -> Unit = {}
 ) {
     Scaffold(
-        topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp) }
+        topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp, actions = menuActions) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
