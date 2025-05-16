@@ -23,15 +23,23 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aurora.extensions.flushAndAdd
+import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.SearchBundle
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
+import com.aurora.store.data.paging.GenericPagingSource.Companion.createPager
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.FilterProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
@@ -53,6 +61,46 @@ class SearchResultViewModel @Inject constructor(
     private val helper: SearchContract
         get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
 
+    private var subBundles = mutableSetOf<SearchBundle.SubBundle>()
+    private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
+    val apps = _apps.asStateFlow()
+
+    fun search(query: String) {
+        viewModelScope.launch {
+            searchFlow(query)
+                .distinctUntilChanged()
+                .cachedIn(viewModelScope)
+                .collect { _apps.value = it }
+        }
+    }
+
+    private fun searchFlow(query: String): Flow<PagingData<App>> {
+        return createPager { page ->
+            when (page) {
+                1 -> {
+                    val result = helper.searchResults(query)
+                    subBundles = result.subBundles
+                    result.appList
+                }
+
+                else -> {
+                    try {
+                        val result = helper.next(subBundles)
+                        if (result.appList.isNotEmpty()) {
+                            subBundles = result.subBundles
+                            result.appList
+                        } else {
+                            emptyList()
+                        }
+                    } catch (exception: Exception) {
+                        Log.d(TAG, "Failed to get next bundle", exception)
+                        emptyList()
+                    }
+                }
+            }
+        }.flow
+    }
+
     fun observeSearchResults(query: String) {
         //Clear old results
         searchBundle.subBundles.clear()
@@ -61,7 +109,7 @@ class SearchResultViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    searchBundle = search(query)
+                    searchBundle = oldSearch(query)
                     liveData.postValue(searchBundle)
                 } catch (e: Exception) {
 
@@ -70,7 +118,7 @@ class SearchResultViewModel @Inject constructor(
         }
     }
 
-    private fun search(query: String): SearchBundle {
+    private fun oldSearch(query: String): SearchBundle {
         return helper.searchResults(query)
     }
 
