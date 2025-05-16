@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -20,11 +19,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
-import com.aurora.store.compose.composables.TransparentIconComposable
 import com.aurora.store.compose.menu.items.BlacklistMenuItem
 
 /**
@@ -52,39 +49,19 @@ fun BlacklistMenu(
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_select_all)) },
-                onClick = { onClick(BlacklistMenuItem.SELECT_ALL) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_select_all),
-                        contentDescription = null
-                    )
-                }
+                onClick = { onClick(BlacklistMenuItem.SELECT_ALL) }
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_remove_all)) },
-                onClick = { onClick(BlacklistMenuItem.REMOVE_ALL) },
-                leadingIcon = { TransparentIconComposable() }
+                onClick = { onClick(BlacklistMenuItem.REMOVE_ALL) }
             )
-            HorizontalDivider()
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_import)) },
-                onClick = { onClick(BlacklistMenuItem.IMPORT) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_file_import),
-                        contentDescription = null
-                    )
-                }
+                onClick = { onClick(BlacklistMenuItem.IMPORT) }
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_export)) },
-                onClick = { onClick(BlacklistMenuItem.EXPORT) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_file_export),
-                        contentDescription = null
-                    )
-                }
+                onClick = { onClick(BlacklistMenuItem.EXPORT) }
             )
         }
     }

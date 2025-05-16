@@ -100,8 +100,8 @@ private fun ScreenContent(
 
     @Composable
     fun SetupMenu() {
-        BlacklistMenu { blacklistMenuItem ->
-            when (blacklistMenuItem) {
+        BlacklistMenu { menuItem ->
+            when (menuItem) {
                 BlacklistMenuItem.SELECT_ALL -> onBlacklistAll()
                 BlacklistMenuItem.REMOVE_ALL -> onWhitelistAll()
                 BlacklistMenuItem.IMPORT -> {
