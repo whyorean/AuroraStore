@@ -33,19 +33,18 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 @HiltViewModel
 class BlacklistViewModel @Inject constructor(
-    private val gson: Gson,
+    private val json: Json,
     private val updateHelper: UpdateHelper,
     private val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context
@@ -132,9 +131,8 @@ class BlacklistViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openInputStream(uri)?.use {
-                    val importedSet: MutableSet<String> = gson.fromJson(
-                        it.bufferedReader().readText(),
-                        object : TypeToken<MutableSet<String?>?>() {}.type
+                    val importedSet = json.decodeFromString<MutableSet<String>>(
+                        it.bufferedReader().readText()
                     )
 
                     val validImportedSet = importedSet
@@ -155,7 +153,7 @@ class BlacklistViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openOutputStream(uri)?.use {
-                    it.write(gson.toJson(blacklistProvider.blacklist).encodeToByteArray())
+                    it.write(json.encodeToString(blacklistProvider.blacklist).encodeToByteArray())
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to export blacklist", exception)

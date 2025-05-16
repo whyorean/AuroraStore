@@ -23,7 +23,6 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.util.PackageUtil
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -35,6 +34,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import javax.inject.Inject
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
@@ -49,7 +49,7 @@ class AppDetailsViewModel @Inject constructor(
     private val downloadHelper: DownloadHelper,
     private val favouriteDao: FavouriteDao,
     private val httpClient: IHttpClient,
-    private val gson: Gson
+    private val json: Json
 ) : ViewModel() {
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
@@ -159,7 +159,7 @@ class AppDetailsViewModel @Inject constructor(
                 val plexusReport = plexusReportStash.getOrPut(packageName) {
                     val url = "${Constants.PLEXUS_API_URL}/${packageName}/?scores=true"
                     val playResponse = httpClient.get(url, emptyMap())
-                    gson.fromJson(String(playResponse.responseBytes), PlexusReport::class.java)
+                    json.decodeFromString<PlexusReport>(String(playResponse.responseBytes))
                 }
 
                 _plexusReport.emit(plexusReport)
@@ -284,9 +284,7 @@ class AppDetailsViewModel @Inject constructor(
         try {
             val jsonObject = JSONObject(response)
             val exodusObject = jsonObject.getJSONObject(packageName)
-            val exodusReport: ExodusReport = gson.fromJson(
-                exodusObject.toString(), ExodusReport::class.java
-            )
+            val exodusReport = json.decodeFromString<ExodusReport>(exodusObject.toString())
 
             return exodusReport.reports
         } catch (e: Exception) {

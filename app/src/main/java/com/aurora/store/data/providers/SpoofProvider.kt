@@ -23,8 +23,8 @@ import android.content.Context
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
-import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.serialization.json.Json
 import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
@@ -35,7 +35,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class SpoofProvider @Inject constructor(
-    private val gson: Gson,
+    private val json: Json,
     @ApplicationContext val context: Context,
 ) : SpoofDeviceProvider(context) {
 
@@ -85,9 +85,8 @@ class SpoofProvider @Inject constructor(
             .build()
 
     private val spoofDeviceProperties: Properties
-        get() = gson.fromJson(
-            Preferences.getString(context, DEVICE_SPOOF_PROPERTIES),
-            Properties::class.java
+        get() = json.decodeFromString<Properties>(
+            Preferences.getString(context, DEVICE_SPOOF_PROPERTIES)
         )
 
     fun setSpoofLocale(locale: Locale) {
@@ -98,7 +97,7 @@ class SpoofProvider @Inject constructor(
 
     fun setSpoofDeviceProperties(properties: Properties) {
         Preferences.putBoolean(context, DEVICE_SPOOF_ENABLED, true)
-        Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, gson.toJson(properties))
+        Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, json.encodeToString(properties))
     }
 
     fun removeSpoofLocale() {

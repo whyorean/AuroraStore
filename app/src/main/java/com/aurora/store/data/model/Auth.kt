@@ -19,6 +19,9 @@
 
 package com.aurora.store.data.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Auth(
     val email: String,
     val auth: String

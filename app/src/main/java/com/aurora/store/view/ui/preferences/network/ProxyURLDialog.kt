@@ -79,7 +79,7 @@ class ProxyURLDialog: DialogFragment() {
         val proxyInfo = CommonUtil.parseProxyUrl(url)
         if (proxyInfo != null) {
             save(PREFERENCE_PROXY_URL, url)
-            save(PREFERENCE_PROXY_INFO, viewModel.gson.toJson(proxyInfo))
+            save(PREFERENCE_PROXY_INFO, viewModel.json.encodeToString(proxyInfo))
             toast(R.string.toast_proxy_success)
             findNavController().navigate(R.id.forceRestartDialog)
             return

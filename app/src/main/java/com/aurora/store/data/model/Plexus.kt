@@ -2,27 +2,32 @@ package com.aurora.store.data.model
 
 import androidx.annotation.StringRes
 import com.aurora.store.R
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PlexusReport(
-    @SerializedName("data")
+    @SerialName("data")
     val report: Data?
 )
 
+@Serializable
 data class Data(
     val name: String,
     val scores: Scores,
-    @SerializedName("updated_at")
+    @SerialName("updated_at")
     val updatedAt: String
 )
 
+@Serializable
 data class Scores(
-    @SerializedName("micro_g")
+    @SerialName("micro_g")
     val microG: Rating,
-    @SerializedName("native")
+    @SerialName("native")
     val aosp: Rating
 )
 
+@Serializable
 data class Rating(
     val denominator: Float,
     val numerator: Float,

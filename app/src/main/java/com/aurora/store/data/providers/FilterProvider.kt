@@ -23,14 +23,14 @@ import android.content.Context
 import com.aurora.store.data.model.Filter
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.remove
-import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class FilterProvider @Inject constructor(
-    private val gson: Gson,
+    private val json: Json,
     @ApplicationContext private val context: Context
 ) {
 
@@ -45,10 +45,10 @@ class FilterProvider @Inject constructor(
 
     fun getSavedFilter(): Filter {
         val rawFilter = Preferences.getString(context, PREFERENCE_FILTER)
-        return gson.fromJson(rawFilter.ifEmpty { "{}" }, Filter::class.java)
+        return json.decodeFromString<Filter>(rawFilter.ifEmpty { "{}" })
     }
 
     fun saveFilter(filter: Filter) {
-        Preferences.putString(context, PREFERENCE_FILTER, gson.toJson(filter))
+        Preferences.putString(context, PREFERENCE_FILTER, json.encodeToString(filter))
     }
 }

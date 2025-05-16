@@ -30,20 +30,20 @@ import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.ImportExport
 import com.aurora.store.util.PackageUtil
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 @HiltViewModel
 class InstalledViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val blacklistProvider: BlacklistProvider,
-    private val gson: Gson,
+    private val json: Json,
     private val webAppDetailsHelper: WebAppDetailsHelper
 ) : ViewModel() {
 
@@ -83,7 +83,7 @@ class InstalledViewModel @Inject constructor(
                     Favourite.fromApp(app, Favourite.Mode.IMPORT)
                 }
                 context.contentResolver.openOutputStream(uri)?.use {
-                    it.write(gson.toJson(ImportExport(favourites)).encodeToByteArray())
+                    it.write(json.encodeToString(ImportExport(favourites)).encodeToByteArray())
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to installed apps", exception)

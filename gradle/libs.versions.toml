@@ -9,8 +9,7 @@ composeBom = "2025.05.00"
 core = "1.16.0"
 epoxy = "5.1.4"
 espresso = "3.6.1"
-gplayapi = "3.5.0"
-gson = "2.13.1"
+gplayapi = "3.5.1"
 hiddenapibypass = "6.1"
 hilt = "2.56.2"
 hiltWork = "1.2.0"
@@ -74,7 +73,6 @@ coil-network = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = 
 facebook-shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 github-topjohnwu-libsu = { module = "com.github.topjohnwu.libsu:core", version.ref = "libsu" }
 google-android-material = { module = "com.google.android.material:material", version.ref = "material" }
-google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 google-protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
 google-truth = { module = "com.google.truth:truth", version.ref = "truth" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }

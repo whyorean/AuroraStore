@@ -27,14 +27,16 @@ import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.util.CertUtil
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SelfUpdate(
-    @SerializedName("version_name") var versionName: String = String(),
-    @SerializedName("version_code") var versionCode: Long = 0,
-    @SerializedName("aurora_build") var auroraBuild: String = String(),
-    @SerializedName("fdroid_build") var fdroidBuild: String = String(),
-    @SerializedName("updated_on") var updatedOn: String = String(),
+    @SerialName("version_name") var versionName: String = String(),
+    @SerialName("version_code") var versionCode: Long = 0,
+    @SerialName("aurora_build") var auroraBuild: String = String(),
+    @SerialName("fdroid_build") var fdroidBuild: String = String(),
+    @SerialName("updated_on") var updatedOn: String = String(),
     val changelog: String = String(),
     val size: Long = 0L,
     val timestamp: Long = 0L

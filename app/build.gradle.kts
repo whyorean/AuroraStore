@@ -145,7 +145,6 @@ dependencies {
 
     //Google's Goodies
     implementation(libs.google.android.material)
-    implementation(libs.google.gson)
     implementation(libs.google.protobuf.javalite)
 
     //AndroidX
