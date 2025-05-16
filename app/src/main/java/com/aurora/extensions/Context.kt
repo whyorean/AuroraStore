@@ -32,6 +32,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
 import android.os.PowerManager
+import android.provider.Settings
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -57,6 +58,17 @@ fun Context.browse(url: String) {
         customTabsIntent.build().launchUrl(this, url.toUri())
     } catch (exception: Exception) {
         Log.e(TAG, "Failed to open custom tab", exception)
+    }
+}
+
+fun Context.appInfo(packageName: String) {
+    try {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = "package:$packageName".toUri()
+        }
+        startActivity(intent)
+    } catch (exception: Exception) {
+        Log.e(TAG, "Failed to open app info", exception)
     }
 }
 
