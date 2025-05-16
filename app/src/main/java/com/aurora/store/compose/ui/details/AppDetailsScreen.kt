@@ -209,7 +209,7 @@ private fun ScreenContentApp(
     download: Download? = null,
     installProgress: Float? = null,
     plexusScores: Scores? = null,
-    dataSafetyReport: com.aurora.gplayapi.data.models.datasafety.Report? = null,
+    dataSafetyReport: DataSafetyReport? = null,
     exodusReport: Report? = null,
     hasValidUpdate: Boolean = false,
     onNavigateUp: () -> Unit = {},
