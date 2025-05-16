@@ -318,7 +318,7 @@
     <string name="shizuku_installer_desc">Precisa do Shizuku ou Sui, precisa ser configurado e que a permissão seja concedida</string>
     <string name="am_installer_subtitle">Gerenciador de pacotes completo de código aberto</string>
     <string name="am_installer_desc">Precisa do App Manager, precisa do modo adb/root para instalar quando a otimização da MIUI está ligada</string>
-    <string name="shizuku_installer_subtitle">Usando APIs do sistema diretamente com privilégios de adb/root</string>
+    <string name="shizuku_installer_subtitle">Utilizando APIs do sistema diretamente com privilégios de adb/root</string>
     <string name="session_installer_subtitle">Instalador baseado em sessão para APKs em pacote/divididos</string>
     <string name="session_installer_desc">Recomendado, é integrado e suporta todas as versões do Android</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
@@ -416,7 +416,7 @@
     <string name="details_compatibility_status_unsupported">Não suportado: Não funciona</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
     <string name="no_apps_available">Nenhum app disponível</string>
-    <string name="pref_network_microg_login_title">Usar o microG para entrar em contas</string>
+    <string name="pref_network_microg_login_title">Utilizar o microG para entrar nas contas</string>
     <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao entrar em contas do Google para um fluxo de login mais simples.</string>
     <string name="set">Definir</string>
     <string name="disable">Desativar</string>
