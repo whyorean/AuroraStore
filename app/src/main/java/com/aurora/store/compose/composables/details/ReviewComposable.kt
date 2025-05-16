@@ -88,7 +88,8 @@ fun ReviewComposable(modifier: Modifier = Modifier, review: Review) {
             )
             Text(
                 text = review.comment,
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodySmall,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
