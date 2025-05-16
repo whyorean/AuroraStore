@@ -74,6 +74,9 @@ class AppDetailsViewModel @Inject constructor(
     private val _suggestions = MutableStateFlow<List<App>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
 
+    private val _featuredReviews = MutableStateFlow<List<Review>>(emptyList())
+    val featuredReviews = _featuredReviews.asStateFlow()
+
     private val _userReview = MutableStateFlow<Review?>(null)
     val userReview = _userReview.asStateFlow()
 
@@ -157,6 +160,7 @@ class AppDetailsViewModel @Inject constructor(
             if (throwable != null) return@invokeOnCompletion
 
             fetchFavourite(packageName)
+            fetchFeaturedReviews(packageName)
             fetchDataSafetyReport(packageName)
             fetchSuggestions()
             fetchExodusPrivacyReport(packageName)
@@ -164,6 +168,18 @@ class AppDetailsViewModel @Inject constructor(
                 fetchPlexusReport(packageName)
             }
         }
+    }
+
+    private fun fetchFeaturedReviews(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _featuredReviews.value = reviewsHelper.getReviewSummary(packageName)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch featured app reviews", exception)
+                _featuredReviews.value = emptyList()
+            }
+        }
+
     }
 
     fun updateTestingProgramStatus(packageName: String, subscribe: Boolean) {
