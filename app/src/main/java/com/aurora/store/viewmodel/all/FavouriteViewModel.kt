@@ -27,18 +27,18 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.favourite.ImportExport
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 @HiltViewModel
 class FavouriteViewModel @Inject constructor(
     private val favouriteDao: FavouriteDao,
-    private val gson: Gson
+    private val json: Json
 ) : ViewModel() {
     private val TAG = FavouriteViewModel::class.java.simpleName
 
@@ -49,9 +49,8 @@ class FavouriteViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openInputStream(uri)?.use {
-                    val importExport = gson.fromJson(
-                        it.bufferedReader().readText(),
-                        ImportExport::class.java
+                    val importExport = json.decodeFromString<ImportExport>(
+                        it.bufferedReader().readText()
                     )
 
                     favouriteDao.insertAll(
@@ -68,7 +67,10 @@ class FavouriteViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openOutputStream(uri)?.use {
-                    it.write(gson.toJson(ImportExport(favouritesList.value!!)).encodeToByteArray())
+                    it.write(
+                        json.encodeToString(ImportExport(favouritesList.value!!))
+                            .encodeToByteArray()
+                    )
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to export favourites", exception)

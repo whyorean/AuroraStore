@@ -1,11 +1,10 @@
 package com.aurora.store.module
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
 @Module
@@ -14,9 +13,11 @@ object CommonModule {
 
     @Singleton
     @Provides
-    fun providesGsonInstance(): Gson {
-        return GsonBuilder()
-            .setPrettyPrinting()
-            .create()
+    fun providesJsonInstance(): Json {
+        return Json {
+            prettyPrint = true
+            ignoreUnknownKeys = true
+            coerceInputValues = true
+        }
     }
 }

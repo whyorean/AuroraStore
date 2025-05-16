@@ -6,7 +6,9 @@ import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
+@Serializable
 @Parcelize
 @Entity(tableName = "favourite")
 data class Favourite(

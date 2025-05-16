@@ -19,6 +19,9 @@
 
 package com.aurora.store.data.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Filter(
     val appsWithAds: Boolean = true,
     val appsWithIAP: Boolean = true,

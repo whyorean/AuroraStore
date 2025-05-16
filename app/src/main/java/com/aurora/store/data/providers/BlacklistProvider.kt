@@ -24,23 +24,22 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.util.Preferences
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.serialization.json.Json
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class BlacklistProvider @Inject constructor(
-    private val gson: Gson,
+    private val json: Json,
     @ApplicationContext val context: Context,
 ) {
 
     private val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
 
     var blacklist: MutableSet<String>
-        set(value) = Preferences.putString(context, PREFERENCE_BLACKLIST, gson.toJson(value))
+        set(value) = Preferences.putString(context, PREFERENCE_BLACKLIST, json.encodeToString(value))
         get() {
             return try {
                 val rawBlacklist = if (isNAndAbove) {
@@ -66,7 +65,7 @@ class BlacklistProvider @Inject constructor(
                 if (rawBlacklist!!.isEmpty())
                     mutableSetOf()
                 else
-                    gson.fromJson(rawBlacklist, object : TypeToken<Set<String?>?>() {}.type)
+                    json.decodeFromString<MutableSet<String>>(rawBlacklist)
             } catch (e: Exception) {
                 mutableSetOf()
             }

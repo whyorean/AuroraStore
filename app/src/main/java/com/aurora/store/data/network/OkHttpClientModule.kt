@@ -28,12 +28,12 @@ import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.ProxyInfo
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_PROXY_INFO
-import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import java.io.ByteArrayInputStream
@@ -95,10 +95,10 @@ object OkHttpClientModule {
 
     @Provides
     @Singleton
-    fun providesProxyInstance(@ApplicationContext context: Context, gson: Gson): Proxy? {
+    fun providesProxyInstance(@ApplicationContext context: Context, json: Json): Proxy? {
         val proxyInfoString = Preferences.getString(context, PREFERENCE_PROXY_INFO)
         if (proxyInfoString.isNotBlank() && proxyInfoString != "{}") {
-            val proxyInfo = gson.fromJson(proxyInfoString, ProxyInfo::class.java)
+            val proxyInfo = json.decodeFromString<ProxyInfo>(proxyInfoString)
 
             val proxy = Proxy(
                 if (proxyInfo.protocol.removeSuffix("5") == "SOCKS") Proxy.Type.SOCKS else Proxy.Type.HTTP,

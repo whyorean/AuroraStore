@@ -29,11 +29,11 @@ import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
-import com.google.gson.Gson
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 import java.util.Locale
 
 /**
@@ -46,7 +46,7 @@ import java.util.Locale
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
-    private val gson: Gson,
+    private val json: Json,
     private val blacklistProvider: BlacklistProvider,
     private val httpClient: IHttpClient,
     private val updateDao: UpdateDao,
@@ -187,10 +187,7 @@ class UpdateWorker @AssistedInject constructor(
 
             try {
                 val response = httpClient.get(updateUrl, mapOf())
-                val selfUpdate = gson.fromJson(
-                    String(response.responseBytes),
-                    SelfUpdate::class.java
-                )
+                val selfUpdate = json.decodeFromString<SelfUpdate>(String(response.responseBytes))
 
                 val isUpdate = when (BuildType.CURRENT) {
                     BuildType.NIGHTLY,
