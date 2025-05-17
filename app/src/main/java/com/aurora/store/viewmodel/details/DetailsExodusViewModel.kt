@@ -37,7 +37,7 @@ class DetailsExodusViewModel @AssistedInject constructor(
         getExodusTrackersFromReport()
     }
 
-    fun getExodusTrackersFromReport() {
+    private fun getExodusTrackersFromReport() {
         viewModelScope.launch(Dispatchers.IO) {
             val trackerObjects = exodusReport.trackers.map {
                 exodusTrackers.getJSONObject(it.toString())
