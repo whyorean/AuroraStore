@@ -24,9 +24,6 @@
     app:startDestination="@id/splashFragment">
 
     <action
-        android:id="@+id/action_global_appDetailsFragment"
-        app:destination="@id/appDetailsFragment" />
-    <action
         android:id="@+id/action_global_categoryBrowseFragment"
         app:destination="@id/categoryBrowseFragment" />
     <action
@@ -148,36 +145,6 @@
             app:destination="@id/downloadMenuSheet" />
     </fragment>
     <fragment
-        android:id="@+id/appDetailsFragment"
-        android:name="com.aurora.store.view.ui.details.AppDetailsFragment"
-        tools:layout="@layout/fragment_details">
-        <argument
-            android:name="packageName"
-            app:argType="string" />
-        <argument
-            android:name="app"
-            android:defaultValue="@null"
-            app:argType="com.aurora.gplayapi.data.models.App"
-            app:nullable="true" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
-            app:destination="@id/devAppsFragment" />
-        <argument
-            android:name="app"
-            android:defaultValue="@null"
-            app:argType="com.aurora.gplayapi.data.models.App"
-            app:nullable="true" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_permissionBottomSheet"
-            app:destination="@id/permissionBottomSheet" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_installErrorDialogSheet"
-            app:destination="@id/installErrorDialogSheet" />
-        <action
-            android:id="@+id/action_appDetailsFragment_to_gmsWarnFragment"
-            app:destination="@id/detailsMicroGFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/categoryBrowseFragment"
         android:name="com.aurora.store.view.ui.commons.CategoryBrowseFragment"
         tools:layout="@layout/fragment_generic_with_toolbar">
@@ -275,12 +242,6 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_splashFragment_to_appDetailsFragment"
-            app:destination="@id/appDetailsFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/mobile_navigation"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/googleFragment"
@@ -346,14 +307,6 @@
         android:name="com.aurora.store.view.ui.sheets.FilterSheet"
         android:label="FilterSheet"
         tools:layout="@layout/sheet_filter" />
-    <dialog
-        android:id="@+id/permissionBottomSheet"
-        android:name="com.aurora.store.view.ui.sheets.PermissionBottomSheet"
-        tools:layout="@layout/sheet_permissions">
-        <argument
-            android:name="app"
-            app:argType="com.aurora.gplayapi.data.models.App" />
-    </dialog>
     <dialog
         android:id="@+id/downloadMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.DownloadMenuSheet"
