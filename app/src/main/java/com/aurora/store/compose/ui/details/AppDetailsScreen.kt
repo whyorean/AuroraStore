@@ -8,11 +8,15 @@ package com.aurora.store.compose.ui.details
 import android.content.ActivityNotFoundException
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
@@ -28,9 +32,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -49,6 +55,7 @@ import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.composables.app.AppListComposable
 import com.aurora.store.compose.composables.app.AppProgressComposable
 import com.aurora.store.compose.composables.app.NoAppComposable
 import com.aurora.store.compose.composables.preview.AppPreviewProvider
@@ -78,6 +85,7 @@ import com.aurora.store.util.PackageUtil.PACKAGE_NAME_GMS
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 
 @Composable
@@ -97,6 +105,7 @@ fun AppDetailsScreen(
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val download by viewModel.download.collectAsStateWithLifecycle()
     val installProgress by viewModel.installProgress.collectAsStateWithLifecycle()
+    val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
 
     var shouldShowManualDownloadDialog by rememberSaveable { mutableStateOf(false) }
 
@@ -135,6 +144,7 @@ fun AppDetailsScreen(
                     ScreenContentApp(
                         app = this,
                         featuredReviews = featuredReviews,
+                        suggestions = suggestions,
                         isFavorite = favorite,
                         isAnonymous = viewModel.authProvider.isAnonymous,
                         download = download,
@@ -208,6 +218,7 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
 private fun ScreenContentApp(
     app: App,
     featuredReviews: List<Review> = emptyList(),
+    suggestions: List<App> = emptyList(),
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
     download: Download? = null,
@@ -292,10 +303,10 @@ private fun ScreenContentApp(
         },
         supportingPane = {
             AnimatedPane {
-                DetailsSuggestions(
-                    onNavigateUp = null,
+                ScreenContentAppSupporting(
+                    suggestions = suggestions,
                     onNavigateToAppDetails = onNavigateToAppDetails,
-                    menuActions = { SetupMenu() }
+                    menuActions = { if (!shouldShowMenuOnMainPane) SetupMenu() }
                 )
             }
         },
@@ -492,6 +503,49 @@ private fun ScreenContentAppMainPane(
     }
 }
 
+/**
+ * Composable to display similar and related app suggestions
+ */
+@Composable
+private fun ScreenContentAppSupporting(
+    menuActions: @Composable (RowScope.() -> Unit) = {},
+    suggestions: List<App> = emptyList(),
+    onNavigateToAppDetails: (packageName: String) -> Unit = {}
+) {
+    Scaffold(
+        topBar = { TopAppBarComposable(actions = menuActions) }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            Row(
+                modifier = Modifier.padding(dimensionResource(R.dimen.margin_medium)),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_suggestions),
+                    contentDescription = null
+                )
+                HeaderComposable(title = stringResource(R.string.pref_ui_similar_apps))
+            }
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
+            ) {
+                items(items = suggestions, key = { item -> item.id }) { app ->
+                    AppListComposable(
+                        app = app,
+                        onClick = { onNavigateToAppDetails(app.packageName) }
+                    )
+                }
+            }
+        }
+    }
+}
+
 @PreviewScreenSizes
 @Composable
 @OptIn(ExperimentalCoilApi::class)
@@ -500,7 +554,8 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
         ScreenContentApp(
             app = app,
             isAnonymous = false,
-            hasValidUpdate = false
+            hasValidUpdate = false,
+            suggestions = List(10) { app.copy(id = Random.nextInt()) }
         )
     }
 }
