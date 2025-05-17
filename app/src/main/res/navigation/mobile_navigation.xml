@@ -163,9 +163,6 @@
             app:argType="com.aurora.gplayapi.data.models.App"
             app:nullable="true" />
         <action
-            android:id="@+id/action_appDetailsFragment_to_permissionBottomSheet"
-            app:destination="@id/permissionBottomSheet" />
-        <action
             android:id="@+id/action_appDetailsFragment_to_installErrorDialogSheet"
             app:destination="@id/installErrorDialogSheet" />
     </fragment>
@@ -333,14 +330,6 @@
         android:name="com.aurora.store.view.ui.sheets.FilterSheet"
         android:label="FilterSheet"
         tools:layout="@layout/sheet_filter" />
-    <dialog
-        android:id="@+id/permissionBottomSheet"
-        android:name="com.aurora.store.view.ui.sheets.PermissionBottomSheet"
-        tools:layout="@layout/sheet_permissions">
-        <argument
-            android:name="app"
-            app:argType="com.aurora.gplayapi.data.models.App" />
-    </dialog>
     <dialog
         android:id="@+id/downloadMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.DownloadMenuSheet"
