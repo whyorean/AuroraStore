@@ -29,7 +29,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -75,7 +74,6 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.ShortcutManagerUtil
-import com.aurora.store.view.custom.RatingView
 import com.aurora.store.view.epoxy.controller.DetailsCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -668,12 +666,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             totalStars += app.rating.fiveStar
 
             avgRatingLayout.apply {
-                removeAllViews()
-                addView(addAvgReviews(5, totalStars, app.rating.fiveStar))
-                addView(addAvgReviews(4, totalStars, app.rating.fourStar))
-                addView(addAvgReviews(3, totalStars, app.rating.threeStar))
-                addView(addAvgReviews(2, totalStars, app.rating.twoStar))
-                addView(addAvgReviews(1, totalStars, app.rating.oneStar))
             }
 
             averageRating.text = String.format(Locale.getDefault(), "%.1f", app.rating.average)
@@ -804,13 +796,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     private fun updateAppPermission(app: App) {
         binding.layoutDetailsPermissions.apply {
             headerPermission.addClickListener {
-                if (app.permissions.isNotEmpty()) {
-                    findNavController().navigate(
-                        AppDetailsFragmentDirections.actionAppDetailsFragmentToPermissionBottomSheet(
-                            app
-                        )
-                    )
-                }
             }
             headerPermission.setSubTitle(("${app.permissions.size} permissions"))
         }
@@ -878,11 +863,5 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             error = getString(R.string.status_unavailable)
             extra = getString(R.string.toast_app_unavailable)
         })
-    }
-
-    /* App Review Helpers */
-
-    private fun addAvgReviews(number: Int, max: Long, rating: Long): RelativeLayout {
-        return RatingView(requireContext(), number, max.toInt(), rating.toInt())
     }
 }
