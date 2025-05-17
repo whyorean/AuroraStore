@@ -291,6 +291,7 @@ private fun ScreenContentApp(
                     onNavigateToDetailsScreenshot = { showExtraPane(Screen.DetailsScreenshot(it)) },
                     onNavigateToDetailsReview = { showExtraPane(Screen.DetailsReview) },
                     onNavigateToDetailsExodus = { showExtraPane(Screen.DetailsExodus) },
+                    onNavigateToDetailsPermission = { showExtraPane(Screen.DetailsPermission) },
                     onDownload = onDownload,
                     onManualDownload = onManualDownload,
                     onCancelDownload = onCancelDownload,
@@ -320,7 +321,9 @@ private fun ScreenContentApp(
                             onNavigateUp = ::showMainPane,
                             onNavigateToAppDetails = onNavigateToAppDetails
                         )
-
+                        is Screen.DetailsPermission -> DetailsPermissionScreen(
+                            onNavigateUp = ::showMainPane
+                        )
                         is Screen.DetailsScreenshot -> DetailsScreenshotScreen(
                             index = screen.index,
                             onNavigateUp = ::showMainPane
@@ -359,6 +362,7 @@ private fun ScreenContentAppMainPane(
     onNavigateToDetailsScreenshot: (index: Int) -> Unit,
     onNavigateToDetailsReview: () -> Unit,
     onNavigateToDetailsExodus: () -> Unit,
+    onNavigateToDetailsPermission: () -> Unit,
     onDownload: () -> Unit,
     onManualDownload: () -> Unit,
     onCancelDownload: () -> Unit,
@@ -480,7 +484,12 @@ private fun ScreenContentAppMainPane(
 
             HeaderComposable(
                 title = stringResource(R.string.details_permission),
-                subtitle = stringResource(R.string.permissions, app.permissions.size)
+                subtitle = if (app.permissions.isNotEmpty()) {
+                    stringResource(R.string.permissions, app.permissions.size)
+                } else {
+                    stringResource(R.string.details_no_permission)
+                },
+                onClick = if (app.permissions.isNotEmpty()) onNavigateToDetailsPermission else null
             )
 
             if (dataSafetyReport != null) AppDataSafety(report = dataSafetyReport)
