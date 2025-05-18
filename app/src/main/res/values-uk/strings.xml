@@ -31,7 +31,7 @@
     <string name="details_no_app_match">Застосунок не знайдено</string>
     <string name="details_no_ads">Без оголошень</string>
     <string name="details_more_about_app">Докладніше про застосунок</string>
-    <string name="details_gsf_dependent">Потребує GSF</string>
+    <string name="details_gsf_dependent">Потрібно GSF</string>
     <string name="details_free">Безплатно</string>
     <string name="details_dev_profile">Профіль розробника</string>
     <string name="details_dev_details">Зв\'язок з розробником</string>

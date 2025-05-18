@@ -122,7 +122,7 @@
     <string name="details_changelog">Muutosloki</string>
     <string name="details_beta_delay">Ilmoittautuminen voi viedä jonkin aikaa, voit tarkistaa tilan myöhemmin.</string>
     <string name="details_beta_description">Näet uusia ominaisuuksia ja virheitä ennen muuta yleisöä. Anna palautetta kehittäjille, jotta he voivat kehittyä.</string>
-    <string name="details_beta_available">Liity beetaohjelmaan ?</string>
+    <string name="details_beta_available">Liity beetaohjelmaan?</string>
     <string name="details_beta_subscribed">Olet beetatestaaja</string>
     <string name="details_beta">Beetaohjelmisto</string>
     <string name="action_whitelist">Valkoinen lista</string>
@@ -427,4 +427,5 @@
     <string name="pref_updates_restrictions_metered">Vain maksuttomissa verkoissa</string>
     <string name="pref_updates_restrictions_idle">Kun laite on toimeton</string>
     <string name="pref_updates_restrictions_battery">Kun akun varaus ei ole vähäinen</string>
+    <string name="verification_failed">Ladattujen tiedostojen tarkistaminen epäonnistui</string>
 </resources>
