@@ -97,7 +97,7 @@
     <string name="download_resume_all">Retomar tudo</string>
     <string name="download_queued">Em fila</string>
     <string name="download_pause_all">Pausar tudo</string>
-    <string name="download_none">Nenhum download</string>
+    <string name="download_none">Não há downloads</string>
     <string name="download_metadata">Buscando metadados</string>
     <string name="download_force_clear_all">Forçar limpar tudo</string>
     <string name="download_failed">Falha no download</string>
@@ -110,9 +110,9 @@
     <string name="details_privacy">Privacidade</string>
     <string name="details_permission">Permissões</string>
     <string name="details_paid">Pago</string>
-    <string name="details_no_updates">Nenhuma atualização disponível</string>
-    <string name="details_no_permission">Nenhuma permissão</string>
-    <string name="details_no_dependencies">Nenhuma dependência</string>
+    <string name="details_no_updates">Não há atualizações disponíveis</string>
+    <string name="details_no_permission">Não há permissões</string>
+    <string name="details_no_dependencies">Não há dependências</string>
     <string name="details_no_ads">Sem anúncios</string>
     <string name="details_more_about_app">Mais sobre o app</string>
     <string name="details_gsf_dependent">Requer o GSF</string>
@@ -341,7 +341,7 @@
     <string name="remove">Remover</string>
     <string name="about_wiki_summary">Encontre respostas para perguntas frequentes (FAQ), soluções para problemas comuns e mais</string>
     <string name="pref_dispenser_summary">Visualize e gerencie os distribuidores de tokens de contas anônimas</string>
-    <string name="no_dispensers_available">Nenhum distribuidor disponível</string>
+    <string name="no_dispensers_available">Não há distribuidores disponíveis</string>
     <string name="add_dispenser_summary">Adicione um distribuidor de tokens à Aurora Store. Distribuidores de tokens fornecem credenciais de conta para entrar na Aurora Store de forma anônima.</string>
     <string name="add_dispenser_hint">URL do distribuidor</string>
     <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
@@ -415,7 +415,7 @@
     <string name="details_compatibility_no_gms">Sem Google Play Services</string>
     <string name="details_compatibility_status_unsupported">Não suportado: Não funciona</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
-    <string name="no_apps_available">Nenhum app disponível</string>
+    <string name="no_apps_available">Não há apps disponíveis</string>
     <string name="pref_network_microg_login_title">Utilizar o microG para entrar nas contas</string>
     <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao entrar em contas do Google para um fluxo de login mais simples.</string>
     <string name="set">Definir</string>
