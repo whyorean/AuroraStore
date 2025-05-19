@@ -127,9 +127,9 @@ fun AppDetailsScreen(
 
     if (shouldShowManualDownloadDialog) {
         ManualDownloadDialog(
-            currentVersionCode = app!!.versionCode.toLong(),
+            currentVersionCode = app!!.versionCode,
             onConfirm = { versionCode ->
-                viewModel.purchase(app!!.copy(versionCode = versionCode.toInt()))
+                viewModel.purchase(app!!.copy(versionCode = versionCode))
             },
             onDismiss = { shouldShowManualDownloadDialog = false }
         )
