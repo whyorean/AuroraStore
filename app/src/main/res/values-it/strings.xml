@@ -10,7 +10,7 @@
     <string name="details_dev_address">Indirizzo</string>
     <string name="details_dev_email">E-mail</string>
     <string name="toast_clipboard_copied">Copiato negli appunti</string>
-    <string name="toast_apk_whitelisted">Rimossa dalla lista nera</string>
+    <string name="toast_apk_whitelisted">Rimossa da lista nera</string>
     <string name="toast_apk_blacklisted">Messo in lista nera</string>
     <string name="title_updates">Aggiornamenti</string>
     <string name="title_settings">Impostazioni</string>
@@ -79,7 +79,7 @@
     <string name="details_beta_available">Partecipare al programma beta?</string>
     <string name="details_beta_subscribed">Sei un beta tester</string>
     <string name="details_beta">Programma beta</string>
-    <string name="action_whitelist">Rimuovi dalla lista nera</string>
+    <string name="action_whitelist">Rimuovi da lista nera</string>
     <string name="action_update_all">Aggiorna tutte</string>
     <string name="action_update">Aggiorna</string>
     <string name="action_uninstall">Disinstalla</string>
@@ -253,9 +253,9 @@
     <string name="expand">Espandi</string>
     <string name="permissions_denied">I permessi richiesti sono stati negati. Concedili per continuare l\'azione</string>
     <string name="search_hint">Cerca app e giochi</string>
-    <string name="download_eta_hrs">%1$d o %2$d min %3$d s rimasti</string>
-    <string name="download_eta_min">%1$d min %2$d s rimasti</string>
-    <string name="download_eta_sec">%1$d s rimasti</string>
+    <string name="download_eta_hrs">%1$d oo %2$d mm %3$d ss rimanenti</string>
+    <string name="download_eta_min">%1$d mm %2$d ss rimanenti</string>
+    <string name="download_eta_sec">%1$d ss rimanenti</string>
     <string name="session_enjoy">Accedi e divertiti.</string>
     <string name="session_good">Wow! Tutto bene.</string>
     <string name="session_init">Preparazione in corso…</string>
