@@ -47,7 +47,7 @@ class AppPreviewProvider : PreviewParameterProvider<App> {
                 packageName = BuildConfig.APPLICATION_ID,
                 displayName = "Aurora Store",
                 developerName = "Rahul Kumar Patel",
-                versionCode = BuildConfig.VERSION_CODE,
+                versionCode = BuildConfig.VERSION_CODE.toLong(),
                 versionName = BuildConfig.VERSION_NAME,
                 shortDescription = "An unofficial FOSS client to Google Play with an elegant design and privacy",
                 changes = CHANGELOG,
