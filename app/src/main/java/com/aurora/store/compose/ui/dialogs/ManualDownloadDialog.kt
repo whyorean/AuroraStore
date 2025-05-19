@@ -98,5 +98,5 @@ fun ManualDownloadDialog(
 @Preview
 @Composable
 private fun ManualDownloadDialogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    ManualDownloadDialog(currentVersionCode = app.versionCode.toLong())
+    ManualDownloadDialog(currentVersionCode = app.versionCode)
 }
