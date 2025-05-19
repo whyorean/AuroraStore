@@ -35,19 +35,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchSuggestionViewModel @Inject constructor(
-    authProvider: AuthProvider,
-    searchHelper: SearchHelper,
-    webSearchHelper: WebSearchHelper
+    private val authProvider: AuthProvider,
+    private val searchHelper: SearchHelper,
+    private val webSearchHelper: WebSearchHelper
 ) : ViewModel() {
 
     private val _searchSuggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
     val searchSuggestions = _searchSuggestions.asStateFlow()
 
-    private val helper: SearchContract = if (authProvider.isAnonymous) {
-        webSearchHelper
-    } else {
-        searchHelper
-    }
+    private val helper: SearchContract
+        get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
 
     fun observeStreamBundles(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
