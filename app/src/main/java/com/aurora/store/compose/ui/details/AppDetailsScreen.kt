@@ -28,10 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -75,7 +72,6 @@ import com.aurora.store.compose.ui.details.components.AppScreenshots
 import com.aurora.store.compose.ui.details.components.AppTags
 import com.aurora.store.compose.ui.details.components.AppTesting
 import com.aurora.store.compose.ui.dev.DevProfileScreen
-import com.aurora.store.compose.ui.dialogs.ManualDownloadDialog
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
@@ -107,33 +103,7 @@ fun AppDetailsScreen(
     val installProgress by viewModel.installProgress.collectAsStateWithLifecycle()
     val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
 
-    var shouldShowManualDownloadDialog by rememberSaveable { mutableStateOf(false) }
-
     LaunchedEffect(key1 = Unit) { viewModel.fetchAppDetails(packageName) }
-    LaunchedEffect(key1 = Unit) {
-        viewModel.purchaseStatus.collect { success ->
-            if (shouldShowManualDownloadDialog) {
-                if (success) {
-                    shouldShowManualDownloadDialog = false
-                    context.toast(R.string.toast_manual_available)
-                } else {
-                    context.toast(R.string.toast_manual_unavailable)
-                }
-            } else {
-                context.toast(R.string.download_failed)
-            }
-        }
-    }
-
-    if (shouldShowManualDownloadDialog) {
-        ManualDownloadDialog(
-            currentVersionCode = app!!.versionCode,
-            onConfirm = { versionCode ->
-                viewModel.purchase(app!!.copy(versionCode = versionCode))
-            },
-            onDismiss = { shouldShowManualDownloadDialog = false }
-        )
-    }
 
     with(app) {
         when {
@@ -155,9 +125,8 @@ fun AppDetailsScreen(
                         hasValidUpdate = viewModel.hasValidUpdate,
                         onNavigateUp = onNavigateUp,
                         onNavigateToAppDetails = onNavigateToAppDetails,
-                        onDownload = { viewModel.download(this) },
+                        onDownload = { viewModel.purchase(this) },
                         onFavorite = { viewModel.toggleFavourite(this) },
-                        onManualDownload = { shouldShowManualDownloadDialog = true },
                         onCancelDownload = { viewModel.cancelDownload(this) },
                         onUninstall = { AppInstaller.uninstall(context, packageName) },
                         onOpen = {
@@ -230,7 +199,6 @@ private fun ScreenContentApp(
     onNavigateUp: () -> Unit = {},
     onNavigateToAppDetails: (packageName: String) -> Unit = {},
     onDownload: () -> Unit = {},
-    onManualDownload: () -> Unit = {},
     onFavorite: () -> Unit = {},
     onCancelDownload: () -> Unit = {},
     onUninstall: () -> Unit = {},
@@ -260,7 +228,9 @@ private fun ScreenContentApp(
         AppDetailsMenu(isInstalled = app.isInstalled, isFavorite = isFavorite) { menuItem ->
             when (menuItem) {
                 AppDetailsMenuItem.FAVORITE -> onFavorite()
-                AppDetailsMenuItem.MANUAL_DOWNLOAD -> onManualDownload()
+                AppDetailsMenuItem.MANUAL_DOWNLOAD -> {
+                    showExtraPane(Screen.DetailsManualDownload)
+                }
                 AppDetailsMenuItem.SHARE -> context.share(app)
                 AppDetailsMenuItem.APP_INFO -> context.appInfo(app.packageName)
                 AppDetailsMenuItem.PLAY_STORE -> context.browse("$SHARE_URL${app.packageName}")
@@ -293,7 +263,7 @@ private fun ScreenContentApp(
                     onNavigateToDetailsExodus = { showExtraPane(Screen.DetailsExodus) },
                     onNavigateToDetailsPermission = { showExtraPane(Screen.DetailsPermission) },
                     onDownload = onDownload,
-                    onManualDownload = onManualDownload,
+                    onManualDownload = { showExtraPane(Screen.DetailsManualDownload) },
                     onCancelDownload = onCancelDownload,
                     onUninstall = onUninstall,
                     onOpen = onOpen,
@@ -326,6 +296,9 @@ private fun ScreenContentApp(
                         )
                         is Screen.DetailsScreenshot -> DetailsScreenshotScreen(
                             index = screen.index,
+                            onNavigateUp = ::showMainPane
+                        )
+                        is Screen.DetailsManualDownload -> DetailsManualDownloadScreen(
                             onNavigateUp = ::showMainPane
                         )
                         is Screen.DevProfile -> DevProfileScreen(
