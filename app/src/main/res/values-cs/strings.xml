@@ -68,7 +68,7 @@
     <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Nekontrolovat aktualizace u aplikací stažených nebo nainstalovaných z obchodu F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Nekontrolovat aktualizace u aplikací nainstalovaných z obchodu F-Droid</string>
     <string name="pref_common_extra">Doplňky</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
@@ -286,8 +286,8 @@
     <string name="android_market_desc">Android Market byl online obchod se softwarovými aplikacemi navržený pro zařízení Android, který byl ukončen v roce 2017.</string>
     <string name="details_ratings_title_hint">Nadpis recenze</string>
     <string name="pref_updates_check_frequency_desc">Nastavit časové intervaly pro automatické aktualizace, v hodinách.</string>
-    <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
-    <string name="pref_aurora_only_desc">Kontrolovat pouze aktualizace aplikací nainstalovaných z aplikace Aurora Store</string>
+    <string name="pref_aurora_only">Filtrovat aplikace z ostatních zdrojů</string>
+    <string name="pref_aurora_only_desc">Nekontrolovat aktualizace aplikací nainstalovaných z jiného zdroje, než je Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
     <string name="pref_updates_check_frequency">Frekvence automatických aktualizací</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
@@ -306,7 +306,7 @@
     <string name="action_request_analysis">Požádat o novou analýzu</string>
     <string name="failed_apk_export">Nepodařilo se exportovat soubory APK</string>
     <string name="download_clear_finished">Vymazat dokončené</string>
-    <string name="pref_updates_incompatible">Aktualizovat nekompatibilní</string>
+    <string name="pref_updates_incompatible">Zobrazit aktualizace, které se nemusí povést</string>
     <string name="pref_updates_incompatible_desc">Zobrazit aktualizace pro nekompatibilní nebo zakázané aplikace, jejichž instalace může selhat</string>
     <string name="action_home_screen">Přidat na domovskou obrazovku</string>
     <string name="session_installer_subtitle">Instalátor založený na relacích pro rozdělené/balíčkované soubory APK</string>
@@ -428,4 +428,8 @@
     <string name="toast_proxy_disabled">Síť proxy úspěšně zakázána</string>
     <string name="pref_updates_restrictions_metered">Pouze na neměřených sítích</string>
     <string name="verification_failed">Nepodařilo se ověřit stažené soubory</string>
+    <string name="pref_common_advanced">Pokročilé</string>
+    <string name="pref_updates_other_source_title">Filtrovat aplikace z ostatních zdrojů</string>
+    <string name="pref_updates_app_source">Zdroj aplikací</string>
+    <string name="pref_updates_other_source_summary">Nekontrolovat aktualizace aplikací nainstalovaných z jiného zdroje, než je Aurora Store</string>
 </resources>

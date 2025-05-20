@@ -218,7 +218,7 @@
     <string name="filter_review_five">П’ять</string>
     <string name="filter_review_critical">Критичні</string>
     <string name="pref_filter_fdroid_title">Фільтрувати застосунки F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Не перевіряти оновлення для застосунків, завантажених або встановлених з F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Не перевіряти оновлення для програм, встановлених з F-Droid</string>
     <string name="pref_common_extra">Додаткові</string>
     <string name="toast_aas_token_failed">Не вдалося створити токен AAS</string>
     <string name="toast_rated_failed">Не вдалося надіслати оцінку</string>
@@ -286,8 +286,8 @@
     <string name="android_market_desc">Android Маркет — інтернет-магазин, що пропонував програмне забезпечення для Android-пристроїв, припинив свою діяльність у 2017 році.</string>
     <string name="details_ratings_title_hint">Назва відгуку</string>
     <string name="pref_updates_check_frequency_desc">Налаштуйте часовий інтервал для автоматичних оновлень у годинах.</string>
-    <string name="pref_aurora_only">Тільки застосунки Aurora Store</string>
-    <string name="pref_aurora_only_desc">Перевіряйте оновлення лише для застосунків, встановлених з Aurora Store</string>
+    <string name="pref_aurora_only">Фільтрувати програми з інших джерел</string>
+    <string name="pref_aurora_only_desc">Не перевіряти наявність оновлень для програм, встановлених з джерел поза межами магазину Aurora</string>
     <string name="title_app_settings">Налаштування застосунку</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
     <string name="pref_network_proxy_url">URL проксі</string>
@@ -306,8 +306,8 @@
     <string name="action_request_analysis">Запросити новий аналіз</string>
     <string name="failed_apk_export">Не вдалося експортувати APK-файли</string>
     <string name="download_clear_finished">Очистити завершені</string>
-    <string name="pref_updates_incompatible">Несумісні оновлення</string>
-    <string name="pref_updates_incompatible_desc">Показувати оновлення для несумісних або вимкнених застосунків, які можуть не встановитися</string>
+    <string name="pref_updates_incompatible">Показати оновлення, які можуть не вдатися</string>
+    <string name="pref_updates_incompatible_desc">Відображення оновлень для несумісних або вимкнених програм, які можуть не вдатися встановити</string>
     <string name="action_home_screen">Додати на головний екран</string>
     <string name="root_installer_desc">Потрібні права root/суперкористувача, підтримуються всі версії Android.</string>
     <string name="session_installer_subtitle">Сеансовий встановлювач для розділених/пакетних файлів APK</string>
@@ -428,4 +428,8 @@
     <string name="pref_network_proxy_desc">Перегляд конфігурації проксі та керування нею</string>
     <string name="pref_updates_restrictions_battery">Коли акумулятор не розряджений</string>
     <string name="verification_failed">Не вдалося перевірити завантажені файли</string>
+    <string name="pref_common_advanced">Розширений</string>
+    <string name="pref_updates_app_source">Джерело програми</string>
+    <string name="pref_updates_other_source_title">Фільтрувати програми з інших джерел</string>
+    <string name="pref_updates_other_source_summary">Не перевіряти наявність оновлень для програм, встановлених з джерел поза межами магазину Aurora</string>
 </resources>

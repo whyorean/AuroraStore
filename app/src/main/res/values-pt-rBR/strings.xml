@@ -205,7 +205,7 @@
     <string name="pref_install_delete_title">Apagar APK após a instalação</string>
     <string name="pref_install_delete_summary">Os APKs baixados serão apagados após a instalação</string>
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Não buscar por atualizações de apps baixados ou instalados do F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Não buscar por atualizações de apps instalados pelo F-Droid</string>
     <string name="insecure_anonymous_apply">Entre na sua conta novamente e reinicie o app para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Páginas de recomendação</string>
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
@@ -286,8 +286,8 @@
     <string name="android_market_desc">Android Market foi uma loja on-line que oferecia apps feitos para dispositivos Android, fechada em 2017.</string>
     <string name="details_ratings_title_hint">Título da análise</string>
     <string name="pref_updates_check_frequency_desc">Configure o intervalo das atualizações automáticas, em horas.</string>
-    <string name="pref_aurora_only">Apenas apps da Aurora Store</string>
-    <string name="pref_aurora_only_desc">Buscar atualizações somente para apps instalados pela Aurora Store</string>
+    <string name="pref_aurora_only">Filtrar apps de outras fontes</string>
+    <string name="pref_aurora_only_desc">Não buscar atualizações de apps instalados de fontes que não são a Aurora Store</string>
     <string name="title_app_settings">Configurações do app</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_network_proxy_url">URL da proxy</string>
@@ -305,8 +305,8 @@
     <string name="pref_updates_auto_install">Buscar e instalar atualizações disponíveis automaticamente</string>
     <string name="action_request_analysis">Solicitar uma nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APKs</string>
-    <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
-    <string name="pref_updates_incompatible_desc">Mostrar atualizações de apps incompatíveis ou desativados que podem falhar ao instalar</string>
+    <string name="pref_updates_incompatible">Mostrar atualizações que podem falhar</string>
+    <string name="pref_updates_incompatible_desc">Exibir atualizações de apps incompatíveis ou desativados que podem falhar ao instalar</string>
     <string name="download_clear_finished">Limpar concluídos</string>
     <string name="action_home_screen">Adicionar à tela inicial</string>
     <string name="root_installer_subtitle">Instalador baseado em shell usando permissões root</string>
@@ -428,4 +428,8 @@
     <string name="pref_updates_restrictions_idle">Quando o dispositivo estiver parado</string>
     <string name="pref_updates_restrictions_battery">Quando a bateria não está baixa</string>
     <string name="verification_failed">Falha ao verificar os arquivos baixados</string>
+    <string name="pref_updates_app_source">Fonte do app</string>
+    <string name="pref_common_advanced">Avançado</string>
+    <string name="pref_updates_other_source_summary">Não buscar atualizações de apps instalados de fontes que não são a Aurora Store</string>
+    <string name="pref_updates_other_source_title">Filtrar apps de outras fontes</string>
 </resources>

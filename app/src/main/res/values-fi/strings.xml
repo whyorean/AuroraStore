@@ -59,7 +59,7 @@
     <string name="menu_license">Lisenssi</string>
     <string name="dialog_title_self_update">Uusi päivitys saatavilla</string>
     <string name="onboarding_title_welcome">Tervetuloa</string>
-    <string name="pref_filter_fdroid_summary">Älä tarkista päivityksiä F-Droidista ladatuille tai asennetuille sovelluksille</string>
+    <string name="pref_filter_fdroid_summary">Älä tarkista päivityksiä F-Droid:sta asennetuille sovelluksille</string>
     <string name="pref_filter_fdroid_title">Suodata F-Droid-sovellukset</string>
     <string name="pref_ui_no_for_you">Sinulle-sivut</string>
     <string name="pref_ui_similar_apps">Samankaltaiset ja vastaavat sovellukset</string>
@@ -285,7 +285,7 @@
     <string name="google_play_store_desc">Google Play, joka tunnetaan myös nimellä Google Play Store ja entinen Android Market.</string>
     <string name="android_market_desc">Android Market oli vuonna 2017 toimintansa päättänyt verkkokauppa, joka tarjosi sovelluksia Android-laitteille.</string>
     <string name="details_ratings_title_hint">Arvostele sovellus</string>
-    <string name="pref_aurora_only">Vain Aurora Storen sovellukset</string>
+    <string name="pref_aurora_only">Suodata sovellukset muista lähteistä</string>
     <string name="onboarding_permission_doze_desc">Salli Aurora Storen ladata ja päivittää sovelluksia taustalla</string>
     <string name="pref_network_proxy_url">Välityspalvelimen URL-osoite</string>
     <string name="pref_vending_version_title">Google Play -versio</string>
@@ -380,8 +380,8 @@
     <string name="checking_updates">Tarkistetaan päivityksiä</string>
     <string name="authentication_required_unarchive">Kirjaudu sisään Google Play -tiliisi sovelluksen arkistoinnin poistamiseksi!</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> sovellusta asennettu</string>
-    <string name="pref_updates_incompatible">Yhteensopimattomat päivitykset</string>
-    <string name="pref_aurora_only_desc">Tarkista päivitykset pelkästään Aurora Storen kautta asennetuille sovelluksille</string>
+    <string name="pref_updates_incompatible">Näytä päivitykset jotka saattavat epäonnistua</string>
+    <string name="pref_aurora_only_desc">Älä tarkista päivityksiä Aurora Store:n ulkopuolelta asennetuille sovelluksille</string>
     <string name="pref_clear_device_owner_title">Tyhjennä laitteen omistaja</string>
     <string name="session_installer_subtitle">Istuntopohjainen asentaja niputetuille/jaetuille APK-paketeille</string>
     <string name="disclaimer_subtitle">Vastuu ja velvollisuus</string>
@@ -427,5 +427,9 @@
     <string name="pref_updates_restrictions_metered">Vain maksuttomissa verkoissa</string>
     <string name="pref_updates_restrictions_idle">Kun laite on toimeton</string>
     <string name="pref_updates_restrictions_battery">Kun akun varaus ei ole vähäinen</string>
-    <string name="verification_failed">Ladattujen tiedostojen tarkistaminen epäonnistui</string>
+    <string name="verification_failed">Ladattujen tiedostojen varmentaminen epäonnistui</string>
+    <string name="pref_common_advanced">Edistynyt</string>
+    <string name="pref_updates_app_source">Sovelluslähde</string>
+    <string name="pref_updates_other_source_title">Suodata sovellukset muista lähteistä</string>
+    <string name="pref_updates_other_source_summary">Älä tarkista päivityksiä Aurora Store:n ulkopuolelta asennetuille sovelluksille</string>
 </resources>
