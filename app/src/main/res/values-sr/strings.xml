@@ -55,7 +55,7 @@
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">Преузети APK-ови ће бити избрисани одмах након инсталације</string>
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>
-    <string name="pref_filter_fdroid_summary">Не проверавајте ажурирања за апликације преузете или инсталиране у F-Droid-у</string>
+    <string name="pref_filter_fdroid_summary">Не проверавајте ажурирања за апликације инсталиране у F-Droid-у</string>
     <string name="onboarding_permission_installer_desc">Дозволите инсталирање апликација из Aurora Store-а</string>
     <string name="onboarding_permission_installer">Дозвола програма за инсталацију</string>
     <string name="onboarding_permission_esm">Менаџер спољне меморије</string>
@@ -310,8 +310,8 @@
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
     <string name="pref_updates_check_frequency_desc">Конфигуришите временски интервал за аутоматска ажурирања, у сатима.</string>
-    <string name="pref_aurora_only">Само Aurora Store апликације</string>
-    <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>
+    <string name="pref_aurora_only">Филтрирај апликације из других извора</string>
+    <string name="pref_aurora_only_desc">Не проверавајте ажурирања за апликације инсталиране из извора ван Aurora Store</string>
     <string name="title_app_settings">Подешавања апликације</string>
     <string name="pref_updates_check_frequency">Учесталост аутоматског ажурирања</string>
     <string name="pref_network_proxy_url">URL адреса проксија</string>
@@ -330,7 +330,7 @@
     <string name="action_request_analysis">Затражи нову анализу</string>
     <string name="failed_apk_export">Извоз APK-ова није успео</string>
     <string name="download_clear_finished">Очисти завршено</string>
-    <string name="pref_updates_incompatible">Некомпатибилна ажурирања</string>
+    <string name="pref_updates_incompatible">Прикажи ажурирања која можда неће успети</string>
     <string name="pref_updates_incompatible_desc">Прикажите ажурирања за некомпатибилне или онемогућене апликације које можда неће бити успешно инсталиране</string>
     <string name="action_home_screen">Додај на почетни екран</string>
     <string name="faqs_subtitle">Имате питања? Сазнајте одговоре</string>
@@ -452,4 +452,6 @@
     <string name="pref_updates_restrictions_battery">Када батерија није празна</string>
     <string name="pref_updates_restrictions_title">Ограничења аутоматских ажурирања</string>
     <string name="verification_failed">Верификација преузетих фајлова није успела</string>
+    <string name="pref_common_advanced">Напредно</string>
+    <string name="pref_updates_app_source">Извор апликације</string>
 </resources>
