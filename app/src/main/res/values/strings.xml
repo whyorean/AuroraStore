@@ -209,7 +209,7 @@
     <string name="onboarding_permission_doze">"Background downloads"</string>
     <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
     <string name="pref_common_extra">"Extras"</string>
-    <string name="pref_filter_fdroid_summary">"Don't check updates for apps downloaded or installed from F-Droid"</string>
+    <string name="pref_filter_fdroid_summary">"Don't check updates for apps installed from F-Droid"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_install_delete_summary">Downloaded APKs will be deleted immediately after installation</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
@@ -231,10 +231,10 @@
     <string name="pref_ui_no_for_you_desc">"Display For you pages on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_ui_similar_apps_desc">"Display similar and related clusters on app details page"</string>
-    <string name="pref_updates_incompatible">Incompatible updates</string>
-    <string name="pref_updates_incompatible_desc">Show updates for incompatible or disabled apps that may fail to install</string>
-    <string name="pref_aurora_only">Aurora Store apps only</string>
-    <string name="pref_aurora_only_desc">Only check updates for apps installed by Aurora Store</string>
+    <string name="pref_updates_incompatible">Show updates that may fail</string>
+    <string name="pref_updates_incompatible_desc">Display updates for incompatible or disabled apps that may fail to install</string>
+    <string name="pref_aurora_only">Filter apps from other sources</string>
+    <string name="pref_aurora_only_desc">Don\'t check for updates for apps installed from sources outside Aurora Store</string>
     <string name="purchase_failed">"Download failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>
@@ -495,11 +495,15 @@
     <string name="pref_network_proxy_url_hint" translatable="false">protocol://user:password@host:port</string>
 
     <!-- UpdatesPreferences -->
+    <string name="pref_common_advanced">Advanced</string>
     <string name="pref_updates_restrictions_title">Automatic updates restrictions</string>
     <string name="pref_updates_restrictions_desc">Configure device restrictions for automated updates.</string>
     <string name="pref_updates_restrictions_metered">Only on unmetered networks</string>
     <string name="pref_updates_restrictions_idle">When device is idle</string>
     <string name="pref_updates_restrictions_battery">When battery is not low</string>
+    <string name="pref_updates_app_source">App source</string>
+    <string name="pref_updates_other_source_title">Filter apps from other sources</string>
+    <string name="pref_updates_other_source_summary">Don\'t check for updates for apps installed from sources outside Aurora Store</string>
 
     <!-- DownloadWorker -->
     <string name="verification_failed">Failed to verify downloaded files</string>

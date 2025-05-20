@@ -50,7 +50,7 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
-        app:title="@string/action_filter" />
+        app:title="@string/pref_updates_app_source" />
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
@@ -69,7 +69,7 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
-        app:title="@string/pref_common_extra" />
+        app:title="@string/pref_common_advanced" />
 
     <SwitchPreferenceCompat
         app:defaultValue="false"
