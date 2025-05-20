@@ -179,7 +179,7 @@
     <string name="pref_install_mode_native">Programme d’installation Natif (déconseillé)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les APK téléchargés seront supprimés immédiatement après installation</string>
-    <string name="pref_filter_fdroid_summary">Ignorer les mises à jour d’applis téléchargées ou installées avec F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Ignorer les mises à jour d’applis installées avec F-Droid</string>
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applis par le Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation du programme d’installation</string>
     <string name="onboarding_permission_esm">Gestionnaire de mémoire externe</string>
@@ -286,9 +286,9 @@
     <string name="details_ratings_title_hint">Titre de l’avis</string>
     <string name="pref_network_proxy_url">URL du mandataire</string>
     <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
-    <string name="pref_aurora_only">Seulement les applis d’Aurora Store</string>
+    <string name="pref_aurora_only">Filtrer les applis provenant d’autres sources</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
-    <string name="pref_aurora_only_desc">Ne chercher les mises à jour que pour les applis installées par Aurora Store</string>
+    <string name="pref_aurora_only_desc">Ne pas vérifier la présence de mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
@@ -306,7 +306,7 @@
     <string name="action_request_analysis">Demander une nouvelle analyse</string>
     <string name="failed_apk_export">Échec d’exportation des APK</string>
     <string name="download_clear_finished">Effacer les terminés</string>
-    <string name="pref_updates_incompatible">Mises à jour incompatibles</string>
+    <string name="pref_updates_incompatible">Afficher les mises à jour susceptibles d’échouer</string>
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applis incompatibles ou désactivées dont l’installation peut échouer</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
     <string name="faqs_subtitle">Des questions ? Trouvez les réponses</string>
@@ -428,4 +428,6 @@
     <string name="pref_updates_restrictions_battery">Quand le niveau de la batterie est suffisant</string>
     <string name="pref_updates_restrictions_title">Restrictions des mises à jour automatiques</string>
     <string name="verification_failed">Échec de vérification des fichiers téléchargés</string>
+    <string name="pref_common_advanced">Avancé</string>
+    <string name="pref_updates_app_source">Source d’applis</string>
 </resources>
