@@ -502,8 +502,6 @@
     <string name="pref_updates_restrictions_idle">When device is idle</string>
     <string name="pref_updates_restrictions_battery">When battery is not low</string>
     <string name="pref_updates_app_source">App source</string>
-    <string name="pref_updates_other_source_title">Filter apps from other sources</string>
-    <string name="pref_updates_other_source_summary">Don\'t check for updates for apps installed from sources outside Aurora Store</string>
 
     <!-- DownloadWorker -->
     <string name="verification_failed">Failed to verify downloaded files</string>

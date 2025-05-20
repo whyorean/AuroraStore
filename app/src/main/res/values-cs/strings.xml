@@ -429,7 +429,5 @@
     <string name="pref_updates_restrictions_metered">Pouze na neměřených sítích</string>
     <string name="verification_failed">Nepodařilo se ověřit stažené soubory</string>
     <string name="pref_common_advanced">Pokročilé</string>
-    <string name="pref_updates_other_source_title">Filtrovat aplikace z ostatních zdrojů</string>
     <string name="pref_updates_app_source">Zdroj aplikací</string>
-    <string name="pref_updates_other_source_summary">Nekontrolovat aktualizace aplikací nainstalovaných z jiného zdroje, než je Aurora Store</string>
 </resources>

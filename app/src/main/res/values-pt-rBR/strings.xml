@@ -430,6 +430,4 @@
     <string name="verification_failed">Falha ao verificar os arquivos baixados</string>
     <string name="pref_updates_app_source">Fonte do app</string>
     <string name="pref_common_advanced">Avançado</string>
-    <string name="pref_updates_other_source_summary">Não buscar atualizações de apps instalados de fontes que não são a Aurora Store</string>
-    <string name="pref_updates_other_source_title">Filtrar apps de outras fontes</string>
 </resources>
