@@ -140,7 +140,7 @@
     <string name="pref_install_delete_title">Usuń APK po zainstalowaniu</string>
     <string name="pref_install_delete_summary">Pobrany plik APKs zostanie usunięty zaraz po zakończonej instalacji</string>
     <string name="pref_filter_fdroid_title">Filtruj aplikacje F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Nie sprawdzaj aktualizacji dla aplikacji pobranych lub zainstalowanych z F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Nie sprawdzaj aktualizacji dla aplikacji zainstalowanych z F-Droid</string>
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
@@ -286,14 +286,14 @@
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
     <string name="details_ratings_title_hint">Tytuł recenzji</string>
     <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość automatycznych aktualizacji (w godzinach)</string>
-    <string name="pref_aurora_only">Tylko aplikacje Aurora Store</string>
+    <string name="pref_aurora_only">Filtruj aplikacje z innych źródeł</string>
     <string name="title_app_settings">Ustawienia aplikacji</string>
     <string name="pref_updates_check_frequency">Częstotliwość automatycznych aktualizacji</string>
     <string name="pref_network_proxy_url">Adres URL serwera proxy</string>
     <string name="toast_proxy_invalid">Nieprawidłowy adres URL serwera proxy, sprawdź format!</string>
     <string name="toast_proxy_success">Ustawiono serwer proxy</string>
     <string name="toast_proxy_failed">Nie udało się ustawić serwera proxy</string>
-    <string name="pref_aurora_only_desc">Sprawdzaj aktualizacje tylko dla aplikacji zainstalowanych przez Aurora Store</string>
+    <string name="pref_aurora_only_desc">Nie sprawdzaj aktualizacji dla aplikacji zainstalowanych ze źródeł innych niż Aurora Store</string>
     <string name="pref_vending_version_device">Domyślna (z konfiguracji urządzenia)</string>
     <string name="pref_vending_version_title">Wersja Google Play</string>
     <string name="onboarding_permission_doze">Pobieranie w tle</string>
@@ -305,8 +305,8 @@
     <string name="pref_updates_auto_install">Sprawdź i automatycznie zainstaluj dostępne aktualizacje</string>
     <string name="action_request_analysis">Poproś o nową analizę</string>
     <string name="failed_apk_export">Nie udało się wyeksportować pliku APKs</string>
-    <string name="pref_updates_incompatible">Niekompatybilne aktualizacje</string>
-    <string name="pref_updates_incompatible_desc">Pokaż aktualizacje dla niekompatybilnych lub wyłączonych aplikacji, których instalacja może się nie udać</string>
+    <string name="pref_updates_incompatible">Pokaż aktualizacje, które mogą zakończyć się niepowodzeniem</string>
+    <string name="pref_updates_incompatible_desc">Wyświetl aktualizacje dla niekompatybilnych lub wyłączonych aplikacji, których instalacja może zakończyć się niepowodzeniem</string>
     <string name="download_clear_finished">Wyczyść zakończone</string>
     <string name="action_home_screen">Dodaj do ekranu głównego</string>
     <string name="faqs_subtitle">Masz pytania? Znajdź odpowiedzi</string>
@@ -428,4 +428,6 @@
     <string name="pref_updates_restrictions_battery">Gdy poziom baterii jest wysoki</string>
     <string name="verification_failed">Nie udało się zweryfikować pobranych plików</string>
     <string name="pref_network_microg_login_desc">Uwierzytelnij się za pomocą microG podczas logowania do kont Google, aby uprościć proces logowania.</string>
+    <string name="pref_common_advanced">Zaawansowane</string>
+    <string name="pref_updates_app_source">Źródło aplikacji</string>
 </resources>
