@@ -66,4 +66,10 @@ sealed class Screen(
      */
     @Serializable
     data object DetailsPermission : Screen()
+
+    /**
+     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
+     */
+    @Serializable
+    data object DetailsManualDownload : Screen()
 }
