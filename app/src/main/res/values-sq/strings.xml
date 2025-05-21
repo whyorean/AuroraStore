@@ -156,7 +156,7 @@
     <string name="onboarding_permission_installer">Leje instaluesi</string>
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
     <string name="pref_common_extra">Ekstra</string>
-    <string name="pref_filter_fdroid_summary">Mos kërko përditësime për shkarkues aplikacionesh, ose të instaluar nga F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Mos kontrollo për përditësime për aplikacione të instaluar nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
@@ -236,8 +236,8 @@
     <string name="onboarding_permission_notifications">Njoftime</string>
     <string name="pref_vending_version_device">Parazgjedhje (nga formësim pajisjeje)</string>
     <string name="pref_network_proxy_url">URL ndërmjetësi</string>
-    <string name="pref_updates_incompatible">Përditësime jo të përputhshme</string>
-    <string name="pref_aurora_only">Vetëm aplikacione Shitoreje Aurora</string>
+    <string name="pref_updates_incompatible">Shfaq përditësime që mund të dështojnë</string>
+    <string name="pref_aurora_only">Filtro aplikacione nga burime të tjera</string>
     <string name="session_enjoy">Bëni hyrjen dhe shijojeni.</string>
     <string name="toast_import_failed">S’u importua dot formësim pajisjeje</string>
     <string name="downloading_dep">Po shkarkohen kartela shtesë për <xliff:g id="app">%1$s</xliff:g></string>
@@ -292,7 +292,7 @@
     <string name="download_eta_sec">Edhe %1$ds</string>
     <string name="onboarding_permission_notifications_desc">Dërgo njoftime lidhur me gjendje instalimesh</string>
     <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi</string>
-    <string name="pref_aurora_only_desc">Kërko për përditësime vetëm për aplikacione të instaluar me Shitoren Aurora</string>
+    <string name="pref_aurora_only_desc">Mos kontrollo për përditësime për aplikacione të instaluar nga burime jashtë Shitores Aurora</string>
     <string name="session_good">Hyaaa! Gjithçka në rregull.</string>
     <string name="session_verifying_google">Po verifikohet sesion Google</string>
     <string name="title_search_suggestion">Sugjerim kërkimi</string>
