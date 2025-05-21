@@ -465,7 +465,12 @@ private fun ScreenContentAppMainPane(
                 onClick = if (app.permissions.isNotEmpty()) onNavigateToDetailsPermission else null
             )
 
-            if (dataSafetyReport != null) AppDataSafety(report = dataSafetyReport)
+            if (dataSafetyReport != null) {
+                AppDataSafety(
+                    report = dataSafetyReport,
+                    privacyPolicyUrl = app.privacyPolicyUrl
+                )
+            }
 
             AppPrivacy(
                 report = exodusReport,

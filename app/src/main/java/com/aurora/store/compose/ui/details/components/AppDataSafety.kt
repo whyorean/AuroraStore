@@ -8,11 +8,13 @@ package com.aurora.store.compose.ui.details.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import com.aurora.extensions.browse
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.datasafety.Entry
 import com.aurora.gplayapi.data.models.datasafety.EntryType
@@ -26,12 +28,16 @@ import com.aurora.store.compose.composables.preview.AppPreviewProvider
  * Composable to display app's data safety report, supposed to be used as a part
  * of the Column with proper vertical arrangement spacing in the AppDetailsScreen.
  * @param report App's data safety report
+ * @param privacyPolicyUrl App's privacy policy URL
  */
 @Composable
-fun AppDataSafety(report: Report) {
+fun AppDataSafety(report: Report, privacyPolicyUrl: String) {
+    val context = LocalContext.current
+
     HeaderComposable(
         title = stringResource(R.string.details_data_safety_title),
-        subtitle = stringResource(R.string.details_data_safety_subtitle)
+        subtitle = stringResource(R.string.details_data_safety_subtitle),
+        onClick = { context.browse(privacyPolicyUrl) }
     )
 
     report.entries.groupBy { it.type }.forEach { (type, entries) ->
@@ -77,6 +83,7 @@ fun AppDataSafety(report: Report) {
 private fun AppDataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
         AppDataSafety(
+            privacyPolicyUrl = app.privacyPolicyUrl,
             report = Report(
                 packageName = app.packageName,
                 entries = listOf(
