@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.Rating
+import com.aurora.gplayapi.data.models.Support
 import com.aurora.gplayapi.data.models.details.TestingProgram
 import com.aurora.store.BuildConfig
 
@@ -81,7 +82,8 @@ class AppPreviewProvider : PreviewParameterProvider<App> {
                     Manifest.permission.ACCESS_NETWORK_STATE,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
-                )
+                ),
+                privacyPolicyUrl = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/POLICY.md",
             )
         )
 }
