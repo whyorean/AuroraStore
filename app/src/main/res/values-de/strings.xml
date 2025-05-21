@@ -59,7 +59,7 @@
     <string name="purchase_unsupported">App wird nicht unterstützt</string>
     <string name="purchase_invalid">App nicht gekauft</string>
     <string name="pref_filter_fdroid_title">F-Droid-Apps filtern</string>
-    <string name="pref_filter_fdroid_summary">Keine Updates für Apps, die von F-Droid heruntergeladen oder installiert wurden</string>
+    <string name="pref_filter_fdroid_summary">Keine Updates für Apps, die von F-Droid installiert wurden</string>
     <string name="onboarding_permission_installer_desc">Erforderlich für die Installation von Apps aus dem Aurora Store</string>
     <string name="installer_status_failure_incompatible">Inkompatible App</string>
     <string name="details_more_about_app">Mehr über die App</string>
@@ -287,8 +287,8 @@
     <string name="details_ratings_title_hint">Titel bewerten</string>
     <string name="title_app_settings">App-Einstellungen</string>
     <string name="pref_updates_check_frequency_desc">Zeitintervall (in Stunden) für automatische Updates konfigurieren.</string>
-    <string name="pref_aurora_only">Nur Aurora-Store-Apps</string>
-    <string name="pref_aurora_only_desc">Nur nach Updates für Apps suchen, die von Aurora Store installiert wurden</string>
+    <string name="pref_aurora_only">Apps aus anderen Quellen ausfiltern</string>
+    <string name="pref_aurora_only_desc">Nicht nach Updates für Apps suchen, die aus Quellen außerhalb des Aurora Store installiert wurden</string>
     <string name="pref_updates_check_frequency">Häufigkeit der automatischen Updates</string>
     <string name="pref_network_proxy_url">URL des Proxyservers</string>
     <string name="toast_proxy_invalid">Ungültige Proxy-URL, bitte Aufbau der URL überprüfen!</string>
@@ -306,7 +306,7 @@
     <string name="action_request_analysis">Neue Analyse anfordern</string>
     <string name="failed_apk_export">Exportieren der APKs fehlgeschlagen</string>
     <string name="download_clear_finished">Fertige löschen</string>
-    <string name="pref_updates_incompatible">Inkompatible Updates</string>
+    <string name="pref_updates_incompatible">Updates anzeigen, die fehlschlagen könnten</string>
     <string name="pref_updates_incompatible_desc">Updates für inkompatible oder deaktivierte Apps anzeigen, die möglicherweise nicht installiert werden können</string>
     <string name="action_home_screen">Zur Startseite hinzufügen</string>
     <string name="source_code_title">Quellcode</string>
@@ -428,4 +428,6 @@
     <string name="disable">Deaktivieren</string>
     <string name="pref_updates_restrictions_battery">Wenn der Akkustand nicht niedrig ist</string>
     <string name="verification_failed">Heruntergeladene Dateien konnten nicht überprüft werden</string>
+    <string name="pref_updates_app_source">App-Quelle</string>
+    <string name="pref_common_advanced">Erweitert</string>
 </resources>
