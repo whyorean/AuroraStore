@@ -56,7 +56,7 @@
     <string name="pref_install_delete_title">APK ezabatu deskargatu ondoren</string>
     <string name="pref_install_delete_summary">Besterik adierazi ezean, deskargatutako APK-ak ezabatuko dira instalazioa bukatutakoan</string>
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
-    <string name="pref_filter_fdroid_summary">Ez egiaztatu F-Droid-etik deskargatutako edo instalatutako aplikazioen eguneraketak</string>
+    <string name="pref_filter_fdroid_summary">Ez egiaztatu F-Droid-etik instalatutako aplikazioen eguneraketak</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-ri aplikazioak instalatzeko baimena eman</string>
     <string name="onboarding_permission_installer">Instalatzailearen baimena</string>
     <string name="onboarding_permission_esm">Kanpoko memoriaren gestorea</string>
@@ -264,13 +264,13 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> eta <xliff:g id="apps_count">%4$d</xliff:g> gehiago</string>
     <string name="pref_vending_version_title">Google Play-eko bertsioa</string>
     <string name="pref_network_proxy_url">Proxy-aren URLa</string>
-    <string name="pref_aurora_only">Aurora Store-ko aplikazioak soilik</string>
+    <string name="pref_aurora_only">Iragazi aplikazioak beste iturri batzuetatik</string>
     <string name="pref_install_mode_shizuku">Shizuku instalatzailea</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> aplikazioaren bertsio berri bat eskuragarri dago</string>
     <string name="onboarding_permission_doze">Atzeko planoko deskargak</string>
     <string name="toast_proxy_invalid">Proxy-aren URL baliogabea, egiaztatu formatua!</string>
     <string name="title_search_suggestion">Bilaketarako iradokizuna</string>
-    <string name="pref_aurora_only_desc">Egiaztatu Aurora dendak instalatutako aplikazioen eguneraketak soilik</string>
+    <string name="pref_aurora_only_desc">Ez bilatu Aurora Store-tik kanpoko iturrietatik instalatutako aplikazioen eguneratzerik dagoen</string>
     <string name="toast_proxy_success">Proxy-a ezarri da</string>
     <string name="onboarding_permission_doze_desc">Onartu Aurora Store-ri aplikazioak atzeko planoan deskargatzea eta eguneratzea</string>
     <string name="title_app_settings">Aplikazioaren ezarpenak</string>
@@ -332,7 +332,7 @@
     <string name="faqs_subtitle">Galderarik? Aurkitu erantzunak</string>
     <string name="pref_clear_device_owner_desc">Horrek aplikazioa isilean instalatzeko saioaren instalatzailearen baimena kenduko du. Gailuaren jabetza garbitzen jarraitu nahi duzu?</string>
     <string name="onboarding_permission_installer_legacy_desc">Baimendu iturri ezezagunetako aplikazioak instalatzea</string>
-    <string name="pref_updates_incompatible_desc">Erakutsi instalatzen huts egin dezaketen aplikazio bateraezinen edo desgaituen eguneraketak</string>
+    <string name="pref_updates_incompatible_desc">Bistaratu instalatzen huts egin dezaketen aplikazio bateraezinen edo desgaituen eguneraketak</string>
     <string name="pref_updates_auto">Eguneraketa automatikoak</string>
     <string name="access_denied_using_vpn">Sarbidea ukatu da! VPN edo Tor erabiltzen ari al zara?</string>
     <string name="pref_clear_device_owner_summary">Aurora Store kentzen du, gailuaren jabearen aplikazio gisa</string>
@@ -351,7 +351,7 @@
     <string name="toast_fav_import_failed">Ezin izan dira inportatu zure gogokoenak!</string>
     <string name="toast_fav_export_failed">Ezin izan dira zure gogokoenak esportatu!</string>
     <string name="toast_fav_export_success">Gogokoenak esportatu dira!</string>
-    <string name="pref_updates_incompatible">Eguneraketa bateraezinak</string>
+    <string name="pref_updates_incompatible">Erakutsi huts egin dezaketen eguneraketak</string>
     <string name="pref_updates_auto_desc">Konfiguratu eguneratze automatikoen portaera</string>
     <string name="app_links_title">Aplikazioaren estekak</string>
     <string name="action_request_analysis">Eskatu azterketa berria</string>
@@ -428,4 +428,6 @@
     <string name="pref_updates_restrictions_idle">Gailua inaktibo dagoenean</string>
     <string name="pref_updates_restrictions_metered">Neurririk gabeko sareetan bakarrik</string>
     <string name="verification_failed">Deskargatutako fitxategiak ezin izan dira egiaztatu</string>
+    <string name="pref_common_advanced">Aurreratua</string>
+    <string name="pref_updates_app_source">Aplikazioaren iturria</string>
 </resources>
