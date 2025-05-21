@@ -1,3 +1,9 @@
+Changelog : v4.7.1 (67)
+• Target Android 16
+• Fix bug with opening links to apps
+• Support opening the app's detail page from app info settings
+• Translation updates
+
 Changelog : v4.7.0 (66)
 • New app compatibility ratings powered by Plexus
 • Improvements to blacklist manager

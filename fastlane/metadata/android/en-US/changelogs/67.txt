@@ -1,0 +1,4 @@
+• Target Android 16
+• Fix bug with opening links to apps
+• Support opening the app's detail page from app info settings
+• Translation updates
