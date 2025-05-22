@@ -111,26 +111,17 @@ class InstallerStatusReceiver : BroadcastReceiver() {
         }
     }
 
-    private fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
+    private fun postStatus(status: Int, packageName: String, extra: String?, context: Context) {
         val event = when (status) {
-            PackageInstaller.STATUS_SUCCESS -> {
-                InstallerEvent.Installed(packageName!!).apply {
-                    this.extra = context.getString(R.string.installer_status_success)
-                }
-            }
+            PackageInstaller.STATUS_SUCCESS -> InstallerEvent.Installed(
+                packageName = packageName
+            )
 
-            PackageInstaller.STATUS_FAILURE_ABORTED -> {
-                InstallerEvent.Cancelled(packageName!!).apply {
-                    this.extra = InstallerBase.getErrorString(context, status)
-                }
-            }
-
-            else -> {
-                InstallerEvent.Failed(packageName!!).apply {
-                    this.error = InstallerBase.getErrorString(context, status)
-                    this.extra = extra ?: ""
-                }
-            }
+            else -> InstallerEvent.Failed(
+                packageName = packageName,
+                error = InstallerBase.getErrorString(context, status),
+                extra = extra
+            )
         }
         AuroraApp.events.send(event)
     }
