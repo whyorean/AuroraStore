@@ -121,16 +121,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             }
 
             is InstallerEvent.Failed -> {
-                if (app.packageName == event.packageName) {
-                    findNavController().navigate(
-                        AppDetailsFragmentDirections.actionAppDetailsFragmentToInstallErrorDialogSheet(
-                            app,
-                            event.packageName,
-                            event.error,
-                            event.extra
-                        )
-                    )
-                }
             }
 
             is InstallerEvent.Installing -> {
@@ -158,40 +148,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         // Toolbar
         updateToolbar(app)
-        viewModel.download.filterNotNull().onEach {
-            when (it.downloadStatus) {
-                DownloadStatus.QUEUED,
-                DownloadStatus.DOWNLOADING -> {
-                    updateProgress(it.progress)
-                    binding.layoutDetailsApp.btnPrimaryAction.apply {
-                        isEnabled = false
-                        text = getString(R.string.action_open)
-                        setOnClickListener(null)
-                    }
-                    binding.layoutDetailsApp.btnSecondaryAction.apply {
-                        isEnabled = true
-                        text = getString(R.string.action_cancel)
-                        setOnClickListener { viewModel.cancelDownload(app) }
-                    }
-                }
-
-                DownloadStatus.VERIFYING -> {
-                    transformIcon(true)
-                    binding.layoutDetailsApp.btnPrimaryAction.apply {
-                        isEnabled = false
-                        text = getString(R.string.action_open)
-                        setOnClickListener(null)
-                    }
-                    binding.layoutDetailsApp.btnSecondaryAction.apply {
-                        isEnabled = false
-                        text = getString(R.string.action_cancel)
-                        setOnClickListener(null)
-                    }
-                }
-
-                else -> checkAndSetupInstall()
-            }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         // Exodus Privacy Report
         viewLifecycleOwner.lifecycleScope.launch {
@@ -861,12 +817,5 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                 titleColor = ContextCompat.getColor(context, R.color.colorGreen)
             }
         }
-    }
-
-    private fun warnAppUnavailable(app: App) {
-        AuroraApp.events.send(InstallerEvent.Failed(app.packageName).apply {
-            error = getString(R.string.status_unavailable)
-            extra = getString(R.string.toast_app_unavailable)
-        })
     }
 }
