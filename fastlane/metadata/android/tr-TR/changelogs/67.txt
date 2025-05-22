@@ -1,0 +1,4 @@
+• Android 16'yı hedefleyin
+• Uygulamalara giden bağlantıları açma hatası düzeltildi
+• Uygulamanın ayrıntı sayfasının uygulama bilgi ayarlarından açılması desteklendi
+• Çeviri güncellemeleri

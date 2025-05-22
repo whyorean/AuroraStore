@@ -1,0 +1,4 @@
+• Suporte ao Android 16
+• Corrigido bug ao abrir links para apps
+• Suporte a abrir a página de detalhes de um app a partir das configurações de informação do app
+• Atualizações de tradução

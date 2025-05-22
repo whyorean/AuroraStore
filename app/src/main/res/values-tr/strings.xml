@@ -95,7 +95,7 @@
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
     <string name="pref_install_delete_summary">İndirilen APK\'lar kurulumdan hemen sonra silinecek</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>
-    <string name="pref_filter_fdroid_summary">F-Droid\'den indirilen ya da kurulan uygulamaların güncellemelerini denetleme</string>
+    <string name="pref_filter_fdroid_summary">F-Droid\'den kurulan uygulamaların güncellemelerini denetleme</string>
     <string name="pref_common_extra">Ekler</string>
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
     <string name="onboarding_permission_installer">Kurucu izni</string>
@@ -286,8 +286,8 @@
     <string name="android_market_desc">Android Market, Android aygıtlar için tasarlanan yazılım uygulamaları sunan çevrim içi mağazaydı ve 2017 yılında yayın yaşamını sonlandırdı.</string>
     <string name="details_ratings_title_hint">İnceleme başlığı</string>
     <string name="pref_updates_check_frequency_desc">Kendiliğinden güncellemeler için saat türünde aralığı yapılandır.</string>
-    <string name="pref_aurora_only">Yalnızca Aurora Store uygulamaları</string>
-    <string name="pref_aurora_only_desc">Yalnızca Aurora Store tarafından kurulan uygulamaları denetle</string>
+    <string name="pref_aurora_only">Diğer kaynaktan uygulamaları süz</string>
+    <string name="pref_aurora_only_desc">Aurora Store dışındaki kaynaklardan kurulan uygulamaların güncellemelerini denetleme</string>
     <string name="title_app_settings">Uygulama ayarları</string>
     <string name="pref_updates_check_frequency">Kendiliğinden güncelleme sıklığı</string>
     <string name="pref_network_proxy_url">Vekil URL\'si</string>
@@ -306,8 +306,8 @@
     <string name="action_request_analysis">Yeni değerlendirme iste</string>
     <string name="failed_apk_export">APK\'lar dışa aktarılamadı</string>
     <string name="download_clear_finished">Temizlendi</string>
-    <string name="pref_updates_incompatible">Uyumsuz güncellemeler</string>
-    <string name="pref_updates_incompatible_desc">Kurulamayabilecek uyumsuz veya devre dışı uygulamalar için güncellemeleri göster</string>
+    <string name="pref_updates_incompatible">Başarısız olabilecek güncellemeleri göster</string>
+    <string name="pref_updates_incompatible_desc">Kurulamayabilecek uyumsuz veya devre dışı uygulamalar için güncellemeleri görüntüle</string>
     <string name="action_home_screen">Ana ekrana ekle</string>
     <string name="services_installer_subtitle">Arka planda kurulumlar için kurucu</string>
     <string name="services_installer_desc">Aurora Hizmetlerinin ayrıcalıklı sistem uygulaması olarak kurulmasını gerektirir</string>
@@ -428,4 +428,6 @@
     <string name="pref_network_proxy_desc">Vekil yapılandırmasını göster ve yönet</string>
     <string name="pref_updates_restrictions_title">Kendiliğinden güncelleme kısıtları</string>
     <string name="pref_updates_restrictions_desc">Kendiliğinden güncellemeler için aygıt kısıtlarını yapılandır.</string>
+    <string name="pref_common_advanced">Gelişmiş</string>
+    <string name="pref_updates_app_source">Uygulama kaynağı</string>
 </resources>

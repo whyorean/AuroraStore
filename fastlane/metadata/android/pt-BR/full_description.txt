@@ -8,4 +8,4 @@ A Aurora Store é um cliente FOSS não oficial do Google Play com um design eleg
 • Falsificação de dispositivo e localidade: Altere seu dispositivo ou sua localidade para acessar apps bloqueados em certos lugares
 • Integração com o Exodus Privacy: Veja os rastreadores diretamente no app
 • Integração com o Plexus: Veja a compatibilidade dos apps sem o Google Play Services ou com o microG, diretamente no app
-• Lista de bloqueio das atualizações: Ignore as atualizações de apps específicos
+• Bloqueio de atualizações: Ignore as atualizações de apps específicos
