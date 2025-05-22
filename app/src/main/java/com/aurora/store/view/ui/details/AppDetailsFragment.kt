@@ -175,7 +175,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
         app = args.app ?: App(
             packageName = args.packageName,
-            isInstalled = PackageUtil.isInstalled(requireContext(), app.packageName)
+            isInstalled = PackageUtil.isInstalled(requireContext(), args.packageName)
         )
 
         // Show the basic app details, while the rest of the data is being fetched
