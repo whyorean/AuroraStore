@@ -44,3 +44,38 @@ sealed class AuthState {
     data class PendingAccountManager(val email: String, val token: String) : AuthState()
     data class Failed(val status: String) : AuthState()
 }
+
+/**
+ * Possible states of an app to show appropriate actions on UI
+ */
+sealed class AppState {
+    data class Downloading(
+        val progress: Float,
+        val speed: Long,
+        val timeRemaining: Long
+    ) : AppState()
+
+    data class Installing(val progress: Float) : AppState()
+    data object Installed : AppState()
+    data object Archived : AppState()
+    data object Updatable : AppState()
+    data object Unavailable : AppState()
+
+    /**
+     * Whether there is some sort of ongoing process related to the app
+     */
+    fun inProgress(): Boolean {
+        return this is Downloading || this is Installing
+    }
+
+    /**
+     * Progress of the process related to the app; 0 otherwise
+     */
+    fun progress(): Float {
+        return when (this) {
+            is Downloading -> progress
+            is Installing -> progress
+            else -> 0F
+        }
+    }
+}
