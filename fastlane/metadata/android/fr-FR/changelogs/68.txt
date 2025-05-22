@@ -1,0 +1,2 @@
+• Corriger un plantage lors de la navigation vers la page des détails de l'appli
+• Mises à jour des traductions
