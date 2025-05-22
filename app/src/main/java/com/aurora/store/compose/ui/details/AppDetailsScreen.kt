@@ -73,9 +73,9 @@ import com.aurora.store.compose.ui.details.components.AppTags
 import com.aurora.store.compose.ui.details.components.AppTesting
 import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
-import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.PACKAGE_NAME_GMS
 import com.aurora.store.util.ShortcutManagerUtil
@@ -94,13 +94,12 @@ fun AppDetailsScreen(
     val context = LocalContext.current
 
     val app by viewModel.app.collectAsStateWithLifecycle()
+    val state by viewModel.state.collectAsStateWithLifecycle()
     val featuredReviews by viewModel.featuredReviews.collectAsStateWithLifecycle()
     val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
-    val download by viewModel.download.collectAsStateWithLifecycle()
-    val installProgress by viewModel.installProgress.collectAsStateWithLifecycle()
     val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = Unit) { viewModel.fetchAppDetails(packageName) }
@@ -117,12 +116,10 @@ fun AppDetailsScreen(
                         suggestions = suggestions,
                         isFavorite = favorite,
                         isAnonymous = viewModel.authProvider.isAnonymous,
-                        download = download,
-                        installProgress = installProgress,
+                        state = state,
                         plexusScores = plexusScores,
                         dataSafetyReport = dataSafetyReport,
                         exodusReport = exodusReport,
-                        hasValidUpdate = viewModel.hasValidUpdate,
                         onNavigateUp = onNavigateUp,
                         onNavigateToAppDetails = onNavigateToAppDetails,
                         onDownload = { viewModel.purchase(this) },
@@ -190,12 +187,10 @@ private fun ScreenContentApp(
     suggestions: List<App> = emptyList(),
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
-    download: Download? = null,
-    installProgress: Float? = null,
+    state: AppState = AppState.Unavailable,
     plexusScores: Scores? = null,
     dataSafetyReport: DataSafetyReport? = null,
     exodusReport: Report? = null,
-    hasValidUpdate: Boolean = false,
     onNavigateUp: () -> Unit = {},
     onNavigateToAppDetails: (packageName: String) -> Unit = {},
     onDownload: () -> Unit = {},
@@ -248,13 +243,11 @@ private fun ScreenContentApp(
                 ScreenContentAppMainPane(
                     app = app,
                     featuredReviews = featuredReviews,
-                    download = download,
-                    installProgress = installProgress,
+                    state = state,
                     isAnonymous = isAnonymous,
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
                     exodusReport = exodusReport,
-                    hasValidUpdate = hasValidUpdate,
                     onNavigateUp = onNavigateUp,
                     onNavigateToScreen = { screen -> showExtraPane(screen) },
                     onDownload = onDownload,
@@ -316,13 +309,11 @@ private fun ScreenContentApp(
 private fun ScreenContentAppMainPane(
     app: App,
     featuredReviews: List<Review> = emptyList(),
-    download: Download?,
-    installProgress: Float?,
+    state: AppState = AppState.Unavailable,
     isAnonymous: Boolean,
     plexusScores: Scores?,
     dataSafetyReport: DataSafetyReport?,
     exodusReport: Report?,
-    hasValidUpdate: Boolean,
     onNavigateUp: () -> Unit,
     onNavigateToScreen: (screen: Screen) -> Unit,
     onDownload: () -> Unit,
@@ -332,12 +323,11 @@ private fun ScreenContentAppMainPane(
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit,
     menuActions: @Composable (RowScope.() -> Unit) = {}
 ) {
-    val context = LocalContext.current
 
     @Composable
     fun SetupAppActions() {
-        when {
-            download?.isRunning == true -> {
+        when (state) {
+            is AppState.Downloading -> {
                 AppActions(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_cancel),
@@ -346,7 +336,7 @@ private fun ScreenContentAppMainPane(
                 )
             }
 
-            app.isInstalled && hasValidUpdate -> {
+            is AppState.Updatable -> {
                 AppActions(
                     primaryActionDisplayName = stringResource(R.string.action_update),
                     secondaryActionDisplayName = stringResource(R.string.action_uninstall),
@@ -355,7 +345,7 @@ private fun ScreenContentAppMainPane(
                 )
             }
 
-            app.isInstalled -> {
+            is AppState.Installed -> {
                 AppActions(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_uninstall),
@@ -365,7 +355,7 @@ private fun ScreenContentAppMainPane(
             }
 
             else -> {
-                val primaryActionName = if (PackageUtil.isArchived(context, app.packageName)) {
+                val primaryActionName = if (state is AppState.Archived) {
                     stringResource(R.string.action_unarchive)
                 } else {
                     if (app.isFree) stringResource(R.string.action_install) else app.price
@@ -394,20 +384,12 @@ private fun ScreenContentAppMainPane(
                 .padding(dimensionResource(R.dimen.padding_medium)),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
         ) {
-            val isDownloading = download != null && download.isRunning
-            val isInstalling = installProgress != null
-            val progress = when {
-                isDownloading -> download?.progress?.toFloat() ?: 0F
-                isInstalling -> installProgress ?: 0F
-                else -> 0F
-            }
-
             AppDetails(
                 app = app,
-                inProgress = isDownloading || isInstalling,
-                progress = progress,
+                inProgress = state.inProgress(),
+                progress = state.progress(),
                 onNavigateToDetailsDevProfile = { onNavigateToScreen(Screen.DevProfile(it)) },
-                hasValidUpdate = hasValidUpdate
+                isUpdatable = state is AppState.Updatable
             )
 
             SetupAppActions()
@@ -533,7 +515,6 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
         ScreenContentApp(
             app = app,
             isAnonymous = false,
-            hasValidUpdate = false,
             suggestions = List(10) { app.copy(id = Random.nextInt()) }
         )
     }

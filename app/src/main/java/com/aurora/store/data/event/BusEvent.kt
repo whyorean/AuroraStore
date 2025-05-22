@@ -32,15 +32,18 @@ sealed class AuthEvent : Event() {
     data class GoogleLogin(val success: Boolean, val email: String, val token: String) : AuthEvent()
 }
 
-sealed class InstallerEvent : Event() {
-    lateinit var extra: String
-    lateinit var error: String
+open class InstallerEvent(open val packageName: String) : Event() {
+    data class Installed(override val packageName: String) : InstallerEvent(packageName)
+    data class Uninstalled(override val packageName: String) : InstallerEvent(packageName)
 
-    var progress: Int = -1
+    data class Installing(
+        override val packageName: String,
+        val progress: Float = 0.0F
+    ) : InstallerEvent(packageName)
 
-    data class Installed(val packageName: String) : InstallerEvent()
-    data class Uninstalled(val packageName: String) : InstallerEvent()
-    data class Installing(val packageName: String) : InstallerEvent()
-    data class Cancelled(val packageName: String) : InstallerEvent()
-    data class Failed(val packageName: String) : InstallerEvent()
+    data class Failed(
+        override val packageName: String,
+        val error: String? = null,
+        val extra: String? = null,
+    ) : InstallerEvent(packageName)
 }

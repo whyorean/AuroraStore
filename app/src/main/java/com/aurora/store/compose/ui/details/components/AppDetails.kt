@@ -40,7 +40,7 @@ import com.aurora.store.util.PackageUtil
  * @param progress Ongoing progress percentage out of 100, for e.g. 50.0
  * @param inProgress Whether there is some ongoing progress related to the app
  * @param onNavigateToDetailsDevProfile Callback when the developer name is tapped
- * @param hasValidUpdate Whether the app has a valid update available
+ * @param isUpdatable Whether the app has a valid update available
  */
 @Composable
 fun AppDetails(
@@ -48,7 +48,7 @@ fun AppDetails(
     progress: Float = 0F,
     inProgress: Boolean = false,
     onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {},
-    hasValidUpdate: Boolean = false,
+    isUpdatable: Boolean = false,
 ) {
     val context = LocalContext.current
 
@@ -76,7 +76,7 @@ fun AppDetails(
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = if (!hasValidUpdate) {
+                text = if (!isUpdatable) {
                     stringResource(R.string.version, app.versionName, app.versionCode)
                 } else {
                     stringResource(

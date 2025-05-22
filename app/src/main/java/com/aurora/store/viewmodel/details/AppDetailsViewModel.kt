@@ -7,7 +7,6 @@
 package com.aurora.store.viewmodel.details
 
 import android.content.Context
-import android.content.pm.PackageInstaller
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,8 +19,11 @@ import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
+import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
@@ -37,14 +39,16 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -70,6 +74,9 @@ class AppDetailsViewModel @Inject constructor(
 
     private val _app = MutableStateFlow<App?>(App(""))
     val app = _app.asStateFlow()
+
+    private val _state = MutableStateFlow(defaultAppState)
+    val state = _state.asStateFlow()
 
     private val _suggestions = MutableStateFlow<List<App>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
@@ -98,41 +105,22 @@ class AppDetailsViewModel @Inject constructor(
     private val _purchaseStatus = MutableSharedFlow<Boolean>()
     val purchaseStatus = _purchaseStatus.asSharedFlow()
 
-    val download = combine(app, downloadHelper.downloadsList) { a, list ->
+    private val download = combine(app, downloadHelper.downloadsList) { a, list ->
         if (a?.packageName.isNullOrBlank()) return@combine null
         list.find { d -> d.packageName == a?.packageName }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    // TODO: Save sessionId to downloads to monitor packageInstall progress
-    val installProgress = callbackFlow<Float?> {
-        val packageInstaller = context.packageManager.packageInstaller
-        val callback = object : PackageInstaller.SessionCallback() {
-            override fun onActiveChanged(p0: Int, p1: Boolean) {}
-            override fun onBadgingChanged(p0: Int) {}
-            override fun onCreated(p0: Int) {
-                // trySend(0F)
-            }
-            override fun onFinished(p0: Int, p1: Boolean) {
-//                trySend(null)
-            }
-            override fun onProgressChanged(p0: Int, p1: Float) {
-//                trySend(p1)
-            }
-        }
+    private val isInstalled: Boolean
+        get() = PackageUtil.isInstalled(context, app.value!!.packageName)
 
-        packageInstaller.registerSessionCallback(callback)
-        awaitClose { packageInstaller.unregisterSessionCallback(callback) }
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+    private val isUpdatable: Boolean
+        get() = PackageUtil.isUpdatable(context, app.value!!.packageName, app.value!!.versionCode)
+
+    private val isArchived: Boolean
+        get() = PackageUtil.isArchived(context, app.value!!.packageName)
 
     private val isExtendedUpdateEnabled: Boolean
         get() = Preferences.getBoolean(context, PREFERENCE_UPDATES_EXTENDED)
-
-    private val isUpdatable: Boolean
-        get() = PackageUtil.isUpdatable(
-            context,
-            app.value!!.packageName,
-            app.value!!.versionCode
-        )
 
     private val hasValidCerts: Boolean
         get() = app.value!!.certificateSetList.any {
@@ -142,8 +130,18 @@ class AppDetailsViewModel @Inject constructor(
             )
         }
 
-    val hasValidUpdate: Boolean
+    private val hasValidUpdate: Boolean
         get() = (isUpdatable && hasValidCerts) || (isUpdatable && isExtendedUpdateEnabled)
+
+    private val defaultAppState: AppState
+        get() = when {
+            isInstalled -> if (hasValidUpdate) AppState.Updatable else AppState.Installed
+            else -> if (isArchived) AppState.Archived else AppState.Unavailable
+        }
+
+    init {
+        observeAppState()
+    }
 
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -168,18 +166,6 @@ class AppDetailsViewModel @Inject constructor(
                 fetchPlexusReport(packageName)
             }
         }
-    }
-
-    private fun fetchFeaturedReviews(packageName: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                _featuredReviews.value = reviewsHelper.getReviewSummary(packageName)
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch featured app reviews", exception)
-                _featuredReviews.value = emptyList()
-            }
-        }
-
     }
 
     fun updateTestingProgramStatus(packageName: String, subscribe: Boolean) {
@@ -232,7 +218,7 @@ class AppDetailsViewModel @Inject constructor(
                 if (files.isNotEmpty()) download(app.copy(fileList = files.toMutableList()))
             } catch (exception: Exception) {
                 _purchaseStatus.emit(false)
-                Log.e(TAG, "Failed to purchase the app ", exception)
+                Log.e(TAG, "Failed to purchase the app", exception)
             }
         }
     }
@@ -259,6 +245,41 @@ class AppDetailsViewModel @Inject constructor(
 
             _favourite.value = !favourite.value
         }
+    }
+
+    private fun observeAppState() {
+        AuroraApp.events.installerEvent
+            .filter { it.packageName == app.value?.packageName }
+            .onEach { event ->
+                _state.value = when {
+                    event is InstallerEvent.Installing -> AppState.Installing(event.progress)
+                    else -> defaultAppState
+                }
+            }.launchIn(viewModelScope)
+
+        download.filterNotNull().onEach {
+            _state.value = when {
+                it.isRunning -> AppState.Downloading(
+                    it.progress.toFloat(),
+                    it.speed,
+                    it.timeRemaining
+                )
+
+                else -> defaultAppState
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    private fun fetchFeaturedReviews(packageName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _featuredReviews.value = reviewsHelper.getReviewSummary(packageName)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch featured app reviews", exception)
+                _featuredReviews.value = emptyList()
+            }
+        }
+
     }
 
     private fun fetchFavourite(packageName: String) {

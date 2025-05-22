@@ -222,11 +222,14 @@ class DownloadWorker @AssistedInject constructor(
 
                     else -> {
                         notifyStatus(DownloadStatus.FAILED)
-                        AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
-                            extra =
-                                exception.message ?: context.getString(R.string.download_failed)
-                            error = exception.stackTraceToString()
-                        })
+                        AuroraApp.events.send(
+                            InstallerEvent.Failed(
+                                packageName = download.packageName,
+                                error = exception.stackTraceToString(),
+                                extra = exception.message
+                                    ?: context.getString(R.string.download_failed)
+                            )
+                        )
                     }
                 }
             }

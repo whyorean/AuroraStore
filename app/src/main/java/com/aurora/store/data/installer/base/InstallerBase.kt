@@ -91,14 +91,14 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
     }
 
     open fun postError(packageName: String, error: String?, extra: String?) {
-        Log.e(TAG, "Service Error :$error")
-
-        val event = InstallerEvent.Failed(packageName).apply {
-            this.error = error ?: ""
-            this.extra = extra ?: ""
-        }
-
-        AuroraApp.events.send(event)
+        Log.e(TAG, "Installer Error :$error")
+        AuroraApp.events.send(
+            InstallerEvent.Failed(
+                packageName = packageName,
+                error = error,
+                extra = extra
+            )
+        )
     }
 
     fun getFiles(
