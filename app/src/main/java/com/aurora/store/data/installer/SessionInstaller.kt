@@ -86,9 +86,10 @@ class SessionInstaller @Inject constructor(
 
             if (packageName != null && progress > 0.0) {
                 AuroraApp.events.send(
-                    InstallerEvent.Installing(packageName).apply {
-                        this.progress = (progress * 100).toInt()
-                    }
+                    InstallerEvent.Installing(
+                        packageName = packageName,
+                        progress = progress
+                    )
                 )
             }
         }
