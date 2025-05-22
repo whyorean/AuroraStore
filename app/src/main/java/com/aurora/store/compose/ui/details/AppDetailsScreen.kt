@@ -256,14 +256,8 @@ private fun ScreenContentApp(
                     exodusReport = exodusReport,
                     hasValidUpdate = hasValidUpdate,
                     onNavigateUp = onNavigateUp,
-                    onNavigateToDetailsDevProfile = { showExtraPane(Screen.DevProfile(it)) },
-                    onNavigateToDetailsMore = { showExtraPane(Screen.DetailsMore) },
-                    onNavigateToDetailsScreenshot = { showExtraPane(Screen.DetailsScreenshot(it)) },
-                    onNavigateToDetailsReview = { showExtraPane(Screen.DetailsReview) },
-                    onNavigateToDetailsExodus = { showExtraPane(Screen.DetailsExodus) },
-                    onNavigateToDetailsPermission = { showExtraPane(Screen.DetailsPermission) },
+                    onNavigateToScreen = { screen -> showExtraPane(screen) },
                     onDownload = onDownload,
-                    onManualDownload = { showExtraPane(Screen.DetailsManualDownload) },
                     onCancelDownload = onCancelDownload,
                     onUninstall = onUninstall,
                     onOpen = onOpen,
@@ -274,7 +268,7 @@ private fun ScreenContentApp(
         },
         supportingPane = {
             AnimatedPane {
-                ScreenContentAppSupporting(
+                ScreenContentAppSupportingPane(
                     suggestions = suggestions,
                     onNavigateToAppDetails = onNavigateToAppDetails,
                     menuActions = { if (!shouldShowMenuOnMainPane) SetupMenu() }
@@ -330,14 +324,8 @@ private fun ScreenContentAppMainPane(
     exodusReport: Report?,
     hasValidUpdate: Boolean,
     onNavigateUp: () -> Unit,
-    onNavigateToDetailsDevProfile: (developerName: String) -> Unit,
-    onNavigateToDetailsMore: () -> Unit,
-    onNavigateToDetailsScreenshot: (index: Int) -> Unit,
-    onNavigateToDetailsReview: () -> Unit,
-    onNavigateToDetailsExodus: () -> Unit,
-    onNavigateToDetailsPermission: () -> Unit,
+    onNavigateToScreen: (screen: Screen) -> Unit,
     onDownload: () -> Unit,
-    onManualDownload: () -> Unit,
     onCancelDownload: () -> Unit,
     onUninstall: () -> Unit,
     onOpen: () -> Unit,
@@ -387,7 +375,7 @@ private fun ScreenContentAppMainPane(
                     primaryActionDisplayName = primaryActionName,
                     secondaryActionDisplayName = stringResource(R.string.title_manual_download),
                     onPrimaryAction = onDownload,
-                    onSecondaryAction = onManualDownload
+                    onSecondaryAction = { onNavigateToScreen(Screen.DetailsManualDownload) }
                 )
             }
         }
@@ -418,7 +406,7 @@ private fun ScreenContentAppMainPane(
                 app = app,
                 inProgress = isDownloading || isInstalling,
                 progress = progress,
-                onNavigateToDetailsDevProfile = onNavigateToDetailsDevProfile,
+                onNavigateToDetailsDevProfile = { onNavigateToScreen(Screen.DevProfile(it)) },
                 hasValidUpdate = hasValidUpdate
             )
 
@@ -429,18 +417,18 @@ private fun ScreenContentAppMainPane(
             HeaderComposable(
                 title = stringResource(R.string.details_more_about_app),
                 subtitle = app.shortDescription,
-                onClick = onNavigateToDetailsMore
+                onClick = { onNavigateToScreen(Screen.DetailsMore) }
             )
 
             AppScreenshots(
                 screenshots = app.screenshots,
-                onNavigateToScreenshot = onNavigateToDetailsScreenshot
+                onNavigateToScreenshot = { onNavigateToScreen(Screen.DetailsScreenshot(it)) }
             )
 
             AppRatingAndReviews(
                 rating = app.rating,
                 featuredReviews = featuredReviews,
-                onNavigateToDetailsReview = onNavigateToDetailsReview
+                onNavigateToDetailsReview = { onNavigateToScreen(Screen.DetailsReview) }
             )
 
             if (!isAnonymous && app.testingProgram?.isAvailable == true) {
@@ -462,7 +450,11 @@ private fun ScreenContentAppMainPane(
                 } else {
                     stringResource(R.string.details_no_permission)
                 },
-                onClick = if (app.permissions.isNotEmpty()) onNavigateToDetailsPermission else null
+                onClick = if (app.permissions.isNotEmpty()) {
+                    { onNavigateToScreen(Screen.DetailsPermission) }
+                } else {
+                    null
+                }
             )
 
             if (dataSafetyReport != null) {
@@ -475,7 +467,7 @@ private fun ScreenContentAppMainPane(
             AppPrivacy(
                 report = exodusReport,
                 onNavigateToDetailsExodus = if (!exodusReport?.trackers.isNullOrEmpty()) {
-                    onNavigateToDetailsExodus
+                    { onNavigateToScreen(Screen.DetailsExodus) }
                 } else {
                     null
                 }
@@ -494,7 +486,7 @@ private fun ScreenContentAppMainPane(
  * Composable to display similar and related app suggestions
  */
 @Composable
-private fun ScreenContentAppSupporting(
+private fun ScreenContentAppSupportingPane(
     menuActions: @Composable (RowScope.() -> Unit) = {},
     suggestions: List<App> = emptyList(),
     onNavigateToAppDetails: (packageName: String) -> Unit = {}
