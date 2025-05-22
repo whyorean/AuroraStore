@@ -1,0 +1,4 @@
+• Android 16
+• Fehler beim Öffnen von Links zu Apps behoben
+• Unterstützung des Öffnens der App-Detailseite über die App-Info-Einstellungen
+• Übersetzungen aktualisiert
