@@ -127,9 +127,9 @@
     <string name="action_filter_paid_apps">مدفوع</string>
     <string name="action_filter_misc">متفرقات</string>
     <string name="action_filter_gsf_dependent_apps">يعتمد على خدمات قوقل GSF</string>
-    <string name="action_filter_apply">تطبيق</string>
-    <string name="action_filter_all">الجميع</string>
-    <string name="action_filter">عوامل التصفيه</string>
+    <string name="action_filter_apply">طبّق</string>
+    <string name="action_filter_all">الكل</string>
+    <string name="action_filter">عوامل التصفية</string>
     <string name="action_granted">ممنوح</string>
     <string name="action_grant">المنح</string>
     <string name="action_finish">إنهاء</string>
@@ -147,7 +147,7 @@
     <string name="pref_install_mode_summary">حدد وضع تثبيت APK</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف حزم التطبيقات المحملة والتي قد تم تثبيتها بشكل مباشر</string>
-    <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات التي تم تنزيلها أو تثبيتها من F - Droid</string>
+    <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات المثبتة من F-Droid</string>
     <string name="onboarding_permission_installer_desc">السماح بتثبيت التطبيقات من متجر Aurora</string>
     <string name="toast_purchase_blocked">لا تتوفر عمليات شراء التطبيق على الحسابات المجهولة.</string>
     <string name="purchase_session_expired">انتهت صلاحية جلسة العمل، إعادة تسجيل الدخول للحصول على جلسة عمل جديدة.</string>
@@ -286,8 +286,8 @@
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
     <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
-    <string name="pref_aurora_only">تطبيقات متجر Aurora فقط</string>
-    <string name="pref_aurora_only_desc">تحقق فقط من تحديثات التطبيقات المثبتة بواسطة متجر أورورا</string>
+    <string name="pref_aurora_only">تصفية التطبيقات من مصادر أخرى</string>
+    <string name="pref_aurora_only_desc">لا تبحث عن تحديثات للتطبيقات المثبتة من مصادر خارج متجر أورورا</string>
     <string name="title_app_settings">إعدادات التطبيق</string>
     <string name="pref_updates_check_frequency">تردد التحديثات التلقائية</string>
     <string name="pref_network_proxy_url">عنوان URL الوكيل</string>
@@ -306,8 +306,8 @@
     <string name="action_request_analysis">طلب تحليل جديد</string>
     <string name="failed_apk_export">فشل تصدير ملفات APK</string>
     <string name="download_clear_finished">مسح المكتملة</string>
-    <string name="pref_updates_incompatible">التحديثات غير المتوافقة</string>
-    <string name="pref_updates_incompatible_desc">عرض التحديثات للتطبيقات غير المتوافقة أو المعطلة التي قد يفشل تثبيتها</string>
+    <string name="pref_updates_incompatible">أظهِر التحديثات التي قد تفشل</string>
+    <string name="pref_updates_incompatible_desc">اعرض التحديثات للتطبيقات غير المتوافقة أو المعطلة التي قد يفشل تثبيتها</string>
     <string name="action_home_screen">أضِف إلى الشاشة الرئيسية</string>
     <string name="session_installer_subtitle">أداة التثبيت المستندة إلى الجلسة لملفات APK المجمعة/المقسمة</string>
     <string name="session_installer_desc">موصى به ومدمج ويدعم جميع إصدارات Android</string>
@@ -428,4 +428,6 @@
     <string name="pref_updates_restrictions_battery">عندما لا تكون البطارية منخفضة</string>
     <string name="pref_updates_restrictions_title">التحديثات التلقائية مقيدة</string>
     <string name="verification_failed">فشل في التحقق من الملفات التي تم تنزيلها</string>
+    <string name="pref_common_advanced">متقدّم</string>
+    <string name="pref_updates_app_source">مصدر التطبيق</string>
 </resources>

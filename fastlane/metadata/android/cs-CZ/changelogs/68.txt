@@ -1,0 +1,2 @@
+• Opraven pád při navigaci na podrobnosti aplikace
+• Aktualizace překladů

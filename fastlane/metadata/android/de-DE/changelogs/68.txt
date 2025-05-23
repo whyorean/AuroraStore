@@ -1,0 +1,2 @@
+• Behebung eines Absturzes beim Navigieren zur App-Detailseite
+• Übersetzungen aktualisiert

@@ -304,7 +304,7 @@
     <string name="no_apps_available">Rakendusi pole saadaval</string>
     <string name="am_installer_subtitle">Täisfunktsionaalne avatud lähtekoodiga paketihaldur</string>
     <string name="faqs_subtitle">Kas on küsimusi? Otsi vastuseid</string>
-    <string name="privacy_policy_title">Privaatsuspoliitika</string>
+    <string name="privacy_policy_title">Andmekaitsepõhimõtted</string>
     <string name="privacy_policy_subtitle">Vaata, kuidas Aurora pood sinu andmeid kasutab</string>
     <string name="about_aurora_store_title">Aurora poest</string>
     <string name="manage_account">Halda oma kontot</string>
