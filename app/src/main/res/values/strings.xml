@@ -76,6 +76,7 @@
     <string name="action_granted">"Granted"</string>
     <string name="action_ignore">"Ignore"</string>
     <string name="action_install">"Install"</string>
+    <string name="action_install_microG">"Install microG Bundle"</string>
     <string name="action_installations">"Installations"</string>
     <string name="action_installing">"Installing"</string>
     <string name="action_join">"Join"</string>
@@ -83,6 +84,7 @@
     <string name="action_leave">"Leave"</string>
     <string name="action_logout">Log out</string>
     <string name="action_next">"Next"</string>
+    <string name="action_skip">"Skip"</string>
     <string name="action_ok">"Okay"</string>
     <string name="action_open">"Open"</string>
     <string name="action_pending">"Pending"</string>
@@ -193,21 +195,6 @@
     <string name="notification_channel_export">App export notification</string>
     <string name="notification_channel_install">Install notification</string>
     <string name="notification_channel_downloads">Downloads notification</string>
-    <string name="onboarding_permission_select">"Aurora Store requires following permissions"</string>
-    <string name="onboarding_title_installer">"Installer"</string>
-    <string name="onboarding_title_permissions">"Permissions"</string>
-    <string name="onboarding_title_welcome">"Welcome"</string>
-    <string name="onboarding_welcome_select">"How you doing?"</string>
-    <string name="onboarding_permission_esa">"External storage access"</string>
-    <string name="onboarding_permission_esa_desc">To save APK expansion files (OBBs) for large apps &amp; games.</string>
-    <string name="onboarding_permission_esm">"External storage manager"</string>
-    <string name="onboarding_permission_installer">"Installer permission"</string>
-    <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
-    <string name="onboarding_permission_installer_legacy_desc">"Allow installation of apps from unknown sources"</string>
-    <string name="onboarding_permission_notifications">"Notifications"</string>
-    <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
-    <string name="onboarding_permission_doze">"Background downloads"</string>
-    <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
     <string name="pref_common_extra">"Extras"</string>
     <string name="pref_filter_fdroid_summary">"Don't check updates for apps installed from F-Droid"</string>
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
@@ -361,6 +348,31 @@
     <string name="app_info_updated_on">"Last updated"</string>
     <string name="app_info_min_android">"Minimum Android Version"</string>
     <string name="app_info_target_android">"Target API Level"</string>
+
+    <!-- OnBoarding Fragment -->
+    <string name="onboarding_title_installer">"Installer"</string>
+    <string name="onboarding_title_gsf">"Oops!"</string>
+    <string name="onboarding_title_permissions">"Permissions"</string>
+    <string name="onboarding_title_welcome">"Welcome"</string>
+    <string name="onboarding_welcome_select">"How you doing?"</string>
+    <string name="onboarding_permission_esa">"External storage access"</string>
+    <string name="onboarding_permission_esa_desc">To save APK expansion files (OBBs) for large apps &amp; games.</string>
+    <string name="onboarding_permission_esm">"External storage manager"</string>
+    <string name="onboarding_permission_installer">"Installer permission"</string>
+    <string name="onboarding_permission_installer_desc">"Allow installing apps from Aurora Store"</string>
+    <string name="onboarding_permission_installer_legacy_desc">"Allow installation of apps from unknown sources"</string>
+    <string name="onboarding_permission_notifications">"Notifications"</string>
+    <string name="onboarding_permission_notifications_desc">"Send notifications regarding installations status"</string>
+    <string name="onboarding_permission_doze">"Background downloads"</string>
+    <string name="onboarding_permission_doze_desc">"Allow Aurora Store to download and update apps in background"</string>
+    <string name="onboarding_permission_select">"Aurora Store requires following permissions"</string>
+    <string name="onboarding_gms_notice">"App compatibility issue found"</string>
+    <string name="onboarding_gms_agreement">"I have read and agree to the microG Terms of Service and Privacy Policy"</string>
+    <string name="onboarding_gms_missing">"We couldn't find Google Play Services on your device, several popular apps now require it to function properly!"</string>
+    <string name="onboarding_gms_microg">"microG is a free and open-source implementation that provides similar functionality to run apps dependent on Google Play Services for Android devices through re-implementation.\n\nmicroG enables apps to access those Google APIs, enhancing compatibility for users while offering privacy benefits. \n\nmicroG will run automatically in the background when you open applications dependent on Google Mobile Services."</string>
+    <string name="microg_privacy_policy">Read microG Privacy Policy</string>
+    <string name="microg_license_agreement">Read microG License and Agreement</string>
+    <string name="microg_website">Visit microG Project Website</string>
 
     <!-- InstallerFragment -->
     <string name="session_installer_subtitle">Session based installer for bundled/split APKs</string>

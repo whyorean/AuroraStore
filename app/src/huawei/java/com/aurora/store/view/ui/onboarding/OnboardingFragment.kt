@@ -20,6 +20,8 @@
 package com.aurora.store.view.ui.onboarding
 
 import androidx.fragment.app.Fragment
+import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
@@ -34,9 +36,12 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class OnboardingFragment : BaseFlavouredOnboardingFragment() {
+    @Inject
+    lateinit var blacklistProvider: BlacklistProvider
 
     override fun loadDefaultPreferences() {
         /*Filters*/
@@ -44,7 +49,7 @@ class OnboardingFragment : BaseFlavouredOnboardingFragment() {
         save(PREFERENCE_FILTER_FDROID, true)
 
         /*Network*/
-        save(PREFERENCE_DISPENSER_URLS, setOf())
+        save(PREFERENCE_DISPENSER_URLS, emptySet())
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/
@@ -63,10 +68,16 @@ class OnboardingFragment : BaseFlavouredOnboardingFragment() {
     }
 
     override fun onboardingPages(): List<Fragment> {
-        return listOf(
+        var pages = mutableListOf(
             WelcomeFragment(),
             PermissionsFragment.newInstance()
         )
+
+        if (!PackageUtil.isMicroGBundleInstalled(requireContext())) {
+            pages.add(MicroGFragment())
+        }
+
+        return pages
     }
 
     override fun setupAutoUpdates() {
@@ -76,8 +87,9 @@ class OnboardingFragment : BaseFlavouredOnboardingFragment() {
     }
 
     override fun finishOnboarding() {
-        super.finishOnboarding()
+        blacklistProvider.blacklist("com.android.vending")
+        blacklistProvider.blacklist("com.google.android.gms")
 
-        // Remove super & implement variant logic here
+        super.finishOnboarding()
     }
 }
