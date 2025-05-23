@@ -1,0 +1,4 @@
+• Version i synuar Android 16
+• Ndreqje të mete me hapje lidhjesh në aplikacione
+• Mbulim hapje faqeje hollësish aplikacioni që nga rregullime hollësish aplikacioni
+• Përditësime përkthimesh
