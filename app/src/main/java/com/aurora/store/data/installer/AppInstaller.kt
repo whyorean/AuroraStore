@@ -93,6 +93,7 @@ class AppInstaller @Inject constructor(
 
                     // Ensure app being installed satisfies Android's requirement for targetSdk level
                     when (Build.VERSION.SDK_INT) {
+                        Build.VERSION_CODES.BAKLAVA -> targetSdk >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
                         Build.VERSION_CODES.VANILLA_ICE_CREAM -> targetSdk >= Build.VERSION_CODES.TIRAMISU
                         Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> targetSdk >= Build.VERSION_CODES.S
                         Build.VERSION_CODES.TIRAMISU -> targetSdk >= Build.VERSION_CODES.R
