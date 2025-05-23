@@ -61,7 +61,7 @@ class AuthProvider @Inject constructor(
             return if (rawAuth.isNotBlank()) {
                 json.decodeFromString<AuthData>(rawAuth)
             } else {
-                null
+                AuthData("BOGUS")
             }
         }
 

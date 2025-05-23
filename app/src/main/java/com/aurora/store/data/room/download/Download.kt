@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.room.suite.ExternalApk
 import com.aurora.store.data.room.update.Update
 import kotlinx.parcelize.Parcelize
 import java.util.Date
@@ -79,6 +80,27 @@ data class Download(
                 update.sharedLibs,
                 update.targetSdk,
                 Date().time
+            )
+        }
+
+        fun fromExternalApk(externalApk: ExternalApk): Download {
+            return Download(
+                packageName = externalApk.packageName,
+                versionCode = externalApk.versionCode,
+                offerType = 0,
+                isInstalled = false,
+                displayName = externalApk.displayName,
+                iconURL = externalApk.iconURL,
+                size = 0,
+                id = 0,
+                downloadStatus = DownloadStatus.QUEUED,
+                progress = 0,
+                speed = 0L,
+                timeRemaining = 0L,
+                totalFiles = 1,
+                downloadedFiles = 0,
+                fileList = externalApk.fileList,
+                sharedLibs = emptyList(),
             )
         }
     }
