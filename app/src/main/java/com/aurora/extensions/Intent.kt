@@ -21,6 +21,7 @@ package com.aurora.extensions
 
 import android.content.Context
 import android.content.Intent
+import android.net.UrlQuerySanitizer
 import android.os.Bundle
 
 inline fun <reified T : Context> Context.newIntent(): Intent =
@@ -40,3 +41,22 @@ inline fun <reified T : Context> Context.newIntent(flags: Int, extras: Bundle): 
     intent.putExtras(extras)
     return intent
 }
+
+fun Intent.getPackageName(fallbackBundle: Bundle? = null): String? {
+    return when (action) {
+        Intent.ACTION_VIEW -> {
+            data?.getQueryParameter("id")
+        }
+        Intent.ACTION_SEND -> {
+            val clipData = getStringExtra(Intent.EXTRA_TEXT).orEmpty()
+            UrlQuerySanitizer(clipData).getValue("id")
+        }
+        Intent.ACTION_SHOW_APP_INFO -> {
+            extras?.getString(Intent.EXTRA_PACKAGE_NAME)
+        }
+        else -> {
+            extras?.getString("packageName") ?: fallbackBundle?.getString("packageName")
+        }
+    }
+}
+

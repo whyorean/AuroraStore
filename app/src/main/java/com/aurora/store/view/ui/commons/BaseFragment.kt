@@ -42,7 +42,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     lateinit var permissionProvider: PermissionProvider
 
-    private var _binding: ViewBindingType? = null
+    protected open var _binding: ViewBindingType? = null
     protected val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
