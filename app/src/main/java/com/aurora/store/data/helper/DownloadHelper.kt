@@ -12,6 +12,7 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
+import com.aurora.store.data.room.suite.ExternalApk
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.PathUtil
@@ -88,6 +89,14 @@ class DownloadHelper @Inject constructor(
      */
     suspend fun enqueueUpdate(update: Update) {
         downloadDao.insert(Download.fromUpdate(update))
+    }
+
+    /**
+     * Enqueues ExternalApk for download & install
+     * @param externalApk [ExternalApk] to download
+     */
+    suspend fun enqueueStandalone(externalApk: ExternalApk) {
+        downloadDao.insert(Download.fromExternalApk(externalApk))
     }
 
     /**

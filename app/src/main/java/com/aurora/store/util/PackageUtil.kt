@@ -51,6 +51,8 @@ object PackageUtil {
     private const val TAG = "PackageUtil"
 
     const val PACKAGE_NAME_GMS = "com.google.android.gms"
+    const val PACKAGE_NAME_VENDING = "com.android.vending"
+
     private const val VERSION_CODE_MICRO_G: Long = 240913402
     private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
 
@@ -110,7 +112,11 @@ object PackageUtil {
         }
     }
 
-    fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Long): Boolean {
+    fun isSharedLibraryInstalled(
+        context: Context,
+        packageName: String,
+        versionCode: Long
+    ): Boolean {
         return if (isOAndAbove) {
             val sharedLibraries = getAllSharedLibraries(context)
             if (isPAndAbove) {
@@ -135,6 +141,10 @@ object PackageUtil {
         } catch (e: PackageManager.NameNotFoundException) {
             false
         }
+    }
+
+    fun isMicroGBundleInstalled(context: Context): Boolean {
+        return isInstalled(context, PACKAGE_NAME_GMS) and isInstalled(context, PACKAGE_NAME_VENDING)
     }
 
     fun getInstalledVersionName(context: Context, packageName: String): String {
