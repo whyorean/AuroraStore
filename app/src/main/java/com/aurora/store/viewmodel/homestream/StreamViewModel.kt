@@ -114,7 +114,11 @@ class StreamViewModel @Inject constructor(
 
                     liveData.postValue(ViewState.Success(stash.toMap()))
                 } else {
-                    Log.i(TAG, "End of cluster ${streamCluster.id}")
+                    stashMutex.withLock {
+                        postClusterEnd(category, streamCluster.id)
+                    }
+
+                    liveData.postValue(ViewState.Success(stash.toMap()))
                 }
             } catch (e: Exception) {
                 liveData.postValue(ViewState.Error(e.message))
@@ -137,6 +141,18 @@ class StreamViewModel @Inject constructor(
 
         val updatedClusters = bundle.streamClusters.toMutableMap().apply {
             this[clusterID] = mergedCluster
+        }
+
+        stash[category] = bundle.copy(streamClusters = updatedClusters)
+    }
+
+    private fun postClusterEnd(category: StreamContract.Category, clusterID: Int) {
+        val bundle = stash[category] ?: return
+        val oldCluster = bundle.streamClusters[clusterID] ?: return
+
+        val updatedCluster = oldCluster.copy(clusterNextPageUrl = "")
+        val updatedClusters = bundle.streamClusters.toMutableMap().apply {
+            this[clusterID] = updatedCluster
         }
 
         stash[category] = bundle.copy(streamClusters = updatedClusters)

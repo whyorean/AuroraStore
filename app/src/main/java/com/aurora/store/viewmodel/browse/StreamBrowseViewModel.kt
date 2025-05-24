@@ -60,9 +60,17 @@ class StreamBrowseViewModel @Inject constructor(
                     liveData.postValue(streamCluster)
                 } else {
                     Log.i(TAG, "End of Cluster")
+                    postClusterEnd()
                 }
             } catch (_: Exception) {
             }
         }
+    }
+
+    fun postClusterEnd() {
+        streamCluster = streamCluster.copy(
+            clusterNextPageUrl = ""
+        )
+        liveData.postValue(streamCluster)
     }
 }
