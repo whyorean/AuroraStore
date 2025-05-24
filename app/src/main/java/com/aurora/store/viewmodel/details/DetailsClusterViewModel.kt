@@ -107,9 +107,9 @@ class DetailsClusterViewModel @Inject constructor(
                 clusterNextPageUrl = newCluster.clusterNextPageUrl,
                 clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
             )
-            val newStreamClusters = bundle.streamClusters.toMutableMap().also {
-                it.remove(clusterID)
-                it[clusterID] = mergedCluster
+
+            val newStreamClusters = bundle.streamClusters.toMutableMap().apply {
+                this[clusterID] = mergedCluster
             }
 
             stash.put(url, bundle.copy(streamClusters = newStreamClusters))
