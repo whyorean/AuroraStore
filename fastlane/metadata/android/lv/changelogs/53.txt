@@ -1,3 +1,3 @@
-• Salabota problēma, kuras dēļ lietotnes netika uzstādītas pēc lejupielādes
-• Ļaut atlasīt pielāgotu lejupielādes mapi
-• Pievienota "Lejupielādēt tikai izmantojot Wi-Fi" opcija
+• Novērsta lietotņu neuzstādīšana pēc lejupielādes
+• Ļauts izvēlēties pielāgotu lejupielāžu mapi
+• Pievienota iespēja "Lejupielādēt tikai izmantojot Wi-Fi"
