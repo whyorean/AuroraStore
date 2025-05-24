@@ -32,7 +32,8 @@ import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
 
 @HiltViewModel
@@ -44,10 +45,13 @@ class StreamViewModel @Inject constructor(
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
-    private var stash: HomeStash = mutableMapOf()
+    private val stash: HomeStash = mutableMapOf()
 
     private val streamContract: StreamContract
         get() = webStreamHelper
+
+    // Mutex to protect stash access for thread safety
+    private val stashMutex = Mutex()
 
     fun getStreamBundle(category: StreamContract.Category, type: StreamContract.Type) {
         liveData.postValue(ViewState.Loading)
@@ -56,16 +60,18 @@ class StreamViewModel @Inject constructor(
 
     fun observe(category: StreamContract.Category, type: StreamContract.Type) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                val bundle = targetBundle(category)
-                if (bundle.hasCluster()) {
-                    liveData.postValue(ViewState.Success(stash))
-                }
+            try {
+                stashMutex.withLock {
+                    val bundle = targetBundle(category)
 
-                try {
+                    // Post existing data if any clusters exist
+                    if (bundle.hasCluster()) {
+                        liveData.postValue(ViewState.Success(stash.toMap()))
+                    }
+
                     if (!bundle.hasCluster() || bundle.hasNext()) {
 
-                        //Fetch new stream bundle
+                        // Fetch new stream bundle
                         val newBundle = if (bundle.hasCluster()) {
                             streamContract.nextStreamBundle(
                                 category,
@@ -75,41 +81,43 @@ class StreamViewModel @Inject constructor(
                             streamContract.fetch(type, category)
                         }
 
-                        //Update old bundle
+                        // Update old bundle
                         val mergedBundle = bundle.copy(
                             streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         )
                         stash[category] = mergedBundle
 
-                        //Post updated to UI
-                        liveData.postValue(ViewState.Success(stash))
+                        // Post updated to UI
+                        liveData.postValue(ViewState.Success(stash.toMap()))
                     } else {
                         Log.i(TAG, "End of Bundle")
                     }
-                } catch (e: Exception) {
-                    liveData.postValue(ViewState.Error(e.message))
                 }
+            } catch (e: Exception) {
+                liveData.postValue(ViewState.Error(e.message))
             }
         }
     }
 
     fun observeCluster(category: StreamContract.Category, streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    if (streamCluster.hasNext()) {
-                        val newCluster = streamContract.nextStreamCluster(
-                            streamCluster.clusterNextPageUrl
-                        )
+            try {
+                if (streamCluster.hasNext()) {
+                    val newCluster = streamContract.nextStreamCluster(
+                        streamCluster.clusterNextPageUrl
+                    )
+
+                    stashMutex.withLock {
                         updateCluster(category, streamCluster.id, newCluster)
-                        liveData.postValue(ViewState.Success(stash))
-                    } else {
-                        Log.i(TAG, "End of cluster")
                     }
-                } catch (e: Exception) {
-                    liveData.postValue(ViewState.Error(e.message))
+
+                    liveData.postValue(ViewState.Success(stash.toMap()))
+                } else {
+                    Log.i(TAG, "End of cluster ${streamCluster.id}")
                 }
+            } catch (e: Exception) {
+                liveData.postValue(ViewState.Error(e.message))
             }
         }
     }
@@ -119,26 +127,22 @@ class StreamViewModel @Inject constructor(
         clusterID: Int,
         newCluster: StreamCluster
     ) {
-        val bundle = targetBundle(category)
-        bundle.streamClusters[clusterID]?.let { oldCluster ->
-            val mergedCluster = oldCluster.copy(
-                clusterNextPageUrl = newCluster.clusterNextPageUrl,
-                clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
-            )
-            val newStreamClusters = bundle.streamClusters.toMutableMap().also {
-                it.remove(clusterID)
-                it[clusterID] = mergedCluster
-            }
+        val bundle = stash[category] ?: return
+        val oldCluster = bundle.streamClusters[clusterID] ?: return
 
-            stash.put(category, bundle.copy(streamClusters = newStreamClusters))
+        val mergedCluster = oldCluster.copy(
+            clusterNextPageUrl = newCluster.clusterNextPageUrl,
+            clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+        )
+
+        val updatedClusters = bundle.streamClusters.toMutableMap().apply {
+            this[clusterID] = mergedCluster
         }
+
+        stash[category] = bundle.copy(streamClusters = updatedClusters)
     }
 
     private fun targetBundle(category: StreamContract.Category): StreamBundle {
-        val streamBundle = stash.getOrPut(category) {
-            StreamBundle()
-        }
-
-        return streamBundle
+        return stash.getOrPut(category) { StreamBundle() }
     }
 }
