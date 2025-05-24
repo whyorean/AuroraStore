@@ -17,7 +17,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.extensions.getPackageName
-import com.aurora.extensions.hide
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.navigate
 import com.aurora.gplayapi.helpers.AuthHelper
@@ -41,7 +40,7 @@ import kotlinx.coroutines.launch
 
 abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>() {
 
-    private val TAG = SplashFragment::class.java.simpleName
+    private val TAG = BaseFlavouredSplashFragment::class.java.simpleName
 
     val viewModel: AuthViewModel by activityViewModels()
 
@@ -183,38 +182,6 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
         binding.toolbar.isVisible = isVisible
     }
 
-    open fun attachActions() {
-        binding.btnAnonymous.hide()
-
-        binding.btnGoogle.addOnClickListener {
-            if (viewModel.authState.value != AuthState.Fetching) {
-                binding.btnGoogle.updateProgress(true)
-                if (canLoginWithMicroG) {
-                    Log.i(TAG, "Found supported microG, trying to request credentials")
-                    val accountIntent = AccountManager.newChooseAccountIntent(
-                        null,
-                        null,
-                        arrayOf(GOOGLE_ACCOUNT_TYPE),
-                        null,
-                        null,
-                        null,
-                        null
-                    )
-                    startForAccount.launch(accountIntent)
-                } else {
-                    findNavController().navigate(R.id.googleFragment)
-                }
-            }
-        }
-    }
-
-    open fun resetActions() {
-        binding.btnGoogle.apply {
-            updateProgress(false)
-            isEnabled = true
-        }
-    }
-
     private fun navigateToDefaultTab() {
         val defaultDestination =
             Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
@@ -263,6 +230,48 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                 )
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to get authToken for Google login")
+        }
+    }
+
+    open fun attachActions() {
+        binding.btnAnonymous.addOnClickListener {
+            if (viewModel.authState.value != AuthState.Fetching) {
+                binding.btnAnonymous.updateProgress(true)
+                viewModel.buildAnonymousAuthData()
+            }
+        }
+
+        binding.btnGoogle.addOnClickListener {
+            if (viewModel.authState.value != AuthState.Fetching) {
+                binding.btnGoogle.updateProgress(true)
+                if (canLoginWithMicroG) {
+                    Log.i(TAG, "Found supported microG, trying to request credentials")
+                    val accountIntent = AccountManager.newChooseAccountIntent(
+                        null,
+                        null,
+                        arrayOf(GOOGLE_ACCOUNT_TYPE),
+                        null,
+                        null,
+                        null,
+                        null
+                    )
+                    startForAccount.launch(accountIntent)
+                } else {
+                    findNavController().navigate(R.id.googleFragment)
+                }
+            }
+        }
+    }
+
+    open fun resetActions() {
+        binding.btnGoogle.apply {
+            updateProgress(false)
+            isEnabled = true
+        }
+
+        binding.btnAnonymous.apply {
+            updateProgress(false)
+            isEnabled = true
         }
     }
 }

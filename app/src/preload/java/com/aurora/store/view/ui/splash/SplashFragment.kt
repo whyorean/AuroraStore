@@ -19,57 +19,7 @@
 
 package com.aurora.store.view.ui.splash
 
-import android.accounts.AccountManager
-import android.util.Log
-import androidx.navigation.fragment.findNavController
-import com.aurora.store.R
-import com.aurora.store.data.model.AuthState
-import com.aurora.store.util.CertUtil.GOOGLE_ACCOUNT_TYPE
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashFragment : BaseFlavouredSplashFragment() {
-    private val TAG = SplashFragment::class.java.simpleName
-
-    override fun attachActions() {
-        binding.btnAnonymous.addOnClickListener {
-            if (viewModel.authState.value != AuthState.Fetching) {
-                binding.btnAnonymous.updateProgress(true)
-                viewModel.buildAnonymousAuthData()
-            }
-        }
-
-        binding.btnGoogle.addOnClickListener {
-            if (viewModel.authState.value != AuthState.Fetching) {
-                binding.btnGoogle.updateProgress(true)
-                if (canLoginWithMicroG) {
-                    Log.i(TAG, "Found supported microG, trying to request credentials")
-                    val accountIntent = AccountManager.newChooseAccountIntent(
-                        null,
-                        null,
-                        arrayOf(GOOGLE_ACCOUNT_TYPE),
-                        null,
-                        null,
-                        null,
-                        null
-                    )
-                    startForAccount.launch(accountIntent)
-                } else {
-                    findNavController().navigate(R.id.googleFragment)
-                }
-            }
-        }
-    }
-
-    override fun resetActions() {
-        binding.btnGoogle.apply {
-            updateProgress(false)
-            isEnabled = true
-        }
-
-        binding.btnAnonymous.apply {
-            updateProgress(false)
-            isEnabled = true
-        }
-    }
-}
+class SplashFragment : BaseFlavouredSplashFragment()
