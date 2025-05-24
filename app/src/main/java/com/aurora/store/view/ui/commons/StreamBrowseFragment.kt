@@ -58,9 +58,9 @@ class StreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
             }
         })
 
-        viewModel.initCluster(streamCluster)
+        viewModel.seedCluster(streamCluster)
         viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(streamCluster)
+            updateController(it)
         }
     }
 

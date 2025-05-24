@@ -90,9 +90,9 @@ class DevProfileViewModel @Inject constructor(
                 clusterNextPageUrl = newCluster.clusterNextPageUrl,
                 clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
             )
-            val newStreamClusters = streamBundle.streamClusters.toMutableMap().also {
-                it.remove(newCluster.id)
-                it[newCluster.id] = mergedCluster
+
+            val newStreamClusters = streamBundle.streamClusters.toMutableMap().apply {
+                this[newCluster.id] = mergedCluster
             }
 
             streamBundle = streamBundle.copy(streamClusters = newStreamClusters)
