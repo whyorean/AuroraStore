@@ -349,7 +349,7 @@
     <string name="session_login">Entre na sua conta do Google Play</string>
     <string name="about_aurora_store_title">Sobre a Aurora Store</string>
     <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
-    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da Google Play Store oficial. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, você precisa ter uma conta do Google Play e entrar na conta quando abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre na sua conta do Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
+    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da Google Play Store oficial. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, você precisa ter uma conta do Google Play e entrar na conta ao abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre na sua conta do Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
     <string name="toast_app_unavailable">App não disponível para seu dispositivo</string>
     <string name="toast_fav_import_failed">Falha ao importar os curtidos!</string>
     <string name="details_no_favourites">Nenhum app curtido encontrado</string>
@@ -425,8 +425,8 @@
     <string name="pref_updates_restrictions_title">Restrições das atualizações automáticas</string>
     <string name="pref_updates_restrictions_desc">Configure as restrições do dispositivo das atualizações automáticas.</string>
     <string name="pref_updates_restrictions_metered">Somente em redes ilimitadas</string>
-    <string name="pref_updates_restrictions_idle">Quando o dispositivo estiver parado</string>
-    <string name="pref_updates_restrictions_battery">Quando a bateria não está baixa</string>
+    <string name="pref_updates_restrictions_idle">Somente com o dispositivo em repouso</string>
+    <string name="pref_updates_restrictions_battery">Somente com bateria suficiente</string>
     <string name="verification_failed">Falha ao verificar os arquivos baixados</string>
     <string name="pref_updates_app_source">Fonte do app</string>
     <string name="pref_common_advanced">Avançado</string>
