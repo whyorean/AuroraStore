@@ -364,14 +364,14 @@
     <string name="pref_updates_check_frequency">Frequentie van automatische updates</string>
     <string name="faqs_subtitle">Vragen? Ontdek de antwoorden</string>
     <string name="title_more">Meer</string>
-    <string name="pref_dispenser_title">Beheer distributeurs</string>
+    <string name="pref_dispenser_title">Distributeurs beheren</string>
     <string name="privacy_policy_title">Privacybeleid</string>
     <string name="disclaimer_subtitle">Verantwoording</string>
     <string name="pref_clear_device_owner_summary">Verwijderd Aurora Store als de appparaateigenaar-app</string>
     <string name="add_dispenser_hint">Distributeur-URL</string>
     <string name="remove_dispenser_title">Distributeur verwijderen</string>
     <string name="add_dispenser_error">Ongeldige URL</string>
-    <string name="pref_dispenser_summary">Bekijk en beheer distributeurs voor anonieme aanmeldingen</string>
+    <string name="pref_dispenser_summary">Distributeurs voor anonieme aanmeldingen bekijken en beheren</string>
     <string name="action_unarchive">Uit archief halen</string>
     <string name="status_failed">Mislukt</string>
     <string name="details_compatibility_gms_not_required_subtitle">Deze app werkt zonder Google\'s eigen bibliotheek. Echter kan het nog steeds andere bibliotheken van derden nodig hebben om goed te werken.</string>
