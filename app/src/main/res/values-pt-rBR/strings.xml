@@ -6,7 +6,7 @@
     <string name="details_dev_address">Endereço</string>
     <string name="details_dev_email">E-mail</string>
     <string name="details_description">Descrição</string>
-    <string name="title_spoof_manager">Gerenciador de falsificação</string>
+    <string name="title_spoof_manager">Simulação</string>
     <string name="action_whitelist">Desbloquear atualizações</string>
     <string name="title_blacklist_manager">Atualizações bloqueadas</string>
     <string name="title_download_playstore">Play Store</string>
@@ -32,7 +32,7 @@
     <string name="about_xda">Fóruns XDA</string>
     <string name="about_libera">Liberapay</string>
     <string name="toast_purchase_blocked">A compra de apps não está disponível em contas anônimas.</string>
-    <string name="toast_spoof_applied">Falsificação de dispositivo aplicada.</string>
+    <string name="toast_spoof_applied">Simulação de dispositivo aplicada.</string>
     <string name="toast_permission_granted">Permissão concedida</string>
     <string name="toast_developer_setting_failed">Ative as configurações do desenvolvedor a partir das configurações do dispositivo para abri-las.</string>
     <string name="toast_clipboard_copied">Copiado para a área de transferência</string>
@@ -189,7 +189,7 @@
     <string name="tab_for_you">Para você</string>
     <string name="tab_editor_choice">Escolha dos editores</string>
     <string name="tab_categories">Categorias</string>
-    <string name="spoof_apply">Certifique-se de entrar na sua conta novamente para aplicar a falsificação</string>
+    <string name="spoof_apply">Certifique-se de entrar na sua conta novamente para aplicar a simulação</string>
     <string name="purchase_session_expired">Sessão expirada, entre na sua conta novamente para obter uma nova sessão.</string>
     <string name="purchase_no_file">Não foi possível obter os arquivos</string>
     <string name="purchase_not_found">App não encontrado</string>
@@ -390,7 +390,7 @@
     <string name="checking_updates">Buscando atualizações</string>
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="default_spoof">Padrão</string>
-    <string name="available_spoof">Disponível</string>
+    <string name="available_spoof">Disponíveis</string>
     <string name="action_remove_all">Remover tudo</string>
     <string name="action_select_all">Selecionar tudo</string>
     <string name="filter_latest">Mais recentes</string>
