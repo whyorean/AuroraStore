@@ -48,7 +48,7 @@
     <string name="action_grant">Luba</string>
     <string name="action_granted">Lubatud</string>
     <string name="action_installations">Paigaldused</string>
-    <string name="action_installing">Paigaldamine</string>
+    <string name="action_installing">Paigaldan</string>
     <string name="action_logout">Logi välja</string>
     <string name="action_next">Edasi</string>
     <string name="action_request_analysis">Taotle uut analüüsi</string>
@@ -163,7 +163,7 @@
     <string name="onboarding_permission_notifications_desc">Saada märguandeid paigaldamise olekust</string>
     <string name="onboarding_permission_doze">Allalaadimine taustal</string>
     <string name="onboarding_permission_doze_desc">Luba Aurora poel rakendusi taustal allalaadida ja uuendada</string>
-    <string name="pref_filter_fdroid_summary">Ära kontrolli F-Droidist allalaaditud või paigaldatud rakenduste uuendusi</string>
+    <string name="pref_filter_fdroid_summary">Ära kontrolli F-Droidist paigaldatud rakenduste uuendusi</string>
     <string name="pref_filter_fdroid_title">Filtreeri F-Droidi rakendused</string>
     <string name="download_queued">Järjekorras</string>
     <string name="download_failed">Allalaadimine nurjus</string>
@@ -206,15 +206,15 @@
     <string name="toast_clipboard_copied">Kopeeriti lõikelauale</string>
     <string name="toast_manual_available">Õnnitlused, taotletud versioonikood on saadaval, laadime alla.</string>
     <string name="tab_top_paid">Populaarsed tasulised</string>
-    <string name="pref_aurora_only">Ainult Aurora poe rakendused</string>
+    <string name="pref_aurora_only">Filtreeri rakendusi muudest allikatest</string>
     <string name="purchase_failed">Allalaadimine nurjus</string>
     <string name="purchase_no_file">Faile ei saanud hankida</string>
-    <string name="pref_aurora_only_desc">Otsi ainult Aurora poest paigaldatud rakenduste uuendusi</string>
+    <string name="pref_aurora_only_desc">Ära otsi uuendusi rakendustele, mis on paigaldatud Aurora poe välistest allikatest</string>
     <string name="session_verifying">Seansi kinnitamine</string>
     <string name="title_device">Seade</string>
     <string name="title_search_suggestion">Otsingusoovitus</string>
     <string name="toast_apk_whitelisted">Lisatud valgesse nimekirja</string>
-    <string name="pref_updates_incompatible_desc">Kuva ühildumatute või keelatud rakenduste uuendused, mille paigaldamine võib ebaõnnestuda</string>
+    <string name="pref_updates_incompatible_desc">Näita ühildumatute või keelatud rakenduste uuendusi, mille paigaldamine võib ebaõnnestuda</string>
     <string name="tab_trending">Trendid</string>
     <string name="title_no_network">Võrk puudub</string>
     <string name="title_updates">Uuendused</string>
@@ -262,7 +262,7 @@
     <string name="toast_permission_granted">Luba antud</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uuendus saadaval</string>
     <string name="pref_ui_title">Kohandamine</string>
-    <string name="pref_updates_incompatible">Mitteühilduvad uuendused</string>
+    <string name="pref_updates_incompatible">Näita uuendusi, mille paigaldamine ei pruugi õnnestuda</string>
     <string name="insecure_anonymous_apply">Muudatuste rakendamiseks logi kindlasti uuesti sisse ja taaskäivita rakendus.</string>
     <string name="title_apps_games">Minu rakendused ja mängud</string>
     <string name="session_login">Logi oma Google Play kontole sisse</string>
@@ -309,7 +309,7 @@
     <string name="about_aurora_store_title">Aurora poest</string>
     <string name="manage_account">Halda oma kontot</string>
     <string name="title_more">Veel</string>
-    <string name="add_dispenser_error">Kehtetu URL</string>
+    <string name="add_dispenser_error">Kehtetu võrguaadress</string>
     <string name="add">Lisa</string>
     <string name="toast_fav_import_failed">Lemmikute import nurjus!</string>
     <string name="toast_fav_import_success">Lemmikud imporditud!</string>
@@ -414,4 +414,20 @@
     <string name="pref_ui_no_for_you_desc">Kuva avalehel vahekaart „Sinule”</string>
     <string name="native_installer_subtitle">Klassikaline paigaldaja, saadaval kõikides seadmetes</string>
     <string name="am_installer_desc">Nõuab rakendust App Manager, paigaldamiseks on vaja adb/root-režiimi, kui miui optimeerimine on sisse lülitatud</string>
+    <string name="pref_clear_device_owner_summary">Lõpetab Aurora Poe tegevuse rakenduse omanikuna</string>
+    <string name="pref_dispenser_title">Halda sisselogimistunnuseid</string>
+    <string name="pref_dispenser_summary">Vaata ja halda tunnuslubade plokke, mida kasutatakse anonüümseks sisseligimiseks</string>
+    <string name="no_dispensers_available">Sisselogimistunnuseid pole saadaval</string>
+    <string name="add_dispenser_title">Lisa sisselogimistunnus</string>
+    <string name="add_dispenser_summary">Lisa sisselogimistunnus Aurora Poodi. Neid kasutatakse anonüümsel sisselogimisel.</string>
+    <string name="add_dispenser_hint">Sisselogimistunnuse võrguaadress</string>
+    <string name="remove_dispenser_title">Eemalda sisselogimistunnus</string>
+    <string name="remove_dispenser_summary">Kas sa soovid eemaldada sisselogimistunnuse \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="export_app_summary_success">Rakenduse kogumi eksportimine õnnestus</string>
+    <string name="export_app_summary_fail">Rakenduse kogumi eksportimine ei õnnestunud</string>
+    <string name="authentication_required_unarchive">Selle rakenduse arhiivist eemaldamiseks logi sisse oma Google Play kasutajakontoga!</string>
+    <string name="action_unarchive">Eemalda arhiivist</string>
+    <string name="plexus_powered">Teenust toetab Plexus</string>
+    <string name="pref_common_advanced">Täiendavad seadistused</string>
+    <string name="pref_updates_app_source">Rakenduse allikas</string>
 </resources>

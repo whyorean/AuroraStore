@@ -1,9 +1,9 @@
-• L'interface s'affiche désormais correctement lors du passage du système en thème sombre
-• Les informations sur la page d'accueil ne masquent plus certaines zones
-• L'ouverture d'un lien Google Play est désormais précédée d'une vérification de la présence d'un compte fonctionnel
-• Le panneau de navigation est désormais accessible uniquement depuis l'écran principal
-• Le bouton de retour permet désormais de quitter l'application normalement depuis certains écrans
-• Les boutons dans les paramètres ont désormais la bonne coloration quand le thème sombre est activé
-• Le nom de l'appli est de nouveau visible dans le panneau des rapports Exodus.
-• Améliorations internes relatives aux visuels
+• Le passage d'un thème sombre au thème système met correctement à jour l'interface utilisateur.
+• Les dialogues de l’écran d'accueil ne cachent plus certaines zones
+• Un compte valide et fonctionnel doit être configuré pour ouvrir un lien Google Play
+• Le tiroir de navigation ne peut être ouvert que sur l’écran principal
+• Le bouton de retour ferme désormais l'appli correctement sur certains écrans
+• Les boutons des paramètres affichent la bonne couleur pour le thème sombre
+• Le nom de l'appli est de nouveau visible dans la barre d’outils pour les relevés Exodus.
+• Améliorations internes relatives aux images
 • Mises à jour des traductions

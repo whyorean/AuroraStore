@@ -1,0 +1,4 @@
+• Kompileerimise alusplatvormiks on nüüd Android 16
+• Rakenduste linkide avamisel tekkinud vea parandus
+• Rakenduse üldisest infovaatest üksikasjaliku teabe lehe avamine
+• Tõlgete uuendused

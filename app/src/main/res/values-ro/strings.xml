@@ -163,7 +163,7 @@
     <string name="about_paypal">PayPal</string>
     <string name="about_telegram">Telegram</string>
     <string name="account_google">Google</string>
-    <string name="pref_filter_fdroid_summary">Nu se verifică actualizările pentru aplicațiile descărcate sau instalate de pe F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Nu se verifică actualizările pentru aplicațiile instalate de pe F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrează aplicațiile F-Droid</string>
     <string name="pref_install_delete_summary">APK-urile descărcate vor fi șterse imediat după instalare</string>
     <string name="pref_install_delete_title">Șterge fișierul APK după instalare</string>
@@ -284,10 +284,10 @@
     <string name="details_ratings_title_hint">Titlul recenziei</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
     <string name="pref_updates_check_frequency_desc">Configurează intervale pentru actualizări, în ore.</string>
-    <string name="pref_aurora_only">Numai aplicațiile Aurora Store</string>
+    <string name="pref_aurora_only">Filtrează aplicațiile din alte surse</string>
     <string name="app_links_desc">Permite magazinului Aurora să deschidă linkuri acceptate</string>
     <string name="toast_proxy_invalid">Adresa URL proxy nevalidă, verifică formatul!</string>
-    <string name="pref_aurora_only_desc">Se verifică doar actualizările pentru aplicațiile instalate de Aurora Store</string>
+    <string name="pref_aurora_only_desc">Nu se verifică actualizările pentru aplicațiile instalate din surse din afara magazinului Aurora</string>
     <string name="toast_proxy_success">Proxy setat cu succes</string>
     <string name="app_links_title">Link-urile aplicațiilor</string>
     <string name="google_play_store_desc">Google Play, cunoscut și ca Google Play Store și anterior Android Market.</string>
@@ -307,8 +307,8 @@
     <string name="failed_apk_export">Fișierele APK nu au putut fi exportate</string>
     <string name="download_clear_finished">Curățare finalizată</string>
     <string name="action_home_screen">Adaugă la ecranul de pornire</string>
-    <string name="pref_updates_incompatible">Actualizări incompatibile</string>
-    <string name="pref_updates_incompatible_desc">Afișează actualizări pentru aplicațiile incompatibile sau dezactivate care nu pot fi instalate</string>
+    <string name="pref_updates_incompatible">Afișează actualizările ce pot eșua</string>
+    <string name="pref_updates_incompatible_desc">Afișează actualizări pentru aplicațiile incompatibile sau dezactivate pentru care ar putea eșua instalarea</string>
     <string name="faqs_subtitle">Ai întrebări? Află răspunsurile</string>
     <string name="source_code_title">Cod sursă</string>
     <string name="source_code_subtitle">Află ce se află înăuntru</string>
@@ -428,4 +428,6 @@
     <string name="pref_network_microg_login_desc">Autentifică-te folosind microG atunci când te conectezi la conturile Google, pentru un proces simplificat de conectare.</string>
     <string name="pref_network_microg_login_title">Utilizează microG pentru a te conecta la conturi</string>
     <string name="set">Setează</string>
+    <string name="pref_common_advanced">Avansat</string>
+    <string name="pref_updates_app_source">Sursa aplicației</string>
 </resources>

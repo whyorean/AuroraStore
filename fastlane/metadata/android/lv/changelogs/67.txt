@@ -1,0 +1,4 @@
+• Mērķēts uz Android 16
+• Novērsta nepilnība ar lietotņu saišu atvēršanu
+• Lietotnes informācijas lapas atvēršanas no informācijas par lietotni iestatījumiem
+• Tulkojumu atjauninājumi

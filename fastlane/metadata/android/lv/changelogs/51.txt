@@ -1,1 +1,1 @@
-• Novērsta meklēšanas problēma, kad izmantoja WebAPI datus
+• Novērsta meklēšanas nepilnība; izmanto WebAPI datus
