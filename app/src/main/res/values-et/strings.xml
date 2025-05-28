@@ -430,4 +430,8 @@
     <string name="plexus_powered">Teenust toetab Plexus</string>
     <string name="pref_common_advanced">Täiendavad seadistused</string>
     <string name="pref_updates_app_source">Rakenduse allikas</string>
+    <string name="app_info_target_android">API versioon kompileerimisel</string>
+    <string name="app_info_downloads">Allalaadimised</string>
+    <string name="app_info_updated_on">Viimati uuendatud</string>
+    <string name="app_info_min_android">Androidi miinimumversioon</string>
 </resources>
