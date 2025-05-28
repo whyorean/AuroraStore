@@ -114,6 +114,7 @@ android {
 
     productFlavors {
         create("vanilla") {
+            isDefault = true
             dimension = "device"
         }
 
