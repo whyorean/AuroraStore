@@ -58,6 +58,8 @@ android {
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
 
         buildConfigField("String", "EXODUS_API_KEY", "\"bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae\"")
+
+        missingDimensionStrategy("device", "vanilla")
     }
 
     signingConfigs {
@@ -108,12 +110,32 @@ android {
         }
     }
 
+    flavorDimensions += "device"
+
+    productFlavors {
+        create("vanilla") {
+            dimension = "device"
+        }
+
+        create("huawei") {
+            dimension = "device"
+            versionNameSuffix = "-hw"
+        }
+
+        // This flavor is only for preloaded devices / users who push the app to system
+        create("preload") {
+            dimension = "device"
+            versionNameSuffix = "-preload"
+        }
+    }
+
     buildFeatures {
         buildConfig = true
         viewBinding = true
         aidl = true
         compose = true
     }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_21.toString()
     }
@@ -134,6 +156,15 @@ android {
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
+    }
+}
+
+androidComponents {
+    beforeVariants(selector().all()) { variant ->
+        val flavour = variant.flavorName
+        if ((flavour == "huawei" || flavour == "preload") && variant.buildType == "nightly") {
+            variant.enable = false
+        }
     }
 }
 

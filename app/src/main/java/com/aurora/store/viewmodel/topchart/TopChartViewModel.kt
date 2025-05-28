@@ -91,7 +91,7 @@ class TopChartViewModel @Inject constructor(
             clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList
         )
 
-        stash[type] = mutableMapOf(chart to mergedCluster)
+        stash[type]?.set(chart, mergedCluster)
     }
 
     private fun targetCluster(

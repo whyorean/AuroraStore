@@ -1,7 +1,7 @@
 package com.aurora.store.module
 
-import com.aurora.store.data.serializers.LocaleSerializer
-import com.aurora.store.data.serializers.PropertiesSerializer
+import com.aurora.gplayapi.data.serializers.LocaleSerializer
+import com.aurora.gplayapi.data.serializers.PropertiesSerializer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -36,9 +36,10 @@ gradle-app.setting
 *.zip
 
 app/release/*
-app/beta/*
-app/alpha/*
 app/nightly/*
+app/vanilla/*
+app/huawei/*
+app/preload/*
 
 
 #Exclude signing configurations & keystore

@@ -19,6 +19,7 @@
 
 package com.aurora.store.viewmodel.review
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,13 +29,13 @@ import com.aurora.gplayapi.helpers.ReviewsHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
 
 @HiltViewModel
 class ReviewViewModel @Inject constructor(
     private val reviewsHelper: ReviewsHelper
 ) : ViewModel() {
+    val TAG = javaClass.simpleName
 
     val liveData: MutableLiveData<ReviewCluster> = MutableLiveData()
 
@@ -42,29 +43,29 @@ class ReviewViewModel @Inject constructor(
 
     fun fetchReview(packageName: String, filter: Review.Filter) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    reviewsCluster = reviewsHelper.getReviews(packageName, filter)
-                    liveData.postValue(reviewsCluster)
-                } catch (_: Exception) {
-                }
+            try {
+                reviewsCluster = reviewsHelper.getReviews(packageName, filter)
+                liveData.postValue(reviewsCluster)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to fetch reviews", e)
             }
         }
     }
 
     fun next(nextReviewPageUrl: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    val nextReviewCluster = reviewsHelper.next(nextReviewPageUrl)
-                    reviewsCluster = reviewsCluster.copy(
-                        nextPageUrl = nextReviewCluster.nextPageUrl,
-                        reviewList = nextReviewCluster.reviewList + nextReviewCluster.reviewList
-                    )
+            try {
+                val currentCluster = reviewsCluster
+                val nextReviewCluster = reviewsHelper.next(nextReviewPageUrl)
 
-                    liveData.postValue(reviewsCluster)
-                } catch (_: Exception) {
-                }
+                reviewsCluster = currentCluster.copy(
+                    nextPageUrl = nextReviewCluster.nextPageUrl,
+                    reviewList = currentCluster.reviewList + nextReviewCluster.reviewList
+                )
+
+                liveData.postValue(reviewsCluster)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to fetch next reviews $nextReviewPageUrl", e)
             }
         }
     }

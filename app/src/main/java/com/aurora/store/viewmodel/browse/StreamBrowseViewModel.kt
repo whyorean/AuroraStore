@@ -28,7 +28,6 @@ import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
 
 @HiltViewModel
@@ -42,32 +41,36 @@ class StreamBrowseViewModel @Inject constructor(
 
     private lateinit var streamCluster: StreamCluster
 
-    fun initCluster(cluster: StreamCluster) {
+    fun seedCluster(cluster: StreamCluster) {
         streamCluster = cluster
         liveData.postValue(streamCluster)
     }
 
     fun nextCluster() {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    if (streamCluster.hasNext()) {
-                        val nextCluster = streamHelper.nextStreamCluster(
-                            streamCluster.clusterNextPageUrl
-                        )
+            try {
+                if (streamCluster.hasNext()) {
+                    val next = streamHelper.nextStreamCluster(streamCluster.clusterNextPageUrl)
 
-                        streamCluster = streamCluster.copy(
-                            clusterNextPageUrl = nextCluster.clusterNextPageUrl,
-                            clusterAppList = streamCluster.clusterAppList + nextCluster.clusterAppList
-                        )
+                    streamCluster = streamCluster.copy(
+                        clusterNextPageUrl = next.clusterNextPageUrl,
+                        clusterAppList = streamCluster.clusterAppList + next.clusterAppList
+                    )
 
-                        liveData.postValue(streamCluster)
-                    } else {
-                        Log.i(TAG, "End of Cluster")
-                    }
-                } catch (_: Exception) {
+                    liveData.postValue(streamCluster)
+                } else {
+                    Log.i(TAG, "End of Cluster")
+                    postClusterEnd()
                 }
+            } catch (_: Exception) {
             }
         }
+    }
+
+    fun postClusterEnd() {
+        streamCluster = streamCluster.copy(
+            clusterNextPageUrl = ""
+        )
+        liveData.postValue(streamCluster)
     }
 }
