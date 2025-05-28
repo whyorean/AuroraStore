@@ -430,4 +430,8 @@
     <string name="verification_failed">Не вдалося перевірити завантажені файли</string>
     <string name="pref_common_advanced">Розширені</string>
     <string name="pref_updates_app_source">Джерело застосунку</string>
+    <string name="app_info_updated_on">Останнє оновлення</string>
+    <string name="app_info_min_android">Мінімальна версія Android</string>
+    <string name="app_info_target_android">Цільовий рівень API</string>
+    <string name="app_info_downloads">Завантажити</string>
 </resources>
