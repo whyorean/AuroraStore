@@ -1,2 +1,3 @@
 • Corrigido uma falha ao navegar à pagina de detalhes do app
+• Corrige crash na localidade do spoofing
 • Traduções atualizadas
