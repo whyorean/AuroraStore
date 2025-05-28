@@ -21,13 +21,14 @@ package com.aurora.store.view.epoxy.views.details
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
+import com.aurora.store.R
 import com.aurora.store.databinding.ViewInfoBinding
 import com.aurora.store.view.epoxy.views.BaseModel
 import com.aurora.store.view.epoxy.views.BaseView
-import java.util.Locale
 
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
@@ -41,16 +42,14 @@ class InfoView @JvmOverloads constructor(
 
     @ModelProp(options = [ModelProp.Option.IgnoreRequireHashCode])
     fun badge(info: Map.Entry<String, String>) {
-        binding.txtTitle.text = info.key
-            .replace("_", " ")
-            .lowercase(Locale.getDefault())
-            .replaceFirstChar {
-                if (it.isLowerCase()) {
-                    it.titlecase(Locale.getDefault())
-                } else {
-                    it.toString()
-                }
-            }
+        binding.txtTitle.text = when (info.key) {
+            "DOWNLOAD" -> ContextCompat.getString(context, R.string.app_info_downloads)
+            "UPDATED_ON" -> ContextCompat.getString(context, R.string.app_info_updated_on)
+            "REQUIRES" -> ContextCompat.getString(context, R.string.app_info_min_android)
+            "TARGET" -> ContextCompat.getString(context, R.string.app_info_target_android)
+            else -> info.key
+        }
+
         binding.txtSubtitle.text = info.value
     }
 

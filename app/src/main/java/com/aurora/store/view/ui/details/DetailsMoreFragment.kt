@@ -164,7 +164,7 @@ class DetailsMoreFragment : BaseFragment<FragmentDetailsMoreBinding>() {
                 add(
                     InfoViewModel_()
                         .id(UUID.randomUUID().toString())
-                        .badge(mapOf("targets" to "API ${app.targetSdk}").entries.first())
+                        .badge(mapOf("TARGET" to "${app.targetSdk}").entries.first())
                 )
             }
         }
