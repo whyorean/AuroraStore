@@ -1,7 +1,7 @@
 variables:
   PACKAGE_VERSION: "continuous"
-  DEBUG_BINARY: "com.aurora.store.debug_${CI_COMMIT_SHORT_SHA}.apk"
-  DEBUG_BINARY_PATH: "app/build/outputs/apk/debug/app-debug.apk"
+  DEBUG_BINARY: "com.aurora.store.vanilla.debug_${CI_COMMIT_SHORT_SHA}.apk"
+  DEBUG_BINARY_PATH: "app/build/outputs/apk/vanilla/debug/app-vanilla-debug.apk"
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/debug/${PACKAGE_VERSION}"
 
 stages:
@@ -9,11 +9,11 @@ stages:
 - upload
 - release
 
-assembleDebug:
+assembleVanillaDebug:
   stage: build
   image: theimpulson/gitlab-ci-android:latest
   script:
-    - './gradlew assembleDebug'
+    - './gradlew assembleVanillaDebug'
   artifacts:
     paths:
     - $DEBUG_BINARY_PATH
