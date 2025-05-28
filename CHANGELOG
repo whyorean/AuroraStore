@@ -1,5 +1,6 @@
 Changelog : v4.7.2 (68) - Upcoming
 • Fix crash on navigating to app details page
+• Fix crash on spoofing locale
 • Translation updates
 
 Changelog : v4.7.1 (67)

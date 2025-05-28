@@ -1,2 +1,3 @@
 • Fix crash on navigating to app details page
+• Fix crash on spoofing locale
 • Translation updates
