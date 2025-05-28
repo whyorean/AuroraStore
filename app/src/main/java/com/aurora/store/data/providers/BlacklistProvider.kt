@@ -21,7 +21,6 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -39,7 +38,11 @@ class BlacklistProvider @Inject constructor(
     private val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
 
     var blacklist: MutableSet<String>
-        set(value) = Preferences.putString(context, PREFERENCE_BLACKLIST, json.encodeToString(value))
+        set(value) = Preferences.putString(
+            context,
+            PREFERENCE_BLACKLIST,
+            json.encodeToString(value)
+        )
         get() {
             return try {
                 val rawBlacklist = if (isNAndAbove) {
@@ -54,7 +57,7 @@ class BlacklistProvider @Inject constructor(
                         Context.MODE_PRIVATE
                     ) as SharedPreferences
 
-                    PreferenceManager.getDefaultSharedPreferences(context)
+                    Preferences.getPrefs(context)
                         .getString(
                             PREFERENCE_BLACKLIST,
                             refSharedPreferences.getString(PREFERENCE_BLACKLIST, "")
