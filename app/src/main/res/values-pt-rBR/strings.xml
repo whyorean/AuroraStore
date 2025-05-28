@@ -433,5 +433,5 @@
     <string name="app_info_updated_on">Atualizado por último</string>
     <string name="app_info_target_android">Nível da API</string>
     <string name="app_info_downloads">Downloads</string>
-    <string name="app_info_min_android">Versão do Android Mínima</string>
+    <string name="app_info_min_android">Versão do Android mínima</string>
 </resources>
