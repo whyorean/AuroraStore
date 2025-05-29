@@ -430,4 +430,8 @@
     <string name="verification_failed">Neizdevās lejupielādēto datņu apliecināšana</string>
     <string name="pref_common_advanced">Papildu</string>
     <string name="pref_updates_app_source">Lietotnes avots</string>
+    <string name="app_info_min_android">Mazākā nepieciešamā Android versija</string>
+    <string name="app_info_target_android">Mērķa API līmenis</string>
+    <string name="app_info_updated_on">Pēdējoreiz atjaunināta</string>
+    <string name="app_info_downloads">Lejupielādes</string>
 </resources>
