@@ -152,8 +152,8 @@ abstract class BaseFlavouredOnboardingFragment : BaseFragment<FragmentOnboarding
                             )
                         } else {
                             updateForwardButton(
-                                enabled = true,
-                                resId = R.string.action_skip,
+                                enabled = false,
+                                resId = R.string.action_finish,
                                 action = { finishOnboarding() }
                             )
                         }
