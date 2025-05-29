@@ -432,4 +432,6 @@
     <string name="pref_common_advanced">Erweitert</string>
     <string name="app_info_updated_on">Zuletzt aktualisiert</string>
     <string name="app_info_downloads">Downloads</string>
+    <string name="app_info_min_android">Erforderliche Android-Version</string>
+    <string name="app_info_target_android">Ziel-API-Level</string>
 </resources>
