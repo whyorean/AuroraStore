@@ -430,4 +430,8 @@
     <string name="verification_failed">验证已下载文件失败</string>
     <string name="pref_common_advanced">高级</string>
     <string name="pref_updates_app_source">应用来源</string>
+    <string name="app_info_downloads">下载</string>
+    <string name="app_info_updated_on">上次更新</string>
+    <string name="app_info_min_android">最低 Android 版本</string>
+    <string name="app_info_target_android">目标 API 等级</string>
 </resources>
