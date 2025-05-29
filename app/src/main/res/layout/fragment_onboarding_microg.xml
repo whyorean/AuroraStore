@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_normal"
             android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_gms_notice"
+            android:text="@string/onboarding_title_gsf_desc"
             android:textAlignment="textStart" />
 
         <androidx.appcompat.widget.AppCompatTextView
