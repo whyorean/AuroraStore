@@ -109,7 +109,7 @@
     <string name="toast_aas_token_failed">Tidak dapat membuat Token AAS</string>
     <string name="pref_install_mode_title">Metode pemasangan</string>
     <string name="pref_filter_fdroid_title">Saring aplikasi F-droid</string>
-    <string name="pref_filter_fdroid_summary">Jangan periksa pembaruan untuk aplikasi terunduh atau terpasang dari F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Jangan periksa pembaruan untuk aplikasi yang terpasang dari F-Droid</string>
     <string name="pref_common_extra">Ekstra</string>
     <string name="onboarding_permission_installer_desc">Izinkan memasang aplikasi dari Aurora Store</string>
     <string name="onboarding_permission_installer">Perizinan pemasang</string>
@@ -283,11 +283,11 @@
     <string name="details_ratings_title_hint">Judul ulasan</string>
     <string name="pref_network_proxy_url">URL Proksi</string>
     <string name="pref_updates_check_frequency_desc">Atur rentang waktu untuk pembaruan otomatis, dalam jam.</string>
-    <string name="pref_aurora_only">Hanya aplikasi Aurora Store</string>
+    <string name="pref_aurora_only">Saring aplikasi dari sumber lain</string>
     <string name="app_links_desc">Izinkan Aurora Store untuk membuka tautan yang didukung</string>
     <string name="onboarding_permission_doze">Unduhan latar belakang</string>
     <string name="toast_proxy_invalid">URL proksi tidak sah, periksa format!</string>
-    <string name="pref_aurora_only_desc">Hanya periksa pembaruan untuk aplikasi yang terpasang oleh Aurora Store</string>
+    <string name="pref_aurora_only_desc">Jangan periksa pembaruan untuk aplikasi yang dipasangdari sumber di luar Aurora Store</string>
     <string name="toast_proxy_success">Proksi berhasil disetel</string>
     <string name="app_links_title">Tautan aplikasi</string>
     <string name="google_play_store_desc">Google Play, juga dikenal sebagai Google Play Store dan sebelumnya Android Market.</string>
@@ -318,7 +318,7 @@
     <string name="add_dispenser_summary">Tambah dispenser token ke Aurora Store. Dispenser token memberikan kredensial akun ke Aurora Store untuk masuk secara anonim.</string>
     <string name="add_dispenser_error">URL tidak sah</string>
     <string name="add">Tambah</string>
-    <string name="pref_updates_incompatible_desc">Tampilkan pembaruan untuk aplikasi yang tidak kompatibel atau dinonaktifkan yang mungkin gagal dipasang</string>
+    <string name="pref_updates_incompatible_desc">Tampilkan pembaruan untuk aplikasi yang tidak kompatibel atau dinonaktifkan yang mungkin gagal terpasang</string>
     <string name="manual_download_hint">Masukkan kode versi yang ingin Anda unduh</string>
     <string name="source_code_title">Kode sumber</string>
     <string name="source_code_subtitle">Cari tahu apa yang ada di dalamnya</string>
@@ -329,7 +329,7 @@
     <string name="session_login">Silakan masuk ke akun Google Play Anda</string>
     <string name="about_aurora_store_title">Tentang Aurora Store</string>
     <string name="about_aurora_store_subtitle">Pelajari lebih lanjut tentang Aurora Store</string>
-    <string name="pref_updates_incompatible">Pembaruan tidak kompatibel</string>
+    <string name="pref_updates_incompatible">Tampilkan pembaruan yang mungkin gagal</string>
     <string name="failed_apk_export">Gagal mengekspor APK</string>
     <string name="session_installer_subtitle">Pemasang berbasis sesi untuk APK dipaketkan/terpisah</string>
     <string name="session_installer_desc">Direkomendasikan, sudah terpasang dan mendukung semua versi Android</string>
