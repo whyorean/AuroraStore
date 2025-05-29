@@ -1,2 +1,3 @@
 • Behebung eines Absturzes beim Navigieren zur App-Detailseite
+• Absturz beim Spoofing des Gebietsschemas behoben
 • Übersetzungen aktualisiert
