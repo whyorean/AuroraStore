@@ -239,7 +239,6 @@
     <string name="pref_ui_no_for_you">آپ کے صفحات کے لئے</string>
     <string name="pref_ui_no_for_you_desc">ہوم اسکرین پر آپ کے صفحات کے لئے ڈسپلے کریں</string>
     <string name="pref_ui_similar_apps">اسی طرح اور متعلقہ ایپس</string>
-    <string name="pref_ui_similar_apps_desc">ایپ کی تفصیلات کے صفحے پر اسی طرح اور متعلقہ کلسٹرز کو ڈسپلے کریں</string>
     <string name="pref_updates_incompatible">متضاد تازہ ترین معلومات</string>
     <string name="purchase_failed">ڈاؤن لوڈ ناکام</string>
     <string name="pref_updates_incompatible_desc">مطابقت پذیر یا غیر فعال ایپس کے لئے تازہ ترین معلومات دکھائیں جو انسٹال کرنے میں ناکام ہوسکتی ہیں</string>
