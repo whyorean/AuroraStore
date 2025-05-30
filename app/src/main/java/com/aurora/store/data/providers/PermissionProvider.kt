@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
@@ -24,7 +25,6 @@ import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.util.PackageUtil
-import androidx.core.net.toUri
 
 class PermissionProvider(private val fragment: Fragment) :
     ActivityResultCallback<ActivityResult> {

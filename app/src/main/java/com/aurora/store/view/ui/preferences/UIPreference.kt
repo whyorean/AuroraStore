@@ -24,13 +24,13 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.core.net.toUri
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
-import androidx.core.net.toUri
 
 @AndroidEntryPoint
 class UIPreference : BasePreferenceFragment() {

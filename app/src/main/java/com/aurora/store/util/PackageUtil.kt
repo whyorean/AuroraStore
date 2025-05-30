@@ -35,6 +35,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
 import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
@@ -44,7 +45,6 @@ import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import java.util.Locale
-import androidx.core.net.toUri
 
 object PackageUtil {
 
