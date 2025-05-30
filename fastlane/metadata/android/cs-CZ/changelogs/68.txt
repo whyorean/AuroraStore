@@ -1,2 +1,3 @@
 • Opraven pád při navigaci na podrobnosti aplikace
+• Opraven pád při falšování místní předvolby
 • Aktualizace překladů

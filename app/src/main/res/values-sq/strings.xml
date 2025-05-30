@@ -422,4 +422,10 @@
     <string name="pref_updates_restrictions_battery">Kur bateria s’është e pakët</string>
     <string name="pref_updates_restrictions_idle">Kur pajisja është e plogësht</string>
     <string name="verification_failed">S’u arrit të verifikohen kartelat e shkarkuara</string>
+    <string name="app_info_min_android">Version Android Minimum</string>
+    <string name="app_info_target_android">Nivel API i synuar</string>
+    <string name="app_info_updated_on">Përditësuar së fundi më</string>
+    <string name="app_info_downloads">Shkarkime</string>
+    <string name="pref_common_advanced">Të mëtejshme</string>
+    <string name="pref_updates_app_source">Burim aplikacioni</string>
 </resources>

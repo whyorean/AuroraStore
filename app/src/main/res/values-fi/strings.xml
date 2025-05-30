@@ -430,4 +430,8 @@
     <string name="verification_failed">Ladattujen tiedostojen varmentaminen epäonnistui</string>
     <string name="pref_common_advanced">Edistynyt</string>
     <string name="pref_updates_app_source">Sovelluslähde</string>
+    <string name="app_info_min_android">Minimi Android-versio</string>
+    <string name="app_info_target_android">API:n kohdetaso</string>
+    <string name="app_info_updated_on">Viimeksi päivitetty</string>
+    <string name="app_info_downloads">Lataukset</string>
 </resources>

@@ -1,2 +1,3 @@
 • Corrigido uma falha ao navegar à pagina de detalhes do app
+• Corrigido uma falha ao simular o idioma
 • Traduções atualizadas

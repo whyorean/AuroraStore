@@ -4,7 +4,7 @@
     <string name="about_libera_summary">Devino patron pe Liberapay</string>
     <string name="about_bitcoin_btc_summary">Donează prin Bitcoin (BTC)</string>
     <string name="about_bhim_summary">Donează prin UPI</string>
-    <string name="about_bitcoin_bch">Bitcoin Cash</string>
+    <string name="about_bitcoin_bch">Numerar Bitcoin</string>
     <string name="about_fdroid_summary">Obține Aurora Store prin intermediul F-Droid.</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bitcoin_bch_summary">Donează prin Bitcoin Cash (BCH)</string>
@@ -350,7 +350,7 @@
     <string name="no_dispensers_available">Nu există distribuitoare disponibile</string>
     <string name="add_dispenser_title">Adaugă distribuitor</string>
     <string name="remove_dispenser_title">Elimină distribuitorul</string>
-    <string name="toast_app_unavailable">Aplicația nu este disponibila pentru dispozitivul dvs.</string>
+    <string name="toast_app_unavailable">Aplicația nu este disponibilă pentru acest dispozitiv</string>
     <string name="action_favourite">Favorit</string>
     <string name="details_no_favourites">Nu s-a găsit nici-o aplicație favorită</string>
     <string name="title_favourites_manager">Aplicații favorite</string>

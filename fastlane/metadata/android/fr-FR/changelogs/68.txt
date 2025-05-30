@@ -1,2 +1,3 @@
-• Corriger un plantage lors de la navigation vers la page des détails de l'appli
+• Correction d’un plantage lors de la navigation vers la page des détails de l'appli
+• Correction d’un plantage lors de l’usurpation des paramètres régionaux
 • Mises à jour des traductions
