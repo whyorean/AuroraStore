@@ -70,7 +70,7 @@ class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
         }
 
         with(viewModel) {
-            search("pub:${args.developerName}")
+            search(query)
 
             liveData.observe(viewLifecycleOwner) {
                 when (it) {
