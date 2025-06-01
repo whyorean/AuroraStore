@@ -51,7 +51,6 @@ open class SearchCarouselController(private val callbacks: Callbacks) :
                 )
             } else {
                 streamBundle.streamClusters.values
-                    .filter { it.clusterBrowseUrl != "a" } // Filter out books
                     .filter { it.clusterAppList.isNotEmpty() } // Filter out empty clusters, mostly related keywords
                     .forEach {
                         if (it.clusterTitle.isEmpty() or (it.clusterTitle == streamBundle.streamTitle)) {
