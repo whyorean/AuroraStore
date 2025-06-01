@@ -19,6 +19,7 @@
 
 package com.aurora.store.viewmodel.search
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -33,6 +34,8 @@ import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
 
 @HiltViewModel
@@ -48,96 +51,105 @@ class SearchResultViewModel @Inject constructor(
 
     private val stash: AppStreamStash = mutableMapOf()
 
-    private val helper: SearchContract
+    private val contract: SearchContract
         get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
+
+    private val stashMutex = Mutex()
 
     @Synchronized
     fun search(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                liveData.postValue(ViewState.Loading)
+                stashMutex.withLock {
+                    liveData.postValue(ViewState.Loading)
 
-                var bundle = targetBundle(query)
+                    var bundle = targetBundle(query)
 
-                // Post existing data if any clusters exist
-                if (bundle.hasCluster()) {
-                    liveData.postValue(ViewState.Success(stash.toMap()))
-                    return@launch
-                }
+                    // Post existing data if any clusters exist
+                    if (bundle.hasCluster()) {
+                        liveData.postValue(ViewState.Success(stash.toMap()))
+                        return@launch
+                    }
 
-                // Fetch new stream bundle
-                val newBundle = helper.searchResults(query)
+                    // Fetch new stream bundle
+                    val newBundle = contract.searchResults(query)
 
-
-                bundle = bundle.copy(
-                    streamClusters = newBundle.streamClusters,
-                    streamNextPageUrl = newBundle.streamNextPageUrl
-                )
-
-                stash[query] = bundle
-
-                // Post updated to UI
-                liveData.postValue(ViewState.Success(stash.toMap()))
-            } catch (e: Exception) {
-                liveData.postValue(ViewState.Error(e.message))
-            }
-        }
-    }
-
-    fun getNextStream(query: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                var bundle = targetBundle(query)
-
-                if (bundle.hasNext()) {
-                    val newBundle = helper.nextStreamBundle(
-                        query,
-                        bundle.streamNextPageUrl
-                    )
-
-                    // Update old bundle
                     bundle = bundle.copy(
-                        streamClusters = bundle.streamClusters + newBundle.streamClusters,
+                        streamClusters = newBundle.streamClusters,
                         streamNextPageUrl = newBundle.streamNextPageUrl
                     )
 
                     stash[query] = bundle
 
-                    // Post updated to UI
                     liveData.postValue(ViewState.Success(stash.toMap()))
-                } else {
-                    bundle.streamClusters.values.forEach {
-                        if (it.clusterNextPageUrl.isEmpty()) {
-                            postClusterEnd(query, it.id)
-                        }
-
-                        // Empty title or query as title indicates main stream cluster
-                        if (it.clusterTitle.isEmpty() or (it.clusterTitle == bundle.streamTitle)) {
-                            getNextCluster(query, it)
-                        }
-                    }
                 }
-
             } catch (e: Exception) {
                 liveData.postValue(ViewState.Error(e.message))
             }
         }
     }
 
-    fun getNextCluster(query: String, streamCluster: StreamCluster) {
+    fun observe(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                stashMutex.withLock {
+                    var bundle = targetBundle(query)
+
+                    if (bundle.hasNext()) {
+                        val newBundle = contract.nextStreamBundle(
+                            query,
+                            bundle.streamNextPageUrl
+                        )
+
+                        // Update old bundle
+                        bundle = bundle.copy(
+                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
+                            streamNextPageUrl = newBundle.streamNextPageUrl
+                        )
+
+                        stash[query] = bundle
+
+                        liveData.postValue(ViewState.Success(stash.toMap()))
+                    } else {
+                        Log.i(TAG, "End of Bundle")
+
+                        // If stream ends, likely there are clusters that need to be processed
+                        bundle.streamClusters.values.forEach {
+                            if (it.clusterNextPageUrl.isEmpty()) {
+                                postClusterEnd(query, it.id)
+                            }
+
+                            // Empty title or query as title indicates main stream cluster
+                            if (it.clusterTitle.isEmpty() or (it.clusterTitle == bundle.streamTitle)) {
+                                observeCluster(query, it)
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                liveData.postValue(ViewState.Error(e.message))
+            }
+        }
+    }
+
+    fun observeCluster(query: String, streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 if (streamCluster.hasNext()) {
-                    val newCluster = helper.nextStreamCluster(
+                    val newCluster = contract.nextStreamCluster(
                         query,
                         streamCluster.clusterNextPageUrl
                     )
-
-                    updateCluster(query, streamCluster.id, newCluster)
+                    stashMutex.withLock {
+                        updateCluster(query, streamCluster.id, newCluster)
+                    }
 
                     liveData.postValue(ViewState.Success(stash.toMap()))
                 } else {
-                    postClusterEnd(query, streamCluster.id)
+                    stashMutex.withLock {
+                        postClusterEnd(query, streamCluster.id)
+                    }
+
                     liveData.postValue(ViewState.Success(stash.toMap()))
                 }
             } catch (e: Exception) {

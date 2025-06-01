@@ -52,7 +52,7 @@ class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
     private var scrollListener: EndlessRecyclerOnScrollListener =
         object : EndlessRecyclerOnScrollListener(visibleThreshold = 4) {
             override fun onLoadMore(currentPage: Int) {
-                viewModel.getNextStream(query)
+                viewModel.observe(query)
             }
         }
 
@@ -94,7 +94,7 @@ class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        viewModel.getNextCluster(query, streamCluster)
+        viewModel.observeCluster(query, streamCluster)
     }
 
     override fun onAppClick(app: App) {
