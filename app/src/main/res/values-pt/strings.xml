@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="details_dev_website">Site</string>
-    <string name="details_dev_email">E-mail</string>
+    <string name="details_dev_website">Sítio eletrónico</string>
+    <string name="details_dev_email">Endereço de correio eletrónico</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anónimo</string>
     <string name="about_xda_summary">Visite o tópico Aurora Store no XDA para participar em discussões e sugestões.</string>

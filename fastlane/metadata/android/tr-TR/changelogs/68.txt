@@ -1,0 +1,3 @@
+• Uygulama sayfasında gezinirken çöküş giderildi
+• Yerel algılanırken çöküş giderildi
+• Çeviri güncellemeleri

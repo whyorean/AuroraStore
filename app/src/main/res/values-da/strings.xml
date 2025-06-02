@@ -101,7 +101,7 @@
     <string name="device_miui_title">MIUI registreret!</string>
     <string name="device_miui_extra">Du kan også vælge Native-installationsprogram, men så kan du ikke installere medfølgende (split) APK\'er.</string>
     <string name="dialog_desc_native_split">Du kan ikke installere medfølgende (split) apps via Native-installationsprogram. Skift dit installationsprogram til Session, Services eller Root.</string>
-    <string name="pref_filter_fdroid_summary">Søg ikke efter opdateringer til apps hentet eller installeret fra F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Søg ikke efter opdateringer til apps installeret fra F-Droid</string>
     <string name="pref_install_mode_am">AM-installationsprogram</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="purchase_not_found">Appen blev ikke fundet</string>
@@ -240,7 +240,7 @@
     <string name="onboarding_permission_doze_desc">Tillad Aurora Store at hente og opdatere apps i baggrunden</string>
     <string name="title_about">Om</string>
     <string name="installer_shizuku_unavailable">Shizuku er ikke installeret eller opsat korrekt.</string>
-    <string name="pref_updates_incompatible">Inkompatible opdateringer</string>
+    <string name="pref_updates_incompatible">Vis opdateringer, der kan fejle</string>
     <string name="session_init">Gør tingene klar…</string>
     <string name="onboarding_permission_notifications">Notifikationer</string>
     <string name="action_request_analysis">Anmod om ny analyse</string>
@@ -250,8 +250,8 @@
     <string name="onboarding_permission_notifications_desc">Send notifikationer om installationsstatus</string>
     <string name="pref_network_proxy_url">Proxy-URL</string>
     <string name="pref_network_proxy_url_message">Indtast en gyldig proxy-URL for at sende alle data gennem proxyen.</string>
-    <string name="pref_aurora_only">Kun Aurora Store-apps</string>
-    <string name="pref_aurora_only_desc">Søg kun efter opdateringer til apps installeret af Aurora Store</string>
+    <string name="pref_aurora_only">Filtrér apps fra andre kilder</string>
+    <string name="pref_aurora_only_desc">Søg ikke efter opdateringer til apps installeret fra andre kilder end Aurora Store</string>
     <string name="session_verifying_google">Verificerer Google-session</string>
     <string name="title_app_settings">App-indstillinger</string>
     <string name="action_home_screen">Føj til hjemmeskærm</string>
@@ -428,4 +428,10 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installeret</string>
     <string name="pref_updates_restrictions_idle">Når enheden er inaktiv</string>
     <string name="pref_updates_restrictions_desc">Konfigurer enhedsrestriktioner for automatiske opdateringer.</string>
+    <string name="app_info_downloads">Downloads</string>
+    <string name="app_info_updated_on">Sidst opdateret</string>
+    <string name="app_info_min_android">Minimum Android-version</string>
+    <string name="app_info_target_android">Mål-API-niveau</string>
+    <string name="pref_common_advanced">Avanceret</string>
+    <string name="pref_updates_app_source">App-kilde</string>
 </resources>
