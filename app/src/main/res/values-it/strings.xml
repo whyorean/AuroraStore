@@ -46,7 +46,7 @@
     <string name="purchase_unsupported">Applicazione non supportata</string>
     <string name="purchase_invalid">Applicazione non acquistata</string>
     <string name="pref_filter_fdroid_title">Filtra le app da F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Non controllare gli aggiornamenti per le app scaricate o installate da F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Non controllare gli aggiornamenti per le app installate da F-Droid</string>
     <string name="onboarding_permission_installer_desc">Consenti l\'installazione di app da Aurora Store</string>
     <string name="installer_status_failure_incompatible">App incompatibile</string>
     <string name="details_think_this_app">Cosa ne pensi di questa app?</string>
@@ -293,10 +293,10 @@
     <string name="toast_proxy_failed">È stato impossibile impostare il proxy</string>
     <string name="pref_vending_version_device">Predefinito/a (dalla configurazione del dispositivo)</string>
     <string name="pref_vending_version_title">Versione di Google Play</string>
-    <string name="pref_aurora_only">Solo app da Aurora Store</string>
+    <string name="pref_aurora_only">Filtra le app provenienti da altre fonti</string>
     <string name="onboarding_permission_doze">Scaricamenti in background</string>
     <string name="toast_proxy_invalid">URL proxy non valido, controlla il formato!</string>
-    <string name="pref_aurora_only_desc">Controlla gli aggiornamenti solo per le app installate da Aurora Store</string>
+    <string name="pref_aurora_only_desc">Non controllare gli aggiornamenti per app installate da altre fonti</string>
     <string name="onboarding_permission_doze_desc">Consenti ad Aurora Store di scaricare e aggiornare le app in background</string>
     <string name="pref_updates_auto">Aggiornamenti automatici</string>
     <string name="pref_updates_auto_notify">Controlla e segnala gli aggiornamenti disponibili</string>
@@ -306,7 +306,7 @@
     <string name="action_request_analysis">Richiedi nuova analisi</string>
     <string name="failed_apk_export">Esportazioni degli APK fallita</string>
     <string name="download_clear_finished">Rimuovi completati</string>
-    <string name="pref_updates_incompatible">Aggiornamenti incompatibili</string>
+    <string name="pref_updates_incompatible">Mostra aggiornamenti che potrebbero fallire</string>
     <string name="pref_updates_incompatible_desc">Mostra gli aggiornamenti per le app incompatibili o disabilitate che potrebbero non essere installabili</string>
     <string name="action_home_screen">Aggiungi alla pagina principale</string>
     <string name="manual_download_hint">Inserisci il codice della versione che vuoi scaricare</string>
