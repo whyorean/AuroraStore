@@ -112,7 +112,10 @@ class AuthProvider @Inject constructor(
     suspend fun buildAnonymousAuthData(): Result<AuthData> {
         return withContext(Dispatchers.IO) {
             try {
-                val playResponse = httpClient.getAuth(dispenserURL!!).also {
+                val playResponse = httpClient.postAuth(
+                    dispenserURL!!,
+                    json.encodeToString(spoofProvider.deviceProperties).toByteArray()
+                ).also {
                     if (!it.isSuccessful) throwError(it, context)
                 }
 
