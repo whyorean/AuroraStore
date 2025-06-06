@@ -17,7 +17,7 @@
   ~
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
@@ -25,55 +25,40 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.search.SearchResultsFragment">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:menu="@menu/menu_search"
+        app:navigationIcon="@drawable/ic_arrow_back">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@null"
+            android:hint="@string/search_hint"
+            android:imeOptions="flagNoExtractUi|actionSearch"
+            android:inputType="text"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_normal"
+            android:singleLine="true" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar" />
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            app:menu="@menu/menu_search"
-            app:navigationIcon="@drawable/ic_arrow_back">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/searchBar"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:background="@null"
-                android:hint="@string/search_hint"
-                android:imeOptions="flagNoExtractUi|actionSearch"
-                android:inputType="text"
-                android:paddingStart="@dimen/padding_large"
-                android:paddingEnd="@dimen/padding_normal"
-                android:singleLine="true" />
-        </androidx.appcompat.widget.Toolbar>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar" />
-
-        <com.airbnb.epoxy.EpoxyRecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/divider"
-            android:clipToPadding="true"
-            android:paddingTop="@dimen/padding_normal"
-            android:paddingBottom="@dimen/height_bottom_adj"
-            tools:listitem="@layout/view_app_list" />
-    </RelativeLayout>
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/filter_fab"
-        style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:text="@string/action_filter"
-        app:icon="@drawable/ic_filter" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_below="@+id/divider"
+        android:clipToPadding="true"
+        android:paddingTop="@dimen/padding_normal"
+        android:paddingBottom="@dimen/height_bottom_adj"
+        tools:listitem="@layout/view_app_list" />
+</RelativeLayout>

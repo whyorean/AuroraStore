@@ -24,68 +24,84 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.aurora.gplayapi.data.models.SearchBundle
+import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.store.AppStreamStash
+import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
 import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
-import com.aurora.store.view.epoxy.views.AppProgressViewModel_
-import com.aurora.store.view.epoxy.views.app.AppListViewModel_
+import com.aurora.store.view.epoxy.controller.GenericCarouselController
+import com.aurora.store.view.epoxy.controller.SearchCarouselController
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.search.SearchResultViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
+class DevAppsFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
+    GenericCarouselController.Callbacks {
 
     private val args: DevAppsFragmentArgs by navArgs()
+
     private val viewModel: SearchResultViewModel by viewModels()
+    private val controller = SearchCarouselController(this)
+
+    private var query: String = ""
+        get() = "pub:${args.developerName}"
+
+    private var scrollListener: EndlessRecyclerOnScrollListener =
+        object : EndlessRecyclerOnScrollListener(visibleThreshold = 4) {
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.observe(query)
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
-        }
-
-        // Toolbar
-        binding.toolbar.apply {
-            title = args.developerName
-            setNavigationOnClickListener { findNavController().navigateUp() }
-        }
-
-        // Recycler View
-        val endlessRecyclerOnScrollListener = object : EndlessRecyclerOnScrollListener() {
-            override fun onLoadMore(currentPage: Int) {
-                viewModel.liveData.value?.let { viewModel.next(it.subBundles) }
+        with(binding) {
+            toolbar.apply {
+                title = args.developerName
+                setNavigationOnClickListener { findNavController().navigateUp() }
             }
+
+            recycler.setController(controller)
+            recycler.addOnScrollListener(scrollListener)
         }
-        binding.recycler.addOnScrollListener(endlessRecyclerOnScrollListener)
 
-        viewModel.observeSearchResults("pub:${args.developerName}")
-    }
+        with(viewModel) {
+            search(query)
 
-    private fun updateController(searchBundle: SearchBundle) {
-        binding.recycler
-            .withModels {
-                setFilterDuplicates(true)
-                searchBundle.appList
-                    .filter { it.displayName.isNotEmpty() }
-                    .forEach { app ->
-                        add(
-                            AppListViewModel_()
-                                .id(app.id)
-                                .app(app)
-                                .click(View.OnClickListener {
-                                    openDetailsFragment(app.packageName, app)
-                                })
-                        )
+            liveData.observe(viewLifecycleOwner) {
+                when (it) {
+                    is ViewState.Loading -> {
+                        controller.setData(null)
                     }
 
-                if (searchBundle.subBundles.isNotEmpty()) {
-                    add(
-                        AppProgressViewModel_()
-                            .id("progress")
-                    )
+                    is ViewState.Success<*> -> {
+                        val stash = it.getDataAs<AppStreamStash>()
+                        controller.setData(stash[query])
+                    }
+
+                    else -> {}
                 }
             }
+        }
+    }
+
+    override fun onHeaderClicked(streamCluster: StreamCluster) {
+        openStreamBrowseFragment(streamCluster)
+    }
+
+    override fun onClusterScrolled(streamCluster: StreamCluster) {
+        viewModel.observeCluster(query, streamCluster)
+    }
+
+    override fun onAppClick(app: App) {
+        openDetailsFragment(app.packageName, app)
+    }
+
+    override fun onAppLongClick(app: App) {
+
     }
 }

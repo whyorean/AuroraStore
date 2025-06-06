@@ -188,7 +188,7 @@
     <string name="device_miui_description">"Please, disable MIUI optimizations to allow installations, otherwise you can choose Root or Services installer."</string>
     <string name="device_miui_extra">"Optionally you can choose Native installer, but then you can not install bundled (split) APKs, so choice is yours."</string>
     <string name="dialog_title_self_update">"New update available"</string>
-    <string name="dialog_desc_native_split">"You can not install bundled(split) apps via Native Installer. Change your installer to Session, Services or Root."</string>
+    <string name="dialog_desc_native_split">"You can not install bundled (split) apps via Native Installer. Change your installer to Session, Services or Root."</string>
     <string name="notification_channel_account">Account-related notification</string>
     <string name="notification_channel_export">App export notification</string>
     <string name="notification_channel_install">Install notification</string>
@@ -437,7 +437,7 @@
     <string name="export_app_title">File exporter</string>
     <string name="export_app_summary">Hold on, exporting your file</string>
     <string name="export_app_summary_success">Successfully exported app bundle</string>
-    <string name="export_app_summary_fail">Failed to exported app bundle</string>
+    <string name="export_app_summary_fail">Failed to export app bundle</string>
 
     <!-- LogoutDialog -->
     <string name="action_logout_confirmation_title">Log out?</string>
@@ -490,8 +490,8 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installed</string>
 
     <!-- NetworkPreference -->
-    <string name="pref_network_microg_login_title">Use microG to sign-in to accounts</string>
-    <string name="pref_network_microg_login_desc">Authenticate using microG when signing into Google accounts for a simpler sign-in flow.</string>
+    <string name="pref_network_microg_login_title">Use microG to sign in to accounts</string>
+    <string name="pref_network_microg_login_desc">Authenticate using microG when signing into Google accounts for a simpler sign-in flow</string>
     <string name="set">Set</string>
     <string name="disable">Disable</string>
     <string name="toast_proxy_disabled">Proxy disabled successfully</string>
