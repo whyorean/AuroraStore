@@ -1,3 +1,5 @@
+• Switch to new APIs for searching and installing apps
+• Search filter is no longer available, will be added back later
 • Fix crash on navigating to app details page
 • Fix crash on spoofing locale
 • Translation updates
