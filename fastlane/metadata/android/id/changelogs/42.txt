@@ -1,15 +1,15 @@
-- Dukungan Android 13
-- Aktifkan pelokalan beberapa string
-- Tambahkan ikon monokrom untuk Android 13
-- Perbarui dependensi ke versi terbaru
-- Tampilkan segera Ketentuan Layanan saat peluncuran
-- Izinkan untuk melanjutkan tanpa memberikan izin selama penyiapan awal
-- Baca daftar tolak xml sistem sebagai default untuk mengecualikan dari pembaruan
-- Tampilkan judul yang benar pada halaman penyiapan ke-5
-- Aktifkan tombol maju pada penyiapan saat kembali
-- Ganti kotak centang pada penginstalasi penyiapan dengan tombol radio
-- Gunakan warna goresan untuk latar belakang tab pengaturan
-- Perbaiki bug tanpa tema di pengaturan dengan menggunakan tombol radio
-- Jangan gunakan versi GSF & Vending yang baru
-- Memperbaiki pengaturan izin terkait penyimpanan
-- Pembaruan terjemahan
+• Target Android 13
+• Aktifkan terjemahan lokal beberapa string
+• Menambah ikon monokrom untuk Android 13
+• Perbarui dependensi ke versi terbaru
+• Tampilkan prompt Persyaratan Layanan saat pertama kali diluncurkan
+• Izinkan pengguna melanjutkan tanpa memberikan izin selama pengaturan awal
+• Baca daftar penolakan XML sistem sebagai bawaan untuk pengecualian dari pembaruan
+• Tampilkan judul yang benar di halaman pengaturan ke-5
+• Aktifkan tombol maju di pengaturan saat kembali
+• Ganti kotak centang di penginstal pengaturan dengan tombol radio
+• Gunakan warna garis untuk latar belakang tab pengaturan
+• Perbaiki bug tanpa tema di pengaturan dengan menggunakan tombol radio
+• Jangan gunakan versi baru GSF & Vending
+• Perbarui pengaturan izin terkait penyimpanan
+• Pembaruan terjemahan
