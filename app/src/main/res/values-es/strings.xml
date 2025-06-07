@@ -428,4 +428,8 @@
     <string name="pref_updates_restrictions_battery">Cuando la batería no está baja</string>
     <string name="pref_updates_restrictions_desc">Configurar restricciones del dispositivo para actualizaciones automáticas.</string>
     <string name="verification_failed">Ha fallado al verificar archivos descargados</string>
+    <string name="app_info_min_android">Versión mínima de Android</string>
+    <string name="app_info_updated_on">Última actualización</string>
+    <string name="pref_common_advanced">Avanzado</string>
+    <string name="pref_updates_app_source">Fuente de la aplicación</string>
 </resources>
