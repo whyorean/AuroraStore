@@ -428,4 +428,10 @@
     <string name="pref_updates_restrictions_metered">Hanya pada jaringan yang tidak terukur</string>
     <string name="pref_updates_restrictions_battery">Saat baterai tidak lemah</string>
     <string name="verification_failed">Gagal memverifikasi berkas terunduh</string>
+    <string name="app_info_downloads">Unduhan</string>
+    <string name="app_info_updated_on">Terakhir diperbarui</string>
+    <string name="app_info_min_android">Versi Android Minimum</string>
+    <string name="app_info_target_android">Target Level API</string>
+    <string name="pref_common_advanced">Tingkat Lanjut</string>
+    <string name="pref_updates_app_source">Sumber aplikasi</string>
 </resources>

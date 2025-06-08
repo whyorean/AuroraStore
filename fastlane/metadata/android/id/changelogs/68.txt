@@ -1,0 +1,3 @@
+• Perbaikan crash saat membuka halaman detail aplikasi
+• Perbaikan crash saat memalsukan wilayah
+• Pembaruan terjemahan

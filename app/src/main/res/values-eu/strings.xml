@@ -430,4 +430,8 @@
     <string name="verification_failed">Deskargatutako fitxategiak ezin izan dira egiaztatu</string>
     <string name="pref_common_advanced">Aurreratua</string>
     <string name="pref_updates_app_source">Aplikazioaren iturria</string>
+    <string name="app_info_downloads">Deskargak</string>
+    <string name="app_info_updated_on">Azken eguneraketa</string>
+    <string name="app_info_min_android">Gutxieneko Android bertsioa</string>
+    <string name="app_info_target_android">Helburuko API maila</string>
 </resources>
