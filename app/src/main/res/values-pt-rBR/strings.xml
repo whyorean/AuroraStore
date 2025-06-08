@@ -417,7 +417,7 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
     <string name="no_apps_available">Não há apps disponíveis</string>
     <string name="pref_network_microg_login_title">Utilizar o microG para entrar nas contas</string>
-    <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao entrar em contas do Google para um fluxo de login mais simples.</string>
+    <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao entrar em contas do Google para um fluxo de login mais simples</string>
     <string name="set">Definir</string>
     <string name="disable">Desativar</string>
     <string name="toast_proxy_disabled">Proxy desativada com sucesso</string>
