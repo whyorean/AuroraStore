@@ -417,7 +417,7 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uygulama kuruldu</string>
     <string name="no_apps_available">Uygulama yok</string>
     <string name="pref_network_microg_login_title">Hesaplara giriş yapmak için microG kullan</string>
-    <string name="pref_network_microg_login_desc">Daha basit bir giriş akışı için Google hesaplarına giriş yaparken microG ile kimliği doğrula.</string>
+    <string name="pref_network_microg_login_desc">Daha basit bir giriş akışı için Google hesaplarına giriş yaparken microG ile kimliği doğrula</string>
     <string name="set">Ayarla</string>
     <string name="disable">Devre Dışı Bırak</string>
     <string name="toast_proxy_disabled">Vekil başarıyla devre dışı bırakıldı</string>
