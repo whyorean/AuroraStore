@@ -403,7 +403,7 @@
     <string name="services_installer_desc">Nõuab, et Aurora teenused oleks paigaldatud privilegeeritud süsteemirakendusena</string>
     <string name="shizuku_installer_subtitle">Süsteemi API-de kasutamine otse adb/root õigustega</string>
     <string name="shizuku_installer_desc">Vajalik on Shizuku või Sui, tuleb seadistada ja anda luba</string>
-    <string name="pref_network_microg_login_desc">Protsessi lihtsustamiseks kasuta Google kontodele sisselogimise autentimiseks microG-d.</string>
+    <string name="pref_network_microg_login_desc">Protsessi lihtsustamiseks kasuta Google\'i kontodele sisselogimise autentimiseks microG-d</string>
     <string name="pref_updates_restrictions_metered">Ainult mahupiiranguteta võrkudes</string>
     <string name="made_with_love">Loodud <xliff:g id="heart_emoji">%1$s</xliff:g> kasutades Indias</string>
     <string name="pref_clear_device_owner_desc">See tühistab seansi paigaldaja loa rakendust vaikselt paigaldada. Kas jätkata?</string>
