@@ -219,7 +219,7 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Přispějte prostřednictvím UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat skupiny aplikací. Změňte typ instalátoru na Relační, Služby nebo Root.</string>
+    <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat zabalené (rozdělené) aplikace. Změňte typ instalátoru na Relační, Služby nebo Root.</string>
     <string name="toast_aas_token_failed">Nepodařilo se vygenerovat token AAS</string>
     <string name="toast_rated_failed">Nelze odeslat hodnocení</string>
     <string name="toast_rated_success">Ohodnoceno, může chvíli trvat, než se recenze ukáže</string>
@@ -417,7 +417,7 @@
     <string name="installed_apps_size">Nainstalováno <xliff:g id="installed_apps_size">%1$d</xliff:g> aplikací</string>
     <string name="no_apps_available">Nejsou dostupné žádné aplikace</string>
     <string name="pref_network_microg_login_title">Použít microG k přihlášení k účtům</string>
-    <string name="pref_network_microg_login_desc">Během přihlašování do účtů Google použít službu microG pro jednodušší proces přihlášení.</string>
+    <string name="pref_network_microg_login_desc">Během přihlašování do účtů Google použít službu microG pro jednodušší proces přihlášení</string>
     <string name="set">Nastavit</string>
     <string name="pref_updates_restrictions_idle">Když je zařízení nečinné</string>
     <string name="pref_updates_restrictions_battery">Když je baterie dostatečně nabitá</string>
