@@ -1,3 +1,6 @@
-• Corrigido uma falha ao navegar à pagina de detalhes do app
-• Corrigido uma falha ao simular o idioma
+• Mudança para novas APIs para buscar e instalar apps
+• Filtro de busca não está mais disponível, será readicionado depois
+• Corrigida uma falha ao navegar à pagina de detalhes do app
+• Corrigida uma falha ao simular o idioma
+• Corrigida falha ao simular localização
 • Traduções atualizadas
