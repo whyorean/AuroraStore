@@ -1,3 +1,5 @@
+• Ganti ke API baru untuk mencari dan memasang aplikasi
+• Saringan pencarian sementara tidak tersedia, akan ditambahkan lagi
 • Perbaikan crash saat membuka halaman detail aplikasi
 • Perbaikan crash saat memalsukan wilayah
 • Pembaruan terjemahan
