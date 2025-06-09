@@ -410,7 +410,7 @@
     <string name="plexus_progress">Po shihet përputhshmëria…</string>
     <string name="details_compatibility_gms_required_subtitle">Mund t’ju duhet të instaloni bibliotekë pronësore të Google-it, ose një risendërtim FOSS, fjala vjen, microG.</string>
     <string name="pref_network_microg_login_title">Përdor microG për të bërë hyrje në llogari</string>
-    <string name="pref_network_microg_login_desc">Bëni mirëfilltësimin duke përdorur microG, kur bëhet hyrje në llogari Google, për një rrjedhë më të thjeshtë pune me hyrjen.</string>
+    <string name="pref_network_microg_login_desc">Bëni mirëfilltësimin duke përdorur microG, kur bëhet hyrje në llogari Google, për një rrjedhë më të thjeshtë pune me hyrjen</string>
     <string name="disclaimer_subtitle">Dhënie llogarie dhe përgjegjësi</string>
     <string name="no_apps_available">S’ka aplikacione</string>
     <string name="toast_proxy_disabled">Ndërmjetësi u çaktivizua me sukses</string>
