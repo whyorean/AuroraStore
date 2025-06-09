@@ -107,7 +107,7 @@
     <string name="onboarding_permission_doze">Фонавая ўсталёўка</string>
     <string name="onboarding_permission_doze_desc">Дазволіць Aurora Store усталёўваць і абнаўляць праграмы ў фоне</string>
     <string name="pref_filter_fdroid_title">Фільтраваць праграмы з F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Не правяраць наяўнасць абнаўленняў для праграм, спампаваных ці ўсталяваных з F-Droid</string>
+    <string name="pref_filter_fdroid_summary">"Не правяраць наяўнасць абнаўленняў для праграм,  ўсталяваных з F-Droid"</string>
     <string name="pref_install_delete_summary">Спампаваныя APK будуць выдаленыя адразу пасля ўсталявання</string>
     <string name="pref_install_delete_title">Выдаляць APK пасля ўсталявання</string>
     <string name="pref_install_mode_am">Усталёўшчык AM</string>
@@ -119,7 +119,7 @@
     <string name="pref_network_proxy_url_message">Увядзіце сапраўдны URL для праходжання ўсяго трафіку праз проксі.</string>
     <string name="pref_ui_similar_apps">Падобнае</string>
     <string name="pref_ui_similar_apps_desc">Паказваць падобныя ці звязаныя кластары на старонцы праграмы</string>
-    <string name="pref_aurora_only_desc">Правяраць абнаўленні толькі для праграм, якія былі ўсталяваныя праз Aurora Store</string>
+    <string name="pref_aurora_only_desc">Не правяраць наяўнасць абнаўленняў для праграм, усталяваных з крыніц па-за межамі крамы Aurora</string>
     <string name="purchase_failed">Памылка спампоўкі</string>
     <string name="purchase_no_file">Не ўдалося атрымаць файл</string>
     <string name="purchase_not_found">Праграма не знойдзена</string>
@@ -347,12 +347,12 @@
     <string name="pref_clear_device_owner_desc">Гэта скасуе дазвол праграмы ўсталёўкі сеанса на бясшумную ўстаноўку праграмы. Працягнуць ачыстку прылады карыстальніка?</string>
     <string name="pref_dispenser_title">Кіраванне размеркавальнікамі</string>
     <string name="add_dispenser_summary">Дадайце размеркавальнік токенаў у Aurora Store. Размеркавальнік перадае ўліковыя даныя ў Aurora Store для ананімнага ўваходу.</string>
-    <string name="pref_aurora_only">Толькі праграмы Aurora Store</string>
+    <string name="pref_aurora_only">Фільтраваць праграмы з іншых крыніц</string>
     <string name="purchase_invalid">Праграма не куплёная</string>
     <string name="purchase_unsupported">Праграма не падтрымліваецца</string>
     <string name="session_enjoy">Увайдзіце і атрымлівайце асалоду.</string>
     <string name="session_good">Так! Усё атрымалася.</string>
-    <string name="pref_updates_incompatible">Несумяшчальнае</string>
+    <string name="pref_updates_incompatible">Паказаць абнаўленні, якія могуць не спрацаваць</string>
     <string name="session_init">Падрыхтоўка…</string>
     <string name="session_login">Калі ласка, увайдзіце ў свой уліковы запіс Google Play</string>
     <string name="session_login_failed_google">Не атрымалася ўвайсці праз Google</string>
@@ -401,7 +401,7 @@
     <string name="toast_proxy_disabled">Проксі паспяхова выключана</string>
     <string name="pref_updates_restrictions_desc">Наладзьце абмежаванні для аўтаматычных абнаўленняў на прыладзе.</string>
     <string name="pref_updates_restrictions_battery">Калі зарад батарэі не нізкі</string>
-    <string name="pref_network_microg_login_desc">Пацвярджайце сапраўднасць, выкарыстоўваючы microG пры ўваходзе ва ўліковыя запісы Google, каб працэс увахода быў прасцей.</string>
+    <string name="pref_network_microg_login_desc">Пацвярджайце сапраўднасць, выкарыстоўваючы microG пры ўваходзе ва ўліковыя запісы Google, каб працэс увахода быў прасцей</string>
     <string name="details_compatibility_gms_required_subtitle">Вам можа спатрэбіцца ўсталяваць уласную бібліятэку Google ці свабодную альтэрнатыву, напрыклад microG.</string>
     <string name="toast_black_export_success">Чорны спіс экспартаваны!</string>
     <string name="pref_network_proxy_desc">Прагляд і кіраванне наладамі проксі</string>
@@ -428,4 +428,10 @@
     <string name="status_unavailable">Недаступна</string>
     <string name="authentication_required_unarchive">Калі ласка, увайдзіце са сваім уліковым запісам Google Play, каб разархіваваць гэтую праграму!</string>
     <string name="verification_failed">Не ўдалося праверыць спампаваныя файлы</string>
+    <string name="app_info_downloads">Спампоўкі</string>
+    <string name="app_info_min_android">Мінімальная версія Android</string>
+    <string name="app_info_target_android">Мэтавы ўзровень API</string>
+    <string name="app_info_updated_on">Апошняе абнаўленне</string>
+    <string name="pref_common_advanced">Пашыраныя налады</string>
+    <string name="pref_updates_app_source">Крыніца праграмы</string>
 </resources>
