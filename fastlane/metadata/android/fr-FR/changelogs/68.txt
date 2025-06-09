@@ -1,3 +1,5 @@
-• Correction d’un plantage lors de la navigation vers la page des détails de l'appli
+• Nouvelles API pour la recherche et l’installation d’applis
+• Le filtre de recherche n’est plus accessible, il sera ajouté ultérieurement.
+• Correction d’un plantage lors de la navigation vers la page des détails de l’appli
 • Correction d’un plantage lors de l’usurpation des paramètres régionaux
 • Mises à jour des traductions
