@@ -1,3 +1,5 @@
+• Umstellung auf neue APIs für die Suche und Installation von Apps
+• Der Suchfilter ist aktuell nicht verfügbar, wird aber später wieder hinzugefügt
 • Behebung eines Absturzes beim Navigieren zur App-Detailseite
-• Absturz beim Spoofing des Gebietsschemas behoben
+• Behebung eines Absturzes beim Vortäuschen des Gebietsschemas
 • Übersetzungen aktualisiert
