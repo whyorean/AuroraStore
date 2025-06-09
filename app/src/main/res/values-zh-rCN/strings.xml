@@ -417,7 +417,7 @@
     <string name="installed_apps_size">安装了 <xliff:g id="installed_apps_size">%1$d</xliff:g> 应用</string>
     <string name="no_apps_available">无应用可用</string>
     <string name="pref_network_microg_login_title">使用 microG 来登录账户</string>
-    <string name="pref_network_microg_login_desc">登录 Google 账户时使用 microG 验证身份简化登录流程。</string>
+    <string name="pref_network_microg_login_desc">登录 Google 账户时使用 microG 验证身份简化登录流程</string>
     <string name="set">设置</string>
     <string name="disable">停用</string>
     <string name="toast_proxy_disabled">成功停用了代理</string>

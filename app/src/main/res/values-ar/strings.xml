@@ -417,7 +417,7 @@
     <string name="details_compatibility_gms_not_required_subtitle">يعمل هذا التطبيق بدون مكتبة Google الخاصة. ومع ذلك، قد يتطلب الأمر استخدام مكتبات أخرى تابعة لجهات خارجية ليعمل بشكل صحيح.</string>
     <string name="no_apps_available">لا توجد تطبيقات متاحة</string>
     <string name="pref_network_microg_login_title">استخدم microG لتسجيل الدخول إلى الحسابات</string>
-    <string name="pref_network_microg_login_desc">استوثق باستخدام microG عند تسجيل الدخول إلى حسابات Google لتسهيل عملية تسجيل الدخول.</string>
+    <string name="pref_network_microg_login_desc">استوثق باستخدام microG عند تسجيل الدخول إلى حسابات Google لتسهيل عملية تسجيل الدخول</string>
     <string name="set">عيّن</string>
     <string name="disable">عطّل</string>
     <string name="toast_proxy_disabled">عُطّل الوكيل بنجاح</string>

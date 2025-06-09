@@ -1,3 +1,5 @@
+• Uygulama arama ve kurma için yeni API'lere geçildi
+• Arama süzgeci artık kullanılamıyor, daha sonra yeniden eklenecek
 • Uygulama sayfasında gezinirken çöküş giderildi
 • Yerel algılanırken çöküş giderildi
 • Çeviri güncellemeleri

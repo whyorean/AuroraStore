@@ -1,3 +1,5 @@
+• Změna na nová rozhraní API pro hledání a instalaci aplikací
+• Filtr vyhledávání již není dostupný, bude znovu přidán později
 • Opraven pád při navigaci na podrobnosti aplikace
 • Opraven pád při falšování místní předvolby
 • Aktualizace překladů

@@ -188,7 +188,7 @@
     <string name="onboarding_title_permissions">Дозволи</string>
     <string name="onboarding_title_installer">Установлювач</string>
     <string name="onboarding_permission_select">Aurora Store потребує таких дозволів</string>
-    <string name="dialog_desc_native_split">Ви не можете встановлювати розділені (split) застосунки через власний установлювач. Змініть установлювач на сеансовий, сервіси Aurora або Root.</string>
+    <string name="dialog_desc_native_split">Ви не можете встановлювати пакетні (розділені) програми за допомогою нативного інсталятора. Змініть інсталятор на сеансовий, сервісний або рутовий.</string>
     <string name="dialog_title_self_update">Доступне нове оновлення</string>
     <string name="device_miui_extra">Ви також можете вибрати власний установлювач, але тоді ви не зможете встановлювати розділені (split) APK, тому вибір за вами.</string>
     <string name="device_miui_description">Вимкніть оптимізації MIUI, щоби дозволити встановлення, інакше ви можете вибрати встановлювач Root або сервіси Aurora.</string>
@@ -358,7 +358,7 @@
     <string name="toast_fav_import_success">Улюблені імпортовано!</string>
     <string name="toast_fav_export_success">Улюблені експортовано!</string>
     <string name="export_app_summary_success">Набір застосунків успішно експортовано</string>
-    <string name="export_app_summary_fail">Не вдалось експортувати набір застосунків</string>
+    <string name="export_app_summary_fail">Не вдалося експортувати пакет додатків</string>
     <string name="title_favourites_manager">Улюблені застосунки</string>
     <string name="action_uninstall_success">Успішно видалено</string>
     <string name="action_logout_confirmation_message">Хочете вийти з облікового запису?</string>
@@ -416,8 +416,8 @@
     <string name="details_compatibility_status_unknown">Невідомо: ще не перевірено</string>
     <string name="installed_apps_size">Установлено <xliff:g id="installed_apps_size">%1$d</xliff:g> застосунків</string>
     <string name="no_apps_available">Немає доступних застосунків</string>
-    <string name="pref_network_microg_login_title">Використовувати microG для входу в облікові записи</string>
-    <string name="pref_network_microg_login_desc">Використовуйте microG для автентифікації під час входу в облікові записи Google для спрощеного процесу входу.</string>
+    <string name="pref_network_microg_login_title">Використовуйте microG для входу в облікові записи</string>
+    <string name="pref_network_microg_login_desc">Автентифікуйте за допомогою microG під час входу в облікові записи Google для спрощення процесу входу</string>
     <string name="set">Змінити</string>
     <string name="disable">Вимкнути</string>
     <string name="pref_updates_restrictions_title">Обмеження автоматичного оновлення</string>
