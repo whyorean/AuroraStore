@@ -417,7 +417,7 @@
     <string name="details_compatibility_gms_required_subtitle">Var būt nepieciešams uzstādīt Google īpašniecisko bibliotēku vai tās FOSS atveidojumu, piemēram, microG.</string>
     <string name="no_apps_available">Nav pieejama neviena lietotne</string>
     <string name="pref_network_microg_login_title">Izmantot microG, lai pieteiktos kontos</string>
-    <string name="pref_network_microg_login_desc">Autentificēt ar microG, kad piesakās Google kontos, vienkāršākai pieteikšanās plūsmai.</string>
+    <string name="pref_network_microg_login_desc">Autentificēt ar microG, kad piesakās Google kontos, vienkāršākai pieteikšanās plūsmai</string>
     <string name="disable">Atspējot</string>
     <string name="toast_proxy_disabled">Starpniekserveris sekmīgi atspējots</string>
     <string name="pref_network_proxy_desc">Apskatīt un pārvaldīt starpniekservera konfigurāciju</string>
