@@ -413,7 +413,7 @@
     <string name="checking_updates">Op updates controleren</string>
     <string name="status_queued">In de wachtrij</string>
     <string name="pref_network_microg_login_title">Gebruik microG om accounts aan te melden</string>
-    <string name="pref_network_microg_login_desc">Authenticeer met microG tijdens het aanmelden van Google-accounts voor een vloeiendere inlogervaring.</string>
+    <string name="pref_network_microg_login_desc">Authenticeer met microG tijdens het aanmelden van Google-accounts voor een vloeiendere inlogervaring</string>
     <string name="export_app_summary_fail">Appbundel exporteren mislukt</string>
     <string name="add">Toevoegen</string>
     <string name="add_dispenser_summary">Voeg een distributeur toe aan Aurora Store. Distributeurs bieden accountgegevens aan om anoniem aan te melden.</string>

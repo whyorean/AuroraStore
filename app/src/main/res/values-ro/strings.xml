@@ -425,9 +425,13 @@
     <string name="pref_updates_restrictions_title">Restricții actualizări automate</string>
     <string name="toast_proxy_disabled">Proxy dezactivat cu succes</string>
     <string name="pref_updates_restrictions_idle">Când dispozitivul este inactiv</string>
-    <string name="pref_network_microg_login_desc">Autentifică-te folosind microG atunci când te conectezi la conturile Google, pentru un proces simplificat de conectare.</string>
+    <string name="pref_network_microg_login_desc">Autentifică-te folosind microG atunci când te conectezi la conturile Google, pentru un proces simplificat de conectare</string>
     <string name="pref_network_microg_login_title">Utilizează microG pentru a te conecta la conturi</string>
     <string name="set">Setează</string>
     <string name="pref_common_advanced">Avansat</string>
     <string name="pref_updates_app_source">Sursa aplicației</string>
+    <string name="app_info_downloads">Descărcări</string>
+    <string name="app_info_min_android">Versiune Android minimă</string>
+    <string name="app_info_target_android">Nivelul API țintă</string>
+    <string name="app_info_updated_on">Ultima actualizare</string>
 </resources>

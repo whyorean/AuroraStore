@@ -1,3 +1,5 @@
+• Pārslēgšanās uz jaunajiem API lietotņu meklēšanai un uzstādīšanai
+• Meklētājs vairs nav pieejams, tiks atkal pievienots vēlāk
 • Novērsta avārija pārvietojoties uz lietotnes informācijas lapu
 • Novērsta atrašanās vietas atdarināšanas avārija
 • Tulkojumu atjauninājumi

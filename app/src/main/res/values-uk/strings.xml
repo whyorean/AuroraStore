@@ -188,7 +188,7 @@
     <string name="onboarding_title_permissions">Дозволи</string>
     <string name="onboarding_title_installer">Установлювач</string>
     <string name="onboarding_permission_select">Aurora Store потребує таких дозволів</string>
-    <string name="dialog_desc_native_split">Ви не можете встановлювати пакетні (розділені) програми за допомогою нативного інсталятора. Змініть інсталятор на сеансовий, сервісний або рутовий.</string>
+    <string name="dialog_desc_native_split">Ви не можете встановлювати пакетні (розділені) застосунки за допомогою нативного встановлювача. Змініть встановлювач на сеансовий, сервісний або Root.</string>
     <string name="dialog_title_self_update">Доступне нове оновлення</string>
     <string name="device_miui_extra">Ви також можете вибрати власний установлювач, але тоді ви не зможете встановлювати розділені (split) APK, тому вибір за вами.</string>
     <string name="device_miui_description">Вимкніть оптимізації MIUI, щоби дозволити встановлення, інакше ви можете вибрати встановлювач Root або сервіси Aurora.</string>
@@ -358,7 +358,7 @@
     <string name="toast_fav_import_success">Улюблені імпортовано!</string>
     <string name="toast_fav_export_success">Улюблені експортовано!</string>
     <string name="export_app_summary_success">Набір застосунків успішно експортовано</string>
-    <string name="export_app_summary_fail">Не вдалося експортувати пакет додатків</string>
+    <string name="export_app_summary_fail">Не вдалось експортувати набір застосунків</string>
     <string name="title_favourites_manager">Улюблені застосунки</string>
     <string name="action_uninstall_success">Успішно видалено</string>
     <string name="action_logout_confirmation_message">Хочете вийти з облікового запису?</string>
