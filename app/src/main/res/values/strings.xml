@@ -350,7 +350,7 @@
 
     <!-- OnBoarding Fragment -->
     <string name="onboarding_title_installer">"Installer"</string>
-    <string name="onboarding_title_gsf">"App Compatibility Notice"</string>
+    <string name="onboarding_title_gsf">"App Compatibility"</string>
     <string name="onboarding_title_gsf_desc">"Missing dependencies"</string>
     <string name="onboarding_title_permissions">"Permissions"</string>
     <string name="onboarding_title_welcome">"Welcome"</string>

@@ -91,7 +91,7 @@
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"
-        tools:layout="@layout/fragment_setting" >
+        tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_settingsFragment_to_permissionsFragment"
             app:destination="@id/permissionsFragment" />
@@ -157,6 +157,11 @@
         <argument
             android:name="packageName"
             app:argType="string" />
+        <argument
+            android:name="app"
+            android:defaultValue="@null"
+            app:argType="com.aurora.gplayapi.data.models.App"
+            app:nullable="true" />
         <action
             android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
             app:destination="@id/devAppsFragment" />
@@ -169,11 +174,6 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_detailsExodusFragment"
             app:destination="@id/detailsExodusFragment" />
-        <argument
-            android:name="app"
-            android:defaultValue="@null"
-            app:argType="com.aurora.gplayapi.data.models.App"
-            app:nullable="true" />
         <action
             android:id="@+id/action_appDetailsFragment_to_manualDownloadSheet"
             app:destination="@id/manualDownloadSheet" />
@@ -183,6 +183,9 @@
         <action
             android:id="@+id/action_appDetailsFragment_to_installErrorDialogSheet"
             app:destination="@id/installErrorDialogSheet" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_microGFragment"
+            app:destination="@id/microGFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -370,6 +373,16 @@
         android:name="com.aurora.store.view.ui.onboarding.PermissionsFragment"
         android:label="PermissionsFragment"
         tools:layout="@layout/fragment_onboarding_permissions">
+        <argument
+            android:name="isOnboarding"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/microGFragment"
+        android:name="com.aurora.store.view.ui.onboarding.MicroGFragment"
+        android:label="MicroGFragment"
+        tools:layout="@layout/fragment_onboarding_microg">
         <argument
             android:name="isOnboarding"
             android:defaultValue="true"

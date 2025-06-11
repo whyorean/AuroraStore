@@ -62,6 +62,7 @@
     <dimen name="height_bottomsheet_button">52dp</dimen>
     <dimen name="height_peek">64dp</dimen>
     <dimen name="height_nav_header">148dp</dimen>
+    <dimen name="height_microg_action">96dp</dimen>
 
     <dimen name="radius_small">8dp</dimen>
     <dimen name="radius_medium">10dp</dimen>

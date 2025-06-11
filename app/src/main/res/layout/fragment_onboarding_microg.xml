@@ -56,35 +56,16 @@
             android:paddingEnd="@dimen/padding_normal"
             android:text="@string/onboarding_title_gsf_desc"
             android:textAlignment="textStart" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/AuroraTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_gms_missing"
-            android:textAlignment="textStart"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/AuroraTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_normal"
-            android:paddingEnd="@dimen/padding_normal"
-            android:text="@string/onboarding_gms_microg"
-            android:textAlignment="textStart"
-            android:textSize="16sp" />
     </LinearLayout>
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/epoxy_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@id/bottom_layout"
-        android:layout_below="@id/top_layout"
+        android:layout_below="@+id/top_layout"
         android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
         android:overScrollMode="never"
         android:padding="@dimen/padding_medium"
         android:scrollbars="none"
@@ -94,8 +75,9 @@
     <LinearLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_microg_action"
         android:layout_alignParentBottom="true"
+        android:background="?attr/colorSurface"
         android:divider="@drawable/divider"
         android:orientation="vertical"
         android:paddingStart="@dimen/padding_large"

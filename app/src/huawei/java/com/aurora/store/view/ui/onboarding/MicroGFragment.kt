@@ -2,8 +2,11 @@ package com.aurora.store.view.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.aurora.extensions.browse
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
@@ -13,6 +16,7 @@ import com.aurora.store.data.model.Dash
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.databinding.FragmentOnboardingMicrogBinding
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.view.epoxy.views.EpoxyTextViewModel_
 import com.aurora.store.view.epoxy.views.preference.DashViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.onboarding.MicroGViewModel
@@ -21,19 +25,50 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlin.getValue
 
 @AndroidEntryPoint
 class MicroGFragment : BaseFragment<FragmentOnboardingMicrogBinding>() {
     // Shared ViewModel
     val microGViewModel: MicroGViewModel by activityViewModels()
 
+    private val args: MicroGFragmentArgs by navArgs()
+
+    companion object {
+        fun newInstance(isOnboarding: Boolean = true): MicroGFragment {
+            return MicroGFragment().apply {
+                arguments = bundleOf("isOnboarding" to isOnboarding)
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setNavigationOnClickListener { findNavController().navigateUp() }
 
         with(binding) {
             // RecyclerView
             epoxyRecycler.withModels {
                 setFilterDuplicates(true)
+
+                add(
+                    EpoxyTextViewModel_()
+                        .id("microg_desc")
+                        .title(getString(R.string.onboarding_gms_missing))
+                        .size(16)
+                        .style(R.style.AuroraTextStyle)
+                )
+
+                add(
+                    EpoxyTextViewModel_()
+                        .id("microg_gms")
+                        .title(getString(R.string.onboarding_gms_microg))
+                        .size(16)
+                        .style(R.style.AuroraTextStyle)
+                )
+
+
                 dashItems().forEach {
                     add(
                         DashViewModel_()
