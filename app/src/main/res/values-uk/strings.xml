@@ -434,4 +434,5 @@
     <string name="app_info_min_android">Мінімальна версія Android</string>
     <string name="app_info_target_android">Цільовий рівень API</string>
     <string name="app_info_downloads">Завантажити</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозволи</string>
 </resources>
