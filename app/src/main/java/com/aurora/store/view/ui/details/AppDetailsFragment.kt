@@ -86,6 +86,7 @@ import com.aurora.store.view.epoxy.views.details.ReviewViewModel_
 import com.aurora.store.view.epoxy.views.details.ScreenshotView
 import com.aurora.store.view.epoxy.views.details.ScreenshotViewModel_
 import com.aurora.store.view.ui.commons.BaseFragment
+import com.aurora.store.view.ui.preferences.SettingsFragmentDirections
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsClusterViewModel
 import com.jakewharton.processphoenix.ProcessPhoenix
@@ -397,6 +398,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.events.installerEvent.collect { onEvent(it) }
         }
+
     }
 
     override fun onResume() {

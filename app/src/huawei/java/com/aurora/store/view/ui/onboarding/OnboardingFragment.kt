@@ -74,7 +74,7 @@ class OnboardingFragment : BaseFlavouredOnboardingFragment() {
         )
 
         if (!PackageUtil.isMicroGBundleInstalled(requireContext())) {
-            pages.add(MicroGFragment())
+            pages.add(MicroGFragment.newInstance())
         }
 
         return pages
