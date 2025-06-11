@@ -469,6 +469,7 @@
     <string name="available_spoof">Available</string>
 
     <!-- AppDetailsFragment -->
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissions</string>
     <string name="action_unarchive">Unarchive</string>
     <string name="unable_to_open">Unable to open app</string>
     <string name="version_update" translatable="false"><xliff:g id="installed_version_name">%1$s</xliff:g> (<xliff:g id="installed_version_code">%2$d</xliff:g>) ➔ <xliff:g id="update_version_name">%3$s</xliff:g> (<xliff:g id="update_version_code">%4$d</xliff:g>)</string>

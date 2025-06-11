@@ -999,7 +999,12 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                     )
                 }
             }
-            headerPermission.setSubTitle(("${app.permissions.size} permissions"))
+            headerPermission.setSubTitle(
+                getString(
+                    R.string.permissions_requested,
+                    app.permissions.size
+                )
+            )
         }
     }
 
