@@ -434,4 +434,5 @@
     <string name="app_info_updated_on">Naposledy aktualizováno</string>
     <string name="app_info_min_android">Minimální verze Androidu</string>
     <string name="app_info_target_android">Cílová úroveň API</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> oprávnění</string>
 </resources>
