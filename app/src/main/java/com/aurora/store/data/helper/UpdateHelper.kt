@@ -32,6 +32,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.util.UUID
 import java.util.concurrent.TimeUnit.HOURS
 import java.util.concurrent.TimeUnit.MINUTES
 import javax.inject.Inject
@@ -49,6 +50,37 @@ class UpdateHelper @Inject constructor(
 
         private const val UPDATE_WORKER = "UPDATE_WORKER"
         private const val EXPEDITED_UPDATE_WORKER = "EXPEDITED_UPDATE_WORKER"
+
+        fun getAutoUpdateWork(context: Context): PeriodicWorkRequest {
+            val updateCheckInterval = Preferences.getInteger(
+                context,
+                PREFERENCE_UPDATES_CHECK_INTERVAL,
+                3
+            ).toLong()
+
+            val constraints = Constraints.Builder()
+
+            if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_METERED, true)) {
+                constraints.setRequiredNetworkType(NetworkType.UNMETERED)
+            }
+
+            if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, true)) {
+                constraints.setRequiresBatteryNotLow(true)
+            }
+
+            if (isMAndAbove && Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)) {
+                constraints.setRequiresDeviceIdle(true)
+            }
+
+            return PeriodicWorkRequestBuilder<UpdateWorker>(
+                repeatInterval = updateCheckInterval,
+                repeatIntervalTimeUnit = HOURS,
+                flexTimeInterval = 30,
+                flexTimeIntervalUnit = MINUTES
+            ).setConstraints(constraints.build())
+                .setId(UUID.nameUUIDFromBytes(UPDATE_WORKER.toByteArray()))
+                .build()
+        }
     }
 
     private val TAG = UpdateHelper::class.java.simpleName
@@ -142,7 +174,7 @@ class UpdateHelper @Inject constructor(
             .enqueueUniquePeriodicWork(
                 UPDATE_WORKER,
                 ExistingPeriodicWorkPolicy.KEEP,
-                getAutoUpdateWork()
+                getAutoUpdateWork(context)
             )
     }
 
@@ -152,36 +184,8 @@ class UpdateHelper @Inject constructor(
      */
     fun updateAutomatedCheck() {
         Log.i(TAG, "Updating periodic app updates!")
-        WorkManager.getInstance(context).updateWork(getAutoUpdateWork())
-    }
-
-    private fun getAutoUpdateWork(): PeriodicWorkRequest {
-        val updateCheckInterval = Preferences.getInteger(
-            context,
-            PREFERENCE_UPDATES_CHECK_INTERVAL,
-            3
-        ).toLong()
-
-        val constraints = Constraints.Builder()
-
-        if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_METERED, true)) {
-            constraints.setRequiredNetworkType(NetworkType.UNMETERED)
-        }
-
-        if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_BATTERY, true)) {
-            constraints.setRequiresBatteryNotLow(true)
-        }
-
-        if (isMAndAbove && Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)) {
-            constraints.setRequiresDeviceIdle(true)
-        }
-
-        return PeriodicWorkRequestBuilder<UpdateWorker>(
-            repeatInterval = updateCheckInterval,
-            repeatIntervalTimeUnit = HOURS,
-            flexTimeInterval = 30,
-            flexTimeIntervalUnit = MINUTES
-        ).setConstraints(constraints.build()).build()
+        runCatching { WorkManager.getInstance(context).updateWork(getAutoUpdateWork(context)) }
+            .onFailure { Log.e(TAG, "Failed to update periodic app updates!", it) }
     }
 
     private suspend fun deleteInvalidUpdates() {
