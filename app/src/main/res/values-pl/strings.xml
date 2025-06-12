@@ -434,4 +434,5 @@
     <string name="app_info_updated_on">Ostatnia aktualizacja</string>
     <string name="app_info_min_android">Minimalna wersja systemu Android</string>
     <string name="app_info_target_android">Docelowy poziom API</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> uprawnień</string>
 </resources>
