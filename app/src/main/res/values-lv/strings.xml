@@ -434,4 +434,5 @@
     <string name="app_info_target_android">Mērķa API līmenis</string>
     <string name="app_info_updated_on">Pēdējoreiz atjaunināta</string>
     <string name="app_info_downloads">Lejupielādes</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> atļaujas</string>
 </resources>
