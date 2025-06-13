@@ -176,7 +176,7 @@
     <string name="pref_install_delete_title">Удалить APK-файлы после установки</string>
     <string name="pref_install_delete_summary">Загруженные APK-файлы будут удаляться сразу после установки</string>
     <string name="pref_filter_fdroid_title">Фильтр приложений F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Не проверять обновления для приложений, загруженных или установленных с F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Не проверять обновления для приложений установленных из F-Droid</string>
     <string name="onboarding_permission_installer_desc">Разрешить установку приложений из Aurora Store</string>
     <string name="onboarding_permission_installer">Разрешения установщика</string>
     <string name="onboarding_permission_esm">Менеджер внешнего хранилища</string>
@@ -219,7 +219,7 @@
     <string name="toast_manual_available">Поздравляем, запрошенный код версии доступен. Начинаем загрузку.</string>
     <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
-    <string name="dialog_desc_native_split">Пакетные (сплит-) приложения через системный установщик установить невозможно. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
+    <string name="dialog_desc_native_split">Пакетные приложения (разделённые, split, сплит) через системный установщик установить невозможно. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось поставить оценку</string>
     <string name="toast_rated_success">Оценка принята, ее отображение может занять некоторое время</string>
@@ -288,12 +288,12 @@
     <string name="pref_network_proxy_url">URL прокси</string>
     <string name="pref_updates_check_frequency_desc">Настроить интервал автоматических обновлений, в часах.</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
-    <string name="pref_aurora_only_desc">Проверять обновления для приложений, установленных только с Aurora Store</string>
+    <string name="pref_aurora_only_desc">Не проверять обновления для приложений, установленных из других источников вне Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
     <string name="title_app_settings">Настройки приложения</string>
     <string name="pref_updates_check_frequency">Частота автоматических обновлений</string>
     <string name="toast_proxy_failed">Не удалось настроить прокси</string>
-    <string name="pref_aurora_only">Только приложения из Aurora Store</string>
+    <string name="pref_aurora_only">Фильтровать приложения из других источников</string>
     <string name="pref_vending_version_device">По умолчанию (с конфигурации устройства)</string>
     <string name="pref_vending_version_title">Google Play версия</string>
     <string name="onboarding_permission_doze">Фоновые загрузки</string>
@@ -306,8 +306,8 @@
     <string name="action_request_analysis">Запросить новый анализ</string>
     <string name="failed_apk_export">Не удалось экспортировать APK-файлы</string>
     <string name="download_clear_finished">Очистить завершенные</string>
-    <string name="pref_updates_incompatible">Несовместимые обновления</string>
-    <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
+    <string name="pref_updates_incompatible">Показывать обновления которые могут не сработать</string>
+    <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключённых приложений, которые могут не установиться</string>
     <string name="action_home_screen">Добавить на главный экран</string>
     <string name="faqs_subtitle">У вас есть вопросы? Узнайте ответы</string>
     <string name="source_code_title">Исходный код</string>
@@ -360,7 +360,7 @@
     <string name="toast_fav_import_success">Избранное импортировано!</string>
     <string name="toast_fav_export_success">Избранное экспортировано!</string>
     <string name="export_app_summary_success">Пакетное приложение успешно экспортировано</string>
-    <string name="export_app_summary_fail">Не удалось экспортировать пакетное приложение</string>
+    <string name="export_app_summary_fail">Не удалось экспортировать набор приложений</string>
     <string name="action_uninstall_success">Успешно удалено</string>
     <string name="action_logout_confirmation_title">Выйти?</string>
     <string name="action_logout_confirmation_message">Вы действительно хотите выйти?</string>
@@ -416,8 +416,8 @@
     <string name="details_compatibility_microg">С Проектом microG</string>
     <string name="details_compatibility_no_gms">Без Сервисов Google Play</string>
     <string name="no_apps_available">Нет доступных приложений</string>
-    <string name="pref_network_microg_login_title">Использовать microG для входа в аккаунты</string>
-    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в аккаунты Google для упрощенного процесса входа.</string>
+    <string name="pref_network_microg_login_title">Использовать microG для входа в профили</string>
+    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в профиль Google для упрощённого процесса входа</string>
     <string name="set">Настроить</string>
     <string name="disable">Отключить</string>
     <string name="toast_proxy_disabled">Прокси отключен успешно</string>
@@ -430,4 +430,9 @@
     <string name="verification_failed">Не удалось проверить загруженные файлы</string>
     <string name="app_info_min_android">Минимальная версия Android</string>
     <string name="pref_updates_app_source">Источник приложения</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> разрешений</string>
+    <string name="app_info_target_android">Целевая версия API</string>
+    <string name="app_info_downloads">Скачивания</string>
+    <string name="app_info_updated_on">Последнее обновление</string>
+    <string name="pref_common_advanced">Расширенные</string>
 </resources>
