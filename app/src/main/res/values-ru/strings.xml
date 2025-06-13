@@ -219,7 +219,7 @@
     <string name="toast_manual_available">Поздравляем, запрошенный код версии доступен. Начинаем загрузку.</string>
     <string name="toast_manual_unavailable">Запрошенный вами код версии недоступен.</string>
     <string name="title_manual_download">Ручная загрузка</string>
-    <string name="dialog_desc_native_split">Пакетные приложения (разделённые, split, сплит) невозможно установить системным установщиком. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
+    <string name="dialog_desc_native_split">Пакетные приложения (разделенные, сплит) невозможно установить системным установщиком. Измените метод установки на Сессионный, Сервисы Aurora или Root.</string>
     <string name="toast_aas_token_failed">Не удалось сгенерировать AAS-токен</string>
     <string name="toast_rated_failed">Не удалось поставить оценку</string>
     <string name="toast_rated_success">Оценка принята, ее отображение может занять некоторое время</string>
@@ -417,7 +417,7 @@
     <string name="details_compatibility_no_gms">Без Сервисов Google Play</string>
     <string name="no_apps_available">Нет доступных приложений</string>
     <string name="pref_network_microg_login_title">Использовать microG для входа в профили</string>
-    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в профиль Google для упрощённого процесса входа</string>
+    <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в профиль Google для упрощенного процесса входа</string>
     <string name="set">Настроить</string>
     <string name="disable">Отключить</string>
     <string name="toast_proxy_disabled">Прокси отключён успешно</string>
@@ -432,7 +432,7 @@
     <string name="pref_updates_app_source">Источник приложения</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> разрешений</string>
     <string name="app_info_target_android">Целевая версия API</string>
-    <string name="app_info_downloads">Скачивания</string>
+    <string name="app_info_downloads">Загрузки</string>
     <string name="app_info_updated_on">Последнее обновление</string>
     <string name="pref_common_advanced">Расширенные</string>
 </resources>
