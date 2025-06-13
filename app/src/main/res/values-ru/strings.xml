@@ -307,7 +307,7 @@
     <string name="failed_apk_export">Не удалось экспортировать APK-файлы</string>
     <string name="download_clear_finished">Очистить завершенные</string>
     <string name="pref_updates_incompatible">Показывать обновления которые могут не сработать</string>
-    <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключённых приложений, которые могут не установиться</string>
+    <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключенных приложений, которые могут не установиться</string>
     <string name="action_home_screen">Добавить на главный экран</string>
     <string name="faqs_subtitle">У вас есть вопросы? Узнайте ответы</string>
     <string name="source_code_title">Исходный код</string>
