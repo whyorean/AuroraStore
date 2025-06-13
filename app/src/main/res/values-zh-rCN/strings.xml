@@ -434,4 +434,5 @@
     <string name="app_info_updated_on">上次更新</string>
     <string name="app_info_min_android">最低 Android 版本</string>
     <string name="app_info_target_android">目标 API 等级</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> 个权限</string>
 </resources>

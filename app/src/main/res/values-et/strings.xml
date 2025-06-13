@@ -158,7 +158,7 @@
     <string name="onboarding_permission_esm">Välise salvestusruumi haldur</string>
     <string name="onboarding_permission_installer">Paigaldusrakenduse load</string>
     <string name="onboarding_permission_installer_desc">Luba paigaldada rakendusi Aurora poest</string>
-    <string name="onboarding_permission_installer_legacy_desc">Lubage tundmatutest allikatest pärit rakenduste paigaldamine</string>
+    <string name="onboarding_permission_installer_legacy_desc">Luba tundmatutest allikatest pärit rakenduste paigaldamine</string>
     <string name="onboarding_permission_notifications">Märguanded</string>
     <string name="onboarding_permission_notifications_desc">Saada märguandeid paigaldamise olekust</string>
     <string name="onboarding_permission_doze">Allalaadimine taustal</string>
@@ -199,7 +199,7 @@
     <string name="error">Ilmnes viga!</string>
     <string name="menu">Menüü</string>
     <string name="notification_channel_updates">Uuenduste märguanded</string>
-    <string name="permissions_denied">Nõutud load keelati. Toimingu jätkamiseks luba need</string>
+    <string name="permissions_denied">Vajalikud load on keelatud. Toimingu jätkamiseks luba need</string>
     <string name="pref_updates_auto">Automaatsed uuendused</string>
     <string name="pref_ui_similar_apps_desc">Kuva rakenduse üksikasjade lehel sarnaseid ja seotud rakendusi</string>
     <string name="title_manual_download">Käsitsi allalaadimine</string>
@@ -396,7 +396,7 @@
     <string name="android_market_desc">Android Market oli Android-seadmetele mõeldud veebipood, mis lõpetas 2017. aastal.</string>
     <string name="session_installer_subtitle">Seansipõhine paigaldaja komplekteeritud/split APK-de jaoks</string>
     <string name="session_installer_desc">Soovitatav, sisseehitatud ja toetab kõiki Androidi versioone</string>
-    <string name="root_installer_subtitle">Shellipõhine paigaldaja, mis kasutab juurõigusi</string>
+    <string name="root_installer_subtitle">Kestapõhine paigaldaja, mis kasutab eeldab juurkasutaja õigusi</string>
     <string name="root_installer_desc">Nõuab root/superkasutaja õigusi, toetab kõiki Androidi versioone.</string>
     <string name="native_installer_desc">Sobib kõige paremini alla Android 4.4 seadmetele</string>
     <string name="services_installer_subtitle">Paigaldaja,et paigaldada taustal</string>
@@ -434,4 +434,5 @@
     <string name="app_info_downloads">Allalaadimised</string>
     <string name="app_info_updated_on">Viimati uuendatud</string>
     <string name="app_info_min_android">Androidi miinimumversioon</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> luba</string>
 </resources>

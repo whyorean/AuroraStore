@@ -434,4 +434,5 @@
     <string name="app_info_target_android">Nível alvo da API</string>
     <string name="app_info_downloads">Downloads</string>
     <string name="app_info_min_android">Versão do Android mínima</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissões</string>
 </resources>
