@@ -23,7 +23,7 @@
     <string name="onboarding_welcome_select">Comment allez-vous ?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Programme d’installation</string>
-    <string name="pref_filter_fdroid_title">Filtrer les applis de F-droid</string>
+    <string name="pref_filter_fdroid_title">Filtrer les applis de F-Droid</string>
     <string name="pref_install_mode_title">Mode d’installation</string>
     <string name="title_about">À propos</string>
     <string name="tab_trending">Tendances</string>
@@ -167,7 +167,7 @@
     <string name="tab_top_paid">Les meilleures payantes</string>
     <string name="tab_top_grossing">Les plus rentables</string>
     <string name="tab_top_free">Les meilleures gratuites</string>
-    <string name="tab_top_charts">Palmarès</string>
+    <string name="tab_top_charts">Meilleurs classements</string>
     <string name="spoof_apply">Reconnectez-vous pour appliquer l’usurpation d’appareil</string>
     <string name="device_miui_extra">Facultativement, vous pouvez choisir le programme d’installation Natif, cependant vous ne pourrez pas installer les paquets APK (fractionnés). À vous de décider.</string>
     <string name="device_miui_description">Afin de permettre les installations, désactivez les optimisations MIUI. Sinon, vous pouvez choisir le programme d’installation Racine ou Services.</string>
@@ -175,8 +175,8 @@
     <string name="pref_install_mode_summary">Choisir le mode d’installation des APK</string>
     <string name="pref_install_mode_session">Programme d’installation de session</string>
     <string name="pref_install_mode_services">Aurora Services (déconseillés)</string>
-    <string name="pref_install_mode_root">Programme d’installation Racine</string>
-    <string name="pref_install_mode_native">Programme d’installation Natif (déconseillé)</string>
+    <string name="pref_install_mode_root">Programme d’installation root</string>
+    <string name="pref_install_mode_native">Programme d’installation natif (déconseillé)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les APK téléchargés seront supprimés immédiatement après installation</string>
     <string name="pref_filter_fdroid_summary">Ignorer les mises à jour d’applis installées avec F-Droid</string>
@@ -219,7 +219,7 @@
     <string name="toast_manual_available">Félicitations, le code de version demandé est proposé ; le téléchargement est lancé.</string>
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas proposé.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
-    <string name="dialog_desc_native_split">Le programme d’installation Natif ne permet pas d’installer des paquets d’appli (fractionnés). Choisissez une autre méthode d’installation, Session, Services ou Racine.</string>
+    <string name="dialog_desc_native_split">Le programme d’installation natif ne permet pas d’installer des paquets d’appli (fractionnés). Choisissez une autre méthode d’installation : session, AM ou Shizuku.</string>
     <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
     <string name="toast_rated_failed">Impossible de transmettre l’évaluation</string>
     <string name="toast_rated_success">L’évaluation a été enregistrée. Son affichage peut prendre un certain temps</string>
@@ -252,7 +252,7 @@
     <string name="session_scrapped">Dernière session supprimée</string>
     <string name="update_available">mise à jour proposée</string>
     <string name="updates_available">mises à jour proposées</string>
-    <string name="error">Une erreur s’est produite !</string>
+    <string name="error">Une erreur s’est produite !</string>
     <string name="permissions_denied">Les autorisations requises ont été refusées. Accordez-les afin de poursuivre l’action</string>
     <string name="search_hint">Chercher des applis et des jeux</string>
     <string name="toast_import_success">La configuration de l’appareil a été importée</string>
@@ -270,10 +270,10 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> et <xliff:g id="apps_count">%4$d</xliff:g> de plus</string>
     <string name="title_search_suggestion">Suggestion de recherche</string>
     <string name="title_search_results">Résultats de la recherche</string>
-    <string name="failed_generating_session">Échec de génération de la session. Code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_generating_session">Échec de la génération de la session. Code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Échec de récupération du rapport sur la protection des renseignements personnels</string>
     <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor ?</string>
-    <string name="bad_request">Erreur interne. Réessayez plus tard</string>
+    <string name="bad_request">Erreur interne ! Réessayez plus tard</string>
     <string name="login_rate_limited">Oups, votre débit est limité</string>
     <string name="server_unreachable">Impossible d’accéder au serveur</string>
     <string name="app_links_desc">Autoriser Aurora Store à ouvrir les liens pris en charge</string>
@@ -327,7 +327,7 @@
     <string name="services_installer_desc">Les services Aurora doivent être installés en tant qu’appli avec les privilèges système</string>
     <string name="services_installer_subtitle">Programme d’installation pour les installations en arrière-plan</string>
     <string name="am_installer_subtitle">Gestionnaire de paquet complet à code ouvert</string>
-    <string name="am_installer_desc">Le gestionnaire d’applis « App Manager » et le mode adb/racine sont nécessaires pour installer si l’optimisation MIUI est activée</string>
+    <string name="am_installer_desc">Le gestionnaire d’applis « App Manager » et le mode ADB/root sont nécessaires pour l\'installation si l’optimisation MIUI est activée</string>
     <string name="title_more">Plus</string>
     <string name="manage_account">Gérer mon compte</string>
     <string name="about_wiki_title">Wiki</string>
@@ -360,7 +360,7 @@
     <string name="pref_network_proxy_url_message">Saisissez une URL de mandataire valide pour faire transiter toute les données par le mandataire.</string>
     <string name="title_favourites_manager">Applis favorites</string>
     <string name="toast_fav_export_success">Les favoris ont été exportés</string>
-    <string name="action_logout_confirmation_title">Vous déconnecter ?</string>
+    <string name="action_logout_confirmation_title">Se déconnecter ?</string>
     <string name="action_logout_confirmation_message">Voulez-vous vous déconnecter ?</string>
     <string name="check_updates">Chercher les mises à jour</string>
     <string name="details_data_safety_title">Sécurité des données</string>
@@ -384,7 +384,7 @@
     <string name="status_cancelled">Annulé</string>
     <string name="status_failed">Échec</string>
     <string name="status_unavailable">Inaccessible</string>
-    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver cette appli</string>
+    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver cette appli !</string>
     <string name="notification_channel_account">Notification liée au compte</string>
     <string name="authentication_required_title">L’authentification est requise</string>
     <string name="checking_updates">Recherche de mises à jour</string>
