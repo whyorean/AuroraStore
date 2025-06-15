@@ -55,7 +55,7 @@
     <string name="action_close">Đóng</string>
     <string name="action_clear">Xoá</string>
     <string name="action_cancel">Huỷ bỏ</string>
-    <string name="action_blacklist_add">Thêm vào Danh sách đen</string>
+    <string name="action_blacklist_add">Thêm vô danh sách đen</string>
     <string name="action_blacklist">Danh sách đen</string>
     <string name="action_back">Trở về</string>
     <string name="account_logout">Đăng xuất khỏi Aurora</string>
@@ -94,7 +94,7 @@
     <string name="toast_apk_whitelisted">Đã vào danh sách trắng</string>
     <string name="toast_apk_blacklisted">Đã vào danh dách đen</string>
     <string name="toast_anonymous_restriction">Không khả dụng trên tài khoản ẩn danh</string>
-    <string name="title_updates">Bản cập nhật</string>
+    <string name="title_updates">Cập nhật</string>
     <string name="title_spoof_manager">Trình quản lý giả mạo</string>
     <string name="title_settings">Thiết đặt</string>
     <string name="title_purchase_history">Lịch sử giao dịch</string>
@@ -141,7 +141,7 @@
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
     <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Không kiểm tra cập nhật cho các ứng dụng được tải xuống hoặc cài đặt từ F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Không kiểm tra bản cập nhật cho các ứng dụng được cài đặt từ F-Droid</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>
@@ -190,12 +190,12 @@
     <string name="download_pause_all">Tạm dừng tất cả</string>
     <string name="download_none">Không có tải xuống</string>
     <string name="download_metadata">Đang lấy metadata</string>
-    <string name="download_force_clear_all">Buộc làm sạch tất cả</string>
+    <string name="download_force_clear_all">Buộc dọn dẹp tất cả</string>
     <string name="download_failed">Tải xuống thất bại</string>
     <string name="download_eta_calculating">Đang tính toán</string>
     <string name="download_completed">Tải xuống hoàn tất</string>
     <string name="download_canceled">Đã huỷ</string>
-    <string name="download_cancel_all">Huỷ bỏ tất cả</string>
+    <string name="download_cancel_all">Hủy hết</string>
     <string name="details_think_this_app">Bạn nghĩ thế nào về ứng dụng này\?</string>
     <string name="details_ratings">Đánh giá và nhận xét</string>
     <string name="details_privacy">Riêng tư</string>
@@ -265,8 +265,8 @@
     <string name="updates_available">có cập nhật</string>
     <string name="error">Có lỗi xảy ra!</string>
     <string name="menu">Menu</string>
-    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> có bản cập nhật</string>
-    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> có bản cập nhật</string>
+    <string name="notification_updates_available">có <xliff:g id="apps_count">%1$d</xliff:g> cập nhật</string>
+    <string name="notification_updates_available_1">có <xliff:g id="apps_count">%1$d</xliff:g> cập nhật</string>
     <string name="notification_updates_available_desc_1">Có phiên bản mới cho <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="title_search_suggestion">Gợi ý tìm kiếm</string>
     <string name="title_search_results">Kết quả tìm kiếm</string>
@@ -305,7 +305,7 @@
     <string name="pref_updates_incompatible">Cập nhật không tương thích</string>
     <string name="pref_updates_incompatible_desc">Hiển thị các bản cập nhật cho các ứng dụng không tương thích hoặc bị vô hiệu hóa có thể không cài đặt được</string>
     <string name="action_home_screen">Thêm vào màn hình chính</string>
-    <string name="download_clear_finished">Xóa xong</string>
+    <string name="download_clear_finished">Dọn tệp đã cài</string>
     <string name="details_ratings_title_hint">Tiêu đề đánh giá</string>
     <string name="onboarding_permission_doze">Tải xuống trong nền</string>
     <string name="pref_network_proxy_url">URL proxy</string>
@@ -359,7 +359,7 @@
     <string name="toast_fav_import_success">Dữ liệu yêu thích đã được nhập vào!</string>
     <string name="action_favourite">Yêu thích</string>
     <string name="details_data_safety_title">An toàn của dữ liệu</string>
-    <string name="title_favourites_manager">Những app yêu thích</string>
+    <string name="title_favourites_manager">Những ứng dụng yêu thích</string>
     <string name="toast_permission_installer_required">Trước tiên, bạn cần cấp quyền cho phép “Cài đặt ứng dụng\"</string>
     <string name="item_required">Bắt buộc</string>
     <string name="item_optional">Không bắt buộc</string>
