@@ -42,7 +42,7 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
-    <string name="action_blacklist_add">Добавить в чёрный список</string>
+    <string name="action_blacklist_add">Добавить в черный список</string>
     <string name="action_blacklist">Черный список</string>
     <string name="action_back">Назад</string>
     <string name="account_logout">Выйти из Aurora</string>
@@ -71,7 +71,7 @@
     <string name="filter_review_four">Четыре</string>
     <string name="filter_review_five">Пять</string>
     <string name="filter_review_all">Все</string>
-    <string name="exodus_view_report">Посмотреть отчёт</string>
+    <string name="exodus_view_report">Посмотреть отчет</string>
     <string name="exodus_substring">найдены известные следилки</string>
     <string name="exodus_progress">Проверка следилок…</string>
     <string name="exodus_powered">При поддержке Exodus Privacy</string>
@@ -130,10 +130,10 @@
     <string name="action_get_local_apk">Сохранить пакет приложения</string>
     <string name="toast_spoof_applied">Применена подмена устройства.</string>
     <string name="toast_permission_granted">Разрешение выдано</string>
-    <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включён в настройках устройства.</string>
+    <string name="toast_developer_setting_failed">Не удалось открыть настройки разработчика, убедитесь, что он включен в настройках устройства.</string>
     <string name="toast_clipboard_copied">Скопировано в буфер обмена</string>
     <string name="toast_apk_whitelisted">Добавлен в белый список</string>
-    <string name="toast_apk_blacklisted">Добавлен в чёрный список</string>
+    <string name="toast_apk_blacklisted">Добавлен в черный список</string>
     <string name="toast_anonymous_restriction">Недоступно когда анонимно</string>
     <string name="title_updates">Обновления</string>
     <string name="title_settings">Настройки</string>
@@ -147,7 +147,7 @@
     <string name="title_download_playstore">Play Маркет</string>
     <string name="title_download_manager">Скачивания</string>
     <string name="title_device">Устройство</string>
-    <string name="title_blacklist_manager">Управление чёрным списком</string>
+    <string name="title_blacklist_manager">Управление черным списком</string>
     <string name="title_apps_library">Приложения в библиотеке</string>
     <string name="title_apps_games">Мои приложения и игры</string>
     <string name="title_apps">Приложения</string>
@@ -161,7 +161,7 @@
     <string name="tab_top_grossing">Бестселлеры</string>
     <string name="tab_editor_choice">Выбор редакции</string>
     <string name="tab_categories">Категории</string>
-    <string name="purchase_session_expired">Срок действия сеанса истёк, повторно войдите в профиль для возобновления сеанса.</string>
+    <string name="purchase_session_expired">Срок действия сеанса истек, повторно войдите в профиль для возобновления сеанса.</string>
     <string name="purchase_no_file">Не удалось получить файлы</string>
     <string name="purchase_not_found">Приложение не найдено</string>
     <string name="purchase_unsupported">Приложение не поддерживается</string>
@@ -254,7 +254,7 @@
     <string name="search_hint">Поиск приложений и игр</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="requesting_new_session">Запрос новой сессии</string>
-    <string name="server_maintenance">Сервер отключён на техобслуживание</string>
+    <string name="server_maintenance">Сервер отключен на техобслуживание</string>
     <string name="action_import">Импортировать</string>
     <string name="toast_import_success">Профиль устройства импортирован</string>
     <string name="toast_import_failed">Не удалось импортировать профиль устройства</string>
@@ -274,7 +274,7 @@
     <string name="login_rate_limited">Сожалеем, слишком много попыток входа</string>
     <string name="server_unreachable">Сервер недоступен</string>
     <string name="failed_generating_session">Не удалось создать сессию, код ошибки: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="failed_to_fetch_report">Не удалось получить отчёт о конфиденциальности</string>
+    <string name="failed_to_fetch_report">Не удалось получить отчет о конфиденциальности</string>
     <string name="access_denied_using_vpn">Доступ запрещен! Вы используете VPN или Tor\?</string>
     <string name="check_connectivity">Проверьте соединение с интернетом</string>
     <string name="app_language">Язык приложения</string>
@@ -312,8 +312,8 @@
     <string name="faqs_subtitle">У вас есть вопросы? Узнайте ответы</string>
     <string name="source_code_title">Исходный код</string>
     <string name="privacy_policy_title">Политика конфиденциальности</string>
-    <string name="disclaimer_subtitle">Подотчётность и ответственность</string>
-    <string name="session_installer_subtitle">Сеансовый установщик для разделённых/пакетных файлов APK</string>
+    <string name="disclaimer_subtitle">Подотчетность и ответственность</string>
+    <string name="session_installer_subtitle">Сеансовый установщик для разделенных/пакетных файлов APK</string>
     <string name="session_installer_desc">Рекомендованный, встроенный и поддерживает все версии Android</string>
     <string name="root_installer_subtitle">Установщик основанный на Shell, использующий Root права суперпользователя</string>
     <string name="root_installer_desc">Требует права Root/суперпользователя, поддерживает все версии Android.</string>
@@ -348,7 +348,7 @@
     <string name="remove_dispenser_title">Удалить распределитель</string>
     <string name="remove_dispenser_summary">Вы хотите удалить распределитель \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="about_wiki_summary">Найдите ответы на часто задаваемые вопросы (ЧаВо), шаги по устранению неполадок и многое другое</string>
-    <string name="about_aurora_store_summary">Aurora Store позволяет искать и загружать приложения из официального магазина Google Play. Вы можете ознакомиться с описанием приложений, скриншотами, обновлениями, комментариями других пользователей и загрузить APK непосредственно из Google Play на своё устройство. Чтобы использовать Aurora Store, необходимо иметь профиль Google Play и войти в него при первом открытии и настройке Aurora Store. \n \nВ отличие от традиционного магазина приложений, Aurora Store не владеет, не лицензирует и не распространяет приложения. Все приложения, описания приложений, скриншоты и прочий контент в Aurora Store напрямую доступны, загружаются и/или отображаются из Google Play. Aurora Store работает точно так же, как дверь или браузер, позволяя вам войти в свой профиль Google Play и найти приложения из Google Play. \n \nОбратите внимание, что Aurora Store не имеет никакого соглашения, спонсорства или разрешения от Google, Google Play, любых приложений, загружаемых через Aurora Store, или разработчиков приложений; Aurora Store также не имеет с ними никакого родства, сотрудничества или связи.</string>
+    <string name="about_aurora_store_summary">Aurora Store позволяет искать и загружать приложения из официального магазина Google Play. Вы можете ознакомиться с описанием приложений, скриншотами, обновлениями, комментариями других пользователей и загрузить APK непосредственно из Google Play на свое устройство. Чтобы использовать Aurora Store, необходимо иметь профиль Google Play и войти в него при первом открытии и настройке Aurora Store. \n \nВ отличие от традиционного магазина приложений, Aurora Store не владеет, не лицензирует и не распространяет приложения. Все приложения, описания приложений, скриншоты и прочий контент в Aurora Store напрямую доступны, загружаются и/или отображаются из Google Play. Aurora Store работает точно так же, как дверь или браузер, позволяя вам войти в свой профиль Google Play и найти приложения из Google Play. \n \nОбратите внимание, что Aurora Store не имеет никакого соглашения, спонсорства или разрешения от Google, Google Play, любых приложений, загружаемых через Aurora Store, или разработчиков приложений; Aurora Store также не имеет с ними никакого родства, сотрудничества или связи.</string>
     <string name="add_dispenser_summary">Добавьте распределитель токенов в Aurora Store. Распределители токенов обеспечивают Aurora Store профилями для анонимной авторизации.</string>
     <string name="pref_network_proxy_url_message">Введите действительный URL прокси для передачи всех данных через него.</string>
     <string name="action_favourite">Избранное</string>
@@ -391,23 +391,23 @@
     <string name="notification_channel_export">Уведомление об экспортировании приложения</string>
     <string name="action_remove_all">Удалить все</string>
     <string name="filter_latest">Последнее</string>
-    <string name="toast_black_import_failed">Не удалось импортировать чёрный список!</string>
+    <string name="toast_black_import_failed">Не удалось импортировать черный список!</string>
     <string name="toast_black_import_success">Черный список импортирован!</string>
     <string name="toast_black_export_success">Черный список экспортирован!</string>
     <string name="default_spoof">По умолчанию</string>
     <string name="action_select_all">Выбрать все</string>
-    <string name="toast_black_export_failed">Не удалось экспортировать чёрный список!</string>
+    <string name="toast_black_export_failed">Не удалось экспортировать черный список!</string>
     <string name="available_spoof">Доступно</string>
     <string name="status_verifying">Проверка</string>
     <string name="action_unarchive">Разархивировать</string>
-    <string name="unable_to_open">Не удаётся открыть приложение</string>
+    <string name="unable_to_open">Не удается открыть приложение</string>
     <string name="plexus_powered">Работает на Plexus</string>
     <string name="plexus_progress">Проверка совместимости…</string>
     <string name="details_compatibility_title">Совместимость</string>
     <string name="details_compatibility_gms_required_title">Требует Сервисы Google Play</string>
     <string name="details_compatibility_gms_required_subtitle">Вам может потребоваться установить библиотеку от Google или свободную реализацию, такую как microG.</string>
     <string name="details_compatibility_gms_not_required_title">Работает без Сервисов Google Play</string>
-    <string name="details_compatibility_gms_not_required_subtitle">Данное приложение работает без библиотеки от Google. Тем не менее оно всё ещё может требовать другие сторонние библиотеки для правильной работы.</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Данное приложение работает без библиотеки от Google. Тем не менее оно все еще может требовать другие сторонние библиотеки для правильной работы.</string>
     <string name="details_compatibility_status_compatible">Совместимо: Работает без каких-либо проблем</string>
     <string name="details_compatibility_status_limited">Ограничено: Работает только с ограниченным функционалом</string>
     <string name="details_compatibility_status_unsupported">Не поддерживается: Неработоспособно</string>
@@ -420,7 +420,7 @@
     <string name="pref_network_microg_login_desc">Аутентифицировать через microG при входе в профиль Google для упрощенного процесса входа</string>
     <string name="set">Настроить</string>
     <string name="disable">Отключить</string>
-    <string name="toast_proxy_disabled">Прокси отключён успешно</string>
+    <string name="toast_proxy_disabled">Прокси отключен успешно</string>
     <string name="pref_network_proxy_desc">Просмотр и управление конфигурацией прокси</string>
     <string name="pref_updates_restrictions_title">Ограничения автоматического обновления</string>
     <string name="pref_updates_restrictions_metered">Только в сетях без ограничения трафика</string>
