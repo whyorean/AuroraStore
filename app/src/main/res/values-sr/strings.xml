@@ -441,7 +441,7 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> апликација инсталирано</string>
     <string name="no_apps_available">Нема доступних апликација</string>
     <string name="pref_network_microg_login_title">Користи microG за пријављивање на налоге</string>
-    <string name="pref_network_microg_login_desc">Аутентификација коришћењем microG при пријављивању на Google налоге за једноставнији ток пријављивања.</string>
+    <string name="pref_network_microg_login_desc">Аутентификација коришћењем microG при пријављивању на Google налоге за једноставнији ток пријављивања</string>
     <string name="set">Постави</string>
     <string name="disable">Онемогући</string>
     <string name="toast_proxy_disabled">Прокси је успешно онемогућен</string>
@@ -458,4 +458,5 @@
     <string name="app_info_updated_on">Последње ажурирање</string>
     <string name="app_info_target_android">Циљни ниво API-ја</string>
     <string name="app_info_min_android">Минимална верзија Android-а</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозвола</string>
 </resources>

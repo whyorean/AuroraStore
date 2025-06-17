@@ -434,4 +434,5 @@
     <string name="app_info_target_android">Beoogd API-niveau</string>
     <string name="app_info_updated_on">Laatst bijgewerkt</string>
     <string name="app_info_min_android">Minimale Androidversie</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> rechten</string>
 </resources>

@@ -434,4 +434,5 @@
     <string name="app_info_updated_on">آخر تحديث</string>
     <string name="app_info_min_android">الحد الأدنى لإصدار أندرويد</string>
     <string name="app_info_target_android">مستوى API المستهدف</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> الأذونات</string>
 </resources>

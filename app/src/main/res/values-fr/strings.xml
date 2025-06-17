@@ -23,7 +23,7 @@
     <string name="onboarding_welcome_select">Comment allez-vous ?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Programme d’installation</string>
-    <string name="pref_filter_fdroid_title">Filtrer les applis de F-droid</string>
+    <string name="pref_filter_fdroid_title">Filtrer les applis de F-Droid</string>
     <string name="pref_install_mode_title">Mode d’installation</string>
     <string name="title_about">À propos</string>
     <string name="tab_trending">Tendances</string>
@@ -167,7 +167,7 @@
     <string name="tab_top_paid">Les meilleures payantes</string>
     <string name="tab_top_grossing">Les plus rentables</string>
     <string name="tab_top_free">Les meilleures gratuites</string>
-    <string name="tab_top_charts">Palmarès</string>
+    <string name="tab_top_charts">Meilleurs classements</string>
     <string name="spoof_apply">Reconnectez-vous pour appliquer l’usurpation d’appareil</string>
     <string name="device_miui_extra">Facultativement, vous pouvez choisir le programme d’installation Natif, cependant vous ne pourrez pas installer les paquets APK (fractionnés). À vous de décider.</string>
     <string name="device_miui_description">Afin de permettre les installations, désactivez les optimisations MIUI. Sinon, vous pouvez choisir le programme d’installation Racine ou Services.</string>
@@ -175,8 +175,8 @@
     <string name="pref_install_mode_summary">Choisir le mode d’installation des APK</string>
     <string name="pref_install_mode_session">Programme d’installation de session</string>
     <string name="pref_install_mode_services">Aurora Services (déconseillés)</string>
-    <string name="pref_install_mode_root">Programme d’installation Racine</string>
-    <string name="pref_install_mode_native">Programme d’installation Natif (déconseillé)</string>
+    <string name="pref_install_mode_root">Programme d’installation superutilisateur (racine)</string>
+    <string name="pref_install_mode_native">Programme d’installation natif (déconseillé)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les APK téléchargés seront supprimés immédiatement après installation</string>
     <string name="pref_filter_fdroid_summary">Ignorer les mises à jour d’applis installées avec F-Droid</string>
@@ -216,10 +216,10 @@
     <string name="pref_ui_layout">Disposition</string>
     <string name="pref_common_extra">Autres options</string>
     <string name="details_no_app_match">Aucune appli ne correspond</string>
-    <string name="toast_manual_available">Félicitations, le code de version demandé est proposé ; le téléchargement est lancé.</string>
+    <string name="toast_manual_available">Félicitations, le code de version demandé est proposé ; le téléchargement est en cours.</string>
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas proposé.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
-    <string name="dialog_desc_native_split">Le programme d’installation Natif ne permet pas d’installer des paquets d’appli (fractionnés). Choisissez une autre méthode d’installation, Session, Services ou Racine.</string>
+    <string name="dialog_desc_native_split">Le programme d’installation natif ne permet pas d’installer des paquets d’applis (fractionnés). Choisissez une autre méthode d’installation, Session, Services ou Racine.</string>
     <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
     <string name="toast_rated_failed">Impossible de transmettre l’évaluation</string>
     <string name="toast_rated_success">L’évaluation a été enregistrée. Son affichage peut prendre un certain temps</string>
@@ -239,7 +239,7 @@
     <string name="download_eta_min">Il reste %1$d min %2$d s</string>
     <string name="download_progress">Téléchargement • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Envoyer des notifications sur l’état des installations</string>
-    <string name="session_good">Super ! Tout va bien.</string>
+    <string name="session_good">Tout est bien.</string>
     <string name="expand">Développer</string>
     <string name="server_maintenance">Le serveur est hors service pour maintenance</string>
     <string name="title_advanced">Avancé</string>
@@ -252,7 +252,7 @@
     <string name="session_scrapped">Dernière session supprimée</string>
     <string name="update_available">mise à jour proposée</string>
     <string name="updates_available">mises à jour proposées</string>
-    <string name="error">Une erreur s’est produite !</string>
+    <string name="error">Une erreur est survenue !</string>
     <string name="permissions_denied">Les autorisations requises ont été refusées. Accordez-les afin de poursuivre l’action</string>
     <string name="search_hint">Chercher des applis et des jeux</string>
     <string name="toast_import_success">La configuration de l’appareil a été importée</string>
@@ -273,7 +273,7 @@
     <string name="failed_generating_session">Échec de génération de la session. Code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Échec de récupération du rapport sur la protection des renseignements personnels</string>
     <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor ?</string>
-    <string name="bad_request">Erreur interne. Réessayez plus tard</string>
+    <string name="bad_request">Erreur interne ! Réessayez plus tard</string>
     <string name="login_rate_limited">Oups, votre débit est limité</string>
     <string name="server_unreachable">Impossible d’accéder au serveur</string>
     <string name="app_links_desc">Autoriser Aurora Store à ouvrir les liens pris en charge</string>
@@ -327,7 +327,7 @@
     <string name="services_installer_desc">Les services Aurora doivent être installés en tant qu’appli avec les privilèges système</string>
     <string name="services_installer_subtitle">Programme d’installation pour les installations en arrière-plan</string>
     <string name="am_installer_subtitle">Gestionnaire de paquet complet à code ouvert</string>
-    <string name="am_installer_desc">Le gestionnaire d’applis « App Manager » et le mode adb/racine sont nécessaires pour installer si l’optimisation MIUI est activée</string>
+    <string name="am_installer_desc">Le gestionnaire d’applis « App Manager » et le mode ADB/root sont nécessaires pour installer si l’optimisation MIUI est activée</string>
     <string name="title_more">Plus</string>
     <string name="manage_account">Gérer mon compte</string>
     <string name="about_wiki_title">Wiki</string>
@@ -384,7 +384,7 @@
     <string name="status_cancelled">Annulé</string>
     <string name="status_failed">Échec</string>
     <string name="status_unavailable">Inaccessible</string>
-    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver cette appli</string>
+    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver l’appli</string>
     <string name="notification_channel_account">Notification liée au compte</string>
     <string name="authentication_required_title">L’authentification est requise</string>
     <string name="checking_updates">Recherche de mises à jour</string>
@@ -405,15 +405,15 @@
     <string name="details_compatibility_gms_not_required_title">Fonctionne sans les services Google Play</string>
     <string name="details_compatibility_microg">Avec le projet microG</string>
     <string name="details_compatibility_no_gms">Sans les services Google Play</string>
-    <string name="details_compatibility_status_compatible">Compatible : Fonctionne parfaitement</string>
-    <string name="details_compatibility_status_limited">Partielle : Les fonctions sont limitées</string>
-    <string name="details_compatibility_status_unknown">Indéterminée : La fonctionnalité n’a pas encoré été vérifiée</string>
+    <string name="details_compatibility_status_compatible">Compatible : fonctionne sans problèmes</string>
+    <string name="details_compatibility_status_limited">Partielle : les fonctions sont limitées</string>
+    <string name="details_compatibility_status_unknown">Indéterminée : n’a pas encore été vérifiée</string>
     <string name="plexus_progress">Vérification de la compatibilité…</string>
     <string name="details_compatibility_gms_not_required_subtitle">Cette appli fonctionne sans la bibliothèque propriétaire de Google. Cependant, elle peut nécessiter d’autres bibliothèques tierces pour bien fonctionner.</string>
     <string name="plexus_powered">Propulsé par Plexus</string>
     <string name="details_compatibility_title">Compatibilité</string>
     <string name="details_compatibility_gms_required_subtitle">Vous devrez peut-être installer la bibliothèque propriétaire de Google ou un équivalent libre tel que microG.</string>
-    <string name="details_compatibility_status_unsupported">Incompatible : L’appli n’est pas fonctionnelle</string>
+    <string name="details_compatibility_status_unsupported">Incompatible : l’appli n’est pas fonctionnelle</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> applis installées</string>
     <string name="no_apps_available">Aucune appli n’est proposée</string>
     <string name="pref_network_microg_login_title">Utiliser microG pour se connecter aux comptes</string>

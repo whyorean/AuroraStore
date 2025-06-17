@@ -72,7 +72,7 @@
     <string name="details_no_dependencies">ללא תלויות</string>
     <string name="details_paid">בתשלום</string>
     <string name="tab_top_free">המובילים בחינם</string>
-    <string name="action_copy_link">העתקת הקישור</string>
+    <string name="action_copy_link">העתק קישור</string>
     <string name="action_ignore">התעלמות</string>
     <string name="action_grant">הענקה</string>
     <string name="menu_terms">תנאי השימוש</string>
@@ -165,7 +165,7 @@
     <string name="title_installed">מותקן</string>
     <string name="pref_install_mode_root">התקנה באמצעות Root</string>
     <string name="purchase_no_file">לא היה ניתן להוריד את הקבצים</string>
-    <string name="action_info">מידע על היישום</string>
+    <string name="action_info">מידע יישום</string>
     <string name="details_beta">תוכנית גרסת הביתא</string>
     <string name="details_dev_profile">פרופיל המפתח</string>
     <string name="details_gsf_dependent">נדרש GSF</string>
@@ -263,7 +263,7 @@
     <string name="google_play_store_desc">גוגל פליי, ידוע גם כ-Play Store של גוגל ובתור החנות האידיאלית של אנדרואיד.</string>
     <string name="session_good">וואה! הכל טוב.</string>
     <string name="failed_to_fetch_report">לא הצליח להשיג דיווח פרטיות</string>
-    <string name="action_get_local_apk">שמור באנדל של אפליקציה</string>
+    <string name="action_get_local_apk">שמור חבילת אפליקציה</string>
     <string name="verifying_new_session">מאמת כניסה חדשה</string>
     <string name="toast_import_success">ייבוא תצורת מכשיר בוצעה בהצלחה</string>
     <string name="download_eta_hrs">%1$dש %2$dדק %3$dשנ left</string>
@@ -387,4 +387,11 @@
     <string name="notification_channel_export">התראת ייצוא אפליקציה</string>
     <string name="notification_channel_install">התראת התקנה</string>
     <string name="notification_channel_downloads">התראת הורדה</string>
+    <string name="app_info_downloads">הורדות</string>
+    <string name="app_info_updated_on">עודכן לאחרונה</string>
+    <string name="app_info_min_android">גרסת אנדרואיד מינימלית</string>
+    <string name="action_select_all">בחר הכל</string>
+    <string name="filter_latest">אחרון</string>
+    <string name="no_apps_available">אין אפליקציות זמינות</string>
+    <string name="action_remove_all">הסר הכל</string>
 </resources>
