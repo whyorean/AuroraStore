@@ -5,18 +5,19 @@
 
 package com.aurora.extensions
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.window.core.layout.WindowWidthSizeClass
+import com.aurora.store.R
 
 /**
  * Returns navigation icon for adaptive screens such as extra pane
  */
-val WindowAdaptiveInfo.adaptiveNavigationIcon: ImageVector
+val WindowAdaptiveInfo.adaptiveNavigationIcon: Painter
+    @Composable
     get() = when (windowSizeClass.windowWidthSizeClass) {
-        WindowWidthSizeClass.COMPACT -> Icons.AutoMirrored.Filled.ArrowBack
-        else -> Icons.Default.Close
+        WindowWidthSizeClass.COMPACT -> painterResource(R.drawable.ic_arrow_back)
+        else -> painterResource(R.drawable.ic_cancel)
     }
