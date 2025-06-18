@@ -428,7 +428,7 @@ private fun ScreenContentAppMainPane(
             HeaderComposable(
                 title = stringResource(R.string.details_permission),
                 subtitle = if (app.permissions.isNotEmpty()) {
-                    stringResource(R.string.permissions, app.permissions.size)
+                    stringResource(R.string.permissions_requested, app.permissions.size)
                 } else {
                     stringResource(R.string.details_no_permission)
                 },

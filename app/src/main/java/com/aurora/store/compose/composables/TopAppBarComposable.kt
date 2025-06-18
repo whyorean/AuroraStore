@@ -6,8 +6,6 @@
 package com.aurora.store.compose.composables
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -15,7 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
@@ -33,7 +32,7 @@ import com.aurora.store.R
 fun TopAppBarComposable(
     modifier: Modifier = Modifier,
     title: String? = null,
-    navigationIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack,
+    navigationIcon: Painter = painterResource(R.drawable.ic_arrow_back),
     onNavigateUp: (() -> Unit)? = null,
     actions: @Composable (RowScope.() -> Unit) = {}
 ) {
@@ -43,7 +42,7 @@ fun TopAppBarComposable(
         navigationIcon = {
             if (onNavigateUp != null) {
                 IconButton(onClick = onNavigateUp) {
-                    Icon(imageVector = navigationIcon, contentDescription = null)
+                    Icon(painter = navigationIcon, contentDescription = null)
                 }
             }
         },
