@@ -9,4 +9,5 @@ Tökéletesen működik Google Play Szolgáltatások, illetve MicroG nélkül is
 • Fiók bejelentkezés: Használható saját, illetve anonim fiók is
 • Eszköz és nyelv álcázása: A készülék típusa, illetve régiója is álcázható, így a földrajzilag korlátozott alkalmazások is elérhetők
 • Exodus Privacy integráció: Alkalmazások nyomkövetőinek azonnali kimutatása
+• Plexus integráció: Azonnal láthatja az alkalmazások kompatibilitását Google Play Services nélkül vagy microG-vel
 • Frissítési tiltólista: Egyes alkalmazások frissítései tiltólistára tehetők
