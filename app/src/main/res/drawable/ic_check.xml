@@ -1,28 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Aurora Store
-  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
-  ~
-  ~  Aurora Store is free software: you can redistribute it and/or modify
-  ~  it under the terms of the GNU General Public License as published by
-  ~  the Free Software Foundation, either version 2 of the License, or
-  ~  (at your option) any later version.
-  ~
-  ~  Aurora Store is distributed in the hope that it will be useful,
-  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~  GNU General Public License for more details.
-  ~
-  ~  You should have received a copy of the GNU General Public License
-  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
-  ~
+  ~ SPDX-FileCopyrightText: Material Design Authors / Google LLC
+  ~ SPDX-License-Identifier: Apache-2.0
   -->
-
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M10,15.172l9.192,-9.193 1.415,1.414L10,18l-6.364,-6.364 1.414,-1.414z" />
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M382,720L154,492L211,435L382,606L749,239L806,296L382,720Z"/>
 </vector>
