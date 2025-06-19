@@ -264,6 +264,8 @@ dependencies {
 
     implementation(libs.process.phoenix)
 
+    "huaweiImplementation"(libs.ag.coreservice)
+
     // LeakCanary
     debugImplementation(libs.squareup.leakcanary.android)
 }

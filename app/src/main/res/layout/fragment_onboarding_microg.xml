@@ -23,10 +23,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@drawable/divider"
-    android:orientation="vertical"
-    android:showDividers="middle">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/top_layout"
@@ -46,7 +43,7 @@
             android:text="@string/onboarding_title_gsf"
             android:textAlignment="textStart"
             android:textColor="?colorAccent"
-            android:textSize="42sp" />
+            android:textSize="32sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/AuroraTextStyle.Subtitle.Alt"
@@ -75,7 +72,7 @@
     <LinearLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_microg_action"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?attr/colorSurface"
         android:divider="@drawable/divider"

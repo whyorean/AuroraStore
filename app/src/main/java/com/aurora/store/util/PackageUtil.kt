@@ -52,6 +52,7 @@ object PackageUtil {
 
     const val PACKAGE_NAME_GMS = "com.google.android.gms"
     const val PACKAGE_NAME_VENDING = "com.android.vending"
+    const val PACKAGE_NAME_APP_GALLERY = "com.huawei.appmarket"
 
     private const val VERSION_CODE_MICRO_G: Long = 240913402
     private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
@@ -63,6 +64,26 @@ object PackageUtil {
                 it.applicationInfo!!.loadLabel(context.packageManager).toString()
                     .lowercase(Locale.getDefault())
             }
+    }
+
+    fun hasSupportedAppGallery(context: Context): Boolean {
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(
+                PACKAGE_NAME_APP_GALLERY,
+                PackageManager.GET_META_DATA
+            )
+
+            val versionCode = if (Build.VERSION.SDK_INT >= 28)
+                packageInfo.longVersionCode
+            else
+                packageInfo.versionCode.toLong()
+
+            Log.i(TAG, "${packageInfo.packageName} - ${packageInfo.versionName} ($versionCode)")
+
+            versionCode >= 15010000L
+        } catch (_: Exception) {
+            false
+        }
     }
 
     fun hasSupportedMicroG(context: Context): Boolean {

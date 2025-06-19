@@ -45,8 +45,6 @@ class MicroGFragment : BaseFragment<FragmentOnboardingMicrogBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setNavigationOnClickListener { findNavController().navigateUp() }
-
         with(binding) {
             // RecyclerView
             epoxyRecycler.withModels {
@@ -56,7 +54,7 @@ class MicroGFragment : BaseFragment<FragmentOnboardingMicrogBinding>() {
                     EpoxyTextViewModel_()
                         .id("microg_desc")
                         .title(getString(R.string.onboarding_gms_missing))
-                        .size(16)
+                        .size(14)
                         .style(R.style.AuroraTextStyle)
                 )
 
@@ -64,7 +62,7 @@ class MicroGFragment : BaseFragment<FragmentOnboardingMicrogBinding>() {
                     EpoxyTextViewModel_()
                         .id("microg_gms")
                         .title(getString(R.string.onboarding_gms_microg))
-                        .size(16)
+                        .size(14)
                         .style(R.style.AuroraTextStyle)
                 )
 

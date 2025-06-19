@@ -124,3 +124,9 @@
 -keep class * extends androidx.viewbinding.ViewBinding {
     *;
 }
+
+# Keep Huawei specific classes and methods
+-keep class com.huawei.** { *; }
+-dontwarn com.huawei.**
+-keep class com.hihonor.** { *; }
+-dontwarn com.hihonor.**
