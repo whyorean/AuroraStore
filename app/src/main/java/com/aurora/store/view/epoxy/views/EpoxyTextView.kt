@@ -24,6 +24,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
+import com.aurora.store.R
 import com.aurora.store.databinding.ViewTextBinding
 
 @ModelView(
@@ -42,12 +43,14 @@ class EpoxyTextView @JvmOverloads constructor(
     }
 
     @ModelProp
-    fun size(int: Int) {
+    @JvmOverloads
+    fun size(int: Int = 16) {
         binding.txtView.setTextSize(TypedValue.COMPLEX_UNIT_SP, int.toFloat())
     }
 
     @ModelProp
-    fun style(resId: Int) {
+    @JvmOverloads
+    fun style(resId: Int = R.style.AuroraTextStyle) {
         binding.txtView.setTextAppearance(context, resId)
     }
 }

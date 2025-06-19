@@ -48,14 +48,21 @@ class InstallerStatusReceiver : BroadcastReceiver() {
 
     private val TAG = InstallerStatusReceiver::class.java.simpleName
 
+    val INSTALL_SESSION_ID: String = "android.content.pm.extra.SESSION_ID"
+
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null && intent?.action == ACTION_INSTALL_STATUS) {
-            val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)!!
-            val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME)!!
+            val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: return
+            val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME) ?: packageName
             val versionCode = intent.getLongExtra(EXTRA_VERSION_CODE, -1)
-
+            val sessionId = intent.getIntExtra(INSTALL_SESSION_ID, -1)
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
+
+            Log.i(
+                TAG,
+                "$packageName ($versionCode) sessionId=$sessionId, status=$status, extra=$extra"
+            )
 
             // If package was successfully installed, exit after notifying user and doing cleanup
             if (status == PackageInstaller.STATUS_SUCCESS) {

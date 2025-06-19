@@ -36,6 +36,7 @@ dependencyResolutionManagement {
                 includeModule("com.github.topjohnwu.libsu", "core")
             }
         }
+        maven { url = uri("https://developer.huawei.com/repo/") }
     }
 }
 include(":app")

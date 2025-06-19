@@ -36,7 +36,7 @@
         android:text="@string/onboarding_title_welcome"
         android:textAlignment="textStart"
         android:textColor="?colorAccent"
-        android:textSize="42sp" />
+        android:textSize="32sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/AuroraTextStyle.Subtitle.Alt"

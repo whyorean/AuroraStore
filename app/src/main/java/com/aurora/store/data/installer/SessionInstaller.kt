@@ -23,6 +23,7 @@ package com.aurora.store.data.installer
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
@@ -51,7 +52,16 @@ import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.model.SessionInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
+import com.huawei.appgallery.coreservice.api.ApiClient
+import com.huawei.appgallery.coreservice.api.ApiCode
+import com.huawei.appgallery.coreservice.api.IConnectionResult
+import com.huawei.appgallery.coreservice.api.PendingCall
+import com.huawei.appgallery.coreservice.internal.framework.ipc.transport.data.BaseIPCRequest
+import com.huawei.appgallery.coreservice.internal.framework.ipc.transport.data.BaseIPCResponse
+import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinstall.SilentInstallRequest
+import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinstall.SilentInstallResponse
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
 import javax.inject.Inject
@@ -69,6 +79,8 @@ class SessionInstaller @Inject constructor(
 
     private val packageInstaller = context.packageManager.packageInstaller
     private val enqueuedSessions = mutableListOf<MutableSet<SessionInfo>>()
+
+    private lateinit var apiClient: ApiClient
 
     val callback = object : PackageInstaller.SessionCallback() {
         override fun onCreated(sessionId: Int) {}
@@ -240,25 +252,81 @@ class SessionInstaller @Inject constructor(
     }
 
     private fun commitInstall(sessionInfo: SessionInfo) {
-        Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
-
-        val sessionId = sessionInfo.sessionId
-        packageInstaller.getSessionInfo(sessionId) ?: run {
-            Log.e(TAG, "Session $sessionId is no longer valid, skipping commit.")
-            removeFromInstallQueue(sessionInfo.packageName)
-            return
-        }
-
         try {
-            val session = packageInstaller.openSession(sessionId)
+            Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
+
+            val existingSessionInfo = packageInstaller.getSessionInfo(sessionInfo.sessionId)
+            if (existingSessionInfo == null) {
+                Log.e(TAG, "Session ${sessionInfo.sessionId} is no longer valid.")
+                return removeFromInstallQueue(sessionInfo.packageName)
+            }
+
+            if (PackageUtil.hasSupportedAppGallery(context) && isHuaweiSilentInstallSupported()) {
+                apiClient = ApiClient.Builder(context)
+                    .setHomeCountry("CN")
+                    .addConnectionCallbacks(object : ApiClient.ConnectionCallback {
+                        override fun onConnected() {
+                            Log.i(TAG, "Huawei API Client connected")
+                            tryElevatedInstall(sessionInfo)
+                        }
+
+                        override fun onConnectionSuspended(cause: Int) {
+                            Log.e(TAG, "ApiClient connection suspended: $cause")
+                        }
+
+                        override fun onConnectionFailed(result: IConnectionResult?) {
+                            Log.e(
+                                TAG,
+                                "ApiClient Connection failed: ${result?.statusCode} - ${result?.errorMessage}"
+                            )
+                        }
+                    })
+                    .build()
+
+                apiClient.connect()
+            } else {
+                Log.i(
+                    TAG,
+                    "AppGallery elevated installs not possible, committing session directly."
+                )
+                return commitSession(sessionInfo)
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error committing session: ${e.message}")
+            removeFromInstallQueue(sessionInfo.packageName)
+            postError(sessionInfo.packageName, e.localizedMessage, e.stackTraceToString())
+        }
+    }
+
+    private fun tryElevatedInstall(sessionInfo: SessionInfo) {
+        if (::apiClient.isInitialized && apiClient.isConnected) {
+            val request = SilentInstallRequest()
+            request.sessionId = sessionInfo.sessionId
+
+            val pendingCall = PendingCall<BaseIPCRequest, BaseIPCResponse>(apiClient, request)
+
+            pendingCall.setCallback {
+                if (it.response is SilentInstallResponse && it.statusCode == ApiCode.SUCCESS) {
+                    Log.i(TAG, "Silent install granted")
+                } else {
+                    Log.e(TAG, "Silent install failed with code: ${it.statusCode}")
+                }
+
+                commitSession(sessionInfo)
+            }
+        }
+    }
+
+    private fun commitSession(sessionInfo: SessionInfo) {
+        try {
+            val session = packageInstaller.openSession(sessionInfo.sessionId)
             session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
             session.close()
-        } catch (e: SecurityException) {
-            Log.e(TAG, "Failed to commit session $sessionId: ${e.message}")
-            removeFromInstallQueue(sessionInfo.packageName)
         } catch (e: Exception) {
-            Log.e(TAG, "Unexpected error in commitInstall for session $sessionId", e)
+            Log.e(TAG, "Error committing session: ${e.message}")
+        } finally {
             removeFromInstallQueue(sessionInfo.packageName)
+            releaseApiClient()
         }
     }
 
@@ -279,5 +347,52 @@ class SessionInstaller @Inject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT,
             true
         )
+    }
+
+    enum class ServiceResultCode(val code: Int, val reason: String) {
+        SUCCESS(0, "Request successful"),
+        SERVICE_VERSION_UPDATE_REQUIRED(2, "Interface depends on a higher version"),
+        SERVICE_INVALID(4, "Service is invalid"),
+        METHOD_UNSUPPORTED(5, "Interface is not supported"),
+        RESOLUTION_REQUIRED(6, "Needs to be resolved by opening PendingIntent"),
+        NETWORK_ERROR(7, "Network exception, unable to complete interface request"),
+        INTERNAL_ERROR(8, "Internal code error, incorrect parameter transmission in scenario"),
+        TIMEOUT(10, "Interface access timeout return"),
+        DEAD_CLIENT(12, "Current client is unavailable"),
+        RESPONSE_ERROR(13, "Server returns abnormal response"),
+        PROTOCOL_ERROR(15, "Not signed Huawei App Market agreement");
+
+        companion object {
+            fun fromCode(code: Int): ServiceResultCode? = entries.find { it.code == code }
+        }
+    }
+
+    private fun isHuaweiSilentInstallSupported(): Boolean {
+        return try {
+            val applicationInfo: ApplicationInfo = context.packageManager.getApplicationInfo(
+                PackageUtil.PACKAGE_NAME_APP_GALLERY,
+                PackageManager.GET_META_DATA
+            )
+
+            val supportFunction = applicationInfo.metaData.getInt("appgallery_support_function")
+            Log.i(TAG, "Huawei silent install support function: $supportFunction")
+
+            (supportFunction and (1 shl 5)) != 0
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    private fun releaseApiClient() {
+        if (!::apiClient.isInitialized) return
+
+        apiClient.let {
+            if (it.isConnected) {
+                it.disconnect()
+                Log.i(TAG, "Huawei API Client disconnected")
+            } else {
+                Log.w(TAG, "Huawei API Client already disconnected")
+            }
+        }
     }
 }
