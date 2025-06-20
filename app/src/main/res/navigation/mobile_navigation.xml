@@ -184,8 +184,8 @@
             android:id="@+id/action_appDetailsFragment_to_installErrorDialogSheet"
             app:destination="@id/installErrorDialogSheet" />
         <action
-            android:id="@+id/action_appDetailsFragment_to_microGFragment"
-            app:destination="@id/microGFragment" />
+            android:id="@+id/action_appDetailsFragment_to_gmsWarnFragment"
+            app:destination="@id/detailsMicroGFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
@@ -379,15 +379,10 @@
             app:argType="boolean" />
     </fragment>
     <fragment
-        android:id="@+id/microGFragment"
-        android:name="com.aurora.store.view.ui.onboarding.MicroGFragment"
+        android:id="@+id/detailsMicroGFragment"
+        android:name="com.aurora.store.view.ui.details.DetailsMicroGFragment"
         android:label="MicroGFragment"
-        tools:layout="@layout/fragment_onboarding_microg">
-        <argument
-            android:name="isOnboarding"
-            android:defaultValue="true"
-            app:argType="boolean" />
-    </fragment>
+        tools:layout="@layout/fragment_details_microg" />
     <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"

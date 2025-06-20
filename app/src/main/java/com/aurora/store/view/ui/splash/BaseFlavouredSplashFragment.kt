@@ -16,6 +16,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.getPackageName
 import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.navigate
@@ -27,7 +28,6 @@ import com.aurora.store.databinding.FragmentSplashBinding
 import com.aurora.store.util.CertUtil.GOOGLE_ACCOUNT_TYPE
 import com.aurora.store.util.CertUtil.GOOGLE_PLAY_AUTH_TOKEN_TYPE
 import com.aurora.store.util.CertUtil.GOOGLE_PLAY_CERT
-import com.aurora.store.util.CertUtil.GOOGLE_PLAY_PACKAGE_NAME
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
@@ -45,7 +45,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
     val viewModel: AuthViewModel by activityViewModels()
 
     val canLoginWithMicroG: Boolean
-        get() = isMAndAbove && PackageUtil.hasSupportedMicroG(requireContext()) &&
+        get() = isMAndAbove && PackageUtil.hasSupportedMicroGVariant(requireContext()) &&
                 Preferences.getBoolean(requireContext(), PREFERENCE_MICROG_AUTH, true)
 
     val startForAccount =
@@ -215,7 +215,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                     Account(accountName, GOOGLE_ACCOUNT_TYPE),
                     GOOGLE_PLAY_AUTH_TOKEN_TYPE,
                     bundleOf(
-                        "overridePackage" to GOOGLE_PLAY_PACKAGE_NAME,
+                        "overridePackage" to PACKAGE_NAME_PLAY_STORE,
                         "overrideCertificate" to Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
                     ),
                     requireActivity(),

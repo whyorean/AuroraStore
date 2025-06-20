@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
@@ -114,7 +115,7 @@ private fun buildExtras(app: App): List<String> {
             add(stringResource(R.string.details_no_ads))
         }
 
-        if (app.dependencies.dependentPackages.contains(PackageUtil.PACKAGE_NAME_GMS)) {
+        if (app.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS)) {
             add(stringResource(R.string.details_gsf_dependent))
         }
     }

@@ -62,4 +62,9 @@ object Constants {
     const val TOP_CHART_CATEGORY = "TOP_CHART_CATEGORY"
 
     const val JSON_MIME_TYPE = "application/json"
+
+    // PACKAGE NAMES
+    const val PACKAGE_NAME_GMS = "com.google.android.gms"
+    const val PACKAGE_NAME_PLAY_STORE = "com.android.vending"
+    const val PACKAGE_NAME_APP_GALLERY = "com.huawei.appmarket"
 }

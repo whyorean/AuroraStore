@@ -20,6 +20,7 @@
 package com.aurora.store.view.ui.onboarding
 
 import androidx.fragment.app.Fragment
+import com.aurora.extensions.isHuawei
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
@@ -73,8 +74,18 @@ class OnboardingFragment : BaseFlavouredOnboardingFragment() {
             PermissionsFragment.newInstance()
         )
 
-        if (!PackageUtil.isMicroGBundleInstalled(requireContext())) {
-            pages.add(MicroGFragment.newInstance())
+        /**
+         * MicroG Fragment Preconditions:
+         * 1. It should be a Huawei device
+         * 2. Supported App Gallery should be available, i.e. v15.1.x or above
+         * 3. MicroG bundle should not be already installed
+         */
+        if (
+            isHuawei &&
+            PackageUtil.hasSupportedAppGallery(requireContext()) &&
+            !PackageUtil.isMicroGBundleInstalled(requireContext())
+        ) {
+            pages.add(MicroGFragment())
         }
 
         return pages

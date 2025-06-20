@@ -34,6 +34,7 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.providers.PermissionProvider
+import com.aurora.store.view.ui.details.AppDetailsFragmentDirections
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
@@ -129,6 +130,12 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     fun openAppMenuSheet(app: MinimalApp) {
         findNavController().navigate(MobileNavigationDirections.actionGlobalAppMenuSheet(app))
+    }
+
+    fun openGMSWarningFragment() {
+        findNavController().navigate(
+            AppDetailsFragmentDirections.actionAppDetailsFragmentToGmsWarnFragment()
+        )
     }
 
     private fun cleanupRecyclerViews(recyclerViews: List<EpoxyRecyclerView>) {

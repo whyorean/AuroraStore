@@ -66,7 +66,7 @@ class NetworkPreference : BasePreferenceFragment() {
         }
 
         findPreference<SwitchPreferenceCompat>(PREFERENCE_MICROG_AUTH)?.isEnabled =
-            PackageUtil.hasSupportedMicroG(requireContext())
+            PackageUtil.hasSupportedMicroGVariant(requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

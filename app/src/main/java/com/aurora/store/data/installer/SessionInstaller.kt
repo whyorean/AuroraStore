@@ -32,6 +32,7 @@ import android.content.pm.PackageManager
 import android.os.Process
 import android.util.Log
 import androidx.core.app.PendingIntentCompat
+import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -266,7 +267,7 @@ class SessionInstaller @Inject constructor(
                     .setHomeCountry("CN")
                     .addConnectionCallbacks(object : ApiClient.ConnectionCallback {
                         override fun onConnected() {
-                            Log.i(TAG, "Huawei API Client connected")
+                            Log.i(TAG, "API Client connected")
                             tryElevatedInstall(sessionInfo)
                         }
 
@@ -370,7 +371,7 @@ class SessionInstaller @Inject constructor(
     private fun isHuaweiSilentInstallSupported(): Boolean {
         return try {
             val applicationInfo: ApplicationInfo = context.packageManager.getApplicationInfo(
-                PackageUtil.PACKAGE_NAME_APP_GALLERY,
+                PACKAGE_NAME_APP_GALLERY,
                 PackageManager.GET_META_DATA
             )
 
@@ -386,13 +387,11 @@ class SessionInstaller @Inject constructor(
     private fun releaseApiClient() {
         if (!::apiClient.isInitialized) return
 
-        apiClient.let {
-            if (it.isConnected) {
-                it.disconnect()
-                Log.i(TAG, "Huawei API Client disconnected")
-            } else {
-                Log.w(TAG, "Huawei API Client already disconnected")
-            }
+        if (apiClient.isConnected) {
+            apiClient.disconnect()
+            Log.i(TAG, "API Client disconnected")
+        } else {
+            Log.w(TAG, "API Client already disconnected")
         }
     }
 }

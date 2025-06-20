@@ -8,10 +8,11 @@ package com.aurora.store.viewmodel.onboarding
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.Constants.PACKAGE_NAME_GMS
+import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.room.suite.ExternalApk
-import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -86,8 +87,8 @@ class MicroGViewModel @Inject constructor(
             try {
                 _packageNames.emit(
                     listOf(
-                        PackageUtil.PACKAGE_NAME_GMS,
-                        PackageUtil.PACKAGE_NAME_VENDING
+                        PACKAGE_NAME_GMS,
+                        PACKAGE_NAME_PLAY_STORE
                     )
                 )
 
