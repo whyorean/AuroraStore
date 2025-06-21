@@ -5,7 +5,7 @@ androidx-hilt = "1.2.0"
 androidx-junit = "1.2.1"
 browser = "1.8.0"
 coil = "3.2.0"
-composeBom = "2025.06.00"
+composeBom = "2025.06.01"
 core = "1.16.0"
 epoxy = "5.1.4"
 espresso = "3.6.1"
@@ -35,7 +35,7 @@ shizuku = "13.1.5"
 swiperefreshlayout = "1.1.0"
 truth = "1.4.4"
 viewpager2 = "1.1.0"
-work = "2.10.1"
+work = "2.10.2"
 
 [libraries]
 airbnb-epoxy-android = { module = "com.airbnb.android:epoxy", version.ref = "epoxy" }
