@@ -287,7 +287,7 @@
     <string name="app_links_desc">Izinkan Aurora Store untuk membuka tautan yang didukung</string>
     <string name="onboarding_permission_doze">Unduhan latar belakang</string>
     <string name="toast_proxy_invalid">URL proksi tidak sah, periksa format!</string>
-    <string name="pref_aurora_only_desc">Jangan periksa pembaruan untuk aplikasi yang dipasangdari sumber di luar Aurora Store</string>
+    <string name="pref_aurora_only_desc">Jangan periksa pembaruan untuk aplikasi yang dipasang dari sumber di luar Aurora Store</string>
     <string name="toast_proxy_success">Proksi berhasil disetel</string>
     <string name="app_links_title">Tautan aplikasi</string>
     <string name="google_play_store_desc">Google Play, juga dikenal sebagai Google Play Store dan sebelumnya Android Market.</string>
@@ -301,7 +301,7 @@
     <string name="pref_updates_auto">Pembaruan otomatis</string>
     <string name="pref_updates_auto_desc">Atur perilaku pembaruan otomatis</string>
     <string name="pref_updates_auto_off">Jangan perbarui otomatis aplikasi</string>
-    <string name="pref_updates_auto_notify">Cek &amp; beri tahu apabila tersedia pembaruan</string>
+    <string name="pref_updates_auto_notify">Periksa &amp; beri tahu apabila tersedia pembaruan</string>
     <string name="pref_updates_auto_install">Periksa &amp; pasang pembaruan yang tersedia secara otomatis</string>
     <string name="title_more">Selengkapnya</string>
     <string name="about_wiki_summary">Temukan jawaban atas pertanyaan yang sering diajukan (FAQ), langkah-langkah pemecahan masalah, dan lainnya</string>

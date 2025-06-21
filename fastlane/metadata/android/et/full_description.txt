@@ -1,0 +1,11 @@
+Aurora rakendustepood on ilusa kujundusega mitteametlik ja avatud lähtekoodiga Google Play klient. Siit saad laadida alla, uuendada ja otsida rakendust Play Store rakendustepoest. Toimib korralikult sõltumata sellest, kas Google Play teenused või microG on nutiseadmes olemas.
+
+<b>Funktsionaalsused:</b>
+
+• Vaba ja avatud lähtekoodiga tarkvara, mis on avaldatud GPLv3 litsentsi alusel
+• Ilus kujundus: järgib Material 3 kujunduskeele reegleid
+• Sisselogimiseks kasutatav konto: võid logida sisse nii isikliku kui anonüümse kontoga
+• Seadme ja lokaadi hämamine: geoblokeeringuga rakenduste paigaldamiseks saad muuta nutiseadme ja/või lokaadi seadistusi
+• Exodus Privacy lõiming: rakendustes leiduvad jälitajad on kohe näha
+• Plexuse lõiming: rakenduse ühilduvus kasutamiseks ilma Google Play teenusteta või microG-ta on kohe näha
+• Uuenduste keelamine: vajadusel saad välistada valitud rakenduste uuendamise

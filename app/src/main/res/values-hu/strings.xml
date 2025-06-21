@@ -136,7 +136,7 @@
     <string name="details_paid">Fizetős</string>
     <string name="details_no_updates">Nincs elérhető frissítés</string>
     <string name="details_no_permission">Nincsenek engedélyek</string>
-    <string name="details_no_dependencies">Nincs dependencia</string>
+    <string name="details_no_dependencies">Nincsenek függőségek</string>
     <string name="details_no_ads">Nincs hirdetés</string>
     <string name="details_more_about_app">További alkalmazás információ</string>
     <string name="details_gsf_dependent">GSF szükséges</string>
@@ -285,9 +285,9 @@
     <string name="app_links_title">Alkalmazáshivatkozások</string>
     <string name="pref_network_proxy_url">Proxy webcíme</string>
     <string name="pref_updates_check_frequency_desc">Automatikus frissítések intervallumának konfigurálása órákban mérve.</string>
-    <string name="pref_aurora_only">Csak Aurora Store alkalmazások</string>
+    <string name="pref_aurora_only">Más forrásból származó alkalmazások szűrése</string>
     <string name="toast_proxy_invalid">Érvénytelen proxy webcím, ellenőrizze a formátumot!</string>
-    <string name="pref_aurora_only_desc">Csak az Aurora Store által telepített alkalmazások frissítéseinek ellenőrzése</string>
+    <string name="pref_aurora_only_desc">Ne keressen frissítéseket az Aurora Store-on kívüli forrásból telepített alkalmazásokhoz</string>
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
     <string name="title_app_settings">Alkalmazásbeállítások</string>
     <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
@@ -306,8 +306,8 @@
     <string name="action_request_analysis">Új elemzés kérése</string>
     <string name="failed_apk_export">Az APK-k exportálása sikertelen</string>
     <string name="download_clear_finished">Törlés befejezve</string>
-    <string name="pref_updates_incompatible">Inkompatibilis frissítések</string>
-    <string name="pref_updates_incompatible_desc">Inkompatibilis és letiltott alkalmazások frissítésének megjelenítése, a telepítés meghiúsulhat</string>
+    <string name="pref_updates_incompatible">Sikertelen frissítések megjelenítése</string>
+    <string name="pref_updates_incompatible_desc">Megjeleníti az inkompatibilis vagy letiltott alkalmazások frissítéseit, amelyek telepítése sikertelen lehet</string>
     <string name="action_home_screen">Főképernyőhöz adás</string>
     <string name="faqs_subtitle">Kérdései vannak? Itt találja a válaszokat</string>
     <string name="source_code_title">Forráskód</string>
@@ -417,7 +417,7 @@
     <string name="action_unarchive">Archiválás visszavonása</string>
     <string name="details_compatibility_title">Kompatibilitás</string>
     <string name="set">Beállít</string>
-    <string name="pref_network_microg_login_title">Használja a microg-t a fiókba való bejelentkezéshez</string>
+    <string name="pref_network_microg_login_title">Használja a microG-t a fiókba való bejelentkezéshez</string>
     <string name="disable">Kikapcsol</string>
     <string name="verification_failed">Sikertelen a letöltött fájlok ellenőrzése</string>
     <string name="toast_proxy_disabled">Proxy sikeresen kikapcsolva</string>
@@ -427,5 +427,12 @@
     <string name="pref_updates_restrictions_metered">Csak nem mért hálózatokon</string>
     <string name="pref_updates_restrictions_idle">Amikor az eszköz áll</string>
     <string name="pref_updates_restrictions_battery">Amikor a töltöttség nem alacsony</string>
-    <string name="pref_network_microg_login_desc">Hitelesítsen a microG segítségével amikor belép a Google fiókjába az egyszerűbb belépési folyamathoz.</string>
+    <string name="pref_network_microg_login_desc">Hitelesítés microG használatával a Google-fiókokba történő bejelentkezéskor az egyszerűbb bejelentkezési folyamat érdekében</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> engedélyek</string>
+    <string name="app_info_downloads">Letöltések</string>
+    <string name="app_info_updated_on">Legutóbbi frissítés</string>
+    <string name="app_info_min_android">Minimális Android verzió</string>
+    <string name="app_info_target_android">Cél API-szint</string>
+    <string name="pref_common_advanced">Speciális</string>
+    <string name="pref_updates_app_source">Alkalmazás forrása</string>
 </resources>

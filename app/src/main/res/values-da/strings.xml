@@ -416,7 +416,7 @@
     <string name="set">Indstil</string>
     <string name="disable">Deaktivér</string>
     <string name="pref_network_microg_login_title">Brug microG til at logge ind på konti</string>
-    <string name="pref_network_microg_login_desc">Godkend med microG ved login på Google-konti for et enklere login-flow.</string>
+    <string name="pref_network_microg_login_desc">Godkend med microG, når du logger ind på Google-konti for en enklere login-proces</string>
     <string name="pref_network_proxy_desc">Se og administrer proxy-konfiguration</string>
     <string name="toast_proxy_disabled">Proxy blev deaktiveret</string>
     <string name="pref_updates_restrictions_metered">Kun på ubegrænsede netværk</string>

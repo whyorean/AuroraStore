@@ -314,7 +314,7 @@
     <string name="privacy_policy_subtitle">Découvrez comment Aurora Store utilise vos données</string>
     <string name="manual_download_hint">Saisissez le code de la version que vous voulez télécharger</string>
     <string name="source_code_subtitle">Découvrez ce qu’il y a à l’intérieur</string>
-    <string name="privacy_policy_title">Politique de protection des renseignements personnels</string>
+    <string name="privacy_policy_title">Politique de confidentialité</string>
     <string name="disclaimer_subtitle">Imputabilité et responsabilité</string>
     <string name="shizuku_installer_desc">Shizuku ou Sui est nécessaire. Doit être configuré et l’autorisation doit être accordée</string>
     <string name="root_installer_desc">Exige des privilèges racine, superutilisateur. Toutes les versions d’Android sont prises en charge.</string>
