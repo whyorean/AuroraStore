@@ -331,11 +331,11 @@
     <string name="title_more">Докладніше</string>
     <string name="manage_account">Керувати обліковим записом</string>
     <string name="pref_clear_device_owner_title">Видалити власника пристрою</string>
-    <string name="pref_clear_device_owner_summary">Видаляє Aurora Store зі списку власників пристроїв</string>
+    <string name="pref_clear_device_owner_summary">Вилучає Aurora Store зі списку власників пристроїв</string>
     <string name="pref_clear_device_owner_desc">Ця дія відкличе дозвіл установлювача Android на встановлення застосунків у фоні. Впевнені, що хочете продовжити?</string>
     <string name="add_dispenser_title">Додати розподільник</string>
     <string name="pref_dispenser_title">Керувати розподільниками</string>
-    <string name="pref_dispenser_summary">Перегляд та керування розподільників токенів для знеособленого входу</string>
+    <string name="pref_dispenser_summary">Перегляд і керування розподільниками токенів для знеособленого входу</string>
     <string name="no_dispensers_available">Немає доступних розподільників</string>
     <string name="remove_dispenser_title">Вилучити розподільник</string>
     <string name="add_dispenser_summary">Додайте розподільник токенів до Aurora Store. Розподільники токенів надають облікові дані Aurora Store для знеособленого входу.</string>
@@ -372,7 +372,7 @@
     <string name="item_required">Необхідно</string>
     <string name="item_optional">Необов\'язково</string>
     <string name="force_restart_title">Перезапустити Aurora Store</string>
-    <string name="force_restart_summary">Aurora Store потребує перезапускуm щоби застосувати змінені налаштування</string>
+    <string name="force_restart_summary">Aurora Store потребує перезапуску, щоб застосувати змінені налаштування</string>
     <string name="export_app_title">Експортер файлів</string>
     <string name="export_app_summary">Зачекайте, експортування файлу</string>
     <string name="notification_channel_downloads">Сповіщення про завантаження</string>
@@ -386,7 +386,7 @@
     <string name="status_cancelled">Скасовано</string>
     <string name="notification_channel_account">Сповіщення облікового запису</string>
     <string name="authentication_required_title">Потрібна автентифікація</string>
-    <string name="authentication_required_unarchive">Увійдіть до свого облікового запису Google Play, щоби розархівувати застосунок!</string>
+    <string name="authentication_required_unarchive">Увійдіть до свого облікового запису Google Play, щоб розархівувати застосунок!</string>
     <string name="checking_updates">Перевірка оновлень</string>
     <string name="made_with_love">Зроблено з <xliff:g id="heart_emoji">%1$s</xliff:g> в Індії</string>
     <string name="default_spoof">Типово</string>
@@ -433,6 +433,6 @@
     <string name="app_info_updated_on">Останнє оновлення</string>
     <string name="app_info_min_android">Мінімальна версія Android</string>
     <string name="app_info_target_android">Цільовий рівень API</string>
-    <string name="app_info_downloads">Завантажити</string>
+    <string name="app_info_downloads">Завантаження</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозволи</string>
 </resources>
