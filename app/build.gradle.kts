@@ -19,6 +19,9 @@
  *
  */
 
+@file:OptIn(KspExperimental::class)
+
+import com.google.devtools.ksp.KspExperimental
 import java.util.Properties
 
 plugins {
@@ -171,6 +174,7 @@ androidComponents {
 
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
+    useKsp2 = false // TODO: Drop after getting rid of epoxy
 }
 
 dependencies {
