@@ -56,7 +56,7 @@ import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinst
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-open class InstallerStatusReceiver : BroadcastReceiver() {
+class InstallerStatusReceiver : BroadcastReceiver() {
 
     private val TAG = InstallerStatusReceiver::class.java.simpleName
 
@@ -83,17 +83,13 @@ open class InstallerStatusReceiver : BroadcastReceiver() {
 
                 AuroraApp.enqueuedInstalls.remove(packageName)
                 InstallerBase.notifyInstallation(context, displayName, packageName)
+
                 if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                     PathUtil.getAppDownloadDir(context, packageName, versionCode)
                         .deleteRecursively()
                 }
 
-                return postStatus(
-                    status,
-                    packageName,
-                    extra,
-                    context
-                )
+                return postStatus(status, packageName, extra, context)
             }
 
             if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
@@ -105,12 +101,15 @@ open class InstallerStatusReceiver : BroadcastReceiver() {
                 if (isHuaweiSilentInstallSupported(context)) {
                     promptAppGallery(sessionId, context)
                 } else {
-                    if (inForeground()) promptUser(intent, context)
+                    if (inForeground()) {
+                        promptUser(intent, context)
+                    }
                 }
             } else {
                 AuroraApp.enqueuedInstalls.remove(packageName)
-                postStatus(status, packageName, extra, context)
                 notifyUser(context, packageName, displayName, status)
+
+                postStatus(status, packageName, extra, context)
             }
         }
     }
@@ -179,7 +178,6 @@ open class InstallerStatusReceiver : BroadcastReceiver() {
         )
 
         if (::apiClient.isInitialized && apiClient.isConnected) {
-            Log.i(TAG, "ApiClient is connected, sending request for silent install")
             pendingResult.setCallback { handleInstallStatus(it) }
         } else {
             Log.e(TAG, "ApiClient null or not connected")
@@ -231,7 +229,10 @@ open class InstallerStatusReceiver : BroadcastReceiver() {
         }
 
         AuroraApp.events.send(event)
-        apiClient.disconnect()
+
+        if (::apiClient.isInitialized && apiClient.isConnected) {
+            apiClient.disconnect()
+        }
     }
 
     private fun isHuaweiSilentInstallSupported(context: Context): Boolean {
