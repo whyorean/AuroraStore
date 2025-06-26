@@ -6,13 +6,12 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.pm.PermissionInfo
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
@@ -21,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -29,10 +29,12 @@ import androidx.window.core.layout.WindowWidthSizeClass
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composables.InfoComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.preview.AppPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsPermissionViewModel
+import java.util.Locale
 
 @Composable
 fun DetailsPermissionScreen(
@@ -80,15 +82,29 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(horizontal = dimensionResource(R.dimen.padding_medium))
+                .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
         ) {
             items(items = permissionsInfo.keys.toList(), key = { it }) { permission ->
                 // Bail out if this is not a known permission for the OS
                 val permissionInfo = permissionsInfo.getValue(permission) ?: return@items
 
-                Text(
-                    text = permissionInfo.loadLabel(packageManager).toString(),
-                    style = MaterialTheme.typography.bodyMedium
+                InfoComposable(
+                    title = AnnotatedString(
+                        text = permissionInfo.loadLabel(packageManager)
+                            .toString()
+                            .replaceFirstChar {
+                                if (it.isLowerCase()) {
+                                    it.titlecase(Locale.getDefault())
+                                } else {
+                                    it.toString()
+                                }
+                            }
+                    ),
+                    description = AnnotatedString(
+                        text = permissionInfo.loadDescription(packageManager)?.toString()
+                            ?: stringResource(R.string.no_description)
+                    )
                 )
             }
         }
