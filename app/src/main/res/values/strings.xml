@@ -474,6 +474,7 @@
     <string name="available_spoof">Available</string>
 
     <!-- AppDetailsFragment -->
+    <string name="no_description">No description available</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissions</string>
     <string name="details_more_info">More info</string>
     <string name="details_more_target_api">Targets</string>
