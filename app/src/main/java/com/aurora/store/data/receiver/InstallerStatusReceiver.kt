@@ -22,10 +22,14 @@ import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.EXTRA_SESSION_ID
+import android.content.pm.PackageManager
 import android.util.Log
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
+import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
@@ -41,21 +45,29 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
+import com.huawei.appgallery.coreservice.api.ApiClient
+import com.huawei.appgallery.coreservice.api.IConnectionResult
+import com.huawei.appgallery.coreservice.api.PendingCall
+import com.huawei.appgallery.coreservice.internal.framework.ipc.transport.data.BaseIPCRequest
+import com.huawei.appgallery.coreservice.internal.framework.ipc.transport.data.BaseIPCResponse
+import com.huawei.appmarket.framework.coreservice.Status
+import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinstall.SilentInstallRequest
+import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinstall.SilentInstallResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InstallerStatusReceiver : BroadcastReceiver() {
+open class InstallerStatusReceiver : BroadcastReceiver() {
 
     private val TAG = InstallerStatusReceiver::class.java.simpleName
 
-    val INSTALL_SESSION_ID: String = "android.content.pm.extra.SESSION_ID"
+    private lateinit var apiClient: ApiClient
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null && intent?.action == ACTION_INSTALL_STATUS) {
             val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: return
             val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME) ?: packageName
             val versionCode = intent.getLongExtra(EXTRA_VERSION_CODE, -1)
-            val sessionId = intent.getIntExtra(INSTALL_SESSION_ID, -1)
+            val sessionId = intent.getIntExtra(EXTRA_SESSION_ID, -1)
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
 
@@ -75,11 +87,26 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                     PathUtil.getAppDownloadDir(context, packageName, versionCode)
                         .deleteRecursively()
                 }
-                return
+
+                return postStatus(
+                    status,
+                    packageName,
+                    extra,
+                    context
+                )
             }
 
-            if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                promptUser(intent, context)
+            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                Log.i(
+                    TAG,
+                    "Pending user action for $packageName, sessionId=$sessionId, status=$status, extra=$extra"
+                )
+
+                if (isHuaweiSilentInstallSupported(context)) {
+                    promptAppGallery(sessionId, context)
+                } else {
+                    if (inForeground()) promptUser(intent, context)
+                }
             } else {
                 AuroraApp.enqueuedInstalls.remove(packageName)
                 postStatus(status, packageName, extra, context)
@@ -118,6 +145,69 @@ class InstallerStatusReceiver : BroadcastReceiver() {
         }
     }
 
+    private fun promptAppGallery(sessionId: Int, context: Context) {
+        apiClient = ApiClient.Builder(context.applicationContext)
+            .setHomeCountry("CN")
+            .addConnectionCallbacks(object : ApiClient.ConnectionCallback {
+                override fun onConnected() {
+                    Log.i(TAG, "ApiClient connected")
+                    requestSilentInstall(sessionId)
+                }
+
+                override fun onConnectionSuspended(cause: Int) {
+                    Log.w(TAG, "ApiClient connection suspended: $cause")
+                }
+
+                override fun onConnectionFailed(result: IConnectionResult?) {
+                    Log.e(TAG, "ApiClient failed to connect")
+                    Log.e(TAG, result?.statusCode.toString())
+                }
+            })
+            .build()
+
+        apiClient.connect()
+    }
+
+    private fun requestSilentInstall(sessionId: Int) {
+        val request = SilentInstallRequest().apply {
+            setSessionId(sessionId)
+        }
+
+        val pendingResult = PendingCall<BaseIPCRequest, BaseIPCResponse>(
+            apiClient,
+            request
+        )
+
+        if (::apiClient.isInitialized && apiClient.isConnected) {
+            Log.i(TAG, "ApiClient is connected, sending request for silent install")
+            pendingResult.setCallback { handleInstallStatus(it) }
+        } else {
+            Log.e(TAG, "ApiClient null or not connected")
+        }
+    }
+
+    private fun handleInstallStatus(status: Status<BaseIPCResponse>) {
+        val response = status.response
+        val statusCode = status.statusCode
+
+        Log.i(
+            TAG,
+            "[recv]---1--- statusCode: $statusCode, response: ${response?.javaClass ?: "null"}"
+        )
+
+        if (response is SilentInstallResponse) {
+            if (statusCode == 0) {
+                Log.i(TAG, "[recv]---2---  response: ${response.result}")
+            }
+        }
+
+        if (response is BaseIPCResponse) {
+            if (statusCode == 0) {
+                Log.i(TAG, "[recv]---3---  response: $response")
+            }
+        }
+    }
+
     private fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
         val event = when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
@@ -139,6 +229,24 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 }
             }
         }
+
         AuroraApp.events.send(event)
+        apiClient.disconnect()
+    }
+
+    private fun isHuaweiSilentInstallSupported(context: Context): Boolean {
+        return try {
+            val applicationInfo: ApplicationInfo = context.packageManager.getApplicationInfo(
+                PACKAGE_NAME_APP_GALLERY,
+                PackageManager.GET_META_DATA
+            )
+
+            val supportFunction = applicationInfo.metaData.getInt("appgallery_support_function")
+            Log.i(TAG, "Huawei silent install support function: $supportFunction")
+
+            (supportFunction and (1 shl 5)) != 0
+        } catch (e: Exception) {
+            false
+        }
     }
 }

@@ -23,16 +23,15 @@ package com.aurora.store.data.installer
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.EXTRA_SESSION_ID
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.os.Process
 import android.util.Log
 import androidx.core.app.PendingIntentCompat
-import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -53,16 +52,7 @@ import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.model.SessionInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
-import com.huawei.appgallery.coreservice.api.ApiClient
-import com.huawei.appgallery.coreservice.api.ApiCode
-import com.huawei.appgallery.coreservice.api.IConnectionResult
-import com.huawei.appgallery.coreservice.api.PendingCall
-import com.huawei.appgallery.coreservice.internal.framework.ipc.transport.data.BaseIPCRequest
-import com.huawei.appgallery.coreservice.internal.framework.ipc.transport.data.BaseIPCResponse
-import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinstall.SilentInstallRequest
-import com.huawei.appmarket.service.externalservice.distribution.thirdsilentinstall.SilentInstallResponse
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
 import javax.inject.Inject
@@ -80,8 +70,6 @@ class SessionInstaller @Inject constructor(
 
     private val packageInstaller = context.packageManager.packageInstaller
     private val enqueuedSessions = mutableListOf<MutableSet<SessionInfo>>()
-
-    private lateinit var apiClient: ApiClient
 
     val callback = object : PackageInstaller.SessionCallback() {
         override fun onCreated(sessionId: Int) {}
@@ -262,59 +250,11 @@ class SessionInstaller @Inject constructor(
                 return removeFromInstallQueue(sessionInfo.packageName)
             }
 
-            if (PackageUtil.hasSupportedAppGallery(context) && isHuaweiSilentInstallSupported()) {
-                apiClient = ApiClient.Builder(context)
-                    .setHomeCountry("CN")
-                    .addConnectionCallbacks(object : ApiClient.ConnectionCallback {
-                        override fun onConnected() {
-                            Log.i(TAG, "API Client connected")
-                            tryElevatedInstall(sessionInfo)
-                        }
-
-                        override fun onConnectionSuspended(cause: Int) {
-                            Log.e(TAG, "ApiClient connection suspended: $cause")
-                        }
-
-                        override fun onConnectionFailed(result: IConnectionResult?) {
-                            Log.e(
-                                TAG,
-                                "ApiClient Connection failed: ${result?.statusCode} - ${result?.errorMessage}"
-                            )
-                        }
-                    })
-                    .build()
-
-                apiClient.connect()
-            } else {
-                Log.i(
-                    TAG,
-                    "AppGallery elevated installs not possible, committing session directly."
-                )
-                return commitSession(sessionInfo)
-            }
+            commitSession(sessionInfo)
         } catch (e: Exception) {
             Log.e(TAG, "Error committing session: ${e.message}")
             removeFromInstallQueue(sessionInfo.packageName)
             postError(sessionInfo.packageName, e.localizedMessage, e.stackTraceToString())
-        }
-    }
-
-    private fun tryElevatedInstall(sessionInfo: SessionInfo) {
-        if (::apiClient.isInitialized && apiClient.isConnected) {
-            val request = SilentInstallRequest()
-            request.sessionId = sessionInfo.sessionId
-
-            val pendingCall = PendingCall<BaseIPCRequest, BaseIPCResponse>(apiClient, request)
-
-            pendingCall.setCallback {
-                if (it.response is SilentInstallResponse && it.statusCode == ApiCode.SUCCESS) {
-                    Log.i(TAG, "Silent install granted")
-                } else {
-                    Log.e(TAG, "Silent install failed with code: ${it.statusCode}")
-                }
-
-                commitSession(sessionInfo)
-            }
         }
     }
 
@@ -327,7 +267,6 @@ class SessionInstaller @Inject constructor(
             Log.e(TAG, "Error committing session: ${e.message}")
         } finally {
             removeFromInstallQueue(sessionInfo.packageName)
-            releaseApiClient()
         }
     }
 
@@ -335,6 +274,7 @@ class SessionInstaller @Inject constructor(
         val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
             action = ACTION_INSTALL_STATUS
             setPackage(context.packageName)
+            putExtra(EXTRA_SESSION_ID, sessionInfo.sessionId)
             putExtra(EXTRA_PACKAGE_NAME, sessionInfo.packageName)
             putExtra(EXTRA_VERSION_CODE, sessionInfo.versionCode)
             putExtra(EXTRA_DISPLAY_NAME, sessionInfo.displayName)
@@ -365,33 +305,6 @@ class SessionInstaller @Inject constructor(
 
         companion object {
             fun fromCode(code: Int): ServiceResultCode? = entries.find { it.code == code }
-        }
-    }
-
-    private fun isHuaweiSilentInstallSupported(): Boolean {
-        return try {
-            val applicationInfo: ApplicationInfo = context.packageManager.getApplicationInfo(
-                PACKAGE_NAME_APP_GALLERY,
-                PackageManager.GET_META_DATA
-            )
-
-            val supportFunction = applicationInfo.metaData.getInt("appgallery_support_function")
-            Log.i(TAG, "Huawei silent install support function: $supportFunction")
-
-            (supportFunction and (1 shl 5)) != 0
-        } catch (e: Exception) {
-            false
-        }
-    }
-
-    private fun releaseApiClient() {
-        if (!::apiClient.isInitialized) return
-
-        if (apiClient.isConnected) {
-            apiClient.disconnect()
-            Log.i(TAG, "API Client disconnected")
-        } else {
-            Log.w(TAG, "API Client already disconnected")
         }
     }
 }
