@@ -114,9 +114,7 @@ fun AppRatingAndReviews(
     if (featuredReviews.isNotEmpty()) {
         val pagerState = rememberPagerState(initialPage = 1) { featuredReviews.size }
         HorizontalPager(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_medium)),
+            modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
             state = pagerState,
             pageSpacing = dimensionResource(R.dimen.margin_normal)
         ) { page ->
@@ -124,7 +122,7 @@ fun AppRatingAndReviews(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
-                    .background(color = MaterialTheme.colorScheme.secondaryContainer)
+                    .background(color = MaterialTheme.colorScheme.surfaceContainer)
                     .requiredHeight(dimensionResource(R.dimen.review_height))
             ) {
                 ReviewComposable(review = featuredReviews[page])
