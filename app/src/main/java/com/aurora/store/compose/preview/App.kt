@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.preview
+package com.aurora.store.compose.preview
 
 import android.Manifest
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider

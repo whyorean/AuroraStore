@@ -41,8 +41,8 @@ import com.aurora.store.compose.composables.HeaderComposable
 import com.aurora.store.compose.composables.InfoComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.app.AppComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
-import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsMoreViewModel
 import java.util.Locale
