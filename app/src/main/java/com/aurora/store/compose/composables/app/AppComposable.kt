@@ -32,8 +32,8 @@ import coil3.request.crossfade
 import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
-import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 
 /**
  * Composable for displaying minimal app details in a horizontal-scrollable list

@@ -29,8 +29,8 @@ import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
-import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.util.PackageUtil
 
 /**

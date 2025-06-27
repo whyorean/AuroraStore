@@ -31,7 +31,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.details.ExodusComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsExodusViewModel
