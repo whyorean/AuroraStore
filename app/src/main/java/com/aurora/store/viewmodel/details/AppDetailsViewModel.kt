@@ -107,7 +107,7 @@ class AppDetailsViewModel @Inject constructor(
 
     private val download = combine(app, downloadHelper.downloadsList) { a, list ->
         if (a?.packageName.isNullOrBlank()) return@combine null
-        list.find { d -> d.packageName == a?.packageName }
+        list.find { d -> d.packageName == a.packageName }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     private val isInstalled: Boolean
@@ -155,7 +155,7 @@ class AppDetailsViewModel @Inject constructor(
             }
         }.invokeOnCompletion { throwable ->
             // Only proceed if there was no error while fetching the app details
-            if (throwable != null) return@invokeOnCompletion
+            if (throwable != null || app.value == null) return@invokeOnCompletion
 
             fetchFavourite(packageName)
             fetchFeaturedReviews(packageName)
