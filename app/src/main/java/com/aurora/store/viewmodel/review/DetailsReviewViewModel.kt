@@ -37,7 +37,6 @@ class DetailsReviewViewModel @AssistedInject constructor(
 
     private val TAG = DetailsReviewViewModel::class.java.simpleName
 
-    private var reviewsNextPageUrl: String? = null
     private val _reviews = MutableStateFlow<PagingData<Review>>(PagingData.empty())
     val reviews = _reviews.asStateFlow()
 
@@ -46,7 +45,7 @@ class DetailsReviewViewModel @AssistedInject constructor(
     }
 
     fun fetchReviews(filter: Review.Filter = Review.Filter.ALL) {
-        reviewsNextPageUrl = null
+        var reviewsNextPageUrl: String? = null
 
         createPager { page ->
             try {
