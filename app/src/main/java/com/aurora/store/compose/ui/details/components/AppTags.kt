@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.app.AppTagComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.util.CommonUtil
 
 /**

@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
 
 /**
  * Composable to display app changelog, supposed to be used as a part

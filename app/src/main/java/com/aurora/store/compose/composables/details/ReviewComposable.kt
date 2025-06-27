@@ -33,7 +33,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
-import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 
 /**
  * Composable for viewing a review about an app

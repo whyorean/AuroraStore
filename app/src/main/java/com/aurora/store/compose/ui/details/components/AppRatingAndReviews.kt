@@ -39,7 +39,7 @@ import com.aurora.store.compose.composables.HeaderComposable
 import com.aurora.store.compose.composables.PageIndicatorComposable
 import com.aurora.store.compose.composables.details.RatingComposable
 import com.aurora.store.compose.composables.details.ReviewComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
 import java.util.Locale
 
 /**

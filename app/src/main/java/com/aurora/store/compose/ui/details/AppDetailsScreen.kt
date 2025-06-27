@@ -55,8 +55,8 @@ import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.app.AppListComposable
 import com.aurora.store.compose.composables.app.AppProgressComposable
 import com.aurora.store.compose.composables.app.NoAppComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
-import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.compose.menu.AppDetailsMenu
 import com.aurora.store.compose.menu.items.AppDetailsMenuItem
 import com.aurora.store.compose.navigation.Screen

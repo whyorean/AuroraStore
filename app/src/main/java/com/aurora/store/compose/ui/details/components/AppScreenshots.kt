@@ -25,8 +25,8 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.compose.composables.details.ScreenshotComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
-import com.aurora.store.compose.composables.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 
 /**
  * Composable to display screenshots of the app, supposed to be used as a part

@@ -31,7 +31,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.InfoComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.composables.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsPermissionViewModel
 import java.util.Locale
