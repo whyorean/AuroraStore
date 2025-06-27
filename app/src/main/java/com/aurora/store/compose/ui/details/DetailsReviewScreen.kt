@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -28,6 +29,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
@@ -36,14 +38,19 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import androidx.window.core.layout.WindowWidthSizeClass
+import coil3.annotation.ExperimentalCoilApi
+import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.details.ReviewComposable
+import com.aurora.store.compose.preview.ReviewPreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.review.DetailsReviewViewModel
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlin.random.Random
 
 @Composable
 fun DetailsReviewScreen(
@@ -165,10 +172,12 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
 
 @Preview
 @Composable
-private fun DetailsReviewScreenPreview() {
-    val reviews = flowOf(PagingData.empty<Review>()).collectAsLazyPagingItems()
+@OptIn(ExperimentalCoilApi::class)
+private fun DetailsReviewScreenPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
+    val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
+    val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
 
-    ScreenContent(
-        reviews = reviews
-    )
+    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+        ScreenContent(reviews = reviewsFlow)
+    }
 }

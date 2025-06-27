@@ -10,7 +10,6 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.Rating
-import com.aurora.gplayapi.data.models.Support
 import com.aurora.gplayapi.data.models.details.TestingProgram
 import com.aurora.store.BuildConfig
 
