@@ -24,6 +24,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -32,11 +33,15 @@ import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
 import com.aurora.store.AppStreamStash
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.paging.GenericPagingSource.Companion.createPager
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -62,6 +67,57 @@ class SearchResultViewModel @Inject constructor(
     val apps = _apps.asStateFlow()
 
     private val stashMutex = Mutex()
+
+    fun newSearch(query: String) {
+        var nextBundleUrl: String? = null
+        val nextStreamUrls = mutableSetOf<String>()
+
+        fun Collection<StreamCluster>.flatClusters(): List<App> {
+            return this.flatMap { streamCluster ->
+                if (streamCluster.hasNext()) {
+                    nextStreamUrls.add(streamCluster.clusterNextPageUrl)
+                }
+                streamCluster.clusterAppList
+            }.distinctBy { app -> app.packageName }
+        }
+
+        createPager { page ->
+            try {
+                when (page) {
+                    1 -> contract.searchResults(query)
+                        .also { nextBundleUrl = it.streamNextPageUrl }
+                        .streamClusters.values
+                        .flatClusters()
+
+                    else -> {
+                        when {
+                            nextStreamUrls.isNotEmpty() -> {
+                                nextStreamUrls.map { nextPageStreamUrl ->
+                                    contract.nextStreamCluster(query, nextPageStreamUrl)
+                                }.also { nextStreamUrls.clear() }.flatClusters()
+                            }
+
+                            !nextBundleUrl.isNullOrBlank() -> {
+                                contract.nextStreamBundle(query, nextBundleUrl!!)
+                                    .also { nextBundleUrl = it.streamNextPageUrl }
+                                    .streamClusters.values
+                                    .flatClusters()
+                            }
+
+                            else -> emptyList()
+                        }
+                        emptyList()
+                    }
+                }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to search results for $query", exception)
+                emptyList()
+            }
+        }.flow.distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .onEach { _apps.value = it }
+            .launchIn(viewModelScope)
+    }
 
     @Synchronized
     fun search(query: String) {
