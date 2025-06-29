@@ -417,7 +417,7 @@
     <string name="about_aurora_store_summary">Aurora Store mahdollistaa sovellusten etsimisen ja lataamisen virallisesta Google Play -kaupasta. Voit tutkia sovellusten kuvaksia, kuvankaappauksia, päivityksiä, muiden käyttäjien kommentteja ja ladata sovelluksia suoraan Google Play:stä laitteellesi. Käyttääksesi Aurora Store:a sinulla on oltava Google Play -tili sekä kirjauduttava sisään Google Play -tilillesi kun avaat ja asetat Aurora Store:n.\n\nToisin kuin perinteiset sovelluskaupat, Aurora Store ei omista, lisensoi tai jakele sovelluksia. Kaikki sovellukset, sovellusten kuvaukset, kuvankaappaukset ja muu sisältö Aurora Storessa ovat suoraan haettu, ladattu ja/tai näytetty Google Play -kaupasta. Aurora Store toimii kuten ovi tai selain, mahdollistaen sisäänkirjautumisen Google Play -tilillesi ja sovellusten hakemiseen Google Play -kaupasta.\n\nHuomaa, että Aurora Store ei ole Googlen tai Google Play:n hyväksymä, sponsoroima tai valtuuttama, eikä myöskään minkään Aurora Storen kautta ladatun sovelluksen tai sovelluksien kehittäjien hyväksymä; Aurora Store:lla ei myöskään ole mitään kytköstä, yhteistyötä tai yhteyttä niihin.</string>
     <string name="no_apps_available">Sovelluksia ei saatavilla</string>
     <string name="pref_network_microg_login_title">Käytä microG:tä tileihin sisäänkirjautumiseen</string>
-    <string name="pref_network_microg_login_desc">Todenna käyttäen microG:tä Googlen palveluihin sisäänkirjauduttaessa prosessin yksinkertaistamiseksi.</string>
+    <string name="pref_network_microg_login_desc">Todenna käyttäen microG:tä Googlen palveluihin sisäänkirjauduttaessa prosessin yksinkertaistamiseksi</string>
     <string name="set">Aseta</string>
     <string name="disable">Poista käytöstä</string>
     <string name="toast_proxy_disabled">Välityspalvelin poistettu käytöstä onnistuneesti</string>
@@ -434,4 +434,5 @@
     <string name="app_info_target_android">API:n kohdetaso</string>
     <string name="app_info_updated_on">Viimeksi päivitetty</string>
     <string name="app_info_downloads">Lataukset</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> käyttöoikeutta</string>
 </resources>
