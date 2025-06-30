@@ -63,7 +63,3 @@ fun Context.showDialog(
 fun Fragment.showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
     requireContext().showDialog(titleId, messageId)
 }
-
-fun Fragment.showDialog(title: String, message: String) {
-    requireContext().showDialog(title, message)
-}

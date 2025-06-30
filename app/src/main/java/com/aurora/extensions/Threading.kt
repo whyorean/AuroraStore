@@ -22,8 +22,6 @@ package com.aurora.extensions
 import android.os.Handler
 import android.os.Looper
 
-fun runAsync(action: () -> Unit) = Thread(Runnable(action)).start()
-
 fun runOnUiThread(action: () -> Unit) {
     when {
         isMainThread() -> action.invoke()
