@@ -30,27 +30,27 @@ Aurora Store works exactly like a door or a browser, allowing you to log in to y
 
 ## Limitations
 
-- Underlying API used is reversed engineered from PlayStore, changes on side may break it.
+- The underlying API used is reversed engineered from the Google Play Store, changes on side may break it.
 - Provides only base minimum features
   - Can not download or update paid apps.
   - Can not update apps/games with [Play Asset Delivery](https://developer.android.com/guide/playcore/asset-delivery)
-- Multiple in-app features are not available if logged-in as Anonymous.
+- Multiple in-app features are not available if logged in as Anonymous.
   - Library
   - Purchase History
-  - Editor's Choise
+  - Editor's choice
   - Beta Programs
   - Review Add/Update
-- Token Dispenser Server is not super reliable, downtimes are expected.  
+- Token dispenser server is not super reliable, downtimes are expected.  
 
 ## Downloads
 
 Please only download the latest stable releases from one of these sources:
 
-- [Official Website](https://auroraoss.com/)
+- [Official website](https://auroraoss.com/)
 - [GitLab Releases](https://gitlab.com/AuroraOSS/AuroraStore/-/releases)
-- [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.aurora.store) (Reproducible Build)
-- [F-Droid](https://f-droid.org/packages/com.aurora.store/) (Signed by F-Droid, [more details](https://f-droid.org/docs/Signing_Process/))
-- [App Gallery](https://appgallery.huawei.com/app/C110907863) (Limited to certain countries)
+- [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.aurora.store) (reproducible)
+- [F-Droid](https://f-droid.org/packages/com.aurora.store/) (signed by F-Droid, [more details](https://f-droid.org/docs/Signing_Process/))
+- [App Gallery](https://appgallery.huawei.com/app/C110907863) (limited to certain countries)
 
 You can also get latest debug builds signed with AOSP test keys for testing latest changes from our [GitLab Package Registry](https://gitlab.com/AuroraOSS/AuroraStore/-/packages/24103616).
 
