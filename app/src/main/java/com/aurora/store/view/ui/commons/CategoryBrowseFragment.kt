@@ -91,7 +91,7 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     }
 
     override fun onAppClick(app: App) {
-        openDetailsFragment(app.packageName, app)
+        openDetailsFragment(app.packageName)
     }
 
     override fun onAppLongClick(app: App) {

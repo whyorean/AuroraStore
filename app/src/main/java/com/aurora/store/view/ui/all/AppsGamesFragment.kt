@@ -145,8 +145,7 @@ class AppsGamesFragment : BaseFragment<FragmentGenericWithSearchBinding>() {
                             .app(app)
                             .click { _ ->
                                 openDetailsFragment(
-                                    app.packageName,
-                                    app
+                                    app.packageName
                                 )
                             }
                             .longClick { _ ->
