@@ -32,12 +32,6 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_uninstall"
-        android:icon="@drawable/ic_delete"
-        android:title="@string/action_uninstall"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/menu_download_manual"
         android:title="@string/title_manual_download" />
 

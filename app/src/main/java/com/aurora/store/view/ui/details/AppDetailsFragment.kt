@@ -429,7 +429,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         requireContext(),
                         app.packageName
                     )
-                it.findItem(R.id.action_uninstall)?.isVisible = app.isInstalled
                 it.findItem(R.id.menu_app_settings)?.isVisible = app.isInstalled
             }
 
@@ -449,10 +448,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
                     R.id.action_favourite -> {
                         viewModel.toggleFavourite(app)
-                    }
-
-                    R.id.action_uninstall -> {
-                        AppInstaller.uninstall(requireContext(), app.packageName)
                     }
 
                     R.id.menu_download_manual -> {
@@ -727,13 +722,11 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             binding.toolbar.menu.apply {
                 findItem(R.id.action_home_screen)?.isVisible =
                     ShortcutManagerUtil.canPinShortcut(requireContext(), app.packageName)
-                findItem(R.id.action_uninstall)?.isVisible = true
                 findItem(R.id.menu_app_settings)?.isVisible = true
             }
         } else {
             binding.toolbar.menu.apply {
                 findItem(R.id.action_home_screen)?.isVisible = false
-                findItem(R.id.action_uninstall)?.isVisible = false
                 findItem(R.id.menu_app_settings)?.isVisible = false
             }
         }
