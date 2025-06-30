@@ -153,7 +153,7 @@ class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     }
 
     override fun onAppClick(app: App) {
-        openDetailsFragment(app.packageName, app)
+        openDetailsFragment(app.packageName)
     }
 
     override fun onAppLongClick(app: App) {
