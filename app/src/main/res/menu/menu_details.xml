@@ -36,10 +36,6 @@
         android:title="@string/title_manual_download" />
 
     <item
-        android:id="@+id/menu_download_manager"
-        android:title="@string/title_download_manager" />
-
-    <item
         android:id="@+id/menu_app_settings"
         android:title="@string/title_app_settings" />
 

@@ -466,10 +466,6 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
                         startActivity(intent)
                     }
 
-                    R.id.menu_download_manager -> {
-                        findNavController().navigate(R.id.downloadFragment)
-                    }
-
                     R.id.action_playstore -> {
                         requireContext().browse("${Constants.SHARE_URL}${app.packageName}")
                     }
