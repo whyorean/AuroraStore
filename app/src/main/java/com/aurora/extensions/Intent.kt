@@ -19,28 +19,9 @@
 
 package com.aurora.extensions
 
-import android.content.Context
 import android.content.Intent
 import android.net.UrlQuerySanitizer
 import android.os.Bundle
-
-inline fun <reified T : Context> Context.newIntent(): Intent =
-    Intent(this, T::class.java)
-
-inline fun <reified T : Context> Context.newIntent(flags: Int): Intent {
-    val intent = newIntent<T>()
-    intent.flags = flags
-    return intent
-}
-
-inline fun <reified T : Context> Context.newIntent(extras: Bundle): Intent =
-    newIntent<T>(0, extras)
-
-inline fun <reified T : Context> Context.newIntent(flags: Int, extras: Bundle): Intent {
-    val intent = newIntent<T>(flags)
-    intent.putExtras(extras)
-    return intent
-}
 
 fun Intent.getPackageName(fallbackBundle: Bundle? = null): String? {
     return when (action) {
