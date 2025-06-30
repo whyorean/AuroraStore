@@ -92,7 +92,7 @@ class ExpandedStreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBind
                         AppListViewModel_()
                             .id(it.packageName.hashCode())
                             .app(it)
-                            .click { _ -> openDetailsFragment(it.packageName, it) }
+                            .click { _ -> openDetailsFragment(it.packageName) }
                     )
                 }
 

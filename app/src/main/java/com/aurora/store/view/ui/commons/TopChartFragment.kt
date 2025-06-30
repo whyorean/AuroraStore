@@ -123,7 +123,7 @@ class TopChartFragment : BaseFragment<FragmentTopContainerBinding>() {
                         AppListViewModel_()
                             .id(app.id)
                             .app(app)
-                            .click { _ -> openDetailsFragment(app.packageName, app) }
+                            .click { _ -> openDetailsFragment(app.packageName) }
                     )
                 }
 
