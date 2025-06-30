@@ -117,11 +117,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                             navigateToDefaultTab()
                         } else {
                             requireArguments().remove("packageName")
-                            findNavController().navigate(
-                                SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
-                                    packageName
-                                )
-                            )
+                            openDetailsFragment(packageName)
                         }
                     }
 
@@ -142,11 +138,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                             navigateToDefaultTab()
                         } else {
                             requireArguments().remove("packageName")
-                            findNavController().navigate(
-                                SplashFragmentDirections.actionSplashFragmentToAppDetailsFragment(
-                                    packageName
-                                )
-                            )
+                            openDetailsFragment(packageName)
                         }
                     }
 
