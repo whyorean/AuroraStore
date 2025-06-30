@@ -373,7 +373,7 @@ object NotificationUtil {
     private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
         return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.appDetailsFragment)
+            .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
             .setArguments(bundleOf("packageName" to packageName))
             .createPendingIntent()

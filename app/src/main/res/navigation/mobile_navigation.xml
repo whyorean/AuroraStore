@@ -192,14 +192,6 @@
             app:argType="com.aurora.gplayapi.data.models.StreamCluster" />
     </fragment>
     <fragment
-        android:id="@+id/devAppsFragment"
-        android:name="com.aurora.store.view.ui.details.DevAppsFragment"
-        tools:layout="@layout/fragment_generic_with_toolbar">
-        <argument
-            android:name="developerName"
-            app:argType="string" />
-    </fragment>
-    <fragment
         android:id="@+id/splashFragment"
         android:name="com.aurora.store.view.ui.splash.SplashFragment"
         tools:layout="@layout/fragment_splash">
