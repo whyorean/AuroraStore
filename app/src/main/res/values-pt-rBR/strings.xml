@@ -26,7 +26,7 @@
     <string name="action_filter_apps_with_ads">Apps com anúncios</string>
     <string name="action_export">Exportar</string>
     <string name="action_blacklist_add">Bloquear atualizações</string>
-    <string name="account_logout">Desconectar-se da Aurora</string>
+    <string name="account_logout">Desconectar da Aurora</string>
     <string name="account_login_using">Conectar-se usando</string>
     <string name="account_google">Google</string>
     <string name="about_xda">Fóruns XDA</string>
@@ -138,7 +138,7 @@
     <string name="action_pending">Pendente</string>
     <string name="action_open">Abrir</string>
     <string name="action_next">Avançar</string>
-    <string name="action_logout">Sair</string>
+    <string name="action_logout">Desconectar</string>
     <string name="action_leave">Sair</string>
     <string name="action_later">Mais tarde</string>
     <string name="action_join">Juntar-se</string>
@@ -362,7 +362,7 @@
     <string name="export_app_summary_fail">Falha ao exportar o pacote de app</string>
     <string name="action_uninstall_success">Desinstalado com sucesso</string>
     <string name="pref_network_proxy_url_message">Digite uma URL de proxy válida para passar todo o tráfego pela proxy.</string>
-    <string name="action_logout_confirmation_title">Sair?</string>
+    <string name="action_logout_confirmation_title">Desconectar-se?</string>
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
     <string name="check_updates">Buscar atualizações</string>
     <string name="details_data_safety_title">Segurança dos dados</string>
@@ -416,7 +416,7 @@
     <string name="details_compatibility_status_unsupported">Não suportado: Não funciona</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
     <string name="no_apps_available">Não há apps disponíveis</string>
-    <string name="pref_network_microg_login_title">Utilizar o microG para conectar as contas</string>
+    <string name="pref_network_microg_login_title">Utilizar o microG para conectar-se às contas</string>
     <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao se conectar às contas do Google para um fluxo de login mais simples</string>
     <string name="set">Definir</string>
     <string name="disable">Desativar</string>
