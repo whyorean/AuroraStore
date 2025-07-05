@@ -26,8 +26,8 @@
     <string name="action_filter_apps_with_ads">Apps com anúncios</string>
     <string name="action_export">Exportar</string>
     <string name="action_blacklist_add">Bloquear atualizações</string>
-    <string name="account_logout">Sair da Aurora</string>
-    <string name="account_login_using">Entrar usando</string>
+    <string name="account_logout">Desconectar da Aurora</string>
+    <string name="account_login_using">Conectar-se usando</string>
     <string name="account_google">Google</string>
     <string name="about_xda">Fóruns XDA</string>
     <string name="about_libera">Liberapay</string>
@@ -138,7 +138,7 @@
     <string name="action_pending">Pendente</string>
     <string name="action_open">Abrir</string>
     <string name="action_next">Avançar</string>
-    <string name="action_logout">Sair</string>
+    <string name="action_logout">Desconectar</string>
     <string name="action_leave">Sair</string>
     <string name="action_later">Mais tarde</string>
     <string name="action_join">Juntar-se</string>
@@ -189,8 +189,8 @@
     <string name="tab_for_you">Para você</string>
     <string name="tab_editor_choice">Escolha dos editores</string>
     <string name="tab_categories">Categorias</string>
-    <string name="spoof_apply">Certifique-se de entrar na sua conta novamente para aplicar a simulação</string>
-    <string name="purchase_session_expired">Sessão expirada, entre na sua conta novamente para obter uma nova sessão.</string>
+    <string name="spoof_apply">Certifique-se de conectar sua conta novamente para aplicar a simulação</string>
+    <string name="purchase_session_expired">Sessão expirada, conecte-se à sua conta novamente para obter uma nova sessão.</string>
     <string name="purchase_no_file">Não foi possível obter os arquivos</string>
     <string name="purchase_not_found">App não encontrado</string>
     <string name="purchase_unsupported">App não suportado</string>
@@ -206,7 +206,7 @@
     <string name="pref_install_delete_summary">Os APKs baixados serão apagados após a instalação</string>
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
     <string name="pref_filter_fdroid_summary">Não buscar por atualizações de apps instalados pelo F-Droid</string>
-    <string name="insecure_anonymous_apply">Entre na sua conta novamente e reinicie o app para aplicar as mudanças.</string>
+    <string name="insecure_anonymous_apply">Conecte-se à sua conta novamente e reinicie o app para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Páginas de recomendação</string>
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
     <string name="toast_manual_unavailable">O código de versão que você solicitou não está disponível.</string>
@@ -238,7 +238,7 @@
     <string name="download_eta_min">%1$dm %2$ds restando</string>
     <string name="download_eta_sec">%1$ds restando</string>
     <string name="session_good">Aê! Tudo certo.</string>
-    <string name="session_login_failed_google">Não foi possível entrar pelo Google</string>
+    <string name="session_login_failed_google">Não foi possível se conectar pelo Google</string>
     <string name="session_verifying">Verificando a sessão</string>
     <string name="session_scrapped">A ultima sessão foi descartada</string>
     <string name="updates_available">atualizações disponíveis</string>
@@ -251,7 +251,7 @@
     <string name="installer_shizuku_unavailable">O Shizuku não está instalado ou configurado corretamente.</string>
     <string name="onboarding_permission_notifications_desc">Enviar notificações a respeito do estado das instalações</string>
     <string name="pref_install_mode_shizuku">Instalador Shizuku</string>
-    <string name="session_enjoy">Entre na sua conta e aproveite.</string>
+    <string name="session_enjoy">Conecte-se à sua conta e aproveite.</string>
     <string name="session_verifying_google">Verificando a sessão do Google</string>
     <string name="title_advanced">Avançado</string>
     <string name="toast_import_failed">Não foi possível importar as configurações de dispositivo</string>
@@ -346,10 +346,10 @@
     <string name="add_dispenser_hint">URL do distribuidor</string>
     <string name="remove_dispenser_summary">Deseja remover o distribuidor \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Adicionar</string>
-    <string name="session_login">Entre na sua conta do Google Play</string>
+    <string name="session_login">Conecte-se à sua conta do Google Play</string>
     <string name="about_aurora_store_title">Sobre a Aurora Store</string>
     <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
-    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da Google Play Store oficial. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, você precisa ter uma conta do Google Play e entrar na conta ao abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre na sua conta do Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
+    <string name="about_aurora_store_summary">A Aurora Store permite que você pesquise e instale apps da Google Play Store oficial. Você pode ver as descrições dos apps, capturas de tela, atualizações, os comentários dos usuários e baixar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, você precisa ter uma conta do Google Play e conectar a conta ao abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de tela e outros conteúdos da Aurora Store são acessados, baixados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que você entre na sua conta do Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps baixados pela Aurora Store ou qualquer desenvolvedor dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
     <string name="toast_app_unavailable">App não disponível para seu dispositivo</string>
     <string name="toast_fav_import_failed">Falha ao importar os curtidos!</string>
     <string name="details_no_favourites">Não há apps curtidos</string>
@@ -362,7 +362,7 @@
     <string name="export_app_summary_fail">Falha ao exportar o pacote de app</string>
     <string name="action_uninstall_success">Desinstalado com sucesso</string>
     <string name="pref_network_proxy_url_message">Digite uma URL de proxy válida para passar todo o tráfego pela proxy.</string>
-    <string name="action_logout_confirmation_title">Sair?</string>
+    <string name="action_logout_confirmation_title">Desconectar-se?</string>
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
     <string name="check_updates">Buscar atualizações</string>
     <string name="details_data_safety_title">Segurança dos dados</string>
@@ -385,7 +385,7 @@
     <string name="status_downloading">Baixando</string>
     <string name="status_cancelled">Cancelado</string>
     <string name="notification_channel_account">Notificação relacionada à conta</string>
-    <string name="authentication_required_unarchive">Entre na sua conta do Google Play para desarquivar o app!</string>
+    <string name="authentication_required_unarchive">Conecte-se à sua conta do Google Play para desarquivar o app!</string>
     <string name="authentication_required_title">Autenticação necessária</string>
     <string name="checking_updates">Buscando atualizações</string>
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
@@ -416,8 +416,8 @@
     <string name="details_compatibility_status_unsupported">Não suportado: Não funciona</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps instalados</string>
     <string name="no_apps_available">Não há apps disponíveis</string>
-    <string name="pref_network_microg_login_title">Utilizar o microG para entrar nas contas</string>
-    <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao entrar em contas do Google para um fluxo de login mais simples</string>
+    <string name="pref_network_microg_login_title">Utilizar o microG para conectar-se às contas</string>
+    <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao se conectar às contas do Google para um fluxo de login mais simples</string>
     <string name="set">Definir</string>
     <string name="disable">Desativar</string>
     <string name="toast_proxy_disabled">Proxy desativada com sucesso</string>
