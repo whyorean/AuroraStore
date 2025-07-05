@@ -207,10 +207,6 @@ abstract class BaseFlavouredOnboardingFragment : BaseFragment<FragmentOnboarding
                 }
             }
 
-            is InstallerEvent.Failed -> {
-                // Wrap up the installation process & log error message
-            }
-
             else -> {
 
             }
