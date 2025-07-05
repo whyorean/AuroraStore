@@ -133,7 +133,10 @@ class ShizukuInstaller @Inject constructor(
         sharedLibPkgName: String = "",
         displayName: String = ""
     ) {
-        Log.i(TAG, "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}")
+        Log.i(
+            TAG,
+            "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}"
+        )
 
         val (sessionId, session) = kotlin.runCatching {
             val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
@@ -168,7 +171,11 @@ class ShizukuInstaller @Inject constructor(
             Log.i(TAG, "Writing splits to session for ${sharedLibPkgName.ifBlank { packageName }}")
             getFiles(packageName, versionCode, sharedLibPkgName).forEach {
                 it.inputStream().use { input ->
-                    session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}", 0, -1).use { output ->
+                    session.openWrite(
+                        "${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}",
+                        0,
+                        -1
+                    ).use { output ->
                         input.copyTo(output)
                         session.fsync(output)
                     }

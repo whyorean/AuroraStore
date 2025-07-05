@@ -1,7 +1,6 @@
 /*
  * Aurora Store
  *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *  Copyright (C) 2022, The Calyx Institute
  *
  *  Aurora Store is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,27 +16,9 @@
  *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+package com.aurora.store.data.receiver
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        // libsu is only available via jitpack
-        maven("https://jitpack.io/") {
-            content {
-                includeModule("com.github.topjohnwu.libsu", "core")
-            }
-        }
-        maven { url = uri("https://developer.huawei.com/repo/") }
-    }
-}
-include(":app")
-rootProject.name = "AuroraStore4"
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class InstallerStatusReceiver : BaseInstallerStatusReceiver()
