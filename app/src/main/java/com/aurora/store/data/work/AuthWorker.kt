@@ -13,6 +13,7 @@ import androidx.core.os.bundleOf
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.data.model.AccountType
@@ -21,7 +22,6 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.CertUtil.GOOGLE_ACCOUNT_TYPE
 import com.aurora.store.util.CertUtil.GOOGLE_PLAY_AUTH_TOKEN_TYPE
 import com.aurora.store.util.CertUtil.GOOGLE_PLAY_CERT
-import com.aurora.store.util.CertUtil.GOOGLE_PLAY_PACKAGE_NAME
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlin.coroutines.resume
@@ -140,7 +140,7 @@ open class AuthWorker @AssistedInject constructor(
                     Account(email, GOOGLE_ACCOUNT_TYPE),
                     GOOGLE_PLAY_AUTH_TOKEN_TYPE,
                     bundleOf(
-                        "overridePackage" to GOOGLE_PLAY_PACKAGE_NAME,
+                        "overridePackage" to PACKAGE_NAME_PLAY_STORE,
                         "overrideCertificate" to Base64.decode(
                             GOOGLE_PLAY_CERT,
                             Base64.DEFAULT
