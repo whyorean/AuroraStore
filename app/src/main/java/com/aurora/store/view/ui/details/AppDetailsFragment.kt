@@ -31,6 +31,7 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.compose.ui.util.fastAny
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -46,8 +47,10 @@ import coil3.transform.CircleCropTransformation
 import coil3.transform.RoundedCornersTransformation
 import com.aurora.Constants
 import com.aurora.Constants.EXODUS_SUBMIT_PAGE
+import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
+import com.aurora.extensions.isHuawei
 import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
@@ -397,6 +400,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             AuroraApp.events.installerEvent.collect { onEvent(it) }
         }
+
     }
 
     override fun onResume() {
@@ -525,6 +529,24 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun purchase(app: App) {
+        /**
+         * MicroG Fragment Preconditions:
+         * 1. App being installed must have GSF dependency
+         * 2. It should be a Huawei device
+         * 3. Supported App Gallery should be available, i.e. v15.1.x or above
+         * 4. MicroG bundle should not be already installed
+         *
+         * TODO: Extract this trigger out of Vanilla & put in Huawei flavour
+         */
+        if (
+            app.dependencies.dependentPackages.fastAny { it == PACKAGE_NAME_GMS } &&
+            isHuawei &&
+            PackageUtil.hasSupportedAppGallery(requireContext()) &&
+            !PackageUtil.isMicroGBundleInstalled(requireContext())
+        ) {
+            return openGMSWarningFragment()
+        }
+
         if (app.fileList.requiresObbDir()) {
             if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(app)
@@ -1036,7 +1058,7 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun updateCompatibilityInfo() {
-        if (app.dependencies.dependentPackages.contains(PackageUtil.PACKAGE_NAME_GMS)) {
+        if (app.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS)) {
             viewModel.fetchPlexusReport(app.packageName)
 
             binding.layoutDetailsCompatibility.txtGmsDependency.apply {

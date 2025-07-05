@@ -23,6 +23,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.EXTRA_SESSION_ID
 import android.util.Log
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
@@ -35,27 +36,30 @@ import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.installer.base.InstallerBase
-import com.aurora.store.util.CommonUtil.inForeground
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class InstallerStatusReceiver : BroadcastReceiver() {
+abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
 
-    private val TAG = InstallerStatusReceiver::class.java.simpleName
+    private val TAG = BaseInstallerStatusReceiver::class.java.simpleName
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null && intent?.action == ACTION_INSTALL_STATUS) {
-            val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)!!
-            val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME)!!
-            val versionCode = intent.getLongExtra(EXTRA_VERSION_CODE, -1)
+            val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: return
+            val displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME) ?: packageName
 
+            val versionCode = intent.getLongExtra(EXTRA_VERSION_CODE, -1)
+            val sessionId = intent.getIntExtra(EXTRA_SESSION_ID, -1)
             val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
             val extra = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
+
+            Log.i(
+                TAG,
+                "$packageName ($versionCode) sessionId=$sessionId, status=$status, extra=$extra"
+            )
 
             // If package was successfully installed, exit after notifying user and doing cleanup
             if (status == PackageInstaller.STATUS_SUCCESS) {
@@ -64,19 +68,22 @@ class InstallerStatusReceiver : BroadcastReceiver() {
 
                 AuroraApp.enqueuedInstalls.remove(packageName)
                 InstallerBase.notifyInstallation(context, displayName, packageName)
+
                 if (Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE)) {
                     PathUtil.getAppDownloadDir(context, packageName, versionCode)
                         .deleteRecursively()
                 }
-                return
+
+                return postStatus(status, packageName, extra, context)
             }
 
-            if (inForeground() && status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
-                promptUser(intent, context)
+            if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                doAppropriatePrompt(context, intent, sessionId)
             } else {
                 AuroraApp.enqueuedInstalls.remove(packageName)
-                postStatus(status, packageName, extra, context)
                 notifyUser(context, packageName, displayName, status)
+
+                postStatus(status, packageName, extra, context)
             }
         }
     }
@@ -94,24 +101,38 @@ class InstallerStatusReceiver : BroadcastReceiver() {
             displayName,
             InstallerBase.getErrorString(context, status)
         )
-        notificationManager!!.notify(packageName.hashCode(), notification)
+        notificationManager?.notify(packageName.hashCode(), notification)
     }
 
-    private fun promptUser(intent: Intent, context: Context) {
-        IntentCompat.getParcelableExtra(intent, Intent.EXTRA_INTENT, Intent::class.java)?.let {
-            it.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-            it.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
-            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    internal fun promptUser(context: Context, intent: Intent) {
+        runOnUiThread {
+            val launchIntent = IntentCompat.getParcelableExtra(
+                intent,
+                Intent.EXTRA_INTENT,
+                Intent::class.java
+            )
 
-            try {
-                runOnUiThread { context.startActivity(it) }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to trigger installation!", exception)
+            if (launchIntent != null) {
+                launchIntent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
+                launchIntent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
+                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+                try {
+                    context.startActivity(launchIntent)
+                } catch (exception: Exception) {
+                    Log.e(TAG, "Failed to launch intent!", exception)
+                }
+            } else {
+                Log.w(TAG, "No launch intent found in the installation request.")
             }
         }
     }
 
-    private fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
+    open fun doAppropriatePrompt(context: Context, intent: Intent, sessionId: Int) {
+        promptUser(context, intent)
+    }
+
+    open fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
         val event = when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
                 InstallerEvent.Installed(packageName!!).apply {
@@ -132,6 +153,7 @@ class InstallerStatusReceiver : BroadcastReceiver() {
                 }
             }
         }
+
         AuroraApp.events.send(event)
     }
 }

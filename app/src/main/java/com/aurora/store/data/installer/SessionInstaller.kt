@@ -25,6 +25,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.EXTRA_SESSION_ID
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
@@ -240,24 +241,31 @@ class SessionInstaller @Inject constructor(
     }
 
     private fun commitInstall(sessionInfo: SessionInfo) {
-        Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
-
-        val sessionId = sessionInfo.sessionId
-        packageInstaller.getSessionInfo(sessionId) ?: run {
-            Log.e(TAG, "Session $sessionId is no longer valid, skipping commit.")
-            removeFromInstallQueue(sessionInfo.packageName)
-            return
-        }
-
         try {
-            val session = packageInstaller.openSession(sessionId)
+            Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
+
+            val existingSessionInfo = packageInstaller.getSessionInfo(sessionInfo.sessionId)
+            if (existingSessionInfo == null) {
+                Log.e(TAG, "Session ${sessionInfo.sessionId} is no longer valid.")
+                return removeFromInstallQueue(sessionInfo.packageName)
+            }
+
+            commitSession(sessionInfo)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error committing session: ${e.message}")
+            removeFromInstallQueue(sessionInfo.packageName)
+            postError(sessionInfo.packageName, e.localizedMessage, e.stackTraceToString())
+        }
+    }
+
+    private fun commitSession(sessionInfo: SessionInfo) {
+        try {
+            val session = packageInstaller.openSession(sessionInfo.sessionId)
             session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
             session.close()
-        } catch (e: SecurityException) {
-            Log.e(TAG, "Failed to commit session $sessionId: ${e.message}")
-            removeFromInstallQueue(sessionInfo.packageName)
         } catch (e: Exception) {
-            Log.e(TAG, "Unexpected error in commitInstall for session $sessionId", e)
+            Log.e(TAG, "Error committing session: ${e.message}")
+        } finally {
             removeFromInstallQueue(sessionInfo.packageName)
         }
     }
@@ -266,6 +274,7 @@ class SessionInstaller @Inject constructor(
         val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
             action = ACTION_INSTALL_STATUS
             setPackage(context.packageName)
+            putExtra(EXTRA_SESSION_ID, sessionInfo.sessionId)
             putExtra(EXTRA_PACKAGE_NAME, sessionInfo.packageName)
             putExtra(EXTRA_VERSION_CODE, sessionInfo.versionCode)
             putExtra(EXTRA_DISPLAY_NAME, sessionInfo.displayName)
@@ -279,5 +288,23 @@ class SessionInstaller @Inject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT,
             true
         )
+    }
+
+    enum class ServiceResultCode(val code: Int, val reason: String) {
+        SUCCESS(0, "Request successful"),
+        SERVICE_VERSION_UPDATE_REQUIRED(2, "Interface depends on a higher version"),
+        SERVICE_INVALID(4, "Service is invalid"),
+        METHOD_UNSUPPORTED(5, "Interface is not supported"),
+        RESOLUTION_REQUIRED(6, "Needs to be resolved by opening PendingIntent"),
+        NETWORK_ERROR(7, "Network exception, unable to complete interface request"),
+        INTERNAL_ERROR(8, "Internal code error, incorrect parameter transmission in scenario"),
+        TIMEOUT(10, "Interface access timeout return"),
+        DEAD_CLIENT(12, "Current client is unavailable"),
+        RESPONSE_ERROR(13, "Server returns abnormal response"),
+        PROTOCOL_ERROR(15, "Not signed Huawei App Market agreement");
+
+        companion object {
+            fun fromCode(code: Int): ServiceResultCode? = entries.find { it.code == code }
+        }
     }
 }
