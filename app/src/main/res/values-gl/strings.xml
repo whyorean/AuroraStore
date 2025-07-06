@@ -32,14 +32,14 @@
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_install_mode_native">Instalador nativo</string>
     <string name="pref_install_delete_title">Eliminar APK unha vez instalado</string>
-    <string name="pref_install_delete_summary">As APKs serán eliminadas por defecto</string>
+    <string name="pref_install_delete_summary">As APKs descargadas serán eliminadas por defecto tras a instalación</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicacións de F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Borra as aplicacións instaladas por F-Droid da lista de aplicacións</string>
+    <string name="pref_filter_fdroid_summary">Non comprobar actualizacións para as aplicacións descargadas por F-Droid</string>
     <string name="pref_common_extra">Extras</string>
     <string name="onboarding_permission_installer_desc">Permitir instalación de aplicacións desde a Aurora Store</string>
     <string name="onboarding_permission_installer">Permiso do Instalador</string>
     <string name="onboarding_permission_esm">Xestor de Almacenamento Externo</string>
-    <string name="onboarding_permission_esa_desc">Para gardar descargas (APKs &amp; OBBs), exporte e importe as configuracións de dispositivos no almacenamento externo.</string>
+    <string name="onboarding_permission_esa_desc">Para gardar arquivos de expansión APK (OBBs) de aplicacións e xogos grandes.</string>
     <string name="onboarding_permission_esa">Acceso a almacenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_title_welcome">Benvido/a</string>
@@ -79,7 +79,7 @@
     <string name="exodus_view_report">Ver relatorio</string>
     <string name="exodus_substring">rastrexador(es) atopado(s) na versión</string>
     <string name="exodus_progress">A comprobar os rastrexadores…</string>
-    <string name="exodus_powered">Disponibilizado por Exodus</string>
+    <string name="exodus_powered">Desenvolvido con Exodus Privacy</string>
     <string name="exodus_no_tracker">Non contén rastrexadores</string>
     <string name="download_speed_estimating">A estimar</string>
     <string name="download_resume_all">Retomar todas</string>
@@ -228,7 +228,7 @@
     <string name="title_spoof_manager">Xestionar disfrace</string>
     <string name="spoof_apply">Asegúrese de volver a iniciar sesión para aplicar o disfrace</string>
     <string name="tab_top_charts">Top da clasificación</string>
-    <string name="pref_install_mode_am">Instalador XA.</string>
+    <string name="pref_install_mode_am">Instalador XA (Xestor de Android).</string>
     <string name="installer_am_unavailable">Instale o Xestor de Aplicacións ou mude o instalador.</string>
     <string name="action_import">Importar</string>
     <string name="session_enjoy">Inicie sesión e desfrute.</string>
@@ -276,4 +276,25 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualización dispoñíbel</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> máis</string>
     <string name="failed_generating_session">Fallo ao xerar a sesión, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="about_wiki_title">Wiki</string>
+    <string name="about_wiki_summary">Atopar respostas a preguntas frequentes (FAQ), pasos para a soluciñon de problemas e máis</string>
+    <string name="action_favourite">Favorito</string>
+    <string name="action_remove_all">Eliminar todo</string>
+    <string name="action_request_analysis">Solicitar unha nova análise</string>
+    <string name="action_select_all">Seleccionar todo</string>
+    <string name="action_uninstall_success">Desinstalado correctamente</string>
+    <string name="action_home_screen">Engadir á pantalla de inicio</string>
+    <string name="details_no_favourites">Non se atoparon aplicación favoritas</string>
+    <string name="details_data_safety_title">Seguridade dos datos</string>
+    <string name="details_data_safety_subtitle">Practicas de privacidade e seguridade de datos declarados polo desenvolvedor</string>
+    <string name="details_ratings_title_hint">Titulo da reseña</string>
+    <string name="download_clear_finished">Limpar o finalizado</string>
+    <string name="filter_latest">Máis recente</string>
+    <string name="notification_channel_account">Notificación relacionada coa conta</string>
+    <string name="notification_channel_export">Notificación de exportación da aplicación</string>
+    <string name="notification_channel_install">Notificación de instalación</string>
+    <string name="notification_channel_downloads">Notificación de descargas</string>
+    <string name="onboarding_permission_installer_legacy_desc">Permitir a instalación de aplicacións de fontes descoñecidas</string>
+    <string name="onboarding_permission_doze">Descargas en segundo plano</string>
+    <string name="onboarding_permission_doze_desc">Permitir a Aurora Store descargar e actualizar aplicacións en segundo plano</string>
 </resources>
