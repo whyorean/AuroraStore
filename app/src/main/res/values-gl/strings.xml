@@ -19,7 +19,7 @@
     <string name="purchase_failed">Descarga fallida</string>
     <string name="pref_ui_similar_apps_desc">Amosar grupos similares e relacionados na páxina de detalles da aplicación</string>
     <string name="pref_ui_similar_apps">Aplicacións semellantes e relacionadas</string>
-    <string name="pref_ui_no_for_you_desc">Mostrar Suexestións Personalizadas na pantalla de inicio</string>
+    <string name="pref_ui_no_for_you_desc">Mostrar Suxestións Personalizadas na pantalla de inicio</string>
     <string name="pref_ui_no_for_you">Suxestións personalizadas</string>
     <string name="pref_ui_layout_tab">Seleccione a lapela por defecto</string>
     <string name="pref_ui_layout">Deseño</string>
@@ -28,9 +28,9 @@
     <string name="pref_install_mode_title">Método de instalación</string>
     <string name="pref_install_mode_summary">Seleccione o modo de instalación do APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
-    <string name="pref_install_mode_services">Servizos Aurora</string>
+    <string name="pref_install_mode_services">Servizos Aurora (Obsoleto)</string>
     <string name="pref_install_mode_root">Instalador root</string>
-    <string name="pref_install_mode_native">Instalador nativo</string>
+    <string name="pref_install_mode_native">Instalador nativo (Obsoleto)</string>
     <string name="pref_install_delete_title">Eliminar APK unha vez instalado</string>
     <string name="pref_install_delete_summary">As APKs descargadas serán eliminadas por defecto tras a instalación</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicacións de F-Droid</string>
@@ -228,7 +228,7 @@
     <string name="title_spoof_manager">Xestionar disfrace</string>
     <string name="spoof_apply">Asegúrese de volver a iniciar sesión para aplicar o disfrace</string>
     <string name="tab_top_charts">Top da clasificación</string>
-    <string name="pref_install_mode_am">Instalador XA (Xestor de Android).</string>
+    <string name="pref_install_mode_am">Instalador AM.</string>
     <string name="installer_am_unavailable">Instale o Xestor de Aplicacións ou mude o instalador.</string>
     <string name="action_import">Importar</string>
     <string name="session_enjoy">Inicie sesión e desfrute.</string>
@@ -297,4 +297,9 @@
     <string name="onboarding_permission_installer_legacy_desc">Permitir a instalación de aplicacións de fontes descoñecidas</string>
     <string name="onboarding_permission_doze">Descargas en segundo plano</string>
     <string name="onboarding_permission_doze_desc">Permitir a Aurora Store descargar e actualizar aplicacións en segundo plano</string>
+    <string name="pref_vending_version_title">Versión de Google Play</string>
+    <string name="pref_vending_version_device">Por defecto (segundo a configuración do dispositivo)</string>
+    <string name="pref_network_proxy_url">Dirección URL do proxy</string>
+    <string name="pref_network_proxy_url_message">Introduce unga URL de proxy válida para redirixir todos os datos a través do proxy.</string>
+    <string name="pref_updates_incompatible">Mostrar actualizacións incompatibles</string>
 </resources>
