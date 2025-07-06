@@ -37,10 +37,10 @@
     <string name="pref_filter_fdroid_summary">Non comprobar actualizacións para as aplicacións descargadas por F-Droid</string>
     <string name="pref_common_extra">Extras</string>
     <string name="onboarding_permission_installer_desc">Permitir instalación de aplicacións desde a Aurora Store</string>
-    <string name="onboarding_permission_installer">Permiso do Instalador</string>
+    <string name="onboarding_permission_installer">Permisos do Instalador</string>
     <string name="onboarding_permission_esm">Xestor de Almacenamento Externo</string>
     <string name="onboarding_permission_esa_desc">Para gardar arquivos de expansión APK (OBBs) de aplicacións e xogos grandes.</string>
-    <string name="onboarding_permission_esa">Acceso a almacenamento externo</string>
+    <string name="onboarding_permission_esa">Acceso ao almacenamento externo</string>
     <string name="onboarding_welcome_select">Como está\?</string>
     <string name="onboarding_title_welcome">Benvido/a</string>
     <string name="onboarding_title_permissions">Permisos</string>
@@ -64,7 +64,7 @@
     <string name="installer_status_failure_session">Non foi posíbel crear a sesión</string>
     <string name="installer_status_failure_blocked">A instalación foi bloqueada</string>
     <string name="installer_status_failure">O instalador fallou</string>
-    <string name="installer_service_misconfigured">Configure os servizos de Aurora e garanta todos os permisos primeiro.</string>
+    <string name="installer_service_misconfigured">Configure os servizos de Aurora e permita todos os permisos primeiro.</string>
     <string name="installer_service_unavailable">Instale os servizos de Aurora 1.0.9 ou superior, ou cambie o instalador.</string>
     <string name="installer_service_available">Os servizos de Aurora están dispoñíbeis e listos para seren instalados.</string>
     <string name="installer_root_unavailable">Sen acceso root. Garántao ou cambie o instalador.</string>
@@ -328,7 +328,7 @@
     <string name="app_language">Idioma da aplicación</string>
     <string name="app_links_title">Enlaces da aplicación</string>
     <string name="app_links_desc">Permitir que Aurora Store abra enlaces compatibles</string>
-    <string name="google_play_store_desc">Google Play, tamen coñecido como Google Play Store, anteriormente Android Market.</string>
+    <string name="google_play_store_desc">Google Play, tamén coñecido como Google Play Store e anteriormente Android Market</string>
     <string name="android_market_desc">Android Market era unha tenda online que ofrecía aplicacións de software diseñadas para dispositivos Android, retirada en 2017.</string>
     <string name="failed_apk_export">Erro ao exportar os APKs</string>
     <string name="no_apps_available">Non hai aplicacións dispoñibles</string>
@@ -436,4 +436,9 @@
     <string name="pref_updates_app_source">Fonte da aplicación</string>
     <string name="verification_failed">Fallou ao verificar os arquivos descargados</string>
     <string name="action_install_microG">Instalar paquete de microG</string>
+    <string name="onboarding_title_gsf">Compatibilidade da App</string>
+    <string name="onboarding_title_gsf_desc">Dependencias non atopadas</string>
+    <string name="onboarding_gms_agreement">Lin e acepto os Termos de Servizo e a Politica de Privacidade de microG</string>
+    <string name="onboarding_gms_missing">Non puidemos atopar os Servizos de Google Play no seu dispositivo, varias aplicacións populares agora requíreno para funcionar adecuadamente!</string>
+    <string name="onboarding_gms_microg">microG é unha implementación gratuíta e de código aberto que prové funcionalidade similar para executar aplicacións dependentes dos Servizos de Google Play para dispositivos android medianta a re-implementación\n\nmicroG permite ás aplicacións acceder a esas APIs de Google, mellorando a Compatibilidade para os usuarios mentras ofrece beneficios de privacidade \n\nmicroG executarase automáticamente en segundo plano cando abras aplicacións que dependen dos Servicios de Google Mobile</string>
 </resources>
