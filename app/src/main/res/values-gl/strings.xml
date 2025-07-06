@@ -328,4 +328,16 @@
     <string name="app_language">Idioma da aplicación</string>
     <string name="app_links_title">Enlaces da aplicación</string>
     <string name="app_links_desc">Permitir que Aurora Store abra enlaces compatibles</string>
+    <string name="google_play_store_desc">Google Play, tamen coñecido como Google Play Store, anteriormente Android Market.</string>
+    <string name="android_market_desc">Android Market era unha tenda online que ofrecía aplicacións de software diseñadas para dispositivos Android, retirada en 2017.</string>
+    <string name="failed_apk_export">Erro ao exportar os APKs</string>
+    <string name="no_apps_available">Non hai aplicacións dispoñibles</string>
+    <string name="app_info_downloads">Descargas</string>
+    <string name="app_info_updated_on">Última actualización</string>
+    <string name="app_info_min_android">Versión mínima de Android</string>
+    <string name="app_info_target_android">Nivel de API obxetivo</string>
+    <string name="session_installer_subtitle">Instalador baseado en sesión para APKs emaquetados/divididos</string>
+    <string name="session_installer_desc">Recomendado, integrado e compatible con todas as versións de Android</string>
+    <string name="root_installer_subtitle">Instalador basado en shell que usa permisos de root</string>
+    <string name="root_installer_desc">Require privilexios de root/superusuario, compatible con todas as versións de Android</string>
 </resources>
