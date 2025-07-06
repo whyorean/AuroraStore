@@ -327,4 +327,5 @@
     <string name="check_connectivity">Comprobar a conexión</string>
     <string name="app_language">Idioma da aplicación</string>
     <string name="app_links_title">Enlaces da aplicación</string>
+    <string name="app_links_desc">Permitir que Aurora Store abra enlaces compatibles</string>
 </resources>
