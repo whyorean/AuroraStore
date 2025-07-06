@@ -339,5 +339,23 @@
     <string name="session_installer_subtitle">Instalador baseado en sesión para APKs emaquetados/divididos</string>
     <string name="session_installer_desc">Recomendado, integrado e compatible con todas as versións de Android</string>
     <string name="root_installer_subtitle">Instalador basado en shell que usa permisos de root</string>
-    <string name="root_installer_desc">Require privilexios de root/superusuario, compatible con todas as versións de Android</string>
+    <string name="root_installer_desc">Require privilexios de root/superusuario, compatible con todas as versións de Android.</string>
+    <string name="native_installer_subtitle">Instalador baseado en intención, dispoñible en todos os dispositivos</string>
+    <string name="native_installer_desc">Ideal para dispositivos con versións anteriores a Android 4.4</string>
+    <string name="services_installer_subtitle">Instalador para instalacións en segundo plano</string>
+    <string name="services_installer_desc">Require que os servicios de Aurora se instalen como unha aplicación con privilexios de sistema</string>
+    <string name="am_installer_subtitle">Xestor de paquetes completo de código aberto</string>
+    <string name="am_installer_desc">Require App Manager, necesita modo ADB/root para instalar cando a optimización de MIUI está activada</string>
+    <string name="shizuku_installer_subtitle">Uso directo das API do sistema con privilexios ADB/root</string>
+    <string name="shizuku_installer_desc">Require que primeiro se configure e se lle concedan permisos a aplicación Shizuku ou Sui</string>
+    <string name="manual_download_hint">Introduce o código da versión que desexas descargar</string>
+    <string name="faqs_subtitle">Tes preguntas? Descubre as respostas</string>
+    <string name="source_code_title">Código Fonte</string>
+    <string name="source_code_subtitle">Descubre qué hai dentro</string>
+    <string name="privacy_policy_title">Política de privacidade</string>
+    <string name="privacy_policy_subtitle">Aprende sobre como usa Aurora Store os teus datos</string>
+    <string name="disclaimer_subtitle">Responsabilidade</string>
+    <string name="made_with_love">Feito con <xliff:g id="heart_emoji">%1$s</xliff:g> en India</string>
+    <string name="about_aurora_store_title">Sobre Aurora Store</string>
+    <string name="about_aurora_store_subtitle">Máis información sobre Aurora Store</string>
 </resources>
