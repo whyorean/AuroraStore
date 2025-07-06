@@ -440,5 +440,8 @@
     <string name="onboarding_title_gsf_desc">Dependencias non atopadas</string>
     <string name="onboarding_gms_agreement">Lin e acepto os Termos de Servizo e a Politica de Privacidade de microG</string>
     <string name="onboarding_gms_missing">Non puidemos atopar os Servizos de Google Play no seu dispositivo, varias aplicacións populares agora requíreno para funcionar adecuadamente!</string>
-    <string name="onboarding_gms_microg">microG é unha implementación gratuíta e de código aberto que prové funcionalidade similar para executar aplicacións dependentes dos Servizos de Google Play para dispositivos android medianta a re-implementación\n\nmicroG permite ás aplicacións acceder a esas APIs de Google, mellorando a Compatibilidade para os usuarios mentras ofrece beneficios de privacidade \n\nmicroG executarase automáticamente en segundo plano cando abras aplicacións que dependen dos Servicios de Google Mobile</string>
+    <string name="onboarding_gms_microg">microG é unha implementación gratuíta e de código aberto que prové funcionalidade similar para executar aplicacións dependentes dos Servizos de Google Play para dispositivos android medianta a re-implementación.\n\nmicroG permite ás aplicacións acceder a esas APIs de Google, mellorando a Compatibilidade para os usuarios mentras ofrece beneficios de privacidade. \n\nmicroG executarase automáticamente en segundo plano cando abras aplicacións que dependen dos Servicios de Google Mobile.</string>
+    <string name="microg_privacy_policy">Ler Política de Privacidade de microG</string>
+    <string name="microg_license_agreement">Ler Acordo de Licenza de microG</string>
+    <string name="microg_website">Visitar web do Proxecto microG</string>
 </resources>
