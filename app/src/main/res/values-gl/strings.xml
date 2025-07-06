@@ -368,5 +368,45 @@
     <string name="pref_dispenser_summary">Ver e administrar dispensadores de tokens para inicios de sesión anónimos</string>
     <string name="no_dispensers_available">Non hai dispensadores dispoñibles</string>
     <string name="add_dispenser_title">Engadir dispensador</string>
-    <string name="add_dispenser_summary">Engadir un dispensador de tokens a Aurora Store. os dispensadores de tokens proporcionan credenciales de conta a Aurora Store para iniciar sesión de forma anónima.</string>
+    <string name="add_dispenser_summary">Engadir un dispensador de tokens a Aurora Store. Os dispensadores de tokens proporcionan credenciales de conta a Aurora Store para iniciar sesión de forma anónima.</string>
+    <string name="add_dispenser_error">URL Inválida</string>
+    <string name="add_dispenser_hint">URL do dispensador</string>
+    <string name="remove_dispenser_title">Eliminar dispensador</string>
+    <string name="remove_dispenser_summary">Desexa eliminar o dispensador \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="add">Engadir</string>
+    <string name="remove">Eliminar</string>
+    <string name="toast_fav_import_failed">Erro ao importar favoritos!</string>
+    <string name="toast_fav_export_failed">Erro ao exportar favoritos!</string>
+    <string name="toast_fav_import_success">Favoritos importados!</string>
+    <string name="toast_fav_export_success">Favoritos exportados!</string>
+    <string name="toast_black_import_failed">Erro ao importar a lista negra!</string>
+    <string name="toast_black_export_failed">Erro ao exportar a lista negra!</string>
+    <string name="toast_black_import_success">Lista negra importada!</string>
+    <string name="toast_black_export_success">Lista negra exportada!</string>
+    <string name="export_app_title">Exportador de arquivos</string>
+    <string name="export_app_summary">Agarde, exportando o teu arquivo</string>
+    <string name="export_app_summary_success">O paquete da aplicación exportouse correctamente</string>
+    <string name="export_app_summary_fail">Erro ao exportar o paquete da aplicación</string>
+    <string name="action_logout_confirmation_title">Pechar a sesión?</string>
+    <string name="action_logout_confirmation_message">Está seguro de que quere pechar a sesión?</string>
+    <string name="check_updates">Buscar actualizacións</string>
+    <string name="checking_updates">Buscando actualizacións</string>
+    <string name="force_restart_title">Reiniciar Aurora Store</string>
+    <string name="force_restart_summary">É necesario reiniciar Aurora Store para aplicar a configuración recén modificada</string>
+    <string name="status_downloading">Descargando</string>
+    <string name="status_failed">Errou</string>
+    <string name="status_cancelled">Cancelada</string>
+    <string name="status_completed">Completada</string>
+    <string name="status_queued">En espera</string>
+    <string name="status_unavailable">Non dispoñible</string>
+    <string name="status_verifying">Verificando</string>
+    <string name="authentication_required_title">Autenticación obrigatoria</string>
+    <string name="authentication_required_unarchive">Por favor, inicia sesión na túa conta de Google Play para desarquivar a aplicación!</string>
+    <string name="default_spoof">Por defecto</string>
+    <string name="available_spoof">Dispoñible</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permisos</string>
+    <string name="action_unarchive">Desarquivar</string>
+    <string name="unable_to_open">Non é posible abrir a aplicación</string>
+    <string name="plexus_powered">Desenvolvido por Plexus</string>
+    <string name="plexus_progress">Comprobando compatibilidad…</string>
 </resources>
