@@ -156,7 +156,7 @@
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anónimo</string>
     <string name="about_xda_summary">Visite o fío de Aurora Store no XDA para participar en discusións e suxestións.</string>
-    <string name="about_xda">Fío de desenvolvemento</string>
+    <string name="about_xda">Foro XDA</string>
     <string name="about_telegram_summary">Xúntese ao grupo de soporte de Aurora para participar en discusións e suxestións.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">Doar por Paypal</string>
@@ -429,5 +429,11 @@
     <string name="pref_network_proxy_desc">Ver e xestionar a configuración do proxy</string>
     <string name="pref_common_advanced">Avanzado</string>
     <string name="pref_updates_restrictions_title">Restricións das actualizacións automáticas</string>
-    <string name="pref_updates_restrictions_desc">Configurar restricións para actualizacións automáticas</string>
+    <string name="pref_updates_restrictions_desc">Configurar restricións para actualizacións automáticas.</string>
+    <string name="pref_updates_restrictions_metered">Só en redes sen restrición de uso</string>
+    <string name="pref_updates_restrictions_idle">Cando o dispositivo está inactivo</string>
+    <string name="pref_updates_restrictions_battery">Cando a batería non está baixa</string>
+    <string name="pref_updates_app_source">Fonte da aplicación</string>
+    <string name="verification_failed">Fallou ao verificar os arquivos descargados</string>
+    <string name="action_install_microG">Instalar paquete de microG</string>
 </resources>
