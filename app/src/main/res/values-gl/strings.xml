@@ -422,5 +422,12 @@
     <string name="details_compatibility_status_unknown">Descoñecido: Non comprobado índa</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplicacións instaladas</string>
     <string name="pref_network_microg_login_title">Usar microG para iniciar sesión nas contas</string>
-    <string name="pref_network_microg_login_desc">Autenticación mediante microG ao iniciar sesión en contas de Google para simplificar o fluxo de inicio de sesión.</string>
+    <string name="pref_network_microg_login_desc">Autenticación mediante microG ao iniciar sesión en contas de Google para simplificar o fluxo de inicio de sesión</string>
+    <string name="set">Establecer</string>
+    <string name="disable">Desactivar</string>
+    <string name="toast_proxy_disabled">Proxy desactivado con éxito</string>
+    <string name="pref_network_proxy_desc">Ver e xestionar a configuración do proxy</string>
+    <string name="pref_common_advanced">Avanzado</string>
+    <string name="pref_updates_restrictions_title">Restricións das actualizacións automáticas</string>
+    <string name="pref_updates_restrictions_desc">Configurar restricións para actualizacións automáticas</string>
 </resources>
