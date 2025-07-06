@@ -408,5 +408,19 @@
     <string name="action_unarchive">Desarquivar</string>
     <string name="unable_to_open">Non é posible abrir a aplicación</string>
     <string name="plexus_powered">Desenvolvido por Plexus</string>
-    <string name="plexus_progress">Comprobando compatibilidad…</string>
+    <string name="plexus_progress">Comprobando compatibilidade…</string>
+    <string name="details_compatibility_title">Compatibilidade</string>
+    <string name="details_compatibility_gms_required_title">Requite os Servizos de Google Play</string>
+    <string name="details_compatibility_gms_required_subtitle">Pode que teñas que instalar a librería propietaria de Google ou unha reimplementación FOSS como microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Funciona sen os Servizos de Google Play</string>
+    <string name="details_compatibility_gms_not_required_subtitle">Esta aplicación funciona sen a biblioteca propietaria de Google. Sin embargo, pode requerir outras librerías de terceiros para funcionar correctamente.</string>
+    <string name="details_compatibility_microg">Co Proxecto microG</string>
+    <string name="details_compatibility_no_gms">Sen os Servizos de Google Play</string>
+    <string name="details_compatibility_status_compatible">Compatible: Funciona sen ningún problema</string>
+    <string name="details_compatibility_status_limited">Limitado: Funciona con funcións limitadas</string>
+    <string name="details_compatibility_status_unsupported">Non compatible: Non funcional</string>
+    <string name="details_compatibility_status_unknown">Descoñecido: Non comprobado índa</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplicacións instaladas</string>
+    <string name="pref_network_microg_login_title">Usar microG para iniciar sesión nas contas</string>
+    <string name="pref_network_microg_login_desc">Autenticación mediante microG ao iniciar sesión en contas de Google para simplificar o fluxo de inicio de sesión.</string>
 </resources>
