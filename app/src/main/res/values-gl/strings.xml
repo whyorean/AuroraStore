@@ -356,6 +356,17 @@
     <string name="privacy_policy_subtitle">Aprende sobre como usa Aurora Store os teus datos</string>
     <string name="disclaimer_subtitle">Responsabilidade</string>
     <string name="made_with_love">Feito con <xliff:g id="heart_emoji">%1$s</xliff:g> en India</string>
-    <string name="about_aurora_store_title">Sobre Aurora Store</string>
+    <string name="about_aurora_store_title">Acerca de Aurora Store</string>
     <string name="about_aurora_store_subtitle">Máis información sobre Aurora Store</string>
+    <string name="about_aurora_store_summary">Aurora Store permiteche buscar e descargar aplicacións da Google Play Store oficial. Podes ver as descripcións, capturas, actualizacións, comentarios de outros usuarios e descargar o APK da aplicación directamente de Google Play ao teu dispositivo. Para usar Aurora Store, necesitas unga conta de Google Play, e iniciar sesión coa túa conta de Google Play a ptimeira vez que abras e configures Aurora Store\n\nA diferenza da tenda de aplicacións tradicional, Aurora Store non lle pertenecen, licencia oy distribúe ningunha aplicación. Todas as aplicaciónd, descricións, capturas e outros contidos en Aurora Store directamente acceden, descargan e/ou se mostran dende Google Play. Aurora Store funciona exactamente como unha porta ou buscador, permitindoche iniciar sesión a túa conta de Google Play e atopar aplicacións de Google Play.\n\nPor favor, entende que Aurora Store non ten a aprobación, patrocinio ou autorización de Google, Google Play, ningunha das aplicacións descargadas dende Aurora Store nin ningún dos desenvolvedores; tampouto ten Aurora Store ningunha afiliación, cooperación oy conexión con eles.</string>
+    <string name="title_more">Máis</string>
+    <string name="manage_account">Xestionar a túa conta</string>
+    <string name="pref_clear_device_owner_title">Restablecer propietario do dispositivo</string>
+    <string name="pref_clear_device_owner_summary">Elimina Aurora Store como a aplicación propietaria do dispositivo</string>
+    <string name="pref_clear_device_owner_desc">Isto revocará o permiso do instalador de sesión para instalar silenciosamente unha aplicación. Proceder a borrar a propiedade do dispositivo?</string>
+    <string name="pref_dispenser_title">Xestionar dispensadores</string>
+    <string name="pref_dispenser_summary">Ver e administrar dispensadores de tokens para inicios de sesión anónimos</string>
+    <string name="no_dispensers_available">Non hai dispensadores dispoñibles</string>
+    <string name="add_dispenser_title">Engadir dispensador</string>
+    <string name="add_dispenser_summary">Engadir un dispensador de tokens a Aurora Store. os dispensadores de tokens proporcionan credenciales de conta a Aurora Store para iniciar sesión de forma anónima.</string>
 </resources>
