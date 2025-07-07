@@ -435,4 +435,8 @@
     <string name="app_info_min_android">Erforderliche Android-Version</string>
     <string name="app_info_target_android">Ziel-API-Level</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> Berechtigungen</string>
+    <string name="action_install_microG">microG-Paket installieren</string>
+    <string name="onboarding_title_gsf">App-Kompatibilität</string>
+    <string name="onboarding_title_gsf_desc">Fehlende Abhängigkeiten</string>
+    <string name="onboarding_gms_agreement">Ich habe die Nutzungsbedingungen und Datenschutzrichtlinien von microG gelesen und stimme ihnen zu.</string>
 </resources>
