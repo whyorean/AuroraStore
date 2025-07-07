@@ -29,7 +29,7 @@
     <string name="title_download_playstore">Play Store</string>
     <string name="title_apps_library">Aplicações na biblioteca</string>
     <string name="onboarding_permission_installer_desc">Permitir instalação de aplicações a partir da Aurora Store</string>
-    <string name="dialog_desc_native_split">Não é possível instalar conjuntos de aplicações via instalador nativo. Altere para o instalador de sessão, serviços ou root.</string>
+    <string name="dialog_desc_native_split">Não pode instalar conjuntos de aplicações (dividir) através do instalador nativo. Altere o seu instalador para Sessão, Serviços ou Raiz.</string>
     <string name="device_miui_subtitle">O instalador de sessão não pode instalar aplicações devido às otimizações MIUI.</string>
     <string name="action_filter_paid_apps">Paga</string>
     <string name="action_filter_apps_with_ads">Aplicações com anúncios</string>
@@ -98,7 +98,7 @@
     <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>
     <string name="pref_install_delete_title">Eliminar o APK após a instalação</string>
     <string name="pref_install_delete_summary">Os APKs descarregados serão eliminados imediatamente após a instalação</string>
-    <string name="pref_filter_fdroid_summary">Não verifique atualizações de aplicativos baixados ou instalados do F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Não procurar por atualizações para as aplicações instaladas do F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtrar aplicações F-Droid</string>
     <string name="pref_common_extra">Extras</string>
     <string name="onboarding_permission_installer">Permissão de instalação</string>
@@ -287,9 +287,9 @@
     <string name="details_ratings_title_hint">Título da avaliação</string>
     <string name="pref_network_proxy_url">URL do proxy</string>
     <string name="pref_updates_check_frequency_desc">Configure o intervalo das atualizações automáticas, em horas.</string>
-    <string name="pref_aurora_only">Apenas aplicações Aurora Store</string>
+    <string name="pref_aurora_only">Filtrar aplicações de outras fontes</string>
     <string name="toast_proxy_invalid">URL inválido. Verifique o formato!</string>
-    <string name="pref_aurora_only_desc">Verifique apenas atualizações de aplicativos instalados pela Aurora Store</string>
+    <string name="pref_aurora_only_desc">Não procurar por atualizações para as aplicações instaladas de fontes fora da Loja Aurora</string>
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="title_app_settings">Configurações da app</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
@@ -305,10 +305,10 @@
     <string name="pref_updates_auto_off">Não atualizar automaticamente as aplicações</string>
     <string name="action_request_analysis">Requisitar nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APK</string>
-    <string name="pref_updates_incompatible">Atualizações incompatíveis</string>
+    <string name="pref_updates_incompatible">Mostrar atualizações que possam falhar</string>
     <string name="action_home_screen">Adicionar ao ecrã inicial</string>
     <string name="download_clear_finished">Limpeza efetuada</string>
-    <string name="pref_updates_incompatible_desc">Mostrar atualizações para aplicações incompatíveis ou desativadas</string>
+    <string name="pref_updates_incompatible_desc">Exibir as atualizações para as aplicações incompatíveis ou desativadas que possam falhar a instalação</string>
     <string name="manual_download_hint">Introduza o código da versão que pretende descarregar</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
     <string name="source_code_title">Código-fonte</string>
@@ -359,7 +359,7 @@
     <string name="action_logout_confirmation_title">Terminar sessão?</string>
     <string name="toast_fav_export_success">Favoritos exportados!</string>
     <string name="export_app_summary_success">Pacote de aplicações exportado com êxito</string>
-    <string name="export_app_summary_fail">Falha ao exportar o pacote de aplicações</string>
+    <string name="export_app_summary_fail">Não foi possível exportar o pacote de aplicações</string>
     <string name="action_uninstall_success">Desinstalado com sucesso</string>
     <string name="details_no_favourites">Não foram encontradas aplicações favoritas</string>
     <string name="about_aurora_store_title">Sobre a Aurora Store</string>
@@ -401,7 +401,7 @@
     <string name="action_select_all">Selecionar todos</string>
     <string name="status_verifying">A verificar</string>
     <string name="no_apps_available">Nenhum app disponível</string>
-    <string name="pref_network_microg_login_title">Usar o microG para fazer login em contas</string>
+    <string name="pref_network_microg_login_title">Usar microG para iniciar a sessão nas contas</string>
     <string name="set">Definir</string>
     <string name="pref_updates_restrictions_battery">Quando a pilha não está baixa</string>
     <string name="filter_latest">Mais recentes</string>
@@ -410,7 +410,7 @@
     <string name="details_compatibility_no_gms">Sem Google Play Services</string>
     <string name="details_compatibility_status_compatible">Compatível: Funciona sem problemas</string>
     <string name="details_compatibility_status_unknown">Desconhecido: Ainda não foi verificado</string>
-    <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao fazer login em contas do Google para um fluxo de login mais simples.</string>
+    <string name="pref_network_microg_login_desc">Autenticar usando o microG quando iniciar a sessão nas contas Google para um fluxo de autenticação mais simples</string>
     <string name="disable">Desativar</string>
     <string name="toast_proxy_disabled">Proxy desativada com sucesso</string>
     <string name="pref_network_proxy_desc">Veja e gira a configuração de proxy</string>
@@ -428,4 +428,16 @@
     <string name="plexus_progress">A verificar a compatibilidade…</string>
     <string name="details_compatibility_title">Compatibilidade</string>
     <string name="details_compatibility_gms_required_title">Requer o Google Play Services</string>
+    <string name="action_install_microG">Instalar Conjunto microG</string>
+    <string name="app_info_downloads">Transferências</string>
+    <string name="app_info_updated_on">Última atualização</string>
+    <string name="app_info_min_android">Versão Mínima de Android</string>
+    <string name="app_info_target_android">Nível de API de Destino</string>
+    <string name="onboarding_title_gsf">Compatibilidade da Aplicação</string>
+    <string name="onboarding_title_gsf_desc">Dependências em falta</string>
+    <string name="onboarding_gms_agreement">Eu li e concordo com os \'Termos do Serviço\' e \'Política de Privacidade\' de microG</string>
+    <string name="onboarding_gms_missing">Não foi possível encontrar os Serviços do Google Play no seu dispositivo, vários aplicações populares agora exigem-no para funcionarem corretamente!</string>
+    <string name="microg_privacy_policy">Ler \'Política de Privacidade\' de microG</string>
+    <string name="microg_license_agreement">Ler \'Licença e Acordo\' de microG</string>
+    <string name="microg_website">"Visitar o \'\'site\'\' da Web do Projeto  microG"</string>
 </resources>
