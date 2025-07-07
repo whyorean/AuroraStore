@@ -435,4 +435,8 @@
     <string name="app_info_updated_on">Laatst bijgewerkt</string>
     <string name="app_info_min_android">Minimale Androidversie</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> rechten</string>
+    <string name="action_install_microG">microG-pakket installeren</string>
+    <string name="onboarding_title_gsf">App-compatibiliteit</string>
+    <string name="onboarding_title_gsf_desc">Ontbrekende afhankelijkheden</string>
+    <string name="onboarding_gms_agreement">Ik heb de microG-servicevoorwaarden en het privacybeleid gelezen en ga hiermee akkoord.</string>
 </resources>
