@@ -435,7 +435,7 @@
     <string name="app_info_downloads">Downloads</string>
     <string name="app_info_min_android">Versão do Android mínima</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissões</string>
-    <string name="action_install_microG">Instalar pacote do microG</string>
+    <string name="action_install_microG">Instalar o conjunto do microG</string>
     <string name="onboarding_title_gsf">Compatibilidade de apps</string>
     <string name="onboarding_title_gsf_desc">Dependências ausentes</string>
     <string name="onboarding_gms_agreement">Eu li e concordo com os termos de serviço e a política de privacidade do microG</string>
