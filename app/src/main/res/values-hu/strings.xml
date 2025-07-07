@@ -31,7 +31,7 @@
     <string name="action_later">Később</string>
     <string name="action_join">Csatlakozás</string>
     <string name="action_installing">Telepítés alatt</string>
-    <string name="action_install">Telepít</string>
+    <string name="action_install">Telepítés</string>
     <string name="action_ignore">Elutasítás</string>
     <string name="action_granted">Engedélyezve</string>
     <string name="action_grant">Engedélyezése</string>
@@ -99,7 +99,7 @@
     <string name="installer_status_failure_conflict">Ütköző csomag található</string>
     <string name="installer_status_failure_session">Nem sikerült létrehozni a munkamenetet</string>
     <string name="installer_status_failure_blocked">A telepítés blokkolva lett</string>
-    <string name="installer_status_failure">Sikertelen telepítés</string>
+    <string name="installer_status_failure">A telepítés sikertelen</string>
     <string name="installer_service_misconfigured">Először állítsa be az Aurora szolgáltatásokat, és adjon meg minden engedélyt.</string>
     <string name="installer_service_unavailable">Telepítse az Aurora szolgáltatások 1.0.9-es vagy magasabb verzióját, vagy változtasson a telepítőn.</string>
     <string name="installer_service_available">Az Aurora szolgáltatások elérhetőek és telepítésre készek.</string>
@@ -435,4 +435,9 @@
     <string name="app_info_target_android">Cél API-szint</string>
     <string name="pref_common_advanced">Speciális</string>
     <string name="pref_updates_app_source">Alkalmazás forrása</string>
+    <string name="action_install_microG">Telepítse a microG csomagot</string>
+    <string name="onboarding_title_gsf">Alkalmazáskompatibilitás</string>
+    <string name="onboarding_title_gsf_desc">Hiányzó függőségek</string>
+    <string name="onboarding_gms_agreement">Elolvastam és elfogadom a microG Általános Szerződési Feltételeit és Adatvédelmi Szabályzatát</string>
+    <string name="onboarding_gms_missing">Nem található Google Play Services szolgáltatás az eszközén, több népszerű alkalmazásnak is szüksége van rá a megfelelő működéshez!</string>
 </resources>
