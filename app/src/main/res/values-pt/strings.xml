@@ -309,19 +309,19 @@
     <string name="action_home_screen">Adicionar ao ecrã inicial</string>
     <string name="download_clear_finished">Limpeza efetuada</string>
     <string name="pref_updates_incompatible_desc">Exibir as atualizações para as aplicações incompatíveis ou desativadas que possam falhar a instalação</string>
-    <string name="manual_download_hint">Introduza o código da versão que pretende descarregar</string>
+    <string name="manual_download_hint">Insira o código da versão que pretende transferir</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
-    <string name="source_code_title">Código-fonte</string>
+    <string name="source_code_title">Código fonte</string>
     <string name="source_code_subtitle">Descubra o que está no interior</string>
     <string name="privacy_policy_title">Política de privacidade</string>
-    <string name="privacy_policy_subtitle">Saiba como a Aurora Store utiliza os seus dados</string>
-    <string name="disclaimer_subtitle">Responsabilidade e obrigação de prestar contas</string>
-    <string name="services_installer_desc">Requer que os serviços Aurora sejam instalados como uma aplicação de sistema privilegiado</string>
+    <string name="privacy_policy_subtitle">Saiba como a Loja Aurora utiliza os seus dados</string>
+    <string name="disclaimer_subtitle">Responsabilidade e Prestação de Contas</string>
+    <string name="services_installer_desc">Requer que os Serviços Aurora estejam instalados como uma aplicação do sistema privilegiada</string>
     <string name="native_installer_desc">Mais adequado para dispositivos com versões inferiores ao Android 4.4</string>
     <string name="services_installer_subtitle">Instalador para instalações em segundo plano</string>
-    <string name="shizuku_installer_subtitle">Utilizar as APIs do sistema diretamente com privilégios adb / root</string>
+    <string name="shizuku_installer_subtitle">Utilizar as APIs do sistema diretamente com privilégios adb/raiz</string>
     <string name="shizuku_installer_desc">Requer Shizuku ou Sui, precisa de ser configurado e de ter permissão concedida</string>
-    <string name="session_installer_subtitle">Instalador baseado em sessão para APKs agrupados / divididos</string>
+    <string name="session_installer_subtitle">Instalador baseado em sessão para APKs agrupados/divididos</string>
     <string name="session_installer_desc">Recomendado, incorporado e compatível com todas as versões do Android</string>
     <string name="root_installer_subtitle">Instalador baseado em shell usando permissões de root</string>
     <string name="root_installer_desc">Requer privilégios de root / superutilizador, suporta todas as versões do Android.</string>
@@ -331,8 +331,8 @@
     <string name="pref_clear_device_owner_title">Limpar o proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_summary">Remove a Aurora Store como a aplicação do proprietário do dispositivo</string>
     <string name="pref_clear_device_owner_desc">Isto irá revogar a permissão do instalador da sessão para instalar silenciosamente a aplicação. Continuar com a limpeza da propriedade do dispositivo?</string>
-    <string name="am_installer_subtitle">Gestor de pacotes de código aberto com todas as funcionalidades</string>
-    <string name="am_installer_desc">Requer o App Manager, precisa do modo adb / root para instalar quando a otimização do MIUI está ativada</string>
+    <string name="am_installer_subtitle">Gestor de pacotes de código aberto completo</string>
+    <string name="am_installer_desc">Requer o \'Gestor de Aplicações\', precisa do modo adb/raiz para instalar quando a otimização de miui está ativada</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="pref_dispenser_title">Gerir os distribuidores</string>
     <string name="pref_dispenser_summary">Ver e gerir distribuidores de token para inícios de sessão anónimos</string>
@@ -362,8 +362,8 @@
     <string name="export_app_summary_fail">Não foi possível exportar o pacote de aplicações</string>
     <string name="action_uninstall_success">Desinstalado com sucesso</string>
     <string name="details_no_favourites">Não foram encontradas aplicações favoritas</string>
-    <string name="about_aurora_store_title">Sobre a Aurora Store</string>
-    <string name="about_aurora_store_subtitle">Saiba mais sobre a Aurora Store</string>
+    <string name="about_aurora_store_title">Sobre a Loja Aurora</string>
+    <string name="about_aurora_store_subtitle">Saiba mais sobre a Loja Aurora</string>
     <string name="toast_fav_import_failed">Falha na importação dos favoritos!</string>
     <string name="toast_fav_export_failed">Falha na exportação dos favoritos!</string>
     <string name="toast_fav_import_success">Favoritos importados!</string>
@@ -375,7 +375,7 @@
     <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de aplicações de fontes desconhecidas</string>
     <string name="toast_app_unavailable">Aplicação não disponível para o seu dispositivo</string>
     <string name="about_aurora_store_summary">A Aurora Store permite que pesquise e instale apps da Google Play Store oficial. Pode ver as descrições dos apps, capturas de ecrã, atualizações, os comentários dos utilizadores e descarregar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, precisa ter uma conta do Google Play e entrar na conta quando abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de ecrã e outros conteúdos da Aurora Store são acedidos, descarregados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que entre na sua conta Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps descarregados pela Aurora Store ou qualquer programador dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
-    <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
+    <string name="made_with_love">Desenvolvido com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="notification_channel_account">Notificação relacionada à conta</string>
     <string name="notification_channel_export">Notificação de exportação de aplicativo</string>
     <string name="notification_channel_install">Notificação de instalação</string>
@@ -439,5 +439,5 @@
     <string name="onboarding_gms_missing">Não foi possível encontrar os Serviços do Google Play no seu dispositivo, vários aplicações populares agora exigem-no para funcionarem corretamente!</string>
     <string name="microg_privacy_policy">Ler \'Política de Privacidade\' de microG</string>
     <string name="microg_license_agreement">Ler \'Licença e Acordo\' de microG</string>
-    <string name="microg_website">"Visitar o \'\'site\'\' da Web do Projeto  microG"</string>
+    <string name="microg_website">Visitar o \'\'site\'\' da Web do Projeto microG</string>
 </resources>
