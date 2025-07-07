@@ -435,4 +435,13 @@
     <string name="app_info_min_android">Minimální verze Androidu</string>
     <string name="app_info_target_android">Cílová úroveň API</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> oprávnění</string>
+    <string name="action_install_microG">Nainstalovat balíček microG</string>
+    <string name="onboarding_title_gsf">Kompatibilita aplikací</string>
+    <string name="onboarding_title_gsf_desc">Chybějící závislosti</string>
+    <string name="onboarding_gms_agreement">Přečetl/a jsem si a souhlasím se Smluvními podmínkami a Zásadami ochrany osobních údajů microG</string>
+    <string name="onboarding_gms_missing">Na vašem zařízení se nám nepodařilo nalézt Služby Google Play. Mnoho populárních aplikací je nyní vyžaduje pro správnou funkčnost!</string>
+    <string name="onboarding_gms_microg">microG je bezplatná a otevřená implementace, která poskytuje podobnou funkčnost pro běh aplikací závislých na Službách Google Play pro zařízení Android skrze reimplementaci.\n\nmicroG umožňuje aplikacím přístup k daným rozhraním API Google, čímž zlepšuje kompatibilitu pro uživatele a poskytuje výhody ve formě soukromí.\n\nmicroG se spustí automaticky na pozadí, jakmile otevřete aplikace závislé na Mobilních službách Google.</string>
+    <string name="microg_privacy_policy">Přečtěte si Zásady ochrany údajů microG</string>
+    <string name="microg_license_agreement">Přečtěte si Licenci a Smlouvu microG</string>
+    <string name="microg_website">Navštivte web projektu microG</string>
 </resources>
