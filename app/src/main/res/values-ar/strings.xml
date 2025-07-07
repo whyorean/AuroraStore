@@ -435,4 +435,13 @@
     <string name="app_info_min_android">الحد الأدنى لإصدار أندرويد</string>
     <string name="app_info_target_android">مستوى API المستهدف</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> الأذونات</string>
+    <string name="action_install_microG">ثبِّت حزمة microG</string>
+    <string name="onboarding_title_gsf">توافق التطبيق</string>
+    <string name="onboarding_title_gsf_desc">اعتماديات مفقودة</string>
+    <string name="onboarding_gms_agreement">لقد قرأت ووافقت على شروط خدمة microG وسياسة الخصوصية</string>
+    <string name="onboarding_gms_missing">لم نتمكن من العثور على خدمات جوجل بلاي على جهازك، فالعديد من التطبيقات الشائعة تتطلبها الآن لتعمل بشكل صحيح!</string>
+    <string name="onboarding_gms_microg">برنامج microG مجاني ومفتوح المصدر يوفر وظائف مشابهة لتشغيل التطبيقات التي تعتمد على خدمات جوجل بلاي لأجهزة أندرويد من خلال إعادة التنفيذ.\n\nيتيح microG للتطبيقات الوصول إلى واجهات برمجة تطبيقات جوجل هذه، مما يعزز التوافق للمستخدمين مع توفير مزايا الخصوصية.\n\nسيعمل microG تلقائيًا في الخلفية عند فتح التطبيقات التي تعتمد على خدمات جوجل للأجهزة المحمولة.</string>
+    <string name="microg_privacy_policy">اقرأ سياسة الخصوصية لـ microG</string>
+    <string name="microg_license_agreement">اقرأ ترخيص واتفاقية microG</string>
+    <string name="microg_website">زر موقع مشروع microG</string>
 </resources>
