@@ -278,7 +278,7 @@
     <string name="session_scrapped">Utolsó munkamenet törölve</string>
     <string name="app_links_desc">Az Aurora Store által támogatott hivatkozások megnyitásának engedélyezése</string>
     <string name="check_connectivity">Ellenőrizze az internetkapcsolatot</string>
-    <string name="google_play_store_desc">Google Play, avagy Google Play Bolt, korábban Android Piactér.</string>
+    <string name="google_play_store_desc">Google Play, avagy Google Play Áruház, korábban Android Market.</string>
     <string name="failed_to_generate_session">Nem sikerült generálni munkamenetet</string>
     <string name="verifying_new_session">Új munkamenet ellenőrzése</string>
     <string name="app_language">Alkalmazás nyelve</string>
@@ -329,14 +329,14 @@
     <string name="native_installer_subtitle">Intent alapú telepítő, minden eszközön elérhető</string>
     <string name="am_installer_desc">App Manager szükséges, adb/root mód szükséges a telepítéshez, ha a miui optimalizálás be van kapcsolva</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="session_login">Jelentkezzen be a Google Play fiókjába</string>
+    <string name="session_login">Jelentkezzen be a Google Play-fiókjába</string>
     <string name="title_more">Több</string>
     <string name="manage_account">Fiók kezelése</string>
     <string name="about_aurora_store_title">Az Aurora Áruház névjegye</string>
     <string name="pref_clear_device_owner_summary">Eltávolítja az Aurora Áruházat az eszköztulajdonosi rangból</string>
     <string name="about_aurora_store_subtitle">Tudjon meg többet az Aurora Áruházról</string>
     <string name="about_wiki_summary">Találja meg válaszait a gyakran ismételt kérdések között (GYIK), hibaelhárítási lépések és egyebek</string>
-    <string name="about_aurora_store_summary">Az Aurora Áruház lehetővé teszi az alkalmazások keresését és letöltését a hivatalos Google Play áruházból. Ellenőrizheti az alkalmazások leírását, képernyőképeit, frissítéseit, más felhasználók megjegyzéseit, és letöltheti az APK-t közvetlenül a Google Play-ből a készülékére. Az Aurora Áruház használatához Google Play fiókkal kell rendelkeznie, és az Aurora Áruház első megnyitásakor és konfigurálásakor be kell jelentkeznie a Google Play fiókjába. \n \nA hagyományos alkalmazásboltokkal ellentétben az Aurora Áruház nem birtokol, nem licencel és nem terjeszt semmilyen alkalmazást. Az Aurora Áruházban található összes alkalmazás, alkalmazásleírás, képernyőkép és egyéb tartalom közvetlenül a Google Play-ből érhető el, tölthető le és/vagy jeleníthető meg. Az Aurora Áruház pontosan úgy működik, mint egy ajtó vagy egy böngésző, amely lehetővé teszi, hogy bejelentkezzen a Google Play fiókjába, és megtalálja az alkalmazásokat a Google Play-ből. \n \nFelhívjuk figyelmét, hogy az Aurora Áruház nem rendelkezik a Google, a Google Play, az Aurora Áruházon keresztül letöltött alkalmazások vagy bármely alkalmazásfejlesztő jóváhagyásával, szponzorálásával vagy engedélyével; az Aurora Áruház nem áll velük semmilyen együttműködésben vagy kapcsolatban.</string>
+    <string name="about_aurora_store_summary">Az Aurora Store lehetővé teszi az alkalmazások keresését és letöltését a hivatalos Google Play Áruházból. Ellenőrizheti az alkalmazások leírását, képernyőképeit, frissítéseit, más felhasználók megjegyzéseit, és letöltheti az APK-t közvetlenül a Google Play-ről eszközére. Az Aurora Store használatához Google Play-fiókkal kell rendelkeznie, és az Aurora Store első megnyitásakor és konfigurálásakor be kell jelentkeznie a Google Play-fiókjába. \n \nA hagyományos alkalmazásboltokkal ellentétben az Aurora Store nem birtokol, nem licencel és nem terjeszt semmilyen alkalmazást. Az Aurora Store-ban található összes alkalmazás, alkalmazásleírás, képernyőkép és egyéb tartalom közvetlenül a Google Play-ből érhető el, tölthető le és/vagy jeleníthető meg. Az Aurora Store pontosan úgy működik, mint egy ajtó vagy egy böngésző, amely lehetővé teszi, hogy bejelentkezzen a Google Play-fiókjába, és megtalálja az alkalmazásokat a Google Play-ből. \n \nFelhívjuk figyelmét, hogy az Aurora Store nem rendelkezik a Google, a Google Play, az Aurora Store-on keresztül letöltött alkalmazások vagy bármely alkalmazásfejlesztő jóváhagyásával, szponzorálásával vagy engedélyével; az Aurora Store nem áll velük semmilyen együttműködésben vagy kapcsolatban.</string>
     <string name="action_favourite">Kedvenc</string>
     <string name="details_no_favourites">Nem található kedvenc alkalmazás</string>
     <string name="pref_clear_device_owner_title">Az eszköz tulajdonjogának törlése</string>
@@ -385,7 +385,7 @@
     <string name="status_unavailable">Nem elérhető</string>
     <string name="status_failed">Sikertelen</string>
     <string name="notification_channel_account">Fiókkal kapcsolatos értesítés</string>
-    <string name="authentication_required_unarchive">Jelentkezzen be Google Play fiókjába az alkalmazás archiválásának feloldásához!</string>
+    <string name="authentication_required_unarchive">Jelentkezzen be Google Play-fiókjába az alkalmazás archiválásának feloldásához!</string>
     <string name="authentication_required_title">Hitelesítés szükséges</string>
     <string name="checking_updates">Frissítések ellenőrzése</string>
     <string name="made_with_love">Szeretettel &lt;xliff:g id=„heart_emoji”&gt;%1$s&lt;/xliff:g&gt; készült Indiában</string>
@@ -404,8 +404,8 @@
     <string name="no_apps_available">Nincsenek elérhető alkalmazások</string>
     <string name="toast_black_export_failed">A feketelista exportálása sikertelen!</string>
     <string name="plexus_progress">Kompatibilitás ellenőrzése…</string>
-    <string name="details_compatibility_gms_required_title">A Google Play szolgáltatás szükséges hozzá</string>
-    <string name="details_compatibility_gms_not_required_title">A Google Play szolgáltatás nélkül működik</string>
+    <string name="details_compatibility_gms_required_title">Google Play-szolgáltatás szükséges hozzá</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play-szolgáltatások nélkül is működik</string>
     <string name="details_compatibility_microg">A microG projekttel</string>
     <string name="details_compatibility_status_compatible">Kompatibilis: Minden probléma nélkül működik</string>
     <string name="details_compatibility_status_limited">Korlátozott: Korlátozott funkciókkal működik</string>
@@ -439,5 +439,9 @@
     <string name="onboarding_title_gsf">Alkalmazáskompatibilitás</string>
     <string name="onboarding_title_gsf_desc">Hiányzó függőségek</string>
     <string name="onboarding_gms_agreement">Elolvastam és elfogadom a microG Általános Szerződési Feltételeit és Adatvédelmi Szabályzatát</string>
-    <string name="onboarding_gms_missing">Nem található Google Play Services szolgáltatás az eszközén, több népszerű alkalmazásnak is szüksége van rá a megfelelő működéshez!</string>
+    <string name="onboarding_gms_missing">Nem található Google Play-szolgáltatások az eszközén, több népszerű alkalmazásnak is szüksége van rá a megfelelő működéshez!</string>
+    <string name="onboarding_gms_microg">A microG egy ingyenes és nyílt forráskódú megvalósítás, amely újraimplementálással hasonló funkciókat biztosít a Google Play-szolgáltatásoktól függő alkalmazások futtatásához Android-eszközökön.\n\nA microG lehetővé teszi az alkalmazásoknak, hogy hozzáférjenek a Google API-khoz, javítva a kompatibilitást a felhasználók számára, miközben adatvédelmi előnyöket kínál.\n\nA microG automatikusan fut a háttérben, amikor a Google mobilszolgáltatásaitól függő alkalmazásokat nyit meg.</string>
+    <string name="microg_privacy_policy">A microG adatvédelmi irányelveinek elolvasása</string>
+    <string name="microg_license_agreement">A microG licenc és felhasználási feltételeinek elolvasása</string>
+    <string name="microg_website">Látogasson el a microG weboldalára</string>
 </resources>
