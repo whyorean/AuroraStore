@@ -157,7 +157,7 @@
     <string name="dialog_title_self_update">Dostępna jest nowa aktualizacja</string>
     <string name="device_miui_subtitle">Instalator sesji nie może zainstalować aplikacji z powodu Optymalizacji MIUI.</string>
     <string name="device_miui_title">Wykryto MIUI!</string>
-    <string name="menu_terms">Warunki korzystania z usługi</string>
+    <string name="menu_terms">Warunki świadczenia usługi</string>
     <string name="menu_license">Licencja</string>
     <string name="menu_disclaimer">Zrzeczenie się odpowiedzialności</string>
     <string name="installer_status_user_action">Czekam na potwierdzenie użytkownika</string>
@@ -435,4 +435,12 @@
     <string name="app_info_min_android">Minimalna wersja systemu Android</string>
     <string name="app_info_target_android">Docelowy poziom API</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> uprawnień</string>
+    <string name="action_install_microG">Zainstaluj pakiet microG</string>
+    <string name="onboarding_title_gsf">Zgodność aplikacji</string>
+    <string name="onboarding_title_gsf_desc">Brakujące zależności</string>
+    <string name="microg_privacy_policy">Przeczytaj politykę prywatności microG</string>
+    <string name="microg_license_agreement">Przeczytaj licencję i umowę microG</string>
+    <string name="microg_website">Odwiedź stronę internetową projektu microG</string>
+    <string name="onboarding_gms_agreement">Przeczytałem i akceptuję warunki świadczenia usług oraz politykę prywatności microG</string>
+    <string name="onboarding_gms_missing">Nie znaleźliśmy usług Google Play na twoim urządzeniu. Niektóre popularne aplikacje wymagają tej usługi do prawidłowego działania!</string>
 </resources>
