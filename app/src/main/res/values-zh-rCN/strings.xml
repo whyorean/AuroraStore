@@ -435,4 +435,13 @@
     <string name="app_info_min_android">最低 Android 版本</string>
     <string name="app_info_target_android">目标 API 等级</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> 个权限</string>
+    <string name="action_install_microG">安装 microG 套件</string>
+    <string name="onboarding_title_gsf">应用兼容性</string>
+    <string name="onboarding_title_gsf_desc">缺少依赖项</string>
+    <string name="onboarding_gms_agreement">我已阅读并同意 microG 的服务条款和隐私政策</string>
+    <string name="onboarding_gms_missing">我们在设备上找不到 Google Play 服务，几款流行应用现在需要它才能正常工作！</string>
+    <string name="onboarding_gms_microg">microG 是自由开源的 Google Play 服务实现，通过重新实现向安卓设备提供运行依赖 Google Play 服务的手机应用的相似功能。\n\nmicroG 允许应用访问 Google APIs，增强用户兼容性同时提供隐私益处。\n\n打开依赖 Google Mobile 服务的应用时，microG 会自动在后台运行。</string>
+    <string name="microg_privacy_policy">阅读 microG 隐私政策</string>
+    <string name="microg_license_agreement">阅读 microG 许可和协议</string>
+    <string name="microg_website">访问 microG 项目网站</string>
 </resources>
