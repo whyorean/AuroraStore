@@ -36,7 +36,12 @@ dependencyResolutionManagement {
                 includeModule("com.github.topjohnwu.libsu", "core")
             }
         }
-        maven { url = uri("https://developer.huawei.com/repo/") }
+        // Only included in huawei variants
+        maven("https://developer.huawei.com/repo/") {
+            content {
+                includeModule("com.huawei.hms", "ag-coreservice")
+            }
+        }
     }
 }
 include(":app")

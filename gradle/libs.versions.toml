@@ -39,7 +39,7 @@ viewpager2 = "1.1.0"
 work = "2.10.2"
 
 [libraries]
-ag-coreservice = { module = "com.huawei.hms:ag-coreservice", version.ref = "agCoreservice" }
+huawei-hms-coreservice = { module = "com.huawei.hms:ag-coreservice", version.ref = "agCoreservice" }
 airbnb-epoxy-android = { module = "com.airbnb.android:epoxy", version.ref = "epoxy" }
 airbnb-epoxy-processor = { module = "com.airbnb.android:epoxy-processor", version.ref = "epoxy" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
