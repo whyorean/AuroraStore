@@ -438,5 +438,10 @@
     <string name="action_install_microG">Instalatu microG paketea</string>
     <string name="onboarding_title_gsf">Aplikazioen bateragarritasuna</string>
     <string name="onboarding_title_gsf_desc">Falta diren mendekotasunak</string>
-    <string name="onboarding_gms_agreement">microG Zerbitzu Baldintzak eta Pribatutasun Politika irakurri eta onartzen ditut.</string>
+    <string name="onboarding_gms_agreement">microG Zerbitzu Baldintzak eta Pribatutasun Politika irakurri eta onartzen ditut</string>
+    <string name="onboarding_gms_missing">Ezin izan ditugu Google Play zerbitzuak aurkitu zure gailuan, hainbat aplikazio ezagunek behar bezala funtzionatzeko behar dute orain!</string>
+    <string name="onboarding_gms_microg">microG doako eta kode irekiko inplementazio bat da, Google Play Zerbitzuen menpeko aplikazioak Android gailuetarako berriro inplementatuz exekutatzeko antzeko funtzionalitatea eskaintzen duena.\n\nmicroG-k aplikazioei Google API horietara sartzeko aukera ematen die, erabiltzaileen bateragarritasuna hobetuz eta pribatutasun onurak eskainiz.\n\nmicroG automatikoki exekutatuko da atzeko planoan Google Mobile Zerbitzuen menpeko aplikazioak irekitzen dituzunean.</string>
+    <string name="microg_privacy_policy">Irakurri microG-ren pribatutasun politika</string>
+    <string name="microg_license_agreement">Irakurri microG Lizentzia eta Hitzarmena</string>
+    <string name="microg_website">Bisitatu microG Proiektuaren webgunea</string>
 </resources>
