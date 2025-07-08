@@ -435,4 +435,9 @@
     <string name="pref_common_advanced">Tingkat Lanjut</string>
     <string name="pref_updates_app_source">Sumber aplikasi</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> perizinan</string>
+    <string name="action_install_microG">Pasang Bundel microG</string>
+    <string name="onboarding_title_gsf">Kompatibilitas Aplikasi</string>
+    <string name="onboarding_title_gsf_desc">Ketergantungan hilang</string>
+    <string name="onboarding_gms_agreement">Saya telah membaca dan menyetujui Persyaratan Layanan dan Kebijakan Privasi</string>
+    <string name="onboarding_gms_missing">Kami tidak dapat menemukan Layanan Google Play di perangkat Anda</string>
 </resources>
