@@ -435,4 +435,8 @@
     <string name="app_info_min_android">Gutxieneko Android bertsioa</string>
     <string name="app_info_target_android">Helburuko API maila</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> baimenak</string>
+    <string name="action_install_microG">Instalatu microG paketea</string>
+    <string name="onboarding_title_gsf">Aplikazioen bateragarritasuna</string>
+    <string name="onboarding_title_gsf_desc">Falta diren mendekotasunak</string>
+    <string name="onboarding_gms_agreement">microG Zerbitzu Baldintzak eta Pribatutasun Politika irakurri eta onartzen ditut.</string>
 </resources>
