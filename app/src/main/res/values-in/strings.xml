@@ -439,5 +439,9 @@
     <string name="onboarding_title_gsf">Kompatibilitas Aplikasi</string>
     <string name="onboarding_title_gsf_desc">Ketergantungan hilang</string>
     <string name="onboarding_gms_agreement">Saya telah membaca dan menyetujui Persyaratan Layanan dan Kebijakan Privasi</string>
-    <string name="onboarding_gms_missing">Kami tidak dapat menemukan Layanan Google Play di perangkat Anda</string>
+    <string name="onboarding_gms_missing">Kami tidak dapat menemukan Layanan Google Play di perangkat Anda, beberapa aplikasi populer sekarang memerlukannya untuk berfungsi!</string>
+    <string name="microg_privacy_policy">Baca Kebijakan Privasi microG</string>
+    <string name="microg_license_agreement">Baca Lisensi dan Penyetujuan microG</string>
+    <string name="microg_website">Kunjungi Situs Web Proyek microG</string>
+    <string name="onboarding_gms_microg">microG adalah implementasi sumber terbuka dan terbuka yang menyediakan fungsionalitas serupa untuk menjalankan aplikasi yang bergantung pada layanan Google Play untuk perangkat Android melalui implementasi ulang.\n\nmicroG memungkinkan aplikasi untuk mengakses API Google tersebut, meningkatkan kompatibilitas bagi pengguna sambil menawarkan manfaat privasi. \n\nmicroG akan berjalan secara otomatis di latar belakang ketika Anda membuka aplikasi yang bergantung pada layanan seluler Google.</string>
 </resources>
