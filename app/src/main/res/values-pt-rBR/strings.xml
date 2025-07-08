@@ -435,4 +435,13 @@
     <string name="app_info_downloads">Downloads</string>
     <string name="app_info_min_android">Versão do Android mínima</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissões</string>
+    <string name="action_install_microG">Instalar o conjunto do microG</string>
+    <string name="onboarding_title_gsf">Compatibilidade de apps</string>
+    <string name="onboarding_title_gsf_desc">Dependências ausentes</string>
+    <string name="onboarding_gms_agreement">Eu li e concordo com os termos de serviço e a política de privacidade do microG</string>
+    <string name="onboarding_gms_missing">Não foi possível encontrar o Google Play Services no seu dispositivo, muitos apps populares requerem ele para funcionar corretamente!</string>
+    <string name="onboarding_gms_microg">O microG é uma implementação de código aberto e livre que fornece funcionalidade similar para a execução de apps que dependem no Google Play Services em dispositivos Android, através da reimplementação.\n\nO microG permite que apps acessem essas APIs do Google, melhorando a compatibilidade para os usuários enquanto melhora oferece benefícios à privacidade.\n\nO microG é executado automaticamente em segundo plano ao abrir aplicativos que dependem do Google Mobile Services.</string>
+    <string name="microg_privacy_policy">Ler a política de privacidade do microG</string>
+    <string name="microg_license_agreement">Ler a licença do microG</string>
+    <string name="microg_website">Visitar o site do projeto do microG</string>
 </resources>

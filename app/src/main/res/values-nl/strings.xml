@@ -435,4 +435,13 @@
     <string name="app_info_updated_on">Laatst bijgewerkt</string>
     <string name="app_info_min_android">Minimale Androidversie</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> rechten</string>
+    <string name="action_install_microG">microG-pakket installeren</string>
+    <string name="onboarding_title_gsf">App-compatibiliteit</string>
+    <string name="onboarding_title_gsf_desc">Ontbrekende afhankelijkheden</string>
+    <string name="onboarding_gms_agreement">Ik heb de microG-servicevoorwaarden en het privacybeleid gelezen en ga hiermee akkoord</string>
+    <string name="onboarding_gms_missing">We konden Google Play Services niet op je apparaat vinden. Verscheidende populaire apps hebben het tegenwoordig nodig om goed te kunnen functioneren!</string>
+    <string name="onboarding_gms_microg">microG is een gratis en open-source-implementatie die vergelijkbare functionaliteit biedt voor het uitvoeren van apps die afhankelijk zijn van Google Play Services voor Android-apparaten via herimplementatie.\n\nMicroG stelt apps in staat toegang te krijgen tot die Google API\'s, wat de compatibiliteit voor gebruikers verbetert en tegelijkertijd privacyvoordelen biedt.\n\nMicroG wordt automatisch op de achtergrond uitgevoerd wanneer je apps opent die afhankelijk zijn van Google Mobile Services.</string>
+    <string name="microg_privacy_policy">Privacybeleid van microG lezen</string>
+    <string name="microg_license_agreement">Licentieovereenkomst van microG lezen</string>
+    <string name="microg_website">microG-projectwebsite bezoeken</string>
 </resources>

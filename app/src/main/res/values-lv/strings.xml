@@ -435,4 +435,13 @@
     <string name="app_info_updated_on">Pēdējoreiz atjaunināta</string>
     <string name="app_info_downloads">Lejupielādes</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> atļaujas</string>
+    <string name="action_install_microG">Uzstādīt microG lietotņu kopumu</string>
+    <string name="onboarding_title_gsf">Lietotņu saderība</string>
+    <string name="onboarding_title_gsf_desc">Trūkstošas atkarības</string>
+    <string name="onboarding_gms_agreement">Es izlasīju un piekrītu migroG pakalpojumu izmantošanas noteikumiem un privātuma pamatnostādnēm</string>
+    <string name="onboarding_gms_missing">Mēs ierīcē nevarējām atrast Google Play pakalpojumus, atsevišķas izplatītas lietotnes tagad pieprasa to, lai pienācīgi darbotos.</string>
+    <string name="onboarding_gms_microg">microG ir brīvs un atvērta pirmkoda īstenojums, kas sniedz līdzīgas iespējas, lai palaistu lietotnes, kas ir atkarīgas no Google Play pakalpojumiem, Android ierīcēm ar atkārtotu ieviešanu.\n\nmicroG sniedz iespēju lietotnēm piekļūt Google API, uzlabojot lietotājiem saderību, vienlaikus sniedzot privātuma ieguvumus. \n\nmicroG tiks fonā palaista automātiski, kad tiks atvērtas lietotnes, kas ir atkarīgas no Google mobilajiem pakalpojumiem.</string>
+    <string name="microg_privacy_policy">Lasīt microG privātuma pamatnostādnes</string>
+    <string name="microg_license_agreement">Lasīt microG licenci un vienošanos</string>
+    <string name="microg_website">Apmeklēt microG projekta tīmekļvietni</string>
 </resources>

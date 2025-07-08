@@ -435,4 +435,13 @@
     <string name="app_info_target_android">Цільовий рівень API</string>
     <string name="app_info_downloads">Завантаження</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозволи</string>
+    <string name="action_install_microG">Встановлення пакета microG</string>
+    <string name="onboarding_title_gsf">Сумісність програм</string>
+    <string name="onboarding_title_gsf_desc">Відсутні залежності</string>
+    <string name="onboarding_gms_agreement">Я прочитав(-ла) та погоджуюся з Умовами надання послуг та Політикою конфіденційності microG</string>
+    <string name="onboarding_gms_missing">Нам не вдалося знайти Сервіси Google Play на вашому пристрої. Тепер кілька популярних програм потребують їх для належної роботи!</string>
+    <string name="onboarding_gms_microg">microG — це безкоштовна реалізація з відкритим кодом, яка забезпечує аналогічну функціональність для запуску програм, що залежать від Сервісів Google Play для пристроїв Android, шляхом повторної реалізації.\n\nmicroG дозволяє програмам отримувати доступ до цих API Google, покращуючи сумісність для користувачів, а також пропонуючи переваги конфіденційності.\n\nmicroG автоматично запускатиметься у фоновому режимі, коли ви відкриваєте програми, що залежать від Сервісів Google Mobile.</string>
+    <string name="microg_privacy_policy">Ознайомтеся з Політикою конфіденційності microG</string>
+    <string name="microg_license_agreement">Прочитайте ліцензію та угоду microG</string>
+    <string name="microg_website">Відвідайте веб-сайт проекту microG</string>
 </resources>

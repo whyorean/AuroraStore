@@ -31,7 +31,7 @@
     <string name="action_later">Később</string>
     <string name="action_join">Csatlakozás</string>
     <string name="action_installing">Telepítés alatt</string>
-    <string name="action_install">Telepít</string>
+    <string name="action_install">Telepítés</string>
     <string name="action_ignore">Elutasítás</string>
     <string name="action_granted">Engedélyezve</string>
     <string name="action_grant">Engedélyezése</string>
@@ -82,7 +82,7 @@
     <string name="onboarding_title_welcome">Üdvözöljük</string>
     <string name="onboarding_title_permissions">Engedélyek</string>
     <string name="onboarding_title_installer">Telepítő</string>
-    <string name="onboarding_permission_select">Az Aurora Store számára a következő engedélyek szükségesek</string>
+    <string name="onboarding_permission_select">Az Aurora Store-nak a következő engedélyek szükségesek</string>
     <string name="dialog_title_self_update">Új frissítés érhető el</string>
     <string name="device_miui_extra">Esetlegesen választhatja a natív telepítőt is, viszont így nem fog tudni kötegelt (osztott) APK-kat telepíteni, a választás az öné.</string>
     <string name="device_miui_description">Tiltsa le a MIUI optimalizálást a telepítések engedélyezéséhez, vagy válassza a Root vagy Szolgáltatások telepítési módot.</string>
@@ -99,10 +99,10 @@
     <string name="installer_status_failure_conflict">Ütköző csomag található</string>
     <string name="installer_status_failure_session">Nem sikerült létrehozni a munkamenetet</string>
     <string name="installer_status_failure_blocked">A telepítés blokkolva lett</string>
-    <string name="installer_status_failure">Sikertelen telepítés</string>
-    <string name="installer_service_misconfigured">Először állítsa be az Aurora szolgáltatásokat, és adjon meg minden engedélyt.</string>
-    <string name="installer_service_unavailable">Telepítse az Aurora szolgáltatások 1.0.9-es vagy magasabb verzióját, vagy változtasson a telepítőn.</string>
-    <string name="installer_service_available">Az Aurora szolgáltatások elérhetőek és telepítésre készek.</string>
+    <string name="installer_status_failure">A telepítés sikertelen</string>
+    <string name="installer_service_misconfigured">Először állítsa be az Aurora-szolgáltatásokat, és adjon meg minden engedélyt.</string>
+    <string name="installer_service_unavailable">Telepítse az Aurora-szolgáltatások 1.0.9-es vagy magasabb verzióját, vagy változtasson a telepítőn.</string>
+    <string name="installer_service_available">Az Aurora-szolgáltatások elérhetőek és telepítésre készek.</string>
     <string name="installer_root_unavailable">Nincs root hozzáférés. Adjon hozzáférést vagy változtasson a telepítési módszeren.</string>
     <string name="filter_review_two">Kettő</string>
     <string name="filter_review_three">Három</string>
@@ -192,7 +192,7 @@
     <string name="pref_network_title">Hálózat</string>
     <string name="pref_install_mode_title">Telepítési mód</string>
     <string name="pref_install_mode_summary">APK-fájlok telepítési módja</string>
-    <string name="pref_install_mode_services">Aurora szolgáltatások (elavult)</string>
+    <string name="pref_install_mode_services">Aurora-szolgáltatások (elavult)</string>
     <string name="pref_install_mode_root">Root telepítő</string>
     <string name="pref_install_mode_native">Natív telepítő (elavult)</string>
     <string name="pref_install_delete_title">APK törlése telepítés után</string>
@@ -224,15 +224,15 @@
     <string name="toast_rated_success">Értékelve, időbe telhet míg megjelenik</string>
     <string name="toast_page_unavailable">A böngészőlap nem érhető el</string>
     <string name="dialog_desc_native_split">A natív telepítő segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtassa a telepítőt Session, Services vagy Root-ra.</string>
-    <string name="toast_export_failed">Eszközkonfiguráció exportálása sikertelen</string>
-    <string name="toast_export_success">Eszközkonfiguráció exportálva</string>
+    <string name="toast_export_failed">Az eszközbeállítások exportálása sikertelen</string>
+    <string name="toast_export_success">Eszközbeállítások exportálva</string>
     <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
     <string name="app_updater_service_notif_title">Alkalmazásletöltés a háttérben</string>
     <string name="installer_am_unavailable">Telepítse az App Managert vagy változtassa meg a telepítőt.</string>
     <string name="pref_install_mode_am">AM telepítő</string>
     <string name="onboarding_permission_notifications">Értesítések</string>
     <string name="session_enjoy">Jelentkezzen be és érezze jól magát.</string>
-    <string name="toast_import_failed">Az eszközkonfiguráció importálása sikertelen</string>
+    <string name="toast_import_failed">Az eszközbeállítások importálása sikertelen</string>
     <string name="action_import">Importálás</string>
     <string name="download_eta_hrs">%1$d ó %2$d p %3$d mp van hátra</string>
     <string name="download_eta_min">%1$d p %2$d mp van hátra</string>
@@ -245,7 +245,7 @@
     <string name="session_verifying_google">Google-munkamenet hitelesítése</string>
     <string name="title_search_results">Keresési eredmények</string>
     <string name="title_advanced">Haladó</string>
-    <string name="toast_import_success">Eszközkonfiguráció importálva</string>
+    <string name="toast_import_success">Eszközbeállítások importálva</string>
     <string name="updates_available">frissítések érhetők el</string>
     <string name="menu">Menü</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> frissítés érhető el</string>
@@ -278,7 +278,7 @@
     <string name="session_scrapped">Utolsó munkamenet törölve</string>
     <string name="app_links_desc">Az Aurora Store által támogatott hivatkozások megnyitásának engedélyezése</string>
     <string name="check_connectivity">Ellenőrizze az internetkapcsolatot</string>
-    <string name="google_play_store_desc">Google Play, avagy Google Play Bolt, korábban Android Piactér.</string>
+    <string name="google_play_store_desc">Google Play, avagy Google Play Áruház, korábban Android Market.</string>
     <string name="failed_to_generate_session">Nem sikerült generálni munkamenetet</string>
     <string name="verifying_new_session">Új munkamenet ellenőrzése</string>
     <string name="app_language">Alkalmazás nyelve</string>
@@ -292,7 +292,7 @@
     <string name="title_app_settings">Alkalmazásbeállítások</string>
     <string name="pref_updates_check_frequency">Automatikus frissítések gyakorisága</string>
     <string name="toast_proxy_failed">Proxy beállítása sikertelen</string>
-    <string name="android_market_desc">Az Android Piactér egy online áruház volt, amely szoftveralkalmazásokat kínált androidos eszközökhöz, és 2017-ben megszűnt.</string>
+    <string name="android_market_desc">Az Android Market egy online áruház volt, amely szoftveralkalmazásokat kínált androidos eszközökhöz, és 2017-ben megszűnt.</string>
     <string name="pref_vending_version_device">Alapértelmezett (eszközkonfiguráció)</string>
     <string name="pref_vending_version_title">Google Play verzió</string>
     <string name="details_ratings_title_hint">Értékelés címe</string>
@@ -300,7 +300,7 @@
     <string name="pref_updates_auto">Automatikus frissítések</string>
     <string name="pref_updates_auto_notify">Ellenőrizze, és értesítsen a rendelkezésre álló frissítésekről</string>
     <string name="pref_updates_auto_off">Ne frissítse automatikusan az alkalmazásokat</string>
-    <string name="onboarding_permission_doze_desc">Engedélyezze az Aurora Store számára az alkalmazások háttérben való letöltését és frissítését</string>
+    <string name="onboarding_permission_doze_desc">Engedélyezze az Aurora Store-nak az alkalmazások háttérben való letöltését és frissítését</string>
     <string name="pref_updates_auto_desc">Automatikus frissítések viselkedésének beállítása</string>
     <string name="pref_updates_auto_install">Ellenőrizze, és automatikusan telepítse a rendelkezésre álló frissítéseket</string>
     <string name="action_request_analysis">Új elemzés kérése</string>
@@ -313,12 +313,12 @@
     <string name="source_code_title">Forráskód</string>
     <string name="source_code_subtitle">Tudja meg, mi van belül</string>
     <string name="privacy_policy_title">Adatvédelmi irányelvek</string>
-    <string name="privacy_policy_subtitle">Ismerje meg, hogyan használja az Aurora Áruház az adatait</string>
+    <string name="privacy_policy_subtitle">Ismerje meg, hogyan használja az Aurora Store az adatait</string>
     <string name="session_installer_subtitle">Munkamenet-alapú telepítő a kötegelt/felosztott APK-khoz</string>
     <string name="session_installer_desc">Ajánlott, beépített és támogatja az összes Android verziót</string>
     <string name="native_installer_desc">Az Android 4.4-nél régebbi verziót futtató eszközökhöz a legmegfelelőbb</string>
     <string name="services_installer_subtitle">Telepítő a háttérben történő telepítésekhez</string>
-    <string name="services_installer_desc">Ehhez az Aurora Szolgáltatásokat privilegizált rendszeralkalmazásként kell telepíteni</string>
+    <string name="services_installer_desc">Ehhez az Aurora-szolgáltatásokat privilegizált rendszeralkalmazásként kell telepíteni</string>
     <string name="am_installer_subtitle">Teljes funkcionalitású nyílt forráskódú csomagkezelő</string>
     <string name="shizuku_installer_subtitle">Rendszer API-k használata közvetlenül adb/root jogosultságokkal</string>
     <string name="shizuku_installer_desc">Shizuku vagy Sui szükséges, be kell állítani és engedélyt kell adni</string>
@@ -326,17 +326,17 @@
     <string name="disclaimer_subtitle">Elszámoltathatóság és felelősség</string>
     <string name="root_installer_subtitle">Shell alapú telepítő root jogosultságokkal</string>
     <string name="root_installer_desc">Root/superuser jogosultságokat igényel, támogatja az összes Android verziót.</string>
-    <string name="native_installer_subtitle">Intent alapú telepítő, minden eszközön elérhető</string>
+    <string name="native_installer_subtitle">Intent-alapú telepítő, minden eszközön elérhető</string>
     <string name="am_installer_desc">App Manager szükséges, adb/root mód szükséges a telepítéshez, ha a miui optimalizálás be van kapcsolva</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="session_login">Jelentkezzen be a Google Play fiókjába</string>
+    <string name="session_login">Jelentkezzen be a Google Play-fiókjába</string>
     <string name="title_more">Több</string>
     <string name="manage_account">Fiók kezelése</string>
-    <string name="about_aurora_store_title">Az Aurora Áruház névjegye</string>
-    <string name="pref_clear_device_owner_summary">Eltávolítja az Aurora Áruházat az eszköztulajdonosi rangból</string>
-    <string name="about_aurora_store_subtitle">Tudjon meg többet az Aurora Áruházról</string>
+    <string name="about_aurora_store_title">Az Aurora Store névjegye</string>
+    <string name="pref_clear_device_owner_summary">Eltávolítja az Aurora Store-t az eszköztulajdonosi rangból</string>
+    <string name="about_aurora_store_subtitle">Tudjon meg többet az Aurora Store-ról</string>
     <string name="about_wiki_summary">Találja meg válaszait a gyakran ismételt kérdések között (GYIK), hibaelhárítási lépések és egyebek</string>
-    <string name="about_aurora_store_summary">Az Aurora Áruház lehetővé teszi az alkalmazások keresését és letöltését a hivatalos Google Play áruházból. Ellenőrizheti az alkalmazások leírását, képernyőképeit, frissítéseit, más felhasználók megjegyzéseit, és letöltheti az APK-t közvetlenül a Google Play-ből a készülékére. Az Aurora Áruház használatához Google Play fiókkal kell rendelkeznie, és az Aurora Áruház első megnyitásakor és konfigurálásakor be kell jelentkeznie a Google Play fiókjába. \n \nA hagyományos alkalmazásboltokkal ellentétben az Aurora Áruház nem birtokol, nem licencel és nem terjeszt semmilyen alkalmazást. Az Aurora Áruházban található összes alkalmazás, alkalmazásleírás, képernyőkép és egyéb tartalom közvetlenül a Google Play-ből érhető el, tölthető le és/vagy jeleníthető meg. Az Aurora Áruház pontosan úgy működik, mint egy ajtó vagy egy böngésző, amely lehetővé teszi, hogy bejelentkezzen a Google Play fiókjába, és megtalálja az alkalmazásokat a Google Play-ből. \n \nFelhívjuk figyelmét, hogy az Aurora Áruház nem rendelkezik a Google, a Google Play, az Aurora Áruházon keresztül letöltött alkalmazások vagy bármely alkalmazásfejlesztő jóváhagyásával, szponzorálásával vagy engedélyével; az Aurora Áruház nem áll velük semmilyen együttműködésben vagy kapcsolatban.</string>
+    <string name="about_aurora_store_summary">Az Aurora Store lehetővé teszi az alkalmazások keresését és letöltését a hivatalos Google Play Áruházból. Ellenőrizheti az alkalmazások leírását, képernyőképeit, frissítéseit, más felhasználók megjegyzéseit, és letöltheti az APK-t közvetlenül a Google Play-ről eszközére. Az Aurora Store használatához Google Play-fiókkal kell rendelkeznie, és az Aurora Store első megnyitásakor és konfigurálásakor be kell jelentkeznie a Google Play-fiókjába. \n \nA hagyományos alkalmazásboltokkal ellentétben az Aurora Store nem birtokol, nem licencel és nem terjeszt semmilyen alkalmazást. Az Aurora Store-ban található összes alkalmazás, alkalmazásleírás, képernyőkép és egyéb tartalom közvetlenül a Google Play-ből érhető el, tölthető le és/vagy jeleníthető meg. Az Aurora Store pontosan úgy működik, mint egy ajtó vagy egy böngésző, amely lehetővé teszi, hogy bejelentkezzen a Google Play-fiókjába, és megtalálja az alkalmazásokat a Google Play-ből. \n \nFelhívjuk figyelmét, hogy az Aurora Store nem rendelkezik a Google, a Google Play, az Aurora Store-on keresztül letöltött alkalmazások vagy bármely alkalmazásfejlesztő jóváhagyásával, szponzorálásával vagy engedélyével; az Aurora Store nem áll velük semmilyen együttműködésben vagy kapcsolatban.</string>
     <string name="action_favourite">Kedvenc</string>
     <string name="details_no_favourites">Nem található kedvenc alkalmazás</string>
     <string name="pref_clear_device_owner_title">Az eszköz tulajdonjogának törlése</string>
@@ -355,7 +355,7 @@
     <string name="add_dispenser_error">Érvénytelen hivatkozás</string>
     <string name="export_app_title">Fájlexportáló</string>
     <string name="export_app_summary">Várjon, a fájl exportálása folyamatban</string>
-    <string name="force_restart_title">Aurora Áruház újraindítása</string>
+    <string name="force_restart_title">Az Aurora Store újraindítása</string>
     <string name="add">Hozzáadás</string>
     <string name="add_dispenser_hint">Kiosztó hivatkozás</string>
     <string name="remove_dispenser_title">Kiosztó eltávolítása</string>
@@ -364,7 +364,7 @@
     <string name="no_dispensers_available">Nincsenek elérhető kiosztók</string>
     <string name="add_dispenser_title">Kiosztó hozzáadása</string>
     <string name="toast_fav_export_success">Kedvencek exportálva!</string>
-    <string name="add_dispenser_summary">Kiosztótoken hozzáadása az Aurora Áruházhoz. A kiosztótokenek hitelesítési adatokat biztosítanak az Aurora Áruház számára a névtelen bejelentkezéshez.</string>
+    <string name="add_dispenser_summary">Kiosztótoken hozzáadása az Aurora Store-hoz. A kiosztótokenek hitelesítési adatokat biztosítanak az Aurora Store-hoz a névtelen bejelentkezéshez.</string>
     <string name="toast_fav_import_failed">A kedvencek importálása sikertelen!</string>
     <string name="toast_fav_export_failed">A kedvencek exportálása sikertelen!</string>
     <string name="pref_dispenser_summary">Névtelen bejelentkezésekhez szükséges kiosztott tokenek megtekintése és kezelése</string>
@@ -374,7 +374,7 @@
     <string name="export_app_summary_success">Sikeresen exportált alkalmazáscsomag</string>
     <string name="export_app_summary_fail">Nem sikerült az alkalmazáscsomag exportálása</string>
     <string name="action_logout_confirmation_title">Kijelentkezik?</string>
-    <string name="force_restart_summary">Az Aurora Áruházat újra kell indítani az újonnan módosított beállítások alkalmazásához</string>
+    <string name="force_restart_summary">Az Aurora Store-t újra kell indítani az újonnan módosított beállítások alkalmazásához</string>
     <string name="notification_channel_export">Alkalmazás exportálás értesítés</string>
     <string name="notification_channel_install">Telepítési értesítés</string>
     <string name="notification_channel_downloads">Letöltési értesítés</string>
@@ -385,7 +385,7 @@
     <string name="status_unavailable">Nem elérhető</string>
     <string name="status_failed">Sikertelen</string>
     <string name="notification_channel_account">Fiókkal kapcsolatos értesítés</string>
-    <string name="authentication_required_unarchive">Jelentkezzen be Google Play fiókjába az alkalmazás archiválásának feloldásához!</string>
+    <string name="authentication_required_unarchive">Jelentkezzen be Google Play-fiókjába az alkalmazás archiválásának feloldásához!</string>
     <string name="authentication_required_title">Hitelesítés szükséges</string>
     <string name="checking_updates">Frissítések ellenőrzése</string>
     <string name="made_with_love">Szeretettel &lt;xliff:g id=„heart_emoji”&gt;%1$s&lt;/xliff:g&gt; készült Indiában</string>
@@ -400,12 +400,12 @@
     <string name="details_compatibility_gms_required_subtitle">Lehet, hogy telepítenie kell a Google zárt programkönyvtárát, vagy egy nyílt forráskódú újabb implementációt, például a microG-t.</string>
     <string name="details_compatibility_gms_not_required_subtitle">Az alkalmazás működik a Google zárt programkönyvtára nélkül. Viszont lehet, hogy a helyes működéséhez más harmadik féltől származó programkönyvtárak szükségesek.</string>
     <string name="toast_black_export_success">Feketelista exportálva!</string>
-    <string name="details_compatibility_no_gms">Google Play szolgáltatások nélkül</string>
+    <string name="details_compatibility_no_gms">Google Play-szolgáltatások nélkül</string>
     <string name="no_apps_available">Nincsenek elérhető alkalmazások</string>
     <string name="toast_black_export_failed">A feketelista exportálása sikertelen!</string>
     <string name="plexus_progress">Kompatibilitás ellenőrzése…</string>
-    <string name="details_compatibility_gms_required_title">A Google Play szolgáltatás szükséges hozzá</string>
-    <string name="details_compatibility_gms_not_required_title">A Google Play szolgáltatás nélkül működik</string>
+    <string name="details_compatibility_gms_required_title">Google Play-szolgáltatásokra van szükség</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play-szolgáltatások nélkül is működik</string>
     <string name="details_compatibility_microg">A microG projekttel</string>
     <string name="details_compatibility_status_compatible">Kompatibilis: Minden probléma nélkül működik</string>
     <string name="details_compatibility_status_limited">Korlátozott: Korlátozott funkciókkal működik</string>
@@ -423,7 +423,7 @@
     <string name="toast_proxy_disabled">Proxy sikeresen kikapcsolva</string>
     <string name="pref_network_proxy_desc">Proxy konfiguráció megtekintése és kezelése</string>
     <string name="pref_updates_restrictions_title">Automatikus frissítés korlátozások</string>
-    <string name="pref_updates_restrictions_desc">Eszköz korlátozások beállítása az automatikus frissítésekhez.</string>
+    <string name="pref_updates_restrictions_desc">Eszközkorlátozások beállítása az automatikus frissítésekhez.</string>
     <string name="pref_updates_restrictions_metered">Csak nem mért hálózatokon</string>
     <string name="pref_updates_restrictions_idle">Amikor az eszköz áll</string>
     <string name="pref_updates_restrictions_battery">Amikor a töltöttség nem alacsony</string>
@@ -435,4 +435,13 @@
     <string name="app_info_target_android">Cél API-szint</string>
     <string name="pref_common_advanced">Speciális</string>
     <string name="pref_updates_app_source">Alkalmazás forrása</string>
+    <string name="action_install_microG">Telepítse a microG csomagot</string>
+    <string name="onboarding_title_gsf">Alkalmazáskompatibilitás</string>
+    <string name="onboarding_title_gsf_desc">Hiányzó függőségek</string>
+    <string name="onboarding_gms_agreement">Elolvastam és elfogadom a microG Általános Szerződési Feltételeit és Adatvédelmi Szabályzatát</string>
+    <string name="onboarding_gms_missing">Nem található Google Play-szolgáltatások az eszközén, több népszerű alkalmazásnak is szüksége van rá a megfelelő működéshez!</string>
+    <string name="onboarding_gms_microg">A microG egy ingyenes és nyílt forráskódú megvalósítás, amely újraimplementálással hasonló funkciókat biztosít a Google Play-szolgáltatásoktól függő alkalmazások futtatásához Android-eszközökön.\n\nA microG lehetővé teszi az alkalmazásoknak, hogy hozzáférjenek a Google API-khoz, javítva a kompatibilitást a felhasználók számára, miközben adatvédelmi előnyöket kínál.\n\nA microG automatikusan fut a háttérben, amikor a Google mobilszolgáltatásaitól függő alkalmazásokat nyit meg.</string>
+    <string name="microg_privacy_policy">A microG adatvédelmi irányelveinek elolvasása</string>
+    <string name="microg_license_agreement">A microG licenc és felhasználási feltételeinek elolvasása</string>
+    <string name="microg_website">Látogasson el a microG weboldalára</string>
 </resources>

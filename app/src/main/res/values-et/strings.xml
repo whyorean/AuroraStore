@@ -435,4 +435,13 @@
     <string name="app_info_updated_on">Viimati uuendatud</string>
     <string name="app_info_min_android">Androidi miinimumversioon</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> luba</string>
+    <string name="action_install_microG">Paigalda microG teekide kogumik</string>
+    <string name="onboarding_title_gsf">Rakenduse ühilduvus</string>
+    <string name="onboarding_title_gsf_desc">Puuduvad sõltuvused</string>
+    <string name="onboarding_gms_agreement">Ma olen lugenud microG kasutustingimusi ja privaatsusreegleid ning nõustun nendega</string>
+    <string name="onboarding_gms_missing">Sinu nutiseadmes ei leidu Google Play Services\'i teeke, aga mitmed populaarsed vajavad neid korralikuks toimimiseks!</string>
+    <string name="microg_privacy_policy">Loe microG privaatsusreegleid</string>
+    <string name="microg_license_agreement">Loe microG litsentsitingimusi ja kasutuslepingut</string>
+    <string name="microg_website">Vaata microG projekti veebisaiti</string>
+    <string name="onboarding_gms_microg">microG on vaba ja avatud lähtekoodiga teekide komplekt, mis tagab Google Play teenuste olemasolust sõltuvatele rakendustele sarnase funktsionaalsuses.\n\nmicroG võimaldab kasutada vajalikke Google\'i API-sid ning tagab sellega korraga nii ühilduvuse kui vallasrežiimikohase ühilduvuse \n\nKui avad rakenduse, mis sõltub Google Mobile Services\'i olemasolust, siis microG käivitub taustal automaatselt.</string>
 </resources>
