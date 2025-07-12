@@ -443,4 +443,5 @@
     <string name="microg_website">Odwiedź stronę internetową projektu microG</string>
     <string name="onboarding_gms_agreement">Przeczytałem i akceptuję warunki świadczenia usług oraz politykę prywatności microG</string>
     <string name="onboarding_gms_missing">Nie znaleźliśmy usług Google Play na twoim urządzeniu. Niektóre popularne aplikacje wymagają tej usługi do prawidłowego działania!</string>
+    <string name="onboarding_gms_microg">microG to darmowa otwartoźródłowa implementacja zastrzeżonych bibliotek Google o otwartym kodzie źródłowym, która zastępuje usługi Google Play w systemie operacyjnym Android.\n\nmicroG umożliwia aplikacjom dostęp do interfejsów Google API, zwiększając kompatybilność i oferując korzyści związane z prywatnością.\n\nmicroG będzie automatycznie działać w tle gdy otworzysz aplikacje zależne od usług mobilnych Google.</string>
 </resources>
