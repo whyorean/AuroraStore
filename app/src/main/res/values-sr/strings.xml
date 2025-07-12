@@ -462,5 +462,10 @@
     <string name="action_install_microG">Инсталирај microG пакет</string>
     <string name="onboarding_title_gsf">Компатибилност апликације</string>
     <string name="onboarding_title_gsf_desc">Недостајуће зависности</string>
-    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан сам са Условима коришћења услуга и Политиком приватности microG-а</string>
+    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан/на сам са Условима коришћења услуга и Политиком приватности microG-а</string>
+    <string name="onboarding_gms_missing">Нисмо могли да пронађемо Google Play услуге на вашем уређају, неколико популарних апликација их сада захтева да би правилно функционисале!</string>
+    <string name="onboarding_gms_microg">microG је бесплатна имплементација отвореног кода која пружа сличну функционалност за покретање апликација зависних од Google Play услуга за Android уређаје кроз поновну имплементацију.\n\nmicroG омогућава апликацијама приступ тим Google API-јима, побољшавајући компатибилност за кориснике и нудећи предности приватности.\n\nmicroG ће се аутоматски покренути у позадини када отворите апликације које зависе од Google мобилних услуга.</string>
+    <string name="microg_privacy_policy">Прочитај Политику приватности microG-а</string>
+    <string name="microg_license_agreement">Прочитај microG лиценцу и уговор</string>
+    <string name="microg_website">Посетите веб-сајт пројекта microG</string>
 </resources>
