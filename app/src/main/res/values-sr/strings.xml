@@ -462,5 +462,5 @@
     <string name="action_install_microG">Инсталирај microG пакет</string>
     <string name="onboarding_title_gsf">Компатибилност апликације</string>
     <string name="onboarding_title_gsf_desc">Недостајуће зависности</string>
-    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан сам са Условима коришћења услуга и Политиком приватности microG-а.</string>
+    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан сам са Условима коришћења услуга и Политиком приватности microG-а</string>
 </resources>
