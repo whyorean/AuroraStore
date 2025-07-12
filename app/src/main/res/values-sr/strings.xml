@@ -459,4 +459,8 @@
     <string name="app_info_target_android">Циљни ниво API-ја</string>
     <string name="app_info_min_android">Минимална верзија Android-а</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозвола</string>
+    <string name="action_install_microG">Инсталирај microG пакет</string>
+    <string name="onboarding_title_gsf">Компатибилност апликације</string>
+    <string name="onboarding_title_gsf_desc">Недостајуће зависности</string>
+    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан сам са Условима коришћења услуга и Политиком приватности microG-а.</string>
 </resources>
