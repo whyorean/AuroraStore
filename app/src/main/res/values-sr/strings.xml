@@ -226,7 +226,7 @@
     <string name="details_no_app_match">Није пронађена ниједна одговарајућа апликација</string>
     <string name="toast_export_failed">Није могуће извести конфигурацију уређаја</string>
     <string name="toast_export_success">Конфигурација уређаја је извезена</string>
-    <string name="download_paused">Паузирано • \u0020<xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g></string>
+    <string name="download_paused">Паузирано • <xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g></string>
     <string name="session_init">Припремање ствари…</string>
     <string name="session_login_failed_google">Није могуће пријавити се преко Google-а</string>
     <string name="session_verifying_google">Верификација Google сесије</string>
@@ -290,7 +290,7 @@
     <string name="server_unreachable">Сервер недоступан</string>
     <string name="failed_generating_session">Генерисање сесије није успело, кôд грешке: \n<xliff:g id="status_code"> \n%1$d</xliff:g></string>
     <string name="check_connectivity">Проверите интернет везу</string>
-    <string name="download_progress">Преузимање • \u0020<xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g> • <xliff:g id="speed"> %3$s</xliff:g></string>
+    <string name="download_progress">Преузимање • <xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g> • <xliff:g id="speed"> %3$s</xliff:g></string>
     <string name="downloading_dep">Преузимање додатних фајлова за
 \n<xliff:g id="app">
 \n%1$s</xliff:g></string>
@@ -459,4 +459,13 @@
     <string name="app_info_target_android">Циљни ниво API-ја</string>
     <string name="app_info_min_android">Минимална верзија Android-а</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозвола</string>
+    <string name="action_install_microG">Инсталирај microG пакет</string>
+    <string name="onboarding_title_gsf">Компатибилност апликације</string>
+    <string name="onboarding_title_gsf_desc">Недостајуће зависности</string>
+    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан/на сам са Условима коришћења услуга и Политиком приватности microG-а</string>
+    <string name="onboarding_gms_missing">Нисмо могли да пронађемо Google Play услуге на вашем уређају, неколико популарних апликација их сада захтева да би правилно функционисале!</string>
+    <string name="onboarding_gms_microg">microG је бесплатна имплементација отвореног кода која пружа сличну функционалност за покретање апликација зависних од Google Play услуга за Android уређаје кроз поновну имплементацију.\n\nmicroG омогућава апликацијама приступ тим Google API-јима, побољшавајући компатибилност за кориснике и нудећи предности приватности.\n\nmicroG ће се аутоматски покренути у позадини када отворите апликације које зависе од Google мобилних услуга.</string>
+    <string name="microg_privacy_policy">Прочитај Политику приватности microG-а</string>
+    <string name="microg_license_agreement">Прочитај microG лиценцу и уговор</string>
+    <string name="microg_website">Посети веб-сајт пројекта microG</string>
 </resources>

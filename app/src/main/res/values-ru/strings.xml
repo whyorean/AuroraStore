@@ -438,8 +438,8 @@
     <string name="onboarding_title_gsf">Совместимость приложений</string>
     <string name="onboarding_title_gsf_desc">Отсутствующие зависимости</string>
     <string name="onboarding_gms_agreement">Я прочитал и согласен с условиями предоставления услуг и политикой конфиденциальности microG</string>
-    <string name="onboarding_gms_missing">Мы не смогли найти сервисы Google Play на вашем устройстве, некоторые популярные приложения теперь требуют его для корректной работы!</string>
-    <string name="onboarding_gms_microg">microG - это бесплатная реализация с открытым исходным кодом, которая обеспечивает аналогичную функциональность для запуска приложений, зависящих от сервисов Google Play для устройств Android, путем повторной реализации.\n\nmicroG позволяет приложениям получать доступ к этим API Google, повышая совместимость для пользователей и обеспечивая преимущества конфиденциальности. \n\nmicroG будет автоматически запускаться в фоновом режиме, когда вы открываете приложения, зависящие от мобильных сервисов Google.</string>
+    <string name="onboarding_gms_missing">Мы не смогли найти сервисы Google Play на вашем устройстве. Некоторые популярные приложения требуют его для корректной работы!</string>
+    <string name="onboarding_gms_microg">microG - это свободная разработка с открытым исходным кодом, которая обеспечивает нужную функциональность для работы приложений, зависящих от Google Play Services, на устройствах Android.\n\nmicroG обеспечивает доступ приложений к API Google, повышая совместимость и обеспечивая конфиденциальность.\n\nmicroG будет запускаться автоматически в фоновом режиме при открытии приложений, зависящих от Google Mobile Services.</string>
     <string name="microg_privacy_policy">Прочитать политику конфиденциальности microG</string>
     <string name="microg_license_agreement">Прочитать Лицензию и Соглашение microG</string>
     <string name="microg_website">Посетите сайт проекта microG</string>
