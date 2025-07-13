@@ -42,6 +42,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
+import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.SHARE_URL
 import com.aurora.extensions.appInfo
 import com.aurora.extensions.browse
@@ -77,7 +78,6 @@ import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.PackageUtil.PACKAGE_NAME_GMS
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.launch

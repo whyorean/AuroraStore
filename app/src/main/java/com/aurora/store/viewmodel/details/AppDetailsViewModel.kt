@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
+import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
@@ -33,7 +34,6 @@ import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.PackageUtil.PACKAGE_NAME_GMS
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import dagger.hilt.android.lifecycle.HiltViewModel
