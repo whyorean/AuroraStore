@@ -35,7 +35,6 @@ import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.providers.PermissionProvider
-import com.aurora.store.view.ui.details.AppDetailsFragmentDirections
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
@@ -125,9 +124,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
     }
 
     fun openGMSWarningFragment() {
-        findNavController().navigate(
-            AppDetailsFragmentDirections.actionAppDetailsFragmentToGmsWarnFragment()
-        )
+        // TODO: FIX ME
     }
 
     private fun cleanupRecyclerViews(recyclerViews: List<EpoxyRecyclerView>) {
