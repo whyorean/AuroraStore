@@ -55,7 +55,7 @@
     <string name="onboarding_permission_esa_desc">Para salvar arquivos de expansão de APK (OBBs) para apps e jogos grandes.</string>
     <string name="onboarding_permission_esa">Acesso ao armazenamento externo</string>
     <string name="onboarding_welcome_select">Como você está\?</string>
-    <string name="onboarding_title_welcome">Boas vindas</string>
+    <string name="onboarding_title_welcome">Boas-vindas</string>
     <string name="onboarding_title_permissions">Permissões</string>
     <string name="onboarding_title_installer">Instalador</string>
     <string name="onboarding_permission_select">A Aurora Store requer as seguintes permissões</string>
