@@ -1,3 +1,8 @@
+Changelog : v4.7.3 (69)
+• Add capability to install microG bundle on Huawei devices
+• Minor bug fixes and improvements
+• Translation updates
+
 Changelog : v4.7.2 (68)
 • Switch to new APIs for searching and installing apps
 • Search filter is no longer available, will be added back later
