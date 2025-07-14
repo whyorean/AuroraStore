@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-FileCopyrightText: 2025 Aurora OSS
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -11,6 +11,8 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.store.AuroraApp
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.room.suite.ExternalApk
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,6 +33,13 @@ class MicroGViewModel @Inject constructor(
     private val downloadHelper: DownloadHelper
 ) : ViewModel() {
 
+    companion object {
+        const val MICROG_DOWNLOAD_URL = "https://github.com/microg/GmsCore/releases/download"
+        const val MICROG_VERSION = "v0.3.6.244735"
+        const val GMS_VERSION_CODE = 244735012
+        const val COMPANION_VERSION_CODE = 84022612
+    }
+
     private val _packageNames = MutableSharedFlow<List<String>>()
     val packageNames = _packageNames.asSharedFlow()
 
@@ -41,37 +50,36 @@ class MicroGViewModel @Inject constructor(
         list.find { d -> apps.any { it == d.packageName } }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    val externalApks = listOf<ExternalApk>(
-        ExternalApk(
-            packageName = "com.google.android.gms",
-            versionCode = 244735012,
-            versionName = "v0.3.6.244735",
-            displayName = "microG Services",
-            iconURL = "https://raw.githubusercontent.com/microg/GmsCore/refs/heads/master/play-services-core/src/main/res/mipmap-xxxhdpi/ic_app.png",
-            developerName = "microG Team",
-            fileList = listOf(
-                PlayFile(
-                    url = "https://github.com/microg/GmsCore/releases/download/v0.3.6.244735/com.google.android.gms-244735012-hw.apk",
-                    name = "com.google.android.gms-244735012-hw.apk",
-                    size = 32509431,
-                    sha256 = "2f14df2974811b576bfafa6167a97e3b3032f2bd6e6ec3887a833fd2fa350dda"
-                )
+    val microGServiceApk = ExternalApk(
+        packageName = PACKAGE_NAME_GMS,
+        versionCode = GMS_VERSION_CODE.toLong(),
+        versionName = MICROG_VERSION,
+        displayName = "microG Services",
+        iconURL = "https://raw.githubusercontent.com/microg/GmsCore/refs/heads/master/play-services-core/src/main/res/mipmap-xxxhdpi/ic_app.png",
+        developerName = "microG Team",
+        fileList = listOf(
+            PlayFile(
+                url = "$MICROG_DOWNLOAD_URL/$MICROG_VERSION/$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk",
+                name = "$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk",
+                size = 32509431,
+                sha256 = "2f14df2974811b576bfafa6167a97e3b3032f2bd6e6ec3887a833fd2fa350dda"
             )
-        ),
-        ExternalApk(
-            packageName = "com.android.vending",
-            versionCode = 84022612,
-            versionName = "v0.3.6.244735",
-            displayName = "microG Companion",
-            iconURL = "https://raw.githubusercontent.com/microg/FakeStore/refs/heads/main/fake-store/src/main/res/mipmap-xxxhdpi/ic_app.png",
-            developerName = "microG Team",
-            fileList = listOf(
-                PlayFile(
-                    url = "https://github.com/microg/GmsCore/releases/download/v0.3.6.244735/com.android.vending-84022612-hw.apk",
-                    name = "com.android.vending-84022612-hw.apk",
-                    size = 3915551,
-                    sha256 = "6835b09016cef0fc3469b4a36b1720427ad3f81161cf20b188f0dadb5f8594e1"
-                )
+        )
+    )
+
+    val microGCompanionApk = ExternalApk(
+        packageName = PACKAGE_NAME_PLAY_STORE,
+        versionCode = COMPANION_VERSION_CODE.toLong(),
+        versionName = MICROG_VERSION,
+        displayName = "microG Companion",
+        iconURL = "https://raw.githubusercontent.com/microg/FakeStore/refs/heads/main/fake-store/src/main/res/mipmap-xxxhdpi/ic_app.png",
+        developerName = "microG Team",
+        fileList = listOf(
+            PlayFile(
+                url = "$MICROG_DOWNLOAD_URL/$MICROG_VERSION/$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk",
+                name = "$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk",
+                size = 3915551,
+                sha256 = "6835b09016cef0fc3469b4a36b1720427ad3f81161cf20b188f0dadb5f8594e1"
             )
         )
     )
@@ -85,18 +93,28 @@ class MicroGViewModel @Inject constructor(
     fun downloadMicroG() {
         viewModelScope.launch {
             try {
-                _packageNames.emit(
-                    listOf(
-                        PACKAGE_NAME_GMS,
-                        PACKAGE_NAME_PLAY_STORE
-                    )
-                )
+                _packageNames.emit(listOf(PACKAGE_NAME_GMS))
 
-                externalApks.forEach {
-                    // Enqueue download only if not already installed
-                    if (!it.isInstalled(context)) {
-                        downloadHelper.enqueueStandalone(it)
-                    }
+                if (microGServiceApk.isInstalled(context)) {
+                    AuroraApp.events.send(InstallerEvent.Installed(PACKAGE_NAME_GMS))
+                } else {
+                    downloadHelper.enqueueStandalone(microGServiceApk)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun downloadCompanion() {
+        viewModelScope.launch {
+            try {
+                _packageNames.emit(listOf(PACKAGE_NAME_PLAY_STORE))
+
+                if (microGCompanionApk.isInstalled(context)) {
+                    AuroraApp.events.send(InstallerEvent.Installed(PACKAGE_NAME_PLAY_STORE))
+                } else {
+                    downloadHelper.enqueueStandalone(microGCompanionApk)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
