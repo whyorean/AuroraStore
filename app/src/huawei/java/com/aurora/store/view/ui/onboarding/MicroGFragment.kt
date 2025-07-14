@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.extensions.browse
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
@@ -91,6 +92,10 @@ class MicroGFragment : BaseFragment<FragmentOnboardingMicrogBinding>() {
     private fun onEvent(event: Event) {
         when (event) {
             is InstallerEvent.Installed -> {
+                if (event.packageName == PACKAGE_NAME_GMS) {
+                    microGViewModel.downloadCompanion()
+                }
+
                 if (PackageUtil.isMicroGBundleInstalled(requireContext())) {
                     markInstallationComplete()
                 }
