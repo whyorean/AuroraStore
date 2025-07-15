@@ -50,7 +50,6 @@ import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.extensions.browse
 import com.aurora.extensions.hide
-import com.aurora.extensions.isHuawei
 import com.aurora.extensions.px
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.runOnUiThread
@@ -77,6 +76,7 @@ import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentDetailsBinding
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.CommonUtil
+import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_SIMILAR
@@ -529,20 +529,9 @@ class AppDetailsFragment : BaseFragment<FragmentDetailsBinding>() {
     }
 
     private fun purchase(app: App) {
-        /**
-         * MicroG Fragment Preconditions:
-         * 1. App being installed must have GSF dependency
-         * 2. It should be a Huawei device
-         * 3. Supported App Gallery should be available, i.e. v15.1.x or above
-         * 4. MicroG bundle should not be already installed
-         *
-         * TODO: Extract this trigger out of Vanilla & put in Huawei flavour
-         */
         if (
             app.dependencies.dependentPackages.fastAny { it == PACKAGE_NAME_GMS } &&
-            isHuawei &&
-            PackageUtil.hasSupportedAppGallery(requireContext()) &&
-            !PackageUtil.isMicroGBundleInstalled(requireContext())
+            FlavouredUtil.promptMicroGInstall(requireContext())
         ) {
             return openGMSWarningFragment()
         }
