@@ -435,4 +435,13 @@
     <string name="app_info_updated_on">Viimeksi päivitetty</string>
     <string name="app_info_downloads">Lataukset</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> käyttöoikeutta</string>
+    <string name="action_install_microG">Asenna microG-paketti</string>
+    <string name="onboarding_title_gsf">Sovellusyhteensopivuus</string>
+    <string name="onboarding_title_gsf_desc">Puuttuvat riippuvuudet</string>
+    <string name="onboarding_gms_agreement">Olen lukenut ja hyväksynyt microG:n käyttöehdot ja tietosuojakäytännön</string>
+    <string name="onboarding_gms_missing">Emme löytäneet Google Play Palveluja laitteestasi, useat suositut sovellukset vaativat sitä toimiakseen kunnolla!</string>
+    <string name="microg_privacy_policy">Lue microG:n tietosuojakäytäntö</string>
+    <string name="microg_license_agreement">Lue microG:n lisenssi ja käyttöehdot</string>
+    <string name="microg_website">Vieraile microG-projektin kotisivuilla</string>
+    <string name="onboarding_gms_microg">microG on ilmainen ja avoimen lähdekoodin uudelleentoteutus, joka tarjoaa alkuperäistä vastaavan toiminnallisuuden sovelluksille, jotka tarvitset Google Play Palveluita toimiakseen.\n\nmicroG luo sovelluksille pääsyn kyseisiin Googlen API:in, parantaen yhteensopivuutta käyttäjille sekä tarjoten samalla yksityisyyshyötyjä.\n\nmicroG käynnistyy automaattisesti taustalla kun avaat sovelluksia, jotka ovat riippuvaisia Google Play Palveluista.</string>
 </resources>
