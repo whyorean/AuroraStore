@@ -139,7 +139,7 @@
     <string name="action_whitelist">Lista blanca</string>
     <string name="action_update_all">Actualizar todo</string>
     <string name="action_update">Actualizar</string>
-    <string name="action_info">Información de aplicación</string>
+    <string name="action_info">Información de la aplicación</string>
     <string name="action_uninstall">Desinstalar</string>
     <string name="action_share">Compartir</string>
     <string name="action_search">Buscar</string>
@@ -286,7 +286,7 @@
     <string name="android_market_desc">Android Market era una tienda online que ofrecía aplicaciones de software diseñadas para dispositivos Android, retirada en 2017.</string>
     <string name="details_ratings_title_hint">Titulo de la reseña</string>
     <string name="pref_updates_check_frequency_desc">Configurar el intervalo de tiempo para actualizaciones automáticas, en horas.</string>
-    <string name="pref_aurora_only">Sólo aplicaciones de Aurora Store</string>
+    <string name="pref_aurora_only">Filtrar aplicaciones de otras fuentes</string>
     <string name="pref_aurora_only_desc">Solo comprobar actualizaciones de aplicaciones instaladas desde la Aurora Store</string>
     <string name="title_app_settings">Ajustes de la aplicación</string>
     <string name="pref_updates_check_frequency">Frecuencia de las actualizaciones automáticas</string>
@@ -295,7 +295,7 @@
     <string name="toast_proxy_success">Proxy configurado correctamente</string>
     <string name="toast_proxy_failed">Error al establecer el proxy</string>
     <string name="pref_vending_version_device">Por defecto (desde la configuración del dispositivo)</string>
-    <string name="pref_vending_version_title">Versión para Google Play</string>
+    <string name="pref_vending_version_title">Versión de Google Play</string>
     <string name="onboarding_permission_doze">Descargas en segundo plano</string>
     <string name="onboarding_permission_doze_desc">Permitir que Aurora Store descargue y actualice aplicaciones en segundo plano</string>
     <string name="pref_updates_auto">Actualizaciones automáticas</string>
@@ -432,4 +432,15 @@
     <string name="app_info_updated_on">Última actualización</string>
     <string name="pref_common_advanced">Avanzado</string>
     <string name="pref_updates_app_source">Fuente de la aplicación</string>
+    <string name="action_install_microG">Instalar Paquete microG</string>
+    <string name="app_info_downloads">Descargas</string>
+    <string name="app_info_target_android">Nivel de Objetivo de la API</string>
+    <string name="onboarding_title_gsf">Compatibilidad de la App</string>
+    <string name="onboarding_title_gsf_desc">Dependencias faltantes</string>
+    <string name="onboarding_gms_agreement">He leído y estoy de acuerdo con los Términos de Servicio y la Política de Privacidad de microG</string>
+    <string name="onboarding_gms_missing">No pudimos encontrar los Servicios de Google Play en tu dispositivo, ¡varias aplicaciones lo requieren ahora para funcionar correctamente!</string>
+    <string name="onboarding_gms_microg">microG es una implementación gratis y de código abierto que proporciona funcionalidades similar para ejecutar aplicaciones dependientes de los Servicios de Google Play para dispositivos Android mediante la reimplantación.\n\nmicroG permite a las aplicaciones acceder a las APIs de Google, mejorando la compatibilidad para los usuarios mientras se ofrecen beneficios para la privacidad. ­\t\n\nmicroG se ejecutará automáticamente en segundo plano cuando abras aplicaciones dependientes de los Servicios Móviles de Google.</string>
+    <string name="microg_privacy_policy">Leer la Política de Privacidad de microG</string>
+    <string name="microg_license_agreement">Leer la Licencia y Acuerdos de microG</string>
+    <string name="microg_website">Visita la Página Web del Proyecto microG</string>
 </resources>
