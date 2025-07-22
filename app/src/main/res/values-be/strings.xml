@@ -256,7 +256,7 @@
     <string name="pref_updates_incompatible_desc">Паказваць абнаўленні для несумяшчальных ці адключаных праграм, якія могуць не ўсталявацца</string>
     <string name="details_beta_delay">Гэта можа заняць пэўны час, статус можна праверыць пазней.</string>
     <string name="details_beta_available">Далучыцца да бэта тэставання?</string>
-    <string name="details_no_dependencies">Адсутнічаюць залежнасці</string>
+    <string name="details_no_dependencies">Залежнасцяў няма</string>
     <string name="details_contains_ads">Ёсць рэклама</string>
     <string name="pref_install_mode_session">Усталёўка праз сеанс</string>
     <string name="pref_install_mode_title">Варыянт усталявання</string>
@@ -435,4 +435,13 @@
     <string name="pref_common_advanced">Пашыраныя налады</string>
     <string name="pref_updates_app_source">Крыніца праграмы</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дазволы</string>
+    <string name="action_install_microG">Усталяваць пакет microG</string>
+    <string name="onboarding_title_gsf">Сумяшчальнасць праграмы</string>
+    <string name="onboarding_title_gsf_desc">Адсутнічаюць залежнасці</string>
+    <string name="onboarding_gms_agreement">Я прачытаў(-ла) і згаджаюся з умовамі абслугоўвання і палітыкай прыватнасці microG</string>
+    <string name="onboarding_gms_missing">Мы не знайшлі сэрвісаў Google Play на вашай прыладзе, шматлікія папулярныя праграмы патрабуюць іх для карэктнай працы!</string>
+    <string name="microg_license_agreement">Прачытаць ліцэнзію і ўмовы microG</string>
+    <string name="microg_website">Наведаць сайт праекта microG</string>
+    <string name="onboarding_gms_microg">microG — бясплатная рэалізацыя з адкрытым зыходным кодам, якая пастаўляе функцыі, падобныя да сэрвісаў Google Play для залежных праграм на прылады Android.\n\nmicroG дазваляе праграмам звяртацца да API Google, паляпшаючы сумяшчальнасць для карыстальнікаў і даючы прывілеі для прыватнасці.\n\nmicroG будзе аўтаматычна выконвацца ў фоне, калі вы адкрыйце праграму, залежную ад Google Mobile Services.</string>
+    <string name="microg_privacy_policy">Прачытаць палітыку прыватнасці microG</string>
 </resources>

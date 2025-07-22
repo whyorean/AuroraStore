@@ -435,4 +435,13 @@
     <string name="app_info_updated_on">Son güncelleme</string>
     <string name="app_info_target_android">Hedef API Düzeyi</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> izin</string>
+    <string name="action_install_microG">microG Paketini Kur</string>
+    <string name="onboarding_title_gsf">Uygulama Uyumluluğu</string>
+    <string name="onboarding_title_gsf_desc">Eksik bağımlılıklar</string>
+    <string name="onboarding_gms_agreement">microG Hizmet Koşullarını ve Gizlilik İlkelerini okudum ve kabul ediyorum</string>
+    <string name="onboarding_gms_missing">Aygıtınızda Google Play Hizmetleri\'ni bulamadık, birçok gözde uygulama düzgün çalışabilmek için ona gereksiniyor!</string>
+    <string name="onboarding_gms_microg">microG, Android İçin Google Play Hizmetleri\'ne bağımlı uygulamaları çalıştırmak için yeniden uyarlama yoluyla benzer işlevselliği sağlayan; özgür ve açık kaynaklı bir uyarlamadır.\n\nmicroG, uygulamaların Google API\'lerine erişmesini sağlar, kullanıcılara gizlilik yararları sunarken için uyumluluğu artırır.\n\nmicroG, Google Mobil Hizmetleri\'ne bağımlı uygulamaları açtığınızda kendiliğinden arka planda çalışacak.</string>
+    <string name="microg_privacy_policy">microG Gizlilik İlkesini Oku</string>
+    <string name="microg_license_agreement">microG Lisans ve Anlaşmasını Oku</string>
+    <string name="microg_website">microG Projesi Web Sitesine Git</string>
 </resources>

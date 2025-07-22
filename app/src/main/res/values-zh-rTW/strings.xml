@@ -71,7 +71,7 @@
     <string name="toast_page_unavailable">瀏覽頁面不可用</string>
     <string name="toast_manual_available">恭喜！要求的版本代碼可用，正在下載。</string>
     <string name="toast_manual_unavailable">你正在要求的版本代碼不可用。</string>
-    <string name="toast_purchase_blocked">應用購買在匿名帳戶上不可用。</string>
+    <string name="toast_purchase_blocked">不可於匿名帳戶上購買應用程式。</string>
     <string name="toast_spoof_applied">以應用裝置偽裝。</string>
     <string name="toast_permission_granted">已授予權限</string>
     <string name="toast_developer_setting_failed">從裝置設定中啟用開發者選項，以開啟它們。</string>
@@ -88,7 +88,7 @@
     <string name="title_apps_library">媒體庫中的應用程式</string>
     <string name="title_library">媒體庫</string>
     <string name="title_language">語言</string>
-    <string name="title_installer">程式安裝器</string>
+    <string name="title_installer">應用程式安裝器</string>
     <string name="title_installed">已安裝</string>
     <string name="title_installation">安裝</string>
     <string name="title_games">遊戲</string>
@@ -120,7 +120,7 @@
     <string name="pref_ui_similar_apps">相似及相關的程式</string>
     <string name="pref_ui_no_for_you_desc">在首頁顯示「為你精選」頁面</string>
     <string name="pref_ui_no_for_you">為你精選頁面</string>
-    <string name="pref_ui_layout_tab">選擇預設標籤</string>
+    <string name="pref_ui_layout_tab">選擇預設標籤頁</string>
     <string name="pref_ui_layout">佈局</string>
     <string name="pref_ui_title">個人化</string>
     <string name="pref_network_title">網路</string>
@@ -133,7 +133,7 @@
     <string name="pref_install_delete_title">安裝後刪除 APK</string>
     <string name="pref_install_delete_summary">已下載的 APK 將在安裝後立即刪除</string>
     <string name="pref_filter_fdroid_title">篩選 F-Droid 應用程式</string>
-    <string name="pref_filter_fdroid_summary">不檢查從 F-Droid 下載或安裝的應用程式更新</string>
+    <string name="pref_filter_fdroid_summary">不檢查從 F-Droid 安裝的應用程式更新</string>
     <string name="pref_common_extra">額外功能</string>
     <string name="onboarding_permission_installer_desc">允許從 Aurora Store 安裝應用程式</string>
     <string name="onboarding_permission_installer">安裝器權限</string>
@@ -221,7 +221,7 @@
     <string name="action_update">更新</string>
     <string name="action_info">應用程式資訊</string>
     <string name="action_uninstall">解除安裝</string>
-    <string name="action_get_local_apk">保存 App bundle</string>
+    <string name="action_get_local_apk">儲存 App bundle</string>
     <string name="action_filter_misc">更多選項</string>
     <string name="about_xda">XDA 論壇</string>
     <string name="about_libera_summary">在 Liberapay 上贊助我們</string>
@@ -269,9 +269,9 @@
     <string name="session_enjoy">登入並享用。</string>
     <string name="update_available">有更新可用</string>
     <string name="pref_vending_version_title">Google Play 版本</string>
-    <string name="pref_updates_incompatible">不相容的更新</string>
-    <string name="pref_updates_incompatible_desc">為不相容或已停用的應用程式，顯示可能安裝失敗的更新</string>
-    <string name="pref_aurora_only_desc">僅檢查 Aurora Store 安裝的應用程式更新</string>
+    <string name="pref_updates_incompatible">顯示不相容的更新</string>
+    <string name="pref_updates_incompatible_desc">為不相容或已停用的應用程式顯示可能安裝失敗的更新</string>
+    <string name="pref_aurora_only_desc">不檢查於 Aurora Store 外所安裝的應用程式更新</string>
     <string name="title_app_settings">應用程式設定</string>
     <string name="title_search_suggestion">搜尋建議</string>
     <string name="toast_proxy_invalid">無效的代理伺服器網址，請檢查格式！</string>
@@ -284,17 +284,17 @@
     <string name="failed_apk_export">匯出 APK 失敗</string>
     <string name="pref_vending_version_device">預設（來自裝置配置）</string>
     <string name="pref_network_proxy_url">代理伺服器網址</string>
-    <string name="pref_aurora_only">僅限 Aurora Store 應用程式</string>
+    <string name="pref_aurora_only">排除其他來源所安裝的應用程式</string>
     <string name="pref_updates_auto_desc">設定自動更新行為</string>
     <string name="pref_updates_auto_off">不要自動更新應用程式</string>
     <string name="check_connectivity">檢查網路連線</string>
     <string name="details_ratings_title_hint">評論標題</string>
     <string name="access_denied_using_vpn">存取被拒！你是否正開著 VPN 或者 Tor？</string>
-    <string name="pref_updates_auto">自動更新應用程式</string>
+    <string name="pref_updates_auto">自動更新</string>
     <string name="pref_updates_auto_install">檢查並自動安裝可用的更新</string>
     <string name="failed_to_fetch_report">取得隱私報告失敗</string>
     <string name="pref_updates_check_frequency">自動更新頻率</string>
-    <string name="pref_updates_check_frequency_desc">以小時為單位，設定自動與自我更新的時間間隔。</string>
+    <string name="pref_updates_check_frequency_desc">以小時為單位，設定自動更新的時間間隔。</string>
     <string name="app_links_title">應用程式連結</string>
     <string name="app_links_desc">允許 Aurora Store 開啟支援的連結</string>
     <string name="bad_request">內部錯誤！請一段時間後重試</string>
@@ -338,7 +338,7 @@
     <string name="session_installer_subtitle">基於工作階段的安裝程式，用於安裝整合或分割的 APK</string>
     <string name="details_data_safety_title">資料安全</string>
     <string name="onboarding_permission_installer_legacy_desc">允許安裝來自未知來源的應用程式</string>
-    <string name="toast_permission_installer_required">您需要先授予安裝程式權限</string>
+    <string name="toast_permission_installer_required">您需要先授予安裝應用程式的權限</string>
     <string name="toast_fav_import_failed">無法匯入我的最愛！</string>
     <string name="toast_fav_export_failed">匯出我的最愛失敗！</string>
     <string name="toast_fav_import_success">已匯入我的最愛！</string>
@@ -390,11 +390,58 @@
     <string name="details_compatibility_no_gms">沒有 Google Play 服務</string>
     <string name="notification_channel_install">安裝通知</string>
     <string name="checking_updates">正在檢查更新</string>
-    <string name="installed_apps_size">安裝了 <xliff:g id="installed_apps_size">%1$d</xliff:g> 應用程式</string>
+    <string name="installed_apps_size">已安裝 <xliff:g id="installed_apps_size">%1$d</xliff:g> 個應用程式</string>
     <string name="no_apps_available">無應用程式可用</string>
     <string name="source_code_subtitle">找出裡面有什麼</string>
     <string name="unable_to_open">無法打開應用程式</string>
     <string name="toast_black_import_failed">匯入黑名單失敗！</string>
     <string name="toast_black_import_success">已匯入黑名單！</string>
     <string name="notification_channel_export">應用程式匯出通知</string>
+    <string name="action_install_microG">安裝 microG Bundle</string>
+    <string name="app_info_downloads">下載</string>
+    <string name="app_info_updated_on">上次更新</string>
+    <string name="app_info_min_android">最小 Android 版本</string>
+    <string name="app_info_target_android">目標 API 級別</string>
+    <string name="onboarding_title_gsf">應用程式相容性</string>
+    <string name="onboarding_title_gsf_desc">缺少的依賴</string>
+    <string name="onboarding_gms_agreement">我已經閱讀並同意 microG 服務條款與隱私政策</string>
+    <string name="onboarding_gms_missing">找不到 Google Play 服務，某些應用程式需要它才能正常使用！</string>
+    <string name="onboarding_gms_microg">microG 是一個免費開源的 Google Play 服務替代，讓依賴 Google Play 服務的應用程式能夠正常運作。\n\nmicroG 能讓應用程式存取 Google API，提供使用者方便的同時保護使用者的隱私。\n\nmicroG 將於開啟依賴 Google 行動服務的應用程式時自動於背景中執行。</string>
+    <string name="microg_privacy_policy">閱覽 microG 隱私政策</string>
+    <string name="microg_license_agreement">閱覽 microG 許可與同意書</string>
+    <string name="microg_website">前往 microG 官網</string>
+    <string name="made_with_love">用 <xliff:g id="heart_emoji">%1$s</xliff:g> 與血於印度製造</string>
+    <string name="pref_clear_device_owner_desc">此將會撤銷階段安裝器能夠安靜地安裝應用程式的權限。是否繼續？</string>
+    <string name="pref_dispenser_title">管理供應者</string>
+    <string name="pref_dispenser_summary">查看與管理於匿名登入時的權杖供應者</string>
+    <string name="no_dispensers_available">沒有供應者</string>
+    <string name="add_dispenser_title">新增供應者</string>
+    <string name="add_dispenser_summary">於 Aurora Store 中新增供應者。權杖供應者將提供帳號證明於 Aurora Store 以匿名地登入。</string>
+    <string name="add_dispenser_hint">供應者網址</string>
+    <string name="remove_dispenser_title">移除供應者</string>
+    <string name="remove_dispenser_summary">是否移除供應者「<xliff:g id="url">%1$s</xliff:g>」？</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> 個權限</string>
+    <string name="action_unarchive">解壓縮</string>
+    <string name="details_compatibility_gms_required_subtitle">您可能需要安裝 Google 的閉源資料庫或是開源的替代，例如 microG。</string>
+    <string name="details_compatibility_gms_not_required_title">不需要 Google Play 服務</string>
+    <string name="details_compatibility_gms_not_required_subtitle">此應用程式不須 Google 的閉源資料庫，不過其可能需要其他第三方資料庫才能正常運作。</string>
+    <string name="details_compatibility_microg">microG 相容性</string>
+    <string name="details_compatibility_status_compatible">可運作：沒有任何問題</string>
+    <string name="details_compatibility_status_limited">有限制：僅有某些功能正常運作</string>
+    <string name="details_compatibility_status_unsupported">不支援：無法使用</string>
+    <string name="details_compatibility_status_unknown">未知：尚未檢查</string>
+    <string name="pref_network_microg_login_title">使用 microG 登入帳號</string>
+    <string name="pref_network_microg_login_desc">登入 Google 帳號時以 microG 驗證帳號以簡化登入流程</string>
+    <string name="set">確認</string>
+    <string name="disable">停用</string>
+    <string name="toast_proxy_disabled">已成功停用代理伺服器</string>
+    <string name="pref_network_proxy_desc">檢視並管理代理伺服器設定</string>
+    <string name="pref_common_advanced">更多</string>
+    <string name="pref_updates_restrictions_title">自動更新限制</string>
+    <string name="pref_updates_restrictions_desc">設定自動更新的裝置限制。</string>
+    <string name="pref_updates_restrictions_metered">僅限於非計量付費網路</string>
+    <string name="pref_updates_restrictions_idle">於裝置閒置時</string>
+    <string name="pref_updates_restrictions_battery">於裝置電量足夠時</string>
+    <string name="pref_updates_app_source">應用程式來源</string>
+    <string name="verification_failed">檢驗檔案失敗</string>
 </resources>
