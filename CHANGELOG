@@ -1,3 +1,7 @@
+Changelog : v4.7.4 (70)
+• Do not prompt for microG installs on non-huawei builds
+• Translation updates
+
 Changelog : v4.7.3 (69)
 • Add capability to install microG bundle on Huawei devices
 • Minor bug fixes and improvements

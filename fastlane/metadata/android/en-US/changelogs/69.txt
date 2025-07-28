@@ -1,0 +1,3 @@
+• Add capability to install microG bundle on Huawei devices
+• Minor bug fixes and improvements
+• Translation updates

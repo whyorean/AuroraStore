@@ -1,0 +1,2 @@
+• Do not prompt for microG installs on non-huawei builds
+• Translation updates
