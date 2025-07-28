@@ -394,4 +394,5 @@
     <string name="filter_latest">אחרון</string>
     <string name="no_apps_available">אין אפליקציות זמינות</string>
     <string name="action_remove_all">הסר הכל</string>
+    <string name="app_info_target_android">רמת יעד API</string>
 </resources>

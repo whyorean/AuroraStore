@@ -435,4 +435,13 @@
     <string name="app_info_target_android">Nivelul API țintă</string>
     <string name="app_info_updated_on">Ultima actualizare</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permisiuni</string>
+    <string name="action_install_microG">Instalează pachetul microG</string>
+    <string name="onboarding_title_gsf">Compatibilitatea aplicațiilor</string>
+    <string name="onboarding_title_gsf_desc">Dependențe lipsă</string>
+    <string name="onboarding_gms_agreement">Am citit și sunt de acord cu Termenii și Politica de confidențialitate microG</string>
+    <string name="onboarding_gms_missing">Nu am putut găsi serviciile Google Play pe dispozitiv, mai multe aplicații populare necesită prezența lor ca să funcționeze corect!</string>
+    <string name="onboarding_gms_microg">microG este o implementare gratuită și open-source, care oferă funcționalitate similară pentru a rula aplicații dependente de serviciile Google Play pentru dispozitivele Android prin reimplementare.\n\nmicroG permite aplicațiilor să acceseze acele API-uri Google, îmbunătățind compatibilitatea pentru utilizatori, oferind în același timp beneficii de confidențialitate.\n\nmicroG va rula automat în fundal atunci când deschizi aplicații dependente de Serviciile Google Mobile.</string>
+    <string name="microg_privacy_policy">Citește Politica de confidențialitate microG</string>
+    <string name="microg_license_agreement">Citește Licența și Acordul microG</string>
+    <string name="microg_website">Accesează pagina web a proiectului microG</string>
 </resources>

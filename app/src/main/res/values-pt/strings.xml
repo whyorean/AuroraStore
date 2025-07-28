@@ -440,4 +440,6 @@
     <string name="microg_privacy_policy">Ler \'Política de Privacidade\' de microG</string>
     <string name="microg_license_agreement">Ler \'Licença e Acordo\' de microG</string>
     <string name="microg_website">Visitar o \'\'site\'\' da Web do Projeto microG</string>
+    <string name="pref_common_advanced">Avançado</string>
+    <string name="pref_updates_app_source">Fonte da app</string>
 </resources>
