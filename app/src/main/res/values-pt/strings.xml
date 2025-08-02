@@ -261,7 +261,7 @@
     <string name="toast_import_failed">Não foi possível importar a configuração do dispositivo</string>
     <string name="update_available">atualização disponível</string>
     <string name="updates_available">atualizações disponíveis</string>
-    <string name="permissions_denied">As permissões necessárias foram recusadas. Tem que as conceder para poder continuar.</string>
+    <string name="permissions_denied">As permissões necessárias foram recusadas. Tem que as permitir para poder continuar</string>
     <string name="search_hint">Pesquisar por apps &amp; jogos</string>
     <string name="requesting_new_session">A solicitar nova sessão</string>
     <string name="server_maintenance">Servidor em manutenção</string>
@@ -271,7 +271,7 @@
     <string name="app_links_desc">Permitir abertura de ligações através de Aurora</string>
     <string name="failed_to_fetch_report">Não foi possível obter o relatório de privacidade</string>
     <string name="access_denied_using_vpn">Acesso recusado. Está a usar uma VPN ou Tor\?</string>
-    <string name="bad_request">Erro interno. Tente mais tarde.</string>
+    <string name="bad_request">Erro interno! Tente de novo mais tarde</string>
     <string name="login_rate_limited">A sua conta tem limite de utilizações</string>
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão. Código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
