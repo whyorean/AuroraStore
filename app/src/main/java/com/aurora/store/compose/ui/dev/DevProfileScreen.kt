@@ -29,12 +29,14 @@ import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composables.ErrorComposable
+import com.aurora.store.compose.composables.ProgressComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.app.AppListComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.viewmodel.details.DevProfileViewModel
-import com.aurora.store.viewmodel.search.SearchResultViewModel
+import com.aurora.store.viewmodel.search.SearchViewModel
 import kotlinx.coroutines.flow.flowOf
 import kotlin.random.Random
 
@@ -61,7 +63,7 @@ fun DevProfileScreen(
     publisherId: String,
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
-    viewModel: SearchResultViewModel = hiltViewModel()
+    viewModel: SearchViewModel = hiltViewModel()
 ) {
     val apps = viewModel.apps.collectAsLazyPagingItems()
 
@@ -93,9 +95,15 @@ private fun ScreenContent(
         }
     ) { paddingValues ->
         when (apps.loadState.refresh) {
-            is LoadState.Loading -> {}
+            is LoadState.Loading -> ProgressComposable()
 
-            is LoadState.Error -> {}
+            is LoadState.Error -> {
+                ErrorComposable(
+                    modifier = Modifier.padding(paddingValues),
+                    icon = R.drawable.ic_disclaimer,
+                    message = R.string.error
+                )
+            }
 
             else -> {
                 LazyColumn(

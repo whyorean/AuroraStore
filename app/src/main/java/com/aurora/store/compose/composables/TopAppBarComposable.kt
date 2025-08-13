@@ -42,7 +42,10 @@ fun TopAppBarComposable(
         navigationIcon = {
             if (onNavigateUp != null) {
                 IconButton(onClick = onNavigateUp) {
-                    Icon(painter = navigationIcon, contentDescription = null)
+                    Icon(
+                        painter = navigationIcon,
+                        contentDescription = stringResource(R.string.action_back)
+                    )
                 }
             }
         },

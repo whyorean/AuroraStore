@@ -14,6 +14,7 @@ import androidx.navigation.toRoute
 import com.aurora.store.compose.ui.commons.BlacklistScreen
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
+import com.aurora.store.compose.ui.search.SearchScreen
 
 /**
  * Navigation graph for compose screens
@@ -35,6 +36,10 @@ fun NavGraph(navHostController: NavHostController, startDestination: Screen) {
     NavHost(navController = navHostController, startDestination = startDestination) {
         composable<Screen.Blacklist> {
             BlacklistScreen(onNavigateUp = { onNavigateUp() })
+        }
+
+        composable<Screen.Search> {
+            SearchScreen(onNavigateUp = { onNavigateUp() })
         }
 
         composable<Screen.AppDetails> { backstackEntry ->

@@ -37,6 +37,9 @@ sealed class Screen(
     @Serializable
     data class AppDetails(val packageName: String) : Screen()
 
+    @Serializable
+    data object Search : Screen()
+
     /**
      * Child screen of [AppDetails]; Avoid navigating to this screen directly.
      */

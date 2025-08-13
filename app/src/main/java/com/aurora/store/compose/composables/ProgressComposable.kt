@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.app
+package com.aurora.store.compose.composables
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +24,7 @@ import com.aurora.store.R
  */
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun AppProgressComposable(modifier: Modifier = Modifier) {
+fun ProgressComposable(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -39,6 +39,6 @@ fun AppProgressComposable(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-private fun AppProgressComposablePreview() {
-    AppProgressComposable()
+private fun ProgressComposablePreview() {
+    ProgressComposable()
 }
