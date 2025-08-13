@@ -288,7 +288,7 @@
     <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
     <string name="pref_aurora_only">Filtrer les applis provenant d’autres sources</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
-    <string name="pref_aurora_only_desc">Ne pas vérifier la présence de mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
+    <string name="pref_aurora_only_desc">Ne pas chercher les mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
@@ -362,7 +362,7 @@
     <string name="toast_fav_export_success">Les favoris ont été exportés</string>
     <string name="action_logout_confirmation_title">Vous déconnecter ?</string>
     <string name="action_logout_confirmation_message">Voulez-vous vous déconnecter ?</string>
-    <string name="check_updates">Vérifier la présence de mises à jour</string>
+    <string name="check_updates">Chercher des mises à jour</string>
     <string name="details_data_safety_title">Sécurité des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l’installation d’applis de sources inconnues</string>
     <string name="toast_permission_installer_required">Vous devez d’abord accorder l’autorisation au programme d’installation</string>
