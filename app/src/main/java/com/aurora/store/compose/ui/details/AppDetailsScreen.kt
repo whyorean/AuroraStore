@@ -9,7 +9,6 @@ import android.content.ActivityNotFoundException
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -236,94 +235,6 @@ private fun ScreenContentApp(
         }
     }
 
-    NavigableSupportingPaneScaffold(
-        navigator = scaffoldNavigator,
-        mainPane = {
-            AnimatedPane {
-                ScreenContentAppMainPane(
-                    app = app,
-                    featuredReviews = featuredReviews,
-                    state = state,
-                    isAnonymous = isAnonymous,
-                    plexusScores = plexusScores,
-                    dataSafetyReport = dataSafetyReport,
-                    exodusReport = exodusReport,
-                    onNavigateUp = onNavigateUp,
-                    onNavigateToScreen = { screen -> showExtraPane(screen) },
-                    onDownload = onDownload,
-                    onCancelDownload = onCancelDownload,
-                    onUninstall = onUninstall,
-                    onOpen = onOpen,
-                    onTestingSubscriptionChange = onTestingSubscriptionChange,
-                    menuActions = { if (shouldShowMenuOnMainPane) SetupMenu() }
-                )
-            }
-        },
-        supportingPane = {
-            AnimatedPane {
-                ScreenContentAppSupportingPane(
-                    suggestions = suggestions,
-                    onNavigateToAppDetails = onNavigateToAppDetails,
-                    menuActions = { if (!shouldShowMenuOnMainPane) SetupMenu() }
-                )
-            }
-        },
-        extraPane = {
-            scaffoldNavigator.currentDestination?.contentKey?.let { screen ->
-                AnimatedPane {
-                    when (screen) {
-                        is Screen.DetailsReview -> DetailsReviewScreen(onNavigateUp = ::showMainPane)
-                        is Screen.DetailsExodus -> DetailsExodusScreen(onNavigateUp = ::showMainPane)
-                        is Screen.DetailsMore -> DetailsMoreScreen(
-                            onNavigateUp = ::showMainPane,
-                            onNavigateToAppDetails = onNavigateToAppDetails
-                        )
-                        is Screen.DetailsPermission -> DetailsPermissionScreen(
-                            onNavigateUp = ::showMainPane
-                        )
-                        is Screen.DetailsScreenshot -> DetailsScreenshotScreen(
-                            index = screen.index,
-                            onNavigateUp = ::showMainPane
-                        )
-                        is Screen.DetailsManualDownload -> DetailsManualDownloadScreen(
-                            onNavigateUp = ::showMainPane
-                        )
-                        is Screen.DevProfile -> DevProfileScreen(
-                            publisherId = app.developerName,
-                            onNavigateUp = ::showMainPane,
-                            onNavigateToAppDetails = { onNavigateToAppDetails(it) }
-                        )
-
-                        else -> {}
-                    }
-                }
-            }
-        }
-    )
-}
-
-/**
- * Composable to display app details
- */
-@Composable
-private fun ScreenContentAppMainPane(
-    app: App,
-    featuredReviews: List<Review> = emptyList(),
-    state: AppState = AppState.Unavailable,
-    isAnonymous: Boolean,
-    plexusScores: Scores?,
-    dataSafetyReport: DataSafetyReport?,
-    exodusReport: Report?,
-    onNavigateUp: () -> Unit,
-    onNavigateToScreen: (screen: Screen) -> Unit,
-    onDownload: () -> Unit,
-    onCancelDownload: () -> Unit,
-    onUninstall: () -> Unit,
-    onOpen: () -> Unit,
-    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit,
-    menuActions: @Composable (RowScope.() -> Unit) = {}
-) {
-
     @Composable
     fun SetupAppActions() {
         when (state) {
@@ -365,146 +276,184 @@ private fun ScreenContentAppMainPane(
                     primaryActionDisplayName = primaryActionName,
                     secondaryActionDisplayName = stringResource(R.string.title_manual_download),
                     onPrimaryAction = onDownload,
-                    onSecondaryAction = { onNavigateToScreen(Screen.DetailsManualDownload) }
+                    onSecondaryAction = { showExtraPane(Screen.DetailsManualDownload) }
                 )
             }
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBarComposable(onNavigateUp = onNavigateUp, actions = menuActions)
-        }
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(dimensionResource(R.dimen.padding_medium)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
-        ) {
-            AppDetails(
-                app = app,
-                inProgress = state.inProgress(),
-                progress = state.progress(),
-                onNavigateToDetailsDevProfile = { onNavigateToScreen(Screen.DevProfile(it)) },
-                isUpdatable = state is AppState.Updatable
-            )
-
-            SetupAppActions()
-
-            AppTags(app = app)
-            AppChangelog(changelog = app.changes)
-            HeaderComposable(
-                title = stringResource(R.string.details_more_about_app),
-                subtitle = app.shortDescription,
-                onClick = { onNavigateToScreen(Screen.DetailsMore) }
-            )
-
-            AppScreenshots(
-                screenshots = app.screenshots,
-                onNavigateToScreenshot = { onNavigateToScreen(Screen.DetailsScreenshot(it)) }
-            )
-
-            AppRatingAndReviews(
-                rating = app.rating,
-                featuredReviews = featuredReviews,
-                onNavigateToDetailsReview = { onNavigateToScreen(Screen.DetailsReview) }
-            )
-
-            if (!isAnonymous && app.testingProgram?.isAvailable == true) {
-                AppTesting(
-                    isSubscribed = app.testingProgram!!.isSubscribed,
-                    onTestingSubscriptionChange = onTestingSubscriptionChange
+    @Composable
+    fun MainPane() {
+        Scaffold(
+            topBar = {
+                TopAppBarComposable(
+                    onNavigateUp = onNavigateUp,
+                    actions = { if (shouldShowMenuOnMainPane) SetupMenu() }
                 )
             }
-
-            AppCompatibility(
-                needsGms = app.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS),
-                plexusScores = plexusScores
-            )
-
-            HeaderComposable(
-                title = stringResource(R.string.details_permission),
-                subtitle = if (app.permissions.isNotEmpty()) {
-                    stringResource(R.string.permissions_requested, app.permissions.size)
-                } else {
-                    stringResource(R.string.details_no_permission)
-                },
-                onClick = if (app.permissions.isNotEmpty()) {
-                    { onNavigateToScreen(Screen.DetailsPermission) }
-                } else {
-                    null
-                }
-            )
-
-            if (dataSafetyReport != null) {
-                AppDataSafety(
-                    report = dataSafetyReport,
-                    privacyPolicyUrl = app.privacyPolicyUrl
-                )
-            }
-
-            AppPrivacy(
-                report = exodusReport,
-                onNavigateToDetailsExodus = if (!exodusReport?.trackers.isNullOrEmpty()) {
-                    { onNavigateToScreen(Screen.DetailsExodus) }
-                } else {
-                    null
-                }
-            )
-
-            AppDeveloperDetails(
-                address = app.developerAddress,
-                website = app.developerWebsite,
-                email = app.developerEmail
-            )
-        }
-    }
-}
-
-/**
- * Composable to display similar and related app suggestions
- */
-@Composable
-private fun ScreenContentAppSupportingPane(
-    menuActions: @Composable (RowScope.() -> Unit) = {},
-    suggestions: List<App> = emptyList(),
-    onNavigateToAppDetails: (packageName: String) -> Unit = {}
-) {
-    Scaffold(
-        topBar = { TopAppBarComposable(actions = menuActions) }
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            Row(
-                modifier = Modifier.padding(dimensionResource(R.dimen.margin_medium)),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_suggestions),
-                    contentDescription = null
-                )
-                HeaderComposable(title = stringResource(R.string.pref_ui_similar_apps))
-            }
-            LazyColumn(
+        ) { paddingValues ->
+            Column(
                 modifier = Modifier
+                    .padding(paddingValues)
                     .fillMaxSize()
-                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                    .verticalScroll(rememberScrollState())
+                    .padding(dimensionResource(R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
             ) {
-                items(items = suggestions, key = { item -> item.id }) { app ->
-                    AppListComposable(
-                        app = app,
-                        onClick = { onNavigateToAppDetails(app.packageName) }
+                AppDetails(
+                    app = app,
+                    inProgress = state.inProgress(),
+                    progress = state.progress(),
+                    onNavigateToDetailsDevProfile = { showExtraPane(Screen.DevProfile(it)) },
+                    isUpdatable = state is AppState.Updatable
+                )
+
+                SetupAppActions()
+
+                AppTags(app = app)
+                AppChangelog(changelog = app.changes)
+                HeaderComposable(
+                    title = stringResource(R.string.details_more_about_app),
+                    subtitle = app.shortDescription,
+                    onClick = { showExtraPane(Screen.DetailsMore) }
+                )
+
+                AppScreenshots(
+                    screenshots = app.screenshots,
+                    onNavigateToScreenshot = { showExtraPane(Screen.DetailsScreenshot(it)) }
+                )
+
+                AppRatingAndReviews(
+                    rating = app.rating,
+                    featuredReviews = featuredReviews,
+                    onNavigateToDetailsReview = { showExtraPane(Screen.DetailsReview) }
+                )
+
+                if (!isAnonymous && app.testingProgram?.isAvailable == true) {
+                    AppTesting(
+                        isSubscribed = app.testingProgram!!.isSubscribed,
+                        onTestingSubscriptionChange = onTestingSubscriptionChange
                     )
                 }
+
+                AppCompatibility(
+                    needsGms = app.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS),
+                    plexusScores = plexusScores
+                )
+
+                HeaderComposable(
+                    title = stringResource(R.string.details_permission),
+                    subtitle = if (app.permissions.isNotEmpty()) {
+                        stringResource(R.string.permissions_requested, app.permissions.size)
+                    } else {
+                        stringResource(R.string.details_no_permission)
+                    },
+                    onClick = if (app.permissions.isNotEmpty()) {
+                        { showExtraPane(Screen.DetailsPermission) }
+                    } else {
+                        null
+                    }
+                )
+
+                if (dataSafetyReport != null) {
+                    AppDataSafety(
+                        report = dataSafetyReport,
+                        privacyPolicyUrl = app.privacyPolicyUrl
+                    )
+                }
+
+                AppPrivacy(
+                    report = exodusReport,
+                    onNavigateToDetailsExodus = if (!exodusReport?.trackers.isNullOrEmpty()) {
+                        { showExtraPane(Screen.DetailsExodus) }
+                    } else {
+                        null
+                    }
+                )
+
+                AppDeveloperDetails(
+                    address = app.developerAddress,
+                    website = app.developerWebsite,
+                    email = app.developerEmail
+                )
             }
         }
     }
+
+    @Composable
+    fun SupportingPane() {
+        Scaffold(
+            topBar = {
+                TopAppBarComposable(actions = { if (!shouldShowMenuOnMainPane) SetupMenu() })
+            }
+        ) { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+            ) {
+                Row(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.margin_medium)),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_suggestions),
+                        contentDescription = null
+                    )
+                    HeaderComposable(title = stringResource(R.string.pref_ui_similar_apps))
+                }
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                ) {
+                    items(items = suggestions, key = { item -> item.id }) { app ->
+                        AppListComposable(
+                            app = app,
+                            onClick = { onNavigateToAppDetails(app.packageName) }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    NavigableSupportingPaneScaffold(
+        navigator = scaffoldNavigator,
+        mainPane = { AnimatedPane { MainPane() } },
+        supportingPane = { AnimatedPane { SupportingPane() } },
+        extraPane = {
+            scaffoldNavigator.currentDestination?.contentKey?.let { screen ->
+                AnimatedPane {
+                    when (screen) {
+                        is Screen.DetailsReview -> DetailsReviewScreen(onNavigateUp = ::showMainPane)
+                        is Screen.DetailsExodus -> DetailsExodusScreen(onNavigateUp = ::showMainPane)
+                        is Screen.DetailsMore -> DetailsMoreScreen(
+                            onNavigateUp = ::showMainPane,
+                            onNavigateToAppDetails = onNavigateToAppDetails
+                        )
+                        is Screen.DetailsPermission -> DetailsPermissionScreen(
+                            onNavigateUp = ::showMainPane
+                        )
+                        is Screen.DetailsScreenshot -> DetailsScreenshotScreen(
+                            index = screen.index,
+                            onNavigateUp = ::showMainPane
+                        )
+                        is Screen.DetailsManualDownload -> DetailsManualDownloadScreen(
+                            onNavigateUp = ::showMainPane
+                        )
+                        is Screen.DevProfile -> DevProfileScreen(
+                            publisherId = app.developerName,
+                            onNavigateUp = ::showMainPane,
+                            onNavigateToAppDetails = { onNavigateToAppDetails(it) }
+                        )
+
+                        else -> {}
+                    }
+                }
+            }
+        }
+    )
 }
 
 @PreviewScreenSizes
