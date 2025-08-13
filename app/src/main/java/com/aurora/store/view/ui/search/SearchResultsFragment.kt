@@ -41,14 +41,14 @@ import com.aurora.store.view.custom.recycler.EndlessRecyclerOnScrollListener
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.epoxy.controller.SearchCarouselController
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.viewmodel.search.SearchResultViewModel
+import com.aurora.store.viewmodel.search.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchResultsFragment : BaseFragment<FragmentSearchResultBinding>(),
     GenericCarouselController.Callbacks {
 
-    private val viewModel: SearchResultViewModel by activityViewModels()
+    private val viewModel: SearchViewModel by activityViewModels()
     private val controller = SearchCarouselController(this)
 
     private var query: String

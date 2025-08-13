@@ -53,8 +53,8 @@ import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.app.AppListComposable
-import com.aurora.store.compose.composables.app.AppProgressComposable
-import com.aurora.store.compose.composables.app.NoAppComposable
+import com.aurora.store.compose.composables.ProgressComposable
+import com.aurora.store.compose.composables.ErrorComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.compose.menu.AppDetailsMenu
@@ -101,7 +101,7 @@ fun AppDetailsScreen(
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
 
-    LaunchedEffect(key1 = Unit) { viewModel.fetchAppDetails(packageName) }
+    LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
     with(app) {
         when {
@@ -155,7 +155,7 @@ private fun ScreenContentLoading(onNavigateUp: () -> Unit = {}) {
     Scaffold(
         topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp) }
     ) { paddingValues ->
-        AppProgressComposable(modifier = Modifier.padding(paddingValues))
+        ProgressComposable(modifier = Modifier.padding(paddingValues))
     }
 }
 
@@ -167,7 +167,7 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
     Scaffold(
         topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp) }
     ) { paddingValues ->
-        NoAppComposable(
+        ErrorComposable(
             modifier = Modifier.padding(paddingValues),
             icon = R.drawable.ic_apps_outage,
             message = R.string.toast_app_unavailable

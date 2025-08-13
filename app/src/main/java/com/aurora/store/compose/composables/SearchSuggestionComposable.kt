@@ -41,13 +41,13 @@ import com.aurora.store.R
 fun SearchSuggestionComposable(
     modifier: Modifier = Modifier,
     searchSuggestEntry: SearchSuggestEntry,
-    onClick: () -> Unit = {},
-    onAction: () -> Unit = {}
+    onClick: (query: String) -> Unit = {},
+    onAction: (query: String) -> Unit = {}
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
+            .clickable(onClick = { onClick(searchSuggestEntry.title) })
             .padding(dimensionResource(R.dimen.padding_medium)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
@@ -55,7 +55,7 @@ fun SearchSuggestionComposable(
         Row(
             modifier = Modifier
                 .weight(1F)
-                .clickable(onClick = onClick),
+                .clickable(onClick = { onClick(searchSuggestEntry.title) }),
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
         ) {
             AsyncImage(
@@ -81,7 +81,7 @@ fun SearchSuggestionComposable(
                 overflow = TextOverflow.Ellipsis
             )
         }
-        IconButton(onClick = onAction) {
+        IconButton(onClick = { onAction(searchSuggestEntry.title) }) {
             Icon(
                 painter = painterResource(R.drawable.ic_search_append),
                 contentDescription = null

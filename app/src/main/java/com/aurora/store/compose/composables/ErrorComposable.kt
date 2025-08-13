@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.app
+package com.aurora.store.compose.composables
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -33,7 +33,7 @@ import com.aurora.store.R
  * @param onAction Callback when action button is clicked
  */
 @Composable
-fun NoAppComposable(
+fun ErrorComposable(
     modifier: Modifier = Modifier,
     @DrawableRes icon: Int,
     @StringRes message: Int,
@@ -69,8 +69,8 @@ fun NoAppComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun NoAppComposablePreview() {
-    NoAppComposable(
+private fun ErrorComposablePreview() {
+    ErrorComposable(
         icon = R.drawable.ic_updates,
         message = R.string.details_no_updates,
         actionMessage = R.string.check_updates
