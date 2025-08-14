@@ -126,7 +126,7 @@ class InstallerStatusReceiver : BaseInstallerStatusReceiver() {
             is SilentInstallResponse -> {
                 Log.i(TAG, "IPC Response: ${ApiCode.getStatusCodeString(statusCode)}")
 
-                if (statusCode != ApiCode.SUCCESS && response.result != ApiCode.SUCCESS) {
+                if (statusCode != ApiCode.SUCCESS || response.result != ApiCode.SUCCESS) {
                     Log.e(TAG, "Silent install unavailable: $statusCode")
                     promptUser(context, intent)
                 }
