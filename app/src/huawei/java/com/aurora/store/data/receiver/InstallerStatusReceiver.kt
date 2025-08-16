@@ -119,14 +119,27 @@ class InstallerStatusReceiver : BaseInstallerStatusReceiver() {
         intent: Intent,
         ipcResponse: Status<BaseIPCResponse>
     ) {
-        with(ipcResponse) {
-            if (response is SilentInstallResponse || response is BaseIPCResponse) {
+        val response = ipcResponse.response
+        val statusCode = ipcResponse.statusCode
+
+        when (response) {
+            is SilentInstallResponse -> {
                 Log.i(TAG, "IPC Response: ${ApiCode.getStatusCodeString(statusCode)}")
 
-                if (statusCode != ApiCode.SUCCESS) {
-                    Log.e(TAG, "Silent install failed with status code: $statusCode")
+                if (statusCode != ApiCode.SUCCESS || response.result != ApiCode.SUCCESS) {
+                    Log.e(TAG, "Silent install unavailable: $statusCode")
                     promptUser(context, intent)
                 }
+            }
+
+            null -> {
+                Log.e(TAG, "IPC response is null.")
+                promptUser(context, intent)
+            }
+
+            else -> {
+                Log.e(TAG, "Unexpected IPC response type: ${response.javaClass.name}")
+                promptUser(context, intent)
             }
         }
     }
