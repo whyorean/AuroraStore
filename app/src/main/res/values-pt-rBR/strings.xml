@@ -99,7 +99,7 @@
     <string name="download_pause_all">Pausar tudo</string>
     <string name="download_none">Não há downloads</string>
     <string name="download_metadata">Buscando metadados</string>
-    <string name="download_force_clear_all">Forçar limpar tudo</string>
+    <string name="download_force_clear_all">Limpar tudo</string>
     <string name="download_failed">Falha no download</string>
     <string name="download_eta_calculating">Calculando</string>
     <string name="download_completed">Download concluído</string>
