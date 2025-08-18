@@ -70,7 +70,7 @@
     <string name="details_no_updates">Aucune mise à jour n’est proposée</string>
     <string name="details_no_permission">Aucune autorisation</string>
     <string name="details_no_dependencies">Aucune dépendance</string>
-    <string name="details_no_ads">Pas de publicités</string>
+    <string name="details_no_ads">Aucune publicité</string>
     <string name="details_more_about_app">En savoir plus sur l’appli</string>
     <string name="details_gsf_dependent">Le « Google Services Framework » est nécessaire</string>
     <string name="details_free">Gratuite</string>
