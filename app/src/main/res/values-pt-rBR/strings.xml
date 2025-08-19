@@ -99,7 +99,7 @@
     <string name="download_pause_all">Pausar tudo</string>
     <string name="download_none">Não há downloads</string>
     <string name="download_metadata">Buscando metadados</string>
-    <string name="download_force_clear_all">Forçar limpar tudo</string>
+    <string name="download_force_clear_all">Limpar tudo</string>
     <string name="download_failed">Falha no download</string>
     <string name="download_eta_calculating">Calculando</string>
     <string name="download_completed">Download concluído</string>
@@ -205,7 +205,7 @@
     <string name="pref_install_delete_title">Apagar APK após a instalação</string>
     <string name="pref_install_delete_summary">Os APKs baixados serão apagados após a instalação</string>
     <string name="pref_filter_fdroid_title">Filtrar apps do F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Não buscar por atualizações de apps instalados pelo F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Não verificar se há atualizações de apps instalados pelo F-Droid</string>
     <string name="insecure_anonymous_apply">Conecte-se à sua conta novamente e reinicie o app para aplicar as mudanças.</string>
     <string name="pref_ui_no_for_you">Páginas de recomendação</string>
     <string name="toast_manual_available">O código da versão solicitada está disponível, baixando agora.</string>
@@ -287,7 +287,7 @@
     <string name="details_ratings_title_hint">Título da análise</string>
     <string name="pref_updates_check_frequency_desc">Configure o intervalo das atualizações automáticas, em horas.</string>
     <string name="pref_aurora_only">Filtrar apps de outras fontes</string>
-    <string name="pref_aurora_only_desc">Não buscar atualizações de apps instalados de fontes que não são a Aurora Store</string>
+    <string name="pref_aurora_only_desc">Não verificar se há atualizações de apps não instalados pela Aurora Store</string>
     <string name="title_app_settings">Configurações do app</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_network_proxy_url">URL da proxy</string>
@@ -299,10 +299,10 @@
     <string name="onboarding_permission_doze">Downloads em segundo plano</string>
     <string name="onboarding_permission_doze_desc">Permita que a Aurora Store baixe e atualize apps em segundo plano</string>
     <string name="pref_updates_auto">Atualizações automáticas</string>
-    <string name="pref_updates_auto_notify">Buscar atualizações disponíveis e enviar notificações</string>
+    <string name="pref_updates_auto_notify">Verificar se há atualizações disponíveis e enviar notificações</string>
     <string name="pref_updates_auto_off">Não atualizar os apps automaticamente</string>
     <string name="pref_updates_auto_desc">Configure o comportamento das atualizações automáticas</string>
-    <string name="pref_updates_auto_install">Buscar e instalar atualizações disponíveis automaticamente</string>
+    <string name="pref_updates_auto_install">Verificar se há atualizações disponíveis e instalá-las automaticamente</string>
     <string name="action_request_analysis">Solicitar uma nova análise</string>
     <string name="failed_apk_export">Falha ao exportar APKs</string>
     <string name="pref_updates_incompatible">Mostrar atualizações que podem falhar</string>
@@ -364,7 +364,7 @@
     <string name="pref_network_proxy_url_message">Digite uma URL de proxy válida para passar todo o tráfego pela proxy.</string>
     <string name="action_logout_confirmation_title">Desconectar-se?</string>
     <string name="action_logout_confirmation_message">Tem certeza que deseja sair?</string>
-    <string name="check_updates">Buscar atualizações</string>
+    <string name="check_updates">Verificar se há atualizações</string>
     <string name="details_data_safety_title">Segurança dos dados</string>
     <string name="item_required">Necessário</string>
     <string name="details_data_safety_subtitle">Práticas declaradas pelo desenvolvedor da segurança e privacidade dos dados</string>
@@ -387,7 +387,7 @@
     <string name="notification_channel_account">Notificação relacionada à conta</string>
     <string name="authentication_required_unarchive">Conecte-se à sua conta do Google Play para desarquivar o app!</string>
     <string name="authentication_required_title">Autenticação necessária</string>
-    <string name="checking_updates">Buscando atualizações</string>
+    <string name="checking_updates">Verificando se há atualizações</string>
     <string name="made_with_love">Feito com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="default_spoof">Padrão</string>
     <string name="available_spoof">Disponíveis</string>

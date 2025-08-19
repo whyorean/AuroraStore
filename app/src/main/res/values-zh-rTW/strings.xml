@@ -52,7 +52,7 @@
     <string name="about_libera">Liberapay</string>
     <string name="about_gitlab_summary">從 GitLab 上的 Aurora OSS 取得 Aurora 商店的原始碼。</string>
     <string name="about_gitlab">GitLab</string>
-    <string name="about_fdroid_summary">透過 F-Droid 取得 Aurora Store。</string>
+    <string name="about_fdroid_summary">從 F-Droid 取得 Aurora Store。</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="about_bitcoin_eth_summary">透過 Ethereum (ETH) 捐款</string>
     <string name="about_bitcoin_eth">Ethereum</string>
@@ -145,7 +145,7 @@
     <string name="onboarding_permission_select">Aurora Store 需要以下權限</string>
     <string name="dialog_desc_native_split">你無法透過原生安裝器安裝捆包（分裂的）應用程式。請將你的安裝方式改成階段、Aurora 服務或 Root。</string>
     <string name="device_miui_subtitle">由於 MIUI 最佳化，階段安裝器無法安裝應用程式。</string>
-    <string name="dialog_title_self_update">有新更新可用</string>
+    <string name="dialog_title_self_update">有更新可用</string>
     <string name="device_miui_extra">另外你可以選原生安裝器，但如此你就無法安裝分裂的 APK 了，所以由你決定。</string>
     <string name="device_miui_description">請禁用 MIUI 最佳化以允許安裝，另外你可以選 Root 或者 Aurora 服務安裝器。</string>
     <string name="device_miui_title">偵測到 MIUI！</string>
@@ -213,9 +213,9 @@
     <string name="details_changelog">更動紀錄</string>
     <string name="details_beta_delay">加入需要一點時間，等一下再回來查看狀態。</string>
     <string name="details_beta_description">你會比大眾更早體驗到新功能以及錯誤，向開發人員回報問題以幫助改進。</string>
-    <string name="details_beta_available">要加入 beta 項目嗎？</string>
-    <string name="details_beta_subscribed">你已經是 beta 測試員啦</string>
-    <string name="details_beta">Beta(測試版)項目</string>
+    <string name="details_beta_available">要加入 beta 計畫嗎？</string>
+    <string name="details_beta_subscribed">你已經是 beta 測試人員啦</string>
+    <string name="details_beta">Beta 計畫</string>
     <string name="action_whitelist">白名單</string>
     <string name="action_update_all">更新全部</string>
     <string name="action_update">更新</string>
