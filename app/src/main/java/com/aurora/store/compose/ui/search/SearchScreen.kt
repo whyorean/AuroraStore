@@ -72,7 +72,7 @@ fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltView
         suggestions = suggestions,
         results = results,
         onNavigateUp = onNavigateUp,
-        onSearch = { query -> viewModel.newSearch(query) },
+        onSearch = { query -> viewModel.search(query) },
         onFetchSuggestions = { query -> viewModel.fetchSuggestions(query) }
     )
 }
@@ -159,7 +159,8 @@ private fun ScreenContent(
             suggestions.forEach { suggestion ->
                 SearchSuggestionComposable(
                     searchSuggestEntry = suggestion,
-                    onClick = { query -> onRequestSearch(query) }
+                    onClick = { query -> onRequestSearch(query) },
+                    onAction = { query -> currentQuery = query.trim() }
                 )
             }
         }

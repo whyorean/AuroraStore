@@ -30,9 +30,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
+import com.aurora.extensions.navigate
 import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.room.download.Download
@@ -109,7 +111,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         }
 
         binding.searchFab.setOnClickListener {
-            findNavController().navigate(R.id.searchSuggestionFragment)
+            requireContext().navigate(Screen.Search)
         }
     }
 

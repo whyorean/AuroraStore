@@ -31,8 +31,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.aurora.extensions.navigate
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -113,7 +115,7 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         }.attach()
 
         binding.searchFab.setOnClickListener {
-            findNavController().navigate(R.id.searchSuggestionFragment)
+            requireContext().navigate(Screen.Search)
         }
     }
 

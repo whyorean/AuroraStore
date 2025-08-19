@@ -67,7 +67,7 @@ fun DevProfileScreen(
 ) {
     val apps = viewModel.apps.collectAsLazyPagingItems()
 
-    LaunchedEffect(key1 = Unit) { viewModel.newSearch("pub:$publisherId") }
+    LaunchedEffect(key1 = Unit) { viewModel.search("pub:$publisherId") }
 
     ScreenContent(
         apps = apps,
