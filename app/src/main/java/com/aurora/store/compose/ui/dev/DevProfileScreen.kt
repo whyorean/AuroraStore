@@ -24,7 +24,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.App
@@ -128,7 +127,6 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun DevProfileScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         val apps = List(10) { app.copy(id = Random.nextInt()) }

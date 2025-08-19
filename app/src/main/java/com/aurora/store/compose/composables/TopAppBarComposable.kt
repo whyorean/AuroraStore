@@ -6,7 +6,6 @@
 package com.aurora.store.compose.composables
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -28,7 +27,6 @@ import com.aurora.store.R
  * @param actions Actions to display on the top app bar (for e.g. menu)
  */
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun TopAppBarComposable(
     modifier: Modifier = Modifier,
     title: String? = null,

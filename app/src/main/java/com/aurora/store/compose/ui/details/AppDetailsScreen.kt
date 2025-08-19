@@ -17,7 +17,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.layout.SupportingPaneScaffoldRole
@@ -39,7 +38,6 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.SHARE_URL
@@ -179,7 +177,6 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
  * Composable to display app details and suggestions
  */
 @Composable
-@OptIn(ExperimentalMaterial3AdaptiveApi::class)
 private fun ScreenContentApp(
     app: App,
     featuredReviews: List<Review> = emptyList(),
@@ -458,7 +455,6 @@ private fun ScreenContentApp(
 
 @PreviewScreenSizes
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         ScreenContentApp(

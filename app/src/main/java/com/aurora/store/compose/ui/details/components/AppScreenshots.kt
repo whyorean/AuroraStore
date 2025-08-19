@@ -19,7 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
@@ -51,7 +50,6 @@ fun AppScreenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: I
 
 @Preview(showBackground = true)
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun AppScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
         CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {

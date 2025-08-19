@@ -31,7 +31,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
@@ -116,7 +115,6 @@ fun FavouriteComposable(
 
 @Preview(showBackground = true)
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun FavouriteComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         FavouriteComposable(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))

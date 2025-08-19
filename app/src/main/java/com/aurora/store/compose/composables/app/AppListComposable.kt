@@ -25,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
@@ -87,7 +86,6 @@ fun AppListComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Un
 
 @Preview(showBackground = true)
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 fun AppListComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         AppListComposable(app = app)

@@ -9,14 +9,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.DockedSearchBar
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.NavigableListDetailPaneScaffold
@@ -45,7 +43,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
@@ -78,7 +75,6 @@ fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltView
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3Api::class)
 private fun ScreenContent(
     suggestions: List<SearchSuggestEntry> = emptyList(),
     results: LazyPagingItems<App> = flowOf(PagingData.empty<App>()).collectAsLazyPagingItems(),
@@ -238,7 +234,6 @@ private fun ScreenContent(
 
 @PreviewScreenSizes
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun SearchScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     val apps = List(10) { app.copy(id = Random.nextInt()) }
     val results = flowOf(PagingData.from(apps)).collectAsLazyPagingItems()

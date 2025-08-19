@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImagePainter
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.compose.rememberAsyncImagePainter
@@ -62,7 +61,6 @@ fun ScreenshotComposable(modifier: Modifier = Modifier, url: String) {
 
 @Preview
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun ScreenshotComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         ScreenshotComposable(url = app.screenshots.firstOrNull()?.url ?: "")

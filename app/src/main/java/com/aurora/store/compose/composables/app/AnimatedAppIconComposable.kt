@@ -26,7 +26,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
@@ -94,7 +93,6 @@ private class ProgressProvider: PreviewParameterProvider<Float> {
 
 @Preview(showBackground = true)
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         AnimatedAppIconComposable(
@@ -106,7 +104,6 @@ private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) 
 
 @Preview(showBackground = true)
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun AnimatedAppIconPreview(@PreviewParameter(ProgressProvider::class) progress: Float) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         AnimatedAppIconComposable(

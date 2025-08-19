@@ -38,7 +38,6 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import androidx.window.core.layout.WindowWidthSizeClass
-import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.Review
@@ -172,7 +171,6 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
 
 @Preview
 @Composable
-@OptIn(ExperimentalCoilApi::class)
 private fun DetailsReviewScreenPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
     val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
     val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
