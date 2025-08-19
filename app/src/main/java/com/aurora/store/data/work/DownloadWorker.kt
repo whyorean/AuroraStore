@@ -99,11 +99,10 @@ class DownloadWorker @AssistedInject constructor(
             download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
 
             val response = (httpClient as HttpClient).call(download.iconURL).body
-            if (response != null) {
-                val bitmap =
-                    BitmapFactory.decodeStream(withContext(Dispatchers.IO) { response.byteStream() })
-                icon = bitmap.scale(96, 96)
-            }
+            val bitmap = BitmapFactory.decodeStream(
+                withContext(Dispatchers.IO) { response.byteStream() }
+            )
+            icon = bitmap.scale(96, 96)
         } catch (exception: Exception) {
             return onFailure(exception)
         }
