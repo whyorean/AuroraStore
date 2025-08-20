@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.window.core.layout.WindowWidthSizeClass
+import androidx.window.core.layout.WindowSizeClass
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -48,9 +48,12 @@ fun DetailsPermissionScreen(
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val permissionsInfo by detailsPermissionViewModel.permissionsInfo.collectAsStateWithLifecycle()
 
-    val topAppBarTitle = when (windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass) {
-        WindowWidthSizeClass.COMPACT -> app!!.displayName
-        else -> stringResource(R.string.details_permission)
+    val topAppBarTitle = when {
+        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
+            stringResource(R.string.details_permission)
+        }
+
+        else -> app!!.displayName
     }
 
     ScreenContent(

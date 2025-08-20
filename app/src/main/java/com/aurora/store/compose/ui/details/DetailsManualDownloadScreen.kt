@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.window.core.layout.WindowSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.toast
@@ -63,9 +64,12 @@ fun DetailsManualDownloadScreen(
     val context = LocalContext.current
 
     val app by viewModel.app.collectAsStateWithLifecycle()
-    val topAppBarTitle = when (windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass) {
-        WindowWidthSizeClass.COMPACT -> app!!.displayName
-        else -> stringResource(R.string.title_manual_download)
+    val topAppBarTitle = when {
+        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
+            stringResource(R.string.title_manual_download)
+        }
+
+        else -> app!!.displayName
     }
 
     LaunchedEffect(key1 = Unit) {

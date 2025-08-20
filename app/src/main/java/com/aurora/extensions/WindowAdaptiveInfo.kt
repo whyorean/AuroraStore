@@ -9,7 +9,7 @@ import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.window.core.layout.WindowWidthSizeClass
+import androidx.window.core.layout.WindowSizeClass
 import com.aurora.store.R
 
 /**
@@ -17,7 +17,10 @@ import com.aurora.store.R
  */
 val WindowAdaptiveInfo.adaptiveNavigationIcon: Painter
     @Composable
-    get() = when (windowSizeClass.windowWidthSizeClass) {
-        WindowWidthSizeClass.COMPACT -> painterResource(R.drawable.ic_arrow_back)
-        else -> painterResource(R.drawable.ic_cancel)
+    get() = when {
+        windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
+            painterResource(R.drawable.ic_cancel)
+        }
+
+        else -> painterResource(R.drawable.ic_arrow_back)
     }

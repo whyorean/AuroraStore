@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,16 +17,24 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.VerticalDragHandle
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.layout.AdaptStrategy
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
+import androidx.compose.material3.adaptive.layout.SupportingPaneScaffoldDefaults
 import androidx.compose.material3.adaptive.layout.SupportingPaneScaffoldRole
+import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation.NavigableSupportingPaneScaffold
 import androidx.compose.material3.adaptive.navigation.rememberSupportingPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -194,10 +203,19 @@ private fun ScreenContentApp(
     onCancelDownload: () -> Unit = {},
     onUninstall: () -> Unit = {},
     onOpen: () -> Unit = {},
-    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}
+    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {},
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val context = LocalContext.current
-    val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<Screen>()
+    val scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
+    val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<Screen>(
+        scaffoldDirective = scaffoldDirective,
+        adaptStrategies = SupportingPaneScaffoldDefaults.adaptStrategies(
+            supportingPaneAdaptStrategy = AdaptStrategy
+                .Levitate()
+                .onlyIfSinglePane(scaffoldDirective)
+        )
+    )
     val coroutineScope = rememberCoroutineScope()
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
@@ -423,8 +441,12 @@ private fun ScreenContentApp(
             scaffoldNavigator.currentDestination?.contentKey?.let { screen ->
                 AnimatedPane {
                     when (screen) {
-                        is Screen.DetailsReview -> DetailsReviewScreen(onNavigateUp = ::showMainPane)
-                        is Screen.DetailsExodus -> DetailsExodusScreen(onNavigateUp = ::showMainPane)
+                        is Screen.DetailsReview -> DetailsReviewScreen(
+                            onNavigateUp = ::showMainPane
+                        )
+                        is Screen.DetailsExodus -> DetailsExodusScreen(
+                            onNavigateUp = ::showMainPane
+                        )
                         is Screen.DetailsMore -> DetailsMoreScreen(
                             onNavigateUp = ::showMainPane,
                             onNavigateToAppDetails = onNavigateToAppDetails
@@ -449,6 +471,16 @@ private fun ScreenContentApp(
                     }
                 }
             }
+        },
+        paneExpansionDragHandle = { state ->
+            VerticalDragHandle(
+                modifier = Modifier.paneExpansionDraggable(
+                    state = state,
+                    minTouchTargetSize = LocalMinimumInteractiveComponentSize.current,
+                    interactionSource = remember { MutableInteractionSource() }
+                ),
+                interactionSource = remember { MutableInteractionSource() }
+            )
         }
     )
 }
