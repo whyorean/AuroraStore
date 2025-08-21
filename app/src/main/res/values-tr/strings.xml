@@ -443,4 +443,13 @@
     <string name="microg_privacy_policy">microG Gizlilik İlkesini Oku</string>
     <string name="microg_license_agreement">microG Lisans ve Anlaşmasını Oku</string>
     <string name="microg_website">microG Projesi Web Sitesine Git</string>
+    <string name="details_data_safety_collect">Bu uygulamanın toplayabileceği veriler</string>
+    <string name="details_data_safety_collect_none">Geliştirici bu uygulamanın kullanıcı verileri toplamadığını söylüyor.</string>
+    <string name="details_data_safety_shared">Bu uygulamanın paylaşabileceği veriler</string>
+    <string name="details_data_safety_share_none">Geliştirici bu uygulamanın kullanıcı verilerini diğer şirketler ve kurumlarla paylaşmayacağını söylüyor.</string>
+    <string name="exodus_tracker_desc">Uygulamanın bu sürümü henüz Exodus Privacy\'nin veri merkezinde bulunmayan takipçiler bulundurabilir.</string>
+    <string name="details_more_info">Daha fazla bilgi</string>
+    <string name="details_more_target_api">Hedeflenen API</string>
+    <string name="details_more_package_name">Paket adı</string>
+    <string name="select_app_for_details">Daha fazla ayrıntı için bir uygulama şeçin</string>
 </resources>
