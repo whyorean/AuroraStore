@@ -11,10 +11,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.content.IntentCompat
-import androidx.navigation.compose.rememberNavController
 import com.aurora.store.compose.compositions.UI
 import com.aurora.store.compose.compositions.LocalUI
-import com.aurora.store.compose.navigation.NavGraph
+import com.aurora.store.compose.navigation.NavDisplay
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.theme.AuroraTheme
 import com.aurora.store.util.PackageUtil
@@ -42,8 +41,7 @@ class ComposeActivity : ComponentActivity() {
         setContent {
             CompositionLocalProvider(LocalUI provides localUI) {
                 AuroraTheme {
-                    val navController = rememberNavController()
-                    NavGraph(navHostController = navController, startDestination = startDestination)
+                    NavDisplay(startDestination = startDestination)
                 }
             }
         }

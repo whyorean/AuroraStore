@@ -8,6 +8,7 @@ package com.aurora.store.compose.navigation
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.navigation3.runtime.NavKey
 import com.aurora.store.R
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
@@ -22,7 +23,7 @@ import kotlinx.serialization.Serializable
 sealed class Screen(
     @StringRes val label: Int? = null,
     @DrawableRes val icon: Int? = null
-) : Parcelable {
+) : NavKey, Parcelable {
 
     companion object {
         const val PARCEL_KEY = "SCREEN"
