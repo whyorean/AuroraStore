@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">Lire la Politique de confidentialité de microG</string>
     <string name="microg_license_agreement">Lire la licence et l’entente de microG</string>
     <string name="microg_website">Consulter le site Web du projet microG</string>
+    <string name="details_data_safety_collect">Données que cette appli peut recueillir</string>
+    <string name="details_data_safety_collect_none">Le développeur affirme que cette appli ne collecte pas les données des utilisateurs.</string>
+    <string name="details_data_safety_shared">Données que cette appli peut partager</string>
+    <string name="details_data_safety_share_none">Le développeur affirme que cette appli ne partage pas les données des utilisateurs avec d’autres entreprises ou organisations.</string>
+    <string name="exodus_tracker_desc">Cette version de l’appli peut encore comprendre d’autres traceurs qui n’apparaissent pas encore dans la base de données d’Exodus Privacy.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> traceurs connus ont été trouvés dans <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Aucune description n’est proposée</string>
+    <string name="details_more_info">Plus de précisions</string>
+    <string name="details_more_target_api">Cibles</string>
+    <string name="details_more_package_name">Nom du paquet</string>
+    <string name="details_more_content_rating">Évaluation du contenu</string>
+    <string name="select_app_for_details">Choisissez une appli pour afficher plus de détails</string>
 </resources>
