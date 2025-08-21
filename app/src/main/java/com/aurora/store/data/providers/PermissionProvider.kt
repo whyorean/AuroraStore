@@ -18,7 +18,6 @@ import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
 import com.aurora.extensions.isExternalStorageAccessible
 import com.aurora.extensions.isIgnoringBatteryOptimizations
-import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
@@ -118,9 +117,7 @@ class PermissionProvider(private val fragment: Fragment) :
                 }
             }
 
-            PermissionType.DOZE_WHITELIST -> {
-                if (isMAndAbove) context.isIgnoringBatteryOptimizations() else true
-            }
+            PermissionType.DOZE_WHITELIST -> context.isIgnoringBatteryOptimizations()
 
             PermissionType.APP_LINKS -> context.isDomainVerified("play.google.com") &&
                     context.isDomainVerified("market.android.com")

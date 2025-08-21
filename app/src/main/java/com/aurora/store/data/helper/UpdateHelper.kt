@@ -12,7 +12,6 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
-import com.aurora.extensions.isMAndAbove
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
@@ -68,7 +67,7 @@ class UpdateHelper @Inject constructor(
                 constraints.setRequiresBatteryNotLow(true)
             }
 
-            if (isMAndAbove && Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)) {
+            if (Preferences.getBoolean(context, PREFERENCES_UPDATES_RESTRICTIONS_IDLE, true)) {
                 constraints.setRequiresDeviceIdle(true)
             }
 

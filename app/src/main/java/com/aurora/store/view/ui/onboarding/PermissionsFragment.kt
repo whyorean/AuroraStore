@@ -26,7 +26,6 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -76,6 +75,12 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
                 } else {
                     getString(R.string.onboarding_permission_installer_legacy_desc)
                 }
+            ),
+            Permission(
+                PermissionType.DOZE_WHITELIST,
+                getString(R.string.onboarding_permission_doze),
+                getString(R.string.onboarding_permission_doze_desc),
+                true
             )
         )
 
@@ -95,17 +100,6 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
                     getString(R.string.onboarding_permission_esa),
                     getString(R.string.onboarding_permission_esa_desc),
                     false
-                )
-            )
-        }
-
-        if (isMAndAbove) {
-            permissions.add(
-                Permission(
-                    PermissionType.DOZE_WHITELIST,
-                    getString(R.string.onboarding_permission_doze),
-                    getString(R.string.onboarding_permission_doze_desc),
-                    true
                 )
             )
         }

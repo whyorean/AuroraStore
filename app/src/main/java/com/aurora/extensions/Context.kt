@@ -143,11 +143,7 @@ fun Context.getStyledAttributeColor(id: Int): Int {
 }
 
 fun Context.isIgnoringBatteryOptimizations(): Boolean {
-    return if (isMAndAbove) {
-        (getSystemService<PowerManager>())?.isIgnoringBatteryOptimizations(packageName) ?: true
-    } else {
-        true
-    }
+    return getSystemService<PowerManager>()?.isIgnoringBatteryOptimizations(packageName) ?: true
 }
 
 fun Context.areNotificationsEnabled(): Boolean {

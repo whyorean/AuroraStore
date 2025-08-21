@@ -24,9 +24,6 @@ import android.annotation.SuppressLint
 import android.os.Build
 import java.util.Locale
 
-val isMAndAbove: Boolean
-    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-
 val isNAndAbove: Boolean
     get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 

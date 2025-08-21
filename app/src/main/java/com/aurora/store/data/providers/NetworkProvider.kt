@@ -20,15 +20,12 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
-import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
 import androidx.core.content.getSystemService
-import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.data.model.NetworkStatus
-import com.aurora.store.data.receiver.NetworkBroadcastReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -47,44 +44,25 @@ class NetworkProvider @Inject constructor(@ApplicationContext private val contex
 
     val status: Flow<NetworkStatus>
         get() = callbackFlow {
-            if (isMAndAbove) {
-                val networkCallback = object : ConnectivityManager.NetworkCallback() {
-                    override fun onAvailable(network: Network) {
-                        trySend(NetworkStatus.AVAILABLE).isSuccess
-                    }
-
-                    override fun onLost(network: Network) {
-                        trySend(NetworkStatus.UNAVAILABLE).isSuccess
-                    }
+            val networkCallback = object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    trySend(NetworkStatus.AVAILABLE).isSuccess
                 }
 
-                if (isNAndAbove) {
-                    connectivityManager.registerDefaultNetworkCallback(networkCallback)
-                } else {
-                    connectivityManager.registerNetworkCallback(
-                        NetworkRequest.Builder().build(),
-                        networkCallback
-                    )
+                override fun onLost(network: Network) {
+                    trySend(NetworkStatus.UNAVAILABLE).isSuccess
                 }
-
-                awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
-            } else {
-                val receiver = NetworkBroadcastReceiver { isConnected ->
-                    val status = if (isConnected) {
-                        NetworkStatus.AVAILABLE
-                    } else {
-                        NetworkStatus.UNAVAILABLE
-                    }
-                    trySend(status).isSuccess
-                }
-
-                @Suppress("DEPRECATION")
-                context.registerReceiver(
-                    receiver,
-                    IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
-                )
-
-                awaitClose { context.unregisterReceiver(receiver) }
             }
+
+            if (isNAndAbove) {
+                connectivityManager.registerDefaultNetworkCallback(networkCallback)
+            } else {
+                connectivityManager.registerNetworkCallback(
+                    NetworkRequest.Builder().build(),
+                    networkCallback
+                )
+            }
+
+            awaitClose { connectivityManager.unregisterNetworkCallback(networkCallback) }
         }.distinctUntilChanged()
 }

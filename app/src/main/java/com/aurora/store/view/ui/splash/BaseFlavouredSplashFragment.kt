@@ -18,7 +18,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.getPackageName
-import com.aurora.extensions.isMAndAbove
 import com.aurora.extensions.navigate
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.R
@@ -45,7 +44,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
     val viewModel: AuthViewModel by activityViewModels()
 
     val canLoginWithMicroG: Boolean
-        get() = isMAndAbove && PackageUtil.hasSupportedMicroGVariant(requireContext()) &&
+        get() = PackageUtil.hasSupportedMicroGVariant(requireContext()) &&
                 Preferences.getBoolean(requireContext(), PREFERENCE_MICROG_AUTH, true)
 
     val startForAccount =
