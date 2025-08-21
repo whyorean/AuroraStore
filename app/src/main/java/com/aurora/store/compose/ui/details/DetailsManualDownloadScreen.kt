@@ -44,7 +44,6 @@ import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.window.core.layout.WindowSizeClass
-import androidx.window.core.layout.WindowWidthSizeClass
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App

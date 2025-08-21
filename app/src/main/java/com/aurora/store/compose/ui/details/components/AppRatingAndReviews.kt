@@ -31,7 +31,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.util.fastForEach
 import androidx.window.core.layout.WindowSizeClass
-import androidx.window.core.layout.WindowWidthSizeClass
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Rating
 import com.aurora.gplayapi.data.models.Review
