@@ -65,7 +65,7 @@ class NetworkPreference : BasePreferenceFragment() {
             }
         }
 
-        findPreference<SwitchPreferenceCompat>(PREFERENCE_MICROG_AUTH)?.isEnabled =
+        findPreference<SwitchPreferenceCompat>(PREFERENCE_MICROG_AUTH)?.isVisible =
             PackageUtil.hasSupportedMicroGVariant(requireContext())
     }
 

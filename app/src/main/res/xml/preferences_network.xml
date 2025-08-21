@@ -41,6 +41,7 @@
         app:defaultValue="true"
         app:disableDependentsState="false"
         app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false"
         app:key="PREFERENCE_MICROG_AUTH"
         app:summary="@string/pref_network_microg_login_desc"
         app:title="@string/pref_network_microg_login_title" />
