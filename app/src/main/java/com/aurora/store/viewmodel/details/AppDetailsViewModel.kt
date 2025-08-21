@@ -146,10 +146,6 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                // Reset current details to show latest ones
-                _app.value = App("")
-                _suggestions.value = emptyList()
-
                 _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
                     isInstalled = PackageUtil.isInstalled(context, packageName)
                 )

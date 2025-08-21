@@ -95,7 +95,7 @@ fun AppDetailsScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
-    viewModel: AppDetailsViewModel = hiltViewModel()
+    viewModel: AppDetailsViewModel = hiltViewModel(key = packageName)
 ) {
     val context = LocalContext.current
 
