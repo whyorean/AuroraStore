@@ -1,0 +1,39 @@
+#
+# SPDX-FileCopyrightText: 2025 The Calyx Institute
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+# This file describes the licensing and copyright situation for files that
+# cannot be annotated directly, for example because of being simply
+# uncommentable. Unless this is the case, a file should be annotated directly.
+#
+# This follows the REUSE specification: https://reuse.software/spec-3.3/#reusetoml
+
+version = 1
+
+[[annotations]]
+path = [
+    ".gitlab/**",
+    "fastlane/**",
+    "CHANGELOG",
+    "README.md",
+    "DISCLAIMER.md",
+    "POLICY.md",
+    "updates.json",
+    "app/schemas/**",
+    "app/testkey.jks",
+    "app/src/main/**/*.png",
+    "app/src/main/res/resources.properties",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = [
+    "2021-2025 Aurora OSS",
+    "2023-2025 The Calyx Institute"
+]
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = "gradle/wrapper/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2007-2023 Gradle, Inc."
+SPDX-License-Identifier = "Apache-2.0"

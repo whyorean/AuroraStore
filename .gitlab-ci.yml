@@ -1,3 +1,9 @@
+#
+# SPDX-FileCopyrightText: 2021-2025 Aurora OSS
+# SPDX-FileCopyrightText: 2023-2025 The Calyx Institute
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
 variables:
   PACKAGE_VERSION: "continuous"
   DEBUG_BINARY: "com.aurora.store.vanilla.debug_${CI_COMMIT_SHORT_SHA}.apk"

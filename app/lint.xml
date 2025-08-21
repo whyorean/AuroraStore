@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: 2023-2025 The Calyx Institute
+  ~ SPDX-FileCopyrightText: 2025 Aurora OSS
+  ~ SPDX-License-Identifier: GPL-3.0-or-later
+  -->
 <lint>
     <issue id="MissingTranslation" severity="ignore" />
     <issue id="ProtectedPermissions" severity="ignore" />

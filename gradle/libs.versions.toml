@@ -1,3 +1,9 @@
+#
+# SPDX-FileCopyrightText: 2024-2025 The Calyx Institute
+# SPDX-FileCopyrightText: 2024-2025 Aurora OSS
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
 [versions]
 activity = "1.10.1"
 agCoreservice = "13.3.1.300"
