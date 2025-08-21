@@ -75,7 +75,7 @@
     <string name="filter_review_all">الجميع</string>
     <string name="exodus_view_report">عرض التقرير</string>
     <string name="exodus_progress">التحقق من وجود برمجيات تتبع…</string>
-    <string name="exodus_powered">بدعم من خصوصية Exodus</string>
+    <string name="exodus_powered">بدعم من Exodus Privacy</string>
     <string name="exodus_no_tracker">لا يحتوي على برمجيات تتبع معروفة</string>
     <string name="download_resume_all">استئناف الكل</string>
     <string name="download_queued">في قائمة الإنتظار</string>
@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">اقرأ سياسة الخصوصية لـ microG</string>
     <string name="microg_license_agreement">اقرأ ترخيص واتفاقية microG</string>
     <string name="microg_website">زر موقع مشروع microG</string>
+    <string name="details_data_safety_collect">البيانات التي قد يجمعها هذا التطبيق</string>
+    <string name="details_data_safety_collect_none">يقول المطوِّر إن هذا التطبيق لا يجمع بيانات المستخدم.</string>
+    <string name="details_data_safety_shared">البيانات التي قد يشاركها هذا التطبيق</string>
+    <string name="details_data_safety_share_none">يقول المطوِّر إن هذا التطبيق لا يشارك بيانات المستخدم مع شركات أو منظمات أخرى.</string>
+    <string name="exodus_tracker_desc">قد لا يزال هذا الإصدار من التطبيق يحتوي على المزيد من أدوات التتبع غير الموجودة بعد في قاعدة بيانات Exodus Privacy.</string>
+    <string name="exodus_report_trackers">عُثر على متتبعات معروفة عددها <xliff:g id="number_of_trackers">%1$d</xliff:g> في <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">لا يوجد وصف متاح</string>
+    <string name="details_more_info">مزيد من المعلومات</string>
+    <string name="details_more_target_api">يستهدف</string>
+    <string name="details_more_package_name">اسم الحزمة</string>
+    <string name="details_more_content_rating">تقييم المحتوى</string>
+    <string name="select_app_for_details">اختر تطبيقًا لمزيد من التفاصيل</string>
 </resources>
