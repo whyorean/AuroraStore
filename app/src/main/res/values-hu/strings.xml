@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">A microG adatvédelmi irányelveinek elolvasása</string>
     <string name="microg_license_agreement">A microG licenc és felhasználási feltételeinek elolvasása</string>
     <string name="microg_website">Látogasson el a microG weboldalára</string>
+    <string name="details_data_safety_collect">Az alkalmazás által gyűjtött adatok</string>
+    <string name="details_data_safety_collect_none">A fejlesztő szerint ez az alkalmazás nem gyűjt felhasználói adatokat.</string>
+    <string name="details_data_safety_shared">Az alkalmazás által gyűjthető adatok</string>
+    <string name="details_data_safety_share_none">A fejlesztő szerint ez az alkalmazás nem oszt meg felhasználói adatokat más cégekkel vagy szervezetekkel.</string>
+    <string name="exodus_tracker_desc">Ez az alkalmazás verzió még tartalmazhat olyan nyomkövetőket, amelyek még nem szerepelnek az Exodus Privacy adatbázisában.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> ismert nyomkövető(k) található(ak) a <xliff:g id="app_version_name">%2$s</xliff:g> verzióban</string>
+    <string name="no_description">Nincs leírás</string>
+    <string name="details_more_info">További információk</string>
+    <string name="details_more_target_api">Célpontok</string>
+    <string name="details_more_package_name">Csomag neve</string>
+    <string name="details_more_content_rating">Korhatár-besorolás</string>
+    <string name="select_app_for_details">Válasszon egy alkalmazást a további részletekért</string>
 </resources>
