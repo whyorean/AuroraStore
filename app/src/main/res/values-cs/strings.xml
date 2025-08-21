@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">Přečtěte si Zásady ochrany údajů microG</string>
     <string name="microg_license_agreement">Přečtěte si Licenci a Smlouvu microG</string>
     <string name="microg_website">Navštivte web projektu microG</string>
+    <string name="details_data_safety_collect">Data, která může tato aplikace shromažďovat</string>
+    <string name="details_data_safety_collect_none">Vývojář uvedl, že tato aplikace neshromažďuje údaje o uživatelích.</string>
+    <string name="details_data_safety_shared">Data, která může tato aplikace sdílet</string>
+    <string name="details_data_safety_share_none">Vývojář uvedl, že tato aplikace nesdílí údaje o uživatelích s jinými společnostmi nebo organizacemi.</string>
+    <string name="exodus_tracker_desc">Tato verze aplikace může obsahovat více sledovacích prvků, které se zatím nenachází v databázi služby Exodus Privacy.</string>
+    <string name="exodus_report_trackers">Ve verzi <xliff:g id="app_version_name">%2$s</xliff:g> bylo nalezeno <xliff:g id="number_of_trackers">%1$d</xliff:g> známých sledovacích prvků</string>
+    <string name="no_description">Není dostupný žádný popis</string>
+    <string name="details_more_info">Další informace</string>
+    <string name="details_more_target_api">Cíle</string>
+    <string name="details_more_package_name">Název balíčku</string>
+    <string name="details_more_content_rating">Hodnocení obsahu</string>
+    <string name="select_app_for_details">Vyberte aplikaci pro více podrobností</string>
 </resources>
