@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">Ознайомтеся з Політикою конфіденційності microG</string>
     <string name="microg_license_agreement">Прочитайте ліцензію та угоду microG</string>
     <string name="microg_website">Відвідайте веб-сайт проекту microG</string>
+    <string name="details_data_safety_collect">Дані, які може збирати цей додаток</string>
+    <string name="details_data_safety_collect_none">Розробник стверджує, що цей додаток не збирає дані користувачів.</string>
+    <string name="details_data_safety_shared">Дані, які може ділитися ця програма</string>
+    <string name="details_data_safety_share_none">Розробник стверджує, що цей додаток не передає дані користувачів іншим компаніям чи організаціям.</string>
+    <string name="exodus_tracker_desc">Ця версія програми може містити більше трекерів, яких ще немає в базі даних Exodus Privacy.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> відомих трекерів знайдено в <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Опис недоступний</string>
+    <string name="details_more_info">Більше інформації</string>
+    <string name="details_more_target_api">Цілі</string>
+    <string name="details_more_package_name">Назва пакета</string>
+    <string name="details_more_content_rating">Рейтинг контенту</string>
+    <string name="select_app_for_details">Виберіть додаток для отримання додаткової інформації</string>
 </resources>
