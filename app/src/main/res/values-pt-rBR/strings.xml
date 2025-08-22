@@ -447,8 +447,8 @@
     <string name="details_data_safety_collect_none">O desenvolvedor diz que este app não coleta dados do usuário.</string>
     <string name="details_data_safety_shared">Dados que este app pode compartilhar</string>
     <string name="details_data_safety_share_none">O desenvolvedor diz que este app não compartilha dados do usuário com outras empresas ou organizações.</string>
-    <string name="exodus_tracker_desc">Esta versão do app ainda pode conter mais rastreadores não presentes ainda no banco de dados da Exodus Privacy.</string>
-    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conhecidos encontrados em <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="exodus_tracker_desc">Esta versão do app ainda pode conter mais rastreadores não presentes ainda no banco de dados do Exodus Privacy.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conhecidos encontrados na <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="no_description">Nenhuma descrição disponível</string>
     <string name="details_more_info">Mais informações</string>
     <string name="details_more_target_api">Alvos</string>
