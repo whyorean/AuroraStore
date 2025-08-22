@@ -113,7 +113,7 @@ class SearchViewModel @Inject constructor(
 
     fun fetchSuggestions(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _suggestions.value = contract.searchSuggestions(query)
+            _suggestions.value = contract.searchSuggestions(query).take(3)
         }
     }
 }

@@ -48,7 +48,12 @@ fun SearchSuggestionComposable(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = { onClick(searchSuggestEntry.title) })
-            .padding(dimensionResource(R.dimen.padding_medium)),
+            .padding(
+                top = dimensionResource(R.dimen.padding_xsmall),
+                bottom = dimensionResource(R.dimen.padding_xsmall),
+                start = dimensionResource(R.dimen.padding_large),
+                end = dimensionResource(R.dimen.padding_xsmall)
+            ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
