@@ -162,7 +162,7 @@
     <string name="details_no_dependencies">Bağımlılık yok</string>
     <string name="details_no_app_match">Eşleşen uygulama bulunamadı</string>
     <string name="details_no_ads">Reklam yok</string>
-    <string name="details_more_about_app">Uygulama hakkında daha fazla</string>
+    <string name="details_more_about_app">Uygulamayla ilgili daha çoğu</string>
     <string name="details_gsf_dependent">GSF Gerekir</string>
     <string name="details_free">Ücretsiz</string>
     <string name="details_dev_profile">Geliştirici profili</string>
@@ -327,7 +327,7 @@
     <string name="manual_download_hint">İndirmek istediğiniz sürüm kodunu girin</string>
     <string name="privacy_policy_title">Gizlilik politikası</string>
     <string name="privacy_policy_subtitle">Aurora Store\'un verilerinizi nasıl kullandığını öğrenin</string>
-    <string name="title_more">Daha Fazla</string>
+    <string name="title_more">Daha Çoğu</string>
     <string name="manage_account">Hesabınızı yönetin</string>
     <string name="pref_clear_device_owner_title">Aygıt sahibini temizle</string>
     <string name="pref_clear_device_owner_summary">Aurora Store\'un aygıt sahibi uygulaması olmasını kaldırır</string>
@@ -337,7 +337,7 @@
     <string name="remove_dispenser_title">Dağıtıcıyı kaldır</string>
     <string name="remove">Kaldır</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="about_wiki_summary">Sık sorulan soruların (SSS) yanıtlarını, sorun giderme adımlarını ve daha fazlasını bulun</string>
+    <string name="about_wiki_summary">Sık sorulan soruların (SSS) yanıtlarını, sorun giderme adımlarını ve daha çoğunu bulun</string>
     <string name="no_dispensers_available">Kullanılabilir dağıtıcı yok</string>
     <string name="remove_dispenser_summary">\"<xliff:g id="url">%1$s</xliff:g>\" dağıtıcısını kaldırmak istiyor musunuz?</string>
     <string name="add">Ekle</string>
@@ -346,7 +346,7 @@
     <string name="add_dispenser_error">Geçersiz URL</string>
     <string name="add_dispenser_hint">Dağıtıcı URL\'si</string>
     <string name="about_aurora_store_title">Aurora Store Hakkında</string>
-    <string name="about_aurora_store_subtitle">Aurora Store hakkında daha fazla bilgi edinin</string>
+    <string name="about_aurora_store_subtitle">Aurora Store ile ilgili daha çok bilgi edinin</string>
     <string name="about_aurora_store_summary">Aurora Store, resmi Google Play Mağazasından uygulama aramanızı ve indirmenizi sağlar. Uygulama açıklamalarını, ekran görüntülerini, güncellemeleri, diğer kullanıcıların yorumlarını görebilir ve APK\'yı doğrudan Google Play\'den aygıtınıza indirebilirsiniz. Aurora Store\'u kullanmak için bir Google Play hesabınızın olması ve Aurora Store\'u ilk açtığınızda ve yapılandırdığınızda Google Play hesabınızda oturum açmanız gerekir. \n \nGeleneksel bir uygulama mağazasının tersine, Aurora Store herhangi bir uygulamayı sahiplenmez, lisanslamaz veya dağıtmaz. Aurora Store\'daki tüm uygulamalara, uygulama açıklamalarına, ekran görüntülerine ve diğer içeriğe doğrudan Google Play\'den erişilir, indirilir ve/veya görüntülenir. Aurora Store, tıpkı bir kapı veya tarayıcı gibi çalışarak Google Play hesabınızda oturum açmanıza ve Google Play\'deki uygulamaları bulmanızı sağlar.\n \nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
     <string name="session_login">Lütfen Google Play hesabınızda oturum açın</string>
     <string name="toast_app_unavailable">Uygulama aygıtınız için kullanılabilir değil</string>
@@ -448,8 +448,11 @@
     <string name="details_data_safety_shared">Bu uygulamanın paylaşabileceği veriler</string>
     <string name="details_data_safety_share_none">Geliştirici bu uygulamanın kullanıcı verilerini diğer şirketler ve kurumlarla paylaşmayacağını söylüyor.</string>
     <string name="exodus_tracker_desc">Uygulamanın bu sürümü henüz Exodus Privacy\'nin veri merkezinde bulunmayan takipçiler bulundurabilir.</string>
-    <string name="details_more_info">Daha fazla bilgi</string>
+    <string name="details_more_info">Daha çok bilgi</string>
     <string name="details_more_target_api">Hedeflenen API</string>
     <string name="details_more_package_name">Paket adı</string>
-    <string name="select_app_for_details">Daha fazla ayrıntı için bir uygulama şeçin</string>
+    <string name="select_app_for_details">Daha çok ayrıntı için uygulama şeçin</string>
+    <string name="exodus_report_trackers"><xliff:g id="app_version_name">%2$s</xliff:g> içinde bilinen <xliff:g id="number_of_trackers">%1$d</xliff:g> izleyici bulundu</string>
+    <string name="no_description">Açıklama yok</string>
+    <string name="details_more_content_rating">İçerik derecelendirme</string>
 </resources>
