@@ -214,8 +214,10 @@ private fun ScreenContent(
                 this != null -> {
                     AppDetailsScreen(
                         packageName = this,
-                        onNavigateUp = ::closeDetailPane,
-                        onNavigateToAppDetails = { packageName -> showDetailPane(packageName) }
+                        onNavigateToAppDetails = { packageName -> showDetailPane(packageName) },
+                        onNavigateUp = {
+                            coroutineScope.launch { scaffoldNavigator.navigateBack() }
+                        },
                     )
                 }
 
