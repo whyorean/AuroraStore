@@ -443,8 +443,8 @@
     <string name="microg_privacy_policy">Datenschutzerklärung von microG lesen</string>
     <string name="microg_license_agreement">microG-Lizenzvereinbarung lesen</string>
     <string name="microg_website">microG-Projektwebsite besuchen</string>
-    <string name="details_data_safety_shared">Daten, die diese App möglicherweise weitergibt</string>
-    <string name="details_data_safety_collect">Daten, die diese App möglicherweise erfasst</string>
+    <string name="details_data_safety_shared">Daten, die mit anderen Unternehmen oder Organisationen geteilt werden können</string>
+    <string name="details_data_safety_collect">Daten, die diese App erfassen darf</string>
     <string name="details_data_safety_collect_none">Der Entwickler gibt an, dass diese App keine Nutzerdaten erfasst.</string>
     <string name="details_data_safety_share_none">Der Entwickler gibt an, dass diese App keine Nutzerdaten an andere Unternehmen oder Organisationen weitergibt.</string>
     <string name="exodus_tracker_desc">Diese Version der App kann noch weitere Tracker enthalten, die noch nicht in der Datenbank von Exodus Privacy vorhanden sind.</string>
@@ -453,6 +453,6 @@
     <string name="details_more_info">Weitere Infos</string>
     <string name="details_more_target_api">Ziel-API</string>
     <string name="details_more_package_name">Paketname</string>
-    <string name="details_more_content_rating">Inhaltsbewertung</string>
+    <string name="details_more_content_rating">Altersfreigabe</string>
     <string name="select_app_for_details">Eine App auswählen, um weitere Details anzuzeigen</string>
 </resources>
