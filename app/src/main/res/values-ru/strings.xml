@@ -443,4 +443,16 @@
     <string name="microg_license_agreement">Прочитать Лицензию и Соглашение microG</string>
     <string name="microg_website">Посетите сайт проекта microG</string>
     <string name="action_install_microG">Установите пакет microG</string>
+    <string name="details_data_safety_collect">Данные, которые может собирать это приложение</string>
+    <string name="details_data_safety_collect_none">Разработчик утверждает, что это приложение не собирает данные пользователей.</string>
+    <string name="details_data_safety_shared">Данные, которые может передавать это приложение</string>
+    <string name="details_data_safety_share_none">Разработчик утверждает, что это приложение не передает данные пользователей другим компаниям или организациям.</string>
+    <string name="exodus_tracker_desc">Эта версия приложения может содержать дополнительные трекеры, которые еще не внесены в базу данных Exodus Privacy.</string>
+    <string name="exodus_report_trackers">Известных трекеров, найденных в <xliff:g id="app_version_name">%2$s</xliff:g>: <xliff:g id="number_of_trackers">%1$d</xliff:g></string>
+    <string name="no_description">Описание отсутствует</string>
+    <string name="details_more_info">Дополнительная информация</string>
+    <string name="details_more_target_api">Цели</string>
+    <string name="details_more_package_name">Название пакета</string>
+    <string name="details_more_content_rating">Рейтинг контента</string>
+    <string name="select_app_for_details">Выберите приложение для получения более подробной информации</string>
 </resources>
