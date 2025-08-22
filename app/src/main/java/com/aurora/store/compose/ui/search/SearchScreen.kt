@@ -8,29 +8,32 @@ package com.aurora.store.compose.ui.search
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.DockedSearchBar
+import androidx.compose.foundation.text.input.clearText
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
+import androidx.compose.material3.AppBarWithSearch
+import androidx.compose.material3.ExpandedDockedSearchBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.NavigableListDetailPaneScaffold
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -56,6 +59,7 @@ import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.viewmodel.search.SearchViewModel
 import kotlinx.coroutines.android.awaitFrame
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import kotlin.random.Random
@@ -82,16 +86,22 @@ private fun ScreenContent(
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {}
 ) {
-    var currentQuery by rememberSaveable { mutableStateOf("") }
-    var isExpanded by rememberSaveable { mutableStateOf(true) }
+    val textFieldState = rememberTextFieldState()
+    val searchBarState = rememberSearchBarState()
+    val scrollBehavior = SearchBarDefaults.enterAlwaysSearchBarScrollBehavior()
 
     val focusRequester = remember { FocusRequester() }
     val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<String>()
     val coroutineScope = rememberCoroutineScope()
 
-    LaunchedEffect(focusRequester) {
+    LaunchedEffect(key1 = focusRequester) {
         awaitFrame()
         focusRequester.requestFocus()
+    }
+
+    LaunchedEffect(key1 = textFieldState) {
+        snapshotFlow { textFieldState.text.toString() }
+            .collectLatest { query -> onFetchSuggestions(query) }
     }
 
     fun closeDetailPane() {
@@ -106,57 +116,54 @@ private fun ScreenContent(
         }
     }
 
-    fun onRequestSuggestions(query: String) {
-        currentQuery = query.trim()
-        onFetchSuggestions(query.trim())
-    }
-
     fun onRequestSearch(query: String) {
-        currentQuery = query.trim()
-        isExpanded = false
-        onSearch(query.trim())
+        textFieldState.setTextAndPlaceCursorAtEnd(query.trim())
+        coroutineScope.launch { searchBarState.animateToCollapsed() }
+        onSearch(textFieldState.text.toString())
     }
 
     @Composable
     fun SearchBar() {
-        DockedSearchBar(
-            expanded = isExpanded,
-            onExpandedChange = { expanded -> isExpanded = expanded },
-            inputField = {
-                SearchBarDefaults.InputField(
-                    modifier = Modifier.focusRequester(focusRequester),
-                    query = currentQuery,
-                    onQueryChange = { query -> onRequestSuggestions(query) },
-                    onSearch = { query -> onRequestSearch(query) },
-                    expanded = isExpanded,
-                    onExpandedChange = { expanded -> isExpanded = expanded },
-                    leadingIcon = {
-                        IconButton(onClick = onNavigateUp) {
+        val inputField = @Composable {
+            SearchBarDefaults.InputField(
+                modifier = Modifier.focusRequester(focusRequester),
+                searchBarState = searchBarState,
+                textFieldState = textFieldState,
+                onSearch = { query -> onRequestSearch(query) },
+                placeholder = { Text(text = stringResource(R.string.search_hint)) },
+                leadingIcon = {
+                    IconButton(onClick = onNavigateUp) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_arrow_back),
+                            contentDescription = stringResource(R.string.action_back)
+                        )
+                    }
+                },
+                trailingIcon = {
+                    if (textFieldState.text.isNotBlank()) {
+                        IconButton(onClick = { textFieldState.clearText() }) {
                             Icon(
-                                painter = painterResource(R.drawable.ic_arrow_back),
-                                contentDescription = stringResource(R.string.action_back)
+                                painter = painterResource(R.drawable.ic_cancel),
+                                contentDescription = stringResource(R.string.action_clear)
                             )
                         }
-                    },
-                    trailingIcon = {
-                        if (currentQuery.isNotBlank() && isExpanded) {
-                            IconButton(onClick = { currentQuery = "" }) {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_cancel),
-                                    contentDescription = stringResource(R.string.action_clear)
-                                )
-                            }
-                        }
-                    },
-                    placeholder = { Text(text = stringResource(R.string.search_hint)) }
-                )
-            }
-        ) {
+                    }
+                }
+            )
+        }
+
+        AppBarWithSearch(
+            scrollBehavior = scrollBehavior,
+            state = searchBarState,
+            inputField = inputField
+        )
+
+        ExpandedDockedSearchBar(state = searchBarState, inputField = inputField) {
             suggestions.forEach { suggestion ->
                 SearchSuggestionComposable(
                     searchSuggestEntry = suggestion,
                     onClick = { query -> onRequestSearch(query) },
-                    onAction = { query -> currentQuery = query.trim() }
+                    onAction = { query -> textFieldState.setTextAndPlaceCursorAtEnd(query.trim()) }
                 )
             }
         }
@@ -165,9 +172,8 @@ private fun ScreenContent(
     @Composable
     fun ListPane() {
         Scaffold(
-            topBar = {
-                TopAppBar(title = { SearchBar() })
-            }
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = { SearchBar() }
         ) { paddingValues ->
             when (results.loadState.refresh) {
                 is LoadState.Loading -> ProgressComposable()
@@ -214,7 +220,7 @@ private fun ScreenContent(
                 }
 
                 else -> {
-                    if (currentQuery.isNotBlank() && results.itemCount > 0) {
+                    if (textFieldState.text.isNotBlank() && results.itemCount > 0) {
                         ErrorComposable(
                             icon = R.drawable.ic_round_search,
                             message = R.string.select_app_for_details
