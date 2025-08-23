@@ -141,7 +141,12 @@ private fun ScreenContent(
                 },
                 trailingIcon = {
                     if (textFieldState.text.isNotBlank()) {
-                        IconButton(onClick = { textFieldState.clearText() }) {
+                        IconButton(
+                            onClick = {
+                                textFieldState.clearText()
+                                focusRequester.requestFocus()
+                            }
+                        ) {
                             Icon(
                                 painter = painterResource(R.drawable.ic_cancel),
                                 contentDescription = stringResource(R.string.action_clear)
