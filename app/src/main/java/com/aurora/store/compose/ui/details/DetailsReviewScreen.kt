@@ -42,6 +42,8 @@ import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
+import com.aurora.store.compose.composables.ErrorComposable
+import com.aurora.store.compose.composables.ProgressComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.details.ReviewComposable
 import com.aurora.store.compose.preview.ReviewPreviewProvider
@@ -106,11 +108,16 @@ private fun ScreenContent(
         ) {
             FilterHeader { filter -> onFilter(filter) }
 
-            // TODO: Implement loading and error screen
             when (reviews.loadState.refresh) {
-                is LoadState.Loading -> {}
+                is LoadState.Loading -> ProgressComposable()
 
-                is LoadState.Error -> {}
+                is LoadState.Error -> {
+                    ErrorComposable(
+                        modifier = Modifier.padding(paddingValues),
+                        icon = R.drawable.ic_disclaimer,
+                        message = R.string.error
+                    )
+                }
 
                 else -> {
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
