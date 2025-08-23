@@ -48,9 +48,10 @@ import java.util.Locale
 
 @Composable
 fun DetailsMoreScreen(
+    packageName: String,
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
-    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(),
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsMoreViewModel: DetailsMoreViewModel = hiltViewModel { factory: DetailsMoreViewModel.Factory ->
         factory.create(appDetailsViewModel.app.value!!.dependencies.dependentPackages)
     }

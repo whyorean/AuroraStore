@@ -438,23 +438,29 @@ private fun ScreenContentApp(
                 AnimatedPane {
                     when (screen) {
                         is Screen.DetailsReview -> DetailsReviewScreen(
+                            packageName = app.packageName,
                             onNavigateUp = ::showMainPane
                         )
                         is Screen.DetailsExodus -> DetailsExodusScreen(
+                            packageName = app.packageName,
                             onNavigateUp = ::showMainPane
                         )
                         is Screen.DetailsMore -> DetailsMoreScreen(
+                            packageName = app.packageName,
                             onNavigateUp = ::showMainPane,
                             onNavigateToAppDetails = onNavigateToAppDetails
                         )
                         is Screen.DetailsPermission -> DetailsPermissionScreen(
+                            packageName = app.packageName,
                             onNavigateUp = ::showMainPane
                         )
                         is Screen.DetailsScreenshot -> DetailsScreenshotScreen(
+                            packageName = app.packageName,
                             index = screen.index,
                             onNavigateUp = ::showMainPane
                         )
                         is Screen.DetailsManualDownload -> DetailsManualDownloadScreen(
+                            packageName = app.packageName,
                             onNavigateUp = ::showMainPane
                         )
                         is Screen.DevProfile -> DevProfileScreen(

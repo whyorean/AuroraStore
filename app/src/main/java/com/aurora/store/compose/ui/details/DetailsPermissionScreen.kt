@@ -38,8 +38,9 @@ import java.util.Locale
 
 @Composable
 fun DetailsPermissionScreen(
+    packageName: String,
     onNavigateUp: () -> Unit,
-    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(),
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsPermissionViewModel: DetailsPermissionViewModel = hiltViewModel { factory: DetailsPermissionViewModel.Factory ->
         factory.create(appDetailsViewModel.app.value!!.permissions)
     },

@@ -38,8 +38,9 @@ import com.aurora.store.viewmodel.details.DetailsExodusViewModel
 
 @Composable
 fun DetailsExodusScreen(
+    packageName: String,
     onNavigateUp: () -> Unit,
-    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(),
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsExodusViewModel: DetailsExodusViewModel = hiltViewModel { factory: DetailsExodusViewModel.Factory ->
         factory.create(appDetailsViewModel.exodusReport.value!!)
     },

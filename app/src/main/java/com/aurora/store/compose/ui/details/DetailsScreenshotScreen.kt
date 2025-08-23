@@ -31,9 +31,10 @@ import com.aurora.store.viewmodel.details.AppDetailsViewModel
 
 @Composable
 fun DetailsScreenshotScreen(
+    packageName: String,
     index: Int,
     onNavigateUp: () -> Unit,
-    viewModel: AppDetailsViewModel = hiltViewModel(),
+    viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val app by viewModel.app.collectAsStateWithLifecycle()

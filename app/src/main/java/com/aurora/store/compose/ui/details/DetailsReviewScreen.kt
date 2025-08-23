@@ -53,8 +53,9 @@ import kotlin.random.Random
 
 @Composable
 fun DetailsReviewScreen(
+    packageName: String,
     onNavigateUp: () -> Unit,
-    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(),
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsReviewViewModel: DetailsReviewViewModel = hiltViewModel { factory: DetailsReviewViewModel.Factory ->
         factory.create(appDetailsViewModel.app.value!!.packageName)
     },

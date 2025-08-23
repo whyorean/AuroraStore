@@ -56,8 +56,9 @@ import kotlinx.coroutines.android.awaitFrame
 
 @Composable
 fun DetailsManualDownloadScreen(
+    packageName: String,
     onNavigateUp: () -> Unit,
-    viewModel: AppDetailsViewModel = hiltViewModel(),
+    viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val context = LocalContext.current
