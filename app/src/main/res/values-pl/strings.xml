@@ -443,4 +443,16 @@
     <string name="onboarding_gms_agreement">Przeczytałem i akceptuję warunki świadczenia usług oraz politykę prywatności microG</string>
     <string name="onboarding_gms_missing">Nie znaleźliśmy usług Google Play na twoim urządzeniu. Niektóre popularne aplikacje wymagają tej usługi do prawidłowego działania!</string>
     <string name="onboarding_gms_microg">microG to darmowa otwartoźródłowa implementacja zastrzeżonych bibliotek Google o otwartym kodzie źródłowym, która zastępuje usługi Google Play w systemie operacyjnym Android.\n\nmicroG umożliwia aplikacjom dostęp do interfejsów Google API, zwiększając kompatybilność i oferując korzyści związane z prywatnością.\n\nmicroG będzie działać automatycznie w tle gdy otworzysz aplikacje zależne od usług mobilnych Google.</string>
+    <string name="select_app_for_details">Wybierz aplikację, aby uzyskać więcej informacji</string>
+    <string name="details_more_package_name">Nazwa pakietu</string>
+    <string name="details_more_content_rating">Ocena treści</string>
+    <string name="details_more_target_api">Docelowy poziom interfejsu</string>
+    <string name="details_more_info">Więcej informacji</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> znane elementy śledzące w <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Brak opisu</string>
+    <string name="details_data_safety_collect">Dane, które może zbierać ta aplikacja</string>
+    <string name="details_data_safety_shared">Dane, które może udostępniać ta aplikacja</string>
+    <string name="details_data_safety_collect_none">Deweloper twierdzi, że ta aplikacja nie gromadzi danych użytkownika.</string>
+    <string name="details_data_safety_share_none">Deweloper twierdzi, że ta aplikacja nie udostępnia danych użytkownika innym firmom lub organizacjom.</string>
+    <string name="exodus_tracker_desc">Ta wersja aplikacji może zawierać więcej elementów śledzących, których nie ma jeszcze w bazie danych Exodus Privacy.</string>
 </resources>

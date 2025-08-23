@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">Privacybeleid van microG lezen</string>
     <string name="microg_license_agreement">Licentieovereenkomst van microG lezen</string>
     <string name="microg_website">microG-projectwebsite bezoeken</string>
+    <string name="details_data_safety_collect">Gegevens die deze app kan verzamelen</string>
+    <string name="details_data_safety_collect_none">De ontwikkelaar zegt dat deze app geen gebruikersgegevens verzamelt.</string>
+    <string name="details_data_safety_shared">Gegevens die deze app mogelijk deelt</string>
+    <string name="details_data_safety_share_none">De ontwikkelaar zegt dat deze app geen gebruikersgegevens deelt met andere bedrijven of organisaties.</string>
+    <string name="exodus_tracker_desc">Deze versie van de app kan meer trackers bevatten die nog niet in de databank van Exodus Privacy aanwezig zijn.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> bekende tracker(s) gevonden in <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Geen beschrijving beschikbaar</string>
+    <string name="details_more_info">Meer informatie</string>
+    <string name="details_more_target_api">Doel-API</string>
+    <string name="details_more_package_name">Pakketnaam</string>
+    <string name="details_more_content_rating">Inhoudsbeoordeling</string>
+    <string name="select_app_for_details">Selecteer een app om meer details te bekijken</string>
 </resources>
