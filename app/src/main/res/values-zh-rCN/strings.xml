@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">阅读 microG 隐私政策</string>
     <string name="microg_license_agreement">阅读 microG 许可和协议</string>
     <string name="microg_website">访问 microG 项目网站</string>
+    <string name="details_data_safety_collect">此应用可收集的数据</string>
+    <string name="details_data_safety_collect_none">开发者称该应用不收集用户数据。</string>
+    <string name="details_data_safety_shared">该应用可能分享的数据</string>
+    <string name="details_data_safety_share_none">开发者称该应用不与其他公司或组织分享用户数据。</string>
+    <string name="exodus_tracker_desc">应用的这个版本仍可能包括尚不在 Exodus Privacy 数据库中的更多跟踪器。</string>
+    <string name="exodus_report_trackers">在 <xliff:g id="app_version_name">%2$s</xliff:g> 中找到了 <xliff:g id="number_of_trackers">%1$d 个</xliff:g> 已知的跟踪器</string>
+    <string name="no_description">无描述可用</string>
+    <string name="details_more_info">更多信息</string>
+    <string name="details_more_target_api">目标 API</string>
+    <string name="details_more_package_name">包名</string>
+    <string name="details_more_content_rating">内容评级</string>
+    <string name="select_app_for_details">选择一个应用了解更多详情</string>
 </resources>

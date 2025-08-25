@@ -127,7 +127,7 @@
     <string name="download_none">Allalaadimisi pole</string>
     <string name="download_paused">Peatatud • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="exodus_no_tracker">Ei sisalda teadaolevaid jälgijaid</string>
-    <string name="exodus_powered">Exodus Privacy toetusel</string>
+    <string name="exodus_powered">Analüüsitud Exodus Privacy poolt</string>
     <string name="exodus_progress">Jälgijate otsimine…</string>
     <string name="exodus_substring">teadaolevat jälgijat leiti rakendusest</string>
     <string name="filter_review_four">Neli</string>
@@ -443,4 +443,16 @@
     <string name="microg_license_agreement">Loe microG litsentsitingimusi ja kasutuslepingut</string>
     <string name="microg_website">Vaata microG projekti veebisaiti</string>
     <string name="onboarding_gms_microg">microG on vaba ja avatud lähtekoodiga teekide komplekt, mis tagab Google Play teenuste olemasolust sõltuvatele rakendustele sarnase funktsionaalsuses.\n\nmicroG võimaldab kasutada vajalikke Google\'i API-sid ning tagab sellega korraga nii ühilduvuse kui vallasrežiimikohase ühilduvuse \n\nKui avad rakenduse, mis sõltub Google Mobile Services\'i olemasolust, siis microG käivitub taustal automaatselt.</string>
+    <string name="details_data_safety_collect">Andmed, mida see rakendus võib koguda</string>
+    <string name="details_data_safety_collect_none">Arendaja kinnitab, et see rakendus ei kogu kasutajate kohta andmeid.</string>
+    <string name="details_data_safety_share_none">Arendaja kinnitab, et see rakendus ei jaga kasutajate andmeid muude äriühingute või organisatsioonidega.</string>
+    <string name="details_data_safety_shared">Andmed, mida see rakendus võib jagada</string>
+    <string name="exodus_tracker_desc">Siiski võib selles rakenduses leiduda jälitajaid, mida pole veel Exodus Privacy andmebaasis kirjeldatud.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> teadaolev(at) jälitaja(t) leidub rakenduses <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Kirjeldus pole saadaval</string>
+    <string name="details_more_info">Lisateave</string>
+    <string name="details_more_target_api">Sihtplatvorm</string>
+    <string name="details_more_package_name">Paketi nimi</string>
+    <string name="details_more_content_rating">Hinnang sisule</string>
+    <string name="select_app_for_details">Üksikasjade nägemiseks vali rakendus</string>
 </resources>
