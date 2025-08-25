@@ -183,7 +183,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.browser)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.process)
     implementation(libs.androidx.lifecycle.navigation3)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.androidx.swiperefreshlayout)

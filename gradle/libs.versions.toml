@@ -63,7 +63,6 @@ androidx-adaptive-navigation = { module = "androidx.compose.material3.adaptive:a
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidx-hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt" }
 androidx-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-junit" }
-androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycle-navigation3" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterial" }

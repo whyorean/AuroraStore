@@ -21,11 +21,8 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ProcessLifecycleOwner
 import com.aurora.store.R
 import com.aurora.store.data.model.ProxyInfo
-import java.text.DecimalFormat
 import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
@@ -109,40 +106,6 @@ object CommonUtil {
         )
     }
 
-    fun humanReadableByteValue(bytes: Long, si: Boolean): String {
-        val unit = if (si) 1000 else 1024
-        if (bytes < unit) return "$bytes B"
-        val exp = (ln(bytes.toDouble()) / ln(unit.toDouble())).toInt()
-        val pre = (if (si) "kMGTPE" else "KMGTPE")[exp - 1].toString() + if (si) "" else "i"
-        return String.format(
-            Locale.getDefault(), "%.1f %sB",
-            bytes / unit.toDouble().pow(exp.toDouble()),
-            pre
-        )
-    }
-
-    fun getDownloadSpeedString(context: Context, downloadedBytesPerSecond: Long): String {
-        if (downloadedBytesPerSecond < 0) {
-            return context.getString(R.string.download_speed_estimating)
-        }
-        val kb = downloadedBytesPerSecond.toDouble() / 1000.toDouble()
-        val mb = kb / 1000.toDouble()
-        val decimalFormat = DecimalFormat(".##")
-        return when {
-            mb >= 1 -> {
-                context.getString(R.string.download_speed_mb, decimalFormat.format(mb))
-            }
-
-            kb >= 1 -> {
-                context.getString(R.string.download_speed_kb, decimalFormat.format(kb))
-            }
-
-            else -> {
-                context.getString(R.string.download_speed_bytes, downloadedBytesPerSecond)
-            }
-        }
-    }
-
     fun cleanupInstallationSessions(context: Context) {
         val packageInstaller = context.packageManager.packageInstaller
         for (sessionInfo in packageInstaller.mySessions) {
@@ -179,9 +142,5 @@ object CommonUtil {
 
             else -> null
         }
-    }
-
-    fun inForeground(): Boolean {
-        return ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)
     }
 }

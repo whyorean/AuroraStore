@@ -5,6 +5,7 @@
 
 package com.aurora.store.compose.composables
 
+import android.text.format.Formatter
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,7 +38,6 @@ import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.CommonUtil.getDownloadSpeedString
 import com.aurora.store.util.CommonUtil.getETAString
 
 /**
@@ -107,7 +107,7 @@ fun DownloadComposable(
                         style = MaterialTheme.typography.bodySmall
                     )
                     Text(
-                        text = getDownloadSpeedString(LocalContext.current, download.speed),
+                        text = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s",
                         style = MaterialTheme.typography.bodySmall
                     )
                 }

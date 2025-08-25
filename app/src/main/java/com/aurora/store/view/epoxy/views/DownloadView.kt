@@ -20,6 +20,7 @@
 package com.aurora.store.view.epoxy.views
 
 import android.content.Context
+import android.text.format.Formatter
 import android.util.AttributeSet
 import coil3.load
 import coil3.request.placeholder
@@ -32,7 +33,6 @@ import com.aurora.store.R
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.databinding.ViewDownloadBinding
-import com.aurora.store.util.CommonUtil.getDownloadSpeedString
 import com.aurora.store.util.CommonUtil.getETAString
 
 @ModelView(
@@ -61,10 +61,7 @@ class DownloadView @JvmOverloads constructor(
         binding.txtProgress.text = ("${download.progress}%")
 
         binding.txtEta.text = getETAString(context, download.timeRemaining)
-        binding.txtSpeed.text = getDownloadSpeedString(
-            context,
-            download.speed
-        )
+        binding.txtSpeed.text = "${Formatter.formatShortFileSize(context, download.speed)}/s"
 
         when (download.downloadStatus) {
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {

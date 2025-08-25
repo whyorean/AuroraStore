@@ -5,6 +5,7 @@
 
 package com.aurora.store.compose.ui.details.components
 
+import android.text.format.Formatter
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -92,7 +93,7 @@ fun AppDetails(
             )
             Text(
                 text = if (inProgress) {
-                    CommonUtil.getDownloadSpeedString(context, speed) +
+                    "${Formatter.formatShortFileSize(context, speed)}/s" +
                             ", " + CommonUtil.getETAString(context, timeRemaining)
                 } else {
                     ""
