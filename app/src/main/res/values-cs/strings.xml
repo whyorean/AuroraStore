@@ -455,4 +455,6 @@
     <string name="details_more_package_name">Název balíčku</string>
     <string name="details_more_content_rating">Hodnocení obsahu</string>
     <string name="select_app_for_details">Vyberte aplikaci pro více podrobností</string>
+    <string name="action_filter_no_ads">Bez reklam</string>
+    <string name="action_filter_no_gms">Bez Služeb Play</string>
 </resources>
