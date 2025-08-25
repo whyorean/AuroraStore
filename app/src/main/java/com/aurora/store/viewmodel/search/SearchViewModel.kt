@@ -37,7 +37,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val authProvider: AuthProvider,
+    val authProvider: AuthProvider,
     private val searchHelper: SearchHelper,
     private val webSearchHelper: WebSearchHelper
 ) : ViewModel() {

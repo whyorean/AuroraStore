@@ -89,7 +89,8 @@ fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltView
         onNavigateUp = onNavigateUp,
         onSearch = { query -> viewModel.search(query) },
         onFetchSuggestions = { query -> viewModel.fetchSuggestions(query) },
-        onFilter = { filter -> viewModel.filterResults(filter) }
+        onFilter = { filter -> viewModel.filterResults(filter) },
+        isAnonymous = viewModel.authProvider.isAnonymous
     )
 }
 
@@ -100,7 +101,8 @@ private fun ScreenContent(
     onNavigateUp: () -> Unit = {},
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
-    onFilter: (filter: SearchFilter) -> Unit = {}
+    onFilter: (filter: SearchFilter) -> Unit = {},
+    isAnonymous: Boolean = true
 ) {
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
@@ -209,7 +211,7 @@ private fun ScreenContent(
                             .padding(vertical = dimensionResource(R.dimen.padding_medium))
                     ) {
                         if (textFieldState.text.isNotBlank() && results.itemCount > 0) {
-                            FilterHeader(onFilter = onFilter)
+                            FilterHeader(isAnonymous = isAnonymous, onFilter = onFilter)
                         }
 
                         LazyColumn {
@@ -265,15 +267,15 @@ private fun ScreenContent(
 }
 
 @Composable
-private fun FilterHeader(onFilter: (filter: SearchFilter) -> Unit) {
+private fun FilterHeader(isAnonymous: Boolean = true, onFilter: (filter: SearchFilter) -> Unit) {
     var activeFilter by rememberSaveable { mutableStateOf(SearchFilter()) }
 
-    val filters = listOf(
+    val filters = listOfNotNull(
         R.string.action_filter_rating,
         R.string.app_info_downloads,
         R.string.details_free,
         R.string.action_filter_no_ads,
-        R.string.action_filter_no_gms
+        if (!isAnonymous) R.string.action_filter_no_gms else null
     )
 
     @Composable
