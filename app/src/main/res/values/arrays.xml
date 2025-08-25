@@ -134,7 +134,6 @@
         <item>3.0</item>
         <item>4.0</item>
         <item>4.5</item>
-        <item>4.7</item>
     </string-array>
 
     <string-array name="filterRatingLabels" translatable="false">
@@ -144,15 +143,10 @@
         <item> 3★ + </item>
         <item> 4★ + </item>
         <item> 4.5★ + </item>
-        <item> 4.7★ + </item>
     </string-array>
 
     <string-array name="filterDownloadsValues" translatable="false">
         <item>0</item>
-        <item>100</item>
-        <item>1000</item>
-        <item>10000</item>
-        <item>50000</item>
         <item>100000</item>
         <item>1000000</item>
         <item>10000000</item>
@@ -162,10 +156,6 @@
 
     <string-array name="filterDownloadsLabels" translatable="false">
         <item>@string/action_filter_all</item>
-        <item> 100 + </item>
-        <item> 1K + </item>
-        <item> 10K + </item>
-        <item> 50K + </item>
         <item> 100K + </item>
         <item> 1M + </item>
         <item> 10M + </item>

@@ -534,4 +534,6 @@
 
     <!-- SearchScreen -->
     <string name="select_app_for_details">Select an app for more details</string>
+    <string name="action_filter_no_ads">No advertisements</string>
+    <string name="action_filter_no_gms">No play services</string>
 </resources>

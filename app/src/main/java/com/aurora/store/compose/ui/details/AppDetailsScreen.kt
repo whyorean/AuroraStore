@@ -44,10 +44,10 @@ import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.LocalAsyncImagePreviewHandler
-import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.SHARE_URL
 import com.aurora.extensions.appInfo
 import com.aurora.extensions.browse
+import com.aurora.extensions.requiresGMS
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
@@ -348,7 +348,7 @@ private fun ScreenContentApp(
                 }
 
                 AppCompatibility(
-                    needsGms = app.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS),
+                    needsGms = app.requiresGMS(),
                     plexusScores = plexusScores
                 )
 

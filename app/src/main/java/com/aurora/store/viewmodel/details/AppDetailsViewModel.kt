@@ -11,7 +11,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
-import com.aurora.Constants.PACKAGE_NAME_GMS
+import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
@@ -162,9 +162,7 @@ class AppDetailsViewModel @Inject constructor(
             fetchDataSafetyReport(packageName)
             fetchSuggestions()
             fetchExodusPrivacyReport(packageName)
-            if (app.value!!.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS)) {
-                fetchPlexusReport(packageName)
-            }
+            if (app.value!!.requiresGMS()) fetchPlexusReport(packageName)
         }
     }
 

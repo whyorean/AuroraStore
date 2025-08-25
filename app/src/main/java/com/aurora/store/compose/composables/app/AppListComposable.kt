@@ -29,8 +29,8 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.extensions.bodyVerySmall
+import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -110,7 +110,7 @@ private fun buildExtras(app: App): List<String> {
             add(stringResource(R.string.details_no_ads))
         }
 
-        if (app.dependencies.dependentPackages.contains(PACKAGE_NAME_GMS)) {
+        if (app.requiresGMS()) {
             add(stringResource(R.string.details_gsf_dependent))
         }
     }

@@ -1,20 +1,7 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2021 Rahul Kumar Patel <whyorean@gmail.com>
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.viewmodel.search
@@ -24,21 +11,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import androidx.paging.filter
+import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
+import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.data.paging.GenericPagingSource.Companion.createPager
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -57,8 +50,24 @@ class SearchViewModel @Inject constructor(
     private val _suggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
 
+    private val _filter = MutableStateFlow(SearchFilter())
     private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
-    val apps = _apps.asStateFlow()
+    val apps = combine(_filter, _apps) { filter, pagingData ->
+        pagingData.filter { app ->
+            when {
+                filter.noAds && app.containsAds -> false
+                filter.isFree && !app.isFree -> false
+                filter.noGMS && app.requiresGMS() -> false
+                app.rating.average < filter.minRating -> false
+                app.installs < filter.minInstalls -> false
+                else -> true
+            }
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), PagingData.empty())
+
+    fun filterResults(filter: SearchFilter) {
+        _filter.value = filter
+    }
 
     fun search(query: String) {
         var nextBundleUrl: String? = null
