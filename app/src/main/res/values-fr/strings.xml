@@ -455,4 +455,6 @@
     <string name="details_more_package_name">Nom du paquet</string>
     <string name="details_more_content_rating">Évaluation du contenu</string>
     <string name="select_app_for_details">Choisissez une appli pour afficher plus de détails</string>
+    <string name="action_filter_no_ads">Aucune publicité</string>
+    <string name="action_filter_no_gms">Pas de Services Play</string>
 </resources>
