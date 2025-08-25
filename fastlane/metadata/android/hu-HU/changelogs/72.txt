@@ -1,0 +1,5 @@
+• A minimálisan támogatott Android verzió mostantól Android 6.0
+• Átállás a Material3 Expressive témára
+• Javítva a széles képernyős eszközök támogatása
+• Javítva lett az a hiba, amely miatt a héber nyelv nem volt megfelelően beállítva az alkalmazásonkénti nyelvbeállításoknál
+• A keresési szűrők, mint funkció visszaállítása
