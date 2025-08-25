@@ -316,7 +316,9 @@ private fun ScreenContentApp(
                     inProgress = state.inProgress(),
                     progress = state.progress(),
                     onNavigateToDetailsDevProfile = { showExtraPane(Screen.DevProfile(it)) },
-                    isUpdatable = state is AppState.Updatable
+                    isUpdatable = state is AppState.Updatable,
+                    speed = if (state is AppState.Downloading) state.speed else 0,
+                    timeRemaining = if (state is AppState.Downloading) state.timeRemaining else 0
                 )
 
                 SetupAppActions()

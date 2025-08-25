@@ -29,6 +29,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 
 /**
@@ -47,6 +48,8 @@ fun AppDetails(
     inProgress: Boolean = false,
     onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {},
     isUpdatable: Boolean = false,
+    speed: Long = 0,
+    timeRemaining: Long = 0
 ) {
     val context = LocalContext.current
 
@@ -84,6 +87,15 @@ fun AppDetails(
                         app.versionName,
                         app.versionCode
                     )
+                },
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(
+                text = if (inProgress) {
+                    CommonUtil.getDownloadSpeedString(context, speed) +
+                            ", " + CommonUtil.getETAString(context, timeRemaining)
+                } else {
+                    ""
                 },
                 style = MaterialTheme.typography.bodySmall
             )
