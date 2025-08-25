@@ -1,0 +1,5 @@
+• Minimum supported Android version is now Android 6.0
+• Switched to Material3 Expressive theme
+• Improved support for wide-screen devices
+• Fixed an issue where Hebrew language wasn't set properly with per-app language
+• Restored search filters functionality
