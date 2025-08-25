@@ -443,4 +443,16 @@
     <string name="microg_privacy_policy">Citește Politica de confidențialitate microG</string>
     <string name="microg_license_agreement">Citește Licența și Acordul microG</string>
     <string name="microg_website">Accesează pagina web a proiectului microG</string>
+    <string name="details_data_safety_collect">Date pe care această aplicație le poate colecta</string>
+    <string name="details_data_safety_collect_none">Dezvoltatorul spune că această aplicație nu colectează datele utilizatorilor.</string>
+    <string name="details_data_safety_shared">Date pe care această aplicație le poate partaja</string>
+    <string name="details_data_safety_share_none">Dezvoltatorul spune că această aplicație nu partajează datele utilizatorilor altor companii sau organizații.</string>
+    <string name="exodus_tracker_desc">Această versiune a aplicației poate conține mai mulți urmăritori care nu sunt încă prezenți în baza de date a confidențialității Exodus.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> urmăritori cunoscuți găsiți în <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Fără descriere</string>
+    <string name="details_more_info">Mai multe informații</string>
+    <string name="details_more_target_api">Obiective</string>
+    <string name="details_more_package_name">Numele pachetului</string>
+    <string name="details_more_content_rating">Evaluare conținut</string>
+    <string name="select_app_for_details">Selectează o aplicație pentru mai multe detalii</string>
 </resources>
