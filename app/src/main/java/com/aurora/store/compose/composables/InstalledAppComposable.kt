@@ -26,7 +26,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
-import com.aurora.extensions.bodyVerySmall
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 
@@ -84,7 +83,7 @@ fun InstalledAppComposable(
                 )
                 Text(
                     text = stringResource(R.string.version, versionName, versionCode),
-                    style = MaterialTheme.typography.bodyVerySmall,
+                    style = MaterialTheme.typography.bodySmall,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )

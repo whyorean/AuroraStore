@@ -28,7 +28,6 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -74,7 +73,7 @@ fun AppComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Unit =
             } else {
                 app.downloadString
             },
-            style = MaterialTheme.typography.bodyVerySmall
+            style = MaterialTheme.typography.bodySmall
         )
     }
 }

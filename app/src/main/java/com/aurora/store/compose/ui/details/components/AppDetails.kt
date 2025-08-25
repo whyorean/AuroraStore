@@ -24,7 +24,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import coil3.compose.LocalAsyncImagePreviewHandler
-import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
@@ -86,7 +85,7 @@ fun AppDetails(
                         app.versionCode
                     )
                 },
-                style = MaterialTheme.typography.bodyVerySmall
+                style = MaterialTheme.typography.bodySmall
             )
         }
     }

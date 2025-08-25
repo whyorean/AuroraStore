@@ -29,7 +29,6 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.extensions.bodyVerySmall
 import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -78,7 +77,7 @@ fun AppListComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Un
             Text(text = app.developerName, style = MaterialTheme.typography.bodySmall)
             Text(
                 text = buildExtras(app).joinToString(separator = "  •  "),
-                style = MaterialTheme.typography.bodyVerySmall
+                style = MaterialTheme.typography.bodySmall
             )
         }
     }

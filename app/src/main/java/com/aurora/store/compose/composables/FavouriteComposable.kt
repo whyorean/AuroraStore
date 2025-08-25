@@ -35,7 +35,6 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.extensions.bodyVerySmall
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -100,7 +99,7 @@ fun FavouriteComposable(
                         favourite.added,
                         DateUtils.FORMAT_SHOW_DATE
                     ),
-                    style = MaterialTheme.typography.bodyVerySmall
+                    style = MaterialTheme.typography.bodySmall
                 )
             }
         }

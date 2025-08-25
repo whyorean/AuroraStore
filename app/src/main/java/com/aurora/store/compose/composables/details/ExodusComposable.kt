@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.aurora.extensions.bodyVerySmall
 import com.aurora.store.R
 import com.aurora.store.data.model.ExodusTracker
 
@@ -40,7 +39,7 @@ fun ExodusComposable(modifier: Modifier = Modifier, tracker: ExodusTracker) {
         )
         Text(
             text = tracker.date,
-            style = MaterialTheme.typography.bodyVerySmall,
+            style = MaterialTheme.typography.bodySmall,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
