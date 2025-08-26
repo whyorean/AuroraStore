@@ -455,4 +455,6 @@
     <string name="details_more_package_name">包名</string>
     <string name="details_more_content_rating">内容评级</string>
     <string name="select_app_for_details">选择一个应用了解更多详情</string>
+    <string name="action_filter_no_ads">无广告</string>
+    <string name="action_filter_no_gms">无 play 服务</string>
 </resources>
