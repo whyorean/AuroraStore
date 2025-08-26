@@ -455,4 +455,6 @@
     <string name="details_data_safety_collect_none">Deweloper twierdzi, że ta aplikacja nie gromadzi danych użytkownika.</string>
     <string name="details_data_safety_share_none">Deweloper twierdzi, że ta aplikacja nie udostępnia danych użytkownika innym firmom lub organizacjom.</string>
     <string name="exodus_tracker_desc">Ta wersja aplikacji może zawierać więcej elementów śledzących, których nie ma jeszcze w bazie danych Exodus Privacy.</string>
+    <string name="action_filter_no_ads">Bez reklam</string>
+    <string name="action_filter_no_gms">Bez usług Google Play</string>
 </resources>

@@ -455,4 +455,6 @@
     <string name="details_more_package_name">Название пакета</string>
     <string name="details_more_content_rating">Рейтинг контента</string>
     <string name="select_app_for_details">Выберите приложение для получения более подробной информации</string>
+    <string name="action_filter_no_ads">Без рекламы</string>
+    <string name="action_filter_no_gms">Без сервисов Google Play</string>
 </resources>

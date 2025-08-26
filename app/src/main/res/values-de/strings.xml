@@ -438,8 +438,8 @@
     <string name="onboarding_title_gsf">App-Kompatibilität</string>
     <string name="onboarding_title_gsf_desc">Fehlende Abhängigkeiten</string>
     <string name="onboarding_gms_agreement">Ich habe die Nutzungsbedingungen und Datenschutzerklärung von microG gelesen und stimme ihnen zu</string>
-    <string name="onboarding_gms_missing">Es konnten keine Google Play Services auf deinem Gerät gefunden werden. Mehrere beliebte Apps benötigen sie mittlerweile, um ordnungsgemäß zu funktionieren!</string>
-    <string name="onboarding_gms_microg">microG ist eine kostenlose Open-Source-Implementierung, die ähnliche Funktionen bereitstellt, um Apps, die von Google Play Services für Android-Geräte abhängig sind, durch Neuimplementierung auszuführen. \n\nmicroG ermöglicht Apps den Zugriff auf diese Google-APIs, verbessert die Kompatibilität für Nutzer und bietet gleichzeitig Vorteile für den Datenschutz. \n\nmicroG wird automatisch im Hintergrund ausgeführt, wenn Anwendungen geöffnet werden, die von Google Mobile Services abhängig sind.</string>
+    <string name="onboarding_gms_missing">Es konnten keine Google-Play-Dienste auf deinem Gerät gefunden werden. Mehrere beliebte Apps benötigen sie mittlerweile, um ordnungsgemäß zu funktionieren!</string>
+    <string name="onboarding_gms_microg">microG ist eine kostenlose Open-Source-Implementierung, die ähnliche Funktionen bereitstellt, um Apps, die von Google-Play-Diensten für Android-Geräte abhängig sind, durch Neuimplementierung auszuführen. \n\nmicroG ermöglicht Apps den Zugriff auf diese Google-APIs, verbessert die Kompatibilität für Nutzer und bietet gleichzeitig Vorteile für den Datenschutz. \n\nmicroG wird automatisch im Hintergrund ausgeführt, wenn Anwendungen geöffnet werden, die von Google Mobile Services abhängig sind.</string>
     <string name="microg_privacy_policy">Datenschutzerklärung von microG lesen</string>
     <string name="microg_license_agreement">microG-Lizenzvereinbarung lesen</string>
     <string name="microg_website">microG-Projektwebsite besuchen</string>
@@ -455,4 +455,6 @@
     <string name="details_more_package_name">Paketname</string>
     <string name="details_more_content_rating">Altersfreigabe</string>
     <string name="select_app_for_details">Eine App auswählen, um weitere Details anzuzeigen</string>
+    <string name="action_filter_no_ads">Ohne Werbung</string>
+    <string name="action_filter_no_gms">Ohne Play-Dienste</string>
 </resources>

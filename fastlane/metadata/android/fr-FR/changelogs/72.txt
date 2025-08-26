@@ -1,0 +1,5 @@
+• La version minimale d’Android prise en charge est désormais Android 6.0 ;
+• Passage au thème Material3 Expressive ;
+• Amélioration de la prise en charge des appareils à écran large ;
+• Correction d’un problème lié au réglage incorrect de la langue hébraïque dans les paramètres de langue par appli ;
+• Rétablissement de la fonction des filtres de recherche.

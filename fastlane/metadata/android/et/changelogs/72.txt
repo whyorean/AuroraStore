@@ -1,0 +1,5 @@
+• Minimaalne toetatud Androidi versioon on nüüd Android 6.0
+• Võtsime kasutusele Material3 Expressive kujunduse
+• Parem tugi laiekraanseadmetel
+• Parandasime heebrea keele määramisel rakendusekohaseks keeleks tekkinud vea
+• Taastasime otsingufiltrite funktsionaalsuse

@@ -1,0 +1,5 @@
+• Die minimal unterstützte Android-Version ist jetzt Android 6.0.
+• Umstellung auf das Material3-Expressive-Design
+• Verbesserte Unterstützung für Breitbildgeräte
+• Behebung eines Problems, bei dem die hebräische Sprache in den Spracheinstellungen der App nicht richtig eingestellt war
+• Wiederherstellung der Suchfilterfunktionalität

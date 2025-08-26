@@ -455,4 +455,6 @@
     <string name="details_more_package_name">Paketi nimi</string>
     <string name="details_more_content_rating">Hinnang sisule</string>
     <string name="select_app_for_details">Üksikasjade nägemiseks vali rakendus</string>
+    <string name="action_filter_no_ads">Pole reklaame</string>
+    <string name="action_filter_no_gms">Ei vaja Google Play teenuseid</string>
 </resources>
