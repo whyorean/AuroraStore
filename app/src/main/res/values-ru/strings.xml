@@ -72,10 +72,10 @@
     <string name="filter_review_five">Пять</string>
     <string name="filter_review_all">Все</string>
     <string name="exodus_view_report">Посмотреть отчет</string>
-    <string name="exodus_substring">найдены известные следилки</string>
-    <string name="exodus_progress">Проверка следилок…</string>
+    <string name="exodus_substring">найдены известные трекеры</string>
+    <string name="exodus_progress">Проверка трекеров…</string>
     <string name="exodus_powered">При поддержке Exodus Privacy</string>
-    <string name="exodus_no_tracker">Не содержит известных следилок</string>
+    <string name="exodus_no_tracker">Не содержит известных трекеров</string>
     <string name="download_speed_estimating">Оценка</string>
     <string name="download_pause_all">Приостановить все</string>
     <string name="download_resume_all">Продолжить все</string>
