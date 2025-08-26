@@ -91,7 +91,8 @@ fun AppDetailsScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
-    viewModel: AppDetailsViewModel = hiltViewModel(key = packageName)
+    viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
+    forceSinglePane: Boolean = false
 ) {
     val context = LocalContext.current
 
@@ -139,7 +140,8 @@ fun AppDetailsScreen(
                         },
                         onTestingSubscriptionChange = { subscribe ->
                             viewModel.updateTestingProgramStatus(packageName, subscribe)
-                        }
+                        },
+                        forceSinglePane = forceSinglePane
                     )
                 }
             }
@@ -200,10 +202,16 @@ private fun ScreenContentApp(
     onUninstall: () -> Unit = {},
     onOpen: () -> Unit = {},
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {},
-    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
+    forceSinglePane: Boolean = false
 ) {
     val context = LocalContext.current
-    val scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
+    var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
+
+    if (forceSinglePane) {
+        scaffoldDirective = scaffoldDirective.copy(maxHorizontalPartitions = 1)
+    }
+
     val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<Screen>(
         scaffoldDirective = scaffoldDirective,
         adaptStrategies = SupportingPaneScaffoldDefaults.adaptStrategies(
