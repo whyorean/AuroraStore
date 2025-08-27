@@ -1,0 +1,5 @@
+• A versão do Android mínima suportada agora é o Android 6.0
+• O tema foi alterado para o Material3 Expressive
+• O suporte para dispositivos de tela larga foi melhorado
+• Foi corrigido um problema onde o idioma hebraico não era configurado corretamente ao selecionar o idioma no app
+• Foi restaurada a funcionalidade de filtros de pesquisa
