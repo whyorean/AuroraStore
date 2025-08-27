@@ -443,4 +443,18 @@
     <string name="microg_privacy_policy">Irakurri microG-ren pribatutasun politika</string>
     <string name="microg_license_agreement">Irakurri microG Lizentzia eta Hitzarmena</string>
     <string name="microg_website">Bisitatu microG Proiektuaren webgunea</string>
+    <string name="details_data_safety_collect">Aplikazio honek hurrengo datuak bil ditzake</string>
+    <string name="details_data_safety_collect_none">Garatzaileak dio aplikazio honek ez duela erabiltzaileen daturik biltzen.</string>
+    <string name="details_data_safety_shared">Aplikazio honek hurrengo datuak parteka ditzake</string>
+    <string name="details_data_safety_share_none">Garatzaileak dio aplikazio honek ez dituela erabiltzaileen datuak beste enpresa edo erakundeekin partekatzen.</string>
+    <string name="exodus_tracker_desc">Aplikazioaren bertsio honek Exodus Privacy-ren datu-basean oraindik ez dauden jarraitzaile gehiago izan ditzake oraindik.</string>
+    <string name="exodus_report_trackers"><xliff:g id="aztarnari_kopurua">%1$d</xliff:g> aztarnari ezagunak hemen aurkituta <xliff:g id="aplikazioaren_bertsioaren_izena">%2$s</xliff:g></string>
+    <string name="no_description">Aplikazioaren xehetasunen zatia</string>
+    <string name="details_more_info">Informazio gehiago</string>
+    <string name="details_more_target_api">Helburuak</string>
+    <string name="details_more_package_name">Paketearen izena</string>
+    <string name="details_more_content_rating">Edukiaren balorazioa</string>
+    <string name="select_app_for_details">PantailaBilatu</string>
+    <string name="action_filter_no_ads">Iragarkirik ez</string>
+    <string name="action_filter_no_gms">Play zerbitzurik ez</string>
 </resources>
