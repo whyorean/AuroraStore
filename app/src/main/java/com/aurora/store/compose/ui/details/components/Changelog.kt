@@ -34,7 +34,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  * @param changelog Changelog to show
  */
 @Composable
-fun AppChangelog(changelog: String) {
+fun Changelog(changelog: String) {
     HeaderComposable(title = stringResource(R.string.details_changelog))
     Box(
         modifier = Modifier
@@ -56,8 +56,8 @@ fun AppChangelog(changelog: String) {
 
 @Preview(showBackground = true)
 @Composable
-private fun AppChangelogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun ChangelogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppChangelog(changelog = app.changes)
+        Changelog(changelog = app.changes)
     }
 }

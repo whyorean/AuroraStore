@@ -28,7 +28,7 @@ import com.aurora.store.util.CommonUtil
  * @param app App to show tags
  */
 @Composable
-fun AppTags(app: App) {
+fun Tags(app: App) {
     val context = LocalContext.current
 
     val installsLabel = CommonUtil.addDiPrefix(app.installs)
@@ -68,8 +68,8 @@ fun AppTags(app: App) {
 
 @Preview(showBackground = true)
 @Composable
-private fun AppTagsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun TagsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppTags(app = app)
+        Tags(app = app)
     }
 }

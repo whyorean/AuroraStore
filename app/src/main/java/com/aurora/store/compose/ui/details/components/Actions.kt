@@ -36,7 +36,7 @@ import com.aurora.store.R
  * @param windowAdaptiveInfo Adaptive window information
  */
 @Composable
-fun AppActions(
+fun Actions(
     primaryActionDisplayName: String,
     secondaryActionDisplayName: String,
     isPrimaryActionEnabled: Boolean = true,
@@ -85,9 +85,9 @@ fun AppActions(
 
 @Preview(showBackground = true)
 @Composable
-private fun AppActionsPreview() {
+private fun ActionsPreview() {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppActions(
+        Actions(
             primaryActionDisplayName = stringResource(R.string.action_install),
             secondaryActionDisplayName = stringResource(R.string.title_manual_download)
         )

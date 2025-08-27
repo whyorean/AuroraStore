@@ -43,7 +43,7 @@ import com.aurora.store.util.PackageUtil
  * @param isUpdatable Whether the app has a valid update available
  */
 @Composable
-fun AppDetails(
+fun Details(
     app: App,
     progress: Float = 0F,
     inProgress: Boolean = false,
@@ -106,10 +106,10 @@ fun AppDetails(
 
 @Preview(showBackground = true)
 @Composable
-private fun AppDetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun DetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
         CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-            AppDetails(app =  app)
+            Details(app =  app)
         }
     }
 }

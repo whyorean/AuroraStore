@@ -24,7 +24,7 @@ import com.aurora.store.data.model.Scores
  * @param plexusScores Scores from the Plexus
  */
 @Composable
-fun AppCompatibility(needsGms: Boolean, plexusScores: Scores? = null) {
+fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
     HeaderComposable(
         title = stringResource(R.string.details_compatibility_title),
         subtitle = stringResource(R.string.plexus_powered),
@@ -72,8 +72,8 @@ fun AppCompatibility(needsGms: Boolean, plexusScores: Scores? = null) {
 
 @Preview(showBackground = true)
 @Composable
-private fun AppCompatibilityPreview() {
+private fun CompatibilityPreview() {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppCompatibility(needsGms = true)
+        Compatibility(needsGms = true)
     }
 }

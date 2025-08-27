@@ -34,7 +34,7 @@ import com.aurora.store.compose.preview.coilPreviewProvider
  * @param onNavigateToScreenshot Callback when a screenshot is clicked
  */
 @Composable
-fun AppScreenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int) -> Unit = {}) {
+fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int) -> Unit = {}) {
     LazyRow(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))) {
         items(items = screenshots, key = { artwork -> artwork.url }) { artwork ->
             ScreenshotComposable(
@@ -50,10 +50,10 @@ fun AppScreenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: I
 
 @Preview(showBackground = true)
 @Composable
-private fun AppScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun ScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
         CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-            AppScreenshots(screenshots = app.screenshots)
+            Screenshots(screenshots = app.screenshots)
         }
     }
 }

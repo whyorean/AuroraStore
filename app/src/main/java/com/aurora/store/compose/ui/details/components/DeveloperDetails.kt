@@ -32,7 +32,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  * @param email Email address of the app developer
  */
 @Composable
-fun AppDeveloperDetails(address: String, website: String, email: String) {
+fun DeveloperDetails(address: String, website: String, email: String) {
     val context = LocalContext.current
 
     HeaderComposable(title = stringResource(R.string.details_dev_details))
@@ -68,9 +68,9 @@ fun AppDeveloperDetails(address: String, website: String, email: String) {
 
 @Preview(showBackground = true)
 @Composable
-private fun AppDeveloperDetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun DeveloperDetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppDeveloperDetails(
+        DeveloperDetails(
             address = app.developerAddress,
             website = app.developerWebsite,
             email = app.developerEmail

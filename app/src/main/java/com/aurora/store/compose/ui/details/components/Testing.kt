@@ -34,10 +34,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  * @param onTestingSubscriptionChange Callback when the the subscription button is clicked
  */
 @Composable
-fun AppTesting(
-    isSubscribed: Boolean,
-    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}
-) {
+fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}) {
     HeaderComposable(title = stringResource(R.string.details_beta))
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -72,8 +69,8 @@ fun AppTesting(
 
 @Preview(showBackground = true)
 @Composable
-private fun AppTestingPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun TestingPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppTesting(isSubscribed = app.testingProgram!!.isSubscribed)
+        Testing(isSubscribed = app.testingProgram!!.isSubscribed)
     }
 }

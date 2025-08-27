@@ -31,7 +31,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  * @param privacyPolicyUrl App's privacy policy URL
  */
 @Composable
-fun AppDataSafety(report: Report, privacyPolicyUrl: String) {
+fun DataSafety(report: Report, privacyPolicyUrl: String) {
     val context = LocalContext.current
 
     HeaderComposable(
@@ -80,9 +80,9 @@ fun AppDataSafety(report: Report, privacyPolicyUrl: String) {
 
 @Preview(showBackground = true)
 @Composable
-private fun AppDataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun DataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppDataSafety(
+        DataSafety(
             privacyPolicyUrl = app.privacyPolicyUrl,
             report = Report(
                 packageName = app.packageName,

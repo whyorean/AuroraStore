@@ -24,7 +24,7 @@ import com.aurora.store.data.model.Report
  * @param onNavigateToDetailsExodus Callback when the user navigates
  */
 @Composable
-fun AppPrivacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
+fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
     HeaderComposable(
         title = stringResource(R.string.details_privacy),
         subtitle = stringResource(R.string.exodus_powered),
@@ -50,8 +50,8 @@ fun AppPrivacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null)
 
 @Preview(showBackground = true)
 @Composable
-private fun AppPrivacyPreview() {
+private fun PrivacyPreview() {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppPrivacy(report = Report(), onNavigateToDetailsExodus = {})
+        Privacy(report = Report(), onNavigateToDetailsExodus = {})
     }
 }

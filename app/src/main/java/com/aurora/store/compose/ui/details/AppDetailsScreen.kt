@@ -64,17 +64,17 @@ import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.compose.menu.AppDetailsMenu
 import com.aurora.store.compose.menu.items.AppDetailsMenuItem
 import com.aurora.store.compose.navigation.Screen
-import com.aurora.store.compose.ui.details.components.AppActions
-import com.aurora.store.compose.ui.details.components.AppChangelog
-import com.aurora.store.compose.ui.details.components.AppCompatibility
-import com.aurora.store.compose.ui.details.components.AppDataSafety
-import com.aurora.store.compose.ui.details.components.AppDetails
-import com.aurora.store.compose.ui.details.components.AppDeveloperDetails
-import com.aurora.store.compose.ui.details.components.AppPrivacy
-import com.aurora.store.compose.ui.details.components.AppRatingAndReviews
-import com.aurora.store.compose.ui.details.components.AppScreenshots
-import com.aurora.store.compose.ui.details.components.AppTags
-import com.aurora.store.compose.ui.details.components.AppTesting
+import com.aurora.store.compose.ui.details.components.Actions
+import com.aurora.store.compose.ui.details.components.Changelog
+import com.aurora.store.compose.ui.details.components.Compatibility
+import com.aurora.store.compose.ui.details.components.DataSafety
+import com.aurora.store.compose.ui.details.components.Details
+import com.aurora.store.compose.ui.details.components.DeveloperDetails
+import com.aurora.store.compose.ui.details.components.Privacy
+import com.aurora.store.compose.ui.details.components.RatingAndReviews
+import com.aurora.store.compose.ui.details.components.Screenshots
+import com.aurora.store.compose.ui.details.components.Tags
+import com.aurora.store.compose.ui.details.components.Testing
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.data.installer.AppInstaller
@@ -257,10 +257,10 @@ private fun ScreenContentApp(
     }
 
     @Composable
-    fun SetupAppActions() {
+    fun SetupActions() {
         when (state) {
             is AppState.Downloading -> {
-                AppActions(
+                Actions(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_cancel),
                     isPrimaryActionEnabled = false,
@@ -269,7 +269,7 @@ private fun ScreenContentApp(
             }
 
             is AppState.Updatable -> {
-                AppActions(
+                Actions(
                     primaryActionDisplayName = stringResource(R.string.action_update),
                     secondaryActionDisplayName = stringResource(R.string.action_uninstall),
                     onPrimaryAction = onDownload,
@@ -278,7 +278,7 @@ private fun ScreenContentApp(
             }
 
             is AppState.Installed -> {
-                AppActions(
+                Actions(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_uninstall),
                     onPrimaryAction = onOpen,
@@ -293,7 +293,7 @@ private fun ScreenContentApp(
                     if (app.isFree) stringResource(R.string.action_install) else app.price
                 }
 
-                AppActions(
+                Actions(
                     primaryActionDisplayName = primaryActionName,
                     secondaryActionDisplayName = stringResource(R.string.title_manual_download),
                     onPrimaryAction = onDownload,
@@ -321,7 +321,7 @@ private fun ScreenContentApp(
                     .padding(dimensionResource(R.dimen.padding_medium)),
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
             ) {
-                AppDetails(
+                Details(
                     app = app,
                     inProgress = state.inProgress(),
                     progress = state.progress(),
@@ -331,38 +331,35 @@ private fun ScreenContentApp(
                     timeRemaining = if (state is AppState.Downloading) state.timeRemaining else 0
                 )
 
-                SetupAppActions()
+                SetupActions()
 
-                AppTags(app = app)
-                AppChangelog(changelog = app.changes)
+                Tags(app = app)
+                Changelog(changelog = app.changes)
                 HeaderComposable(
                     title = stringResource(R.string.details_more_about_app),
                     subtitle = app.shortDescription,
                     onClick = { showExtraPane(ExtraScreen.More) }
                 )
 
-                AppScreenshots(
+                Screenshots(
                     screenshots = app.screenshots,
                     onNavigateToScreenshot = { showExtraPane(ExtraScreen.Screenshot(it)) }
                 )
 
-                AppRatingAndReviews(
+                RatingAndReviews(
                     rating = app.rating,
                     featuredReviews = featuredReviews,
                     onNavigateToDetailsReview = { showExtraPane(ExtraScreen.Review) }
                 )
 
                 if (!isAnonymous && app.testingProgram?.isAvailable == true) {
-                    AppTesting(
+                    Testing(
                         isSubscribed = app.testingProgram!!.isSubscribed,
                         onTestingSubscriptionChange = onTestingSubscriptionChange
                     )
                 }
 
-                AppCompatibility(
-                    needsGms = app.requiresGMS(),
-                    plexusScores = plexusScores
-                )
+                Compatibility(needsGms = app.requiresGMS(), plexusScores = plexusScores)
 
                 HeaderComposable(
                     title = stringResource(R.string.details_permission),
@@ -379,13 +376,10 @@ private fun ScreenContentApp(
                 )
 
                 if (dataSafetyReport != null) {
-                    AppDataSafety(
-                        report = dataSafetyReport,
-                        privacyPolicyUrl = app.privacyPolicyUrl
-                    )
+                    DataSafety(report = dataSafetyReport, privacyPolicyUrl = app.privacyPolicyUrl)
                 }
 
-                AppPrivacy(
+                Privacy(
                     report = exodusReport,
                     onNavigateToDetailsExodus = if (!exodusReport?.trackers.isNullOrEmpty()) {
                         { showExtraPane(ExtraScreen.Exodus) }
@@ -394,7 +388,7 @@ private fun ScreenContentApp(
                     }
                 )
 
-                AppDeveloperDetails(
+                DeveloperDetails(
                     address = app.developerAddress,
                     website = app.developerWebsite,
                     email = app.developerEmail

@@ -51,7 +51,7 @@ import java.util.Locale
  * @param windowAdaptiveInfo Adaptive window information
  */
 @Composable
-fun AppRatingAndReviews(
+fun RatingAndReviews(
     rating: Rating,
     featuredReviews: List<Review> = emptyList(),
     onNavigateToDetailsReview: () -> Unit = {},
@@ -141,8 +141,8 @@ fun AppRatingAndReviews(
 
 @Preview(showBackground = true)
 @Composable
-private fun AppReviewsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun RatingAndReviewsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        AppRatingAndReviews(rating = app.rating)
+        RatingAndReviews(rating = app.rating)
     }
 }
