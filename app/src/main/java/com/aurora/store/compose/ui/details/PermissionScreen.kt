@@ -37,7 +37,7 @@ import com.aurora.store.viewmodel.details.DetailsPermissionViewModel
 import java.util.Locale
 
 @Composable
-fun DetailsPermissionScreen(
+fun PermissionScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
@@ -117,7 +117,7 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun DetailsPermissionScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun PermissionScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     ScreenContent(
         topAppBarTitle = app.displayName
     )

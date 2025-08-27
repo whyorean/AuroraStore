@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation3.runtime.NavKey
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.Constants.SHARE_URL
 import com.aurora.extensions.appInfo
@@ -74,6 +75,7 @@ import com.aurora.store.compose.ui.details.components.AppRatingAndReviews
 import com.aurora.store.compose.ui.details.components.AppScreenshots
 import com.aurora.store.compose.ui.details.components.AppTags
 import com.aurora.store.compose.ui.details.components.AppTesting
+import com.aurora.store.compose.ui.details.navigation.ExtraScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.AppState
@@ -212,7 +214,7 @@ private fun ScreenContentApp(
         scaffoldDirective = scaffoldDirective.copy(maxHorizontalPartitions = 1)
     }
 
-    val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<Screen>(
+    val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<NavKey>(
         scaffoldDirective = scaffoldDirective,
         adaptStrategies = SupportingPaneScaffoldDefaults.adaptStrategies(
             supportingPaneAdaptStrategy = AdaptStrategy
@@ -224,13 +226,13 @@ private fun ScreenContentApp(
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
 
-    fun showMainPane() {
+    fun onNavigateBack() {
         coroutineScope.launch {
             scaffoldNavigator.navigateBack()
         }
     }
 
-    fun showExtraPane(screen: Screen) {
+    fun showExtraPane(screen: NavKey) {
         coroutineScope.launch {
             scaffoldNavigator.navigateTo(SupportingPaneScaffoldRole.Extra, screen)
         }
@@ -242,7 +244,7 @@ private fun ScreenContentApp(
             when (menuItem) {
                 AppDetailsMenuItem.FAVORITE -> onFavorite()
                 AppDetailsMenuItem.MANUAL_DOWNLOAD -> {
-                    showExtraPane(Screen.DetailsManualDownload)
+                    showExtraPane(ExtraScreen.ManualDownload)
                 }
                 AppDetailsMenuItem.SHARE -> context.share(app)
                 AppDetailsMenuItem.APP_INFO -> context.appInfo(app.packageName)
@@ -295,7 +297,7 @@ private fun ScreenContentApp(
                     primaryActionDisplayName = primaryActionName,
                     secondaryActionDisplayName = stringResource(R.string.title_manual_download),
                     onPrimaryAction = onDownload,
-                    onSecondaryAction = { showExtraPane(Screen.DetailsManualDownload) }
+                    onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
                 )
             }
         }
@@ -336,18 +338,18 @@ private fun ScreenContentApp(
                 HeaderComposable(
                     title = stringResource(R.string.details_more_about_app),
                     subtitle = app.shortDescription,
-                    onClick = { showExtraPane(Screen.DetailsMore) }
+                    onClick = { showExtraPane(ExtraScreen.More) }
                 )
 
                 AppScreenshots(
                     screenshots = app.screenshots,
-                    onNavigateToScreenshot = { showExtraPane(Screen.DetailsScreenshot(it)) }
+                    onNavigateToScreenshot = { showExtraPane(ExtraScreen.Screenshot(it)) }
                 )
 
                 AppRatingAndReviews(
                     rating = app.rating,
                     featuredReviews = featuredReviews,
-                    onNavigateToDetailsReview = { showExtraPane(Screen.DetailsReview) }
+                    onNavigateToDetailsReview = { showExtraPane(ExtraScreen.Review) }
                 )
 
                 if (!isAnonymous && app.testingProgram?.isAvailable == true) {
@@ -370,7 +372,7 @@ private fun ScreenContentApp(
                         stringResource(R.string.details_no_permission)
                     },
                     onClick = if (app.permissions.isNotEmpty()) {
-                        { showExtraPane(Screen.DetailsPermission) }
+                        { showExtraPane(ExtraScreen.Permission) }
                     } else {
                         null
                     }
@@ -386,7 +388,7 @@ private fun ScreenContentApp(
                 AppPrivacy(
                     report = exodusReport,
                     onNavigateToDetailsExodus = if (!exodusReport?.trackers.isNullOrEmpty()) {
-                        { showExtraPane(Screen.DetailsExodus) }
+                        { showExtraPane(ExtraScreen.Exodus) }
                     } else {
                         null
                     }
@@ -447,35 +449,41 @@ private fun ScreenContentApp(
             scaffoldNavigator.currentDestination?.contentKey?.let { screen ->
                 AnimatedPane {
                     when (screen) {
-                        is Screen.DetailsReview -> DetailsReviewScreen(
+                        is ExtraScreen.Review -> ReviewScreen(
                             packageName = app.packageName,
-                            onNavigateUp = ::showMainPane
+                            onNavigateUp = ::onNavigateBack
                         )
-                        is Screen.DetailsExodus -> DetailsExodusScreen(
+
+                        is ExtraScreen.Exodus -> ExodusScreen(
                             packageName = app.packageName,
-                            onNavigateUp = ::showMainPane
+                            onNavigateUp = ::onNavigateBack
                         )
-                        is Screen.DetailsMore -> DetailsMoreScreen(
+
+                        is ExtraScreen.More -> MoreScreen(
                             packageName = app.packageName,
-                            onNavigateUp = ::showMainPane,
+                            onNavigateUp = ::onNavigateBack,
                             onNavigateToAppDetails = onNavigateToAppDetails
                         )
-                        is Screen.DetailsPermission -> DetailsPermissionScreen(
+
+                        is ExtraScreen.Permission -> PermissionScreen(
                             packageName = app.packageName,
-                            onNavigateUp = ::showMainPane
+                            onNavigateUp = ::onNavigateBack
                         )
-                        is Screen.DetailsScreenshot -> DetailsScreenshotScreen(
+
+                        is ExtraScreen.Screenshot -> ScreenshotScreen(
                             packageName = app.packageName,
                             index = screen.index,
-                            onNavigateUp = ::showMainPane
+                            onNavigateUp = ::onNavigateBack
                         )
-                        is Screen.DetailsManualDownload -> DetailsManualDownloadScreen(
+
+                        is ExtraScreen.ManualDownload -> ManualDownloadScreen(
                             packageName = app.packageName,
-                            onNavigateUp = ::showMainPane
+                            onNavigateUp = ::onNavigateBack
                         )
+
                         is Screen.DevProfile -> DevProfileScreen(
                             publisherId = app.developerName,
-                            onNavigateUp = ::showMainPane,
+                            onNavigateUp = ::onNavigateBack,
                             onNavigateToAppDetails = { onNavigateToAppDetails(it) }
                         )
 

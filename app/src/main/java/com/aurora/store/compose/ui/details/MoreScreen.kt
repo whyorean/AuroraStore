@@ -47,7 +47,7 @@ import com.aurora.store.viewmodel.details.DetailsMoreViewModel
 import java.util.Locale
 
 @Composable
-fun DetailsMoreScreen(
+fun MoreScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
@@ -192,7 +192,7 @@ private fun AppInfoMore(app: App) {
 
 @Preview
 @Composable
-private fun DetailsMoreScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun MoreScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         ScreenContent(app = app)
     }

@@ -30,7 +30,7 @@ import com.aurora.store.compose.composables.details.ScreenshotComposable
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 
 @Composable
-fun DetailsScreenshotScreen(
+fun ScreenshotScreen(
     packageName: String,
     index: Int,
     onNavigateUp: () -> Unit,
@@ -96,7 +96,7 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun DetailsScreenshotScreenPreview() {
+private fun ScreenshotScreenPreview() {
     ScreenContent(
         topAppBarTitle = stringResource(R.string.app_name)
     )

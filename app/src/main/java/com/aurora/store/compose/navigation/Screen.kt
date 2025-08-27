@@ -6,31 +6,23 @@
 package com.aurora.store.compose.navigation
 
 import android.os.Parcelable
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.navigation3.runtime.NavKey
-import com.aurora.store.R
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 
 /**
- * Destination (Screen) for navigation in compose
- * @param label Label of the screen
- * @param icon Optional icon for the screen; Must not be null if screen is a top-level destination
+ * Destinations for navigation in compose
  */
 @Parcelize
 @Serializable
-sealed class Screen(
-    @StringRes val label: Int? = null,
-    @DrawableRes val icon: Int? = null
-) : NavKey, Parcelable {
+sealed class Screen : NavKey, Parcelable {
 
     companion object {
         const val PARCEL_KEY = "SCREEN"
     }
 
     @Serializable
-    data object Blacklist : Screen(label = R.string.title_blacklist_manager)
+    data object Blacklist : Screen()
 
     @Serializable
     data class DevProfile(val developerId: String): Screen()
@@ -40,40 +32,4 @@ sealed class Screen(
 
     @Serializable
     data object Search : Screen()
-
-    /**
-     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
-     */
-    @Serializable
-    data object DetailsMore : Screen()
-
-    /**
-     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
-     */
-    @Serializable
-    data class DetailsScreenshot(val index: Int) : Screen()
-
-    /**
-     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
-     */
-    @Serializable
-    data object DetailsExodus : Screen()
-
-    /**
-     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
-     */
-    @Serializable
-    data object DetailsReview : Screen()
-
-    /**
-     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
-     */
-    @Serializable
-    data object DetailsPermission : Screen()
-
-    /**
-     * Child screen of [AppDetails]; Avoid navigating to this screen directly.
-     */
-    @Serializable
-    data object DetailsManualDownload : Screen()
 }

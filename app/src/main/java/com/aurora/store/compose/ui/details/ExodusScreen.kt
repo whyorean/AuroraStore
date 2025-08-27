@@ -37,7 +37,7 @@ import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.DetailsExodusViewModel
 
 @Composable
-fun DetailsExodusScreen(
+fun ExodusScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
@@ -110,7 +110,7 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun DetailsExodusScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun ExodusScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     ScreenContent(
         topAppBarTitle = app.displayName,
         version = app.versionName

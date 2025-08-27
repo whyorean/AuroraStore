@@ -54,7 +54,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
 
 @Composable
-fun DetailsReviewScreen(
+fun ReviewScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
@@ -182,7 +182,7 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
 
 @Preview
 @Composable
-private fun DetailsReviewScreenPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
+private fun ReviewScreenPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
     val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
     val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
 

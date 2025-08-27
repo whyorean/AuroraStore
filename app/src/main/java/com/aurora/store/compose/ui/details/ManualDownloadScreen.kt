@@ -55,7 +55,7 @@ import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.android.awaitFrame
 
 @Composable
-fun DetailsManualDownloadScreen(
+fun ManualDownloadScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
@@ -182,7 +182,7 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun DetailsManualDownloadScreenPreview(
+private fun ManualDownloadScreenPreview(
     @PreviewParameter(AppPreviewProvider::class) app: App
 ) {
     ScreenContent(
