@@ -443,4 +443,18 @@
     <string name="microg_license_agreement">Baca Lisensi dan Penyetujuan microG</string>
     <string name="microg_website">Kunjungi Situs Web Proyek microG</string>
     <string name="onboarding_gms_microg">microG adalah implementasi sumber terbuka dan terbuka yang menyediakan fungsionalitas serupa untuk menjalankan aplikasi yang bergantung pada layanan Google Play untuk perangkat Android melalui implementasi ulang.\n\nmicroG memungkinkan aplikasi untuk mengakses API Google tersebut, meningkatkan kompatibilitas bagi pengguna sambil menawarkan manfaat privasi. \n\nmicroG akan berjalan secara otomatis di latar belakang ketika Anda membuka aplikasi yang bergantung pada layanan seluler Google.</string>
+    <string name="details_data_safety_collect">Data yang mungkin dikumpulkan oleh aplikasi ini</string>
+    <string name="details_data_safety_collect_none">Pengembang menyatakan bahwa aplikasi ini tidak mengumpulkan data pengguna.</string>
+    <string name="details_data_safety_shared">Data yang mungkin dibagikan oleh aplikasi ini</string>
+    <string name="details_data_safety_share_none">Pengembang menyatakan bahwa aplikasi ini tidak membagikan data pengguna dengan perusahaan atau organisasi lain.</string>
+    <string name="exodus_tracker_desc">Versi aplikasi ini mungkin masih mengandung pelacak yang belum terdaftar dalam basis data Exodus Privacy.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> pelacak yang diketahui ditemukan di <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="no_description">Tidak ada deskripsi yang tersedia</string>
+    <string name="details_more_info">Informasi lebih lanjut</string>
+    <string name="details_more_target_api">Sasaran</string>
+    <string name="details_more_package_name">Nama paket</string>
+    <string name="details_more_content_rating">Peringkat konten</string>
+    <string name="select_app_for_details">Pilih aplikasi untuk detail lebih lanjut</string>
+    <string name="action_filter_no_ads">Tidak ada iklan</string>
+    <string name="action_filter_no_gms">Tidak ada layanan google play</string>
 </resources>
