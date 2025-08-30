@@ -192,28 +192,30 @@ private fun ScreenContent(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = { SearchBar() }
         ) { paddingValues ->
-            when (results.loadState.refresh) {
-                is LoadState.Loading -> ProgressComposable()
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
+            ) {
+                FilterHeader(
+                    isEnabled = results.itemCount > 0,
+                    isAnonymous = isAnonymous,
+                    onFilter = onFilter
+                )
 
-                is LoadState.Error -> {
-                    ErrorComposable(
-                        modifier = Modifier.padding(paddingValues),
-                        icon = R.drawable.ic_disclaimer,
-                        message = R.string.error
-                    )
-                }
+                when (results.loadState.refresh) {
+                    is LoadState.Loading -> ProgressComposable()
 
-                else -> {
-                    Column(
-                        modifier = Modifier
-                            .padding(paddingValues)
-                            .fillMaxSize()
-                            .padding(vertical = dimensionResource(R.dimen.padding_medium))
-                    ) {
-                        if (textFieldState.text.isNotBlank() && results.itemCount > 0) {
-                            FilterHeader(isAnonymous = isAnonymous, onFilter = onFilter)
-                        }
+                    is LoadState.Error -> {
+                        ErrorComposable(
+                            modifier = Modifier.padding(paddingValues),
+                            icon = R.drawable.ic_disclaimer,
+                            message = R.string.error
+                        )
+                    }
 
+                    else -> {
                         LazyColumn {
                             items(
                                 count = results.itemCount,
@@ -268,7 +270,11 @@ private fun ScreenContent(
 }
 
 @Composable
-private fun FilterHeader(isAnonymous: Boolean = true, onFilter: (filter: SearchFilter) -> Unit) {
+private fun FilterHeader(
+    isAnonymous: Boolean = true,
+    isEnabled: Boolean = true,
+    onFilter: (filter: SearchFilter) -> Unit
+) {
     var activeFilter by rememberSaveable { mutableStateOf(SearchFilter()) }
 
     val filters = listOfNotNull(
@@ -282,6 +288,7 @@ private fun FilterHeader(isAnonymous: Boolean = true, onFilter: (filter: SearchF
     @Composable
     fun NonExpandableFilterChip(@StringRes filter: Int, isSelected: Boolean) {
         FilterChip(
+            enabled = isEnabled,
             onClick = {
                 activeFilter = when (filter) {
                     R.string.details_free -> activeFilter.copy(isFree = !activeFilter.isFree)
@@ -309,6 +316,7 @@ private fun FilterHeader(isAnonymous: Boolean = true, onFilter: (filter: SearchF
 
         Box {
             FilterChip(
+                enabled = isEnabled,
                 onClick = { isExpanded = !isExpanded },
                 label = { Text(text = stringResource(filter)) },
                 selected = isSelected,
