@@ -107,6 +107,7 @@ private fun ScreenContent(
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
     val scrollBehavior = SearchBarDefaults.enterAlwaysSearchBarScrollBehavior()
+    var isSearching by rememberSaveable { mutableStateOf(false) }
 
     val focusRequester = remember { FocusRequester() }
     val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<String>()
@@ -132,6 +133,7 @@ private fun ScreenContent(
         textFieldState.setTextAndPlaceCursorAtEnd(query.trim())
         coroutineScope.launch { searchBarState.animateToCollapsed() }
         onSearch(textFieldState.text.toString())
+        isSearching = true
     }
 
     @Composable
@@ -199,7 +201,7 @@ private fun ScreenContent(
                     .padding(vertical = dimensionResource(R.dimen.padding_medium))
             ) {
                 FilterHeader(
-                    isEnabled = results.itemCount > 0,
+                    isEnabled = isSearching && results.loadState.refresh is LoadState.NotLoading,
                     isAnonymous = isAnonymous,
                     onFilter = onFilter
                 )
@@ -216,16 +218,24 @@ private fun ScreenContent(
                     }
 
                     else -> {
-                        LazyColumn {
-                            items(
-                                count = results.itemCount,
-                                key = results.itemKey { it.id }
-                            ) { index ->
-                                results[index]?.let { app ->
-                                    AppListComposable(
-                                        app = app,
-                                        onClick = { showDetailPane(app.packageName) }
-                                    )
+                        if (isSearching && results.itemCount == 0) {
+                            ErrorComposable(
+                                modifier = Modifier.padding(paddingValues),
+                                icon = R.drawable.ic_disclaimer,
+                                message = R.string.no_apps_available
+                            )
+                        } else {
+                            LazyColumn {
+                                items(
+                                    count = results.itemCount,
+                                    key = results.itemKey { it.id }
+                                ) { index ->
+                                    results[index]?.let { app ->
+                                        AppListComposable(
+                                            app = app,
+                                            onClick = { showDetailPane(app.packageName) }
+                                        )
+                                    }
                                 }
                             }
                         }
