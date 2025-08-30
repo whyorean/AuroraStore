@@ -455,4 +455,6 @@
     <string name="details_more_package_name">Pakketnaam</string>
     <string name="details_more_content_rating">Inhoudsbeoordeling</string>
     <string name="select_app_for_details">Selecteer een app om meer details te bekijken</string>
+    <string name="action_filter_no_ads">Geen advertenties</string>
+    <string name="action_filter_no_gms">Geen play services</string>
 </resources>

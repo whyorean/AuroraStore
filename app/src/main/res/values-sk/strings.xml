@@ -433,4 +433,28 @@
     <string name="app_info_target_android">Cieľová úroveň rozhrania API</string>
     <string name="pref_common_advanced">Rozšírené</string>
     <string name="pref_updates_app_source">Zdroj aplikácie</string>
+    <string name="action_install_microG">Inštalovať balík microG</string>
+    <string name="details_data_safety_collect">Údaje, ktoré môže táto aplikácia zhromažďovať</string>
+    <string name="details_data_safety_collect_none">Vývojár tvrdí, že táto aplikácia nezhromažďuje údaje používateľa.</string>
+    <string name="details_data_safety_shared">Údaje, ktoré môže táto aplikácia zdieľať</string>
+    <string name="details_data_safety_share_none">Vývojár tvrdí, že táto aplikácia nezdieľa údaje používateľov s inými spoločnosťami alebo organizáciami.</string>
+    <string name="exodus_tracker_desc">Táto verzia aplikácie môže stále obsahovať ďalšie sledovacie zariadenia, ktoré ešte nie sú v databáze Exodus Privacy.</string>
+    <string name="microg_license_agreement">Prečítajte si licenciu a zmluvu microG</string>
+    <string name="microg_privacy_policy">Prečítajte si zásady ochrany osobných údajov spoločnosti microG</string>
+    <string name="microg_website">Navštívte webovú stránku projektu microG</string>
+    <string name="no_description">Fragment s podrobnosťami o aplikácii</string>
+    <string name="permissions_requested"><xliff:g id="počet_oprávnení">%1$d</xliff:g> oprávnení</string>
+    <string name="details_more_info">Viac informácií</string>
+    <string name="details_more_target_api">Ciele</string>
+    <string name="details_more_package_name">Názov balíka</string>
+    <string name="details_more_content_rating">Hodnotenie obsahu</string>
+    <string name="select_app_for_details">Vyhľadávacia obrazovka</string>
+    <string name="action_filter_no_ads">Žiadne reklamy</string>
+    <string name="action_filter_no_gms">Žiadne Play služby</string>
+    <string name="onboarding_title_gsf">Kompatibilita aplikácie</string>
+    <string name="onboarding_title_gsf_desc">Chýbajúce závislosti</string>
+    <string name="onboarding_gms_agreement">Prečítal som si a súhlasím s podmienkami používania služby microG a so zásadami ochrany osobných údajov</string>
+    <string name="onboarding_gms_missing">Vo vašom zariadení sme nenašli službu Google Play, viaceré populárne aplikácie ju teraz vyžadujú na správne fungovanie!</string>
+    <string name="exodus_report_trackers"><xliff:g id="počet_sledovačov">%1$d</xliff:g> známy/e sledovač/e nájdené v <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
 </resources>
