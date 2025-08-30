@@ -72,10 +72,10 @@ class AppDetailsViewModel @Inject constructor(
 
     private val TAG = AppDetailsViewModel::class.java.simpleName
 
-    private val _app = MutableStateFlow<App?>(App(""))
+    private val _app = MutableStateFlow<App?>(null)
     val app = _app.asStateFlow()
 
-    private val _state = MutableStateFlow(defaultAppState)
+    private val _state = MutableStateFlow<AppState>(AppState.Loading)
     val state = _state.asStateFlow()
 
     private val _suggestions = MutableStateFlow<List<App>>(emptyList())
@@ -149,9 +149,11 @@ class AppDetailsViewModel @Inject constructor(
                 _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
                     isInstalled = PackageUtil.isInstalled(context, packageName)
                 )
+                _state.value = defaultAppState
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app details", exception)
                 _app.value = null
+                _state.value = AppState.Error
             }
         }.invokeOnCompletion { throwable ->
             // Only proceed if there was no error while fetching the app details

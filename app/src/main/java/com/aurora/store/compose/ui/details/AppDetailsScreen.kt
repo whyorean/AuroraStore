@@ -109,47 +109,41 @@ fun AppDetailsScreen(
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
-    with(app) {
-        when {
-            this != null -> {
-                if (this.packageName.isBlank()) {
-                    ScreenContentLoading(onNavigateUp = onNavigateUp)
-                } else {
-                    ScreenContentApp(
-                        app = this,
-                        featuredReviews = featuredReviews,
-                        suggestions = suggestions,
-                        isFavorite = favorite,
-                        isAnonymous = viewModel.authProvider.isAnonymous,
-                        state = state,
-                        plexusScores = plexusScores,
-                        dataSafetyReport = dataSafetyReport,
-                        exodusReport = exodusReport,
-                        onNavigateUp = onNavigateUp,
-                        onNavigateToAppDetails = onNavigateToAppDetails,
-                        onDownload = { viewModel.purchase(this) },
-                        onFavorite = { viewModel.toggleFavourite(this) },
-                        onCancelDownload = { viewModel.cancelDownload(this) },
-                        onUninstall = { AppInstaller.uninstall(context, packageName) },
-                        onOpen = {
-                            try {
-                                context.startActivity(
-                                    PackageUtil.getLaunchIntent(context, packageName)
-                                )
-                            } catch (_: ActivityNotFoundException) {
-                                context.toast(context.getString(R.string.unable_to_open))
-                            }
-                        },
-                        onTestingSubscriptionChange = { subscribe ->
-                            viewModel.updateTestingProgramStatus(packageName, subscribe)
-                        },
-                        forceSinglePane = forceSinglePane
-                    )
-                }
-            }
+    when (state) {
+        is AppState.Loading -> ScreenContentLoading(onNavigateUp = onNavigateUp)
+        is AppState.Error -> ScreenContentError(onNavigateUp = onNavigateUp)
 
-            // TODO: Deal with different kind of errors
-            else -> ScreenContentError(onNavigateUp = onNavigateUp)
+        else -> {
+            ScreenContentApp(
+                app = app!!,
+                featuredReviews = featuredReviews,
+                suggestions = suggestions,
+                isFavorite = favorite,
+                isAnonymous = viewModel.authProvider.isAnonymous,
+                state = state,
+                plexusScores = plexusScores,
+                dataSafetyReport = dataSafetyReport,
+                exodusReport = exodusReport,
+                onNavigateUp = onNavigateUp,
+                onNavigateToAppDetails = onNavigateToAppDetails,
+                onDownload = { viewModel.purchase(app!!) },
+                onFavorite = { viewModel.toggleFavourite(app!!) },
+                onCancelDownload = { viewModel.cancelDownload(app!!) },
+                onUninstall = { AppInstaller.uninstall(context, packageName) },
+                onOpen = {
+                    try {
+                        context.startActivity(
+                            PackageUtil.getLaunchIntent(context, packageName)
+                        )
+                    } catch (_: ActivityNotFoundException) {
+                        context.toast(context.getString(R.string.unable_to_open))
+                    }
+                },
+                onTestingSubscriptionChange = { subscribe ->
+                    viewModel.updateTestingProgramStatus(packageName, subscribe)
+                },
+                forceSinglePane = forceSinglePane
+            )
         }
     }
 }
