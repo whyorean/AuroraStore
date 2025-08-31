@@ -153,7 +153,7 @@ class AppDetailsViewModel @Inject constructor(
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app details", exception)
                 _app.value = null
-                _state.value = AppState.Error
+                _state.value = AppState.Error(exception.message)
             }
         }.invokeOnCompletion { throwable ->
             // Only proceed if there was no error while fetching the app details

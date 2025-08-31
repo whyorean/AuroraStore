@@ -111,7 +111,12 @@ fun AppDetailsScreen(
 
     when (state) {
         is AppState.Loading -> ScreenContentLoading(onNavigateUp = onNavigateUp)
-        is AppState.Error -> ScreenContentError(onNavigateUp = onNavigateUp)
+        is AppState.Error -> {
+            ScreenContentError(
+                onNavigateUp = onNavigateUp,
+                message = (state as AppState.Error).message
+            )
+        }
 
         else -> {
             ScreenContentApp(
@@ -164,14 +169,14 @@ private fun ScreenContentLoading(onNavigateUp: () -> Unit = {}) {
  * Composable to display errors related to fetching app details
  */
 @Composable
-private fun ScreenContentError(onNavigateUp: () -> Unit = {}) {
+private fun ScreenContentError(onNavigateUp: () -> Unit = {}, message: String? = null) {
     Scaffold(
         topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp) }
     ) { paddingValues ->
         ErrorComposable(
             modifier = Modifier.padding(paddingValues),
-            icon = R.drawable.ic_apps_outage,
-            message = R.string.toast_app_unavailable
+            icon = painterResource(R.drawable.ic_apps_outage),
+            message = message ?: stringResource(R.string.toast_app_unavailable)
         )
     }
 }

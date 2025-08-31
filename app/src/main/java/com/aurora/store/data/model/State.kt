@@ -56,12 +56,12 @@ sealed class AppState {
     ) : AppState()
 
     data class Installing(val progress: Float) : AppState()
+    data class Error(val message: String?) : AppState()
     data object Installed : AppState()
     data object Archived : AppState()
     data object Updatable : AppState()
     data object Unavailable : AppState()
     data object Loading : AppState()
-    data object Error : AppState()
 
     /**
      * Whether there is some sort of ongoing process related to the app

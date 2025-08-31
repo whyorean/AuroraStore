@@ -114,8 +114,8 @@ private fun ScreenContent(
                 is LoadState.Error -> {
                     ErrorComposable(
                         modifier = Modifier.padding(paddingValues),
-                        icon = R.drawable.ic_disclaimer,
-                        message = R.string.error
+                        icon = painterResource(R.drawable.ic_disclaimer),
+                        message = stringResource(R.string.error)
                     )
                 }
 

@@ -5,11 +5,11 @@
 
 package com.aurora.store.compose.composables
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -17,9 +17,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
@@ -35,13 +37,15 @@ import com.aurora.store.R
 @Composable
 fun ErrorComposable(
     modifier: Modifier = Modifier,
-    @DrawableRes icon: Int,
-    @StringRes message: Int,
-    @StringRes actionMessage: Int? = null,
+    icon: Painter,
+    message: String,
+    actionMessage: String? = null,
     onAction: () -> Unit = {}
 ) {
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(dimensionResource(R.dimen.padding_medium)),
         verticalArrangement = Arrangement.spacedBy(
             dimensionResource(R.dimen.margin_small),
             Alignment.CenterVertically
@@ -49,16 +53,20 @@ fun ErrorComposable(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
-            painter = painterResource(id = icon),
+            painter = icon,
             contentDescription = null,
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size))
         )
-        Text(text = stringResource(message))
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = message,
+            textAlign = TextAlign.Center
+        )
 
         if (actionMessage != null) {
             Button(onClick = onAction) {
                 Text(
-                    text = stringResource(actionMessage),
+                    text = actionMessage,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -71,8 +79,8 @@ fun ErrorComposable(
 @Composable
 private fun ErrorComposablePreview() {
     ErrorComposable(
-        icon = R.drawable.ic_updates,
-        message = R.string.details_no_updates,
-        actionMessage = R.string.check_updates
+        icon = painterResource(R.drawable.ic_updates),
+        message = stringResource(R.string.details_no_updates),
+        actionMessage = stringResource(R.string.check_updates)
     )
 }

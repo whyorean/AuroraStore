@@ -212,8 +212,8 @@ private fun ScreenContent(
                     is LoadState.Error -> {
                         ErrorComposable(
                             modifier = Modifier.padding(paddingValues),
-                            icon = R.drawable.ic_disclaimer,
-                            message = R.string.error
+                            icon = painterResource(R.drawable.ic_disclaimer),
+                            message = stringResource(R.string.error)
                         )
                     }
 
@@ -221,8 +221,8 @@ private fun ScreenContent(
                         if (isSearching && results.itemCount == 0) {
                             ErrorComposable(
                                 modifier = Modifier.padding(paddingValues),
-                                icon = R.drawable.ic_disclaimer,
-                                message = R.string.no_apps_available
+                                icon = painterResource(R.drawable.ic_disclaimer),
+                                message = stringResource(R.string.no_apps_available)
                             )
                         } else {
                             LazyColumn {
@@ -261,10 +261,10 @@ private fun ScreenContent(
                 }
 
                 else -> {
-                    if (textFieldState.text.isNotBlank() && results.itemCount > 0) {
+                    if (isSearching && results.itemCount > 0) {
                         ErrorComposable(
-                            icon = R.drawable.ic_round_search,
-                            message = R.string.select_app_for_details
+                            icon = painterResource(R.drawable.ic_round_search),
+                            message = stringResource(R.string.select_app_for_details)
                         )
                     }
                 }
