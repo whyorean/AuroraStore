@@ -17,6 +17,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
@@ -25,6 +27,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -53,6 +56,7 @@ import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.android.awaitFrame
+import kotlinx.coroutines.launch
 
 @Composable
 fun ManualDownloadScreen(
@@ -102,6 +106,10 @@ private fun ScreenContent(
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
 
+    val coroutineScope = rememberCoroutineScope()
+    val snackBarHostState = remember { SnackbarHostState() }
+    val errorMessage = stringResource(R.string.manual_download_version_error)
+
     val focusRequester = remember { FocusRequester() }
     var versionCode by remember {
         val initText = currentVersionCode.toString()
@@ -120,7 +128,8 @@ private fun ScreenContent(
                 navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
                 onNavigateUp = onNavigateUp
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(hostState = snackBarHostState) }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -142,7 +151,13 @@ private fun ScreenContent(
                         .fillMaxWidth()
                         .focusRequester(focusRequester),
                     value = versionCode,
-                    onValueChange = { if (it.text.isDigitsOnly()) versionCode = it },
+                    onValueChange = {
+                        if (it.text.isDigitsOnly()) {
+                            versionCode = it
+                        } else {
+                            coroutineScope.launch { snackBarHostState.showSnackbar(errorMessage) }
+                        }
+                    },
                     shape = RoundedCornerShape(10.dp),
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(

@@ -394,6 +394,7 @@
 
     <!-- ManualDownloadSheet -->
     <string name="manual_download_hint">Enter version code you wish to download</string>
+    <string name="manual_download_version_error">Version code can only contain digits</string>
 
     <!-- WelcomeFragment -->
     <string name="faqs_title" translatable="false">FAQs</string>
