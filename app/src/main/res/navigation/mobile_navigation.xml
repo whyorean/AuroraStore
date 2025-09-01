@@ -185,6 +185,9 @@
         <deepLink
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/details?id={packageName}" />
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="play.google.com/store/search?q={query}" />
         <action
             android:id="@+id/action_splashFragment_to_navigation_apps"
             app:destination="@id/appsContainerFragment"

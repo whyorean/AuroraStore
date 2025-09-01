@@ -45,7 +45,6 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
@@ -106,7 +105,6 @@ private fun ScreenContent(
 ) {
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
-    val scrollBehavior = SearchBarDefaults.enterAlwaysSearchBarScrollBehavior()
     var isSearching by rememberSaveable { mutableStateOf(false) }
 
     val focusRequester = remember { FocusRequester() }
@@ -171,12 +169,7 @@ private fun ScreenContent(
             )
         }
 
-        AppBarWithSearch(
-            scrollBehavior = scrollBehavior,
-            state = searchBarState,
-            inputField = inputField
-        )
-
+        AppBarWithSearch(state = searchBarState, inputField = inputField)
         ExpandedDockedSearchBar(state = searchBarState, inputField = inputField) {
             suggestions.forEach { suggestion ->
                 SearchSuggestionComposable(
@@ -190,10 +183,7 @@ private fun ScreenContent(
 
     @Composable
     fun ListPane() {
-        Scaffold(
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-            topBar = { SearchBar() }
-        ) { paddingValues ->
+        Scaffold(topBar = { SearchBar() }) { paddingValues ->
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
