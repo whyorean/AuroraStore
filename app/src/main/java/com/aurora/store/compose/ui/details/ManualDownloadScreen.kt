@@ -92,7 +92,15 @@ fun ManualDownloadScreen(
         currentVersionCode = app!!.versionCode,
         onNavigateUp = onNavigateUp,
         onDownload = { versionCode ->
-            viewModel.purchase(app!!.copy(versionCode = versionCode))
+            val requestedApp = app!!.copy(
+                versionCode = versionCode,
+                dependencies = app!!.dependencies.copy(
+                    dependentLibraries = app!!.dependencies.dependentLibraries.map { lib ->
+                        lib.copy(versionCode = versionCode)
+                    }
+                )
+            )
+            viewModel.purchase(requestedApp)
         }
     )
 }
