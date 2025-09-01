@@ -78,25 +78,25 @@ fun Details(
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = if (!isUpdatable) {
-                    stringResource(R.string.version, app.versionName, app.versionCode)
-                } else {
-                    stringResource(
-                        R.string.version_update,
-                        PackageUtil.getInstalledVersionName(context, app.packageName),
-                        PackageUtil.getInstalledVersionCode(context, app.packageName),
-                        app.versionName,
-                        app.versionCode
-                    )
-                },
-                style = MaterialTheme.typography.bodySmall
-            )
-            Text(
-                text = if (inProgress) {
-                    "${Formatter.formatShortFileSize(context, speed)}/s" +
-                            ", " + CommonUtil.getETAString(context, timeRemaining)
-                } else {
-                    ""
+                text = when {
+                    inProgress -> {
+                        "${Formatter.formatShortFileSize(context, speed)}/s" +
+                                ", " + CommonUtil.getETAString(context, timeRemaining)
+                    }
+
+                    isUpdatable -> {
+                        stringResource(
+                            R.string.version_update,
+                            PackageUtil.getInstalledVersionName(context, app.packageName),
+                            PackageUtil.getInstalledVersionCode(context, app.packageName),
+                            app.versionName,
+                            app.versionCode
+                        )
+                    }
+
+                    else -> {
+                        stringResource(R.string.version, app.versionName, app.versionCode)
+                    }
                 },
                 style = MaterialTheme.typography.bodySmall
             )
