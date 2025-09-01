@@ -331,7 +331,7 @@
     <string name="failed_to_fetch_report">Failed to fetch privacy report</string>
     <string name="access_denied_using_vpn">Access denied! Are you using VPN or Tor?</string>
     <string name="bad_request">Internal error! Please retry after sometime</string>
-    <string name="login_rate_limited">Oops, You are rate limited</string>
+    <string name="login_rate_limited">You are rate limited</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="failed_to_generate_session">Could not generate session</string>
     <string name="verifying_new_session">Verifying new session</string>
