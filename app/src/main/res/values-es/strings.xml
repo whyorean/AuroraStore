@@ -261,7 +261,7 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> actualización disponible</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> y <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> y <xliff:g id="apps_count">%4$d</xliff:g> más</string>
-    <string name="notification_channel_updates">Notificaciones de actualizaciones</string>
+    <string name="notification_channel_updates">Notificaciones de actualización</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> actualizaciones disponibles</string>
     <string name="notification_updates_available_desc_1">Una nueva versión de <xliff:g id="app_one_name">%1$s</xliff:g> está disponible</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> y <xliff:g id="app_three_name">%3$s</xliff:g></string>
@@ -286,7 +286,7 @@
     <string name="details_ratings_title_hint">Titulo de la reseña</string>
     <string name="pref_updates_check_frequency_desc">Configurar el intervalo de tiempo para actualizaciones automáticas, en horas.</string>
     <string name="pref_aurora_only">Filtrar aplicaciones de otras fuentes</string>
-    <string name="pref_aurora_only_desc">Solo comprobar actualizaciones de aplicaciones instaladas desde la Aurora Store</string>
+    <string name="pref_aurora_only_desc">No buscar actualizaciones para aplicaciones instaladas de fuentes externas a Aurora Store</string>
     <string name="title_app_settings">Ajustes de la aplicación</string>
     <string name="pref_updates_check_frequency">Frecuencia de las actualizaciones automáticas</string>
     <string name="pref_network_proxy_url">Dirección URL del proxy</string>
@@ -305,7 +305,7 @@
     <string name="action_request_analysis">Solicitar un nuevo análisis</string>
     <string name="failed_apk_export">Error al exportar los APKs</string>
     <string name="download_clear_finished">Limpiar lo finalizado</string>
-    <string name="pref_updates_incompatible">Actualizaciones no compatibles</string>
+    <string name="pref_updates_incompatible">Mostrar actualizaciones que podrían fallar</string>
     <string name="pref_updates_incompatible_desc">Mostrar actualizaciones de aplicaciones incompatibles o desactivadas que pueden fallar al instalarse</string>
     <string name="action_home_screen">Añadir a la pantalla de inicio</string>
     <string name="session_installer_subtitle">Instalador basado en sesión para APKs empaquetados/divididos</string>
@@ -416,7 +416,7 @@
     <string name="details_compatibility_gms_not_required_title">Funciona sin los Servicios de Google Play</string>
     <string name="no_apps_available">No hay aplicaciones disponibles</string>
     <string name="pref_network_microg_login_title">Usar microG para acceder a las cuentas</string>
-    <string name="pref_network_microg_login_desc">Autenticación mediante microG al iniciar sesión en cuentas de Google para simplificar el flujo de inicio de sesión.</string>
+    <string name="pref_network_microg_login_desc">Autenticación mediante microG al iniciar sesión en cuentas de Google para simplificar el flujo de inicio de sesión</string>
     <string name="pref_network_proxy_desc">Ver y gestionar la configuración del proxy</string>
     <string name="toast_proxy_disabled">Proxy desactivado con éxito</string>
     <string name="set">Establecer</string>
@@ -434,12 +434,27 @@
     <string name="action_install_microG">Instalar Paquete microG</string>
     <string name="app_info_downloads">Descargas</string>
     <string name="app_info_target_android">Nivel de Objetivo de la API</string>
-    <string name="onboarding_title_gsf">Compatibilidad de la App</string>
+    <string name="onboarding_title_gsf">Compatibilidad de la aplicación</string>
     <string name="onboarding_title_gsf_desc">Dependencias faltantes</string>
     <string name="onboarding_gms_agreement">He leído y estoy de acuerdo con los Términos de Servicio y la Política de Privacidad de microG</string>
     <string name="onboarding_gms_missing">No pudimos encontrar los Servicios de Google Play en tu dispositivo, ¡varias aplicaciones lo requieren ahora para funcionar correctamente!</string>
-    <string name="onboarding_gms_microg">microG es una implementación gratis y de código abierto que proporciona funcionalidades similar para ejecutar aplicaciones dependientes de los Servicios de Google Play para dispositivos Android mediante la reimplantación.\n\nmicroG permite a las aplicaciones acceder a las APIs de Google, mejorando la compatibilidad para los usuarios mientras se ofrecen beneficios para la privacidad. ­\t\n\nmicroG se ejecutará automáticamente en segundo plano cuando abras aplicaciones dependientes de los Servicios Móviles de Google.</string>
+    <string name="onboarding_gms_microg">microG es una implementación gratis y de código abierto que proporciona funcionalidades similar para ejecutar aplicaciones dependientes de los Servicios de Google Play para dispositivos Android mediante la reimplantación.\n\nmicroG permite a las aplicaciones acceder a las APIs de Google, mejorando la compatibilidad para los usuarios mientras se ofrecen beneficios para la privacidad. ­ \n\nmicroG se ejecutará automáticamente en segundo plano cuando abras aplicaciones dependientes de los Servicios Móviles de Google.</string>
     <string name="microg_privacy_policy">Leer la Política de Privacidad de microG</string>
     <string name="microg_license_agreement">Leer la Licencia y Acuerdos de microG</string>
     <string name="microg_website">Visita la Página Web del Proyecto microG</string>
+    <string name="details_data_safety_collect">Datos que esta aplicación podría recopilar</string>
+    <string name="details_data_safety_collect_none">El desarrollador afirma que esta aplicación no recopila datos de los usuarios.</string>
+    <string name="details_data_safety_shared">Datos que esta aplicación podría compartir</string>
+    <string name="details_data_safety_share_none">El desarrollador afirma que esta aplicación no comparte los datos de los usuarios con otras empresas u organizaciones.</string>
+    <string name="exodus_tracker_desc">Es posible que esta versión de la aplicación aún contenga más rastreadores que aún no figuran en la base de datos de Exodus Privacy.</string>
+    <string name="no_description">No hay descripción disponible</string>
+    <string name="details_more_info">Más información</string>
+    <string name="details_more_target_api">Objetivos</string>
+    <string name="details_more_package_name">Nombre del paquete</string>
+    <string name="details_more_content_rating">Clasificación de contenido</string>
+    <string name="select_app_for_details">Selecciona una aplicación para más detalles</string>
+    <string name="action_filter_no_ads">Sin anuncios</string>
+    <string name="action_filter_no_gms">Sin play services</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permisos</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conocidos encontrados en <xliff:g id="app_version_name">%2$s</xliff:g></string>
 </resources>
