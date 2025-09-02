@@ -268,7 +268,7 @@
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> vorhandene Updates</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> und <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="access_denied_using_vpn">Zugriff verweigert! Verwendest du ein VPN oder Tor\?</string>
-    <string name="login_rate_limited">Hoppla, deine Anfragehäufigkeit ist begrenzt</string>
+    <string name="login_rate_limited">Deine Anfragehäufigkeit ist begrenzt</string>
     <string name="failed_to_fetch_report">Datenschutzbericht konnte nicht abgerufen werden</string>
     <string name="title_search_suggestion">Suchvorschlag</string>
     <string name="title_search_results">Suchergebnisse</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Eine App auswählen, um weitere Details anzuzeigen</string>
     <string name="action_filter_no_ads">Ohne Werbung</string>
     <string name="action_filter_no_gms">Ohne Play-Dienste</string>
+    <string name="manual_download_version_error">Der Versionscode darf nur Ziffern enthalten</string>
 </resources>
