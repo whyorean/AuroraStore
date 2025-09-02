@@ -273,7 +273,7 @@
     <string name="access_denied_using_vpn">Käyttö estetty! Onko käytössäsi VPN tai Tor\?</string>
     <string name="bad_request">Sisäinen virhe! Yritä uudelleen myöhemmin</string>
     <string name="failed_generating_session">Istunnon luominen epäonnistui, virhekoodi: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="login_rate_limited">Ups, käyttösi on rajoitettu</string>
+    <string name="login_rate_limited">Käyttöäsi on rajoitettu</string>
     <string name="server_unreachable">Palvelimeen ei saada yhteyttä</string>
     <string name="check_connectivity">Tarkista verkkoyhteys</string>
     <string name="app_language">Sovelluksen kieli</string>
@@ -443,4 +443,19 @@
     <string name="microg_license_agreement">Lue microG:n lisenssi ja käyttöehdot</string>
     <string name="microg_website">Vieraile microG-projektin kotisivuilla</string>
     <string name="onboarding_gms_microg">microG on ilmainen ja avoimen lähdekoodin uudelleentoteutus, joka tarjoaa alkuperäistä vastaavan toiminnallisuuden sovelluksille, jotka tarvitset Google Play Palveluita toimiakseen.\n\nmicroG luo sovelluksille pääsyn kyseisiin Googlen API:in, parantaen yhteensopivuutta käyttäjille sekä tarjoten samalla yksityisyyshyötyjä.\n\nmicroG käynnistyy automaattisesti taustalla kun avaat sovelluksia, jotka ovat riippuvaisia Google Play Palveluista.</string>
+    <string name="details_data_safety_collect">Tiedot, joita tämä sovellus saattaa kerätä</string>
+    <string name="details_data_safety_collect_none">Kehittäjän mukaan tämä sovellus ei kerää käyttäjätietoja.</string>
+    <string name="details_data_safety_shared">Data, jota tämä sovellus saattaa jakaa</string>
+    <string name="details_data_safety_share_none">Kehittäjän mukaan tämä sovellus ei jaa käyttäjätietoja muiden yritysten tai organisaatioden kanssa.</string>
+    <string name="exodus_tracker_desc">Tämä versio sovelluksesta saattaa pitää sisällään seuraimia, joita ei vielä löydy Exodus Privacy:n tietokannasta.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> tunnettu(a) seurain(ta) löydetty kohteesta <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="manual_download_version_error">Versiokoodi voi pitää sisällään vain numeroita</string>
+    <string name="details_more_info">Lisätietoja</string>
+    <string name="details_more_target_api">Kohteet</string>
+    <string name="details_more_package_name">Paketin nimi</string>
+    <string name="details_more_content_rating">Ikäkohderyhmä</string>
+    <string name="select_app_for_details">Valitse sovellus lisätietojen näyttämiseksi</string>
+    <string name="action_filter_no_ads">Ei mainoksia</string>
+    <string name="action_filter_no_gms">Ei Play-palveluita</string>
+    <string name="no_description">Ei kuvausta saatavilla</string>
 </resources>
