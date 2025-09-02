@@ -275,7 +275,7 @@
     <string name="failed_to_fetch_report">Mislukt bij het ophalen van privacyrapport</string>
     <string name="server_unreachable">Server onbereikbaar</string>
     <string name="failed_generating_session">Sessie genereren mislukt, foutcode: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="login_rate_limited">Oeps, je bent in snelheid beperkt</string>
+    <string name="login_rate_limited">Je hebt een limiettarief</string>
     <string name="access_denied_using_vpn">Toegang geweigerd! Gebruik je een VPN of Tor\?</string>
     <string name="bad_request">Interne fout! Probeer het opnieuw na enige tijd</string>
     <string name="failed_to_generate_session">Sessie kan niet worden gegenereerd</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Selecteer een app om meer details te bekijken</string>
     <string name="action_filter_no_ads">Geen advertenties</string>
     <string name="action_filter_no_gms">Geen play services</string>
+    <string name="manual_download_version_error">Versiecode mag alleen cijfers bevatten</string>
 </resources>
