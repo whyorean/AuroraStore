@@ -273,7 +273,7 @@
     <string name="failed_to_fetch_report">Échec de récupération du rapport sur la protection des renseignements personnels</string>
     <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor ?</string>
     <string name="bad_request">Erreur interne ! Réessayez plus tard</string>
-    <string name="login_rate_limited">Oups, votre débit est limité</string>
+    <string name="login_rate_limited">Votre débit est limité</string>
     <string name="server_unreachable">Impossible d’accéder au serveur</string>
     <string name="app_links_desc">Autoriser Aurora Store à ouvrir les liens pris en charge</string>
     <string name="check_connectivity">Vérifiez votre connexion Internet</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Choisissez une appli pour afficher plus de détails</string>
     <string name="action_filter_no_ads">Aucune publicité</string>
     <string name="action_filter_no_gms">Pas de Services Play</string>
+    <string name="manual_download_version_error">La version du code ne peut comporter que des chiffres</string>
 </resources>
