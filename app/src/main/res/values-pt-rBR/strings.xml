@@ -272,7 +272,7 @@
     <string name="failed_to_fetch_report">Falha ao obter o relatório de privacidade</string>
     <string name="access_denied_using_vpn">Acesso negado! Você está usando uma VPN ou o Tor?</string>
     <string name="bad_request">Erro interno! Tente de novo mais tarde</string>
-    <string name="login_rate_limited">Opa, você foi limitado</string>
+    <string name="login_rate_limited">Você foi limitado</string>
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="app_language">Idioma do app</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Selecione um app para mais detalhes</string>
     <string name="action_filter_no_ads">Sem anúncios</string>
     <string name="action_filter_no_gms">Sem play services</string>
+    <string name="manual_download_version_error">O código de versão só pode conter dígitos</string>
 </resources>
