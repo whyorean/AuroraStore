@@ -455,4 +455,7 @@
     <string name="exodus_report_trackers"><xliff:g id="app_version_name">%2$s</xliff:g> içinde bilinen <xliff:g id="number_of_trackers">%1$d</xliff:g> izleyici bulundu</string>
     <string name="no_description">Açıklama yok</string>
     <string name="details_more_content_rating">İçerik derecelendirme</string>
+    <string name="manual_download_version_error">Sürüm kodu yalnızca rakam içerebilir</string>
+    <string name="action_filter_no_ads">Reklam yok</string>
+    <string name="action_filter_no_gms">Play hizmetleri yok</string>
 </resources>
