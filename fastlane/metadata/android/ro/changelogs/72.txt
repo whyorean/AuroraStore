@@ -1,0 +1,5 @@
+• Versiunea Android minimă acceptată este acum Android 6.0
+• S-a trecut la tema expresivă Material3
+• Suport îmbunătățit pentru dispozitivele cu ecran larg
+• S-a rezolvat o problemă în care limbajul ebraic nu a fost stabilit în mod corespunzător cu limbajul per aplicație
+• Funcționalitate restabilită pentru filtrele de căutare

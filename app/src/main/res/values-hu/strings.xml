@@ -254,7 +254,7 @@
     <string name="failed_to_fetch_report">Nem sikerült lekérni az adatvédelmi jelentést</string>
     <string name="access_denied_using_vpn">Hozzáférés megtagadva! VPN-t vagy Tort használ?</string>
     <string name="bad_request">Belső hiba! Próbálja újra később</string>
-    <string name="login_rate_limited">Hoppá, korlátozásra került</string>
+    <string name="login_rate_limited">Korlátozva lett</string>
     <string name="expand">Bővebben</string>
     <string name="search_hint">Alkalmazások és játékok keresése</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Válasszon egy alkalmazást a további részletekért</string>
     <string name="action_filter_no_ads">Nincsenek hirdetések</string>
     <string name="action_filter_no_gms">Nincsenek Google Play-szolgáltatások</string>
+    <string name="manual_download_version_error">A verziókód csak számjegyeket tartalmazhat</string>
 </resources>

@@ -271,7 +271,7 @@
     <string name="title_search_results">Результати пошуку</string>
     <string name="failed_to_fetch_report">Не вдалось отримати звіт про приватність</string>
     <string name="access_denied_using_vpn">У доступі відмовлено! Ви використовуєте VPN або Tor\?</string>
-    <string name="login_rate_limited">Халепа, забагато спроб входу</string>
+    <string name="login_rate_limited">Ви обмежені тарифом</string>
     <string name="failed_generating_session">Не вдалося створити сеанс, код помилки: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="bad_request">Внутрішня помилка! Повторіть спробу згодом</string>
     <string name="server_unreachable">Сервер недоступний</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Виберіть додаток для отримання додаткової інформації</string>
     <string name="action_filter_no_ads">Без Реклами</string>
     <string name="action_filter_no_gms">Немає ігрових сервісів</string>
+    <string name="manual_download_version_error">Код версії може містити лише цифри</string>
 </resources>

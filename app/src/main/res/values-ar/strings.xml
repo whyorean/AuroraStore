@@ -269,7 +269,7 @@
     <string name="installer_shizuku_unavailable">لم يتم تثبيت Shizuku أو إعداده بشكل صحيح.</string>
     <string name="title_search_suggestion">اقتراح البحث</string>
     <string name="bad_request">خطأ داخلي! من فضلك أعد المحاولة بعد فترة</string>
-    <string name="login_rate_limited">عفوا ، الحساب محدود</string>
+    <string name="login_rate_limited">الحساب محدود</string>
     <string name="title_search_results">نتائج البحث</string>
     <string name="failed_to_fetch_report">فشل في الحصول على تقرير الخصوصية</string>
     <string name="access_denied_using_vpn">تم رفض الوصول! هل تستخدم VPN أو Tor؟</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">اختر تطبيقًا لمزيد من التفاصيل</string>
     <string name="action_filter_no_ads">لا إعلانات</string>
     <string name="action_filter_no_gms">لا توجد خدمات play</string>
+    <string name="manual_download_version_error">يجب أن يحتوي رمز الإصدار على أرقام فقط</string>
 </resources>

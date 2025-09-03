@@ -391,7 +391,7 @@
     <string name="title_spoof_manager">Pettuse haldur</string>
     <string name="toast_spoof_applied">Seadmepettus on rakendatud.</string>
     <string name="toast_page_unavailable">Leht pole saadaval</string>
-    <string name="login_rate_limited">Vabandust, liiga palju sisselogimiskatseid</string>
+    <string name="login_rate_limited">Liiga palju sisselogimiskatseid</string>
     <string name="android_market_desc">Android Market oli Android-seadmetele mõeldud veebipood, mis lõpetas 2017. aastal.</string>
     <string name="session_installer_subtitle">Seansipõhine paigaldaja komplekteeritud/split APK-de jaoks</string>
     <string name="session_installer_desc">Soovitatav, sisseehitatud ja toetab kõiki Androidi versioone</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Üksikasjade nägemiseks vali rakendus</string>
     <string name="action_filter_no_ads">Pole reklaame</string>
     <string name="action_filter_no_gms">Ei vaja Google Play teenuseid</string>
+    <string name="manual_download_version_error">Versiooni koodis võib olla vaid numbreid</string>
 </resources>

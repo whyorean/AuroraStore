@@ -270,7 +270,7 @@
     <string name="title_search_suggestion">Podpowiedzi wyszukiwania</string>
     <string name="access_denied_using_vpn">Odmowa dostępu! Czy używasz VPN lub Tor\?</string>
     <string name="bad_request">Błąd wewnętrzny! Spróbuj ponownie później</string>
-    <string name="login_rate_limited">Ups, masz ograniczoną liczbę żądań</string>
+    <string name="login_rate_limited">Masz ograniczoną liczbę żądań</string>
     <string name="server_unreachable">Serwer jest niedostępny</string>
     <string name="failed_generating_session">Nie udało się wygenerować sesji, kod błędu: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="title_search_results">Wyniki wyszukiwania</string>
@@ -457,4 +457,5 @@
     <string name="exodus_tracker_desc">Ta wersja aplikacji może zawierać więcej elementów śledzących, których nie ma jeszcze w bazie danych Exodus Privacy.</string>
     <string name="action_filter_no_ads">Bez reklam</string>
     <string name="action_filter_no_gms">Bez usług Google Play</string>
+    <string name="manual_download_version_error">Kod wersji może zawierać tylko cyfry</string>
 </resources>
