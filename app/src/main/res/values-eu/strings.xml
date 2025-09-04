@@ -283,7 +283,7 @@
     <string name="about_wiki_title">Wiki</string>
     <string name="details_ratings_title_hint">Berrikusi izenburua</string>
     <string name="about_wiki_summary">Bilatu maiz egiten diren galderen erantzunak (F.A.Q.), arazoak konpontzeko urratsak eta beste batzuk</string>
-    <string name="login_rate_limited">Ai, tasa mugatua duzu</string>
+    <string name="login_rate_limited">Tasa mugatua duzu</string>
     <string name="bad_request">Barne akatsa! Mesedez, saiatu berriro zertxobait beranduago</string>
     <string name="google_play_store_desc">Google Play,gaur egun Google Play Store eta aurretik Android Market bezala ere ezaguna.</string>
     <string name="am_installer_subtitle">Iturburu irekiko paketeen kudeatzaile osatua</string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">PantailaBilatu</string>
     <string name="action_filter_no_ads">Iragarkirik ez</string>
     <string name="action_filter_no_gms">Play zerbitzurik ez</string>
+    <string name="manual_download_version_error">Bertsio-kodeak digituak bakarrik izan ditzake</string>
 </resources>
