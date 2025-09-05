@@ -1,0 +1,5 @@
+• Minimalna wspierana wersja Androida to od teraz Android 6.0
+• Przejście na motyw Material3 Expressive
+• Poprawiono wsparcie dla urządzeń z szerokimi ekranami
+• Naprawiono błąd, przez który język hebrajski nie był ustawiany poprawnie
+• Przywrócono funkcjonalność wyszukiwania za pomocą filtrów
