@@ -252,7 +252,7 @@ dependencies {
     //Hilt
     ksp(libs.hilt.android.compiler)
     ksp(libs.hilt.androidx.compiler)
-    implementation(libs.androidx.hilt.navigation)
+    implementation(libs.androidx.hilt.viewmodel)
     implementation(libs.hilt.android.core)
     implementation(libs.hilt.androidx.work)
 
