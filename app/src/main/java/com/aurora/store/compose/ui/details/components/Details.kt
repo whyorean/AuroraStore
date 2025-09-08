@@ -30,6 +30,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.data.model.AppState
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.PackageUtil
 
@@ -37,29 +38,25 @@ import com.aurora.store.util.PackageUtil
  * Composable to display basic app details, supposed to be used as a part
  * of the Column with proper vertical arrangement spacing in the AppDetailsScreen.
  * @param app App to show details about
- * @param progress Ongoing progress percentage out of 100, for e.g. 50.0
- * @param inProgress Whether there is some ongoing progress related to the app
+ * @param state State of the app
  * @param onNavigateToDetailsDevProfile Callback when the developer name is tapped
- * @param isUpdatable Whether the app has a valid update available
  */
 @Composable
 fun Details(
     app: App,
-    progress: Float = 0F,
-    inProgress: Boolean = false,
+    state: AppState = AppState.Unavailable,
     onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {},
-    isUpdatable: Boolean = false,
-    speed: Long = 0,
-    timeRemaining: Long = 0
 ) {
     val context = LocalContext.current
+    val speed = if (state is AppState.Downloading) state.speed else 0
+    val timeRemaining = if (state is AppState.Downloading) state.timeRemaining else 0
 
     Row(modifier = Modifier.fillMaxWidth()) {
         AnimatedAppIconComposable(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
             iconUrl = app.iconArtwork.url,
-            inProgress = inProgress,
-            progress = progress
+            inProgress = state.inProgress(),
+            progress = state.progress()
         )
         Column(modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small))) {
             Text(
@@ -78,13 +75,14 @@ fun Details(
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = when {
-                    inProgress -> {
+                text = when (state) {
+                    is AppState.Installing,
+                    is AppState.Downloading -> {
                         "${Formatter.formatShortFileSize(context, speed)}/s" +
                                 ", " + CommonUtil.getETAString(context, timeRemaining)
                     }
 
-                    isUpdatable -> {
+                    is AppState.Updatable -> {
                         stringResource(
                             R.string.version_update,
                             PackageUtil.getInstalledVersionName(context, app.packageName),
@@ -92,6 +90,10 @@ fun Details(
                             app.versionName,
                             app.versionCode
                         )
+                    }
+
+                    is AppState.Installed -> {
+                        stringResource(R.string.version, state.versionName, state.versionCode)
                     }
 
                     else -> {

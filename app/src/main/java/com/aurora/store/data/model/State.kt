@@ -57,7 +57,7 @@ sealed class AppState {
 
     data class Installing(val progress: Float) : AppState()
     data class Error(val message: String?) : AppState()
-    data object Installed : AppState()
+    data class Installed(val versionName: String, val versionCode: Long) : AppState()
     data object Archived : AppState()
     data object Updatable : AppState()
     data object Unavailable : AppState()

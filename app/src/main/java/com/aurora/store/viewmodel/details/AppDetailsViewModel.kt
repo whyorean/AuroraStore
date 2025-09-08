@@ -8,6 +8,7 @@ package com.aurora.store.viewmodel.details
 
 import android.content.Context
 import android.util.Log
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
@@ -135,7 +136,18 @@ class AppDetailsViewModel @Inject constructor(
 
     private val defaultAppState: AppState
         get() = when {
-            isInstalled -> if (hasValidUpdate) AppState.Updatable else AppState.Installed
+            isInstalled -> {
+                if (hasValidUpdate) {
+                    AppState.Updatable
+                } else {
+                    val info = PackageUtil.getPackageInfo(context, app.value!!.packageName)
+                    AppState.Installed(
+                        versionName = info.versionName ?: String(),
+                        versionCode = PackageInfoCompat.getLongVersionCode(info)
+                    )
+                }
+            }
+
             else -> if (isArchived) AppState.Archived else AppState.Unavailable
         }
 
