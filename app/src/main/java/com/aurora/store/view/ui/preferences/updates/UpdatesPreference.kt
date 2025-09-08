@@ -31,6 +31,7 @@ import androidx.preference.SwitchPreferenceCompat
 import com.aurora.store.R
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.UpdateMode
+import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
@@ -63,7 +64,7 @@ class UpdatesPreference : BasePreferenceFragment() {
                 }
 
                 UpdateMode.CHECK_AND_NOTIFY -> {
-                    if (permissionProvider.isGranted(PermissionType.POST_NOTIFICATIONS)) {
+                    if (isGranted(requireContext(), PermissionType.POST_NOTIFICATIONS)) {
                         handleAutoUpdateDependentPrefs(true)
                         viewModel.updateHelper.scheduleAutomatedCheck()
                         true
@@ -81,7 +82,7 @@ class UpdatesPreference : BasePreferenceFragment() {
                 }
 
                 UpdateMode.CHECK_AND_INSTALL -> {
-                    if (permissionProvider.isGranted(PermissionType.DOZE_WHITELIST)) {
+                    if (isGranted(requireContext(), PermissionType.DOZE_WHITELIST)) {
                         handleAutoUpdateDependentPrefs(true)
                         viewModel.updateHelper.scheduleAutomatedCheck()
                         true

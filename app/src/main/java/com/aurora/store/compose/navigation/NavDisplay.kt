@@ -18,6 +18,7 @@ import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.aurora.store.compose.ui.commons.BlacklistScreen
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
+import com.aurora.store.compose.ui.onboarding.PermissionsScreen
 import com.aurora.store.compose.ui.search.SearchScreen
 
 /**
@@ -67,6 +68,12 @@ fun NavDisplay(startDestination: NavKey) {
                     onNavigateToAppDetails = { packageName ->
                         backstack.add(Screen.AppDetails(packageName))
                     }
+                )
+            }
+
+            entry<Screen.Permissions> { screen ->
+                PermissionsScreen(
+                    onNavigateUp = { onNavigateUp() },
                 )
             }
         }

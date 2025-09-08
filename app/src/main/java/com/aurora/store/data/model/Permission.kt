@@ -24,6 +24,7 @@ data class Permission(
     val title: String,
     val subtitle: String,
     val optional: Boolean = false,
+    val isGranted: Boolean = false
 ) {
     override fun equals(other: Any?): Boolean {
         return when (other) {

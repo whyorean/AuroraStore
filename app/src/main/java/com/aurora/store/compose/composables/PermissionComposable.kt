@@ -29,14 +29,12 @@ import com.aurora.store.data.model.PermissionType
  * Composable to display permission details in a list
  * @param modifier The modifier to be applied to the composable
  * @param permission [Permission] to display
- * @param isGranted If the permission has been granted
  * @param onAction Callback when the user clicks the action button
  */
 @Composable
 fun PermissionComposable(
     modifier: Modifier = Modifier,
     permission: Permission,
-    isGranted: Boolean = false,
     onAction: () -> Unit = {}
 ) {
     Row(
@@ -58,9 +56,9 @@ fun PermissionComposable(
                 style = MaterialTheme.typography.bodySmall
             )
         }
-        TextButton(onClick = onAction, enabled = !isGranted) {
+        TextButton(onClick = onAction, enabled = !permission.isGranted) {
             Text(
-                text = if (isGranted) {
+                text = if (permission.isGranted) {
                     stringResource(R.string.action_granted)
                 } else {
                     stringResource(R.string.action_grant)

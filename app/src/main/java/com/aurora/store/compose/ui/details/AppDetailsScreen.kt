@@ -77,10 +77,12 @@ import com.aurora.store.compose.ui.details.components.Tags
 import com.aurora.store.compose.ui.details.components.Testing
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
+import com.aurora.store.compose.ui.onboarding.PermissionsScreen
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
+import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
@@ -237,6 +239,16 @@ private fun ScreenContentApp(
         }
     }
 
+    fun onInstall() {
+        if (isPermittedToInstall(context, app)) {
+            onDownload()
+            onNavigateBack()
+        } else {
+            context.toast(R.string.permissions_denied)
+            showExtraPane(Screen.Permissions)
+        }
+    }
+
     @Composable
     fun SetupMenu() {
         AppDetailsMenu(isInstalled = app.isInstalled, isFavorite = isFavorite) { menuItem ->
@@ -271,7 +283,7 @@ private fun ScreenContentApp(
                 Actions(
                     primaryActionDisplayName = stringResource(R.string.action_update),
                     secondaryActionDisplayName = stringResource(R.string.action_uninstall),
-                    onPrimaryAction = onDownload,
+                    onPrimaryAction = ::onInstall,
                     onSecondaryAction = onUninstall
                 )
             }
@@ -295,7 +307,7 @@ private fun ScreenContentApp(
                 Actions(
                     primaryActionDisplayName = primaryActionName,
                     secondaryActionDisplayName = stringResource(R.string.title_manual_download),
-                    onPrimaryAction = onDownload,
+                    onPrimaryAction = ::onInstall,
                     onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
                 )
             }
@@ -474,6 +486,11 @@ private fun ScreenContentApp(
                             publisherId = app.developerName,
                             onNavigateUp = ::onNavigateBack,
                             onNavigateToAppDetails = { onNavigateToAppDetails(it) }
+                        )
+
+                        is Screen.Permissions -> PermissionsScreen(
+                            onNavigateUp = ::onNavigateBack,
+                            onPermissionCallback = { onInstall() }
                         )
 
                         else -> {}

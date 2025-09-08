@@ -32,4 +32,7 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data object Search : Screen()
+
+    @Serializable
+    data object Permissions : Screen()
 }

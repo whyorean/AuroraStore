@@ -33,6 +33,7 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.databinding.FragmentOnboardingPermissionsBinding
 import com.aurora.store.view.epoxy.views.TextDividerViewModel_
 import com.aurora.store.view.epoxy.views.preference.PermissionViewModel_
@@ -160,7 +161,7 @@ class PermissionsFragment : BaseFragment<FragmentOnboardingPermissionsBinding>()
         return PermissionViewModel_()
             .id(permission.type.name)
             .permission(permission)
-            .isGranted(permissionProvider.isGranted(permission.type))
+            .isGranted(isGranted(requireContext(), permission.type))
             .click { _ ->
                 permissionProvider.request(permission.type) {
                     if (it) updateController()

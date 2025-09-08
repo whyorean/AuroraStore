@@ -5,8 +5,6 @@
 
 package com.aurora.store.compose.composables
 
-import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -27,24 +25,21 @@ import com.aurora.store.R
  * @see ActionHeaderComposable
  */
 @Composable
-fun TextDividerComposable(modifier: Modifier = Modifier, @StringRes title: Int) {
-    Row(
+fun TextDividerComposable(modifier: Modifier = Modifier, title: String) {
+    Text(
         modifier = modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_small))
-    ) {
-        Text(
-            text = stringResource(title).uppercase(),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primary,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
-    }
+            .padding(dimensionResource(R.dimen.padding_small)),
+        text = title.uppercase(),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.primary,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun TextDividerComposablePreview() {
-    TextDividerComposable(title = R.string.item_optional)
+    TextDividerComposable(title = stringResource(R.string.item_optional))
 }

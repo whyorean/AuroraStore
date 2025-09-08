@@ -37,6 +37,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
@@ -192,7 +193,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
     private fun updateSingle(update: Update) {
         if (update.fileList.requiresObbDir()) {
-            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+            if (isGranted(requireContext(), PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(update)
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
@@ -207,7 +208,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
     private fun updateAll() {
         viewModel.updateAllEnqueued = true
         if (viewModel.updates.value?.any { it.fileList.requiresObbDir() } == true) {
-            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+            if (isGranted(requireContext(), PermissionType.STORAGE_MANAGER)) {
                 viewModel.downloadAll()
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
