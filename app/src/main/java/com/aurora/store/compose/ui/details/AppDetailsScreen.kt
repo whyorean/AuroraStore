@@ -49,6 +49,7 @@ import com.aurora.Constants.SHARE_URL
 import com.aurora.extensions.appInfo
 import com.aurora.extensions.browse
 import com.aurora.extensions.requiresGMS
+import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
@@ -80,6 +81,7 @@ import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.compose.ui.onboarding.PermissionsScreen
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.AppState
+import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
@@ -244,8 +246,12 @@ private fun ScreenContentApp(
             onDownload()
             onNavigateBack()
         } else {
-            context.toast(R.string.permissions_denied)
-            showExtraPane(Screen.Permissions)
+            val requiredPermissions = setOfNotNull(
+                PermissionType.INSTALL_UNKNOWN_APPS,
+                if (app.fileList.requiresObbDir()) PermissionType.STORAGE_MANAGER else null,
+                if (app.fileList.requiresObbDir()) PermissionType.EXTERNAL_STORAGE else null
+            )
+            showExtraPane(Screen.Permissions(requiredPermissions = requiredPermissions))
         }
     }
 
@@ -490,6 +496,7 @@ private fun ScreenContentApp(
 
                         is Screen.Permissions -> PermissionsScreen(
                             onNavigateUp = ::onNavigateBack,
+                            requiredPermissions = screen.requiredPermissions,
                             onPermissionCallback = { onInstall() }
                         )
 

@@ -55,6 +55,7 @@ private const val TAG = "PermissionsScreen"
 @Composable
 fun PermissionsScreen(
     isOnboarding: Boolean = false,
+    requiredPermissions: Set<PermissionType> = emptySet(),
     onNavigateUp: () -> Unit,
     onPermissionCallback: (type: PermissionType) -> Unit = {},
     viewModel: PermissionsViewModel = hiltViewModel()
@@ -63,7 +64,11 @@ fun PermissionsScreen(
 
     ScreenContent(
         isOnboarding = isOnboarding,
-        permissions = permissions,
+        permissions = when {
+            requiredPermissions.isEmpty() -> permissions
+            else -> permissions.filter { it.type in requiredPermissions }
+                .map { permission -> permission.copy(optional = false) }
+        },
         onNavigateUp = onNavigateUp,
         onPermissionCallback = { type ->
             viewModel.refreshPermissionsList()
@@ -97,9 +102,16 @@ private fun ScreenContent(
         )
     )
 
+    fun onResult() {
+        permissionRequested?.let {
+            if (!isGranted(context, it)) context.toast(R.string.permissions_denied)
+            onPermissionCallback(it)
+        }
+    }
+
     val intentLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult(),
-        onResult = { permissionRequested?.let { onPermissionCallback(it) } }
+        onResult = { onResult() }
     )
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission(),
@@ -109,7 +121,7 @@ private fun ScreenContent(
                     intentLauncher.launch(intentMap[PermissionType.STORAGE_MANAGER]!!)
                 }
 
-                else -> permissionRequested?.let { onPermissionCallback(it) }
+                else -> onResult()
             }
         }
     )

@@ -7,6 +7,7 @@ package com.aurora.store.compose.navigation
 
 import android.os.Parcelable
 import androidx.navigation3.runtime.NavKey
+import com.aurora.store.data.model.PermissionType
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 
@@ -34,5 +35,5 @@ sealed class Screen : NavKey, Parcelable {
     data object Search : Screen()
 
     @Serializable
-    data object Permissions : Screen()
+    data class Permissions(val requiredPermissions: Set<PermissionType> = emptySet()) : Screen()
 }
