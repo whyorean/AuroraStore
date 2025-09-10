@@ -269,7 +269,7 @@
     <string name="installer_shizuku_unavailable">Shizuku no está instalado o configurado correctamente.</string>
     <string name="title_search_results">Resultados de la búsqueda</string>
     <string name="bad_request">¡Error interno! Por favor, inténtalo de nuevo más tarde</string>
-    <string name="login_rate_limited">Ups, demasiado intentos</string>
+    <string name="login_rate_limited">Límite de solicitudes alcanzado</string>
     <string name="server_unreachable">Servidor no accesible</string>
     <string name="title_search_suggestion">Sugerencia de búsqueda</string>
     <string name="failed_to_fetch_report">No se ha podido obtener el informe de privacidad</string>
@@ -457,4 +457,5 @@
     <string name="action_filter_no_gms">Sin play services</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permisos</string>
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conocidos encontrados en <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="manual_download_version_error">El código de versión solo puede contener números</string>
 </resources>
