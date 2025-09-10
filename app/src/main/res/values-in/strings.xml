@@ -271,7 +271,7 @@
     <string name="title_search_results">Hasil pencarian</string>
     <string name="access_denied_using_vpn">Akses ditolak! Apakah Anda menggunakan VPN atau Tor\?</string>
     <string name="bad_request">Kesalahan internal! Silakan coba lagi setelah beberapa saat</string>
-    <string name="login_rate_limited">Ups, kuota Anda dibatasi</string>
+    <string name="login_rate_limited">Kuota Anda dibatasi</string>
     <string name="failed_to_fetch_report">Gagal mengambil laporan privasi</string>
     <string name="server_unreachable">Server tidak dapat dijangkau</string>
     <string name="failed_generating_session">Gagal membuat sesi, kode kesalahan: <xliff:g id="status_code">%1$d</xliff:g></string>
@@ -457,4 +457,5 @@
     <string name="select_app_for_details">Pilih aplikasi untuk detail lebih lanjut</string>
     <string name="action_filter_no_ads">Tidak ada iklan</string>
     <string name="action_filter_no_gms">Tidak ada layanan google play</string>
+    <string name="manual_download_version_error">Kode versi hanya dapat berisi angka</string>
 </resources>
