@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.viewmodel.onboarding
+package com.aurora.store.viewmodel.commons
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -14,7 +14,7 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
-import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
+import com.aurora.store.data.providers.PermissionProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,14 +40,20 @@ class PermissionsViewModel @Inject constructor(
                     context.getString(R.string.onboarding_permission_installer_legacy_desc)
                 },
                 optional = false,
-                isGranted = isGranted(context, PermissionType.INSTALL_UNKNOWN_APPS)
+                isGranted = PermissionProvider.Companion.isGranted(
+                    context,
+                    PermissionType.INSTALL_UNKNOWN_APPS
+                )
             ),
             Permission(
                 type = PermissionType.DOZE_WHITELIST,
                 title = context.getString(R.string.onboarding_permission_doze),
                 subtitle = context.getString(R.string.onboarding_permission_doze_desc),
                 optional = true,
-                isGranted = isGranted(context, PermissionType.DOZE_WHITELIST)
+                isGranted = PermissionProvider.Companion.isGranted(
+                    context,
+                    PermissionType.DOZE_WHITELIST
+                )
             )
         )
 
@@ -58,7 +64,10 @@ class PermissionsViewModel @Inject constructor(
                     title = context.getString(R.string.onboarding_permission_esm),
                     subtitle = context.getString(R.string.onboarding_permission_esa_desc),
                     optional = false,
-                    isGranted = isGranted(context, PermissionType.STORAGE_MANAGER)
+                    isGranted = PermissionProvider.Companion.isGranted(
+                        context,
+                        PermissionType.STORAGE_MANAGER
+                    )
                 )
             )
         } else {
@@ -68,7 +77,10 @@ class PermissionsViewModel @Inject constructor(
                     title = context.getString(R.string.onboarding_permission_esa),
                     subtitle = context.getString(R.string.onboarding_permission_esa_desc),
                     optional = false,
-                    isGranted = isGranted(context, PermissionType.EXTERNAL_STORAGE)
+                    isGranted = PermissionProvider.Companion.isGranted(
+                        context,
+                        PermissionType.EXTERNAL_STORAGE
+                    )
                 )
             )
         }
@@ -80,7 +92,10 @@ class PermissionsViewModel @Inject constructor(
                     title = context.getString(R.string.onboarding_permission_notifications),
                     subtitle = context.getString(R.string.onboarding_permission_notifications_desc),
                     optional = true,
-                    isGranted = isGranted(context, PermissionType.POST_NOTIFICATIONS)
+                    isGranted = PermissionProvider.Companion.isGranted(
+                        context,
+                        PermissionType.POST_NOTIFICATIONS
+                    )
                 )
             )
         }
@@ -92,7 +107,10 @@ class PermissionsViewModel @Inject constructor(
                     title = context.getString(R.string.app_links_title),
                     subtitle = context.getString(R.string.app_links_desc),
                     optional = true,
-                    isGranted = isGranted(context, PermissionType.APP_LINKS)
+                    isGranted = PermissionProvider.Companion.isGranted(
+                        context,
+                        PermissionType.APP_LINKS
+                    )
                 ),
             )
         }
@@ -102,7 +120,11 @@ class PermissionsViewModel @Inject constructor(
 
     fun refreshPermissionsList() {
         _permissions.value = _permissions.value.map { permission ->
-            permission.copy(isGranted = isGranted(context, permission.type))
+            permission.copy(isGranted = PermissionProvider.Companion.isGranted(
+                context,
+                permission.type
+            )
+            )
         }
     }
 }

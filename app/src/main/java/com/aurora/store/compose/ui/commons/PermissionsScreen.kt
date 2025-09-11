@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.ui.onboarding
+package com.aurora.store.compose.ui.commons
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -47,7 +47,7 @@ import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.viewmodel.onboarding.PermissionsViewModel
+import com.aurora.store.viewmodel.commons.PermissionsViewModel
 import kotlin.random.Random
 
 private const val TAG = "PermissionsScreen"
