@@ -49,6 +49,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -142,7 +143,13 @@ private fun ScreenContent(
                 searchBarState = searchBarState,
                 textFieldState = textFieldState,
                 onSearch = { query -> onRequestSearch(query) },
-                placeholder = { Text(text = stringResource(R.string.search_hint)) },
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.search_hint),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                },
                 leadingIcon = {
                     IconButton(onClick = onNavigateUp) {
                         Icon(

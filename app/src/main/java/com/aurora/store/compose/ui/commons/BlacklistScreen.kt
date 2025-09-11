@@ -14,12 +14,30 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.input.clearText
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
+import androidx.compose.material3.AppBarWithSearch
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -28,11 +46,12 @@ import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composables.BlackListComposable
-import com.aurora.store.compose.composables.SearchAppBarComposable
 import com.aurora.store.compose.menu.BlacklistMenu
 import com.aurora.store.compose.menu.items.BlacklistMenuItem
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.all.BlacklistViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 @Composable
@@ -75,8 +94,12 @@ private fun ScreenContent(
     onWhitelistAll: () -> Unit = {},
     onSearch: (query: String) -> Unit = {}
 ) {
-
     val context = LocalContext.current
+    val textFieldState = rememberTextFieldState()
+    val searchBarState = rememberSearchBarState()
+    val focusRequester = remember { FocusRequester() }
+    val coroutineScope = rememberCoroutineScope()
+
     val docImportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
         onResult = {
@@ -98,6 +121,11 @@ private fun ScreenContent(
         }
     )
 
+    LaunchedEffect(key1 = textFieldState) {
+        snapshotFlow { textFieldState.text.toString() }
+            .collectLatest { query -> onSearch(query) }
+    }
+
     @Composable
     fun SetupMenu() {
         BlacklistMenu { menuItem ->
@@ -117,16 +145,67 @@ private fun ScreenContent(
         }
     }
 
-    Scaffold(
-        topBar = {
-            SearchAppBarComposable(
-                onNavigateUp = onNavigateUp,
-                actions = { if (!packages.isNullOrEmpty()) SetupMenu() },
-                searchHint = R.string.search_hint,
-                onSearch = { query -> onSearch(query) }
+    fun onRequestSearch(query: String) {
+        textFieldState.setTextAndPlaceCursorAtEnd(query.trim())
+        coroutineScope.launch { searchBarState.animateToCollapsed() }
+        onSearch(textFieldState.text.toString())
+    }
+
+    @Composable
+    fun SearchBar() {
+        val inputField = @Composable {
+            SearchBarDefaults.InputField(
+                modifier = Modifier.focusRequester(focusRequester),
+                searchBarState = searchBarState,
+                textFieldState = textFieldState,
+                onSearch = { query -> onRequestSearch(query) },
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.search_hint),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                },
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_round_search),
+                        contentDescription = stringResource(R.string.action_search)
+                    )
+                },
+                trailingIcon = {
+                    if (textFieldState.text.isNotBlank()) {
+                        IconButton(
+                            onClick = {
+                                textFieldState.clearText()
+                                focusRequester.requestFocus()
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_cancel),
+                                contentDescription = stringResource(R.string.action_clear)
+                            )
+                        }
+                    }
+                }
             )
         }
-    ) { paddingValues ->
+
+        AppBarWithSearch(
+            state = searchBarState,
+            inputField = inputField,
+            navigationIcon = {
+                IconButton(onClick = onNavigateUp) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_arrow_back),
+                        contentDescription = stringResource(R.string.action_back)
+                    )
+                }
+            },
+            actions = { if (!packages.isNullOrEmpty()) SetupMenu() }
+        )
+    }
+
+    Scaffold(topBar = { SearchBar() }) { paddingValues ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
