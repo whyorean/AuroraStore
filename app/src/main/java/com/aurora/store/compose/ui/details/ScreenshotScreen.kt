@@ -21,8 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.window.core.layout.WindowSizeClass
 import com.aurora.extensions.adaptiveNavigationIcon
+import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.compose.composables.TopAppBarComposable
@@ -40,11 +40,8 @@ fun ScreenshotScreen(
     val app by viewModel.app.collectAsStateWithLifecycle()
 
     val topAppBarTitle = when {
-        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            stringResource(R.string.details_more_about_app)
-        }
-
-        else -> app!!.displayName
+        windowAdaptiveInfo.isWindowCompact -> app!!.displayName
+        else -> stringResource(R.string.details_more_about_app)
     }
 
     ScreenContent(

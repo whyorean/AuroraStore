@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.util.fastForEach
-import androidx.window.core.layout.WindowSizeClass
+import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Rating
 import com.aurora.gplayapi.data.models.Review
@@ -65,11 +65,13 @@ fun RatingAndReviews(
     }
 
     val avgRating = when {
-        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            String.format(Locale.getDefault(), "%.1f / 5.0", rating.average)
+        windowAdaptiveInfo.isWindowCompact -> {
+            String.format(Locale.getDefault(), "%.1f", rating.average)
         }
 
-        else -> String.format(Locale.getDefault(), "%.1f", rating.average)
+        else -> {
+            String.format(Locale.getDefault(), "%.1f / 5.0", rating.average)
+        }
     }
 
     HeaderComposable(

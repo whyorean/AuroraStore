@@ -13,14 +13,18 @@ import androidx.window.core.layout.WindowSizeClass
 import com.aurora.store.R
 
 /**
+ * Whether the device width is compact or not
+ *
+ */
+val WindowAdaptiveInfo.isWindowCompact: Boolean
+    get() = !windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
+
+/**
  * Returns navigation icon for adaptive screens such as extra pane
  */
 val WindowAdaptiveInfo.adaptiveNavigationIcon: Painter
     @Composable
     get() = when {
-        windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            painterResource(R.drawable.ic_cancel)
-        }
-
-        else -> painterResource(R.drawable.ic_arrow_back)
+        isWindowCompact -> painterResource(R.drawable.ic_arrow_back)
+        else -> painterResource(R.drawable.ic_cancel)
     }

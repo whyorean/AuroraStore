@@ -47,8 +47,8 @@ import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.window.core.layout.WindowSizeClass
 import com.aurora.extensions.adaptiveNavigationIcon
+import com.aurora.extensions.isWindowCompact
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -70,11 +70,8 @@ fun ManualDownloadScreen(
 
     val app by viewModel.app.collectAsStateWithLifecycle()
     val topAppBarTitle = when {
-        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            stringResource(R.string.title_manual_download)
-        }
-
-        else -> app!!.displayName
+        windowAdaptiveInfo.isWindowCompact -> app!!.displayName
+        else -> stringResource(R.string.title_manual_download)
     }
 
     LaunchedEffect(key1 = Unit) {

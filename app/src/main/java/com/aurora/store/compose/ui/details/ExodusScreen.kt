@@ -22,10 +22,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.window.core.layout.WindowSizeClass
 import com.aurora.Constants.EXODUS_REPORT_URL
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.browse
+import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.HeaderComposable
@@ -51,11 +51,8 @@ fun ExodusScreen(
     val trackers by detailsExodusViewModel.trackers.collectAsStateWithLifecycle()
 
     val topAppBarTitle = when {
-        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            stringResource(R.string.details_privacy)
-        }
-
-        else -> app!!.displayName
+        windowAdaptiveInfo.isWindowCompact -> app!!.displayName
+        else -> stringResource(R.string.details_privacy)
     }
 
     ScreenContent(

@@ -21,7 +21,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.window.core.layout.WindowSizeClass
+import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
 
 /**
@@ -50,11 +50,8 @@ fun Actions(
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
     ) {
         val buttonWidthModifier = when {
-            windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-                Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
-            }
-
-            else -> Modifier.weight(1F)
+            windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
+            else -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
         }
 
         FilledTonalButton(

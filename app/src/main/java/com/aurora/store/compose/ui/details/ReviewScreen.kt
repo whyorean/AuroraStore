@@ -37,9 +37,9 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import androidx.window.core.layout.WindowSizeClass
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
+import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composables.ErrorComposable
@@ -67,11 +67,8 @@ fun ReviewScreen(
     val reviews = detailsReviewViewModel.reviews.collectAsLazyPagingItems()
 
     val topAppBarTitle = when {
-        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            stringResource(R.string.details_ratings)
-        }
-
-        else -> app!!.displayName
+        windowAdaptiveInfo.isWindowCompact -> app!!.displayName
+        else -> stringResource(R.string.details_ratings)
     }
 
     ScreenContent(
