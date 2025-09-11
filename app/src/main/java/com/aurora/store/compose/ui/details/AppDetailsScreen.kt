@@ -78,7 +78,7 @@ import com.aurora.store.compose.ui.details.components.Tags
 import com.aurora.store.compose.ui.details.components.Testing
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
-import com.aurora.store.compose.ui.commons.PermissionsScreen
+import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.PermissionType
@@ -251,7 +251,7 @@ private fun ScreenContentApp(
                 if (app.fileList.requiresObbDir()) PermissionType.STORAGE_MANAGER else null,
                 if (app.fileList.requiresObbDir()) PermissionType.EXTERNAL_STORAGE else null
             )
-            showExtraPane(Screen.Permissions(requiredPermissions = requiredPermissions))
+            showExtraPane(Screen.PermissionRationale(requiredPermissions = requiredPermissions))
         }
     }
 
@@ -494,7 +494,7 @@ private fun ScreenContentApp(
                             onNavigateToAppDetails = { onNavigateToAppDetails(it) }
                         )
 
-                        is Screen.Permissions -> PermissionsScreen(
+                        is Screen.PermissionRationale -> PermissionRationaleScreen(
                             onNavigateUp = ::onNavigateBack,
                             requiredPermissions = screen.requiredPermissions,
                             onPermissionCallback = { onInstall() }

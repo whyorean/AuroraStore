@@ -47,18 +47,18 @@ import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.viewmodel.commons.PermissionsViewModel
+import com.aurora.store.viewmodel.commons.PermissionRationaleViewModel
 import kotlin.random.Random
 
 private const val TAG = "PermissionsScreen"
 
 @Composable
-fun PermissionsScreen(
+fun PermissionRationaleScreen(
     isOnboarding: Boolean = false,
     requiredPermissions: Set<PermissionType> = emptySet(),
     onNavigateUp: () -> Unit,
     onPermissionCallback: (type: PermissionType) -> Unit = {},
-    viewModel: PermissionsViewModel = hiltViewModel()
+    viewModel: PermissionRationaleViewModel = hiltViewModel()
 ) {
     val permissions by viewModel.permissions.collectAsStateWithLifecycle()
 
