@@ -1,6 +1,7 @@
 Aurora je neoficiálny FOSS klient pre Google Play s elegantným dizajnom. Obchod Aurora
 umožňuje používateľom sťahovať, aktualizovať a vyhľadávať aplikácie, ako je Obchod Play. Funguje to úplne v pohode
 so službami Google Play alebo MicroG alebo bez nich.
+
 <b>Funkcie:</b>
 • FOSS: Má licenciu GPLv3
 • Krásny dizajn: Postavený podľa najnovších smerníc Material 3

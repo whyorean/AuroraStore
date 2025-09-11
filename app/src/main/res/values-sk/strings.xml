@@ -49,7 +49,7 @@
     <string name="device_miui_title">Rozpoznané MIUI!</string>
     <string name="device_miui_subtitle">Inštalátor relácie nemôže nainštalovať aplikácie kvôli optimalizácii MIUI.</string>
     <string name="dialog_desc_native_split">Prostredníctvom natívneho inštalátora nemôžete nainštalovať pribalené (rozdelené) aplikácie. Zmeňte inštalačný program na Reláciu, Služby alebo Root.</string>
-    <string name="pref_filter_fdroid_summary">Nekontrolovať F-Droid aplikácie z aktualizácií a nainštalovaných aplikácií</string>
+    <string name="pref_filter_fdroid_summary">Nekontrolovať F-Droid aplikácie z nainštalovaných aplikácií</string>
     <string name="pref_install_mode_am">AM inštalátor</string>
     <string name="pref_vending_version_title">Google obchod verzia</string>
     <string name="pref_ui_no_for_you_desc">Zobraziť stránky pre vás na domovskej obrazovke</string>
@@ -416,7 +416,7 @@
     <string name="no_apps_available">Nie sú k dispozícii žiadne aplikácie</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> nainštalované aplikácie</string>
     <string name="pref_network_microg_login_title">Na prihlásenie do účtov použite microG</string>
-    <string name="pref_network_microg_login_desc">Pri prihlasovaní do účtov Google sa overte pomocou microG, čím si zjednodušíte prihlasovací proces.</string>
+    <string name="pref_network_microg_login_desc">Pri prihlasovaní do účtov Google sa overte pomocou microG, čím si zjednodušíte prihlasovací proces</string>
     <string name="disable">Zakázať</string>
     <string name="toast_proxy_disabled">Proxy bol úspešne deaktivovaný</string>
     <string name="pref_network_proxy_desc">Zobrazenie a správa konfigurácie servera proxy</string>
@@ -457,4 +457,5 @@
     <string name="onboarding_gms_missing">Vo vašom zariadení sme nenašli službu Google Play, viaceré populárne aplikácie ju teraz vyžadujú na správne fungovanie!</string>
     <string name="exodus_report_trackers"><xliff:g id="počet_sledovačov">%1$d</xliff:g> známy/e sledovač/e nájdené v <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
+    <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
 </resources>

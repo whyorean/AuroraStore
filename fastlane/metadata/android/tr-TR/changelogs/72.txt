@@ -1,0 +1,5 @@
+• Desteklenen en düşük Android sürümü şimdi Android 6.0
+• Material 3 Expressive temasına geçildi
+• Geniş ekranlı aygıtlar için destek iyileştirildi
+• Uygulama başı dille İbranice dilinin belirlenemediği bir hata giderildi
+• Arama süzgeçleri işlevselliği geri kazanıldı

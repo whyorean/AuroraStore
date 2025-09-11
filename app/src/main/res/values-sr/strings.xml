@@ -232,7 +232,7 @@
     <string name="title_search_suggestion">Предлог за претрагу</string>
     <string name="title_search_results">Резултати претраге</string>
     <string name="bad_request">Интерна грешка! Покушајте поново касније</string>
-    <string name="login_rate_limited">Упс, ваш налог је ограничен</string>
+    <string name="login_rate_limited">Ваш налог је ограничен</string>
     <string name="app_language">Језик апликације</string>
     <string name="requesting_new_session">Захтевање нове сесије</string>
     <string name="action_import">Увези</string>
@@ -467,4 +467,19 @@
     <string name="microg_privacy_policy">Прочитај Политику приватности microG-а</string>
     <string name="microg_license_agreement">Прочитај microG лиценцу и уговор</string>
     <string name="microg_website">Посети веб-сајт пројекта microG</string>
+    <string name="details_data_safety_collect">Подаци које ова апликација може прикупљати</string>
+    <string name="details_data_safety_collect_none">Програмер каже да ова апликација не прикупља корисничке податке.</string>
+    <string name="details_data_safety_shared">Подаци које ова апликација може да дели</string>
+    <string name="details_data_safety_share_none">Програмер каже да ова апликација не дели корисничке податке са другим компанијама или организацијама.</string>
+    <string name="exodus_tracker_desc">Ова верзија апликације може и даље да садржи више пратилаца који још нису присутни у бази података Exodus Privacy-а.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> познатих пратилаца пронађено у <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="manual_download_version_error">Код верзије може да садржи само цифре</string>
+    <string name="no_description">Нема доступног описа</string>
+    <string name="details_more_info">Више информација</string>
+    <string name="details_more_target_api">Циљеви</string>
+    <string name="details_more_package_name">Назив пакета</string>
+    <string name="details_more_content_rating">Оцена садржаја</string>
+    <string name="select_app_for_details">Изаберите апликацију за више детаља</string>
+    <string name="action_filter_no_ads">Без реклама</string>
+    <string name="action_filter_no_gms">Нема Play услуга</string>
 </resources>
