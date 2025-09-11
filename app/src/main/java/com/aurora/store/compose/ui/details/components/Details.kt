@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.details.components
 
 import android.text.format.Formatter
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -48,6 +49,8 @@ fun Details(
     onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {},
 ) {
     val context = LocalContext.current
+    val versionName = if (state is AppState.Installed) state.versionName else app.versionName
+    val versionCode = if (state is AppState.Installed) state.versionCode else app.versionCode
     val speed = if (state is AppState.Downloading) state.speed else 0
     val timeRemaining = if (state is AppState.Downloading) state.timeRemaining else 0
 
@@ -74,34 +77,32 @@ fun Details(
                 overflow = TextOverflow.Ellipsis,
                 color = MaterialTheme.colorScheme.primary
             )
-            Text(
-                text = when (state) {
-                    is AppState.Installing,
-                    is AppState.Downloading -> {
-                        "${Formatter.formatShortFileSize(context, speed)}/s" +
-                                ", " + CommonUtil.getETAString(context, timeRemaining)
-                    }
+            AnimatedContent(targetState = state::class) { cState ->
+                Text(
+                    style = MaterialTheme.typography.bodySmall,
+                    text = when (cState) {
+                        AppState.Installing::class,
+                        AppState.Downloading::class -> {
+                            "${Formatter.formatShortFileSize(context, speed)}/s" +
+                                    ", " + CommonUtil.getETAString(context, timeRemaining)
+                        }
 
-                    is AppState.Updatable -> {
-                        stringResource(
-                            R.string.version_update,
-                            PackageUtil.getInstalledVersionName(context, app.packageName),
-                            PackageUtil.getInstalledVersionCode(context, app.packageName),
-                            app.versionName,
-                            app.versionCode
-                        )
-                    }
+                        AppState.Updatable::class -> {
+                            stringResource(
+                                R.string.version_update,
+                                PackageUtil.getInstalledVersionName(context, app.packageName),
+                                PackageUtil.getInstalledVersionCode(context, app.packageName),
+                                versionName,
+                                versionCode
+                            )
+                        }
 
-                    is AppState.Installed -> {
-                        stringResource(R.string.version, state.versionName, state.versionCode)
+                        else -> {
+                            stringResource(R.string.version, versionName, versionCode)
+                        }
                     }
-
-                    else -> {
-                        stringResource(R.string.version, app.versionName, app.versionCode)
-                    }
-                },
-                style = MaterialTheme.typography.bodySmall
-            )
+                )
+            }
         }
     }
 }
