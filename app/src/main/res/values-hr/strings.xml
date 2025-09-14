@@ -3,7 +3,7 @@
     <string name="details_dev_details">Kontakt podaci programera</string>
     <string name="details_description">Opis</string>
     <string name="details_dependencies">Zavisnosti</string>
-    <string name="details_contains_ads">Sadržava oglase</string>
+    <string name="details_contains_ads">Sadrži oglase</string>
     <string name="details_changelog_unavailable">Nema dnevnika promjena</string>
     <string name="details_changelog">Dnevnik promjena</string>
     <string name="details_beta_delay">Upis može ponešto potrajati, stoga provjeri status kasnije.</string>
@@ -11,7 +11,7 @@
     <string name="details_beta_available">Želiš se pridružiti beta programu?</string>
     <string name="details_beta_subscribed">Ti si član beta programa</string>
     <string name="details_beta">Beta program</string>
-    <string name="action_whitelist">Poželjni</string>
+    <string name="action_whitelist">Popis neblokiranih</string>
     <string name="action_update_all">Aktualiziraj sve</string>
     <string name="action_update">Aktualiziraj</string>
     <string name="action_info">Informacije o aplikaciji</string>
@@ -53,8 +53,8 @@
     <string name="action_close">Zatvori</string>
     <string name="action_clear">Izbriši</string>
     <string name="action_cancel">Prekini</string>
-    <string name="action_blacklist_add">Dodaj u nepoželjne</string>
-    <string name="action_blacklist">Nepoželjni</string>
+    <string name="action_blacklist_add">Dodaj u popis blokiranih</string>
+    <string name="action_blacklist">Blokiraj</string>
     <string name="action_back">Natrag</string>
     <string name="account_logout">Odjavi se iz Aurore</string>
     <string name="account_login_using">Prijavi se, koristeći</string>
@@ -89,8 +89,8 @@
     <string name="toast_permission_granted">Dozvola odobrena</string>
     <string name="toast_developer_setting_failed">Za otvaranje, uključi postavke za programere u postavkama uređaja.</string>
     <string name="toast_clipboard_copied">Kopirano u međuspremnik</string>
-    <string name="toast_apk_whitelisted">Poželjni</string>
-    <string name="toast_apk_blacklisted">Dodano na listu nepoželjnih</string>
+    <string name="toast_apk_whitelisted">U popisu neblokiranih</string>
+    <string name="toast_apk_blacklisted">U popisu blokiranih</string>
     <string name="toast_anonymous_restriction">Nije dostupno na anonimnim računima</string>
     <string name="title_updates">Aktualiziranja</string>
     <string name="title_spoof_manager">Upravljač lažnog predstavljanja</string>
@@ -106,7 +106,7 @@
     <string name="title_download_playstore">Trgovina igrama</string>
     <string name="title_download_manager">Preuzimanja</string>
     <string name="title_device">Uređaj</string>
-    <string name="title_blacklist_manager">Upravljač nepoželjnih</string>
+    <string name="title_blacklist_manager">Upravljač popisa blokiranih</string>
     <string name="title_apps_library">Aplikacije u biblioteci</string>
     <string name="title_apps_games">Moje aplikacije i igre</string>
     <string name="title_apps">Aplikacije</string>
@@ -139,12 +139,12 @@
     <string name="pref_install_delete_title">Izbriši APK datoteke nakon instaliranja</string>
     <string name="pref_install_delete_summary">Preuzete APK datoteke će se izbrisati odmah nakon instalacije</string>
     <string name="pref_filter_fdroid_title">Filtriraj F-Droid aplikacije</string>
-    <string name="pref_filter_fdroid_summary">Ne provjeravaj ažuriranja za aplikacije preuzete ili instalirane s F-Droida</string>
+    <string name="pref_filter_fdroid_summary">Ne provjeravaj ažuriranja za aplikacije instalirane s F-Droida</string>
     <string name="onboarding_permission_installer_desc">Dozvoli instaliranje aplikacija iz Aurora Store</string>
-    <string name="onboarding_permission_installer">Dozvola za instalaciju</string>
-    <string name="onboarding_permission_esm">Upravljač vanjske memorije</string>
+    <string name="onboarding_permission_installer">Dozvola programa za instalaciju</string>
+    <string name="onboarding_permission_esm">Upravljač eksterne memorije</string>
     <string name="onboarding_permission_esa_desc">Za spremanje APK proširenih datoteka (OBB) za veće aplikacije i igre.</string>
-    <string name="onboarding_permission_esa">Pristup vanjskoj memoriji</string>
+    <string name="onboarding_permission_esa">Pristup eksternoj memoriji</string>
     <string name="onboarding_welcome_select">Kako si\?</string>
     <string name="onboarding_title_welcome">Dobro došao, dobro došla</string>
     <string name="onboarding_title_permissions">Dozvole</string>
@@ -169,7 +169,7 @@
     <string name="installer_status_failure">Instalacija neuspjela</string>
     <string name="installer_service_misconfigured">Postavi Aurora usluge i najprije odobri sve dozvole.</string>
     <string name="installer_service_unavailable">Instaliraj Aurora usluge 1.0.9 ili noviju verziju ili promijeni program za instalaciju.</string>
-    <string name="installer_service_available">Aplikacija „Aurora usluge” je dostupna i spremna za instalaciju.</string>
+    <string name="installer_service_available">Aurora usluge su dostupna i spremne za instalaciju.</string>
     <string name="installer_root_unavailable">Nema administratorskog pristupa. Odobri ga ili promijeni instalaciju.</string>
     <string name="filter_review_two">Dvije</string>
     <string name="filter_review_three">Tri</string>
@@ -212,13 +212,13 @@
     <string name="toast_manual_unavailable">Zatraženi kod verzije nije dostupan.</string>
     <string name="title_manual_download">Ručno preuzimanje</string>
     <string name="pref_ui_similar_apps">Slične i srodne aplikacije</string>
-    <string name="pref_ui_no_for_you_desc">Prikaži „Za tvoje stranice” na početnom ekranu</string>
-    <string name="pref_ui_no_for_you">Za tvoje stranice</string>
+    <string name="pref_ui_no_for_you_desc">Prikaži „Stranice za tebe” na početnom ekranu</string>
+    <string name="pref_ui_no_for_you">Stranice za tebe</string>
     <string name="pref_ui_layout_tab">Odaberi standardnu karticu</string>
     <string name="pref_ui_layout">Raspored</string>
     <string name="details_no_app_match">Nema odgovarajuće aplikacije</string>
     <string name="pref_common_extra">Dodatno</string>
-    <string name="dialog_desc_native_split">Paketirane (podijeljene) aplikacije ne možeš instalirati putem nativnog programa za insatliranje. Promijeni instalatera u sesija, usluge ili administrator.</string>
+    <string name="dialog_desc_native_split">Paketirane (podijeljene) aplikacije ne možeš instalirati putem nativnog programa za insatliranje. Promijeni program za instaliranje u Sesija, Usluge ili Root.</string>
     <string name="toast_page_unavailable">Stranica pretraživanja nedostupna</string>
     <string name="toast_aas_token_failed">Neuspjelo generiranje AAS tokena</string>
     <string name="toast_rated_failed">Neuspjelo slanje ocjene</string>
@@ -279,8 +279,8 @@
     <string name="add">Dodaj</string>
     <string name="services_installer_desc">Zahtijeva da se „Aurora usluge” instalira kao aplikacija privilegiranog sustava</string>
     <string name="app_links_desc">Dozvoli da Aurora Store otvara podržane poveznice</string>
-    <string name="toast_black_import_failed">Uvoz liste blokiranih nije uspio!</string>
-    <string name="toast_black_export_failed">Izvoz liste blokiranih nije uspio!</string>
+    <string name="toast_black_import_failed">Uvoz popisa blokiranih nije uspio!</string>
+    <string name="toast_black_export_failed">Izvoz popisa blokiranih nije uspio!</string>
     <string name="status_cancelled">Prekinuto</string>
     <string name="status_completed">Završeno</string>
     <string name="onboarding_permission_doze">Preuzimanja u pozadini</string>
@@ -291,8 +291,8 @@
     <string name="remove_dispenser_title">Ukloni dozatora</string>
     <string name="toast_fav_import_failed">Uvoz omiljenih nije uspio!</string>
     <string name="toast_fav_import_success">Omiljeni su uvezni!</string>
-    <string name="toast_black_import_success">Lista blokiranih je uvezena!</string>
-    <string name="toast_black_export_success">Lista blokiranih je izvezena!</string>
+    <string name="toast_black_import_success">Popis blokiranih je uvezen!</string>
+    <string name="toast_black_export_success">Popis blokiranih je izvezen!</string>
     <string name="export_app_summary">Pričekaj, tvoja se datoteka izvozi</string>
     <string name="export_app_summary_success">Paket aplikacije je uspješno izvezen</string>
     <string name="check_updates">Traži aktualiziranja</string>
@@ -312,16 +312,16 @@
     <string name="details_no_favourites">Nema omiljenih aplikacija</string>
     <string name="privacy_policy_subtitle">Saznaj kako Aurora Store koristi tvoje podatke</string>
     <string name="details_data_safety_title">Sigurnost podataka</string>
-    <string name="pref_aurora_only">Samo Aurora Store aplikacije</string>
+    <string name="pref_aurora_only">Filtriraj aplikacije iz drugih izvora</string>
     <string name="toast_permission_installer_required">Najprije moraš dodijeliti dozvolu za instaliranje</string>
     <string name="action_uninstall_success">Uspješno deinstalirano</string>
     <string name="onboarding_permission_installer_legacy_desc">Dozvoli instaliranje aplikacija iz nepoznatih izvora</string>
     <string name="remove_dispenser_summary">Želiš li ukloniti dozator „<xliff:g id="url">%1$s</xliff:g>”?</string>
     <string name="remove">Ukloni</string>
     <string name="toast_fav_export_failed">Izvoz omiljenih nije uspio!</string>
-    <string name="pref_aurora_only_desc">Traži samo aktualiziranja za aplikacije koje su instalirane pomoću Aurora Store</string>
+    <string name="pref_aurora_only_desc">Ne provjeravaj aktualiziranja za aplikacije koje su instalirane iz izvora izvan Aurora Store</string>
     <string name="title_favourites_manager">Omiljene aplikacije</string>
-    <string name="export_app_summary_fail">Izvoz paket aplikacije nije uspio</string>
+    <string name="export_app_summary_fail">Izvoz paketa aplikacije nije uspio</string>
     <string name="action_logout_confirmation_title">Odjaviti se?</string>
     <string name="action_logout_confirmation_message">Stvarno se želiš odjaviti?</string>
     <string name="add_dispenser_hint">URL dozatora</string>
@@ -344,7 +344,7 @@
     <string name="shizuku_installer_desc">Zahtijeva Shizuku ili Sui, mora se postaviti i odobriti dozvolu</string>
     <string name="download_clear_finished">Izbriši gotove</string>
     <string name="notification_channel_account">Obavijest o računu</string>
-    <string name="login_rate_limited">Ups, učestalost tvojih prijava je ograničen</string>
+    <string name="login_rate_limited">Broj tvojih prijava je ograničen</string>
     <string name="app_links_title">Poveznice aplikacija</string>
     <string name="google_play_store_desc">Google Play, poznat i kao Google Play Store, a prije Android Market.</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> i <xliff:g id="app_two_name">%2$s</xliff:g></string>
@@ -384,7 +384,7 @@
     <string name="notification_channel_export">Obavijest o izvozu aplikacija</string>
     <string name="notification_channel_install">Obavijest o instaliranjima</string>
     <string name="notification_channel_downloads">Obavijest o preuzimanjima</string>
-    <string name="pref_updates_incompatible">Nekompatibilna aktualiziranja</string>
+    <string name="pref_updates_incompatible">Prikaži aktualiziranja koja možda neće uspjeti</string>
     <string name="pref_updates_incompatible_desc">Prikaži aktualiziranja za nekompatibilne ili deaktivirane aplikacije koje se možda neće uspjeti instalirati</string>
     <string name="pref_updates_auto">Automatka aktualiziranja</string>
     <string name="session_installer_desc">Preporučeno, ugrađeno i podržava sve Android verzije</string>
@@ -414,7 +414,7 @@
     <string name="plexus_progress">Provjera kompatibilnosti …</string>
     <string name="details_compatibility_gms_not_required_subtitle">Ova aplikacija radi bez Googleove vlasničke biblioteke. Međutim, još uvijek može trebati druge biblioteke trećih strana da bi pravilno radila.</string>
     <string name="no_apps_available">Nema dostupnih aplikacija</string>
-    <string name="pref_network_microg_login_desc">Za jednostavniju prijavu, autentificiraj se pomoću microG-a prilikom prijave na Google račune.</string>
+    <string name="pref_network_microg_login_desc">Za jednostavniju prijavu autentificiraj se pomoću microG-a prilikom prijave na Google račune</string>
     <string name="set">Postavi</string>
     <string name="disable">Deaktiviraj</string>
     <string name="toast_proxy_disabled">Proxy je uspješno deaktiviran</string>
@@ -426,4 +426,36 @@
     <string name="pref_network_microg_login_title">Koristi microG za prijavu na račune</string>
     <string name="pref_updates_restrictions_metered">Samo na nemjerenim mrežama</string>
     <string name="details_compatibility_gms_required_subtitle">Možda ćeš morati instalirati Googleovu vlasničku biblioteku ili FOSS -ovu implementaciju poput microG.</string>
+    <string name="details_data_safety_collect">Podaci koje ova aplikacija može prikupljati</string>
+    <string name="details_data_safety_collect_none">Programer tvrdi da ova aplikacija ne prikuplja korisničke podatke.</string>
+    <string name="details_data_safety_shared">Podaci koje ova aplikacija može dijeliti</string>
+    <string name="details_data_safety_share_none">Programer tvrdi da ova aplikacija ne dijeli korisničke podatke s drugim tvrtkama ili organizacijama.</string>
+    <string name="exodus_tracker_desc">Ova verzija aplikacije može i dalje sadržavati više programa za prećenje koji još nisu prisutni u Exodus Privacy bazi podataka.</string>
+    <string name="app_info_downloads">Preuzimanja</string>
+    <string name="app_info_updated_on">Zadnje aktualiziranje</string>
+    <string name="app_info_min_android">Najmanja Android verzija</string>
+    <string name="app_info_target_android">Cilj razine API-ja</string>
+    <string name="onboarding_title_gsf">Konpatibilnost aplikacije</string>
+    <string name="onboarding_title_gsf_desc">Nedostaju ovisnosti</string>
+    <string name="onboarding_gms_agreement">Pročitao/la sam i slažem se s uvjetima usluge i politici o privatnosti tvrtke microG</string>
+    <string name="onboarding_gms_missing">Nismo pronašli Google Play usluge na vašem uređaju. Nekoliko popularnih aplikacija ih sada zahtijeva za ispravan rad!</string>
+    <string name="microg_privacy_policy">Pročitajte politiku privatnosti tvrtke microG</string>
+    <string name="microg_license_agreement">Pročitajte licencu i ugovor tvrtke microG</string>
+    <string name="microg_website">Posjetite web stranicu projekta microG</string>
+    <string name="manual_download_version_error">Kod verzije može sadržati samo znamenke</string>
+    <string name="no_description">Nema opisa</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> dozvola</string>
+    <string name="details_more_info">Više informacija</string>
+    <string name="details_more_target_api">Ciljevi</string>
+    <string name="details_more_package_name">Ime paketa</string>
+    <string name="details_more_content_rating">Dobna ocjena</string>
+    <string name="pref_common_advanced">Napredno</string>
+    <string name="pref_updates_app_source">Izvor aplikacije</string>
+    <string name="verification_failed">Neuspjela provjera preuzetih datoteka</string>
+    <string name="select_app_for_details">Odaberite aplikaciju za više detalja</string>
+    <string name="action_filter_no_ads">Bez oglasa</string>
+    <string name="action_filter_no_gms">Bez usluga reprodukcije</string>
+    <string name="action_install_microG">Instaliraj microG paket</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> pronađena programa za praćenje u <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="onboarding_gms_microg">microG je besplatna i otvorenog koda implementacija koja pruža sličnu funkcionalnost za pokretanje aplikacija koje ovise o Google Play uslugama na Android uređajima putem ponovne implementacije.\n\nmicroG omogućuje aplikacijama pristup Google API-jima, poboljšavajući kompatibilnost za korisnike uz dodatne prednosti po pitanju privatnosti.\n\nmicroG će se automatski pokrenuti u pozadini kada otvorite aplikacije koje ovise o Google mobilnim uslugama.</string>
 </resources>
