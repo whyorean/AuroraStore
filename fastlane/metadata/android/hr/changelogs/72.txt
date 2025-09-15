@@ -1,0 +1,5 @@
+• Najmanja podržana Android verzija je sada Android 6.0
+• Prebačeno na **Material3 Expressive** temu
+• Poboljšana podrška za uređaje sa širokim ekranom
+• Ispravljen problem kod kojeg hebrejski jezik nije bio ispravno postavljen kod odabira jezika po aplikaciji
+• Vraćena funkcionalnost filtara pretraživanja
