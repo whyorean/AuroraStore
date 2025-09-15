@@ -73,7 +73,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_download_manager -> {
-                    findNavController().navigate(R.id.downloadFragment)
+                    requireContext().navigate(Screen.Downloads)
                 }
 
                 R.id.menu_more -> {

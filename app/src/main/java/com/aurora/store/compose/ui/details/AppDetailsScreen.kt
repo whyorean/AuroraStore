@@ -263,7 +263,7 @@ private fun ScreenContentApp(
                 AppDetailsMenuItem.MANUAL_DOWNLOAD -> {
                     showExtraPane(ExtraScreen.ManualDownload)
                 }
-                AppDetailsMenuItem.SHARE -> context.share(app)
+                AppDetailsMenuItem.SHARE -> context.share(app.displayName, app.packageName)
                 AppDetailsMenuItem.APP_INFO -> context.appInfo(app.packageName)
                 AppDetailsMenuItem.PLAY_STORE -> context.browse("$SHARE_URL${app.packageName}")
                 AppDetailsMenuItem.ADD_TO_HOME -> {

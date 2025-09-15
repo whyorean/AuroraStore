@@ -72,12 +72,12 @@ fun Context.appInfo(packageName: String) {
     }
 }
 
-fun Context.share(app: App) {
+fun Context.share(displayName: String, packageName: String) {
     try {
         val sendIntent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_SUBJECT, app.displayName)
-            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}${app.packageName}")
+            putExtra(Intent.EXTRA_SUBJECT, displayName)
+            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}${packageName}")
             type = "text/plain"
         }
         startActivity(Intent.createChooser(sendIntent, getString(R.string.action_share)))

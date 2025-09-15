@@ -34,6 +34,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
+import kotlin.math.abs
 
 /**
  * Composable to show icon for an app that can be animated to also show install progress
@@ -49,6 +50,10 @@ fun AnimatedAppIconComposable(
     progress: Float = 0F,
     inProgress: Boolean = false
 ) {
+    val animatedProgress by animateFloatAsState(
+        targetValue = progress,
+        animationSpec = tween(durationMillis = 300)
+    )
     val animatedScale by animateFloatAsState(
         targetValue = if (inProgress) 0.75F else 1F,
         animationSpec = tween(durationMillis = 300)
@@ -61,10 +66,10 @@ fun AnimatedAppIconComposable(
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         if (inProgress) {
             val indicatorModifier = Modifier.fillMaxSize()
-            if (progress > 0) {
+            if (animatedProgress > 0) {
                 CircularProgressIndicator(
                     modifier = indicatorModifier,
-                    progress = { progress / 100 }
+                    progress = { animatedProgress / 100 }
                 )
             } else {
                 CircularProgressIndicator(modifier = indicatorModifier)

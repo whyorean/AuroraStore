@@ -2,6 +2,8 @@ package com.aurora.store.data.helper
 
 import android.content.Context
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.work.Data
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
@@ -43,8 +45,10 @@ class DownloadHelper @Inject constructor(
         private const val VERSION_CODE = "VERSION_CODE"
     }
 
-    val downloadsList = downloadDao.downloads()
+    val downloadsList get() = downloadDao.downloads()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
+
+    val pagedDownloads get() = downloadDao.pagedDownloads()
 
     private val TAG = DownloadHelper::class.java.simpleName
 

@@ -19,6 +19,7 @@ import com.aurora.store.compose.ui.commons.BlacklistScreen
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
+import com.aurora.store.compose.ui.downloads.DownloadsScreen
 import com.aurora.store.compose.ui.search.SearchScreen
 
 /**
@@ -74,6 +75,15 @@ fun NavDisplay(startDestination: NavKey) {
             entry<Screen.PermissionRationale> { screen ->
                 PermissionRationaleScreen(
                     onNavigateUp = { onNavigateUp() },
+                )
+            }
+
+            entry<Screen.Downloads> {
+                DownloadsScreen(
+                    onNavigateUp = { onNavigateUp() },
+                    onNavigateToAppDetails = { packageName ->
+                        backstack.add(Screen.AppDetails(packageName))
+                    }
                 )
             }
         }

@@ -6,35 +6,43 @@
 package com.aurora.store.compose.composables
 
 import android.text.format.Formatter
-import androidx.compose.foundation.combinedClickable
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SplitButtonDefaults
+import androidx.compose.material3.SplitButtonLayout
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import coil3.compose.AsyncImage
 import coil3.compose.LocalAsyncImagePreviewHandler
-import coil3.request.ImageRequest
-import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.data.room.download.Download
@@ -45,72 +53,124 @@ import com.aurora.store.util.CommonUtil.getETAString
  * @param modifier The modifier to be applied to the composable
  * @param download [Download] to display
  * @param onClick Callback when this composable is clicked
- * @param onLongClick Callback when this composable is long clicked
  */
 @Composable
 fun DownloadComposable(
     modifier: Modifier = Modifier,
     download: Download,
     onClick: () -> Unit = {},
-    onLongClick: (() -> Unit) = {}
+    onClear: () -> Unit = {},
+    onCancel: () -> Unit = {},
+    onExport: (() -> Unit)? = null,
+    onInstall: (() -> Unit)? = null,
+    onShare: (() -> Unit)? = null
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .combinedClickable(onClick = onClick, onLongClick = onLongClick)
+    val progress = "${download.progress}%"
+    val speed = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s"
+    val eta = getETAString(LocalContext.current, download.timeRemaining)
+
+    var isExpanded by rememberSaveable { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .clickable(onClick = onClick)
             .padding(
                 horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_xsmall)
+                vertical = dimensionResource(R.dimen.padding_small)
             )
     ) {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(download.iconURL)
-                .crossfade(true)
-                .build(),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .requiredSize(dimensionResource(R.dimen.icon_size_medium))
-                .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
-        )
-        Column(
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small)),
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = download.displayName,
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+            Row {
+                AnimatedAppIconComposable(
+                    modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
+                    iconUrl = download.iconURL,
+                    inProgress = download.isRunning,
+                    progress = download.progress.toFloat()
+                )
+                Column(
+                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small)),
+                ) {
+                    Text(
+                        text = download.displayName,
+                        style = MaterialTheme.typography.bodyMedium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = stringResource(download.downloadStatus.localized),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    if (download.isRunning) {
+                        Text(
+                            text = "$progress • $speed • $eta",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                }
+            }
+
+            SplitButtonLayout(
+                leadingButton = {
+                    when {
+                        download.isRunning -> {
+                            SplitButtonDefaults.LeadingButton(onClick = onCancel) {
+                                Text(text = stringResource(R.string.action_cancel))
+                            }
+                        }
+
+                        else -> {
+                            SplitButtonDefaults.LeadingButton(onClick = onClear) {
+                                Text(text = stringResource(R.string.action_clear))
+                            }
+                        }
+                    }
+                },
+                trailingButton = {
+                    SplitButtonDefaults.TrailingButton(
+                        checked = isExpanded,
+                        onCheckedChange = { isExpanded = it }
+                    ) {
+                        Icon(
+                            painter = when {
+                                isExpanded -> painterResource(R.drawable.ic_keyboard_arrow_up)
+                                else -> painterResource(R.drawable.ic_keyboard_arrow_down)
+                            },
+                            contentDescription = stringResource(R.string.expand)
+                        )
+                    }
+                }
             )
-            Text(
-                text = stringResource(download.downloadStatus.localized),
-                style = MaterialTheme.typography.bodySmall
-            )
-            LinearProgressIndicator(
-                modifier = Modifier.fillMaxWidth(),
-                progress = { download.progress.toFloat() }
-            )
+        }
+
+        AnimatedVisibility(
+            visible = isExpanded,
+            enter = slideInVertically() + expandVertically() + fadeIn(),
+            exit = slideOutVertically() + shrinkVertically() + fadeOut()
+        ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Text(
-                    text = "${download.progress}%",
-                    style = MaterialTheme.typography.bodySmall
+                VerticalButtonComposable(
+                    painter = painterResource(R.drawable.ic_share),
+                    text = stringResource(R.string.action_share),
+                    onClick = onShare
                 )
 
-                if (download.isRunning) {
-                    Text(
-                        text = getETAString(LocalContext.current, download.timeRemaining),
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Text(
-                        text = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
+                VerticalButtonComposable(
+                    painter = painterResource(R.drawable.ic_install),
+                    text = stringResource(R.string.action_install),
+                    onClick = onInstall
+                )
+
+                VerticalButtonComposable(
+                    painter = painterResource(R.drawable.ic_file_copy),
+                    text = stringResource(R.string.action_export),
+                    onClick = onExport
+                )
             }
         }
     }

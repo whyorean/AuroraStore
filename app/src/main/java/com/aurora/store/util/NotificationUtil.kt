@@ -95,7 +95,7 @@ object NotificationUtil {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
         builder.setSmallIcon(R.drawable.ic_notification_outlined)
         builder.setContentTitle(download.displayName)
-        builder.setContentIntent(getContentIntentForDownloads(context))
+        builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
         builder.setLargeIcon(largeIcon)
 
         val cancelIntent = Intent(context, DownloadCancelReceiver::class.java).apply {
@@ -376,14 +376,6 @@ object NotificationUtil {
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
             .setArguments(bundleOf("packageName" to packageName))
-            .createPendingIntent()
-    }
-
-    private fun getContentIntentForDownloads(context: Context): PendingIntent {
-        return NavDeepLinkBuilder(context)
-            .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.downloadFragment)
-            .setComponentName(MainActivity::class.java)
             .createPendingIntent()
     }
 

@@ -111,15 +111,6 @@
         android:label="UpdatesPreference"
         tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/downloadFragment"
-        android:name="com.aurora.store.view.ui.downloads.DownloadFragment"
-        android:label="@string/title_download_manager"
-        tools:layout="@layout/fragment_download">
-        <action
-            android:id="@+id/action_downloadFragment_to_downloadMenuSheet"
-            app:destination="@id/downloadMenuSheet" />
-    </fragment>
-    <fragment
         android:id="@+id/categoryBrowseFragment"
         android:name="com.aurora.store.view.ui.commons.CategoryBrowseFragment"
         tools:layout="@layout/fragment_generic_with_toolbar">
@@ -271,20 +262,6 @@
         <argument
             android:name="app"
             app:argType="com.aurora.store.data.model.MinimalApp" />
-    </dialog>
-    <dialog
-        android:id="@+id/filterSheet"
-        android:name="com.aurora.store.view.ui.sheets.FilterSheet"
-        android:label="FilterSheet"
-        tools:layout="@layout/sheet_filter" />
-    <dialog
-        android:id="@+id/downloadMenuSheet"
-        android:name="com.aurora.store.view.ui.sheets.DownloadMenuSheet"
-        android:label="DownloadMenuSheet"
-        tools:layout="@layout/sheet_download_menu">
-        <argument
-            android:name="download"
-            app:argType="com.aurora.store.data.room.download.Download" />
     </dialog>
     <dialog
         android:id="@+id/deviceMiuiSheet"

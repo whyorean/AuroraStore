@@ -1,5 +1,6 @@
 package com.aurora.store.data.room.download
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -39,6 +40,9 @@ interface DownloadDao {
 
     @Query("SELECT * FROM download")
     fun downloads(): Flow<List<Download>>
+
+    @Query("SELECT * FROM download ORDER BY downloadedAt DESC")
+    fun pagedDownloads(): PagingSource<Int, Download>
 
     @Query("SELECT * FROM download WHERE packageName = :packageName")
     suspend fun getDownload(packageName: String): Download
