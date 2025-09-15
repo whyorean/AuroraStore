@@ -41,9 +41,12 @@ fun PermissionScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsPermissionViewModel: DetailsPermissionViewModel = hiltViewModel { factory: DetailsPermissionViewModel.Factory ->
-        factory.create(appDetailsViewModel.app.value!!.permissions)
-    },
+    detailsPermissionViewModel: DetailsPermissionViewModel = hiltViewModel(
+        key = packageName,
+        creationCallback = { factory: DetailsPermissionViewModel.Factory ->
+            factory.create(appDetailsViewModel.app.value!!.permissions)
+        }
+    ),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()

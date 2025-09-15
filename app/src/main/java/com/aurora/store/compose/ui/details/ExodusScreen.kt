@@ -41,9 +41,12 @@ fun ExodusScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsExodusViewModel: DetailsExodusViewModel = hiltViewModel { factory: DetailsExodusViewModel.Factory ->
-        factory.create(appDetailsViewModel.exodusReport.value!!)
-    },
+    detailsExodusViewModel: DetailsExodusViewModel = hiltViewModel(
+        key = packageName,
+        creationCallback = { factory: DetailsExodusViewModel.Factory ->
+            factory.create(appDetailsViewModel.exodusReport.value!!)
+        }
+    ),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()

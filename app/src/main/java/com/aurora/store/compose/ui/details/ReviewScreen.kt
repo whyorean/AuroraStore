@@ -58,9 +58,12 @@ fun ReviewScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsReviewViewModel: DetailsReviewViewModel = hiltViewModel { factory: DetailsReviewViewModel.Factory ->
-        factory.create(appDetailsViewModel.app.value!!.packageName)
-    },
+    detailsReviewViewModel: DetailsReviewViewModel = hiltViewModel(
+        key = packageName,
+        creationCallback = { factory: DetailsReviewViewModel.Factory ->
+            factory.create(appDetailsViewModel.app.value!!.packageName)
+        }
+    ),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()

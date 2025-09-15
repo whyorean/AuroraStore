@@ -52,9 +52,12 @@ fun MoreScreen(
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsMoreViewModel: DetailsMoreViewModel = hiltViewModel { factory: DetailsMoreViewModel.Factory ->
-        factory.create(appDetailsViewModel.app.value!!.dependencies.dependentPackages)
-    }
+    detailsMoreViewModel: DetailsMoreViewModel = hiltViewModel(
+        key = packageName,
+        creationCallback = { factory: DetailsMoreViewModel.Factory ->
+            factory.create(appDetailsViewModel.app.value!!.dependencies.dependentPackages)
+        }
+    )
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val dependencies by detailsMoreViewModel.dependentApps.collectAsStateWithLifecycle()
