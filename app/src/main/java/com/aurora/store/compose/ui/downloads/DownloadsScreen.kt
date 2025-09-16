@@ -36,8 +36,8 @@ import com.aurora.store.compose.composables.DownloadComposable
 import com.aurora.store.compose.composables.ErrorComposable
 import com.aurora.store.compose.composables.ProgressComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.menu.DownloadsMenu
-import com.aurora.store.compose.menu.items.DownloadsMenuItem
+import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
+import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.viewmodel.downloads.DownloadsViewModel
 import kotlinx.coroutines.flow.flowOf
@@ -111,9 +111,9 @@ private fun ScreenContent(
     fun SetupMenu() {
         DownloadsMenu { menuItem ->
             when (menuItem) {
-                DownloadsMenuItem.CANCEL_ALL -> onCancelAll()
-                DownloadsMenuItem.FORCE_CLEAR_ALL -> onForceClearAll()
-                DownloadsMenuItem.CLEAR_FINISHED -> onClearFinished()
+                MenuItem.CANCEL_ALL -> onCancelAll()
+                MenuItem.FORCE_CLEAR_ALL -> onForceClearAll()
+                MenuItem.CLEAR_FINISHED -> onClearFinished()
             }
         }
     }

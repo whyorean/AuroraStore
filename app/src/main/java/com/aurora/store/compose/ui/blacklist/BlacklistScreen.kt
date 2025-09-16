@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.ui.commons
+package com.aurora.store.compose.ui.blacklist
 
 import android.content.pm.PackageInfo
 import android.net.Uri
@@ -46,10 +46,10 @@ import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composables.BlackListComposable
-import com.aurora.store.compose.menu.BlacklistMenu
-import com.aurora.store.compose.menu.items.BlacklistMenuItem
+import com.aurora.store.compose.ui.blacklist.menu.BlacklistMenu
+import com.aurora.store.compose.ui.blacklist.menu.MenuItem
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.viewmodel.all.BlacklistViewModel
+import com.aurora.store.viewmodel.blacklist.BlacklistViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.Calendar
@@ -130,13 +130,13 @@ private fun ScreenContent(
     fun SetupMenu() {
         BlacklistMenu { menuItem ->
             when (menuItem) {
-                BlacklistMenuItem.SELECT_ALL -> onBlacklistAll()
-                BlacklistMenuItem.REMOVE_ALL -> onWhitelistAll()
-                BlacklistMenuItem.IMPORT -> {
+                MenuItem.SELECT_ALL -> onBlacklistAll()
+                MenuItem.REMOVE_ALL -> onWhitelistAll()
+                MenuItem.IMPORT -> {
                     docImportLauncher.launch(arrayOf(Constants.JSON_MIME_TYPE))
                 }
 
-                BlacklistMenuItem.EXPORT -> {
+                MenuItem.EXPORT -> {
                     docExportLauncher.launch(
                         "aurora_store_apps_${Calendar.getInstance().time.time}.json"
                     )

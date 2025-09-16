@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.menu
+package com.aurora.store.compose.ui.details.menu
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.DropdownMenu
@@ -25,14 +25,13 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.menu.items.AppDetailsMenuItem
 
 /**
  * Menu for the app details screen
  * @param app App for which this menu should be inflated
  * @param modifier The modifier to be applied to the composable
  * @param onMenuItemClicked Callback when a menu item has been clicked
- * @see AppDetailsMenuItem
+ * @see MenuItem
  */
 @Composable
 fun AppDetailsMenu(
@@ -40,15 +39,15 @@ fun AppDetailsMenu(
     isInstalled: Boolean = false,
     isFavorite: Boolean = false,
     isExpanded: Boolean = false,
-    onMenuItemClicked: (appDetailsMenuItem: AppDetailsMenuItem) -> Unit = {}
+    onMenuItemClicked: (menuItem: MenuItem) -> Unit = {}
 ) {
     var expanded by remember { mutableStateOf(isExpanded) }
-    fun onClick(appDetailsMenuItem: AppDetailsMenuItem) {
-        onMenuItemClicked(appDetailsMenuItem)
+    fun onClick(menuItem: MenuItem) {
+        onMenuItemClicked(menuItem)
         expanded = false
     }
 
-    IconButton(onClick = { onClick(AppDetailsMenuItem.FAVORITE) }) {
+    IconButton(onClick = { onClick(MenuItem.FAVORITE) }) {
         Icon(
             painter = if (isFavorite) {
                 painterResource(R.drawable.ic_favorite_checked)
@@ -59,7 +58,7 @@ fun AppDetailsMenu(
         )
     }
 
-    IconButton(onClick = { onClick(AppDetailsMenuItem.SHARE) }) {
+    IconButton(onClick = { onClick(MenuItem.SHARE) }) {
         Icon(
             painter = painterResource(R.drawable.ic_share),
             contentDescription = stringResource(R.string.action_share)
@@ -76,11 +75,11 @@ fun AppDetailsMenu(
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.title_manual_download)) },
-                onClick = { onClick(AppDetailsMenuItem.MANUAL_DOWNLOAD) }
+                onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) }
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.title_download_playstore)) },
-                onClick = { onClick(AppDetailsMenuItem.PLAY_STORE) }
+                onClick = { onClick(MenuItem.PLAY_STORE) }
             )
 
             // Inflate actions available only when app is installed below
@@ -88,11 +87,11 @@ fun AppDetailsMenu(
 
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_info)) },
-                onClick = { onClick(AppDetailsMenuItem.APP_INFO) }
+                onClick = { onClick(MenuItem.APP_INFO) }
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_home_screen)) },
-                onClick = { onClick(AppDetailsMenuItem.ADD_TO_HOME) }
+                onClick = { onClick(MenuItem.ADD_TO_HOME) }
             )
         }
     }

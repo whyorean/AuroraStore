@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.menu
+package com.aurora.store.compose.ui.blacklist.menu
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.DropdownMenu
@@ -21,22 +21,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
-import com.aurora.store.compose.menu.items.DownloadsMenuItem
 
 /**
  * Menu for the blacklist screen
  * @param modifier The modifier to be applied to the composable
  * @param onMenuItemClicked Callback when a menu item has been clicked
- * @see DownloadsMenuItem
+ * @see MenuItem
  */
 @Composable
-fun DownloadsMenu(
+fun BlacklistMenu(
     modifier: Modifier = Modifier,
     isExpanded: Boolean = false,
-    onMenuItemClicked: (menuItem: DownloadsMenuItem) -> Unit = {}
+    onMenuItemClicked: (menuItem: MenuItem) -> Unit = {}
 ) {
     var expanded by remember { mutableStateOf(isExpanded) }
-    fun onClick(menuItem: DownloadsMenuItem) {
+    fun onClick(menuItem: MenuItem) {
         onMenuItemClicked(menuItem)
         expanded = false
     }
@@ -50,16 +49,20 @@ fun DownloadsMenu(
         }
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.download_cancel_all)) },
-                onClick = { onClick(DownloadsMenuItem.CANCEL_ALL) }
+                text = { Text(text = stringResource(R.string.action_select_all)) },
+                onClick = { onClick(MenuItem.SELECT_ALL) }
             )
             DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.download_clear_finished)) },
-                onClick = { onClick(DownloadsMenuItem.CLEAR_FINISHED) }
+                text = { Text(text = stringResource(R.string.action_remove_all)) },
+                onClick = { onClick(MenuItem.REMOVE_ALL) }
             )
             DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.download_force_clear_all)) },
-                onClick = { onClick(DownloadsMenuItem.FORCE_CLEAR_ALL) }
+                text = { Text(text = stringResource(R.string.action_import)) },
+                onClick = { onClick(MenuItem.IMPORT) }
+            )
+            DropdownMenuItem(
+                text = { Text(text = stringResource(R.string.action_export)) },
+                onClick = { onClick(MenuItem.EXPORT) }
             )
         }
     }
@@ -67,6 +70,6 @@ fun DownloadsMenu(
 
 @Preview(showBackground = true)
 @Composable
-private fun DownloadsMenuPreview() {
-    DownloadsMenu(isExpanded = true)
+private fun BlacklistMenuPreview() {
+    BlacklistMenu(isExpanded = true)
 }

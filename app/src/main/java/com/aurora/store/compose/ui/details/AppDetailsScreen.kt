@@ -62,8 +62,8 @@ import com.aurora.store.compose.composables.ProgressComposable
 import com.aurora.store.compose.composables.ErrorComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
-import com.aurora.store.compose.menu.AppDetailsMenu
-import com.aurora.store.compose.menu.items.AppDetailsMenuItem
+import com.aurora.store.compose.ui.details.menu.AppDetailsMenu
+import com.aurora.store.compose.ui.details.menu.MenuItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.ui.details.components.Actions
 import com.aurora.store.compose.ui.details.components.Changelog
@@ -259,14 +259,14 @@ private fun ScreenContentApp(
     fun SetupMenu() {
         AppDetailsMenu(isInstalled = app.isInstalled, isFavorite = isFavorite) { menuItem ->
             when (menuItem) {
-                AppDetailsMenuItem.FAVORITE -> onFavorite()
-                AppDetailsMenuItem.MANUAL_DOWNLOAD -> {
+                MenuItem.FAVORITE -> onFavorite()
+                MenuItem.MANUAL_DOWNLOAD -> {
                     showExtraPane(ExtraScreen.ManualDownload)
                 }
-                AppDetailsMenuItem.SHARE -> context.share(app.displayName, app.packageName)
-                AppDetailsMenuItem.APP_INFO -> context.appInfo(app.packageName)
-                AppDetailsMenuItem.PLAY_STORE -> context.browse("$SHARE_URL${app.packageName}")
-                AppDetailsMenuItem.ADD_TO_HOME -> {
+                MenuItem.SHARE -> context.share(app.displayName, app.packageName)
+                MenuItem.APP_INFO -> context.appInfo(app.packageName)
+                MenuItem.PLAY_STORE -> context.browse("$SHARE_URL${app.packageName}")
+                MenuItem.ADD_TO_HOME -> {
                     ShortcutManagerUtil.requestPinShortcut(context, app.packageName)
                 }
             }

@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.menu.items
+package com.aurora.store.compose.ui.blacklist.menu
 
 /**
  * Valid menu items for the purpose of handling clicks
  */
-enum class DownloadsMenuItem {
-    CANCEL_ALL,
-    FORCE_CLEAR_ALL,
-    CLEAR_FINISHED
+enum class MenuItem {
+    SELECT_ALL,
+    REMOVE_ALL,
+    IMPORT,
+    EXPORT
 }
