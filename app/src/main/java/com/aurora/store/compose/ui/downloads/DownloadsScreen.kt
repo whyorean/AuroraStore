@@ -92,9 +92,9 @@ private fun ScreenContent(
     onNavigateToAppDetails: (packageName: String) -> Unit = {},
     onCancel: (packageName: String) -> Unit = {},
     onClear: (download: Download) -> Unit = {},
-    onExport: ((download: Download) -> Unit)? = null,
-    onInstall: ((download: Download) -> Unit)? = null,
-    onShare: ((download: Download) -> Unit)? = null,
+    onExport: (download: Download) -> Unit = {},
+    onInstall: (download: Download) -> Unit = {},
+    onShare: (download: Download) -> Unit = {},
     onCancelAll: () -> Unit = {},
     onForceClearAll: () -> Unit = {},
     onClearFinished: () -> Unit = {}
@@ -106,6 +106,7 @@ private fun ScreenContent(
      * Save the initial loading state to make sure we don't replay the loading animation again.
      */
     var initialLoad by rememberSaveable { mutableStateOf(true) }
+    val context = LocalContext.current
 
     @Composable
     fun SetupMenu() {
@@ -158,17 +159,19 @@ private fun ScreenContent(
                                         download = download,
                                         onClick = { onNavigateToAppDetails(download.packageName) },
                                         onClear = { onClear(download) },
-                                        onShare = { onShare!!(download) },
+                                        onShare = { onShare(download) },
                                         onCancel = { onCancel(download.packageName) },
-                                        onExport = if (download.canInstall(LocalContext.current)) {
-                                            { onExport!!(download) }
-                                        } else {
-                                            null
+                                        onExport = {
+                                            when {
+                                                download.canInstall(context) -> onExport(download)
+                                                else -> context.toast(R.string.purchase_no_file)
+                                            }
                                         },
-                                        onInstall = if (download.isSuccessful) {
-                                            { onInstall!!(download) }
-                                        } else {
-                                            null
+                                        onInstall = {
+                                            when {
+                                                download.isSuccessful -> onInstall(download)
+                                                else -> context.toast(R.string.purchase_no_file)
+                                            }
                                         }
                                     )
                                 }

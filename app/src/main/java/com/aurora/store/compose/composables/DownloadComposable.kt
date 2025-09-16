@@ -61,9 +61,9 @@ fun DownloadComposable(
     onClick: () -> Unit = {},
     onClear: () -> Unit = {},
     onCancel: () -> Unit = {},
-    onExport: (() -> Unit)? = null,
-    onInstall: (() -> Unit)? = null,
-    onShare: (() -> Unit)? = null
+    onExport: () -> Unit = {},
+    onInstall: () -> Unit = {},
+    onShare: () -> Unit = {}
 ) {
     val progress = "${download.progress}%"
     val speed = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s"
