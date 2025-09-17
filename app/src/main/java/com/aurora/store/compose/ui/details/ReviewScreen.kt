@@ -8,6 +8,7 @@ package com.aurora.store.compose.ui.details
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -156,6 +157,7 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
     )
 
     LazyRow(
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal))
     ) {
         items(items = filters.keys.toList(), key = { item -> item }) { filter ->

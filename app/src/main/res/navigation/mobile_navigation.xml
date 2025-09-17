@@ -77,11 +77,6 @@
         android:label="@string/title_favourites_manager"
         tools:layout="@layout/fragment_generic_with_toolbar" />
     <fragment
-        android:id="@+id/accountFragment"
-        android:name="com.aurora.store.view.ui.account.AccountFragment"
-        android:label="@string/title_account_manager"
-        tools:layout="@layout/fragment_account" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"
@@ -306,17 +301,6 @@
         android:id="@+id/aboutDialog"
         android:name="com.aurora.store.view.ui.about.AboutDialog"
         android:label="@string/title_about" />
-    <dialog
-        android:id="@+id/logoutDialog"
-        android:name="com.aurora.store.view.ui.account.LogoutDialog"
-        android:label="@string/action_logout">
-        <action
-            android:id="@+id/action_logoutDialog_to_splashFragment"
-            app:destination="@id/splashFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/mobile_navigation"
-            app:popUpToInclusive="true" />
-    </dialog>
     <dialog
         android:id="@+id/proxyURLDialog"
         android:name="com.aurora.store.view.ui.preferences.network.ProxyURLDialog"
