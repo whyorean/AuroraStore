@@ -40,6 +40,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -219,7 +220,7 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     fun purchase(app: App) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(NonCancellable + Dispatchers.IO) {
             try {
                 _state.value = AppState.Downloading(0F, 0 ,0)
                 val files = purchaseHelper.purchase(app.packageName, app.versionCode, app.offerType)

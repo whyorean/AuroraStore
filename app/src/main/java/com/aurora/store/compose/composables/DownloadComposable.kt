@@ -137,7 +137,8 @@ fun DownloadComposable(
                 trailingButton = {
                     SplitButtonDefaults.TrailingButton(
                         checked = isExpanded,
-                        onCheckedChange = { isExpanded = it }
+                        onCheckedChange = { isExpanded = it },
+                        enabled = download.canInstall(context)
                     ) {
                         Icon(
                             painter = when {
