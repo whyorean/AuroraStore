@@ -19,15 +19,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
-@HiltViewModel(assistedFactory = DetailsExodusViewModel.Factory::class)
-class DetailsExodusViewModel @AssistedInject constructor(
+@HiltViewModel(assistedFactory = ExodusViewModel.Factory::class)
+class ExodusViewModel @AssistedInject constructor(
     @Assisted private val exodusReport: Report,
     private val exodusTrackers: JSONObject
 ) : ViewModel() {
 
     @AssistedFactory
     interface Factory {
-        fun create(exodusReport: Report): DetailsExodusViewModel
+        fun create(exodusReport: Report): ExodusViewModel
     }
 
     private val _trackers = MutableStateFlow<List<ExodusTracker>>(emptyList())

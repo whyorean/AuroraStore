@@ -20,18 +20,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-@HiltViewModel(assistedFactory = DetailsMoreViewModel.Factory::class)
-class DetailsMoreViewModel @AssistedInject constructor(
+@HiltViewModel(assistedFactory = MoreViewModel.Factory::class)
+class MoreViewModel @AssistedInject constructor(
     @Assisted private val dependencies: List<String>,
     private val appDetailsHelper: AppDetailsHelper
 ) : ViewModel() {
 
     @AssistedFactory
     interface Factory {
-        fun create(dependencies: List<String>): DetailsMoreViewModel
+        fun create(dependencies: List<String>): MoreViewModel
     }
 
-    private val TAG = DetailsMoreViewModel::class.java.simpleName
+    private val TAG = MoreViewModel::class.java.simpleName
 
     private val _dependentApps = MutableStateFlow<List<App>?>(emptyList())
     val dependentApps = _dependentApps.asStateFlow()

@@ -17,15 +17,15 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-@HiltViewModel(assistedFactory = DetailsPermissionViewModel.Factory::class)
-class DetailsPermissionViewModel @AssistedInject constructor(
+@HiltViewModel(assistedFactory = PermissionViewModel.Factory::class)
+class PermissionViewModel @AssistedInject constructor(
     @Assisted private val permissions: List<String>,
     @ApplicationContext private val context: Context
 ): ViewModel() {
 
     @AssistedFactory
     interface Factory {
-        fun create(permissions: List<String>): DetailsPermissionViewModel
+        fun create(permissions: List<String>): PermissionViewModel
     }
 
     private val _permissionsInfo = MutableStateFlow<Map<String, PermissionInfo?>>(emptyMap())

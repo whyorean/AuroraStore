@@ -34,16 +34,16 @@ import com.aurora.store.compose.composables.details.ExodusComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
-import com.aurora.store.viewmodel.details.DetailsExodusViewModel
+import com.aurora.store.viewmodel.details.ExodusViewModel
 
 @Composable
 fun ExodusScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsExodusViewModel: DetailsExodusViewModel = hiltViewModel(
+    exodusViewModel: ExodusViewModel = hiltViewModel(
         key = "$packageName/exodus",
-        creationCallback = { factory: DetailsExodusViewModel.Factory ->
+        creationCallback = { factory: ExodusViewModel.Factory ->
             factory.create(appDetailsViewModel.exodusReport.value!!)
         }
     ),
@@ -51,7 +51,7 @@ fun ExodusScreen(
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val exodusReport by appDetailsViewModel.exodusReport.collectAsStateWithLifecycle()
-    val trackers by detailsExodusViewModel.trackers.collectAsStateWithLifecycle()
+    val trackers by exodusViewModel.trackers.collectAsStateWithLifecycle()
 
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName

@@ -43,7 +43,7 @@ import com.aurora.store.compose.composables.app.AppComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
-import com.aurora.store.viewmodel.details.DetailsMoreViewModel
+import com.aurora.store.viewmodel.details.MoreViewModel
 import java.util.Locale
 
 @Composable
@@ -52,15 +52,15 @@ fun MoreScreen(
     onNavigateUp: () -> Unit,
     onNavigateToAppDetails: (packageName: String) -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsMoreViewModel: DetailsMoreViewModel = hiltViewModel(
+    moreViewModel: MoreViewModel = hiltViewModel(
         key = "$packageName/more",
-        creationCallback = { factory: DetailsMoreViewModel.Factory ->
+        creationCallback = { factory: MoreViewModel.Factory ->
             factory.create(appDetailsViewModel.app.value!!.dependencies.dependentPackages)
         }
     )
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
-    val dependencies by detailsMoreViewModel.dependentApps.collectAsStateWithLifecycle()
+    val dependencies by moreViewModel.dependentApps.collectAsStateWithLifecycle()
 
     ScreenContent(
         app = app!!,

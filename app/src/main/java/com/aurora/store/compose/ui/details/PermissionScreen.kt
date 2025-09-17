@@ -33,7 +33,7 @@ import com.aurora.store.compose.composables.InfoComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
-import com.aurora.store.viewmodel.details.DetailsPermissionViewModel
+import com.aurora.store.viewmodel.details.PermissionViewModel
 import java.util.Locale
 
 @Composable
@@ -41,16 +41,16 @@ fun PermissionScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsPermissionViewModel: DetailsPermissionViewModel = hiltViewModel(
+    permissionViewModel: PermissionViewModel = hiltViewModel(
         key = "$packageName/permission",
-        creationCallback = { factory: DetailsPermissionViewModel.Factory ->
+        creationCallback = { factory: PermissionViewModel.Factory ->
             factory.create(appDetailsViewModel.app.value!!.permissions)
         }
     ),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
-    val permissionsInfo by detailsPermissionViewModel.permissionsInfo.collectAsStateWithLifecycle()
+    val permissionsInfo by permissionViewModel.permissionsInfo.collectAsStateWithLifecycle()
 
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName

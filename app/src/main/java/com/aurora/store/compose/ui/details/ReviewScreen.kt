@@ -49,7 +49,7 @@ import com.aurora.store.compose.composables.details.ReviewComposable
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
-import com.aurora.store.viewmodel.review.DetailsReviewViewModel
+import com.aurora.store.viewmodel.details.ReviewViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
 
@@ -58,16 +58,16 @@ fun ReviewScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    detailsReviewViewModel: DetailsReviewViewModel = hiltViewModel(
+    reviewViewModel: ReviewViewModel = hiltViewModel(
         key = "$packageName/review",
-        creationCallback = { factory: DetailsReviewViewModel.Factory ->
+        creationCallback = { factory: ReviewViewModel.Factory ->
             factory.create(appDetailsViewModel.app.value!!.packageName)
         }
     ),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
-    val reviews = detailsReviewViewModel.reviews.collectAsLazyPagingItems()
+    val reviews = reviewViewModel.reviews.collectAsLazyPagingItems()
 
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
@@ -78,7 +78,7 @@ fun ReviewScreen(
         topAppBarTitle = topAppBarTitle,
         reviews = reviews,
         onNavigateUp = onNavigateUp,
-        onFilter = { filter -> detailsReviewViewModel.fetchReviews(filter) }
+        onFilter = { filter -> reviewViewModel.fetchReviews(filter) }
     )
 }
 

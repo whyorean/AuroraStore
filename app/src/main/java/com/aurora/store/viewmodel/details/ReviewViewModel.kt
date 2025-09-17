@@ -1,10 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2021-2023 AuroraOSS
- * SPDX-FileCopyrightText: 2024-2025 The Calyx Institute
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.viewmodel.review
+package com.aurora.store.viewmodel.details
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -13,7 +12,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.store.data.paging.GenericPagingSource.Companion.createPager
+import com.aurora.store.data.paging.GenericPagingSource
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -24,20 +23,20 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-@HiltViewModel(assistedFactory = DetailsReviewViewModel.Factory::class)
-class DetailsReviewViewModel @AssistedInject constructor(
+@HiltViewModel(assistedFactory = ReviewViewModel.Factory::class)
+class ReviewViewModel @AssistedInject constructor(
     @Assisted private val packageName: String,
     private val reviewsHelper: ReviewsHelper
 ) : ViewModel() {
 
     @AssistedFactory
     interface Factory {
-        fun create(packageName: String): DetailsReviewViewModel
+        fun create(packageName: String): ReviewViewModel
     }
 
-    private val TAG = DetailsReviewViewModel::class.java.simpleName
+    private val TAG = ReviewViewModel::class.java.simpleName
 
-    private val _reviews = MutableStateFlow<PagingData<Review>>(PagingData.empty())
+    private val _reviews = MutableStateFlow<PagingData<Review>>(PagingData.Companion.empty())
     val reviews = _reviews.asStateFlow()
 
     init {
@@ -47,7 +46,7 @@ class DetailsReviewViewModel @AssistedInject constructor(
     fun fetchReviews(filter: Review.Filter = Review.Filter.ALL) {
         var reviewsNextPageUrl: String? = null
 
-        createPager { page ->
+        GenericPagingSource.Companion.createPager { page ->
             try {
                 when (page) {
                     1 -> reviewsHelper.getReviews(packageName, filter).also {
