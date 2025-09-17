@@ -42,7 +42,7 @@ fun ExodusScreen(
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsExodusViewModel: DetailsExodusViewModel = hiltViewModel(
-        key = packageName,
+        key = "$packageName/exodus",
         creationCallback = { factory: DetailsExodusViewModel.Factory ->
             factory.create(appDetailsViewModel.exodusReport.value!!)
         }

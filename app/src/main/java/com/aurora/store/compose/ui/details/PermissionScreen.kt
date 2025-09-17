@@ -42,7 +42,7 @@ fun PermissionScreen(
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsPermissionViewModel: DetailsPermissionViewModel = hiltViewModel(
-        key = packageName,
+        key = "$packageName/permission",
         creationCallback = { factory: DetailsPermissionViewModel.Factory ->
             factory.create(appDetailsViewModel.app.value!!.permissions)
         }

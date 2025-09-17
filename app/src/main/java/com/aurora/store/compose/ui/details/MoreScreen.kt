@@ -53,7 +53,7 @@ fun MoreScreen(
     onNavigateToAppDetails: (packageName: String) -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsMoreViewModel: DetailsMoreViewModel = hiltViewModel(
-        key = packageName,
+        key = "$packageName/more",
         creationCallback = { factory: DetailsMoreViewModel.Factory ->
             factory.create(appDetailsViewModel.app.value!!.dependencies.dependentPackages)
         }

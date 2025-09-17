@@ -59,7 +59,7 @@ fun ReviewScreen(
     onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     detailsReviewViewModel: DetailsReviewViewModel = hiltViewModel(
-        key = packageName,
+        key = "$packageName/review",
         creationCallback = { factory: DetailsReviewViewModel.Factory ->
             factory.create(appDetailsViewModel.app.value!!.packageName)
         }
