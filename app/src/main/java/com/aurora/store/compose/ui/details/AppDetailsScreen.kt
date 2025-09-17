@@ -220,9 +220,7 @@ private fun ScreenContentApp(
     val scaffoldNavigator = rememberSupportingPaneScaffoldNavigator<NavKey>(
         scaffoldDirective = scaffoldDirective,
         adaptStrategies = SupportingPaneScaffoldDefaults.adaptStrategies(
-            supportingPaneAdaptStrategy = AdaptStrategy
-                .Levitate()
-                .onlyIfSinglePane(scaffoldDirective)
+            supportingPaneAdaptStrategy = AdaptStrategy.Hide
         )
     )
     val coroutineScope = rememberCoroutineScope()
