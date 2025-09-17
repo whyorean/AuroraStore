@@ -52,7 +52,7 @@ class DownloadsViewModel @Inject constructor(
     }
 
     fun cancelAll() {
-        viewModelScope.launch {
+        viewModelScope.launch(NonCancellable) {
             downloadHelper.cancelAll()
         }
     }
@@ -64,13 +64,13 @@ class DownloadsViewModel @Inject constructor(
     }
 
     fun clearFinished() {
-        viewModelScope.launch {
+        viewModelScope.launch(NonCancellable) {
             downloadHelper.clearFinishedDownloads()
         }
     }
 
     fun clearAll() {
-        viewModelScope.launch {
+        viewModelScope.launch(NonCancellable) {
             downloadHelper.clearAllDownloads()
         }
     }
