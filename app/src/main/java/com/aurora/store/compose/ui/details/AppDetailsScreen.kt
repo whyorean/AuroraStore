@@ -448,61 +448,64 @@ private fun ScreenContentApp(
         }
     }
 
+    @Composable
+    fun ExtraPane(screen: NavKey) {
+        return when (screen) {
+            is ExtraScreen.Review -> ReviewScreen(
+                packageName = app.packageName,
+                onNavigateUp = ::onNavigateBack
+            )
+
+            is ExtraScreen.Exodus -> ExodusScreen(
+                packageName = app.packageName,
+                onNavigateUp = ::onNavigateBack
+            )
+
+            is ExtraScreen.More -> MoreScreen(
+                packageName = app.packageName,
+                onNavigateUp = ::onNavigateBack,
+                onNavigateToAppDetails = onNavigateToAppDetails
+            )
+
+            is ExtraScreen.Permission -> PermissionScreen(
+                packageName = app.packageName,
+                onNavigateUp = ::onNavigateBack
+            )
+
+            is ExtraScreen.Screenshot -> ScreenshotScreen(
+                packageName = app.packageName,
+                index = screen.index,
+                onNavigateUp = ::onNavigateBack
+            )
+
+            is ExtraScreen.ManualDownload -> ManualDownloadScreen(
+                packageName = app.packageName,
+                onNavigateUp = ::onNavigateBack
+            )
+
+            is Screen.DevProfile -> DevProfileScreen(
+                publisherId = app.developerName,
+                onNavigateUp = ::onNavigateBack,
+                onNavigateToAppDetails = { onNavigateToAppDetails(it) }
+            )
+
+            is Screen.PermissionRationale -> PermissionRationaleScreen(
+                onNavigateUp = ::onNavigateBack,
+                requiredPermissions = screen.requiredPermissions,
+                onPermissionCallback = { onInstall() }
+            )
+
+            else -> {}
+        }
+    }
+
     NavigableSupportingPaneScaffold(
         navigator = scaffoldNavigator,
         mainPane = { AnimatedPane { MainPane() } },
         supportingPane = { AnimatedPane { SupportingPane() } },
         extraPane = {
             scaffoldNavigator.currentDestination?.contentKey?.let { screen ->
-                AnimatedPane {
-                    when (screen) {
-                        is ExtraScreen.Review -> ReviewScreen(
-                            packageName = app.packageName,
-                            onNavigateUp = ::onNavigateBack
-                        )
-
-                        is ExtraScreen.Exodus -> ExodusScreen(
-                            packageName = app.packageName,
-                            onNavigateUp = ::onNavigateBack
-                        )
-
-                        is ExtraScreen.More -> MoreScreen(
-                            packageName = app.packageName,
-                            onNavigateUp = ::onNavigateBack,
-                            onNavigateToAppDetails = onNavigateToAppDetails
-                        )
-
-                        is ExtraScreen.Permission -> PermissionScreen(
-                            packageName = app.packageName,
-                            onNavigateUp = ::onNavigateBack
-                        )
-
-                        is ExtraScreen.Screenshot -> ScreenshotScreen(
-                            packageName = app.packageName,
-                            index = screen.index,
-                            onNavigateUp = ::onNavigateBack
-                        )
-
-                        is ExtraScreen.ManualDownload -> ManualDownloadScreen(
-                            packageName = app.packageName,
-                            onNavigateUp = ::onNavigateBack
-                        )
-
-                        is Screen.DevProfile -> DevProfileScreen(
-                            publisherId = app.developerName,
-                            onNavigateUp = ::onNavigateBack,
-                            onNavigateToAppDetails = { onNavigateToAppDetails(it) }
-                        )
-
-                        is Screen.PermissionRationale -> PermissionRationaleScreen(
-                            onNavigateUp = ::onNavigateBack,
-                            requiredPermissions = screen.requiredPermissions,
-                            onPermissionCallback = { onInstall() }
-                        )
-
-                        else -> {}
-                    }
-                }
+                AnimatedPane { ExtraPane(screen) }
             }
         }
     )
