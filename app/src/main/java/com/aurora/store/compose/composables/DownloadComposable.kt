@@ -17,20 +17,26 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SplitButtonDefaults
 import androidx.compose.material3.SplitButtonLayout
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -62,9 +68,9 @@ fun DownloadComposable(
     onClear: () -> Unit = {},
     onCancel: () -> Unit = {},
     onExport: () -> Unit = {},
-    onInstall: () -> Unit = {},
-    onShare: () -> Unit = {}
+    onInstall: () -> Unit = {}
 ) {
+    val context = LocalContext.current
     val progress = "${download.progress}%"
     val speed = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s"
     val eta = getETAString(LocalContext.current, download.timeRemaining)
@@ -152,25 +158,36 @@ fun DownloadComposable(
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                VerticalButtonComposable(
-                    painter = painterResource(R.drawable.ic_share),
-                    text = stringResource(R.string.action_share),
-                    onClick = onShare
+                TextButton(onClick = onInstall, enabled = download.canInstall(context)) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_install),
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_xsmall)))
+                    Text(
+                        text = stringResource(R.string.action_install),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+
+                VerticalDivider(
+                    modifier = Modifier.height(dimensionResource(R.dimen.margin_large))
                 )
 
-                VerticalButtonComposable(
-                    painter = painterResource(R.drawable.ic_install),
-                    text = stringResource(R.string.action_install),
-                    onClick = onInstall
-                )
-
-                VerticalButtonComposable(
-                    painter = painterResource(R.drawable.ic_file_copy),
-                    text = stringResource(R.string.action_export),
-                    onClick = onExport
-                )
+                TextButton(onClick = onExport, enabled = download.canInstall(context)) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_file_copy),
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_xsmall)))
+                    Text(
+                        text = stringResource(R.string.action_export),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
     }

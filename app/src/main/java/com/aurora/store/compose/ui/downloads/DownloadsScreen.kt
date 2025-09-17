@@ -29,7 +29,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composables.DownloadComposable
@@ -73,7 +72,6 @@ fun DownloadsScreen(
         onForceClearAll = { viewModel.clearAll() },
         onClearFinished = { viewModel.clearFinished() },
         onCancel = { packageName -> viewModel.cancel(packageName) },
-        onShare = { download -> context.share(download.displayName, download.packageName) },
         onInstall = { download -> viewModel.install(download) },
         onClear = { download ->
             viewModel.clear(download.packageName, download.versionCode)
@@ -94,7 +92,6 @@ private fun ScreenContent(
     onClear: (download: Download) -> Unit = {},
     onExport: (download: Download) -> Unit = {},
     onInstall: (download: Download) -> Unit = {},
-    onShare: (download: Download) -> Unit = {},
     onCancelAll: () -> Unit = {},
     onForceClearAll: () -> Unit = {},
     onClearFinished: () -> Unit = {}
@@ -106,7 +103,6 @@ private fun ScreenContent(
      * Save the initial loading state to make sure we don't replay the loading animation again.
      */
     var initialLoad by rememberSaveable { mutableStateOf(true) }
-    val context = LocalContext.current
 
     @Composable
     fun SetupMenu() {
@@ -159,20 +155,9 @@ private fun ScreenContent(
                                         download = download,
                                         onClick = { onNavigateToAppDetails(download.packageName) },
                                         onClear = { onClear(download) },
-                                        onShare = { onShare(download) },
                                         onCancel = { onCancel(download.packageName) },
-                                        onExport = {
-                                            when {
-                                                download.canInstall(context) -> onExport(download)
-                                                else -> context.toast(R.string.purchase_no_file)
-                                            }
-                                        },
-                                        onInstall = {
-                                            when {
-                                                download.isSuccessful -> onInstall(download)
-                                                else -> context.toast(R.string.purchase_no_file)
-                                            }
-                                        }
+                                        onExport = { onExport(download) },
+                                        onInstall = { onInstall(download) }
                                     )
                                 }
                             }

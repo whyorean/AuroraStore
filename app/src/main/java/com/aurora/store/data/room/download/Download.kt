@@ -38,7 +38,7 @@ data class Download(
 ) : Parcelable {
     val isFinished get() = downloadStatus in DownloadStatus.finished
     val isRunning get() = downloadStatus in DownloadStatus.running
-    val isSuccessful get() = downloadStatus == DownloadStatus.COMPLETED
+    private val isSuccessful get() = downloadStatus == DownloadStatus.COMPLETED
 
     companion object {
         fun fromApp(app: App): Download {
