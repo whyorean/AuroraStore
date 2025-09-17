@@ -221,12 +221,14 @@ class AppDetailsViewModel @Inject constructor(
     fun purchase(app: App) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                _state.value = AppState.Downloading(0F, 0 ,0)
                 val files = purchaseHelper.purchase(app.packageName, app.versionCode, app.offerType)
                 _purchaseStatus.emit(files.isNotEmpty())
                 if (files.isNotEmpty()) {
                     downloadHelper.enqueueApp(app.copy(fileList = files.toMutableList()))
                 }
             } catch (exception: Exception) {
+                _state.value = defaultAppState
                 _purchaseStatus.emit(false)
                 Log.e(TAG, "Failed to purchase the app", exception)
             }
