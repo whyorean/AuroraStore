@@ -141,7 +141,7 @@ private fun ScreenContent(
                     if (downloads.itemCount == 0) {
                         ErrorComposable(
                             modifier = Modifier.padding(paddingValues),
-                            icon = painterResource(R.drawable.ic_disclaimer),
+                            icon = painterResource(R.drawable.ic_download_manager),
                             message = stringResource(R.string.download_none)
                         )
                     } else {
