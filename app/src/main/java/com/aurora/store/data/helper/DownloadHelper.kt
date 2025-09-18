@@ -110,9 +110,7 @@ class DownloadHelper @Inject constructor(
     suspend fun cancelDownload(packageName: String) {
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
-        downloadsList.filter { it.isNotEmpty() }.firstOrNull()
-            ?.find { it.packageName == packageName }
-            ?.let { downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED) }
+        downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED)
     }
 
     /**
@@ -141,7 +139,7 @@ class DownloadHelper @Inject constructor(
      * Clears finished downloads and their downloaded files
      */
     suspend fun clearFinishedDownloads() {
-        downloadsList.value.filter { it.isFinished }.forEach {
+        downloadDao.downloads().firstOrNull()?.filter { it.isFinished }?.forEach {
             clearDownload(it.packageName, it.versionCode)
         }
     }
@@ -152,8 +150,10 @@ class DownloadHelper @Inject constructor(
      */
     suspend fun cancelAll(updatesOnly: Boolean = false) {
         // Cancel all enqueued downloads first to avoid triggering re-download
-        downloadsList.value.filter { it.downloadStatus == DownloadStatus.QUEUED }
-            .filter { if (updatesOnly) it.isInstalled else true }.forEach {
+        downloadDao.downloads().firstOrNull()
+            ?.filter { it.downloadStatus == DownloadStatus.QUEUED }
+            ?.filter { if (updatesOnly) it.isInstalled else true }
+            ?.forEach {
                 downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED)
             }
 
