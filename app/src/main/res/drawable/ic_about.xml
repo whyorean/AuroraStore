@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: SVG Repo
+  ~ SPDX-License-Identifier: CC0-1.0
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:autoMirrored="true"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M512,512m-448,0a448,448 0,1 0,896 0,448 448,0 1,0 -896,0Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M469.3,469.3h85.3v234.7h-85.3z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M512,352m-53.3,0a53.3,53.3 0,1 0,106.7 0,53.3 53.3,0 1,0 -106.7,0Z" />
+</vector>

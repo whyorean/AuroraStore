@@ -453,10 +453,10 @@ class MoreDialogFragment : DialogFragment() {
                 icon = R.drawable.ic_menu_settings,
                 destinationID = R.id.settingsFragment
             ),
-            ViewOption(
+            ComposeOption(
                 title = R.string.title_about,
                 icon = R.drawable.ic_menu_about,
-                destinationID = R.id.aboutFragment
+                screen = Screen.About
             )
         )
     }

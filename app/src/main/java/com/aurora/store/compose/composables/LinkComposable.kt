@@ -12,7 +12,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,11 +23,16 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.aurora.store.R
 import com.aurora.store.data.model.Link
 
@@ -40,13 +48,19 @@ fun LinkComposable(modifier: Modifier = Modifier, link: Link, onClick: () -> Uni
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
-            .padding(dimensionResource(R.dimen.padding_small)),
+            .padding(dimensionResource(R.dimen.padding_medium)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
     ) {
-        Icon(
-            painter = painterResource(link.icon),
-            contentDescription = null
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(link.icon)
+                .build(),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .requiredSize(dimensionResource(R.dimen.icon_size_default))
+                .clip(CircleShape)
         )
         VerticalDivider(
             modifier = Modifier
@@ -64,7 +78,7 @@ fun LinkComposable(modifier: Modifier = Modifier, link: Link, onClick: () -> Uni
             Text(
                 text = link.subtitle,
                 style = MaterialTheme.typography.bodySmall,
-                maxLines = 1,
+                maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
         }

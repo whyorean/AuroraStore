@@ -92,7 +92,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                         findNavController().navigate(R.id.settingsFragment)
                     }
 
-                    R.id.menu_about -> findNavController().navigate(R.id.aboutFragment)
+                    R.id.menu_about -> requireContext().navigate(Screen.About)
                 }
                 true
             }

@@ -44,4 +44,7 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data object Accounts : Screen()
+
+    @Serializable
+    data object About : Screen()
 }

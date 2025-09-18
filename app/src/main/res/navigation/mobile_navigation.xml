@@ -57,11 +57,6 @@
         android:label="@string/title_updates"
         tools:layout="@layout/fragment_updates" />
     <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.aurora.store.view.ui.about.AboutFragment"
-        android:label="@string/title_about"
-        tools:layout="@layout/fragment_about" />
-    <fragment
         android:id="@+id/appsGamesFragment"
         android:name="com.aurora.store.view.ui.all.AppsGamesFragment"
         android:label="@string/title_apps_games"

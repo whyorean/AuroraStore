@@ -20,6 +20,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import com.aurora.store.MainActivity
 import com.aurora.store.R
+import com.aurora.store.compose.ui.about.AboutScreen
 import com.aurora.store.compose.ui.accounts.AccountsScreen
 import com.aurora.store.compose.ui.blacklist.BlacklistScreen
 import com.aurora.store.compose.ui.details.AppDetailsScreen
@@ -108,6 +109,10 @@ fun NavDisplay(startDestination: NavKey) {
                     onNavigateUp = { onNavigateUp() },
                     onNavigateToSplash = { activity?.startActivity(splashIntent) }
                 )
+            }
+
+            entry<Screen.About> {
+                AboutScreen(onNavigateUp = { onNavigateUp() })
             }
         }
     )
