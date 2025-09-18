@@ -161,7 +161,7 @@
     <string name="onboarding_permission_esm">Διαχειριστής εξωτερικής αποθήκευσης</string>
     <string name="onboarding_permission_installer_desc">Επιτρέψτε την εγκατάσταση εφαρμογών από το Aurora Store</string>
     <string name="pref_install_mode_session">Εγκαταστάτης συνεδρίας</string>
-    <string name="pref_filter_fdroid_summary">Να μην γίνεται έλεγχος για ενημερώσεις για εφαρμογές που λήφθηκαν ή εγκαταστάθηκαν από το F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Να μην γίνεται έλεγχος για ενημερώσεις εφαρμογών που εγκαταστάθηκαν από το F-Droid</string>
     <string name="pref_ui_layout_tab">Επιλέξτε προεπιλεγμένη καρτέλα</string>
     <string name="pref_install_delete_summary">Τα κατεβασμένα APK θα διαγραφούν αμέσως μετά την εγκατάσταση</string>
     <string name="pref_network_title">Δικτύωση</string>
@@ -246,11 +246,11 @@
     <string name="installer_shizuku_unavailable">Το Shizuku δεν έχει εγκατασταθεί ή ρυθμιστεί σωστά.</string>
     <string name="action_request_analysis">Αίτηση νέας ανάλυσης</string>
     <string name="download_clear_finished">Η εκκαθάριση ολοκληρώθηκε</string>
-    <string name="pref_updates_incompatible">Μη συμβατές ενημερώσεις</string>
+    <string name="pref_updates_incompatible">Εμφάνιση ενημερώσεων που ενδέχεται να αποτύχουν</string>
     <string name="pref_updates_incompatible_desc">Εμφάνιση ενημερώσεων από μη συμβατές ή απενεργοποιημένες εγαρμογές που μπορεί να αποτύχουν να εγκατασταθούν</string>
     <string name="pref_vending_version_device">Προεπιλογή (από καταγραφές συσκευής)</string>
     <string name="pref_network_proxy_url">URL μεσολάβησης</string>
-    <string name="pref_aurora_only">Μόνο εφαρμογές Aurora Store</string>
+    <string name="pref_aurora_only">Φιλτράρισμα εφαρμογών από άλλες πηγές</string>
     <string name="session_login_failed_google">Δεν ήταν δυνατή η σύνδεση μέσω Google</string>
     <string name="session_good">Ουαου! Όλα καλά.</string>
     <string name="session_enjoy">Συνδεθείτε και απολαύστε.</string>
@@ -360,7 +360,7 @@
     <string name="toast_fav_import_success">Τα αγαπημένα εισήχθησαν!</string>
     <string name="toast_fav_export_success">Τα αγαπημένα εξήχθησαν!</string>
     <string name="export_app_summary_success">Επιτυχής εξαγωγή πακέτου app</string>
-    <string name="export_app_summary_fail">Αποτυχία εξαγωγής πακέτου app</string>
+    <string name="export_app_summary_fail">Αποτυχία εξαγωγής πακέτου εφαρμογής</string>
     <string name="action_logout_confirmation_title">Αποσύνδεση;</string>
     <string name="action_logout_confirmation_message">Είστε σίγουροι ότι θέλετε να αποσυνδεθείτε;</string>
     <string name="check_updates">Έλεγχος για ενημερώσεις</string>
@@ -427,4 +427,22 @@
     <string name="set">Ορισμός</string>
     <string name="pref_updates_restrictions_title">Περιορισμοί αυτόματων ενημερώσεων</string>
     <string name="pref_updates_restrictions_desc">Ρύθμιση περιορισμών συσκευών για αυτοματοποιημένες ενημερώσεις.</string>
+    <string name="action_install_microG">Εγκατάσταση πακέτου microG</string>
+    <string name="details_data_safety_collect">Δεδομένα που ενδέχεται να συλλέγει αυτή η εφαρμογή</string>
+    <string name="details_data_safety_collect_none">Ο προγραμματιστής λέει ότι αυτή η εφαρμογή δεν συλλέγει δεδομένα χρήστη.</string>
+    <string name="details_data_safety_shared">Δεδομένα που ενδέχεται να κοινοποιήσει αυτή η εφαρμογή</string>
+    <string name="details_data_safety_share_none">Ο προγραμματιστής λέει ότι αυτή η εφαρμογή δεν κοινοποιεί δεδομένα χρηστών σε άλλες εταιρείες ή οργανισμούς.</string>
+    <string name="exodus_tracker_desc">Αυτή η έκδοση της εφαρμογής ενδέχεται να περιέχει περισσότερους ιχνηλάτες που δεν υπάρχουν ακόμη στη βάση δεδομένων απορρήτου Exodus .</string>
+    <string name="app_info_downloads">Λήψεις</string>
+    <string name="app_info_min_android">Ελάχιστη έκδοση Android</string>
+    <string name="onboarding_title_gsf">Συμβατότητα Εφαρμογής</string>
+    <string name="onboarding_title_gsf_desc">Λείπουν εξαρτήσεις (πακέτα ή βιβλιοθήκες)</string>
+    <string name="microg_privacy_policy">Διάβασε την Πολιτική Απορρήτου της microG</string>
+    <string name="microg_license_agreement">Διάβασε την Άδεια Χρήσης και Συμφωνίας της microG</string>
+    <string name="details_more_info">Περισσότερες πληροφορίες</string>
+    <string name="details_more_target_api">Στόχοι</string>
+    <string name="details_more_package_name">Όνομα πακέτου</string>
+    <string name="pref_updates_app_source">Πηγή εφαρμογής</string>
+    <string name="select_app_for_details">Επιλέξτε μια εφαρμογή για περισσότερες λεπτομέρειες</string>
+    <string name="action_filter_no_ads">Δεν υπάρχουν διαφημίσεις</string>
 </resources>
