@@ -123,13 +123,19 @@ fun DownloadComposable(
                     when {
                         download.isRunning -> {
                             SplitButtonDefaults.LeadingButton(onClick = onCancel) {
-                                Text(text = stringResource(R.string.action_cancel))
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_cancel),
+                                    contentDescription = stringResource(R.string.action_cancel)
+                                )
                             }
                         }
 
                         else -> {
                             SplitButtonDefaults.LeadingButton(onClick = onClear) {
-                                Text(text = stringResource(R.string.action_clear))
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_delete_forever),
+                                    contentDescription = stringResource(R.string.action_clear)
+                                )
                             }
                         }
                     }
