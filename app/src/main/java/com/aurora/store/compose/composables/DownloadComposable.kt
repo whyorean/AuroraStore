@@ -89,7 +89,7 @@ fun DownloadComposable(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Row {
+            Row(modifier = Modifier.weight(1F),) {
                 AnimatedAppIconComposable(
                     modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
                     iconUrl = download.iconURL,
