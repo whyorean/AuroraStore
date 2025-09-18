@@ -97,6 +97,10 @@ fun Details(
                             )
                         }
 
+                        AppState.Purchasing::class -> {
+                            stringResource(R.string.preparing_to_install)
+                        }
+
                         else -> {
                             stringResource(R.string.version, versionName, versionCode)
                         }

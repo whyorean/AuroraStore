@@ -274,12 +274,14 @@ private fun ScreenContentApp(
     @Composable
     fun SetupActions() {
         when (state) {
+            is AppState.Purchasing,
             is AppState.Downloading -> {
                 Actions(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_cancel),
                     isPrimaryActionEnabled = false,
-                    onSecondaryAction = onCancelDownload
+                    onSecondaryAction = onCancelDownload,
+                    isSecondaryActionEnabled = state !is AppState.Purchasing
                 )
             }
 

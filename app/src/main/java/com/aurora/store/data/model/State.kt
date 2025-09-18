@@ -55,6 +55,7 @@ sealed class AppState {
         val timeRemaining: Long
     ) : AppState()
 
+    data object Purchasing : AppState()
     data class Installing(val progress: Float) : AppState()
     data class Error(val message: String?) : AppState()
     data class Installed(val versionName: String, val versionCode: Long) : AppState()
@@ -67,7 +68,7 @@ sealed class AppState {
      * Whether there is some sort of ongoing process related to the app
      */
     fun inProgress(): Boolean {
-        return this is Downloading || this is Installing
+        return this is Downloading || this is Installing || this is Purchasing
     }
 
     /**
