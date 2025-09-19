@@ -41,9 +41,7 @@ import com.aurora.store.BuildConfig.VERSION_NAME
 import com.aurora.store.R
 import com.aurora.store.compose.composables.LinkComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.ui.accounts.LogoutDialog
 import com.aurora.store.data.model.Link
-import com.aurora.store.data.providers.AccountProvider
 
 @Composable
 fun AboutScreen(onNavigateUp: () -> Unit) {
