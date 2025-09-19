@@ -34,7 +34,6 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
-import kotlin.math.abs
 
 /**
  * Composable to show icon for an app that can be animated to also show install progress
