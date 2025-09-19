@@ -220,7 +220,7 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     fun purchase(app: App) {
-        viewModelScope.launch(NonCancellable + Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 _state.value = AppState.Purchasing
                 val files = purchaseHelper.purchase(app.packageName, app.versionCode, app.offerType)
