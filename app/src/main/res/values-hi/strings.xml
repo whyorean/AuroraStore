@@ -427,4 +427,8 @@
     <string name="details_compatibility_status_unknown">अज्ञात - अब तक जाँच नहीं हुई है</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> ऐप संस्थापित</string>
     <string name="verification_failed">डाउनलोड की गई फ़ाइलें सत्यापित करने में विफल</string>
+    <string name="action_install_microG">microG पोटली संस्थापित करें</string>
+    <string name="details_data_safety_collect">जो जानकारी यह ऐप एकत्र कर सकता है</string>
+    <string name="details_data_safety_collect_none">प्रोगामर ने बताया कि यह ऐप कोई प्रयोक्ता-जानकारी एकत्र नहीं करता है।</string>
+    <string name="details_data_safety_shared">जो जानकारी यह ऐप साझा कर सकता है</string>
 </resources>
