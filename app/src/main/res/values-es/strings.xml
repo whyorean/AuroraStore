@@ -458,4 +458,5 @@
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permisos</string>
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conocidos encontrados en <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="manual_download_version_error">El código de versión solo puede contener números</string>
+    <string name="preparing_to_install">Preparando para instalar</string>
 </resources>
