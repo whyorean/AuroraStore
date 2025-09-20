@@ -458,4 +458,5 @@
     <string name="action_filter_no_ads">Aucune publicité</string>
     <string name="action_filter_no_gms">Pas de Services Play</string>
     <string name="manual_download_version_error">La version du code ne peut comporter que des chiffres</string>
+    <string name="preparing_to_install">Préparation de l\'installation</string>
 </resources>
