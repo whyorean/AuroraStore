@@ -330,7 +330,7 @@
     <string name="item_required">Påkrævet</string>
     <string name="item_optional">Valgfri</string>
     <string name="permissions_denied">Påkrævede tilladelser blev nægtet. Giv dem venligst for at fortsætte handlingen</string>
-    <string name="login_rate_limited">Ups, du er hastighedsbegrænset</string>
+    <string name="login_rate_limited">Du er hastighedsbegrænset</string>
     <string name="pref_vending_version_title">Google Play-version</string>
     <string name="title_favourites_manager">Favoritapps</string>
     <string name="shizuku_installer_desc">Kræver Shizuku eller Sui; skal opsættes og have tilladelse</string>
@@ -433,4 +433,10 @@
     <string name="app_info_target_android">Mål-API-niveau</string>
     <string name="pref_common_advanced">Avanceret</string>
     <string name="pref_updates_app_source">App-kilde</string>
+    <string name="details_data_safety_collect">Data, som denne app kan indsamle</string>
+    <string name="details_data_safety_collect_none">Udvikleren siger, at denne app ikke indsamler brugerdata.</string>
+    <string name="details_data_safety_shared">Data, som denne app kan dele</string>
+    <string name="details_data_safety_share_none">Udvikleren siger, at denne app ikke deler brugerdata med andre virksomheder eller organisationer.</string>
+    <string name="exodus_tracker_desc">Denne version af appen kan stadig indeholde flere trackere, der endnu ikke findes i Exodus Privacys database.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> kendt(e) tracker(e) fundet i <xliff:g id="app_version_name">%2$s</xliff:g></string>
 </resources>

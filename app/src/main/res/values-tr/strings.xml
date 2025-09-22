@@ -458,4 +458,5 @@
     <string name="manual_download_version_error">Sürüm kodu yalnızca rakam içerebilir</string>
     <string name="action_filter_no_ads">Reklam yok</string>
     <string name="action_filter_no_gms">Play hizmetleri yok</string>
+    <string name="preparing_to_install">Kuruluma hazırlanıyor</string>
 </resources>
