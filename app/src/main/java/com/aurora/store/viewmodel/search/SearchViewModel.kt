@@ -20,7 +20,7 @@ import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
 import com.aurora.store.data.model.SearchFilter
-import com.aurora.store.data.paging.GenericPagingSource.Companion.createPager
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -82,7 +82,7 @@ class SearchViewModel @Inject constructor(
             }.distinctBy { app -> app.packageName }
         }
 
-        createPager { page ->
+        manualPager { page ->
             try {
                 when (page) {
                     1 -> contract.searchResults(query)

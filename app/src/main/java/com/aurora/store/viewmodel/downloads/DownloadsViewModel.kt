@@ -10,12 +10,11 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.work.ExportWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -88,13 +87,8 @@ class DownloadsViewModel @Inject constructor(
     }
 
     private fun getPagedDownloads() {
-        Pager(
-            config = PagingConfig(
-                pageSize = 20,
-                enablePlaceholders = true
-            ),
-            pagingSourceFactory = { downloadHelper.pagedDownloads }
-        ).flow.distinctUntilChanged()
+        pager { downloadHelper.pagedDownloads }.flow
+            .distinctUntilChanged()
             .cachedIn(viewModelScope)
             .onEach { _downloads.value = it }
             .launchIn(viewModelScope)

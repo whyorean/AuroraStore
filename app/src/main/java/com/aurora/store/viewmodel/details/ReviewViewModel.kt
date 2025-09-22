@@ -12,7 +12,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.helpers.ReviewsHelper
-import com.aurora.store.data.paging.GenericPagingSource
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -46,7 +46,7 @@ class ReviewViewModel @AssistedInject constructor(
     fun fetchReviews(filter: Review.Filter = Review.Filter.ALL) {
         var reviewsNextPageUrl: String? = null
 
-        GenericPagingSource.Companion.createPager { page ->
+        manualPager { page ->
             try {
                 when (page) {
                     1 -> reviewsHelper.getReviews(packageName, filter).also {

@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 /**
  * A generic paging source that is supposed to be able to load any type of data
  *
- * Consider calling [createPager] method to create an instance of [Pager] instead of interacting
+ * Consider calling [pager] method to create an instance of [Pager] instead of interacting
  * with the class directly.
  * @param block Data to load into the pager
  */
@@ -27,12 +27,28 @@ class GenericPagingSource<T : Any>(
         private const val DEFAULT_PAGE_SIZE = 20
 
         /**
-         * Method to dynamically create and manage pager objects
+         * Method to create pager objects using [PagingSource]
+         * @param pageSize Size of the page
+         * @param enablePlaceholders Whether placeholders should be shown
+         * @param data Data to load into the pager
+         * @see manualPager
+         */
+        fun <T : Any> pager(
+            pageSize: Int = DEFAULT_PAGE_SIZE,
+            enablePlaceholders: Boolean = true,
+            data: () -> PagingSource<Int, T>
+        ): Pager<Int, T> = Pager(
+            config = PagingConfig(enablePlaceholders = enablePlaceholders, pageSize = pageSize),
+            pagingSourceFactory = { data() }
+        )
+
+        /**
+         * Method to create and manage pager objects manually
          * @param pageSize Size of the page
          * @param enablePlaceholders Whether placeholders should be shown
          * @param data Data to load into the pager
          */
-        fun <T : Any> createPager(
+        fun <T : Any> manualPager(
             pageSize: Int = DEFAULT_PAGE_SIZE,
             enablePlaceholders: Boolean = true,
             data: suspend (Int) -> List<T>
