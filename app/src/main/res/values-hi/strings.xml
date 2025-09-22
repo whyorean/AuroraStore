@@ -12,7 +12,7 @@
     <string name="action_blacklist">कालीसूची</string>
     <string name="action_back">वापस जाएं</string>
     <string name="account_logout">ऑरोरा से लॉगआउट करें</string>
-    <string name="account_login_using">इसके द्वारा लॉगिन करें</string>
+    <string name="account_login_using">इनसे लॉगिन करें</string>
     <string name="account_google">गूगल</string>
     <string name="account_anonymous">अज्ञात</string>
     <string name="about_xda_summary">चर्चा या सुझाव के लिए ऑरोरा स्टोर XDA थ्रेड देखें।</string>
@@ -137,7 +137,7 @@
     <string name="tab_categories">श्रेणियां</string>
     <string name="title_spoof_manager">छलावरण प्रबंधक</string>
     <string name="title_about">ऐप के बारे में</string>
-    <string name="details_dev_details">विकासकर्ता संपर्क</string>
+    <string name="details_dev_details">डेवलपर संपर्क</string>
     <string name="details_no_updates">कोई अपडेट मौजूद नहीं</string>
     <string name="pref_common_extra">अतिरिक्त</string>
     <string name="toast_page_unavailable">ब्राउज़ पृष्ठ अनुपलब्ध है</string>
@@ -161,7 +161,7 @@
     <string name="details_free">निःशुल्क</string>
     <string name="details_beta_available">बीटा प्रोग्राम से जुड़ें?</string>
     <string name="details_description">जानकारी</string>
-    <string name="details_dev_profile">विकासकर्ता प्रोफाइल</string>
+    <string name="details_dev_profile">डेवलपर प्रोफाइल</string>
     <string name="toast_anonymous_restriction">अनाम खातों पर उपलब्ध नहीं है</string>
     <string name="installer_status_failure_conflict">विरोधाभासी पैकेज मौजूद है</string>
     <string name="onboarding_permission_installer_desc">ऑरोरा स्टोर से ऐप इंस्टॉल करने की अनुमति दें</string>
@@ -182,7 +182,7 @@
     <string name="action_post">पोस्ट करें</string>
     <string name="action_restart">पुनः प्रारंभ करें</string>
     <string name="action_info">ऐप जानकारी</string>
-    <string name="action_resume">पुनः प्रारंभ</string>
+    <string name="action_resume">फिर शुरू करें</string>
     <string name="download_eta_calculating">गणना की जा रही है</string>
     <string name="filter_review_four">चार</string>
     <string name="details_beta_description">आप बाकि पब्लिक से पहले नए फीचर और बग देखेंगे। डेवलपरों को अपना फीडबैक दें ताकि वो ऐप बेहतर कर सकें।</string>
@@ -359,7 +359,7 @@
     <string name="toast_fav_export_success">पसंदीदा निर्यातित!</string>
     <string name="export_app_summary_success">सफलतापूर्वक ऐप ब॔डल निर्यात हुआ</string>
     <string name="export_app_summary_fail">ऐप बंडल निर्यात करने में विफल</string>
-    <string name="action_uninstall_success">सफलतापूर्वक अनइंस्टॉल हूई</string>
+    <string name="action_uninstall_success">अनइंस्टॉल सफल</string>
     <string name="pref_network_proxy_url_message">प्रॉक्सी में से सारा डाटा गुजारने के लिए एक वैध प्रॉक्सी का पता भरें।</string>
     <string name="action_logout_confirmation_title">लागआऊट करें?</string>
     <string name="action_logout_confirmation_message">क्या वाकई आप लागआऊट करना चाहतें हैं?</string>
@@ -427,9 +427,36 @@
     <string name="details_compatibility_status_unknown">अज्ञात - अब तक जाँच नहीं हुई है</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> ऐप संस्थापित</string>
     <string name="verification_failed">डाउनलोड की गई फ़ाइलें सत्यापित करने में विफल</string>
-    <string name="action_install_microG">microG पोटली संस्थापित करें</string>
+    <string name="action_install_microG">microG बंडल इंस्टॉल करें</string>
     <string name="details_data_safety_collect">जो जानकारी यह ऐप एकत्र कर सकता है</string>
-    <string name="details_data_safety_collect_none">प्रोगामर ने बताया कि यह ऐप कोई प्रयोक्ता-जानकारी एकत्र नहीं करता है।</string>
+    <string name="details_data_safety_collect_none">डेवलपर ने बताया कि यह ऐप कोई प्रयोक्ता-जानकारी एकत्र नहीं करता है।</string>
     <string name="details_data_safety_shared">जो जानकारी यह ऐप साझा कर सकता है</string>
     <string name="details_data_safety_share_none">डेवलपर का कहना है कि यह ऐप उपयोगकर्ता डेटा को अन्य कंपनियों या संगठनों के साथ साझा नहीं करता है।</string>
+    <string name="exodus_tracker_desc">ऐप के इस संस्करण में अभी भी अधिक ट्रैकर्स हो सकते हैं जो अभी तक एक्सोडस प्राइवेसी डेटाबेस में मौजूद नहीं हैं।</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> ज्ञात ट्रैकर <xliff:g id="app_version_name">%2$s</xliff:g> में पाए गए</string>
+    <string name="app_info_downloads">डाउनलोड</string>
+    <string name="app_info_updated_on">आखरी अपडेट</string>
+    <string name="app_info_min_android">न्यूनतम Android वर्जन</string>
+    <string name="app_info_target_android">टारगेट API लेवल</string>
+    <string name="onboarding_title_gsf">ऐप संगतता</string>
+    <string name="onboarding_title_gsf_desc">अनुपलब्ध निर्भरताएँ</string>
+    <string name="onboarding_gms_agreement">मैंने microG की सेवा की शर्तें और गोपनीयता नीति पढ़ ली है और मैं उनसे सहमत हूँ</string>
+    <string name="onboarding_gms_missing">हमें आपके डिवाइस पर Google Play सेवाएं नहीं मिल सकीं, कई लोकप्रिय ऐप्स को अब ठीक से काम करने के लिए इसकी आवश्यकता है!</string>
+    <string name="onboarding_gms_microg">microG एक मुफ़्त और ओपन-सोर्स कार्यान्वयन है जो पुनः कार्यान्वयन के माध्यम से एंड्रॉइड डिवाइसों के लिए Google Play सेवाओं पर निर्भर ऐप्स चलाने के लिए समान कार्यक्षमता प्रदान करता है।\n\nmicroG ऐप्स को उन Google API तक पहुँचने में सक्षम बनाता है, जिससे उपयोगकर्ताओं के लिए अनुकूलता बढ़ती है और गोपनीयता लाभ भी मिलते हैं।\n\nजब आप Google मोबाइल सेवाओं पर निर्भर एप्लिकेशन खोलेंगे, तो microG स्वचालित रूप से पृष्ठभूमि में चलेगा।</string>
+    <string name="microg_privacy_policy">microG गोपनीयता नीति पढ़ें</string>
+    <string name="microg_license_agreement">microG लाइसेंस और अनुबंध पढ़ें</string>
+    <string name="microg_website">microG वेबसाइट पर जाएँ</string>
+    <string name="manual_download_version_error">वर्जन कोड में केवल अंक ही हो सकते हैं</string>
+    <string name="no_description">कोई विवरण उपलब्ध नहीं</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> अनुमतियाँ</string>
+    <string name="details_more_info">अधिक जानकारी</string>
+    <string name="details_more_target_api">टारगेट</string>
+    <string name="details_more_package_name">पैकेज का नाम</string>
+    <string name="details_more_content_rating">सामग्री मूल्यांकन</string>
+    <string name="preparing_to_install">इंस्टॉल करने की तैयारी</string>
+    <string name="pref_common_advanced">उन्नत (एडवांस)</string>
+    <string name="pref_updates_app_source">ऐप स्रोत</string>
+    <string name="select_app_for_details">अधिक जानकारी के लिए कोई ऐप चुनें</string>
+    <string name="action_filter_no_ads">कोई विज्ञापन नहीं</string>
+    <string name="action_filter_no_gms">बिना Play Services के</string>
 </resources>
