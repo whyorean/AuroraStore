@@ -13,6 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -96,6 +100,13 @@ private fun ScreenContent(
     onImportFavourites: () -> Unit = {},
     onExportFavourites: () -> Unit = {}
 ) {
+    /*
+     * For some reason paging3 frequently out-of-nowhere invalidates the list which causes
+     * the loading animation to play again even if the keys are same causing a glitching effect.
+     *
+     * Save the initial loading state to make sure we don't replay the loading animation again.
+     */
+    var initialLoad by rememberSaveable { mutableStateOf(true) }
 
     @Composable
     fun SetupMenu() {
@@ -122,18 +133,14 @@ private fun ScreenContent(
                 .fillMaxSize()
                 .padding(vertical = dimensionResource(R.dimen.padding_medium))
         ) {
-            when (favourites.loadState.refresh) {
-                is LoadState.Loading -> ProgressComposable()
-
-                is LoadState.Error -> {
-                    ErrorComposable(
-                        modifier = Modifier.padding(paddingValues),
-                        icon = painterResource(R.drawable.ic_disclaimer),
-                        message = stringResource(R.string.error)
-                    )
+            when {
+                favourites.loadState.refresh is LoadState.Loading && initialLoad -> {
+                    ProgressComposable()
                 }
 
                 else -> {
+                    initialLoad = false
+
                     if (favourites.itemCount == 0) {
                         ErrorComposable(
                             modifier = Modifier.padding(paddingValues),
@@ -148,6 +155,7 @@ private fun ScreenContent(
                             ) { index ->
                                 favourites[index]?.let { favourite ->
                                     FavouriteComposable(
+                                        modifier = Modifier.animateItem(),
                                         favourite = favourite,
                                         onClick = { onNavigateToAppDetails(favourite.packageName) },
                                         onClear = { onRemoveFavourite(favourite.packageName) }

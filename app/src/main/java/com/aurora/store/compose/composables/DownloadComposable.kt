@@ -36,7 +36,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,8 +54,11 @@ import com.aurora.store.R
 import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.getETAString
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Date
 
 /**
@@ -78,16 +82,20 @@ fun DownloadComposable(
     val speed = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s"
     val eta = getETAString(LocalContext.current, download.timeRemaining)
 
-    var isExpanded by rememberSaveable { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+    var isVisible by remember { mutableStateOf(true) }
+    var isExpanded by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .clickable(onClick = onClick)
-            .padding(
-                horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_small)
-            )
-    ) {
+    fun requestClear() {
+        coroutineScope.launch {
+            isVisible = false
+            delay(300) // Let the animation play
+            onClear()
+        }
+    }
+
+    @Composable
+    fun SetupDownload() {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -100,7 +108,8 @@ fun DownloadComposable(
                     progress = download.progress.toFloat()
                 )
                 Column(
-                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small)),
+                    modifier = Modifier
+                        .padding(horizontal = dimensionResource(R.dimen.margin_small)),
                 ) {
                     Text(
                         text = download.displayName,
@@ -112,10 +121,10 @@ fun DownloadComposable(
                         text = stringResource(download.downloadStatus.localized),
                         style = MaterialTheme.typography.bodySmall
                     )
-                    AnimatedContent(targetState = download.isRunning) { isRunning ->
+                    AnimatedContent(targetState = download.downloadStatus) { status ->
                         Text(
                             style = MaterialTheme.typography.bodySmall,
-                            text = if (isRunning) {
+                            text = if (status in DownloadStatus.running) {
                                 "$progress • $speed • $eta"
                             } else {
                                 DateUtils.getRelativeTimeSpanString(
@@ -142,7 +151,7 @@ fun DownloadComposable(
                         }
 
                         else -> {
-                            SplitButtonDefaults.LeadingButton(onClick = onClear) {
+                            SplitButtonDefaults.LeadingButton(onClick = { requestClear() }) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_delete_forever),
                                     contentDescription = stringResource(R.string.action_clear)
@@ -168,7 +177,10 @@ fun DownloadComposable(
                 }
             )
         }
+    }
 
+    @Composable
+    fun SetupExpandedMenu() {
         AnimatedVisibility(
             visible = isExpanded,
             enter = slideInVertically() + expandVertically() + fadeIn(),
@@ -207,6 +219,23 @@ fun DownloadComposable(
                     )
                 }
             }
+        }
+    }
+
+    AnimatedVisibility(
+        visible = isVisible,
+        exit = shrinkVertically() + fadeOut()
+    ) {
+        Column(
+            modifier = modifier
+                .clickable(onClick = onClick)
+                .padding(
+                    horizontal = dimensionResource(R.dimen.padding_medium),
+                    vertical = dimensionResource(R.dimen.padding_small)
+                )
+        ) {
+            SetupDownload()
+            SetupExpandedMenu()
         }
     }
 }

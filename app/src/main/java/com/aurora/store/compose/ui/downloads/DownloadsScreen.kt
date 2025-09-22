@@ -151,6 +151,7 @@ private fun ScreenContent(
                             ) { index ->
                                 downloads[index]?.let { download ->
                                     DownloadComposable(
+                                        modifier = Modifier.animateItem(),
                                         download = download,
                                         onClick = { onNavigateToAppDetails(download.packageName) },
                                         onClear = { onClear(download) },
