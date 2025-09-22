@@ -5,7 +5,9 @@
 
 package com.aurora.store.compose.composables
 
+import android.text.format.DateUtils
 import android.text.format.Formatter
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -53,6 +55,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.getETAString
+import java.util.Date
 
 /**
  * Composable to display details of a download in a list
@@ -109,10 +112,18 @@ fun DownloadComposable(
                         text = stringResource(download.downloadStatus.localized),
                         style = MaterialTheme.typography.bodySmall
                     )
-                    if (download.isRunning) {
+                    AnimatedContent(targetState = download.isRunning) { isRunning ->
                         Text(
-                            text = "$progress • $speed • $eta",
-                            style = MaterialTheme.typography.bodySmall
+                            style = MaterialTheme.typography.bodySmall,
+                            text = if (isRunning) {
+                                "$progress • $speed • $eta"
+                            } else {
+                                DateUtils.getRelativeTimeSpanString(
+                                    download.downloadedAt,
+                                    Date().time,
+                                    DateUtils.DAY_IN_MILLIS
+                                ).toString()
+                            }
                         )
                     }
                 }
