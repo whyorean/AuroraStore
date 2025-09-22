@@ -67,11 +67,6 @@
         android:label="@string/title_spoof_manager"
         tools:layout="@layout/fragment_spoof" />
     <fragment
-        android:id="@+id/favouriteFragment"
-        android:name="com.aurora.store.view.ui.commons.FavouriteFragment"
-        android:label="@string/title_favourites_manager"
-        tools:layout="@layout/fragment_generic_with_toolbar" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"

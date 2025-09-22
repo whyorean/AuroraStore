@@ -49,6 +49,7 @@ import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.composables.details.ReviewComposable
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.emptyPagingItems
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ReviewViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -87,7 +88,7 @@ fun ReviewScreen(
 private fun ScreenContent(
     topAppBarTitle: String? = null,
     onNavigateUp: () -> Unit = {},
-    reviews: LazyPagingItems<Review>,
+    reviews: LazyPagingItems<Review> = emptyPagingItems(),
     onFilter: (filter: Review.Filter) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {

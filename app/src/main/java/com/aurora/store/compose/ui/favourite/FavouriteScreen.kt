@@ -1,0 +1,169 @@
+/*
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+package com.aurora.store.compose.ui.favourite
+
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
+import com.aurora.Constants.JSON_MIME_TYPE
+import com.aurora.extensions.toast
+import com.aurora.store.R
+import com.aurora.store.compose.composables.ErrorComposable
+import com.aurora.store.compose.composables.FavouriteComposable
+import com.aurora.store.compose.composables.ProgressComposable
+import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.preview.emptyPagingItems
+import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
+import com.aurora.store.compose.ui.favourite.menu.MenuItem
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.viewmodel.all.FavouriteViewModel
+import java.util.Calendar
+
+@Composable
+fun FavouriteScreen(
+    onNavigateUp: () -> Unit,
+    onNavigateToAppDetails: (packageName: String) -> Unit,
+    viewModel: FavouriteViewModel = hiltViewModel()
+) {
+    val context = LocalContext.current
+    val favourites = viewModel.favourites.collectAsLazyPagingItems()
+
+    val documentOpenLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument(),
+        onResult = {
+            if (it != null) {
+                viewModel.importFavourites(it)
+                context.toast(R.string.toast_fav_import_success)
+            } else {
+                context.toast(R.string.toast_fav_import_failed)
+            }
+        }
+    )
+
+    val documentCreateLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument(JSON_MIME_TYPE),
+        onResult = {
+            if (it != null) {
+                viewModel.exportFavourites(it)
+                context.toast(R.string.toast_fav_export_success)
+            } else {
+                context.toast(R.string.toast_fav_export_failed)
+            }
+        }
+    )
+
+    ScreenContent(
+        favourites = favourites,
+        onNavigateUp = onNavigateUp,
+        onNavigateToAppDetails = onNavigateToAppDetails,
+        onRemoveFavourite = { packageName -> viewModel.removeFavourite(packageName) },
+        onImportFavourites = {
+            documentOpenLauncher.launch(arrayOf(JSON_MIME_TYPE))
+        },
+        onExportFavourites = {
+            documentCreateLauncher.launch(
+                "aurora_store_favourites_${Calendar.getInstance().time.time}.json"
+            )
+        }
+    )
+}
+
+@Composable
+private fun ScreenContent(
+    favourites: LazyPagingItems<Favourite> = emptyPagingItems(),
+    onNavigateUp: () -> Unit = {},
+    onNavigateToAppDetails: (packageName: String) -> Unit = {},
+    onRemoveFavourite: (packageName: String) -> Unit = {},
+    onImportFavourites: () -> Unit = {},
+    onExportFavourites: () -> Unit = {}
+) {
+
+    @Composable
+    fun SetupMenu() {
+        FavouriteMenu { menuItem ->
+            when (menuItem) {
+                MenuItem.IMPORT -> onImportFavourites()
+                MenuItem.EXPORT -> onExportFavourites()
+            }
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBarComposable(
+                title = stringResource(R.string.title_favourites_manager),
+                onNavigateUp = onNavigateUp,
+                actions = { if (favourites.itemCount != 0) SetupMenu() }
+            )
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+                .padding(vertical = dimensionResource(R.dimen.padding_medium))
+        ) {
+            when (favourites.loadState.refresh) {
+                is LoadState.Loading -> ProgressComposable()
+
+                is LoadState.Error -> {
+                    ErrorComposable(
+                        modifier = Modifier.padding(paddingValues),
+                        icon = painterResource(R.drawable.ic_disclaimer),
+                        message = stringResource(R.string.error)
+                    )
+                }
+
+                else -> {
+                    if (favourites.itemCount == 0) {
+                        ErrorComposable(
+                            modifier = Modifier.padding(paddingValues),
+                            icon = painterResource(R.drawable.ic_favorite_unchecked),
+                            message = stringResource(R.string.details_no_favourites)
+                        )
+                    } else {
+                        LazyColumn {
+                            items(
+                                count = favourites.itemCount,
+                                key = favourites.itemKey { it.packageName }
+                            ) { index ->
+                                favourites[index]?.let { favourite ->
+                                    FavouriteComposable(
+                                        favourite = favourite,
+                                        onClick = { onNavigateToAppDetails(favourite.packageName) },
+                                        onClear = { onRemoveFavourite(favourite.packageName) }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun FavouriteScreenPreview() {
+    ScreenContent()
+}

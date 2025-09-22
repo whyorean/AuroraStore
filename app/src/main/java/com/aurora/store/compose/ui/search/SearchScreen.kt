@@ -70,6 +70,7 @@ import com.aurora.store.compose.composables.SearchSuggestionComposable
 import com.aurora.store.compose.composables.app.AppListComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.emptyPagingItems
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
@@ -98,7 +99,7 @@ fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltView
 @Composable
 private fun ScreenContent(
     suggestions: List<SearchSuggestEntry> = emptyList(),
-    results: LazyPagingItems<App> = flowOf(PagingData.empty<App>()).collectAsLazyPagingItems(),
+    results: LazyPagingItems<App> = emptyPagingItems(),
     onNavigateUp: () -> Unit = {},
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},

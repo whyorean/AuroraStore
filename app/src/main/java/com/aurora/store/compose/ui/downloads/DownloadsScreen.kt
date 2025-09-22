@@ -25,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
@@ -35,11 +34,11 @@ import com.aurora.store.compose.composables.DownloadComposable
 import com.aurora.store.compose.composables.ErrorComposable
 import com.aurora.store.compose.composables.ProgressComposable
 import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.preview.emptyPagingItems
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
 import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.viewmodel.downloads.DownloadsViewModel
-import kotlinx.coroutines.flow.flowOf
 
 @Composable
 fun DownloadsScreen(
@@ -85,7 +84,7 @@ fun DownloadsScreen(
 
 @Composable
 private fun ScreenContent(
-    downloads: LazyPagingItems<Download> = flowOf(PagingData.empty<Download>()).collectAsLazyPagingItems(),
+    downloads: LazyPagingItems<Download> = emptyPagingItems(),
     onNavigateUp: () -> Unit = {},
     onNavigateToAppDetails: (packageName: String) -> Unit = {},
     onCancel: (packageName: String) -> Unit = {},
