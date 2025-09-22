@@ -122,7 +122,7 @@
     <string name="title_download_manager">डाउनलोड</string>
     <string name="tab_editor_choice">संपादकों की पसंद</string>
     <string name="tab_trending">रुझान में</string>
-    <string name="pref_filter_fdroid_summary">F-Droid से डाउनलोड या संस्थापित किये गये ऐप के अद्यतन की जाँच नहीं करें</string>
+    <string name="pref_filter_fdroid_summary">F-Droid से इंस्टॉल किए गए ऐप्स के अपडेट की जांच न करें</string>
     <string name="title_games">गेम्स</string>
     <string name="title_settings">सेटिंग</string>
     <string name="onboarding_title_installer">इंस्टॉलर</string>
@@ -142,7 +142,7 @@
     <string name="pref_common_extra">अतिरिक्त</string>
     <string name="toast_page_unavailable">ब्राउज़ पृष्ठ अनुपलब्ध है</string>
     <string name="pref_install_mode_session">सत्र इंस्टॉलर</string>
-    <string name="pref_ui_title">कस्टमाइजेशन</string>
+    <string name="pref_ui_title">कस्टमाइजेशन (अनुकूलन)</string>
     <string name="download_speed_estimating">आकलन</string>
     <string name="action_ok">ठीक है</string>
     <string name="pref_install_mode_title">इंस्टॉल करने का तरीका</string>
@@ -211,7 +211,7 @@
     <string name="device_miui_description">कृपया, इंस्टॉलेशन की अनुमति देने के लिए MIUI अनुकूलन अक्षम करें, अन्यथा आप रूट या सर्विसेज़ इंस्टॉलर चुन सकते हैं।</string>
     <string name="device_miui_subtitle">MIUI अनुकूलन के कारण सेशन इंस्टॉलर ऐप्स इंस्टॉल नहीं कर सकता।</string>
     <string name="device_miui_extra">वैकल्पिक रूप से आप नेटिव इंस्टॉलर चुन सकते हैं, लेकिन तब आप बंडल (स्प्लिट) APK इंस्टॉल नहीं कर सकते, इसलिए चुनाव आपका है।</string>
-    <string name="dialog_desc_native_split">आप नेटिव इंस्टालर के माध्यम से बंडल्ड (स्प्लिट) ऐप्स इंस्टॉल नहीं कर सकते। अपने इंस्टॉलर को सेशन, सर्विसेज या रूट में बदलें।</string>
+    <string name="dialog_desc_native_split">आप नेटिव इंस्टॉलर के साथ बंडल (स्प्लिट) ऐप्स इंस्टॉल नहीं कर सकते। अपने इंस्टॉलर को सेशन, सर्विसेज़ या रूट में बदलें।।</string>
     <string name="onboarding_permission_esa_desc">बड़े ऐप्स और गेम के लिए APK विस्तार फाइलें (OBB) सहेजने के लिए।</string>
     <string name="pref_install_delete_summary">डाउनलोड किए गए APK इंस्टालेशन के तुरंत बाद मिटा दिए जाएंगे</string>
     <string name="pref_install_delete_title">इंस्टॉल के बाद APK मिटाएं</string>
@@ -272,7 +272,7 @@
     <string name="title_search_results">खोज परिणाम</string>
     <string name="access_denied_using_vpn">पहुंच अस्वीकृत! क्या आप VPN या Tor का उपयोग कर रहे हैं?</string>
     <string name="failed_to_fetch_report">गोपनीयता रिपोर्ट लाने में विफल</string>
-    <string name="login_rate_limited">उफ़, आपकी दर सीमित है</string>
+    <string name="login_rate_limited">आपकी दर सीमित है</string>
     <string name="server_unreachable">सर्वर पहुंच योग्य नहीं है</string>
     <string name="failed_generating_session">सत्र उत्पन्न करने में विफल, त्रुटि कोड: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="app_language">ऐप भाषा</string>
@@ -284,8 +284,8 @@
     <string name="google_play_store_desc">गूगल प्ले, जिसे गूगल प्ले स्टोर और पूर्व में एंड्रॉइड मार्केट के नाम से भी जाना जाता है।</string>
     <string name="android_market_desc">Android Market Android डिवाइसों के लिए डिज़ाइन किए गए सॉफ़्टवेयर एप्लिकेशन पेश करने वाला एक ऑनलाइन स्टोर था, जो 2017 में बंद हो गया।</string>
     <string name="details_ratings_title_hint">समीक्षा शीर्षक</string>
-    <string name="pref_aurora_only">केवल ऑरोरा स्टोर ऐप्स</string>
-    <string name="pref_aurora_only_desc">केवल ऑरोरा स्टोर से संस्थापित किये गये ऐप की अद्यतन-जाँच करें</string>
+    <string name="pref_aurora_only">अन्य स्रोतों से ऐप्स फ़िल्टर करें</string>
+    <string name="pref_aurora_only_desc">ऑरोरा स्टोर के बाहर के स्रोतों से इंस्टॉल किए गए ऐप्स के अपडेट की जांच न करें</string>
     <string name="title_app_settings">App सेटिंग्स</string>
     <string name="pref_updates_check_frequency">स्वचालित अपडेट आवृत्ति</string>
     <string name="pref_updates_check_frequency_desc">स्वतः अद्यतन के लिए घंटे में समय अंतराल विन्यसित करें।</string>
@@ -306,7 +306,7 @@
     <string name="failed_apk_export">APK निर्यात करने में विफल</string>
     <string name="pref_updates_incompatible_desc">असंगत या अक्षम ऐप्स के लिए अपडेट दिखाएं जो इंस्टॉल करने में विफल हो सकते हैं</string>
     <string name="download_clear_finished">समाप्त हुए साफ करें</string>
-    <string name="pref_updates_incompatible">असंगत अपडेट</string>
+    <string name="pref_updates_incompatible">वे अपडेट दिखाएँ जो विफल हो सकते हैं</string>
     <string name="action_home_screen">होम स्क्रीन पर जोड़ें</string>
     <string name="session_installer_subtitle">बंडल/विभाजित APK के लिए सत्र आधारित इंस्टॉलर</string>
     <string name="session_installer_desc">अनुशंसित, अंतर्निर्मित और सभी Android संस्करणों का समर्थन करता है</string>
@@ -358,7 +358,7 @@
     <string name="toast_fav_import_success">पसंदीदा आयातित!</string>
     <string name="toast_fav_export_success">पसंदीदा निर्यातित!</string>
     <string name="export_app_summary_success">सफलतापूर्वक ऐप ब॔डल निर्यात हुआ</string>
-    <string name="export_app_summary_fail">ऐप ब॔डल निर्यात करने में विफल</string>
+    <string name="export_app_summary_fail">ऐप बंडल निर्यात करने में विफल</string>
     <string name="action_uninstall_success">सफलतापूर्वक अनइंस्टॉल हूई</string>
     <string name="pref_network_proxy_url_message">प्रॉक्सी में से सारा डाटा गुजारने के लिए एक वैध प्रॉक्सी का पता भरें।</string>
     <string name="action_logout_confirmation_title">लागआऊट करें?</string>
@@ -417,8 +417,8 @@
     <string name="status_cancelled">रद्द हुआ</string>
     <string name="status_completed">पूर्ण हुआ</string>
     <string name="authentication_required_unarchive">ऐप असंग्रहित करने के लिये अपने गूगल प्ले खाते में सत्रारंभ करें!</string>
-    <string name="pref_network_microg_login_title">खातों में सत्रारंभ करने के लिये माइक्रो-जी का उपयोग करें</string>
-    <string name="pref_network_microg_login_desc">गूगल खातों में सत्रारंभ करते हुए सरल सत्रारंभ प्रवाह के लिये माइक्रो-जी का उपयोग कर प्रमाणीकृत करें।</string>
+    <string name="pref_network_microg_login_title">खातों में साइन इन करने के लिए microG का उपयोग करें</string>
+    <string name="pref_network_microg_login_desc">सरल साइन-इन के लिए Google खातों में साइन इन करते समय microG का उपयोग करके प्रमाणीकरण करें</string>
     <string name="unable_to_open">ऐप खोलने में असक्षम</string>
     <string name="details_compatibility_gms_not_required_title">गूगल प्ले सेवाओं के साथ काम करता है</string>
     <string name="details_compatibility_gms_not_required_subtitle">यह ऐप गूगल के सांपत्तिक कोड-संग्रह के साथ काम करता है। किंतु ठीक-प्रकार काम करने के लिये इसे अन्य तृतीय-पक्षी कोड-संग्रहों की आवश्यकता भी पड़ सकती है।</string>
@@ -431,4 +431,5 @@
     <string name="details_data_safety_collect">जो जानकारी यह ऐप एकत्र कर सकता है</string>
     <string name="details_data_safety_collect_none">प्रोगामर ने बताया कि यह ऐप कोई प्रयोक्ता-जानकारी एकत्र नहीं करता है।</string>
     <string name="details_data_safety_shared">जो जानकारी यह ऐप साझा कर सकता है</string>
+    <string name="details_data_safety_share_none">डेवलपर का कहना है कि यह ऐप उपयोगकर्ता डेटा को अन्य कंपनियों या संगठनों के साथ साझा नहीं करता है।</string>
 </resources>
