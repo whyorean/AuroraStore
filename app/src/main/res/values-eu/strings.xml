@@ -458,4 +458,5 @@
     <string name="action_filter_no_ads">Iragarkirik ez</string>
     <string name="action_filter_no_gms">Play zerbitzurik ez</string>
     <string name="manual_download_version_error">Bertsio-kodeak digituak bakarrik izan ditzake</string>
+    <string name="preparing_to_install">Instalatzeko prestatzen</string>
 </resources>
