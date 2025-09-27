@@ -270,7 +270,7 @@
     <string name="title_search_suggestion">Поисковое предложение</string>
     <string name="title_search_results">Результаты поиска</string>
     <string name="bad_request">Внутренняя ошибка! Пожалуйста, повторите попытку через некоторое время</string>
-    <string name="login_rate_limited">Сожалеем, слишком много попыток входа</string>
+    <string name="login_rate_limited">Слишком много попыток входа</string>
     <string name="server_unreachable">Сервер недоступен</string>
     <string name="failed_generating_session">Не удалось создать сессию, код ошибки: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Не удалось получить отчет о конфиденциальности</string>
@@ -457,4 +457,6 @@
     <string name="select_app_for_details">Выберите приложение для получения более подробной информации</string>
     <string name="action_filter_no_ads">Без рекламы</string>
     <string name="action_filter_no_gms">Без сервисов Google Play</string>
+    <string name="manual_download_version_error">Код версии может содержать только цифры</string>
+    <string name="preparing_to_install">Подготовка к установке</string>
 </resources>
