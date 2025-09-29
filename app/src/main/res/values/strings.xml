@@ -509,6 +509,10 @@
     <string name="details_compatibility_status_unsupported">Unsupported: Not functional</string>
     <string name="details_compatibility_status_unknown">Unknown: Not checked yet</string>
     <string name="preparing_to_install">Preparing to install</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Permission required</item>
+        <item quantity="other">Permissions required</item>
+    </plurals>
 
     <!-- AppsGamesFragment -->
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installed</string>

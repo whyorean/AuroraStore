@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
@@ -161,11 +162,13 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(
-                title = stringResource(R.string.onboarding_title_permissions),
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = if (isOnboarding) null else onNavigateUp
-            )
+            if (!isOnboarding) {
+                TopAppBarComposable(
+                    title = pluralStringResource(R.plurals.permissions_required, permissions.size),
+                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
+                    onNavigateUp = onNavigateUp
+                )
+            }
         }
     ) { paddingValues ->
         LazyColumn(
