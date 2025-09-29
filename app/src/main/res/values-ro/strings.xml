@@ -458,4 +458,5 @@
     <string name="action_filter_no_ads">Fără publicitate</string>
     <string name="action_filter_no_gms">Fără serviciile Play</string>
     <string name="manual_download_version_error">Codul versiunii poate conține doar cifre</string>
+    <string name="preparing_to_install">Se pregătește instalarea</string>
 </resources>

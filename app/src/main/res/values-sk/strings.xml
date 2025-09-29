@@ -458,4 +458,5 @@
     <string name="exodus_report_trackers"><xliff:g id="počet_sledovačov">%1$d</xliff:g> známy/e sledovač/e nájdené v <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
     <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
+    <string name="preparing_to_install">Príprava na inštaláciu</string>
 </resources>
