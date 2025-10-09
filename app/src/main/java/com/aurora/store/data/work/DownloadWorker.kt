@@ -220,7 +220,7 @@ class DownloadWorker @AssistedInject constructor(
                     }
 
                     else -> {
-                        notifyStatus(DownloadStatus.FAILED)
+                        notifyStatus(status = DownloadStatus.FAILED, exception = exception)
                         AuroraApp.events.send(
                             InstallerEvent.Failed(
                                 packageName = download.packageName,
@@ -390,7 +390,11 @@ class DownloadWorker @AssistedInject constructor(
      * Notifies the user of the current status of the download.
      * @param status Current [DownloadStatus]
      */
-    private suspend fun notifyStatus(status: DownloadStatus, isProgress: Boolean = false) {
+    private suspend fun notifyStatus(
+        status: DownloadStatus,
+        isProgress: Boolean = false,
+        exception: Exception? = null
+    ) {
         // Update status in database
         download.downloadStatus = status
         downloadDao.updateStatus(download.packageName, status)
@@ -408,7 +412,9 @@ class DownloadWorker @AssistedInject constructor(
             else -> {}
         }
 
-        val notification = NotificationUtil.getDownloadNotification(context, download, icon)
+        val notification = NotificationUtil.getDownloadNotification(
+            context, download, icon, exception?.message
+        )
         notificationManager.notify(
             if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
             notification

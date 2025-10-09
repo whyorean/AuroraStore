@@ -90,7 +90,8 @@ object NotificationUtil {
     fun getDownloadNotification(
         context: Context,
         download: AuroraDownload,
-        largeIcon: Bitmap? = null
+        largeIcon: Bitmap? = null,
+        message: String? = null
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
         builder.setSmallIcon(R.drawable.ic_notification_outlined)
@@ -120,7 +121,7 @@ object NotificationUtil {
 
             DownloadStatus.FAILED -> {
                 builder.setSmallIcon(R.drawable.ic_download_fail)
-                builder.setContentText(context.getString(R.string.download_failed))
+                builder.setContentText(message ?: context.getString(R.string.download_failed))
                 builder.color = Color.RED
                 builder.setCategory(Notification.CATEGORY_ERROR)
             }
