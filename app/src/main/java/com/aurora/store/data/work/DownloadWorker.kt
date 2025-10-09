@@ -236,7 +236,7 @@ class DownloadWorker @AssistedInject constructor(
             // Remove all notifications
             notificationManager.cancel(NOTIFICATION_ID)
 
-            return@withContext Result.failure()
+            return@withContext Result.success()
         }
     }
 
