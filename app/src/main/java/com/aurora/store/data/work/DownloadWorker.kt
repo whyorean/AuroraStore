@@ -396,7 +396,7 @@ class DownloadWorker @AssistedInject constructor(
         exception: Exception? = null
     ) {
         // Update status in database
-        download.downloadStatus = status
+        download.status = status
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {

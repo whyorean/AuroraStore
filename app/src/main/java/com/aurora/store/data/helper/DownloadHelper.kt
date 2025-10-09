@@ -2,8 +2,6 @@ package com.aurora.store.data.helper
 
 import android.content.Context
 import android.util.Log
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.work.Data
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
@@ -20,7 +18,6 @@ import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -66,8 +63,8 @@ class DownloadHelper @Inject constructor(
     private fun observeDownloads() {
         downloadDao.downloads().onEach { list ->
             try {
-                if (list.none { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
-                    list.find { it.downloadStatus == DownloadStatus.QUEUED }
+                if (list.none { it.status == DownloadStatus.DOWNLOADING }) {
+                    list.find { it.status == DownloadStatus.QUEUED }
                         ?.let { queuedDownload ->
                             Log.i(TAG, "Enqueued download worker for ${queuedDownload.packageName}")
                             trigger(queuedDownload)
@@ -151,7 +148,7 @@ class DownloadHelper @Inject constructor(
     suspend fun cancelAll(updatesOnly: Boolean = false) {
         // Cancel all enqueued downloads first to avoid triggering re-download
         downloadDao.downloads().firstOrNull()
-            ?.filter { it.downloadStatus == DownloadStatus.QUEUED }
+            ?.filter { it.status == DownloadStatus.QUEUED }
             ?.filter { if (updatesOnly) it.isInstalled else true }
             ?.forEach {
                 downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED)

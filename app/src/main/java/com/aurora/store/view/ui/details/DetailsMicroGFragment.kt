@@ -117,7 +117,7 @@ class DetailsMicroGFragment : BaseFragment<FragmentDetailsMicrogBinding>() {
         }
 
         microGViewModel.download.filterNotNull().onEach {
-            when (it.downloadStatus) {
+            when (it.status) {
                 DownloadStatus.DOWNLOADING -> updateProgressBar(visible = true, it.progress)
                 DownloadStatus.FAILED -> updateProgressBar(visible = false, 0)
                 DownloadStatus.QUEUED -> updateProgressBar(visible = true, -1)

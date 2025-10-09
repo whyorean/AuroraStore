@@ -111,7 +111,7 @@ object NotificationUtil {
             false
         )
 
-        when (download.downloadStatus) {
+        when (download.status) {
             DownloadStatus.CANCELLED -> {
                 builder.setSmallIcon(R.drawable.ic_download_cancel)
                 builder.setContentText(context.getString(R.string.download_canceled))

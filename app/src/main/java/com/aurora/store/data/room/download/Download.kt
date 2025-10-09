@@ -2,7 +2,7 @@ package com.aurora.store.data.room.download
 
 import android.content.Context
 import android.os.Parcelable
-import androidx.compose.ui.platform.LocalContext
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.gplayapi.data.models.App
@@ -25,7 +25,8 @@ data class Download(
     val iconURL: String,
     val size: Long,
     val id: Int,
-    var downloadStatus: DownloadStatus,
+    @ColumnInfo("downloadStatus")
+    var status: DownloadStatus,
     var progress: Int,
     var speed: Long,
     var timeRemaining: Long,
@@ -36,9 +37,9 @@ data class Download(
     val targetSdk: Int = 1,
     val downloadedAt: Long = 0
 ) : Parcelable {
-    val isFinished get() = downloadStatus in DownloadStatus.finished
-    val isRunning get() = downloadStatus in DownloadStatus.running
-    private val isSuccessful get() = downloadStatus == DownloadStatus.COMPLETED
+    val isFinished get() = status in DownloadStatus.finished
+    val isRunning get() = status in DownloadStatus.running
+    private val isSuccessful get() = status == DownloadStatus.COMPLETED
 
     companion object {
         fun fromApp(app: App): Download {
@@ -97,7 +98,7 @@ data class Download(
                 iconURL = externalApk.iconURL,
                 size = 0,
                 id = 0,
-                downloadStatus = DownloadStatus.QUEUED,
+                status = DownloadStatus.QUEUED,
                 progress = 0,
                 speed = 0L,
                 timeRemaining = 0L,

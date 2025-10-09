@@ -102,8 +102,8 @@ class AppUpdateView @JvmOverloads constructor(
     @ModelProp
     fun download(download: Download?) {
         if (download != null) {
-            binding.btnAction.updateState(download.downloadStatus)
-            when (download.downloadStatus) {
+            binding.btnAction.updateState(download.status)
+            when (download.status) {
                 DownloadStatus.VERIFYING,
                 DownloadStatus.QUEUED -> {
                     binding.progressDownload.isIndeterminate = true

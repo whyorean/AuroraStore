@@ -118,10 +118,10 @@ fun DownloadComposable(
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
-                        text = stringResource(download.downloadStatus.localized),
+                        text = stringResource(download.status.localized),
                         style = MaterialTheme.typography.bodySmall
                     )
-                    AnimatedContent(targetState = download.downloadStatus) { status ->
+                    AnimatedContent(targetState = download.status) { status ->
                         Text(
                             style = MaterialTheme.typography.bodySmall,
                             text = if (status in DownloadStatus.running) {
