@@ -458,4 +458,5 @@
     <string name="action_install_microG">Instaliraj microG paket</string>
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> pronađena programa za praćenje u <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="onboarding_gms_microg">microG je besplatna i otvorenog koda implementacija koja pruža sličnu funkcionalnost za pokretanje aplikacija koje ovise o Google Play uslugama na Android uređajima putem ponovne implementacije.\n\nmicroG omogućuje aplikacijama pristup Google API-jima, poboljšavajući kompatibilnost za korisnike uz dodatne prednosti po pitanju privatnosti.\n\nmicroG će se automatski pokrenuti u pozadini kada otvorite aplikacije koje ovise o Google mobilnim uslugama.</string>
+    <string name="preparing_to_install">Priprema za instalaciju</string>
 </resources>
