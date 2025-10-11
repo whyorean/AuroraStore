@@ -97,9 +97,8 @@ fun Details(
                             )
                         }
 
-                        AppState.Purchasing::class -> {
-                            stringResource(R.string.preparing_to_install)
-                        }
+                        AppState.Queued::class -> stringResource(R.string.status_queued)
+                        AppState.Purchasing::class -> stringResource(R.string.preparing_to_install)
 
                         else -> {
                             stringResource(R.string.version, versionName, versionCode)

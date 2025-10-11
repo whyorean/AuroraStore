@@ -135,7 +135,7 @@ fun AppDetailsScreen(
                 exodusReport = exodusReport,
                 onNavigateUp = onNavigateUp,
                 onNavigateToAppDetails = onNavigateToAppDetails,
-                onDownload = { viewModel.purchase(app!!) },
+                onDownload = { viewModel.enqueueDownload(app!!) },
                 onFavorite = { viewModel.toggleFavourite(app!!) },
                 onCancelDownload = { viewModel.cancelDownload(app!!) },
                 onUninstall = { AppInstaller.uninstall(context, packageName) },
@@ -274,14 +274,14 @@ private fun ScreenContentApp(
     @Composable
     fun SetupActions() {
         when (state) {
+            is AppState.Queued,
             is AppState.Purchasing,
             is AppState.Downloading -> {
                 Actions(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_cancel),
                     isPrimaryActionEnabled = false,
-                    onSecondaryAction = onCancelDownload,
-                    isSecondaryActionEnabled = state !is AppState.Purchasing
+                    onSecondaryAction = onCancelDownload
                 )
             }
 
