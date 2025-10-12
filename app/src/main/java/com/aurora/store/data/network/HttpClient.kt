@@ -171,8 +171,9 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IH
             responseBytes = response.body.bytes(),
             errorString = if (!response.isSuccessful) response.message else String()
         ).also {
+            val isCached = if (response.cacheResponse != null) "CACHED" else "NETWORK"
             _responseCode.value = response.code
-            Log.i(TAG, "OKHTTP [${response.code}] ${response.request.url}")
+            Log.i(TAG, "OKHTTP [$isCached] [${response.code}] ${response.request.url}")
         }
     }
 }

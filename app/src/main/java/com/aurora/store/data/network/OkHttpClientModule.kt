@@ -34,9 +34,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
+import okhttp3.Cache
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import java.io.ByteArrayInputStream
+import java.io.File
 import java.io.InputStream
 import java.net.Authenticator
 import java.net.InetSocketAddress
@@ -59,8 +61,13 @@ object OkHttpClientModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClientInstance(certPinner: CertificatePinner, proxy: Proxy?): OkHttpClient {
+    fun providesOkHttpClientInstance(
+        certificatePinner: CertificatePinner,
+        proxy: Proxy?,
+        cache: Cache
+    ): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient().newBuilder()
+            .cache(cache)
             .proxy(proxy)
             .connectTimeout(25, TimeUnit.SECONDS)
             .readTimeout(25, TimeUnit.SECONDS)
@@ -70,7 +77,7 @@ object OkHttpClientModule {
             .followSslRedirects(true)
 
         if (!BuildConfig.DEBUG) {
-            okHttpClientBuilder.certificatePinner(certPinner)
+            okHttpClientBuilder.certificatePinner(certificatePinner)
         }
 
         return okHttpClientBuilder.build()
@@ -120,6 +127,15 @@ object OkHttpClientModule {
             Log.i(TAG, "Proxy is disabled")
             return null
         }
+    }
+
+    @Provides
+    @Singleton
+    fun providesCacheDir(@ApplicationContext context: Context): Cache {
+        return Cache(
+            directory = File(context.cacheDir, "http_cache"),
+            maxSize = 100L * 1024 * 1024
+        )
     }
 
     private fun getGoogleRootCertHashes(context: Context): List<String> {

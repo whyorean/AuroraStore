@@ -111,6 +111,7 @@ class DownloadWorker @AssistedInject constructor(
         setForeground(getForegroundInfo())
 
         // Try to purchase the app if file list is empty
+        notifyStatus(DownloadStatus.PURCHASING)
         download.fileList = download.fileList.ifEmpty {
             purchase(download.packageName, download.versionCode, download.offerType)
         }
