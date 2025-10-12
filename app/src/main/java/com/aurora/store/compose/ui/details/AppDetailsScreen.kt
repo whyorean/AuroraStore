@@ -299,7 +299,9 @@ private fun ScreenContentApp(
                     primaryActionDisplayName = stringResource(R.string.action_open),
                     secondaryActionDisplayName = stringResource(R.string.action_uninstall),
                     onPrimaryAction = onOpen,
-                    onSecondaryAction = onUninstall
+                    onSecondaryAction = onUninstall,
+                    isPrimaryActionEnabled = PackageUtil
+                        .getLaunchIntent(context, app.packageName) != null
                 )
             }
 
