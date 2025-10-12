@@ -25,6 +25,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composables.TopAppBarComposable
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.data.model.AppState
 
 /**
  * Menu for the app details screen
@@ -36,6 +37,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 @Composable
 fun AppDetailsMenu(
     modifier: Modifier = Modifier,
+    state: AppState = AppState.Unavailable,
     isInstalled: Boolean = false,
     isFavorite: Boolean = false,
     isExpanded: Boolean = false,
@@ -75,7 +77,8 @@ fun AppDetailsMenu(
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.title_manual_download)) },
-                onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) }
+                onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) },
+                enabled = !state.inProgress()
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.title_download_playstore)) },
