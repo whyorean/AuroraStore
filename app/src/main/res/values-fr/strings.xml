@@ -421,7 +421,7 @@
     <string name="disable">Désactiver</string>
     <string name="toast_proxy_disabled">Le mandataire a été désactivé</string>
     <string name="pref_network_proxy_desc">Afficher et gérer la configuration du mandataire</string>
-    <string name="pref_updates_restrictions_desc">Configurer les restrictions de l’appareil relatives aux mises à jour automatiques.</string>
+    <string name="pref_updates_restrictions_desc">Configurer les restrictions de l’appareil relatives aux mises à jour automatiques</string>
     <string name="pref_updates_restrictions_metered">Seulement sur les réseaux illimités</string>
     <string name="pref_updates_restrictions_idle">Quand l’appareil est au repos</string>
     <string name="pref_updates_restrictions_battery">Quand le niveau de la batterie est suffisant</string>
@@ -459,4 +459,9 @@
     <string name="action_filter_no_gms">Pas de Services Play</string>
     <string name="manual_download_version_error">La version du code ne peut comporter que des chiffres</string>
     <string name="preparing_to_install">Préparation de l’installation</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Autorisation nécessaire</item>
+        <item quantity="many">Autorisations nécessaires</item>
+        <item quantity="other">Autorisations nécessaires</item>
+    </plurals>
 </resources>
