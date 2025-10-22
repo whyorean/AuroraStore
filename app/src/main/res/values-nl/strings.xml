@@ -459,4 +459,8 @@
     <string name="action_filter_no_gms">Geen play services</string>
     <string name="manual_download_version_error">Versiecode mag alleen cijfers bevatten</string>
     <string name="preparing_to_install">Voorbereiden om te installeren</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Recht vereist</item>
+        <item quantity="other">Rechten vereist</item>
+    </plurals>
 </resources>
