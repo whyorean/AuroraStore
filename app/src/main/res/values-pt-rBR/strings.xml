@@ -422,7 +422,7 @@
     <string name="toast_proxy_disabled">Proxy desativada com sucesso</string>
     <string name="pref_network_proxy_desc">Visualize e gerencie a configuração de proxy</string>
     <string name="pref_updates_restrictions_title">Restrições das atualizações automáticas</string>
-    <string name="pref_updates_restrictions_desc">Configure as restrições do dispositivo das atualizações automáticas.</string>
+    <string name="pref_updates_restrictions_desc">Configure as restrições do dispositivo das atualizações automáticas</string>
     <string name="pref_updates_restrictions_metered">Somente em redes ilimitadas</string>
     <string name="pref_updates_restrictions_idle">Somente com o dispositivo em repouso</string>
     <string name="pref_updates_restrictions_battery">Somente com bateria suficiente</string>
@@ -459,4 +459,9 @@
     <string name="action_filter_no_gms">Sem play services</string>
     <string name="manual_download_version_error">O código de versão só pode conter dígitos</string>
     <string name="preparing_to_install">Preparando para instalar</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Permissão necessária</item>
+        <item quantity="many">Permissões necessárias</item>
+        <item quantity="other">Permissões necessárias</item>
+    </plurals>
 </resources>
