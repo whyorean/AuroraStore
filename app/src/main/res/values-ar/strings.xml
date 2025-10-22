@@ -421,7 +421,7 @@
     <string name="disable">عطّل</string>
     <string name="toast_proxy_disabled">عُطّل الوكيل بنجاح</string>
     <string name="pref_network_proxy_desc">اعرض تضبيط الوكيل وإدارته</string>
-    <string name="pref_updates_restrictions_desc">تضبيط قيود الجهاز للتحديثات التلقائية.</string>
+    <string name="pref_updates_restrictions_desc">أعداد قيود الجهاز للتحديثات التلقائية</string>
     <string name="pref_updates_restrictions_metered">فقط على الشبكات غير المقيدة</string>
     <string name="pref_updates_restrictions_idle">عندما يكون الجهاز ساكنًا</string>
     <string name="pref_updates_restrictions_battery">عندما لا تكون البطارية منخفضة</string>
@@ -459,4 +459,12 @@
     <string name="action_filter_no_gms">لا توجد خدمات play</string>
     <string name="manual_download_version_error">يجب أن يحتوي رمز الإصدار على أرقام فقط</string>
     <string name="preparing_to_install">يجهز للتثبيت</string>
+    <plurals name="permissions_required">
+        <item quantity="zero">الإذن مطلوب</item>
+        <item quantity="one">الإذن مطلوب</item>
+        <item quantity="two">الإذن مطلوب</item>
+        <item quantity="few">الإذن مطلوب</item>
+        <item quantity="many">الإذن مطلوب</item>
+        <item quantity="other">الإذن مطلوب</item>
+    </plurals>
 </resources>
