@@ -9,7 +9,6 @@
 
 import com.google.devtools.ksp.KspExperimental
 import java.util.Properties
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
@@ -28,10 +27,14 @@ val lastCommitHash = providers.exec {
     commandLine("git", "rev-parse", "--short", "HEAD")
 }.standardOutput.asText.map { it.trim() }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 kotlin {
-    jvmToolchain(21)
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_21
         freeCompilerArgs.addAll(
             "-Xannotation-default-target=param-property"
         )
@@ -138,11 +141,6 @@ android {
         viewBinding = true
         aidl = true
         compose = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
     }
 
     lint {
