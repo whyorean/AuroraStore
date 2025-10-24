@@ -135,7 +135,7 @@ fun AppDetailsScreen(
                 exodusReport = exodusReport,
                 onNavigateUp = onNavigateUp,
                 onNavigateToAppDetails = onNavigateToAppDetails,
-                onDownload = { viewModel.enqueueDownload(app!!) },
+                onDownload = { requestedApp -> viewModel.enqueueDownload(requestedApp) },
                 onFavorite = { viewModel.toggleFavourite(app!!) },
                 onCancelDownload = { viewModel.cancelDownload(app!!) },
                 onUninstall = { AppInstaller.uninstall(context, packageName) },
@@ -201,7 +201,7 @@ private fun ScreenContentApp(
     exodusReport: Report? = null,
     onNavigateUp: () -> Unit = {},
     onNavigateToAppDetails: (packageName: String) -> Unit = {},
-    onDownload: () -> Unit = {},
+    onDownload: (requestedApp: App) -> Unit = {},
     onFavorite: () -> Unit = {},
     onCancelDownload: () -> Unit = {},
     onUninstall: () -> Unit = {},
@@ -239,9 +239,9 @@ private fun ScreenContentApp(
         }
     }
 
-    fun onInstall() {
+    fun onInstall(requestedApp: App = app) {
         if (isPermittedToInstall(context, app)) {
-            onDownload()
+            onDownload(requestedApp)
             onNavigateBack()
         } else {
             val requiredPermissions = setOfNotNull(
@@ -255,7 +255,11 @@ private fun ScreenContentApp(
 
     @Composable
     fun SetupMenu() {
-        AppDetailsMenu(isInstalled = app.isInstalled, isFavorite = isFavorite) { menuItem ->
+        AppDetailsMenu(
+            isInstalled = app.isInstalled,
+            isFavorite = isFavorite,
+            state = state
+        ) { menuItem ->
             when (menuItem) {
                 MenuItem.FAVORITE -> onFavorite()
                 MenuItem.MANUAL_DOWNLOAD -> {
@@ -482,7 +486,8 @@ private fun ScreenContentApp(
 
             is ExtraScreen.ManualDownload -> ManualDownloadScreen(
                 packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack
+                onNavigateUp = ::onNavigateBack,
+                onRequestInstall = { requestedApp -> onInstall(requestedApp) }
             )
 
             is Screen.DevProfile -> DevProfileScreen(

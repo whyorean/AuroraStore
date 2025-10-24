@@ -66,6 +66,7 @@ import kotlinx.coroutines.launch
 fun ManualDownloadScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
+    onRequestInstall: (requestedApp: App) -> Unit,
     viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
@@ -76,18 +77,12 @@ fun ManualDownloadScreen(
         else -> stringResource(R.string.title_manual_download)
     }
 
-    LaunchedEffect(key1 = state) {
-        if (state is AppState.Downloading) {
-            onNavigateUp()
-        }
-    }
-
     ScreenContent(
         state = state,
         topAppBarTitle = topAppBarTitle,
         currentVersionCode = app!!.versionCode,
         onNavigateUp = onNavigateUp,
-        onDownload = { versionCode ->
+        onRequestInstall = { versionCode ->
             val requestedApp = app!!.copy(
                 versionCode = versionCode,
                 dependencies = app!!.dependencies.copy(
@@ -96,7 +91,7 @@ fun ManualDownloadScreen(
                     }
                 )
             )
-            viewModel.enqueueDownload(requestedApp)
+            onRequestInstall(requestedApp)
         }
     )
 }
@@ -107,7 +102,7 @@ private fun ScreenContent(
     topAppBarTitle: String? = null,
     currentVersionCode: Long = 0L,
     onNavigateUp: () -> Unit = {},
-    onDownload: (versionCode: Long) -> Unit = {},
+    onRequestInstall: (versionCode: Long) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
 
@@ -200,7 +195,7 @@ private fun ScreenContent(
                     modifier = Modifier.weight(1F),
                     enabled = !state.inProgress(),
                     onClick = {
-                        onDownload(versionCode.text.toLong())
+                        onRequestInstall(versionCode.text.toLong())
                         focusManager.clearFocus()
                     }
                 ) {
