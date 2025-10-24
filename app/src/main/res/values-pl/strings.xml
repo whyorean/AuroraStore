@@ -323,7 +323,7 @@
     <string name="root_installer_subtitle">Instalator oparty na powłoce z uprawnieniami roota</string>
     <string name="root_installer_desc">Wymaga uprawnień roota/superużytkownika, obsługuje wszystkie wersje Androida.</string>
     <string name="shizuku_installer_subtitle">Bezpośrednie korzystanie z systemowych interfejsów API z uprawnieniami adb/root</string>
-    <string name="shizuku_installer_desc">Wymaga Shizuku lub Sui, musi zostać skonfigurowana i uzyskać pozwolenie</string>
+    <string name="shizuku_installer_desc">Wymaga Shizuku lub Sui, musi zostać skonfigurowana i uzyskać uprawnienie</string>
     <string name="native_installer_subtitle">Instalator oparty na intencjach, dostępny na wszystkich urządzeniach</string>
     <string name="services_installer_desc">Wymaga zainstalowania Aurora Services jako uprzywilejowanej aplikacji systemowej</string>
     <string name="am_installer_desc">Wymaga Menedżera aplikacji, wymaga trybu adb/root do instalacji, gdy włączona jest optymalizacja miui</string>
@@ -421,7 +421,7 @@
     <string name="set">Ustaw</string>
     <string name="pref_updates_restrictions_title">Ograniczenia automatycznych aktualizacji</string>
     <string name="pref_network_proxy_desc">Wyświetl i zarządzaj konfiguracją serwera proxy</string>
-    <string name="pref_updates_restrictions_desc">Skonfiguruj ograniczenia dla automatycznych aktualizacji.</string>
+    <string name="pref_updates_restrictions_desc">Skonfiguruj ograniczenia dla automatycznych aktualizacji</string>
     <string name="pref_updates_restrictions_metered">Tylko w sieciach bez limitu</string>
     <string name="pref_updates_restrictions_idle">Gdy urządzenie jest bezczynne</string>
     <string name="pref_updates_restrictions_battery">Gdy poziom baterii jest wysoki</string>
@@ -459,4 +459,10 @@
     <string name="action_filter_no_gms">Bez usług Google Play</string>
     <string name="manual_download_version_error">Kod wersji może zawierać tylko cyfry</string>
     <string name="preparing_to_install">Przygotowywanie do instalacji</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Wymagane uprawnienie</item>
+        <item quantity="few">Wymagane uprawnienia</item>
+        <item quantity="many">Wymagane uprawnienia</item>
+        <item quantity="other">Wymagane uprawnienia</item>
+    </plurals>
 </resources>

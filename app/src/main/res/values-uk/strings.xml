@@ -29,7 +29,7 @@
     <string name="details_no_permission">Без дозволів</string>
     <string name="details_no_dependencies">Без залежностей</string>
     <string name="details_no_app_match">Застосунок не знайдено</string>
-    <string name="details_no_ads">Без реклами</string>
+    <string name="details_no_ads">Без Реклами</string>
     <string name="details_more_about_app">Докладніше про застосунок</string>
     <string name="details_gsf_dependent">Потребує GSF</string>
     <string name="details_free">Безплатний</string>
@@ -420,7 +420,7 @@
     <string name="set">Змінити</string>
     <string name="disable">Вимкнути</string>
     <string name="pref_updates_restrictions_title">Обмеження автоматичного оновлення</string>
-    <string name="pref_updates_restrictions_desc">Налаштувати обмеження пристрою для автоматичних оновлень.</string>
+    <string name="pref_updates_restrictions_desc">Налаштування обмежень пристроїв для автоматичних оновлень</string>
     <string name="pref_updates_restrictions_metered">Лише в безлімітних мережах</string>
     <string name="pref_updates_restrictions_idle">Коли пристрій неактивний</string>
     <string name="toast_proxy_disabled">Проксі успішно вимкнено</string>
@@ -455,8 +455,14 @@
     <string name="details_more_package_name">Назва пакета</string>
     <string name="details_more_content_rating">Рейтинг контенту</string>
     <string name="select_app_for_details">Виберіть додаток для отримання додаткової інформації</string>
-    <string name="action_filter_no_ads">Без Реклами</string>
+    <string name="action_filter_no_ads">Без реклами</string>
     <string name="action_filter_no_gms">Немає ігрових сервісів</string>
     <string name="manual_download_version_error">Код версії може містити лише цифри</string>
     <string name="preparing_to_install">Підготовка до встановлення</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Потрібен дозвіл</item>
+        <item quantity="few">Потрібні дозволи</item>
+        <item quantity="many">Потрібні дозволів</item>
+        <item quantity="other">Потрібні дозволів</item>
+    </plurals>
 </resources>

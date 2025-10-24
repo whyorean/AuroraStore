@@ -423,7 +423,7 @@
     <string name="pref_updates_restrictions_title">Einschränkungen für automatische Updates</string>
     <string name="pref_updates_restrictions_idle">Wenn das Gerät inaktiv ist</string>
     <string name="pref_updates_restrictions_metered">Nur in nicht getakteten Netzen</string>
-    <string name="pref_updates_restrictions_desc">Konfigurieren von Geräteeinschränkungen für automatische Updates.</string>
+    <string name="pref_updates_restrictions_desc">Konfigurieren von Geräteeinschränkungen für automatische Updates</string>
     <string name="disable">Deaktivieren</string>
     <string name="pref_updates_restrictions_battery">Wenn der Akkustand nicht niedrig ist</string>
     <string name="verification_failed">Heruntergeladene Dateien konnten nicht überprüft werden</string>
@@ -459,4 +459,8 @@
     <string name="action_filter_no_gms">Ohne Play-Dienste</string>
     <string name="manual_download_version_error">Der Versionscode darf nur Ziffern enthalten</string>
     <string name="preparing_to_install">Vorbereiten zur Installation</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Berechtigung erforderlich</item>
+        <item quantity="other">Berechtigungen erforderlich</item>
+    </plurals>
 </resources>

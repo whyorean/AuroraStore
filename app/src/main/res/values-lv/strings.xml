@@ -422,7 +422,7 @@
     <string name="pref_network_proxy_desc">Apskatīt un pārvaldīt starpniekservera konfigurāciju</string>
     <string name="set">Iestatīt</string>
     <string name="pref_updates_restrictions_title">Automātisko atjauninājumu ierobežojumi</string>
-    <string name="pref_updates_restrictions_desc">Konfigurēt ierīces ierobežojumus automatizētiem atjauninājumiem.</string>
+    <string name="pref_updates_restrictions_desc">Konfigurēt ierīces ierobežojumus automatizētiem atjauninājumiem</string>
     <string name="pref_updates_restrictions_metered">Tikai neuzskaitāmos tīklos</string>
     <string name="pref_updates_restrictions_idle">Kad ierīce ir dīkstāvē</string>
     <string name="pref_updates_restrictions_battery">Kad akumulators nav tukšs</string>
@@ -459,4 +459,9 @@
     <string name="action_filter_no_ads">Nav reklāmu</string>
     <string name="action_filter_no_gms">Nav Play pakalpojumu</string>
     <string name="preparing_to_install">Gatavojas uzstādīt</string>
+    <plurals name="permissions_required">
+        <item quantity="zero">Nepieciešamas atļaujas</item>
+        <item quantity="one">Nepieciešama atļauja</item>
+        <item quantity="other">Nepieciešamas atļaujas</item>
+    </plurals>
 </resources>

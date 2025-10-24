@@ -422,7 +422,7 @@
     <string name="pref_updates_restrictions_battery">Když je baterie dostatečně nabitá</string>
     <string name="pref_updates_restrictions_title">Omezení automatických aktualizací</string>
     <string name="pref_network_proxy_desc">Zobrazit a spravovat nastavení proxy</string>
-    <string name="pref_updates_restrictions_desc">Nastavit omezení zařízení pro automatické aktualizace.</string>
+    <string name="pref_updates_restrictions_desc">Nastavit omezení zařízení pro automatické aktualizace</string>
     <string name="disable">Zakázat</string>
     <string name="toast_proxy_disabled">Síť proxy úspěšně zakázána</string>
     <string name="pref_updates_restrictions_metered">Pouze na neměřených sítích</string>
@@ -459,4 +459,10 @@
     <string name="action_filter_no_gms">Bez Služeb Play</string>
     <string name="manual_download_version_error">Kód verze může obsahovat pouze čísla</string>
     <string name="preparing_to_install">Příprava na instalaci</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Vyžadováno oprávnění</item>
+        <item quantity="few">Vyžadována oprávnění</item>
+        <item quantity="many">Vyžadována oprávnění</item>
+        <item quantity="other">Vyžadována oprávnění</item>
+    </plurals>
 </resources>

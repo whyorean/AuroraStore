@@ -437,7 +437,7 @@
     <string name="pref_network_proxy_desc">檢視並管理代理伺服器設定</string>
     <string name="pref_common_advanced">更多</string>
     <string name="pref_updates_restrictions_title">自動更新限制</string>
-    <string name="pref_updates_restrictions_desc">設定自動更新的裝置限制。</string>
+    <string name="pref_updates_restrictions_desc">設定自動更新的裝置限制</string>
     <string name="pref_updates_restrictions_metered">僅限於非計量付費網路</string>
     <string name="pref_updates_restrictions_idle">於裝置閒置時</string>
     <string name="pref_updates_restrictions_battery">於裝置電量足夠時</string>
@@ -459,4 +459,7 @@
     <string name="select_app_for_details">選擇一個應用程式以查看更多詳細資訊</string>
     <string name="action_filter_no_ads">無廣告</string>
     <string name="action_filter_no_gms">無 Play 服務</string>
+    <plurals name="permissions_required">
+        <item quantity="other">需要權限</item>
+    </plurals>
 </resources>
