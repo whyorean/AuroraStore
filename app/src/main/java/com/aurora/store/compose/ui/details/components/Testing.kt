@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
@@ -43,7 +44,7 @@ fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Bool
     ) {
         InfoComposable(
             modifier = Modifier.weight(1F),
-            icon = R.drawable.ic_experiment,
+            painter = painterResource(R.drawable.ic_experiment),
             title = AnnotatedString(
                 text = if (isSubscribed) {
                     stringResource(R.string.details_beta_subscribed)

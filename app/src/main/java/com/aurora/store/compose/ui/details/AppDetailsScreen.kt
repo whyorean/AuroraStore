@@ -179,7 +179,7 @@ private fun ScreenContentError(onNavigateUp: () -> Unit = {}, message: String? =
     ) { paddingValues ->
         ErrorComposable(
             modifier = Modifier.padding(paddingValues),
-            icon = painterResource(R.drawable.ic_apps_outage),
+            painter = painterResource(R.drawable.ic_apps_outage),
             message = message ?: stringResource(R.string.toast_app_unavailable)
         )
     }

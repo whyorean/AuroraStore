@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +33,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
 
     if (!needsGms) {
         InfoComposable(
-            icon = R.drawable.ic_menu_about,
+            painter = painterResource(R.drawable.ic_menu_about),
             title = AnnotatedString(
                 text = stringResource(R.string.details_compatibility_gms_not_required_title)
             ),
@@ -46,7 +47,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
     }
 
     InfoComposable(
-        icon = R.drawable.ic_menu_about,
+        painter = painterResource(R.drawable.ic_menu_about),
         title = AnnotatedString(
             text = stringResource(R.string.details_compatibility_gms_required_title)
         ),
@@ -61,7 +62,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
     )
     scoresStatus.forEach { (title, description) ->
         InfoComposable(
-            icon = R.drawable.ic_android,
+            painter = painterResource(R.drawable.ic_android),
             title = AnnotatedString(text = stringResource(title)),
             description = AnnotatedString(
                 text = stringResource(description ?: R.string.details_compatibility_status_unknown)

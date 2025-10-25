@@ -144,7 +144,7 @@ private fun ScreenContent(
                     if (favourites.itemCount == 0) {
                         ErrorComposable(
                             modifier = Modifier.padding(paddingValues),
-                            icon = painterResource(R.drawable.ic_favorite_unchecked),
+                            painter = painterResource(R.drawable.ic_favorite_unchecked),
                             message = stringResource(R.string.details_no_favourites)
                         )
                     } else {

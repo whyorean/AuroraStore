@@ -33,11 +33,7 @@ import com.aurora.store.R
  * @param currentPage Currently displayed page number
  */
 @Composable
-fun PageIndicatorComposable(
-    modifier: Modifier = Modifier,
-    totalPages: Int,
-    currentPage: Int = 0,
-) {
+fun PageIndicatorComposable(modifier: Modifier = Modifier, totalPages: Int, currentPage: Int = 0) {
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,

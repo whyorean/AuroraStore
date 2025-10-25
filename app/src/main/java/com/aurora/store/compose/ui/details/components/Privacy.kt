@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,7 +43,7 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
     }
 
     InfoComposable(
-        icon = R.drawable.ic_visibility,
+        painter = painterResource(R.drawable.ic_visibility),
         title = AnnotatedString(text = reportStatus),
         description = AnnotatedString(text = stringResource(R.string.exodus_tracker_desc))
     )

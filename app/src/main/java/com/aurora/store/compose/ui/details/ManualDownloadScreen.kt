@@ -38,6 +38,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextRange
@@ -145,7 +146,7 @@ private fun ScreenContent(
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
             ) {
                 InfoComposable(
-                    icon = R.drawable.ic_download_manager,
+                    painter = painterResource(R.drawable.ic_download_manager),
                     title = AnnotatedString(text = stringResource(R.string.manual_download_hint))
                 )
                 OutlinedTextField(

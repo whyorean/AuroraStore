@@ -211,7 +211,7 @@ private fun ScreenContent(
                     is LoadState.Error -> {
                         ErrorComposable(
                             modifier = Modifier.padding(paddingValues),
-                            icon = painterResource(R.drawable.ic_disclaimer),
+                            painter = painterResource(R.drawable.ic_disclaimer),
                             message = stringResource(R.string.error)
                         )
                     }
@@ -220,7 +220,7 @@ private fun ScreenContent(
                         if (isSearching && results.itemCount == 0) {
                             ErrorComposable(
                                 modifier = Modifier.padding(paddingValues),
-                                icon = painterResource(R.drawable.ic_disclaimer),
+                                painter = painterResource(R.drawable.ic_disclaimer),
                                 message = stringResource(R.string.no_apps_available)
                             )
                         } else {
@@ -262,7 +262,7 @@ private fun ScreenContent(
                 else -> {
                     if (isSearching && results.itemCount > 0) {
                         ErrorComposable(
-                            icon = painterResource(R.drawable.ic_round_search),
+                            painter = painterResource(R.drawable.ic_round_search),
                             message = stringResource(R.string.select_app_for_details)
                         )
                     }

@@ -29,7 +29,7 @@ import com.aurora.store.R
 /**
  * Composable to show error message when no apps are available for a request
  * @param modifier The modifier to be applied to the composable
- * @param icon Drawable for error
+ * @param painter Painter to draw the icon
  * @param message Message for error
  * @param actionMessage Message to show on action button; defaults to null with button not visible
  * @param onAction Callback when action button is clicked
@@ -37,7 +37,7 @@ import com.aurora.store.R
 @Composable
 fun ErrorComposable(
     modifier: Modifier = Modifier,
-    icon: Painter,
+    painter: Painter,
     message: String,
     actionMessage: String? = null,
     onAction: () -> Unit = {}
@@ -53,7 +53,7 @@ fun ErrorComposable(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
-            painter = icon,
+            painter = painter,
             contentDescription = null,
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size))
         )
@@ -79,7 +79,7 @@ fun ErrorComposable(
 @Composable
 private fun ErrorComposablePreview() {
     ErrorComposable(
-        icon = painterResource(R.drawable.ic_updates),
+        painter = painterResource(R.drawable.ic_updates),
         message = stringResource(R.string.details_no_updates),
         actionMessage = stringResource(R.string.check_updates)
     )

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,7 +45,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
         when (type) {
             EntryType.DATA_COLLECTED -> {
                 InfoComposable(
-                    icon = R.drawable.ic_cloud_upload,
+                    painter = painterResource(R.drawable.ic_cloud_upload),
                     title = AnnotatedString(
                         text = stringResource(R.string.details_data_safety_collect)
                     ),
@@ -59,7 +60,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
 
             EntryType.DATA_SHARED -> {
                 InfoComposable(
-                    icon = R.drawable.ic_share,
+                    painter = painterResource(R.drawable.ic_share),
                     title = AnnotatedString(
                         text = stringResource(R.string.details_data_safety_shared)
                     ),

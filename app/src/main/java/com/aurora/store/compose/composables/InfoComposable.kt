@@ -5,7 +5,6 @@
 
 package com.aurora.store.compose.composables
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -35,7 +35,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  * @param modifier The modifier to be applied to the composable
  * @param title Title of the information
  * @param description Information to show
- * @param icon Optional icon representing the information
+ * @param painter Optional painter to draw the icon
  * @param onClick Callback when this composable is clicked
  */
 @Composable
@@ -43,7 +43,7 @@ fun InfoComposable(
     modifier: Modifier = Modifier,
     title: AnnotatedString,
     description: AnnotatedString? = null,
-    @DrawableRes icon: Int? = null,
+    painter: Painter? = null,
     onClick: (() -> Unit)? = null
 ) {
     Row(
@@ -57,7 +57,7 @@ fun InfoComposable(
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (icon != null) Icon(painter = painterResource(icon), contentDescription = null)
+        if (painter != null) Icon(painter = painter, contentDescription = null)
         Column(modifier = Modifier.weight(1F)) {
             Text(
                 text = title,
@@ -82,6 +82,6 @@ private fun InfoComposablePreview(@PreviewParameter(AppPreviewProvider::class) a
     InfoComposable(
         title = AnnotatedString(text = stringResource(R.string.details_dev_website)),
         description = AnnotatedString.fromHtml(htmlString = app.developerWebsite),
-        icon = R.drawable.ic_network
+        painter = painterResource(R.drawable.ic_network)
     )
 }
