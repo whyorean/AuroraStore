@@ -22,7 +22,6 @@ import com.aurora.store.R
  * @param modifier The modifier to be applied to the composable
  * @param title Title to display
  * @see HeaderComposable
- * @see ActionHeaderComposable
  */
 @Composable
 fun TextDividerComposable(modifier: Modifier = Modifier, title: String) {

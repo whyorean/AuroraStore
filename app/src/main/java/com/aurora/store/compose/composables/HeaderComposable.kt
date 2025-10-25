@@ -33,7 +33,6 @@ import com.aurora.store.R
  * @param subtitle Optional subtitle to display
  * @param onClick Callback when this composable is clicked
  * @see TextDividerComposable
- * @see ActionHeaderComposable
  */
 @Composable
 fun HeaderComposable(
