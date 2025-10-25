@@ -50,17 +50,17 @@ fun NavDisplay(startDestination: NavKey) {
         ),
         entryProvider = entryProvider {
             entry<Screen.Blacklist> {
-                BlacklistScreen(onNavigateUp = { onNavigateUp() })
+                BlacklistScreen(onNavigateUp = ::onNavigateUp)
             }
 
             entry<Screen.Search> {
-                SearchScreen(onNavigateUp = { onNavigateUp() })
+                SearchScreen(onNavigateUp = ::onNavigateUp)
             }
 
             entry<Screen.AppDetails> { screen ->
                 AppDetailsScreen(
                     packageName = screen.packageName,
-                    onNavigateUp = { onNavigateUp() },
+                    onNavigateUp = ::onNavigateUp,
                     onNavigateToAppDetails = { packageName ->
                         backstack.add(Screen.AppDetails(packageName))
                     }
@@ -70,7 +70,7 @@ fun NavDisplay(startDestination: NavKey) {
             entry<Screen.DevProfile> { screen ->
                 DevProfileScreen(
                     developerId = screen.developerId,
-                    onNavigateUp = { onNavigateUp() },
+                    onNavigateUp = ::onNavigateUp,
                     onNavigateToAppDetails = { packageName ->
                         backstack.add(Screen.AppDetails(packageName))
                     }
@@ -78,14 +78,12 @@ fun NavDisplay(startDestination: NavKey) {
             }
 
             entry<Screen.PermissionRationale> { screen ->
-                PermissionRationaleScreen(
-                    onNavigateUp = { onNavigateUp() },
-                )
+                PermissionRationaleScreen(onNavigateUp = ::onNavigateUp)
             }
 
             entry<Screen.Downloads> {
                 DownloadsScreen(
-                    onNavigateUp = { onNavigateUp() },
+                    onNavigateUp = ::onNavigateUp,
                     onNavigateToAppDetails = { packageName ->
                         backstack.add(Screen.AppDetails(packageName))
                     }
@@ -104,18 +102,18 @@ fun NavDisplay(startDestination: NavKey) {
                     .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK) }
 
                 AccountsScreen(
-                    onNavigateUp = { onNavigateUp() },
+                    onNavigateUp = ::onNavigateUp,
                     onNavigateToSplash = { activity?.startActivity(splashIntent) }
                 )
             }
 
             entry<Screen.About> {
-                AboutScreen(onNavigateUp = { onNavigateUp() })
+                AboutScreen(onNavigateUp = ::onNavigateUp)
             }
 
             entry<Screen.Favourite> {
                 FavouriteScreen(
-                    onNavigateUp = { onNavigateUp() },
+                    onNavigateUp = ::onNavigateUp,
                     onNavigateToAppDetails = { packageName ->
                         backstack.add(Screen.AppDetails(packageName))
                     }
