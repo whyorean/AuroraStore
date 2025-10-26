@@ -35,7 +35,7 @@ import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.FavouriteListItem
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.emptyPagingItems
+import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
 import com.aurora.store.compose.ui.favourite.menu.MenuItem
 import com.aurora.store.data.room.favourite.Favourite

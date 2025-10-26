@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.preview
+package com.aurora.extensions
 
 import androidx.compose.runtime.Composable
 import androidx.paging.PagingData

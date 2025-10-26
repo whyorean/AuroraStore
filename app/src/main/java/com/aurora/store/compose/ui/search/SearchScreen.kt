@@ -70,7 +70,7 @@ import com.aurora.store.compose.composable.SearchSuggestionListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
-import com.aurora.store.compose.preview.emptyPagingItems
+import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel

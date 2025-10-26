@@ -49,7 +49,7 @@ import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ReviewListItem
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
-import com.aurora.store.compose.preview.emptyPagingItems
+import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ReviewViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

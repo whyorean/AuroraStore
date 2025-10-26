@@ -34,7 +34,7 @@ import com.aurora.store.compose.composable.DownloadListItem
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.emptyPagingItems
+import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
 import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.data.room.download.Download
