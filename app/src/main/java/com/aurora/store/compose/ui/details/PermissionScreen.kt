@@ -67,7 +67,7 @@ fun PermissionScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
-    permissionsInfo: Map<String, PermissionInfo?> = emptyMap(),
+    permissionsInfo: Map<String, PermissionInfo> = emptyMap(),
     onNavigateUp: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
@@ -90,8 +90,7 @@ private fun ScreenContent(
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
         ) {
             items(items = permissionsInfo.keys.toList(), key = { it }) { permission ->
-                // Bail out if this is not a known permission for the OS
-                val permissionInfo = permissionsInfo.getValue(permission) ?: return@items
+                val permissionInfo = permissionsInfo.getValue(permission)
 
                 Info(
                     title = AnnotatedString(
