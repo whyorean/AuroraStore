@@ -119,6 +119,13 @@
             android:exported="false"
             android:theme="@style/AppTheme.Translucent" />
 
+        <activity
+            android:name=".data.activity.MicroGInstallerActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.Translucent" />
+
         <!-- DownloadWorker -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
