@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import android.text.format.DateUtils
 import android.text.format.Formatter
@@ -51,7 +51,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
+import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.data.model.DownloadStatus
@@ -68,7 +68,7 @@ import java.util.Date
  * @param onClick Callback when this composable is clicked
  */
 @Composable
-fun DownloadComposable(
+fun DownloadListItem(
     modifier: Modifier = Modifier,
     download: Download,
     onClick: () -> Unit = {},
@@ -101,7 +101,7 @@ fun DownloadComposable(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(modifier = Modifier.weight(1F),) {
-                AnimatedAppIconComposable(
+                AnimatedAppIcon(
                     modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
                     iconUrl = download.iconURL,
                     inProgress = download.isRunning,
@@ -242,8 +242,8 @@ fun DownloadComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun DownloadComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun DownloadListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        DownloadComposable(download = Download.fromApp(app))
+        DownloadListItem(download = Download.fromApp(app))
     }
 }

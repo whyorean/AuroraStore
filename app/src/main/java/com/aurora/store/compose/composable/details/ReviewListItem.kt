@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.details
+package com.aurora.store.compose.composable.details
 
 import android.text.format.DateUtils
 import android.widget.RatingBar
@@ -41,7 +41,7 @@ import com.aurora.store.compose.preview.coilPreviewProvider
  * @param review [Review] about an app
  */
 @Composable
-fun ReviewComposable(modifier: Modifier = Modifier, review: Review) {
+fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -97,8 +97,8 @@ fun ReviewComposable(modifier: Modifier = Modifier, review: Review) {
 
 @Preview(showBackground = true)
 @Composable
-private fun ReviewComposablePreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
+private fun ReviewListItemPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        ReviewComposable(review = review)
+        ReviewListItem(review = review)
     }
 }

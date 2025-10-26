@@ -35,10 +35,10 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Rating
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.PageIndicatorComposable
-import com.aurora.store.compose.composables.details.RatingComposable
-import com.aurora.store.compose.composables.details.ReviewComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.PageIndicator
+import com.aurora.store.compose.composable.details.RatingListItem
+import com.aurora.store.compose.composable.details.ReviewListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import java.util.Locale
 
@@ -74,7 +74,7 @@ fun RatingAndReviews(
         }
     }
 
-    HeaderComposable(
+    Header(
         title = stringResource(R.string.details_ratings),
         onClick = onNavigateToDetailsReview
     )
@@ -108,7 +108,7 @@ fun RatingAndReviews(
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
         ) {
             stars.reversed().fastForEach { star ->
-                RatingComposable(
+                RatingListItem(
                     label = (stars.indexOf(star) + 1).toString(),
                     rating = star / stars.sum()
                 )
@@ -130,11 +130,11 @@ fun RatingAndReviews(
                     .background(color = MaterialTheme.colorScheme.surfaceContainer)
                     .requiredHeight(dimensionResource(R.dimen.review_height))
             ) {
-                ReviewComposable(review = featuredReviews[page])
+                ReviewListItem(review = featuredReviews[page])
             }
         }
 
-        PageIndicatorComposable(
+        PageIndicator(
             totalPages = featuredReviews.size,
             currentPage = pagerState.currentPage
         )

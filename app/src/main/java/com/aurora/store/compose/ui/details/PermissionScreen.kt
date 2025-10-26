@@ -29,8 +29,8 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.InfoComposable
-import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.PermissionViewModel
@@ -75,7 +75,7 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(
+            TopAppBar(
                 title = topAppBarTitle,
                 navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
                 onNavigateUp = onNavigateUp
@@ -93,7 +93,7 @@ private fun ScreenContent(
                 // Bail out if this is not a known permission for the OS
                 val permissionInfo = permissionsInfo.getValue(permission) ?: return@items
 
-                InfoComposable(
+                Info(
                     title = AnnotatedString(
                         text = permissionInfo.loadLabel(packageManager)
                             .toString()

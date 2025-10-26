@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -45,7 +45,7 @@ import com.aurora.store.R
  * @param onClick Callback when the composable is clicked
  */
 @Composable
-fun BlackListComposable(
+fun BlackListItem(
     modifier: Modifier = Modifier,
     icon: Bitmap,
     displayName: String,
@@ -102,8 +102,8 @@ fun BlackListComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun BlackListComposablePreview() {
-    BlackListComposable(
+private fun BlackListItemPreview() {
+    BlackListItem(
         icon = Color.GRAY.toDrawable().toBitmap(56, 56),
         displayName = LocalContext.current.getString(R.string.app_name),
         packageName = BuildConfig.APPLICATION_ID,

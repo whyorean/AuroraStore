@@ -25,8 +25,8 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
-import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.composables.details.ScreenshotComposable
+import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.composable.details.ScreenshotListItem
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 
 @Composable
@@ -69,7 +69,7 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(
+            TopAppBar(
                 title = topAppBarTitle,
                 navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
                 onNavigateUp = onNavigateUp
@@ -83,7 +83,7 @@ private fun ScreenContent(
             state = pagerState
         ) { page ->
             val artwork = screenshots[page]
-            ScreenshotComposable(
+            ScreenshotListItem(
                 modifier = Modifier.fillMaxSize(),
                 url = "${artwork.url}=rw-w${displayMetrics.widthPixels}-v1-e15"
             )

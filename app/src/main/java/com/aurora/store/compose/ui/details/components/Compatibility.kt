@@ -14,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.InfoComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Info
 import com.aurora.store.data.model.Scores
 
 /**
@@ -26,13 +26,13 @@ import com.aurora.store.data.model.Scores
  */
 @Composable
 fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
-    HeaderComposable(
+    Header(
         title = stringResource(R.string.details_compatibility_title),
         subtitle = stringResource(R.string.plexus_powered),
     )
 
     if (!needsGms) {
-        InfoComposable(
+        Info(
             painter = painterResource(R.drawable.ic_menu_about),
             title = AnnotatedString(
                 text = stringResource(R.string.details_compatibility_gms_not_required_title)
@@ -46,7 +46,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
         return
     }
 
-    InfoComposable(
+    Info(
         painter = painterResource(R.drawable.ic_menu_about),
         title = AnnotatedString(
             text = stringResource(R.string.details_compatibility_gms_required_title)
@@ -61,7 +61,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
         R.string.details_compatibility_microg to plexusScores?.microG?.status,
     )
     scoresStatus.forEach { (title, description) ->
-        InfoComposable(
+        Info(
             painter = painterResource(R.drawable.ic_android),
             title = AnnotatedString(text = stringResource(title)),
             description = AnnotatedString(

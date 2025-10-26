@@ -46,7 +46,7 @@ import com.aurora.Constants.URL_LICENSE
 import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.store.R
-import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.viewmodel.accounts.AccountsViewModel
 
@@ -106,7 +106,7 @@ private fun ScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TopAppBarComposable(
+            TopAppBar(
                 title = stringResource(R.string.title_account_manager),
                 onNavigateUp = onNavigateUp
             )

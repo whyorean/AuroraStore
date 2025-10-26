@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -39,7 +39,7 @@ import com.aurora.store.data.model.Link
  * @param onClick Callback when the composable is clicked
  */
 @Composable
-fun LinkComposable(modifier: Modifier = Modifier, link: Link, onClick: () -> Unit = {}) {
+fun LinkListItem(modifier: Modifier = Modifier, link: Link, onClick: () -> Unit = {}) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -83,8 +83,8 @@ fun LinkComposable(modifier: Modifier = Modifier, link: Link, onClick: () -> Uni
 
 @Preview(showBackground = true)
 @Composable
-private fun LinkComposablePreview() {
-    LinkComposable(
+private fun LinkListItemPreview() {
+    LinkListItem(
         link = Link(
             id = 0,
             title = LocalContext.current.getString(R.string.title_about),

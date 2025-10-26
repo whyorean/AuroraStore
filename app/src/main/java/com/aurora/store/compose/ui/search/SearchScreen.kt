@@ -64,10 +64,10 @@ import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.ErrorComposable
-import com.aurora.store.compose.composables.ProgressComposable
-import com.aurora.store.compose.composables.SearchSuggestionComposable
-import com.aurora.store.compose.composables.app.AppListComposable
+import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.ContainedLoadingIndicator
+import com.aurora.store.compose.composable.SearchSuggestionListItem
+import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.compose.preview.emptyPagingItems
@@ -181,7 +181,7 @@ private fun ScreenContent(
         AppBarWithSearch(state = searchBarState, inputField = inputField)
         ExpandedDockedSearchBar(state = searchBarState, inputField = inputField) {
             suggestions.forEach { suggestion ->
-                SearchSuggestionComposable(
+                SearchSuggestionListItem(
                     searchSuggestEntry = suggestion,
                     onClick = { query -> onRequestSearch(query) },
                     onAction = { query -> textFieldState.setTextAndPlaceCursorAtEnd(query.trim()) }
@@ -206,10 +206,10 @@ private fun ScreenContent(
                 )
 
                 when (results.loadState.refresh) {
-                    is LoadState.Loading -> ProgressComposable()
+                    is LoadState.Loading -> ContainedLoadingIndicator()
 
                     is LoadState.Error -> {
-                        ErrorComposable(
+                        Error(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_disclaimer),
                             message = stringResource(R.string.error)
@@ -218,7 +218,7 @@ private fun ScreenContent(
 
                     else -> {
                         if (isSearching && results.itemCount == 0) {
-                            ErrorComposable(
+                            Error(
                                 modifier = Modifier.padding(paddingValues),
                                 painter = painterResource(R.drawable.ic_disclaimer),
                                 message = stringResource(R.string.no_apps_available)
@@ -230,7 +230,7 @@ private fun ScreenContent(
                                     key = results.itemKey { it.id }
                                 ) { index ->
                                     results[index]?.let { app ->
-                                        AppListComposable(
+                                        LargeAppListItem(
                                             app = app,
                                             onClick = { showDetailPane(app.packageName) }
                                         )
@@ -261,7 +261,7 @@ private fun ScreenContent(
 
                 else -> {
                     if (isSearching && results.itemCount > 0) {
-                        ErrorComposable(
+                        Error(
                             painter = painterResource(R.drawable.ic_round_search),
                             message = stringResource(R.string.select_app_for_details)
                         )

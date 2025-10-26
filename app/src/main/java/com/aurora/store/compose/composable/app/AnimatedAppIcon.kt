@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.app
+package com.aurora.store.compose.composable.app
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -43,7 +43,7 @@ import com.aurora.store.compose.preview.coilPreviewProvider
  * @param inProgress Whether to show indeterminate or determinate progress bar
  */
 @Composable
-fun AnimatedAppIconComposable(
+fun AnimatedAppIcon(
     modifier: Modifier = Modifier,
     iconUrl: String,
     progress: Float = 0F,
@@ -99,7 +99,7 @@ private class ProgressProvider: PreviewParameterProvider<Float> {
 @Composable
 private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        AnimatedAppIconComposable(
+        AnimatedAppIcon(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
             iconUrl = app.iconArtwork.url
         )
@@ -110,7 +110,7 @@ private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) 
 @Composable
 private fun AnimatedAppIconPreview(@PreviewParameter(ProgressProvider::class) progress: Float) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        AnimatedAppIconComposable(
+        AnimatedAppIcon(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
             iconUrl = "",
             inProgress = true,

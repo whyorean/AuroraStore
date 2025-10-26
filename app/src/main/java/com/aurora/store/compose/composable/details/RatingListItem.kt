@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.details
+package com.aurora.store.compose.composable.details
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -28,7 +28,7 @@ import com.aurora.store.R
  * @param rating Current rating, for e.g. 0.3
  */
 @Composable
-fun RatingComposable(modifier: Modifier = Modifier, label: String, rating: Float) {
+fun RatingListItem(modifier: Modifier = Modifier, label: String, rating: Float) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -52,6 +52,6 @@ fun RatingComposable(modifier: Modifier = Modifier, label: String, rating: Float
 
 @Preview(showBackground = true)
 @Composable
-private fun RatingComposablePreview() {
-    RatingComposable(label = "5", rating = 0.5F)
+private fun RatingListItemPreview() {
+    RatingListItem(label = "5", rating = 0.5F)
 }

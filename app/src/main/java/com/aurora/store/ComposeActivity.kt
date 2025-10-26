@@ -11,8 +11,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.content.IntentCompat
-import com.aurora.store.compose.compositions.UI
-import com.aurora.store.compose.compositions.LocalUI
+import com.aurora.store.compose.composition.UI
+import com.aurora.store.compose.composition.LocalUI
 import com.aurora.store.compose.navigation.NavDisplay
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.theme.AuroraTheme

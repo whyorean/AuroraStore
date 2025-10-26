@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.details
+package com.aurora.store.compose.composable.details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -23,7 +23,7 @@ import com.aurora.store.data.model.ExodusTracker
  * @param tracker Tracker to display details about
  */
 @Composable
-fun ExodusComposable(modifier: Modifier = Modifier, tracker: ExodusTracker) {
+fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
     Column(modifier = modifier.padding(dimensionResource(R.dimen.padding_small))) {
         Text(
             text = tracker.name,
@@ -48,8 +48,8 @@ fun ExodusComposable(modifier: Modifier = Modifier, tracker: ExodusTracker) {
 
 @Preview(showBackground = true)
 @Composable
-private fun ExodusComposablePreview() {
-    ExodusComposable(
+private fun ExodusListItemPreview() {
+    ExodusListItem(
         tracker = ExodusTracker(
             name = "Google Analytics",
             signature = "com.google.android.apps.analytics.|com.google.android.gms.analytics.|com.google.analytics.",

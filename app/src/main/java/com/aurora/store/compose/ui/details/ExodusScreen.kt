@@ -28,9 +28,9 @@ import com.aurora.extensions.browse
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.composables.details.ExodusComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.composable.details.ExodusListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
@@ -80,7 +80,7 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(
+            TopAppBar(
                 title = topAppBarTitle,
                 navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
                 onNavigateUp = onNavigateUp
@@ -94,7 +94,7 @@ private fun ScreenContent(
                 .padding(horizontal = dimensionResource(R.dimen.padding_medium))
         ) {
             stickyHeader {
-                HeaderComposable(
+                Header(
                     title = stringResource(R.string.exodus_report_trackers, trackers.size, version),
                     subtitle = stringResource(R.string.exodus_view_report),
                     onClick = { context.browse(EXODUS_REPORT_URL + id) }
@@ -102,7 +102,7 @@ private fun ScreenContent(
             }
 
             items(items = trackers, key = { item -> item.id }) { tracker ->
-                ExodusComposable(tracker = tracker)
+                ExodusListItem(tracker = tracker)
             }
         }
     }

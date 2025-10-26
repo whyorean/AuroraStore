@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.app
+package com.aurora.store.compose.composable.app
 
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -25,7 +25,7 @@ import com.aurora.store.R
  * @param onClick Callback when this composable is clicked
  */
 @Composable
-fun AppTagComposable(
+fun TagListItem(
     modifier: Modifier = Modifier,
     label: String,
     painter: Painter,
@@ -42,8 +42,8 @@ fun AppTagComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun AppTagComposablePreview() {
-    AppTagComposable(
+private fun TagListItemPreview() {
+    TagListItem(
         label = stringResource(R.string.details_free),
         painter = painterResource(R.drawable.ic_paid)
     )

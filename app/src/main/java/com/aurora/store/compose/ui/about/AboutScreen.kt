@@ -39,8 +39,8 @@ import com.aurora.extensions.browse
 import com.aurora.store.BuildConfig.VERSION_CODE
 import com.aurora.store.BuildConfig.VERSION_NAME
 import com.aurora.store.R
-import com.aurora.store.compose.composables.LinkComposable
-import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.composable.LinkListItem
+import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.data.model.Link
 
 @Composable
@@ -91,7 +91,7 @@ private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Un
 
     Scaffold(
         topBar = {
-            TopAppBarComposable(
+            TopAppBar(
                 title = stringResource(R.string.title_about),
                 onNavigateUp = onNavigateUp
             )
@@ -109,7 +109,7 @@ private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Un
                 }
             }
             items(items = links, key = { item -> item.id }) { link ->
-                LinkComposable(
+                LinkListItem(
                     link = link,
                     onClick = {
                         when (link.id) {

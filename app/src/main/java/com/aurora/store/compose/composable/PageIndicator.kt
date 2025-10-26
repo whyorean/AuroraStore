@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
@@ -33,7 +33,7 @@ import com.aurora.store.R
  * @param currentPage Currently displayed page number
  */
 @Composable
-fun PageIndicatorComposable(modifier: Modifier = Modifier, totalPages: Int, currentPage: Int = 0) {
+fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: Int = 0) {
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -73,6 +73,6 @@ fun PageIndicatorComposable(modifier: Modifier = Modifier, totalPages: Int, curr
 
 @Preview(showBackground = true)
 @Composable
-private fun PageIndicatorComposablePreview() {
-    PageIndicatorComposable(totalPages = 5)
+private fun PageIndicatorPreview() {
+    PageIndicator(totalPages = 5)
 }

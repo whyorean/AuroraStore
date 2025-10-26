@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +38,7 @@ import com.aurora.store.R
  * @param onAction Callback when action button is clicked
  */
 @Composable
-fun SearchSuggestionComposable(
+fun SearchSuggestionListItem(
     modifier: Modifier = Modifier,
     searchSuggestEntry: SearchSuggestEntry,
     onClick: (query: String) -> Unit = {},
@@ -97,8 +97,8 @@ fun SearchSuggestionComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun SearchSuggestionComposablePreview() {
-    SearchSuggestionComposable(
+private fun SearchSuggestionListItemPreview() {
+    SearchSuggestionListItem(
         searchSuggestEntry = SearchSuggestEntry.getDefaultInstance()
     )
 }

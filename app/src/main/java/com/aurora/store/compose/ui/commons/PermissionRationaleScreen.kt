@@ -41,9 +41,9 @@ import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.compose.composables.PermissionComposable
-import com.aurora.store.compose.composables.TextDividerComposable
-import com.aurora.store.compose.composables.TopAppBarComposable
+import com.aurora.store.compose.composable.PermissionListItem
+import com.aurora.store.compose.composable.TextDividerComposable
+import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
@@ -163,7 +163,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             if (!isOnboarding) {
-                TopAppBarComposable(
+                TopAppBar(
                     title = pluralStringResource(R.plurals.permissions_required, permissions.size),
                     navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
                     onNavigateUp = onNavigateUp
@@ -191,7 +191,7 @@ private fun ScreenContent(
                     }
 
                     items(items = value, key = { p -> p.type.name }) { permission ->
-                        PermissionComposable(
+                        PermissionListItem(
                             permission = permission,
                             onAction = { requestPermission(permission.type) }
                         )

@@ -45,7 +45,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.R
-import com.aurora.store.compose.composables.BlackListComposable
+import com.aurora.store.compose.composable.BlackListItem
 import com.aurora.store.compose.ui.blacklist.menu.BlacklistMenu
 import com.aurora.store.compose.ui.blacklist.menu.MenuItem
 import com.aurora.store.util.PackageUtil
@@ -215,7 +215,7 @@ private fun ScreenContent(
             items(items = packages ?: emptyList(), key = { p -> p.packageName.hashCode() }) { pkg ->
                 val isBlacklisted = isPackageBlacklisted(pkg.packageName)
                 val isFiltered = isPackageFiltered(pkg)
-                BlackListComposable(
+                BlackListItem(
                     icon = PackageUtil.getIconForPackage(context, pkg.packageName)!!,
                     displayName = pkg.applicationInfo!!.loadLabel(context.packageManager).toString(),
                     packageName = pkg.packageName,

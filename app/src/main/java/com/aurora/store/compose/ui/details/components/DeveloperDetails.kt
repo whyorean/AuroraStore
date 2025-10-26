@@ -21,8 +21,8 @@ import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.mailTo
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.InfoComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
 
 /**
@@ -36,10 +36,10 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 fun DeveloperDetails(address: String, website: String, email: String) {
     val context = LocalContext.current
 
-    HeaderComposable(title = stringResource(R.string.details_dev_details))
+    Header(title = stringResource(R.string.details_dev_details))
     Column {
         if (website.isNotBlank()) {
-            InfoComposable(
+            Info(
                 title = AnnotatedString(text = stringResource(R.string.details_dev_website)),
                 description = AnnotatedString(text = website),
                 painter = painterResource(R.drawable.ic_network),
@@ -48,7 +48,7 @@ fun DeveloperDetails(address: String, website: String, email: String) {
         }
 
         if (email.isNotBlank()) {
-            InfoComposable(
+            Info(
                 title = AnnotatedString(text = stringResource(R.string.details_dev_email)),
                 description = AnnotatedString(text = email),
                 painter = painterResource(R.drawable.ic_mail),
@@ -57,7 +57,7 @@ fun DeveloperDetails(address: String, website: String, email: String) {
         }
 
         if (address.isNotBlank()) {
-            InfoComposable(
+            Info(
                 title = AnnotatedString(text = stringResource(R.string.details_dev_address)),
                 description = AnnotatedString.fromHtml(htmlString = address),
                 painter = painterResource(R.drawable.ic_person_location),

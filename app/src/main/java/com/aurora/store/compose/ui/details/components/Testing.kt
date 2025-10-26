@@ -23,8 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.InfoComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
 
 /**
@@ -36,13 +36,13 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  */
 @Composable
 fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}) {
-    HeaderComposable(title = stringResource(R.string.details_beta))
+    Header(title = stringResource(R.string.details_beta))
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
     ) {
-        InfoComposable(
+        Info(
             modifier = Modifier.weight(1F),
             painter = painterResource(R.drawable.ic_experiment),
             title = AnnotatedString(

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,7 +21,7 @@ import com.aurora.store.R
  * Composable to display a sticky header in a list
  * @param modifier The modifier to be applied to the composable
  * @param title Title to display
- * @see HeaderComposable
+ * @see Header
  */
 @Composable
 fun TextDividerComposable(modifier: Modifier = Modifier, title: String) {

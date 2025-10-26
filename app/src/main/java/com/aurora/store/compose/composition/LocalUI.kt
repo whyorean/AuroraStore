@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.compositions
+package com.aurora.store.compose.composition
 
 import androidx.compose.runtime.staticCompositionLocalOf
 

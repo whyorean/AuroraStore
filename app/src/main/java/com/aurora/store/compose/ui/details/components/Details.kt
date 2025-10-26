@@ -28,7 +28,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.app.AnimatedAppIconComposable
+import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.data.model.AppState
@@ -55,7 +55,7 @@ fun Details(
     val timeRemaining = if (state is AppState.Downloading) state.timeRemaining else 0
 
     Row(modifier = Modifier.fillMaxWidth()) {
-        AnimatedAppIconComposable(
+        AnimatedAppIcon(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
             iconUrl = app.iconArtwork.url,
             inProgress = state.inProgress(),

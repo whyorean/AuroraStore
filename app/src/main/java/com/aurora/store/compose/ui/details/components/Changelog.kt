@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
+import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.preview.AppPreviewProvider
 
 /**
@@ -35,7 +35,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
  */
 @Composable
 fun Changelog(changelog: String) {
-    HeaderComposable(title = stringResource(R.string.details_changelog))
+    Header(title = stringResource(R.string.details_changelog))
     Box(
         modifier = Modifier
             .fillMaxWidth()

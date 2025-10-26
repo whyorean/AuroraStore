@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
 
 /**
- * Composable to show error message when no apps are available for a request
+ * Composable to show error message that fills all available screen
  * @param modifier The modifier to be applied to the composable
  * @param painter Painter to draw the icon
  * @param message Message for error
@@ -35,7 +35,7 @@ import com.aurora.store.R
  * @param onAction Callback when action button is clicked
  */
 @Composable
-fun ErrorComposable(
+fun Error(
     modifier: Modifier = Modifier,
     painter: Painter,
     message: String,
@@ -77,8 +77,8 @@ fun ErrorComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun ErrorComposablePreview() {
-    ErrorComposable(
+private fun ErrorPreview() {
+    Error(
         painter = painterResource(R.drawable.ic_updates),
         message = stringResource(R.string.details_no_updates),
         actionMessage = stringResource(R.string.check_updates)

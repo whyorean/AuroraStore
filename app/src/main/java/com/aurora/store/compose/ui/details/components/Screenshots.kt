@@ -23,7 +23,7 @@ import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
-import com.aurora.store.compose.composables.details.ScreenshotComposable
+import com.aurora.store.compose.composable.details.ScreenshotListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 
@@ -37,7 +37,7 @@ import com.aurora.store.compose.preview.coilPreviewProvider
 fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int) -> Unit = {}) {
     LazyRow(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))) {
         items(items = screenshots, key = { artwork -> artwork.url }) { artwork ->
-            ScreenshotComposable(
+            ScreenshotListItem(
                 modifier = Modifier
                     .height(dimensionResource(R.dimen.screenshot_height))
                     .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))

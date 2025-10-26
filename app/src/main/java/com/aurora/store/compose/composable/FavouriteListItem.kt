@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import android.text.format.DateUtils
 import androidx.compose.animation.AnimatedVisibility
@@ -59,7 +59,7 @@ import kotlinx.coroutines.launch
  * @param onClear Callback when the favourite button is clicked to remove the app from favourites
  */
 @Composable
-fun FavouriteComposable(
+fun FavouriteListItem(
     modifier: Modifier = Modifier,
     favourite: Favourite,
     onClick: () -> Unit = {},
@@ -140,8 +140,8 @@ fun FavouriteComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun FavouriteComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun FavouriteListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        FavouriteComposable(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
+        FavouriteListItem(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
     }
 }

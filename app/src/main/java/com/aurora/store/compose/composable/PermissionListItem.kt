@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,7 +32,7 @@ import com.aurora.store.data.model.PermissionType
  * @param onAction Callback when the user clicks the action button
  */
 @Composable
-fun PermissionComposable(
+fun PermissionListItem(
     modifier: Modifier = Modifier,
     permission: Permission,
     onAction: () -> Unit = {}
@@ -72,8 +72,8 @@ fun PermissionComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun PermissionComposablePreview() {
-    PermissionComposable(
+private fun PermissionListItemPreview() {
+    PermissionListItem(
         permission = Permission(
             PermissionType.STORAGE_MANAGER,
             LocalContext.current.getString(R.string.onboarding_permission_esm),

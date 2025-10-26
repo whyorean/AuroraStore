@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables
+package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
@@ -27,7 +27,7 @@ import com.aurora.store.R
  * @param actions Actions to display on the top app bar (for e.g. menu)
  */
 @Composable
-fun TopAppBarComposable(
+fun TopAppBar(
     modifier: Modifier = Modifier,
     title: String? = null,
     navigationIcon: Painter = painterResource(R.drawable.ic_arrow_back),
@@ -53,8 +53,8 @@ fun TopAppBarComposable(
 
 @Preview(showBackground = true)
 @Composable
-private fun TopAppBarComposablePreview() {
-    TopAppBarComposable(
+private fun TopAppBarPreview() {
+    TopAppBar(
         title = stringResource(R.string.title_about),
         onNavigateUp = {}
     )

@@ -21,8 +21,8 @@ import com.aurora.gplayapi.data.models.datasafety.Entry
 import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.gplayapi.data.models.datasafety.Report
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.InfoComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
 
 /**
@@ -35,7 +35,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 fun DataSafety(report: Report, privacyPolicyUrl: String) {
     val context = LocalContext.current
 
-    HeaderComposable(
+    Header(
         title = stringResource(R.string.details_data_safety_title),
         subtitle = stringResource(R.string.details_data_safety_subtitle),
         onClick = { context.browse(privacyPolicyUrl) }
@@ -44,7 +44,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
     report.entries.groupBy { it.type }.forEach { (type, entries) ->
         when (type) {
             EntryType.DATA_COLLECTED -> {
-                InfoComposable(
+                Info(
                     painter = painterResource(R.drawable.ic_cloud_upload),
                     title = AnnotatedString(
                         text = stringResource(R.string.details_data_safety_collect)
@@ -59,7 +59,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
             }
 
             EntryType.DATA_SHARED -> {
-                InfoComposable(
+                Info(
                     painter = painterResource(R.drawable.ic_share),
                     title = AnnotatedString(
                         text = stringResource(R.string.details_data_safety_shared)

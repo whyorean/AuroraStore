@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.app
+package com.aurora.store.compose.composable.app
 
 import android.text.format.Formatter
 import androidx.compose.foundation.clickable
@@ -38,10 +38,10 @@ import com.aurora.store.compose.preview.coilPreviewProvider
  * @param modifier The modifier to be applied to the composable
  * @param app [App] to display
  * @param onClick Callback when the composable is clicked
- * @see AppListComposable
+ * @see LargeAppListItem
  */
 @Composable
-fun AppComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
+fun AppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
     val context = LocalContext.current
 
     Column(
@@ -80,8 +80,8 @@ fun AppComposable(modifier: Modifier = Modifier, app: App, onClick: () -> Unit =
 
 @Preview(showBackground = true)
 @Composable
-private fun AppComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun AppListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        AppComposable(app = app)
+        AppListItem(app = app)
     }
 }

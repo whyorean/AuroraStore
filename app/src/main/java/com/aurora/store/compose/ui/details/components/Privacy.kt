@@ -14,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.InfoComposable
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Info
 import com.aurora.store.data.model.Report
 
 /**
@@ -26,7 +26,7 @@ import com.aurora.store.data.model.Report
  */
 @Composable
 fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
-    HeaderComposable(
+    Header(
         title = stringResource(R.string.details_privacy),
         subtitle = stringResource(R.string.exodus_powered),
         onClick = onNavigateToDetailsExodus
@@ -42,7 +42,7 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
         }
     }
 
-    InfoComposable(
+    Info(
         painter = painterResource(R.drawable.ic_visibility),
         title = AnnotatedString(text = reportStatus),
         description = AnnotatedString(text = stringResource(R.string.exodus_tracker_desc))

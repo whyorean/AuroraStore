@@ -55,11 +55,11 @@ import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
-import com.aurora.store.compose.composables.ErrorComposable
-import com.aurora.store.compose.composables.HeaderComposable
-import com.aurora.store.compose.composables.ProgressComposable
-import com.aurora.store.compose.composables.TopAppBarComposable
-import com.aurora.store.compose.composables.app.AppListComposable
+import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.ContainedLoadingIndicator
+import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
@@ -163,9 +163,9 @@ fun AppDetailsScreen(
 @Composable
 private fun ScreenContentLoading(onNavigateUp: () -> Unit = {}) {
     Scaffold(
-        topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp) }
+        topBar = { TopAppBar(onNavigateUp = onNavigateUp) }
     ) { paddingValues ->
-        ProgressComposable(modifier = Modifier.padding(paddingValues))
+        ContainedLoadingIndicator(modifier = Modifier.padding(paddingValues))
     }
 }
 
@@ -175,9 +175,9 @@ private fun ScreenContentLoading(onNavigateUp: () -> Unit = {}) {
 @Composable
 private fun ScreenContentError(onNavigateUp: () -> Unit = {}, message: String? = null) {
     Scaffold(
-        topBar = { TopAppBarComposable(onNavigateUp = onNavigateUp) }
+        topBar = { TopAppBar(onNavigateUp = onNavigateUp) }
     ) { paddingValues ->
-        ErrorComposable(
+        Error(
             modifier = Modifier.padding(paddingValues),
             painter = painterResource(R.drawable.ic_apps_outage),
             message = message ?: stringResource(R.string.toast_app_unavailable)
@@ -330,7 +330,7 @@ private fun ScreenContentApp(
     fun MainPane() {
         Scaffold(
             topBar = {
-                TopAppBarComposable(
+                TopAppBar(
                     onNavigateUp = onNavigateUp,
                     actions = { if (shouldShowMenuOnMainPane) SetupMenu() }
                 )
@@ -354,7 +354,7 @@ private fun ScreenContentApp(
 
                 Tags(app = app)
                 Changelog(changelog = app.changes)
-                HeaderComposable(
+                Header(
                     title = stringResource(R.string.details_more_about_app),
                     subtitle = app.shortDescription,
                     onClick = { showExtraPane(ExtraScreen.More) }
@@ -380,7 +380,7 @@ private fun ScreenContentApp(
 
                 Compatibility(needsGms = app.requiresGMS(), plexusScores = plexusScores)
 
-                HeaderComposable(
+                Header(
                     title = stringResource(R.string.details_permission),
                     subtitle = if (app.permissions.isNotEmpty()) {
                         stringResource(R.string.permissions_requested, app.permissions.size)
@@ -420,7 +420,7 @@ private fun ScreenContentApp(
     fun SupportingPane() {
         Scaffold(
             topBar = {
-                TopAppBarComposable(actions = { if (!shouldShowMenuOnMainPane) SetupMenu() })
+                TopAppBar(actions = { if (!shouldShowMenuOnMainPane) SetupMenu() })
             }
         ) { paddingValues ->
             Column(
@@ -436,7 +436,7 @@ private fun ScreenContentApp(
                         painter = painterResource(R.drawable.ic_suggestions),
                         contentDescription = null
                     )
-                    HeaderComposable(title = stringResource(R.string.pref_ui_similar_apps))
+                    Header(title = stringResource(R.string.pref_ui_similar_apps))
                 }
                 LazyColumn(
                     modifier = Modifier
@@ -444,7 +444,7 @@ private fun ScreenContentApp(
                         .padding(vertical = dimensionResource(R.dimen.padding_medium))
                 ) {
                     items(items = suggestions, key = { item -> item.id }) { app ->
-                        AppListComposable(
+                        LargeAppListItem(
                             app = app,
                             onClick = { onNavigateToAppDetails(app.packageName) }
                         )

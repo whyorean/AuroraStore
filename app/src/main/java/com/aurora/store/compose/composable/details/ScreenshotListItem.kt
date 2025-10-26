@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.composables.details
+package com.aurora.store.compose.composable.details
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.aspectRatio
@@ -33,7 +33,7 @@ import com.aurora.store.compose.preview.coilPreviewProvider
  * @param url URL of the screenshot
  */
 @Composable
-fun ScreenshotComposable(modifier: Modifier = Modifier, url: String) {
+fun ScreenshotListItem(modifier: Modifier = Modifier, url: String) {
     // See https://coil-kt.github.io/coil/compose/#rememberasyncimagepainter
     val sizeResolver = rememberConstraintsSizeResolver()
     val painter = rememberAsyncImagePainter(
@@ -61,8 +61,8 @@ fun ScreenshotComposable(modifier: Modifier = Modifier, url: String) {
 
 @Preview
 @Composable
-private fun ScreenshotComposablePreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun ScreenshotListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        ScreenshotComposable(url = app.screenshots.firstOrNull()?.url ?: "")
+        ScreenshotListItem(url = app.screenshots.firstOrNull()?.url ?: "")
     }
 }
