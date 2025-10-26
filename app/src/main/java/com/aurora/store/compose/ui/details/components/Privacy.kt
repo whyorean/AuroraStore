@@ -7,6 +7,7 @@ package com.aurora.store.compose.ui.details.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -16,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.theme.warningColor
 import com.aurora.store.data.model.Report
 
 /**
@@ -44,6 +46,10 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
 
     Info(
         painter = painterResource(R.drawable.ic_visibility),
+        tint = when {
+            report != null && report.trackers.isEmpty() -> LocalContentColor.current
+            else -> warningColor
+        },
         title = AnnotatedString(text = reportStatus),
         description = AnnotatedString(text = stringResource(R.string.exodus_tracker_desc))
     )
