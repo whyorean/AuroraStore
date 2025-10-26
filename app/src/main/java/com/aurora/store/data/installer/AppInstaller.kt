@@ -52,7 +52,8 @@ class AppInstaller @Inject constructor(
     private val rootInstaller: RootInstaller,
     private val serviceInstaller: ServiceInstaller,
     private val amInstaller: AMInstaller,
-    private val shizukuInstaller: ShizukuInstaller
+    private val shizukuInstaller: ShizukuInstaller,
+    private val microGInstaller: MicroGInstaller
 ) {
 
     companion object {
@@ -73,7 +74,8 @@ class AppInstaller @Inject constructor(
                 if (hasRootAccess()) RootInstaller.installerInfo else null,
                 if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
                 if (hasAppManager(context)) AMInstaller.installerInfo else null,
-                if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null
+                if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
+                if (hasMicroGInstaller()) MicroGInstaller.installerInfo else null
             )
         }
 
@@ -106,6 +108,7 @@ class AppInstaller @Inject constructor(
                 Installer.SERVICE -> hasAuroraService(context)
                 Installer.AM -> false // We cannot check if AppManager has ability to auto-update
                 Installer.SHIZUKU -> isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()
+                Installer.MICROG -> false
             }
         }
 
@@ -143,6 +146,11 @@ class AppInstaller @Inject constructor(
             return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
         }
 
+        fun hasMicroGInstaller(): Boolean{
+            // TODO: Implement better check to ensure its microg companion & correct version is installed
+            return true
+        }
+
         fun uninstall(context: Context, packageName: String) {
             val intent = Intent().apply {
                 data = Uri.fromParts("package", packageName, null)
@@ -176,6 +184,8 @@ class AppInstaller @Inject constructor(
                     defaultInstaller
                 }
             }
+            Installer.MICROG -> if(hasMicroGInstaller()) microGInstaller else defaultInstaller
+
         }
     }
 }

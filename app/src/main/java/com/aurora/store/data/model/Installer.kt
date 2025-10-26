@@ -9,5 +9,6 @@ enum class Installer {
     ROOT,
     SERVICE,
     AM,
-    SHIZUKU
+    SHIZUKU,
+    MICROG
 }
