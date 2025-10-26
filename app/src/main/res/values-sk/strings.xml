@@ -422,7 +422,7 @@
     <string name="pref_network_proxy_desc">Zobrazenie a správa konfigurácie servera proxy</string>
     <string name="pref_updates_restrictions_metered">Len v nemeraných sieťach</string>
     <string name="pref_updates_restrictions_idle">Keď je zariadenie nečinné</string>
-    <string name="pref_updates_restrictions_desc">Nakonfigurovať obmedzenia zariadenia pre automatické aktualizácie.</string>
+    <string name="pref_updates_restrictions_desc">Nakonfigurovať obmedzenia zariadenia pre automatické aktualizácie</string>
     <string name="set">Nastaviť</string>
     <string name="pref_updates_restrictions_title">Obmedzenia automatických aktualizácií</string>
     <string name="pref_updates_restrictions_battery">Keď batéria nie je vybitá</string>
@@ -459,4 +459,10 @@
     <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
     <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
     <string name="preparing_to_install">Príprava na inštaláciu</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Potrebné povolenie</item>
+        <item quantity="few">Potrebných povolení</item>
+        <item quantity="many">Potrebné povolenia</item>
+        <item quantity="other">Potrebné povolenia</item>
+    </plurals>
 </resources>
