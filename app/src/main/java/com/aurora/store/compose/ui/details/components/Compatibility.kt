@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.theme.successColor
 import com.aurora.store.compose.theme.warningColor
 import com.aurora.store.data.model.Scores
 
@@ -35,6 +36,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
     if (!needsGms) {
         Info(
             painter = painterResource(R.drawable.ic_menu_about),
+            tint = successColor,
             title = AnnotatedString(
                 text = stringResource(R.string.details_compatibility_gms_not_required_title)
             ),
