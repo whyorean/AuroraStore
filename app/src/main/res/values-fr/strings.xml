@@ -460,8 +460,8 @@
     <string name="manual_download_version_error">La version du code ne peut comporter que des chiffres</string>
     <string name="preparing_to_install">Préparation de l’installation</string>
     <plurals name="permissions_required">
-        <item quantity="one">Autorisation nécessaire</item>
-        <item quantity="many">Autorisations nécessaires</item>
-        <item quantity="other">Autorisations nécessaires</item>
+        <item quantity="one">Une autorisation est nécessaire</item>
+        <item quantity="many">Des autorisations sont nécessaires</item>
+        <item quantity="other">Des autorisations sont nécessaires</item>
     </plurals>
 </resources>
