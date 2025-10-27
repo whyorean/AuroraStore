@@ -448,7 +448,7 @@
     <string name="details_more_target_api">Ciele</string>
     <string name="details_more_package_name">Názov balíka</string>
     <string name="details_more_content_rating">Hodnotenie obsahu</string>
-    <string name="select_app_for_details">Vyhľadávacia obrazovka</string>
+    <string name="select_app_for_details">Vyberte aplikáciu pre viac informácií</string>
     <string name="action_filter_no_ads">Žiadne reklamy</string>
     <string name="action_filter_no_gms">Žiadne Play služby</string>
     <string name="onboarding_title_gsf">Kompatibilita aplikácie</string>
