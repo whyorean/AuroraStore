@@ -422,7 +422,7 @@
     <string name="toast_proxy_disabled">Proxya desgaitu da</string>
     <string name="pref_network_proxy_desc">Ikusi eta kudeatu proxy konfigurazioa</string>
     <string name="pref_updates_restrictions_title">Eguneratze automatikoen murrizketak</string>
-    <string name="pref_updates_restrictions_desc">Konfiguratu gailuaren murrizketak eguneratze automatizatuetarako.</string>
+    <string name="pref_updates_restrictions_desc">Konfiguratu gailuaren murrizketak eguneratze automatizatuetarako</string>
     <string name="pref_updates_restrictions_battery">Bateria gutxi dagoenean</string>
     <string name="pref_updates_restrictions_idle">Gailua inaktibo dagoenean</string>
     <string name="pref_updates_restrictions_metered">Neurririk gabeko sareetan bakarrik</string>
@@ -459,4 +459,8 @@
     <string name="action_filter_no_gms">Play zerbitzurik ez</string>
     <string name="manual_download_version_error">Bertsio-kodeak digituak bakarrik izan ditzake</string>
     <string name="preparing_to_install">Instalatzeko prestatzen</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Baimena beharrezkoa da</item>
+        <item quantity="other">Baimenak beharrezkoak dira</item>
+    </plurals>
 </resources>
