@@ -178,7 +178,7 @@
     <string name="installer_service_available">"Aurora Services is available and ready to install."</string>
     <string name="installer_service_unavailable">Install Aurora Services 1.0.9 or above, or change the installer.</string>
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>
-    <string name="installer_microg_misconfigured">MicroG installer failed to install app. Likely incorrect version is installed.</string>
+    <string name="installer_microg_misconfigured">MicroG installer failed to install app, likely due to misconfiguration.</string>
     <string name="installer_status_failure">"Installer failed"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
     <string name="installer_status_failure_session">"Could not create session"</string>

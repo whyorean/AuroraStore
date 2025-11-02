@@ -56,7 +56,7 @@ object PackageUtil {
     private const val VERSION_CODE_MICRO_G: Long = 240913402
     private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
     private const val VERSION_CODE_MICROG_COMPANION_MIN: Long = 84022620
-    const val MICROG_INSTALL_ACTIVITY = "org.microg.vending.installer.AppInstallActivity"
+    private const val MICROG_INSTALL_ACTIVITY = "org.microg.vending.installer.AppInstallActivity"
 
     fun getAllValidPackages(context: Context): List<PackageInfo> {
         return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
