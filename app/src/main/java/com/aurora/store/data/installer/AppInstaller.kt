@@ -35,6 +35,7 @@ import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
@@ -75,7 +76,7 @@ class AppInstaller @Inject constructor(
                 if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
                 if (hasAppManager(context)) AMInstaller.installerInfo else null,
                 if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
-                if (hasMicroGInstaller()) MicroGInstaller.installerInfo else null
+                if (hasMicroGCompanion(context)) MicroGInstaller.installerInfo else null
             )
         }
 
@@ -146,11 +147,6 @@ class AppInstaller @Inject constructor(
             return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
         }
 
-        fun hasMicroGInstaller(): Boolean{
-            // TODO: Implement better check to ensure its microg companion & correct version is installed
-            return true
-        }
-
         fun uninstall(context: Context, packageName: String) {
             val intent = Intent().apply {
                 data = Uri.fromParts("package", packageName, null)
@@ -184,8 +180,7 @@ class AppInstaller @Inject constructor(
                     defaultInstaller
                 }
             }
-            Installer.MICROG -> if(hasMicroGInstaller()) microGInstaller else defaultInstaller
-
+            Installer.MICROG -> if(hasMicroGCompanion(context)) microGInstaller else defaultInstaller
         }
     }
 }

@@ -30,7 +30,7 @@ import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -41,7 +41,6 @@ class MicroGInstaller @Inject constructor(
 ) : InstallerBase(context) {
 
     companion object {
-
         val installerInfo: InstallerInfo
             get() = InstallerInfo(
                 id = 6,
@@ -72,7 +71,7 @@ class MicroGInstaller @Inject constructor(
                 Log.i(TAG, "${download.packageName} already queued")
             }
 
-            isMicroGInstallerAvailable(context) -> {
+            hasMicroGCompanion(context) -> {
                 Log.i(TAG, "Received microG install request for ${download.packageName}")
 
                 val files = getFiles(download.packageName, download.versionCode)
@@ -89,10 +88,5 @@ class MicroGInstaller @Inject constructor(
                 )
             }
         }
-    }
-
-    fun isMicroGInstallerAvailable(context: Context): Boolean {
-        // TODO: Implement better checks to ensure its microg companion & correct version is installed
-        return PackageUtil.isInstalled(context, PACKAGE_NAME_PLAY_STORE)
     }
 }
