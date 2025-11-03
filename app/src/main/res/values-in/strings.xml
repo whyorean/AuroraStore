@@ -423,7 +423,7 @@
     <string name="pref_network_proxy_desc">Lihat dan kelola konfigurasi proksi</string>
     <string name="pref_updates_restrictions_title">Pembatasan pembaruan otomatis</string>
     <string name="pref_updates_restrictions_idle">Saat perangkat tidak digunakan</string>
-    <string name="pref_updates_restrictions_desc">Konfigurasikan pembatasan perangkat untuk pembaruan otomatis.</string>
+    <string name="pref_updates_restrictions_desc">Konfigurasikan pembatasan perangkat untuk pembaruan otomatis</string>
     <string name="pref_updates_restrictions_metered">Hanya pada jaringan yang tidak terukur</string>
     <string name="pref_updates_restrictions_battery">Saat baterai tidak lemah</string>
     <string name="verification_failed">Gagal memverifikasi berkas terunduh</string>
@@ -459,4 +459,7 @@
     <string name="action_filter_no_gms">Tidak ada layanan google play</string>
     <string name="manual_download_version_error">Kode versi hanya dapat berisi angka</string>
     <string name="preparing_to_install">Mempersiapkan pemasangan</string>
+    <plurals name="permissions_required">
+        <item quantity="other">Izin yang diperlukan</item>
+    </plurals>
 </resources>
