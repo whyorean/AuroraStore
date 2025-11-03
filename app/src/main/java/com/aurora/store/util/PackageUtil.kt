@@ -55,6 +55,8 @@ object PackageUtil {
 
     private const val VERSION_CODE_MICRO_G: Long = 240913402
     private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
+    private const val VERSION_CODE_MICROG_COMPANION_MIN: Long = 84022620
+    private const val MICROG_INSTALL_ACTIVITY = "org.microg.vending.installer.AppInstallActivity"
 
     fun getAllValidPackages(context: Context): List<PackageInfo> {
         return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
@@ -107,6 +109,26 @@ object PackageUtil {
         } else {
             isInstalled(context, PACKAGE_NAME_GMS, VERSION_CODE_MICRO_G)
         }
+    }
+
+    fun hasActivity(context: Context, packageName: String, activityName: String): Boolean {
+        val intent = Intent()
+        intent.setClassName(packageName, activityName)
+
+        val resolveInfo = context.packageManager.resolveActivity(intent, 0)
+        return resolveInfo != null
+    }
+
+    fun hasMicroGCompanion(context: Context): Boolean {
+        return isInstalled(
+            context,
+            PACKAGE_NAME_PLAY_STORE,
+            VERSION_CODE_MICROG_COMPANION_MIN
+        ) && hasActivity(
+            context,
+            PACKAGE_NAME_PLAY_STORE,
+            MICROG_INSTALL_ACTIVITY
+        )
     }
 
     fun isInstalled(context: Context, packageName: String, versionCode: Long? = null): Boolean {

@@ -178,6 +178,7 @@
     <string name="installer_service_available">"Aurora Services is available and ready to install."</string>
     <string name="installer_service_unavailable">Install Aurora Services 1.0.9 or above, or change the installer.</string>
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>
+    <string name="installer_microg_misconfigured">MicroG installer failed to install app, likely due to misconfiguration.</string>
     <string name="installer_status_failure">"Installer failed"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
     <string name="installer_status_failure_session">"Could not create session"</string>
@@ -211,6 +212,7 @@
     <string name="pref_install_mode_root">"Root installer"</string>
     <string name="pref_install_mode_services">"Aurora Services (Deprecated)"</string>
     <string name="pref_install_mode_session">"Session installer"</string>
+    <string name="pref_install_mode_microg">"MicroG installer"</string>
     <string name="pref_install_mode_summary">"Select mode of APK installation"</string>
     <string name="pref_install_mode_title">"Installation method"</string>
     <string name="pref_vending_version_title">Google Play version</string>
@@ -387,6 +389,8 @@
     <string name="native_installer_desc">Best suited for devices running below Android 4.4</string>
     <string name="services_installer_subtitle">Installer for background installations</string>
     <string name="services_installer_desc">Requires Aurora Services to be installed as a privileged-system app</string>
+    <string name="microg_installer_subtitle">Requires microG companion app to be installed</string>
+    <string name="microg_installer_desc">Helps you bypass App Integrity (installer only) check</string>
     <string name="am_installer_subtitle">Full-featured open source package manager</string>
     <string name="am_installer_desc">Requires App Manager, need adb/root mode to install when miui optimization is on</string>
     <string name="shizuku_installer_subtitle">Using system APIs directly with adb/root privileges</string>
