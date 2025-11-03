@@ -35,6 +35,7 @@ import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
@@ -52,7 +53,8 @@ class AppInstaller @Inject constructor(
     private val rootInstaller: RootInstaller,
     private val serviceInstaller: ServiceInstaller,
     private val amInstaller: AMInstaller,
-    private val shizukuInstaller: ShizukuInstaller
+    private val shizukuInstaller: ShizukuInstaller,
+    private val microGInstaller: MicroGInstaller
 ) {
 
     companion object {
@@ -73,7 +75,8 @@ class AppInstaller @Inject constructor(
                 if (hasRootAccess()) RootInstaller.installerInfo else null,
                 if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
                 if (hasAppManager(context)) AMInstaller.installerInfo else null,
-                if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null
+                if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
+                if (hasMicroGCompanion(context)) MicroGInstaller.installerInfo else null
             )
         }
 
@@ -106,6 +109,7 @@ class AppInstaller @Inject constructor(
                 Installer.SERVICE -> hasAuroraService(context)
                 Installer.AM -> false // We cannot check if AppManager has ability to auto-update
                 Installer.SHIZUKU -> isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()
+                Installer.MICROG -> false
             }
         }
 
@@ -176,6 +180,7 @@ class AppInstaller @Inject constructor(
                     defaultInstaller
                 }
             }
+            Installer.MICROG -> if(hasMicroGCompanion(context)) microGInstaller else defaultInstaller
         }
     }
 }
