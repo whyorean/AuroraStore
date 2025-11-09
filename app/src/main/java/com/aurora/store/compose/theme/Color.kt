@@ -7,5 +7,5 @@ package com.aurora.store.compose.theme
 
 import androidx.compose.ui.graphics.Color
 
-val warningColor = Color(0xFFFFA000) // Amber
+val warningColor = Color(0xFFFF7600) // Amber
 val successColor = Color(0xFF1B8738) // Green

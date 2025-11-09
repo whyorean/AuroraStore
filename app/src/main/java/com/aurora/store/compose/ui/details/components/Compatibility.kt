@@ -36,7 +36,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
     if (!needsGms) {
         Info(
             painter = painterResource(R.drawable.ic_menu_about),
-            tint = successColor,
+            titleColor = successColor,
             title = AnnotatedString(
                 text = stringResource(R.string.details_compatibility_gms_not_required_title)
             ),
@@ -51,7 +51,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
 
     Info(
         painter = painterResource(R.drawable.ic_menu_about),
-        tint = warningColor,
+        titleColor = warningColor,
         title = AnnotatedString(
             text = stringResource(R.string.details_compatibility_gms_required_title)
         ),

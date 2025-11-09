@@ -7,7 +7,6 @@ package com.aurora.store.compose.ui.details.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -47,7 +46,7 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
 
     Info(
         painter = painterResource(R.drawable.ic_visibility),
-        tint = when {
+        titleColor = when {
             report != null && report.trackers.isEmpty() -> successColor
             else -> warningColor
         },
