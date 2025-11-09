@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.search
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -192,7 +193,10 @@ private fun ScreenContent(
 
     @Composable
     fun ListPane() {
-        Scaffold(topBar = { SearchBar() }) { paddingValues ->
+        Scaffold(
+            modifier = Modifier.focusable(), //TODO: https://issuetracker.google.com/issues/445720462
+            topBar = { SearchBar() }
+        ) { paddingValues ->
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
