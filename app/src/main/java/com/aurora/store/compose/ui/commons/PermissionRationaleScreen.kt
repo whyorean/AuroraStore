@@ -44,6 +44,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.PermissionListItem
 import com.aurora.store.compose.composable.TextDividerComposable
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
@@ -213,5 +214,7 @@ private fun PermissionsScreenPreview() {
             isGranted = Random.nextBoolean()
         )
     }
-    ScreenContent(permissions = permissions)
+    PreviewTemplate {
+        ScreenContent(permissions = permissions)
+    }
 }

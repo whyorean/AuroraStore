@@ -25,6 +25,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.AppState
 
 /**
@@ -103,13 +104,15 @@ fun AppDetailsMenu(
 @Preview(showBackground = true)
 @Composable
 private fun AppDetailsMenuPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    TopAppBar(
-        actions = {
-            AppDetailsMenu(
-                isInstalled = app.isInstalled,
-                isFavorite = true,
-                isExpanded = true
-            )
-        }
-    )
+    PreviewTemplate {
+        TopAppBar(
+            actions = {
+                AppDetailsMenu(
+                    isInstalled = app.isInstalled,
+                    isFavorite = true,
+                    isExpanded = true
+                )
+            }
+        )
+    }
 }

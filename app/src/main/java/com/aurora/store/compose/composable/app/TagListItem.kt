@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to show a tag related to an app
@@ -43,8 +44,10 @@ fun TagListItem(
 @Preview(showBackground = true)
 @Composable
 private fun TagListItemPreview() {
-    TagListItem(
-        label = stringResource(R.string.details_free),
-        painter = painterResource(R.drawable.ic_paid)
-    )
+    PreviewTemplate {
+        TagListItem(
+            label = stringResource(R.string.details_free),
+            painter = painterResource(R.drawable.ic_paid)
+        )
+    }
 }

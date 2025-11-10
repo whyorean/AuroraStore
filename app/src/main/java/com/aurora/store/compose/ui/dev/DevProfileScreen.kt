@@ -12,7 +12,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -26,7 +25,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -35,7 +33,7 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.details.DevProfileViewModel
 import com.aurora.store.viewmodel.search.SearchViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -130,7 +128,7 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun DevProfileScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         val apps = List(10) { app.copy(id = Random.nextInt()) }
         val pagedApps = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
 

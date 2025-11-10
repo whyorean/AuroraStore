@@ -46,6 +46,7 @@ import com.aurora.Constants
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.BlackListItem
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.blacklist.menu.BlacklistMenu
 import com.aurora.store.compose.ui.blacklist.menu.MenuItem
 import com.aurora.store.util.PackageUtil
@@ -239,5 +240,7 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun BlacklistScreenPreview() {
-    ScreenContent()
+    PreviewTemplate {
+        ScreenContent()
+    }
 }

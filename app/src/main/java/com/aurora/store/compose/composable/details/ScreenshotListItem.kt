@@ -8,7 +8,6 @@ package com.aurora.store.compose.composable.details
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -17,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImagePainter
-import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.compose.rememberAsyncImagePainter
 import coil3.compose.rememberConstraintsSizeResolver
 import coil3.request.ImageRequest
@@ -25,7 +23,7 @@ import coil3.request.crossfade
 import com.aurora.extensions.shimmer
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display a screenshot of an app
@@ -63,7 +61,7 @@ fun ScreenshotListItem(modifier: Modifier = Modifier, url: String) {
 @Preview
 @Composable
 private fun ScreenshotListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         ScreenshotListItem(url = app.screenshots.firstOrNull()?.url ?: "")
     }
 }

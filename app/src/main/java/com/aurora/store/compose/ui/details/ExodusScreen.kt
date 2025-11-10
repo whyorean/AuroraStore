@@ -32,6 +32,7 @@ import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ExodusListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ExodusViewModel
@@ -111,8 +112,10 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun ExodusScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    ScreenContent(
-        topAppBarTitle = app.displayName,
-        version = app.versionName
-    )
+    PreviewTemplate {
+        ScreenContent(
+            topAppBarTitle = app.displayName,
+            version = app.versionName
+        )
+    }
 }

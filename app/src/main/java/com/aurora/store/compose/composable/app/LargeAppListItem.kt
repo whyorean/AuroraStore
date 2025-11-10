@@ -15,7 +15,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -26,14 +25,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import coil3.compose.AsyncImage
-import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.util.CommonUtil
 
 /**
@@ -86,7 +84,7 @@ fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Uni
 @Preview(showBackground = true)
 @Composable
 fun LargeAppListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         LargeAppListItem(app = app)
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Pager indicator
@@ -74,5 +75,7 @@ fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: I
 @Preview(showBackground = true)
 @Composable
 private fun PageIndicatorPreview() {
-    PageIndicator(totalPages = 5)
+    PreviewTemplate {
+        PageIndicator(totalPages = 5)
+    }
 }

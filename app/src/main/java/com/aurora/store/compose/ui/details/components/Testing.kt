@@ -26,6 +26,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display app's beta testing status, supposed to be used as a part of the
@@ -71,7 +72,9 @@ fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Bool
 @Preview(showBackground = true)
 @Composable
 private fun TestingPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        Testing(isSubscribed = app.testingProgram!!.isSubscribed)
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            Testing(isSubscribed = app.testingProgram!!.isSubscribed)
+        }
     }
 }

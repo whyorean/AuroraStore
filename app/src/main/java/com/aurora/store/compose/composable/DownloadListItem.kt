@@ -33,7 +33,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,12 +47,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.getETAString
@@ -243,7 +241,7 @@ fun DownloadListItem(
 @Preview(showBackground = true)
 @Composable
 private fun DownloadListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         DownloadListItem(download = Download.fromApp(app))
     }
 }

@@ -16,12 +16,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 
@@ -73,12 +73,14 @@ fun PermissionListItem(
 @Preview(showBackground = true)
 @Composable
 private fun PermissionListItemPreview() {
-    PermissionListItem(
-        permission = Permission(
-            PermissionType.STORAGE_MANAGER,
-            LocalContext.current.getString(R.string.onboarding_permission_esm),
-            LocalContext.current.getString(R.string.onboarding_permission_esa_desc),
-            false
+    PreviewTemplate {
+        PermissionListItem(
+            permission = Permission(
+                PermissionType.STORAGE_MANAGER,
+                stringResource(R.string.onboarding_permission_esm),
+                stringResource(R.string.onboarding_permission_esa_desc),
+                false
+            )
         )
-    )
+    }
 }

@@ -72,6 +72,7 @@ import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.extensions.emptyPagingItems
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
@@ -416,10 +417,12 @@ private fun FilterHeader(
 @PreviewScreenSizes
 @Composable
 private fun SearchScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    val apps = List(10) { app.copy(id = Random.nextInt()) }
-    val results = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
+    PreviewTemplate {
+        val apps = List(10) { app.copy(id = Random.nextInt()) }
+        val results = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
 
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-        ScreenContent(results = results)
+        CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+            ScreenContent(results = results)
+        }
     }
 }

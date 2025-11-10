@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -31,7 +30,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.DownloadListItem
@@ -41,7 +39,7 @@ import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
 import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.data.model.DownloadStatus
@@ -182,7 +180,7 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun DownloadsScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         val downloads = List(10) {
             Download.fromApp(app).copy(
                 packageName = Random.nextInt().toString(),

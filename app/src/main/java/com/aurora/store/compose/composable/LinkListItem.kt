@@ -31,6 +31,8 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.aurora.store.R
 import com.aurora.store.data.model.Link
+import androidx.compose.ui.res.stringResource
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to show link details in a list
@@ -84,13 +86,15 @@ fun LinkListItem(modifier: Modifier = Modifier, link: Link, onClick: () -> Unit 
 @Preview(showBackground = true)
 @Composable
 private fun LinkListItemPreview() {
-    LinkListItem(
-        link = Link(
-            id = 0,
-            title = LocalContext.current.getString(R.string.title_about),
-            subtitle = LocalContext.current.getString(R.string.about_aurora_store_subtitle),
-            url = "https://auroraoss.com/",
-            icon = R.drawable.ic_menu_about
+    PreviewTemplate {
+        LinkListItem(
+            link = Link(
+                id = 0,
+                title = stringResource(R.string.title_about),
+                subtitle = stringResource(R.string.about_aurora_store_subtitle),
+                url = "https://auroraoss.com/",
+                icon = R.drawable.ic_menu_about
+            )
         )
-    )
+    }
 }

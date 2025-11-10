@@ -15,6 +15,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.ExodusTracker
 
 /**
@@ -49,11 +50,13 @@ fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
 @Preview(showBackground = true)
 @Composable
 private fun ExodusListItemPreview() {
-    ExodusListItem(
-        tracker = ExodusTracker(
-            name = "Google Analytics",
-            signature = "com.google.android.apps.analytics.|com.google.android.gms.analytics.|com.google.analytics.",
-            date = "2017-09-24"
+    PreviewTemplate {
+        ExodusListItem(
+            tracker = ExodusTracker(
+                name = "Google Analytics",
+                signature = "com.google.android.apps.analytics.|com.google.android.gms.analytics.|com.google.analytics.",
+                date = "2017-09-24"
+            )
         )
-    )
+    }
 }

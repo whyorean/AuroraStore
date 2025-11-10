@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.theme.successColor
 import com.aurora.store.compose.theme.warningColor
 import com.aurora.store.data.model.Scores
@@ -78,7 +79,9 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
 @Preview(showBackground = true)
 @Composable
 private fun CompatibilityPreview() {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        Compatibility(needsGms = true)
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            Compatibility(needsGms = true)
+        }
     }
 }

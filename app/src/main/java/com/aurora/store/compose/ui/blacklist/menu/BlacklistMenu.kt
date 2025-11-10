@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Menu for the blacklist screen
@@ -71,5 +72,7 @@ fun BlacklistMenu(
 @Preview(showBackground = true)
 @Composable
 private fun BlacklistMenuPreview() {
-    BlacklistMenu(isExpanded = true)
+    PreviewTemplate {
+        BlacklistMenu(isExpanded = true)
+    }
 }

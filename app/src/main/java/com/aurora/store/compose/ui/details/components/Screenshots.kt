@@ -13,19 +13,17 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.compose.composable.details.ScreenshotListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display screenshots of the app, supposed to be used as a part
@@ -51,8 +49,8 @@ fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int)
 @Preview(showBackground = true)
 @Composable
 private fun ScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
             Screenshots(screenshots = app.screenshots)
         }
     }

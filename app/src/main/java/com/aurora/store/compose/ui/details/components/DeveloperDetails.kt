@@ -24,6 +24,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display details of the app developer, supposed to be used as a part
@@ -70,11 +71,13 @@ fun DeveloperDetails(address: String, website: String, email: String) {
 @Preview(showBackground = true)
 @Composable
 private fun DeveloperDetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        DeveloperDetails(
-            address = app.developerAddress,
-            website = app.developerWebsite,
-            email = app.developerEmail
-        )
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            DeveloperDetails(
+                address = app.developerAddress,
+                website = app.developerWebsite,
+                email = app.developerEmail
+            )
+        }
     }
 }

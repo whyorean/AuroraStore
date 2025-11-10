@@ -24,6 +24,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display app's data safety report, supposed to be used as a part
@@ -82,16 +83,26 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
 @Preview(showBackground = true)
 @Composable
 private fun DataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        DataSafety(
-            privacyPolicyUrl = app.privacyPolicyUrl,
-            report = Report(
-                packageName = app.packageName,
-                entries = listOf(
-                    Entry(type = EntryType.DATA_COLLECTED, name = String(), description = String()),
-                    Entry(type = EntryType.DATA_SHARED, name = String(), description = String())
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            DataSafety(
+                privacyPolicyUrl = app.privacyPolicyUrl,
+                report = Report(
+                    packageName = app.packageName,
+                    entries = listOf(
+                        Entry(
+                            type = EntryType.DATA_COLLECTED,
+                            name = String(),
+                            description = String()
+                        ),
+                        Entry(
+                            type = EntryType.DATA_SHARED,
+                            name = String(),
+                            description = String()
+                        )
+                    )
                 )
             )
-        )
+        }
     }
 }

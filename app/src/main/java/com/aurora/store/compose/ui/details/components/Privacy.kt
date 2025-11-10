@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.theme.successColor
 import com.aurora.store.compose.theme.warningColor
 import com.aurora.store.data.model.Report
@@ -58,7 +59,9 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
 @Preview(showBackground = true)
 @Composable
 private fun PrivacyPreview() {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        Privacy(report = Report(), onNavigateToDetailsExodus = {})
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            Privacy(report = Report(), onNavigateToDetailsExodus = {})
+        }
     }
 }

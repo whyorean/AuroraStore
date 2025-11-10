@@ -28,7 +28,6 @@ import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation.NavigableSupportingPaneScaffold
 import androidx.compose.material3.adaptive.navigation.rememberSupportingPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -44,7 +43,6 @@ import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.NavKey
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.Constants.SHARE_URL
 import com.aurora.extensions.appInfo
 import com.aurora.extensions.browse
@@ -53,7 +51,6 @@ import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Error
@@ -63,7 +60,7 @@ import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
 import com.aurora.store.compose.ui.details.components.Actions
 import com.aurora.store.compose.ui.details.components.Changelog
@@ -522,7 +519,7 @@ private fun ScreenContentApp(
 @PreviewScreenSizes
 @Composable
 private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         ScreenContentApp(
             app = app,
             isAnonymous = false,
@@ -534,11 +531,15 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
 @Preview
 @Composable
 private fun AppDetailsScreenPreviewLoading() {
-    ScreenContentLoading()
+    PreviewTemplate {
+        ScreenContentLoading()
+    }
 }
 
 @Preview
 @Composable
 private fun AppDetailsScreenPreviewError() {
-    ScreenContentError()
+    PreviewTemplate {
+        ScreenContentError()
+    }
 }

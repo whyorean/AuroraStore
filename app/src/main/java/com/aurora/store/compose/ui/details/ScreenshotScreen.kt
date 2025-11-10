@@ -27,6 +27,7 @@ import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ScreenshotListItem
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 
 @Composable
@@ -94,7 +95,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun ScreenshotScreenPreview() {
-    ScreenContent(
-        topAppBarTitle = stringResource(R.string.app_name)
-    )
+    PreviewTemplate {
+        ScreenContent(
+            topAppBarTitle = stringResource(R.string.app_name)
+        )
+    }
 }

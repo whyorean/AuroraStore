@@ -27,6 +27,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display app changelog, supposed to be used as a part
@@ -57,7 +58,9 @@ fun Changelog(changelog: String) {
 @Preview(showBackground = true)
 @Composable
 private fun ChangelogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        Changelog(changelog = app.changes)
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            Changelog(changelog = app.changes)
+        }
     }
 }

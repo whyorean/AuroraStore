@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display an indeterminate loading indicator that fills all available screen
@@ -38,5 +39,7 @@ fun ContainedLoadingIndicator(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 private fun ContainedLoadingIndicatorPreview() {
-    ContainedLoadingIndicator()
+    PreviewTemplate {
+        ContainedLoadingIndicator()
+    }
 }

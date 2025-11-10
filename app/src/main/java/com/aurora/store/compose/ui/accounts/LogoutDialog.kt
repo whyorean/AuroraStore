@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Dialog for confirming log out
@@ -42,5 +43,7 @@ fun LogoutDialog(onConfirm: () -> Unit = {}, onDismiss: () -> Unit = {}) {
 @Preview
 @Composable
 private fun LogoutDialogPreview() {
-    LogoutDialog()
+    PreviewTemplate {
+        LogoutDialog()
+    }
 }

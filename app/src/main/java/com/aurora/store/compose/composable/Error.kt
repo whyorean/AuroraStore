@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to show error message that fills all available screen
@@ -78,9 +79,11 @@ fun Error(
 @Preview(showBackground = true)
 @Composable
 private fun ErrorPreview() {
-    Error(
-        painter = painterResource(R.drawable.ic_updates),
-        message = stringResource(R.string.details_no_updates),
-        actionMessage = stringResource(R.string.check_updates)
-    )
+    PreviewTemplate {
+        Error(
+            painter = painterResource(R.drawable.ic_updates),
+            message = stringResource(R.string.details_no_updates),
+            actionMessage = stringResource(R.string.check_updates)
+        )
+    }
 }

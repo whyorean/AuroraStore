@@ -22,7 +22,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,13 +39,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import coil3.compose.AsyncImage
-import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.room.favourite.Favourite
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -141,7 +139,7 @@ fun FavouriteListItem(
 @Preview(showBackground = true)
 @Composable
 private fun FavouriteListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         FavouriteListItem(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
     }
 }

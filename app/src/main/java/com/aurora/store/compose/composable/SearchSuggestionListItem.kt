@@ -29,6 +29,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable for displaying search suggestions in a list
@@ -98,7 +99,9 @@ fun SearchSuggestionListItem(
 @Preview(showBackground = true)
 @Composable
 private fun SearchSuggestionListItemPreview() {
-    SearchSuggestionListItem(
-        searchSuggestEntry = SearchSuggestEntry.getDefaultInstance()
-    )
+    PreviewTemplate {
+        SearchSuggestionListItem(
+            searchSuggestEntry = SearchSuggestEntry.getDefaultInstance()
+        )
+    }
 }

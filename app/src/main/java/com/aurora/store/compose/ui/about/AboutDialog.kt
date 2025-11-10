@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Dialog for displaying information about Aurora Store
@@ -36,5 +37,7 @@ fun AboutDialog(onDismiss: () -> Unit = {}) {
 @Preview
 @Composable
 private fun AboutDialogPreview() {
-    AboutDialog()
+    PreviewTemplate {
+        AboutDialog()
+    }
 }

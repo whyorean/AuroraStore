@@ -20,6 +20,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to show a progress bar with rating for an app
@@ -53,5 +54,7 @@ fun RatingListItem(modifier: Modifier = Modifier, label: String, rating: Float) 
 @Preview(showBackground = true)
 @Composable
 private fun RatingListItemPreview() {
-    RatingListItem(label = "5", rating = 0.5F)
+    PreviewTemplate {
+        RatingListItem(label = "5", rating = 0.5F)
+    }
 }

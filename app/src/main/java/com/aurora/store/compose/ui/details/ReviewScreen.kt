@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -38,7 +37,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Review
@@ -48,8 +46,8 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ReviewListItem
 import com.aurora.store.compose.preview.ReviewPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.extensions.emptyPagingItems
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ReviewViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -186,10 +184,10 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
 @Preview
 @Composable
 private fun ReviewScreenPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
-    val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
-    val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
+    PreviewTemplate {
+        val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
+        val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
 
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         ScreenContent(reviews = reviewsFlow)
     }
 }

@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Menu for the favourite screen
@@ -63,5 +64,7 @@ fun FavouriteMenu(
 @Preview(showBackground = true)
 @Composable
 private fun FavouriteMenuPreview() {
-    FavouriteMenu(isExpanded = true)
+    PreviewTemplate {
+        FavouriteMenu(isExpanded = true)
+    }
 }

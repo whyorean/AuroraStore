@@ -21,6 +21,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.app.TagListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.util.CommonUtil
 
 /**
@@ -70,7 +71,9 @@ fun Tags(app: App) {
 @Preview(showBackground = true)
 @Composable
 private fun TagsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        Tags(app = app)
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            Tags(app = app)
+        }
     }
 }

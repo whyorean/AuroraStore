@@ -40,6 +40,7 @@ import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.composable.details.RatingListItem
 import com.aurora.store.compose.composable.details.ReviewListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import java.util.Locale
 
 /**
@@ -144,7 +145,9 @@ fun RatingAndReviews(
 @Preview(showBackground = true)
 @Composable
 private fun RatingAndReviewsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        RatingAndReviews(rating = app.rating)
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            RatingAndReviews(rating = app.rating)
+        }
     }
 }

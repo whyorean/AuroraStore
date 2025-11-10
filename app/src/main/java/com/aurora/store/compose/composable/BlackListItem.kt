@@ -31,6 +31,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable for displaying package details in a list for blacklisting
@@ -103,13 +104,15 @@ fun BlackListItem(
 @Preview(showBackground = true)
 @Composable
 private fun BlackListItemPreview() {
-    BlackListItem(
-        icon = Color.GRAY.toDrawable().toBitmap(56, 56),
-        displayName = LocalContext.current.getString(R.string.app_name),
-        packageName = BuildConfig.APPLICATION_ID,
-        versionName = BuildConfig.VERSION_NAME,
-        versionCode = BuildConfig.VERSION_CODE.toLong(),
-        isChecked = true,
-        isEnabled = false
-    )
+    PreviewTemplate {
+        BlackListItem(
+            icon = Color.GRAY.toDrawable().toBitmap(56, 56),
+            displayName = LocalContext.current.getString(R.string.app_name),
+            packageName = BuildConfig.APPLICATION_ID,
+            versionName = BuildConfig.VERSION_NAME,
+            versionCode = BuildConfig.VERSION_CODE.toLong(),
+            isChecked = true,
+            isEnabled = false
+        )
+    }
 }

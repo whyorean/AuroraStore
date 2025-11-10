@@ -32,6 +32,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.PermissionViewModel
 import java.util.Locale
@@ -117,7 +118,9 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun PermissionScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    ScreenContent(
-        topAppBarTitle = app.displayName
-    )
+    PreviewTemplate {
+        ScreenContent(
+            topAppBarTitle = app.displayName
+        )
+    }
 }

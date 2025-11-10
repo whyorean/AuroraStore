@@ -33,6 +33,7 @@ import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.preview.coilPreviewProvider
 
 /**
@@ -109,7 +110,7 @@ private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) 
 @Preview(showBackground = true)
 @Composable
 private fun AnimatedAppIconPreview(@PreviewParameter(ProgressProvider::class) progress: Float) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         AnimatedAppIcon(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
             iconUrl = "",

@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -31,7 +30,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.Constants.JSON_MIME_TYPE
 import com.aurora.extensions.toast
 import com.aurora.store.R
@@ -41,7 +39,7 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.compose.preview.FavouritePreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
 import com.aurora.store.compose.ui.favourite.menu.MenuItem
 import com.aurora.store.data.room.favourite.Favourite
@@ -183,7 +181,7 @@ private fun ScreenContent(
 private fun FavouriteScreenPreview(
     @PreviewParameter(FavouritePreviewProvider ::class) favourite: Favourite
 ) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         val favourites = List(10) {
             favourite.copy(packageName = "${favourite.packageName}.${Random.nextInt()}")
         }

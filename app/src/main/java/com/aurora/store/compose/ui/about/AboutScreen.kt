@@ -41,6 +41,7 @@ import com.aurora.store.BuildConfig.VERSION_NAME
 import com.aurora.store.R
 import com.aurora.store.compose.composable.LinkListItem
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.Link
 
 @Composable
@@ -166,5 +167,7 @@ private fun BrandHeader() {
 @Preview
 @Composable
 private fun AboutScreenPreview() {
-    ScreenContent()
+    PreviewTemplate {
+        ScreenContent()
+    }
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
 
 /**
  * Composable to display primary and secondary actions available for the app, supposed to be used
@@ -83,10 +84,12 @@ fun Actions(
 @Preview(showBackground = true)
 @Composable
 private fun ActionsPreview() {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-        Actions(
-            primaryActionDisplayName = stringResource(R.string.action_install),
-            secondaryActionDisplayName = stringResource(R.string.title_manual_download)
-        )
+    PreviewTemplate {
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+            Actions(
+                primaryActionDisplayName = stringResource(R.string.action_install),
+                secondaryActionDisplayName = stringResource(R.string.title_manual_download)
+            )
+        }
     }
 }
