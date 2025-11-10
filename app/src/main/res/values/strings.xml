@@ -546,4 +546,8 @@
     <string name="select_app_for_details">Select an app for more details</string>
     <string name="action_filter_no_ads">No advertisements</string>
     <string name="action_filter_no_gms">No play services</string>
+
+    <!-- Misc -->
+    <string name="loading">Loading in progress</string>
+    <string name="page">Page <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

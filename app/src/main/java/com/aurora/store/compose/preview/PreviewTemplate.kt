@@ -16,8 +16,9 @@ import com.aurora.store.compose.theme.AuroraTheme
 @Composable
 fun PreviewTemplate(content : @Composable () -> Unit) {
     AuroraTheme {
-        CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-            content()
-        }
+        CompositionLocalProvider(
+            value = LocalAsyncImagePreviewHandler provides coilPreviewProvider,
+            content = content
+        )
     }
 }

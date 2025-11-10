@@ -23,6 +23,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -65,7 +67,9 @@ fun AnimatedAppIcon(
 
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         if (inProgress) {
-            val indicatorModifier = Modifier.fillMaxSize()
+            val indicatorModifier = Modifier
+                .fillMaxSize()
+                .semantics { testTag = "progressIndicator" }
             if (animatedProgress > 0) {
                 CircularProgressIndicator(
                     modifier = indicatorModifier,

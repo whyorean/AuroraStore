@@ -22,6 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import com.aurora.store.R
 import com.aurora.store.compose.preview.PreviewTemplate
@@ -44,6 +47,7 @@ fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: I
         )
     ) {
         repeat(totalPages) { iteration ->
+            val page = stringResource(R.string.page, iteration)
             val isSelected = currentPage == iteration
             val color by animateColorAsState(
                 targetValue = if (isSelected) {
@@ -67,6 +71,7 @@ fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: I
                     .size(size)
                     .clip(CircleShape)
                     .background(color = color)
+                    .semantics { stateDescription = page }
             )
         }
     }

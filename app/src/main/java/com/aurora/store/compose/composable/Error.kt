@@ -41,7 +41,7 @@ fun Error(
     painter: Painter,
     message: String,
     actionMessage: String? = null,
-    onAction: () -> Unit = {}
+    onAction: (() -> Unit)? = null
 ) {
     Column(
         modifier = modifier
@@ -65,7 +65,7 @@ fun Error(
         )
 
         if (actionMessage != null) {
-            Button(onClick = onAction) {
+            Button(onClick = { if (onAction != null) onAction() }, enabled = onAction != null) {
                 Text(
                     text = actionMessage,
                     maxLines = 1,
