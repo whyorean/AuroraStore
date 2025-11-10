@@ -76,8 +76,8 @@ import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
 import kotlinx.coroutines.android.awaitFrame
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -417,7 +417,7 @@ private fun FilterHeader(
 @Composable
 private fun SearchScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     val apps = List(10) { app.copy(id = Random.nextInt()) }
-    val results = flowOf(PagingData.from(apps)).collectAsLazyPagingItems()
+    val results = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
 
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         ScreenContent(results = results)

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -23,11 +24,14 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.Constants.JSON_MIME_TYPE
 import com.aurora.extensions.toast
 import com.aurora.store.R
@@ -36,11 +40,15 @@ import com.aurora.store.compose.composable.FavouriteListItem
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.extensions.emptyPagingItems
+import com.aurora.store.compose.preview.FavouritePreviewProvider
+import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
 import com.aurora.store.compose.ui.favourite.menu.MenuItem
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.viewmodel.all.FavouriteViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.Calendar
+import kotlin.random.Random
 
 @Composable
 fun FavouriteScreen(
@@ -172,6 +180,15 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun FavouriteScreenPreview() {
-    ScreenContent()
+private fun FavouriteScreenPreview(
+    @PreviewParameter(FavouritePreviewProvider ::class) favourite: Favourite
+) {
+    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+        val favourites = List(10) {
+            favourite.copy(packageName = "${favourite.packageName}.${Random.nextInt()}")
+        }
+        val flow = MutableStateFlow(PagingData.from(favourites)).collectAsLazyPagingItems()
+
+        ScreenContent(favourites = flow)
+    }
 }

@@ -45,7 +45,8 @@ fun ScreenshotListItem(modifier: Modifier = Modifier, url: String) {
     )
     val state by painter.state.collectAsStateWithLifecycle()
     val aspectRatioModifier = state.painter?.intrinsicSize?.let { intrinsicSize ->
-        Modifier.aspectRatio(ratio = intrinsicSize.width / intrinsicSize.height)
+        val ratio = intrinsicSize.width / intrinsicSize.height
+        if (ratio.isNaN()) null else Modifier.aspectRatio(ratio = ratio)
     }
 
     Image(

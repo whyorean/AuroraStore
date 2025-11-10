@@ -38,7 +38,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.store.viewmodel.details.DevProfileViewModel
 import com.aurora.store.viewmodel.search.SearchViewModel
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
 
 /**
@@ -132,7 +132,7 @@ private fun ScreenContent(
 private fun DevProfileScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
         val apps = List(10) { app.copy(id = Random.nextInt()) }
-        val pagedApps = flowOf(PagingData.from(apps)).collectAsLazyPagingItems()
+        val pagedApps = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
 
         ScreenContent(
             topAppBarTitle = app.developerName,
