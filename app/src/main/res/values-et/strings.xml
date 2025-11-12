@@ -463,4 +463,10 @@
         <item quantity="one">Õigus on vajalik</item>
         <item quantity="other">Õigused on vajalikud</item>
     </plurals>
+    <string name="installer_microg_misconfigured">MicroG paigaldaja ei suutnud rakendust paigaldada. Ilmselt juhtus see vale seadistuse tõttu.</string>
+    <string name="pref_install_mode_microg">MicroG paigaldaja</string>
+    <string name="microg_installer_subtitle">Eeldab, et kaasnev MicroG rakendus on paigaldatud</string>
+    <string name="microg_installer_desc">Lubab sul jätta vahele rakenduse tervikluse kontrolli (vaid paigaldaja puhul)</string>
+    <string name="loading">Laadimine on töös</string>
+    <string name="page">Leht <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
