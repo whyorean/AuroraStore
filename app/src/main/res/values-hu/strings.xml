@@ -463,4 +463,10 @@
         <item quantity="one">Engedély szükséges</item>
         <item quantity="other">Engedélyek szükségesek</item>
     </plurals>
+    <string name="installer_microg_misconfigured">A MicroG telepítő nem tudta telepíteni az alkalmazást, valószínűleg helytelen beállítás miatt.</string>
+    <string name="pref_install_mode_microg">MicroG telepítő</string>
+    <string name="microg_installer_subtitle">A microG kiegészítő alkalmazás telepítése szükséges</string>
+    <string name="microg_installer_desc">Segít megkerülni az App Integrity (csak telepítő) ellenőrzést</string>
+    <string name="loading">Betöltés folyamatban</string>
+    <string name="page">Oldal <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
