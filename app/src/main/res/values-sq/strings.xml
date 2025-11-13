@@ -278,7 +278,7 @@
     <string name="notification_channel_updates">Njoftime përditësimesh</string>
     <string name="title_app_settings">Rregullime aplikacioni</string>
     <string name="title_advanced">Të mëtejshme</string>
-    <string name="login_rate_limited">Oh, për ju ka kufizime</string>
+    <string name="login_rate_limited">Për ju ka kufizime</string>
     <string name="server_unreachable">Shërbyes i pakapshëm</string>
     <string name="check_connectivity">Kontrolloni lidhjen në rrjet</string>
     <string name="app_language">Gjuhë aplikacioni</string>
@@ -416,7 +416,7 @@
     <string name="disable">Çaktivizoje</string>
     <string name="pref_network_proxy_desc">Shihni dhe administroni formësim ndërmjetësi</string>
     <string name="pref_updates_restrictions_title">Kufizime përditësimesh të automatizuara</string>
-    <string name="pref_updates_restrictions_desc">Formësoni kufizime pajisjeje për përditësime të automatizuara.</string>
+    <string name="pref_updates_restrictions_desc">Formësoni kufizime pajisjeje për përditësime të automatizuara</string>
     <string name="pref_updates_restrictions_metered">Vetëm në rrjete me trafik të pakufizuar</string>
     <string name="pref_updates_restrictions_battery">Kur bateria s’është e pakët</string>
     <string name="pref_updates_restrictions_idle">Kur pajisja është e plogësht</string>
@@ -427,4 +427,8 @@
     <string name="app_info_downloads">Shkarkime</string>
     <string name="pref_common_advanced">Të mëtejshme</string>
     <string name="pref_updates_app_source">Burim aplikacioni</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Lyp leje</item>
+        <item quantity="other">Lyp leje</item>
+    </plurals>
 </resources>
