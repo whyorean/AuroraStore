@@ -464,4 +464,10 @@
         <item quantity="many">Permissões necessárias</item>
         <item quantity="other">Permissões necessárias</item>
     </plurals>
+    <string name="installer_microg_misconfigured">O instalador do microG falhou ao instalar o app, provavelmente devido a má configuração.</string>
+    <string name="pref_install_mode_microg">Instalador do microG</string>
+    <string name="microg_installer_subtitle">Requer que o app Companheiro do microG esteja instalado</string>
+    <string name="microg_installer_desc">Ajuda a contornar a checagem do App Integrity (apenas o instalador)</string>
+    <string name="loading">Carregando</string>
+    <string name="page"><xliff:g id="number">%1$d</xliff:g>ª página</string>
 </resources>
