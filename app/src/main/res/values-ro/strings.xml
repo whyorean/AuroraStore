@@ -464,4 +464,10 @@
         <item quantity="few">Permisiuni necesare</item>
         <item quantity="other">Permisiuni necesare</item>
     </plurals>
+    <string name="installer_microg_misconfigured">Programul de instalare microG nu a reușit să instaleze aplicația, probabil din cauza unei configurări greșite.</string>
+    <string name="pref_install_mode_microg">Instalator microG</string>
+    <string name="microg_installer_subtitle">Necesită instalarea aplicației companion microG</string>
+    <string name="microg_installer_desc">Ajută la ocolirea verificării integrității aplicației (numai instalator)</string>
+    <string name="loading">Încărcare în curs</string>
+    <string name="page">Pagina <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
