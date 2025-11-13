@@ -164,7 +164,7 @@
     <string name="purchase_failed">Не вдалося завантажити</string>
     <string name="pref_ui_similar_apps">Подібні та пов’язані застосунки</string>
     <string name="pref_ui_no_for_you_desc">Показувати сторінки для вас на головному екрані</string>
-    <string name="pref_ui_no_for_you">Сторінки Для вас</string>
+    <string name="pref_ui_no_for_you">Персоналізовані сторінки</string>
     <string name="pref_ui_layout_tab">Оберіть типову вкладку</string>
     <string name="pref_ui_layout">Макет</string>
     <string name="pref_ui_title">Зовнішній вигляд</string>
