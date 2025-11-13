@@ -465,4 +465,10 @@
         <item quantity="many">Потрібні дозволів</item>
         <item quantity="other">Потрібні дозволів</item>
     </plurals>
+    <string name="installer_microg_misconfigured">Встановлювач MicroG не зміг встановити застосунок, ймовірно, через неправильну конфігурацію.</string>
+    <string name="pref_install_mode_microg">Встановлювач MicroG</string>
+    <string name="microg_installer_subtitle">Необхідно встановити супутній застосунок microG</string>
+    <string name="microg_installer_desc">Допомагає обійти перевірку цілісності застосунків (тільки встановлювач)</string>
+    <string name="loading">Триває завантаження</string>
+    <string name="page">Сторінка <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
