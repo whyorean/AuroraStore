@@ -465,4 +465,5 @@
         <item quantity="many">Wymagane uprawnienia</item>
         <item quantity="other">Wymagane uprawnienia</item>
     </plurals>
+    <string name="page">Strona <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
