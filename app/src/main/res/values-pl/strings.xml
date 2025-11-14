@@ -466,4 +466,9 @@
         <item quantity="other">Wymagane uprawnienia</item>
     </plurals>
     <string name="page">Strona <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="installer_microg_misconfigured">Instalator MicroG nie mógł zainstalować aplikacji, prawdopodobnie z powodu nieprawidłowej konfiguracji.</string>
+    <string name="pref_install_mode_microg">Instalator MicroG</string>
+    <string name="loading">Trwa ładowanie</string>
+    <string name="microg_installer_desc">Pomaga ominąć kontrolę integralności aplikacji (tylko instalator)</string>
+    <string name="microg_installer_subtitle">Wymaga zainstalowania aplikacji microG Companion</string>
 </resources>
