@@ -463,4 +463,10 @@
         <item quantity="one">Baimena beharrezkoa da</item>
         <item quantity="other">Baimenak beharrezkoak dira</item>
     </plurals>
+    <string name="installer_microg_misconfigured">MicroG instalatzaileak huts egin du aplikazioa instalatzeko, ziurrenik konfigurazio oker baten ondorioz.</string>
+    <string name="pref_install_mode_microg">MicroG instalatzailea</string>
+    <string name="microg_installer_subtitle">microG aplikazio osagarria instalatuta edukitzea eskatzen du</string>
+    <string name="microg_installer_desc">Aplikazioaren Osotasun egiaztapena (instalatzailearentzat bakarrik) saihesten laguntzen dizu</string>
+    <string name="loading">Kargatzen ari da</string>
+    <string name="page"><xliff:g id="zenbakia">%1$d</xliff:g> orrialdea</string>
 </resources>
