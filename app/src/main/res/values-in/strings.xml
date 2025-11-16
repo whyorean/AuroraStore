@@ -462,4 +462,10 @@
     <plurals name="permissions_required">
         <item quantity="other">Izin yang diperlukan</item>
     </plurals>
+    <string name="installer_microg_misconfigured">Pemasang MicroG gagal memasang aplikasi, kemungkinan disebabkan oleh konfigurasi yang salah.</string>
+    <string name="pref_install_mode_microg">Pemasang MicroG</string>
+    <string name="microg_installer_subtitle">Membutuhkan aplikasi pendamping microG untuk dipasang</string>
+    <string name="microg_installer_desc">Membantu Anda melewati pemeriksaan Integritas Aplikasi (hanya untuk pemasang)</string>
+    <string name="loading">Pemuatan sedang berlangsung</string>
+    <string name="page">Halaman <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
