@@ -314,13 +314,13 @@
     <string name="native_installer_desc">Melhor para dispositivos rodando versões anteriores ao Android 4.4</string>
     <string name="services_installer_subtitle">Instalador para instalações em segundo plano</string>
     <string name="services_installer_desc">Requer que o Aurora Services seja instalado como um app do sistema privilegiado</string>
-    <string name="shizuku_installer_desc">Precisa do Shizuku ou Sui, precisa ser configurado e que a permissão seja concedida</string>
+    <string name="shizuku_installer_desc">Requer o Shizuku ou Sui, precisa ser configurado e ter a permissão concedida</string>
     <string name="am_installer_subtitle">Gerenciador de pacotes completo de código aberto</string>
-    <string name="am_installer_desc">Precisa do App Manager, precisa do modo adb/root para instalar quando a otimização da MIUI está ligada</string>
+    <string name="am_installer_desc">Requer o App Manager, precisa do modo adb/root para instalar quando a otimização da MIUI estiver ativada</string>
     <string name="shizuku_installer_subtitle">Utilizando APIs do sistema diretamente com privilégios de adb/root</string>
     <string name="session_installer_subtitle">Instalador baseado em sessão para APKs em pacote/divididos</string>
     <string name="session_installer_desc">Recomendado, é integrado e suporta todas as versões do Android</string>
-    <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
+    <string name="faqs_subtitle">Tem dúvidas? Encontre as respostas</string>
     <string name="source_code_title">Código-fonte</string>
     <string name="source_code_subtitle">Descubra o que há por dentro</string>
     <string name="privacy_policy_title">Política de privacidade</string>
@@ -457,7 +457,7 @@
     <string name="select_app_for_details">Selecione um aplicativo para mais informações</string>
     <string name="action_filter_no_ads">Sem anúncios</string>
     <string name="action_filter_no_gms">Sem play services</string>
-    <string name="manual_download_version_error">O código de versão só pode conter dígitos</string>
+    <string name="manual_download_version_error">O código de versão pode conter apenas dígitos</string>
     <string name="preparing_to_install">Preparando para instalar</string>
     <plurals name="permissions_required">
         <item quantity="one">Permissão necessária</item>
@@ -466,8 +466,8 @@
     </plurals>
     <string name="installer_microg_misconfigured">O instalador do microG falhou ao instalar o app, provavelmente devido a má configuração.</string>
     <string name="pref_install_mode_microg">Instalador do microG</string>
-    <string name="microg_installer_subtitle">Requer que o app Companheiro do microG esteja instalado</string>
-    <string name="microg_installer_desc">Ajuda a contornar a checagem do App Integrity (apenas o instalador)</string>
+    <string name="microg_installer_subtitle">Requer que o app companheiro do microG esteja instalado</string>
+    <string name="microg_installer_desc">Ajuda a burlar a checagem da Integridade do App (apenas o instalador)</string>
     <string name="loading">Carregando</string>
     <string name="page"><xliff:g id="number">%1$d</xliff:g>ª página</string>
 </resources>
