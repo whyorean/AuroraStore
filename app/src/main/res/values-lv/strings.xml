@@ -464,4 +464,10 @@
         <item quantity="one">Nepieciešama atļauja</item>
         <item quantity="other">Nepieciešamas atļaujas</item>
     </plurals>
+    <string name="installer_microg_misconfigured">MicroG uzstādītājam neizdevās uzstādīt lietotni, visdrīzāk nepareizas konfigurācijas dēļ.</string>
+    <string name="pref_install_mode_microg">MicroG uzstādītājs</string>
+    <string name="microg_installer_subtitle">Nepieciešams uzstādīt microG pavadošo lietotni</string>
+    <string name="microg_installer_desc">Palīdz apiet lietotņu veseluma (tikai uzstādītājs) pārbaudi</string>
+    <string name="loading">Notiek ielādēšana</string>
+    <string name="page">Lapa <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

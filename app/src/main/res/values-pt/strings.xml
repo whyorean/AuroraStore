@@ -443,4 +443,6 @@
     <string name="pref_updates_app_source">Fonte da app</string>
     <string name="onboarding_gms_microg">micro G é uma implementação gratuita e de código aberto que fornece funcionalidade semelhante para executar apps dependentes do Google Play Services para dispositivos com Android através da re-implementação.\n\nmicro O G permite que as apps acedam essas APIs do Google, melhorando a compatibilidade para os utilizadores ao oferecer benefícios de privacidade.\n\nmicro G será executado automaticamente em segundo plano quando abre aplicações dependentes do Google Mobile Services.</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissões</string>
+    <string name="page">Página <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="loading">Carregamento em progresso</string>
 </resources>

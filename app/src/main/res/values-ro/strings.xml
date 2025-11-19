@@ -417,7 +417,7 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> aplicații instalate</string>
     <string name="disable">Dezactivează</string>
     <string name="pref_network_proxy_desc">Vizualizează și gestionează configurația proxy</string>
-    <string name="pref_updates_restrictions_desc">Configurează restricțiile dispozitivului pentru actualizările automate.</string>
+    <string name="pref_updates_restrictions_desc">Configurează restricțiile dispozitivului pentru actualizările automate</string>
     <string name="pref_updates_restrictions_metered">Numai pe rețelele nelimitate</string>
     <string name="verification_failed">Nu a reușit verificarea fișierelor descărcate</string>
     <string name="pref_updates_restrictions_battery">Când bateria nu este descărcată</string>
@@ -459,4 +459,15 @@
     <string name="action_filter_no_gms">Fără serviciile Play</string>
     <string name="manual_download_version_error">Codul versiunii poate conține doar cifre</string>
     <string name="preparing_to_install">Se pregătește instalarea</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Permisiune necesară</item>
+        <item quantity="few">Permisiuni necesare</item>
+        <item quantity="other">Permisiuni necesare</item>
+    </plurals>
+    <string name="installer_microg_misconfigured">Programul de instalare microG nu a reușit să instaleze aplicația, probabil din cauza unei configurări greșite.</string>
+    <string name="pref_install_mode_microg">Instalator microG</string>
+    <string name="microg_installer_subtitle">Necesită instalarea aplicației companion microG</string>
+    <string name="microg_installer_desc">Ajută la ocolirea verificării integrității aplicației (numai instalator)</string>
+    <string name="loading">Încărcare în curs</string>
+    <string name="page">Pagina <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

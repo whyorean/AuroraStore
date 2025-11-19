@@ -383,4 +383,12 @@
     <string name="notification_channel_export">アプリエクスポート通知</string>
     <string name="notification_channel_install">インストール通知</string>
     <string name="notification_channel_downloads">ダウンロード通知</string>
+    <string name="action_install_microG">microG バンドルのインストール</string>
+    <string name="action_remove_all">すべて削除</string>
+    <string name="action_select_all">すべて選択</string>
+    <string name="details_data_safety_collect">このアプリが収集する可能性のあるデータ</string>
+    <string name="details_data_safety_collect_none">開発者は、このアプリがユーザーデータを収集しないと表明しています。</string>
+    <string name="details_data_safety_shared">このアプリが共有する可能性のあるデータ</string>
+    <string name="details_data_safety_share_none">デベロッパーによると、このアプリはユーザーデータを他の企業や組織と共有しません。</string>
+    <string name="exodus_tracker_desc">このバージョンのアプリには、Exodus Privacyのデータベースにまだ存在しないトラッカーがまだ含まれている可能性があります。</string>
 </resources>

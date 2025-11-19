@@ -463,4 +463,10 @@
         <item quantity="one">İzin gerekli</item>
         <item quantity="other">İzinler gerekli</item>
     </plurals>
+    <string name="installer_microg_misconfigured">MicroG kurucu, büyük olasılıkla yanlış yapılandırma nedeniyle uygulamayı kuramadı.</string>
+    <string name="pref_install_mode_microg">MicroG kurucu</string>
+    <string name="microg_installer_subtitle">microG yardımcı uygulamasının kurulmasını gerektirir</string>
+    <string name="microg_installer_desc">Uygulama Bütünlüğü (yalnızca kurucu) denetimini atlamanıza yardımcı olur</string>
+    <string name="loading">Yükleme devam ediyor</string>
+    <string name="page">Sayfa <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

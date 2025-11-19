@@ -462,4 +462,10 @@
     <plurals name="permissions_required">
         <item quantity="other">需要權限</item>
     </plurals>
+    <string name="installer_microg_misconfigured">MicroG 安裝器安裝應用失敗，可能由於錯誤配置。</string>
+    <string name="pref_install_mode_microg">MicroG 安裝器</string>
+    <string name="microg_installer_subtitle">需要安裝 microG 助手應用</string>
+    <string name="microg_installer_desc">幫助繞過應用程式完整性（僅限安裝包）檢查</string>
+    <string name="loading">正在加載</string>
+    <string name="page">頁 <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

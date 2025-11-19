@@ -223,8 +223,8 @@
     <string name="toast_rated_failed">تعذر إرسال التقييم</string>
     <string name="toast_rated_success">تم التقييم، قد يستغرق الأمر بعض الوقت لعرضه</string>
     <string name="toast_page_unavailable">صفحة المتصفح غير متوفرة</string>
-    <string name="toast_export_failed">تعذر تصدير تكوين الجهاز</string>
-    <string name="toast_export_success">تم تصدير اعدادات الجهاز</string>
+    <string name="toast_export_failed">تعذر تصدير تضبيط الجهاز</string>
+    <string name="toast_export_success">صُدِّر تضبيط الجهاز</string>
     <string name="app_updater_service_notif_title">تنزيل تطبيق في الخلفية</string>
     <string name="app_updater_service_notif_text">تفعيل تنزيل التطبيق في الخلفية</string>
     <string name="installer_am_unavailable">قم بتثبيت مدير التطبيقات أو تغيير المثبت.</string>
@@ -255,9 +255,9 @@
     <string name="requesting_new_session">طلب جلسة جديدة</string>
     <string name="server_maintenance">الخادم معطل للصيانة</string>
     <string name="action_import">استيراد</string>
-    <string name="toast_import_failed">تعذر استيراد تكوين الجهاز</string>
+    <string name="toast_import_failed">تعذر استيراد تضبيط الجهاز</string>
     <string name="downloading_dep">تنزيل ملفات إضافية لـ <xliff:g id="app"> %1$s </xliff:g></string>
-    <string name="toast_import_success">تم استيراد تكوين الجهاز</string>
+    <string name="toast_import_success">استُورد تضبيط الجهاز</string>
     <string name="notification_updates_available_desc_1">يتوفر أصدار جديد من <xliff:g id="app_one_name">%1$s</xliff:g> متاح</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> والمزيد <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="notification_channel_updates">إشعارات التحديثات</string>
@@ -284,7 +284,7 @@
     <string name="google_play_store_desc">Google Play، المعروف أيضًا باسم متجر Google Play و Android Market سابقًا.</string>
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
-    <string name="pref_updates_check_frequency_desc">تكوين الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
+    <string name="pref_updates_check_frequency_desc">اضبط الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
     <string name="pref_aurora_only">تصفية التطبيقات من مصادر أخرى</string>
     <string name="pref_aurora_only_desc">لا تبحث عن تحديثات للتطبيقات المثبتة من مصادر خارج متجر أورورا</string>
     <string name="title_app_settings">إعدادات التطبيق</string>
@@ -293,14 +293,14 @@
     <string name="toast_proxy_invalid">عنوان URL للوكيل غير صالح، تحقق من التنسيق!</string>
     <string name="toast_proxy_success">عينت الوكيل بنجاح</string>
     <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
-    <string name="pref_vending_version_device">الافتراضي (من تكوين الجهاز)</string>
+    <string name="pref_vending_version_device">الافتراضي (من تضبيط الجهاز)</string>
     <string name="pref_vending_version_title">نُسخة Google Play</string>
     <string name="onboarding_permission_doze">تنزيلات الخلفية</string>
     <string name="onboarding_permission_doze_desc">السماح لـAurora Store بتنزيل التطبيقات وتحديثها في الخلفية</string>
     <string name="pref_updates_auto">التحديثات التلقائية</string>
     <string name="pref_updates_auto_notify">التحقق والإشعار بالتحديثات المتاحة</string>
     <string name="pref_updates_auto_off">لا تقم بتحديث التطبيقات تلقائيًا</string>
-    <string name="pref_updates_auto_desc">تكوين سلوك التحديثات التلقائية</string>
+    <string name="pref_updates_auto_desc">اضبط سلوك التحديثات التلقائية</string>
     <string name="pref_updates_auto_install">التحقق من التحديثات المتوفرة وتثبيتها تلقائيًا</string>
     <string name="action_request_analysis">طلب تحليل جديد</string>
     <string name="failed_apk_export">فشل تصدير ملفات APK</string>
@@ -348,7 +348,7 @@
     <string name="session_login">يُرجى تسجيل الدخول إلى حساب Google Play الخاص بك</string>
     <string name="about_aurora_store_title">عن متجر Aurora</string>
     <string name="about_aurora_store_subtitle">اعرف المزيد عن متجر Aurora</string>
-    <string name="about_aurora_store_summary">يمكّنك متجر Aurora من البحث عن التطبيقات وتنزيلها من متجر Google Play الرسمي. يمكنك التحقق من أوصاف التطبيق ولقطات الشاشة والتحديثات وتعليقات المستخدمين الآخرين وتنزيل APK مباشرة من Google Play على جهازك. لاستخدام متجر Aurora، يجب أن يكون لديك حساب Google Play، وأن تقوم بتسجيل الدخول إلى حساب Google Play الخاص بك عند فتح متجر Aurora وتكوينه لأول مرة. \n \nعلى عكس متجر التطبيقات التقليدي، لا يمتلك متجر Aurora أي تطبيقات أو يرخصها أو يوزعها. يمكن الوصول إلى جميع التطبيقات وأوصاف التطبيقات ولقطات الشاشة والمحتويات الأخرى الموجودة في متجر Aurora مباشرة و/أو تنزيلها و/أو عرضها من Google Play. يعمل متجر Aurora تمامًا مثل الباب أو المتصفح، مما يسمح لك بتسجيل الدخول إلى حساب Google Play الخاص بك والعثور على التطبيقات من Google Play. \n \nيُرجى ملاحظة أن متجر Aurora لا يحصل على أي موافقة أو رعاية أو ترخيص من Google أو Google Play أو أي تطبيقات تم تنزيلها من خلال متجر Aurora أو أي من مطوري التطبيقات؛ ولا يوجد لدى متجر Aurora أي انتماء أو تعاون أو اتصال معهم.</string>
+    <string name="about_aurora_store_summary">يمكّنك متجر Aurora من البحث عن التطبيقات وتنزيلها من متجر Google Play الرسمي. يمكنك التحقق من أوصاف التطبيق ولقطات الشاشة والتحديثات وتعليقات المستخدمين الآخرين وتنزيل APK مباشرة من Google Play على جهازك. لاستخدام متجر Aurora، يجب أن يكون لديك حساب Google Play، وأن تقوم بتسجيل الدخول إلى حساب Google Play الخاص بك عند فتح متجر Aurora وتضبيطه لأول مرة. \n \nعلى عكس متجر التطبيقات التقليدي، لا يمتلك متجر Aurora أي تطبيقات أو يرخصها أو يوزعها. يمكن الوصول إلى جميع التطبيقات وأوصاف التطبيقات ولقطات الشاشة والمحتويات الأخرى الموجودة في متجر Aurora مباشرة و/أو تنزيلها و/أو عرضها من Google Play. يعمل متجر Aurora تمامًا مثل الباب أو المتصفح، مما يسمح لك بتسجيل الدخول إلى حساب Google Play الخاص بك والعثور على التطبيقات من Google Play. \n \nيُرجى ملاحظة أن متجر Aurora لا يحصل على أي موافقة أو رعاية أو ترخيص من Google أو Google Play أو أي تطبيقات تم تنزيلها من خلال متجر Aurora أو أي من مطوري التطبيقات؛ ولا يوجد لدى متجر Aurora أي انتماء أو تعاون أو اتصال معهم.</string>
     <string name="toast_app_unavailable">التطبيق غير متوفر لجهازك</string>
     <string name="action_favourite">المفضلة</string>
     <string name="toast_fav_export_success">تم تصدير المفضلة!</string>
@@ -421,7 +421,7 @@
     <string name="disable">عطّل</string>
     <string name="toast_proxy_disabled">عُطّل الوكيل بنجاح</string>
     <string name="pref_network_proxy_desc">اعرض تضبيط الوكيل وإدارته</string>
-    <string name="pref_updates_restrictions_desc">أعداد قيود الجهاز للتحديثات التلقائية</string>
+    <string name="pref_updates_restrictions_desc">اضبط قيود الجهاز للتحديثات التلقائية</string>
     <string name="pref_updates_restrictions_metered">فقط على الشبكات غير المقيدة</string>
     <string name="pref_updates_restrictions_idle">عندما يكون الجهاز ساكنًا</string>
     <string name="pref_updates_restrictions_battery">عندما لا تكون البطارية منخفضة</string>
@@ -460,11 +460,17 @@
     <string name="manual_download_version_error">يجب أن يحتوي رمز الإصدار على أرقام فقط</string>
     <string name="preparing_to_install">يجهز للتثبيت</string>
     <plurals name="permissions_required">
-        <item quantity="zero">الإذن مطلوب</item>
-        <item quantity="one">الإذن مطلوب</item>
-        <item quantity="two">الإذن مطلوب</item>
-        <item quantity="few">الإذن مطلوب</item>
-        <item quantity="many">الإذن مطلوب</item>
-        <item quantity="other">الإذن مطلوب</item>
+        <item quantity="zero">لا أذونات مطلوبة</item>
+        <item quantity="one">إذن مطلوب</item>
+        <item quantity="two">مطلوب إذنان</item>
+        <item quantity="few">الأذونات مطلوبة</item>
+        <item quantity="many">الأذونات مطلوبة</item>
+        <item quantity="other">إذن مطلوب</item>
     </plurals>
+    <string name="installer_microg_misconfigured">فشل مثبت MicroG في تثبيت التطبيق، ويرجع ذلك على الأرجح إلى سوء التضبيط.</string>
+    <string name="pref_install_mode_microg">مثبت MicroG</string>
+    <string name="microg_installer_subtitle">يتطلب تثبيت تطبيق microG المصاحب</string>
+    <string name="microg_installer_desc">يساعدك على تجاوز فحص سلامة التطبيق (المثبت فقط)</string>
+    <string name="loading">جارِ التحميل</string>
+    <string name="page">صفحة <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

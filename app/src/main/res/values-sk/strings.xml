@@ -422,7 +422,7 @@
     <string name="pref_network_proxy_desc">Zobrazenie a správa konfigurácie servera proxy</string>
     <string name="pref_updates_restrictions_metered">Len v nemeraných sieťach</string>
     <string name="pref_updates_restrictions_idle">Keď je zariadenie nečinné</string>
-    <string name="pref_updates_restrictions_desc">Nakonfigurovať obmedzenia zariadenia pre automatické aktualizácie.</string>
+    <string name="pref_updates_restrictions_desc">Nakonfigurovať obmedzenia zariadenia pre automatické aktualizácie</string>
     <string name="set">Nastaviť</string>
     <string name="pref_updates_restrictions_title">Obmedzenia automatických aktualizácií</string>
     <string name="pref_updates_restrictions_battery">Keď batéria nie je vybitá</string>
@@ -448,7 +448,7 @@
     <string name="details_more_target_api">Ciele</string>
     <string name="details_more_package_name">Názov balíka</string>
     <string name="details_more_content_rating">Hodnotenie obsahu</string>
-    <string name="select_app_for_details">Vyhľadávacia obrazovka</string>
+    <string name="select_app_for_details">Vyberte aplikáciu pre viac informácií</string>
     <string name="action_filter_no_ads">Žiadne reklamy</string>
     <string name="action_filter_no_gms">Žiadne Play služby</string>
     <string name="onboarding_title_gsf">Kompatibilita aplikácie</string>
@@ -459,4 +459,16 @@
     <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
     <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
     <string name="preparing_to_install">Príprava na inštaláciu</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Potrebné povolenie</item>
+        <item quantity="few">Potrebných povolení</item>
+        <item quantity="many">Potrebné povolenia</item>
+        <item quantity="other">Potrebné povolenia</item>
+    </plurals>
+    <string name="installer_microg_misconfigured">MIcroG inštalátor zlyhal pri inštalácií aplikácie, pravdepodobne z dôvodu miskonfigurácie.</string>
+    <string name="pref_install_mode_microg">MicroG inštalátor</string>
+    <string name="microg_installer_subtitle">Vyžaduje doplnkovú MicroG aplikáciu na správne fungovanie</string>
+    <string name="microg_installer_desc">Pomáha obísť kontrolu App Integrity (iba inštalátor)</string>
+    <string name="loading">Načítavanie</string>
+    <string name="page">Strana <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
