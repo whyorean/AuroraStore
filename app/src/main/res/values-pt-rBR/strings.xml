@@ -291,8 +291,8 @@
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
     <string name="pref_network_proxy_url">URL da proxy</string>
     <string name="toast_proxy_invalid">URL de proxy inválida, verifique o formato!</string>
-    <string name="toast_proxy_success">Proxy definida com sucesso</string>
-    <string name="toast_proxy_failed">Falha ao definir a proxy</string>
+    <string name="toast_proxy_success">Proxy configurada com sucesso</string>
+    <string name="toast_proxy_failed">Falha ao configurar a proxy</string>
     <string name="pref_vending_version_device">Padrão (da configuração do dispositivo)</string>
     <string name="pref_vending_version_title">Versão do Google Play</string>
     <string name="onboarding_permission_doze">Downloads em segundo plano</string>
@@ -417,7 +417,7 @@
     <string name="no_apps_available">Não há apps disponíveis</string>
     <string name="pref_network_microg_login_title">Utilizar o microG para conectar-se às contas</string>
     <string name="pref_network_microg_login_desc">Autentique-se usando o microG ao se conectar às contas do Google para um fluxo de login mais simples</string>
-    <string name="set">Definir</string>
+    <string name="set">Configurar</string>
     <string name="disable">Desativar</string>
     <string name="toast_proxy_disabled">Proxy desativada com sucesso</string>
     <string name="pref_network_proxy_desc">Visualize e gerencie a configuração de proxy</string>
