@@ -431,4 +431,5 @@
         <item quantity="one">Lyp leje</item>
         <item quantity="other">Lyp leje</item>
     </plurals>
+    <string name="set">Ujdiseni</string>
 </resources>

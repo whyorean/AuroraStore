@@ -373,7 +373,7 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> і <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="access_denied_using_vpn">Запыт адхілены! Выкарыстоўваеце VPN альбо Tor?</string>
     <string name="bad_request">Унутраная памылка! Калі ласка, паўтарыце пазней</string>
-    <string name="login_rate_limited">Ой, вы абмежаваныя па хуткасці</string>
+    <string name="login_rate_limited">Вы абмежаваныя па хуткасці</string>
     <string name="failed_to_generate_session">Не ўдалося стварыць сеанс</string>
     <string name="verifying_new_session">Праверка новага сеанса</string>
     <string name="about_aurora_store_summary">Aurora Store дазваляе шукаць і спампоўваць праграмы з афіцыйнай крамы Google Play. Вы можаце праверыць апісанні праграм, скрыншоты, абнаўленні, каментарыі іншых карыстальнікаў і спампаваць APK непасрэдна з Google Play на сваю прыладу, каб выкарыстоўваць Aurora Store, вам неабходна мець уліковы запіс Google Play і ўвайсці ва ўліковы запіс Google Play пры першым адкрыцці і наладзе Aurora Store. \n\nУ адрозненне ад традыцыйнай крамы праграм, Aurora Store не валодае, не ліцэнзуе і не распаўсюджвае аніякія праграмы. Усе праграмы, апісанні праграм, скрыншоты і іншы кантэнт у Aurora Store даступны, спампоўваецца і/або адлюстроўваецца з Google Play. Aurora Store працуе гэтак жа, як дзверы, або браўзер, дазваляючы вам ўвайсці ў свой уліковы запіс Google Play і знайсці праграмы з Google Play.\n\nЗвярніце ўвагу, што Aurora Store не мае адабрэння, спонсарства або аўтарызацыі ад Google, Google Play, аніякіх праграм, спампаваных праз Aurora Store або аніякіх распрацоўшчыкаў праграм; таксама Aurora Store не мае з імі ніякіх адносін, супрацоўніцтва або сувязі.</string>
@@ -398,7 +398,7 @@
     <string name="set">Задаць</string>
     <string name="disable">Выключыць</string>
     <string name="toast_proxy_disabled">Проксі паспяхова выключана</string>
-    <string name="pref_updates_restrictions_desc">Наладзьце абмежаванні для аўтаматычных абнаўленняў на прыладзе.</string>
+    <string name="pref_updates_restrictions_desc">Наладзьце абмежаванні для аўтаматычных абнаўленняў на прыладзе</string>
     <string name="pref_updates_restrictions_battery">Калі зарад батарэі не нізкі</string>
     <string name="pref_network_microg_login_desc">Пацвярджайце сапраўднасць, выкарыстоўваючы microG пры ўваходзе ва ўліковыя запісы Google, каб працэс увахода быў прасцей</string>
     <string name="details_compatibility_gms_required_subtitle">Вам можа спатрэбіцца ўсталяваць уласную бібліятэку Google ці свабодную альтэрнатыву, напрыклад microG.</string>
@@ -443,4 +443,32 @@
     <string name="microg_website">Наведаць сайт праекта microG</string>
     <string name="onboarding_gms_microg">microG — бясплатная рэалізацыя з адкрытым зыходным кодам, якая пастаўляе функцыі, падобныя да сэрвісаў Google Play для залежных праграм на прылады Android.\n\nmicroG дазваляе праграмам звяртацца да API Google, паляпшаючы сумяшчальнасць для карыстальнікаў і даючы прывілеі для прыватнасці.\n\nmicroG будзе аўтаматычна выконвацца ў фоне, калі вы адкрыйце праграму, залежную ад Google Mobile Services.</string>
     <string name="microg_privacy_policy">Прачытаць палітыку прыватнасці microG</string>
+    <string name="details_data_safety_collect">Даныя, якія можа збіраць гэта праграма</string>
+    <string name="details_data_safety_collect_none">Распрацоўшчык кажа, што праграма не збірае даных.</string>
+    <string name="details_data_safety_shared">Даныя, якія можа абагульваць гэта праграма</string>
+    <string name="details_data_safety_share_none">Распрацоўшчык кажа, што праграма не абагульвае даныя аб карыстальніках з іншымі кампаніямі і арганізацыямі.</string>
+    <string name="exodus_tracker_desc">Гэта версія праграмы ўсё яшчэ можа ўтрымліваць больш трэкераў, якіх няма ў базе даных Exodus Privacy.</string>
+    <string name="exodus_report_trackers">Знойдзена <xliff:g id="number_of_trackers">%1$d</xliff:g> вядомых трэкер(аў) у <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="installer_microg_misconfigured">Усталёўшчык MicroG не змог усталяваць праграму, хутчэй за ўсё праз няправільную канфігурацыю.</string>
+    <string name="pref_install_mode_microg">Усталёўшчык MicroG</string>
+    <string name="microg_installer_subtitle">Патрабуе ўсталяванага кампаньёна microG</string>
+    <string name="microg_installer_desc">Дапамагае прапусціць праверку праграмы на цэласнасць (толькі ўсталёўшчык)</string>
+    <string name="manual_download_version_error">Код версіі можа змяшчаць толькі лічбы</string>
+    <string name="no_description">Апісанне недаступна</string>
+    <string name="details_more_info">Дадатковыя звесткі</string>
+    <string name="details_more_target_api">Мэты</string>
+    <string name="details_more_package_name">Назва пакета</string>
+    <string name="details_more_content_rating">Адзнака кантэнту</string>
+    <string name="preparing_to_install">Падрыхтоўка да ўсталявання</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Патрэбны дазвол</item>
+        <item quantity="few">Патрэбныя дазволы</item>
+        <item quantity="many">Патрэбныя дазволы</item>
+        <item quantity="other">Патрэбныя дазволы</item>
+    </plurals>
+    <string name="select_app_for_details">Выберыце праграму, каб даведацца больш</string>
+    <string name="action_filter_no_ads">Не змяшчае рэкламы</string>
+    <string name="action_filter_no_gms">Не залежыць ад сэрвісаў Play</string>
+    <string name="loading">Ідзе загрузка</string>
+    <string name="page">Старонка <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
