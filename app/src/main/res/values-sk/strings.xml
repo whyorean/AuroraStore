@@ -469,6 +469,6 @@
     <string name="pref_install_mode_microg">MicroG inštalátor</string>
     <string name="microg_installer_subtitle">Vyžaduje doplnkovú MicroG aplikáciu na správne fungovanie</string>
     <string name="microg_installer_desc">Pomáha obísť kontrolu App Integrity (iba inštalátor)</string>
-    <string name="loading">Načítavanie</string>
+    <string name="loading">Prebieha načítanie</string>
     <string name="page">Strana <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
