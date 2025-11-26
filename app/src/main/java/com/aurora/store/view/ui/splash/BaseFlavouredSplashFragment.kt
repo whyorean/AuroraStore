@@ -70,9 +70,8 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
         super.onViewCreated(view, savedInstanceState)
 
         if (!Preferences.getBoolean(requireContext(), PREFERENCE_INTRO)) {
-            findNavController().navigate(
-                SplashFragmentDirections.actionSplashFragmentToOnboardingFragment()
-            )
+            requireContext().navigate(Screen.Onboarding)
+            activity?.finish()
             return
         }
 

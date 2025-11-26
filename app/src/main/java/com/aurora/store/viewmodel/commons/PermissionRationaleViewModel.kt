@@ -24,10 +24,11 @@ class PermissionRationaleViewModel @Inject constructor(
 
     fun refreshPermissionsList() {
         _permissions.value = _permissions.value.map { permission ->
-            permission.copy(isGranted = PermissionProvider.isGranted(
-                context,
-                permission.type
-            )
+            permission.copy(
+                isGranted = PermissionProvider.isGranted(
+                    context,
+                    permission.type
+                )
             )
         }
     }

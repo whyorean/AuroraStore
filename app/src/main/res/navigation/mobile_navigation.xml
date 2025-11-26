@@ -70,11 +70,7 @@
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"
-        tools:layout="@layout/fragment_setting">
-        <action
-            android:id="@+id/action_settingsFragment_to_permissionsFragment"
-            app:destination="@id/permissionsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/installationPreference"
         android:name="com.aurora.store.view.ui.preferences.installation.InstallationPreference"
@@ -182,12 +178,6 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_splashFragment_to_onboardingFragment"
-            app:destination="@id/onboardingFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/mobile_navigation"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/googleFragment"
@@ -197,17 +187,6 @@
             android:id="@+id/action_googleFragment_to_splashFragment"
             app:destination="@id/splashFragment"
             app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/onboardingFragment"
-        android:name="com.aurora.store.view.ui.onboarding.OnboardingFragment"
-        tools:layout="@layout/fragment_onboarding">
-        <action
-            android:id="@+id/action_onboardingFragment_to_splashFragment"
-            app:destination="@id/splashFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -224,21 +203,6 @@
             android:id="@+id/action_dispenserFragment_to_removeDispenserDialog"
             app:destination="@id/removeDispenserDialog" />
     </fragment>
-    <fragment
-        android:id="@+id/permissionsFragment"
-        android:name="com.aurora.store.view.ui.onboarding.PermissionsFragment"
-        android:label="PermissionsFragment"
-        tools:layout="@layout/fragment_onboarding_permissions">
-        <argument
-            android:name="isOnboarding"
-            android:defaultValue="true"
-            app:argType="boolean" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsMicroGFragment"
-        android:name="com.aurora.store.view.ui.details.DetailsMicroGFragment"
-        android:label="MicroGFragment"
-        tools:layout="@layout/fragment_details_microg" />
     <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"

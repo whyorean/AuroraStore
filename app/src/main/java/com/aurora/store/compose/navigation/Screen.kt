@@ -50,4 +50,7 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data object Favourite : Screen()
+
+    @Serializable
+    data object Onboarding : Screen()
 }

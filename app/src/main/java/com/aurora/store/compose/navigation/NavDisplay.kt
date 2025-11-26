@@ -26,6 +26,7 @@ import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.compose.ui.downloads.DownloadsScreen
 import com.aurora.store.compose.ui.favourite.FavouriteScreen
+import com.aurora.store.compose.ui.onboarding.OnboardingScreen
 import com.aurora.store.compose.ui.search.SearchScreen
 
 /**
@@ -118,6 +119,10 @@ fun NavDisplay(startDestination: NavKey) {
                         backstack.add(Screen.AppDetails(packageName))
                     }
                 )
+            }
+
+            entry<Screen.Onboarding> {
+                OnboardingScreen()
             }
         }
     )

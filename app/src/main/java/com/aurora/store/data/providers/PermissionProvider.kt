@@ -93,20 +93,14 @@ class PermissionProvider(private val fragment: Fragment) :
                         context.getString(R.string.onboarding_permission_installer_legacy_desc)
                     },
                     optional = false,
-                    isGranted = PermissionProvider.isGranted(
-                        context,
-                        PermissionType.INSTALL_UNKNOWN_APPS
-                    )
+                    isGranted = isGranted(context, PermissionType.INSTALL_UNKNOWN_APPS)
                 ),
                 Permission(
                     type = PermissionType.DOZE_WHITELIST,
                     title = context.getString(R.string.onboarding_permission_doze),
                     subtitle = context.getString(R.string.onboarding_permission_doze_desc),
                     optional = true,
-                    isGranted = PermissionProvider.isGranted(
-                        context,
-                        PermissionType.DOZE_WHITELIST
-                    )
+                    isGranted = isGranted(context, PermissionType.DOZE_WHITELIST)
                 )
             )
 
@@ -117,10 +111,7 @@ class PermissionProvider(private val fragment: Fragment) :
                         title = context.getString(R.string.onboarding_permission_esm),
                         subtitle = context.getString(R.string.onboarding_permission_esa_desc),
                         optional = false,
-                        isGranted = PermissionProvider.isGranted(
-                            context,
-                            PermissionType.STORAGE_MANAGER
-                        )
+                        isGranted = isGranted(context, PermissionType.STORAGE_MANAGER)
                     )
                 )
             } else {
@@ -130,10 +121,7 @@ class PermissionProvider(private val fragment: Fragment) :
                         title = context.getString(R.string.onboarding_permission_esa),
                         subtitle = context.getString(R.string.onboarding_permission_esa_desc),
                         optional = false,
-                        isGranted = PermissionProvider.isGranted(
-                            context,
-                            PermissionType.EXTERNAL_STORAGE
-                        )
+                        isGranted = isGranted(context, PermissionType.EXTERNAL_STORAGE)
                     )
                 )
             }
@@ -145,10 +133,7 @@ class PermissionProvider(private val fragment: Fragment) :
                         title = context.getString(R.string.onboarding_permission_notifications),
                         subtitle = context.getString(R.string.onboarding_permission_notifications_desc),
                         optional = true,
-                        isGranted = PermissionProvider.isGranted(
-                            context,
-                            PermissionType.POST_NOTIFICATIONS
-                        )
+                        isGranted = isGranted(context, PermissionType.POST_NOTIFICATIONS)
                     )
                 )
             }
@@ -160,10 +145,7 @@ class PermissionProvider(private val fragment: Fragment) :
                         title = context.getString(R.string.app_links_title),
                         subtitle = context.getString(R.string.app_links_desc),
                         optional = true,
-                        isGranted = PermissionProvider.isGranted(
-                            context,
-                            PermissionType.APP_LINKS
-                        )
+                        isGranted = isGranted(context, PermissionType.APP_LINKS)
                     ),
                 )
             }

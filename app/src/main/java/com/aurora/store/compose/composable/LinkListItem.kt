@@ -22,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -41,7 +43,12 @@ import com.aurora.store.compose.preview.PreviewTemplate
  * @param onClick Callback when the composable is clicked
  */
 @Composable
-fun LinkListItem(modifier: Modifier = Modifier, link: Link, onClick: () -> Unit = {}) {
+fun LinkListItem(
+    modifier: Modifier = Modifier,
+    link: Link,
+    onClick: () -> Unit = {},
+    iconTint: Color? = null
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -58,7 +65,8 @@ fun LinkListItem(modifier: Modifier = Modifier, link: Link, onClick: () -> Unit 
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .requiredSize(dimensionResource(R.dimen.icon_size_default))
-                .clip(CircleShape)
+                .clip(CircleShape),
+            colorFilter = if (iconTint != null) ColorFilter.tint(color = iconTint) else null
         )
         VerticalDivider(
             modifier = Modifier

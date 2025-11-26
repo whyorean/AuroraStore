@@ -35,9 +35,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences_settings, rootKey)
 
         findPreference<Preference>("pref_perms")?.setOnPreferenceClickListener {
-            findNavController().navigate(
-                SettingsFragmentDirections.actionSettingsFragmentToPermissionsFragment(false)
-            )
+            TODO()
             true
         }
         findPreference<Preference>("pref_install")?.setOnPreferenceClickListener {

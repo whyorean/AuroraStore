@@ -43,8 +43,7 @@ fun PermissionRationaleScreen(
         onNavigateUp = onNavigateUp,
         permissions = permissions
             .filter { it.type in requiredPermissions }
-            .map { permission -> permission.copy(optional = false) }
-            .toSet(),
+            .map { permission -> permission.copy(optional = false) },
         onPermissionCallback = { type ->
             viewModel.refreshPermissionsList()
             onPermissionCallback(type)
@@ -54,7 +53,7 @@ fun PermissionRationaleScreen(
 
 @Composable
 private fun ScreenContent(
-    permissions: Set<Permission> = emptySet(),
+    permissions: List<Permission> = emptyList(),
     onNavigateUp: () -> Unit = {},
     onPermissionCallback: (type: PermissionType) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
@@ -87,7 +86,7 @@ private fun PermissionsScreenPreview() {
             optional = Random.nextBoolean(),
             isGranted = Random.nextBoolean()
         )
-    }.toSet()
+    }
     PreviewTemplate {
         ScreenContent(permissions = permissions)
     }

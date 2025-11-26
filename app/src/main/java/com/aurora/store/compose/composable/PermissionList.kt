@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -51,7 +52,8 @@ private const val TAG = "PermissionsScreen"
 @Composable
 fun PermissionList(
     modifier: Modifier = Modifier,
-    permissions: Set<Permission>,
+    permissions: List<Permission>,
+    header: (@Composable (LazyItemScope.(Int) -> Unit))? = null,
     onPermissionCallback: (type: PermissionType) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -132,6 +134,8 @@ fun PermissionList(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
     ) {
+        if (header != null) stickyHeader(content = header)
+
         permissions.sortedBy { it.optional }
             .groupBy { permission -> permission.optional }
             .forEach { (key, value) ->
@@ -166,7 +170,7 @@ private fun PermissionListPreview() {
             optional = Random.nextBoolean(),
             isGranted = Random.nextBoolean()
         )
-    }.toSet()
+    }
     PreviewTemplate {
         PermissionList(permissions = permissions)
     }
