@@ -18,12 +18,16 @@ import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
 import com.aurora.extensions.isExternalStorageAccessible
 import com.aurora.extensions.isIgnoringBatteryOptimizations
+import com.aurora.extensions.isOAndAbove
+import com.aurora.extensions.isRAndAbove
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.util.PackageUtil
 
@@ -73,6 +77,98 @@ class PermissionProvider(private val fragment: Fragment) :
                 PermissionType.APP_LINKS -> context.isDomainVerified("play.google.com") &&
                         context.isDomainVerified("market.android.com")
             }
+        }
+
+        /**
+         * Returns all known permissions that can be requested by Aurora Store
+         */
+        fun getAllKnownPermissions(context: Context): List<Permission> {
+            val permissions = mutableListOf(
+                Permission(
+                    type = PermissionType.INSTALL_UNKNOWN_APPS,
+                    title = context.getString(R.string.onboarding_permission_installer),
+                    subtitle = if (isOAndAbove) {
+                        context.getString(R.string.onboarding_permission_installer_desc)
+                    } else {
+                        context.getString(R.string.onboarding_permission_installer_legacy_desc)
+                    },
+                    optional = false,
+                    isGranted = PermissionProvider.isGranted(
+                        context,
+                        PermissionType.INSTALL_UNKNOWN_APPS
+                    )
+                ),
+                Permission(
+                    type = PermissionType.DOZE_WHITELIST,
+                    title = context.getString(R.string.onboarding_permission_doze),
+                    subtitle = context.getString(R.string.onboarding_permission_doze_desc),
+                    optional = true,
+                    isGranted = PermissionProvider.isGranted(
+                        context,
+                        PermissionType.DOZE_WHITELIST
+                    )
+                )
+            )
+
+            if (isRAndAbove) {
+                permissions.add(
+                    Permission(
+                        type = PermissionType.STORAGE_MANAGER,
+                        title = context.getString(R.string.onboarding_permission_esm),
+                        subtitle = context.getString(R.string.onboarding_permission_esa_desc),
+                        optional = false,
+                        isGranted = PermissionProvider.isGranted(
+                            context,
+                            PermissionType.STORAGE_MANAGER
+                        )
+                    )
+                )
+            } else {
+                permissions.add(
+                    Permission(
+                        type = PermissionType.EXTERNAL_STORAGE,
+                        title = context.getString(R.string.onboarding_permission_esa),
+                        subtitle = context.getString(R.string.onboarding_permission_esa_desc),
+                        optional = false,
+                        isGranted = PermissionProvider.isGranted(
+                            context,
+                            PermissionType.EXTERNAL_STORAGE
+                        )
+                    )
+                )
+            }
+
+            if (isTAndAbove) {
+                permissions.add(
+                    Permission(
+                        type = PermissionType.POST_NOTIFICATIONS,
+                        title = context.getString(R.string.onboarding_permission_notifications),
+                        subtitle = context.getString(R.string.onboarding_permission_notifications_desc),
+                        optional = true,
+                        isGranted = PermissionProvider.isGranted(
+                            context,
+                            PermissionType.POST_NOTIFICATIONS
+                        )
+                    )
+                )
+            }
+
+            if (isSAndAbove) {
+                permissions.add(
+                    Permission(
+                        type = PermissionType.APP_LINKS,
+                        title = context.getString(R.string.app_links_title),
+                        subtitle = context.getString(R.string.app_links_desc),
+                        optional = true,
+                        isGranted = PermissionProvider.isGranted(
+                            context,
+                            PermissionType.APP_LINKS
+                        )
+                    ),
+                )
+            }
+
+            return permissions
         }
     }
 
