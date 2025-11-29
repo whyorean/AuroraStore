@@ -123,8 +123,10 @@ class UpdateWorker @AssistedInject constructor(
                 }
 
             // Notify about apps that cannot be auto-updated
-            Log.i(TAG, "Found  ${updates.size} updates out of which ${filteredUpdates.second.size} cannot be auto-updated")
-            notifyUpdates(filteredUpdates.second)
+            if (filteredUpdates.second.isNotEmpty()) {
+                Log.i(TAG, "Found  ${updates.size} updates out of which ${filteredUpdates.second.size} cannot be auto-updated")
+                notifyUpdates(filteredUpdates.second)
+            }
 
             // Trigger download for apps if they can be auto-updated
             filteredUpdates.first.forEach { downloadHelper.enqueueUpdate(it) }
