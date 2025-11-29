@@ -46,7 +46,7 @@
     <string name="exodus_progress">S\'estan comprovant els elements de seguiment…</string>
     <string name="exodus_substring">element(s) de seguiment trobat(s) a</string>
     <string name="installer_service_unavailable">Instal·la els serveis d\'Aurora 1.0.9 o superior, o canvia l\'instal·lador.</string>
-    <string name="installer_service_misconfigured">Configureu els serveis d\'Aurora i concediu avanç tots els permisos.</string>
+    <string name="installer_service_misconfigured">Configureu els serveis d\'Aurora i concediu abans tots els permisos.</string>
     <string name="filter_review_four">Quatre</string>
     <string name="filter_review_two">Dos</string>
     <string name="filter_review_all">Tot</string>
@@ -463,4 +463,11 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> i <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> i <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> i <xliff:g id="apps_count">%4$d</xliff:g> més</string>
+    <string name="app_info_target_android">Nivell de l\'API objectiu</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Permís requerit</item>
+        <item quantity="many">Permisos requerits</item>
+        <item quantity="other">Permisos requerits</item>
+    </plurals>
+    <string name="session_scrapped">L\'última sessió s\'ha descartat</string>
 </resources>
