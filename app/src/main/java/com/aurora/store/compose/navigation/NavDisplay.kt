@@ -79,7 +79,10 @@ fun NavDisplay(startDestination: NavKey) {
             }
 
             entry<Screen.PermissionRationale> { screen ->
-                PermissionRationaleScreen(onNavigateUp = ::onNavigateUp)
+                PermissionRationaleScreen(
+                    onNavigateUp = ::onNavigateUp,
+                    requiredPermissions = screen.requiredPermissions
+                )
             }
 
             entry<Screen.Downloads> {
