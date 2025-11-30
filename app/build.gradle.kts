@@ -168,7 +168,6 @@ androidComponents {
 
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
-    useKsp2 = false // TODO: Drop after getting rid of epoxy
 }
 
 dependencies {
