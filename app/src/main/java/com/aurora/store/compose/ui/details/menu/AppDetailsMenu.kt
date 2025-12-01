@@ -20,17 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.AppState
 
 /**
  * Menu for the app details screen
- * @param app App for which this menu should be inflated
  * @param modifier The modifier to be applied to the composable
  * @param onMenuItemClicked Callback when a menu item has been clicked
  * @see MenuItem
@@ -39,7 +35,6 @@ import com.aurora.store.data.model.AppState
 fun AppDetailsMenu(
     modifier: Modifier = Modifier,
     state: AppState = AppState.Unavailable,
-    isInstalled: Boolean = false,
     isFavorite: Boolean = false,
     isExpanded: Boolean = false,
     onMenuItemClicked: (menuItem: MenuItem) -> Unit = {}
@@ -81,17 +76,15 @@ fun AppDetailsMenu(
                 onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) },
                 enabled = !state.inProgress()
             )
-
-            // Inflate actions available only when app is installed below
-            if (!isInstalled) return@DropdownMenu
-
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_info)) },
-                onClick = { onClick(MenuItem.APP_INFO) }
+                onClick = { onClick(MenuItem.APP_INFO) },
+                enabled = state is AppState.Installed || state is AppState.Updatable
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_home_screen)) },
-                onClick = { onClick(MenuItem.ADD_TO_HOME) }
+                onClick = { onClick(MenuItem.ADD_TO_HOME) },
+                enabled = state is AppState.Installed || state is AppState.Updatable
             )
         }
     }
@@ -99,15 +92,11 @@ fun AppDetailsMenu(
 
 @Preview(showBackground = true)
 @Composable
-private fun AppDetailsMenuPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+private fun AppDetailsMenuPreview() {
     PreviewTemplate {
         TopAppBar(
             actions = {
-                AppDetailsMenu(
-                    isInstalled = app.isInstalled,
-                    isFavorite = true,
-                    isExpanded = true
-                )
+                AppDetailsMenu(isFavorite = true, isExpanded = true)
             }
         )
     }

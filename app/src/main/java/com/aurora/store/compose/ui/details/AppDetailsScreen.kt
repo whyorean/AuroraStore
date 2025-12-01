@@ -253,11 +253,7 @@ private fun ScreenContentApp(
 
     @Composable
     fun SetupMenu() {
-        AppDetailsMenu(
-            isInstalled = app.isInstalled,
-            isFavorite = isFavorite,
-            state = state
-        ) { menuItem ->
+        AppDetailsMenu(isFavorite = isFavorite, state = state) { menuItem ->
             when (menuItem) {
                 MenuItem.FAVORITE -> onFavorite()
                 MenuItem.MANUAL_DOWNLOAD -> {
