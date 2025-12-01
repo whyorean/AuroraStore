@@ -356,6 +356,7 @@
     <string name="app_info_target_android">"Target API Level"</string>
 
     <!-- OnBoarding Fragment -->
+    <string name="action_skip">Skip</string>
     <string name="onboarding_title_installer">"Installer"</string>
     <string name="onboarding_title_gsf">"App Compatibility"</string>
     <string name="onboarding_title_gsf_desc">"Missing dependencies"</string>

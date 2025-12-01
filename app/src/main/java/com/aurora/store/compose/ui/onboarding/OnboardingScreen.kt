@@ -55,6 +55,10 @@ private fun ScreenContent(
     val pagerState = rememberPagerState { pages.size }
     val coroutineScope = rememberCoroutineScope()
 
+    fun isFinalPage(): Boolean {
+        return pagerState.currentPage == (pagerState.pageCount - 1)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -89,15 +93,22 @@ private fun ScreenContent(
             ) {
                 TextButton(
                     modifier = Modifier.weight(1F),
-                    enabled = pagerState.currentPage != 0,
                     onClick = {
-                        coroutineScope.launch {
-                            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        when (pagerState.currentPage) {
+                            0 -> onFinishOnboarding()
+                            else -> {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                                }
+                            }
                         }
                     }
                 ) {
                     Text(
-                        text = stringResource(R.string.action_back),
+                        text = when (pagerState.currentPage) {
+                            0 -> stringResource(R.string.action_skip)
+                            else -> stringResource(R.string.action_back)
+                        },
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -107,18 +118,20 @@ private fun ScreenContent(
                     modifier = Modifier.weight(1F),
                     onClick = {
                         when {
-                            pagerState.currentPage < (pagerState.pageCount - 1) -> {
+                            isFinalPage() -> onFinishOnboarding()
+                            else -> {
                                 coroutineScope.launch {
                                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
                                 }
                             }
-
-                            else -> onFinishOnboarding()
                         }
                     }
                 ) {
                     Text(
-                        text = stringResource(R.string.action_next),
+                        text = when {
+                            isFinalPage() -> stringResource(R.string.action_finish)
+                            else -> stringResource(R.string.action_next)
+                        },
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
