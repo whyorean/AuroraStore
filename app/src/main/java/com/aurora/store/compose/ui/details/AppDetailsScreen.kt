@@ -265,7 +265,6 @@ private fun ScreenContentApp(
                 }
                 MenuItem.SHARE -> context.share(app.displayName, app.packageName)
                 MenuItem.APP_INFO -> context.appInfo(app.packageName)
-                MenuItem.PLAY_STORE -> context.browse("$SHARE_URL${app.packageName}")
                 MenuItem.ADD_TO_HOME -> {
                     ShortcutManagerUtil.requestPinShortcut(context, app.packageName)
                 }

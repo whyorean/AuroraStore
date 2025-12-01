@@ -13,6 +13,5 @@ enum class MenuItem {
     SHARE,
     MANUAL_DOWNLOAD,
     APP_INFO,
-    PLAY_STORE,
     ADD_TO_HOME
 }

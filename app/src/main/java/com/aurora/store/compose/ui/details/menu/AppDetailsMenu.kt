@@ -81,10 +81,6 @@ fun AppDetailsMenu(
                 onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) },
                 enabled = !state.inProgress()
             )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.title_download_playstore)) },
-                onClick = { onClick(MenuItem.PLAY_STORE) }
-            )
 
             // Inflate actions available only when app is installed below
             if (!isInstalled) return@DropdownMenu
