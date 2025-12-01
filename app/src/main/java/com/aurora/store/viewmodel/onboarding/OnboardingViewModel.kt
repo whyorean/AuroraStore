@@ -8,12 +8,12 @@ package com.aurora.store.viewmodel.onboarding
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.aurora.Constants
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.work.CacheWorker
+import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
@@ -71,7 +71,7 @@ class OnboardingViewModel @Inject constructor(
         save(PREFERENCE_FILTER_FDROID, true)
 
         /*Network*/
-        save(PREFERENCE_DISPENSER_URLS, setOf(Constants.URL_DISPENSER))
+        save(PREFERENCE_DISPENSER_URLS, FlavouredUtil.defaultDispensers)
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/
