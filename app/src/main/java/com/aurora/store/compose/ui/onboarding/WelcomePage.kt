@@ -35,18 +35,18 @@ import com.aurora.store.compose.ui.about.AboutDialog
 import com.aurora.store.data.model.Link
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomePage() {
     var shouldShowAboutDialog by rememberSaveable { mutableStateOf(false) }
 
     if (shouldShowAboutDialog) {
         AboutDialog(onDismiss = { shouldShowAboutDialog = false })
     }
 
-    ScreenContent(onAboutAurora = { shouldShowAboutDialog = true })
+    PageContent(onAboutAurora = { shouldShowAboutDialog = true })
 }
 
 @Composable
-private fun ScreenContent(onAboutAurora: () -> Unit = {}) {
+private fun PageContent(onAboutAurora: () -> Unit = {}) {
     val context = LocalContext.current
 
     val links = listOf(
@@ -137,8 +137,8 @@ private fun ScreenContent(onAboutAurora: () -> Unit = {}) {
 
 @Preview(showBackground = true)
 @Composable
-private fun WelcomeScreenPreview() {
+private fun WelcomePagePreview() {
     PreviewTemplate {
-        ScreenContent()
+        PageContent()
     }
 }

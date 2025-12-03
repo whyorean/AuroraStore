@@ -30,17 +30,17 @@ import com.aurora.store.viewmodel.commons.PermissionRationaleViewModel
 import kotlin.random.Random
 
 @Composable
-fun PermissionsScreen(viewModel: PermissionRationaleViewModel = hiltViewModel()) {
+fun PermissionsPage(viewModel: PermissionRationaleViewModel = hiltViewModel()) {
     val permissions by viewModel.permissions.collectAsStateWithLifecycle()
 
-    ScreenContent(
+    PageContent(
         permissions = permissions,
         onPermissionCallback = { viewModel.refreshPermissionsList() }
     )
 }
 
 @Composable
-private fun ScreenContent(
+private fun PageContent(
     permissions: List<Permission> = emptyList(),
     onPermissionCallback: (type: PermissionType) -> Unit = {}
 ) {
@@ -73,7 +73,7 @@ private fun ScreenContent(
 
 @Preview(showBackground = true)
 @Composable
-private fun PermissionsScreenPreview() {
+private fun PermissionsPagePreview() {
     val permissions = PermissionType.entries.map { type ->
         Permission(
             type = type,
@@ -84,7 +84,7 @@ private fun PermissionsScreenPreview() {
         )
     }
     PreviewTemplate {
-        ScreenContent(
+        PageContent(
             permissions = permissions
         )
     }

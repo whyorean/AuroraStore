@@ -80,8 +80,8 @@ private fun ScreenContent(
                 verticalAlignment = Alignment.Top
             ) { page ->
                 when (pages[page]) {
-                    ExtraScreen.Welcome -> WelcomeScreen()
-                    ExtraScreen.Permissions -> PermissionsScreen()
+                    ExtraScreen.Welcome -> WelcomePage()
+                    ExtraScreen.Permissions -> PermissionsPage()
                 }
             }
 
