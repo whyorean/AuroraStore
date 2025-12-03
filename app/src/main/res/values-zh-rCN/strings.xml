@@ -468,4 +468,5 @@
     <string name="microg_installer_desc">帮助绕过应用完整性（仅安装包）检查</string>
     <string name="loading">正在加载</string>
     <string name="page">页 <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">跳过</string>
 </resources>
