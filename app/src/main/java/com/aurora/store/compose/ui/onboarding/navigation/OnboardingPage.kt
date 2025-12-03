@@ -5,6 +5,9 @@
 
 package com.aurora.store.compose.ui.onboarding.navigation
 
+/**
+ * Pages that can be shown during onboarding
+ */
 enum class OnboardingPage {
     WELCOME,
     PERMISSIONS,

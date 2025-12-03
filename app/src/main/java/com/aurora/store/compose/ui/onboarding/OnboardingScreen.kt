@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Button
@@ -18,6 +19,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -27,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
 import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.preview.PreviewTemplate
@@ -59,6 +63,75 @@ private fun ScreenContent(
         return pagerState.currentPage == (pagerState.pageCount - 1)
     }
 
+    @Composable
+    fun SetupActions(windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()) {
+        val horizontalButtonPadding = when {
+            windowAdaptiveInfo.isWindowCompact -> dimensionResource(R.dimen.padding_medium)
+            else -> dimensionResource(R.dimen.padding_xlarge)
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    vertical = dimensionResource(R.dimen.padding_medium),
+                    horizontal = horizontalButtonPadding
+                ),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+        ) {
+            val buttonWidthModifier = when {
+                windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
+                else -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
+            }
+
+            TextButton(
+                modifier = buttonWidthModifier,
+                onClick = {
+                    when (pagerState.currentPage) {
+                        0 -> onFinishOnboarding()
+                        else -> {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                            }
+                        }
+                    }
+                }
+            ) {
+                Text(
+                    text = when (pagerState.currentPage) {
+                        0 -> stringResource(R.string.action_skip)
+                        else -> stringResource(R.string.action_back)
+                    },
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            Button(
+                modifier = buttonWidthModifier,
+                onClick = {
+                    when {
+                        isFinalPage() -> onFinishOnboarding()
+                        else -> {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                            }
+                        }
+                    }
+                }
+            ) {
+                Text(
+                    text = when {
+                        isFinalPage() -> stringResource(R.string.action_finish)
+                        else -> stringResource(R.string.action_next)
+                    },
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -85,58 +158,7 @@ private fun ScreenContent(
                 }
             }
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(dimensionResource(R.dimen.padding_medium)),
-                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
-            ) {
-                TextButton(
-                    modifier = Modifier.weight(1F),
-                    onClick = {
-                        when (pagerState.currentPage) {
-                            0 -> onFinishOnboarding()
-                            else -> {
-                                coroutineScope.launch {
-                                    pagerState.animateScrollToPage(pagerState.currentPage - 1)
-                                }
-                            }
-                        }
-                    }
-                ) {
-                    Text(
-                        text = when (pagerState.currentPage) {
-                            0 -> stringResource(R.string.action_skip)
-                            else -> stringResource(R.string.action_back)
-                        },
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-
-                Button(
-                    modifier = Modifier.weight(1F),
-                    onClick = {
-                        when {
-                            isFinalPage() -> onFinishOnboarding()
-                            else -> {
-                                coroutineScope.launch {
-                                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
-                                }
-                            }
-                        }
-                    }
-                ) {
-                    Text(
-                        text = when {
-                            isFinalPage() -> stringResource(R.string.action_finish)
-                            else -> stringResource(R.string.action_next)
-                        },
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-            }
+            SetupActions()
         }
     }
 }
