@@ -28,6 +28,7 @@ object CommonModule {
             ignoreUnknownKeys = true
             coerceInputValues = true
             serializersModule = module
+            explicitNulls = false
         }
     }
 }
