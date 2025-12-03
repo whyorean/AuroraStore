@@ -469,4 +469,5 @@
     <string name="microg_installer_desc">Hilft, die App-Integritätsprüfung (nur Installer) zu umgehen</string>
     <string name="loading">Ladevorgang läuft</string>
     <string name="page">Seite <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Überspringen</string>
 </resources>
