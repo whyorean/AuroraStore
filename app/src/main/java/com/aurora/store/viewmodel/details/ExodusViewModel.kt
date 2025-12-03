@@ -9,37 +9,25 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import javax.inject.Inject
 
-@HiltViewModel(assistedFactory = ExodusViewModel.Factory::class)
-class ExodusViewModel @AssistedInject constructor(
-    @Assisted private val exodusReport: Report,
+@HiltViewModel
+class ExodusViewModel @Inject constructor(
     private val exodusTrackers: JSONObject
 ) : ViewModel() {
-
-    @AssistedFactory
-    interface Factory {
-        fun create(exodusReport: Report): ExodusViewModel
-    }
 
     private val _trackers = MutableStateFlow<List<ExodusTracker>>(emptyList())
     val trackers = _trackers.asStateFlow()
 
-    init {
-        getExodusTrackersFromReport()
-    }
-
-    private fun getExodusTrackersFromReport() {
+    fun getExodusTrackersFromReport(report: Report) {
         viewModelScope.launch(Dispatchers.IO) {
-            val trackerObjects = exodusReport.trackers.map {
+            val trackerObjects = report.trackers.map {
                 exodusTrackers.getJSONObject(it.toString())
             }.toList()
 

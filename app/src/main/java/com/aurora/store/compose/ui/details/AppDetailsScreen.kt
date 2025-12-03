@@ -393,7 +393,7 @@ private fun ScreenContentApp(
 
                 Privacy(
                     report = exodusReport,
-                    onNavigateToDetailsExodus = if (!exodusReport?.trackers.isNullOrEmpty()) {
+                    onNavigateToDetailsExodus = if (exodusReport?.id != -1) {
                         { showExtraPane(ExtraScreen.Exodus) }
                     } else {
                         null
