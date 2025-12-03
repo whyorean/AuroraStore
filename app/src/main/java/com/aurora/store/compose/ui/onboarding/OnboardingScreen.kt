@@ -30,15 +30,15 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.store.R
 import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.preview.PreviewTemplate
-import com.aurora.store.compose.ui.onboarding.navigation.ExtraScreen
+import com.aurora.store.compose.ui.onboarding.navigation.OnboardingPage
 import com.aurora.store.viewmodel.onboarding.OnboardingViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
     val pages = listOfNotNull(
-        ExtraScreen.Welcome,
-        ExtraScreen.Permissions
+        OnboardingPage.WELCOME,
+        OnboardingPage.PERMISSIONS
     )
 
     ScreenContent(
@@ -49,7 +49,7 @@ fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
 
 @Composable
 private fun ScreenContent(
-    pages: List<ExtraScreen> = emptyList(),
+    pages: List<OnboardingPage> = emptyList(),
     onFinishOnboarding: () -> Unit = {}
 ) {
     val pagerState = rememberPagerState { pages.size }
@@ -80,8 +80,8 @@ private fun ScreenContent(
                 verticalAlignment = Alignment.Top
             ) { page ->
                 when (pages[page]) {
-                    ExtraScreen.Welcome -> WelcomePage()
-                    ExtraScreen.Permissions -> PermissionsPage()
+                    OnboardingPage.WELCOME -> WelcomePage()
+                    OnboardingPage.PERMISSIONS -> PermissionsPage()
                 }
             }
 
@@ -146,7 +146,7 @@ private fun ScreenContent(
 private fun OnboardingScreenPreview() {
     PreviewTemplate {
         ScreenContent(
-            pages = listOf(ExtraScreen.Welcome, ExtraScreen.Permissions)
+            pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS)
         )
     }
 }
