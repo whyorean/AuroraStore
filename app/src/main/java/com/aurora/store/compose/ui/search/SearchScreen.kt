@@ -35,7 +35,6 @@ import androidx.compose.material3.adaptive.navigation.NavigableListDetailPaneSca
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -61,7 +60,6 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import coil3.compose.LocalAsyncImagePreviewHandler
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
@@ -70,7 +68,6 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.SearchSuggestionListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.coilPreviewProvider
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.details.AppDetailsScreen
@@ -420,9 +417,6 @@ private fun SearchScreenPreview(@PreviewParameter(AppPreviewProvider::class) app
     PreviewTemplate {
         val apps = List(10) { app.copy(id = Random.nextInt()) }
         val results = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
-
-        CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
-            ScreenContent(results = results)
-        }
+        ScreenContent(results = results)
     }
 }

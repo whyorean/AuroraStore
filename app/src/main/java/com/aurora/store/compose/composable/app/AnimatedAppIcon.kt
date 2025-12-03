@@ -14,7 +14,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,14 +28,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import coil3.compose.AsyncImage
-import coil3.compose.LocalAsyncImagePreviewHandler
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.PreviewTemplate
-import com.aurora.store.compose.preview.coilPreviewProvider
 
 /**
  * Composable to show icon for an app that can be animated to also show install progress
@@ -103,7 +100,7 @@ private class ProgressProvider: PreviewParameterProvider<Float> {
 @Preview(showBackground = true)
 @Composable
 private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    CompositionLocalProvider(LocalAsyncImagePreviewHandler provides coilPreviewProvider) {
+    PreviewTemplate {
         AnimatedAppIcon(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
             iconUrl = app.iconArtwork.url
