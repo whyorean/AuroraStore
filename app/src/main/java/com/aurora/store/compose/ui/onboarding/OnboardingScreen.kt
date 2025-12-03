@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
+import com.aurora.store.compose.composable.Logo
 import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.onboarding.navigation.OnboardingPage
@@ -54,7 +55,8 @@ fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
 @Composable
 private fun ScreenContent(
     pages: List<OnboardingPage> = emptyList(),
-    onFinishOnboarding: () -> Unit = {}
+    onFinishOnboarding: () -> Unit = {},
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val pagerState = rememberPagerState { pages.size }
     val coroutineScope = rememberCoroutineScope()
@@ -64,7 +66,7 @@ private fun ScreenContent(
     }
 
     @Composable
-    fun SetupActions(windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()) {
+    fun SetupActions() {
         val horizontalButtonPadding = when {
             windowAdaptiveInfo.isWindowCompact -> dimensionResource(R.dimen.padding_medium)
             else -> dimensionResource(R.dimen.padding_xlarge)
@@ -77,7 +79,11 @@ private fun ScreenContent(
                     vertical = dimensionResource(R.dimen.padding_medium),
                     horizontal = horizontalButtonPadding
                 ),
-            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(
+                dimensionResource(R.dimen.padding_medium),
+                Alignment.End
+            )
         ) {
             val buttonWidthModifier = when {
                 windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
@@ -143,18 +149,29 @@ private fun ScreenContent(
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween
+                .fillMaxSize()
+                .padding(paddingValues),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            HorizontalPager(
+            Row(
                 modifier = Modifier.weight(1F),
-                state = pagerState,
-                verticalAlignment = Alignment.Top
-            ) { page ->
-                when (pages[page]) {
-                    OnboardingPage.WELCOME -> WelcomePage()
-                    OnboardingPage.PERMISSIONS -> PermissionsPage()
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (!windowAdaptiveInfo.isWindowCompact) {
+                    Logo(modifier = Modifier.weight(1F))
+                }
+
+                HorizontalPager(
+                    modifier = Modifier.weight(1F),
+                    state = pagerState,
+                    verticalAlignment = Alignment.Top
+                ) { page ->
+                    when (pages[page]) {
+                        OnboardingPage.WELCOME -> WelcomePage()
+                        OnboardingPage.PERMISSIONS -> PermissionsPage()
+                    }
                 }
             }
 
