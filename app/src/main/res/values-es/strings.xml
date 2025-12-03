@@ -425,7 +425,7 @@
     <string name="pref_updates_restrictions_metered">Solo en redes sin restricciones de uso</string>
     <string name="pref_updates_restrictions_idle">Cuando el dispositivo está inactivo</string>
     <string name="pref_updates_restrictions_battery">Cuando la batería no está baja</string>
-    <string name="pref_updates_restrictions_desc">Configurar restricciones del dispositivo para actualizaciones automáticas.</string>
+    <string name="pref_updates_restrictions_desc">Configurar restricciones del dispositivo para actualizaciones automáticas</string>
     <string name="verification_failed">Ha fallado al verificar archivos descargados</string>
     <string name="app_info_min_android">Versión mínima de Android</string>
     <string name="app_info_updated_on">Última actualización</string>
@@ -459,4 +459,15 @@
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conocidos encontrados en <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="manual_download_version_error">El código de versión solo puede contener números</string>
     <string name="preparing_to_install">Preparando para instalar</string>
+    <string name="installer_microg_misconfigured">MicroG no ha podido instalar la aplicación, seguramente debido a una configuración incorrecta.</string>
+    <string name="pref_install_mode_microg">Instalador de microG</string>
+    <string name="microg_installer_subtitle">Requiere que la aplicación microG companion esté instalada</string>
+    <string name="microg_installer_desc">Te ayuda a ignorar la comprobación de integridad de las aplicaciones (solo instalador)</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Permiso requerido</item>
+        <item quantity="many">Permisos requeridos</item>
+        <item quantity="other">Permisos requeridos</item>
+    </plurals>
+    <string name="loading">Se está cargando</string>
+    <string name="page">Página <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
