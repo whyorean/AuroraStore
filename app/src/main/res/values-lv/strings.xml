@@ -470,4 +470,5 @@
     <string name="microg_installer_desc">Palīdz apiet lietotņu veseluma (tikai uzstādītājs) pārbaudi</string>
     <string name="loading">Notiek ielādēšana</string>
     <string name="page">Lapa <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Izlaist</string>
 </resources>
