@@ -469,4 +469,5 @@
     <string name="microg_installer_desc">Lubab sul jätta vahele rakenduse tervikluse kontrolli (vaid paigaldaja puhul)</string>
     <string name="loading">Laadimine on töös</string>
     <string name="page">Leht <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Jäta vahele</string>
 </resources>
