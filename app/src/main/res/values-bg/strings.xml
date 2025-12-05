@@ -263,4 +263,19 @@
     <string name="action_home_screen">Добавяне към началния екран</string>
     <string name="action_favourite">Любими</string>
     <string name="action_uninstall_success">Успешно деинсталиране</string>
+    <string name="about_wiki_summary">Намери отговори на често задавани въпроси, стъпки за отстраняване на грешки и още</string>
+    <string name="action_remove_all">Премахни всички</string>
+    <string name="action_request_analysis">Поискаи нов анализ</string>
+    <string name="action_select_all">Избери всички</string>
+    <string name="details_no_favourites">Не са намерени любими приложения</string>
+    <string name="details_data_safety_collect">Данни, които това приложение може да събира</string>
+    <string name="details_data_safety_collect_none">Разработчикът твърди, че приложението не събира потребителски данни.</string>
+    <string name="details_data_safety_shared">Данни, които това приложение може да споделя</string>
+    <string name="details_data_safety_share_none">Разработчикът твърди, че това приложение не споделя потребителски данни с компании или организации.</string>
+    <string name="download_eta_hrs">%1$dч %2$dм %3$dс остават</string>
+    <string name="download_eta_min">%1$dм %2$dс остават</string>
+    <string name="download_eta_sec">%1$dс остават</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> тракер(и) намерени в <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="filter_latest">Най-нови</string>
+    <string name="installer_microg_misconfigured">Грешка при инсталирането на MicroG, най-вероятно поради грешка в конфигурацията.</string>
 </resources>
