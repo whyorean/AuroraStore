@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -29,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.util.fastForEach
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
@@ -36,7 +38,6 @@ import com.aurora.gplayapi.data.models.Rating
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
-import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.composable.details.RatingListItem
 import com.aurora.store.compose.composable.details.ReviewListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -118,11 +119,11 @@ fun RatingAndReviews(
     }
 
     if (featuredReviews.isNotEmpty()) {
-        val pagerState = rememberPagerState(initialPage = 1) { featuredReviews.size }
+        val pagerState = rememberPagerState { featuredReviews.size }
         HorizontalPager(
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
             state = pagerState,
-            pageSpacing = dimensionResource(R.dimen.margin_normal)
+            contentPadding = PaddingValues(dimensionResource(R.dimen.padding_large)),
+            pageSpacing = dimensionResource(R.dimen.margin_medium)
         ) { page ->
             Box(
                 modifier = Modifier
@@ -134,20 +135,23 @@ fun RatingAndReviews(
                 ReviewListItem(review = featuredReviews[page])
             }
         }
-
-        PageIndicator(
-            totalPages = featuredReviews.size,
-            currentPage = pagerState.currentPage
-        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun RatingAndReviewsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+    val reviews = List(3) {
+        Review(
+            userName = "Rahul Kumar Patel",
+            timeStamp = 1745750879,
+            rating = 4,
+            comment = LoremIpsum(40).values.first()
+        )
+    }
     PreviewTemplate {
         Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-            RatingAndReviews(rating = app.rating)
+            RatingAndReviews(rating = app.rating, featuredReviews = reviews)
         }
     }
 }
