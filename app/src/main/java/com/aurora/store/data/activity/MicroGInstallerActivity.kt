@@ -7,8 +7,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.FileProvider
+import androidx.core.content.IntentCompat
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
-import com.aurora.extensions.isTAndAbove
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.installer.MicroGInstaller.Companion.buildMicroGInstallIntent
 import java.io.File
@@ -51,11 +51,8 @@ class MicroGInstallerActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val files: ArrayList<Uri>? = if (isTAndAbove) {
-            intent.getParcelableArrayListExtra(EXTRA_FILES, Uri::class.java)
-        } else {
-            intent.getParcelableArrayListExtra(EXTRA_FILES)
-        }
+        val files: ArrayList<Uri>? =
+            IntentCompat.getParcelableArrayListExtra(intent, EXTRA_FILES, Uri::class.java)
 
         if (files.isNullOrEmpty()) {
             Log.e(TAG, "No files provided, cannot proceed with MicroG installation")
