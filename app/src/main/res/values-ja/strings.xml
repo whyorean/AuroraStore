@@ -403,4 +403,10 @@
     <string name="toast_black_import_success">ブラックリストをインポートしました！</string>
     <string name="plexus_progress">互換性をチェックしています</string>
     <string name="checking_updates">更新の確認</string>
+    <string name="loading">読み込み中</string>
+    <string name="made_with_love">インド製造<xliff:g id="heart_emoji">%1$s</xliff:g></string>
+    <string name="pref_install_mode_microg">MicroG インストーラー</string>
+    <string name="app_info_min_android">最低限Androidバージョン</string>
+    <string name="onboarding_title_gsf_desc">依存関係が不足しています</string>
+    <string name="details_more_info">もっとみる</string>
 </resources>
