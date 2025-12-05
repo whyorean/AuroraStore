@@ -391,4 +391,16 @@
     <string name="details_data_safety_shared">このアプリが共有する可能性のあるデータ</string>
     <string name="details_data_safety_share_none">デベロッパーによると、このアプリはユーザーデータを他の企業や組織と共有しません。</string>
     <string name="exodus_tracker_desc">このバージョンのアプリには、Exodus Privacyのデータベースにまだ存在しないトラッカーがまだ含まれている可能性があります。</string>
+    <string name="notification_channel_account">アカウントについての通知</string>
+    <string name="pref_common_advanced">もっと</string>
+    <string name="onboarding_title_gsf">アプリ互換性</string>
+    <string name="pref_updates_app_source">アプリソース</string>
+    <string name="pref_network_microg_login_desc">Googleアカウントへのサインイン時にmicroGを使用した認証を行い、よりシンプルなサインインフローを実現します。</string>
+    <string name="authentication_required_title">認証する必要があります</string>
+    <string name="pref_updates_restrictions_title">自動更新の制限</string>
+    <string name="available_spoof">利用可能</string>
+    <string name="toast_black_export_success">ブラックリストをエクスポートしました！</string>
+    <string name="toast_black_import_success">ブラックリストをインポートしました！</string>
+    <string name="plexus_progress">互換性をチェックしています</string>
+    <string name="checking_updates">更新の確認</string>
 </resources>
