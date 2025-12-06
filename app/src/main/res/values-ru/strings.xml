@@ -424,7 +424,7 @@
     <string name="pref_updates_restrictions_title">Ограничения автоматического обновления</string>
     <string name="pref_updates_restrictions_metered">Только в сетях без ограничения трафика</string>
     <string name="pref_updates_restrictions_idle">Когда устройство не используется</string>
-    <string name="pref_updates_restrictions_desc">Настроить ограничения устройства для автоматических обновлений.</string>
+    <string name="pref_updates_restrictions_desc">Настроить ограничения устройства для автоматических обновлений</string>
     <string name="pref_updates_restrictions_battery">Когда батарея не разряжена</string>
     <string name="verification_failed">Не удалось проверить загруженные файлы</string>
     <string name="app_info_min_android">Минимальная версия Android</string>
@@ -459,4 +459,17 @@
     <string name="action_filter_no_gms">Без сервисов Google Play</string>
     <string name="manual_download_version_error">Код версии может содержать только цифры</string>
     <string name="preparing_to_install">Подготовка к установке</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Требуется разрешение</item>
+        <item quantity="few">Требуются разрешения</item>
+        <item quantity="many">Требуются разрешения</item>
+        <item quantity="other">Требуются разрешения</item>
+    </plurals>
+    <string name="loading">Загрузка в прогрессе</string>
+    <string name="page">Страница <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="installer_microg_misconfigured">Установщик MicroG не смог установить приложение, вероятнее всего, из-за проблем с конфигурацией.</string>
+    <string name="pref_install_mode_microg">Установщик MicroG</string>
+    <string name="action_skip">Пропустить</string>
+    <string name="microg_installer_subtitle">Требует установки дополнительного приложения microG</string>
+    <string name="microg_installer_desc">Помогает пропустить проверку целостности приложения (только для установщика)</string>
 </resources>
