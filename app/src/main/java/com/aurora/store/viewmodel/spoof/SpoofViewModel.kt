@@ -21,39 +21,30 @@ class SpoofViewModel @Inject constructor(
     val defaultLocale: Locale = Locale.getDefault()
     val defaultProperties = NativeDeviceInfoProvider.getNativeDeviceProperties(context)
 
-    private var currentDevice = spoofProvider.deviceProperties.getProperty("UserReadableName")
-    private var currentLocale = spoofProvider.locale
+    private val _currentLocale = MutableStateFlow(spoofProvider.locale)
+    val currentLocale = _currentLocale.asStateFlow()
 
-    private val _availableLocales: MutableStateFlow<List<Locale>> = MutableStateFlow(
-        spoofProvider.availableSpoofLocales
-    )
+    private val _availableLocales = MutableStateFlow(spoofProvider.availableSpoofLocales)
     val availableLocales = _availableLocales.asStateFlow()
 
-    private val _availableDevices: MutableStateFlow<List<Properties>> = MutableStateFlow(
-        spoofProvider.availableSpoofDeviceProperties
-    )
+    private val _currentDevice = MutableStateFlow(spoofProvider.deviceProperties)
+    val currentDevice = _currentDevice.asStateFlow()
+
+    private val _availableDevices = MutableStateFlow(spoofProvider.availableSpoofDeviceProperties)
     val availableDevices = _availableDevices.asStateFlow()
 
-    fun isDeviceSelected(properties: Properties): Boolean {
-        return currentDevice == properties.getProperty("UserReadableName")
-    }
-
     fun onDeviceSelected(properties: Properties) {
-        currentDevice = properties.getProperty("UserReadableName")
+        _currentDevice.value = properties
 
-        if (currentDevice == defaultProperties.getProperty("UserReadableName")) {
+        if (currentDevice == defaultProperties) {
             spoofProvider.removeSpoofDeviceProperties()
         } else {
             spoofProvider.setSpoofDeviceProperties(properties)
         }
     }
 
-    fun isLocaleSelected(locale: Locale): Boolean {
-        return currentLocale == locale
-    }
-
     fun onLocaleSelected(locale: Locale) {
-        currentLocale = locale
+        _currentLocale.value = locale
 
         if (currentLocale == defaultLocale) {
             spoofProvider.removeSpoofLocale()

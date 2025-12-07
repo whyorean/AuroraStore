@@ -62,11 +62,6 @@
         android:label="@string/title_apps_games"
         tools:layout="@layout/fragment_generic_with_search" />
     <fragment
-        android:id="@+id/spoofFragment"
-        android:name="com.aurora.store.view.ui.spoof.SpoofFragment"
-        android:label="@string/title_spoof_manager"
-        tools:layout="@layout/fragment_spoof" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"

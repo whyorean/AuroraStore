@@ -438,10 +438,10 @@ class MoreDialogFragment : DialogFragment() {
                 icon = R.drawable.ic_favorite_unchecked,
                 screen = Screen.Favourite
             ),
-            ViewOption(
+            ComposeOption(
                 title = R.string.title_spoof_manager,
                 icon = R.drawable.ic_spoof,
-                destinationID = R.id.spoofFragment
+                screen = Screen.Spoof
             )
         )
     }

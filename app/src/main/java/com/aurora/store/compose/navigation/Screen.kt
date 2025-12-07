@@ -51,4 +51,7 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data object Onboarding : Screen()
+
+    @Serializable
+    data object Spoof : Screen()
 }

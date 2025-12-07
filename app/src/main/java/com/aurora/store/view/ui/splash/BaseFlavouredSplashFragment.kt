@@ -83,9 +83,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                         requireContext().navigate(Screen.Blacklist)
                     }
 
-                    R.id.menu_spoof_manager -> {
-                        findNavController().navigate(R.id.spoofFragment)
-                    }
+                    R.id.menu_spoof_manager -> requireContext().navigate(Screen.Spoof)
 
                     R.id.menu_settings -> {
                         findNavController().navigate(R.id.settingsFragment)

@@ -470,6 +470,7 @@
     <string name="checking_updates">Checking for updates</string>
 
     <!-- ForceRestartDialog -->
+    <string name="force_restart_snack">Restart to apply changes?</string>
     <string name="force_restart_title">Restart Aurora Store</string>
     <string name="force_restart_summary">Aurora Store needs to be restarted to apply the newly changed settings</string>
 
