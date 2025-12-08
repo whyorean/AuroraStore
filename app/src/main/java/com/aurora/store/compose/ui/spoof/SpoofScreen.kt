@@ -5,6 +5,10 @@
 
 package com.aurora.store.compose.ui.spoof
 
+import android.net.Uri
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,17 +31,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastForEachIndexed
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.aurora.Constants
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.ui.spoof.menu.MenuItem
+import com.aurora.store.compose.ui.spoof.menu.SpoofMenu
 import com.aurora.store.compose.ui.spoof.navigation.SpoofPage
 import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun SpoofScreen(onNavigateUp: () -> Unit, onNavigateToSplash: () -> Unit) {
+fun SpoofScreen(
+    onNavigateUp: () -> Unit,
+    onNavigateToSplash: () -> Unit,
+    viewModel: SpoofViewModel = hiltViewModel(),
+) {
     ScreenContent(
         onNavigateUp = onNavigateUp,
-        onNavigateToSplash = onNavigateToSplash
+        onNavigateToSplash = onNavigateToSplash,
+        onDeviceSpoofImport = { uri -> viewModel.importDeviceSpoof(uri) },
+        onDeviceSpoofExport = { uri -> viewModel.exportDeviceSpoof(uri) }
     )
 }
 
@@ -45,12 +61,35 @@ fun SpoofScreen(onNavigateUp: () -> Unit, onNavigateToSplash: () -> Unit) {
 private fun ScreenContent(
     pages: List<SpoofPage> = listOf(SpoofPage.DEVICE, SpoofPage.LOCALE),
     onNavigateUp: () -> Unit = {},
-    onNavigateToSplash: () -> Unit = {}
+    onNavigateToSplash: () -> Unit = {},
+    onDeviceSpoofImport: (uri: Uri) -> Unit = {},
+    onDeviceSpoofExport: (uri: Uri) -> Unit = {}
 ) {
     val context = LocalContext.current
     val pagerState = rememberPagerState { pages.size }
     val coroutineScope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
+
+    val docImportLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.OpenDocument(),
+        onResult = {
+            if (it != null) {
+                onDeviceSpoofImport(it)
+            } else {
+                context.toast(R.string.toast_import_failed)
+            }
+        }
+    )
+    val docExportLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument(Constants.PROPERTIES_EXPORT_MIME_TYPE),
+        onResult = {
+            if (it != null) {
+                onDeviceSpoofExport(it)
+            } else {
+                context.toast(R.string.toast_export_failed)
+            }
+        }
+    )
 
     fun onRequestNavigateToSplash() {
         coroutineScope.launch {
@@ -64,7 +103,25 @@ private fun ScreenContent(
                     AccountProvider.logout(context)
                     onNavigateToSplash()
                 }
+
                 else -> Unit
+            }
+        }
+    }
+
+    @Composable
+    fun SetupMenu() {
+        SpoofMenu { menuItem ->
+            when (menuItem) {
+                MenuItem.IMPORT -> {
+                    docImportLauncher.launch(arrayOf(Constants.PROPERTIES_IMPORT_MIME_TYPE))
+                }
+
+                MenuItem.EXPORT -> {
+                    docExportLauncher.launch(
+                        "aurora_store_${Build.BRAND}_${Build.DEVICE}.properties"
+                    )
+                }
             }
         }
     }
@@ -76,7 +133,8 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.title_spoof_manager),
-                onNavigateUp = onNavigateUp
+                onNavigateUp = onNavigateUp,
+                actions = { SetupMenu() }
             )
         }
     ) { paddingValues ->

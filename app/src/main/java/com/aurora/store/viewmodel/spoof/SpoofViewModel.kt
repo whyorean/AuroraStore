@@ -1,9 +1,12 @@
 package com.aurora.store.viewmodel.spoof
 
 import android.content.Context
+import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofProvider
+import com.aurora.store.util.PathUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,9 +17,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SpoofViewModel @Inject constructor(
-    val spoofProvider: SpoofProvider,
+    private val spoofProvider: SpoofProvider,
     @ApplicationContext private val context: Context
-): ViewModel() {
+) : ViewModel() {
+
+    private val TAG = SpoofViewModel::class.java.simpleName
 
     val defaultLocale: Locale = Locale.getDefault()
     val defaultProperties = NativeDeviceInfoProvider.getNativeDeviceProperties(context)
@@ -50,6 +55,28 @@ class SpoofViewModel @Inject constructor(
             spoofProvider.removeSpoofLocale()
         } else {
             spoofProvider.setSpoofLocale(locale)
+        }
+    }
+
+    fun importDeviceSpoof(uri: Uri) {
+        try {
+            context.contentResolver?.openInputStream(uri)?.use { input ->
+                PathUtil.getNewEmptySpoofConfig(context).outputStream().use {
+                    input.copyTo(it)
+                }
+            }
+            _availableDevices.value = spoofProvider.availableDeviceProperties
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to import device config", exception)
+        }
+    }
+
+    fun exportDeviceSpoof(uri: Uri) {
+        try {
+            NativeDeviceInfoProvider.getNativeDeviceProperties(context, true)
+                .store(context.contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to export device config", exception)
         }
     }
 }

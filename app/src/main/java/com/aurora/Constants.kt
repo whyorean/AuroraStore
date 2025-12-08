@@ -62,6 +62,8 @@ object Constants {
     const val TOP_CHART_CATEGORY = "TOP_CHART_CATEGORY"
 
     const val JSON_MIME_TYPE = "application/json"
+    const val PROPERTIES_IMPORT_MIME_TYPE = "application/octet-stream"
+    const val PROPERTIES_EXPORT_MIME_TYPE = "text/x-java-properties"
 
     // PACKAGE NAMES
     const val PACKAGE_NAME_GMS = "com.google.android.gms"
