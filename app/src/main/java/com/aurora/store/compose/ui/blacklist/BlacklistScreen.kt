@@ -66,11 +66,11 @@ fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hi
         isPackageBlacklisted = { pkgName -> pkgName in viewModel.blacklist },
         isPackageFiltered = { pkgInfo -> viewModel.isFiltered(pkgInfo) },
         onBlacklistImport = { uri ->
-            viewModel.importBlacklist(context, uri)
+            viewModel.importBlacklist(uri)
             context.toast(R.string.toast_black_import_success)
         },
         onBlacklistExport = { uri ->
-            viewModel.exportBlacklist(context, uri)
+            viewModel.exportBlacklist(uri)
             context.toast(R.string.toast_black_export_success)
         },
         onBlacklist = { packageName -> viewModel.blacklist(packageName) },

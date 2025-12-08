@@ -113,7 +113,7 @@ class BlacklistViewModel @Inject constructor(
         blacklistProvider.blacklist = mutableSetOf()
     }
 
-    fun importBlacklist(context: Context, uri: Uri) {
+    fun importBlacklist(uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openInputStream(uri)?.use {
@@ -135,7 +135,7 @@ class BlacklistViewModel @Inject constructor(
         }
     }
 
-    fun exportBlacklist(context: Context, uri: Uri) {
+    fun exportBlacklist(uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openOutputStream(uri)?.use {
