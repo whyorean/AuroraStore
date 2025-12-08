@@ -44,13 +44,13 @@ open class SpoofDeviceProvider(private val context: Context) {
 
     private val SUFFIX = ".properties"
 
-    val availableDeviceProperties: MutableList<Properties>
+    val availableDeviceProperties: List<Properties>
         get() {
             val propertiesList: MutableList<Properties> = ArrayList()
             propertiesList.addAll(spoofDevicesFromApk)
             propertiesList.addAll(spoofDevicesFromUser)
             propertiesList.sortBy { it.getProperty("UserReadableName") }
-            return propertiesList
+            return propertiesList.distinctBy { it.getProperty("Build.PRODUCT") }
         }
 
     private val spoofDevicesFromApk: List<Properties>

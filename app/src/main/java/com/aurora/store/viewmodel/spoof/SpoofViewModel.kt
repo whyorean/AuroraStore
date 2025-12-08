@@ -65,7 +65,7 @@ class SpoofViewModel @Inject constructor(
                     input.copyTo(it)
                 }
             }
-            _availableDevices.value = spoofProvider.availableDeviceProperties
+            _availableDevices.value = spoofProvider.availableSpoofDeviceProperties
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to import device config", exception)
         }
