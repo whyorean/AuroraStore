@@ -9,36 +9,28 @@ import android.text.format.DateUtils
 import android.text.format.Formatter
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.width
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SplitButtonDefaults
-import androidx.compose.material3.SplitButtonLayout
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -73,16 +65,16 @@ fun DownloadListItem(
     onClear: () -> Unit = {},
     onCancel: () -> Unit = {},
     onExport: () -> Unit = {},
-    onInstall: () -> Unit = {}
+    onInstall: () -> Unit = {},
+    isExpanded: Boolean = false
 ) {
-    val context = LocalContext.current
     val progress = "${download.progress}%"
     val speed = "${Formatter.formatShortFileSize(LocalContext.current, download.speed)}/s"
     val eta = getETAString(LocalContext.current, download.timeRemaining)
 
     val coroutineScope = rememberCoroutineScope()
     var isVisible by remember { mutableStateOf(true) }
-    var isExpanded by remember { mutableStateOf(false) }
+    var isExpanded by remember { mutableStateOf(isExpanded) }
 
     fun requestClear() {
         coroutineScope.launch {
@@ -93,12 +85,52 @@ fun DownloadListItem(
     }
 
     @Composable
-    fun SetupDownload() {
+    fun ExpandedMenu() {
+        val context = LocalContext.current
+        Box(modifier = modifier) {
+            IconButton(onClick = { isExpanded = true }) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_more_vert),
+                    contentDescription = stringResource(R.string.menu)
+                )
+            }
+            DropdownMenu(expanded = isExpanded, onDismissRequest = { isExpanded = false }) {
+                DropdownMenuItem(
+                    text = { Text(text = stringResource(R.string.action_cancel)) },
+                    onClick = onCancel,
+                    enabled = download.isRunning
+                )
+                DropdownMenuItem(
+                    text = { Text(text = stringResource(R.string.action_install)) },
+                    onClick = onInstall,
+                    enabled = download.canInstall(context)
+                )
+                DropdownMenuItem(
+                    text = { Text(text = stringResource(R.string.action_export)) },
+                    onClick = onExport,
+                    enabled = download.canInstall(context)
+                )
+                DropdownMenuItem(
+                    text = { Text(text = stringResource(R.string.action_clear)) },
+                    onClick = ::requestClear,
+                    enabled = !download.isRunning
+                )
+            }
+        }
+    }
+
+    AnimatedVisibility(visible = isVisible, exit = shrinkVertically() + fadeOut()) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = modifier
+                .fillMaxWidth()
+                .clickable(onClick = onClick)
+                .padding(
+                    horizontal = dimensionResource(R.dimen.padding_medium),
+                    vertical = dimensionResource(R.dimen.padding_small)
+                ),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Row(modifier = Modifier.weight(1F),) {
+            Row(modifier = Modifier.weight(1F)) {
                 AnimatedAppIcon(
                     modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
                     iconUrl = download.iconURL,
@@ -135,105 +167,7 @@ fun DownloadListItem(
                     }
                 }
             }
-
-            SplitButtonLayout(
-                leadingButton = {
-                    when {
-                        download.isRunning -> {
-                            SplitButtonDefaults.LeadingButton(onClick = onCancel) {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_cancel),
-                                    contentDescription = stringResource(R.string.action_cancel)
-                                )
-                            }
-                        }
-
-                        else -> {
-                            SplitButtonDefaults.LeadingButton(onClick = { requestClear() }) {
-                                Icon(
-                                    painter = painterResource(R.drawable.ic_delete_forever),
-                                    contentDescription = stringResource(R.string.action_clear)
-                                )
-                            }
-                        }
-                    }
-                },
-                trailingButton = {
-                    SplitButtonDefaults.TrailingButton(
-                        checked = isExpanded,
-                        onCheckedChange = { isExpanded = it },
-                        enabled = download.canInstall(context)
-                    ) {
-                        Icon(
-                            painter = when {
-                                isExpanded -> painterResource(R.drawable.ic_keyboard_arrow_up)
-                                else -> painterResource(R.drawable.ic_keyboard_arrow_down)
-                            },
-                            contentDescription = stringResource(R.string.expand)
-                        )
-                    }
-                }
-            )
-        }
-    }
-
-    @Composable
-    fun SetupExpandedMenu() {
-        AnimatedVisibility(
-            visible = isExpanded,
-            enter = slideInVertically() + expandVertically() + fadeIn(),
-            exit = slideOutVertically() + shrinkVertically() + fadeOut()
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                TextButton(onClick = onInstall, enabled = download.canInstall(context)) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_install),
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_xsmall)))
-                    Text(
-                        text = stringResource(R.string.action_install),
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
-
-                VerticalDivider(
-                    modifier = Modifier.height(dimensionResource(R.dimen.margin_large))
-                )
-
-                TextButton(onClick = onExport, enabled = download.canInstall(context)) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_file_copy),
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_xsmall)))
-                    Text(
-                        text = stringResource(R.string.action_export),
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
-            }
-        }
-    }
-
-    AnimatedVisibility(
-        visible = isVisible,
-        exit = shrinkVertically() + fadeOut()
-    ) {
-        Column(
-            modifier = modifier
-                .clickable(onClick = onClick)
-                .padding(
-                    horizontal = dimensionResource(R.dimen.padding_medium),
-                    vertical = dimensionResource(R.dimen.padding_small)
-                )
-        ) {
-            SetupDownload()
-            SetupExpandedMenu()
+            ExpandedMenu()
         }
     }
 }
@@ -242,6 +176,6 @@ fun DownloadListItem(
 @Composable
 private fun DownloadListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        DownloadListItem(download = Download.fromApp(app))
+        DownloadListItem(download = Download.fromApp(app), isExpanded = true)
     }
 }
