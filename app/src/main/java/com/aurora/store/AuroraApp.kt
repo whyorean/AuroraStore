@@ -24,6 +24,7 @@ import android.app.Application
 import android.content.Context
 import android.util.Log.DEBUG
 import android.util.Log.INFO
+import androidx.compose.material3.ComposeMaterial3Flags
 import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
@@ -78,6 +79,7 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
     }
 
     override fun onCreate() {
+        ComposeMaterial3Flags.isCheckboxStylingFixEnabled = true
         super.onCreate()
         // Set the app theme
         val themeStyle = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_STYLE)
