@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -36,14 +37,17 @@ import com.aurora.store.compose.composable.Logo
 import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.onboarding.navigation.OnboardingPage
+import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.viewmodel.onboarding.OnboardingViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
+    val context = LocalContext.current
     val pages = listOfNotNull(
         OnboardingPage.WELCOME,
-        OnboardingPage.PERMISSIONS
+        OnboardingPage.PERMISSIONS,
+        if (FlavouredUtil.promptMicroGInstall(context)) OnboardingPage.MICRO_G else null
     )
 
     ScreenContent(
@@ -171,6 +175,7 @@ private fun ScreenContent(
                     when (pages[page]) {
                         OnboardingPage.WELCOME -> WelcomePage()
                         OnboardingPage.PERMISSIONS -> PermissionsPage()
+                        OnboardingPage.MICRO_G -> MicroGPage()
                     }
                 }
             }

@@ -51,7 +51,7 @@ private fun PageContent(
         header = {
             Surface(modifier = Modifier.fillMaxWidth()) {
                 Column(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_normal))
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
                 ) {
                     Text(
                         text = stringResource(R.string.onboarding_title_permissions),

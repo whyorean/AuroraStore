@@ -5,52 +5,32 @@
 
 package com.aurora.store.viewmodel.onboarding
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.gplayapi.data.models.PlayFile
-import com.aurora.store.AuroraApp
-import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.room.suite.ExternalApk
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MicroGViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val downloadHelper: DownloadHelper
 ) : ViewModel() {
 
     companion object {
-        const val MICROG_DOWNLOAD_URL = "https://github.com/microg/GmsCore/releases/download"
-        const val MICROG_VERSION = "v0.3.6.244735"
-        const val GMS_VERSION_CODE = 244735012
-        const val COMPANION_VERSION_CODE = 84022612
+        private const val MICROG_DOWNLOAD_URL =
+            "https://github.com/microg/GmsCore/releases/download"
+        private const val MICROG_VERSION = "v0.3.6.244735"
+        private const val GMS_VERSION_CODE = 244735012
+        private const val COMPANION_VERSION_CODE = 84022612
     }
 
-    private val _packageNames = MutableSharedFlow<List<String>>()
-    val packageNames = _packageNames.asSharedFlow()
-
-    private val _checked = MutableStateFlow(false)
-    val checked: StateFlow<Boolean> = _checked
-
-    val download = combine(packageNames, downloadHelper.downloadsList) { apps, list ->
-        list.find { d -> apps.any { it == d.packageName } }
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
-
-    val microGServiceApk = ExternalApk(
+    private val microGServiceApk = ExternalApk(
         packageName = PACKAGE_NAME_GMS,
         versionCode = GMS_VERSION_CODE.toLong(),
         versionName = MICROG_VERSION,
@@ -67,7 +47,7 @@ class MicroGViewModel @Inject constructor(
         )
     )
 
-    val microGCompanionApk = ExternalApk(
+    private val microGCompanionApk = ExternalApk(
         packageName = PACKAGE_NAME_PLAY_STORE,
         versionCode = COMPANION_VERSION_CODE.toLong(),
         versionName = MICROG_VERSION,
@@ -84,41 +64,10 @@ class MicroGViewModel @Inject constructor(
         )
     )
 
-    fun markAgreement(checked: Boolean) {
-        viewModelScope.launch {
-            _checked.emit(checked)
-        }
-    }
-
     fun downloadMicroG() {
-        viewModelScope.launch {
-            try {
-                _packageNames.emit(listOf(PACKAGE_NAME_GMS))
-
-                if (microGServiceApk.isInstalled(context)) {
-                    AuroraApp.events.send(InstallerEvent.Installed(PACKAGE_NAME_GMS))
-                } else {
-                    downloadHelper.enqueueStandalone(microGServiceApk)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    fun downloadCompanion() {
-        viewModelScope.launch {
-            try {
-                _packageNames.emit(listOf(PACKAGE_NAME_PLAY_STORE))
-
-                if (microGCompanionApk.isInstalled(context)) {
-                    AuroraApp.events.send(InstallerEvent.Installed(PACKAGE_NAME_PLAY_STORE))
-                } else {
-                    downloadHelper.enqueueStandalone(microGCompanionApk)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        viewModelScope.launch(Dispatchers.IO) {
+            downloadHelper.enqueueStandalone(microGServiceApk)
+            downloadHelper.enqueueStandalone(microGCompanionApk)
         }
     }
 }

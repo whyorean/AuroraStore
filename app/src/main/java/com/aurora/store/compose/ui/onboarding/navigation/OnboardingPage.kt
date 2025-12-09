@@ -11,4 +11,5 @@ package com.aurora.store.compose.ui.onboarding.navigation
 enum class OnboardingPage {
     WELCOME,
     PERMISSIONS,
+    MICRO_G
 }
