@@ -83,6 +83,7 @@ import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
+import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
@@ -237,10 +238,17 @@ private fun ScreenContentApp(
         }
     }
 
-    fun onInstall(requestedApp: App = app) {
+    fun onInstall(requestedApp: App = app, ignoreMicroG: Boolean = false) {
         if (isPermittedToInstall(context, app)) {
-            onDownload(requestedApp)
-            onNavigateBack()
+            val shouldPromptMicroGInstall = app.requiresGMS()
+                    && FlavouredUtil.promptMicroGInstall(context)
+
+            if (shouldPromptMicroGInstall && !ignoreMicroG) {
+                showExtraPane(ExtraScreen.MicroG)
+            } else {
+                onDownload(requestedApp)
+                onNavigateBack()
+            }
         } else {
             val requiredPermissions = setOfNotNull(
                 PermissionType.INSTALL_UNKNOWN_APPS,
@@ -481,6 +489,12 @@ private fun ScreenContentApp(
                 packageName = app.packageName,
                 onNavigateUp = ::onNavigateBack,
                 onRequestInstall = { requestedApp -> onInstall(requestedApp) }
+            )
+
+            is ExtraScreen.MicroG -> MicroGScreen(
+                packageName = app.packageName,
+                onNavigateUp = ::onNavigateBack,
+                onIgnore = { onInstall(ignoreMicroG = true) }
             )
 
             is Screen.DevProfile -> DevProfileScreen(

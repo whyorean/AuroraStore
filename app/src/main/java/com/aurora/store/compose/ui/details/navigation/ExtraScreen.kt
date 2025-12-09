@@ -37,4 +37,7 @@ sealed class ExtraScreen : NavKey, Parcelable {
 
     @Serializable
     data object ManualDownload : ExtraScreen()
+
+    @Serializable
+    data object MicroG : ExtraScreen()
 }
