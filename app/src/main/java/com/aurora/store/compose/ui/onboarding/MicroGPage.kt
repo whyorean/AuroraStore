@@ -15,14 +15,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.MicroG
 import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 
 @Composable
@@ -34,6 +38,8 @@ fun MicroGPage(viewModel: MicroGViewModel = hiltViewModel()) {
 
 @Composable
 private fun ScreenContent(onInstall: () -> Unit = {}) {
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,7 +64,17 @@ private fun ScreenContent(onInstall: () -> Unit = {}) {
             )
         }
 
-        MicroG(onInstall = onInstall)
+        MicroG(
+            onInstall = {
+                when {
+                    PermissionProvider.isGranted(context, PermissionType.INSTALL_UNKNOWN_APPS) -> {
+                        onInstall()
+                    }
+
+                    else -> context.toast(R.string.permissions_denied)
+                }
+            }
+        )
     }
 
 }
