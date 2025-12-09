@@ -469,4 +469,5 @@
     <string name="microg_installer_desc">Segít megkerülni az App Integrity (csak telepítő) ellenőrzést</string>
     <string name="loading">Betöltés folyamatban</string>
     <string name="page">Oldal <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Kihagyás</string>
 </resources>

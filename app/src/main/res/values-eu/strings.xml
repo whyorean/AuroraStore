@@ -469,4 +469,5 @@
     <string name="microg_installer_desc">Aplikazioaren Osotasun egiaztapena (instalatzailearentzat bakarrik) saihesten laguntzen dizu</string>
     <string name="loading">Kargatzen ari da</string>
     <string name="page"><xliff:g id="zenbakia">%1$d</xliff:g> orrialdea</string>
+    <string name="action_skip">Saltatu</string>
 </resources>

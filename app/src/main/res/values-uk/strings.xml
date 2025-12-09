@@ -471,4 +471,5 @@
     <string name="microg_installer_desc">Допомагає обійти перевірку цілісності застосунків (тільки встановлювач)</string>
     <string name="loading">Триває завантаження</string>
     <string name="page">Сторінка <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Пропустити</string>
 </resources>

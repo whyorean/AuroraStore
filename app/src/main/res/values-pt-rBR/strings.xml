@@ -259,7 +259,7 @@
     <string name="server_maintenance">O servidor está fora do ar para manutenção</string>
     <string name="error">Ocorreu um erro!</string>
     <string name="update_available">atualização disponível</string>
-    <string name="search_hint">Buscar apps &amp; jogos</string>
+    <string name="search_hint">Buscar por apps &amp; jogos</string>
     <string name="expand">Expandir</string>
     <string name="notification_channel_updates">Notificações de atualização</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> atualização disponível</string>
@@ -470,4 +470,5 @@
     <string name="microg_installer_desc">Ajuda a burlar a checagem da Integridade do App (apenas o instalador)</string>
     <string name="loading">Carregando</string>
     <string name="page"><xliff:g id="number">%1$d</xliff:g>ª página</string>
+    <string name="action_skip">Pular</string>
 </resources>
