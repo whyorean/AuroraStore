@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package com.aurora.store.compose.ui.details.components
+package com.aurora.store.compose.ui.details.composable
 
 import android.text.format.Formatter
 import androidx.compose.foundation.layout.Arrangement
