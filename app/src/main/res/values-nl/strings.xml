@@ -463,4 +463,11 @@
         <item quantity="one">Recht vereist</item>
         <item quantity="other">Rechten vereist</item>
     </plurals>
+    <string name="page">Page <xliff:g id="nummer">%1$d</xliff:g></string>
+    <string name="installer_microg_misconfigured">MicroG-installateur kon de app niet installeren, waarschijnlijk vanwege een verkeerde configuratie.</string>
+    <string name="pref_install_mode_microg">MicroG-installateur</string>
+    <string name="action_skip">Overslaan</string>
+    <string name="microg_installer_subtitle">Vereist installatie van microG Companion app</string>
+    <string name="microg_installer_desc">Hiermee kun je de app-integriteitscontrole omzeilen (alleen voor installatieprogramma\'s)</string>
+    <string name="loading">Bezig met laden</string>
 </resources>
