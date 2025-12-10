@@ -33,8 +33,8 @@
     <string name="action_installing">Telepítés alatt</string>
     <string name="action_install">Telepítés</string>
     <string name="action_ignore">Elutasítás</string>
-    <string name="action_granted">Engedélyezve</string>
-    <string name="action_grant">Engedélyezése</string>
+    <string name="action_granted">Megadva</string>
+    <string name="action_grant">Megadás</string>
     <string name="action_get_local_apk">Alkalmazáscsomag mentése</string>
     <string name="action_finish">Kész</string>
     <string name="action_filter_rating">Értékelések</string>
@@ -100,7 +100,7 @@
     <string name="installer_status_failure_session">Nem sikerült létrehozni a munkamenetet</string>
     <string name="installer_status_failure_blocked">A telepítés blokkolva lett</string>
     <string name="installer_status_failure">A telepítés sikertelen</string>
-    <string name="installer_service_misconfigured">Először állítsa be az Aurora-szolgáltatásokat, és adjon meg minden engedélyt.</string>
+    <string name="installer_service_misconfigured">Először állítsa be az Aurora Szolgáltatásokat, és adjon meg minden engedélyt.</string>
     <string name="installer_service_unavailable">Telepítse az Aurora-szolgáltatások 1.0.9-es vagy magasabb verzióját, vagy változtasson a telepítőn.</string>
     <string name="installer_service_available">Az Aurora-szolgáltatások elérhetőek és telepítésre készek.</string>
     <string name="installer_root_unavailable">Nincs root hozzáférés. Adjon hozzáférést vagy változtasson a telepítési módszeren.</string>
@@ -258,7 +258,7 @@
     <string name="expand">Bővebben</string>
     <string name="search_hint">Alkalmazások és játékok keresése</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="permissions_denied">A szükséges engedélyek elutasításra kerültek. Adja meg őket a művelet folytatásához</string>
+    <string name="permissions_denied">A szükséges engedélyek elutasítva. Adja meg őket a művelet folytatásához</string>
     <string name="requesting_new_session">Új munkamenet kérése</string>
     <string name="server_maintenance">A kiszolgáló karbantartás miatt nem érhető el</string>
     <string name="notification_channel_updates">Frissítések értesítései</string>
@@ -409,7 +409,7 @@
     <string name="details_compatibility_status_compatible">Kompatibilis: Minden probléma nélkül működik</string>
     <string name="details_compatibility_status_limited">Korlátozott: Korlátozott funkciókkal működik</string>
     <string name="details_compatibility_status_unsupported">Nem támogatott: Nem működőképes</string>
-    <string name="details_compatibility_status_unknown">Ismeretlen: Még nem került ellenőrzésre</string>
+    <string name="details_compatibility_status_unknown">Ismeretlen: Még nem lett ellenőrizve</string>
     <string name="plexus_powered">A Plexus által működtetve</string>
     <string name="toast_black_import_failed">A feketelista importálása sikertelen!</string>
     <string name="filter_latest">Legújabb</string>
