@@ -25,9 +25,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
+import com.aurora.extensions.navigate
 import com.aurora.extensions.runOnUiThread
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_MICROG_AUTH
@@ -45,7 +47,7 @@ class NetworkPreference : BasePreferenceFragment() {
 
         findPreference<Preference>(Preferences.PREFERENCE_DISPENSER_URLS)?.apply {
             setOnPreferenceClickListener {
-                findNavController().navigate(R.id.dispenserFragment)
+                requireContext().navigate(Screen.Dispenser)
                 true
             }
         }

@@ -24,6 +24,7 @@ import com.aurora.store.compose.ui.blacklist.BlacklistScreen
 import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
+import com.aurora.store.compose.ui.dispenser.DispenserScreen
 import com.aurora.store.compose.ui.downloads.DownloadsScreen
 import com.aurora.store.compose.ui.favourite.FavouriteScreen
 import com.aurora.store.compose.ui.onboarding.OnboardingScreen
@@ -134,6 +135,10 @@ fun NavDisplay(startDestination: NavKey) {
                     onNavigateUp = ::onNavigateUp,
                     onNavigateToSplash = { activity?.startActivity(splashIntent) }
                 )
+            }
+
+            entry<Screen.Dispenser> {
+                DispenserScreen(onNavigateUp = ::onNavigateUp)
             }
         }
     )

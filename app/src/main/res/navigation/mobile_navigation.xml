@@ -189,15 +189,6 @@
         android:name="com.aurora.store.view.ui.preferences.installation.InstallerFragment"
         android:label="InstallerFragment"
         tools:layout="@layout/fragment_installer" />
-    <fragment
-        android:id="@+id/dispenserFragment"
-        android:name="com.aurora.store.view.ui.dispenser.DispenserFragment"
-        android:label="DispenserFragment"
-        tools:layout="@layout/fragment_dispenser">
-        <action
-            android:id="@+id/action_dispenserFragment_to_removeDispenserDialog"
-            app:destination="@id/removeDispenserDialog" />
-    </fragment>
     <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"
@@ -216,18 +207,6 @@
         android:id="@+id/moreDialogFragment"
         android:name="com.aurora.store.view.ui.commons.MoreDialogFragment"
         android:label="MoreDialogFragment" />
-    <dialog
-        android:id="@+id/inputDispenserDialog"
-        android:name="com.aurora.store.view.ui.dispenser.InputDispenserDialog"
-        android:label="@string/add_dispenser_title" />
-    <dialog
-        android:id="@+id/removeDispenserDialog"
-        android:name="com.aurora.store.view.ui.dispenser.RemoveDispenserDialog"
-        android:label="@string/remove_dispenser_title">
-        <argument
-            android:name="url"
-            app:argType="string" />
-    </dialog>
     <dialog
         android:id="@+id/proxyURLDialog"
         android:name="com.aurora.store.view.ui.preferences.network.ProxyURLDialog"

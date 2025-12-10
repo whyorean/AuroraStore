@@ -438,7 +438,7 @@
     <string name="add_dispenser_summary">Add a token dispenser to Aurora Store. Token dispensers provide account credentials to Aurora Store for logging in anonymously.</string>
     <string name="add_dispenser_error">Invalid URL</string>
     <string name="add_dispenser_hint">Dispenser URL</string>
-    <string name="remove_dispenser_title">Remove dispenser</string>
+    <string name="remove_dispenser_title">Remove dispenser?</string>
     <string name="remove_dispenser_summary">Do you wish to remove the dispenser \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Add</string>
     <string name="remove">Remove</string>
