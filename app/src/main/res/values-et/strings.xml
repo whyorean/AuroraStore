@@ -470,4 +470,5 @@
     <string name="loading">Laadimine on töös</string>
     <string name="page">Leht <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Jäta vahele</string>
+    <string name="force_restart_snack">Kas käivitad muudatuste jõustamiseks uuesti?</string>
 </resources>
