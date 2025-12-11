@@ -470,4 +470,5 @@
     <string name="microg_installer_subtitle">Vereist installatie van microG Companion app</string>
     <string name="microg_installer_desc">Hiermee kun je de app-integriteitscontrole omzeilen (alleen voor installatieprogramma\'s)</string>
     <string name="loading">Bezig met laden</string>
+    <string name="force_restart_snack">Herstarten om wijzigingen toe te passen?</string>
 </resources>
