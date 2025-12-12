@@ -432,4 +432,5 @@
         <item quantity="other">Lyp leje</item>
     </plurals>
     <string name="set">Ujdiseni</string>
+    <string name="force_restart_snack">Të riniset, që të aplikohen ndryshimet?</string>
 </resources>
