@@ -470,4 +470,5 @@
     <string name="loading">Kargatzen ari da</string>
     <string name="page"><xliff:g id="zenbakia">%1$d</xliff:g> orrialdea</string>
     <string name="action_skip">Saltatu</string>
+    <string name="force_restart_snack">Aldaketak aplikatzeko berrabiarazi?</string>
 </resources>
