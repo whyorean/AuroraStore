@@ -471,4 +471,5 @@
     <string name="loading">Carregando</string>
     <string name="page"><xliff:g id="number">%1$d</xliff:g>ª página</string>
     <string name="action_skip">Pular</string>
+    <string name="force_restart_snack">Reiniciar para aplicar mudanças?</string>
 </resources>
