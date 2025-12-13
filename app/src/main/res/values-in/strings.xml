@@ -468,4 +468,6 @@
     <string name="microg_installer_desc">Membantu Anda melewati pemeriksaan Integritas Aplikasi (hanya untuk pemasang)</string>
     <string name="loading">Pemuatan sedang berlangsung</string>
     <string name="page">Halaman <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Lewat</string>
+    <string name="force_restart_snack">Mulai ulang untuk menerapkan perubahan?</string>
 </resources>
