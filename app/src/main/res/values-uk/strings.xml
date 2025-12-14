@@ -472,4 +472,5 @@
     <string name="loading">Триває завантаження</string>
     <string name="page">Сторінка <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Пропустити</string>
+    <string name="force_restart_snack">Перезапустити, щоб застосувати зміни?</string>
 </resources>
