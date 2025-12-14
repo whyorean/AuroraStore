@@ -470,4 +470,6 @@
         <item quantity="other">Permisos requerits</item>
     </plurals>
     <string name="session_scrapped">L\'última sessió s\'ha descartat</string>
+    <string name="action_skip">Ometre</string>
+    <string name="force_restart_snack">Reiniciar per tal d\'aplicar els canvis?</string>
 </resources>
