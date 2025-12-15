@@ -357,7 +357,7 @@
     <string name="force_restart_title">Az Aurora Store újraindítása</string>
     <string name="add">Hozzáadás</string>
     <string name="add_dispenser_hint">Kiosztó hivatkozás</string>
-    <string name="remove_dispenser_title">Kiosztó eltávolítása</string>
+    <string name="remove_dispenser_title">Kiosztó eltávolítása?</string>
     <string name="remove_dispenser_summary">Szeretné eltávolítani a(z) „&lt;xliff:g id=”url„&gt;%1$s&lt;/xliff:g&gt;” kiosztót?</string>
     <string name="remove">Eltávolítás</string>
     <string name="no_dispensers_available">Nincsenek elérhető kiosztók</string>
