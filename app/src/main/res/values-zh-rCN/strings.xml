@@ -342,7 +342,7 @@
     <string name="add_dispenser_error">无效 URL</string>
     <string name="add_dispenser_hint">分发程序 URL</string>
     <string name="remove">删除</string>
-    <string name="remove_dispenser_title">删除分发程序</string>
+    <string name="remove_dispenser_title">删除分发程序?</string>
     <string name="add">添加</string>
     <string name="remove_dispenser_summary">你希望删除分发程序 \"<xliff:g id="url">%1$s</xliff:g>\"吗？</string>
     <string name="session_login">请登录你的 Google 账户</string>
