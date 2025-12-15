@@ -184,11 +184,6 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/installerFragment"
-        android:name="com.aurora.store.view.ui.preferences.installation.InstallerFragment"
-        android:label="InstallerFragment"
-        tools:layout="@layout/fragment_installer" />
     <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"

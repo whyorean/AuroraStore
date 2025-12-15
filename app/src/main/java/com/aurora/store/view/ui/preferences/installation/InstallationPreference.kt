@@ -28,8 +28,10 @@ import androidx.core.content.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.aurora.extensions.navigate
 import com.aurora.extensions.showDialog
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLATION_DEVICE_OWNER
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +44,7 @@ class InstallationPreference : PreferenceFragmentCompat() {
 
         findPreference<Preference>(PREFERENCE_INSTALLER_ID)?.apply {
             setOnPreferenceClickListener {
-                findNavController().navigate(R.id.installerFragment)
+                requireContext().navigate(Screen.Installer)
                 true
             }
         }
