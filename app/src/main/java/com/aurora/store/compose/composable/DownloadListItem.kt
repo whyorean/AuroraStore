@@ -49,7 +49,6 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.getETAString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Date
 
 /**
  * Composable to display details of a download in a list
@@ -157,10 +156,10 @@ fun DownloadListItem(
                             text = if (status in DownloadStatus.running) {
                                 "$progress • $speed • $eta"
                             } else {
-                                DateUtils.getRelativeTimeSpanString(
+                                DateUtils.formatDateTime(
+                                    LocalContext.current,
                                     download.downloadedAt,
-                                    Date().time,
-                                    DateUtils.DAY_IN_MILLIS
+                                    DateUtils.FORMAT_SHOW_DATE
                                 ).toString()
                             }
                         )
