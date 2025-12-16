@@ -343,7 +343,7 @@
     <string name="about_wiki_summary">Znajdź odpowiedzi na często zadawane pytania (FAQ), kroki rozwiązywania problemów i nie tylko</string>
     <string name="pref_dispenser_summary">Wyświetl i zarządzaj dostawcami tokenów do anonimowego logowania</string>
     <string name="no_dispensers_available">Brak dostępnych dostawców</string>
-    <string name="remove_dispenser_title">Usuń dostawcę</string>
+    <string name="remove_dispenser_title">Usunąć dostawcę?</string>
     <string name="add_dispenser_summary">Dodaj dostawcę tokenów do Aurora Store. Dostawcy tokenów udostępniają dane logowania do konta Aurora Store umożliwiając anonimowe logowanie.</string>
     <string name="session_login">Zaloguj się na swoje konto Google Play</string>
     <string name="about_aurora_store_title">O aplikacji Aurora Store</string>
