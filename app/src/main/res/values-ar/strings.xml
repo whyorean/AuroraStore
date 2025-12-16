@@ -337,7 +337,7 @@
     <string name="add_dispenser_title">إضافة موزع</string>
     <string name="add_dispenser_error">رابط غير صالح</string>
     <string name="add_dispenser_hint">عنوان URL للموزع</string>
-    <string name="remove_dispenser_title">قم بإزالة الموزع</string>
+    <string name="remove_dispenser_title">إزالة الموزع؟</string>
     <string name="about_wiki_summary">يمكنك العثور على إجابات للأسئلة المتداولة (الأسئلة الشائعة) وخطوات استكشاف الأخطاء وإصلاحها والمزيد</string>
     <string name="pref_dispenser_title">إدارة الموزعات</string>
     <string name="remove_dispenser_summary">هل ترغب في إزالة الموزع \"<xliff:g id="url">%1$s</xliff:g>\"؟</string>
