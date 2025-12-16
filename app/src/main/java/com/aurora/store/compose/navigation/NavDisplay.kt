@@ -27,6 +27,7 @@ import com.aurora.store.compose.ui.dev.DevProfileScreen
 import com.aurora.store.compose.ui.dispenser.DispenserScreen
 import com.aurora.store.compose.ui.downloads.DownloadsScreen
 import com.aurora.store.compose.ui.favourite.FavouriteScreen
+import com.aurora.store.compose.ui.installed.InstalledScreen
 import com.aurora.store.compose.ui.onboarding.OnboardingScreen
 import com.aurora.store.compose.ui.preferences.installation.InstallerScreen
 import com.aurora.store.compose.ui.search.SearchScreen
@@ -144,6 +145,15 @@ fun NavDisplay(startDestination: NavKey) {
 
             entry<Screen.Installer> {
                 InstallerScreen(onNavigateUp = ::onNavigateUp)
+            }
+
+            entry<Screen.Installed> {
+                InstalledScreen(
+                    onNavigateUp = ::onNavigateUp,
+                    onNavigateToAppDetails = { packageName ->
+                        backstack.add(Screen.AppDetails(packageName))
+                    }
+                )
             }
         }
     )

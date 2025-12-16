@@ -60,4 +60,7 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data object Installer : Screen()
+
+    @Serializable
+    data object Installed : Screen()
 }

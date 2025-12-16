@@ -20,36 +20,38 @@
 package com.aurora.store.viewmodel.all
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.BlacklistProvider
-import com.aurora.store.data.room.favourite.Favourite
-import com.aurora.store.data.room.favourite.ImportExport
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
 class InstalledViewModel @Inject constructor(
+    blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context,
-    private val blacklistProvider: BlacklistProvider,
-    private val json: Json,
     private val webAppDetailsHelper: WebAppDetailsHelper
 ) : ViewModel() {
 
     private val TAG = InstalledViewModel::class.java.simpleName
 
-    private val _apps = MutableStateFlow<List<App>?>(null)
+    private val packages = PackageUtil.getAllValidPackages(context)
+    private val blacklist = blacklistProvider.blacklist
+
+    private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
     val apps = _apps.asStateFlow()
 
     init {
@@ -57,37 +59,23 @@ class InstalledViewModel @Inject constructor(
     }
 
     fun fetchApps() {
-        viewModelScope.launch(Dispatchers.IO) {
+        val pagedPackages = packages
+            .filterNot { it.packageName in blacklist }
+            .chunked(20)
+
+        manualPager { page ->
             try {
-                val packages = PackageUtil.getAllValidPackages(context)
-                    .filterNot { blacklistProvider.isBlacklisted(it.packageName) }
-
-                // Divide the list of packages into chunks of 100 & fetch app details
-                // 50 is a safe number to avoid hitting the rate limit or package size limit
-                val chunkedPackages = packages.chunked(50)
-                val allApps = chunkedPackages.flatMap { chunk ->
-                    webAppDetailsHelper.getAppDetails(chunk.map { it.packageName })
-                }
-
-                _apps.emit(allApps)
+                webAppDetailsHelper.getAppDetails(
+                    pagedPackages[page].map { it.packageName }
+                )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps", exception)
+                emptyList()
             }
-        }
+        }.flow.distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .onEach { _apps.value = it }
+            .launchIn(viewModelScope)
     }
 
-    fun exportApps(context: Context, uri: Uri) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val favourites: List<Favourite> = apps.value!!.map { app ->
-                    Favourite.fromApp(app, Favourite.Mode.IMPORT)
-                }
-                context.contentResolver.openOutputStream(uri)?.use {
-                    it.write(json.encodeToString(ImportExport(favourites)).encodeToByteArray())
-                }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to installed apps", exception)
-            }
-        }
-    }
 }
