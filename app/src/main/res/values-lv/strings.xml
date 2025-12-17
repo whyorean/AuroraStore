@@ -342,7 +342,7 @@
     <string name="add_dispenser_summary">Pievienot pilnvaru izkliedētāju Aurora Store. Pilnvaru izkliedētāji nodrošina Aurora Store ar konta pieteikšanās informāciju, lai pieteiktos anonīmi.</string>
     <string name="add_dispenser_error">Nederīgs URL</string>
     <string name="add_dispenser_hint">Izkliedētāja URL</string>
-    <string name="remove_dispenser_title">Noņemt izkliedētāju</string>
+    <string name="remove_dispenser_title">Noņemt izkliedētāju?</string>
     <string name="about_aurora_store_subtitle">Uzzināt vairāk par Aurora Store</string>
     <string name="remove">Noņemt</string>
     <string name="about_aurora_store_summary">Aurora Store ļauj meklēt un lejupielādēt lietotnes no Google Play veikala. Ir pieejams lietotņu apraksts, ekrānuzņēmumi, atjauninājumi, citu lietotāju piebildes, kā arī var lejupielādēt ierīcē APK tieši no Google Play. Lai izmantotu Aurora Store, ir nepieciešams Google Play konts, un tajā ir jāpiesakās, kad Aurora Store tiek pirmo reizi atvērta un konfigurēta. \n \nAtšķirībā no ierasta lietotņu veikala, Aurora Store nepieder, nelicencē un neizplata lietotnes. Visas lietotnes un to aprakstam, ekrānuzņēmumiem un citam Aurora Store pieejamajam saturam tiek tieši piekļūts, lejupielādēts un/vai attēlots no Google Play. Aurora Store darbojas kā durvis vai pārlūks, ļaujot pieteikties savā Google Play kontā un atrast Google Play lietotnes. \n \nLūgums ņemt vērā, ka Aurora Store nav nekādas piekrišanas, pabalstītājdarbības vai autorizācijas no Google, Google Play, jebkuras ar Aurora Store starpniecību lejupielādētas lietotnes vai lietotņu izstrādātājiem; tāpat Aurora Store nav nekādas piederības, sadarbības vai sasaistes ar tiem.</string>
