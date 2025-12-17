@@ -335,7 +335,7 @@
     <string name="no_dispensers_available">No hay dispensadores disponibles</string>
     <string name="add_dispenser_title">Agregar dispensador</string>
     <string name="add_dispenser_error">URL invalida</string>
-    <string name="remove_dispenser_title">Eliminar dispensador</string>
+    <string name="remove_dispenser_title">Eliminar dispensador?</string>
     <string name="add">Agregar</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Encuentra respuestas a preguntas frecuentes (FAQ), pasos para la solución de problemas y más</string>
