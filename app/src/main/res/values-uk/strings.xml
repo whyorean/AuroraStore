@@ -336,7 +336,7 @@
     <string name="pref_dispenser_title">Керувати розподільниками</string>
     <string name="pref_dispenser_summary">Перегляд і керування розподільниками токенів для знеособленого входу</string>
     <string name="no_dispensers_available">Немає доступних розподільників</string>
-    <string name="remove_dispenser_title">Видалити розподільник?</string>
+    <string name="remove_dispenser_title">Вилучити розподільник?</string>
     <string name="add_dispenser_summary">Додайте розподільник токенів до Aurora Store. Розподільники токенів надають облікові дані Aurora Store для знеособленого входу.</string>
     <string name="add_dispenser_hint">URL-адреса розподільника</string>
     <string name="add_dispenser_error">Недійсна URL-адреса</string>
