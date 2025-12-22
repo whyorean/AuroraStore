@@ -15,6 +15,6 @@ enum class DownloadStatus(@StringRes val localized: Int) {
 
     companion object {
         val finished = listOf(FAILED, CANCELLED, COMPLETED)
-        val running = listOf(QUEUED, PURCHASING, DOWNLOADING)
+        val running = listOf(QUEUED, PURCHASING, DOWNLOADING, VERIFYING)
     }
 }

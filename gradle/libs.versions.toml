@@ -58,6 +58,7 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core" }
 androidx-adaptive-core = { module = "androidx.compose.material3.adaptive:adaptive", version.ref = "adaptive" }
 androidx-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout", version.ref = "adaptive" }
 androidx-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation", version.ref = "adaptive" }
+androidx-adaptive-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "adaptive" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 androidx-hilt-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel-compose", version.ref = "androidx-hilt" }
 androidx-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-junit" }

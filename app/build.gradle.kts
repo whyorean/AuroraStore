@@ -196,6 +196,7 @@ dependencies {
     implementation(libs.androidx.adaptive.core)
     implementation(libs.androidx.adaptive.navigation)
     implementation(libs.androidx.adaptive.layout)
+    implementation(libs.androidx.adaptive.suite)
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)

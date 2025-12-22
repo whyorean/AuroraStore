@@ -21,11 +21,22 @@ package com.aurora.store.viewmodel.all
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
 import com.aurora.store.data.room.update.Update
+import com.aurora.store.data.room.update.UpdateWithDownload
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -34,12 +45,19 @@ class UpdatesViewModel @Inject constructor(
     private val downloadHelper: DownloadHelper
 ) : ViewModel() {
 
-    var updateAllEnqueued: Boolean = false
+    private val _updates = MutableStateFlow<PagingData<UpdateWithDownload>>(PagingData.empty())
+    val updates = _updates.asStateFlow()
 
-    val downloadsList get() = downloadHelper.downloadsList
-    val updates get() = updateHelper.updates
+    val isCheckingUpdates = updateHelper.isCheckingUpdates
+    val hasOngoingUpdates = updateHelper.hasOngoingUpdates
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
-    val fetchingUpdates = updateHelper.isCheckingUpdates
+    val updatesCount = updateHelper.updatesCount
+        .stateIn(viewModelScope, SharingStarted.Eagerly, 0)
+
+    init {
+        getPagedUpdates()
+    }
 
     fun fetchUpdates() {
         updateHelper.checkUpdatesNow()
@@ -51,7 +69,7 @@ class UpdatesViewModel @Inject constructor(
 
     fun downloadAll() {
         viewModelScope.launch {
-            updates.value?.forEach { downloadHelper.enqueueUpdate(it) }
+            updateHelper.updates.value?.forEach { downloadHelper.enqueueUpdate(it) }
         }
     }
 
@@ -61,5 +79,13 @@ class UpdatesViewModel @Inject constructor(
 
     fun cancelAll() {
         viewModelScope.launch { downloadHelper.cancelAll(true) }
+    }
+
+    private fun getPagedUpdates() {
+        pager { updateHelper.pagedUpdates }.flow
+            .distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .onEach { _updates.value = it }
+            .launchIn(viewModelScope)
     }
 }

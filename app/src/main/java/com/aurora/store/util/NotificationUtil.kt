@@ -217,7 +217,7 @@ object NotificationUtil {
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("destinationId" to R.id.updatesFragment))
+            .setArguments(bundleOf("destinationId" to 2))
             .createPendingIntent()
 
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)

@@ -90,10 +90,16 @@ class UpdateHelper @Inject constructor(
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
 
+    val pagedUpdates get() = updateDao.pagedUpdates()
+
     val isCheckingUpdates = WorkManager.getInstance(context)
         .getWorkInfosForUniqueWorkFlow(EXPEDITED_UPDATE_WORKER)
         .map { list -> !list.all { it.state.isFinished } }
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), false)
+
+    val hasOngoingUpdates get() = updateDao.hasOngoingUpdates()
+
+    val updatesCount get() = updateDao.updatesCount()
 
     /**
      * Deletes invalid updates from database and starts observing events

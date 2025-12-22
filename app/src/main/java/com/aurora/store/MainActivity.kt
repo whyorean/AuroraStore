@@ -30,7 +30,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat.Type.displayCutout
 import androidx.core.view.WindowInsetsCompat.Type.ime
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -42,10 +41,8 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -57,8 +54,7 @@ class MainActivity : AppCompatActivity() {
     // TopLevelFragments
     private val topLevelFrags = listOf(
         R.id.appsContainerFragment,
-        R.id.gamesContainerFragment,
-        R.id.updatesFragment
+        R.id.gamesContainerFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,7 +110,6 @@ class MainActivity : AppCompatActivity() {
         // Handle quick exit from back actions
         val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {
             1 -> R.id.gamesContainerFragment
-            2 -> R.id.updatesFragment
             else -> R.id.appsContainerFragment
         }
         onBackPressedDispatcher.addCallback(this) {
@@ -138,16 +133,6 @@ class MainActivity : AppCompatActivity() {
                 when (navDestination.id) {
                     in topLevelFrags -> binding.navView.visibility = View.VISIBLE
                     else -> binding.navView.visibility = View.GONE
-                }
-            }
-        }
-
-        // Updates
-        lifecycleScope.launch {
-            viewModel.updateHelper.updates.collectLatest { list ->
-                binding.navView.getOrCreateBadge(R.id.updatesFragment).apply {
-                    isVisible = !list.isNullOrEmpty()
-                    number = list?.size ?: 0
                 }
             }
         }

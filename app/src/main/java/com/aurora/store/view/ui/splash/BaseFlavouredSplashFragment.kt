@@ -172,21 +172,9 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
     private fun navigateToDefaultTab() {
         val defaultDestination =
             Preferences.getInteger(requireContext(), PREFERENCE_DEFAULT_SELECTED_TAB)
-        val directions =
-            when (requireArguments().getInt("destinationId", defaultDestination)) {
-                R.id.updatesFragment -> {
-                    requireArguments().remove("destinationId")
-                    SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
-                }
-
-                1 -> SplashFragmentDirections.actionSplashFragmentToGamesContainerFragment()
-
-                2 -> SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
-
-                else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
-            }
+        // TODO: Handle default destination
         requireActivity().viewModelStore.clear() // Clear ViewModelStore to avoid bugs with logout
-        findNavController().navigate(directions)
+        requireContext().navigate(Screen.Home)
     }
 
     private fun requestAuthTokenForGoogle(accountName: String, oldToken: String? = null) {
