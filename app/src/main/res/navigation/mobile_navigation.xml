@@ -52,11 +52,6 @@
         android:label="@string/title_games"
         tools:layout="@layout/fragment_apps_games" />
     <fragment
-        android:id="@+id/updatesFragment"
-        android:name="com.aurora.store.view.ui.updates.UpdatesFragment"
-        android:label="@string/title_updates"
-        tools:layout="@layout/fragment_updates" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"
@@ -159,12 +154,6 @@
         <action
             android:id="@+id/action_splashFragment_to_gamesContainerFragment"
             app:destination="@id/gamesContainerFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/mobile_navigation"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_splashFragment_to_updatesFragment"
-            app:destination="@id/updatesFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
