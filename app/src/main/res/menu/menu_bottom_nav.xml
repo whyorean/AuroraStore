@@ -29,9 +29,4 @@
         android:icon="@drawable/ic_games"
         android:title="@string/title_games" />
 
-    <item
-        android:id="@id/updatesFragment"
-        android:icon="@drawable/ic_updates"
-        android:title="@string/title_updates" />
-
 </menu>

@@ -214,7 +214,7 @@ object NotificationUtil {
 
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
         val arguments = Bundle().apply {
-            putInt("destinationId", R.id.updatesFragment)
+            putInt("destinationId", 2)
         }
 
         val contentIntent = NavDeepLinkBuilder(context)
