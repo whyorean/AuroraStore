@@ -301,7 +301,7 @@ class DownloadWorker @AssistedInject constructor(
                     headers["Range"] = "bytes=${tmpFile.length()}-"
                 }
 
-                okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
+                okHttpClient.call(gFile.url, headers).body.byteStream().use { input ->
                     FileOutputStream(tmpFile, !isNewFile).use {
                         input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
                     }
