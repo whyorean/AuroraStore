@@ -27,17 +27,27 @@ import com.aurora.store.compose.composable.MicroG
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider
+import com.aurora.store.viewmodel.onboarding.MicroGUIState
 import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 
 @Composable
-fun MicroGPage(viewModel: MicroGViewModel = hiltViewModel()) {
+fun MicroGPage(
+    onCheckedChange: (Boolean) -> Unit = {},
+    viewModel: MicroGViewModel = hiltViewModel(),
+) {
     ScreenContent(
-        onInstall = { viewModel.downloadMicroG() }
+        uiState = viewModel.uiState,
+        onInstall = { viewModel.downloadMicroG() },
+        onMicrogTOCChange = onCheckedChange,
     )
 }
 
 @Composable
-private fun ScreenContent(onInstall: () -> Unit = {}) {
+private fun ScreenContent(
+    uiState: MicroGUIState,
+    onInstall: () -> Unit = {},
+    onMicrogTOCChange: (Boolean) -> Unit = {}
+) {
     val context = LocalContext.current
 
     Column(
@@ -71,9 +81,13 @@ private fun ScreenContent(onInstall: () -> Unit = {}) {
                         onInstall()
                     }
 
-                    else -> context.toast(R.string.permissions_denied)
+                    else                                                                       -> context.toast(
+                        R.string.permissions_denied
+                    )
                 }
-            }
+            },
+            uiState = uiState,
+            onCheckedChange = onMicrogTOCChange
         )
     }
 
@@ -83,6 +97,8 @@ private fun ScreenContent(onInstall: () -> Unit = {}) {
 @Composable
 private fun MicroGPagePreview() {
     PreviewTemplate {
-        ScreenContent()
+        ScreenContent(
+            uiState = MicroGUIState(),
+        )
     }
 }

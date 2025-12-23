@@ -25,7 +25,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -37,22 +36,25 @@ import com.aurora.store.compose.composable.Logo
 import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.onboarding.navigation.OnboardingPage
-import com.aurora.store.util.FlavouredUtil
+import com.aurora.store.viewmodel.onboarding.OnboardingUiState
 import com.aurora.store.viewmodel.onboarding.OnboardingViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
-    val context = LocalContext.current
     val pages = listOfNotNull(
         OnboardingPage.WELCOME,
         OnboardingPage.PERMISSIONS,
-        if (FlavouredUtil.promptMicroGInstall(context)) OnboardingPage.MICRO_G else null
+        if (viewModel.isMicroGPromptRequired) OnboardingPage.MICRO_G else null
     )
 
     ScreenContent(
         pages = pages,
-        onFinishOnboarding = { viewModel.finishOnboarding() }
+        onFinishOnboarding = {
+            viewModel.finishOnboarding()
+        },
+        uiState = viewModel.uiState,
+        onCheckedChange = viewModel::onMicroGCheckedChange
     )
 }
 
@@ -60,6 +62,8 @@ fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
 private fun ScreenContent(
     pages: List<OnboardingPage> = emptyList(),
     onFinishOnboarding: () -> Unit = {},
+    uiState: OnboardingUiState,
+    onCheckedChange: (Boolean) -> Unit,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val pagerState = rememberPagerState { pages.size }
@@ -70,10 +74,10 @@ private fun ScreenContent(
     }
 
     @Composable
-    fun SetupActions() {
+    fun SetupActions(uiState: OnboardingUiState) {
         val horizontalButtonPadding = when {
             windowAdaptiveInfo.isWindowCompact -> dimensionResource(R.dimen.padding_medium)
-            else -> dimensionResource(R.dimen.padding_xlarge)
+            else                               -> dimensionResource(R.dimen.padding_xlarge)
         }
 
         Row(
@@ -91,14 +95,14 @@ private fun ScreenContent(
         ) {
             val buttonWidthModifier = when {
                 windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
-                else -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
+                else                               -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
             }
 
             TextButton(
                 modifier = buttonWidthModifier,
                 onClick = {
                     when (pagerState.currentPage) {
-                        0 -> onFinishOnboarding()
+                        0    -> onFinishOnboarding()
                         else -> {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage - 1)
@@ -109,7 +113,7 @@ private fun ScreenContent(
             ) {
                 Text(
                     text = when (pagerState.currentPage) {
-                        0 -> stringResource(R.string.action_skip)
+                        0    -> stringResource(R.string.action_skip)
                         else -> stringResource(R.string.action_back)
                     },
                     maxLines = 1,
@@ -119,10 +123,11 @@ private fun ScreenContent(
 
             Button(
                 modifier = buttonWidthModifier,
+                enabled = !isFinalPage() || (!uiState.isMicroBundleChecked || uiState.isMicroGBundleInstalled),
                 onClick = {
                     when {
                         isFinalPage() -> onFinishOnboarding()
-                        else -> {
+                        else          -> {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage + 1)
                             }
@@ -133,7 +138,7 @@ private fun ScreenContent(
                 Text(
                     text = when {
                         isFinalPage() -> stringResource(R.string.action_finish)
-                        else -> stringResource(R.string.action_next)
+                        else          -> stringResource(R.string.action_next)
                     },
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -173,14 +178,14 @@ private fun ScreenContent(
                     verticalAlignment = Alignment.Top
                 ) { page ->
                     when (pages[page]) {
-                        OnboardingPage.WELCOME -> WelcomePage()
+                        OnboardingPage.WELCOME     -> WelcomePage()
                         OnboardingPage.PERMISSIONS -> PermissionsPage()
-                        OnboardingPage.MICRO_G -> MicroGPage()
+                        OnboardingPage.MICRO_G     -> MicroGPage(onCheckedChange = onCheckedChange)
                     }
                 }
             }
 
-            SetupActions()
+            SetupActions(uiState)
         }
     }
 }
@@ -190,7 +195,9 @@ private fun ScreenContent(
 private fun OnboardingScreenPreview() {
     PreviewTemplate {
         ScreenContent(
-            pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS)
+            pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS),
+            uiState = OnboardingUiState(),
+            onCheckedChange = {}
         )
     }
 }

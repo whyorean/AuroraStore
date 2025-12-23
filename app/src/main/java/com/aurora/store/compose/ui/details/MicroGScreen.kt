@@ -42,6 +42,7 @@ import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.aurora.store.viewmodel.onboarding.MicroGUIState
 import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 
 @Composable
@@ -61,6 +62,7 @@ fun MicroGScreen(
 
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
+        uiState = viewModel.uiState,
         onNavigateUp = onNavigateUp,
         onInstall = { viewModel.downloadMicroG() },
         onIgnore = onIgnore
@@ -70,6 +72,7 @@ fun MicroGScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
+    uiState: MicroGUIState = MicroGUIState(),
     onNavigateUp: () -> Unit = {},
     onInstall: () -> Unit = {},
     onIgnore: () -> Unit = {},
@@ -104,7 +107,8 @@ private fun ScreenContent(
 
                         else -> context.toast(R.string.permissions_denied)
                     }
-                }
+                },
+                uiState = uiState
             )
 
             Row(
