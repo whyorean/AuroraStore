@@ -340,7 +340,7 @@
     <string name="session_login">Connectez-vous à votre compte Google Play</string>
     <string name="add_dispenser_summary">Ajouter un distributeur de jetons à Aurora Store. Les distributeurs de jetons fournissent des identifiants de compte à Aurora Store pour les connexions anonymes.</string>
     <string name="add_dispenser_hint">URL du distributeur de jetons</string>
-    <string name="remove_dispenser_title">Supprimer le distributeur de jetons</string>
+    <string name="remove_dispenser_title">Supprimer le distributeur de jetons ?</string>
     <string name="add">Ajouter</string>
     <string name="pref_dispenser_summary">Consulter et gérer les distributeurs de jetons pour les connexions anonymes</string>
     <string name="no_dispensers_available">Aucun distributeur de jetons n’est proposé</string>
@@ -471,4 +471,5 @@
     <string name="loading">En cours de chargement</string>
     <string name="page">Page <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Ignorer</string>
+    <string name="force_restart_snack">Redémarrer pour appliquer les changements ?</string>
 </resources>

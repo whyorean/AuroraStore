@@ -320,7 +320,7 @@
     <string name="privacy_policy_title">Pribatutasun-politika</string>
     <string name="about_aurora_store_subtitle">Aurora Store-i buruz gehiago jakin</string>
     <string name="add_dispenser_hint">URL helbide banagailua</string>
-    <string name="remove_dispenser_title">Banagailua ezabatu</string>
+    <string name="remove_dispenser_title">Banagailua ezabatu?</string>
     <string name="export_app_summary_fail">Ezin izan da esportatu aplikazio-sorta</string>
     <string name="status_downloading">Deskargatzen</string>
     <string name="status_failed">Huts egin du</string>
@@ -470,4 +470,5 @@
     <string name="loading">Kargatzen ari da</string>
     <string name="page"><xliff:g id="zenbakia">%1$d</xliff:g> orrialdea</string>
     <string name="action_skip">Saltatu</string>
+    <string name="force_restart_snack">Aldaketak aplikatzeko berrabiarazi?</string>
 </resources>

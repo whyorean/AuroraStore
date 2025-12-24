@@ -336,7 +336,7 @@
     <string name="add_dispenser_title">Adicionar distribuidor</string>
     <string name="pref_dispenser_title">Gerenciar os distribuidores</string>
     <string name="add_dispenser_error">URL inválida</string>
-    <string name="remove_dispenser_title">Remover distribuidor</string>
+    <string name="remove_dispenser_title">Remover distribuidor?</string>
     <string name="remove">Remover</string>
     <string name="about_wiki_summary">Encontre respostas para perguntas frequentes (FAQ), soluções para problemas comuns e mais</string>
     <string name="pref_dispenser_summary">Visualize e gerencie os distribuidores de tokens de contas anônimas</string>
@@ -471,4 +471,5 @@
     <string name="loading">Carregando</string>
     <string name="page"><xliff:g id="number">%1$d</xliff:g>ª página</string>
     <string name="action_skip">Pular</string>
+    <string name="force_restart_snack">Reiniciar para aplicar mudanças?</string>
 </resources>

@@ -463,4 +463,12 @@
         <item quantity="one">Lupa tarvitaan</item>
         <item quantity="other">Lupia tarvitaan</item>
     </plurals>
+    <string name="installer_microg_misconfigured">MicroG-asentaja epäonnistui sovelluksen asennuksessa, todennäköisesti konfiguraatiovirheen johdosta.</string>
+    <string name="pref_install_mode_microg">MicroG-asentaja</string>
+    <string name="action_skip">Ohita</string>
+    <string name="microg_installer_subtitle">Vaatii microG-liitännäissovelluksen olevan asennettuna</string>
+    <string name="microg_installer_desc">Auttaa App Integrity -tarkistuksen ohittamisessa (vain asentajan osalta)</string>
+    <string name="force_restart_snack">Uudelleenkäynnistä muutoksien käyttöönottamiseksi?</string>
+    <string name="loading">Lataus meneillään</string>
+    <string name="page">Sivu <xliff:g id="number">%1$d</xliff:g></string>
 </resources>

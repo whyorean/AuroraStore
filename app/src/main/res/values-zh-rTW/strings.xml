@@ -417,7 +417,7 @@
     <string name="add_dispenser_title">新增供應者</string>
     <string name="add_dispenser_summary">於 Aurora Store 中新增供應者。權杖供應者將提供帳號證明於 Aurora Store 以匿名地登入。</string>
     <string name="add_dispenser_hint">供應者網址</string>
-    <string name="remove_dispenser_title">移除供應者</string>
+    <string name="remove_dispenser_title">移除供應者？</string>
     <string name="remove_dispenser_summary">是否移除供應者「<xliff:g id="url">%1$s</xliff:g>」？</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> 個權限</string>
     <string name="action_unarchive">解壓縮</string>
@@ -469,4 +469,5 @@
     <string name="loading">正在加載</string>
     <string name="page">頁 <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">跳過</string>
+    <string name="force_restart_snack">重新啟動以套用變更？</string>
 </resources>

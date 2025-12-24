@@ -344,7 +344,7 @@
     <string name="about_wiki_summary">Antworten auf häufig gestellte Fragen (FAQs), Maßnahmen zur Fehlerbehebung und mehr finden</string>
     <string name="add_dispenser_title">Dispenser hinzufügen</string>
     <string name="add_dispenser_summary">Hinzufügen eines Token-Dispensers zum Aurora Store. Token-Dispenser stellen dem Aurora Store Kontodaten zur Verfügung, um sich anonym anzumelden.</string>
-    <string name="remove_dispenser_title">Dispenser entfernen</string>
+    <string name="remove_dispenser_title">Dispenser entfernen?</string>
     <string name="about_aurora_store_title">Über Aurora Store</string>
     <string name="about_aurora_store_subtitle">Erfahre mehr über Aurora Store</string>
     <string name="about_aurora_store_summary">Der Aurora Store ermöglicht es dir, Apps im offiziellen Google Play Store zu suchen und herunterzuladen. Du kannst App-Beschreibungen, Screenshots, Updates und Kommentare anderer Nutzer einsehen und die APK direkt von Google Play auf dein Gerät herunterladen. Um den Aurora Store nutzen zu können, musst du ein Google-Play-Konto haben und dich dort anmelden, wenn du den Aurora Store zum ersten Mal öffnest und konfigurierst. \n \nAnders als ein herkömmlicher App-Store besitzt, lizenziert oder vertreibt Aurora Store keine Apps. Alle Apps, App-Beschreibungen, Screenshots und andere Inhalte im Aurora Store werden direkt von Google Play abgerufen, heruntergeladen und/oder angezeigt. Der Aurora Store funktioniert genau wie eine Tür oder ein Browser, mit dem du dich in dein Google-Play-Konto einloggen und die Apps von Google Play finden kannst. \n \nBitte beachte, dass der Aurora Store weder von Google, Google Play, den über den Aurora Store heruntergeladenen Apps oder den App-Entwicklern genehmigt, gesponsert oder autorisiert wurde, noch steht der Aurora Store in irgendeiner Verbindung mit ihnen.</string>
@@ -470,4 +470,5 @@
     <string name="loading">Ladevorgang läuft</string>
     <string name="page">Seite <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Überspringen</string>
+    <string name="force_restart_snack">Neu starten, um Änderungen zu übernehmen?</string>
 </resources>

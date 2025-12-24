@@ -5,8 +5,8 @@
     <string name="details_description">Leírás</string>
     <string name="details_dependencies">Dependenciák</string>
     <string name="details_contains_ads">Hirdetéseket tartalmaz</string>
-    <string name="details_changelog_unavailable">Nincs változásnapló mellékelve</string>
-    <string name="details_changelog">Változásnapló</string>
+    <string name="details_changelog_unavailable">A változáslista nincs megadva</string>
+    <string name="details_changelog">Változáslista</string>
     <string name="details_beta_delay">A jelentkezés eltarthat egy ideig, később ellenőrizheti az állapotot.</string>
     <string name="details_beta_description">Új funkciókkal és hibákkal találkozhat mindenki más előtt. Adjon visszajelzést a fejlesztőknek, hogy segítse őket a fejlesztésben.</string>
     <string name="details_beta">Béta program</string>
@@ -33,8 +33,8 @@
     <string name="action_installing">Telepítés alatt</string>
     <string name="action_install">Telepítés</string>
     <string name="action_ignore">Elutasítás</string>
-    <string name="action_granted">Engedélyezve</string>
-    <string name="action_grant">Engedélyezése</string>
+    <string name="action_granted">Megadva</string>
+    <string name="action_grant">Megadás</string>
     <string name="action_get_local_apk">Alkalmazáscsomag mentése</string>
     <string name="action_finish">Kész</string>
     <string name="action_filter_rating">Értékelések</string>
@@ -58,8 +58,8 @@
     <string name="account_login_using">Bejelentkezés ezzel</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonim</string>
-    <string name="about_xda_summary">Tekintse meg az Aurora Store XDA fórumrészt a megbeszélésekért vagy javaslatokért.</string>
-    <string name="about_xda">XDA fórum</string>
+    <string name="about_xda_summary">Tekintse meg az Aurora Store XDA-fórumát megbeszélésekhez vagy javaslatokhoz.</string>
+    <string name="about_xda">XDA-fórum</string>
     <string name="about_telegram_summary">Csatlakozzon az Aurora Támogatás csoporthoz beszélgetéshez és javaslatokért.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_paypal_summary">PayPal adományozás</string>
@@ -97,10 +97,10 @@
     <string name="installer_status_failure_invalid">Érvénytelen vagy sérült APK</string>
     <string name="installer_status_failure_incompatible">Nem kompatibilis alkalmazás</string>
     <string name="installer_status_failure_conflict">Ütköző csomag található</string>
-    <string name="installer_status_failure_session">Nem sikerült létrehozni a munkamenetet</string>
+    <string name="installer_status_failure_session">Munkamenet létrehozása sikertelen</string>
     <string name="installer_status_failure_blocked">A telepítés blokkolva lett</string>
     <string name="installer_status_failure">A telepítés sikertelen</string>
-    <string name="installer_service_misconfigured">Először állítsa be az Aurora-szolgáltatásokat, és adjon meg minden engedélyt.</string>
+    <string name="installer_service_misconfigured">Először állítsa be az Aurora Szolgáltatásokat, és adjon meg minden engedélyt.</string>
     <string name="installer_service_unavailable">Telepítse az Aurora-szolgáltatások 1.0.9-es vagy magasabb verzióját, vagy változtasson a telepítőn.</string>
     <string name="installer_service_available">Az Aurora-szolgáltatások elérhetőek és telepítésre készek.</string>
     <string name="installer_root_unavailable">Nincs root hozzáférés. Adjon hozzáférést vagy változtasson a telepítési módszeren.</string>
@@ -138,7 +138,7 @@
     <string name="details_no_permission">Nincsenek engedélyek</string>
     <string name="details_no_dependencies">Nincsenek függőségek</string>
     <string name="details_no_ads">Nincs hirdetés</string>
-    <string name="details_more_about_app">További alkalmazás információ</string>
+    <string name="details_more_about_app">További alkalmazásinformáció</string>
     <string name="details_gsf_dependent">GSF szükséges</string>
     <string name="details_free">Ingyenes</string>
     <string name="details_dev_website">Honlap</string>
@@ -146,14 +146,14 @@
     <string name="toast_developer_setting_failed">Az eszköze beállításaiban kapcsolja be a fejlesztői beállításokat, hogy megnyithassa őket.</string>
     <string name="pref_install_mode_session">Munkamenet-alapú telepítő</string>
     <string name="toast_purchase_blocked">Az alkalmazásvásárlások nem érhetőek el a névtelen fiókok használata során.</string>
-    <string name="toast_spoof_applied">Eszközálcázás sikeresen alkalmazva.</string>
+    <string name="toast_spoof_applied">Eszközszimuláció sikeresen alkalmazva.</string>
     <string name="toast_permission_granted">Engedély megadva</string>
     <string name="toast_clipboard_copied">Vágólapra másolva</string>
     <string name="toast_apk_whitelisted">Engedélyezési listás</string>
     <string name="toast_apk_blacklisted">Tiltólistás</string>
     <string name="toast_anonymous_restriction">Nem elérhető anonim fiókoknál</string>
     <string name="title_updates">Frissítések</string>
-    <string name="title_spoof_manager">Álcakezelő</string>
+    <string name="title_spoof_manager">Eszközszimuláció-kezelő</string>
     <string name="title_settings">Beállítások</string>
     <string name="title_purchase_history">Vásárlási előzmények</string>
     <string name="title_no_network">Nincs hálózat</string>
@@ -181,9 +181,9 @@
     <string name="tab_editor_choice">Szerkesztők ajánlata</string>
     <string name="tab_categories">Kategóriák</string>
     <string name="insecure_anonymous_apply">A módosítások végrehajtásához jelentkezzen be és indítsa újra az alkalmazást.</string>
-    <string name="spoof_apply">Az álca alkalmazásához jelentkezzen be újra</string>
+    <string name="spoof_apply">Az eszközszimuláció alkalmazásához jelentkezzen be újra</string>
     <string name="purchase_session_expired">A munkamenet lejárt, az új munkamenethez jelentkezzen be újra.</string>
-    <string name="purchase_no_file">Nem sikerült letölteni a fájlokat</string>
+    <string name="purchase_no_file">Fájlok lekérése sikertelen</string>
     <string name="purchase_not_found">Az alkalmazás nem található</string>
     <string name="purchase_unsupported">Az alkalmazás nem támogatott</string>
     <string name="purchase_invalid">Az alkalmazás nincs megvásárolva</string>
@@ -251,26 +251,26 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> frissítés érhető el</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> és <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> és <xliff:g id="apps_count">%4$d</xliff:g> további</string>
-    <string name="failed_to_fetch_report">Nem sikerült lekérni az adatvédelmi jelentést</string>
+    <string name="failed_to_fetch_report">Az adatvédelmi jelentés lekérése sikertelen</string>
     <string name="access_denied_using_vpn">Hozzáférés megtagadva! VPN-t vagy Tort használ?</string>
     <string name="bad_request">Belső hiba! Próbálja újra később</string>
     <string name="login_rate_limited">Korlátozva lett</string>
     <string name="expand">Bővebben</string>
     <string name="search_hint">Alkalmazások és játékok keresése</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="permissions_denied">A szükséges engedélyek elutasításra kerültek. Adja meg őket a művelet folytatásához</string>
+    <string name="permissions_denied">A szükséges engedélyek elutasítva. Adja meg őket a művelet folytatásához</string>
     <string name="requesting_new_session">Új munkamenet kérése</string>
     <string name="server_maintenance">A kiszolgáló karbantartás miatt nem érhető el</string>
     <string name="notification_channel_updates">Frissítések értesítései</string>
     <string name="installer_shizuku_unavailable">A Shizuku nincs telepítve vagy megfelelően beállítva.</string>
     <string name="download_progress">Letöltés alatt • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
-    <string name="session_login_failed_google">Nem sikerült bejelentkezni a Google-lal</string>
+    <string name="session_login_failed_google">A Google-fiókkal való bejelentkezés sikertelen</string>
     <string name="update_available">frissítés érhető el</string>
     <string name="server_unreachable">A kiszolgáló nem érhető el</string>
     <string name="title_search_suggestion">Keresési javaslat</string>
     <string name="error">Hiba lépett fel!</string>
     <string name="downloading_dep">További fájlok letöltése a következőhöz: <xliff:g id="app">%1$s</xliff:g></string>
-    <string name="failed_generating_session">Nem sikerült létrehozni a munkamenetet, hibakód: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_generating_session">Munkamenet létrehozása sikertelen, hiba: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Értesítések küldése a telepítések állapotáról</string>
     <string name="pref_install_mode_shizuku">Shizuku telepítő</string>
     <string name="session_good">Azta! Minden rendben.</string>
@@ -278,7 +278,7 @@
     <string name="app_links_desc">Az Aurora Store által támogatott hivatkozások megnyitásának engedélyezése</string>
     <string name="check_connectivity">Ellenőrizze az internetkapcsolatot</string>
     <string name="google_play_store_desc">Google Play, avagy Google Play Áruház, korábban Android Market.</string>
-    <string name="failed_to_generate_session">Nem sikerült generálni munkamenetet</string>
+    <string name="failed_to_generate_session">Munkamenet létehozása sikertelen</string>
     <string name="verifying_new_session">Új munkamenet ellenőrzése</string>
     <string name="app_language">Alkalmazás nyelve</string>
     <string name="app_links_title">Alkalmazáshivatkozások</string>
@@ -357,7 +357,7 @@
     <string name="force_restart_title">Az Aurora Store újraindítása</string>
     <string name="add">Hozzáadás</string>
     <string name="add_dispenser_hint">Kiosztó hivatkozás</string>
-    <string name="remove_dispenser_title">Kiosztó eltávolítása</string>
+    <string name="remove_dispenser_title">Kiosztó eltávolítása?</string>
     <string name="remove_dispenser_summary">Szeretné eltávolítani a(z) „&lt;xliff:g id=”url„&gt;%1$s&lt;/xliff:g&gt;” kiosztót?</string>
     <string name="remove">Eltávolítás</string>
     <string name="no_dispensers_available">Nincsenek elérhető kiosztók</string>
@@ -371,7 +371,7 @@
     <string name="check_updates">Frissítések Ellenőrzése</string>
     <string name="toast_fav_import_success">Kedvencek importálva!</string>
     <string name="export_app_summary_success">Sikeresen exportált alkalmazáscsomag</string>
-    <string name="export_app_summary_fail">Nem sikerült az alkalmazáscsomag exportálása</string>
+    <string name="export_app_summary_fail">Az alkalmazáscsomag exportálása sikertelen</string>
     <string name="action_logout_confirmation_title">Kijelentkezik?</string>
     <string name="force_restart_summary">Az Aurora Store-t újra kell indítani az újonnan módosított beállítások alkalmazásához</string>
     <string name="notification_channel_export">Alkalmazás exportálás értesítés</string>
@@ -409,24 +409,24 @@
     <string name="details_compatibility_status_compatible">Kompatibilis: Minden probléma nélkül működik</string>
     <string name="details_compatibility_status_limited">Korlátozott: Korlátozott funkciókkal működik</string>
     <string name="details_compatibility_status_unsupported">Nem támogatott: Nem működőképes</string>
-    <string name="details_compatibility_status_unknown">Ismeretlen: Még nem került ellenőrzésre</string>
+    <string name="details_compatibility_status_unknown">Ismeretlen: Még nem lett ellenőrizve</string>
     <string name="plexus_powered">A Plexus által működtetve</string>
     <string name="toast_black_import_failed">A feketelista importálása sikertelen!</string>
     <string name="filter_latest">Legújabb</string>
     <string name="action_unarchive">Archiválás visszavonása</string>
     <string name="details_compatibility_title">Kompatibilitás</string>
-    <string name="set">Beállít</string>
+    <string name="set">Beállítás</string>
     <string name="pref_network_microg_login_title">Használja a microG-t a fiókba való bejelentkezéshez</string>
-    <string name="disable">Kikapcsol</string>
-    <string name="verification_failed">Sikertelen a letöltött fájlok ellenőrzése</string>
+    <string name="disable">Letiltás</string>
+    <string name="verification_failed">A letöltött fájlok ellenőrzése sikertelen</string>
     <string name="toast_proxy_disabled">Proxy sikeresen kikapcsolva</string>
     <string name="pref_network_proxy_desc">Proxy konfiguráció megtekintése és kezelése</string>
-    <string name="pref_updates_restrictions_title">Automatikus frissítés korlátozások</string>
+    <string name="pref_updates_restrictions_title">Automatikus frissítések korlátozásai</string>
     <string name="pref_updates_restrictions_desc">Eszközkorlátozások beállítása az automatikus frissítésekhez</string>
     <string name="pref_updates_restrictions_metered">Csak nem mért hálózatokon</string>
-    <string name="pref_updates_restrictions_idle">Amikor az eszköz áll</string>
+    <string name="pref_updates_restrictions_idle">Amikor az eszköz tétlen</string>
     <string name="pref_updates_restrictions_battery">Amikor a töltöttség nem alacsony</string>
-    <string name="pref_network_microg_login_desc">Hitelesítés microG használatával a Google-fiókokba történő bejelentkezéskor az egyszerűbb bejelentkezési folyamat érdekében</string>
+    <string name="pref_network_microg_login_desc">Google-fiókos bejelentkezés microG-vel az egyszerűbb hitelesítésért</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> engedélyek</string>
     <string name="app_info_downloads">Letöltések</string>
     <string name="app_info_updated_on">Legutóbbi frissítés</string>
@@ -453,7 +453,7 @@
     <string name="details_more_info">További információk</string>
     <string name="details_more_target_api">Célpontok</string>
     <string name="details_more_package_name">Csomag neve</string>
-    <string name="details_more_content_rating">Korhatár-besorolás</string>
+    <string name="details_more_content_rating">Tartalom besorolása</string>
     <string name="select_app_for_details">Válasszon egy alkalmazást a további részletekért</string>
     <string name="action_filter_no_ads">Nincsenek hirdetések</string>
     <string name="action_filter_no_gms">Nincsenek Google Play-szolgáltatások</string>
@@ -470,4 +470,5 @@
     <string name="loading">Betöltés folyamatban</string>
     <string name="page">Oldal <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Kihagyás</string>
+    <string name="force_restart_snack">Újraindítás a változtatások alkalmazásához?</string>
 </resources>

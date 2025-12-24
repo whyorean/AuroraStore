@@ -470,4 +470,6 @@
     <string name="microg_installer_desc">Ajută la ocolirea verificării integrității aplicației (numai instalator)</string>
     <string name="loading">Încărcare în curs</string>
     <string name="page">Pagina <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Omite</string>
+    <string name="force_restart_snack">Repornești pentru a aplica modificările?</string>
 </resources>

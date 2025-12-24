@@ -373,7 +373,7 @@
     <string name="add_dispenser_summary">Afig un dispensador de tokens a l\'Aurora Store. Els dispensadors de tokens proveïxen les credencials del compte a l\'Aurora Store per a iniciar sessió anònimament.</string>
     <string name="add_dispenser_error">URL invàlida</string>
     <string name="add_dispenser_hint">URL del dispensador</string>
-    <string name="remove_dispenser_title">Esborra dispensador</string>
+    <string name="remove_dispenser_title">Esborrar dispensador?</string>
     <string name="remove_dispenser_summary">Vols esborrar el dispensador \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">Afig</string>
     <string name="remove">Esborra</string>
@@ -470,4 +470,6 @@
         <item quantity="other">Permisos requerits</item>
     </plurals>
     <string name="session_scrapped">L\'última sessió s\'ha descartat</string>
+    <string name="action_skip">Ometre</string>
+    <string name="force_restart_snack">Reiniciar per tal d\'aplicar els canvis?</string>
 </resources>
