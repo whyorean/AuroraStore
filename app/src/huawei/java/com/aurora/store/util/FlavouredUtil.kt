@@ -5,7 +5,7 @@ import com.aurora.extensions.isHuawei
 
 object FlavouredUtil : IFlavouredUtil {
 
-    override val defaultDispensers : Set<String> = emptySet()
+    override val defaultDispensers: Set<String> = emptySet()
 
     override fun promptMicroGInstall(context: Context): Boolean {
         return isHuawei &&

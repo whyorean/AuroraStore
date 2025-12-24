@@ -54,7 +54,7 @@ fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
             viewModel.finishOnboarding()
         },
         uiState = viewModel.uiState,
-        onCheckedChange = viewModel::onMicroGCheckedChange
+        onMicrogTOSChecked = viewModel::onMicrogTOSChecked
     )
 }
 
@@ -63,7 +63,7 @@ private fun ScreenContent(
     pages: List<OnboardingPage> = emptyList(),
     onFinishOnboarding: () -> Unit = {},
     uiState: OnboardingUiState,
-    onCheckedChange: (Boolean) -> Unit,
+    onMicrogTOSChecked: (Boolean) -> Unit,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val pagerState = rememberPagerState { pages.size }
@@ -180,7 +180,7 @@ private fun ScreenContent(
                     when (pages[page]) {
                         OnboardingPage.WELCOME     -> WelcomePage()
                         OnboardingPage.PERMISSIONS -> PermissionsPage()
-                        OnboardingPage.MICRO_G     -> MicroGPage(onCheckedChange = onCheckedChange)
+                        OnboardingPage.MICRO_G     -> MicroGPage(onMicrogTOSChecked = onMicrogTOSChecked)
                     }
                 }
             }
@@ -197,7 +197,7 @@ private fun OnboardingScreenPreview() {
         ScreenContent(
             pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS),
             uiState = OnboardingUiState(),
-            onCheckedChange = {}
+            onMicrogTOSChecked = {}
         )
     }
 }

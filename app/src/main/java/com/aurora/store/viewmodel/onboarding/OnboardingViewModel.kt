@@ -65,17 +65,17 @@ class OnboardingViewModel @Inject constructor(
     var uiState by mutableStateOf(OnboardingUiState())
         private set
 
-    fun onMicroGCheckedChange(value: Boolean) {
-        uiState = uiState.copy(isMicroBundleChecked = value)
-    }
-
     init {
         AuroraApp.events.installerEvent.onEach {
             when (it) {
                 is InstallerEvent.Installed -> confirmBundleInstall()
-                else -> {}
+                else                        -> {}
             }
         }.launchIn(AuroraApp.scope)
+    }
+
+    fun onMicrogTOSChecked(value: Boolean) {
+        uiState = uiState.copy(isMicroBundleChecked = value)
     }
 
     fun finishOnboarding() {
@@ -104,8 +104,8 @@ class OnboardingViewModel @Inject constructor(
     private fun setupAutoUpdates() {
         val updateMode = when {
             context.isIgnoringBatteryOptimizations() -> UpdateMode.CHECK_AND_INSTALL
-            context.areNotificationsEnabled() -> UpdateMode.CHECK_AND_NOTIFY
-            else -> UpdateMode.DISABLED
+            context.areNotificationsEnabled()        -> UpdateMode.CHECK_AND_NOTIFY
+            else                                     -> UpdateMode.DISABLED
         }
 
         context.save(PREFERENCE_UPDATES_AUTO, updateMode.ordinal)

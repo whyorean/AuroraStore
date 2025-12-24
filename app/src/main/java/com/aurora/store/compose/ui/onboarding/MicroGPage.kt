@@ -32,13 +32,13 @@ import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 
 @Composable
 fun MicroGPage(
-    onCheckedChange: (Boolean) -> Unit = {},
+    onMicrogTOSChecked: (Boolean) -> Unit = {},
     viewModel: MicroGViewModel = hiltViewModel(),
 ) {
     ScreenContent(
         uiState = viewModel.uiState,
         onInstall = { viewModel.downloadMicroG() },
-        onMicrogTOCChange = onCheckedChange,
+        onMicrogTOSChecked = onMicrogTOSChecked,
     )
 }
 
@@ -46,7 +46,7 @@ fun MicroGPage(
 private fun ScreenContent(
     uiState: MicroGUIState,
     onInstall: () -> Unit = {},
-    onMicrogTOCChange: (Boolean) -> Unit = {}
+    onMicrogTOSChecked: (Boolean) -> Unit = {}
 ) {
     val context = LocalContext.current
 
@@ -81,13 +81,11 @@ private fun ScreenContent(
                         onInstall()
                     }
 
-                    else                                                                       -> context.toast(
-                        R.string.permissions_denied
-                    )
+                    else -> context.toast(R.string.permissions_denied)
                 }
             },
             uiState = uiState,
-            onCheckedChange = onMicrogTOCChange
+            onTOSChecked = onMicrogTOSChecked
         )
     }
 

@@ -45,7 +45,7 @@ fun MicroG(
     modifier: Modifier = Modifier,
     uiState: MicroGUIState,
     onInstall: () -> Unit = {},
-    onCheckedChange: (Boolean) -> Unit = {}
+    onTOSChecked: (Boolean) -> Unit = {}
 ) {
     val context = LocalContext.current
     var isChecked by rememberSaveable { mutableStateOf(false) }
@@ -109,13 +109,13 @@ fun MicroG(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(
                     dimensionResource(R.dimen.padding_small)
-                ),
+                )
             ) {
                 Checkbox(
                     checked = isChecked,
                     onCheckedChange = {
                         isChecked = it
-                        onCheckedChange(it)
+                        onTOSChecked(it)
                     },
                     enabled = !uiState.isInstalled && !uiState.isDownloading
                 )
