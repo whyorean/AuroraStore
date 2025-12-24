@@ -49,7 +49,7 @@ import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 fun MicroGScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
-    onIgnore: () -> Unit,
+    onIgnore: (Boolean) -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     viewModel: MicroGViewModel = hiltViewModel(),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
@@ -57,7 +57,7 @@ fun MicroGScreen(
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
-        else -> stringResource(R.string.onboarding_title_gsf)
+        else                               -> stringResource(R.string.onboarding_title_gsf)
     }
 
     ScreenContent(
@@ -75,7 +75,7 @@ private fun ScreenContent(
     uiState: MicroGUIState = MicroGUIState(),
     onNavigateUp: () -> Unit = {},
     onInstall: () -> Unit = {},
-    onIgnore: () -> Unit = {},
+    onIgnore: (Boolean) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val context = LocalContext.current
@@ -101,7 +101,10 @@ private fun ScreenContent(
                 modifier = Modifier.weight(1F),
                 onInstall = {
                     when {
-                        PermissionProvider.isGranted(context, PermissionType.INSTALL_UNKNOWN_APPS) -> {
+                        PermissionProvider.isGranted(
+                            context,
+                            PermissionType.INSTALL_UNKNOWN_APPS
+                        ) -> {
                             onInstall()
                         }
 
@@ -128,10 +131,14 @@ private fun ScreenContent(
 
                 Button(
                     modifier = Modifier.weight(1F),
-                    onClick = onIgnore
+                    onClick = { onIgnore(uiState.isInstalled) },
+                    enabled = !uiState.isDownloading
                 ) {
                     Text(
-                        text = stringResource(R.string.action_ignore),
+                        text = if (uiState.isInstalled)
+                            stringResource(R.string.action_install)
+                        else
+                            stringResource(R.string.action_ignore),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -143,7 +150,7 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun MicroGScreenPreview(@PreviewParameter(AppPreviewProvider ::class) app: App) {
+private fun MicroGScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
         ScreenContent(topAppBarTitle = app.displayName)
     }
