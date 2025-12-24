@@ -61,7 +61,7 @@ private fun PageContent(
                     )
                     Text(
                         text = stringResource(R.string.onboarding_permission_select),
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleMedium,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )

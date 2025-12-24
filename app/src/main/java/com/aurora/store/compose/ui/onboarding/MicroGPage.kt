@@ -58,7 +58,7 @@ private fun ScreenContent(onInstall: () -> Unit = {}) {
             )
             Text(
                 text = stringResource(R.string.onboarding_title_gsf_desc),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleMedium,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
