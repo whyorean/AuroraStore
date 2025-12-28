@@ -344,7 +344,7 @@
     <string name="add_dispenser_title">Добавить распределитель</string>
     <string name="add_dispenser_error">Некорректный URL-адрес</string>
     <string name="add_dispenser_hint">URL-адрес распределителя</string>
-    <string name="remove_dispenser_title">Удалить распределитель</string>
+    <string name="remove_dispenser_title">Удалить распределитель?</string>
     <string name="remove_dispenser_summary">Вы хотите удалить распределитель \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="about_wiki_summary">Найдите ответы на часто задаваемые вопросы (ЧаВо), шаги по устранению неполадок и многое другое</string>
     <string name="about_aurora_store_summary">Aurora Store позволяет искать и загружать приложения из официального магазина Google Play. Вы можете ознакомиться с описанием приложений, скриншотами, обновлениями, комментариями других пользователей и загрузить APK непосредственно из Google Play на свое устройство. Чтобы использовать Aurora Store, необходимо иметь профиль Google Play и войти в него при первом открытии и настройке Aurora Store. \n \nВ отличие от традиционного магазина приложений, Aurora Store не владеет, не лицензирует и не распространяет приложения. Все приложения, описания приложений, скриншоты и прочий контент в Aurora Store напрямую доступны, загружаются и/или отображаются из Google Play. Aurora Store работает точно так же, как дверь или браузер, позволяя вам войти в свой профиль Google Play и найти приложения из Google Play. \n \nОбратите внимание, что Aurora Store не имеет никакого соглашения, спонсорства или разрешения от Google, Google Play, любых приложений, загружаемых через Aurora Store, или разработчиков приложений; Aurora Store также не имеет с ними никакого родства, сотрудничества или связи.</string>
@@ -472,4 +472,5 @@
     <string name="action_skip">Пропустить</string>
     <string name="microg_installer_subtitle">Требует установки дополнительного приложения microG</string>
     <string name="microg_installer_desc">Помогает пропустить проверку целостности приложения (только для установщика)</string>
+    <string name="force_restart_snack">Перезапустить чтобы применить изменения?</string>
 </resources>

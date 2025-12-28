@@ -52,12 +52,12 @@
     <string name="installer_service_unavailable">Aurora Services 1.0.9以上をインストールするか、インストーラーを変更してください。</string>
     <string name="installer_service_available">Aurora Services が使用可能でインストール準備ができました。</string>
     <string name="installer_root_unavailable">Root 権限がありません。権限を与えるかインストーラーを変更してください。</string>
-    <string name="filter_review_two">２つ星</string>
-    <string name="filter_review_three">３つ星</string>
+    <string name="filter_review_two">2つ星</string>
+    <string name="filter_review_three">3つ星</string>
     <string name="filter_review_positive">高評価</string>
-    <string name="filter_review_one">１つ星</string>
-    <string name="filter_review_four">４つ星</string>
-    <string name="filter_review_five">５つ星</string>
+    <string name="filter_review_one">1つ星</string>
+    <string name="filter_review_four">4つ星</string>
+    <string name="filter_review_five">5つ星</string>
     <string name="filter_review_critical">低評価</string>
     <string name="filter_review_all">すべて</string>
     <string name="exodus_view_report">レポートを見る</string>
@@ -340,7 +340,7 @@
     <string name="add_dispenser_summary">トークンディスペンサーを Aurora Store に追加します。トークンディスペンサーは、匿名アカウントでログインするための認証情報を Aurora Store に提供します。</string>
     <string name="add_dispenser_error">不正な URL です</string>
     <string name="add_dispenser_hint">ディスペンサーの URL</string>
-    <string name="remove_dispenser_title">ディスペンサーを削除</string>
+    <string name="remove_dispenser_title">ディスペンサーを削除しますか?</string>
     <string name="remove_dispenser_summary">ディスペンサー「<xliff:g id="url">%1$s</xliff:g>」を削除しますか？</string>
     <string name="add">追加</string>
     <string name="remove">削除</string>
@@ -348,7 +348,7 @@
     <string name="session_login">Google Play のアカウントにログインしてください</string>
     <string name="about_aurora_store_title">Aurora Store について</string>
     <string name="about_aurora_store_subtitle">Aurora Store の詳細を知る</string>
-    <string name="about_aurora_store_summary">Aurora Store を使用すると、公式の Google Playストア からアプリの検索やダウンロードができます。アプリの詳細、スクリーンショット、更新、レビューを確認したり、Google Play からデバイスに直接 APK をダウンロードしたりできます。Aurora Store を使用するには、Google Play アカウントが必要であり、Aurora Store を初めて開いたときに Google アカウントでログインする必要があります。 \n \n従来のアプリ ストアとは異なり、Aurora Store はアプリを所有、ライセンス供与、配布しません。Aurora Store のすべてのアプリ、アプリの説明、スクリーンショット、その他のコンテンツは、Google Play から直接アクセス、ダウンロード、表示されます。Aurora Store は架け橋やブラウザのように機能し、Google Play アカウントにログインして Google Play からアプリを見つけることができます。 \n \nAurora Store は、Google、Google Play、Aurora Store を通じてダウンロードされたアプリは、アプリ開発者から承認、広告、または許可を受けておらず、また、Aurora Store はそれらと提携、協力、及び関係も一切ありませんのでご了承ください。</string>
+    <string name="about_aurora_store_summary">Aurora Store を使用すると、公式の Google Playストア からアプリの検索やダウンロードができます。アプリの詳細、スクリーンショット、更新、レビューを確認したり、Google Play からデバイスに直接 APK をダウンロードしたりできます。Aurora Store を使用するには、Google Play アカウントが必要であり、Aurora Store を初めて開いたときに Google アカウントでログインする必要があります。 \n \n従来のアプリ ストアとは異なり、Aurora Store はアプリを所有、ライセンス供与、配布しません。Aurora Store のすべてのアプリ、アプリの説明、スクリーンショット、その他のコンテンツは、Google Playストアから直接アクセス、ダウンロード、表示されます。Aurora Store は架け橋やブラウザのように機能し、Google Play アカウントにログインして Google Play からアプリを見つけることができます。 \n \nAurora Store は、Google、Playストア、Aurora Store を通じてダウンロードされたアプリは、アプリ開発者から承認、広告、または許可を受けておらず、また、Aurora Store はそれらと提携、協力、及び関係も一切ありませんのでご了承ください。</string>
     <string name="toast_app_unavailable">このアプリはこの端末で使用できません</string>
     <string name="action_logout_confirmation_message">本当にログアウトしますか？</string>
     <string name="check_updates">更新を確認</string>
@@ -395,13 +395,13 @@
     <string name="pref_common_advanced">もっと</string>
     <string name="onboarding_title_gsf">アプリ互換性</string>
     <string name="pref_updates_app_source">アプリソース</string>
-    <string name="pref_network_microg_login_desc">Googleアカウントへのサインイン時にmicroGを使用した認証を行い、よりシンプルなサインインフローを実現します。</string>
+    <string name="pref_network_microg_login_desc">Googleアカウントへのサインイン時にmicroGを使用した認証を行い、よりシンプルなサインインフローを実現します</string>
     <string name="authentication_required_title">認証する必要があります</string>
     <string name="pref_updates_restrictions_title">自動更新の制限</string>
     <string name="available_spoof">利用可能</string>
     <string name="toast_black_export_success">ブラックリストをエクスポートしました！</string>
     <string name="toast_black_import_success">ブラックリストをインポートしました！</string>
-    <string name="plexus_progress">互換性をチェックしています</string>
+    <string name="plexus_progress">互換性をチェックしています…</string>
     <string name="checking_updates">更新の確認</string>
     <string name="loading">読み込み中</string>
     <string name="made_with_love">インド製造<xliff:g id="heart_emoji">%1$s</xliff:g></string>
@@ -409,4 +409,65 @@
     <string name="app_info_min_android">最低限Androidバージョン</string>
     <string name="onboarding_title_gsf_desc">依存関係が不足しています</string>
     <string name="details_more_info">もっとみる</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> 個のトラッカーが <xliff:g id="app_version_name">%2$s</xliff:g> で見つかりました</string>
+    <string name="filter_latest">最新</string>
+    <string name="installer_microg_misconfigured">MicroG installer は誤った構成が原因でアプリのインストールに失敗しました。</string>
+    <string name="no_apps_available">利用可能なアプリはありません</string>
+    <string name="app_info_downloads">ダウンロード</string>
+    <string name="app_info_updated_on">最終更新</string>
+    <string name="app_info_target_android">ターゲット API レベル</string>
+    <string name="action_skip">スキップ</string>
+    <string name="onboarding_gms_agreement">microGサービスの利用規約とプライバシーポリシーを読み、同意します</string>
+    <string name="onboarding_gms_missing">Google Play 開発者サービスがお使いのデバイス上で見つかりませんでした。現在、いくつかの人気アプリが正常に動作するには開発者サービスが必要です!</string>
+    <string name="microg_privacy_policy">microG のプライバシーポリシーを読む</string>
+    <string name="microg_license_agreement">microG のライセンスと利用規約を読む</string>
+    <string name="microg_website">microG プロジェクトのウェブサイトを閲覧する</string>
+    <string name="microg_installer_subtitle">microG companion アプリがインストールされている必要があります</string>
+    <string name="microg_installer_desc">アプリの整合性チェック(インストーラ限定)のバイパスを補助します</string>
+    <string name="manual_download_version_error">バージョンコードは数字のみが利用できます</string>
+    <string name="toast_black_import_failed">ブラックリストのインポートに失敗しました!</string>
+    <string name="toast_black_export_failed">ブラックリストのエクスポートに失敗しました!</string>
+    <string name="force_restart_snack">変更を適用するために再起動しますか?</string>
+    <string name="status_verifying">検証中</string>
+    <string name="authentication_required_unarchive">アプリのアーカイブを解除するためにはGoogle Play アカウントにログインしてください!</string>
+    <string name="default_spoof">デフォルト</string>
+    <string name="no_description">説明が利用できません</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> 個の権限</string>
+    <string name="details_more_target_api">ターゲット</string>
+    <string name="details_more_package_name">パッケージ名</string>
+    <string name="details_more_content_rating">コンテンツの評価</string>
+    <string name="action_unarchive">アーカイブ解除</string>
+    <string name="unable_to_open">アプリを開けません</string>
+    <string name="plexus_powered">Plexus によるデータ</string>
+    <string name="details_compatibility_title">互換性</string>
+    <string name="details_compatibility_gms_required_title">Google Play 開発者サービスが必要です</string>
+    <string name="details_compatibility_gms_required_subtitle">Google 独自のライブラリ、または microG などの FOSS 再実装をインストールする必要がある場合があります。</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play 開発者サービスなしで動作します</string>
+    <string name="details_compatibility_gms_not_required_subtitle">このアプリはGoogle独自のライブラリがなくても動作します。ただし、正常に動作させるには他のサードパーティ製ライブラリが必要になる場合があります。</string>
+    <string name="details_compatibility_microg">microG プロジェクト</string>
+    <string name="details_compatibility_no_gms">Google Play 開発者サービスなし</string>
+    <string name="details_compatibility_status_compatible">互換性: 問題なく動作します</string>
+    <string name="details_compatibility_status_limited">限定的: 限定された機能で動作します</string>
+    <string name="details_compatibility_status_unsupported">サポート対象外: 動作しません</string>
+    <string name="details_compatibility_status_unknown">不明: まだチェックされていません</string>
+    <string name="preparing_to_install">インストール準備中</string>
+    <plurals name="permissions_required">
+        <item quantity="other">権限が必要です</item>
+    </plurals>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> 個のアプリがインストールされています</string>
+    <string name="pref_network_microg_login_title">アカウントのログインにmicroGを使用する</string>
+    <string name="set">設定</string>
+    <string name="disable">無効</string>
+    <string name="toast_proxy_disabled">プロキシを無効にしました</string>
+    <string name="pref_network_proxy_desc">プロキシ構成の表示と管理</string>
+    <string name="pref_updates_restrictions_desc">自動アップデートのためにデバイス制限を設定する</string>
+    <string name="pref_updates_restrictions_metered">定額制ネットワークのみ</string>
+    <string name="pref_updates_restrictions_idle">デバイスがアイドル時の場合のみ</string>
+    <string name="pref_updates_restrictions_battery">バッテリー残量が少なくない場合</string>
+    <string name="verification_failed">ダウンロードしたファイルの検証に失敗しました</string>
+    <string name="select_app_for_details">詳細を確認するアプリを選択</string>
+    <string name="action_filter_no_ads">広告なし</string>
+    <string name="action_filter_no_gms">Google Play 開発者サービスなし</string>
+    <string name="page"><xliff:g id="number">%1$d</xliff:g> ページ</string>
+    <string name="onboarding_gms_microg">microGは、Androidデバイス向けにGoogle Play Servicesに依存するアプリを再実装によって動作させる、同様の機能を提供する無料のオープンソース実装です。\n\nmicroGはアプリがこれらのGoogle APIにアクセスすることを可能にし、ユーザーの互換性を高めつつプライバシー上の利点を提供します。\n\nGoogle Mobile Servicesに依存するアプリケーションを開くと、microGはバックグラウンドで自動的に動作します。</string>
 </resources>

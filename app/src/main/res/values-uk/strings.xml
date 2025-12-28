@@ -29,7 +29,7 @@
     <string name="details_no_permission">Без дозволів</string>
     <string name="details_no_dependencies">Без залежностей</string>
     <string name="details_no_app_match">Застосунок не знайдено</string>
-    <string name="details_no_ads">Без Реклами</string>
+    <string name="details_no_ads">Без реклами</string>
     <string name="details_more_about_app">Докладніше про застосунок</string>
     <string name="details_gsf_dependent">Потребує GSF</string>
     <string name="details_free">Безплатний</string>
@@ -462,8 +462,8 @@
     <plurals name="permissions_required">
         <item quantity="one">Потрібен дозвіл</item>
         <item quantity="few">Потрібні дозволи</item>
-        <item quantity="many">Потрібні дозволів</item>
-        <item quantity="other">Потрібні дозволів</item>
+        <item quantity="many">Потрібні дозволи</item>
+        <item quantity="other">Потрібні дозволи</item>
     </plurals>
     <string name="installer_microg_misconfigured">Встановлювач MicroG не зміг встановити застосунок, ймовірно, через неправильну конфігурацію.</string>
     <string name="pref_install_mode_microg">Встановлювач MicroG</string>
