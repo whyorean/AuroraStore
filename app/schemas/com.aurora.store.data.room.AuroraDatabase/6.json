@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 5,
-    "identityHash": "d5da6e54113409ba811bafebc85632e6",
+    "version": 6,
+    "identityHash": "82935f33f6fe476bd752dd3643095d69",
     "entities": [
       {
         "tableName": "download",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`packageName` TEXT NOT NULL, `versionCode` INTEGER NOT NULL, `offerType` INTEGER NOT NULL, `isInstalled` INTEGER NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `size` INTEGER NOT NULL, `id` INTEGER NOT NULL, `downloadStatus` TEXT NOT NULL, `progress` INTEGER NOT NULL, `speed` INTEGER NOT NULL, `timeRemaining` INTEGER NOT NULL, `totalFiles` INTEGER NOT NULL, `downloadedFiles` INTEGER NOT NULL, `fileList` TEXT NOT NULL, `sharedLibs` TEXT NOT NULL, `targetSdk` INTEGER NOT NULL, `downloadedAt` INTEGER NOT NULL, PRIMARY KEY(`packageName`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`packageName` TEXT NOT NULL, `versionCode` INTEGER NOT NULL, `offerType` INTEGER NOT NULL, `isInstalled` INTEGER NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `size` INTEGER NOT NULL, `id` INTEGER NOT NULL, `downloadStatus` TEXT NOT NULL, `progress` INTEGER NOT NULL, `speed` INTEGER NOT NULL, `timeRemaining` INTEGER NOT NULL, `totalFiles` INTEGER NOT NULL, `downloadedFiles` INTEGER NOT NULL, `fileList` TEXT NOT NULL, `sharedLibs` TEXT NOT NULL, `targetSdk` INTEGER NOT NULL, `downloadedAt` INTEGER NOT NULL, `requiresGMS` INTEGER NOT NULL, PRIMARY KEY(`packageName`))",
         "fields": [
           {
             "fieldPath": "packageName",
@@ -57,7 +57,7 @@
             "notNull": true
           },
           {
-            "fieldPath": "downloadStatus",
+            "fieldPath": "status",
             "columnName": "downloadStatus",
             "affinity": "TEXT",
             "notNull": true
@@ -115,6 +115,12 @@
             "columnName": "downloadedAt",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "requiresGMS",
+            "columnName": "requiresGMS",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -122,9 +128,7 @@
           "columnNames": [
             "packageName"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       },
       {
         "tableName": "favourite",
@@ -166,9 +170,7 @@
           "columnNames": [
             "packageName"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       },
       {
         "tableName": "update",
@@ -270,15 +272,12 @@
           "columnNames": [
             "packageName"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       }
     ],
-    "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd5da6e54113409ba811bafebc85632e6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '82935f33f6fe476bd752dd3643095d69')"
     ]
   }
 }
