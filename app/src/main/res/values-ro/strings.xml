@@ -348,7 +348,7 @@
     <string name="add_dispenser_error">URL nevalid</string>
     <string name="no_dispensers_available">Nu există distribuitoare disponibile</string>
     <string name="add_dispenser_title">Adaugă distribuitor</string>
-    <string name="remove_dispenser_title">Elimină distribuitorul</string>
+    <string name="remove_dispenser_title">Elimini distribuitorul?</string>
     <string name="toast_app_unavailable">Aplicația nu este disponibilă pentru acest dispozitiv</string>
     <string name="action_favourite">Favorit</string>
     <string name="details_no_favourites">Nu s-a găsit nici-o aplicație favorită</string>
