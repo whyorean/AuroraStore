@@ -69,4 +69,9 @@ object Constants {
     const val PACKAGE_NAME_GMS = "com.google.android.gms"
     const val PACKAGE_NAME_PLAY_STORE = "com.android.vending"
     const val PACKAGE_NAME_APP_GALLERY = "com.huawei.appmarket"
+
+    // FLAVOURS
+    const val FLAVOUR_VANILLA = "vanilla"
+    const val FLAVOUR_HUAWEI = "huawei"
+    const val FLAVOUR_PRELOAD = "preload"
 }

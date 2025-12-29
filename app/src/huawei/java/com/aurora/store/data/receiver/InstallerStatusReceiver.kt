@@ -58,7 +58,7 @@ class InstallerStatusReceiver : BaseInstallerStatusReceiver() {
         }
     }
 
-    override fun postStatus(status: Int, packageName: String?, extra: String?, context: Context) {
+    override fun postStatus(status: Int, packageName: String, extra: String?, context: Context) {
         super.postStatus(status, packageName, extra, context)
 
         if (::apiClient.isInitialized && apiClient.isConnected) {

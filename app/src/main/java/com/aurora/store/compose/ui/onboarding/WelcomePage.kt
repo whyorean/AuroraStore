@@ -112,7 +112,7 @@ private fun PageContent(onAboutAurora: () -> Unit = {}) {
                     )
                     Text(
                         text = stringResource(R.string.onboarding_welcome_select),
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleMedium,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

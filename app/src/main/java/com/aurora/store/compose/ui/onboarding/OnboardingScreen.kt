@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.pager.HorizontalPager
@@ -25,11 +26,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
@@ -37,22 +38,25 @@ import com.aurora.store.compose.composable.Logo
 import com.aurora.store.compose.composable.PageIndicator
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.onboarding.navigation.OnboardingPage
-import com.aurora.store.util.FlavouredUtil
+import com.aurora.store.viewmodel.onboarding.OnboardingUiState
 import com.aurora.store.viewmodel.onboarding.OnboardingViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
-    val context = LocalContext.current
     val pages = listOfNotNull(
         OnboardingPage.WELCOME,
         OnboardingPage.PERMISSIONS,
-        if (FlavouredUtil.promptMicroGInstall(context)) OnboardingPage.MICRO_G else null
+        if (viewModel.isMicroGPromptRequired) OnboardingPage.MICRO_G else null
     )
 
     ScreenContent(
         pages = pages,
-        onFinishOnboarding = { viewModel.finishOnboarding() }
+        onFinishOnboarding = {
+            viewModel.finishOnboarding()
+        },
+        uiState = viewModel.uiState,
+        onMicrogTOSChecked = viewModel::onMicrogTOSChecked
     )
 }
 
@@ -60,6 +64,8 @@ fun OnboardingScreen(viewModel: OnboardingViewModel = hiltViewModel()) {
 private fun ScreenContent(
     pages: List<OnboardingPage> = emptyList(),
     onFinishOnboarding: () -> Unit = {},
+    uiState: OnboardingUiState,
+    onMicrogTOSChecked: (Boolean) -> Unit,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val pagerState = rememberPagerState { pages.size }
@@ -70,7 +76,7 @@ private fun ScreenContent(
     }
 
     @Composable
-    fun SetupActions() {
+    fun SetupActions(uiState: OnboardingUiState) {
         val horizontalButtonPadding = when {
             windowAdaptiveInfo.isWindowCompact -> dimensionResource(R.dimen.padding_medium)
             else -> dimensionResource(R.dimen.padding_xlarge)
@@ -119,6 +125,7 @@ private fun ScreenContent(
 
             Button(
                 modifier = buttonWidthModifier,
+                enabled = !isFinalPage() || (!uiState.isMicroBundleChecked || uiState.isMicroGBundleInstalled),
                 onClick = {
                     when {
                         isFinalPage() -> onFinishOnboarding()
@@ -145,6 +152,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
+                modifier = Modifier.height(64.dp),
                 title = {
                     PageIndicator(totalPages = pages.size, currentPage = pagerState.currentPage)
                 }
@@ -175,12 +183,12 @@ private fun ScreenContent(
                     when (pages[page]) {
                         OnboardingPage.WELCOME -> WelcomePage()
                         OnboardingPage.PERMISSIONS -> PermissionsPage()
-                        OnboardingPage.MICRO_G -> MicroGPage()
+                        OnboardingPage.MICRO_G -> MicroGPage(onMicrogTOSChecked = onMicrogTOSChecked)
                     }
                 }
             }
 
-            SetupActions()
+            SetupActions(uiState)
         }
     }
 }
@@ -190,7 +198,9 @@ private fun ScreenContent(
 private fun OnboardingScreenPreview() {
     PreviewTemplate {
         ScreenContent(
-            pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS)
+            pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS),
+            uiState = OnboardingUiState(),
+            onMicrogTOSChecked = {}
         )
     }
 }
