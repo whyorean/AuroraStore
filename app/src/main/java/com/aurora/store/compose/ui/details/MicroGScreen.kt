@@ -57,7 +57,7 @@ fun MicroGScreen(
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
-        else                               -> stringResource(R.string.onboarding_title_gsf)
+        else -> stringResource(R.string.onboarding_title_gsf)
     }
 
     ScreenContent(

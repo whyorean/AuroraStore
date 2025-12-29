@@ -79,7 +79,7 @@ private fun ScreenContent(
     fun SetupActions(uiState: OnboardingUiState) {
         val horizontalButtonPadding = when {
             windowAdaptiveInfo.isWindowCompact -> dimensionResource(R.dimen.padding_medium)
-            else                               -> dimensionResource(R.dimen.padding_xlarge)
+            else -> dimensionResource(R.dimen.padding_xlarge)
         }
 
         Row(
@@ -97,14 +97,14 @@ private fun ScreenContent(
         ) {
             val buttonWidthModifier = when {
                 windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
-                else                               -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
+                else -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
             }
 
             TextButton(
                 modifier = buttonWidthModifier,
                 onClick = {
                     when (pagerState.currentPage) {
-                        0    -> onFinishOnboarding()
+                        0 -> onFinishOnboarding()
                         else -> {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage - 1)
@@ -115,7 +115,7 @@ private fun ScreenContent(
             ) {
                 Text(
                     text = when (pagerState.currentPage) {
-                        0    -> stringResource(R.string.action_skip)
+                        0 -> stringResource(R.string.action_skip)
                         else -> stringResource(R.string.action_back)
                     },
                     maxLines = 1,
@@ -129,7 +129,7 @@ private fun ScreenContent(
                 onClick = {
                     when {
                         isFinalPage() -> onFinishOnboarding()
-                        else          -> {
+                        else -> {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage + 1)
                             }
@@ -140,7 +140,7 @@ private fun ScreenContent(
                 Text(
                     text = when {
                         isFinalPage() -> stringResource(R.string.action_finish)
-                        else          -> stringResource(R.string.action_next)
+                        else -> stringResource(R.string.action_next)
                     },
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -181,9 +181,9 @@ private fun ScreenContent(
                     verticalAlignment = Alignment.Top
                 ) { page ->
                     when (pages[page]) {
-                        OnboardingPage.WELCOME     -> WelcomePage()
+                        OnboardingPage.WELCOME -> WelcomePage()
                         OnboardingPage.PERMISSIONS -> PermissionsPage()
-                        OnboardingPage.MICRO_G     -> MicroGPage(onMicrogTOSChecked = onMicrogTOSChecked)
+                        OnboardingPage.MICRO_G -> MicroGPage(onMicrogTOSChecked = onMicrogTOSChecked)
                     }
                 }
             }

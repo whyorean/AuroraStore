@@ -21,7 +21,6 @@ import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
 import com.aurora.Constants.FLAVOUR_HUAWEI
 import com.aurora.extensions.copyTo
-import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -43,7 +42,6 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
-import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
@@ -231,7 +229,7 @@ class DownloadWorker @AssistedInject constructor(
                         notifyStatus(DownloadStatus.CANCELLED)
                     }
 
-                    else                          -> {
+                    else -> {
                         notifyStatus(status = DownloadStatus.FAILED, exception = exception)
                         AuroraApp.events.send(
                             InstallerEvent.Failed(
@@ -421,7 +419,7 @@ class DownloadWorker @AssistedInject constructor(
                 downloadDao.updateProgress(download.packageName, 100, 0, 0)
             }
 
-            else                     -> {}
+            else -> {}
         }
 
         val notification = NotificationUtil.getDownloadNotification(
