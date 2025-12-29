@@ -166,6 +166,10 @@ class AppInstaller @Inject constructor(
     private val defaultInstaller: IInstaller
         get() = sessionInstaller
 
+    fun getMicroGInstaller(): IInstaller {
+        return microGInstaller
+    }
+
     fun getPreferredInstaller(): IInstaller {
         return when (getCurrentInstaller(context)) {
             Installer.SESSION -> sessionInstaller

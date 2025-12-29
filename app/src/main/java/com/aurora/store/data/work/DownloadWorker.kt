@@ -19,7 +19,9 @@ import androidx.work.ForegroundInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
 import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
+import com.aurora.Constants.FLAVOUR_HUAWEI
 import com.aurora.extensions.copyTo
+import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -28,6 +30,7 @@ import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
+import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
@@ -40,7 +43,9 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
+import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.NotificationUtil
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -88,8 +93,11 @@ class DownloadWorker @AssistedInject constructor(
     inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
     inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))
     inner class DownloadFailedException : Exception(context.getString(R.string.download_failed))
-    inner class DownloadCancelledException : Exception(context.getString(R.string.download_canceled))
-    inner class VerificationFailedException : Exception(context.getString(R.string.verification_failed))
+    inner class DownloadCancelledException :
+        Exception(context.getString(R.string.download_canceled))
+
+    inner class VerificationFailedException :
+        Exception(context.getString(R.string.verification_failed))
 
     override suspend fun doWork(): Result {
         super.doWork()
@@ -198,7 +206,10 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess(): Result {
         return withContext(NonCancellable) {
             return@withContext try {
-                appInstaller.getPreferredInstaller().install(download)
+                if (BuildConfig.FLAVOR == FLAVOUR_HUAWEI && download.requiresGMS && PackageUtil.hasMicroGCompanion(context))
+                    appInstaller.getMicroGInstaller().install(download)
+                else
+                    appInstaller.getPreferredInstaller().install(download)
                 Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
@@ -220,7 +231,7 @@ class DownloadWorker @AssistedInject constructor(
                         notifyStatus(DownloadStatus.CANCELLED)
                     }
 
-                    else -> {
+                    else                          -> {
                         notifyStatus(status = DownloadStatus.FAILED, exception = exception)
                         AuroraApp.events.send(
                             InstallerEvent.Failed(
@@ -410,7 +421,7 @@ class DownloadWorker @AssistedInject constructor(
                 downloadDao.updateProgress(download.packageName, 100, 0, 0)
             }
 
-            else -> {}
+            else                     -> {}
         }
 
         val notification = NotificationUtil.getDownloadNotification(

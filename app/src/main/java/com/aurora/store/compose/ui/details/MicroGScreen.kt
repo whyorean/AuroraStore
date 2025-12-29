@@ -42,13 +42,14 @@ import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.aurora.store.viewmodel.onboarding.MicroGUIState
 import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 
 @Composable
 fun MicroGScreen(
     packageName: String,
     onNavigateUp: () -> Unit,
-    onIgnore: () -> Unit,
+    onIgnore: (Boolean) -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     viewModel: MicroGViewModel = hiltViewModel(),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
@@ -56,11 +57,12 @@ fun MicroGScreen(
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
-        else -> stringResource(R.string.onboarding_title_gsf)
+        else                               -> stringResource(R.string.onboarding_title_gsf)
     }
 
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
+        uiState = viewModel.uiState,
         onNavigateUp = onNavigateUp,
         onInstall = { viewModel.downloadMicroG() },
         onIgnore = onIgnore
@@ -70,9 +72,10 @@ fun MicroGScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
+    uiState: MicroGUIState = MicroGUIState(),
     onNavigateUp: () -> Unit = {},
     onInstall: () -> Unit = {},
-    onIgnore: () -> Unit = {},
+    onIgnore: (Boolean) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val context = LocalContext.current
@@ -98,13 +101,17 @@ private fun ScreenContent(
                 modifier = Modifier.weight(1F),
                 onInstall = {
                     when {
-                        PermissionProvider.isGranted(context, PermissionType.INSTALL_UNKNOWN_APPS) -> {
+                        PermissionProvider.isGranted(
+                            context,
+                            PermissionType.INSTALL_UNKNOWN_APPS
+                        ) -> {
                             onInstall()
                         }
 
                         else -> context.toast(R.string.permissions_denied)
                     }
-                }
+                },
+                uiState = uiState
             )
 
             Row(
@@ -124,10 +131,14 @@ private fun ScreenContent(
 
                 Button(
                     modifier = Modifier.weight(1F),
-                    onClick = onIgnore
+                    onClick = { onIgnore(uiState.isInstalled) },
+                    enabled = !uiState.isDownloading
                 ) {
                     Text(
-                        text = stringResource(R.string.action_ignore),
+                        text = if (uiState.isInstalled)
+                            stringResource(R.string.action_install)
+                        else
+                            stringResource(R.string.action_ignore),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -139,7 +150,7 @@ private fun ScreenContent(
 
 @Preview
 @Composable
-private fun MicroGScreenPreview(@PreviewParameter(AppPreviewProvider ::class) app: App) {
+private fun MicroGScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
         ScreenContent(topAppBarTitle = app.displayName)
     }

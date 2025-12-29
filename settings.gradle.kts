@@ -25,7 +25,8 @@ dependencyResolutionManagement {
         // Only included in huawei variants
         maven("https://developer.huawei.com/repo/") {
             content {
-                includeModule("com.huawei.hms", "ag-coreservice")
+                includeGroup("com.huawei.hms")
+                includeGroup("com.huawei.android.hms")
             }
         }
     }

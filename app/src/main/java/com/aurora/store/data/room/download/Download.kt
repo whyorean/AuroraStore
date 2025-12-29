@@ -5,6 +5,7 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.model.DownloadStatus
@@ -35,7 +36,8 @@ data class Download(
     var fileList: List<PlayFile>,
     val sharedLibs: List<SharedLib>,
     val targetSdk: Int = 1,
-    val downloadedAt: Long = 0
+    val downloadedAt: Long = 0,
+    val requiresGMS: Boolean = false
 ) : Parcelable {
     val isFinished get() = status in DownloadStatus.finished
     val isRunning get() = status in DownloadStatus.running
@@ -61,7 +63,8 @@ data class Download(
                 app.fileList.filterNot { it.url.isBlank() },
                 app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) },
                 app.targetSdk,
-                Date().time
+                Date().time,
+                app.requiresGMS()
             )
         }
 

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,21 +33,22 @@ import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.Link
+import com.aurora.store.viewmodel.onboarding.MicroGUIState
 
 /**
  * Composable to display suggestion to install microG
  * @param modifier Modifier for the composable
- * @param isTOSChecked Whether the TOS checkbox is checked
  * @param onInstall Callback when user requests installing microG bundle
  */
 @Composable
 fun MicroG(
     modifier: Modifier = Modifier,
-    isTOSChecked: Boolean = false,
-    onInstall: () -> Unit = {}
+    uiState: MicroGUIState,
+    onInstall: () -> Unit = {},
+    onTOSChecked: (Boolean) -> Unit = {}
 ) {
     val context = LocalContext.current
-    var isChecked by rememberSaveable { mutableStateOf(isTOSChecked) }
+    var isChecked by rememberSaveable { mutableStateOf(false) }
     val links = listOf(
         Link(
             id = 2,
@@ -101,7 +103,6 @@ fun MicroG(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = dimensionResource(R.dimen.padding_xlarge)),
-            horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
         ) {
             Row(
@@ -110,7 +111,14 @@ fun MicroG(
                     dimensionResource(R.dimen.padding_small)
                 )
             ) {
-                Checkbox(checked = isChecked, onCheckedChange = { isChecked = !isChecked })
+                Checkbox(
+                    checked = isChecked,
+                    onCheckedChange = {
+                        isChecked = it
+                        onTOSChecked(it)
+                    },
+                    enabled = !uiState.isInstalled && !uiState.isDownloading
+                )
                 Text(
                     text = stringResource(R.string.onboarding_gms_agreement),
                     style = MaterialTheme.typography.bodyMedium,
@@ -118,9 +126,21 @@ fun MicroG(
                     overflow = TextOverflow.Ellipsis
                 )
             }
-            Button(onClick = onInstall, enabled = isChecked) {
+            Button(
+                onClick = onInstall,
+                enabled = isChecked && !uiState.isDownloading && !uiState.isInstalled,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text(
-                    text = stringResource(R.string.action_install_microG)
+                    text = if (uiState.isDownloading)
+                        stringResource(R.string.action_installing)
+                    else
+                        stringResource(R.string.action_install_microG)
+                )
+            }
+            if (uiState.isDownloading) {
+                LinearProgressIndicator(
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }
@@ -131,6 +151,6 @@ fun MicroG(
 @Composable
 private fun MicroGPreview() {
     PreviewTemplate {
-        MicroG(isTOSChecked = true)
+        MicroG(uiState = MicroGUIState())
     }
 }
