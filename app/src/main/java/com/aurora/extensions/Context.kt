@@ -76,7 +76,7 @@ fun Context.share(displayName: String, packageName: String) {
         val sendIntent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_SUBJECT, displayName)
-            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}${packageName}")
+            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}$packageName")
             type = "text/plain"
         }
         startActivity(Intent.createChooser(sendIntent, getString(R.string.action_share)))
@@ -112,21 +112,20 @@ fun Context.openInfo(packageName: String) {
 
 fun <T> Context.open(className: Class<T>, newTask: Boolean = false) {
     val intent = Intent(this, className)
-    if (newTask)
+    if (newTask) {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
     startActivity(
         intent,
         getEmptyActivityBundle()
     )
 }
 
-fun Context.getEmptyActivityBundle(): Bundle? {
-    return ActivityOptionsCompat.makeCustomAnimation(
-        this,
-        android.R.anim.fade_in,
-        android.R.anim.fade_out
-    ).toBundle()
-}
+fun Context.getEmptyActivityBundle(): Bundle? = ActivityOptionsCompat.makeCustomAnimation(
+    this,
+    android.R.anim.fade_in,
+    android.R.anim.fade_out
+).toBundle()
 
 fun Context.copyToClipBoard(data: String?) {
     val clipboard = getSystemService<ClipboardManager>()
@@ -141,39 +140,31 @@ fun Context.getStyledAttributeColor(id: Int): Int {
     return styledAttr
 }
 
-fun Context.isIgnoringBatteryOptimizations(): Boolean {
-    return getSystemService<PowerManager>()?.isIgnoringBatteryOptimizations(packageName) ?: true
+fun Context.isIgnoringBatteryOptimizations(): Boolean =
+    getSystemService<PowerManager>()?.isIgnoringBatteryOptimizations(packageName) ?: true
+
+fun Context.areNotificationsEnabled(): Boolean = when {
+    isNAndAbove -> getSystemService<NotificationManager>()!!.areNotificationsEnabled()
+    else -> true
 }
 
-fun Context.areNotificationsEnabled(): Boolean {
-    return if (isNAndAbove) {
-        getSystemService<NotificationManager>()!!.areNotificationsEnabled()
-    } else {
-        true
-    }
+fun Context.checkManifestPermission(permission: String): Boolean =
+    ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+
+fun Context.isExternalStorageAccessible(): Boolean = when {
+    isRAndAbove -> Environment.isExternalStorageManager()
+    else -> checkManifestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 }
 
-fun Context.checkManifestPermission(permission: String): Boolean {
-    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
-}
-
-fun Context.isExternalStorageAccessible(): Boolean {
-    return if (isRAndAbove) {
-        Environment.isExternalStorageManager()
-    } else {
-        checkManifestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    }
-}
-
-fun Context.isDomainVerified(domain: String): Boolean {
-    return if (isSAndAbove) {
+fun Context.isDomainVerified(domain: String): Boolean = when {
+    isSAndAbove -> {
         val domainVerificationManager = getSystemService<DomainVerificationManager>()
         val userState = domainVerificationManager!!.getDomainVerificationUserState(packageName)
         val domainMap = userState?.hostToStateMap?.filterKeys { it == domain }
         domainMap?.values?.first() == DomainVerificationUserState.DOMAIN_STATE_SELECTED
-    } else {
-        true
     }
+
+    else -> true
 }
 
 fun Context.navigate(screen: Screen) {

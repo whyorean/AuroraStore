@@ -53,7 +53,6 @@ fun Context.showDialog(
             negativeListener?.let {
                 setNegativeButton(android.R.string.cancel, negativeListener)
             }
-
         }.create()
 
         builder.show()

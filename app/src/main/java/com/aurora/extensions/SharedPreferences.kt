@@ -22,20 +22,19 @@ fun <T> SharedPreferences.observeAsStateFlow(
     started: SharingStarted = SharingStarted.Eagerly,
     initial: T,
     valueProvider: () -> T
-): StateFlow<T> =
-    callbackFlow {
-        val listener =
-            SharedPreferences.OnSharedPreferenceChangeListener { _, changedKey ->
-                if (changedKey == key) {
-                    trySend(valueProvider())
-                }
+): StateFlow<T> = callbackFlow {
+    val listener =
+        SharedPreferences.OnSharedPreferenceChangeListener { _, changedKey ->
+            if (changedKey == key) {
+                trySend(valueProvider())
             }
-
-        // Emit the initial value
-        trySend(valueProvider())
-
-        registerOnSharedPreferenceChangeListener(listener)
-        awaitClose {
-            unregisterOnSharedPreferenceChangeListener(listener)
         }
-    }.stateIn(scope, started, initial)
+
+    // Emit the initial value
+    trySend(valueProvider())
+
+    registerOnSharedPreferenceChangeListener(listener)
+    awaitClose {
+        unregisterOnSharedPreferenceChangeListener(listener)
+    }
+}.stateIn(scope, started, initial)

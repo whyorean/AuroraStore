@@ -15,6 +15,5 @@ import kotlinx.coroutines.flow.flowOf
  * Empty lazy paging item flow for optional methods
  */
 @Composable
-fun <T: Any> emptyPagingItems(): LazyPagingItems<T> {
-    return flowOf(PagingData.empty<T>()).collectAsLazyPagingItems()
-}
+fun <T : Any> emptyPagingItems(): LazyPagingItems<T> =
+    flowOf(PagingData.empty<T>()).collectAsLazyPagingItems()

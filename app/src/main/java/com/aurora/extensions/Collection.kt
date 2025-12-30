@@ -21,6 +21,4 @@ package com.aurora.extensions
 
 import com.aurora.gplayapi.data.models.PlayFile
 
-fun List<PlayFile>.requiresObbDir(): Boolean {
-    return this.any { it.type == PlayFile.Type.OBB }
-}
+fun List<PlayFile>.requiresObbDir(): Boolean = this.any { it.type == PlayFile.Type.OBB }

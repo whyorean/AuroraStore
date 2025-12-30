@@ -55,31 +55,31 @@ val isMIUI: Boolean
     get() = !getSystemProperty("ro.miui.ui.version.name").isNullOrBlank()
 
 val isHuawei: Boolean
-    get() = Build.MANUFACTURER.lowercase(Locale.getDefault()).contains("huawei")
-            || Build.HARDWARE.lowercase(Locale.getDefault()).contains("kirin")
-            || Build.HARDWARE.lowercase(Locale.getDefault()).contains("hi3")
+    get() = Build.MANUFACTURER.lowercase(Locale.getDefault()).contains("huawei") ||
+        Build.HARDWARE.lowercase(Locale.getDefault()).contains("kirin") ||
+        Build.HARDWARE.lowercase(Locale.getDefault()).contains("hi3")
 
 @get:SuppressLint("PrivateApi")
 val isMiuiOptimizationDisabled: Boolean
     get() {
         return if ("0" == getSystemProperty("persist.sys.miui_optimization")) {
             true
-        } else try {
-            Class.forName("android.miui.AppOpsUtils")
-                .getDeclaredMethod("isXOptMode")
-                .invoke(null) as Boolean
-        } catch (_: java.lang.Exception) {
-            false
+        } else {
+            try {
+                Class.forName("android.miui.AppOpsUtils")
+                    .getDeclaredMethod("isXOptMode")
+                    .invoke(null) as Boolean
+            } catch (_: java.lang.Exception) {
+                false
+            }
         }
     }
 
 @SuppressLint("PrivateApi")
-private fun getSystemProperty(key: String): String? {
-    return try {
-        Class.forName("android.os.SystemProperties")
-            .getDeclaredMethod("get", String::class.java)
-            .invoke(null, key) as String
-    } catch (e: Exception) {
-        null
-    }
+private fun getSystemProperty(key: String): String? = try {
+    Class.forName("android.os.SystemProperties")
+        .getDeclaredMethod("get", String::class.java)
+        .invoke(null, key) as String
+} catch (_: Exception) {
+    null
 }
