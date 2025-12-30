@@ -25,10 +25,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import org.json.JSONArray
-import org.json.JSONObject
 import java.nio.charset.StandardCharsets
 import javax.inject.Singleton
+import org.json.JSONArray
+import org.json.JSONObject
 
 @Module
 @InstallIn(SingletonComponent::class)

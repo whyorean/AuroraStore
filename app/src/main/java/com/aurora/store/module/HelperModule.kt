@@ -34,134 +34,108 @@ object HelperModule {
     fun providesAppDetailsHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): AppDetailsHelper {
-        return AppDetailsHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): AppDetailsHelper = AppDetailsHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesStreamHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): StreamHelper {
-        return StreamHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): StreamHelper = StreamHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesExpandedBrowseHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): ExpandedBrowseHelper {
-        return ExpandedBrowseHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): ExpandedBrowseHelper = ExpandedBrowseHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesCategoryHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): CategoryHelper {
-        return CategoryHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): CategoryHelper = CategoryHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesReviewsHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): ReviewsHelper {
-        return ReviewsHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): ReviewsHelper = ReviewsHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesSearchHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): SearchHelper {
-        return SearchHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): SearchHelper = SearchHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesPurchaseHelperInstance(
         authProvider: AuthProvider,
         httpClient: IHttpClient
-    ): PurchaseHelper {
-        return PurchaseHelper(authProvider.authData!!)
-            .using(httpClient)
-    }
+    ): PurchaseHelper = PurchaseHelper(authProvider.authData!!)
+        .using(httpClient)
 
     @Singleton
     @Provides
     fun providesWebStreamHelperInstance(
         spoofProvider: SpoofProvider,
         httpClient: IHttpClient
-    ): WebStreamHelper {
-        return WebStreamHelper()
-            .using(httpClient)
-            .with(spoofProvider.locale)
-    }
+    ): WebStreamHelper = WebStreamHelper()
+        .using(httpClient)
+        .with(spoofProvider.locale)
 
     @Singleton
     @Provides
     fun providesWebDataSafetyHelperInstance(
         spoofProvider: SpoofProvider,
         httpClient: IHttpClient
-    ): WebDataSafetyHelper {
-        return WebDataSafetyHelper()
-            .using(httpClient)
-            .with(spoofProvider.locale)
-    }
+    ): WebDataSafetyHelper = WebDataSafetyHelper()
+        .using(httpClient)
+        .with(spoofProvider.locale)
 
     @Singleton
     @Provides
     fun providesWebSearchHelperInstance(
         spoofProvider: SpoofProvider,
         httpClient: IHttpClient
-    ): WebSearchHelper {
-        return WebSearchHelper()
-            .using(httpClient)
-            .with(spoofProvider.locale)
-    }
+    ): WebSearchHelper = WebSearchHelper()
+        .using(httpClient)
+        .with(spoofProvider.locale)
 
     @Singleton
     @Provides
     fun providesWebCategoryStreamHelperInstance(
         spoofProvider: SpoofProvider,
         httpClient: IHttpClient
-    ): WebCategoryStreamHelper {
-        return WebCategoryStreamHelper()
-            .using(httpClient)
-            .with(spoofProvider.locale)
-    }
+    ): WebCategoryStreamHelper = WebCategoryStreamHelper()
+        .using(httpClient)
+        .with(spoofProvider.locale)
 
     @Singleton
     @Provides
     fun providesWebTopChartsHelperInstance(
         spoofProvider: SpoofProvider,
         httpClient: IHttpClient
-    ): WebTopChartsHelper {
-        return WebTopChartsHelper()
-            .using(httpClient)
-            .with(spoofProvider.locale)
-    }
+    ): WebTopChartsHelper = WebTopChartsHelper()
+        .using(httpClient)
+        .with(spoofProvider.locale)
 
     @Singleton
     @Provides
     fun providesWebAppDetailsHelperInstance(
         spoofProvider: SpoofProvider,
         httpClient: IHttpClient
-    ): WebAppDetailsHelper {
-        return WebAppDetailsHelper()
-            .using(httpClient)
-            .with(spoofProvider.locale)
-    }
+    ): WebAppDetailsHelper = WebAppDetailsHelper()
+        .using(httpClient)
+        .with(spoofProvider.locale)
 }
