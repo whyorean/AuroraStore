@@ -20,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
-import com.aurora.store.compose.composable.TextDividerComposable
 import com.aurora.store.compose.composable.DeviceListItem
+import com.aurora.store.compose.composable.TextDividerComposable
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import java.util.Properties

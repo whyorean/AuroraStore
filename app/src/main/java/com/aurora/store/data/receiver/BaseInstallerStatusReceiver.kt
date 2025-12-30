@@ -29,7 +29,6 @@ import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.AuroraApp
-import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME

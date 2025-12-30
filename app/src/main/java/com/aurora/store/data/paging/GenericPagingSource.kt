@@ -9,6 +9,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

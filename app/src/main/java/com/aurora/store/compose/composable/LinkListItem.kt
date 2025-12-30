@@ -27,14 +27,14 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.aurora.store.R
-import com.aurora.store.data.model.Link
-import androidx.compose.ui.res.stringResource
 import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.data.model.Link
 
 /**
  * Composable to show link details in a list

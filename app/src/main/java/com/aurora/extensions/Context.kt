@@ -42,7 +42,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import com.aurora.Constants
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Screen

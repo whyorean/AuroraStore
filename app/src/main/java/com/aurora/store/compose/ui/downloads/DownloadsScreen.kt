@@ -30,14 +30,14 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import com.aurora.extensions.emptyPagingItems
 import com.aurora.extensions.toast
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.DownloadListItem
 import com.aurora.store.compose.composable.Error
-import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.extensions.emptyPagingItems
-import com.aurora.gplayapi.data.models.App
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu

@@ -31,13 +31,13 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.aurora.Constants.JSON_MIME_TYPE
+import com.aurora.extensions.emptyPagingItems
 import com.aurora.extensions.toast
 import com.aurora.store.R
+import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.FavouriteListItem
-import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.extensions.emptyPagingItems
 import com.aurora.store.compose.preview.FavouritePreviewProvider
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
