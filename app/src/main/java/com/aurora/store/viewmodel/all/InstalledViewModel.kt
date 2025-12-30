@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
@@ -45,8 +46,6 @@ class InstalledViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val webAppDetailsHelper: WebAppDetailsHelper
 ) : ViewModel() {
-
-    private val TAG = InstalledViewModel::class.java.simpleName
 
     private val packages = PackageUtil.getAllValidPackages(context)
     private val blacklist = blacklistProvider.blacklist

@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.helper.DownloadHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +19,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class DownloadCancelReceiver : BroadcastReceiver() {
-    private val TAG = DownloadCancelReceiver::class.java.simpleName
 
     @Inject
     lateinit var downloadHelper: DownloadHelper

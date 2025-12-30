@@ -24,6 +24,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.R
 import com.aurora.store.data.installer.base.InstallerBase
@@ -55,8 +56,6 @@ class NativeInstaller @Inject constructor(
                 description = R.string.native_installer_desc
             )
     }
-
-    private val TAG = NativeInstaller::class.java.simpleName
 
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {

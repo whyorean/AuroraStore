@@ -20,6 +20,7 @@ import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
 import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
 import com.aurora.Constants.FLAVOUR_HUAWEI
+import com.aurora.extensions.TAG
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
@@ -85,7 +86,6 @@ class DownloadWorker @AssistedInject constructor(
     private var totalProgress = 0
     private var downloadedBytes = 0L
 
-    private val TAG = DownloadWorker::class.java.simpleName
     private val NOTIFICATION_ID: Int = 200
 
     inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))

@@ -24,6 +24,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
@@ -51,8 +52,6 @@ class AuthViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val aC2DMTask: AC2DMTask
 ) : ViewModel() {
-
-    private val TAG = AuthViewModel::class.java.simpleName
 
     private val _authState: MutableStateFlow<AuthState> = MutableStateFlow(AuthState.Init)
     val authState = _authState.asStateFlow()

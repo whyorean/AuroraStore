@@ -17,6 +17,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
+import com.aurora.extensions.TAG
 import com.aurora.extensions.getPackageName
 import com.aurora.extensions.navigate
 import com.aurora.gplayapi.helpers.AuthHelper
@@ -38,8 +39,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>() {
-
-    private val TAG = BaseFlavouredSplashFragment::class.java.simpleName
 
     val viewModel: AuthViewModel by activityViewModels()
 

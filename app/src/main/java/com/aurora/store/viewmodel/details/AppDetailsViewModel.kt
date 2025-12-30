@@ -12,6 +12,7 @@ import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
+import com.aurora.extensions.TAG
 import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
@@ -67,8 +68,6 @@ class AppDetailsViewModel @Inject constructor(
     private val httpClient: IHttpClient,
     private val json: Json
 ) : ViewModel() {
-
-    private val TAG = AppDetailsViewModel::class.java.simpleName
 
     private val _app = MutableStateFlow<App?>(null)
     val app = _app.asStateFlow()

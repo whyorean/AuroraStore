@@ -30,6 +30,7 @@ import android.os.IBinder
 import android.os.Looper
 import android.os.RemoteException
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
 import com.aurora.store.AuroraApp
@@ -74,8 +75,6 @@ class ServiceInstaller @Inject constructor(
                 description = R.string.services_installer_desc
             )
     }
-
-    private val TAG = ServiceInstaller::class.java.simpleName
 
     override fun install(download: Download) {
         super.install(download)

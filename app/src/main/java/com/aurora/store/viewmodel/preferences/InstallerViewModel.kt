@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isMIUI
 import com.aurora.extensions.isMiuiOptimizationDisabled
 import com.aurora.extensions.observeAsStateFlow
@@ -35,7 +36,6 @@ class InstallerViewModel @Inject constructor(
 ) : ViewModel(), Shizuku.OnBinderReceivedListener, Shizuku.OnBinderDeadListener,
     Shizuku.OnRequestPermissionResultListener {
 
-    private val TAG = InstallerViewModel::class.java.simpleName
     private val sharedPreferences = Preferences.getPrefs(context)
     private var isShizukuAlive = Sui.isSui()
 

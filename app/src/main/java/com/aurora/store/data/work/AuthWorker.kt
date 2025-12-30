@@ -14,6 +14,7 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.data.model.AccountType
@@ -38,8 +39,6 @@ open class AuthWorker @AssistedInject constructor(
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
 ) : CoroutineWorker(context, workerParams) {
-
-    private val TAG = AuthWorker::class.java.simpleName
 
     override suspend fun doWork(): Result {
         if (!AccountProvider.isLoggedIn(context)) {

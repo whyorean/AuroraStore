@@ -21,6 +21,7 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.store.BuildConfig
 import com.aurora.store.util.PathUtil
 import java.io.BufferedInputStream
@@ -39,8 +40,6 @@ import javax.inject.Singleton
  */
 @Singleton
 open class SpoofDeviceProvider(private val context: Context) {
-
-    private val TAG = SpoofDeviceProvider::class.java.simpleName
 
     private val SUFFIX = ".properties"
 

@@ -26,6 +26,7 @@ import android.util.Base64
 import android.util.Log
 import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
 import com.aurora.Constants.PACKAGE_NAME_GMS
+import com.aurora.extensions.TAG
 import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isPAndAbove
@@ -37,8 +38,6 @@ import java.security.cert.X509Certificate
 import javax.security.auth.x500.X500Principal
 
 object CertUtil {
-
-    private val TAG = "CertUtil"
 
     const val GOOGLE_ACCOUNT_TYPE = "com.google"
     const val GOOGLE_PLAY_AUTH_TOKEN_TYPE = "oauth2:https://www.googleapis.com/auth/googleplay"

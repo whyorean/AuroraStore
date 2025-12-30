@@ -32,6 +32,7 @@ import android.content.pm.PackageManager
 import android.os.Process
 import android.util.Log
 import androidx.core.app.PendingIntentCompat
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -62,8 +63,6 @@ import javax.inject.Singleton
 class SessionInstaller @Inject constructor(
     @ApplicationContext private val context: Context
 ) : InstallerBase(context) {
-
-    private val TAG = SessionInstaller::class.java.simpleName
 
     val currentSessionId: Int?
         get() = enqueuedSessions.firstOrNull()?.last()?.sessionId

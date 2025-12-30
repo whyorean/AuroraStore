@@ -23,6 +23,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.CategoryStreamContract
@@ -39,8 +40,6 @@ import javax.inject.Inject
 class CategoryStreamViewModel @Inject constructor(
     private val webCategoryStreamHelper: WebCategoryStreamHelper
 ) : ViewModel() {
-
-    private val TAG = CategoryStreamViewModel::class.java.simpleName
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 

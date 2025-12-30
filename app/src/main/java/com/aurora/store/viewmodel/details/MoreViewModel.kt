@@ -9,6 +9,7 @@ package com.aurora.store.viewmodel.details
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import dagger.assisted.Assisted
@@ -30,8 +31,6 @@ class MoreViewModel @AssistedInject constructor(
     interface Factory {
         fun create(dependencies: List<String>): MoreViewModel
     }
-
-    private val TAG = MoreViewModel::class.java.simpleName
 
     private val _dependentApps = MutableStateFlow<List<App>?>(emptyList())
     val dependentApps = _dependentApps.asStateFlow()

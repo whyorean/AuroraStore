@@ -24,6 +24,7 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
+import com.aurora.extensions.TAG
 import com.aurora.store.R
 import com.aurora.store.data.activity.MicroGInstallerActivity
 import com.aurora.store.data.installer.base.InstallerBase
@@ -60,8 +61,6 @@ class MicroGInstaller @Inject constructor(
             }
         }
     }
-
-    private val TAG = MicroGInstaller::class.java.simpleName
 
     override fun install(download: Download) {
         super.install(download)

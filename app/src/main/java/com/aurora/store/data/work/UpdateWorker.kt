@@ -8,6 +8,7 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import com.aurora.Constants
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
@@ -56,8 +57,6 @@ class UpdateWorker @AssistedInject constructor(
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, context, workerParams) {
-
-    private val TAG = UpdateWorker::class.java.simpleName
 
     private val notificationID = 100
 

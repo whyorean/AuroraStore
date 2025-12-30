@@ -26,6 +26,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.core.content.FileProvider
 import androidx.core.content.getSystemService
+import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
@@ -58,8 +59,6 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
             }
         }
     }
-
-    private val TAG = InstallerBase::class.java.simpleName
 
     var download: Download? = null
         private set

@@ -23,6 +23,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.details.DevStream
@@ -41,8 +42,6 @@ class DevProfileViewModel @Inject constructor(
     private val appDetailsHelper: AppDetailsHelper,
     private val streamHelper: StreamHelper
 ) : ViewModel() {
-
-    private val TAG = DevProfileViewModel::class.java.simpleName
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
     var devStream:DevStream = DevStream()

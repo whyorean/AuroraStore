@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.core.content.FileProvider
 import androidx.core.content.IntentCompat
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
+import com.aurora.extensions.TAG
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.installer.MicroGInstaller.Companion.buildMicroGInstallIntent
 import java.io.File
@@ -16,7 +17,6 @@ import java.io.File
 class MicroGInstallerActivity : Activity() {
 
     companion object {
-        private val TAG = MicroGInstallerActivity::class.java.simpleName
         private const val REQUEST_CODE = 1001
         const val EXTRA_FILES = "extra_files"
         const val EXTRA_PACKAGE_NAME = "extra_package_name"

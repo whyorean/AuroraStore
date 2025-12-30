@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
@@ -33,8 +34,6 @@ class ReviewViewModel @AssistedInject constructor(
     interface Factory {
         fun create(packageName: String): ReviewViewModel
     }
-
-    private val TAG = ReviewViewModel::class.java.simpleName
 
     private val _reviews = MutableStateFlow<PagingData<Review>>(PagingData.Companion.empty())
     val reviews = _reviews.asStateFlow()

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.aurora.extensions.TAG
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
@@ -34,8 +35,6 @@ class DownloadsViewModel @Inject constructor(
     private val appInstaller: AppInstaller,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
-
-    private val TAG = DownloadsViewModel::class.java.simpleName
 
     private val _downloads = MutableStateFlow<PagingData<Download>>(PagingData.empty())
     val downloads = _downloads.asStateFlow()

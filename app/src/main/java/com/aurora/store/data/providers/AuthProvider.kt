@@ -21,6 +21,7 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.helpers.AuthHelper
@@ -45,8 +46,6 @@ class AuthProvider @Inject constructor(
     private val spoofProvider: SpoofProvider,
     private val httpClient: IHttpClient
 ) {
-
-    private val TAG = AuthProvider::class.java.simpleName
 
     val dispenserURL: String?
         get() {

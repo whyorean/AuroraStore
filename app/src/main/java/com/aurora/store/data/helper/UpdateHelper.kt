@@ -12,6 +12,7 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
@@ -81,8 +82,6 @@ class UpdateHelper @Inject constructor(
                 .build()
         }
     }
-
-    private val TAG = UpdateHelper::class.java.simpleName
 
     private val isExtendedUpdateEnabled
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)

@@ -23,6 +23,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.contracts.CategoryContract
@@ -37,8 +38,6 @@ import javax.inject.Inject
 class CategoryViewModel @Inject constructor(
     private val categoryHelper: CategoryHelper
 ) : ViewModel() {
-
-    private val TAG = CategoryViewModel::class.java.simpleName
 
     private var stash: CategoryStash = mutableMapOf(
         Category.Type.APPLICATION to emptyList(),

@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.aurora.extensions.TAG
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.PathUtil
@@ -20,8 +21,6 @@ class SpoofViewModel @Inject constructor(
     private val spoofProvider: SpoofProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
-
-    private val TAG = SpoofViewModel::class.java.simpleName
 
     val defaultLocale: Locale = Locale.getDefault()
     val defaultProperties = NativeDeviceInfoProvider.getNativeDeviceProperties(context)

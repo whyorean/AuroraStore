@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import com.aurora.extensions.TAG
 import com.aurora.extensions.checkManifestPermission
 import com.aurora.extensions.isDomainVerified
 import com.aurora.extensions.isExternalStorageAccessible
@@ -153,8 +154,6 @@ class PermissionProvider(private val fragment: Fragment) :
             return permissions
         }
     }
-
-    private val TAG = PermissionProvider::class.java.simpleName
 
     private val context: Context
         get() = fragment.requireContext()

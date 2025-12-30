@@ -28,6 +28,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.airbnb.epoxy.EpoxyRecyclerView
+import com.aurora.extensions.TAG
 import com.aurora.extensions.navigate
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -38,8 +39,6 @@ import com.aurora.store.data.providers.PermissionProvider
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
-
-    private val TAG = BaseFragment::class.java.simpleName
 
     lateinit var permissionProvider: PermissionProvider
 

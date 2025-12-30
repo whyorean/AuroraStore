@@ -12,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.filter
+import com.aurora.extensions.TAG
 import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
@@ -41,8 +42,6 @@ class SearchViewModel @Inject constructor(
     private val searchHelper: SearchHelper,
     private val webSearchHelper: WebSearchHelper
 ) : ViewModel() {
-
-    private val TAG = SearchViewModel::class.java.simpleName
 
     private val contract: SearchContract
         get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper

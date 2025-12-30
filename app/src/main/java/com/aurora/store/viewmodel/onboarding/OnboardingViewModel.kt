@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModel
 import com.aurora.Constants.FLAVOUR_HUAWEI
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
+import com.aurora.extensions.TAG
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.store.AuroraApp
@@ -58,8 +59,6 @@ class OnboardingViewModel @Inject constructor(
     val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
-
-    private val TAG = OnboardingViewModel::class.java.simpleName
 
     val isMicroGPromptRequired = FlavouredUtil.promptMicroGInstall(context)
 

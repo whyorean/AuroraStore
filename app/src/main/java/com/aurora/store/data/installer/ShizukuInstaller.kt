@@ -35,6 +35,7 @@ import android.os.IInterface
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.PendingIntentCompat
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
@@ -76,8 +77,6 @@ class ShizukuInstaller @Inject constructor(
                 description = R.string.shizuku_installer_desc
             )
     }
-
-    private val TAG = ShizukuInstaller::class.java.simpleName
 
     // Taken from LSPatch (https://github.com/LSPosed/LSPatch)
     private fun IBinder.wrap() = ShizukuBinderWrapper(this)

@@ -24,6 +24,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.util.Log
 import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
+import com.aurora.extensions.TAG
 import com.huawei.appgallery.coreservice.api.ApiClient
 import com.huawei.appgallery.coreservice.api.ApiCode
 import com.huawei.appgallery.coreservice.api.IConnectionResult
@@ -37,8 +38,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class InstallerStatusReceiver : BaseInstallerStatusReceiver() {
-
-    private val TAG = InstallerStatusReceiver::class.java.simpleName
 
     private lateinit var apiClient: ApiClient
 

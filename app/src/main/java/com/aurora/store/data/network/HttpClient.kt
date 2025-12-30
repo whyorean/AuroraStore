@@ -20,6 +20,7 @@
 package com.aurora.store.data.network
 
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig.APPLICATION_ID
@@ -43,8 +44,6 @@ import javax.inject.Singleton
 
 @Singleton
 class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IHttpClient {
-
-    private val TAG = HttpClient::class.java.simpleName
 
     private val POST = "POST"
     private val GET = "GET"

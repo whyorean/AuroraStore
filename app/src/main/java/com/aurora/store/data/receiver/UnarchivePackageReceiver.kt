@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageInstaller.EXTRA_UNARCHIVE_PACKAGE_NAME
 import android.util.Log
 import androidx.core.content.getSystemService
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isVAndAbove
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.AuroraApp
@@ -23,8 +24,6 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class UnarchivePackageReceiver: BroadcastReceiver() {
-
-    private val TAG = UnarchivePackageReceiver::class.java.simpleName
 
     @Inject
     lateinit var appDetailsHelper: AppDetailsHelper

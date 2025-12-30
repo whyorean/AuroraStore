@@ -12,6 +12,7 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.helper.UpdateHelper
@@ -35,8 +36,6 @@ class BlacklistViewModel @Inject constructor(
     private val blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
-
-    private val TAG = BlacklistViewModel::class.java.simpleName
 
     private val isAuroraOnlyFilterEnabled =
         Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
