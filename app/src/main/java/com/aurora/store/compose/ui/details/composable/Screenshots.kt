@@ -50,7 +50,9 @@ fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int)
 @Composable
 private fun ScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Screenshots(screenshots = app.screenshots)
         }
     }

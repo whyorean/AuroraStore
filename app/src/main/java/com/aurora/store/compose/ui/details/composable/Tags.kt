@@ -56,7 +56,7 @@ fun Tags(app: App) {
         Formatter.formatShortFileSize(context, app.size) to R.drawable.ic_apk_install,
         app.updatedOn to R.drawable.ic_updates,
         paidLabel to R.drawable.ic_paid,
-        adsLabel to R.drawable.ic_campaign,
+        adsLabel to R.drawable.ic_campaign
     ).filterKeys { it != null }
 
     LazyRow(
@@ -72,7 +72,9 @@ fun Tags(app: App) {
 @Composable
 private fun TagsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Tags(app = app)
         }
     }

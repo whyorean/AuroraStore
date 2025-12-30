@@ -85,7 +85,9 @@ fun Actions(
 @Composable
 private fun ActionsPreview() {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Actions(
                 primaryActionDisplayName = stringResource(R.string.action_install),
                 secondaryActionDisplayName = stringResource(R.string.title_manual_download)

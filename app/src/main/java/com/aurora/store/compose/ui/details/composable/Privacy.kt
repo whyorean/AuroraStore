@@ -37,7 +37,9 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
 
     val reportStatus = when {
         report == null -> stringResource(R.string.failed_to_fetch_report)
+
         report.id == -1 -> stringResource(R.string.exodus_progress)
+
         else -> if (report.trackers.isEmpty()) {
             stringResource(R.string.exodus_no_tracker)
         } else {
@@ -60,7 +62,9 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
 @Composable
 private fun PrivacyPreview() {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Privacy(report = Report(), onNavigateToDetailsExodus = {})
         }
     }

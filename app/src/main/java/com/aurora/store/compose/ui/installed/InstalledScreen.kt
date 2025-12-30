@@ -36,8 +36,8 @@ import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.all.InstalledViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun InstalledScreen(

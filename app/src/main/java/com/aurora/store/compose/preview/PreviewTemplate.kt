@@ -14,7 +14,7 @@ import com.aurora.store.compose.theme.AuroraTheme
  * Template for previewing composable with default theme and remote image handling
  */
 @Composable
-fun PreviewTemplate(content : @Composable () -> Unit) {
+fun PreviewTemplate(content: @Composable () -> Unit) {
     AuroraTheme {
         CompositionLocalProvider(
             value = LocalAsyncImagePreviewHandler provides coilPreviewProvider,

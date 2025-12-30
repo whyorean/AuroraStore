@@ -75,7 +75,7 @@ fun BlackListItem(
                 modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium))
             )
             Column(
-                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small)),
+                modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small))
             ) {
                 Text(
                     text = displayName,

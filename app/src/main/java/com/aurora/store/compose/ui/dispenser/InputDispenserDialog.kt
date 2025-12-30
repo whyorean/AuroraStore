@@ -65,7 +65,7 @@ fun InputDispenserDialog(onAdd: (url: String) -> Unit = {}, onDismiss: () -> Uni
                     onValueChange = { url = it },
                     shape = RoundedCornerShape(10.dp),
                     singleLine = true,
-                    keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                    keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() })
                 )
             }
         },

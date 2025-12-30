@@ -54,7 +54,7 @@ private fun ExodusListItemPreview() {
         ExodusListItem(
             tracker = ExodusTracker(
                 name = "Google Analytics",
-                signature = "com.google.android.apps.analytics.|com.google.android.gms.analytics.|com.google.analytics.",
+                signature = "com.google.android.apps.analytics.|com.google.analytics.",
                 date = "2017-09-24"
             )
         )

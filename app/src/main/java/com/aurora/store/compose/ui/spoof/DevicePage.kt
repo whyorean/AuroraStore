@@ -28,10 +28,7 @@ import java.util.Properties
 import kotlin.random.Random
 
 @Composable
-fun DevicePage(
-    onRequestNavigateToSplash: () -> Unit,
-    viewModel: SpoofViewModel = hiltViewModel(),
-) {
+fun DevicePage(onRequestNavigateToSplash: () -> Unit, viewModel: SpoofViewModel = hiltViewModel()) {
     val availableDevices by viewModel.availableDevices.collectAsStateWithLifecycle()
     val currentDevice by viewModel.currentDevice.collectAsStateWithLifecycle()
 
@@ -100,14 +97,12 @@ private fun PageContent(
 @Preview(showBackground = true)
 @Composable
 private fun DevicePagePreview() {
-    fun getDevice(): Properties {
-        return Properties().apply {
-            setProperty("UserReadableName", "Google Pixel 9a")
-            setProperty("Build.VERSION.SDK_INT", "35")
-            setProperty("Build.MANUFACTURER", "Google")
-            setProperty("Platforms", "arm64-v8a")
-            setProperty("Build.PRODUCT", Random.nextInt().toString())
-        }
+    fun getDevice(): Properties = Properties().apply {
+        setProperty("UserReadableName", "Google Pixel 9a")
+        setProperty("Build.VERSION.SDK_INT", "35")
+        setProperty("Build.MANUFACTURER", "Google")
+        setProperty("Platforms", "arm64-v8a")
+        setProperty("Build.PRODUCT", Random.nextInt().toString())
     }
 
     PreviewTemplate {

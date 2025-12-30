@@ -70,7 +70,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
                             .ifBlank {
                                 stringResource(R.string.details_data_safety_share_none)
                             }
-                    ),
+                    )
                 )
             }
 
@@ -84,7 +84,9 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
 @Composable
 private fun DataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             DataSafety(
                 privacyPolicyUrl = app.privacyPolicyUrl,
                 report = Report(

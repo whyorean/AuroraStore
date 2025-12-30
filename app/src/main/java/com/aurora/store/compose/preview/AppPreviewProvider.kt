@@ -49,7 +49,7 @@ class AppPreviewProvider : PreviewParameterProvider<App> {
                 developerName = "Rahul Kumar Patel",
                 versionCode = BuildConfig.VERSION_CODE.toLong(),
                 versionName = BuildConfig.VERSION_NAME,
-                shortDescription = "An unofficial FOSS client to Google Play with an elegant design and privacy",
+                shortDescription = "An unofficial FOSS client to Google Play",
                 changes = CHANGELOG,
                 description = DESCRIPTION,
                 isFree = true,
@@ -82,7 +82,7 @@ class AppPreviewProvider : PreviewParameterProvider<App> {
                     Manifest.permission.READ_EXTERNAL_STORAGE,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ),
-                privacyPolicyUrl = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/POLICY.md",
+                privacyPolicyUrl = "https://gitlab.com/AuroraOSS/AuroraStore/"
             )
         )
 }

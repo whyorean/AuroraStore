@@ -73,11 +73,11 @@ import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
+import kotlin.random.Random
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 @Composable
 fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltViewModel()) {
@@ -103,7 +103,7 @@ private fun ScreenContent(
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
     onFilter: (filter: SearchFilter) -> Unit = {},
-    isAnonymous: Boolean = true,
+    isAnonymous: Boolean = true
 ) {
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
@@ -191,8 +191,9 @@ private fun ScreenContent(
 
     @Composable
     fun ListPane() {
+        // TODO: https://issuetracker.google.com/issues/445720462
         Scaffold(
-            modifier = Modifier.focusable(), //TODO: https://issuetracker.google.com/issues/445720462
+            modifier = Modifier.focusable(),
             topBar = { SearchBar() }
         ) { paddingValues ->
             Column(
@@ -317,7 +318,7 @@ private fun FilterHeader(
                         contentDescription = stringResource(filter)
                     )
                 }
-            },
+            }
         )
     }
 
@@ -344,7 +345,7 @@ private fun FilterHeader(
                         painter = painterResource(R.drawable.ic_arrow_drop_down),
                         contentDescription = stringResource(filter)
                     )
-                },
+                }
             )
 
             DropdownMenu(expanded = isExpanded, onDismissRequest = { isExpanded = false }) {

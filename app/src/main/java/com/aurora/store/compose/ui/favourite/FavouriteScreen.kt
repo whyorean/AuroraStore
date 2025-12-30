@@ -44,9 +44,9 @@ import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
 import com.aurora.store.compose.ui.favourite.menu.MenuItem
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.viewmodel.all.FavouriteViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.Calendar
 import kotlin.random.Random
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun FavouriteScreen(
@@ -179,7 +179,7 @@ private fun ScreenContent(
 @Preview
 @Composable
 private fun FavouriteScreenPreview(
-    @PreviewParameter(FavouritePreviewProvider ::class) favourite: Favourite
+    @PreviewParameter(FavouritePreviewProvider::class) favourite: Favourite
 ) {
     PreviewTemplate {
         val favourites = List(10) {

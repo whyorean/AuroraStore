@@ -116,7 +116,9 @@ private fun ScreenContent(
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+                horizontalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.padding_medium)
+                )
             ) {
                 FilledTonalButton(
                     modifier = Modifier.weight(1F),
@@ -135,10 +137,11 @@ private fun ScreenContent(
                     enabled = !uiState.isDownloading
                 ) {
                     Text(
-                        text = if (uiState.isInstalled)
+                        text = if (uiState.isInstalled) {
                             stringResource(R.string.action_install)
-                        else
-                            stringResource(R.string.action_ignore),
+                        } else {
+                            stringResource(R.string.action_ignore)
+                        },
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

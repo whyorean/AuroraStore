@@ -138,7 +138,7 @@ fun DownloadListItem(
                 )
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = dimensionResource(R.dimen.margin_small)),
+                        .padding(horizontal = dimensionResource(R.dimen.margin_small))
                 ) {
                     Text(
                         text = download.displayName,

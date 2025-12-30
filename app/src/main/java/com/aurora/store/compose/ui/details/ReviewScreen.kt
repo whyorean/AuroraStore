@@ -50,8 +50,8 @@ import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ReviewViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun ReviewScreen(
@@ -90,7 +90,6 @@ private fun ScreenContent(
     onFilter: (filter: Review.Filter) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -131,8 +130,6 @@ private fun ScreenContent(
                 }
             }
         }
-
-
     }
 }
 
@@ -175,7 +172,7 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
                             contentDescription = stringResource(filters.getValue(filter))
                         )
                     }
-                },
+                }
             )
         }
     }

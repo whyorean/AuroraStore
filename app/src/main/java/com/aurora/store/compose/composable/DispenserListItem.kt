@@ -68,9 +68,9 @@ fun DispenserListItem(
                 overflow = TextOverflow.Ellipsis
             )
         }
-
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 private fun DispenserListItemPreview() {

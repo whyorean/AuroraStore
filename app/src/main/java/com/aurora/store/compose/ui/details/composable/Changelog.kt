@@ -59,7 +59,9 @@ fun Changelog(changelog: String) {
 @Composable
 private fun ChangelogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Changelog(changelog = app.changes)
         }
     }

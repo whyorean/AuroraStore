@@ -47,7 +47,7 @@ import kotlinx.coroutines.launch
 fun SpoofScreen(
     onNavigateUp: () -> Unit,
     onNavigateToSplash: () -> Unit,
-    viewModel: SpoofViewModel = hiltViewModel(),
+    viewModel: SpoofViewModel = hiltViewModel()
 ) {
     ScreenContent(
         onNavigateUp = onNavigateUp,

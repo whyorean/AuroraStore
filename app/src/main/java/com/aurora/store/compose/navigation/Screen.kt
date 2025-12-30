@@ -26,7 +26,7 @@ sealed class Screen : NavKey, Parcelable {
     data object Blacklist : Screen()
 
     @Serializable
-    data class DevProfile(val developerId: String): Screen()
+    data class DevProfile(val developerId: String) : Screen()
 
     @Serializable
     data class AppDetails(val packageName: String) : Screen()

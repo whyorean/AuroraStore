@@ -60,7 +60,11 @@ fun RatingAndReviews(
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
     val stars = listOf(
-        rating.oneStar, rating.twoStar, rating.threeStar, rating.fourStar, rating.fiveStar
+        rating.oneStar,
+        rating.twoStar,
+        rating.threeStar,
+        rating.fourStar,
+        rating.fiveStar
     ).map { it.toFloat() }.also {
         // No ratings available, nothing to show
         if (it.sum() == 0F) return
@@ -150,7 +154,9 @@ private fun RatingAndReviewsPreview(@PreviewParameter(AppPreviewProvider::class)
         )
     }
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             RatingAndReviews(rating = app.rating, featuredReviews = reviews)
         }
     }

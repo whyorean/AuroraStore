@@ -36,8 +36,8 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.viewmodel.details.DevProfileViewModel
 import com.aurora.store.viewmodel.search.SearchViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * Screen to display apps from a developer using the developerId

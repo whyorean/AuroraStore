@@ -72,7 +72,9 @@ fun DeveloperDetails(address: String, website: String, email: String) {
 @Composable
 private fun DeveloperDetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             DeveloperDetails(
                 address = app.developerAddress,
                 website = app.developerWebsite,

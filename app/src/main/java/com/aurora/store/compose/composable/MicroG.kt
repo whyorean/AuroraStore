@@ -87,7 +87,7 @@ fun MicroG(
         ) {
             Text(
                 text = stringResource(R.string.onboarding_gms_microg),
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyMedium
             )
 
             links.fastForEach { link ->
@@ -132,10 +132,11 @@ fun MicroG(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = if (uiState.isDownloading)
+                    text = if (uiState.isDownloading) {
                         stringResource(R.string.action_installing)
-                    else
+                    } else {
                         stringResource(R.string.action_install_microG)
+                    }
                 )
             }
             if (uiState.isDownloading) {

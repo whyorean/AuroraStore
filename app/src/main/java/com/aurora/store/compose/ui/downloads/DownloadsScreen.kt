@@ -45,8 +45,8 @@ import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.viewmodel.downloads.DownloadsViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun DownloadsScreen(

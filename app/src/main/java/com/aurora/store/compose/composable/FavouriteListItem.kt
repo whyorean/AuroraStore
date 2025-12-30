@@ -102,7 +102,9 @@ fun FavouriteListItem(
                         .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
                 )
                 Column(
-                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small))
+                    modifier = Modifier.padding(
+                        horizontal = dimensionResource(R.dimen.margin_small)
+                    )
                 ) {
                     Text(
                         text = favourite.displayName,

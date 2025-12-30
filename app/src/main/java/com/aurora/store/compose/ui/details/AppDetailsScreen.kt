@@ -50,6 +50,7 @@ import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
@@ -85,9 +86,8 @@ import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
-import kotlinx.coroutines.launch
 import kotlin.random.Random
-import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
+import kotlinx.coroutines.launch
 
 @Composable
 fun AppDetailsScreen(
@@ -112,6 +112,7 @@ fun AppDetailsScreen(
 
     when (state) {
         is AppState.Loading -> ScreenContentLoading(onNavigateUp = onNavigateUp)
+
         is AppState.Error -> {
             ScreenContentError(
                 onNavigateUp = onNavigateUp,
@@ -238,8 +239,8 @@ private fun ScreenContentApp(
 
     fun onInstall(requestedApp: App = app, ignoreMicroG: Boolean = false) {
         if (isPermittedToInstall(context, app)) {
-            val shouldPromptMicroGInstall = app.requiresGMS()
-                    && FlavouredUtil.promptMicroGInstall(context)
+            val shouldPromptMicroGInstall = app.requiresGMS() &&
+                FlavouredUtil.promptMicroGInstall(context)
 
             if (shouldPromptMicroGInstall && !ignoreMicroG) {
                 showExtraPane(ExtraScreen.MicroG)
@@ -262,11 +263,15 @@ private fun ScreenContentApp(
         AppDetailsMenu(isFavorite = isFavorite, state = state) { menuItem ->
             when (menuItem) {
                 MenuItem.FAVORITE -> onFavorite()
+
                 MenuItem.MANUAL_DOWNLOAD -> {
                     showExtraPane(ExtraScreen.ManualDownload)
                 }
+
                 MenuItem.SHARE -> context.share(app.displayName, app.packageName)
+
                 MenuItem.APP_INFO -> context.appInfo(app.packageName)
+
                 MenuItem.ADD_TO_HOME -> {
                     ShortcutManagerUtil.requestPinShortcut(context, app.packageName)
                 }
@@ -454,61 +459,59 @@ private fun ScreenContentApp(
     }
 
     @Composable
-    fun ExtraPane(screen: NavKey) {
-        return when (screen) {
-            is ExtraScreen.Review -> ReviewScreen(
-                packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack
-            )
+    fun ExtraPane(screen: NavKey) = when (screen) {
+        is ExtraScreen.Review -> ReviewScreen(
+            packageName = app.packageName,
+            onNavigateUp = ::onNavigateBack
+        )
 
-            is ExtraScreen.Exodus -> ExodusScreen(
-                packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack
-            )
+        is ExtraScreen.Exodus -> ExodusScreen(
+            packageName = app.packageName,
+            onNavigateUp = ::onNavigateBack
+        )
 
-            is ExtraScreen.More -> MoreScreen(
-                packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack,
-                onNavigateToAppDetails = onNavigateToAppDetails
-            )
+        is ExtraScreen.More -> MoreScreen(
+            packageName = app.packageName,
+            onNavigateUp = ::onNavigateBack,
+            onNavigateToAppDetails = onNavigateToAppDetails
+        )
 
-            is ExtraScreen.Permission -> PermissionScreen(
-                packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack
-            )
+        is ExtraScreen.Permission -> PermissionScreen(
+            packageName = app.packageName,
+            onNavigateUp = ::onNavigateBack
+        )
 
-            is ExtraScreen.Screenshot -> ScreenshotScreen(
-                packageName = app.packageName,
-                index = screen.index,
-                onNavigateUp = ::onNavigateBack
-            )
+        is ExtraScreen.Screenshot -> ScreenshotScreen(
+            packageName = app.packageName,
+            index = screen.index,
+            onNavigateUp = ::onNavigateBack
+        )
 
-            is ExtraScreen.ManualDownload -> ManualDownloadScreen(
-                packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack,
-                onRequestInstall = { requestedApp -> onInstall(requestedApp) }
-            )
+        is ExtraScreen.ManualDownload -> ManualDownloadScreen(
+            packageName = app.packageName,
+            onNavigateUp = ::onNavigateBack,
+            onRequestInstall = { requestedApp -> onInstall(requestedApp) }
+        )
 
-            is ExtraScreen.MicroG -> MicroGScreen(
-                packageName = app.packageName,
-                onNavigateUp = ::onNavigateBack,
-                onIgnore = { onInstall(ignoreMicroG = it) }
-            )
+        is ExtraScreen.MicroG -> MicroGScreen(
+            packageName = app.packageName,
+            onNavigateUp = ::onNavigateBack,
+            onIgnore = { onInstall(ignoreMicroG = it) }
+        )
 
-            is Screen.DevProfile -> DevProfileScreen(
-                publisherId = app.developerName,
-                onNavigateUp = ::onNavigateBack,
-                onNavigateToAppDetails = { onNavigateToAppDetails(it) }
-            )
+        is Screen.DevProfile -> DevProfileScreen(
+            publisherId = app.developerName,
+            onNavigateUp = ::onNavigateBack,
+            onNavigateToAppDetails = { onNavigateToAppDetails(it) }
+        )
 
-            is Screen.PermissionRationale -> PermissionRationaleScreen(
-                onNavigateUp = ::onNavigateBack,
-                requiredPermissions = screen.requiredPermissions,
-                onPermissionCallback = { onInstall() }
-            )
+        is Screen.PermissionRationale -> PermissionRationaleScreen(
+            onNavigateUp = ::onNavigateBack,
+            requiredPermissions = screen.requiredPermissions,
+            onPermissionCallback = { onInstall() }
+        )
 
-            else -> {}
-        }
+        else -> {}
     }
 
     NavigableSupportingPaneScaffold(

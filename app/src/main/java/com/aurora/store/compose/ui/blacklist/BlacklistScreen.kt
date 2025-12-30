@@ -51,9 +51,9 @@ import com.aurora.store.compose.ui.blacklist.menu.BlacklistMenu
 import com.aurora.store.compose.ui.blacklist.menu.MenuItem
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.blacklist.BlacklistViewModel
+import java.util.Calendar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.Calendar
 
 @Composable
 fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hiltViewModel()) {
@@ -132,7 +132,9 @@ private fun ScreenContent(
         BlacklistMenu { menuItem ->
             when (menuItem) {
                 MenuItem.SELECT_ALL -> onBlacklistAll()
+
                 MenuItem.REMOVE_ALL -> onWhitelistAll()
+
                 MenuItem.IMPORT -> {
                     docImportLauncher.launch(arrayOf(Constants.JSON_MIME_TYPE))
                 }
@@ -218,7 +220,9 @@ private fun ScreenContent(
                 val isFiltered = isPackageFiltered(pkg)
                 BlackListItem(
                     icon = PackageUtil.getIconForPackage(context, pkg.packageName)!!,
-                    displayName = pkg.applicationInfo!!.loadLabel(context.packageManager).toString(),
+                    displayName = pkg.applicationInfo!!.loadLabel(
+                        context.packageManager
+                    ).toString(),
                     packageName = pkg.packageName,
                     versionName = pkg.versionName!!,
                     versionCode = PackageInfoCompat.getLongVersionCode(pkg),

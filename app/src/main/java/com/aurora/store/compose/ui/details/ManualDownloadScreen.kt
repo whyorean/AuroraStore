@@ -107,7 +107,6 @@ private fun ScreenContent(
     onRequestInstall: (versionCode: Long) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 ) {
-
     val coroutineScope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
     val errorMessage = stringResource(R.string.manual_download_version_error)
@@ -180,7 +179,9 @@ private fun ScreenContent(
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+                horizontalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.padding_medium)
+                )
             ) {
                 FilledTonalButton(
                     modifier = Modifier.weight(1F),

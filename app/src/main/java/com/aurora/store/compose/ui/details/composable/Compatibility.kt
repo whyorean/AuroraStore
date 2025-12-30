@@ -31,7 +31,7 @@ import com.aurora.store.data.model.Scores
 fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
     Header(
         title = stringResource(R.string.details_compatibility_title),
-        subtitle = stringResource(R.string.plexus_powered),
+        subtitle = stringResource(R.string.plexus_powered)
     )
 
     if (!needsGms) {
@@ -63,7 +63,7 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
 
     val scoresStatus = mapOf(
         R.string.details_compatibility_no_gms to plexusScores?.aosp?.status,
-        R.string.details_compatibility_microg to plexusScores?.microG?.status,
+        R.string.details_compatibility_microg to plexusScores?.microG?.status
     )
     scoresStatus.forEach { (title, description) ->
         Info(
@@ -80,7 +80,9 @@ fun Compatibility(needsGms: Boolean, plexusScores: Scores? = null) {
 @Composable
 private fun CompatibilityPreview() {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Compatibility(needsGms = true)
         }
     }

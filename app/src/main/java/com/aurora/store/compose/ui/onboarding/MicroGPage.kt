@@ -33,12 +33,12 @@ import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 @Composable
 fun MicroGPage(
     onMicrogTOSChecked: (Boolean) -> Unit = {},
-    viewModel: MicroGViewModel = hiltViewModel(),
+    viewModel: MicroGViewModel = hiltViewModel()
 ) {
     ScreenContent(
         uiState = viewModel.uiState,
         onInstall = { viewModel.downloadMicroG() },
-        onMicrogTOSChecked = onMicrogTOSChecked,
+        onMicrogTOSChecked = onMicrogTOSChecked
     )
 }
 
@@ -88,7 +88,6 @@ private fun ScreenContent(
             onTOSChecked = onMicrogTOSChecked
         )
     }
-
 }
 
 @Preview(showBackground = true)
@@ -96,7 +95,7 @@ private fun ScreenContent(
 private fun MicroGPagePreview() {
     PreviewTemplate {
         ScreenContent(
-            uiState = MicroGUIState(),
+            uiState = MicroGUIState()
         )
     }
 }

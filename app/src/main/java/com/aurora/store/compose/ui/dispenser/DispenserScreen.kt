@@ -48,7 +48,7 @@ fun DispenserScreen(onNavigateUp: () -> Unit, viewModel: DispenserViewModel = hi
         )
     }
 
-    var shouldRemoveDispenser : String? by rememberSaveable { mutableStateOf(null) }
+    var shouldRemoveDispenser: String? by rememberSaveable { mutableStateOf(null) }
     shouldRemoveDispenser?.let { url ->
         RemoveDispenserDialog(
             url = url,

@@ -92,7 +92,7 @@ fun AnimatedAppIcon(
     }
 }
 
-private class ProgressProvider: PreviewParameterProvider<Float> {
+private class ProgressProvider : PreviewParameterProvider<Float> {
     override val values: Sequence<Float>
         get() = sequenceOf(0F, 50F)
 }

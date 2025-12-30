@@ -44,7 +44,7 @@ import com.aurora.store.util.PackageUtil
 fun Details(
     app: App,
     state: AppState = AppState.Unavailable,
-    onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {},
+    onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val versionName = if (state is AppState.Installed) state.versionName else app.versionName
@@ -82,7 +82,7 @@ fun Details(
                         AppState.Installing::class,
                         AppState.Downloading::class -> {
                             "${Formatter.formatShortFileSize(context, speed)}/s" +
-                                    ", " + CommonUtil.getETAString(context, timeRemaining)
+                                ", " + CommonUtil.getETAString(context, timeRemaining)
                         }
 
                         AppState.Updatable::class -> {
@@ -96,6 +96,7 @@ fun Details(
                         }
 
                         AppState.Queued::class -> stringResource(R.string.status_queued)
+
                         AppState.Purchasing::class -> stringResource(R.string.preparing_to_install)
 
                         else -> {
@@ -112,8 +113,10 @@ fun Details(
 @Composable
 private fun DetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
-            Details(app =  app)
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
+            Details(app = app)
         }
     }
 }

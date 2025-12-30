@@ -27,10 +27,7 @@ import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import java.util.Locale
 
 @Composable
-fun LocalePage(
-    onRequestNavigateToSplash: () -> Unit,
-    viewModel: SpoofViewModel = hiltViewModel()
-) {
+fun LocalePage(onRequestNavigateToSplash: () -> Unit, viewModel: SpoofViewModel = hiltViewModel()) {
     val availableLocales by viewModel.availableLocales.collectAsStateWithLifecycle()
     val currentLocale by viewModel.currentLocale.collectAsStateWithLifecycle()
 
@@ -50,7 +47,7 @@ private fun PageContent(
     defaultLocale: Locale = Locale.getDefault(),
     locales: List<Locale> = emptyList(),
     isLocaleSelected: (locale: Locale) -> Boolean = { false },
-    onLocaleSelected: (locale: Locale) -> Unit = {},
+    onLocaleSelected: (locale: Locale) -> Unit = {}
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),

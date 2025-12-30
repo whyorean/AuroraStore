@@ -77,7 +77,7 @@ private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Un
         R.drawable.ic_ethereum_eth,
         R.drawable.ic_bhim,
         R.drawable.ic_paypal,
-        R.drawable.ic_libera_pay,
+        R.drawable.ic_libera_pay
     )
 
     val links = linkURLS.mapIndexed { index, url ->

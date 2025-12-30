@@ -64,7 +64,7 @@ fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Uni
                 .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
         )
         Column(
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small)),
+            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small))
         ) {
             Text(
                 text = app.displayName,
@@ -90,25 +90,23 @@ fun LargeAppListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: Ap
 }
 
 @Composable
-private fun buildExtras(app: App): List<String> {
-    return mutableListOf<String>().apply {
-        add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
-        add("${app.labeledRating}★")
+private fun buildExtras(app: App): List<String> = mutableListOf<String>().apply {
+    add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
+    add("${app.labeledRating}★")
 
-        if (app.isFree) {
-            add(stringResource(R.string.details_free))
-        } else {
-            add(stringResource(R.string.details_paid))
-        }
+    if (app.isFree) {
+        add(stringResource(R.string.details_free))
+    } else {
+        add(stringResource(R.string.details_paid))
+    }
 
-        if (app.containsAds) {
-            add(stringResource(R.string.details_contains_ads))
-        } else {
-            add(stringResource(R.string.details_no_ads))
-        }
+    if (app.containsAds) {
+        add(stringResource(R.string.details_contains_ads))
+    } else {
+        add(stringResource(R.string.details_no_ads))
+    }
 
-        if (app.requiresGMS()) {
-            add(stringResource(R.string.details_gsf_dependent))
-        }
+    if (app.requiresGMS()) {
+        add(stringResource(R.string.details_gsf_dependent))
     }
 }

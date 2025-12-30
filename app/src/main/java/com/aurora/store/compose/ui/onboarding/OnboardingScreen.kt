@@ -71,9 +71,7 @@ private fun ScreenContent(
     val pagerState = rememberPagerState { pages.size }
     val coroutineScope = rememberCoroutineScope()
 
-    fun isFinalPage(): Boolean {
-        return pagerState.currentPage == (pagerState.pageCount - 1)
-    }
+    fun isFinalPage(): Boolean = pagerState.currentPage == (pagerState.pageCount - 1)
 
     @Composable
     fun SetupActions(uiState: OnboardingUiState) {
@@ -105,6 +103,7 @@ private fun ScreenContent(
                 onClick = {
                     when (pagerState.currentPage) {
                         0 -> onFinishOnboarding()
+
                         else -> {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage - 1)
@@ -125,10 +124,13 @@ private fun ScreenContent(
 
             Button(
                 modifier = buttonWidthModifier,
-                enabled = !isFinalPage() || (!uiState.isMicroBundleChecked || uiState.isMicroGBundleInstalled),
+                enabled =
+                    !isFinalPage() ||
+                        (!uiState.isMicroBundleChecked || uiState.isMicroGBundleInstalled),
                 onClick = {
                     when {
                         isFinalPage() -> onFinishOnboarding()
+
                         else -> {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage + 1)
@@ -182,8 +184,12 @@ private fun ScreenContent(
                 ) { page ->
                     when (pages[page]) {
                         OnboardingPage.WELCOME -> WelcomePage()
+
                         OnboardingPage.PERMISSIONS -> PermissionsPage()
-                        OnboardingPage.MICRO_G -> MicroGPage(onMicrogTOSChecked = onMicrogTOSChecked)
+
+                        OnboardingPage.MICRO_G -> MicroGPage(
+                            onMicrogTOSChecked = onMicrogTOSChecked
+                        )
                     }
                 }
             }

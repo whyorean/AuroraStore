@@ -57,7 +57,6 @@ fun Logo(modifier: Modifier = Modifier) {
             overflow = TextOverflow.Ellipsis
         )
     }
-
 }
 
 @Preview(showBackground = true)

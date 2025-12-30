@@ -73,7 +73,9 @@ fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Bool
 @Composable
 private fun TestingPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     PreviewTemplate {
-        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
             Testing(isSubscribed = app.testingProgram!!.isSubscribed)
         }
     }

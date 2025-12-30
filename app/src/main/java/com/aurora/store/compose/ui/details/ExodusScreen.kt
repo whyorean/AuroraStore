@@ -162,7 +162,7 @@ private fun ScreenContentError(
                 navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
                 onNavigateUp = onNavigateUp
             )
-        },
+        }
     ) { paddingValues ->
         Error(
             modifier = Modifier.padding(paddingValues),

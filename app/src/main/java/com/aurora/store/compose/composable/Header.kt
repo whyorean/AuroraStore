@@ -62,7 +62,7 @@ fun Header(
                 text = title,
                 style = MaterialTheme.typography.titleMedium,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
+                overflow = TextOverflow.Ellipsis
             )
             if (!subtitle.isNullOrBlank()) {
                 Text(
@@ -74,7 +74,7 @@ fun Header(
         if (onClick != null) {
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_right),
-                contentDescription = null,
+                contentDescription = null
             )
         }
     }
