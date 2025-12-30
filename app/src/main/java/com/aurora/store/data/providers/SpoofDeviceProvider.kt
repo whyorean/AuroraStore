@@ -41,7 +41,9 @@ import javax.inject.Singleton
 @Singleton
 open class SpoofDeviceProvider(private val context: Context) {
 
-    private val SUFFIX = ".properties"
+    companion object {
+        private const val SUFFIX = ".properties"
+    }
 
     val availableDeviceProperties: List<Properties>
         get() {

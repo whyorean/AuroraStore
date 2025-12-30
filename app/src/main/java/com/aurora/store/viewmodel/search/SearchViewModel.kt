@@ -49,9 +49,9 @@ class SearchViewModel @Inject constructor(
     private val _suggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
 
-    private val _filter = MutableStateFlow(SearchFilter())
+    private val searchFilter = MutableStateFlow(SearchFilter())
     private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
-    val apps = combine(_filter, _apps) { filter, pagingData ->
+    val apps = combine(searchFilter, _apps) { filter, pagingData ->
         pagingData.filter { app ->
             when {
                 filter.noAds && app.containsAds -> false
@@ -65,7 +65,7 @@ class SearchViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), PagingData.empty())
 
     fun filterResults(filter: SearchFilter) {
-        _filter.value = filter
+        searchFilter.value = filter
     }
 
     fun search(query: String) {

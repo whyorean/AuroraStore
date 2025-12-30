@@ -35,7 +35,9 @@ class BlacklistProvider @Inject constructor(
     @ApplicationContext val context: Context,
 ) {
 
-    private val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
+    companion object {
+        private const val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
+    }
 
     var blacklist: MutableSet<String>
         set(value) = Preferences.putString(

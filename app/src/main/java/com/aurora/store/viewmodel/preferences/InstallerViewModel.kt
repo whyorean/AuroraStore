@@ -42,7 +42,7 @@ class InstallerViewModel @Inject constructor(
     private val _error = MutableSharedFlow<String>()
     val error = _error.asSharedFlow()
 
-    private var _installerId: Int
+    private var installerId: Int
         get() = sharedPreferences.getInt(PREFERENCE_INSTALLER_ID, 0)
         set(value) = sharedPreferences.edit { putInt(PREFERENCE_INSTALLER_ID, value) }
 
@@ -50,7 +50,7 @@ class InstallerViewModel @Inject constructor(
         key = PREFERENCE_INSTALLER_ID,
         scope = viewModelScope,
         initial = AppInstaller.getCurrentInstaller(context).ordinal,
-        valueProvider = { _installerId }
+        valueProvider = { installerId }
     )
 
     init {

@@ -45,8 +45,10 @@ import javax.inject.Singleton
 @Singleton
 class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IHttpClient {
 
-    private val POST = "POST"
-    private val GET = "GET"
+    companion object {
+        private const val POST = "POST"
+        private const val GET = "GET"
+    }
 
     private val _responseCode = MutableStateFlow(100)
     override val responseCode: StateFlow<Int>

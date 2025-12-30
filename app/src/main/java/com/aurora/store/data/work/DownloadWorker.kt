@@ -77,6 +77,10 @@ class DownloadWorker @AssistedInject constructor(
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, context, workerParams) {
 
+    companion object {
+        private const val NOTIFICATION_ID: Int = 200
+    }
+
     private lateinit var download: Download
 
     private val notificationManager = context.getSystemService<NotificationManager>()!!
@@ -85,8 +89,6 @@ class DownloadWorker @AssistedInject constructor(
     private var totalBytes by Delegates.notNull<Long>()
     private var totalProgress = 0
     private var downloadedBytes = 0L
-
-    private val NOTIFICATION_ID: Int = 200
 
     inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
     inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))

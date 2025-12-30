@@ -44,6 +44,9 @@ class ExportWorker @AssistedInject constructor(
         private const val VERSION_CODE = "VERSION_CODE"
         private const val DISPLAY_NAME = "DISPLAY_NAME"
 
+        private const val NOTIFICATION_ID = 500
+        private const val NOTIFICATION_ID_FGS = 501
+
         /**
          * Exports the installed package to the given URI
          * @param app App to export
@@ -91,8 +94,6 @@ class ExportWorker @AssistedInject constructor(
     }
 
     private lateinit var notificationManager: NotificationManager
-    private val NOTIFICATION_ID = 500
-    private val NOTIFICATION_ID_FGS = 501
 
     override suspend fun doWork(): Result {
         val isDownload = inputData.getBoolean(IS_DOWNLOAD, false)
