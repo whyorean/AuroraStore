@@ -13,7 +13,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import com.aurora.store.IsolatedTest
 import org.junit.Test
 
-class AnimatedAppIconTest: IsolatedTest() {
+class AnimatedAppIconTest : IsolatedTest() {
 
     @Test
     fun testAnimatedAppIconNoProgress() {

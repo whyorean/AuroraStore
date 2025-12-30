@@ -15,7 +15,7 @@ import com.aurora.store.IsolatedTest
 import com.aurora.store.R
 import org.junit.Test
 
-class InfoTest: IsolatedTest() {
+class InfoTest : IsolatedTest() {
 
     @Test
     fun testInfoWithoutClickHandling() {

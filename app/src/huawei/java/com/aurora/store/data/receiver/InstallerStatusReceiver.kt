@@ -144,19 +144,17 @@ class InstallerStatusReceiver : BaseInstallerStatusReceiver() {
         }
     }
 
-    private fun isHuaweiSilentInstallSupported(context: Context): Boolean {
-        return try {
-            val applicationInfo: ApplicationInfo = context.packageManager.getApplicationInfo(
-                PACKAGE_NAME_APP_GALLERY,
-                PackageManager.GET_META_DATA
-            )
+    private fun isHuaweiSilentInstallSupported(context: Context): Boolean = try {
+        val applicationInfo: ApplicationInfo = context.packageManager.getApplicationInfo(
+            PACKAGE_NAME_APP_GALLERY,
+            PackageManager.GET_META_DATA
+        )
 
-            val supportFunction = applicationInfo.metaData.getInt("appgallery_support_function")
-            Log.i(TAG, "Huawei silent install support function: $supportFunction")
+        val supportFunction = applicationInfo.metaData.getInt("appgallery_support_function")
+        Log.i(TAG, "Huawei silent install support function: $supportFunction")
 
-            (supportFunction and (1 shl 5)) != 0
-        } catch (e: Exception) {
-            false
-        }
+        (supportFunction and (1 shl 5)) != 0
+    } catch (e: Exception) {
+        false
     }
 }

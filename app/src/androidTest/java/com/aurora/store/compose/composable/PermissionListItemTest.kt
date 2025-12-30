@@ -24,7 +24,7 @@ class PermissionListItemTest : IsolatedTest() {
         get() = Permission(
             PermissionType.STORAGE_MANAGER,
             stringResource(R.string.onboarding_permission_esm),
-            stringResource(R.string.onboarding_permission_esa_desc),
+            stringResource(R.string.onboarding_permission_esa_desc)
         )
 
     @Test
