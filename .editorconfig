@@ -1,0 +1,9 @@
+#
+# SPDX-FileCopyrightText: 2025 The Calyx Institute
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+root = true
+
+[*.{kt,kts}]
+ktlint_code_style = android_studio

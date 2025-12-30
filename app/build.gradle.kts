@@ -170,13 +170,18 @@ ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
 }
 
+ktlint {
+    android = true
+    verbose = true
+}
+
 dependencies {
 
-    //Google's Goodies
+    // Google's Goodies
     implementation(libs.google.android.material)
     implementation(libs.google.protobuf.javalite)
 
-    //AndroidX
+    // AndroidX
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.browser)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -209,28 +214,28 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //Coil
+    // Coil
     implementation(libs.coil.kt)
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
 
-    //Shimmer
+    // Shimmer
     implementation(libs.facebook.shimmer)
 
-    //Epoxy
+    // Epoxy
     implementation(libs.airbnb.epoxy.android)
     ksp(libs.airbnb.epoxy.processor)
 
-    //HTTP Clients
+    // HTTP Clients
     implementation(libs.squareup.okhttp)
 
-    //Lib-SU
+    // Lib-SU
     implementation(libs.github.topjohnwu.libsu)
 
-    //GPlayApi
+    // GPlayApi
     implementation(libs.auroraoss.gplayapi)
 
-    //Shizuku
+    // Shizuku
     compileOnly(libs.rikka.hidden.stub)
     implementation(libs.rikka.tools.refine.runtime)
     implementation(libs.rikka.shizuku.api)
@@ -238,7 +243,7 @@ dependencies {
 
     implementation(libs.lsposed.hiddenapibypass)
 
-    //Test
+    // Test
     testImplementation(libs.junit)
     testImplementation(libs.androidx.junit)
     testImplementation(libs.google.truth)
@@ -246,7 +251,7 @@ dependencies {
     androidTestImplementation(libs.google.truth)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //Hilt
+    // Hilt
     ksp(libs.hilt.android.compiler)
     ksp(libs.hilt.androidx.compiler)
     implementation(libs.androidx.hilt.viewmodel)
@@ -256,7 +261,7 @@ dependencies {
     kspAndroidTest(libs.hilt.android.compiler)
     androidTestImplementation(libs.hilt.android.testing)
 
-    //Room
+    // Room
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
