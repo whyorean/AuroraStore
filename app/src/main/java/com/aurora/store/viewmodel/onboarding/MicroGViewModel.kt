@@ -21,11 +21,11 @@ import com.aurora.store.data.room.suite.ExternalApk
 import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 data class MicroGUIState(
     var isDownloading: Boolean = false,
@@ -40,18 +40,26 @@ class MicroGViewModel @Inject constructor(
 ) : ViewModel() {
 
     companion object {
-        private const val MICROG_DOWNLOAD_URL =
+        private const val BASE_URL =
             "https://github.com/microg/GmsCore/releases/download"
         private const val MICROG_VERSION = "v0.3.11.250932"
         private const val GMS_VERSION_CODE = 250932022
         private const val COMPANION_VERSION_CODE = 84022622
+
+        private const val MICROG_DOWNLOAD_URL =
+            "$BASE_URL/$MICROG_VERSION/$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk"
+        private const val FAKE_STORE_DOWNLOAD_URL =
+            "$BASE_URL/$MICROG_VERSION/$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk"
+
+        private const val ICON_BASE_URL = "https://raw.githubusercontent.com/microg"
+        private const val ICON_FILE_PATH = "src/main/res/mipmap-xxxhdpi/ic_app.png"
     }
 
     init {
         AuroraApp.events.installerEvent.onEach {
             when (it) {
-                is InstallerEvent.Installed -> confirmBundleInstall(it.packageName)
-                else                        -> {}
+                is InstallerEvent.Installed -> confirmBundleInstall()
+                else -> {}
             }
         }.launchIn(AuroraApp.scope)
     }
@@ -64,11 +72,11 @@ class MicroGViewModel @Inject constructor(
         versionCode = GMS_VERSION_CODE.toLong(),
         versionName = MICROG_VERSION,
         displayName = "microG Services",
-        iconURL = "https://raw.githubusercontent.com/microg/GmsCore/refs/heads/master/play-services-core/src/main/res/mipmap-xxxhdpi/ic_app.png",
+        iconURL = "$ICON_BASE_URL/GmsCore/refs/heads/master/play-services-core/$ICON_FILE_PATH",
         developerName = "microG Team",
         fileList = listOf(
             PlayFile(
-                url = "$MICROG_DOWNLOAD_URL/$MICROG_VERSION/$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk",
+                url = MICROG_DOWNLOAD_URL,
                 name = "$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk",
                 size = 92386474,
                 sha256 = "2894a93544a8d7ca8f6ca96e7cc697647a7e0862165b6a02f8cd26822759b9cc"
@@ -81,11 +89,11 @@ class MicroGViewModel @Inject constructor(
         versionCode = COMPANION_VERSION_CODE.toLong(),
         versionName = MICROG_VERSION,
         displayName = "microG Companion",
-        iconURL = "https://raw.githubusercontent.com/microg/FakeStore/refs/heads/main/fake-store/src/main/res/mipmap-xxxhdpi/ic_app.png",
+        iconURL = "$ICON_BASE_URL/FakeStore/refs/heads/main/fake-store/$ICON_FILE_PATH",
         developerName = "microG Team",
         fileList = listOf(
             PlayFile(
-                url = "$MICROG_DOWNLOAD_URL/$MICROG_VERSION/$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk",
+                url = FAKE_STORE_DOWNLOAD_URL,
                 name = "$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk",
                 size = 4626291,
                 sha256 = "b9623b8da8791c7e887efca941434b20e517c8a42ca4fda713625957edcc84eb"
@@ -111,7 +119,7 @@ class MicroGViewModel @Inject constructor(
         }
     }
 
-    fun confirmBundleInstall(packageName: String) {
+    private fun confirmBundleInstall() {
         if (PackageUtil.isMicroGBundleInstalled(context)) {
             uiState = uiState.copy(isInstalled = true, isDownloading = false)
         }

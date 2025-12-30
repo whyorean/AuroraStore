@@ -28,15 +28,15 @@ import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
 import com.aurora.store.TopChartStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import javax.inject.Inject
 
 @HiltViewModel
 class TopChartViewModel @Inject constructor(
     private val webTopChartsHelper: WebTopChartsHelper
-): ViewModel() {
+) : ViewModel() {
 
     private var stash: TopChartStash = mutableMapOf()
 

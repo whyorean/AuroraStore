@@ -24,6 +24,7 @@ import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -34,7 +35,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
@@ -72,14 +72,12 @@ class SearchViewModel @Inject constructor(
         var nextBundleUrl: String? = null
         val nextStreamUrls = mutableSetOf<String>()
 
-        fun Collection<StreamCluster>.flatClusters(): List<App> {
-            return this.flatMap { streamCluster ->
-                if (streamCluster.hasNext()) {
-                    nextStreamUrls.add(streamCluster.clusterNextPageUrl)
-                }
-                streamCluster.clusterAppList
-            }.distinctBy { app -> app.packageName }
-        }
+        fun Collection<StreamCluster>.flatClusters(): List<App> = this.flatMap { streamCluster ->
+            if (streamCluster.hasNext()) {
+                nextStreamUrls.add(streamCluster.clusterNextPageUrl)
+            }
+            streamCluster.clusterAppList
+        }.distinctBy { app -> app.packageName }
 
         manualPager { page ->
             try {

@@ -31,10 +31,10 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import javax.inject.Inject
 
 @HiltViewModel
 class CategoryStreamViewModel @Inject constructor(
@@ -64,7 +64,7 @@ class CategoryStreamViewModel @Inject constructor(
 
                 try {
                     if (!bundle.hasCluster() || bundle.hasNext()) {
-                        //Fetch new stream bundle
+                        // Fetch new stream bundle
                         val newBundle = if (bundle.streamClusters.isEmpty()) {
                             categoryStreamContract.fetch(browseUrl)
                         } else {
@@ -74,14 +74,14 @@ class CategoryStreamViewModel @Inject constructor(
                             )
                         }
 
-                        //Update old bundle
+                        // Update old bundle
                         val mergedBundle = bundle.copy(
                             streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         )
                         stash[browseUrl] = mergedBundle
 
-                        //Post updated to UI
+                        // Post updated to UI
                         liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i(TAG, "End of Bundle")

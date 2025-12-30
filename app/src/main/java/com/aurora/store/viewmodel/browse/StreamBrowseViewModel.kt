@@ -27,9 +27,9 @@ import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class StreamBrowseViewModel @Inject constructor(

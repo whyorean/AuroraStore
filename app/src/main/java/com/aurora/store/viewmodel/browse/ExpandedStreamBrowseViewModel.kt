@@ -27,10 +27,10 @@ import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import javax.inject.Inject
 
 @HiltViewModel
 class ExpandedStreamBrowseViewModel @Inject constructor(

@@ -30,9 +30,9 @@ import com.aurora.gplayapi.helpers.contracts.CategoryContract
 import com.aurora.store.CategoryStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
@@ -46,9 +46,7 @@ class CategoryViewModel @Inject constructor(
 
     val liveData = MutableLiveData<ViewState>()
 
-    private fun contract(): CategoryContract {
-        return categoryHelper
-    }
+    private fun contract(): CategoryContract = categoryHelper
 
     fun getCategoryList(type: Category.Type) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -68,9 +66,7 @@ class CategoryViewModel @Inject constructor(
         }
     }
 
-    private fun getCategories(type: Category.Type): List<Category> {
-        return stash.getOrPut(type) {
-            mutableListOf()
-        }
+    private fun getCategories(type: Category.Type): List<Category> = stash.getOrPut(type) {
+        mutableListOf()
     }
 }

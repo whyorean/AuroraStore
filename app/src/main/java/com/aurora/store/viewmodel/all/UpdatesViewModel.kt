@@ -25,13 +25,13 @@ import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.room.update.Update
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class UpdatesViewModel @Inject constructor(
     val updateHelper: UpdateHelper,
-    private val downloadHelper: DownloadHelper,
+    private val downloadHelper: DownloadHelper
 ) : ViewModel() {
 
     var updateAllEnqueued: Boolean = false

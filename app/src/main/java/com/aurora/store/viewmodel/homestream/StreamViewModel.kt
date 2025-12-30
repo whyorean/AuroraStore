@@ -31,11 +31,11 @@ import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import javax.inject.Inject
 
 @HiltViewModel
 class StreamViewModel @Inject constructor(
@@ -69,7 +69,6 @@ class StreamViewModel @Inject constructor(
                     }
 
                     if (!bundle.hasCluster() || bundle.hasNext()) {
-
                         // Fetch new stream bundle
                         val newBundle = if (bundle.hasCluster()) {
                             streamContract.nextStreamBundle(
@@ -157,7 +156,8 @@ class StreamViewModel @Inject constructor(
         stash[category] = bundle.copy(streamClusters = updatedClusters)
     }
 
-    private fun targetBundle(category: StreamContract.Category): StreamBundle {
-        return stash.getOrPut(category) { StreamBundle() }
-    }
+    private fun targetBundle(category: StreamContract.Category): StreamBundle =
+        stash.getOrPut(category) {
+            StreamBundle()
+        }
 }

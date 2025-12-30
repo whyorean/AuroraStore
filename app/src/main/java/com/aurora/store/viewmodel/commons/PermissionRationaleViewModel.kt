@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModel
 import com.aurora.store.data.providers.PermissionProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import javax.inject.Inject
 
 @HiltViewModel
 class PermissionRationaleViewModel @Inject constructor(

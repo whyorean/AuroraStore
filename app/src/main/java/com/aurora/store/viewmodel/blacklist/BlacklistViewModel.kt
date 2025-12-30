@@ -22,12 +22,12 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
-import javax.inject.Inject
 
 @HiltViewModel
 class BlacklistViewModel @Inject constructor(
@@ -44,7 +44,7 @@ class BlacklistViewModel @Inject constructor(
     private val isExtendedUpdateEnabled =
         Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
-    private val _packages = MutableStateFlow<List<PackageInfo>?>(null)
+    private val packages = MutableStateFlow<List<PackageInfo>?>(null)
     private val _filteredPackages = MutableStateFlow<List<PackageInfo>?>(null)
     val filteredPackages = _filteredPackages.asStateFlow()
 
@@ -58,7 +58,7 @@ class BlacklistViewModel @Inject constructor(
     private fun fetchApps() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _packages.value = PackageUtil.getAllValidPackages(context).also { pkgList ->
+                packages.value = PackageUtil.getAllValidPackages(context).also { pkgList ->
                     _filteredPackages.value = pkgList
                 }
             } catch (exception: Exception) {
@@ -69,22 +69,27 @@ class BlacklistViewModel @Inject constructor(
 
     fun search(query: String) {
         if (query.isNotBlank()) {
-            _filteredPackages.value = _packages.value!!
-                .filter { it.applicationInfo!!.loadLabel(context.packageManager)
-                    .contains(query, true) || it.packageName.contains(query, true)
+            _filteredPackages.value = packages.value!!
+                .filter {
+                    it.applicationInfo!!.loadLabel(context.packageManager)
+                        .contains(query, true) || it.packageName.contains(query, true)
                 }
         } else {
-            _filteredPackages.value = _packages.value
+            _filteredPackages.value = packages.value
         }
     }
 
-    fun isFiltered(packageInfo: PackageInfo): Boolean {
-        return when {
-            !isExtendedUpdateEnabled && !packageInfo.applicationInfo!!.enabled -> true
-            isAuroraOnlyFilterEnabled -> !CertUtil.isAuroraStoreApp(context, packageInfo.packageName)
-            isFDroidFilterEnabled -> CertUtil.isFDroidApp(context, packageInfo.packageName)
-            else -> false
-        }
+    fun isFiltered(packageInfo: PackageInfo): Boolean = when {
+        !isExtendedUpdateEnabled && !packageInfo.applicationInfo!!.enabled -> true
+
+        isAuroraOnlyFilterEnabled -> !CertUtil.isAuroraStoreApp(
+            context,
+            packageInfo.packageName
+        )
+
+        isFDroidFilterEnabled -> CertUtil.isFDroidApp(context, packageInfo.packageName)
+
+        else -> false
     }
 
     fun blacklist(packageName: String) {
@@ -94,7 +99,7 @@ class BlacklistViewModel @Inject constructor(
     }
 
     fun blacklistAll() {
-        blacklistProvider.blacklist = _packages.value!!.map { it.packageName }.toMutableSet()
+        blacklistProvider.blacklist = packages.value!!.map { it.packageName }.toMutableSet()
         blacklist.apply {
             clear()
             addAll(blacklistProvider.blacklist)
@@ -121,7 +126,7 @@ class BlacklistViewModel @Inject constructor(
                     )
 
                     val validImportedSet = importedSet
-                        .filter { pkgName -> _packages.value!!.any { it.packageName == pkgName } }
+                        .filter { pkgName -> packages.value!!.any { it.packageName == pkgName } }
                     blacklistProvider.blacklist.addAll(validImportedSet)
                     blacklist.apply {
                         clear()

@@ -23,17 +23,19 @@ import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
-import javax.inject.Inject
 
 @HiltViewModel
 class InstallerViewModel @Inject constructor(
     @ApplicationContext private val context: Context
-) : ViewModel(), Shizuku.OnBinderReceivedListener, Shizuku.OnBinderDeadListener,
+) : ViewModel(),
+    Shizuku.OnBinderReceivedListener,
+    Shizuku.OnBinderDeadListener,
     Shizuku.OnRequestPermissionResultListener {
 
     private val sharedPreferences = Preferences.getPrefs(context)

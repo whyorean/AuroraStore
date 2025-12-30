@@ -10,11 +10,11 @@ import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
 class SpoofViewModel @Inject constructor(

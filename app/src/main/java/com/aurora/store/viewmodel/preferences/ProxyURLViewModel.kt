@@ -7,8 +7,8 @@ package com.aurora.store.viewmodel.preferences
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.serialization.json.Json
 import javax.inject.Inject
+import kotlinx.serialization.json.Json
 
 @HiltViewModel
 class ProxyURLViewModel @Inject constructor(val json: Json) : ViewModel()

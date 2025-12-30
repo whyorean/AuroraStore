@@ -44,9 +44,9 @@ import com.aurora.store.util.save
 import com.jakewharton.processphoenix.ProcessPhoenix
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
 data class OnboardingUiState(
     val isMicroBundleChecked: Boolean = false,
@@ -69,7 +69,7 @@ class OnboardingViewModel @Inject constructor(
         AuroraApp.events.installerEvent.onEach {
             when (it) {
                 is InstallerEvent.Installed -> confirmBundleInstall()
-                else                        -> {}
+                else -> {}
             }
         }.launchIn(AuroraApp.scope)
     }
@@ -104,8 +104,8 @@ class OnboardingViewModel @Inject constructor(
     private fun setupAutoUpdates() {
         val updateMode = when {
             context.isIgnoringBatteryOptimizations() -> UpdateMode.CHECK_AND_INSTALL
-            context.areNotificationsEnabled()        -> UpdateMode.CHECK_AND_NOTIFY
-            else                                     -> UpdateMode.DISABLED
+            context.areNotificationsEnabled() -> UpdateMode.CHECK_AND_NOTIFY
+            else -> UpdateMode.DISABLED
         }
 
         context.save(PREFERENCE_UPDATES_AUTO, updateMode.ordinal)
