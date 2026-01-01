@@ -32,36 +32,28 @@ object PathUtil {
     private const val DOWNLOADS = "Downloads"
     private const val SPOOF = "SpoofConfigs"
 
-    fun getOldDownloadDirectories(context: Context): List<File> {
-        return listOf(
-            File(context.filesDir, DOWNLOADS), // till 4.4.2
-            File(context.getExternalFilesDir(null), DOWNLOADS) // till 4.4.2
-        )
-    }
+    fun getOldDownloadDirectories(context: Context): List<File> = listOf(
+        File(context.filesDir, DOWNLOADS), // till 4.4.2
+        File(context.getExternalFilesDir(null), DOWNLOADS) // till 4.4.2
+    )
 
-    fun getDownloadDirectory(context: Context): File {
-        return File(context.cacheDir, DOWNLOADS)
-    }
+    fun getDownloadDirectory(context: Context): File = File(context.cacheDir, DOWNLOADS)
 
-    private fun getPackageDirectory(context: Context, packageName: String): File {
-        return File(getDownloadDirectory(context), packageName)
-    }
+    private fun getPackageDirectory(context: Context, packageName: String): File =
+        File(getDownloadDirectory(context), packageName)
 
-    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Long): File {
-        return File(getPackageDirectory(context, packageName), versionCode.toString())
-    }
+    fun getAppDownloadDir(context: Context, packageName: String, versionCode: Long): File =
+        File(getPackageDirectory(context, packageName), versionCode.toString())
 
     fun getLibDownloadDir(
         context: Context,
         packageName: String,
         versionCode: Long,
         sharedLibPackageName: String
-    ): File {
-        return File(
-            getAppDownloadDir(context, packageName, versionCode),
-            "$LIBRARIES/$sharedLibPackageName"
-        )
-    }
+    ): File = File(
+        getAppDownloadDir(context, packageName, versionCode),
+        "$LIBRARIES/$sharedLibPackageName"
+    )
 
     /**
      * Returns an instance of java's [File] class for the given [PlayFile]
@@ -92,23 +84,19 @@ object PathUtil {
         }
     }
 
-    fun getZipFile(context: Context, packageName: String, versionCode: Long): File {
-        return File(
-            getAppDownloadDir(
-                context,
-                packageName,
-                versionCode,
-            ), "${packageName}_${versionCode}.apks"
-        )
-    }
+    fun getZipFile(context: Context, packageName: String, versionCode: Long): File = File(
+        getAppDownloadDir(
+            context,
+            packageName,
+            versionCode
+        ),
+        "${packageName}_$versionCode.apks"
+    )
 
-    fun getObbDownloadDir(packageName: String): File {
-        return File(Environment.getExternalStorageDirectory(), "/Android/obb/$packageName")
-    }
+    fun getObbDownloadDir(packageName: String): File =
+        File(Environment.getExternalStorageDirectory(), "/Android/obb/$packageName")
 
-    fun getSpoofDirectory(context: Context): File {
-        return File(context.filesDir, SPOOF)
-    }
+    fun getSpoofDirectory(context: Context): File = File(context.filesDir, SPOOF)
 
     fun getNewEmptySpoofConfig(context: Context): File {
         val file = File(getSpoofDirectory(context), "${UUID.randomUUID()}.properties")
@@ -117,4 +105,3 @@ object PathUtil {
         return file
     }
 }
-

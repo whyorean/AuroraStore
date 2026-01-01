@@ -48,8 +48,9 @@ object CommonUtil {
     )
 
     fun addSiPrefix(value: Long): String {
-        if (value <= 1L)
+        if (value <= 1L) {
             return "NA"
+        }
         var tempValue = value
         var order = 0
         while (tempValue >= 1000.0) {
@@ -100,7 +101,8 @@ object CommonUtil {
         val exp = (ln(bytes.toDouble()) / ln(unit.toDouble())).toInt()
         val pre = (if (si) "kMGTPE" else "KMGTPE")[exp - 1].toString() + if (si) "" else "i"
         return String.format(
-            Locale.getDefault(), "%.1f %sB/s",
+            Locale.getDefault(),
+            "%.1f %sB/s",
             bytes / unit.toDouble().pow(exp.toDouble()),
             pre
         )
@@ -120,8 +122,8 @@ object CommonUtil {
     }
 
     fun parseProxyUrl(proxyUrl: String): ProxyInfo? {
-        val pattern = """^(https?|socks5?)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$""".toRegex()
-        val match = pattern.find(proxyUrl)
+        val pattern = """^(https?|socks5?)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$"""
+        val match = pattern.toRegex().find(proxyUrl)
 
         return when {
             match != null -> {

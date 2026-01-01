@@ -52,13 +52,12 @@ object CertUtil {
         "com.machiav3lli.fdroid"
     )
 
-    fun isFDroidApp(context: Context, packageName: String): Boolean {
-        return isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
-    }
+    fun isFDroidApp(context: Context, packageName: String): Boolean =
+        isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
 
-    fun isAppGalleryApp(context: Context, packageName: String): Boolean {
-        return context.packageManager.getUpdateOwnerPackageNameCompat(packageName) == PACKAGE_NAME_APP_GALLERY
-    }
+    fun isAppGalleryApp(context: Context, packageName: String): Boolean =
+        context.packageManager.getUpdateOwnerPackageNameCompat(packageName) ==
+            PACKAGE_NAME_APP_GALLERY
 
     fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
         val installerPackageNames = AppInstaller.getAvailableInstallersInfo(context)
@@ -68,35 +67,31 @@ object CertUtil {
         return installerPackageNames.contains(packageInstaller)
     }
 
-    fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> {
-        return try {
-            val certificates = getX509Certificates(context, packageName)
-            certificates.map {
-                val messageDigest = MessageDigest.getInstance(Algorithm.SHA.value)
-                messageDigest.update(it.encoded)
-                Base64.encodeToString(
-                    messageDigest.digest(),
-                    Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
-                )
-            }
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
-            emptyList()
+    fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> = try {
+        val certificates = getX509Certificates(context, packageName)
+        certificates.map {
+            val messageDigest = MessageDigest.getInstance(Algorithm.SHA.value)
+            messageDigest.update(it.encoded)
+            Base64.encodeToString(
+                messageDigest.digest(),
+                Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP
+            )
         }
+    } catch (exception: Exception) {
+        Log.e(TAG, "Failed to get SHA256 certificate hash", exception)
+        emptyList()
     }
 
-    private fun isSignedByFDroid(context: Context, packageName: String): Boolean {
-        return try {
-            getX509Certificates(context, packageName).any { cert ->
-                cert.subjectDN.name.split(",").associate {
-                    val (left, right) = it.split("=")
-                    left to right
-                }["O"] == "fdroid.org"
-            }
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to check signing cert for $packageName")
-            false
+    private fun isSignedByFDroid(context: Context, packageName: String): Boolean = try {
+        getX509Certificates(context, packageName).any { cert ->
+            cert.subjectDN.name.split(",").associate {
+                val (left, right) = it.split("=")
+                left to right
+            }["O"] == "fdroid.org"
         }
+    } catch (exception: Exception) {
+        Log.e(TAG, "Failed to check signing cert for $packageName")
+        false
     }
 
     fun isMicroGGms(context: Context): Boolean {
@@ -114,20 +109,23 @@ object CertUtil {
         }
     }
 
-    private fun isInstalledByFDroid(context: Context, packageName: String): Boolean {
-        return fdroidPackages.contains(
+    private fun isInstalledByFDroid(context: Context, packageName: String): Boolean =
+        fdroidPackages.contains(
             context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
         )
-    }
 
-    private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> {
-        return try {
+    private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> =
+        try {
             val packageInfo = getPackageInfoWithSignature(context, packageName)
             if (isPAndAbove) {
                 if (packageInfo.signingInfo!!.hasMultipleSigners()) {
-                    packageInfo.signingInfo!!.apkContentsSigners.map { it.generateX509Certificate() }
+                    packageInfo.signingInfo!!.apkContentsSigners.map {
+                        it.generateX509Certificate()
+                    }
                 } else {
-                    packageInfo.signingInfo!!.signingCertificateHistory.map { it.generateX509Certificate() }
+                    packageInfo.signingInfo!!.signingCertificateHistory.map {
+                        it.generateX509Certificate()
+                    }
                 }
             } else {
                 @Suppress("DEPRECATION")
@@ -137,16 +135,14 @@ object CertUtil {
             Log.e(TAG, "Failed to get X509 certificates", exception)
             emptyList()
         }
-    }
 
-    private fun getPackageInfoWithSignature(context: Context, packageName: String): PackageInfo {
-        return if (isPAndAbove) {
+    private fun getPackageInfoWithSignature(context: Context, packageName: String): PackageInfo =
+        if (isPAndAbove) {
             getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
         } else {
             @Suppress("DEPRECATION")
             getPackageInfo(context, packageName, PackageManager.GET_SIGNATURES)
         }
-    }
 
     private fun extractSHA1Fingerprint(certificate: X509Certificate): String {
         val messageDigest = MessageDigest.getInstance(Algorithm.SHA1.value)
@@ -156,10 +152,9 @@ object CertUtil {
             .lowercase()
     }
 
-    private fun parseX500Principal(principal: X500Principal): Map<String, String> {
-        return principal.name.split(",").associate {
+    private fun parseX500Principal(principal: X500Principal): Map<String, String> =
+        principal.name.split(",").associate {
             val (left, right) = it.split("=")
             left.trim() to right.trim()
         }
-    }
 }

@@ -24,10 +24,10 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.room.download.Download
+import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.data.room.update.Update
 import java.util.UUID
 import kotlin.math.absoluteValue
-import com.aurora.store.data.room.download.Download as AuroraDownload
 
 object NotificationUtil {
 
@@ -78,14 +78,13 @@ object NotificationUtil {
         }
     }
 
-    fun getDownloadNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
+    fun getDownloadNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
             .setSmallIcon(android.R.drawable.stat_sys_download)
             .setContentTitle(context.getString(R.string.app_updater_service_notif_title))
             .setContentText(context.getString(R.string.app_updater_service_notif_text))
             .setOngoing(true)
             .build()
-    }
 
     fun getDownloadNotification(
         context: Context,
@@ -186,37 +185,32 @@ object NotificationUtil {
         context: Context,
         displayName: String,
         packageName: String
-    ): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
-            .setSmallIcon(R.drawable.ic_install)
-            .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
-            .setContentTitle(displayName)
-            .setContentText(context.getString(R.string.installer_status_success))
-            .setContentIntent(getContentIntentForDetails(context, packageName))
-            .build()
-    }
+    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
+        .setSmallIcon(R.drawable.ic_install)
+        .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
+        .setContentTitle(displayName)
+        .setContentText(context.getString(R.string.installer_status_success))
+        .setContentIntent(getContentIntentForDetails(context, packageName))
+        .build()
 
     fun getInstallerStatusNotification(
         context: Context,
         packageName: String,
         displayName: String,
         content: String?
-    ): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
-            .setSmallIcon(R.drawable.ic_install)
-            .setContentTitle(displayName)
-            .setContentText(content)
-            .setContentIntent(getContentIntentForDetails(context, packageName))
-            .build()
-    }
+    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
+        .setSmallIcon(R.drawable.ic_install)
+        .setContentTitle(displayName)
+        .setContentText(content)
+        .setContentIntent(getContentIntentForDetails(context, packageName))
+        .build()
 
-    fun getUpdateNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
+    fun getUpdateNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_updates)
             .setContentTitle(context.getString(R.string.checking_updates))
             .setOngoing(true)
             .build()
-    }
 
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
         val contentIntent = NavDeepLinkBuilder(context)
@@ -229,16 +223,17 @@ object NotificationUtil {
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_updates)
             .setContentTitle(
-                if (updatesList.size == 1)
+                if (updatesList.size == 1) {
                     context.getString(
                         R.string.notification_updates_available_1,
                         updatesList.size
                     )
-                else
+                } else {
                     context.getString(
                         R.string.notification_updates_available,
                         updatesList.size
                     )
+                }
             )
             .setContentText(
                 when (updatesList.size) {
@@ -284,17 +279,16 @@ object NotificationUtil {
             .build()
     }
 
-    fun getExportNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
+    fun getExportNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
             .setSmallIcon(R.drawable.ic_file_copy)
             .setContentTitle(context.getString(R.string.export_app_title))
             .setContentText(context.getString(R.string.export_app_summary))
             .setOngoing(true)
             .build()
-    }
 
-    fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
+    fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
             .setSmallIcon(R.drawable.ic_account)
             .setContentTitle(context.getString(R.string.authentication_required_title))
             .setContentText(context.getString(R.string.authentication_required_unarchive))
@@ -303,7 +297,6 @@ object NotificationUtil {
             .setCategory(NotificationCompat.CATEGORY_ERROR)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
-    }
 
     fun getExportStatusNotification(
         context: Context,
@@ -362,23 +355,21 @@ object NotificationUtil {
         )
     }
 
-    private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent {
-        return NavDeepLinkBuilder(context)
+    private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent =
+        NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
             .setArguments(bundleOf("packageName" to packageName))
             .createPendingIntent()
-    }
 
-    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
-        return NavDeepLinkBuilder(context)
+    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent =
+        NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
             .setArguments(bundleOf("packageName" to packageName))
             .createPendingIntent()
-    }
 
     private fun getInstallIntent(context: Context, download: Download): PendingIntent? {
         val intent = Intent(context, InstallActivity::class.java).apply {

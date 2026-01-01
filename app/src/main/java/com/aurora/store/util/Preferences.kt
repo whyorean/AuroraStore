@@ -64,17 +64,15 @@ object Preferences {
 
     private var prefs: SharedPreferences? = null
 
-    fun getPrefs(context: Context): SharedPreferences {
-        return when (BuildConfig.FLAVOR) {
-            "vanilla" -> {
-                prefs ?: PreferenceManager.getDefaultSharedPreferences(context).also { prefs = it }
-            }
+    fun getPrefs(context: Context): SharedPreferences = when (BuildConfig.FLAVOR) {
+        "vanilla" -> {
+            prefs ?: PreferenceManager.getDefaultSharedPreferences(context).also { prefs = it }
+        }
 
-            else -> {
-                val prefName = "${context.packageName}_${BuildConfig.FLAVOR}_preferences"
-                prefs ?: context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-                    .also { prefs = it }
-            }
+        else -> {
+            val prefName = "${context.packageName}_${BuildConfig.FLAVOR}_preferences"
+            prefs ?: context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+                .also { prefs = it }
         }
     }
 
@@ -110,33 +108,24 @@ object Preferences {
         getPrefs(context).edit(true) { putBoolean(key, value) }
     }
 
-    fun getString(context: Context, key: String, default: String = ""): String {
-        return getPrefs(context).getString(key, default).toString()
-    }
+    fun getString(context: Context, key: String, default: String = ""): String =
+        getPrefs(context).getString(key, default).toString()
 
     fun getStringSet(
         context: Context,
         key: String,
         default: Set<String> = emptySet()
-    ): Set<String> {
-        return getPrefs(context).getStringSet(key, default) ?: emptySet()
-    }
+    ): Set<String> = getPrefs(context).getStringSet(key, default) ?: emptySet()
 
-    fun getInteger(context: Context, key: String, default: Int = 0): Int {
-        return getPrefs(context).getInt(key, default)
-    }
+    fun getInteger(context: Context, key: String, default: Int = 0): Int =
+        getPrefs(context).getInt(key, default)
 
-    fun getFloat(context: Context, key: String): Float {
-        return getPrefs(context).getFloat(key, 0.0f)
-    }
+    fun getFloat(context: Context, key: String): Float = getPrefs(context).getFloat(key, 0.0f)
 
-    fun getLong(context: Context, key: String): Long {
-        return getPrefs(context).getLong(key, 0L)
-    }
+    fun getLong(context: Context, key: String): Long = getPrefs(context).getLong(key, 0L)
 
-    fun getBoolean(context: Context, key: String, default: Boolean = false): Boolean {
-        return getPrefs(context).getBoolean(key, default)
-    }
+    fun getBoolean(context: Context, key: String, default: Boolean = false): Boolean =
+        getPrefs(context).getBoolean(key, default)
 }
 
 /*Preference Extensions*/
@@ -150,7 +139,6 @@ fun Context.save(key: String, value: String) = Preferences.putString(this, key, 
 fun Context.save(key: String, value: Set<String>) = Preferences.putStringSet(this, key, value)
 
 fun Context.remove(key: String) = Preferences.remove(this, key)
-
 
 fun Fragment.save(key: String, value: Int) = requireContext().save(key, value)
 
