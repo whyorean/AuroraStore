@@ -37,7 +37,8 @@ import com.aurora.store.viewmodel.subcategory.CategoryStreamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
+class CategoryBrowseFragment :
+    BaseFragment<FragmentGenericWithToolbarBinding>(),
     GenericCarouselController.Callbacks {
     private val args: CategoryBrowseFragmentArgs by navArgs()
     private val viewModel: CategoryStreamViewModel by activityViewModels()
@@ -95,6 +96,5 @@ class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>()
     }
 
     override fun onAppLongClick(app: App) {
-
     }
 }

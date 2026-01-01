@@ -53,10 +53,11 @@ class AppView @JvmOverloads constructor(
             transformations(RoundedCornersTransformation(32F))
         }
 
-        if (app.size > 0)
+        if (app.size > 0) {
             binding.txtSize.text = CommonUtil.addSiPrefix(app.size)
-        else
+        } else {
             binding.txtSize.text = app.downloadString
+        }
     }
 
     @CallbackProp

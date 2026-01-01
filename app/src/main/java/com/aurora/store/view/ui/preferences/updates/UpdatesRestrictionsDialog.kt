@@ -31,7 +31,7 @@ class UpdatesRestrictionsDialog : DialogFragment() {
             .setTitle(R.string.pref_updates_restrictions_title)
             .setMessage(R.string.pref_updates_restrictions_desc)
             .setView(view)
-            .setPositiveButton(getString(android.R.string.ok)) { _, _ -> dialog?.dismiss()}
+            .setPositiveButton(getString(android.R.string.ok)) { _, _ -> dialog?.dismiss() }
             .create()
     }
 

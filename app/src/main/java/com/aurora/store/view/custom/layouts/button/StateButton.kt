@@ -64,11 +64,11 @@ class StateButton : RelativeLayout {
     }
 
     fun updateProgress(isVisible: Boolean) {
-        if (isVisible)
+        if (isVisible) {
             binding.progress.visibility = View.VISIBLE
-        else
-
+        } else {
             binding.progress.visibility = View.INVISIBLE
+        }
     }
 
     fun addOnClickListener(onClickListener: OnClickListener) {

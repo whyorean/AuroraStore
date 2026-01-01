@@ -38,10 +38,7 @@ class NetworkDialogSheet : BaseDialogSheet<SheetNetworkBinding>() {
         const val TAG = "NetworkDialogSheet"
 
         @JvmStatic
-        fun newInstance(): NetworkDialogSheet {
-            return NetworkDialogSheet().apply {
-
-            }
+        fun newInstance(): NetworkDialogSheet = NetworkDialogSheet().apply {
         }
     }
 

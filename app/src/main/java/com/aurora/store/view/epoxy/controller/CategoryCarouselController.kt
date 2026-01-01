@@ -24,6 +24,6 @@ import com.aurora.gplayapi.data.models.StreamCluster
 class CategoryCarouselController(callbacks: Callbacks) : GenericCarouselController(callbacks) {
 
     override fun applyFilter(streamBundle: StreamCluster): Boolean {
-        return streamBundle.clusterAppList.isNotEmpty() //Filter empty clusters
+        return streamBundle.clusterAppList.isNotEmpty() // Filter empty clusters
     }
 }

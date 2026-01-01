@@ -54,7 +54,10 @@ class UpdatesPreference : BasePreferenceFragment() {
 
         val updatesEnabled = Preferences.getInteger(requireContext(), PREFERENCE_UPDATES_AUTO) != 0
 
-        findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)?.setOnPreferenceChangeListener { _, newValue ->
+        findPreference<ListPreference>(PREFERENCE_UPDATES_AUTO)?.setOnPreferenceChangeListener {
+                _,
+                newValue
+            ->
             when (UpdateMode.entries[newValue.toString().toInt()]) {
                 UpdateMode.DISABLED -> {
                     handleAutoUpdateDependentPrefs(false)

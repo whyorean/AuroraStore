@@ -41,9 +41,9 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
     }
 
     open fun applyFilter(streamBundle: StreamCluster): Boolean {
-        return streamBundle.clusterTitle.isNotBlank()  //Filter noisy cluster
-                && streamBundle.clusterAppList.isNotEmpty() //Filter empty clusters
-                && streamBundle.clusterAppList.count() > 1 //Filter clusters with single apps (mostly promotions)
+        return streamBundle.clusterTitle.isNotBlank() && // Filter noisy cluster
+            streamBundle.clusterAppList.isNotEmpty() && // Filter empty clusters
+            streamBundle.clusterAppList.count() > 1 // Filter clusters with single apps (promotions)
     }
 
     override fun buildModels(streamBundle: StreamBundle?) {
@@ -79,7 +79,6 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
                                 )
                             }
                         }
-
                 } else {
                     streamBundle
                         .streamClusters
@@ -88,13 +87,13 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
                         .forEach { streamCluster ->
                             add(CarouselModelGroup(streamCluster, callbacks))
                         }
-
                 }
-                if (streamBundle.hasNext())
+                if (streamBundle.hasNext()) {
                     add(
                         CarouselShimmerGroup()
                             .id("progress")
                     )
+                }
             }
         }
     }

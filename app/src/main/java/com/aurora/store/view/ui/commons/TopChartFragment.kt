@@ -46,14 +46,13 @@ class TopChartFragment : BaseFragment<FragmentTopContainerBinding>() {
 
     companion object {
         @JvmStatic
-        fun newInstance(chartType: Int, chartCategory: Int): TopChartFragment {
-            return TopChartFragment().apply {
+        fun newInstance(chartType: Int, chartCategory: Int): TopChartFragment =
+            TopChartFragment().apply {
                 arguments = Bundle().apply {
                     putInt(Constants.TOP_CHART_TYPE, chartType)
                     putInt(Constants.TOP_CHART_CATEGORY, chartCategory)
                 }
             }
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

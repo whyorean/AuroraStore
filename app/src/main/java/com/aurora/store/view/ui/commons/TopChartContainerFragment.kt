@@ -35,13 +35,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class TopChartContainerFragment : BaseFragment<FragmentTopChartBinding>() {
     companion object {
         @JvmStatic
-        fun newInstance(chartType: Int): TopChartContainerFragment {
-            return TopChartContainerFragment().apply {
+        fun newInstance(chartType: Int): TopChartContainerFragment =
+            TopChartContainerFragment().apply {
                 arguments = Bundle().apply {
                     putInt(Constants.TOP_CHART_TYPE, chartType)
                 }
             }
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,12 +95,8 @@ class TopChartContainerFragment : BaseFragment<FragmentTopChartBinding>() {
             TopChartFragment.newInstance(chartType, 3)
         )
 
-        override fun createFragment(position: Int): Fragment {
-            return tabFragments[position]
-        }
+        override fun createFragment(position: Int): Fragment = tabFragments[position]
 
-        override fun getItemCount(): Int {
-            return tabFragments.size
-        }
+        override fun getItemCount(): Int = tabFragments.size
     }
 }

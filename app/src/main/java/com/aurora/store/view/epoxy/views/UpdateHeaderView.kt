@@ -27,7 +27,6 @@ import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.OnViewRecycled
 import com.aurora.store.databinding.ViewHeaderUpdateBinding
 
-
 @ModelView(
     autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT,
     baseModelClass = BaseModel::class

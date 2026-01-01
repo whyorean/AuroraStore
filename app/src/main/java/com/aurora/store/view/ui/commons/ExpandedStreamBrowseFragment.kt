@@ -63,8 +63,9 @@ class ExpandedStreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBind
     }
 
     private fun updateTitle(streamCluster: StreamCluster) {
-        if (streamCluster.clusterTitle.isNotEmpty())
+        if (streamCluster.clusterTitle.isNotEmpty()) {
             binding.toolbar.title = streamCluster.clusterTitle
+        }
     }
 
     private fun attachRecycler() {

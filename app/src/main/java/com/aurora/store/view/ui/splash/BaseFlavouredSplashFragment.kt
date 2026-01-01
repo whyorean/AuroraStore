@@ -44,7 +44,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
 
     val canLoginWithMicroG: Boolean
         get() = PackageUtil.hasSupportedMicroGVariant(requireContext()) &&
-                Preferences.getBoolean(requireContext(), PREFERENCE_MICROG_AUTH, true)
+            Preferences.getBoolean(requireContext(), PREFERENCE_MICROG_AUTH, true)
 
     val startForAccount =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -61,7 +61,7 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        viewBindingType = FragmentSplashBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -180,7 +180,9 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                 }
 
                 1 -> SplashFragmentDirections.actionSplashFragmentToGamesContainerFragment()
+
                 2 -> SplashFragmentDirections.actionSplashFragmentToUpdatesFragment()
+
                 else -> SplashFragmentDirections.actionSplashFragmentToNavigationApps()
             }
         requireActivity().viewModelStore.clear() // Clear ViewModelStore to avoid bugs with logout

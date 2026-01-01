@@ -42,9 +42,11 @@ class UIPreference : BasePreferenceFragment() {
             if (isTAndAbove) {
                 summary = Locale.getDefault().displayName
                 setOnPreferenceClickListener {
-                    startActivity(Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
-                        data = ("package:" + requireContext().packageName).toUri()
-                    })
+                    startActivity(
+                        Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
+                            data = ("package:" + requireContext().packageName).toUri()
+                        }
+                    )
                     true
                 }
             } else {

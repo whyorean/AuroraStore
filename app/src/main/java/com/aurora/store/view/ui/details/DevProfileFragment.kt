@@ -37,7 +37,8 @@ import com.aurora.store.viewmodel.details.DevProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
+class DevProfileFragment :
+    BaseFragment<FragmentDevProfileBinding>(),
     GenericCarouselController.Callbacks {
 
     private val args: DevProfileFragmentArgs by navArgs()
@@ -46,10 +47,14 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         // Toolbar
         binding.toolbar.apply {
-            title = if (args.title.isNullOrBlank()) getString(R.string.details_dev_profile) else args.title
+            title =
+                if (args.title.isNullOrBlank()) {
+                    getString(R.string.details_dev_profile)
+                } else {
+                    args.title
+                }
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
@@ -61,15 +66,12 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
                 }
 
                 is ViewState.Loading -> {
-
                 }
 
                 is ViewState.Error -> {
-
                 }
 
                 is ViewState.Status -> {
-
                 }
 
                 is ViewState.Success<*> -> {
@@ -101,6 +103,5 @@ class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
     }
 
     override fun onAppLongClick(app: App) {
-
     }
 }

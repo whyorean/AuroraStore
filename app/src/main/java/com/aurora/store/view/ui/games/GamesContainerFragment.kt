@@ -140,12 +140,8 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
             add(CategoryFragment.newInstance(1))
         }
 
-        override fun createFragment(position: Int): Fragment {
-            return tabFragments[position]
-        }
+        override fun createFragment(position: Int): Fragment = tabFragments[position]
 
-        override fun getItemCount(): Int {
-            return tabFragments.size
-        }
+        override fun getItemCount(): Int = tabFragments.size
     }
 }

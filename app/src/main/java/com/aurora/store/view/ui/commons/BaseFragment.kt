@@ -42,8 +42,8 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     lateinit var permissionProvider: PermissionProvider
 
-    protected open var _binding: ViewBindingType? = null
-    protected val binding get() = _binding!!
+    protected open var viewBindingType: ViewBindingType? = null
+    protected val binding get() = viewBindingType!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,18 +52,19 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val type =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<ViewBindingType>
+        val type = (javaClass.genericSuperclass as ParameterizedType)
+            .actualTypeArguments[0] as Class<ViewBindingType>
         val method = type.getMethod(
             "inflate",
             LayoutInflater::class.java,
             ViewGroup::class.java,
             Boolean::class.java
         )
-        _binding = method.invoke(null, inflater, container, false) as ViewBindingType
+        viewBindingType = method.invoke(null, inflater, container, false) as ViewBindingType
 
         return binding.root
     }
@@ -75,7 +76,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     override fun onDestroyView() {
         cleanupRecyclerViews(findAllRecyclerViews(requireView()))
-        _binding = null
+        viewBindingType = null
         super.onDestroyView()
     }
 

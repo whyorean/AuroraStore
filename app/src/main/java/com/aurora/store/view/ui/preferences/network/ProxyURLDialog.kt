@@ -23,7 +23,7 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProxyURLDialog: DialogFragment() {
+class ProxyURLDialog : DialogFragment() {
 
     private val viewModel: ProxyURLViewModel by viewModels()
 
@@ -40,7 +40,7 @@ class ProxyURLDialog: DialogFragment() {
             .setView(view)
             .setPositiveButton(getString(R.string.set), null)
             .setNeutralButton(getString(R.string.disable), null)
-            .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> dialog?.dismiss()}
+            .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> dialog?.dismiss() }
             .create()
 
         alertDialog.setOnShowListener {

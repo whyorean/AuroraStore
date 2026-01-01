@@ -96,7 +96,7 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         )
 
         binding.pager.isUserInputEnabled =
-            false //Disable viewpager scroll to avoid scroll conflicts
+            false // Disable viewpager scroll to avoid scroll conflicts
 
         val tabTitles: MutableList<String> = mutableListOf<String>().apply {
             if (isForYouEnabled) {
@@ -141,12 +141,8 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
             add(CategoryFragment.newInstance(0))
         }
 
-        override fun createFragment(position: Int): Fragment {
-            return tabFragments[position]
-        }
+        override fun createFragment(position: Int): Fragment = tabFragments[position]
 
-        override fun getItemCount(): Int {
-            return tabFragments.size
-        }
+        override fun getItemCount(): Int = tabFragments.size
     }
 }
