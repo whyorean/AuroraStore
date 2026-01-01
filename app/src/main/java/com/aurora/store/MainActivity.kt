@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    private lateinit var B: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     // TopLevelFragments
     private val topLevelFrags = listOf(
@@ -69,11 +69,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        B = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(B.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Adjust root view's paddings for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(B.root) { root, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { root, windowInsets ->
             val insets = windowInsets.getInsets(systemBars() or displayCutout() or ime())
             root.setPadding(insets.left, insets.top, insets.right, 0)
             windowInsets
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             }.launchIn(AuroraApp.scope)
         }
 
-        B.navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         // Handle quick exit from back actions
         val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {
@@ -137,8 +137,8 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             if (navDestination !is FloatingWindow) {
                 when (navDestination.id) {
-                    in topLevelFrags -> B.navView.visibility = View.VISIBLE
-                    else -> B.navView.visibility = View.GONE
+                    in topLevelFrags -> binding.navView.visibility = View.VISIBLE
+                    else -> binding.navView.visibility = View.GONE
                 }
             }
         }
@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity() {
         // Updates
         lifecycleScope.launch {
             viewModel.updateHelper.updates.collectLatest { list ->
-                B.navView.getOrCreateBadge(R.id.updatesFragment).apply {
+                binding.navView.getOrCreateBadge(R.id.updatesFragment).apply {
                     isVisible = !list.isNullOrEmpty()
                     number = list?.size ?: 0
                 }
