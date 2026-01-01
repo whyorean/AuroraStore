@@ -12,8 +12,8 @@ variables:
 
 stages:
 - build
+- lint
 - upload
-- release
 
 assembleVanillaDebug:
   stage: build
@@ -24,6 +24,12 @@ assembleVanillaDebug:
     paths:
     - $DEBUG_BINARY_PATH
     - 'app/schemas/com.aurora.store.data.room.AuroraDatabase/'
+
+lintChecks:
+  stage: lint
+  image: theimpulson/gitlab-ci-android:latest
+  script:
+    - './gradlew ktlintCheck'
 
 uploadDebug:
   stage: upload
