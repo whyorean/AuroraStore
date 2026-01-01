@@ -14,12 +14,10 @@ data class SharedLib(
     var fileList: List<PlayFile>
 ) : Parcelable {
     companion object {
-        fun fromApp(app: App): SharedLib {
-            return SharedLib(
-                app.packageName,
-                app.versionCode,
-                app.fileList.filterNot { it.url.isBlank() }
-            )
-        }
+        fun fromApp(app: App): SharedLib = SharedLib(
+            app.packageName,
+            app.versionCode,
+            app.fileList.filterNot { it.url.isBlank() }
+        )
     }
 }

@@ -2,9 +2,9 @@ package com.aurora.store.data.event
 
 import android.util.Log
 import com.aurora.extensions.TAG
+import javax.inject.Singleton
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import javax.inject.Singleton
 
 @Singleton
 class EventFlow {

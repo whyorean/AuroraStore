@@ -15,15 +15,15 @@ import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.util.NotificationUtil
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Triggers re-install/unarchive of a previously archived app on Android 15+ devices.
  */
 @AndroidEntryPoint
-class UnarchivePackageReceiver: BroadcastReceiver() {
+class UnarchivePackageReceiver : BroadcastReceiver() {
 
     @Inject
     lateinit var appDetailsHelper: AppDetailsHelper

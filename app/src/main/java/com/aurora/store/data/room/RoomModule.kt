@@ -29,25 +29,25 @@ object RoomModule {
     fun providesRoomInstance(
         @ApplicationContext context: Context,
         downloadConverter: DownloadConverter
-    ): AuroraDatabase {
-        return Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
-            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
-            .addTypeConverter(downloadConverter)
-            .build()
-    }
+    ): AuroraDatabase = Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
+        .addMigrations(
+            MIGRATION_1_2,
+            MIGRATION_2_3,
+            MIGRATION_3_4,
+            MIGRATION_4_5,
+            MIGRATION_5_6
+        )
+        .addTypeConverter(downloadConverter)
+        .build()
 
     @Provides
-    fun providesDownloadDao(auroraDatabase: AuroraDatabase): DownloadDao {
-        return auroraDatabase.downloadDao()
-    }
+    fun providesDownloadDao(auroraDatabase: AuroraDatabase): DownloadDao =
+        auroraDatabase.downloadDao()
 
     @Provides
-    fun providesFavouriteDao(auroraDatabase: AuroraDatabase): FavouriteDao {
-        return auroraDatabase.favouriteDao()
-    }
+    fun providesFavouriteDao(auroraDatabase: AuroraDatabase): FavouriteDao =
+        auroraDatabase.favouriteDao()
 
     @Provides
-    fun providesUpdateDao(auroraDatabase: AuroraDatabase): UpdateDao {
-        return auroraDatabase.updateDao()
-    }
+    fun providesUpdateDao(auroraDatabase: AuroraDatabase): UpdateDao = auroraDatabase.updateDao()
 }

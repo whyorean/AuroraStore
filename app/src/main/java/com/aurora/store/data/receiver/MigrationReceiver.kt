@@ -64,7 +64,7 @@ class MigrationReceiver : BroadcastReceiver() {
                 if (CertUtil.isAppGalleryApp(context, context.packageName)) {
                     val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
                         .toMutableSet()
-                    
+
                     dispensers.remove(Constants.URL_DISPENSER)
 
                     context.save(PREFERENCE_DISPENSER_URLS, dispensers)
@@ -75,7 +75,8 @@ class MigrationReceiver : BroadcastReceiver() {
             // 63 -> 64
             if (currentVersion == 2) {
                 if (isOAndAbove) {
-                    with(context.getSystemService<NotificationManager>()!!) { // !1189
+                    with(context.getSystemService<NotificationManager>()!!) {
+                        // !1189
                         deleteNotificationChannel("NOTIFICATION_CHANNEL_GENERAL")
                         deleteNotificationChannel("NOTIFICATION_CHANNEL_ALERT")
                     }
@@ -87,10 +88,11 @@ class MigrationReceiver : BroadcastReceiver() {
             if (currentVersion == 3) {
                 val updateMode = UpdateMode.entries[
                     Preferences.getInteger(
-                    context,
-                    PREFERENCE_UPDATES_AUTO,
-                    UpdateMode.DISABLED.ordinal
-                )]
+                        context,
+                        PREFERENCE_UPDATES_AUTO,
+                        UpdateMode.DISABLED.ordinal
+                    )
+                ]
 
                 if (updateMode != UpdateMode.DISABLED) {
                     runCatching {

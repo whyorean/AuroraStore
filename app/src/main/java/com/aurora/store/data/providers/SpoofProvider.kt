@@ -24,11 +24,11 @@ import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.serialization.json.Json
 import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.json.Json
 
 /**
  * Provider class to work with device and locale spoofs
@@ -36,7 +36,7 @@ import javax.inject.Singleton
 @Singleton
 class SpoofProvider @Inject constructor(
     private val json: Json,
-    @ApplicationContext val context: Context,
+    @ApplicationContext val context: Context
 ) : SpoofDeviceProvider(context) {
 
     companion object {
@@ -119,7 +119,10 @@ class SpoofProvider @Inject constructor(
             val versionStrings = resources.getStringArray(R.array.pref_vending_version)
 
             currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
-            currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
+            currentProperties.setProperty(
+                "Vending.versionString",
+                versionStrings[vendingVersionIndex]
+            )
         }
     }
 }

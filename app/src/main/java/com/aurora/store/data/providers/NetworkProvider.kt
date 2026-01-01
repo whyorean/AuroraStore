@@ -27,12 +27,12 @@ import androidx.core.content.getSystemService
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.data.model.NetworkStatus
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * A simple provider with a flow to observe internet connectivity changes

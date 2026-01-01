@@ -19,23 +19,18 @@ data class MinimalApp(
 
     companion object {
 
-        fun fromApp(app: App): MinimalApp {
-            return MinimalApp(
-                app.packageName,
-                app.versionName,
-                app.versionCode,
-                app.displayName
-            )
-        }
+        fun fromApp(app: App): MinimalApp = MinimalApp(
+            app.packageName,
+            app.versionName,
+            app.versionCode,
+            app.displayName
+        )
 
-        fun fromUpdate(update: Update): MinimalApp {
-            return MinimalApp(
-                update.packageName,
-                update.versionName,
-                update.versionCode,
-                update.displayName
-            )
-        }
-
+        fun fromUpdate(update: Update): MinimalApp = MinimalApp(
+            update.packageName,
+            update.versionName,
+            update.versionCode,
+            update.displayName
+        )
     }
 }

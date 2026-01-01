@@ -33,40 +33,34 @@ data class Update(
 ) : Parcelable {
 
     companion object {
-        fun fromApp(context: Context, app: App): Update {
-            return Update(
-                app.packageName,
-                app.versionCode,
-                app.versionName,
-                app.displayName,
-                app.iconArtwork.url,
-                app.changes,
-                app.id,
-                app.developerName,
-                app.size,
-                app.updatedOn,
-                app.certificateSetList.any {
-                    it.certificateSet in CertUtil.getEncodedCertificateHashes(
-                        context, app.packageName
-                    )
-                },
-                app.offerType,
-                app.fileList.filterNot { it.url.isBlank() },
-                app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) },
-                app.targetSdk
-            )
-        }
+        fun fromApp(context: Context, app: App): Update = Update(
+            app.packageName,
+            app.versionCode,
+            app.versionName,
+            app.displayName,
+            app.iconArtwork.url,
+            app.changes,
+            app.id,
+            app.developerName,
+            app.size,
+            app.updatedOn,
+            app.certificateSetList.any {
+                it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                    context,
+                    app.packageName
+                )
+            },
+            app.offerType,
+            app.fileList.filterNot { it.url.isBlank() },
+            app.dependencies.dependentLibraries.map { SharedLib.fromApp(it) },
+            app.targetSdk
+        )
     }
 
-    fun isSelfUpdate(context: Context): Boolean {
-        return packageName == context.packageName
-    }
+    fun isSelfUpdate(context: Context): Boolean = packageName == context.packageName
 
-    fun isInstalled(context: Context): Boolean {
-        return PackageUtil.isInstalled(context, packageName)
-    }
+    fun isInstalled(context: Context): Boolean = PackageUtil.isInstalled(context, packageName)
 
-    fun isUpToDate(context: Context): Boolean {
-        return PackageUtil.isInstalled(context, packageName, versionCode)
-    }
+    fun isUpToDate(context: Context): Boolean =
+        PackageUtil.isInstalled(context, packageName, versionCode)
 }

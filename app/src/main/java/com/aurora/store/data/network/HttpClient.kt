@@ -26,6 +26,9 @@ import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig.APPLICATION_ID
 import com.aurora.store.BuildConfig.VERSION_CODE
 import com.aurora.store.BuildConfig.VERSION_NAME
+import java.io.IOException
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -38,12 +41,9 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
-import java.io.IOException
-import javax.inject.Inject
-import javax.inject.Singleton
 
 @Singleton
-class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IHttpClient {
+class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient) : IHttpClient {
 
     companion object {
         private const val POST = "POST"
@@ -69,7 +69,7 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IH
     fun call(url: String, headers: Map<String, String> = emptyMap()): Response {
         val request = Request(
             url = url.toHttpUrl(),
-            headers = headers.toHeaders(),
+            headers = headers.toHeaders()
         )
         return okHttpClient.newCall(request).execute()
     }
@@ -102,14 +102,12 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IH
     }
 
     @Throws(IOException::class)
-    override fun post(url: String, headers: Map<String, String>, body: ByteArray): PlayResponse {
-        return post(url, headers, body.toRequestBody())
-    }
+    override fun post(url: String, headers: Map<String, String>, body: ByteArray): PlayResponse =
+        post(url, headers, body.toRequestBody())
 
     @Throws(IOException::class)
-    override fun get(url: String, headers: Map<String, String>): PlayResponse {
-        return get(url, headers, mapOf())
-    }
+    override fun get(url: String, headers: Map<String, String>): PlayResponse =
+        get(url, headers, mapOf())
 
     @Throws(IOException::class)
     override fun get(
@@ -136,11 +134,7 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IH
     }
 
     @Throws(IOException::class)
-    override fun get(
-        url: String,
-        headers: Map<String, String>,
-        paramString: String
-    ): PlayResponse {
+    override fun get(url: String, headers: Map<String, String>, paramString: String): PlayResponse {
         val request = Request(
             url = "$url$paramString".toHttpUrl(),
             headers = headers.toHeaders(),
@@ -165,16 +159,14 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IH
         return urlBuilder.build()
     }
 
-    private fun buildPlayResponse(response: Response): PlayResponse {
-        return PlayResponse(
-            isSuccessful = response.isSuccessful,
-            code = response.code,
-            responseBytes = response.body.bytes(),
-            errorString = if (!response.isSuccessful) response.message else String()
-        ).also {
-            val isCached = if (response.cacheResponse != null) "CACHED" else "NETWORK"
-            _responseCode.value = response.code
-            Log.i(TAG, "OKHTTP [$isCached] [${response.code}] ${response.request.url}")
-        }
+    private fun buildPlayResponse(response: Response): PlayResponse = PlayResponse(
+        isSuccessful = response.isSuccessful,
+        code = response.code,
+        responseBytes = response.body.bytes(),
+        errorString = if (!response.isSuccessful) response.message else String()
+    ).also {
+        val isCached = if (response.cacheResponse != null) "CACHED" else "NETWORK"
+        _responseCode.value = response.code
+        Log.i(TAG, "OKHTTP [$isCached] [${response.code}] ${response.request.url}")
     }
 }

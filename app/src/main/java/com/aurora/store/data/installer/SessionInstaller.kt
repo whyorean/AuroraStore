@@ -216,8 +216,8 @@ class SessionInstaller @Inject constructor(
         }
     }
 
-    private fun buildSessionParams(packageName: String): SessionParams {
-        return SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
+    private fun buildSessionParams(packageName: String): SessionParams =
+        SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
             setAppPackageName(packageName)
             setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
             if (isNAndAbove) {
@@ -238,7 +238,6 @@ class SessionInstaller @Inject constructor(
                 setApplicationEnabledSettingPersistent()
             }
         }
-    }
 
     private fun commitInstall(sessionInfo: SessionInfo) {
         try {

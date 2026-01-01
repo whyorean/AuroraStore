@@ -100,8 +100,8 @@ open class AuthWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun fetchAuthToken(email: String, oldToken: String? = null): String {
-        return suspendCoroutine { continuation ->
+    private suspend fun fetchAuthToken(email: String, oldToken: String? = null): String =
+        suspendCoroutine { continuation ->
             fetchAuthToken(email, oldToken) { future ->
                 try {
                     val bundle = future.result
@@ -110,14 +110,15 @@ open class AuthWorker @AssistedInject constructor(
                     if (token != null) {
                         continuation.resume(token)
                     } else {
-                        continuation.resumeWithException(IllegalStateException("Auth token is null"))
+                        continuation.resumeWithException(
+                            IllegalStateException("Auth token is null")
+                        )
                     }
                 } catch (e: Exception) {
                     continuation.resumeWithException(e)
                 }
             }
         }
-    }
 
     private fun fetchAuthToken(
         email: String,
@@ -155,8 +156,8 @@ open class AuthWorker @AssistedInject constructor(
         }
     }
 
-    private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType): AuthData? {
-        return if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
+    private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType): AuthData? =
+        if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             authProvider.saveAuthData(authData)
             AccountProvider.login(
                 context,
@@ -171,5 +172,4 @@ open class AuthWorker @AssistedInject constructor(
             AccountProvider.logout(context)
             null
         }
-    }
 }

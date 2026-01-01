@@ -48,9 +48,6 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.net.SocketException
@@ -60,6 +57,9 @@ import java.security.DigestInputStream
 import java.security.MessageDigest
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.properties.Delegates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.withContext
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
@@ -206,10 +206,13 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess(): Result {
         return withContext(NonCancellable) {
             return@withContext try {
-                if (BuildConfig.FLAVOR == FLAVOUR_HUAWEI && download.requiresGMS && PackageUtil.hasMicroGCompanion(context))
+                if (BuildConfig.FLAVOR == FLAVOUR_HUAWEI && download.requiresGMS &&
+                    PackageUtil.hasMicroGCompanion(context)
+                ) {
                     appInstaller.getMicroGInstaller().install(download)
-                else
+                } else {
                     appInstaller.getPreferredInstaller().install(download)
+                }
                 Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
@@ -425,7 +428,10 @@ class DownloadWorker @AssistedInject constructor(
         }
 
         val notification = NotificationUtil.getDownloadNotification(
-            context, download, icon, exception?.message
+            context,
+            download,
+            icon,
+            exception?.message
         )
         notificationManager.notify(
             if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
@@ -453,7 +459,10 @@ class DownloadWorker @AssistedInject constructor(
                 file.inputStream().use { fis ->
                     DigestInputStream(fis, messageDigest).use { dis ->
                         val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-                        while (dis.read(buffer) != -1) { /* Just read, digest updates automatically */
+                        while (dis.read(buffer) !=
+                            -1
+                        ) {
+                            /* Just read, digest updates automatically */
                         }
                     }
                 }

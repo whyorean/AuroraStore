@@ -24,15 +24,15 @@ import android.content.SharedPreferences
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.serialization.json.Json
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.json.Json
 
 @Singleton
 class BlacklistProvider @Inject constructor(
     private val json: Json,
-    @ApplicationContext val context: Context,
+    @ApplicationContext val context: Context
 ) {
 
     companion object {
@@ -67,19 +67,17 @@ class BlacklistProvider @Inject constructor(
                 } else {
                     Preferences.getString(context, PREFERENCE_BLACKLIST)
                 }
-                if (rawBlacklist!!.isEmpty())
+                if (rawBlacklist!!.isEmpty()) {
                     mutableSetOf()
-                else
+                } else {
                     json.decodeFromString<MutableSet<String>>(rawBlacklist)
+                }
             } catch (e: Exception) {
                 mutableSetOf()
             }
         }
 
-    fun isBlacklisted(packageName: String): Boolean {
-        return blacklist.contains(packageName)
-    }
-
+    fun isBlacklisted(packageName: String): Boolean = blacklist.contains(packageName)
 
     fun blacklist(packageName: String) {
         blacklist = blacklist.apply {

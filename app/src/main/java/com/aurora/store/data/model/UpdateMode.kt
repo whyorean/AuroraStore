@@ -4,5 +4,5 @@ enum class UpdateMode {
     DISABLED,
     CHECK_AND_NOTIFY,
     CHECK_AND_INSTALL,
-    CHECK_ONLY,
+    CHECK_ONLY
 }

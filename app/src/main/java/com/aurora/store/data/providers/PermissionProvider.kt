@@ -54,8 +54,8 @@ class PermissionProvider(private val fragment: Fragment) :
         /**
          * Checks whether a known permission has been granted
          */
-        fun isGranted(context: Context, permissionType: PermissionType): Boolean {
-            return when (permissionType) {
+        fun isGranted(context: Context, permissionType: PermissionType): Boolean =
+            when (permissionType) {
                 PermissionType.EXTERNAL_STORAGE,
                 PermissionType.STORAGE_MANAGER -> {
                     context.isExternalStorageAccessible()
@@ -76,9 +76,8 @@ class PermissionProvider(private val fragment: Fragment) :
                 PermissionType.DOZE_WHITELIST -> context.isIgnoringBatteryOptimizations()
 
                 PermissionType.APP_LINKS -> context.isDomainVerified("play.google.com") &&
-                        context.isDomainVerified("market.android.com")
+                    context.isDomainVerified("market.android.com")
             }
-        }
 
         /**
          * Returns all known permissions that can be requested by Aurora Store
@@ -132,7 +131,9 @@ class PermissionProvider(private val fragment: Fragment) :
                     Permission(
                         type = PermissionType.POST_NOTIFICATIONS,
                         title = context.getString(R.string.onboarding_permission_notifications),
-                        subtitle = context.getString(R.string.onboarding_permission_notifications_desc),
+                        subtitle = context.getString(
+                            R.string.onboarding_permission_notifications_desc
+                        ),
                         optional = true,
                         isGranted = isGranted(context, PermissionType.POST_NOTIFICATIONS)
                     )
@@ -147,7 +148,7 @@ class PermissionProvider(private val fragment: Fragment) :
                         subtitle = context.getString(R.string.app_links_desc),
                         optional = true,
                         isGranted = isGranted(context, PermissionType.APP_LINKS)
-                    ),
+                    )
                 )
             }
 
@@ -195,7 +196,7 @@ class PermissionProvider(private val fragment: Fragment) :
                     if (!isGranted(context, PermissionType.INSTALL_UNKNOWN_APPS)) {
                         context.toast(R.string.toast_permission_installer_required)
                     } else {
-                        /**
+                        /*
                          * I don't know why, but for storage manager permission on Android 11 & 12,
                          * we need to request both permissions otherwise the permission is not granted,
                          * even though OS says it is granted.
@@ -231,18 +232,16 @@ class PermissionProvider(private val fragment: Fragment) :
     }
 
     @SuppressLint("InlinedApi")
-    private fun knownPermissions(): Map<PermissionType, Intent> {
-        return mapOf(
-            PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(context),
-            PermissionType.INSTALL_UNKNOWN_APPS to PackageUtil.getInstallUnknownAppsIntent(),
-            PermissionType.DOZE_WHITELIST to Intent(
-                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                "package:${BuildConfig.APPLICATION_ID}".toUri()
-            ),
-            PermissionType.APP_LINKS to Intent(
-                ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
-                "package:${BuildConfig.APPLICATION_ID}".toUri()
-            )
+    private fun knownPermissions(): Map<PermissionType, Intent> = mapOf(
+        PermissionType.STORAGE_MANAGER to PackageUtil.getStorageManagerIntent(context),
+        PermissionType.INSTALL_UNKNOWN_APPS to PackageUtil.getInstallUnknownAppsIntent(),
+        PermissionType.DOZE_WHITELIST to Intent(
+            Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+            "package:${BuildConfig.APPLICATION_ID}".toUri()
+        ),
+        PermissionType.APP_LINKS to Intent(
+            ACTION_APP_OPEN_BY_DEFAULT_SETTINGS,
+            "package:${BuildConfig.APPLICATION_ID}".toUri()
         )
-    }
+    )
 }

@@ -44,6 +44,6 @@ open class InstallerEvent(open val packageName: String) : Event() {
     data class Failed(
         override val packageName: String,
         val error: String? = null,
-        val extra: String? = null,
+        val extra: String? = null
     ) : InstallerEvent(packageName)
 }

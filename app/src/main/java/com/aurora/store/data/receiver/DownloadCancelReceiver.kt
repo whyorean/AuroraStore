@@ -13,9 +13,9 @@ import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.helper.DownloadHelper
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DownloadCancelReceiver : BroadcastReceiver() {

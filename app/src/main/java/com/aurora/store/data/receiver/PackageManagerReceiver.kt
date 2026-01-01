@@ -48,7 +48,7 @@ open class PackageManagerReceiver : BroadcastReceiver() {
                 }
             }
 
-            //Clear installation queue
+            // Clear installation queue
             appInstaller.getPreferredInstaller().removeFromInstallQueue(packageName)
         }
     }

@@ -19,11 +19,8 @@
 
 package com.aurora.store.data.model
 
-
 sealed class ViewState {
-    inline fun <reified T> ViewState.getDataAs(): T {
-        return (this as? Success<*>)?.data as T
-    }
+    inline fun <reified T> ViewState.getDataAs(): T = (this as? Success<*>)?.data as T
 
     data object Loading : ViewState()
     data object Empty : ViewState()
@@ -33,7 +30,7 @@ sealed class ViewState {
 }
 
 sealed class AuthState {
-    data object Init: AuthState()
+    data object Init : AuthState()
     data object Available : AuthState()
     data object Unavailable : AuthState()
     data object SignedIn : AuthState()
@@ -68,18 +65,15 @@ sealed class AppState {
     /**
      * Whether there is some sort of ongoing process related to the app
      */
-    fun inProgress(): Boolean {
-        return this is Downloading || this is Installing || this is Purchasing || this is Queued
-    }
+    fun inProgress(): Boolean =
+        this is Downloading || this is Installing || this is Purchasing || this is Queued
 
     /**
      * Progress of the process related to the app; 0 otherwise
      */
-    fun progress(): Float {
-        return when (this) {
-            is Downloading -> progress
-            is Installing -> progress
-            else -> 0F
-        }
+    fun progress(): Float = when (this) {
+        is Downloading -> progress
+        is Installing -> progress
+        else -> 0F
     }
 }

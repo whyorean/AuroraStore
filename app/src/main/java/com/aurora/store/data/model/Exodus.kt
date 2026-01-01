@@ -55,14 +55,10 @@ data class ExodusTracker(
     val categories: List<String> = emptyList()
 ) {
 
-    override fun hashCode(): Int {
-        return id
-    }
+    override fun hashCode(): Int = id
 
-    override fun equals(other: Any?): Boolean {
-        return when (other) {
-            is ExodusTracker -> other.id == id
-            else -> false
-        }
+    override fun equals(other: Any?): Boolean = when (other) {
+        is ExodusTracker -> other.id == id
+        else -> false
     }
 }

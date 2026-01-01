@@ -31,6 +31,7 @@ import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.installer.ShizukuInstaller.Companion.SHIZUKU_PACKAGE_NAME
 import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
@@ -40,10 +41,10 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.qualifiers.ApplicationContext
-import rikka.shizuku.Shizuku
-import rikka.sui.Sui
 import javax.inject.Inject
 import javax.inject.Singleton
+import rikka.shizuku.Shizuku
+import rikka.sui.Sui
 
 @Singleton
 class AppInstaller @Inject constructor(
@@ -58,27 +59,28 @@ class AppInstaller @Inject constructor(
 ) {
 
     companion object {
-        const val ACTION_INSTALL_STATUS = "com.aurora.store.data.installer.AppInstaller.INSTALL_STATUS"
+        const val ACTION_INSTALL_STATUS =
+            "com.aurora.store.data.installer.AppInstaller.INSTALL_STATUS"
 
-        const val EXTRA_PACKAGE_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_PACKAGE_NAME"
-        const val EXTRA_VERSION_CODE = "com.aurora.store.data.installer.AppInstaller.EXTRA_VERSION_CODE"
-        const val EXTRA_DISPLAY_NAME = "com.aurora.store.data.installer.AppInstaller.EXTRA_DISPLAY_NAME"
+        const val EXTRA_PACKAGE_NAME =
+            "com.aurora.store.data.installer.AppInstaller.EXTRA_PACKAGE_NAME"
+        const val EXTRA_VERSION_CODE =
+            "com.aurora.store.data.installer.AppInstaller.EXTRA_VERSION_CODE"
+        const val EXTRA_DISPLAY_NAME =
+            "com.aurora.store.data.installer.AppInstaller.EXTRA_DISPLAY_NAME"
 
-        fun getCurrentInstaller(context: Context): Installer {
-            return Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
-        }
+        fun getCurrentInstaller(context: Context): Installer =
+            Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
 
-        fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> {
-            return listOfNotNull(
-                SessionInstaller.installerInfo,
-                NativeInstaller.installerInfo,
-                if (hasRootAccess()) RootInstaller.installerInfo else null,
-                if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
-                if (hasAppManager(context)) AMInstaller.installerInfo else null,
-                if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
-                if (hasMicroGCompanion(context)) MicroGInstaller.installerInfo else null
-            )
-        }
+        fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> = listOfNotNull(
+            SessionInstaller.installerInfo,
+            NativeInstaller.installerInfo,
+            if (hasRootAccess()) RootInstaller.installerInfo else null,
+            if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
+            if (hasAppManager(context)) AMInstaller.installerInfo else null,
+            if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
+            if (hasMicroGCompanion(context)) MicroGInstaller.installerInfo else null
+        )
 
         /**
          * Checks if the given package can be silently installed
@@ -92,60 +94,71 @@ class AppInstaller @Inject constructor(
                     if (!PackageUtil.isInstalled(context, packageName) || !isSAndAbove) return false
 
                     // We cannot do silent updates if we are not the update owner
-                    if (context.packageManager.getUpdateOwnerPackageNameCompat(packageName) != BuildConfig.APPLICATION_ID) return false
+                    if (context.packageManager.getUpdateOwnerPackageNameCompat(packageName) !=
+                        BuildConfig.APPLICATION_ID
+                    ) {
+                        return false
+                    }
 
                     // Ensure app being installed satisfies Android's requirement for targetSdk level
                     when (Build.VERSION.SDK_INT) {
-                        Build.VERSION_CODES.BAKLAVA -> targetSdk >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
-                        Build.VERSION_CODES.VANILLA_ICE_CREAM -> targetSdk >= Build.VERSION_CODES.TIRAMISU
+                        Build.VERSION_CODES.BAKLAVA -> {
+                            targetSdk >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+                        }
+
+                        Build.VERSION_CODES.VANILLA_ICE_CREAM -> {
+                            targetSdk >= Build.VERSION_CODES.TIRAMISU
+                        }
+
                         Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> targetSdk >= Build.VERSION_CODES.S
+
                         Build.VERSION_CODES.TIRAMISU -> targetSdk >= Build.VERSION_CODES.R
+
                         Build.VERSION_CODES.S -> targetSdk >= Build.VERSION_CODES.Q
+
                         else -> false // Only Android version above 12 can silently update apps
                     }
                 }
-                Installer.NATIVE -> false // Native installer requires user interaction
+
+                // Native installer requires user interaction
+                Installer.NATIVE -> false
+
                 Installer.ROOT -> hasRootAccess()
+
                 Installer.SERVICE -> hasAuroraService(context)
-                Installer.AM -> false // We cannot check if AppManager has ability to auto-update
+
+                // We cannot check if AppManager has ability to auto-update
+                Installer.AM -> false
+
                 Installer.SHIZUKU -> isOAndAbove && hasShizukuOrSui(context) && hasShizukuPerm()
+
                 Installer.MICROG -> false
             }
         }
 
-        fun hasRootAccess(): Boolean {
-            return Shell.getShell().isRoot
-        }
+        fun hasRootAccess(): Boolean = Shell.getShell().isRoot
 
-        fun hasAuroraService(context: Context): Boolean {
-            return try {
-                val packageInfo = PackageUtil.getPackageInfo(
-                    context,
-                    ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
-                )
-                val version = PackageInfoCompat.getLongVersionCode(packageInfo)
-
-                packageInfo.applicationInfo!!.enabled && version >= 9
-            } catch (exception: Exception) {
-                false
-            }
-        }
-
-        fun hasAppManager(context: Context): Boolean {
-            return PackageUtil.isInstalled(context, AMInstaller.AM_PACKAGE_NAME) or
-                    PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
-        }
-
-        fun hasShizukuOrSui(context: Context): Boolean {
-            return isOAndAbove && (PackageUtil.isInstalled(
+        fun hasAuroraService(context: Context): Boolean = try {
+            val packageInfo = PackageUtil.getPackageInfo(
                 context,
-                ShizukuInstaller.SHIZUKU_PACKAGE_NAME
-            ) || Sui.isSui())
+                ServiceInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME
+            )
+            val version = PackageInfoCompat.getLongVersionCode(packageInfo)
+
+            packageInfo.applicationInfo!!.enabled && version >= 9
+        } catch (_: Exception) {
+            false
         }
 
-        fun hasShizukuPerm(): Boolean {
-            return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
-        }
+        fun hasAppManager(context: Context): Boolean =
+            PackageUtil.isInstalled(context, AMInstaller.AM_PACKAGE_NAME) or
+                PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
+
+        fun hasShizukuOrSui(context: Context): Boolean = isOAndAbove &&
+            (PackageUtil.isInstalled(context, SHIZUKU_PACKAGE_NAME) || Sui.isSui())
+
+        fun hasShizukuPerm(): Boolean =
+            Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED
 
         fun uninstall(context: Context, packageName: String) {
             val intent = Intent().apply {
@@ -166,25 +179,33 @@ class AppInstaller @Inject constructor(
     private val defaultInstaller: IInstaller
         get() = sessionInstaller
 
-    fun getMicroGInstaller(): IInstaller {
-        return microGInstaller
-    }
+    fun getMicroGInstaller(): IInstaller = microGInstaller
 
-    fun getPreferredInstaller(): IInstaller {
-        return when (getCurrentInstaller(context)) {
-            Installer.SESSION -> sessionInstaller
-            Installer.NATIVE -> nativeInstaller
-            Installer.ROOT -> if (hasRootAccess()) rootInstaller else defaultInstaller
-            Installer.SERVICE -> if (hasAuroraService(context)) serviceInstaller else defaultInstaller
-            Installer.AM -> if (hasAppManager(context)) amInstaller else defaultInstaller
-            Installer.SHIZUKU -> {
-                if (hasShizukuOrSui(context) && hasShizukuPerm()) {
-                    shizukuInstaller
-                } else {
-                    defaultInstaller
-                }
-            }
-            Installer.MICROG -> if(hasMicroGCompanion(context)) microGInstaller else defaultInstaller
+    fun getPreferredInstaller(): IInstaller = when (getCurrentInstaller(context)) {
+        Installer.SESSION -> sessionInstaller
+
+        Installer.NATIVE -> nativeInstaller
+
+        Installer.ROOT -> if (hasRootAccess()) rootInstaller else defaultInstaller
+
+        Installer.SERVICE -> if (hasAuroraService(context)) {
+            serviceInstaller
+        } else {
+            defaultInstaller
+        }
+
+        Installer.AM -> if (hasAppManager(context)) amInstaller else defaultInstaller
+
+        Installer.SHIZUKU -> if (hasShizukuOrSui(context) && hasShizukuPerm()) {
+            shizukuInstaller
+        } else {
+            defaultInstaller
+        }
+
+        Installer.MICROG -> if (hasMicroGCompanion(context)) {
+            microGInstaller
+        } else {
+            defaultInstaller
         }
     }
 }

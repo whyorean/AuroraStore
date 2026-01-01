@@ -21,7 +21,5 @@ data class ExternalApk(
     var fileList: List<PlayFile>
 ) : Parcelable {
 
-    fun isInstalled(context: Context): Boolean {
-        return PackageUtil.isInstalled(context, packageName)
-    }
+    fun isInstalled(context: Context): Boolean = PackageUtil.isInstalled(context, packageName)
 }

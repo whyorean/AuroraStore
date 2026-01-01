@@ -27,14 +27,10 @@ data class Black(val packageName: String) {
     var versionName: String = String()
     var versionCode: Long = 0
 
-    override fun hashCode(): Int {
-        return packageName.hashCode()
-    }
+    override fun hashCode(): Int = packageName.hashCode()
 
-    override fun equals(other: Any?): Boolean {
-        return when (other) {
-            is Black -> other.packageName == packageName
-            else -> false
-        }
+    override fun equals(other: Any?): Boolean = when (other) {
+        is Black -> other.packageName == packageName
+        else -> false
     }
 }

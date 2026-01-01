@@ -137,12 +137,9 @@ open class SpoofDeviceProvider(private val context: Context) {
                     return File(sourceDir)
                 }
             } catch (ignored: Exception) {
-
             }
             return null
         }
 
-    private fun filenameValid(filename: String): Boolean {
-        return filename.endsWith(SUFFIX)
-    }
+    private fun filenameValid(filename: String): Boolean = filename.endsWith(SUFFIX)
 }

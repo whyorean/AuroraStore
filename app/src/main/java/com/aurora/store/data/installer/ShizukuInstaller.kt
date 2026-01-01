@@ -51,10 +51,10 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.rikka.tools.refine.Refine
-import rikka.shizuku.ShizukuBinderWrapper
-import rikka.shizuku.SystemServiceHelper
 import javax.inject.Inject
 import javax.inject.Singleton
+import rikka.shizuku.ShizukuBinderWrapper
+import rikka.shizuku.SystemServiceHelper
 
 @Singleton
 @RequiresApi(Build.VERSION_CODES.O)
@@ -99,7 +99,9 @@ class ShizukuInstaller @Inject constructor(
             Refine.unsafeCast<PackageInstaller>(
                 PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, 0)
             )
-        } else null
+        } else {
+            null
+        }
     }
 
     override fun install(download: Download) {

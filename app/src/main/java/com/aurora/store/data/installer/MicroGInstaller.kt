@@ -53,13 +53,12 @@ class MicroGInstaller @Inject constructor(
                 description = R.string.microg_installer_desc
             )
 
-        fun buildMicroGInstallIntent(uris: ArrayList<Uri>): Intent {
-            return Intent("org.microg.vending.action.INSTALL_PACKAGE").apply {
+        fun buildMicroGInstallIntent(uris: ArrayList<Uri>): Intent =
+            Intent("org.microg.vending.action.INSTALL_PACKAGE").apply {
                 setPackage(PACKAGE_NAME_PLAY_STORE)
                 setType("application/vnd.android.package-archive")
                 putExtra(Intent.EXTRA_STREAM, uris)
             }
-        }
     }
 
     override fun install(download: Download) {

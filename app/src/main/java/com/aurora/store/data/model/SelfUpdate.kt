@@ -74,7 +74,8 @@ data class SelfUpdate(
                 isFree = true,
                 isInstalled = true,
                 certificateSetList = CertUtil.getEncodedCertificateHashes(
-                    context, context.packageName
+                    context,
+                    context.packageName
                 ).map {
                     EncodedCertificateSet(certificateSet = it, sha256 = String())
                 }.toMutableList()

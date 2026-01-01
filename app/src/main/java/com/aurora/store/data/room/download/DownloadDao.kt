@@ -31,12 +31,7 @@ interface DownloadDao {
         WHERE packageName=:packageName
         """
     )
-    suspend fun updateProgress(
-        packageName: String,
-        progress: Int,
-        speed: Long,
-        timeRemaining: Long
-    )
+    suspend fun updateProgress(packageName: String, progress: Int, speed: Long, timeRemaining: Long)
 
     @Query("SELECT * FROM download")
     fun downloads(): Flow<List<Download>>

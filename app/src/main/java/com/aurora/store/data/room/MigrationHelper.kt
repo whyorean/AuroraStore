@@ -35,7 +35,9 @@ object MigrationHelper {
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
         database.beginTransaction()
         try {
-            database.execSQL("CREATE TABLE `favourite` (`packageName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `added` INTEGER NOT NULL, `mode` TEXT NOT NULL, PRIMARY KEY(`packageName`))")
+            database.execSQL(
+                "CREATE TABLE `favourite` (`packageName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `added` INTEGER NOT NULL, `mode` TEXT NOT NULL, PRIMARY KEY(`packageName`))"
+            )
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 1 to 2", exception)
@@ -47,7 +49,9 @@ object MigrationHelper {
     private fun migrateFrom2To3(database: SupportSQLiteDatabase) {
         database.beginTransaction()
         try {
-            database.execSQL("CREATE TABLE `update` (`packageName` TEXT NOT NULL, `versionCode` INTEGER NOT NULL, `versionName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `changelog` TEXT NOT NULL, `id` INTEGER NOT NULL, `developerName` TEXT NOT NULL, `size` INTEGER NOT NULL, `updatedOn` TEXT NOT NULL, `hasValidCert` INTEGER NOT NULL, `offerType` INTEGER NOT NULL, `fileList` TEXT NOT NULL, `sharedLibs` TEXT NOT NULL, PRIMARY KEY(`packageName`))")
+            database.execSQL(
+                "CREATE TABLE `update` (`packageName` TEXT NOT NULL, `versionCode` INTEGER NOT NULL, `versionName` TEXT NOT NULL, `displayName` TEXT NOT NULL, `iconURL` TEXT NOT NULL, `changelog` TEXT NOT NULL, `id` INTEGER NOT NULL, `developerName` TEXT NOT NULL, `size` INTEGER NOT NULL, `updatedOn` TEXT NOT NULL, `hasValidCert` INTEGER NOT NULL, `offerType` INTEGER NOT NULL, `fileList` TEXT NOT NULL, `sharedLibs` TEXT NOT NULL, PRIMARY KEY(`packageName`))"
+            )
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 2 to 3", exception)
@@ -63,7 +67,9 @@ object MigrationHelper {
         database.beginTransaction()
         try {
             listOf("download", "update").forEach {
-                database.execSQL("ALTER TABLE `$it` ADD COLUMN targetSdk INTEGER NOT NULL DEFAULT 1")
+                database.execSQL(
+                    "ALTER TABLE `$it` ADD COLUMN targetSdk INTEGER NOT NULL DEFAULT 1"
+                )
             }
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
@@ -79,7 +85,9 @@ object MigrationHelper {
     private fun migrateFrom4To5(database: SupportSQLiteDatabase) {
         database.beginTransaction()
         try {
-            database.execSQL("ALTER TABLE `download` ADD COLUMN downloadedAt INTEGER NOT NULL DEFAULT 0")
+            database.execSQL(
+                "ALTER TABLE `download` ADD COLUMN downloadedAt INTEGER NOT NULL DEFAULT 0"
+            )
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 4 to 5", exception)
