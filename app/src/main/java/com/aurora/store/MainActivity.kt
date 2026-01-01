@@ -96,7 +96,6 @@ class MainActivity : AppCompatActivity() {
                                     .commitAllowingStateLoss()
                             }
                         }
-
                     }
 
                     NetworkStatus.UNAVAILABLE -> {
@@ -154,7 +153,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun isIntroDone(): Boolean {
-        return Preferences.getBoolean(this@MainActivity, Preferences.PREFERENCE_INTRO)
-    }
+    private fun isIntroDone(): Boolean = Preferences.getBoolean(this, Preferences.PREFERENCE_INTRO)
 }
