@@ -206,7 +206,8 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess(): Result {
         return withContext(NonCancellable) {
             return@withContext try {
-                if (BuildConfig.FLAVOR == FLAVOUR_HUAWEI && download.requiresGMS &&
+                if (BuildConfig.FLAVOR == FLAVOUR_HUAWEI &&
+                    download.requiresGMS &&
                     PackageUtil.hasMicroGCompanion(context)
                 ) {
                     appInstaller.getMicroGInstaller().install(download)

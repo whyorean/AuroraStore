@@ -41,8 +41,10 @@ open class GenericCarouselController(private val callbacks: Callbacks) :
     }
 
     open fun applyFilter(streamBundle: StreamCluster): Boolean {
-        return streamBundle.clusterTitle.isNotBlank() && // Filter noisy cluster
-            streamBundle.clusterAppList.isNotEmpty() && // Filter empty clusters
+        return streamBundle.clusterTitle.isNotBlank() &&
+            // Filter noisy cluster
+            streamBundle.clusterAppList.isNotEmpty() &&
+            // Filter empty clusters
             streamBundle.clusterAppList.count() > 1 // Filter clusters with single apps (promotions)
     }
 

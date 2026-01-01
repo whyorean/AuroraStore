@@ -71,8 +71,8 @@ class BlacklistViewModel @Inject constructor(
         if (query.isNotBlank()) {
             _filteredPackages.value = packages.value!!
                 .filter {
-                    it.applicationInfo!!.loadLabel(context.packageManager)
-                        .contains(query, true) || it.packageName.contains(query, true)
+                    it.applicationInfo!!.loadLabel(context.packageManager).contains(query, true) ||
+                        it.packageName.contains(query, true)
                 }
         } else {
             _filteredPackages.value = packages.value

@@ -50,7 +50,7 @@ object Constants {
     const val GITLAB_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
     const val URL_DISPENSER = "https://auroraoss.com/api/auth"
 
-    //ACCOUNTS
+    // ACCOUNTS
     const val ACCOUNT_SIGNED_IN = "ACCOUNT_SIGNED_IN"
     const val ACCOUNT_TYPE = "ACCOUNT_TYPE"
     const val ACCOUNT_EMAIL_PLAIN = "ACCOUNT_EMAIL_PLAIN"

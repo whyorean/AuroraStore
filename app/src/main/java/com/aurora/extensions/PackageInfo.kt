@@ -28,7 +28,8 @@ fun PackageInfo.isValidApp(packageManager: PackageManager): Boolean {
     return when {
         isQAndAbove -> {
             Process.isApplicationUid(this.applicationInfo!!.uid) &&
-                !this.applicationInfo!!.isResourceOverlay && !this.isApex
+                !this.applicationInfo!!.isResourceOverlay &&
+                !this.isApex
         }
 
         isNAndAbove -> Process.isApplicationUid(this.applicationInfo!!.uid)

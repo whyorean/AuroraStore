@@ -123,11 +123,12 @@ object PackageUtil {
         context,
         PACKAGE_NAME_PLAY_STORE,
         VERSION_CODE_MICROG_COMPANION_MIN
-    ) && hasActivity(
-        context,
-        PACKAGE_NAME_PLAY_STORE,
-        MICROG_INSTALL_ACTIVITY
-    )
+    ) &&
+        hasActivity(
+            context,
+            PACKAGE_NAME_PLAY_STORE,
+            MICROG_INSTALL_ACTIVITY
+        )
 
     fun isInstalled(context: Context, packageName: String, versionCode: Long? = null): Boolean =
         try {

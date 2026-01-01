@@ -124,9 +124,8 @@ private fun ScreenContent(
 
             Button(
                 modifier = buttonWidthModifier,
-                enabled =
-                    !isFinalPage() ||
-                        (!uiState.isMicroBundleChecked || uiState.isMicroGBundleInstalled),
+                enabled = !isFinalPage() ||
+                    (!uiState.isMicroBundleChecked || uiState.isMicroGBundleInstalled),
                 onClick = {
                     when {
                         isFinalPage() -> onFinishOnboarding()

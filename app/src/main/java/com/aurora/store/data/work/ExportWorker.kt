@@ -104,7 +104,6 @@ class ExportWorker @AssistedInject constructor(
 
         notificationManager = context.getSystemService<NotificationManager>()!!
 
-        @Suppress("ktlint:standard:mixed-condition-operators")
         if (packageName.isNullOrEmpty() || isDownload && versionCode == -1L) {
             Log.e(TAG, "Input data is corrupt, bailing out!")
             notifyStatus(displayName ?: String(), uri, false)
