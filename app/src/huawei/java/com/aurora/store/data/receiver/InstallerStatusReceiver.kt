@@ -153,7 +153,7 @@ class InstallerStatusReceiver : BaseInstallerStatusReceiver() {
         Log.i(TAG, "Huawei silent install support function: $supportFunction")
 
         (supportFunction and (1 shl 5)) != 0
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         false
     }
 }

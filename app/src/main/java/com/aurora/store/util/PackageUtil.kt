@@ -144,7 +144,7 @@ object PackageUtil {
 
     fun isArchived(context: Context, packageName: String): Boolean = try {
         isVAndAbove && context.packageManager.getArchivedPackage(packageName) != null
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         false
     }
 
@@ -178,7 +178,7 @@ object PackageUtil {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
             return versionCode > PackageInfoCompat.getLongVersionCode(packageInfo)
-        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (_: PackageManager.NameNotFoundException) {
             false
         }
     }
@@ -194,13 +194,13 @@ object PackageUtil {
 
     fun getInstalledVersionName(context: Context, packageName: String): String = try {
         getPackageInfo(context, packageName).versionName ?: ""
-    } catch (e: PackageManager.NameNotFoundException) {
+    } catch (_: PackageManager.NameNotFoundException) {
         ""
     }
 
     fun getInstalledVersionCode(context: Context, packageName: String): Long = try {
         PackageInfoCompat.getLongVersionCode(getPackageInfo(context, packageName))
-    } catch (e: PackageManager.NameNotFoundException) {
+    } catch (_: PackageManager.NameNotFoundException) {
         0
     }
 

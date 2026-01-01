@@ -345,7 +345,7 @@ class AppDetailsViewModel @Inject constructor(
             val exodusReport = json.decodeFromString<ExodusReport>(exodusObject.toString())
 
             return exodusReport.reports
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             return emptyList()
         }
     }

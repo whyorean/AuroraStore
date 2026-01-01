@@ -72,7 +72,7 @@ class BlacklistProvider @Inject constructor(
                 } else {
                     json.decodeFromString<MutableSet<String>>(rawBlacklist)
                 }
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 mutableSetOf()
             }
         }
