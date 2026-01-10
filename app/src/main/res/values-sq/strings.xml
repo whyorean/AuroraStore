@@ -384,7 +384,6 @@
     <string name="made_with_love">Krijuar me <xliff:g id="heart_emoji">%1$s</xliff:g> në Indi</string>
     <string name="add_dispenser_title">Shtoni distributor</string>
     <string name="add_dispenser_summary">Shtoni te Aurora Store një distributor token-ësh. Distributorët e token-ëve i furnizojnë Aurora Store-it kredenciale llogarie për hyrje anonime.</string>
-    <string name="remove_dispenser_title"></string>
     <string name="default_spoof">Parazgjedhje</string>
     <string name="toast_black_export_failed">S’u arrit të eksportohej listë ndalimesh!</string>
     <string name="toast_black_export_success">Lista e ndalimeve u eksportua!</string>
