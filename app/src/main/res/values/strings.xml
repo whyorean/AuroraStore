@@ -500,7 +500,6 @@
     <string name="details_more_content_rating">Content rating</string>
     <string name="action_unarchive">Unarchive</string>
     <string name="unable_to_open">Unable to open app</string>
-    <string name="version_update" translatable="false"><xliff:g id="installed_version_name">%1$s</xliff:g> (<xliff:g id="installed_version_code">%2$d</xliff:g>) ➔ <xliff:g id="update_version_name">%3$s</xliff:g> (<xliff:g id="update_version_code">%4$d</xliff:g>)</string>
     <string name="plexus_powered">Powered by Plexus</string>
     <string name="plexus_progress">Checking compatibility…</string>
     <string name="details_compatibility_title">Compatibility</string>
