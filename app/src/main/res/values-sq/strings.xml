@@ -384,7 +384,6 @@
     <string name="made_with_love">Krijuar me <xliff:g id="heart_emoji">%1$s</xliff:g> në Indi</string>
     <string name="add_dispenser_title">Shtoni distributor</string>
     <string name="add_dispenser_summary">Shtoni te Aurora Store një distributor token-ësh. Distributorët e token-ëve i furnizojnë Aurora Store-it kredenciale llogarie për hyrje anonime.</string>
-    <string name="remove_dispenser_title">Hiqe distributorin</string>
     <string name="default_spoof">Parazgjedhje</string>
     <string name="toast_black_export_failed">S’u arrit të eksportohej listë ndalimesh!</string>
     <string name="toast_black_export_success">Lista e ndalimeve u eksportua!</string>
@@ -433,4 +432,37 @@
     </plurals>
     <string name="set">Ujdiseni</string>
     <string name="force_restart_snack">Të riniset, që të aplikohen ndryshimet?</string>
+    <string name="action_install_microG">Instalo Paketën microG</string>
+    <string name="details_data_safety_collect">Të dhëna që mund të grumbullojë ky aplikacion</string>
+    <string name="details_data_safety_collect_none">Zhvilluesi thotë se ky aplikacion s’grumbullon të dhëna përdoruesi.</string>
+    <string name="details_data_safety_shared">Të dhëna që ky aplikacion mund t’u japë të tjerëve</string>
+    <string name="details_data_safety_share_none">Zhvilluesi thotë se ky aplikacion s’jep të dhëna përdoruesi për shoqëri dhe ente të tjerë.</string>
+    <string name="exodus_tracker_desc">Ky version i aplikacioni mund të përmbajë ende gjurmues të tjerë jo të pranishëm në bazën e të dhënave të Exodus Privacy-së.</string>
+    <string name="exodus_report_trackers">Te <xliff:g id="app_version_name">%2$s</xliff:g> u gjet(ën) <xliff:g id="number_of_trackers">%1$d</xliff:g> gjurmues i(të) njohur</string>
+    <string name="installer_microg_misconfigured">Instaluesi MicroG s’arriti të instalojë aplikacionin, me gjasa për shkak formësimi të gabuar.</string>
+    <string name="pref_install_mode_microg">Instalues MicroG</string>
+    <string name="action_skip">Anashkaloje</string>
+    <string name="onboarding_title_gsf">Përputhje Aplikacioni</string>
+    <string name="onboarding_title_gsf_desc">Ka varësi të paplotësuara</string>
+    <string name="onboarding_gms_agreement">I kam lexuar dhe pajtohem me Kushtet e Shërbimit dhe Rregullat e Privatësisë së microG-së</string>
+    <string name="onboarding_gms_missing">S’gjetëm dot Google Play Services në pajisjen tuaj, një numër aplikacionesh të njohur tanimë e kanë të domosdoshëm, që të funksionojnë si duhet!</string>
+    <string name="onboarding_gms_microg">microG është një sendërtim i lirë dhe me burim të hapët, që ofron funksione të ngjashme për xhirim aplikacionesh që varen nga Google Play Services për pajisje Android, përmes risendërimti.\n\nmicroG u bën të mundur aplikacioneve të përdorin këto API Google, duke zgjeruar për përdoruesit shkallë përputhjeje, teksa ofron përfitime në pikëpamje të privatësisë. \n\nmicroG do të funksionojë automatikisht në prapaskenë, kur hapni aplikacione që varen nga Google Mobile Services.</string>
+    <string name="microg_privacy_policy">Lexoni Rregulla Privatësie të microG-së</string>
+    <string name="microg_license_agreement">Lexoni Licencë dhe Marrëveshje për microG</string>
+    <string name="microg_website">Vizitoni Sajtin e Projektit microG</string>
+    <string name="microg_installer_subtitle">Që të instalohet, lyp aplikacionin shoqërues microG</string>
+    <string name="microg_installer_desc">Ju ndihmon të anashkaloni kontroll Integriteti Aplikacioni (vetëm për instaluesin)</string>
+    <string name="manual_download_version_error">Kodi i versionit mund të përmbajë vetëm shifra</string>
+    <string name="status_verifying">Po verifikohet</string>
+    <string name="no_description">S’ka përshkrim</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> leje</string>
+    <string name="details_more_info">Më tepër informacion</string>
+    <string name="details_more_package_name">Emër pakete</string>
+    <string name="details_more_content_rating">Vlerësim lënde</string>
+    <string name="preparing_to_install">Po bëhet gati për instalim</string>
+    <string name="select_app_for_details">Për më tepër hollësi, përzgjidhni një aplikacion</string>
+    <string name="action_filter_no_ads">Pa reklama</string>
+    <string name="action_filter_no_gms">Pa shërbime luajtjesh</string>
+    <string name="loading">Ngarkim në kryerje e sipër</string>
+    <string name="page">Faqja <xliff:g id="number">%1$d</xliff:g></string>
 </resources>
