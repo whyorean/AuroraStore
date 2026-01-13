@@ -6,12 +6,14 @@
 package com.aurora.store.compose.ui.details
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
@@ -123,19 +125,21 @@ private fun ScreenContentReport(
                 .padding(horizontal = dimensionResource(R.dimen.padding_medium))
         ) {
             stickyHeader {
-                Header(
-                    title = if (report?.trackers.isNullOrEmpty()) {
-                        stringResource(R.string.exodus_no_tracker)
-                    } else {
-                        stringResource(
-                            R.string.exodus_report_trackers,
-                            report.trackers.size,
-                            report.version
-                        )
-                    },
-                    subtitle = stringResource(R.string.exodus_view_report),
-                    onClick = { context.browse(EXODUS_REPORT_URL + report!!.id) }
-                )
+                Surface(modifier = Modifier.fillMaxWidth()) {
+                    Header(
+                        title = if (report?.trackers.isNullOrEmpty()) {
+                            stringResource(R.string.exodus_no_tracker)
+                        } else {
+                            stringResource(
+                                R.string.exodus_report_trackers,
+                                report.trackers.size,
+                                report.version
+                            )
+                        },
+                        subtitle = stringResource(R.string.exodus_view_report),
+                        onClick = { context.browse(EXODUS_REPORT_URL + report!!.id) }
+                    )
+                }
             }
 
             items(items = trackers, key = { item -> item.id }) { tracker ->
