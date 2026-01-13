@@ -41,7 +41,7 @@ class ExodusViewModel @Inject constructor(
                     description = it.getString("description"),
                     networkSignature = it.getString("network_signature"),
                     documentation = listOf(it.getString("documentation")),
-                    categories = listOf(it.getString("categories"))
+                    categories = listOf(it.getString("categories")),
                 )
             }.toList()
         }

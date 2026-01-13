@@ -5,15 +5,19 @@
 
 package com.aurora.store.compose.composable.details
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.data.model.ExodusTracker
@@ -25,7 +29,16 @@ import com.aurora.store.data.model.ExodusTracker
  */
 @Composable
 fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
-    Column(modifier = modifier.padding(dimensionResource(R.dimen.padding_small))) {
+    val context = LocalContext.current
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(
+                onClick = { context.browse(tracker.url) },
+                enabled = tracker.url.isNotBlank()
+            )
+            .padding(dimensionResource(R.dimen.padding_small))
+    ) {
         Text(
             text = tracker.name,
             style = MaterialTheme.typography.bodyMedium,
@@ -55,7 +68,8 @@ private fun ExodusListItemPreview() {
             tracker = ExodusTracker(
                 name = "Google Analytics",
                 signature = "com.google.android.apps.analytics.|com.google.analytics.",
-                date = "2017-09-24"
+                date = "2017-09-24",
+                url = "http://www.google.com/analytics/"
             )
         )
     }
