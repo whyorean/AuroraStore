@@ -23,7 +23,7 @@
     <string name="onboarding_welcome_select">Comment allez-vous ?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Programme d’installation</string>
-    <string name="pref_filter_fdroid_title">Filtrer les applications F-Droid</string>
+    <string name="pref_filter_fdroid_title">Filtrer les applis provenant de F-Droid</string>
     <string name="pref_install_mode_title">Mode d’installation</string>
     <string name="title_about">À propos</string>
     <string name="tab_trending">Tendances</string>
@@ -285,9 +285,9 @@
     <string name="details_ratings_title_hint">Titre de l’avis</string>
     <string name="pref_network_proxy_url">URL du mandataire</string>
     <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
-    <string name="pref_aurora_only">Filtrer les applications provenant d\'autres sources</string>
+    <string name="pref_aurora_only">Filtrer les applis provenant d’autres sources</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
-    <string name="pref_aurora_only_desc">Ne pas chercher les mises à jour pour les applications installées à partir de sources externes à Aurora Store</string>
+    <string name="pref_aurora_only_desc">Ne pas vérifier la présence de mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
@@ -306,7 +306,7 @@
     <string name="failed_apk_export">Échec d’exportation des APK</string>
     <string name="download_clear_finished">Effacer les terminés</string>
     <string name="pref_updates_incompatible">Afficher les mises à jour susceptibles d’échouer</string>
-    <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applications incompatibles ou désactivées susceptibles de ne pas s\'installer</string>
+    <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applis incompatibles ou désactivées dont l’installation peut échouer</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
     <string name="faqs_subtitle">Des questions ? Trouvez les réponses</string>
     <string name="source_code_title">Code source</string>
