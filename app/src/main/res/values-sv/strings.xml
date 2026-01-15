@@ -216,7 +216,7 @@
     <string name="installer_am_unavailable">Installera app-hanteraren eller ändra på installationsprogrammet.</string>
     <string name="action_get_local_apk">Spara appaket</string>
     <string name="pref_common_extra">Extra</string>
-    <string name="pref_install_mode_am">AM-installatör</string>
+    <string name="pref_install_mode_am">Installationsprogrammet AM</string>
     <string name="pref_install_mode_native">Inbyggt installationsprogram (Föråldrat)</string>
     <string name="title_installer">Installationsprogram för appen</string>
     <string name="dialog_desc_native_split">Du kan inte installera medföljande (uppdelade) appar via det inbyggda installationsprogrammet. Ändra installationsprogrammet till Session, Tjänster eller Root.</string>
@@ -279,7 +279,7 @@
     <string name="check_connectivity">Kolla anslutbarheten mot internet</string>
     <string name="app_links_title">App-länkar</string>
     <string name="toast_import_success">Enhetskonfigurationen importerades</string>
-    <string name="notification_channel_updates">Aviseringar om uppdateringar</string>
+    <string name="notification_channel_updates">Uppdateringsaviseringar</string>
     <string name="permissions_denied">Behörigheter som krävs nekades. Vänligen godkänn dessa för att fortsätta åtgärden</string>
     <string name="pref_install_mode_shizuku">Installationsprogrammet Shizuku</string>
     <string name="android_market_desc">Android Market var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter, gick i pension 2017.</string>
@@ -396,11 +396,11 @@
     <string name="microg_license_agreement">Läs mikroG:s licens och avtal</string>
     <string name="microg_website">Besök microG-projektets webbplats</string>
     <string name="session_installer_subtitle">Sessionbaserad installationsmjukvara för packade/splittade APK:er</string>
-    <string name="native_installer_desc">Bäst lämpade för enheter som körs under Android 4.4</string>
+    <string name="native_installer_desc">Bäst lämpad för enheter som kör Android under version 4.4</string>
     <string name="services_installer_desc">Kräver Auroratjänster som ska installeras som en privilegierad systemapp</string>
     <string name="microg_installer_subtitle">Kräver mikroG följeslagarapp som ska installeras</string>
     <string name="microg_installer_desc">Hjälper dig att kringgå Appintegritetskontroll (endast installera)</string>
-    <string name="am_installer_subtitle">Fullutrustad pakethanterare i öppen källkod</string>
+    <string name="am_installer_subtitle">Fullfjädrad pakethanterare med öppen källkod</string>
     <string name="am_installer_desc">Kräver App Manager, behöver adb/rootläge för att installera när miui optimering är på</string>
     <string name="shizuku_installer_desc">Kräver Shizuku eller Sui, måste ställas in och beviljas tillstånd</string>
     <string name="manual_download_version_error">Versionskod kan endast innehålla siffror</string>
