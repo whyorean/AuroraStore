@@ -57,7 +57,7 @@
     <string name="pref_install_delete_summary">Hämtade APK:er kommer att tas bort efter installation</string>
     <string name="pref_filter_fdroid_title">Filtrera F-Droid-appar</string>
     <string name="onboarding_permission_installer_desc">Tillåt att installera appar från Aurora-butiken</string>
-    <string name="onboarding_permission_esa_desc">För att kunna spara expansionsfiler för APK (OBB:er) till stora appar &amp; spel.</string>
+    <string name="onboarding_permission_esa_desc">För att spara APK expansionspaket (OBB:er) för stora appar &amp; spel.</string>
     <string name="onboarding_welcome_select">Hur går det för dig?</string>
     <string name="onboarding_title_welcome">Välkommen</string>
     <string name="onboarding_title_permissions">Behörigheter</string>
