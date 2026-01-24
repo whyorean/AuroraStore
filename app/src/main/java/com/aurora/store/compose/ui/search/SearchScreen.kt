@@ -77,11 +77,11 @@ import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
+import kotlin.random.Random
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 @Composable
 fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltViewModel()) {

@@ -46,9 +46,6 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.net.SocketException
@@ -58,6 +55,9 @@ import java.security.DigestInputStream
 import java.security.MessageDigest
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.properties.Delegates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.withContext
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
