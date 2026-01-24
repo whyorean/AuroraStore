@@ -19,7 +19,6 @@ import androidx.work.ForegroundInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
 import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
-import com.aurora.Constants.FLAVOUR_HUAWEI
 import com.aurora.extensions.TAG
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isPAndAbove
@@ -30,7 +29,6 @@ import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
@@ -48,6 +46,9 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.net.SocketException
@@ -57,9 +58,6 @@ import java.security.DigestInputStream
 import java.security.MessageDigest
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.properties.Delegates
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.withContext
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
@@ -259,7 +257,7 @@ class DownloadWorker @AssistedInject constructor(
     private fun purchase(packageName: String, versionCode: Long, offerType: Int): List<PlayFile> {
         try {
             // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-            return if (isPAndAbove && download.isInstalled) {
+            return if (isPAndAbove && PackageUtil.isInstalled(context, download.packageName)) {
                 purchaseHelper.purchase(
                     packageName,
                     versionCode,
