@@ -104,7 +104,6 @@ class SearchViewModel @Inject constructor(
 
                             else -> emptyList()
                         }
-                        emptyList()
                     }
                 }
             } catch (exception: Exception) {
