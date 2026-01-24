@@ -7,6 +7,8 @@ package com.aurora.store.compose.ui.search
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.focusable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,6 +48,8 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
@@ -73,23 +77,27 @@ import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
-import kotlin.random.Random
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @Composable
 fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltViewModel()) {
     val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
     val results = viewModel.apps.collectAsLazyPagingItems()
 
+    val onSearchCallback = remember<(String) -> Unit> { { query -> viewModel.search(query) } }
+    val onFetchSuggestionsCallback =
+        remember<(String) -> Unit> { { query -> viewModel.fetchSuggestions(query) } }
+
     ScreenContent(
         suggestions = suggestions,
         results = results,
         onNavigateUp = onNavigateUp,
-        onSearch = { query -> viewModel.search(query) },
-        onFetchSuggestions = { query -> viewModel.fetchSuggestions(query) },
+        onSearch = onSearchCallback,
+        onFetchSuggestions = onFetchSuggestionsCallback,
         onFilter = { filter -> viewModel.filterResults(filter) },
         isAnonymous = viewModel.authProvider.isAnonymous
     )
@@ -113,6 +121,9 @@ private fun ScreenContent(
     val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<String>()
     val coroutineScope = rememberCoroutineScope()
 
+    val focusManager = LocalFocusManager.current
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     LaunchedEffect(key1 = focusRequester) {
         awaitFrame()
         focusRequester.requestFocus()
@@ -131,18 +142,34 @@ private fun ScreenContent(
 
     fun onRequestSearch(query: String) {
         textFieldState.setTextAndPlaceCursorAtEnd(query.trim())
-        coroutineScope.launch { searchBarState.animateToCollapsed() }
+        coroutineScope.launch {
+            focusManager.clearFocus()
+            keyboardController?.hide()
+            searchBarState.animateToCollapsed()
+        }
         onSearch(textFieldState.text.toString())
         isSearching = true
     }
 
     @Composable
     fun SearchBar() {
+        val interactionSource = remember { MutableInteractionSource() }
+
+        LaunchedEffect(interactionSource) {
+            interactionSource.interactions.collectLatest { interaction ->
+                if (interaction is PressInteraction.Press) {
+                    awaitFrame()
+                    focusRequester.requestFocus()
+                }
+            }
+        }
+
         val inputField = @Composable {
             SearchBarDefaults.InputField(
                 modifier = Modifier.focusRequester(focusRequester),
                 searchBarState = searchBarState,
                 textFieldState = textFieldState,
+                interactionSource = interactionSource,
                 onSearch = { query -> onRequestSearch(query) },
                 placeholder = {
                     Text(
