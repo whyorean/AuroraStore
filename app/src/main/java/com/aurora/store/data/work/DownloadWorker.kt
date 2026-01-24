@@ -206,14 +206,7 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess(): Result {
         return withContext(NonCancellable) {
             return@withContext try {
-                if (BuildConfig.FLAVOR == FLAVOUR_HUAWEI &&
-                    download.requiresGMS &&
-                    PackageUtil.hasMicroGCompanion(context)
-                ) {
-                    appInstaller.getMicroGInstaller().install(download)
-                } else {
-                    appInstaller.getPreferredInstaller().install(download)
-                }
+                appInstaller.getPreferredInstaller().install(download)
                 Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
