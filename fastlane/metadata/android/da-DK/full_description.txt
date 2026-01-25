@@ -1,12 +1,11 @@
-Aurora Store er en uofficiel FOSS klient for Google Play med et elegant design. I Aurora Store
-kan brugere hente, opdatere og søge efter apps som i Play Butik. Den virker helt fint med eller
-uden Google Play-Tjenester eller MicroG.
+Aurora Store er en uofficiel, FOSS klient for Google Play med et elegant design. Aurora Store tillader brugere at hente, 
+opdatere og søge efter apps som i Play Butik. Den virker helt fint med eller uden Google Play-Tjenester eller MicroG.
 
 <b>Funktioner:</b>
 
 • FOSS: Har GPLv3-licens
 • Smukt design: Bygget på de seneste Material 3-retningslinjer
-• Konto-login: Du kan logge ind med en personlig eller anonym konto
+• Konto log-in: Du kan enten logge ind med en personlig eller anonym konto
 • Enheds- og lokalitetsforfalskning: Skift din enhed og/eller lokalitet for at få adgang til geo-låste apps
 • Integration af Exodus Privacy: Se straks sporingselementer i appen
-• Sortliste for opdateringer: Ignorer opdateringer til bestemte apps
+• Sortliste for opdateringer: Ignorér opdateringer til bestemte apps
