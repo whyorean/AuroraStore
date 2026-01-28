@@ -35,7 +35,7 @@
     <string name="tab_top_paid">افضل التطبيقات المدفوعة</string>
     <string name="tab_top_grossing">الاكثر شهرة</string>
     <string name="tab_top_free">المجانية المتصدرة</string>
-    <string name="tab_top_charts">الاعلى تقييما</string>
+    <string name="tab_top_charts">أعلى القوائم</string>
     <string name="tab_for_you">لك انت</string>
     <string name="tab_editor_choice">اختيار المحرر</string>
     <string name="tab_categories">الفئات</string>
@@ -60,7 +60,7 @@
     <string name="onboarding_title_installer">المثبت</string>
     <string name="dialog_title_self_update">متوفر تحديث جديد</string>
     <string name="device_miui_description">الرجاء تعطيل تحسينات MIUI للسماح بالتثبيتات، وإلا يمكنك اختيار مثبت الجذر أو الخدمات.</string>
-    <string name="device_miui_title">تم الكشف عن جهاز MIUI!</string>
+    <string name="device_miui_title">اكتُشف MIUI!</string>
     <string name="menu_terms">شروط الخدمة</string>
     <string name="menu_license">الرخصة</string>
     <string name="menu_disclaimer">اخلاء المسؤوليه</string>
@@ -72,17 +72,17 @@
     <string name="installer_status_failure">فشل التثبيت</string>
     <string name="filter_review_positive">إيجابية</string>
     <string name="filter_review_critical">الحرجه</string>
-    <string name="filter_review_all">الجميع</string>
-    <string name="exodus_view_report">عرض التقرير</string>
+    <string name="filter_review_all">الكل</string>
+    <string name="exodus_view_report">اعرض التقرير</string>
     <string name="exodus_progress">التحقق من وجود برمجيات تتبع…</string>
     <string name="exodus_powered">بدعم من Exodus Privacy</string>
     <string name="exodus_no_tracker">لا يحتوي على برمجيات تتبع معروفة</string>
-    <string name="download_resume_all">استئناف الكل</string>
+    <string name="download_resume_all">استكمل الكل</string>
     <string name="download_queued">في قائمة الإنتظار</string>
-    <string name="download_pause_all">إيقاف الكل مؤقتًا</string>
+    <string name="download_pause_all">ألبِث</string>
     <string name="download_none">لا يوجد تنزيلات</string>
     <string name="download_metadata">الحصول على البيانات الوصفية</string>
-    <string name="download_force_clear_all">فرض مسح الكل</string>
+    <string name="download_force_clear_all">افرض مسح الكل</string>
     <string name="download_failed">فشل التنزيل</string>
     <string name="download_eta_calculating">جارِ الحساب</string>
     <string name="download_completed">اكتمل التنزيل</string>
@@ -109,8 +109,8 @@
     <string name="action_info">معلومات التطبيق</string>
     <string name="action_uninstall">ألغِ التثبيت</string>
     <string name="action_share">شارك</string>
-    <string name="action_search">البحث</string>
-    <string name="action_resume">إستئناف</string>
+    <string name="action_search">ابحث</string>
+    <string name="action_resume">استكمل</string>
     <string name="action_restart">أعد تشغيل</string>
     <string name="action_pending">قيد الانتظار</string>
     <string name="action_open">افتح</string>
@@ -144,7 +144,7 @@
     <string name="details_beta_available">الانضمام إلى البرنامج التجريبي؟</string>
     <string name="details_beta_subscribed">أنت أحد مختبري الإصدارات التجريبية</string>
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
-    <string name="pref_install_mode_summary">حدد وضع تثبيت APK</string>
+    <string name="pref_install_mode_summary">حدّد وضع تثبيت APK</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف ملفات APK التي نُزلّت فورًا بعد التثبيت</string>
     <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات المثبتة من F-Droid</string>
@@ -189,7 +189,7 @@
     <string name="about_paypal">باي بال</string>
     <string name="about_libera_summary">كن داعما على Liberapay</string>
     <string name="about_libera">ليبراباي</string>
-    <string name="about_gitlab_summary">احصل على الشفرة المصدرية لمتجر Aurora من Aurora OSS على GitLab.</string>
+    <string name="about_gitlab_summary">احصل على المصدر البرمجي لمتجر Aurora من Aurora OSS على GitLab.</string>
     <string name="about_gitlab">جيت لاب</string>
     <string name="about_fdroid_summary">احصل على متجر Aurora عبر F-Droid.</string>
     <string name="about_fdroid">اف-درويد</string>
@@ -211,7 +211,7 @@
     <string name="pref_ui_similar_apps">تطبيقات مشابهة و ذات صلة</string>
     <string name="pref_ui_no_for_you_desc">عرض صفحات لك على الشاشة الرئيسية</string>
     <string name="pref_ui_no_for_you">صفحات لك</string>
-    <string name="pref_ui_layout_tab">حدد علامة التبويب الافتراضية</string>
+    <string name="pref_ui_layout_tab">حدّد علامة التبويب الافتراضية</string>
     <string name="pref_ui_layout">التخطيط</string>
     <string name="pref_common_extra">الإضافات</string>
     <string name="details_no_app_match">لم يتم العثور على تطبيق مماثل</string>
@@ -221,7 +221,7 @@
     <string name="dialog_desc_native_split">لا يمكنك تثبيت تطبيقات المجمعة او (المقسمة) عبر Native Installer. قم بتغيير المثبت الخاص بك إلى جلسة أو خدمات أو الجذر.</string>
     <string name="toast_aas_token_failed">تعذر توليد الرمز المميز ل AAS</string>
     <string name="toast_rated_failed">تعذر إرسال التقييم</string>
-    <string name="toast_rated_success">تم التقييم، قد يستغرق الأمر بعض الوقت لعرضه</string>
+    <string name="toast_rated_success">قيَّمتَ التطبيق، قد يستغرق الأمر بعض الوقت لعرضه</string>
     <string name="toast_page_unavailable">صفحة المتصفح غير متوفرة</string>
     <string name="toast_export_failed">تعذر تصدير تضبيط الجهاز</string>
     <string name="toast_export_success">صُدِّر تضبيط الجهاز</string>
@@ -229,7 +229,7 @@
     <string name="app_updater_service_notif_text">يفعِّل تنزيل التطبيق في الخلفية</string>
     <string name="installer_am_unavailable">ثبِّت مدير التطبيقات أو غيِّر المثبت.</string>
     <string name="pref_install_mode_am">مثبِّت AM</string>
-    <string name="download_paused">متوقف مؤقتا • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
+    <string name="download_paused">مُلبَث • <xliff:g id="completed_downloads"> %1$d </xliff:g> / <xliff:g id="all_downloads"> %2$d </xliff:g></string>
     <string name="download_eta_min">بقي %1$d دقيقة %2$d ثانية</string>
     <string name="download_eta_sec">بقي %1$d ثانية</string>
     <string name="session_login_failed_google">تعذّر تسجيل الدخول عبر Google</string>
@@ -280,7 +280,7 @@
     <string name="failed_to_generate_session">تعذّر توليد الجلسة</string>
     <string name="verifying_new_session">جارِ التحقق من جلسة جديدة</string>
     <string name="app_links_title">روابط التطبيق</string>
-    <string name="app_links_desc">اسمح لمتجر Aurora بفتح الروابط المدعومة</string>
+    <string name="app_links_desc">السماح لمتجر Aurora بفتح الروابط المدعومة</string>
     <string name="google_play_store_desc">Google Play، المعروف أيضًا باسم متجر Google Play و Android Market سابقًا.</string>
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
@@ -291,7 +291,7 @@
     <string name="pref_updates_check_frequency">تردد التحديثات التلقائية</string>
     <string name="pref_network_proxy_url">عنوان URL الوكيل</string>
     <string name="toast_proxy_invalid">عنوان URL للوكيل غير صالح، تحقق من التنسيق!</string>
-    <string name="toast_proxy_success">عينت الوكيل بنجاح</string>
+    <string name="toast_proxy_success">عُيِّن الوكيل بنجاح</string>
     <string name="toast_proxy_failed">فشل في تعيين الوكيل</string>
     <string name="pref_vending_version_device">الافتراضي (من تضبيط الجهاز)</string>
     <string name="pref_vending_version_title">نُسخة Google Play</string>
@@ -299,7 +299,7 @@
     <string name="onboarding_permission_doze_desc">السماح لـAurora Store بتنزيل التطبيقات وتحديثها في الخلفية</string>
     <string name="pref_updates_auto">التحديثات التلقائية</string>
     <string name="pref_updates_auto_notify">التحقق والإشعار بالتحديثات المتاحة</string>
-    <string name="pref_updates_auto_off">لا تقم بتحديث التطبيقات تلقائيًا</string>
+    <string name="pref_updates_auto_off">لا تحدِّث التطبيقات تلقائيًا</string>
     <string name="pref_updates_auto_desc">اضبط سلوك التحديثات التلقائية</string>
     <string name="pref_updates_auto_install">التحقق من التحديثات المتوفرة وتثبيتها تلقائيًا</string>
     <string name="action_request_analysis">طلب تحليل جديد</string>
@@ -307,7 +307,7 @@
     <string name="download_clear_finished">مسح المكتملة</string>
     <string name="pref_updates_incompatible">أظهِر التحديثات التي قد تفشل</string>
     <string name="pref_updates_incompatible_desc">اعرض التحديثات للتطبيقات غير المتوافقة أو المعطلة التي قد يفشل تثبيتها</string>
-    <string name="action_home_screen">أضِف إلى الشاشة الرئيسية</string>
+    <string name="action_home_screen">أضف إلى الشاشة الرئيسية</string>
     <string name="session_installer_subtitle">أداة التثبيت المستندة إلى الجلسة لملفات APK المجمعة/المقسمة</string>
     <string name="session_installer_desc">موصى به ومدمج ويدعم جميع إصدارات Android</string>
     <string name="native_installer_subtitle">المثبت القائم على النية، متاح على جميع الأجهزة</string>
@@ -323,12 +323,12 @@
     <string name="disclaimer_subtitle">المساءلة والمسؤولية</string>
     <string name="manual_download_hint">أدخل رمز الإصدار الذي ترغب في تنزيله</string>
     <string name="faqs_subtitle">هل لديك أسئلة؟ تعرف على الإجابات</string>
-    <string name="source_code_title">الكود المصدري</string>
+    <string name="source_code_title">المصدر البرمجي</string>
     <string name="source_code_subtitle">اكتشف ما بداخله</string>
     <string name="privacy_policy_title">سياسة الخصوصية</string>
     <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
     <string name="title_more">المزيد</string>
-    <string name="manage_account">إدارة حسابك</string>
+    <string name="manage_account">أدر حسابك</string>
     <string name="pref_clear_device_owner_title">مسح مالك الجهاز</string>
     <string name="pref_clear_device_owner_summary">يزيل Aurora Store باعتباره تطبيق مالك الجهاز</string>
     <string name="pref_clear_device_owner_desc">سيؤدي هذا إلى إلغاء إذن مثبت الجلسة لتثبيت التطبيق بصمت. هل ترغب في متابعة مسح ملكية الجهاز؟</string>
@@ -343,7 +343,7 @@
     <string name="remove_dispenser_summary">هل ترغب في إزالة الموزع \"<xliff:g id="url">%1$s</xliff:g>\"؟</string>
     <string name="pref_dispenser_summary">عرض وإدارة موزعات الرمز المميز لتسجيلات الدخول المجهولة</string>
     <string name="add_dispenser_summary">أضف موزع العملات الرمزية إلى متجر Aurora. توفر موزعات الرمز المميز بيانات اعتماد الحساب إلى Aurora Store لتسجيل الدخول بشكل مجهول.</string>
-    <string name="add">إضافة</string>
+    <string name="add">أضف</string>
     <string name="remove">أزِل</string>
     <string name="session_login">يُرجى تسجيل الدخول إلى حساب Google Play الخاص بك</string>
     <string name="about_aurora_store_title">عن متجر Aurora</string>
@@ -363,14 +363,14 @@
     <string name="pref_network_proxy_url_message">أدخل عنوان URL صالح للوكيل لتمرير جميع البيانات من خلال الوكيل.</string>
     <string name="action_logout_confirmation_title">تسجيل الخروج؟</string>
     <string name="action_logout_confirmation_message">هل أنت متأكد من أنك تريد تسجيل الخروج؟</string>
-    <string name="check_updates">التحقق من التحديثات</string>
+    <string name="check_updates">تحقق من التحديثات</string>
     <string name="item_required">المطلوبة</string>
     <string name="details_data_safety_title">سلامة البيانات</string>
     <string name="details_data_safety_subtitle">خصوصية البيانات والممارسات الأمنية التي أعلنها المطور</string>
     <string name="onboarding_permission_installer_legacy_desc">السماح بتركيب التطبيقات من مصادر مجهولة</string>
     <string name="item_optional">الاختياري</string>
     <string name="toast_permission_installer_required">عليك أن تمنح المثبت الإذن أولاً</string>
-    <string name="force_restart_title">إعادة تشغيل متجر أورورا</string>
+    <string name="force_restart_title">أعد تشغيل متجر أورورا</string>
     <string name="force_restart_summary">يجب إعادة تشغيل متجر أورورا لتطبيق الإعدادات التي تم تغييرها حديثًا</string>
     <string name="export_app_title">مصدِّر الملفات</string>
     <string name="export_app_summary">انتظر، يتم تصدير ملفك</string>
@@ -385,7 +385,7 @@
     <string name="status_downloading">تنزيل</string>
     <string name="notification_channel_account">إشعار متعلق بالحساب</string>
     <string name="authentication_required_title">التوثيق مطلوب</string>
-    <string name="authentication_required_unarchive">يرجى تسجيل الدخول إلى حساب Google Play الخاص بك لإلغاء أرشفة التطبيق!</string>
+    <string name="authentication_required_unarchive">يُرجى تسجيل الدخول إلى حساب Google Play الخاص بك لإلغاء أرشفة التطبيق!</string>
     <string name="checking_updates">البحث عن تحديثات</string>
     <string name="made_with_love">صُنع بـ <xliff:g id="heart_emoji">%1$s</xliff:g> في الهند</string>
     <string name="default_spoof">الافتراضي</string>
@@ -398,7 +398,7 @@
     <string name="toast_black_export_success">صُدّرت القائمة السوداء!</string>
     <string name="filter_latest">الأحدث</string>
     <string name="status_verifying">جارِ التحقق</string>
-    <string name="action_unarchive">إلغاء الأرشفة</string>
+    <string name="action_unarchive">ألغِ الأرشفة</string>
     <string name="unable_to_open">غير قادر على فتح التطبيق</string>
     <string name="plexus_powered">مدعوم من Plexus</string>
     <string name="plexus_progress">التحقق من التوافق…</string>
@@ -420,7 +420,7 @@
     <string name="set">عيّن</string>
     <string name="disable">عطّل</string>
     <string name="toast_proxy_disabled">عُطّل الوكيل بنجاح</string>
-    <string name="pref_network_proxy_desc">اعرض تضبيط الوكيل وإدارته</string>
+    <string name="pref_network_proxy_desc">اعرض وأدر تضبيط وكيل</string>
     <string name="pref_updates_restrictions_desc">اضبط قيود الجهاز للتحديثات التلقائية</string>
     <string name="pref_updates_restrictions_metered">فقط على الشبكات غير المقيدة</string>
     <string name="pref_updates_restrictions_idle">عندما يكون الجهاز ساكنًا</string>
