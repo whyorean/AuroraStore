@@ -1,0 +1,4 @@
+• Fixed wrong upgrade arrow indicator icon on RTL layouts
+• Fixed paging and IME issues on search
+• Fixed a bug that override user installer choice
+• Update translations, exodus trackers database and google's root certificates
