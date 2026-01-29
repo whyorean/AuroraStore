@@ -7,12 +7,12 @@
 
 @file:OptIn(KspExperimental::class)
 
+import com.android.build.api.dsl.ApplicationExtension
 import com.google.devtools.ksp.KspExperimental
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.parcelize)
     alias(libs.plugins.jetbrains.kotlin.serialization)
@@ -48,7 +48,7 @@ kotlin {
     }
 }
 
-android {
+configure<ApplicationExtension> {
     namespace = "com.aurora.store"
     compileSdk = 36
 
