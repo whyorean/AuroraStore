@@ -440,9 +440,9 @@
     <string name="onboarding_gms_agreement">Я прочитав(-ла) та погоджуюся з Умовами надання послуг та Політикою конфіденційності microG</string>
     <string name="onboarding_gms_missing">Нам не вдалося знайти Сервіси Google Play на вашому пристрої. Тепер кілька популярних програм потребують їх для належної роботи!</string>
     <string name="onboarding_gms_microg">microG — це безкоштовна реалізація з відкритим кодом, яка забезпечує аналогічну функціональність для запуску програм, що залежать від Сервісів Google Play для пристроїв Android, шляхом повторної реалізації.\n\nmicroG дозволяє програмам отримувати доступ до цих API Google, покращуючи сумісність для користувачів, а також пропонуючи переваги конфіденційності.\n\nmicroG автоматично запускатиметься у фоновому режимі, коли ви відкриваєте програми, що залежать від Сервісів Google Mobile.</string>
-    <string name="microg_privacy_policy">Ознайомтеся з Політикою конфіденційності microG</string>
-    <string name="microg_license_agreement">Прочитайте ліцензію та угоду microG</string>
-    <string name="microg_website">Відвідайте веб-сайт проекту microG</string>
+    <string name="microg_privacy_policy">Ознайомитися з Політикою приватності microG</string>
+    <string name="microg_license_agreement">Прочитати ліцензію та угоду microG</string>
+    <string name="microg_website">Відвідати вебсайт проєкту microG</string>
     <string name="details_data_safety_collect">Дані, які може збирати цей додаток</string>
     <string name="details_data_safety_collect_none">Розробник стверджує, що цей додаток не збирає дані користувачів.</string>
     <string name="details_data_safety_shared">Дані, які може ділитися ця програма</string>
