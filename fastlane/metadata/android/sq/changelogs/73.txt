@@ -1,0 +1,4 @@
+• U ndreq ikonë e gabuar treguesi shigjetë për përmirësimin në gjuhë DNM
+• U ndreqën probleme faqosjeje dhe IME te kërkimi
+• U ndreq një e metë që sjell anashkalim zgjedhjeje përdoruesi për instaluesin
+• U përditësuan përkthime, si dhe dëshmi baze të dhënash ndjekësi Exodus dhe rrënje Google
