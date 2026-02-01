@@ -1,0 +1,4 @@
+• Correction d'une icône de flèche de mise à niveau incorrecte dans les mises en page RTL.
+• Correction de problèmes de pagination et d'IME lors de la recherche.
+• Correction d'un bug qui remplaçait le choix de l'installateur de l'utilisateur.
+• Mise à jour des traductions, de la base de données des trackers Exodus et des certificats racine de Google.
