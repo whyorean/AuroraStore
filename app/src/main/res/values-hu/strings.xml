@@ -143,17 +143,17 @@
     <string name="details_free">Ingyenes</string>
     <string name="details_dev_website">Weboldal</string>
     <string name="details_dev_profile">Fejlesztői profil</string>
-    <string name="toast_developer_setting_failed">Az eszköze beállításaiban kapcsolja be a fejlesztői beállításokat, hogy megnyithassa őket.</string>
+    <string name="toast_developer_setting_failed">A fejlesztői beállítások megnyitásához engedélyezze azokat az eszköz beállításaiban.</string>
     <string name="pref_install_mode_session">Munkamenet-alapú telepítő</string>
     <string name="toast_purchase_blocked">Az alkalmazásvásárlások nem érhetőek el a névtelen fiókok használata során.</string>
-    <string name="toast_spoof_applied">Eszközszimuláció sikeresen alkalmazva.</string>
+    <string name="toast_spoof_applied">Eszközálca alkalmazva.</string>
     <string name="toast_permission_granted">Engedély megadva</string>
     <string name="toast_clipboard_copied">Vágólapra másolva</string>
     <string name="toast_apk_whitelisted">Engedélyezési listás</string>
     <string name="toast_apk_blacklisted">Tiltólistás</string>
     <string name="toast_anonymous_restriction">Nem elérhető anonim fiókoknál</string>
     <string name="title_updates">Frissítések</string>
-    <string name="title_spoof_manager">Eszközszimuláció-kezelő</string>
+    <string name="title_spoof_manager">Álcakezelő</string>
     <string name="title_settings">Beállítások</string>
     <string name="title_purchase_history">Vásárlási előzmények</string>
     <string name="title_no_network">Nincs hálózat</string>
@@ -181,7 +181,7 @@
     <string name="tab_editor_choice">Szerkesztők ajánlata</string>
     <string name="tab_categories">Kategóriák</string>
     <string name="insecure_anonymous_apply">A módosítások végrehajtásához jelentkezzen be és indítsa újra az alkalmazást.</string>
-    <string name="spoof_apply">Az eszközszimuláció alkalmazásához jelentkezzen be újra</string>
+    <string name="spoof_apply">Az álca alkalmazásához jelentkezzen be újra</string>
     <string name="purchase_session_expired">A munkamenet lejárt, az új munkamenethez jelentkezzen be újra.</string>
     <string name="purchase_no_file">Fájlok lekérése sikertelen</string>
     <string name="purchase_not_found">Az alkalmazás nem található</string>
@@ -223,7 +223,7 @@
     <string name="toast_rated_success">Értékelve, időbe telhet míg megjelenik</string>
     <string name="toast_page_unavailable">A böngészőlap nem érhető el</string>
     <string name="dialog_desc_native_split">A natív telepítő segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtassa a telepítőt Session, Services vagy Root-ra.</string>
-    <string name="toast_export_failed">Az eszközbeállítások exportálása sikertelen</string>
+    <string name="toast_export_failed">Eszközbeállítások exportálása sikertelen</string>
     <string name="toast_export_success">Eszközbeállítások exportálva</string>
     <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
     <string name="app_updater_service_notif_title">Alkalmazásletöltés a háttérben</string>
@@ -231,7 +231,7 @@
     <string name="pref_install_mode_am">AM telepítő</string>
     <string name="onboarding_permission_notifications">Értesítések</string>
     <string name="session_enjoy">Jelentkezzen be és érezze jól magát.</string>
-    <string name="toast_import_failed">Az eszközbeállítások importálása sikertelen</string>
+    <string name="toast_import_failed">Eszközbeállítások importálása sikertelen</string>
     <string name="action_import">Importálás</string>
     <string name="download_eta_hrs">%1$d ó %2$d p %3$d mp van hátra</string>
     <string name="download_eta_min">%1$d p %2$d mp van hátra</string>
