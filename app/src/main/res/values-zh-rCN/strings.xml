@@ -97,7 +97,7 @@
     <string name="about_paypal_summary">通过 PayPal 捐款</string>
     <string name="about_libera_summary">在 Liberapay 成为捐款者</string>
     <string name="about_libera">Liberapay</string>
-    <string name="about_gitlab_summary">在 GitLab 上的 Aurora OSS 获取 Aurora Store 源代码。</string>
+    <string name="about_gitlab_summary">在 GitLab 上的 Aurora OSS 获取 Aurora Store 源代码</string>
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">在 F-Droid 获取 Aurora Store。</string>
     <string name="about_fdroid">F-Droid</string>
