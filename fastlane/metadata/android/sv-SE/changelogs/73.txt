@@ -1,0 +1,4 @@
+• Fixade felaktig pilikon för uppgraderingsindikator på RTL-layouter
+• Fixade sidnumrering och IME-fel i sökfunktionen
+• Fixade en bug som skriver över användarval
+• Uppdaterade översättningar, exodus spårardatamas och Googles rootcertifikat
