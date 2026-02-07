@@ -271,14 +271,14 @@ object PackageUtil {
     }
 
     @Throws(Exception::class)
-    fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo =
+    fun getPackageInfo(context: Context, packageName: String?, flags: Int = 0): PackageInfo =
         if (isTAndAbove) {
             context.packageManager.getPackageInfo(
-                packageName,
+                packageName.toString(),
                 PackageInfoFlags.of(flags.toLong())
             )
         } else {
-            context.packageManager.getPackageInfo(packageName, flags)
+            context.packageManager.getPackageInfo(packageName.toString(), flags)
         }
 
     fun getIconForPackage(context: Context, packageName: String): Bitmap? = try {

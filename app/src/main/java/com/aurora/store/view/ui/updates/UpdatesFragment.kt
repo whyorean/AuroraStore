@@ -47,6 +47,7 @@ import com.aurora.store.view.epoxy.views.app.NoAppViewModel_
 import com.aurora.store.view.epoxy.views.shimmer.AppListViewShimmerModel_
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.all.UpdatesViewModel
+import com.aurora.store.viewmodel.blacklist.BlacklistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
@@ -56,9 +57,42 @@ import kotlinx.coroutines.launch
 class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
     private val viewModel: UpdatesViewModel by viewModels()
+    private val blacklistViewModel: BlacklistViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var playServicesVersion = try {
+            context?.packageManager?.getPackageInfo(
+                "com.google.android.gms",
+                0
+            )?.versionName
+        } catch (r: Exception) {
+            ""
+        }
+
+        if (playServicesVersion.toString().startsWith("0.3.")) {
+            if (blacklistViewModel.isFiltered(
+                    context?.packageManager?.getPackageInfo(
+                        "com.google.android.gms",
+                        0
+                    )
+                )) {
+                ""
+            }
+            else {
+                blacklistViewModel.blacklist("com.google.android.gms")
+            }
+        }
+        else {
+            if (blacklistViewModel.isFiltered(
+                    context?.packageManager?.getPackageInfo(
+                        "com.google.android.gms",
+                        0
+                    )
+                )) {
+                blacklistViewModel.whitelist("com.google.android.gms")
+            }
+        }
 
         // Adjust FAB margins for edgeToEdge display
         ViewCompat.setOnApplyWindowInsetsListener(binding.searchFab) { _, windowInsets ->

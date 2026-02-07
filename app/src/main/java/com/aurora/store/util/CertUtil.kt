@@ -52,14 +52,14 @@ object CertUtil {
         "com.machiav3lli.fdroid"
     )
 
-    fun isFDroidApp(context: Context, packageName: String): Boolean =
+    fun isFDroidApp(context: Context, packageName: String?): Boolean =
         isInstalledByFDroid(context, packageName) || isSignedByFDroid(context, packageName)
 
     fun isAppGalleryApp(context: Context, packageName: String): Boolean =
         context.packageManager.getUpdateOwnerPackageNameCompat(packageName) ==
             PACKAGE_NAME_APP_GALLERY
 
-    fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
+    fun isAuroraStoreApp(context: Context, packageName: String?): Boolean {
         val installerPackageNames = AppInstaller.getAvailableInstallersInfo(context)
             .flatMap { it.installerPackageNames }
             .toSet()
@@ -82,7 +82,7 @@ object CertUtil {
         emptyList()
     }
 
-    private fun isSignedByFDroid(context: Context, packageName: String): Boolean = try {
+    private fun isSignedByFDroid(context: Context, packageName: String?): Boolean = try {
         getX509Certificates(context, packageName).any { cert ->
             cert.subjectDN.name.split(",").associate {
                 val (left, right) = it.split("=")
@@ -109,12 +109,12 @@ object CertUtil {
         }
     }
 
-    private fun isInstalledByFDroid(context: Context, packageName: String): Boolean =
+    private fun isInstalledByFDroid(context: Context, packageName: String?): Boolean =
         fdroidPackages.contains(
             context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
         )
 
-    private fun getX509Certificates(context: Context, packageName: String): List<X509Certificate> =
+    private fun getX509Certificates(context: Context, packageName: String?): List<X509Certificate> =
         try {
             val packageInfo = getPackageInfoWithSignature(context, packageName)
             if (isPAndAbove) {
@@ -136,7 +136,7 @@ object CertUtil {
             emptyList()
         }
 
-    private fun getPackageInfoWithSignature(context: Context, packageName: String): PackageInfo =
+    private fun getPackageInfoWithSignature(context: Context, packageName: String?): PackageInfo =
         if (isPAndAbove) {
             getPackageInfo(context, packageName, PackageManager.GET_SIGNING_CERTIFICATES)
         } else {
