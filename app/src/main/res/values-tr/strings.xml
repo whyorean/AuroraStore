@@ -7,7 +7,7 @@
     <string name="about_xda">XDA Forumları</string>
     <string name="action_clear">Temizle</string>
     <string name="action_cancel">İptal et</string>
-    <string name="action_blacklist">Kara Liste</string>
+    <string name="action_blacklist">Kara liste</string>
     <string name="action_blacklist_add">Kara listeye ekle</string>
     <string name="action_back">Geri</string>
     <string name="account_logout">Aurora\'dan çıkış yap</string>
@@ -136,7 +136,7 @@
     <string name="filter_review_critical">Kritik</string>
     <string name="filter_review_all">Tümü</string>
     <string name="exodus_view_report">Raporu görüntüle</string>
-    <string name="exodus_substring">bilinen izleyici(ler) bulundu</string>
+    <string name="exodus_substring">bilinen izleyici bulundu</string>
     <string name="exodus_progress">İzleyiciler denetleniyor…</string>
     <string name="exodus_powered">Exodus Privacy Tarafından Destekleniyor</string>
     <string name="exodus_no_tracker">Bilinen izleyici içermiyor</string>
@@ -311,13 +311,13 @@
     <string name="services_installer_subtitle">Arka planda kurulumlar için kurucu</string>
     <string name="services_installer_desc">Aurora Hizmetlerinin ayrıcalıklı sistem uygulaması olarak kurulmasını gerektirir</string>
     <string name="am_installer_subtitle">Tam özellikli açık kaynaklı paket yöneticisi</string>
-    <string name="am_installer_desc">App Manager gerektirir, MIUI iyileştirmesi açıkken kurmak için adb/root kipine ihtiyaç duyar</string>
-    <string name="shizuku_installer_subtitle">Sistem API\'lerini doğrudan adb/root ayrıcalıklarıyla kullan</string>
+    <string name="am_installer_desc">App Manager gerektirir, MIUI iyileştirmesi açıkken kurmak için adb/kök kipi gerekir</string>
+    <string name="shizuku_installer_subtitle">Sistem API\'lerini doğrudan adb/kök ayrıcalıklarıyla kullan</string>
     <string name="shizuku_installer_desc">Shizuku veya Sui gerektirir, ayarlanması ve izin verilmesi gerekir</string>
     <string name="session_installer_subtitle">Paketlenmiş/bölünmüş APK\'lar için oturum tabanlı kurucu</string>
     <string name="session_installer_desc">Tavsiye edilir, yerleşiktir ve tüm Android sürümlerini destekler</string>
-    <string name="root_installer_subtitle">Root izinlerini kullanan kabuk tabanlı kurucu</string>
-    <string name="root_installer_desc">Root/yetkili kullanıcı ayrıcalıkları gerektirir, tüm Android sürümlerini destekler.</string>
+    <string name="root_installer_subtitle">Kök izinlerini kullanan kabuk tabanlı kurucu</string>
+    <string name="root_installer_desc">Kök/yetkili kullanıcı ayrıcalıkları gerektirir, tüm Android sürümlerini destekler.</string>
     <string name="native_installer_subtitle">Intent tabanlı kurucu, tüm aygıtlarda kullanılabilir</string>
     <string name="native_installer_desc">Android 4.4 sürümünden önceki aygıtlar için en uygun</string>
     <string name="faqs_subtitle">Sorularınız mı var? Yanıtlarını öğrenin</string>
@@ -337,7 +337,7 @@
     <string name="remove_dispenser_title">Dağıtıcı kaldırılsın mı?</string>
     <string name="remove">Kaldır</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="about_wiki_summary">Sık sorulan soruların (SSS) yanıtlarını, sorun giderme adımlarını ve daha çoğunu bulun</string>
+    <string name="about_wiki_summary">Sık sorulan soruların (S.S.S.) yanıtlarını, sorun giderme adımlarını ve daha çoğunu bulun</string>
     <string name="no_dispensers_available">Kullanılabilir dağıtıcı yok</string>
     <string name="remove_dispenser_summary">\"<xliff:g id="url">%1$s</xliff:g>\" dağıtıcısını kaldırmak istiyor musunuz?</string>
     <string name="add">Ekle</string>
@@ -366,7 +366,7 @@
     <string name="check_updates">Güncellemeleri denetle</string>
     <string name="onboarding_permission_installer_legacy_desc">Bilinmeyen kaynaklardan uygulamaların kurulmasına izin ver</string>
     <string name="details_data_safety_title">Veri güvenliği</string>
-    <string name="details_data_safety_subtitle">Geliştirici tarafından açıklanan veri gizliliği ve güvenliği uygulamaları</string>
+    <string name="details_data_safety_subtitle">Geliştiricice açıklanan veri gizliliği ve güvenliği uygulamaları</string>
     <string name="toast_permission_installer_required">Önce kurucu izni vermeniz gerekir</string>
     <string name="item_required">Gerekli</string>
     <string name="item_optional">İsteğe bağlı</string>
@@ -449,7 +449,7 @@
     <string name="details_data_safety_share_none">Geliştirici bu uygulamanın kullanıcı verilerini diğer şirketler ve kurumlarla paylaşmayacağını söylüyor.</string>
     <string name="exodus_tracker_desc">Uygulamanın bu sürümü henüz Exodus Privacy\'nin veri merkezinde bulunmayan takipçiler bulundurabilir.</string>
     <string name="details_more_info">Daha çok bilgi</string>
-    <string name="details_more_target_api">Hedeflenen API</string>
+    <string name="details_more_target_api">Hedefler</string>
     <string name="details_more_package_name">Paket adı</string>
     <string name="select_app_for_details">Daha çok ayrıntı için uygulama şeçin</string>
     <string name="exodus_report_trackers"><xliff:g id="app_version_name">%2$s</xliff:g> içinde bilinen <xliff:g id="number_of_trackers">%1$d</xliff:g> izleyici bulundu</string>
@@ -466,7 +466,7 @@
     <string name="installer_microg_misconfigured">MicroG kurucu, büyük olasılıkla yanlış yapılandırma nedeniyle uygulamayı kuramadı.</string>
     <string name="pref_install_mode_microg">MicroG kurucu</string>
     <string name="microg_installer_subtitle">microG yardımcı uygulamasının kurulmasını gerektirir</string>
-    <string name="microg_installer_desc">Uygulama Bütünlüğü (yalnızca kurucu) denetimini atlamanıza yardımcı olur</string>
+    <string name="microg_installer_desc">Uygulama Tümlüğü (yalnızca kurucu) denetimini atlamanıza yardımcı olur</string>
     <string name="loading">Yükleme devam ediyor</string>
     <string name="page">Sayfa <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Atla</string>
