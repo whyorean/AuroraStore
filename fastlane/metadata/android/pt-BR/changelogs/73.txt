@@ -1,0 +1,4 @@
+• Corrigido ícone de seta indicadora de upgrade errado em layouts RTL
+• Corrigidos erros de paginação e IME na busca
+• Corrigido bug que revogava a escolha de instalador do usuário
+• Atualização de traduções, banco de dados de rastreadores exodus e certificados-raiz do Google
