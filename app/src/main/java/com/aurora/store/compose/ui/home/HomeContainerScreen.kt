@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.navigation3.runtime.NavKey
+import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.navigation.Screen
@@ -113,8 +114,24 @@ private fun ScreenContent(
         ) { paddingValues ->
             Column(modifier = Modifier.padding(paddingValues)) {
                 when (currentScreen) {
-                    HomeScreen.APPS -> AppsScreen()
-                    HomeScreen.GAMES -> GamesScreen()
+                    HomeScreen.APPS -> {
+                        AppsGamesScreen(
+                            category = StreamContract.Category.APPLICATION,
+                            onNavigateToAppDetails = { packageName ->
+                                onNavigateTo(Screen.AppDetails(packageName))
+                            }
+                        )
+                    }
+
+                    HomeScreen.GAMES -> {
+                        AppsGamesScreen(
+                            category = StreamContract.Category.GAME,
+                            onNavigateToAppDetails = { packageName ->
+                                onNavigateTo(Screen.AppDetails(packageName))
+                            }
+                        )
+                    }
+
                     HomeScreen.UPDATES -> {
                         UpdatesScreen(
                             onNavigateToAppDetails = { packageName ->
