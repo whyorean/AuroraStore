@@ -29,16 +29,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.aurora.extensions.navigate
-import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseFragment
-import com.aurora.store.view.ui.commons.CategoryFragment
 import com.aurora.store.view.ui.commons.ForYouFragment
 import com.aurora.store.view.ui.commons.TopChartContainerFragment
 import com.aurora.store.viewmodel.games.GamesContainerViewModel
@@ -64,23 +61,6 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         }
 
         // Toolbar
-        binding.toolbar.apply {
-            title = getString(R.string.title_games)
-            setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.menu_download_manager -> {
-                        requireContext().navigate(Screen.Downloads)
-                    }
-
-                    R.id.menu_more -> {
-                        findNavController().navigate(
-                            MobileNavigationDirections.actionGlobalMoreDialogFragment()
-                        )
-                    }
-                }
-                true
-            }
-        }
 
         // ViewPager
         val isForYouEnabled = Preferences.getBoolean(
@@ -137,7 +117,6 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
             }
 
             add(TopChartContainerFragment.newInstance(1))
-            add(CategoryFragment.newInstance(1))
         }
 
         override fun createFragment(position: Int): Fragment = tabFragments[position]

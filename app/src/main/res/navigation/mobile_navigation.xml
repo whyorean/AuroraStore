@@ -38,9 +38,6 @@
     <action
         android:id="@+id/action_global_appMenuSheet"
         app:destination="@id/appMenuSheet" />
-    <action
-        android:id="@+id/action_global_moreDialogFragment"
-        app:destination="@id/moreDialogFragment" />
     <fragment
         android:id="@+id/appsContainerFragment"
         android:name="com.aurora.store.view.ui.apps.AppsContainerFragment"
@@ -182,10 +179,6 @@
         android:name="com.aurora.store.view.ui.sheets.DeviceMiuiSheet"
         android:label="DeviceMiuiSheet"
         tools:layout="@layout/sheet_device_miui" />
-    <dialog
-        android:id="@+id/moreDialogFragment"
-        android:name="com.aurora.store.view.ui.commons.MoreDialogFragment"
-        android:label="MoreDialogFragment" />
     <dialog
         android:id="@+id/proxyURLDialog"
         android:name="com.aurora.store.view.ui.preferences.network.ProxyURLDialog"
