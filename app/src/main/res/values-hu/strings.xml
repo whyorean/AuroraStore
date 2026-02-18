@@ -177,7 +177,7 @@
     <string name="tab_top_grossing">Top bevétel</string>
     <string name="tab_top_free">Top ingyenes</string>
     <string name="tab_top_charts">Toplisták</string>
-    <string name="tab_for_you">Önnek ajánlott</string>
+    <string name="tab_for_you">Ajánlott</string>
     <string name="tab_editor_choice">Szerkesztők ajánlata</string>
     <string name="tab_categories">Kategóriák</string>
     <string name="insecure_anonymous_apply">A módosítások végrehajtásához jelentkezzen be és indítsa újra az alkalmazást.</string>
@@ -203,14 +203,14 @@
     <string name="onboarding_permission_installer">Telepítési engedély</string>
     <string name="onboarding_permission_esm">Külső tárhelykezelő</string>
     <string name="onboarding_permission_esa_desc">Nagy méretű alkalmazások és játékok APK-kiterjesztési fájljainak (OBB-k) mentéséhez.</string>
-    <string name="onboarding_permission_esa">Külső tárhely hozzáférés</string>
+    <string name="onboarding_permission_esa">Külső tárhelyhozzáférés</string>
     <string name="onboarding_welcome_select">Hogy van?</string>
     <string name="action_installations">Telepítések</string>
     <string name="action_disable">Tiltás</string>
     <string name="action_clear">Törlés</string>
     <string name="pref_ui_similar_apps">Hasonló és releváns alkalmazások</string>
-    <string name="pref_ui_no_for_you_desc">„Önnek ajánlott” oldal megjelenítése a kezdőlapon</string>
-    <string name="pref_ui_no_for_you">Önnek ajánlott oldalak</string>
+    <string name="pref_ui_no_for_you_desc">„Ajánlott” oldal megjelenítése a kezdőlapon</string>
+    <string name="pref_ui_no_for_you">Ajánlott oldalak</string>
     <string name="pref_ui_layout_tab">Alapértelmezett lap kiválasztása</string>
     <string name="pref_ui_layout">Elrendezés</string>
     <string name="pref_common_extra">Extrák</string>
@@ -284,7 +284,7 @@
     <string name="app_links_title">Alkalmazáshivatkozások</string>
     <string name="pref_network_proxy_url">Proxy webcíme</string>
     <string name="pref_updates_check_frequency_desc">Automatikus frissítések intervallumának konfigurálása órákban mérve.</string>
-    <string name="pref_aurora_only">Más forrásból származó alkalmazások szűrése</string>
+    <string name="pref_aurora_only">Egyéb forrásból származó alkalmazások szűrése</string>
     <string name="toast_proxy_invalid">Érvénytelen proxy webcím, ellenőrizze a formátumot!</string>
     <string name="pref_aurora_only_desc">Ne keressen frissítéseket az Aurora Store-on kívüli forrásból telepített alkalmazásokhoz</string>
     <string name="toast_proxy_success">Proxy sikeresen beállítva</string>
@@ -448,7 +448,7 @@
     <string name="details_data_safety_shared">Alkalmazás által gyűjthető adatok</string>
     <string name="details_data_safety_share_none">A fejlesztő szerint ez az alkalmazás nem oszt meg felhasználói adatokat más cégekkel vagy szervezetekkel.</string>
     <string name="exodus_tracker_desc">Az alkalmazás ezen verziója még tartalmazhat olyan nyomkövetőket, amelyek egyelőre nem szerepelnek az Exodus Privacy adatbázisában.</string>
-    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> ismert nyomkövető(k) található(ak) a <xliff:g id="app_version_name">%2$s</xliff:g> verzióban</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> ismert nyomkövető található a(z) <xliff:g id="app_version_name">%2$s</xliff:g> verzióban</string>
     <string name="no_description">Nincs leírás</string>
     <string name="details_more_info">További információk</string>
     <string name="details_more_target_api">Célzott</string>
