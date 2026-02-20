@@ -286,7 +286,7 @@
     <string name="download_paused">Ndalur • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku s’është instaluar, ose s’është ujdisur si duhet.</string>
     <string name="action_home_screen">Shtoje te skena e kreut</string>
-    <string name="download_clear_finished">Pastro te përfunduarat</string>
+    <string name="download_clear_finished">Spastro te përfunduarat</string>
     <string name="download_eta_min">Edhe %1$dm %2$ds</string>
     <string name="download_eta_sec">Edhe %1$ds</string>
     <string name="onboarding_permission_notifications_desc">Dërgo njoftime lidhur me gjendje instalimesh</string>
@@ -465,9 +465,9 @@
     <string name="action_filter_no_gms">Pa shërbime luajtjesh</string>
     <string name="loading">Ngarkim në kryerje e sipër</string>
     <string name="page">Faqja <xliff:g id="number">%1$d</xliff:g></string>
-    <string name="details_ratings_title_hint">Titulli i vleresimit</string>
-    <string name="filter_latest">Më të fundit</string>
-    <string name="remove_dispenser_title">Hiq shpërndarësit?</string>
+    <string name="details_ratings_title_hint"></string>
+    <string name="filter_latest"></string>
+    <string name="remove_dispenser_title"></string>
     <string name="status_unavailable">Nuk është gati</string>
     <string name="available_spoof">Gati</string>
     <string name="details_more_target_api">Synimi</string>
