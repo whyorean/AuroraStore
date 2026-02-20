@@ -218,7 +218,7 @@
     <string name="pref_ui_layout">Disposición</string>
     <string name="pref_common_extra">Extras</string>
     <string name="details_no_app_match">No se ha encontrado ninguna aplicación que coincida</string>
-    <string name="dialog_desc_native_split">Los archivos APK empaquetados o divididos no se pueden instalar con el método de instalación nativo. Cambia el método de instalación a Sesión, Servicios o Root.</string>
+    <string name="dialog_desc_native_split">No puedes instalar las apps (desglose) empaquetados por medio de Instalador Nativo. Cambia tu instalador a Sesión, Servicios o Root.</string>
     <string name="toast_aas_token_failed">No se ha podido generar el token AAS</string>
     <string name="toast_rated_failed">No se ha podido enviar la valoración</string>
     <string name="toast_rated_success">Valorado, puede tardar un rato en aparecer</string>
@@ -338,7 +338,7 @@
     <string name="remove_dispenser_title">¿Eliminar dispensador?</string>
     <string name="add">Agregar</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="about_wiki_summary">Encuentra respuestas a preguntas frecuentes (FAQ), pasos para la solución de problemas y más</string>
+    <string name="about_wiki_summary">Encuentra respuestas a preguntas frecuentes (P+F), pasos para la solución de problemas y más</string>
     <string name="pref_dispenser_title">Gestionar dispensadores</string>
     <string name="pref_dispenser_summary">Ver y administrar dispensadores de tokens para inicios de sesión anónimos</string>
     <string name="add_dispenser_summary">Agrega un dispensador de tokens a Aurora Store. Los dispensadores de tokens proporcionan credenciales de cuenta a Aurora Store para iniciar sesión de forma anónima.</string>
