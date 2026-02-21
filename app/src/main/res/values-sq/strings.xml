@@ -465,9 +465,6 @@
     <string name="action_filter_no_gms">Pa shërbime luajtjesh</string>
     <string name="loading">Ngarkim në kryerje e sipër</string>
     <string name="page">Faqja <xliff:g id="number">%1$d</xliff:g></string>
-    <string name="details_ratings_title_hint"></string>
-    <string name="filter_latest"></string>
-    <string name="remove_dispenser_title"></string>
     <string name="status_unavailable">Nuk është gati</string>
     <string name="available_spoof">Gati</string>
     <string name="details_more_target_api">Synimi</string>
