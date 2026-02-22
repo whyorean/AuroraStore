@@ -167,7 +167,7 @@
     <string name="tab_top_paid">Les meilleures payantes</string>
     <string name="tab_top_grossing">Les plus rentables</string>
     <string name="tab_top_free">Les meilleures gratuites</string>
-    <string name="tab_top_charts">Meilleurs classements</string>
+    <string name="tab_top_charts">Les mieux classées</string>
     <string name="spoof_apply">Reconnectez-vous pour appliquer l’usurpation d’appareil</string>
     <string name="device_miui_extra">Facultativement, vous pouvez choisir le programme d’installation Natif, cependant vous ne pourrez pas installer les paquets APK (fractionnés). À vous de décider.</string>
     <string name="device_miui_description">Afin de permettre les installations, désactivez les optimisations MIUI. Sinon, vous pouvez choisir le programme d’installation Racine ou Services.</string>
