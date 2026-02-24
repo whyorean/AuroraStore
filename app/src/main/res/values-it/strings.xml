@@ -174,7 +174,7 @@
     <string name="onboarding_title_welcome">Benvenuti</string>
     <string name="onboarding_title_permissions">Autorizzazioni</string>
     <string name="onboarding_title_installer">Installatore</string>
-    <string name="onboarding_permission_select">Aurora Store richiede le autorizzazioni seguenti</string>
+    <string name="onboarding_permission_select">Aurora Store richiede le seguenti autorizzazioni</string>
     <string name="dialog_title_self_update">Nuovo aggiornamento disponibile</string>
     <string name="device_miui_extra">Facoltativamente puoi scegliere l\'installatore nativo, ma in tal caso non sarà possibile installare APK in bundle (divisi).</string>
     <string name="device_miui_description">Si prega di disattivare le ottimizzazioni MIUI per consentire le installazioni, altrimenti è possibile scegliere installatore Root o Services.</string>
@@ -250,11 +250,11 @@
     <string name="error">Si è verificato un errore!</string>
     <string name="menu">Menù</string>
     <string name="expand">Espandi</string>
-    <string name="permissions_denied">I permessi richiesti sono stati negati. Concedili per continuare l\'azione</string>
+    <string name="permissions_denied">Le autorizzazioni richieste sono state negate. Si prega di concederle per continuare il processo</string>
     <string name="search_hint">Cerca app e giochi</string>
-    <string name="download_eta_hrs">%1$d oo %2$d mm %3$d ss rimanenti</string>
-    <string name="download_eta_min">%1$d mm %2$d ss rimanenti</string>
-    <string name="download_eta_sec">%1$d ss rimanenti</string>
+    <string name="download_eta_hrs">%1$d o %2$d m %3$d s rimanenti</string>
+    <string name="download_eta_min">%1$d m %2$d s rimanenti</string>
+    <string name="download_eta_sec">%1$d s rimanenti</string>
     <string name="session_enjoy">Accedi e divertiti.</string>
     <string name="session_good">Wow! Tutto bene.</string>
     <string name="session_init">Preparazione in corso…</string>
@@ -316,7 +316,7 @@
     <string name="privacy_policy_subtitle">Scopri come Aurora Store utilizza i tuoi dati</string>
     <string name="disclaimer_subtitle">Responsabilità</string>
     <string name="session_installer_desc">Consigliato, integrato e supporta tutte le versioni di Android</string>
-    <string name="root_installer_subtitle">Installatore shell che usa i permessi di root</string>
+    <string name="root_installer_subtitle">Installatore shell che usa permessi di root</string>
     <string name="root_installer_desc">Richiede i permessi di root/superuser, supporta tutte le versioni di Android.</string>
     <string name="native_installer_subtitle">Installatore basato sugli intent, disponibile su tutti i dispositivi</string>
     <string name="session_installer_subtitle">Installatore basato sulla sessione per APK raggruppati/divisi</string>
@@ -463,9 +463,9 @@
     <string name="details_more_content_rating">Valutazione contenuti</string>
     <string name="preparing_to_install">Preparazione per l\'installazione</string>
     <plurals name="permissions_required">
-        <item quantity="one">Permesso richiesto</item>
-        <item quantity="many">Permessi richiesti</item>
-        <item quantity="other">Permessi richiesti</item>
+        <item quantity="one">Autorizzazione richiesta</item>
+        <item quantity="many">Autorizzazioni richieste</item>
+        <item quantity="other">Autorizzazioni richieste</item>
     </plurals>
     <string name="select_app_for_details">Seleziona un\'app per maggiori dettagli</string>
     <string name="action_filter_no_ads">Nessuna pubblicità</string>
