@@ -1,1 +1,1 @@
-Un client FOSS non officiel pour Google Play, respectueux de la vie privée
+Client Google Play libre non officiel. Élégant et respectueux de la vie privée
