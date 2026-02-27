@@ -326,7 +326,7 @@
     <string name="services_installer_desc">Les services Aurora doivent être installés en tant qu’appli avec les privilèges système</string>
     <string name="services_installer_subtitle">Programme d’installation pour les installations en arrière-plan</string>
     <string name="am_installer_subtitle">Gestionnaire de paquet complet à code ouvert</string>
-    <string name="am_installer_desc">Le gestionnaire d’applis « App Manager » est requis, le mode adb/superutilisateur est nécessaire pour l’installation si l’optimisation MIUI est activée</string>
+    <string name="am_installer_desc">« App Manager » est requis, le mode adb/superutilisateur est nécessaire pour l’installation si l’optimisation miui est activée</string>
     <string name="title_more">Plus</string>
     <string name="manage_account">Gérer mon compte</string>
     <string name="about_wiki_title">Wiki</string>
@@ -391,12 +391,12 @@
     <string name="default_spoof">Par défaut</string>
     <string name="available_spoof">Proposées</string>
     <string name="filter_latest">Récents</string>
-    <string name="toast_black_export_failed">Échec d’exportation de la liste d’exclusion</string>
-    <string name="toast_black_export_success">La liste d’exclusion a été exportée</string>
+    <string name="toast_black_export_failed">Échec d’exportation de la liste noire !</string>
+    <string name="toast_black_export_success">La liste noire a été exportée !</string>
     <string name="action_select_all">Tout sélectionner</string>
     <string name="action_remove_all">Tout dessélectionner</string>
     <string name="toast_black_import_failed">Échec d’importation de la liste noire !</string>
-    <string name="toast_black_import_success">La liste d’exclusion a été importée</string>
+    <string name="toast_black_import_success">La liste noire a été importée !</string>
     <string name="action_unarchive">Désarchiver</string>
     <string name="status_verifying">Vérification</string>
     <string name="unable_to_open">Impossible d’ouvrir l’appli</string>
