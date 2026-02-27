@@ -286,7 +286,7 @@
     <string name="pref_network_proxy_url">URL du mandataire</string>
     <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
     <string name="pref_aurora_only">Filtrer les applis provenant d’autres sources</string>
-    <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format</string>
+    <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte. Vérifiez le format !</string>
     <string name="pref_aurora_only_desc">Ne pas chercher les mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
     <string name="title_app_settings">Paramètres de l\'appli</string>
@@ -350,15 +350,15 @@
     <string name="pref_clear_device_owner_desc">Le programme d’installation de session ne pourra plus installer silencieusement les applis. Confirmez-vous la révocation du droit de propriété de l’appareil ?</string>
     <string name="pref_clear_device_owner_title">Révoquer le droit de propriété de l’appareil</string>
     <string name="toast_app_unavailable">L’appli n’est pas proposée pour votre appareil</string>
-    <string name="toast_fav_import_failed">Échec d’importation des favoris</string>
-    <string name="toast_fav_export_failed">Échec d’exportation des favoris</string>
+    <string name="toast_fav_import_failed">Échec d’importation des favoris !</string>
+    <string name="toast_fav_export_failed">Échec d’exportation des favoris !</string>
     <string name="action_favourite">Favori</string>
     <string name="details_no_favourites">Aucune appli favorite n’a été trouvée</string>
-    <string name="toast_fav_import_success">Les favoris ont été importés</string>
+    <string name="toast_fav_import_success">Les favoris ont été importés !</string>
     <string name="action_uninstall_success">L’appli a été désinstallée</string>
     <string name="pref_network_proxy_url_message">Saisissez une URL de mandataire valide pour faire transiter toute les données par le mandataire.</string>
     <string name="title_favourites_manager">Applis favorites</string>
-    <string name="toast_fav_export_success">Les favoris ont été exportés</string>
+    <string name="toast_fav_export_success">Les favoris ont été exportés !</string>
     <string name="action_logout_confirmation_title">Vous déconnecter ?</string>
     <string name="action_logout_confirmation_message">Voulez-vous vous déconnecter ?</string>
     <string name="check_updates">Chercher des mises à jour</string>
@@ -383,7 +383,7 @@
     <string name="status_cancelled">Annulé</string>
     <string name="status_failed">Échec</string>
     <string name="status_unavailable">Inaccessible</string>
-    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver l’appli</string>
+    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver l’appli !</string>
     <string name="notification_channel_account">Notification relative au compte</string>
     <string name="authentication_required_title">L’authentification est requise</string>
     <string name="checking_updates">Recherche de mises à jour</string>
@@ -391,12 +391,12 @@
     <string name="default_spoof">Par défaut</string>
     <string name="available_spoof">Proposées</string>
     <string name="filter_latest">Récents</string>
-    <string name="toast_black_export_failed">Échec d’exportation de la liste d’exclusion</string>
-    <string name="toast_black_export_success">La liste d’exclusion a été exportée</string>
+    <string name="toast_black_export_failed">Échec d’exportation de la liste noire !</string>
+    <string name="toast_black_export_success">La liste noire a été exportée !</string>
     <string name="action_select_all">Tout sélectionner</string>
     <string name="action_remove_all">Tout dessélectionner</string>
-    <string name="toast_black_import_failed">Échec d’importation de la liste d’exclusion</string>
-    <string name="toast_black_import_success">La liste d’exclusion a été importée</string>
+    <string name="toast_black_import_failed">Échec d’importation de la liste noire !</string>
+    <string name="toast_black_import_success">La liste noire a été importée !</string>
     <string name="action_unarchive">Désarchiver</string>
     <string name="status_verifying">Vérification</string>
     <string name="unable_to_open">Impossible d’ouvrir l’appli</string>
@@ -416,7 +416,7 @@
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> applis installées</string>
     <string name="no_apps_available">Aucune appli n’est proposée</string>
     <string name="pref_network_microg_login_title">Utiliser microG pour se connecter aux comptes</string>
-    <string name="pref_network_microg_login_desc">Authentifiez-vous avec microG lors de la connexion aux comptes Google afin de simplifier le processus de connexion.</string>
+    <string name="pref_network_microg_login_desc">Authentifiez-vous avec microG lors de la connexion aux comptes Google afin de simplifier le processus de connexion</string>
     <string name="set">Définir</string>
     <string name="disable">Désactiver</string>
     <string name="toast_proxy_disabled">Le mandataire a été désactivé</string>
@@ -438,7 +438,7 @@
     <string name="onboarding_title_gsf">Compatibilité de l’appli</string>
     <string name="onboarding_title_gsf_desc">Dépendances manquantes</string>
     <string name="onboarding_gms_agreement">J’ai lu et accepte les conditions générales d’utilisation et la politique de confidentialité de microG</string>
-    <string name="onboarding_gms_missing">Les services Google Play ne se trouvent pas sur votre appareil. Plusieurs applis populaires ont besoin de ces services pour fonctionner correctement.</string>
+    <string name="onboarding_gms_missing">Les services Google Play ne se trouvent pas sur votre appareil. Plusieurs applis populaires ont besoin de ces services pour fonctionner correctement !</string>
     <string name="onboarding_gms_microg">microG est une implémentation gratuite et à code source ouvert qui offre des fonctions semblables pour exécuter, grâce à une réimplémentation, des applis qui dépendent des services Google Play pour les appareils Android.\n\nmicroG permet aux applis d’accéder à ces API Google, améliorant ainsi la compatibilité pour les utilisateurs tout en offrant des avantages en matière de confidentialité. \n\nmicroG s’exécute automatiquement en arrière-plan quand vous ouvrez des applis qui dépendent des services mobiles Google.</string>
     <string name="microg_privacy_policy">Lire la Politique de confidentialité de microG</string>
     <string name="microg_license_agreement">Lire la licence et l’entente de microG</string>
