@@ -109,7 +109,7 @@
     <string name="action_installations">Installations</string>
     <string name="action_install">Installer</string>
     <string name="action_ignore">Ignorer</string>
-    <string name="action_get_local_apk">Enregistrer le paquet d’appli</string>
+    <string name="action_get_local_apk">Enregistrer le paquet logiciel</string>
     <string name="action_finish">Terminer</string>
     <string name="action_filter_rating">Évaluations</string>
     <string name="action_filter_paid_apps">Payante</string>
@@ -175,7 +175,7 @@
     <string name="pref_install_mode_summary">Choisir le mode d’installation des APK</string>
     <string name="pref_install_mode_session">Programme d’installation de session</string>
     <string name="pref_install_mode_services">Aurora Services (déconseillés)</string>
-    <string name="pref_install_mode_root">Programme d’installation superutilisateur (racine)</string>
+    <string name="pref_install_mode_root">Programme d’installation superutilisateur</string>
     <string name="pref_install_mode_native">Programme d’installation natif (déconseillé)</string>
     <string name="pref_install_delete_title">Supprimer l’APK après installation</string>
     <string name="pref_install_delete_summary">Les APK téléchargés seront supprimés immédiatement après installation</string>
@@ -218,7 +218,7 @@
     <string name="toast_manual_available">Félicitations, le code de version demandé est proposé ; le téléchargement est en cours.</string>
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas proposé.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
-    <string name="dialog_desc_native_split">Le programme d’installation natif ne permet pas d’installer des paquets d’applis (fractionnés). Choisissez une autre méthode d’installation : Session, Services ou Racine.</string>
+    <string name="dialog_desc_native_split">Le programme d’installation natif ne permet pas d’installer des paquets d’applis (fractionnés). Choisissez une autre méthode d’installation : Session, Services ou Superutilisateur.</string>
     <string name="toast_aas_token_failed">Impossible de générer le jeton AAS</string>
     <string name="toast_rated_failed">Impossible de transmettre l’évaluation</string>
     <string name="toast_rated_success">L’évaluation a été enregistrée. Son affichage peut prendre un certain temps</string>
@@ -270,7 +270,7 @@
     <string name="title_search_suggestion">Suggestion de recherche</string>
     <string name="title_search_results">Résultats de la recherche</string>
     <string name="failed_generating_session">Échec de génération de la session. Code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="failed_to_fetch_report">Échec de récupération du rapport sur la protection des renseignements personnels</string>
+    <string name="failed_to_fetch_report">Échec de récupération du relevé de confidentialité</string>
     <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor ?</string>
     <string name="bad_request">Erreur interne ! Réessayez plus tard</string>
     <string name="login_rate_limited">Votre débit est limité</string>
@@ -316,11 +316,11 @@
     <string name="privacy_policy_title">Politique de confidentialité</string>
     <string name="disclaimer_subtitle">Imputabilité et responsabilité</string>
     <string name="shizuku_installer_desc">Shizuku ou Sui est nécessaire. Doit être configuré et l’autorisation doit être accordée</string>
-    <string name="root_installer_desc">Exige des privilèges racine, superutilisateur. Toutes les versions d’Android sont prises en charge.</string>
+    <string name="root_installer_desc">Les privilèges racine, superutilisateur sont requis. Toutes les versions d’Android sont prises en charge.</string>
     <string name="session_installer_subtitle">Programme d’installation de session pour les paquets APK (fractionnés)</string>
     <string name="native_installer_subtitle">Programme d’installation fondé sur l\'intention, pour tous les appareils</string>
     <string name="shizuku_installer_subtitle">Utilise directement les API système avec les privilèges adb/superutilisateur</string>
-    <string name="root_installer_subtitle">Programme d’installation fondé sur l’interpréteur de commandes, qui utilise les droits racine</string>
+    <string name="root_installer_subtitle">Programme d’installation fondé sur l’interpréteur de commandes, qui utilise les droits superutilisateurs</string>
     <string name="session_installer_desc">Recommandé, intégré et pris en charge pour toutes les versions d’Android</string>
     <string name="native_installer_desc">Préférable pour les appareils sous Android 4.4 et versions antérieures</string>
     <string name="services_installer_desc">Les services Aurora doivent être installés en tant qu’appli avec les privilèges système</string>
@@ -370,8 +370,8 @@
     <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements de paramètres</string>
-    <string name="export_app_summary_success">Le paquet d’appli a été exporté</string>
-    <string name="export_app_summary_fail">Échec d’exportation du paquet d’appli</string>
+    <string name="export_app_summary_success">Le paquet logiciel a été exporté</string>
+    <string name="export_app_summary_fail">Échec d’exportation du paquet logiciel</string>
     <string name="export_app_title">Exportateur de fichier</string>
     <string name="export_app_summary">Patience, l’exportation de votre fichier est en cours</string>
     <string name="notification_channel_install">Notification d’installation</string>
@@ -391,12 +391,12 @@
     <string name="default_spoof">Par défaut</string>
     <string name="available_spoof">Proposées</string>
     <string name="filter_latest">Récents</string>
-    <string name="toast_black_export_failed">Échec d’exportation de la liste noire !</string>
-    <string name="toast_black_export_success">La liste noire a été exportée !</string>
+    <string name="toast_black_export_failed">Échec d’exportation de la liste d’exclusion !</string>
+    <string name="toast_black_export_success">La liste d’exclusion a été exportée</string>
     <string name="action_select_all">Tout sélectionner</string>
     <string name="action_remove_all">Tout dessélectionner</string>
-    <string name="toast_black_import_failed">Échec d’importation de la liste noire !</string>
-    <string name="toast_black_import_success">La liste noire a été importée !</string>
+    <string name="toast_black_import_failed">Échec d’importation de la liste d’exclusion !</string>
+    <string name="toast_black_import_success">La liste d’exclusion a été importée</string>
     <string name="action_unarchive">Désarchiver</string>
     <string name="status_verifying">Vérification</string>
     <string name="unable_to_open">Impossible d’ouvrir l’appli</string>
