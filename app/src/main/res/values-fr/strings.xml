@@ -392,11 +392,11 @@
     <string name="available_spoof">Proposées</string>
     <string name="filter_latest">Récents</string>
     <string name="toast_black_export_failed">Échec d’exportation de la liste noire !</string>
-    <string name="toast_black_export_success">La liste noire a été exportée !</string>
+    <string name="toast_black_export_success">La liste d’exclusion a été exportée</string>
     <string name="action_select_all">Tout sélectionner</string>
     <string name="action_remove_all">Tout dessélectionner</string>
     <string name="toast_black_import_failed">Échec d’importation de la liste noire !</string>
-    <string name="toast_black_import_success">La liste noire a été importée !</string>
+    <string name="toast_black_import_success">La liste d’exclusion a été importée</string>
     <string name="action_unarchive">Désarchiver</string>
     <string name="status_verifying">Vérification</string>
     <string name="unable_to_open">Impossible d’ouvrir l’appli</string>
