@@ -444,4 +444,7 @@
     <string name="pref_updates_app_source">מקור היישום</string>
     <string name="verification_failed">אימות הקבצים שהורדו נכשל</string>
     <string name="details_data_safety_collect">נתונים שאפליקציה זו עשויה לאסוף</string>
+    <string name="details_data_safety_collect_none">המפַתח מסר שהוא לא יאסוף את הנתונים שלך ולא ישתמש בהם.</string>
+    <string name="details_data_safety_shared">האפליקציה הזאת עשויה לשתף את סוגי הנתונים האלה</string>
+    <string name="details_data_safety_share_none">המפַתח הזה מצהיר כי הנתונים שלך לא ישותפו עם חברות וארגונים אחרים.</string>
 </resources>
