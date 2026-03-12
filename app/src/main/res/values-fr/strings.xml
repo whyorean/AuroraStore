@@ -289,7 +289,7 @@
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte, vérifiez le format !</string>
     <string name="pref_aurora_only_desc">Ne pas chercher les mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
-    <string name="title_app_settings">Paramètres de l\'appli</string>
+    <string name="title_app_settings">Paramètres de l’appli</string>
     <string name="pref_updates_check_frequency">Fréquence des mises à jour automatiques</string>
     <string name="toast_proxy_failed">Échec de paramétrage du mandataire</string>
     <string name="android_market_desc">L’Android Market était un magasin en ligne qui offrait des applications conçues pour les appareils Android, fermé en 2017.</string>
@@ -318,7 +318,7 @@
     <string name="shizuku_installer_desc">Shizuku ou Sui est nécessaire. Doit être configuré et l’autorisation doit être accordée</string>
     <string name="root_installer_desc">Les privilèges racine, superutilisateur sont requis. Toutes les versions d’Android sont prises en charge.</string>
     <string name="session_installer_subtitle">Programme d’installation de session pour les paquets APK (fractionnés)</string>
-    <string name="native_installer_subtitle">Programme d’installation fondé sur l\'intention, pour tous les appareils</string>
+    <string name="native_installer_subtitle">Programme d’installation fondé sur l’intention, pour tous les appareils</string>
     <string name="shizuku_installer_subtitle">Utilise directement les API système avec les privilèges adb/superutilisateur</string>
     <string name="root_installer_subtitle">Programme d’installation fondé sur l’interpréteur de commandes, qui utilise les droits superutilisateurs</string>
     <string name="session_installer_desc">Recommandé, intégré et pris en charge pour toutes les versions d’Android</string>
