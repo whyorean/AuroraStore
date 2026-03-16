@@ -140,10 +140,10 @@
     <string name="filter_review_all">Alle</string>
     <string name="exodus_view_report">Bericht ansehen</string>
     <string name="exodus_substring">bekannte(r) Tracker gefunden in</string>
-    <string name="exodus_progress">Es wird auf Tracker geprüft …</string>
+    <string name="exodus_progress">Es wird auf Tracker geprüft…</string>
     <string name="exodus_powered">Bereitgestellt von Exodus Privacy</string>
     <string name="exodus_no_tracker">Enthält keine bekannten Tracker</string>
-    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt …</string>
+    <string name="download_speed_estimating">Geschwindigkeit wird ermittelt…</string>
     <string name="download_resume_all">Alle fortsetzen</string>
     <string name="download_queued">In der Warteschlange</string>
     <string name="download_pause_all">Alle anhalten</string>
@@ -151,7 +151,7 @@
     <string name="download_metadata">Metadaten werden geladen</string>
     <string name="download_force_clear_all">Alle löschen</string>
     <string name="download_failed">Download fehlgeschlagen</string>
-    <string name="download_eta_calculating">Übertragungsdauer wird berechnet …</string>
+    <string name="download_eta_calculating">Übertragungsdauer wird berechnet…</string>
     <string name="download_completed">Heruntergeladen</string>
     <string name="download_canceled">Abgebrochen</string>
     <string name="download_cancel_all">Alle abbrechen</string>
@@ -231,7 +231,7 @@
     <string name="pref_install_mode_am">Mit App Manager</string>
     <string name="session_enjoy">Anmelden und genießen.</string>
     <string name="session_good">Boah! Alles gut.</string>
-    <string name="session_init">Vorbereitung läuft …</string>
+    <string name="session_init">Vorbereitung läuft…</string>
     <string name="session_login_failed_google">Anmeldung via Google fehlgeschlagen</string>
     <string name="session_scrapped">Letzte Sitzung wurde abgebrochen</string>
     <string name="session_verifying">Sitzung wird überprüft</string>
@@ -401,7 +401,7 @@
     <string name="action_unarchive">Entpacken</string>
     <string name="unable_to_open">App kann nicht geöffnet werden</string>
     <string name="plexus_powered">Bereitgestellt von Plexus</string>
-    <string name="plexus_progress">Es wird auf Kompatibilität geprüft …</string>
+    <string name="plexus_progress">Es wird auf Kompatibilität geprüft…</string>
     <string name="details_compatibility_title">Kompatibilität</string>
     <string name="details_compatibility_gms_required_title">Erfordert Google-Play-Dienste</string>
     <string name="details_compatibility_gms_required_subtitle">Möglicherweise muss Googles proprietäre Bibliothek oder eine FOSS-Neuimplementierung wie microG installiert werden.</string>

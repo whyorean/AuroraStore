@@ -482,4 +482,12 @@
     <string name="select_app_for_details">Изаберите апликацију за више детаља</string>
     <string name="action_filter_no_ads">Без реклама</string>
     <string name="action_filter_no_gms">Нема Play услуга</string>
+    <string name="installer_microg_misconfigured">MicroG програм за инсталацију није успео да инсталира апликацију, највероватније због неисправне конфигурације.</string>
+    <string name="pref_install_mode_microg">MicroG Програм за инсталацију</string>
+    <string name="action_skip">Прескочи</string>
+    <string name="microg_installer_subtitle">MicroG Companion је неопходан за инсталацију ове апликације</string>
+    <string name="microg_installer_desc">Помаже Вам да заобиђете проверу App Integrity (само у програму за инсталацију)</string>
+    <string name="force_restart_snack">Поновно покренути ради примењивања нових подешавања?</string>
+    <string name="preparing_to_install">Припрема се за инсталацију</string>
+    <string name="loading">Учитавање у току</string>
 </resources>
