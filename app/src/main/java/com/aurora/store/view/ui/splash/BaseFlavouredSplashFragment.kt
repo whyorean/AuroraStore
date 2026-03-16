@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -203,10 +202,13 @@ abstract class BaseFlavouredSplashFragment : BaseFragment<FragmentSplashBinding>
                 .getAuthToken(
                     Account(accountName, GOOGLE_ACCOUNT_TYPE),
                     GOOGLE_PLAY_AUTH_TOKEN_TYPE,
-                    bundleOf(
-                        "overridePackage" to PACKAGE_NAME_PLAY_STORE,
-                        "overrideCertificate" to Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
-                    ),
+                    Bundle().apply {
+                        putString("overridePackage", PACKAGE_NAME_PLAY_STORE)
+                        putByteArray(
+                            "overrideCertificate",
+                            Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
+                        )
+                    },
                     requireActivity(),
                     {
                         viewModel.buildGoogleAuthData(

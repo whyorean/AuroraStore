@@ -10,10 +10,10 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
-import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import com.aurora.Constants
 import com.aurora.store.MainActivity
@@ -213,11 +213,15 @@ object NotificationUtil {
             .build()
 
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
+        val arguments = Bundle().apply {
+            putInt("destinationId", R.id.updatesFragment)
+        }
+
         val contentIntent = NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("destinationId" to R.id.updatesFragment))
+            .setArguments(arguments)
             .createPendingIntent()
 
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
@@ -355,21 +359,29 @@ object NotificationUtil {
         )
     }
 
-    private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent =
-        NavDeepLinkBuilder(context)
+    private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent {
+        val arguments = Bundle().apply {
+            putString("packageName", packageName)
+        }
+        return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("packageName" to packageName))
+            .setArguments(arguments)
             .createPendingIntent()
+    }
 
-    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent =
-        NavDeepLinkBuilder(context)
+    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
+        val arguments = Bundle().apply {
+            putString("packageName", packageName)
+        }
+        return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("packageName" to packageName))
+            .setArguments(arguments)
             .createPendingIntent()
+    }
 
     private fun getInstallIntent(context: Context, download: Download): PendingIntent? {
         val intent = Intent(context, InstallActivity::class.java).apply {

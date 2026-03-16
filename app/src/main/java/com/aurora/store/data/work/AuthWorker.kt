@@ -9,7 +9,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Base64
 import android.util.Log
-import androidx.core.os.bundleOf
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -139,13 +138,13 @@ open class AuthWorker @AssistedInject constructor(
                 .getAuthToken(
                     Account(email, GOOGLE_ACCOUNT_TYPE),
                     GOOGLE_PLAY_AUTH_TOKEN_TYPE,
-                    bundleOf(
-                        "overridePackage" to PACKAGE_NAME_PLAY_STORE,
-                        "overrideCertificate" to Base64.decode(
-                            GOOGLE_PLAY_CERT,
-                            Base64.DEFAULT
+                    Bundle().apply {
+                        putString("overridePackage", PACKAGE_NAME_PLAY_STORE)
+                        putByteArray(
+                            "overrideCertificate",
+                            Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
                         )
-                    ),
+                    },
                     true,
                     callback,
                     Handler(Looper.getMainLooper())
