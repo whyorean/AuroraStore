@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Home, Search, Download, Settings, RefreshCcw } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { cn } from '@/lib/utils'
 
-export function BottomNav() {
+function BottomNavContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -108,5 +108,13 @@ export function BottomNav() {
         </button>
       </nav>
     </>
+  )
+}
+
+export function BottomNav() {
+  return (
+    <Suspense fallback={null}>
+      <BottomNavContent />
+    </Suspense>
   )
 }
