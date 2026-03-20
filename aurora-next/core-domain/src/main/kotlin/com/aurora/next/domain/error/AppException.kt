@@ -2,7 +2,7 @@ package com.aurora.next.domain.error
 
 sealed class AppException : Exception() {
     object NetworkUnavailable : AppException()
-    data class InstallationFailed(val code: Int, val message: String) : AppException()
+    data class InstallationFailed(val code: Int, override val message: String) : AppException()
     object AuthExpired : AppException()
     data class Unknown(override val message: String) : AppException()
 }

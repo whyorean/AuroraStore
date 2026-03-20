@@ -1,23 +1,3 @@
-/*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *  Copyright (C) 2022, The Calyx Institute
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -30,7 +10,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // libsu is only available via jitpack
         maven("https://jitpack.io/") {
             content {
                 includeModule("com.github.topjohnwu.libsu", "core")
@@ -39,4 +18,14 @@ dependencyResolutionManagement {
     }
 }
 include(":app")
+include(":aurora-next:core-domain")
+include(":aurora-next:core-data")
+include(":aurora-next:core-network")
+include(":aurora-next:core-auth")
+include(":aurora-next:core-installer")
+include(":aurora-next:core-navigation")
+include(":aurora-next:feature-home")
+include(":aurora-next:feature-details")
+include(":aurora-next:app")
+
 rootProject.name = "AuroraStore4"
