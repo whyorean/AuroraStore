@@ -110,29 +110,25 @@ class GoogleFragment : BaseFragment<FragmentGoogleBinding>() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            AuroraApp.events.authEvent.collect { onEventReceived(it) }
+            AuroraApp.events.authEvent.collect { event ->
+                if (event is AuthEvent.GoogleLogin) onEventReceived(event)
+            }
         }
     }
 
-    private fun onEventReceived(event: AuthEvent) {
-        when (event) {
-            is AuthEvent.GoogleLogin -> {
-                if (event.success) {
-                    viewModel.buildGoogleAuthData(event.email, event.token, AuthHelper.Token.AAS)
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.toast_aas_token_failed),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-                findNavController().navigate(
-                    GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
-                )
-            }
-
-            else -> {}
+    private fun onEventReceived(event: AuthEvent.GoogleLogin) {
+        if (event.success) {
+            viewModel.buildGoogleAuthData(event.email, event.token, AuthHelper.Token.AAS)
+        } else {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.toast_aas_token_failed),
+                Toast.LENGTH_LONG
+            ).show()
         }
+
+        findNavController().navigate(
+            GoogleFragmentDirections.actionGoogleFragmentToSplashFragment()
+        )
     }
 }

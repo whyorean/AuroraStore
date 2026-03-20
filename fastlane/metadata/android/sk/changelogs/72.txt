@@ -1,0 +1,5 @@
+- Minimálna podporovaná verzia systému Android je teraz Android 6.0
+- Prepnutie na tému Material3 Expressive
+- Vylepšená podpora pre širokouhlé zariadenia
+- Opravený problém, pri ktorom nebola správne nastavená hebrejčina s jazykom na aplikáciu
+- Obnovená funkčnosť vyhľadávacích filtrSOV

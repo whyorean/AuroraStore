@@ -30,15 +30,16 @@ object NativeDeviceInfoProvider {
 
     fun getNativeDeviceProperties(context: Context, isExport: Boolean = false): Properties {
         val properties = Properties().apply {
-            //Build Props
+            // Build Props
             setProperty("UserReadableName", "${Build.MANUFACTURER} ${Build.MODEL}")
             setProperty("Build.HARDWARE", Build.HARDWARE)
             setProperty(
                 "Build.RADIO",
-                if (Build.getRadioVersion() != null)
+                if (Build.getRadioVersion() != null) {
                     Build.getRadioVersion()
-                else
+                } else {
                     "unknown"
+                }
             )
             setProperty("Build.FINGERPRINT", Build.FINGERPRINT)
             setProperty("Build.BRAND", Build.BRAND)
@@ -62,21 +63,24 @@ object NativeDeviceInfoProvider {
                 "${config.navigation == Configuration.NAVIGATIONHIDDEN_YES}"
             )
 
-            //Display Metrics
+            // Display Metrics
             val metrics = context.resources.displayMetrics
             setProperty("Screen.Density", "${metrics.densityDpi}")
             setProperty("Screen.Width", "${metrics.widthPixels}")
             setProperty("Screen.Height", "${metrics.heightPixels}")
 
-            //Supported Platforms
+            // Supported Platforms
             setProperty("Platforms", Build.SUPPORTED_ABIS.joinToString(separator = ","))
-            //Supported Features
+            // Supported Features
             setProperty("Features", getFeatures(context).joinToString(separator = ","))
-            //Shared Locales
+            // Shared Locales
             setProperty("Locales", getLocales(context).joinToString(separator = ","))
-            //Shared Libraries
-            setProperty("SharedLibraries", getSharedLibraries(context).joinToString(separator = ","))
-            //GL Extensions
+            // Shared Libraries
+            setProperty(
+                "SharedLibraries",
+                getSharedLibraries(context).joinToString(separator = ",")
+            )
+            // GL Extensions
             val activityManager = context.getSystemService<ActivityManager>()
             setProperty(
                 "GL.Version",
@@ -87,7 +91,7 @@ object NativeDeviceInfoProvider {
                 EglExtensionProvider.eglExtensions.joinToString(separator = ",")
             )
 
-            //Google Related Props
+            // Google Related Props
             setProperty("Client", "android-google")
 
             val gsfVersionProvider = NativeGsfVersionProvider(context, isExport)
@@ -95,11 +99,11 @@ object NativeDeviceInfoProvider {
             setProperty("Vending.version", gsfVersionProvider.vendingVersionCode.toString())
             setProperty("Vending.versionString", gsfVersionProvider.vendingVersionString)
 
-            //MISC
+            // MISC
             setProperty("Roaming", "mobile-notroaming")
             setProperty("TimeZone", "UTC-10")
 
-            //Telephony (USA 3650 AT&T)
+            // Telephony (USA 3650 AT&T)
             setProperty("CellOperator", "310")
             setProperty("SimOperator", "38")
         }
@@ -108,29 +112,23 @@ object NativeDeviceInfoProvider {
         return properties
     }
 
-    private fun getFeatures(context: Context): List<String> {
-        return context
-            .packageManager
-            .systemAvailableFeatures
-            .mapNotNull { it.name }
-    }
+    private fun getFeatures(context: Context): List<String> = context
+        .packageManager
+        .systemAvailableFeatures
+        .mapNotNull { it.name }
 
-    private fun getLocales(context: Context): List<String> {
-        return context
-            .assets
-            .locales
-            .mapNotNull { it.replace("-", "_") }
-    }
+    private fun getLocales(context: Context): List<String> = context
+        .assets
+        .locales
+        .mapNotNull { it.replace("-", "_") }
 
-    private fun getSharedLibraries(context: Context): List<String> {
-        return context
-            .packageManager
-            .systemSharedLibraryNames
-            ?.toList() ?: emptyList()
-    }
+    private fun getSharedLibraries(context: Context): List<String> = context
+        .packageManager
+        .systemSharedLibraryNames
+        ?.toList() ?: emptyList()
 
     private fun stripHuaweiProperties(properties: Properties): Properties {
-        //Add Pixel 7a properties
+        // Add Pixel 7a properties
         properties["Build.HARDWARE"] = "lynx"
         properties["Build.BOOTLOADER"] = "lynx-1.0-9716681"
         properties["Build.BRAND"] = "google"

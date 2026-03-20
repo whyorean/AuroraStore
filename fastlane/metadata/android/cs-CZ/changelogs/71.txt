@@ -1,0 +1,2 @@
+• Oprava problému s instalací aplikací na zařízeních Huawei
+• Aktualizace překladů

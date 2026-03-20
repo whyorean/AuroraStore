@@ -1,1 +1,1 @@
-• Correction d'un problème dans la recherche, utilise désormais les données WebAPI
+• Correction d'un problème de recherche, utilise les données WebAPI

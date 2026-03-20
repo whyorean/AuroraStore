@@ -1,0 +1,4 @@
+• Opraven nesprávná ikona indikátoru šipky u rozložení RTL
+• Opraveny problémy se stránkováním a IME u vyhledávání
+• Opravena chyba která přepsala uživatelský výběr instalátoru
+• Aktualizovány překlady, databáze prvků Exodus a kořenové certifikáty Google

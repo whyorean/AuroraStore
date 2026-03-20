@@ -1,4 +1,4 @@
-• Android 13 célzása
+• Koncentrálás Android 13-ra
 • További szövegek lokalizációjának lehetővé tétele
 • Monokróm ikon az Android 13-hoz
 • Függőségek frissítése
@@ -6,5 +6,10 @@
 • Továbblépés engedélyezése a jogosultságok megadása nélkül
 • Rendszer kizárási listájának figyelembe vétele a frissítéseknél
 • Cím javítása az 5. beállítólapon
+• Tovább gomb megjelenítése visszalépésnél
+• Jelölőnégyzetek lecserélése rádiós gombokra a telepítőben
+• Söprő szín beállítása a telepítő hátterének
+• A témátlan hiba kiküszöbölése a telepítőben rádió gombokkal
+• Ne használja az új GSF & Vending verziókat
 • Tárhellyel kapcsolatos jogosultságbeállítások refaktorálása
 • Frissített fordítások

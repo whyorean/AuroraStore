@@ -26,11 +26,11 @@ import android.net.Uri
 import android.util.Log
 import androidx.core.content.FileProvider
 import androidx.core.content.getSystemService
+import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PathUtil
@@ -43,24 +43,42 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
     companion object {
         fun notifyInstallation(context: Context, displayName: String, packageName: String) {
             val notificationManager = context.getSystemService<NotificationManager>()
-            val notification = NotificationUtil.getInstallNotification(context, displayName, packageName)
+            val notification = NotificationUtil.getInstallNotification(
+                context,
+                displayName,
+                packageName
+            )
             notificationManager!!.notify(packageName.hashCode(), notification)
         }
 
-        fun getErrorString(context: Context, status: Int): String {
-            return when (status) {
-                PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(R.string.installer_status_user_action)
-                PackageInstaller.STATUS_FAILURE_BLOCKED -> context.getString(R.string.installer_status_failure_blocked)
-                PackageInstaller.STATUS_FAILURE_CONFLICT -> context.getString(R.string.installer_status_failure_conflict)
-                PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> context.getString(R.string.installer_status_failure_incompatible)
-                PackageInstaller.STATUS_FAILURE_INVALID -> context.getString(R.string.installer_status_failure_invalid)
-                PackageInstaller.STATUS_FAILURE_STORAGE -> context.getString(R.string.installer_status_failure_storage)
-                else -> context.getString(R.string.installer_status_failure)
-            }
+        fun getErrorString(context: Context, status: Int): String = when (status) {
+            PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(
+                R.string.installer_status_user_action
+            )
+
+            PackageInstaller.STATUS_FAILURE_BLOCKED -> context.getString(
+                R.string.installer_status_failure_blocked
+            )
+
+            PackageInstaller.STATUS_FAILURE_CONFLICT -> context.getString(
+                R.string.installer_status_failure_conflict
+            )
+
+            PackageInstaller.STATUS_FAILURE_INCOMPATIBLE -> context.getString(
+                R.string.installer_status_failure_incompatible
+            )
+
+            PackageInstaller.STATUS_FAILURE_INVALID -> context.getString(
+                R.string.installer_status_failure_invalid
+            )
+
+            PackageInstaller.STATUS_FAILURE_STORAGE -> context.getString(
+                R.string.installer_status_failure_storage
+            )
+
+            else -> context.getString(R.string.installer_status_failure)
         }
     }
-
-    private val TAG = InstallerBase::class.java.simpleName
 
     var download: Download? = null
         private set
@@ -73,9 +91,8 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
         AuroraApp.enqueuedInstalls.clear()
     }
 
-    override fun isAlreadyQueued(packageName: String): Boolean {
-        return AuroraApp.enqueuedInstalls.contains(packageName)
-    }
+    override fun isAlreadyQueued(packageName: String): Boolean =
+        AuroraApp.enqueuedInstalls.contains(packageName)
 
     override fun removeFromInstallQueue(packageName: String) {
         AuroraApp.enqueuedInstalls.remove(packageName)
@@ -92,19 +109,19 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
     }
 
     open fun postError(packageName: String, error: String?, extra: String?) {
-        Log.e(TAG, "Service Error :$error")
-
-        val event = InstallerEvent.Failed(packageName).apply {
-            this.error = error ?: ""
-            this.extra = extra ?: ""
-        }
-
-        AuroraApp.events.send(event)
+        Log.e(TAG, "Installer Error :$error")
+        AuroraApp.events.send(
+            InstallerEvent.Failed(
+                packageName = packageName,
+                error = error,
+                extra = extra
+            )
+        )
     }
 
     fun getFiles(
         packageName: String,
-        versionCode: Int,
+        versionCode: Long,
         sharedLibPackageName: String = ""
     ): List<File> {
         val downloadDir = if (sharedLibPackageName.isNotBlank()) {
@@ -115,11 +132,9 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
         return downloadDir.listFiles()!!.filter { it.path.endsWith(".apk") }
     }
 
-    fun getUri(file: File): Uri {
-        return FileProvider.getUriForFile(
-            context,
-            "${BuildConfig.APPLICATION_ID}.fileProvider",
-            file
-        )
-    }
+    fun getUri(file: File): Uri = FileProvider.getUriForFile(
+        context,
+        "${BuildConfig.APPLICATION_ID}.fileProvider",
+        file
+    )
 }

@@ -40,10 +40,17 @@
         app:min="1"
         app:showSeekBarValue="true" />
 
+    <Preference
+        app:disableDependentsState="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCES_UPDATES_RESTRICTIONS"
+        app:summary="@string/pref_updates_restrictions_desc"
+        app:title="@string/pref_updates_restrictions_title" />
+
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
-        app:title="@string/action_filter" />
+        app:title="@string/pref_updates_app_source" />
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
@@ -62,7 +69,7 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
-        app:title="@string/pref_common_extra" />
+        app:title="@string/pref_common_advanced" />
 
     <SwitchPreferenceCompat
         app:defaultValue="false"

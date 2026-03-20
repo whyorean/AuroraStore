@@ -1,0 +1,5 @@
+• Versi Android minimum yang didukung sekarang adalah Android 6.0
+• Beralih ke tema Material3 Expressive
+• Peningkatan dukungan untuk perangkat layar lebar
+• Perbaikan masalah di mana bahasa Ibrani tidak diatur dengan benar pada pengaturan bahasa per aplikasi
+• Pemulihan fungsi filter pencarian

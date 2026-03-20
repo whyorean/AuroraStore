@@ -1,0 +1,5 @@
+• Novas avaliações de compatibilidade de apps disponibilizadas pelo Plexus
+• Melhorias ao gerenciador de lista negra
+• Capacidade de alterar as restrições das atualizações automáticas
+• Correções de bugs menores e melhorias
+• Traduções atualizadas; mais textos traduzíveis

@@ -76,14 +76,15 @@ class AppUpdateView @JvmOverloads constructor(
 
             binding.txtLine2.text = developerName
             binding.txtLine3.text = ("${CommonUtil.addSiPrefix(size)}  •  $updatedOn")
-            binding.txtLine4.text = ("$versionName (${versionCode})")
-            binding.txtChangelog.text = if (changelog.isNotEmpty())
+            binding.txtLine4.text = ("$versionName ($versionCode)")
+            binding.txtChangelog.text = if (changelog.isNotEmpty()) {
                 HtmlCompat.fromHtml(
                     changelog,
                     HtmlCompat.FROM_HTML_OPTION_USE_CSS_COLORS
                 )
-            else
+            } else {
                 context.getString(R.string.details_changelog_unavailable)
+            }
 
             binding.headerIndicator.setOnClickListener {
                 if (binding.cardChangelog.isVisible) {
@@ -102,8 +103,8 @@ class AppUpdateView @JvmOverloads constructor(
     @ModelProp
     fun download(download: Download?) {
         if (download != null) {
-            binding.btnAction.updateState(download.downloadStatus)
-            when (download.downloadStatus) {
+            binding.btnAction.updateState(download.status)
+            when (download.status) {
                 DownloadStatus.VERIFYING,
                 DownloadStatus.QUEUED -> {
                     binding.progressDownload.isIndeterminate = true
@@ -162,11 +163,13 @@ class AppUpdateView @JvmOverloads constructor(
         val isDownloadVisible = binding.progressDownload.isShown
 
         // Avoids flickering when the download is in progress
-        if (isDownloadVisible && scaleFactor != 1f)
+        if (isDownloadVisible && scaleFactor != 1f) {
             return
+        }
 
-        if (!isDownloadVisible && scaleFactor == 1f)
+        if (!isDownloadVisible && scaleFactor == 1f) {
             return
+        }
 
         if (scaleFactor == 1f) {
             binding.progressDownload.invisible()
@@ -190,10 +193,11 @@ class AppUpdateView @JvmOverloads constructor(
         iconDrawable?.let {
             binding.imgIcon.load(it) {
                 transformations(
-                    if (scaleFactor == 1f)
+                    if (scaleFactor == 1f) {
                         cornersTransformation
-                    else
+                    } else {
                         CircleCropTransformation()
+                    }
                 )
             }
         }

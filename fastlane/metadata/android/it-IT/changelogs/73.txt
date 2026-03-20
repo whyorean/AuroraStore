@@ -1,0 +1,4 @@
+• Risolta l'icona sbagliata dell'indicatore di aggiornamento sui layout RTL
+• Risolti problemi di paging e IME sulla ricerca
+• Risolto un bug che sovrascriveva la scelta del programma di installazione dell'utente
+• Aggiornate le traduzioni, il database dei tracker Exodus e i certificati di root di google

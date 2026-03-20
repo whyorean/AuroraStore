@@ -1,0 +1,4 @@
+• RTL izkārtojumos salabota nepareiza norādes uz atjauninājumiem bultas ikona
+• Meklēšanā novērstas lapošanas un ievades veida redaktora nepilnības
+• Novērsta nepilnība, kas pārrakstīja lietotāja izvēlēto uzstādītāju
+• Atjaunināti tulkojumi, Exodus izsekotāju datubāze un Google sakņu sertifikāti

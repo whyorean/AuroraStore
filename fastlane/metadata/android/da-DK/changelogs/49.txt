@@ -1,0 +1,4 @@
+• Store interne ændringer relateret til UI
+• Tillad brugere at aktivere app-links under opsætning
+• Opdater oversættelser
+• Små fejlrettelser og forbedringer

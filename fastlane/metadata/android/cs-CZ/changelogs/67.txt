@@ -1,0 +1,4 @@
+• Cíl Android 16
+• Opravena chyba při otevírání odkazů do aplikací
+• Podpora otevření stránky s podrobnostmi aplikace z informací o aplikaci
+• Aktualizace překladů

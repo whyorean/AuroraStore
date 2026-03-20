@@ -42,11 +42,9 @@ class AuroraListPreference : ListPreference {
         defStyleRes: Int
     ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    override fun getPersistedString(defaultReturnValue: String?): String {
-        return getPersistedInt(defaultReturnValue?.toInt() ?: -1).toString()
-    }
+    override fun getPersistedString(defaultReturnValue: String?): String =
+        getPersistedInt(defaultReturnValue?.toInt() ?: -1).toString()
 
-    override fun persistString(value: String?): Boolean {
-        return if (value != null) persistInt(Integer.valueOf(value)) else false
-    }
+    override fun persistString(value: String?): Boolean =
+        if (value != null) persistInt(Integer.valueOf(value)) else false
 }

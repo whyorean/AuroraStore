@@ -1,0 +1,11 @@
+Aurora Store yw unn kliens ansodhogel rydh rag Google Play gans unn desin afinys. Aurora Store ow gasa usyoryon dhe iskarga, nowedhi, ha hwilas rag appys avel an Play Store. Y'n oberi yn perfyth gans po heb Gonisyow Google Play po microG.
+
+<b>Nasyow:</b>
+
+• Rydh: Leshyans GPLv3
+• Desin teg: Byldys war gidys diwettha Material 3
+• Omgelm akont: Ty gallos omgelmi gans po akont personel po dihanow
+• Fugya devis hag yeth: Chanjya dha devis hag/po yeth rag drehedhes appys strothys gans tyller
+• Nas Exodus Privacy: Gweles a-dhesempis aspioryon yn app
+• Nas Plexus: Gweles a-dhesempis mar app yw kesplegadow heb Gonisyow Google Play po gans microG
+• Rol-Du nowedhyansow: Skonya aswon nowedhyansow rag appys komparek

@@ -1,0 +1,11 @@
+L'Aurora Store es un client no oficial i de codi obert per a Google Play amb un disseny elegant. L'Aurora Store permet als usuaris baixar, actualitzar i cercar aplicacions com la Play Store. Funciona perfectamente amb/sense els serveis de Google Play o microG.
+
+<b>Features:</b>
+
+• Lliure i de codi obert: Amb llicència GPLv3
+• Disseny preciós: Construït seguint les últimes directrius de Material 3
+• Inici de sessió: Pots iniciar sessió amb un compte personal o anònimament
+• Suplantació de dispositiu i localització: Canvia el teu dispositiu i la localització per accedir aplicacions restringides
+• Integració amb Exodus Privacy: Consulta els rastrejadors en la pàgina de l'aplicació
+• Integració amb Plexus: Consulta la compatibilitat sense serveis de Google Play o amb microG
+• Llista negra d'actualitzacions: Ignora les actualitzacions d'aplicacions específiques

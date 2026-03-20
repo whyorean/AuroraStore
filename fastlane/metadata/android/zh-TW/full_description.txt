@@ -1,10 +1,11 @@
-Aurora 商店乃 Google Play 非官方 FOSS 客戶端，設計雅致。Aurora 商店讓使用者下載、更新和搜尋應用程式，有如 Play 商店一樣。不管有沒有 Google Play 服務或 MicroG 也運作如常。
+Aurora Store 是個 Google Play 非官方 FOSS 客戶端，設計雅致。Aurora Store 讓使用者下載、更新和搜尋應用程式，有如 Play 商店一樣。不管有沒有 Google Play 服務或 MicroG 也運作如常。
 
 <b>特色：</b>
 
-• FOSS：按 GPLv3 授權
+• FOSS：使用 GPLv3 授權
 • 設計美觀：採用最新的 Material 3 指引建構
 • 帳戶登入：可使用個人或匿名帳戶登入
-• 裝置與地區虛擬：變更您的裝置及/或地區以存取地域鎖定的應用程式
-• [Exodus 隱私](https://exodus-privacy.eu.org/)整合：瞬間一覧應用程式中的追蹤器
-• 更新黑名單：忽略特定應用程式的更新
+• 裝置與地區偽裝：變更您的裝置及/或地區以存取地域鎖定的應用程式
+• Exodus 隱私整合：即時查看應用程式中的追蹤器
+• Plexus 整合: 在沒有 Google Play 服務或 microG 的情況下即時查看應用程式相容性
+• 更新黑名單：忽略特定應用程式更新

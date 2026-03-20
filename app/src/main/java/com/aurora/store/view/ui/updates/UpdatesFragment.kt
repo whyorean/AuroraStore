@@ -21,16 +21,23 @@ package com.aurora.store.view.ui.updates
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aurora.Constants
 import com.aurora.extensions.browse
+import com.aurora.extensions.navigate
 import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.databinding.FragmentUpdatesBinding
@@ -53,11 +60,20 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Adjust FAB margins for edgeToEdge display
+        ViewCompat.setOnApplyWindowInsetsListener(binding.searchFab) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            binding.searchFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = insets.bottom + resources.getDimensionPixelSize(R.dimen.margin_large)
+            }
+            WindowInsetsCompat.CONSUMED
+        }
+
         // Toolbar
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_download_manager -> {
-                    findNavController().navigate(R.id.downloadFragment)
+                    requireContext().navigate(Screen.Downloads)
                 }
 
                 R.id.menu_more -> {
@@ -73,12 +89,15 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
             viewModel.updates
                 .combine(viewModel.downloadsList) { uList, dList ->
                     uList?.associateWith { a ->
-                        dList.find { it.packageName == a.packageName && it.versionCode == a.versionCode }
+                        dList.find {
+                            it.packageName == a.packageName && it.versionCode == a.versionCode
+                        }
                     }
                 }.collectLatest { map ->
                     updateController(map)
-                    viewModel.updateAllEnqueued =
-                        map?.values?.all { it?.isRunning == true } ?: false
+                    viewModel.updateAllEnqueued = map?.values?.all {
+                        it?.isRunning == true
+                    } ?: false
                 }
         }
 
@@ -96,7 +115,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
         }
 
         binding.searchFab.setOnClickListener {
-            findNavController().navigate(R.id.searchSuggestionFragment)
+            requireContext().navigate(Screen.Search)
         }
     }
 
@@ -127,10 +146,11 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
                             .id("header_all")
                             .title(
                                 "${appList.size} " +
-                                        if (appList.size == 1)
-                                            getString(R.string.update_available)
-                                        else
-                                            getString(R.string.updates_available)
+                                    if (appList.size == 1) {
+                                        getString(R.string.update_available)
+                                    } else {
+                                        getString(R.string.updates_available)
+                                    }
                             )
                             .action(
                                 if (viewModel.updateAllEnqueued) {
@@ -177,7 +197,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
 
     private fun updateSingle(update: Update) {
         if (update.fileList.requiresObbDir()) {
-            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+            if (isGranted(requireContext(), PermissionType.STORAGE_MANAGER)) {
                 viewModel.download(update)
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {
@@ -192,7 +212,7 @@ class UpdatesFragment : BaseFragment<FragmentUpdatesBinding>() {
     private fun updateAll() {
         viewModel.updateAllEnqueued = true
         if (viewModel.updates.value?.any { it.fileList.requiresObbDir() } == true) {
-            if (permissionProvider.isGranted(PermissionType.STORAGE_MANAGER)) {
+            if (isGranted(requireContext(), PermissionType.STORAGE_MANAGER)) {
                 viewModel.downloadAll()
             } else {
                 permissionProvider.request(PermissionType.STORAGE_MANAGER) {

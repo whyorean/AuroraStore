@@ -1,1 +1,1 @@
-• Correction d'un crash pour certains écrans
+• Correctif d’urgence - Correction d'un plantage pour certains écrans

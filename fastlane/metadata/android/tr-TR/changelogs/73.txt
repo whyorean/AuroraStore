@@ -1,0 +1,4 @@
+• Sağdan sola düzenlerde yanlış yükseltme oku belirteci simgesi düzeltildi
+• Aramada sayfalama ve IME sorunları çözüldü
+• Kullanıcı kurucu seçimini görmezden gelen hata düzeltildi
+• Çeviriler, exodus izleyici veri tabanı ve google'ın kök sertifikaları güncellendi

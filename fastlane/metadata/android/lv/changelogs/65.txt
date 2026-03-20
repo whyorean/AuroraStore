@@ -1,4 +1,4 @@
 • Novērstas nepilnības ar kopīgoto bibliotēku uzstādīšanu tādām lietotnēm kā Chrome un WebView
 • Pieteikšanās personīgajā kontā ar microG atbalsts
 • Novērsta nepilnība ar pilnvarošanas apliecināšanu
-• Tulkojumu atjauninājumi; jauni tulkojami teksti
+• Tulkojumu atjauninājumi; lokalizētas papildu virknes

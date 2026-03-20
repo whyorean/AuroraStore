@@ -30,6 +30,7 @@ import android.os.IBinder
 import android.os.Looper
 import android.os.RemoteException
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.services.IPrivilegedCallback
 import com.aurora.services.IPrivilegedService
 import com.aurora.store.AuroraApp
@@ -74,8 +75,6 @@ class ServiceInstaller @Inject constructor(
                 description = R.string.services_installer_desc
             )
     }
-
-    private val TAG = ServiceInstaller::class.java.simpleName
 
     override fun install(download: Download) {
         super.install(download)
@@ -230,11 +229,7 @@ class ServiceInstaller @Inject constructor(
         try {
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    AuroraApp.events.send(
-                        InstallerEvent.Uninstalled(packageName).apply {
-                            this.extra = context.getString(R.string.action_uninstall_success)
-                        }
-                    )
+                    AuroraApp.events.send(InstallerEvent.Uninstalled(packageName = packageName))
                 }
 
                 else -> postError(packageName, getErrorString(context, returnCode), extra)
@@ -253,11 +248,7 @@ class ServiceInstaller @Inject constructor(
         try {
             when (returnCode) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    AuroraApp.events.send(
-                        InstallerEvent.Installed(packageName).apply {
-                            this.extra = context.getString(R.string.installer_status_success)
-                        }
-                    )
+                    AuroraApp.events.send(InstallerEvent.Installed(packageName = packageName))
                     // Installation is not yet finished if this is a shared library
                     if (packageName == download?.packageName) onInstallationSuccess()
                 }

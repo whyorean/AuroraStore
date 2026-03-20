@@ -1,0 +1,5 @@
+• Nouvelles évaluations de compatibilité des applis propulsées par Plexus
+• Amélioration du gestionnaire d’exclusions
+• Possibilité de changer les restrictions de mise à jour automatique
+• Corrections de bogues mineurs et améliorations
+• Mises à jour des traductions ; des chaînes supplémentaires sont traduites

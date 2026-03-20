@@ -20,11 +20,11 @@
 package com.aurora.store.view.ui.preferences
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.core.net.toUri
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.aurora.extensions.isTAndAbove
@@ -42,9 +42,11 @@ class UIPreference : BasePreferenceFragment() {
             if (isTAndAbove) {
                 summary = Locale.getDefault().displayName
                 setOnPreferenceClickListener {
-                    startActivity(Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
-                        data = Uri.parse("package:" + requireContext().packageName)
-                    })
+                    startActivity(
+                        Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
+                            data = ("package:" + requireContext().packageName).toUri()
+                        }
+                    )
                     true
                 }
             } else {

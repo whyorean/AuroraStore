@@ -1,0 +1,4 @@
+• Podpora Android 16
+• Opravená chyba s otváraním odkazov do aplikácie
+• Pridaná podpora s podrobnosťami o aplikácií v nastaveniach informácií o aplikácii
+• Aktualizácie prekladov

@@ -45,8 +45,9 @@ class HeaderView @JvmOverloads constructor(
     @JvmOverloads
     @ModelProp
     fun browseUrl(browseUrl: String? = String()) {
-        if (browseUrl.isNullOrEmpty())
+        if (browseUrl.isNullOrEmpty()) {
             binding.imgAction.visibility = INVISIBLE
+        }
     }
 
     @CallbackProp

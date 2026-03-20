@@ -1,0 +1,5 @@
+• New app compatibility ratings powered by Plexus
+• Improvements to blacklist manager
+• Ability to change auto-update restrictions
+• Minor bug fixes and improvements
+• Translation updates; additional strings localized

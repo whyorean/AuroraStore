@@ -23,22 +23,21 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.contracts.CategoryContract
 import com.aurora.store.CategoryStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
     private val categoryHelper: CategoryHelper
 ) : ViewModel() {
-
-    private val TAG = CategoryViewModel::class.java.simpleName
 
     private var stash: CategoryStash = mutableMapOf(
         Category.Type.APPLICATION to emptyList(),
@@ -47,9 +46,7 @@ class CategoryViewModel @Inject constructor(
 
     val liveData = MutableLiveData<ViewState>()
 
-    private fun contract(): CategoryContract {
-        return categoryHelper
-    }
+    private fun contract(): CategoryContract = categoryHelper
 
     fun getCategoryList(type: Category.Type) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -69,9 +66,7 @@ class CategoryViewModel @Inject constructor(
         }
     }
 
-    private fun getCategories(type: Category.Type): List<Category> {
-        return stash.getOrPut(type) {
-            mutableListOf()
-        }
+    private fun getCategories(type: Category.Type): List<Category> = stash.getOrPut(type) {
+        mutableListOf()
     }
 }

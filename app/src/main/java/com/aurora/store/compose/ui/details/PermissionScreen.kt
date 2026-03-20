@@ -1,0 +1,126 @@
+/*
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+package com.aurora.store.compose.ui.details
+
+import android.content.pm.PermissionInfo
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.aurora.extensions.adaptiveNavigationIcon
+import com.aurora.extensions.isWindowCompact
+import com.aurora.gplayapi.data.models.App
+import com.aurora.store.R
+import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.preview.AppPreviewProvider
+import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.aurora.store.viewmodel.details.PermissionViewModel
+import java.util.Locale
+
+@Composable
+fun PermissionScreen(
+    packageName: String,
+    onNavigateUp: () -> Unit,
+    appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
+    permissionViewModel: PermissionViewModel = hiltViewModel(
+        key = "$packageName/permission",
+        creationCallback = { factory: PermissionViewModel.Factory ->
+            factory.create(appDetailsViewModel.app.value!!.permissions)
+        }
+    ),
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
+) {
+    val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
+    val permissionsInfo by permissionViewModel.permissionsInfo.collectAsStateWithLifecycle()
+
+    val topAppBarTitle = when {
+        windowAdaptiveInfo.isWindowCompact -> app!!.displayName
+        else -> stringResource(R.string.details_permission)
+    }
+
+    ScreenContent(
+        topAppBarTitle = topAppBarTitle,
+        onNavigateUp = onNavigateUp,
+        permissionsInfo = permissionsInfo
+    )
+}
+
+@Composable
+private fun ScreenContent(
+    topAppBarTitle: String? = null,
+    permissionsInfo: Map<String, PermissionInfo> = emptyMap(),
+    onNavigateUp: () -> Unit = {},
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
+) {
+    val packageManager = LocalContext.current.packageManager
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = topAppBarTitle,
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
+                onNavigateUp = onNavigateUp
+            )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+                .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        ) {
+            items(items = permissionsInfo.keys.toList(), key = { it }) { permission ->
+                val permissionInfo = permissionsInfo.getValue(permission)
+
+                Info(
+                    title = AnnotatedString(
+                        text = permissionInfo.loadLabel(packageManager)
+                            .toString()
+                            .replaceFirstChar {
+                                if (it.isLowerCase()) {
+                                    it.titlecase(Locale.getDefault())
+                                } else {
+                                    it.toString()
+                                }
+                            }
+                    ),
+                    description = AnnotatedString(
+                        text = permissionInfo.loadDescription(packageManager)?.toString()
+                            ?: stringResource(R.string.no_description)
+                    )
+                )
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun PermissionScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
+    PreviewTemplate {
+        ScreenContent(
+            topAppBarTitle = app.displayName
+        )
+    }
+}

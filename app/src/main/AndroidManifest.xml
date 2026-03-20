@@ -100,14 +100,30 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SHOW_APP_INFO" />
+            </intent-filter>
 
             <nav-graph android:value="@navigation/mobile_navigation" />
         </activity>
+
+        <!-- Activity to host composable screens -->
+        <activity
+            android:name=".ComposeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Notification Action (Download Complete) -->
         <activity
             android:name=".data.activity.InstallActivity"
             android:exported="false"
+            android:theme="@style/AppTheme.Translucent" />
+
+        <activity
+            android:name=".data.activity.MicroGInstallerActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.Translucent" />
 
         <!-- DownloadWorker -->
@@ -153,6 +169,11 @@
         <!-- Installation Status Receiver (Session Installer) -->
         <receiver
             android:name=".data.receiver.InstallerStatusReceiver"
+            android:exported="false" />
+
+        <!-- Cancel Download Receiver-->
+        <receiver
+            android:name=".data.receiver.DownloadCancelReceiver"
             android:exported="false" />
 
         <!-- SessionInstaller (as device owner) -->

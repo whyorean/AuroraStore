@@ -1,0 +1,4 @@
+• Uuenduse nooleikoon on paremalt vasakule paigutustes õige
+• Lihtede grupeerimise ja sisendmeetodi parandused otsinguvaates
+• Veaparandus olukorrale, kus kasutaja paigaldaja valik sai sürjutatud
+• Tõlgete, Exoduse jälitajate andmekogu ja Google'i juursertifikaatide täiendused ja uuendused

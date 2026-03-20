@@ -21,14 +21,20 @@ package com.aurora.store.view.ui.apps
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.aurora.extensions.navigate
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -48,13 +54,22 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Adjust FAB margins for edgeToEdge display
+        ViewCompat.setOnApplyWindowInsetsListener(binding.searchFab) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            binding.searchFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = insets.bottom + resources.getDimensionPixelSize(R.dimen.margin_large)
+            }
+            WindowInsetsCompat.CONSUMED
+        }
+
         // Toolbar
         binding.toolbar.apply {
             title = getString(R.string.title_apps)
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_download_manager -> {
-                        findNavController().navigate(R.id.downloadFragment)
+                        requireContext().navigate(Screen.Downloads)
                     }
 
                     R.id.menu_more -> {
@@ -81,7 +96,7 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         )
 
         binding.pager.isUserInputEnabled =
-            false //Disable viewpager scroll to avoid scroll conflicts
+            false // Disable viewpager scroll to avoid scroll conflicts
 
         val tabTitles: MutableList<String> = mutableListOf<String>().apply {
             if (isForYouEnabled) {
@@ -101,7 +116,7 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         }.attach()
 
         binding.searchFab.setOnClickListener {
-            findNavController().navigate(R.id.searchSuggestionFragment)
+            requireContext().navigate(Screen.Search)
         }
     }
 
@@ -126,12 +141,8 @@ class AppsContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
             add(CategoryFragment.newInstance(0))
         }
 
-        override fun createFragment(position: Int): Fragment {
-            return tabFragments[position]
-        }
+        override fun createFragment(position: Int): Fragment = tabFragments[position]
 
-        override fun getItemCount(): Int {
-            return tabFragments.size
-        }
+        override fun getItemCount(): Int = tabFragments.size
     }
 }

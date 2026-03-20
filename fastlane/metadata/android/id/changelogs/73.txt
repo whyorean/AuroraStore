@@ -1,0 +1,4 @@
+• Perbaikan indikator ikon panah pembaruan yang salah pada tata letak RTL
+• Perbaikan masalah pemuatan halaman dan IME pada pencarian
+• Perbaikan bug yang mengabaikan pilihan penginstal pengguna
+• Pembaruan terjemahan, basis data pelacak exodus, dan sertifikat akar Google

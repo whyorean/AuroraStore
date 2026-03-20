@@ -1,6 +1,4 @@
-Aurora Store, Google Play için şık tasarımlı bir gayriresmî FOSS istemcidir. Aurora Store,
-kullanıcıların Play Store ile benzer biçimde uygulama indirmesini, güncellemesini ve aramasını
-sağlar. Google Play Hizmetleri veya MicroG ile ya da bunlar olmadan sorunsuzca çalışır.
+Aurora Store, Google Play için şık tasarımlı bir gayriresmî FOSS istemcidir. Aurora Store, kullanıcıların Play Store ile benzer biçimde uygulama indirmesini, güncellemesini ve aramasını sağlar. Google Play Hizmetleri veya microG ile ya da bunlar olmadan sorunsuzca çalışır.
 
 <b>Özellikler:</b>
 
@@ -9,4 +7,5 @@ sağlar. Google Play Hizmetleri veya MicroG ile ya da bunlar olmadan sorunsuzca 
 • Hesapla oturum aç: Kişisel veya anonim bir hesapla oturum açabilirsiniz
 • Aygıt ve Yer gizle: Coğrafi kilitli uygulamalara erişmek için aygıtınızı ve/veya yer ayarını değiştirin
 • Exodus Gizlilik tümleşimi: Uygulamadaki izleyicileri anında görün
+• Plexus tümleşimi: Uygulamanın Google Play Hizmetleri olmayan ve/veya microG olan sistemle uyumluluğunu anında görün.
 • Güncellemeleri kara listeye al: Belirli uygulamalar için güncellemeleri yok sayın

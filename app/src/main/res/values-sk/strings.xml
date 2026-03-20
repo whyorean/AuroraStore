@@ -49,7 +49,7 @@
     <string name="device_miui_title">Rozpoznané MIUI!</string>
     <string name="device_miui_subtitle">Inštalátor relácie nemôže nainštalovať aplikácie kvôli optimalizácii MIUI.</string>
     <string name="dialog_desc_native_split">Prostredníctvom natívneho inštalátora nemôžete nainštalovať pribalené (rozdelené) aplikácie. Zmeňte inštalačný program na Reláciu, Služby alebo Root.</string>
-    <string name="pref_filter_fdroid_summary">Nekontrolovať F-Droid aplikácie z aktualizácií a nainštalovaných aplikácií</string>
+    <string name="pref_filter_fdroid_summary">Nekontrolovať F-Droid aplikácie z nainštalovaných aplikácií</string>
     <string name="pref_install_mode_am">AM inštalátor</string>
     <string name="pref_vending_version_title">Google obchod verzia</string>
     <string name="pref_ui_no_for_you_desc">Zobraziť stránky pre vás na domovskej obrazovke</string>
@@ -118,7 +118,6 @@
     <string name="details_more_about_app">Viac o aplikácií</string>
     <string name="details_no_app_match">Nenašla sa žiadna zhoda aplikácie</string>
     <string name="pref_network_title">Sieť</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="app_updater_service_notif_title">Sťahovanie aplikácie na pozadí</string>
     <string name="app_updater_service_notif_text">Umožňuje sťahovanie aplikácie na pozadí</string>
     <string name="privacy_policy_title">Zásady ochrany osobných údajov</string>
@@ -141,9 +140,6 @@
     <string name="pref_install_mode_shizuku">Shizuku inštalátor</string>
     <string name="pref_install_mode_session">Inštalátor relácie</string>
     <string name="pref_vending_version_device">Predvolené (z konfigurácie zariadenia)</string>
-    <string name="pref_network_proxy_enable">Povoliť proxy</string>
-    <string name="pref_network_proxy_enable_desc">Povoliť všetku sieťovú prevádzku aplikácie cez server proxy</string>
-    <string name="pref_ui_similar_apps_desc">Zobraziť podobné a súvisiace skupiny na stránke podrobností aplikácie</string>
     <string name="pref_updates_incompatible">Nekompatibilné aktualizácie</string>
     <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré môžu zlyhať pri nštalovaní</string>
     <string name="pref_aurora_only">Iba aplikácie Aurora obchod</string>
@@ -155,7 +151,7 @@
     <string name="requesting_new_session">Požiadať o novú reláciu</string>
     <string name="downloading_dep">Sťahovanie dodatočných súborov pre <xliff:g id="app">%1$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> dostupná aktualizácia</string>
-    <string name="pref_updates_auto_desc">Nakonfigurujte správanie automatických aktualizácií</string>
+    <string name="pref_updates_auto_desc">Nakonfigurovať správanie automatických aktualizácií</string>
     <string name="pref_updates_check_frequency">Frekvencia automatických aktualizácií</string>
     <string name="server_unreachable">Server je nedostupný</string>
     <string name="failed_generating_session">Nepodarilo sa vygenerovať reláciu, kód chyby: <xliff:g id="status_code">%1$d</xliff:g></string>
@@ -206,12 +202,9 @@
     <string name="tab_for_you">Pre vás</string>
     <string name="tab_top_free">Najlepšie zdarma</string>
     <string name="title_apps_library">Aplikácie v knižnici</string>
-    <string name="title_apps_sale">Aplikácie v zľave</string>
     <string name="title_installer">Inštalačný program aplikácie</string>
     <string name="toast_permission_installer_required">Najprv musíte udeliť povolenie inštalátorovi</string>
-    <string name="toast_permission_esm_caution">Možno budete musieť znova udeliť povolenie kvôli chybe v prístupe úložiska</string>
     <string name="item_required">Požadované</string>
-    <string name="title_apps_sale_provider">Poskytovateľ - bestappsales.com</string>
     <string name="item_optional">Voliteľné</string>
     <string name="server_maintenance">Server je mimo prevádzky z dôvodu údržby</string>
     <string name="title_games">Hry</string>
@@ -223,7 +216,7 @@
     <string name="pref_updates_auto_notify">Skontrolovať dostupné aktualizácie a informovať o nich</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="aplikácia_jedna_názov">%1$s</xliff:g>, <xliff:g id="aplikácia_dva_názov">%2$s</xliff:g>, <xliff:g id="aplikácia_tri_názov">%3$s</xliff:g> a <xliff:g id="počet_aplikácií">%4$d</xliff:g> viac</string>
     <string name="pref_updates_auto_off">Neaktualizovať aplikácie automaticky</string>
-    <string name="pref_updates_check_frequency_desc">Nastaviť intervaly pre automatické a vlastné aktualizácie v hodinách.</string>
+    <string name="pref_updates_check_frequency_desc">Nastaviť interval pre vlastné automatické aktualizácie v hodinách.</string>
     <string name="login_rate_limited">Ups, váš účet je obmedzený</string>
     <string name="failed_to_generate_session">Nepodarilo sa vygenerovať reláciu</string>
     <string name="verifying_new_session">Overuje sa nová relácia</string>
@@ -234,11 +227,7 @@
     <string name="session_installer_subtitle">Inštalátor balíkov/rozdelených súborov APK založený na relácii</string>
     <string name="session_installer_desc">Odporúčané, vstavané a podporuje všetky verzie systému Android</string>
     <string name="native_installer_subtitle">Inštalátor založený, dostupný na všetkých zariadeniach</string>
-    <string name="about_aurora_store_summary">Aurora vám umožňuje vyhľadávať a sťahovať aplikácie z oficiálneho obchodu Google Play. Môžete skontrolovať popisy aplikácií, snímky obrazovky, aktualizácie, komentáre ostatných používateľov a stiahnuť si súbor APK priamo zo služby Google Play do svojho zariadenia. Ak chcete používať Aurora Store, musíte mať účet Google Play a prihlásiť sa do svojho účtu Google Play pri prvom otvorení a konfigurácii obchodu Aurora.
-\n
-\nNa rozdiel od tradičného obchodu s aplikáciami Aurora Store nevlastní, nelicencuje ani nedistribuuje žiadne aplikácie. Všetky aplikácie, popisy aplikácií, snímky obrazovky a ďalší obsah v obchode Aurora sú priamo prístupné, stiahnuté a/alebo zobrazené z Google Play. Aurora Store funguje presne ako dvere alebo prehliadač, vďaka čomu sa môžete prihlásiť do svojho účtu Google Play a nájsť aplikácie zo služby Google Play.
-\n
-\nUpozorňujeme, že Aurora nemá žiadne schválenie, sponzorstvo ani autorizáciu od spoločnosti Google, Google Play, žiadnych aplikácií stiahnutých cez Aurora ani žiadnych vývojárov aplikácií; ani Aurora Store s nimi nemá žiadne spojenie, spoluprácu alebo spojenie.</string>
+    <string name="about_aurora_store_summary">Aurora vám umožňuje vyhľadávať a sťahovať aplikácie z oficiálneho obchodu Google Play. Môžete skontrolovať popisy aplikácií, snímky obrazovky, aktualizácie, komentáre ostatných používateľov a stiahnuť si súbor APK priamo zo služby Google Play do svojho zariadenia. Ak chcete používať Aurora Store, musíte mať účet Google Play a prihlásiť sa do svojho účtu Google Play pri prvom otvorení a konfigurácii obchodu Aurora. \n \nNa rozdiel od tradičného obchodu s aplikáciami Aurora Store nevlastní, nelicencuje ani nedistribuuje žiadne aplikácie. Všetky aplikácie, popisy aplikácií, snímky obrazovky a ďalší obsah v obchode Aurora sú priamo prístupné, stiahnuté a/alebo zobrazené z Google Play. Aurora Store funguje presne ako dvere alebo prehliadač, vďaka čomu sa môžete prihlásiť do svojho účtu Google Play a nájsť aplikácie zo služby Google Play. \n \nUpozorňujeme, že Aurora nemá žiadne schválenie, sponzorstvo ani autorizáciu od spoločnosti Google, Google Play, žiadnych aplikácií stiahnutých cez Aurora ani žiadnych vývojárov aplikácií; ani Aurora Store s nimi nemá žiadne spojenie, spoluprácu alebo spojenie.</string>
     <string name="export_app_summary_success">Balík aplikácie bol úspešne exportovaný</string>
     <string name="details_no_favourites">Nenašli sa žiadne obľúbené aplikácie</string>
     <string name="details_no_dependencies">Žiadne závislosti</string>
@@ -268,12 +257,12 @@
     <string name="about_aurora_store_subtitle">Zistite viac o obchode Aurora</string>
     <string name="add">Pridať</string>
     <string name="add_dispenser_hint">Adresa URL dávkovača</string>
-    <string name="remove_dispenser_title">Odstrániť dávkovač</string>
+    <string name="remove_dispenser_title">Odstrániť dávkovač?</string>
     <string name="remove">Odstrániť</string>
     <string name="toast_fav_import_failed">Nepodarilo sa importovať obľúbené položky!</string>
     <string name="remove_dispenser_summary">Chcete odstrániť dávkovač \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="session_good">Wau! Všetko funguje.</string>
-    <string name="pref_updates_auto">Automaticky aktualizovať aplikácie</string>
+    <string name="pref_updates_auto">Automatické aktualizácie</string>
     <string name="manual_download_hint">Zadajte kód verzie, ktorú chcete stiahnuť</string>
     <string name="action_ignore">Ignorovať</string>
     <string name="action_install">Inštalovať</string>
@@ -401,7 +390,6 @@
     <string name="made_with_love">Vyrobené s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
     <string name="default_spoof">Predvolené</string>
     <string name="available_spoof">K dispozícií</string>
-    <string name="toast_permission_esm_restart">Možno budete musieť reštartovať aplikáciu, aby odrážal grant.</string>
     <string name="filter_latest">Najnovšia</string>
     <string name="toast_black_import_failed">Nepodarilo sa importovať čiernu listinu!</string>
     <string name="status_verifying">Overujem</string>
@@ -427,4 +415,62 @@
     <string name="plexus_progress">Kontrolujem kompatibilitu…</string>
     <string name="no_apps_available">Nie sú k dispozícii žiadne aplikácie</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> nainštalované aplikácie</string>
+    <string name="pref_network_microg_login_title">Na prihlásenie do účtov použite microG</string>
+    <string name="pref_network_microg_login_desc">Pri prihlasovaní do účtov Google sa overte pomocou microG, čím si zjednodušíte prihlasovací proces</string>
+    <string name="disable">Zakázať</string>
+    <string name="toast_proxy_disabled">Proxy bol úspešne deaktivovaný</string>
+    <string name="pref_network_proxy_desc">Zobrazenie a správa konfigurácie servera proxy</string>
+    <string name="pref_updates_restrictions_metered">Len v nemeraných sieťach</string>
+    <string name="pref_updates_restrictions_idle">Keď je zariadenie nečinné</string>
+    <string name="pref_updates_restrictions_desc">Nakonfigurovať obmedzenia zariadenia pre automatické aktualizácie</string>
+    <string name="set">Nastaviť</string>
+    <string name="pref_updates_restrictions_title">Obmedzenia automatických aktualizácií</string>
+    <string name="pref_updates_restrictions_battery">Keď batéria nie je vybitá</string>
+    <string name="verification_failed">Overenie stiahnutých súborov zlyhalo</string>
+    <string name="app_info_downloads">Stiahnuté</string>
+    <string name="app_info_updated_on">Naposledy aktualizované</string>
+    <string name="app_info_min_android">Minimálne Android verzia</string>
+    <string name="app_info_target_android">Cieľová úroveň rozhrania API</string>
+    <string name="pref_common_advanced">Rozšírené</string>
+    <string name="pref_updates_app_source">Zdroj aplikácie</string>
+    <string name="action_install_microG">Inštalovať balík microG</string>
+    <string name="details_data_safety_collect">Údaje, ktoré môže táto aplikácia zhromažďovať</string>
+    <string name="details_data_safety_collect_none">Vývojár tvrdí, že táto aplikácia nezhromažďuje údaje používateľa.</string>
+    <string name="details_data_safety_shared">Údaje, ktoré môže táto aplikácia zdieľať</string>
+    <string name="details_data_safety_share_none">Vývojár tvrdí, že táto aplikácia nezdieľa údaje používateľov s inými spoločnosťami alebo organizáciami.</string>
+    <string name="exodus_tracker_desc">Táto verzia aplikácie môže stále obsahovať ďalšie sledovacie zariadenia, ktoré ešte nie sú v databáze Exodus Privacy.</string>
+    <string name="microg_license_agreement">Prečítajte si licenciu a zmluvu microG</string>
+    <string name="microg_privacy_policy">Prečítajte si zásady ochrany osobných údajov spoločnosti microG</string>
+    <string name="microg_website">Navštívte webovú stránku projektu microG</string>
+    <string name="no_description">Fragment s podrobnosťami o aplikácii</string>
+    <string name="permissions_requested"><xliff:g id="počet_oprávnení">%1$d</xliff:g> oprávnení</string>
+    <string name="details_more_info">Viac informácií</string>
+    <string name="details_more_target_api">Ciele</string>
+    <string name="details_more_package_name">Názov balíka</string>
+    <string name="details_more_content_rating">Hodnotenie obsahu</string>
+    <string name="select_app_for_details">Vyberte aplikáciu pre viac informácií</string>
+    <string name="action_filter_no_ads">Žiadne reklamy</string>
+    <string name="action_filter_no_gms">Žiadne Play služby</string>
+    <string name="onboarding_title_gsf">Kompatibilita aplikácie</string>
+    <string name="onboarding_title_gsf_desc">Chýbajúce závislosti</string>
+    <string name="onboarding_gms_agreement">Prečítal som si a súhlasím s podmienkami používania služby microG a so zásadami ochrany osobných údajov</string>
+    <string name="onboarding_gms_missing">Vo vašom zariadení sme nenašli službu Google Play, viaceré populárne aplikácie ju teraz vyžadujú na správne fungovanie!</string>
+    <string name="exodus_report_trackers"><xliff:g id="počet_sledovačov">%1$d</xliff:g> známy/e sledovač/e nájdené v <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
+    <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
+    <string name="preparing_to_install">Príprava na inštaláciu</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Potrebné povolenie</item>
+        <item quantity="few">Potrebných povolení</item>
+        <item quantity="many">Potrebné povolenia</item>
+        <item quantity="other">Potrebné povolenia</item>
+    </plurals>
+    <string name="installer_microg_misconfigured">MIcroG inštalátor zlyhal pri inštalácií aplikácie, pravdepodobne z dôvodu miskonfigurácie.</string>
+    <string name="pref_install_mode_microg">MicroG inštalátor</string>
+    <string name="microg_installer_subtitle">Vyžaduje doplnkovú MicroG aplikáciu na správne fungovanie</string>
+    <string name="microg_installer_desc">Pomáha obísť kontrolu App Integrity (iba inštalátor)</string>
+    <string name="loading">Prebieha načítanie</string>
+    <string name="page">Strana <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="force_restart_snack">Reštartovať pre uplatnenie zmien?</string>
+    <string name="action_skip">Preskočiť</string>
 </resources>

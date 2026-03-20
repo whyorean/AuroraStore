@@ -28,22 +28,22 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.aurora.gplayapi.data.models.App
+import com.aurora.extensions.TAG
+import com.aurora.extensions.navigate
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.MobileNavigationDirections
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.providers.PermissionProvider
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
-    private val TAG = BaseFragment::class.java.simpleName
-
     lateinit var permissionProvider: PermissionProvider
 
-    private var _binding: ViewBindingType? = null
-    protected val binding get() = _binding!!
+    protected open var viewBindingType: ViewBindingType? = null
+    protected val binding get() = viewBindingType!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,18 +52,19 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val type =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<ViewBindingType>
+        val type = (javaClass.genericSuperclass as ParameterizedType)
+            .actualTypeArguments[0] as Class<ViewBindingType>
         val method = type.getMethod(
             "inflate",
             LayoutInflater::class.java,
             ViewGroup::class.java,
             Boolean::class.java
         )
-        _binding = method.invoke(null, inflater, container, false) as ViewBindingType
+        viewBindingType = method.invoke(null, inflater, container, false) as ViewBindingType
 
         return binding.root
     }
@@ -75,13 +76,13 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
 
     override fun onDestroyView() {
         cleanupRecyclerViews(findAllRecyclerViews(requireView()))
-        _binding = null
+        viewBindingType = null
         super.onDestroyView()
     }
 
-    fun openDetailsFragment(packageName: String, app: App? = null) {
-        findNavController().navigate(
-            MobileNavigationDirections.actionGlobalAppDetailsFragment(packageName, app)
+    fun openDetailsFragment(packageName: String) {
+        requireContext().navigate(
+            Screen.AppDetails(packageName)
         )
     }
 
@@ -118,17 +119,12 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
         )
     }
 
-    fun openScreenshotFragment(app: App, position: Int) {
-        findNavController().navigate(
-            MobileNavigationDirections.actionGlobalScreenshotFragment(
-                position,
-                app.screenshots.toTypedArray()
-            )
-        )
-    }
-
     fun openAppMenuSheet(app: MinimalApp) {
         findNavController().navigate(MobileNavigationDirections.actionGlobalAppMenuSheet(app))
+    }
+
+    fun openGMSWarningFragment() {
+        // TODO: FIX ME
     }
 
     private fun cleanupRecyclerViews(recyclerViews: List<EpoxyRecyclerView>) {

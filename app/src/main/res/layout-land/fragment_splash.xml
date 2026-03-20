@@ -110,7 +110,6 @@
                 android:id="@+id/btn_anonymous"
                 android:layout_width="@dimen/width_button"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 app:btnStateIcon="@drawable/ic_anonymous"
                 app:btnStateText="@string/account_anonymous" />
         </LinearLayout>

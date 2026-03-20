@@ -25,12 +25,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
+import android.content.pm.PackageInstaller.EXTRA_SESSION_ID
 import android.content.pm.PackageInstaller.PACKAGE_SOURCE_STORE
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.os.Process
 import android.util.Log
 import androidx.core.app.PendingIntentCompat
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isNAndAbove
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -62,8 +64,6 @@ class SessionInstaller @Inject constructor(
     @ApplicationContext private val context: Context
 ) : InstallerBase(context) {
 
-    private val TAG = SessionInstaller::class.java.simpleName
-
     val currentSessionId: Int?
         get() = enqueuedSessions.firstOrNull()?.last()?.sessionId
 
@@ -85,31 +85,40 @@ class SessionInstaller @Inject constructor(
 
             if (packageName != null && progress > 0.0) {
                 AuroraApp.events.send(
-                    InstallerEvent.Installing(packageName).apply {
-                        this.progress = (progress * 100).toInt()
-                    }
+                    InstallerEvent.Installing(
+                        packageName = packageName,
+                        progress = progress
+                    )
                 )
             }
         }
 
         override fun onFinished(sessionId: Int, success: Boolean) {
-            enqueuedSessions.find { set -> set.any { it.sessionId == sessionId } }
-                ?.let { sessionSet ->
-                    sessionSet.remove(sessionSet.first { it.sessionId == sessionId })
+            val sessionSet =
+                enqueuedSessions.find { it.any { session -> session.sessionId == sessionId } }
+                    ?: return
 
-                    // If this was a shared lib, proceed installing other libs or actual package
-                    if (sessionSet.isNotEmpty() && success) {
-                        commitInstall(sessionSet.first()); return
-                    } else {
-                        enqueuedSessions.remove(sessionSet)
-                    }
-                }
+            // Find session safely, if not found return
+            val sessionToRemove = sessionSet.firstOrNull { it.sessionId == sessionId } ?: return
 
-            if (enqueuedSessions.isNotEmpty()) {
-                enqueuedSessions.firstOrNull()?.let { sessionSet ->
-                    commitInstall(sessionSet.first())
+            // Remove the session safely
+            sessionSet.remove(sessionToRemove)
+
+            if (success && sessionSet.isNotEmpty()) {
+                commitInstall(sessionSet.first()) // Proceed with next session (shared lib), if any
+                return
+            }
+
+            // Manually remove empty sets using iterator (for API 21 support)
+            val iterator = enqueuedSessions.iterator()
+            while (iterator.hasNext()) {
+                if (iterator.next().isEmpty()) {
+                    iterator.remove()
                 }
             }
+
+            // Proceed with the next available session
+            enqueuedSessions.firstOrNull()?.firstOrNull()?.let(::commitInstall)
         }
     }
 
@@ -175,7 +184,7 @@ class SessionInstaller @Inject constructor(
 
     private fun stageInstall(
         packageName: String,
-        versionCode: Int,
+        versionCode: Long,
         sharedLibPkgName: String = ""
     ): Int? {
         val resolvedPackageName = sharedLibPkgName.ifBlank { packageName }
@@ -207,8 +216,8 @@ class SessionInstaller @Inject constructor(
         }
     }
 
-    private fun buildSessionParams(packageName: String): SessionParams {
-        return SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
+    private fun buildSessionParams(packageName: String): SessionParams =
+        SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
             setAppPackageName(packageName)
             setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
             if (isNAndAbove) {
@@ -229,19 +238,42 @@ class SessionInstaller @Inject constructor(
                 setApplicationEnabledSettingPersistent()
             }
         }
-    }
 
     private fun commitInstall(sessionInfo: SessionInfo) {
-        Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
-        val session = packageInstaller.openSession(sessionInfo.sessionId)
-        session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
-        session.close()
+        try {
+            Log.i(TAG, "Starting install session for ${sessionInfo.packageName}")
+
+            val existingSessionInfo = packageInstaller.getSessionInfo(sessionInfo.sessionId)
+            if (existingSessionInfo == null) {
+                Log.e(TAG, "Session ${sessionInfo.sessionId} is no longer valid.")
+                return removeFromInstallQueue(sessionInfo.packageName)
+            }
+
+            commitSession(sessionInfo)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error committing session: ${e.message}")
+            removeFromInstallQueue(sessionInfo.packageName)
+            postError(sessionInfo.packageName, e.localizedMessage, e.stackTraceToString())
+        }
+    }
+
+    private fun commitSession(sessionInfo: SessionInfo) {
+        try {
+            val session = packageInstaller.openSession(sessionInfo.sessionId)
+            session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
+            session.close()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error committing session: ${e.message}")
+        } finally {
+            removeFromInstallQueue(sessionInfo.packageName)
+        }
     }
 
     private fun getCallBackIntent(sessionInfo: SessionInfo): PendingIntent? {
         val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
             action = ACTION_INSTALL_STATUS
             setPackage(context.packageName)
+            putExtra(EXTRA_SESSION_ID, sessionInfo.sessionId)
             putExtra(EXTRA_PACKAGE_NAME, sessionInfo.packageName)
             putExtra(EXTRA_VERSION_CODE, sessionInfo.versionCode)
             putExtra(EXTRA_DISPLAY_NAME, sessionInfo.displayName)
@@ -255,5 +287,23 @@ class SessionInstaller @Inject constructor(
             PendingIntent.FLAG_UPDATE_CURRENT,
             true
         )
+    }
+
+    enum class ServiceResultCode(val code: Int, val reason: String) {
+        SUCCESS(0, "Request successful"),
+        SERVICE_VERSION_UPDATE_REQUIRED(2, "Interface depends on a higher version"),
+        SERVICE_INVALID(4, "Service is invalid"),
+        METHOD_UNSUPPORTED(5, "Interface is not supported"),
+        RESOLUTION_REQUIRED(6, "Needs to be resolved by opening PendingIntent"),
+        NETWORK_ERROR(7, "Network exception, unable to complete interface request"),
+        INTERNAL_ERROR(8, "Internal code error, incorrect parameter transmission in scenario"),
+        TIMEOUT(10, "Interface access timeout return"),
+        DEAD_CLIENT(12, "Current client is unavailable"),
+        RESPONSE_ERROR(13, "Server returns abnormal response"),
+        PROTOCOL_ERROR(15, "Not signed Huawei App Market agreement");
+
+        companion object {
+            fun fromCode(code: Int): ServiceResultCode? = entries.find { it.code == code }
+        }
     }
 }

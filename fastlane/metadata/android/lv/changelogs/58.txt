@@ -1,0 +1,4 @@
+• Novērsta pieteikšanās nepilnība, kas saistīta ar Google kontiem
+• Pārvietošanās izslīdošās izvēlnes vienumi pārvietoti atsevišķā dialoglodziņā
+• Veikta pārslēgšanās uz NavigationRail ierīcēm ar lielu ekrānu
+• Iespēja izgūt lejupielādes ārējā atrašanās vietā

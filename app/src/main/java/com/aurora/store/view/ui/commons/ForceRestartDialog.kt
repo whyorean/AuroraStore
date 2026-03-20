@@ -9,17 +9,16 @@ import com.jakewharton.processphoenix.ProcessPhoenix
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ForceRestartDialog: DialogFragment() {
+class ForceRestartDialog : DialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return MaterialAlertDialogBuilder(requireContext())
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
+        MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.force_restart_title)
             .setMessage(R.string.force_restart_summary)
             .setPositiveButton(getString(R.string.action_restart)) { _, _ ->
                 ProcessPhoenix.triggerRebirth(requireContext())
             }
             .create()
-    }
 
     override fun onResume() {
         super.onResume()

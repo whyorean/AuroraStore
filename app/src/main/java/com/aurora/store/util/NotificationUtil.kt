@@ -10,22 +10,24 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
-import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
-import androidx.work.WorkManager
 import com.aurora.Constants
 import com.aurora.store.MainActivity
 import com.aurora.store.R
 import com.aurora.store.data.activity.InstallActivity
+import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.receiver.DownloadCancelReceiver
 import com.aurora.store.data.room.download.Download
+import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.data.room.update.Update
 import java.util.UUID
-import com.aurora.store.data.room.download.Download as AuroraDownload
+import kotlin.math.absoluteValue
 
 object NotificationUtil {
 
@@ -76,27 +78,39 @@ object NotificationUtil {
         }
     }
 
-    fun getDownloadNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
+    fun getDownloadNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
             .setSmallIcon(android.R.drawable.stat_sys_download)
             .setContentTitle(context.getString(R.string.app_updater_service_notif_title))
             .setContentText(context.getString(R.string.app_updater_service_notif_text))
             .setOngoing(true)
             .build()
-    }
 
     fun getDownloadNotification(
         context: Context,
         download: AuroraDownload,
-        workID: UUID,
-        largeIcon: Bitmap? = null
+        largeIcon: Bitmap? = null,
+        message: String? = null
     ): Notification {
         val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
+        builder.setSmallIcon(R.drawable.ic_notification_outlined)
         builder.setContentTitle(download.displayName)
-        builder.setContentIntent(getContentIntentForDownloads(context))
+        builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
         builder.setLargeIcon(largeIcon)
 
-        when (download.downloadStatus) {
+        val cancelIntent = Intent(context, DownloadCancelReceiver::class.java).apply {
+            putExtra(DownloadHelper.PACKAGE_NAME, download.packageName)
+        }
+
+        val pendingCancelIntent = PendingIntentCompat.getBroadcast(
+            context,
+            download.packageName.hashCode().absoluteValue,
+            cancelIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            false
+        )
+
+        when (download.status) {
             DownloadStatus.CANCELLED -> {
                 builder.setSmallIcon(R.drawable.ic_download_cancel)
                 builder.setContentText(context.getString(R.string.download_canceled))
@@ -106,7 +120,7 @@ object NotificationUtil {
 
             DownloadStatus.FAILED -> {
                 builder.setSmallIcon(R.drawable.ic_download_fail)
-                builder.setContentText(context.getString(R.string.download_failed))
+                builder.setContentText(message ?: context.getString(R.string.download_failed))
                 builder.color = Color.RED
                 builder.setCategory(Notification.CATEGORY_ERROR)
             }
@@ -119,7 +133,12 @@ object NotificationUtil {
                 builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
 
                 // Show install action if app cannot be silently installed
-                if (!AppInstaller.canInstallSilently(context, download.packageName, download.targetSdk)) {
+                if (!AppInstaller.canInstallSilently(
+                        context,
+                        download.packageName,
+                        download.targetSdk
+                    )
+                ) {
                     builder.addAction(
                         NotificationCompat.Action.Builder(
                             R.drawable.ic_install,
@@ -133,12 +152,12 @@ object NotificationUtil {
             DownloadStatus.DOWNLOADING, DownloadStatus.QUEUED -> {
                 builder.setSmallIcon(android.R.drawable.stat_sys_download)
                 builder.setContentText(
-                    if (download.progress == 0) {
+                    if (download.progress <= 0) {
                         context.getString(R.string.download_queued)
                     } else {
                         context.getString(
                             R.string.download_progress,
-                            download.downloadedFiles,
+                            download.downloadedFiles + 1,
                             download.totalFiles,
                             CommonUtil.humanReadableByteSpeed(download.speed, true)
                         )
@@ -146,13 +165,13 @@ object NotificationUtil {
                 )
                 builder.setOngoing(true)
                 builder.setCategory(Notification.CATEGORY_PROGRESS)
-                builder.setProgress(100, download.progress, download.progress == 0)
+                builder.setProgress(100, download.progress, download.progress <= 0)
                 builder.foregroundServiceBehavior = NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
                 builder.addAction(
                     NotificationCompat.Action.Builder(
                         R.drawable.ic_download_cancel,
                         context.getString(R.string.action_cancel),
-                        WorkManager.getInstance(context).createCancelPendingIntent(workID)
+                        pendingCancelIntent
                     ).build()
                 )
             }
@@ -166,59 +185,59 @@ object NotificationUtil {
         context: Context,
         displayName: String,
         packageName: String
-    ): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
-            .setSmallIcon(R.drawable.ic_install)
-            .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
-            .setContentTitle(displayName)
-            .setContentText(context.getString(R.string.installer_status_success))
-            .setContentIntent(getContentIntentForDetails(context, packageName))
-            .build()
-    }
+    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
+        .setSmallIcon(R.drawable.ic_install)
+        .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
+        .setContentTitle(displayName)
+        .setContentText(context.getString(R.string.installer_status_success))
+        .setContentIntent(getContentIntentForDetails(context, packageName))
+        .build()
 
     fun getInstallerStatusNotification(
         context: Context,
         packageName: String,
         displayName: String,
         content: String?
-    ): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
-            .setSmallIcon(R.drawable.ic_install)
-            .setContentTitle(displayName)
-            .setContentText(content)
-            .setContentIntent(getContentIntentForDetails(context, packageName))
-            .build()
-    }
+    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
+        .setSmallIcon(R.drawable.ic_install)
+        .setContentTitle(displayName)
+        .setContentText(content)
+        .setContentIntent(getContentIntentForDetails(context, packageName))
+        .build()
 
-    fun getUpdateNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
+    fun getUpdateNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_updates)
             .setContentTitle(context.getString(R.string.checking_updates))
             .setOngoing(true)
             .build()
-    }
 
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
+        val arguments = Bundle().apply {
+            putInt("destinationId", R.id.updatesFragment)
+        }
+
         val contentIntent = NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("destinationId" to R.id.updatesFragment))
+            .setArguments(arguments)
             .createPendingIntent()
 
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_updates)
             .setContentTitle(
-                if (updatesList.size == 1)
+                if (updatesList.size == 1) {
                     context.getString(
                         R.string.notification_updates_available_1,
                         updatesList.size
                     )
-                else
+                } else {
                     context.getString(
                         R.string.notification_updates_available,
                         updatesList.size
                     )
+                }
             )
             .setContentText(
                 when (updatesList.size) {
@@ -260,22 +279,20 @@ object NotificationUtil {
             .setContentIntent(contentIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setAutoCancel(true)
             .build()
     }
 
-    fun getExportNotification(context: Context): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
+    fun getExportNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
             .setSmallIcon(R.drawable.ic_file_copy)
             .setContentTitle(context.getString(R.string.export_app_title))
             .setContentText(context.getString(R.string.export_app_summary))
             .setOngoing(true)
             .build()
-    }
 
-    fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification {
-        return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
+    fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
             .setSmallIcon(R.drawable.ic_account)
             .setContentTitle(context.getString(R.string.authentication_required_title))
             .setContentText(context.getString(R.string.authentication_required_unarchive))
@@ -284,7 +301,6 @@ object NotificationUtil {
             .setCategory(NotificationCompat.CATEGORY_ERROR)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
-    }
 
     fun getExportStatusNotification(
         context: Context,
@@ -344,28 +360,26 @@ object NotificationUtil {
     }
 
     private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent {
+        val arguments = Bundle().apply {
+            putString("packageName", packageName)
+        }
         return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("packageName" to packageName))
+            .setArguments(arguments)
             .createPendingIntent()
     }
 
     private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
+        val arguments = Bundle().apply {
+            putString("packageName", packageName)
+        }
         return NavDeepLinkBuilder(context)
             .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.appDetailsFragment)
+            .setDestination(R.id.splashFragment)
             .setComponentName(MainActivity::class.java)
-            .setArguments(bundleOf("packageName" to packageName))
-            .createPendingIntent()
-    }
-
-    private fun getContentIntentForDownloads(context: Context): PendingIntent {
-        return NavDeepLinkBuilder(context)
-            .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.downloadFragment)
-            .setComponentName(MainActivity::class.java)
+            .setArguments(arguments)
             .createPendingIntent()
     }
 

@@ -1,0 +1,4 @@
+• Cibler Android 16
+• Corriger un bogue d’ouverture des liens vers les applis
+• Permettre d’ouvrir la page détaillée de l'appli à partir des renseignements de l'appli
+• Mise à jour des traductions

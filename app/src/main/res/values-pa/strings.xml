@@ -35,7 +35,6 @@
     <string name="title_download_manager">ਡਾਊਨਲੋਡਸ</string>
     <string name="title_device">ਡਿਵਾਈਸ</string>
     <string name="title_blacklist_manager">ਬਲੈਕ ਲਿਸਟ ਮੈਨੇਜਰ</string>
-    <string name="title_apps_sale">ਸੇਲ ਵਾਲੇ ਐਪਸ ਦੀ ਸੂਚੀ</string>
     <string name="title_apps_library">ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚ ਐਪਸ</string>
     <string name="title_apps_games">ਮੇਰੇ ਐਪਸ ਤੇ ਗੇਮਜ਼</string>
     <string name="title_apps">ਐਪਸ</string>
@@ -56,7 +55,6 @@
     <string name="purchase_unsupported">ਐਪ ਸਪੋਰਟਡ ਨਹੀਂ</string>
     <string name="purchase_invalid">ਇਹ ਐਪ ਅਜੇ ਤੁਹਾਡੇ ਵਲੋਂ ਖਰੀਦਿਆ ਨਹੀਂ ਗਿਆ</string>
     <string name="purchase_failed">ਡਾਊਨਲੋਡ ਫੇਲ੍ਹ</string>
-    <string name="pref_ui_similar_apps_desc">ਐਪ ਜਾਣਕਾਰੀ ਵਾਲੇ ਪੇਜ ਤੇ ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ ਵਾਲਾ ਖ਼ਾਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_similar_apps">ਇਸੇ ਸ਼੍ਰੇਣੀ ਦੇ ਕੁੱਝ ਹੋਰ ਐਪਸ</string>
     <string name="pref_ui_no_for_you_desc">ਖਾਸ ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ ਵਾਲਾ ਪੰਨਾ ਵਿਖਾਓ</string>
     <string name="pref_ui_no_for_you">ਤੁਹਾਡੇ ਲਈ ਚੁਣੇ ਹੋਏ ਐਪਸ</string>
@@ -290,15 +288,11 @@
     <string name="pref_aurora_only">ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਐਪਸ</string>
     <string name="pref_aurora_only_desc">ਅੱਪਡੇਟਸ ਅਤੇ ਇੰਸਟਾਲ ਐਪ ਟੈਬ ਵਿੱਚ ਸਿਰਫ਼ ਔਰੋਰਾ ਸਟੋਰ ਇੰਸਟਾਲ ਐਪਾਂ ਵਿਖਾਓ</string>
     <string name="title_app_settings">ਐਪ ਸੈਟਿੰਗਾਂ</string>
-    <string name="title_apps_sale_provider">ਪ੍ਰੋਵਾਈਡਰ - bestappsales.com</string>
     <string name="pref_updates_check_frequency">ਆਟੋਮੈਟਿਕ ਅੱਪਡੇਟ ਆਵ੍ਰਿਤੀ</string>
-    <string name="pref_network_proxy_enable">ਪ੍ਰੌਕਸੀ ਚਾਲੂ ਕਰੋ</string>
     <string name="pref_network_proxy_url">ਪ੍ਰੌਕਸੀ URL</string>
-    <string name="pref_network_proxy_title">ਪ੍ਰੌਕਸੀ</string>
     <string name="toast_proxy_invalid">ਅਵੈਧ ਪ੍ਰੌਕਸੀ URL, ਫਾਰਮੈਟ ਦੀ ਜਾਂਚ ਕਰੋ!</string>
     <string name="toast_proxy_success">ਪ੍ਰੌਕਸੀ ਸਫਲਤਾਪੂਰਵਕ ਸੈੱਟ ਕੀਤੀ ਗਈ</string>
     <string name="toast_proxy_failed">ਪ੍ਰੌਕਸੀ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
-    <string name="pref_network_proxy_enable_desc">ਐਪ ਤੋਂ ਸਾਰੇ ਟ੍ਰੈਫਿਕ ਨੂੰ ਪ੍ਰੌਕਸੀ ਰਾਹੀਂ ਜਾਣ ਦਿਓ</string>
     <string name="pref_vending_version_device">ਪੂਰਵ-ਨਿਰਧਾਰਤ (ਡਿਵਾਈਸ ਸੰਰਚਨਾ ਤੋਂ)</string>
     <string name="pref_vending_version_title">ਗੂਗਲ ਪਲੇ ਸੰਸਕਰਣ</string>
     <string name="onboarding_permission_doze">ਬੈਕਗ੍ਰਾਊਂਡ ਡਾਊਨਲੋਡ</string>
@@ -344,11 +338,7 @@
     <string name="session_login">ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ Google Play ਖਾਤੇ ਵਿੱਚ ਲੌਗ ਇਨ ਕਰੋ</string>
     <string name="toast_app_unavailable">ਐਪ ਤੁਹਾਡੇ ਡਿਵਾਈਸ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੈ</string>
     <string name="about_aurora_store_subtitle">ਔਰੋਰਾ ਸਟੋਰ ਬਾਰੇ ਹੋਰ ਜਾਣੋ</string>
-    <string name="about_aurora_store_summary">ਔਰੋਰਾ ਸਟੋਰ ਤੁਹਾਨੂੰ ਅਧਿਕਾਰਤ ਗੂਗਲ ਪਲੇਅ ਸਟੋਰ ਤੋਂ ਐਪਸ ਨੂੰ ਖੋਜਣ ਅਤੇ ਡਾਊਨਲੋਡ ਕਰਨ ਦੇ ਯੋਗ ਬਣਾਉਂਦਾ ਹੈ। ਤੁਸੀਂ ਐਪ ਦੇ ਵਰਣਨ, ਸਕਰੀਨਸ਼ਾਟਸ, ਅੱਪਡੇਟਾਂ, ਹੋਰ ਉਪਭੋਗਤਾਵਾਂ ਦੀਆਂ ਟਿੱਪਣੀਆਂ ਦੀ ਜਾਂਚ ਕਰ ਸਕਦੇ ਹੋ, ਅਤੇ ਏਪੀਕੇ ਨੂੰ ਸਿੱਧੇ Google Play ਤੋਂ ਆਪਣੀ ਡਿਵਾਈਸ \'ਤੇ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦੇ ਹੋ। Aurora ਸਟੋਰ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ, ਤੁਹਾਡੇ ਕੋਲ ਇੱਕ Google Play ਖਾਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ, ਅਤੇ ਜਦੋਂ ਤੁਸੀਂ ਪਹਿਲੀ ਵਾਰ Aurora ਸਟੋਰ ਖੋਲ੍ਹਦੇ ਅਤੇ ਸੰਰਚਿਤ ਕਰਦੇ ਹੋ ਤਾਂ ਆਪਣੇ Google Play ਖਾਤੇ ਵਿੱਚ ਲੌਗ ਇਨ ਕਰੋ।
-\n
-\nਪਰੰਪਰਾਗਤ ਐਪ ਸਟੋਰ ਦੇ ਉਲਟ, Aurora ਸਟੋਰ ਕਿਸੇ ਵੀ ਐਪ ਦਾ ਮਾਲਕ ਨਹੀਂ, ਲਾਇਸੰਸ ਜਾਂ ਐਪਾਂ ਵੰਡਦਾ ਨਹੀਂ ਹੈ। Aurora ਸਟੋਰ ਵਿੱਚ ਸਾਰੀਆਂ ਐਪਾਂ, ਐਪ ਵਰਣਨ, ਸਕ੍ਰੀਨਸ਼ਾਟ ਅਤੇ ਹੋਰ ਸਮੱਗਰੀ ਸਿੱਧੇ ਤੌਰ \'ਤੇ Google Play ਤੋਂ ਐਕਸੈਸ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਡਾਊਨਲੋਡ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਅਤੇ/ਜਾਂ ਪ੍ਰਦਰਸ਼ਿਤ ਹੁੰਦੀ ਹੈ। Aurora Store ਬਿਲਕੁਲ ਦਰਵਾਜ਼ੇ ਜਾਂ ਬ੍ਰਾਊਜ਼ਰ ਵਾਂਗ ਕੰਮ ਕਰਦਾ ਹੈ, ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਆਪਣੇ Google Play ਖਾਤੇ ਵਿੱਚ ਲੌਗਇਨ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ Google Play ਤੋਂ ਐਪਸ ਲੱਭ ਸਕਦੇ ਹੋ।
-\n
-\nਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ ਕਿ Aurora Store ਕੋਲ Google, Google Play, Aurora Store ਜਾਂ ਕਿਸੇ ਵੀ ਐਪ ਡਿਵੈਲਪਰ ਦੁਆਰਾ ਡਾਊਨਲੋਡ ਕੀਤੇ ਗਏ ਕਿਸੇ ਵੀ ਐਪ ਤੋਂ ਕੋਈ ਪ੍ਰਵਾਨਗੀ, ਸਪਾਂਸਰਸ਼ਿਪ ਜਾਂ ਅਧਿਕਾਰ ਨਹੀਂ ਹੈ; ਨਾ ਹੀ Aurora ਸਟੋਰ ਦੀ ਉਹਨਾਂ ਨਾਲ ਕੋਈ ਮਾਨਤਾ, ਸਹਿਯੋਗ ਜਾਂ ਸਬੰਧ ਹੈ।</string>
+    <string name="about_aurora_store_summary">ਔਰੋਰਾ ਸਟੋਰ ਤੁਹਾਨੂੰ ਅਧਿਕਾਰਤ ਗੂਗਲ ਪਲੇਅ ਸਟੋਰ ਤੋਂ ਐਪਸ ਨੂੰ ਖੋਜਣ ਅਤੇ ਡਾਊਨਲੋਡ ਕਰਨ ਦੇ ਯੋਗ ਬਣਾਉਂਦਾ ਹੈ। ਤੁਸੀਂ ਐਪ ਦੇ ਵਰਣਨ, ਸਕਰੀਨਸ਼ਾਟਸ, ਅੱਪਡੇਟਾਂ, ਹੋਰ ਉਪਭੋਗਤਾਵਾਂ ਦੀਆਂ ਟਿੱਪਣੀਆਂ ਦੀ ਜਾਂਚ ਕਰ ਸਕਦੇ ਹੋ, ਅਤੇ ਏਪੀਕੇ ਨੂੰ ਸਿੱਧੇ Google Play ਤੋਂ ਆਪਣੀ ਡਿਵਾਈਸ \'ਤੇ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦੇ ਹੋ। Aurora ਸਟੋਰ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ, ਤੁਹਾਡੇ ਕੋਲ ਇੱਕ Google Play ਖਾਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ, ਅਤੇ ਜਦੋਂ ਤੁਸੀਂ ਪਹਿਲੀ ਵਾਰ Aurora ਸਟੋਰ ਖੋਲ੍ਹਦੇ ਅਤੇ ਸੰਰਚਿਤ ਕਰਦੇ ਹੋ ਤਾਂ ਆਪਣੇ Google Play ਖਾਤੇ ਵਿੱਚ ਲੌਗ ਇਨ ਕਰੋ। \n \nਪਰੰਪਰਾਗਤ ਐਪ ਸਟੋਰ ਦੇ ਉਲਟ, Aurora ਸਟੋਰ ਕਿਸੇ ਵੀ ਐਪ ਦਾ ਮਾਲਕ ਨਹੀਂ, ਲਾਇਸੰਸ ਜਾਂ ਐਪਾਂ ਵੰਡਦਾ ਨਹੀਂ ਹੈ। Aurora ਸਟੋਰ ਵਿੱਚ ਸਾਰੀਆਂ ਐਪਾਂ, ਐਪ ਵਰਣਨ, ਸਕ੍ਰੀਨਸ਼ਾਟ ਅਤੇ ਹੋਰ ਸਮੱਗਰੀ ਸਿੱਧੇ ਤੌਰ \'ਤੇ Google Play ਤੋਂ ਐਕਸੈਸ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਡਾਊਨਲੋਡ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਅਤੇ/ਜਾਂ ਪ੍ਰਦਰਸ਼ਿਤ ਹੁੰਦੀ ਹੈ। Aurora Store ਬਿਲਕੁਲ ਦਰਵਾਜ਼ੇ ਜਾਂ ਬ੍ਰਾਊਜ਼ਰ ਵਾਂਗ ਕੰਮ ਕਰਦਾ ਹੈ, ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਆਪਣੇ Google Play ਖਾਤੇ ਵਿੱਚ ਲੌਗਇਨ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ Google Play ਤੋਂ ਐਪਸ ਲੱਭ ਸਕਦੇ ਹੋ। \n \nਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ ਕਿ Aurora Store ਕੋਲ Google, Google Play, Aurora Store ਜਾਂ ਕਿਸੇ ਵੀ ਐਪ ਡਿਵੈਲਪਰ ਦੁਆਰਾ ਡਾਊਨਲੋਡ ਕੀਤੇ ਗਏ ਕਿਸੇ ਵੀ ਐਪ ਤੋਂ ਕੋਈ ਪ੍ਰਵਾਨਗੀ, ਸਪਾਂਸਰਸ਼ਿਪ ਜਾਂ ਅਧਿਕਾਰ ਨਹੀਂ ਹੈ; ਨਾ ਹੀ Aurora ਸਟੋਰ ਦੀ ਉਹਨਾਂ ਨਾਲ ਕੋਈ ਮਾਨਤਾ, ਸਹਿਯੋਗ ਜਾਂ ਸਬੰਧ ਹੈ।</string>
     <string name="remove_dispenser_summary">ਕੀ ਤੁਸੀਂ ਡਿਸਪੈਂਸਰ \"<xliff:g id="url">%1$s</xliff:g>\" ਨੂੰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?</string>
     <string name="pref_dispenser_summary">ਅਗਿਆਤ ਲੌਗਿਨ ਲਈ ਟੋਕਨ ਡਿਸਪੈਂਸਰ ਵੇਖੋ ਅਤੇ ਪ੍ਰਬੰਧਿਤ ਕਰੋ</string>
     <string name="no_dispensers_available">ਕੋਈ ਡਿਸਪੈਂਸਰ ਉਪਲਬਧ ਨਹੀਂ ਹੈ</string>
@@ -381,7 +371,6 @@
     <string name="details_data_safety_title">ਡਾਟਾ ਸੁਰੱਖਿਆ</string>
     <string name="details_data_safety_subtitle">ਡਿਵੈਲਪਰ ਦੁਆਰਾ ਘੋਸ਼ਿਤ ਡਾਟਾ ਗੋਪਨੀਯਤਾ ਅਤੇ ਸੁਰੱਖਿਆ ਅਮਲ</string>
     <string name="onboarding_permission_installer_legacy_desc">ਅਗਿਆਤ ਸਰੋਤਾਂ ਤੋਂ ਐਪਸ ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿਓ</string>
-    <string name="toast_permission_esm_caution">ਸਟੋਰੇਜ਼ ਐਕਸੈਸ ਫਰੇਮਵਰਕ ਵਿੱਚ ਬੱਗ ਦੇ ਕਾਰਨ ਤੁਹਾਨੂੰ ਅਨੁਮਤੀ ਨੂੰ ਦੁਬਾਰਾ ਦੇਣਾ ਪੈ ਸਕਦਾ ਹੈ</string>
     <string name="item_optional">ਵਿਕਲਪਿਕ</string>
     <string name="item_required">ਲੋੜੀਂਦੀ</string>
     <string name="check_updates">ਅੱਪਡੇਟ ਲਈ ਚੈੱਕ ਕਰੋ</string>

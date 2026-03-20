@@ -3,6 +3,7 @@
     android:id="@+id/textInputLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:hint="@string/pref_network_proxy_url_hint"
     android:paddingHorizontal="@dimen/padding_large"
     android:paddingTop="@dimen/padding_normal">
 
@@ -10,6 +11,7 @@
         android:id="@+id/textInputEditText"
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1" />
 </com.google.android.material.textfield.TextInputLayout>
-

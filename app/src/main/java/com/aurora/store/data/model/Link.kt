@@ -24,16 +24,12 @@ data class Link(
     var title: String,
     var subtitle: String,
     var url: String,
-    var icon: Int,
+    var icon: Int
 ) {
-    override fun equals(other: Any?): Boolean {
-        return when (other) {
-            is Link -> other.id == id
-            else -> false
-        }
+    override fun equals(other: Any?): Boolean = when (other) {
+        is Link -> other.id == id
+        else -> false
     }
 
-    override fun hashCode(): Int {
-        return id.hashCode()
-    }
+    override fun hashCode(): Int = id.hashCode()
 }

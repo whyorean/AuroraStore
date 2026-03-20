@@ -1,0 +1,4 @@
+• Javítva lett a hibás frissítési nyíl ikon RTL (jobbról balra írt) elrendezéseken
+• Javítva lettek a lapozási és IME (billentyűzet) problémák a keresésnél
+• Javítva egy hiba, amely felülírta a felhasználó által választott telepítőt
+• Frissítve a fordítások, az Exodus követőadatbázis és a Google gyökértanúsítványai

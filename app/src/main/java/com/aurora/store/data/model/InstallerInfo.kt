@@ -33,14 +33,10 @@ data class InstallerInfo(
     @StringRes val subtitle: Int,
     @StringRes val description: Int
 ) {
-    override fun equals(other: Any?): Boolean {
-        return when (other) {
-            is InstallerInfo -> other.id == id
-            else -> false
-        }
+    override fun equals(other: Any?): Boolean = when (other) {
+        is InstallerInfo -> other.id == id
+        else -> false
     }
 
-    override fun hashCode(): Int {
-        return id.hashCode()
-    }
+    override fun hashCode(): Int = id.hashCode()
 }

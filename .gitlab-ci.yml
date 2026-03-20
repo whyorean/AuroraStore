@@ -1,22 +1,35 @@
+#
+# SPDX-FileCopyrightText: 2021-2025 Aurora OSS
+# SPDX-FileCopyrightText: 2023-2025 The Calyx Institute
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
 variables:
   PACKAGE_VERSION: "continuous"
-  DEBUG_BINARY: "com.aurora.store.debug_${CI_COMMIT_SHORT_SHA}.apk"
-  DEBUG_BINARY_PATH: "app/build/outputs/apk/debug/app-debug.apk"
+  DEBUG_BINARY: "com.aurora.store.vanilla.debug_${CI_COMMIT_SHORT_SHA}.apk"
+  DEBUG_BINARY_PATH: "app/build/outputs/apk/vanilla/debug/app-vanilla-debug.apk"
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/debug/${PACKAGE_VERSION}"
 
 stages:
 - build
+- lint
 - upload
-- release
 
-assembleDebug:
+assembleVanillaDebug:
   stage: build
   image: theimpulson/gitlab-ci-android:latest
   script:
-    - './gradlew assembleDebug'
+    - './gradlew assembleVanillaDebug'
   artifacts:
     paths:
     - $DEBUG_BINARY_PATH
+    - 'app/schemas/com.aurora.store.data.room.AuroraDatabase/'
+
+lintChecks:
+  stage: lint
+  image: theimpulson/gitlab-ci-android:latest
+  script:
+    - './gradlew ktlintCheck'
 
 uploadDebug:
   stage: upload

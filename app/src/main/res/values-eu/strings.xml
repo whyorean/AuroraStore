@@ -26,7 +26,6 @@
     <string name="title_download_manager">Deskargak</string>
     <string name="title_device">Gailua</string>
     <string name="title_blacklist_manager">Zerrenda beltzaren gestorea</string>
-    <string name="title_apps_sale">Aplikazioen eskaintzak</string>
     <string name="title_apps_library">Aplikazioak bibliotekan</string>
     <string name="title_apps_games">Nire aplikazioak eta jokoak</string>
     <string name="title_apps">Aplikazioak</string>
@@ -57,7 +56,7 @@
     <string name="pref_install_delete_title">APK ezabatu deskargatu ondoren</string>
     <string name="pref_install_delete_summary">Besterik adierazi ezean, deskargatutako APK-ak ezabatuko dira instalazioa bukatutakoan</string>
     <string name="pref_filter_fdroid_title">F-Droid aplikazioak kanpoan utzi</string>
-    <string name="pref_filter_fdroid_summary">Ez egiaztatu F-Droid-etik deskargatutako edo instalatutako aplikazioen eguneraketak</string>
+    <string name="pref_filter_fdroid_summary">Ez egiaztatu F-Droid-etik instalatutako aplikazioen eguneraketak</string>
     <string name="onboarding_permission_installer_desc">Aurora Store-ri aplikazioak instalatzeko baimena eman</string>
     <string name="onboarding_permission_installer">Instalatzailearen baimena</string>
     <string name="onboarding_permission_esm">Kanpoko memoriaren gestorea</string>
@@ -85,7 +84,7 @@
     <string name="installer_status_failure_blocked">Instalazioa blokeatu da</string>
     <string name="installer_status_failure">Instalatzea huts egin du</string>
     <string name="installer_service_misconfigured">Konfiguratu Aurora zerbitzuak eta baimen guztiak onartu lehenik.</string>
-    <string name="installer_service_unavailable">Instalatu Aurora zerbitzuak 1.0.9 edo altuago, edo aldatu instalatzailea.</string>
+    <string name="installer_service_unavailable">Instalatu Aurora zerbitzuak 1.0.9 edo berriago, edo aldatu instalatzailea.</string>
     <string name="filter_review_two">Bi</string>
     <string name="filter_review_three">Hiru</string>
     <string name="filter_review_positive">Positiboak</string>
@@ -217,7 +216,6 @@
     <string name="toast_manual_unavailable">Eskatzen ari zaren bertsio kodea ez dago erabilgarri.</string>
     <string name="title_manual_download">Eskuzko deskargatzea</string>
     <string name="insecure_anonymous_apply">Ziurtatu berriro hasten duzula saioa eta berrabiarazi aplikazioa aldaketak aplikatzeko.</string>
-    <string name="pref_ui_similar_apps_desc">Erakutsi antzeko taldeak eta erlazionatuak aplikazioaren xehetasunen orrian</string>
     <string name="pref_ui_similar_apps">Antzeko aplikazioak eta erlazionatuak</string>
     <string name="pref_ui_no_for_you_desc">Erakutsi zuretzako orriak hasierako pantailan</string>
     <string name="pref_ui_no_for_you">Zuretzako orrialdeak</string>
@@ -263,33 +261,29 @@
     <string name="installer_shizuku_unavailable">Shizuku ez dago instalatuta edo egoki konfiguratuta.</string>
     <string name="pref_vending_version_device">Lehenetsia (gailuko konfiguraziotik)</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> eta <xliff:g id="apps_count">%4$d</xliff:g> gehiago</string>
-    <string name="pref_network_proxy_enable">Gaitu proxy-a</string>
     <string name="pref_vending_version_title">Google Play-eko bertsioa</string>
     <string name="pref_network_proxy_url">Proxy-aren URLa</string>
-    <string name="pref_aurora_only">Aurora Store-ko aplikazioak soilik</string>
-    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="pref_aurora_only">Iragazi aplikazioak beste iturri batzuetatik</string>
     <string name="pref_install_mode_shizuku">Shizuku instalatzailea</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> aplikazioaren bertsio berri bat eskuragarri dago</string>
     <string name="onboarding_permission_doze">Atzeko planoko deskargak</string>
     <string name="toast_proxy_invalid">Proxy-aren URL baliogabea, egiaztatu formatua!</string>
     <string name="title_search_suggestion">Bilaketarako iradokizuna</string>
-    <string name="pref_aurora_only_desc">Egiaztatu Aurora dendak instalatutako aplikazioen eguneraketak soilik</string>
+    <string name="pref_aurora_only_desc">Ez bilatu Aurora Store-tik kanpoko iturrietatik instalatutako aplikazioen eguneratzerik dagoen</string>
     <string name="toast_proxy_success">Proxy-a ezarri da</string>
     <string name="onboarding_permission_doze_desc">Onartu Aurora Store-ri aplikazioak atzeko planoan deskargatzea eta eguneratzea</string>
     <string name="title_app_settings">Aplikazioaren ezarpenak</string>
-    <string name="title_apps_sale_provider">Hornitzailea: bestappsales.com</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> eta <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="toast_proxy_failed">Ezin izan da ezarri proxy-a</string>
     <string name="title_search_results">Bilaketa-emaitzak</string>
     <string name="notification_channel_updates">Eguneratzeen jakinarazpenak</string>
-    <string name="pref_network_proxy_enable_desc">Onartu aplikazioko trafiko guztia proxy-tik joan dadin</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> eta <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> eguneratze eskuragarri</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="details_ratings_title_hint">Berrikusi izenburua</string>
     <string name="about_wiki_summary">Bilatu maiz egiten diren galderen erantzunak (F.A.Q.), arazoak konpontzeko urratsak eta beste batzuk</string>
-    <string name="login_rate_limited">Ai, tasa mugatua duzu</string>
+    <string name="login_rate_limited">Tasa mugatua duzu</string>
     <string name="bad_request">Barne akatsa! Mesedez, saiatu berriro zertxobait beranduago</string>
     <string name="google_play_store_desc">Google Play,gaur egun Google Play Store eta aurretik Android Market bezala ere ezaguna.</string>
     <string name="am_installer_subtitle">Iturburu irekiko paketeen kudeatzaile osatua</string>
@@ -307,7 +301,6 @@
     <string name="made_with_love">Indian egina honekin: <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="force_restart_summary">Aurora Store berrabiarazi behar da aldatu berri diren ezarpenak aplikatzeko</string>
     <string name="notification_channel_account">Kontuarekin lotutako jakinarazpena</string>
-    <string name="toast_permission_esm_caution">Baliteke baimena berriro eman behar izatea Storage Access Framework-eko akats bat dela eta</string>
     <string name="item_optional">Hautazkoa</string>
     <string name="app_language">Aplikazioaren hizkuntza</string>
     <string name="session_installer_desc">Gomendatua, eraikia eta Android bertsio guztiak onartzen dituena</string>
@@ -319,16 +312,15 @@
     <string name="server_unreachable">Zerbitzaria eskuraezina</string>
     <string name="pref_updates_check_frequency">Eguneratze automatikoen maiztasuna</string>
     <string name="failed_to_fetch_report">Ezin izan da eskuratu pribatutasun-txostena</string>
-    <string name="toast_permission_esm_restart">Baliteke aplikazioa berrabiarazi behar izatea baimenaren esleipena islatzeko.</string>
     <string name="item_required">Beharrezkoa</string>
-    <string name="pref_updates_check_frequency_desc">Konfiguratu auto-eguneratzeetarako eta auto-eguneratzeetarako tarteak, ordutan.</string>
+    <string name="pref_updates_check_frequency_desc">Konfiguratu eguneraketa automatikoentzako denbora-tarteak, ordutan.</string>
     <string name="session_installer_subtitle">APK bildu/zatituetarako saioan oinarritutako instalatzailea</string>
     <string name="root_installer_subtitle">Shell oinarritutako instalatzailea zeinak root baimenak darabiltzan</string>
     <string name="shizuku_installer_subtitle">Sistemaren APIak zuzenean erabiltzea adb/root pribilegioekin</string>
     <string name="privacy_policy_title">Pribatutasun-politika</string>
     <string name="about_aurora_store_subtitle">Aurora Store-i buruz gehiago jakin</string>
     <string name="add_dispenser_hint">URL helbide banagailua</string>
-    <string name="remove_dispenser_title">Banagailua ezabatu</string>
+    <string name="remove_dispenser_title">Banagailua ezabatu?</string>
     <string name="export_app_summary_fail">Ezin izan da esportatu aplikazio-sorta</string>
     <string name="status_downloading">Deskargatzen</string>
     <string name="status_failed">Huts egin du</string>
@@ -339,8 +331,8 @@
     <string name="faqs_subtitle">Galderarik? Aurkitu erantzunak</string>
     <string name="pref_clear_device_owner_desc">Horrek aplikazioa isilean instalatzeko saioaren instalatzailearen baimena kenduko du. Gailuaren jabetza garbitzen jarraitu nahi duzu?</string>
     <string name="onboarding_permission_installer_legacy_desc">Baimendu iturri ezezagunetako aplikazioak instalatzea</string>
-    <string name="pref_updates_incompatible_desc">Erakutsi instalatzen huts egin dezaketen aplikazio bateraezinen edo desgaituen eguneraketak</string>
-    <string name="pref_updates_auto">Aplikazioen eguneraketak automatizatu</string>
+    <string name="pref_updates_incompatible_desc">Bistaratu instalatzen huts egin dezaketen aplikazio bateraezinen edo desgaituen eguneraketak</string>
+    <string name="pref_updates_auto">Eguneraketa automatikoak</string>
     <string name="access_denied_using_vpn">Sarbidea ukatu da! VPN edo Tor erabiltzen ari al zara?</string>
     <string name="pref_clear_device_owner_summary">Aurora Store kentzen du, gailuaren jabearen aplikazio gisa</string>
     <string name="status_cancelled">Ezeztatu egin da</string>
@@ -358,7 +350,7 @@
     <string name="toast_fav_import_failed">Ezin izan dira inportatu zure gogokoenak!</string>
     <string name="toast_fav_export_failed">Ezin izan dira zure gogokoenak esportatu!</string>
     <string name="toast_fav_export_success">Gogokoenak esportatu dira!</string>
-    <string name="pref_updates_incompatible">Eguneraketa bateraezinak</string>
+    <string name="pref_updates_incompatible">Erakutsi huts egin dezaketen eguneraketak</string>
     <string name="pref_updates_auto_desc">Konfiguratu eguneratze automatikoen portaera</string>
     <string name="app_links_title">Aplikazioaren estekak</string>
     <string name="action_request_analysis">Eskatu azterketa berria</string>
@@ -423,4 +415,60 @@
     <string name="plexus_progress">Bateragarritasuna aztertzen…</string>
     <string name="details_compatibility_title">Bateragarritasuna</string>
     <string name="no_apps_available">Aplikazio eskuragarririk ez</string>
+    <string name="pref_network_microg_login_title">Erabili microG kontuetara sartzeko</string>
+    <string name="pref_network_microg_login_desc">Autentifikatu microG erabiliz Google-ko kontuetan saioa hasteko, saioa hasteko fluxu errazagoa izateko</string>
+    <string name="set">Ezarri</string>
+    <string name="disable">Desgaitu</string>
+    <string name="toast_proxy_disabled">Proxya desgaitu da</string>
+    <string name="pref_network_proxy_desc">Ikusi eta kudeatu proxy konfigurazioa</string>
+    <string name="pref_updates_restrictions_title">Eguneratze automatikoen murrizketak</string>
+    <string name="pref_updates_restrictions_desc">Konfiguratu gailuaren murrizketak eguneratze automatizatuetarako</string>
+    <string name="pref_updates_restrictions_battery">Bateria gutxi dagoenean</string>
+    <string name="pref_updates_restrictions_idle">Gailua inaktibo dagoenean</string>
+    <string name="pref_updates_restrictions_metered">Neurririk gabeko sareetan bakarrik</string>
+    <string name="verification_failed">Deskargatutako fitxategiak ezin izan dira egiaztatu</string>
+    <string name="pref_common_advanced">Aurreratua</string>
+    <string name="pref_updates_app_source">Aplikazioaren iturria</string>
+    <string name="app_info_downloads">Deskargak</string>
+    <string name="app_info_updated_on">Azken eguneraketa</string>
+    <string name="app_info_min_android">Gutxieneko Android bertsioa</string>
+    <string name="app_info_target_android">Helburuko API maila</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> baimenak</string>
+    <string name="action_install_microG">Instalatu microG paketea</string>
+    <string name="onboarding_title_gsf">Aplikazioen bateragarritasuna</string>
+    <string name="onboarding_title_gsf_desc">Falta diren mendekotasunak</string>
+    <string name="onboarding_gms_agreement">microG Zerbitzu Baldintzak eta Pribatutasun Politika irakurri eta onartzen ditut</string>
+    <string name="onboarding_gms_missing">Ezin izan ditugu Google Play zerbitzuak aurkitu zure gailuan, hainbat aplikazio ezagunek behar bezala funtzionatzeko behar dute orain!</string>
+    <string name="onboarding_gms_microg">microG doako eta kode irekiko inplementazio bat da, Google Play Zerbitzuen menpeko aplikazioak Android gailuetarako berriro inplementatuz exekutatzeko antzeko funtzionalitatea eskaintzen duena.\n\nmicroG-k aplikazioei Google API horietara sartzeko aukera ematen die, erabiltzaileen bateragarritasuna hobetuz eta pribatutasun onurak eskainiz.\n\nmicroG automatikoki exekutatuko da atzeko planoan Google Mobile Zerbitzuen menpeko aplikazioak irekitzen dituzunean.</string>
+    <string name="microg_privacy_policy">Irakurri microG-ren pribatutasun politika</string>
+    <string name="microg_license_agreement">Irakurri microG Lizentzia eta Hitzarmena</string>
+    <string name="microg_website">Bisitatu microG Proiektuaren webgunea</string>
+    <string name="details_data_safety_collect">Aplikazio honek hurrengo datuak bil ditzake</string>
+    <string name="details_data_safety_collect_none">Garatzaileak dio aplikazio honek ez duela erabiltzaileen daturik biltzen.</string>
+    <string name="details_data_safety_shared">Aplikazio honek hurrengo datuak parteka ditzake</string>
+    <string name="details_data_safety_share_none">Garatzaileak dio aplikazio honek ez dituela erabiltzaileen datuak beste enpresa edo erakundeekin partekatzen.</string>
+    <string name="exodus_tracker_desc">Aplikazioaren bertsio honek Exodus Privacy-ren datu-basean oraindik ez dauden jarraitzaile gehiago izan ditzake oraindik.</string>
+    <string name="exodus_report_trackers"><xliff:g id="aztarnari_kopurua">%1$d</xliff:g> aztarnari ezagunak hemen aurkituta <xliff:g id="aplikazioaren_bertsioaren_izena">%2$s</xliff:g></string>
+    <string name="no_description">Aplikazioaren xehetasunen zatia</string>
+    <string name="details_more_info">Informazio gehiago</string>
+    <string name="details_more_target_api">Helburuak</string>
+    <string name="details_more_package_name">Paketearen izena</string>
+    <string name="details_more_content_rating">Edukiaren balorazioa</string>
+    <string name="select_app_for_details">PantailaBilatu</string>
+    <string name="action_filter_no_ads">Iragarkirik ez</string>
+    <string name="action_filter_no_gms">Play zerbitzurik ez</string>
+    <string name="manual_download_version_error">Bertsio-kodeak digituak bakarrik izan ditzake</string>
+    <string name="preparing_to_install">Instalatzeko prestatzen</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Baimena beharrezkoa da</item>
+        <item quantity="other">Baimenak beharrezkoak dira</item>
+    </plurals>
+    <string name="installer_microg_misconfigured">MicroG instalatzaileak huts egin du aplikazioa instalatzeko, ziurrenik konfigurazio oker baten ondorioz.</string>
+    <string name="pref_install_mode_microg">MicroG instalatzailea</string>
+    <string name="microg_installer_subtitle">microG aplikazio osagarria instalatuta edukitzea eskatzen du</string>
+    <string name="microg_installer_desc">Aplikazioaren Osotasun egiaztapena (instalatzailearentzat bakarrik) saihesten laguntzen dizu</string>
+    <string name="loading">Kargatzen ari da</string>
+    <string name="page"><xliff:g id="zenbakia">%1$d</xliff:g> orrialdea</string>
+    <string name="action_skip">Saltatu</string>
+    <string name="force_restart_snack">Aldaketak aplikatzeko berrabiarazi?</string>
 </resources>

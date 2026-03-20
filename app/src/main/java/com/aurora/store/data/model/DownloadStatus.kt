@@ -10,10 +10,11 @@ enum class DownloadStatus(@StringRes val localized: Int) {
     COMPLETED(R.string.status_completed),
     QUEUED(R.string.status_queued),
     UNAVAILABLE(R.string.status_unavailable),
-    VERIFYING(R.string.status_verifying);
+    VERIFYING(R.string.status_verifying),
+    PURCHASING(R.string.preparing_to_install);
 
     companion object {
         val finished = listOf(FAILED, CANCELLED, COMPLETED)
-        val running = listOf(QUEUED, DOWNLOADING)
+        val running = listOf(QUEUED, PURCHASING, DOWNLOADING)
     }
 }

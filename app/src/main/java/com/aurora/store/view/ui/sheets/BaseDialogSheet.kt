@@ -47,8 +47,8 @@ abstract class BaseDialogSheet<ViewBindingType : ViewBinding> : BottomSheetDialo
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val type =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<ViewBindingType>
+        val type = (javaClass.genericSuperclass as ParameterizedType)
+            .actualTypeArguments[0] as Class<ViewBindingType>
 
         val method = type.getMethod(
             "inflate",

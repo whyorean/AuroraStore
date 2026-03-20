@@ -24,15 +24,5 @@ data class Permission(
     val title: String,
     val subtitle: String,
     val optional: Boolean = false,
-) {
-    override fun equals(other: Any?): Boolean {
-        return when (other) {
-            is Permission -> other.type == type
-            else -> false
-        }
-    }
-
-    override fun hashCode(): Int {
-        return type.hashCode()
-    }
-}
+    val isGranted: Boolean = false
+)

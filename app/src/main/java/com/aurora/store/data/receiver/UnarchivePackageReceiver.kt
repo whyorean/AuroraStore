@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageInstaller.EXTRA_UNARCHIVE_PACKAGE_NAME
 import android.util.Log
 import androidx.core.content.getSystemService
+import com.aurora.extensions.TAG
 import com.aurora.extensions.isVAndAbove
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.AuroraApp
@@ -14,17 +15,15 @@ import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.util.NotificationUtil
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Triggers re-install/unarchive of a previously archived app on Android 15+ devices.
  */
 @AndroidEntryPoint
-class UnarchivePackageReceiver: BroadcastReceiver() {
-
-    private val TAG = UnarchivePackageReceiver::class.java.simpleName
+class UnarchivePackageReceiver : BroadcastReceiver() {
 
     @Inject
     lateinit var appDetailsHelper: AppDetailsHelper

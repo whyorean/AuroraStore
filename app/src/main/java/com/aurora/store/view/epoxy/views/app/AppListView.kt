@@ -60,17 +60,20 @@ class AppListView @JvmOverloads constructor(
         extras.add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
         extras.add("${app.labeledRating}★")
         extras.add(
-            if (app.isFree)
+            if (app.isFree) {
                 ContextCompat.getString(context, R.string.details_free)
-            else
+            } else {
                 ContextCompat.getString(context, R.string.details_paid)
+            }
         )
 
-        if (app.containsAds)
+        if (app.containsAds) {
             extras.add(ContextCompat.getString(context, R.string.details_contains_ads))
+        }
 
-        if (app.dependencies.dependentPackages.isNotEmpty())
+        if (app.dependencies.dependentPackages.isNotEmpty()) {
             extras.add(ContextCompat.getString(context, R.string.details_gsf_dependent))
+        }
 
         binding.txtLine3.text = extras.joinToString(separator = "  •  ")
     }

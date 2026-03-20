@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.getSystemService
+import androidx.core.net.toUri
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.Data
@@ -30,9 +31,9 @@ import java.util.zip.ZipOutputStream
  */
 @HiltWorker
 class ExportWorker @AssistedInject constructor(
-    @Assisted private val appContext: Context,
+    @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams) {
+) : CoroutineWorker(context, workerParams) {
 
     companion object {
         private const val TAG = "ExportWorker"
@@ -42,6 +43,9 @@ class ExportWorker @AssistedInject constructor(
         private const val PACKAGE_NAME = "PACKAGE_NAME"
         private const val VERSION_CODE = "VERSION_CODE"
         private const val DISPLAY_NAME = "DISPLAY_NAME"
+
+        private const val NOTIFICATION_ID = 500
+        private const val NOTIFICATION_ID_FGS = 501
 
         /**
          * Exports the installed package to the given URI
@@ -76,7 +80,7 @@ class ExportWorker @AssistedInject constructor(
                 .putString(URI, uri.toString())
                 .putString(DISPLAY_NAME, download.displayName)
                 .putString(PACKAGE_NAME, download.packageName)
-                .putInt(VERSION_CODE, download.versionCode)
+                .putLong(VERSION_CODE, download.versionCode)
                 .build()
 
             val oneTimeWorkRequest = OneTimeWorkRequestBuilder<ExportWorker>()
@@ -90,19 +94,17 @@ class ExportWorker @AssistedInject constructor(
     }
 
     private lateinit var notificationManager: NotificationManager
-    private val NOTIFICATION_ID = 500
-    private val NOTIFICATION_ID_FGS = 501
 
     override suspend fun doWork(): Result {
         val isDownload = inputData.getBoolean(IS_DOWNLOAD, false)
-        val uri = Uri.parse(inputData.getString(URI))
+        val uri = inputData.getString(URI)!!.toUri()
         val packageName = inputData.getString(PACKAGE_NAME)
         val displayName = inputData.getString(DISPLAY_NAME)
-        val versionCode = inputData.getInt(VERSION_CODE, -1)
+        val versionCode = inputData.getLong(VERSION_CODE, -1)
 
-        notificationManager = appContext.getSystemService<NotificationManager>()!!
+        notificationManager = context.getSystemService<NotificationManager>()!!
 
-        if (packageName.isNullOrEmpty() || isDownload && versionCode == -1) {
+        if (packageName.isNullOrEmpty() || isDownload && versionCode == -1L) {
             Log.e(TAG, "Input data is corrupt, bailing out!")
             notifyStatus(displayName ?: String(), uri, false)
             return Result.failure()
@@ -124,18 +126,16 @@ class ExportWorker @AssistedInject constructor(
         return Result.success()
     }
 
-    override suspend fun getForegroundInfo(): ForegroundInfo {
-        return ForegroundInfo(
-            NOTIFICATION_ID_FGS,
-            NotificationUtil.getExportNotification(appContext)
-        )
-    }
+    override suspend fun getForegroundInfo(): ForegroundInfo = ForegroundInfo(
+        NOTIFICATION_ID_FGS,
+        NotificationUtil.getExportNotification(context)
+    )
 
     private fun notifyStatus(packageName: String, uri: Uri, success: Boolean = true) {
         notificationManager.notify(
             NOTIFICATION_ID,
             NotificationUtil.getExportStatusNotification(
-                appContext,
+                context,
                 packageName,
                 uri,
                 success
@@ -144,7 +144,7 @@ class ExportWorker @AssistedInject constructor(
     }
 
     private fun copyInstalledApp(packageName: String, uri: Uri) {
-        val packageInfo = getPackageInfo(appContext, packageName, PackageManager.GET_META_DATA)
+        val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
         val fileList: MutableList<File?> = mutableListOf()
 
         fileList.add(File(packageInfo.applicationInfo!!.sourceDir))
@@ -155,12 +155,10 @@ class ExportWorker @AssistedInject constructor(
         bundleAllAPKs(fileList.filterNotNull(), uri)
     }
 
-    private fun copyDownloadedApp(packageName: String, versionCode: Int, uri: Uri) {
-        return bundleAllAPKs(
-            PathUtil.getAppDownloadDir(appContext, packageName, versionCode).listFiles()!!.toList(),
-            uri
-        )
-    }
+    private fun copyDownloadedApp(packageName: String, versionCode: Long, uri: Uri) = bundleAllAPKs(
+        PathUtil.getAppDownloadDir(context, packageName, versionCode).listFiles()!!.toList(),
+        uri
+    )
 
     /**
      * Bundles all the given APKs to a zip file
@@ -168,7 +166,7 @@ class ExportWorker @AssistedInject constructor(
      * @param uri [Uri] of the file to write the APKs
      */
     private fun bundleAllAPKs(fileList: List<File>, uri: Uri) {
-        ZipOutputStream(appContext.contentResolver.openOutputStream(uri)).use { zipOutput ->
+        ZipOutputStream(context.contentResolver.openOutputStream(uri)).use { zipOutput ->
             fileList.forEach { file ->
                 file.inputStream().use { input ->
                     val zipEntry = ZipEntry(file.name)

@@ -1,0 +1,5 @@
+• Ara la versió mínima suportada es Android 6.0
+• S'ha migrat al tema Material3 Expressive
+• S'ha millor el suport de pantalles ultraamples
+• S'ha arreglat un problema en el que l'idioma hebreu no s'aplicava correctament a les aplicacions
+• S'ha restaurat el funcionament dels filtres de cerca

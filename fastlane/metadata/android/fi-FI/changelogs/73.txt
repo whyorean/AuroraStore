@@ -1,0 +1,4 @@
+• Korjattiin väärä päivitysnuolimerkki oikealta vasemmalle -esitystavassa
+• Korjattiin sivutus ja IME-ongelmia haussa
+• Korjattiin bugi, joka vaihtoi käyttäjän valitseman sovellusasentajan
+• Päivitettiin käännöksiä, Exodus-seuraajia sekä Google:n juurisertifikaatteja

@@ -21,9 +21,9 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
-import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.R
@@ -32,22 +32,20 @@ import com.aurora.store.data.model.Auth
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
-import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.Json
 
 @Singleton
 class AuthProvider @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val gson: Gson,
+    private val json: Json,
     private val spoofProvider: SpoofProvider,
     private val httpClient: IHttpClient
 ) {
-
-    private val TAG = AuthProvider::class.java.simpleName
 
     val dispenserURL: String?
         get() {
@@ -60,9 +58,9 @@ class AuthProvider @Inject constructor(
             Log.i(TAG, "Loading saved AuthData")
             val rawAuth: String = Preferences.getString(context, PREFERENCE_AUTH_DATA)
             return if (rawAuth.isNotBlank()) {
-                gson.fromJson(rawAuth, AuthData::class.java)
+                json.decodeFromString<AuthData>(rawAuth)
             } else {
-                null
+                AuthData("BOGUS")
             }
         }
 
@@ -72,21 +70,7 @@ class AuthProvider @Inject constructor(
     /**
      * Checks whether saved AuthData is valid or not
      */
-    suspend fun isSavedAuthDataValid(): Boolean {
-        // TODO: Switch to the method from gplayapi
-        return withContext(Dispatchers.IO) {
-            try {
-                val testPackageName = "com.android.chrome"
-                val app = AppDetailsHelper(authData!!)
-                    .using(httpClient)
-                    .getAppByPackageName(testPackageName)
-                app.packageName == testPackageName && app.displayName.isNotBlank()
-                        && app.versionCode != 0
-            } catch (exception: Exception) {
-                false
-            }
-        }
-    }
+    fun isSavedAuthDataValid(): Boolean = AuthHelper.isValid(authData!!)
 
     /**
      * Builds [AuthData] for login using personal Google account
@@ -108,7 +92,7 @@ class AuthProvider @Inject constructor(
                         token = token,
                         tokenType = tokenType,
                         properties = spoofProvider.deviceProperties,
-                        locale = spoofProvider.locale,
+                        locale = spoofProvider.locale
                     )
                 )
             } catch (exception: Exception) {
@@ -125,11 +109,14 @@ class AuthProvider @Inject constructor(
     suspend fun buildAnonymousAuthData(): Result<AuthData> {
         return withContext(Dispatchers.IO) {
             try {
-                val playResponse = httpClient.getAuth(dispenserURL!!).also {
+                val playResponse = httpClient.postAuth(
+                    dispenserURL!!,
+                    json.encodeToString(spoofProvider.deviceProperties).toByteArray()
+                ).also {
                     if (!it.isSuccessful) throwError(it, context)
                 }
 
-                val auth = gson.fromJson(String(playResponse.responseBytes), Auth::class.java)
+                val auth = json.decodeFromString<Auth>(String(playResponse.responseBytes))
                 return@withContext Result.success(
                     AuthHelper.build(
                         email = auth.email,
@@ -151,7 +138,7 @@ class AuthProvider @Inject constructor(
      * Saves given [AuthData]
      */
     fun saveAuthData(authData: AuthData) {
-        Preferences.putString(context, PREFERENCE_AUTH_DATA, gson.toJson(authData))
+        Preferences.putString(context, PREFERENCE_AUTH_DATA, json.encodeToString(authData))
     }
 
     /**
@@ -165,10 +152,15 @@ class AuthProvider @Inject constructor(
     private fun throwError(playResponse: PlayResponse, context: Context) {
         when (playResponse.code) {
             400 -> throw Exception(context.getString(R.string.bad_request))
+
             403 -> throw Exception(context.getString(R.string.access_denied_using_vpn))
+
             404 -> throw Exception(context.getString(R.string.server_unreachable))
+
             429 -> throw Exception(context.getString(R.string.login_rate_limited))
+
             503 -> throw Exception(context.getString(R.string.server_maintenance))
+
             else -> {
                 if (playResponse.errorString.isNotBlank()) {
                     throw Exception(playResponse.errorString)

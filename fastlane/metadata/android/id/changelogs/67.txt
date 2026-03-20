@@ -1,0 +1,4 @@
+• Target Android 16
+• Perbaikan bug saat membuka tautan ke aplikasi
+• Dukungan untuk membuka halaman detail aplikasi dari pengaturan informasi aplikasi
+• Pembaruan terjemahan

@@ -1,0 +1,4 @@
+• Se ha corregido el icono indicador de flecha de actualización incorrecto en los diseños RTL
+• Se han corregido los problemas de paginación y del IME en la búsqueda
+• Se ha corregido un bug que anulaba la elección del instalador del usuario
+• Se han actualizado las traducciones, la base de datos de rastreadores de Exodus y los certificados raíz de Google

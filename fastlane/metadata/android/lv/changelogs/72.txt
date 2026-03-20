@@ -1,0 +1,5 @@
+• Zemākā atbalstītā Android versija tagad ir Android 6.0
+• Pārslēdzāmies uz Material3 Expressive izskatu
+• Uzlabots atbalsts platekrāna ierīcēm
+• Novērsta nepilnība, kurā ebreju valoda netika pareizi iestatīta ar lietotnei atsevišķi norādītu valodu
+• Atjaunoti meklēšanas atsijātāji

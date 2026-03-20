@@ -1,0 +1,4 @@
+• Correction d’une icône de flèche de mise à niveau incorrecte pour les dispositions de droite à gauche
+• Correction de problèmes de pagination et d’IME lors des recherches
+• Correction d’un bogue qui remplaçait le choix de programme d’installation de l’utilisateur
+• Mise à jour des traductions, de la base de données des traceurs Exodus et des certificats racine de Google

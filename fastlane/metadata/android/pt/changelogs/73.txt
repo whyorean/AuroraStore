@@ -1,0 +1,4 @@
+• Corrigido o ícone incorreto da seta indicadora de atualização em layouts RTL
+• Corrigidos problemas de paginação e IME na pesquisa
+• Corrigido um bug que sobrescrevia a escolha do instalador do usuário
+• Atualizadas as traduções, o banco de dados de rastreadores do Exodus e os certificados raiz do Google

@@ -28,6 +28,7 @@ abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
                     M3EditTextPreference.PREFERENCE_DIALOG_FRAGMENT_TAG
                 )
             }
+
             is ListPreference -> {
                 val dialogFragment = M3ListPreference.newInstance(preference.getKey())
                 dialogFragment.setTargetFragment(this, 0)
@@ -36,6 +37,7 @@ abstract class BasePreferenceFragment : PreferenceFragmentCompat() {
                     M3ListPreference.PREFERENCE_DIALOG_FRAGMENT_TAG
                 )
             }
+
             else -> super.onDisplayPreferenceDialog(preference)
         }
     }

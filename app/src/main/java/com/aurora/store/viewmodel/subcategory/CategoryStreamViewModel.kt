@@ -23,6 +23,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.CategoryStreamContract
@@ -30,60 +31,57 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import javax.inject.Inject
 
 @HiltViewModel
 class CategoryStreamViewModel @Inject constructor(
     private val webCategoryStreamHelper: WebCategoryStreamHelper
 ) : ViewModel() {
 
-    private val TAG = CategoryStreamViewModel::class.java.simpleName
-
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
     private var stash: MutableMap<String, StreamBundle> = mutableMapOf()
 
-    fun contract(): CategoryStreamContract {
-        return webCategoryStreamHelper
-    }
+    private val categoryStreamContract: CategoryStreamContract
+        get() = webCategoryStreamHelper
 
-    fun getStreamBundle(category: StreamContract.Category) {
+    fun getStreamBundle(browseUrl: String) {
         liveData.postValue(ViewState.Loading)
-        observe(category)
+        observe(browseUrl)
     }
 
-    fun observe(category: StreamContract.Category) {
+    fun observe(browseUrl: String) {
         liveData.postValue(ViewState.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
-                val bundle = targetBundle(category)
+                val bundle = targetBundle(browseUrl)
                 if (bundle.streamClusters.isNotEmpty()) {
                     liveData.postValue(ViewState.Success(stash))
                 }
 
                 try {
                     if (!bundle.hasCluster() || bundle.hasNext()) {
-
-                        //Fetch new stream bundle
+                        // Fetch new stream bundle
                         val newBundle = if (bundle.streamClusters.isEmpty()) {
-                            contract().fetch(category.value)
+                            categoryStreamContract.fetch(browseUrl)
                         } else {
-                            contract().nextStreamBundle(
-                                category,
+                            categoryStreamContract.nextStreamBundle(
+                                StreamContract.Category.NONE,
                                 bundle.streamNextPageUrl
                             )
                         }
 
-                        //Update old bundle
-                        bundle.apply {
-                            streamClusters.putAll(newBundle.streamClusters)
+                        // Update old bundle
+                        val mergedBundle = bundle.copy(
+                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
-                        }
+                        )
+                        stash[browseUrl] = mergedBundle
 
-                        //Post updated to UI
+                        // Post updated to UI
                         liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i(TAG, "End of Bundle")
@@ -95,18 +93,18 @@ class CategoryStreamViewModel @Inject constructor(
         }
     }
 
-    fun observeCluster(category: StreamContract.Category, streamCluster: StreamCluster) {
+    fun observeCluster(browseUrl: String, streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
-                        val newCluster =
-                            contract().nextStreamCluster(streamCluster.clusterNextPageUrl)
-                        updateCluster(category, streamCluster.id, newCluster)
+                        val newCluster = categoryStreamContract.nextStreamCluster(
+                            streamCluster.clusterNextPageUrl
+                        )
+                        updateCluster(browseUrl, streamCluster.id, newCluster)
                         liveData.postValue(ViewState.Success(stash))
                     } else {
                         Log.i(TAG, "End of cluster")
-                        streamCluster.clusterNextPageUrl = String()
                     }
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
@@ -115,22 +113,24 @@ class CategoryStreamViewModel @Inject constructor(
         }
     }
 
-    private fun updateCluster(
-        category: StreamContract.Category,
-        clusterID: Int,
-        newCluster: StreamCluster
-    ) {
-        targetBundle(category).streamClusters[clusterID]?.apply {
-            clusterAppList.addAll(newCluster.clusterAppList)
-            clusterNextPageUrl = newCluster.clusterNextPageUrl
+    private fun updateCluster(browseUrl: String, clusterID: Int, newCluster: StreamCluster) {
+        val bundle = targetBundle(browseUrl)
+        bundle.streamClusters[clusterID]?.let { oldCluster ->
+            val mergedCluster = oldCluster.copy(
+                clusterNextPageUrl = newCluster.clusterNextPageUrl,
+                clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+            )
+
+            val newStreamClusters = bundle.streamClusters.toMutableMap().apply {
+                this[clusterID] = mergedCluster
+            }
+
+            stash.put(browseUrl, bundle.copy(streamClusters = newStreamClusters))
         }
     }
 
-    private fun targetBundle(category: StreamContract.Category): StreamBundle {
-        val streamBundle = stash.getOrPut(category.value) {
-            StreamBundle()
-        }
-
+    private fun targetBundle(browseUrl: String): StreamBundle {
+        val streamBundle = stash.getOrPut(browseUrl) { StreamBundle() }
         return streamBundle
     }
 }

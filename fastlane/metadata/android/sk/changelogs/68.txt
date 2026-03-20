@@ -1,0 +1,3 @@
+• Oprava zlyhania pri prechode na stránku s podrobnosťami o aplikácií
+• Oprava zlyhania v miestnom nastavení falšovania (spoofing)
+• Aktualizácie prekladov

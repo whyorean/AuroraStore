@@ -25,7 +25,6 @@
     <string name="title_download_manager">Преузимања</string>
     <string name="title_device">Уређај</string>
     <string name="title_blacklist_manager">Менаџер црне листе</string>
-    <string name="title_apps_sale">Апликације на распродаји</string>
     <string name="title_apps_library">Апликације у збирци</string>
     <string name="title_apps_games">Моје апликације и игре</string>
     <string name="title_apps">Апликације</string>
@@ -56,7 +55,7 @@
     <string name="pref_install_delete_title">Избриши APK након инсталације</string>
     <string name="pref_install_delete_summary">Преузети APK-ови ће бити избрисани одмах након инсталације</string>
     <string name="pref_filter_fdroid_title">Филтрирај F-Droid апликације</string>
-    <string name="pref_filter_fdroid_summary">Не проверавајте ажурирања за апликације преузете или инсталиране у F-Droid-у</string>
+    <string name="pref_filter_fdroid_summary">Не проверавајте ажурирања за апликације инсталиране у F-Droid-у</string>
     <string name="onboarding_permission_installer_desc">Дозволите инсталирање апликација из Aurora Store-а</string>
     <string name="onboarding_permission_installer">Дозвола програма за инсталацију</string>
     <string name="onboarding_permission_esm">Менаџер спољне меморије</string>
@@ -216,7 +215,6 @@
     <string name="toast_manual_unavailable">Кôд верзије који тражите није доступан.</string>
     <string name="title_manual_download">Ручно преузимање</string>
     <string name="insecure_anonymous_apply">Обавезно се поново пријавите и поново покрените апликацију да бисте применили промене.</string>
-    <string name="pref_ui_similar_apps_desc">Прикажите сличне и сродне скупове на страници с детаљима о апликацији</string>
     <string name="pref_ui_similar_apps">Сличне и сродне апликације</string>
     <string name="pref_ui_no_for_you_desc">Прикажите странице за вас на почетном екрану</string>
     <string name="pref_ui_no_for_you">Странице за вас</string>
@@ -227,14 +225,14 @@
     <string name="details_no_app_match">Није пронађена ниједна одговарајућа апликација</string>
     <string name="toast_export_failed">Није могуће извести конфигурацију уређаја</string>
     <string name="toast_export_success">Конфигурација уређаја је извезена</string>
-    <string name="download_paused">Паузирано • \u0020<xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g></string>
+    <string name="download_paused">Паузирано • <xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g></string>
     <string name="session_init">Припремање ствари…</string>
     <string name="session_login_failed_google">Није могуће пријавити се преко Google-а</string>
     <string name="session_verifying_google">Верификација Google сесије</string>
     <string name="title_search_suggestion">Предлог за претрагу</string>
     <string name="title_search_results">Резултати претраге</string>
     <string name="bad_request">Интерна грешка! Покушајте поново касније</string>
-    <string name="login_rate_limited">Упс, ваш налог је ограничен</string>
+    <string name="login_rate_limited">Ваш налог је ограничен</string>
     <string name="app_language">Језик апликације</string>
     <string name="requesting_new_session">Захтевање нове сесије</string>
     <string name="action_import">Увези</string>
@@ -291,7 +289,7 @@
     <string name="server_unreachable">Сервер недоступан</string>
     <string name="failed_generating_session">Генерисање сесије није успело, кôд грешке: \n<xliff:g id="status_code"> \n%1$d</xliff:g></string>
     <string name="check_connectivity">Проверите интернет везу</string>
-    <string name="download_progress">Преузимање • \u0020<xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g> • <xliff:g id="speed"> %3$s</xliff:g></string>
+    <string name="download_progress">Преузимање • <xliff:g id="completed_downloads"> %1$d</xliff:g> / <xliff:g id="all_downloads"> %2$d</xliff:g> • <xliff:g id="speed"> %3$s</xliff:g></string>
     <string name="downloading_dep">Преузимање додатних фајлова за
 \n<xliff:g id="app">
 \n%1$s</xliff:g></string>
@@ -310,24 +308,20 @@
     <string name="app_links_title">Линкови апликација</string>
     <string name="android_market_desc">Android Market је била онлајн продавница која је нудила софтверске апликације дизајниране за Android уређаје, пензионисана 2017. године.</string>
     <string name="details_ratings_title_hint">Прегледај наслов</string>
-    <string name="title_apps_sale_provider">Пружалац - bestappsales.com</string>
-    <string name="pref_updates_check_frequency_desc">Конфигуришите интервале за аутоматска ажурирања, у сатима.</string>
-    <string name="pref_aurora_only">Само Aurora Store апликације</string>
-    <string name="pref_aurora_only_desc">Проверавајте ажурирања само за апликације инсталиране помоћу Aurora Store</string>
+    <string name="pref_updates_check_frequency_desc">Конфигуришите временски интервал за аутоматска ажурирања, у сатима.</string>
+    <string name="pref_aurora_only">Филтрирај апликације из других извора</string>
+    <string name="pref_aurora_only_desc">Не проверавајте ажурирања за апликације инсталиране из извора ван Aurora Store</string>
     <string name="title_app_settings">Подешавања апликације</string>
     <string name="pref_updates_check_frequency">Учесталост аутоматског ажурирања</string>
-    <string name="pref_network_proxy_enable">Омогући прокси</string>
     <string name="pref_network_proxy_url">URL адреса проксија</string>
-    <string name="pref_network_proxy_title">Прокси</string>
     <string name="toast_proxy_invalid">Неважећи URL проксија, проверите формат!</string>
     <string name="toast_proxy_success">Прокси је успешно подешен</string>
     <string name="toast_proxy_failed">Подешавање проксија није успело</string>
-    <string name="pref_network_proxy_enable_desc">Дозволите да сав саобраћај из апликације пролази кроз прокси</string>
     <string name="pref_vending_version_device">Подразумевано (из конфигурације уређаја)</string>
     <string name="pref_vending_version_title">Верзија Google Play-а</string>
     <string name="onboarding_permission_doze">Преузимања у позадини</string>
     <string name="onboarding_permission_doze_desc">Дозволите Aurora Store-у да преузима и ажурира апликације у позадини</string>
-    <string name="pref_updates_auto">Аутоматско ажурирање апликација</string>
+    <string name="pref_updates_auto">Аутоматска ажурирања</string>
     <string name="pref_updates_auto_notify">Провера и обавештење о доступним ажурирањима</string>
     <string name="pref_updates_auto_off">Без аутоматског ажурирања апликација</string>
     <string name="pref_updates_auto_desc">Конфигуришите понашање аутоматских ажурирања</string>
@@ -335,7 +329,7 @@
     <string name="action_request_analysis">Затражи нову анализу</string>
     <string name="failed_apk_export">Извоз APK-ова није успео</string>
     <string name="download_clear_finished">Очисти завршено</string>
-    <string name="pref_updates_incompatible">Некомпатибилна ажурирања</string>
+    <string name="pref_updates_incompatible">Прикажи ажурирања која можда неће успети</string>
     <string name="pref_updates_incompatible_desc">Прикажите ажурирања за некомпатибилне или онемогућене апликације које можда неће бити успешно инсталиране</string>
     <string name="action_home_screen">Додај на почетни екран</string>
     <string name="faqs_subtitle">Имате питања? Сазнајте одговоре</string>
@@ -377,11 +371,7 @@
     <string name="remove_dispenser_title">Уклањање дозатора</string>
     <string name="session_login">Prijavite se na vaš Google Play nalog</string>
     <string name="about_aurora_store_subtitle">Saznajte više o Aurora Store</string>
-    <string name="about_aurora_store_summary">Aurora Store вам омогућава да претражујете и преузимате апликације из званичне Google Play продавнице. Можете да проверите описе апликација, снимке екрана, ажурирања, коментаре других корисника и преузмете APK директно са Google Play-а на свој уређај. Да бисте користили Aurora Store, морате да имате Google Play налог и да се пријавите на свој Google Play налог када први пут отворите и конфигуришете Aurora Store.
-\n
-\nЗа разлику од традиционалне продавнице апликација, Aurora Store не поседује, не лиценцира нити дистрибуира ниједну апликацију. Свим апликацијама, описима апликација, снимцима екрана и другом садржају у Аурора продавници се директно приступа, преузима се и/или приказује са Google Play-а. Aurora Store функционише баш као врата или претраживач, омогућавајући вам да се пријавите на свој Google Play налог и пронађете апликације са Google Play-а.
-\n
-\nИмајте на уму да Aurora Store нема одобрење, спонзорство или овлашћење од Google-а, Google Play-а, било које апликације преузете преко Aurora Store-а или било ког програмера апликација; нити Aurora Store има некакву повезаност, сарадњу или везу са њима.</string>
+    <string name="about_aurora_store_summary">Aurora Store вам омогућава да претражујете и преузимате апликације из званичне Google Play продавнице. Можете да проверите описе апликација, снимке екрана, ажурирања, коментаре других корисника и преузмете APK директно са Google Play-а на свој уређај. Да бисте користили Aurora Store, морате да имате Google Play налог и да се пријавите на свој Google Play налог када први пут отворите и конфигуришете Aurora Store. \n \nЗа разлику од традиционалне продавнице апликација, Aurora Store не поседује, не лиценцира нити дистрибуира ниједну апликацију. Свим апликацијама, описима апликација, снимцима екрана и другом садржају у Аурора продавници се директно приступа, преузима се и/или приказује са Google Play-а. Aurora Store функционише баш као врата или претраживач, омогућавајући вам да се пријавите на свој Google Play налог и пронађете апликације са Google Play-а. \n \nИмајте на уму да Aurora Store нема одобрење, спонзорство или овлашћење од Google-а, Google Play-а, било које апликације преузете преко Aurora Store-а или било ког програмера апликација; нити Aurora Store има некакву повезаност, сарадњу или везу са њима.</string>
     <string name="about_aurora_store_title">O Aurora Store</string>
     <string name="toast_app_unavailable">Апликација није доступна за ваш уређај</string>
     <string name="action_favourite">Омиљено</string>
@@ -401,7 +391,6 @@
     <string name="details_data_safety_title">Безбедност података</string>
     <string name="details_data_safety_subtitle">Приватност података и безбедносне праксе које је објавио програмер</string>
     <string name="toast_permission_installer_required">Прво морате да дате дозволу програму за инсталацију</string>
-    <string name="toast_permission_esm_caution">Можда ћете морати поново да дате дозволу због грешке у радном простору за приступ меморији</string>
     <string name="item_optional">Опционално</string>
     <string name="onboarding_permission_installer_legacy_desc">Дозволите инсталацију апликација из непознатих извора</string>
     <string name="item_required">Неопходно</string>
@@ -425,7 +414,6 @@
     <string name="made_with_love">Направљено од <xliff:g id="heart_emoji">%1$s</xliff:g> у Индији</string>
     <string name="default_spoof">Подразумевана</string>
     <string name="available_spoof">Доступна</string>
-    <string name="toast_permission_esm_restart">Можда ћете морати да рестартујете апликацију да бисте приказали дату дозволу.</string>
     <string name="toast_black_import_success">Црна листа је увезена!</string>
     <string name="status_verifying">Верификовање</string>
     <string name="action_unarchive">Деархивирај</string>
@@ -451,4 +439,55 @@
     <string name="details_compatibility_gms_required_subtitle">Можда ћете морати да инсталирате Google-ову власничку библиотеку или заменску имплементацију FOSS-а као што је microG.</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> апликација инсталирано</string>
     <string name="no_apps_available">Нема доступних апликација</string>
+    <string name="pref_network_microg_login_title">Користи microG за пријављивање на налоге</string>
+    <string name="pref_network_microg_login_desc">Аутентификација коришћењем microG при пријављивању на Google налоге за једноставнији ток пријављивања</string>
+    <string name="set">Постави</string>
+    <string name="disable">Онемогући</string>
+    <string name="toast_proxy_disabled">Прокси је успешно онемогућен</string>
+    <string name="pref_network_proxy_desc">Прегледајте и управљајте конфигурацијом проксија</string>
+    <string name="pref_updates_restrictions_desc">Конфигуришите ограничења уређаја за аутоматска ажурирања.</string>
+    <string name="pref_updates_restrictions_metered">Само на мрежама са ограничењем</string>
+    <string name="pref_updates_restrictions_idle">Када је уређај у стању мировања</string>
+    <string name="pref_updates_restrictions_battery">Када батерија није празна</string>
+    <string name="pref_updates_restrictions_title">Ограничења аутоматских ажурирања</string>
+    <string name="verification_failed">Верификација преузетих фајлова није успела</string>
+    <string name="pref_common_advanced">Напредно</string>
+    <string name="pref_updates_app_source">Извор апликације</string>
+    <string name="app_info_downloads">Преузимања</string>
+    <string name="app_info_updated_on">Последње ажурирање</string>
+    <string name="app_info_target_android">Циљни ниво API-ја</string>
+    <string name="app_info_min_android">Минимална верзија Android-а</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> дозвола</string>
+    <string name="action_install_microG">Инсталирај microG пакет</string>
+    <string name="onboarding_title_gsf">Компатибилност апликације</string>
+    <string name="onboarding_title_gsf_desc">Недостајуће зависности</string>
+    <string name="onboarding_gms_agreement">Прочитао/ла сам и сагласан/на сам са Условима коришћења услуга и Политиком приватности microG-а</string>
+    <string name="onboarding_gms_missing">Нисмо могли да пронађемо Google Play услуге на вашем уређају, неколико популарних апликација их сада захтева да би правилно функционисале!</string>
+    <string name="onboarding_gms_microg">microG је бесплатна имплементација отвореног кода која пружа сличну функционалност за покретање апликација зависних од Google Play услуга за Android уређаје кроз поновну имплементацију.\n\nmicroG омогућава апликацијама приступ тим Google API-јима, побољшавајући компатибилност за кориснике и нудећи предности приватности.\n\nmicroG ће се аутоматски покренути у позадини када отворите апликације које зависе од Google мобилних услуга.</string>
+    <string name="microg_privacy_policy">Прочитај Политику приватности microG-а</string>
+    <string name="microg_license_agreement">Прочитај microG лиценцу и уговор</string>
+    <string name="microg_website">Посети веб-сајт пројекта microG</string>
+    <string name="details_data_safety_collect">Подаци које ова апликација може прикупљати</string>
+    <string name="details_data_safety_collect_none">Програмер каже да ова апликација не прикупља корисничке податке.</string>
+    <string name="details_data_safety_shared">Подаци које ова апликација може да дели</string>
+    <string name="details_data_safety_share_none">Програмер каже да ова апликација не дели корисничке податке са другим компанијама или организацијама.</string>
+    <string name="exodus_tracker_desc">Ова верзија апликације може и даље да садржи више пратилаца који још нису присутни у бази података Exodus Privacy-а.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> познатих пратилаца пронађено у <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="manual_download_version_error">Код верзије може да садржи само цифре</string>
+    <string name="no_description">Нема доступног описа</string>
+    <string name="details_more_info">Више информација</string>
+    <string name="details_more_target_api">Циљеви</string>
+    <string name="details_more_package_name">Назив пакета</string>
+    <string name="details_more_content_rating">Оцена садржаја</string>
+    <string name="select_app_for_details">Изаберите апликацију за више детаља</string>
+    <string name="action_filter_no_ads">Без реклама</string>
+    <string name="action_filter_no_gms">Нема Play услуга</string>
+    <string name="installer_microg_misconfigured">MicroG програм за инсталацију није успео да инсталира апликацију, највероватније због неисправне конфигурације.</string>
+    <string name="pref_install_mode_microg">MicroG Програм за инсталацију</string>
+    <string name="action_skip">Прескочи</string>
+    <string name="microg_installer_subtitle">MicroG Companion је неопходан за инсталацију ове апликације</string>
+    <string name="microg_installer_desc">Помаже Вам да заобиђете проверу App Integrity (само у програму за инсталацију)</string>
+    <string name="force_restart_snack">Поновно покренути ради примењивања нових подешавања?</string>
+    <string name="preparing_to_install">Припрема се за инсталацију</string>
+    <string name="loading">Учитавање у току</string>
 </resources>

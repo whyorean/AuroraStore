@@ -24,7 +24,7 @@ object Constants {
     const val PARCEL_DOWNLOAD = "PARCEL_DOWNLOAD"
 
     const val URL_TOS = "https://play.google.com/about/play-terms/"
-    const val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/LICENSE"
+    const val URL_LICENSE = "https://gitlab.com/AuroraOSS/AuroraStore/-/tree/master/LICENSES"
     const val URL_DISCLAIMER = "https://gitlab.com/AuroraOSS/AuroraStore/blob/master/DISCLAIMER.md"
     const val URL_POLICY = "https://gitlab.com/AuroraOSS/AuroraStore/-/blob/master/POLICY.md"
 
@@ -50,7 +50,7 @@ object Constants {
     const val GITLAB_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
     const val URL_DISPENSER = "https://auroraoss.com/api/auth"
 
-    //ACCOUNTS
+    // ACCOUNTS
     const val ACCOUNT_SIGNED_IN = "ACCOUNT_SIGNED_IN"
     const val ACCOUNT_TYPE = "ACCOUNT_TYPE"
     const val ACCOUNT_EMAIL_PLAIN = "ACCOUNT_EMAIL_PLAIN"
@@ -62,4 +62,16 @@ object Constants {
     const val TOP_CHART_CATEGORY = "TOP_CHART_CATEGORY"
 
     const val JSON_MIME_TYPE = "application/json"
+    const val PROPERTIES_IMPORT_MIME_TYPE = "application/octet-stream"
+    const val PROPERTIES_EXPORT_MIME_TYPE = "text/x-java-properties"
+
+    // PACKAGE NAMES
+    const val PACKAGE_NAME_GMS = "com.google.android.gms"
+    const val PACKAGE_NAME_PLAY_STORE = "com.android.vending"
+    const val PACKAGE_NAME_APP_GALLERY = "com.huawei.appmarket"
+
+    // FLAVOURS
+    const val FLAVOUR_VANILLA = "vanilla"
+    const val FLAVOUR_HUAWEI = "huawei"
+    const val FLAVOUR_PRELOAD = "preload"
 }

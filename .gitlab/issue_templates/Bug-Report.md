@@ -3,7 +3,7 @@
   https://auroraoss.com/guides/wiki-home/
 - Provide a general summary of the issue in the Title above.
 - Check if your issue or something similar has been reported before (if yes upvote/comment there)
-- If you are on latest stable release, please also check if the issue is reproducible on the latest nightly build from here: https://auroraoss.com/AuroraStore/Nightly/
+- If you are on latest stable release, please also check if the issue is reproducible on the latest nightly build from here: https://auroraoss.com/files/AuroraStore/Nightly
 - Make sure you have read [wiki](https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home) especially FAQs
 - If you did not know already, everything between "<!---" & "~->" are comments in Markdown. These will not be visible unless when editing or viewed as raw file.
 -->

@@ -23,18 +23,20 @@ import android.content.Context
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.EncodedCertificateSet
-import com.aurora.gplayapi.data.models.File
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.util.CertUtil
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SelfUpdate(
-    @SerializedName("version_name") var versionName: String = String(),
-    @SerializedName("version_code") var versionCode: Int = 0,
-    @SerializedName("aurora_build") var auroraBuild: String = String(),
-    @SerializedName("fdroid_build") var fdroidBuild: String = String(),
-    @SerializedName("updated_on") var updatedOn: String = String(),
+    @SerialName("version_name") var versionName: String = String(),
+    @SerialName("version_code") var versionCode: Long = 0,
+    @SerialName("aurora_build") var auroraBuild: String = String(),
+    @SerialName("fdroid_build") var fdroidBuild: String = String(),
+    @SerialName("updated_on") var updatedOn: String = String(),
     val changelog: String = String(),
     val size: Long = 0L,
     val timestamp: Long = 0L
@@ -63,7 +65,7 @@ data class SelfUpdate(
                 developerName = "Rahul Kumar Patel",
                 iconArtwork = Artwork(url = "$BASE_URL/$icon"),
                 fileList = mutableListOf(
-                    File(
+                    PlayFile(
                         name = "${context.packageName}.apk",
                         url = downloadURL,
                         size = selfUpdate.size
@@ -72,7 +74,8 @@ data class SelfUpdate(
                 isFree = true,
                 isInstalled = true,
                 certificateSetList = CertUtil.getEncodedCertificateHashes(
-                    context, context.packageName
+                    context,
+                    context.packageName
                 ).map {
                     EncodedCertificateSet(certificateSet = it, sha256 = String())
                 }.toMutableList()

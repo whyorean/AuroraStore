@@ -55,7 +55,7 @@
     <string name="action_close">Đóng</string>
     <string name="action_clear">Xoá</string>
     <string name="action_cancel">Huỷ bỏ</string>
-    <string name="action_blacklist_add">Thêm vào Danh sách đen</string>
+    <string name="action_blacklist_add">Thêm vô danh sách đen</string>
     <string name="action_blacklist">Danh sách đen</string>
     <string name="action_back">Trở về</string>
     <string name="account_logout">Đăng xuất khỏi Aurora</string>
@@ -94,7 +94,7 @@
     <string name="toast_apk_whitelisted">Đã vào danh sách trắng</string>
     <string name="toast_apk_blacklisted">Đã vào danh dách đen</string>
     <string name="toast_anonymous_restriction">Không khả dụng trên tài khoản ẩn danh</string>
-    <string name="title_updates">Bản cập nhật</string>
+    <string name="title_updates">Cập nhật</string>
     <string name="title_spoof_manager">Trình quản lý giả mạo</string>
     <string name="title_settings">Thiết đặt</string>
     <string name="title_purchase_history">Lịch sử giao dịch</string>
@@ -109,7 +109,6 @@
     <string name="title_download_manager">Tải xuống</string>
     <string name="title_device">Thiết bị</string>
     <string name="title_blacklist_manager">Trình quản lý danh sách đen</string>
-    <string name="title_apps_sale">Ứng dụng giảm giá</string>
     <string name="title_apps_library">Ứng dụng trong thư viện</string>
     <string name="title_apps_games">Ứng dụng &amp; trò chơi của tôi</string>
     <string name="title_apps">Ứng dụng</string>
@@ -142,7 +141,7 @@
     <string name="pref_install_delete_title">Xóa APK sau khi cài đặt</string>
     <string name="pref_install_delete_summary">APK đã tải xuống sẽ bị xóa ngay sau khi cài đặt</string>
     <string name="pref_filter_fdroid_title">Lọc ứng dụng F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Không kiểm tra cập nhật cho các ứng dụng được tải xuống hoặc cài đặt từ F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Không kiểm tra bản cập nhật cho các ứng dụng được cài đặt từ F-Droid</string>
     <string name="onboarding_permission_installer_desc">Cho phép cài đặt các ứng dụng từ Aurora Store</string>
     <string name="onboarding_permission_installer">Quyền của trình cài đặt</string>
     <string name="onboarding_permission_esm">Trình quản lý bộ nhớ ngoài</string>
@@ -191,12 +190,12 @@
     <string name="download_pause_all">Tạm dừng tất cả</string>
     <string name="download_none">Không có tải xuống</string>
     <string name="download_metadata">Đang lấy metadata</string>
-    <string name="download_force_clear_all">Buộc làm sạch tất cả</string>
+    <string name="download_force_clear_all">Buộc dọn dẹp tất cả</string>
     <string name="download_failed">Tải xuống thất bại</string>
     <string name="download_eta_calculating">Đang tính toán</string>
     <string name="download_completed">Tải xuống hoàn tất</string>
     <string name="download_canceled">Đã huỷ</string>
-    <string name="download_cancel_all">Huỷ bỏ tất cả</string>
+    <string name="download_cancel_all">Hủy hết</string>
     <string name="details_think_this_app">Bạn nghĩ thế nào về ứng dụng này\?</string>
     <string name="details_ratings">Đánh giá và nhận xét</string>
     <string name="details_privacy">Riêng tư</string>
@@ -219,7 +218,6 @@
     <string name="toast_manual_available">Chúc mừng, mã phiên bản được yêu cầu đang có sẵn, đang tải xuống ngay bây giờ.</string>
     <string name="toast_manual_unavailable">Mã phiên bản bạn đang yêu cầu không có sẵn.</string>
     <string name="title_manual_download">Tải xuống thủ công</string>
-    <string name="pref_ui_similar_apps_desc">Hiển thị các cụm tương tự và liên quan trên trang chi tiết ứng dụng</string>
     <string name="pref_ui_similar_apps">Các ứng dụng tương tự và liên quan</string>
     <string name="pref_ui_no_for_you_desc">Hiển thị trang Cho bạn trên màn hình chính</string>
     <string name="pref_ui_no_for_you">Trang Cho Bạn</string>
@@ -266,8 +264,8 @@
     <string name="updates_available">có cập nhật</string>
     <string name="error">Có lỗi xảy ra!</string>
     <string name="menu">Menu</string>
-    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> có bản cập nhật</string>
-    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> có bản cập nhật</string>
+    <string name="notification_updates_available">có <xliff:g id="apps_count">%1$d</xliff:g> cập nhật</string>
+    <string name="notification_updates_available_1">có <xliff:g id="apps_count">%1$d</xliff:g> cập nhật</string>
     <string name="notification_updates_available_desc_1">Có phiên bản mới cho <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="title_search_suggestion">Gợi ý tìm kiếm</string>
     <string name="title_search_results">Kết quả tìm kiếm</string>
@@ -284,11 +282,8 @@
     <string name="app_links_desc">Cho phép Aurora Store mở các liên kết được hỗ trợ</string>
     <string name="pref_updates_auto_install">Tự động kiểm tra &amp; cài đặt các bản cập nhật có sẵn</string>
     <string name="failed_apk_export">Không xuất được APK</string>
-    <string name="title_apps_sale_provider">Nhà cung cấp - bestappsale.com</string>
     <string name="onboarding_permission_doze_desc">Cho phép Aurora Store tải xuống và cập nhật ứng dụng trong nền</string>
     <string name="pref_vending_version_device">Mặc định (từ cấu hình thiết bị)</string>
-    <string name="pref_network_proxy_enable">Bật proxy</string>
-    <string name="pref_network_proxy_enable_desc">Cho phép tất cả lưu lượng truy cập từ ứng dụng đi qua proxy</string>
     <string name="title_app_settings">Thiết đặt ứng dụng</string>
     <string name="toast_proxy_invalid">URL proxy không hợp lệ, hãy kiểm tra định dạng!</string>
     <string name="check_connectivity">Kiểm tra kết nối internet</string>
@@ -309,11 +304,10 @@
     <string name="pref_updates_incompatible">Cập nhật không tương thích</string>
     <string name="pref_updates_incompatible_desc">Hiển thị các bản cập nhật cho các ứng dụng không tương thích hoặc bị vô hiệu hóa có thể không cài đặt được</string>
     <string name="action_home_screen">Thêm vào màn hình chính</string>
-    <string name="download_clear_finished">Xóa xong</string>
+    <string name="download_clear_finished">Dọn tệp đã cài</string>
     <string name="details_ratings_title_hint">Tiêu đề đánh giá</string>
     <string name="onboarding_permission_doze">Tải xuống trong nền</string>
     <string name="pref_network_proxy_url">URL proxy</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="services_installer_subtitle">Trình cài đặt để cài đặt nền</string>
     <string name="am_installer_subtitle">Trình quản lý gói nguồn mở đầy đủ tính năng</string>
     <string name="services_installer_desc">Yêu cầu cài đặt Dịch vụ Aurora dưới dạng ứng dụng hệ thống đặc quyền</string>
@@ -364,9 +358,8 @@
     <string name="toast_fav_import_success">Dữ liệu yêu thích đã được nhập vào!</string>
     <string name="action_favourite">Yêu thích</string>
     <string name="details_data_safety_title">An toàn của dữ liệu</string>
-    <string name="title_favourites_manager">Những app yêu thích</string>
+    <string name="title_favourites_manager">Những ứng dụng yêu thích</string>
     <string name="toast_permission_installer_required">Trước tiên, bạn cần cấp quyền cho phép “Cài đặt ứng dụng\"</string>
-    <string name="toast_permission_esm_caution">Bạn chắc phải cần cấp lại quyền cho phép bởi vì lỗi trong \"Khung truy cập lưu trữ\"</string>
     <string name="item_required">Bắt buộc</string>
     <string name="item_optional">Không bắt buộc</string>
     <string name="details_data_safety_subtitle">Quyền riêng tư của dữ liệu và những thực hành bảo mật được tuyên bố bởi nhà phát triển</string>
@@ -377,11 +370,7 @@
     <string name="action_uninstall_success">Đã xoá hoàn công</string>
     <string name="details_no_favourites">Không có app yêu thích</string>
     <string name="pref_dispenser_title">Quản lý bộ phân phối</string>
-    <string name="about_aurora_store_summary">Aurora Store cho phép bạn tìm kiếm và tải về những ứng dụng bạn thích từ chính Cửa hàng Google Play. Bạn có thể kiểm tra mô tả ứng dụng, những ảnh chụp ứng dụng, những cập nhật ứng dụng, những đánh giá từ những người khác, và tải về APK của ứng dụng từ Google Play vào máy của bạn. Để dùng Aurora Store, bạn cần có một tài khoản Google Play, và đăng nhập vào tài khoản Google Play của bạn khi bạn đã vào và chỉnh cài đặt của Aurora Store lần đầu tiên.
-\n
-\nKhông giống như một cửa hàng ứng dụng bình thường, Aurora Store không có sở hữu, cấp phép li-xăng hay phát ra ứng dụng nào hết. Tất cả các ứng dụng, mô tả ứng dụng và những nội dung ứng dụng khác trong Aurora Store đều được trực tiếp truy cập, tải về, và/hay hiển thị từ Google Play. Aurora Store hoạt động như một cái cửa hay là một trình duyệt, cho phép bạn để đăng nhập vào tài khoản Google Play của bạn và tìm những ứng dụng từ Google Play.
-\n
-\nXin lưu ý rằng Aurora Store không có quyền cho phép, tiền tài trợ, hay quyền phép từ Google, Google Play, những ứng dụng tải qua Aurora Store, hay bất cứ nhà phát triển nào; Aurora Store cũng không có liên kết nào, hợp tác hay kết nồi nào với họ.</string>
+    <string name="about_aurora_store_summary">Aurora Store cho phép bạn tìm kiếm và tải về những ứng dụng bạn thích từ chính Cửa hàng Google Play. Bạn có thể kiểm tra mô tả ứng dụng, những ảnh chụp ứng dụng, những cập nhật ứng dụng, những đánh giá từ những người khác, và tải về APK của ứng dụng từ Google Play vào máy của bạn. Để dùng Aurora Store, bạn cần có một tài khoản Google Play, và đăng nhập vào tài khoản Google Play của bạn khi bạn đã vào và chỉnh cài đặt của Aurora Store lần đầu tiên. \n \nKhông giống như một cửa hàng ứng dụng bình thường, Aurora Store không có sở hữu, cấp phép li-xăng hay phát ra ứng dụng nào hết. Tất cả các ứng dụng, mô tả ứng dụng và những nội dung ứng dụng khác trong Aurora Store đều được trực tiếp truy cập, tải về, và/hay hiển thị từ Google Play. Aurora Store hoạt động như một cái cửa hay là một trình duyệt, cho phép bạn để đăng nhập vào tài khoản Google Play của bạn và tìm những ứng dụng từ Google Play. \n \nXin lưu ý rằng Aurora Store không có quyền cho phép, tiền tài trợ, hay quyền phép từ Google, Google Play, những ứng dụng tải qua Aurora Store, hay bất cứ nhà phát triển nào; Aurora Store cũng không có liên kết nào, hợp tác hay kết nồi nào với họ.</string>
     <string name="toast_fav_export_success">Dữ liệu yêu thích đã được xuất ra!</string>
     <string name="action_logout_confirmation_title">Đăng xuất?</string>
     <string name="action_logout_confirmation_message">Bạn có chắc muốn đăng xuất hay không?</string>
@@ -402,7 +391,6 @@
     <string name="action_select_all">Chọn tất cả</string>
     <string name="action_remove_all">Xóa tất cả</string>
     <string name="filter_latest">Mới nhất</string>
-    <string name="toast_permission_esm_restart">Bạn có thể phải khởi động lại ứng dụng để phản ánh việc cấp quyền.</string>
     <string name="toast_black_export_failed">Lỗi khi xuất Danh sách đen!</string>
     <string name="toast_black_import_success">Danh sách đen đã được nhập!</string>
     <string name="toast_black_import_failed">Lỗi khi nhập Danh sách đen!</string>
@@ -411,4 +399,30 @@
     <string name="status_verifying">Đang xác thực</string>
     <string name="action_unarchive">Dừng lưu trữ</string>
     <string name="available_spoof">Có sẵn</string>
+    <string name="no_apps_available">Không có ứng dụng nào</string>
+    <string name="unable_to_open">Không thể mở được app</string>
+    <string name="plexus_powered">Được hỗ trợ bởi Plexus</string>
+    <string name="plexus_progress">Đang kiểm tra tính tương thích…</string>
+    <string name="details_compatibility_title">Tương Thích</string>
+    <string name="details_compatibility_gms_required_title">Yêu cầu Dịch vụ Google Play</string>
+    <string name="details_compatibility_gms_required_subtitle">Bạn có thể cần phải cài đặt thư viện độc quyền của Google hoặc bản triển khai lại FOSS như microG.</string>
+    <string name="details_compatibility_gms_not_required_title">Hoạt động không cần dịch vụ Google Play</string>
+    <string name="details_data_safety_collect">Dữ liệu mà ứng dụng này có thể thu thập</string>
+    <string name="details_data_safety_collect_none">Nhà phát triển cho biết ứng dụng này không thu thập dữ liệu người dùng.</string>
+    <string name="details_data_safety_shared">Dữ liệu mà ứng dụng này có thể chia sẻ</string>
+    <string name="details_data_safety_share_none">Nhà phát triển cho biết ứng dụng này không chia sẻ dữ liệu người dùng với các công ty hoặc tổ chức khác.</string>
+    <string name="app_info_downloads">Tải xuống</string>
+    <string name="app_info_updated_on">Cập nhật mới nhất</string>
+    <string name="onboarding_title_gsf">Tương thích ứng dụng</string>
+    <string name="onboarding_gms_agreement">Tôi đã đọc và đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của microG</string>
+    <string name="onboarding_gms_missing">Chúng tôi không tìm thấy Dịch vụ Google Play trên thiết bị của bạn, một số ứng dụng phổ biến hiện nay yêu cầu dịch vụ này để hoạt động bình thường!</string>
+    <string name="microg_privacy_policy">Đọc Chính sách bảo mật của microG</string>
+    <string name="microg_license_agreement">Đọc Giấy phép và Thỏa thuận microG</string>
+    <string name="details_more_info">Thông tin thêm</string>
+    <string name="details_more_target_api">Mục tiêu</string>
+    <string name="details_more_content_rating">Xếp hạng nội dung</string>
+    <string name="preparing_to_install">Chuẩn bị cài đặt</string>
+    <plurals name="permissions_required">
+        <item quantity="other">Cần có sự cho phép</item>
+    </plurals>
 </resources>

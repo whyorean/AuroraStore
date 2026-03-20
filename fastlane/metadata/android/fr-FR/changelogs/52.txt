@@ -1,6 +1,6 @@
-• Correction d'un crash sur certains appareils lors de la recherche de mots non-anglophones
-• Amélioration de la page "Mes applis et jeux"
-• Ajout d'un bouton retour lors de l'installation automatique d'une appli après téléchargement
-• Suppression de la notification sonore lorsqu'une appli est installée ou mise à jour
-• Correction d'un crash sur certains appareils lors de la consultation des détails d'une appli
-• Ajout d'une confirmation de désinstallation quand l'installateur racine est activé
+• Correction d’un plantage sur certains appareils lors de la recherche de mot-clé dans des langues autres que l’anglais
+• Amélioration de la page « Mes applis et jeux »
+• Remise en place d’un commutateur pour installer automatiquement une appli après l’avoir téléchargée
+• Suppression de la notification sonore lors de l’installation ou de la mise à jour d’une appli
+• Correction d’un plantage sur certains appareils lors de la consultation des détails d’une appli
+• Ajout d’une confirmation de désinstallation si le programme d’installation est utilisé en mode racine

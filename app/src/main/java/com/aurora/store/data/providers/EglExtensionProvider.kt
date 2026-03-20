@@ -41,8 +41,10 @@ object EglExtensionProvider {
                 val configs = arrayOfNulls<EGLConfig>(configCount[0])
                 if (egl.eglGetConfigs(display, configs, configCount[0], configCount)) {
                     val pbufferAttribs = intArrayOf(
-                        EGL10.EGL_WIDTH, EGL10.EGL_PBUFFER_BIT,
-                        EGL10.EGL_HEIGHT, EGL10.EGL_PBUFFER_BIT,
+                        EGL10.EGL_WIDTH,
+                        EGL10.EGL_PBUFFER_BIT,
+                        EGL10.EGL_HEIGHT,
+                        EGL10.EGL_PBUFFER_BIT,
                         EGL10.EGL_NONE
                     )
                     val contextAttributes = intArrayOf(12440, EGL10.EGL_PIXMAP_BIT, EGL10.EGL_NONE)

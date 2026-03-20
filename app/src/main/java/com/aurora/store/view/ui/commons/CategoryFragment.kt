@@ -39,11 +39,9 @@ class CategoryFragment : BaseFragment<FragmentGenericRecyclerBinding>() {
 
     companion object {
         @JvmStatic
-        fun newInstance(pageType: Int): CategoryFragment {
-            return CategoryFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(Constants.PAGE_TYPE, pageType)
-                }
+        fun newInstance(pageType: Int): CategoryFragment = CategoryFragment().apply {
+            arguments = Bundle().apply {
+                putInt(Constants.PAGE_TYPE, pageType)
             }
         }
     }

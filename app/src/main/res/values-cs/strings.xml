@@ -10,7 +10,7 @@
     <string name="toast_spoof_applied">Byl použit spoofing zařízení.</string>
     <string name="toast_apk_whitelisted">Na whitelistu</string>
     <string name="insecure_anonymous_apply">Chcete-li použít změny, nezapomeňte se znovu přihlásit a restartovat aplikaci.</string>
-    <string name="toast_manual_available">Gratuluji, požadovaný kód verze je k dispozici, nyní stahuji.</string>
+    <string name="toast_manual_available">Gratulujeme, požadovaný kód verze je k dispozici, probíhá stahování.</string>
     <string name="toast_purchase_blocked">Nákupy aplikací nejsou na anonymních účtech dostupné.</string>
     <string name="toast_permission_granted">Oprávnění uděleno</string>
     <string name="toast_developer_setting_failed">Chcete-li otevřít nastavení pro vývojáře, zapněte je v nastavení zařízení.</string>
@@ -31,7 +31,6 @@
     <string name="title_download_playstore">Obchod Play</string>
     <string name="title_download_manager">Stahování</string>
     <string name="title_device">Zařízení</string>
-    <string name="title_apps_sale">Aplikace ve slevě</string>
     <string name="title_apps_library">Aplikace v knihovně</string>
     <string name="title_apps_games">Moje aplikace a hry</string>
     <string name="title_apps">Aplikace</string>
@@ -52,9 +51,8 @@
     <string name="purchase_unsupported">Aplikace není kompatibilní</string>
     <string name="purchase_invalid">Aplikace nebyla zakoupena</string>
     <string name="purchase_failed">Stažení se nezdařilo</string>
-    <string name="pref_ui_similar_apps_desc">Zobrazit podobné a související skupiny na stránce s detaily aplikace</string>
     <string name="pref_ui_similar_apps">Podobné a související aplikace</string>
-    <string name="pref_ui_no_for_you_desc">Zobrazení stránek pro vás na domovské obrazovce</string>
+    <string name="pref_ui_no_for_you_desc">Zobrazit stránky pro vás na domovské obrazovce</string>
     <string name="pref_ui_no_for_you">Stránky pro vás</string>
     <string name="pref_ui_layout_tab">Vybrat výchozí kartu</string>
     <string name="pref_ui_layout">Rozložení</string>
@@ -69,7 +67,7 @@
     <string name="pref_install_delete_title">Odstranit soubor APK po instalaci</string>
     <string name="pref_install_delete_summary">Stažené soubory APK budou po ihned po instalaci odstraněny</string>
     <string name="pref_filter_fdroid_title">Filtrovat aplikace F-Droid</string>
-    <string name="pref_filter_fdroid_summary">Nekontrolovat aktualizace u aplikací stažených nebo nainstalovaných z obchodu F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Nekontrolovat aktualizace u aplikací nainstalovaných z obchodu F-Droid</string>
     <string name="pref_common_extra">Doplňky</string>
     <string name="onboarding_permission_installer_desc">Povolit instalaci aplikací z obchodu Aurora</string>
     <string name="onboarding_permission_installer">Instalační oprávnění</string>
@@ -99,7 +97,7 @@
     <string name="installer_status_failure_blocked">Instalace byla zablokována</string>
     <string name="installer_service_unavailable">Nainstalujte služby Aurora 1.0.9 nebo vyšší, nebo změňte instalační program.</string>
     <string name="installer_status_failure">Instalace selhala</string>
-    <string name="installer_service_misconfigured">Nejprve nastavte služby Aurora a udělte všechna oprávnění.</string>
+    <string name="installer_service_misconfigured">Nejprve nastavte Služby Aurora a udělte všechna oprávnění.</string>
     <string name="installer_service_available">Služby Aurora jsou k dispozici a jsou připraveny k instalaci.</string>
     <string name="installer_root_unavailable">Nedostupné oprávnění root, udělte root oprávnění nebo změnte instalátor.</string>
     <string name="filter_review_two">Dvě</string>
@@ -190,7 +188,7 @@
     <string name="action_filter">Filtry</string>
     <string name="action_export">Exportovat</string>
     <string name="action_disable">Zakázat</string>
-    <string name="action_copy_link">Kopírovat Link</string>
+    <string name="action_copy_link">Kopírovat odkaz</string>
     <string name="action_copy">Kopírovat</string>
     <string name="action_close">Zavřít</string>
     <string name="action_clear">Vymazat</string>
@@ -220,7 +218,7 @@
     <string name="about_bitcoin_bch">Bitcoin Cash</string>
     <string name="about_bhim_summary">Přispějte prostřednictvím UPI</string>
     <string name="about_bhim">BHIM - UPI</string>
-    <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat skupiny aplikací. Změňte typ instalátoru na Relační, Služby nebo Root.</string>
+    <string name="dialog_desc_native_split">Přes nativní instalátor nelze instalovat zabalené (rozdělené) aplikace. Změňte typ instalátoru na Relační, Služby nebo Root.</string>
     <string name="toast_aas_token_failed">Nepodařilo se vygenerovat token AAS</string>
     <string name="toast_rated_failed">Nelze odeslat hodnocení</string>
     <string name="toast_rated_success">Ohodnoceno, může chvíli trvat, než se recenze ukáže</string>
@@ -228,7 +226,7 @@
     <string name="toast_export_failed">Nelze exportovat konfiguraci zařízení</string>
     <string name="toast_export_success">Konfigurace zařízení exportována</string>
     <string name="app_updater_service_notif_text">Umožňuje stahování aplikací na pozadí</string>
-    <string name="app_updater_service_notif_title">Stahování na pozadí</string>
+    <string name="app_updater_service_notif_title">Stahování aplikací na pozadí</string>
     <string name="installer_am_unavailable">Nainstalujte si aplikaci App Manager nebo změnte instalátor.</string>
     <string name="pref_install_mode_am">AM instalátor</string>
     <string name="download_progress">Stahování • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -250,12 +248,12 @@
     <string name="session_scrapped">Poslední relace zrušena</string>
     <string name="permissions_denied">Požadovaná oprávnění byla odepřena. Pro pokračování v akci je prosím udělte</string>
     <string name="session_verifying">Ověřování relace</string>
-    <string name="session_verifying_google">Ověření relace Google</string>
+    <string name="session_verifying_google">Ověřování relace Google</string>
     <string name="title_advanced">Pokročilé</string>
     <string name="menu">Nabídka</string>
     <string name="error">Vyskytla se chyba!</string>
     <string name="server_maintenance">Výpadek serveru z důvodu údržby</string>
-    <string name="requesting_new_session">Žádost o novou relaci</string>
+    <string name="requesting_new_session">Žádání o novou relaci</string>
     <string name="action_import">Importovat</string>
     <string name="toast_import_success">Konfigurace zařízení importována</string>
     <string name="toast_import_failed">Nepodařilo se importovat konfiguraci zařízení</string>
@@ -271,7 +269,7 @@
     <string name="pref_install_mode_shizuku">Shizuku instalátor</string>
     <string name="title_search_suggestion">Návrh vyhledávání</string>
     <string name="title_search_results">Výsledky vyhledávání</string>
-    <string name="login_rate_limited">Jejda, váš účet je omezen</string>
+    <string name="login_rate_limited">Vaše požadavky byly dočasně omezeny</string>
     <string name="failed_generating_session">Nepodařilo se vygenerovat relaci, kód chyby: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="access_denied_using_vpn">Přístup zamítnut! Používáte VPN nebo Tor\?</string>
     <string name="server_unreachable">Server je nedostupný</string>
@@ -286,32 +284,28 @@
     <string name="google_play_store_desc">Google Play, také známý jako Obchod Google Play a původně jako Android Market.</string>
     <string name="android_market_desc">Android Market byl online obchod se softwarovými aplikacemi navržený pro zařízení Android, který byl ukončen v roce 2017.</string>
     <string name="details_ratings_title_hint">Nadpis recenze</string>
-    <string name="title_apps_sale_provider">Poskytovatel - bestappsales.com</string>
-    <string name="pref_updates_check_frequency_desc">Nastavit intervaly pro automatické a vlastní aktualizace, v hodinách.</string>
-    <string name="pref_aurora_only">Pouze aplikace Aurora Store</string>
-    <string name="pref_aurora_only_desc">Kontrolovat pouze aktualizace aplikací nainstalovaných z aplikace Aurora Store</string>
+    <string name="pref_updates_check_frequency_desc">Nastavit časové intervaly pro automatické aktualizace, v hodinách.</string>
+    <string name="pref_aurora_only">Filtrovat aplikace z ostatních zdrojů</string>
+    <string name="pref_aurora_only_desc">Nekontrolovat aktualizace aplikací nainstalovaných z jiného zdroje, než je Aurora Store</string>
     <string name="title_app_settings">Nastavení aplikace</string>
     <string name="pref_updates_check_frequency">Frekvence automatických aktualizací</string>
-    <string name="pref_network_proxy_enable">Zapnout proxy</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
-    <string name="pref_network_proxy_title">Proxy</string>
     <string name="toast_proxy_invalid">Neplatná adresa URL proxy, zkontrolujte formát!</string>
     <string name="toast_proxy_success">Proxy úspěšně nastavena</string>
     <string name="toast_proxy_failed">Nepodařilo se nastavit proxy</string>
-    <string name="pref_network_proxy_enable_desc">Přesměrovat veškerý síťový provoz skrz proxy</string>
     <string name="pref_vending_version_device">Výchozí (z konfigurace zařízení)</string>
     <string name="pref_vending_version_title">Verze Google Play</string>
     <string name="onboarding_permission_doze">Stahování na pozadí</string>
     <string name="onboarding_permission_doze_desc">Umožnit aplikaci Aurora Store stahovat a aktualizovat aplikace na pozadí</string>
-    <string name="pref_updates_auto">Automaticky aktualizovat aplikace</string>
+    <string name="pref_updates_auto">Automatické aktualizace</string>
     <string name="pref_updates_auto_notify">Kontrolovat a oznamovat dostupné aktualizace</string>
     <string name="pref_updates_auto_off">Neaktualizovat automaticky aplikace</string>
-    <string name="pref_updates_auto_desc">Nastavení chování automatických aktualizací</string>
+    <string name="pref_updates_auto_desc">Nastavit chování automatických aktualizací</string>
     <string name="pref_updates_auto_install">Kontrolovat a automaticky instalovat dostupné aktualizace</string>
     <string name="action_request_analysis">Požádat o novou analýzu</string>
     <string name="failed_apk_export">Nepodařilo se exportovat soubory APK</string>
     <string name="download_clear_finished">Vymazat dokončené</string>
-    <string name="pref_updates_incompatible">Aktualizovat nekompatibilní</string>
+    <string name="pref_updates_incompatible">Zobrazit aktualizace, které se nemusí povést</string>
     <string name="pref_updates_incompatible_desc">Zobrazit aktualizace pro nekompatibilní nebo zakázané aplikace, jejichž instalace může selhat</string>
     <string name="action_home_screen">Přidat na domovskou obrazovku</string>
     <string name="session_installer_subtitle">Instalátor založený na relacích pro rozdělené/balíčkované soubory APK</string>
@@ -340,7 +334,7 @@
     <string name="pref_clear_device_owner_desc">Tato akce zruší oprávnění instalátoru k instalaci aplikací na pozadí. Opravdu chcete pokračovat?</string>
     <string name="add_dispenser_error">Neplatná adresa URL</string>
     <string name="add_dispenser_hint">Adresa URL vydavače</string>
-    <string name="remove_dispenser_title">Odstranit vydavač</string>
+    <string name="remove_dispenser_title">Odstranit vydavač?</string>
     <string name="remove_dispenser_summary">Chcete odebrat vydavač „<xliff:g id="url">%1$s</xliff:g>“?</string>
     <string name="add">Přidat</string>
     <string name="remove">Odstranit</string>
@@ -353,11 +347,7 @@
     <string name="add_dispenser_summary">Přidat vydavač tokenů do Aurora Store. Vydavače tokenů poskytují údaje o účtech, které Aurora Store používá pro anonymní přihlašování.</string>
     <string name="about_aurora_store_title">O aplikaci Aurora Store</string>
     <string name="about_aurora_store_subtitle">Zjistěte více informací o aplikaci Aurora Store</string>
-    <string name="about_aurora_store_summary">Aplikace Aurora Store umožňuje vyhledávat a stahovat aplikace z oficiálního Obchodu Google Play. Můžete si prohlédnout popisy aplikací, snímky obrazovky, aktualizace, komentáře ostatních uživatelů a stáhnout APK přímo z Google Play do svého zařízení. Chcete-li aplikaci Aurora Store používat, musíte mít účet Google a při prvním otevření a konfiguraci aplikace Aurora Store se k němu přihlásit.
-\n
-\nNa rozdíl od tradičního obchodu s aplikacemi aplikace Aurora Store nevlastní, nelicencuje ani nedistribuuje žádné aplikace. Všechny aplikace, popisy aplikací, snímky obrazovky a další obsah v aplikaci Aurora Store jsou přímo přístupné, stažené a/nebo zobrazené z Obchodu Google Play. Aplikace Aurora Store funguje přesně jako dveře nebo prohlížeč, umožňuje přihlášení k účtu Google a vyhledávání aplikací z Obchodu Google Play.
-\n
-\nUpozornění: aplikace Aurora Store nemá žádné schválení, sponzoring ani autorizaci od společnosti Google, Google Play, aplikací stažených prostřednictvím aplikace Aurora Store ani od vývojářů aplikací; aplikace Aurora Store s nimi také nemá žádné spojení, spolupráci ani vazbu.</string>
+    <string name="about_aurora_store_summary">Aplikace Aurora Store umožňuje vyhledávat a stahovat aplikace z oficiálního Obchodu Google Play. Můžete si prohlédnout popisy aplikací, snímky obrazovky, aktualizace, komentáře ostatních uživatelů a stáhnout APK přímo z Google Play do svého zařízení. Chcete-li aplikaci Aurora Store používat, musíte mít účet Google a při prvním otevření a konfiguraci aplikace Aurora Store se k němu přihlásit. \n \nNa rozdíl od tradičního obchodu s aplikacemi aplikace Aurora Store nevlastní, nelicencuje ani nedistribuuje žádné aplikace. Všechny aplikace, popisy aplikací, snímky obrazovky a další obsah v aplikaci Aurora Store jsou přímo přístupné, stažené a/nebo zobrazené z Obchodu Google Play. Aplikace Aurora Store funguje přesně jako dveře nebo prohlížeč, umožňuje přihlášení k účtu Google a vyhledávání aplikací z Obchodu Google Play. \n \nUpozornění: aplikace Aurora Store nemá žádné schválení, sponzoring ani autorizaci od společnosti Google, Google Play, aplikací stažených prostřednictvím aplikace Aurora Store ani od vývojářů aplikací; aplikace Aurora Store s nimi také nemá žádné spojení, spolupráci ani vazbu.</string>
     <string name="session_login">Přihlaste se prosím do vašeho účtu Google</string>
     <string name="toast_app_unavailable">Aplikace není dostupná pro vaše zařízení</string>
     <string name="details_no_favourites">Nenalezeny žádné oblíbené aplikace</string>
@@ -380,7 +370,6 @@
     <string name="item_optional">Volitelné</string>
     <string name="toast_permission_installer_required">Nejprve musíte udělit oprávnění instalátoru</string>
     <string name="details_data_safety_subtitle">Postupy ochrany soukromí a zabezpečení dat poskytnuté vývojářem</string>
-    <string name="toast_permission_esm_caution">Možná budete muset oprávnění znovu udělit z důvodu chyby ve Storage Access Framework</string>
     <string name="force_restart_title">Restartovat Aurora Store</string>
     <string name="force_restart_summary">Aplikace Aurora Store, potřebuje restartovat pro použití nového nastavení</string>
     <string name="export_app_summary">Čekejte prosím, probíhá export vašeho souboru</string>
@@ -401,7 +390,6 @@
     <string name="made_with_love">Vytvořeno s <xliff:g id="heart_emoji">%1$s</xliff:g> v Indii</string>
     <string name="default_spoof">Výchozí</string>
     <string name="available_spoof">Dostupné</string>
-    <string name="toast_permission_esm_restart">Možná bude nutné restartovat aplikaci, aby se promítlo udělení oprávnění.</string>
     <string name="action_remove_all">Odstranit vše</string>
     <string name="action_select_all">Vybrat vše</string>
     <string name="toast_black_import_failed">Nepodařilo se importovat černou listinu!</string>
@@ -416,15 +404,73 @@
     <string name="details_compatibility_gms_required_title">Vyžaduje Služby Google Play</string>
     <string name="details_compatibility_gms_required_subtitle">Možná bude nutná instalace proprietární knihovny společnosti Google nebo svobodné implementace, jako je microG.</string>
     <string name="details_compatibility_gms_not_required_subtitle">Tato aplikace funguje bez proprietární knihovny společnosti Google. Může nicméně ke správné funkčnosti stále vyžadovat další knihovny třetích stran.</string>
-    <string name="details_compatibility_microg">S projektem microG</string>
+    <string name="details_compatibility_microg">Se službou microG</string>
     <string name="details_compatibility_no_gms">Bez Služeb Google Play</string>
     <string name="details_compatibility_status_limited">Omezené: funguje s omezeními</string>
     <string name="details_compatibility_status_unsupported">Nepodporované: nefunguje</string>
     <string name="details_compatibility_status_unknown">Neznámé: zatím nezkontrolováno</string>
     <string name="details_compatibility_gms_not_required_title">Funguje bez Služeb Google Play</string>
-    <string name="details_compatibility_status_compatible">Kompatibilní: funguje bez problémů</string>
+    <string name="details_compatibility_status_compatible">Kompatibilní – funguje bez problémů</string>
     <string name="plexus_progress">Kontrola kompatibility…</string>
     <string name="plexus_powered">Využívá službu Plexus</string>
     <string name="installed_apps_size">Nainstalováno <xliff:g id="installed_apps_size">%1$d</xliff:g> aplikací</string>
     <string name="no_apps_available">Nejsou dostupné žádné aplikace</string>
+    <string name="pref_network_microg_login_title">Použít microG k přihlášení k účtům</string>
+    <string name="pref_network_microg_login_desc">Během přihlašování do účtů Google použít službu microG pro jednodušší proces přihlášení</string>
+    <string name="set">Nastavit</string>
+    <string name="pref_updates_restrictions_idle">Když je zařízení nečinné</string>
+    <string name="pref_updates_restrictions_battery">Když je baterie dostatečně nabitá</string>
+    <string name="pref_updates_restrictions_title">Omezení automatických aktualizací</string>
+    <string name="pref_network_proxy_desc">Zobrazit a spravovat nastavení proxy</string>
+    <string name="pref_updates_restrictions_desc">Nastavit omezení zařízení pro automatické aktualizace</string>
+    <string name="disable">Zakázat</string>
+    <string name="toast_proxy_disabled">Síť proxy úspěšně zakázána</string>
+    <string name="pref_updates_restrictions_metered">Pouze na neměřených sítích</string>
+    <string name="verification_failed">Nepodařilo se ověřit stažené soubory</string>
+    <string name="pref_common_advanced">Pokročilé</string>
+    <string name="pref_updates_app_source">Zdroj aplikací</string>
+    <string name="app_info_downloads">Stahování</string>
+    <string name="app_info_updated_on">Naposledy aktualizováno</string>
+    <string name="app_info_min_android">Minimální verze Androidu</string>
+    <string name="app_info_target_android">Cílová úroveň API</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> oprávnění</string>
+    <string name="action_install_microG">Nainstalovat balíček microG</string>
+    <string name="onboarding_title_gsf">Kompatibilita aplikací</string>
+    <string name="onboarding_title_gsf_desc">Chybějící závislosti</string>
+    <string name="onboarding_gms_agreement">Přečetl/a jsem si a souhlasím se Smluvními podmínkami a Zásadami ochrany osobních údajů microG</string>
+    <string name="onboarding_gms_missing">Na vašem zařízení se nám nepodařilo nalézt Služby Google Play. Mnoho populárních aplikací je nyní vyžaduje pro správnou funkčnost!</string>
+    <string name="onboarding_gms_microg">microG je bezplatná a otevřená implementace, která poskytuje podobnou funkčnost pro běh aplikací závislých na Službách Google Play pro zařízení Android skrze reimplementaci.\n\nmicroG umožňuje aplikacím přístup k daným rozhraním API Google, čímž zlepšuje kompatibilitu pro uživatele a poskytuje výhody ve formě soukromí.\n\nmicroG se spustí automaticky na pozadí, jakmile otevřete aplikace závislé na Mobilních službách Google.</string>
+    <string name="microg_privacy_policy">Přečtěte si Zásady ochrany údajů microG</string>
+    <string name="microg_license_agreement">Přečtěte si Licenci a Smlouvu microG</string>
+    <string name="microg_website">Navštivte web projektu microG</string>
+    <string name="details_data_safety_collect">Data, která může tato aplikace shromažďovat</string>
+    <string name="details_data_safety_collect_none">Vývojář uvedl, že tato aplikace neshromažďuje údaje o uživatelích.</string>
+    <string name="details_data_safety_shared">Data, která může tato aplikace sdílet</string>
+    <string name="details_data_safety_share_none">Vývojář uvedl, že tato aplikace nesdílí údaje o uživatelích s jinými společnostmi nebo organizacemi.</string>
+    <string name="exodus_tracker_desc">Tato verze aplikace může obsahovat více sledovacích prvků, které se zatím nenachází v databázi služby Exodus Privacy.</string>
+    <string name="exodus_report_trackers">Ve verzi <xliff:g id="app_version_name">%2$s</xliff:g> bylo nalezeno <xliff:g id="number_of_trackers">%1$d</xliff:g> známých sledovacích prvků</string>
+    <string name="no_description">Není dostupný žádný popis</string>
+    <string name="details_more_info">Další informace</string>
+    <string name="details_more_target_api">Cíle</string>
+    <string name="details_more_package_name">Název balíčku</string>
+    <string name="details_more_content_rating">Hodnocení obsahu</string>
+    <string name="select_app_for_details">Vyberte aplikaci pro více podrobností</string>
+    <string name="action_filter_no_ads">Bez reklam</string>
+    <string name="action_filter_no_gms">Bez Služeb Play</string>
+    <string name="manual_download_version_error">Kód verze může obsahovat pouze čísla</string>
+    <string name="preparing_to_install">Příprava na instalaci</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Vyžadováno oprávnění</item>
+        <item quantity="few">Vyžadována oprávnění</item>
+        <item quantity="many">Vyžadována oprávnění</item>
+        <item quantity="other">Vyžadována oprávnění</item>
+    </plurals>
+    <string name="installer_microg_misconfigured">Instalátoru microG se nepodařilo nainstalovat aplikaci, nejspíše z důvodu chybné konfigurace.</string>
+    <string name="pref_install_mode_microg">Instalátor microG</string>
+    <string name="microg_installer_subtitle">Vyžaduje nainstalovanou Doprovodnou aplikaci microG</string>
+    <string name="microg_installer_desc">Pomáhá obejít kontrolu integrity aplikací (pouze instalátor)</string>
+    <string name="loading">Probíhá načítání</string>
+    <string name="page">Stránka <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Přeskočit</string>
+    <string name="force_restart_snack">Restartovat pro použití změn?</string>
 </resources>

@@ -21,6 +21,7 @@ package com.aurora.store.data.installer
 
 import android.content.Context
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.InstallerEvent
@@ -56,8 +57,6 @@ class RootInstaller @Inject constructor(
             )
     }
 
-    private val TAG = RootInstaller::class.java.simpleName
-
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {
             Log.i(TAG, "${download.packageName} already queued")
@@ -76,16 +75,20 @@ class RootInstaller @Inject constructor(
                     context.getString(R.string.installer_status_failure),
                     context.getString(R.string.installer_root_unavailable)
                 )
-                Log.e(TAG, " >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+                Log.e(
+                    TAG,
+                    " >>>>>>>>>>>>>>>>>>>>>>>>>> NO ROOT ACCESS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+                )
             }
         }
     }
 
-    private fun xInstall(packageName: String, versionCode: Int, sharedLibPkgName: String = "") {
+    private fun xInstall(packageName: String, versionCode: Long, sharedLibPkgName: String = "") {
         var totalSize = 0
 
-        for (file in getFiles(packageName, versionCode, sharedLibPkgName))
+        for (file in getFiles(packageName, versionCode, sharedLibPkgName)) {
             totalSize += file.length().toInt()
+        }
 
         val result: Shell.Result =
             Shell.cmd("pm install-create -i $PLAY_PACKAGE_NAME --user 0 -r -S $totalSize")
@@ -101,7 +104,9 @@ class RootInstaller @Inject constructor(
             val sessionId = sessionIdMatcher.group(1)?.toInt()
             if (Shell.getShell().isRoot && sessionId != null) {
                 for (file in getFiles(packageName, versionCode, sharedLibPkgName)) {
-                    Shell.cmd("cat \"${file.absoluteFile}\" | pm install-write -S ${file.length()} $sessionId \"${file.name}\"")
+                    Shell.cmd(
+                        "cat \"${file.absoluteFile}\" | pm install-write -S ${file.length()} $sessionId \"${file.name}\""
+                    )
                         .exec()
                 }
 
@@ -112,11 +117,12 @@ class RootInstaller @Inject constructor(
                     if (packageName == download?.packageName) onInstallationSuccess()
                 } else {
                     removeFromInstallQueue(packageName)
-                    val event = InstallerEvent.Failed(packageName).apply {
-                        this.extra = context.getString(R.string.installer_status_failure)
-                        this.error = parseError(shellResult)
-                    }
-                    AuroraApp.events.send(event)
+                    AuroraApp.events.send(
+                        InstallerEvent.Failed(
+                            packageName = packageName,
+                            error = parseError(shellResult)
+                        )
+                    )
                 }
             } else {
                 removeFromInstallQueue(packageName)
@@ -136,7 +142,5 @@ class RootInstaller @Inject constructor(
         }
     }
 
-    private fun parseError(result: Shell.Result): String {
-        return result.err.joinToString(separator = "\n")
-    }
+    private fun parseError(result: Shell.Result): String = result.err.joinToString(separator = "\n")
 }

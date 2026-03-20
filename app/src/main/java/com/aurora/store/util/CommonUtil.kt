@@ -21,11 +21,8 @@ package com.aurora.store.util
 
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ProcessLifecycleOwner
 import com.aurora.store.R
 import com.aurora.store.data.model.ProxyInfo
-import java.text.DecimalFormat
 import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
@@ -51,8 +48,9 @@ object CommonUtil {
     )
 
     fun addSiPrefix(value: Long): String {
-        if (value <= 1L)
+        if (value <= 1L) {
             return "NA"
+        }
         var tempValue = value
         var order = 0
         while (tempValue >= 1000.0) {
@@ -62,9 +60,8 @@ object CommonUtil {
         return tempValue.toString() + siPrefixes[order]
     }
 
-    fun addDiPrefix(value: Long): String {
-        if (value <= 1L)
-            return "NA"
+    fun addDiPrefix(value: Long): String? {
+        if (value <= 1L) return null
         var tempValue = value
         var order = 0
         while (tempValue >= 1000.0) {
@@ -104,44 +101,11 @@ object CommonUtil {
         val exp = (ln(bytes.toDouble()) / ln(unit.toDouble())).toInt()
         val pre = (if (si) "kMGTPE" else "KMGTPE")[exp - 1].toString() + if (si) "" else "i"
         return String.format(
-            Locale.getDefault(), "%.1f %sB/s",
+            Locale.getDefault(),
+            "%.1f %sB/s",
             bytes / unit.toDouble().pow(exp.toDouble()),
             pre
         )
-    }
-
-    fun humanReadableByteValue(bytes: Long, si: Boolean): String {
-        val unit = if (si) 1000 else 1024
-        if (bytes < unit) return "$bytes B"
-        val exp = (ln(bytes.toDouble()) / ln(unit.toDouble())).toInt()
-        val pre = (if (si) "kMGTPE" else "KMGTPE")[exp - 1].toString() + if (si) "" else "i"
-        return String.format(
-            Locale.getDefault(), "%.1f %sB",
-            bytes / unit.toDouble().pow(exp.toDouble()),
-            pre
-        )
-    }
-
-    fun getDownloadSpeedString(context: Context, downloadedBytesPerSecond: Long): String {
-        if (downloadedBytesPerSecond < 0) {
-            return context.getString(R.string.download_speed_estimating)
-        }
-        val kb = downloadedBytesPerSecond.toDouble() / 1000.toDouble()
-        val mb = kb / 1000.toDouble()
-        val decimalFormat = DecimalFormat(".##")
-        return when {
-            mb >= 1 -> {
-                context.getString(R.string.download_speed_mb, decimalFormat.format(mb))
-            }
-
-            kb >= 1 -> {
-                context.getString(R.string.download_speed_kb, decimalFormat.format(kb))
-            }
-
-            else -> {
-                context.getString(R.string.download_speed_bytes, downloadedBytesPerSecond)
-            }
-        }
     }
 
     fun cleanupInstallationSessions(context: Context) {
@@ -158,8 +122,8 @@ object CommonUtil {
     }
 
     fun parseProxyUrl(proxyUrl: String): ProxyInfo? {
-        val pattern = """^(https?|socks5?)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$""".toRegex()
-        val match = pattern.find(proxyUrl)
+        val pattern = """^(https?|socks5?)://(?:([^\s:@]+):([^\s:@]+)@)?([^\s:@]+):(\d+)$"""
+        val match = pattern.toRegex().find(proxyUrl)
 
         return when {
             match != null -> {
@@ -180,9 +144,5 @@ object CommonUtil {
 
             else -> null
         }
-    }
-
-    fun inForeground(): Boolean {
-        return ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)
     }
 }

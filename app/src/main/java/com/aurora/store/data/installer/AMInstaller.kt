@@ -3,6 +3,7 @@ package com.aurora.store.data.installer
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.aurora.extensions.TAG
 import com.aurora.store.R
 import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.data.model.Installer
@@ -37,8 +38,6 @@ class AMInstaller @Inject constructor(
                 description = R.string.am_installer_desc
             )
     }
-
-    private val TAG = AMInstaller::class.java.simpleName
 
     override fun install(download: Download) {
         if (isAlreadyQueued(download.packageName)) {

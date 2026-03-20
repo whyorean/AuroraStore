@@ -28,23 +28,22 @@ import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
 import com.aurora.store.TopChartStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import javax.inject.Inject
 
 @HiltViewModel
 class TopChartViewModel @Inject constructor(
     private val webTopChartsHelper: WebTopChartsHelper
-): ViewModel() {
+) : ViewModel() {
 
     private var stash: TopChartStash = mutableMapOf()
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
 
-    private fun contract(): TopChartsContract {
-        return webTopChartsHelper
-    }
+    private val topChartsContract: TopChartsContract
+        get() = webTopChartsHelper
 
     fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -53,7 +52,7 @@ class TopChartViewModel @Inject constructor(
             }
 
             try {
-                val cluster = contract().getCluster(type.value, chart.value)
+                val cluster = topChartsContract.getCluster(type.value, chart.value)
                 updateCluster(type, chart, cluster)
                 liveData.postValue(ViewState.Success(stash))
             } catch (_: Exception) {
@@ -67,7 +66,7 @@ class TopChartViewModel @Inject constructor(
                 try {
                     val target = targetCluster(type, chart)
                     if (target.hasNext()) {
-                        val newCluster = contract().getNextStreamCluster(
+                        val newCluster = topChartsContract.getNextStreamCluster(
                             target.clusterNextPageUrl
                         )
 
@@ -86,10 +85,13 @@ class TopChartViewModel @Inject constructor(
         chart: TopChartsContract.Chart,
         newCluster: StreamCluster
     ) {
-        targetCluster(type, chart).apply {
-            clusterAppList.addAll(newCluster.clusterAppList)
-            clusterNextPageUrl = newCluster.clusterNextPageUrl
-        }
+        val streamCluster = targetCluster(type, chart)
+        val mergedCluster = streamCluster.copy(
+            clusterNextPageUrl = newCluster.clusterNextPageUrl,
+            clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList
+        )
+
+        stash[type]?.set(chart, mergedCluster)
     }
 
     private fun targetCluster(

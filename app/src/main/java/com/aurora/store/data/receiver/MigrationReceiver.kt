@@ -6,14 +6,18 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.content.getSystemService
+import androidx.work.WorkManager
 import com.aurora.Constants
 import com.aurora.extensions.isOAndAbove
+import com.aurora.store.data.helper.UpdateHelper.Companion.getAutoUpdateWork
+import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.work.CacheWorker
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
 import com.aurora.store.util.Preferences.PREFERENCE_MIGRATION_VERSION
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import com.aurora.store.util.save
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,7 +64,7 @@ class MigrationReceiver : BroadcastReceiver() {
                 if (CertUtil.isAppGalleryApp(context, context.packageName)) {
                     val dispensers = Preferences.getStringSet(context, PREFERENCE_DISPENSER_URLS)
                         .toMutableSet()
-                    
+
                     dispensers.remove(Constants.URL_DISPENSER)
 
                     context.save(PREFERENCE_DISPENSER_URLS, dispensers)
@@ -71,10 +75,29 @@ class MigrationReceiver : BroadcastReceiver() {
             // 63 -> 64
             if (currentVersion == 2) {
                 if (isOAndAbove) {
-                    with(context.getSystemService<NotificationManager>()!!) { // !1189
+                    with(context.getSystemService<NotificationManager>()!!) {
+                        // !1189
                         deleteNotificationChannel("NOTIFICATION_CHANNEL_GENERAL")
                         deleteNotificationChannel("NOTIFICATION_CHANNEL_ALERT")
                     }
+                }
+                currentVersion++
+            }
+
+            // 68 -> 69
+            if (currentVersion == 3) {
+                val updateMode = UpdateMode.entries[
+                    Preferences.getInteger(
+                        context,
+                        PREFERENCE_UPDATES_AUTO,
+                        UpdateMode.DISABLED.ordinal
+                    )
+                ]
+
+                if (updateMode != UpdateMode.DISABLED) {
+                    runCatching {
+                        WorkManager.getInstance(context).updateWork(getAutoUpdateWork(context))
+                    }.onFailure { Log.e(TAG, "Failed to migrate app updates!", it) }
                 }
                 currentVersion++
             }

@@ -44,7 +44,7 @@ class DeviceMiuiSheet : BaseDialogSheet<SheetDeviceMiuiBinding>() {
         binding.btnPrimary.setOnClickListener {
             try {
                 startActivity(Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS))
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 toast(R.string.toast_developer_setting_failed)
             }
         }

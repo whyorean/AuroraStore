@@ -24,6 +24,7 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import com.aurora.store.BuildConfig
 
 object Preferences {
 
@@ -34,7 +35,6 @@ object Preferences {
     const val PREFERENCE_THEME_STYLE = "PREFERENCE_THEME_STYLE"
     const val PREFERENCE_FOR_YOU = "PREFERENCE_FOR_YOU"
     const val PREFERENCE_DEFAULT_SELECTED_TAB = "PREFERENCE_DEFAULT_SELECTED_TAB"
-    const val PREFERENCE_SIMILAR = "PREFERENCE_SIMILAR"
     const val PREFERENCE_INTRO = "PREFERENCE_INTRO"
 
     const val PREFERENCE_FILTER_FDROID = "PREFERENCE_FILTER_FDROID"
@@ -46,7 +46,8 @@ object Preferences {
 
     const val PREFERENCE_PROXY_URL = "PREFERENCE_PROXY_URL"
     const val PREFERENCE_PROXY_INFO = "PREFERENCE_PROXY_INFO"
-    const val PREFERENCE_PROXY_ENABLED = "PREFERENCE_PROXY_ENABLED"
+
+    const val PREFERENCE_MICROG_AUTH = "PREFERENCE_MICROG_AUTH"
 
     const val PREFERENCE_DISPENSER_URLS = "PREFERENCE_DISPENSER_URLS"
     const val PREFERENCE_VENDING_VERSION = "PREFERENCE_VENDING_VERSION"
@@ -54,16 +55,25 @@ object Preferences {
     const val PREFERENCE_UPDATES_EXTENDED = "PREFERENCE_UPDATES_EXTENDED"
     const val PREFERENCE_UPDATES_AUTO = "PREFERENCE_UPDATES_AUTO"
     const val PREFERENCE_UPDATES_CHECK_INTERVAL = "PREFERENCE_UPDATES_CHECK_INTERVAL"
+    const val PREFERENCES_UPDATES_RESTRICTIONS = "PREFERENCES_UPDATES_RESTRICTIONS"
+    const val PREFERENCES_UPDATES_RESTRICTIONS_METERED = "PREFERENCES_UPDATES_RESTRICTIONS_METERED"
+    const val PREFERENCES_UPDATES_RESTRICTIONS_IDLE = "PREFERENCES_UPDATES_RESTRICTIONS_IDLE"
+    const val PREFERENCES_UPDATES_RESTRICTIONS_BATTERY = "PREFERENCES_UPDATES_RESTRICTIONS_BATTERY"
 
     const val PREFERENCE_MIGRATION_VERSION = "PREFERENCE_MIGRATION_VERSION"
 
     private var prefs: SharedPreferences? = null
 
-    fun getPrefs(context: Context): SharedPreferences {
-        if (prefs == null) {
-            prefs = PreferenceManager.getDefaultSharedPreferences(context)
+    fun getPrefs(context: Context): SharedPreferences = when (BuildConfig.FLAVOR) {
+        "vanilla" -> {
+            prefs ?: PreferenceManager.getDefaultSharedPreferences(context).also { prefs = it }
         }
-        return prefs!!
+
+        else -> {
+            val prefName = "${context.packageName}_${BuildConfig.FLAVOR}_preferences"
+            prefs ?: context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+                .also { prefs = it }
+        }
     }
 
     fun remove(context: Context, key: String) {
@@ -98,33 +108,24 @@ object Preferences {
         getPrefs(context).edit(true) { putBoolean(key, value) }
     }
 
-    fun getString(context: Context, key: String, default: String = ""): String {
-        return getPrefs(context).getString(key, default).toString()
-    }
+    fun getString(context: Context, key: String, default: String = ""): String =
+        getPrefs(context).getString(key, default).toString()
 
     fun getStringSet(
         context: Context,
         key: String,
         default: Set<String> = emptySet()
-    ): Set<String> {
-        return getPrefs(context).getStringSet(key, default) ?: emptySet()
-    }
+    ): Set<String> = getPrefs(context).getStringSet(key, default) ?: emptySet()
 
-    fun getInteger(context: Context, key: String, default: Int = 0): Int {
-        return getPrefs(context).getInt(key, default)
-    }
+    fun getInteger(context: Context, key: String, default: Int = 0): Int =
+        getPrefs(context).getInt(key, default)
 
-    fun getFloat(context: Context, key: String): Float {
-        return getPrefs(context).getFloat(key, 0.0f)
-    }
+    fun getFloat(context: Context, key: String): Float = getPrefs(context).getFloat(key, 0.0f)
 
-    fun getLong(context: Context, key: String): Long {
-        return getPrefs(context).getLong(key, 0L)
-    }
+    fun getLong(context: Context, key: String): Long = getPrefs(context).getLong(key, 0L)
 
-    fun getBoolean(context: Context, key: String, default: Boolean = false): Boolean {
-        return getPrefs(context).getBoolean(key, default)
-    }
+    fun getBoolean(context: Context, key: String, default: Boolean = false): Boolean =
+        getPrefs(context).getBoolean(key, default)
 }
 
 /*Preference Extensions*/
@@ -138,7 +139,6 @@ fun Context.save(key: String, value: String) = Preferences.putString(this, key, 
 fun Context.save(key: String, value: Set<String>) = Preferences.putStringSet(this, key, value)
 
 fun Context.remove(key: String) = Preferences.remove(this, key)
-
 
 fun Fragment.save(key: String, value: Int) = requireContext().save(key, value)
 

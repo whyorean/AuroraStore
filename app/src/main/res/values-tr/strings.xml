@@ -7,7 +7,7 @@
     <string name="about_xda">XDA Forumları</string>
     <string name="action_clear">Temizle</string>
     <string name="action_cancel">İptal et</string>
-    <string name="action_blacklist">Kara Liste</string>
+    <string name="action_blacklist">Kara liste</string>
     <string name="action_blacklist_add">Kara listeye ekle</string>
     <string name="action_back">Geri</string>
     <string name="account_logout">Aurora\'dan çıkış yap</string>
@@ -49,7 +49,7 @@
     <string name="title_no_network">İnternet yok</string>
     <string name="title_library">Kütüphane</string>
     <string name="title_language">Dil</string>
-    <string name="title_installer">Uygulama Kurucu</string>
+    <string name="title_installer">Uygulama kurucu</string>
     <string name="title_installed">Kuruldu</string>
     <string name="title_installation">Kurulum</string>
     <string name="title_games">Oyunlar</string>
@@ -57,7 +57,6 @@
     <string name="title_download_manager">İndirilenler</string>
     <string name="title_device">Cihaz</string>
     <string name="title_blacklist_manager">Kara liste yöneticisi</string>
-    <string name="title_apps_sale">Satıştaki uygulamalar</string>
     <string name="title_apps_library">Kütüphanedeki uygulamalar</string>
     <string name="title_apps_games">Uygulamalarım ve oyunlarım</string>
     <string name="title_apps">Uygulamalar</string>
@@ -78,11 +77,10 @@
     <string name="purchase_not_found">Uygulama bulunamadı</string>
     <string name="purchase_unsupported">Uygulama desteklenmiyor</string>
     <string name="purchase_invalid">Uygulama satın alınmadı</string>
-    <string name="purchase_failed">İndirme Başarısız</string>
-    <string name="pref_ui_similar_apps_desc">Uygulama ayrıntıları sayfasında benzer ve ilgili kümeleri görüntüle</string>
+    <string name="purchase_failed">İndirme başarısız</string>
     <string name="pref_ui_similar_apps">Benzer ve ilgili uygulamalar</string>
-    <string name="pref_ui_no_for_you_desc">Ana ekranda Sana Özel Sayfalar\'ı göster</string>
-    <string name="pref_ui_no_for_you">Sana Özel Sayfalar</string>
+    <string name="pref_ui_no_for_you_desc">Ana ekranda Sana özel sayfaları göster</string>
+    <string name="pref_ui_no_for_you">Sana özel sayfalar</string>
     <string name="pref_ui_layout_tab">Varsayılan sekmeyi seç</string>
     <string name="pref_ui_layout">Yerleşim</string>
     <string name="pref_ui_title">Özelleştirme</string>
@@ -96,13 +94,13 @@
     <string name="pref_install_delete_title">Kurduktan sonra APK\'yi sil</string>
     <string name="pref_install_delete_summary">İndirilen APK\'lar kurulumdan hemen sonra silinecek</string>
     <string name="pref_filter_fdroid_title">F-Droid uygulamalarını süz</string>
-    <string name="pref_filter_fdroid_summary">F-Droid\'den indirilen ya da kurulan uygulamaların güncellemelerini denetleme</string>
+    <string name="pref_filter_fdroid_summary">F-Droid\'den kurulan uygulamaların güncellemelerini denetleme</string>
     <string name="pref_common_extra">Ekler</string>
     <string name="onboarding_permission_installer_desc">Aurora Store\'dan uygulama kurmaya izin ver</string>
-    <string name="onboarding_permission_installer">Kurucu İzni</string>
-    <string name="onboarding_permission_esm">Harici Depolama Yöneticisi</string>
+    <string name="onboarding_permission_installer">Kurucu izni</string>
+    <string name="onboarding_permission_esm">Dış depolama yöneticisi</string>
     <string name="onboarding_permission_esa_desc">Büyük uygulamalar ve oyunlar için APK genişletme dosyalarını (OBB\'ler) kaydetmek için.</string>
-    <string name="onboarding_permission_esa">Harici Depolama Erişimi</string>
+    <string name="onboarding_permission_esa">Dış depolama erişimi</string>
     <string name="onboarding_welcome_select">Neler yapıyorsun\?</string>
     <string name="onboarding_title_welcome">Hoş geldiniz</string>
     <string name="onboarding_title_permissions">İzinler</string>
@@ -125,9 +123,9 @@
     <string name="installer_status_failure_session">Oturum oluşturulamadı</string>
     <string name="installer_status_failure_blocked">Kurulum engellendi</string>
     <string name="installer_status_failure">Kurucu başarısız oldu</string>
-    <string name="installer_service_misconfigured">Önce Aurora hizmetlerini kurun ve tüm izinleri verin.</string>
-    <string name="installer_service_unavailable">Aurora hizmetleri 1.0.9 veya üstünü kurun ya da kurucuyu değiştirin.</string>
-    <string name="installer_service_available">Aurora hizmetleri var ve kuruluma hazır.</string>
+    <string name="installer_service_misconfigured">Önce Aurora Hizmetlerini kurun ve tüm izinleri verin.</string>
+    <string name="installer_service_unavailable">Aurora Hizmetleri 1.0.9 veya üstünü kurun ya da kurucuyu değiştirin.</string>
+    <string name="installer_service_available">Aurora Hizmetleri uygun ve kuruluma hazır.</string>
     <string name="installer_root_unavailable">Kök erişimi yok. İzin verin veya kurucuyu değiştirin.</string>
     <string name="filter_review_two">İki</string>
     <string name="filter_review_three">Üç</string>
@@ -138,7 +136,7 @@
     <string name="filter_review_critical">Kritik</string>
     <string name="filter_review_all">Tümü</string>
     <string name="exodus_view_report">Raporu görüntüle</string>
-    <string name="exodus_substring">bilinen izleyici(ler) bulundu</string>
+    <string name="exodus_substring">bilinen izleyici bulundu</string>
     <string name="exodus_progress">İzleyiciler denetleniyor…</string>
     <string name="exodus_powered">Exodus Privacy Tarafından Destekleniyor</string>
     <string name="exodus_no_tracker">Bilinen izleyici içermiyor</string>
@@ -161,10 +159,10 @@
     <string name="details_paid">Ücretli</string>
     <string name="details_no_updates">Güncelleme yok</string>
     <string name="details_no_permission">İzin yok</string>
-    <string name="details_no_dependencies">Bağımlılık Yok</string>
+    <string name="details_no_dependencies">Bağımlılık yok</string>
     <string name="details_no_app_match">Eşleşen uygulama bulunamadı</string>
     <string name="details_no_ads">Reklam yok</string>
-    <string name="details_more_about_app">Uygulama hakkında daha fazla</string>
+    <string name="details_more_about_app">Uygulamayla ilgili daha çoğu</string>
     <string name="details_gsf_dependent">GSF Gerekir</string>
     <string name="details_free">Ücretsiz</string>
     <string name="details_dev_profile">Geliştirici profili</string>
@@ -172,18 +170,18 @@
     <string name="details_dev_address">Adres</string>
     <string name="details_description">Açıklama</string>
     <string name="details_dependencies">Bağımlılıklar</string>
-    <string name="details_contains_ads">Reklam İçerir</string>
+    <string name="details_contains_ads">Reklam içerir</string>
     <string name="details_changelog_unavailable">Değişiklik günlüğü sunulmadı</string>
     <string name="details_changelog">Değişiklik günlüğü</string>
     <string name="details_beta_delay">Kayıt işlemi biraz zaman alabilir, burayı sonra gözden geçirebilirsiniz.</string>
     <string name="details_beta_description">Resmî olarak yayınlanmadan önce yeni özellikleri ve hataları görebileceksin. Geri bildirim yaparak geliştiricilere destek olabilirsin.</string>
-    <string name="details_beta_available">Ön izleme programına katılmak ister misin\?</string>
+    <string name="details_beta_available">Ön izleme programına katılınsın mı?</string>
     <string name="details_beta_subscribed">Artık ön izleme sürümü kullanıyorsunuz</string>
     <string name="details_beta">Ön izleme programı</string>
     <string name="action_whitelist">Beyaz liste</string>
     <string name="action_update_all">Tümünü güncelle</string>
     <string name="action_update">Güncelle</string>
-    <string name="action_info">Uygulama Bilgisi</string>
+    <string name="action_info">Uygulama bilgisi</string>
     <string name="action_uninstall">Kaldır</string>
     <string name="action_share">Paylaş</string>
     <string name="action_search">Ara</string>
@@ -231,7 +229,7 @@
     <string name="app_updater_service_notif_title">Arka planda uygulama indirme</string>
     <string name="installer_am_unavailable">App Manager kurun veya kurucuyu değiştirin.</string>
     <string name="pref_install_mode_am">AM kurucu</string>
-    <string name="download_paused">Duraklatıldı •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
+    <string name="download_paused">Duraklatıldı • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_scrapped">Son oturum iptal edildi</string>
     <string name="session_verifying">Oturum doğrulanıyor</string>
     <string name="session_verifying_google">Google oturumu doğrulanıyor</string>
@@ -245,11 +243,11 @@
     <string name="download_eta_min">%1$ddak %2$dsn kaldı</string>
     <string name="onboarding_permission_notifications">Bildirimler</string>
     <string name="onboarding_permission_notifications_desc">Kurulum durumuyla ilgili bildirimler gönder</string>
-    <string name="download_progress">İndiriliyor •<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
+    <string name="download_progress">İndiriliyor • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="session_good">Vay canına! Her şey yolunda.</string>
     <string name="session_login_failed_google">Google aracılığıyla oturum açılamadı</string>
     <string name="session_init">Hazırlanıyor…</string>
-    <string name="search_hint">Uygulama ve Oyun Ara</string>
+    <string name="search_hint">Uygulama ve oyun Ara</string>
     <string name="update_available">güncelleme var</string>
     <string name="expand">Genişlet</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -277,33 +275,29 @@
     <string name="failed_to_fetch_report">Gizlilik raporu alınamadı</string>
     <string name="access_denied_using_vpn">Erişim reddedildi! VPN veya Tor kullanıyor musunuz\?</string>
     <string name="bad_request">İç hata! Lütfen bir süre sonra yeniden deneyin</string>
-    <string name="app_language">Uygulama Dili</string>
+    <string name="app_language">Uygulama dili</string>
     <string name="check_connectivity">İnternet bağlantısını denetle</string>
     <string name="failed_to_generate_session">Oturum oluşturulamadı</string>
     <string name="app_links_desc">Aurora Store\'un desteklenen bağlantıları açmasına izin ver</string>
     <string name="verifying_new_session">Yeni oturum doğrulanıyor</string>
-    <string name="app_links_title">Uygulama Bağlantıları</string>
+    <string name="app_links_title">Uygulama bağlantıları</string>
     <string name="google_play_store_desc">Google Play, Google Play Store ve eski adıyla Android Market olarak da bilinir.</string>
     <string name="android_market_desc">Android Market, Android aygıtlar için tasarlanan yazılım uygulamaları sunan çevrim içi mağazaydı ve 2017 yılında yayın yaşamını sonlandırdı.</string>
     <string name="details_ratings_title_hint">İnceleme başlığı</string>
     <string name="pref_updates_check_frequency_desc">Kendiliğinden güncellemeler için saat türünde aralığı yapılandır.</string>
-    <string name="pref_aurora_only">Yalnızca Aurora Store uygulamaları</string>
-    <string name="pref_aurora_only_desc">Yalnızca Aurora Store tarafından kurulan uygulamaları denetle</string>
-    <string name="title_app_settings">Uygulama Ayarları</string>
-    <string name="title_apps_sale_provider">Sağlayıcı - bestappsales.com</string>
+    <string name="pref_aurora_only">Diğer kaynaktan uygulamaları süz</string>
+    <string name="pref_aurora_only_desc">Aurora Store dışındaki kaynaklardan kurulan uygulamaların güncellemelerini denetleme</string>
+    <string name="title_app_settings">Uygulama ayarları</string>
     <string name="pref_updates_check_frequency">Kendiliğinden güncelleme sıklığı</string>
-    <string name="pref_network_proxy_enable">Vekili etkinleştir</string>
     <string name="pref_network_proxy_url">Vekil URL\'si</string>
-    <string name="pref_network_proxy_title">Vekil</string>
     <string name="toast_proxy_invalid">Geçersiz vekil URL\'si, biçimi denetle!</string>
     <string name="toast_proxy_success">Vekil belirleme başarılı</string>
     <string name="toast_proxy_failed">Vekil belirlenemedi</string>
-    <string name="pref_network_proxy_enable_desc">Uygulamadan tüm trafiğin vekilden gitmesini sağla</string>
     <string name="pref_vending_version_device">Varsayılan (cihaz yapılandırmasından)</string>
-    <string name="pref_vending_version_title">Google Play Sürümü</string>
-    <string name="onboarding_permission_doze">Arka Plan İndirmeleri</string>
+    <string name="pref_vending_version_title">Google Play sürümü</string>
+    <string name="onboarding_permission_doze">Arka plan indirmeleri</string>
     <string name="onboarding_permission_doze_desc">Aurora Store\'un arka planda uygulamaları indirmesine ve güncellemesine izin ver</string>
-    <string name="pref_updates_auto">Uygulamaları kendiliğinden güncelle</string>
+    <string name="pref_updates_auto">Otomatik güncellemeler</string>
     <string name="pref_updates_auto_notify">Kullanılabilir güncellemeleri denetle ve bildir</string>
     <string name="pref_updates_auto_off">Uygulamalar kendiliğinden güncellenmesin</string>
     <string name="pref_updates_auto_desc">Kendiliğinden güncelleme davranışını yapılandır</string>
@@ -311,19 +305,19 @@
     <string name="action_request_analysis">Yeni değerlendirme iste</string>
     <string name="failed_apk_export">APK\'lar dışa aktarılamadı</string>
     <string name="download_clear_finished">Temizlendi</string>
-    <string name="pref_updates_incompatible">Uyumsuz güncellemeler</string>
-    <string name="pref_updates_incompatible_desc">Kurulamayabilecek uyumsuz veya devre dışı uygulamalar için güncellemeleri göster</string>
+    <string name="pref_updates_incompatible">Başarısız olabilecek güncellemeleri göster</string>
+    <string name="pref_updates_incompatible_desc">Kurulamayabilecek uyumsuz veya devre dışı uygulamalar için güncellemeleri görüntüle</string>
     <string name="action_home_screen">Ana ekrana ekle</string>
     <string name="services_installer_subtitle">Arka planda kurulumlar için kurucu</string>
     <string name="services_installer_desc">Aurora Hizmetlerinin ayrıcalıklı sistem uygulaması olarak kurulmasını gerektirir</string>
     <string name="am_installer_subtitle">Tam özellikli açık kaynaklı paket yöneticisi</string>
-    <string name="am_installer_desc">App Manager gerektirir, MIUI iyileştirmesi açıkken kurmak için adb/root kipine ihtiyaç duyar</string>
-    <string name="shizuku_installer_subtitle">Sistem API\'lerini doğrudan adb/root ayrıcalıklarıyla kullan</string>
+    <string name="am_installer_desc">App Manager gerektirir, MIUI iyileştirmesi açıkken kurmak için adb/kök kipi gerekir</string>
+    <string name="shizuku_installer_subtitle">Sistem API\'lerini doğrudan adb/kök ayrıcalıklarıyla kullan</string>
     <string name="shizuku_installer_desc">Shizuku veya Sui gerektirir, ayarlanması ve izin verilmesi gerekir</string>
     <string name="session_installer_subtitle">Paketlenmiş/bölünmüş APK\'lar için oturum tabanlı kurucu</string>
     <string name="session_installer_desc">Tavsiye edilir, yerleşiktir ve tüm Android sürümlerini destekler</string>
-    <string name="root_installer_subtitle">Root izinlerini kullanan kabuk tabanlı kurucu</string>
-    <string name="root_installer_desc">Root/yetkili kullanıcı ayrıcalıkları gerektirir, tüm Android sürümlerini destekler.</string>
+    <string name="root_installer_subtitle">Kök izinlerini kullanan kabuk tabanlı kurucu</string>
+    <string name="root_installer_desc">Kök/yetkili kullanıcı ayrıcalıkları gerektirir, tüm Android sürümlerini destekler.</string>
     <string name="native_installer_subtitle">Intent tabanlı kurucu, tüm aygıtlarda kullanılabilir</string>
     <string name="native_installer_desc">Android 4.4 sürümünden önceki aygıtlar için en uygun</string>
     <string name="faqs_subtitle">Sorularınız mı var? Yanıtlarını öğrenin</string>
@@ -333,17 +327,17 @@
     <string name="manual_download_hint">İndirmek istediğiniz sürüm kodunu girin</string>
     <string name="privacy_policy_title">Gizlilik politikası</string>
     <string name="privacy_policy_subtitle">Aurora Store\'un verilerinizi nasıl kullandığını öğrenin</string>
-    <string name="title_more">Daha Fazla</string>
+    <string name="title_more">Daha Çoğu</string>
     <string name="manage_account">Hesabınızı yönetin</string>
     <string name="pref_clear_device_owner_title">Aygıt sahibini temizle</string>
     <string name="pref_clear_device_owner_summary">Aurora Store\'un aygıt sahibi uygulaması olmasını kaldırır</string>
     <string name="pref_clear_device_owner_desc">Bu, oturum kurucunun uygulamayı sessizce kurma iznini iptal edecektir. Aygıt sahipliğini temizlemeye devam edilsin mi?</string>
     <string name="pref_dispenser_title">Dağıtıcıları yönet</string>
     <string name="pref_dispenser_summary">Anonim oturum açmak için belirteç dağıtıcılarını görüntüleyin ve yönetin</string>
-    <string name="remove_dispenser_title">Dağıtıcıyı kaldır</string>
+    <string name="remove_dispenser_title">Dağıtıcı kaldırılsın mı?</string>
     <string name="remove">Kaldır</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="about_wiki_summary">Sık sorulan soruların (SSS) yanıtlarını, sorun giderme adımlarını ve daha fazlasını bulun</string>
+    <string name="about_wiki_summary">Sık sorulan soruların (S.S.S.) yanıtlarını, sorun giderme adımlarını ve daha çoğunu bulun</string>
     <string name="no_dispensers_available">Kullanılabilir dağıtıcı yok</string>
     <string name="remove_dispenser_summary">\"<xliff:g id="url">%1$s</xliff:g>\" dağıtıcısını kaldırmak istiyor musunuz?</string>
     <string name="add">Ekle</string>
@@ -352,21 +346,17 @@
     <string name="add_dispenser_error">Geçersiz URL</string>
     <string name="add_dispenser_hint">Dağıtıcı URL\'si</string>
     <string name="about_aurora_store_title">Aurora Store Hakkında</string>
-    <string name="about_aurora_store_subtitle">Aurora Store hakkında daha fazla bilgi edinin</string>
-    <string name="about_aurora_store_summary">Aurora Store, resmi Google Play mağazasından uygulama aramanızı ve indirmenizi sağlar. Uygulama açıklamalarını, ekran görüntülerini, güncellemeleri, diğer kullanıcıların yorumlarını görebilir ve APK\'yı doğrudan Google Play\'den aygıtınıza indirebilirsiniz. Aurora Store\'u kullanmak için bir Google Play hesabınızın olması ve Aurora Store\'u ilk açtığınızda ve yapılandırdığınızda Google Play hesabınızda oturum açmanız gerekir.
-\n
-\nGeleneksel bir uygulama mağazasının aksine, Aurora Store herhangi bir uygulamaya sahip değildir, lisanslamaz veya dağıtmaz. Aurora Store\'daki tüm uygulamalara, uygulama açıklamalarına, ekran görüntülerine ve diğer içeriğe doğrudan Google Play\'den erişilir, indirilir ve/veya görüntülenir. Aurora Store, tıpkı bir kapı veya tarayıcı gibi çalışarak Google Play hesabınızda oturum açmanıza ve Google Play\'deki uygulamaları bulmanıza olanak tanır.
-\n
-\nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
+    <string name="about_aurora_store_subtitle">Aurora Store ile ilgili daha çok bilgi edinin</string>
+    <string name="about_aurora_store_summary">Aurora Store, resmi Google Play Mağazasından uygulama aramanızı ve indirmenizi sağlar. Uygulama açıklamalarını, ekran görüntülerini, güncellemeleri, diğer kullanıcıların yorumlarını görebilir ve APK\'yı doğrudan Google Play\'den aygıtınıza indirebilirsiniz. Aurora Store\'u kullanmak için bir Google Play hesabınızın olması ve Aurora Store\'u ilk açtığınızda ve yapılandırdığınızda Google Play hesabınızda oturum açmanız gerekir. \n \nGeleneksel bir uygulama mağazasının tersine, Aurora Store herhangi bir uygulamayı sahiplenmez, lisanslamaz veya dağıtmaz. Aurora Store\'daki tüm uygulamalara, uygulama açıklamalarına, ekran görüntülerine ve diğer içeriğe doğrudan Google Play\'den erişilir, indirilir ve/veya görüntülenir. Aurora Store, tıpkı bir kapı veya tarayıcı gibi çalışarak Google Play hesabınızda oturum açmanıza ve Google Play\'deki uygulamaları bulmanızı sağlar.\n \nAurora Store\'un Google, Google Play, Aurora Store üzerinden indirilen herhangi bir uygulama veya herhangi bir uygulama geliştiricisinden herhangi bir onay, sponsorluk veya yetkilendirme almadığını ve Aurora Store\'un bunlarla herhangi bir ilişkisi, işbirliği veya bağlantısı olmadığını lütfen unutmayın.</string>
     <string name="session_login">Lütfen Google Play hesabınızda oturum açın</string>
     <string name="toast_app_unavailable">Uygulama aygıtınız için kullanılabilir değil</string>
-    <string name="toast_fav_export_failed">Sık kullanılanlar dışa aktarılamadı!</string>
-    <string name="toast_fav_import_success">Sık kullanılanlar içe aktarıldı!</string>
-    <string name="toast_fav_export_success">Sık kullanılanlar dışa aktarıldı!</string>
-    <string name="title_favourites_manager">Sık Kullanılan Uygulamalar</string>
-    <string name="action_favourite">Sık kullanılanlara ekle</string>
-    <string name="details_no_favourites">Sık kullanılan uygulama bulunamadı</string>
-    <string name="toast_fav_import_failed">Sık kullanılanlar içe aktarılamadı!</string>
+    <string name="toast_fav_export_failed">Gözdeler dışa aktarılamadı!</string>
+    <string name="toast_fav_import_success">Gözdeler içe aktarıldı!</string>
+    <string name="toast_fav_export_success">Gözdeler dışa aktarıldı!</string>
+    <string name="title_favourites_manager">Gözde uygulamalar</string>
+    <string name="action_favourite">Gözdelere ekle</string>
+    <string name="details_no_favourites">Gözde uygulama bulunamadı</string>
+    <string name="toast_fav_import_failed">Gözdeler içe aktarılamadı!</string>
     <string name="export_app_summary_success">Uygulama paketi başarıyla dışa aktarıldı</string>
     <string name="export_app_summary_fail">Uygulama paketi dışa aktarılamadı</string>
     <string name="action_uninstall_success">Başarıyla kaldırıldı</string>
@@ -376,14 +366,13 @@
     <string name="check_updates">Güncellemeleri denetle</string>
     <string name="onboarding_permission_installer_legacy_desc">Bilinmeyen kaynaklardan uygulamaların kurulmasına izin ver</string>
     <string name="details_data_safety_title">Veri güvenliği</string>
-    <string name="details_data_safety_subtitle">Geliştirici tarafından açıklanan veri gizliliği ve güvenliği uygulamaları</string>
+    <string name="details_data_safety_subtitle">Geliştiricice açıklanan veri gizliliği ve güvenliği uygulamaları</string>
     <string name="toast_permission_installer_required">Önce kurucu izni vermeniz gerekir</string>
-    <string name="toast_permission_esm_caution">Depolama Erişim Çerçevesindeki bir hata nedeniyle izni yeniden vermeniz gerekebilir</string>
     <string name="item_required">Gerekli</string>
     <string name="item_optional">İsteğe bağlı</string>
     <string name="force_restart_title">Aurora Store\'u yeniden başlat</string>
     <string name="force_restart_summary">Aurora Store\'un yeni değiştirilen ayarları uygulamak için yeniden başlatılması gerekir</string>
-    <string name="export_app_title">Dosya Dışa Aktarıcı</string>
+    <string name="export_app_title">Dosya dışa aktarıcı</string>
     <string name="export_app_summary">Bekleyin, dosyanız dışa aktarılıyor</string>
     <string name="notification_channel_export">Uygulama dışa aktarma bildirimi</string>
     <string name="notification_channel_install">Kurulum bildirimi</string>
@@ -407,7 +396,6 @@
     <string name="toast_black_import_failed">Kara liste içe aktarılamadı!</string>
     <string name="toast_black_export_success">Kara liste dışa aktarıldı!</string>
     <string name="toast_black_export_failed">Kara liste dışa aktarılamadı!</string>
-    <string name="toast_permission_esm_restart">Verilen iznin etkinleşmesi için uygulamayı yeniden başlatmanız gerekebilir.</string>
     <string name="default_spoof">Öntanımlı</string>
     <string name="toast_black_import_success">Kara liste içe aktarıldı!</string>
     <string name="action_unarchive">Arşivden kaldır</string>
@@ -426,4 +414,61 @@
     <string name="details_compatibility_status_unsupported">Desteklenmiyor: İşlevsiz</string>
     <string name="details_compatibility_status_unknown">Bilinmiyor: Henüz denetlenmedi</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> uygulama kuruldu</string>
+    <string name="no_apps_available">Uygulama yok</string>
+    <string name="pref_network_microg_login_title">Hesaplara giriş yapmak için microG kullan</string>
+    <string name="pref_network_microg_login_desc">Daha basit bir giriş akışı için Google hesaplarına giriş yaparken microG ile kimliği doğrula</string>
+    <string name="set">Ayarla</string>
+    <string name="disable">Devre Dışı Bırak</string>
+    <string name="toast_proxy_disabled">Vekil başarıyla devre dışı bırakıldı</string>
+    <string name="verification_failed">İndirilen dosyalar doğrulanamadı</string>
+    <string name="pref_updates_restrictions_metered">Yalnızca ölçülmeyen ağlarda</string>
+    <string name="pref_updates_restrictions_idle">Aygıt boştayken</string>
+    <string name="pref_updates_restrictions_battery">Pil gücü düşük değilken</string>
+    <string name="pref_network_proxy_desc">Vekil yapılandırmasını göster ve yönet</string>
+    <string name="pref_updates_restrictions_title">Kendiliğinden güncelleme kısıtları</string>
+    <string name="pref_updates_restrictions_desc">Kendiliğinden güncellemeler için aygıt kısıtlarını yapılandır</string>
+    <string name="pref_common_advanced">Gelişmiş</string>
+    <string name="pref_updates_app_source">Uygulama kaynağı</string>
+    <string name="app_info_downloads">İndirme</string>
+    <string name="app_info_min_android">En Düşük Android Sürümü</string>
+    <string name="app_info_updated_on">Son güncelleme</string>
+    <string name="app_info_target_android">Hedef API Düzeyi</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> izin</string>
+    <string name="action_install_microG">microG Paketini Kur</string>
+    <string name="onboarding_title_gsf">Uygulama Uyumluluğu</string>
+    <string name="onboarding_title_gsf_desc">Eksik bağımlılıklar</string>
+    <string name="onboarding_gms_agreement">microG Hizmet Koşullarını ve Gizlilik İlkelerini okudum ve kabul ediyorum</string>
+    <string name="onboarding_gms_missing">Aygıtınızda Google Play Hizmetleri\'ni bulamadık, birçok gözde uygulama düzgün çalışabilmek için ona gereksiniyor!</string>
+    <string name="onboarding_gms_microg">microG, Android İçin Google Play Hizmetleri\'ne bağımlı uygulamaları çalıştırmak için yeniden uyarlama yoluyla benzer işlevselliği sağlayan; özgür ve açık kaynaklı bir uyarlamadır.\n\nmicroG, uygulamaların Google API\'lerine erişmesini sağlar, kullanıcılara gizlilik yararları sunarken için uyumluluğu artırır.\n\nmicroG, Google Mobil Hizmetleri\'ne bağımlı uygulamaları açtığınızda kendiliğinden arka planda çalışacak.</string>
+    <string name="microg_privacy_policy">microG Gizlilik İlkesini Oku</string>
+    <string name="microg_license_agreement">microG Lisans ve Anlaşmasını Oku</string>
+    <string name="microg_website">microG Projesi Web Sitesine Git</string>
+    <string name="details_data_safety_collect">Bu uygulamanın toplayabileceği veriler</string>
+    <string name="details_data_safety_collect_none">Geliştirici bu uygulamanın kullanıcı verileri toplamadığını söylüyor.</string>
+    <string name="details_data_safety_shared">Bu uygulamanın paylaşabileceği veriler</string>
+    <string name="details_data_safety_share_none">Geliştirici bu uygulamanın kullanıcı verilerini diğer şirketler ve kurumlarla paylaşmayacağını söylüyor.</string>
+    <string name="exodus_tracker_desc">Uygulamanın bu sürümü henüz Exodus Privacy\'nin veri merkezinde bulunmayan takipçiler bulundurabilir.</string>
+    <string name="details_more_info">Daha çok bilgi</string>
+    <string name="details_more_target_api">Hedefler</string>
+    <string name="details_more_package_name">Paket adı</string>
+    <string name="select_app_for_details">Daha çok ayrıntı için uygulama şeçin</string>
+    <string name="exodus_report_trackers"><xliff:g id="app_version_name">%2$s</xliff:g> içinde bilinen <xliff:g id="number_of_trackers">%1$d</xliff:g> izleyici bulundu</string>
+    <string name="no_description">Açıklama yok</string>
+    <string name="details_more_content_rating">İçerik derecelendirme</string>
+    <string name="manual_download_version_error">Sürüm kodu yalnızca rakam içerebilir</string>
+    <string name="action_filter_no_ads">Reklam yok</string>
+    <string name="action_filter_no_gms">Play hizmetleri yok</string>
+    <string name="preparing_to_install">Kuruluma hazırlanıyor</string>
+    <plurals name="permissions_required">
+        <item quantity="one">İzin gerekli</item>
+        <item quantity="other">İzinler gerekli</item>
+    </plurals>
+    <string name="installer_microg_misconfigured">MicroG kurucu, büyük olasılıkla yanlış yapılandırma nedeniyle uygulamayı kuramadı.</string>
+    <string name="pref_install_mode_microg">MicroG kurucu</string>
+    <string name="microg_installer_subtitle">microG yardımcı uygulamasının kurulmasını gerektirir</string>
+    <string name="microg_installer_desc">Uygulama Tümlüğü (yalnızca kurucu) denetimini atlamanıza yardımcı olur</string>
+    <string name="loading">Yükleme devam ediyor</string>
+    <string name="page">Sayfa <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_skip">Atla</string>
+    <string name="force_restart_snack">Değişiklikleri uygulamak için yeniden başlatılsın mı?</string>
 </resources>

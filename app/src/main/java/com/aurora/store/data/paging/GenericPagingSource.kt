@@ -1,0 +1,86 @@
+/*
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+package com.aurora.store.data.paging
+
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+/**
+ * A generic paging source that is supposed to be able to load any type of data
+ *
+ * Consider calling [pager] method to create an instance of [Pager] instead of interacting
+ * with the class directly.
+ * @param block Data to load into the pager
+ */
+class GenericPagingSource<T : Any>(
+    private val block: suspend (Int) -> List<T>
+) : PagingSource<Int, T>() {
+
+    companion object {
+        private const val DEFAULT_PAGE_SIZE = 20
+
+        /**
+         * Method to create pager objects using [PagingSource]
+         * @param pageSize Size of the page
+         * @param enablePlaceholders Whether placeholders should be shown
+         * @param data Data to load into the pager
+         * @see manualPager
+         */
+        fun <T : Any> pager(
+            pageSize: Int = DEFAULT_PAGE_SIZE,
+            enablePlaceholders: Boolean = true,
+            data: () -> PagingSource<Int, T>
+        ): Pager<Int, T> = Pager(
+            config = PagingConfig(enablePlaceholders = enablePlaceholders, pageSize = pageSize),
+            pagingSourceFactory = { data() }
+        )
+
+        /**
+         * Method to create and manage pager objects manually
+         * @param pageSize Size of the page
+         * @param enablePlaceholders Whether placeholders should be shown
+         * @param data Data to load into the pager
+         */
+        fun <T : Any> manualPager(
+            pageSize: Int = DEFAULT_PAGE_SIZE,
+            enablePlaceholders: Boolean = true,
+            data: suspend (Int) -> List<T>
+        ): Pager<Int, T> = Pager(
+            config = PagingConfig(enablePlaceholders = enablePlaceholders, pageSize = pageSize),
+            pagingSourceFactory = { GenericPagingSource(data) }
+        )
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, T> {
+        val page = params.key ?: 1
+        return try {
+            withContext(Dispatchers.IO) {
+                val data = block(page)
+                val totalPages = if (data.isNotEmpty()) page + 1 else page
+                LoadResult.Page(
+                    data = data,
+                    prevKey = if (page == 1) null else page - 1,
+                    nextKey = if (page == totalPages) null else totalPages,
+                    itemsAfter = if (page == totalPages) 0 else DEFAULT_PAGE_SIZE
+                )
+            }
+        } catch (exception: Exception) {
+            LoadResult.Error(exception)
+        }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, T>): Int? =
+        state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+        }
+}

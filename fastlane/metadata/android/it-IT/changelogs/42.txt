@@ -1,0 +1,15 @@
+• Target Android 13
+• Abilitata la traduzione di molte stringhe
+• Aggiunta icona monocromatica per Android 13
+• Aggiornate le dependencies alle versioni più recenti
+• Mostra la prompt dei Termini di Servizio subito dopo l'avvio
+• Permetti di procedere senza dare i permessi durante il setup iniziale
+• Lettura automatica della lista nera xml di sistema come default per escludere aggiornamenti
+• Mostra il titolo corretto sulla quinta pagina di setup
+• Abilitato il bottone per andare avanti nel setup quando si torna indietro ad una pagina precente
+• Rimpiazzate le checkboxes durante il setup con bottoni radiali
+• Utilizza il colore selezionato dall'utente per il background del setup
+• Risolto bug che precludeva la presenza di un tema nel setup quando si utilizzavano bottoni radiali
+• Non utilizzare nuovi GSF & versioni dei Vendor
+• Ripensato il setup dei permessi di storage
+• Aggiornamenti sulle traduzioni

@@ -1,0 +1,5 @@
+• La versión mínima compatible de Android ahora es Android 6.0
+• Se ha cambiado al tema Material3 Expressive
+• Se ha mejorado la compatibilidad con dispositivos de pantalla ancha
+• Se ha corregido un problema por el que el idioma hebreo no se configuraba correctamente con el idioma por aplicación
+• Se ha restaurado la funcionalidad de los filtros de búsqueda

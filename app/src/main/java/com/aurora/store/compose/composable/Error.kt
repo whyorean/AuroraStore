@@ -1,0 +1,89 @@
+/*
+ * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+package com.aurora.store.compose.composable
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import com.aurora.store.R
+import com.aurora.store.compose.preview.PreviewTemplate
+
+/**
+ * Composable to show error message that fills all available screen
+ * @param modifier The modifier to be applied to the composable
+ * @param painter Painter to draw the icon
+ * @param message Message for error
+ * @param actionMessage Message to show on action button; defaults to null with button not visible
+ * @param onAction Callback when action button is clicked
+ */
+@Composable
+fun Error(
+    modifier: Modifier = Modifier,
+    painter: Painter,
+    message: String,
+    actionMessage: String? = null,
+    onAction: (() -> Unit)? = null
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(dimensionResource(R.dimen.padding_medium)),
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(R.dimen.margin_small),
+            Alignment.CenterVertically
+        ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(
+            painter = painter,
+            contentDescription = null,
+            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size))
+        )
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = message,
+            textAlign = TextAlign.Center
+        )
+
+        if (actionMessage != null) {
+            Button(onClick = { if (onAction != null) onAction() }, enabled = onAction != null) {
+                Text(
+                    text = actionMessage,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ErrorPreview() {
+    PreviewTemplate {
+        Error(
+            painter = painterResource(R.drawable.ic_updates),
+            message = stringResource(R.string.details_no_updates),
+            actionMessage = stringResource(R.string.check_updates)
+        )
+    }
+}

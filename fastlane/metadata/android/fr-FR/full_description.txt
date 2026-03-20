@@ -1,13 +1,11 @@
-Aurora Store est un client non-officiel alternatif pour Google Play, libre et gratuit (FOSS).
-Doté d’un design élégant, il garantit le respect des données personnelles.
-Aurora Store offre la possibilité de télécharger, mettre à jour et rechercher des applications de la même manière que Play Store.
-Il est capable de fonctionner avec ou sans les services Google Play ou MicroG.
+Avec sa conception élégante, Aurora Store est un client libre non officiel de remplacement de Google Play. Comme le magasin Play Store, Aurora Store permet aux utilisateurs de télécharger, mettre à jour et chercher des applis. Il fonctionne parfaitement avec ou sans les services Google Play ou microG.
 
 <b>Caractéristiques :</b>
 
-• Logiciel libre : sous licence GPLv3
-• Conception et design élégants - bâti avec les normes du référentiel Material Design 3
-• Prise en charge des comptes Google - Vous pouvez vous connecter à un compte personnel ou de manière anonyme
-• Mode furtif - Changez votre profil d’appareil et/ou vos informations de localisation afin de contourner les limitations régionales et accéder à toutes les applications géo-verrouillées
-• Intégration d’Exodus Privacy - Repérez instantanément les traqueurs de données personnelles dans les applications
-• Fonction liste noire des mises à jour - Choisissez les applications pour lesquelles vous souhaitez ignorer les mises à jour
+• Libre : dispose d’une licence GPLv3
+• Conception attirante : conçu selon les dernières directives Material 3
+• Connexion au compte : vous pouvez vous connecter soit avec un compte personnel soit anonyme
+• Usurpation d’appareil et de paramètres régionaux : changez votre type appareil ou vos paramètres régionaux pour accéder aux applis verrouillées géographiquement
+• Intégration d’« Exodus Privacy » : voyez instantanément les traqueurs des applis
+• Intégration de Plexus : constatez instantanément la compatibilité des applis sans les services Google Play Services avec microG
+• Mise à jour de la liste d’exclusions : ignorez les mises à jour pour certaines applis

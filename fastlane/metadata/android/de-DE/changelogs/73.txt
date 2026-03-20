@@ -1,0 +1,4 @@
+• Fehlerhaftes Upgrade-Pfeilsymbol in RTL-Layouts behoben
+• Probleme mit der Seitenanzeige und der Eingabemethode bei der Suche behoben
+• Fehler behoben, der die Benutzerauswahl beim Installer überschrieb
+• Übersetzungen, Exodus-Tracker-Datenbank und Google-Root-Zertifikate aktualisiert

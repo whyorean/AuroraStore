@@ -21,26 +21,30 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import com.aurora.extensions.isNAndAbove
 import com.aurora.store.util.Preferences
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.json.Json
 
 @Singleton
 class BlacklistProvider @Inject constructor(
-    private val gson: Gson,
-    @ApplicationContext val context: Context,
+    private val json: Json,
+    @ApplicationContext val context: Context
 ) {
 
-    private val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
+    companion object {
+        private const val PREFERENCE_BLACKLIST = "PREFERENCE_BLACKLIST"
+    }
 
     var blacklist: MutableSet<String>
-        set(value) = Preferences.putString(context, PREFERENCE_BLACKLIST, gson.toJson(value))
+        set(value) = Preferences.putString(
+            context,
+            PREFERENCE_BLACKLIST,
+            json.encodeToString(value)
+        )
         get() {
             return try {
                 val rawBlacklist = if (isNAndAbove) {
@@ -55,7 +59,7 @@ class BlacklistProvider @Inject constructor(
                         Context.MODE_PRIVATE
                     ) as SharedPreferences
 
-                    PreferenceManager.getDefaultSharedPreferences(context)
+                    Preferences.getPrefs(context)
                         .getString(
                             PREFERENCE_BLACKLIST,
                             refSharedPreferences.getString(PREFERENCE_BLACKLIST, "")
@@ -63,19 +67,17 @@ class BlacklistProvider @Inject constructor(
                 } else {
                     Preferences.getString(context, PREFERENCE_BLACKLIST)
                 }
-                if (rawBlacklist!!.isEmpty())
+                if (rawBlacklist!!.isEmpty()) {
                     mutableSetOf()
-                else
-                    gson.fromJson(rawBlacklist, object : TypeToken<Set<String?>?>() {}.type)
-            } catch (e: Exception) {
+                } else {
+                    json.decodeFromString<MutableSet<String>>(rawBlacklist)
+                }
+            } catch (_: Exception) {
                 mutableSetOf()
             }
         }
 
-    fun isBlacklisted(packageName: String): Boolean {
-        return blacklist.contains(packageName)
-    }
-
+    fun isBlacklisted(packageName: String): Boolean = blacklist.contains(packageName)
 
     fun blacklist(packageName: String) {
         blacklist = blacklist.apply {

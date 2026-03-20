@@ -1,20 +1,7 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2024-2025 Rahul Kumar Patel <whyorean@gmail.com>
+ * SPDX-FileCopyrightText: 2024-2025 The Calyx Institute
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.viewmodel.all
@@ -24,38 +11,52 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.aurora.extensions.TAG
+import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.favourite.ImportExport
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 @HiltViewModel
 class FavouriteViewModel @Inject constructor(
     private val favouriteDao: FavouriteDao,
-    private val gson: Gson
+    private val json: Json,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
-    private val TAG = FavouriteViewModel::class.java.simpleName
 
-    val favouritesList = favouriteDao.favourites()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
+    private val _favourites = MutableStateFlow<PagingData<Favourite>>(PagingData.empty())
+    val favourites = _favourites.asStateFlow()
 
-    fun importFavourites(context: Context, uri: Uri) {
+    init {
+        getPagedFavourites()
+    }
+
+    fun importFavourites(uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openInputStream(uri)?.use {
-                    val importExport = gson.fromJson(
-                        it.bufferedReader().readText(),
-                        ImportExport::class.java
+                    val importExport = json.decodeFromString<ImportExport>(
+                        it.bufferedReader().readText()
                     )
 
                     favouriteDao.insertAll(
-                        importExport.favourites.map { fav -> fav.copy(mode = Favourite.Mode.IMPORT) }
+                        importExport.favourites.map { fav ->
+                            fav.copy(mode = Favourite.Mode.IMPORT)
+                        }
                     )
                 }
             } catch (exception: Exception) {
@@ -64,11 +65,14 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
-    fun exportFavourites(context: Context, uri: Uri) {
+    fun exportFavourites(uri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openOutputStream(uri)?.use {
-                    it.write(gson.toJson(ImportExport(favouritesList.value!!)).encodeToByteArray())
+                    it.write(
+                        json.encodeToString(ImportExport(favouriteDao.favourites().first()))
+                            .encodeToByteArray()
+                    )
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to export favourites", exception)
@@ -80,5 +84,13 @@ class FavouriteViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             favouriteDao.delete(packageName)
         }
+    }
+
+    private fun getPagedFavourites() {
+        pager { favouriteDao.pagedFavourites() }.flow
+            .distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .onEach { _favourites.value = it }
+            .launchIn(viewModelScope)
     }
 }

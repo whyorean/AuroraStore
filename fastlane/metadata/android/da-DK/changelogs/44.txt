@@ -1,0 +1,6 @@
+• Ret nedbrud relateret til meddelelser fra installationsservice
+• Vis kun gyldige forfalskningsegenskaber i appen
+• Underret brugere, når deres søgehastighed begrænses
+• Vis en flimrende animation under søgning for at angive fremgang
+• Ret navigationens adfærd, når standardfanen ændres
+• Ret hurtig afslut-mulighed

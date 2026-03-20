@@ -1,0 +1,5 @@
+- Neue von Plexus unterstützte App-Kompatibilitätsbewertungen
+- Verbesserungen an der Sperrlisten-Verwaltung
+- Einschränkungen für automatische Updates können geändert werden
+- Kleinere Fehlerbehebungen und Verbesserungen
+- Übersetzungen aktualisiert; zusätzliche Zeichenketten lokalisiert

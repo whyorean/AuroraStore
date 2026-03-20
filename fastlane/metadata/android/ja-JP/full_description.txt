@@ -1,6 +1,4 @@
-Aurora Store は、エレガントなデザインを備えた Googleの非公式 FOSS クライアントです。
-Aurora Store の利用者は、Play ストアなどのアプリをダウンロード、更新、検索できます。
-Google Play開発者サービス や microG の有無に問わず正常に動作します。
+Aurora Store は、エレガントなデザインを備えた Googleの非公式 FOSS クライアントです。 Aurora Store の利用者は、Play ストアなどのアプリをダウンロード、更新、検索できます。 Google Play開発者サービス や microG の有無に問わず正常に動作します。
 
 <b>機能</b>
 
@@ -9,4 +7,5 @@ Google Play開発者サービス や microG の有無に問わず正常に動作
 • アカウント：個人のGoogleアカウントまたは匿名アカウントでログイン
 • 端末と国の偽装：一部の端末または国に限定されたアプリにアクセス
 • [Exodus Privacy](https://exodus-privacy.eu.org/) の統合：アプリのトラッカーを即座に確認
+• Plexus の統合：Google Play サービスなし、または microG でのアプリ互換性を即座に確認
 • ブラックリスト： 特定のアプリの更新を無視する

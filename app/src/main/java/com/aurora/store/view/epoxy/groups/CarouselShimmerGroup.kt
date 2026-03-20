@@ -28,7 +28,8 @@ import java.util.UUID
 
 class CarouselShimmerGroup :
     EpoxyModelGroup(
-        R.layout.model_carousel_group, buildModels()
+        R.layout.model_carousel_group,
+        buildModels()
     ) {
     companion object {
         private fun buildModels(): List<EpoxyModel<*>> {
@@ -50,7 +51,7 @@ class CarouselShimmerGroup :
 
             models.add(
                 CarouselHorizontalModel_()
-                    .id("cluster_${idPrefix}")
+                    .id("cluster_$idPrefix")
                     .models(clusterViewModels)
             )
             return models
