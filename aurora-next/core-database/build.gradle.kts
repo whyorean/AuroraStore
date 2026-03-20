@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.aurora.next.data"
+    namespace = "com.aurora.next.database"
     compileSdk = 35
     defaultConfig { minSdk = 26 }
     compileOptions {
@@ -19,9 +19,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":aurora-next:core-domain"))
-    implementation(project(":aurora-next:core-network"))
-    implementation(project(":aurora-next:core-database"))
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
     implementation(libs.hilt.android.core)
     ksp(libs.hilt.android.compiler)
 }
