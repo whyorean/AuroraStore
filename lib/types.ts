@@ -33,7 +33,7 @@ export interface AppVersion {
   targetSdk: number
   sizeBytes: number
   uploadDate: string
-  changelog: string
+  changelog?: string
 }
 
 export interface App {
