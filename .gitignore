@@ -47,3 +47,7 @@ signing.properties
 
 
 .kotlin/*
+# Next.js
+.next/
+out/
+node_modules/
