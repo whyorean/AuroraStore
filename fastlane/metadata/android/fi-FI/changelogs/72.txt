@@ -1,5 +1,0 @@
-• Vanhin tuettu Android-versio on nyt Android 6.0
-• Vaihdettiin Material 3 Expressive -teemaan
-• Parannettiin tukea leveille näytöille
-• Korjattiin ongelma, jossa Heprean kieli ei asettunut kunnolla sovelluskohtaisen kielen kautta
-• Palautettiin ominaisuus suodattaa hakutuloksia

@@ -21,20 +21,14 @@ package com.aurora.store.view.ui.games
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.aurora.extensions.navigate
 import com.aurora.store.MobileNavigationDirections
 import com.aurora.store.R
-import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.databinding.FragmentAppsGamesBinding
 import com.aurora.store.util.Preferences
 import com.aurora.store.view.ui.commons.BaseFragment
@@ -54,22 +48,13 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Adjust FAB margins for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(binding.searchFab) { _, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
-            binding.searchFab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = insets.bottom + resources.getDimensionPixelSize(R.dimen.margin_large)
-            }
-            WindowInsetsCompat.CONSUMED
-        }
-
         // Toolbar
         binding.toolbar.apply {
             title = getString(R.string.title_games)
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menu_download_manager -> {
-                        requireContext().navigate(Screen.Downloads)
+                        findNavController().navigate(R.id.downloadFragment)
                     }
 
                     R.id.menu_more -> {
@@ -115,7 +100,7 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
         }.attach()
 
         binding.searchFab.setOnClickListener {
-            requireContext().navigate(Screen.Search)
+            findNavController().navigate(R.id.searchSuggestionFragment)
         }
     }
 
@@ -140,8 +125,12 @@ class GamesContainerFragment : BaseFragment<FragmentAppsGamesBinding>() {
             add(CategoryFragment.newInstance(1))
         }
 
-        override fun createFragment(position: Int): Fragment = tabFragments[position]
+        override fun createFragment(position: Int): Fragment {
+            return tabFragments[position]
+        }
 
-        override fun getItemCount(): Int = tabFragments.size
+        override fun getItemCount(): Int {
+            return tabFragments.size
+        }
     }
 }

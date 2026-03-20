@@ -1,9 +1,3 @@
-/*
- * SPDX-FileCopyrightText: 2025 Aurora OSS
- * SPDX-FileCopyrightText: 2025 The Calyx Institute
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-
 package com.aurora.store.data.work
 
 import android.app.NotificationManager
@@ -13,19 +7,16 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.core.content.getSystemService
-import androidx.core.graphics.scale
 import androidx.hilt.work.HiltWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_CANCELLED_BY_APP
 import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
-import com.aurora.extensions.TAG
 import com.aurora.extensions.copyTo
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
-import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
@@ -42,22 +33,19 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
-import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import java.io.File
-import java.io.FileOutputStream
-import java.net.SocketException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
-import java.security.DigestInputStream
-import java.security.MessageDigest
-import kotlin.coroutines.cancellation.CancellationException
-import kotlin.properties.Delegates
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
+import java.security.DigestInputStream
+import java.security.MessageDigest
+import kotlin.properties.Delegates
+import com.aurora.gplayapi.data.models.File as GPlayFile
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
@@ -66,184 +54,162 @@ import kotlinx.coroutines.withContext
  */
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
-    authProvider: AuthProvider,
     private val downloadDao: DownloadDao,
     private val appInstaller: AppInstaller,
+    private val authProvider: AuthProvider,
     private val httpClient: IHttpClient,
     private val purchaseHelper: PurchaseHelper,
-    @Assisted private val context: Context,
+    @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
-) : AuthWorker(authProvider, context, workerParams) {
-
-    companion object {
-        private const val NOTIFICATION_ID: Int = 200
-    }
+) : AuthWorker(authProvider, appContext, workerParams) {
 
     private lateinit var download: Download
+    private lateinit var icon: Bitmap
 
-    private val notificationManager = context.getSystemService<NotificationManager>()!!
+    private val notificationManager = appContext.getSystemService<NotificationManager>()!!
 
-    private var icon: Bitmap? = null
+    private val NOTIFICATION_ID = 200
+
+    private var downloading = false
     private var totalBytes by Delegates.notNull<Long>()
     private var totalProgress = 0
     private var downloadedBytes = 0L
 
-    inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
-    inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))
-    inner class DownloadFailedException : Exception(context.getString(R.string.download_failed))
-    inner class DownloadCancelledException :
-        Exception(context.getString(R.string.download_canceled))
-
-    inner class VerificationFailedException :
-        Exception(context.getString(R.string.verification_failed))
+    private val TAG = DownloadWorker::class.java.simpleName
 
     override suspend fun doWork(): Result {
         super.doWork()
 
+        // Bail out immediately if authData is not valid
+        if (!authProvider.isSavedAuthDataValid()) {
+            Log.e(TAG, "AuthData is not valid, exiting!")
+            onFailure()
+            return Result.failure()
+        }
+
         // Fetch required data for download
         try {
-            download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
+            val packageName = inputData.getString(DownloadHelper.PACKAGE_NAME)
+            download = downloadDao.getDownload(packageName!!)
 
-            val response = (httpClient as HttpClient).call(download.iconURL).body
-            val bitmap = BitmapFactory.decodeStream(
-                withContext(Dispatchers.IO) { response.byteStream() }
-            )
-            icon = bitmap.scale(96, 96)
+            val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
+                (httpClient as HttpClient).call(download.iconURL).body!!.byteStream()
+            })
+            icon = Bitmap.createScaledBitmap(bitmap, 96, 96, true)
         } catch (exception: Exception) {
-            return onFailure(exception)
+            Log.e(TAG, "Failed to parse download data", exception)
+            onFailure()
+            return Result.failure()
         }
 
         // Set work/service to foreground on < Android 12.0
         setForeground(getForegroundInfo())
 
-        // Try to purchase the app if file list is empty
-        notifyStatus(DownloadStatus.PURCHASING)
+        // Bail out if file list is empty
         download.fileList = download.fileList.ifEmpty {
             purchase(download.packageName, download.versionCode, download.offerType)
         }
-
-        // Bail out if file list is empty after purchase
-        if (download.fileList.isEmpty()) return onFailure(NothingToDownloadException())
+        if (download.fileList.isEmpty()) {
+            Log.i(TAG, "Nothing to download!")
+            onFailure(appContext.getString(R.string.purchase_failed))
+            return Result.failure()
+        }
 
         // Create dirs & generate download request for files and shared libs (if any)
-        PathUtil.getAppDownloadDir(context, download.packageName, download.versionCode).mkdirs()
-
-        // Create OBB dir if required
+        PathUtil.getAppDownloadDir(appContext, download.packageName, download.versionCode).mkdirs()
         if (download.fileList.requiresObbDir()) {
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
-        val files = mutableListOf<PlayFile>()
-
-        // Check if shared libs are present, if yes, handle them first
+        // Purchase the app (free apps needs to be purchased too)
+        val requestList = mutableListOf<GPlayFile>()
         if (download.sharedLibs.isNotEmpty()) {
             download.sharedLibs.forEach {
-                // Create shared lib download dir
                 PathUtil.getLibDownloadDir(
-                    context,
+                    appContext,
                     download.packageName,
                     download.versionCode,
                     it.packageName
                 ).mkdirs()
-
-                // Purchase shared lib if file list is empty
-                it.fileList = it.fileList.ifEmpty {
-                    purchase(it.packageName, it.versionCode, 0)
-                }
-                files.addAll(it.fileList)
+                it.fileList = it.fileList.ifEmpty { purchase(it.packageName, it.versionCode, 0) }
+                requestList.addAll(it.fileList)
             }
         }
-        files.addAll(download.fileList)
+        requestList.addAll(download.fileList)
 
         // Update data for notification
-        download.totalFiles = files.size
-        totalBytes = files.sumOf { it.size }
+        download.totalFiles = requestList.size
+        totalBytes = requestList.sumOf { it.size }
 
         // Update database with all latest purchases
         downloadDao.updateFiles(download.packageName, download.fileList)
         downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
-        // Download files
-        try {
-            for (file in files) {
-                if (isStopped) {
-                    throw DownloadCancelledException()
+        // Download and verify all files exists
+        requestList.forEach { request ->
+            downloading = true
+            runCatching { downloadFile(request); download.downloadedFiles++ }
+                .onSuccess { downloading = false }
+                .onFailure {
+                    Log.e(TAG, "Failed to download ${download.packageName}", it)
+                    downloading = false
+                    onFailure()
+                    return Result.failure()
                 }
-
-                downloadFile(download.packageName, file)
-                download.downloadedFiles++
+            while (downloading) {
+                delay(1000)
+                val d = downloadDao.getDownload(download.packageName)
+                if (isStopped || d.downloadStatus == DownloadStatus.CANCELLED) {
+                    onFailure()
+                    break
+                }
             }
-        } catch (exception: Exception) {
-            if (exception is DownloadCancelledException) {
-                Log.i(TAG, "Download cancelled for ${download.packageName}")
-                // Try to delete all downloaded files
-                runCatching { files.forEach { deleteFile(it) } }
-            }
-
-            return onFailure(exception)
         }
 
-        // Report failure if download was stopped or failed
-        if (isStopped) return onFailure(DownloadFailedException())
-
-        // Verify downloaded files
         try {
+            // Verify all downloaded files
+            Log.i(TAG, "Verifying downloaded files")
             notifyStatus(DownloadStatus.VERIFYING)
-            files.forEach { file -> require(verifyFile(file)) }
+            requestList.forEach { require(verifyFile(it)) }
         } catch (exception: Exception) {
-            Log.e(TAG, "Failed to verify ${download.packageName}", exception)
-            onFailure(VerificationFailedException())
+            Log.e(TAG, "Failed to verify downloaded files!", exception)
+            onFailure()
+            return Result.failure()
         }
 
-        Log.i(TAG, "Finished downloading & verifying ${download.packageName}")
-        notifyStatus(DownloadStatus.COMPLETED)
-
-        return onSuccess()
+        // Mark download as completed
+        onSuccess()
+        return Result.success()
     }
 
-    private suspend fun onSuccess(): Result {
-        return withContext(NonCancellable) {
-            return@withContext try {
+    private suspend fun onSuccess() {
+        withContext(NonCancellable) {
+            Log.i(TAG, "Finished downloading ${download.packageName}")
+            notifyStatus(DownloadStatus.COMPLETED)
+
+            try {
                 appInstaller.getPreferredInstaller().install(download)
-                Result.success()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to install ${download.packageName}", exception)
-                onFailure(exception)
             }
         }
     }
 
-    private suspend fun onFailure(exception: Exception): Result {
-        return withContext(NonCancellable) {
-            Log.i(TAG, "Job failed: ${download.packageName}", exception)
-
+    private suspend fun onFailure(errorMessage: String? = null, exception: Exception? = null) {
+        withContext(NonCancellable) {
+            Log.i(TAG, "Failed downloading ${download.packageName}")
             val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
             if (isSAndAbove && stopReason in cancelReasons) {
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
-                when (exception) {
-                    is DownloadCancelledException -> {
-                        notifyStatus(DownloadStatus.CANCELLED)
-                    }
-
-                    else -> {
-                        notifyStatus(status = DownloadStatus.FAILED, exception = exception)
-                        AuroraApp.events.send(
-                            InstallerEvent.Failed(
-                                packageName = download.packageName,
-                                error = exception.stackTraceToString(),
-                                extra = exception.message
-                                    ?: context.getString(R.string.download_failed)
-                            )
-                        )
-                    }
-                }
+                notifyStatus(DownloadStatus.FAILED)
+                AuroraApp.events.send(InstallerEvent.Failed(download.packageName).apply {
+                    extra = errorMessage ?: appContext.getString(R.string.download_failed)
+                    error = exception?.stackTraceToString() ?: String()
+                })
             }
 
-            // Remove all notifications
             notificationManager.cancel(NOTIFICATION_ID)
-
-            return@withContext Result.success()
         }
     }
 
@@ -254,15 +220,15 @@ class DownloadWorker @AssistedInject constructor(
      * @param offerType Offer type of the app (free/paid)
      * @return A list of purchased files
      */
-    private fun purchase(packageName: String, versionCode: Long, offerType: Int): List<PlayFile> {
+    private fun purchase(packageName: String, versionCode: Int, offerType: Int): List<GPlayFile> {
         try {
             // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-            return if (isPAndAbove && PackageUtil.isInstalled(context, download.packageName)) {
+            return if (isPAndAbove && download.isInstalled) {
                 purchaseHelper.purchase(
                     packageName,
                     versionCode,
                     offerType,
-                    CertUtil.getEncodedCertificateHashes(context, download.packageName).last()
+                    CertUtil.getEncodedCertificateHashes(appContext, download.packageName).last()
                 )
             } else {
                 purchaseHelper.purchase(packageName, versionCode, offerType)
@@ -276,26 +242,24 @@ class DownloadWorker @AssistedInject constructor(
     /**
      * Downloads the file from the given request.
      * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
-     * @param gFile A [PlayFile] to download
-     * @return A [Boolean] indicating whether the file was downloaded or not.
+     * @param gFile A [GPlayFile] to download
+     * @return A [Result] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(packageName: String, gFile: PlayFile): Boolean {
+    private suspend fun downloadFile(gFile: GPlayFile): Result {
         return withContext(Dispatchers.IO) {
-            Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
-            val file = PathUtil.getLocalFile(context, gFile, download)
+            val file = PathUtil.getLocalFile(appContext, gFile, download)
 
             // If file exists and has integrity intact, no need to download again
             if (file.exists() && verifyFile(gFile)) {
                 Log.i(TAG, "$file is already downloaded!")
                 downloadedBytes += file.length()
-                return@withContext true
+                return@withContext Result.success()
             }
 
             try {
+                // Download as a temporary file to avoid installing corrupted files
                 val tmpFileSuffix = ".tmp"
                 val tmpFile = File(file.absolutePath + tmpFileSuffix)
-
-                // Download as a temporary file to avoid installing corrupted files
                 val isNewFile = tmpFile.createNewFile()
 
                 val okHttpClient = httpClient as HttpClient
@@ -307,9 +271,9 @@ class DownloadWorker @AssistedInject constructor(
                     headers["Range"] = "bytes=${tmpFile.length()}-"
                 }
 
-                okHttpClient.call(gFile.url, headers).body.byteStream().use { input ->
+                okHttpClient.call(gFile.url, headers).body?.byteStream()?.use { input ->
                     FileOutputStream(tmpFile, !isNewFile).use {
-                        input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
+                        input.copyTo(it, gFile.size).collect { p -> onProgress(p) }
                     }
                 }
 
@@ -317,21 +281,11 @@ class DownloadWorker @AssistedInject constructor(
                     throw Exception("Failed to remove .tmp extension from $tmpFile")
                 }
 
-                return@withContext true
+                return@withContext Result.success()
             } catch (exception: Exception) {
-                when (exception) {
-                    is SocketException,
-                    is SocketTimeoutException,
-                    is UnknownHostException -> {
-                        throw NoNetworkException()
-                    }
-
-                    is CancellationException -> {
-                        throw DownloadCancelledException()
-                    }
-
-                    else -> throw exception
-                }
+                Log.e(TAG, "Failed to download $file!", exception)
+                notifyStatus(DownloadStatus.FAILED)
+                return@withContext Result.failure()
             }
         }
     }
@@ -344,28 +298,18 @@ class DownloadWorker @AssistedInject constructor(
         if (!isStopped && !download.isFinished) {
             downloadedBytes += downloadInfo.bytesCopied
 
-            val progress = ((downloadedBytes * 100L) / totalBytes).toInt()
+            val progress = (downloadedBytes * 100 / totalBytes).toInt()
             val bytesRemaining = totalBytes - downloadedBytes
-            val speed = if (downloadInfo.speed == 0L) 1L else downloadInfo.speed
-
-            // Consider a 10% change in speed
-            val speedChanged = if (download.speed > 0) {
-                val speedDifference = kotlin.math.abs(download.speed - speed)
-                (speedDifference * 100.0 / download.speed) >= 10
-            } else {
-                // If previous speed was zero, any change matters
-                speed != download.speed
-            }
+            val speed = if (downloadInfo.speed == 0L) 1 else downloadInfo.speed
 
             // Individual file progress can be negligible in contrast to total progress
-            // Only notify the UI if progress/speed change considerably to avoid being rate-limited by Android
-            if ((progress - totalProgress) >= 5 || speedChanged) {
+            // Only notify the UI if progress is greater or speed has changed to avoid being rate-limited by Android
+            if (progress > totalProgress || speed != download.speed) {
                 download.apply {
                     this.progress = progress
-                    this.speed = speed
-                    this.timeRemaining = (bytesRemaining / speed) * 1000
+                    this.speed = downloadInfo.speed
+                    this.timeRemaining = bytesRemaining / speed * 1000
                 }
-
                 downloadDao.updateProgress(
                     download.packageName,
                     download.progress,
@@ -373,7 +317,7 @@ class DownloadWorker @AssistedInject constructor(
                     download.timeRemaining
                 )
 
-                notifyStatus(DownloadStatus.DOWNLOADING, true)
+                notifyStatus(DownloadStatus.DOWNLOADING, NOTIFICATION_ID)
                 totalProgress = progress
             }
         }
@@ -381,9 +325,9 @@ class DownloadWorker @AssistedInject constructor(
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
         val notification = if (this::download.isInitialized) {
-            NotificationUtil.getDownloadNotification(context, download, icon)
+            NotificationUtil.getDownloadNotification(appContext, download, id, icon)
         } else {
-            NotificationUtil.getDownloadNotification(context)
+            NotificationUtil.getDownloadNotification(appContext)
         }
 
         return if (isQAndAbove) {
@@ -396,20 +340,16 @@ class DownloadWorker @AssistedInject constructor(
     /**
      * Notifies the user of the current status of the download.
      * @param status Current [DownloadStatus]
+     * @param dID ID of the notification, defaults to hashCode of the download's packageName
      */
-    private suspend fun notifyStatus(
-        status: DownloadStatus,
-        isProgress: Boolean = false,
-        exception: Exception? = null
-    ) {
+    private suspend fun notifyStatus(status: DownloadStatus, dID: Int = -1) {
         // Update status in database
-        download.status = status
+        download.downloadStatus = status
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {
             DownloadStatus.VERIFYING,
             DownloadStatus.CANCELLED -> return
-
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
                 download.progress = 100
@@ -419,65 +359,32 @@ class DownloadWorker @AssistedInject constructor(
             else -> {}
         }
 
-        val notification = NotificationUtil.getDownloadNotification(
-            context,
-            download,
-            icon,
-            exception?.message
-        )
-        notificationManager.notify(
-            if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
-            notification
-        )
+        val notification = NotificationUtil.getDownloadNotification(appContext, download, id, icon)
+        val notificationID = if (dID != -1) dID else download.packageName.hashCode()
+        notificationManager.notify(notificationID, notification)
     }
 
     /**
-     * Verifies integrity of a downloaded [PlayFile].
-     * @param gFile [PlayFile] to verify
+     * Verifies integrity of a downloaded [GPlayFile].
+     * @param gFile [GPlayFile] to verify
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun verifyFile(gFile: PlayFile): Boolean {
-        val file = PathUtil.getLocalFile(context, gFile, download)
-        Log.i(TAG, "Verifying $file")
-
+    private suspend fun verifyFile(gFile: GPlayFile): Boolean {
+        val file = PathUtil.getLocalFile(appContext, gFile, download)
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
         val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256
 
-        if (expectedSha.isBlank()) return false
-
         return withContext(Dispatchers.IO) {
-            try {
-                val messageDigest = MessageDigest.getInstance(algorithm.value)
-                file.inputStream().use { fis ->
-                    DigestInputStream(fis, messageDigest).use { dis ->
-                        val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-                        while (dis.read(buffer) !=
-                            -1
-                        ) {
-                            /* Just read, digest updates automatically */
-                        }
-                    }
+            val messageDigest = MessageDigest.getInstance(algorithm.value)
+            DigestInputStream(file.inputStream(), messageDigest).use { input ->
+                val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+                var read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
+                while (read > -1) {
+                    read = input.read(buffer, 0, DEFAULT_BUFFER_SIZE)
                 }
-
-                messageDigest.digest().toHexString() == expectedSha
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to verify $file", e)
-                false
             }
-        }
-    }
-
-    private fun deleteFile(file: PlayFile) {
-        val apkFile = PathUtil.getLocalFile(context, file, download)
-        if (apkFile.exists()) {
-            apkFile.delete()
-            Log.i(TAG, "Deleted Apk: $apkFile")
-        }
-
-        val tmpFile = File(apkFile.absolutePath + ".tmp")
-        if (tmpFile.exists()) {
-            tmpFile.delete()
-            Log.i(TAG, "Deleted Temp: $tmpFile")
+            val sha = messageDigest.digest().toHexString()
+            return@withContext sha == expectedSha
         }
     }
 }

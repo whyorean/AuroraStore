@@ -179,8 +179,11 @@
     <string name="pref_install_mode_session">세션 설치기</string>
     <string name="pref_install_mode_title">설치 방식</string>
     <string name="pref_vending_version_title">Google Play 버전</string>
+    <string name="pref_network_proxy_enable">프록시 켜기</string>
+    <string name="pref_network_proxy_enable_desc">앱의 모든 트래픽이 프록시를 통과하도록 허용</string>
     <string name="pref_network_proxy_url">프록시 URL</string>
     <string name="pref_network_title">네트워킹</string>
+    <string name="pref_network_proxy_title">프록시</string>
     <string name="pref_ui_title">맞춤화</string>
     <string name="pref_ui_no_for_you">For You 페이지</string>
     <string name="pref_vending_version_device">기본값(장치 구성에서)</string>
@@ -196,6 +199,7 @@
     <string name="session_enjoy">로그인하고 즐기십시오.</string>
     <string name="title_apps_games">내 앱 &amp; 게임</string>
     <string name="title_apps_library">라이브러리의 앱</string>
+    <string name="title_apps_sale">판매 중인 앱</string>
     <string name="title_device">기기</string>
     <string name="session_good">와우! 모두 좋습니다.</string>
     <string name="title_blacklist_manager">블랙리스트 관리자</string>
@@ -207,10 +211,12 @@
     <string name="title_apps">앱스</string>
     <string name="title_app_settings">앱 설정</string>
     <string name="purchase_failed">다운로드 실패됨</string>
+    <string name="pref_ui_similar_apps_desc">앱 세부 페이지에서 유사한 및 관련 클러스터 표시</string>
     <string name="action_request_analysis">새 분석 요청</string>
     <string name="action_home_screen">홈 화면에 추가</string>
     <string name="download_clear_finished">완료건 지우기</string>
     <string name="purchase_invalid">구매하지 않은 앱</string>
+    <string name="title_apps_sale_provider">공급자 - bestappsales.com</string>
     <string name="title_no_network">네트워크 없음</string>
     <string name="pref_updates_check_frequency">자동 업데이트 작동주기</string>
     <string name="tab_top_free">인기 무료</string>
@@ -364,6 +370,7 @@
     <string name="pref_dispenser_summary">익명 로그인을 위한 토큰 디스펜서를 보고 관리</string>
     <string name="toast_black_import_failed">블랙리스트를 가져올 실패!</string>
     <string name="status_queued">대기 중</string>
+    <string name="toast_permission_esm_restart">앱을 다시 시작해야 할 수도 있습니다. 권한 부여.</string>
     <string name="status_failed">실패함</string>
     <string name="authentication_required_unarchive">Google Play 계정으로 로그인하여 앱을 알리십시오!</string>
     <string name="add_dispenser_error">잘못된 URL</string>
@@ -374,6 +381,7 @@
     <string name="status_unavailable">사용불가</string>
     <string name="authentication_required_title">인증 필수</string>
     <string name="add_dispenser_hint">디스펜서 URL</string>
+    <string name="toast_permission_esm_caution">스토리지 액세스 프레임워크의 버그로 인해 권한을 다시 부여해야 할 수도 있습니다</string>
     <string name="remove_dispenser_title">Dispenser 제거</string>
     <string name="add">추가</string>
     <string name="about_aurora_store_subtitle">Aurora Store에 대해 자세히 알아보기</string>

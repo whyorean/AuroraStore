@@ -27,6 +27,8 @@ import androidx.navigation.fragment.navArgs
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.utils.CategoryUtil
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.data.model.ViewState.Loading.getDataAs
 import com.aurora.store.databinding.FragmentGenericWithToolbarBinding
@@ -37,16 +39,18 @@ import com.aurora.store.viewmodel.subcategory.CategoryStreamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryBrowseFragment :
-    BaseFragment<FragmentGenericWithToolbarBinding>(),
+class CategoryBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>(),
     GenericCarouselController.Callbacks {
     private val args: CategoryBrowseFragmentArgs by navArgs()
     private val viewModel: CategoryStreamViewModel by activityViewModels()
 
+    private lateinit var category: StreamContract.Category
     private var streamBundle: StreamBundle? = StreamBundle()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        category = CategoryUtil.getCategoryFromUrl(args.browseUrl)
 
         val genericCarouselController = CategoryCarouselController(this)
 
@@ -60,11 +64,11 @@ class CategoryBrowseFragment :
         binding.recycler.setController(genericCarouselController)
         binding.recycler.addOnScrollListener(object : EndlessRecyclerOnScrollListener() {
             override fun onLoadMore(currentPage: Int) {
-                viewModel.observe(args.browseUrl)
+                viewModel.observe(category)
             }
         })
 
-        viewModel.getStreamBundle(args.browseUrl)
+        viewModel.getStreamBundle(category)
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewState.Loading -> {
@@ -73,7 +77,7 @@ class CategoryBrowseFragment :
 
                 is ViewState.Success<*> -> {
                     val stash = it.getDataAs<Map<String, StreamBundle>>()
-                    streamBundle = stash[args.browseUrl]
+                    streamBundle = stash[category.value]
 
                     genericCarouselController.setData(streamBundle)
                 }
@@ -88,13 +92,14 @@ class CategoryBrowseFragment :
     }
 
     override fun onClusterScrolled(streamCluster: StreamCluster) {
-        viewModel.observeCluster(args.browseUrl, streamCluster)
+        viewModel.observeCluster(category, streamCluster)
     }
 
     override fun onAppClick(app: App) {
-        openDetailsFragment(app.packageName)
+        openDetailsFragment(app.packageName, app)
     }
 
     override fun onAppLongClick(app: App) {
+
     }
 }

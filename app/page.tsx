@@ -20,20 +20,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const primaryFeatured = featuredApps[0]
 
   let displayApps = MOCK_APPS
-  let sectionTitle = 'All Apps'
+  let sectionTitle = 'Recommended for you'
   let sectionDescription: string | undefined
 
   if (q) {
     displayApps = searchApps(q)
     sectionTitle = `Results for "${q}"`
-    sectionDescription =
-      displayApps.length === 0
-        ? undefined
-        : `Found ${displayApps.length} app${displayApps.length !== 1 ? 's' : ''}`
   } else if (category) {
     displayApps = getAppsByCategory(category)
     sectionTitle = category
-    sectionDescription = `Apps in the ${category} category`
   }
 
   const isFiltered = Boolean(q || category)
@@ -41,14 +36,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   return (
     <>
       <Navbar />
-      <main>
-        <SearchHero initialQuery={q} activeCategory={category} />
+      <main className="pb-8">
+        {!isFiltered && <SearchHero initialQuery={q} activeCategory={category} />}
 
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
           {!isFiltered && primaryFeatured && (
-            <section className="mb-8" aria-label="Featured app">
-              <h2 className="mb-3 text-base font-semibold text-gray-900">Featured</h2>
-              <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <section className="mb-10" aria-label="Featured app">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-gray-900">Featured</h2>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {featuredApps.map((app) => (
                   <FeaturedBanner key={app.packageName} app={app} />
                 ))}
@@ -60,13 +57,12 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             apps={displayApps}
             title={sectionTitle}
             description={sectionDescription}
-            variant="grid"
+            variant={isFiltered ? "grid" : "carousel"}
           />
 
           {!isFiltered && (
-            <section className="mt-10">
-              <h2 className="mb-5 text-base font-semibold text-gray-900">Browse by category</h2>
-              <div className="flex flex-col gap-6">
+            <section className="mt-12">
+              <div className="flex flex-col gap-10">
                 {(['Tools', 'Security', 'Media'] as const).map((cat) => {
                   const apps = getAppsByCategory(cat)
                   if (apps.length === 0) return null
@@ -75,7 +71,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                       key={cat}
                       apps={apps}
                       title={cat}
-                      variant="row"
+                      variant="carousel"
                     />
                   )
                 })}
@@ -85,28 +81,34 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         </div>
       </main>
 
-      <footer className="mt-16 border-t border-gray-100 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-xs text-gray-500">
-              Aurora Next — Open-source Android app store. Not affiliated with Google.
-            </p>
-            <div className="flex items-center gap-4 text-xs text-gray-500">
+      <footer className="mt-16 border-t border-gray-100 bg-white mb-20 md:mb-0">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div className="text-center sm:text-left">
+               <h3 className="font-bold text-lg text-gray-900 mb-1">Aurora Next</h3>
+               <p className="text-sm text-gray-500 max-w-xs">
+                Open-source Android app store. Privacy first, no tracking, no Google account needed.
+              </p>
+            </div>
+            <div className="flex items-center gap-6 text-sm font-medium text-gray-500">
               <a
                 href="https://github.com/aurora-oss"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-900"
+                className="hover:text-blue-600 transition-colors"
               >
                 GitHub
               </a>
-              <a href="/privacy" className="hover:text-gray-900">
+              <a href="/privacy" className="hover:text-blue-600 transition-colors">
                 Privacy
               </a>
-              <a href="/faq" className="hover:text-gray-900">
+              <a href="/faq" className="hover:text-blue-600 transition-colors">
                 FAQ
               </a>
             </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-50 text-center text-xs text-gray-400">
+            &copy; {new Date().getFullYear()} Aurora OSS. All rights reserved.
           </div>
         </div>
       </footer>

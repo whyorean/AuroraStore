@@ -7,24 +7,22 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
-import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
-import com.aurora.store.data.room.suite.ExternalApk
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Helper class to work with the [DownloadWorker].
@@ -43,10 +41,10 @@ class DownloadHelper @Inject constructor(
         private const val VERSION_CODE = "VERSION_CODE"
     }
 
-    val downloadsList get() = downloadDao.downloads()
+    val downloadsList = downloadDao.downloads()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val pagedDownloads get() = downloadDao.pagedDownloads()
+    private val TAG = DownloadHelper::class.java.simpleName
 
     /**
      * Removes failed download from the queue and starts observing for newly enqueued apps.
@@ -60,19 +58,23 @@ class DownloadHelper @Inject constructor(
     }
 
     private fun observeDownloads() {
-        downloadDao.downloads().onEach { list ->
-            try {
-                if (list.none { it.status == DownloadStatus.DOWNLOADING }) {
-                    list.find { it.status == DownloadStatus.QUEUED }
-                        ?.let { queuedDownload ->
-                            Log.i(TAG, "Enqueued download worker for ${queuedDownload.packageName}")
-                            trigger(queuedDownload)
+        AuroraApp.scope.launch {
+            downloadDao.downloads().collectLatest { list ->
+                // Check and trigger next download in queue, if any
+                if (!list.any { it.downloadStatus == DownloadStatus.DOWNLOADING }) {
+                    val enqueuedDownloads = list.filter { it.downloadStatus == DownloadStatus.QUEUED }
+                    enqueuedDownloads.firstOrNull()?.let {
+                        try {
+                            Log.i(DOWNLOAD_WORKER, "Downloading ${it.packageName}")
+                            trigger(it)
+                        } catch (exception: Exception) {
+                            Log.i(DOWNLOAD_WORKER, "Failed to download app", exception)
+                            downloadDao.updateStatus(it.packageName, DownloadStatus.FAILED)
                         }
+                    }
                 }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to enqueue download worker", exception)
             }
-        }.launchIn(AuroraApp.scope)
+        }
     }
 
     /**
@@ -92,21 +94,15 @@ class DownloadHelper @Inject constructor(
     }
 
     /**
-     * Enqueues ExternalApk for download & install
-     * @param externalApk [ExternalApk] to download
-     */
-    suspend fun enqueueStandalone(externalApk: ExternalApk) {
-        downloadDao.insert(Download.fromExternalApk(externalApk))
-    }
-
-    /**
      * Cancels the download for the given package
      * @param packageName Name of the package to cancel download
      */
     suspend fun cancelDownload(packageName: String) {
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
-        downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED)
+        downloadsList.filter { it.isNotEmpty() }.firstOrNull()
+            ?.find { it.packageName == packageName }
+            ?.let { downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED) }
     }
 
     /**
@@ -114,7 +110,7 @@ class DownloadHelper @Inject constructor(
      * @param packageName Name of the package of the app
      * @param versionCode Version of the package
      */
-    suspend fun clearDownload(packageName: String, versionCode: Long) {
+    suspend fun clearDownload(packageName: String, versionCode: Int) {
         Log.i(TAG, "Clearing downloads for $packageName ($versionCode)")
         downloadDao.delete(packageName)
         PathUtil.getAppDownloadDir(context, packageName, versionCode)
@@ -135,7 +131,7 @@ class DownloadHelper @Inject constructor(
      * Clears finished downloads and their downloaded files
      */
     suspend fun clearFinishedDownloads() {
-        downloadDao.downloads().firstOrNull()?.filter { it.isFinished }?.forEach {
+        downloadsList.value.filter { it.isFinished }.forEach {
             clearDownload(it.packageName, it.versionCode)
         }
     }
@@ -146,10 +142,8 @@ class DownloadHelper @Inject constructor(
      */
     suspend fun cancelAll(updatesOnly: Boolean = false) {
         // Cancel all enqueued downloads first to avoid triggering re-download
-        downloadDao.downloads().firstOrNull()
-            ?.filter { it.status == DownloadStatus.QUEUED }
-            ?.filter { if (updatesOnly) it.isInstalled else true }
-            ?.forEach {
+        downloadsList.value.filter { it.downloadStatus == DownloadStatus.QUEUED }
+            .filter { if (updatesOnly) it.isInstalled else true }.forEach {
                 downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED)
             }
 
@@ -184,9 +178,8 @@ class DownloadHelper @Inject constructor(
         // Ensure all app downloads are unique to preserve individual records
         WorkManager.getInstance(context)
             .enqueueUniqueWork(
-                "$DOWNLOAD_WORKER/${download.packageName}/${download.versionCode}",
-                ExistingWorkPolicy.KEEP,
-                work
+                "$DOWNLOAD_WORKER/${download.packageName}",
+                ExistingWorkPolicy.KEEP, work
             )
     }
 }

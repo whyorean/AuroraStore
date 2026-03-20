@@ -24,7 +24,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
-import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
@@ -38,13 +37,13 @@ import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.net.ConnectException
-import java.net.UnknownHostException
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.net.ConnectException
+import java.net.UnknownHostException
+import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
@@ -52,6 +51,8 @@ class AuthViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val aC2DMTask: AC2DMTask
 ) : ViewModel() {
+
+    private val TAG = AuthViewModel::class.java.simpleName
 
     private val _authState: MutableStateFlow<AuthState> = MutableStateFlow(AuthState.Init)
     val authState = _authState.asStateFlow()
@@ -127,43 +128,35 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun buildSavedAuthData() = viewModelScope.launch(Dispatchers.IO) {
-        try {
-            if (authProvider.isSavedAuthDataValid()) {
-                _authState.value = AuthState.Valid
-            } else {
-                // Generate and validate new auth
-                when (AccountProvider.getAccountType(context)) {
-                    AccountType.ANONYMOUS -> buildAnonymousAuthData()
-
-                    AccountType.GOOGLE -> {
-                        val email = AccountProvider.getLoginEmail(context)
-                        val tokenPair = AccountProvider.getLoginToken(context)
-
-                        if (email == null || tokenPair == null) {
-                            throw Exception()
+    private fun buildSavedAuthData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                if (authProvider.isSavedAuthDataValid()) {
+                    _authState.value = AuthState.Valid
+                } else {
+                    // Generate and validate new auth
+                    when (AccountProvider.getAccountType(context)) {
+                        AccountType.GOOGLE -> {
+                            buildGoogleAuthData(
+                                AccountProvider.getLoginEmail(context)!!,
+                                AccountProvider.getLoginToken(context)!!.first,
+                                AccountProvider.getLoginToken(context)!!.second
+                            )
                         }
 
-                        when (tokenPair.second) {
-                            AuthHelper.Token.AAS -> {
-                                buildGoogleAuthData(email, tokenPair.first, AuthHelper.Token.AAS)
-                            }
-
-                            AuthHelper.Token.AUTH -> {
-                                _authState.value =
-                                    AuthState.PendingAccountManager(email, tokenPair.first)
-                            }
+                        AccountType.ANONYMOUS -> {
+                            buildAnonymousAuthData()
                         }
                     }
                 }
+            } catch (exception: Exception) {
+                val error = when (exception) {
+                    is UnknownHostException -> context.getString(R.string.title_no_network)
+                    is ConnectException -> context.getString(R.string.server_unreachable)
+                    else -> context.getString(R.string.bad_request)
+                }
+                _authState.value = AuthState.Failed(error)
             }
-        } catch (exception: Exception) {
-            val error = when (exception) {
-                is UnknownHostException -> context.getString(R.string.title_no_network)
-                is ConnectException -> context.getString(R.string.server_unreachable)
-                else -> context.getString(R.string.bad_request)
-            }
-            _authState.value = AuthState.Failed(error)
         }
     }
 

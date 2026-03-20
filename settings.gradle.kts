@@ -15,13 +15,6 @@ dependencyResolutionManagement {
                 includeModule("com.github.topjohnwu.libsu", "core")
             }
         }
-        // Only included in huawei variants
-        maven("https://developer.huawei.com/repo/") {
-            content {
-                includeGroup("com.huawei.hms")
-                includeGroup("com.huawei.android.hms")
-            }
-        }
     }
 }
 include(":app")

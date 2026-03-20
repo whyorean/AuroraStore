@@ -25,11 +25,8 @@ import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.store.util.PackageUtil.getPackageInfo
 
 class NativeGsfVersionProvider(context: Context, isExport: Boolean = false) {
-
-    companion object {
-        private const val GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms"
-        private const val GOOGLE_VENDING_PACKAGE_ID = "com.android.vending"
-    }
+    private val GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms"
+    private val GOOGLE_VENDING_PACKAGE_ID = "com.android.vending"
 
     // Preferred defaults, not any specific reason they just work fine.
     var gsfVersionCode = 203019037L

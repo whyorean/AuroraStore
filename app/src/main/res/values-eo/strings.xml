@@ -125,6 +125,7 @@
     <string name="title_about">Pri</string>
     <string name="title_apps_games">Miaj apoj kaj ludoj</string>
     <string name="title_apps_library">Apoj biblioteke</string>
+    <string name="title_apps_sale">Apoj rabataj</string>
     <string name="title_device">Aparato</string>
     <string name="title_games">Ludoj</string>
     <string name="title_installation">Instalado</string>
@@ -176,6 +177,7 @@
     <string name="download_eta_min">ankoraŭ %1$d m %2$d s</string>
     <string name="pref_ui_title">Agordo</string>
     <string name="pref_ui_no_for_you">\"Por vi\" paĝoj</string>
+    <string name="pref_ui_similar_apps_desc">Vidigi similajn kaj rilatajn apojn sur la paĝo de la apon detaloj</string>
     <string name="pref_install_mode_shizuku">Shizuku instalilo</string>
     <string name="pref_install_mode_am">AM instalilo</string>
     <string name="action_request_analysis">Peti novan analizon</string>
@@ -282,6 +284,7 @@
     <string name="toast_permission_granted">Permeso donita</string>
     <string name="toast_permission_installer_required">Vi devas doni la Instalilo-Permeso unue</string>
     <string name="toast_app_unavailable">Apo maldisponebla por via aparato</string>
+    <string name="toast_permission_esm_caution">Vi eble devas redoni la permeson kaŭze de cimo en Storage Access Framework</string>
     <string name="toast_spoof_applied">Aparaton ŝajnigo aktivata.</string>
     <string name="toast_import_failed">Importo de la aparaton agordo fiaskis</string>
     <string name="app_updater_service_notif_title">Fone apon elŝutado</string>
@@ -344,9 +347,12 @@
     <string name="export_app_summary_success">Eksportis sukcese apkunligaĵon</string>
     <string name="export_app_summary_fail">Eksportado apkunligaĵon fiaskis</string>
     <string name="force_restart_title">Restarti Aurora Store</string>
+    <string name="pref_network_proxy_title">Prokura servilo (aŭ “proxy”)</string>
     <string name="toast_proxy_success">Prokuran servilon sukcese finaranĝis</string>
     <string name="toast_clipboard_copied">Kopita en la poŝon</string>
     <string name="toast_proxy_failed">Prokuran servilon agordado fiaskis</string>
+    <string name="pref_network_proxy_enable">Aktivigi prokuran servilon</string>
+    <string name="pref_network_proxy_enable_desc">Permisi tutan datumtrafikon pasi tra la prokura servilo</string>
     <string name="pref_network_proxy_url">Prokuran servilon URL</string>
     <string name="toast_proxy_invalid">Malvalida prokuran servilon URL, kontrolu la formaton!</string>
     <string name="pref_network_proxy_url_message">Enigu validan prokuran servilon URL por pasigi ĉiujn datuĵmojn tra la prokura servilo.</string>
@@ -355,6 +361,7 @@
     <string name="pref_dispenser_summary">Vidi kaj administri ĵetondistribuilojn por anonimaj ensalutadoj</string>
     <string name="details_beta_description">Vi vidos novajn funkciarojn kaj cimojn pli frue ol la publiko. Donu vian opinion al programistoj por helpi ilin plibonigi la apon.</string>
     <string name="details_beta_delay">Anigado eble daŭros iom tempon, vi povos kontroli la anigstaton poste.</string>
+    <string name="title_apps_sale_provider">Provizanto - bestappsales.com</string>
     <string name="about_xda_summary">Vidi la Aurora Store XDA fadenon por priparoloj aŭ sugestoj.</string>
     <string name="android_market_desc">Android Market estis reta butiko ofertinta programaraplikaĵojn dizajnitajn por Androidaparatojn, retirigita en 2017.</string>
     <string name="toast_developer_setting_failed">Ŝaltu la programistajn agordojn en la aparaton agordoj por malfermi ĝin.</string>
@@ -362,5 +369,9 @@
     <string name="onboarding_permission_esm">Eksteran storon administrilo</string>
     <string name="google_play_store_desc">Google Play, ankaŭ konata tiel Google Play Store kaj estinte Android market.</string>
     <string name="onboarding_permission_esa">Eksteran storon atingo</string>
-    <string name="about_aurora_store_summary">Aurora Store ebligi serĉi kaj elŝuti apojn el la oficiala Google Play Store. Vi povas vidi apojn priskribojn, ekrankopiojn, ĝisdatigojn, komentojn kaj elŝuti la APKjn rekte el Google Play al via aparato. Por uzi Aurora Store, necesas, ke vi havas Google Play konton kaj ensalutas tiun konton kiam vi malfermi kaj agordi Aurora Store je la unua fojo. \n \nMalkiel tradiciaj apbutikoj, Aurora Store ne posedas, donas permesilon aŭ disdonas iun ajn apon. Ĉiuj apoj, appriskriboj, ekrankopiojn kaj aliaj enhavoj en Aurora Store estas rekte atingataj, elŝutataj aŭ montriĝataj el Google Play. Aurora Store funkcias ekzakte tiel pordo aŭ retumilo, ebligante vin saluti vian Google Play konton kaj trovi apojn el Google Play. \n \nBonvolu rimarki ke Aurora Store ne havas ajn aprobon, patronadon aŭ rajtigon el Google, Google Play, iu ajn apo elŝutita tra Aurora Store aŭ iu ajn approgramisto; nek havas Aurora Store iun ajn filion, kunlaboron aŭ interligecon kun ili.</string>
+    <string name="about_aurora_store_summary">Aurora Store ebligi serĉi kaj elŝuti apojn el la oficiala Google Play Store. Vi povas vidi apojn priskribojn, ekrankopiojn, ĝisdatigojn, komentojn kaj elŝuti la APKjn rekte el Google Play al via aparato. Por uzi Aurora Store, necesas, ke vi havas Google Play konton kaj ensalutas tiun konton kiam vi malfermi kaj agordi Aurora Store je la unua fojo.
+\n
+\nMalkiel tradiciaj apbutikoj, Aurora Store ne posedas, donas permesilon aŭ disdonas iun ajn apon. Ĉiuj apoj, appriskriboj, ekrankopiojn kaj aliaj enhavoj en Aurora Store estas rekte atingataj, elŝutataj aŭ montriĝataj el Google Play. Aurora Store funkcias ekzakte tiel pordo aŭ retumilo, ebligante vin saluti vian Google Play konton kaj trovi apojn el Google Play.
+\n
+\nBonvolu rimarki ke Aurora Store ne havas ajn aprobon, patronadon aŭ rajtigon el Google, Google Play, iu ajn apo elŝutita tra Aurora Store aŭ iu ajn approgramisto; nek havas Aurora Store iun ajn filion, kunlaboron aŭ interligecon kun ili.</string>
 </resources>

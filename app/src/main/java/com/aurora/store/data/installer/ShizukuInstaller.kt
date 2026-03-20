@@ -35,7 +35,6 @@ import android.os.IInterface
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.PendingIntentCompat
-import com.aurora.extensions.TAG
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
@@ -51,10 +50,10 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.rikka.tools.refine.Refine
-import javax.inject.Inject
-import javax.inject.Singleton
 import rikka.shizuku.ShizukuBinderWrapper
 import rikka.shizuku.SystemServiceHelper
+import javax.inject.Inject
+import javax.inject.Singleton
 
 @Singleton
 @RequiresApi(Build.VERSION_CODES.O)
@@ -78,6 +77,8 @@ class ShizukuInstaller @Inject constructor(
             )
     }
 
+    private val TAG = ShizukuInstaller::class.java.simpleName
+
     // Taken from LSPatch (https://github.com/LSPosed/LSPatch)
     private fun IBinder.wrap() = ShizukuBinderWrapper(this)
     private fun IInterface.asShizukuBinder() = this.asBinder().wrap()
@@ -99,9 +100,7 @@ class ShizukuInstaller @Inject constructor(
             Refine.unsafeCast<PackageInstaller>(
                 PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, 0)
             )
-        } else {
-            null
-        }
+        } else null
     }
 
     override fun install(download: Download) {
@@ -130,14 +129,11 @@ class ShizukuInstaller @Inject constructor(
 
     private fun install(
         packageName: String,
-        versionCode: Long,
+        versionCode: Int,
         sharedLibPkgName: String = "",
         displayName: String = ""
     ) {
-        Log.i(
-            TAG,
-            "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}"
-        )
+        Log.i(TAG, "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}")
 
         val (sessionId, session) = kotlin.runCatching {
             val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
@@ -172,11 +168,7 @@ class ShizukuInstaller @Inject constructor(
             Log.i(TAG, "Writing splits to session for ${sharedLibPkgName.ifBlank { packageName }}")
             getFiles(packageName, versionCode, sharedLibPkgName).forEach {
                 it.inputStream().use { input ->
-                    session.openWrite(
-                        "${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}",
-                        0,
-                        -1
-                    ).use { output ->
+                    session.openWrite("${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}", 0, -1).use { output ->
                         input.copyTo(output)
                         session.fsync(output)
                     }

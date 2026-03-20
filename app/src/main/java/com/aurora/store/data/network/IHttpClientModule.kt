@@ -13,5 +13,7 @@ object IHttpClientModule {
 
     @Provides
     @Singleton
-    fun providesIHttpClientInstance(httpClient: HttpClient): IHttpClient = httpClient
+    fun providesIHttpClientInstance(httpClient: HttpClient): IHttpClient {
+        return httpClient
+    }
 }

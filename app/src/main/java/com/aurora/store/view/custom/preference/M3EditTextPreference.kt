@@ -6,6 +6,7 @@ import android.view.WindowManager
 import androidx.preference.EditTextPreferenceDialogFragmentCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
+
 class M3EditTextPreference : EditTextPreferenceDialogFragmentCompat() {
 
     companion object {
@@ -38,6 +39,7 @@ class M3EditTextPreference : EditTextPreferenceDialogFragmentCompat() {
         onPrepareDialogBuilder(builder)
         return builder.create()
     }
+
 
     override fun onResume() {
         super.onResume()

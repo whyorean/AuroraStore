@@ -22,9 +22,6 @@ fun PackageManager.getUpdateOwnerPackageNameCompat(packageName: String): String?
             installSourceInfo.installingPackageName
         }
 
-        else -> {
-            @Suppress("DEPRECATION")
-            getInstallerPackageName(packageName)
-        }
+        else -> @Suppress("DEPRECATION") getInstallerPackageName(packageName)
     }
 }

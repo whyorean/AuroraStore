@@ -38,8 +38,7 @@ import com.aurora.store.viewmodel.homestream.StreamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ForYouFragment :
-    BaseFragment<FragmentForYouBinding>(),
+class ForYouFragment : BaseFragment<FragmentForYouBinding>(),
     GenericCarouselController.Callbacks {
     private val viewModel: StreamViewModel by activityViewModels()
 
@@ -48,9 +47,11 @@ class ForYouFragment :
 
     companion object {
         @JvmStatic
-        fun newInstance(pageType: Int): ForYouFragment = ForYouFragment().apply {
-            arguments = Bundle().apply {
-                putInt(Constants.PAGE_TYPE, pageType)
+        fun newInstance(pageType: Int): ForYouFragment {
+            return ForYouFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(Constants.PAGE_TYPE, pageType)
+                }
             }
         }
     }
@@ -105,9 +106,10 @@ class ForYouFragment :
     }
 
     override fun onAppClick(app: App) {
-        openDetailsFragment(app.packageName)
+        openDetailsFragment(app.packageName, app)
     }
 
     override fun onAppLongClick(app: App) {
+
     }
 }

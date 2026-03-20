@@ -22,9 +22,6 @@ package com.aurora.store
 
 import android.app.Application
 import android.content.Context
-import android.util.Log.DEBUG
-import android.util.Log.INFO
-import androidx.compose.material3.ComposeMaterial3Flags
 import androidx.core.content.ContextCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
@@ -44,10 +41,11 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import okhttp3.OkHttpClient
 import org.lsposed.hiddenapibypass.HiddenApiBypass
+import javax.inject.Inject
 
 @HiltAndroidApp
 class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Factory {
@@ -66,11 +64,12 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
-            .setMinimumLoggingLevel(if (BuildConfig.DEBUG) DEBUG else INFO)
+            .setMinimumLoggingLevel(android.util.Log.INFO)
             .setWorkerFactory(workerFactory)
             .build()
 
     companion object {
+        // Alternative to GlobalScope
         var scope = MainScope()
             private set
 
@@ -79,7 +78,6 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
     }
 
     override fun onCreate() {
-        ComposeMaterial3Flags.isCheckboxStylingFixEnabled = true
         super.onCreate()
         // Set the app theme
         val themeStyle = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_STYLE)
@@ -91,14 +89,14 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         // Required for Shizuku installer
         if (isPAndAbove) HiddenApiBypass.addHiddenApiExemptions("I", "L")
 
-        // Create Notification Channels
+        //Create Notification Channels
         NotificationUtil.createNotificationChannel(this)
 
         // Initialize Download and Update helpers to observe and trigger downloads
         downloadHelper.init()
         updateHelper.init()
 
-        // Register broadcast receiver for package install/uninstall
+        //Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(
             this,
             object : PackageManagerReceiver() {},
@@ -109,8 +107,16 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         CommonUtil.cleanupInstallationSessions(applicationContext)
     }
 
-    override fun newImageLoader(context: Context): ImageLoader = ImageLoader(this).newBuilder()
-        .crossfade(true)
-        .components { add(OkHttpNetworkFetcherFactory(callFactory = okHttpClient)) }
-        .build()
+    override fun onLowMemory() {
+        super.onLowMemory()
+        scope.cancel("onLowMemory() called by system")
+        scope = MainScope()
+    }
+
+    override fun newImageLoader(context: Context): ImageLoader {
+        return ImageLoader(this).newBuilder()
+            .crossfade(true)
+            .components { add(OkHttpNetworkFetcherFactory(callFactory = okHttpClient)) }
+            .build()
+    }
 }

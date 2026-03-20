@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import com.aurora.Constants
-import com.aurora.extensions.TAG
 import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.room.download.Download
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +14,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class InstallActivity : AppCompatActivity() {
+
+    private val TAG = InstallActivity::class.java.simpleName
 
     @Inject
     lateinit var sessionInstaller: SessionInstaller

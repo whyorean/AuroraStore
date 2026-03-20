@@ -2,11 +2,8 @@ package com.aurora.store.data.room
 
 import android.content.Context
 import androidx.room.Room
-import com.aurora.store.data.room.MigrationHelper.MIGRATION_1_2
-import com.aurora.store.data.room.MigrationHelper.MIGRATION_2_3
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_3_4
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_4_5
-import com.aurora.store.data.room.MigrationHelper.MIGRATION_5_6
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.favourite.FavouriteDao
@@ -29,25 +26,25 @@ object RoomModule {
     fun providesRoomInstance(
         @ApplicationContext context: Context,
         downloadConverter: DownloadConverter
-    ): AuroraDatabase = Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
-        .addMigrations(
-            MIGRATION_1_2,
-            MIGRATION_2_3,
-            MIGRATION_3_4,
-            MIGRATION_4_5,
-            MIGRATION_5_6
-        )
-        .addTypeConverter(downloadConverter)
-        .build()
+    ): AuroraDatabase {
+        return Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
+            .addMigrations(MIGRATION_3_4, MIGRATION_4_5)
+            .addTypeConverter(downloadConverter)
+            .build()
+    }
 
     @Provides
-    fun providesDownloadDao(auroraDatabase: AuroraDatabase): DownloadDao =
-        auroraDatabase.downloadDao()
+    fun providesDownloadDao(auroraDatabase: AuroraDatabase): DownloadDao {
+        return auroraDatabase.downloadDao()
+    }
 
     @Provides
-    fun providesFavouriteDao(auroraDatabase: AuroraDatabase): FavouriteDao =
-        auroraDatabase.favouriteDao()
+    fun providesFavouriteDao(auroraDatabase: AuroraDatabase): FavouriteDao {
+        return auroraDatabase.favouriteDao()
+    }
 
     @Provides
-    fun providesUpdateDao(auroraDatabase: AuroraDatabase): UpdateDao = auroraDatabase.updateDao()
+    fun providesUpdateDao(auroraDatabase: AuroraDatabase): UpdateDao {
+        return auroraDatabase.updateDao()
+    }
 }

@@ -1,4 +1,6 @@
-Aurora Store je neoficiální, svobodný a otevřený klient pro Google Play s elegantním designem. Aurora Store umožňuje uživatelům stahovat, aktualizovat a vyhledávat aplikace, stejně jako Obchod Play. Funguje bez problémů s i bez Služeb Google Play či microG.
+Aurora Store je neoficiální, svobodný a otevřený klient pro Google Play s elegantním designem. Aurora Store
+umožňuje uživatelům stahovat, aktualizovat a vyhledávat aplikace, stejně jako Obchod Play. Funguje bez problémů
+s i bez Služeb Google Play či MicroG.
 
 <b>Funkce:</b>
 
@@ -7,5 +9,4 @@ Aurora Store je neoficiální, svobodný a otevřený klient pro Google Play s e
 • Přihlášení k účtu: můžete se přihlásit buď s osobním, nebo s anonymním účtem
 • Spoofing zařízení a umístění: změňte své zařízení a/nebo umístění pro přístup k geograficky uzamčeným aplikacím
 • Integrace Exodus Privacy: okamžité zobrazení sledovacích prvků v aplikaci
-• Integrace Plexus: okamžité zobrazení kompatibility aplikací bez Služeb Google Play nebo s microG
 • Zakázání aktualizací: ignorování aktualizací pro určité aplikace

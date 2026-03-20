@@ -19,25 +19,24 @@
 
 package com.aurora.extensions
 
+import android.content.Context
 import android.content.Intent
-import android.net.UrlQuerySanitizer
 import android.os.Bundle
 
-fun Intent.getPackageName(fallbackBundle: Bundle? = null): String? = when (action) {
-    Intent.ACTION_VIEW -> {
-        data?.getQueryParameter("id")
-    }
+inline fun <reified T : Context> Context.newIntent(): Intent =
+    Intent(this, T::class.java)
 
-    Intent.ACTION_SEND -> {
-        val clipData = getStringExtra(Intent.EXTRA_TEXT).orEmpty()
-        UrlQuerySanitizer(clipData).getValue("id")
-    }
+inline fun <reified T : Context> Context.newIntent(flags: Int): Intent {
+    val intent = newIntent<T>()
+    intent.flags = flags
+    return intent
+}
 
-    Intent.ACTION_SHOW_APP_INFO -> {
-        extras?.getString(Intent.EXTRA_PACKAGE_NAME)
-    }
+inline fun <reified T : Context> Context.newIntent(extras: Bundle): Intent =
+    newIntent<T>(0, extras)
 
-    else -> {
-        extras?.getString("packageName") ?: fallbackBundle?.getString("packageName")
-    }
+inline fun <reified T : Context> Context.newIntent(flags: Int, extras: Bundle): Intent {
+    val intent = newIntent<T>(flags)
+    intent.putExtras(extras)
+    return intent
 }

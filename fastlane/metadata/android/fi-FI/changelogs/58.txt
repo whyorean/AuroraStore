@@ -1,4 +1,0 @@
-• Korjattu Google-tileihin liittyvä sisäänkirjautumisongelma
-• Siirretty navigointilaatikon kohteet erilliseen valintaikkunaan
-• Vaihdettu NavigationRailiin suuren näytön laitteille
-• Mahdollisuus viedä latauksia ulkoiseen paikkaan

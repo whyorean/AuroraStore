@@ -139,6 +139,7 @@
     <string name="pref_install_mode_services">Услуги на Aurora</string>
     <string name="pref_install_mode_summary">Изберете режим на инсталиране на APK</string>
     <string name="pref_ui_no_for_you_desc">Показва страници за вас на началния екран</string>
+    <string name="pref_ui_similar_apps_desc">Показва подобни и свързани клъстери на страницата с подробности за приложението</string>
     <string name="purchase_failed">Изтеглянето се провали</string>
     <string name="purchase_unsupported">Приложението не се поддържа</string>
     <string name="purchase_not_found">Приложението не е намерено</string>
@@ -194,6 +195,7 @@
     <string name="tab_top_grossing">С най-големи приходи</string>
     <string name="tab_top_paid">Най-добре платени</string>
     <string name="title_apps_library">Приложения в библиотеката</string>
+    <string name="title_apps_sale">Приложения в разпродажба</string>
     <string name="title_blacklist_manager">Мениджър на черния списък</string>
     <string name="tab_trending">Тенденция</string>
     <string name="title_installed">Инсталиран</string>
@@ -263,19 +265,4 @@
     <string name="action_home_screen">Добавяне към началния екран</string>
     <string name="action_favourite">Любими</string>
     <string name="action_uninstall_success">Успешно деинсталиране</string>
-    <string name="about_wiki_summary">Намери отговори на често задавани въпроси, стъпки за отстраняване на грешки и още</string>
-    <string name="action_remove_all">Премахни всички</string>
-    <string name="action_request_analysis">Поискаи нов анализ</string>
-    <string name="action_select_all">Избери всички</string>
-    <string name="details_no_favourites">Не са намерени любими приложения</string>
-    <string name="details_data_safety_collect">Данни, които това приложение може да събира</string>
-    <string name="details_data_safety_collect_none">Разработчикът твърди, че приложението не събира потребителски данни.</string>
-    <string name="details_data_safety_shared">Данни, които това приложение може да споделя</string>
-    <string name="details_data_safety_share_none">Разработчикът твърди, че това приложение не споделя потребителски данни с компании или организации.</string>
-    <string name="download_eta_hrs">%1$dч %2$dм %3$dс остават</string>
-    <string name="download_eta_min">%1$dм %2$dс остават</string>
-    <string name="download_eta_sec">%1$dс остават</string>
-    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> тракер(и) намерени в <xliff:g id="app_version_name">%2$s</xliff:g></string>
-    <string name="filter_latest">Най-нови</string>
-    <string name="installer_microg_misconfigured">Грешка при инсталирането на MicroG, най-вероятно поради грешка в конфигурацията.</string>
 </resources>

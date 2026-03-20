@@ -1,2 +1,0 @@
-• Novērsta kļūda, kuras dēļ SessionInstaller avarēja vecākās Android versijās
-• Tulkojumu atjauninājumi

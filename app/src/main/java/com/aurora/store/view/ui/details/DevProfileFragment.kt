@@ -31,14 +31,14 @@ import com.aurora.gplayapi.data.models.details.DevStream
 import com.aurora.store.R
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.databinding.FragmentDevProfileBinding
+import com.aurora.store.view.epoxy.controller.DeveloperCarouselController
 import com.aurora.store.view.epoxy.controller.GenericCarouselController
 import com.aurora.store.view.ui.commons.BaseFragment
 import com.aurora.store.viewmodel.details.DevProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DevProfileFragment :
-    BaseFragment<FragmentDevProfileBinding>(),
+class DevProfileFragment : BaseFragment<FragmentDevProfileBinding>(),
     GenericCarouselController.Callbacks {
 
     private val args: DevProfileFragmentArgs by navArgs()
@@ -47,18 +47,16 @@ class DevProfileFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val developerCarouselController = DeveloperCarouselController(this)
+
         // Toolbar
         binding.toolbar.apply {
-            title =
-                if (args.title.isNullOrBlank()) {
-                    getString(R.string.details_dev_profile)
-                } else {
-                    args.title
-                }
+            title = if (args.title.isNullOrBlank()) getString(R.string.details_dev_profile) else args.title
             setNavigationOnClickListener { findNavController().navigateUp() }
         }
 
         // RecyclerView
+        binding.recycler.setController(developerCarouselController)
 
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
@@ -66,12 +64,15 @@ class DevProfileFragment :
                 }
 
                 is ViewState.Loading -> {
+
                 }
 
                 is ViewState.Error -> {
+
                 }
 
                 is ViewState.Status -> {
+
                 }
 
                 is ViewState.Success<*> -> {
@@ -81,6 +82,7 @@ class DevProfileFragment :
                         binding.txtDevDescription.text = description
                         binding.imgIcon.load(imgUrl)
                         binding.viewFlipper.displayedChild = 0
+                        developerCarouselController.setData(streamBundle)
                     }
                 }
             }
@@ -99,9 +101,10 @@ class DevProfileFragment :
     }
 
     override fun onAppClick(app: App) {
-        openDetailsFragment(app.packageName)
+        openDetailsFragment(app.packageName, app)
     }
 
     override fun onAppLongClick(app: App) {
+
     }
 }
