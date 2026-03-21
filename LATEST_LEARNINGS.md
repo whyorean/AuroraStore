@@ -1,4 +1,4 @@
-# AuroraNext Architecture Enhancements - Learnings
+# JMods Architecture Enhancements - Learnings
 
 ## Core Persistent Strategy
 - Implemented a **Cache-First** strategy in `AppRepositoryImpl`.
@@ -6,7 +6,7 @@
 - This ensures a fast, responsive UI and allows the app to function offline.
 
 ## Modularization & UI Consistency
-- Created a `:aurora-next:core-ui` module to centralize the Design System.
+- Created a `:jmods:core-ui` module to centralize the Design System.
 - Feature modules (`feature-home`, `feature-details`) now depend on `core-ui` for shared components like `AppCard` and the global theme.
 - This structure reduces code duplication and ensures visual consistency across the entire app.
 

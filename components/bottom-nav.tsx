@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Home, Search, Download, Settings, RefreshCcw } from 'lucide-react'
+import { Home, Search, Download, RefreshCcw, LayoutGrid } from 'lucide-react'
 import { useState, useEffect, Suspense } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -31,6 +31,7 @@ function BottomNavContent() {
 
   const navItems = [
     { label: 'Browse', href: '/', icon: Home },
+    { label: 'Categories', href: '/categories', icon: LayoutGrid },
     { label: 'Updates', href: '/updates', icon: RefreshCcw },
     { label: 'Downloads', href: '/downloads', icon: Download },
   ]

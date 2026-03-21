@@ -7,10 +7,10 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Aurora Next — Open-source Android App Store',
+  title: 'JMODS — Open-source Android App Store',
   description:
-    'Browse, search, and sideload Android apps privately. Aurora Next is an open-source Google Play alternative with no tracking.',
-  keywords: ['android', 'app store', 'aurora store', 'open source', 'sideload', 'apk'],
+    'Browse, search, and sideload Android apps privately. JMODS is an open-source Google Play alternative with no tracking.',
+  keywords: ['android', 'app store', 'jmods', 'open source', 'sideload', 'apk'],
 }
 
 export const viewport: Viewport = {

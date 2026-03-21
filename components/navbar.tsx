@@ -29,8 +29,8 @@ function NavbarContent() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
               <Shield className="h-5 w-5 text-white" aria-hidden="true" />
             </div>
-            <span className="text-base font-bold tracking-tight text-gray-900">
-              Aurora<span className="text-blue-600">Next</span>
+            <span className="text-xl font-black tracking-tighter text-gray-900">
+              JMODS
             </span>
           </Link>
 

@@ -1,110 +1,55 @@
-# App Store Architecture (Aurora-inspired)
+# JMODS Architecture
 
-This document outlines a modern, clean, and modular architecture for an Android app store, similar to Aurora Store but optimized for current best practices.
+This document outlines the modern, modular Clean Architecture implemented for the JMODS app store.
 
 ## Core Principles
 
-- **Clean Architecture**: Separation of concerns into Data, Domain, and Presentation layers.
-- **Unidirectional Data Flow (UDF)**: Ensuring predictable state management.
-- **Modularization**: Decoupling features and core components for better maintainability and build times.
-- **Reactive Programming**: Extensive use of Coroutines and Kotlin Flow.
+- **Clean Architecture**: Strict separation of concerns into Data, Domain, and Presentation layers.
+- **Modularization**: High-cohesion, low-coupling modules to improve build times and maintainability.
+- **Offline-First**: Reliable access to app metadata using local persistence (Room).
+- **Reactive UI**: State-driven UI built with Jetpack Compose and Kotlin Flow.
 
 ## Tech Stack
 
-- **UI**: Jetpack Compose
+- **UI**: Jetpack Compose, Material 3
 - **Dependency Injection**: Hilt
-- **Async & Streams**: Kotlin Coroutines & Flow
-- **Persistence**: Room Database, DataStore (for simple settings)
-- **Network**: Retrofit / OkHttp
+- **Persistence**: Room (SQL), DataStore (Preferences)
+- **Network**: OkHttp, Kotlinx Serialization
+- **Image Loading**: Coil 3
+- **Navigation**: Type-Safe Navigation (Compose)
 - **Background Tasks**: WorkManager
-- **Image Loading**: Coil
-- **Testing**: JUnit, MockK, Turbine (for Flow testing), Espresso / Compose Test Rule
 
-## High-Level Architecture
+## Module Structure
 
-The project is divided into several modules:
+The project is divided into several logical layers and modules within `jmods-android/`:
 
-### 1. Presentation Layer (UI & ViewModels)
+### 1. Presentation Layer (Features & UI)
 
-- **:ui-common**: Shared Compose components (stateless), themes (colors, typography), and UI utilities. **Must not** contain business logic or ViewModels.
-- **:feature-home**: Main discovery screen, categorized app lists.
-- **:feature-details**: Detailed app information, screenshots, reviews, and trackers.
-- **:feature-search**: Search functionality and suggestions.
-- **:feature-updates**: List of installed apps with available updates.
-- **:feature-downloads**: Download manager UI. Observes download states from `:core-data`.
-- **:feature-settings**: App configurations, account management, and spoofing.
+- **:jmods:core-ui**: Shared design system. Contains the `JMODSTheme`, common Compose components (e.g., `AppCard`, `JModsTopBar`), and UI utilities.
+- **:jmods:feature-home**: Discovery screen. Displays categorized app lists and hero sections.
+- **:jmods:feature-details**: App details screen. Shows descriptions, versions, and installation options.
+- **:jmods:feature-categories**: Category browsing screen.
 
 ### 2. Domain Layer (Business Logic)
 
-- **:core-domain**: Definitions of models, UseCases (e.g., `GetAppDetailsUseCase`, `InstallAppUseCase`), and typed Error types (`AppException`). This layer is pure Kotlin/Java and contains no Android dependencies.
+- **:jmods:core-domain**: The heart of the app. Contains:
+    - **Models**: Plain Kotlin classes representing the business entities (e.g., `App`).
+    - **UseCases**: Granular business logic (e.g., `GetAppsUseCase`, `GetAppDetailsUseCase`).
+    - **Repository Interfaces**: Definitions for data operations.
 
 ### 3. Data Layer (Implementation)
 
-- **:core-data**: Repositories implementing Domain interfaces. Orchestrates data from local and remote sources. Owns the mapping between Data DTOs/Entities and Domain Models.
-- **:core-network**: API clients and network models (DTOs).
-- **:core-database**: Room DAO and Entity definitions.
-- **:core-installer**: Abstractions and implementations for app installation (Session, Root, Shizuku).
-- **:core-auth**: Management of Google/Anonymous accounts, token refreshing, and auth state (`Flow<AuthState>`).
+- **:jmods:core-data**: Implements Repository interfaces. Orchestrates between local and remote sources using a "cache-then-network" strategy.
+- **:jmods:core-database**: Room-based local persistence. Stores app metadata for offline access and performance.
+- **:jmods:core-network**: Remote data source.
+- **:jmods:core-auth**: Authentication management.
+- **:jmods:core-installer**: Handles APK installation and uninstallation logic.
 
-### 4. Navigation
+### 4. Infrastructure
 
-- **:core-navigation**: Defines the navigation contract, route classes (e.g., using Type-Safe Navigation), and deep link handling. Prevents feature modules from depending on each other.
+- **:jmods:core-navigation**: Defines type-safe routes and destination models.
+- **:jmods:app**: The main entry point for the Android application.
 
-## Component Interaction
+## Web Storefront
 
-```mermaid
-graph TD
-    subgraph UI [Presentation Layer]
-        Compose[Jetpack Compose UI]
-        VM[ViewModel]
-    end
-
-    subgraph Domain [Domain Layer]
-        UC[UseCases]
-        Models[Domain Models]
-    end
-
-    subgraph Data [Data Layer]
-        Repo[Repository]
-        Auth[Auth Service]
-        Local[Room Database]
-        Remote[Network API]
-        Installer[Installer Service]
-    end
-
-    Compose --> VM
-    VM --> UC
-    UC --> Repo
-    UC --> Installer
-    Repo --> Local
-    Repo --> Remote
-    Repo --> Auth
-```
-
-## Data Flow (UDF)
-
-1. **User Action**: User interacts with a Compose component (e.g., clicks "Install").
-2. **ViewModel Event**: The UI notifies the ViewModel.
-3. **UseCase Execution**: The ViewModel invokes a UseCase.
-4. **Operation Coordination**: The UseCase coordinates between Repository (for metadata/URLs) and Installer (for the actual installation).
-5. **State Update**: Data flows back as `Flow<AppResult<T>>`. The ViewModel transforms this into a UI State (StateFlow).
-6. **UI Re-composition**: Compose observes the UI State and updates the interface.
-
-## Error Handling
-
-A sealed `AppResult` and `AppException` strategy is used in the Domain layer to ensure typed, predictable error handling across the app.
-
-## App Installation Strategy
-
-The `:core-installer` module provides a unified interface `AppInstaller`. Different implementations handle various environments:
-
-- **SessionInstaller**: Uses Android's PackageInstaller (Standard/Native).
-- **RootInstaller**: Uses su commands for silent installation.
-- **ShizukuInstaller**: Leverages the Shizuku API for rootless silent installation.
-
-## Background Operations
-
-**WorkManager** is used for:
-- Long-running downloads (managed by `:core-data`).
-- Periodic update checks.
-- Metadata caching.
+The repository also includes a high-performance web storefront built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**, located in the `app/` directory.

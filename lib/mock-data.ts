@@ -63,6 +63,32 @@ export const MOCK_APPS: App[] = [
     isOpenSource: true,
     sourceUrl: 'https://github.com/mozilla-mobile/fenix',
     isFeatured: true,
+  },
+  {
+    packageName: 'org.telegram.messenger',
+    name: 'Telegram',
+    developer: 'Telegram FZ-LLC',
+    category: 'Social',
+    shortDescription: 'Fast. Secure. Powerful.',
+    longDescription: 'Pure instant messaging — simple, fast, secure, and synced across all your devices.',
+    iconUrl: 'https://play-lh.googleusercontent.com/ZU9v9D97S97_pA8Y9oH6S-77-hZ6m66-XN_5M-N_6M-N_6M-N_6M-N_6M-N_6M-N_6M',
+    headerImageUrl: 'https://play-lh.googleusercontent.com/ZU9v9D97S97_pA8Y9oH6S-77-hZ6m66-XN_5M-N_6M-N_6M-N_6M-N_6M-N_6M-N_6M',
+    screenshotUrls: [],
+    rating: { average: 4.4, count: 12000000 },
+    downloads: '1B+',
+    version: {
+      versionName: '10.3.1',
+      versionCode: 4100,
+      minSdk: 21,
+      targetSdk: 33,
+      sizeBytes: 65000000,
+      uploadDate: '2025-12-01',
+      changelog: 'New features for channels and groups.',
+    },
+    permissions: [],
+    trackers: [],
+    isOpenSource: false,
+    isFeatured: false,
   }
 ]
 
@@ -87,6 +113,10 @@ export function searchApps(query: string): App[] {
       app.shortDescription.toLowerCase().includes(q) ||
       app.packageName.toLowerCase().includes(q),
   )
+}
+
+export function getRecentlyAddedApps(): App[] {
+    return [...MOCK_APPS].reverse()
 }
 
 export const ALL_CATEGORIES = [
