@@ -11,7 +11,9 @@ data class AppDto(
     @SerializedName("version") val version: String,
     @SerializedName("size") val size: Long,
     @SerializedName("developer") val developer: String? = null,
-    @SerializedName("rating") val rating: Float? = null
+    @SerializedName("rating") val rating: Float? = null,
+    @SerializedName("versionCode") val versionCode: Int = 0,
+    @SerializedName("screenshots") val screenshots: List<String> = emptyList()
 )
 
 data class AppListResponse(

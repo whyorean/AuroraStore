@@ -6,6 +6,7 @@ import java.io.File
 interface PlayApiService {
     fun getApps(category: String): Flow<List<AppDto>>
     fun getAppDetails(packageName: String): Flow<AppDto>
+    fun searchApps(query: String): Flow<List<AppDto>>
     suspend fun downloadApp(packageName: String, versionCode: Int, outputFile: File): Flow<DownloadProgress>
 }
 

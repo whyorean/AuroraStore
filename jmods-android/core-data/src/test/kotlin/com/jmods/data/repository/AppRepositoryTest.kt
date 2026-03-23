@@ -1,13 +1,12 @@
 package com.jmods.data.repository
 
+import android.content.Context
 import com.jmods.database.dao.AppDao
-import com.jmods.domain.model.App
 import com.jmods.network.api.AppDto
 import com.jmods.network.api.PlayApiService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.*
@@ -16,11 +15,12 @@ class AppRepositoryTest {
 
     private val api: PlayApiService = mock()
     private val appDao: AppDao = mock()
+    private val context: Context = mock()
     private lateinit var repository: AppRepositoryImpl
 
     @Before
     fun setup() {
-        repository = AppRepositoryImpl(api, appDao)
+        repository = AppRepositoryImpl(api, appDao, context)
     }
 
     @Test

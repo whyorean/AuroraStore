@@ -30,6 +30,7 @@ include(":jmods:feature-home")
 include(":jmods:feature-details")
 include(":jmods:feature-categories")
 include(":jmods:feature-search")
+include(":jmods:feature-updates")
 include(":jmods:app")
 
 project(":jmods:core-domain").projectDir = file("jmods-android/core-domain")
@@ -44,6 +45,7 @@ project(":jmods:feature-home").projectDir = file("jmods-android/feature-home")
 project(":jmods:feature-details").projectDir = file("jmods-android/feature-details")
 project(":jmods:feature-categories").projectDir = file("jmods-android/feature-categories")
 project(":jmods:feature-search").projectDir = file("jmods-android/feature-search")
+project(":jmods:feature-updates").projectDir = file("jmods-android/feature-updates")
 project(":jmods:app").projectDir = file("jmods-android/app")
 
 rootProject.name = "JMODS"

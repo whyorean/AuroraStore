@@ -13,7 +13,9 @@ fun AppDto.toDomain(): App = App(
     version = version,
     size = size,
     developer = developer ?: "Unknown Developer",
-    rating = rating ?: 0f
+    rating = rating ?: 0f,
+    versionCode = versionCode,
+    screenshots = screenshots
 )
 
 fun AppDto.toEntity(category: String): AppEntity = AppEntity(
@@ -26,7 +28,8 @@ fun AppDto.toEntity(category: String): AppEntity = AppEntity(
     size = size,
     category = category,
     developer = developer ?: "Unknown Developer",
-    rating = rating ?: 0f
+    rating = rating ?: 0f,
+    versionCode = versionCode
 )
 
 fun AppEntity.toDomain(): App = App(
@@ -38,5 +41,7 @@ fun AppEntity.toDomain(): App = App(
     version = version,
     size = size,
     developer = developer,
-    rating = rating
+    rating = rating,
+    versionCode = versionCode,
+    screenshots = emptyList() // Room doesn't store screenshots list by default
 )

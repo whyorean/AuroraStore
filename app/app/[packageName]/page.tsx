@@ -280,7 +280,7 @@ export default async function AppDetailsPage({ params }: AppDetailsPageProps) {
 
       <footer className="mt-20 border-t border-gray-100 bg-white pb-24 md:pb-12">
         <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 text-center">
-            <h2 className="text-xl font-black text-gray-900">JMODS</h2>
+            <h2 className="text-xl font-black text-gray-900">J MODS</h2>
             <p className="mt-2 text-sm text-gray-500">The high-performance, private app store for Android.</p>
             <div className="mt-8 flex justify-center gap-8 text-xs font-bold text-gray-400">
                 <Link href="/" className="hover:text-blue-600">Browse</Link>

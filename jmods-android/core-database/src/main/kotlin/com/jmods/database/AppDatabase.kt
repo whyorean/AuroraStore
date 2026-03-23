@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.jmods.database.dao.AppDao
 import com.jmods.database.entity.AppEntity
 
-@Database(entities = [AppEntity::class], version = 1, exportSchema = false)
+@Database(entities = [AppEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun appDao(): AppDao
 }

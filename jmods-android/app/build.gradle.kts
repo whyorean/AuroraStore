@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":jmods:feature-details"))
     implementation(project(":jmods:feature-categories"))
     implementation(project(":jmods:feature-search"))
+    implementation(project(":jmods:feature-updates"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.process)

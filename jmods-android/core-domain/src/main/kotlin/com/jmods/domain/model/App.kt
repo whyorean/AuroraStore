@@ -11,5 +11,7 @@ data class App(
     val developer: String = "Unknown Developer",
     val rating: Float = 0f,
     val isInstalled: Boolean = false,
-    val hasUpdate: Boolean = false
+    val hasUpdate: Boolean = false,
+    val versionCode: Int = 0,
+    val screenshots: List<String> = emptyList()
 )

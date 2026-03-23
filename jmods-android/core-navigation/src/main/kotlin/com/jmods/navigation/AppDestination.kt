@@ -10,6 +10,9 @@ sealed interface AppDestination {
     object Categories : AppDestination
 
     @Serializable
+    object Updates : AppDestination
+
+    @Serializable
     object Search : AppDestination
 
     @Serializable

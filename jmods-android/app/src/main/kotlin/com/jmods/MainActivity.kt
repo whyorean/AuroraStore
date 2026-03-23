@@ -25,6 +25,7 @@ import com.jmods.feature.details.ui.DetailsScreen
 import com.jmods.feature.categories.ui.CategoriesScreen
 import com.jmods.feature.categories.ui.CategoryResultsScreen
 import com.jmods.feature.search.ui.SearchScreen
+import com.jmods.feature.updates.ui.UpdatesScreen
 import com.jmods.navigation.AppDestination
 import com.jmods.ui.component.JModsPlayer
 import com.jmods.ui.theme.JMODSTheme
@@ -49,7 +50,7 @@ class MainActivity : ComponentActivity() {
                     drawerContent = {
                         ModalDrawerSheet {
                             Text(
-                                "JMODS",
+                                "J MODS",
                                 modifier = Modifier.padding(24.dp),
                                 style = MaterialTheme.typography.headlineMedium,
                                 fontWeight = androidx.compose.ui.text.font.FontWeight.Black
@@ -81,17 +82,18 @@ class MainActivity : ComponentActivity() {
                                 }
                                 NavigationBar {
                                     val items = listOf(
-                                        Triple("Home", AppDestination.Home, Icons.Default.Home),
-                                        Triple("Categories", AppDestination.Categories, Icons.AutoMirrored.Filled.List),
-                                        Triple("Search", AppDestination.Search, Icons.Default.Search)
+                                        NavigationItem("Home", AppDestination.Home, Icons.Default.Home),
+                                        NavigationItem("Categories", AppDestination.Categories, Icons.AutoMirrored.Filled.List),
+                                        NavigationItem("Updates", AppDestination.Updates, Icons.Default.Refresh),
+                                        NavigationItem("Search", AppDestination.Search, Icons.Default.Search)
                                     )
-                                    items.forEach { (name, route, icon) ->
+                                    items.forEach { item ->
                                         NavigationBarItem(
-                                            icon = { Icon(icon, contentDescription = name) },
-                                            label = { Text(name) },
-                                            selected = currentDestination?.hierarchy?.any { it.hasRoute(route::class) } == true,
+                                            icon = { Icon(item.icon, contentDescription = item.name) },
+                                            label = { Text(item.name) },
+                                            selected = currentDestination?.hierarchy?.any { it.hasRoute(item.route::class) } == true,
                                             onClick = {
-                                                navController.navigate(route) {
+                                                navController.navigate(item.route) {
                                                     popUpTo(navController.graph.findStartDestination().id) {
                                                         saveState = true
                                                     }
@@ -140,6 +142,14 @@ class MainActivity : ComponentActivity() {
                                     onBack = { navController.popBackStack() }
                                 )
                             }
+                            composable<AppDestination.Updates> {
+                                UpdatesScreen(
+                                    viewModel = hiltViewModel(),
+                                    onAppClick = { packageName ->
+                                        navController.navigate(AppDestination.Details(packageName))
+                                    }
+                                )
+                            }
                             composable<AppDestination.Search> {
                                 SearchScreen(
                                     viewModel = hiltViewModel(),
@@ -162,3 +172,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+data class NavigationItem(val name: String, val route: Any, val icon: androidx.compose.ui.graphics.vector.ImageVector)

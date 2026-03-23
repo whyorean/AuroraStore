@@ -39,7 +39,7 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             JModsTopBar(
-                title = "JMODS",
+                title = "J MODS",
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Default.Menu, contentDescription = "Menu")

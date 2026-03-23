@@ -30,7 +30,7 @@ function NavbarContent() {
               <Shield className="h-5 w-5 text-white" aria-hidden="true" />
             </div>
             <span className="text-xl font-black tracking-tighter text-gray-900">
-              JMODS
+              J MODS
             </span>
           </Link>
 

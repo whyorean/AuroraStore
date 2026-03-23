@@ -57,7 +57,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
                    onClick={() => setIsPlayerOpen(true)}
                    className="text-xs font-bold text-blue-600 hover:text-blue-700"
                 >
-                  Listen to JMODS Radio
+                  Listen to J MODS Radio
                 </button>
               </div>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -118,7 +118,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
       <Player
         isOpen={isPlayerOpen}
         onClose={() => setIsPlayerOpen(false)}
-        title="JMODS Community Radio"
+        title="J MODS Community Radio"
         subtitle="Live stream"
       />
 
@@ -156,7 +156,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="text-center sm:text-left">
-               <h3 className="font-bold text-lg text-gray-900 mb-1">JMODS</h3>
+               <h3 className="font-bold text-lg text-gray-900 mb-1">J MODS</h3>
                <p className="text-sm text-gray-500 max-w-xs">
                 Open-source Android app store. Privacy first, no tracking, no Google account needed.
               </p>
@@ -179,7 +179,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-50 text-center text-xs text-gray-400">
-            &copy; {new Date().getFullYear()} JMODS. All rights reserved.
+            &copy; {new Date().getFullYear()} J MODS. All rights reserved.
           </div>
         </div>
       </footer>

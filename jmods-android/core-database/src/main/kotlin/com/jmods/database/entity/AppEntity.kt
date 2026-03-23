@@ -15,5 +15,6 @@ data class AppEntity(
     val category: String,
     val developer: String = "Unknown",
     val rating: Float = 0f,
-    val lastUpdated: Long = System.currentTimeMillis()
+    val lastUpdated: Long = System.currentTimeMillis(),
+    val versionCode: Int = 0
 )

@@ -1,6 +1,8 @@
 package com.jmods.feature.details.ui
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -108,6 +110,29 @@ fun AppDetailsContent(
             installStatus = installStatus,
             onDownloadClick = onDownloadClick
         )
+
+        if (app.screenshots.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(24.dp))
+            Text(text = "Screenshots", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
+            Spacer(modifier = Modifier.height(12.dp))
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                contentPadding = PaddingValues(horizontal = 4.dp)
+            ) {
+                items(app.screenshots) { screenshotUrl ->
+                    AsyncImage(
+                        model = screenshotUrl,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(240.dp)
+                            .width(135.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(MaterialTheme.colorScheme.surfaceVariant),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+            }
+        }
 
         Spacer(modifier = Modifier.height(24.dp))
 

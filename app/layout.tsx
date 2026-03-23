@@ -7,9 +7,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'JMODS — Open-source Android App Store',
+  title: 'J MODS — Open-source Android App Store',
   description:
-    'Browse, search, and sideload Android apps privately. JMODS is an open-source Google Play alternative with no tracking.',
+    'Browse, search, and sideload Android apps privately. J MODS is an open-source Google Play alternative with no tracking.',
   keywords: ['android', 'app store', 'jmods', 'open source', 'sideload', 'apk'],
 }
 

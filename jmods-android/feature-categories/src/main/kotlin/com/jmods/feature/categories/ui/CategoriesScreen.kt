@@ -18,12 +18,12 @@ fun CategoriesScreen(
 ) {
     val categories = listOf(
         "Productivity" to Icons.Default.Edit,
-        "Social" to Icons.Default.Share,
+        "Social" to Icons.Default.Email,
         "Games" to Icons.Default.PlayArrow,
-        "Tools" to Icons.Default.Settings,
-        "Media" to Icons.Default.PlayArrow,
+        "Tools" to Icons.Default.Build,
+        "Media" to Icons.Default.Search,
         "Security" to Icons.Default.Lock,
-        "Finance" to Icons.Default.Star,
+        "Finance" to Icons.Default.ShoppingCart,
         "Health" to Icons.Default.Favorite
     )
 
