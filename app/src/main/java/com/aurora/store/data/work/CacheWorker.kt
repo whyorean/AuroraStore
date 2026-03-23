@@ -23,9 +23,9 @@ import kotlin.time.toDuration
  */
 @HiltWorker
 class CacheWorker @AssistedInject constructor(
-    @Assisted private val context: Context,
+    @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters
-) : CoroutineWorker(context, workerParams) {
+) : CoroutineWorker(appContext, workerParams) {
 
     companion object {
         private const val TAG = "CleanCacheWorker"
@@ -58,23 +58,19 @@ class CacheWorker @AssistedInject constructor(
     override suspend fun doWork(): Result {
         Log.i(TAG, "Cleaning cache")
 
-        PathUtil.getOldDownloadDirectories(context).filter { it.exists() }.forEach { dir ->
-            // Downloads
+        PathUtil.getOldDownloadDirectories(appContext).filter { it.exists() }.forEach { dir -> // Downloads
             Log.i(TAG, "Deleting old unused download directory: $dir")
             dir.deleteRecursively()
         }
 
-        PathUtil.getDownloadDirectory(context).listFiles()?.forEach { download ->
-            // com.example.app
+        PathUtil.getDownloadDirectory(appContext).listFiles()?.forEach { download -> // com.example.app
             // Delete if the download directory is empty
             if (download.listFiles().isNullOrEmpty()) {
                 Log.i(TAG, "Removing empty download directory for ${download.name}")
-                download.deleteRecursively()
-                return@forEach
+                download.deleteRecursively(); return@forEach
             }
 
-            download.listFiles()!!.forEach { versionCode ->
-                // 20240325
+            download.listFiles()!!.forEach { versionCode -> // 20240325
                 if (versionCode.listFiles().isNullOrEmpty()) {
                     // Purge empty non-accessible directory
                     Log.i(TAG, "Removing empty directory for ${download.name}, ${versionCode.name}")

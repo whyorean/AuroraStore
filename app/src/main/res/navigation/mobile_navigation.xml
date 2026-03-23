@@ -24,11 +24,17 @@
     app:startDestination="@id/splashFragment">
 
     <action
+        android:id="@+id/action_global_appDetailsFragment"
+        app:destination="@id/appDetailsFragment" />
+    <action
         android:id="@+id/action_global_categoryBrowseFragment"
         app:destination="@id/categoryBrowseFragment" />
     <action
         android:id="@+id/action_global_expandedStreamBrowseFragment"
         app:destination="@id/expandedStreamBrowseFragment" />
+    <action
+        android:id="@+id/action_global_screenshotFragment"
+        app:destination="@id/screenshotFragment" />
     <action
         android:id="@+id/action_global_devProfileFragment"
         app:destination="@id/devProfileFragment" />
@@ -57,18 +63,52 @@
         android:label="@string/title_updates"
         tools:layout="@layout/fragment_updates" />
     <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.aurora.store.view.ui.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/appsGamesFragment"
+        android:name="com.aurora.store.view.ui.all.AppsGamesFragment"
+        android:label="@string/title_apps_games"
+        tools:layout="@layout/fragment_generic_with_search" />
+    <fragment
+        android:id="@+id/spoofFragment"
+        android:name="com.aurora.store.view.ui.spoof.SpoofFragment"
+        android:label="@string/title_spoof_manager"
+        tools:layout="@layout/fragment_spoof" />
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.aurora.store.view.ui.commons.FavouriteFragment"
+        android:label="@string/title_favourites_manager"
+        tools:layout="@layout/fragment_generic_with_toolbar" />
+    <fragment
+        android:id="@+id/blacklistFragment"
+        android:name="com.aurora.store.view.ui.commons.BlacklistFragment"
+        android:label="@string/title_blacklist_manager"
+        tools:layout="@layout/fragment_generic_with_toolbar" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.aurora.store.view.ui.account.AccountFragment"
+        android:label="@string/title_account_manager"
+        tools:layout="@layout/fragment_account" />
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.aurora.store.view.ui.preferences.SettingsFragment"
         android:label="@string/title_settings"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingsFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/installationPreference"
-        android:name="com.aurora.store.view.ui.preferences.installation.InstallationPreference"
+        android:name="com.aurora.store.view.ui.preferences.InstallationPreference"
         android:label="InstallationPreference"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/networkPreference"
-        android:name="com.aurora.store.view.ui.preferences.network.NetworkPreference"
+        android:name="com.aurora.store.view.ui.preferences.NetworkPreference"
         android:label="NetworkPreference"
         tools:layout="@layout/fragment_setting" />
     <fragment
@@ -78,9 +118,74 @@
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/updatesPreference"
-        android:name="com.aurora.store.view.ui.preferences.updates.UpdatesPreference"
+        android:name="com.aurora.store.view.ui.preferences.UpdatesPreference"
         android:label="UpdatesPreference"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/searchSuggestionFragment"
+        android:name="com.aurora.store.view.ui.search.SearchSuggestionFragment"
+        android:label="@string/title_search_suggestion"
+        tools:layout="@layout/fragment_search_suggestion">
+        <action
+            android:id="@+id/action_searchSuggestionFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.aurora.store.view.ui.search.SearchResultsFragment"
+        android:label="@string/title_search_results"
+        tools:layout="@layout/fragment_search_result">
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <!-- Google Play -->
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="play.google.com/store/search?q={query}" />
+    </fragment>
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="com.aurora.store.view.ui.downloads.DownloadFragment"
+        android:label="@string/title_download_manager"
+        tools:layout="@layout/fragment_download">
+        <action
+            android:id="@+id/action_downloadFragment_to_downloadMenuSheet"
+            app:destination="@id/downloadMenuSheet" />
+    </fragment>
+    <fragment
+        android:id="@+id/appDetailsFragment"
+        android:name="com.aurora.store.view.ui.details.AppDetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_devAppsFragment"
+            app:destination="@id/devAppsFragment" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_detailsMoreFragment"
+            app:destination="@id/detailsMoreFragment" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_detailsReviewFragment"
+            app:destination="@id/detailsReviewFragment" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_detailsExodusFragment"
+            app:destination="@id/detailsExodusFragment" />
+        <argument
+            android:name="app"
+            android:defaultValue="@null"
+            app:argType="com.aurora.gplayapi.data.models.App"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_manualDownloadSheet"
+            app:destination="@id/manualDownloadSheet" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_permissionBottomSheet"
+            app:destination="@id/permissionBottomSheet" />
+        <action
+            android:id="@+id/action_appDetailsFragment_to_installErrorDialogSheet"
+            app:destination="@id/installErrorDialogSheet" />
+    </fragment>
     <fragment
         android:id="@+id/categoryBrowseFragment"
         android:name="com.aurora.store.view.ui.commons.CategoryBrowseFragment"
@@ -102,6 +207,17 @@
         <argument
             android:name="expandedStreamUrl"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenshotFragment"
+        android:name="com.aurora.store.view.ui.details.ScreenshotFragment"
+        tools:layout="@layout/fragment_screenshot">
+        <argument
+            android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="arrayOfArtwork"
+            app:argType="com.aurora.gplayapi.data.models.Artwork[]" />
     </fragment>
     <fragment
         android:id="@+id/devProfileFragment"
@@ -129,6 +245,44 @@
             app:argType="com.aurora.gplayapi.data.models.StreamCluster" />
     </fragment>
     <fragment
+        android:id="@+id/devAppsFragment"
+        android:name="com.aurora.store.view.ui.details.DevAppsFragment"
+        tools:layout="@layout/fragment_generic_with_toolbar">
+        <argument
+            android:name="developerName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsMoreFragment"
+        android:name="com.aurora.store.view.ui.details.DetailsMoreFragment"
+        tools:layout="@layout/fragment_details_more">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsReviewFragment"
+        android:name="com.aurora.store.view.ui.details.DetailsReviewFragment"
+        tools:layout="@layout/fragment_details_review">
+        <argument
+            android:name="displayName"
+            app:argType="string" />
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsExodusFragment"
+        android:name="com.aurora.store.view.ui.details.DetailsExodusFragment"
+        tools:layout="@layout/fragment_generic_with_toolbar">
+        <argument
+            android:name="displayName"
+            app:argType="string" />
+        <argument
+            android:name="report"
+            app:argType="com.aurora.store.data.model.Report" />
+    </fragment>
+    <fragment
         android:id="@+id/splashFragment"
         android:name="com.aurora.store.view.ui.splash.SplashFragment"
         tools:layout="@layout/fragment_splash">
@@ -147,9 +301,6 @@
         <deepLink
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/details?id={packageName}" />
-        <deepLink
-            app:action="android.intent.action.VIEW"
-            app:uri="play.google.com/store/search?q={query}" />
         <action
             android:id="@+id/action_splashFragment_to_navigation_apps"
             app:destination="@id/appsContainerFragment"
@@ -168,6 +319,18 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/mobile_navigation"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_appDetailsFragment"
+            app:destination="@id/appDetailsFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/googleFragment"
@@ -179,6 +342,41 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.aurora.store.view.ui.onboarding.OnboardingFragment"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/installerFragment"
+        android:name="com.aurora.store.view.ui.preferences.InstallerFragment"
+        android:label="InstallerFragment"
+        tools:layout="@layout/fragment_installer" />
+    <fragment
+        android:id="@+id/dispenserFragment"
+        android:name="com.aurora.store.view.ui.dispenser.DispenserFragment"
+        android:label="DispenserFragment"
+        tools:layout="@layout/fragment_dispenser">
+        <action
+            android:id="@+id/action_dispenserFragment_to_removeDispenserDialog"
+            app:destination="@id/removeDispenserDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.aurora.store.view.ui.onboarding.PermissionsFragment"
+        android:label="PermissionsFragment"
+        tools:layout="@layout/fragment_onboarding_permissions">
+        <argument
+            android:name="isOnboarding"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
     <dialog
         android:id="@+id/appMenuSheet"
         android:name="com.aurora.store.view.ui.sheets.AppMenuSheet"
@@ -189,24 +387,96 @@
             app:argType="com.aurora.store.data.model.MinimalApp" />
     </dialog>
     <dialog
+        android:id="@+id/filterSheet"
+        android:name="com.aurora.store.view.ui.sheets.FilterSheet"
+        android:label="FilterSheet"
+        tools:layout="@layout/sheet_filter" />
+    <dialog
+        android:id="@+id/manualDownloadSheet"
+        android:name="com.aurora.store.view.ui.sheets.ManualDownloadSheet"
+        android:label="ManualDownloadSheet"
+        tools:layout="@layout/sheet_manual_download">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </dialog>
+    <dialog
+        android:id="@+id/permissionBottomSheet"
+        android:name="com.aurora.store.view.ui.sheets.PermissionBottomSheet"
+        tools:layout="@layout/sheet_permissions">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+    </dialog>
+    <dialog
+        android:id="@+id/downloadMenuSheet"
+        android:name="com.aurora.store.view.ui.sheets.DownloadMenuSheet"
+        android:label="DownloadMenuSheet"
+        tools:layout="@layout/sheet_download_menu">
+        <argument
+            android:name="download"
+            app:argType="com.aurora.store.data.room.download.Download" />
+    </dialog>
+    <dialog
         android:id="@+id/deviceMiuiSheet"
         android:name="com.aurora.store.view.ui.sheets.DeviceMiuiSheet"
         android:label="DeviceMiuiSheet"
         tools:layout="@layout/sheet_device_miui" />
     <dialog
+        android:id="@+id/installErrorDialogSheet"
+        android:name="com.aurora.store.view.ui.sheets.InstallErrorDialogSheet"
+        android:label="InstallErrorDialogSheet"
+        tools:layout="@layout/sheet_install_error">
+        <argument
+            android:name="app"
+            app:argType="com.aurora.gplayapi.data.models.App" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="error"
+            app:argType="string" />
+        <argument
+            android:name="extra"
+            app:argType="string" />
+    </dialog>
+    <dialog
         android:id="@+id/moreDialogFragment"
         android:name="com.aurora.store.view.ui.commons.MoreDialogFragment"
         android:label="MoreDialogFragment" />
     <dialog
+        android:id="@+id/inputDispenserDialog"
+        android:name="com.aurora.store.view.ui.dispenser.InputDispenserDialog"
+        android:label="@string/add_dispenser_title" />
+    <dialog
+        android:id="@+id/removeDispenserDialog"
+        android:name="com.aurora.store.view.ui.dispenser.RemoveDispenserDialog"
+        android:label="@string/remove_dispenser_title">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/aboutDialog"
+        android:name="com.aurora.store.view.ui.about.AboutDialog"
+        android:label="@string/title_about" />
+    <dialog
+        android:id="@+id/logoutDialog"
+        android:name="com.aurora.store.view.ui.account.LogoutDialog"
+        android:label="@string/action_logout">
+        <action
+            android:id="@+id/action_logoutDialog_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <dialog
         android:id="@+id/proxyURLDialog"
-        android:name="com.aurora.store.view.ui.preferences.network.ProxyURLDialog"
+        android:name="com.aurora.store.view.ui.preferences.ProxyURLDialog"
         android:label="@string/pref_network_proxy_url" />
     <dialog
         android:id="@+id/forceRestartDialog"
         android:name="com.aurora.store.view.ui.commons.ForceRestartDialog"
         android:label="@string/force_restart_title" />
-    <dialog
-        android:id="@+id/updatesRestrictionsDialog"
-        android:name="com.aurora.store.view.ui.preferences.updates.UpdatesRestrictionsDialog"
-        android:label="@string/pref_updates_restrictions_title" />
 </navigation>

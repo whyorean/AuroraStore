@@ -19,6 +19,18 @@
 
 package com.aurora.extensions
 
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.data.models.File
 
-fun List<PlayFile>.requiresObbDir(): Boolean = this.any { it.type == PlayFile.Type.OBB }
+fun <T> MutableList<T>.flushAndAdd(list: List<T>) {
+    clear()
+    addAll(list)
+}
+
+fun <T> MutableSet<T>.flushAndAdd(list: Set<T>) {
+    clear()
+    addAll(list)
+}
+
+fun List<File>.requiresObbDir(): Boolean {
+    return this.any { it.type == File.FileType.OBB || it.type == File.FileType.PATCH }
+}

@@ -54,20 +54,16 @@ abstract class EndlessRecyclerOnScrollListener : RecyclerView.OnScrollListener {
 
     private fun findFirstVisibleItemPosition(recyclerView: RecyclerView): Int {
         val child = findOneVisibleChild(0, layoutManager.childCount, true, false)
-        return if (child == null) {
-            RecyclerView.NO_POSITION
-        } else {
-            recyclerView.getChildAdapterPosition(child)
-        }
+        return if (child == null) RecyclerView.NO_POSITION else recyclerView.getChildAdapterPosition(
+            child
+        )
     }
 
     private fun findLastVisibleItemPosition(recyclerView: RecyclerView): Int {
         val child = findOneVisibleChild(recyclerView.childCount - 1, -1, false, true)
-        return if (child == null) {
-            RecyclerView.NO_POSITION
-        } else {
-            recyclerView.getChildAdapterPosition(child)
-        }
+        return if (child == null) RecyclerView.NO_POSITION else recyclerView.getChildAdapterPosition(
+            child
+        )
     }
 
     private fun findOneVisibleChild(
@@ -76,15 +72,12 @@ abstract class EndlessRecyclerOnScrollListener : RecyclerView.OnScrollListener {
         completelyVisible: Boolean,
         acceptPartiallyVisible: Boolean
     ): View? {
-        if (layoutManager.canScrollVertically() != isOrientationHelperVertical ||
-            orientationHelper == null
-        ) {
+        if (layoutManager.canScrollVertically() != isOrientationHelperVertical || orientationHelper == null) {
             isOrientationHelperVertical = layoutManager.canScrollVertically()
-            orientationHelper = if (isOrientationHelperVertical) {
+            orientationHelper = if (isOrientationHelperVertical)
                 OrientationHelper.createVerticalHelper(layoutManager)
-            } else {
+            else
                 OrientationHelper.createHorizontalHelper(layoutManager)
-            }
         }
 
         val mOrientationHelper = this.orientationHelper ?: return null
@@ -125,9 +118,12 @@ abstract class EndlessRecyclerOnScrollListener : RecyclerView.OnScrollListener {
                     ?: throw RuntimeException("A LayoutManager is required")
             }
 
+
             if (visibleThreshold == RecyclerView.NO_POSITION) {
-                visibleThreshold = findLastVisibleItemPosition(recyclerView) -
-                    findFirstVisibleItemPosition(recyclerView)
+                visibleThreshold =
+                    findLastVisibleItemPosition(recyclerView) - findFirstVisibleItemPosition(
+                        recyclerView
+                    )
             }
 
             visibleItemCount = recyclerView.childCount
@@ -141,9 +137,7 @@ abstract class EndlessRecyclerOnScrollListener : RecyclerView.OnScrollListener {
                 }
             }
 
-            if (!isLoading &&
-                totalItemCount - visibleItemCount <= firstVisibleItem + visibleThreshold
-            ) {
+            if (!isLoading && totalItemCount - visibleItemCount <= firstVisibleItem + visibleThreshold) {
                 currentPage++
                 onLoadMore(currentPage)
                 isLoading = true

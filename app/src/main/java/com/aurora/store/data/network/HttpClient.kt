@@ -20,15 +20,9 @@
 package com.aurora.store.data.network
 
 import android.util.Log
-import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.PlayResponse
 import com.aurora.gplayapi.network.IHttpClient
-import com.aurora.store.BuildConfig.APPLICATION_ID
-import com.aurora.store.BuildConfig.VERSION_CODE
-import com.aurora.store.BuildConfig.VERSION_NAME
-import java.io.IOException
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.aurora.store.BuildConfig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -41,14 +35,17 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import java.io.IOException
+import javax.inject.Inject
+import javax.inject.Singleton
 
 @Singleton
-class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient) : IHttpClient {
+class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient): IHttpClient {
 
-    companion object {
-        private const val POST = "POST"
-        private const val GET = "GET"
-    }
+    private val TAG = HttpClient::class.java.simpleName
+
+    private val POST = "POST"
+    private val GET = "GET"
 
     private val _responseCode = MutableStateFlow(100)
     override val responseCode: StateFlow<Int>
@@ -56,21 +53,20 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient) : I
 
     @Throws(IOException::class)
     fun post(url: String, headers: Map<String, String>, requestBody: RequestBody): PlayResponse {
-        val request = Request(
-            url = url.toHttpUrl(),
-            headers = headers.toHeaders(),
-            method = POST,
-            body = requestBody
-        )
+        val request = Request.Builder()
+            .url(url)
+            .headers(headers.toHeaders())
+            .method(POST, requestBody)
+            .build()
         return processRequest(request)
     }
 
     @Throws(IOException::class)
     fun call(url: String, headers: Map<String, String> = emptyMap()): Response {
-        val request = Request(
-            url = url.toHttpUrl(),
-            headers = headers.toHeaders()
-        )
+        val request = Request.Builder()
+            .url(url)
+            .headers(headers.toHeaders())
+            .build()
         return okHttpClient.newCall(request).execute()
     }
 
@@ -80,34 +76,36 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient) : I
         headers: Map<String, String>,
         params: Map<String, String>
     ): PlayResponse {
-        val request = Request(
-            url = buildUrl(url, params),
-            headers = headers.toHeaders(),
-            method = POST,
-            body = "".toRequestBody(null)
-        )
+        val request = Request.Builder()
+            .url(buildUrl(url, params))
+            .headers(headers.toHeaders())
+            .method(POST, "".toRequestBody(null))
+            .build()
         return processRequest(request)
     }
 
     override fun postAuth(url: String, body: ByteArray): PlayResponse {
-        val headers = mapOf("User-Agent" to "${APPLICATION_ID}-${VERSION_NAME}-${VERSION_CODE}")
         val requestBody = body.toRequestBody("application/json".toMediaType(), 0, body.size)
-        val request = Request(
-            url = url.toHttpUrl(),
-            headers = headers.toHeaders(),
-            method = POST,
-            body = requestBody
-        )
+        val request = Request.Builder()
+            .url(url)
+            .header(
+                "User-Agent",
+                "${BuildConfig.APPLICATION_ID}-${BuildConfig.VERSION_NAME}-${BuildConfig.VERSION_CODE}"
+            )
+            .method(POST, requestBody)
+            .build()
         return processRequest(request)
     }
 
     @Throws(IOException::class)
-    override fun post(url: String, headers: Map<String, String>, body: ByteArray): PlayResponse =
-        post(url, headers, body.toRequestBody())
+    override fun post(url: String, headers: Map<String, String>, body: ByteArray): PlayResponse {
+        return post(url, headers, body.toRequestBody())
+    }
 
     @Throws(IOException::class)
-    override fun get(url: String, headers: Map<String, String>): PlayResponse =
-        get(url, headers, mapOf())
+    override fun get(url: String, headers: Map<String, String>): PlayResponse {
+        return get(url, headers, mapOf())
+    }
 
     @Throws(IOException::class)
     override fun get(
@@ -115,31 +113,37 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient) : I
         headers: Map<String, String>,
         params: Map<String, String>
     ): PlayResponse {
-        val request = Request(
-            url = buildUrl(url, params),
-            headers = headers.toHeaders(),
-            method = GET
-        )
+        val request = Request.Builder()
+            .url(buildUrl(url, params))
+            .headers(headers.toHeaders())
+            .method(GET, null)
+            .build()
         return processRequest(request)
     }
 
     override fun getAuth(url: String): PlayResponse {
-        val headers = mapOf("User-Agent" to "${APPLICATION_ID}-${VERSION_NAME}-${VERSION_CODE}")
-        val request = Request(
-            url = url.toHttpUrl(),
-            headers = headers.toHeaders(),
-            method = GET
-        )
+        val request = Request.Builder()
+            .url(url)
+            .header(
+                "User-Agent",
+                "${BuildConfig.APPLICATION_ID}-${BuildConfig.VERSION_NAME}-${BuildConfig.VERSION_CODE}"
+            )
+            .method(GET, null)
+            .build()
         return processRequest(request)
     }
 
     @Throws(IOException::class)
-    override fun get(url: String, headers: Map<String, String>, paramString: String): PlayResponse {
-        val request = Request(
-            url = "$url$paramString".toHttpUrl(),
-            headers = headers.toHeaders(),
-            method = GET
-        )
+    override fun get(
+        url: String,
+        headers: Map<String, String>,
+        paramString: String
+    ): PlayResponse {
+        val request = Request.Builder()
+            .url(url + paramString)
+            .headers(headers.toHeaders())
+            .method(GET, null)
+            .build()
         return processRequest(request)
     }
 
@@ -159,14 +163,15 @@ class HttpClient @Inject constructor(private val okHttpClient: OkHttpClient) : I
         return urlBuilder.build()
     }
 
-    private fun buildPlayResponse(response: Response): PlayResponse = PlayResponse(
-        isSuccessful = response.isSuccessful,
-        code = response.code,
-        responseBytes = response.body.bytes(),
-        errorString = if (!response.isSuccessful) response.message else String()
-    ).also {
-        val isCached = if (response.cacheResponse != null) "CACHED" else "NETWORK"
-        _responseCode.value = response.code
-        Log.i(TAG, "OKHTTP [$isCached] [${response.code}] ${response.request.url}")
+    private fun buildPlayResponse(response: Response): PlayResponse {
+        return PlayResponse(
+            isSuccessful = response.isSuccessful,
+            code = response.code,
+            responseBytes = response.body?.bytes() ?: byteArrayOf(),
+            errorString = if (!response.isSuccessful) response.message else String()
+        ).also {
+            _responseCode.value = response.code
+            Log.i(TAG, "OKHTTP [${response.code}] ${response.request.url}")
+        }
     }
 }

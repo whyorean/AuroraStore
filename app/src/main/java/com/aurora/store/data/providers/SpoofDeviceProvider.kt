@@ -21,7 +21,6 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.util.Log
-import com.aurora.extensions.TAG
 import com.aurora.store.BuildConfig
 import com.aurora.store.util.PathUtil
 import java.io.BufferedInputStream
@@ -41,17 +40,17 @@ import javax.inject.Singleton
 @Singleton
 open class SpoofDeviceProvider(private val context: Context) {
 
-    companion object {
-        private const val SUFFIX = ".properties"
-    }
+    private val TAG = SpoofDeviceProvider::class.java.simpleName
 
-    val availableDeviceProperties: List<Properties>
+    private val SUFFIX = ".properties"
+
+    val availableDeviceProperties: MutableList<Properties>
         get() {
             val propertiesList: MutableList<Properties> = ArrayList()
             propertiesList.addAll(spoofDevicesFromApk)
             propertiesList.addAll(spoofDevicesFromUser)
             propertiesList.sortBy { it.getProperty("UserReadableName") }
-            return propertiesList.distinctBy { it.getProperty("Build.PRODUCT") }
+            return propertiesList
         }
 
     private val spoofDevicesFromApk: List<Properties>
@@ -137,9 +136,12 @@ open class SpoofDeviceProvider(private val context: Context) {
                     return File(sourceDir)
                 }
             } catch (ignored: Exception) {
+
             }
             return null
         }
 
-    private fun filenameValid(filename: String): Boolean = filename.endsWith(SUFFIX)
+    private fun filenameValid(filename: String): Boolean {
+        return filename.endsWith(SUFFIX)
+    }
 }

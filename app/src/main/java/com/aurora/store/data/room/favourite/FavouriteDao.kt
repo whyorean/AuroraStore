@@ -1,6 +1,5 @@
 package com.aurora.store.data.room.favourite
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -18,9 +17,6 @@ interface FavouriteDao {
 
     @Query("SELECT * FROM favourite")
     fun favourites(): Flow<List<Favourite>>
-
-    @Query("SELECT * FROM favourite")
-    fun pagedFavourites(): PagingSource<Int, Favourite>
 
     @Query("SELECT EXISTS(SELECT 1 FROM favourite WHERE packageName = :packageName)")
     suspend fun isFavourite(packageName: String): Boolean

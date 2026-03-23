@@ -56,6 +56,7 @@
     <string name="pref_install_delete_title">Desaniciar los APKs dempués d\'instalales</string>
     <string name="action_ok">D\'acuerdu</string>
     <string name="toast_purchase_blocked">La compra d\'aplicaciones nun ta disponible nes cuentes anónimes.</string>
+    <string name="title_apps_sale">Aplicaciones en venta</string>
     <string name="details_no_dependencies">Nun tien dependencies</string>
     <string name="pref_ui_layout">Distribución</string>
     <string name="onboarding_permission_esa_desc">Pa guardar los ficheros d\'espansión d\'APK (OBBs) p\'aplicaciones y xuegos grandes.</string>
@@ -180,6 +181,7 @@
     <string name="pref_install_mode_am">Instalador AM</string>
     <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los archivos APK</string>
     <string name="pref_ui_similar_apps">Aplicaciones asemeyaes y rellacionaes</string>
+    <string name="pref_ui_similar_apps_desc">Amuesa les aplicaciones asemeyaes y rellacionaes nes páxines de detalles de les aplicaciones</string>
     <string name="tab_for_you">Pa ti</string>
     <string name="title_installed">Instalóse</string>
     <string name="title_installer">App Installer</string>
@@ -280,7 +282,10 @@
     <string name="notification_channel_updates">Updates notifications</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="details_no_favourites">Nun s\'atopó nenguna aplicación favorita</string>
+    <string name="pref_network_proxy_title">Proxy</string>
+    <string name="pref_network_proxy_enable_desc">Permite que tol tránsitu vaiga pel proxy</string>
     <string name="pref_updates_incompatible_desc">Show updates for incompatible or disabled apps that may fail to install</string>
+    <string name="title_apps_sale_provider">Fornidor - bestappsales.com</string>
     <string name="toast_app_unavailable">L\'aplicación nun ta disponible pa esti preséu</string>
     <string name="toast_import_success">Importóse la configuración del preséu</string>
     <string name="notification_updates_available">Hai <xliff:g id="apps_count">%1$d</xliff:g> anovamientos disponibles</string>
@@ -337,6 +342,7 @@
     <string name="title_search_suggestion">Search suggestion</string>
     <string name="title_search_results">Search results</string>
     <string name="toast_permission_installer_required">You need to grant Installer Permission first</string>
+    <string name="toast_permission_esm_caution">You may have to re-grant the permission due to bug in Storage Access Framework</string>
     <string name="item_required">Required</string>
     <string name="item_optional">Optional</string>
     <string name="notification_updates_available_desc_1">Hai un anovamientu de: <xliff:g id="app_one_name">%1$s</xliff:g></string>
@@ -372,6 +378,7 @@
     <string name="onboarding_permission_doze">Descargues en segundu planu</string>
     <string name="pref_vending_version_title">Versión de Google Play</string>
     <string name="pref_vending_version_device">La predeterminada (de la configuración del preséu)</string>
+    <string name="pref_network_proxy_enable">Activar el proxy</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> y <xliff:g id="apps_count">%4$d</xliff:g> más</string>
     <string name="failed_to_generate_session">Nun se pudo xenerar la sesión</string>
     <string name="app_links_desc">Permite qu\'Aurora abra los enllaces compatibles</string>

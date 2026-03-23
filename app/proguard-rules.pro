@@ -1,9 +1,3 @@
-#
-# SPDX-FileCopyrightText: 2021-2025 Rahul Kumar Patel <whyorean@gmail.com>
-# SPDX-FileCopyrightText: 2023-2025 The Calyx Institute
-# SPDX-License-Identifier: GPL-3.0-or-later
-#
-
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.kts.
@@ -130,9 +124,3 @@
 -keep class * extends androidx.viewbinding.ViewBinding {
     *;
 }
-
-# Keep Huawei specific classes and methods
--keep class com.huawei.** { *; }
--dontwarn com.huawei.**
--keep class com.hihonor.** { *; }
--dontwarn com.hihonor.**

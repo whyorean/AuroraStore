@@ -23,19 +23,20 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
+import javax.inject.Inject
 
 @HiltViewModel
 class ExpandedStreamBrowseViewModel @Inject constructor(
     private val streamHelper: ExpandedBrowseHelper
 ) : ViewModel() {
+
+    private val TAG = ExpandedStreamBrowseViewModel::class.java.simpleName
 
     val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
     var streamCluster: StreamCluster = StreamCluster()
@@ -66,10 +67,10 @@ class ExpandedStreamBrowseViewModel @Inject constructor(
                         streamCluster.clusterNextPageUrl
                     )
 
-                    streamCluster = streamCluster.copy(
-                        clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList,
+                    streamCluster.apply {
+                        clusterAppList.addAll(newCluster.clusterAppList)
                         clusterNextPageUrl = newCluster.clusterNextPageUrl
-                    )
+                    }
 
                     liveData.postValue(streamCluster)
 

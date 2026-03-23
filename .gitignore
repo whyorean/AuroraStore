@@ -1,8 +1,3 @@
-#
-# SPDX-FileCopyrightText: 2021-2025 Aurora OSS
-# SPDX-License-Identifier: GPL-3.0-or-later
-#
-
 # Built application files
 *.apk
 *.ap_
@@ -41,10 +36,9 @@ gradle-app.setting
 *.zip
 
 app/release/*
+app/beta/*
+app/alpha/*
 app/nightly/*
-app/vanilla/*
-app/huawei/*
-app/preload/*
 
 
 #Exclude signing configurations & keystore
@@ -53,3 +47,7 @@ signing.properties
 
 
 .kotlin/*
+# Next.js
+.next/
+out/
+node_modules/

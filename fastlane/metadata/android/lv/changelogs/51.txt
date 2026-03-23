@@ -1,1 +1,0 @@
-• Novērsta meklēšanas nepilnība; izmanto WebAPI datus

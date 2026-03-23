@@ -58,9 +58,9 @@ class StreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
             }
         })
 
-        viewModel.seedCluster(streamCluster)
+        viewModel.initCluster(streamCluster)
         viewModel.liveData.observe(viewLifecycleOwner) {
-            updateController(it)
+            updateController(streamCluster)
         }
     }
 
@@ -80,7 +80,7 @@ class StreamBrowseFragment : BaseFragment<FragmentGenericWithToolbarBinding>() {
                         AppListViewModel_()
                             .id(it.packageName.hashCode())
                             .app(it)
-                            .click { _ -> openDetailsFragment(it.packageName) }
+                            .click { _ -> openDetailsFragment(it.packageName, it) }
                     )
                 }
 

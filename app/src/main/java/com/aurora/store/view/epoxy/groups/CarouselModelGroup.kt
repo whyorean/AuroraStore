@@ -34,8 +34,7 @@ class CarouselModelGroup(
     callbacks: GenericCarouselController.Callbacks
 ) :
     EpoxyModelGroup(
-        R.layout.model_carousel_group,
-        buildModels(
+        R.layout.model_carousel_group, buildModels(
             streamCluster,
             callbacks
         )

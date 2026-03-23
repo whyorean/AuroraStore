@@ -1,3 +1,0 @@
-• Store interne ændringer relateret til UI
-• Opdater oversættelser
-• Små fejlrettelser og forbedringer

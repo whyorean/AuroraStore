@@ -25,7 +25,7 @@
     <string name="details_dev_profile">Profil zhvilluesi</string>
     <string name="about_bhim">BHIM - UPI</string>
     <string name="about_xda_summary">Për diskutime dhe sugjerime, shihni rrjedhën Aurora Store XDA.</string>
-    <string name="details_beta_available">Të merret pjesë te programi beta?</string>
+    <string name="details_beta_available">Të merret pjesë te programi Beta?</string>
     <string name="tab_for_you">Për ju</string>
     <string name="account_anonymous">Anonim</string>
     <string name="account_google">Google</string>
@@ -33,12 +33,12 @@
     <string name="account_logout">Dil nga Aurora</string>
     <string name="action_back">Mbprasht</string>
     <string name="action_blacklist">Listë bllokimesh</string>
-    <string name="action_blacklist_add">Shtoje në listë bllokimesh</string>
+    <string name="action_blacklist_add">Shtoje në Listë Bllokimesh</string>
     <string name="action_cancel">Anoloje</string>
     <string name="action_clear">Spastroje</string>
     <string name="action_close">Mbylle</string>
     <string name="action_copy">Kopjoje</string>
-    <string name="action_copy_link">Kopjoji lidhjen</string>
+    <string name="action_copy_link">Kopjoji Lidhjen</string>
     <string name="action_disable">Çaktivizoje</string>
     <string name="action_export">Eksportoje</string>
     <string name="action_filter">Filtra</string>
@@ -51,7 +51,7 @@
     <string name="action_filter_paid_apps">Me pagesë</string>
     <string name="action_filter_rating">Vlerësime</string>
     <string name="action_finish">Përfundoje</string>
-    <string name="action_get_local_apk">Ruaj paketë aplikacioni</string>
+    <string name="action_get_local_apk">Ruaj paketë Aplikacioni</string>
     <string name="action_grant">Akordoja</string>
     <string name="action_granted">U akordua</string>
     <string name="action_ignore">Shpërfille</string>
@@ -63,7 +63,7 @@
     <string name="action_leave">Ikni</string>
     <string name="action_logout">Dilni</string>
     <string name="action_next">Pasuesi</string>
-    <string name="action_ok">Ne rregull</string>
+    <string name="action_ok">OK</string>
     <string name="action_open">Hape</string>
     <string name="action_pending">Pezull</string>
     <string name="action_post">Postoje</string>
@@ -72,7 +72,7 @@
     <string name="action_search">Kërko</string>
     <string name="action_share">Ndajeni</string>
     <string name="action_uninstall">Çinstaloje</string>
-    <string name="action_info">Hollësi aplikacioni</string>
+    <string name="action_info">Hollësi Aplikacioni</string>
     <string name="action_update">Përditësoje</string>
     <string name="action_update_all">Përditësoji krejt</string>
     <string name="action_whitelist">Listë lejimesh</string>
@@ -82,7 +82,7 @@
     <string name="details_beta_delay">Përgatitja mund të dojë ca kohë, gjendjen mund ta kontrolloni më vonë.</string>
     <string name="details_changelog">Regjistër ndryshimesh</string>
     <string name="details_changelog_unavailable">S’u dha regjistër ndryshimesh</string>
-    <string name="details_contains_ads">Përmban reklama</string>
+    <string name="details_contains_ads">Përmban Reklama</string>
     <string name="details_dependencies">Varësi</string>
     <string name="details_dev_details">Kontakte zhvilluesi</string>
     <string name="details_free">E lirë</string>
@@ -90,7 +90,7 @@
     <string name="details_more_about_app">Më tepër mbi aplikacionin</string>
     <string name="details_no_ads">Pa reklama</string>
     <string name="details_no_app_match">S’u gjet aplikacion me përputhje</string>
-    <string name="details_no_dependencies">Pa varësi</string>
+    <string name="details_no_dependencies">Pa Varësi</string>
     <string name="details_no_permission">S’ka leje</string>
     <string name="details_no_updates">S’ka përditësime gati</string>
     <string name="details_paid">Me pagesë</string>
@@ -100,7 +100,7 @@
     <string name="details_think_this_app">Si ju duket ky aplikacion\?</string>
     <string name="download_cancel_all">Anuloji krejt</string>
     <string name="download_canceled">Anuluar</string>
-    <string name="download_completed">Shkarkimi u plotësua</string>
+    <string name="download_completed">Shkarkim i plotësuar</string>
     <string name="download_eta_calculating">Po llogaritet</string>
     <string name="download_failed">Shkarkimi dështoi</string>
     <string name="download_force_clear_all">Spastroji krejt me detyrim</string>
@@ -108,7 +108,7 @@
     <string name="download_none">S’ka shkarkime</string>
     <string name="download_pause_all">Ndali krejt</string>
     <string name="download_queued">Në Radhë</string>
-    <string name="download_resume_all">Vazhdoi krejt</string>
+    <string name="download_resume_all">Rimerri krejt</string>
     <string name="download_speed_estimating">Afërsisht</string>
     <string name="exodus_no_tracker">S’përmban gjurmues të ditur</string>
     <string name="exodus_powered">Bazuar në Exodus Privacy</string>
@@ -125,8 +125,8 @@
     <string name="filter_review_two">Dy</string>
     <string name="installer_root_unavailable">S’ka hyrje si rrënjë. Akordojeni, ose ndryshoni intaluesin.</string>
     <string name="installer_service_available">Shërbimet Aurora janë të passhme dhe për t’i instaluar.</string>
-    <string name="installer_service_unavailable">Instaloni Shërbimet Aurora 1.0.9 ose më sipër, ose ndryshoni instaluesin.</string>
-    <string name="installer_service_misconfigured">Së pari ujdisni Shërbime Aurora dhe akordoni krejt lejet.</string>
+    <string name="installer_service_unavailable">Instaloni shërbimet Aurora 1.0.9 ose më sipër, ose ndryshoni instaluesin.</string>
+    <string name="installer_service_misconfigured">Së pari ujdisni shërbime Aurora dhe akordoni krejt lejet.</string>
     <string name="installer_status_failure">Instaluesi dështoi</string>
     <string name="installer_status_failure_blocked">Instalimi u bllokua</string>
     <string name="installer_status_failure_session">S’u krijua sesion</string>
@@ -150,13 +150,13 @@
     <string name="onboarding_title_permissions">Leje</string>
     <string name="onboarding_title_welcome">Mirë se vini</string>
     <string name="onboarding_welcome_select">Si ia çoni\?</string>
-    <string name="onboarding_permission_esa">Hyrje në depozitë të jashtme</string>
+    <string name="onboarding_permission_esa">Hyrje Në Depozitë të Jashtme</string>
     <string name="onboarding_permission_esa_desc">Për ruajtje kartelash zgjerimi APK (OBBs) për aplikacione &amp; lojëra të mëdha.</string>
-    <string name="onboarding_permission_esm">Përgjegjës depozitash të jashtme</string>
-    <string name="onboarding_permission_installer">Leje instaluesi</string>
+    <string name="onboarding_permission_esm">Përgjegjësi Depozitash të Jashtme</string>
+    <string name="onboarding_permission_installer">Leje Instaluesi</string>
     <string name="onboarding_permission_installer_desc">Lejo instalim aplikacionesh prej Shitores Aurora</string>
     <string name="pref_common_extra">Ekstra</string>
-    <string name="pref_filter_fdroid_summary">Mos kontrollo për përditësime për aplikacione të instaluar nga F-Droid</string>
+    <string name="pref_filter_fdroid_summary">Mos kërko përditësime për shkarkues aplikacionesh, ose të instaluar nga F-Droid</string>
     <string name="pref_filter_fdroid_title">Filtro aplikacione F-Droid</string>
     <string name="pref_install_delete_summary">APK-të e shkarkuara do të fshihen menjëherë pas instalimit</string>
     <string name="pref_install_delete_title">Fshije APK-në pas instalimit</string>
@@ -170,10 +170,11 @@
     <string name="pref_ui_title">Përshtatje</string>
     <string name="pref_ui_layout">Skemë</string>
     <string name="pref_ui_layout_tab">Përzgjidhni skedën parazgjedhje</string>
-    <string name="pref_ui_no_for_you">Faqe “Për ju”</string>
-    <string name="pref_ui_no_for_you_desc">Shfaq te skena e kreut faqe “Për ju”</string>
+    <string name="pref_ui_no_for_you">Faqe “Për Ju”</string>
+    <string name="pref_ui_no_for_you_desc">Shfaq te skena e kreut Faqe “Për Ju”</string>
     <string name="pref_ui_similar_apps">Aplikacione të ngjashme dhe të afërta</string>
-    <string name="purchase_failed">Shkarkimi dështoi</string>
+    <string name="pref_ui_similar_apps_desc">Shfaq te faqja e hollësive të aplikacionit grumbuj të ngjashëm dhe të afërt</string>
+    <string name="purchase_failed">Shkarkimi Dështoi</string>
     <string name="purchase_invalid">Aplikacion jo i blerë</string>
     <string name="purchase_unsupported">Aplikacioni nuk mbulohet</string>
     <string name="purchase_not_found">S’u gjet aplikacion</string>
@@ -193,6 +194,7 @@
     <string name="title_apps">Aplikacione</string>
     <string name="title_apps_games">Apllikacionet &amp; lojërat e mia</string>
     <string name="title_apps_library">Aplikacione në bibliotekë</string>
+    <string name="title_apps_sale">Aplikacione me ulje çmimi</string>
     <string name="title_blacklist_manager">Përgjegjës liste bllokimesh</string>
     <string name="title_device">Pajisje</string>
     <string name="title_download_manager">Shkarkime</string>
@@ -200,7 +202,7 @@
     <string name="title_games">Lojëra</string>
     <string name="title_installation">Instalim</string>
     <string name="title_installed">U instalua</string>
-    <string name="title_installer">Instalues aplikacionesh</string>
+    <string name="title_installer">Instalues Aplikacionesh</string>
     <string name="title_language">Gjuhë</string>
     <string name="title_library">Bibliotekë</string>
     <string name="title_no_network">Pa rrjet</string>
@@ -235,20 +237,20 @@
     <string name="onboarding_permission_notifications">Njoftime</string>
     <string name="pref_vending_version_device">Parazgjedhje (nga formësim pajisjeje)</string>
     <string name="pref_network_proxy_url">URL ndërmjetësi</string>
-    <string name="pref_updates_incompatible">Shfaq përditësime që mund të dështojnë</string>
-    <string name="pref_aurora_only">Filtro aplikacione nga burime të tjera</string>
+    <string name="pref_updates_incompatible">Përditësime jo të përputhshme</string>
+    <string name="pref_aurora_only">Vetëm aplikacione Shitoreje Aurora</string>
     <string name="session_enjoy">Bëni hyrjen dhe shijojeni.</string>
     <string name="toast_import_failed">S’u importua dot formësim pajisjeje</string>
     <string name="downloading_dep">Po shkarkohen kartela shtesë për <xliff:g id="app">%1$s</xliff:g></string>
     <string name="pref_updates_auto_desc">Formësoni sjellje vetë-përditësimesh</string>
     <string name="pref_updates_check_frequency">Shpeshti përditësimesh të vetvetishme</string>
-    <string name="app_links_title">Lidhje aplikacionesh</string>
+    <string name="app_links_title">Lidhje Aplikacionesh</string>
     <string name="android_market_desc">Android Market qe një shitore internetore aplikacionesh <em>software</em> e ngritur për pajisje Android, mbyllur më 2017.</string>
     <string name="action_import">Importoji</string>
     <string name="requesting_new_session">Po kërkohet sesion i ri</string>
     <string name="download_eta_hrs">Edhe %1$dh %2$dm %3$ds</string>
     <string name="toast_import_success">Formësimi i pajisjes u importua</string>
-    <string name="onboarding_permission_doze">Shkarkime në prapaskenë</string>
+    <string name="onboarding_permission_doze">Shkarkime Në Prapaskenë</string>
     <string name="onboarding_permission_doze_desc">Lejojeni Shitoren Aurora të shkarkojë dhe përditësojë aplikacione në prapaskenë</string>
     <string name="pref_vending_version_title">Version Google Play</string>
     <string name="session_init">Po bëhet gjërat gati…</string>
@@ -263,43 +265,47 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">U mohuan leje të domosdoshme. Ju lutemi, që të mund të vazhdohet veprimi, akordojini</string>
     <string name="notification_updates_available_desc_1">Ka gati një version të ri të <xliff:g id="app_one_name">%1$s</xliff:g></string>
-    <string name="pref_updates_check_frequency_desc">Formësoni intervale kohorë për përditësime të automatizuara, në orë.</string>
+    <string name="pref_updates_check_frequency_desc">Formësoni intervale për përditësime të automatizuara dhe të vetvetishme, në orë.</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dhe <xliff:g id="apps_count">%4$d</xliff:g> të tjerë</string>
     <string name="access_denied_using_vpn">Hyrje e mohuar! Po përdorni VPN, ose Tor?</string>
     <string name="google_play_store_desc">Google Play, e njohur dhe si Google Play Store dhe ish-Android Market.</string>
     <string name="pref_updates_auto_off">Mos i vetë-përditëso aplikacionet</string>
     <string name="pref_updates_auto_install">Kontrollo &amp; instalo vetvetiu përditësime të gatshme</string>
     <string name="session_verifying">Po verifikohet sesioni</string>
-    <string name="search_hint">Kërkoni për aplikacione &amp; lojëra</string>
+    <string name="search_hint">Kërkoni për Aplikacione &amp; Lojëra</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> dhe <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> përditësim gati</string>
     <string name="pref_install_mode_shizuku">Instalues Shizuku</string>
     <string name="server_maintenance">Shërbyesi jashtë funksionimi, për mirëmbajtje</string>
     <string name="notification_channel_updates">Njoftime përditësimesh</string>
-    <string name="title_app_settings">Rregullime aplikacioni</string>
+    <string name="title_app_settings">Rregullime Aplikacioni</string>
+    <string name="title_apps_sale_provider">Furnizues - bestappsales.com</string>
     <string name="title_advanced">Të mëtejshme</string>
-    <string name="login_rate_limited">Për ju ka kufizime</string>
+    <string name="login_rate_limited">Oh, për ju ka kufizime</string>
     <string name="server_unreachable">Shërbyes i pakapshëm</string>
     <string name="check_connectivity">Kontrolloni lidhjen në rrjet</string>
-    <string name="app_language">Gjuhë aplikacioni</string>
+    <string name="app_language">Gjuhë Aplikacioni</string>
     <string name="action_request_analysis">Kërkoni analizë të re</string>
     <string name="download_paused">Ndalur • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_shizuku_unavailable">Shizuku s’është instaluar, ose s’është ujdisur si duhet.</string>
-    <string name="action_home_screen">Shtoje te skena e kreut</string>
-    <string name="download_clear_finished">Spastro te përfunduarat</string>
+    <string name="action_home_screen">Shtoje te Skena e Kreut</string>
+    <string name="download_clear_finished">Spastrimi përfundoi</string>
     <string name="download_eta_min">Edhe %1$dm %2$ds</string>
     <string name="download_eta_sec">Edhe %1$ds</string>
     <string name="onboarding_permission_notifications_desc">Dërgo njoftime lidhur me gjendje instalimesh</string>
+    <string name="pref_network_proxy_title">Ndërmjetës</string>
+    <string name="pref_network_proxy_enable">Aktivizo ndërmjetës</string>
+    <string name="pref_network_proxy_enable_desc">Lejo që krejt trafiku prej aplikacionesh të kalojë përmes ndërmjetësit</string>
     <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi</string>
-    <string name="pref_aurora_only_desc">Mos kontrollo për përditësime për aplikacione të instaluar nga burime jashtë Shitores Aurora</string>
+    <string name="pref_aurora_only_desc">Kërko për përditësime vetëm për aplikacione të instaluar me Shitoren Aurora</string>
     <string name="session_good">Hyaaa! Gjithçka në rregull.</string>
-    <string name="session_verifying_google">Po verifikohet sesion Google</string>
+    <string name="session_verifying_google">Po verifikohet Sesion Google</string>
     <string name="title_search_suggestion">Sugjerim kërkimi</string>
     <string name="title_search_results">Përfundime kërkimi</string>
     <string name="updates_available">ka përditësime</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> përditësime gati</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> dhe <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_updates_auto">Përditësime të automatizuara</string>
+    <string name="pref_updates_auto">Vetë-përditësoji aplikacionet</string>
     <string name="pref_updates_auto_notify">Kontrollo &amp; njofto për përditësime të gatshme</string>
     <string name="bad_request">Gabim i brendshëm! Ju lutemi, riprovoni pas ca kohe</string>
     <string name="failed_to_generate_session">S’u prodhua dot sesion</string>
@@ -332,9 +338,9 @@
     <string name="add">Shtoje</string>
     <string name="remove">Hiqe</string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="about_wiki_summary">Gjeni përgjigje për pyetje të bëra shpesh, hapa diagnostikimi dhe më shumë</string>
+    <string name="about_wiki_summary">Merrni përgjigje për pyetje të bëra rëndom (PBR), hapa diagnostikimi, etj</string>
     <string name="details_no_favourites">S’u gjetën aplikacione të parapëlqyer</string>
-    <string name="title_favourites_manager">Aplikacione të parapëlqyer</string>
+    <string name="title_favourites_manager">Aplikacione të Parapëlqyer</string>
     <string name="toast_app_unavailable">Aplikacion jo gati për pajisjen tuaj</string>
     <string name="about_aurora_store_title">Mbi Aurora Store-in</string>
     <string name="about_aurora_store_subtitle">Mësoni më tepër mbi Aurora Store-in</string>
@@ -346,7 +352,11 @@
     <string name="toast_fav_export_success">Të parapëlqyerit u eksportuan!</string>
     <string name="session_login">Ju lutemi, bëni hyrjen te llogaria juaj Google Play</string>
     <string name="action_favourite">E preferuara</string>
-    <string name="about_aurora_store_summary">Aurora Store ju mundëson të kërkoni dhe shkarkoni aplikacione nga Shitorja zyrtare Google Play. Mund të shihni përshkrimet e aplikacioneve, foto ekrani, përditësime, komente përdoruesish të tjerë dhe të shkarkoni APK-në drejtpërdrejt nga Google Play në pajisjen tuaj. Që të përdorni Aurora Store, duhet të keni një llogari në Google Play dhe të bëni hyrjen në të, kur të hapni për herë të parë dhe formësoni Aurora Store.\n \nNdryshe nga një shitore tradicionale aplikacionesh, Aurora Store nuk zotëron, licencon ose shpërndan ndonjë aplikacion. Krejt aplikacionet, përshkrimet e tyre, fotot e ekranit dhe lëndë tjetër në Aurora Store shihen, shkarkohen dhe/ose shfaqen drejtpërdrejt nga Google Play. Aurora Store funksionon mu si një derë, ose një shfletues, duke ju lejuar të bëni hyrjen në llogarinë tuaj Google Play dhe t’i gjeni aplikacionet nga Google Play. \n \nJu lutemi, kini parasysh se Aurora Store nuk ka ndonjë miratim, sponsorizim apo autorizim nga Google, Google Play, nga çfarëdo aplikacionesh të shkarkuar përmes Aurora Store apo nga çfarëdo zhvilluesish aplikacionesh; as ka Aurora Store ndonjë përshoqërim, bashkëpunim apo lidhje me ta.</string>
+    <string name="about_aurora_store_summary">Aurora Store ju mundëson të kërkoni dhe shkarkoni aplikacione nga shitorja zyrtare Google Play. Mund të shihni përshkrimet e aplikacioneve, foto ekrani, përditësime, komente përdoruesish të tjerë dhe të shkarkoni APK-në drejtpërdrejt nga Google Play në pajisjen tuaj. Që të përdorni Aurora Store, duhet të keni një llogari në Google Play dhe të bëni hyrjen në të, kur të hapni për herë të parë dhe formësoni Aurora Store.
+\n
+\nNdryshe nga një shitore tradicionale aplikacionesh, Aurora Store nuk zotëron, licencon ose shpërndan ndonjë aplikacion. Krejt aplikacionet, përshkrimet e tyre, fotot e ekranit dhe lëndë tjetër në Aurora Store shihen, shkarkohen dhe/ose shfaqen drejtpërdrejt nga Google Play. Aurora Store funksionon mu si një derë, ose një shfletues, duke ju lejuar të bëni hyrjen në llogarinë tuaj Google Play dhe t’i gjeni aplikacionet nga Google Play.
+\n
+\nJu lutemi, kini parasysh se Aurora Store nuk ka ndonjë miratim, sponsorizim apo autorizim nga Google, Google Play, nga çfarëdo aplikacionesh të shkarkuar përmes Aurora Store apo nga çfarëdo zhvilluesish aplikacionesh; as ka Aurora Store ndonjë përshoqërim, bashkëpunim apo lidhje me ta.</string>
     <string name="action_uninstall_success">U çinstalua me sukses</string>
     <string name="pref_network_proxy_url_message">Jepni një URL ndërmjetësi të vlefshme për të kaluar krejt të dhënat përmes ndërmjetësit.</string>
     <string name="check_updates">Kontrollo për përditësime</string>
@@ -362,7 +372,8 @@
     <string name="details_data_safety_subtitle">Privatësi të dhënash dhe praktika sigurie të deklaruara nga zhvilluesi</string>
     <string name="details_data_safety_title">Siguri të dhënash</string>
     <string name="onboarding_permission_installer_legacy_desc">Lejo instalim aplikacionesh nga burime të panjohura</string>
-    <string name="toast_permission_installer_required">Së pari lypset të akordoni leje instaluesi</string>
+    <string name="toast_permission_esm_caution">Mund t’ju duhet të riakordoni lejen, për shkak të mete te Platformë Hyrjeje Në Depozitë</string>
+    <string name="toast_permission_installer_required">Së pari lypset të akordoni Leje Instaluesi</string>
     <string name="item_required">E domosdoshme</string>
     <string name="item_optional">Opsionale</string>
     <string name="export_app_summary_fail">S’u arrit të eksportohej paketë aplikacioni</string>
@@ -371,7 +382,7 @@
     <string name="notification_channel_export">Shënim rreth eksportimi aplikacionesh</string>
     <string name="notification_channel_install">Shënim instalimi</string>
     <string name="notification_channel_downloads">Shënim rreth shkarkimesh</string>
-    <string name="export_app_title">Eksportues kartelash</string>
+    <string name="export_app_title">Eksportues Kartelash</string>
     <string name="authentication_required_unarchive">Që të çarkivoni aplikacionin, ju lutemi, bëni hyrjen në llogarinë tuaj Google Play!</string>
     <string name="notification_channel_account">Njoftim lidhur me llogari</string>
     <string name="authentication_required_title">Lyp mirëfilltësim</string>
@@ -384,7 +395,9 @@
     <string name="made_with_love">Krijuar me <xliff:g id="heart_emoji">%1$s</xliff:g> në Indi</string>
     <string name="add_dispenser_title">Shtoni distributor</string>
     <string name="add_dispenser_summary">Shtoni te Aurora Store një distributor token-ësh. Distributorët e token-ëve i furnizojnë Aurora Store-it kredenciale llogarie për hyrje anonime.</string>
+    <string name="remove_dispenser_title">Hiqe distributorin</string>
     <string name="default_spoof">Parazgjedhje</string>
+    <string name="toast_permission_esm_restart">Mund t’ju duhet të rinisni aplikacionin, që të pasqyrohet akordimi i lejeve.</string>
     <string name="toast_black_export_failed">S’u arrit të eksportohej listë ndalimesh!</string>
     <string name="toast_black_export_success">Lista e ndalimeve u eksportua!</string>
     <string name="toast_black_import_failed">S’u arrit të importohej listë ndalimesh!</string>
@@ -407,65 +420,4 @@
     <string name="details_compatibility_status_limited">I kufizuar: Funksionon me kufizime veçorish</string>
     <string name="plexus_progress">Po shihet përputhshmëria…</string>
     <string name="details_compatibility_gms_required_subtitle">Mund t’ju duhet të instaloni bibliotekë pronësore të Google-it, ose një risendërtim FOSS, fjala vjen, microG.</string>
-    <string name="pref_network_microg_login_title">Përdor microG për të bërë hyrje në llogari</string>
-    <string name="pref_network_microg_login_desc">Bëni mirëfilltësimin duke përdorur microG, kur bëhet hyrje në llogari Google, për një rrjedhë më të thjeshtë pune me hyrjen</string>
-    <string name="disclaimer_subtitle">Dhënie llogarie dhe përgjegjësi</string>
-    <string name="no_apps_available">S’ka aplikacione</string>
-    <string name="toast_proxy_disabled">Ndërmjetësi u çaktivizua me sukses</string>
-    <string name="disable">Çaktivizoje</string>
-    <string name="pref_network_proxy_desc">Shihni dhe administroni formësim ndërmjetësi</string>
-    <string name="pref_updates_restrictions_title">Kufizime përditësimesh të automatizuara</string>
-    <string name="pref_updates_restrictions_desc">Formësoni kufizime pajisjeje për përditësime të automatizuara</string>
-    <string name="pref_updates_restrictions_metered">Vetëm në rrjete me trafik të pakufizuar</string>
-    <string name="pref_updates_restrictions_battery">Kur bateria s’është e pakët</string>
-    <string name="pref_updates_restrictions_idle">Kur pajisja është e plogësht</string>
-    <string name="verification_failed">S’u arrit të verifikohen kartelat e shkarkuara</string>
-    <string name="app_info_min_android">Version Android Minimum</string>
-    <string name="app_info_target_android">Nivel API i synuar</string>
-    <string name="app_info_updated_on">Përditësuar së fundi më</string>
-    <string name="app_info_downloads">Shkarkime</string>
-    <string name="pref_common_advanced">Të mëtejshme</string>
-    <string name="pref_updates_app_source">Burim aplikacioni</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Lyp leje</item>
-        <item quantity="other">Lyp leje</item>
-    </plurals>
-    <string name="set">Ujdiseni</string>
-    <string name="force_restart_snack">Të riniset, që të aplikohen ndryshimet?</string>
-    <string name="action_install_microG">Instalo Paketën microG</string>
-    <string name="details_data_safety_collect">Të dhëna që mund të grumbullojë ky aplikacion</string>
-    <string name="details_data_safety_collect_none">Zhvilluesi thotë se ky aplikacion s’grumbullon të dhëna përdoruesi.</string>
-    <string name="details_data_safety_shared">Të dhëna që ky aplikacion mund t’u japë të tjerëve</string>
-    <string name="details_data_safety_share_none">Zhvilluesi thotë se ky aplikacion s’jep të dhëna përdoruesi për shoqëri dhe ente të tjerë.</string>
-    <string name="exodus_tracker_desc">Ky version i aplikacioni mund të përmbajë ende gjurmues të tjerë jo të pranishëm në bazën e të dhënave të Exodus Privacy-së.</string>
-    <string name="exodus_report_trackers">Te <xliff:g id="app_version_name">%2$s</xliff:g> u gjet(ën) <xliff:g id="number_of_trackers">%1$d</xliff:g> gjurmues i(të) njohur</string>
-    <string name="installer_microg_misconfigured">Instaluesi MicroG s’arriti të instalojë aplikacionin, me gjasa për shkak formësimi të gabuar.</string>
-    <string name="pref_install_mode_microg">Instalues MicroG</string>
-    <string name="action_skip">Anashkaloje</string>
-    <string name="onboarding_title_gsf">Përputhje Aplikacioni</string>
-    <string name="onboarding_title_gsf_desc">Ka varësi të paplotësuara</string>
-    <string name="onboarding_gms_agreement">I kam lexuar dhe pajtohem me Kushtet e Shërbimit dhe Rregullat e Privatësisë së microG-së</string>
-    <string name="onboarding_gms_missing">S’gjetëm dot Google Play Services në pajisjen tuaj, një numër aplikacionesh të njohur tanimë e kanë të domosdoshëm, që të funksionojnë si duhet!</string>
-    <string name="onboarding_gms_microg">microG është një sendërtim i lirë dhe me burim të hapët, që ofron funksione të ngjashme për xhirim aplikacionesh që varen nga Google Play Services për pajisje Android, përmes risendërimti.\n\nmicroG u bën të mundur aplikacioneve të përdorin këto API Google, duke zgjeruar për përdoruesit shkallë përputhjeje, teksa ofron përfitime në pikëpamje të privatësisë. \n\nmicroG do të funksionojë automatikisht në prapaskenë, kur hapni aplikacione që varen nga Google Mobile Services.</string>
-    <string name="microg_privacy_policy">Lexoni Rregulla Privatësie të microG-së</string>
-    <string name="microg_license_agreement">Lexoni Licencë dhe Marrëveshje për microG</string>
-    <string name="microg_website">Vizitoni Sajtin e Projektit microG</string>
-    <string name="microg_installer_subtitle">Që të instalohet, lyp aplikacionin shoqërues microG</string>
-    <string name="microg_installer_desc">Ju ndihmon të anashkaloni kontroll Integriteti Aplikacioni (vetëm për instaluesin)</string>
-    <string name="manual_download_version_error">Kodi i versionit mund të përmbajë vetëm shifra</string>
-    <string name="status_verifying">Po verifikohet</string>
-    <string name="no_description">S’ka përshkrim</string>
-    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> leje</string>
-    <string name="details_more_info">Më tepër informacion</string>
-    <string name="details_more_package_name">Emër pakete</string>
-    <string name="details_more_content_rating">Vlerësim lënde</string>
-    <string name="preparing_to_install">Po bëhet gati për instalim</string>
-    <string name="select_app_for_details">Për më tepër hollësi, përzgjidhni një aplikacion</string>
-    <string name="action_filter_no_ads">Pa reklama</string>
-    <string name="action_filter_no_gms">Pa shërbime luajtjesh</string>
-    <string name="loading">Ngarkim në kryerje e sipër</string>
-    <string name="page">Faqja <xliff:g id="number">%1$d</xliff:g></string>
-    <string name="status_unavailable">Nuk është gati</string>
-    <string name="available_spoof">Gati</string>
-    <string name="details_more_target_api">Synimi</string>
 </resources>

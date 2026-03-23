@@ -34,25 +34,26 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.FloatingWindow
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.aurora.extensions.isNAndAbove
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.databinding.ActivityMainBinding
-import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
 import com.aurora.store.view.ui.sheets.NetworkDialogSheet
+import com.aurora.store.util.PackageUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var B: ActivityMainBinding
 
     // TopLevelFragments
     private val topLevelFrags = listOf(
@@ -69,11 +70,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        B = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(B.root)
 
         // Adjust root view's paddings for edgeToEdge display
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { root, windowInsets ->
+        ViewCompat.setOnApplyWindowInsetsListener(B.root) { root, windowInsets ->
             val insets = windowInsets.getInsets(systemBars() or displayCutout() or ime())
             root.setPadding(insets.left, insets.top, insets.right, 0)
             windowInsets
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        if (!PackageUtil.isTv(this)) {
+        if (isNAndAbove && !PackageUtil.isTv(this)) {
             viewModel.networkProvider.status.onEach { networkStatus ->
                 when (networkStatus) {
                     NetworkStatus.AVAILABLE -> {
@@ -96,6 +97,7 @@ class MainActivity : AppCompatActivity() {
                                     .commitAllowingStateLoss()
                             }
                         }
+
                     }
 
                     NetworkStatus.UNAVAILABLE -> {
@@ -109,7 +111,7 @@ class MainActivity : AppCompatActivity() {
             }.launchIn(AuroraApp.scope)
         }
 
-        binding.navView.setupWithNavController(navController)
+        B.navView.setupWithNavController(navController)
 
         // Handle quick exit from back actions
         val defaultTab = when (Preferences.getInteger(this, PREFERENCE_DEFAULT_SELECTED_TAB)) {
@@ -136,8 +138,8 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
             if (navDestination !is FloatingWindow) {
                 when (navDestination.id) {
-                    in topLevelFrags -> binding.navView.visibility = View.VISIBLE
-                    else -> binding.navView.visibility = View.GONE
+                    in topLevelFrags -> B.navView.visibility = View.VISIBLE
+                    else -> B.navView.visibility = View.GONE
                 }
             }
         }
@@ -145,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         // Updates
         lifecycleScope.launch {
             viewModel.updateHelper.updates.collectLatest { list ->
-                binding.navView.getOrCreateBadge(R.id.updatesFragment).apply {
+                B.navView.getOrCreateBadge(R.id.updatesFragment).apply {
                     isVisible = !list.isNullOrEmpty()
                     number = list?.size ?: 0
                 }
@@ -153,5 +155,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun isIntroDone(): Boolean = Preferences.getBoolean(this, Preferences.PREFERENCE_INTRO)
+    private fun isIntroDone(): Boolean {
+        return Preferences.getBoolean(this@MainActivity, Preferences.PREFERENCE_INTRO)
+    }
 }

@@ -28,6 +28,7 @@ import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
@@ -35,10 +36,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.core.net.toUri
-import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
-import com.aurora.Constants.PACKAGE_NAME_GMS
-import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
@@ -53,53 +50,23 @@ object PackageUtil {
 
     private const val TAG = "PackageUtil"
 
-    private const val VERSION_CODE_MICRO_G: Long = 240913402
-    private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
-    private const val VERSION_CODE_MICROG_COMPANION_MIN: Long = 84022620
-    private const val MICROG_INSTALL_ACTIVITY = "org.microg.vending.installer.AppInstallActivity"
+    const val PACKAGE_NAME_GMS = "com.google.android.gms"
+    private const val VERSION_CODE_MICRO_G = 240913402
+    private const val VERSION_CODE_MICRO_G_HUAWEI = 240913007
 
-    fun getAllValidPackages(context: Context): List<PackageInfo> =
-        context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
+    fun getAllValidPackages(context: Context): List<PackageInfo> {
+        val sharedLibs = context.packageManager.systemSharedLibraryNames ?: emptyArray()
+        return context.packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
             .filter { it.isValidApp(context.packageManager) }
+            .filterNot { it.packageName in sharedLibs }
             .sortedBy {
                 it.applicationInfo!!.loadLabel(context.packageManager).toString()
                     .lowercase(Locale.getDefault())
             }
-
-    fun hasSupportedAppGallery(context: Context): Boolean {
-        return try {
-            val result = context.packageManager.checkPermission(
-                android.Manifest.permission.INSTALL_PACKAGES,
-                PACKAGE_NAME_APP_GALLERY
-            )
-
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                Log.w(TAG, "AppGallery does not have INSTALL_PACKAGES permission")
-                return false
-            }
-
-            val packageInfo = context.packageManager.getPackageInfo(
-                PACKAGE_NAME_APP_GALLERY,
-                PackageManager.GET_META_DATA
-            )
-
-            @Suppress("DEPRECATION")
-            val versionCode = if (Build.VERSION.SDK_INT >= 28) {
-                packageInfo.longVersionCode
-            } else {
-                packageInfo.versionCode.toLong()
-            }
-
-            Log.i(TAG, "AppGallery - ${packageInfo.versionName} ($versionCode)")
-
-            versionCode >= 15010000L
-        } catch (_: Exception) {
-            false
-        }
     }
 
-    fun hasSupportedMicroGVariant(context: Context): Boolean {
-        val isMicroG = CertUtil.isMicroGGms(context)
+    fun hasSupportedMicroG(context: Context): Boolean {
+        val isMicroG = CertUtil.isMicroGGMS(context, PACKAGE_NAME_GMS)
 
         // Do not proceed if MicroG variant is not installed
         if (!isMicroG) return false
@@ -111,126 +78,115 @@ object PackageUtil {
         }
     }
 
-    fun hasActivity(context: Context, packageName: String, activityName: String): Boolean {
-        val intent = Intent()
-        intent.setClassName(packageName, activityName)
-
-        val resolveInfo = context.packageManager.resolveActivity(intent, 0)
-        return resolveInfo != null
-    }
-
-    fun hasMicroGCompanion(context: Context): Boolean = isInstalled(
-        context,
-        PACKAGE_NAME_PLAY_STORE,
-        VERSION_CODE_MICROG_COMPANION_MIN
-    ) &&
-        hasActivity(
-            context,
-            PACKAGE_NAME_PLAY_STORE,
-            MICROG_INSTALL_ACTIVITY
-        )
-
-    fun isInstalled(context: Context, packageName: String, versionCode: Long? = null): Boolean =
-        try {
-            val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
-            if (versionCode != null) {
-                PackageInfoCompat.getLongVersionCode(packageInfo) >= versionCode
-            } else {
-                true
-            }
-        } catch (_: PackageManager.NameNotFoundException) {
+    fun isInstalled(context: Context, packageName: String): Boolean {
+        return try {
+            getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
             false
         }
-
-    fun isArchived(context: Context, packageName: String): Boolean = try {
-        isVAndAbove && context.packageManager.getArchivedPackage(packageName) != null
-    } catch (_: Exception) {
-        false
     }
 
-    fun isSharedLibrary(context: Context, packageName: String): Boolean = if (isOAndAbove) {
-        getAllSharedLibraries(context).any { it.name == packageName }
-    } else {
-        false
+    fun isInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
+        return try {
+            val packageInfo = getPackageInfo(context, packageName)
+            return PackageInfoCompat.getLongVersionCode(packageInfo) >= versionCode.toLong()
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
     }
 
-    fun isSharedLibraryInstalled(
-        context: Context,
-        packageName: String,
-        versionCode: Long
-    ): Boolean = if (isOAndAbove) {
-        val sharedLibraries = getAllSharedLibraries(context)
-        if (isPAndAbove) {
-            sharedLibraries.any {
-                it.name == packageName && it.longVersion == versionCode
+    fun isArchived(context: Context, packageName: String): Boolean {
+        return try {
+            isVAndAbove && context.packageManager.getArchivedPackage(packageName) != null
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
+    fun isSharedLibrary(context: Context, packageName: String): Boolean {
+        return if (isOAndAbove) {
+            getAllSharedLibraries(context).any { it.name == packageName }
+        } else {
+            false
+        }
+    }
+
+    fun isSharedLibraryInstalled(context: Context, packageName: String, versionCode: Int): Boolean {
+        return if (isOAndAbove) {
+            val sharedLibraries = getAllSharedLibraries(context)
+            if (isPAndAbove) {
+                sharedLibraries.any {
+                    it.name == packageName && it.longVersion == versionCode.toLong()
+                }
+            } else {
+                sharedLibraries.any {
+                    @Suppress("DEPRECATION")
+                    it.name == packageName && it.version == versionCode
+                }
             }
         } else {
-            sharedLibraries.any {
-                @Suppress("DEPRECATION")
-                it.name == packageName && it.version == versionCode.toInt()
-            }
+            false
         }
-    } else {
-        false
     }
 
     fun isUpdatable(context: Context, packageName: String, versionCode: Long): Boolean {
         return try {
             val packageInfo = getPackageInfo(context, packageName)
             return versionCode > PackageInfoCompat.getLongVersionCode(packageInfo)
-        } catch (_: PackageManager.NameNotFoundException) {
+        } catch (e: PackageManager.NameNotFoundException) {
             false
         }
     }
 
-    /**
-     * Confirm if MicroG bundle is installed
-     * Considering the following:
-     * 1. GmsCore is installed and it is a microG huawei variant
-     * 2. Play Store is installed - (microG Companion)
-     */
-    fun isMicroGBundleInstalled(context: Context): Boolean =
-        hasSupportedMicroGVariant(context) && isInstalled(context, PACKAGE_NAME_PLAY_STORE)
-
-    fun getInstalledVersionName(context: Context, packageName: String): String = try {
-        getPackageInfo(context, packageName).versionName ?: ""
-    } catch (_: PackageManager.NameNotFoundException) {
-        ""
+    fun getInstalledVersionName(context: Context, packageName: String): String {
+        return try {
+            getPackageInfo(context, packageName).versionName ?: ""
+        } catch (e: PackageManager.NameNotFoundException) {
+            ""
+        }
     }
 
-    fun getInstalledVersionCode(context: Context, packageName: String): Long = try {
-        PackageInfoCompat.getLongVersionCode(getPackageInfo(context, packageName))
-    } catch (_: PackageManager.NameNotFoundException) {
-        0
+    fun getInstalledVersionCode(context: Context, packageName: String): Long {
+        return try {
+            PackageInfoCompat.getLongVersionCode(getPackageInfo(context, packageName))
+        } catch (e: PackageManager.NameNotFoundException) {
+            0
+        }
     }
 
-    fun isTv(context: Context): Boolean =
-        context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+    fun isTv(context: Context): Boolean {
+        return context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+    }
 
     fun getLaunchIntent(context: Context, packageName: String?): Intent? {
         val intent = if (isTv(context)) {
             context.packageManager.getLeanbackLaunchIntentForPackage(packageName!!)
         } else {
             context.packageManager.getLaunchIntentForPackage(packageName!!)
-        } ?: return null
+        }
 
-        return intent.apply {
-            addCategory(
-                if (isTv(context)) {
-                    Intent.CATEGORY_LEANBACK_LAUNCHER
-                } else {
-                    Intent.CATEGORY_LAUNCHER
-                }
-            )
+        return if (intent == null) {
+            null
+        } else {
+            intent.addCategory(if (isTv(context)) Intent.CATEGORY_LEANBACK_LAUNCHER else Intent.CATEGORY_LAUNCHER)
+            intent
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
     fun getStorageManagerIntent(context: Context): Intent {
-        val intent = Intent(
+        var intent = Intent(
             Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
-            "package:${BuildConfig.APPLICATION_ID}".toUri()
+            Uri.parse("package:${BuildConfig.APPLICATION_ID}")
         )
+
+        if (isHuawei) {
+            intent = Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
+        }
 
         // Check if the intent can be resolved
         val packageManager = context.packageManager
@@ -246,13 +202,15 @@ object PackageUtil {
         }
     }
 
-    fun getInstallUnknownAppsIntent(): Intent = if (isOAndAbove) {
-        Intent(
-            Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-            "package:${BuildConfig.APPLICATION_ID}".toUri()
-        )
-    } else {
-        Intent(Settings.ACTION_SECURITY_SETTINGS)
+    fun getInstallUnknownAppsIntent(): Intent {
+        return if (isOAndAbove) {
+            Intent(
+                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+            )
+        } else {
+            Intent(Settings.ACTION_SECURITY_SETTINGS)
+        }
     }
 
     fun canRequestPackageInstalls(context: Context): Boolean {
@@ -262,8 +220,7 @@ object PackageUtil {
             @Suppress("DEPRECATION")
             val secureResult = Settings.Secure.getInt(
                 context.contentResolver,
-                Settings.Secure.INSTALL_NON_MARKET_APPS,
-                0
+                Settings.Secure.INSTALL_NON_MARKET_APPS, 0
             )
 
             return secureResult == 1
@@ -271,8 +228,8 @@ object PackageUtil {
     }
 
     @Throws(Exception::class)
-    fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo =
-        if (isTAndAbove) {
+    fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo {
+        return if (isTAndAbove) {
             context.packageManager.getPackageInfo(
                 packageName,
                 PackageInfoFlags.of(flags.toLong())
@@ -280,18 +237,21 @@ object PackageUtil {
         } else {
             context.packageManager.getPackageInfo(packageName, flags)
         }
+    }
 
-    fun getIconForPackage(context: Context, packageName: String): Bitmap? = try {
-        val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
-        val icon = packageInfo.applicationInfo!!.loadIcon(context.packageManager)
-        if (icon.intrinsicWidth > 0 && icon.intrinsicHeight > 0) {
-            icon.toBitmap(96, 96)
-        } else {
-            context.packageManager.defaultActivityIcon.toBitmap(96, 96)
+    fun getIconForPackage(context: Context, packageName: String): Bitmap? {
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(packageName, 0)
+            val icon = packageInfo.applicationInfo!!.loadIcon(context.packageManager)
+            if (icon.intrinsicWidth > 0 && icon.intrinsicHeight > 0) {
+                icon.toBitmap(96, 96)
+            } else {
+                context.packageManager.defaultActivityIcon.toBitmap(96, 96)
+            }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to get icon for package!", exception)
+            null
         }
-    } catch (exception: Exception) {
-        Log.e(TAG, "Failed to get icon for package!", exception)
-        null
     }
 
     fun getIconDrawableForPackage(context: Context, packageName: String): Drawable? {
@@ -308,14 +268,15 @@ object PackageUtil {
         }
     }
 
-    private fun getAllSharedLibraries(context: Context, flags: Int = 0): List<SharedLibraryInfo> =
-        if (isTAndAbove) {
+    private fun getAllSharedLibraries(context: Context, flags: Int = 0): List<SharedLibraryInfo> {
+        return if (isTAndAbove) {
             context.packageManager.getSharedLibraries(PackageInfoFlags.of(flags.toLong()))
         } else if (isOAndAbove) {
             context.packageManager.getSharedLibraries(flags)
         } else {
             emptyList()
         }
+    }
 
     fun getFilter(): IntentFilter {
         val filter = IntentFilter()

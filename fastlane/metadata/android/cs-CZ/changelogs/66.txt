@@ -1,5 +1,0 @@
-• Nové hodnocení kompatibility aplikací (využívá Plexus)
-• Vylepšení správce blokovaných
-• Možnost změny omezení automatických aktualizací
-• Menší opravy chyb a vylepšení
-• Aktualizace překladů; přeloženy další řetězce

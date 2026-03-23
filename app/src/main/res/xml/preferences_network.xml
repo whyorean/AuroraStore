@@ -25,26 +25,24 @@
         app:summary="@string/pref_dispenser_summary"
         app:title="@string/pref_dispenser_title" />
 
-    <Preference
-        app:disableDependentsState="false"
+    <PreferenceCategory
         app:iconSpaceReserved="false"
         app:key="PREFERENCE_PROXY_URL"
-        app:summary="@string/pref_network_proxy_desc"
-        app:title="@string/pref_network_proxy_url" />
+        app:singleLineTitle="false"
+        app:summary="protocol://user:password@host:port"
+        app:title="@string/pref_network_proxy_title" />
+
+    <SwitchPreferenceCompat
+        app:disableDependentsState="false"
+        app:iconSpaceReserved="false"
+        app:key="PREFERENCE_PROXY_ENABLED"
+        app:summary="@string/pref_network_proxy_enable_desc"
+        app:title="@string/pref_network_proxy_enable" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:singleLineTitle="false"
         app:title="@string/pref_common_extra" />
-
-    <SwitchPreferenceCompat
-        app:defaultValue="true"
-        app:disableDependentsState="false"
-        app:iconSpaceReserved="false"
-        app:isPreferenceVisible="false"
-        app:key="PREFERENCE_MICROG_AUTH"
-        app:summary="@string/pref_network_microg_login_desc"
-        app:title="@string/pref_network_microg_login_title" />
 
     <com.aurora.store.view.custom.preference.AuroraListPreference
         app:defaultValue="0"

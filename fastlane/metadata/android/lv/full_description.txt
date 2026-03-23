@@ -1,11 +1,12 @@
-Aurora Store ir neoficiāls FOSS Google Play klients ar pievilcīgu izskatu. Aurora Store ļauj lietotājiem lejupielādēt, atjaunināt un meklēt lietotnes kā Play veikalā. Tā vienlīdz labi darbojas gan ar, gan bez Google Play pakalpojumiem vai microG.
+Aurora Store ir neoficiāls FOSS Google Play klients ar pievilcīgu izskatu. Aurora Store
+ļauj lietotājiem lejupielādēt, atjaunināt un meklēt lietotnes kā Play Store. Tā vienlīdz labi darbojas
+gan ar, gan bez Google Play pakalpojumiem vai MicroG.
 
 <b>Iespējas:</b>
 
-• FOSS: ir GPLv3 licence;
-• skaists izskats: veidots vadoties pēc jaunākajām Material 3 vadlīnijām;
-• pieteikšanās kontā: var pieteikties gan ar personīgo, gan ar anonīmu kontu;
-• ierīces un atrašanās vietas atdarināšana: var mainīt savu ierīci un/vai atrašanās vietu, lai varētu piekļūt ģeogrāfiski ierobežotām lietotnēm;
-• iekļauts Exodus Privacy: uzreiz ir redzami lietotnē izmantotie izsekotāji;
-• Plexus iekļaušana: tūlītēji apskatāma saderība bez Google Play pakalpojumiem vai ar microG;
-• atjauninājumu izņēmumu sarakts: noteiktu lietotņu atjauninājumu neņemšana vērā.
+• FOSS: ir GPLv3 licence
+• Skaists izskats: veidots vadoties pēc jaunākajām Material 3 vadlīnijām
+• Konta pieteikšanās: var pieteikties gan ar personīgo, fan ar anonīmu kontu
+• Ierīces un darbības vietas atdarināšana: var mainīt savu ierīci un/vai darbības vietu, lai piekļūtu ierobežotām lietotnēm
+• Iekļauts Exodus Privacy: lietotnē uzreiz ir redzami izsekotāji
+• Atjauninājumu izņēmumu sarakts: noteiktu lietotņu atjauninājumu neņemšana vērā

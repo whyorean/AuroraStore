@@ -1,2 +1,0 @@
-• Fix app install issue on huawei devices
-• Translation updates

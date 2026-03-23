@@ -25,10 +25,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.aurora.extensions.navigate
 import com.aurora.store.R
-import com.aurora.store.compose.navigation.Screen
-import com.aurora.store.data.model.PermissionType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,8 +35,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences_settings, rootKey)
 
         findPreference<Preference>("pref_perms")?.setOnPreferenceClickListener {
-            requireContext().navigate(
-                Screen.PermissionRationale(requiredPermissions = PermissionType.entries.toSet())
+            findNavController().navigate(
+                SettingsFragmentDirections.actionSettingsFragmentToPermissionsFragment(false)
             )
             true
         }

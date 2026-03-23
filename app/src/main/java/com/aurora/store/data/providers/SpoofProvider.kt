@@ -23,20 +23,20 @@ import android.content.Context
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
+import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlinx.serialization.json.Json
 
 /**
  * Provider class to work with device and locale spoofs
  */
 @Singleton
 class SpoofProvider @Inject constructor(
-    private val json: Json,
-    @ApplicationContext val context: Context
+    private val gson: Gson,
+    @ApplicationContext val context: Context,
 ) : SpoofDeviceProvider(context) {
 
     companion object {
@@ -79,14 +79,15 @@ class SpoofProvider @Inject constructor(
         get() = Preferences.getBoolean(context, DEVICE_SPOOF_ENABLED)
 
     private val spoofLocale: Locale
-        get() = Locale.Builder()
-            .setLanguage(Preferences.getString(context, LOCALE_SPOOF_LANG))
-            .setRegion(Preferences.getString(context, LOCALE_SPOOF_COUNTRY))
-            .build()
+        get() = Locale(
+            Preferences.getString(context, LOCALE_SPOOF_LANG),
+            Preferences.getString(context, LOCALE_SPOOF_COUNTRY)
+        )
 
     private val spoofDeviceProperties: Properties
-        get() = json.decodeFromString<Properties>(
-            Preferences.getString(context, DEVICE_SPOOF_PROPERTIES)
+        get() = gson.fromJson(
+            Preferences.getString(context, DEVICE_SPOOF_PROPERTIES),
+            Properties::class.java
         )
 
     fun setSpoofLocale(locale: Locale) {
@@ -97,7 +98,7 @@ class SpoofProvider @Inject constructor(
 
     fun setSpoofDeviceProperties(properties: Properties) {
         Preferences.putBoolean(context, DEVICE_SPOOF_ENABLED, true)
-        Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, json.encodeToString(properties))
+        Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, gson.toJson(properties))
     }
 
     fun removeSpoofLocale() {
@@ -119,10 +120,7 @@ class SpoofProvider @Inject constructor(
             val versionStrings = resources.getStringArray(R.array.pref_vending_version)
 
             currentProperties.setProperty("Vending.version", versionCodes[vendingVersionIndex])
-            currentProperties.setProperty(
-                "Vending.versionString",
-                versionStrings[vendingVersionIndex]
-            )
+            currentProperties.setProperty("Vending.versionString", versionStrings[vendingVersionIndex])
         }
     }
 }

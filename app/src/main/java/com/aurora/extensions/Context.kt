@@ -29,10 +29,10 @@ import android.content.pm.PackageManager
 import android.content.pm.verify.domain.DomainVerificationManager
 import android.content.pm.verify.domain.DomainVerificationUserState
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.PowerManager
-import android.provider.Settings
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -40,11 +40,9 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.getSystemService
-import androidx.core.net.toUri
 import com.aurora.Constants
-import com.aurora.store.ComposeActivity
+import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.navigation.Screen
 
 private const val TAG = "Context"
 
@@ -54,29 +52,18 @@ val Context.inflater: LayoutInflater
 fun Context.browse(url: String) {
     try {
         val customTabsIntent = CustomTabsIntent.Builder()
-        customTabsIntent.build().launchUrl(this, url.toUri())
+        customTabsIntent.build().launchUrl(this, Uri.parse(url))
     } catch (exception: Exception) {
         Log.e(TAG, "Failed to open custom tab", exception)
     }
 }
 
-fun Context.appInfo(packageName: String) {
-    try {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-            data = "package:$packageName".toUri()
-        }
-        startActivity(intent)
-    } catch (exception: Exception) {
-        Log.e(TAG, "Failed to open app info", exception)
-    }
-}
-
-fun Context.share(displayName: String, packageName: String) {
+fun Context.share(app: App) {
     try {
         val sendIntent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_SUBJECT, displayName)
-            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}$packageName")
+            putExtra(Intent.EXTRA_SUBJECT, app.displayName)
+            putExtra(Intent.EXTRA_TEXT, "${Constants.SHARE_URL}${app.packageName}")
             type = "text/plain"
         }
         startActivity(Intent.createChooser(sendIntent, getString(R.string.action_share)))
@@ -85,24 +72,11 @@ fun Context.share(displayName: String, packageName: String) {
     }
 }
 
-fun Context.mailTo(email: String) {
-    try {
-        val sendIntent = Intent().apply {
-            action = Intent.ACTION_SENDTO
-            data = "mailto:".toUri()
-            putExtra(Intent.EXTRA_EMAIL, email)
-        }
-        startActivity(Intent.createChooser(sendIntent, getString(R.string.details_dev_email)))
-    } catch (exception: Exception) {
-        Log.e(TAG, "Failed to email", exception)
-    }
-}
-
 fun Context.openInfo(packageName: String) {
     try {
         val intent = Intent(
             "android.settings.APPLICATION_DETAILS_SETTINGS",
-            "package:$packageName".toUri()
+            Uri.parse("package:$packageName")
         )
         startActivity(intent)
     } catch (exception: Exception) {
@@ -112,20 +86,21 @@ fun Context.openInfo(packageName: String) {
 
 fun <T> Context.open(className: Class<T>, newTask: Boolean = false) {
     val intent = Intent(this, className)
-    if (newTask) {
+    if (newTask)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-    }
     startActivity(
         intent,
         getEmptyActivityBundle()
     )
 }
 
-fun Context.getEmptyActivityBundle(): Bundle? = ActivityOptionsCompat.makeCustomAnimation(
-    this,
-    android.R.anim.fade_in,
-    android.R.anim.fade_out
-).toBundle()
+fun Context.getEmptyActivityBundle(): Bundle? {
+    return ActivityOptionsCompat.makeCustomAnimation(
+        this,
+        android.R.anim.fade_in,
+        android.R.anim.fade_out
+    ).toBundle()
+}
 
 fun Context.copyToClipBoard(data: String?) {
     val clipboard = getSystemService<ClipboardManager>()
@@ -140,36 +115,41 @@ fun Context.getStyledAttributeColor(id: Int): Int {
     return styledAttr
 }
 
-fun Context.isIgnoringBatteryOptimizations(): Boolean =
-    getSystemService<PowerManager>()?.isIgnoringBatteryOptimizations(packageName) ?: true
-
-fun Context.areNotificationsEnabled(): Boolean = when {
-    isNAndAbove -> getSystemService<NotificationManager>()!!.areNotificationsEnabled()
-    else -> true
+fun Context.isIgnoringBatteryOptimizations(): Boolean {
+    return if (isMAndAbove) {
+        (getSystemService<PowerManager>())?.isIgnoringBatteryOptimizations(packageName) ?: true
+    } else {
+        true
+    }
 }
 
-fun Context.checkManifestPermission(permission: String): Boolean =
-    ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
-
-fun Context.isExternalStorageAccessible(): Boolean = when {
-    isRAndAbove -> Environment.isExternalStorageManager()
-    else -> checkManifestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+fun Context.areNotificationsEnabled(): Boolean {
+    return if (isNAndAbove) {
+        getSystemService<NotificationManager>()!!.areNotificationsEnabled()
+    } else {
+        true
+    }
 }
 
-fun Context.isDomainVerified(domain: String): Boolean = when {
-    isSAndAbove -> {
+fun Context.checkManifestPermission(permission: String): Boolean {
+    return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+}
+
+fun Context.isExternalStorageAccessible(): Boolean {
+    return if (isRAndAbove) {
+        Environment.isExternalStorageManager()
+    } else {
+        checkManifestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    }
+}
+
+fun Context.isDomainVerified(domain: String): Boolean {
+    return if (isSAndAbove) {
         val domainVerificationManager = getSystemService<DomainVerificationManager>()
         val userState = domainVerificationManager!!.getDomainVerificationUserState(packageName)
         val domainMap = userState?.hostToStateMap?.filterKeys { it == domain }
         domainMap?.values?.first() == DomainVerificationUserState.DOMAIN_STATE_SELECTED
+    } else {
+        true
     }
-
-    else -> true
-}
-
-fun Context.navigate(screen: Screen) {
-    val intent = Intent(this, ComposeActivity::class.java).apply {
-        putExtra(Screen.PARCEL_KEY, screen)
-    }
-    startActivity(intent)
 }
