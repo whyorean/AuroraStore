@@ -44,7 +44,8 @@ kotlin {
             "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi",
             "androidx.compose.foundation.layout.ExperimentalLayoutApi",
             "androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi",
-            "coil3.annotation.ExperimentalCoilApi"
+            "coil3.annotation.ExperimentalCoilApi",
+            "kotlin.uuid.ExperimentalUuidApi"
         )
     }
 }
