@@ -125,7 +125,7 @@
     <string name="installer_service_available">Aurora 서비스는 사용 가능하고 설치할 준비가 되었습니다.</string>
     <string name="installer_status_user_action">사용자의 승인 대기 중</string>
     <string name="menu_disclaimer">면책 조항</string>
-    <string name="installer_service_misconfigured">먼저 Aurora services 설정하고 모든 권한을 부여하세요.</string>
+    <string name="installer_service_misconfigured">먼저 Aurora service를 설정하고 모든 권한을 부여하세요.</string>
     <string name="installer_service_unavailable">1.0.9 이상의 Aurora services 설치하거나, 설치 프로그램을 변경하세요.</string>
     <string name="onboarding_permission_esa_desc">대형 앱 및 게임용 APK 확장 파일(OBB)을 저장합니다.</string>
     <string name="download_paused">일시 중지됨 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
@@ -157,7 +157,7 @@
     <string name="pref_filter_fdroid_title">F-Droid 앱 필터링</string>
     <string name="installer_status_failure">설치 실패</string>
     <string name="installer_status_failure_storage">저장 공간이 충분하지 않음</string>
-    <string name="installer_status_failure_incompatible">앱 호환 불가</string>
+    <string name="installer_status_failure_incompatible">호환 불가 앱</string>
     <string name="installer_status_success">성공적으로 설치됨</string>
     <string name="installer_status_failure_invalid">유효하지 않거나 손상된 APK</string>
     <string name="menu_terms">이용 약관</string>
@@ -187,8 +187,8 @@
     <string name="pref_ui_similar_apps">유사한 및 관련 앱</string>
     <string name="title_about">소개</string>
     <string name="pref_ui_no_for_you_desc">홈 화면에 페이지 표시</string>
-    <string name="pref_updates_incompatible">호환되지 않는 업데이트</string>
-    <string name="pref_aurora_only">Aurora Store 앱 전용</string>
+    <string name="pref_updates_incompatible">실패 예상 업데이트 보기</string>
+    <string name="pref_aurora_only">다른 경로로 설치된 앱 제외</string>
     <string name="purchase_unsupported">앱 지원되지 않음</string>
     <string name="purchase_not_found">앱을 찾을 수 없음</string>
     <string name="purchase_no_file">파일을 얻을 수 없음</string>
@@ -235,13 +235,13 @@
     <string name="updates_available">업데이트 사용 가능</string>
     <string name="error">오류가 발생했습니다!</string>
     <string name="pref_updates_auto_off">앱을 자동-업데이트 안함</string>
-    <string name="pref_updates_check_frequency_desc">자동 및 직접 업데이트에 대한 확인 간격을 구성하며, 시간단위입니다.</string>
+    <string name="pref_updates_check_frequency_desc">자동 업데이트를 진행할 시간 간격을 설정하세요.</string>
     <string name="search_hint">앱 &amp; 게임을 검색</string>
     <string name="permissions_denied">필수 권한이 거부되었습니다. 행동을 계속하기 위해 권한을 부여하십시오</string>
     <string name="app_links_desc">오로라 스토어에서 지원되는 링크 열기</string>
     <string name="google_play_store_desc">Google Play는, Google Play 스토어와 이전 Android 마켓으로도 알려져 있습니다.</string>
     <string name="check_connectivity">인터넷 연결 확인</string>
-    <string name="login_rate_limited">Oops, 가격 제한됨</string>
+    <string name="login_rate_limited">가격 제한됨</string>
     <string name="server_unreachable">서버 부정적</string>
     <string name="android_market_desc">Android Market은 Android 기기용으로 설계된 소프트웨어 응용 프로그램을 제공하는 온라인 상점이었으며, 2017에서 중단했습니다.</string>
     <string name="failed_apk_export">APK 내보내기를 실패함</string>
@@ -267,15 +267,15 @@
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 업데이트 대기 중</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 개 업데이트 대기 중</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> 과 <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="pref_updates_auto">앱스 자동-업데이트</string>
-    <string name="pref_updates_auto_desc">자동-업데이트 동작 구성</string>
+    <string name="pref_updates_auto">자동 업데이트</string>
+    <string name="pref_updates_auto_desc">자동 업데이트 동작 구성</string>
     <string name="verifying_new_session">새로운 세션을 검증</string>
     <string name="app_language">앱 언어</string>
     <string name="menu">메뉴</string>
     <string name="failed_to_generate_session">세션을 생성하지 못함</string>
     <string name="title_installed">설치됨</string>
     <string name="title_library">라이브러리</string>
-    <string name="title_spoof_manager">눈속임 관리자</string>
+    <string name="title_spoof_manager">스푸핑 관리자</string>
     <string name="title_search_suggestion">검색 제안</string>
     <string name="title_advanced">고급</string>
     <string name="pref_ui_layout">레이아웃</string>
@@ -287,13 +287,13 @@
     <string name="insecure_anonymous_apply">변경 사항을 적용하려면 로그인 및 재시작 앱을 확인하십시오.</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> 와 <xliff:g id="apps_count">%4$d</xliff:g> 더보기</string>
     <string name="toast_purchase_blocked">익명 계정에서는 앱 구매가 불가능합니다.</string>
-    <string name="toast_manual_available">요청된 버전 사용 가능 및 지금 다운로드</string>
+    <string name="toast_manual_available">축하합니다. 요청하신 버전 코드가 지금 다운로드 중입니다.</string>
     <string name="toast_rated_failed">검토를 보낼 수 없음</string>
     <string name="toast_export_success">장치 구성 내보내기</string>
     <string name="toast_export_failed">장치 구성을 내보낼 수 없습니다</string>
     <string name="pref_updates_auto_install">사용 가능한 업데이트 자동 확인 &amp; 설치</string>
     <string name="failed_generating_session">세션을 생성하지 못했습니다. 오류 코드: &lt;xliff:gid=\"status_code\"&gt;%1$d&lt;/xliff:g&gt;</string>
-    <string name="pref_updates_incompatible_desc">호환되지 않거나 응용 프로그램이 실행 중지된 업데이트를 표시합니다. 설치가 실패할 수 있습니다</string>
+    <string name="pref_updates_incompatible_desc">설치 실패 가능성이 있는 호환되지 않거나 사용 중지된 앱의 업데이트 표시</string>
     <string name="toast_developer_setting_failed">장치 설정에서 개발자 옵션을 활성화하여 엽니다.</string>
     <string name="toast_spoof_applied">디바이스 스푸프가 적용되었습니다.</string>
     <string name="toast_permission_granted">권한 부여</string>
@@ -308,7 +308,7 @@
     <string name="source_code_title">소스 코드</string>
     <string name="source_code_subtitle">그 안에 무엇이 들어있는지 알아보기</string>
     <string name="disclaimer_subtitle">문책과 책임</string>
-    <string name="pref_aurora_only_desc">업데이트 및 설치에서 Aurora Store에서 설치한 앱만 표시</string>
+    <string name="pref_aurora_only_desc">Aurora Store 외의 경로로 설치된 앱은 업데이트를 확인하지 않음</string>
     <string name="app_updater_service_notif_title">백그라운드 앱 다운로드</string>
     <string name="toast_import_failed">디바이스 구성을 가져올 수 없습니다</string>
     <string name="toast_aas_token_failed">AAS 토큰을 생성할 수 없습니다</string>
@@ -330,7 +330,7 @@
     <string name="title_more">더 보기</string>
     <string name="manage_account">계정 관리</string>
     <string name="pref_clear_device_owner_title">장치 소유자 삭제</string>
-    <string name="pref_clear_device_owner_summary">Aurora Store는 더 이상 장치 소유자 앱으로 사용할 수 없습니다.</string>
+    <string name="pref_clear_device_owner_summary">장치 소유자 앱에서 Aurora Store를 제거</string>
     <string name="pref_clear_device_owner_desc">세션 설치 프로그램의 자동 설치 권한이 취소됩니다.장치 소유권을 계속 삭제하시겠습니까?</string>
     <string name="about_wiki_title">위키</string>
     <string name="notification_channel_account">계정 관련 알림</string>
@@ -374,7 +374,7 @@
     <string name="status_unavailable">사용불가</string>
     <string name="authentication_required_title">인증 필수</string>
     <string name="add_dispenser_hint">디스펜서 URL</string>
-    <string name="remove_dispenser_title">Dispenser 제거</string>
+    <string name="remove_dispenser_title">디스펜서를 제거할까요?</string>
     <string name="add">추가</string>
     <string name="about_aurora_store_subtitle">Aurora Store에 대해 자세히 알아보기</string>
     <string name="toast_fav_import_success">Favourites는 수입했습니다!</string>
@@ -385,18 +385,89 @@
     <string name="action_logout_confirmation_message">로그인하시겠습니까?</string>
     <string name="export_app_summary_success">성공적으로 수출된 app 뭉치</string>
     <string name="made_with_love">만든 <xliff:g id="heart_emoji">%1$s</xliff:g> 인도</string>
-    <string name="export_app_title">파일 수출</string>
+    <string name="export_app_title">파일 내보내기</string>
     <string name="remove_dispenser_summary">디스펜서를 제거하려면 \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="status_verifying">인증 및 인증</string>
     <string name="force_restart_title">Aurora Store 다시시작</string>
     <string name="check_updates">업데이트 확인</string>
-    <string name="force_restart_summary">아사쿠사 새로 변경된 설정을 적용하기 위해 다시 시작해야 합니다</string>
+    <string name="force_restart_summary">새로운 설정을 적용하려면 Aurora Store를 재시작 해야함</string>
     <string name="checking_updates">업데이트 확인중</string>
-    <string name="action_logout_confirmation_title">로그 아웃 ?</string>
+    <string name="action_logout_confirmation_title">로그 아웃?</string>
     <string name="add_dispenser_summary">토큰 분배자를 Aurora Store에 추가하십시오. Token dispensers는 익명으로 로그인하는 Aurora Store에 계정 자격 증명을 제공합니다.</string>
     <string name="export_app_summary">잠시만요, 파일을 내보내세요</string>
-    <string name="action_unarchive">언아키브</string>
-    <string name="about_aurora_store_summary">아사쿠사 상점은 공식 Google Play 스토어에서 앱을 검색하고 다운로드 할 수 있습니다. 앱 설명, 스크린 샷, 업데이트, 다른 사용자의 의견 및 장치로 Google Play에서 APK를 직접 확인할 수 있습니다. 오로라 스토어를 사용하려면 Google Play 계정이 있어야 하며, 먼저 오로라 스토어를 열고 구성할 때 Google Play 계정에 로그인하십시오.\n\n전통적인 앱 스토어와 달리, Aurora Store는 자체, 라이센스 또는 모든 앱을 배포하지 않습니다. 모든 앱, 앱 설명, 스크린 샷 및 Aurora Store의 기타 콘텐츠는 Google Play에서 직접 액세스, 다운로드 및 / 또는 표시되어 있습니다. Aurora Store는 문이나 브라우저와 정확히 작동하며 Google Play 계정에 로그인하고 Google Play에서 앱을 찾습니다.\n\n오로라 주의 상점은 Google, Google Play, Aurora Store 또는 모든 앱 개발자를 통해 다운로드 한 모든 응용 프로그램에서 승인, 후원 또는 승인이 없습니다. Aurora Store에는 모든 제휴, 협력 또는 연결이 없습니다.</string>
-    <string name="export_app_summary_fail">수출된 앱 번들에 실패</string>
+    <string name="action_unarchive">언아카이브</string>
+    <string name="about_aurora_store_summary">Aurora Store를 사용하면 구글 플레이 스토어(Google Play Store)의 앱을 공식적으로 검색하고 다운로드할 수 있습니다. 앱 상세 설명, 스크린샷, 업데이트 정보, 다른 사용자들의 리뷰 등을 확인할 수 있으며, 구글 플레이로부터 기기에 직접 APK 파일을 다운로드할 수 있습니다. Aurora Store를 사용하려면 구글 플레이 계정이 필요하며, 앱을 처음 실행하고 설정할 때 해당 계정으로 로그인해야 합니다.\n\n일반적인 앱 스토어와 달리, Aurora Store는 어떠한 앱도 직접 소유하거나 라이선스를 보유하거나 배포하지 않습니다. Aurora Store에 표시되는 모든 앱, 설명, 스크린샷 및 기타 콘텐츠는 구글 플레이에서 직접 액세스하여 다운로드하거나 표시하는 것입니다. Aurora Store는 일종의 \'문\'이나 \'브라우저\'와 같은 역할을 하며, 사용자가 자신의 구글 플레이 계정에 로그인하여 구글 플레이에 있는 앱을 찾을 수 있도록 돕습니다.\n\n주의사항: Aurora Store는 Google, Google Play, 앱 개발자 또는 Aurora Store를 통해 다운로드한 앱과 어떠한 승인, 후원, 권한 부여 관계도 맺고 있지 않습니다. 또한, 이들과 어떠한 제휴, 협력 또는 연관 관계도 없음을 명시합니다.</string>
+    <string name="export_app_summary_fail">앱 번들 내보내기 실패</string>
     <string name="no_dispensers_available">디스펜서 사용 불가</string>
+    <string name="action_install_microG">microG 번들 설치</string>
+    <string name="details_data_safety_collect">이 앱이 수집할 수 있는 데이터</string>
+    <string name="details_data_safety_collect_none">개발자 측에 따르면 이 앱은 사용자 데이터를 수집하지 않습니다.</string>
+    <string name="details_data_safety_shared">이 앱이 공유할 수 있는 데이터</string>
+    <string name="details_data_safety_share_none">개발자 측에 따르면 이 앱은 사용자 데이터를 외부 업체나 단체에 공유하지 않습니다.</string>
+    <string name="exodus_tracker_desc">이 버전의 앱에는 아직 Exodus Privacy 데이터베이스에 등록되지 않은 추가 트래커가 포함되어 있을 수 있습니다.</string>
+    <string name="exodus_report_trackers"><xliff:g id="app_version_name">%2$s</xliff:g>에서 확인된 트래커: <xliff:g id="number_of_trackers">%1$d</xliff:g>개</string>
+    <string name="installer_microg_misconfigured">설정 오류로 인해 MicroG 인스톨러가 앱 설치에 실패한 것으로 보입니다.</string>
+    <string name="pref_install_mode_microg">MicroG 설치 프로그램</string>
+    <string name="no_apps_available">사용 가능한 앱 없음</string>
+    <string name="app_info_downloads">다운로드</string>
+    <string name="app_info_updated_on">마지막 업데이트</string>
+    <string name="app_info_min_android">최소 안드로이드 버전</string>
+    <string name="app_info_target_android">대상 API 레벨</string>
+    <string name="action_skip">건너뜀</string>
+    <string name="onboarding_title_gsf">앱 호환성</string>
+    <string name="onboarding_title_gsf_desc">의존성 누락</string>
+    <string name="microg_website">microG 프로젝트 웹사이트 방문</string>
+    <string name="microg_installer_subtitle">microG 컴패니언 앱 설치 필요</string>
+    <string name="microg_installer_desc">앱 무결성(설치 프로그램) 확인 우회 지원</string>
+    <string name="manual_download_version_error">버전 코드에는 숫자만 입력 가능</string>
+    <string name="force_restart_snack">변경 사항을 적용하기 위해 재시작 할까요?</string>
+    <string name="no_description">설명 없음</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g>개의 권한</string>
+    <string name="details_more_info">더보기</string>
+    <string name="details_more_target_api">타겟</string>
+    <string name="details_more_package_name">패키지명</string>
+    <string name="details_more_content_rating">콘텐츠 등급</string>
+    <string name="unable_to_open">앱을 열 수 없음</string>
+    <string name="plexus_powered">Plexus 제공</string>
+    <string name="plexus_progress">호환성 확인 중…</string>
+    <string name="details_compatibility_title">호환성</string>
+    <string name="details_compatibility_gms_required_title">Google Play 서비스 필요</string>
+    <string name="details_compatibility_gms_required_subtitle">Google의 독점 라이브러리 또는 microG와 같은 FOSS 재구현을 설치해야 할 수 있습니다.</string>
+    <string name="details_compatibility_gms_not_required_title">Google Play 서비스 없이 작동</string>
+    <string name="details_compatibility_gms_not_required_subtitle">이 앱은 Google의 독점 라이브러리 없이도 작동합니다. 하지만 다른 타사 라이브러리가 제대로 작동해야 할 수 있습니다.</string>
+    <string name="details_compatibility_microg">마이크로G 프로젝트 포함</string>
+    <string name="details_compatibility_no_gms">Google Play 서비스 제외</string>
+    <string name="details_compatibility_status_compatible">호환성: 문제 없이 작동</string>
+    <string name="details_compatibility_status_limited">제한적: 제한된 기능으로 작동</string>
+    <string name="details_compatibility_status_unsupported">지원되지 않음: 작동하지 않음</string>
+    <string name="details_compatibility_status_unknown">알 수 없음: 아직 확인되지 않음</string>
+    <string name="preparing_to_install">설치 준비 중</string>
+    <plurals name="permissions_required">
+        <item quantity="other">필요한 권한</item>
+    </plurals>
+    <string name="installed_apps_size">앱 <xliff:g id="installed_apps_size">%1$d</xliff:g>개 설치됨</string>
+    <string name="pref_network_microg_login_title">microG를 사용하여 계정에 로그인하기</string>
+    <string name="pref_network_microg_login_desc">Google 계정에 로그인 시 microG를 사용하여 인증하면 로그인이 더 간편함</string>
+    <string name="disable">비활성화</string>
+    <string name="set">설정</string>
+    <string name="toast_proxy_disabled">프록시 비활성화 성공</string>
+    <string name="pref_network_proxy_desc">프록시 구성 보기 및 관리</string>
+    <string name="pref_common_advanced">고급</string>
+    <string name="pref_updates_restrictions_title">자동 업데이트 제한 사항</string>
+    <string name="pref_updates_restrictions_desc">자동 업데이트를 위한 장치 제한 설정</string>
+    <string name="pref_updates_restrictions_metered">(Wi-Fi 등의)비종량제 네트워크에서만</string>
+    <string name="pref_updates_restrictions_idle">기기가 대기 상태일 때</string>
+    <string name="pref_updates_restrictions_battery">배터리 부족 상태가 아닐 때</string>
+    <string name="pref_updates_app_source">앱 소스</string>
+    <string name="verification_failed">파일 검증 실패</string>
+    <string name="select_app_for_details">앱을 선택하여 상세 정보 확인</string>
+    <string name="action_filter_no_ads">광고 없음</string>
+    <string name="action_filter_no_gms">플레이 서비스 없음</string>
+    <string name="loading">불러오는 중</string>
+    <string name="page"><xliff:g id="number">%1$d</xliff:g>페이지</string>
+    <string name="onboarding_gms_agreement">본인은 microG의 서비스 약관과 개인정보 보호정책을 확인하였으며 이에 동의함</string>
+    <string name="onboarding_gms_missing">기기에서 Google Play 서비스를 찾을 수 없습니다. 현재 여러 인기 앱이 정상적으로 작동하려면 Google Play 서비스가 필요합니다!</string>
+    <string name="onboarding_gms_microg">microG는 Google Play Services에 의존하는 앱을 안드로이드 기기에서 실행할 수 있도록 재구현 방식으로 제공되는 무료 오픈소스 구현체입니다.\n\nmicroG는 앱이 Google API에 접근할 수 있도록 하여 사용자 호환성을 높이고 개인정보 보호 측면에서도 이점을 제공합니다.\n\nGoogle Mobile Services에 의존하는 앱을 실행하면 microG는 백그라운드에서 자동으로 동작합니다.</string>
+    <string name="microg_privacy_policy">microG 개인정보보호 정책 읽기</string>
+    <string name="microg_license_agreement">microG 라이선스 및 계약 읽기</string>
 </resources>
