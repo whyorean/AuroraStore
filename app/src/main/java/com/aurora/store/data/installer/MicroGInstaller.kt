@@ -31,7 +31,6 @@ import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.room.download.Download
-import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -69,7 +68,7 @@ class MicroGInstaller @Inject constructor(
                 Log.i(TAG, "${download.packageName} already queued")
             }
 
-            hasMicroGCompanion(context) -> {
+            AppInstaller.hasMicroGInstaller(context) -> {
                 Log.i(TAG, "Received microG install request for ${download.packageName}")
 
                 val files = getFiles(download.packageName, download.versionCode)

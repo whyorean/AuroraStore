@@ -25,7 +25,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
+import com.aurora.Constants.PACKAGE_NAME_GMS
+import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
@@ -36,7 +39,6 @@ import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.PackageUtil
-import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
@@ -79,7 +81,7 @@ class AppInstaller @Inject constructor(
             if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
             if (hasAppManager(context)) AMInstaller.installerInfo else null,
             if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
-            if (hasMicroGCompanion(context)) MicroGInstaller.installerInfo else null
+            if (hasMicroGInstaller(context)) MicroGInstaller.installerInfo else null
         )
 
         /**
@@ -150,6 +152,21 @@ class AppInstaller @Inject constructor(
             false
         }
 
+        fun hasMicroGInstaller(context: Context): Boolean {
+            if (!PackageUtil.hasMicroGCompanion(context)) return false
+            return try {
+                val metadata = PackageUtil.getPackageInfo(
+                    context,
+                    PACKAGE_NAME_GMS,
+                    PackageManager.GET_META_DATA
+                ).applicationInfo?.metaData
+
+                metadata?.getBoolean("org.microg.gms.settings.vending_apps_install", false) ?: false
+            } catch (_: Exception) {
+                false
+            }
+        }
+
         fun hasAppManager(context: Context): Boolean =
             PackageUtil.isInstalled(context, AMInstaller.AM_PACKAGE_NAME) or
                 PackageUtil.isInstalled(context, AMInstaller.AM_DEBUG_PACKAGE_NAME)
@@ -202,7 +219,7 @@ class AppInstaller @Inject constructor(
             defaultInstaller
         }
 
-        Installer.MICROG -> if (hasMicroGCompanion(context)) {
+        Installer.MICROG -> if (hasMicroGInstaller(context)) {
             microGInstaller
         } else {
             defaultInstaller
