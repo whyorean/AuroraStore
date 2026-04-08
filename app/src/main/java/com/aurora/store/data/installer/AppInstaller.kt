@@ -25,10 +25,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import com.aurora.Constants.PACKAGE_NAME_GMS
-import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
