@@ -7,6 +7,7 @@ package com.aurora.store.compose.navigation
 
 import android.os.Parcelable
 import androidx.navigation3.runtime.NavKey
+import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.data.model.PermissionType
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
@@ -63,4 +64,7 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data object Installed : Screen()
+
+    @Serializable
+    data class StreamBrowse(val streamCluster: StreamCluster) : Screen()
 }

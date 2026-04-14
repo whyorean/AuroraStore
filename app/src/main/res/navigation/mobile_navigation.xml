@@ -33,9 +33,6 @@
         android:id="@+id/action_global_devProfileFragment"
         app:destination="@id/devProfileFragment" />
     <action
-        android:id="@+id/action_global_streamBrowseFragment"
-        app:destination="@id/streamBrowseFragment" />
-    <action
         android:id="@+id/action_global_appMenuSheet"
         app:destination="@id/appMenuSheet" />
     <action
@@ -119,14 +116,6 @@
         <deepLink
             app:action="android.intent.action.VIEW"
             app:uri="play.google.com/store/apps/dev?id={devId}" />
-    </fragment>
-    <fragment
-        android:id="@+id/streamBrowseFragment"
-        android:name="com.aurora.store.view.ui.commons.StreamBrowseFragment"
-        tools:layout="@layout/fragment_generic_with_toolbar">
-        <argument
-            android:name="cluster"
-            app:argType="com.aurora.gplayapi.data.models.StreamCluster" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

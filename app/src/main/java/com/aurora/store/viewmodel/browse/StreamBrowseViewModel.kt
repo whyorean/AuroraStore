@@ -20,56 +20,68 @@
 package com.aurora.store.viewmodel.browse
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
+import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-@HiltViewModel
-class StreamBrowseViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = StreamBrowseViewModel.Factory::class)
+class StreamBrowseViewModel @AssistedInject constructor(
+    @Assisted private val streamCluster: StreamCluster,
     private val streamHelper: WebStreamHelper
 ) : ViewModel() {
 
-    val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
-
-    private lateinit var streamCluster: StreamCluster
-
-    fun seedCluster(cluster: StreamCluster) {
-        streamCluster = cluster
-        liveData.postValue(streamCluster)
+    @AssistedFactory
+    interface Factory {
+        fun create(streamCluster: StreamCluster): StreamBrowseViewModel
     }
 
-    fun nextCluster() {
-        viewModelScope.launch(Dispatchers.IO) {
+    private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
+    val apps = _apps.asStateFlow()
+
+    init {
+        fetchApps()
+    }
+
+    private fun fetchApps() {
+        var nextPageUrl: String = streamCluster.clusterNextPageUrl
+
+        manualPager { page ->
             try {
-                if (streamCluster.hasNext()) {
-                    val next = streamHelper.nextStreamCluster(streamCluster.clusterNextPageUrl)
+                when (page) {
+                    1 -> streamCluster.clusterAppList
 
-                    streamCluster = streamCluster.copy(
-                        clusterNextPageUrl = next.clusterNextPageUrl,
-                        clusterAppList = streamCluster.clusterAppList + next.clusterAppList
-                    )
-
-                    liveData.postValue(streamCluster)
-                } else {
-                    Log.i(TAG, "End of Cluster")
-                    postClusterEnd()
+                    else -> {
+                        if (nextPageUrl.isNotBlank()) {
+                            streamHelper.nextStreamCluster(nextPageUrl).also {
+                                nextPageUrl = it.clusterNextPageUrl
+                            }.clusterAppList
+                        } else {
+                            emptyList()
+                        }
+                    }
                 }
-            } catch (_: Exception) {
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch apps for $page: $nextPageUrl", exception)
+                emptyList()
             }
-        }
-    }
-
-    fun postClusterEnd() {
-        streamCluster = streamCluster.copy(
-            clusterNextPageUrl = ""
-        )
-        liveData.postValue(streamCluster)
+        }.flow.distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .onEach { _apps.value = it }
+            .launchIn(viewModelScope)
     }
 }

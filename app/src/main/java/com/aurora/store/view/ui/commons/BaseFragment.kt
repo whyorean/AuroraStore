@@ -114,9 +114,7 @@ abstract class BaseFragment<ViewBindingType : ViewBinding> : Fragment() {
     }
 
     fun openStreamBrowseFragment(streamCluster: StreamCluster) {
-        findNavController().navigate(
-            MobileNavigationDirections.actionGlobalStreamBrowseFragment(streamCluster)
-        )
+        requireContext().navigate(Screen.StreamBrowse(streamCluster))
     }
 
     fun openAppMenuSheet(app: MinimalApp) {
