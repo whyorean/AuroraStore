@@ -453,7 +453,7 @@
     <string name="details_more_package_name">Nombre del paquete</string>
     <string name="details_more_content_rating">Clasificación de contenido</string>
     <string name="select_app_for_details">Selecciona una aplicación para más detalles</string>
-    <string name="action_filter_no_ads">Sin anuncios</string>
+    <string name="action_filter_no_ads">Sin publicidad</string>
     <string name="action_filter_no_gms">Sin play services</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permisos</string>
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> rastreador(es) conocidos encontrados en <xliff:g id="app_version_name">%2$s</xliff:g></string>
