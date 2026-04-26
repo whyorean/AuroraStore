@@ -52,7 +52,9 @@ kotlin {
 
 configure<ApplicationExtension> {
     namespace = "com.aurora.store"
-    compileSdk = 37
+    compileSdk {
+        version = release(37)
+    }
 
     defaultConfig {
         applicationId = "com.aurora.store"
