@@ -378,7 +378,7 @@
     <string name="checking_updates">Po kontrollohet për përditësime</string>
     <string name="pref_dispenser_title">Administroni distributorë</string>
     <string name="add_dispenser_hint">URL distributori</string>
-    <string name="remove_dispenser_summary">Doni të hiqet distributori \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
+    <string name="remove_dispenser_summary"></string>
     <string name="pref_dispenser_summary">Shihni dhe administroni distributorë token-ësh për hyrje anonime</string>
     <string name="no_dispensers_available">S’ka distributorë</string>
     <string name="made_with_love">Krijuar me <xliff:g id="heart_emoji">%1$s</xliff:g> në Indi</string>
@@ -468,7 +468,7 @@
     <string name="status_unavailable">Nuk është gati</string>
     <string name="available_spoof">Gati</string>
     <string name="details_more_target_api">Synimi</string>
-    <string name="details_ratings_title_hint">Titulli i vlerësimit</string>
-    <string name="filter_latest">Më të fundita</string>
-    <string name="remove_dispenser_title">Hiq shpërndarësin</string>
+    <string name="details_ratings_title_hint"></string>
+    <string name="filter_latest"></string>
+    <string name="remove_dispenser_title"></string>
 </resources>
