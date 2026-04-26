@@ -468,4 +468,7 @@
     <string name="status_unavailable">Nuk është gati</string>
     <string name="available_spoof">Gati</string>
     <string name="details_more_target_api">Synimi</string>
+    <string name="details_ratings_title_hint">Titulli i vlerësimit</string>
+    <string name="filter_latest">Më të fundita</string>
+    <string name="remove_dispenser_title">Hiq shpërndarësin</string>
 </resources>
