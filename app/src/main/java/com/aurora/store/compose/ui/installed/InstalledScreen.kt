@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -34,7 +35,7 @@ import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import kotlin.random.Random
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -116,12 +117,11 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun InstalledScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        val apps = List(15) { app.copy(packageName = Random.nextInt().toString()) }
-        val pagedApps = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
-        ScreenContent(apps = pagedApps)
-    }
+    val apps = List(15) { app.copy(packageName = Random.nextInt().toString()) }
+    val pagedApps = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
+    ScreenContent(apps = pagedApps)
 }

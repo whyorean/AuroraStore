@@ -23,11 +23,12 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to display app changelog, supposed to be used as a part
@@ -55,14 +56,13 @@ fun Changelog(changelog: String) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun ChangelogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
-        ) {
-            Changelog(changelog = app.changes)
-        }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+    ) {
+        Changelog(changelog = app.changes)
     }
 }

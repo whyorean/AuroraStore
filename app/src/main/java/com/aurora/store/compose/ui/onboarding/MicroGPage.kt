@@ -20,11 +20,12 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.MicroG
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider
 import com.aurora.store.viewmodel.onboarding.MicroGUIState
@@ -90,12 +91,11 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun MicroGPagePreview() {
-    PreviewTemplate {
-        ScreenContent(
-            uiState = MicroGUIState()
-        )
-    }
+    ScreenContent(
+        uiState = MicroGUIState()
+    )
 }

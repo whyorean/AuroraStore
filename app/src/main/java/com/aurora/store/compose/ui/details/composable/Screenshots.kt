@@ -18,12 +18,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.compose.composable.details.ScreenshotListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to display screenshots of the app, supposed to be used as a part
@@ -46,14 +47,13 @@ fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int)
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun ScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
-        ) {
-            Screenshots(screenshots = app.screenshots)
-        }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+    ) {
+        Screenshots(screenshots = app.screenshots)
     }
 }

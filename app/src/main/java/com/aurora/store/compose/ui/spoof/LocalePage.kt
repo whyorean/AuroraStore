@@ -17,12 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.LocaleListItem
 import com.aurora.store.compose.composable.TextDividerComposable
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import java.util.Locale
 
@@ -89,13 +90,12 @@ private fun PageContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun LocalePagePreview() {
-    PreviewTemplate {
-        PageContent(
-            locales = Locale.getAvailableLocales().toList().filter { it.displayName.isNotBlank() },
-            isLocaleSelected = { locale -> locale == Locale.getDefault() }
-        )
-    }
+    PageContent(
+        locales = Locale.getAvailableLocales().toList().filter { it.displayName.isNotBlank() },
+        isLocaleSelected = { locale -> locale == Locale.getDefault() }
+    )
 }

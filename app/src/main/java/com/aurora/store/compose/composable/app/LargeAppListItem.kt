@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
@@ -31,7 +32,7 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.util.CommonUtil
 
 /**
@@ -43,6 +44,28 @@ import com.aurora.store.util.CommonUtil
  */
 @Composable
 fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
+    @Composable
+    fun buildExtras(app: App): List<String> = mutableListOf<String>().apply {
+        add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
+        add("${app.labeledRating}★")
+
+        if (app.isFree) {
+            add(stringResource(R.string.details_free))
+        } else {
+            add(stringResource(R.string.details_paid))
+        }
+
+        if (app.containsAds) {
+            add(stringResource(R.string.details_contains_ads))
+        } else {
+            add(stringResource(R.string.details_no_ads))
+        }
+
+        if (app.requiresGMS()) {
+            add(stringResource(R.string.details_gsf_dependent))
+        }
+    }
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -81,32 +104,9 @@ fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Uni
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 fun LargeAppListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        LargeAppListItem(app = app)
-    }
-}
-
-@Composable
-private fun buildExtras(app: App): List<String> = mutableListOf<String>().apply {
-    add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
-    add("${app.labeledRating}★")
-
-    if (app.isFree) {
-        add(stringResource(R.string.details_free))
-    } else {
-        add(stringResource(R.string.details_paid))
-    }
-
-    if (app.containsAds) {
-        add(stringResource(R.string.details_contains_ads))
-    } else {
-        add(stringResource(R.string.details_no_ads))
-    }
-
-    if (app.requiresGMS()) {
-        add(stringResource(R.string.details_gsf_dependent))
-    }
+    LargeAppListItem(app = app)
 }

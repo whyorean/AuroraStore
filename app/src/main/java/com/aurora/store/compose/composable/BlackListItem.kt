@@ -22,16 +22,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable for displaying package details in a list for blacklisting
@@ -101,18 +101,17 @@ fun BlackListItem(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun BlackListItemPreview() {
-    PreviewTemplate {
-        BlackListItem(
-            icon = Color.GRAY.toDrawable().toBitmap(56, 56),
-            displayName = LocalContext.current.getString(R.string.app_name),
-            packageName = BuildConfig.APPLICATION_ID,
-            versionName = BuildConfig.VERSION_NAME,
-            versionCode = BuildConfig.VERSION_CODE.toLong(),
-            isChecked = true,
-            isEnabled = false
-        )
-    }
+    BlackListItem(
+        icon = Color.GRAY.toDrawable().toBitmap(56, 56),
+        displayName = stringResource(R.string.app_name),
+        packageName = BuildConfig.APPLICATION_ID,
+        versionName = BuildConfig.VERSION_NAME,
+        versionCode = BuildConfig.VERSION_CODE.toLong(),
+        isChecked = true,
+        isEnabled = false
+    )
 }

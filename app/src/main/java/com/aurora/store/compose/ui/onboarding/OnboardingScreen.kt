@@ -30,13 +30,14 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Logo
 import com.aurora.store.compose.composable.PageIndicator
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.onboarding.navigation.OnboardingPage
 import com.aurora.store.viewmodel.onboarding.OnboardingUiState
 import com.aurora.store.viewmodel.onboarding.OnboardingViewModel
@@ -198,14 +199,13 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun OnboardingScreenPreview() {
-    PreviewTemplate {
-        ScreenContent(
-            pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS),
-            uiState = OnboardingUiState(),
-            onMicrogTOSChecked = {}
-        )
-    }
+    ScreenContent(
+        pages = listOf(OnboardingPage.WELCOME, OnboardingPage.PERMISSIONS),
+        uiState = OnboardingUiState(),
+        onMicrogTOSChecked = {}
+    )
 }

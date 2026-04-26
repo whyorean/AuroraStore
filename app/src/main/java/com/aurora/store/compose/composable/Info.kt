@@ -27,10 +27,11 @@ import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to show some information
@@ -81,14 +82,13 @@ fun Info(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun InfoPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        Info(
-            title = AnnotatedString(text = stringResource(R.string.details_dev_website)),
-            description = AnnotatedString.fromHtml(htmlString = app.developerWebsite),
-            painter = painterResource(R.drawable.ic_network)
-        )
-    }
+    Info(
+        title = AnnotatedString(text = stringResource(R.string.details_dev_website)),
+        description = AnnotatedString.fromHtml(htmlString = app.developerWebsite),
+        painter = painterResource(R.drawable.ic_network)
+    )
 }

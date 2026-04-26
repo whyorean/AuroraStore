@@ -28,10 +28,11 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.util.fastForEach
 import com.aurora.extensions.browse
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Link
 import com.aurora.store.viewmodel.onboarding.MicroGUIState
 
@@ -148,10 +149,9 @@ fun MicroG(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun MicroGPreview() {
-    PreviewTemplate {
-        MicroG(uiState = MicroGUIState())
-    }
+    MicroG(uiState = MicroGUIState())
 }

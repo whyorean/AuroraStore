@@ -23,6 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.copyToClipBoard
@@ -30,7 +31,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.DispenserListItem
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.dispenser.DispenserViewModel
 
 @Composable
@@ -122,19 +123,17 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun DispenserScreenPreview() {
     val dispensers = List(10) { "https://auroraoss.com/api/auth/$it" }
-    PreviewTemplate {
-        ScreenContent(dispensers = dispensers.toSet())
-    }
+    ScreenContent(dispensers = dispensers.toSet())
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun DispenserScreenEmptyPreview() {
-    PreviewTemplate {
-        ScreenContent()
-    }
+    ScreenContent()
 }

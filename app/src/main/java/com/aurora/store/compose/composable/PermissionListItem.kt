@@ -20,8 +20,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 
@@ -70,17 +71,16 @@ fun PermissionListItem(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun PermissionListItemPreview() {
-    PreviewTemplate {
-        PermissionListItem(
-            permission = Permission(
-                PermissionType.STORAGE_MANAGER,
-                stringResource(R.string.onboarding_permission_esm),
-                stringResource(R.string.onboarding_permission_esa_desc),
-                false
-            )
+    PermissionListItem(
+        permission = Permission(
+            PermissionType.STORAGE_MANAGER,
+            stringResource(R.string.onboarding_permission_esm),
+            stringResource(R.string.onboarding_permission_esa_desc),
+            false
         )
-    }
+    )
 }

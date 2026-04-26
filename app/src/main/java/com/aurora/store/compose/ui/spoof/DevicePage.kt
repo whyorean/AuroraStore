@@ -17,12 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.DeviceListItem
 import com.aurora.store.compose.composable.TextDividerComposable
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import java.util.Properties
 import kotlin.random.Random
@@ -94,6 +95,7 @@ private fun PageContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun DevicePagePreview() {
@@ -105,12 +107,10 @@ private fun DevicePagePreview() {
         setProperty("Build.PRODUCT", Random.nextInt().toString())
     }
 
-    PreviewTemplate {
-        val defaultDevice = getDevice()
-        PageContent(
-            defaultDevice = defaultDevice,
-            devices = List(10) { getDevice() },
-            isDeviceSelected = { device -> defaultDevice == device }
-        )
-    }
+    val defaultDevice = getDevice()
+    PageContent(
+        defaultDevice = defaultDevice,
+        devices = List(10) { getDevice() },
+        isDeviceSelected = { device -> defaultDevice == device }
+    )
 }

@@ -21,9 +21,10 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to display primary and secondary actions available for the app, supposed to be used
@@ -81,17 +82,16 @@ fun Actions(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun ActionsPreview() {
-    PreviewTemplate {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
-        ) {
-            Actions(
-                primaryActionDisplayName = stringResource(R.string.action_install),
-                secondaryActionDisplayName = stringResource(R.string.title_manual_download)
-            )
-        }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+    ) {
+        Actions(
+            primaryActionDisplayName = stringResource(R.string.action_install),
+            secondaryActionDisplayName = stringResource(R.string.title_manual_download)
+        )
     }
 }

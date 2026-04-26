@@ -24,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -39,7 +40,7 @@ import com.aurora.store.compose.composable.DownloadListItem
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
 import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.data.model.DownloadStatus
@@ -177,17 +178,16 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun DownloadsScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        val downloads = List(10) {
-            Download.fromApp(app).copy(
-                packageName = Random.nextInt().toString(),
-                status = DownloadStatus.entries.random()
-            )
-        }
-        val pagedDownloads = MutableStateFlow(PagingData.from(downloads)).collectAsLazyPagingItems()
-        ScreenContent(downloads = pagedDownloads)
+    val downloads = List(10) {
+        Download.fromApp(app).copy(
+            packageName = Random.nextInt().toString(),
+            status = DownloadStatus.entries.random()
+        )
     }
+    val pagedDownloads = MutableStateFlow(PagingData.from(downloads)).collectAsLazyPagingItems()
+    ScreenContent(downloads = pagedDownloads)
 }

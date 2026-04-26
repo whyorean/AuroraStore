@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -21,7 +22,7 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.store.R
 import com.aurora.store.compose.composable.PermissionList
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.viewmodel.commons.PermissionRationaleViewModel
@@ -75,6 +76,7 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun PermissionsScreenPreview() {
@@ -87,7 +89,5 @@ private fun PermissionsScreenPreview() {
             isGranted = Random.nextBoolean()
         )
     }
-    PreviewTemplate {
-        ScreenContent(permissions = permissions)
-    }
+    ScreenContent(permissions = permissions)
 }

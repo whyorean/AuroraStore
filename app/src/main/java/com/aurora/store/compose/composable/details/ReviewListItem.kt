@@ -24,14 +24,15 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.viewinterop.AndroidView
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.preview.ReviewPreviewProvider
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable for viewing a review about an app
@@ -93,10 +94,9 @@ fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun ReviewListItemPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
-    PreviewTemplate {
-        ReviewListItem(review = review)
-    }
+    ReviewListItem(review = review)
 }

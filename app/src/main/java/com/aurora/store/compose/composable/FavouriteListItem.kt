@@ -38,13 +38,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.room.favourite.Favourite
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -138,10 +139,9 @@ fun FavouriteListItem(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun FavouriteListItemPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        FavouriteListItem(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
-    }
+    FavouriteListItem(favourite = Favourite.fromApp(app, Favourite.Mode.MANUAL))
 }

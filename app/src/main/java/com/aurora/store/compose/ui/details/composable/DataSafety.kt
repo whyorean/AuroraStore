@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.extensions.browse
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.datasafety.Entry
@@ -24,7 +25,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to display app's data safety report, supposed to be used as a part
@@ -80,31 +81,30 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun DataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
-        ) {
-            DataSafety(
-                privacyPolicyUrl = app.privacyPolicyUrl,
-                report = Report(
-                    packageName = app.packageName,
-                    entries = listOf(
-                        Entry(
-                            type = EntryType.DATA_COLLECTED,
-                            name = String(),
-                            description = String()
-                        ),
-                        Entry(
-                            type = EntryType.DATA_SHARED,
-                            name = String(),
-                            description = String()
-                        )
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+    ) {
+        DataSafety(
+            privacyPolicyUrl = app.privacyPolicyUrl,
+            report = Report(
+                packageName = app.packageName,
+                entries = listOf(
+                    Entry(
+                        type = EntryType.DATA_COLLECTED,
+                        name = String(),
+                        description = String()
+                    ),
+                    Entry(
+                        type = EntryType.DATA_SHARED,
+                        name = String(),
+                        description = String()
                     )
                 )
             )
-        }
+        )
     }
 }

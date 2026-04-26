@@ -26,8 +26,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Pager indicator
@@ -77,10 +78,9 @@ fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: I
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun PageIndicatorPreview() {
-    PreviewTemplate {
-        PageIndicator(totalPages = 5)
-    }
+    PageIndicator(totalPages = 5)
 }

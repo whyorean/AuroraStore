@@ -47,6 +47,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -58,7 +59,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.AppState
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.android.awaitFrame
@@ -213,13 +214,12 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun ManualDownloadScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        ScreenContent(
-            topAppBarTitle = app.displayName,
-            currentVersionCode = app.versionCode
-        )
-    }
+    ScreenContent(
+        topAppBarTitle = app.displayName,
+        currentVersionCode = app.versionCode
+    )
 }

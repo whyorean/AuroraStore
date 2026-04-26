@@ -20,9 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.AppState
 
 /**
@@ -90,14 +91,13 @@ fun AppDetailsMenu(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun AppDetailsMenuPreview() {
-    PreviewTemplate {
-        TopAppBar(
-            actions = {
-                AppDetailsMenu(isFavorite = true, isExpanded = true)
-            }
-        )
-    }
+    TopAppBar(
+        actions = {
+            AppDetailsMenu(isFavorite = true, isExpanded = true)
+        }
+    )
 }

@@ -37,6 +37,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
@@ -47,7 +48,7 @@ import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.viewmodel.accounts.AccountsViewModel
 
@@ -204,10 +205,9 @@ private fun AssistHeader() {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun AccountsScreenPreview() {
-    PreviewTemplate {
-        ScreenContent()
-    }
+    ScreenContent()
 }

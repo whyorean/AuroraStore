@@ -24,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -39,7 +40,7 @@ import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.FavouriteListItem
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.FavouritePreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
 import com.aurora.store.compose.ui.favourite.menu.MenuItem
 import com.aurora.store.data.room.favourite.Favourite
@@ -176,17 +177,16 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun FavouriteScreenPreview(
     @PreviewParameter(FavouritePreviewProvider::class) favourite: Favourite
 ) {
-    PreviewTemplate {
-        val favourites = List(10) {
-            favourite.copy(packageName = "${favourite.packageName}.${Random.nextInt()}")
-        }
-        val flow = MutableStateFlow(PagingData.from(favourites)).collectAsLazyPagingItems()
-
-        ScreenContent(favourites = flow)
+    val favourites = List(10) {
+        favourite.copy(packageName = "${favourite.packageName}.${Random.nextInt()}")
     }
+    val flow = MutableStateFlow(PagingData.from(favourites)).collectAsLazyPagingItems()
+
+    ScreenContent(favourites = flow)
 }

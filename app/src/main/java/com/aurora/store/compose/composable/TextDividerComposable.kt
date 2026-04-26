@@ -15,8 +15,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to display a sticky header in a list
@@ -38,10 +39,9 @@ fun TextDividerComposable(modifier: Modifier = Modifier, title: String) {
     )
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun TextDividerComposablePreview() {
-    PreviewTemplate {
-        TextDividerComposable(title = stringResource(R.string.item_optional))
-    }
+    TextDividerComposable(title = stringResource(R.string.item_optional))
 }

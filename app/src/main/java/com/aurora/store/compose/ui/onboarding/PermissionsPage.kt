@@ -18,12 +18,13 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.PermissionList
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.viewmodel.commons.PermissionRationaleViewModel
@@ -71,6 +72,7 @@ private fun PageContent(
     )
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun PermissionsPagePreview() {
@@ -83,9 +85,7 @@ private fun PermissionsPagePreview() {
             isGranted = Random.nextBoolean()
         )
     }
-    PreviewTemplate {
-        PageContent(
-            permissions = permissions
-        )
-    }
+    PageContent(
+        permissions = permissions
+    )
 }

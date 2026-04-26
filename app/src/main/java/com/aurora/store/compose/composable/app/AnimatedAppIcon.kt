@@ -27,13 +27,14 @@ import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable to show icon for an app that can be animated to also show install progress
@@ -97,26 +98,24 @@ private class ProgressProvider : PreviewParameterProvider<Float> {
         get() = sequenceOf(0F, 50F)
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        AnimatedAppIcon(
-            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
-            iconUrl = app.iconArtwork.url
-        )
-    }
+    AnimatedAppIcon(
+        modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
+        iconUrl = app.iconArtwork.url
+    )
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun AnimatedAppIconPreview(@PreviewParameter(ProgressProvider::class) progress: Float) {
-    PreviewTemplate {
-        AnimatedAppIcon(
-            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
-            iconUrl = "",
-            inProgress = true,
-            progress = progress
-        )
-    }
+    AnimatedAppIcon(
+        modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
+        iconUrl = "",
+        inProgress = true,
+        progress = progress
+    )
 }

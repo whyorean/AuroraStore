@@ -24,12 +24,13 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
  * Composable for displaying search suggestions in a list
@@ -96,12 +97,11 @@ fun SearchSuggestionListItem(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun SearchSuggestionListItemPreview() {
-    PreviewTemplate {
-        SearchSuggestionListItem(
-            searchSuggestEntry = SearchSuggestEntry.getDefaultInstance()
-        )
-    }
+    SearchSuggestionListItem(
+        searchSuggestEntry = SearchSuggestEntry.getDefaultInstance()
+    )
 }

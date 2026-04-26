@@ -21,12 +21,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.InstallerListItem
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.model.Installer
@@ -91,12 +92,11 @@ private fun ScreenContent(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun InstallerScreenPreview() {
-    PreviewTemplate {
-        ScreenContent(
-            availableInstallers = listOf(SessionInstaller.installerInfo)
-        )
-    }
+    ScreenContent(
+        availableInstallers = listOf(SessionInstaller.installerInfo)
+    )
 }

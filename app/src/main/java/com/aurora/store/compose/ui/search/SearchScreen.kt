@@ -57,6 +57,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
@@ -72,7 +73,7 @@ import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.SearchSuggestionListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
@@ -439,12 +440,11 @@ private fun FilterHeader(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @PreviewScreenSizes
 @Composable
 private fun SearchScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        val apps = List(10) { app.copy(id = Random.nextInt()) }
-        val results = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
-        ScreenContent(results = results)
-    }
+    val apps = List(10) { app.copy(id = Random.nextInt()) }
+    val results = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
+    ScreenContent(results = results)
 }

@@ -17,9 +17,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.extensions.browse
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.ExodusTracker
 
 /**
@@ -60,17 +61,16 @@ fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun ExodusListItemPreview() {
-    PreviewTemplate {
-        ExodusListItem(
-            tracker = ExodusTracker(
-                name = "Google Analytics",
-                signature = "com.google.android.apps.analytics.|com.google.analytics.",
-                date = "2017-09-24",
-                url = "http://www.google.com/analytics/"
-            )
+    ExodusListItem(
+        tracker = ExodusTracker(
+            name = "Google Analytics",
+            signature = "com.google.android.apps.analytics.|com.google.analytics.",
+            date = "2017-09-24",
+            url = "http://www.google.com/analytics/"
         )
-    }
+    )
 }

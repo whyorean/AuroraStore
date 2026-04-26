@@ -40,6 +40,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.NavKey
@@ -59,7 +60,7 @@ import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
 import com.aurora.store.compose.ui.details.composable.Actions
 import com.aurora.store.compose.ui.details.composable.Changelog
@@ -526,30 +527,27 @@ private fun ScreenContentApp(
     )
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @PreviewScreenSizes
 @Composable
 private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        ScreenContentApp(
-            app = app,
-            isAnonymous = false,
-            suggestions = List(10) { app.copy(id = Random.nextInt()) }
-        )
-    }
+    ScreenContentApp(
+        app = app,
+        isAnonymous = false,
+        suggestions = List(10) { app.copy(id = Random.nextInt()) }
+    )
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun AppDetailsScreenPreviewLoading() {
-    PreviewTemplate {
-        ScreenContentLoading()
-    }
+    ScreenContentLoading()
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun AppDetailsScreenPreviewError() {
-    PreviewTemplate {
-        ScreenContentError()
-    }
+    ScreenContentError()
 }

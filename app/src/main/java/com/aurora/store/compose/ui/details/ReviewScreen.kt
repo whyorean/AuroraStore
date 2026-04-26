@@ -30,6 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
@@ -46,8 +47,8 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ReviewListItem
-import com.aurora.store.compose.preview.PreviewTemplate
 import com.aurora.store.compose.preview.ReviewPreviewProvider
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ReviewViewModel
 import kotlin.random.Random
@@ -178,13 +179,12 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun ReviewScreenPreview(@PreviewParameter(ReviewPreviewProvider::class) review: Review) {
-    PreviewTemplate {
-        val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
-        val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
+    val reviews = List(10) { review.copy(commentId = Random.nextInt().toString()) }
+    val reviewsFlow = MutableStateFlow(PagingData.from(reviews)).collectAsLazyPagingItems()
 
-        ScreenContent(reviews = reviewsFlow)
-    }
+    ScreenContent(reviews = reviewsFlow)
 }

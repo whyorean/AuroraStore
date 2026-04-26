@@ -28,13 +28,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.core.net.toUri
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.toast
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Permission
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
@@ -159,6 +160,7 @@ fun PermissionList(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun PermissionListPreview() {
@@ -171,7 +173,5 @@ private fun PermissionListPreview() {
             isGranted = Random.nextBoolean()
         )
     }
-    PreviewTemplate {
-        PermissionList(permissions = permissions)
-    }
+    PermissionList(permissions = permissions)
 }

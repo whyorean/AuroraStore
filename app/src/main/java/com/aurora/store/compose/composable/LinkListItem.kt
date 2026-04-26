@@ -30,10 +30,11 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.aurora.store.R
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Link
 
 /**
@@ -91,18 +92,17 @@ fun LinkListItem(
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun LinkListItemPreview() {
-    PreviewTemplate {
-        LinkListItem(
-            link = Link(
-                id = 0,
-                title = stringResource(R.string.title_about),
-                subtitle = stringResource(R.string.about_aurora_store_subtitle),
-                url = "https://auroraoss.com/",
-                icon = R.drawable.ic_menu_about
-            )
+    LinkListItem(
+        link = Link(
+            id = 0,
+            title = stringResource(R.string.title_about),
+            subtitle = stringResource(R.string.about_aurora_store_subtitle),
+            url = "https://auroraoss.com/",
+            icon = R.drawable.ic_menu_about
         )
-    }
+    )
 }

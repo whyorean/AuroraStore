@@ -22,12 +22,14 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.adaptiveNavigationIcon
@@ -39,10 +41,9 @@ import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.AppListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.MoreViewModel
-import java.util.Locale
 
 @Composable
 fun MoreScreen(
@@ -174,10 +175,10 @@ private fun AppInfoMore(app: App) {
         Info(
             title = AnnotatedString(
                 text = title.replace("_", " ")
-                    .lowercase(Locale.getDefault())
+                    .lowercase(LocalLocale.current.platformLocale)
                     .replaceFirstChar {
                         if (it.isLowerCase()) {
-                            it.titlecase(Locale.getDefault())
+                            it.titlecase(LocalLocale.current.platformLocale)
                         } else {
                             it.toString()
                         }
@@ -188,10 +189,9 @@ private fun AppInfoMore(app: App) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview
 @Composable
 private fun MoreScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    PreviewTemplate {
-        ScreenContent(app = app)
-    }
+    ScreenContent(app = app)
 }

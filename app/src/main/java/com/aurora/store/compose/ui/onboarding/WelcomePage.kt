@@ -27,10 +27,11 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.composable.LinkListItem
-import com.aurora.store.compose.preview.PreviewTemplate
+import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.about.AboutDialog
 import com.aurora.store.data.model.Link
 
@@ -135,10 +136,9 @@ private fun PageContent(onAboutAurora: () -> Unit = {}) {
     }
 }
 
+@PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
 private fun WelcomePagePreview() {
-    PreviewTemplate {
-        PageContent()
-    }
+    PageContent()
 }
