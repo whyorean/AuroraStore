@@ -514,6 +514,8 @@
     <string name="details_compatibility_status_unsupported">Unsupported: Not functional</string>
     <string name="details_compatibility_status_unknown">Unknown: Not checked yet</string>
     <string name="preparing_to_install">Preparing to install</string>
+    <string name="preparing_to_download">Preparing to download</string>
+    <string name="verifying_downloads">Verifying downloads</string>
     <plurals name="permissions_required">
         <item quantity="one">Permission required</item>
         <item quantity="other">Permissions required</item>

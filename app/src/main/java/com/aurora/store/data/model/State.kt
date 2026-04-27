@@ -54,6 +54,7 @@ sealed class AppState {
 
     data object Queued : AppState()
     data object Purchasing : AppState()
+    data object Verifying : AppState()
     data class Installing(val progress: Float) : AppState()
     data class Error(val message: String?) : AppState()
     data class Installed(val versionName: String, val versionCode: Long) : AppState()
@@ -65,15 +66,19 @@ sealed class AppState {
     /**
      * Whether there is some sort of ongoing process related to the app
      */
-    fun inProgress(): Boolean =
-        this is Downloading || this is Installing || this is Purchasing || this is Queued
+    fun inProgress(): Boolean = this is Downloading ||
+        this is Installing ||
+        this is Purchasing ||
+        this is Queued ||
+        this is Verifying
 
     /**
-     * Progress of the process related to the app; 0 otherwise
+     * Determinate progress (0..100) of the process related to the app; 0 when no
+     * determinate value is available (e.g. installing, where the indicator should
+     * be indeterminate).
      */
     fun progress(): Float = when (this) {
         is Downloading -> progress
-        is Installing -> progress
         else -> 0F
     }
 }

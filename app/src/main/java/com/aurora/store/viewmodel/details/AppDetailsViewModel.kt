@@ -33,6 +33,7 @@ import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.util.CertUtil
@@ -154,7 +155,12 @@ class AppDetailsViewModel @Inject constructor(
                 _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
                     isInstalled = PackageUtil.isInstalled(context, packageName)
                 )
-                _state.value = defaultAppState
+                // Seed state from any in-flight download for this package so reopening
+                // the screen doesn't briefly flash the default install action while the
+                // download flow catches up.
+                _state.value = downloadHelper.getDownload(packageName)
+                    ?.let { stateFromDownload(it) }
+                    ?: defaultAppState
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app details", exception)
                 _app.value = null
@@ -252,20 +258,30 @@ class AppDetailsViewModel @Inject constructor(
             }.launchIn(viewModelScope)
 
         download.filterNotNull().onEach {
-            _state.value = when (it.status) {
-                DownloadStatus.DOWNLOADING -> AppState.Downloading(
-                    it.progress.toFloat(),
-                    it.speed,
-                    it.timeRemaining
-                )
-
-                DownloadStatus.QUEUED -> AppState.Queued
-
-                DownloadStatus.PURCHASING -> AppState.Purchasing
-
-                else -> defaultAppState
-            }
+            _state.value = stateFromDownload(it)
         }.launchIn(viewModelScope)
+    }
+
+    // COMPLETED is bridged to Installing so the UI doesn't briefly fall back to the
+    // install action between download finishing and the installer's first event.
+    // A stale COMPLETED row after install actually finished is handled by the
+    // isInstalled check.
+    private fun stateFromDownload(download: Download): AppState = when (download.status) {
+        DownloadStatus.DOWNLOADING -> AppState.Downloading(
+            download.progress.toFloat(),
+            download.speed,
+            download.timeRemaining
+        )
+
+        DownloadStatus.QUEUED -> AppState.Queued
+
+        DownloadStatus.PURCHASING -> AppState.Purchasing
+
+        DownloadStatus.VERIFYING -> AppState.Verifying
+
+        DownloadStatus.COMPLETED -> if (isInstalled) defaultAppState else AppState.Installing(0F)
+
+        else -> defaultAppState
     }
 
     private fun fetchFeaturedReviews(packageName: String) {

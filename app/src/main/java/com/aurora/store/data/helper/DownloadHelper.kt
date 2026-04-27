@@ -20,6 +20,7 @@ import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -47,6 +48,12 @@ class DownloadHelper @Inject constructor(
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
     val pagedDownloads get() = downloadDao.pagedDownloads()
+
+    /**
+     * One-shot read of the current download record for [packageName], if any.
+     */
+    suspend fun getDownload(packageName: String): Download? =
+        downloadDao.downloads().first().find { it.packageName == packageName }
 
     /**
      * Removes failed download from the queue and starts observing for newly enqueued apps.

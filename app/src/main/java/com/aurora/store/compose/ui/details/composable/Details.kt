@@ -137,15 +137,20 @@ fun Details(
                 Text(
                     style = MaterialTheme.typography.bodySmall,
                     text = when (cState) {
-                        AppState.Installing::class,
                         AppState.Downloading::class -> {
                             "${Formatter.formatShortFileSize(context, speed)}/s" +
                                 ", " + CommonUtil.getETAString(context, timeRemaining)
                         }
 
+                        AppState.Installing::class -> stringResource(R.string.action_installing)
+
                         AppState.Queued::class -> stringResource(R.string.status_queued)
 
-                        AppState.Purchasing::class -> stringResource(R.string.preparing_to_install)
+                        AppState.Purchasing::class ->
+                            stringResource(R.string.preparing_to_download)
+
+                        AppState.Verifying::class ->
+                            stringResource(R.string.verifying_downloads)
 
                         else -> {
                             stringResource(R.string.version, versionName, versionCode)

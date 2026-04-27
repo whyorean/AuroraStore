@@ -6,6 +6,10 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,6 +34,7 @@ import androidx.compose.material3.adaptive.navigation.rememberSupportingPaneScaf
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -111,49 +116,63 @@ fun AppDetailsScreen(
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
-    when (state) {
-        is AppState.Loading -> ScreenContentLoading(onNavigateUp = onNavigateUp)
+    AnimatedContent(
+        targetState = state,
+        contentKey = { stateKey(it, app) },
+        transitionSpec = { fadeIn() togetherWith fadeOut() },
+        label = "AppDetailsState"
+    ) { currentState ->
+        when {
+            currentState is AppState.Loading || app == null ->
+                ScreenContentLoading(onNavigateUp = onNavigateUp)
 
-        is AppState.Error -> {
-            ScreenContentError(
-                onNavigateUp = onNavigateUp,
-                message = (state as AppState.Error).message
-            )
-        }
+            currentState is AppState.Error ->
+                ScreenContentError(
+                    onNavigateUp = onNavigateUp,
+                    message = currentState.message
+                )
 
-        else -> {
-            ScreenContentApp(
-                app = app!!,
-                featuredReviews = featuredReviews,
-                suggestions = suggestions,
-                isFavorite = favorite,
-                isAnonymous = viewModel.authProvider.isAnonymous,
-                state = state,
-                plexusScores = plexusScores,
-                dataSafetyReport = dataSafetyReport,
-                exodusReport = exodusReport,
-                onNavigateUp = onNavigateUp,
-                onNavigateToAppDetails = onNavigateToAppDetails,
-                onDownload = { requestedApp -> viewModel.enqueueDownload(requestedApp) },
-                onFavorite = { viewModel.toggleFavourite(app!!) },
-                onCancelDownload = { viewModel.cancelDownload(app!!) },
-                onUninstall = { AppInstaller.uninstall(context, packageName) },
-                onOpen = {
-                    try {
-                        context.startActivity(
-                            PackageUtil.getLaunchIntent(context, packageName)
-                        )
-                    } catch (_: ActivityNotFoundException) {
-                        context.toast(context.getString(R.string.unable_to_open))
-                    }
-                },
-                onTestingSubscriptionChange = { subscribe ->
-                    viewModel.updateTestingProgramStatus(packageName, subscribe)
-                },
-                forceSinglePane = forceSinglePane
-            )
+            else -> {
+                val loadedApp = app!!
+                ScreenContentApp(
+                    app = loadedApp,
+                    featuredReviews = featuredReviews,
+                    suggestions = suggestions,
+                    isFavorite = favorite,
+                    isAnonymous = viewModel.authProvider.isAnonymous,
+                    state = currentState,
+                    plexusScores = plexusScores,
+                    dataSafetyReport = dataSafetyReport,
+                    exodusReport = exodusReport,
+                    onNavigateUp = onNavigateUp,
+                    onNavigateToAppDetails = onNavigateToAppDetails,
+                    onDownload = { requestedApp -> viewModel.enqueueDownload(requestedApp) },
+                    onFavorite = { viewModel.toggleFavourite(loadedApp) },
+                    onCancelDownload = { viewModel.cancelDownload(loadedApp) },
+                    onUninstall = { AppInstaller.uninstall(context, packageName) },
+                    onOpen = {
+                        try {
+                            context.startActivity(
+                                PackageUtil.getLaunchIntent(context, packageName)
+                            )
+                        } catch (_: ActivityNotFoundException) {
+                            context.toast(context.getString(R.string.unable_to_open))
+                        }
+                    },
+                    onTestingSubscriptionChange = { subscribe ->
+                        viewModel.updateTestingProgramStatus(packageName, subscribe)
+                    },
+                    forceSinglePane = forceSinglePane
+                )
+            }
         }
     }
+}
+
+private fun stateKey(state: AppState, app: App?): String = when {
+    state is AppState.Loading || app == null -> "loading"
+    state is AppState.Error -> "error"
+    else -> "content"
 }
 
 /**
@@ -282,51 +301,70 @@ private fun ScreenContentApp(
 
     @Composable
     fun SetupActions() {
-        when (state) {
-            is AppState.Queued,
-            is AppState.Purchasing,
-            is AppState.Downloading -> {
-                Actions(
-                    primaryActionDisplayName = stringResource(R.string.action_open),
-                    secondaryActionDisplayName = stringResource(R.string.action_cancel),
-                    isPrimaryActionEnabled = false,
-                    onSecondaryAction = onCancelDownload
-                )
-            }
-
-            is AppState.Updatable -> {
-                Actions(
-                    primaryActionDisplayName = stringResource(R.string.action_update),
-                    secondaryActionDisplayName = stringResource(R.string.action_uninstall),
-                    onPrimaryAction = ::onInstall,
-                    onSecondaryAction = onUninstall
-                )
-            }
-
-            is AppState.Installed -> {
-                Actions(
-                    primaryActionDisplayName = stringResource(R.string.action_open),
-                    secondaryActionDisplayName = stringResource(R.string.action_uninstall),
-                    onPrimaryAction = onOpen,
-                    onSecondaryAction = onUninstall,
-                    isPrimaryActionEnabled = PackageUtil
-                        .getLaunchIntent(context, app.packageName) != null
-                )
-            }
-
-            else -> {
-                val primaryActionName = if (state is AppState.Archived) {
-                    stringResource(R.string.action_unarchive)
-                } else {
-                    if (app.isFree) stringResource(R.string.action_install) else app.price
+        AnimatedContent(
+            targetState = state,
+            contentKey = { it::class },
+            transitionSpec = { fadeIn() togetherWith fadeOut() },
+            label = "Actions"
+        ) { currentState ->
+            when (currentState) {
+                is AppState.Queued,
+                is AppState.Purchasing,
+                is AppState.Downloading -> {
+                    Actions(
+                        primaryActionDisplayName = stringResource(R.string.action_open),
+                        secondaryActionDisplayName = stringResource(R.string.action_cancel),
+                        isPrimaryActionEnabled = false,
+                        onSecondaryAction = onCancelDownload
+                    )
                 }
 
-                Actions(
-                    primaryActionDisplayName = primaryActionName,
-                    secondaryActionDisplayName = stringResource(R.string.title_manual_download),
-                    onPrimaryAction = ::onInstall,
-                    onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
-                )
+                is AppState.Verifying,
+                is AppState.Installing -> {
+                    Actions(
+                        primaryActionDisplayName = stringResource(R.string.action_open),
+                        secondaryActionDisplayName = stringResource(R.string.action_cancel),
+                        isPrimaryActionEnabled = false,
+                        isSecondaryActionEnabled = false
+                    )
+                }
+
+                is AppState.Updatable -> {
+                    Actions(
+                        primaryActionDisplayName = stringResource(R.string.action_update),
+                        secondaryActionDisplayName = stringResource(R.string.action_uninstall),
+                        onPrimaryAction = ::onInstall,
+                        onSecondaryAction = onUninstall
+                    )
+                }
+
+                is AppState.Installed -> {
+                    val canOpen = remember(app.packageName) {
+                        PackageUtil.getLaunchIntent(context, app.packageName) != null
+                    }
+                    Actions(
+                        primaryActionDisplayName = stringResource(R.string.action_open),
+                        secondaryActionDisplayName = stringResource(R.string.action_uninstall),
+                        onPrimaryAction = onOpen,
+                        onSecondaryAction = onUninstall,
+                        isPrimaryActionEnabled = canOpen
+                    )
+                }
+
+                else -> {
+                    val primaryActionName = if (currentState is AppState.Archived) {
+                        stringResource(R.string.action_unarchive)
+                    } else {
+                        if (app.isFree) stringResource(R.string.action_install) else app.price
+                    }
+
+                    Actions(
+                        primaryActionDisplayName = primaryActionName,
+                        secondaryActionDisplayName = stringResource(R.string.title_manual_download),
+                        onPrimaryAction = ::onInstall,
+                        onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
+                    )
+                }
             }
         }
     }
@@ -405,7 +443,7 @@ private fun ScreenContentApp(
 
                 Privacy(
                     report = exodusReport,
-                    onNavigateToDetailsExodus = if (exodusReport?.id != -1) {
+                    onNavigateToDetailsExodus = if (exodusReport != null && exodusReport.id != -1) {
                         { showExtraPane(ExtraScreen.Exodus) }
                     } else {
                         null
@@ -428,31 +466,33 @@ private fun ScreenContentApp(
                 TopAppBar(actions = { if (!shouldShowMenuOnMainPane) SetupMenu() })
             }
         ) { paddingValues ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-            ) {
-                Row(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.margin_medium)),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_suggestions),
-                        contentDescription = null
-                    )
-                    Header(title = stringResource(R.string.pref_ui_similar_apps))
-                }
-                LazyColumn(
+            if (suggestions.isNotEmpty()) {
+                Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                        .padding(paddingValues)
                 ) {
-                    items(items = suggestions, key = { item -> item.id }) { app ->
-                        LargeAppListItem(
-                            app = app,
-                            onClick = { onNavigateToAppDetails(app.packageName) }
+                    Row(
+                        modifier = Modifier.padding(dimensionResource(R.dimen.margin_medium)),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_suggestions),
+                            contentDescription = null
                         )
+                        Header(title = stringResource(R.string.pref_ui_similar_apps))
+                    }
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                    ) {
+                        items(items = suggestions, key = { item -> item.id }) { app ->
+                            LargeAppListItem(
+                                app = app,
+                                onClick = { onNavigateToAppDetails(app.packageName) }
+                            )
+                        }
                     }
                 }
             }
