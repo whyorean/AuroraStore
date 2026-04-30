@@ -42,9 +42,9 @@ class MicroGViewModel @Inject constructor(
     companion object {
         private const val BASE_URL =
             "https://github.com/microg/GmsCore/releases/download"
-        private const val MICROG_VERSION = "v0.3.11.250932"
-        private const val GMS_VERSION_CODE = 250932022
-        private const val COMPANION_VERSION_CODE = 84022622
+        private const val MICROG_VERSION = "v0.3.15.250932"
+        private const val GMS_VERSION_CODE = 250932030
+        private const val COMPANION_VERSION_CODE = 84022630
 
         private const val MICROG_DOWNLOAD_URL =
             "$BASE_URL/$MICROG_VERSION/$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk"
@@ -78,8 +78,8 @@ class MicroGViewModel @Inject constructor(
             PlayFile(
                 url = MICROG_DOWNLOAD_URL,
                 name = "$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk",
-                size = 92386474,
-                sha256 = "2894a93544a8d7ca8f6ca96e7cc697647a7e0862165b6a02f8cd26822759b9cc"
+                size = 92834436,
+                sha256 = "896de0917313504cd8406b725b4cb420bfea26e1a50f7dd37f9175c0bfbab2ac"
             )
         )
     )
@@ -95,8 +95,8 @@ class MicroGViewModel @Inject constructor(
             PlayFile(
                 url = FAKE_STORE_DOWNLOAD_URL,
                 name = "$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk",
-                size = 4626291,
-                sha256 = "b9623b8da8791c7e887efca941434b20e517c8a42ca4fda713625957edcc84eb"
+                size = 4641800,
+                sha256 = "a215e44bd89a4e5078fd7babf7baa7b47b69ac27fca13e9c0abfedc33cb087d7"
             )
         )
     )
