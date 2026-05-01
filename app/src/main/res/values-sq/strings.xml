@@ -378,7 +378,6 @@
     <string name="checking_updates">Po kontrollohet për përditësime</string>
     <string name="pref_dispenser_title">Administroni distributorë</string>
     <string name="add_dispenser_hint">URL distributori</string>
-    <string name="remove_dispenser_summary">Doni të hiqet distributori \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="pref_dispenser_summary">Shihni dhe administroni distributorë token-ësh për hyrje anonime</string>
     <string name="no_dispensers_available">S’ka distributorë</string>
     <string name="made_with_love">Krijuar me <xliff:g id="heart_emoji">%1$s</xliff:g> në Indi</string>
