@@ -192,7 +192,7 @@ class DownloadWorker @AssistedInject constructor(
             files.forEach { file -> require(verifyFile(file)) }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify ${download.packageName}", exception)
-            onFailure(VerificationFailedException())
+            return onFailure(VerificationFailedException())
         }
 
         Log.i(TAG, "Finished downloading & verifying ${download.packageName}")
