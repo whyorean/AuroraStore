@@ -92,6 +92,7 @@
     <string name="action_request_analysis">Request new analysis</string>
     <string name="action_restart">"Restart"</string>
     <string name="action_resume">"Resume"</string>
+    <string name="action_retry">"Retry"</string>
     <string name="action_search">"Search"</string>
     <string name="action_select_all">"Select all"</string>
     <string name="action_share">"Share"</string>
@@ -380,6 +381,7 @@
     <string name="microg_privacy_policy">Read microG Privacy Policy</string>
     <string name="microg_license_agreement">Read microG License and Agreement</string>
     <string name="microg_website">Visit microG Project Website</string>
+    <string name="microg_no_network">"Connect to the internet to download the microG bundle"</string>
 
     <!-- InstallerFragment -->
     <string name="session_installer_subtitle">Session based installer for bundled/split APKs</string>
