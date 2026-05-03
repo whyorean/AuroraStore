@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
+import android.content.Intent
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -19,8 +20,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.AdaptStrategy
@@ -34,8 +38,10 @@ import androidx.compose.material3.adaptive.navigation.rememberSupportingPaneScaf
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -57,6 +63,7 @@ import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
+import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
@@ -87,11 +94,13 @@ import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
+import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
 import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.jakewharton.processphoenix.ProcessPhoenix
 import kotlin.random.Random
 import kotlinx.coroutines.launch
 
@@ -244,6 +253,7 @@ private fun ScreenContentApp(
     val coroutineScope = rememberCoroutineScope()
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
+    var showRestartDialog by remember { mutableStateOf(false) }
 
     fun onNavigateBack() {
         coroutineScope.launch {
@@ -549,7 +559,15 @@ private fun ScreenContentApp(
         is Screen.PermissionRationale -> PermissionRationaleScreen(
             onNavigateUp = ::onNavigateBack,
             requiredPermissions = screen.requiredPermissions,
-            onPermissionCallback = { onInstall() }
+            onPermissionCallback = { type ->
+                val isStoragePermission = type == PermissionType.EXTERNAL_STORAGE ||
+                    type == PermissionType.STORAGE_MANAGER
+                if (isStoragePermission && isGranted(context, type)) {
+                    showRestartDialog = true
+                } else {
+                    onInstall()
+                }
+            }
         )
 
         else -> {}
@@ -565,6 +583,25 @@ private fun ScreenContentApp(
             }
         }
     )
+
+    if (showRestartDialog) {
+        AlertDialog(
+            onDismissRequest = {},
+            title = { Text(text = stringResource(R.string.force_restart_title)) },
+            text = { Text(text = stringResource(R.string.force_restart_summary)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        val intent = Intent(context, ComposeActivity::class.java)
+                            .putExtra("packageName", app.packageName)
+                        ProcessPhoenix.triggerRebirth(context, intent)
+                    }
+                ) {
+                    Text(text = stringResource(R.string.action_restart))
+                }
+            }
+        )
+    }
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)
