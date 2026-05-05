@@ -54,7 +54,7 @@ fun LinkListItem(
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
-            .padding(dimensionResource(R.dimen.padding_medium)),
+            .padding(dimensionResource(R.dimen.padding_small)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
     ) {
