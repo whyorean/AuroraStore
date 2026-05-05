@@ -18,6 +18,8 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.model.ExternalItem
+import com.aurora.store.data.model.InstallStatus
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.room.download.Download
@@ -33,31 +35,18 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-enum class MicroGItemState { PENDING, DOWNLOADING, INSTALLING, INSTALLED, FAILED }
-
-data class MicroGItem(
-    val packageName: String,
-    val displayName: String,
-    val iconURL: String,
-    val totalBytes: Long,
-    val state: MicroGItemState,
-    val progress: Int = 0,
-    val speed: Long = 0L,
-    val timeRemaining: Long = -1L
-)
-
 data class MicroGUIState(
-    val items: List<MicroGItem> = emptyList(),
+    val items: List<ExternalItem> = emptyList(),
     val isOnline: Boolean = true
 ) {
     val isInstalled: Boolean
-        get() = items.isNotEmpty() && items.all { it.state == MicroGItemState.INSTALLED }
+        get() = items.isNotEmpty() && items.all { it.status == InstallStatus.INSTALLED }
     val isInProgress: Boolean
         get() = items.any {
-            it.state == MicroGItemState.DOWNLOADING || it.state == MicroGItemState.INSTALLING
+            it.status == InstallStatus.DOWNLOADING || it.status == InstallStatus.INSTALLING
         }
     val hasFailed: Boolean
-        get() = !isInstalled && items.any { it.state == MicroGItemState.FAILED }
+        get() = !isInstalled && items.any { it.status == InstallStatus.FAILED }
 }
 
 @HiltViewModel
@@ -168,10 +157,10 @@ class MicroGViewModel @Inject constructor(
     private fun refresh() {
         uiState = uiState.copy(
             items = uiState.items.map { item ->
-                if (item.state != MicroGItemState.INSTALLED &&
+                if (item.status != InstallStatus.INSTALLED &&
                     PackageUtil.isInstalled(context, item.packageName)
                 ) {
-                    item.copy(state = MicroGItemState.INSTALLED)
+                    item.copy(status = InstallStatus.INSTALLED)
                 } else {
                     item
                 }
@@ -179,22 +168,22 @@ class MicroGViewModel @Inject constructor(
         )
     }
 
-    private fun buildItem(apk: ExternalApk, download: Download?): MicroGItem {
+    private fun buildItem(apk: ExternalApk, download: Download?): ExternalItem {
         val state = when {
-            apk.isInstalled(context) -> MicroGItemState.INSTALLED
-            download == null -> MicroGItemState.PENDING
-            download.status == DownloadStatus.FAILED -> MicroGItemState.FAILED
-            download.status == DownloadStatus.CANCELLED -> MicroGItemState.PENDING
-            download.status == DownloadStatus.COMPLETED -> MicroGItemState.INSTALLING
-            else -> MicroGItemState.DOWNLOADING
+            apk.isInstalled(context) -> InstallStatus.INSTALLED
+            download == null -> InstallStatus.PENDING
+            download.status == DownloadStatus.FAILED -> InstallStatus.FAILED
+            download.status == DownloadStatus.CANCELLED -> InstallStatus.PENDING
+            download.status == DownloadStatus.COMPLETED -> InstallStatus.INSTALLING
+            else -> InstallStatus.DOWNLOADING
         }
 
-        return MicroGItem(
+        return ExternalItem(
             packageName = apk.packageName,
             displayName = apk.displayName,
             iconURL = apk.iconURL,
-            totalBytes = apk.fileList.sumOf { it.size },
-            state = state,
+            size = apk.fileList.sumOf { it.size },
+            status = state,
             progress = download?.progress ?: 0,
             speed = download?.speed ?: 0L,
             timeRemaining = download?.timeRemaining ?: -1L

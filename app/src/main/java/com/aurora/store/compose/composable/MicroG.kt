@@ -39,10 +39,10 @@ import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.data.model.ExternalItem
+import com.aurora.store.data.model.InstallStatus
 import com.aurora.store.data.model.Link
 import com.aurora.store.util.CommonUtil.getETAString
-import com.aurora.store.viewmodel.onboarding.MicroGItem
-import com.aurora.store.viewmodel.onboarding.MicroGItemState
 import com.aurora.store.viewmodel.onboarding.MicroGUIState
 
 /**
@@ -182,39 +182,34 @@ fun MicroG(
 }
 
 @Composable
-private fun MicroGItemRow(item: MicroGItem) {
+private fun MicroGItemRow(item: ExternalItem) {
     val context = LocalContext.current
-    val inProgress = item.state == MicroGItemState.DOWNLOADING ||
-        item.state == MicroGItemState.INSTALLING
+    val inProgress = item.status == InstallStatus.DOWNLOADING ||
+        item.status == InstallStatus.INSTALLING
 
-    val statusText = when (item.state) {
-        MicroGItemState.PENDING -> stringResource(R.string.action_pending)
-        MicroGItemState.DOWNLOADING -> stringResource(R.string.status_downloading)
-        MicroGItemState.INSTALLING -> stringResource(R.string.action_installing)
-        MicroGItemState.INSTALLED -> stringResource(R.string.title_installed)
-        MicroGItemState.FAILED -> stringResource(R.string.status_failed)
-    }
-    val statusColor = when (item.state) {
-        MicroGItemState.FAILED -> MaterialTheme.colorScheme.error
-        MicroGItemState.INSTALLED -> MaterialTheme.colorScheme.primary
+    val statusText = stringResource(item.status.localized)
+    val statusColor = when (item.status) {
+        InstallStatus.FAILED -> MaterialTheme.colorScheme.error
+        InstallStatus.INSTALLED -> MaterialTheme.colorScheme.primary
         else -> Color.Unspecified
     }
-    val detailText = when (item.state) {
-        MicroGItemState.DOWNLOADING -> {
+    val detailText = when (item.status) {
+        InstallStatus.DOWNLOADING -> {
             val downloaded = Formatter.formatShortFileSize(
                 context,
-                (item.totalBytes * item.progress / 100L).coerceAtLeast(0L)
+                (item.size * item.progress / 100L).coerceAtLeast(0L)
             )
-            val total = Formatter.formatShortFileSize(context, item.totalBytes)
+            val total = Formatter.formatShortFileSize(context, item.size)
             val speed = Formatter.formatShortFileSize(context, item.speed)
             val eta = getETAString(context, item.timeRemaining)
             "$downloaded / $total • $speed/s • $eta"
         }
-        else -> Formatter.formatShortFileSize(context, item.totalBytes)
+
+        else -> Formatter.formatShortFileSize(context, item.size)
     }
-    val trailingIcon = when (item.state) {
-        MicroGItemState.INSTALLED -> R.drawable.ic_check
-        MicroGItemState.FAILED -> R.drawable.ic_menu_about
+    val trailingIcon = when (item.status) {
+        InstallStatus.INSTALLED -> R.drawable.ic_check
+        InstallStatus.FAILED -> R.drawable.ic_menu_about
         else -> null
     }
 
@@ -266,15 +261,23 @@ private fun MicroGItemRow(item: MicroGItem) {
 }
 
 private fun previewItems(
-    companionState: MicroGItemState = MicroGItemState.PENDING,
+    companionState: InstallStatus = InstallStatus.PENDING,
     companionProgress: Int = 0
-): List<MicroGItem> = listOf(
-    MicroGItem(
+): List<ExternalItem> = listOf(
+    ExternalItem(
+        packageName = "",
+        displayName = "microG Services",
+        iconURL = "",
+        size = 98_765_432L,
+        status = companionState,
+        progress = companionProgress
+    ),
+    ExternalItem(
         packageName = "",
         displayName = "microG Companion",
         iconURL = "",
-        totalBytes = 1_234_567L,
-        state = companionState,
+        size = 1_234_567L,
+        status = companionState,
         progress = companionProgress
     )
 )
