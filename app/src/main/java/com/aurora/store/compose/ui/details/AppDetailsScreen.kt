@@ -20,11 +20,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.AdaptStrategy
@@ -73,6 +70,7 @@ import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.ui.commons.ForceRestartDialog
 import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
 import com.aurora.store.compose.ui.details.composable.Actions
 import com.aurora.store.compose.ui.details.composable.Changelog
@@ -171,7 +169,12 @@ fun AppDetailsScreen(
                     onTestingSubscriptionChange = { subscribe ->
                         viewModel.updateTestingProgramStatus(packageName, subscribe)
                     },
-                    forceSinglePane = forceSinglePane
+                    forceSinglePane = forceSinglePane,
+                    onForceRestart = {
+                        val intent = Intent(context, ComposeActivity::class.java)
+                            .putExtra("packageName", packageName)
+                        ProcessPhoenix.triggerRebirth(context, intent)
+                    }
                 )
             }
         }
@@ -235,7 +238,8 @@ private fun ScreenContentApp(
     onOpen: () -> Unit = {},
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
-    forceSinglePane: Boolean = false
+    forceSinglePane: Boolean = false,
+    onForceRestart: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
@@ -254,6 +258,10 @@ private fun ScreenContentApp(
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
     var showRestartDialog by remember { mutableStateOf(false) }
+
+    if (showRestartDialog) {
+        ForceRestartDialog(onConfirm = onForceRestart)
+    }
 
     fun onNavigateBack() {
         coroutineScope.launch {
@@ -583,25 +591,6 @@ private fun ScreenContentApp(
             }
         }
     )
-
-    if (showRestartDialog) {
-        AlertDialog(
-            onDismissRequest = {},
-            title = { Text(text = stringResource(R.string.force_restart_title)) },
-            text = { Text(text = stringResource(R.string.force_restart_summary)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        val intent = Intent(context, ComposeActivity::class.java)
-                            .putExtra("packageName", app.packageName)
-                        ProcessPhoenix.triggerRebirth(context, intent)
-                    }
-                ) {
-                    Text(text = stringResource(R.string.action_restart))
-                }
-            }
-        )
-    }
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)
