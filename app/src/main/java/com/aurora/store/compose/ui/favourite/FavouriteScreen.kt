@@ -117,7 +117,7 @@ private fun ScreenContent(
 
     @Composable
     fun SetupMenu() {
-        FavouriteMenu { menuItem ->
+        FavouriteMenu(items = favourites.itemCount) { menuItem ->
             when (menuItem) {
                 MenuItem.IMPORT -> onImportFavourites()
                 MenuItem.EXPORT -> onExportFavourites()
@@ -130,7 +130,7 @@ private fun ScreenContent(
             TopAppBar(
                 title = stringResource(R.string.title_favourites_manager),
                 onNavigateUp = onNavigateUp,
-                actions = { if (favourites.itemCount != 0) SetupMenu() }
+                actions = { SetupMenu() }
             )
         }
     ) { paddingValues ->
