@@ -167,10 +167,15 @@ class DownloadHelper @Inject constructor(
     private suspend fun cancelFailedDownloads(downloadList: List<Download>) {
         val workManager = WorkManager.getInstance(context)
 
-        downloadList.filter { it.isRunning }.forEach {
-            workManager.getWorkInfosByTagFlow("$PACKAGE_NAME:${it.packageName}").firstOrNull()
-                ?.all { workInfo -> workInfo.state.isFinished }
-                ?.run { downloadDao.updateStatus(it.packageName, DownloadStatus.FAILED) }
+        downloadList.filter { it.isRunning }.forEach { download ->
+            val allFinished = workManager
+                .getWorkInfosByTagFlow("$PACKAGE_NAME:${download.packageName}")
+                .firstOrNull()
+                ?.all { workInfo -> workInfo.state.isFinished } == true
+
+            if (allFinished) {
+                downloadDao.updateStatus(download.packageName, DownloadStatus.FAILED)
+            }
         }
     }
 

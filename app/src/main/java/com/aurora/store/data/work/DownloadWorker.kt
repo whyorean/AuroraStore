@@ -98,7 +98,13 @@ class DownloadWorker @AssistedInject constructor(
         Exception(context.getString(R.string.verification_failed))
 
     override suspend fun doWork(): Result {
-        super.doWork()
+        // Refresh auth via parent worker. If it can't recover, retry later instead of
+        // running the full download/purchase path just to fail and notify.
+        val authResult = super.doWork()
+        if (authResult != Result.success()) {
+            Log.w(TAG, "AuthWorker did not succeed ($authResult), retrying download later")
+            return Result.retry()
+        }
 
         // Fetch required data for download
         try {
