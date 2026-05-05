@@ -1,0 +1,75 @@
+name: Build BYD APK
+
+on:
+  push:
+    branches:
+      - release*
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Fix gradlew line endings
+        run: sed -i 's/\r$//' gradlew
+
+      - name: Grant execute permission
+        run: chmod +x ./gradlew
+
+      - name: Build Extension classes
+        run: ./gradlew :extension:buildExtension
+
+      - name: Prepare raw folder
+        run: mkdir -p app/src/main/res/raw
+
+      - name: Copy extension to app
+        run: cp -rf extension/build/lib/classes app/src/main/res/raw/classes
+
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > app/keystore.jks
+
+      - name: Create signing.properties
+        run: |
+          echo "STORE_FILE=keystore.jks" >> app/signing.properties
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> app/signing.properties
+          echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> app/signing.properties
+
+      - name: Build Release APK
+        run: ./gradlew :app:assembleBydRelease
+
+      - name: Get APK path
+        id: apk
+        run: |
+          RELEASE_APK=$(find app/build/outputs/apk -name '*byd*release*.apk' | head -n 1)
+          echo "RELEASE_APK=$RELEASE_APK" >> $GITHUB_OUTPUT
+          echo "Release APK: $RELEASE_APK"
+
+      - name: Generate tag
+        id: tag
+        run: echo "TAG=byd-$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.TAG }}
+          name: BYD Build ${{ steps.tag.outputs.TAG }}
+          files: ${{ steps.apk.outputs.RELEASE_APK }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
