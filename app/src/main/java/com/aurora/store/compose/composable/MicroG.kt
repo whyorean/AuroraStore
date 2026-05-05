@@ -5,15 +5,18 @@
 
 package com.aurora.store.compose.composable
 
+import android.text.format.Formatter
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,8 +26,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,20 +37,27 @@ import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.util.fastForEach
 import com.aurora.extensions.browse
 import com.aurora.store.R
+import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.data.model.ExternalItem
+import com.aurora.store.data.model.InstallStatus
 import com.aurora.store.data.model.Link
+import com.aurora.store.util.CommonUtil.getETAString
 import com.aurora.store.viewmodel.onboarding.MicroGUIState
 
 /**
  * Composable to display suggestion to install microG
  * @param modifier Modifier for the composable
  * @param onInstall Callback when user requests installing microG bundle
+ * @param onRetry Callback when user retries after a failed download
+ * @param onTOSChecked Callback when user toggles the TOS checkbox
  */
 @Composable
 fun MicroG(
     modifier: Modifier = Modifier,
     uiState: MicroGUIState,
     onInstall: () -> Unit = {},
+    onRetry: () -> Unit = {},
     onTOSChecked: (Boolean) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -103,55 +115,176 @@ fun MicroG(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = dimensionResource(R.dimen.padding_xlarge)),
+                .padding(vertical = dimensionResource(R.dimen.padding_large)),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(
-                    dimensionResource(R.dimen.padding_small)
-                )
-            ) {
-                Checkbox(
-                    checked = isChecked,
-                    onCheckedChange = {
-                        isChecked = it
-                        onTOSChecked(it)
-                    },
-                    enabled = !uiState.isInstalled && !uiState.isDownloading
-                )
+            uiState.items.fastForEach { item ->
+                MicroGItemRow(item = item)
+            }
+
+            if (!uiState.isInProgress && !uiState.isInstalled && !uiState.hasFailed) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(
+                        dimensionResource(R.dimen.padding_small)
+                    )
+                ) {
+                    Checkbox(
+                        checked = isChecked,
+                        onCheckedChange = {
+                            isChecked = it
+                            onTOSChecked(it)
+                        }
+                    )
+                    Text(
+                        text = stringResource(R.string.onboarding_gms_agreement),
+                        style = MaterialTheme.typography.bodyMedium,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
+
+            if (!uiState.isInProgress && !uiState.isInstalled && !uiState.isOnline) {
                 Text(
-                    text = stringResource(R.string.onboarding_gms_agreement),
-                    style = MaterialTheme.typography.bodyMedium,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
+                    text = stringResource(R.string.check_connectivity),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error
                 )
             }
-            Button(
-                onClick = onInstall,
-                enabled = isChecked && !uiState.isDownloading && !uiState.isInstalled,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text = if (uiState.isDownloading) {
-                        stringResource(R.string.action_installing)
+
+            if (!uiState.isInProgress && !uiState.isInstalled) {
+                val isRetry = uiState.hasFailed
+                Button(
+                    onClick = if (isRetry) onRetry else onInstall,
+                    enabled = uiState.isOnline && (isRetry || isChecked),
+                    colors = if (isRetry) {
+                        ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.error,
+                            contentColor = MaterialTheme.colorScheme.onError
+                        )
                     } else {
-                        stringResource(R.string.action_install_microG)
-                    }
-                )
-            }
-            if (uiState.isDownloading) {
-                LinearProgressIndicator(
+                        ButtonDefaults.buttonColors()
+                    },
                     modifier = Modifier.fillMaxWidth()
-                )
+                ) {
+                    Text(
+                        text = if (isRetry) {
+                            stringResource(R.string.action_retry)
+                        } else {
+                            stringResource(R.string.action_install_microG)
+                        }
+                    )
+                }
             }
         }
     }
 }
 
+@Composable
+private fun MicroGItemRow(item: ExternalItem) {
+    val context = LocalContext.current
+    val inProgress = item.status == InstallStatus.DOWNLOADING ||
+        item.status == InstallStatus.INSTALLING
+
+    val statusText = stringResource(item.status.localized)
+    val statusColor = when (item.status) {
+        InstallStatus.FAILED -> MaterialTheme.colorScheme.error
+        InstallStatus.INSTALLED -> MaterialTheme.colorScheme.primary
+        else -> Color.Unspecified
+    }
+    val detailText = when (item.status) {
+        InstallStatus.DOWNLOADING -> {
+            val downloaded = Formatter.formatShortFileSize(
+                context,
+                (item.size * item.progress / 100L).coerceAtLeast(0L)
+            )
+            val total = Formatter.formatShortFileSize(context, item.size)
+            val speed = Formatter.formatShortFileSize(context, item.speed)
+            val eta = getETAString(context, item.timeRemaining)
+            "$downloaded / $total • $speed/s • $eta"
+        }
+
+        else -> Formatter.formatShortFileSize(context, item.size)
+    }
+    val trailingIcon = when (item.status) {
+        InstallStatus.INSTALLED -> R.drawable.ic_check
+        InstallStatus.FAILED -> R.drawable.ic_menu_about
+        else -> null
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                horizontal = dimensionResource(R.dimen.padding_small),
+                vertical = dimensionResource(R.dimen.padding_xsmall)
+            ),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        AnimatedAppIcon(
+            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
+            iconUrl = item.iconURL,
+            inProgress = inProgress,
+            progress = item.progress.toFloat()
+        )
+        Column(
+            modifier = Modifier
+                .weight(1F)
+                .padding(horizontal = dimensionResource(R.dimen.margin_small))
+        ) {
+            Text(
+                text = item.displayName,
+                style = MaterialTheme.typography.bodyMedium,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Text(
+                text = statusText,
+                style = MaterialTheme.typography.bodySmall,
+                color = statusColor
+            )
+            Text(
+                text = detailText,
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
+        if (trailingIcon != null) {
+            Icon(
+                painter = painterResource(trailingIcon),
+                contentDescription = statusText,
+                tint = statusColor,
+                modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_default))
+            )
+        }
+    }
+}
+
+private fun previewItems(
+    companionState: InstallStatus = InstallStatus.PENDING,
+    companionProgress: Int = 0
+): List<ExternalItem> = listOf(
+    ExternalItem(
+        packageName = "",
+        displayName = "microG Services",
+        iconURL = "",
+        size = 98_765_432L,
+        status = companionState,
+        progress = companionProgress
+    ),
+    ExternalItem(
+        packageName = "",
+        displayName = "microG Companion",
+        iconURL = "",
+        size = 1_234_567L,
+        status = companionState,
+        progress = companionProgress
+    )
+)
+
 @PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
-private fun MicroGPreview() {
-    MicroG(uiState = MicroGUIState())
+private fun MicroGReadyPreview() {
+    MicroG(uiState = MicroGUIState(items = previewItems()))
 }

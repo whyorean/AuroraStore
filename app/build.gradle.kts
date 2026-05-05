@@ -5,15 +5,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-@file:OptIn(KspExperimental::class)
-
 import com.android.build.api.dsl.ApplicationExtension
-import com.google.devtools.ksp.KspExperimental
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.parcelize)
     alias(libs.plugins.jetbrains.kotlin.serialization)
@@ -53,13 +49,19 @@ kotlin {
 configure<ApplicationExtension> {
     namespace = "com.aurora.store"
     compileSdk {
-        version = release(37)
+        version = release(37) {
+            minorApiLevel = 0
+        }
     }
 
     defaultConfig {
         applicationId = "com.aurora.store"
-        minSdk = 23
-        targetSdk = 36
+        minSdk {
+            version = release(23)
+        }
+        targetSdk {
+            version = release(37)
+        }
 
         versionCode = 74
         versionName = "4.8.2"

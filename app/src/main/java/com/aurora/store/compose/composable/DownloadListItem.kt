@@ -48,6 +48,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.getETAString
+import com.aurora.store.util.PackageUtil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -108,7 +109,11 @@ fun DownloadListItem(
                 DropdownMenuItem(
                     text = { Text(text = stringResource(R.string.action_export)) },
                     onClick = onExport,
-                    enabled = download.canInstall(context)
+                    enabled = download.canInstall(context) ||
+                        PackageUtil.isInstalled(
+                            context,
+                            download.packageName
+                        )
                 )
                 DropdownMenuItem(
                     text = { Text(text = stringResource(R.string.action_clear)) },

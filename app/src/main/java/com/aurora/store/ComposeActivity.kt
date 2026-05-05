@@ -11,6 +11,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.content.IntentCompat
+import com.aurora.extensions.getPackageName
 import com.aurora.store.compose.composition.LocalUI
 import com.aurora.store.compose.composition.UI
 import com.aurora.store.compose.navigation.NavDisplay
@@ -26,12 +27,21 @@ class ComposeActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        // TODO: Change startDestination logic to mirror MainActivity
-        val startDestination = IntentCompat.getParcelableExtra(
+        // Ensure the classloader is set for the Screen parcelable
+        intent.setExtrasClassLoader(Screen::class.java.classLoader)
+
+        var startDestination = IntentCompat.getParcelableExtra(
             intent,
             Screen.PARCEL_KEY,
             Screen::class.java
-        ) ?: Screen.Blacklist
+        ) ?: Screen.Onboarding
+
+        // If the intent contains a package name for app details,
+        // Override the start destination to be the app details screen for that package.
+        val packageName = intent.getPackageName()
+        if (packageName != null) {
+            startDestination = Screen.AppDetails(packageName)
+        }
 
         val localUI = when {
             PackageUtil.isTv(this) -> UI.TV

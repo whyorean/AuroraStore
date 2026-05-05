@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
+import android.content.Intent
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -34,8 +35,10 @@ import androidx.compose.material3.adaptive.navigation.rememberSupportingPaneScaf
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -57,6 +60,7 @@ import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
+import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
@@ -66,6 +70,7 @@ import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.ui.commons.ForceRestartDialog
 import com.aurora.store.compose.ui.commons.PermissionRationaleScreen
 import com.aurora.store.compose.ui.details.composable.Actions
 import com.aurora.store.compose.ui.details.composable.Changelog
@@ -87,11 +92,13 @@ import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
+import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
 import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
+import com.jakewharton.processphoenix.ProcessPhoenix
 import kotlin.random.Random
 import kotlinx.coroutines.launch
 
@@ -162,7 +169,12 @@ fun AppDetailsScreen(
                     onTestingSubscriptionChange = { subscribe ->
                         viewModel.updateTestingProgramStatus(packageName, subscribe)
                     },
-                    forceSinglePane = forceSinglePane
+                    forceSinglePane = forceSinglePane,
+                    onForceRestart = {
+                        val intent = Intent(context, ComposeActivity::class.java)
+                            .putExtra("packageName", packageName)
+                        ProcessPhoenix.triggerRebirth(context, intent)
+                    }
                 )
             }
         }
@@ -226,7 +238,8 @@ private fun ScreenContentApp(
     onOpen: () -> Unit = {},
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
-    forceSinglePane: Boolean = false
+    forceSinglePane: Boolean = false,
+    onForceRestart: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
@@ -244,6 +257,11 @@ private fun ScreenContentApp(
     val coroutineScope = rememberCoroutineScope()
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
+    var showRestartDialog by remember { mutableStateOf(false) }
+
+    if (showRestartDialog) {
+        ForceRestartDialog(onConfirm = onForceRestart)
+    }
 
     fun onNavigateBack() {
         coroutineScope.launch {
@@ -549,7 +567,15 @@ private fun ScreenContentApp(
         is Screen.PermissionRationale -> PermissionRationaleScreen(
             onNavigateUp = ::onNavigateBack,
             requiredPermissions = screen.requiredPermissions,
-            onPermissionCallback = { onInstall() }
+            onPermissionCallback = { type ->
+                val isStoragePermission = type == PermissionType.EXTERNAL_STORAGE ||
+                    type == PermissionType.STORAGE_MANAGER
+                if (isStoragePermission && isGranted(context, type)) {
+                    showRestartDialog = true
+                } else {
+                    onInstall()
+                }
+            }
         )
 
         else -> {}
