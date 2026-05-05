@@ -49,13 +49,19 @@ kotlin {
 configure<ApplicationExtension> {
     namespace = "com.aurora.store"
     compileSdk {
-        version = release(37)
+        version = release(37) {
+            minorApiLevel = 0
+        }
     }
 
     defaultConfig {
         applicationId = "com.aurora.store"
-        minSdk = 23
-        targetSdk = 36
+        minSdk {
+            version = release(23)
+        }
+        targetSdk {
+            version = release(37)
+        }
 
         versionCode = 74
         versionName = "4.8.2"
