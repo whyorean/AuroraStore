@@ -147,7 +147,7 @@ fun MicroG(
 
             if (!uiState.isInProgress && !uiState.isInstalled && !uiState.isOnline) {
                 Text(
-                    text = stringResource(R.string.microg_no_network),
+                    text = stringResource(R.string.check_connectivity),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error
                 )
