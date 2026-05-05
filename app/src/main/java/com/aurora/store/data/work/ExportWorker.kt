@@ -76,7 +76,7 @@ class ExportWorker @AssistedInject constructor(
          */
         fun exportDownloadedApp(context: Context, download: Download, uri: Uri) {
             val inputData = Data.Builder()
-                .putBoolean(IS_DOWNLOAD, true)
+                .putBoolean(IS_DOWNLOAD, download.canInstall(context))
                 .putString(URI, uri.toString())
                 .putString(DISPLAY_NAME, download.displayName)
                 .putString(PACKAGE_NAME, download.packageName)
