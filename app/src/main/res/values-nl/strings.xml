@@ -477,4 +477,5 @@
     <string name="action_view_on_play">Op Play Store bekijken</string>
     <string name="header_blacklist_selected">Op de zwarte lijst</string>
     <string name="header_blacklist_others">Anderen</string>
+    <string name="microg_removed_auth_warning">microG is niet langer geïnstalleerd. Voer de installatie opnieuw uit zodat alles soepel blijft werken.</string>
 </resources>
