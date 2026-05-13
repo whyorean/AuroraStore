@@ -474,4 +474,9 @@
     <string name="force_restart_snack">Repornești pentru a aplica modificările?</string>
     <string name="preparing_to_download">Se pregătește pentru descărcare</string>
     <string name="verifying_downloads">Verificarea descărcărilor</string>
+    <string name="action_retry">Reîncearcă</string>
+    <string name="action_view_on_play">Vezi în Magazin Play</string>
+    <string name="microg_removed_auth_warning">microG nu mai este instalat. Rulează din nou configurarea pentru ca lucrurile să funcționeze fără probleme.</string>
+    <string name="header_blacklist_selected">În lista neagră</string>
+    <string name="header_blacklist_others">Altele</string>
 </resources>
