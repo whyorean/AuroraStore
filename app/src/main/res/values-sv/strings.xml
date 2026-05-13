@@ -474,4 +474,8 @@
     <string name="action_retry">Försök igen</string>
     <string name="preparing_to_download">Förbereder för att ladda ner</string>
     <string name="verifying_downloads">Verifierar nedladdningar</string>
+    <string name="action_view_on_play">Visa på Play Store</string>
+    <string name="microg_removed_auth_warning">microG är inte längre installerat. Kör installationsprogrammet igen för att hålla allt igång smidigt.</string>
+    <string name="header_blacklist_selected">Svartlistad</string>
+    <string name="header_blacklist_others">Andra</string>
 </resources>
