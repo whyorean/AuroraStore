@@ -477,4 +477,5 @@
     <string name="action_view_on_play">Vaata Play Store\'is</string>
     <string name="header_blacklist_selected">Lisatud musta nimekirja</string>
     <string name="header_blacklist_others">Muud</string>
+    <string name="microg_removed_auth_warning">microG pole enam paigaldatud. Et kõik toimiks sujuvalt, käivita palun algseadistus uuesti.</string>
 </resources>
