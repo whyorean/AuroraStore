@@ -476,4 +476,5 @@
     <string name="action_view_on_play">在 Play 商店查看</string>
     <string name="header_blacklist_selected">已拉黑</string>
     <string name="header_blacklist_others">其他</string>
+    <string name="microg_removed_auth_warning">不再安装 microG。再次运行设置保持功能顺畅运作。</string>
 </resources>
