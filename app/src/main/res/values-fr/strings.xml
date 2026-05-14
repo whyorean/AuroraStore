@@ -478,5 +478,5 @@
     <string name="action_view_on_play">Afficher dans le magasin Play Store</string>
     <string name="header_blacklist_selected">Exclue</string>
     <string name="header_blacklist_others">Autres</string>
-    <string name="microg_removed_auth_warning">microG n\'est plus installé. Relancez le programme d\'installation pour que tout fonctionne correctement.</string>
+    <string name="microg_removed_auth_warning">microG n’est plus installée. Relancez le programme d’installation pour que tout fonctionne correctement.</string>
 </resources>
