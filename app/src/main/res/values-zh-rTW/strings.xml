@@ -470,4 +470,11 @@
     <string name="page">頁 <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">跳過</string>
     <string name="force_restart_snack">重新啟動以套用變更？</string>
+    <string name="action_retry">重試</string>
+    <string name="action_view_on_play">在 Play 商店中查看</string>
+    <string name="microg_removed_auth_warning">microG 已不再安裝。請重新執行設定，讓功能保持順暢運作。</string>
+    <string name="header_blacklist_selected">已列入黑名單</string>
+    <string name="header_blacklist_others">其他</string>
+    <string name="preparing_to_download">正在準備下載</string>
+    <string name="verifying_downloads">正在驗證下載</string>
 </resources>
