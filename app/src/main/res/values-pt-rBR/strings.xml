@@ -478,4 +478,5 @@
     <string name="action_view_on_play">Ver na Play Store</string>
     <string name="header_blacklist_selected">Bloqueados</string>
     <string name="header_blacklist_others">Outros</string>
+    <string name="microg_removed_auth_warning">O microG não está mais instalado. Configure novamente para manter as coisas funcionando normalmente.</string>
 </resources>
