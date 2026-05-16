@@ -475,4 +475,9 @@
     <string name="action_skip">Preskočiť</string>
     <string name="action_retry">Skúsiť znova</string>
     <string name="verifying_downloads">Overovanie stiahnutí</string>
+    <string name="action_view_on_play">Zobraziť v obchode Play</string>
+    <string name="microg_removed_auth_warning">Program microG už nie je nainštalovaný. Spustite inštalátor znovu, aby všetko fungovalo bez problémov.</string>
+    <string name="header_blacklist_selected">Na čiernej listine</string>
+    <string name="header_blacklist_others">Ostatné</string>
+    <string name="preparing_to_download">Pripravujem na stiahnutie</string>
 </resources>
