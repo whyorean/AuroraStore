@@ -476,7 +476,7 @@
     <string name="action_retry">Повтор</string>
     <string name="action_view_on_play">Просмотреть в Play Store</string>
     <string name="microg_removed_auth_warning">microG больше не установлен. Запустите установку снова, чтобы сохранить полную работоспособность.</string>
-    <string name="header_blacklist_selected">В чёрном списке</string>
+    <string name="header_blacklist_selected">В черном списке</string>
     <string name="header_blacklist_others">Другие</string>
     <string name="preparing_to_download">Подготовка к загрузке</string>
     <string name="verifying_downloads">Проверка загрузок</string>
