@@ -481,4 +481,5 @@
     <string name="action_view_on_play">اعرض على متجر Play</string>
     <string name="header_blacklist_selected">مدرج في القائمة السوداء</string>
     <string name="header_blacklist_others">آخرون</string>
+    <string name="microg_removed_auth_warning">لم يعد تطبيق microG مثبتًا. يُرجى تشغيل الإعداد مرة أخرى لضمان استمرار عمل النظام بسلاسة.</string>
 </resources>
