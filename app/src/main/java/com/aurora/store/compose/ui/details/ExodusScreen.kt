@@ -31,7 +31,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.Constants.EXODUS_REPORT_URL
@@ -56,7 +55,6 @@ import com.aurora.store.viewmodel.details.ExodusViewModel
 @Composable
 fun ExodusScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     exodusViewModel: ExodusViewModel = hiltViewModel(key = "$packageName/exodus"),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
@@ -80,7 +78,6 @@ fun ExodusScreen(
         null -> {
             ScreenContentError(
                 topAppBarTitle = topAppBarTitle,
-                onNavigateUp = onNavigateUp,
                 onRequestAnalysis = { context.browse("${EXODUS_SUBMIT_PAGE}${app!!.packageName}") }
             )
         }
@@ -90,7 +87,6 @@ fun ExodusScreen(
                 topAppBarTitle = topAppBarTitle,
                 report = report,
                 trackers = trackers,
-                onNavigateUp = onNavigateUp,
                 onRequestAnalysis = { context.browse("${EXODUS_SUBMIT_PAGE}${app!!.packageName}") }
             )
         }
@@ -102,7 +98,6 @@ private fun ScreenContentReport(
     topAppBarTitle: String? = null,
     report: Report? = null,
     trackers: List<ExodusTracker> = emptyList(),
-    onNavigateUp: () -> Unit = {},
     onRequestAnalysis: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
@@ -112,8 +107,7 @@ private fun ScreenContentReport(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         },
         floatingActionButton = {
@@ -161,7 +155,6 @@ private fun ScreenContentReport(
             }
             ScrollHint(
                 listState = listState,
-                bottomPadding = 5.dp,
                 modifier = Modifier.align(Alignment.BottomCenter)
             )
         }
@@ -174,7 +167,6 @@ private fun ScreenContentReport(
 @Composable
 private fun ScreenContentError(
     topAppBarTitle: String? = null,
-    onNavigateUp: () -> Unit = {},
     onRequestAnalysis: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
@@ -182,8 +174,7 @@ private fun ScreenContentError(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }
     ) { paddingValues ->

@@ -34,6 +34,7 @@ import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
@@ -50,6 +51,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     val authProvider: AuthProvider,
+    val networkProvider: NetworkProvider,
     @ApplicationContext private val context: Context,
     private val aC2DMTask: AC2DMTask
 ) : ViewModel() {
@@ -116,6 +118,8 @@ class AuthViewModel @Inject constructor(
             }
         }
     }
+
+    fun retry() = updateAuthState()
 
     private fun updateAuthState() {
         if (_authState.value != AuthState.Fetching) {

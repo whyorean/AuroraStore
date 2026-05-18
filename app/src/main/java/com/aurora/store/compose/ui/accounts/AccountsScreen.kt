@@ -48,19 +48,18 @@ import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.viewmodel.accounts.AccountsViewModel
 
 @Composable
 fun AccountsScreen(
-    onNavigateUp: () -> Unit,
-    onNavigateToSplash: () -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: AccountsViewModel = hiltViewModel()
 ) {
     val userProfile = viewModel.authProvider.authData?.userProfile
     val avatar = when {
-        viewModel.authProvider.isAnonymous -> R.mipmap.ic_launcher
         userProfile != null -> userProfile.artwork.url
         else -> R.mipmap.ic_launcher
     }
@@ -70,7 +69,6 @@ fun AccountsScreen(
         else -> stringResource(R.string.account_anonymous)
     }
     val email = when {
-        viewModel.authProvider.isAnonymous -> stringResource(R.string.account_anonymous_email)
         userProfile != null -> userProfile.email
         else -> stringResource(R.string.account_anonymous_email)
     }
@@ -83,14 +81,13 @@ fun AccountsScreen(
             onConfirm = {
                 shouldShowLogoutDialog = false
                 AccountProvider.logout(context)
-                onNavigateToSplash()
+                onNavigateTo(Destination.Splash)
             },
             onDismiss = { shouldShowLogoutDialog = false }
         )
     }
 
     ScreenContent(
-        onNavigateUp = onNavigateUp,
         avatar = avatar,
         name = name,
         email = email,
@@ -100,17 +97,15 @@ fun AccountsScreen(
 
 @Composable
 private fun ScreenContent(
-    avatar: Any = R.mipmap.ic_launcher,
+    avatar: Any = R.drawable.ic_account,
     name: String = stringResource(R.string.account_anonymous),
     email: String = stringResource(R.string.account_anonymous_email),
-    onNavigateUp: () -> Unit = {},
     onLogout: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.title_account_manager),
-                onNavigateUp = onNavigateUp
+                title = stringResource(R.string.title_account_manager)
             )
         }
     ) { paddingValues ->
@@ -118,7 +113,7 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(vertical = dimensionResource(R.dimen.padding_medium)),
+                .padding(vertical = dimensionResource(R.dimen.padding_small)),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             AssistHeader()
@@ -126,7 +121,7 @@ private fun ScreenContent(
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
             ) {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)

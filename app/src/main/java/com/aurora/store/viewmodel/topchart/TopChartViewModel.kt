@@ -19,7 +19,6 @@
 
 package com.aurora.store.viewmodel.topchart
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -30,6 +29,10 @@ import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
@@ -40,7 +43,14 @@ class TopChartViewModel @Inject constructor(
 
     private var stash: TopChartStash = mutableMapOf()
 
-    val liveData: MutableLiveData<ViewState> = MutableLiveData()
+    // SharedFlow (instead of StateFlow) because StreamCluster overrides equals to compare
+    // only id, which is preserved by copy(). StateFlow would conflate paginated updates and
+    // break scroll loading. See CategoryStreamViewModel for the same fix.
+    private val _state = MutableSharedFlow<ViewState>(
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
+    val state: SharedFlow<ViewState> = _state.asSharedFlow()
 
     private val topChartsContract: TopChartsContract
         get() = webTopChartsHelper
@@ -48,14 +58,18 @@ class TopChartViewModel @Inject constructor(
     fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
             if (targetCluster(type, chart).clusterAppList.isNotEmpty()) {
-                liveData.postValue(ViewState.Success(stash))
+                _state.tryEmit(ViewState.Success(targetCluster(type, chart)))
+                return@launch
             }
+
+            _state.tryEmit(ViewState.Loading)
 
             try {
                 val cluster = topChartsContract.getCluster(type.value, chart.value)
                 updateCluster(type, chart, cluster)
-                liveData.postValue(ViewState.Success(stash))
-            } catch (_: Exception) {
+                _state.tryEmit(ViewState.Success(targetCluster(type, chart)))
+            } catch (e: Exception) {
+                _state.tryEmit(ViewState.Error(e.message))
             }
         }
     }
@@ -72,7 +86,7 @@ class TopChartViewModel @Inject constructor(
 
                         updateCluster(type, chart, newCluster)
 
-                        liveData.postValue(ViewState.Success(stash))
+                        _state.tryEmit(ViewState.Success(targetCluster(type, chart)))
                     }
                 } catch (_: Exception) {
                 }

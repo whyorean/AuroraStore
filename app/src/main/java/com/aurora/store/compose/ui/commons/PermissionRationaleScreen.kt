@@ -35,14 +35,12 @@ import kotlin.random.Random
 @Composable
 fun PermissionRationaleScreen(
     requiredPermissions: Set<PermissionType> = emptySet(),
-    onNavigateUp: () -> Unit,
     onPermissionCallback: (type: PermissionType) -> Unit = {},
     viewModel: PermissionRationaleViewModel = hiltViewModel()
 ) {
     val permissions by viewModel.permissions.collectAsStateWithLifecycle()
 
     ScreenContent(
-        onNavigateUp = onNavigateUp,
         permissions = permissions
             .filter { it.type in requiredPermissions }
             .map { permission -> permission.copy(optional = false) },
@@ -56,7 +54,6 @@ fun PermissionRationaleScreen(
 @Composable
 private fun ScreenContent(
     permissions: List<Permission> = emptyList(),
-    onNavigateUp: () -> Unit = {},
     onPermissionCallback: (type: PermissionType) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
@@ -64,8 +61,7 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = pluralStringResource(R.plurals.permissions_required, permissions.size),
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }
     ) { paddingValues ->

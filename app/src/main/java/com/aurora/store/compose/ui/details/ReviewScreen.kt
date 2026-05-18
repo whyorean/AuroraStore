@@ -36,7 +36,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
@@ -64,7 +63,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @Composable
 fun ReviewScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     reviewViewModel: ReviewViewModel = hiltViewModel(
         key = "$packageName/review",
@@ -85,7 +83,6 @@ fun ReviewScreen(
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
         reviews = reviews,
-        onNavigateUp = onNavigateUp,
         onFilter = { filter -> reviewViewModel.fetchReviews(filter) }
     )
 }
@@ -93,7 +90,6 @@ fun ReviewScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
-    onNavigateUp: () -> Unit = {},
     reviews: LazyPagingItems<Review> = emptyPagingItems(),
     onFilter: (filter: Review.Filter) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
@@ -103,8 +99,7 @@ private fun ScreenContent(
             Column {
                 TopAppBar(
                     title = topAppBarTitle,
-                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                    onNavigateUp = onNavigateUp
+                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
                 )
                 FilterHeader { filter -> onFilter(filter) }
             }
@@ -142,7 +137,6 @@ private fun ScreenContent(
                         }
                         ScrollHint(
                             listState = listState,
-                            bottomPadding = 5.dp,
                             modifier = Modifier.align(Alignment.BottomCenter)
                         )
                     }

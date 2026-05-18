@@ -236,14 +236,14 @@
     <string name="purchase_not_found">"App not found"</string>
     <string name="purchase_no_file">"Could not get files"</string>
     <string name="purchase_session_expired">"Session expired, re-login to obtain new session."</string>
-    <string name="session_enjoy">Log in and enjoy.</string>
-    <string name="session_good">Woah! All good.</string>
-    <string name="session_init">Getting things ready…</string>
-    <string name="session_login">Please log in to your Google Play account</string>
-    <string name="session_login_failed_google">Could not log in via Google</string>
-    <string name="session_scrapped">Last session scrapped</string>
-    <string name="session_verifying">Verifying session</string>
-    <string name="session_verifying_google">Verifying Google session</string>
+    <string name="session_enjoy">"Log in and enjoy."</string>
+    <string name="session_good">"All good."</string>
+    <string name="session_init">"Getting things ready…"</string>
+    <string name="session_login">"Please log in to your Google Play account"</string>
+    <string name="session_login_failed_google">"Could not log in via Google"</string>
+    <string name="session_scrapped">"Last session scrapped"</string>
+    <string name="session_verifying">"Verifying session"</string>
+    <string name="session_verifying_google">"Verifying Google session"</string>
     <string name="spoof_apply">"Make sure you re-login to apply the spoof"</string>
     <string name="insecure_anonymous_apply">"Make sure you re-login and restart app to apply changes."</string>
     <string name="tab_categories">"Categories"</string>
@@ -342,6 +342,10 @@
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
     <string name="app_language">App language</string>
+    <string name="pref_ui_theme">Theme</string>
+    <string name="pref_theme_style_system">Follow system</string>
+    <string name="pref_theme_style_light">Light</string>
+    <string name="pref_theme_style_dark">Dark</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="pref_ui_layout_tab">Select default tab</string>
     <string name="app_links_title">App links</string>
@@ -560,4 +564,7 @@
     <!-- Misc -->
     <string name="loading">Loading in progress</string>
     <string name="page">Page <xliff:g id="number">%1$d</xliff:g></string>
+
+    <!-- Network Dialog -->
+    <string name="action_check">"Check"</string>
 </resources>

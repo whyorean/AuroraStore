@@ -6,6 +6,7 @@
 
 package com.aurora.store.compose.theme
 
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -16,7 +17,12 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.colorResource
@@ -31,7 +37,19 @@ import com.aurora.store.util.Preferences
 fun AuroraTheme(content: @Composable () -> Unit) {
     val context = LocalContext.current
 
-    val themeStyle = Preferences.getInteger(context, Preferences.PREFERENCE_THEME_STYLE)
+    var themeStyle by remember {
+        mutableIntStateOf(Preferences.getInteger(context, Preferences.PREFERENCE_THEME_STYLE))
+    }
+    DisposableEffect(Unit) {
+        val prefs = Preferences.getPrefs(context)
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == Preferences.PREFERENCE_THEME_STYLE) {
+                themeStyle = Preferences.getInteger(context, Preferences.PREFERENCE_THEME_STYLE)
+            }
+        }
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+        onDispose { prefs.unregisterOnSharedPreferenceChangeListener(listener) }
+    }
     val isDynamicColorSupported = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
     val lightScheme = if (isDynamicColorSupported) {
