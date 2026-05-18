@@ -132,11 +132,11 @@ fun StreamCarousel(
 }
 
 @Composable
-private fun ClusterRow(
+internal fun ClusterRow(
     cluster: StreamCluster,
-    onAppClick: (App) -> Unit,
-    onAppLongClick: (App) -> Unit,
-    onClusterScrolled: (StreamCluster) -> Unit
+    onAppClick: (App) -> Unit = {},
+    onAppLongClick: (App) -> Unit = {},
+    onClusterScrolled: (StreamCluster) -> Unit = {}
 ) {
     val rowState = rememberLazyListState()
     val reachedEnd by remember {
