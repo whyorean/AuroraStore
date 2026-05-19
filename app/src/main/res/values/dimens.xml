@@ -42,6 +42,7 @@
     <dimen name="icon_size_large">72dp</dimen>
     <dimen name="icon_size_cluster">80dp</dimen>
     <dimen name="icon_size_avatar">108dp</dimen>
+    <dimen name="icon_size_splash">192dp</dimen>
 
     <!--Almost 16 : 9-->
     <dimen name="screenshot_height">192dp</dimen>
@@ -71,4 +72,6 @@
     <dimen name="radius_medium">10dp</dimen>
     <dimen name="radius_normal">12dp</dimen>
     <dimen name="radius_large">16dp</dimen>
+
+    <dimen name="scroll_hint_padding">5dp</dimen>
 </resources>
