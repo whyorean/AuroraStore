@@ -5,21 +5,25 @@
 
 package com.aurora.store.compose.composable.app
 
-import android.text.format.Formatter
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -37,42 +41,49 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param modifier The modifier to be applied to the composable
  * @param app [App] to display
  * @param onClick Callback when the composable is clicked
+ * @param onLongClick Callback when the composable is long-clicked
  * @see LargeAppListItem
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun AppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
-    val context = LocalContext.current
-
+fun AppListItem(
+    modifier: Modifier = Modifier,
+    app: App,
+    onClick: () -> Unit = {},
+    onLongClick: () -> Unit = {}
+) {
     Column(
         modifier = modifier
             .width(dimensionResource(R.dimen.icon_size_cluster))
-            .clickable(onClick = onClick)
-            .padding(dimensionResource(R.dimen.padding_xsmall))
+            .combinedClickable(onClick = onClick, onLongClick = onLongClick)
+            .padding(all = dimensionResource(R.dimen.padding_xxsmall)),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(R.dimen.margin_xsmall),
+            Alignment.CenterVertically
+        )
     ) {
         AsyncImage(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
+                .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium))),
             model = ImageRequest.Builder(LocalContext.current)
                 .data(app.iconArtwork.url)
                 .crossfade(true)
                 .build(),
             contentDescription = null,
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Crop
+
+        )
+        Text(
             modifier = Modifier
-                .requiredSize(dimensionResource(R.dimen.icon_size_cluster))
-                .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
-        )
-        Text(
+                .fillMaxWidth(),
             text = app.displayName,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.labelMedium,
             maxLines = 2,
-            overflow = TextOverflow.Ellipsis
-        )
-        Text(
-            text = if (app.size > 0) {
-                Formatter.formatShortFileSize(context, app.size)
-            } else {
-                app.downloadString
-            },
-            style = MaterialTheme.typography.bodySmall
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Start
         )
     }
 }
