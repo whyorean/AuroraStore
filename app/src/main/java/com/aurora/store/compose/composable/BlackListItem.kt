@@ -13,6 +13,8 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -48,7 +50,8 @@ fun BlackListItem(
             Image(
                 bitmap = icon.asImageBitmap(),
                 contentDescription = null,
-                modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium))
+                modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
+                colorFilter = if (isChecked) DESATURATE else null
             )
         },
         trailing = {
@@ -56,6 +59,8 @@ fun BlackListItem(
         }
     )
 }
+
+private val DESATURATE = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
 
 @PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)

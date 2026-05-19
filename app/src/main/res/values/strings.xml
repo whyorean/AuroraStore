@@ -562,6 +562,23 @@
     <!-- AppsGamesFragment -->
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installed</string>
 
+    <!-- InstalledScreen sort / filter / group sheet -->
+    <string name="installed_sort_filter">Sort and filter</string>
+    <string name="installed_sort_by">Sort by</string>
+    <string name="installed_sort_name">Name</string>
+    <string name="installed_sort_date_installed">Date installed</string>
+    <string name="installed_sort_date_updated">Date updated</string>
+    <string name="installed_sort_package_name">Package name</string>
+    <string name="installed_sort_size">Size</string>
+    <string name="installed_sort_ascending">Ascending</string>
+    <string name="installed_sort_descending">Descending</string>
+    <string name="installed_filter">Filter</string>
+    <string name="installed_filter_user_apps">User apps</string>
+    <string name="installed_filter_system_apps">System apps</string>
+    <string name="installed_filter_installer">Installed from</string>
+    <string name="installed_filter_all">All</string>
+    <string name="installed_updated_at">Updated <xliff:g id="when">%1$s</xliff:g></string>
+
     <!-- NetworkPreference -->
     <string name="pref_network_microg_login_title">Use microG to sign in to accounts</string>
     <string name="pref_network_microg_login_desc">Authenticate using microG when signing into Google accounts for a simpler sign-in flow</string>

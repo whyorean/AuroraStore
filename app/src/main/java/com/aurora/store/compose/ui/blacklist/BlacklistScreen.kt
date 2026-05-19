@@ -38,8 +38,10 @@ import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,6 +67,8 @@ import com.aurora.store.compose.composable.TextDividerComposable
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.blacklist.menu.BlacklistMenu
 import com.aurora.store.compose.ui.blacklist.menu.MenuItem
+import com.aurora.store.compose.ui.commons.SortFilterSheet
+import com.aurora.store.compose.ui.commons.SortFilterState
 import com.aurora.store.data.model.BlacklistAppItem
 import com.aurora.store.viewmodel.blacklist.BlacklistViewModel
 import java.util.Calendar
@@ -76,9 +80,13 @@ import kotlinx.coroutines.launch
 fun BlacklistScreen(viewModel: BlacklistViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val packages by viewModel.filteredPackages.collectAsStateWithLifecycle()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val installers by viewModel.installers.collectAsStateWithLifecycle()
 
     ScreenContent(
         packages = packages,
+        sortFilterState = state,
+        installers = installers,
         isPackageBlacklisted = { pkgName -> pkgName in viewModel.blacklist },
         onBlacklistImport = { uri ->
             viewModel.importBlacklist(uri)
@@ -92,13 +100,16 @@ fun BlacklistScreen(viewModel: BlacklistViewModel = hiltViewModel()) {
         onBlacklistAll = { viewModel.blacklistAll() },
         onWhitelist = { packageName -> viewModel.whitelist(packageName) },
         onWhitelistAll = { viewModel.whitelistAll() },
-        onSearch = { query -> viewModel.search(query) }
+        onSearch = { query -> viewModel.search(query) },
+        onSortFilterStateChange = viewModel::updateState
     )
 }
 
 @Composable
 private fun ScreenContent(
     packages: List<BlacklistAppItem>? = null,
+    sortFilterState: SortFilterState = SortFilterState(),
+    installers: Map<String, String> = emptyMap(),
     isPackageBlacklisted: (packageName: String) -> Boolean = { false },
     onBlacklistImport: (uri: Uri) -> Unit = {},
     onBlacklistExport: (uri: Uri) -> Unit = {},
@@ -106,7 +117,8 @@ private fun ScreenContent(
     onBlacklistAll: () -> Unit = {},
     onWhitelist: (packageName: String) -> Unit = {},
     onWhitelistAll: () -> Unit = {},
-    onSearch: (query: String) -> Unit = {}
+    onSearch: (query: String) -> Unit = {},
+    onSortFilterStateChange: (SortFilterState) -> Unit = {}
 ) {
     val activity = LocalActivity.current as? ComponentActivity
     val context = LocalContext.current
@@ -114,6 +126,7 @@ private fun ScreenContent(
     val searchBarState = rememberSearchBarState()
     val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
+    var sheetVisible by remember { mutableStateOf(false) }
 
     val docImportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
@@ -231,7 +244,15 @@ private fun ScreenContent(
                     )
                 }
             },
-            actions = { SetupMenu() },
+            actions = {
+                IconButton(onClick = { sheetVisible = true }) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_tune),
+                        contentDescription = stringResource(R.string.installed_sort_filter)
+                    )
+                }
+                SetupMenu()
+            },
             colors = SearchBarDefaults.appBarWithSearchColors(
                 appBarContainerColor = Color.Transparent
             )
@@ -337,6 +358,15 @@ private fun ScreenContent(
                 )
             }
         }
+    }
+
+    if (sheetVisible) {
+        SortFilterSheet(
+            state = sortFilterState,
+            installers = installers,
+            onStateChange = onSortFilterStateChange,
+            onDismiss = { sheetVisible = false }
+        )
     }
 }
 

@@ -13,10 +13,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -28,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
@@ -40,10 +44,13 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.composable.app.InstalledAppListItem
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.ui.commons.InstalledAppMeta
+import com.aurora.store.compose.ui.commons.SortFilterSheet
+import com.aurora.store.compose.ui.commons.SortFilterState
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import kotlin.random.Random
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,9 +61,16 @@ fun InstalledScreen(
     viewModel: InstalledViewModel = hiltViewModel()
 ) {
     val apps = viewModel.apps.collectAsLazyPagingItems()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val installers by viewModel.installers.collectAsStateWithLifecycle()
+    val metadata by viewModel.metadata.collectAsStateWithLifecycle()
 
     ScreenContent(
         apps = apps,
+        state = state,
+        installers = installers,
+        metadata = metadata,
+        onStateChange = viewModel::updateState,
         onNavigateTo = onNavigateTo
     )
 }
@@ -64,6 +78,10 @@ fun InstalledScreen(
 @Composable
 private fun ScreenContent(
     apps: LazyPagingItems<App> = emptyPagingItems(),
+    state: SortFilterState = SortFilterState(),
+    installers: Map<String, String> = emptyMap(),
+    metadata: Map<String, InstalledAppMeta> = emptyMap(),
+    onStateChange: (SortFilterState) -> Unit = {},
     onNavigateTo: (Destination) -> Unit = {}
 ) {
     /*
@@ -73,11 +91,20 @@ private fun ScreenContent(
      * Save the initial loading state to make sure we don't replay the loading animation again.
      */
     var initialLoad by rememberSaveable { mutableStateOf(true) }
+    var sheetVisible by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.title_apps_games)
+                title = stringResource(R.string.title_apps_games),
+                actions = {
+                    IconButton(onClick = { sheetVisible = true }) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_tune),
+                            contentDescription = stringResource(R.string.installed_sort_filter)
+                        )
+                    }
+                }
             )
         }
     ) { paddingValues ->
@@ -114,8 +141,13 @@ private fun ScreenContent(
                                     key = apps.itemKey { it.packageName }
                                 ) { index ->
                                     apps[index]?.let { app ->
-                                        LargeAppListItem(
+                                        val meta = metadata[app.packageName]
+                                        InstalledAppListItem(
                                             app = app,
+                                            sizeBytes = meta?.sizeBytes ?: 0L,
+                                            lastUpdateTime = meta?.lastUpdateTime ?: 0L,
+                                            installerLabel = meta?.installer
+                                                ?.let { installers[it] },
                                             onClick = {
                                                 onNavigateTo(
                                                     Destination.AppDetails(app.packageName)
@@ -134,6 +166,15 @@ private fun ScreenContent(
                 }
             }
         }
+    }
+
+    if (sheetVisible) {
+        SortFilterSheet(
+            state = state,
+            installers = installers,
+            onStateChange = onStateChange,
+            onDismiss = { sheetVisible = false }
+        )
     }
 }
 
