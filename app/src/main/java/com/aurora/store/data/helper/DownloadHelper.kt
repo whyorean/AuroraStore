@@ -165,9 +165,14 @@ class DownloadHelper @Inject constructor(
      * @param updatesOnly Whether to cancel only updates, defaults to false
      */
     suspend fun cancelAll(updatesOnly: Boolean = false) {
-        // Cancel all enqueued downloads first to avoid triggering re-download
+        // Cancel queued/completed downloads first to avoid triggering re-download and to give
+        // the user immediate feedback for items that already finished downloading. The actual
+        // OS-level install for COMPLETED entries is wrapped in NonCancellable inside the
+        // worker and cannot be aborted — if it succeeds, the update row is removed via
+        // InstallerEvent.Installed; if it fails, the user can re-trigger an update.
+        val cancellableStatuses = setOf(DownloadStatus.QUEUED, DownloadStatus.COMPLETED)
         downloadDao.downloads().firstOrNull()
-            ?.filter { it.status == DownloadStatus.QUEUED }
+            ?.filter { it.status in cancellableStatuses }
             ?.filter { if (updatesOnly) it.isInstalled else true }
             ?.forEach {
                 downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED)

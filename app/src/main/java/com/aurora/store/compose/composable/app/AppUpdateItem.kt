@@ -43,7 +43,8 @@ fun AppUpdateItem(
     onCancel: () -> Unit = {},
     onUnignore: (() -> Unit)? = null
 ) {
-    val inProgress = download != null && download.status !in DownloadStatus.finished
+    val inProgress = download != null && !download.isFinished
+    val pendingInstall = download?.status == DownloadStatus.COMPLETED
     val progress = if (download?.status == DownloadStatus.DOWNLOADING) {
         download.progress.toFloat()
     } else {
@@ -64,7 +65,7 @@ fun AppUpdateItem(
             AnimatedAppIcon(
                 modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
                 iconUrl = update.iconURL,
-                inProgress = inProgress,
+                inProgress = inProgress || pendingInstall,
                 progress = progress
             )
         }
@@ -96,6 +97,12 @@ fun AppUpdateItem(
             onUnignore != null -> {
                 OutlinedButton(onClick = onUnignore) {
                     Text(stringResource(R.string.action_unignore))
+                }
+            }
+
+            pendingInstall -> {
+                OutlinedButton(onClick = {}, enabled = false) {
+                    Text(stringResource(R.string.action_installing))
                 }
             }
 

@@ -29,6 +29,7 @@ import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.ShimmerUpdateItem
 import com.aurora.store.compose.composable.app.AppUpdateItem
 import com.aurora.store.compose.navigation.Destination
+import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.viewmodel.all.UpdatesViewModel
@@ -72,8 +73,8 @@ fun UpdatesScreen(
     }
     val (mainEntries, approvalEntries, incompatibleEntries) = groupedUpdates
 
-    val mainAllEnqueued = mainEntries.isNotEmpty() &&
-        mainEntries.all { it.value?.isRunning == true }
+    val mainAnyActive = mainEntries.any { it.value.isActive() }
+    val approvalAnyActive = approvalEntries.any { it.value.isActive() }
 
     PullToRefreshBox(
         modifier = Modifier.fillMaxSize(),
@@ -92,7 +93,7 @@ fun UpdatesScreen(
                 }
             }
 
-            updateMap.isEmpty() -> {
+            updateMap.isEmpty() && ignoredUpdates.isEmpty() -> {
                 Placeholder(
                     modifier = Modifier.fillMaxSize(),
                     painter = painterResource(R.drawable.ic_updates),
@@ -119,8 +120,8 @@ fun UpdatesScreen(
                                 }
                             )
                             val actionLabel = stringResource(
-                                if (mainAllEnqueued) {
-                                    R.string.action_cancel
+                                if (mainAnyActive) {
+                                    R.string.download_cancel_all
                                 } else {
                                     R.string.action_update_all
                                 }
@@ -130,7 +131,7 @@ fun UpdatesScreen(
                                 trailing = {
                                     TextButton(
                                         onClick = {
-                                            if (mainAllEnqueued) {
+                                            if (mainAnyActive) {
                                                 onCancelAll()
                                             } else {
                                                 onRequestUpdateAll(mainEntries.map { it.key })
@@ -151,15 +152,28 @@ fun UpdatesScreen(
 
                     if (approvalEntries.isNotEmpty()) {
                         item(key = "header_approval") {
+                            val actionLabel = stringResource(
+                                if (approvalAnyActive) {
+                                    R.string.download_cancel_all
+                                } else {
+                                    R.string.action_update_all
+                                }
+                            )
                             SectionHeader(
                                 title = stringResource(R.string.updates_approval_header),
                                 subtitle = stringResource(R.string.updates_approval_desc),
                                 trailing = {
                                     TextButton(
                                         onClick = {
-                                            onRequestUpdateAll(approvalEntries.map { it.key })
+                                            if (approvalAnyActive) {
+                                                onCancelAll()
+                                            } else {
+                                                onRequestUpdateAll(
+                                                    approvalEntries.map { it.key }
+                                                )
+                                            }
                                         }
-                                    ) { Text(stringResource(R.string.action_update_all)) }
+                                    ) { Text(actionLabel) }
                                 }
                             )
                         }
@@ -210,6 +224,11 @@ fun UpdatesScreen(
             }
         }
     }
+}
+
+private fun Download?.isActive(): Boolean {
+    if (this == null) return false
+    return !isFinished || status == DownloadStatus.COMPLETED
 }
 
 private fun LazyListScope.updateItems(

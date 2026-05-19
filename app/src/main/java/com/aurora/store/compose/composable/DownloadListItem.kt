@@ -67,7 +67,10 @@ fun DownloadListItem(modifier: Modifier = Modifier, download: Download, onClick:
                     tint = Color(0xFF4CAF50)
                 )
             }
-        } else if (download.status == DownloadStatus.CANCELLED) {
+        } else if (
+            download.status == DownloadStatus.CANCELLED ||
+            download.status == DownloadStatus.FAILED
+        ) {
             {
                 Icon(
                     painter = painterResource(R.drawable.ic_cancel),
