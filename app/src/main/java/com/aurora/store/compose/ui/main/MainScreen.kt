@@ -23,7 +23,6 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,10 +38,11 @@ import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MainViewModel
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.composition.LocalNetworkStatus
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.ui.apps.AppsGamesScreen
 import com.aurora.store.compose.ui.commons.MoreSheet
-import com.aurora.store.compose.ui.commons.NetworkSheet
+import com.aurora.store.compose.ui.commons.NetworkScreen
 import com.aurora.store.compose.ui.sheets.AppUpdateSheet
 import com.aurora.store.compose.ui.updates.UpdatesScreen
 import com.aurora.store.data.model.NetworkStatus
@@ -69,9 +69,7 @@ fun MainScreen(
     onNavigateTo: (Destination) -> Unit = {}
 ) {
     val context = LocalContext.current
-    val networkStatus by mainViewModel.networkProvider.status.collectAsStateWithLifecycle(
-        initialValue = NetworkStatus.AVAILABLE
-    )
+    val networkStatus = LocalNetworkStatus.current
     val updates by mainViewModel.updateHelper.updates.collectAsStateWithLifecycle(
         initialValue = null
     )
@@ -89,7 +87,6 @@ fun MainScreen(
 
     var showMoreSheet by remember { mutableStateOf(false) }
     var appUpdateTarget by remember { mutableStateOf<Update?>(null) }
-    var showNetworkDialog by remember { mutableStateOf(false) }
 
     fun handleNavigation(destination: Destination) {
         when (destination) {
@@ -98,12 +95,9 @@ fun MainScreen(
         }
     }
 
-    LaunchedEffect(networkStatus) {
-        showNetworkDialog = networkStatus == NetworkStatus.UNAVAILABLE
-    }
-
-    if (showNetworkDialog) {
-        NetworkSheet()
+    if (networkStatus == NetworkStatus.UNAVAILABLE) {
+        NetworkScreen()
+        return
     }
 
     if (showMoreSheet) {

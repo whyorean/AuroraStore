@@ -59,6 +59,7 @@ import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.compose.composition.LocalNetworkStatus
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.model.NetworkStatus
@@ -81,10 +82,7 @@ fun SplashScreen(
     val activity = LocalActivity.current as? ComponentActivity
 
     val authState by viewModel.authState.collectAsStateWithLifecycle()
-    val networkStatus by viewModel.networkProvider.status.collectAsStateWithLifecycle(
-        initialValue = NetworkStatus.AVAILABLE
-    )
-    val isOnline = networkStatus == NetworkStatus.AVAILABLE
+    val isOnline = LocalNetworkStatus.current == NetworkStatus.AVAILABLE
 
     val canMicroGLogin = PackageUtil.hasSupportedMicroGVariant(context) &&
         Preferences.getBoolean(context, Preferences.PREFERENCE_MICROG_AUTH, true)

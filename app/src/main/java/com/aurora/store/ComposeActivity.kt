@@ -12,20 +12,28 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.core.content.IntentCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.getPackageName
+import com.aurora.store.compose.composition.LocalNetworkStatus
 import com.aurora.store.compose.composition.LocalUI
 import com.aurora.store.compose.composition.UI
 import com.aurora.store.compose.navigation.NavDisplay
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.theme.AuroraTheme
+import com.aurora.store.data.model.NetworkStatus
+import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ComposeActivity : ComponentActivity() {
+
+    @Inject lateinit var networkProvider: NetworkProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         MigrationReceiver.runMigrationsIfRequired(this)
@@ -42,7 +50,13 @@ class ComposeActivity : ComponentActivity() {
         }
 
         setContent {
-            CompositionLocalProvider(LocalUI provides localUI) {
+            val networkStatus by networkProvider.status.collectAsStateWithLifecycle(
+                initialValue = NetworkStatus.AVAILABLE
+            )
+            CompositionLocalProvider(
+                LocalUI provides localUI,
+                LocalNetworkStatus provides networkStatus
+            ) {
                 AuroraTheme {
                     NavDisplay(startDestination = startDestination)
                 }
