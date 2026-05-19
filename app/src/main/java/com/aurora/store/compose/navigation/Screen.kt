@@ -45,6 +45,9 @@ sealed class Screen : NavKey, Parcelable {
     data object Accounts : Screen()
 
     @Serializable
+    data object GoogleLogin : Screen()
+
+    @Serializable
     data object About : Screen()
 
     @Serializable
@@ -67,4 +70,31 @@ sealed class Screen : NavKey, Parcelable {
 
     @Serializable
     data class StreamBrowse(val streamCluster: StreamCluster) : Screen()
+
+    @Serializable
+    data class ExpandedStreamBrowse(val title: String, val browseUrl: String) : Screen()
+
+    @Serializable
+    data class CategoryBrowse(val title: String, val browseUrl: String) : Screen()
+
+    @Serializable
+    data object Settings : Screen()
+
+    @Serializable
+    data object InstallationPreference : Screen()
+
+    @Serializable
+    data object NetworkPreference : Screen()
+
+    @Serializable
+    data object UIPreference : Screen()
+
+    @Serializable
+    data object UpdatesPreference : Screen()
+
+    @Serializable
+    data object Splash : Screen()
+
+    @Serializable
+    data class Main(val initialTab: Int = 0) : Screen()
 }
