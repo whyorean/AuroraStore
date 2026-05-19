@@ -19,23 +19,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
-
-/**
- * Collects a [StateFlow] as [State], always triggering recomposition on every emission
- * regardless of structural equality, by using [neverEqualPolicy].
- */
-@Composable
-internal fun <T> StateFlow<T>.collectForced(): State<T> {
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val state: MutableState<T> = remember(this) { mutableStateOf(value, neverEqualPolicy()) }
-    LaunchedEffect(this, lifecycleOwner) {
-        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            collect { state.value = it }
-        }
-    }
-    return state
-}
 
 /**
  * Collects a [Flow] as [State] starting from [initial], always triggering recomposition on
