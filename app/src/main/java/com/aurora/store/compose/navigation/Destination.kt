@@ -45,4 +45,5 @@ sealed class Destination {
     data object Dispenser : Destination()
     data object UIPreference : Destination()
     data object UpdatesPreference : Destination()
+    data object SourceFilters : Destination()
 }
