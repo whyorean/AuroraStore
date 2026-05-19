@@ -94,6 +94,7 @@ import com.aurora.store.compose.ui.details.menu.AppDetailsMenu
 import com.aurora.store.compose.ui.details.menu.MenuItem
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
+import com.aurora.store.compose.ui.sheets.InstallErrorSheet
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.PermissionType
@@ -124,9 +125,21 @@ fun AppDetailsScreen(
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
+    val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectForced(initial = null)
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
+
+    app?.let { loadedApp ->
+        installError?.let { err ->
+            InstallErrorSheet(
+                app = loadedApp,
+                error = err.error,
+                extra = err.extra,
+                onDismiss = viewModel::dismissInstallError
+            )
+        }
+    }
 
     AnimatedContent(
         targetState = state,

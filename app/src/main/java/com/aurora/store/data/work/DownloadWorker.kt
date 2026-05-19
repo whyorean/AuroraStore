@@ -116,10 +116,16 @@ class DownloadWorker @AssistedInject constructor(
         // Set work/service to foreground on < Android 12.0
         setForeground(getForegroundInfo())
 
-        // Try to purchase the app if file list is empty
+        // Try to purchase the app if file list is empty. Surface any GPlayApi error
+        // (e.g. AppNotPurchased, AppNotSupported, AppRemoved) as the failure cause so
+        // the user sees the real reason instead of a generic "files not available".
         notifyStatus(DownloadStatus.PURCHASING)
-        download.fileList = download.fileList.ifEmpty {
-            purchase(download.packageName, download.versionCode, download.offerType)
+        try {
+            download.fileList = download.fileList.ifEmpty {
+                purchase(download.packageName, download.versionCode, download.offerType)
+            }
+        } catch (exception: Exception) {
+            return onFailure(exception)
         }
 
         // Bail out if file list is empty after purchase
@@ -137,20 +143,24 @@ class DownloadWorker @AssistedInject constructor(
 
         // Check if shared libs are present, if yes, handle them first
         if (download.sharedLibs.isNotEmpty()) {
-            download.sharedLibs.forEach {
-                // Create shared lib download dir
-                PathUtil.getLibDownloadDir(
-                    context,
-                    download.packageName,
-                    download.versionCode,
-                    it.packageName
-                ).mkdirs()
+            try {
+                download.sharedLibs.forEach {
+                    // Create shared lib download dir
+                    PathUtil.getLibDownloadDir(
+                        context,
+                        download.packageName,
+                        download.versionCode,
+                        it.packageName
+                    ).mkdirs()
 
-                // Purchase shared lib if file list is empty
-                it.fileList = it.fileList.ifEmpty {
-                    purchase(it.packageName, it.versionCode, 0)
+                    // Purchase shared lib if file list is empty
+                    it.fileList = it.fileList.ifEmpty {
+                        purchase(it.packageName, it.versionCode, 0)
+                    }
+                    files.addAll(it.fileList)
                 }
-                files.addAll(it.fileList)
+            } catch (exception: Exception) {
+                return onFailure(exception)
             }
         }
         files.addAll(download.fileList)
@@ -227,13 +237,17 @@ class DownloadWorker @AssistedInject constructor(
                     }
 
                     else -> {
-                        notifyStatus(status = DownloadStatus.FAILED, exception = exception)
+                        val userMessage = exception.userReason()
+                            ?: context.getString(R.string.download_failed)
+                        notifyStatus(
+                            status = DownloadStatus.FAILED,
+                            message = userMessage
+                        )
                         AuroraApp.events.send(
                             InstallerEvent.Failed(
                                 packageName = download.packageName,
-                                error = exception.stackTraceToString(),
-                                extra = exception.message
-                                    ?: context.getString(R.string.download_failed)
+                                error = userMessage,
+                                extra = exception.stackTraceToString()
                             )
                         )
                     }
@@ -248,6 +262,22 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
+     * Extracts a user-readable message from an exception. Falls back to reading the
+     * `reason` property via reflection for GPlayApi's `InternalException` variants,
+     * which expose their detail through a data-class field rather than [Throwable.message].
+     *
+     * TODO: Remove reflection and use a proper exception hierarchy once GPlayApi supports it.
+     */
+    private fun Throwable.userReason(): String? {
+        message?.takeIf { it.isNotBlank() }?.let { return it }
+        return runCatching {
+            javaClass.getDeclaredField("reason")
+                .apply { isAccessible = true }
+                .get(this) as? String
+        }.getOrNull()?.takeIf { it.isNotBlank() }
+    }
+
+    /**
      * Purchases the app to get the download URL of the required files
      * @param packageName The packageName of the app
      * @param versionCode Required version of the app
@@ -255,21 +285,16 @@ class DownloadWorker @AssistedInject constructor(
      * @return A list of purchased files
      */
     private fun purchase(packageName: String, versionCode: Long, offerType: Int): List<PlayFile> {
-        try {
-            // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-            return if (isPAndAbove && PackageUtil.isInstalled(context, download.packageName)) {
-                purchaseHelper.purchase(
-                    packageName,
-                    versionCode,
-                    offerType,
-                    CertUtil.getEncodedCertificateHashes(context, download.packageName).last()
-                )
-            } else {
-                purchaseHelper.purchase(packageName, versionCode, offerType)
-            }
-        } catch (exception: Exception) {
-            Log.e(TAG, "Failed to purchase $packageName", exception)
-            return emptyList()
+        // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
+        return if (isPAndAbove && PackageUtil.isInstalled(context, download.packageName)) {
+            purchaseHelper.purchase(
+                packageName,
+                versionCode,
+                offerType,
+                CertUtil.getEncodedCertificateHashes(context, download.packageName).last()
+            )
+        } else {
+            purchaseHelper.purchase(packageName, versionCode, offerType)
         }
     }
 
@@ -400,7 +425,7 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun notifyStatus(
         status: DownloadStatus,
         isProgress: Boolean = false,
-        exception: Exception? = null
+        message: String? = null
     ) {
         // Update status in database
         download.status = status
@@ -423,7 +448,7 @@ class DownloadWorker @AssistedInject constructor(
             context,
             download,
             icon,
-            exception?.message
+            message
         )
         notificationManager.notify(
             if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),

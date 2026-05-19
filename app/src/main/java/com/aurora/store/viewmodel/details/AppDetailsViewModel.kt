@@ -111,6 +111,11 @@ class AppDetailsViewModel @Inject constructor(
     private val _favourite = MutableStateFlow(false)
     val favourite = _favourite.asStateFlow()
 
+    private val _installError = MutableStateFlow<InstallError?>(null)
+    val installError = _installError.asStateFlow()
+
+    data class InstallError(val error: String?, val extra: String?)
+
     private val download = combine(app, downloadHelper.downloadsList) { a, list ->
         if (a?.packageName.isNullOrBlank()) return@combine null
         list.find { d -> d.packageName == a.packageName }
@@ -268,10 +273,17 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
+    fun dismissInstallError() {
+        _installError.value = null
+    }
+
     private fun observeAppState() {
         AuroraApp.events.installerEvent
             .filter { it.packageName == app.value?.packageName }
             .onEach { event ->
+                if (event is InstallerEvent.Failed) {
+                    _installError.value = InstallError(event.error, event.extra)
+                }
                 _state.value = when {
                     event is InstallerEvent.Installing -> AppState.Installing(event.progress)
                     else -> defaultAppState
