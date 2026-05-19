@@ -66,8 +66,7 @@ import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
-import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.ShimmerCarouselSection
@@ -212,7 +211,7 @@ private fun ScreenContentError(message: String? = null) {
     Scaffold(
         topBar = { TopAppBar() }
     ) { paddingValues ->
-        Error(
+        Placeholder(
             modifier = Modifier.padding(paddingValues),
             painter = painterResource(R.drawable.ic_apps_outage),
             message = message ?: stringResource(R.string.toast_app_unavailable)
@@ -426,7 +425,7 @@ private fun ScreenContentApp(
                     modifier = Modifier
                         .fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_medium)
+                        dimensionResource(R.dimen.spacing_medium)
                     ),
                     state = listState
                 ) {
@@ -451,7 +450,7 @@ private fun ScreenContentApp(
                     }
 
                     item {
-                        Header(
+                        SectionHeader(
                             title = stringResource(R.string.details_more_about_app),
                             subtitle = app.shortDescription,
                             onClick = { showExtraPane(ExtraScreen.More) }
@@ -487,7 +486,7 @@ private fun ScreenContentApp(
                     }
 
                     item {
-                        Header(
+                        SectionHeader(
                             title = stringResource(R.string.details_permission),
                             subtitle = if (app.permissions.isNotEmpty()) {
                                 stringResource(R.string.permissions_requested, app.permissions.size)

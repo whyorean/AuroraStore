@@ -32,7 +32,7 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Destination
@@ -96,7 +96,7 @@ private fun ScreenContent(
             is LoadState.Loading -> ContainedLoadingIndicator()
 
             is LoadState.Error -> {
-                Error(
+                Placeholder(
                     modifier = Modifier.padding(paddingValues),
                     painter = painterResource(R.drawable.ic_disclaimer),
                     message = stringResource(R.string.error)
@@ -108,9 +108,9 @@ private fun ScreenContent(
                     modifier = Modifier
                         .padding(paddingValues)
                         .fillMaxSize()
-                        .padding(vertical = dimensionResource(R.dimen.padding_medium)),
+                        .padding(vertical = dimensionResource(R.dimen.spacing_medium)),
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_medium)
+                        dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
                     items(count = apps.itemCount, key = apps.itemKey { it.id }) { index ->

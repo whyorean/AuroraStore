@@ -55,8 +55,8 @@ fun AppUpdateItem(
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_small)
+                horizontal = dimensionResource(R.dimen.spacing_medium),
+                vertical = dimensionResource(R.dimen.spacing_small)
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -68,7 +68,7 @@ fun AppUpdateItem(
                 progress = progress
             )
         }
-        Spacer(Modifier.width(dimensionResource(R.dimen.margin_medium)))
+        Spacer(Modifier.width(dimensionResource(R.dimen.spacing_medium)))
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = update.displayName,
@@ -91,7 +91,7 @@ fun AppUpdateItem(
                 overflow = TextOverflow.Ellipsis
             )
         }
-        Spacer(Modifier.width(dimensionResource(R.dimen.margin_small)))
+        Spacer(Modifier.width(dimensionResource(R.dimen.spacing_small)))
         when {
             onUnignore != null -> {
                 OutlinedButton(onClick = onUnignore) {

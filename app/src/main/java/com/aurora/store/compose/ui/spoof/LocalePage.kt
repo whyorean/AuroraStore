@@ -52,7 +52,7 @@ private fun PageContent(
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
     ) {
         stickyHeader {
             Surface(modifier = Modifier.fillMaxWidth()) {

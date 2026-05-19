@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -38,11 +38,11 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  */
 @Composable
 fun Changelog(changelog: String) {
-    Header(title = stringResource(R.string.details_changelog))
+    SectionHeader(title = stringResource(R.string.details_changelog))
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_medium))
+            .padding(dimensionResource(R.dimen.spacing_medium))
     ) {
         Box(
             modifier = Modifier
@@ -50,8 +50,8 @@ fun Changelog(changelog: String) {
                 .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
                 .background(color = MaterialTheme.colorScheme.secondaryContainer)
                 .padding(
-                    horizontal = dimensionResource(R.dimen.padding_medium),
-                    vertical = dimensionResource(R.dimen.padding_small)
+                    horizontal = dimensionResource(R.dimen.spacing_medium),
+                    vertical = dimensionResource(R.dimen.spacing_small)
                 )
         ) {
             Text(
@@ -71,7 +71,7 @@ fun Changelog(changelog: String) {
 @Composable
 private fun ChangelogPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         Changelog(changelog = app.changes)
     }

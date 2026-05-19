@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-FileCopyrightText: 2025 The Calyx Institute
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -8,11 +9,11 @@ package com.aurora.store.compose.composable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,27 +30,23 @@ import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
- * Composable to show error message that fills all available screen
- * @param modifier The modifier to be applied to the composable
- * @param painter Painter to draw the icon
- * @param message Message for error
- * @param actionMessage Message to show on action button; defaults to null with button not visible
- * @param onAction Callback when action button is clicked
+ * Full-screen empty/error placeholder: centered icon + message and an optional action button.
+ * Replaces the previous EmptyState and Error composables.
  */
 @Composable
-fun Error(
+fun Placeholder(
     modifier: Modifier = Modifier,
     painter: Painter,
     message: String,
-    actionMessage: String? = null,
+    actionLabel: String? = null,
     onAction: (() -> Unit)? = null
 ) {
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(dimensionResource(R.dimen.padding_medium)),
+            .padding(dimensionResource(R.dimen.spacing_medium)),
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimen.margin_small),
+            dimensionResource(R.dimen.spacing_small),
             Alignment.CenterVertically
         ),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -57,18 +54,18 @@ fun Error(
         Icon(
             painter = painter,
             contentDescription = null,
-            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size))
+            modifier = Modifier.size(dimensionResource(R.dimen.icon_size_medium)),
+            tint = MaterialTheme.colorScheme.primary
         )
         Text(
-            modifier = Modifier.fillMaxWidth(),
             text = message,
+            style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
-
-        if (actionMessage != null) {
-            Button(onClick = { if (onAction != null) onAction() }, enabled = onAction != null) {
+        if (actionLabel != null && onAction != null) {
+            FilledTonalButton(onClick = onAction) {
                 Text(
-                    text = actionMessage,
+                    text = actionLabel,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -80,10 +77,11 @@ fun Error(
 @PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
-private fun ErrorPreview() {
-    Error(
+private fun PlaceholderPreview() {
+    Placeholder(
         painter = painterResource(R.drawable.ic_updates),
         message = stringResource(R.string.details_no_updates),
-        actionMessage = stringResource(R.string.check_updates)
+        actionLabel = stringResource(R.string.check_updates),
+        onAction = {}
     )
 }

@@ -82,7 +82,7 @@ fun AppUpdateSheet(
 
             HorizontalDivider(
                 modifier = Modifier.padding(
-                    vertical = dimensionResource(R.dimen.padding_small)
+                    vertical = dimensionResource(R.dimen.spacing_small)
                 )
             )
 
@@ -107,7 +107,7 @@ fun AppUpdateSheet(
 
             HorizontalDivider(
                 modifier = Modifier.padding(
-                    vertical = dimensionResource(R.dimen.padding_small)
+                    vertical = dimensionResource(R.dimen.spacing_small)
                 )
             )
 
@@ -159,11 +159,11 @@ private fun AppHeader(update: Update, onShowDetails: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_xsmall)
+                horizontal = dimensionResource(R.dimen.spacing_medium),
+                vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -212,12 +212,12 @@ private fun Item(label: String, onClick: () -> Unit) {
         style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.padding_xsmall))
-            .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_normal)))
+            .padding(horizontal = dimensionResource(R.dimen.spacing_xsmall))
+            .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
             .clickable(onClick = onClick)
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_small)
+                horizontal = dimensionResource(R.dimen.spacing_medium),
+                vertical = dimensionResource(R.dimen.spacing_small)
             )
     )
 }
@@ -228,8 +228,8 @@ private fun ChangelogSection(html: String) {
         text = stringResource(R.string.details_changelog),
         style = MaterialTheme.typography.titleSmall,
         modifier = Modifier.padding(
-            horizontal = dimensionResource(R.dimen.padding_medium),
-            vertical = dimensionResource(R.dimen.padding_xsmall)
+            horizontal = dimensionResource(R.dimen.spacing_medium),
+            vertical = dimensionResource(R.dimen.spacing_xsmall)
         )
     )
 
@@ -238,8 +238,8 @@ private fun ChangelogSection(html: String) {
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(
-            horizontal = dimensionResource(R.dimen.padding_medium),
-            vertical = dimensionResource(R.dimen.padding_xsmall)
+            horizontal = dimensionResource(R.dimen.spacing_medium),
+            vertical = dimensionResource(R.dimen.spacing_xsmall)
         )
     )
 }

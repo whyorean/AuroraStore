@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composition.collectForced
@@ -40,7 +40,7 @@ fun CategoryBrowseScreen(
         topBar = { TopAppBar(title = title) }
     ) { paddingValues ->
         if (uiState is ViewState.Error) {
-            Error(
+            Placeholder(
                 modifier = Modifier.padding(paddingValues),
                 painter = painterResource(R.drawable.ic_disclaimer),
                 message = stringResource(R.string.error)

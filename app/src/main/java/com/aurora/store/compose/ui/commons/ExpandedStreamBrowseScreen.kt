@@ -22,7 +22,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Destination
@@ -54,7 +54,7 @@ fun ExpandedStreamBrowseScreen(
             is LoadState.Loading -> ContainedLoadingIndicator()
 
             is LoadState.Error -> {
-                Error(
+                Placeholder(
                     modifier = Modifier.padding(paddingValues),
                     painter = painterResource(R.drawable.ic_disclaimer),
                     message = stringResource(R.string.error)
@@ -63,7 +63,7 @@ fun ExpandedStreamBrowseScreen(
 
             else -> {
                 if (apps.itemCount == 0) {
-                    Error(
+                    Placeholder(
                         modifier = Modifier.padding(paddingValues),
                         painter = painterResource(R.drawable.ic_disclaimer),
                         message = stringResource(R.string.no_apps_available)
@@ -74,7 +74,7 @@ fun ExpandedStreamBrowseScreen(
                             .fillMaxSize()
                             .padding(paddingValues),
                         verticalArrangement = Arrangement.spacedBy(
-                            dimensionResource(R.dimen.margin_medium)
+                            dimensionResource(R.dimen.spacing_medium)
                         )
                     ) {
                         items(

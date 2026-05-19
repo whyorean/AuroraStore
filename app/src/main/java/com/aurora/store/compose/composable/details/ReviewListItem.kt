@@ -45,8 +45,8 @@ fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_small)
+                horizontal = dimensionResource(R.dimen.spacing_medium),
+                vertical = dimensionResource(R.dimen.spacing_small)
             )
     ) {
         AsyncImage(
@@ -61,7 +61,7 @@ fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
                 .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
         )
         Column(
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.margin_small))
+            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.spacing_small))
         ) {
             Text(
                 text = review.userName,

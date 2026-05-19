@@ -40,9 +40,9 @@ import com.aurora.extensions.browse
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Error
-import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ExodusListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -128,12 +128,12 @@ private fun ScreenContentReport(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
                 state = listState
             ) {
                 stickyHeader {
                     Surface(modifier = Modifier.fillMaxWidth()) {
-                        Header(
+                        SectionHeader(
                             title = if (report?.trackers.isNullOrEmpty()) {
                                 stringResource(R.string.exodus_no_tracker)
                             } else {
@@ -178,11 +178,11 @@ private fun ScreenContentError(
             )
         }
     ) { paddingValues ->
-        Error(
+        Placeholder(
             modifier = Modifier.padding(paddingValues),
             painter = painterResource(R.drawable.ic_disclaimer),
             message = stringResource(R.string.failed_to_fetch_report),
-            actionMessage = stringResource(R.string.action_request_analysis),
+            actionLabel = stringResource(R.string.action_request_analysis),
             onAction = onRequestAnalysis
         )
     }

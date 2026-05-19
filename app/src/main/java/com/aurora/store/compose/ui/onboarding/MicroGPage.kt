@@ -61,12 +61,12 @@ private fun ScreenContent(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
             state = listState
         ) {
             item {
                 Column(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
+                    modifier = Modifier.padding(dimensionResource(R.dimen.spacing_medium))
                 ) {
                     Text(
                         text = stringResource(R.string.onboarding_title_gsf),

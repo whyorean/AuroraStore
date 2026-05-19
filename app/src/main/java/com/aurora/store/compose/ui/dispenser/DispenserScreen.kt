@@ -29,7 +29,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.store.R
 import com.aurora.store.compose.composable.DispenserListItem
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.dispenser.DispenserViewModel
@@ -94,11 +94,11 @@ private fun ScreenContent(
         }
     ) { paddingValues ->
         if (dispensers.isEmpty()) {
-            Error(
+            Placeholder(
                 modifier = Modifier.padding(paddingValues),
                 painter = painterResource(R.drawable.ic_server),
                 message = stringResource(R.string.no_dispensers_available),
-                actionMessage = stringResource(R.string.add_dispenser_title),
+                actionLabel = stringResource(R.string.add_dispenser_title),
                 onAction = onAddDispenser
             )
         } else {
@@ -106,7 +106,7 @@ private fun ScreenContent(
                 modifier = Modifier
                     .padding(paddingValues)
                     .fillMaxSize()
-                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                    .padding(vertical = dimensionResource(R.dimen.spacing_medium))
             ) {
                 items(items = dispensers.toList(), key = { url -> url }) { url ->
                     DispenserListItem(

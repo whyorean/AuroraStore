@@ -366,7 +366,7 @@ private fun UpdatesRestrictionsDialog(onUpdateAutomatedCheck: () -> Unit, onDism
         text = {
             Column {
                 Text(stringResource(R.string.pref_updates_restrictions_desc))
-                Spacer(Modifier.height(dimensionResource(R.dimen.margin_small)))
+                Spacer(Modifier.height(dimensionResource(R.dimen.spacing_small)))
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()

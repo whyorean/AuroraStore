@@ -76,7 +76,7 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                .padding(vertical = dimensionResource(R.dimen.spacing_medium))
         ) {
             items(items = availableInstallers, key = { i -> i.id }) { installerInfo ->
                 InstallerListItem(

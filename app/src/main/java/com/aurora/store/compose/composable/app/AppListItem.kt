@@ -48,10 +48,10 @@ fun AppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {
         modifier = modifier
             .width(dimensionResource(R.dimen.icon_size_cluster))
             .clickable(onClick = onClick)
-            .padding(all = dimensionResource(R.dimen.padding_xxsmall)),
+            .padding(all = dimensionResource(R.dimen.spacing_xsmall)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimen.margin_xsmall),
+            dimensionResource(R.dimen.spacing_xsmall),
             Alignment.CenterVertically
         )
     ) {

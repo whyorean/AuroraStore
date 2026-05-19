@@ -49,8 +49,8 @@ fun NetworkSheet() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = dimensionResource(R.dimen.padding_xlarge))
-                .padding(bottom = dimensionResource(R.dimen.padding_large)),
+                .padding(horizontal = dimensionResource(R.dimen.spacing_xlarge))
+                .padding(bottom = dimensionResource(R.dimen.spacing_large)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
@@ -58,17 +58,17 @@ fun NetworkSheet() {
                 contentDescription = null,
                 modifier = Modifier.requiredSize(48.dp)
             )
-            Spacer(Modifier.padding(top = dimensionResource(R.dimen.padding_large)))
+            Spacer(Modifier.padding(top = dimensionResource(R.dimen.spacing_large)))
             Text(
                 text = stringResource(R.string.title_no_network),
                 style = MaterialTheme.typography.titleLarge
             )
-            Spacer(Modifier.padding(top = dimensionResource(R.dimen.padding_small)))
+            Spacer(Modifier.padding(top = dimensionResource(R.dimen.spacing_small)))
             Text(
                 text = stringResource(R.string.check_connectivity),
                 style = MaterialTheme.typography.bodyMedium
             )
-            Spacer(Modifier.padding(top = dimensionResource(R.dimen.padding_xlarge)))
+            Spacer(Modifier.padding(top = dimensionResource(R.dimen.spacing_xlarge)))
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {

@@ -21,6 +21,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.gplayapi.data.models.App
@@ -60,7 +62,7 @@ fun StreamCarousel(
         LazyColumn(
             modifier = modifier.fillMaxSize(),
             state = lazyListState,
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
         ) {
             items(5) { ShimmerCarouselSection() }
         }
@@ -75,10 +77,10 @@ fun StreamCarousel(
         }
 
     if (clusters.isEmpty()) {
-        EmptyState(
+        Placeholder(
             modifier = modifier,
-            icon = R.drawable.ic_apps,
-            message = R.string.no_apps_available
+            painter = painterResource(R.drawable.ic_apps),
+            message = stringResource(R.string.no_apps_available)
         )
         return
     }
@@ -89,9 +91,9 @@ fun StreamCarousel(
         verticalArrangement = Arrangement.spacedBy(
             dimensionResource(
                 if (clusters.size == 1) {
-                    R.dimen.margin_medium
+                    R.dimen.spacing_medium
                 } else {
-                    R.dimen.margin_xxsmall
+                    R.dimen.spacing_xsmall
                 }
             )
         )
@@ -109,8 +111,11 @@ fun StreamCarousel(
                 item(key = "header_${cluster.id}") {
                     SectionHeader(
                         title = cluster.clusterTitle,
-                        browseUrl = cluster.clusterBrowseUrl,
-                        onClick = { onHeaderClick(cluster) }
+                        onClick = if (cluster.clusterBrowseUrl.isNotBlank()) {
+                            { onHeaderClick(cluster) }
+                        } else {
+                            null
+                        }
                     )
                 }
                 item(key = "row_${cluster.id}") {
@@ -150,8 +155,8 @@ internal fun ClusterRow(
 
     LazyRow(
         state = rowState,
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.padding_small)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_small)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         itemsIndexed(
             items = cluster.clusterAppList,

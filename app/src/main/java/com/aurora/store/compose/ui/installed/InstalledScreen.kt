@@ -37,7 +37,7 @@ import com.aurora.extensions.emptyPagingItems
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
@@ -95,7 +95,7 @@ private fun ScreenContent(
                     initialLoad = false
 
                     if (apps.itemCount == 0) {
-                        Error(
+                        Placeholder(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_apps_outage),
                             message = stringResource(R.string.no_apps_available)
@@ -106,7 +106,7 @@ private fun ScreenContent(
                             LazyColumn(
                                 state = listState,
                                 verticalArrangement = Arrangement.spacedBy(
-                                    dimensionResource(R.dimen.margin_medium)
+                                    dimensionResource(R.dimen.spacing_medium)
                                 )
                             ) {
                                 items(

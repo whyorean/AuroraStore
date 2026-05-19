@@ -57,10 +57,10 @@ fun Info(
             .fillMaxWidth()
             .clickable(onClick = { if (onClick != null) onClick() }, enabled = onClick != null)
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_medium),
-                vertical = dimensionResource(R.dimen.padding_xxsmall)
+                horizontal = dimensionResource(R.dimen.spacing_medium),
+                vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small)),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (painter != null) Icon(painter = painter, contentDescription = null)

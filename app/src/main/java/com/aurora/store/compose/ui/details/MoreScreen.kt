@@ -38,9 +38,9 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.ScrollHint
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.AppListItem
 import com.aurora.store.compose.navigation.Destination
@@ -100,16 +100,18 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 state = listState,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_medium)
+                )
             ) {
                 item {
-                    Header(title = stringResource(R.string.details_description))
+                    SectionHeader(title = stringResource(R.string.details_description))
                 }
 
                 item {
                     Text(
                         modifier = Modifier.padding(
-                            horizontal = dimensionResource(R.dimen.padding_medium)
+                            horizontal = dimensionResource(R.dimen.spacing_medium)
                         ),
                         text = AnnotatedString.fromHtml(
                             htmlString = app.description
@@ -144,7 +146,7 @@ private fun ScreenContent(
  */
 @Composable
 private fun AppDependencies(dependencies: List<App>, onNavigateTo: (Destination) -> Unit) {
-    Header(title = stringResource(R.string.details_dependencies))
+    SectionHeader(title = stringResource(R.string.details_dependencies))
     if (dependencies.isEmpty()) {
         Info(
             title = AnnotatedString(text = stringResource(R.string.details_no_dependencies))
@@ -166,7 +168,7 @@ private fun AppDependencies(dependencies: List<App>, onNavigateTo: (Destination)
  */
 @Composable
 private fun AppInfoMore(app: App) {
-    Header(title = stringResource(R.string.details_more_info))
+    SectionHeader(title = stringResource(R.string.details_more_info))
     Info(
         title = AnnotatedString(
             text = stringResource(R.string.details_more_package_name)

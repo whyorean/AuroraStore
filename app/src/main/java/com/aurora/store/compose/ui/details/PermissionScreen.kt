@@ -94,9 +94,11 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
                 state = listState,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_medium)
+                )
             ) {
                 items(items = permissionsInfo.keys.toList(), key = { it }) { permission ->
                     val permissionInfo = permissionsInfo.getValue(permission)

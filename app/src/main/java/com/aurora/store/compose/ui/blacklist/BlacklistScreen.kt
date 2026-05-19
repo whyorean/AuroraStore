@@ -248,8 +248,8 @@ private fun ScreenContent(
                             .fillMaxWidth()
                             .clickable { onRequestSearch(pkg.displayName) }
                             .padding(
-                                horizontal = dimensionResource(R.dimen.padding_medium),
-                                vertical = dimensionResource(R.dimen.padding_small)
+                                horizontal = dimensionResource(R.dimen.spacing_medium),
+                                vertical = dimensionResource(R.dimen.spacing_small)
                             )
                     )
                 }
@@ -298,7 +298,7 @@ private fun ScreenContent(
                     modifier = Modifier.fillMaxWidth(),
                     state = listState,
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_xxsmall)
+                        dimensionResource(R.dimen.spacing_xsmall)
                     )
                 ) {
                     if (selectedPackages.isNotEmpty()) {

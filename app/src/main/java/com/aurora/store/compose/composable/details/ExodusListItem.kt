@@ -38,7 +38,7 @@ fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
                 onClick = { context.browse(tracker.url) },
                 enabled = tracker.url.isNotBlank()
             )
-            .padding(dimensionResource(R.dimen.padding_small))
+            .padding(dimensionResource(R.dimen.spacing_small))
     ) {
         Text(
             text = tracker.name,

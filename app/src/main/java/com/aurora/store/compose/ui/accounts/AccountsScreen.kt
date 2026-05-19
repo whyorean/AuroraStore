@@ -113,7 +113,7 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(vertical = dimensionResource(R.dimen.padding_small)),
+                .padding(vertical = dimensionResource(R.dimen.spacing_small)),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             AssistHeader()
@@ -121,7 +121,7 @@ private fun ScreenContent(
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
             ) {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
@@ -153,7 +153,9 @@ private fun ScreenContent(
                     .fillMaxWidth()
                     .padding(bottom = dimensionResource(R.dimen.height_bottom_adj)),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_medium)
+                )
             ) {
                 Text(
                     text = stringResource(R.string.account_logout),
@@ -166,7 +168,7 @@ private fun ScreenContent(
                         painter = painterResource(R.drawable.ic_logout),
                         contentDescription = null
                     )
-                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_xsmall)))
+                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.spacing_xsmall)))
                     Text(
                         text = stringResource(R.string.action_logout)
                     )
@@ -188,8 +190,8 @@ private fun AssistHeader() {
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal))
+            .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         items(items = links.keys.toList(), key = { item -> item }) { label ->
             AssistChip(

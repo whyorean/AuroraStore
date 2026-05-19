@@ -30,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
@@ -37,7 +38,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.store.R
-import com.aurora.store.compose.composable.EmptyState
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ShimmerAppRow
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.composition.collectForced
@@ -121,7 +122,7 @@ private fun TopChartsBody(
     ) {
         SecondaryScrollableTabRow(
             selectedTabIndex = selectedIndex,
-            edgePadding = dimensionResource(R.dimen.padding_small)
+            edgePadding = dimensionResource(R.dimen.spacing_small)
         ) {
             chartTitles.forEachIndexed { index, titleRes ->
                 Tab(
@@ -133,18 +134,18 @@ private fun TopChartsBody(
         }
 
         when {
-            state is ViewState.Error -> EmptyState(
+            state is ViewState.Error -> Placeholder(
                 modifier = Modifier.weight(1f),
-                icon = R.drawable.ic_apps,
-                message = R.string.no_apps_available,
-                actionLabel = R.string.action_retry,
+                painter = painterResource(R.drawable.ic_apps),
+                message = stringResource(R.string.no_apps_available),
+                actionLabel = stringResource(R.string.action_retry),
                 onAction = onRetry
             )
 
-            cluster != null && cluster.clusterAppList.isEmpty() -> EmptyState(
+            cluster != null && cluster.clusterAppList.isEmpty() -> Placeholder(
                 modifier = Modifier.weight(1f),
-                icon = R.drawable.ic_apps,
-                message = R.string.no_apps_available
+                painter = painterResource(R.drawable.ic_apps),
+                message = stringResource(R.string.no_apps_available)
             )
 
             cluster != null -> {
@@ -155,10 +156,10 @@ private fun TopChartsBody(
                         .fillMaxWidth(),
                     state = listState,
                     contentPadding = PaddingValues(
-                        vertical = dimensionResource(R.dimen.padding_small)
+                        vertical = dimensionResource(R.dimen.spacing_small)
                     ),
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_xsmall)
+                        dimensionResource(R.dimen.spacing_xsmall)
                     )
                 ) {
                     items(count = apps.size, key = { apps[it].id }) { index ->
@@ -172,7 +173,7 @@ private fun TopChartsBody(
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(dimensionResource(R.dimen.padding_large)),
+                                    .padding(dimensionResource(R.dimen.spacing_large)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 CircularProgressIndicator()
@@ -186,8 +187,10 @@ private fun TopChartsBody(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
-                contentPadding = PaddingValues(vertical = dimensionResource(R.dimen.padding_small)),
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xsmall))
+                contentPadding = PaddingValues(vertical = dimensionResource(R.dimen.spacing_small)),
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_xsmall)
+                )
             ) {
                 items(8) { ShimmerAppRow() }
             }

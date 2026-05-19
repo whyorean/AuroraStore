@@ -21,6 +21,6 @@
     android:shape="rectangle">
     <solid android:color="@android:color/transparent" />
     <size
-        android:width="@dimen/margin_small"
-        android:height="@dimen/margin_small" />
+        android:width="@dimen/spacing_small"
+        android:height="@dimen/spacing_small" />
 </shape>

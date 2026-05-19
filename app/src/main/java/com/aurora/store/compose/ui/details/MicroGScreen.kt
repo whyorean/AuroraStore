@@ -103,10 +103,10 @@ private fun ScreenContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .navigationBarsPadding()
-                        .padding(horizontal = dimensionResource(R.dimen.padding_medium))
-                        .padding(vertical = dimensionResource(R.dimen.padding_small)),
+                        .padding(horizontal = dimensionResource(R.dimen.spacing_medium))
+                        .padding(vertical = dimensionResource(R.dimen.spacing_small)),
                     horizontalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.padding_medium)
+                        dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
                     FilledTonalButton(
@@ -147,7 +147,7 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
                 state = listState
             ) {
                 item {

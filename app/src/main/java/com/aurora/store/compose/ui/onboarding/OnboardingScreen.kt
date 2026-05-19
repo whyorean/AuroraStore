@@ -99,16 +99,16 @@ private fun ScreenContent(
                         .fillMaxWidth()
                         .navigationBarsPadding()
                         .padding(
-                            vertical = dimensionResource(R.dimen.padding_medium),
+                            vertical = dimensionResource(R.dimen.spacing_medium),
                             horizontal = if (windowAdaptiveInfo.isWindowCompact) {
-                                dimensionResource(R.dimen.padding_medium)
+                                dimensionResource(R.dimen.spacing_medium)
                             } else {
-                                dimensionResource(R.dimen.padding_xlarge)
+                                dimensionResource(R.dimen.spacing_xlarge)
                             }
                         ),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.padding_medium),
+                        dimensionResource(R.dimen.spacing_medium),
                         Alignment.End
                     )
                 ) {

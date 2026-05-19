@@ -228,7 +228,7 @@ private fun ProxyURLDialog(
             Column {
                 Text(
                     text = stringResource(R.string.pref_network_proxy_url_message),
-                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_small))
+                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.spacing_small))
                 )
                 OutlinedTextField(
                     value = url,
@@ -255,7 +255,7 @@ private fun ProxyURLDialog(
                         Text(stringResource(R.string.disable))
                     }
                 }
-                Spacer(Modifier.width(dimensionResource(R.dimen.margin_small)))
+                Spacer(Modifier.width(dimensionResource(R.dimen.spacing_small)))
                 TextButton(onClick = onDismiss) {
                     Text(stringResource(android.R.string.cancel))
                 }
@@ -286,14 +286,14 @@ internal fun SingleChoiceDialog(
                                 onClick = { onSelect(index) },
                                 role = Role.RadioButton
                             )
-                            .padding(vertical = dimensionResource(R.dimen.padding_small)),
+                            .padding(vertical = dimensionResource(R.dimen.spacing_small)),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         RadioButton(
                             selected = index == selected,
                             onClick = null
                         )
-                        Spacer(Modifier.width(dimensionResource(R.dimen.margin_small)))
+                        Spacer(Modifier.width(dimensionResource(R.dimen.spacing_small)))
                         Text(option)
                     }
                 }

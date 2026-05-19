@@ -74,7 +74,7 @@ import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SearchSuggestionListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
@@ -238,7 +238,7 @@ private fun ScreenContent(
                 modifier = Modifier
                     .padding(paddingValues)
                     .fillMaxSize()
-                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                    .padding(vertical = dimensionResource(R.dimen.spacing_medium))
             ) {
                 FilterHeader(
                     isEnabled = isSearching && results.loadState.refresh is LoadState.NotLoading,
@@ -250,7 +250,7 @@ private fun ScreenContent(
                     is LoadState.Loading -> ContainedLoadingIndicator()
 
                     is LoadState.Error -> {
-                        Error(
+                        Placeholder(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_disclaimer),
                             message = stringResource(R.string.error)
@@ -259,7 +259,7 @@ private fun ScreenContent(
 
                     else -> {
                         if (isSearching && results.itemCount == 0) {
-                            Error(
+                            Placeholder(
                                 modifier = Modifier.padding(paddingValues),
                                 painter = painterResource(R.drawable.ic_disclaimer),
                                 message = stringResource(R.string.no_apps_available)
@@ -271,7 +271,7 @@ private fun ScreenContent(
                                     state = listState,
                                     modifier = Modifier.fillMaxSize(),
                                     verticalArrangement = Arrangement.spacedBy(
-                                        dimensionResource(R.dimen.margin_medium)
+                                        dimensionResource(R.dimen.spacing_medium)
                                     )
                                 ) {
                                     items(
@@ -316,7 +316,7 @@ private fun ScreenContent(
 
                 else -> {
                     if (isSearching && results.itemCount > 0) {
-                        Error(
+                        Placeholder(
                             painter = painterResource(R.drawable.ic_round_search),
                             message = stringResource(R.string.select_app_for_details)
                         )
@@ -435,8 +435,8 @@ private fun FilterHeader(
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal))
+            .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         items(items = filters, key = { item -> item }) { filter ->
             val isSelected = when (filter) {

@@ -101,7 +101,7 @@ private fun ScreenContent(onAboutAurora: () -> Unit = {}) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
         ) {
             stickyHeader {
                 Surface(modifier = Modifier.fillMaxWidth()) {
@@ -128,9 +128,9 @@ private fun BrandHeader() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.margin_medium)),
+            .padding(dimensionResource(R.dimen.spacing_medium)),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)

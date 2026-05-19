@@ -227,7 +227,7 @@ fun SplashScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(0.1f)
-                    .padding(horizontal = dimensionResource(R.dimen.padding_xlarge)),
+                    .padding(horizontal = dimensionResource(R.dimen.spacing_xlarge)),
                 contentAlignment = Alignment.Center
             ) {
                 val (statusText, statusColor) = when {
@@ -260,7 +260,7 @@ fun SplashScreen(
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(
-                            dimensionResource(R.dimen.margin_small)
+                            dimensionResource(R.dimen.spacing_small)
                         )
                     ) {
                         Button(

@@ -31,7 +31,7 @@ fun ContainedLoadingIndicator(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .padding(dimensionResource(R.dimen.padding_small)),
+            .padding(dimensionResource(R.dimen.spacing_small)),
         contentAlignment = Alignment.Center
     ) {
         val description = stringResource(R.string.loading)

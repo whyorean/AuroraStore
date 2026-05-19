@@ -15,8 +15,8 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.theme.successColor
 import com.aurora.store.compose.theme.warningColor
@@ -30,7 +30,7 @@ import com.aurora.store.data.model.Report
  */
 @Composable
 fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
-    Header(
+    SectionHeader(
         title = stringResource(R.string.details_privacy),
         subtitle = stringResource(R.string.exodus_powered),
         onClick = onNavigateToDetailsExodus
@@ -64,7 +64,7 @@ fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
 @Composable
 private fun PrivacyPreview() {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         Privacy(report = Report(), onNavigateToDetailsExodus = {})
     }

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,12 +19,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
-import com.aurora.store.compose.composable.EmptyState
-import com.aurora.store.compose.composable.SectionHeaderWithAction
+import com.aurora.store.compose.composable.Placeholder
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.ShimmerUpdateItem
 import com.aurora.store.compose.composable.app.AppUpdateItem
 import com.aurora.store.compose.navigation.Destination
@@ -82,7 +85,7 @@ fun UpdatesScreen(
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_medium)
+                        dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
                     items(10) { ShimmerUpdateItem() }
@@ -90,11 +93,11 @@ fun UpdatesScreen(
             }
 
             updateMap.isEmpty() -> {
-                EmptyState(
+                Placeholder(
                     modifier = Modifier.fillMaxSize(),
-                    icon = R.drawable.ic_updates,
-                    message = R.string.details_no_updates,
-                    actionLabel = R.string.check_updates,
+                    painter = painterResource(R.drawable.ic_updates),
+                    message = stringResource(R.string.details_no_updates),
+                    actionLabel = stringResource(R.string.check_updates),
                     onAction = { viewModel.fetchUpdates() }
                 )
             }
@@ -103,7 +106,7 @@ fun UpdatesScreen(
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_medium)
+                        dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
                     if (mainEntries.isNotEmpty()) {
@@ -122,15 +125,18 @@ fun UpdatesScreen(
                                     R.string.action_update_all
                                 }
                             )
-                            SectionHeaderWithAction(
+                            SectionHeader(
                                 title = title,
-                                action = actionLabel,
-                                onAction = {
-                                    if (mainAllEnqueued) {
-                                        onCancelAll()
-                                    } else {
-                                        onRequestUpdateAll(mainEntries.map { it.key })
-                                    }
+                                trailing = {
+                                    TextButton(
+                                        onClick = {
+                                            if (mainAllEnqueued) {
+                                                onCancelAll()
+                                            } else {
+                                                onRequestUpdateAll(mainEntries.map { it.key })
+                                            }
+                                        }
+                                    ) { Text(actionLabel) }
                                 }
                             )
                         }
@@ -145,12 +151,15 @@ fun UpdatesScreen(
 
                     if (approvalEntries.isNotEmpty()) {
                         item(key = "header_approval") {
-                            SectionHeaderWithAction(
+                            SectionHeader(
                                 title = stringResource(R.string.updates_approval_header),
                                 subtitle = stringResource(R.string.updates_approval_desc),
-                                action = stringResource(R.string.action_update_all),
-                                onAction = {
-                                    onRequestUpdateAll(approvalEntries.map { it.key })
+                                trailing = {
+                                    TextButton(
+                                        onClick = {
+                                            onRequestUpdateAll(approvalEntries.map { it.key })
+                                        }
+                                    ) { Text(stringResource(R.string.action_update_all)) }
                                 }
                             )
                         }
@@ -165,7 +174,7 @@ fun UpdatesScreen(
 
                     if (incompatibleEntries.isNotEmpty()) {
                         item(key = "header_incompatible") {
-                            SectionHeaderWithAction(
+                            SectionHeader(
                                 title = stringResource(R.string.updates_incompatible_header),
                                 subtitle = stringResource(R.string.updates_incompatible_desc)
                             )
@@ -181,7 +190,7 @@ fun UpdatesScreen(
 
                     if (ignoredUpdates.isNotEmpty()) {
                         item(key = "header_ignored") {
-                            SectionHeaderWithAction(
+                            SectionHeader(
                                 title = stringResource(R.string.updates_ignored_header),
                                 subtitle = stringResource(R.string.updates_ignored_desc)
                             )

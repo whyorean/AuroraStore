@@ -49,7 +49,7 @@ import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ReviewListItem
@@ -114,7 +114,7 @@ private fun ScreenContent(
                 is LoadState.Loading -> ContainedLoadingIndicator()
 
                 is LoadState.Error -> {
-                    Error(
+                    Placeholder(
                         modifier = Modifier.padding(paddingValues),
                         painter = painterResource(R.drawable.ic_disclaimer),
                         message = stringResource(R.string.error)
@@ -167,8 +167,8 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
 
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.margin_normal)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal))
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         items(items = filters.keys.toList(), key = { item -> item }) { filter ->
             val selected = activeFilter == filter

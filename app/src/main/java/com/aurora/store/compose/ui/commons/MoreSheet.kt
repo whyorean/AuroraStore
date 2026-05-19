@@ -93,8 +93,8 @@ fun MoreSheet(
 
         Column(
             Modifier.padding(
-                horizontal = dimensionResource(R.dimen.padding_small),
-                vertical = dimensionResource(R.dimen.padding_small)
+                horizontal = dimensionResource(R.dimen.spacing_small),
+                vertical = dimensionResource(R.dimen.spacing_small)
             )
         ) {
             mainItems.forEach { item ->
@@ -119,8 +119,8 @@ fun MoreSheet(
 
         Column(
             Modifier.padding(
-                horizontal = dimensionResource(R.dimen.padding_small),
-                vertical = dimensionResource(R.dimen.padding_small)
+                horizontal = dimensionResource(R.dimen.spacing_small),
+                vertical = dimensionResource(R.dimen.spacing_small)
             )
         ) {
             extraItems.forEach { item ->
@@ -153,7 +153,7 @@ private fun AccountHeader(viewModel: MoreViewModel, onNavigateToAccounts: () -> 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_large)),
+            .padding(dimensionResource(R.dimen.spacing_large)),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
@@ -171,7 +171,7 @@ private fun AccountHeader(viewModel: MoreViewModel, onNavigateToAccounts: () -> 
         Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(horizontal = dimensionResource(R.dimen.padding_normal))
+                .padding(horizontal = dimensionResource(R.dimen.spacing_medium))
         ) {
             Text(
                 text = if (isAnonymous) {
