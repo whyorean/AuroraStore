@@ -44,10 +44,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.preferences.network.SingleChoiceDialog
 import com.aurora.store.data.model.UpdateMode
@@ -57,6 +61,7 @@ import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_IDLE
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_METERED
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
+import com.aurora.store.util.Preferences.PREFERENCE_FILTER_INSTALLERS
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -65,12 +70,16 @@ import com.aurora.store.viewmodel.all.UpdatesViewModel
 import kotlin.math.abs
 
 @Composable
-fun UpdatesPreferenceScreen(viewModel: UpdatesViewModel = hiltViewModel()) {
+fun UpdatesPreferenceScreen(
+    viewModel: UpdatesViewModel = hiltViewModel(),
+    onNavigateTo: (Destination) -> Unit = {}
+) {
     ScreenContent(
         onCancelAutomatedCheck = { viewModel.updateHelper.cancelAutomatedCheck() },
         onScheduleAutomatedCheck = { viewModel.updateHelper.scheduleAutomatedCheck() },
         onUpdateAutomatedCheck = { viewModel.updateHelper.updateAutomatedCheck() },
-        onCheckUpdatesNow = { viewModel.updateHelper.checkUpdatesNow() }
+        onCheckUpdatesNow = { viewModel.updateHelper.checkUpdatesNow() },
+        onNavigateTo = onNavigateTo
     )
 }
 
@@ -79,7 +88,8 @@ private fun ScreenContent(
     onCancelAutomatedCheck: () -> Unit = {},
     onScheduleAutomatedCheck: () -> Unit = {},
     onUpdateAutomatedCheck: () -> Unit = {},
-    onCheckUpdatesNow: () -> Unit = {}
+    onCheckUpdatesNow: () -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {}
 ) {
     val context = LocalContext.current
     val autoEntries = stringArrayResource(R.array.pref_updates_auto)
@@ -96,11 +106,25 @@ private fun ScreenContent(
     var filterFDroid by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_FILTER_FDROID, true))
     }
-    var filterAuroraOnly by remember {
-        mutableStateOf(Preferences.getBoolean(context, PREFERENCE_FILTER_AURORA_ONLY))
-    }
     var updatesExtended by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_UPDATES_EXTENDED))
+    }
+
+    // Re-read source-filter prefs after returning from SourceFiltersScreen.
+    val lifecycleOwner = LocalLifecycleOwner.current
+    var refreshKey by remember { mutableIntStateOf(0) }
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) refreshKey++
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+    val filterAuroraOnly = remember(refreshKey) {
+        Preferences.getBoolean(context, PREFERENCE_FILTER_AURORA_ONLY)
+    }
+    val installerCount = remember(refreshKey) {
+        Preferences.getStringSet(context, PREFERENCE_FILTER_INSTALLERS).size
     }
     var showAutoDialog by remember { mutableStateOf(false) }
     var showFrequencyDialog by remember { mutableStateOf(false) }
@@ -251,6 +275,23 @@ private fun ScreenContent(
             item {
                 ListItem(
                     modifier = Modifier.clickable {
+                        onNavigateTo(Destination.SourceFilters)
+                    },
+                    headlineContent = {
+                        Text(stringResource(R.string.pref_source_filters_title))
+                    },
+                    supportingContent = {
+                        Text(sourceFiltersSummary(filterAuroraOnly, installerCount))
+                    }
+                )
+            }
+            item { HorizontalDivider() }
+            item {
+                ListItem(headlineContent = { Text(stringResource(R.string.pref_common_advanced)) })
+            }
+            item {
+                ListItem(
+                    modifier = Modifier.clickable {
                         filterFDroid = !filterFDroid
                         context.save(PREFERENCE_FILTER_FDROID, filterFDroid)
                         onCheckUpdatesNow()
@@ -270,33 +311,6 @@ private fun ScreenContent(
                         )
                     }
                 )
-            }
-            item {
-                ListItem(
-                    modifier = Modifier.clickable {
-                        filterAuroraOnly = !filterAuroraOnly
-                        context.save(PREFERENCE_FILTER_AURORA_ONLY, filterAuroraOnly)
-                        if (filterAuroraOnly) filterFDroid = false
-                        onCheckUpdatesNow()
-                    },
-                    headlineContent = { Text(stringResource(R.string.pref_aurora_only)) },
-                    supportingContent = { Text(stringResource(R.string.pref_aurora_only_desc)) },
-                    trailingContent = {
-                        Switch(
-                            checked = filterAuroraOnly,
-                            onCheckedChange = { checked ->
-                                filterAuroraOnly = checked
-                                context.save(PREFERENCE_FILTER_AURORA_ONLY, checked)
-                                if (checked) filterFDroid = false
-                                onCheckUpdatesNow()
-                            }
-                        )
-                    }
-                )
-            }
-            item { HorizontalDivider() }
-            item {
-                ListItem(headlineContent = { Text(stringResource(R.string.pref_common_advanced)) })
             }
             item {
                 ListItem(
@@ -456,6 +470,13 @@ private fun selectedFrequencyIndex(storedHours: Int): Int {
     val exact = UPDATE_INTERVAL_HOURS.indexOf(storedHours)
     if (exact >= 0) return exact
     return UPDATE_INTERVAL_HOURS.indices.minBy { abs(UPDATE_INTERVAL_HOURS[it] - storedHours) }
+}
+
+@Composable
+private fun sourceFiltersSummary(allEnabled: Boolean, count: Int): String = when {
+    allEnabled -> stringResource(R.string.pref_source_filters_desc_all)
+    count == 0 -> stringResource(R.string.pref_source_filters_desc_none)
+    else -> stringResource(R.string.pref_source_filters_desc_count, count)
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)

@@ -166,12 +166,23 @@ class UpdateWorker @AssistedInject constructor(
                 .filter { if (!isExtendedUpdateEnabled) it.applicationInfo!!.enabled else true }
 
             // Filter out packages based on user's preferences
+            val installerFilters = Preferences.getStringSet(
+                context,
+                Preferences.PREFERENCE_FILTER_INSTALLERS
+            )
             val filteredPackages = if (isAuroraOnlyFilterEnabled) {
                 packages.filter { CertUtil.isAuroraStoreApp(context, it.packageName) }
             } else {
-                packages.filterNot {
-                    if (isFDroidFilterEnabled) {
-                        CertUtil.isFDroidApp(context, it.packageName)
+                packages.filterNot { pkg ->
+                    if (isFDroidFilterEnabled && CertUtil.isFDroidApp(context, pkg.packageName)) {
+                        return@filterNot true
+                    }
+                    if (installerFilters.isNotEmpty()) {
+                        val installer = PackageUtil.getInstallerPackageName(
+                            context,
+                            pkg.packageName
+                        )
+                        installer != null && installer in installerFilters
                     } else {
                         false
                     }
