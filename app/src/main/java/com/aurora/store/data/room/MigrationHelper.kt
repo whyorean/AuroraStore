@@ -30,6 +30,14 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom5To6(db)
     }
 
+    val MIGRATION_6_7 = object : Migration(6, 7) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom6To7(db)
+    }
+
+    val MIGRATION_7_8 = object : Migration(7, 8) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom7To8(db)
+    }
+
     private const val TAG = "MigrationHelper"
 
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
@@ -108,6 +116,45 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 5 to 6", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    /**
+     * Add isIncompatible column to update table for flagging updates that cannot be applied
+     * on the current OS (e.g. system app updates on HyperOS / GrapheneOS).
+     */
+    private fun migrateFrom6To7(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "ALTER TABLE `update` ADD COLUMN isIncompatible INTEGER NOT NULL DEFAULT 0"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 6 to 7", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    /**
+     * Add ignored_update table for tracking updates that have been muted by the user.
+     * A null ignoredVersionCode means all future updates for this package are hidden.
+     */
+    private fun migrateFrom7To8(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "CREATE TABLE IF NOT EXISTS `ignored_update` (" +
+                    "`packageName` TEXT NOT NULL, " +
+                    "`ignoredVersionCode` INTEGER, " +
+                    "PRIMARY KEY(`packageName`))"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 7 to 8", exception)
         } finally {
             database.endTransaction()
         }

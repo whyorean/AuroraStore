@@ -6,6 +6,7 @@
 package com.aurora.store.compose.composable
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -68,13 +69,15 @@ fun SectionHeader(
 }
 
 /**
- * Section header row with a right-aligned action button (replaces UpdateHeaderView).
+ * Section header row with optional subtitle and right-aligned action button
+ * (replaces UpdateHeaderView). Pass `action = null` to omit the button entirely.
  */
 @Composable
 fun SectionHeaderWithAction(
     modifier: Modifier = Modifier,
     title: String,
-    action: String,
+    action: String? = null,
+    subtitle: String? = null,
     onAction: () -> Unit = {}
 ) {
     Row(
@@ -87,16 +90,28 @@ fun SectionHeaderWithAction(
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.weight(1f)
-        )
-        TextButton(onClick = onAction) {
-            Text(action)
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            if (!subtitle.isNullOrBlank()) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+        if (!action.isNullOrBlank()) {
+            TextButton(onClick = onAction) {
+                Text(action)
+            }
         }
     }
 }

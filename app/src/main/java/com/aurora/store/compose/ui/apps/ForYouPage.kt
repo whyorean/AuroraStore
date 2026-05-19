@@ -24,7 +24,6 @@ internal fun ForYouContent(
     pageType: Int,
     viewModel: StreamViewModel,
     onAppClick: (App) -> Unit,
-    onAppLongClick: (App) -> Unit,
     onHeaderClick: (StreamCluster) -> Unit,
     onClusterScrolled: (StreamCluster) -> Unit,
     onScrolledToEnd: () -> Unit
@@ -43,7 +42,6 @@ internal fun ForYouContent(
         streamBundle = streamBundle?.get(category),
         onHeaderClick = onHeaderClick,
         onAppClick = onAppClick,
-        onAppLongClick = onAppLongClick,
         onClusterScrolled = onClusterScrolled,
         onScrolledToEnd = onScrolledToEnd
     )

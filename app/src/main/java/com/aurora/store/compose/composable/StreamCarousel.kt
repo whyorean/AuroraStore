@@ -42,7 +42,6 @@ fun StreamCarousel(
     lazyListState: LazyListState = rememberLazyListState(),
     onHeaderClick: (StreamCluster) -> Unit = {},
     onAppClick: (App) -> Unit = {},
-    onAppLongClick: (App) -> Unit = {},
     onClusterScrolled: (StreamCluster) -> Unit = {},
     onScrolledToEnd: () -> Unit = {}
 ) {
@@ -118,7 +117,6 @@ fun StreamCarousel(
                     ClusterRow(
                         cluster = cluster,
                         onAppClick = onAppClick,
-                        onAppLongClick = onAppLongClick,
                         onClusterScrolled = onClusterScrolled
                     )
                 }
@@ -135,7 +133,6 @@ fun StreamCarousel(
 internal fun ClusterRow(
     cluster: StreamCluster,
     onAppClick: (App) -> Unit = {},
-    onAppLongClick: (App) -> Unit = {},
     onClusterScrolled: (StreamCluster) -> Unit = {}
 ) {
     val rowState = rememberLazyListState()
@@ -162,8 +159,7 @@ internal fun ClusterRow(
         ) { _, app ->
             AppListItem(
                 app = app,
-                onClick = { onAppClick(app) },
-                onLongClick = { onAppLongClick(app) }
+                onClick = { onAppClick(app) }
             )
         }
         if (cluster.hasNext()) {

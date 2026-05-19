@@ -5,8 +5,7 @@
 
 package com.aurora.store.compose.composable.app
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -41,21 +40,14 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param modifier The modifier to be applied to the composable
  * @param app [App] to display
  * @param onClick Callback when the composable is clicked
- * @param onLongClick Callback when the composable is long-clicked
  * @see LargeAppListItem
  */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun AppListItem(
-    modifier: Modifier = Modifier,
-    app: App,
-    onClick: () -> Unit = {},
-    onLongClick: () -> Unit = {}
-) {
+fun AppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {}) {
     Column(
         modifier = modifier
             .width(dimensionResource(R.dimen.icon_size_cluster))
-            .combinedClickable(onClick = onClick, onLongClick = onLongClick)
+            .clickable(onClick = onClick)
             .padding(all = dimensionResource(R.dimen.padding_xxsmall)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(
