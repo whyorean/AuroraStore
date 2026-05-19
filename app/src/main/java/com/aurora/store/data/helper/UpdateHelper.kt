@@ -17,6 +17,9 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.UpdateMode
+import com.aurora.store.data.room.update.IgnoredUpdate
+import com.aurora.store.data.room.update.IgnoredUpdateDao
+import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao
 import com.aurora.store.data.work.UpdateWorker
 import com.aurora.store.util.Preferences
@@ -30,6 +33,7 @@ import java.util.concurrent.TimeUnit.HOURS
 import java.util.concurrent.TimeUnit.MINUTES
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -42,6 +46,7 @@ import kotlinx.coroutines.launch
  */
 class UpdateHelper @Inject constructor(
     private val updateDao: UpdateDao,
+    private val ignoredUpdateDao: IgnoredUpdateDao,
     @ApplicationContext private val context: Context
 ) {
 
@@ -86,9 +91,36 @@ class UpdateHelper @Inject constructor(
     private val isExtendedUpdateEnabled
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
-    val updates = updateDao.updates()
+    private val filteredUpdates = updateDao.updates()
         .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
-        .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
+
+    /**
+     * Updates surfaced to the UI / notifications. Updates muted by the user via
+     * [ignoreAll] or [ignoreVersion] are filtered out — see [ignoredUpdates] for the
+     * complementary list.
+     */
+    val updates = combine(filteredUpdates, ignoredUpdateDao.ignoredUpdates()) { list, ignored ->
+        val byPkg = ignored.associateBy { it.packageName }
+        list.filterNot { it.isIgnoredBy(byPkg[it.packageName]) }
+    }.stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), null)
+
+    /**
+     * Updates that the user has chosen to ignore (all-future or version-specific) and
+     * which currently have a row in the `update` table. Used to render the "Ignored"
+     * footer section on the Updates screen.
+     */
+    val ignoredUpdates = combine(
+        filteredUpdates,
+        ignoredUpdateDao.ignoredUpdates()
+    ) { list, ignored ->
+        val byPkg = ignored.associateBy { it.packageName }
+        list.filter { it.isIgnoredBy(byPkg[it.packageName]) }
+    }.stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
+
+    private fun Update.isIgnoredBy(rule: IgnoredUpdate?): Boolean {
+        if (rule == null) return false
+        return rule.ignoredVersionCode == null || rule.ignoredVersionCode == versionCode
+    }
 
     val isCheckingUpdates = WorkManager.getInstance(context)
         .getWorkInfosForUniqueWorkFlow(EXPEDITED_UPDATE_WORKER)
@@ -151,6 +183,29 @@ class UpdateHelper @Inject constructor(
      */
     suspend fun deleteAllUpdates() {
         updateDao.deleteAll()
+    }
+
+    /**
+     * Hide all future updates for [packageName] until [unignore] is called.
+     */
+    suspend fun ignoreAll(packageName: String) {
+        ignoredUpdateDao.upsert(IgnoredUpdate(packageName = packageName))
+    }
+
+    /**
+     * Hide only [versionCode] for [packageName]; newer versions show up again.
+     */
+    suspend fun ignoreVersion(packageName: String, versionCode: Long) {
+        ignoredUpdateDao.upsert(
+            IgnoredUpdate(packageName = packageName, ignoredVersionCode = versionCode)
+        )
+    }
+
+    /**
+     * Drop the ignore rule for [packageName], regardless of which kind it was.
+     */
+    suspend fun unignore(packageName: String) {
+        ignoredUpdateDao.delete(packageName)
     }
 
     /**

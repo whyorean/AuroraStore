@@ -43,12 +43,12 @@ import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.ui.apps.AppsGamesScreen
 import com.aurora.store.compose.ui.commons.MoreSheet
 import com.aurora.store.compose.ui.commons.NetworkSheet
-import com.aurora.store.compose.ui.sheets.AppMenuSheet
+import com.aurora.store.compose.ui.sheets.AppUpdateSheet
 import com.aurora.store.compose.ui.updates.UpdatesScreen
-import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
+import com.aurora.store.data.room.update.Update
 import com.aurora.store.viewmodel.all.UpdatesViewModel
 import kotlinx.coroutines.launch
 
@@ -88,12 +88,12 @@ fun MainScreen(
     }
 
     var showMoreSheet by remember { mutableStateOf(false) }
-    var appMenuTarget by remember { mutableStateOf<MinimalApp?>(null) }
+    var appUpdateTarget by remember { mutableStateOf<Update?>(null) }
     var showNetworkDialog by remember { mutableStateOf(false) }
 
     fun handleNavigation(destination: Destination) {
         when (destination) {
-            is Destination.AppMenu -> appMenuTarget = destination.app
+            is Destination.AppUpdate -> appUpdateTarget = destination.update
             else -> onNavigateTo(destination)
         }
     }
@@ -116,8 +116,15 @@ fun MainScreen(
         )
     }
 
-    appMenuTarget?.let { app ->
-        AppMenuSheet(app = app, onDismiss = { appMenuTarget = null })
+    appUpdateTarget?.let { app ->
+        AppUpdateSheet(
+            update = app,
+            onDismiss = { appUpdateTarget = null },
+            onNavigateTo = { destination ->
+                appUpdateTarget = null
+                onNavigateTo(destination)
+            }
+        )
     }
 
     Scaffold(
@@ -192,7 +199,7 @@ fun MainScreen(
                 when (MainTab.entries[page]) {
                     MainTab.APPS -> AppsGamesScreen(
                         pageType = 0,
-                        onNavigateTo = ::handleNavigation
+                        onNavigateTo = onNavigateTo
                     )
                     MainTab.GAMES -> AppsGamesScreen(
                         pageType = 1,
@@ -214,10 +221,10 @@ fun MainScreen(
                                 updatesViewModel.download(update)
                             }
                         },
-                        onRequestUpdateAll = {
-                            val needsObb = updatesViewModel.updates.value?.any {
+                        onRequestUpdateAll = { selectedUpdates ->
+                            val needsObb = selectedUpdates.any {
                                 it.fileList.requiresObbDir()
-                            } == true
+                            }
                             if (needsObb && !isGranted(context, PermissionType.STORAGE_MANAGER)) {
                                 onNavigateTo(
                                     Destination.PermissionRationale(
@@ -225,7 +232,7 @@ fun MainScreen(
                                     )
                                 )
                             } else {
-                                updatesViewModel.downloadAll()
+                                updatesViewModel.downloadAll(selectedUpdates)
                             }
                         },
                         onCancelUpdate = { packageName ->

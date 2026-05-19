@@ -44,7 +44,12 @@ class DownloadHelper @Inject constructor(
         private const val VERSION_CODE = "VERSION_CODE"
     }
 
-    val downloadsList get() = downloadDao.downloads()
+    // Single stable StateFlow shared across consumers. Previously a `get()` accessor that
+    // returned a new StateFlow on every read, which made `collectAsStateWithLifecycle` re-
+    // collect on every recomposition and briefly replay the `emptyList()` initial value —
+    // causing the Updates screen's per-item button to flicker between "Update" and "Cancel"
+    // on every download tick.
+    val downloadsList = downloadDao.downloads()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
     val pagedDownloads get() = downloadDao.pagedDownloads()

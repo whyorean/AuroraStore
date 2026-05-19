@@ -83,10 +83,13 @@ object CertUtil {
 
     private fun isSignedByFDroid(context: Context, packageName: String): Boolean = try {
         getX509Certificates(context, packageName).any { cert ->
-            cert.subjectDN.name.split(",").associate {
-                val (left, right) = it.split("=")
-                left to right
-            }["O"] == "fdroid.org"
+            cert.subjectDN.name
+                .split(",")
+                .mapNotNull {
+                    val parts = it.split("=", limit = 2)
+                    if (parts.size == 2) parts[0] to parts[1] else null
+                }
+                .toMap()["O"] == "fdroid.org"
         }
     } catch (exception: Exception) {
         Log.e(TAG, "Failed to check signing cert for $packageName", exception)

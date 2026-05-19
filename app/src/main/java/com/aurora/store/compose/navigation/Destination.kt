@@ -7,8 +7,8 @@ package com.aurora.store.compose.navigation
 
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.room.update.Update
 
 /**
  * All navigation actions available to composable screens.
@@ -20,7 +20,7 @@ sealed class Destination {
 
     data class AppDetails(val packageName: String) : Destination()
     data class DevProfile(val devId: String) : Destination()
-    data class AppMenu(val app: MinimalApp) : Destination()
+    data class AppUpdate(val update: Update) : Destination()
 
     data object Search : Destination()
     data object Downloads : Destination()

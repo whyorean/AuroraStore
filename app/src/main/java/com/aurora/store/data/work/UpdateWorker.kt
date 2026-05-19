@@ -2,6 +2,7 @@ package com.aurora.store.data.work
 
 import android.app.NotificationManager
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.util.Log
 import androidx.core.content.getSystemService
 import androidx.hilt.work.HiltWorker
@@ -9,6 +10,8 @@ import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import com.aurora.Constants
 import com.aurora.extensions.TAG
+import com.aurora.extensions.isGrapheneOS
+import com.aurora.extensions.isHyperOS
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
@@ -99,9 +102,13 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         try {
-            val updates = checkUpdates()
+            val allUpdates = checkUpdates()
                 .also { updateDao.insertUpdates(it) }
                 .filter { if (!isExtendedUpdateEnabled) it.hasValidCert else true }
+
+            // Incompatible updates (e.g. system app updates on HyperOS / GrapheneOS) are
+            // surfaced in the UI but excluded from notifications and auto-install.
+            val updates = allUpdates.filterNot { it.isIncompatible }
 
             if (updates.isEmpty() || updateMode == UpdateMode.CHECK_ONLY) {
                 Log.i(TAG, "Found ${updates.size} updates")
@@ -171,6 +178,18 @@ class UpdateWorker @AssistedInject constructor(
                 }
             }.map { it.packageName }
 
+            // HyperOS and GrapheneOS block third-party updates of pristine system apps.
+            val osBlocksSystemAppUpdates = isHyperOS || isGrapheneOS
+            val pristineSystemPackages: Set<String> = if (osBlocksSystemAppUpdates) {
+                packages.filter {
+                    val flags = it.applicationInfo?.flags ?: 0
+                    flags and ApplicationInfo.FLAG_SYSTEM != 0 &&
+                        flags and ApplicationInfo.FLAG_UPDATED_SYSTEM_APP == 0
+                }.map { it.packageName }.toSet()
+            } else {
+                emptySet()
+            }
+
             val updates = appDetailsHelper.getAppByPackageName(filteredPackages)
                 .filter { it.displayName.isNotEmpty() }
                 .filter { PackageUtil.isUpdatable(context, it.packageName, it.versionCode) }
@@ -178,8 +197,13 @@ class UpdateWorker @AssistedInject constructor(
 
             if (canSelfUpdate) getSelfUpdate()?.let { updates.add(it) }
 
-            return@withContext updates.map { Update.fromApp(context, it) }
-                .sortedBy { it.displayName.lowercase(Locale.getDefault()) }
+            return@withContext updates.map {
+                Update.fromApp(
+                    context,
+                    it,
+                    isIncompatible = it.packageName in pristineSystemPackages
+                )
+            }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }
         }
     }
 

@@ -54,6 +54,15 @@ val isVAndAbove: Boolean
 val isMIUI: Boolean
     get() = !getSystemProperty("ro.miui.ui.version.name").isNullOrBlank()
 
+val isHyperOS: Boolean
+    get() = !getSystemProperty("ro.mi.os.version.name").isNullOrBlank() ||
+        !getSystemProperty("ro.mi.os.version.code").isNullOrBlank()
+
+val isGrapheneOS: Boolean
+    get() = Build.FINGERPRINT.contains("GrapheneOS", ignoreCase = true) ||
+        Build.HOST.contains("grapheneos", ignoreCase = true) ||
+        getSystemProperty("ro.build.flavor")?.contains("grapheneos", ignoreCase = true) == true
+
 val isHuawei: Boolean
     get() = Build.MANUFACTURER.lowercase(Locale.getDefault()).contains("huawei") ||
         Build.HARDWARE.lowercase(Locale.getDefault()).contains("kirin") ||

@@ -307,6 +307,16 @@
     <string name="app_updater_service_notif_text">Enables background app download</string>
     <string name="update_available">update available</string>
     <string name="updates_available">updates available</string>
+    <string name="updates_incompatible_header">Incompatible updates</string>
+    <string name="updates_incompatible_desc">These system app updates cannot be installed on this OS</string>
+    <string name="updates_approval_header">Updates requiring approval</string>
+    <string name="updates_approval_desc">These apps were not installed by Aurora. Updating them prompts to transfer app update ownership.</string>
+    <string name="updates_app_details">Details</string>
+    <string name="updates_ignored_header">Ignored</string>
+    <string name="updates_ignored_desc">These updates are hidden until you unignore them</string>
+    <string name="action_ignore_all">Ignore all updates</string>
+    <string name="action_ignore_version">Skip version <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Unignore</string>
     <string name="error">An error occurred!</string>
     <string name="menu">Menu</string>
     <string name="expand">Expand</string>

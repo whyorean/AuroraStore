@@ -26,7 +26,6 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
-import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.category.CategoryViewModel
 import com.aurora.store.viewmodel.homestream.StreamViewModel
@@ -100,7 +99,6 @@ fun AppsGamesScreen(
                     pageType = pageType,
                     viewModel = streamViewModel,
                     onAppClick = { onNavigateTo(Destination.AppDetails(it.packageName)) },
-                    onAppLongClick = { onNavigateTo(Destination.AppMenu(MinimalApp.fromApp(it))) },
                     onHeaderClick = { onNavigateTo(Destination.StreamBrowse(it)) },
                     onClusterScrolled = { cluster ->
                         streamViewModel.observeCluster(category(pageType), cluster)
