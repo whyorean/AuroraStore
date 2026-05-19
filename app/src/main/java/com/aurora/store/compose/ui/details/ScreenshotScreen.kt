@@ -40,6 +40,7 @@ fun ScreenshotScreen(
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     val app by viewModel.app.collectAsStateWithLifecycle()
+    val screenshots = app?.screenshots ?: emptyList()
 
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
@@ -48,7 +49,7 @@ fun ScreenshotScreen(
 
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
-        screenshots = app!!.screenshots,
+        screenshots = screenshots.distinctBy { it.url },
         index = index
     )
 }
@@ -79,7 +80,8 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize(),
-            state = pagerState
+            state = pagerState,
+            key = { screenshots[it].url }
         ) { page ->
             val artwork = screenshots[page]
             ScreenshotListItem(
