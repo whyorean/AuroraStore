@@ -59,12 +59,20 @@ fun DownloadListItem(modifier: Modifier = Modifier, download: Download, onClick:
                 progress = download.progress.toFloat()
             )
         },
-        trailing = if (download.isFinished) {
+        trailing = if (download.status == DownloadStatus.COMPLETED) {
             {
                 Icon(
                     painter = painterResource(R.drawable.ic_check),
                     contentDescription = stringResource(R.string.download_completed),
                     tint = Color(0xFF4CAF50)
+                )
+            }
+        } else if (download.status == DownloadStatus.CANCELLED) {
+            {
+                Icon(
+                    painter = painterResource(R.drawable.ic_cancel),
+                    contentDescription = stringResource(R.string.download_canceled),
+                    tint = Color(0xFFF44336)
                 )
             }
         } else {

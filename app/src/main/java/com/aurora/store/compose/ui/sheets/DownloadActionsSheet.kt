@@ -74,30 +74,37 @@ fun DownloadActionsSheet(
                 modifier = Modifier.padding(vertical = dimensionResource(R.dimen.spacing_xsmall))
             )
 
-            Item(
-                label = stringResource(R.string.action_cancel),
-                enabled = download.isRunning,
-                onClick = {
-                    onCancel()
-                    onDismiss()
-                }
-            )
-            Item(
-                label = stringResource(R.string.action_install),
-                enabled = canInstall,
-                onClick = {
-                    onInstall()
-                    onDismiss()
-                }
-            )
-            Item(
-                label = stringResource(R.string.action_clear),
-                enabled = !download.isRunning,
-                onClick = {
-                    onClear()
-                    onDismiss()
-                }
-            )
+            if (download.isRunning) {
+                Item(
+                    label = stringResource(R.string.action_cancel),
+                    enabled = download.isRunning,
+                    onClick = {
+                        onCancel()
+                        onDismiss()
+                    }
+                )
+            } else {
+                Item(
+                    label = stringResource(R.string.action_clear),
+                    enabled = !download.isRunning,
+                    onClick = {
+                        onClear()
+                        onDismiss()
+                    }
+                )
+            }
+
+            if (!PackageUtil.isInstalled(context, download.packageName)) {
+                Item(
+                    label = stringResource(R.string.action_install),
+                    enabled = canInstall,
+                    onClick = {
+                        onInstall()
+                        onDismiss()
+                    }
+                )
+            }
+
             Item(
                 label = stringResource(R.string.action_export),
                 enabled = canExport,
