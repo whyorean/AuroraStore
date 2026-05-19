@@ -25,6 +25,16 @@
         <item>@string/pref_updates_auto_install</item>
     </string-array>
 
+    <string-array name="pref_updates_check_frequency_options">
+        <item>@string/pref_updates_check_frequency_3h</item>
+        <item>@string/pref_updates_check_frequency_6h</item>
+        <item>@string/pref_updates_check_frequency_12h</item>
+        <item>@string/pref_updates_check_frequency_24h</item>
+        <item>@string/pref_updates_check_frequency_3d</item>
+        <item>@string/pref_updates_check_frequency_7d</item>
+        <item>@string/pref_updates_check_frequency_15d</item>
+    </string-array>
+
     <string-array name="link_urls">
         <item>https://auroraoss.com/</item>
         <item>https://gitlab.com/AuroraOSS/AuroraStore/-/wikis/home</item>

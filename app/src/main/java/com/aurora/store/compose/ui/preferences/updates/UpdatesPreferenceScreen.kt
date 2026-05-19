@@ -18,21 +18,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -65,7 +62,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.save
 import com.aurora.store.viewmodel.all.UpdatesViewModel
-import kotlin.math.roundToInt
+import kotlin.math.abs
 
 @Composable
 fun UpdatesPreferenceScreen(viewModel: UpdatesViewModel = hiltViewModel()) {
@@ -93,10 +90,9 @@ private fun ScreenContent(
     val autoEnabled = autoMode != UpdateMode.DISABLED.ordinal
 
     var checkInterval by remember {
-        mutableFloatStateOf(
-            Preferences.getInteger(context, PREFERENCE_UPDATES_CHECK_INTERVAL, 3).toFloat()
-        )
+        mutableIntStateOf(Preferences.getInteger(context, PREFERENCE_UPDATES_CHECK_INTERVAL, 3))
     }
+    val frequencyEntries = stringArrayResource(R.array.pref_updates_check_frequency_options)
     var filterFDroid by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_FILTER_FDROID, true))
     }
@@ -107,6 +103,7 @@ private fun ScreenContent(
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_UPDATES_EXTENDED))
     }
     var showAutoDialog by remember { mutableStateOf(false) }
+    var showFrequencyDialog by remember { mutableStateOf(false) }
     var showRestrictionsDialog by remember { mutableStateOf(false) }
 
     val notifPermissionLauncher = rememberLauncherForActivityResult(
@@ -179,6 +176,22 @@ private fun ScreenContent(
         )
     }
 
+    if (showFrequencyDialog) {
+        SingleChoiceDialog(
+            title = stringResource(R.string.pref_updates_check_frequency),
+            options = frequencyEntries.toList(),
+            selected = selectedFrequencyIndex(checkInterval),
+            onSelect = { index ->
+                showFrequencyDialog = false
+                val hours = UPDATE_INTERVAL_HOURS[index]
+                checkInterval = hours
+                context.save(PREFERENCE_UPDATES_CHECK_INTERVAL, hours)
+                onUpdateAutomatedCheck()
+            },
+            onDismiss = { showFrequencyDialog = false }
+        )
+    }
+
     if (showRestrictionsDialog) {
         UpdatesRestrictionsDialog(
             onUpdateAutomatedCheck = onUpdateAutomatedCheck,
@@ -208,32 +221,12 @@ private fun ScreenContent(
             if (autoEnabled) {
                 item {
                     ListItem(
+                        modifier = Modifier.clickable { showFrequencyDialog = true },
                         headlineContent = {
                             Text(stringResource(R.string.pref_updates_check_frequency))
                         },
                         supportingContent = {
-                            Column {
-                                Text(stringResource(R.string.pref_updates_check_frequency_desc))
-                                Spacer(Modifier.height(dimensionResource(R.dimen.margin_small)))
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Slider(
-                                        value = checkInterval,
-                                        onValueChange = { checkInterval = it },
-                                        onValueChangeFinished = {
-                                            context.save(
-                                                PREFERENCE_UPDATES_CHECK_INTERVAL,
-                                                checkInterval.roundToInt()
-                                            )
-                                            onUpdateAutomatedCheck()
-                                        },
-                                        valueRange = 1f..24f,
-                                        steps = 22,
-                                        modifier = Modifier.weight(1f)
-                                    )
-                                    Spacer(Modifier.width(dimensionResource(R.dimen.margin_small)))
-                                    Text(checkInterval.roundToInt().toString())
-                                }
-                            }
+                            Text(frequencyEntries[selectedFrequencyIndex(checkInterval)])
                         }
                     )
                 }
@@ -446,6 +439,23 @@ private fun UpdatesRestrictionsDialog(onUpdateAutomatedCheck: () -> Unit, onDism
             }
         }
     )
+}
+
+/**
+ * Discrete preset intervals (in hours) shown in the frequency chooser. Order matches
+ * `R.array.pref_updates_check_frequency_options`.
+ *
+ * Storage stays as a free-form `Int` hour count for backward compatibility with the
+ * old slider, which let users pick any value in 1..24. Existing values that don't
+ * match a preset are mapped to the nearest one for display via [selectedFrequencyIndex],
+ * but the stored value is left untouched until the user actively picks a new option.
+ */
+private val UPDATE_INTERVAL_HOURS = intArrayOf(3, 6, 12, 24, 72, 168, 360)
+
+private fun selectedFrequencyIndex(storedHours: Int): Int {
+    val exact = UPDATE_INTERVAL_HOURS.indexOf(storedHours)
+    if (exact >= 0) return exact
+    return UPDATE_INTERVAL_HOURS.indices.minBy { abs(UPDATE_INTERVAL_HOURS[it] - storedHours) }
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)
