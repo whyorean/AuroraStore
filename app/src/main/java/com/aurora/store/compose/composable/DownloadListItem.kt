@@ -13,7 +13,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -26,6 +25,8 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.theme.colorGreen
+import com.aurora.store.compose.theme.colorRed
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.CommonUtil.getETAString
@@ -59,27 +60,31 @@ fun DownloadListItem(modifier: Modifier = Modifier, download: Download, onClick:
                 progress = download.progress.toFloat()
             )
         },
-        trailing = if (download.status == DownloadStatus.COMPLETED) {
-            {
-                Icon(
-                    painter = painterResource(R.drawable.ic_check),
-                    contentDescription = stringResource(R.string.download_completed),
-                    tint = Color(0xFF4CAF50)
-                )
+        trailing = when (download.status) {
+            DownloadStatus.COMPLETED -> {
+                {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_check),
+                        contentDescription = stringResource(R.string.download_completed),
+                        tint = colorGreen
+                    )
+                }
             }
-        } else if (
-            download.status == DownloadStatus.CANCELLED ||
-            download.status == DownloadStatus.FAILED
-        ) {
-            {
-                Icon(
-                    painter = painterResource(R.drawable.ic_cancel),
-                    contentDescription = stringResource(R.string.download_canceled),
-                    tint = Color(0xFFF44336)
-                )
+
+            DownloadStatus.CANCELLED, DownloadStatus.FAILED
+            -> {
+                {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_cancel),
+                        contentDescription = stringResource(R.string.download_canceled),
+                        tint = colorRed
+                    )
+                }
             }
-        } else {
-            null
+
+            else -> {
+                null
+            }
         }
     )
 }

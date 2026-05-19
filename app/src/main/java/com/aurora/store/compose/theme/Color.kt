@@ -9,3 +9,6 @@ import androidx.compose.ui.graphics.Color
 
 val warningColor = Color(0xFFFF7600) // Amber
 val successColor = Color(0xFF1B8738) // Green
+
+val colorGreen = Color(0xFF4CAF50)
+val colorRed = Color(0xFFF44336)
