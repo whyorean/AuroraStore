@@ -7,6 +7,8 @@
 package com.aurora.store.compose.ui.blacklist
 
 import android.net.Uri
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -51,7 +53,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.Constants
@@ -72,13 +73,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
-fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hiltViewModel()) {
+fun BlacklistScreen(viewModel: BlacklistViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val packages by viewModel.filteredPackages.collectAsStateWithLifecycle()
 
     ScreenContent(
         packages = packages,
-        onNavigateUp = onNavigateUp,
         isPackageBlacklisted = { pkgName -> pkgName in viewModel.blacklist },
         onBlacklistImport = { uri ->
             viewModel.importBlacklist(uri)
@@ -99,7 +99,6 @@ fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hi
 @Composable
 private fun ScreenContent(
     packages: List<BlacklistAppItem>? = null,
-    onNavigateUp: () -> Unit = {},
     isPackageBlacklisted: (packageName: String) -> Boolean = { false },
     onBlacklistImport: (uri: Uri) -> Unit = {},
     onBlacklistExport: (uri: Uri) -> Unit = {},
@@ -109,6 +108,7 @@ private fun ScreenContent(
     onWhitelistAll: () -> Unit = {},
     onSearch: (query: String) -> Unit = {}
 ) {
+    val activity = LocalActivity.current as? ComponentActivity
     val context = LocalContext.current
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
@@ -224,7 +224,7 @@ private fun ScreenContent(
             state = searchBarState,
             inputField = inputField,
             navigationIcon = {
-                IconButton(onClick = onNavigateUp) {
+                IconButton(onClick = { activity?.onBackPressedDispatcher?.onBackPressed() }) {
                     Icon(
                         painter = painterResource(R.drawable.ic_arrow_back),
                         contentDescription = stringResource(R.string.action_back)
@@ -333,7 +333,6 @@ private fun ScreenContent(
                 }
                 ScrollHint(
                     listState = listState,
-                    bottomPadding = 5.dp,
                     modifier = Modifier.align(Alignment.BottomCenter)
                 )
             }

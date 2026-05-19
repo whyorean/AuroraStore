@@ -46,7 +46,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Link
 
 @Composable
-fun AboutScreen(onNavigateUp: () -> Unit) {
+fun AboutScreen() {
     var shouldShowAboutDialog by rememberSaveable { mutableStateOf(false) }
 
     if (shouldShowAboutDialog) {
@@ -54,13 +54,12 @@ fun AboutScreen(onNavigateUp: () -> Unit) {
     }
 
     ScreenContent(
-        onNavigateUp = onNavigateUp,
         onAboutAurora = { shouldShowAboutDialog = true }
     )
 }
 
 @Composable
-private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Unit = {}) {
+private fun ScreenContent(onAboutAurora: () -> Unit = {}) {
     val context = LocalContext.current
 
     val linkURLS = stringArrayResource(R.array.link_urls)
@@ -94,8 +93,7 @@ private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Un
     Scaffold(
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.title_about),
-                onNavigateUp = onNavigateUp
+                title = stringResource(R.string.title_about)
             )
         }
     ) { paddingValues ->

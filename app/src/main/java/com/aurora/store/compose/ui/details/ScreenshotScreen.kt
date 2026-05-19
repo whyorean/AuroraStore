@@ -17,7 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
@@ -36,7 +36,6 @@ import com.aurora.store.viewmodel.details.AppDetailsViewModel
 fun ScreenshotScreen(
     packageName: String,
     index: Int,
-    onNavigateUp: () -> Unit,
     viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
@@ -49,7 +48,6 @@ fun ScreenshotScreen(
 
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
-        onNavigateUp = onNavigateUp,
         screenshots = app!!.screenshots,
         index = index
     )
@@ -58,12 +56,11 @@ fun ScreenshotScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
-    onNavigateUp: () -> Unit = {},
     screenshots: List<Artwork> = emptyList(),
     index: Int = 0,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
-    val displayMetrics = LocalContext.current.resources.displayMetrics
+    val displayMetrics = LocalResources.current.displayMetrics
     val pagerState = rememberPagerState(initialPage = index) { screenshots.size }
 
     LaunchedEffect(key1 = index) {
@@ -74,8 +71,7 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }
     ) { paddingValues ->

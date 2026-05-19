@@ -35,7 +35,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.dispenser.DispenserViewModel
 
 @Composable
-fun DispenserScreen(onNavigateUp: () -> Unit, viewModel: DispenserViewModel = hiltViewModel()) {
+fun DispenserScreen(viewModel: DispenserViewModel = hiltViewModel()) {
     val dispensers by viewModel.dispensers.collectAsStateWithLifecycle()
 
     var shouldShowInputDialog by rememberSaveable { mutableStateOf(false) }
@@ -63,7 +63,6 @@ fun DispenserScreen(onNavigateUp: () -> Unit, viewModel: DispenserViewModel = hi
 
     ScreenContent(
         dispensers = dispensers,
-        onNavigateUp = onNavigateUp,
         onAddDispenser = { shouldShowInputDialog = true },
         onRemoveDispenser = { url -> shouldRemoveDispenser = url }
     )
@@ -71,7 +70,6 @@ fun DispenserScreen(onNavigateUp: () -> Unit, viewModel: DispenserViewModel = hi
 
 @Composable
 private fun ScreenContent(
-    onNavigateUp: () -> Unit = {},
     dispensers: Set<String> = emptySet(),
     onAddDispenser: () -> Unit = {},
     onRemoveDispenser: (url: String) -> Unit = {}
@@ -81,8 +79,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.pref_dispenser_title),
-                onNavigateUp = onNavigateUp
+                title = stringResource(R.string.pref_dispenser_title)
             )
         },
         floatingActionButton = {

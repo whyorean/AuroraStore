@@ -6,6 +6,7 @@
 
 package com.aurora.store.compose.ui.installed
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,12 +21,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -40,6 +41,7 @@ import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.all.InstalledViewModel
@@ -48,24 +50,21 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun InstalledScreen(
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: InstalledViewModel = hiltViewModel()
 ) {
     val apps = viewModel.apps.collectAsLazyPagingItems()
 
     ScreenContent(
         apps = apps,
-        onNavigateUp = onNavigateUp,
-        onNavigateToAppDetails = onNavigateToAppDetails
+        onNavigateTo = onNavigateTo
     )
 }
 
 @Composable
 private fun ScreenContent(
-    onNavigateUp: () -> Unit = {},
     apps: LazyPagingItems<App> = emptyPagingItems(),
-    onNavigateToAppDetails: (packageName: String) -> Unit = {}
+    onNavigateTo: (Destination) -> Unit = {}
 ) {
     /*
      * For some reason paging3 frequently out-of-nowhere invalidates the list which causes
@@ -78,8 +77,7 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.title_apps_games),
-                onNavigateUp = onNavigateUp
+                title = stringResource(R.string.title_apps_games)
             )
         }
     ) { paddingValues ->
@@ -106,7 +104,10 @@ private fun ScreenContent(
                         val listState = rememberLazyListState()
                         Box(modifier = Modifier.fillMaxSize()) {
                             LazyColumn(
-                                state = listState
+                                state = listState,
+                                verticalArrangement = Arrangement.spacedBy(
+                                    dimensionResource(R.dimen.margin_medium)
+                                )
                             ) {
                                 items(
                                     count = apps.itemCount,
@@ -115,14 +116,17 @@ private fun ScreenContent(
                                     apps[index]?.let { app ->
                                         LargeAppListItem(
                                             app = app,
-                                            onClick = { onNavigateToAppDetails(app.packageName) }
+                                            onClick = {
+                                                onNavigateTo(
+                                                    Destination.AppDetails(app.packageName)
+                                                )
+                                            }
                                         )
                                     }
                                 }
                             }
                             ScrollHint(
                                 listState = listState,
-                                bottomPadding = 5.dp,
                                 modifier = Modifier.align(Alignment.BottomCenter)
                             )
                         }

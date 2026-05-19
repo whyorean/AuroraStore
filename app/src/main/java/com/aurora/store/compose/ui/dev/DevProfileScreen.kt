@@ -6,6 +6,7 @@
 
 package com.aurora.store.compose.ui.dev
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -34,6 +35,7 @@ import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.details.DevProfileViewModel
@@ -48,8 +50,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @Composable
 fun DevProfileScreen(
     developerId: String,
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: DevProfileViewModel = hiltViewModel()
 ) {
     // TODO: Implement when migrating logic for current DevProfileFragment
@@ -62,8 +63,7 @@ fun DevProfileScreen(
 @Composable
 fun DevProfileScreen(
     publisherId: String,
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val apps = viewModel.apps.collectAsLazyPagingItems()
@@ -73,8 +73,7 @@ fun DevProfileScreen(
     ScreenContent(
         apps = apps,
         topAppBarTitle = publisherId,
-        onNavigateUp = onNavigateUp,
-        onNavigateToAppDetails = onNavigateToAppDetails
+        onNavigateTo = onNavigateTo
     )
 }
 
@@ -82,16 +81,14 @@ fun DevProfileScreen(
 private fun ScreenContent(
     apps: LazyPagingItems<App>,
     topAppBarTitle: String,
-    onNavigateUp: () -> Unit = {},
-    onNavigateToAppDetails: (packageName: String) -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }
     ) { paddingValues ->
@@ -111,13 +108,16 @@ private fun ScreenContent(
                     modifier = Modifier
                         .padding(paddingValues)
                         .fillMaxSize()
-                        .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                        .padding(vertical = dimensionResource(R.dimen.padding_medium)),
+                    verticalArrangement = Arrangement.spacedBy(
+                        dimensionResource(R.dimen.margin_medium)
+                    )
                 ) {
                     items(count = apps.itemCount, key = apps.itemKey { it.id }) { index ->
                         apps[index]?.let { app ->
                             LargeAppListItem(
                                 app = app,
-                                onClick = { onNavigateToAppDetails(app.packageName) }
+                                onClick = { onNavigateTo(Destination.AppDetails(app.packageName)) }
                             )
                         }
                     }

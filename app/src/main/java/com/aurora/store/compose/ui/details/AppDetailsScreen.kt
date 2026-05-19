@@ -50,7 +50,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -72,6 +71,7 @@ import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -110,8 +110,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppDetailsScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     forceSinglePane: Boolean = false
 ) {
@@ -136,11 +135,10 @@ fun AppDetailsScreen(
     ) { currentState ->
         when {
             currentState is AppState.Loading || app == null ->
-                ScreenContentLoading(onNavigateUp = onNavigateUp)
+                ScreenContentLoading()
 
             currentState is AppState.Error ->
                 ScreenContentError(
-                    onNavigateUp = onNavigateUp,
                     message = currentState.message
                 )
 
@@ -156,8 +154,7 @@ fun AppDetailsScreen(
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
                     exodusReport = exodusReport,
-                    onNavigateUp = onNavigateUp,
-                    onNavigateToAppDetails = onNavigateToAppDetails,
+                    onNavigateTo = onNavigateTo,
                     onDownload = { requestedApp -> viewModel.enqueueDownload(requestedApp) },
                     onFavorite = { viewModel.toggleFavourite(loadedApp) },
                     onCancelDownload = { viewModel.cancelDownload(loadedApp) },
@@ -196,9 +193,9 @@ private fun stateKey(state: AppState, app: App?): String = when {
  * Composable to show progress while fetching app details
  */
 @Composable
-private fun ScreenContentLoading(onNavigateUp: () -> Unit = {}) {
+private fun ScreenContentLoading() {
     Scaffold(
-        topBar = { TopAppBar(onNavigateUp = onNavigateUp) }
+        topBar = { TopAppBar() }
     ) { paddingValues ->
         ContainedLoadingIndicator(modifier = Modifier.padding(paddingValues))
     }
@@ -208,9 +205,9 @@ private fun ScreenContentLoading(onNavigateUp: () -> Unit = {}) {
  * Composable to display errors related to fetching app details
  */
 @Composable
-private fun ScreenContentError(onNavigateUp: () -> Unit = {}, message: String? = null) {
+private fun ScreenContentError(message: String? = null) {
     Scaffold(
-        topBar = { TopAppBar(onNavigateUp = onNavigateUp) }
+        topBar = { TopAppBar() }
     ) { paddingValues ->
         Error(
             modifier = Modifier.padding(paddingValues),
@@ -234,8 +231,7 @@ private fun ScreenContentApp(
     plexusScores: Scores? = null,
     dataSafetyReport: DataSafetyReport? = null,
     exodusReport: Report? = null,
-    onNavigateUp: () -> Unit = {},
-    onNavigateToAppDetails: (packageName: String) -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {},
     onDownload: (requestedApp: App) -> Unit = {},
     onFavorite: () -> Unit = {},
     onCancelDownload: () -> Unit = {},
@@ -412,7 +408,6 @@ private fun ScreenContentApp(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    onNavigateUp = onNavigateUp,
                     actions = { if (shouldShowMenuOnMainPane) SetupMenu() }
                 )
             }
@@ -535,7 +530,6 @@ private fun ScreenContentApp(
                 }
                 ScrollHint(
                     listState = listState,
-                    bottomPadding = 5.dp,
                     modifier = Modifier.align(Alignment.BottomCenter)
                 )
             }
@@ -546,7 +540,10 @@ private fun ScreenContentApp(
     fun SupportingPane() {
         Scaffold(
             topBar = {
-                TopAppBar(actions = { if (!shouldShowMenuOnMainPane) SetupMenu() })
+                TopAppBar(
+                    showNavigationIcon = false,
+                    actions = { if (!shouldShowMenuOnMainPane) SetupMenu() }
+                )
             }
         ) { paddingValues ->
             if (suggestions.isNotEmpty()) {
@@ -568,12 +565,15 @@ private fun ScreenContentApp(
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                            .padding(vertical = dimensionResource(R.dimen.padding_medium)),
+                        verticalArrangement = Arrangement.spacedBy(
+                            dimensionResource(R.dimen.margin_medium)
+                        )
                     ) {
                         items(items = suggestions, key = { item -> item.id }) { app ->
                             LargeAppListItem(
                                 app = app,
-                                onClick = { onNavigateToAppDetails(app.packageName) }
+                                onClick = { onNavigateTo(Destination.AppDetails(app.packageName)) }
                             )
                         }
                     }
@@ -585,52 +585,43 @@ private fun ScreenContentApp(
     @Composable
     fun ExtraPane(screen: NavKey) = when (screen) {
         is ExtraScreen.Review -> ReviewScreen(
-            packageName = app.packageName,
-            onNavigateUp = ::onNavigateBack
+            packageName = app.packageName
         )
 
         is ExtraScreen.Exodus -> ExodusScreen(
-            packageName = app.packageName,
-            onNavigateUp = ::onNavigateBack
+            packageName = app.packageName
         )
 
         is ExtraScreen.More -> MoreScreen(
             packageName = app.packageName,
-            onNavigateUp = ::onNavigateBack,
-            onNavigateToAppDetails = onNavigateToAppDetails
+            onNavigateTo = onNavigateTo
         )
 
         is ExtraScreen.Permission -> PermissionScreen(
-            packageName = app.packageName,
-            onNavigateUp = ::onNavigateBack
+            packageName = app.packageName
         )
 
         is ExtraScreen.Screenshot -> ScreenshotScreen(
             packageName = app.packageName,
-            index = screen.index,
-            onNavigateUp = ::onNavigateBack
+            index = screen.index
         )
 
         is ExtraScreen.ManualDownload -> ManualDownloadScreen(
             packageName = app.packageName,
-            onNavigateUp = ::onNavigateBack,
             onRequestInstall = { requestedApp -> onInstall(requestedApp) }
         )
 
         is ExtraScreen.MicroG -> MicroGScreen(
             packageName = app.packageName,
-            onNavigateUp = ::onNavigateBack,
             onProceed = { onInstall(ignoreMicroG = true) }
         )
 
         is Screen.DevProfile -> DevProfileScreen(
             publisherId = app.developerName,
-            onNavigateUp = ::onNavigateBack,
-            onNavigateToAppDetails = { onNavigateToAppDetails(it) }
+            onNavigateTo = onNavigateTo
         )
 
         is Screen.PermissionRationale -> PermissionRationaleScreen(
-            onNavigateUp = ::onNavigateBack,
             requiredPermissions = screen.requiredPermissions,
             onPermissionCallback = { type ->
                 val isStoragePermission = type == PermissionType.EXTERNAL_STORAGE ||

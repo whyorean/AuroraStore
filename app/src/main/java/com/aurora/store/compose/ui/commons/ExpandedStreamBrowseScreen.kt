@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2025 The Calyx Institute
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -11,62 +11,43 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
-import androidx.paging.PagingData
-import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.aurora.extensions.emptyPagingItems
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Destination
-import com.aurora.store.compose.preview.AppPreviewProvider
-import com.aurora.store.compose.preview.ThemePreviewProvider
-import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
-import kotlin.random.Random
+import com.aurora.store.viewmodel.browse.ExpandedStreamBrowseViewModel
 import kotlin.uuid.Uuid
-import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun StreamBrowseScreen(
-    streamCluster: StreamCluster,
+fun ExpandedStreamBrowseScreen(
+    browseUrl: String,
+    defaultTitle: String,
     onNavigateTo: (Destination) -> Unit,
-    viewModel: StreamBrowseViewModel = hiltViewModel(
-        creationCallback = { factory: StreamBrowseViewModel.Factory ->
-            factory.create(streamCluster)
+    viewModel: ExpandedStreamBrowseViewModel = hiltViewModel(
+        creationCallback = { factory: ExpandedStreamBrowseViewModel.Factory ->
+            factory.create(browseUrl)
         }
     )
 ) {
+    val title by viewModel.title.collectAsStateWithLifecycle()
     val apps = viewModel.apps.collectAsLazyPagingItems()
 
-    ScreenContent(
-        title = streamCluster.clusterTitle,
-        apps = apps,
-        onNavigateTo = onNavigateTo
-    )
-}
-
-@Composable
-private fun ScreenContent(
-    title: String = String(),
-    apps: LazyPagingItems<App> = emptyPagingItems(),
-    onNavigateTo: (Destination) -> Unit = {}
-) {
     Scaffold(
         topBar = {
-            TopAppBar(title = title)
+            TopAppBar(
+                title = title.ifBlank { defaultTitle }
+            )
         }
     ) { paddingValues ->
         when (apps.loadState.refresh) {
@@ -114,15 +95,4 @@ private fun ScreenContent(
             }
         }
     }
-}
-
-@PreviewWrapper(ThemePreviewProvider::class)
-@Preview
-@Composable
-private fun StreamBrowseScreenPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
-    val apps = List(10) { app.copy(id = Random.nextInt()) }
-    val pagedApps = MutableStateFlow(PagingData.from(apps)).collectAsLazyPagingItems()
-    ScreenContent(
-        apps = pagedApps
-    )
 }
