@@ -35,7 +35,7 @@ import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.viewmodel.preferences.InstallerViewModel
 
 @Composable
-fun InstallerScreen(onNavigateUp: () -> Unit, viewModel: InstallerViewModel = hiltViewModel()) {
+fun InstallerScreen(viewModel: InstallerViewModel = hiltViewModel()) {
     val currentInstallerId by viewModel.currentInstaller.collectAsStateWithLifecycle()
     val snackBarHostState = remember { SnackbarHostState() }
 
@@ -46,7 +46,6 @@ fun InstallerScreen(onNavigateUp: () -> Unit, viewModel: InstallerViewModel = hi
     }
 
     ScreenContent(
-        onNavigateUp = onNavigateUp,
         snackBarHostState = snackBarHostState,
         currentInstaller = Installer.entries[currentInstallerId],
         availableInstallers = AppInstaller.getAvailableInstallersInfo(LocalContext.current),
@@ -56,7 +55,6 @@ fun InstallerScreen(onNavigateUp: () -> Unit, viewModel: InstallerViewModel = hi
 
 @Composable
 private fun ScreenContent(
-    onNavigateUp: () -> Unit = {},
     snackBarHostState: SnackbarHostState = SnackbarHostState(),
     currentInstaller: Installer = Installer.SESSION,
     availableInstallers: List<InstallerInfo> = emptyList(),
@@ -70,8 +68,7 @@ private fun ScreenContent(
         },
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.pref_install_mode_title),
-                onNavigateUp = onNavigateUp
+                title = stringResource(R.string.pref_install_mode_title)
             )
         }
     ) { paddingValues ->
