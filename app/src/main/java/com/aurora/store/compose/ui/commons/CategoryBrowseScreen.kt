@@ -43,7 +43,9 @@ fun CategoryBrowseScreen(
             Placeholder(
                 modifier = Modifier.padding(paddingValues),
                 painter = painterResource(R.drawable.ic_disclaimer),
-                message = stringResource(R.string.error)
+                message = stringResource(R.string.error),
+                actionLabel = stringResource(R.string.action_retry),
+                onAction = { viewModel.fetchNextPage() }
             )
         } else {
             val bundle = (uiState as? ViewState.Success<*>)?.data as? StreamBundle

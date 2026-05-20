@@ -15,6 +15,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.core.content.IntentCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.aurora.extensions.getPackageName
 import com.aurora.store.compose.composition.LocalNetworkStatus
 import com.aurora.store.compose.composition.LocalUI
@@ -23,17 +24,26 @@ import com.aurora.store.compose.navigation.NavDisplay
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.theme.AuroraTheme
 import com.aurora.store.data.model.NetworkStatus
+import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NetworkProvider
 import com.aurora.store.data.receiver.MigrationReceiver
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
 
 @AndroidEntryPoint
 class ComposeActivity : ComponentActivity() {
 
     @Inject lateinit var networkProvider: NetworkProvider
+
+    @Inject lateinit var authProvider: AuthProvider
+
+    @Inject lateinit var okHttpClient: OkHttpClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         MigrationReceiver.runMigrationsIfRequired(this)
@@ -90,5 +100,19 @@ class ComposeActivity : ComponentActivity() {
     private fun defaultStart(): Screen = when {
         !Preferences.getBoolean(this, Preferences.PREFERENCE_INTRO) -> Screen.Onboarding
         else -> Screen.Splash
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!AccountProvider.isLoggedIn(this)) return
+        lifecycleScope.launch(Dispatchers.IO) {
+            // Ask Play directly if the saved token still works. If it does,
+            // sockets are fine too and there's nothing to do. If it doesn't,
+            // evict the pool (the same backgrounded state that invalidates
+            // tokens also leaves dead sockets) and refresh anonymous auth.
+            if (authProvider.isSavedAuthDataValid()) return@launch
+            okHttpClient.connectionPool.evictAll()
+            if (authProvider.isAnonymous) authProvider.refreshAnonymousAuth()
+        }
     }
 }

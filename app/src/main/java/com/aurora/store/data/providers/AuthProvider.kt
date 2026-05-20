@@ -36,6 +36,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
@@ -67,10 +73,44 @@ class AuthProvider @Inject constructor(
     val isAnonymous: Boolean
         get() = AccountProvider.getAccountType(context) == AccountType.ANONYMOUS
 
+    private val _authReady = MutableStateFlow(true)
+
+    /**
+     * Emits false while an auth refresh is in flight so callers can defer
+     * network work until fresh credentials are persisted.
+     */
+    val authReady: StateFlow<Boolean> = _authReady.asStateFlow()
+
+    private val refreshMutex = Mutex()
+
     /**
      * Checks whether saved AuthData is valid or not
      */
     fun isSavedAuthDataValid(): Boolean = AuthHelper.isValid(authData!!)
+
+    /**
+     * Suspends until no auth refresh is in flight. ViewModels should call this
+     * before issuing Play requests so a foreground refresh doesn't race the fetch.
+     */
+    suspend fun awaitReady() {
+        _authReady.first { it }
+    }
+
+    /**
+     * Rebuilds anonymous [AuthData] from a dispenser and persists it. Serialized
+     * so concurrent callers don't double-fetch. On failure, the previously saved
+     * auth is left in place so requests can still attempt with stale credentials.
+     */
+    suspend fun refreshAnonymousAuth(): Result<AuthData> = refreshMutex.withLock {
+        try {
+            _authReady.value = false
+            val result = buildAnonymousAuthData()
+            result.onSuccess { saveAuthData(it) }
+            result
+        } finally {
+            _authReady.value = true
+        }
+    }
 
     /**
      * Builds [AuthData] for login using personal Google account

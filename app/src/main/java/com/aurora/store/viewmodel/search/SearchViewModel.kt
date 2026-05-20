@@ -83,6 +83,7 @@ class SearchViewModel @Inject constructor(
 
         manualPager { page ->
             val items = try {
+                authProvider.awaitReady()
                 when (page) {
                     1 -> contract.searchResults(query)
                         .also { nextBundleUrl = it.streamNextPageUrl }
@@ -121,6 +122,7 @@ class SearchViewModel @Inject constructor(
 
     fun fetchSuggestions(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            authProvider.awaitReady()
             _suggestions.value = contract.searchSuggestions(query)
                 .filter { it.title.isNotBlank() }
                 .take(3)

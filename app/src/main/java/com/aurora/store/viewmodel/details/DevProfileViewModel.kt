@@ -31,6 +31,7 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +40,7 @@ import kotlinx.coroutines.supervisorScope
 
 @HiltViewModel
 class DevProfileViewModel @Inject constructor(
+    private val authProvider: AuthProvider,
     private val appDetailsHelper: AppDetailsHelper,
     private val streamHelper: StreamHelper
 ) : ViewModel() {
@@ -54,6 +56,7 @@ class DevProfileViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
+                    authProvider.awaitReady()
                     devStream = appDetailsHelper.getDeveloperStream(devId)
                     streamBundle = devStream.streamBundle
                     liveData.postValue(ViewState.Success(devStream))
@@ -69,6 +72,7 @@ class DevProfileViewModel @Inject constructor(
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
+                        authProvider.awaitReady()
                         val newCluster = streamHelper.getNextStreamCluster(
                             streamCluster.clusterNextPageUrl
                         )

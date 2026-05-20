@@ -12,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.store.data.providers.AuthProvider
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = MoreViewModel.Factory::class)
 class MoreViewModel @AssistedInject constructor(
     @Assisted private val dependencies: List<String>,
+    private val authProvider: AuthProvider,
     private val appDetailsHelper: AppDetailsHelper
 ) : ViewModel() {
 
@@ -42,6 +44,7 @@ class MoreViewModel @AssistedInject constructor(
     private fun fetchDependencies() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                authProvider.awaitReady()
                 _dependentApps.value = appDetailsHelper.getAppByPackageName(dependencies)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch dependencies", exception)
