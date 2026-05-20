@@ -303,14 +303,14 @@
     <string name="pref_updates_auto_notify">Periksa &amp; beri tahu apabila tersedia pembaruan</string>
     <string name="pref_updates_auto_install">Periksa &amp; pasang pembaruan yang tersedia secara otomatis</string>
     <string name="title_more">Selengkapnya</string>
-    <string name="about_wiki_summary">Temukan jawaban atas pertanyaan yang sering diajukan (FAQ), langkah-langkah pemecahan masalah, dan lainnya</string>
+    <string name="about_wiki_summary">Temukan jawaban atas pertanyaan yang sering diajukan (F.A.Q.), langkah-langkah pemecahan masalah dan lainnya</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="download_clear_finished">Hapus yang sudah selesai</string>
     <string name="root_installer_desc">Membutuhkan hak akses root/superuser, mendukung semua versi Android.</string>
     <string name="native_installer_desc">Paling cocok untuk perangkat yang beroperasi di bawah Android 4.4</string>
     <string name="services_installer_subtitle">Pemasang untuk pemasangan latar belakang</string>
     <string name="shizuku_installer_subtitle">Menggunakan API sistem secara langsung dengan hak istimewa adb/root</string>
-    <string name="shizuku_installer_desc">Membutuhkan Shizuku atau SUI, perlu pengaturan dan izin yang diberikan</string>
+    <string name="shizuku_installer_desc">Membutuhkan Shizuku atau Sui, harus dipasang terlebih dahulu dan izin harus diberikan</string>
     <string name="manage_account">Kelola akun Anda</string>
     <string name="pref_dispenser_summary">Lihat dan kelola dispenser token untuk login anonim</string>
     <string name="pref_clear_device_owner_desc">Ini akan mencabut izin pemasang sesi untuk memasang aplikasi secara diam-diam. Lanjutkan dengan menghapus kepemilikan perangkat?</string>
@@ -338,7 +338,7 @@
     <string name="remove_dispenser_summary">Apakah Anda ingin menghapus dispenser \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="remove">Hapus</string>
     <string name="am_installer_subtitle">Pengelola paket sumber terbuka dengan fitur lengkap</string>
-    <string name="am_installer_desc">Membutuhkan Aplikasi Manager, perlu mode adb/root untuk dipasang ketika optimasi MIUI aktif</string>
+    <string name="am_installer_desc">Membutuhkan App Manager, memerlukan mode adb/root untuk memasang jika pengoptimalan miui diaktifkan</string>
     <string name="about_aurora_store_summary">Aurora Store memungkinkan Anda untuk mencari dan mengunduh aplikasi dari toko resmi Google Play. Anda dapat memeriksa deskripsi aplikasi, tangkapan layar, pembaruan, komentar pengguna lain, dan mengunduh APK langsung dari Google Play ke perangkat Anda. Untuk menggunakan Aurora Store, Anda harus memiliki akun Google Play, dan masuk ke akun Google Play saat pertama kali membuka dan mengatur Aurora Store. \n \nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lainnya di Aurora Store diakses, diunduh, dan/atau ditampilkan secara langsung dari Google Play. Aurora Store berfungsi persis seperti pintu atau peramban, memungkinkan Anda untuk masuk ke akun Google Play dan menemukan aplikasi dari Google Play. \n \nHarap diperhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi apa pun dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, atau pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
     <string name="toast_app_unavailable">Aplikasi tidak tersedia untuk perangkat Anda</string>
     <string name="services_installer_desc">Memerlukan Layanan Aurora yang dipasang sebagai aplikasi sistem dengan hak istimewa</string>
@@ -470,4 +470,11 @@
     <string name="page">Halaman <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Lewat</string>
     <string name="force_restart_snack">Mulai ulang untuk menerapkan perubahan?</string>
+    <string name="action_retry">Coba lagi</string>
+    <string name="action_view_on_play">Lihat di Play Store</string>
+    <string name="microg_removed_auth_warning">microG sudah tidak terpasang lagi. Jalankan pengaturan ulang agar semuanya tetap berjalan lancar.</string>
+    <string name="header_blacklist_selected">Dimasukkan ke daftar hitam</string>
+    <string name="header_blacklist_others">Lainnya</string>
+    <string name="preparing_to_download">Mempersiapkan untuk mengunduh</string>
+    <string name="verifying_downloads">Memverifikasi unduhan</string>
 </resources>

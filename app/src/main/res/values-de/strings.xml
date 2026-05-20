@@ -477,4 +477,5 @@
     <string name="action_view_on_play">Im Play Store ansehen</string>
     <string name="header_blacklist_selected">Auf der Sperrliste</string>
     <string name="header_blacklist_others">Andere</string>
+    <string name="microg_removed_auth_warning">microG ist nicht mehr installiert. Führe die Installation erneut aus, damit alles reibungslos funktioniert.</string>
 </resources>

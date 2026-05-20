@@ -471,4 +471,11 @@
     <string name="page"><xliff:g id="zenbakia">%1$d</xliff:g> orrialdea</string>
     <string name="action_skip">Saltatu</string>
     <string name="force_restart_snack">Aldaketak aplikatzeko berrabiarazi?</string>
+    <string name="action_retry">Berriro saiatu</string>
+    <string name="action_view_on_play">Play Store aplikazioan ikusi</string>
+    <string name="microg_removed_auth_warning">microG ez dago instalatuta. Exekutatu berriro konfigurazioa gauzek ondo funtziona dezaten.</string>
+    <string name="header_blacklist_selected">Zerrenda beltzean</string>
+    <string name="header_blacklist_others">Bestelakoak</string>
+    <string name="preparing_to_download">Deskargatzeko prestatzen</string>
+    <string name="verifying_downloads">Deskargak berifikatzen</string>
 </resources>

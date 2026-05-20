@@ -152,7 +152,7 @@
     <string name="notification_channel_downloads">Allalaadimiste märguanded</string>
     <string name="notification_channel_install">Paigalduse märguanded</string>
     <string name="notification_channel_account">Kontoga seotud märguanded</string>
-    <string name="onboarding_permission_select">Aurora pood nõuab järgmisi lubasid</string>
+    <string name="onboarding_permission_select">Aurora rakendustepood eeldab järgmiste lubade olemasolu</string>
     <string name="onboarding_title_installer">Paigaldaja</string>
     <string name="onboarding_title_permissions">Load</string>
     <string name="onboarding_permission_esm">Välise salvestusruumi haldur</string>
@@ -162,7 +162,7 @@
     <string name="onboarding_permission_notifications">Märguanded</string>
     <string name="onboarding_permission_notifications_desc">Saada märguandeid paigaldamise olekust</string>
     <string name="onboarding_permission_doze">Allalaadimine taustal</string>
-    <string name="onboarding_permission_doze_desc">Luba Aurora poel rakendusi taustal allalaadida ja uuendada</string>
+    <string name="onboarding_permission_doze_desc">Luba Aurora rakendustepoel rakendusi taustal allalaadida ja uuendada</string>
     <string name="pref_filter_fdroid_summary">Ära kontrolli F-Droidist paigaldatud rakenduste uuendusi</string>
     <string name="pref_filter_fdroid_title">Filtreeri F-Droidi rakendused</string>
     <string name="download_queued">Järjekorras</string>
@@ -297,7 +297,7 @@
     <string name="pref_updates_check_frequency">Automaatsete uuenduste sagedus</string>
     <string name="pref_updates_check_frequency_desc">Seadista automaatsete uunduste ajavahemik tundides.</string>
     <string name="pref_ui_layout_tab">Vali vaikekaart</string>
-    <string name="app_links_desc">Luba Aurora poel toetatud linke avada</string>
+    <string name="app_links_desc">Luba Aurora rakendustepoel avada toetatud linke</string>
     <string name="pref_ui_layout">Asetus</string>
     <string name="failed_apk_export">APK-de eksport nurjus</string>
     <string name="no_apps_available">Rakendusi pole saadaval</string>
@@ -367,7 +367,7 @@
     <string name="access_denied_using_vpn">Juurdepääs keelatud! Kas kasutuses on VPN või Tor?</string>
     <string name="status_completed">Lõpetatud</string>
     <string name="remove">Eemalda</string>
-    <string name="details_compatibility_gms_required_title">Nõuab Google Play teenuseid</string>
+    <string name="details_compatibility_gms_required_title">Eeldab Google Play teenuseid</string>
     <string name="details_compatibility_gms_not_required_subtitle">See rakendus töötab ilma Google teegita. Siiski võib see nõuda korralikuks töötamiseks muid kolmandate osapoolte teeke.</string>
     <string name="pref_clear_device_owner_title">Kustuta seadme omanik</string>
     <string name="export_app_title">Failide eksportija</string>
@@ -396,10 +396,10 @@
     <string name="session_installer_subtitle">Seansipõhine paigaldaja komplekteeritud/split APK-de jaoks</string>
     <string name="session_installer_desc">Soovitatav, sisseehitatud ja toetab kõiki Androidi versioone</string>
     <string name="root_installer_subtitle">Kestapõhine paigaldaja, mis kasutab eeldab juurkasutaja õigusi</string>
-    <string name="root_installer_desc">Nõuab root/superkasutaja õigusi, toetab kõiki Androidi versioone.</string>
+    <string name="root_installer_desc">Eeldab, root/superkasutaja õigusi, toetab kõiki Androidi versioone.</string>
     <string name="native_installer_desc">Sobib kõige paremini alla Android 4.4 seadmetele</string>
     <string name="services_installer_subtitle">Paigaldaja,et paigaldada taustal</string>
-    <string name="services_installer_desc">Nõuab, et Aurora teenused oleks paigaldatud privilegeeritud süsteemirakendusena</string>
+    <string name="services_installer_desc">Eeldab, et Aurora teenused oleks paigaldatud privilegeeritud süsteemirakendusena</string>
     <string name="shizuku_installer_subtitle">Süsteemi API-de kasutamine otse adb/root õigustega</string>
     <string name="shizuku_installer_desc">Vajalik on Shizuku või Sui, tuleb seadistada ja anda luba</string>
     <string name="pref_network_microg_login_desc">Protsessi lihtsustamiseks kasuta Google\'i kontodele sisselogimise autentimiseks microG-d</string>
@@ -412,7 +412,7 @@
     <string name="pref_ui_no_for_you">Vahekaart \"Sinule\"</string>
     <string name="pref_ui_no_for_you_desc">Kuva avalehel vahekaart „Sinule”</string>
     <string name="native_installer_subtitle">Klassikaline paigaldaja, saadaval kõikides seadmetes</string>
-    <string name="am_installer_desc">Nõuab rakendust App Manager, paigaldamiseks on vaja adb/root-režiimi, kui miui optimeerimine on sisse lülitatud</string>
+    <string name="am_installer_desc">Eeldab rakendust App Manager, paigaldamiseks on vaja adb/root-režiimi, kui miui optimeerimine on sisse lülitatud</string>
     <string name="pref_clear_device_owner_summary">Lõpetab Aurora Poe tegevuse rakenduse omanikuna</string>
     <string name="pref_dispenser_title">Halda sisselogimistunnuseid</string>
     <string name="pref_dispenser_summary">Vaata ja halda tunnuslubade plokke, mida kasutatakse anonüümseks sisselogimiseks</string>
@@ -477,4 +477,5 @@
     <string name="action_view_on_play">Vaata Play Store\'is</string>
     <string name="header_blacklist_selected">Lisatud musta nimekirja</string>
     <string name="header_blacklist_others">Muud</string>
+    <string name="microg_removed_auth_warning">microG pole enam paigaldatud. Et kõik toimiks sujuvalt, käivita palun algseadistus uuesti.</string>
 </resources>

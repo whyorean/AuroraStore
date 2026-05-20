@@ -282,7 +282,7 @@
     <string name="app_links_desc">Разрешить Aurora Store открывать поддерживаемые ссылки</string>
     <string name="app_links_title">Ссылки на приложения</string>
     <string name="google_play_store_desc">Google Play, также известный как Google Play Store, а ранее - Android Market.</string>
-    <string name="android_market_desc">Android Market - магазин приложений для устройств под управлением ОС Android, закрытый в 2017 году.</string>
+    <string name="android_market_desc">Android Market являлся магазином приложений, разработанных для устройств с Android, который был закрыт в 2017 году.</string>
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
     <string name="pref_network_proxy_url">URL прокси</string>
     <string name="pref_updates_check_frequency_desc">Настроить интервал автоматических обновлений, в часах.</string>
@@ -473,4 +473,11 @@
     <string name="microg_installer_subtitle">Требует установки дополнительного приложения microG</string>
     <string name="microg_installer_desc">Помогает пропустить проверку целостности приложения (только для установщика)</string>
     <string name="force_restart_snack">Перезапустить чтобы применить изменения?</string>
+    <string name="action_retry">Повтор</string>
+    <string name="action_view_on_play">Просмотреть в Play Store</string>
+    <string name="microg_removed_auth_warning">microG больше не установлен. Запустите установку снова, чтобы сохранить полную работоспособность.</string>
+    <string name="header_blacklist_selected">В черном списке</string>
+    <string name="header_blacklist_others">Другие</string>
+    <string name="preparing_to_download">Подготовка к загрузке</string>
+    <string name="verifying_downloads">Проверка загрузок</string>
 </resources>

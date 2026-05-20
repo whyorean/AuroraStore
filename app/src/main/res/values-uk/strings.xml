@@ -479,4 +479,5 @@
     <string name="action_view_on_play">Переглянути в Play Store</string>
     <string name="header_blacklist_selected">У чорному списку</string>
     <string name="header_blacklist_others">Інше</string>
+    <string name="microg_removed_auth_warning">microG більше не встановлено. Запустіть програму встановлення ще раз, щоб система працювала без збоїв.</string>
 </resources>

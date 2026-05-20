@@ -479,4 +479,5 @@
     <string name="action_view_on_play">Zobacz w Play Store</string>
     <string name="header_blacklist_others">Pozostałe</string>
     <string name="header_blacklist_selected">Na czarnej liście</string>
+    <string name="microg_removed_auth_warning">microG nie jest już zainstalowany. Uruchom ponownie instalator, aby zapewnić pełną funkcjonalność.</string>
 </resources>

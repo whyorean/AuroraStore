@@ -479,4 +479,5 @@
     <string name="action_view_on_play">Zobrazit v Obchodě Play</string>
     <string name="header_blacklist_selected">Na černé listině</string>
     <string name="header_blacklist_others">Ostatní</string>
+    <string name="microg_removed_auth_warning">microG již není nainstalováno. Pro správné fungování aplikace znovu spusťte prvotní nastavení.</string>
 </resources>

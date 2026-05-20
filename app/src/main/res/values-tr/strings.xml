@@ -477,4 +477,5 @@
     <string name="action_view_on_play">Play Store\'da görüntüle</string>
     <string name="header_blacklist_selected">Kara listeye alındı</string>
     <string name="header_blacklist_others">Diğerleri</string>
+    <string name="microg_removed_auth_warning">microG artık kurulu değil. Her şeyin sorunsuz çalışmaya devam etmesi için kurulumu tekrar çalıştırın.</string>
 </resources>

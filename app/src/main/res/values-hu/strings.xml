@@ -477,4 +477,5 @@
     <string name="action_view_on_play">Megtekintés a Play Áruházban</string>
     <string name="header_blacklist_selected">Tiltólistázva</string>
     <string name="header_blacklist_others">Egyebek</string>
+    <string name="microg_removed_auth_warning">A microG már nincs telepítve. Indítsa újra a telepítőt, hogy minden zökkenőmentesen működjön.</string>
 </resources>

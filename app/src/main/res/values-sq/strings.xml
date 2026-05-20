@@ -472,4 +472,5 @@
     <string name="verifying_downloads">Po verifikohen shkarkime</string>
     <string name="action_view_on_play">Shiheni në Play Store</string>
     <string name="header_blacklist_others">Të tjerë</string>
+    <string name="microg_removed_auth_warning">microG s’është më i instaluar. Rikryeni ujdisjen që t’i mbani gjëra të funksionojnë rrjedhshëm.</string>
 </resources>

@@ -161,7 +161,7 @@
     <string name="toast_rated_failed">Não foi possível submeter a avaliação</string>
     <string name="action_filter_rating">Avaliações</string>
     <string name="details_ratings">Avaliações e comentários</string>
-    <string name="details_more_about_app">Mais informações</string>
+    <string name="details_more_about_app">Mais sobre a app</string>
     <string name="details_free">Gratuita</string>
     <string name="details_contains_ads">Contém anúncios</string>
     <string name="details_changelog_unavailable">Alterações não disponibilizadas</string>
@@ -271,7 +271,7 @@
     <string name="failed_to_fetch_report">Não foi possível obter o relatório de privacidade</string>
     <string name="access_denied_using_vpn">Acesso recusado. Está a usar uma VPN ou Tor\?</string>
     <string name="bad_request">Erro interno! Tente de novo mais tarde</string>
-    <string name="login_rate_limited">Você está sujeito a um limite de taxa de transferência.</string>
+    <string name="login_rate_limited">Você tem um limite de taxa de transferência</string>
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão. Código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Verificar ligação</string>
@@ -308,7 +308,7 @@
     <string name="action_home_screen">Adicionar ao ecrã inicial</string>
     <string name="download_clear_finished">Limpeza efetuada</string>
     <string name="pref_updates_incompatible_desc">Exibir as atualizações para as aplicações incompatíveis ou desativadas que possam falhar a instalação</string>
-    <string name="manual_download_hint">Insira o código da versão que pretende transferir</string>
+    <string name="manual_download_hint">Insira o código da versão que pretende descarregar</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
     <string name="source_code_title">Código fonte</string>
     <string name="source_code_subtitle">Descubra o que está no interior</string>
@@ -428,7 +428,7 @@
     <string name="details_compatibility_title">Compatibilidade</string>
     <string name="details_compatibility_gms_required_title">Requer o Google Play Services</string>
     <string name="action_install_microG">Instalar Conjunto microG</string>
-    <string name="app_info_downloads">Transferências</string>
+    <string name="app_info_downloads">Descargas</string>
     <string name="app_info_updated_on">Última atualização</string>
     <string name="app_info_min_android">Versão Mínima de Android</string>
     <string name="app_info_target_android">Nível de API de Destino</string>
@@ -472,4 +472,11 @@
     <string name="select_app_for_details">Selecione um aplicativo para obter mais detalhes</string>
     <string name="action_filter_no_ads">Sem anúncios</string>
     <string name="action_filter_no_gms">Sem serviços de reprodução</string>
+    <string name="action_retry">Tentar novamente</string>
+    <string name="action_view_on_play">Ver na Play Store</string>
+    <string name="microg_removed_auth_warning">micro G já não está instalado. Execute a configuração novamente para manter as coisas a funcionar sem problemas.</string>
+    <string name="header_blacklist_selected">Na lista negra</string>
+    <string name="header_blacklist_others">Outros</string>
+    <string name="preparing_to_download">A preparar para descarregar</string>
+    <string name="verifying_downloads">A verificar descargas</string>
 </resources>
