@@ -6,27 +6,32 @@
 
 package com.aurora.store.compose.ui.installed
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
@@ -36,36 +41,48 @@ import com.aurora.extensions.emptyPagingItems
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.composable.app.InstalledAppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.ui.commons.InstalledAppMeta
+import com.aurora.store.compose.ui.commons.SortFilterSheet
+import com.aurora.store.compose.ui.commons.SortFilterState
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import kotlin.random.Random
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun InstalledScreen(
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: InstalledViewModel = hiltViewModel()
 ) {
     val apps = viewModel.apps.collectAsLazyPagingItems()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val installers by viewModel.installers.collectAsStateWithLifecycle()
+    val metadata by viewModel.metadata.collectAsStateWithLifecycle()
 
     ScreenContent(
         apps = apps,
-        onNavigateUp = onNavigateUp,
-        onNavigateToAppDetails = onNavigateToAppDetails
+        state = state,
+        installers = installers,
+        metadata = metadata,
+        onStateChange = viewModel::updateState,
+        onNavigateTo = onNavigateTo
     )
 }
 
 @Composable
 private fun ScreenContent(
-    onNavigateUp: () -> Unit = {},
     apps: LazyPagingItems<App> = emptyPagingItems(),
-    onNavigateToAppDetails: (packageName: String) -> Unit = {}
+    state: SortFilterState = SortFilterState(),
+    installers: Map<String, String> = emptyMap(),
+    metadata: Map<String, InstalledAppMeta> = emptyMap(),
+    onStateChange: (SortFilterState) -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {}
 ) {
     /*
      * For some reason paging3 frequently out-of-nowhere invalidates the list which causes
@@ -74,12 +91,20 @@ private fun ScreenContent(
      * Save the initial loading state to make sure we don't replay the loading animation again.
      */
     var initialLoad by rememberSaveable { mutableStateOf(true) }
+    var sheetVisible by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.title_apps_games),
-                onNavigateUp = onNavigateUp
+                actions = {
+                    IconButton(onClick = { sheetVisible = true }) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_tune),
+                            contentDescription = stringResource(R.string.installed_sort_filter)
+                        )
+                    }
+                }
             )
         }
     ) { paddingValues ->
@@ -97,7 +122,7 @@ private fun ScreenContent(
                     initialLoad = false
 
                     if (apps.itemCount == 0) {
-                        Error(
+                        Placeholder(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_apps_outage),
                             message = stringResource(R.string.no_apps_available)
@@ -106,23 +131,34 @@ private fun ScreenContent(
                         val listState = rememberLazyListState()
                         Box(modifier = Modifier.fillMaxSize()) {
                             LazyColumn(
-                                state = listState
+                                state = listState,
+                                verticalArrangement = Arrangement.spacedBy(
+                                    dimensionResource(R.dimen.spacing_medium)
+                                )
                             ) {
                                 items(
                                     count = apps.itemCount,
                                     key = apps.itemKey { it.packageName }
                                 ) { index ->
                                     apps[index]?.let { app ->
-                                        LargeAppListItem(
+                                        val meta = metadata[app.packageName]
+                                        InstalledAppListItem(
                                             app = app,
-                                            onClick = { onNavigateToAppDetails(app.packageName) }
+                                            sizeBytes = meta?.sizeBytes ?: 0L,
+                                            lastUpdateTime = meta?.lastUpdateTime ?: 0L,
+                                            installerLabel = meta?.installer
+                                                ?.let { installers[it] },
+                                            onClick = {
+                                                onNavigateTo(
+                                                    Destination.AppDetails(app.packageName)
+                                                )
+                                            }
                                         )
                                     }
                                 }
                             }
                             ScrollHint(
                                 listState = listState,
-                                bottomPadding = 5.dp,
                                 modifier = Modifier.align(Alignment.BottomCenter)
                             )
                         }
@@ -130,6 +166,15 @@ private fun ScreenContent(
                 }
             }
         }
+    }
+
+    if (sheetVisible) {
+        SortFilterSheet(
+            state = state,
+            installers = installers,
+            onStateChange = onStateChange,
+            onDismiss = { sheetVisible = false }
+        )
     }
 }
 

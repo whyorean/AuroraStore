@@ -22,9 +22,9 @@
     <corners android:radius="8dp" />
     <solid android:color="?colorControlHighlight" />
     <padding
-        android:bottom="@dimen/margin_medium"
-        android:left="@dimen/margin_medium"
-        android:right="@dimen/margin_medium"
-        android:top="@dimen/margin_medium" />
+        android:bottom="@dimen/spacing_medium"
+        android:left="@dimen/spacing_medium"
+        android:right="@dimen/spacing_medium"
+        android:top="@dimen/spacing_medium" />
 </shape>
 

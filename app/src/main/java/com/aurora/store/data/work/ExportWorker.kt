@@ -7,7 +7,6 @@ package com.aurora.store.data.work
 
 import android.app.NotificationManager
 import android.content.Context
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.getSystemService
@@ -20,10 +19,8 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.aurora.store.data.model.MinimalApp
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.NotificationUtil
-import com.aurora.store.util.PackageUtil.getPackageInfo
 import com.aurora.store.util.PathUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -32,7 +29,7 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
 /**
- * An expedited worker to export downloaded or installed apps.
+ * An expedited worker to export downloaded apps to a user-chosen URI as a zip bundle.
  */
 @HiltWorker
 class ExportWorker @AssistedInject constructor(
@@ -44,7 +41,6 @@ class ExportWorker @AssistedInject constructor(
         private const val TAG = "ExportWorker"
 
         private const val URI = "URI"
-        private const val IS_DOWNLOAD = "IS_DOWNLOAD"
         private const val PACKAGE_NAME = "PACKAGE_NAME"
         private const val VERSION_CODE = "VERSION_CODE"
         private const val DISPLAY_NAME = "DISPLAY_NAME"
@@ -53,35 +49,12 @@ class ExportWorker @AssistedInject constructor(
         private const val NOTIFICATION_ID_FGS = 501
 
         /**
-         * Exports the installed package to the given URI
-         * @param app App to export
-         * @see [ExportWorker]
-         */
-        fun exportInstalledApp(context: Context, app: MinimalApp, uri: Uri) {
-            val inputData = Data.Builder()
-                .putBoolean(IS_DOWNLOAD, false)
-                .putString(URI, uri.toString())
-                .putString(DISPLAY_NAME, app.displayName)
-                .putString(PACKAGE_NAME, app.packageName)
-                .build()
-
-            val oneTimeWorkRequest = OneTimeWorkRequestBuilder<ExportWorker>()
-                .setInputData(inputData)
-                .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
-                .build()
-
-            Log.i(TAG, "Exporting ${app.packageName}")
-            WorkManager.getInstance(context).enqueue(oneTimeWorkRequest)
-        }
-
-        /**
          * Exports the given download to the URI
          * @param download Download to export
          * @see [ExportWorker]
          */
         fun exportDownloadedApp(context: Context, download: Download, uri: Uri) {
             val inputData = Data.Builder()
-                .putBoolean(IS_DOWNLOAD, download.canInstall(context))
                 .putString(URI, uri.toString())
                 .putString(DISPLAY_NAME, download.displayName)
                 .putString(PACKAGE_NAME, download.packageName)
@@ -101,7 +74,6 @@ class ExportWorker @AssistedInject constructor(
     private lateinit var notificationManager: NotificationManager
 
     override suspend fun doWork(): Result {
-        val isDownload = inputData.getBoolean(IS_DOWNLOAD, false)
         val uri = inputData.getString(URI)!!.toUri()
         val packageName = inputData.getString(PACKAGE_NAME)
         val displayName = inputData.getString(DISPLAY_NAME)
@@ -109,18 +81,14 @@ class ExportWorker @AssistedInject constructor(
 
         notificationManager = context.getSystemService<NotificationManager>()!!
 
-        if (packageName.isNullOrEmpty() || isDownload && versionCode == -1L) {
+        if (packageName.isNullOrEmpty() || versionCode == -1L) {
             Log.e(TAG, "Input data is corrupt, bailing out!")
             notifyStatus(displayName ?: String(), uri, false)
             return Result.failure()
         }
 
         try {
-            if (isDownload) {
-                copyDownloadedApp(packageName, versionCode, uri)
-            } else {
-                copyInstalledApp(packageName, uri)
-            }
+            copyDownloadedApp(packageName, versionCode, uri)
             notifyStatus(displayName ?: packageName, uri)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to export $packageName", exception)
@@ -146,18 +114,6 @@ class ExportWorker @AssistedInject constructor(
                 success
             )
         )
-    }
-
-    private fun copyInstalledApp(packageName: String, uri: Uri) {
-        val packageInfo = getPackageInfo(context, packageName, PackageManager.GET_META_DATA)
-        val fileList: MutableList<File?> = mutableListOf()
-
-        fileList.add(File(packageInfo.applicationInfo!!.sourceDir))
-        packageInfo.applicationInfo!!.splitSourceDirs?.let { splits ->
-            fileList.addAll(splits.map { File(it) })
-        }
-
-        bundleAllAPKs(fileList.filterNotNull(), uri)
     }
 
     private fun copyDownloadedApp(packageName: String, versionCode: Long, uri: Uri) = bundleAllAPKs(

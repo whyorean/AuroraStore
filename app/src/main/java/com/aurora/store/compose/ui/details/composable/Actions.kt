@@ -53,8 +53,8 @@ fun Actions(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(PaddingValues(horizontal = dimensionResource(R.dimen.padding_medium))),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+            .padding(PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium))),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         val buttonWidthModifier = when {
             windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
@@ -92,7 +92,7 @@ fun Actions(
 @Composable
 private fun ActionsPreview() {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         Actions(
             primaryActionDisplayName = stringResource(R.string.action_install),

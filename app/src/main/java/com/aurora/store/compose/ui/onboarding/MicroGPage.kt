@@ -23,7 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.extensions.toast
 import com.aurora.store.R
@@ -62,12 +61,12 @@ private fun ScreenContent(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
             state = listState
         ) {
             item {
                 Column(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
+                    modifier = Modifier.padding(dimensionResource(R.dimen.spacing_medium))
                 ) {
                     Text(
                         text = stringResource(R.string.onboarding_title_gsf),
@@ -105,7 +104,6 @@ private fun ScreenContent(
 
         ScrollHint(
             listState = listState,
-            bottomPadding = 5.dp,
             modifier = Modifier.align(Alignment.BottomCenter)
         )
     }

@@ -63,8 +63,8 @@ fun Tags(app: App) {
     ).filterKeys { it != null }
 
     LazyRow(
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.padding_medium)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium))
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         items(items = tags.keys.toList()) { label ->
             TagListItem(label = label!!, painter = painterResource(tags.getValue(label)))
@@ -77,7 +77,7 @@ fun Tags(app: App) {
 @Composable
 private fun TagsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         Tags(app = app)
     }

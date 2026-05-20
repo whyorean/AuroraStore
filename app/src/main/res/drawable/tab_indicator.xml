@@ -23,7 +23,7 @@
             <solid android:color="?colorAccent" />
             <padding
                 android:left="0dp"
-                android:right="@dimen/padding_xlarge" />
+                android:right="@dimen/spacing_xlarge" />
             <corners android:radius="5dp" />
         </shape>
     </item>

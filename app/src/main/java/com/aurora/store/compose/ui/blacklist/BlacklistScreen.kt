@@ -7,6 +7,8 @@
 package com.aurora.store.compose.ui.blacklist
 
 import android.net.Uri
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -36,8 +38,10 @@ import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,7 +55,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.Constants
@@ -64,6 +67,8 @@ import com.aurora.store.compose.composable.TextDividerComposable
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.blacklist.menu.BlacklistMenu
 import com.aurora.store.compose.ui.blacklist.menu.MenuItem
+import com.aurora.store.compose.ui.commons.SortFilterSheet
+import com.aurora.store.compose.ui.commons.SortFilterState
 import com.aurora.store.data.model.BlacklistAppItem
 import com.aurora.store.viewmodel.blacklist.BlacklistViewModel
 import java.util.Calendar
@@ -72,13 +77,16 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
-fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hiltViewModel()) {
+fun BlacklistScreen(viewModel: BlacklistViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val packages by viewModel.filteredPackages.collectAsStateWithLifecycle()
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val installers by viewModel.installers.collectAsStateWithLifecycle()
 
     ScreenContent(
         packages = packages,
-        onNavigateUp = onNavigateUp,
+        sortFilterState = state,
+        installers = installers,
         isPackageBlacklisted = { pkgName -> pkgName in viewModel.blacklist },
         onBlacklistImport = { uri ->
             viewModel.importBlacklist(uri)
@@ -92,14 +100,16 @@ fun BlacklistScreen(onNavigateUp: () -> Unit, viewModel: BlacklistViewModel = hi
         onBlacklistAll = { viewModel.blacklistAll() },
         onWhitelist = { packageName -> viewModel.whitelist(packageName) },
         onWhitelistAll = { viewModel.whitelistAll() },
-        onSearch = { query -> viewModel.search(query) }
+        onSearch = { query -> viewModel.search(query) },
+        onSortFilterStateChange = viewModel::updateState
     )
 }
 
 @Composable
 private fun ScreenContent(
     packages: List<BlacklistAppItem>? = null,
-    onNavigateUp: () -> Unit = {},
+    sortFilterState: SortFilterState = SortFilterState(),
+    installers: Map<String, String> = emptyMap(),
     isPackageBlacklisted: (packageName: String) -> Boolean = { false },
     onBlacklistImport: (uri: Uri) -> Unit = {},
     onBlacklistExport: (uri: Uri) -> Unit = {},
@@ -107,13 +117,16 @@ private fun ScreenContent(
     onBlacklistAll: () -> Unit = {},
     onWhitelist: (packageName: String) -> Unit = {},
     onWhitelistAll: () -> Unit = {},
-    onSearch: (query: String) -> Unit = {}
+    onSearch: (query: String) -> Unit = {},
+    onSortFilterStateChange: (SortFilterState) -> Unit = {}
 ) {
+    val activity = LocalActivity.current as? ComponentActivity
     val context = LocalContext.current
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
     val focusRequester = remember { FocusRequester() }
     val coroutineScope = rememberCoroutineScope()
+    var sheetVisible by remember { mutableStateOf(false) }
 
     val docImportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
@@ -224,14 +237,22 @@ private fun ScreenContent(
             state = searchBarState,
             inputField = inputField,
             navigationIcon = {
-                IconButton(onClick = onNavigateUp) {
+                IconButton(onClick = { activity?.onBackPressedDispatcher?.onBackPressed() }) {
                     Icon(
                         painter = painterResource(R.drawable.ic_arrow_back),
                         contentDescription = stringResource(R.string.action_back)
                     )
                 }
             },
-            actions = { SetupMenu() },
+            actions = {
+                IconButton(onClick = { sheetVisible = true }) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_tune),
+                        contentDescription = stringResource(R.string.installed_sort_filter)
+                    )
+                }
+                SetupMenu()
+            },
             colors = SearchBarDefaults.appBarWithSearchColors(
                 appBarContainerColor = Color.Transparent
             )
@@ -248,8 +269,8 @@ private fun ScreenContent(
                             .fillMaxWidth()
                             .clickable { onRequestSearch(pkg.displayName) }
                             .padding(
-                                horizontal = dimensionResource(R.dimen.padding_medium),
-                                vertical = dimensionResource(R.dimen.padding_small)
+                                horizontal = dimensionResource(R.dimen.spacing_medium),
+                                vertical = dimensionResource(R.dimen.spacing_small)
                             )
                     )
                 }
@@ -298,7 +319,7 @@ private fun ScreenContent(
                     modifier = Modifier.fillMaxWidth(),
                     state = listState,
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.margin_xxsmall)
+                        dimensionResource(R.dimen.spacing_xsmall)
                     )
                 ) {
                     if (selectedPackages.isNotEmpty()) {
@@ -333,11 +354,19 @@ private fun ScreenContent(
                 }
                 ScrollHint(
                     listState = listState,
-                    bottomPadding = 5.dp,
                     modifier = Modifier.align(Alignment.BottomCenter)
                 )
             }
         }
+    }
+
+    if (sheetVisible) {
+        SortFilterSheet(
+            state = sortFilterState,
+            installers = installers,
+            onStateChange = onSortFilterStateChange,
+            onDismiss = { sheetVisible = false }
+        )
     }
 }
 

@@ -6,8 +6,9 @@
 
 package com.aurora.store.compose.ui.search
 
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.annotation.StringRes
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
@@ -62,7 +63,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
@@ -74,10 +74,11 @@ import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SearchSuggestionListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.details.AppDetailsScreen
@@ -91,7 +92,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
-fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltViewModel()) {
+fun SearchScreen(viewModel: SearchViewModel = hiltViewModel()) {
     val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
     val results = viewModel.apps.collectAsLazyPagingItems()
 
@@ -102,7 +103,6 @@ fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltView
     ScreenContent(
         suggestions = suggestions,
         results = results,
-        onNavigateUp = onNavigateUp,
         onSearch = onSearchCallback,
         onFetchSuggestions = onFetchSuggestionsCallback,
         onFilter = { filter -> viewModel.filterResults(filter) },
@@ -114,12 +114,12 @@ fun SearchScreen(onNavigateUp: () -> Unit, viewModel: SearchViewModel = hiltView
 private fun ScreenContent(
     suggestions: List<SearchSuggestEntry> = emptyList(),
     results: LazyPagingItems<App> = emptyPagingItems(),
-    onNavigateUp: () -> Unit = {},
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
     onFilter: (filter: SearchFilter) -> Unit = {},
     isAnonymous: Boolean = true
 ) {
+    val activity = LocalActivity.current as? ComponentActivity
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
     var isSearching by rememberSaveable { mutableStateOf(false) }
@@ -186,7 +186,7 @@ private fun ScreenContent(
                     )
                 },
                 leadingIcon = {
-                    IconButton(onClick = onNavigateUp) {
+                    IconButton(onClick = { activity?.onBackPressedDispatcher?.onBackPressed() }) {
                         Icon(
                             painter = painterResource(R.drawable.ic_arrow_back),
                             contentDescription = stringResource(R.string.action_back)
@@ -231,17 +231,14 @@ private fun ScreenContent(
 
     @Composable
     fun ListPane() {
-        // TODO: https://issuetracker.google.com/issues/445720462
         Scaffold(
-            modifier = Modifier
-                .focusable(),
             topBar = { SearchBar() }
         ) { paddingValues ->
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
                     .fillMaxSize()
-                    .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                    .padding(vertical = dimensionResource(R.dimen.spacing_medium))
             ) {
                 FilterHeader(
                     isEnabled = isSearching && results.loadState.refresh is LoadState.NotLoading,
@@ -253,7 +250,7 @@ private fun ScreenContent(
                     is LoadState.Loading -> ContainedLoadingIndicator()
 
                     is LoadState.Error -> {
-                        Error(
+                        Placeholder(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_disclaimer),
                             message = stringResource(R.string.error)
@@ -262,7 +259,7 @@ private fun ScreenContent(
 
                     else -> {
                         if (isSearching && results.itemCount == 0) {
-                            Error(
+                            Placeholder(
                                 modifier = Modifier.padding(paddingValues),
                                 painter = painterResource(R.drawable.ic_disclaimer),
                                 message = stringResource(R.string.no_apps_available)
@@ -272,7 +269,10 @@ private fun ScreenContent(
                             Box(modifier = Modifier.fillMaxSize()) {
                                 LazyColumn(
                                     state = listState,
-                                    modifier = Modifier.fillMaxSize()
+                                    modifier = Modifier.fillMaxSize(),
+                                    verticalArrangement = Arrangement.spacedBy(
+                                        dimensionResource(R.dimen.spacing_medium)
+                                    )
                                 ) {
                                     items(
                                         count = results.itemCount,
@@ -288,7 +288,6 @@ private fun ScreenContent(
                                 }
                                 ScrollHint(
                                     listState = listState,
-                                    bottomPadding = 5.dp,
                                     modifier = Modifier.align(Alignment.BottomCenter)
                                 )
                             }
@@ -306,9 +305,10 @@ private fun ScreenContent(
                 this != null -> {
                     AppDetailsScreen(
                         packageName = this,
-                        onNavigateToAppDetails = { packageName -> showDetailPane(packageName) },
-                        onNavigateUp = {
-                            coroutineScope.launch { scaffoldNavigator.navigateBack() }
+                        onNavigateTo = { destination ->
+                            if (destination is Destination.AppDetails) {
+                                showDetailPane(destination.packageName)
+                            }
                         },
                         forceSinglePane = true
                     )
@@ -316,7 +316,7 @@ private fun ScreenContent(
 
                 else -> {
                     if (isSearching && results.itemCount > 0) {
-                        Error(
+                        Placeholder(
                             painter = painterResource(R.drawable.ic_round_search),
                             message = stringResource(R.string.select_app_for_details)
                         )
@@ -435,8 +435,8 @@ private fun FilterHeader(
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal))
+            .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         items(items = filters, key = { item -> item }) { filter ->
             val isSelected = when (filter) {

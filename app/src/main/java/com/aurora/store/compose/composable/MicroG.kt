@@ -91,13 +91,13 @@ fun MicroG(
         modifier = modifier
             .fillMaxSize()
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_small),
-                vertical = dimensionResource(R.dimen.padding_xxsmall)
+                horizontal = dimensionResource(R.dimen.spacing_small),
+                vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
         ) {
             Text(
                 text = stringResource(R.string.onboarding_gms_microg),
@@ -116,8 +116,8 @@ fun MicroG(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = dimensionResource(R.dimen.padding_large)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
+                .padding(vertical = dimensionResource(R.dimen.spacing_large)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
         ) {
             uiState.items.fastForEach { item ->
                 MicroGItemRow(item = item)
@@ -127,7 +127,7 @@ fun MicroG(
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.padding_small)
+                        dimensionResource(R.dimen.spacing_small)
                     )
                 ) {
                     Checkbox(
@@ -218,8 +218,8 @@ private fun MicroGItemRow(item: ExternalItem) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.padding_small),
-                vertical = dimensionResource(R.dimen.padding_xsmall)
+                horizontal = dimensionResource(R.dimen.spacing_small),
+                vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -232,7 +232,7 @@ private fun MicroGItemRow(item: ExternalItem) {
         Column(
             modifier = Modifier
                 .weight(1F)
-                .padding(horizontal = dimensionResource(R.dimen.margin_small))
+                .padding(horizontal = dimensionResource(R.dimen.spacing_small))
         ) {
             Text(
                 text = item.displayName,

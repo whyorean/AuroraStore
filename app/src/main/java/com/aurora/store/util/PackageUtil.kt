@@ -42,6 +42,7 @@ import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
+import com.aurora.extensions.isRAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isVAndAbove
 import com.aurora.extensions.isValidApp
@@ -268,6 +269,22 @@ object PackageUtil {
 
             return secureResult == 1
         }
+    }
+
+    /**
+     * Returns the installer package name that installed [packageName], or null if unknown / not
+     * installed. Uses [PackageManager.getInstallSourceInfo] on API 30+; falls back to the
+     * pre-30 deprecated API below that.
+     */
+    @Suppress("DEPRECATION")
+    fun getInstallerPackageName(context: Context, packageName: String): String? = try {
+        if (isRAndAbove) {
+            context.packageManager.getInstallSourceInfo(packageName).installingPackageName
+        } else {
+            context.packageManager.getInstallerPackageName(packageName)
+        }
+    } catch (_: PackageManager.NameNotFoundException) {
+        null
     }
 
     @Throws(Exception::class)

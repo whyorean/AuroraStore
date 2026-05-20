@@ -46,7 +46,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.Link
 
 @Composable
-fun AboutScreen(onNavigateUp: () -> Unit) {
+fun AboutScreen() {
     var shouldShowAboutDialog by rememberSaveable { mutableStateOf(false) }
 
     if (shouldShowAboutDialog) {
@@ -54,13 +54,12 @@ fun AboutScreen(onNavigateUp: () -> Unit) {
     }
 
     ScreenContent(
-        onNavigateUp = onNavigateUp,
         onAboutAurora = { shouldShowAboutDialog = true }
     )
 }
 
 @Composable
-private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Unit = {}) {
+private fun ScreenContent(onAboutAurora: () -> Unit = {}) {
     val context = LocalContext.current
 
     val linkURLS = stringArrayResource(R.array.link_urls)
@@ -94,8 +93,7 @@ private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Un
     Scaffold(
         topBar = {
             TopAppBar(
-                title = stringResource(R.string.title_about),
-                onNavigateUp = onNavigateUp
+                title = stringResource(R.string.title_about)
             )
         }
     ) { paddingValues ->
@@ -103,7 +101,7 @@ private fun ScreenContent(onNavigateUp: () -> Unit = {}, onAboutAurora: () -> Un
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
         ) {
             stickyHeader {
                 Surface(modifier = Modifier.fillMaxWidth()) {
@@ -130,9 +128,9 @@ private fun BrandHeader() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.margin_medium)),
+            .padding(dimensionResource(R.dimen.spacing_medium)),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_xxsmall))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)

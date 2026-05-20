@@ -36,7 +36,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
@@ -50,7 +49,7 @@ import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ReviewListItem
@@ -64,7 +63,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @Composable
 fun ReviewScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     reviewViewModel: ReviewViewModel = hiltViewModel(
         key = "$packageName/review",
@@ -85,7 +83,6 @@ fun ReviewScreen(
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
         reviews = reviews,
-        onNavigateUp = onNavigateUp,
         onFilter = { filter -> reviewViewModel.fetchReviews(filter) }
     )
 }
@@ -93,7 +90,6 @@ fun ReviewScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
-    onNavigateUp: () -> Unit = {},
     reviews: LazyPagingItems<Review> = emptyPagingItems(),
     onFilter: (filter: Review.Filter) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
@@ -103,8 +99,7 @@ private fun ScreenContent(
             Column {
                 TopAppBar(
                     title = topAppBarTitle,
-                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                    onNavigateUp = onNavigateUp
+                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
                 )
                 FilterHeader { filter -> onFilter(filter) }
             }
@@ -119,7 +114,7 @@ private fun ScreenContent(
                 is LoadState.Loading -> ContainedLoadingIndicator()
 
                 is LoadState.Error -> {
-                    Error(
+                    Placeholder(
                         modifier = Modifier.padding(paddingValues),
                         painter = painterResource(R.drawable.ic_disclaimer),
                         message = stringResource(R.string.error)
@@ -142,7 +137,6 @@ private fun ScreenContent(
                         }
                         ScrollHint(
                             listState = listState,
-                            bottomPadding = 5.dp,
                             modifier = Modifier.align(Alignment.BottomCenter)
                         )
                     }
@@ -173,8 +167,8 @@ private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
 
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.margin_normal)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_normal))
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         items(items = filters.keys.toList(), key = { item -> item }) { filter ->
             val selected = activeFilter == filter

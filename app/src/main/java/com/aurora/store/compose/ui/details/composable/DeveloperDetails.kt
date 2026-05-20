@@ -22,8 +22,8 @@ import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.mailTo
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -38,7 +38,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 fun DeveloperDetails(address: String, website: String, email: String) {
     val context = LocalContext.current
 
-    Header(title = stringResource(R.string.details_dev_details))
+    SectionHeader(title = stringResource(R.string.details_dev_details))
     Column {
         if (website.isNotBlank()) {
             Info(
@@ -74,7 +74,7 @@ fun DeveloperDetails(address: String, website: String, email: String) {
 @Composable
 private fun DeveloperDetailsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         DeveloperDetails(
             address = app.developerAddress,

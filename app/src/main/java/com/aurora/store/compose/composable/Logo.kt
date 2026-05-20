@@ -36,7 +36,7 @@ fun Logo(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimen.margin_small),
+            dimensionResource(R.dimen.spacing_small),
             Alignment.CenterVertically
         ),
         horizontalAlignment = Alignment.CenterHorizontally

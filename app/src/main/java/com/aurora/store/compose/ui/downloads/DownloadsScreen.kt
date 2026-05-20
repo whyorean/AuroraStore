@@ -29,7 +29,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -42,13 +41,15 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.DownloadListItem
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
 import com.aurora.store.compose.ui.downloads.menu.MenuItem
+import com.aurora.store.compose.ui.sheets.DownloadActionsSheet
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.viewmodel.downloads.DownloadsViewModel
@@ -57,9 +58,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun DownloadsScreen(
-    onNavigateUp: () -> Unit,
-    viewModel: DownloadsViewModel = hiltViewModel(),
-    onNavigateToAppDetails: (packageName: String) -> Unit
+    onNavigateTo: (Destination) -> Unit,
+    viewModel: DownloadsViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val downloads = viewModel.downloads.collectAsLazyPagingItems()
@@ -79,9 +79,8 @@ fun DownloadsScreen(
     )
 
     ScreenContent(
-        onNavigateUp = onNavigateUp,
         downloads = downloads,
-        onNavigateToAppDetails = onNavigateToAppDetails,
+        onNavigateTo = onNavigateTo,
         onCancelAll = { viewModel.cancelAll() },
         onForceClearAll = { viewModel.clearAll() },
         onClearFinished = { viewModel.clearFinished() },
@@ -100,8 +99,7 @@ fun DownloadsScreen(
 @Composable
 private fun ScreenContent(
     downloads: LazyPagingItems<Download> = emptyPagingItems(),
-    onNavigateUp: () -> Unit = {},
-    onNavigateToAppDetails: (packageName: String) -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {},
     onCancel: (packageName: String) -> Unit = {},
     onClear: (download: Download) -> Unit = {},
     onExport: (download: Download) -> Unit = {},
@@ -117,6 +115,19 @@ private fun ScreenContent(
      * Save the initial loading state to make sure we don't replay the loading animation again.
      */
     var initialLoad by rememberSaveable { mutableStateOf(true) }
+    var actionsTarget by rememberSaveable { mutableStateOf<Download?>(null) }
+
+    actionsTarget?.let { target ->
+        DownloadActionsSheet(
+            download = target,
+            onDismiss = { actionsTarget = null },
+            onShowDetails = { onNavigateTo(Destination.AppDetails(target.packageName)) },
+            onCancel = { onCancel(target.packageName) },
+            onInstall = { onInstall(target) },
+            onExport = { onExport(target) },
+            onClear = { onClear(target) }
+        )
+    }
 
     @Composable
     fun SetupMenu() {
@@ -133,7 +144,6 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.title_download_manager),
-                onNavigateUp = onNavigateUp,
                 actions = { if (downloads.itemCount != 0) SetupMenu() }
             )
         }
@@ -142,7 +152,7 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                .padding(vertical = dimensionResource(R.dimen.spacing_medium))
         ) {
             when {
                 downloads.loadState.refresh is LoadState.Loading && initialLoad -> {
@@ -153,7 +163,7 @@ private fun ScreenContent(
                     initialLoad = false
 
                     if (downloads.itemCount == 0) {
-                        Error(
+                        Placeholder(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_download_manager),
                             message = stringResource(R.string.download_none)
@@ -172,20 +182,13 @@ private fun ScreenContent(
                                         DownloadListItem(
                                             modifier = Modifier.animateItem(),
                                             download = download,
-                                            onClick = {
-                                                onNavigateToAppDetails(download.packageName)
-                                            },
-                                            onClear = { onClear(download) },
-                                            onCancel = { onCancel(download.packageName) },
-                                            onExport = { onExport(download) },
-                                            onInstall = { onInstall(download) }
+                                            onClick = { actionsTarget = download }
                                         )
                                     }
                                 }
                             }
                             ScrollHint(
                                 listState = listState,
-                                bottomPadding = 5.dp,
                                 modifier = Modifier.align(Alignment.BottomCenter)
                             )
                         }

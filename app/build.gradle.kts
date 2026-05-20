@@ -14,7 +14,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.parcelize)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.google.ksp)
-    alias(libs.plugins.androidx.navigation)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.rikka.tools.refine.plugin)
     alias(libs.plugins.hilt.android.plugin)
@@ -128,23 +127,25 @@ configure<ApplicationExtension> {
         create("vanilla") {
             isDefault = true
             dimension = "device"
+            buildConfigField("Boolean", "SHOW_ANONYMOUS_LOGIN", "true")
         }
 
         create("huawei") {
             dimension = "device"
             versionNameSuffix = "-hw"
+            buildConfigField("Boolean", "SHOW_ANONYMOUS_LOGIN", "false")
         }
 
         // This flavor is only for preloaded devices / users who push the app to system
         create("preload") {
             dimension = "device"
             versionNameSuffix = "-preload"
+            buildConfigField("Boolean", "SHOW_ANONYMOUS_LOGIN", "true")
         }
     }
 
     buildFeatures {
         buildConfig = true
-        viewBinding = true
         aidl = true
         compose = true
     }
@@ -193,8 +194,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.navigation3)
     implementation(libs.androidx.preference.ktx)
-    implementation(libs.androidx.swiperefreshlayout)
-    implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.paging.runtime)
 
@@ -205,13 +204,12 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
@@ -224,13 +222,6 @@ dependencies {
     implementation(libs.coil.kt)
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
-
-    // Shimmer
-    implementation(libs.facebook.shimmer)
-
-    // Epoxy
-    implementation(libs.airbnb.epoxy.android)
-    ksp(libs.airbnb.epoxy.processor)
 
     // HTTP Clients
     implementation(libs.squareup.okhttp)

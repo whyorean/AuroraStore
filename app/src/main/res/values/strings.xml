@@ -226,24 +226,34 @@
     <string name="pref_ui_no_for_you">"For you pages"</string>
     <string name="pref_ui_no_for_you_desc">"Display For you pages on home screen"</string>
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
-    <string name="pref_updates_incompatible">Show updates that may fail</string>
-    <string name="pref_updates_incompatible_desc">Display updates for incompatible or disabled apps that may fail to install</string>
-    <string name="pref_aurora_only">Filter apps from other sources</string>
-    <string name="pref_aurora_only_desc">Don\'t check for updates for apps installed from sources outside Aurora Store</string>
+    <string name="pref_updates_incompatible">"Show updates that may fail"</string>
+    <string name="pref_updates_incompatible_desc">"Display updates for incompatible or disabled apps that may fail to install."</string>
+    <string name="pref_aurora_only">"Filter apps from other sources."</string>
+    <string name="pref_aurora_only_desc">"Do not check for updates for apps installed from sources outside Aurora Store"</string>
+    <string name="pref_source_filters_title">"Filter apps from other sources"</string>
+    <string name="pref_source_filters_desc_all">"Skip every app not installed by Aurora Store"</string>
+    <string name="pref_source_filters_desc_none">"No installers excluded"</string>
+    <string name="pref_source_filters_desc_count">"%1$d installer(s) excluded"</string>
+    <string name="source_filters_all">"Filter all other installers"</string>
+    <string name="source_filters_installers_header">"Specific installers"</string>
+    <string name="source_filters_installers_empty">"No installers added yet"</string>
+    <string name="source_filters_add">"Add installer"</string>
+    <string name="source_filters_add_dialog_hint">"Enter package name"</string>
+    <string name="source_filters_remove">"Remove installer"</string>
     <string name="purchase_failed">"Download failed"</string>
     <string name="purchase_invalid">"App not purchased"</string>
     <string name="purchase_unsupported">"App not supported"</string>
     <string name="purchase_not_found">"App not found"</string>
     <string name="purchase_no_file">"Could not get files"</string>
     <string name="purchase_session_expired">"Session expired, re-login to obtain new session."</string>
-    <string name="session_enjoy">Log in and enjoy.</string>
-    <string name="session_good">Woah! All good.</string>
-    <string name="session_init">Getting things ready…</string>
-    <string name="session_login">Please log in to your Google Play account</string>
-    <string name="session_login_failed_google">Could not log in via Google</string>
-    <string name="session_scrapped">Last session scrapped</string>
-    <string name="session_verifying">Verifying session</string>
-    <string name="session_verifying_google">Verifying Google session</string>
+    <string name="session_enjoy">"Log in and enjoy."</string>
+    <string name="session_good">"All good."</string>
+    <string name="session_init">"Getting things ready…"</string>
+    <string name="session_login">"Please log in to your Google Play account"</string>
+    <string name="session_login_failed_google">"Could not log in via Google"</string>
+    <string name="session_scrapped">"Last session scrapped"</string>
+    <string name="session_verifying">"Verifying session"</string>
+    <string name="session_verifying_google">"Verifying Google session"</string>
     <string name="spoof_apply">"Make sure you re-login to apply the spoof"</string>
     <string name="insecure_anonymous_apply">"Make sure you re-login and restart app to apply changes."</string>
     <string name="tab_categories">"Categories"</string>
@@ -307,6 +317,16 @@
     <string name="app_updater_service_notif_text">Enables background app download</string>
     <string name="update_available">update available</string>
     <string name="updates_available">updates available</string>
+    <string name="updates_incompatible_header">Incompatible updates</string>
+    <string name="updates_incompatible_desc">These system app updates cannot be installed on this OS</string>
+    <string name="updates_approval_header">Updates requiring approval</string>
+    <string name="updates_approval_desc">These apps were not installed by Aurora. Updating them prompts to transfer app update ownership.</string>
+    <string name="updates_app_details">Details</string>
+    <string name="updates_ignored_header">Ignored</string>
+    <string name="updates_ignored_desc">These updates are hidden until you unignore them</string>
+    <string name="action_ignore_all">Ignore all updates</string>
+    <string name="action_ignore_version">Skip version <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Unignore</string>
     <string name="error">An error occurred!</string>
     <string name="menu">Menu</string>
     <string name="expand">Expand</string>
@@ -331,7 +351,14 @@
     <string name="pref_updates_auto_notify">Check &amp; notify for available updates</string>
     <string name="pref_updates_auto_install">Check &amp; install available updates automatically</string>
     <string name="pref_updates_check_frequency">Automatic updates frequency</string>
-    <string name="pref_updates_check_frequency_desc">Configure time interval for automatic updates, in hour.</string>
+    <string name="pref_updates_check_frequency_desc">How often Aurora checks for app updates.</string>
+    <string name="pref_updates_check_frequency_3h">Every 3 hours</string>
+    <string name="pref_updates_check_frequency_6h">Every 6 hours</string>
+    <string name="pref_updates_check_frequency_12h">Every 12 hours</string>
+    <string name="pref_updates_check_frequency_24h">Every 24 hours</string>
+    <string name="pref_updates_check_frequency_3d">Every 3 days</string>
+    <string name="pref_updates_check_frequency_7d">Every 7 days</string>
+    <string name="pref_updates_check_frequency_15d">Every 15 days</string>
     <string name="failed_to_fetch_report">Failed to fetch privacy report</string>
     <string name="access_denied_using_vpn">Access denied! Are you using VPN or Tor?</string>
     <string name="bad_request">Internal error! Please retry after sometime</string>
@@ -342,6 +369,10 @@
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
     <string name="app_language">App language</string>
+    <string name="pref_ui_theme">Theme</string>
+    <string name="pref_theme_style_system">Follow system</string>
+    <string name="pref_theme_style_light">Light</string>
+    <string name="pref_theme_style_dark">Dark</string>
     <string name="pref_ui_layout">Layout</string>
     <string name="pref_ui_layout_tab">Select default tab</string>
     <string name="app_links_title">App links</string>
@@ -531,6 +562,23 @@
     <!-- AppsGamesFragment -->
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> apps installed</string>
 
+    <!-- InstalledScreen sort / filter / group sheet -->
+    <string name="installed_sort_filter">Sort and filter</string>
+    <string name="installed_sort_by">Sort by</string>
+    <string name="installed_sort_name">Name</string>
+    <string name="installed_sort_date_installed">Date installed</string>
+    <string name="installed_sort_date_updated">Date updated</string>
+    <string name="installed_sort_package_name">Package name</string>
+    <string name="installed_sort_size">Size</string>
+    <string name="installed_sort_ascending">Ascending</string>
+    <string name="installed_sort_descending">Descending</string>
+    <string name="installed_filter">Filter</string>
+    <string name="installed_filter_user_apps">User apps</string>
+    <string name="installed_filter_system_apps">System apps</string>
+    <string name="installed_filter_installer">Installed from</string>
+    <string name="installed_filter_all">All</string>
+    <string name="installed_updated_at">Updated <xliff:g id="when">%1$s</xliff:g></string>
+
     <!-- NetworkPreference -->
     <string name="pref_network_microg_login_title">Use microG to sign in to accounts</string>
     <string name="pref_network_microg_login_desc">Authenticate using microG when signing into Google accounts for a simpler sign-in flow</string>
@@ -560,4 +608,7 @@
     <!-- Misc -->
     <string name="loading">Loading in progress</string>
     <string name="page">Page <xliff:g id="number">%1$d</xliff:g></string>
+
+    <!-- Network Dialog -->
+    <string name="action_check">"Check"</string>
 </resources>

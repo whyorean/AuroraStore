@@ -5,12 +5,14 @@
 
 package com.aurora.store.compose.ui.commons
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,9 +28,10 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
@@ -39,8 +42,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @Composable
 fun StreamBrowseScreen(
     streamCluster: StreamCluster,
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: StreamBrowseViewModel = hiltViewModel(
         creationCallback = { factory: StreamBrowseViewModel.Factory ->
             factory.create(streamCluster)
@@ -52,8 +54,7 @@ fun StreamBrowseScreen(
     ScreenContent(
         title = streamCluster.clusterTitle,
         apps = apps,
-        onNavigateUp = onNavigateUp,
-        onNavigateToAppDetails = onNavigateToAppDetails
+        onNavigateTo = onNavigateTo
     )
 }
 
@@ -61,19 +62,18 @@ fun StreamBrowseScreen(
 private fun ScreenContent(
     title: String = String(),
     apps: LazyPagingItems<App> = emptyPagingItems(),
-    onNavigateToAppDetails: (packageName: String) -> Unit = {},
-    onNavigateUp: () -> Unit = {}
+    onNavigateTo: (Destination) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = title, onNavigateUp = onNavigateUp)
+            TopAppBar(title = title)
         }
     ) { paddingValues ->
         when (apps.loadState.refresh) {
             is LoadState.Loading -> ContainedLoadingIndicator()
 
             is LoadState.Error -> {
-                Error(
+                Placeholder(
                     modifier = Modifier.padding(paddingValues),
                     painter = painterResource(R.drawable.ic_disclaimer),
                     message = stringResource(R.string.error)
@@ -82,7 +82,7 @@ private fun ScreenContent(
 
             else -> {
                 if (apps.itemCount == 0) {
-                    Error(
+                    Placeholder(
                         modifier = Modifier.padding(paddingValues),
                         painter = painterResource(R.drawable.ic_disclaimer),
                         message = stringResource(R.string.no_apps_available)
@@ -91,7 +91,10 @@ private fun ScreenContent(
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(paddingValues)
+                            .padding(paddingValues),
+                        verticalArrangement = Arrangement.spacedBy(
+                            dimensionResource(R.dimen.spacing_medium)
+                        )
                     ) {
                         items(
                             count = apps.itemCount,
@@ -100,7 +103,9 @@ private fun ScreenContent(
                             apps[index]?.let { app ->
                                 LargeAppListItem(
                                     app = app,
-                                    onClick = { onNavigateToAppDetails(app.packageName) }
+                                    onClick = {
+                                        onNavigateTo(Destination.AppDetails(app.packageName))
+                                    }
                                 )
                             }
                         }

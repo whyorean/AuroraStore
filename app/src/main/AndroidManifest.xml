@@ -82,9 +82,9 @@
         tools:targetApi="tiramisu">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ComposeActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -103,15 +103,27 @@
             <intent-filter>
                 <action android:name="android.intent.action.SHOW_APP_INFO" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-            <nav-graph android:value="@navigation/mobile_navigation" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="market" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="market.android.com" />
+                <data android:host="play.google.com" />
+                <data android:host="play.google.com" />
+            </intent-filter>
         </activity>
-
-        <!-- Activity to host composable screens -->
-        <activity
-            android:name=".ComposeActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
 
         <!-- Notification Action (Download Complete) -->
         <activity

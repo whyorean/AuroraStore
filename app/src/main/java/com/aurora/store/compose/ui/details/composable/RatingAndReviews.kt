@@ -40,7 +40,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Rating
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.details.RatingListItem
 import com.aurora.store.compose.composable.details.ReviewListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -82,7 +82,7 @@ fun RatingAndReviews(
         }
     }
 
-    Header(
+    SectionHeader(
         title = stringResource(R.string.details_ratings),
         onClick = onNavigateToDetailsReview
     )
@@ -90,12 +90,12 @@ fun RatingAndReviews(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_medium)),
+            .padding(dimensionResource(R.dimen.spacing_medium)),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_large))
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_large))
     ) {
         Column(
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
+            modifier = Modifier.padding(dimensionResource(R.dimen.spacing_medium)),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -114,7 +114,7 @@ fun RatingAndReviews(
         }
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
         ) {
             stars.reversed().fastForEach { star ->
                 RatingListItem(
@@ -129,8 +129,8 @@ fun RatingAndReviews(
         val pagerState = rememberPagerState { featuredReviews.size }
         HorizontalPager(
             state = pagerState,
-            contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.padding_medium)),
-            pageSpacing = dimensionResource(R.dimen.margin_medium)
+            contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
+            pageSpacing = dimensionResource(R.dimen.spacing_medium)
         ) { page ->
             Box(
                 modifier = Modifier
@@ -158,7 +158,7 @@ private fun RatingAndReviewsPreview(@PreviewParameter(AppPreviewProvider::class)
         )
     }
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         RatingAndReviews(rating = app.rating, featuredReviews = reviews)
     }
