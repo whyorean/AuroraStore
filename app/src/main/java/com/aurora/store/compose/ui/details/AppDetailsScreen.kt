@@ -227,7 +227,7 @@ private fun ScreenContentError(message: String? = null, onRetry: (() -> Unit)? =
     ) { paddingValues ->
         Placeholder(
             modifier = Modifier.padding(paddingValues),
-            painter = painterResource(R.drawable.ic_apps_outage),
+            painter = painterResource(R.drawable.ic_refresh),
             message = message ?: stringResource(R.string.toast_app_unavailable),
             actionLabel = onRetry?.let { stringResource(R.string.action_retry) },
             onAction = onRetry
