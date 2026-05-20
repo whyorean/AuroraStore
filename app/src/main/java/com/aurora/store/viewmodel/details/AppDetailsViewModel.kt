@@ -16,6 +16,8 @@ import com.aurora.extensions.TAG
 import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.data.models.StreamBundle
+import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
 import com.aurora.gplayapi.helpers.AppDetailsHelper
@@ -44,8 +46,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -76,8 +82,13 @@ class AppDetailsViewModel @Inject constructor(
     private val _state = MutableStateFlow<AppState>(AppState.Loading)
     val state = _state.asStateFlow()
 
-    private val _suggestions = MutableStateFlow<List<App>>(emptyList())
-    val suggestions = _suggestions.asStateFlow()
+    private val _suggestionsBundle = MutableSharedFlow<StreamBundle?>(
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
+    val suggestionsBundle: SharedFlow<StreamBundle?> = _suggestionsBundle.asSharedFlow()
+
+    private var suggestionsState: StreamBundle = StreamBundle()
 
     private val _featuredReviews = MutableStateFlow<List<Review>>(emptyList())
     val featuredReviews = _featuredReviews.asStateFlow()
@@ -99,6 +110,11 @@ class AppDetailsViewModel @Inject constructor(
 
     private val _favourite = MutableStateFlow(false)
     val favourite = _favourite.asStateFlow()
+
+    private val _installError = MutableStateFlow<InstallError?>(null)
+    val installError = _installError.asStateFlow()
+
+    data class InstallError(val error: String?, val extra: String?)
 
     private val download = combine(app, downloadHelper.downloadsList) { a, list ->
         if (a?.packageName.isNullOrBlank()) return@combine null
@@ -257,10 +273,17 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
+    fun dismissInstallError() {
+        _installError.value = null
+    }
+
     private fun observeAppState() {
         AuroraApp.events.installerEvent
             .filter { it.packageName == app.value?.packageName }
             .onEach { event ->
+                if (event is InstallerEvent.Failed) {
+                    _installError.value = InstallError(event.error, event.extra)
+                }
                 _state.value = when {
                     event is InstallerEvent.Installing -> AppState.Installing(event.progress)
                     else -> defaultAppState
@@ -318,14 +341,47 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     private fun fetchSuggestions() {
-        // Bail out if we go no suggestions to offer
-        if (app.value!!.detailsStreamUrl.isNullOrBlank()) return
+        val streamUrl = app.value!!.detailsStreamUrl
+
+        // Bail out if we got no suggestions to offer
+        if (streamUrl.isNullOrBlank()) {
+            _suggestionsBundle.tryEmit(StreamBundle.EMPTY)
+            return
+        }
 
         viewModelScope.launch(Dispatchers.IO) {
-            val streamBundle = appDetailsHelper.getDetailsStream(app.value!!.detailsStreamUrl!!)
-            _suggestions.value = streamBundle.streamClusters.values
-                .flatMap { it.clusterAppList }
-                .distinctBy { it.packageName }
+            try {
+                val pageBundle = appDetailsHelper.getDetailsStream(streamUrl)
+                val pageClusters = pageBundle.streamClusters.filterValues {
+                    it.clusterTitle.isNotBlank() && it.clusterAppList.isNotEmpty()
+                }
+                suggestionsState = pageBundle.copy(streamClusters = pageClusters)
+                _suggestionsBundle.tryEmit(suggestionsState)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch suggestions stream", exception)
+                _suggestionsBundle.tryEmit(StreamBundle.EMPTY)
+            }
+        }
+    }
+
+    fun loadMoreCluster(cluster: StreamCluster) {
+        if (!cluster.hasNext()) return
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val nextPage = appDetailsHelper.getNextStreamCluster(cluster.clusterNextPageUrl)
+                val existing = suggestionsState.streamClusters[cluster.id] ?: return@launch
+                val mergedCluster = existing.copy(
+                    clusterAppList = existing.clusterAppList + nextPage.clusterAppList,
+                    clusterNextPageUrl = nextPage.clusterNextPageUrl
+                )
+                suggestionsState = suggestionsState.copy(
+                    streamClusters = suggestionsState.streamClusters + (cluster.id to mergedCluster)
+                )
+                _suggestionsBundle.tryEmit(suggestionsState)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch next cluster page", exception)
+            }
         }
     }
 

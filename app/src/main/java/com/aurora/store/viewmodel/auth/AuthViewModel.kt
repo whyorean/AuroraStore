@@ -117,6 +117,8 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun retry() = updateAuthState()
+
     private fun updateAuthState() {
         if (_authState.value != AuthState.Fetching) {
             if (AccountProvider.isLoggedIn(context)) {

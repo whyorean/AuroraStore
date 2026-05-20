@@ -44,7 +44,12 @@ class DownloadHelper @Inject constructor(
         private const val VERSION_CODE = "VERSION_CODE"
     }
 
-    val downloadsList get() = downloadDao.downloads()
+    // Single stable StateFlow shared across consumers. Previously a `get()` accessor that
+    // returned a new StateFlow on every read, which made `collectAsStateWithLifecycle` re-
+    // collect on every recomposition and briefly replay the `emptyList()` initial value —
+    // causing the Updates screen's per-item button to flicker between "Update" and "Cancel"
+    // on every download tick.
+    val downloadsList = downloadDao.downloads()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
     val pagedDownloads get() = downloadDao.pagedDownloads()
@@ -160,9 +165,14 @@ class DownloadHelper @Inject constructor(
      * @param updatesOnly Whether to cancel only updates, defaults to false
      */
     suspend fun cancelAll(updatesOnly: Boolean = false) {
-        // Cancel all enqueued downloads first to avoid triggering re-download
+        // Cancel queued/completed downloads first to avoid triggering re-download and to give
+        // the user immediate feedback for items that already finished downloading. The actual
+        // OS-level install for COMPLETED entries is wrapped in NonCancellable inside the
+        // worker and cannot be aborted — if it succeeds, the update row is removed via
+        // InstallerEvent.Installed; if it fails, the user can re-trigger an update.
+        val cancellableStatuses = setOf(DownloadStatus.QUEUED, DownloadStatus.COMPLETED)
         downloadDao.downloads().firstOrNull()
-            ?.filter { it.status == DownloadStatus.QUEUED }
+            ?.filter { it.status in cancellableStatuses }
             ?.filter { if (updatesOnly) it.isInstalled else true }
             ?.forEach {
                 downloadDao.updateStatus(it.packageName, DownloadStatus.CANCELLED)

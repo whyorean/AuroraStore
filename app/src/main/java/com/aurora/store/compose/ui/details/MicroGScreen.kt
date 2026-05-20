@@ -6,6 +6,8 @@
 
 package com.aurora.store.compose.ui.details
 
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -55,7 +57,6 @@ import com.aurora.store.viewmodel.onboarding.MicroGViewModel
 @Composable
 fun MicroGScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
     onProceed: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     viewModel: MicroGViewModel = hiltViewModel(),
@@ -70,7 +71,6 @@ fun MicroGScreen(
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
         uiState = viewModel.uiState,
-        onNavigateUp = onNavigateUp,
         onInstall = { viewModel.downloadMicroG() },
         onRetry = { viewModel.retryDownload() },
         onProceed = onProceed
@@ -81,12 +81,12 @@ fun MicroGScreen(
 private fun ScreenContent(
     topAppBarTitle: String? = null,
     uiState: MicroGUIState = MicroGUIState(),
-    onNavigateUp: () -> Unit = {},
     onInstall: () -> Unit = {},
     onRetry: () -> Unit = {},
     onProceed: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
+    val activity = LocalActivity.current as? ComponentActivity
     val context = LocalContext.current
     val listState = rememberLazyListState()
 
@@ -94,8 +94,7 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         },
         bottomBar = {
@@ -104,15 +103,15 @@ private fun ScreenContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .navigationBarsPadding()
-                        .padding(horizontal = dimensionResource(R.dimen.padding_medium))
-                        .padding(vertical = dimensionResource(R.dimen.padding_small)),
+                        .padding(horizontal = dimensionResource(R.dimen.spacing_medium))
+                        .padding(vertical = dimensionResource(R.dimen.spacing_small)),
                     horizontalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.padding_medium)
+                        dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
                     FilledTonalButton(
                         modifier = Modifier.weight(1F),
-                        onClick = onNavigateUp
+                        onClick = { activity?.onBackPressedDispatcher?.onBackPressed() }
                     ) {
                         Text(
                             text = stringResource(R.string.action_cancel),
@@ -148,7 +147,7 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
                 state = listState
             ) {
                 item {
@@ -174,7 +173,6 @@ private fun ScreenContent(
 
             ScrollHint(
                 listState = listState,
-                bottomPadding = 5.dp,
                 modifier = Modifier.align(Alignment.BottomCenter)
             )
         }

@@ -53,7 +53,9 @@ fun InputDispenserDialog(onAdd: (url: String) -> Unit = {}, onDismiss: () -> Uni
         title = { Text(text = stringResource(R.string.add_dispenser_title)) },
         text = {
             Column(
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_medium)
+                )
             ) {
                 Text(text = stringResource(R.string.add_dispenser_summary))
                 OutlinedTextField(

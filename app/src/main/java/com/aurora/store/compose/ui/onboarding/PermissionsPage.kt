@@ -45,12 +45,12 @@ private fun PageContent(
     onPermissionCallback: (type: PermissionType) -> Unit = {}
 ) {
     PermissionList(
-        modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+        modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
         permissions = permissions,
         onPermissionCallback = onPermissionCallback,
         header = {
             Column(
-                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
+                modifier = Modifier.padding(dimensionResource(R.dimen.spacing_medium))
             ) {
                 Text(
                     text = stringResource(R.string.onboarding_title_permissions),

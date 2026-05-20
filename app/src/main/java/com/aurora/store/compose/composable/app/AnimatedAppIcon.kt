@@ -111,7 +111,9 @@ private fun AnimatedAppIconPreview(@PreviewParameter(AppPreviewProvider::class) 
 @PreviewWrapper(ThemePreviewProvider::class)
 @Preview(showBackground = true)
 @Composable
-private fun AnimatedAppIconPreview(@PreviewParameter(ProgressProvider::class) progress: Float) {
+private fun AnimatedAppIconInProgressPreview(
+    @PreviewParameter(ProgressProvider::class) progress: Float
+) {
     AnimatedAppIcon(
         modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
         iconUrl = "",

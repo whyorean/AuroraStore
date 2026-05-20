@@ -32,18 +32,18 @@ import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.ScrollHint
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.AppListItem
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
@@ -52,8 +52,7 @@ import com.aurora.store.viewmodel.details.MoreViewModel
 @Composable
 fun MoreScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     moreViewModel: MoreViewModel = hiltViewModel(
         key = "$packageName/more",
@@ -68,8 +67,7 @@ fun MoreScreen(
     ScreenContent(
         app = app!!,
         dependencies = dependencies,
-        onNavigateUp = onNavigateUp,
-        onNavigateToAppDetails = onNavigateToAppDetails
+        onNavigateTo = onNavigateTo
     )
 }
 
@@ -77,8 +75,7 @@ fun MoreScreen(
 private fun ScreenContent(
     app: App,
     dependencies: List<App>? = null,
-    onNavigateUp: () -> Unit = {},
-    onNavigateToAppDetails: (packageName: String) -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     val topAppBarTitle = when {
@@ -90,8 +87,7 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }
     ) { paddingValues ->
@@ -104,16 +100,18 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 state = listState,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_medium)
+                )
             ) {
                 item {
-                    Header(title = stringResource(R.string.details_description))
+                    SectionHeader(title = stringResource(R.string.details_description))
                 }
 
                 item {
                     Text(
                         modifier = Modifier.padding(
-                            horizontal = dimensionResource(R.dimen.padding_medium)
+                            horizontal = dimensionResource(R.dimen.spacing_medium)
                         ),
                         text = AnnotatedString.fromHtml(
                             htmlString = app.description
@@ -126,7 +124,7 @@ private fun ScreenContent(
                     if (dependencies != null) {
                         AppDependencies(
                             dependencies = dependencies,
-                            onNavigateToAppDetails = onNavigateToAppDetails
+                            onNavigateTo = onNavigateTo
                         )
                     }
                 }
@@ -137,7 +135,6 @@ private fun ScreenContent(
             }
             ScrollHint(
                 listState = listState,
-                bottomPadding = 5.dp,
                 modifier = Modifier.align(Alignment.BottomCenter)
             )
         }
@@ -148,11 +145,8 @@ private fun ScreenContent(
  * Composable to show dependencies of an app
  */
 @Composable
-private fun AppDependencies(
-    dependencies: List<App>,
-    onNavigateToAppDetails: (packageName: String) -> Unit
-) {
-    Header(title = stringResource(R.string.details_dependencies))
+private fun AppDependencies(dependencies: List<App>, onNavigateTo: (Destination) -> Unit) {
+    SectionHeader(title = stringResource(R.string.details_dependencies))
     if (dependencies.isEmpty()) {
         Info(
             title = AnnotatedString(text = stringResource(R.string.details_no_dependencies))
@@ -162,7 +156,7 @@ private fun AppDependencies(
             items(items = dependencies, key = { item -> item.id }) { app ->
                 AppListItem(
                     app = app,
-                    onClick = { onNavigateToAppDetails(app.packageName) }
+                    onClick = { onNavigateTo(Destination.AppDetails(app.packageName)) }
                 )
             }
         }
@@ -174,7 +168,7 @@ private fun AppDependencies(
  */
 @Composable
 private fun AppInfoMore(app: App) {
-    Header(title = stringResource(R.string.details_more_info))
+    SectionHeader(title = stringResource(R.string.details_more_info))
     Info(
         title = AnnotatedString(
             text = stringResource(R.string.details_more_package_name)

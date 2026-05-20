@@ -37,8 +37,8 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 @Composable
 fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int) -> Unit = {}) {
     LazyRow(
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.padding_medium)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         items(items = screenshots, key = { artwork -> artwork.url }) { artwork ->
             ScreenshotListItem(
@@ -57,7 +57,7 @@ fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int)
 @Composable
 private fun ScreenshotsPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         Screenshots(screenshots = app.screenshots)
     }

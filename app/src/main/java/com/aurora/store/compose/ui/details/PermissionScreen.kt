@@ -29,7 +29,6 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.adaptiveNavigationIcon
@@ -47,7 +46,6 @@ import com.aurora.store.viewmodel.details.PermissionViewModel
 @Composable
 fun PermissionScreen(
     packageName: String,
-    onNavigateUp: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     permissionViewModel: PermissionViewModel = hiltViewModel(
         key = "$packageName/permission",
@@ -67,7 +65,6 @@ fun PermissionScreen(
 
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
-        onNavigateUp = onNavigateUp,
         permissionsInfo = permissionsInfo
     )
 }
@@ -76,7 +73,6 @@ fun PermissionScreen(
 private fun ScreenContent(
     topAppBarTitle: String? = null,
     permissionsInfo: Map<String, PermissionInfo> = emptyMap(),
-    onNavigateUp: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     val packageManager = LocalContext.current.packageManager
@@ -85,8 +81,7 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
-                onNavigateUp = onNavigateUp
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }
     ) { paddingValues ->
@@ -99,9 +94,11 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.padding_medium)),
+                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
                 state = listState,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_medium)
+                )
             ) {
                 items(items = permissionsInfo.keys.toList(), key = { it }) { permission ->
                     val permissionInfo = permissionsInfo.getValue(permission)
@@ -127,7 +124,6 @@ private fun ScreenContent(
             }
             ScrollHint(
                 listState = listState,
-                bottomPadding = 5.dp,
                 modifier = Modifier.align(Alignment.BottomCenter)
             )
         }

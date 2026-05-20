@@ -36,8 +36,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.aurora.store.R
@@ -48,7 +48,6 @@ import kotlinx.coroutines.launch
 fun ScrollHint(
     listState: LazyListState,
     modifier: Modifier = Modifier,
-    bottomPadding: Dp = 72.dp, // keep above bottom bar
     autoHideOnScroll: Boolean = true,
     enableBounce: Boolean = true,
     onClickScrollOffset: Float = 300f
@@ -88,7 +87,7 @@ fun ScrollHint(
         visible = visible,
         modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = bottomPadding),
+            .padding(bottom = dimensionResource(R.dimen.scroll_hint_padding)),
         enter = fadeIn() + slideInVertically { it / 2 },
         exit = fadeOut()
     ) {

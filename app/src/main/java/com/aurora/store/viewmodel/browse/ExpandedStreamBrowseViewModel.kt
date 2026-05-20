@@ -1,85 +1,90 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2024 Aurora OSS
+ * SPDX-FileCopyrightText: 2021 Rahul Kumar Patel <whyorean@gmail.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.viewmodel.browse
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
+import com.aurora.store.data.PageResult
+import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-@HiltViewModel
-class ExpandedStreamBrowseViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = ExpandedStreamBrowseViewModel.Factory::class)
+class ExpandedStreamBrowseViewModel @AssistedInject constructor(
+    @Assisted val browseUrl: String,
     private val streamHelper: ExpandedBrowseHelper
 ) : ViewModel() {
 
-    val liveData: MutableLiveData<StreamCluster> = MutableLiveData()
-    var streamCluster: StreamCluster = StreamCluster()
-
-    fun getInitialCluster(expandedStreamUrl: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    val browseResponse = streamHelper.getBrowseStreamResponse(expandedStreamUrl)
-                    if (browseResponse.hasBrowseTab()) {
-                        streamCluster =
-                            streamHelper.getExpandedBrowseClusters(browseResponse.browseTab.listUrl)
-                        liveData.postValue(streamCluster)
-                    } else {
-                    }
-                } catch (_: Exception) {
-                }
-            }
-        }
+    @AssistedFactory
+    interface Factory {
+        fun create(browseUrl: String): ExpandedStreamBrowseViewModel
     }
 
-    fun next() {
-        Log.e(TAG, "NEXT CALED")
-        viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    val newCluster = streamHelper.getExpandedBrowseClusters(
-                        streamCluster.clusterNextPageUrl
-                    )
+    private val _title = MutableStateFlow("")
+    val title = _title.asStateFlow()
 
-                    streamCluster = streamCluster.copy(
-                        clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList,
-                        clusterNextPageUrl = newCluster.clusterNextPageUrl
-                    )
+    private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
+    val apps = _apps.asStateFlow()
 
-                    liveData.postValue(streamCluster)
+    init {
+        fetchApps()
+    }
 
-                    if (!streamCluster.hasNext()) {
-                        Log.i(TAG, "End of Bundle")
+    private fun fetchApps() {
+        var listUrl = ""
+        var nextPageUrl = ""
+
+        manualPager { page ->
+            val items = try {
+                when (page) {
+                    1 -> {
+                        val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)
+                        if (browseResponse.hasBrowseTab()) {
+                            listUrl = browseResponse.browseTab.listUrl
+                            val cluster = streamHelper.getExpandedBrowseClusters(listUrl)
+                            _title.value = cluster.clusterTitle
+                            nextPageUrl = cluster.clusterNextPageUrl
+                            cluster.clusterAppList
+                        } else {
+                            emptyList()
+                        }
                     }
-                } catch (exception: Exception) {
-                    Log.e(TAG, "Failed to fetch next stream", exception)
+
+                    else -> {
+                        if (nextPageUrl.isNotBlank()) {
+                            val cluster = streamHelper.getExpandedBrowseClusters(nextPageUrl)
+                            nextPageUrl = cluster.clusterNextPageUrl
+                            cluster.clusterAppList
+                        } else {
+                            emptyList()
+                        }
+                    }
                 }
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch apps for page $page", exception)
+                emptyList()
             }
-        }
+            PageResult(items)
+        }.flow.distinctUntilChanged()
+            .cachedIn(viewModelScope)
+            .onEach { _apps.value = it }
+            .launchIn(viewModelScope)
     }
 }

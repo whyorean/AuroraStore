@@ -29,7 +29,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -41,10 +40,11 @@ import com.aurora.extensions.emptyPagingItems
 import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
-import com.aurora.store.compose.composable.Error
 import com.aurora.store.compose.composable.FavouriteListItem
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
+import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.FavouritePreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
@@ -57,8 +57,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun FavouriteScreen(
-    onNavigateUp: () -> Unit,
-    onNavigateToAppDetails: (packageName: String) -> Unit,
+    onNavigateTo: (Destination) -> Unit,
     viewModel: FavouriteViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
@@ -90,8 +89,7 @@ fun FavouriteScreen(
 
     ScreenContent(
         favourites = favourites,
-        onNavigateUp = onNavigateUp,
-        onNavigateToAppDetails = onNavigateToAppDetails,
+        onNavigateTo = onNavigateTo,
         onRemoveFavourite = { packageName -> viewModel.removeFavourite(packageName) },
         onImportFavourites = {
             documentOpenLauncher.launch(arrayOf(JSON_MIME_TYPE))
@@ -107,8 +105,7 @@ fun FavouriteScreen(
 @Composable
 private fun ScreenContent(
     favourites: LazyPagingItems<Favourite> = emptyPagingItems(),
-    onNavigateUp: () -> Unit = {},
-    onNavigateToAppDetails: (packageName: String) -> Unit = {},
+    onNavigateTo: (Destination) -> Unit = {},
     onRemoveFavourite: (packageName: String) -> Unit = {},
     onImportFavourites: () -> Unit = {},
     onExportFavourites: () -> Unit = {}
@@ -135,7 +132,6 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.title_favourites_manager),
-                onNavigateUp = onNavigateUp,
                 actions = { SetupMenu() }
             )
         }
@@ -144,7 +140,7 @@ private fun ScreenContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(vertical = dimensionResource(R.dimen.padding_medium))
+                .padding(vertical = dimensionResource(R.dimen.spacing_medium))
         ) {
             when {
                 favourites.loadState.refresh is LoadState.Loading && initialLoad -> {
@@ -155,7 +151,7 @@ private fun ScreenContent(
                     initialLoad = false
 
                     if (favourites.itemCount == 0) {
-                        Error(
+                        Placeholder(
                             modifier = Modifier.padding(paddingValues),
                             painter = painterResource(R.drawable.ic_favorite_unchecked),
                             message = stringResource(R.string.details_no_favourites)
@@ -175,7 +171,9 @@ private fun ScreenContent(
                                             modifier = Modifier.animateItem(),
                                             favourite = favourite,
                                             onClick = {
-                                                onNavigateToAppDetails(favourite.packageName)
+                                                onNavigateTo(
+                                                    Destination.AppDetails(favourite.packageName)
+                                                )
                                             },
                                             onClear = { onRemoveFavourite(favourite.packageName) }
                                         )
@@ -184,7 +182,6 @@ private fun ScreenContent(
                             }
                             ScrollHint(
                                 listState = listState,
-                                bottomPadding = 5.dp,
                                 modifier = Modifier.align(Alignment.BottomCenter)
                             )
                         }

@@ -10,14 +10,13 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
-import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
-import androidx.navigation.NavDeepLinkBuilder
 import com.aurora.Constants
-import com.aurora.store.MainActivity
+import com.aurora.store.ComposeActivity
 import com.aurora.store.R
+import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.data.activity.InstallActivity
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
@@ -213,16 +212,7 @@ object NotificationUtil {
             .build()
 
     fun getUpdateNotification(context: Context, updatesList: List<Update>): Notification {
-        val arguments = Bundle().apply {
-            putInt("destinationId", R.id.updatesFragment)
-        }
-
-        val contentIntent = NavDeepLinkBuilder(context)
-            .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.splashFragment)
-            .setComponentName(MainActivity::class.java)
-            .setArguments(arguments)
-            .createPendingIntent()
+        val contentIntent = getContentIntentForMain(context, initialTab = 2)
 
         return NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_updates)
@@ -297,7 +287,7 @@ object NotificationUtil {
             .setContentTitle(context.getString(R.string.authentication_required_title))
             .setContentText(context.getString(R.string.authentication_required_unarchive))
             .setAutoCancel(true)
-            .setContentIntent(getContentIntentForSplash(context, packageName))
+            .setContentIntent(getContentIntentForDetails(context, packageName))
             .setCategory(NotificationCompat.CATEGORY_ERROR)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
@@ -359,28 +349,32 @@ object NotificationUtil {
         )
     }
 
-    private fun getContentIntentForSplash(context: Context, packageName: String): PendingIntent {
-        val arguments = Bundle().apply {
-            putString("packageName", packageName)
+    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent? {
+        val intent = Intent(context, ComposeActivity::class.java).apply {
+            putExtra(Screen.PARCEL_KEY, Screen.AppDetails(packageName) as android.os.Parcelable)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        return NavDeepLinkBuilder(context)
-            .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.splashFragment)
-            .setComponentName(MainActivity::class.java)
-            .setArguments(arguments)
-            .createPendingIntent()
+        return PendingIntentCompat.getActivity(
+            context,
+            packageName.hashCode().absoluteValue,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            false
+        )
     }
 
-    private fun getContentIntentForDetails(context: Context, packageName: String): PendingIntent {
-        val arguments = Bundle().apply {
-            putString("packageName", packageName)
+    private fun getContentIntentForMain(context: Context, initialTab: Int): PendingIntent? {
+        val intent = Intent(context, ComposeActivity::class.java).apply {
+            putExtra(Screen.PARCEL_KEY, Screen.Main(initialTab) as android.os.Parcelable)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        return NavDeepLinkBuilder(context)
-            .setGraph(R.navigation.mobile_navigation)
-            .setDestination(R.id.splashFragment)
-            .setComponentName(MainActivity::class.java)
-            .setArguments(arguments)
-            .createPendingIntent()
+        return PendingIntentCompat.getActivity(
+            context,
+            initialTab,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            false
+        )
     }
 
     private fun getInstallIntent(context: Context, download: Download): PendingIntent? {

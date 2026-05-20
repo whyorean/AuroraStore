@@ -30,7 +30,7 @@ fun TextDividerComposable(modifier: Modifier = Modifier, title: String) {
     Text(
         modifier = modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_small)),
+            .padding(dimensionResource(R.dimen.spacing_small)),
         text = title.uppercase(),
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.primary,

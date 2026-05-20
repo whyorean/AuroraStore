@@ -22,8 +22,8 @@ import com.aurora.gplayapi.data.models.datasafety.Entry
 import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.gplayapi.data.models.datasafety.Report
 import com.aurora.store.R
-import com.aurora.store.compose.composable.Header
 import com.aurora.store.compose.composable.Info
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -37,7 +37,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 fun DataSafety(report: Report, privacyPolicyUrl: String) {
     val context = LocalContext.current
 
-    Header(
+    SectionHeader(
         title = stringResource(R.string.details_data_safety_title),
         subtitle = stringResource(R.string.details_data_safety_subtitle),
         onClick = { context.browse(privacyPolicyUrl) }
@@ -86,7 +86,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
 @Composable
 private fun DataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: App) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_medium))
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
     ) {
         DataSafety(
             privacyPolicyUrl = app.privacyPolicyUrl,

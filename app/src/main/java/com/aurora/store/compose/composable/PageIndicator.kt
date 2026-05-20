@@ -43,7 +43,7 @@ fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: I
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimen.margin_xsmall),
+            dimensionResource(R.dimen.spacing_xsmall),
             Alignment.CenterHorizontally
         )
     ) {
@@ -60,7 +60,7 @@ fun PageIndicator(modifier: Modifier = Modifier, totalPages: Int, currentPage: I
             )
             val size by animateDpAsState(
                 targetValue = if (isSelected) {
-                    dimensionResource(R.dimen.radius_normal)
+                    dimensionResource(R.dimen.radius_medium)
                 } else {
                     dimensionResource(R.dimen.radius_small)
                 },

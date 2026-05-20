@@ -34,9 +34,9 @@ fun RatingListItem(modifier: Modifier = Modifier, label: String, rating: Float) 
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.padding_small)),
+            .padding(horizontal = dimensionResource(R.dimen.spacing_small)),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_small))
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         Text(
             text = label,

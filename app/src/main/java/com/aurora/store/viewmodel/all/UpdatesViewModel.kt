@@ -38,6 +38,7 @@ class UpdatesViewModel @Inject constructor(
 
     val downloadsList get() = downloadHelper.downloadsList
     val updates get() = updateHelper.updates
+    val ignoredUpdates get() = updateHelper.ignoredUpdates
 
     val fetchingUpdates = updateHelper.isCheckingUpdates
 
@@ -45,13 +46,17 @@ class UpdatesViewModel @Inject constructor(
         updateHelper.checkUpdatesNow()
     }
 
+    fun unignore(packageName: String) {
+        viewModelScope.launch { updateHelper.unignore(packageName) }
+    }
+
     fun download(update: Update) {
         viewModelScope.launch { downloadHelper.enqueueUpdate(update) }
     }
 
-    fun downloadAll() {
+    fun downloadAll(updates: List<Update>) {
         viewModelScope.launch {
-            updates.value?.forEach { downloadHelper.enqueueUpdate(it) }
+            updates.forEach { downloadHelper.enqueueUpdate(it) }
         }
     }
 
