@@ -16,6 +16,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
 import com.aurora.store.data.PageResult
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import com.aurora.store.data.providers.AuthProvider
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -29,6 +30,7 @@ import kotlinx.coroutines.flow.onEach
 @HiltViewModel(assistedFactory = ExpandedStreamBrowseViewModel.Factory::class)
 class ExpandedStreamBrowseViewModel @AssistedInject constructor(
     @Assisted val browseUrl: String,
+    private val authProvider: AuthProvider,
     private val streamHelper: ExpandedBrowseHelper
 ) : ViewModel() {
 
@@ -53,6 +55,7 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
 
         manualPager { page ->
             val items = try {
+                authProvider.awaitReady()
                 when (page) {
                     1 -> {
                         val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)

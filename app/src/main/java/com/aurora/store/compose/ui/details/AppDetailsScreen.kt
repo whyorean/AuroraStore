@@ -148,13 +148,14 @@ fun AppDetailsScreen(
         label = "AppDetailsState"
     ) { currentState ->
         when {
-            currentState is AppState.Loading || app == null ->
-                ScreenContentLoading()
-
             currentState is AppState.Error ->
                 ScreenContentError(
-                    message = currentState.message
+                    message = currentState.message,
+                    onRetry = { viewModel.fetchAppDetails(packageName) }
                 )
+
+            currentState is AppState.Loading || app == null ->
+                ScreenContentLoading()
 
             else -> {
                 val loadedApp = app!!
@@ -199,8 +200,8 @@ fun AppDetailsScreen(
 }
 
 private fun stateKey(state: AppState, app: App?): String = when {
-    state is AppState.Loading || app == null -> "loading"
     state is AppState.Error -> "error"
+    state is AppState.Loading || app == null -> "loading"
     else -> "content"
 }
 
@@ -220,14 +221,16 @@ private fun ScreenContentLoading() {
  * Composable to display errors related to fetching app details
  */
 @Composable
-private fun ScreenContentError(message: String? = null) {
+private fun ScreenContentError(message: String? = null, onRetry: (() -> Unit)? = null) {
     Scaffold(
         topBar = { TopAppBar() }
     ) { paddingValues ->
         Placeholder(
             modifier = Modifier.padding(paddingValues),
             painter = painterResource(R.drawable.ic_apps_outage),
-            message = message ?: stringResource(R.string.toast_app_unavailable)
+            message = message ?: stringResource(R.string.toast_app_unavailable),
+            actionLabel = onRetry?.let { stringResource(R.string.action_retry) },
+            onAction = onRetry
         )
     }
 }

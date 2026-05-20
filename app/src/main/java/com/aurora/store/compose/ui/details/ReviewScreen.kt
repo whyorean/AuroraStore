@@ -117,7 +117,9 @@ private fun ScreenContent(
                     Placeholder(
                         modifier = Modifier.padding(paddingValues),
                         painter = painterResource(R.drawable.ic_disclaimer),
-                        message = stringResource(R.string.error)
+                        message = stringResource(R.string.error),
+                        actionLabel = stringResource(R.string.action_retry),
+                        onAction = { reviews.retry() }
                     )
                 }
 

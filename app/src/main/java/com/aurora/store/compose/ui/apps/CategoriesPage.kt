@@ -12,11 +12,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.gplayapi.data.models.Category
 import com.aurora.store.CategoryStash
+import com.aurora.store.R
 import com.aurora.store.compose.composable.CategoryItem
+import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ShimmerCategoryRow
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.ViewState
@@ -33,6 +37,17 @@ internal fun CategoriesContent(
 
     LaunchedEffect(categoryType) {
         viewModel.getCategoryList(categoryType)
+    }
+
+    if (state is ViewState.Error) {
+        Placeholder(
+            modifier = Modifier.fillMaxSize(),
+            painter = painterResource(R.drawable.ic_disclaimer),
+            message = stringResource(R.string.error),
+            actionLabel = stringResource(R.string.action_retry),
+            onAction = { viewModel.getCategoryList(categoryType) }
+        )
+        return
     }
 
     @Suppress("UNCHECKED_CAST")

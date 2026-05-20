@@ -16,6 +16,7 @@ import com.aurora.gplayapi.data.models.Review
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.store.data.PageResult
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import com.aurora.store.data.providers.AuthProvider
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -29,6 +30,7 @@ import kotlinx.coroutines.flow.onEach
 @HiltViewModel(assistedFactory = ReviewViewModel.Factory::class)
 class ReviewViewModel @AssistedInject constructor(
     @Assisted private val packageName: String,
+    private val authProvider: AuthProvider,
     private val reviewsHelper: ReviewsHelper
 ) : ViewModel() {
 
@@ -49,6 +51,7 @@ class ReviewViewModel @AssistedInject constructor(
 
         manualPager { page ->
             val items = try {
+                authProvider.awaitReady()
                 when (page) {
                     1 -> reviewsHelper.getReviews(packageName, filter).also {
                         reviewsNextPageUrl = it.nextPageUrl

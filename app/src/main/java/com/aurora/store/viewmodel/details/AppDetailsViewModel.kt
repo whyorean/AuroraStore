@@ -168,6 +168,7 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                authProvider.awaitReady()
                 _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
                     isInstalled = PackageUtil.isInstalled(context, packageName)
                 )
