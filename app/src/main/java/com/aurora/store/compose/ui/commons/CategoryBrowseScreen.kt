@@ -42,7 +42,7 @@ fun CategoryBrowseScreen(
         if (uiState is ViewState.Error) {
             Placeholder(
                 modifier = Modifier.padding(paddingValues),
-                painter = painterResource(R.drawable.ic_disclaimer),
+                painter = painterResource(R.drawable.ic_refresh),
                 message = stringResource(R.string.error),
                 actionLabel = stringResource(R.string.action_retry),
                 onAction = { viewModel.fetchNextPage() }

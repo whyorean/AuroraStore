@@ -42,7 +42,7 @@ internal fun CategoriesContent(
     if (state is ViewState.Error) {
         Placeholder(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(R.drawable.ic_disclaimer),
+            painter = painterResource(R.drawable.ic_refresh),
             message = stringResource(R.string.error),
             actionLabel = stringResource(R.string.action_retry),
             onAction = { viewModel.getCategoryList(categoryType) }
