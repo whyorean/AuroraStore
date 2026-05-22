@@ -285,7 +285,7 @@
     <string name="details_ratings_title_hint">Titre de l’avis</string>
     <string name="pref_network_proxy_url">URL du mandataire</string>
     <string name="pref_updates_check_frequency_desc">Configurer la fréquence des mises à jour automatiques, en heures.</string>
-    <string name="pref_aurora_only">Filtrer les applis provenant d’autres sources</string>
+    <string name="pref_aurora_only">Filtrer les applis provenant d’autres sources.</string>
     <string name="toast_proxy_invalid">L’URL du mandataire est incorrecte, vérifiez le format !</string>
     <string name="pref_aurora_only_desc">Ne pas chercher les mises à jour pour les applis qui n’ont pas été installées par Aurora Store</string>
     <string name="toast_proxy_success">Le mandataire est défini</string>
@@ -306,7 +306,7 @@
     <string name="failed_apk_export">Échec d’exportation des APK</string>
     <string name="download_clear_finished">Effacer les terminés</string>
     <string name="pref_updates_incompatible">Afficher les mises à jour susceptibles d’échouer</string>
-    <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applis incompatibles ou désactivées dont l’installation peut échouer</string>
+    <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applis incompatibles ou désactivées dont l’installation peut échouer.</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
     <string name="faqs_subtitle">Des questions ? Trouvez les réponses</string>
     <string name="source_code_title">Code source</string>
@@ -479,4 +479,8 @@
     <string name="header_blacklist_selected">Exclue</string>
     <string name="header_blacklist_others">Autres</string>
     <string name="microg_removed_auth_warning">microG n’est plus installée. Relancez le programme d’installation pour que tout fonctionne correctement.</string>
+    <string name="pref_source_filters_title">Filtrer les applis d\'autres sources</string>
+    <string name="pref_source_filters_desc_all">Ignorer toutes les applis non installées par Aurora Store</string>
+    <string name="pref_source_filters_desc_none">Aucun installeur exclus</string>
+    <string name="pref_source_filters_desc_count">%1$d installer(s) exclu(s)</string>
 </resources>
