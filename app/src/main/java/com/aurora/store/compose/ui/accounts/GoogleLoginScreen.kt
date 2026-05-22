@@ -40,8 +40,16 @@ import com.aurora.store.viewmodel.auth.AuthViewModel
 
 private const val EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup"
 private const val AUTH_TOKEN = "oauth_token"
-private const val JS_PROFILE_EMAIL =
-    "(function() { return document.getElementById('profileIdentifier').innerHTML; })();"
+
+// Google's EmbeddedSetup post-login page renders the account as e.g.
+// <div data-profile-identifier data-email="user@gmail.com">...</div>;
+// the legacy id="profileIdentifier" selector no longer matches.
+private const val JS_PROFILE_EMAIL = """
+    (function() {
+        var el = document.querySelector('[data-profile-identifier][data-email]');
+        return el ? el.getAttribute('data-email') : null;
+    })();
+"""
 
 @Composable
 fun GoogleLoginScreen(
@@ -120,16 +128,12 @@ fun GoogleLoginScreen(
 
                     webViewClient = object : WebViewClient() {
                         override fun onPageFinished(view: WebView, url: String) {
-                            val cookies = CookieManager.getInstance().getCookie(url)
-                            if (cookies != null) {
-                                val cookieMap = AC2DMUtil.parseCookieString(cookies)
-                                if (cookieMap.isNotEmpty() && cookieMap[AUTH_TOKEN] != null) {
-                                    val oauthToken = cookieMap[AUTH_TOKEN]
-                                    view.evaluateJavascript(JS_PROFILE_EMAIL) { result ->
-                                        val email = result.replace("\"", "")
-                                        viewModel.buildAuthData(view.context, email, oauthToken)
-                                    }
-                                }
+                            val cookies = CookieManager.getInstance().getCookie(url) ?: return
+                            val cookieMap = AC2DMUtil.parseCookieString(cookies)
+                            val oauthToken = cookieMap[AUTH_TOKEN] ?: return
+                            view.evaluateJavascript(JS_PROFILE_EMAIL) { result ->
+                                val email = result.trim('"')
+                                viewModel.buildAuthData(view.context, email, oauthToken)
                             }
                         }
                     }

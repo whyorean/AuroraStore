@@ -27,11 +27,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class AC2DMTask @Inject constructor(private val httpClient: HttpClient) {
 
     @Throws(Exception::class)
-    fun getAC2DMResponse(email: String?, oAuthToken: String?): Map<String, String> {
-        if (email == null || oAuthToken == null) {
-            return mapOf()
-        }
-
+    fun getAC2DMResponse(email: String, oAuthToken: String): Map<String, String> {
         val params: MutableMap<String, Any> = hashMapOf()
         params["lang"] = Locale.getDefault().toString().replace("_", "-")
         params["google_play_services_version"] = PLAY_SERVICES_VERSION_CODE
@@ -60,7 +56,7 @@ class AC2DMTask @Inject constructor(private val httpClient: HttpClient) {
         return if (response.isSuccessful) {
             AC2DMUtil.parseResponse(String(response.responseBytes))
         } else {
-            mapOf()
+            emptyMap()
         }
     }
 
