@@ -18,7 +18,6 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
 import com.aurora.store.data.PageResult
@@ -41,12 +40,11 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     val authProvider: AuthProvider,
-    private val searchHelper: SearchHelper,
     private val webSearchHelper: WebSearchHelper
 ) : ViewModel() {
 
     private val contract: SearchContract
-        get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
+        get() = webSearchHelper
 
     private val _suggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
@@ -125,7 +123,7 @@ class SearchViewModel @Inject constructor(
             authProvider.awaitReady()
             _suggestions.value = contract.searchSuggestions(query)
                 .filter { it.title.isNotBlank() }
-                .take(3)
+                .take(5)
         }
     }
 }

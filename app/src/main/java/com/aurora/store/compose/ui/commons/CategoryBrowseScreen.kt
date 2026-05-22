@@ -13,12 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.composition.collectForced
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.viewmodel.subcategory.CategoryStreamViewModel
@@ -34,7 +34,7 @@ fun CategoryBrowseScreen(
         }
     )
 ) {
-    val uiState by viewModel.viewState.collectForced(ViewState.Loading)
+    val uiState by viewModel.viewState.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = { TopAppBar(title = title) }

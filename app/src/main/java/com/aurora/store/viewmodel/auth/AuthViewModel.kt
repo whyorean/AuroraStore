@@ -39,13 +39,13 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.net.ConnectException
+import java.net.UnknownHostException
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.net.ConnectException
-import java.net.UnknownHostException
-import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
@@ -194,8 +194,8 @@ class AuthViewModel @Inject constructor(
                 context,
                 Preferences.PREFERENCE_AUTH_VIA_MICROG,
                 accountType == AccountType.GOOGLE &&
-                        tokenType == AuthHelper.Token.AUTH &&
-                        PackageUtil.hasSupportedMicroGVariant(context)
+                    tokenType == AuthHelper.Token.AUTH &&
+                    PackageUtil.hasSupportedMicroGVariant(context)
             )
             _authState.value = AuthState.SignedIn
         } else {

@@ -46,8 +46,8 @@ class DevProfileViewModel @Inject constructor(
 ) : ViewModel() {
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
-    var devStream: DevStream = DevStream()
-    var streamBundle: StreamBundle = StreamBundle()
+    var devStream: DevStream = DevStream.EMPTY
+    var streamBundle: StreamBundle = StreamBundle.EMPTY
 
     lateinit var type: StreamContract.Type
     lateinit var category: StreamContract.Category
@@ -74,6 +74,7 @@ class DevProfileViewModel @Inject constructor(
                     if (streamCluster.hasNext()) {
                         authProvider.awaitReady()
                         val newCluster = streamHelper.getNextStreamCluster(
+                            streamCluster.id,
                             streamCluster.clusterNextPageUrl
                         )
                         updateCluster(newCluster)
