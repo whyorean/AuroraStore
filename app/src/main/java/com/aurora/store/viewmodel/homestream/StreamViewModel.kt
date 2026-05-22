@@ -72,6 +72,7 @@ class StreamViewModel @Inject constructor(
                         // Fetch new stream bundle
                         val newBundle = if (bundle.hasCluster()) {
                             streamContract.nextStreamBundle(
+                                bundle.id,
                                 category,
                                 bundle.streamNextPageUrl
                             )
@@ -79,9 +80,19 @@ class StreamViewModel @Inject constructor(
                             streamContract.fetch(type, category)
                         }
 
-                        // Update old bundle
+                        // gplayapi 3.6.1 stamps every cluster in a bundle with the bundle id,
+                        // so naive Map.plus drops the existing page's clusters. Re-key the new
+                        // clusters with synthetic ids past the current max so pagination appends.
+                        val baseKey = (bundle.streamClusters.keys.maxOrNull() ?: 0) + 1
+                        val rekeyedNewClusters = newBundle.streamClusters.values
+                            .mapIndexed { index, cluster ->
+                                val newId = baseKey + index
+                                newId to cluster.copy(id = newId)
+                            }
+                            .toMap()
+
                         val mergedBundle = bundle.copy(
-                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
+                            streamClusters = bundle.streamClusters + rekeyedNewClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         )
                         stash[category] = mergedBundle
@@ -103,6 +114,7 @@ class StreamViewModel @Inject constructor(
             try {
                 if (streamCluster.hasNext()) {
                     val newCluster = streamContract.nextStreamCluster(
+                        streamCluster.id,
                         streamCluster.clusterNextPageUrl
                     )
 
@@ -158,6 +170,6 @@ class StreamViewModel @Inject constructor(
 
     private fun targetBundle(category: StreamContract.Category): StreamBundle =
         stash.getOrPut(category) {
-            StreamBundle()
+            StreamBundle(id = category.value.hashCode())
         }
 }

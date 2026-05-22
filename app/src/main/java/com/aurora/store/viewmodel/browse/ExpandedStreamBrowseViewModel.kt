@@ -61,7 +61,10 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
                         val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)
                         if (browseResponse.hasBrowseTab()) {
                             listUrl = browseResponse.browseTab.listUrl
-                            val cluster = streamHelper.getExpandedBrowseClusters(listUrl)
+                            val cluster = streamHelper.getExpandedBrowseClusters(
+                                id = listUrl.hashCode(),
+                                listUrl
+                            )
                             _title.value = cluster.clusterTitle
                             nextPageUrl = cluster.clusterNextPageUrl
                             cluster.clusterAppList
@@ -72,7 +75,10 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
 
                     else -> {
                         if (nextPageUrl.isNotBlank()) {
-                            val cluster = streamHelper.getExpandedBrowseClusters(nextPageUrl)
+                            val cluster = streamHelper.getExpandedBrowseClusters(
+                                nextPageUrl.hashCode(),
+                                nextPageUrl
+                            )
                             nextPageUrl = cluster.clusterNextPageUrl
                             cluster.clusterAppList
                         } else {

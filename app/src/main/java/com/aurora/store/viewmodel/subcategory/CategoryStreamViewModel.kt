@@ -21,10 +21,9 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
@@ -39,19 +38,13 @@ class CategoryStreamViewModel @AssistedInject constructor(
         fun create(browseUrl: String): CategoryStreamViewModel
     }
 
-    // SharedFlow (instead of StateFlow) because StreamBundle/StreamCluster override equals
-    // to compare only id, which is preserved by copy(). StateFlow would conflate every update
-    // and break paginated scroll loading.
-    private val _viewState = MutableSharedFlow<ViewState>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val viewState: SharedFlow<ViewState> = _viewState.asSharedFlow()
+    private val _viewState = MutableStateFlow<ViewState>(ViewState.Loading)
+    val viewState: StateFlow<ViewState> = _viewState.asStateFlow()
 
     private val categoryStreamContract: CategoryStreamContract
         get() = webCategoryStreamHelper
 
-    private var streamBundle = StreamBundle()
+    private var streamBundle = StreamBundle.EMPTY
 
     init {
         fetchNextPage()
@@ -60,16 +53,13 @@ class CategoryStreamViewModel @AssistedInject constructor(
     fun fetchNextPage() {
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
-                if (streamBundle.streamClusters.isNotEmpty()) {
-                    _viewState.tryEmit(ViewState.Success(streamBundle))
-                }
-
                 try {
                     if (!streamBundle.hasCluster() || streamBundle.hasNext()) {
                         val newBundle = if (streamBundle.streamClusters.isEmpty()) {
                             categoryStreamContract.fetch(browseUrl)
                         } else {
                             categoryStreamContract.nextStreamBundle(
+                                streamBundle.id,
                                 StreamContract.Category.NONE,
                                 streamBundle.streamNextPageUrl
                             )
@@ -80,12 +70,12 @@ class CategoryStreamViewModel @AssistedInject constructor(
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         )
 
-                        _viewState.tryEmit(ViewState.Success(streamBundle))
+                        _viewState.value = ViewState.Success(streamBundle)
                     } else {
                         Log.i(TAG, "End of Bundle")
                     }
                 } catch (e: Exception) {
-                    _viewState.tryEmit(ViewState.Error(e.message))
+                    _viewState.value = ViewState.Error(e.message)
                 }
             }
         }
@@ -97,6 +87,7 @@ class CategoryStreamViewModel @AssistedInject constructor(
                 try {
                     if (streamCluster.hasNext()) {
                         val newCluster = categoryStreamContract.nextStreamCluster(
+                            streamCluster.id,
                             streamCluster.clusterNextPageUrl
                         )
                         val mergedCluster = streamCluster.copy(
@@ -109,7 +100,7 @@ class CategoryStreamViewModel @AssistedInject constructor(
                             this[streamCluster.id] = mergedCluster
                         }
                         streamBundle = streamBundle.copy(streamClusters = newClusters)
-                        _viewState.tryEmit(ViewState.Success(streamBundle))
+                        _viewState.value = ViewState.Success(streamBundle)
                     } else {
                         Log.i(TAG, "End of cluster")
                     }

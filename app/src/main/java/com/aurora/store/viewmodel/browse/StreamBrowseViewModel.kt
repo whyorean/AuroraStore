@@ -68,7 +68,10 @@ class StreamBrowseViewModel @AssistedInject constructor(
 
                     else -> {
                         if (nextPageUrl.isNotBlank()) {
-                            streamHelper.nextStreamCluster(nextPageUrl).also {
+                            streamHelper.nextStreamCluster(
+                                nextPageUrl.hashCode(),
+                                nextPageUrl
+                            ).also {
                                 nextPageUrl = it.clusterNextPageUrl
                             }.clusterAppList
                         } else {

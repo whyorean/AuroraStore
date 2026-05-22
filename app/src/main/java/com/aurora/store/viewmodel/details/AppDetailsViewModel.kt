@@ -20,6 +20,7 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
@@ -46,12 +47,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -82,13 +80,10 @@ class AppDetailsViewModel @Inject constructor(
     private val _state = MutableStateFlow<AppState>(AppState.Loading)
     val state = _state.asStateFlow()
 
-    private val _suggestionsBundle = MutableSharedFlow<StreamBundle?>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val suggestionsBundle: SharedFlow<StreamBundle?> = _suggestionsBundle.asSharedFlow()
+    private val _suggestionsBundle = MutableStateFlow<StreamBundle?>(null)
+    val suggestionsBundle: StateFlow<StreamBundle?> = _suggestionsBundle.asStateFlow()
 
-    private var suggestionsState: StreamBundle = StreamBundle()
+    private var suggestionsState: StreamBundle = StreamBundle.EMPTY
 
     private val _featuredReviews = MutableStateFlow<List<Review>>(emptyList())
     val featuredReviews = _featuredReviews.asStateFlow()
@@ -167,31 +162,48 @@ class AppDetailsViewModel @Inject constructor(
 
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            try {
-                authProvider.awaitReady()
-                _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
-                    isInstalled = PackageUtil.isInstalled(context, packageName)
-                )
-                val existingDownload = downloadHelper.getDownload(packageName)
+            var retried = false
+            while (true) {
+                try {
+                    authProvider.awaitReady()
+                    _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
+                        isInstalled = PackageUtil.isInstalled(context, packageName)
+                    )
+                    val existingDownload = downloadHelper.getDownload(packageName)
 
-                // A COMPLETED record for an app that is no longer installed means the app was
-                // installed then removed while Aurora held a stale record.
-                // Remove it so the live download observer doesn't lock the UI in Installing state
-                // indefinitely.
-                if (existingDownload?.status == DownloadStatus.COMPLETED && !isInstalled) {
-                    downloadHelper.removeDownload(packageName)
-                    _state.value = defaultAppState
-                } else {
-                    // Seed state from any in-flight download for this package so reopening
-                    // the screen doesn't briefly flash the default install action while the
-                    // download flow catches up.
-                    _state.value =
-                        existingDownload?.let { stateFromDownload(it) } ?: defaultAppState
+                    // A COMPLETED record for an app that is no longer installed means the app was
+                    // installed then removed while Aurora held a stale record.
+                    // Remove it so the live download observer doesn't lock the UI in Installing state
+                    // indefinitely.
+                    if (existingDownload?.status == DownloadStatus.COMPLETED && !isInstalled) {
+                        downloadHelper.removeDownload(packageName)
+                        _state.value = defaultAppState
+                    } else {
+                        // Seed state from any in-flight download for this package so reopening
+                        // the screen doesn't briefly flash the default install action while the
+                        // download flow catches up.
+                        _state.value =
+                            existingDownload?.let { stateFromDownload(it) } ?: defaultAppState
+                    }
+                    break
+                } catch (exception: Exception) {
+                    // gplayapi throws AppNotFound(code=401) when the saved token is
+                    // rejected mid-session; refresh anonymous auth once and retry.
+                    if (!retried &&
+                        authProvider.isAnonymous &&
+                        exception is GooglePlayException.NotFound &&
+                        exception.code == 401
+                    ) {
+                        Log.w(TAG, "App details fetch returned 401, refreshing auth", exception)
+                        retried = true
+                        authProvider.refreshAnonymousAuth()
+                        continue
+                    }
+                    Log.e(TAG, "Failed to fetch app details", exception)
+                    _app.value = null
+                    _state.value = AppState.Error(exception.message)
+                    break
                 }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch app details", exception)
-                _app.value = null
-                _state.value = AppState.Error(exception.message)
             }
         }.invokeOnCompletion { throwable ->
             // Only proceed if there was no error while fetching the app details
@@ -346,21 +358,21 @@ class AppDetailsViewModel @Inject constructor(
 
         // Bail out if we got no suggestions to offer
         if (streamUrl.isNullOrBlank()) {
-            _suggestionsBundle.tryEmit(StreamBundle.EMPTY)
+            _suggestionsBundle.value = StreamBundle.EMPTY
             return
         }
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val pageBundle = appDetailsHelper.getDetailsStream(streamUrl)
+                val pageBundle = appDetailsHelper.getDetailsStream(streamUrl.hashCode(), streamUrl)
                 val pageClusters = pageBundle.streamClusters.filterValues {
                     it.clusterTitle.isNotBlank() && it.clusterAppList.isNotEmpty()
                 }
                 suggestionsState = pageBundle.copy(streamClusters = pageClusters)
-                _suggestionsBundle.tryEmit(suggestionsState)
+                _suggestionsBundle.value = suggestionsState
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch suggestions stream", exception)
-                _suggestionsBundle.tryEmit(StreamBundle.EMPTY)
+                _suggestionsBundle.value = StreamBundle.EMPTY
             }
         }
     }
@@ -370,7 +382,10 @@ class AppDetailsViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val nextPage = appDetailsHelper.getNextStreamCluster(cluster.clusterNextPageUrl)
+                val nextPage = appDetailsHelper.getNextStreamCluster(
+                    cluster.id,
+                    cluster.clusterNextPageUrl
+                )
                 val existing = suggestionsState.streamClusters[cluster.id] ?: return@launch
                 val mergedCluster = existing.copy(
                     clusterAppList = existing.clusterAppList + nextPage.clusterAppList,
@@ -379,7 +394,7 @@ class AppDetailsViewModel @Inject constructor(
                 suggestionsState = suggestionsState.copy(
                     streamClusters = suggestionsState.streamClusters + (cluster.id to mergedCluster)
                 )
-                _suggestionsBundle.tryEmit(suggestionsState)
+                _suggestionsBundle.value = suggestionsState
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch next cluster page", exception)
             }

@@ -72,7 +72,6 @@ import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.ShimmerCarouselSection
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.composition.collectForced
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -126,7 +125,7 @@ fun AppDetailsScreen(
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val installError by viewModel.installError.collectAsStateWithLifecycle()
-    val suggestionsBundle by viewModel.suggestionsBundle.collectForced(initial = null)
+    val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
@@ -694,6 +693,7 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
         app = app,
         isAnonymous = false,
         suggestionsBundle = StreamBundle(
+            id = 1,
             streamClusters = mapOf(
                 1 to StreamCluster(
                     id = 1,
