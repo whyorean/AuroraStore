@@ -27,14 +27,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.data.event.AuthEvent
-import com.aurora.store.data.model.AccountType
-import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.model.AuthState
 import com.aurora.store.util.AC2DMUtil
+import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.auth.AuthViewModel
 
 private const val EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup"
@@ -48,6 +49,7 @@ fun GoogleLoginScreen(
     viewModel: AuthViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val authState by viewModel.authState.collectAsStateWithLifecycle()
     var progress by remember { mutableFloatStateOf(0f) }
     var isIndeterminate by remember { mutableStateOf(true) }
     var isLoading by remember { mutableStateOf(true) }
@@ -56,19 +58,29 @@ fun GoogleLoginScreen(
         AuroraApp.events.authEvent.collect { event ->
             if (event is AuthEvent.GoogleLogin) {
                 if (event.success) {
-                    AccountProvider.login(
-                        context,
+                    viewModel.buildGoogleAuthData(
                         event.email,
                         event.token,
-                        AuthHelper.Token.AAS,
-                        AccountType.GOOGLE
+                        AuthHelper.Token.AAS
                     )
                 } else {
                     Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
                         .show()
+                    onNavigateTo(Destination.Splash)
                 }
-                onNavigateTo(Destination.Splash)
             }
+        }
+    }
+
+    LaunchedEffect(authState) {
+        when (authState) {
+            AuthState.SignedIn, AuthState.Valid -> onNavigateTo(
+                Destination.Main(
+                    Preferences.getInteger(context, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
+                )
+            )
+            is AuthState.Failed -> onNavigateTo(Destination.Splash)
+            else -> Unit
         }
     }
 
