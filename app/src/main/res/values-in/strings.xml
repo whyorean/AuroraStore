@@ -234,7 +234,7 @@
     <string name="onboarding_permission_notifications">Pemberitahuan</string>
     <string name="onboarding_permission_notifications_desc">Mengirim pemberitahuan mengenai status pemasangan</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
-    <string name="session_good">Wah! Semuanya bagus.</string>
+    <string name="session_good">Semuanya baik.</string>
     <string name="error">Terjadi kesalahan!</string>
     <string name="permissions_denied">Izin yang diperlukan telah ditolak. Mohon berikan izin untuk melanjutkan tindakan</string>
     <string name="menu">Menu</string>
@@ -281,12 +281,12 @@
     <string name="failed_to_generate_session">Tidak dapat membuat sesi</string>
     <string name="details_ratings_title_hint">Judul ulasan</string>
     <string name="pref_network_proxy_url">URL Proksi</string>
-    <string name="pref_updates_check_frequency_desc">Atur rentang waktu untuk pembaruan otomatis, dalam jam.</string>
+    <string name="pref_updates_check_frequency_desc">Seberapa sering Aurora memeriksa pembaruan aplikasi.</string>
     <string name="pref_aurora_only">Saring aplikasi dari sumber lain</string>
     <string name="app_links_desc">Izinkan Aurora Store untuk membuka tautan yang didukung</string>
     <string name="onboarding_permission_doze">Unduhan latar belakang</string>
     <string name="toast_proxy_invalid">URL proksi tidak sah, periksa format!</string>
-    <string name="pref_aurora_only_desc">Jangan periksa pembaruan untuk aplikasi yang dipasang dari sumber di luar Aurora Store</string>
+    <string name="pref_aurora_only_desc">Jangan periksa pembaruan untuk aplikasi yang diinstal dari sumber di luar Aurora Store</string>
     <string name="toast_proxy_success">Proksi berhasil disetel</string>
     <string name="app_links_title">Tautan aplikasi</string>
     <string name="google_play_store_desc">Google Play, juga dikenal sebagai Google Play Store dan sebelumnya Android Market.</string>
@@ -339,7 +339,7 @@
     <string name="remove">Hapus</string>
     <string name="am_installer_subtitle">Pengelola paket sumber terbuka dengan fitur lengkap</string>
     <string name="am_installer_desc">Membutuhkan App Manager, memerlukan mode adb/root untuk memasang jika pengoptimalan miui diaktifkan</string>
-    <string name="about_aurora_store_summary">Aurora Store memungkinkan Anda untuk mencari dan mengunduh aplikasi dari toko resmi Google Play. Anda dapat memeriksa deskripsi aplikasi, tangkapan layar, pembaruan, komentar pengguna lain, dan mengunduh APK langsung dari Google Play ke perangkat Anda. Untuk menggunakan Aurora Store, Anda harus memiliki akun Google Play, dan masuk ke akun Google Play saat pertama kali membuka dan mengatur Aurora Store. \n \nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lainnya di Aurora Store diakses, diunduh, dan/atau ditampilkan secara langsung dari Google Play. Aurora Store berfungsi persis seperti pintu atau peramban, memungkinkan Anda untuk masuk ke akun Google Play dan menemukan aplikasi dari Google Play. \n \nHarap diperhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi apa pun dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, atau pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
+    <string name="about_aurora_store_summary">Aurora Store memungkinkan Anda mencari dan mengunduh aplikasi dari Google Play Store resmi. Anda dapat memeriksa deskripsi aplikasi, tangkapan layar, pembaruan, komentar pengguna lain, dan mengunduh APK langsung dari Google Play ke perangkat Anda. Untuk menggunakan Aurora Store, masuklah menggunakan akun Google Play saat Anda pertama kali membuka dan mengonfigurasi Aurora Store.\n\nTidak seperti toko aplikasi tradisional, Aurora Store tidak memiliki, melisensikan, atau mendistribusikan aplikasi apa pun. Semua aplikasi, deskripsi aplikasi, tangkapan layar, dan konten lain di Aurora Store diakses, diunduh, dan/atau ditampilkan langsung dari Google Play. Aurora Store bekerja persis seperti pintu atau browser, yang memungkinkan Anda masuk ke akun Google Play dan menemukan aplikasi dari Google Play.\n\nHarap perhatikan bahwa Aurora Store tidak memiliki persetujuan, sponsor, atau otorisasi dari Google, Google Play, aplikasi apa pun yang diunduh melalui Aurora Store, maupun pengembang aplikasi mana pun; Aurora Store juga tidak memiliki afiliasi, kerja sama, atau hubungan apa pun dengan mereka.</string>
     <string name="toast_app_unavailable">Aplikasi tidak tersedia untuk perangkat Anda</string>
     <string name="services_installer_desc">Memerlukan Layanan Aurora yang dipasang sebagai aplikasi sistem dengan hak istimewa</string>
     <string name="remove_dispenser_title">Hapus dispenser?</string>
@@ -477,4 +477,51 @@
     <string name="header_blacklist_others">Lainnya</string>
     <string name="preparing_to_download">Mempersiapkan untuk mengunduh</string>
     <string name="verifying_downloads">Memverifikasi unduhan</string>
+    <string name="pref_source_filters_title">Filter aplikasi dari sumber lain</string>
+    <string name="pref_source_filters_desc_all">Lewati setiap aplikasi yang tidak diinstal oleh Aurora Store</string>
+    <string name="pref_source_filters_desc_none">Tidak ada penginstal yang dikecualikan</string>
+    <string name="pref_source_filters_desc_count">%1$d penginstal dikecualikan</string>
+    <string name="source_filters_all">Filter semua penginstal lainnya</string>
+    <string name="source_filters_installers_header">Penginstal tertentu</string>
+    <string name="source_filters_installers_empty">Belum ada penginstal yang ditambahkan</string>
+    <string name="source_filters_add">Tambahkan penginstal</string>
+    <string name="source_filters_add_dialog_hint">Masukkan nama paket</string>
+    <string name="source_filters_remove">Hapus penginstal</string>
+    <string name="updates_incompatible_header">Pembaruan yang tidak kompatibel</string>
+    <string name="updates_incompatible_desc">Pembaruan aplikasi sistem ini tidak dapat dipasang pada OS ini</string>
+    <string name="updates_approval_header">Pembaruan yang memerlukan persetujuan</string>
+    <string name="updates_approval_desc">Aplikasi ini tidak diinstal oleh Aurora. Memperbaruinya akan memunculkan permintaan untuk memindahkan kepemilikan pembaruan aplikasi.</string>
+    <string name="updates_app_details">Detail</string>
+    <string name="updates_ignored_header">Diabaikan</string>
+    <string name="updates_ignored_desc">Pembaruan ini disembunyikan sampai Anda tidak lagi mengabaikannya</string>
+    <string name="action_ignore_all">Abaikan semua pembaruan</string>
+    <string name="action_ignore_version">Lewati versi <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Batalkan abaikan</string>
+    <string name="pref_updates_check_frequency_3h">Setiap 3 jam</string>
+    <string name="pref_updates_check_frequency_6h">Setiap 6 jam</string>
+    <string name="pref_updates_check_frequency_12h">Setiap 12 jam</string>
+    <string name="pref_updates_check_frequency_24h">Setiap 24 jam</string>
+    <string name="pref_updates_check_frequency_3d">Setiap 3 hari</string>
+    <string name="pref_updates_check_frequency_7d">Setiap 7 hari</string>
+    <string name="pref_updates_check_frequency_15d">Setiap 15 hari</string>
+    <string name="pref_ui_theme">Tema</string>
+    <string name="pref_theme_style_system">Ikuti sistem</string>
+    <string name="pref_theme_style_light">Terang</string>
+    <string name="pref_theme_style_dark">Gelap</string>
+    <string name="installed_sort_filter">Urutkan dan filter</string>
+    <string name="installed_sort_by">Urutkan berdasarkan</string>
+    <string name="installed_sort_name">Nama</string>
+    <string name="installed_sort_date_installed">Tanggal dipasang</string>
+    <string name="installed_sort_date_updated">Tanggal diperbarui</string>
+    <string name="installed_sort_package_name">Nama paket</string>
+    <string name="installed_sort_size">Ukuran</string>
+    <string name="installed_sort_ascending">Menaik</string>
+    <string name="installed_sort_descending">Menurun</string>
+    <string name="installed_filter">Filter</string>
+    <string name="installed_filter_user_apps">Aplikasi pengguna</string>
+    <string name="installed_filter_system_apps">Aplikasi sistem</string>
+    <string name="installed_filter_installer">Dipasang dari</string>
+    <string name="installed_filter_all">Semua</string>
+    <string name="installed_updated_at">Diperbarui <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Periksa</string>
 </resources>
