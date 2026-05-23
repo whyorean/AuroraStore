@@ -284,7 +284,7 @@
     <string name="verifying_new_session">Weryfikowanie nowej sesji</string>
     <string name="android_market_desc">Android Market był sklepem internetowym oferującym aplikacje przeznaczone na urządzenia z systemem Android, wycofanym w 2017 roku.</string>
     <string name="details_ratings_title_hint">Tytuł recenzji</string>
-    <string name="pref_updates_check_frequency_desc">Skonfiguruj częstotliwość automatycznych aktualizacji (w godzinach)</string>
+    <string name="pref_updates_check_frequency_desc">Jak często Aurora Store sprawdza dostępność aktualizacji aplikacji.</string>
     <string name="pref_aurora_only">Filtruj aplikacje z innych źródeł.</string>
     <string name="title_app_settings">Ustawienia aplikacji</string>
     <string name="pref_updates_check_frequency">Częstotliwość automatycznych aktualizacji</string>
@@ -522,6 +522,9 @@
     <string name="source_filters_add_dialog_hint">Wpisz nazwę pakietu</string>
     <string name="source_filters_remove">Usuń instalator</string>
     <string name="updates_incompatible_header">Niekompatybilne aktualizacje</string>
-    <string name="updates_approval_header">Aktualizacje wymagające zatwierdzenia</string>
+    <string name="updates_approval_header">Wymagające zatwierdzenia</string>
     <string name="pref_source_filters_desc_count">Wykluczono %1$d instalator(ów)</string>
+    <string name="updates_approval_desc">Te aplikacje nie zostały zainstalowane przez Aurora Store. Podczas ich aktualizacji pojawia się prośba o przekazanie uprawnień do aktualizacji.</string>
+    <string name="updates_incompatible_desc">Te aktualizacje aplikacji systemowych nie są kompatybilne z tym systemem operacyjnym</string>
+    <string name="source_filters_installers_header">Wykluczone instalatory</string>
 </resources>
