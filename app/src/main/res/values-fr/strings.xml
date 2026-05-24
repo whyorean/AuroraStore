@@ -344,7 +344,7 @@
     <string name="add">Ajouter</string>
     <string name="pref_dispenser_summary">Consulter et gérer les distributeurs de jetons pour les connexions anonymes</string>
     <string name="no_dispensers_available">Aucun distributeur de jetons n’est proposé</string>
-    <string name="about_aurora_store_summary">Aurora Store vous permet de rechercher et de télécharger des applications depuis la boutique officielle Google Play Store. Vous pouvez consulter les descriptions des applications, les captures d\'écran, les mises à jour, les commentaires des autres utilisateurs et télécharger le fichier APK directement depuis Google Play sur votre appareil. Pour utiliser Aurora Store, connectez-vous à l\'aide de votre compte Google Play lors de la première ouverture et de la configuration de l\'application.\n\nContrairement à une boutique d\'applications traditionnelle, Aurora Store ne détient, ne concède sous licence ni ne distribue aucune application. Toutes les applications, descriptions d\'applications, captures d\'écran et autres contenus disponibles dans Aurora Store sont directement accessibles, téléchargeables et/ou affichés depuis Google Play. Aurora Store fonctionne exactement comme une porte ou un navigateur, vous permettant de vous connecter à votre compte Google Play et de trouver les applications sur Google Play.\n\nVeuillez noter qu\'Aurora Store ne bénéficie d\'aucune approbation, parrainage ou autorisation de la part de Google, de Google Play, des applications téléchargées via Aurora Store ou des développeurs d\'applications ; Aurora Store n\'a par ailleurs aucun lien d\'affiliation, de coopération ou de connexion avec eux.</string>
+    <string name="about_aurora_store_summary">Le magasin Aurora Store vous permet de chercher et de télécharger des applis du magasin officiel Google Play. Vous pouvez consulter la description des applis, les captures d’écran, les mises à jour, les commentaires des utilisateurs, et télécharger le fichier APK directement de Google Play vers votre appareil. Pour utiliser le magasin Aurora Store, connectez-vous avec votre compte Google Play lors de la première ouverture et de la configuration de l’appli.\n\nContrairement à un magasin d’applis traditionnel, Aurora Store ne détient, ne concède sous licence, ni ne distribue aucune appli. Les applis, descriptions d’applis, captures d’écran et autres contenus du magasin Aurora Store sont accessibles, téléchargeables et affichés directement du magasin Google Play. Le magasin Aurora Store fonctionne comme un portail ou un navigateur ; il vous permet de vous connecter à votre compte Google Play et de trouver des applis sur Google Play.\n\nNotez que le magasin Aurora Store n’a reçu aucune approbation, aucune commandite ni autorisation de la part de Google, de Google Play, des applis téléchargées grâce au magasin Aurora Store, ni de développeurs d’appli. Par ailleurs, le magasin Aurora Store n’a aucun lien d’affiliation, de coopération ou de connexion avec ces entités.</string>
     <string name="about_aurora_store_title">À propos d’Aurora Store</string>
     <string name="about_aurora_store_subtitle">En savoir plus sur Aurora Store</string>
     <string name="pref_clear_device_owner_desc">Le programme d’installation de session ne pourra plus installer silencieusement les applis. Confirmez-vous la révocation du droit de propriété de l’appareil ?</string>
@@ -480,25 +480,25 @@
     <string name="header_blacklist_others">Autres</string>
     <string name="microg_removed_auth_warning">microG n’est plus installée. Relancez le programme d’installation pour que tout fonctionne correctement.</string>
     <string name="pref_source_filters_title">Filtrer les applis provenant d’autres sources</string>
-    <string name="pref_source_filters_desc_all">Ignorer toutes les applis non installées par Aurora Store</string>
+    <string name="pref_source_filters_desc_all">Ignorer les applis qui ne sont pas installées par Aurora Store</string>
     <string name="pref_source_filters_desc_none">Aucun programme d’installation n’est exclu</string>
     <string name="pref_source_filters_desc_count">%1$d programme(s) d’installation exclu(s)</string>
     <string name="source_filters_all">Filtrer tous les autres programmes d\'installation</string>
-    <string name="source_filters_installers_header">Installateurs spécialisés</string>
+    <string name="source_filters_installers_header">Programmes d’installation spécifiques</string>
     <string name="source_filters_installers_empty">Aucun programme d’installation n’a encore été ajouté</string>
     <string name="source_filters_add">Ajouter un programme d’installation</string>
     <string name="source_filters_add_dialog_hint">Saisissez le nom du paquet</string>
-    <string name="source_filters_remove">Supprimer le programme d\'installation</string>
+    <string name="source_filters_remove">Supprimer le programme d’installation</string>
     <string name="updates_incompatible_header">Mises à jour incompatibles</string>
     <string name="updates_incompatible_desc">Ces mises à jour des applis système ne peuvent pas être installées sur ce système d’exploitation</string>
     <string name="updates_approval_header">Mises à jour nécessitant une validation</string>
-    <string name="updates_approval_desc">Ces applications n\'ont pas été installées par Aurora. Lorsque vous essayez de les mettre à jour, un message vous invite à transférer la propriété de la mise à jour.</string>
+    <string name="updates_approval_desc">Ces applis n’ont pas été installées par Aurora. Les mettre à jour vous invite à transférer la propriété des mise à jour.</string>
     <string name="updates_app_details">Détails</string>
-    <string name="updates_ignored_header">Ignoré</string>
-    <string name="updates_ignored_desc">Ces mises à jour restent masquées tant que vous ne les avez pas réactivées</string>
+    <string name="updates_ignored_header">Ignorées</string>
+    <string name="updates_ignored_desc">Ces mises à jour restent cachées tant que vous les ignorez</string>
     <string name="action_ignore_all">Ignorer toutes les mises à jour</string>
     <string name="action_ignore_version">Ignorer la version <xliff:g id="version_name">%1$s</xliff:g></string>
-    <string name="action_unignore">Réactiver</string>
+    <string name="action_unignore">Cesser d’ignorer</string>
     <string name="pref_updates_check_frequency_3h">Toutes les 3 heures</string>
     <string name="pref_updates_check_frequency_6h">Toutes les 6 heures</string>
     <string name="pref_updates_check_frequency_12h">Toutes les 12 heures</string>
@@ -512,18 +512,18 @@
     <string name="installed_sort_filter">Trier et filtrer</string>
     <string name="installed_sort_by">Trier par</string>
     <string name="installed_sort_name">Nom</string>
-    <string name="installed_sort_date_installed">Date d\'installation</string>
+    <string name="installed_sort_date_installed">Date d’installation</string>
     <string name="installed_sort_date_updated">Date de mise à jour</string>
     <string name="installed_sort_package_name">Nom du paquet</string>
     <string name="installed_sort_size">Taille</string>
     <string name="installed_sort_ascending">Croissant</string>
     <string name="installed_sort_descending">Décroissant</string>
     <string name="installed_filter">Filtre</string>
-    <string name="installed_filter_user_apps">Applications utilisateur</string>
-    <string name="installed_filter_system_apps">Applications système</string>
-    <string name="installed_filter_installer">Installé à partir de</string>
+    <string name="installed_filter_user_apps">Applis utilisateur</string>
+    <string name="installed_filter_system_apps">Applis système</string>
+    <string name="installed_filter_installer">Installées à partir de</string>
     <string name="installed_filter_all">Tout</string>
-    <string name="installed_updated_at">Mise à jour de <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="installed_updated_at">Mises à jour de <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Vérifier</string>
-    <string name="pref_theme_style_system">Suivre le système</string>
+    <string name="pref_theme_style_system">Thème du système</string>
 </resources>
