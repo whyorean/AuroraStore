@@ -113,9 +113,6 @@ class SearchViewModel @Inject constructor(
                 Log.w(TAG, "Search returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to search results for $query", exception)
-                emptyList()
             }
             PageResult(items)
         }.flow.distinctUntilChanged()

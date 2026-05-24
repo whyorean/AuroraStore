@@ -38,7 +38,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 
 @HiltViewModel
 class DevProfileViewModel @Inject constructor(
@@ -55,39 +54,35 @@ class DevProfileViewModel @Inject constructor(
 
     fun getStreamBundle(devId: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    devStream = appDetailsHelper.getDeveloperStream(devId)
-                    streamBundle = devStream.streamBundle
-                    liveData.postValue(ViewState.Success(devStream))
-                } catch (e: GooglePlayException.AuthException) {
-                    Log.w(TAG, "Developer stream fetch returned ${e.code}, redirecting to Splash")
-                    AuroraApp.events.send(AuthEvent.SessionExpired())
-                } catch (e: Exception) {
-                    liveData.postValue(ViewState.Error(e.message))
-                }
+            try {
+                devStream = appDetailsHelper.getDeveloperStream(devId)
+                streamBundle = devStream.streamBundle
+                liveData.postValue(ViewState.Success(devStream))
+            } catch (e: GooglePlayException.AuthException) {
+                Log.w(TAG, "Developer stream fetch returned ${e.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
+            } catch (e: Exception) {
+                liveData.postValue(ViewState.Error(e.message))
             }
         }
     }
 
     fun observeCluster(streamCluster: StreamCluster) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    if (streamCluster.hasNext()) {
-                        val newCluster = streamHelper.getNextStreamCluster(
-                            streamCluster.id,
-                            streamCluster.clusterNextPageUrl
-                        )
-                        updateCluster(newCluster)
-                        devStream = devStream.copy(streamBundle = streamBundle)
-                        liveData.postValue(ViewState.Success(devStream))
-                    } else {
-                        Log.i(TAG, "End of cluster")
-                    }
-                } catch (e: Exception) {
-                    liveData.postValue(ViewState.Error(e.message))
+            try {
+                if (streamCluster.hasNext()) {
+                    val newCluster = streamHelper.getNextStreamCluster(
+                        streamCluster.id,
+                        streamCluster.clusterNextPageUrl
+                    )
+                    updateCluster(newCluster)
+                    devStream = devStream.copy(streamBundle = streamBundle)
+                    liveData.postValue(ViewState.Success(devStream))
+                } else {
+                    Log.i(TAG, "End of cluster")
                 }
+            } catch (e: Exception) {
+                liveData.postValue(ViewState.Error(e.message))
             }
         }
     }

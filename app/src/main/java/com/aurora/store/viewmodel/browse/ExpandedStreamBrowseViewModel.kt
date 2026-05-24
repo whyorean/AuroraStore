@@ -90,9 +90,6 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
                 Log.w(TAG, "Expanded stream returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch apps for page $page", exception)
-                emptyList()
             }
             PageResult(items)
         }.flow.distinctUntilChanged()
