@@ -284,7 +284,7 @@
     <string name="google_play_store_desc">Google Play، المعروف أيضًا باسم متجر Google Play و Android Market سابقًا.</string>
     <string name="android_market_desc">Android Market هو متجر على الإنترنت يقدم تطبيقات برمجية مصممة لأجهزة Android، وتم إيقافه في عام 2017.</string>
     <string name="details_ratings_title_hint">عنوان المراجعة</string>
-    <string name="pref_updates_check_frequency_desc">اضبط الفواصل الزمنية للتحديثات التلقائية والذاتية، في ساعة.</string>
+    <string name="pref_updates_check_frequency_desc">كم مرة يتحقق أورورا من تحديثات التطبيق.</string>
     <string name="pref_aurora_only">تصفية التطبيقات من مصادر أخرى.</string>
     <string name="pref_aurora_only_desc">لا تحقق من التحديثات للتطبيقات المثبتة من مصادر خارج متجر أورورا</string>
     <string name="title_app_settings">إعدادات التطبيق</string>
@@ -348,7 +348,7 @@
     <string name="session_login">يُرجى تسجيل الدخول إلى حساب Google Play الخاص بك</string>
     <string name="about_aurora_store_title">عن متجر Aurora</string>
     <string name="about_aurora_store_subtitle">اعرف المزيد عن متجر Aurora</string>
-    <string name="about_aurora_store_summary">يمكّنك متجر Aurora من البحث عن التطبيقات وتنزيلها من متجر Google Play الرسمي. يمكنك التحقق من أوصاف التطبيق ولقطات الشاشة والتحديثات وتعليقات المستخدمين الآخرين وتنزيل APK مباشرة من Google Play على جهازك. لاستخدام متجر Aurora، يجب أن يكون لديك حساب Google Play، وأن تقوم بتسجيل الدخول إلى حساب Google Play الخاص بك عند فتح متجر Aurora وتضبيطه لأول مرة. \n \nعلى عكس متجر التطبيقات التقليدي، لا يمتلك متجر Aurora أي تطبيقات أو يرخصها أو يوزعها. يمكن الوصول إلى جميع التطبيقات وأوصاف التطبيقات ولقطات الشاشة والمحتويات الأخرى الموجودة في متجر Aurora مباشرة و/أو تنزيلها و/أو عرضها من Google Play. يعمل متجر Aurora تمامًا مثل الباب أو المتصفح، مما يسمح لك بتسجيل الدخول إلى حساب Google Play الخاص بك والعثور على التطبيقات من Google Play. \n \nيُرجى ملاحظة أن متجر Aurora لا يحصل على أي موافقة أو رعاية أو ترخيص من Google أو Google Play أو أي تطبيقات تم تنزيلها من خلال متجر Aurora أو أي من مطوري التطبيقات؛ ولا يوجد لدى متجر Aurora أي انتماء أو تعاون أو اتصال معهم.</string>
+    <string name="about_aurora_store_summary">يمكّنك متجر Aurora من البحث عن التطبيقات وتنزيلها من متجر Google Play الرسمي. يمكنك التحقق من أوصاف التطبيق ولقطات الشاشة والتحديثات وتعليقات المستخدمين الآخرين وتنزيل APK مباشرة من Google Play على جهازك. لاستخدام متجر Aurora، سجل الدخول بحاسب جوجل عند فتح متجر Aurora وتضبيطه لأول مرة. \n \nعلى عكس متجر التطبيقات التقليدي، لا يمتلك متجر Aurora أي تطبيقات أو يرخصها أو يوزعها. يمكن الوصول إلى جميع التطبيقات وأوصاف التطبيقات ولقطات الشاشة والمحتويات الأخرى الموجودة في متجر Aurora مباشرة و/أو تنزيلها و/أو عرضها من Google Play. يعمل متجر Aurora تمامًا مثل الباب أو المتصفح، مما يسمح لك بتسجيل الدخول إلى حساب Google Play الخاص بك والعثور على التطبيقات من Google Play. \n \nيُرجى ملاحظة أن متجر Aurora لا يحصل على أي موافقة أو رعاية أو ترخيص من Google أو Google Play أو أي تطبيقات تم تنزيلها من خلال متجر Aurora أو أي من مطوري التطبيقات؛ ولا يوجد لدى متجر Aurora أي انتماء أو تعاون أو اتصال معهم.</string>
     <string name="toast_app_unavailable">التطبيق غير متوفر لجهازك</string>
     <string name="action_favourite">المفضلة</string>
     <string name="toast_fav_export_success">صُدِّرت المفضلة!</string>
@@ -501,4 +501,32 @@
     <string name="action_ignore_all">تجاهل كل التحديثات</string>
     <string name="action_ignore_version">تخطَّ الإصدار <xliff:g id="version_name">%1$s</xliff:g></string>
     <string name="action_unignore">ألغِ التجاهل</string>
+    <string name="pref_source_filters_desc_count">%1$d مثبّتات مستبعدة</string>
+    <string name="pref_updates_check_frequency_3h">كل 3 ساعات</string>
+    <string name="pref_updates_check_frequency_6h">كل 6 ساعات</string>
+    <string name="pref_updates_check_frequency_12h">كل 12 ساعة</string>
+    <string name="pref_updates_check_frequency_24h">كل 24 ساعة</string>
+    <string name="pref_updates_check_frequency_3d">كل 3 أيام</string>
+    <string name="pref_updates_check_frequency_7d">كل 7 أيام</string>
+    <string name="pref_updates_check_frequency_15d">كل 15 يوم</string>
+    <string name="pref_ui_theme">السمة</string>
+    <string name="pref_theme_style_system">اتبع النظام</string>
+    <string name="pref_theme_style_light">فاتح</string>
+    <string name="pref_theme_style_dark">داكن</string>
+    <string name="installed_sort_filter">رتّب وصفِ</string>
+    <string name="installed_sort_by">رتّب حسب</string>
+    <string name="installed_sort_name">الاسم</string>
+    <string name="installed_sort_date_installed">تاريخ التثبيت</string>
+    <string name="installed_sort_date_updated">تاريخ التحديث</string>
+    <string name="installed_sort_package_name">اسم الحزمة</string>
+    <string name="installed_sort_size">الحجم</string>
+    <string name="installed_sort_ascending">تصاعدي</string>
+    <string name="installed_sort_descending">تنازلي</string>
+    <string name="installed_filter">تصفية</string>
+    <string name="installed_filter_user_apps">تطبيقات المستخدم</string>
+    <string name="installed_filter_system_apps">تطبيقات النظام</string>
+    <string name="installed_filter_installer">ثُبّت مِن</string>
+    <string name="installed_filter_all">الكل</string>
+    <string name="installed_updated_at">حُدث <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">تحقق</string>
 </resources>
