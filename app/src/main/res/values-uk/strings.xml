@@ -244,7 +244,7 @@
     <string name="download_eta_hrs">Залишилося %1$dгод %2$dхв %3$dс</string>
     <string name="download_progress">Завантаження • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Надсилати сповіщення про стан установлення</string>
-    <string name="session_good">Ого! Усе добре.</string>
+    <string name="session_good">Усе добре.</string>
     <string name="update_available">доступне оновлення</string>
     <string name="session_enjoy">Увійдіть та насолоджуйтесь.</string>
     <string name="title_advanced">Розширені</string>
@@ -284,8 +284,8 @@
     <string name="google_play_store_desc">Google Play, також відомий як Google Play Маркет, а раніше – Android Market.</string>
     <string name="android_market_desc">Android Маркет — інтернет-крамниця, що пропонувала програмне забезпечення для пристроїв Android, припинив свою діяльність у 2017 році.</string>
     <string name="details_ratings_title_hint">Заголовок відгуку</string>
-    <string name="pref_updates_check_frequency_desc">Налаштувати часовий проміжок для автоматичних оновлень, у годинах.</string>
-    <string name="pref_aurora_only">Фільтрувати застосунки з інших джерел</string>
+    <string name="pref_updates_check_frequency_desc">Як часто Aurora перевіряє наявність оновлень застосунків.</string>
+    <string name="pref_aurora_only">Фільтрувати застосунки з інших джерел.</string>
     <string name="pref_aurora_only_desc">Не перевіряти наявність оновлень для застосунків, встановлених з джерел поза Aurora Store</string>
     <string name="title_app_settings">Налаштування застосунку</string>
     <string name="pref_updates_check_frequency">Частота автоматичних оновлень</string>
@@ -306,7 +306,7 @@
     <string name="failed_apk_export">Не вдалось експортувати APK</string>
     <string name="download_clear_finished">Очистити завершені</string>
     <string name="pref_updates_incompatible">Показувати оновлення, які можуть не вдатися</string>
-    <string name="pref_updates_incompatible_desc">Показувати оновлення для несумісних або вимкнених застосунків, встановлення яких може не вдатися</string>
+    <string name="pref_updates_incompatible_desc">Показувати оновлення для несумісних або вимкнених застосунків, встановлення яких може не вдатися.</string>
     <string name="action_home_screen">Додати на головний екран</string>
     <string name="root_installer_desc">Потрібує прав root/суперкористувача, підтримуються всі версії Android.</string>
     <string name="session_installer_subtitle">Установлювач Android для розділених/пакетних файлів APK</string>
@@ -348,7 +348,7 @@
     <string name="about_aurora_store_title">Про Aurora Store</string>
     <string name="about_aurora_store_subtitle">Дізнатися більше про Aurora Store</string>
     <string name="session_login">Увійдіть у свій обліковий запис Google Play</string>
-    <string name="about_aurora_store_summary">Aurora Store дає змогу шукати та завантажувати застосунки з офіційного Google Play Маркету. Ви можете переглядати описи застосунків, знімки екрана, оновлення, коментарі інших користувачів, а також завантажувати APK безпосередньо з Google Play на свій пристрій. Щоби користуватися Aurora Store, вам потрібно мати обліковий запис Google Play та ввійти до нього під час першого відкриття та налаштування Aurora Store.\n\nНа відміну від традиційних крамниць застосунків, Aurora Store не володіє, не ліцензує та не розповсюджує застосунки. Усі застосунки, їхні описи, знімки екрана та інший зміст в Aurora Store безпосередньо отримуються, завантажуються та/або показуються з Google Play. Aurora Store працює як двері або браузер, дозволяючи вам увійти до свого облікового запису Google Play та знаходити застосунки з Google Play.\n\nЗауважте, що Aurora Store не має жодного схвалення, спонсорства чи дозволу від Google, Google Play, будь-яких застосунків, завантажених через Aurora Store або будь-яких розробників застосунків; Aurora Store також не має з ними жодного зв\'язку, співпраці чи відносин.</string>
+    <string name="about_aurora_store_summary">Aurora Store дає змогу шукати та завантажувати застосунки з офіційного Google Play Маркету. Ви можете переглядати описи застосунків, знімки екрана, оновлення, коментарі інших користувачів, а також завантажувати APK безпосередньо з Google Play на свій пристрій. Щоби користуватися Aurora Store, увійдіть за допомогою облікового запису Google Play під час першого відкриття та налаштування Aurora Store.\n\nНа відміну від традиційних крамниць застосунків, Aurora Store не володіє, не ліцензує та не розповсюджує застосунки. Усі застосунки, їхні описи, знімки екрана та інший зміст в Aurora Store безпосередньо отримуються, завантажуються та/або показуються з Google Play. Aurora Store працює як двері або браузер, дозволяючи вам увійти до свого облікового запису Google Play та знаходити застосунки з Google Play.\n\nЗауважте, що Aurora Store не має жодного схвалення, спонсорства чи дозволу від Google, Google Play, будь-яких застосунків, завантажених через Aurora Store або будь-яких розробників застосунків; Aurora Store також не має з ними жодного зв’язку, співпраці чи відносин.</string>
     <string name="toast_app_unavailable">Застосунок недоступний для вашого пристрою</string>
     <string name="action_favourite">Улюблене</string>
     <string name="details_no_favourites">Улюблені застосунки не знайдено</string>
@@ -480,4 +480,51 @@
     <string name="header_blacklist_selected">У чорному списку</string>
     <string name="header_blacklist_others">Інше</string>
     <string name="microg_removed_auth_warning">microG більше не встановлено. Запустіть програму встановлення ще раз, щоб система працювала без збоїв.</string>
+    <string name="pref_source_filters_title">Фільтрувати застосунки з інших джерел</string>
+    <string name="pref_source_filters_desc_all">Пропускати всі застосунки, встановлені не через Aurora Store</string>
+    <string name="pref_source_filters_desc_none">Жодних встановлювачів не виключено</string>
+    <string name="pref_source_filters_desc_count">Виключено %1$d встановлювач (-ів)</string>
+    <string name="source_filters_all">Відфільтрувати всі інші встановлювачі</string>
+    <string name="source_filters_installers_header">Специфічні встановлювачі</string>
+    <string name="source_filters_installers_empty">Встановлювачі ще не додано</string>
+    <string name="source_filters_add">Додати встановлювач</string>
+    <string name="source_filters_add_dialog_hint">Уведіть назву пакета</string>
+    <string name="source_filters_remove">Вилучити встановлювач</string>
+    <string name="updates_incompatible_header">Несумісні оновлення</string>
+    <string name="updates_incompatible_desc">Ці оновлення системних застосунків не можуть бути встановлені на цій ОС</string>
+    <string name="updates_approval_header">Оновлення, що потребують схвалення</string>
+    <string name="updates_approval_desc">Ці застосунки були встановлені не через Aurora. Їхнє оновлення вимагає передачі прав на керування оновленнями застосунків.</string>
+    <string name="updates_app_details">Деталі</string>
+    <string name="updates_ignored_header">Проігноровано</string>
+    <string name="updates_ignored_desc">Ці оновлення приховані, доки ви не скасуєте їх ігнорування</string>
+    <string name="action_ignore_all">Ігнорувати всі оновлення</string>
+    <string name="action_ignore_version">Пропустити версію <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Скасувати ігнорування</string>
+    <string name="pref_updates_check_frequency_3h">Кожні 3 години</string>
+    <string name="pref_updates_check_frequency_6h">Кожні 6 годин</string>
+    <string name="pref_updates_check_frequency_12h">Кожні 12 годин</string>
+    <string name="pref_updates_check_frequency_24h">Кожні 24 години</string>
+    <string name="pref_updates_check_frequency_3d">Кожні 3 дні</string>
+    <string name="pref_updates_check_frequency_7d">Кожні 7 днів</string>
+    <string name="pref_updates_check_frequency_15d">Кожні 15 днів</string>
+    <string name="pref_ui_theme">Тема</string>
+    <string name="pref_theme_style_system">Як у системі</string>
+    <string name="pref_theme_style_light">Світла</string>
+    <string name="pref_theme_style_dark">Темна</string>
+    <string name="installed_sort_filter">Сортування та фільтрування</string>
+    <string name="installed_sort_by">Сортувати за</string>
+    <string name="installed_sort_name">Назва</string>
+    <string name="installed_sort_date_installed">Дата встановлення</string>
+    <string name="installed_sort_date_updated">Дата оновлення</string>
+    <string name="installed_sort_package_name">Назва пакета</string>
+    <string name="installed_sort_size">Розмір</string>
+    <string name="installed_sort_ascending">За зростанням</string>
+    <string name="installed_sort_descending">За спаданням</string>
+    <string name="installed_filter">Фільтрувати</string>
+    <string name="installed_filter_user_apps">Застосунки користувача</string>
+    <string name="installed_filter_system_apps">Системні застосунки</string>
+    <string name="installed_filter_installer">Встановлено з</string>
+    <string name="installed_filter_all">Усі</string>
+    <string name="installed_updated_at">Оновлено <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Перевірити</string>
 </resources>

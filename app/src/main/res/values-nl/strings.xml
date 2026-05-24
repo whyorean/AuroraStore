@@ -227,7 +227,7 @@
     <string name="toast_rated_success">Beoordeeld, het kan even duren voordat het zichtbaar is</string>
     <string name="title_manual_download">Handmatige installatie</string>
     <string name="title_updates">Updates</string>
-    <string name="installer_am_unavailable">Installeer App Manager of verander de installatiewijze.</string>
+    <string name="installer_am_unavailable">Installeer App Manager of verander de installatiemethode.</string>
     <string name="pref_install_mode_am">AM-installatieprogramma</string>
     <string name="action_import">Importeren</string>
     <string name="download_eta_min">nog %1$dm %2$ds</string>
@@ -253,7 +253,7 @@
     <string name="onboarding_permission_notifications_desc">Meldingen over de status van installaties verzenden</string>
     <string name="pref_install_mode_shizuku">Shizuku installatieprogramma</string>
     <string name="session_enjoy">Aanmelden en genieten.</string>
-    <string name="session_good">Wow! Alles goed.</string>
+    <string name="session_good">Helemaal goed.</string>
     <string name="session_init">Voorbereiden…</string>
     <string name="title_advanced">Geavanceerd</string>
     <string name="error">Er is een fout opgetreden!</string>
@@ -290,7 +290,7 @@
     <string name="download_clear_finished">Verwijder voltooid</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="shizuku_installer_subtitle">Gebruikt systeem API\'s direct met adb/root-privileges</string>
-    <string name="pref_updates_incompatible_desc">Toon updates voor incompatibele of uitgezette apps die mogelijk niet kunnen worden geïnstalleerd</string>
+    <string name="pref_updates_incompatible_desc">Toon updates voor incompatibele of uitgezette apps die mogelijk niet kunnen worden geïnstalleerd.</string>
     <string name="action_select_all">Alles selecteren</string>
     <string name="action_remove_all">Alles verwijderen</string>
     <string name="filter_latest">Laatste</string>
@@ -313,7 +313,7 @@
     <string name="action_favourite">Favoriet</string>
     <string name="session_login">Meld je aan bij je Google Play-account</string>
     <string name="native_installer_desc">Meest geschikt voor apparaten met Android lager dan 4.4</string>
-    <string name="root_installer_desc">Vereist root/superuser privileges, ondersteund alle Androidversies</string>
+    <string name="root_installer_desc">Vereist root/superuser privileges, ondersteund alle Androidversies.</string>
     <string name="manage_account">Beheer je account</string>
     <string name="pref_clear_device_owner_desc">Dit zal de toestemming van de sessie-installatiemethode intrekken om stilletjes de app te installeren. Doorgaan met het vrijmaken van eigendomsrecht?</string>
     <string name="root_installer_subtitle">Shell-gebaseerde installatiemethode, gebruikt root-toegang</string>
@@ -340,7 +340,7 @@
     <string name="title_favourites_manager">Favoriete apps</string>
     <string name="toast_proxy_invalid">Ongeldige proxy-URL, controleer indeling!</string>
     <string name="notification_channel_downloads">Melding met downloads</string>
-    <string name="pref_aurora_only">Apps van andere bronnen filteren</string>
+    <string name="pref_aurora_only">Apps van andere bronnen filteren.</string>
     <string name="failed_apk_export">APK\'s exporteren mislukt</string>
     <string name="source_code_title">Broncode</string>
     <string name="about_aurora_store_title">Over Aurora Store</string>
@@ -351,7 +351,7 @@
     <string name="about_aurora_store_subtitle">Leer meer over Aurora Store</string>
     <string name="add_dispenser_title">Distributeur toevoegen</string>
     <string name="pref_updates_auto_notify">Controleer &amp; stuur melding voor beschikbare updates</string>
-    <string name="pref_updates_check_frequency_desc">Stel het tijdsinterval voor automatische updates in, in uren</string>
+    <string name="pref_updates_check_frequency_desc">Hoe vaak Aurora controleert op app-updates.</string>
     <string name="pref_updates_auto_off">Apps niet automatisch updaten</string>
     <string name="made_with_love">Gemaakt met <xliff:g id="heart_emoji">%1$s</xliff:g> in India</string>
     <string name="item_required">Vereist</string>
@@ -426,7 +426,7 @@
     <string name="pref_updates_restrictions_idle">Als het apparaat inactief is</string>
     <string name="pref_updates_restrictions_battery">Als de batterij niet laag is</string>
     <string name="verification_failed">Gedownloade bestanden verifiëren mislukt</string>
-    <string name="about_aurora_store_summary">Met Aurora Store kunt u apps zoeken en downloaden uit de officiële Google Play Store. U kunt app-beschrijvingen, screenshots, updates en reacties van andere gebruikers bekijken en de APK rechtstreeks vanuit Google Play naar uw apparaat downloaden. Om Aurora Store te gebruiken moet u een Google Play-account hebben en inloggen op uw Google Play-account wanneer u Aurora Store voor het eerst opent en configureert.\n\nIn tegenstelling tot een traditionele app store bezit, licentieert of distribueert Aurora Store geen apps. Alle apps, app-beschrijvingen, screenshots en andere content in Aurora Store worden rechtstreeks geopend, gedownload en/of weergegeven via Google Play. Aurora Store werkt precies zoals een deur of een browser, waarmee u kunt inloggen op uw Google Play-account en de apps vanuit Google Play kunt vinden.\n\nHoud er rekening mee dat Aurora Store geen goedkeuring, sponsoring of autorisatie heeft van Google, Google Play, apps die via Aurora Store zijn gedownload of app-ontwikkelaars; Aurora Store heeft ook geen enkele band, samenwerking of connectie met hen.</string>
+    <string name="about_aurora_store_summary">Met Aurora Store kunt u apps zoeken en downloaden uit de officiële Google Play Store. U kunt app-beschrijvingen, screenshots, updates en reacties van andere gebruikers bekijken en de APK rechtstreeks vanuit Google Play naar uw apparaat downloaden. Wanneer u Aurora Store voor het eerst opent en configureert, moet u inloggen met uw Google Play-account.\n\nIn tegenstelling tot een traditionele app store bezit, licentieert of distribueert Aurora Store geen apps. Alle apps, app-beschrijvingen, screenshots en andere content in Aurora Store worden rechtstreeks geopend, gedownload en/of weergegeven via Google Play. Aurora Store werkt precies zoals een deur of een browser, waarmee u kunt inloggen op uw Google Play-account en de apps vanuit Google Play kunt vinden.\n\nHoud er rekening mee dat Aurora Store geen goedkeuring, sponsoring of autorisatie heeft van Google, Google Play, apps die via Aurora Store zijn gedownload of app-ontwikkelaars; Aurora Store heeft ook geen enkele band, samenwerking of connectie met hen.</string>
     <string name="pref_common_advanced">Geavanceerd</string>
     <string name="pref_updates_app_source">App-bron</string>
     <string name="app_info_downloads">Downloads</string>
@@ -478,4 +478,51 @@
     <string name="header_blacklist_selected">Op de zwarte lijst</string>
     <string name="header_blacklist_others">Anderen</string>
     <string name="microg_removed_auth_warning">microG is niet langer geïnstalleerd. Voer de installatie opnieuw uit zodat alles soepel blijft werken.</string>
+    <string name="updates_app_details">Details</string>
+    <string name="pref_updates_check_frequency_3h">Iedere 3 uur</string>
+    <string name="pref_updates_check_frequency_6h">Iedere 6 uur</string>
+    <string name="pref_updates_check_frequency_12h">Iedere 12 uur</string>
+    <string name="pref_updates_check_frequency_24h">Iedere 24 uur</string>
+    <string name="pref_updates_check_frequency_3d">Iedere 3 dagen</string>
+    <string name="pref_updates_check_frequency_7d">Iedere 7 dagen</string>
+    <string name="pref_updates_check_frequency_15d">Iedere 15 dagen</string>
+    <string name="pref_ui_theme">Thema</string>
+    <string name="pref_theme_style_system">Systeem volgen</string>
+    <string name="pref_theme_style_light">Licht</string>
+    <string name="pref_theme_style_dark">Donker</string>
+    <string name="installed_sort_filter">Sorteren en filteren</string>
+    <string name="installed_sort_by">Sorteren op</string>
+    <string name="installed_sort_name">Naam</string>
+    <string name="installed_sort_date_installed">Datum geïnstalleerd</string>
+    <string name="installed_sort_date_updated">Datum bijgewerkt</string>
+    <string name="installed_sort_package_name">Pakketnaam</string>
+    <string name="installed_sort_size">Grootte</string>
+    <string name="installed_sort_ascending">Oplopend</string>
+    <string name="installed_sort_descending">Aflopend</string>
+    <string name="installed_filter">Filteren</string>
+    <string name="installed_filter_user_apps">Gebruikersapps</string>
+    <string name="installed_filter_system_apps">Systeemapps</string>
+    <string name="installed_filter_installer">Geïnstalleerd met</string>
+    <string name="installed_filter_all">Alle</string>
+    <string name="installed_updated_at">Bijgewerkt <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Controleren</string>
+    <string name="pref_source_filters_title">Apps van andere bronnen filteren</string>
+    <string name="pref_source_filters_desc_all">Sla alle apps over die niet door Aurora Store zijn geïnstalleerd</string>
+    <string name="pref_source_filters_desc_none">Geen installatiemethode uitgesloten</string>
+    <string name="pref_source_filters_desc_count">%1$d installatiemethode(s) uitgesloten</string>
+    <string name="source_filters_all">Filter alle andere installatiemethodes</string>
+    <string name="source_filters_installers_header">Specifieke installatiemethodes</string>
+    <string name="source_filters_installers_empty">Er zijn nog geen installatiemethodes toegevoegd</string>
+    <string name="source_filters_add">Installatiemethode toevoegen</string>
+    <string name="source_filters_add_dialog_hint">Voer pakketnaam in</string>
+    <string name="source_filters_remove">Installatiemethode verwijderen</string>
+    <string name="updates_incompatible_header">Incompatibele updates</string>
+    <string name="updates_incompatible_desc">Deze systeemapp-updates kunnen niet op dit besturingssysteem worden geïnstalleerd</string>
+    <string name="updates_approval_header">Updates die goedkeuring vereisen</string>
+    <string name="updates_approval_desc">Deze apps zijn niet door Aurora geïnstalleerd. Bij het bijwerken ervan wordt gevraagd om het eigendom van de app-update over te dragen.</string>
+    <string name="updates_ignored_header">Genegeerd</string>
+    <string name="updates_ignored_desc">Deze updates zijn verborgen totdat je ze niet meer negeert</string>
+    <string name="action_ignore_all">Negeer alle updates</string>
+    <string name="action_ignore_version">Versie overslaan <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Niet meer negeren</string>
 </resources>

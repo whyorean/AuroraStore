@@ -236,7 +236,7 @@
     <string name="pref_vending_version_device">Parazgjedhje (nga formësim pajisjeje)</string>
     <string name="pref_network_proxy_url">URL ndërmjetësi</string>
     <string name="pref_updates_incompatible">Shfaq përditësime që mund të dështojnë</string>
-    <string name="pref_aurora_only">Filtro aplikacione nga burime të tjera</string>
+    <string name="pref_aurora_only">Filtro aplikacione nga burime të tjera.</string>
     <string name="session_enjoy">Bëni hyrjen dhe shijojeni.</string>
     <string name="toast_import_failed">S’u importua dot formësim pajisjeje</string>
     <string name="downloading_dep">Po shkarkohen kartela shtesë për <xliff:g id="app">%1$s</xliff:g></string>
@@ -263,7 +263,7 @@
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
     <string name="permissions_denied">U mohuan leje të domosdoshme. Ju lutemi, që të mund të vazhdohet veprimi, akordojini</string>
     <string name="notification_updates_available_desc_1">Ka gati një version të ri të <xliff:g id="app_one_name">%1$s</xliff:g></string>
-    <string name="pref_updates_check_frequency_desc">Formësoni intervale kohorë për përditësime të automatizuara, në orë.</string>
+    <string name="pref_updates_check_frequency_desc">Sa shpesh kontrollon Aurora për përditësime aplikacioni.</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> dhe <xliff:g id="apps_count">%4$d</xliff:g> të tjerë</string>
     <string name="access_denied_using_vpn">Hyrje e mohuar! Po përdorni VPN, ose Tor?</string>
     <string name="google_play_store_desc">Google Play, e njohur dhe si Google Play Store dhe ish-Android Market.</string>
@@ -290,9 +290,9 @@
     <string name="download_eta_min">Edhe %1$dm %2$ds</string>
     <string name="download_eta_sec">Edhe %1$ds</string>
     <string name="onboarding_permission_notifications_desc">Dërgo njoftime lidhur me gjendje instalimesh</string>
-    <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi</string>
+    <string name="pref_updates_incompatible_desc">Shfaq përditësime për aplikacione të papërputhshëm, ose të çaktivizuar, për të cilët mund të dështojë instalimi.</string>
     <string name="pref_aurora_only_desc">Mos kontrollo për përditësime për aplikacione të instaluar nga burime jashtë Shitores Aurora</string>
-    <string name="session_good">Hyaaa! Gjithçka në rregull.</string>
+    <string name="session_good">Gjithçka në rregull.</string>
     <string name="session_verifying_google">Po verifikohet sesion Google</string>
     <string name="title_search_suggestion">Sugjerim kërkimi</string>
     <string name="title_search_results">Përfundime kërkimi</string>
@@ -346,7 +346,7 @@
     <string name="toast_fav_export_success">Të parapëlqyerit u eksportuan!</string>
     <string name="session_login">Ju lutemi, bëni hyrjen te llogaria juaj Google Play</string>
     <string name="action_favourite">E preferuara</string>
-    <string name="about_aurora_store_summary">Aurora Store ju mundëson të kërkoni dhe shkarkoni aplikacione nga Shitorja zyrtare Google Play. Mund të shihni përshkrimet e aplikacioneve, foto ekrani, përditësime, komente përdoruesish të tjerë dhe të shkarkoni APK-në drejtpërdrejt nga Google Play në pajisjen tuaj. Që të përdorni Aurora Store, duhet të keni një llogari në Google Play dhe të bëni hyrjen në të, kur të hapni për herë të parë dhe formësoni Aurora Store.\n \nNdryshe nga një shitore tradicionale aplikacionesh, Aurora Store nuk zotëron, licencon ose shpërndan ndonjë aplikacion. Krejt aplikacionet, përshkrimet e tyre, fotot e ekranit dhe lëndë tjetër në Aurora Store shihen, shkarkohen dhe/ose shfaqen drejtpërdrejt nga Google Play. Aurora Store funksionon mu si një derë, ose një shfletues, duke ju lejuar të bëni hyrjen në llogarinë tuaj Google Play dhe t’i gjeni aplikacionet nga Google Play. \n \nJu lutemi, kini parasysh se Aurora Store nuk ka ndonjë miratim, sponsorizim apo autorizim nga Google, Google Play, nga çfarëdo aplikacionesh të shkarkuar përmes Aurora Store apo nga çfarëdo zhvilluesish aplikacionesh; as ka Aurora Store ndonjë përshoqërim, bashkëpunim apo lidhje me ta.</string>
+    <string name="about_aurora_store_summary">Aurora Store ju mundëson të kërkoni dhe shkarkoni aplikacione nga Shitorja zyrtare Google Play. Mund të shihni përshkrimet e aplikacioneve, foto ekrani, përditësime, komente përdoruesish të tjerë dhe të shkarkoni APK-në drejtpërdrejt nga Google Play në pajisjen tuaj. Që të përdorni Aurora Store, bëni hyrjen duke përdorur një llogari Google, kur të hapni për herë të parë dhe formësoni Aurora Store-in.\n \nNdryshe nga një shitore tradicionale aplikacionesh, Aurora Store nuk zotëron, licencon ose shpërndan ndonjë aplikacion. Krejt aplikacionet, përshkrimet e tyre, fotot e ekranit dhe lëndë tjetër në Aurora Store shihen, shkarkohen dhe/ose shfaqen drejtpërdrejt nga Google Play. Aurora Store funksionon mu si një derë, ose një shfletues, duke ju lejuar të bëni hyrjen në llogarinë tuaj Google Play dhe t’i gjeni aplikacionet nga Google Play. \n \nJu lutemi, kini parasysh se Aurora Store nuk ka ndonjë miratim, sponsorizim apo autorizim nga Google, Google Play, nga çfarëdo aplikacionesh të shkarkuar përmes Aurora Store apo nga çfarëdo zhvilluesish aplikacionesh; as ka Aurora Store ndonjë përshoqërim, bashkëpunim apo lidhje me ta.</string>
     <string name="action_uninstall_success">U çinstalua me sukses</string>
     <string name="pref_network_proxy_url_message">Jepni një URL ndërmjetësi të vlefshme për të kaluar krejt të dhënat përmes ndërmjetësit.</string>
     <string name="check_updates">Kontrollo për përditësime</string>
@@ -473,4 +473,52 @@
     <string name="action_view_on_play">Shiheni në Play Store</string>
     <string name="header_blacklist_others">Të tjerë</string>
     <string name="microg_removed_auth_warning">microG s’është më i instaluar. Rikryeni ujdisjen që t’i mbani gjëra të funksionojnë rrjedhshëm.</string>
+    <string name="pref_source_filters_title">Filtro aplikacione nga burime të tjera</string>
+    <string name="pref_source_filters_desc_all">Anashkalo do aplikacion jo të instaluar nga Aurora Store</string>
+    <string name="pref_source_filters_desc_none">S’u përjashtuan instalues</string>
+    <string name="pref_source_filters_desc_count">U përjashtua %1$d instalues()</string>
+    <string name="source_filters_all">Filtro krejt instaluesit e tjerë</string>
+    <string name="source_filters_installers_header">Instalues specifikë</string>
+    <string name="source_filters_installers_empty">Ende pa instalues të shtuar</string>
+    <string name="source_filters_add">Shtoni instalues</string>
+    <string name="source_filters_add_dialog_hint">Jepni emër pakete</string>
+    <string name="source_filters_remove">Hiqe instaluesin</string>
+    <string name="updates_incompatible_header">Përditësime të papërputhshme</string>
+    <string name="updates_incompatible_desc">Këto përditësime aplikacionesh sistemi s’mund të instalohet në këtë OS</string>
+    <string name="updates_ignored_header">Të shpërfillur</string>
+    <string name="updates_ignored_desc">Këto përditësime janë të fshehura, deri sa të hiqni shpërfilljen për to</string>
+    <string name="action_ignore_all">Shpërfilli krejt përditësimet</string>
+    <string name="action_ignore_version">Anashkalo versionin <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Hiqja shpërfilljen</string>
+    <string name="pref_updates_check_frequency_3h">Çdo 3 orë</string>
+    <string name="pref_updates_check_frequency_6h">Çdo 6 orë</string>
+    <string name="pref_updates_check_frequency_12h">Çdo 12 orë</string>
+    <string name="pref_updates_check_frequency_24h">Çdo 24 orë</string>
+    <string name="pref_updates_check_frequency_3d">Çdo 3 ditë</string>
+    <string name="pref_updates_check_frequency_7d">Çdo 7 ditë</string>
+    <string name="pref_updates_check_frequency_15d">Çdo 15 ditë</string>
+    <string name="pref_ui_theme">Temë</string>
+    <string name="pref_theme_style_system">Ndiq sistemin</string>
+    <string name="pref_theme_style_light">E çelët</string>
+    <string name="pref_theme_style_dark">E errët</string>
+    <string name="installed_sort_filter">Renditini dhe filtrojini</string>
+    <string name="installed_sort_by">Renditi sipas</string>
+    <string name="installed_sort_name">Emrash</string>
+    <string name="installed_sort_date_installed">Datash instalimi</string>
+    <string name="installed_sort_date_updated">Datash përditësimi</string>
+    <string name="installed_sort_package_name">Emrash pakete</string>
+    <string name="installed_sort_size">Madhësish</string>
+    <string name="installed_sort_ascending">Në rend rritës</string>
+    <string name="installed_sort_descending">Në rend zbritës</string>
+    <string name="installed_filter">Filtroji</string>
+    <string name="installed_filter_user_apps">Aplikacione përdoruesi</string>
+    <string name="installed_filter_system_apps">Aplikacione sistemi</string>
+    <string name="installed_filter_installer">Instaluar që nga</string>
+    <string name="installed_filter_all">Krejt</string>
+    <string name="installed_updated_at">Përditësuar më <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="updates_approval_header">Përditësime që lypin miratim</string>
+    <string name="updates_app_details">Hollësi</string>
+    <string name="header_blacklist_selected">Vënë në listë bllokimesh</string>
+    <string name="updates_approval_desc">Këta aplikacione s’qenë instaluar nga Aurora. Përditësimi i tyre do të kërkojë shpërngulje pronësie përditësimesh aplikacioni.</string>
+    <string name="action_check">Kontrolloje</string>
 </resources>
