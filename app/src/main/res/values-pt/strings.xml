@@ -251,7 +251,7 @@
     <string name="title_advanced">Avançado</string>
     <string name="installer_shizuku_unavailable">Shizuku não instalado ou configurado erradamente.</string>
     <string name="pref_install_mode_shizuku">Instalador Shizuku</string>
-    <string name="session_good">Tudo ok!</string>
+    <string name="session_good">Tudo certo.</string>
     <string name="session_init">A preparar a aplicação…</string>
     <string name="session_login_failed_google">Falha ao iniciar sessão via Google</string>
     <string name="session_scrapped">Última sessão perdida</string>
@@ -285,10 +285,10 @@
     <string name="android_market_desc">O Android Market foi uma loja online que oferecia aplicações para dispositivos Android, descontinuada em 2017.</string>
     <string name="details_ratings_title_hint">Título da avaliação</string>
     <string name="pref_network_proxy_url">URL do proxy</string>
-    <string name="pref_updates_check_frequency_desc">Configure o intervalo das atualizações automáticas, em horas.</string>
-    <string name="pref_aurora_only">Filtrar aplicações de outras fontes</string>
+    <string name="pref_updates_check_frequency_desc">Quão frequentemente a Aurora confere se há atualizações das apps.</string>
+    <string name="pref_aurora_only">Filtrar apps de outras fontes.</string>
     <string name="toast_proxy_invalid">URL inválido. Verifique o formato!</string>
-    <string name="pref_aurora_only_desc">Não procurar por atualizações para as aplicações instaladas de fontes fora da Loja Aurora</string>
+    <string name="pref_aurora_only_desc">Não conferir se há atualizações de apps não instalados pela Aurora Store</string>
     <string name="toast_proxy_success">Proxy definido com sucesso</string>
     <string name="title_app_settings">Configurações da app</string>
     <string name="pref_updates_check_frequency">Frequência das atualizações automáticas</string>
@@ -307,7 +307,7 @@
     <string name="pref_updates_incompatible">Mostrar atualizações que possam falhar</string>
     <string name="action_home_screen">Adicionar ao ecrã inicial</string>
     <string name="download_clear_finished">Limpeza efetuada</string>
-    <string name="pref_updates_incompatible_desc">Exibir as atualizações para as aplicações incompatíveis ou desativadas que possam falhar a instalação</string>
+    <string name="pref_updates_incompatible_desc">Exibir atualizações de apps incompatíveis ou desativados que podem falhar ao instalar.</string>
     <string name="manual_download_hint">Insira o código da versão que pretende descarregar</string>
     <string name="faqs_subtitle">Tem perguntas? Encontre as respostas</string>
     <string name="source_code_title">Código fonte</string>
@@ -373,7 +373,7 @@
     <string name="check_updates">Verificar se há atualizações</string>
     <string name="onboarding_permission_installer_legacy_desc">Permitir a instalação de aplicações de fontes desconhecidas</string>
     <string name="toast_app_unavailable">Aplicação não disponível para o seu dispositivo</string>
-    <string name="about_aurora_store_summary">A Aurora Store permite que pesquise e instale apps da Google Play Store oficial. Pode ver as descrições dos apps, capturas de ecrã, atualizações, os comentários dos utilizadores e descarregar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, precisa ter uma conta do Google Play e entrar na conta quando abrir e configurar a Aurora Store pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos os apps, as descrições dos apps, capturas de ecrã e outros conteúdos da Aurora Store são acedidos, descarregados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que entre na sua conta Google Play e encontre os apps do Google Play.\n\nObserva que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps descarregados pela Aurora Store ou qualquer programador dos apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
+    <string name="about_aurora_store_summary">A Aurora Store permite que pesquise e descarregue apps da Google Play Store oficial. Pode ver as descrições das apps, capturas de ecrã, atualizações, os comentários dos utilizadores e descarregar o APK diretamente da Google Play no seu dispositivo. Para usar a Aurora Store, conecte-se a uma conta do Google Play ao abrir e configurar pela primeira vez.\n\nDiferentemente de uma loja de apps tradicional, a Aurora Store não tem propriedade, licencia ou distribui nenhum app. Todos as apps, as descrições das apps, capturas de ecrã e outros conteúdos da Aurora Store são acedidos, descarregados e/ou exibidos do Google Play. A Aurora Store funciona exatamente como uma porta ou navegador, permitindo que entre na sua conta do Google Play e encontre as apps do Google Play.\n\nObserve que a Aurora Store não possui qualquer aprovação, patrocínio ou autorização do Google, Google Play, apps descarregados pela Aurora Store ou qualquer programador das apps, nem possui qualquer afiliação, cooperação ou conexão com eles.</string>
     <string name="made_with_love">Desenvolvido com <xliff:g id="heart_emoji">%1$s</xliff:g> na Índia</string>
     <string name="notification_channel_account">Notificação relacionada à conta</string>
     <string name="notification_channel_export">Notificação de exportação de aplicativo</string>
@@ -479,4 +479,51 @@
     <string name="header_blacklist_others">Outros</string>
     <string name="preparing_to_download">A preparar para descarregar</string>
     <string name="verifying_downloads">A verificar descargas</string>
+    <string name="pref_source_filters_title">Filtrar apps de outras fontes</string>
+    <string name="pref_source_filters_desc_all">Pular cada app não instalado pela Aurora Store</string>
+    <string name="pref_source_filters_desc_none">Nenhum instalador excluído</string>
+    <string name="pref_source_filters_desc_count">%1$d instalador(es) excluído(s)</string>
+    <string name="source_filters_all">Filtrar todos os outros instaladores</string>
+    <string name="source_filters_installers_header">Instaladores específicos</string>
+    <string name="source_filters_installers_empty">Nenhum instalador adicionado ainda</string>
+    <string name="source_filters_add">Adicionar instalador</string>
+    <string name="source_filters_add_dialog_hint">Digite o nome do pacote</string>
+    <string name="source_filters_remove">Remover instalador</string>
+    <string name="updates_incompatible_header">Atualizações incompatíveis</string>
+    <string name="updates_incompatible_desc">Estas atualizações de apps do sistema não podem ser instaladas neste sistema</string>
+    <string name="updates_approval_header">Atualizações pendentes de confirmação</string>
+    <string name="updates_approval_desc">Estas apps não foram instalados pela Aurora. Atualizá-los fará com que a propriedade de atualizações da app seja transferida.</string>
+    <string name="updates_app_details">Pormenores</string>
+    <string name="updates_ignored_header">Ignorado</string>
+    <string name="updates_ignored_desc">Estas atualizações serão ocultas até que pare de ignorar</string>
+    <string name="action_ignore_all">Ignorar todas as atualizações</string>
+    <string name="action_ignore_version">Pular a versão <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Parar de ignorar</string>
+    <string name="pref_updates_check_frequency_3h">A cada 3 horas</string>
+    <string name="pref_updates_check_frequency_6h">A cada 6 horas</string>
+    <string name="pref_updates_check_frequency_12h">A cada 12 horas</string>
+    <string name="pref_updates_check_frequency_24h">A cada 24 horas</string>
+    <string name="pref_updates_check_frequency_3d">A cada 3 dias</string>
+    <string name="pref_updates_check_frequency_7d">A cada 7 dias</string>
+    <string name="pref_updates_check_frequency_15d">A cada 15 dias</string>
+    <string name="pref_ui_theme">Tema</string>
+    <string name="pref_theme_style_system">Seguir o sistema</string>
+    <string name="pref_theme_style_light">Claro</string>
+    <string name="pref_theme_style_dark">Escuro</string>
+    <string name="installed_sort_filter">Ordenar e filtrar</string>
+    <string name="installed_sort_by">Ordenar por</string>
+    <string name="installed_sort_name">Nome</string>
+    <string name="installed_sort_date_installed">Data de instalação</string>
+    <string name="installed_sort_date_updated">Data de atualização</string>
+    <string name="installed_sort_package_name">Nome do pacote</string>
+    <string name="installed_sort_size">Tamanho</string>
+    <string name="installed_sort_ascending">Crescente</string>
+    <string name="installed_sort_descending">Decrescente</string>
+    <string name="installed_filter">Filtro</string>
+    <string name="installed_filter_user_apps">Apps do utilizador</string>
+    <string name="installed_filter_system_apps">Apps do sistema</string>
+    <string name="installed_filter_installer">Instalado por</string>
+    <string name="installed_filter_all">Tudo</string>
+    <string name="installed_updated_at">Atualizado em <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Conferir</string>
 </resources>
