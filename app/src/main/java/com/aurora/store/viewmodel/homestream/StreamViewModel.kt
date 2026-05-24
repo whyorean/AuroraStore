@@ -80,19 +80,8 @@ class StreamViewModel @Inject constructor(
                             streamContract.fetch(type, category)
                         }
 
-                        // gplayapi 3.6.1 stamps every cluster in a bundle with the bundle id,
-                        // so naive Map.plus drops the existing page's clusters. Re-key the new
-                        // clusters with synthetic ids past the current max so pagination appends.
-                        val baseKey = (bundle.streamClusters.keys.maxOrNull() ?: 0) + 1
-                        val rekeyedNewClusters = newBundle.streamClusters.values
-                            .mapIndexed { index, cluster ->
-                                val newId = baseKey + index
-                                newId to cluster.copy(id = newId)
-                            }
-                            .toMap()
-
                         val mergedBundle = bundle.copy(
-                            streamClusters = bundle.streamClusters + rekeyedNewClusters,
+                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         )
                         stash[category] = mergedBundle

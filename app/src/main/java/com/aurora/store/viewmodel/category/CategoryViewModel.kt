@@ -25,11 +25,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.Category
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.contracts.CategoryContract
+import com.aurora.store.AuroraApp
 import com.aurora.store.CategoryStash
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +39,6 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
-    private val authProvider: AuthProvider,
     private val categoryHelper: CategoryHelper
 ) : ViewModel() {
 
@@ -62,9 +63,11 @@ class CategoryViewModel @Inject constructor(
             liveData.postValue(ViewState.Loading)
 
             try {
-                authProvider.awaitReady()
                 stash[type] = contract().getAllCategories(type)
                 liveData.postValue(ViewState.Success(stash))
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Categories fetch returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed fetching list of categories", exception)
                 liveData.postValue(ViewState.Error(exception.message))

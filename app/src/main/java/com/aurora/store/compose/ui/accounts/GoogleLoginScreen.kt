@@ -74,7 +74,7 @@ fun GoogleLoginScreen(
                 } else {
                     Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
                         .show()
-                    onNavigateTo(Destination.Splash)
+                    onNavigateTo(Destination.Splash())
                 }
             }
         }
@@ -87,7 +87,7 @@ fun GoogleLoginScreen(
                     Preferences.getInteger(context, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
                 )
             )
-            is AuthState.Failed -> onNavigateTo(Destination.Splash)
+            is AuthState.Failed -> onNavigateTo(Destination.Splash())
             else -> Unit
         }
     }

@@ -13,10 +13,12 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
-import com.aurora.store.data.providers.AuthProvider
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -30,7 +32,6 @@ import kotlinx.coroutines.flow.onEach
 @HiltViewModel(assistedFactory = ExpandedStreamBrowseViewModel.Factory::class)
 class ExpandedStreamBrowseViewModel @AssistedInject constructor(
     @Assisted val browseUrl: String,
-    private val authProvider: AuthProvider,
     private val streamHelper: ExpandedBrowseHelper
 ) : ViewModel() {
 
@@ -55,7 +56,6 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
 
         manualPager { page ->
             val items = try {
-                authProvider.awaitReady()
                 when (page) {
                     1 -> {
                         val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)
@@ -86,6 +86,10 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
                         }
                     }
                 }
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Expanded stream returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
+                emptyList()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch apps for page $page", exception)
                 emptyList()

@@ -27,6 +27,7 @@ import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.AppState
@@ -162,48 +163,36 @@ class AppDetailsViewModel @Inject constructor(
 
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            var retried = false
-            while (true) {
-                try {
-                    authProvider.awaitReady()
-                    _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
-                        isInstalled = PackageUtil.isInstalled(context, packageName)
-                    )
-                    val existingDownload = downloadHelper.getDownload(packageName)
+            try {
+                _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
+                    isInstalled = PackageUtil.isInstalled(context, packageName)
+                )
+                val existingDownload = downloadHelper.getDownload(packageName)
 
-                    // A COMPLETED record for an app that is no longer installed means the app was
-                    // installed then removed while Aurora held a stale record.
-                    // Remove it so the live download observer doesn't lock the UI in Installing state
-                    // indefinitely.
-                    if (existingDownload?.status == DownloadStatus.COMPLETED && !isInstalled) {
-                        downloadHelper.removeDownload(packageName)
-                        _state.value = defaultAppState
-                    } else {
-                        // Seed state from any in-flight download for this package so reopening
-                        // the screen doesn't briefly flash the default install action while the
-                        // download flow catches up.
-                        _state.value =
-                            existingDownload?.let { stateFromDownload(it) } ?: defaultAppState
-                    }
-                    break
-                } catch (exception: Exception) {
-                    // gplayapi throws AppNotFound(code=401) when the saved token is
-                    // rejected mid-session; refresh anonymous auth once and retry.
-                    if (!retried &&
-                        authProvider.isAnonymous &&
-                        exception is GooglePlayException.NotFound &&
-                        exception.code == 401
-                    ) {
-                        Log.w(TAG, "App details fetch returned 401, refreshing auth", exception)
-                        retried = true
-                        authProvider.refreshAnonymousAuth()
-                        continue
-                    }
-                    Log.e(TAG, "Failed to fetch app details", exception)
-                    _app.value = null
-                    _state.value = AppState.Error(exception.message)
-                    break
+                // A COMPLETED record for an app that is no longer installed means the app was
+                // installed then removed while Aurora held a stale record.
+                // Remove it so the live download observer doesn't lock the UI in Installing state
+                // indefinitely.
+                if (existingDownload?.status == DownloadStatus.COMPLETED && !isInstalled) {
+                    downloadHelper.removeDownload(packageName)
+                    _state.value = defaultAppState
+                } else {
+                    // Seed state from any in-flight download for this package so reopening
+                    // the screen doesn't briefly flash the default install action while the
+                    // download flow catches up.
+                    _state.value =
+                        existingDownload?.let { stateFromDownload(it) } ?: defaultAppState
                 }
+            } catch (exception: GooglePlayException.AuthException) {
+                // The saved Play token has been rejected mid-session. Hand off to
+                // Splash to re-validate and rebuild auth, and ask it to bring the
+                // user back to this app's details once auth is good again.
+                Log.w(TAG, "App details fetch returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired(packageName))
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch app details", exception)
+                _app.value = null
+                _state.value = AppState.Error(exception.message)
             }
         }.invokeOnCompletion { throwable ->
             // Only proceed if there was no error while fetching the app details

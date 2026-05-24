@@ -96,7 +96,7 @@ private fun ScreenContent(
             when (result) {
                 SnackbarResult.ActionPerformed -> {
                     AccountProvider.logout(context)
-                    onNavigateTo(Destination.Splash)
+                    onNavigateTo(Destination.Splash())
                 }
 
                 else -> Unit

@@ -15,7 +15,7 @@ import com.aurora.store.data.room.update.Update
  * Screens emit one of these via a single `onNavigateTo: (Destination) -> Unit` callback.
  */
 sealed class Destination {
-    data object Splash : Destination()
+    data class Splash(val packageName: String? = null) : Destination()
     data class Main(val initialTab: Int) : Destination()
 
     data class AppDetails(val packageName: String) : Destination()

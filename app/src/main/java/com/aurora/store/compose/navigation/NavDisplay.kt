@@ -58,6 +58,7 @@ import com.aurora.store.compose.ui.preferences.updates.UpdatesPreferenceScreen
 import com.aurora.store.compose.ui.search.SearchScreen
 import com.aurora.store.compose.ui.splash.SplashScreen
 import com.aurora.store.compose.ui.spoof.SpoofScreen
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.providers.AccountProvider
@@ -101,12 +102,24 @@ fun NavDisplay(startDestination: NavKey) {
         }
     }
 
+    // Send the user back to Splash whenever a ViewModel reports the saved Play
+    // token was rejected. SplashScreen re-validates via a live Play call and
+    // rebuilds auth on failure, then routes to AppDetails if a packageName was attached.
+    LaunchedEffect(Unit) {
+        AuroraApp.events.authEvent.collect { event ->
+            if (event is AuthEvent.SessionExpired) {
+                backstack.clear()
+                backstack.add(Screen.Splash(event.packageName))
+            }
+        }
+    }
+
     fun navigate(destination: Destination) {
         when (destination) {
-            Destination.Splash -> {
+            is Destination.Splash -> {
                 // Clear the backstack when navigating to Splash to prevent going back to the previous screen when the user is sent back to the splash screen (e.g. after logout).
                 backstack.clear()
-                backstack.add(Screen.Splash)
+                backstack.add(Screen.Splash(destination.packageName))
             }
 
             is Destination.Main -> {
@@ -249,7 +262,12 @@ fun NavDisplay(startDestination: NavKey) {
                 }
             ) { SearchScreen() }
 
-            entry<Screen.Splash> { SplashScreen(onNavigateTo = ::navigate) }
+            entry<Screen.Splash> { screen ->
+                SplashScreen(
+                    deepLinkPackageName = screen.packageName,
+                    onNavigateTo = ::navigate
+                )
+            }
             entry<Screen.Onboarding> { OnboardingScreen() }
             entry<Screen.Blacklist> { BlacklistScreen() }
             entry<Screen.Downloads> { DownloadsScreen(onNavigateTo = ::navigate) }
