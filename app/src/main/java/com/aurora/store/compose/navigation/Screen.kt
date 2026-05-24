@@ -96,7 +96,7 @@ sealed class Screen : NavKey, Parcelable {
     data object SourceFilters : Screen()
 
     @Serializable
-    data object Splash : Screen()
+    data class Splash(val packageName: String? = null) : Screen()
 
     @Serializable
     data class Main(val initialTab: Int = 0) : Screen()

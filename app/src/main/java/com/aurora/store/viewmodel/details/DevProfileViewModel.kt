@@ -27,11 +27,13 @@ import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.details.DevStream
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.StreamHelper
 import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.store.AuroraApp
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.ViewState
-import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -40,7 +42,6 @@ import kotlinx.coroutines.supervisorScope
 
 @HiltViewModel
 class DevProfileViewModel @Inject constructor(
-    private val authProvider: AuthProvider,
     private val appDetailsHelper: AppDetailsHelper,
     private val streamHelper: StreamHelper
 ) : ViewModel() {
@@ -56,10 +57,12 @@ class DevProfileViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             supervisorScope {
                 try {
-                    authProvider.awaitReady()
                     devStream = appDetailsHelper.getDeveloperStream(devId)
                     streamBundle = devStream.streamBundle
                     liveData.postValue(ViewState.Success(devStream))
+                } catch (e: GooglePlayException.AuthException) {
+                    Log.w(TAG, "Developer stream fetch returned ${e.code}, redirecting to Splash")
+                    AuroraApp.events.send(AuthEvent.SessionExpired())
                 } catch (e: Exception) {
                     liveData.postValue(ViewState.Error(e.message))
                 }
@@ -72,7 +75,6 @@ class DevProfileViewModel @Inject constructor(
             supervisorScope {
                 try {
                     if (streamCluster.hasNext()) {
-                        authProvider.awaitReady()
                         val newCluster = streamHelper.getNextStreamCluster(
                             streamCluster.id,
                             streamCluster.clusterNextPageUrl

@@ -18,9 +18,12 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.AuthProvider
@@ -81,7 +84,6 @@ class SearchViewModel @Inject constructor(
 
         manualPager { page ->
             val items = try {
-                authProvider.awaitReady()
                 when (page) {
                     1 -> contract.searchResults(query)
                         .also { nextBundleUrl = it.streamNextPageUrl }
@@ -107,6 +109,10 @@ class SearchViewModel @Inject constructor(
                         }
                     }
                 }
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Search returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
+                emptyList()
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to search results for $query", exception)
                 emptyList()
@@ -120,7 +126,6 @@ class SearchViewModel @Inject constructor(
 
     fun fetchSuggestions(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            authProvider.awaitReady()
             _suggestions.value = contract.searchSuggestions(query)
                 .filter { it.title.isNotBlank() }
                 .take(5)

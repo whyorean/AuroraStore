@@ -81,7 +81,7 @@ fun AccountsScreen(
             onConfirm = {
                 shouldShowLogoutDialog = false
                 AccountProvider.logout(context)
-                onNavigateTo(Destination.Splash)
+                onNavigateTo(Destination.Splash())
             },
             onDismiss = { shouldShowLogoutDialog = false }
         )
