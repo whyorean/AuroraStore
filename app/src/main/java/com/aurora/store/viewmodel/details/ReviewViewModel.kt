@@ -71,9 +71,6 @@ class ReviewViewModel @AssistedInject constructor(
                 Log.w(TAG, "Reviews fetch returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired(packageName))
                 emptyList()
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch reviews for $page: $reviewsNextPageUrl", exception)
-                emptyList()
             }
             PageResult(items)
         }.flow.distinctUntilChanged()

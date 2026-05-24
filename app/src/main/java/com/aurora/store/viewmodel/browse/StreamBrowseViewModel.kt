@@ -27,8 +27,11 @@ import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -55,10 +58,10 @@ class StreamBrowseViewModel @AssistedInject constructor(
     val apps = _apps.asStateFlow()
 
     init {
-        fetchApps()
+        fetch()
     }
 
-    private fun fetchApps() {
+    fun fetch() {
         var nextPageUrl: String = streamCluster.clusterNextPageUrl
 
         manualPager { page ->
@@ -79,8 +82,9 @@ class StreamBrowseViewModel @AssistedInject constructor(
                         }
                     }
                 }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch apps for $page: $nextPageUrl", exception)
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Stream returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()
             }
             PageResult(items)

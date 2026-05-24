@@ -45,7 +45,7 @@ fun CategoryBrowseScreen(
                 painter = painterResource(R.drawable.ic_refresh),
                 message = stringResource(R.string.error),
                 actionLabel = stringResource(R.string.action_retry),
-                onAction = { viewModel.fetchNextPage() }
+                onAction = { viewModel.fetch() }
             )
         } else {
             val bundle = (uiState as? ViewState.Success<*>)?.data as? StreamBundle
@@ -60,7 +60,7 @@ fun CategoryBrowseScreen(
                 },
                 onAppClick = { onNavigateTo(Destination.AppDetails(it.packageName)) },
                 onClusterScrolled = { viewModel.fetchNextCluster(it) },
-                onScrolledToEnd = { viewModel.fetchNextPage() }
+                onScrolledToEnd = { viewModel.fetch() }
             )
         }
     }

@@ -33,7 +33,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 
 @HiltViewModel
 class TopChartViewModel @Inject constructor(
@@ -69,21 +68,19 @@ class TopChartViewModel @Inject constructor(
 
     fun nextCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    val target = targetCluster(type, chart)
-                    if (target.hasNext()) {
-                        val newCluster = topChartsContract.getNextStreamCluster(
-                            target.id,
-                            target.clusterNextPageUrl
-                        )
+            try {
+                val target = targetCluster(type, chart)
+                if (target.hasNext()) {
+                    val newCluster = topChartsContract.getNextStreamCluster(
+                        target.id,
+                        target.clusterNextPageUrl
+                    )
 
-                        updateCluster(type, chart, newCluster)
+                    updateCluster(type, chart, newCluster)
 
-                        _state.value = ViewState.Success(targetCluster(type, chart))
-                    }
-                } catch (_: Exception) {
+                    _state.value = ViewState.Success(targetCluster(type, chart))
                 }
+            } catch (_: Exception) {
             }
         }
     }
