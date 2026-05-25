@@ -482,7 +482,7 @@
     <string name="microg_removed_auth_warning">microG nie jest już zainstalowany. Uruchom ponownie instalator, aby zapewnić pełną funkcjonalność.</string>
     <string name="action_ignore_all">Ignoruj wszystkie aktualizacje</string>
     <string name="updates_app_details">Szczegóły</string>
-    <string name="updates_ignored_header">Ignorowana</string>
+    <string name="updates_ignored_header">Ignorowane</string>
     <string name="updates_ignored_desc">Te aktualizacje są ukryte, dopóki ich nie przestaniesz ignorować</string>
     <string name="action_ignore_version">Pomiń wersję <xliff:g id="version_name">%1$s</xliff:g></string>
     <string name="action_unignore">Nie ignoruj</string>
@@ -522,7 +522,7 @@
     <string name="source_filters_add_dialog_hint">Wpisz nazwę pakietu</string>
     <string name="source_filters_remove">Usuń instalator</string>
     <string name="updates_incompatible_header">Niekompatybilne aktualizacje</string>
-    <string name="updates_approval_header">Wymagające zatwierdzenia</string>
+    <string name="updates_approval_header">Wymagają potwierdzenia aktualizacji</string>
     <string name="pref_source_filters_desc_count">Wykluczono %1$d instalator(ów)</string>
     <string name="updates_approval_desc">Te aplikacje nie zostały zainstalowane przez Aurora Store. Podczas ich aktualizacji pojawia się prośba o przekazanie uprawnień do aktualizacji.</string>
     <string name="updates_incompatible_desc">Te aktualizacje aplikacji systemowych nie są kompatybilne z tym systemem operacyjnym</string>
