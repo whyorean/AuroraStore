@@ -116,7 +116,7 @@
     <string name="action_filter_misc">Divers</string>
     <string name="action_filter_gsf_dependent_apps">Dépend du Google Services Framework</string>
     <string name="action_filter_downloads">Téléchargements</string>
-    <string name="action_filter_apps_with_ads">Applications avec publicités</string>
+    <string name="action_filter_apps_with_ads">Applis avec publicités</string>
     <string name="action_filter_apply">Appliquer</string>
     <string name="action_filter_all">Tout</string>
     <string name="action_filter">Filtres</string>
@@ -139,7 +139,7 @@
     <string name="tab_categories">Catégories</string>
     <string name="tab_for_you">Pour vous</string>
     <string name="tab_editor_choice">Choix de l’équipe</string>
-    <string name="title_apps">Applications</string>
+    <string name="title_apps">Applis</string>
     <string name="title_account_manager">Comptes</string>
     <string name="account_google">Google</string>
     <string name="account_anonymous">Anonyme</string>
@@ -171,7 +171,7 @@
     <string name="spoof_apply">Reconnectez-vous pour appliquer l’usurpation d’appareil</string>
     <string name="device_miui_extra">Facultativement, vous pouvez choisir le programme d’installation Natif, cependant vous ne pourrez pas installer les paquets APK (fractionnés). À vous de décider.</string>
     <string name="device_miui_description">Afin de permettre les installations, désactivez les optimisations MIUI. Sinon, vous pouvez choisir le programme d’installation Superutilisateur ou Services.</string>
-    <string name="device_miui_subtitle">Les optimisations MIUI empêchent l’installation d’applications par le programme d’installation de session.</string>
+    <string name="device_miui_subtitle">Les optimisations MIUI empêchent l’installation d’applis par le programme d’installation de session.</string>
     <string name="pref_install_mode_summary">Choisir le mode d’installation des APK</string>
     <string name="pref_install_mode_session">Programme d’installation de session</string>
     <string name="pref_install_mode_services">Aurora Services (déconseillés)</string>
@@ -183,7 +183,7 @@
     <string name="onboarding_permission_installer_desc">Autoriser l’installation d’applications du Aurora Store</string>
     <string name="onboarding_permission_installer">Autorisation du programme d’installation</string>
     <string name="onboarding_permission_esm">Gestionnaire de mémoire externe</string>
-    <string name="onboarding_permission_esa_desc">Pour enregistrer les fichiers d’extension APK (OBB) pour les applications et jeux volumineux.</string>
+    <string name="onboarding_permission_esa_desc">Pour enregistrer les fichiers d’extension APK (OBB) pour les applis et jeux volumineux.</string>
     <string name="onboarding_permission_esa">Accès à la mémoire externe</string>
     <string name="onboarding_title_permissions">Autorisations</string>
     <string name="onboarding_permission_select">Aurora Store a besoin des autorisations suivantes</string>
@@ -228,7 +228,7 @@
     <string name="app_updater_service_notif_text">Permet le téléchargement d’applications en arrière-plan</string>
     <string name="app_updater_service_notif_title">Téléchargement d’applications en arrière-plan</string>
     <string name="pref_install_mode_am">Programme d’installation AM</string>
-    <string name="installer_am_unavailable">Installez le gestionnaire d’applications « App Manager » ou changez le programme d’installation.</string>
+    <string name="installer_am_unavailable">Installez le gestionnaire d’applis « App Manager » ou changez de programme d’installation.</string>
     <string name="download_paused">En pause • <xliff:g id="completed_downloads">%1$d</xliff:g>/<xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="session_enjoy">Il ne vous reste qu’à vous connecter.</string>
     <string name="session_verifying">Vérification de la session</string>
@@ -253,7 +253,7 @@
     <string name="updates_available">mises à jour proposées</string>
     <string name="error">Une erreur est survenue !</string>
     <string name="permissions_denied">Les autorisations requises ont été refusées. Accordez-les afin de poursuivre l’action</string>
-    <string name="search_hint">Chercher des applications et des jeux</string>
+    <string name="search_hint">Chercher des applis et des jeux</string>
     <string name="toast_import_success">La configuration de l’appareil a été importée</string>
     <string name="toast_import_failed">Impossible d’importer la configuration de l’appareil</string>
     <string name="downloading_dep">Téléchargement de fichiers supplémentaires pour <xliff:g id="app">%1$s</xliff:g></string>
@@ -298,7 +298,7 @@
     <string name="onboarding_permission_doze">Téléchargements en arrière-plan</string>
     <string name="pref_updates_auto">Mises à jour automatiques</string>
     <string name="pref_updates_auto_notify">Chercher les mises à jour et les signaler</string>
-    <string name="pref_updates_auto_off">Ne pas mettre les applications à jour automatiquement</string>
+    <string name="pref_updates_auto_off">Ne pas mettre les applis à jour automatiquement</string>
     <string name="onboarding_permission_doze_desc">Autoriser Aurora Store à télécharger et à mettre à jour les applications en arrière-plan</string>
     <string name="pref_updates_auto_desc">Configurer le comportement des mises à jour automatiques</string>
     <string name="pref_updates_auto_install">Chercher les mises à jour et les installer automatiquement</string>
@@ -344,7 +344,7 @@
     <string name="add">Ajouter</string>
     <string name="pref_dispenser_summary">Consulter et gérer les distributeurs de jetons pour les connexions anonymes</string>
     <string name="no_dispensers_available">Aucun distributeur de jetons n’est proposé</string>
-    <string name="about_aurora_store_summary">Aurora Store vous permet de rechercher et de télécharger des applications depuis la boutique officielle Google Play Store. Vous pouvez consulter les descriptions des applications, les captures d\'écran, les mises à jour, les commentaires des autres utilisateurs et télécharger le fichier APK directement depuis Google Play sur votre appareil. Pour utiliser Aurora Store, connectez-vous à l\'aide de votre compte Google Play lors de la première ouverture et de la configuration de l\'application.\n\nContrairement à une boutique d\'applications traditionnelle, Aurora Store ne détient, ne concède sous licence ni ne distribue aucune application. Toutes les applications, descriptions d\'applications, captures d\'écran et autres contenus présents dans Aurora Store sont directement accessibles, téléchargeables et/ou affichés depuis Google Play. Aurora Store fonctionne exactement comme une porte ou un navigateur, vous permettant de vous connecter à votre compte Google Play et de trouver les applications sur Google Play.\n\nVeuillez noter qu\'Aurora Store ne bénéficie d\'aucune approbation, parrainage ou autorisation de la part de Google, de Google Play, des applications téléchargées via Aurora Store ou des développeurs d\'applications ; Aurora Store n\'a par ailleurs aucun lien d\'affiliation, de coopération ou de connexion avec eux.</string>
+    <string name="about_aurora_store_summary">Le magasin Aurora Store vous permet de chercher et de télécharger des applis du magasin officiel Google Play. Vous pouvez consulter la description des applis, les captures d’écran, les mises à jour, les commentaires des utilisateurs, et télécharger le fichier APK directement de Google Play vers votre appareil. Pour utiliser le magasin Aurora Store, connectez-vous avec votre compte Google Play lors de la première ouverture et de la configuration de l’appli.\n\nContrairement à un magasin d’applis traditionnel, Aurora Store ne détient, ne concède sous licence, ni ne distribue aucune appli. Les applis, descriptions d’applis, captures d’écran et autres contenus du magasin Aurora Store sont accessibles, téléchargeables et affichés directement du magasin Google Play. Le magasin Aurora Store fonctionne comme un portail ou un navigateur ; il vous permet de vous connecter à votre compte Google Play et de trouver des applis sur Google Play.\n\nNotez que le magasin Aurora Store n’a reçu aucune approbation, aucune commandite ni autorisation de la part de Google, de Google Play, des applis téléchargées grâce au magasin Aurora Store, ni de développeurs d’appli. Par ailleurs, le magasin Aurora Store n’a aucun lien d’affiliation, de coopération ou de connexion avec ces entités.</string>
     <string name="about_aurora_store_title">À propos d’Aurora Store</string>
     <string name="about_aurora_store_subtitle">En savoir plus sur Aurora Store</string>
     <string name="pref_clear_device_owner_desc">Le programme d’installation de session ne pourra plus installer silencieusement les applications. Confirmez-vous la révocation du droit de propriété de l’appareil ?</string>
@@ -479,8 +479,8 @@
     <string name="header_blacklist_selected">Exclue</string>
     <string name="header_blacklist_others">Autres</string>
     <string name="microg_removed_auth_warning">microG n’est plus installée. Relancez le programme d’installation pour que tout fonctionne correctement.</string>
-    <string name="pref_source_filters_title">Filtrer les applications provenant d’autres sources</string>
-    <string name="pref_source_filters_desc_all">Ignorer les applications qui ne sont pas installées par Aurora Store</string>
+    <string name="pref_source_filters_title">Filtrer les applis provenant d’autres sources</string>
+    <string name="pref_source_filters_desc_all">Ignorer les applis qui ne sont pas installées par Aurora Store</string>
     <string name="pref_source_filters_desc_none">Aucun programme d’installation n’est exclu</string>
     <string name="pref_source_filters_desc_count">%1$d programme(s) d’installation exclu(s)</string>
     <string name="source_filters_all">Filtrer tous les autres programmes d\'installation</string>
