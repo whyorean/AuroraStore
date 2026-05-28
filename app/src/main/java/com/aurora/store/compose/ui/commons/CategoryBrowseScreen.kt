@@ -13,12 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.composition.collectForced
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.data.model.ViewState
 import com.aurora.store.viewmodel.subcategory.CategoryStreamViewModel
@@ -34,7 +34,7 @@ fun CategoryBrowseScreen(
         }
     )
 ) {
-    val uiState by viewModel.viewState.collectForced(ViewState.Loading)
+    val uiState by viewModel.viewState.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = { TopAppBar(title = title) }
@@ -42,8 +42,10 @@ fun CategoryBrowseScreen(
         if (uiState is ViewState.Error) {
             Placeholder(
                 modifier = Modifier.padding(paddingValues),
-                painter = painterResource(R.drawable.ic_disclaimer),
-                message = stringResource(R.string.error)
+                painter = painterResource(R.drawable.ic_refresh),
+                message = stringResource(R.string.error),
+                actionLabel = stringResource(R.string.action_retry),
+                onAction = { viewModel.fetch() }
             )
         } else {
             val bundle = (uiState as? ViewState.Success<*>)?.data as? StreamBundle
@@ -58,7 +60,7 @@ fun CategoryBrowseScreen(
                 },
                 onAppClick = { onNavigateTo(Destination.AppDetails(it.packageName)) },
                 onClusterScrolled = { viewModel.fetchNextCluster(it) },
-                onScrolledToEnd = { viewModel.fetchNextPage() }
+                onScrolledToEnd = { viewModel.fetch() }
             )
         }
     }

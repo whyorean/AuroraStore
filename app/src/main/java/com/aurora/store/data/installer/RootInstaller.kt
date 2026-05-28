@@ -20,6 +20,7 @@
 package com.aurora.store.data.installer
 
 import android.content.Context
+import android.os.Process
 import android.util.Log
 import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
@@ -90,8 +91,9 @@ class RootInstaller @Inject constructor(
             totalSize += file.length().toInt()
         }
 
+        val userId = Process.myUid() / 100_000
         val result: Shell.Result =
-            Shell.cmd("pm install-create -i $PLAY_PACKAGE_NAME --user 0 -r -S $totalSize")
+            Shell.cmd("pm install-create -i $PLAY_PACKAGE_NAME --user $userId -r -S $totalSize")
                 .exec()
 
         val response = result.out

@@ -6,12 +6,16 @@
 package com.aurora.store.compose.composable
 
 import android.text.format.DateUtils
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -29,7 +33,10 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.theme.colorGreen
+import com.aurora.store.compose.theme.colorRed
 import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.util.PackageUtil
 
 @Composable
 fun FavouriteListItem(
@@ -39,6 +46,9 @@ fun FavouriteListItem(
     onClear: () -> Unit = {}
 ) {
     val context = LocalContext.current
+    val isInstalled = remember(favourite.packageName) {
+        PackageUtil.isInstalled(context, favourite.packageName)
+    }
     RemovableListItem(onRemove = onClear) { triggerRemove ->
         AuroraListItem(
             modifier = modifier,
@@ -65,11 +75,26 @@ fun FavouriteListItem(
                 )
             },
             trailing = {
-                IconButton(onClick = triggerRemove) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_favorite_checked),
-                        contentDescription = stringResource(R.string.action_favourite)
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(
+                        dimensionResource(R.dimen.spacing_xsmall)
                     )
+                ) {
+                    if (isInstalled) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_check),
+                            contentDescription = stringResource(R.string.title_installed),
+                            tint = colorGreen
+                        )
+                    }
+                    IconButton(onClick = triggerRemove) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_favorite_checked),
+                            contentDescription = stringResource(R.string.action_favourite),
+                            tint = colorRed
+                        )
+                    }
                 }
             }
         )

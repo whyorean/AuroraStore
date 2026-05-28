@@ -237,7 +237,7 @@ class DownloadWorker @AssistedInject constructor(
                     }
 
                     else -> {
-                        val userMessage = exception.userReason()
+                        val userMessage = exception.message?.takeIf { it.isNotBlank() }
                             ?: context.getString(R.string.download_failed)
                         notifyStatus(
                             status = DownloadStatus.FAILED,
@@ -259,22 +259,6 @@ class DownloadWorker @AssistedInject constructor(
 
             return@withContext Result.success()
         }
-    }
-
-    /**
-     * Extracts a user-readable message from an exception. Falls back to reading the
-     * `reason` property via reflection for GPlayApi's `InternalException` variants,
-     * which expose their detail through a data-class field rather than [Throwable.message].
-     *
-     * TODO: Remove reflection and use a proper exception hierarchy once GPlayApi supports it.
-     */
-    private fun Throwable.userReason(): String? {
-        message?.takeIf { it.isNotBlank() }?.let { return it }
-        return runCatching {
-            javaClass.getDeclaredField("reason")
-                .apply { isAccessible = true }
-                .get(this) as? String
-        }.getOrNull()?.takeIf { it.isNotBlank() }
     }
 
     /**

@@ -72,7 +72,6 @@ import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.ShimmerCarouselSection
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.compose.composable.TopAppBar
-import com.aurora.store.compose.composition.collectForced
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -126,7 +125,7 @@ fun AppDetailsScreen(
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val installError by viewModel.installError.collectAsStateWithLifecycle()
-    val suggestionsBundle by viewModel.suggestionsBundle.collectForced(initial = null)
+    val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
@@ -148,13 +147,14 @@ fun AppDetailsScreen(
         label = "AppDetailsState"
     ) { currentState ->
         when {
-            currentState is AppState.Loading || app == null ->
-                ScreenContentLoading()
-
             currentState is AppState.Error ->
                 ScreenContentError(
-                    message = currentState.message
+                    message = currentState.message,
+                    onRetry = { viewModel.fetchAppDetails(packageName) }
                 )
+
+            currentState is AppState.Loading || app == null ->
+                ScreenContentLoading()
 
             else -> {
                 val loadedApp = app!!
@@ -199,8 +199,8 @@ fun AppDetailsScreen(
 }
 
 private fun stateKey(state: AppState, app: App?): String = when {
-    state is AppState.Loading || app == null -> "loading"
     state is AppState.Error -> "error"
+    state is AppState.Loading || app == null -> "loading"
     else -> "content"
 }
 
@@ -220,14 +220,16 @@ private fun ScreenContentLoading() {
  * Composable to display errors related to fetching app details
  */
 @Composable
-private fun ScreenContentError(message: String? = null) {
+private fun ScreenContentError(message: String? = null, onRetry: (() -> Unit)? = null) {
     Scaffold(
         topBar = { TopAppBar() }
     ) { paddingValues ->
         Placeholder(
             modifier = Modifier.padding(paddingValues),
-            painter = painterResource(R.drawable.ic_apps_outage),
-            message = message ?: stringResource(R.string.toast_app_unavailable)
+            painter = painterResource(R.drawable.ic_refresh),
+            message = message ?: stringResource(R.string.toast_app_unavailable),
+            actionLabel = onRetry?.let { stringResource(R.string.action_retry) },
+            onAction = onRetry
         )
     }
 }
@@ -691,6 +693,7 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
         app = app,
         isAnonymous = false,
         suggestionsBundle = StreamBundle(
+            id = 1,
             streamClusters = mapOf(
                 1 to StreamCluster(
                     id = 1,

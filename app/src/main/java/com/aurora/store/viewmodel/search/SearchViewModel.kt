@@ -18,10 +18,12 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.SearchHelper
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.contracts.SearchContract
 import com.aurora.gplayapi.helpers.web.WebSearchHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.AuthProvider
@@ -41,12 +43,11 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     val authProvider: AuthProvider,
-    private val searchHelper: SearchHelper,
     private val webSearchHelper: WebSearchHelper
 ) : ViewModel() {
 
     private val contract: SearchContract
-        get() = if (authProvider.isAnonymous) webSearchHelper else searchHelper
+        get() = webSearchHelper
 
     private val _suggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
@@ -108,8 +109,9 @@ class SearchViewModel @Inject constructor(
                         }
                     }
                 }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to search results for $query", exception)
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Search returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()
             }
             PageResult(items)
@@ -123,7 +125,7 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             _suggestions.value = contract.searchSuggestions(query)
                 .filter { it.title.isNotBlank() }
-                .take(3)
+                .take(5)
         }
     }
 }

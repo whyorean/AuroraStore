@@ -92,16 +92,19 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun buildAuthData(context: Context, email: String, oauthToken: String?) {
+    fun buildAuthData(context: Context, email: String, oauthToken: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = aC2DMTask.getAC2DMResponse(email, oauthToken)
                 if (response.isNotEmpty()) {
                     val aasToken = response["Token"]
                     if (aasToken != null) {
-                        Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, email)
+                        val accountEmail = response["Email"]?.takeIf { it.isNotBlank() } ?: email
+                        Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, accountEmail)
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, aasToken)
-                        AuroraApp.events.send(AuthEvent.GoogleLogin(true, email, aasToken))
+                        AuroraApp.events.send(
+                            AuthEvent.GoogleLogin(true, accountEmail, aasToken)
+                        )
                     } else {
                         Preferences.putString(context, Constants.ACCOUNT_EMAIL_PLAIN, "")
                         Preferences.putString(context, Constants.ACCOUNT_AAS_PLAIN, "")

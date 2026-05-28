@@ -13,8 +13,11 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -58,7 +61,10 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
                         val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)
                         if (browseResponse.hasBrowseTab()) {
                             listUrl = browseResponse.browseTab.listUrl
-                            val cluster = streamHelper.getExpandedBrowseClusters(listUrl)
+                            val cluster = streamHelper.getExpandedBrowseClusters(
+                                id = listUrl.hashCode(),
+                                listUrl
+                            )
                             _title.value = cluster.clusterTitle
                             nextPageUrl = cluster.clusterNextPageUrl
                             cluster.clusterAppList
@@ -69,7 +75,10 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
 
                     else -> {
                         if (nextPageUrl.isNotBlank()) {
-                            val cluster = streamHelper.getExpandedBrowseClusters(nextPageUrl)
+                            val cluster = streamHelper.getExpandedBrowseClusters(
+                                nextPageUrl.hashCode(),
+                                nextPageUrl
+                            )
                             nextPageUrl = cluster.clusterNextPageUrl
                             cluster.clusterAppList
                         } else {
@@ -77,8 +86,9 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
                         }
                     }
                 }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch apps for page $page", exception)
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Expanded stream returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()
             }
             PageResult(items)

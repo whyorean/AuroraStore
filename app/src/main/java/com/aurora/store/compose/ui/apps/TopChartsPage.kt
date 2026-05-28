@@ -34,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
@@ -41,7 +42,6 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ShimmerAppRow
 import com.aurora.store.compose.composable.app.LargeAppListItem
-import com.aurora.store.compose.composition.collectForced
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.ViewState
@@ -72,7 +72,7 @@ internal fun TopChartsContent(
         if (pageType == 1) TopChartsContract.Type.GAME else TopChartsContract.Type.APPLICATION
     var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
     val selectedChart = charts[selectedIndex]
-    val state by viewModel.state.collectForced(ViewState.Loading)
+    val state by viewModel.state.collectAsStateWithLifecycle()
     val cluster = state.getDataAs<StreamCluster?>()
     val listState = rememberLazyListState()
 
@@ -223,7 +223,7 @@ private fun TopChartsBodyLoadingPreview() {
 private fun TopChartsBodyLoadedPreview() {
     val app = AppPreviewProvider().values.first()
     val apps = List(5) { i -> app.copy(id = i + 1, packageName = "com.preview.app$i") }
-    val cluster = StreamCluster(clusterAppList = apps)
+    val cluster = StreamCluster(id = 1, clusterAppList = apps)
     TopChartsBody(
         selectedIndex = 0,
         chartTitles = previewChartTitles,
@@ -236,7 +236,7 @@ private fun TopChartsBodyLoadedPreview() {
 @Preview(showBackground = true)
 @Composable
 private fun TopChartsBodyEmptyPreview() {
-    val cluster = StreamCluster(clusterAppList = emptyList())
+    val cluster = StreamCluster(id = 1, clusterAppList = emptyList())
     TopChartsBody(
         selectedIndex = 1,
         chartTitles = previewChartTitles,

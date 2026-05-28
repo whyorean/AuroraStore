@@ -20,12 +20,14 @@ import com.aurora.gplayapi.data.models.StreamBundle
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
 import com.aurora.gplayapi.data.models.details.TestingProgramStatus
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.AppState
@@ -46,12 +48,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
@@ -82,13 +81,10 @@ class AppDetailsViewModel @Inject constructor(
     private val _state = MutableStateFlow<AppState>(AppState.Loading)
     val state = _state.asStateFlow()
 
-    private val _suggestionsBundle = MutableSharedFlow<StreamBundle?>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val suggestionsBundle: SharedFlow<StreamBundle?> = _suggestionsBundle.asSharedFlow()
+    private val _suggestionsBundle = MutableStateFlow<StreamBundle?>(null)
+    val suggestionsBundle: StateFlow<StreamBundle?> = _suggestionsBundle.asStateFlow()
 
-    private var suggestionsState: StreamBundle = StreamBundle()
+    private var suggestionsState: StreamBundle = StreamBundle.EMPTY
 
     private val _featuredReviews = MutableStateFlow<List<Review>>(emptyList())
     val featuredReviews = _featuredReviews.asStateFlow()
@@ -187,6 +183,12 @@ class AppDetailsViewModel @Inject constructor(
                     _state.value =
                         existingDownload?.let { stateFromDownload(it) } ?: defaultAppState
                 }
+            } catch (exception: GooglePlayException.AuthException) {
+                // The saved Play token has been rejected mid-session. Hand off to
+                // Splash to re-validate and rebuild auth, and ask it to bring the
+                // user back to this app's details once auth is good again.
+                Log.w(TAG, "App details fetch returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired(packageName))
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch app details", exception)
                 _app.value = null
@@ -345,21 +347,21 @@ class AppDetailsViewModel @Inject constructor(
 
         // Bail out if we got no suggestions to offer
         if (streamUrl.isNullOrBlank()) {
-            _suggestionsBundle.tryEmit(StreamBundle.EMPTY)
+            _suggestionsBundle.value = StreamBundle.EMPTY
             return
         }
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val pageBundle = appDetailsHelper.getDetailsStream(streamUrl)
+                val pageBundle = appDetailsHelper.getDetailsStream(streamUrl.hashCode(), streamUrl)
                 val pageClusters = pageBundle.streamClusters.filterValues {
                     it.clusterTitle.isNotBlank() && it.clusterAppList.isNotEmpty()
                 }
                 suggestionsState = pageBundle.copy(streamClusters = pageClusters)
-                _suggestionsBundle.tryEmit(suggestionsState)
+                _suggestionsBundle.value = suggestionsState
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch suggestions stream", exception)
-                _suggestionsBundle.tryEmit(StreamBundle.EMPTY)
+                _suggestionsBundle.value = StreamBundle.EMPTY
             }
         }
     }
@@ -369,7 +371,10 @@ class AppDetailsViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val nextPage = appDetailsHelper.getNextStreamCluster(cluster.clusterNextPageUrl)
+                val nextPage = appDetailsHelper.getNextStreamCluster(
+                    cluster.id,
+                    cluster.clusterNextPageUrl
+                )
                 val existing = suggestionsState.streamClusters[cluster.id] ?: return@launch
                 val mergedCluster = existing.copy(
                     clusterAppList = existing.clusterAppList + nextPage.clusterAppList,
@@ -378,7 +383,7 @@ class AppDetailsViewModel @Inject constructor(
                 suggestionsState = suggestionsState.copy(
                     streamClusters = suggestionsState.streamClusters + (cluster.id to mergedCluster)
                 )
-                _suggestionsBundle.tryEmit(suggestionsState)
+                _suggestionsBundle.value = suggestionsState
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch next cluster page", exception)
             }

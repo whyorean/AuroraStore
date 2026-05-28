@@ -72,6 +72,7 @@ class StreamViewModel @Inject constructor(
                         // Fetch new stream bundle
                         val newBundle = if (bundle.hasCluster()) {
                             streamContract.nextStreamBundle(
+                                bundle.id,
                                 category,
                                 bundle.streamNextPageUrl
                             )
@@ -79,7 +80,6 @@ class StreamViewModel @Inject constructor(
                             streamContract.fetch(type, category)
                         }
 
-                        // Update old bundle
                         val mergedBundle = bundle.copy(
                             streamClusters = bundle.streamClusters + newBundle.streamClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
@@ -103,6 +103,7 @@ class StreamViewModel @Inject constructor(
             try {
                 if (streamCluster.hasNext()) {
                     val newCluster = streamContract.nextStreamCluster(
+                        streamCluster.id,
                         streamCluster.clusterNextPageUrl
                     )
 
@@ -158,6 +159,6 @@ class StreamViewModel @Inject constructor(
 
     private fun targetBundle(category: StreamContract.Category): StreamBundle =
         stash.getOrPut(category) {
-            StreamBundle()
+            StreamBundle(id = category.value.hashCode())
         }
 }

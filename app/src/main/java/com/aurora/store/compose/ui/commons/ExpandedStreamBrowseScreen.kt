@@ -56,8 +56,10 @@ fun ExpandedStreamBrowseScreen(
             is LoadState.Error -> {
                 Placeholder(
                     modifier = Modifier.padding(paddingValues),
-                    painter = painterResource(R.drawable.ic_disclaimer),
-                    message = stringResource(R.string.error)
+                    painter = painterResource(R.drawable.ic_refresh),
+                    message = stringResource(R.string.error),
+                    actionLabel = stringResource(R.string.action_retry),
+                    onAction = { apps.retry() }
                 )
             }
 

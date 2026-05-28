@@ -29,12 +29,10 @@ import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
 
 @HiltViewModel
 class TopChartViewModel @Inject constructor(
@@ -43,14 +41,8 @@ class TopChartViewModel @Inject constructor(
 
     private var stash: TopChartStash = mutableMapOf()
 
-    // SharedFlow (instead of StateFlow) because StreamCluster overrides equals to compare
-    // only id, which is preserved by copy(). StateFlow would conflate paginated updates and
-    // break scroll loading. See CategoryStreamViewModel for the same fix.
-    private val _state = MutableSharedFlow<ViewState>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val state: SharedFlow<ViewState> = _state.asSharedFlow()
+    private val _state = MutableStateFlow<ViewState>(ViewState.Loading)
+    val state: StateFlow<ViewState> = _state.asStateFlow()
 
     private val topChartsContract: TopChartsContract
         get() = webTopChartsHelper
@@ -58,38 +50,37 @@ class TopChartViewModel @Inject constructor(
     fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
             if (targetCluster(type, chart).clusterAppList.isNotEmpty()) {
-                _state.tryEmit(ViewState.Success(targetCluster(type, chart)))
+                _state.value = ViewState.Success(targetCluster(type, chart))
                 return@launch
             }
 
-            _state.tryEmit(ViewState.Loading)
+            _state.value = ViewState.Loading
 
             try {
                 val cluster = topChartsContract.getCluster(type.value, chart.value)
                 updateCluster(type, chart, cluster)
-                _state.tryEmit(ViewState.Success(targetCluster(type, chart)))
+                _state.value = ViewState.Success(targetCluster(type, chart))
             } catch (e: Exception) {
-                _state.tryEmit(ViewState.Error(e.message))
+                _state.value = ViewState.Error(e.message)
             }
         }
     }
 
     fun nextCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
         viewModelScope.launch(Dispatchers.IO) {
-            supervisorScope {
-                try {
-                    val target = targetCluster(type, chart)
-                    if (target.hasNext()) {
-                        val newCluster = topChartsContract.getNextStreamCluster(
-                            target.clusterNextPageUrl
-                        )
+            try {
+                val target = targetCluster(type, chart)
+                if (target.hasNext()) {
+                    val newCluster = topChartsContract.getNextStreamCluster(
+                        target.id,
+                        target.clusterNextPageUrl
+                    )
 
-                        updateCluster(type, chart, newCluster)
+                    updateCluster(type, chart, newCluster)
 
-                        _state.tryEmit(ViewState.Success(targetCluster(type, chart)))
-                    }
-                } catch (_: Exception) {
+                    _state.value = ViewState.Success(targetCluster(type, chart))
                 }
+            } catch (_: Exception) {
             }
         }
     }
@@ -114,7 +105,7 @@ class TopChartViewModel @Inject constructor(
     ): StreamCluster {
         val cluster = stash
             .getOrPut(type) { mutableMapOf() }
-            .getOrPut(chart) { StreamCluster() }
+            .getOrPut(chart) { StreamCluster.EMPTY }
         return cluster
     }
 }

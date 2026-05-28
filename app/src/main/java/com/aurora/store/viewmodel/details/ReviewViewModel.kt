@@ -13,8 +13,11 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.ReviewsHelper
+import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
+import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -64,8 +67,9 @@ class ReviewViewModel @AssistedInject constructor(
                         }
                     }
                 }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch reviews for $page: $reviewsNextPageUrl", exception)
+            } catch (exception: GooglePlayException.AuthException) {
+                Log.w(TAG, "Reviews fetch returned ${exception.code}, redirecting to Splash")
+                AuroraApp.events.send(AuthEvent.SessionExpired(packageName))
                 emptyList()
             }
             PageResult(items)

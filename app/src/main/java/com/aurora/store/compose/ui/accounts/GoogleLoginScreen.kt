@@ -27,20 +27,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.data.event.AuthEvent
-import com.aurora.store.data.model.AccountType
-import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.model.AuthState
 import com.aurora.store.util.AC2DMUtil
+import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.auth.AuthViewModel
 
 private const val EMBEDDED_SETUP_URL = "https://accounts.google.com/EmbeddedSetup"
 private const val AUTH_TOKEN = "oauth_token"
-private const val JS_PROFILE_EMAIL =
-    "(function() { return document.getElementById('profileIdentifier').innerHTML; })();"
+
+// Google's EmbeddedSetup post-login page renders the account as e.g.
+// <div data-profile-identifier data-email="user@gmail.com">...</div>;
+// the legacy id="profileIdentifier" selector no longer matches.
+private const val JS_PROFILE_EMAIL = """
+    (function() {
+        var el = document.querySelector('[data-profile-identifier][data-email]');
+        return el ? el.getAttribute('data-email') : null;
+    })();
+"""
 
 @Composable
 fun GoogleLoginScreen(
@@ -48,6 +57,7 @@ fun GoogleLoginScreen(
     viewModel: AuthViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val authState by viewModel.authState.collectAsStateWithLifecycle()
     var progress by remember { mutableFloatStateOf(0f) }
     var isIndeterminate by remember { mutableStateOf(true) }
     var isLoading by remember { mutableStateOf(true) }
@@ -56,19 +66,29 @@ fun GoogleLoginScreen(
         AuroraApp.events.authEvent.collect { event ->
             if (event is AuthEvent.GoogleLogin) {
                 if (event.success) {
-                    AccountProvider.login(
-                        context,
+                    viewModel.buildGoogleAuthData(
                         event.email,
                         event.token,
-                        AuthHelper.Token.AAS,
-                        AccountType.GOOGLE
+                        AuthHelper.Token.AAS
                     )
                 } else {
                     Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
                         .show()
+                    onNavigateTo(Destination.Splash())
                 }
-                onNavigateTo(Destination.Splash)
             }
+        }
+    }
+
+    LaunchedEffect(authState) {
+        when (authState) {
+            AuthState.SignedIn, AuthState.Valid -> onNavigateTo(
+                Destination.Main(
+                    Preferences.getInteger(context, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
+                )
+            )
+            is AuthState.Failed -> onNavigateTo(Destination.Splash())
+            else -> Unit
         }
     }
 
@@ -108,16 +128,12 @@ fun GoogleLoginScreen(
 
                     webViewClient = object : WebViewClient() {
                         override fun onPageFinished(view: WebView, url: String) {
-                            val cookies = CookieManager.getInstance().getCookie(url)
-                            if (cookies != null) {
-                                val cookieMap = AC2DMUtil.parseCookieString(cookies)
-                                if (cookieMap.isNotEmpty() && cookieMap[AUTH_TOKEN] != null) {
-                                    val oauthToken = cookieMap[AUTH_TOKEN]
-                                    view.evaluateJavascript(JS_PROFILE_EMAIL) { result ->
-                                        val email = result.replace("\"", "")
-                                        viewModel.buildAuthData(view.context, email, oauthToken)
-                                    }
-                                }
+                            val cookies = CookieManager.getInstance().getCookie(url) ?: return
+                            val cookieMap = AC2DMUtil.parseCookieString(cookies)
+                            val oauthToken = cookieMap[AUTH_TOKEN] ?: return
+                            view.evaluateJavascript(JS_PROFILE_EMAIL) { result ->
+                                val email = result.trim('"')
+                                viewModel.buildAuthData(view.context, email, oauthToken)
                             }
                         }
                     }

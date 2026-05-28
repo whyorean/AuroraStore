@@ -89,6 +89,6 @@ class ComposeActivity : ComponentActivity() {
 
     private fun defaultStart(): Screen = when {
         !Preferences.getBoolean(this, Preferences.PREFERENCE_INTRO) -> Screen.Onboarding
-        else -> Screen.Splash
+        else -> Screen.Splash()
     }
 }
