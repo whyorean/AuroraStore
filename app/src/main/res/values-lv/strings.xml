@@ -223,8 +223,8 @@
     <string name="pref_install_mode_session">Sesijas uzstādītājs</string>
     <string name="pref_install_mode_summary">Atlasīt APK uzstādīšanas veidu</string>
     <string name="pref_install_mode_title">Uzstādīšanas veids</string>
-    <string name="update_available">pieejams atjauninājums</string>
-    <string name="updates_available">pieejami atjauninājumi</string>
+    <string name="update_available">atjauninājums</string>
+    <string name="updates_available">atjauninājumi</string>
     <string name="notification_updates_available">Pieejami <xliff:g id="apps_count">%1$d</xliff:g> atjauninājumi</string>
     <string name="notification_updates_available_1">Pieejams <xliff:g id="apps_count">%1$d</xliff:g> atjauninājums</string>
     <string name="device_miui_extra">Ir iespējams izvēlēties arī iebūvēto uzstādītāju, bet tad nevarēs uzstādīt apvienotos (sastāvošus no vairākām daļām) APK, tā ka izvēle ir katra paša ziņā.</string>
@@ -245,7 +245,7 @@
     <string name="details_no_dependencies">Nav atkarību</string>
     <string name="details_no_app_match">Nav atrasta neviena atbilstoša lietotne</string>
     <string name="toast_export_failed">Nebija iespējams izgūt ierīces uzstādījumus</string>
-    <string name="server_maintenance">Serveris nav pieejams, jo notiek apkopes darbi</string>
+    <string name="server_maintenance">Serveris nav pieejams uzturēšanas darbu dēļ</string>
     <string name="notification_channel_updates">Atjauninājumu paziņojumi</string>
     <string name="requesting_new_session">Pieprasa jaunu sesiju</string>
     <string name="downloading_dep">Lejupielādē <xliff:g id="app">%1$s</xliff:g> papildu datnes</string>
@@ -286,7 +286,7 @@
     <string name="details_ratings_title_hint">Apskata nosaukums</string>
     <string name="pref_network_proxy_url">Starpniekservera URL</string>
     <string name="pref_updates_check_frequency_desc">Norādīt starplaiku stundās starp automātiskajiem atjauninājumiem.</string>
-    <string name="pref_aurora_only">Atsijāt lietotnes no citiem avotiem</string>
+    <string name="pref_aurora_only">Atsijāt lietotnes no citiem avotiem.</string>
     <string name="toast_proxy_invalid">Nederīgs starpniekservera URL, pārbaudiet URL struktūras formātu!</string>
     <string name="pref_aurora_only_desc">Nepārbaudīt atjauninājumus lietotnēm, kuras ir uzstādītas no avotiem ārpus Aurora Store</string>
     <string name="toast_proxy_success">Starpniekserveris sekmīgi iestatīts</string>
@@ -303,7 +303,7 @@
     <string name="pref_updates_auto_notify">Pārbaudīt un ziņot par pieejamajiem atjauninājumiem</string>
     <string name="pref_updates_auto_desc">Konfigurēt automātisko atjauninājumu uzvedību</string>
     <string name="pref_vending_version_device">Noklusējuma (no ierīces konfigurācijas)</string>
-    <string name="pref_updates_incompatible_desc">Rādīt atjauninājumus nesaderīgām vai atspējotām lietotnēm, kuru uzstādīšana var neizdoties</string>
+    <string name="pref_updates_incompatible_desc">Rādīt atjauninājumus nesaderīgām vai atspējotām lietotnēm, kuru uzstādīšana var neizdoties.</string>
     <string name="failed_apk_export">Neizdevās izgūt APK</string>
     <string name="manual_download_hint">Jāievada lejupielādējamās versijas kods</string>
     <string name="faqs_subtitle">Ir jautājumi? Atrodi atbildes</string>
@@ -359,7 +359,7 @@
     <string name="details_no_favourites">Nav izlasē pievienotu lietotņu</string>
     <string name="details_data_safety_title">Datu drošība</string>
     <string name="onboarding_permission_installer_legacy_desc">Atļaut lietotņu uzstādīšanu no nezināmiem avotiem</string>
-    <string name="toast_app_unavailable">Lietotne nav pieejama šajā ierīcē</string>
+    <string name="toast_app_unavailable">Lietotne nav pieejama šai ierīcei</string>
     <string name="toast_permission_installer_required">Vispirms ir nepieciešams piešķirt uzstādīšanas atļauju</string>
     <string name="item_required">Nepieciešams</string>
     <string name="item_optional">Izvēles</string>
@@ -472,4 +472,11 @@
     <string name="page">Lapa <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Izlaist</string>
     <string name="force_restart_snack">Palaist no jauna, lai pielietotu izmaiņas?</string>
+    <string name="action_retry">Mēģināt vēlreiz</string>
+    <string name="action_view_on_play">Apskatīt Play veikalā</string>
+    <string name="pref_source_filters_title">Atsijāt lietotnes no citiem avotiem</string>
+    <string name="pref_source_filters_desc_all">Izlaist visas lietotnes, kuras nav uzstādītas ar Aurora Store</string>
+    <string name="pref_source_filters_desc_none">Nav neiekļautu uzstādītāju</string>
+    <string name="pref_source_filters_desc_count">%1$d uzstādītājs(i) nav iekļauts(i)</string>
+    <string name="source_filters_all">Atsijāt visus citus uzstādītājus</string>
 </resources>

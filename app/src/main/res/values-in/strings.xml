@@ -282,7 +282,7 @@
     <string name="details_ratings_title_hint">Judul ulasan</string>
     <string name="pref_network_proxy_url">URL Proksi</string>
     <string name="pref_updates_check_frequency_desc">Seberapa sering Aurora memeriksa pembaruan aplikasi.</string>
-    <string name="pref_aurora_only">Saring aplikasi dari sumber lain</string>
+    <string name="pref_aurora_only">Saring aplikasi dari sumber lain.</string>
     <string name="app_links_desc">Izinkan Aurora Store untuk membuka tautan yang didukung</string>
     <string name="onboarding_permission_doze">Unduhan latar belakang</string>
     <string name="toast_proxy_invalid">URL proksi tidak sah, periksa format!</string>
@@ -317,7 +317,7 @@
     <string name="add_dispenser_summary">Tambah dispenser token ke Aurora Store. Dispenser token memberikan kredensial akun ke Aurora Store untuk masuk secara anonim.</string>
     <string name="add_dispenser_error">URL tidak sah</string>
     <string name="add">Tambah</string>
-    <string name="pref_updates_incompatible_desc">Tampilkan pembaruan untuk aplikasi yang tidak kompatibel atau dinonaktifkan yang mungkin gagal terpasang</string>
+    <string name="pref_updates_incompatible_desc">Tampilkan pembaruan untuk aplikasi yang tidak kompatibel atau aplikasi yang dinonaktifkan yang mungkin gagal terpasang.</string>
     <string name="manual_download_hint">Masukkan kode versi yang ingin Anda unduh</string>
     <string name="source_code_title">Kode sumber</string>
     <string name="source_code_subtitle">Cari tahu apa yang ada di dalamnya</string>
