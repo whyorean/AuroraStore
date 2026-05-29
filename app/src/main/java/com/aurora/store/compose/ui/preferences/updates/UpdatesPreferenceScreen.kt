@@ -55,6 +55,7 @@ import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.preferences.network.SingleChoiceDialog
 import com.aurora.store.data.model.UpdateMode
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_BATTERY
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_IDLE
@@ -62,6 +63,7 @@ import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_METERE
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_AURORA_ONLY
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FILTER_INSTALLERS
+import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -79,6 +81,7 @@ fun UpdatesPreferenceScreen(
         onScheduleAutomatedCheck = { viewModel.updateHelper.scheduleAutomatedCheck() },
         onUpdateAutomatedCheck = { viewModel.updateHelper.updateAutomatedCheck() },
         onCheckUpdatesNow = { viewModel.updateHelper.checkUpdatesNow() },
+        onDeleteSelfUpdate = { viewModel.updateHelper.deleteSelfUpdate() },
         onNavigateTo = onNavigateTo
     )
 }
@@ -89,6 +92,7 @@ private fun ScreenContent(
     onScheduleAutomatedCheck: () -> Unit = {},
     onUpdateAutomatedCheck: () -> Unit = {},
     onCheckUpdatesNow: () -> Unit = {},
+    onDeleteSelfUpdate: () -> Unit = {},
     onNavigateTo: (Destination) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -108,6 +112,10 @@ private fun ScreenContent(
     }
     var updatesExtended by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_UPDATES_EXTENDED))
+    }
+    val selfUpdateSupported = remember { PackageUtil.isSelfUpdateSupported(context) }
+    var selfUpdateEnabled by remember {
+        mutableStateOf(Preferences.getBoolean(context, PREFERENCE_SELF_UPDATE_ENABLED, true))
     }
 
     // Re-read source-filter prefs after returning from SourceFiltersScreen.
@@ -334,6 +342,30 @@ private fun ScreenContent(
                         )
                     }
                 )
+            }
+            if (selfUpdateSupported) {
+                item {
+                    fun onSelfUpdateChanged(enabled: Boolean) {
+                        selfUpdateEnabled = enabled
+                        context.save(PREFERENCE_SELF_UPDATE_ENABLED, enabled)
+                        if (enabled) onCheckUpdatesNow() else onDeleteSelfUpdate()
+                    }
+                    ListItem(
+                        modifier = Modifier.clickable {
+                            onSelfUpdateChanged(!selfUpdateEnabled)
+                        },
+                        headlineContent = { Text(stringResource(R.string.pref_self_update)) },
+                        supportingContent = {
+                            Text(stringResource(R.string.pref_self_update_desc))
+                        },
+                        trailingContent = {
+                            Switch(
+                                checked = selfUpdateEnabled,
+                                onCheckedChange = ::onSelfUpdateChanged
+                            )
+                        }
+                    )
+                }
             }
         }
     }

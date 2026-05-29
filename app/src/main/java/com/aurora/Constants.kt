@@ -37,7 +37,8 @@ object Constants {
 
     const val SHARE_URL = "https://play.google.com/store/apps/details?id="
 
-    const val UPDATE_URL_STABLE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json"
+    const val UPDATE_URL_VANILLA =
+        "https://auroraoss.com/downloads/AuroraStore/Feeds/release_feed.json"
     const val UPDATE_URL_NIGHTLY =
         "https://auroraoss.com/downloads/AuroraStore/Feeds/nightly_feed.json"
 

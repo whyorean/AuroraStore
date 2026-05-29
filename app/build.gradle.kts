@@ -23,6 +23,10 @@ val lastCommitHash = providers.exec {
     commandLine("git", "rev-parse", "--short", "HEAD")
 }.standardOutput.asText.map { it.trim() }
 
+val lastCommitTimestamp = providers.exec {
+    commandLine("git", "log", "-1", "--format=%ct")
+}.standardOutput.asText.map { it.trim() }
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
@@ -69,6 +73,7 @@ configure<ApplicationExtension> {
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
 
         buildConfigField("String", "EXODUS_API_KEY", "\"bbe6ebae4ad45a9cbacb17d69739799b8df2c7ae\"")
+        buildConfigField("long", "BUILD_TIMESTAMP", "${lastCommitTimestamp.get()}L")
 
         missingDimensionStrategy("device", "vanilla")
     }

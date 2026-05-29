@@ -15,7 +15,6 @@ import com.aurora.extensions.isHyperOS
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
@@ -23,6 +22,7 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.model.UpdateMode
+import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
@@ -32,6 +32,7 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -41,18 +42,22 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
 /**
- * A worker to check for updates for installed apps based on saved authentication data,
- * filters and the auto-updates mode selected by the user. The repeat interval
- * is configurable by the user, defaulting to 3 hours with a flex time of 30 minutes.
+ * A worker that drives periodic app-update checks. The repeat interval is configurable
+ * by the user, defaulting to 3 hours with a flex time of 30 minutes.
+ *
+ * Aurora Store's own update is fetched from the bundled release/nightly feed and added
+ * to the regular update list (see [getSelfUpdate]); from there it reuses the standard
+ * download + install pipeline. It is never auto-installed silently — the user triggers
+ * it from the Updates tab.
  *
  * Avoid using this worker directly and prefer using [UpdateHelper] instead.
  * @see AuthWorker
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
+    private val httpClient: HttpClient,
     private val json: Json,
     private val blacklistProvider: BlacklistProvider,
-    private val httpClient: IHttpClient,
     private val updateDao: UpdateDao,
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
@@ -61,11 +66,18 @@ class UpdateWorker @AssistedInject constructor(
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, context, workerParams) {
 
-    private val notificationID = 100
+    companion object {
+        private const val NOTIFICATION_ID = 100
+    }
 
-    private val canSelfUpdate = !CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID) &&
-        !CertUtil.isAppGalleryApp(context, BuildConfig.APPLICATION_ID) &&
-        BuildType.CURRENT != BuildType.DEBUG
+    /**
+     * `true` when the build supports self-update ([PackageUtil.isSelfUpdateSupported])
+     * and the user hasn't opted out via the Settings toggle. Read each check so flipping
+     * the preference takes effect on the next run.
+     */
+    private val canSelfUpdate: Boolean
+        get() = PackageUtil.isSelfUpdateSupported(context) &&
+            Preferences.getBoolean(context, PREFERENCE_SELF_UPDATE_ENABLED, true)
 
     private val isAuroraOnlyFilterEnabled: Boolean
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
@@ -124,7 +136,8 @@ class UpdateWorker @AssistedInject constructor(
                 return Result.success()
             }
 
-            // Clean the update list to prepare for installing
+            // Clean the update list to prepare for installing. Aurora Store's own update
+            // is never installed silently — the user triggers it from the Updates tab.
             val filteredUpdates = updates
                 .filter { it.hasValidCert }
                 .filterNot { it.isSelfUpdate(context) }
@@ -152,7 +165,7 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo = ForegroundInfo(
-        notificationID,
+        NOTIFICATION_ID,
         NotificationUtil.getUpdateNotification(context)
     )
 
@@ -206,7 +219,18 @@ class UpdateWorker @AssistedInject constructor(
                 .filter { PackageUtil.isUpdatable(context, it.packageName, it.versionCode) }
                 .toMutableList()
 
-            if (canSelfUpdate) getSelfUpdate()?.let { updates.add(it) }
+            // Aurora Store's own update comes from the feed, not Play. When one is
+            // offered, add it; otherwise drop any stale self-update row. This is the
+            // cleanup path for the row (nightly self-updates are exempt from
+            // deleteInvalidUpdates, and the install event isn't delivered reliably when
+            // the app replaces itself), so a previously shown self-update doesn't linger
+            // after we've already updated to it.
+            val selfUpdate = if (canSelfUpdate) getSelfUpdate() else null
+            if (selfUpdate != null) {
+                updates.add(selfUpdate)
+            } else {
+                updateDao.delete(context.packageName)
+            }
 
             return@withContext updates.map {
                 Update.fromApp(
@@ -219,58 +243,47 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     /**
-     * Checks and returns updates for Aurora Store if available
+     * Fetches Aurora Store's own update from the bundled release/nightly feed and maps
+     * it onto an [App] so it joins the regular update list. Nightly version codes never
+     * bump, so newness is decided by the build timestamp there; release uses the version
+     * code. Best-effort: any failure logs and yields no update.
      */
-    private suspend fun getSelfUpdate(): App? {
-        return withContext(Dispatchers.IO) {
-            val updateUrl = when (BuildType.CURRENT) {
-                BuildType.RELEASE -> Constants.UPDATE_URL_STABLE
-
-                BuildType.NIGHTLY -> Constants.UPDATE_URL_NIGHTLY
-
-                else -> {
-                    Log.i(TAG, "Self-updates are not available for this build!")
-                    return@withContext null
-                }
-            }
-
-            try {
-                val response = httpClient.get(updateUrl, mapOf())
-                val selfUpdate = json.decodeFromString<SelfUpdate>(String(response.responseBytes))
-
-                val isUpdate = when (BuildType.CURRENT) {
-                    BuildType.NIGHTLY,
-                    BuildType.RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
-
-                    else -> false
-                }
-
-                if (isUpdate) {
-                    if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
-                        if (selfUpdate.fdroidBuild.isNotEmpty()) {
-                            return@withContext SelfUpdate.toApp(selfUpdate, context)
-                        }
-                    } else if (selfUpdate.auroraBuild.isNotEmpty()) {
-                        return@withContext SelfUpdate.toApp(selfUpdate, context)
-                    } else {
-                        Log.e(TAG, "Update file is missing!")
-                        return@withContext null
-                    }
-                }
-            } catch (exception: Exception) {
-                Log.e(TAG, "Failed to check self-updates", exception)
+    private suspend fun getSelfUpdate(): App? = withContext(Dispatchers.IO) {
+        val updateUrl = when (BuildType.CURRENT) {
+            BuildType.RELEASE -> Constants.UPDATE_URL_VANILLA
+            BuildType.NIGHTLY -> Constants.UPDATE_URL_NIGHTLY
+            else -> {
+                Log.i(TAG, "Self-updates are not available for this build!")
                 return@withContext null
             }
-
-            Log.i(TAG, "No self-updates found!")
-            return@withContext null
         }
+
+        try {
+            val selfUpdate = httpClient.call(updateUrl).use {
+                json.decodeFromString<SelfUpdate>(it.body.string())
+            }
+
+            val isNewer = when (BuildType.CURRENT) {
+                BuildType.RELEASE -> selfUpdate.versionCode > BuildConfig.VERSION_CODE
+                BuildType.NIGHTLY -> selfUpdate.timestamp > BuildConfig.BUILD_TIMESTAMP
+                else -> false
+            }
+
+            if (isNewer && selfUpdate.downloadUrl.isNotBlank()) {
+                return@withContext selfUpdate.toApp(context)
+            }
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to check self-updates", exception)
+        }
+
+        Log.i(TAG, "No self-updates found!")
+        return@withContext null
     }
 
     private fun notifyUpdates(updates: List<Update>) {
         with(context.getSystemService<NotificationManager>()!!) {
             notify(
-                notificationID,
+                NOTIFICATION_ID,
                 NotificationUtil.getUpdateNotification(context, updates)
             )
         }

@@ -14,8 +14,10 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
+import com.aurora.store.BuildConfig
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.UpdateMode
 import com.aurora.store.data.room.update.IgnoredUpdate
 import com.aurora.store.data.room.update.IgnoredUpdateDao
@@ -186,6 +188,14 @@ class UpdateHelper @Inject constructor(
     }
 
     /**
+     * Immediately drops Aurora Store's own update row, e.g. when the user turns the
+     * self-update preference off. The periodic check won't re-add it while disabled.
+     */
+    fun deleteSelfUpdate() {
+        AuroraApp.scope.launch { deleteUpdate(BuildConfig.APPLICATION_ID) }
+    }
+
+    /**
      * Hide all future updates for [packageName] until [unignore] is called.
      */
     suspend fun ignoreAll(packageName: String) {
@@ -243,6 +253,13 @@ class UpdateHelper @Inject constructor(
 
     private suspend fun deleteInvalidUpdates() {
         updateDao.updates().firstOrNull()?.forEach { update ->
+            // Nightly builds share a static version code, so the generic "up to date"
+            // check would wrongly drop a freshly found self-update. The worker owns the
+            // self-update lifecycle (re-checked by build timestamp); cleanup happens via
+            // the install event instead.
+            if (update.isSelfUpdate(context) && BuildType.CURRENT == BuildType.NIGHTLY) {
+                return@forEach
+            }
             if (!update.isInstalled(context) || update.isUpToDate(context)) {
                 deleteUpdate(update.packageName)
             }

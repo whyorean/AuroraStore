@@ -74,6 +74,8 @@ object Preferences {
 
     const val PREFERENCE_MIGRATION_VERSION = "PREFERENCE_MIGRATION_VERSION"
 
+    const val PREFERENCE_SELF_UPDATE_ENABLED = "PREFERENCE_SELF_UPDATE_ENABLED"
+
     private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences = when (BuildConfig.FLAVOR) {

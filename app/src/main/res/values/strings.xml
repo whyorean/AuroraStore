@@ -228,6 +228,8 @@
     <string name="pref_ui_similar_apps">"Similar and related apps"</string>
     <string name="pref_updates_incompatible">"Show updates that may fail"</string>
     <string name="pref_updates_incompatible_desc">"Display updates for incompatible or disabled apps that may fail to install."</string>
+    <string name="pref_self_update">"Self-update"</string>
+    <string name="pref_self_update_desc">"Offer new Aurora Store builds in the Updates tab."</string>
     <string name="pref_aurora_only">"Filter apps from other sources."</string>
     <string name="pref_aurora_only_desc">"Do not check for updates for apps installed from sources outside Aurora Store"</string>
     <string name="pref_source_filters_title">"Filter apps from other sources"</string>
@@ -317,6 +319,8 @@
     <string name="app_updater_service_notif_text">Enables background app download</string>
     <string name="update_available">update available</string>
     <string name="updates_available">updates available</string>
+    <string name="updates_self_header">Self-update</string>
+    <string name="updates_self_desc">A newer build of Aurora Store is available</string>
     <string name="updates_incompatible_header">Incompatible updates</string>
     <string name="updates_incompatible_desc">These system app updates cannot be installed on this OS</string>
     <string name="updates_approval_header">Updates requiring approval</string>
