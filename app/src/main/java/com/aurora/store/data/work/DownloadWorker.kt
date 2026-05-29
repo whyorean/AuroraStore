@@ -11,6 +11,7 @@ import android.content.Context
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.storage.StorageManager
 import android.util.Log
 import androidx.core.content.getSystemService
 import androidx.core.graphics.scale
@@ -21,6 +22,7 @@ import androidx.work.WorkInfo.Companion.STOP_REASON_USER
 import androidx.work.WorkerParameters
 import com.aurora.extensions.TAG
 import com.aurora.extensions.copyTo
+import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
@@ -48,6 +50,10 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
+import java.net.HttpURLConnection.HTTP_FORBIDDEN
+import java.net.HttpURLConnection.HTTP_GONE
+import java.net.HttpURLConnection.HTTP_PARTIAL
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -77,6 +83,10 @@ class DownloadWorker @AssistedInject constructor(
 
     companion object {
         private const val NOTIFICATION_ID: Int = 200
+
+        // Upper bound on automatic WorkManager retries for transient (network) failures
+        // before the download is marked as failed and left for the user to retry.
+        private const val MAX_DOWNLOAD_RETRIES = 5
     }
 
     private lateinit var download: Download
@@ -88,6 +98,10 @@ class DownloadWorker @AssistedInject constructor(
     private var totalProgress = 0
     private var downloadedBytes = 0L
 
+    // Absolute paths of files already verified during the download pass, so the final
+    // verification gate doesn't hash large APKs a second time.
+    private val verifiedFiles = mutableSetOf<String>()
+
     inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
     inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))
     inner class DownloadFailedException : Exception(context.getString(R.string.download_failed))
@@ -96,6 +110,11 @@ class DownloadWorker @AssistedInject constructor(
 
     inner class VerificationFailedException :
         Exception(context.getString(R.string.verification_failed))
+
+    inner class ExpiredUrlException : Exception(context.getString(R.string.download_failed))
+
+    inner class InsufficientStorageException :
+        Exception(context.getString(R.string.download_failed_storage))
 
     override suspend fun doWork(): Result {
         super.doWork()
@@ -173,6 +192,15 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateFiles(download.packageName, download.fileList)
         downloadDao.updateSharedLibs(download.packageName, download.sharedLibs)
 
+        // Fail fast (and let the system free its cache) if there isn't room for the download,
+        // instead of dying mid-write with a partial file. Only the not-yet-downloaded bytes
+        // need to fit.
+        try {
+            ensureStorageAvailable(totalBytes - downloadedBytesOnDisk(files))
+        } catch (exception: Exception) {
+            return onFailure(exception)
+        }
+
         // Download files
         try {
             for (file in files) {
@@ -184,24 +212,34 @@ class DownloadWorker @AssistedInject constructor(
                 download.downloadedFiles++
             }
         } catch (exception: Exception) {
-            if (exception is DownloadCancelledException) {
-                Log.i(TAG, "Download cancelled for ${download.packageName}")
-                // Try to delete all downloaded files
+            // Only purge partial files on a genuine user/app cancellation. A stop caused
+            // by lost connectivity, quota or device-state must keep the partials so the
+            // retry resumes instead of re-downloading from scratch (this was the source of
+            // downloads appearing to "restart" on a flaky network).
+            if (exception is DownloadCancelledException && isCancelledByUser()) {
+                Log.i(TAG, "Download cancelled by user for ${download.packageName}")
                 runCatching { files.forEach { deleteFile(it) } }
             }
 
             return onFailure(exception)
         }
 
-        // Report failure if download was stopped or failed
-        if (isStopped) return onFailure(DownloadFailedException())
+        // A stop that isn't a user cancellation (e.g. connectivity constraint) should be
+        // retried with the partials intact rather than treated as a hard failure.
+        if (isStopped) return onFailure(DownloadCancelledException())
 
-        // Verify downloaded files
+        // Verify downloaded files (skipping any already verified during the download pass)
         try {
             notifyStatus(DownloadStatus.VERIFYING)
-            files.forEach { file -> require(verifyFile(file)) }
+            files.forEach { file ->
+                val path = PathUtil.getLocalFile(context, file, download).absolutePath
+                if (path !in verifiedFiles) require(verifyFile(file))
+            }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify ${download.packageName}", exception)
+            // Drop the corrupt files so the next attempt re-downloads them clean instead
+            // of resuming from a poisoned offset.
+            runCatching { files.forEach { deleteFile(it) } }
             return onFailure(VerificationFailedException())
         }
 
@@ -223,12 +261,60 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Whether the current stop/cancellation was initiated by the user (or the app on the
+     * user's behalf) rather than by the system (connectivity/quota/device-state). Uses the
+     * S+ [stopReason] when available and otherwise falls back to the persisted status, which
+     * [DownloadHelper.cancelDownload] sets to [DownloadStatus.CANCELLED] before cancelling
+     * the work — making this reliable below Android 12 too.
+     */
+    private suspend fun isCancelledByUser(): Boolean {
+        val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
+        if (isSAndAbove && stopReason in cancelReasons) return true
+        return runCatching {
+            downloadDao.getDownload(download.packageName).status == DownloadStatus.CANCELLED
+        }.getOrDefault(false)
+    }
+
+    /**
+     * Transient errors worth retrying once connectivity returns. Walks the cause chain so a
+     * wrapped network error is still recognised.
+     */
+    private fun isRetryable(throwable: Throwable?): Boolean = when (throwable) {
+        null -> false
+        is NoNetworkException,
+        is SocketException,
+        is SocketTimeoutException,
+        is UnknownHostException,
+        // Expired URLs were re-purchased by clearing the file list; retrying re-fetches them.
+        is ExpiredUrlException -> true
+
+        else -> isRetryable(throwable.cause)
+    }
+
     private suspend fun onFailure(exception: Exception): Result {
         return withContext(NonCancellable) {
             Log.i(TAG, "Job failed: ${download.packageName}", exception)
 
-            val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
-            if (isSAndAbove && stopReason in cancelReasons) {
+            val cancelledByUser = isCancelledByUser()
+
+            // Retry transient failures (lost connectivity, system-initiated stops) with
+            // backoff, keeping any partial download for resume. The network constraint on
+            // the work request means the retry only runs once connectivity is back.
+            val isSystemStop = exception is DownloadCancelledException && !cancelledByUser
+            if (!cancelledByUser &&
+                (isRetryable(exception) || isSystemStop) &&
+                runAttemptCount < MAX_DOWNLOAD_RETRIES
+            ) {
+                Log.w(
+                    TAG,
+                    "Transient failure for ${download.packageName}, " +
+                        "retrying (attempt $runAttemptCount)"
+                )
+                return@withContext Result.retry()
+            }
+
+            if (cancelledByUser) {
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
                 when (exception) {
@@ -297,28 +383,63 @@ class DownloadWorker @AssistedInject constructor(
             if (file.exists() && verifyFile(gFile)) {
                 Log.i(TAG, "$file is already downloaded!")
                 downloadedBytes += file.length()
+                verifiedFiles.add(file.absolutePath)
                 return@withContext true
             }
 
             try {
-                val tmpFileSuffix = ".tmp"
-                val tmpFile = File(file.absolutePath + tmpFileSuffix)
-
                 // Download as a temporary file to avoid installing corrupted files
-                val isNewFile = tmpFile.createNewFile()
+                val tmpFile = File(file.absolutePath + ".tmp")
+                val existingBytes = if (tmpFile.exists()) tmpFile.length() else 0L
 
                 val okHttpClient = httpClient as HttpClient
                 val headers = mutableMapOf<String, String>()
-
-                if (!isNewFile) {
-                    Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
-                    downloadedBytes += tmpFile.length()
-                    headers["Range"] = "bytes=${tmpFile.length()}-"
+                if (existingBytes > 0) {
+                    Log.i(TAG, "$tmpFile has an unfinished download, requesting resume!")
+                    headers["Range"] = "bytes=$existingBytes-"
                 }
 
-                okHttpClient.call(gFile.url, headers).body.byteStream().use { input ->
-                    FileOutputStream(tmpFile, !isNewFile).use {
-                        input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
+                val response = okHttpClient.call(gFile.url, headers)
+                if (!response.isSuccessful) {
+                    val code = response.code
+                    response.close()
+                    // Play download URLs are short-lived; a 403/410 means ours expired while
+                    // the download sat queued. Drop the stale file lists so the retry
+                    // re-purchases fresh URLs instead of hammering the dead one.
+                    if (code == HTTP_FORBIDDEN || code == HTTP_GONE) {
+                        Log.w(TAG, "Download URL for ${download.packageName} expired (code=$code)")
+                        downloadDao.updateFiles(download.packageName, emptyList())
+                        downloadDao.updateSharedLibs(
+                            download.packageName,
+                            download.sharedLibs.map { it.copy(fileList = emptyList()) }
+                        )
+                        throw ExpiredUrlException()
+                    }
+                    throw DownloadFailedException()
+                }
+
+                // Only resume when the server actually honored the Range request (206). If
+                // it replied 200 with the full body we must overwrite from the start,
+                // otherwise the full payload would be appended onto the existing partial and
+                // silently corrupt the file.
+                val resuming = existingBytes > 0 && response.code == HTTP_PARTIAL
+                if (resuming) {
+                    downloadedBytes += existingBytes
+                } else if (existingBytes > 0) {
+                    Log.w(
+                        TAG,
+                        "Server ignored Range for $tmpFile (code=${response.code}), restarting"
+                    )
+                }
+
+                response.body.byteStream().use { input ->
+                    FileOutputStream(tmpFile, resuming).use {
+                        input.copyTo(it, gFile.size).collect { info ->
+                            // Abort promptly mid-file when stopped, instead of only checking
+                            // between files (a single split can be hundreds of MB).
+                            if (isStopped) throw CancellationException("Download stopped")
+                            onProgress(info)
+                        }
                     }
                 }
 
@@ -452,6 +573,10 @@ class DownloadWorker @AssistedInject constructor(
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
         val expectedSha = if (algorithm == Algorithm.SHA1) gFile.sha1 else gFile.sha256
 
+        if (algorithm == Algorithm.SHA1) {
+            Log.w(TAG, "No SHA-256 for ${gFile.name}, falling back to SHA-1")
+        }
+
         if (expectedSha.isBlank()) return false
 
         return withContext(Dispatchers.IO) {
@@ -487,6 +612,46 @@ class DownloadWorker @AssistedInject constructor(
         if (tmpFile.exists()) {
             tmpFile.delete()
             Log.i(TAG, "Deleted Temp: $tmpFile")
+        }
+    }
+
+    /**
+     * Bytes already present on disk (final or partial .tmp) for [files], so the storage check
+     * only requires room for what's still left to fetch.
+     */
+    private fun downloadedBytesOnDisk(files: List<PlayFile>): Long = files.sumOf { gFile ->
+        val file = PathUtil.getLocalFile(context, gFile, download)
+        val tmpFile = File(file.absolutePath + ".tmp")
+        when {
+            file.exists() -> file.length()
+            tmpFile.exists() -> tmpFile.length()
+            else -> 0L
+        }
+    }
+
+    /**
+     * Ensures there's room for [requiredBytes] before downloading, throwing
+     * [InsufficientStorageException] otherwise. On Android O+ this also asks the system to
+     * evict its own cache to make space, per the storage guidelines.
+     */
+    private fun ensureStorageAvailable(requiredBytes: Long) {
+        if (requiredBytes <= 0) return
+
+        val dir = PathUtil.getDownloadDirectory(context).apply { mkdirs() }
+        if (isOAndAbove) {
+            val storageManager = context.getSystemService<StorageManager>()!!
+            try {
+                val uuid = storageManager.getUuidForPath(dir)
+                if (storageManager.getAllocatableBytes(uuid) < requiredBytes) {
+                    throw InsufficientStorageException()
+                }
+                storageManager.allocateBytes(uuid, requiredBytes)
+            } catch (exception: IOException) {
+                Log.e(TAG, "Failed to allocate space for ${download.packageName}", exception)
+                throw InsufficientStorageException()
+            }
+        } else if (dir.usableSpace < requiredBytes) {
+            throw InsufficientStorageException()
         }
     }
 }

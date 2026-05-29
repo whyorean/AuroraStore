@@ -43,6 +43,13 @@ data class Download(
     val isRunning get() = status in DownloadStatus.running
     private val isSuccessful get() = status == DownloadStatus.COMPLETED
 
+    /**
+     * `true` while the download is queued, purchasing, downloading or verifying, i.e.
+     * the pipeline is actively working on it. Unlike [isRunning] this also covers
+     * [DownloadStatus.VERIFYING], which sits between downloading and completion.
+     */
+    val isActive get() = isRunning || status == DownloadStatus.VERIFYING
+
     companion object {
         fun fromApp(app: App): Download = Download(
             app.packageName,
@@ -108,7 +115,10 @@ data class Download(
     }
 
     fun canInstall(context: Context): Boolean {
+        if (!isSuccessful) return false
         val dir = PathUtil.getAppDownloadDir(context, packageName, versionCode)
-        return isSuccessful && dir.listFiles() != null
+        // Require at least one actual APK on disk, not just that the directory exists —
+        // an empty/partially-cleaned directory must not look installable.
+        return dir.listFiles()?.any { it.name.endsWith(".apk") } == true
     }
 }

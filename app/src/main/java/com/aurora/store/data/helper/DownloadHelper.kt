@@ -2,14 +2,20 @@ package com.aurora.store.data.helper
 
 import android.content.Context
 import android.util.Log
+import androidx.work.BackoffPolicy
+import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
+import androidx.work.WorkRequest
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
+import com.aurora.store.data.event.InstallerEvent
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
@@ -18,6 +24,7 @@ import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
@@ -32,7 +39,8 @@ import kotlinx.coroutines.launch
  */
 class DownloadHelper @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val downloadDao: DownloadDao
+    private val downloadDao: DownloadDao,
+    private val appInstaller: AppInstaller
 ) {
 
     companion object {
@@ -68,13 +76,50 @@ class DownloadHelper @Inject constructor(
             cancelFailedDownloads(downloadDao.downloads().firstOrNull() ?: emptyList())
         }.invokeOnCompletion {
             observeDownloads()
+            observeInstalls()
         }
+    }
+
+    /**
+     * Advances a download row through the installer phase so its history reflects whether the
+     * app actually installed, not just that the bytes finished downloading:
+     * - [InstallerEvent.Installing] moves a [DownloadStatus.COMPLETED] row to
+     *   [DownloadStatus.INSTALLING];
+     * - [InstallerEvent.Installed] marks it [DownloadStatus.INSTALLED] (kept so the user can
+     *   still export the APK);
+     * - [InstallerEvent.Failed] reverts an in-progress install back to
+     *   [DownloadStatus.COMPLETED] so the downloaded files can be re-installed without
+     *   re-downloading.
+     */
+    private fun observeInstalls() {
+        AuroraApp.events.installerEvent.onEach { event ->
+            val existing = getDownload(event.packageName) ?: return@onEach
+            when (event) {
+                is InstallerEvent.Installing -> if (existing.status == DownloadStatus.COMPLETED) {
+                    downloadDao.updateStatus(event.packageName, DownloadStatus.INSTALLING)
+                }
+
+                is InstallerEvent.Installed -> if (existing.status != DownloadStatus.INSTALLED) {
+                    downloadDao.updateStatus(event.packageName, DownloadStatus.INSTALLED)
+                }
+
+                is InstallerEvent.Failed -> if (existing.status == DownloadStatus.INSTALLING) {
+                    downloadDao.updateStatus(event.packageName, DownloadStatus.COMPLETED)
+                }
+
+                else -> {}
+            }
+        }.launchIn(AuroraApp.scope)
     }
 
     private fun observeDownloads() {
         downloadDao.downloads().onEach { list ->
             try {
-                if (list.none { it.status == DownloadStatus.DOWNLOADING }) {
+                // Serialize downloads: only start the next queued item once nothing else is
+                // actively purchasing/downloading/verifying. Previously this only checked for
+                // DOWNLOADING, so a worker in PURCHASING/VERIFYING didn't count and a second
+                // download could start concurrently and clobber the shared notification.
+                if (list.none { it.status in DownloadStatus.processing }) {
                     list.find { it.status == DownloadStatus.QUEUED }
                         ?.let { queuedDownload ->
                             Log.i(TAG, "Enqueued download worker for ${queuedDownload.packageName}")
@@ -92,7 +137,7 @@ class DownloadHelper @Inject constructor(
      * @param app [App] to download
      */
     suspend fun enqueueApp(app: App) {
-        downloadDao.insert(Download.fromApp(app))
+        enqueue(Download.fromApp(app))
     }
 
     /**
@@ -100,7 +145,7 @@ class DownloadHelper @Inject constructor(
      * @param update [Update] to download
      */
     suspend fun enqueueUpdate(update: Update) {
-        downloadDao.insert(Download.fromUpdate(update))
+        enqueue(Download.fromUpdate(update))
     }
 
     /**
@@ -108,7 +153,40 @@ class DownloadHelper @Inject constructor(
      * @param externalApk [ExternalApk] to download
      */
     suspend fun enqueueStandalone(externalApk: ExternalApk) {
-        downloadDao.insert(Download.fromExternalApk(externalApk))
+        enqueue(Download.fromExternalApk(externalApk))
+    }
+
+    /**
+     * Inserts a new download row, but only when a (re)download is actually needed. For an
+     * existing record of the same version this:
+     * - **installs without re-downloading** if the files are already downloaded & verified
+     *   (e.g. the user missed the system install prompt, or the periodic update check runs
+     *   again before a pending install completed); or
+     * - **skips** entirely if the download is still active (queued/purchasing/downloading/
+     *   verifying), so the periodic [UpdateWorker] and repeated user taps can't reset it back
+     *   to [DownloadStatus.QUEUED] and re-download it.
+     *
+     * A genuinely newer version, or a previously failed/cancelled download whose files are
+     * gone, falls through and is (re)enqueued.
+     */
+    private suspend fun enqueue(download: Download) {
+        val existing = getDownload(download.packageName)
+        if (existing != null && existing.versionCode == download.versionCode) {
+            if (existing.canInstall(context)) {
+                Log.i(TAG, "${download.packageName} already downloaded, installing directly")
+                runCatching { appInstaller.getPreferredInstaller().install(existing) }
+                    .onFailure { Log.e(TAG, "Failed to install ${download.packageName}", it) }
+                return
+            }
+            if (existing.isActive) {
+                Log.i(
+                    TAG,
+                    "Skipping enqueue for ${download.packageName}; already ${existing.status}"
+                )
+                return
+            }
+        }
+        downloadDao.insert(download)
     }
 
     /**
@@ -118,6 +196,8 @@ class DownloadHelper @Inject constructor(
     suspend fun cancelDownload(packageName: String) {
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
+        // Abandon any session already staged for install so we don't leak it.
+        runCatching { appInstaller.getPreferredInstaller().cancelInstall(packageName) }
         downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED)
     }
 
@@ -197,11 +277,24 @@ class DownloadHelper @Inject constructor(
             .putString(PACKAGE_NAME, download.packageName)
             .build()
 
+        // Require connectivity so the worker doesn't spin up (or keep running) without a
+        // network, and back off exponentially so transient failures resume cleanly once the
+        // connection returns instead of hammering the server.
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
         val work = OneTimeWorkRequestBuilder<DownloadWorker>()
             .addTag(DOWNLOAD_WORKER)
             .addTag("$PACKAGE_NAME:${download.packageName}")
             .addTag("$VERSION_CODE:${download.versionCode}")
             .addTag(if (download.isInstalled) DOWNLOAD_UPDATE else DOWNLOAD_APP)
+            .setConstraints(constraints)
+            .setBackoffCriteria(
+                BackoffPolicy.EXPONENTIAL,
+                WorkRequest.MIN_BACKOFF_MILLIS,
+                TimeUnit.MILLISECONDS
+            )
             .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
             .setInputData(inputData)
             .build()

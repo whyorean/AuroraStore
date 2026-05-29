@@ -61,7 +61,7 @@ fun DownloadListItem(modifier: Modifier = Modifier, download: Download, onClick:
             )
         },
         trailing = when (download.status) {
-            DownloadStatus.COMPLETED -> {
+            DownloadStatus.COMPLETED, DownloadStatus.INSTALLED -> {
                 {
                     Icon(
                         painter = painterResource(R.drawable.ic_check),

@@ -26,4 +26,11 @@ interface IInstaller {
     fun clearQueue()
     fun isAlreadyQueued(packageName: String): Boolean
     fun removeFromInstallQueue(packageName: String)
+
+    /**
+     * Abandons any staged-but-uncommitted install session for [packageName] so cancelling
+     * a download doesn't leak a [android.content.pm.PackageInstaller] session. Default no-op
+     * for installers that don't stage sessions.
+     */
+    fun cancelInstall(packageName: String) {}
 }

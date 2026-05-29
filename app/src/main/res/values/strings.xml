@@ -149,6 +149,7 @@
     <string name="download_eta_min">%1$dm %2$ds left</string>
     <string name="download_eta_sec">%1$ds left</string>
     <string name="download_failed">"Download failed"</string>
+    <string name="download_failed_storage">Not enough storage space to download this app</string>
     <string name="download_force_clear_all">"Force clear all"</string>
     <string name="download_metadata">"Getting metadata"</string>
     <string name="download_none">"No downloads"</string>
@@ -520,6 +521,8 @@
     <string name="status_queued">Queued</string>
     <string name="status_unavailable">Unavailable</string>
     <string name="status_verifying">Verifying</string>
+    <string name="status_installing">Installing</string>
+    <string name="status_installed">Installed</string>
 
     <!-- UnarchivePackageReceiver -->
     <string name="authentication_required_title">Authentication required</string>
