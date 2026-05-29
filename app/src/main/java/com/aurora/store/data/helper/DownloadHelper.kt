@@ -14,6 +14,7 @@ import androidx.work.WorkRequest
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
+import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
@@ -75,7 +76,40 @@ class DownloadHelper @Inject constructor(
             cancelFailedDownloads(downloadDao.downloads().firstOrNull() ?: emptyList())
         }.invokeOnCompletion {
             observeDownloads()
+            observeInstalls()
         }
+    }
+
+    /**
+     * Advances a download row through the installer phase so its history reflects whether the
+     * app actually installed, not just that the bytes finished downloading:
+     * - [InstallerEvent.Installing] moves a [DownloadStatus.COMPLETED] row to
+     *   [DownloadStatus.INSTALLING];
+     * - [InstallerEvent.Installed] marks it [DownloadStatus.INSTALLED] (kept so the user can
+     *   still export the APK);
+     * - [InstallerEvent.Failed] reverts an in-progress install back to
+     *   [DownloadStatus.COMPLETED] so the downloaded files can be re-installed without
+     *   re-downloading.
+     */
+    private fun observeInstalls() {
+        AuroraApp.events.installerEvent.onEach { event ->
+            val existing = getDownload(event.packageName) ?: return@onEach
+            when (event) {
+                is InstallerEvent.Installing -> if (existing.status == DownloadStatus.COMPLETED) {
+                    downloadDao.updateStatus(event.packageName, DownloadStatus.INSTALLING)
+                }
+
+                is InstallerEvent.Installed -> if (existing.status != DownloadStatus.INSTALLED) {
+                    downloadDao.updateStatus(event.packageName, DownloadStatus.INSTALLED)
+                }
+
+                is InstallerEvent.Failed -> if (existing.status == DownloadStatus.INSTALLING) {
+                    downloadDao.updateStatus(event.packageName, DownloadStatus.COMPLETED)
+                }
+
+                else -> {}
+            }
+        }.launchIn(AuroraApp.scope)
     }
 
     private fun observeDownloads() {
