@@ -162,6 +162,8 @@ class DownloadHelper @Inject constructor(
     suspend fun cancelDownload(packageName: String) {
         Log.i(TAG, "Cancelling download for $packageName")
         WorkManager.getInstance(context).cancelAllWorkByTag("$PACKAGE_NAME:$packageName")
+        // Abandon any session already staged for install so we don't leak it.
+        runCatching { appInstaller.getPreferredInstaller().cancelInstall(packageName) }
         downloadDao.updateStatus(packageName, DownloadStatus.CANCELLED)
     }
 

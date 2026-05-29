@@ -182,6 +182,16 @@ class SessionInstaller @Inject constructor(
         }
     }
 
+    override fun cancelInstall(packageName: String) {
+        val sessionSet = enqueuedSessions
+            .find { set -> set.any { it.packageName == packageName } } ?: return
+
+        Log.i(TAG, "Abandoning staged session(s) for $packageName")
+        sessionSet.forEach { runCatching { packageInstaller.abandonSession(it.sessionId) } }
+        enqueuedSessions.remove(sessionSet)
+        removeFromInstallQueue(packageName)
+    }
+
     private fun stageInstall(
         packageName: String,
         versionCode: Long,
