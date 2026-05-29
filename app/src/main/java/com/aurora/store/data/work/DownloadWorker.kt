@@ -48,6 +48,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.io.File
 import java.io.FileOutputStream
+import java.net.HttpURLConnection.HTTP_PARTIAL
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -77,6 +78,10 @@ class DownloadWorker @AssistedInject constructor(
 
     companion object {
         private const val NOTIFICATION_ID: Int = 200
+
+        // Upper bound on automatic WorkManager retries for transient (network) failures
+        // before the download is marked as failed and left for the user to retry.
+        private const val MAX_DOWNLOAD_RETRIES = 5
     }
 
     private lateinit var download: Download
@@ -184,17 +189,21 @@ class DownloadWorker @AssistedInject constructor(
                 download.downloadedFiles++
             }
         } catch (exception: Exception) {
-            if (exception is DownloadCancelledException) {
-                Log.i(TAG, "Download cancelled for ${download.packageName}")
-                // Try to delete all downloaded files
+            // Only purge partial files on a genuine user/app cancellation. A stop caused
+            // by lost connectivity, quota or device-state must keep the partials so the
+            // retry resumes instead of re-downloading from scratch (this was the source of
+            // downloads appearing to "restart" on a flaky network).
+            if (exception is DownloadCancelledException && isCancelledByUser()) {
+                Log.i(TAG, "Download cancelled by user for ${download.packageName}")
                 runCatching { files.forEach { deleteFile(it) } }
             }
 
             return onFailure(exception)
         }
 
-        // Report failure if download was stopped or failed
-        if (isStopped) return onFailure(DownloadFailedException())
+        // A stop that isn't a user cancellation (e.g. connectivity constraint) should be
+        // retried with the partials intact rather than treated as a hard failure.
+        if (isStopped) return onFailure(DownloadCancelledException())
 
         // Verify downloaded files
         try {
@@ -202,6 +211,9 @@ class DownloadWorker @AssistedInject constructor(
             files.forEach { file -> require(verifyFile(file)) }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify ${download.packageName}", exception)
+            // Drop the corrupt files so the next attempt re-downloads them clean instead
+            // of resuming from a poisoned offset.
+            runCatching { files.forEach { deleteFile(it) } }
             return onFailure(VerificationFailedException())
         }
 
@@ -223,12 +235,58 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
+    /**
+     * Whether the current stop/cancellation was initiated by the user (or the app on the
+     * user's behalf) rather than by the system (connectivity/quota/device-state). Uses the
+     * S+ [stopReason] when available and otherwise falls back to the persisted status, which
+     * [DownloadHelper.cancelDownload] sets to [DownloadStatus.CANCELLED] before cancelling
+     * the work — making this reliable below Android 12 too.
+     */
+    private suspend fun isCancelledByUser(): Boolean {
+        val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
+        if (isSAndAbove && stopReason in cancelReasons) return true
+        return runCatching {
+            downloadDao.getDownload(download.packageName).status == DownloadStatus.CANCELLED
+        }.getOrDefault(false)
+    }
+
+    /**
+     * Transient errors worth retrying once connectivity returns. Walks the cause chain so a
+     * wrapped network error is still recognised.
+     */
+    private fun isRetryable(throwable: Throwable?): Boolean = when (throwable) {
+        null -> false
+        is NoNetworkException,
+        is SocketException,
+        is SocketTimeoutException,
+        is UnknownHostException -> true
+
+        else -> isRetryable(throwable.cause)
+    }
+
     private suspend fun onFailure(exception: Exception): Result {
         return withContext(NonCancellable) {
             Log.i(TAG, "Job failed: ${download.packageName}", exception)
 
-            val cancelReasons = listOf(STOP_REASON_USER, STOP_REASON_CANCELLED_BY_APP)
-            if (isSAndAbove && stopReason in cancelReasons) {
+            val cancelledByUser = isCancelledByUser()
+
+            // Retry transient failures (lost connectivity, system-initiated stops) with
+            // backoff, keeping any partial download for resume. The network constraint on
+            // the work request means the retry only runs once connectivity is back.
+            val isSystemStop = exception is DownloadCancelledException && !cancelledByUser
+            if (!cancelledByUser &&
+                (isRetryable(exception) || isSystemStop) &&
+                runAttemptCount < MAX_DOWNLOAD_RETRIES
+            ) {
+                Log.w(
+                    TAG,
+                    "Transient failure for ${download.packageName}, " +
+                        "retrying (attempt $runAttemptCount)"
+                )
+                return@withContext Result.retry()
+            }
+
+            if (cancelledByUser) {
                 notifyStatus(DownloadStatus.CANCELLED)
             } else {
                 when (exception) {
@@ -301,23 +359,39 @@ class DownloadWorker @AssistedInject constructor(
             }
 
             try {
-                val tmpFileSuffix = ".tmp"
-                val tmpFile = File(file.absolutePath + tmpFileSuffix)
-
                 // Download as a temporary file to avoid installing corrupted files
-                val isNewFile = tmpFile.createNewFile()
+                val tmpFile = File(file.absolutePath + ".tmp")
+                val existingBytes = if (tmpFile.exists()) tmpFile.length() else 0L
 
                 val okHttpClient = httpClient as HttpClient
                 val headers = mutableMapOf<String, String>()
-
-                if (!isNewFile) {
-                    Log.i(TAG, "$tmpFile has an unfinished download, resuming!")
-                    downloadedBytes += tmpFile.length()
-                    headers["Range"] = "bytes=${tmpFile.length()}-"
+                if (existingBytes > 0) {
+                    Log.i(TAG, "$tmpFile has an unfinished download, requesting resume!")
+                    headers["Range"] = "bytes=$existingBytes-"
                 }
 
-                okHttpClient.call(gFile.url, headers).body.byteStream().use { input ->
-                    FileOutputStream(tmpFile, !isNewFile).use {
+                val response = okHttpClient.call(gFile.url, headers)
+                if (!response.isSuccessful) {
+                    response.close()
+                    throw DownloadFailedException()
+                }
+
+                // Only resume when the server actually honored the Range request (206). If
+                // it replied 200 with the full body we must overwrite from the start,
+                // otherwise the full payload would be appended onto the existing partial and
+                // silently corrupt the file.
+                val resuming = existingBytes > 0 && response.code == HTTP_PARTIAL
+                if (resuming) {
+                    downloadedBytes += existingBytes
+                } else if (existingBytes > 0) {
+                    Log.w(
+                        TAG,
+                        "Server ignored Range for $tmpFile (code=${response.code}), restarting"
+                    )
+                }
+
+                response.body.byteStream().use { input ->
+                    FileOutputStream(tmpFile, resuming).use {
                         input.copyTo(it, gFile.size).collect { info -> onProgress(info) }
                     }
                 }
