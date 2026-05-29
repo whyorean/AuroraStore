@@ -115,7 +115,10 @@ data class Download(
     }
 
     fun canInstall(context: Context): Boolean {
+        if (!isSuccessful) return false
         val dir = PathUtil.getAppDownloadDir(context, packageName, versionCode)
-        return isSuccessful && dir.listFiles() != null
+        // Require at least one actual APK on disk, not just that the directory exists —
+        // an empty/partially-cleaned directory must not look installable.
+        return dir.listFiles()?.any { it.name.endsWith(".apk") } == true
     }
 }

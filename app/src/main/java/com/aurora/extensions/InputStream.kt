@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.flowOn
 fun InputStream.copyTo(out: OutputStream, streamSize: Long): Flow<DownloadInfo> = flow {
     var bytesCopied: Long = 0
     val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-    var bytes = read(buffer)
     var lastTotalBytesRead: Long = 0
     var speed: Long = 0
 
@@ -23,14 +22,20 @@ fun InputStream.copyTo(out: OutputStream, streamSize: Long): Flow<DownloadInfo> 
         lastTotalBytesRead = totalBytesRead
     }
 
-    while (bytes >= 0) {
-        out.write(buffer, 0, bytes)
-        out.flush()
+    // Cancel the timer even when the collector aborts mid-stream (e.g. the download is
+    // stopped), otherwise the timer thread would leak.
+    try {
+        var bytes = read(buffer)
+        while (bytes >= 0) {
+            out.write(buffer, 0, bytes)
+            out.flush()
 
-        bytesCopied += bytes
-        // Emit stream progress in percentage
-        emit(DownloadInfo((bytesCopied * 100 / streamSize).toInt(), bytes.toLong(), speed))
-        bytes = read(buffer)
+            bytesCopied += bytes
+            // Emit stream progress in percentage
+            emit(DownloadInfo((bytesCopied * 100 / streamSize).toInt(), bytes.toLong(), speed))
+            bytes = read(buffer)
+        }
+    } finally {
+        timer.cancel()
     }
-    timer.cancel()
 }.flowOn(Dispatchers.IO)

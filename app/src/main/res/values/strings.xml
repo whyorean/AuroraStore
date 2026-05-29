@@ -149,6 +149,7 @@
     <string name="download_eta_min">%1$dm %2$ds left</string>
     <string name="download_eta_sec">%1$ds left</string>
     <string name="download_failed">"Download failed"</string>
+    <string name="download_failed_storage">Not enough storage space to download this app</string>
     <string name="download_force_clear_all">"Force clear all"</string>
     <string name="download_metadata">"Getting metadata"</string>
     <string name="download_none">"No downloads"</string>

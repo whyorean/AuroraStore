@@ -199,7 +199,12 @@ class SessionInstaller @Inject constructor(
     ): Int? {
         val resolvedPackageName = sharedLibPkgName.ifBlank { packageName }
 
-        val sessionParams = buildSessionParams(resolvedPackageName)
+        // Size hint lets the system reserve space (and evict its cache) for the staged copy.
+        val totalSize = runCatching {
+            getFiles(packageName, versionCode, sharedLibPkgName).sumOf { it.length() }
+        }.getOrDefault(0L)
+
+        val sessionParams = buildSessionParams(resolvedPackageName, totalSize)
         val sessionId = packageInstaller.createSession(sessionParams)
         val session = packageInstaller.openSession(sessionId)
 
@@ -226,9 +231,10 @@ class SessionInstaller @Inject constructor(
         }
     }
 
-    private fun buildSessionParams(packageName: String): SessionParams =
+    private fun buildSessionParams(packageName: String, totalSize: Long = 0L): SessionParams =
         SessionParams(SessionParams.MODE_FULL_INSTALL).apply {
             setAppPackageName(packageName)
+            if (totalSize > 0) setSize(totalSize)
             setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO)
             if (isNAndAbove) {
                 setOriginatingUid(Process.myUid())

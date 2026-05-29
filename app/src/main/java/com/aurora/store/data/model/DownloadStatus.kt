@@ -16,8 +16,8 @@ enum class DownloadStatus(@StringRes val localized: Int) {
     INSTALLED(R.string.status_installed);
 
     companion object {
-        val finished = listOf(FAILED, CANCELLED, COMPLETED, INSTALLED)
-        val running = listOf(QUEUED, PURCHASING, DOWNLOADING)
+        val finished = setOf(FAILED, CANCELLED, COMPLETED, INSTALLED)
+        val running = setOf(QUEUED, PURCHASING, DOWNLOADING)
 
         /**
          * States in which a download worker is actively occupying the (single) download
