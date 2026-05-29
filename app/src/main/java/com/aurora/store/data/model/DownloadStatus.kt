@@ -16,5 +16,13 @@ enum class DownloadStatus(@StringRes val localized: Int) {
     companion object {
         val finished = listOf(FAILED, CANCELLED, COMPLETED)
         val running = listOf(QUEUED, PURCHASING, DOWNLOADING)
+
+        /**
+         * States in which a download worker is actively occupying the (single) download
+         * slot — purchasing, transferring bytes or verifying. Used to serialize downloads:
+         * the next [QUEUED] item is only started once none of these are in progress, so
+         * concurrent workers can't clobber the shared foreground/progress notification.
+         */
+        val processing = setOf(PURCHASING, DOWNLOADING, VERIFYING)
     }
 }

@@ -81,7 +81,11 @@ class DownloadHelper @Inject constructor(
     private fun observeDownloads() {
         downloadDao.downloads().onEach { list ->
             try {
-                if (list.none { it.status == DownloadStatus.DOWNLOADING }) {
+                // Serialize downloads: only start the next queued item once nothing else is
+                // actively purchasing/downloading/verifying. Previously this only checked for
+                // DOWNLOADING, so a worker in PURCHASING/VERIFYING didn't count and a second
+                // download could start concurrently and clobber the shared notification.
+                if (list.none { it.status in DownloadStatus.processing }) {
                     list.find { it.status == DownloadStatus.QUEUED }
                         ?.let { queuedDownload ->
                             Log.i(TAG, "Enqueued download worker for ${queuedDownload.packageName}")
