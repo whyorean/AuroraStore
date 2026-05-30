@@ -95,7 +95,7 @@ private fun ScreenContent(onNavigateTo: (Destination) -> Unit = {}) {
                     },
                     leadingContent = {
                         Icon(
-                            painter = painterResource(R.drawable.ic_notification_outlined),
+                            painter = painterResource(R.drawable.ic_notification_settings),
                             contentDescription = null
                         )
                     },

@@ -87,7 +87,12 @@ class AuthViewModel @Inject constructor(
                 )
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to generate Session", exception)
-                _authState.value = AuthState.Failed(exception.message.toString())
+                val message = when (exception) {
+                    is UnknownHostException -> context.getString(R.string.check_connectivity)
+                    else -> exception.message.toString()
+                }
+
+                _authState.value = AuthState.Failed(message)
             }
         }
     }
