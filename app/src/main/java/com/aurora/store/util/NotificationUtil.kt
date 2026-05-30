@@ -2,6 +2,7 @@ package com.aurora.store.util
 
 import android.app.Notification
 import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
@@ -32,6 +33,10 @@ import kotlin.math.absoluteValue
 
 object NotificationUtil {
 
+    // Channel groups: headings the individual channels are filed under in system settings.
+    private const val GROUP_CHANNELS_ACTIVITY = "com.aurora.store.channels.ACTIVITY"
+    private const val GROUP_CHANNELS_ALERTS = "com.aurora.store.channels.ALERTS"
+
     // Terminal install/failure notifications are bundled under a group so a bulk update
     // shows a single collapsible summary instead of one notification per app.
     private const val GROUP_INSTALLED = "com.aurora.store.INSTALLED"
@@ -56,6 +61,21 @@ object NotificationUtil {
                 notificationManager.deleteNotificationChannel(it)
             }
 
+            // Organise the channels under two headings in system settings: routine activity
+            // vs. things that need attention.
+            notificationManager.createNotificationChannelGroups(
+                listOf(
+                    NotificationChannelGroup(
+                        GROUP_CHANNELS_ACTIVITY,
+                        context.getString(R.string.notification_group_activity)
+                    ),
+                    NotificationChannelGroup(
+                        GROUP_CHANNELS_ALERTS,
+                        context.getString(R.string.notification_group_alerts)
+                    )
+                )
+            )
+
             val channels = ArrayList<NotificationChannel>()
 
             // Quiet, ongoing progress for active downloads. MIN keeps it collapsed and out
@@ -66,6 +86,7 @@ object NotificationUtil {
                     context.getString(R.string.notification_channel_downloads),
                     NotificationManager.IMPORTANCE_MIN
                 ).apply {
+                    group = GROUP_CHANNELS_ACTIVITY
                     setSound(null, null)
                     setShowBadge(false)
                 }
@@ -79,6 +100,7 @@ object NotificationUtil {
                     context.getString(R.string.notification_channel_install),
                     NotificationManager.IMPORTANCE_LOW
                 ).apply {
+                    group = GROUP_CHANNELS_ACTIVITY
                     setSound(null, null)
                 }
             )
@@ -90,6 +112,7 @@ object NotificationUtil {
                     context.getString(R.string.notification_channel_updates),
                     NotificationManager.IMPORTANCE_DEFAULT
                 ).apply {
+                    group = GROUP_CHANNELS_ACTIVITY
                     setSound(null, null)
                 }
             )
@@ -101,6 +124,7 @@ object NotificationUtil {
                     context.getString(R.string.notification_channel_export),
                     NotificationManager.IMPORTANCE_LOW
                 ).apply {
+                    group = GROUP_CHANNELS_ACTIVITY
                     setSound(null, null)
                 }
             )
@@ -112,7 +136,9 @@ object NotificationUtil {
                     Constants.NOTIFICATION_CHANNEL_ALERTS,
                     context.getString(R.string.notification_channel_alerts),
                     NotificationManager.IMPORTANCE_HIGH
-                )
+                ).apply {
+                    group = GROUP_CHANNELS_ALERTS
+                }
             )
 
             notificationManager.createNotificationChannels(channels)

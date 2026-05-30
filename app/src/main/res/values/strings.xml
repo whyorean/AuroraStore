@@ -212,6 +212,8 @@
     <string name="dialog_title_self_update">"New update available"</string>
     <string name="dialog_desc_native_split">"You can not install bundled (split) apps via Native Installer. Change your installer to Session, Services or Root."</string>
     <string name="notification_channel_alerts">Errors &amp; alerts</string>
+    <string name="notification_group_activity">Downloads &amp; updates</string>
+    <string name="notification_group_alerts">Alerts</string>
     <string name="notification_channel_export">App export notification</string>
     <string name="notification_channel_install">Install notification</string>
     <string name="notification_channel_downloads">Downloads notification</string>
