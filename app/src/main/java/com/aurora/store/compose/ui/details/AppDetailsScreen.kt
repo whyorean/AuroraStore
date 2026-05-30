@@ -7,6 +7,7 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
@@ -135,6 +136,8 @@ fun AppDetailsScreen(
                 app = loadedApp,
                 error = err.error,
                 extra = err.extra,
+                isAnonymous = viewModel.authProvider.isAnonymous,
+                onBuy = { openPlayStore(context, loadedApp.packageName) },
                 onDismiss = viewModel::dismissInstallError
             )
         }
@@ -195,6 +198,21 @@ fun AppDetailsScreen(
                 )
             }
         }
+    }
+}
+
+/**
+ * Opens the given app's Play Store listing, preferring the Play Store app when available and
+ * falling back to whichever activity can handle the web listing (e.g. a browser).
+ */
+private fun openPlayStore(context: Context, packageName: String) {
+    val uri = "${Constants.SHARE_URL}$packageName".toUri()
+    val intent = Intent(Intent.ACTION_VIEW).apply { data = uri }
+
+    if (intent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(intent.apply { setPackage(Constants.PACKAGE_NAME_PLAY_STORE) })
+    } else {
+        context.startActivity(intent)
     }
 }
 
@@ -261,6 +279,11 @@ private fun ScreenContentApp(
     onForceRestart: () -> Unit = {}
 ) {
     val context = LocalContext.current
+
+    // Anonymous accounts can't purchase, so a paid app can neither be installed nor manually
+    // downloaded (any version) by them. Free apps are always acquirable.
+    val canAcquire = app.isFree || !isAnonymous
+
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
 
     if (forceSinglePane) {
@@ -317,7 +340,11 @@ private fun ScreenContentApp(
 
     @Composable
     fun SetupMenu() {
-        AppDetailsMenu(isFavorite = isFavorite, state = state) { menuItem ->
+        AppDetailsMenu(
+            isFavorite = isFavorite,
+            state = state,
+            canManualDownload = canAcquire
+        ) { menuItem ->
             when (menuItem) {
                 MenuItem.FAVORITE -> onFavorite()
 
@@ -333,20 +360,7 @@ private fun ScreenContentApp(
                     ShortcutManagerUtil.requestPinShortcut(context, app.packageName)
                 }
 
-                MenuItem.PLAY_STORE -> {
-                    val uri = "${Constants.SHARE_URL}${app.packageName}".toUri()
-                    val intent = Intent(Intent.ACTION_VIEW).apply { data = uri }
-
-                    if (intent.resolveActivity(context.packageManager) != null) {
-                        context.startActivity(
-                            intent.apply {
-                                setPackage(Constants.PACKAGE_NAME_PLAY_STORE)
-                            }
-                        )
-                    } else {
-                        context.startActivity(intent)
-                    }
-                }
+                MenuItem.PLAY_STORE -> openPlayStore(context, app.packageName)
             }
         }
     }
@@ -413,6 +427,8 @@ private fun ScreenContentApp(
                     Actions(
                         primaryActionDisplayName = primaryActionName,
                         secondaryActionDisplayName = stringResource(R.string.title_manual_download),
+                        isPrimaryActionEnabled = canAcquire,
+                        isSecondaryActionEnabled = canAcquire,
                         onPrimaryAction = ::onInstall,
                         onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
                     )

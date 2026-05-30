@@ -52,6 +52,7 @@
     <string name="action_back">"Back"</string>
     <string name="action_blacklist">"Blacklist"</string>
     <string name="action_blacklist_add">"Add to blacklist"</string>
+    <string name="action_buy">"Buy @ %1$s"</string>
     <string name="action_cancel">"Cancel"</string>
     <string name="action_clear">"Clear"</string>
     <string name="action_close">"Close"</string>
