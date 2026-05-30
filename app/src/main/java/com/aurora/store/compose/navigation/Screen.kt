@@ -30,6 +30,9 @@ sealed class Screen : NavKey, Parcelable {
     data class DevProfile(val developerId: String) : Screen()
 
     @Serializable
+    data class PublisherProfile(val publisherId: String) : Screen()
+
+    @Serializable
     data class AppDetails(val packageName: String) : Screen()
 
     @Serializable

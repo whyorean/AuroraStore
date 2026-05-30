@@ -216,6 +216,13 @@ fun NavDisplay(startDestination: NavKey) {
                 )
             }
 
+            entry<Screen.PublisherProfile> { screen ->
+                DevProfileScreen(
+                    publisherId = screen.publisherId,
+                    onNavigateTo = ::navigate
+                )
+            }
+
             entry<Screen.PermissionRationale> { screen ->
                 PermissionRationaleScreen(
                     requiredPermissions = screen.requiredPermissions

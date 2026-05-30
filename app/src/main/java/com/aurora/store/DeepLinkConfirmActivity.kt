@@ -52,16 +52,22 @@ class DeepLinkConfirmActivity : FragmentActivity() {
 
     /**
      * Resolves the listing requested by the incoming ACTION_VIEW intent, or null when the intent
-     * carries no app/developer id.
+     * carries no id. The action keyword ("details", "dev" or "developer") is the last path segment
+     * for play.google.com links and the host for market:// links. Both "dev" and "developer" links
+     * may carry either a numeric developer id (curated developer stream) or a developer name
+     * (publisher search), so the id is parsed to decide which one to open.
      */
     private fun resolveDeepLink(): Screen? {
         if (intent.action != Intent.ACTION_VIEW) return null
 
-        val data = intent.data
-        val path = data?.path.orEmpty()
-        val id = data?.getQueryParameter("id") ?: return null
-        return when {
-            path.contains("/apps/dev") -> Screen.DevProfile(id)
+        val data = intent.data ?: return null
+        val id = data.getQueryParameter("id") ?: return null
+        return when (data.lastPathSegment ?: data.host) {
+            "dev", "developer" -> when {
+                id.toLongOrNull() != null -> Screen.DevProfile(id)
+                else -> Screen.PublisherProfile(id)
+            }
+
             else -> Screen.AppDetails(id)
         }
     }
@@ -100,6 +106,7 @@ class DeepLinkConfirmActivity : FragmentActivity() {
     private fun Screen.deepLinkLabel(): String = when (this) {
         is Screen.AppDetails -> packageName
         is Screen.DevProfile -> developerId
+        is Screen.PublisherProfile -> publisherId
         else -> ""
     }
 }
