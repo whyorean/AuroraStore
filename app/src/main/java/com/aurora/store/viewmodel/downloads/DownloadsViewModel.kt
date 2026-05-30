@@ -75,7 +75,7 @@ class DownloadsViewModel @Inject constructor(
 
     fun install(download: Download) {
         try {
-            appInstaller.getPreferredInstaller().install(download)
+            appInstaller.getPreferredInstaller(notifyOnFallback = true).install(download)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to install ${download.packageName}", exception)
         }

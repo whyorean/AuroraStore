@@ -174,8 +174,9 @@ class DownloadHelper @Inject constructor(
         if (existing != null && existing.versionCode == download.versionCode) {
             if (existing.canInstall(context)) {
                 Log.i(TAG, "${download.packageName} already downloaded, installing directly")
-                runCatching { appInstaller.getPreferredInstaller().install(existing) }
-                    .onFailure { Log.e(TAG, "Failed to install ${download.packageName}", it) }
+                runCatching {
+                    appInstaller.getPreferredInstaller(notifyOnFallback = true).install(existing)
+                }.onFailure { Log.e(TAG, "Failed to install ${download.packageName}", it) }
                 return
             }
             if (existing.isActive) {

@@ -178,6 +178,7 @@
     <string name="installer_am_unavailable">Install App Manager or change the installer.</string>
     <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
     <string name="installer_shizuku_unavailable">Shizuku is not installed or set up properly.</string>
+    <string name="installer_fallback_session">Chosen installer is unavailable, using the default installer instead.</string>
     <string name="installer_service_available">"Aurora Services is available and ready to install."</string>
     <string name="installer_service_unavailable">Install Aurora Services 1.0.9 or above, or change the installer.</string>
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>
