@@ -46,6 +46,8 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_NOTIFICATION_PROGRESS
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.io.File
@@ -92,6 +94,12 @@ class DownloadWorker @AssistedInject constructor(
     private lateinit var download: Download
 
     private val notificationManager = context.getSystemService<NotificationManager>()!!
+
+    // When the user opts out of progress notifications, the mandatory foreground notification
+    // is kept minimal and per-tick progress refreshes are skipped. Read live so toggling the
+    // setting takes effect on the next download.
+    private val showProgress: Boolean
+        get() = Preferences.getBoolean(context, PREFERENCE_NOTIFICATION_PROGRESS, true)
 
     private var icon: Bitmap? = null
     private var totalBytes by Delegates.notNull<Long>()
@@ -514,7 +522,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val notification = if (this::download.isInitialized) {
+        val notification = if (this::download.isInitialized && showProgress) {
             NotificationUtil.getDownloadNotification(context, download, icon)
         } else {
             NotificationUtil.getDownloadNotification(context)
@@ -574,6 +582,10 @@ class DownloadWorker @AssistedInject constructor(
 
             else -> {}
         }
+
+        // Skip detailed progress refreshes when the user has hidden progress; the minimal
+        // foreground notification posted via getForegroundInfo keeps the download alive.
+        if (isProgress && !showProgress) return
 
         val notification = NotificationUtil.getDownloadNotification(
             context,

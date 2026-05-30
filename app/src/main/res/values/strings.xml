@@ -298,6 +298,13 @@
     <string name="title_no_network">"No network"</string>
     <string name="title_purchase_history">"Purchase history"</string>
     <string name="title_settings">"Settings"</string>
+    <string name="title_notifications">"Notifications"</string>
+    <string name="pref_notification_progress">Show download progress</string>
+    <string name="pref_notification_progress_desc">Show detailed progress while downloading and updating apps. When off, a single quiet notification keeps downloads running in the background.</string>
+    <string name="pref_notification_categories">Categories</string>
+    <string name="pref_notification_categories_desc">Tune sound and importance for each kind of notification</string>
+    <string name="pref_notification_disabled">Notifications are turned off</string>
+    <string name="pref_notification_disabled_desc">Tap to enable notifications for Aurora Store</string>
     <string name="title_spoof_manager">"Spoof manager"</string>
     <string name="title_search_suggestion">"Search suggestion"</string>
     <string name="title_search_results">"Search results"</string>
