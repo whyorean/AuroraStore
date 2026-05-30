@@ -90,6 +90,9 @@ sealed class Screen : NavKey, Parcelable {
     data object UIPreference : Screen()
 
     @Serializable
+    data object NotificationPreference : Screen()
+
+    @Serializable
     data object UpdatesPreference : Screen()
 
     @Serializable

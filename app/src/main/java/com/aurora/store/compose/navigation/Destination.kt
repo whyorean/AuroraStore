@@ -44,6 +44,7 @@ sealed class Destination {
     data object NetworkPreference : Destination()
     data object Dispenser : Destination()
     data object UIPreference : Destination()
+    data object NotificationPreference : Destination()
     data object UpdatesPreference : Destination()
     data object SourceFilters : Destination()
     data object SecurityPreference : Destination()

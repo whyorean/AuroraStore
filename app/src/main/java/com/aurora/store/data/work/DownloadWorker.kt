@@ -46,6 +46,8 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_NOTIFICATION_PROGRESS
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.io.File
@@ -92,6 +94,12 @@ class DownloadWorker @AssistedInject constructor(
     private lateinit var download: Download
 
     private val notificationManager = context.getSystemService<NotificationManager>()!!
+
+    // When the user opts out of progress notifications, the mandatory foreground notification
+    // is kept minimal and per-tick progress refreshes are skipped. Read live so toggling the
+    // setting takes effect on the next download.
+    private val showProgress: Boolean
+        get() = Preferences.getBoolean(context, PREFERENCE_NOTIFICATION_PROGRESS, true)
 
     private var icon: Bitmap? = null
     private var totalBytes by Delegates.notNull<Long>()
@@ -252,6 +260,10 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess(): Result {
         return withContext(NonCancellable) {
             return@withContext try {
+                // Update the ongoing foreground notification to reflect the install phase,
+                // so the user sees a clean "Downloading -> Installing" progression instead of
+                // a stale download bar lingering at 100%.
+                notifyStatus(DownloadStatus.INSTALLING, isProgress = true)
                 appInstaller.getPreferredInstaller(notifyOnFallback = true).install(download)
                 Result.success()
             } catch (exception: Exception) {
@@ -510,7 +522,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val notification = if (this::download.isInitialized) {
+        val notification = if (this::download.isInitialized && showProgress) {
             NotificationUtil.getDownloadNotification(context, download, icon)
         } else {
             NotificationUtil.getDownloadNotification(context)
@@ -537,17 +549,43 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {
+            // Internal phases the user doesn't need a separate notification for: the ongoing
+            // foreground progress notification already conveys that work is in progress.
+            // Clear any stale per-app notification (e.g. a prior failure being retried) so it
+            // doesn't linger.
+            DownloadStatus.PURCHASING,
             DownloadStatus.VERIFYING,
-            DownloadStatus.CANCELLED -> return
+            DownloadStatus.CANCELLED -> {
+                notificationManager.cancel(download.packageName.hashCode())
+                return
+            }
 
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
                 download.progress = 100
                 downloadDao.updateProgress(download.packageName, 100, 0, 0)
+
+                // Silently-installable apps install automatically and get a single
+                // "installed" notification afterwards, so a separate "download complete"
+                // notice is just noise. Only surface completion when the user must act on it
+                // (tap to install).
+                val needsUserAction = !AppInstaller.canInstallSilently(
+                    context,
+                    download.packageName,
+                    download.targetSdk
+                )
+                if (!needsUserAction) {
+                    notificationManager.cancel(download.packageName.hashCode())
+                    return
+                }
             }
 
             else -> {}
         }
+
+        // Skip detailed progress refreshes when the user has hidden progress; the minimal
+        // foreground notification posted via getForegroundInfo keeps the download alive.
+        if (isProgress && !showProgress) return
 
         val notification = NotificationUtil.getDownloadNotification(
             context,
@@ -559,6 +597,12 @@ class DownloadWorker @AssistedInject constructor(
             if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
             notification
         )
+
+        // A failed download is a grouped child; reconcile the failure summary so a bulk
+        // update collapses into a single "N apps failed" entry.
+        if (status == DownloadStatus.FAILED) {
+            NotificationUtil.refreshGroupSummaries(context)
+        }
     }
 
     /**

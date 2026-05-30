@@ -211,7 +211,9 @@
     <string name="device_miui_extra">"Optionally you can choose Native installer, but then you can not install bundled (split) APKs, so choice is yours."</string>
     <string name="dialog_title_self_update">"New update available"</string>
     <string name="dialog_desc_native_split">"You can not install bundled (split) apps via Native Installer. Change your installer to Session, Services or Root."</string>
-    <string name="notification_channel_account">Account-related notification</string>
+    <string name="notification_channel_alerts">Errors &amp; alerts</string>
+    <string name="notification_group_activity">Downloads &amp; updates</string>
+    <string name="notification_group_alerts">Alerts</string>
     <string name="notification_channel_export">App export notification</string>
     <string name="notification_channel_install">Install notification</string>
     <string name="notification_channel_downloads">Downloads notification</string>
@@ -298,6 +300,13 @@
     <string name="title_no_network">"No network"</string>
     <string name="title_purchase_history">"Purchase history"</string>
     <string name="title_settings">"Settings"</string>
+    <string name="title_notifications">"Notifications"</string>
+    <string name="pref_notification_progress">Show download progress</string>
+    <string name="pref_notification_progress_desc">Show detailed progress while downloading and updating apps. When off, a single quiet notification keeps downloads running in the background.</string>
+    <string name="pref_notification_categories">Categories</string>
+    <string name="pref_notification_categories_desc">Tune sound and importance for each kind of notification</string>
+    <string name="pref_notification_disabled">Notifications are turned off</string>
+    <string name="pref_notification_disabled_desc">Tap to enable notifications for Aurora Store</string>
     <string name="title_spoof_manager">"Spoof manager"</string>
     <string name="title_search_suggestion">"Search suggestion"</string>
     <string name="title_search_results">"Search results"</string>
@@ -575,6 +584,14 @@
     <plurals name="permissions_required">
         <item quantity="one">Permission required</item>
         <item quantity="other">Permissions required</item>
+    </plurals>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d app installed</item>
+        <item quantity="other">%d apps installed</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d app failed</item>
+        <item quantity="other">%d apps failed</item>
     </plurals>
 
     <!-- AppsGamesFragment -->

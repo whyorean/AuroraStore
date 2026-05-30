@@ -19,13 +19,11 @@
 
 package com.aurora.store.data.installer.base
 
-import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageInstaller
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.FileProvider
-import androidx.core.content.getSystemService
 import com.aurora.extensions.TAG
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
@@ -42,13 +40,7 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
 
     companion object {
         fun notifyInstallation(context: Context, displayName: String, packageName: String) {
-            val notificationManager = context.getSystemService<NotificationManager>()
-            val notification = NotificationUtil.getInstallNotification(
-                context,
-                displayName,
-                packageName
-            )
-            notificationManager!!.notify(packageName.hashCode(), notification)
+            NotificationUtil.notifyInstalled(context, displayName, packageName)
         }
 
         fun getErrorString(context: Context, status: Int): String = when (status) {
