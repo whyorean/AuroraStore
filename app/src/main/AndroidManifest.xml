@@ -103,6 +103,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.SHOW_APP_INFO" />
             </intent-filter>
+        </activity>
+
+        <!-- Confirmation gate for external app-listing deep links (market:// & play.google.com) -->
+        <activity
+            android:name=".DeepLinkConfirmActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.Translucent.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -120,7 +129,6 @@
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="market.android.com" />
-                <data android:host="play.google.com" />
                 <data android:host="play.google.com" />
             </intent-filter>
         </activity>
