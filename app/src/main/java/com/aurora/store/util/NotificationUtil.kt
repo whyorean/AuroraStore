@@ -32,38 +32,42 @@ object NotificationUtil {
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationManager = context.getSystemService<NotificationManager>()
+            val notificationManager = context.getSystemService<NotificationManager>()!!
+
+            // Drop channels retired or superseded by a lower-importance replacement, so the
+            // user no longer sees stale entries in system settings.
+            Constants.LEGACY_NOTIFICATION_CHANNELS.forEach {
+                notificationManager.deleteNotificationChannel(it)
+            }
+
             val channels = ArrayList<NotificationChannel>()
-            channels.add(
-                NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_INSTALL,
-                    context.getString(R.string.notification_channel_install),
-                    NotificationManager.IMPORTANCE_HIGH
-                ).apply {
-                    setSound(null, null)
-                }
-            )
-            channels.add(
-                NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_EXPORT,
-                    context.getString(R.string.notification_channel_export),
-                    NotificationManager.IMPORTANCE_HIGH
-                )
-            )
-            channels.add(
-                NotificationChannel(
-                    Constants.NOTIFICATION_CHANNEL_ACCOUNT,
-                    context.getString(R.string.notification_channel_account),
-                    NotificationManager.IMPORTANCE_HIGH
-                )
-            )
+
+            // Quiet, ongoing progress for active downloads. MIN keeps it collapsed and out
+            // of the status bar where possible.
             channels.add(
                 NotificationChannel(
                     Constants.NOTIFICATION_CHANNEL_DOWNLOADS,
                     context.getString(R.string.notification_channel_downloads),
                     NotificationManager.IMPORTANCE_MIN
-                )
+                ).apply {
+                    setSound(null, null)
+                    setShowBadge(false)
+                }
             )
+
+            // Silent confirmation that an app finished installing/updating. LOW so it lands
+            // in the shade without buzzing for every app during a bulk update.
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_INSTALL,
+                    context.getString(R.string.notification_channel_install),
+                    NotificationManager.IMPORTANCE_LOW
+                ).apply {
+                    setSound(null, null)
+                }
+            )
+
+            // New updates are available to install. DEFAULT but silent.
             channels.add(
                 NotificationChannel(
                     Constants.NOTIFICATION_CHANNEL_UPDATES,
@@ -73,7 +77,29 @@ object NotificationUtil {
                     setSound(null, null)
                 }
             )
-            notificationManager!!.createNotificationChannels(channels)
+
+            // Background app export. LOW since it's user-initiated and non-urgent.
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_EXPORT,
+                    context.getString(R.string.notification_channel_export),
+                    NotificationManager.IMPORTANCE_LOW
+                ).apply {
+                    setSound(null, null)
+                }
+            )
+
+            // Things the user genuinely needs to act on: failed downloads/installs, pending
+            // user action and authentication prompts. HIGH so these aren't missed.
+            channels.add(
+                NotificationChannel(
+                    Constants.NOTIFICATION_CHANNEL_ALERTS,
+                    context.getString(R.string.notification_channel_alerts),
+                    NotificationManager.IMPORTANCE_HIGH
+                )
+            )
+
+            notificationManager.createNotificationChannels(channels)
         }
     }
 
@@ -91,7 +117,14 @@ object NotificationUtil {
         largeIcon: Bitmap? = null,
         message: String? = null
     ): Notification {
-        val builder = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_DOWNLOADS)
+        // Terminal failures go to the high-importance alerts channel so they aren't lost in
+        // the silent downloads channel; everything else stays quiet.
+        val channelId = if (download.status == DownloadStatus.FAILED) {
+            Constants.NOTIFICATION_CHANNEL_ALERTS
+        } else {
+            Constants.NOTIFICATION_CHANNEL_DOWNLOADS
+        }
+        val builder = NotificationCompat.Builder(context, channelId)
         builder.setSmallIcon(R.drawable.ic_notification_outlined)
         builder.setContentTitle(download.displayName)
         builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
@@ -197,11 +230,12 @@ object NotificationUtil {
         packageName: String,
         displayName: String,
         content: String?
-    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
+    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERTS)
         .setSmallIcon(R.drawable.ic_install)
         .setContentTitle(displayName)
         .setContentText(content)
         .setContentIntent(getContentIntentForDetails(context, packageName))
+        .setCategory(Notification.CATEGORY_ERROR)
         .build()
 
     fun getUpdateNotification(context: Context): Notification =
@@ -289,7 +323,7 @@ object NotificationUtil {
         .build()
 
     fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification =
-        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERTS)
             .setSmallIcon(R.drawable.ic_account)
             .setContentTitle(context.getString(R.string.authentication_required_title))
             .setContentText(context.getString(R.string.authentication_required_unarchive))
