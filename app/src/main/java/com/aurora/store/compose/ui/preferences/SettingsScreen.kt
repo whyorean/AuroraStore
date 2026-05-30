@@ -112,6 +112,18 @@ private fun ScreenContent(onNavigateTo: (Destination) -> Unit = {}) {
                     headlineContent = { Text(stringResource(R.string.title_updates)) }
                 )
             }
+            item {
+                ListItem(
+                    modifier = Modifier.clickable { onNavigateTo(Destination.SecurityPreference) },
+                    leadingContent = {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_lock),
+                            contentDescription = null
+                        )
+                    },
+                    headlineContent = { Text(stringResource(R.string.title_security)) }
+                )
+            }
         }
     }
 }

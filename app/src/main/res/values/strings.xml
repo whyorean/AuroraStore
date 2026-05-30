@@ -179,6 +179,16 @@
     <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
     <string name="installer_shizuku_unavailable">Shizuku is not installed or set up properly.</string>
     <string name="installer_fallback_session">Chosen installer is unavailable, using the default installer instead.</string>
+
+    <!-- Security -->
+    <string name="title_security">Security</string>
+    <string name="app_lock_title">App lock</string>
+    <string name="app_lock_summary">Require biometric or screen-lock authentication to open Aurora Store.</string>
+    <string name="app_lock_no_credential">Set up a screen lock (PIN, pattern, password or biometric) on your device first.</string>
+    <string name="app_lock_locked_message">Authentication is required to access Aurora Store</string>
+    <string name="app_lock_unlock">Unlock</string>
+    <string name="app_lock_prompt_title">Unlock Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Enter phone screen lock pattern, PIN, password or fingerprint</string>
     <string name="installer_service_available">"Aurora Services is available and ready to install."</string>
     <string name="installer_service_unavailable">Install Aurora Services 1.0.9 or above, or change the installer.</string>
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>

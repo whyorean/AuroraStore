@@ -53,6 +53,7 @@ import com.aurora.store.compose.ui.preferences.UIPreferenceScreen
 import com.aurora.store.compose.ui.preferences.installation.InstallationPreferenceScreen
 import com.aurora.store.compose.ui.preferences.installation.InstallerScreen
 import com.aurora.store.compose.ui.preferences.network.NetworkPreferenceScreen
+import com.aurora.store.compose.ui.preferences.security.SecurityPreferenceScreen
 import com.aurora.store.compose.ui.preferences.updates.SourceFiltersScreen
 import com.aurora.store.compose.ui.preferences.updates.UpdatesPreferenceScreen
 import com.aurora.store.compose.ui.search.SearchScreen
@@ -162,6 +163,7 @@ fun NavDisplay(startDestination: NavKey) {
             Destination.UIPreference -> backstack.add(Screen.UIPreference)
             Destination.UpdatesPreference -> backstack.add(Screen.UpdatesPreference)
             Destination.SourceFilters -> backstack.add(Screen.SourceFilters)
+            Destination.SecurityPreference -> backstack.add(Screen.SecurityPreference)
         }
     }
 
@@ -284,6 +286,7 @@ fun NavDisplay(startDestination: NavKey) {
             entry<Screen.UIPreference> { UIPreferenceScreen() }
             entry<Screen.UpdatesPreference> { UpdatesPreferenceScreen(onNavigateTo = ::navigate) }
             entry<Screen.SourceFilters> { SourceFiltersScreen() }
+            entry<Screen.SecurityPreference> { SecurityPreferenceScreen() }
         }
     )
 }

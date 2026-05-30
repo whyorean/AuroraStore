@@ -76,6 +76,9 @@ object Preferences {
 
     const val PREFERENCE_SELF_UPDATE_ENABLED = "PREFERENCE_SELF_UPDATE_ENABLED"
 
+    const val PREFERENCE_APP_LOCK_ENABLED = "PREFERENCE_APP_LOCK_ENABLED"
+    const val PREFERENCE_APP_LOCK_TIMEOUT = "PREFERENCE_APP_LOCK_TIMEOUT"
+
     private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences = when (BuildConfig.FLAVOR) {
