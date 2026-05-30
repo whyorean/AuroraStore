@@ -208,6 +208,15 @@ object NotificationUtil {
                 )
             }
 
+            DownloadStatus.INSTALLING -> {
+                builder.setSmallIcon(android.R.drawable.stat_sys_download_done)
+                builder.setContentText(context.getString(R.string.status_installing))
+                builder.setOngoing(true)
+                builder.setCategory(Notification.CATEGORY_PROGRESS)
+                builder.setProgress(100, 100, true)
+                builder.foregroundServiceBehavior = NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE
+            }
+
             else -> {}
         }
         return builder.build()

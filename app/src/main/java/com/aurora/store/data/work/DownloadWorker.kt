@@ -252,6 +252,10 @@ class DownloadWorker @AssistedInject constructor(
     private suspend fun onSuccess(): Result {
         return withContext(NonCancellable) {
             return@withContext try {
+                // Update the ongoing foreground notification to reflect the install phase,
+                // so the user sees a clean "Downloading -> Installing" progression instead of
+                // a stale download bar lingering at 100%.
+                notifyStatus(DownloadStatus.INSTALLING, isProgress = true)
                 appInstaller.getPreferredInstaller(notifyOnFallback = true).install(download)
                 Result.success()
             } catch (exception: Exception) {
@@ -537,13 +541,35 @@ class DownloadWorker @AssistedInject constructor(
         downloadDao.updateStatus(download.packageName, status)
 
         when (status) {
+            // Internal phases the user doesn't need a separate notification for: the ongoing
+            // foreground progress notification already conveys that work is in progress.
+            // Clear any stale per-app notification (e.g. a prior failure being retried) so it
+            // doesn't linger.
+            DownloadStatus.PURCHASING,
             DownloadStatus.VERIFYING,
-            DownloadStatus.CANCELLED -> return
+            DownloadStatus.CANCELLED -> {
+                notificationManager.cancel(download.packageName.hashCode())
+                return
+            }
 
             DownloadStatus.COMPLETED -> {
                 // Mark progress as 100 manually to avoid race conditions
                 download.progress = 100
                 downloadDao.updateProgress(download.packageName, 100, 0, 0)
+
+                // Silently-installable apps install automatically and get a single
+                // "installed" notification afterwards, so a separate "download complete"
+                // notice is just noise. Only surface completion when the user must act on it
+                // (tap to install).
+                val needsUserAction = !AppInstaller.canInstallSilently(
+                    context,
+                    download.packageName,
+                    download.targetSdk
+                )
+                if (!needsUserAction) {
+                    notificationManager.cancel(download.packageName.hashCode())
+                    return
+                }
             }
 
             else -> {}
