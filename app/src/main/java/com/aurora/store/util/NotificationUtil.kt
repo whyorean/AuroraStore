@@ -273,13 +273,20 @@ object NotificationUtil {
             .build()
     }
 
-    fun getExportNotification(context: Context): Notification =
-        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
-            .setSmallIcon(R.drawable.ic_file_copy)
-            .setContentTitle(context.getString(R.string.export_app_title))
-            .setContentText(context.getString(R.string.export_app_summary))
-            .setOngoing(true)
-            .build()
+    fun getExportNotification(
+        context: Context,
+        displayName: String? = null,
+        progress: Int = -1
+    ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_EXPORT)
+        .setSmallIcon(R.drawable.ic_file_copy)
+        .setContentTitle(displayName ?: context.getString(R.string.export_app_title))
+        .setContentText(context.getString(R.string.export_app_summary))
+        .setProgress(100, progress.coerceAtLeast(0), progress < 0)
+        .setOngoing(true)
+        .setOnlyAlertOnce(true)
+        .setCategory(Notification.CATEGORY_PROGRESS)
+        .setSilent(true)
+        .build()
 
     fun getUnarchiveAuthNotification(context: Context, packageName: String): Notification =
         NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ACCOUNT)
