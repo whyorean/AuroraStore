@@ -152,7 +152,7 @@ class ComposeActivity : FragmentActivity() {
     }
 
     private fun resolveStartDestination(): Screen {
-        // Parcel-based navigation (e.g. from NotificationUtil)
+        // Parcel-based navigation (e.g. from NotificationUtil or DeepLinkConfirmActivity)
         IntentCompat.getParcelableExtra(intent, Screen.PARCEL_KEY, Screen::class.java)
             ?.let { return it }
 

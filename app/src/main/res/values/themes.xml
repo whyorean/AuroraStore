@@ -35,6 +35,14 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <!-- Translucent variant with edge-to-edge transparent system bars (no status bar scrim) -->
+    <style name="AppTheme.Translucent.Transparent">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
     <style name="AppTheme.BottomSheetStyle" parent="Widget.Material3.BottomSheet" />
 
     <style name="Chip.Filter" parent="@style/Widget.Material3.Chip.Filter" />

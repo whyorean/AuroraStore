@@ -191,6 +191,11 @@
     <string name="app_lock_unlock">Unlock</string>
     <string name="app_lock_prompt_title">Unlock Aurora Store</string>
     <string name="app_lock_prompt_subtitle">Enter phone screen lock pattern, PIN, password or fingerprint</string>
+    <string name="confirm_deeplink_title">Confirm external links</string>
+    <string name="confirm_deeplink_summary">Ask before opening an app listing from a link, preventing ads from launching Aurora Store without your consent.</string>
+    <string name="confirm_deeplink_sheet_title">Continue to Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">An external app wants to open Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Opened from %1$s</string>
     <string name="installer_service_available">"Aurora Services is available and ready to install."</string>
     <string name="installer_service_unavailable">Install Aurora Services 1.0.9 or above, or change the installer.</string>
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>

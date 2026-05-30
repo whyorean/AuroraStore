@@ -30,6 +30,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.util.AppLockAuthenticator
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_APP_LOCK_ENABLED
+import com.aurora.store.util.Preferences.PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK
 import com.aurora.store.util.save
 
 @Composable
@@ -43,6 +44,11 @@ private fun ScreenContent() {
     var appLockEnabled by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_APP_LOCK_ENABLED, false))
     }
+    var confirmDeepLink by remember {
+        mutableStateOf(
+            Preferences.getBoolean(context, PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK, true)
+        )
+    }
 
     fun setAppLock(enabled: Boolean) {
         // Refuse to enable the lock when the device has no biometric or screen-lock to fall back on
@@ -52,6 +58,11 @@ private fun ScreenContent() {
         }
         appLockEnabled = enabled
         context.save(PREFERENCE_APP_LOCK_ENABLED, enabled)
+    }
+
+    fun setConfirmDeepLink(enabled: Boolean) {
+        confirmDeepLink = enabled
+        context.save(PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK, enabled)
     }
 
     Scaffold(
@@ -71,6 +82,20 @@ private fun ScreenContent() {
                         Switch(
                             checked = appLockEnabled,
                             onCheckedChange = { setAppLock(it) }
+                        )
+                    }
+                )
+            }
+
+            item {
+                ListItem(
+                    modifier = Modifier.clickable { setConfirmDeepLink(!confirmDeepLink) },
+                    headlineContent = { Text(stringResource(R.string.confirm_deeplink_title)) },
+                    supportingContent = { Text(stringResource(R.string.confirm_deeplink_summary)) },
+                    trailingContent = {
+                        Switch(
+                            checked = confirmDeepLink,
+                            onCheckedChange = { setConfirmDeepLink(it) }
                         )
                     }
                 )

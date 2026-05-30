@@ -81,6 +81,8 @@ object Preferences {
     const val PREFERENCE_APP_LOCK_ENABLED = "PREFERENCE_APP_LOCK_ENABLED"
     const val PREFERENCE_APP_LOCK_TIMEOUT = "PREFERENCE_APP_LOCK_TIMEOUT"
 
+    const val PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK = "PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK"
+
     private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences = when (BuildConfig.FLAVOR) {
