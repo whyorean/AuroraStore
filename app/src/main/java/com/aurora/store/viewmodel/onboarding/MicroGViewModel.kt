@@ -213,7 +213,9 @@ class MicroGViewModel @Inject constructor(
             download == null -> InstallStatus.PENDING
             download.status == DownloadStatus.FAILED -> InstallStatus.FAILED
             download.status == DownloadStatus.CANCELLED -> InstallStatus.PENDING
-            download.status == DownloadStatus.COMPLETED -> InstallStatus.INSTALLING
+            download.status == DownloadStatus.INSTALLED -> InstallStatus.INSTALLED
+            download.status == DownloadStatus.COMPLETED ||
+                download.status == DownloadStatus.INSTALLING -> InstallStatus.INSTALLING
             else -> InstallStatus.DOWNLOADING
         }
 

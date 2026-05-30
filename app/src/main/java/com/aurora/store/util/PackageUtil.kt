@@ -36,6 +36,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
+import com.aurora.Constants.FLAVOUR_PRELOAD
+import com.aurora.Constants.FLAVOUR_VANILLA
 import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
@@ -48,6 +50,7 @@ import com.aurora.extensions.isVAndAbove
 import com.aurora.extensions.isValidApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
+import com.aurora.store.data.model.BuildType
 import java.util.Locale
 
 object PackageUtil {
@@ -182,6 +185,19 @@ object PackageUtil {
         } catch (_: PackageManager.NameNotFoundException) {
             false
         }
+    }
+
+    /**
+     * Build-level eligibility for Aurora Store's self-update: vanilla / preload flavors
+     * only, never debug, and never an F-Droid-signed build. Huawei is excluded by the
+     * flavor check. The user-facing toggle gates this further at runtime.
+     */
+    fun isSelfUpdateSupported(context: Context): Boolean {
+        val flavorEligible = BuildConfig.FLAVOR == FLAVOUR_VANILLA ||
+            BuildConfig.FLAVOR == FLAVOUR_PRELOAD
+        return flavorEligible &&
+            BuildType.CURRENT != BuildType.DEBUG &&
+            !CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)
     }
 
     /**

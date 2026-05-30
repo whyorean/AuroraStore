@@ -59,19 +59,21 @@ fun UpdatesScreen(
     }
 
     val groupedUpdates = remember(updateMap) {
+        val self = mutableListOf<Map.Entry<Update, Download?>>()
         val main = mutableListOf<Map.Entry<Update, Download?>>()
         val approval = mutableListOf<Map.Entry<Update, Download?>>()
         val incompatible = mutableListOf<Map.Entry<Update, Download?>>()
         updateMap?.entries?.forEach { entry ->
             when {
+                entry.key.isSelfUpdate(context) -> self += entry
                 entry.key.isIncompatible -> incompatible += entry
                 entry.key.requiresOwnershipTransfer(context) -> approval += entry
                 else -> main += entry
             }
         }
-        Triple(main.toList(), approval.toList(), incompatible.toList())
+        listOf(self.toList(), main.toList(), approval.toList(), incompatible.toList())
     }
-    val (mainEntries, approvalEntries, incompatibleEntries) = groupedUpdates
+    val (selfEntries, mainEntries, approvalEntries, incompatibleEntries) = groupedUpdates
 
     val mainAnyActive = mainEntries.any { it.value.isActive() }
     val approvalAnyActive = approvalEntries.any { it.value.isActive() }
@@ -110,6 +112,29 @@ fun UpdatesScreen(
                         dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
+                    if (selfEntries.isNotEmpty()) {
+                        item(key = "header_self") {
+                            SectionHeader(
+                                title = stringResource(R.string.updates_self_header),
+                                subtitle = stringResource(R.string.updates_self_desc)
+                            )
+                        }
+                        items(
+                            items = selfEntries,
+                            key = { "self-${it.key.packageName}" }
+                        ) { (update, download) ->
+                            AppUpdateItem(
+                                update = update,
+                                download = download,
+                                // Served from the Aurora OSS feed, not Play — there is
+                                // no app details page to open.
+                                onClick = {},
+                                onUpdate = { onRequestUpdate(update) },
+                                onCancel = { onCancelUpdate(update.packageName) }
+                            )
+                        }
+                    }
+
                     if (mainEntries.isNotEmpty()) {
                         item(key = "header_main") {
                             val title = "${mainEntries.size} " + stringResource(

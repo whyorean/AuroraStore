@@ -188,6 +188,11 @@
             android:name=".data.receiver.DownloadCancelReceiver"
             android:exported="false" />
 
+        <!-- Retry Download Receiver-->
+        <receiver
+            android:name=".data.receiver.DownloadRetryReceiver"
+            android:exported="false" />
+
         <!-- SessionInstaller (as device owner) -->
         <receiver
             android:name=".data.receiver.DeviceOwnerReceiver"

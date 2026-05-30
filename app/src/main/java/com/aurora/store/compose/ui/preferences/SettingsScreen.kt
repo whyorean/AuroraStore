@@ -90,6 +90,20 @@ private fun ScreenContent(onNavigateTo: (Destination) -> Unit = {}) {
             }
             item {
                 ListItem(
+                    modifier = Modifier.clickable {
+                        onNavigateTo(Destination.NotificationPreference)
+                    },
+                    leadingContent = {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_notification_settings),
+                            contentDescription = null
+                        )
+                    },
+                    headlineContent = { Text(stringResource(R.string.title_notifications)) }
+                )
+            }
+            item {
+                ListItem(
                     modifier = Modifier.clickable { onNavigateTo(Destination.NetworkPreference) },
                     leadingContent = {
                         Icon(
@@ -110,6 +124,18 @@ private fun ScreenContent(onNavigateTo: (Destination) -> Unit = {}) {
                         )
                     },
                     headlineContent = { Text(stringResource(R.string.title_updates)) }
+                )
+            }
+            item {
+                ListItem(
+                    modifier = Modifier.clickable { onNavigateTo(Destination.SecurityPreference) },
+                    leadingContent = {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_lock),
+                            contentDescription = null
+                        )
+                    },
+                    headlineContent = { Text(stringResource(R.string.title_security)) }
                 )
             }
         }

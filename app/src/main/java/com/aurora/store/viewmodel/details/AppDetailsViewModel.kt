@@ -314,7 +314,8 @@ class AppDetailsViewModel @Inject constructor(
 
         DownloadStatus.VERIFYING -> AppState.Verifying
 
-        DownloadStatus.COMPLETED -> if (isInstalled) defaultAppState else AppState.Installing(0F)
+        DownloadStatus.COMPLETED,
+        DownloadStatus.INSTALLING -> if (isInstalled) defaultAppState else AppState.Installing(0F)
 
         else -> defaultAppState
     }

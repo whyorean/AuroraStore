@@ -1,20 +1,6 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.data.model
@@ -24,62 +10,79 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.gplayapi.data.models.EncodedCertificateSet
 import com.aurora.gplayapi.data.models.PlayFile
-import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.util.CertUtil
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Self-update feed entry returned by `release_feed.json` (vanilla release) and
+ * `nightly_feed.json` (nightly), both served from the Aurora OSS server.
+ *
+ * The producer encodes numeric fields as JSON strings, so the raw fields below stay
+ * `String` and we expose typed `Long` accessors that tolerate blank values. Decoding
+ * with `Long`s would otherwise blow up on the first request.
+ */
 @Serializable
 data class SelfUpdate(
-    @SerialName("version_name") var versionName: String = String(),
-    @SerialName("version_code") var versionCode: Long = 0,
-    @SerialName("aurora_build") var auroraBuild: String = String(),
-    @SerialName("fdroid_build") var fdroidBuild: String = String(),
-    @SerialName("updated_on") var updatedOn: String = String(),
-    val changelog: String = String(),
-    val size: Long = 0L,
-    val timestamp: Long = 0L
+    @SerialName("version_name")
+    val versionName: String = "",
+    @SerialName("version_code")
+    val versionCodeRaw: String = "0",
+    @SerialName("download_url")
+    val downloadUrl: String = "",
+    val changelog: String = "",
+    @SerialName("size")
+    val sizeRaw: String = "0",
+    @SerialName("last_commit")
+    val lastCommit: String = "",
+    @SerialName("updated_on")
+    val updatedOn: String = "",
+    @SerialName("timestamp")
+    val timestampRaw: String = "0"
 ) {
-    companion object {
-        private const val BASE_URL = "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master"
+    val versionCode: Long get() = versionCodeRaw.toLongOrNull() ?: 0L
+    val size: Long get() = sizeRaw.toLongOrNull() ?: 0L
+    val timestamp: Long get() = timestampRaw.toLongOrNull() ?: 0L
 
-        fun toApp(selfUpdate: SelfUpdate, context: Context): App {
-            // Keep paths updated with fastlane data on project
-            val icon = "fastlane/metadata/android/en-US/images/icon.png"
-
-            val downloadURL = if (CertUtil.isFDroidApp(context, BuildConfig.APPLICATION_ID)) {
-                selfUpdate.fdroidBuild
-            } else {
-                selfUpdate.auroraBuild
-            }
-
-            return App(
-                packageName = context.packageName,
-                versionCode = selfUpdate.versionCode,
-                versionName = selfUpdate.versionName,
-                changes = selfUpdate.changelog,
-                size = selfUpdate.size,
-                updatedOn = selfUpdate.updatedOn,
-                displayName = context.getString(R.string.app_name),
-                developerName = "Rahul Kumar Patel",
-                iconArtwork = Artwork(url = "$BASE_URL/$icon"),
-                fileList = mutableListOf(
-                    PlayFile(
-                        name = "${context.packageName}.apk",
-                        url = downloadURL,
-                        size = selfUpdate.size
-                    )
-                ),
-                isFree = true,
-                isInstalled = true,
-                certificateSetList = CertUtil.getEncodedCertificateHashes(
-                    context,
-                    context.packageName
-                ).map {
-                    EncodedCertificateSet(certificateSet = it, sha256 = String())
-                }.toMutableList()
+    /**
+     * Maps the feed entry onto a regular [App] so it can flow through the normal
+     * update pipeline ([com.aurora.store.data.room.update.Update.fromApp] →
+     * download → install). The certificate set is the currently installed app's own
+     * hashes so [com.aurora.store.data.room.update.Update.hasValidCert] holds and the
+     * update is never filtered out as untrusted.
+     */
+    fun toApp(context: Context): App = App(
+        packageName = context.packageName,
+        versionCode = versionCode,
+        versionName = versionName,
+        changes = changelog,
+        size = size,
+        updatedOn = updatedOn,
+        displayName = context.getString(R.string.app_name),
+        developerName = "Rahul Kumar Patel",
+        iconArtwork = Artwork(url = ICON_URL),
+        fileList = mutableListOf(
+            PlayFile(
+                name = "${context.packageName}.apk",
+                url = downloadUrl,
+                size = size
             )
-        }
+        ),
+        isFree = true,
+        isInstalled = true,
+        certificateSetList = CertUtil.getEncodedCertificateHashes(
+            context,
+            context.packageName
+        ).map {
+            EncodedCertificateSet(certificateSet = it, sha256 = String())
+        }.toMutableList()
+    )
+
+    companion object {
+        // Kept in sync with the fastlane metadata on the project.
+        private const val ICON_URL =
+            "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/" +
+                "fastlane/metadata/android/en-US/images/icon.png"
     }
 }

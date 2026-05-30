@@ -37,15 +37,27 @@ object Constants {
 
     const val SHARE_URL = "https://play.google.com/store/apps/details?id="
 
-    const val UPDATE_URL_STABLE = "https://gitlab.com/AuroraOSS/AuroraStore/raw/master/updates.json"
+    const val UPDATE_URL_VANILLA =
+        "https://auroraoss.com/downloads/AuroraStore/Feeds/release_feed.json"
     const val UPDATE_URL_NIGHTLY =
         "https://auroraoss.com/downloads/AuroraStore/Feeds/nightly_feed.json"
 
-    const val NOTIFICATION_CHANNEL_EXPORT = "NOTIFICATION_CHANNEL_EXPORT"
-    const val NOTIFICATION_CHANNEL_INSTALL = "NOTIFICATION_CHANNEL_INSTALL"
+    // Channel IDs carry a version suffix where the importance changed from a previous
+    // release: Android ignores importance edits on an already-created channel, so a new ID
+    // is the only way to roll out a lower importance. Retired IDs are listed in
+    // [LEGACY_NOTIFICATION_CHANNELS] so they can be deleted on next launch.
+    const val NOTIFICATION_CHANNEL_EXPORT = "NOTIFICATION_CHANNEL_EXPORT_V2"
+    const val NOTIFICATION_CHANNEL_INSTALL = "NOTIFICATION_CHANNEL_INSTALLED"
     const val NOTIFICATION_CHANNEL_DOWNLOADS = "NOTIFICATION_CHANNEL_DOWNLOADS"
     const val NOTIFICATION_CHANNEL_UPDATES = "NOTIFICATION_CHANNEL_UPDATES"
-    const val NOTIFICATION_CHANNEL_ACCOUNT = "NOTIFICATION_CHANNEL_ACCOUNT"
+    const val NOTIFICATION_CHANNEL_ALERTS = "NOTIFICATION_CHANNEL_ALERTS"
+
+    // Channels removed or superseded by a higher-versioned ID; deleted on next launch.
+    val LEGACY_NOTIFICATION_CHANNELS = listOf(
+        "NOTIFICATION_CHANNEL_EXPORT",
+        "NOTIFICATION_CHANNEL_INSTALL",
+        "NOTIFICATION_CHANNEL_ACCOUNT"
+    )
 
     const val GITLAB_URL = "https://gitlab.com/AuroraOSS/AuroraStore"
     const val URL_DISPENSER = "https://auroraoss.com/api/auth"

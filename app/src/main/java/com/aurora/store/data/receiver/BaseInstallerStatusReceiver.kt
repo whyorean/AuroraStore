@@ -18,7 +18,6 @@
  */
 package com.aurora.store.data.receiver
 
-import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -26,7 +25,6 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.EXTRA_SESSION_ID
 import android.util.Log
 import androidx.core.content.IntentCompat
-import androidx.core.content.getSystemService
 import com.aurora.extensions.TAG
 import com.aurora.extensions.runOnUiThread
 import com.aurora.store.AuroraApp
@@ -92,14 +90,12 @@ abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
         displayName: String,
         status: Int
     ) {
-        val notificationManager = context.getSystemService<NotificationManager>()
-        val notification = NotificationUtil.getInstallerStatusNotification(
+        NotificationUtil.notifyInstallFailed(
             context,
             packageName,
             displayName,
             InstallerBase.getErrorString(context, status)
         )
-        notificationManager?.notify(packageName.hashCode(), notification)
     }
 
     internal fun promptUser(context: Context, intent: Intent) {
