@@ -585,6 +585,12 @@ class DownloadWorker @AssistedInject constructor(
             if (isProgress) NOTIFICATION_ID else download.packageName.hashCode(),
             notification
         )
+
+        // A failed download is a grouped child; reconcile the failure summary so a bulk
+        // update collapses into a single "N apps failed" entry.
+        if (status == DownloadStatus.FAILED) {
+            NotificationUtil.refreshGroupSummaries(context)
+        }
     }
 
     /**

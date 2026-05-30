@@ -22,13 +22,29 @@ import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.receiver.DownloadCancelReceiver
+import com.aurora.store.data.receiver.DownloadRetryReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.Download as AuroraDownload
 import com.aurora.store.data.room.update.Update
 import java.util.UUID
+import java.util.concurrent.TimeUnit
 import kotlin.math.absoluteValue
 
 object NotificationUtil {
+
+    // Terminal install/failure notifications are bundled under a group so a bulk update
+    // shows a single collapsible summary instead of one notification per app.
+    private const val GROUP_INSTALLED = "com.aurora.store.INSTALLED"
+    private const val GROUP_FAILED = "com.aurora.store.FAILED"
+
+    // Fixed IDs for the two group summaries. Kept well clear of the per-app IDs
+    // (packageName.hashCode()) and the worker IDs (100/200/500/501).
+    private const val SUMMARY_ID_INSTALLED = 1_000_001
+    private const val SUMMARY_ID_FAILED = 1_000_002
+
+    // Successful installs are informational, so they expire on their own rather than
+    // lingering. Failures are actionable and persist until handled.
+    private val INSTALLED_TIMEOUT_MS = TimeUnit.HOURS.toMillis(6)
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -155,6 +171,9 @@ object NotificationUtil {
                 builder.setContentText(message ?: context.getString(R.string.download_failed))
                 builder.color = Color.RED
                 builder.setCategory(Notification.CATEGORY_ERROR)
+                builder.setGroup(GROUP_FAILED)
+                builder.setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_SUMMARY)
+                builder.addAction(getRetryAction(context, download.packageName))
             }
 
             DownloadStatus.COMPLETED -> {
@@ -232,6 +251,11 @@ object NotificationUtil {
         .setContentTitle(displayName)
         .setContentText(context.getString(R.string.installer_status_success))
         .setContentIntent(getContentIntentForDetails(context, packageName))
+        .setCategory(Notification.CATEGORY_STATUS)
+        .setGroup(GROUP_INSTALLED)
+        .setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_SUMMARY)
+        .setAutoCancel(true)
+        .setTimeoutAfter(INSTALLED_TIMEOUT_MS)
         .build()
 
     fun getInstallerStatusNotification(
@@ -245,7 +269,151 @@ object NotificationUtil {
         .setContentText(content)
         .setContentIntent(getContentIntentForDetails(context, packageName))
         .setCategory(Notification.CATEGORY_ERROR)
+        .setGroup(GROUP_FAILED)
+        .setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_SUMMARY)
+        .addAction(getRetryAction(context, packageName))
         .build()
+
+    /**
+     * Posts the grouped "app installed" notification and refreshes the group summary so a
+     * bulk update collapses into a single "N apps installed" entry.
+     */
+    fun notifyInstalled(context: Context, displayName: String, packageName: String) {
+        val notificationManager = context.getSystemService<NotificationManager>()!!
+        notificationManager.notify(
+            packageName.hashCode(),
+            getInstallNotification(context, displayName, packageName)
+        )
+        refreshGroupSummaries(context)
+    }
+
+    /**
+     * Posts the grouped install-failure notification (with a retry action) and refreshes the
+     * failure group summary.
+     */
+    fun notifyInstallFailed(
+        context: Context,
+        packageName: String,
+        displayName: String,
+        content: String?
+    ) {
+        val notificationManager = context.getSystemService<NotificationManager>()!!
+        notificationManager.notify(
+            packageName.hashCode(),
+            getInstallerStatusNotification(context, packageName, displayName, content)
+        )
+        refreshGroupSummaries(context)
+    }
+
+    /**
+     * Cancels the per-app notification for [packageName] (e.g. once the user retries a failed
+     * install) and reconciles the group summaries.
+     */
+    fun clearAppNotification(context: Context, packageName: String) {
+        context.getSystemService<NotificationManager>()!!.cancel(packageName.hashCode())
+        refreshGroupSummaries(context)
+    }
+
+    private fun getRetryAction(context: Context, packageName: String): NotificationCompat.Action {
+        val intent = Intent(context, DownloadRetryReceiver::class.java).apply {
+            putExtra(DownloadHelper.PACKAGE_NAME, packageName)
+        }
+        val pendingIntent = PendingIntentCompat.getBroadcast(
+            context,
+            packageName.hashCode().absoluteValue,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            false
+        )
+        return NotificationCompat.Action.Builder(
+            R.drawable.ic_updates,
+            context.getString(R.string.action_retry),
+            pendingIntent
+        ).build()
+    }
+
+    /**
+     * Rebuilds the two group summaries from the currently-posted per-app notifications. Each
+     * summary lists its apps via [NotificationCompat.InboxStyle] and is removed once no
+     * children remain. Reading the live notifications (rather than tracking state ourselves)
+     * keeps the summaries correct across retries, dismissals and process restarts.
+     */
+    fun refreshGroupSummaries(context: Context) {
+        // Grouping/summaries are only rendered from Android N onwards; on older versions a
+        // summary would just show as an extra standalone notification, so leave the children
+        // to display individually.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return
+
+        val notificationManager = context.getSystemService<NotificationManager>()!!
+
+        refreshSummary(
+            notificationManager = notificationManager,
+            context = context,
+            group = GROUP_INSTALLED,
+            summaryId = SUMMARY_ID_INSTALLED,
+            channelId = Constants.NOTIFICATION_CHANNEL_INSTALL,
+            smallIcon = R.drawable.ic_install,
+            titleRes = R.plurals.notification_installed_summary,
+            timeoutMs = INSTALLED_TIMEOUT_MS,
+            contentIntent = getContentIntentForMain(context, initialTab = 2)
+        )
+        refreshSummary(
+            notificationManager = notificationManager,
+            context = context,
+            group = GROUP_FAILED,
+            summaryId = SUMMARY_ID_FAILED,
+            channelId = Constants.NOTIFICATION_CHANNEL_ALERTS,
+            smallIcon = R.drawable.ic_download_fail,
+            titleRes = R.plurals.notification_failed_summary,
+            timeoutMs = null,
+            contentIntent = getContentIntentForMain(context, initialTab = 2)
+        )
+    }
+
+    @Suppress("LongParameterList")
+    private fun refreshSummary(
+        notificationManager: NotificationManager,
+        context: Context,
+        group: String,
+        summaryId: Int,
+        channelId: String,
+        smallIcon: Int,
+        titleRes: Int,
+        timeoutMs: Long?,
+        contentIntent: PendingIntent?
+    ) {
+        val children = notificationManager.activeNotifications.filter {
+            it.notification.group == group && it.id != summaryId
+        }
+
+        if (children.isEmpty()) {
+            notificationManager.cancel(summaryId)
+            return
+        }
+
+        val titles = children.mapNotNull {
+            it.notification.extras.getCharSequence(Notification.EXTRA_TITLE)?.toString()
+        }
+        val title = context.resources.getQuantityString(titleRes, children.size, children.size)
+
+        val inboxStyle = NotificationCompat.InboxStyle().setBigContentTitle(title)
+        titles.forEach { inboxStyle.addLine(it) }
+
+        val summary = NotificationCompat.Builder(context, channelId)
+            .setSmallIcon(smallIcon)
+            .setContentTitle(title)
+            .setContentText(titles.joinToString(", "))
+            .setStyle(inboxStyle)
+            .setGroup(group)
+            .setGroupSummary(true)
+            .setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_SUMMARY)
+            .setAutoCancel(true)
+            .setContentIntent(contentIntent)
+            .apply { timeoutMs?.let { setTimeoutAfter(it) } }
+            .build()
+
+        notificationManager.notify(summaryId, summary)
+    }
 
     fun getUpdateNotification(context: Context): Notification =
         NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_UPDATES)

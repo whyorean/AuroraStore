@@ -191,6 +191,22 @@ class DownloadHelper @Inject constructor(
     }
 
     /**
+     * Re-queues a previously failed (or otherwise inactive) download so it runs again. The
+     * worker resumes from any verified files on disk, so a retry after an install failure
+     * re-installs without re-downloading. No-op if the download is already active.
+     * @param packageName Name of the package to retry
+     */
+    suspend fun retryDownload(packageName: String) {
+        val existing = getDownload(packageName) ?: return
+        if (existing.isActive) {
+            Log.i(TAG, "Skipping retry for $packageName; already ${existing.status}")
+            return
+        }
+        Log.i(TAG, "Retrying download for $packageName")
+        downloadDao.updateStatus(packageName, DownloadStatus.QUEUED)
+    }
+
+    /**
      * Cancels the download for the given package
      * @param packageName Name of the package to cancel download
      */
