@@ -42,6 +42,7 @@ fun AppDetailsMenu(
     state: AppState = AppState.Unavailable,
     isFavorite: Boolean = false,
     isExpanded: Boolean = false,
+    canManualDownload: Boolean = true,
     onMenuItemClicked: (menuItem: MenuItem) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -80,7 +81,7 @@ fun AppDetailsMenu(
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.title_manual_download)) },
                 onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) },
-                enabled = !state.inProgress()
+                enabled = canManualDownload && !state.inProgress()
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_info)) },
