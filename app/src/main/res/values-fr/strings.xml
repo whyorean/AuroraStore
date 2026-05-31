@@ -525,4 +525,40 @@
     <string name="installed_updated_at">Mises à jour de <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Vérifier</string>
     <string name="pref_theme_style_system">Thème du système</string>
+    <string name="download_failed_storage">Pas assez d\'espace de stockage pour télécharger cette application</string>
+    <string name="installer_fallback_session">Le programme d’installation choisi n\'est pas disponible, utilisation du programme d’installation par défaut à la place.</string>
+    <string name="title_security">Sécurité</string>
+    <string name="app_lock_title">Verrouillage d\'application</string>
+    <string name="app_lock_summary">Nécessite une authentification par biométrie ou par verrouillage d\'écran pour ouvrir Aurora Store.</string>
+    <string name="app_lock_no_credential">Définissez d\'abord un verrouillage d\'écran (PIN, schéma, mot de passe ou biométrie) sur votre appareil.</string>
+    <string name="app_lock_locked_message">L\'authentification est nécessaire pour accéder à Aurora Store</string>
+    <string name="app_lock_unlock">Déverrouiller</string>
+    <string name="app_lock_prompt_title">Déverrouiller Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Renseignez le verrouillage d\'écran du téléphone (schéma, PIN, mot de passe ou empreinte digitale)</string>
+    <string name="notification_channel_alerts">Erreurs &amp; alertes</string>
+    <string name="notification_group_activity">Téléchargements &amp; mises à jour</string>
+    <string name="notification_group_alerts">Alertes</string>
+    <string name="pref_self_update_desc">Proposer les nouvelles versions de Aurora Store dans l\'onglet Mises à jour.</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="pref_notification_progress">Afficher la progression du téléchargement</string>
+    <string name="pref_notification_progress_desc">Afficher la progression détaillée lors du téléchargement et de la mise à jour des applications. Quand désactivé, une unique notification silencieuse permet de garder le téléchargement actif en arrière-plan.</string>
+    <string name="pref_notification_categories">Catégories</string>
+    <string name="pref_notification_categories_desc">Choisir le son et la priorité pour chaque type de notification</string>
+    <string name="pref_notification_disabled">Les notifications sont désactivées</string>
+    <string name="pref_notification_disabled_desc">Appuyez pour activer les notifications pour Aurora Store</string>
+    <string name="updates_self_header">Auto-mise à jour</string>
+    <string name="pref_self_update">Auto-mise à jour</string>
+    <string name="updates_self_desc">Une nouvelle version de Aurora Store est disponible</string>
+    <string name="status_installing">Installation</string>
+    <string name="status_installed">Installé</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d application installée</item>
+        <item quantity="many">%d applications installées</item>
+        <item quantity="other">%d applications installées</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d application en échec</item>
+        <item quantity="many">%d applications en échec</item>
+        <item quantity="other">%d applications en échec</item>
+    </plurals>
 </resources>
