@@ -119,7 +119,7 @@
     <string name="download_eta_min">%1$dm %2$ds jäänud</string>
     <string name="filter_review_positive">Positiivne</string>
     <string name="menu_disclaimer">Vastutusest loobumine</string>
-    <string name="notification_channel_export">Rakenduse ekspordi märguanded</string>
+    <string name="notification_channel_export">Rakenduse ekspordi teavitused</string>
     <string name="installer_service_unavailable">Paigalda Aurora teenused 1.0.9 või uuem või muuda paigaldusrakendust.</string>
     <string name="exodus_view_report">Vaata aruannet</string>
     <string name="download_metadata">Metaandmete hankimine</string>
@@ -149,8 +149,8 @@
     <string name="device_miui_title">Tuvastati MIUI!</string>
     <string name="device_miui_subtitle">Seansipaigaldaja ei saa MIUI optimeerimiste tõttu rakendusi paigaldada.</string>
     <string name="dialog_title_self_update">Saadaval on uuendus</string>
-    <string name="notification_channel_downloads">Allalaadimiste märguanded</string>
-    <string name="notification_channel_install">Paigalduse märguanded</string>
+    <string name="notification_channel_downloads">Allalaadimiste teavitused</string>
+    <string name="notification_channel_install">Paigalduse teavitused</string>
     <string name="onboarding_permission_select">Aurora rakendustepood eeldab järgmiste lubade olemasolu</string>
     <string name="onboarding_title_installer">Paigaldaja</string>
     <string name="onboarding_title_permissions">Load</string>
@@ -158,8 +158,8 @@
     <string name="onboarding_permission_installer">Paigaldusrakenduse load</string>
     <string name="onboarding_permission_installer_desc">Luba paigaldada rakendusi Aurora poest</string>
     <string name="onboarding_permission_installer_legacy_desc">Luba tundmatutest allikatest pärit rakenduste paigaldamine</string>
-    <string name="onboarding_permission_notifications">Märguanded</string>
-    <string name="onboarding_permission_notifications_desc">Saada märguandeid paigaldamise olekust</string>
+    <string name="onboarding_permission_notifications">Teavitused</string>
+    <string name="onboarding_permission_notifications_desc">Saada teavitusi paigaldamise olekust</string>
     <string name="onboarding_permission_doze">Allalaadimine taustal</string>
     <string name="onboarding_permission_doze_desc">Luba Aurora rakendustepoel rakendusi taustal allalaadida ja uuendada</string>
     <string name="pref_filter_fdroid_summary">Ära kontrolli F-Droidist paigaldatud rakenduste uuendusi</string>
@@ -197,7 +197,7 @@
     <string name="updates_available">uuendust saadaval</string>
     <string name="error">Ilmnes viga!</string>
     <string name="menu">Menüü</string>
-    <string name="notification_channel_updates">Uuenduste märguanded</string>
+    <string name="notification_channel_updates">Uuenduste teavitused</string>
     <string name="permissions_denied">Vajalikud load on keelatud. Toimingu jätkamiseks luba need</string>
     <string name="pref_updates_auto">Automaatsed uuendused</string>
     <string name="title_manual_download">Käsitsi allalaadimine</string>
@@ -227,7 +227,7 @@
     <string name="session_login_failed_google">Google kaudu ei saanud sisse logida</string>
     <string name="tab_editor_choice">Toimetaja valik</string>
     <string name="tab_top_grossing">Kõige tulusamad</string>
-    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> uuendust saadaval</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> uuendust on saadaval</string>
     <string name="title_language">Keel</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ja <xliff:g id="apps_count">%4$d</xliff:g> veel</string>
     <string name="title_account_manager">Kontod</string>
@@ -258,7 +258,7 @@
     <string name="title_download_manager">Allalaadimised</string>
     <string name="title_purchase_history">Ostude ajalugu</string>
     <string name="toast_permission_granted">Luba antud</string>
-    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uuendus saadaval</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uuendus on saadaval</string>
     <string name="pref_ui_title">Kohandamine</string>
     <string name="pref_updates_incompatible">Näita uuendusi, mille paigaldamine ei pruugi õnnestuda</string>
     <string name="insecure_anonymous_apply">Muudatuste rakendamiseks logi kindlasti uuesti sisse ja taaskäivita rakendus.</string>
@@ -277,7 +277,7 @@
     <string name="tab_for_you">Sulle</string>
     <string name="toast_permission_installer_required">Esmalt pead andma loa paigaldusrakendusele</string>
     <string name="title_installation">Paigaldamine</string>
-    <string name="notification_updates_available_desc_1">Saadaval on <xliff:g id="app_one_name">%1$s</xliff:g> uus versioon</string>
+    <string name="notification_updates_available_desc_1">Saadaval on <xliff:g id="app_one_name">%1$s</xliff:g> rakenduse uus versioon</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ja <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="title_about">Teave</string>
     <string name="toast_rated_failed">Hinnet ei saanud esitada</string>
@@ -524,4 +524,38 @@
     <string name="action_ignore_version">Jäta versioon <xliff:g id="version_name">%1$s</xliff:g> vahele</string>
     <string name="action_unignore">Lõpeta eiramine</string>
     <string name="action_check">Kontrolli</string>
+    <string name="download_failed_storage">Selle rakenduse allalaadimiseks pole piisavalt vaba andmeruumi</string>
+    <string name="installer_fallback_session">Valitud paigaldaja pole saadaval, kasutan selle asemel vaikimisi paigaldajat.</string>
+    <string name="title_security">Turvalisus</string>
+    <string name="app_lock_title">Rakenduse lukustus</string>
+    <string name="app_lock_summary">Kasuta Aurora rakendustepoe avamisel biomeetrilist või muud ekraanilukustust.</string>
+    <string name="app_lock_no_credential">Esmalt seadista ekraanilukustus (PIN-kood, viipemuster, salasõna või biomeetriline).</string>
+    <string name="app_lock_locked_message">Ligipääsuks Aurora rakendusepoele on vajalik autentimine</string>
+    <string name="app_lock_unlock">Ava lukustus</string>
+    <string name="app_lock_prompt_title">Ava Aurora rakendusepoe lukustus</string>
+    <string name="app_lock_prompt_subtitle">Sisesta ekraanilukustuse viipemuster, PIN-kood, salasõna või sõrmejälg</string>
+    <string name="notification_channel_alerts">Vead ja hoiatused</string>
+    <string name="notification_group_activity">Allalaadimised ja uuendused</string>
+    <string name="notification_group_alerts">Hoiatused</string>
+    <string name="pref_self_update">Eneseuuendused</string>
+    <string name="pref_self_update_desc">Paku Aurora rakendusepoe uusi versioone uuenduste vahekaardil.</string>
+    <string name="title_notifications">Teavitused</string>
+    <string name="pref_notification_progress">Näita allalaadimise edenemist</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">Paigaldatud on %d rakendus</item>
+        <item quantity="other">Paigaldatud on %d rakendust</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d rakenduse paigaldus ei õnnestunud</item>
+        <item quantity="other">%d rakenduse paigaldust ei õnnestunud</item>
+    </plurals>
+    <string name="pref_notification_progress_desc">Näita rakenduste allalaadimise ja uuendamise edenemist üksikasjalikult. Kui see eelistus on välja lülitatud, hoiab üksainus märkamatu teade allalaadimist töös taustal.</string>
+    <string name="pref_notification_categories">Kategooriad</string>
+    <string name="pref_notification_categories_desc">Seadista erinevate teavituste helimärguannet ja olulisust</string>
+    <string name="pref_notification_disabled">Teavitused on lülitatud välja</string>
+    <string name="pref_notification_disabled_desc">Klõpsa Aurora rakendustepoe teavituste sisselülitamiseks</string>
+    <string name="updates_self_header">Eneseuuendused</string>
+    <string name="updates_self_desc">Saadaval on Aurora rakendustepoe uus versioon</string>
+    <string name="status_installing">Paigaldan</string>
+    <string name="status_installed">Paigaldatud</string>
 </resources>
