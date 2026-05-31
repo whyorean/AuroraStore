@@ -144,7 +144,7 @@
     <string name="title_installation">Instalacja</string>
     <string name="pref_install_mode_title">Metoda instalacji</string>
     <string name="pref_ui_title">Dostosowywanie</string>
-    <string name="onboarding_permission_installer_desc">Zezwól na instalowanie aplikacji z Aurora Store</string>
+    <string name="onboarding_permission_installer_desc">Zezwól na instalację aplikacji z Aurora Store</string>
     <string name="onboarding_permission_installer">Uprawnienia instalatora</string>
     <string name="onboarding_permission_esm">Menedżer pamięci zewnętrznej</string>
     <string name="onboarding_permission_esa_desc">Do zapisu rozszerzeń APK (plików OBB) dla dużych gier i aplikacji</string>
@@ -526,4 +526,42 @@
     <string name="updates_approval_desc">Te aplikacje nie zostały zainstalowane przez Aurora Store. Podczas ich aktualizacji pojawia się prośba o przekazanie uprawnień do aktualizacji.</string>
     <string name="updates_incompatible_desc">Te aktualizacje aplikacji systemowych nie są kompatybilne z tym systemem operacyjnym</string>
     <string name="source_filters_installers_header">Wykluczone instalatory</string>
+    <string name="download_failed_storage">Za mało miejsca w pamięci urządzenia, aby pobrać tę aplikację</string>
+    <string name="installer_fallback_session">Wybrany instalator jest niedostępny, użyto domyślnego instalatora.</string>
+    <string name="app_lock_summary">Wymagaj uwierzytelnienia biometrycznego lub odblokowania ekranu do otwarcia Aurora Store.</string>
+    <string name="app_lock_title">Blokada aplikacji</string>
+    <string name="app_lock_locked_message">Aby uzyskać dostęp do Aurora Store, wymagane jest uwierzytelnienie</string>
+    <string name="app_lock_unlock">Odblokuj</string>
+    <string name="app_lock_prompt_title">Odblokuj Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Wprowadź wzór blokady ekranu, PIN, hasło lub użyj odcisku palca</string>
+    <string name="title_security">Bezpieczeństwo</string>
+    <string name="app_lock_no_credential">Najpierw skonfiguruj blokadę ekranu (PIN, wzór, hasło lub dane biometryczne) na swoim urządzeniu.</string>
+    <string name="notification_channel_alerts">Błędy i alerty</string>
+    <string name="notification_group_alerts">Alerty</string>
+    <string name="updates_self_desc">Dostępna jest nowsza wersja Aurora Store</string>
+    <string name="pref_self_update">Samoaktualizacja</string>
+    <string name="title_notifications">Powiadomienia</string>
+    <string name="pref_notification_progress">Pokaż postęp pobierania</string>
+    <string name="pref_notification_categories">Kategorie</string>
+    <string name="pref_notification_disabled">Powiadomienia są wyłączone</string>
+    <string name="pref_notification_disabled_desc">Dotknij, aby włączyć powiadomienia dla Aurora Store</string>
+    <string name="updates_self_header">Samoaktualizacja</string>
+    <string name="status_installing">Instalowanie</string>
+    <string name="status_installed">Zainstalowano</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">Zainstalowano %d aplikację</item>
+        <item quantity="few">Zainstalowano %d aplikacje</item>
+        <item quantity="many">Zainstalowano %d aplikacji</item>
+        <item quantity="other">Zainstalowano %d aplikacji</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">Nie udało się zainstalować %d aplikacji</item>
+        <item quantity="few">Nie udało się zainstalować %d aplikacji</item>
+        <item quantity="many">Nie udało się zainstalować %d aplikacji</item>
+        <item quantity="other">Nie udało się zainstalować %d aplikacji</item>
+    </plurals>
+    <string name="pref_notification_categories_desc">Dostosuj dźwięk i priorytet dla każdego typu powiadomień</string>
+    <string name="notification_group_activity">Pobieranie i aktualizacje</string>
+    <string name="pref_self_update_desc">Pokazuj nowe wersje Aurora Store w zakładce Aktualizacje.</string>
+    <string name="pref_notification_progress_desc">Pokaż szczegółowy postęp podczas pobierania i aktualizacji aplikacji. Gdy wyłączone, jedno ciche powiadomienie utrzymuje pobieranie w tle.</string>
 </resources>
