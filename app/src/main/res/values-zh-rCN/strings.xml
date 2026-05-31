@@ -523,4 +523,36 @@
     <string name="installed_filter_all">所有</string>
     <string name="installed_updated_at">更新于 <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">检查</string>
+    <string name="download_failed_storage">存储空间不足以下载此应用</string>
+    <string name="installer_fallback_session">所选的安装器不可用，改用默认安装器。</string>
+    <string name="title_security">安全</string>
+    <string name="app_lock_title">应用锁</string>
+    <string name="app_lock_summary">需要生物特征或屏幕锁身份认证来打开 Aurora 商店。</string>
+    <string name="app_lock_no_credential">请先在设备上设置屏幕锁（PIN、图案、密码或生物特征）。</string>
+    <string name="app_lock_locked_message">访问 Aurora 商店需要身份认证</string>
+    <string name="app_lock_unlock">解锁</string>
+    <string name="app_lock_prompt_title">解锁 Aurora 商店</string>
+    <string name="app_lock_prompt_subtitle">输入手机屏幕解锁图案、PIN 码、密码或进行指纹认证</string>
+    <string name="notification_channel_alerts">错误和警报</string>
+    <string name="notification_group_activity">下载和更新</string>
+    <string name="notification_group_alerts">警报</string>
+    <string name="pref_self_update">自更新</string>
+    <string name="pref_self_update_desc">在“更新”选项卡中提供新的 Aurora 商店版本。</string>
+    <string name="title_notifications">通知</string>
+    <string name="pref_notification_progress">显示下载进度</string>
+    <string name="pref_notification_progress_desc">下载和更新应用时显示详细进度。如关闭，单条静音通知使下载在后台运行。</string>
+    <string name="pref_notification_categories">类别</string>
+    <string name="pref_notification_categories_desc">调整每种通知的声音和重要性</string>
+    <string name="pref_notification_disabled">关闭了通知</string>
+    <string name="pref_notification_disabled_desc">轻按允许 Aurora 商店通知</string>
+    <string name="updates_self_header">自更新</string>
+    <string name="updates_self_desc">有新版 Aurora 商店可用</string>
+    <string name="status_installing">安装中</string>
+    <string name="status_installed">已安装</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="other">安装了 %d 个应用</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="other">%d 个应用失败</item>
+    </plurals>
 </resources>
