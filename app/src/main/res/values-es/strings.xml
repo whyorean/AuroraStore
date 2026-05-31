@@ -385,7 +385,6 @@
     <string name="status_downloading">Descargando</string>
     <string name="authentication_required_title">Autenticación obligatoria</string>
     <string name="authentication_required_unarchive">¡Por favor, inicia sesión en tu cuenta de Google Play para desarchivar la aplicación!</string>
-    <string name="notification_channel_account">Notificación relacionada con la cuenta</string>
     <string name="checking_updates">Buscando actualizaciones</string>
     <string name="made_with_love">Hecho con <xliff:g id="heart_emoji">%1$s</xliff:g> en India</string>
     <string name="available_spoof">Disponible</string>

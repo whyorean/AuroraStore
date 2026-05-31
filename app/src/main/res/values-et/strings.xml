@@ -151,7 +151,6 @@
     <string name="dialog_title_self_update">Saadaval on uuendus</string>
     <string name="notification_channel_downloads">Allalaadimiste märguanded</string>
     <string name="notification_channel_install">Paigalduse märguanded</string>
-    <string name="notification_channel_account">Kontoga seotud märguanded</string>
     <string name="onboarding_permission_select">Aurora rakendustepood eeldab järgmiste lubade olemasolu</string>
     <string name="onboarding_title_installer">Paigaldaja</string>
     <string name="onboarding_title_permissions">Load</string>

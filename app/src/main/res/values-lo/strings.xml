@@ -174,7 +174,6 @@
     <string name="device_miui_extra">ທ່ານສາມາດເລືອກຕົວຕິດຕັ້ງແບບ Native ໄດ້, ແຕ່ຈະບໍ່ສາມາດຕິດຕັ້ງແອັບແບບແຍກໄຟລ໌ (split APKs) ໄດ້.</string>
     <string name="dialog_title_self_update">ມີອັບເດດໃໝ່</string>
     <string name="dialog_desc_native_split">ທ່ານບໍ່ສາມາດຕິດຕັ້ງແອັບແບບແຍກໄຟລ໌ (split) ຜ່ານ Native Installer ໄດ້. ກະລຸນາປ່ຽນເປັນ Session, Services ຫຼື Root.</string>
-    <string name="notification_channel_account">ການແຈ້ງເຕືອນກ່ຽວກັບບັນຊີ</string>
     <string name="notification_channel_export">ການແຈ້ງເຕືອນການສົ່ງອອກແອັບ</string>
     <string name="notification_channel_install">ການແຈ້ງເຕືອນການຕິດຕັ້ງ</string>
     <string name="notification_channel_downloads">ການແຈ້ງເຕືອນການດາວໂຫລດ</string>

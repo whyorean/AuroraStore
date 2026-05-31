@@ -300,7 +300,6 @@
     <string name="failed_generating_session">Ezin izan da saioa sortu, errore-kodea: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="made_with_love">Indian egina honekin: <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="force_restart_summary">Aurora Store berrabiarazi behar da aldatu berri diren ezarpenak aplikatzeko</string>
-    <string name="notification_channel_account">Kontuarekin lotutako jakinarazpena</string>
     <string name="item_optional">Hautazkoa</string>
     <string name="app_language">Aplikazioaren hizkuntza</string>
     <string name="session_installer_desc">Gomendatua, eraikia eta Android bertsio guztiak onartzen dituena</string>

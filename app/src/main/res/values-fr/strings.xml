@@ -384,7 +384,6 @@
     <string name="status_failed">Échec</string>
     <string name="status_unavailable">Inaccessible</string>
     <string name="authentication_required_unarchive">Veuillez vous connecter à votre compte Google Play pour désarchiver l\'application !</string>
-    <string name="notification_channel_account">Notification relative au compte</string>
     <string name="authentication_required_title">L’authentification est requise</string>
     <string name="checking_updates">Recherche de mises à jour</string>
     <string name="made_with_love">Conçu en Inde avec <xliff:g id="heart_emoji">%1$s</xliff:g></string>

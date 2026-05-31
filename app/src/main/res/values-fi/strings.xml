@@ -326,7 +326,6 @@
     <string name="export_app_summary_fail">Sovellusnipun vienti epäonnistui</string>
     <string name="item_optional">Valinnainen</string>
     <string name="item_required">Vaadittu</string>
-    <string name="notification_channel_account">Tiliin liittyvät ilmoitukset</string>
     <string name="authentication_required_title">Todennus vaaditaan</string>
     <string name="action_unarchive">Lopeta arkistointi</string>
     <string name="toast_app_unavailable">Sovellus ei ole saatavilla laitteellesi</string>

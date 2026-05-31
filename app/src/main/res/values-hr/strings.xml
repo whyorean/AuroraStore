@@ -343,7 +343,6 @@
     <string name="server_unreachable">Server je nedostupan</string>
     <string name="shizuku_installer_desc">Zahtijeva Shizuku ili Sui, mora se postaviti i odobriti dozvolu</string>
     <string name="download_clear_finished">Izbriši gotove</string>
-    <string name="notification_channel_account">Obavijest o računu</string>
     <string name="login_rate_limited">Broj tvojih prijava je ograničen</string>
     <string name="app_links_title">Poveznice aplikacija</string>
     <string name="google_play_store_desc">Google Play, poznat i kao Google Play Store, a prije Android Market.</string>

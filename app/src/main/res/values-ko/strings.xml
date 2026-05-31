@@ -333,7 +333,6 @@
     <string name="pref_clear_device_owner_summary">장치 소유자 앱에서 Aurora Store를 제거</string>
     <string name="pref_clear_device_owner_desc">세션 설치 프로그램의 자동 설치 권한이 취소됩니다.장치 소유권을 계속 삭제하시겠습니까?</string>
     <string name="about_wiki_title">위키</string>
-    <string name="notification_channel_account">계정 관련 알림</string>
     <string name="toast_app_unavailable">이 기기에 호환되지 않는 앱입니다</string>
     <string name="session_login">구글 플레이 계정으로 로그인해주세요</string>
     <string name="action_favourite">즐겨찾기</string>

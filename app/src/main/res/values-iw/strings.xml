@@ -382,7 +382,6 @@
     <string name="status_downloading">מוריד</string>
     <string name="status_cancelled">בוטל</string>
     <string name="authentication_required_title">נדרש אימות</string>
-    <string name="notification_channel_account">התראות אודות החשבון</string>
     <string name="notification_channel_export">התראת ייצוא אפליקציה</string>
     <string name="notification_channel_install">התראת התקנה</string>
     <string name="notification_channel_downloads">התראת הורדה</string>

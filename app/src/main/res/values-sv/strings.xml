@@ -363,7 +363,6 @@
     <string name="item_required">Krävs</string>
     <string name="item_optional">Valfritt</string>
     <string name="set">Ställ in</string>
-    <string name="notification_channel_account">Konto-relaterad avisering</string>
     <string name="filter_latest">Senaste</string>
     <string name="details_compatibility_title">Kompabilitet</string>
     <string name="default_spoof">Standard</string>

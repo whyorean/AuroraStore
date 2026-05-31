@@ -383,7 +383,6 @@
     <string name="status_unavailable">Indisponível</string>
     <string name="status_downloading">Baixando</string>
     <string name="status_cancelled">Cancelado</string>
-    <string name="notification_channel_account">Notificação relacionada à conta</string>
     <string name="authentication_required_unarchive">Conecte-se à sua conta do Google Play para desarquivar o app!</string>
     <string name="authentication_required_title">Autenticação necessária</string>
     <string name="checking_updates">Verificando se há atualizações</string>
