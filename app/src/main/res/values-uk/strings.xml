@@ -383,7 +383,6 @@
     <string name="status_unavailable">Недоступно</string>
     <string name="status_downloading">Завантаження</string>
     <string name="status_cancelled">Скасовано</string>
-    <string name="notification_channel_account">Сповіщення облікового запису</string>
     <string name="authentication_required_title">Потрібна автентифікація</string>
     <string name="authentication_required_unarchive">Увійдіть до свого облікового запису Google Play, щоб розархівувати застосунок!</string>
     <string name="checking_updates">Перевірка оновлень</string>

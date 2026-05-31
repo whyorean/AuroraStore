@@ -289,7 +289,6 @@
     <string name="details_ratings_title_hint">Titulo da reseña</string>
     <string name="download_clear_finished">Limpar o finalizado</string>
     <string name="filter_latest">Máis recente</string>
-    <string name="notification_channel_account">Notificación relacionada coa conta</string>
     <string name="notification_channel_export">Notificación de exportación da aplicación</string>
     <string name="notification_channel_install">Notificación de instalación</string>
     <string name="notification_channel_downloads">Notificación de descargas</string>

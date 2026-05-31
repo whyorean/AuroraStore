@@ -240,7 +240,6 @@
     <string name="about_wiki_title">Wiki</string>
     <string name="about_wiki_summary">Troba respostes a les preguntes freqüents (F.A.Q.), passos de resolució de problemes i més</string>
     <string name="action_remove_all">Elimina-ho tot</string>
-    <string name="notification_channel_account">Notificació relacionada amb el compte</string>
     <string name="action_select_all">Selecciona-ho tot</string>
     <string name="details_no_favourites">No s\'ha trobat cap aplicació preferida</string>
     <string name="download_clear_finished">Neteja finalitzada</string>

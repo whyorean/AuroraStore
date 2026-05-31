@@ -296,7 +296,6 @@
     <string name="manage_account">ගිණුම කළමනාකරණය</string>
     <string name="pref_vending_version_device">පෙරනිමි (උපාංගයේ වින්‍යාසයෙන්)</string>
     <string name="details_no_favourites">ප්‍රියතම යෙදුම් හමු නොවිණි</string>
-    <string name="notification_channel_account">ගිණුම ආශ්‍රිත දැනුම්දීම්</string>
     <string name="status_downloading">බාගැනෙමින්</string>
     <string name="export_app_summary">රැඳෙන්න, ගොනුව නිර්යාත වෙමින්</string>
     <string name="pref_vending_version_title">ගූගල් ප්ලේ අනුවාදය</string>

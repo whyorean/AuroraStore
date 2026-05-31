@@ -377,7 +377,6 @@
     <string name="filter_latest">最新</string>
     <string name="toast_black_export_failed">匯出黑名單失敗！</string>
     <string name="notification_channel_downloads">下載通知</string>
-    <string name="notification_channel_account">帳戶相關通知</string>
     <string name="export_app_title">檔案匯出工具</string>
     <string name="export_app_summary">請稍等，正在匯出你的檔案</string>
     <string name="toast_black_export_success">已匯出黑名單！</string>

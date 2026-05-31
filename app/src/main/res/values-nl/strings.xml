@@ -294,7 +294,6 @@
     <string name="action_select_all">Alles selecteren</string>
     <string name="action_remove_all">Alles verwijderen</string>
     <string name="filter_latest">Laatste</string>
-    <string name="notification_channel_account">Account-gerelateerde melding</string>
     <string name="export_app_summary">Wacht even, bestand exporteren</string>
     <string name="authentication_required_unarchive">Meld je aan bij je Google Play-account om de app uit het archief te halen!</string>
     <string name="native_installer_subtitle">Intent-gebaseerde installatiemethode, beschikbaar op alle apparaten</string>

@@ -391,7 +391,6 @@
     <string name="pref_updates_restrictions_battery">जब बैटरी कम नहीं हो</string>
     <string name="notification_channel_downloads">डाउनलोड सूचना</string>
     <string name="status_queued">पंक्तिबद्ध</string>
-    <string name="notification_channel_account">खाता-संबंधित सूचना</string>
     <string name="status_downloading">डाउनलोड जारी</string>
     <string name="action_select_all">सभी चुनें</string>
     <string name="filter_latest">नवीनतम</string>

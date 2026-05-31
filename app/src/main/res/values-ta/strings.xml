@@ -309,7 +309,6 @@
     <string name="download_clear_finished">தெளிவாக முடிந்தது</string>
     <string name="download_progress">பதிவிறக்கம் • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="manual_download_hint">நீங்கள் பதிவிறக்க விரும்பும் பதிப்பு குறியீட்டை உள்ளிடவும்</string>
-    <string name="notification_channel_account">கணக்கு தொடர்பான அறிவிப்பு</string>
     <string name="onboarding_permission_installer_legacy_desc">அறியப்படாத மூலங்களிலிருந்து பயன்பாடுகளை நிறுவ அனுமதிக்கவும்</string>
     <string name="pref_network_proxy_url_message">எல்லா தரவையும் பதிலாள் மூலம் அனுப்ப செல்லுபடியாகும் பதிலாள் முகவரி ஐ உள்ளிடவும்.</string>
     <string name="session_init">விசயங்களை ஆயத்தம் செய்வது…</string>

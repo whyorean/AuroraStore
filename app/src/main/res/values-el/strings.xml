@@ -375,7 +375,6 @@
     <string name="export_app_title">Εξαγωγέας αρχείου</string>
     <string name="export_app_summary">Περίμενε λίγο, εξάγουμε το αρχείο σου</string>
     <string name="made_with_love">Φτιαγμένο με <xliff:g id="heart_emoji">%1$s</xliff:g> στην Ινδία</string>
-    <string name="notification_channel_account">Ειδοποίηση σχετική με λογαριασμό</string>
     <string name="status_downloading">Γίνεται λήψη</string>
     <string name="status_failed">Απέτυχε</string>
     <string name="status_unavailable">Μη διαθέσιμη</string>

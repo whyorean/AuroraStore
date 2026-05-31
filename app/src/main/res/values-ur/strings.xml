@@ -200,7 +200,6 @@
     <string name="device_miui_description">براہ کرم ، تنصیبات کی اجازت دینے کے لئے MIUI کی اصلاح کو غیر فعال کریں ، بصورت دیگر آپ روٹ یا سروسز انسٹالر کا انتخاب کرسکتے ہیں۔</string>
     <string name="device_miui_extra">اختیاری طور پر آپ مقامی انسٹالر کا انتخاب کرسکتے ہیں ، لیکن پھر آپ بنڈل (اسپلٹ) اے پی کے انسٹال نہیں کرسکتے ہیں ، لہذا انتخاب آپ کا ہے۔</string>
     <string name="dialog_title_self_update">نئی تازہ کاری دستیاب ہے</string>
-    <string name="notification_channel_account">اکاؤنٹ سے متعلق اطلاع</string>
     <string name="notification_channel_export">ایپ ایکسپورٹ نوٹیفکیشن</string>
     <string name="notification_channel_install">نوٹیفکیشن انسٹال کریں</string>
     <string name="notification_channel_downloads">ڈاؤن لوڈ کی اطلاع</string>

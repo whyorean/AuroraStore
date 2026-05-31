@@ -63,7 +63,7 @@
     <string name="device_miui_title">اكتُشف MIUI!</string>
     <string name="menu_terms">شروط الخدمة</string>
     <string name="menu_license">الرخصة</string>
-    <string name="menu_disclaimer">اخلاء المسؤوليه</string>
+    <string name="menu_disclaimer">إخلاء مسؤولية</string>
     <string name="installer_status_success">ثُبِّت بنجاح</string>
     <string name="installer_status_failure_storage">مساحة التخزين غير كافية</string>
     <string name="installer_status_failure_incompatible">تطبيق غير متوافق</string>
@@ -322,11 +322,11 @@
     <string name="shizuku_installer_desc">يتطلب Shizuku أو Sui، ويحتاج إلى الإعداد ومنح الإذن</string>
     <string name="disclaimer_subtitle">المساءلة والمسؤولية</string>
     <string name="manual_download_hint">أدخل رمز الإصدار الذي ترغب في تنزيله</string>
-    <string name="faqs_subtitle">هل لديك أسئلة؟ تعرف على الإجابات</string>
+    <string name="faqs_subtitle">ألديك أسئلة؟ تعرّف على الإجابات</string>
     <string name="source_code_title">المصدر البرمجي</string>
     <string name="source_code_subtitle">اكتشف ما بداخله</string>
     <string name="privacy_policy_title">سياسة الخصوصية</string>
-    <string name="privacy_policy_subtitle">تعرف على كيفية استخدام Aurora Store لبياناتك</string>
+    <string name="privacy_policy_subtitle">تعرّف على كيفية استخدام Aurora Store لبياناتك</string>
     <string name="title_more">المزيد</string>
     <string name="manage_account">أدر حسابك</string>
     <string name="pref_clear_device_owner_title">مسح مالك الجهاز</string>
@@ -383,7 +383,6 @@
     <string name="status_queued">في قائمة الانتظار</string>
     <string name="status_cancelled">ملغي</string>
     <string name="status_downloading">تنزيل</string>
-    <string name="notification_channel_account">إشعار متعلق بالحساب</string>
     <string name="authentication_required_title">التوثيق مطلوب</string>
     <string name="authentication_required_unarchive">يُرجى تسجيل الدخول إلى حساب Google Play الخاص بك لإلغاء أرشفة التطبيق!</string>
     <string name="checking_updates">البحث عن تحديثات</string>

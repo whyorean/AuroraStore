@@ -375,7 +375,6 @@
     <string name="action_logout_confirmation_title">Đăng xuất?</string>
     <string name="action_logout_confirmation_message">Bạn có chắc muốn đăng xuất hay không?</string>
     <string name="made_with_love">Được làm bằng <xliff:g id="heart_emoji">%1$s</xliff:g> ở Ấn Độ</string>
-    <string name="notification_channel_account">Thông báo liên quan đến tài khoản</string>
     <string name="status_unavailable">Không có sẵn</string>
     <string name="authentication_required_title">Yêu cầu xác thực</string>
     <string name="authentication_required_unarchive">Vui lòng đăng nhập vào tài khoản Google Play của bạn để giải nén ứng dụng!</string>

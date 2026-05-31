@@ -265,7 +265,6 @@
     <string name="toast_proxy_failed">Failed to set proxy</string>
     <string name="server_maintenance">Server down for maintenance</string>
     <string name="privacy_policy_title">Política de privacidá</string>
-    <string name="notification_channel_account">Account-related notification</string>
     <string name="notification_channel_install">Install notification</string>
     <string name="notification_channel_downloads">Downloads notification</string>
     <string name="toast_import_failed">Nun se pudo importar la configuración del preséu</string>
