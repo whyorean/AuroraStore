@@ -528,4 +528,46 @@
     <string name="installed_filter_all">الكل</string>
     <string name="installed_updated_at">حُدث <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">تحقق</string>
+    <string name="download_failed_storage">لا توجد مساحة تخزين كافية لتنزيل هذا التطبيق</string>
+    <string name="installer_fallback_session">المثبّت المختار غير متاح، يتم استخدام المثبّت الافتراضي بدلاً منه.</string>
+    <string name="title_security">الأمن</string>
+    <string name="app_lock_title">قفل التطبيق</string>
+    <string name="app_lock_summary">تتطلب الاستيثاق الحيوي أو قفل الشاشة لفتح متجر Aurora.</string>
+    <string name="app_lock_no_credential">أعدَ قفل شاشة (رمز PIN، أو نمط، أو كلمة مرور، أو بصمة حيوية) على جهازك أولاً.</string>
+    <string name="app_lock_locked_message">الاستيثاق مطلوب للوصول إلى متجر Aurora</string>
+    <string name="app_lock_unlock">افتح القفل</string>
+    <string name="app_lock_prompt_title">افتح القفل متجر Aurora</string>
+    <string name="app_lock_prompt_subtitle">أدخل نمط قفل شاشة الهاتف أو رقم التعريف الشخصي (PIN) أو كلمة المرور أو بصمة الإصبع</string>
+    <string name="notification_channel_alerts">الأخطاء والتنبيهات</string>
+    <string name="notification_group_activity">التنزيلات والتحديثات</string>
+    <string name="notification_group_alerts">التنبيهات</string>
+    <string name="pref_self_update">تحديث ذاتي</string>
+    <string name="pref_self_update_desc">عرض إصدارات متجر Aurora الجديدة في علامة تبويب التحديثات.</string>
+    <string name="title_notifications">الإشعارات</string>
+    <string name="pref_notification_progress">أظهر تقدم التنزيل</string>
+    <string name="pref_notification_progress_desc">أظهر تقدم مفصل أثناء تنزيل التطبيقات وتحديثها. عند إيقاف التشغيل، سيتم إبقاء التنزيلات قيد التشغيل في الخلفية عبر إشعار واحد صامت.</string>
+    <string name="pref_notification_categories">الفئات</string>
+    <string name="pref_notification_categories_desc">اضبط الصوت والأهمية لكل نوع من أنواع الإشعارات</string>
+    <string name="pref_notification_disabled">الإشعارات معطّلة</string>
+    <string name="pref_notification_disabled_desc">انقر لتفعيل الإشعارات لمتجر Aurora</string>
+    <string name="updates_self_header">تحديث ذاتي</string>
+    <string name="updates_self_desc">يتوفر إصدار أحدث من متجر Aurora</string>
+    <string name="status_installing">يثبِّت</string>
+    <string name="status_installed">مُثبَّت</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="zero">لا تطبيقات مثبتة</item>
+        <item quantity="one">ثُبِّت تطبيق واحد</item>
+        <item quantity="two">ثُبِّت تطبيقين</item>
+        <item quantity="few">ثُبِّت %d تطبيقات</item>
+        <item quantity="many">ثُبِّت %d تطبيقًا</item>
+        <item quantity="other">ثُبِّت %d تطبيق</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="zero">لا تطبيقات فشلت</item>
+        <item quantity="one">فشل تطبيق واحد</item>
+        <item quantity="two">فشل تطبيقين</item>
+        <item quantity="few">فشل %d تطبيقات</item>
+        <item quantity="many">فشل %d تطبيقًا</item>
+        <item quantity="other">فشل %d تطبيق</item>
+    </plurals>
 </resources>
