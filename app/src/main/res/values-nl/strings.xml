@@ -141,7 +141,7 @@
     <string name="download_force_clear_all">Alles geforceerd wissen</string>
     <string name="download_failed">Installatie mislukt</string>
     <string name="download_eta_calculating">Aan het berekenen</string>
-    <string name="download_completed">Geïnstalleerd</string>
+    <string name="download_completed">Installatie voltooid</string>
     <string name="download_canceled">Afgebroken</string>
     <string name="download_cancel_all">Annuleer alle</string>
     <string name="details_think_this_app">Wat vind je van deze app?</string>
@@ -524,4 +524,38 @@
     <string name="action_ignore_all">Negeer alle updates</string>
     <string name="action_ignore_version">Versie overslaan <xliff:g id="version_name">%1$s</xliff:g></string>
     <string name="action_unignore">Niet meer negeren</string>
+    <string name="title_notifications">Meldingen</string>
+    <string name="pref_notification_categories">Categorieën</string>
+    <string name="pref_notification_disabled">Meldingen zijn uitgeschakeld</string>
+    <string name="status_installing">Bezig met installeren</string>
+    <string name="status_installed">Geïnstalleerd</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d app geïnstalleerd</item>
+        <item quantity="other">%d apps geïnstalleerd</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d app mislukt</item>
+        <item quantity="other">%d apps mislukt</item>
+    </plurals>
+    <string name="download_failed_storage">Onvoldoende opslagruimte om deze app te installeren</string>
+    <string name="installer_fallback_session">Gekozen installatiemethode is niet beschikbaar, de standaard methode wordt in plaats daarvan gebruikt.</string>
+    <string name="title_security">Veiligheid</string>
+    <string name="app_lock_title">Appvergrendeling</string>
+    <string name="app_lock_summary">Vereis biometrische authenticatie of schermvergrendeling om Aurora Store te openen.</string>
+    <string name="app_lock_no_credential">Stel eerst een schermvergrendeling (pincode, patroon, wachtwoord of biometrie) in op je apparaat.</string>
+    <string name="app_lock_locked_message">Authenticatie is vereist om toegang te krijgen tot Aurora Store</string>
+    <string name="app_lock_unlock">Ontgrendelen</string>
+    <string name="app_lock_prompt_title">Aurora Store ontgrendelen</string>
+    <string name="app_lock_prompt_subtitle">Voer patroon, pincode, wachtwoord of vingerafdruk van telefoonvergrendeling in</string>
+    <string name="notification_channel_alerts">Fouten &amp; waarschuwingen</string>
+    <string name="notification_group_activity">Downloads &amp; updates</string>
+    <string name="notification_group_alerts">Waarschuwingen</string>
+    <string name="pref_self_update">Zelf bijwerken</string>
+    <string name="pref_self_update_desc">Nieuwe versies van Aurora Store aanbieden in het tabblad Updates.</string>
+    <string name="pref_notification_progress">Downloadvoortgang tonen</string>
+    <string name="pref_notification_progress_desc">Toon gedetailleerde voortgang tijdens het installeren en bijwerken van apps. Indien uitgeschakeld, zorgt één stille melding ervoor dat installaties op de achtergrond blijven draaien.</string>
+    <string name="pref_notification_categories_desc">Geluid en prioriteit aanpassen voor elk type melding</string>
+    <string name="pref_notification_disabled_desc">Tik om meldingen voor Aurora Store in te schakelen</string>
+    <string name="updates_self_header">Zelfinstallatie</string>
+    <string name="updates_self_desc">Er is een nieuwere versie van Aurora Store beschikbaar</string>
 </resources>
