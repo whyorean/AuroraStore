@@ -130,14 +130,21 @@ class DownloadWorker @AssistedInject constructor(
         // Fetch required data for download
         try {
             download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
+        } catch (exception: Exception) {
+            return onFailure(exception)
+        }
 
+        // The icon only decorates the progress notification. Fetching it is best-effort: a
+        // failure (unreachable/pinned host, non-HTTP url, undecodable image) must never abort
+        // the download itself.
+        try {
             val response = (httpClient as HttpClient).call(download.iconURL).body
             val bitmap = BitmapFactory.decodeStream(
                 withContext(Dispatchers.IO) { response.byteStream() }
             )
-            icon = bitmap.scale(96, 96)
+            icon = bitmap?.scale(96, 96)
         } catch (exception: Exception) {
-            return onFailure(exception)
+            Log.w(TAG, "Failed to fetch icon for ${download.packageName}", exception)
         }
 
         // Set work/service to foreground on < Android 12.0
