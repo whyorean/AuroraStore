@@ -234,7 +234,7 @@
     <string name="onboarding_permission_notifications">Jakinarazpenak</string>
     <string name="onboarding_permission_notifications_desc">Bidali jakinarazpenak instalazioen egoerari buruz</string>
     <string name="session_enjoy">Hasi saioa eta gozatu.</string>
-    <string name="session_good">Itzel! Dena ondo.</string>
+    <string name="session_good">Dena ondo.</string>
     <string name="session_init">Prestatzen eta txukuntzen…</string>
     <string name="session_login_failed_google">Ezin izan da saioa hasi Google bidez</string>
     <string name="title_advanced">Aurreratua</string>
@@ -263,7 +263,7 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> eta <xliff:g id="apps_count">%4$d</xliff:g> gehiago</string>
     <string name="pref_vending_version_title">Google Play-eko bertsioa</string>
     <string name="pref_network_proxy_url">Proxy-aren URLa</string>
-    <string name="pref_aurora_only">Iragazi aplikazioak beste iturri batzuetatik</string>
+    <string name="pref_aurora_only">Iragazi aplikazioak beste iturri batzuetatik.</string>
     <string name="pref_install_mode_shizuku">Shizuku instalatzailea</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> aplikazioaren bertsio berri bat eskuragarri dago</string>
     <string name="onboarding_permission_doze">Atzeko planoko deskargak</string>
@@ -312,7 +312,7 @@
     <string name="pref_updates_check_frequency">Eguneratze automatikoen maiztasuna</string>
     <string name="failed_to_fetch_report">Ezin izan da eskuratu pribatutasun-txostena</string>
     <string name="item_required">Beharrezkoa</string>
-    <string name="pref_updates_check_frequency_desc">Konfiguratu eguneraketa automatikoentzako denbora-tarteak, ordutan.</string>
+    <string name="pref_updates_check_frequency_desc">Zenbatetan egiaztatzen dituen Aurorak aplikazioen eguneraketak.</string>
     <string name="session_installer_subtitle">APK bildu/zatituetarako saioan oinarritutako instalatzailea</string>
     <string name="root_installer_subtitle">Shell oinarritutako instalatzailea zeinak root baimenak darabiltzan</string>
     <string name="shizuku_installer_subtitle">Sistemaren APIak zuzenean erabiltzea adb/root pribilegioekin</string>
@@ -330,7 +330,7 @@
     <string name="faqs_subtitle">Galderarik? Aurkitu erantzunak</string>
     <string name="pref_clear_device_owner_desc">Horrek aplikazioa isilean instalatzeko saioaren instalatzailearen baimena kenduko du. Gailuaren jabetza garbitzen jarraitu nahi duzu?</string>
     <string name="onboarding_permission_installer_legacy_desc">Baimendu iturri ezezagunetako aplikazioak instalatzea</string>
-    <string name="pref_updates_incompatible_desc">Bistaratu instalatzen huts egin dezaketen aplikazio bateraezinen edo desgaituen eguneraketak</string>
+    <string name="pref_updates_incompatible_desc">Erakutsi instalatzen ez diren edo desgaitutako aplikazioen eguneraketak.</string>
     <string name="pref_updates_auto">Eguneraketa automatikoak</string>
     <string name="access_denied_using_vpn">Sarbidea ukatu da! VPN edo Tor erabiltzen ari al zara?</string>
     <string name="pref_clear_device_owner_summary">Aurora Store kentzen du, gailuaren jabearen aplikazio gisa</string>
@@ -385,7 +385,7 @@
     <string name="pref_network_proxy_url_message">Idatzi baliozko proxy URL bat datu guztiak proxytik pasatzeko.</string>
     <string name="check_updates">Eguneraketak bilatu</string>
     <string name="title_more">Gehiago</string>
-    <string name="about_aurora_store_summary">Aurora Store-k Google Play denda ofizialetik aplikazioak bilatzeko eta deskargatzeko aukera ematen dizu. Aplikazioen deskribapenak, pantaila-argazkiak, eguneraketak, beste erabiltzaileen iruzkinak eta APK-a zuzenean deskarga ditzakezu Google Play-tik zure gailura. Aurora Store erabiltzeko, Google Play kontu bat izan behar duzu eta zure Google Play kontuan saioa hasi behar duzu Aurora Store ireki eta konfiguratzen duzunean.\n\nAplikazio-denda tradizional batek ez bezala, Aurora dendak ez du inolako aplikaziorik, lizentziarik edo banatzen. Aurora dendako aplikazio guztiak, aplikazioen deskribapenak, pantaila-argazkiak eta bestelako edukiak zuzenean atzitu, deskargatu eta/edo bistaratzen dira Google Play-tik. Aurora dendak ate edo arakatzaile baten antzera funtzionatzen du, zure Google Play kontuan saioa hasteko eta Google Play-ko aplikazioak aurkitzeko.\n\nKontuan izan Aurora dendak ez duela Google-ren, Google Play-ren, Aurora Storeren edo aplikazioen garatzaileen bidez deskargatutako aplikaziorik; Aurora dendak ere ez du haiekin loturarik, lankidetzarik edo loturarik.</string>
+    <string name="about_aurora_store_summary">Aurora Store-k Google Play Store ofizialetik aplikazioak bilatu eta deskargatzeko aukera ematen dizu. Aplikazioen deskribapenak, pantaila-argazkiak, eguneraketak, beste erabiltzaileen iruzkinak egiaztatu ditzakezu, eta APK fitxategia zuzenean Google Play-tik zure gailura deskargatu. Aurora Store erabiltzeko, hasi saioa Google Play kontua erabiliz, Aurora Store lehen aldiz ireki eta konfiguratzen duzunean.\n\nAplikazio-denda tradizional bat ez bezala, Aurora Store-k ez du aplikaziorik jabetzen, lizentziatzen edo banatzen. Aurora Store-ko aplikazio, aplikazioen deskribapen, pantaila-argazki eta bestelako eduki guztiak zuzenean atzitzen, deskargatzen eta/edo bistaratzen dira Google Play-tik. Aurora Store-k ate edo arakatzaile baten antzera funtzionatzen du, zure Google Play kontuan saioa hasi eta Google Play-ko aplikazioak aurkitzeko aukera emanez.\n\nKontuan izan Aurora Store-k ez duela inolako baimenik, babesletzarik edo baimenik Google-ren, Google Play-ren, Aurora Store-ren bidez deskargatutako aplikazioen edo aplikazio-garatzaileen aldetik; ezta Aurora Store-k ere ez duela haiekin inolako afiliaziorik, lankidetzarik edo loturarik.</string>
     <string name="manage_account">Zure kontua kudeatu</string>
     <string name="pref_clear_device_owner_title">Garbitu gailuaren jabea</string>
     <string name="add_dispenser_summary">Gehitu token-banatzailea Aurora dendan. Token banatzaileek kontu-kredentzialak ematen dizkiote Aurora dendari, modu anonimoan saioa hasteko.</string>
@@ -477,4 +477,85 @@
     <string name="header_blacklist_others">Bestelakoak</string>
     <string name="preparing_to_download">Deskargatzeko prestatzen</string>
     <string name="verifying_downloads">Deskargak berifikatzen</string>
+    <string name="download_failed_storage">Ez dago aplikazio hau deskargatzeko biltegiratze leku nahikorik</string>
+    <string name="installer_fallback_session">Aukeratutako instalatzailea ez dago erabilgarri, lehenetsitako instalatzailea erabiltzen ari da.</string>
+    <string name="title_security">Segurtasuna</string>
+    <string name="app_lock_title">Aplikazioen blokeoa</string>
+    <string name="app_lock_summary">Beharrezkoa da autentifikazio biometrikoa edo pantaila blokeatzearen bidezko identifikazioa Aurora denda irekitzeko.</string>
+    <string name="app_lock_no_credential">Lehenik eta behin, konfiguratu pantaila-blokeo bat (PINa, eredua, pasahitza edo datu biometrikoak) zure gailuan.</string>
+    <string name="app_lock_locked_message">Autentifikazioa beharrezkoa da Aurora dendara sartzeko</string>
+    <string name="app_lock_unlock">Desblokeatu</string>
+    <string name="app_lock_prompt_title">Desblokeatu Aurora Store</string>
+    <string name="notification_channel_alerts">Erroreak eta alertak</string>
+    <string name="notification_group_activity">Deskargak eta eguneraketak</string>
+    <string name="app_lock_prompt_subtitle">Sartu telefonoaren pantaila blokeatzeko eredua, PINa, pasahitza edo hatz-marka</string>
+    <string name="notification_group_alerts">Alertak</string>
+    <string name="pref_self_update">Auto-eguneratzea</string>
+    <string name="pref_self_update_desc">Eskaini Aurora Store-ren bertsio berriak Eguneraketak fitxan.</string>
+    <string name="pref_source_filters_title">Iragazi aplikazioak beste iturri batzuetatik</string>
+    <string name="pref_source_filters_desc_all">Saltatu Aurora Store-k instalatu ez dituen aplikazio guztiak</string>
+    <string name="pref_source_filters_desc_none">Ez da instalatzailerik baztertuta</string>
+    <string name="pref_source_filters_desc_count">%1$d instalatzaile baztertuta</string>
+    <string name="source_filters_all">Iragazi beste instalatzaile guztiak</string>
+    <string name="source_filters_installers_header">Instalatzaile espezifikoak</string>
+    <string name="source_filters_installers_empty">Ez da instalatzailerik gehitu oraindik</string>
+    <string name="source_filters_add">Gehitu instalatzailea</string>
+    <string name="source_filters_add_dialog_hint">Sartu paketearen izena</string>
+    <string name="source_filters_remove">Kendu instalatzailea</string>
+    <string name="title_notifications">Jakinarazpenak</string>
+    <string name="pref_notification_progress">Erakutsi deskargaren aurrerapena</string>
+    <string name="pref_notification_progress_desc">Erakutsi aurrerapen zehatza aplikazioak deskargatzen eta eguneratzen dituzun bitartean. Desaktibatuta dagoenean, jakinarazpen isil bakar batek deskargak atzeko planoan exekutatzen jarraitzen du.</string>
+    <string name="pref_notification_categories">Kategoriak</string>
+    <string name="pref_notification_categories_desc">Doitu soinua eta garrantzia jakinarazpen mota bakoitzerako</string>
+    <string name="pref_notification_disabled">Jakinarazpenak desaktibatuta daude</string>
+    <string name="pref_notification_disabled_desc">Sakatu Aurora dendaren jakinarazpenak gaitzeko</string>
+    <string name="updates_self_header">Auto-eguneratzea</string>
+    <string name="updates_self_desc">Aurora dendaren bertsio berriagoa eskuragarri dago</string>
+    <string name="updates_incompatible_header">Eguneratze bateraezinak</string>
+    <string name="updates_incompatible_desc">Sistema-aplikazioen eguneratze hauek ezin dira instalatu sistema eragile honetan</string>
+    <string name="updates_approval_header">Onarpena behar duten eguneraketak</string>
+    <string name="updates_approval_desc">Aplikazio hauek ez ditu Aurorak instalatu. Aplikazioak eguneratzean aplikazioaren eguneratzearen jabetza transferitzeko eskatzen da.</string>
+    <string name="updates_app_details">Xehetasunak</string>
+    <string name="updates_ignored_header">Baztertuta</string>
+    <string name="updates_ignored_desc">Eguneratze hauek ezkutatuta daude, zuk baztertu arte</string>
+    <string name="action_ignore_all">Ez egin kasurik eguneratze guztiei</string>
+    <string name="action_ignore_version">Saltatu <xliff:g id="version_name">%1$s</xliff:g> bertsioa</string>
+    <string name="action_unignore">Ez egin kasurik</string>
+    <string name="pref_updates_check_frequency_3h">3 orduro</string>
+    <string name="pref_updates_check_frequency_6h">6 orduro</string>
+    <string name="pref_updates_check_frequency_12h">12 orduro</string>
+    <string name="pref_updates_check_frequency_24h">24 orduro</string>
+    <string name="pref_updates_check_frequency_3d">3 egunean behin</string>
+    <string name="pref_updates_check_frequency_7d">7 egunean behin</string>
+    <string name="pref_updates_check_frequency_15d">15 egunean behin</string>
+    <string name="pref_ui_theme">Gaia</string>
+    <string name="pref_theme_style_system">Jarraitu sistemari</string>
+    <string name="pref_theme_style_light">Argia</string>
+    <string name="pref_theme_style_dark">Iluna</string>
+    <string name="status_installing">Instalatzen</string>
+    <string name="status_installed">Instalatuta</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d aplikazio instalatuta</item>
+        <item quantity="other">%d aplikazio instalatuta</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d aplikaziok huts egin dute</item>
+        <item quantity="other">%d aplikaziok huts egin dute</item>
+    </plurals>
+    <string name="installed_sort_filter">Ordenatu eta iragazi</string>
+    <string name="installed_sort_by">Ordenatu honen arabera</string>
+    <string name="installed_sort_name">Izena</string>
+    <string name="installed_sort_date_installed">Instalazio data</string>
+    <string name="installed_sort_date_updated">Eguneratze data</string>
+    <string name="installed_sort_package_name">Paketearen izena</string>
+    <string name="installed_sort_size">Neurria</string>
+    <string name="installed_sort_ascending">Igotzen</string>
+    <string name="installed_sort_descending">Jaisten</string>
+    <string name="installed_filter">Iragazia</string>
+    <string name="installed_filter_user_apps">Erabiltzaileen aplikazioak</string>
+    <string name="installed_filter_system_apps">Sistemaren aplikazioak</string>
+    <string name="installed_filter_installer">Hemendik instalatuta</string>
+    <string name="installed_filter_all">Denak</string>
+    <string name="installed_updated_at">Eguneratua <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Egiaztatu</string>
 </resources>
