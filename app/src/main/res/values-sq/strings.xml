@@ -520,4 +520,37 @@
     <string name="header_blacklist_selected">Vënë në listë bllokimesh</string>
     <string name="updates_approval_desc">Këta aplikacione s’qenë instaluar nga Aurora. Përditësimi i tyre do të kërkojë shpërngulje pronësie përditësimesh aplikacioni.</string>
     <string name="action_check">Kontrolloje</string>
+    <string name="title_notifications">Njoftime</string>
+    <string name="pref_notification_progress">Shfaq ecuri shkarkimi</string>
+    <string name="pref_notification_progress_desc">Shfaq ecuri të hollësishme teksa shkarkohen dhe përditësohen aplikacione. Kur është e çaktivizuar, shfaqet vetëm një njoftim i vetëm i heshtur teksa shkarkimet kryhen në prapaskenë.</string>
+    <string name="pref_notification_categories">Kategori</string>
+    <string name="pref_notification_categories_desc">Përimtoni tingullin dhe rëndësinë për secilin lloj njoftimesh</string>
+    <string name="pref_notification_disabled">Njoftimet janë të çaktivizuara</string>
+    <string name="pref_notification_disabled_desc">Prekeni që të aktivizohen njoftime për Aurora Store</string>
+    <string name="download_failed_storage">Hapësirë e pamjaftueshme depozitimi për shkarkimin e këtij aplikacioni</string>
+    <string name="installer_fallback_session">Instaluesi i zgjedhur s’është i përdorshëm, në vend të tij po përdoret instaluesi parazgjedhje.</string>
+    <string name="title_security">Siguri</string>
+    <string name="app_lock_title">Kyçje aplikacioni</string>
+    <string name="app_lock_summary">Lyp doemos mirëfilltësim biometrik, ose kyçje ekrani për hapjen e Aurora Store-it.</string>
+    <string name="app_lock_no_credential">Së pari ujdisni në pajisjen tuaj kyçje ekrani (PIN, rregullsi, fjalëkalim apo mirëfilltësim biometrik).</string>
+    <string name="app_lock_locked_message">Që të hyhet në Aurora Store, duhet bërë mirëfilltësimi</string>
+    <string name="app_lock_unlock">Shkyçe</string>
+    <string name="app_lock_prompt_title">Shkyçe Aurora Store-in</string>
+    <string name="app_lock_prompt_subtitle">Jepni rregullsi kyçjeje ekrani telefoni, PIN, fjalëkalim, ose shenja gishtash</string>
+    <string name="notification_channel_alerts">Gabime &amp; sinjalizime</string>
+    <string name="notification_group_activity">Shkarkime &amp; përditësime</string>
+    <string name="notification_group_alerts">Sinjalizime</string>
+    <string name="pref_self_update">Vetëpërditësim</string>
+    <string name="pref_self_update_desc">Ofro montime të rinj Aurora Store te skeda Përditësime.</string>
+    <string name="updates_self_header">Vetëpërditësim</string>
+    <string name="updates_self_desc">Ka gati një montim më të ri të Aurora Store-it</string>
+    <string name="status_installing">Instalim</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d aplikacion i instaluar</item>
+        <item quantity="other">%d aplikacione të instaluar</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">U dështua për %d aplikacion</item>
+        <item quantity="other">U dështua për %d aplikacione</item>
+    </plurals>
 </resources>
