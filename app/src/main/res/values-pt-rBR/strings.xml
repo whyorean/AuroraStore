@@ -525,4 +525,40 @@
     <string name="installed_filter_all">Tudo</string>
     <string name="installed_updated_at">Atualizado em <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Conferir</string>
+    <string name="download_failed_storage">Não há espaço suficiente para baixar este app</string>
+    <string name="installer_fallback_session">O instalador escolhido está indisponível, usando o instalando padrão em seu lugar.</string>
+    <string name="title_security">Segurança</string>
+    <string name="app_lock_title">Bloqueio de app</string>
+    <string name="app_lock_summary">Requeira biometria ou autenticação da tela de bloqueio para abrir a Aurora Store.</string>
+    <string name="app_lock_no_credential">Defina um bloqueio de tela (PIN, padrão, senha ou biometria) em seu dispositivo primeiro.</string>
+    <string name="app_lock_locked_message">Autenticação necessária para acessar a Aurora Store</string>
+    <string name="app_lock_unlock">Desbloquear</string>
+    <string name="app_lock_prompt_title">Desbloquear Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Insira padrão, PIN, senha ou digital de desbloqueio do telefone</string>
+    <string name="notification_channel_alerts">Erros e alertas</string>
+    <string name="notification_group_activity">Downloads e atualizações</string>
+    <string name="notification_group_alerts">Alertas</string>
+    <string name="pref_self_update">Autoatualizar</string>
+    <string name="pref_self_update_desc">Oferecer novas compilações da Aurora Store na aba de Atualizações.</string>
+    <string name="title_notifications">Notificações</string>
+    <string name="pref_notification_progress">Mostrar progresso do download</string>
+    <string name="pref_notification_progress_desc">Mostrar progresso detalhado ao baixar e atualizar apps. Quando desativado, uma única notificação silenciosa mantém downloads rodando em plano de fundo.</string>
+    <string name="pref_notification_categories">Categorias</string>
+    <string name="pref_notification_categories_desc">Defina som e importância para cada tipo de notificação</string>
+    <string name="pref_notification_disabled">Notificações estão desativadas</string>
+    <string name="pref_notification_disabled_desc">Toque para ativar notificações para a Aurora Store</string>
+    <string name="updates_self_header">Autoatualizar</string>
+    <string name="updates_self_desc">Uma nova compilação da Aurora Store está disponível</string>
+    <string name="status_installing">Instalando</string>
+    <string name="status_installed">Instalado</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d app instalado</item>
+        <item quantity="many">%d apps instalados</item>
+        <item quantity="other">%d apps instalados</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d app falhou</item>
+        <item quantity="many">%d apps falharam</item>
+        <item quantity="other">%d apps falharam</item>
+    </plurals>
 </resources>
