@@ -553,12 +553,12 @@
     <string name="status_installed">Instalado</string>
     <plurals name="notification_installed_summary">
         <item quantity="one">%d app instalado</item>
-        <item quantity="many">%d apps instalados</item>
+        <item quantity="many">%d de apps instalados</item>
         <item quantity="other">%d apps instalados</item>
     </plurals>
     <plurals name="notification_failed_summary">
         <item quantity="one">%d app falhou</item>
-        <item quantity="many">%d apps falharam</item>
+        <item quantity="many">%d de apps falharam</item>
         <item quantity="other">%d apps falharam</item>
     </plurals>
 </resources>
