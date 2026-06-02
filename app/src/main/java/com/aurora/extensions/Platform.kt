@@ -68,6 +68,10 @@ val isHuawei: Boolean
         Build.HARDWARE.lowercase(Locale.getDefault()).contains("kirin") ||
         Build.HARDWARE.lowercase(Locale.getDefault()).contains("hi3")
 
+val isOneUI: Boolean
+    get() = !getSystemProperty("ro.build.version.oneui").isNullOrBlank() ||
+        Build.MANUFACTURER.equals("samsung", ignoreCase = true)
+
 @get:SuppressLint("PrivateApi")
 val isMiuiOptimizationDisabled: Boolean
     get() {

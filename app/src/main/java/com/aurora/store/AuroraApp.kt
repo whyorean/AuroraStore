@@ -85,8 +85,13 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         val themeStyle = Preferences.getInteger(this, Preferences.PREFERENCE_THEME_STYLE)
         setAppTheme(themeStyle)
 
-        // Apply dynamic colors to activities
-        DynamicColors.applyToActivitiesIfAvailable(this)
+        // Apply dynamic colors to activities, unless disabled (opt-out, off by default on One UI)
+        val dynamicColors = Preferences.getBoolean(
+            this,
+            Preferences.PREFERENCE_DYNAMIC_COLORS,
+            Preferences.dynamicColorsDefault
+        )
+        if (dynamicColors) DynamicColors.applyToActivitiesIfAvailable(this)
 
         // Required for Shizuku installer
         if (isPAndAbove) HiddenApiBypass.addHiddenApiExemptions("I", "L")

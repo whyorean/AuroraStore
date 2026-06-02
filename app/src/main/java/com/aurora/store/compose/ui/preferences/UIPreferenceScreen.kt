@@ -30,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.core.net.toUri
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.R
@@ -38,6 +39,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.preferences.network.SingleChoiceDialog
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DEFAULT_SELECTED_TAB
+import com.aurora.store.util.Preferences.PREFERENCE_DYNAMIC_COLORS
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_THEME_STYLE
 import com.aurora.store.util.save
@@ -61,6 +63,15 @@ private fun ScreenContent() {
     }
     var forYou by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_FOR_YOU, true))
+    }
+    var dynamicColors by remember {
+        mutableStateOf(
+            Preferences.getBoolean(
+                context,
+                PREFERENCE_DYNAMIC_COLORS,
+                Preferences.dynamicColorsDefault
+            )
+        )
     }
     var showThemeDialog by remember { mutableStateOf(false) }
     var showTabDialog by remember { mutableStateOf(false) }
@@ -131,6 +142,29 @@ private fun ScreenContent() {
                     headlineContent = { Text(stringResource(R.string.pref_ui_theme)) },
                     supportingContent = { Text(themeEntries.getOrElse(themeStyle) { "" }) }
                 )
+            }
+            if (isSAndAbove) {
+                item {
+                    ListItem(
+                        modifier = Modifier.clickable {
+                            dynamicColors = !dynamicColors
+                            context.save(PREFERENCE_DYNAMIC_COLORS, dynamicColors)
+                        },
+                        headlineContent = { Text(stringResource(R.string.pref_ui_dynamic_color)) },
+                        supportingContent = {
+                            Text(stringResource(R.string.pref_ui_dynamic_color_desc))
+                        },
+                        trailingContent = {
+                            Switch(
+                                checked = dynamicColors,
+                                onCheckedChange = { checked ->
+                                    dynamicColors = checked
+                                    context.save(PREFERENCE_DYNAMIC_COLORS, checked)
+                                }
+                            )
+                        }
+                    )
+                }
             }
             item { HorizontalDivider() }
             item {
