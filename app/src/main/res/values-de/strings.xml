@@ -524,4 +524,38 @@
     <string name="installed_filter_all">Alle</string>
     <string name="installed_updated_at">Aktualisiert <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Überprüfen</string>
+    <string name="download_failed_storage">Nicht genügend Speicherplatz zum Herunterladen dieser App</string>
+    <string name="installer_fallback_session">Die ausgewählte Installationsmethode ist nicht verfügbar, stattdessen wird die Standardmethode verwendet.</string>
+    <string name="title_security">Sicherheit</string>
+    <string name="app_lock_title">App-Sperre</string>
+    <string name="app_lock_summary">Zum Öffnen von Aurora Store ist eine Authentifizierung per biometrische Daten oder Bildschirmsperre erforderlich.</string>
+    <string name="app_lock_no_credential">Richte zunächst eine Bildschirmsperre (PIN, Muster, Passwort oder biometrische Daten) auf deinem Gerät ein.</string>
+    <string name="app_lock_locked_message">Für den Zugriff auf Aurora Store ist eine Authentifizierung erforderlich</string>
+    <string name="app_lock_unlock">Entsperren</string>
+    <string name="app_lock_prompt_title">Aurora Store entsperren</string>
+    <string name="app_lock_prompt_subtitle">Gib das Muster, die PIN, das Passwort oder den Fingerabdruck für die Bildschirmsperre ein</string>
+    <string name="notification_channel_alerts">Fehler und Warnungen</string>
+    <string name="notification_group_activity">Downloads und Updates</string>
+    <string name="notification_group_alerts">Warnungen</string>
+    <string name="pref_self_update_desc">Neue Aurora-Store-Versionen unter Updates anbieten.</string>
+    <string name="pref_self_update">Auto-Update</string>
+    <string name="title_notifications">Benachrichtigungen</string>
+    <string name="pref_notification_progress">Downloadfortschritt anzeigen</string>
+    <string name="pref_notification_progress_desc">Den detaillierten Fortschritt beim Herunterladen und Aktualisieren von Apps anzeigen. Wenn deaktiviert, sorgt eine einzige unauffällige Benachrichtigung dafür, dass die Downloads im Hintergrund weiterlaufen.</string>
+    <string name="pref_notification_categories">Kategorien</string>
+    <string name="pref_notification_categories_desc">Ton und Priorität für jede Benachrichtigungsart anpassen</string>
+    <string name="pref_notification_disabled">Benachrichtigungen sind deaktiviert</string>
+    <string name="pref_notification_disabled_desc">Tippe, um Benachrichtigungen für Aurora Store zu aktivieren</string>
+    <string name="updates_self_header">Auto-Update</string>
+    <string name="updates_self_desc">Es ist eine neuere Version von Aurora Store verfügbar</string>
+    <string name="status_installing">Wird installiert</string>
+    <string name="status_installed">Installiert</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d App installiert</item>
+        <item quantity="other">%d Apps installiert</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d App-Installation fehlgeschlagen</item>
+        <item quantity="other">%d App-Installationen fehlgeschlagen</item>
+    </plurals>
 </resources>

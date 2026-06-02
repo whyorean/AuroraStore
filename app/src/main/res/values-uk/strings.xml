@@ -526,4 +526,42 @@
     <string name="installed_filter_all">Усі</string>
     <string name="installed_updated_at">Оновлено <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Перевірити</string>
+    <string name="download_failed_storage">Недостатньо місця в пам’яті для завантаження цього застосунку</string>
+    <string name="installer_fallback_session">Вибраний встановлювач недоступний, замість нього використовується стандартний.</string>
+    <string name="title_security">Безпека</string>
+    <string name="app_lock_title">Блокування застосунку</string>
+    <string name="app_lock_summary">Вимагати біометричну автентифікацію або блокування екрана для відкриття Aurora Store.</string>
+    <string name="app_lock_no_credential">Спочатку встановіть блокування екрана (PIN-код, графічний ключ, пароль або біометричні дані) на своєму пристрої.</string>
+    <string name="app_lock_locked_message">Для доступу до Aurora Store потрібна автентифікація</string>
+    <string name="app_lock_unlock">Розблокувати</string>
+    <string name="app_lock_prompt_title">Розблокування Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Введіть графічний ключ, PIN-код, пароль або відбиток пальця для розблокування екрана</string>
+    <string name="notification_channel_alerts">Помилки та оповіщення</string>
+    <string name="notification_group_activity">Завантаження й оновлення</string>
+    <string name="notification_group_alerts">Оповіщення</string>
+    <string name="pref_self_update">Самооновлення</string>
+    <string name="pref_self_update_desc">Пропонувати нові збірки Aurora Store на вкладці «Оновлення».</string>
+    <string name="title_notifications">Сповіщення</string>
+    <string name="pref_notification_progress">Показувати прогрес завантаження</string>
+    <string name="pref_notification_progress_desc">Показувати детальний прогрес під час завантаження та оновлення застосунків. Якщо вимкнено, одне тихе сповіщення підтримуватиме роботу завантажень у фоновому режимі.</string>
+    <string name="pref_notification_categories">Категорії</string>
+    <string name="pref_notification_categories_desc">Налаштуйте звук і важливість для кожного типу сповіщень</string>
+    <string name="pref_notification_disabled">Сповіщення вимкнено</string>
+    <string name="pref_notification_disabled_desc">Натисніть, щоб увімкнути сповіщення для Aurora Store</string>
+    <string name="updates_self_header">Самооновлення</string>
+    <string name="updates_self_desc">Доступна новіша версія Aurora Store</string>
+    <string name="status_installing">Встановлення</string>
+    <string name="status_installed">Встановлено</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d застосунок встановлено</item>
+        <item quantity="few">%d застосунки встановлено</item>
+        <item quantity="many">%d застосунків встановлено</item>
+        <item quantity="other">%d застосунків встановлено</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">Не вдалося встановити %d застосунок</item>
+        <item quantity="few">Не вдалося встановити %d застосунки</item>
+        <item quantity="many">Не вдалося встановити %d застосунків</item>
+        <item quantity="other">Не вдалося встановити %d застосунків</item>
+    </plurals>
 </resources>

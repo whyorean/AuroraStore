@@ -526,4 +526,42 @@
     <string name="installed_filter_all">Vše</string>
     <string name="installed_updated_at">Aktualizováno <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Zkontrolovat</string>
+    <string name="download_failed_storage">Nemáte dostatek místa v úložišti pro stažení této aplikace</string>
+    <string name="installer_fallback_session">Zvolený instalátor není dostupný, bude použit výchozí instalátor.</string>
+    <string name="title_security">Zabezpečení</string>
+    <string name="app_lock_title">Zámek aplikace</string>
+    <string name="app_lock_summary">Vyžadovat biometrické nebo jiné ověření pro otevření aplikace Aurora Store.</string>
+    <string name="app_lock_no_credential">Nejprve nastavte zámek obrazovky (PIN, vzor, heslo nebo biometrický) na vašem zařízení.</string>
+    <string name="app_lock_locked_message">Pro přístup do aplikace Aurora Store je vyžadováno ověření</string>
+    <string name="app_lock_unlock">Odemknout</string>
+    <string name="app_lock_prompt_title">Odemknout Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Zadejte vzorec, PIN, heslo nebo otisk prstu pro odemčení obrazovky</string>
+    <string name="notification_channel_alerts">Chyby a upozornění</string>
+    <string name="notification_group_activity">Stahování a aktualizace</string>
+    <string name="notification_group_alerts">Upozornění</string>
+    <string name="pref_self_update">Vlastní aktualizace</string>
+    <string name="pref_self_update_desc">Nabízet nová sestavení aplikace Aurora Store na kartě Aktualizace.</string>
+    <string name="title_notifications">Oznámení</string>
+    <string name="pref_notification_progress">Zobrazit průběh stahování</string>
+    <string name="pref_notification_progress_desc">Zobrazit podrovný průběh během stahování a aktualizace aplikací. Pokud je vypnuto, bude stahování na pozadí udržovat jedno tiché oznámení.</string>
+    <string name="pref_notification_categories">Kategorie</string>
+    <string name="pref_notification_categories_desc">Úprava zvuku a důležitosti pro každý druh oznámení</string>
+    <string name="pref_notification_disabled">Oznámení jsou vypnuta</string>
+    <string name="pref_notification_disabled_desc">Klepněte pro zapnutí oznámení aplikace Aurora Store</string>
+    <string name="updates_self_header">Vlastní aktualizace</string>
+    <string name="updates_self_desc">Je dostupné nové sestavení aplikace Aurora Store</string>
+    <string name="status_installing">Instalace</string>
+    <string name="status_installed">Nainstalováno</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">Nainstalována %d aplikace</item>
+        <item quantity="few">Nainstalovány %d aplikace</item>
+        <item quantity="many">Nainstalováno %d aplikací</item>
+        <item quantity="other">Nainstalováno %d aplikací</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">Nepodařilo se nainstalovat %d aplikaci</item>
+        <item quantity="few">Nepodařilo se nainstalovat %d aplikace</item>
+        <item quantity="many">Nepodařilo se nainstalovat %d aplikací</item>
+        <item quantity="other">Nepodařilo se nainstalovat %d aplikací</item>
+    </plurals>
 </resources>

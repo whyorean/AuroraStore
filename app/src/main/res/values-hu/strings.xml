@@ -524,4 +524,38 @@
     <string name="installed_filter_all">Összes</string>
     <string name="installed_updated_at">Frissítve: <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Ellenőrzés</string>
+    <string name="download_failed_storage">Nincs elég tárhely az alkalmazás letöltéséhez</string>
+    <string name="installer_fallback_session">A kiválasztott telepítő nem érhető el, helyette az alapértelmezett telepítő lesz használva.</string>
+    <string name="title_security">Biztonság</string>
+    <string name="app_lock_title">Alkalmazás zárolása</string>
+    <string name="app_lock_summary">Az Aurora Store megnyitásához biometrikus vagy képernyőzáras hitelesítés szükséges.</string>
+    <string name="app_lock_no_credential">Először állítson be egy képernyőzárat (PIN-kód, minta, jelszó vagy biometrikus) az eszközén.</string>
+    <string name="app_lock_locked_message">Az Aurora Store eléréséhez hitelesítés szükséges</string>
+    <string name="app_lock_unlock">Feloldás</string>
+    <string name="app_lock_prompt_title">Aurora Store feloldása</string>
+    <string name="app_lock_prompt_subtitle">Adja meg a telefon képernyőzárolási mintáját, PIN-kódját, jelszavát vagy az ujjlenyomatát</string>
+    <string name="notification_channel_alerts">Hibák és figyelmeztetések</string>
+    <string name="notification_group_activity">Letöltések és frissítések</string>
+    <string name="notification_group_alerts">Figyelmeztetések</string>
+    <string name="pref_self_update">Önfrissítés</string>
+    <string name="pref_self_update_desc">Új Aurora Store-verziók felkínálása a frissítések lapon.</string>
+    <string name="title_notifications">Értesítések</string>
+    <string name="pref_notification_progress">Letöltés folyamatának megjelenítése</string>
+    <string name="pref_notification_progress_desc">Részletes előrehaladás megjelenítése az alkalmazások letöltése és frissítése közben. Ha ki van kapcsolva, egyetlen csendes értesítés jelzi, hogy a letöltések a háttérben futnak.</string>
+    <string name="pref_notification_categories">Kategóriák</string>
+    <string name="pref_notification_categories_desc">Az egyes értesítéstípusok hangjának és fontosságának beállítása</string>
+    <string name="pref_notification_disabled">Az értesítések ki vannak kapcsolva</string>
+    <string name="pref_notification_disabled_desc">Koppintson az Aurora Store értesítéseinek engedélyezéséhez</string>
+    <string name="updates_self_header">Önfrissítés</string>
+    <string name="updates_self_desc">Újabb Aurora Store-verzió érhető el</string>
+    <string name="status_installing">Telepítés</string>
+    <string name="status_installed">Telepítve</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d alkalmazás telepítve</item>
+        <item quantity="other">%d alkalmazás telepítve</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d alkalmazás telepítése sikertelen</item>
+        <item quantity="other">%d alkalmazás telepítése sikertelen</item>
+    </plurals>
 </resources>
