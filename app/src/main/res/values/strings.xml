@@ -469,6 +469,9 @@
     <string name="microg_removed_auth_warning">microG is no longer installed. Run setup again to keep things working smoothly.</string>
     <string name="microg_installer_subtitle">Requires microG companion app to be installed</string>
     <string name="microg_installer_desc">Helps you bypass App Integrity (installer only) check</string>
+    <string name="microg_installer_prerequisite_title" translatable="false">Enable microG installer</string>
+    <string name="microg_installer_prerequisite_desc" translatable="false">Before using the microG installer, please ensure you have enabled it.\n\nPlay Store services → ⋮ → App Installer Settings → Allow App Installation</string>
+    <string name="microg_installer_open_settings" translatable="false">Open microG settings</string>
     <string name="am_installer_subtitle">Full-featured open source package manager</string>
     <string name="am_installer_desc">Requires App Manager, need adb/root mode to install when miui optimization is on</string>
     <string name="shizuku_installer_subtitle">Using system APIs directly with adb/root privileges</string>

@@ -41,6 +41,7 @@ import com.aurora.store.data.installer.base.IInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.topjohnwu.superuser.Shell
@@ -83,7 +84,7 @@ class AppInstaller @Inject constructor(
             if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
             if (hasAppManager(context)) AMInstaller.installerInfo else null,
             if (hasShizukuOrSui(context)) ShizukuInstaller.installerInfo else null,
-            if (hasMicroGInstaller(context)) MicroGInstaller.installerInfo else null
+            if (hasMicroGCompanion(context)) MicroGInstaller.installerInfo else null
         )
 
         /**
@@ -154,6 +155,7 @@ class AppInstaller @Inject constructor(
             false
         }
 
+        // TODO: Use microG's proposed API instead of relying on a hardcoded metadata flag that can be misleading (e.g. user can enable the installer from UI)
         fun hasMicroGInstaller(context: Context): Boolean {
             if (!PackageUtil.hasMicroGCompanion(context)) return false
             return try {
@@ -236,7 +238,7 @@ class AppInstaller @Inject constructor(
                 defaultInstaller
             }
 
-            Installer.MICROG -> if (hasMicroGInstaller(context)) {
+            Installer.MICROG -> if (hasMicroGCompanion(context)) {
                 microGInstaller
             } else {
                 defaultInstaller
