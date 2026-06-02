@@ -40,6 +40,9 @@ import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
+import com.aurora.store.data.room.review.LocalReview
+import com.aurora.store.data.room.review.LocalReview.Companion.toReview
+import com.aurora.store.data.room.review.ReviewDao
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
@@ -48,14 +51,19 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -71,6 +79,7 @@ class AppDetailsViewModel @Inject constructor(
     private val webDataSafetyHelper: WebDataSafetyHelper,
     private val downloadHelper: DownloadHelper,
     private val favouriteDao: FavouriteDao,
+    private val reviewDao: ReviewDao,
     private val httpClient: IHttpClient,
     private val json: Json
 ) : ViewModel() {
@@ -89,8 +98,19 @@ class AppDetailsViewModel @Inject constructor(
     private val _featuredReviews = MutableStateFlow<List<Review>>(emptyList())
     val featuredReviews = _featuredReviews.asStateFlow()
 
-    private val _userReview = MutableStateFlow<Review?>(null)
-    val userReview = _userReview.asStateFlow()
+    // The user's own review for the loaded app, backed by Room so it is shown instantly (even
+    // offline) and survives restarts while Google takes time to publish it. Scoped by account.
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val userReview: StateFlow<Review?> = app
+        .filterNotNull()
+        .flatMapLatest { loadedApp ->
+            reviewDao.review(loadedApp.packageName, accountEmail).map { it?.toReview() }
+        }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    // One-shot signal carrying whether the latest review submission succeeded
+    private val _reviewPosted = MutableSharedFlow<Boolean>(extraBufferCapacity = 1)
+    val reviewPosted = _reviewPosted.asSharedFlow()
 
     private val _dataSafetyReport = MutableStateFlow<DataSafetyReport?>(null)
     val dataSafetyReport = _dataSafetyReport.asStateFlow()
@@ -116,6 +136,10 @@ class AppDetailsViewModel @Inject constructor(
         if (a?.packageName.isNullOrBlank()) return@combine null
         list.find { d -> d.packageName == a.packageName }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    // E-mail of the signed-in account; blank for anonymous sessions. Used to scope cached reviews.
+    private val accountEmail: String
+        get() = authProvider.authData?.email.orEmpty()
 
     private val isInstalled: Boolean
         get() = PackageUtil.isInstalled(context, app.value!!.packageName)
@@ -200,6 +224,11 @@ class AppDetailsViewModel @Inject constructor(
 
             fetchFavourite(packageName)
             fetchFeaturedReviews(packageName)
+            // Reviews can only be submitted for installed apps with a personal account, so the
+            // user's existing review is only relevant (and fetchable) in that case.
+            if (!authProvider.isAnonymous && app.value!!.isInstalled) {
+                fetchUserAppReview(app.value!!)
+            }
             fetchDataSafetyReport(packageName)
             fetchSuggestions()
             fetchExodusPrivacyReport(packageName)
@@ -218,11 +247,32 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Reconciles the locally cached review with the authoritative Play API:
+     * - If Play returns a review, it is mirrored locally and marked synced (this also picks up
+     *   edits made directly on the Play Store).
+     * - If Play returns nothing but we had previously confirmed a review, it was deleted on the
+     *   Play Store, so the local copy is dropped.
+     * - If Play returns nothing for a review that was never confirmed, it is still being published,
+     *   so the local (pending) copy is kept so the user keeps seeing what they submitted.
+     */
     fun fetchUserAppReview(app: App) {
         viewModelScope.launch(Dispatchers.IO) {
+            val email = accountEmail
+            if (email.isBlank()) return@launch
             try {
                 val isTesting = app.testingProgram?.isSubscribed ?: false
-                _userReview.value = reviewsHelper.getUserReview(app.packageName, isTesting)
+                val apiReview = reviewsHelper.getUserReview(app.packageName, isTesting)
+                if (apiReview != null) {
+                    reviewDao.upsert(
+                        LocalReview.fromReview(apiReview, app.packageName, email, synced = true)
+                    )
+                } else {
+                    val cached = reviewDao.get(app.packageName, email)
+                    if (cached != null && cached.synced) {
+                        reviewDao.delete(app.packageName, email)
+                    }
+                }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to fetch user review", exception)
             }
@@ -231,16 +281,42 @@ class AppDetailsViewModel @Inject constructor(
 
     fun postAppReview(packageName: String, review: Review, isBeta: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
+            val email = accountEmail
             try {
-                _userReview.value = reviewsHelper.addOrEditReview(
+                val posted = reviewsHelper.addOrEditReview(
                     packageName,
                     review.title,
                     review.comment,
                     review.rating,
                     isBeta
                 )
+                if (posted != null) {
+                    // Cache as pending (not yet synced): Play accepted it but getUserReview may
+                    // not return it until publishing finishes. Marking it synced prematurely would
+                    // let the next reconcile mistake the publishing delay for a deletion.
+                    reviewDao.upsert(
+                        LocalReview.fromReview(posted, packageName, email, synced = false)
+                    )
+                }
+                _reviewPosted.tryEmit(posted != null)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to post review", exception)
+                _reviewPosted.tryEmit(false)
+            }
+        }
+    }
+
+    fun deleteAppReview(app: App) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val email = accountEmail
+            try {
+                val isTesting = app.testingProgram?.isSubscribed ?: false
+                reviewsHelper.deleteReview(app.packageName, isTesting)
+                // Only drop the local copy once Play has accepted the deletion, so a failed
+                // network call leaves the review visible rather than silently disappearing.
+                if (email.isNotBlank()) reviewDao.delete(app.packageName, email)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to delete review", exception)
             }
         }
     }

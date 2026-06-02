@@ -31,6 +31,12 @@ data class SelfUpdate(
     val versionCodeRaw: String = "0",
     @SerialName("download_url")
     val downloadUrl: String = "",
+    @SerialName("icon_url")
+    val iconUrl: String = "",
+    @SerialName("sha1")
+    val sha1: String = "",
+    @SerialName("sha256")
+    val sha256: String = "",
     val changelog: String = "",
     @SerialName("size")
     val sizeRaw: String = "0",
@@ -61,12 +67,14 @@ data class SelfUpdate(
         updatedOn = updatedOn,
         displayName = context.getString(R.string.app_name),
         developerName = "Rahul Kumar Patel",
-        iconArtwork = Artwork(url = ICON_URL),
+        iconArtwork = Artwork(url = iconUrl),
         fileList = mutableListOf(
             PlayFile(
                 name = "${context.packageName}.apk",
                 url = downloadUrl,
-                size = size
+                size = size,
+                sha1 = sha1,
+                sha256 = sha256
             )
         ),
         isFree = true,
@@ -78,11 +86,4 @@ data class SelfUpdate(
             EncodedCertificateSet(certificateSet = it, sha256 = String())
         }.toMutableList()
     )
-
-    companion object {
-        // Kept in sync with the fastlane metadata on the project.
-        private const val ICON_URL =
-            "https://gitlab.com/AuroraOSS/AuroraStore/-/raw/master/" +
-                "fastlane/metadata/android/en-US/images/icon.png"
-    }
 }

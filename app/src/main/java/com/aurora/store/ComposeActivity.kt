@@ -6,7 +6,6 @@
 
 package com.aurora.store
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.compose.setContent
@@ -152,21 +151,10 @@ class ComposeActivity : FragmentActivity() {
     }
 
     private fun resolveStartDestination(): Screen {
-        // Parcel-based navigation (e.g. from NotificationUtil)
+        // Parcel-based navigation (e.g. from NotificationUtil or DeepLinkConfirmActivity, which
+        // owns the external ACTION_VIEW market:// and play.google.com deep links)
         IntentCompat.getParcelableExtra(intent, Screen.PARCEL_KEY, Screen::class.java)
             ?.let { return it }
-
-        // Deep links via ACTION_VIEW
-        if (intent.action == Intent.ACTION_VIEW) {
-            val data = intent.data
-            val path = data?.path.orEmpty()
-            val id = data?.getQueryParameter("id")
-            return when {
-                id != null && path.contains("/apps/dev") -> Screen.DevProfile(id)
-                id != null -> Screen.AppDetails(id)
-                else -> defaultStart()
-            }
-        }
 
         // SEND / SHOW_APP_INFO — getPackageName() handles both
         intent.getPackageName()?.let { return Screen.AppDetails(it) }

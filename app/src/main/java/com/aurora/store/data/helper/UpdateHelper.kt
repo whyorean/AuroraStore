@@ -24,6 +24,7 @@ import com.aurora.store.data.room.update.IgnoredUpdateDao
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao
 import com.aurora.store.data.work.UpdateWorker
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_BATTERY
 import com.aurora.store.util.Preferences.PREFERENCES_UPDATES_RESTRICTIONS_IDLE
@@ -253,13 +254,23 @@ class UpdateHelper @Inject constructor(
 
     private suspend fun deleteInvalidUpdates() {
         updateDao.updates().firstOrNull()?.forEach { update ->
-            // Nightly builds share a static version code, so the generic "up to date"
-            // check would wrongly drop a freshly found self-update. The worker owns the
-            // self-update lifecycle (re-checked by build timestamp); cleanup happens via
-            // the install event instead.
-            if (update.isSelfUpdate(context) && BuildType.CURRENT == BuildType.NIGHTLY) {
+            if (update.isSelfUpdate(context)) {
+                // Self-updates need a flavor-aware staleness check. Release/preload bump the
+                // version code, so the normal up-to-date check works. Nightly reuses a static
+                // version code (isUpToDate is always true there), so fall back to the
+                // commit-tagged version name. Without this the row lingers until the next
+                // update check, since the install event isn't delivered when the app replaces
+                // itself.
+                val alreadyInstalled = if (BuildType.CURRENT == BuildType.NIGHTLY) {
+                    PackageUtil.getInstalledVersionName(context, update.packageName) ==
+                        update.versionName
+                } else {
+                    update.isUpToDate(context)
+                }
+                if (alreadyInstalled) deleteUpdate(update.packageName)
                 return@forEach
             }
+
             if (!update.isInstalled(context) || update.isUpToDate(context)) {
                 deleteUpdate(update.packageName)
             }

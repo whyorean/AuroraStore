@@ -43,8 +43,10 @@ fun AppUpdateItem(
     onCancel: () -> Unit = {},
     onUnignore: (() -> Unit)? = null
 ) {
+    // Only the INSTALLING status shows as "Installing"; a downloaded-but-not-installed
+    // (COMPLETED) app falls back to the "Update" action.
     val inProgress = download != null && !download.isFinished
-    val pendingInstall = download?.status == DownloadStatus.COMPLETED
+    val installing = download?.status == DownloadStatus.INSTALLING
     val progress = if (download?.status == DownloadStatus.DOWNLOADING) {
         download.progress.toFloat()
     } else {
@@ -65,7 +67,7 @@ fun AppUpdateItem(
             AnimatedAppIcon(
                 modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
                 iconUrl = update.iconURL,
-                inProgress = inProgress || pendingInstall,
+                inProgress = inProgress,
                 progress = progress
             )
         }
@@ -100,7 +102,7 @@ fun AppUpdateItem(
                 }
             }
 
-            pendingInstall -> {
+            installing -> {
                 OutlinedButton(onClick = {}, enabled = false) {
                     Text(stringResource(R.string.action_installing))
                 }

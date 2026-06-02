@@ -7,6 +7,7 @@
 package com.aurora.store.compose.ui.details
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
@@ -89,6 +90,7 @@ import com.aurora.store.compose.ui.details.composable.RatingAndReviews
 import com.aurora.store.compose.ui.details.composable.Screenshots
 import com.aurora.store.compose.ui.details.composable.Tags
 import com.aurora.store.compose.ui.details.composable.Testing
+import com.aurora.store.compose.ui.details.composable.UserReview
 import com.aurora.store.compose.ui.details.menu.AppDetailsMenu
 import com.aurora.store.compose.ui.details.menu.MenuItem
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
@@ -120,6 +122,7 @@ fun AppDetailsScreen(
     val app by viewModel.app.collectAsStateWithLifecycle()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val featuredReviews by viewModel.featuredReviews.collectAsStateWithLifecycle()
+    val userReview by viewModel.userReview.collectAsStateWithLifecycle()
     val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
@@ -129,12 +132,22 @@ fun AppDetailsScreen(
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
+    LaunchedEffect(Unit) {
+        viewModel.reviewPosted.collect { success ->
+            context.toast(
+                if (success) R.string.toast_rated_success else R.string.toast_rated_failed
+            )
+        }
+    }
+
     app?.let { loadedApp ->
         installError?.let { err ->
             InstallErrorSheet(
                 app = loadedApp,
                 error = err.error,
                 extra = err.extra,
+                isAnonymous = viewModel.authProvider.isAnonymous,
+                onBuy = { openPlayStore(context, loadedApp.packageName) },
                 onDismiss = viewModel::dismissInstallError
             )
         }
@@ -161,6 +174,7 @@ fun AppDetailsScreen(
                 ScreenContentApp(
                     app = loadedApp,
                     featuredReviews = featuredReviews,
+                    userReview = userReview,
                     suggestionsBundle = suggestionsBundle,
                     isFavorite = favorite,
                     isAnonymous = viewModel.authProvider.isAnonymous,
@@ -186,6 +200,14 @@ fun AppDetailsScreen(
                     onTestingSubscriptionChange = { subscribe ->
                         viewModel.updateTestingProgramStatus(packageName, subscribe)
                     },
+                    onSubmitReview = { rating, title, comment ->
+                        viewModel.postAppReview(
+                            loadedApp.packageName,
+                            Review(title = title, comment = comment, rating = rating),
+                            loadedApp.testingProgram?.isSubscribed ?: false
+                        )
+                    },
+                    onDeleteReview = { viewModel.deleteAppReview(loadedApp) },
                     forceSinglePane = forceSinglePane,
                     onForceRestart = {
                         val intent = Intent(context, ComposeActivity::class.java)
@@ -195,6 +217,21 @@ fun AppDetailsScreen(
                 )
             }
         }
+    }
+}
+
+/**
+ * Opens the given app's Play Store listing, preferring the Play Store app when available and
+ * falling back to whichever activity can handle the web listing (e.g. a browser).
+ */
+private fun openPlayStore(context: Context, packageName: String) {
+    val uri = "${Constants.SHARE_URL}$packageName".toUri()
+    val intent = Intent(Intent.ACTION_VIEW).apply { data = uri }
+
+    if (intent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(intent.apply { setPackage(Constants.PACKAGE_NAME_PLAY_STORE) })
+    } else {
+        context.startActivity(intent)
     }
 }
 
@@ -241,6 +278,7 @@ private fun ScreenContentError(message: String? = null, onRetry: (() -> Unit)? =
 private fun ScreenContentApp(
     app: App,
     featuredReviews: List<Review> = emptyList(),
+    userReview: Review? = null,
     suggestionsBundle: StreamBundle? = StreamBundle.EMPTY,
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
@@ -256,11 +294,18 @@ private fun ScreenContentApp(
     onUninstall: () -> Unit = {},
     onOpen: () -> Unit = {},
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {},
+    onSubmitReview: (rating: Int, title: String, comment: String) -> Unit = { _, _, _ -> },
+    onDeleteReview: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2(),
     forceSinglePane: Boolean = false,
     onForceRestart: () -> Unit = {}
 ) {
     val context = LocalContext.current
+
+    // Anonymous accounts can't purchase, so a paid app can neither be installed nor manually
+    // downloaded (any version) by them. Free apps are always acquirable.
+    val canAcquire = app.isFree || !isAnonymous
+
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
 
     if (forceSinglePane) {
@@ -317,7 +362,11 @@ private fun ScreenContentApp(
 
     @Composable
     fun SetupMenu() {
-        AppDetailsMenu(isFavorite = isFavorite, state = state) { menuItem ->
+        AppDetailsMenu(
+            isFavorite = isFavorite,
+            state = state,
+            canManualDownload = canAcquire
+        ) { menuItem ->
             when (menuItem) {
                 MenuItem.FAVORITE -> onFavorite()
 
@@ -333,20 +382,7 @@ private fun ScreenContentApp(
                     ShortcutManagerUtil.requestPinShortcut(context, app.packageName)
                 }
 
-                MenuItem.PLAY_STORE -> {
-                    val uri = "${Constants.SHARE_URL}${app.packageName}".toUri()
-                    val intent = Intent(Intent.ACTION_VIEW).apply { data = uri }
-
-                    if (intent.resolveActivity(context.packageManager) != null) {
-                        context.startActivity(
-                            intent.apply {
-                                setPackage(Constants.PACKAGE_NAME_PLAY_STORE)
-                            }
-                        )
-                    } else {
-                        context.startActivity(intent)
-                    }
-                }
+                MenuItem.PLAY_STORE -> openPlayStore(context, app.packageName)
             }
         }
     }
@@ -413,6 +449,8 @@ private fun ScreenContentApp(
                     Actions(
                         primaryActionDisplayName = primaryActionName,
                         secondaryActionDisplayName = stringResource(R.string.title_manual_download),
+                        isPrimaryActionEnabled = canAcquire,
+                        isSecondaryActionEnabled = canAcquire,
                         onPrimaryAction = ::onInstall,
                         onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
                     )
@@ -485,6 +523,17 @@ private fun ScreenContentApp(
                             featuredReviews = featuredReviews,
                             onNavigateToDetailsReview = { showExtraPane(ExtraScreen.Review) }
                         )
+                    }
+
+                    item {
+                        // Reviews can only be submitted by personal accounts for installed apps.
+                        if (!isAnonymous && app.isInstalled) {
+                            UserReview(
+                                review = userReview,
+                                onSubmit = onSubmitReview,
+                                onDelete = onDeleteReview
+                            )
+                        }
                     }
 
                     item {

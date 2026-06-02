@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -41,8 +42,19 @@ import com.aurora.store.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InstallErrorSheet(app: App, error: String?, extra: String?, onDismiss: () -> Unit) {
+fun InstallErrorSheet(
+    app: App,
+    error: String?,
+    extra: String?,
+    isAnonymous: Boolean = true,
+    onBuy: () -> Unit = {},
+    onDismiss: () -> Unit
+) {
     val context = LocalContext.current
+
+    // A paid app that failed to install for a signed-in (non-anonymous) account is almost
+    // always one that hasn't been purchased yet; offer a shortcut to buy it on the Play Store.
+    val canBuy = !app.isFree && !isAnonymous
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -53,7 +65,7 @@ fun InstallErrorSheet(app: App, error: String?, extra: String?, onDismiss: () ->
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
         ) {
-            Header(app = app)
+            Header(app = app, showBuy = canBuy, onBuy = onBuy)
 
             HorizontalDivider(
                 modifier = Modifier.padding(
@@ -101,7 +113,7 @@ fun InstallErrorSheet(app: App, error: String?, extra: String?, onDismiss: () ->
 }
 
 @Composable
-private fun Header(app: App) {
+private fun Header(app: App, showBuy: Boolean = false, onBuy: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -136,6 +148,15 @@ private fun Header(app: App) {
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+        }
+        if (showBuy) {
+            Button(onClick = onBuy) {
+                Text(
+                    text = stringResource(R.string.action_buy, app.price),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
     }
 }

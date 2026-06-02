@@ -9,9 +9,11 @@ import com.aurora.store.data.room.MigrationHelper.MIGRATION_4_5
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_5_6
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_6_7
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_7_8
+import com.aurora.store.data.room.MigrationHelper.MIGRATION_8_9
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.favourite.FavouriteDao
+import com.aurora.store.data.room.review.ReviewDao
 import com.aurora.store.data.room.update.IgnoredUpdateDao
 import com.aurora.store.data.room.update.UpdateDao
 import dagger.Module
@@ -40,7 +42,8 @@ object RoomModule {
             MIGRATION_4_5,
             MIGRATION_5_6,
             MIGRATION_6_7,
-            MIGRATION_7_8
+            MIGRATION_7_8,
+            MIGRATION_8_9
         )
         .addTypeConverter(downloadConverter)
         .build()
@@ -59,4 +62,7 @@ object RoomModule {
     @Provides
     fun providesIgnoredUpdateDao(auroraDatabase: AuroraDatabase): IgnoredUpdateDao =
         auroraDatabase.ignoredUpdateDao()
+
+    @Provides
+    fun providesReviewDao(auroraDatabase: AuroraDatabase): ReviewDao = auroraDatabase.reviewDao()
 }
