@@ -111,6 +111,7 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTop"
+            android:taskAffinity=""
             android:theme="@style/AppTheme.Translucent.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
