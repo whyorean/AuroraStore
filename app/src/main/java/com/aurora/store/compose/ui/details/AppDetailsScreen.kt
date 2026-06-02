@@ -90,6 +90,7 @@ import com.aurora.store.compose.ui.details.composable.RatingAndReviews
 import com.aurora.store.compose.ui.details.composable.Screenshots
 import com.aurora.store.compose.ui.details.composable.Tags
 import com.aurora.store.compose.ui.details.composable.Testing
+import com.aurora.store.compose.ui.details.composable.UserReview
 import com.aurora.store.compose.ui.details.menu.AppDetailsMenu
 import com.aurora.store.compose.ui.details.menu.MenuItem
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
@@ -121,6 +122,7 @@ fun AppDetailsScreen(
     val app by viewModel.app.collectAsStateWithLifecycle()
     val state by viewModel.state.collectAsStateWithLifecycle()
     val featuredReviews by viewModel.featuredReviews.collectAsStateWithLifecycle()
+    val userReview by viewModel.userReview.collectAsStateWithLifecycle()
     val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
@@ -129,6 +131,14 @@ fun AppDetailsScreen(
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
+
+    LaunchedEffect(Unit) {
+        viewModel.reviewPosted.collect { success ->
+            context.toast(
+                if (success) R.string.toast_rated_success else R.string.toast_rated_failed
+            )
+        }
+    }
 
     app?.let { loadedApp ->
         installError?.let { err ->
@@ -164,6 +174,7 @@ fun AppDetailsScreen(
                 ScreenContentApp(
                     app = loadedApp,
                     featuredReviews = featuredReviews,
+                    userReview = userReview,
                     suggestionsBundle = suggestionsBundle,
                     isFavorite = favorite,
                     isAnonymous = viewModel.authProvider.isAnonymous,
@@ -189,6 +200,14 @@ fun AppDetailsScreen(
                     onTestingSubscriptionChange = { subscribe ->
                         viewModel.updateTestingProgramStatus(packageName, subscribe)
                     },
+                    onSubmitReview = { rating, title, comment ->
+                        viewModel.postAppReview(
+                            loadedApp.packageName,
+                            Review(title = title, comment = comment, rating = rating),
+                            loadedApp.testingProgram?.isSubscribed ?: false
+                        )
+                    },
+                    onDeleteReview = { viewModel.deleteAppReview(loadedApp) },
                     forceSinglePane = forceSinglePane,
                     onForceRestart = {
                         val intent = Intent(context, ComposeActivity::class.java)
@@ -259,6 +278,7 @@ private fun ScreenContentError(message: String? = null, onRetry: (() -> Unit)? =
 private fun ScreenContentApp(
     app: App,
     featuredReviews: List<Review> = emptyList(),
+    userReview: Review? = null,
     suggestionsBundle: StreamBundle? = StreamBundle.EMPTY,
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
@@ -274,6 +294,8 @@ private fun ScreenContentApp(
     onUninstall: () -> Unit = {},
     onOpen: () -> Unit = {},
     onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {},
+    onSubmitReview: (rating: Int, title: String, comment: String) -> Unit = { _, _, _ -> },
+    onDeleteReview: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2(),
     forceSinglePane: Boolean = false,
     onForceRestart: () -> Unit = {}
@@ -501,6 +523,17 @@ private fun ScreenContentApp(
                             featuredReviews = featuredReviews,
                             onNavigateToDetailsReview = { showExtraPane(ExtraScreen.Review) }
                         )
+                    }
+
+                    item {
+                        // Reviews can only be submitted by personal accounts for installed apps.
+                        if (!isAnonymous && app.isInstalled) {
+                            UserReview(
+                                review = userReview,
+                                onSubmit = onSubmitReview,
+                                onDelete = onDeleteReview
+                            )
+                        }
                     }
 
                     item {

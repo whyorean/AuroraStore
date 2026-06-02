@@ -141,6 +141,12 @@
     <string name="details_privacy">"Privacy"</string>
     <string name="details_ratings">"Rating and reviews"</string>
     <string name="details_ratings_title_hint">"Review title"</string>
+    <string name="details_review_comment_hint">"Describe your experience (optional)"</string>
+    <string name="details_review_edit">"Edit your review"</string>
+    <string name="details_review_delete">"Delete"</string>
+    <string name="details_review_delete_title">"Delete review?"</string>
+    <string name="details_review_delete_message">"Your rating and review will be removed from Google Play."</string>
+    <string name="details_your_review">"Your review"</string>
     <string name="details_think_this_app">"What do you think about this app?"</string>
     <string name="download_cancel_all">"Cancel all"</string>
     <string name="download_canceled">"Cancelled"</string>

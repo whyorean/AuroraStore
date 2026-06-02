@@ -38,6 +38,10 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom7To8(db)
     }
 
+    val MIGRATION_8_9 = object : Migration(8, 9) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom8To9(db)
+    }
+
     private const val TAG = "MigrationHelper"
 
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
@@ -155,6 +159,36 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 7 to 8", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    /**
+     * Add review table for caching the user's own submitted reviews locally so they can be shown
+     * immediately while Google takes time to publish them. Scoped by account e-mail.
+     */
+    private fun migrateFrom8To9(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "CREATE TABLE IF NOT EXISTS `review` (" +
+                    "`packageName` TEXT NOT NULL, " +
+                    "`accountEmail` TEXT NOT NULL, " +
+                    "`title` TEXT NOT NULL, " +
+                    "`comment` TEXT NOT NULL, " +
+                    "`rating` INTEGER NOT NULL, " +
+                    "`commentId` TEXT NOT NULL, " +
+                    "`userName` TEXT NOT NULL, " +
+                    "`userPhotoUrl` TEXT NOT NULL, " +
+                    "`appVersion` TEXT NOT NULL, " +
+                    "`timeStamp` INTEGER NOT NULL, " +
+                    "`synced` INTEGER NOT NULL, " +
+                    "PRIMARY KEY(`packageName`, `accountEmail`))"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 8 to 9", exception)
         } finally {
             database.endTransaction()
         }
