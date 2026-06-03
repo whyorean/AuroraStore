@@ -467,4 +467,18 @@
     <string name="action_filter_no_gms">ללא שירותי Google Play</string>
     <string name="loading">הטעינה מתבצעת</string>
     <string name="page">עמוד <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_retry">נסה שנית</string>
+    <string name="action_view_on_play">הצגה ב־Play Store</string>
+    <string name="download_failed_storage">אין מספיק שטח אחסון כדי להוריד את האפליקציה הזו</string>
+    <string name="title_security">אבטחה</string>
+    <string name="title_notifications">התראות</string>
+    <string name="pref_notification_categories">קטגוריות</string>
+    <string name="updates_app_details">פרטים</string>
+    <string name="pref_updates_check_frequency_3h">כל 3 שעות</string>
+    <string name="pref_updates_check_frequency_6h">כל 6 שעות</string>
+    <string name="pref_updates_check_frequency_12h">כל 12 שעות</string>
+    <string name="pref_updates_check_frequency_24h">כל 24 שעות</string>
+    <string name="pref_updates_check_frequency_3d">כל 3 ימים</string>
+    <string name="pref_updates_check_frequency_7d">כל 7 ימים</string>
+    <string name="pref_updates_check_frequency_15d">כל 15 ימים</string>
 </resources>

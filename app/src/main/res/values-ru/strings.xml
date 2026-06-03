@@ -285,7 +285,7 @@
     <string name="android_market_desc">Android Market являлся магазином приложений, разработанных для устройств с Android, который был закрыт в 2017 году.</string>
     <string name="details_ratings_title_hint">Заголовок отзыва</string>
     <string name="pref_network_proxy_url">URL прокси</string>
-    <string name="pref_updates_check_frequency_desc">Настроить интервал автоматических обновлений, в часах.</string>
+    <string name="pref_updates_check_frequency_desc">Интервал автоматических обновлений.</string>
     <string name="toast_proxy_invalid">Неверный URL прокси, проверьте формат!</string>
     <string name="pref_aurora_only_desc">Не проверять обновления для приложений, установленных из других источников вне Aurora Store</string>
     <string name="toast_proxy_success">Прокси успешно настроен</string>
@@ -306,7 +306,7 @@
     <string name="failed_apk_export">Не удалось экспортировать APK-файлы</string>
     <string name="download_clear_finished">Очистить завершенные</string>
     <string name="pref_updates_incompatible">Показывать обновления которые могут не сработать</string>
-    <string name="pref_updates_incompatible_desc">Показывать обновления для несовместимых или отключённых приложений, которые могут не установиться.</string>
+    <string name="pref_updates_incompatible_desc">Отображать обновления для несовместимых или отключенных приложений, которые могут не установиться.</string>
     <string name="action_home_screen">Добавить на главный экран</string>
     <string name="faqs_subtitle">У вас есть вопросы? Узнайте ответы</string>
     <string name="source_code_title">Исходный код</string>
@@ -347,7 +347,7 @@
     <string name="remove_dispenser_title">Удалить распределитель?</string>
     <string name="remove_dispenser_summary">Вы хотите удалить распределитель \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="about_wiki_summary">Найдите ответы на часто задаваемые вопросы (ЧаВо), шаги по устранению неполадок и многое другое</string>
-    <string name="about_aurora_store_summary">Aurora Store позволяет искать и загружать приложения из официального магазина Google Play. Вы можете ознакомиться с описанием приложений, скриншотами, обновлениями, комментариями других пользователей и загрузить APK непосредственно из Google Play на свое устройство. Чтобы использовать Aurora Store, необходимо иметь профиль Google Play и войти в него при первом открытии и настройке Aurora Store. \n \nВ отличие от традиционного магазина приложений, Aurora Store не владеет, не лицензирует и не распространяет приложения. Все приложения, описания приложений, скриншоты и прочий контент в Aurora Store напрямую доступны, загружаются и/или отображаются из Google Play. Aurora Store работает точно так же, как дверь или браузер, позволяя вам войти в свой профиль Google Play и найти приложения из Google Play. \n \nОбратите внимание, что Aurora Store не имеет никакого соглашения, спонсорства или разрешения от Google, Google Play, любых приложений, загружаемых через Aurora Store, или разработчиков приложений; Aurora Store также не имеет с ними никакого родства, сотрудничества или связи.</string>
+    <string name="about_aurora_store_summary">Aurora Store позволяет искать и загружать приложения из официального магазина Google Play. Вы можете просматривать описания приложений, скриншоты, обновления, отзывы других пользователей и загружать APK-файлы прямо из Google Play на свое устройство. Чтобы использовать Aurora Store, при первом запуске и настройке приложения авторизуйтесь с помощью аккаунта Google Play.\n\nВ отличие от традиционного магазина приложений, Aurora Store не владеет, не лицензирует и не распространяет никакие приложения. Доступ ко всем приложениям, их описаниям, скриншотам и другому контенту в Aurora Store, а также их загрузка и/или отображение осуществляются напрямую из Google Play. Aurora Store работает точно так же, как шлюз или браузер, позволяя вам войти в свой аккаунт Google Play и искать в нем приложения.\n\nОбратите внимание, что Aurora Store не имеет никакого разрешения, спонсорства или одобрения от Google, Google Play, каких-либо приложений, загруженных через Aurora Store, или каких-либо разработчиков приложений; Aurora Store также не имеет никакой аффилированности, сотрудничества или связи с ними.</string>
     <string name="add_dispenser_summary">Добавьте распределитель токенов в Aurora Store. Распределители токенов обеспечивают Aurora Store профилями для анонимной авторизации.</string>
     <string name="pref_network_proxy_url_message">Введите действительный URL прокси для передачи всех данных через него.</string>
     <string name="action_favourite">Избранное</string>
@@ -479,13 +479,13 @@
     <string name="header_blacklist_others">Другие</string>
     <string name="preparing_to_download">Подготовка к загрузке</string>
     <string name="verifying_downloads">Проверка загрузок</string>
-    <string name="download_failed_storage">Недостаточно места в хранилище для загрузки этого приложения</string>
-    <string name="installer_fallback_session">Выбранный установщик недоступен, вместо него используется стандартный установщик.</string>
+    <string name="download_failed_storage">Недостаточно места для загрузки этого приложения</string>
+    <string name="installer_fallback_session">Выбранный установщик недоступен, вместо него используется установщик по умолчанию.</string>
     <string name="title_security">Безопасность</string>
     <string name="app_lock_title">Блокировка приложения</string>
     <string name="app_lock_summary">Требовать биометрическую аутентификацию или блокировку экрана, чтобы открыть Aurora Store.</string>
-    <string name="app_lock_no_credential">Сначала установите на вашем устройстве блокировку экрана (PIN-код, паттерн, пароль или биометрию).</string>
-    <string name="app_lock_locked_message">Необходима аутентификация для доступа к Aurora Store</string>
+    <string name="app_lock_no_credential">Сначала настройте блокировку экрана (PIN-код, графический ключ, пароль или биометрию) на своем устройстве.</string>
+    <string name="app_lock_locked_message">Для доступа к Aurora Store требуется аутентификация</string>
     <string name="app_lock_unlock">Разблокировать</string>
     <string name="app_lock_prompt_title">Разблокировать Aurora Store</string>
     <string name="app_lock_prompt_subtitle">Введите паттерн блокировки экрана, PIN-код, пароль или отсканируйте отпечаток пальца</string>
@@ -495,7 +495,7 @@
     <string name="pref_self_update">Само-обновление</string>
     <string name="pref_self_update_desc">Предлагать новые сборки Aurora Store во вкладке \"Обновления\".</string>
     <string name="pref_source_filters_title">Фильтровать приложения из других источников</string>
-    <string name="pref_source_filters_desc_all">Пропускать каждое приложение, не установленное через Aurora Store</string>
+    <string name="pref_source_filters_desc_all">Пропустить все приложения, не установленные из Aurora Store</string>
     <string name="pref_source_filters_desc_none">Ни один установщик не исключён</string>
     <string name="pref_source_filters_desc_count">%1$d установщик(а) исключены</string>
     <string name="source_filters_all">Фильтровать все прочие установщики</string>
@@ -516,4 +516,52 @@
     <string name="updates_incompatible_header">Несовместимые обновления</string>
     <string name="updates_incompatible_desc">Данные обновления системных приложений не могут быть установлены на этой ОС</string>
     <string name="updates_approval_header">Обновления требуют подтверждения</string>
+    <string name="updates_approval_desc">Эти приложения не были установлены Aurora. При их обновлении будет предложено передать право на обновление приложения.</string>
+    <string name="updates_app_details">Подробности</string>
+    <string name="updates_ignored_header">Игнорируется</string>
+    <string name="updates_ignored_desc">Эти обновления скрыты, пока вы не отмените их игнорирование</string>
+    <string name="action_ignore_all">Игнорировать все обновления</string>
+    <string name="action_ignore_version">Пропустить версию <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Не игнорировать</string>
+    <string name="pref_updates_check_frequency_3h">Каждые 3 часа</string>
+    <string name="pref_updates_check_frequency_6h">Каждые 6 часов</string>
+    <string name="pref_updates_check_frequency_12h">Каждые 12 часов</string>
+    <string name="pref_updates_check_frequency_24h">Каждые 24 часа</string>
+    <string name="pref_updates_check_frequency_3d">Каждые 3 дня</string>
+    <string name="pref_updates_check_frequency_7d">Каждые 7 дней</string>
+    <string name="pref_updates_check_frequency_15d">Каждые 15 дней</string>
+    <string name="pref_ui_theme">Тема</string>
+    <string name="pref_theme_style_system">Определена системой</string>
+    <string name="pref_theme_style_light">Светлая</string>
+    <string name="pref_theme_style_dark">Темная</string>
+    <string name="status_installing">Установка</string>
+    <string name="status_installed">Установлено</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d приложение установлено</item>
+        <item quantity="few">%d приложения установлено</item>
+        <item quantity="many">%d приложений установлено</item>
+        <item quantity="other">%d приложений установлено</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d приложение не установлено</item>
+        <item quantity="few">%d приложения не установлено</item>
+        <item quantity="many">%d приложений не установлено</item>
+        <item quantity="other">%d приложений не установлено</item>
+    </plurals>
+    <string name="installed_sort_filter">Сортировка и фильтрация</string>
+    <string name="installed_sort_by">Сортировать по</string>
+    <string name="installed_sort_name">Названию</string>
+    <string name="installed_sort_date_installed">Дате установки</string>
+    <string name="installed_sort_date_updated">Дате обновления</string>
+    <string name="installed_sort_package_name">Названию пакета</string>
+    <string name="installed_sort_size">Размеру</string>
+    <string name="installed_sort_ascending">По возрастанию</string>
+    <string name="installed_sort_descending">По убыванию</string>
+    <string name="installed_filter">Фильтр</string>
+    <string name="installed_filter_user_apps">Пользовательские приложения</string>
+    <string name="installed_filter_system_apps">Системные приложения</string>
+    <string name="installed_filter_installer">Установлено из</string>
+    <string name="installed_filter_all">Все</string>
+    <string name="installed_updated_at">Обновлено <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Проверить</string>
 </resources>

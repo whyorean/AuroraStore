@@ -282,7 +282,7 @@
     <string name="failed_to_generate_session">Nu s-a putut genera sesiunea</string>
     <string name="details_ratings_title_hint">Titlul recenziei</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
-    <string name="pref_updates_check_frequency_desc">Configurează intervale pentru actualizări, în ore.</string>
+    <string name="pref_updates_check_frequency_desc">Cât de des verifică Aurora pentru actualizări ale aplicației.</string>
     <string name="pref_aurora_only">Filtrează aplicațiile din alte surse.</string>
     <string name="app_links_desc">Permite magazinului Aurora să deschidă linkuri acceptate</string>
     <string name="toast_proxy_invalid">Adresa URL proxy nevalidă, verifică formatul!</string>
@@ -343,7 +343,7 @@
     <string name="add">Adaugă</string>
     <string name="remove">Elimină</string>
     <string name="about_aurora_store_title">Despre Aurora Store</string>
-    <string name="about_aurora_store_summary">Aurora Store permite căutarea și să descărcarea aplicațiilor din magazinul oficial Google Play. Poți verifica descrierile aplicațiilor, capturile de ecran, actualizările, comentariile altor utilizatori și poți descărca APK-ul direct de pe Google Play pe dispozitiv. Pentru a utiliza Aurora Store, trebuie să ai un cont Google Play și să te conectezi la contul Google Play atunci când deschizi și configurezi pentru prima dată Aurora Store. \n \nSpre deosebire de un magazin de aplicații tradițional, Aurora Store nu deține, nu licențiază și nu distribuie nicio aplicație. Toate aplicațiile, descrierile aplicațiilor, capturile de ecran și alt conținut din Aurora Store sunt accesate direct, descărcate și/sau afișate de pe Google Play. Aurora Store funcționează exact ca o ușă sau un browser, permițând conectarea la contul Google Play și găsirea aplicațiilor din Google Play. \n \nReține că Magazinul Aurora nu are nicio aprobare, sponsorizare sau autorizare de la Google, Google Play, nicio aplicație descărcată prin Magazin Aurora sau orice dezvoltator de aplicații; Aurora Store nu are nicio afiliere, cooperare sau legătură cu aceștia.</string>
+    <string name="about_aurora_store_summary">Aurora Store permite căutarea și să descărcarea aplicațiilor din magazinul oficial Google Play. Poți verifica descrierile aplicațiilor, capturile de ecran, actualizările, comentariile altor utilizatori și poți descărca APK-ul direct de pe Google Play pe dispozitiv. Pentru a utiliza Aurora Store, conectează-te la contul Google Play atunci când deschizi și configurezi pentru prima dată Aurora Store. \n \nSpre deosebire de un magazin de aplicații tradițional, Aurora Store nu deține, nu licențiază și nu distribuie nicio aplicație. Toate aplicațiile, descrierile aplicațiilor, capturile de ecran și alt conținut din Aurora Store sunt accesate direct, descărcate și/sau afișate de pe Google Play. Aurora Store funcționează exact ca o ușă sau un browser, permițând conectarea la contul Google Play și găsirea aplicațiilor din Google Play. \n \nReține că Magazinul Aurora nu are nicio aprobare, sponsorizare sau autorizare de la Google, Google Play, nicio aplicație descărcată prin Magazin Aurora sau orice dezvoltator de aplicații; Aurora Store nu are nicio afiliere, cooperare sau legătură cu aceștia.</string>
     <string name="add_dispenser_summary">Adaugă un distribuitor de jetoane la Aurora Store. Distribuitoarele de jetoane furnizează acreditările contului Magazinului Aurora pentru a se conecta anonim.</string>
     <string name="add_dispenser_error">URL nevalid</string>
     <string name="no_dispensers_available">Nu există distribuitoare disponibile</string>
@@ -514,4 +514,51 @@
     <string name="updates_self_desc">Este disponibilă o versiune mai nouă a Aurora Store</string>
     <string name="updates_incompatible_header">Actualizări incompatibile</string>
     <string name="updates_incompatible_desc">Aceste actualizări ale aplicației de sistem nu pot fi instalate pe acest sistem de operare</string>
+    <string name="updates_approval_header">Actualizările necesită aprobare</string>
+    <string name="updates_approval_desc">Aceste aplicații nu au fost instalate de Aurora. Actualizarea acestora solicită transferul dreptului de proprietate asupra actualizării aplicației.</string>
+    <string name="updates_app_details">Detalii</string>
+    <string name="updates_ignored_header">Ignorate</string>
+    <string name="updates_ignored_desc">Aceste actualizări sunt ascunse atât timp cât sunt ignorate</string>
+    <string name="action_ignore_all">Ignoră toate actualizările</string>
+    <string name="action_ignore_version">Omite versiunea <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Nu se ignoră</string>
+    <string name="pref_updates_check_frequency_3h">La fiecare 3 ore</string>
+    <string name="pref_updates_check_frequency_6h">La fiecare 6 ore</string>
+    <string name="pref_updates_check_frequency_12h">La fiecare 12 ore</string>
+    <string name="pref_updates_check_frequency_24h">La fiecare 24 de ore</string>
+    <string name="pref_updates_check_frequency_3d">La fiecare 3 zile</string>
+    <string name="pref_updates_check_frequency_7d">La fiecare 7 zile</string>
+    <string name="pref_updates_check_frequency_15d">La fiecare 15 zile</string>
+    <string name="pref_ui_theme">Temă</string>
+    <string name="pref_theme_style_system">Urmează sistemul</string>
+    <string name="pref_theme_style_light">Luminoasă</string>
+    <string name="pref_theme_style_dark">Întunecată</string>
+    <string name="status_installing">Se instalează</string>
+    <string name="status_installed">Instalat</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d aplicație instalată</item>
+        <item quantity="few">%d aplicații instalate</item>
+        <item quantity="other">%d de aplicații instalate</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d aplicație eșuată</item>
+        <item quantity="few">%d aplicații eșuate</item>
+        <item quantity="other">%d de aplicații eșuate</item>
+    </plurals>
+    <string name="installed_sort_filter">Sortare și filtrare</string>
+    <string name="installed_sort_by">Sortează după</string>
+    <string name="installed_sort_name">Nume</string>
+    <string name="installed_sort_date_installed">Data instalării</string>
+    <string name="installed_sort_date_updated">Data actualizării</string>
+    <string name="installed_sort_package_name">Numele pachetului</string>
+    <string name="installed_sort_size">Dimensiune</string>
+    <string name="installed_sort_ascending">Crescător</string>
+    <string name="installed_sort_descending">Descrescător</string>
+    <string name="installed_filter">Filtru</string>
+    <string name="installed_filter_user_apps">Aplicații utilizator</string>
+    <string name="installed_filter_system_apps">Aplicații de sistem</string>
+    <string name="installed_filter_installer">Instalat din</string>
+    <string name="installed_filter_all">Toate</string>
+    <string name="installed_updated_at">Actualizat <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Verifică</string>
 </resources>

@@ -155,7 +155,7 @@
     <string name="download_none">Nav lejupielāžu</string>
     <string name="download_pause_all">Apturēt visas</string>
     <string name="download_resume_all">Turpināt visas</string>
-    <string name="menu_disclaimer">Brīdinājums</string>
+    <string name="menu_disclaimer">Atruna</string>
     <string name="pref_common_extra">Papildu</string>
     <string name="onboarding_permission_select">Aurora Store ir nepieciešamas šādas atļaujas</string>
     <string name="pref_ui_layout">Izkārtojums</string>
@@ -478,4 +478,12 @@
     <string name="pref_source_filters_desc_none">Nav neiekļautu uzstādītāju</string>
     <string name="pref_source_filters_desc_count">%1$d uzstādītājs(i) nav iekļauts(i)</string>
     <string name="source_filters_all">Atsijāt visus citus uzstādītājus</string>
+    <string name="download_failed_storage">Nav pietiekami daudz vietas krātuvē, lai lejupielādētu šo lietotni</string>
+    <string name="installer_fallback_session">Izvēlētais uzstādītājs nav pieejams, tā vietā tiks izmantots noklusējuma uzstādītājs.</string>
+    <string name="title_security">Drošība</string>
+    <string name="app_lock_title">Lietotnes aizslēgšana</string>
+    <string name="app_lock_summary">Pieprasīt biometriju vai ekrāna aizslēgšanas autentificēšanos, lai atvērtu Aurora Store.</string>
+    <string name="app_lock_no_credential">Vispirms ierīcē jāiestata ekrāna slēgšana (PIN, zīmējums, parole vai biometrija).</string>
+    <string name="app_lock_locked_message">Nepieciešama autentificēšanās, lai piekļūtu Aurora Store</string>
+    <string name="app_lock_unlock">Atslēgt</string>
 </resources>
