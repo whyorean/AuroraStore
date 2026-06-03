@@ -561,4 +561,30 @@
         <item quantity="many">%d aplicaciones fallaron</item>
         <item quantity="other">%d aplicaciones fallaron</item>
     </plurals>
+    <string name="action_buy">Comprar en %1$s</string>
+    <string name="action_install_all">Instalar todo</string>
+    <string name="details_review_comment_hint">Describe tu experiencia (opcional)</string>
+    <string name="details_review_edit">Edita tu reseña</string>
+    <string name="details_review_delete">Eliminar</string>
+    <string name="details_review_delete_title">¿Eliminar reseña?</string>
+    <string name="details_review_delete_message">Tu calificación y reseña se eliminarán de Google Play.</string>
+    <string name="details_your_review">Tu reseña</string>
+    <string name="confirm_deeplink_title">Confirmar enlaces externos</string>
+    <string name="confirm_deeplink_summary">Preguntar antes de abrir la ficha de una aplicación desde un enlace, evitando que los anuncios abran Aurora Store sin tu consentimiento.</string>
+    <string name="confirm_deeplink_sheet_title">¿Continuar a Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Una aplicación externa quiere abrir Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Abierto desde %1$s</string>
+    <string name="title_install_favourites">¿Instalar favoritos?</string>
+    <string name="install_favourites_summary">Esto descargará e instalará %1$d aplicaciones.</string>
+    <string name="install_favourites_warning">Es posible que veas un aviso de instalación por separado para cada aplicación.</string>
+    <string name="pref_ui_dynamic_color">Colores dinámicos</string>
+    <string name="pref_ui_dynamic_color_desc">Usar los colores de tu fondo de pantalla. Desactívalo para usar la paleta de marca de Aurora.</string>
+    <string name="toast_fav_install_enqueued">Instalando %1$d aplicaciones</string>
+    <string name="toast_fav_install_none">Nada que instalar</string>
+    <string name="toast_fav_install_failed">No se pudieron obtener los detalles de la aplicación</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d favorito</item>
+        <item quantity="many">%1$d favoritos</item>
+        <item quantity="other">%1$d favoritos</item>
+    </plurals>
 </resources>
