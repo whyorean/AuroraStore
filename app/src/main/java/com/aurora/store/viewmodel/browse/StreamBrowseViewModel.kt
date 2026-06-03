@@ -33,6 +33,7 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
+import com.aurora.store.data.providers.WhitelistProvider
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -46,7 +47,8 @@ import kotlinx.coroutines.flow.onEach
 @HiltViewModel(assistedFactory = StreamBrowseViewModel.Factory::class)
 class StreamBrowseViewModel @AssistedInject constructor(
     @Assisted private val streamCluster: StreamCluster,
-    private val streamHelper: WebStreamHelper
+    private val streamHelper: WebStreamHelper,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     @AssistedFactory
@@ -67,16 +69,17 @@ class StreamBrowseViewModel @AssistedInject constructor(
         manualPager { page ->
             val items = try {
                 when (page) {
-                    1 -> streamCluster.clusterAppList
+                    1 -> whitelistProvider.filterApps(streamCluster.clusterAppList)
 
                     else -> {
                         if (nextPageUrl.isNotBlank()) {
-                            streamHelper.nextStreamCluster(
+                            val nextCluster = streamHelper.nextStreamCluster(
                                 nextPageUrl.hashCode(),
                                 nextPageUrl
                             ).also {
                                 nextPageUrl = it.clusterNextPageUrl
-                            }.clusterAppList
+                            }
+                            whitelistProvider.filterApps(nextCluster.clusterAppList)
                         } else {
                             emptyList()
                         }

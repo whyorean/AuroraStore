@@ -37,6 +37,8 @@ import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
+import com.aurora.store.data.providers.WhitelistProvider
+import com.aurora.store.data.work.remote.WhitelistUpdateWorker
 import com.aurora.store.data.receiver.PackageManagerReceiver
 import com.aurora.store.util.CommonUtil
 import com.aurora.store.util.NotificationUtil
@@ -46,6 +48,9 @@ import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.io.File
 import okhttp3.OkHttpClient
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 
@@ -63,6 +68,9 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
 
     @Inject
     lateinit var updateHelper: UpdateHelper
+
+    @Inject
+    lateinit var whitelistProvider: WhitelistProvider
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
@@ -102,6 +110,30 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         // Initialize Download and Update helpers to observe and trigger downloads
         downloadHelper.init()
         updateHelper.init()
+
+        // Schedule remote whitelist updates
+        WhitelistUpdateWorker.schedule(this)
+
+        // Frequent remote whitelist check
+        scope.launch(kotlinx.coroutines.Dispatchers.IO) {
+            val whitelistUrl = "https://raw.githubusercontent.com/your-repo/your-project/main/whitelist.json"
+            while (true) {
+                try {
+                    val response = okHttpClient.newCall(
+                        okhttp3.Request.Builder().url(whitelistUrl).build()
+                    ).execute()
+                    if (response.isSuccessful) {
+                        val bytes = response.body?.bytes()
+                        if (bytes != null) {
+                            File(filesDir, "whitelist.json").writeBytes(bytes)
+                            whitelistProvider.refresh()
+                        }
+                    }
+                } catch (_: Exception) {
+                }
+                delay(30000) // Every 30 seconds
+            }
+        }
 
         // Register broadcast receiver for package install/uninstall
         ContextCompat.registerReceiver(

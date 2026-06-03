@@ -16,6 +16,7 @@ import com.aurora.gplayapi.helpers.contracts.CategoryStreamContract
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.providers.WhitelistProvider
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -29,7 +30,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = CategoryStreamViewModel.Factory::class)
 class CategoryStreamViewModel @AssistedInject constructor(
     @Assisted val browseUrl: String,
-    private val webCategoryStreamHelper: WebCategoryStreamHelper
+    private val webCategoryStreamHelper: WebCategoryStreamHelper,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     @AssistedFactory
@@ -63,8 +65,12 @@ class CategoryStreamViewModel @AssistedInject constructor(
                         )
                     }
 
+                    val filteredClusters = newBundle.streamClusters.mapValues { entry ->
+                        entry.value.copy(clusterAppList = whitelistProvider.filterApps(entry.value.clusterAppList))
+                    }.filterValues { it.clusterAppList.isNotEmpty() }
+
                     streamBundle = streamBundle.copy(
-                        streamClusters = streamBundle.streamClusters + newBundle.streamClusters,
+                        streamClusters = streamBundle.streamClusters + filteredClusters,
                         streamNextPageUrl = newBundle.streamNextPageUrl
                     )
 
@@ -89,7 +95,7 @@ class CategoryStreamViewModel @AssistedInject constructor(
                     val mergedCluster = streamCluster.copy(
                         clusterNextPageUrl = newCluster.clusterNextPageUrl,
                         clusterAppList =
-                        streamCluster.clusterAppList + newCluster.clusterAppList
+                        streamCluster.clusterAppList + whitelistProvider.filterApps(newCluster.clusterAppList)
                     )
 
                     val newClusters = streamBundle.streamClusters.toMutableMap().apply {

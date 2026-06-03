@@ -41,6 +41,7 @@ import com.aurora.store.data.PageResult
 import com.aurora.store.data.paging.GenericPagingSource
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.data.providers.WhitelistProvider
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -59,6 +60,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class InstalledViewModel @Inject constructor(
     blacklistProvider: BlacklistProvider,
+    whitelistProvider: WhitelistProvider,
     @ApplicationContext private val context: Context,
     private val webAppDetailsHelper: WebAppDetailsHelper
 ) : ViewModel() {
@@ -90,6 +92,7 @@ class InstalledViewModel @Inject constructor(
         val packages = pm.getInstalledPackages(PackageManager.GET_META_DATA)
             .filter { it.isValidApp(pm) }
             .filterNot { it.packageName in blacklist }
+            .filter { whitelistProvider.isWhitelisted(it.packageName) }
             .map { info ->
                 val appInfo = info.applicationInfo!!
                 EnrichedPackage(

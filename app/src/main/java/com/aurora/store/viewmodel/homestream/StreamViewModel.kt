@@ -30,6 +30,7 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.web.WebStreamHelper
 import com.aurora.store.HomeStash
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.providers.WhitelistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +40,8 @@ import kotlinx.coroutines.sync.withLock
 
 @HiltViewModel
 class StreamViewModel @Inject constructor(
-    private val webStreamHelper: WebStreamHelper
+    private val webStreamHelper: WebStreamHelper,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
@@ -80,8 +82,12 @@ class StreamViewModel @Inject constructor(
                             streamContract.fetch(type, category)
                         }
 
+                        val filteredClusters = newBundle.streamClusters.mapValues { entry ->
+                            entry.value.copy(clusterAppList = whitelistProvider.filterApps(entry.value.clusterAppList))
+                        }.filterValues { it.clusterAppList.isNotEmpty() }
+
                         val mergedBundle = bundle.copy(
-                            streamClusters = bundle.streamClusters + newBundle.streamClusters,
+                            streamClusters = bundle.streamClusters + filteredClusters,
                             streamNextPageUrl = newBundle.streamNextPageUrl
                         )
                         stash[category] = mergedBundle
@@ -135,7 +141,7 @@ class StreamViewModel @Inject constructor(
 
         val mergedCluster = oldCluster.copy(
             clusterNextPageUrl = newCluster.clusterNextPageUrl,
-            clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+            clusterAppList = oldCluster.clusterAppList + whitelistProvider.filterApps(newCluster.clusterAppList)
         )
 
         val updatedClusters = bundle.streamClusters.toMutableMap().apply {

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import androidx.paging.filter
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.AuroraApp
@@ -20,6 +21,7 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.WhitelistProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.favourite.ImportExport
@@ -53,7 +55,8 @@ class FavouriteViewModel @Inject constructor(
     private val appDetailsHelper: AppDetailsHelper,
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     private val _favourites = MutableStateFlow<PagingData<Favourite>>(PagingData.empty())
@@ -159,6 +162,7 @@ class FavouriteViewModel @Inject constructor(
 
     private fun getPagedFavourites() {
         pager { favouriteDao.pagedFavourites() }.flow
+            .map { it.filter { whitelistProvider.isWhitelisted(it.packageName) } }
             .distinctUntilChanged()
             .cachedIn(viewModelScope)
             .onEach { _favourites.value = it }

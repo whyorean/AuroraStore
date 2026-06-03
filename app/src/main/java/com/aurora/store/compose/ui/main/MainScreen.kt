@@ -57,7 +57,6 @@ private enum class MainTab(
     @DrawableRes val iconRes: Int
 ) {
     APPS(R.string.title_apps, R.drawable.ic_apps),
-    GAMES(R.string.title_games, R.drawable.ic_games),
     UPDATES(R.string.title_updates, R.drawable.ic_updates)
 }
 
@@ -194,10 +193,6 @@ fun MainScreen(
                     MainTab.APPS -> AppsGamesScreen(
                         pageType = 0,
                         onNavigateTo = onNavigateTo
-                    )
-                    MainTab.GAMES -> AppsGamesScreen(
-                        pageType = 1,
-                        onNavigateTo = ::handleNavigation
                     )
                     MainTab.UPDATES -> UpdatesScreen(
                         viewModel = updatesViewModel,

@@ -34,6 +34,7 @@ import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.providers.WhitelistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +43,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class DevProfileViewModel @Inject constructor(
     private val appDetailsHelper: AppDetailsHelper,
-    private val streamHelper: StreamHelper
+    private val streamHelper: StreamHelper,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     val liveData: MutableLiveData<ViewState> = MutableLiveData()
@@ -56,7 +58,13 @@ class DevProfileViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 devStream = appDetailsHelper.getDeveloperStream(devId)
-                streamBundle = devStream.streamBundle
+                val filteredClusters = devStream.streamBundle.streamClusters.mapValues { entry ->
+                    entry.value.copy(clusterAppList = whitelistProvider.filterApps(entry.value.clusterAppList))
+                }.filterValues { it.clusterAppList.isNotEmpty() }
+
+                streamBundle = devStream.streamBundle.copy(streamClusters = filteredClusters)
+                devStream = devStream.copy(streamBundle = streamBundle)
+
                 liveData.postValue(ViewState.Success(devStream))
             } catch (e: GooglePlayException.AuthException) {
                 Log.w(TAG, "Developer stream fetch returned ${e.code}, redirecting to Splash")
@@ -91,7 +99,7 @@ class DevProfileViewModel @Inject constructor(
         streamBundle.streamClusters[newCluster.id]?.let { oldCluster ->
             val mergedCluster = oldCluster.copy(
                 clusterNextPageUrl = newCluster.clusterNextPageUrl,
-                clusterAppList = oldCluster.clusterAppList + newCluster.clusterAppList
+                clusterAppList = oldCluster.clusterAppList + whitelistProvider.filterApps(newCluster.clusterAppList)
             )
 
             val newStreamClusters = streamBundle.streamClusters.toMutableMap().apply {

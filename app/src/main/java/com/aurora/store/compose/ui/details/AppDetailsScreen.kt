@@ -510,12 +510,6 @@ private fun ScreenContentApp(
                         )
                     }
 
-                    item {
-                        Screenshots(
-                            screenshots = app.screenshots,
-                            onNavigateToScreenshot = { showExtraPane(ExtraScreen.Screenshot(it)) }
-                        )
-                    }
 
                     item {
                         RatingAndReviews(

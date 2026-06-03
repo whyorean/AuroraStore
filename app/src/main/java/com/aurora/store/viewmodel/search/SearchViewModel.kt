@@ -27,6 +27,7 @@ import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.WhitelistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +44,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     val authProvider: AuthProvider,
-    private val webSearchHelper: WebSearchHelper
+    private val webSearchHelper: WebSearchHelper,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     private val contract: SearchContract
@@ -57,6 +59,7 @@ class SearchViewModel @Inject constructor(
     val apps = combine(searchFilter, _apps) { filter, pagingData ->
         pagingData.filter { app ->
             when {
+                !whitelistProvider.isWhitelisted(app.packageName) -> false
                 filter.noAds && app.containsAds -> false
                 filter.isFree && !app.isFree -> false
                 filter.noGMS && app.requiresGMS() -> false
