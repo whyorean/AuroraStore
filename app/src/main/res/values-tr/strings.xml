@@ -558,4 +558,29 @@
     <string name="installed_filter_all">Tümü</string>
     <string name="installed_updated_at"><xliff:g id="when">%1$s</xliff:g> güncellendi</string>
     <string name="action_check">Denetle</string>
+    <string name="action_buy">%1$s üzerinden satın al</string>
+    <string name="action_install_all">Tümünü kur</string>
+    <string name="details_review_comment_hint">Deneyiminizi anlatın (isteğe bağlı)</string>
+    <string name="details_review_edit">İncelemenizi düzenleyin</string>
+    <string name="details_review_delete">Sil</string>
+    <string name="details_review_delete_title">İnceleme silinsin mi?</string>
+    <string name="details_review_delete_message">Derecelendirmeniz ve incelemeniz Google Play\'den kaldırılacaktır.</string>
+    <string name="details_your_review">İncelemeniz</string>
+    <string name="confirm_deeplink_title">Dış bağlantıları onayla</string>
+    <string name="confirm_deeplink_summary">Bir bağlantıdan uygulama sayfasını açmadan önce sor, böylece reklamların senin iznin olmadan Aurora Store\'u başlatmasını engellersiniz.</string>
+    <string name="confirm_deeplink_sheet_title">Aurora Store\'a devam edilsin mi?</string>
+    <string name="confirm_deeplink_sheet_message">Bir dış uygulama Aurora Store\'u açmak istiyor</string>
+    <string name="confirm_deeplink_sheet_source">%1$s aracılığıyla açıldı</string>
+    <string name="title_install_favourites">Gözde uygulamalar kurulsun mu?</string>
+    <string name="install_favourites_summary">Bu, %1$d uygulamayı indirip kuracaktır.</string>
+    <string name="install_favourites_warning">Her uygulama için ayrı bir kurulum isteği görebilirsiniz.</string>
+    <string name="pref_ui_dynamic_color">Değişken renkler</string>
+    <string name="pref_ui_dynamic_color_desc">Duvar kağıdınızdaki renkleri kullanın. Aurora\'nın marka renklerini kullanmayın.</string>
+    <string name="toast_fav_install_enqueued">%1$d uygulama kuruluyor</string>
+    <string name="toast_fav_install_none">Kurulacak bir şey yok</string>
+    <string name="toast_fav_install_failed">Uygulama ayrıntıları alınamadı</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d gözde uygulama</item>
+        <item quantity="other">%1$d gözde uygulama</item>
+    </plurals>
 </resources>
