@@ -355,7 +355,7 @@
     <string name="action_favourite">Favori</string>
     <string name="details_no_favourites">Aucune application favorite trouvée</string>
     <string name="toast_fav_import_success">Les favoris ont été importés !</string>
-    <string name="action_uninstall_success">L’application a été désinstallée</string>
+    <string name="action_uninstall_success">L’appli a été désinstallée</string>
     <string name="pref_network_proxy_url_message">Saisissez une URL de mandataire valide pour faire transiter toute les données par le mandataire.</string>
     <string name="title_favourites_manager">Applications favorites</string>
     <string name="toast_fav_export_success">Les favoris ont été exportés !</string>
@@ -561,7 +561,7 @@
         <item quantity="many">%d applications en échec</item>
         <item quantity="other">%d applications en échec</item>
     </plurals>
-    <string name="action_buy">Acheter @ %1$s</string>
+    <string name="action_buy">Acheter à %1$s</string>
     <string name="action_install_all">Tout installer</string>
     <string name="details_review_comment_hint">Décrivez votre expérience (facultatif)</string>
     <string name="details_review_edit">Modifier votre avis</string>
@@ -571,16 +571,16 @@
     <string name="details_your_review">Votre avis</string>
     <string name="confirm_deeplink_title">Vérifier les liens externes</string>
     <string name="confirm_deeplink_summary">Demandez confirmation avant d\'ouvrir la fiche d\'une application à partir d\'un lien, afin d\'empêcher les publicités de lancer l\'Aurora Store sans votre consentement.</string>
-    <string name="confirm_deeplink_sheet_title">Vous souhaitez continuer vers Aurora Store ?</string>
-    <string name="confirm_deeplink_sheet_message">Une application externe souhaite ouvrir Aurora Store</string>
-    <string name="confirm_deeplink_sheet_source">Ouvert depuis le %1$s</string>
+    <string name="confirm_deeplink_sheet_title">Poursuivre vers le magasin Aurora Store ?</string>
+    <string name="confirm_deeplink_sheet_message">Une appli externe veut ouvrir Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Ouvert à partir de %1$s</string>
     <string name="title_install_favourites">Installer les favoris ?</string>
     <string name="install_favourites_summary">Cela permettra de télécharger et d\'installer %1$d applications.</string>
     <string name="install_favourites_warning">Il se peut qu\'une invite d\'installation distincte s\'affiche pour chaque application.</string>
     <string name="pref_ui_dynamic_color">Couleurs dynamiques</string>
-    <string name="pref_ui_dynamic_color_desc">Utilisez les couleurs de votre fond d\'écran. Désactivez la palette de couleurs d\'Aurora.</string>
-    <string name="toast_fav_install_enqueued">Installation de %1$d applications</string>
-    <string name="toast_fav_install_none">Aucune installation requise</string>
+    <string name="pref_ui_dynamic_color_desc">Utilisez les couleurs de votre fond d’écran. Désactivez la palette de couleurs d’Aurora.</string>
+    <string name="toast_fav_install_enqueued">Installation de %1$d applis</string>
+    <string name="toast_fav_install_none">Rien à installer</string>
     <string name="toast_fav_install_failed">Impossible de récupérer les informations sur l\'application</string>
     <plurals name="favourites_count">
         <item quantity="one">%1$d favoris</item>
