@@ -558,4 +558,29 @@
         <item quantity="one">%d alkalmazás telepítése sikertelen</item>
         <item quantity="other">%d alkalmazás telepítése sikertelen</item>
     </plurals>
+    <string name="action_buy">Vásárlás itt: %1$s</string>
+    <string name="action_install_all">Összes telepítése</string>
+    <string name="details_review_comment_hint">Írja le a tapasztalatait (opcionális)</string>
+    <string name="details_review_edit">Értékelés szerkesztése</string>
+    <string name="details_review_delete">Törlés</string>
+    <string name="details_review_delete_title">Törli az értékelést?</string>
+    <string name="details_review_delete_message">Az értékelése és a véleménye el lesz távolítva a Google Play Áruházból.</string>
+    <string name="details_your_review">Saját értékelés</string>
+    <string name="confirm_deeplink_title">Külső hivatkozások megerősítése</string>
+    <string name="confirm_deeplink_summary">Kérjen megerősítést, mielőtt egy hivatkozás alkalmazásadatlapot nyitna meg, így a hirdetések nem indíthatják el az Aurora Store-t az Ön beleegyezése nélkül.</string>
+    <string name="confirm_deeplink_sheet_title">Folytatás az Aurora Store megnyitásával?</string>
+    <string name="confirm_deeplink_sheet_message">Egy külső alkalmazás meg szeretné nyitni az Aurora Store-t</string>
+    <string name="confirm_deeplink_sheet_source">Megnyitva innen: %1$s</string>
+    <string name="title_install_favourites">Kedvencek telepítése?</string>
+    <string name="install_favourites_summary">Ez %1$d alkalmazás letöltését és telepítését fogja elvégezni.</string>
+    <string name="install_favourites_warning">Lehet, hogy minden alkalmazáshoz külön telepítési megerősítés jelenik meg.</string>
+    <string name="pref_ui_dynamic_color">Dinamikus színek</string>
+    <string name="pref_ui_dynamic_color_desc">Használja a háttérkép színeit. Kikapcsolva az Aurora saját színpalettáját használja.</string>
+    <string name="toast_fav_install_enqueued">%1$d alkalmazás telepítése</string>
+    <string name="toast_fav_install_none">Nincs mit telepíteni</string>
+    <string name="toast_fav_install_failed">Az alkalmazás részleteinek lekérése sikertelen</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d kedvenc</item>
+        <item quantity="other">%1$d kedvenc</item>
+    </plurals>
 </resources>
