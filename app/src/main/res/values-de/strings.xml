@@ -558,4 +558,29 @@
         <item quantity="one">%d App-Installation fehlgeschlagen</item>
         <item quantity="other">%d App-Installationen fehlgeschlagen</item>
     </plurals>
+    <string name="action_buy">Kaufen bei %1$s</string>
+    <string name="action_install_all">Alle installieren</string>
+    <string name="details_review_comment_hint">Beschreibe deine Erfahrungen (optional)</string>
+    <string name="details_review_edit">Deine Rezension bearbeiten</string>
+    <string name="details_review_delete">Löschen</string>
+    <string name="details_review_delete_title">Rezension löschen?</string>
+    <string name="details_review_delete_message">Deine Bewertung und Rezension werden aus Google Play entfernt.</string>
+    <string name="details_your_review">Deine Rezension</string>
+    <string name="confirm_deeplink_title">Externe Links bestätigen</string>
+    <string name="confirm_deeplink_summary">Vor dem Öffnen eines App-Eintrags über einen Link nachfragen, um zu verhindern, dass Werbung Aurora Store ohne deine Zustimmung startet.</string>
+    <string name="confirm_deeplink_sheet_title">Weiter zu Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Eine externe App möchte Aurora Store öffnen</string>
+    <string name="confirm_deeplink_sheet_source">Geöffnet von %1$s</string>
+    <string name="title_install_favourites">Favoriten installieren?</string>
+    <string name="install_favourites_summary">Dadurch werden %1$d Apps heruntergeladen und installiert.</string>
+    <string name="install_favourites_warning">Möglicherweise wird für jede App eine eigene Installationsaufforderung angezeigt.</string>
+    <string name="pref_ui_dynamic_color">Dynamische Farben</string>
+    <string name="pref_ui_dynamic_color_desc">Farben aus deinem Hintergrundbild verwenden. Deaktiviert Auroras Farbpalette.</string>
+    <string name="toast_fav_install_enqueued">%1$d Apps werden installiert</string>
+    <string name="toast_fav_install_none">Keine Installation erforderlich</string>
+    <string name="toast_fav_install_failed">App-Details konnten nicht abgerufen werden</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d Favorit</item>
+        <item quantity="other">%1$d Favoriten</item>
+    </plurals>
 </resources>
