@@ -36,8 +36,7 @@ internal fun category(pageType: Int): StreamContract.Category =
     if (pageType == 1) StreamContract.Category.GAME else StreamContract.Category.APPLICATION
 
 private enum class AppsTab(@StringRes val titleRes: Int) {
-    FOR_YOU(R.string.tab_for_you),
-    TOP_CHARTS(R.string.tab_top_charts),
+    ALL(R.string.tab_all),
     CATEGORIES(R.string.tab_categories)
 }
 
@@ -61,10 +60,8 @@ fun AppsGamesScreen(
         topChartViewModel.getStreamCluster(chartType, TopChartsContract.Chart.TOP_SELLING_FREE)
     }
 
-    val isForYouEnabled = Preferences.getBoolean(context, Preferences.PREFERENCE_FOR_YOU)
     val tabs = buildList {
-        if (isForYouEnabled) add(AppsTab.FOR_YOU)
-        add(AppsTab.TOP_CHARTS)
+        add(AppsTab.ALL)
         add(AppsTab.CATEGORIES)
     }
     val pagerState = rememberPagerState { tabs.size }
@@ -95,7 +92,7 @@ fun AppsGamesScreen(
             userScrollEnabled = false
         ) { page ->
             when (tabs[page]) {
-                AppsTab.FOR_YOU -> ForYouContent(
+                AppsTab.ALL -> ForYouContent(
                     pageType = pageType,
                     viewModel = streamViewModel,
                     onAppClick = { onNavigateTo(Destination.AppDetails(it.packageName)) },
@@ -106,12 +103,6 @@ fun AppsGamesScreen(
                     onScrolledToEnd = {
                         streamViewModel.observe(category(pageType), StreamContract.Type.HOME)
                     }
-                )
-
-                AppsTab.TOP_CHARTS -> TopChartsContent(
-                    pageType = pageType,
-                    viewModel = topChartViewModel,
-                    onAppClick = { onNavigateTo(Destination.AppDetails(it.packageName)) }
                 )
 
                 AppsTab.CATEGORIES -> CategoriesContent(

@@ -116,22 +116,23 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
 
         // Frequent remote whitelist check
         scope.launch(kotlinx.coroutines.Dispatchers.IO) {
-            val whitelistUrl = "https://raw.githubusercontent.com/your-repo/your-project/main/whitelist.json"
+            val whitelistUrl = "https://raw.githubusercontent.com/kobiamos001/AuroraStore/master/whitelist.json"
             while (true) {
                 try {
-                    val response = okHttpClient.newCall(
+                    okHttpClient.newCall(
                         okhttp3.Request.Builder().url(whitelistUrl).build()
-                    ).execute()
-                    if (response.isSuccessful) {
-                        val bytes = response.body?.bytes()
-                        if (bytes != null) {
-                            File(filesDir, "whitelist.json").writeBytes(bytes)
-                            whitelistProvider.refresh()
+                    ).execute().use { response ->
+                        if (response.isSuccessful) {
+                            val bytes = response.body?.bytes()
+                            if (bytes != null) {
+                                File(filesDir, "whitelist.json").writeBytes(bytes)
+                                whitelistProvider.refresh()
+                            }
                         }
                     }
                 } catch (_: Exception) {
                 }
-                delay(30000) // Every 30 seconds
+                delay(15000) // Every 15 seconds
             }
         }
 

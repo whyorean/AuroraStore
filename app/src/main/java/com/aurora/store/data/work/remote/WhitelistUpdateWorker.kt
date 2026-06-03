@@ -27,7 +27,7 @@ class WhitelistUpdateWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         return try {
-            val whitelistUrl = "https://raw.githubusercontent.com/your-repo/your-project/main/whitelist.json"
+            val whitelistUrl = "https://raw.githubusercontent.com/kobiamos001/AuroraStore/master/whitelist.json"
             val response = httpClient.get(whitelistUrl, emptyMap())
             if (response.code == 200) {
                 val file = File(context.filesDir, "whitelist.json")

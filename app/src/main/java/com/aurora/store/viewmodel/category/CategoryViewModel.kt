@@ -28,10 +28,12 @@ import com.aurora.gplayapi.data.models.Category
 import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.contracts.CategoryContract
+import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.CategoryStash
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.model.ViewState
+import com.aurora.store.data.providers.WhitelistProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +41,9 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
-    private val categoryHelper: CategoryHelper
+    private val categoryHelper: CategoryHelper,
+    private val categoryStreamHelper: WebCategoryStreamHelper,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     private var stash: CategoryStash = mutableMapOf(
@@ -63,7 +67,18 @@ class CategoryViewModel @Inject constructor(
             liveData.postValue(ViewState.Loading)
 
             try {
-                stash[type] = contract().getAllCategories(type)
+                val allCategories = contract().getAllCategories(type)
+                val filteredCategories = allCategories.filter { category ->
+                    try {
+                        val bundle = categoryStreamHelper.fetch(category.browseUrl)
+                        bundle.streamClusters.values.any { cluster ->
+                            whitelistProvider.filterApps(cluster.clusterAppList).isNotEmpty()
+                        }
+                    } catch (_: Exception) {
+                        false
+                    }
+                }
+                stash[type] = filteredCategories
                 liveData.postValue(ViewState.Success(stash))
             } catch (exception: GooglePlayException.AuthException) {
                 Log.w(TAG, "Categories fetch returned ${exception.code}, redirecting to Splash")
