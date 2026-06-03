@@ -486,4 +486,6 @@
     <string name="app_lock_no_credential">Vispirms ierīcē jāiestata ekrāna slēgšana (PIN, zīmējums, parole vai biometrija).</string>
     <string name="app_lock_locked_message">Nepieciešama autentificēšanās, lai piekļūtu Aurora Store</string>
     <string name="app_lock_unlock">Atslēgt</string>
+    <string name="details_review_delete">Izdzēst</string>
+    <string name="app_lock_prompt_title">Atslēgt Aurora Store</string>
 </resources>
