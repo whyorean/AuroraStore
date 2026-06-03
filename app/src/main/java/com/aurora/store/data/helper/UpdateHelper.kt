@@ -19,6 +19,7 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.UpdateMode
+import com.aurora.store.data.providers.WhitelistProvider
 import com.aurora.store.data.room.update.IgnoredUpdate
 import com.aurora.store.data.room.update.IgnoredUpdateDao
 import com.aurora.store.data.room.update.Update
@@ -50,7 +51,8 @@ import kotlinx.coroutines.launch
 class UpdateHelper @Inject constructor(
     private val updateDao: UpdateDao,
     private val ignoredUpdateDao: IgnoredUpdateDao,
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val whitelistProvider: WhitelistProvider
 ) {
 
     companion object {
@@ -95,7 +97,10 @@ class UpdateHelper @Inject constructor(
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
     private val filteredUpdates = updateDao.updates()
-        .map { list -> if (!isExtendedUpdateEnabled) list.filter { it.hasValidCert } else list }
+        .map { list ->
+            list.filter { whitelistProvider.isWhitelisted(it.packageName) }
+                .let { if (!isExtendedUpdateEnabled) it.filter { update -> update.hasValidCert } else it }
+        }
 
     /**
      * Updates surfaced to the UI / notifications. Updates muted by the user via

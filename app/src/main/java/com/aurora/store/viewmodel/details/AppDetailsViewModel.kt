@@ -37,6 +37,7 @@ import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.WhitelistProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
@@ -81,7 +82,8 @@ class AppDetailsViewModel @Inject constructor(
     private val favouriteDao: FavouriteDao,
     private val reviewDao: ReviewDao,
     private val httpClient: IHttpClient,
-    private val json: Json
+    private val json: Json,
+    private val whitelistProvider: WhitelistProvider
 ) : ViewModel() {
 
     private val _app = MutableStateFlow<App?>(null)
@@ -186,6 +188,12 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     fun fetchAppDetails(packageName: String) {
+        if (!whitelistProvider.isWhitelisted(packageName)) {
+            _app.value = null
+            _state.value = AppState.Error("App not whitelisted")
+            return
+        }
+
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _app.value = appDetailsHelper.getAppByPackageName(packageName).copy(
@@ -431,7 +439,9 @@ class AppDetailsViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val pageBundle = appDetailsHelper.getDetailsStream(streamUrl.hashCode(), streamUrl)
-                val pageClusters = pageBundle.streamClusters.filterValues {
+                val pageClusters = pageBundle.streamClusters.mapValues { entry ->
+                    entry.value.copy(clusterAppList = whitelistProvider.filterApps(entry.value.clusterAppList))
+                }.filterValues {
                     it.clusterTitle.isNotBlank() && it.clusterAppList.isNotEmpty()
                 }
                 suggestionsState = pageBundle.copy(streamClusters = pageClusters)
@@ -454,7 +464,7 @@ class AppDetailsViewModel @Inject constructor(
                 )
                 val existing = suggestionsState.streamClusters[cluster.id] ?: return@launch
                 val mergedCluster = existing.copy(
-                    clusterAppList = existing.clusterAppList + nextPage.clusterAppList,
+                    clusterAppList = existing.clusterAppList + whitelistProvider.filterApps(nextPage.clusterAppList),
                     clusterNextPageUrl = nextPage.clusterNextPageUrl
                 )
                 suggestionsState = suggestionsState.copy(

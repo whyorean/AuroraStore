@@ -159,6 +159,12 @@ configure<ApplicationExtension> {
         lintConfig = file("lint.xml")
     }
 
+    sourceSets {
+        getByName("main") {
+            assets.srcDirs("../whitelist")
+        }
+    }
+
     androidResources {
         generateLocaleConfig = true
     }
