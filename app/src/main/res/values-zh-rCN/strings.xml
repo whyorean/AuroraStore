@@ -555,4 +555,28 @@
     <plurals name="notification_failed_summary">
         <item quantity="other">%d 个应用失败</item>
     </plurals>
+    <string name="action_buy">购买 @ %1$s</string>
+    <string name="action_install_all">全部安装</string>
+    <string name="details_review_comment_hint">描述体验（可选）</string>
+    <string name="details_review_edit">编辑评价</string>
+    <string name="details_review_delete">删除</string>
+    <string name="details_review_delete_title">删除评价？</string>
+    <string name="details_review_delete_message">你的评分和评价将从 Google Play 被删除。</string>
+    <string name="details_your_review">你的评价</string>
+    <string name="confirm_deeplink_title">确认外部链接</string>
+    <string name="confirm_deeplink_summary">打开应用链接前先询问，防止广告未经允许启动 Aurora 商店。</string>
+    <string name="confirm_deeplink_sheet_title">继续前往 Aurora 商店？</string>
+    <string name="confirm_deeplink_sheet_message">外部应用想打开 Aurora 商店</string>
+    <string name="confirm_deeplink_sheet_source">从 %1$s 打开</string>
+    <string name="title_install_favourites">安装收藏的应用？</string>
+    <string name="install_favourites_summary">这会下载并安装 %1$d 个应用。</string>
+    <string name="install_favourites_warning">你可能会看到每个应用单独的安装提示。</string>
+    <string name="pref_ui_dynamic_color">动态色</string>
+    <string name="pref_ui_dynamic_color_desc">使用来自壁纸的颜色。关闭使用 Aurora 的品牌调色盘。</string>
+    <string name="toast_fav_install_enqueued">正在安装 %1$d 个应用</string>
+    <string name="toast_fav_install_none">没有可安装的</string>
+    <string name="toast_fav_install_failed">未能获取应用详情</string>
+    <plurals name="favourites_count">
+        <item quantity="other">%1$d 项收藏</item>
+    </plurals>
 </resources>
