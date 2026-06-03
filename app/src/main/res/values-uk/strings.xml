@@ -564,4 +564,31 @@
         <item quantity="many">Не вдалося встановити %d застосунків</item>
         <item quantity="other">Не вдалося встановити %d застосунків</item>
     </plurals>
+    <string name="action_buy">Придбати за %1$s</string>
+    <string name="action_install_all">Встановити все</string>
+    <string name="details_review_comment_hint">Опишіть свій досвід (необов’язково)</string>
+    <string name="details_review_edit">Редагувати відгук</string>
+    <string name="details_review_delete">Видалити</string>
+    <string name="details_review_delete_title">Видалити відгук?</string>
+    <string name="details_review_delete_message">Ваша оцінка та відгук будуть видалені з Google Play.</string>
+    <string name="details_your_review">Ваш відгук</string>
+    <string name="confirm_deeplink_title">Підтвердити зовнішні посилання</string>
+    <string name="confirm_deeplink_summary">Запитувати перед відкриттям сторінки застосунку за посиланням, аби запобігти запуску Aurora Store як рекламу без вашої згоди.</string>
+    <string name="confirm_deeplink_sheet_title">Продовжити в Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Зовнішній застосунок хоче відкрити Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Відкрито з %1$s</string>
+    <string name="title_install_favourites">Встановити улюблене?</string>
+    <string name="install_favourites_summary">Це завантажить і встановить %1$d застосунків.</string>
+    <string name="install_favourites_warning">Ви можете побачити окремий запит на встановлення для кожного застосунку.</string>
+    <string name="pref_ui_dynamic_color">Динамічні кольори</string>
+    <string name="pref_ui_dynamic_color_desc">Використовувати кольори з вашої шпалери. Вимкніть для фірмової палітри Aurora.</string>
+    <string name="toast_fav_install_enqueued">Встановлення %1$d застосунків</string>
+    <string name="toast_fav_install_none">Нічого встановлювати</string>
+    <string name="toast_fav_install_failed">Не вдалося отримати відомості про застосунок</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d улюблене</item>
+        <item quantity="few">%1$d улюблених</item>
+        <item quantity="many">%1$d улюблених</item>
+        <item quantity="other">%1$d улюблених</item>
+    </plurals>
 </resources>
