@@ -561,4 +561,30 @@
     <string name="installed_filter_all">Toate</string>
     <string name="installed_updated_at">Actualizat <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Verifică</string>
+    <string name="action_buy">Cumpără @ %1$s</string>
+    <string name="action_install_all">Instalează tot</string>
+    <string name="details_review_comment_hint">Descrie experiența (opțional)</string>
+    <string name="details_review_edit">Editează-ți recenzia</string>
+    <string name="details_review_delete">Șterge</string>
+    <string name="details_review_delete_title">Ștergi recenzia?</string>
+    <string name="details_review_delete_message">Evaluarea și recenzia ta vor fi eliminate din Google Play.</string>
+    <string name="details_your_review">Recenzia ta</string>
+    <string name="confirm_deeplink_title">Confirmare linkuri externe</string>
+    <string name="confirm_deeplink_summary">Întreabă înainte de a deschide o înregistrare a unei aplicații dintr-un link, împiedică reclamele să lanseze Aurora Store fără consimțământul tău.</string>
+    <string name="confirm_deeplink_sheet_title">Continui către Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">O aplicație externă dorește să deschidă Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Deschis din %1$s</string>
+    <string name="title_install_favourites">Instalezi favorite?</string>
+    <string name="install_favourites_summary">Aceasta va descărca și instala %1$d aplicații.</string>
+    <string name="install_favourites_warning">Este posibil să vezi o solicitare de instalare separat pentru fiecare aplicație.</string>
+    <string name="pref_ui_dynamic_color">Culori dinamice</string>
+    <string name="pref_ui_dynamic_color_desc">Utilizează culorile din imaginea de fundal. Dezactivează paleta de culori Aurora.</string>
+    <string name="toast_fav_install_enqueued">Se instalează %1$d aplicații</string>
+    <string name="toast_fav_install_none">Nimic de instalat</string>
+    <string name="toast_fav_install_failed">Nu s-au putut prelua detaliile aplicației</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d aplicație favorită</item>
+        <item quantity="few">%1$d aplicații favorite</item>
+        <item quantity="other">%1$d de aplicații favorite</item>
+    </plurals>
 </resources>
