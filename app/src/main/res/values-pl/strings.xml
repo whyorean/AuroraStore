@@ -564,4 +564,31 @@
     <string name="notification_group_activity">Pobieranie i aktualizacje</string>
     <string name="pref_self_update_desc">Pokazuj nowe wersje Aurora Store w zakładce Aktualizacje.</string>
     <string name="pref_notification_progress_desc">Pokaż szczegółowy postęp podczas pobierania i aktualizacji aplikacji. Gdy wyłączone, jedno ciche powiadomienie utrzymuje pobieranie w tle.</string>
+    <string name="action_buy">Kup @ %1$s</string>
+    <string name="action_install_all">Zainstaluj wszystkie</string>
+    <string name="details_review_comment_hint">Opisz swoje doświadczenie (opcjonalnie)</string>
+    <string name="details_review_edit">Edytuj swoją recenzję</string>
+    <string name="details_review_delete">Usuń</string>
+    <string name="details_review_delete_title">Usunąć recenzję?</string>
+    <string name="details_your_review">Twoja recenzja</string>
+    <string name="details_review_delete_message">Twoja ocena i recenzja zostaną usunięte z Google Play.</string>
+    <string name="title_install_favourites">Zainstalować ulubione?</string>
+    <string name="pref_ui_dynamic_color">Dynamiczne kolory</string>
+    <string name="pref_ui_dynamic_color_desc">Użyj kolorów z tapety. Wyłącz, aby przywrócić domyślną paletę kolorów Aurora Store.</string>
+    <string name="toast_fav_install_none">Brak elementów do zainstalowania</string>
+    <string name="toast_fav_install_failed">Nie udało się pobrać szczegółów aplikacji</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d ulubiona</item>
+        <item quantity="few">%1$d ulubione</item>
+        <item quantity="many">%1$d ulubionych</item>
+        <item quantity="other">%1$d ulubionych</item>
+    </plurals>
+    <string name="confirm_deeplink_title">Potwierdź linki zewnętrzne</string>
+    <string name="confirm_deeplink_summary">Pytaj przed otwarciem karty aplikacji z linku, aby zapobiec uruchomieniu Aurora Store przez reklamy bez Twojej zgody.</string>
+    <string name="confirm_deeplink_sheet_message">Zewnętrzna aplikacja chce otworzyć Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Otwarto z %1$s</string>
+    <string name="install_favourites_warning">Dla każdej aplikacji może pojawić się oddzielne okno instalacji.</string>
+    <string name="toast_fav_install_enqueued">Instalowanie aplikacji %1$d</string>
+    <string name="install_favourites_summary">Spowoduje to pobranie i zainstalowanie %1$d aplikacji.</string>
+    <string name="confirm_deeplink_sheet_title">Kontynuować w Aurora Store?</string>
 </resources>
