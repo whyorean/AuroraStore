@@ -523,4 +523,60 @@
     <string name="installed_filter_all">Semua</string>
     <string name="installed_updated_at">Diperbarui <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Periksa</string>
+    <string name="action_buy">Beli di %1$s</string>
+    <string name="action_install_all">Instal semua</string>
+    <string name="details_review_comment_hint">Ceritakan pengalaman Anda (opsional)</string>
+    <string name="details_review_edit">Edit ulasan Anda</string>
+    <string name="details_review_delete">Hapus</string>
+    <string name="details_review_delete_title">Hapus ulasan?</string>
+    <string name="details_review_delete_message">Rating dan ulasan Anda akan dihapus dari Google Play.</string>
+    <string name="details_your_review">Ulasan Anda</string>
+    <string name="download_failed_storage">Ruang penyimpanan tidak cukup untuk mengunduh aplikasi ini</string>
+    <string name="installer_fallback_session">Penginstal yang dipilih tidak tersedia, menggunakan penginstal default sebagai gantinya.</string>
+    <string name="title_security">Keamanan</string>
+    <string name="app_lock_title">Kunci aplikasi</string>
+    <string name="app_lock_summary">Wajibkan autentikasi biometrik atau kunci layar untuk membuka Aurora Store.</string>
+    <string name="app_lock_no_credential">Siapkan kunci layar (PIN, pola, sandi, atau biometrik) di perangkat Anda terlebih dahulu.</string>
+    <string name="app_lock_locked_message">Autentikasi diperlukan untuk mengakses Aurora Store</string>
+    <string name="app_lock_unlock">Buka kunci</string>
+    <string name="app_lock_prompt_title">Buka kunci Aurora Store</string>
+    <string name="app_lock_prompt_subtitle">Masukkan pola, PIN, sandi, atau sidik jari kunci layar ponsel</string>
+    <string name="confirm_deeplink_title">Konfirmasi tautan eksternal</string>
+    <string name="confirm_deeplink_summary">Tanyakan sebelum membuka halaman aplikasi dari tautan, agar iklan tidak membuka Aurora Store tanpa persetujuan Anda.</string>
+    <string name="confirm_deeplink_sheet_title">Lanjut ke Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Aplikasi eksternal ingin membuka Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Dibuka dari %1$s</string>
+    <string name="notification_channel_alerts">Kesalahan &amp; peringatan</string>
+    <string name="notification_group_activity">Unduhan &amp; pembaruan</string>
+    <string name="notification_group_alerts">Peringatan</string>
+    <string name="pref_self_update">Pembaruan mandiri</string>
+    <string name="pref_self_update_desc">Tawarkan build Aurora Store terbaru di tab Pembaruan.</string>
+    <string name="title_install_favourites">Instal favorit?</string>
+    <string name="install_favourites_summary">Ini akan mengunduh dan menginstal %1$d aplikasi.</string>
+    <string name="install_favourites_warning">Anda mungkin akan melihat prompt instalasi terpisah untuk setiap aplikasi.</string>
+    <string name="title_notifications">Notifikasi</string>
+    <string name="pref_notification_progress">Tampilkan progres unduhan</string>
+    <string name="pref_notification_progress_desc">Tampilkan progres detail saat mengunduh dan memperbarui aplikasi. Jika dimatikan, satu notifikasi senyap akan menjaga unduhan tetap berjalan di latar belakang.</string>
+    <string name="pref_notification_categories">Kategori</string>
+    <string name="pref_notification_categories_desc">Atur suara dan tingkat kepentingan untuk setiap jenis notifikasi</string>
+    <string name="pref_notification_disabled">Notifikasi dinonaktifkan</string>
+    <string name="pref_notification_disabled_desc">Ketuk untuk mengaktifkan notifikasi Aurora Store</string>
+    <string name="updates_self_header">Pembaruan mandiri</string>
+    <string name="updates_self_desc">Build Aurora Store yang lebih baru tersedia</string>
+    <string name="pref_ui_dynamic_color">Warna dinamis</string>
+    <string name="pref_ui_dynamic_color_desc">Gunakan warna dari wallpaper Anda. Nonaktifkan untuk memakai palet merek Aurora.</string>
+    <string name="toast_fav_install_enqueued">Menginstal %1$d aplikasi</string>
+    <string name="toast_fav_install_none">Tidak ada yang perlu diinstal</string>
+    <string name="toast_fav_install_failed">Gagal mengambil detail aplikasi</string>
+    <string name="status_installing">Menginstal</string>
+    <string name="status_installed">Terinstal</string>
+    <plurals name="favourites_count">
+        <item quantity="other">%1$d favorit</item>
+    </plurals>
+    <plurals name="notification_installed_summary">
+        <item quantity="other">%d aplikasi terinstal</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="other">%d aplikasi gagal</item>
+    </plurals>
 </resources>
