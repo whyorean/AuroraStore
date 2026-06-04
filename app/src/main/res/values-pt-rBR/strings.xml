@@ -561,4 +561,30 @@
         <item quantity="many">%d de apps falharam</item>
         <item quantity="other">%d apps falharam</item>
     </plurals>
+    <string name="action_buy">Comprar em %1$s</string>
+    <string name="action_install_all">Instalar tudo</string>
+    <string name="details_review_comment_hint">Descreva sua experiência (opcional)</string>
+    <string name="details_review_edit">Editar sua avaliação</string>
+    <string name="details_review_delete">Apagar</string>
+    <string name="details_review_delete_title">Apagar avaliação?</string>
+    <string name="details_review_delete_message">A sua avaliação será removida do Google Play.</string>
+    <string name="details_your_review">Sua avaliação</string>
+    <string name="confirm_deeplink_title">Confirmar links externos</string>
+    <string name="confirm_deeplink_summary">Perguntar antes de abrir a página de um app a partir de um link, impede que anúncios abram a Aurora sem seu consentimento.</string>
+    <string name="confirm_deeplink_sheet_title">Continuar na Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Um app externo quer abrir a Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Aberto por %1$s</string>
+    <string name="title_install_favourites">Instalar favoritos?</string>
+    <string name="install_favourites_summary">Fazer isso baixará e instalará %1$d apps.</string>
+    <string name="install_favourites_warning">Você pode ver pedidos de instalação para cada app.</string>
+    <string name="pref_ui_dynamic_color">Cores dinâmicas</string>
+    <string name="pref_ui_dynamic_color_desc">Usar cores do seu plano de fundo. Desative para usar a paleta de cores da marca da Aurora.</string>
+    <string name="toast_fav_install_enqueued">Instalando %1$d apps</string>
+    <string name="toast_fav_install_none">Nada a instalar</string>
+    <string name="toast_fav_install_failed">Falha ao obter detalhes do app</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d favorito</item>
+        <item quantity="many">%1$d de favoritos</item>
+        <item quantity="other">%1$d favoritos</item>
+    </plurals>
 </resources>
