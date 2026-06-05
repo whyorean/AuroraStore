@@ -433,7 +433,7 @@
     <string name="app_info_min_android">Version minimale d’Android</string>
     <string name="app_info_target_android">Niveau d’API cible</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> autorisations</string>
-    <string name="action_install_microG">Installer le pack microG</string>
+    <string name="action_install_microG">Installer de le paquet d’appli microG</string>
     <string name="onboarding_title_gsf">Compatibilité de l’appli</string>
     <string name="onboarding_title_gsf_desc">Dépendances manquantes</string>
     <string name="onboarding_gms_agreement">J’ai lu et accepte les conditions générales d’utilisation et la politique de confidentialité de microG</string>
