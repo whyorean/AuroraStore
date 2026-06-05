@@ -447,7 +447,7 @@
     <string name="details_data_safety_shared">Dati, ko šī lietotne var kopīgot</string>
     <string name="details_data_safety_share_none">Izstrādātājs apgalvo, ka šī lietotne nekopīgo lietotāju datus ar citiem uzņēmumiem vai apvienībām.</string>
     <string name="exodus_tracker_desc">Šī lietotnes versija joprojām var saturēt vairāk izsekotāju, kuri vēl nav Exodus Privacy datubāzē.</string>
-    <string name="exodus_report_trackers">Atrasts/i <xliff:g id="number_of_trackers">%1$d</xliff:g> zināms/i izsekotājs/i <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="exodus_report_trackers">Atrasto zināmo izsekotāju skaits versijā <xliff:g id="app_version_name">%2$s</xliff:g>: <xliff:g id="number_of_trackers">%1$d</xliff:g></string>
     <string name="manual_download_version_error">Versijas kods var saturēt tikai ciparus</string>
     <string name="no_description">Nav pieejams apraksts</string>
     <string name="details_more_info">Vairāk informācijas</string>
@@ -488,4 +488,20 @@
     <string name="app_lock_unlock">Atslēgt</string>
     <string name="details_review_delete">Izdzēst</string>
     <string name="app_lock_prompt_title">Atslēgt Aurora Store</string>
+    <string name="action_buy">Pirkt %1$s</string>
+    <string name="action_install_all">Uzstādīt visas</string>
+    <string name="details_review_comment_hint">Apraksti savu pieredzi (pēc izvēles)</string>
+    <string name="details_review_edit">Labot atsauksmi</string>
+    <string name="details_review_delete_title">Izdzēst atsauksmi?</string>
+    <string name="details_review_delete_message">Vērtējums un atsauksme tiks noņemta no Google Play.</string>
+    <string name="details_your_review">Tava atsauksme</string>
+    <string name="confirm_deeplink_title">Apstiprināt ārējas saites</string>
+    <string name="confirm_deeplink_sheet_title">Turpināt Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Ārēja lietotne vēlas atvērt Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Atvērts no %1$s</string>
+    <string name="notification_channel_alerts">Kļūdas un brīdinājumi</string>
+    <string name="notification_group_activity">Lejupielādes un atjauninājumi</string>
+    <string name="notification_group_alerts">Brīdinājumi</string>
+    <string name="pref_self_update">Pašatjaunināšana</string>
+    <string name="pref_self_update_desc">Piedāvāt jaunus Aurora Store būvējumus atjauninājumu cilnē.</string>
 </resources>
