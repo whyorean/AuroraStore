@@ -8,6 +8,7 @@ package com.aurora.store.data.providers
 import android.accounts.Account
 import android.accounts.AccountManager
 import android.accounts.AccountManagerCallback
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -24,7 +25,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.suspendCancellableCoroutine
 
 /**
  * Wraps the system [AccountManager] for Google/microG accounts: enumerating the accounts present
@@ -45,47 +46,71 @@ class GoogleAccountTokenProvider @Inject constructor(
         emptyList()
     }
 
-    suspend fun fetchAuthToken(email: String, oldToken: String? = null): String =
-        suspendCoroutine { continuation ->
-            fetchAuthToken(email, oldToken) { future ->
-                try {
-                    val token = future.result.getString(AccountManager.KEY_AUTHTOKEN)
-                    if (token != null) {
-                        continuation.resume(token)
-                    } else {
-                        continuation.resumeWithException(
-                            IllegalStateException("Auth token is null")
-                        )
-                    }
-                } catch (e: Exception) {
-                    continuation.resumeWithException(e)
+    /**
+     * Mints a Play Store AUTH token for [email]. Pass an [activity] for interactive requests
+     * (e.g. adding an account) so microG can show any consent UI it needs; omit it for
+     * background refreshes, which fall back to the non-interactive overload.
+     */
+    suspend fun fetchAuthToken(
+        email: String,
+        oldToken: String? = null,
+        activity: Activity? = null
+    ): String = suspendCancellableCoroutine { continuation ->
+        fetchAuthToken(email, oldToken, activity) { future ->
+            try {
+                val token = future.result.getString(AccountManager.KEY_AUTHTOKEN)
+                if (token != null) {
+                    continuation.resume(token)
+                } else {
+                    continuation.resumeWithException(
+                        IllegalStateException("Auth token is null")
+                    )
                 }
+            } catch (e: Exception) {
+                continuation.resumeWithException(e)
             }
         }
+    }
 
     private fun fetchAuthToken(
         email: String,
         oldToken: String?,
+        activity: Activity?,
         callback: AccountManagerCallback<Bundle>
     ) {
         try {
+            val accountManager = AccountManager.get(context)
             if (oldToken != null) {
-                AccountManager.get(context).invalidateAuthToken(GOOGLE_ACCOUNT_TYPE, oldToken)
+                accountManager.invalidateAuthToken(GOOGLE_ACCOUNT_TYPE, oldToken)
             }
-            AccountManager.get(context).getAuthToken(
-                Account(email, GOOGLE_ACCOUNT_TYPE),
-                GOOGLE_PLAY_AUTH_TOKEN_TYPE,
-                Bundle().apply {
-                    putString("overridePackage", PACKAGE_NAME_PLAY_STORE)
-                    putByteArray(
-                        "overrideCertificate",
-                        Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
-                    )
-                },
-                true,
-                callback,
-                Handler(Looper.getMainLooper())
-            )
+            val account = Account(email, GOOGLE_ACCOUNT_TYPE)
+            val options = Bundle().apply {
+                putString("overridePackage", PACKAGE_NAME_PLAY_STORE)
+                putByteArray(
+                    "overrideCertificate",
+                    Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT)
+                )
+            }
+            val handler = Handler(Looper.getMainLooper())
+            if (activity != null) {
+                accountManager.getAuthToken(
+                    account,
+                    GOOGLE_PLAY_AUTH_TOKEN_TYPE,
+                    options,
+                    activity,
+                    callback,
+                    handler
+                )
+            } else {
+                accountManager.getAuthToken(
+                    account,
+                    GOOGLE_PLAY_AUTH_TOKEN_TYPE,
+                    options,
+                    true,
+                    callback,
+                    handler
+                )
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to fetch auth token", e)
             callback.run(null)

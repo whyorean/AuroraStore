@@ -5,6 +5,7 @@
 
 package com.aurora.store.viewmodel.accounts
 
+import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.gplayapi.helpers.AuthHelper
@@ -93,10 +94,10 @@ class AccountsViewModel @Inject constructor(
     }
 
     /** Adds a device (microG) Google account by minting an AUTH token and building AuthData. */
-    fun addSystemAccount(email: String) {
+    fun addSystemAccount(email: String, activity: Activity?) {
         viewModelScope.launch(Dispatchers.IO) {
             val added = runCatching {
-                val token = tokenProvider.fetchAuthToken(email)
+                val token = tokenProvider.fetchAuthToken(email = email, activity = activity)
                 val authData = authProvider
                     .buildGoogleAuthData(email, token, AuthHelper.Token.AUTH)
                     .getOrThrow()

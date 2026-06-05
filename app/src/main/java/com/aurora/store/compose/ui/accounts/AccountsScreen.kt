@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.accounts
 
 import android.widget.Toast
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -73,6 +74,7 @@ fun AccountsScreen(
     viewModel: AccountsViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val activity = LocalActivity.current
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
     var showAddSheet by remember { mutableStateOf(false) }
     var selectedAccount by remember { mutableStateOf<Account?>(null) }
@@ -240,7 +242,7 @@ fun AccountsScreen(
                             onClick = {
                                 showAddSheet = false
                                 isAddingAccount = true
-                                viewModel.addSystemAccount(email)
+                                viewModel.addSystemAccount(email, activity)
                             }
                         )
                     }
