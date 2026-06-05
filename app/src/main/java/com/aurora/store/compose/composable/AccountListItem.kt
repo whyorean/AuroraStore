@@ -5,6 +5,7 @@
 
 package com.aurora.store.compose.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -78,9 +78,17 @@ fun AccountListItem(account: Account, onClick: () -> Unit, modifier: Modifier = 
             )
         }
         if (account.isDefault) {
-            SuggestionChip(
-                onClick = onClick,
-                label = { Text(text = stringResource(R.string.account_default)) }
+            Text(
+                text = stringResource(R.string.account_default),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.secondaryContainer)
+                    .padding(
+                        horizontal = dimensionResource(R.dimen.spacing_small),
+                        vertical = dimensionResource(R.dimen.spacing_xsmall)
+                    )
             )
         }
     }
