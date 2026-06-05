@@ -18,12 +18,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -58,6 +57,7 @@ import com.aurora.Constants.URL_TOS
 import com.aurora.extensions.browse
 import com.aurora.store.R
 import com.aurora.store.compose.composable.AccountListItem
+import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -300,11 +300,17 @@ private fun ScreenContent(
                 .padding(paddingValues)
                 .fillMaxSize()
         ) {
-            AccountsHeader(count = accounts.size, onAddAccount = onAddAccount)
-            HorizontalDivider()
+            SectionHeader(
+                title = pluralStringResource(R.plurals.account_count, accounts.size, accounts.size),
+                trailing = {
+                    TextButton(onClick = onAddAccount) {
+                        Text(text = stringResource(R.string.account_add))
+                    }
+                }
+            )
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                itemsIndexed(items = accounts, key = { _, item -> item.id }) { index, account ->
+                items(items = accounts, key = { it.id }) { account ->
                     AccountListItem(
                         account = account,
                         onClick = { onAccountClick(account) }
@@ -351,28 +357,6 @@ private fun AddOptionRow(iconRes: Int, label: String, onClick: () -> Unit) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-    }
-}
-
-@Composable
-private fun AccountsHeader(count: Int, onAddAccount: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                horizontal = dimensionResource(R.dimen.spacing_medium),
-                vertical = dimensionResource(R.dimen.spacing_small)
-            ),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = pluralStringResource(R.plurals.account_count, count, count),
-            style = MaterialTheme.typography.titleSmall
-        )
-        FilledTonalButton(onClick = onAddAccount) {
-            Text(text = stringResource(R.string.account_add))
-        }
     }
 }
 
