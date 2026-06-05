@@ -28,10 +28,12 @@ import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
+import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.installer.AppInstaller
@@ -40,6 +42,7 @@ import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.CertUtil
@@ -74,14 +77,15 @@ import kotlinx.coroutines.withContext
  */
 @HiltWorker
 class DownloadWorker @AssistedInject constructor(
-    authProvider: AuthProvider,
+    private val authProvider: AuthProvider,
+    tokenProvider: GoogleAccountTokenProvider,
     private val downloadDao: DownloadDao,
     private val appInstaller: AppInstaller,
     private val httpClient: IHttpClient,
-    private val purchaseHelper: PurchaseHelper,
+    private val accountRepository: AccountRepository,
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : AuthWorker(authProvider, context, workerParams) {
+) : AuthWorker(authProvider, tokenProvider, context, workerParams) {
 
     companion object {
         private const val NOTIFICATION_ID: Int = 200
@@ -92,6 +96,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private lateinit var download: Download
+    private lateinit var purchaseHelper: PurchaseHelper
 
     private val notificationManager = context.getSystemService<NotificationManager>()!!
 
@@ -130,6 +135,7 @@ class DownloadWorker @AssistedInject constructor(
         // Fetch required data for download
         try {
             download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
+            purchaseHelper = resolvePurchaseHelper(download.packageName)
         } catch (exception: Exception) {
             return onFailure(exception)
         }
@@ -364,6 +370,27 @@ class DownloadWorker @AssistedInject constructor(
 
             return@withContext Result.success()
         }
+    }
+
+    /**
+     * Builds a [PurchaseHelper] bound to the account this download should use: the app's
+     * per-app binding if any, otherwise the default account. Refreshes that account's session
+     * first if it is missing/expired so the purchase isn't rejected.
+     */
+    private suspend fun resolvePurchaseHelper(packageName: String): PurchaseHelper {
+        val accountId = accountRepository.resolveAccountId(packageName)
+        var authData = authProvider.getAuthData(accountId)
+        if (authData == null || !AuthHelper.isValid(authData)) {
+            // Refresh the resolved account; propagate failure instead of silently falling back to
+            // a different account, which would purchase a bound app under the wrong identity.
+            authData = authProvider.refresh(accountId).getOrElse { error ->
+                throw IllegalStateException(
+                    "Could not refresh session for account $accountId; re-authentication required",
+                    error
+                )
+            }
+        }
+        return PurchaseHelper(authData).using(httpClient)
     }
 
     /**

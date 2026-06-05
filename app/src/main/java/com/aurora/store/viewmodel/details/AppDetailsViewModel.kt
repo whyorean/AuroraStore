@@ -27,6 +27,7 @@ import com.aurora.gplayapi.helpers.web.WebDataSafetyHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
@@ -81,7 +82,8 @@ class AppDetailsViewModel @Inject constructor(
     private val favouriteDao: FavouriteDao,
     private val reviewDao: ReviewDao,
     private val httpClient: IHttpClient,
-    private val json: Json
+    private val json: Json,
+    private val accountRepository: AccountRepository
 ) : ViewModel() {
 
     private val _app = MutableStateFlow<App?>(null)
@@ -321,10 +323,17 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
+    val accounts = accountRepository.accounts
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
     fun enqueueDownload(app: App) {
         viewModelScope.launch(Dispatchers.IO) {
             downloadHelper.enqueueApp(app)
         }
+    }
+
+    fun enqueueDownloadWith(app: App, accountId: String) {
+        viewModelScope.launch(Dispatchers.IO) { downloadHelper.enqueueApp(app, accountId) }
     }
 
     fun cancelDownload(app: App) {

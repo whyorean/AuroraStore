@@ -14,6 +14,7 @@ import androidx.work.WorkRequest
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.AuroraApp
+import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.DownloadStatus
@@ -40,7 +41,8 @@ import kotlinx.coroutines.launch
 class DownloadHelper @Inject constructor(
     @ApplicationContext private val context: Context,
     private val downloadDao: DownloadDao,
-    private val appInstaller: AppInstaller
+    private val appInstaller: AppInstaller,
+    private val accountRepository: AccountRepository
 ) {
 
     companion object {
@@ -159,11 +161,29 @@ class DownloadHelper @Inject constructor(
     }
 
     /**
+     * Enqueues an app for download using a chosen account. Binding to the default clears any
+     * existing binding; a non-default account is persisted so future updates use it.
+     */
+    suspend fun enqueueApp(app: App, accountId: String) {
+        accountRepository.bindApp(app.packageName, accountId)
+        enqueueApp(app)
+    }
+
+    /**
      * Enqueues an update for download & install
      * @param update [Update] to download
      */
     suspend fun enqueueUpdate(update: Update) {
         enqueue(Download.fromUpdate(update))
+    }
+
+    /**
+     * Enqueues an update using a chosen account. Binding to the default clears any existing
+     * binding; a non-default account is persisted so this and future updates use it.
+     */
+    suspend fun enqueueUpdate(update: Update, accountId: String) {
+        accountRepository.bindApp(update.packageName, accountId)
+        enqueueUpdate(update)
     }
 
     /**
