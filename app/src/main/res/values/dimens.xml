@@ -25,7 +25,7 @@
     <dimen name="spacing_xlarge">24dp</dimen>
 
     <dimen name="icon_size_default">24dp</dimen>
-    <dimen name="icon_size_category">36dp</dimen>
+    <dimen name="icon_size_category">32dp</dimen>
     <dimen name="icon_size_small">48dp</dimen>
     <dimen name="icon_size_medium">56dp</dimen>
     <dimen name="icon_size">64dp</dimen>
