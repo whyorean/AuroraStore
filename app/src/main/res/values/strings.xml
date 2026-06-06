@@ -99,7 +99,6 @@
     <string name="action_install_all">"Install all"</string>
     <string name="action_install_microG">"Install microG Bundle"</string>
     <string name="action_switch_account">Switch account</string>
-    <string name="account_picker_title">Choose an account</string>
     <string name="action_installations">"Installations"</string>
     <string name="action_installing">"Installing"</string>
     <string name="action_join">"Join"</string>
