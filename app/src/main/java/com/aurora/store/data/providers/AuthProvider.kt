@@ -19,6 +19,7 @@
 
 package com.aurora.store.data.providers
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import com.aurora.Constants
@@ -179,8 +180,12 @@ class AuthProvider @Inject constructor(
             ?.let { json.decodeFromString<AuthData>(it) }
     }
 
-    /** Rebuilds and persists [accountId]'s AuthData. */
-    suspend fun refresh(accountId: String): Result<AuthData> {
+    /**
+     * Rebuilds and persists [accountId]'s AuthData. Pass an [activity] for user-initiated
+     * refreshes so a device (microG) account can show any consent UI it needs; background
+     * callers omit it and rely on a non-interactive token mint.
+     */
+    suspend fun refresh(accountId: String, activity: Activity? = null): Result<AuthData> {
         val account = accountRepository.getById(accountId)
             ?: return Result.failure(IllegalStateException("No account $accountId"))
         return runCatching {
@@ -196,7 +201,11 @@ class AuthProvider @Inject constructor(
                             .getOrThrow()
                     }
                     AuthHelper.Token.AUTH -> {
-                        val token = tokenProvider.fetchAuthToken(account.email, account.authToken)
+                        val token = tokenProvider.fetchAuthToken(
+                            account.email,
+                            account.authToken,
+                            activity
+                        )
                         buildGoogleAuthData(account.email, token, AuthHelper.Token.AAS).getOrThrow()
                     }
                 }

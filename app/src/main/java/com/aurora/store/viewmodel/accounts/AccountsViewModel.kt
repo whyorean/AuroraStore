@@ -47,6 +47,20 @@ class AccountsViewModel @Inject constructor(
     private val _addResult = MutableSharedFlow<Boolean>()
     val addResult = _addResult.asSharedFlow()
 
+    /** Number of accounts that failed to refresh in the last refresh-all (0 = all succeeded). */
+    private val _refreshResult = MutableSharedFlow<Int>()
+    val refreshResult = _refreshResult.asSharedFlow()
+
+    /** Refreshes the session/token for every account; the default's prefs mirror is re-synced. */
+    fun refreshAll(activity: Activity?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val all = accountRepository.getAll()
+            val failures = all.count { authProvider.refresh(it.id, activity).isFailure }
+            authProvider.syncDefaultToPrefs()
+            _refreshResult.emit(failures)
+        }
+    }
+
     fun setDefault(account: Account) {
         viewModelScope.launch(Dispatchers.IO) {
             val ok = authProvider.setDefaultAccount(account.id).isSuccess

@@ -82,6 +82,7 @@ fun AccountsScreen(
     var accountToSetDefault by remember { mutableStateOf<Account?>(null) }
     var isSwitchingDefault by remember { mutableStateOf(false) }
     var isAddingAccount by remember { mutableStateOf(false) }
+    var isRefreshing by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         viewModel.switched.collect { ok ->
@@ -120,10 +121,30 @@ fun AccountsScreen(
         }
     }
 
+    LaunchedEffect(Unit) {
+        viewModel.refreshResult.collect { failures ->
+            isRefreshing = false
+            val message = if (failures == 0) {
+                context.getString(R.string.account_refresh_done)
+            } else {
+                context.resources.getQuantityString(
+                    R.plurals.account_refresh_failed,
+                    failures,
+                    failures
+                )
+            }
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
+    }
+
     ScreenContent(
         accounts = accounts,
         onAccountClick = { selectedAccount = it },
-        onAddAccount = { showAddSheet = true }
+        onAddAccount = { showAddSheet = true },
+        onRefreshAll = {
+            isRefreshing = true
+            viewModel.refreshAll(activity)
+        }
     )
 
     selectedAccount?.let { account ->
@@ -171,6 +192,10 @@ fun AccountsScreen(
 
     if (isAddingAccount) {
         LoadingDialog(message = stringResource(R.string.account_adding))
+    }
+
+    if (isRefreshing) {
+        LoadingDialog(message = stringResource(R.string.account_refreshing))
     }
 
     accountToRemove?.let { account ->
@@ -285,13 +310,14 @@ fun AccountsScreen(
 private fun ScreenContent(
     accounts: List<Account> = emptyList(),
     onAccountClick: (Account) -> Unit = {},
-    onAddAccount: () -> Unit = {}
+    onAddAccount: () -> Unit = {},
+    onRefreshAll: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.title_account_manager),
-                actions = { OverflowMenu() }
+                actions = { OverflowMenu(onRefreshAll = onRefreshAll) }
             )
         }
     ) { paddingValues ->
@@ -361,7 +387,7 @@ private fun AddOptionRow(iconRes: Int, label: String, onClick: () -> Unit) {
 }
 
 @Composable
-private fun OverflowMenu() {
+private fun OverflowMenu(onRefreshAll: () -> Unit) {
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
     val links = mapOf(
@@ -378,6 +404,14 @@ private fun OverflowMenu() {
             )
         }
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            DropdownMenuItem(
+                text = { Text(text = stringResource(R.string.account_refresh_all)) },
+                onClick = {
+                    expanded = false
+                    onRefreshAll()
+                }
+            )
+            HorizontalDivider()
             links.forEach { (label, url) ->
                 DropdownMenuItem(
                     text = { Text(text = stringResource(label)) },

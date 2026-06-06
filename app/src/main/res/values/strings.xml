@@ -63,6 +63,9 @@
     <string name="account_set_default_message">Aurora Store will restart to switch the default account.</string>
     <string name="account_switching">Switching account…</string>
     <string name="account_adding">Adding account…</string>
+    <string name="account_refresh_all">Refresh all accounts</string>
+    <string name="account_refreshing">Refreshing accounts…</string>
+    <string name="account_refresh_done">Accounts refreshed</string>
     <string name="account_switch_failed">Couldn\'t refresh that account. Default unchanged.</string>
     <string name="account_add_failed">Couldn\'t add that account. Please try again.</string>
     <string name="action_back">"Back"</string>
@@ -635,6 +638,10 @@
     <plurals name="account_count">
         <item quantity="one">Total %1$d account</item>
         <item quantity="other">Total %1$d accounts</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Couldn\'t refresh %1$d account</item>
+        <item quantity="other">Couldn\'t refresh %1$d accounts</item>
     </plurals>
     <plurals name="notification_installed_summary">
         <item quantity="one">%d app installed</item>
