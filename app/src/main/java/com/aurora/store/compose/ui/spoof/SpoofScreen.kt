@@ -40,7 +40,6 @@ import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.ui.spoof.menu.MenuItem
 import com.aurora.store.compose.ui.spoof.menu.SpoofMenu
 import com.aurora.store.compose.ui.spoof.navigation.SpoofPage
-import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.viewmodel.spoof.SpoofViewModel
 import kotlinx.coroutines.launch
 
@@ -49,7 +48,8 @@ fun SpoofScreen(onNavigateTo: (Destination) -> Unit, viewModel: SpoofViewModel =
     ScreenContent(
         onNavigateTo = onNavigateTo,
         onDeviceSpoofImport = { uri -> viewModel.importDeviceSpoof(uri) },
-        onDeviceSpoofExport = { uri -> viewModel.exportDeviceSpoof(uri) }
+        onDeviceSpoofExport = { uri -> viewModel.exportDeviceSpoof(uri) },
+        onLogout = { viewModel.logout() }
     )
 }
 
@@ -58,7 +58,8 @@ private fun ScreenContent(
     pages: List<SpoofPage> = listOf(SpoofPage.DEVICE, SpoofPage.LOCALE),
     onNavigateTo: (Destination) -> Unit = {},
     onDeviceSpoofImport: (uri: Uri) -> Unit = {},
-    onDeviceSpoofExport: (uri: Uri) -> Unit = {}
+    onDeviceSpoofExport: (uri: Uri) -> Unit = {},
+    onLogout: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val pagerState = rememberPagerState { pages.size }
@@ -95,7 +96,7 @@ private fun ScreenContent(
             )
             when (result) {
                 SnackbarResult.ActionPerformed -> {
-                    AccountProvider.logout(context)
+                    onLogout()
                     onNavigateTo(Destination.Splash())
                 }
 

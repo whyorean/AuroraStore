@@ -47,7 +47,7 @@ fun MicroGInstallerPrerequisiteDialog(onConfirm: () -> Unit = {}, onDismiss: () 
                 )
             ) {
                 Text(text = stringResource(R.string.microg_installer_prerequisite_desc))
-                OutlinedButton (
+                OutlinedButton(
                     onClick = {
                         try {
                             context.startActivity(
