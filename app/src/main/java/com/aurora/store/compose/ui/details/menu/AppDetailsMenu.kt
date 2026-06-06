@@ -85,7 +85,7 @@ fun AppDetailsMenu(
                 enabled = canManualDownload && !state.inProgress()
             )
             DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_install_other_account)) },
+                text = { Text(text = stringResource(R.string.action_change_account)) },
                 onClick = { onClick(MenuItem.INSTALL_OTHER_ACCOUNT) },
                 enabled = canUseOtherAccount && !state.inProgress()
             )

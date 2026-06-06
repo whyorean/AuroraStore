@@ -284,7 +284,7 @@ private fun AccountAccordion(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = stringResource(R.string.action_update_other_account),
+            text = stringResource(R.string.action_change_account),
             style = MaterialTheme.typography.bodyLarge
         )
         Icon(
