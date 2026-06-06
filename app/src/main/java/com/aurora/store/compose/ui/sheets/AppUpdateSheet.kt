@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
@@ -121,6 +122,26 @@ fun AppUpdateSheet(
                 }
             )
 
+            // Per-app update override: only meaningful with more than one account. The primary
+            // update button keeps using the default (or the app's existing binding).
+            if (accounts.size > 1) {
+                HorizontalDivider(
+                    modifier = Modifier.padding(
+                        vertical = dimensionResource(R.dimen.spacing_small)
+                    )
+                )
+
+                AccountAccordion(
+                    expanded = showAccounts,
+                    onToggle = { showAccounts = !showAccounts },
+                    accounts = accounts,
+                    onSelect = { account ->
+                        viewModel.updateWithAccount(update, account.id)
+                        onDismiss()
+                    }
+                )
+            }
+
             HorizontalDivider(
                 modifier = Modifier.padding(
                     vertical = dimensionResource(R.dimen.spacing_small)
@@ -147,20 +168,6 @@ fun AppUpdateSheet(
                     onDismiss()
                 }
             )
-
-            // Per-app update override: only meaningful with more than one account. The primary
-            // update button keeps using the default (or the app's existing binding).
-            if (accounts.size > 1) {
-                AccountAccordion(
-                    expanded = showAccounts,
-                    onToggle = { showAccounts = !showAccounts },
-                    accounts = accounts,
-                    onSelect = { account ->
-                        viewModel.updateWithAccount(update, account.id)
-                        onDismiss()
-                    }
-                )
-            }
 
             Item(
                 label = stringResource(R.string.action_uninstall),
@@ -288,6 +295,8 @@ private fun AccountAccordion(
         )
     }
 
+    Spacer(Modifier.height(dimensionResource(R.dimen.spacing_xsmall)))
+
     AnimatedVisibility(
         visible = expanded,
         enter = expandVertically() + fadeIn(),
@@ -301,17 +310,27 @@ private fun AccountAccordion(
                 .background(MaterialTheme.colorScheme.surfaceContainerHighest)
                 .padding(vertical = dimensionResource(R.dimen.spacing_xsmall))
         ) {
-            accounts.forEach { account ->
+            accounts.forEachIndexed { index, account ->
+                if (index > 0) {
+                    HorizontalDivider(
+                        modifier = Modifier.padding(
+                            horizontal = dimensionResource(R.dimen.spacing_large)
+                        )
+                    )
+                }
+
                 val suffix = if (account.isDefault) {
                     " · " + stringResource(R.string.account_default)
                 } else {
-                    ""
+                    " · " + account.email
                 }
+
                 val name = if (account.isAnonymous) {
                     stringResource(R.string.account_anonymous)
                 } else {
                     account.displayName ?: account.email
                 }
+
                 Text(
                     text = name + suffix,
                     style = MaterialTheme.typography.bodyLarge,
