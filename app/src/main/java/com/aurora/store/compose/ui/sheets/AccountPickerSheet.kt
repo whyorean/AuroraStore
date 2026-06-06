@@ -36,7 +36,7 @@ fun AccountPickerSheet(
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = stringResource(R.string.account_picker_title),
+                text = stringResource(R.string.action_switch_account),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(R.dimen.spacing_medium),
