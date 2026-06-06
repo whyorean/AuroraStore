@@ -212,9 +212,6 @@ class AuthProvider @Inject constructor(
             }
             accountRepository.upsertAccount(
                 account.copy(
-                    // Anonymous sessions get a fresh dispenser-assigned e-mail on every refresh;
-                    // keep the row's e-mail in sync (a no-op for Google accounts). The id is
-                    // unaffected — it's the anonymous sentinel / the Google e-mail-derived id.
                     email = authData.email,
                     authDataJson = json.encodeToString(authData),
                     displayName = authData.userProfile?.name ?: account.displayName,

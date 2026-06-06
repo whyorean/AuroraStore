@@ -56,8 +56,7 @@ fun AccountListItem(account: Account, onClick: () -> Unit, modifier: Modifier = 
                 .clip(CircleShape)
         )
         Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
+            modifier = Modifier.weight(1f)
         ) {
             Text(
                 text = if (account.isAnonymous) {
