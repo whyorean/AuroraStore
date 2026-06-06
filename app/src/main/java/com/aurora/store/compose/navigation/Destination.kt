@@ -31,7 +31,7 @@ sealed class Destination {
     data class PermissionRationale(val permissions: Set<PermissionType>) : Destination()
 
     data object Accounts : Destination()
-    data object GoogleLogin : Destination()
+    data class GoogleLogin(val addAccount: Boolean = false) : Destination()
     data object About : Destination()
     data object Favourite : Destination()
     data object Spoof : Destination()

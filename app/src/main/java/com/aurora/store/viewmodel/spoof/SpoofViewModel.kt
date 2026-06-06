@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.aurora.extensions.TAG
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.PathUtil
@@ -19,8 +20,12 @@ import kotlinx.coroutines.flow.asStateFlow
 @HiltViewModel
 class SpoofViewModel @Inject constructor(
     private val spoofProvider: SpoofProvider,
+    private val authProvider: AuthProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
+
+    /** Full sign-out, clearing both the account DB rows and the legacy prefs. */
+    fun logout() = authProvider.logout()
 
     val defaultLocale: Locale = Locale.getDefault()
     val defaultProperties = NativeDeviceInfoProvider.getNativeDeviceProperties(context)

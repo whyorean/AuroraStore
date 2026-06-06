@@ -279,7 +279,7 @@ fun SplashScreen(
                                         )
                                     )
                                 } else {
-                                    onNavigateTo(Destination.GoogleLogin)
+                                    onNavigateTo(Destination.GoogleLogin())
                                 }
                             }
                         ) {

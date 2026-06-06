@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
@@ -95,6 +96,7 @@ import com.aurora.store.compose.ui.details.menu.AppDetailsMenu
 import com.aurora.store.compose.ui.details.menu.MenuItem
 import com.aurora.store.compose.ui.details.navigation.ExtraScreen
 import com.aurora.store.compose.ui.dev.DevProfileScreen
+import com.aurora.store.compose.ui.sheets.AccountPickerSheet
 import com.aurora.store.compose.ui.sheets.InstallErrorSheet
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.AppState
@@ -103,6 +105,7 @@ import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
+import com.aurora.store.data.room.account.Account
 import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.ShortcutManagerUtil
@@ -129,6 +132,7 @@ fun AppDetailsScreen(
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
+    val accounts by viewModel.accounts.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
 
@@ -184,7 +188,11 @@ fun AppDetailsScreen(
                     exodusReport = exodusReport,
                     onNavigateTo = onNavigateTo,
                     onLoadMoreCluster = { cluster -> viewModel.loadMoreCluster(cluster) },
+                    accounts = accounts,
                     onDownload = { requestedApp -> viewModel.enqueueDownload(requestedApp) },
+                    onDownloadWith = { requestedApp, accountId ->
+                        viewModel.enqueueDownloadWith(requestedApp, accountId)
+                    },
                     onFavorite = { viewModel.toggleFavourite(loadedApp) },
                     onCancelDownload = { viewModel.cancelDownload(loadedApp) },
                     onUninstall = { AppInstaller.uninstall(context, packageName) },
@@ -274,6 +282,7 @@ private fun ScreenContentError(message: String? = null, onRetry: (() -> Unit)? =
 /**
  * Composable to display app details and suggestions
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ScreenContentApp(
     app: App,
@@ -288,7 +297,9 @@ private fun ScreenContentApp(
     exodusReport: Report? = null,
     onNavigateTo: (Destination) -> Unit = {},
     onLoadMoreCluster: (cluster: StreamCluster) -> Unit = {},
+    accounts: List<Account> = emptyList(),
     onDownload: (requestedApp: App) -> Unit = {},
+    onDownloadWith: (requestedApp: App, accountId: String) -> Unit = { _, _ -> },
     onFavorite: () -> Unit = {},
     onCancelDownload: () -> Unit = {},
     onUninstall: () -> Unit = {},
@@ -322,6 +333,7 @@ private fun ScreenContentApp(
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
     var showRestartDialog by remember { mutableStateOf(false) }
+    var showAccountPicker by remember { mutableStateOf(false) }
 
     if (showRestartDialog) {
         ForceRestartDialog(onConfirm = onForceRestart)
@@ -339,7 +351,11 @@ private fun ScreenContentApp(
         }
     }
 
-    fun onInstall(requestedApp: App = app, ignoreMicroG: Boolean = false) {
+    fun onInstall(
+        requestedApp: App = app,
+        ignoreMicroG: Boolean = false,
+        accountId: String? = null
+    ) {
         if (isPermittedToInstall(context, app)) {
             val shouldPromptMicroGInstall = app.requiresGMS() &&
                 FlavouredUtil.promptMicroGInstall(context)
@@ -347,7 +363,11 @@ private fun ScreenContentApp(
             if (shouldPromptMicroGInstall && !ignoreMicroG) {
                 showExtraPane(ExtraScreen.MicroG)
             } else {
-                onDownload(requestedApp)
+                if (accountId != null) {
+                    onDownloadWith(requestedApp, accountId)
+                } else {
+                    onDownload(requestedApp)
+                }
                 onNavigateBack()
             }
         } else {
@@ -360,18 +380,34 @@ private fun ScreenContentApp(
         }
     }
 
+    if (showAccountPicker) {
+        AccountPickerSheet(
+            accounts = accounts,
+            onSelect = { account ->
+                showAccountPicker = false
+                onInstall(accountId = account.id)
+            },
+            onDismiss = { showAccountPicker = false }
+        )
+    }
+
     @Composable
     fun SetupMenu() {
         AppDetailsMenu(
             isFavorite = isFavorite,
             state = state,
-            canManualDownload = canAcquire
+            canManualDownload = canAcquire,
+            canUseOtherAccount = accounts.size > 1
         ) { menuItem ->
             when (menuItem) {
                 MenuItem.FAVORITE -> onFavorite()
 
                 MenuItem.MANUAL_DOWNLOAD -> {
                     showExtraPane(ExtraScreen.ManualDownload)
+                }
+
+                MenuItem.INSTALL_OTHER_ACCOUNT -> {
+                    showAccountPicker = true
                 }
 
                 MenuItem.SHARE -> context.share(app.displayName, app.packageName)
@@ -448,7 +484,9 @@ private fun ScreenContentApp(
 
                     Actions(
                         primaryActionDisplayName = primaryActionName,
-                        secondaryActionDisplayName = stringResource(R.string.title_manual_download),
+                        secondaryActionDisplayName = stringResource(
+                            R.string.title_manual_download
+                        ),
                         isPrimaryActionEnabled = canAcquire,
                         isSecondaryActionEnabled = canAcquire,
                         onPrimaryAction = ::onInstall,

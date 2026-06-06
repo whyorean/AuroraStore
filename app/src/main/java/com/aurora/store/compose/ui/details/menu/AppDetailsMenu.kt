@@ -43,6 +43,7 @@ fun AppDetailsMenu(
     isFavorite: Boolean = false,
     isExpanded: Boolean = false,
     canManualDownload: Boolean = true,
+    canUseOtherAccount: Boolean = false,
     onMenuItemClicked: (menuItem: MenuItem) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -82,6 +83,11 @@ fun AppDetailsMenu(
                 text = { Text(text = stringResource(R.string.title_manual_download)) },
                 onClick = { onClick(MenuItem.MANUAL_DOWNLOAD) },
                 enabled = canManualDownload && !state.inProgress()
+            )
+            DropdownMenuItem(
+                text = { Text(text = stringResource(R.string.action_switch_account)) },
+                onClick = { onClick(MenuItem.INSTALL_OTHER_ACCOUNT) },
+                enabled = canUseOtherAccount && !state.inProgress()
             )
             DropdownMenuItem(
                 text = { Text(text = stringResource(R.string.action_info)) },
