@@ -312,11 +312,7 @@ private fun AccountAccordion(
         ) {
             accounts.forEachIndexed { index, account ->
                 if (index > 0) {
-                    HorizontalDivider(
-                        modifier = Modifier.padding(
-                            horizontal = dimensionResource(R.dimen.spacing_large)
-                        )
-                    )
+                    HorizontalDivider()
                 }
 
                 val suffix = if (account.isDefault) {
