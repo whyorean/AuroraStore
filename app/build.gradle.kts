@@ -147,6 +147,12 @@ configure<ApplicationExtension> {
             versionNameSuffix = "-preload"
             buildConfigField("Boolean", "SHOW_ANONYMOUS_LOGIN", "true")
         }
+
+        create("tv") {
+            dimension = "device"
+            versionNameSuffix = "-tv"
+            buildConfigField("Boolean", "SHOW_ANONYMOUS_LOGIN", "true")
+        }
     }
 
     buildFeatures {
@@ -172,7 +178,9 @@ configure<ApplicationExtension> {
 androidComponents {
     beforeVariants(selector().all()) { variant ->
         val flavour = variant.flavorName
-        if ((flavour == "huawei" || flavour == "preload") && variant.buildType == "nightly") {
+        if ((flavour == "huawei" || flavour == "preload" || flavour == "tv") &&
+            variant.buildType == "nightly"
+        ) {
             variant.enable = false
         }
     }
@@ -273,6 +281,7 @@ dependencies {
     implementation(libs.process.phoenix)
 
     "huaweiImplementation"(libs.huawei.hms.coreservice)
+    "tvImplementation"(libs.androidx.tv.material)
 
     // LeakCanary
     debugImplementation(libs.squareup.leakcanary.android)

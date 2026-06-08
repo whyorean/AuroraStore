@@ -1,0 +1,31 @@
+<!--
+  ~ SPDX-FileCopyrightText: 2026 Aurora OSS
+  ~ SPDX-License-Identifier: GPL-3.0-or-later
+  -->
+
+<!--
+  TV (10-foot UI) specific dimensions. Generic spacing/radius/icon values are reused from the
+  shared dimens.xml in src/main; only sizes unique to the TV layout live here.
+-->
+<resources>
+    <!-- Outer padding for full-screen TV destinations (login, onboarding). -->
+    <dimen name="tv_screen_padding">48dp</dimen>
+    <!-- Horizontal/vertical content inset for scrolling detail/list screens. -->
+    <dimen name="tv_content_padding">32dp</dimen>
+    <!-- Vertical gap between stream rows on the home screen. -->
+    <dimen name="tv_row_spacing">20dp</dimen>
+
+    <!-- Banner-style app card width (also the search grid's adaptive cell width). -->
+    <dimen name="tv_app_card_width">240dp</dimen>
+    <!-- App icon overlaid on the app card. -->
+    <dimen name="tv_app_card_icon">36dp</dimen>
+
+    <!-- App icon shown in the app-details header. -->
+    <dimen name="tv_detail_icon_size">96dp</dimen>
+
+    <!-- Width of the install-error dialog. -->
+    <dimen name="tv_dialog_width">480dp</dimen>
+
+    <!-- Stroke width of the focus outline drawn on focusable rows. -->
+    <dimen name="tv_focus_border">2dp</dimen>
+</resources>

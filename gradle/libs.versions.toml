@@ -42,6 +42,7 @@ room = "2.8.4"
 serialization = "1.11.0"
 shizuku = "13.1.5"
 truth = "1.4.5"
+tv-material = "1.0.1"
 work = "2.11.2"
 
 [libraries]
@@ -69,6 +70,7 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-tv-material = { module = "androidx.tv:tv-material", version.ref = "tv-material" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }

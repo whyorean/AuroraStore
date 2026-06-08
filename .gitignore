@@ -53,3 +53,4 @@ signing.properties
 
 
 .kotlin/*
+.superpowers/

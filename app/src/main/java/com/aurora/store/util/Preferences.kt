@@ -170,6 +170,35 @@ fun Context.save(key: String, value: Set<String>) = Preferences.putStringSet(thi
 
 fun Context.remove(key: String) = Preferences.remove(this, key)
 
+/**
+ * Seeds the first-run default preferences. This is the single source of truth for first-run
+ * defaults, shared by the onboarding flow (phone/tablet) and the TV variant (which has no
+ * onboarding). Keep all first-run defaults here so no entry point can drift out of sync —
+ * a missing default here (e.g. dispenser URLs) breaks anonymous login on paths that skip
+ * onboarding.
+ */
+fun Context.saveDefaultPreferences() {
+    /*Filters*/
+    save(Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
+    save(Preferences.PREFERENCE_FILTER_FDROID, true)
+
+    /*Network*/
+    save(Preferences.PREFERENCE_DISPENSER_URLS, FlavouredUtil.defaultDispensers)
+    save(Preferences.PREFERENCE_VENDING_VERSION, 0)
+
+    /*Customization*/
+    save(Preferences.PREFERENCE_THEME_STYLE, 0)
+    save(Preferences.PREFERENCE_DEFAULT_SELECTED_TAB, 0)
+    save(Preferences.PREFERENCE_FOR_YOU, true)
+
+    /*Installer*/
+    save(Preferences.PREFERENCE_AUTO_DELETE, true)
+    save(Preferences.PREFERENCE_INSTALLER_ID, 0)
+
+    /*Updates*/
+    save(Preferences.PREFERENCE_UPDATES_EXTENDED, false)
+}
+
 fun Fragment.save(key: String, value: Int) = requireContext().save(key, value)
 
 fun Fragment.save(key: String, value: Boolean) = requireContext().save(key, value)

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:banner="@drawable/ic_tv_banner"
+        android:icon="@mipmap/ic_launcher">
+
+        <activity
+            android:name=".tv.MainActivity"
+            android:banner="@drawable/ic_tv_banner"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            Remove ComposeActivity's launcher intent-filter for the TV flavor so MainActivity
+            is the sole launcher. The filter below MUST match the launcher <intent-filter> in
+            app/src/main/AndroidManifest.xml exactly (same action + all categories) — the
+            manifest merger matches nodes by full content and tools:node="remove" silently
+            no-ops if it drifts. If you change ComposeActivity's launcher filter in main, update
+            this too. After building, confirm the merged tvDebug manifest shows MainActivity as
+            the only non-LeakCanary leanback launcher and that ComposeActivity carries no
+            launcher category.
+        -->
+        <activity
+            android:name=".ComposeActivity"
+            tools:node="merge">
+            <intent-filter tools:node="remove">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.APP_MARKET" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>
