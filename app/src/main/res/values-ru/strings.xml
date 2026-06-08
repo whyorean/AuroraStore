@@ -564,4 +564,31 @@
     <string name="installed_filter_all">Все</string>
     <string name="installed_updated_at">Обновлено <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Проверить</string>
+    <string name="action_buy">Купить @ %1$s</string>
+    <string name="action_install_all">Установить все</string>
+    <string name="details_review_comment_hint">Опишите свой опыт (необязательно)</string>
+    <string name="details_review_edit">Изменить свой отзыв</string>
+    <string name="details_review_delete">Удалить</string>
+    <string name="details_review_delete_title">Удалить отзыв?</string>
+    <string name="details_review_delete_message">Ваша оценка и отзыв будут удалены из Google Play.</string>
+    <string name="details_your_review">Ваш отзыв</string>
+    <string name="confirm_deeplink_title">Подтвердить внешние ссылки</string>
+    <string name="confirm_deeplink_summary">Запрашивать разрешение перед тем, как открыть список приложений по ссылке, чтобы реклама не запускала Aurora Store без вашего согласия.</string>
+    <string name="confirm_deeplink_sheet_title">Перейти в Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Внешнее приложение пытается открыть Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Открыто из %1$s</string>
+    <string name="title_install_favourites">Установить избранное?</string>
+    <string name="install_favourites_summary">При этом будет загружено и установлено %1$d приложений.</string>
+    <string name="install_favourites_warning">Для каждого приложения может появиться отдельное окно с запросом на установку.</string>
+    <string name="pref_ui_dynamic_color">Динамические цвета</string>
+    <string name="pref_ui_dynamic_color_desc">Использовать цвета обоев. Отключите для фирменной палитры Авроры.</string>
+    <string name="toast_fav_install_enqueued">Установка %1$d приложений(я)</string>
+    <string name="toast_fav_install_none">Устанавливать нечего</string>
+    <string name="toast_fav_install_failed">Не удалось получить сведения о приложении</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d избранное</item>
+        <item quantity="few">%1$d избранных</item>
+        <item quantity="many">%1$d избранных</item>
+        <item quantity="other">%1$d избранных</item>
+    </plurals>
 </resources>

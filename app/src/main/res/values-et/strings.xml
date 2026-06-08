@@ -136,7 +136,7 @@
     <string name="installer_am_unavailable">Paigalda rakenduste haldur või muuda paigaldusrakendust.</string>
     <string name="installer_root_unavailable">Root-juurdepääsu pole. Luba see või muuda paigaldusrakendust.</string>
     <string name="installer_shizuku_unavailable">Shizuku pole paigaldatud või korralikult seadistatud.</string>
-    <string name="installer_status_failure">Paigaldamine nurjus</string>
+    <string name="installer_status_failure">Paigaldamine ei õnnestunud</string>
     <string name="installer_status_failure_blocked">Paigaldamine blokeeriti</string>
     <string name="installer_status_failure_session">Seansi loomine nurjus</string>
     <string name="installer_status_failure_conflict">Leiti vastuolus paketid</string>
@@ -165,7 +165,7 @@
     <string name="pref_filter_fdroid_summary">Ära kontrolli F-Droidist paigaldatud rakenduste uuendusi</string>
     <string name="pref_filter_fdroid_title">Filtreeri F-Droidi rakendused</string>
     <string name="download_queued">Järjekorras</string>
-    <string name="download_failed">Allalaadimine nurjus</string>
+    <string name="download_failed">Allalaadimine ei õnnestunud</string>
     <string name="download_eta_sec">%1$ds jäänud</string>
     <string name="download_pause_all">Peata kõik</string>
     <string name="download_progress">Allalaadimisel • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
@@ -205,7 +205,7 @@
     <string name="toast_manual_available">Õnnitlused, taotletud versioonikood on saadaval, laadime alla.</string>
     <string name="tab_top_paid">Populaarsed tasulised</string>
     <string name="pref_aurora_only">Filtreeri rakendusi muudest allikatest.</string>
-    <string name="purchase_failed">Allalaadimine nurjus</string>
+    <string name="purchase_failed">Allalaadimine ei õnnestunud</string>
     <string name="purchase_no_file">Faile ei saanud hankida</string>
     <string name="pref_aurora_only_desc">Ära otsi uuendusi rakendustele, mis on paigaldatud Aurora poe välistest allikatest</string>
     <string name="session_verifying">Seansi kinnitamine</string>
@@ -222,7 +222,7 @@
     <string name="toast_proxy_success">Puhverserveri seadistamine õnnestus</string>
     <string name="toast_export_success">Seadme konfiguratsioon eksporditud</string>
     <string name="toast_export_failed">Seadme konfiguratsiooni ei saanud eksportida</string>
-    <string name="toast_apk_blacklisted">Lisatud musta nimekirja</string>
+    <string name="toast_apk_blacklisted">Lisatud keeluloendisse</string>
     <string name="toast_purchase_blocked">Rakenduste ostmine pole anonüümse kontoga võimalik.</string>
     <string name="session_login_failed_google">Google kaudu ei saanud sisse logida</string>
     <string name="tab_editor_choice">Toimetaja valik</string>
@@ -235,7 +235,7 @@
     <string name="toast_anonymous_restriction">Anonüümsetel kontodel saadaval pole saadaval</string>
     <string name="pref_network_proxy_url_message">Sisesta kehtiv puhverserveri URL, et edastada kõik andmed puhverserveri kaudu.</string>
     <string name="session_good">Kõik on hästi.</string>
-    <string name="toast_aas_token_failed">AAS-i tunnust ei saanud luua</string>
+    <string name="toast_aas_token_failed">AAS-tunnusloe loomine ei õnnestunud</string>
     <string name="purchase_unsupported">Rakendust ei toetata</string>
     <string name="tab_categories">Kategooriad</string>
     <string name="purchase_invalid">Rakendust ei ostetud</string>
@@ -245,9 +245,9 @@
     <string name="title_installed">Paigaldatud</string>
     <string name="title_installer">Paigaldusrakendus</string>
     <string name="toast_app_unavailable">Rakendus pole sinu seadme jaoks saadaval</string>
-    <string name="toast_developer_setting_failed">Nende avamiseks lülita seadme seadetes sisse arendaja valikud.</string>
+    <string name="toast_developer_setting_failed">Nende avamiseks lülita nutiseadme seadistustes sisse arendaja valikud.</string>
     <string name="tab_top_charts">Populaarsed</string>
-    <string name="title_blacklist_manager">Musta nimekirja haldur</string>
+    <string name="title_blacklist_manager">Keeluloendi haldur</string>
     <string name="title_games">Mängud</string>
     <string name="title_settings">Seaded</string>
     <string name="toast_proxy_invalid">Vale puhverserveri võrguaadress, kontrolli vormingut!</string>
@@ -280,10 +280,10 @@
     <string name="notification_updates_available_desc_1">Saadaval on <xliff:g id="app_one_name">%1$s</xliff:g> rakenduse uus versioon</string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> ja <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="title_about">Teave</string>
-    <string name="toast_rated_failed">Hinnet ei saanud esitada</string>
+    <string name="toast_rated_failed">Hinnangu edastamine polnud võimalik</string>
     <string name="server_maintenance">Server on hoolduseks maas</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ja <xliff:g id="app_two_name">%2$s</xliff:g></string>
-    <string name="toast_proxy_failed">Puhverserveri seadistamine nurjus</string>
+    <string name="toast_proxy_failed">Puhverserveri seadistamine ei õnnestunud</string>
     <string name="app_updater_service_notif_text">Lubab taustal rakenduste allalaadimise</string>
     <string name="filter_latest">Uusimad</string>
     <string name="filter_review_critical">Kriitilised</string>
@@ -298,7 +298,7 @@
     <string name="pref_ui_layout_tab">Vali vaikekaart</string>
     <string name="app_links_desc">Luba Aurora rakendustepoel avada toetatud linke</string>
     <string name="pref_ui_layout">Asetus</string>
-    <string name="failed_apk_export">APK-de eksport nurjus</string>
+    <string name="failed_apk_export">APK-failide eksport ei õnnestunud</string>
     <string name="no_apps_available">Rakendusi pole saadaval</string>
     <string name="am_installer_subtitle">Täisfunktsionaalne avatud lähtekoodiga paketihaldur</string>
     <string name="faqs_subtitle">Kas on küsimusi? Otsi vastuseid</string>
@@ -309,12 +309,12 @@
     <string name="title_more">Veel</string>
     <string name="add_dispenser_error">Vigane võrguaadress</string>
     <string name="add">Lisa</string>
-    <string name="toast_fav_import_failed">Lemmikute import nurjus!</string>
+    <string name="toast_fav_import_failed">Lemmikute import ei õnnestunud!</string>
     <string name="toast_fav_import_success">Lemmikud imporditud!</string>
-    <string name="toast_black_import_failed">Musta nimekirja import nurjus!</string>
-    <string name="toast_black_export_failed">Musta nimekirja eksport nurjus!</string>
-    <string name="toast_black_import_success">Must nimekiri imporditud!</string>
-    <string name="toast_black_export_success">Must nimekiri eksporditud!</string>
+    <string name="toast_black_import_failed">Keeluloendi importimine ei õnnestunud!</string>
+    <string name="toast_black_export_failed">Keeluloendi eksportmine ei õnnestunud!</string>
+    <string name="toast_black_import_success">Keeluloend on imporditud!</string>
+    <string name="toast_black_export_success">Keeluloend on eksporditud!</string>
     <string name="export_app_summary">Oota, faili eksporditakse</string>
     <string name="action_logout_confirmation_title">Kas logida välja?</string>
     <string name="action_logout_confirmation_message">Kas soovid kindlasti välja logida?</string>
@@ -322,7 +322,7 @@
     <string name="checking_updates">Uuenduste otsing</string>
     <string name="force_restart_title">Taaskäivita Aurora pood</string>
     <string name="force_restart_summary">Äsja muudetud sätete rakendamiseks tuleb Aurora pood taaskäivitada</string>
-    <string name="status_failed">Nurjunud</string>
+    <string name="status_failed">Ebaõnnestunud</string>
     <string name="status_cancelled">Tühistatud</string>
     <string name="default_spoof">Vaikeväärtus</string>
     <string name="available_spoof">Saadaval</string>
@@ -340,7 +340,7 @@
     <string name="pref_updates_restrictions_title">Automaatsete uuenduste piirangud</string>
     <string name="pref_updates_restrictions_desc">Seadista automaatsete uuenduste jaoks seadme piirangud</string>
     <string name="pref_updates_restrictions_idle">Kui seade on jõudeolekus</string>
-    <string name="verification_failed">Allalaaditud failide kinnitamine nurjus</string>
+    <string name="verification_failed">Allalaaditud failide kontrollimine ei õnnestunud</string>
     <string name="details_compatibility_microg">MicroG projektiga</string>
     <string name="server_unreachable">Serveriga ei saa ühendust</string>
     <string name="check_connectivity">Kontrolli internetiühendust</string>
@@ -349,16 +349,16 @@
     <string name="pref_updates_restrictions_battery">Kui aku tase ei ole madal</string>
     <string name="pref_updates_auto_install">Otsi ja paigalda saadaolevaid uuendusi automaatselt</string>
     <string name="manual_download_hint">Sisesta versioonikood, mille soovid alla laadida</string>
-    <string name="failed_generating_session">Seansi loomine nurjus, veakood: <xliff:g id="status_code">%1$d</xliff:g></string>
+    <string name="failed_generating_session">Seansi loomine ei õnnestunud, veakood: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="app_links_title">Rakenduse lingid</string>
     <string name="disclaimer_subtitle">Vastutus ja kohustus</string>
     <string name="pref_updates_auto_notify">Otsi saadaolevaid uuendusi ja teavita neist</string>
-    <string name="failed_to_fetch_report">Privaatsusaruande toomine nurjus</string>
+    <string name="failed_to_fetch_report">Privaatsusaruande laadimine ei õnnestunud</string>
     <string name="verifying_new_session">Uue seansi kinnitamine</string>
     <string name="source_code_title">Lähtekood</string>
     <string name="source_code_subtitle">Uuri, mis on sees</string>
     <string name="unable_to_open">Rakendust ei saa avada</string>
-    <string name="toast_fav_export_failed">Lemmikute eksport nurjus!</string>
+    <string name="toast_fav_export_failed">Lemmikute eksport ei õnnestunud!</string>
     <string name="toast_fav_export_success">Lemmikud eksporditud!</string>
     <string name="status_queued">Järjekorras</string>
     <string name="status_unavailable">Pole saadaval</string>
@@ -376,7 +376,7 @@
     <string name="details_compatibility_status_compatible">Ühilduv: töötab ilma probleemideta</string>
     <string name="details_compatibility_status_limited">Piiratud: töötab piiratud funktsioonidega</string>
     <string name="bad_request">Sisemine viga! Proovi mõne aja pärast uuesti</string>
-    <string name="failed_to_generate_session">Seanssi ei saanud luua</string>
+    <string name="failed_to_generate_session">Seanssi loomine ei õnnestunud</string>
     <string name="status_verifying">Kontrollimine</string>
     <string name="download_speed_estimating">Hindamine</string>
     <string name="device_miui_extra">Võid valida ka süsteemse paigaldaja, kuid siis ei saa installida komplekteeritud (split) APK-sid, nii et valik on sinu.</string>
@@ -474,7 +474,7 @@
     <string name="verifying_downloads">Kontrollin allalaaditu õigsust</string>
     <string name="action_retry">Proovi uuesti</string>
     <string name="action_view_on_play">Vaata Play Store\'is</string>
-    <string name="header_blacklist_selected">Lisatud musta nimekirja</string>
+    <string name="header_blacklist_selected">Lisatud keeluloendisse</string>
     <string name="header_blacklist_others">Muud</string>
     <string name="microg_removed_auth_warning">microG pole enam paigaldatud. Et kõik toimiks sujuvalt, käivita palun algseadistus uuesti.</string>
     <string name="pref_source_filters_title">Filtreeri muudest allikatest pärit rakendusi</string>
@@ -558,4 +558,29 @@
     <string name="updates_self_desc">Saadaval on Aurora rakendustepoe uus versioon</string>
     <string name="status_installing">Paigaldan</string>
     <string name="status_installed">Paigaldatud</string>
+    <string name="action_buy">Osta teenusest %1$s</string>
+    <string name="action_install_all">Paigalda kõik</string>
+    <string name="details_review_comment_hint">Kirjelda oma kasutuskogemust (kui tahad)</string>
+    <string name="details_review_edit">Muuda oma arvustust</string>
+    <string name="details_review_delete">Kustuta</string>
+    <string name="details_review_delete_title">Kas kustutad arvustuse?</string>
+    <string name="details_review_delete_message">Sinu hinnang ja arvustus kustutatakse Google Play teenusest.</string>
+    <string name="details_your_review">Sinu arvustus</string>
+    <string name="toast_fav_install_failed">Rakenduse üksikasjade laadimine ei õnnestunud</string>
+    <string name="confirm_deeplink_title">Väliste linkide kinnitamine</string>
+    <string name="confirm_deeplink_summary">Küsi luba enne rakenduse lehe avamist lingi kaudu, et vältida reklaamide poolt Aurora rakendustepoe käivitamist ilma sinu nõusolekuta.</string>
+    <string name="confirm_deeplink_sheet_title">Kas jätkad Aurora rakendustepoes?</string>
+    <string name="confirm_deeplink_sheet_message">Väline rakendus soovib avada Aurora rakendustepoodi</string>
+    <string name="confirm_deeplink_sheet_source">Avamise allikas: %1$s</string>
+    <string name="title_install_favourites">Kas paigaldad lemmikud?</string>
+    <string name="install_favourites_summary">Järgnevaga laadid alla ja paigaldad %1$d rakendust.</string>
+    <string name="install_favourites_warning">Iga rakenduse puhul võidakse ka paigaldusluba eraldi üle küsida.</string>
+    <string name="pref_ui_dynamic_color">Dünaamilised värvid</string>
+    <string name="pref_ui_dynamic_color_desc">Saad kasutada oma nutiseadme taustapildi värve. Kui soovid kindlasti kasutada Aurora värvikombinatsiooni, siis lülita see valik välja.</string>
+    <string name="toast_fav_install_enqueued">%1$d rakendust on paigaldamisel</string>
+    <string name="toast_fav_install_none">Pole mitte midagi paigaldada</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d lemmik</item>
+        <item quantity="other">%1$d lemmikut</item>
+    </plurals>
 </resources>

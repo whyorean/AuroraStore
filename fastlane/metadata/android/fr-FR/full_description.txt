@@ -1,11 +1,11 @@
-Aurora Store est un client non officiel et libre de Google Play, doté d'un design élégant. Il permet de télécharger, de mettre à jour et de rechercher des applications comme sur le Play Store. Il fonctionne parfaitement avec ou sans les services Google Play ou microG.
+Aurora Store est un client non officiel et libre de Google Play, doté d'un design élégant. Il permet de télécharger, de mettre à jour et de rechercher des applis comme sur le Play Store. Il fonctionne parfaitement avec ou sans les services Google Play ou microG.
 
 <b>Fonctionnalités :</b>
 
 • Logiciel libre : Licence GPLv3
 • Design soigné : Conçu selon les dernières directives Material Design
 • Connexion : Connexion possible avec un compte personnel ou anonyme
-• Contournement de la géolocalisation : Modifiez votre appareil et/ou votre langue pour accéder aux applications géo-restreintes
-• Intégration d'Exodus Privacy : Détection instantanée des traqueurs dans les applications
-• Intégration de Plexus : Vérification instantanée de la compatibilité des applications sans les services Google Play ou avec microG
-• Blocage des mises à jour : Ignorez les mises à jour de certaines applications
+• Contournement de la géolocalisation : Modifiez votre appareil et/ou votre langue pour accéder aux applis géo-restreintes
+• Intégration d'Exodus Privacy : Détection instantanée des traqueurs dans les applis
+• Intégration de Plexus : Vérification instantanée de la compatibilité des applis sans les services Google Play ou avec microG
+• Blocage des mises à jour : Ignorez les mises à jour de certaines applis

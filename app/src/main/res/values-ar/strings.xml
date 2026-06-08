@@ -570,4 +570,33 @@
         <item quantity="many">فشل %d تطبيقًا</item>
         <item quantity="other">فشل %d تطبيق</item>
     </plurals>
+    <string name="action_buy">اشترِ @ %1$s</string>
+    <string name="action_install_all">ثبّت الكل</string>
+    <string name="details_review_delete">احذف</string>
+    <string name="details_review_delete_title">احذف المراجعة؟</string>
+    <string name="details_review_delete_message">سيتم حذف تقييمك ومراجعتك من جوجل Play.</string>
+    <string name="details_your_review">مراجعتك</string>
+    <string name="confirm_deeplink_title">أكِّد الروابط الخارجية</string>
+    <string name="confirm_deeplink_summary">اسأل قبل فتح قائمة التطبيقات من رابط، مما يمنع الإعلانات من إطلاق متجر Aurora دون موافقتك.</string>
+    <string name="confirm_deeplink_sheet_title">استمر إلى متجر Aurora؟</string>
+    <string name="confirm_deeplink_sheet_message">تطبيق خارجي يريد فتح متجر Aurora</string>
+    <string name="confirm_deeplink_sheet_source">فُتح من %1$s</string>
+    <string name="title_install_favourites">ثبِّت المفضلات؟</string>
+    <string name="install_favourites_summary">هذا سيُنزِّل ويثبِّت %1$d تطبيقات.</string>
+    <string name="install_favourites_warning">قد ترى موجّه تثبيت منفصل لكل تطبيق.</string>
+    <string name="pref_ui_dynamic_color">ألوان الديناميكية</string>
+    <string name="pref_ui_dynamic_color_desc">استخدم ألوان خلفيتك. أوقِف الإشارة إلى لوحة علامات Aurora.</string>
+    <string name="toast_fav_install_enqueued">يُثبِّت %1$d تطبيقات</string>
+    <string name="toast_fav_install_none">لا يوجد شيء للتثبيت</string>
+    <string name="toast_fav_install_failed">فشل في جلب تفاصيل التطبيق</string>
+    <string name="details_review_comment_hint">صف تجربتك (اختياري)</string>
+    <string name="details_review_edit">حرِّر مراجعتك</string>
+    <plurals name="favourites_count">
+        <item quantity="zero">لا مفضلة</item>
+        <item quantity="one">مفضلة واحدة</item>
+        <item quantity="two">مفضلتان</item>
+        <item quantity="few">%1$d مفضلات</item>
+        <item quantity="many">%1$d مفضلة</item>
+        <item quantity="other">%1$d مفضلة</item>
+    </plurals>
 </resources>

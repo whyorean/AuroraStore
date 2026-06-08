@@ -555,4 +555,28 @@
     <string name="loading">Sedang memuatkan</string>
     <string name="page">Halaman <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_check">Semak</string>
+    <string name="action_buy">Beli @ %1$s</string>
+    <string name="action_install_all">Pasang semua</string>
+    <string name="details_review_comment_hint">Jelaskan pengalaman anda (Pilihan)</string>
+    <string name="details_review_edit">Edit ulasan anda</string>
+    <string name="details_review_delete">Padam</string>
+    <string name="details_review_delete_title">Padam ulasan?</string>
+    <string name="details_review_delete_message">Penilaian dan ulasan anda akan dialih keluar daripada Google Play.</string>
+    <string name="details_your_review">Ulasan anda</string>
+    <string name="confirm_deeplink_title">Sahkan link luaran</string>
+    <string name="confirm_deeplink_summary">Tanya sebelum membuka penyenaraian apl daripada pautan, bagi menghalang iklan daripada melancarkan Aurora Store tanpa persetujuan anda.</string>
+    <string name="confirm_deeplink_sheet_title">Teruskan ke Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Apl luar mahu membuka Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Dibuka daripada %1$s</string>
+    <string name="title_install_favourites">Pasang apl kegemaran?</string>
+    <string name="install_favourites_summary">Ini akan memuat turun dan memasang apl %1$d.</string>
+    <string name="install_favourites_warning">Anda mungkin melihat gesaan pemasangan berasingan untuk setiap aplikasi.</string>
+    <string name="pref_ui_dynamic_color">Warna dinamik</string>
+    <string name="pref_ui_dynamic_color_desc">Gunakan warna daripada kertas dinding anda. Matikan palet jenama Aurora.</string>
+    <string name="toast_fav_install_enqueued">Memasang apl %1$d</string>
+    <string name="toast_fav_install_none">Tiada apa-apa untuk dipasang</string>
+    <string name="toast_fav_install_failed">Gagal mengambil butiran aplikasi</string>
+    <plurals name="favourites_count">
+        <item quantity="other">%1$d kegemaran</item>
+    </plurals>
 </resources>
