@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -51,6 +52,7 @@ fun CategoryItem(modifier: Modifier = Modifier, category: Category, onClick: () 
                 .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
             modifier = Modifier
                 .requiredSize(dimensionResource(R.dimen.icon_size_category))
                 .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))

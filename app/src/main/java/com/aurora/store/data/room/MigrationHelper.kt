@@ -42,6 +42,10 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom8To9(db)
     }
 
+    val MIGRATION_9_10 = object : Migration(9, 10) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom9To10(db)
+    }
+
     private const val TAG = "MigrationHelper"
 
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
@@ -189,6 +193,50 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 8 to 9", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    /**
+     * Add account & app_account_binding tables for multi-account support. The existing single
+     * account is imported from SharedPreferences in code on first launch (see AccountRepository),
+     * because a Room Migration cannot read SharedPreferences.
+     */
+    private fun migrateFrom9To10(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "CREATE TABLE IF NOT EXISTS `account` (" +
+                    "`id` TEXT NOT NULL, " +
+                    "`type` TEXT NOT NULL, " +
+                    "`email` TEXT NOT NULL, " +
+                    "`displayName` TEXT, " +
+                    "`profilePicUrl` TEXT, " +
+                    "`aasToken` TEXT, " +
+                    "`authToken` TEXT, " +
+                    "`tokenType` TEXT NOT NULL, " +
+                    "`authViaMicroG` INTEGER NOT NULL, " +
+                    "`authDataJson` TEXT, " +
+                    "`isDefault` INTEGER NOT NULL, " +
+                    "`addedAt` INTEGER NOT NULL, " +
+                    "PRIMARY KEY(`id`))"
+            )
+            database.execSQL(
+                "CREATE TABLE IF NOT EXISTS `app_account_binding` (" +
+                    "`packageName` TEXT NOT NULL, " +
+                    "`accountId` TEXT NOT NULL, " +
+                    "PRIMARY KEY(`packageName`), " +
+                    "FOREIGN KEY(`accountId`) REFERENCES `account`(`id`) " +
+                    "ON UPDATE NO ACTION ON DELETE CASCADE )"
+            )
+            database.execSQL(
+                "CREATE INDEX IF NOT EXISTS `index_app_account_binding_accountId` " +
+                    "ON `app_account_binding` (`accountId`)"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 9 to 10", exception)
         } finally {
             database.endTransaction()
         }

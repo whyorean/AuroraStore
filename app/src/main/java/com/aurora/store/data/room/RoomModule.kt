@@ -10,6 +10,10 @@ import com.aurora.store.data.room.MigrationHelper.MIGRATION_5_6
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_6_7
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_7_8
 import com.aurora.store.data.room.MigrationHelper.MIGRATION_8_9
+import com.aurora.store.data.room.MigrationHelper.MIGRATION_9_10
+import com.aurora.store.data.room.account.AccountConverter
+import com.aurora.store.data.room.account.AccountDao
+import com.aurora.store.data.room.account.AppAccountBindingDao
 import com.aurora.store.data.room.download.DownloadConverter
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.favourite.FavouriteDao
@@ -33,7 +37,8 @@ object RoomModule {
     @Provides
     fun providesRoomInstance(
         @ApplicationContext context: Context,
-        downloadConverter: DownloadConverter
+        downloadConverter: DownloadConverter,
+        accountConverter: AccountConverter
     ): AuroraDatabase = Room.databaseBuilder(context, AuroraDatabase::class.java, DATABASE)
         .addMigrations(
             MIGRATION_1_2,
@@ -43,9 +48,11 @@ object RoomModule {
             MIGRATION_5_6,
             MIGRATION_6_7,
             MIGRATION_7_8,
-            MIGRATION_8_9
+            MIGRATION_8_9,
+            MIGRATION_9_10
         )
         .addTypeConverter(downloadConverter)
+        .addTypeConverter(accountConverter)
         .build()
 
     @Provides
@@ -65,4 +72,11 @@ object RoomModule {
 
     @Provides
     fun providesReviewDao(auroraDatabase: AuroraDatabase): ReviewDao = auroraDatabase.reviewDao()
+
+    @Provides
+    fun providesAccountDao(auroraDatabase: AuroraDatabase): AccountDao = auroraDatabase.accountDao()
+
+    @Provides
+    fun providesAppAccountBindingDao(auroraDatabase: AuroraDatabase): AppAccountBindingDao =
+        auroraDatabase.appAccountBindingDao()
 }

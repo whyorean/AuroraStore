@@ -15,7 +15,9 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -28,6 +30,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.InstallerListItem
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.ui.commons.MicroGInstallerPrerequisiteDialog
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.model.Installer
@@ -61,6 +64,17 @@ private fun ScreenContent(
     onInstallerSelected: (installer: Installer) -> Unit = {}
 ) {
     val snackBarHostState = remember { snackBarHostState }
+    var showMicroGPrerequisite by remember { mutableStateOf(false) }
+
+    if (showMicroGPrerequisite) {
+        MicroGInstallerPrerequisiteDialog(
+            onConfirm = {
+                showMicroGPrerequisite = false
+                onInstallerSelected(Installer.MICROG)
+            },
+            onDismiss = { showMicroGPrerequisite = false }
+        )
+    }
 
     Scaffold(
         snackbarHost = {
@@ -82,7 +96,13 @@ private fun ScreenContent(
                 InstallerListItem(
                     installerInfo = installerInfo,
                     isSelected = installerInfo.installer == currentInstaller,
-                    onClick = { onInstallerSelected(installerInfo.installer) }
+                    onClick = {
+                        if (installerInfo.installer == Installer.MICROG) {
+                            showMicroGPrerequisite = true
+                        } else {
+                            onInstallerSelected(installerInfo.installer)
+                        }
+                    }
                 )
             }
         }

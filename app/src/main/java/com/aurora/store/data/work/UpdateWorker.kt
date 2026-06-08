@@ -26,6 +26,7 @@ import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao
 import com.aurora.store.util.CertUtil
@@ -61,10 +62,11 @@ class UpdateWorker @AssistedInject constructor(
     private val updateDao: UpdateDao,
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
+    tokenProvider: GoogleAccountTokenProvider,
     private val appDetailsHelper: AppDetailsHelper,
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
-) : AuthWorker(authProvider, context, workerParams) {
+) : AuthWorker(authProvider, tokenProvider, context, workerParams) {
 
     companion object {
         private const val NOTIFICATION_ID = 100

@@ -43,7 +43,9 @@ import java.net.ConnectException
 import java.net.UnknownHostException
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -56,6 +58,10 @@ class AuthViewModel @Inject constructor(
 
     private val _authState: MutableStateFlow<AuthState> = MutableStateFlow(AuthState.Init)
     val authState = _authState.asStateFlow()
+
+    /** Emits the outcome of adding a Google account (non-default) so the caller can navigate back. */
+    private val _accountAdded = MutableSharedFlow<Boolean>()
+    val accountAdded = _accountAdded.asSharedFlow()
 
     init {
         updateAuthState()
@@ -74,6 +80,31 @@ class AuthViewModel @Inject constructor(
                     AuthState.Failed(context.getString(R.string.failed_to_generate_session))
                 Log.e(TAG, "Failed to generate Session", exception)
             }
+        }
+    }
+
+    /**
+     * Adds a Google account WITHOUT changing the active default (used by the account screen's
+     * "add account" flow). Does not touch [authState], so the current session/UI is unaffected.
+     * Re-syncs the prefs to the real default afterwards, because the AC2DM step
+     * ([buildAuthData]) writes the new account's e-mail/token into the legacy prefs mid-flow.
+     */
+    fun addGoogleAuthData(email: String, token: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val added = runCatching {
+                val authData = authProvider
+                    .buildGoogleAuthData(email, token, AuthHelper.Token.AAS)
+                    .getOrThrow()
+                require(authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty())
+                authProvider.persistAccount(
+                    authData = authData,
+                    accountType = AccountType.GOOGLE,
+                    authViaMicroG = false,
+                    makeDefault = false
+                )
+            }.isSuccess
+            authProvider.syncDefaultToPrefs()
+            _accountAdded.emit(added)
         }
     }
 
@@ -178,7 +209,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType) {
+    private suspend fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType) {
         _authState.value = AuthState.Verifying
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             authProvider.saveAuthData(authData)
@@ -202,10 +233,20 @@ class AuthViewModel @Inject constructor(
                     tokenType == AuthHelper.Token.AUTH &&
                     PackageUtil.hasSupportedMicroGVariant(context)
             )
+            authProvider.persistAccount(
+                authData = authData,
+                accountType = accountType,
+                authViaMicroG = Preferences.getBoolean(
+                    context,
+                    Preferences.PREFERENCE_AUTH_VIA_MICROG,
+                    false
+                ),
+                makeDefault = true
+            )
             _authState.value = AuthState.SignedIn
         } else {
             authProvider.removeAuthData(context)
-            AccountProvider.logout(context)
+            authProvider.logout()
             _authState.value =
                 AuthState.Failed(context.getString(R.string.failed_to_generate_session))
         }

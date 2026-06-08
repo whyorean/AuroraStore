@@ -54,6 +54,7 @@ private const val JS_PROFILE_EMAIL = """
 @Composable
 fun GoogleLoginScreen(
     onNavigateTo: (Destination) -> Unit,
+    addAccount: Boolean = false,
     viewModel: AuthViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
@@ -66,29 +67,47 @@ fun GoogleLoginScreen(
         AuroraApp.events.authEvent.collect { event ->
             if (event is AuthEvent.GoogleLogin) {
                 if (event.success) {
-                    viewModel.buildGoogleAuthData(
-                        event.email,
-                        event.token,
-                        AuthHelper.Token.AAS
-                    )
+                    if (addAccount) {
+                        viewModel.addGoogleAuthData(event.email, event.token)
+                    } else {
+                        viewModel.buildGoogleAuthData(
+                            event.email,
+                            event.token,
+                            AuthHelper.Token.AAS
+                        )
+                    }
                 } else {
                     Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
                         .show()
-                    onNavigateTo(Destination.Splash())
+                    onNavigateTo(if (addAccount) Destination.Accounts else Destination.Splash())
                 }
             }
         }
     }
 
-    LaunchedEffect(authState) {
-        when (authState) {
-            AuthState.SignedIn, AuthState.Valid -> onNavigateTo(
-                Destination.Main(
-                    Preferences.getInteger(context, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
+    // In add-account mode the user is already signed in (authState is Valid), so don't let the
+    // authState effect bounce to Main. Navigate back to the account screen once the add completes.
+    if (addAccount) {
+        LaunchedEffect(Unit) {
+            viewModel.accountAdded.collect { ok ->
+                if (!ok) {
+                    Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
+                        .show()
+                }
+                onNavigateTo(Destination.Accounts)
+            }
+        }
+    } else {
+        LaunchedEffect(authState) {
+            when (authState) {
+                AuthState.SignedIn, AuthState.Valid -> onNavigateTo(
+                    Destination.Main(
+                        Preferences.getInteger(context, Preferences.PREFERENCE_DEFAULT_SELECTED_TAB)
+                    )
                 )
-            )
-            is AuthState.Failed -> onNavigateTo(Destination.Splash())
-            else -> Unit
+                is AuthState.Failed -> onNavigateTo(Destination.Splash())
+                else -> Unit
+            }
         }
     }
 

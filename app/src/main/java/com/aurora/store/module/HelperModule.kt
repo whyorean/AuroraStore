@@ -3,7 +3,6 @@ package com.aurora.store.module
 import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.CategoryHelper
 import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
-import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.helpers.ReviewsHelper
 import com.aurora.gplayapi.helpers.SearchHelper
 import com.aurora.gplayapi.helpers.StreamHelper
@@ -75,14 +74,6 @@ object HelperModule {
         authProvider: AuthProvider,
         httpClient: IHttpClient
     ): SearchHelper = SearchHelper(authProvider.authData!!)
-        .using(httpClient)
-
-    @Singleton
-    @Provides
-    fun providesPurchaseHelperInstance(
-        authProvider: AuthProvider,
-        httpClient: IHttpClient
-    ): PurchaseHelper = PurchaseHelper(authProvider.authData!!)
         .using(httpClient)
 
     @Singleton

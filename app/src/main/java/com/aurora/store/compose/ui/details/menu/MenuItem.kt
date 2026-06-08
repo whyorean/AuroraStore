@@ -13,6 +13,7 @@ enum class MenuItem {
     FAVORITE,
     SHARE,
     MANUAL_DOWNLOAD,
+    INSTALL_OTHER_ACCOUNT,
     APP_INFO,
     ADD_TO_HOME,
     PLAY_STORE

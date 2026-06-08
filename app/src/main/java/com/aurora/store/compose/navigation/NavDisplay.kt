@@ -64,8 +64,22 @@ import com.aurora.store.data.event.AuthEvent
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.providers.AccountProvider
+import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.components.SingletonComponent
+
+/**
+ * Lets this VM-less navigation host reach the [AuthProvider] singleton for full sign-out.
+ */
+@EntryPoint
+@InstallIn(SingletonComponent::class)
+internal interface NavDisplayEntryPoint {
+    fun authProvider(): AuthProvider
+}
 
 /**
  * Navigation display for compose screens
@@ -83,7 +97,11 @@ fun NavDisplay(startDestination: NavKey) {
 
     fun handleMicroGRemoved() {
         context.toast(R.string.microg_removed_auth_warning)
-        AccountProvider.logout(context)
+        // Full sign-out: clears the account DB rows (incl. the now-invalid microG account) as
+        // well as the legacy prefs, so the stale account can't linger as the DB is the source
+        // of truth.
+        EntryPointAccessors.fromApplication(context, NavDisplayEntryPoint::class.java)
+            .authProvider().logout()
         val intent = Intent(context, ComposeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         }
@@ -146,11 +164,11 @@ fun NavDisplay(startDestination: NavKey) {
             is Destination.DevProfile -> backstack.add(Screen.DevProfile(destination.devId))
             is Destination.AppUpdate -> Unit
             is Destination.StreamBrowse -> backstack.add(Screen.StreamBrowse(destination.cluster))
+            is Destination.GoogleLogin -> backstack.add(Screen.GoogleLogin(destination.addAccount))
 
             Destination.Search -> backstack.add(Screen.Search)
             Destination.Downloads -> backstack.add(Screen.Downloads)
             Destination.Accounts -> backstack.add(Screen.Accounts)
-            Destination.GoogleLogin -> backstack.add(Screen.GoogleLogin)
             Destination.About -> backstack.add(Screen.About)
             Destination.Favourite -> backstack.add(Screen.Favourite)
             Destination.Spoof -> backstack.add(Screen.Spoof)
@@ -279,11 +297,18 @@ fun NavDisplay(startDestination: NavKey) {
                     onNavigateTo = ::navigate
                 )
             }
+
+            entry<Screen.GoogleLogin> { screen ->
+                GoogleLoginScreen(
+                    addAccount = screen.addAccount,
+                    onNavigateTo = ::navigate
+                )
+            }
+
             entry<Screen.Onboarding> { OnboardingScreen() }
             entry<Screen.Blacklist> { BlacklistScreen() }
             entry<Screen.Downloads> { DownloadsScreen(onNavigateTo = ::navigate) }
             entry<Screen.Accounts> { AccountsScreen(onNavigateTo = ::navigate) }
-            entry<Screen.GoogleLogin> { GoogleLoginScreen(onNavigateTo = ::navigate) }
             entry<Screen.About> { AboutScreen() }
             entry<Screen.Favourite> { FavouriteScreen(onNavigateTo = ::navigate) }
             entry<Screen.Spoof> { SpoofScreen(onNavigateTo = ::navigate) }

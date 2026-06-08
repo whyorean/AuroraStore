@@ -49,6 +49,25 @@
     <string name="account_google">"Google"</string>
     <string name="account_login_using">Log in using</string>
     <string name="account_logout">Log out from Aurora</string>
+    <string name="account_set_default">Set as default</string>
+    <string name="account_default">Default</string>
+    <string name="account_remove">Remove</string>
+    <string name="account_remove_title">Remove account?</string>
+    <string name="account_remove_message">Remove %1$s from Aurora Store?</string>
+    <string name="account_remove_last_message">This is your only account. Removing it will log you out, and you won\'t be able to use Aurora Store until you sign in again.</string>
+    <string name="account_add">Add account</string>
+    <string name="account_add_device">Device accounts</string>
+    <string name="account_add_google">Sign in with Google</string>
+    <string name="account_add_anonymous">Add anonymous account</string>
+    <string name="account_set_default_title">Switch default account?</string>
+    <string name="account_set_default_message">Aurora Store will restart to use the new default account.</string>
+    <string name="account_switching">Switching account…</string>
+    <string name="account_adding">Adding account…</string>
+    <string name="account_refresh_all">Refresh all accounts</string>
+    <string name="account_refreshing">Refreshing accounts…</string>
+    <string name="account_refresh_done">All accounts refreshed</string>
+    <string name="account_switch_failed">Couldn\'t refresh that account, so the default wasn\'t changed.</string>
+    <string name="account_add_failed">Couldn\'t add that account. Please try again.</string>
     <string name="action_back">"Back"</string>
     <string name="action_blacklist">"Blacklist"</string>
     <string name="action_blacklist_add">"Add to blacklist"</string>
@@ -79,6 +98,7 @@
     <string name="action_install">"Install"</string>
     <string name="action_install_all">"Install all"</string>
     <string name="action_install_microG">"Install microG Bundle"</string>
+    <string name="action_switch_account">Switch account</string>
     <string name="action_installations">"Installations"</string>
     <string name="action_installing">"Installing"</string>
     <string name="action_join">"Join"</string>
@@ -469,6 +489,9 @@
     <string name="microg_removed_auth_warning">microG is no longer installed. Run setup again to keep things working smoothly.</string>
     <string name="microg_installer_subtitle">Requires microG companion app to be installed</string>
     <string name="microg_installer_desc">Helps you bypass App Integrity (installer only) check</string>
+    <string name="microg_installer_prerequisite_title" translatable="false">Enable microG installer</string>
+    <string name="microg_installer_prerequisite_desc" translatable="false">Before using the microG installer, please ensure you have enabled it.\n\nPlay Store services → ⋮ → App Installer Settings → Allow App Installation</string>
+    <string name="microg_installer_open_settings" translatable="false">Open microG settings</string>
     <string name="am_installer_subtitle">Full-featured open source package manager</string>
     <string name="am_installer_desc">Requires App Manager, need adb/root mode to install when miui optimization is on</string>
     <string name="shizuku_installer_subtitle">Using system APIs directly with adb/root privileges</string>
@@ -609,6 +632,14 @@
     <plurals name="favourites_count">
         <item quantity="one">%1$d favourite</item>
         <item quantity="other">%1$d favourites</item>
+    </plurals>
+    <plurals name="account_count">
+        <item quantity="one">Total %1$d account</item>
+        <item quantity="other">Total %1$d accounts</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Couldn\'t refresh %1$d account</item>
+        <item quantity="other">Couldn\'t refresh %1$d accounts</item>
     </plurals>
     <plurals name="notification_installed_summary">
         <item quantity="one">%d app installed</item>
