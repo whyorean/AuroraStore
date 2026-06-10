@@ -591,4 +591,20 @@
     <string name="toast_fav_install_enqueued">Instalowanie aplikacji %1$d</string>
     <string name="install_favourites_summary">Spowoduje to pobranie i zainstalowanie %1$d aplikacji.</string>
     <string name="confirm_deeplink_sheet_title">Kontynuować w Aurora Store?</string>
+    <string name="account_set_default_title">Zmienić domyślne konto?</string>
+    <string name="account_set_default_message">Sklep Aurora zostanie ponownie uruchomiony i będzie używać nowego, domyślnego konta.</string>
+    <string name="account_switching">Przełączam konto…</string>
+    <string name="account_adding">Dodawanie konta…</string>
+    <string name="account_refresh_all">Odśwież wszystkie konta</string>
+    <string name="account_refreshing">Odświeżanie kont…</string>
+    <string name="account_refresh_done">Konta zostały odświeżone</string>
+    <string name="account_switch_failed">Nie udało się odświeżyć tego konta, więc ustawienia domyślne nie zostały zmienione.</string>
+    <string name="account_add_failed">Nie udało się dodać tego konta. Spróbuj ponownie.</string>
+    <string name="action_switch_account">Zmień konto</string>
+    <plurals name="account_count">
+        <item quantity="one">Łacznie %1$d konto</item>
+        <item quantity="few">Łącznie %1$d konta</item>
+        <item quantity="many">Łącznie %1$d kont</item>
+        <item quantity="other">Łącznie %1$d kont</item>
+    </plurals>
 </resources>
