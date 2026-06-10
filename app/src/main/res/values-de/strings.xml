@@ -583,4 +583,32 @@
         <item quantity="one">%1$d Favorit</item>
         <item quantity="other">%1$d Favoriten</item>
     </plurals>
+    <string name="account_set_default">Als Standard festlegen</string>
+    <string name="account_default">Standard</string>
+    <string name="account_remove">Entfernen</string>
+    <string name="account_remove_title">Konto entfernen?</string>
+    <string name="account_remove_message">%1$s aus Aurora Store entfernen?</string>
+    <string name="account_remove_last_message">Dies ist dein einziges Konto. Wenn du es löschst, wirst du abgemeldet und kannst Aurora Store erst wieder nutzen, wenn du dich erneut angemeldet hast.</string>
+    <string name="account_add">Konto hinzufügen</string>
+    <string name="account_add_device">Gerätekonten</string>
+    <string name="account_add_google">Mit Google anmelden</string>
+    <string name="account_add_anonymous">Anonymes Konto hinzufügen</string>
+    <string name="account_set_default_title">Standardkonto wechseln?</string>
+    <string name="account_set_default_message">Aurora Store wird neu gestartet und verwendet dann das neue Standardkonto.</string>
+    <string name="account_switching">Konto wird gewechselt…</string>
+    <string name="account_adding">Konto wird hinzugefügt…</string>
+    <string name="account_refresh_all">Alle Konten aktualisieren</string>
+    <string name="account_refreshing">Konten werden aktualisieren…</string>
+    <string name="account_refresh_done">Alle Konten wurden aktualisiert</string>
+    <string name="account_switch_failed">Das Konto konnte nicht aktualisiert werden, daher wurde die Standardeinstellung nicht geändert.</string>
+    <string name="account_add_failed">Das Konto konnte nicht hinzugefügt werden. Bitte versuche es erneut.</string>
+    <string name="action_switch_account">Konto wechseln</string>
+    <plurals name="account_count">
+        <item quantity="one">Insgesamt %1$d Konto</item>
+        <item quantity="other">Insgesamt %1$d Kontos</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">%1$d Konto konnte nicht aktualisiert werden</item>
+        <item quantity="other">%1$d Kontos konnten nicht aktualisiert werden</item>
+    </plurals>
 </resources>
