@@ -587,20 +587,20 @@
         <item quantity="many">%1$d favoris</item>
         <item quantity="other">%1$d favoris</item>
     </plurals>
-    <string name="account_set_default">Définir comme valeur par défaut</string>
+    <string name="account_set_default">Définir comme compte par défaut</string>
     <string name="account_default">Par défaut</string>
     <string name="account_remove">Supprimer</string>
     <string name="account_remove_title">Supprimer le compte ?</string>
     <string name="account_remove_message">Supprimer %1$s de Aurora Store ?</string>
     <string name="account_remove_last_message">Il s\'agit de votre seul compte. Si vous le supprimez, vous serez déconnecté et vous ne pourrez plus utiliser Aurora Store tant que vous ne vous serez pas reconnecté.</string>
     <string name="account_add">Ajouter un compte</string>
-    <string name="account_add_device">Comptes d\'appareil</string>
+    <string name="account_add_device">Comptes d’appareil</string>
     <string name="account_add_google">Se connecter avec Google</string>
     <string name="account_add_anonymous">Ajouter un compte anonyme</string>
     <string name="account_set_default_title">Changer de compte par défaut ?</string>
     <string name="account_set_default_message">Aurora Store redémarrera pour utiliser le nouveau compte par défaut.</string>
     <string name="account_switching">Changement de compte…</string>
-    <string name="account_adding">Ajout d\'un compte…</string>
+    <string name="account_adding">Ajout d’un compte…</string>
     <string name="account_refresh_all">Actualiser tous les comptes</string>
     <string name="account_refreshing">Actualisation des comptes…</string>
     <string name="account_refresh_done">Tous les comptes ont été mis à jour</string>
@@ -608,9 +608,9 @@
     <string name="account_add_failed">Impossible d\'ajouter ce compte. Veuillez réessayer.</string>
     <string name="action_switch_account">Changer de compte</string>
     <plurals name="account_count">
-        <item quantity="one">Total %1$d compte</item>
-        <item quantity="many">Total %1$d comptes</item>
-        <item quantity="other">Total %1$d comptes</item>
+        <item quantity="one">Total %1$d compte</item>
+        <item quantity="many">Total %1$d de comptes</item>
+        <item quantity="other">Total %1$d comptes</item>
     </plurals>
     <plurals name="account_refresh_failed">
         <item quantity="one">Impossible d\'actualiser le compte %1$d</item>
