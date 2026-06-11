@@ -553,4 +553,58 @@
         <item quantity="one">U dështua për %d aplikacion</item>
         <item quantity="other">U dështua për %d aplikacione</item>
     </plurals>
+    <string name="account_set_default">Vëre si parazgjedhje</string>
+    <string name="account_default">Parazgjedhje</string>
+    <string name="account_remove">Hiqe</string>
+    <string name="account_remove_title">Të hiqet llogaria?</string>
+    <string name="account_remove_message">Të hiqet %1$s nga Aurora Store?</string>
+    <string name="account_remove_last_message">Kjo është llogaria juaj e vetme. Heqja e saj do të sjellë nxjerrjen tuaj nga llogaria dhe s’do të jeni në gjendje të përdorni Aurora Store-in, para se të bëni sërish hyrjen.</string>
+    <string name="account_add">Shtoni llogari</string>
+    <string name="account_add_google">Hyni me Google</string>
+    <string name="account_add_anonymous">Shtoni llogari anonime</string>
+    <string name="account_set_default_title">Të kalohet te llogaria parazgjedhje?</string>
+    <string name="account_set_default_message">Që të përdoret llogaria e re parazgjedhje, Aurora Store do të riniset.</string>
+    <string name="account_switching">Po ndërrohet llogari…</string>
+    <string name="account_adding">Po shtohet llogari…</string>
+    <string name="account_refresh_all">Rifresko krejt llogaritë</string>
+    <string name="account_refreshing">Po rifreskohen llogari…</string>
+    <string name="account_add_device">Llogari pajisjeje</string>
+    <string name="account_refresh_done">U rifreskohen krejt llogaritë</string>
+    <string name="account_switch_failed">S’u rifreskua dot ajo llogari, ndaj parazgjedhja s’u ndryshua.</string>
+    <string name="account_add_failed">S’u shtua dot ajo llogari. Ju lutemi, riprovoni.</string>
+    <string name="action_buy">Blini @ %1$s</string>
+    <string name="action_install_all">Instaloji krejt</string>
+    <string name="action_switch_account">Ndërroni llogari</string>
+    <string name="details_review_comment_hint">Përshkruani rastin tuaj (opsionale)</string>
+    <string name="details_review_edit">Përpunoni shqyrtimin tuaj</string>
+    <string name="details_review_delete">Fshije</string>
+    <string name="details_review_delete_title">Të fshihet shqyrtimi?</string>
+    <string name="details_review_delete_message">Vlerësimi juaj dhe shqyrtimi do të hiqen nga Google Play.</string>
+    <string name="details_your_review">Shqyrtimi juaj</string>
+    <string name="filter_latest">Më i riu</string>
+    <string name="confirm_deeplink_title">Ripohoni lidhje të jashtme</string>
+    <string name="confirm_deeplink_summary">Pyet, para se të hapet një aplikacion që referohet nga një lidhje, duke penguar kështu reklama të hapin Aurora Store-i pa pranimin tuaj.</string>
+    <string name="confirm_deeplink_sheet_title">Të vazhdohet te Aurora Store?</string>
+    <string name="confirm_deeplink_sheet_message">Një aplikacion i jashtëm dëshiron të hapë Aurora Store-in</string>
+    <string name="confirm_deeplink_sheet_source">Hapur nga %1$s</string>
+    <string name="title_install_favourites">Të instalohet të parapëlqyerit?</string>
+    <string name="install_favourites_summary">Kjo do të shkarkojë dhe instalojë %1$d aplikacione.</string>
+    <string name="install_favourites_warning">Mund të shihni një hap më vete fillimi instalimi për secilin aplikacion.</string>
+    <string name="pref_ui_dynamic_color">Ngjyra dinamike</string>
+    <string name="pref_ui_dynamic_color_desc">Përdorni ngjyra nga sfondi juaj. Për paletë marke Aurora, çaktivizojeni.</string>
+    <string name="toast_fav_install_enqueued">Po instalohen %1$d aplikacione</string>
+    <string name="toast_fav_install_none">S’ka gjë për instalim</string>
+    <string name="toast_fav_install_failed">S’u arrit të sillen hollësi aplikacioni</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d i parapëlqyer</item>
+        <item quantity="other">%1$d të parapëlqyer</item>
+    </plurals>
+    <plurals name="account_count">
+        <item quantity="one">%1$d llogari gjithsej</item>
+        <item quantity="other">%1$d llogari gjithsej</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">S’u rifreskua dot %1$d llogari</item>
+        <item quantity="other">S’u rifreskuan dot %1$d llogari</item>
+    </plurals>
 </resources>
