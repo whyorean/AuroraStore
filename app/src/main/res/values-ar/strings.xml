@@ -599,4 +599,24 @@
         <item quantity="many">%1$d مفضلة</item>
         <item quantity="other">%1$d مفضلة</item>
     </plurals>
+    <string name="account_set_default">عيّن كإفتراضي</string>
+    <string name="account_default">إفتراضي</string>
+    <string name="account_remove">أزِل</string>
+    <string name="account_remove_title">أزِل الحساب؟</string>
+    <string name="account_remove_message">أزِل %1$s من متجر Aurora؟</string>
+    <string name="account_remove_last_message">هذا هو حسابك الوحيد. سيؤدي حذفه إلى تسجيل خروجك، ولن تتمكن من استخدام متجر Aurora حتى تقوم بتسجيل الدخول مرة أخرى.</string>
+    <string name="account_add">أضف حساب</string>
+    <string name="account_add_device">حسابات الجهاز</string>
+    <string name="account_add_google">سجّل الدخول باستخدام Google</string>
+    <string name="account_add_anonymous">أضف حساب مجهول</string>
+    <string name="account_set_default_title">بدّل الحساب الافتراضي؟</string>
+    <string name="account_set_default_message">سيتم إعادة تشغيل متجر Aurora باستخدام الحساب الافتراضي الجديد.</string>
+    <string name="account_switching">يبدّل الحساب…</string>
+    <string name="account_adding">يضيف حساب…</string>
+    <string name="account_refresh_all">حدِّث جميع الحسابات</string>
+    <string name="account_refreshing">يحدِّث الحسابات…</string>
+    <string name="account_refresh_done">حُدثت كل الحسابات</string>
+    <string name="account_switch_failed">تعذّر النظام من تحديث هذا الحساب، لذا لم يتم تغيير الإعداد الافتراضي.</string>
+    <string name="account_add_failed">تعذّر إضافة هذا الحساب. يُرجى المحاولة مرة أخرى.</string>
+    <string name="action_switch_account">بدّل الحساب</string>
 </resources>
