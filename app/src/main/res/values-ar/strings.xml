@@ -619,4 +619,20 @@
     <string name="account_switch_failed">تعذّر النظام من تحديث هذا الحساب، لذا لم يتم تغيير الإعداد الافتراضي.</string>
     <string name="account_add_failed">تعذّر إضافة هذا الحساب. يُرجى المحاولة مرة أخرى.</string>
     <string name="action_switch_account">بدّل الحساب</string>
+    <plurals name="account_count">
+        <item quantity="zero">لا حسابات</item>
+        <item quantity="one">إجمالي %1$d حساب</item>
+        <item quantity="two">إجمالي حسابان</item>
+        <item quantity="few">إجمالي %1$d حسابات</item>
+        <item quantity="many">إجمالي %1$d حسابًا</item>
+        <item quantity="other">إجمالي %1$d حساب</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="zero">تعذّر تحديث أي حساب</item>
+        <item quantity="one">تعذّر تحديث %1$d حساب</item>
+        <item quantity="two">تعذّر تحديث حسابين</item>
+        <item quantity="few">تعذّر تحديث %1$d حسابات</item>
+        <item quantity="many">تعذّر تحديث %1$d حسابًا</item>
+        <item quantity="other">تعذّر تحديث %1$d حساب</item>
+    </plurals>
 </resources>
