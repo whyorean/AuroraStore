@@ -579,4 +579,30 @@
     <plurals name="favourites_count">
         <item quantity="other">%1$d 项收藏</item>
     </plurals>
+    <string name="account_set_default">设为默认</string>
+    <string name="account_default">默认</string>
+    <string name="account_remove">删除</string>
+    <string name="account_remove_title">删除账户？</string>
+    <string name="account_remove_message">从 Aurora 商店删除 %1$s ？</string>
+    <string name="account_remove_last_message">这是你唯一的账户。删除它会造成你退出登录，在重新登录前无法使用 Aurora 商店。</string>
+    <string name="account_add">添加账户</string>
+    <string name="account_add_device">设备账户</string>
+    <string name="account_add_google">用 Google 登录</string>
+    <string name="account_add_anonymous">添加匿名账户</string>
+    <string name="account_set_default_title">切换默认账户?</string>
+    <string name="account_set_default_message">Aurora 商店将重启使用新的默认账户。</string>
+    <string name="account_switching">正在切换账户…</string>
+    <string name="account_adding">正在添加账户…</string>
+    <string name="account_refresh_all">刷新所有账户</string>
+    <string name="account_refreshing">正在刷新账户…</string>
+    <string name="account_refresh_done">刷新了所有账户</string>
+    <string name="account_switch_failed">无法刷新该账户，因此未更改默认账户。</string>
+    <string name="account_add_failed">无法添加该账户。请重试。</string>
+    <string name="action_switch_account">切换账户</string>
+    <plurals name="account_count">
+        <item quantity="other">共 %1$d 个账户</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="other">无法刷新 %1$d 个账户</item>
+    </plurals>
 </resources>
