@@ -33,7 +33,7 @@
     <string name="action_post">Wyślij</string>
     <string name="action_pending">Oczekujące</string>
     <string name="action_open">Otwórz</string>
-    <string name="action_ok">OK</string>
+    <string name="action_ok">Okej</string>
     <string name="action_next">Następna</string>
     <string name="action_logout">Wyloguj się</string>
     <string name="action_leave">Zrezygnuj</string>
@@ -340,7 +340,7 @@
     <string name="remove">Usuń</string>
     <string name="about_wiki_title">Wiki</string>
     <string name="add_dispenser_error">Nieprawidłowy adres URL</string>
-    <string name="about_wiki_summary">Znajdź odpowiedzi na często zadawane pytania (FAQ), kroki rozwiązywania problemów i nie tylko</string>
+    <string name="about_wiki_summary">Znajdź odpowiedzi na często zadawane pytania (F.A.Q), kroki rozwiązywania problemów i nie tylko</string>
     <string name="pref_dispenser_summary">Wyświetl i zarządzaj dostawcami tokenów do anonimowego logowania</string>
     <string name="no_dispensers_available">Brak dostępnych dostawców</string>
     <string name="remove_dispenser_title">Usunąć dostawcę?</string>
