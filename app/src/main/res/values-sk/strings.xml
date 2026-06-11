@@ -564,4 +564,63 @@
     <string name="installed_filter_installer">Inštalované z</string>
     <string name="installed_filter_all">Všetko</string>
     <string name="installed_updated_at">Aktualizované <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="confirm_deeplink_title">Potvrdiť externé odkazy</string>
+    <string name="confirm_deeplink_summary">Pred otvorením záznamu o aplikácii z odkazu sa opýtajte, čím zabránite tomu, aby reklamy spustili Aurora Store bez vášho súhlasu.</string>
+    <string name="confirm_deeplink_sheet_title">Chcete pokračovať do obchodu Aurora?</string>
+    <string name="confirm_deeplink_sheet_message">Externá aplikácia sa snaží otvoriť Aurora Store</string>
+    <string name="confirm_deeplink_sheet_source">Otvorené od %1$s</string>
+    <string name="account_set_default">Nastaviť ako predvolené</string>
+    <string name="account_default">Predvolené</string>
+    <string name="account_remove">Odstrániť</string>
+    <string name="account_remove_title">Odstrániť účet?</string>
+    <string name="account_remove_message">Odstrániť %1$s z obchodu Aurora?</string>
+    <string name="account_remove_last_message">Toto je váš jediný účet. Jeho odstránením sa odhlásite a nebudete môcť používať Aurora Store, kým sa znovu neprihlásite.</string>
+    <string name="account_add">Pridať účet</string>
+    <string name="account_add_device">Účty zariadenIa</string>
+    <string name="account_add_google">Prihlásiť sa cez Google</string>
+    <string name="account_add_anonymous">Pridať anonymný účet</string>
+    <string name="account_set_default_title">Zmeniť predvolený účet?</string>
+    <string name="account_set_default_message">Obchod Aurora sa reštartuje a začne používať nový predvolený účet.</string>
+    <string name="account_switching">Prechod na iný účet…</string>
+    <string name="account_adding">Pridávanie účtu…</string>
+    <string name="account_refresh_all">Obnoviť všetky účty</string>
+    <string name="account_refreshing">Aktualizácia účtov…</string>
+    <string name="account_refresh_done">Všetky účty boli aktualizované</string>
+    <string name="account_switch_failed">Tento účet sa nepodarilo aktualizovať, takže predvolené nastavenie sa nezmenilo.</string>
+    <string name="account_add_failed">Tento účet sa nepodarilo pridať. Skúste to prosím znova.</string>
+    <string name="action_buy">Kúpiť @ %1$s</string>
+    <string name="action_install_all">Nainštalovať všetko</string>
+    <string name="action_switch_account">Prepnúť účet</string>
+    <string name="details_review_comment_hint">Opíšte svoje skúsenosti (nevyžaduje sa)</string>
+    <string name="details_review_edit">Upraviť svoju recenziu</string>
+    <string name="details_review_delete">Odstrániť</string>
+    <string name="details_review_delete_title">Odstrániť recenziu?</string>
+    <string name="details_review_delete_message">Vaše hodnotenie a recenzia budú z Google Play odstránené.</string>
+    <string name="details_your_review">Vaša recenzia</string>
+    <string name="title_install_favourites">Nainštalovať do obľúbených?</string>
+    <string name="install_favourites_summary">Týmto sa stiahne a nainštaluje %1$d aplikácií.</string>
+    <string name="install_favourites_warning">Pre každú aplikáciu sa môže zobraziť samostatná výzva na inštaláciu.</string>
+    <string name="pref_ui_dynamic_color">Živé farby</string>
+    <string name="pref_ui_dynamic_color_desc">Použite farby z vašej tapety. Vypnite pre farebnú paletu značky Aurora.</string>
+    <string name="toast_fav_install_enqueued">Inštalujem %1$d aplikácií</string>
+    <string name="toast_fav_install_none">Nie je potrebné nič inštalovať</string>
+    <string name="toast_fav_install_failed">Nepodarilo sa načítať informácie o aplikácii</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d obľúbený</item>
+        <item quantity="few">%1$d obľúbených</item>
+        <item quantity="many">%1$d obľúbených</item>
+        <item quantity="other">%1$d obľúbených</item>
+    </plurals>
+    <plurals name="account_count">
+        <item quantity="one">Celkový účet %1$d</item>
+        <item quantity="few">Celkových účtov %1$d</item>
+        <item quantity="many">Celkových účtov %1$d</item>
+        <item quantity="other">Celkových účtov %1$d</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Nepodarilo sa aktualizovať účet %1$d</item>
+        <item quantity="few">Nepodarilo sa aktualizovať %1$d účtov</item>
+        <item quantity="many">Nepodarilo sa aktualizovať %1$d účtov</item>
+        <item quantity="other">Nepodarilo sa aktualizovať %1$d účtov</item>
+    </plurals>
 </resources>
