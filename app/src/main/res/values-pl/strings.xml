@@ -33,7 +33,7 @@
     <string name="action_post">Wyślij</string>
     <string name="action_pending">Oczekujące</string>
     <string name="action_open">Otwórz</string>
-    <string name="action_ok">OK</string>
+    <string name="action_ok">Okej</string>
     <string name="action_next">Następna</string>
     <string name="action_logout">Wyloguj się</string>
     <string name="action_leave">Zrezygnuj</string>
@@ -122,7 +122,7 @@
     <string name="tab_top_grossing">Najbardziej dochodowe</string>
     <string name="tab_top_free">Najlepsze bezpłatne</string>
     <string name="tab_top_charts">Top listy</string>
-    <string name="tab_for_you">Dla ciebie</string>
+    <string name="tab_for_you">Dla Ciebie</string>
     <string name="tab_editor_choice">Nasz wybór</string>
     <string name="tab_categories">Kategorie</string>
     <string name="spoof_apply">Upewnij się, że zalogowałeś się ponownie, aby zastosować podmianę urządzenia</string>
@@ -209,8 +209,8 @@
     <string name="insecure_anonymous_apply">Zaloguj się ponownie i zrestartuj aplikację, aby zastosować zmiany.</string>
     <string name="pref_network_title">Sieć</string>
     <string name="pref_common_extra">Dodatkowe</string>
-    <string name="pref_ui_no_for_you">Strony dla ciebie</string>
-    <string name="pref_ui_no_for_you_desc">Wyświetl strony Dla ciebie na ekranie głównym</string>
+    <string name="pref_ui_no_for_you">Strony dla Ciebie</string>
+    <string name="pref_ui_no_for_you_desc">Wyświetl strony Dla Ciebie na ekranie głównym</string>
     <string name="pref_ui_similar_apps">Aplikacje podobne i powiązane</string>
     <string name="pref_ui_layout_tab">Wybierz domyślną kartę</string>
     <string name="pref_ui_layout">Układ</string>
@@ -591,4 +591,36 @@
     <string name="toast_fav_install_enqueued">Instalowanie aplikacji %1$d</string>
     <string name="install_favourites_summary">Spowoduje to pobranie i zainstalowanie %1$d aplikacji.</string>
     <string name="confirm_deeplink_sheet_title">Kontynuować w Aurora Store?</string>
+    <string name="account_set_default_title">Zmienić domyślne konto?</string>
+    <string name="account_set_default_message">Sklep Aurora zostanie ponownie uruchomiony i będzie używać nowego, domyślnego konta.</string>
+    <string name="account_switching">Przełączam konto…</string>
+    <string name="account_adding">Dodawanie konta…</string>
+    <string name="account_refresh_all">Odśwież wszystkie konta</string>
+    <string name="account_refreshing">Odświeżanie kont…</string>
+    <string name="account_refresh_done">Konta zostały odświeżone</string>
+    <string name="account_switch_failed">Nie udało się odświeżyć tego konta. Ustawienia domyślne nie zostały zmienione.</string>
+    <string name="account_add_failed">Nie udało się dodać tego konta. Spróbuj ponownie.</string>
+    <string name="action_switch_account">Zmień konto</string>
+    <plurals name="account_count">
+        <item quantity="one">Łącznie %1$d konto</item>
+        <item quantity="few">Łącznie %1$d konta</item>
+        <item quantity="many">Łącznie %1$d kont</item>
+        <item quantity="other">Łącznie %1$d kont</item>
+    </plurals>
+    <string name="account_set_default">Ustaw jako domyślne</string>
+    <string name="account_default">Domyślne</string>
+    <string name="account_remove">Usuń</string>
+    <string name="account_remove_title">Usunąć konto?</string>
+    <string name="account_remove_message">Usunąć %1$s z Aurora Store?</string>
+    <string name="account_remove_last_message">To jest Twoje jedyne konto. Usunięcie go spowoduje wylogowanie. Korzystanie z Aurora Store będzie niemożliwe do czasu ponownego zalogowania się.</string>
+    <string name="account_add">Dodaj konto</string>
+    <string name="account_add_device">Konta na urządzeniu</string>
+    <string name="account_add_google">Zaloguj się przez Google</string>
+    <string name="account_add_anonymous">Dodaj konto anonimowe</string>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Nie udało się odświeżyć %1$d konta</item>
+        <item quantity="few">Nie udało się odświeżyć %1$d kont</item>
+        <item quantity="many">Nie udało się odświeżyć %1$d kont</item>
+        <item quantity="other">Nie udało się odświeżyć %1$d kont</item>
+    </plurals>
 </resources>

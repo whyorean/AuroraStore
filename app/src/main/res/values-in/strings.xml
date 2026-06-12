@@ -579,4 +579,30 @@
     <plurals name="notification_failed_summary">
         <item quantity="other">%d aplikasi gagal</item>
     </plurals>
+    <string name="account_set_default">Jadikan default</string>
+    <string name="account_default">Default</string>
+    <string name="account_remove">Hapus</string>
+    <string name="account_remove_title">Hapus akun?</string>
+    <string name="account_remove_message">Hapus %1$s dari Aurora Store?</string>
+    <string name="account_remove_last_message">Ini adalah satu-satunya akun Anda. Menghapusnya akan membuat Anda keluar, dan Anda tidak akan dapat menggunakan Aurora Store sampai Anda masuk lagi.</string>
+    <string name="account_add">Tambahkan akun</string>
+    <string name="account_add_device">Akun perangkat</string>
+    <string name="account_add_google">Masuk dengan Google</string>
+    <string name="account_add_anonymous">Tambahkan akun anonim</string>
+    <string name="account_set_default_title">Ganti akun default?</string>
+    <string name="account_set_default_message">Aurora Store akan dimulai ulang untuk menggunakan akun default yang baru.</string>
+    <string name="account_switching">Mengganti akun…</string>
+    <string name="account_adding">Menambahkan akun…</string>
+    <string name="account_refresh_all">Segarkan semua akun</string>
+    <string name="account_refreshing">Menyegarkan akun…</string>
+    <string name="account_refresh_done">Semua akun berhasil disegarkan</string>
+    <string name="account_switch_failed">Tidak dapat menyegarkan akun itu, jadi akun default tidak diubah.</string>
+    <string name="account_add_failed">Tidak dapat menambahkan akun itu. Harap coba lagi.</string>
+    <string name="action_switch_account">Ganti akun</string>
+    <plurals name="account_count">
+        <item quantity="other">Total %1$d akun</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="other">Tidak dapat menyegarkan %1$d akun</item>
+    </plurals>
 </resources>

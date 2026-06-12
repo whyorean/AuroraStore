@@ -587,4 +587,34 @@
         <item quantity="few">%1$d aplicații favorite</item>
         <item quantity="other">%1$d de aplicații favorite</item>
     </plurals>
+    <string name="account_set_default">Setează ca implicit</string>
+    <string name="account_default">Implicit</string>
+    <string name="account_remove">Elimină</string>
+    <string name="account_remove_title">Elimini contul?</string>
+    <string name="account_remove_message">Elimini %1$s din Aurora Store?</string>
+    <string name="account_remove_last_message">Acesta este singurul tău cont. Eliminarea acestuia te va deconecta și nu vei putea folosi Magazinul Aurora până nu te conectezi din nou.</string>
+    <string name="account_add">Adaugă un cont</string>
+    <string name="account_add_device">Conturi dispozitiv</string>
+    <string name="account_add_google">Conectează-te cu Google</string>
+    <string name="account_add_anonymous">Adaugă un cont anonim</string>
+    <string name="account_set_default_title">Schimbi contul implicit?</string>
+    <string name="account_set_default_message">Magazinul Aurora va reporni pentru a utiliza noul cont implicit.</string>
+    <string name="account_switching">Se schimbă contul…</string>
+    <string name="account_adding">Se adaugă contul…</string>
+    <string name="account_refresh_all">Actualizează toate conturile</string>
+    <string name="account_refreshing">Se actualizează conturile…</string>
+    <string name="account_refresh_done">Toate conturile au fost reîmprospătate</string>
+    <string name="account_switch_failed">Nu s-a putut reîmprospăta contul respectiv, așa că valoarea implicită nu a fost modificată.</string>
+    <string name="account_add_failed">Nu s-a putut adăuga acel cont. Încearcă din nou.</string>
+    <string name="action_switch_account">Schimbă contul</string>
+    <plurals name="account_count">
+        <item quantity="one">În total %1$d cont</item>
+        <item quantity="few">În total %1$d conturi</item>
+        <item quantity="other">În total %1$d de conturi</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Nu s-a putut reîmprospăta %1$d cont</item>
+        <item quantity="few">Nu s-au putut reîmprospăta %1$d conturi</item>
+        <item quantity="other">Nu s-au putut reîmprospăta %1$d de conturi</item>
+    </plurals>
 </resources>

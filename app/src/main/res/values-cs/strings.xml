@@ -591,4 +591,36 @@
         <item quantity="many">%1$d oblíbených</item>
         <item quantity="other">%1$d oblíbených</item>
     </plurals>
+    <string name="account_set_default">Nastavit jako výchozí</string>
+    <string name="account_default">Výchozí</string>
+    <string name="account_remove">Odstranit</string>
+    <string name="account_remove_title">Odstranit účet?</string>
+    <string name="account_remove_message">Odstranit účet %1$s z Obchodu Aurora?</string>
+    <string name="account_remove_last_message">Toto je váš jediný účet. Po jeho odstranění budete odhlášeni a nebudete moci použít Obchod Aurora, dokud se znovu nepřihlásíte.</string>
+    <string name="account_add">Přidat účet</string>
+    <string name="account_add_device">Účty zařízení</string>
+    <string name="account_add_google">Přihlášení přes Google</string>
+    <string name="account_add_anonymous">Přidat anonymní účet</string>
+    <string name="account_set_default_title">Přepnout výchozí účet?</string>
+    <string name="account_set_default_message">Obchod Aurora se restartuje pro použití nového výchozího účtu.</string>
+    <string name="account_switching">Přepínání účtu…</string>
+    <string name="account_adding">Přidávání účtu…</string>
+    <string name="account_refresh_all">Aktualizovat všechny účty</string>
+    <string name="account_refreshing">Aktualizace účtů…</string>
+    <string name="account_refresh_done">Všechny účty byly aktualizovány</string>
+    <string name="account_switch_failed">Nepodařilo se aktualizovat daný účet, výchozí hodnota nebyla změněna.</string>
+    <string name="account_add_failed">Nepodařilo se přidat daný účet. Zkuste to prosím znovu.</string>
+    <string name="action_switch_account">Přepnout účet</string>
+    <plurals name="account_count">
+        <item quantity="one">Celkem %1$d účet</item>
+        <item quantity="few">Celkem %1$d účty</item>
+        <item quantity="many">Celkem %1$d účtů</item>
+        <item quantity="other">Celkem %1$d účtů</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Nepodařilo se aktualizovat %1$d účet</item>
+        <item quantity="few">Nepodařilo se aktualizovat %1$d účty</item>
+        <item quantity="many">Nepodařilo se aktualizovat %1$d účtů</item>
+        <item quantity="other">Nepodařilo se aktualizovat %1$d účtů</item>
+    </plurals>
 </resources>

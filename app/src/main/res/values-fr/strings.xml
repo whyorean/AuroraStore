@@ -20,7 +20,7 @@
     <string name="device_miui_title">MIUI a été détecté !</string>
     <string name="menu_terms">Conditions générales d’utilisation</string>
     <string name="menu_license">Licence</string>
-    <string name="onboarding_welcome_select">Comment allez-vous ?</string>
+    <string name="onboarding_welcome_select">Comment allez-vous?</string>
     <string name="onboarding_title_welcome">Bienvenue</string>
     <string name="onboarding_title_installer">Programme d’installation</string>
     <string name="pref_filter_fdroid_title">Filtrer les applis provenant de F-Droid</string>
@@ -62,7 +62,7 @@
     <string name="download_completed">Le téléchargement est terminé</string>
     <string name="download_canceled">Annulé</string>
     <string name="download_cancel_all">Tout annuler</string>
-    <string name="details_think_this_app">Que pensez-vous de cette appli ?</string>
+    <string name="details_think_this_app">Que pensez-vous de cette appli?</string>
     <string name="details_ratings">Évaluation et avis</string>
     <string name="details_privacy">Protection des données personnelles</string>
     <string name="details_permission">Autorisation</string>
@@ -84,7 +84,7 @@
     <string name="details_changelog_unavailable">Le journal des changements n’a pas été fourni</string>
     <string name="details_changelog">Journal des changements</string>
     <string name="details_dev_email">Adresse courriel</string>
-    <string name="details_beta_available">Participer au programme bêta ?</string>
+    <string name="details_beta_available">Participer au programme bêta?</string>
     <string name="details_beta_subscribed">Vous essayez la version bêta</string>
     <string name="details_beta">Programme bêta</string>
     <string name="action_whitelist">Liste d’inclusion</string>
@@ -271,7 +271,7 @@
     <string name="title_search_results">Résultats de la recherche</string>
     <string name="failed_generating_session">Échec de génération de la session. Code d’erreur : <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Échec de récupération du relevé de confidentialité</string>
-    <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor ?</string>
+    <string name="access_denied_using_vpn">L’accès a été refusé. Utilisez-vous un RPV/VPN ou Tor?</string>
     <string name="bad_request">Erreur interne ! Réessayez plus tard</string>
     <string name="login_rate_limited">Votre débit est limité</string>
     <string name="server_unreachable">Impossible d’accéder au serveur</string>
@@ -308,7 +308,7 @@
     <string name="pref_updates_incompatible">Afficher les mises à jour susceptibles d’échouer</string>
     <string name="pref_updates_incompatible_desc">Afficher les mises à jour pour les applis incompatibles ou désactivées dont l’installation peut échouer.</string>
     <string name="action_home_screen">Ajouter à l’écran d’accueil</string>
-    <string name="faqs_subtitle">Des questions ? Trouvez les réponses</string>
+    <string name="faqs_subtitle">Des questions? Trouvez les réponses</string>
     <string name="source_code_title">Code source</string>
     <string name="privacy_policy_subtitle">Découvrez comment Aurora Store utilise vos données</string>
     <string name="manual_download_hint">Saisissez le code de la version que vous voulez télécharger</string>
@@ -336,18 +336,18 @@
     <string name="add_dispenser_title">Ajouter un distributeur de jetons</string>
     <string name="add_dispenser_error">L’URL est invalide</string>
     <string name="remove">Supprimer</string>
-    <string name="remove_dispenser_summary">Voulez-vous supprimer le distributeur « <xliff:g id="url">%1$s</xliff:g> » ?</string>
+    <string name="remove_dispenser_summary">Voulez-vous supprimer le distributeur « <xliff:g id="url">%1$s</xliff:g> »?</string>
     <string name="session_login">Connectez-vous à votre compte Google Play</string>
     <string name="add_dispenser_summary">Ajouter un distributeur de jetons à Aurora Store. Les distributeurs de jetons fournissent des identifiants de compte à Aurora Store pour les connexions anonymes.</string>
     <string name="add_dispenser_hint">URL du distributeur de jetons</string>
-    <string name="remove_dispenser_title">Supprimer le distributeur de jetons ?</string>
+    <string name="remove_dispenser_title">Supprimer le distributeur de jetons?</string>
     <string name="add">Ajouter</string>
     <string name="pref_dispenser_summary">Consulter et gérer les distributeurs de jetons pour les connexions anonymes</string>
     <string name="no_dispensers_available">Aucun distributeur de jetons n’est proposé</string>
-    <string name="about_aurora_store_summary">Aurora Store vous permet de rechercher et de télécharger des applis depuis le Google Play Store. Vous pouvez consulter les descriptions, les captures d\'écran, les mises à jour, les commentaires des autres utilisateurs et télécharger le fichier APK directement depuis Google Play sur votre appareil. Pour utiliser Aurora Store, connectez-vous avec votre compte Google Play lors de la première ouverture et configuration de l\'appli.\n\nContrairement à une boutique d\'applis traditionnelle, Aurora Store ne possède, ne distribue et n\'exploite aucune appli. Toutes les applis, descriptions, captures d\'écran et autres contenus d\'Aurora Store sont directement accessibles, téléchargés et/ou affichés depuis Google Play. Aurora Store fonctionne comme une passerelle, vous permettant de vous connecter à votre compte Google Play et de trouver des applis sur Google Play.\n\nVeuillez noter qu\'Aurora Store n\'est ni approuvé, ni sponsorisé, ni autorisé par Google, Google Play, les applis téléchargées via Aurora Store ou les développeurs d\'applis ; Aurora Store n\'a aucune affiliation, coopération ou lien avec eux.</string>
+    <string name="about_aurora_store_summary">Le magasin Aurora Store vous permet de chercher et de télécharger des applis du magasin officiel Google Play. Vous pouvez consulter la description des applis, les captures d’écran, les mises à jour, les commentaires d’Autres utilisateurs, et télécharger le fichier APK directement de Google Play vers votre appareil. Pour utiliser le magasin Aurora Store, connectez-vous avec votre compte Google Play lors de la première ouverture et de la configuration de l’appli.\n\nContrairement à un magasin d’applis traditionnel, Aurora Store ne détient, ne concède sous licence, ni ne distribue aucune appli. Les applis, descriptions d’applis, captures d’écran et autres contenus du magasin Aurora Store sont accessibles, téléchargeables et affichés directement du magasin Google Play. Le magasin Aurora Store fonctionne comme un portail ou un navigateur ; il vous permet de vous connecter à votre compte Google Play et de trouver des applis sur Google Play.\n\nNotez que le magasin Aurora Store n’a reçu aucune approbation, aucune commandite ni autorisation de la part de Google, de Google Play, des applis téléchargées grâce au magasin Aurora Store, ni de développeurs d’appli. Par ailleurs, le magasin Aurora Store n’a aucun lien d’affiliation, de coopération ou de connexion avec ces entités.</string>
     <string name="about_aurora_store_title">À propos d’Aurora Store</string>
     <string name="about_aurora_store_subtitle">En savoir plus sur Aurora Store</string>
-    <string name="pref_clear_device_owner_desc">Cela révoquera l\'autorisation accordée au programme d\'installation de session d\'installer l\'appli en mode silencieux. Voulez-vous vraiment supprimer les droits d\'accès à l\'appareil ?</string>
+    <string name="pref_clear_device_owner_desc">Cela révoquera l\'autorisation accordée au programme d\'installation de session d\'installer l\'appli en mode silencieux. Voulez-vous vraiment supprimer les droits d\'accès à l\'appareil?</string>
     <string name="pref_clear_device_owner_title">Révoquer le droit de propriété de l’appareil</string>
     <string name="toast_app_unavailable">L\'appli n\'est pas disponible pour votre appareil</string>
     <string name="toast_fav_import_failed">Échec d’importation des favoris !</string>
@@ -359,8 +359,8 @@
     <string name="pref_network_proxy_url_message">Saisissez une URL de mandataire valide pour faire transiter toute les données par le mandataire.</string>
     <string name="title_favourites_manager">Applis favorites</string>
     <string name="toast_fav_export_success">Les favoris ont été exportés !</string>
-    <string name="action_logout_confirmation_title">Vous déconnecter ?</string>
-    <string name="action_logout_confirmation_message">Voulez-vous vous déconnecter ?</string>
+    <string name="action_logout_confirmation_title">Vous déconnecter?</string>
+    <string name="action_logout_confirmation_message">Voulez-vous vous déconnecter?</string>
     <string name="check_updates">Chercher des mises à jour</string>
     <string name="details_data_safety_title">Sécurité des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l’installation d’applis de sources inconnues</string>
@@ -383,7 +383,7 @@
     <string name="status_cancelled">Annulé</string>
     <string name="status_failed">Échec</string>
     <string name="status_unavailable">Inaccessible</string>
-    <string name="authentication_required_unarchive">Veuillez vous connecter à votre compte Google Play pour désarchiver l\'appli !</string>
+    <string name="authentication_required_unarchive">Connectez-vous à votre compte Google Play pour désarchiver l’appli.</string>
     <string name="authentication_required_title">L’authentification est requise</string>
     <string name="checking_updates">Recherche de mises à jour</string>
     <string name="made_with_love">Conçu en Inde avec <xliff:g id="heart_emoji">%1$s</xliff:g></string>
@@ -470,7 +470,7 @@
     <string name="loading">En cours de chargement</string>
     <string name="page">Page <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Ignorer</string>
-    <string name="force_restart_snack">Redémarrer pour appliquer les changements ?</string>
+    <string name="force_restart_snack">Redémarrer pour appliquer les changements?</string>
     <string name="preparing_to_download">Préparation du téléchargement</string>
     <string name="verifying_downloads">Vérification des téléchargements</string>
     <string name="action_retry">Réessayer</string>
@@ -566,15 +566,15 @@
     <string name="details_review_comment_hint">Décrivez votre expérience (facultatif)</string>
     <string name="details_review_edit">Modifier votre avis</string>
     <string name="details_review_delete">Supprimer</string>
-    <string name="details_review_delete_title">Supprimer l\'avis ?</string>
+    <string name="details_review_delete_title">Supprimer l\'avis?</string>
     <string name="details_review_delete_message">Votre note et votre avis seront supprimés de Google Play.</string>
     <string name="details_your_review">Votre avis</string>
     <string name="confirm_deeplink_title">Vérifier les liens externes</string>
     <string name="confirm_deeplink_summary">Demandez confirmation avant d\'ouvrir la fiche d\'une appli à partir d\'un lien, afin d\'empêcher les publicités de lancer l\'Aurora Store sans votre consentement.</string>
-    <string name="confirm_deeplink_sheet_title">Poursuivre vers le magasin Aurora Store ?</string>
+    <string name="confirm_deeplink_sheet_title">Poursuivre vers le magasin Aurora Store?</string>
     <string name="confirm_deeplink_sheet_message">Une appli externe veut ouvrir Aurora Store</string>
     <string name="confirm_deeplink_sheet_source">Ouvert à partir de %1$s</string>
-    <string name="title_install_favourites">Installer les favoris ?</string>
+    <string name="title_install_favourites">Installer les favoris?</string>
     <string name="install_favourites_summary">Cela permettra de télécharger et d\'installer %1$d applis.</string>
     <string name="install_favourites_warning">Il se peut qu\'une invite d\'installation distincte s\'affiche pour chaque appli.</string>
     <string name="pref_ui_dynamic_color">Couleurs dynamiques</string>
@@ -583,8 +583,38 @@
     <string name="toast_fav_install_none">Rien à installer</string>
     <string name="toast_fav_install_failed">Impossible de récupérer les informations sur l\'appli</string>
     <plurals name="favourites_count">
-        <item quantity="one">%1$d favoris</item>
-        <item quantity="many">%1$d favoris</item>
-        <item quantity="other">%1$d favoris</item>
+        <item quantity="one">%1$d favori</item>
+        <item quantity="many">%1$d de favoris</item>
+        <item quantity="other">%1$d favori</item>
+    </plurals>
+    <string name="account_set_default">Définir comme compte par défaut</string>
+    <string name="account_default">Par défaut</string>
+    <string name="account_remove">Supprimer</string>
+    <string name="account_remove_title">Supprimer le compte?</string>
+    <string name="account_remove_message">Supprimer %1$s du magasin Aurora Store?</string>
+    <string name="account_remove_last_message">Il s’agit de votre seul compte. Le supprimer vous déconnectera et vous ne pourrez plus utiliser le magasin Aurora Store avant de vous reconnecter.</string>
+    <string name="account_add">Ajouter un compte</string>
+    <string name="account_add_device">Comptes d’appareil</string>
+    <string name="account_add_google">Se connecter avec Google</string>
+    <string name="account_add_anonymous">Ajouter un compte anonyme</string>
+    <string name="account_set_default_title">Changer de compte par défaut ?</string>
+    <string name="account_set_default_message">Aurora Store redémarrera pour utiliser le nouveau compte par défaut.</string>
+    <string name="account_switching">Changement de compte…</string>
+    <string name="account_adding">Ajout d’un compte…</string>
+    <string name="account_refresh_all">Actualiser tous les comptes</string>
+    <string name="account_refreshing">Actualisation des comptes…</string>
+    <string name="account_refresh_done">Les comptes ont été actualisés</string>
+    <string name="account_switch_failed">Impossible d’actualiser ce compte ; le compte par défaut n’a donc pas été changé.</string>
+    <string name="account_add_failed">Impossible d’ajouter ce compte. Réessayez.</string>
+    <string name="action_switch_account">Changer de compte</string>
+    <plurals name="account_count">
+        <item quantity="one">Total %1$d compte</item>
+        <item quantity="many">Total %1$d de comptes</item>
+        <item quantity="other">Total %1$d comptes</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Impossible d’actualiser %1$d compte</item>
+        <item quantity="many">Impossible d’actualiser %1$d de comptes</item>
+        <item quantity="other">Impossible d’actualiser %1$d de comptes</item>
     </plurals>
 </resources>

@@ -587,4 +587,34 @@
         <item quantity="many">%1$d favoritos</item>
         <item quantity="other">%1$d favoritos</item>
     </plurals>
+    <string name="account_set_default">Establecer como predeterminada</string>
+    <string name="account_default">Predeterminada</string>
+    <string name="account_remove">Eliminar</string>
+    <string name="account_remove_title">¿Eliminar cuenta?</string>
+    <string name="account_remove_message">¿Eliminar %1$s de Aurora Store?</string>
+    <string name="account_remove_last_message">Esta es tu única cuenta. Si la eliminas, se cerrará tu sesión y no podrás usar Aurora Store hasta que vuelvas a iniciar sesión.</string>
+    <string name="account_add">Añadir cuenta</string>
+    <string name="account_add_device">Cuentas del dispositivo</string>
+    <string name="account_add_google">Iniciar sesión con Google</string>
+    <string name="account_add_anonymous">Añadir cuenta anónima</string>
+    <string name="account_set_default_title">¿Cambiar la cuenta predeterminada?</string>
+    <string name="account_set_default_message">Aurora Store se reiniciará para usar la nueva cuenta predeterminada.</string>
+    <string name="account_switching">Cambiando de cuenta…</string>
+    <string name="account_adding">Añadiendo cuenta…</string>
+    <string name="account_refresh_all">Actualizar todas las cuentas</string>
+    <string name="account_refreshing">Actualizando cuentas…</string>
+    <string name="account_refresh_done">Todas las cuentas actualizadas</string>
+    <string name="account_switch_failed">No se pudo actualizar esa cuenta, así que la predeterminada no se cambió.</string>
+    <string name="account_add_failed">No se pudo añadir esa cuenta. Por favor, inténtalo de nuevo.</string>
+    <string name="action_switch_account">Cambiar de cuenta</string>
+    <plurals name="account_count">
+        <item quantity="one">Total: %1$d cuenta</item>
+        <item quantity="many">Total: %1$d cuentas</item>
+        <item quantity="other">Total: %1$d cuentas</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">No se pudo actualizar %1$d cuenta</item>
+        <item quantity="many">No se pudo actualizar %1$d cuentas</item>
+        <item quantity="other">No se pudo actualizar %1$d cuentas</item>
+    </plurals>
 </resources>
