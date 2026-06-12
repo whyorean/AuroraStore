@@ -591,4 +591,36 @@
         <item quantity="many">%1$d улюблених</item>
         <item quantity="other">%1$d улюблених</item>
     </plurals>
+    <string name="account_set_default">Встановити як типовий</string>
+    <string name="account_default">Типовий</string>
+    <string name="account_remove">Вилучити</string>
+    <string name="account_remove_title">Вилучити обліковий запис?</string>
+    <string name="account_remove_message">Вилучити %1$s з Aurora Store?</string>
+    <string name="account_remove_last_message">Це ваш єдиний обліковий запис. Його видалення призведе до виходу із системи, і ви не зможете користуватися Aurora Store, доки не ввійдете знову.</string>
+    <string name="account_add">Додати обліковий запис</string>
+    <string name="account_add_device">Облікові записи пристрою</string>
+    <string name="account_add_google">Увійти через Google</string>
+    <string name="account_add_anonymous">Додати анонімний обліковий запис</string>
+    <string name="account_set_default_title">Змінити типовий обліковий запис?</string>
+    <string name="account_set_default_message">Aurora Store почне працювати з новим типовим обліковим записом.</string>
+    <string name="account_switching">Зміна облікового запису…</string>
+    <string name="account_adding">Додавання облікового запису…</string>
+    <string name="account_refresh_all">Оновити всі облікові записи</string>
+    <string name="account_refreshing">Оновлення облікових записів…</string>
+    <string name="account_refresh_done">Усі облікові записи оновлено</string>
+    <string name="account_switch_failed">Не вдалося оновити цей обліковий запис, тому типовий не було змінено.</string>
+    <string name="account_add_failed">Не вдалося додати обліковий запис. Спробуйте ще раз.</string>
+    <string name="action_switch_account">Змінити обліковий запис</string>
+    <plurals name="account_count">
+        <item quantity="one">Загалом %1$d обліковий запис</item>
+        <item quantity="few">Загалом %1$d облікові записи</item>
+        <item quantity="many">Загалом %1$d облікових записів</item>
+        <item quantity="other">Загалом %1$d облікових записів</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Не вдалося оновити %1$d обліковий запис</item>
+        <item quantity="few">Не вдалося оновити %1$d облікові записи</item>
+        <item quantity="many">Не вдалося оновити %1$d облікових записів</item>
+        <item quantity="other">Не вдалося оновити %1$d облікових записів</item>
+    </plurals>
 </resources>
