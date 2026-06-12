@@ -568,7 +568,7 @@
     <string name="details_your_review">İncelemeniz</string>
     <string name="confirm_deeplink_title">Dış bağlantıları onayla</string>
     <string name="confirm_deeplink_summary">Bir bağlantıdan uygulama sayfasını açmadan önce sor, böylece reklamların senin iznin olmadan Aurora Store\'u başlatmasını engellersiniz.</string>
-    <string name="confirm_deeplink_sheet_title">Aurora Store\'a devam edilsin mi?</string>
+    <string name="confirm_deeplink_sheet_title">Aurora Store\'a sürdürülsün mü?</string>
     <string name="confirm_deeplink_sheet_message">Bir dış uygulama Aurora Store\'u açmak istiyor</string>
     <string name="confirm_deeplink_sheet_source">%1$s aracılığıyla açıldı</string>
     <string name="title_install_favourites">Gözde uygulamalar kurulsun mu?</string>
@@ -582,5 +582,33 @@
     <plurals name="favourites_count">
         <item quantity="one">%1$d gözde uygulama</item>
         <item quantity="other">%1$d gözde uygulama</item>
+    </plurals>
+    <string name="account_set_default">Öntanımlı belirle</string>
+    <string name="account_default">Öntanımlı</string>
+    <string name="account_remove">Kaldır</string>
+    <string name="account_remove_title">Hesap kaldırılsın mı?</string>
+    <string name="account_remove_message">%1$s Aurora Store\'dan kaldırılsın mı?</string>
+    <string name="account_remove_last_message">Bu tek hesabınız. Kaldırdığınızda oturumunuz kapanacak ve yeniden oturum açana dek Aurora Store\'u kullanamayacaksınız.</string>
+    <string name="account_add">Hesap ekle</string>
+    <string name="account_add_device">Aygıt hesapları</string>
+    <string name="account_add_google">Google ile oturum aç</string>
+    <string name="account_add_anonymous">Anonim hesap ekle</string>
+    <string name="account_set_default_title">Öntanımlı hesap değiştirilsin mi?</string>
+    <string name="account_set_default_message">Aurora Store, yeni öntanımlı hesabı kullanmak için yeniden başlayacak.</string>
+    <string name="account_switching">Hesap değiştiriliyor…</string>
+    <string name="account_adding">Hesap ekleniyor…</string>
+    <string name="account_refresh_all">Tüm hesapları yenile</string>
+    <string name="account_refreshing">Hesaplar yenileniyor…</string>
+    <string name="account_refresh_done">Tüm hesaplar yenilendi</string>
+    <string name="account_switch_failed">Hesap yenilenemedi, bu nedenle öntanımlı değiştirilemedi.</string>
+    <string name="account_add_failed">Hesap eklenemedi. Lütfen yeniden deneyin.</string>
+    <string name="action_switch_account">Hesap değiştir</string>
+    <plurals name="account_count">
+        <item quantity="one">Toplam %1$d hesap</item>
+        <item quantity="other">Toplam %1$d hesap</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">%1$d hesap yenilenemedi</item>
+        <item quantity="other">%1$d hesap yenilenemedi</item>
     </plurals>
 </resources>
