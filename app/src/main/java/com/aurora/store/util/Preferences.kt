@@ -56,6 +56,17 @@ object Preferences {
 
     const val PREFERENCE_INSTALLATION_DEVICE_OWNER = "PREFERENCE_INSTALLATION_DEVICE_OWNER"
 
+    /**
+     * Target profile for the Shizuku installer. Stores one of [INSTALLATION_PROFILE_CURRENT],
+     * [INSTALLATION_PROFILE_WORK] or [INSTALLATION_PROFILE_ALL]. Only Shizuku has the privileges
+     * to install across user profiles, so other installers ignore this value.
+     */
+    const val PREFERENCE_INSTALLATION_PROFILE = "PREFERENCE_INSTALLATION_PROFILE"
+
+    const val INSTALLATION_PROFILE_CURRENT = 0
+    const val INSTALLATION_PROFILE_WORK = 1
+    const val INSTALLATION_PROFILE_ALL = 2
+
     const val PREFERENCE_PROXY_URL = "PREFERENCE_PROXY_URL"
     const val PREFERENCE_PROXY_INFO = "PREFERENCE_PROXY_INFO"
 
