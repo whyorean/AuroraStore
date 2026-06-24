@@ -139,16 +139,21 @@ class ShizukuInstaller @Inject constructor(
         )
         if (mode == INSTALLATION_PROFILE_CURRENT) return listOf(currentUserId)
 
-        val profiles = runCatching {
-            iUserManager.getProfiles(currentUserId, true)
+        val users = runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                iUserManager.getUsers(true, true, true)
+            } else {
+                @Suppress("DEPRECATION")
+                iUserManager.getUsers(true)
+            }
         }.getOrElse { ex ->
-            Log.e(TAG, "Failed to query user profiles, using current profile", ex)
+            Log.e(TAG, "Failed to query users, using current profile", ex)
             emptyList<UserInfo>()
         }
 
         return when (mode) {
             INSTALLATION_PROFILE_WORK ->
-                profiles
+                users
                     .filter { (it.flags and UserInfo.FLAG_MANAGED_PROFILE) != 0 }
                     .map { it.id }
                     .ifEmpty {
@@ -157,7 +162,7 @@ class ShizukuInstaller @Inject constructor(
                     }
 
             INSTALLATION_PROFILE_ALL ->
-                profiles
+                users
                     .map { it.id }
                     .ifEmpty { listOf(currentUserId) }
 
