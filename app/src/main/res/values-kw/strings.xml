@@ -151,4 +151,8 @@
     <string name="installer_service_available">Gonisyow Aurora yw kavadow ha kysi rag leyans.</string>
     <string name="installer_service_unavailable">Lea Gonisyow Aurora 1.0.9 po moy, po chanjya an leyer.</string>
     <string name="installer_service_misconfigured">Selya Gonisyow Aurora ha grontya oll grontys kynsa.</string>
+    <string name="pref_install_profile_title">Ostalya y\'n profil</string>
+    <string name="pref_install_profile_current">Profil a-lemmyn</string>
+    <string name="pref_install_profile_work">Profil ober</string>
+    <string name="pref_install_profile_all">Oll an profilyow</string>
 </resources>

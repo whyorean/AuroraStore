@@ -607,4 +607,8 @@
         <item quantity="one">S’u rifreskua dot %1$d llogari</item>
         <item quantity="other">S’u rifreskuan dot %1$d llogari</item>
     </plurals>
+    <string name="pref_install_profile_title">Instalo në profil</string>
+    <string name="pref_install_profile_current">Profili aktual</string>
+    <string name="pref_install_profile_work">Profili i punës</string>
+    <string name="pref_install_profile_all">Të gjitha profilet</string>
 </resources>

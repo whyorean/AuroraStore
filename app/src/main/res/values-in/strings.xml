@@ -605,4 +605,8 @@
     <plurals name="account_refresh_failed">
         <item quantity="other">Tidak dapat menyegarkan %1$d akun</item>
     </plurals>
+    <string name="pref_install_profile_title">Pasang ke profil</string>
+    <string name="pref_install_profile_current">Profil saat ini</string>
+    <string name="pref_install_profile_work">Profil kerja</string>
+    <string name="pref_install_profile_all">Semua profil</string>
 </resources>

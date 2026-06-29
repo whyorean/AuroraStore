@@ -587,4 +587,8 @@
         <item quantity="many">%1$d de favoritos</item>
         <item quantity="other">%1$d favoritos</item>
     </plurals>
+    <string name="pref_install_profile_title">Instalar no perfil</string>
+    <string name="pref_install_profile_current">Perfil atual</string>
+    <string name="pref_install_profile_work">Perfil de trabalho</string>
+    <string name="pref_install_profile_all">Todos os perfis</string>
 </resources>

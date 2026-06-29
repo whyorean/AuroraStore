@@ -220,4 +220,8 @@
     <string name="action_request_analysis">請求重新分析</string>
     <string name="action_home_screen">喺主畫面加個公仔</string>
     <string name="download_clear_finished">抹走搞掂嗰啲</string>
+    <string name="pref_install_profile_title">安裝到設定檔</string>
+    <string name="pref_install_profile_current">目前設定檔</string>
+    <string name="pref_install_profile_work">工作設定檔</string>
+    <string name="pref_install_profile_all">所有設定檔</string>
 </resources>

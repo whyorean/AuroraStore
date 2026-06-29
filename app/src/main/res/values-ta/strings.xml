@@ -426,4 +426,8 @@
     <string name="pref_updates_restrictions_desc">தானியங்கு புதுப்பிப்புகளுக்கான சாதன கட்டுப்பாடுகளை உள்ளமைக்கவும்.</string>
     <string name="pref_updates_restrictions_idle">சாதனம் சும்மா இருக்கும்போது</string>
     <string name="pref_updates_restrictions_battery">பேட்டரி குறைவாக இல்லாதபோது</string>
+    <string name="pref_install_profile_title">சுயவிவரத்தில் நிறுவு</string>
+    <string name="pref_install_profile_current">தற்போதைய சுயவிவரம்</string>
+    <string name="pref_install_profile_work">பணி சுயவிவரம்</string>
+    <string name="pref_install_profile_all">அனைத்து சுயவிவரங்கள்</string>
 </resources>

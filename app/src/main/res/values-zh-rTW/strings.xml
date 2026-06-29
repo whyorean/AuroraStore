@@ -476,4 +476,8 @@
     <string name="header_blacklist_others">其他</string>
     <string name="preparing_to_download">正在準備下載</string>
     <string name="verifying_downloads">正在驗證下載</string>
+    <string name="pref_install_profile_title">安裝到設定檔</string>
+    <string name="pref_install_profile_current">目前設定檔</string>
+    <string name="pref_install_profile_work">工作設定檔</string>
+    <string name="pref_install_profile_all">所有設定檔</string>
 </resources>

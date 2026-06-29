@@ -489,4 +489,8 @@
     <string name="force_restart_snack">Поновно покренути ради примењивања нових подешавања?</string>
     <string name="preparing_to_install">Припрема се за инсталацију</string>
     <string name="loading">Учитавање у току</string>
+    <string name="pref_install_profile_title">Инсталирај у профил</string>
+    <string name="pref_install_profile_current">Тренутни профил</string>
+    <string name="pref_install_profile_work">Пословни профил</string>
+    <string name="pref_install_profile_all">Сви профили</string>
 </resources>

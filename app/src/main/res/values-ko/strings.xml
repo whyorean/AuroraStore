@@ -469,4 +469,8 @@
     <string name="onboarding_gms_microg">microG는 Google Play Services에 의존하는 앱을 안드로이드 기기에서 실행할 수 있도록 재구현 방식으로 제공되는 무료 오픈소스 구현체입니다.\n\nmicroG는 앱이 Google API에 접근할 수 있도록 하여 사용자 호환성을 높이고 개인정보 보호 측면에서도 이점을 제공합니다.\n\nGoogle Mobile Services에 의존하는 앱을 실행하면 microG는 백그라운드에서 자동으로 동작합니다.</string>
     <string name="microg_privacy_policy">microG 개인정보보호 정책 읽기</string>
     <string name="microg_license_agreement">microG 라이선스 및 계약 읽기</string>
+    <string name="pref_install_profile_title">프로필에 설치</string>
+    <string name="pref_install_profile_current">현재 프로필</string>
+    <string name="pref_install_profile_work">직장 프로필</string>
+    <string name="pref_install_profile_all">모든 프로필</string>
 </resources>

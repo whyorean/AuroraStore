@@ -445,4 +445,8 @@
     <string name="action_retry">Intentar de novo</string>
     <string name="action_view_on_play">Ver na Play Store</string>
     <string name="details_data_safety_collect">Datos que a aplicación podería recopilar</string>
+    <string name="pref_install_profile_title">Instalar no perfil</string>
+    <string name="pref_install_profile_current">Perfil actual</string>
+    <string name="pref_install_profile_work">Perfil de traballo</string>
+    <string name="pref_install_profile_all">Todos os perfís</string>
 </resources>

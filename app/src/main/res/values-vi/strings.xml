@@ -424,4 +424,8 @@
     <plurals name="permissions_required">
         <item quantity="other">Cần có sự cho phép</item>
     </plurals>
+    <string name="pref_install_profile_title">Cài đặt vào hồ sơ</string>
+    <string name="pref_install_profile_current">Hồ sơ hiện tại</string>
+    <string name="pref_install_profile_work">Hồ sơ công việc</string>
+    <string name="pref_install_profile_all">Tất cả hồ sơ</string>
 </resources>

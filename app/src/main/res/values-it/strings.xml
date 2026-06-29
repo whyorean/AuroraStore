@@ -471,4 +471,8 @@
     <string name="action_filter_no_gms">Senza Play Services</string>
     <string name="loading">Caricamento in corso</string>
     <string name="page">Pagina <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="pref_install_profile_title">Installa nel profilo</string>
+    <string name="pref_install_profile_current">Profilo attuale</string>
+    <string name="pref_install_profile_work">Profilo di lavoro</string>
+    <string name="pref_install_profile_all">Tutti i profili</string>
 </resources>

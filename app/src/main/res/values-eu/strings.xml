@@ -558,4 +558,8 @@
     <string name="installed_filter_all">Denak</string>
     <string name="installed_updated_at">Eguneratua <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Egiaztatu</string>
+    <string name="pref_install_profile_title">Instalatu profilean</string>
+    <string name="pref_install_profile_current">Uneko profila</string>
+    <string name="pref_install_profile_work">Laneko profila</string>
+    <string name="pref_install_profile_all">Profil guztiak</string>
 </resources>

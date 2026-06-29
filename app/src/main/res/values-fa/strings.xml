@@ -292,4 +292,8 @@
     <string name="details_no_favourites">هیچ برنامه (اپلیکیشن) مورد نظر پیدا نشد</string>
     <string name="action_uninstall_success">بطور موفقانه حذف گردید</string>
     <string name="action_remove_all">همه اش را پاک کن</string>
+    <string name="pref_install_profile_title">نصب در نمایه</string>
+    <string name="pref_install_profile_current">نمایه فعلی</string>
+    <string name="pref_install_profile_work">نمایه کاری</string>
+    <string name="pref_install_profile_all">همه نمایه‌ها</string>
 </resources>

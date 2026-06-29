@@ -438,4 +438,8 @@
     <string name="details_data_safety_share_none">Udvikleren siger, at denne app ikke deler brugerdata med andre virksomheder eller organisationer.</string>
     <string name="exodus_tracker_desc">Denne version af appen kan stadig indeholde flere trackere, der endnu ikke findes i Exodus Privacys database.</string>
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> kendt(e) tracker(e) fundet i <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="pref_install_profile_title">Installér i profil</string>
+    <string name="pref_install_profile_current">Nuværende profil</string>
+    <string name="pref_install_profile_work">Arbejdsprofil</string>
+    <string name="pref_install_profile_all">Alle profiler</string>
 </resources>

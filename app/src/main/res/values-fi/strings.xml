@@ -476,4 +476,8 @@
     <string name="header_blacklist_others">Muut</string>
     <string name="preparing_to_download">Valmistaudutaan lataamaan</string>
     <string name="verifying_downloads">Latauksia varmistetaan</string>
+    <string name="pref_install_profile_title">Asenna profiiliin</string>
+    <string name="pref_install_profile_current">Nykyinen profiili</string>
+    <string name="pref_install_profile_work">Työprofiili</string>
+    <string name="pref_install_profile_all">Kaikki profiilit</string>
 </resources>

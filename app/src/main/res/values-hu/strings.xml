@@ -611,4 +611,8 @@
         <item quantity="one">%1$d fiók frissítése sikertelen</item>
         <item quantity="other">%1$d fiók frissítése sikertelen</item>
     </plurals>
+    <string name="pref_install_profile_title">Telepítés profilba</string>
+    <string name="pref_install_profile_current">Jelenlegi profil</string>
+    <string name="pref_install_profile_work">Munkahelyi profil</string>
+    <string name="pref_install_profile_all">Összes profil</string>
 </resources>

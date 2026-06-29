@@ -623,4 +623,8 @@
         <item quantity="many">Nepodařilo se aktualizovat %1$d účtů</item>
         <item quantity="other">Nepodařilo se aktualizovat %1$d účtů</item>
     </plurals>
+    <string name="pref_install_profile_title">Instalovat do profilu</string>
+    <string name="pref_install_profile_current">Aktuální profil</string>
+    <string name="pref_install_profile_work">Pracovní profil</string>
+    <string name="pref_install_profile_all">Všechny profily</string>
 </resources>

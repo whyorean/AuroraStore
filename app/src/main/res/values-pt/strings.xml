@@ -525,4 +525,8 @@
     <string name="installed_filter_all">Tudo</string>
     <string name="installed_updated_at">Atualizado em <xliff:g id="when">%1$s</xliff:g></string>
     <string name="action_check">Conferir</string>
+    <string name="pref_install_profile_title">Instalar no perfil</string>
+    <string name="pref_install_profile_current">Perfil atual</string>
+    <string name="pref_install_profile_work">Perfil de trabalho</string>
+    <string name="pref_install_profile_all">Todos os perfis</string>
 </resources>

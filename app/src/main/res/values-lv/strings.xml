@@ -504,4 +504,8 @@
     <string name="notification_group_alerts">Brīdinājumi</string>
     <string name="pref_self_update">Pašatjaunināšana</string>
     <string name="pref_self_update_desc">Piedāvāt jaunus Aurora Store būvējumus atjauninājumu cilnē.</string>
+    <string name="pref_install_profile_title">Instalēt profilā</string>
+    <string name="pref_install_profile_current">Pašreizējais profils</string>
+    <string name="pref_install_profile_work">Darba profils</string>
+    <string name="pref_install_profile_all">Visi profili</string>
 </resources>

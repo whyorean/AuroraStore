@@ -320,4 +320,8 @@
     <string name="force_restart_title">යළි අරඹන්න</string>
     <string name="action_logout_confirmation_message">ඔබට නික්මීමට වුවමනාද?</string>
     <string name="action_logout_confirmation_title">නික්මෙනවාද?</string>
+    <string name="pref_install_profile_title">පැතිකඩට ස්ථාපනය කරන්න</string>
+    <string name="pref_install_profile_current">වත්මන් පැතිකඩ</string>
+    <string name="pref_install_profile_work">කාර්යාල පැතිකඩ</string>
+    <string name="pref_install_profile_all">සියලු පැතිකඩ</string>
 </resources>

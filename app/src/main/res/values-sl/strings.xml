@@ -425,4 +425,8 @@
     <string name="pref_updates_restrictions_metered">Samo na nemerjenih omrežjih</string>
     <string name="pref_updates_restrictions_idle">Ko je naprava v pripravljenosti</string>
     <string name="pref_updates_restrictions_battery">Ko napolnjenost baterije ni nizka</string>
+    <string name="pref_install_profile_title">Namesti v profil</string>
+    <string name="pref_install_profile_current">Trenutni profil</string>
+    <string name="pref_install_profile_work">Delovni profil</string>
+    <string name="pref_install_profile_all">Vsi profili</string>
 </resources>

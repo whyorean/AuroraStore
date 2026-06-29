@@ -456,4 +456,8 @@
     <string name="select_app_for_details">Ətraflı məlumat üçün tətbiq seç</string>
     <string name="action_filter_no_ads">Reklam yoxdur</string>
     <string name="action_filter_no_gms">play xidmətləri yoxdur</string>
+    <string name="pref_install_profile_title">Profilə quraşdır</string>
+    <string name="pref_install_profile_current">Cari profil</string>
+    <string name="pref_install_profile_work">İş profili</string>
+    <string name="pref_install_profile_all">Bütün profillər</string>
 </resources>
