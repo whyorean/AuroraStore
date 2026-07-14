@@ -473,4 +473,11 @@
     <string name="pref_install_profile_current">현재 프로필</string>
     <string name="pref_install_profile_work">직장 프로필</string>
     <string name="pref_install_profile_all">모든 프로필</string>
+    <string name="account_set_default">기본값으로 설정</string>
+    <string name="account_default">기본값</string>
+    <string name="account_remove">제거</string>
+    <string name="account_remove_title">계정을 제거할까요?</string>
+    <string name="account_adding">계정 추가 중…</string>
+    <string name="account_refreshing">계정 새로 고치는 중…</string>
+    <string name="account_switching">계정 전환 중…</string>
 </resources>

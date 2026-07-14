@@ -587,4 +587,32 @@
     <string name="pref_install_profile_current">Praegune profiil</string>
     <string name="pref_install_profile_work">Tööprofiil</string>
     <string name="pref_install_profile_all">Kõik profiilid</string>
+    <string name="account_set_default">Määra vaikimisi väärtuseks</string>
+    <string name="account_default">Vaikimisi</string>
+    <string name="account_remove">Eemalda</string>
+    <string name="account_remove_title">Kas eemaldad kasutajakonto?</string>
+    <string name="account_remove_message">Kas eemaldad %1$s konto Aurora rakendustepoest?</string>
+    <string name="account_remove_last_message">See on sinu ainus kasutajakonto. Selle eemaldamisel logitakse sind välja ja sa ei saa Aurora rakendustepoodi kuni uuesti sisselogimiseni kasutada.</string>
+    <string name="account_add">Lisa kasutajakonto</string>
+    <string name="account_add_device">Seadme kasutajakontod</string>
+    <string name="account_add_google">Logi sisse Google\'i kasutajakontoga</string>
+    <string name="account_add_anonymous">Lisa anonüümne kasutajakonto</string>
+    <string name="account_set_default_title">Kas lülitad kasutama vaikimisi kontot?</string>
+    <string name="account_set_default_message">Aurora rakendustepood käivitub uuesti ja võtab kasutusele vaikimisi konto.</string>
+    <string name="account_switching">Vahetan kasutajakontot…</string>
+    <string name="account_adding">Lisan kasutajakontot…</string>
+    <string name="account_refresh_all">Värskenda kõik kasutajakontod</string>
+    <string name="account_refreshing">Värskendan kasutajakontosid…</string>
+    <string name="account_refresh_done">Kõik kasutajakontod on värskendatud</string>
+    <string name="account_switch_failed">Selle kasutajakonto värskendamine ei õnnestunud, seega vaikimisi väärtus jäi muutmata.</string>
+    <string name="account_add_failed">Selle kasutajakonto lisamine ei õnnestunud. Palun proovi uuesti.</string>
+    <string name="action_switch_account">Vaheta kasutajakontot</string>
+    <plurals name="account_count">
+        <item quantity="one">Kokku %1$d kasutajakonto</item>
+        <item quantity="other">Kokku %1$d kasutajakontot</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">%1$d kasutajakonto värskendamine ei õnnestunud</item>
+        <item quantity="other">%1$d kasutajakonto värskendamine ei õnnestunud</item>
+    </plurals>
 </resources>

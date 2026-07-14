@@ -591,4 +591,34 @@
     <string name="pref_install_profile_current">Perfil atual</string>
     <string name="pref_install_profile_work">Perfil de trabalho</string>
     <string name="pref_install_profile_all">Todos os perfis</string>
+    <string name="account_set_default">Configurar como padrão</string>
+    <string name="account_default">Padrão</string>
+    <string name="account_remove">Remover</string>
+    <string name="account_remove_last_message">Esta é a sua única conta. Removê-la te desconectará, e não poderá usar a Aurora Store até se conectar novamente.</string>
+    <string name="account_add">Adicionar conta</string>
+    <string name="account_add_device">Contas do dispositivo</string>
+    <string name="account_add_google">Conectar-se com Google</string>
+    <string name="account_add_anonymous">Adicionar conta anônima</string>
+    <string name="account_set_default_title">Trocar a conta padrão?</string>
+    <string name="account_set_default_message">A Aurora Store reiniciará para usar a nova conta padrão.</string>
+    <string name="account_switching">Trocando de conta…</string>
+    <string name="account_adding">Adicionando conta…</string>
+    <string name="account_refresh_all">Recarregar todas as contas</string>
+    <string name="account_refreshing">Recarregando contas…</string>
+    <string name="account_refresh_done">Todas as contas foram recarregadas</string>
+    <string name="account_switch_failed">Não foi possível recarregar aquela conta, então a padrão não mudou.</string>
+    <string name="account_add_failed">Não foi possível adicionar aquela conta. Tente novamente.</string>
+    <string name="action_switch_account">Trocar de conta</string>
+    <plurals name="account_count">
+        <item quantity="one">Total de %1$d conta</item>
+        <item quantity="many">Total de %1$d de contas</item>
+        <item quantity="other">Total de %1$d contas</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Não foi possível recarregar %1$d conta</item>
+        <item quantity="many">Não foi possível recarregar %1$d de contas</item>
+        <item quantity="other">Não foi possível recarregar %1$d contas</item>
+    </plurals>
+    <string name="account_remove_title">Remover conta?</string>
+    <string name="account_remove_message">Remover %1$s da Aurora Store?</string>
 </resources>

@@ -449,4 +449,9 @@
     <string name="pref_install_profile_current">Perfil actual</string>
     <string name="pref_install_profile_work">Perfil de traballo</string>
     <string name="pref_install_profile_all">Todos os perfís</string>
+    <string name="account_set_default">Establecer como predeterminada</string>
+    <string name="account_default">Predeterminada</string>
+    <string name="account_remove">Eliminar</string>
+    <string name="account_remove_title">Eliminar conta?</string>
+    <string name="account_remove_message">Eliminar %1$s da Aurora Store?</string>
 </resources>

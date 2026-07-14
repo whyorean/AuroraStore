@@ -167,7 +167,7 @@
     <string name="device_miui_title">MIUI கண்டறியப்பட்டது!</string>
     <string name="device_miui_subtitle">MIUI மேம்படுத்தல்கள் காரணமாக அமர்வு நிறுவி பயன்பாடுகளை நிறுவ முடியாது.</string>
     <string name="dialog_title_self_update">புதிய புதுப்பிப்பு கிடைக்கிறது</string>
-    <string name="dialog_desc_native_split">நேட்டிவ் இன்ஸ்டாலர் மூலம் தொகுக்கப்பட்ட (பிளவு) பயன்பாடுகளை நிறுவ முடியாது. உங்கள் நிறுவியை அமர்வு, சேவைகள் அல்லது ரூட்டிற்கு மாற்றவும்.</string>
+    <string name="dialog_desc_native_split">நேட்டிவ் இன்ச்டாலர் மூலம் தொகுக்கப்பட்ட (பிரிக்கப்பட்ட) பயன்பாடுகளை நிறுவ முடியாது. உங்கள் நிறுவியை அமர்வு, சேவைகள் அல்லது ரூட்டிற்கு மாற்றவும்.</string>
     <string name="onboarding_permission_select">அரோரா ஸ்டோருக்கு பின்வரும் அனுமதிகள் தேவை</string>
     <string name="onboarding_title_installer">நிறுவி</string>
     <string name="onboarding_title_permissions">அனுமதிகள்</string>
@@ -178,7 +178,7 @@
     <string name="onboarding_permission_installer">நிறுவி அனுமதி</string>
     <string name="onboarding_permission_installer_desc">அரோரா ஸ்டோரிலிருந்து செயலிகள் நிறுவ அனுமதி</string>
     <string name="pref_common_extra">கூடுதல்</string>
-    <string name="pref_filter_fdroid_summary">எஃப்-டிராய்டிலிருந்து பதிவிறக்கம் செய்யப்பட்ட அல்லது நிறுவப்பட்ட பயன்பாடுகளுக்கான புதுப்பிப்புகளை சரிபார்க்க வேண்டாம்</string>
+    <string name="pref_filter_fdroid_summary">F-Droid இலிருந்து நிறுவப்பட்ட பயன்பாடுகளுக்கான புதுப்பிப்புகளைச் சரிபார்க்க வேண்டாம்</string>
     <string name="pref_install_delete_summary">பதிவிறக்கம் செய்யப்பட்ட APK கள் நிறுவிய உடனேயே நீக்கப்படும்</string>
     <string name="pref_install_delete_title">APK நிறுவலுக்குப் பின் அழி</string>
     <string name="pref_install_mode_native">சொந்த நிறுவி (நீக்கப்பட்டது)</string>
@@ -242,9 +242,9 @@
     <string name="details_ratings_title_hint">மதிப்பாய்வு தலைப்பு</string>
     <string name="onboarding_permission_doze_desc">பயன்பாடுகளை பின்னணியில் பதிவிறக்கம் செய்து புதுப்பிக்க அரோரா கடையை அனுமதிக்கவும்</string>
     <string name="pref_install_mode_shizuku">சிசுகு உறுப்பினர்கள் கோ</string>
-    <string name="pref_updates_incompatible_desc">நிறுவத் தவறிய பொருந்தாத அல்லது முடக்கப்பட்ட பயன்பாடுகளுக்கான புதுப்பிப்புகளைக் காட்டு</string>
-    <string name="pref_aurora_only">அரோரா கடை பயன்பாடுகள் மட்டுமே</string>
-    <string name="pref_aurora_only_desc">அரோரா கடை நிறுவிய பயன்பாடுகளுக்கான புதுப்பிப்புகளை மட்டுமே சரிபார்க்கவும்</string>
+    <string name="pref_updates_incompatible_desc">பொருத்தமற்ற அல்லது முடக்கப்பட்ட பயன்பாடுகளுக்கான புதுப்பிப்புகளை நிறுவுவதில் தோல்வியடையும்.</string>
+    <string name="pref_aurora_only">வடிப்பி apps இருந்து மற்றொன்று sources.</string>
+    <string name="pref_aurora_only_desc">Do not சரிபார் க்கு updates க்கு apps installed இருந்து மூலங்கள் outside அரோரா Store</string>
     <string name="session_login">உங்கள் Google Play கணக்கில் உள்நுழைக</string>
     <string name="title_about">பற்றி</string>
     <string name="title_favourites_manager">பிடித்த பயன்பாடுகள்</string>
@@ -253,16 +253,16 @@
     <string name="toast_proxy_success">பதிலாள் வெற்றிகரமாக அமைக்கப்படுகிறது</string>
     <string name="item_optional">விரும்பினால்</string>
     <string name="permissions_denied">தேவையான அனுமதிகள் மறுக்கப்பட்டன. நடவடிக்கையைத் தொடர தயவுசெய்து அவற்றை வழங்கவும்</string>
-    <string name="notification_updates_available_desc_2">&lt;xliff: g ஐடி = \"app_one_name\"&gt;%1$s &lt;/xliff: g&gt; மற்றும் &lt;xliff: g ஐடி = \"app_two_name\"&gt;%2$s &lt;/xliff: g&gt;</string>
+    <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> மற்றும் <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> மற்றும் <xliff:g id="app_three_name">%3$s</xliff:g></string>
-    <string name="downloading_dep">&lt;Xliff: g ஐடி = \"app\"&gt;%1$s &lt;/xliff: g&gt; க்கான கூடுதல் கோப்புகளைப் பதிவிறக்குகிறது</string>
-    <string name="notification_updates_available_1">&lt;xliff: g ஐடி = \"apps_count\"&gt;%1$d &lt;/xliff: g&gt; புதுப்பிப்பு கிடைக்கிறது</string>
-    <string name="notification_updates_available_desc_1">&lt;Xliff: g ஐடி = \"app_one_name\"&gt;%1$s &lt;/xliff: g&gt; இன் புதிய பதிப்பு கிடைக்கிறது</string>
+    <string name="downloading_dep"><xliff:g id="app">%1$s</xliff:g> க்கான கூடுதல் கோப்புகளைப் பதிவிறக்குகிறது</string>
+    <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> புதுப்பிப்பு கிடைக்கிறது</string>
+    <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name">%1$s</xliff:g> இன் புதிய பதிப்பு கிடைக்கிறது</string>
     <string name="pref_updates_auto_notify">கிடைக்கக்கூடிய புதுப்பிப்புகளுக்கு சரிபார்த்து அறிவிக்கவும்</string>
-    <string name="pref_updates_check_frequency_desc">தானி மற்றும் தன்வய புதுப்பிப்புகளுக்கான இடைவெளிகளை மணிநேரத்தில் உள்ளமை.</string>
+    <string name="pref_updates_check_frequency_desc">ஆப்ச் புதுப்பிப்புகளை அரோரா எவ்வளவு அடிக்கடி சரிபார்க்கிறது.</string>
     <string name="pref_updates_auto_desc">தானி புதுப்பிப்புகளின் நடத்தை உள்ளமை</string>
     <string name="failed_to_fetch_report">தனியுரிமை அறிக்கையைப் பெறுவதில் தோல்வி</string>
-    <string name="login_rate_limited">அச்சச்சோ, நீங்கள் விகிதம் வரையறுக்கப்பட்டவர்</string>
+    <string name="login_rate_limited">நீங்கள் விகிதம் வரையறுக்கப்பட்டவர்</string>
     <string name="failed_to_generate_session">அமர்வை உருவாக்க முடியவில்லை</string>
     <string name="check_connectivity">இணைய இணைப்பை சரிபார்க்கவும்</string>
     <string name="app_language">பயன்பாட்டு மொழி</string>
@@ -274,11 +274,11 @@
     <string name="services_installer_subtitle">பின்னணி நிறுவல்களுக்கான நிறுவி</string>
     <string name="services_installer_desc">அரோரா சேவைகள் ஒரு சலுகை பெற்ற-அமைப்பு பயன்பாடாக நிறுவப்பட வேண்டும்</string>
     <string name="am_installer_subtitle">முழு அம்சமான திறந்த மூல தொகுப்பு மேலாளர்</string>
-    <string name="am_installer_desc">பயன்பாட்டு மேலாளர் தேவை, MIUI தேர்வுமுறை இயக்கத்தில் இருக்கும்போது நிறுவ ADB/ROOT பயன்முறை தேவை</string>
+    <string name="am_installer_desc">பயன்பாட்டு மேலாளர் தேவை, miui தேர்வுமுறை இயக்கத்தில் இருக்கும்போது நிறுவ adb/root பயன்முறை தேவை</string>
     <string name="shizuku_installer_desc">சிசுகு அல்லது சூய் தேவை, அமைவு மற்றும் இசைவு வழங்கப்பட வேண்டும்</string>
     <string name="source_code_subtitle">உள்ளே என்ன இருக்கிறது என்பதைக் கண்டறியவும்</string>
     <string name="privacy_policy_title">தனியுரிமைக் கொள்கை</string>
-    <string name="made_with_love">&lt;Xliff உடன் தயாரிக்கப்பட்டது: g ஐடி = \"heart_emoji\"&gt;%1$s &lt;/xliff: g&gt; இந்தியாவில்</string>
+    <string name="made_with_love"><xliff:g id="heart_emoji">%1$s</xliff:g> உடன் இந்தியாவில் தயாரிக்கப்பட்டது</string>
     <string name="checking_updates">புதுப்பிப்புகளைச் சரிபார்க்கிறது</string>
     <string name="force_restart_title">அரோரா கடையை மறுதொடக்கம் செய்யுங்கள்</string>
     <string name="force_restart_summary">புதிதாக மாற்றப்பட்ட அமைப்புகளைப் பயன்படுத்த அரோரா கடையை மறுதொடக்கம் செய்ய வேண்டும்</string>
@@ -288,17 +288,17 @@
     <string name="status_unavailable">கிடைக்கவில்லை</string>
     <string name="authentication_required_title">ஏற்பு தேவை</string>
     <string name="available_spoof">கிடைக்கிறது</string>
-    <string name="about_aurora_store_summary">அதிகாரப்பூர்வ கூகிள் பிளே ச்டோரிலிருந்து பயன்பாடுகளைத் தேடவும் பதிவிறக்கவும் அரோரா கடை உங்களுக்கு உதவுகிறது. பயன்பாட்டு விளக்கங்கள், திரை சாட்கள், புதுப்பிப்புகள், பிற பயனர்களின் கருத்துகளை நீங்கள் சரிபார்க்கலாம் மற்றும் Google Play இலிருந்து உங்கள் சாதனத்திற்கு நேரடியாக APK ஐ பதிவிறக்கம் செய்யலாம். அரோரா ச்டோரைப் பயன்படுத்த, நீங்கள் ஒரு Google Play கணக்கை வைத்திருக்க வேண்டும், மேலும் நீங்கள் முதலில் அரோரா கடையைத் திறந்து உள்ளமைக்கும்போது உங்கள் Google Play கணக்கில் உள்நுழைக. \n\nபாரம்பரிய ஆப் ச்டோரைப் போலன்றி, அரோரா கடை எந்த பயன்பாடுகளையும் சொந்தமாகவோ, உரிமம் பெறவோ அல்லது விநியோகிக்கவோ இல்லை. அரோரா கடையில் உள்ள அனைத்து பயன்பாடுகள், பயன்பாட்டு விளக்கங்கள், திரை சாட்கள் மற்றும் பிற உள்ளடக்கங்கள் நேரடியாக அணுகப்படுகின்றன, பதிவிறக்கம் செய்யப்படுகின்றன மற்றும்/அல்லது கூகிள் பிளேயில் இருந்து காட்டப்படுகின்றன. அரோரா கடை ஒரு கதவு அல்லது உலாவி போன்றது, உங்கள் Google Play கணக்கில் உள்நுழைந்து Google Play இலிருந்து பயன்பாடுகளைக் கண்டறிய உங்களை அனுமதிக்கிறது. \n\nஅரோரா ச்டோருக்கு கூகிள், கூகிள் பிளே, அரோரா கடை அல்லது எந்த பயன்பாட்டு உருவாக்குபவர்கள் மூலம் பதிவிறக்கம் செய்யப்பட்ட எந்த பயன்பாடுகளும் ஒப்புதல், ச்பான்சர்சிப் அல்லது ஏற்பு இல்லை என்பதை நினைவில் கொள்க; அரோரா கடைக்கு அவர்களுடன் எந்த தொடர்பும், ஒத்துழைப்பும் அல்லது தொடர்பும் இல்லை.</string>
+    <string name="about_aurora_store_summary">அரோரா கடை அதிகாரப்பூர்வ கூகுள் ப்ளே ச்டோரிலிருந்து பயன்பாடுகளைத் தேடவும் பதிவிறக்கவும் உதவுகிறது. ஆப்ச் விளக்கங்கள், ச்கிரீன்சாட்கள், புதுப்பிப்புகள், பிற பயனர்களின் கருத்துகள் ஆகியவற்றைச் சரிபார்த்து, Google Play இலிருந்து நேரடியாக உங்கள் சாதனத்தில் APKஐப் பதிவிறக்கலாம். அரோரா ச்டோரைப் பயன்படுத்த, நீங்கள் முதலில் அரோரா ச்டோரைத் திறந்து உள்ளமைக்கும்போது, Google Play கணக்கைப் பயன்படுத்தி உள்நுழையவும். \n\nபாரம்பரிய ஆப் கடை போலல்லாமல், அரோரா கடை எந்த ஆப்சையும் சொந்தமாகவோ, உரிமம் பெறவோ அல்லது விநியோகிக்கவோ இல்லை. அரோரா ச்டோரில் உள்ள அனைத்து ஆப்ச், ஆப்ச் விளக்கங்கள், ச்கிரீன்சாட்கள் மற்றும் பிற உள்ளடக்கம் நேரடியாக அணுகப்பட்டு, பதிவிறக்கம் செய்யப்படுகின்றன மற்றும்/அல்லது Google Play இலிருந்து காட்டப்படும். அரோரா கடை ஒரு கதவு அல்லது உலாவியைப் போலவே செயல்படுகிறது, இது உங்கள் Google Play கணக்கில் உள்நுழைந்து Google Play இலிருந்து பயன்பாடுகளைக் கண்டறிய அனுமதிக்கிறது. \n\nஅரோரா ச்டோருக்கு கூகுள், கூகுள் பிளே, அரோரா கடை மூலம் பதிவிறக்கம் செய்யப்பட்ட ஆப்ச் அல்லது எந்த ஆப் டெவலப்பர்களிடமிருந்தும் எந்த ஒப்புதல், ச்பான்சர்சிப் அல்லது ஏற்பு இல்லை என்பதை நினைவில் கொள்ளவும். அரோரா ச்டோருக்கு அவர்களுடன் எந்த தொடர்பும், ஒத்துழைப்பு அல்லது தொடர்பும் இல்லை.</string>
     <string name="title_more">மேலும்</string>
     <string name="pref_clear_device_owner_desc">பயன்பாட்டை அமைதியாக நிறுவ அமர்வு நிறுவியின் அனுமதியை இது ரத்து செய்யும். சாதன உரிமையை அழிக்க வேண்டுமா?</string>
     <string name="pref_dispenser_title">விநியோகிப்பாளர்களை நிர்வகிக்கவும்</string>
     <string name="no_dispensers_available">விநியோகிப்பாளர்கள் எதுவும் கிடைக்கவில்லை</string>
     <string name="add_dispenser_summary">அரோரா கடையில் ஒரு கிள்ளாக்கு டிச்பென்சரைச் சேர்க்கவும். கிள்ளாக்கு டிச்பென்சர்கள் அநாமதேயமாக உள்நுழைவதற்காக அரோரா கடைக்கு கணக்கு நற்சான்றிதழ்களை வழங்குகிறார்கள்.</string>
-    <string name="remove_dispenser_summary">டிச்பென்சரை அகற்ற விரும்புகிறீர்களா \"&lt;xliff: g ஐடி =\" முகவரி \"&gt;%1$s &lt;/xliff: g&gt;\"?</string>
+    <string name="remove_dispenser_summary">டிச்பென்சரை அகற்ற விரும்புகிறீர்களா \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="add">கூட்டு</string>
     <string name="toast_fav_import_failed">பிடித்தவைகளை இறக்குமதி செய்யத் தவறிவிட்டது!</string>
     <string name="toast_fav_import_success">பிடித்தவை இறக்குமதி!</string>
-    <string name="export_app_summary_fail">பயன்பாட்டு மூட்டை ஏற்றுமதி செய்வதில் தோல்வி</string>
+    <string name="export_app_summary_fail">பயன்பாட்டுத் தொகுப்பை ஏற்றுமதி செய்ய முடியவில்லை</string>
     <string name="action_logout_confirmation_message">நீங்கள் நிச்சயமாக வெளியேற விரும்புகிறீர்களா?</string>
     <string name="check_updates">புதுப்பிப்புகளை சரிபார்க்கவும்</string>
     <string name="source_code_title">மூலக் குறியீடு</string>
@@ -326,7 +326,7 @@
     <string name="onboarding_permission_doze">பின்னணி பதிவிறக்கங்கள்</string>
     <string name="pref_vending_version_device">இயல்புநிலை (சாதன கட்டமைப்பிலிருந்து)</string>
     <string name="pref_network_proxy_url">பதிலாள் முகவரி</string>
-    <string name="session_good">ஓ! எல்லாம் நல்லது.</string>
+    <string name="session_good">அனைத்தும் good.</string>
     <string name="session_verifying">அமர்வு சரிபார்க்கிறது</string>
     <string name="session_verifying_google">கூகிள் அமர்வைச் சரிபார்க்கிறது</string>
     <string name="title_search_results">தேடல் முடிவுகள்</string>
@@ -334,22 +334,22 @@
     <string name="pref_updates_check_frequency">தானியங்கி புதுப்பிப்புகள் அதிர்வெண்</string>
     <string name="pref_updates_auto">தானியங்கு புதுப்பிப்புகள்</string>
     <string name="pref_updates_auto_install">கிடைக்கக்கூடிய புதுப்பிப்புகளை சரிபார்த்து நிறுவவும்</string>
-    <string name="failed_generating_session">அமர்வை உருவாக்குவதில் தோல்வி, பிழைக் குறியீடு: &lt;xliff: g ஐடி = \"status_code\"&gt;%1$d &lt;/xliff: g&gt;</string>
+    <string name="failed_generating_session">அமர்வை உருவாக்குவதில் தோல்வி, பிழைக் குறியீடு: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="status_downloading">பதிவிறக்குகிறது</string>
     <string name="session_login_failed_google">கூகிள் வழியாக உள்நுழைய முடியவில்லை</string>
     <string name="session_scrapped">கடைசி அமர்வு அகற்றப்பட்டது</string>
-    <string name="pref_updates_incompatible">பொருந்தாத புதுப்பிப்புகள்</string>
+    <string name="pref_updates_incompatible">தோல்வியடையக்கூடிய புதுப்பிப்புகளைக் காட்டு</string>
     <string name="pref_dispenser_summary">அநாமதேய உள்நுழைவுகளுக்கு கிள்ளாக்கு விநியோகிப்பாளர்களைக் காணவும் நிர்வகிக்கவும்</string>
     <string name="add_dispenser_title">டிச்பென்சரைச் சேர்க்கவும்</string>
     <string name="add_dispenser_hint">டிச்பென்சர் முகவரி</string>
-    <string name="remove_dispenser_title">டிச்பென்சரை அகற்று</string>
+    <string name="remove_dispenser_title">டிச்பென்சரை அகற்றவா?</string>
     <string name="toast_fav_export_failed">பிடித்தவைகளை ஏற்றுமதி செய்வதில் தோல்வி!</string>
     <string name="authentication_required_unarchive">பயன்பாட்டைக் குறைக்க உங்கள் Google Play கணக்கில் உள்நுழைக!</string>
     <string name="default_spoof">இயல்புநிலை</string>
     <string name="app_links_desc">உதவி இணைப்புகளைத் திறக்க அரோரா கடையை அனுமதிக்கவும்</string>
     <string name="action_favourite">பிடித்த</string>
     <string name="search_hint">பயன்பாடுகள் மற்றும் விளையாட்டுகளைத் தேடு</string>
-    <string name="spoof_property">&lt;xliff: g ஐடி = \"உற்பத்தியாளர்\"&gt;%1$s &lt;/xliff: g&gt; • பநிஇ &lt;xliff: g ஐடி = \"api\"&gt;%2$s &lt;/xliff: g&gt;</string>
+    <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • பநிஇ <xliff:g id="api">%2$s</xliff:g></string>
     <string name="pref_updates_auto_off">பயன்பாடுகளை தானாக புதுப்பிக்க வேண்டாம்</string>
     <string name="about_aurora_store_title">அரோரா கடை பற்றி</string>
     <string name="title_search_suggestion">ஆலோசனையைத் தேடுங்கள்</string>
@@ -357,7 +357,7 @@
     <string name="update_available">புதுப்பிப்பு கிடைக்கிறது</string>
     <string name="updates_available">புதுப்பிப்புகள் கிடைக்கின்றன</string>
     <string name="notification_channel_updates">அறிவிப்புகளைப் புதுப்பி</string>
-    <string name="notification_updates_available">&lt;xliff: g ஐடி = \"apps_count\"&gt;%1$d &lt;/xliff: g&gt; புதுப்பிப்புகள் கிடைக்கின்றன</string>
+    <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> புதுப்பிப்புகள் கிடைக்கின்றன</string>
     <string name="root_installer_subtitle">ரூட் அனுமதிகளைப் பயன்படுத்தி செல் அடிப்படையிலான நிறுவி</string>
     <string name="native_installer_desc">ஆண்ட்ராய்டு 4.4 க்கு கீழே இயங்கும் சாதனங்களுக்கு மிகவும் பொருத்தமானது</string>
     <string name="shizuku_installer_subtitle">கணினி பநிஇ களை நேரடியாக ADB/ROOT சலுகைகளுடன் பயன்படுத்துதல்</string>
@@ -389,7 +389,7 @@
     <string name="notification_channel_export">பயன்பாட்டு ஏற்றுமதி அறிவிப்பு</string>
     <string name="notification_channel_install">அறிவிப்பை நிறுவவும்</string>
     <string name="notification_channel_downloads">பதிவிறக்க அறிவிப்பு</string>
-    <string name="pref_network_microg_login_title">கணக்குகளில் உள்நுழைய மைக்ரோகைப் பயன்படுத்தவும்</string>
+    <string name="pref_network_microg_login_title">கணக்குகளில் உள்நுழைய மைக்ரோசியைப் பயன்படுத்தவும்</string>
     <string name="pref_updates_restrictions_metered">அளவிடப்படாத நெட்வொர்க்குகளில் மட்டுமே</string>
     <string name="action_remove_all">அனைத்தையும் அகற்று</string>
     <string name="action_select_all">அனைத்தையும் தேர்ந்தெடு</string>
@@ -416,18 +416,203 @@
     <string name="details_compatibility_gms_not_required_title">கூகிள் பிளே சேவைகள் இல்லாமல் வேலை செய்கிறது</string>
     <string name="details_compatibility_gms_not_required_subtitle">இந்த பயன்பாடு கூகிளின் தனியுரிம நூலகம் இல்லாமல் செயல்படுகிறது. இருப்பினும், மற்ற மூன்றாம் தரப்பு நூலகங்கள் சரியாக வேலை செய்ய வேண்டும்.</string>
     <string name="details_compatibility_status_unknown">தெரியவில்லை: இன்னும் சரிபார்க்கப்படவில்லை</string>
-    <string name="pref_network_microg_login_desc">எளிமையான உள்நுழைவு ஓட்டத்திற்கு Google கணக்குகளில் கையொப்பமிடும்போது மைக்ரோகைப் பயன்படுத்தி அங்கீகரிக்கவும்.</string>
+    <string name="pref_network_microg_login_desc">எளிமையான உள்நுழைவு ஓட்டத்திற்காக Google கணக்குகளில் உள்நுழையும்போது microGஐப் பயன்படுத்தி அங்கீகரிக்கவும்</string>
     <string name="set">கணம்</string>
     <string name="disable">முடக்கு</string>
     <string name="toast_proxy_disabled">பதிலாள் வெற்றிகரமாக முடக்கப்பட்டது</string>
     <string name="pref_network_proxy_desc">பதிலாள் உள்ளமைவைக் காணவும் நிர்வகிக்கவும்</string>
-    <string name="installed_apps_size">&lt;xliff: g அடையாளம் = \"install_apps_size\"&gt;%1$d &lt;/xliff: g&gt; பயன்பாடுகள் நிறுவப்பட்டுள்ளன</string>
+    <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> பயன்பாடுகள் நிறுவப்பட்டுள்ளன</string>
     <string name="pref_updates_restrictions_title">தானியங்கி புதுப்பிப்புகள் கட்டுப்பாடுகள்</string>
-    <string name="pref_updates_restrictions_desc">தானியங்கு புதுப்பிப்புகளுக்கான சாதன கட்டுப்பாடுகளை உள்ளமைக்கவும்.</string>
+    <string name="pref_updates_restrictions_desc">தானியங்கு புதுப்பிப்புகளுக்கான சாதனக் கட்டுப்பாடுகளை உள்ளமைக்கவும்</string>
     <string name="pref_updates_restrictions_idle">சாதனம் சும்மா இருக்கும்போது</string>
     <string name="pref_updates_restrictions_battery">பேட்டரி குறைவாக இல்லாதபோது</string>
     <string name="pref_install_profile_title">சுயவிவரத்தில் நிறுவு</string>
     <string name="pref_install_profile_current">தற்போதைய சுயவிவரம்</string>
     <string name="pref_install_profile_work">பணி சுயவிவரம்</string>
     <string name="pref_install_profile_all">அனைத்து சுயவிவரங்கள்</string>
+    <string name="account_set_default">இயல்புநிலையாக அமைக்கவும்</string>
+    <string name="account_default">இயல்புநிலை</string>
+    <string name="account_remove">அகற்று</string>
+    <string name="account_remove_title">கணக்கை அகற்றவா?</string>
+    <string name="account_remove_message">அரோரா ச்டோரில் இருந்து %1$sஐ அகற்றவா?</string>
+    <string name="account_remove_last_message">இது உங்கள் கணக்கு மட்டுமே. அதை அகற்றுவது உங்களை வெளியேற்றும், மேலும் நீங்கள் மீண்டும் உள்நுழையும் வரை அரோரா ச்டோரைப் பயன்படுத்த முடியாது.</string>
+    <string name="account_add">கணக்கைச் சேர்க்கவும்</string>
+    <string name="account_add_device">சாதன கணக்குகள்</string>
+    <string name="account_add_google">Google மூலம் உள்நுழையவும்</string>
+    <string name="account_add_anonymous">அநாமதேய கணக்கைச் சேர்க்கவும்</string>
+    <string name="account_set_default_title">இயல்புநிலை கணக்கை மாற்றவா?</string>
+    <string name="account_set_default_message">புதிய இயல்புநிலை கணக்கைப் பயன்படுத்த அரோரா கடை மறுதொடக்கம் செய்யப்படும்.</string>
+    <string name="account_switching">கணக்கு மாறுகிறது…</string>
+    <string name="account_adding">கணக்கைச் சேர்க்கிறது…</string>
+    <string name="account_refresh_all">அனைத்து கணக்குகளையும் புதுப்பிக்கவும்</string>
+    <string name="account_refreshing">கணக்குகளைப் புதுப்பிக்கிறது…</string>
+    <string name="account_refresh_done">அனைத்து கணக்குகளும் புதுப்பிக்கப்பட்டன</string>
+    <string name="account_switch_failed">அந்தக் கணக்கைப் புதுப்பிக்க முடியவில்லை, அதனால் இயல்புநிலை மாற்றப்படவில்லை.</string>
+    <string name="account_add_failed">அந்தக் கணக்கைச் சேர்க்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="action_buy">\@ %1$s இல் வாங்கவும்</string>
+    <string name="action_install_all">அனைத்தையும் நிறுவவும்</string>
+    <string name="action_install_microG">மைக்ரோசி தொகுப்பை நிறுவவும்</string>
+    <string name="action_switch_account">கணக்கை மாற்றவும்</string>
+    <string name="action_retry">மீண்டும் முயற்சிக்கவும்</string>
+    <string name="action_view_on_play">Play Store இல் பார்க்கவும்</string>
+    <string name="details_data_safety_collect">இந்த ஆப்ச் சேகரிக்கக்கூடிய தரவு</string>
+    <string name="details_data_safety_collect_none">இந்த ஆப்ச் பயனர் தரவைச் சேகரிக்கவில்லை என்று உருவாக்குபவர் கூறுகிறார்.</string>
+    <string name="details_data_safety_shared">இந்த ஆப்ச் பகிரக்கூடிய தரவு</string>
+    <string name="details_data_safety_share_none">இந்த ஆப்ச் பயனர் தரவை பிற நிறுவனங்கள் அல்லது நிறுவனங்களுடன் பகிர்ந்து கொள்ளாது என்று உருவாக்குபவர் கூறுகிறார்.</string>
+    <string name="details_review_comment_hint">உங்கள் அனுபவத்தை விவரிக்கவும் (விரும்பினால்)</string>
+    <string name="details_review_edit">உங்கள் மதிப்பாய்வைத் திருத்தவும்</string>
+    <string name="details_review_delete">நீக்கு</string>
+    <string name="details_review_delete_title">மதிப்பாய்வை நீக்கவா?</string>
+    <string name="details_review_delete_message">உங்கள் மதிப்பீடு மற்றும் மதிப்பாய்வு Google Play இலிருந்து அகற்றப்படும்.</string>
+    <string name="details_your_review">உங்கள் விமர்சனம்</string>
+    <string name="download_failed_storage">இந்தப் பயன்பாட்டைப் பதிவிறக்க போதுமான சேமிப்பிடம் இல்லை</string>
+    <string name="exodus_tracker_desc">பயன்பாட்டின் இந்தப் பதிப்பில் எக்சோடச் தனியுரிமையின் தரவுத்தளத்தில் இதுவரை இல்லாத அதிகமான டிராக்கர்கள் இருக்கலாம்.</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> அறியப்பட்ட டிராக்கர்கள்(கள்) <xliff:g id="app_version_name">%2$s</xliff:g> இல் காணப்படுகின்றன</string>
+    <string name="installer_fallback_session">தேர்ந்தெடுக்கப்பட்ட நிறுவி கிடைக்கவில்லை, அதற்குப் பதிலாக இயல்புநிலை நிறுவியைப் பயன்படுத்தவும்.</string>
+    <string name="title_security">பாதுகாப்பு</string>
+    <string name="app_lock_title">பயன்பாட்டு பூட்டு</string>
+    <string name="app_lock_summary">அரோரா ச்டோரைத் திறக்க பயோமெட்ரிக் அல்லது ச்கிரீன்-லாக் ஏற்பு தேவை.</string>
+    <string name="app_lock_no_credential">முதலில் உங்கள் சாதனத்தில் திரைப் பூட்டை (PIN, பேட்டர்ன், கடவுச்சொல் அல்லது பயோமெட்ரிக்) அமைக்கவும்.</string>
+    <string name="app_lock_locked_message">அரோரா ச்டோரை அணுக ஏற்பு தேவை</string>
+    <string name="app_lock_unlock">திறக்கவும்</string>
+    <string name="app_lock_prompt_title">அரோரா ச்டோரைத் திறக்கவும்</string>
+    <string name="app_lock_prompt_subtitle">ஃபோன் திரைப் பூட்டு முறை, பின், கடவுச்சொல் அல்லது கைரேகையை உள்ளிடவும்</string>
+    <string name="confirm_deeplink_title">வெளிப்புற இணைப்புகளை உறுதிப்படுத்தவும்</string>
+    <string name="confirm_deeplink_summary">உங்கள் அனுமதியின்றி அரோரா கடை தொடங்குவதை விளம்பரங்களைத் தடுக்கும், இணைப்பிலிருந்து ஆப்ச் பட்டியலைத் திறப்பதற்கு முன் கேளுங்கள்.</string>
+    <string name="confirm_deeplink_sheet_title">அரோரா ச்டோரில் தொடரவா?</string>
+    <string name="confirm_deeplink_sheet_message">வெளிப்புற பயன்பாடு அரோரா ச்டோரைத் திறக்க விரும்புகிறது</string>
+    <string name="confirm_deeplink_sheet_source">%1$s இலிருந்து திறக்கப்பட்டது</string>
+    <string name="installer_microg_misconfigured">மைக்ரோசி நிறுவி பயன்பாட்டை நிறுவுவதில் தோல்வியடைந்தது, தவறான உள்ளமைவு காரணமாக இருக்கலாம்.</string>
+    <string name="notification_channel_alerts">பிழைகள் &amp; எச்சரிக்கைகள்</string>
+    <string name="notification_group_activity">பதிவிறக்கங்கள் &amp; புதுப்பிப்புகள்</string>
+    <string name="notification_group_alerts">எச்சரிக்கைகள்</string>
+    <string name="pref_install_mode_microg">மைக்ரோசி நிறுவி</string>
+    <string name="pref_self_update">தன்வய புதுப்பிப்பு</string>
+    <string name="pref_self_update_desc">புதுப்பிப்புகள் தாவலில் புதிய அரோரா கடை பில்ட்களை வழங்குங்கள்.</string>
+    <string name="pref_source_filters_title">வடிப்பி apps இருந்து மற்றொன்று மூலங்கள்</string>
+    <string name="pref_source_filters_desc_all">தவிர் every பயன்பாடு not installed by அரோரா Store</string>
+    <string name="pref_source_filters_desc_none">நிறுவிகள் விலக்கப்படவில்லை</string>
+    <string name="pref_source_filters_desc_count">%1$d நிறுவி(கள்) விலக்கப்பட்டுள்ளன</string>
+    <string name="source_filters_all">மற்ற அனைத்து நிறுவிகளையும் வடிகட்டவும்</string>
+    <string name="source_filters_installers_header">குறிப்பிட்ட நிறுவிகள்</string>
+    <string name="source_filters_installers_empty">இன்னும் நிறுவிகள் சேர்க்கப்படவில்லை</string>
+    <string name="source_filters_add">கூட்டு installer</string>
+    <string name="source_filters_add_dialog_hint">Enter தொகுப்பு பெயர்</string>
+    <string name="source_filters_remove">நிறுவியை அகற்று</string>
+    <string name="title_install_favourites">பிடித்தவற்றை நிறுவவா?</string>
+    <string name="install_favourites_summary">This will பதிவிறக்கம் and install %1$d apps.</string>
+    <string name="install_favourites_warning">You சி-வைகாசி see a separate நிறுவல் prompt க்கு each app.</string>
+    <string name="title_notifications">அறிவிப்புகள்</string>
+    <string name="pref_notification_progress">காட்டு பதிவிறக்கம் progress</string>
+    <string name="pref_notification_progress_desc">காட்டு detailed progress while downloading and updating apps. When off, a ஒற்றை quiet notification keeps downloads running in the background.</string>
+    <string name="pref_notification_categories">வகைகள்</string>
+    <string name="pref_notification_categories_desc">ஒவ்வொரு வகையான அறிவிப்புக்கும் ஒலி மற்றும் முக்கியத்துவத்தை டியூன் செய்யவும்</string>
+    <string name="pref_notification_disabled">Notifications அரே turned அணை</string>
+    <string name="pref_notification_disabled_desc">Tap பெறுநர் enable notifications க்கு அரோரா Store</string>
+    <string name="updates_self_header">தன்வய புதுப்பிப்பு</string>
+    <string name="updates_self_desc">அரோரா ச்டோரின் புதிய உருவாக்கம் கிடைக்கிறது</string>
+    <string name="updates_incompatible_header">பொருந்தாத புதுப்பிப்புகள்</string>
+    <string name="updates_incompatible_desc">இந்த சிச்டம் ஆப்ச் புதுப்பிப்புகளை இந்த OS இல் நிறுவ முடியாது</string>
+    <string name="updates_approval_header">ஒப்புதல் தேவைப்படும் புதுப்பிப்புகள்</string>
+    <string name="updates_approval_desc">இந்த ஆப்ச் அரோராவால் நிறுவப்படவில்லை. அவற்றைப் புதுப்பிப்பது, ஆப்ச் புதுப்பிப்பு உரிமையை மாற்றத் தூண்டுகிறது.</string>
+    <string name="updates_app_details">விவரங்கள்</string>
+    <string name="updates_ignored_header">புறக்கணிக்கப்பட்டது</string>
+    <string name="updates_ignored_desc">நீங்கள் புறக்கணிக்கும் வரை இந்தப் புதுப்பிப்புகள் மறைக்கப்படும்</string>
+    <string name="action_ignore_all">எல்லா புதுப்பிப்புகளையும் புறக்கணிக்கவும்</string>
+    <string name="action_ignore_version"><xliff:g id="version_name">%1$s</xliff:g> பதிப்பைத் தவிர்க்கவும்</string>
+    <string name="action_unignore">புறக்கணிக்கவும்</string>
+    <string name="pref_updates_check_frequency_3h">ஒவ்வொரு 3 மணிநேரமும்</string>
+    <string name="pref_updates_check_frequency_6h">ஒவ்வொரு 6 மணிநேரமும்</string>
+    <string name="pref_updates_check_frequency_12h">ஒவ்வொரு 12 மணிநேரமும்</string>
+    <string name="pref_updates_check_frequency_24h">ஒவ்வொரு 24 மணிநேரமும்</string>
+    <string name="pref_updates_check_frequency_3d">ஒவ்வொரு 3 நாட்களுக்கும்</string>
+    <string name="pref_updates_check_frequency_7d">ஒவ்வொரு 7 நாட்களுக்கும்</string>
+    <string name="pref_updates_check_frequency_15d">ஒவ்வொரு 15 நாட்களுக்கும்</string>
+    <string name="pref_ui_theme">கருப்பொருள்</string>
+    <string name="pref_theme_style_system">முறையைப் பின்பற்றவும்</string>
+    <string name="pref_theme_style_light">ஒளி</string>
+    <string name="pref_theme_style_dark">இருள்</string>
+    <string name="pref_ui_dynamic_color">மாறும் நிறங்கள்</string>
+    <string name="pref_ui_dynamic_color_desc">உங்கள் வால்பேப்பரிலிருந்து வண்ணங்களைப் பயன்படுத்தவும். அரோராவின் சூட்டுக்குறி தட்டுக்கு அணைக்கவும்.</string>
+    <string name="app_info_downloads">பதிவிறக்கங்கள்</string>
+    <string name="app_info_updated_on">கடைசியாக புதுப்பிக்கப்பட்டது</string>
+    <string name="app_info_min_android">குறைந்தபட்ச ஆண்ட்ராய்டு பதிப்பு</string>
+    <string name="app_info_target_android">இலக்கு பநிஇ நிலை</string>
+    <string name="action_skip">தவிர்</string>
+    <string name="onboarding_title_gsf">பயன்பாட்டு இணக்கத்தன்மை</string>
+    <string name="onboarding_title_gsf_desc">சார்புகளைக் காணவில்லை</string>
+    <string name="onboarding_gms_agreement">மைக்ரோசி பணி விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையைப் படித்து ஒப்புக்கொண்டேன்</string>
+    <string name="onboarding_gms_missing">உங்கள் சாதனத்தில் Google Play சேவைகளை எங்களால் கண்டுபிடிக்க முடியவில்லை, பல பிரபலமான பயன்பாடுகளுக்கு இப்போது அது சரியாகச் செயல்பட வேண்டும்!</string>
+    <string name="onboarding_gms_microg">microG என்பது ஒரு இலவச மற்றும் திறந்த-மூல செயலாக்கமாகும், இது மீண்டும் செயல்படுத்துவதன் மூலம் ஆண்ட்ராய்டு சாதனங்களுக்கான Google Play சேவைகள் சார்ந்த பயன்பாடுகளை இயக்குவதற்கு ஒத்த செயல்பாட்டை வழங்குகிறது. \n\nmicroG ஆனது அந்த Google APIகளை அணுகுவதற்கு பயன்பாடுகளை செயல்படுத்துகிறது, தனியுரிமை நன்மைகளை வழங்கும் போது பயனர்களுக்கு இணக்கத்தன்மையை அதிகரிக்கிறது. \n\nகூகுள் மொபைல் சேவைகள் சார்ந்த பயன்பாடுகளைத் திறக்கும்போது மைக்ரோசி பின்னணியில் தானாகவே இயங்கும்.</string>
+    <string name="microg_privacy_policy">மைக்ரோசி தனியுரிமைக் கொள்கையைப் படிக்கவும்</string>
+    <string name="microg_license_agreement">மைக்ரோசி உரிமம் மற்றும் ஒப்பந்தத்தைப் படிக்கவும்</string>
+    <string name="microg_website">மைக்ரோசி திட்ட வலைத்தளத்தைப் பார்வையிடவும்</string>
+    <string name="microg_removed_auth_warning">microG இனி நிறுவப்படவில்லை. விசயங்களைச் சீராகச் செய்ய, அமைப்பை மீண்டும் இயக்கவும்.</string>
+    <string name="microg_installer_subtitle">மைக்ரோசி துணை ஆப்ச் நிறுவப்பட வேண்டும்</string>
+    <string name="microg_installer_desc">ஆப் ஒருமைப்பாடு (நிறுவுபவர் மட்டும்) சரிபார்ப்பைத் தவிர்க்க உதவுகிறது</string>
+    <string name="manual_download_version_error">பதிப்புக் குறியீட்டில் இலக்கங்கள் மட்டுமே இருக்க வேண்டும்</string>
+    <string name="toast_fav_install_enqueued">%1$d பயன்பாடுகளை நிறுவுகிறது</string>
+    <string name="toast_fav_install_none">நிறுவ எதுவும் இல்லை</string>
+    <string name="toast_fav_install_failed">பயன்பாட்டு விவரங்களைப் பெறுவதில் தோல்வி</string>
+    <string name="force_restart_snack">மாற்றங்களைப் பயன்படுத்த மீண்டும் தொடங்கவா?</string>
+    <string name="status_installing">நிறுவுதல்</string>
+    <string name="status_installed">நிறுவப்பட்டது</string>
+    <string name="header_blacklist_selected">பிளாக்லிச்ட்</string>
+    <string name="header_blacklist_others">மற்றவை</string>
+    <string name="no_description">விளக்கம் இல்லை</string>
+    <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> அனுமதிகள்</string>
+    <string name="details_more_info">மேலும் செய்தி</string>
+    <string name="details_more_target_api">இலக்குகள்</string>
+    <string name="details_more_package_name">தொகுப்பு பெயர்</string>
+    <string name="details_more_content_rating">உள்ளடக்க மதிப்பீடு</string>
+    <string name="preparing_to_install">நிறுவ தயாராகிறது</string>
+    <string name="preparing_to_download">பதிவிறக்க தயாராகிறது</string>
+    <string name="verifying_downloads">பதிவிறக்கங்களைச் சரிபார்க்கிறது</string>
+    <plurals name="permissions_required">
+        <item quantity="one">இசைவு தேவை</item>
+        <item quantity="other">அனுமதிகள் தேவை</item>
+    </plurals>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d பிடித்தது</item>
+        <item quantity="other">%1$d பிடித்தவை</item>
+    </plurals>
+    <plurals name="account_count">
+        <item quantity="one">மொத்தம் %1$d கணக்கு</item>
+        <item quantity="other">மொத்தம் %1$d கணக்குகள்</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">%1$d கணக்கைப் புதுப்பிக்க முடியவில்லை</item>
+        <item quantity="other">%1$d கணக்குகளைப் புதுப்பிக்க முடியவில்லை</item>
+    </plurals>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d பயன்பாடு நிறுவப்பட்டது</item>
+        <item quantity="other">%d பயன்பாடுகள் நிறுவப்பட்டுள்ளன</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d பயன்பாடு தோல்வியடைந்தது</item>
+        <item quantity="other">%d பயன்பாடுகள் தோல்வியடைந்தன</item>
+    </plurals>
+    <string name="installed_sort_filter">வரிசைப்படுத்தி வடிகட்டவும்</string>
+    <string name="installed_sort_by">வரிசைப்படுத்து</string>
+    <string name="installed_sort_name">பெயர்</string>
+    <string name="installed_sort_date_installed">நிறுவப்பட்ட தேதி</string>
+    <string name="installed_sort_date_updated">தேதி புதுப்பிக்கப்பட்டது</string>
+    <string name="installed_sort_package_name">தொகுப்பு பெயர்</string>
+    <string name="installed_sort_size">அளவு</string>
+    <string name="installed_sort_ascending">ஏறுதல்</string>
+    <string name="installed_sort_descending">இறங்கு</string>
+    <string name="installed_filter">வடிப்பி</string>
+    <string name="installed_filter_user_apps">பயனர் பயன்பாடுகள்</string>
+    <string name="installed_filter_system_apps">கணினி பயன்பாடுகள்</string>
+    <string name="installed_filter_installer">இருந்து நிறுவப்பட்டது</string>
+    <string name="installed_filter_all">அனைத்தும்</string>
+    <string name="installed_updated_at"><xliff:g id="when">%1$s</xliff:g> புதுப்பிக்கப்பட்டது</string>
+    <string name="pref_common_advanced">மேம்பட்ட</string>
+    <string name="pref_updates_app_source">பயன்பாட்டு சான்று</string>
+    <string name="select_app_for_details">மேலும் விவரங்களுக்கு பயன்பாட்டைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="action_filter_no_ads">விளம்பரங்கள் இல்லை</string>
+    <string name="action_filter_no_gms">விளையாட்டு சேவைகள் இல்லை</string>
+    <string name="loading">ஏற்றப்படுகிறது</string>
+    <string name="page">பக்கம் <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_check">சரிபார்</string>
 </resources>

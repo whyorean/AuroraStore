@@ -16,7 +16,7 @@ class TopAppBarTest : IsolatedTest() {
     @Test
     fun testTitleWithNoNavigationAction() {
         setContent {
-            TopAppBar(title = "About", onNavigateUp = null)
+            TopAppBar(title = "About", showNavigationIcon = false)
         }
 
         composeTestRule.onNodeWithText("About")

@@ -36,16 +36,20 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  */
 @Composable
 fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int) -> Unit = {}) {
+    // Play sometimes returns the same artwork URL twice, which would crash the LazyRow
+    // with duplicate keys; deduping also keeps indices aligned with the ScreenshotScreen
+    // pager which displays the same deduped list.
+    val distinctScreenshots = screenshots.distinctBy { it.url }
     LazyRow(
         contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
-        items(items = screenshots, key = { artwork -> artwork.url }) { artwork ->
+        items(items = distinctScreenshots, key = { artwork -> artwork.url }) { artwork ->
             ScreenshotListItem(
                 modifier = Modifier
                     .height(dimensionResource(R.dimen.screenshot_height))
                     .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
-                    .clickable { onNavigateToScreenshot(screenshots.indexOf(artwork)) },
+                    .clickable { onNavigateToScreenshot(distinctScreenshots.indexOf(artwork)) },
                 url = "${artwork.url}=rw-w480-v1-e15"
             )
         }

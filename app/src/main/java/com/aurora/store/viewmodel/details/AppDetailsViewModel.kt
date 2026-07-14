@@ -424,7 +424,12 @@ class AppDetailsViewModel @Inject constructor(
 
     private fun fetchDataSafetyReport(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _dataSafetyReport.value = webDataSafetyHelper.fetch(packageName)
+            try {
+                _dataSafetyReport.value = webDataSafetyHelper.fetch(packageName)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to fetch data safety report", exception)
+                _dataSafetyReport.value = null
+            }
         }
     }
 

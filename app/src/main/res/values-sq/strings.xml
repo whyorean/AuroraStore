@@ -611,4 +611,6 @@
     <string name="pref_install_profile_current">Profili aktual</string>
     <string name="pref_install_profile_work">Profili i punës</string>
     <string name="pref_install_profile_all">Të gjitha profilet</string>
+    <string name="details_ratings_title_hint">Titull shqyrtimi</string>
+    <string name="status_installed">I instaluar</string>
 </resources>

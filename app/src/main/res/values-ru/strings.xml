@@ -43,7 +43,7 @@
     <string name="about_bitcoin_bch">Bitcoin Сash</string>
     <string name="about_telegram">Telegram</string>
     <string name="action_blacklist_add">Добавить в черный список</string>
-    <string name="action_blacklist">Чёрный список</string>
+    <string name="action_blacklist">Черный список</string>
     <string name="action_back">Назад</string>
     <string name="account_logout">Выйти из Aurora</string>
     <string name="account_login_using">Войти с помощью</string>
@@ -242,7 +242,7 @@
     <string name="download_eta_min">Осталось %1$d мин %2$d сек</string>
     <string name="download_eta_sec">Осталось %1$d сек</string>
     <string name="onboarding_permission_notifications">Уведомления</string>
-    <string name="session_good">Всё хорошо.</string>
+    <string name="session_good">Все хорошо.</string>
     <string name="session_init">Подготовка…</string>
     <string name="session_login_failed_google">Не удалось войти через Google</string>
     <string name="title_advanced">Дополнительно</string>
@@ -325,7 +325,7 @@
     <string name="source_code_subtitle">Узнайте, что внутри</string>
     <string name="privacy_policy_subtitle">Узнайте, как Aurora Store использует ваши данные</string>
     <string name="native_installer_subtitle">Классический установщик, доступный на всех устройствах</string>
-    <string name="am_installer_desc">Требуется менеджер приложений, необходим adb/root режим, чтобы произвести установку при включенной MIUI оптимизации</string>
+    <string name="am_installer_desc">Требуется диспетчер приложений, необходим режим adb/root, чтобы произвести установку при включенной оптимизации MIUI</string>
     <string name="shizuku_installer_subtitle">Использует API системы напрямую с adb/root привилегиями</string>
     <string name="title_more">Еще</string>
     <string name="manage_account">Управление профилем</string>
@@ -496,10 +496,10 @@
     <string name="pref_self_update_desc">Предлагать новые сборки Aurora Store во вкладке \"Обновления\".</string>
     <string name="pref_source_filters_title">Фильтровать приложения из других источников</string>
     <string name="pref_source_filters_desc_all">Пропустить все приложения, не установленные из Aurora Store</string>
-    <string name="pref_source_filters_desc_none">Ни один установщик не исключён</string>
+    <string name="pref_source_filters_desc_none">Ни один установщик не исключен</string>
     <string name="pref_source_filters_desc_count">%1$d установщик(а) исключены</string>
     <string name="source_filters_all">Фильтровать все прочие установщики</string>
-    <string name="source_filters_installers_header">Определённые установщики</string>
+    <string name="source_filters_installers_header">Определенные установщики</string>
     <string name="source_filters_installers_empty">Ни один установщик пока не добавлен</string>
     <string name="source_filters_add">Добавить установщик</string>
     <string name="source_filters_add_dialog_hint">Введите имя пакета</string>
@@ -595,4 +595,36 @@
     <string name="pref_install_profile_current">Текущий профиль</string>
     <string name="pref_install_profile_work">Рабочий профиль</string>
     <string name="pref_install_profile_all">Все профили</string>
+    <string name="account_set_default">Установить по умолчанию</string>
+    <string name="account_default">По умолчанию</string>
+    <string name="account_remove">Удалить</string>
+    <string name="account_remove_title">Удалить аккаунт?</string>
+    <string name="account_remove_message">Удалить %1$s из Aurora Store?</string>
+    <string name="account_remove_last_message">Это ваш единственный аккаунт. Если вы его удалите, то будет осуществлен выход и вы не сможете использовать Aurora Store, пока не авторизуетесь снова.</string>
+    <string name="account_add">Добавить аккаунт</string>
+    <string name="account_add_device">Аккаунты устройств</string>
+    <string name="account_add_google">Войти через Google</string>
+    <string name="account_add_anonymous">Добавить анонимный аккаунт</string>
+    <string name="account_set_default_title">Сменить аккаунт по умолчанию?</string>
+    <string name="account_set_default_message">Aurora Store перезапустится, чтобы использовать новый аккаунт по умолчанию.</string>
+    <string name="account_switching">Переключение аккаунта…</string>
+    <string name="account_adding">Добавление аккаунта…</string>
+    <string name="account_refresh_all">Обновить все аккаунты</string>
+    <string name="account_refreshing">Обновление аккаунтов…</string>
+    <string name="account_refresh_done">Все аккаунты обновлены</string>
+    <string name="account_switch_failed">Не удалось обновить этот аккаунт, поэтому значение по умолчанию не изменилось.</string>
+    <string name="account_add_failed">Не удалось добавить этот аккаунт. Пожалуйста, попробуйте еще раз.</string>
+    <string name="action_switch_account">Сменить аккаунт</string>
+    <plurals name="account_count">
+        <item quantity="one">Всего %1$d аккаунт</item>
+        <item quantity="few">Всего %1$d аккаунта</item>
+        <item quantity="many">Всего %1$d аккаунтов</item>
+        <item quantity="other">Всего %1$d аккаунтов</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Не удалось обновить %1$d аккаунт</item>
+        <item quantity="few">Не удалось обновить %1$d аккаунта</item>
+        <item quantity="many">Не удалось обновить %1$d аккаунтов</item>
+        <item quantity="other">Не удалось обновить %1$d аккаунтов</item>
+    </plurals>
 </resources>

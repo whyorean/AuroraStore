@@ -473,4 +473,8 @@
     <string name="pref_install_profile_current">現在のプロファイル</string>
     <string name="pref_install_profile_work">仕事用プロファイル</string>
     <string name="pref_install_profile_all">すべてのプロファイル</string>
+    <string name="account_default">デフォルト</string>
+    <string name="account_remove">削除</string>
+    <string name="account_remove_title">アカウントを削除しますか？</string>
+    <string name="account_remove_message">%1$sをAurora Storeから削除しますか？</string>
 </resources>

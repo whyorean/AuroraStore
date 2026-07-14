@@ -84,7 +84,7 @@
     <string name="onboarding_title_installer">Telepítő</string>
     <string name="onboarding_permission_select">Az Aurora Store-nak a következő engedélyek szükségesek</string>
     <string name="dialog_title_self_update">Új frissítés érhető el</string>
-    <string name="device_miui_extra">Esetlegesen választhatja a natív telepítőt is, viszont így nem fog tudni kötegelt (osztott) APK-kat telepíteni, a választás az öné.</string>
+    <string name="device_miui_extra">Esetlegesen választhatja a natív telepítőt is, viszont így nem fog tudni kötegelt (osztott) APK-kat telepíteni, a választás az Öné.</string>
     <string name="device_miui_description">Tiltsa le a MIUI optimalizálást a telepítések engedélyezéséhez, vagy válassza a Root vagy Szolgáltatások telepítési módot.</string>
     <string name="device_miui_subtitle">A munkemenet-alapú telepítő nem képes alkalmazásokat telepíteni a MIUI optimalizációi miatt.</string>
     <string name="device_miui_title">MIUI észlelve!</string>
@@ -103,7 +103,7 @@
     <string name="installer_service_misconfigured">Először állítsa be az Aurora Szolgáltatásokat, és adjon meg minden engedélyt.</string>
     <string name="installer_service_unavailable">Telepítse az Aurora-szolgáltatások 1.0.9-es vagy magasabb verzióját, vagy változtasson a telepítőn.</string>
     <string name="installer_service_available">Az Aurora-szolgáltatások elérhetőek és telepítésre készek.</string>
-    <string name="installer_root_unavailable">Nincs root hozzáférés. Adjon hozzáférést vagy változtasson a telepítési módszeren.</string>
+    <string name="installer_root_unavailable">Nincs root-hozzáférés. Adjon hozzáférést vagy változtasson a telepítési módszeren.</string>
     <string name="filter_review_two">Kettő</string>
     <string name="filter_review_three">Három</string>
     <string name="filter_review_positive">Pozitív</string>
@@ -125,7 +125,7 @@
     <string name="download_metadata">Metaadatok beszerzése</string>
     <string name="download_force_clear_all">Összes kényszerített törlése</string>
     <string name="download_failed">Letöltés sikertelen</string>
-    <string name="download_eta_calculating">Kalkulálás</string>
+    <string name="download_eta_calculating">Számítás</string>
     <string name="download_completed">Letöltés befejezve</string>
     <string name="download_canceled">Megszakítva</string>
     <string name="download_cancel_all">Összes megszakítása</string>
@@ -144,14 +144,14 @@
     <string name="details_dev_website">Weboldal</string>
     <string name="details_dev_profile">Fejlesztői profil</string>
     <string name="toast_developer_setting_failed">A fejlesztői beállítások megnyitásához engedélyezze azokat az eszköz beállításaiban.</string>
-    <string name="pref_install_mode_session">Munkamenet-alapú telepítő</string>
+    <string name="pref_install_mode_session">Session-telepítő</string>
     <string name="toast_purchase_blocked">Az alkalmazásvásárlások nem érhetőek el a névtelen fiókok használata során.</string>
     <string name="toast_spoof_applied">Eszközálca alkalmazva.</string>
     <string name="toast_permission_granted">Engedély megadva</string>
     <string name="toast_clipboard_copied">Vágólapra másolva</string>
     <string name="toast_apk_whitelisted">Engedélyezési listás</string>
     <string name="toast_apk_blacklisted">Tiltólistás</string>
-    <string name="toast_anonymous_restriction">Nem elérhető anonim fiókoknál</string>
+    <string name="toast_anonymous_restriction">Névtelen fiókoknál nem elérhető</string>
     <string name="title_updates">Frissítések</string>
     <string name="title_spoof_manager">Álcakezelő</string>
     <string name="title_settings">Beállítások</string>
@@ -178,7 +178,7 @@
     <string name="tab_top_free">Top ingyenes</string>
     <string name="tab_top_charts">Toplisták</string>
     <string name="tab_for_you">Ajánlott</string>
-    <string name="tab_editor_choice">Szerkesztők ajánlata</string>
+    <string name="tab_editor_choice">Szerkesztői választás</string>
     <string name="tab_categories">Kategóriák</string>
     <string name="insecure_anonymous_apply">A módosítások végrehajtásához jelentkezzen be és indítsa újra az alkalmazást.</string>
     <string name="spoof_apply">Az álca alkalmazásához jelentkezzen be újra</string>
@@ -193,13 +193,13 @@
     <string name="pref_install_mode_title">Telepítési mód</string>
     <string name="pref_install_mode_summary">APK-fájlok telepítési módja</string>
     <string name="pref_install_mode_services">Aurora-szolgáltatások (elavult)</string>
-    <string name="pref_install_mode_root">Root telepítő</string>
+    <string name="pref_install_mode_root">Root-telepítő</string>
     <string name="pref_install_mode_native">Natív telepítő (elavult)</string>
     <string name="pref_install_delete_title">APK törlése telepítés után</string>
     <string name="pref_install_delete_summary">A letöltött APK-k a telepítés után azonnal törlődnek</string>
     <string name="pref_filter_fdroid_title">F-Droid alkalmazások kiszűrése</string>
     <string name="pref_filter_fdroid_summary">Ne keressen frissítéseket az F-Droidról letöltött vagy telepített alkalmazásokhoz</string>
-    <string name="onboarding_permission_installer_desc">Lehetővé teszi az Aurora Store-ból származó alkalmazások telepítését</string>
+    <string name="onboarding_permission_installer_desc">Engedélyezi az alkalmazások telepítését az Aurora Store-ból</string>
     <string name="onboarding_permission_installer">Telepítési engedély</string>
     <string name="onboarding_permission_esm">Külső tárhelykezelő</string>
     <string name="onboarding_permission_esa_desc">Nagy méretű alkalmazások és játékok APK-kiterjesztési fájljainak (OBB-k) mentéséhez.</string>
@@ -218,17 +218,17 @@
     <string name="toast_manual_available">A kért verziókód elérhető, letöltés folyamatban.</string>
     <string name="toast_manual_unavailable">A kért verziókód nem érhető el.</string>
     <string name="title_manual_download">Kézi letöltés</string>
-    <string name="toast_aas_token_failed">Az AAS token generálása sikertelen</string>
+    <string name="toast_aas_token_failed">Az AAS token létrehozása sikertelen</string>
     <string name="toast_rated_failed">Az értékelés elküldése sikertelen</string>
     <string name="toast_rated_success">Értékelve, időbe telhet míg megjelenik</string>
     <string name="toast_page_unavailable">A böngészőlap nem érhető el</string>
     <string name="dialog_desc_native_split">A natív telepítő segítségével nem lehet telepíteni a kötegelt (osztott) alkalmazásokat. Változtassa a telepítőt Session, Services vagy Root-ra.</string>
     <string name="toast_export_failed">Eszközbeállítások exportálása sikertelen</string>
     <string name="toast_export_success">Eszközbeállítások exportálva</string>
-    <string name="app_updater_service_notif_text">Lehetővé teszi a háttérben történő alkalmazásletöltést</string>
-    <string name="app_updater_service_notif_title">Alkalmazásletöltés a háttérben</string>
+    <string name="app_updater_service_notif_text">Engedélyezi az alkalmazások háttérben történő letöltését</string>
+    <string name="app_updater_service_notif_title">Alkalmazás letöltése a háttérben</string>
     <string name="installer_am_unavailable">Telepítse az App Managert vagy változtassa meg a telepítőt.</string>
-    <string name="pref_install_mode_am">AM telepítő</string>
+    <string name="pref_install_mode_am">AM-telepítő</string>
     <string name="onboarding_permission_notifications">Értesítések</string>
     <string name="session_enjoy">Jelentkezzen be és érezze jól magát.</string>
     <string name="toast_import_failed">Eszközbeállítások importálása sikertelen</string>
@@ -254,7 +254,7 @@
     <string name="failed_to_fetch_report">Adatvédelmi jelentés lekérése sikertelen</string>
     <string name="access_denied_using_vpn">Hozzáférés megtagadva! VPN-t vagy Tor-t használ?</string>
     <string name="bad_request">Belső hiba! Próbálja újra később</string>
-    <string name="login_rate_limited">Korlátozva lett</string>
+    <string name="login_rate_limited">Kéréskorlát túllépve</string>
     <string name="expand">Bővebben</string>
     <string name="search_hint">Alkalmazások és játékok keresése</string>
     <string name="spoof_property"><xliff:g id="manufacturer">%1$s</xliff:g> • API <xliff:g id="api">%2$s</xliff:g></string>
@@ -272,13 +272,13 @@
     <string name="downloading_dep">További fájlok letöltése a következőhöz: <xliff:g id="app">%1$s</xliff:g></string>
     <string name="failed_generating_session">Munkamenet létrehozása sikertelen, hiba: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Értesítések küldése a telepítések állapotáról</string>
-    <string name="pref_install_mode_shizuku">Shizuku telepítő</string>
+    <string name="pref_install_mode_shizuku">Shizuku-telepítő</string>
     <string name="session_good">Minden rendben.</string>
     <string name="session_scrapped">Utolsó munkamenet törölve</string>
-    <string name="app_links_desc">Aurora Store által támogatott hivatkozások megnyitásának engedélyezése</string>
+    <string name="app_links_desc">Engedélyezi az Aurora Store-nak a támogatott hivatkozások megnyitását</string>
     <string name="check_connectivity">Ellenőrizze az internetkapcsolatot</string>
     <string name="google_play_store_desc">Google Play, avagy Google Play Áruház, korábban Android Market.</string>
-    <string name="failed_to_generate_session">Munkamenet létehozása sikertelen</string>
+    <string name="failed_to_generate_session">Munkamenet létrehozása sikertelen</string>
     <string name="verifying_new_session">Új munkamenet ellenőrzése</string>
     <string name="app_language">Alkalmazás nyelve</string>
     <string name="app_links_title">Alkalmazáshivatkozások</string>
@@ -299,7 +299,7 @@
     <string name="pref_updates_auto">Automatikus frissítések</string>
     <string name="pref_updates_auto_notify">Ellenőrizze, és értesítsen a rendelkezésre álló frissítésekről</string>
     <string name="pref_updates_auto_off">Ne frissítse automatikusan az alkalmazásokat</string>
-    <string name="onboarding_permission_doze_desc">Engedélyezze az Aurora Store-nak az alkalmazások háttérben való letöltését és frissítését</string>
+    <string name="onboarding_permission_doze_desc">Engedélyezi az Aurora Store-nak, hogy a háttérben töltse le és frissítse az alkalmazásokat</string>
     <string name="pref_updates_auto_desc">Automatikus frissítések viselkedésének beállítása</string>
     <string name="pref_updates_auto_install">Ellenőrizze, és automatikusan telepítse a rendelkezésre álló frissítéseket</string>
     <string name="action_request_analysis">Új elemzés kérése</string>
@@ -341,7 +341,7 @@
     <string name="pref_clear_device_owner_title">Eszköz tulajdonjogának törlése</string>
     <string name="details_data_safety_title">Adatbiztonság</string>
     <string name="details_data_safety_subtitle">A fejlesztő által bejelentett adatvédelmi és biztonsági gyakorlatok</string>
-    <string name="onboarding_permission_installer_legacy_desc">Ismeretlen forrásból származó alkalmazások telepítésének engedélyezése</string>
+    <string name="onboarding_permission_installer_legacy_desc">Engedélyezi az ismeretlen forrásból származó alkalmazások telepítését</string>
     <string name="toast_permission_installer_required">Először adja meg a telepítési engedélyt</string>
     <string name="item_required">Szükséges</string>
     <string name="action_uninstall_success">Sikeresen eltávolítva</string>
@@ -433,12 +433,12 @@
     <string name="app_info_target_android">Cél API-szint</string>
     <string name="pref_common_advanced">Speciális</string>
     <string name="pref_updates_app_source">Alkalmazás forrása</string>
-    <string name="action_install_microG">Telepítse a microG csomagot</string>
+    <string name="action_install_microG">microG-csomag telepítése</string>
     <string name="onboarding_title_gsf">Alkalmazáskompatibilitás</string>
     <string name="onboarding_title_gsf_desc">Hiányzó függőségek</string>
     <string name="onboarding_gms_agreement">Elolvastam és elfogadom a microG Általános Szerződési Feltételeit és Adatvédelmi Szabályzatát</string>
     <string name="onboarding_gms_missing">Nem található Google Play-szolgáltatások az eszközén, több népszerű alkalmazásnak is szüksége van rá a megfelelő működéshez!</string>
-    <string name="onboarding_gms_microg">A microG egy ingyenes és nyílt forráskódú megvalósítás, amely újraimplementálással hasonló funkciókat biztosít a Google Play-szolgáltatásoktól függő alkalmazások futtatásához Android-eszközökön.\n\nA microG lehetővé teszi az alkalmazásoknak, hogy hozzáférjenek a Google API-khoz, javítva a kompatibilitást a felhasználók számára, miközben adatvédelmi előnyöket kínál.\n\nA microG automatikusan fut a háttérben, amikor a Google mobilszolgáltatásaitól függő alkalmazásokat nyit meg.</string>
+    <string name="onboarding_gms_microg">A microG egy ingyenes és nyílt forráskódú megvalósítás, amely újraimplementálással hasonló funkciókat biztosít a Google Play-szolgáltatásoktól függő alkalmazások futtatásához Android-eszközökön.\n\nA microG lehetővé teszi az alkalmazásoknak, hogy hozzáférjenek a Google API-khoz, javítva a kompatibilitást a felhasználók számára, miközben adatvédelmi előnyöket kínál.\n\nA microG automatikusan fut a háttérben, amikor a Google Mobile Services függő alkalmazásokat nyit meg.</string>
     <string name="microg_privacy_policy">A microG adatvédelmi irányelveinek elolvasása</string>
     <string name="microg_license_agreement">A microG licenc és felhasználási feltételeinek elolvasása</string>
     <string name="microg_website">Látogasson el a microG weboldalára</string>
@@ -462,8 +462,8 @@
         <item quantity="one">Engedély szükséges</item>
         <item quantity="other">Engedélyek szükségesek</item>
     </plurals>
-    <string name="installer_microg_misconfigured">A MicroG telepítő nem tudta telepíteni az alkalmazást, valószínűleg helytelen beállítás miatt.</string>
-    <string name="pref_install_mode_microg">MicroG telepítő</string>
+    <string name="installer_microg_misconfigured">A MicroG telepítője nem tudta telepíteni az alkalmazást, valószínűleg helytelen beállítás miatt.</string>
+    <string name="pref_install_mode_microg">MicroG-telepítő</string>
     <string name="microg_installer_subtitle">A microG kiegészítő alkalmazás telepítése szükséges</string>
     <string name="microg_installer_desc">Segít megkerülni az App Integrity (csak telepítő) ellenőrzést</string>
     <string name="loading">Betöltés folyamatban</string>
