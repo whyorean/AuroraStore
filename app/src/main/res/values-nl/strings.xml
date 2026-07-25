@@ -601,4 +601,8 @@
         <item quantity="one">%1$d account kon niet worden bijgewerkt</item>
         <item quantity="other">%1$d accounts konden niet worden bijgewerkt</item>
     </plurals>
+    <string name="pref_install_profile_title">In profiel installeren</string>
+    <string name="pref_install_profile_current">Huidig profiel</string>
+    <string name="pref_install_profile_work">Werkprofiel</string>
+    <string name="pref_install_profile_all">Alle profielen</string>
 </resources>

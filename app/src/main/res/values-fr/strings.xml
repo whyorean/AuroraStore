@@ -617,4 +617,8 @@
         <item quantity="many">Impossible d’actualiser %1$d de comptes</item>
         <item quantity="other">Impossible d’actualiser %1$d de comptes</item>
     </plurals>
+    <string name="pref_install_profile_title">Installer dans le profil</string>
+    <string name="pref_install_profile_current">Profil actuel</string>
+    <string name="pref_install_profile_work">Profil professionnel</string>
+    <string name="pref_install_profile_all">Tous les profils</string>
 </resources>

@@ -29,9 +29,12 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageInstallerHidden
 import android.content.pm.PackageManagerHidden
+import android.content.pm.UserInfo
 import android.os.Build
 import android.os.IBinder
 import android.os.IInterface
+import android.os.IUserManager
+import android.os.Process
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.PendingIntentCompat
@@ -49,6 +52,11 @@ import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.INSTALLATION_PROFILE_ALL
+import com.aurora.store.util.Preferences.INSTALLATION_PROFILE_CURRENT
+import com.aurora.store.util.Preferences.INSTALLATION_PROFILE_WORK
+import com.aurora.store.util.Preferences.PREFERENCE_INSTALLATION_PROFILE
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.rikka.tools.refine.Refine
 import javax.inject.Inject
@@ -90,17 +98,75 @@ class ShizukuInstaller @Inject constructor(
         IPackageInstaller.Stub.asInterface(iPackageManager.packageInstaller.asShizukuBinder())
     }
 
-    private val packageInstaller: PackageInstaller? by lazy {
-        if (isSAndAbove) {
-            Refine.unsafeCast<PackageInstaller>(
-                PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, null, 0)
-            )
-        } else if (isOAndAbove) {
-            Refine.unsafeCast<PackageInstaller>(
-                PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, 0)
-            )
-        } else {
-            null
+    private val iUserManager: IUserManager by lazy {
+        IUserManager.Stub.asInterface(SystemServiceHelper.getSystemService("user").wrap())
+    }
+
+    /**
+     * Id of the user/profile Aurora Store itself runs in. Mirrors the calculation used by the
+     * root installer ([RootInstaller]); the multiplier is Android's per-user UID range.
+     */
+    private val currentUserId: Int
+        get() = Process.myUid() / 100_000
+
+    /**
+     * Builds a [PackageInstaller] bound to [userId] so sessions are created for that profile.
+     * The hidden [PackageInstallerHidden] constructor takes the target user id as its last
+     * argument, which is how installing into a work profile is achieved with Shizuku privileges.
+     */
+    private fun getPackageInstaller(userId: Int): PackageInstaller? = when {
+        isSAndAbove -> Refine.unsafeCast<PackageInstaller>(
+            PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, null, userId)
+        )
+
+        isOAndAbove -> Refine.unsafeCast<PackageInstaller>(
+            PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, userId)
+        )
+
+        else -> null
+    }
+
+    /**
+     * Resolves the user/profile ids to install into based on the user's preference.
+     * Falls back to the current profile when the requested profile can't be resolved (e.g. the
+     * work profile preference is set but no managed profile exists).
+     */
+    private fun getTargetUserIds(): List<Int> {
+        val mode = Preferences.getInteger(
+            context,
+            PREFERENCE_INSTALLATION_PROFILE,
+            INSTALLATION_PROFILE_CURRENT
+        )
+        if (mode == INSTALLATION_PROFILE_CURRENT) return listOf(currentUserId)
+
+        val users = runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                iUserManager.getUsers(true, true, true)
+            } else {
+                @Suppress("DEPRECATION")
+                iUserManager.getUsers(true)
+            }
+        }.getOrElse { ex ->
+            Log.e(TAG, "Failed to query users, using current profile", ex)
+            emptyList<UserInfo>()
+        }
+
+        return when (mode) {
+            INSTALLATION_PROFILE_WORK ->
+                users
+                    .filter { (it.flags and UserInfo.FLAG_MANAGED_PROFILE) != 0 }
+                    .map { it.id }
+                    .ifEmpty {
+                        Log.i(TAG, "No work profile found, falling back to current profile")
+                        listOf(currentUserId)
+                    }
+
+            INSTALLATION_PROFILE_ALL ->
+                users
+                    .map { it.id }
+                    .ifEmpty { listOf(currentUserId) }
+
+            else -> listOf(currentUserId)
         }
     }
 
@@ -110,33 +176,39 @@ class ShizukuInstaller @Inject constructor(
         if (isAlreadyQueued(download.packageName)) {
             Log.i(TAG, "${download.packageName} already queued")
         } else {
-            download.sharedLibs.forEach {
-                // Shared library packages cannot be updated
-                if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
-                    install(
-                        packageName = download.packageName,
-                        versionCode = download.versionCode,
-                        sharedLibPkgName = it.packageName
-                    )
+            getTargetUserIds().forEach { userId ->
+                download.sharedLibs.forEach {
+                    // Shared library packages cannot be updated
+                    if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
+                        install(
+                            packageName = download.packageName,
+                            versionCode = download.versionCode,
+                            userId = userId,
+                            sharedLibPkgName = it.packageName
+                        )
+                    }
                 }
+                install(
+                    packageName = download.packageName,
+                    versionCode = download.versionCode,
+                    userId = userId,
+                    displayName = download.displayName
+                )
             }
-            install(
-                packageName = download.packageName,
-                versionCode = download.versionCode,
-                displayName = download.displayName
-            )
         }
     }
 
     private fun install(
         packageName: String,
         versionCode: Long,
+        userId: Int,
         sharedLibPkgName: String = "",
         displayName: String = ""
     ) {
         Log.i(
             TAG,
-            "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}"
+            "Received session install request for " +
+                "${sharedLibPkgName.ifBlank { packageName }} (user $userId)"
         )
 
         val (sessionId, session) = kotlin.runCatching {
@@ -149,7 +221,7 @@ class ShizukuInstaller @Inject constructor(
             Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags =
                 flags
 
-            val sessionId = packageInstaller!!.createSession(params)
+            val sessionId = getPackageInstaller(userId)!!.createSession(params)
             val iSession = IPackageInstallerSession.Stub.asInterface(
                 iPackageInstaller.openSession(sessionId).asShizukuBinder()
             )

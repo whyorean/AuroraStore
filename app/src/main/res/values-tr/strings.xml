@@ -611,4 +611,8 @@
         <item quantity="one">%1$d hesap yenilenemedi</item>
         <item quantity="other">%1$d hesap yenilenemedi</item>
     </plurals>
+    <string name="pref_install_profile_title">Profile yükle</string>
+    <string name="pref_install_profile_current">Geçerli profil</string>
+    <string name="pref_install_profile_work">İş profili</string>
+    <string name="pref_install_profile_all">Tüm profiller</string>
 </resources>

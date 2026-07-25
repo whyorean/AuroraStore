@@ -623,4 +623,8 @@
         <item quantity="many">Не вдалося оновити %1$d облікових записів</item>
         <item quantity="other">Не вдалося оновити %1$d облікових записів</item>
     </plurals>
+    <string name="pref_install_profile_title">Встановлення у профіль</string>
+    <string name="pref_install_profile_current">Поточний профіль</string>
+    <string name="pref_install_profile_work">Робочий профіль</string>
+    <string name="pref_install_profile_all">Усі профілі</string>
 </resources>

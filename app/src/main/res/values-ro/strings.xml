@@ -617,4 +617,8 @@
         <item quantity="few">Nu s-au putut reîmprospăta %1$d conturi</item>
         <item quantity="other">Nu s-au putut reîmprospăta %1$d de conturi</item>
     </plurals>
+    <string name="pref_install_profile_title">Instalează în profil</string>
+    <string name="pref_install_profile_current">Profilul curent</string>
+    <string name="pref_install_profile_work">Profil de serviciu</string>
+    <string name="pref_install_profile_all">Toate profilurile</string>
 </resources>

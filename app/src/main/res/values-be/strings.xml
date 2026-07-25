@@ -472,4 +472,8 @@
     <string name="page">Старонка <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Прапусціць</string>
     <string name="force_restart_snack">Перазапусціць, каб прымяніць змены?</string>
+    <string name="pref_install_profile_title">Усталяваць у профіль</string>
+    <string name="pref_install_profile_current">Бягучы профіль</string>
+    <string name="pref_install_profile_work">Працоўны профіль</string>
+    <string name="pref_install_profile_all">Усе профілі</string>
 </resources>

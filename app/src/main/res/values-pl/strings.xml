@@ -623,4 +623,8 @@
         <item quantity="many">Nie udało się odświeżyć %1$d kont</item>
         <item quantity="other">Nie udało się odświeżyć %1$d kont</item>
     </plurals>
+    <string name="pref_install_profile_title">Zainstaluj w profilu</string>
+    <string name="pref_install_profile_current">Bieżący profil</string>
+    <string name="pref_install_profile_work">Profil służbowy</string>
+    <string name="pref_install_profile_all">Wszystkie profile</string>
 </resources>

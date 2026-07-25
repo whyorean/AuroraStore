@@ -635,4 +635,8 @@
         <item quantity="many">تعذّر تحديث %1$d حسابًا</item>
         <item quantity="other">تعذّر تحديث %1$d حساب</item>
     </plurals>
+    <string name="pref_install_profile_title">التثبيت في الملف الشخصي</string>
+    <string name="pref_install_profile_current">الملف الشخصي الحالي</string>
+    <string name="pref_install_profile_work">ملف العمل</string>
+    <string name="pref_install_profile_all">جميع الملفات الشخصية</string>
 </resources>

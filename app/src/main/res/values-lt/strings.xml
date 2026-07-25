@@ -325,4 +325,8 @@
     <string name="details_data_safety_share_none">Plėtotojas teigia, jog ši programėlė nebendrina naudotojo duomenų su kitomis kompanijomis ar organizacijomis.</string>
     <string name="pref_install_mode_shizuku">Shizuku diegimo programa</string>
     <string name="pref_install_mode_native">Sava diegimo programa (pasenusi)</string>
+    <string name="pref_install_profile_title">Įdiegti į profilį</string>
+    <string name="pref_install_profile_current">Dabartinis profilis</string>
+    <string name="pref_install_profile_work">Darbo profilis</string>
+    <string name="pref_install_profile_all">Visi profiliai</string>
 </resources>

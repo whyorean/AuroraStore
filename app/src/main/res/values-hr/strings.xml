@@ -463,4 +463,8 @@
         <item quantity="few">Potrebne dozvole</item>
         <item quantity="other">Potrebnih dozvola</item>
     </plurals>
+    <string name="pref_install_profile_title">Instaliraj u profil</string>
+    <string name="pref_install_profile_current">Trenutni profil</string>
+    <string name="pref_install_profile_work">Poslovni profil</string>
+    <string name="pref_install_profile_all">Svi profili</string>
 </resources>

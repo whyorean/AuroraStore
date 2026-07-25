@@ -469,6 +469,10 @@
     <string name="action_filter_no_gms">Google Play 開発者サービスなし</string>
     <string name="page"><xliff:g id="number">%1$d</xliff:g> ページ</string>
     <string name="onboarding_gms_microg">microGは、Androidデバイス向けにGoogle Play Servicesに依存するアプリを再実装によって動作させる、同様の機能を提供する無料のオープンソース実装です。\n\nmicroGはアプリがこれらのGoogle APIにアクセスすることを可能にし、ユーザーの互換性を高めつつプライバシー上の利点を提供します。\n\nGoogle Mobile Servicesに依存するアプリケーションを開くと、microGはバックグラウンドで自動的に動作します。</string>
+    <string name="pref_install_profile_title">プロファイルにインストール</string>
+    <string name="pref_install_profile_current">現在のプロファイル</string>
+    <string name="pref_install_profile_work">仕事用プロファイル</string>
+    <string name="pref_install_profile_all">すべてのプロファイル</string>
     <string name="account_default">デフォルト</string>
     <string name="account_remove">削除</string>
     <string name="account_remove_title">アカウントを削除しますか？</string>

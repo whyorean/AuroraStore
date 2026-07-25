@@ -583,6 +583,10 @@
         <item quantity="one">%1$d lemmik</item>
         <item quantity="other">%1$d lemmikut</item>
     </plurals>
+    <string name="pref_install_profile_title">Paigalda profiili</string>
+    <string name="pref_install_profile_current">Praegune profiil</string>
+    <string name="pref_install_profile_work">Tööprofiil</string>
+    <string name="pref_install_profile_all">Kõik profiilid</string>
     <string name="account_set_default">Määra vaikimisi väärtuseks</string>
     <string name="account_default">Vaikimisi</string>
     <string name="account_remove">Eemalda</string>

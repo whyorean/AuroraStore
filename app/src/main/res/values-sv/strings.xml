@@ -477,4 +477,8 @@
     <string name="microg_removed_auth_warning">microG är inte längre installerat. Kör installationsprogrammet igen för att hålla allt igång smidigt.</string>
     <string name="header_blacklist_selected">Svartlistad</string>
     <string name="header_blacklist_others">Andra</string>
+    <string name="pref_install_profile_title">Installera i profil</string>
+    <string name="pref_install_profile_current">Nuvarande profil</string>
+    <string name="pref_install_profile_work">Arbetsprofil</string>
+    <string name="pref_install_profile_all">Alla profiler</string>
 </resources>

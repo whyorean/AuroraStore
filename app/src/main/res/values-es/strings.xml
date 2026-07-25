@@ -617,4 +617,8 @@
         <item quantity="many">No se pudo actualizar %1$d cuentas</item>
         <item quantity="other">No se pudo actualizar %1$d cuentas</item>
     </plurals>
+    <string name="pref_install_profile_title">Instalar en el perfil</string>
+    <string name="pref_install_profile_current">Perfil actual</string>
+    <string name="pref_install_profile_work">Perfil de trabajo</string>
+    <string name="pref_install_profile_all">Todos los perfiles</string>
 </resources>

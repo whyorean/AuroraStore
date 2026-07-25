@@ -579,6 +579,10 @@
     <plurals name="favourites_count">
         <item quantity="other">%1$d kegemaran</item>
     </plurals>
+    <string name="pref_install_profile_title">Pasang ke profil</string>
+    <string name="pref_install_profile_current">Profil semasa</string>
+    <string name="pref_install_profile_work">Profil kerja</string>
+    <string name="pref_install_profile_all">Semua profil</string>
     <string name="account_set_default">Tetapkan sebagai lalai</string>
     <string name="account_default">Lalai</string>
     <string name="account_remove">Alih keluar</string>

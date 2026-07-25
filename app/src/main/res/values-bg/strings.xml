@@ -278,4 +278,8 @@
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> тракер(и) намерени в <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="filter_latest">Най-нови</string>
     <string name="installer_microg_misconfigured">Грешка при инсталирането на MicroG, най-вероятно поради грешка в конфигурацията.</string>
+    <string name="pref_install_profile_title">Инсталиране в профил</string>
+    <string name="pref_install_profile_current">Текущ профил</string>
+    <string name="pref_install_profile_work">Служебен профил</string>
+    <string name="pref_install_profile_all">Всички профили</string>
 </resources>

@@ -458,4 +458,8 @@
     <string name="select_app_for_details">अधिक जानकारी के लिए कोई ऐप चुनें</string>
     <string name="action_filter_no_ads">कोई विज्ञापन नहीं</string>
     <string name="action_filter_no_gms">बिना Play Services के</string>
+    <string name="pref_install_profile_title">प्रोफ़ाइल में इंस्टॉल करें</string>
+    <string name="pref_install_profile_current">वर्तमान प्रोफ़ाइल</string>
+    <string name="pref_install_profile_work">कार्य प्रोफ़ाइल</string>
+    <string name="pref_install_profile_all">सभी प्रोफ़ाइल</string>
 </resources>

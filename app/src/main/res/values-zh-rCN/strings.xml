@@ -605,4 +605,8 @@
     <plurals name="account_refresh_failed">
         <item quantity="other">无法刷新 %1$d 个账户</item>
     </plurals>
+    <string name="pref_install_profile_title">安装到资料</string>
+    <string name="pref_install_profile_current">当前资料</string>
+    <string name="pref_install_profile_work">工作资料</string>
+    <string name="pref_install_profile_all">所有资料</string>
 </resources>

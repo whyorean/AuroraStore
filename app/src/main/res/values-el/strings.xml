@@ -475,4 +475,8 @@
     <string name="microg_removed_auth_warning">microG δεν είναι πλέον εγκατεστημένο. Εκτελέστε ξανά τη ρύθμιση για να συνεχίσουν όλα να λειτουργούν ομαλά.</string>
     <string name="preparing_to_download">Προετοιμασία για λήψη</string>
     <string name="verifying_downloads">Επαλήθευση λήψεων</string>
+    <string name="pref_install_profile_title">Εγκατάσταση σε προφίλ</string>
+    <string name="pref_install_profile_current">Τρέχον προφίλ</string>
+    <string name="pref_install_profile_work">Προφίλ εργασίας</string>
+    <string name="pref_install_profile_all">Όλα τα προφίλ</string>
 </resources>

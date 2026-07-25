@@ -469,4 +469,8 @@
     <string name="action_filter_no_gms">ບໍ່ໃຊ້ Play Services</string>
     <string name="loading">ກຳລັງໂຫລດ...</string>
     <string name="page">ໜ້າ <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="pref_install_profile_title">ຕິດຕັ້ງໃສ່ໂປຣໄຟລ໌</string>
+    <string name="pref_install_profile_current">ໂປຣໄຟລ໌ປັດຈຸບັນ</string>
+    <string name="pref_install_profile_work">ໂປຣໄຟລ໌ບ່ອນເຮັດວຽກ</string>
+    <string name="pref_install_profile_all">ໂປຣໄຟລ໌ທັງໝົດ</string>
 </resources>

@@ -471,4 +471,8 @@
     <string name="session_scrapped">L\'última sessió s\'ha descartat</string>
     <string name="action_skip">Ometre</string>
     <string name="force_restart_snack">Reiniciar per tal d\'aplicar els canvis?</string>
+    <string name="pref_install_profile_title">Instal·la al perfil</string>
+    <string name="pref_install_profile_current">Perfil actual</string>
+    <string name="pref_install_profile_work">Perfil de treball</string>
+    <string name="pref_install_profile_all">Tots els perfils</string>
 </resources>

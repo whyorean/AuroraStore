@@ -591,6 +591,10 @@
         <item quantity="many">%1$d избранных</item>
         <item quantity="other">%1$d избранных</item>
     </plurals>
+    <string name="pref_install_profile_title">Установка в профиль</string>
+    <string name="pref_install_profile_current">Текущий профиль</string>
+    <string name="pref_install_profile_work">Рабочий профиль</string>
+    <string name="pref_install_profile_all">Все профили</string>
     <string name="account_set_default">Установить по умолчанию</string>
     <string name="account_default">По умолчанию</string>
     <string name="account_remove">Удалить</string>
