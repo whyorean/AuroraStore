@@ -605,11 +605,11 @@
     <string name="action_switch_account">Konto wechseln</string>
     <plurals name="account_count">
         <item quantity="one">Insgesamt %1$d Konto</item>
-        <item quantity="other">Insgesamt %1$d Kontos</item>
+        <item quantity="other">Insgesamt %1$d Konten</item>
     </plurals>
     <plurals name="account_refresh_failed">
         <item quantity="one">%1$d Konto konnte nicht aktualisiert werden</item>
-        <item quantity="other">%1$d Kontos konnten nicht aktualisiert werden</item>
+        <item quantity="other">%1$d Konten konnten nicht aktualisiert werden</item>
     </plurals>
     <string name="account_exists">Konto wurde bereits hinzugefügt</string>
     <string name="action_update_anyway">Trotzdem aktualisieren</string>
