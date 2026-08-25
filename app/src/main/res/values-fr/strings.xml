@@ -360,7 +360,7 @@
     <string name="title_favourites_manager">Applis favorites</string>
     <string name="toast_fav_export_success">Les favoris ont été exportés !</string>
     <string name="action_logout_confirmation_title">Se déconnecter ?</string>
-    <string name="action_logout_confirmation_message">Êtes-vous sûr de vouloir vous déconnecter ?</string>
+    <string name="action_logout_confirmation_message">Êtes-vous sûr·e de vouloir vous déconnecter ?</string>
     <string name="check_updates">Chercher des mises à jour</string>
     <string name="details_data_safety_title">Sécurité des données</string>
     <string name="onboarding_permission_installer_legacy_desc">Autoriser l’installation d’applis de sources inconnues</string>
