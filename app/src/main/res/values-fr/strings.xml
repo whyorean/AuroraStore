@@ -590,7 +590,7 @@
     <string name="account_set_default">Définir comme compte par défaut</string>
     <string name="account_default">Par défaut</string>
     <string name="account_remove">Supprimer</string>
-    <string name="account_remove_title">Retirer le compte ?</string>
+    <string name="account_remove_title">Supprimer le compte ?</string>
     <string name="account_remove_message">Supprimer %1$s du magasin Aurora Store ?</string>
     <string name="account_remove_last_message">Il s’agit de votre seul compte. Le supprimer vous déconnectera et vous ne pourrez plus utiliser le magasin Aurora Store avant de vous reconnecter.</string>
     <string name="account_add">Ajouter un compte</string>
