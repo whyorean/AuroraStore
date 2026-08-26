@@ -475,4 +475,7 @@
     <string name="microg_removed_auth_warning">microG δεν είναι πλέον εγκατεστημένο. Εκτελέστε ξανά τη ρύθμιση για να συνεχίσουν όλα να λειτουργούν ομαλά.</string>
     <string name="preparing_to_download">Προετοιμασία για λήψη</string>
     <string name="verifying_downloads">Επαλήθευση λήψεων</string>
+    <string name="account_add">Προσθήκη λογαριασμού</string>
+    <string name="details_review_delete">Διαγραφή</string>
+    <string name="installed_sort_name">Όνομα</string>
 </resources>
