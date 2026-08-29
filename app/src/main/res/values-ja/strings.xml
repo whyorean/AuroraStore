@@ -478,4 +478,17 @@
     <string name="account_switching">アカウトを切り替えます…</string>
     <string name="account_adding">アカウントを追加します…</string>
     <string name="account_set_default">デフォルトに設定する</string>
+    <string name="account_add_google">Googleでログイン</string>
+    <string name="account_add_anonymous">匿名アカウントを追加する</string>
+    <string name="account_set_default_title">デフォルトアカウントを切り替える</string>
+    <string name="account_refresh_all">すべてのアカウントを更新する</string>
+    <string name="account_refreshing">アカウントを更新しています…</string>
+    <string name="account_refresh_done">すべてのアカウントを更新できました</string>
+    <string name="account_add_failed">アカウントの追加が失敗しました。もう一度試してください。</string>
+    <string name="action_buy">%1$sで購入する</string>
+    <string name="action_install_all">すべてをインストールする</string>
+    <string name="action_switch_account">アカウントを切り替える</string>
+    <string name="action_retry">再試行する</string>
+    <string name="action_view_on_play">Playストアで表示する</string>
+    <string name="details_review_delete">削除する</string>
 </resources>
