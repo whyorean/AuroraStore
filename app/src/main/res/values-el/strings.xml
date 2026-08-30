@@ -489,4 +489,5 @@
     <string name="pref_notification_categories">Κατηγορίες</string>
     <string name="installed_filter_all">Όλα</string>
     <string name="header_blacklist_others">Άλλοι</string>
+    <string name="title_notifications">Ειδοποιήσεις</string>
 </resources>
