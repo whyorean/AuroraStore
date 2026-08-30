@@ -614,4 +614,6 @@
     <string name="installed_updated_at">Aggiornato <xliff:g id="when">%1$s</xliff:g></string>
     <string name="preparing_to_download">Preparazione dello scaricamento</string>
     <string name="verifying_downloads">Verifica degli scaricamenti</string>
+    <string name="pref_self_update">Autoaggiornamento</string>
+    <string name="pref_source_filters_desc_none">Nessun programma di installazione escluso</string>
 </resources>
