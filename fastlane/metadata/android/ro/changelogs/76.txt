@@ -1,0 +1,9 @@
+• Interfața a fost reconstruită cu Jetpack Compose modern
+• Compatibilitate cu mai multe conturi Google
+• Recenzii ale utilizatorilor pe ecranul cu detaliile aplicației
+• Blocare opțională a aplicației prin biometrie sau acreditările dispozitivului
+• Instalare cu un singur clic pentru favorite și un flux de cumpărare pentru aplicațiile plătite
+• Notificări reproiectate cu rezumate și setări grupate
+• Ecran de actualizări îmbunătățit; actualizările automate sunt acum afișate în listă
+• Descărcări/instalări mai fiabile și asistență pentru instalarea microG
+• Corecții de erori și actualizări de traducere
