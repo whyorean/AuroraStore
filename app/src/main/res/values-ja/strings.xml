@@ -491,4 +491,9 @@
     <string name="action_retry">再試行する</string>
     <string name="action_view_on_play">Playストアで表示する</string>
     <string name="details_review_delete">削除する</string>
+    <string name="account_remove_last_message">唯一のアカウントです。このアカウントを削除したらログアウトされ、再度ログインするまでAurora Storeを利用できなくなります。</string>
+    <string name="account_add_device">デバイスのアカウント</string>
+    <string name="account_switch_failed">アカウントの更新が失敗しましたため、デフォルトの設定が変更されませんでした。</string>
+    <string name="account_exists">アカウントはすでに追加されています</string>
+    <string name="action_update_anyway">とにかく更新する</string>
 </resources>
