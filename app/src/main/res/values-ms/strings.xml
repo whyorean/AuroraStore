@@ -312,7 +312,7 @@
     <string name="toast_proxy_success">Proksi berjaya ditetapkan</string>
     <string name="toast_proxy_failed">Gagal menetapkan proksi</string>
     <string name="app_updater_service_notif_text">Dayakan muat turun apl di latar belakang</string>
-    <string name="app_updater_service_notif_title">Muat turun apl di latar belakang</string>
+    <string name="app_updater_service_notif_title">Muat turun apl latar belakang</string>
     <string name="update_available">Kemas kini tersedia</string>
     <string name="updates_available">Kemas kini tersedia</string>
     <string name="updates_self_header">Kemas kini kendiri</string>
