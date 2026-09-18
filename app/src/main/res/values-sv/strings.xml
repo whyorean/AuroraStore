@@ -533,4 +533,97 @@
     <string name="pref_notification_disabled_desc">Klicka för att sätta på Notifieringar för Aurora Store</string>
     <string name="updates_incompatible_header">Inkompatibla uppdateringar</string>
     <string name="updates_incompatible_desc">De här sytemappara kan inte installeras på det här operativsystemet</string>
+    <string name="pref_source_filters_desc_none">Inga installationsprogram har uteslutits</string>
+    <string name="pref_source_filters_desc_count">%1$d installationsprogram har uteslutits</string>
+    <string name="source_filters_all">Filtrera alla andra installationsprogram</string>
+    <string name="source_filters_installers_header">Specifika installationsprogram</string>
+    <string name="source_filters_installers_empty">Inga installationsprogram har lagts till ännu</string>
+    <string name="source_filters_add">Lägg till installationsprogram</string>
+    <string name="source_filters_add_dialog_hint">Ange paketnamn</string>
+    <string name="source_filters_remove">Ta bort installationsprogram</string>
+    <string name="updates_approval_header">Uppdateringar som kräver godkännande</string>
+    <string name="updates_approval_desc">Dessa appar installerades inte av Aurora. När de uppdateras uppmanas du att överföra ansvaret för appuppdateringen.</string>
+    <string name="updates_app_details">Detaljer</string>
+    <string name="updates_ignored_header">Ignorerade</string>
+    <string name="updates_ignored_desc">Dessa uppdateringar är dolda tills du slutar ignorera dem</string>
+    <string name="action_ignore_all">Ignorera alla uppdateringar</string>
+    <string name="action_ignore_version">Hoppa över version <xliff:g id="version_name">%1$s</xliff:g></string>
+    <string name="action_unignore">Sluta ignorera</string>
+    <string name="pref_updates_check_frequency_3h">Var tredje timme</string>
+    <string name="pref_updates_check_frequency_6h">Var sjätte timme</string>
+    <string name="pref_updates_check_frequency_12h">Var tolfte timme</string>
+    <string name="pref_updates_check_frequency_24h">Var 24:e timme</string>
+    <string name="pref_updates_check_frequency_3d">Var tredje dag</string>
+    <string name="pref_updates_check_frequency_7d">Var sjunde dag</string>
+    <string name="pref_updates_check_frequency_15d">Var femtonde dag</string>
+    <string name="pref_ui_theme">Tema</string>
+    <string name="pref_theme_style_system">Följ systemet</string>
+    <string name="pref_theme_style_light">Ljust</string>
+    <string name="pref_theme_style_dark">Mörkt</string>
+    <string name="installed_sort_filter">Sortera och filtrera</string>
+    <string name="installed_sort_by">Sortera efter</string>
+    <string name="installed_sort_name">Namn</string>
+    <string name="installed_sort_date_installed">Installationsdatum</string>
+    <string name="installed_sort_date_updated">Uppdateringsdatum</string>
+    <string name="installed_sort_package_name">Paketnamn</string>
+    <string name="installed_sort_size">Storlek</string>
+    <string name="installed_sort_ascending">Stigande</string>
+    <string name="installed_sort_descending">Fallande</string>
+    <string name="installed_filter">Filtrera</string>
+    <string name="installed_filter_user_apps">Användarappar</string>
+    <string name="installed_filter_system_apps">Systemappar</string>
+    <string name="installed_filter_installer">Installerad från</string>
+    <string name="installed_filter_all">Alla</string>
+    <string name="installed_updated_at">Uppdaterad <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="action_check">Kontrollera</string>
+    <string name="installer_fallback_session">Det valda installationsprogrammet är inte tillgängligt. Standardinstallationsprogrammet används i stället.</string>
+    <string name="app_lock_summary">Kräv biometrisk autentisering eller skärmlåsautentisering för att öppna Aurora Store.</string>
+    <string name="app_lock_no_credential">Konfigurera först ett skärmlås (PIN-kod, mönster, lösenord eller biometrisk autentisering) på enheten.</string>
+    <string name="app_lock_prompt_subtitle">Ange telefonens skärmlåsmönster, PIN-kod, lösenord eller fingeravtryck</string>
+    <string name="pref_self_update_desc">Erbjud nya versioner av Aurora Store på fliken Uppdateringar.</string>
+    <string name="pref_notification_progress_desc">Visa detaljerat förlopp när appar hämtas och uppdateras. När alternativet är avstängt håller en enda diskret avisering hämtningarna igång i bakgrunden.</string>
+    <string name="pref_notification_categories_desc">Anpassa ljud och prioritet för varje typ av avisering</string>
+    <string name="updates_self_header">Självuppdatering</string>
+    <string name="updates_self_desc">En nyare version av Aurora Store är tillgänglig</string>
+    <string name="status_installing">Installerar</string>
+    <string name="status_installed">Installerad</string>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d app har installerats</item>
+        <item quantity="other">%d appar har installerats</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">Installationen av %d app misslyckades</item>
+        <item quantity="other">Installationen av %d appar misslyckades</item>
+    </plurals>
+    <string name="details_review_delete_message">Ditt betyg och din recension tas bort från Google Play.</string>
+    <string name="confirm_deeplink_summary">Fråga innan en applistning öppnas från en länk, så att annonser inte kan starta Aurora Store utan ditt samtycke.</string>
+    <string name="install_favourites_warning">Du kan få en separat installationsfråga för varje app.</string>
+    <string name="pref_ui_dynamic_color">Dynamiska färger</string>
+    <string name="pref_ui_dynamic_color_desc">Använd färger från bakgrundsbilden. Stäng av alternativet för Auroras varumärkesfärgpalett.</string>
+    <string name="toast_fav_install_enqueued">Installerar %1$d appar</string>
+    <string name="toast_fav_install_none">Inget att installera</string>
+    <string name="toast_fav_install_failed">Kunde inte hämta appdetaljer</string>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d favorit</item>
+        <item quantity="other">%1$d favoriter</item>
+    </plurals>
+    <string name="account_refresh_all">Uppdatera alla konton</string>
+    <string name="account_refreshing">Uppdaterar konton …</string>
+    <string name="account_refresh_done">Alla konton har uppdaterats</string>
+    <string name="account_switch_failed">Kunde inte uppdatera kontot, så standardkontot ändrades inte.</string>
+    <string name="account_add_failed">Kunde inte lägga till kontot. Försök igen.</string>
+    <plurals name="account_count">
+        <item quantity="one">Sammanlagt %1$d konto</item>
+        <item quantity="other">Sammanlagt %1$d konton</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Kunde inte uppdatera %1$d konto</item>
+        <item quantity="other">Kunde inte uppdatera %1$d konton</item>
+    </plurals>
+    <string name="pref_updates_warn_trackers_desc">Visa en varning före uppdatering när den nya versionen lägger till spårare som inte fanns i den installerade versionen</string>
+    <string name="manual_download_lookup">Sök efter versioner</string>
+    <string name="manual_download_select_version">Välj en version</string>
+    <string name="manual_download_no_versions">Inga kända versioner hittades</string>
+    <string name="manual_download_availability_warning">Vissa versioner kanske inte går att hämta eller är inkompatibla med enheten.</string>
+    <string name="details_more_certificate_hash">Certifikathash</string>
 </resources>
