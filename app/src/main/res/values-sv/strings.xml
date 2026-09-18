@@ -469,7 +469,7 @@
     <string name="action_filter_no_ads">Ingen reklam</string>
     <string name="action_filter_no_gms">Inga speltjänster</string>
     <string name="loading">Nedladdning pågår</string>
-    <string name="page">Sida <xliff:g id="nummer">%1$d</xliff:g></string>
+    <string name="page">Sida <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_retry">Försök igen</string>
     <string name="preparing_to_download">Förbereder för att ladda ner</string>
     <string name="verifying_downloads">Verifierar nedladdningar</string>
