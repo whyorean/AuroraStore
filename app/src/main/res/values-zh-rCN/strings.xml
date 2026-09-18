@@ -614,7 +614,7 @@
     <string name="pref_updates_warn_trackers">警告应用更新中的新跟踪器</string>
     <string name="pref_updates_warn_trackers_desc">当新版本添加了已安装版本没有的跟踪器时在更新前显示警告</string>
     <string name="tracker_warning_title">检测到新跟踪器</string>
-    <string name="tracker_warning_desc">此更新添加了不在已安装版本中的跟踪器：</string>
+    <string name="tracker_warning_desc">此更新添加了不在已安装版本中的跟踪器</string>
     <string name="manual_download_lookup">查找版本</string>
     <string name="manual_download_select_version">选择版本</string>
     <string name="manual_download_no_versions">没找到已知版本</string>
