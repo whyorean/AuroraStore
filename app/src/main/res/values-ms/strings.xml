@@ -421,7 +421,7 @@
     <string name="microg_installer_subtitle">Memerlukan aplikasi pembantu microG dipasang</string>
     <string name="microg_installer_desc">Membantu melepasi semakan Integriti Aplikasi (pemasang sahaja)</string>
     <string name="am_installer_subtitle">Pengurus pakej sumber terbuka dengan fungsi lengkap</string>
-    <string name="am_installer_desc">Memerlukan pengurus apl. Mod ADB/Root diperlukan untuk pemasangan jika pengoptimuman MIUI diaktifkan</string>
+    <string name="am_installer_desc">Memerlukan pengurus apl. Mod ADB/root diperlukan untuk pemasangan jika pengoptimuman MIUI diaktifkan</string>
     <string name="shizuku_installer_subtitle">Menggunakan API sistem secara terus dengan keistimewaan ADB/Root</string>
     <string name="shizuku_installer_desc">Memerlukan Shizuku atau Sui, perlu ditetapkan dan diberi kebenaran</string>
     <string name="manual_download_hint">Masukkan kod versi yang anda ingin muat turun</string>
@@ -605,4 +605,19 @@
     <plurals name="account_refresh_failed">
         <item quantity="other">Tidak dapat menyegar semula %1$d akaun</item>
     </plurals>
+    <string name="account_exists">Akaun telah ditambah</string>
+    <string name="action_update_anyway">Kemas kini juga</string>
+    <string name="exodus_report_history">Sejarah versi</string>
+    <string name="exodus_history_subtitle">%1$s • %2$d alat penjejak</string>
+    <string name="exodus_history_version">%1$s (%2$s)</string>
+    <string name="exodus_latest">Terkini</string>
+    <string name="pref_updates_warn_trackers">Berikan amaran tentang penjejak baharu dalam kemas kini aplikasi</string>
+    <string name="pref_updates_warn_trackers_desc">Paparkan amaran sebelum mengemas kini apabila versi baharu menambah penjejak yang tiada dalam versi yang dipasang</string>
+    <string name="tracker_warning_title">Penjejak baharu dikesan</string>
+    <string name="tracker_warning_desc">Kemas kini ini menambah penjejak yang tiada dalam versi yang dipasang:</string>
+    <string name="manual_download_lookup">Semak versi</string>
+    <string name="manual_download_select_version">Pilih versi</string>
+    <string name="manual_download_no_versions">Tiada versi yang diketahui ditemui</string>
+    <string name="manual_download_availability_warning">Sesetengah versi mungkin tidak tersedia untuk dimuat turun atau tidak serasi dengan peranti anda.</string>
+    <string name="details_more_certificate_hash">Hash sijil</string>
 </resources>
