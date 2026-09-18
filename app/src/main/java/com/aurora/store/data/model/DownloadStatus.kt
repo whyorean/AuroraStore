@@ -17,6 +17,7 @@ enum class DownloadStatus(@StringRes val localized: Int) {
     UNAVAILABLE(R.string.status_unavailable),
     VERIFYING(R.string.status_verifying),
     PURCHASING(R.string.preparing_to_install),
+    AWAITING_INSTALL(R.string.status_awaiting_install),
     INSTALLING(R.string.status_installing),
     INSTALLED(R.string.status_installed);
 
@@ -33,6 +34,8 @@ enum class DownloadStatus(@StringRes val localized: Int) {
         val processing = setOf(PURCHASING, DOWNLOADING, VERIFYING)
 
         /** States reached only once the download was handed off to the installer. */
-        val installerStates = setOf(INSTALLING, INSTALLED)
+        val installerStates = setOf(AWAITING_INSTALL, INSTALLING, INSTALLED)
+
+        val installable = setOf(COMPLETED, AWAITING_INSTALL)
     }
 }

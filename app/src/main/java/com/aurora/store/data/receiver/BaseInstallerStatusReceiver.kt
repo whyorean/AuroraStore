@@ -21,11 +21,24 @@ import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
 import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.installer.base.InstallerBase
+import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.launch
+
+@EntryPoint
+@InstallIn(SingletonComponent::class)
+internal interface InstallerStatusEntryPoint {
+    fun downloadDao(): DownloadDao
+}
 
 abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
 
@@ -61,6 +74,8 @@ abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
             }
 
             if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+                parkAwaitingInstall(context, packageName)
+                AuroraApp.events.send(InstallerEvent.PendingUserAction(packageName))
                 doAppropriatePrompt(context, intent, sessionId)
             } else {
                 AuroraApp.enqueuedInstalls.remove(packageName)
@@ -68,6 +83,23 @@ abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
 
                 postStatus(status, packageName, extra, context)
             }
+        }
+    }
+
+    private fun parkAwaitingInstall(context: Context, packageName: String) {
+        val downloadDao = EntryPointAccessors
+            .fromApplication(context, InstallerStatusEntryPoint::class.java)
+            .downloadDao()
+
+        AuroraApp.scope.launch {
+            runCatching {
+                val existing = downloadDao.getDownload(packageName)
+                // A stale session can report back while a newer version is mid-download; parking
+                // the row then would clobber that download and free the serialization slot.
+                if (existing.status != DownloadStatus.INSTALLED && !existing.isActive) {
+                    downloadDao.updateStatus(packageName, DownloadStatus.AWAITING_INSTALL)
+                }
+            }.onFailure { Log.e(TAG, "Failed to park $packageName", it) }
         }
     }
 
@@ -93,18 +125,31 @@ abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
                 Intent::class.java
             )
 
-            if (launchIntent != null) {
-                launchIntent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-                launchIntent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
-                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
-                try {
-                    context.startActivity(launchIntent)
-                } catch (exception: Exception) {
-                    Log.e(TAG, "Failed to launch intent!", exception)
-                }
-            } else {
+            if (launchIntent == null) {
                 Log.w(TAG, "No launch intent found in the installation request.")
+                return@runOnUiThread
+            }
+
+            launchIntent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
+            launchIntent.putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
+            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            if (!AuroraApp.isForeground) {
+                Log.i(TAG, "Aurora is backgrounded, notifying instead of prompting")
+                val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: return@runOnUiThread
+                NotificationUtil.notifyInstallPrompt(
+                    context = context,
+                    packageName = packageName,
+                    displayName = intent.getStringExtra(EXTRA_DISPLAY_NAME) ?: packageName,
+                    confirmIntent = launchIntent
+                )
+                return@runOnUiThread
+            }
+
+            try {
+                context.startActivity(launchIntent)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to launch intent!", exception)
             }
         }
     }

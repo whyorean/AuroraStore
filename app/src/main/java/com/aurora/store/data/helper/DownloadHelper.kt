@@ -28,12 +28,13 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.data.room.suite.ExternalApk
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.work.DownloadWorker
+import com.aurora.store.util.NotificationUtil
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -69,11 +70,14 @@ class DownloadHelper @Inject constructor(
 
     val pagedDownloads get() = downloadDao.pagedDownloads()
 
+    val pendingInstalls = downloadDao.pendingInstalls()
+        .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
+
     /**
      * One-shot read of the current download record for [packageName], if any.
      */
     suspend fun getDownload(packageName: String): Download? =
-        downloadDao.downloads().first().find { it.packageName == packageName }
+        runCatching { downloadDao.getDownload(packageName) }.getOrNull()
 
     /**
      * Removes failed download from the queue and starts observing for newly enqueued apps.
@@ -83,9 +87,24 @@ class DownloadHelper @Inject constructor(
             val downloads = downloadDao.downloads().firstOrNull() ?: emptyList()
             cancelFailedDownloads(downloads)
             finalizeStaleSelfUpdate(downloads)
+            recoverStalledInstalls(downloads)
         }.invokeOnCompletion {
             observeDownloads()
             observeInstalls()
+        }
+    }
+
+    private suspend fun recoverStalledInstalls(downloads: List<Download>) {
+        downloads.filter {
+            it.packageName != context.packageName &&
+                it.status in setOf(DownloadStatus.COMPLETED, DownloadStatus.INSTALLING) &&
+                it.hasDownloadedFiles(context) &&
+                !PackageUtil.isInstalled(context, it.packageName, it.versionCode)
+        }.forEach {
+            Log.i(TAG, "Recovering stalled install for ${it.packageName}")
+            downloadDao.updateStatus(it.packageName, DownloadStatus.AWAITING_INSTALL)
+            WorkManager.getInstance(context)
+                .cancelAllWorkByTag("$PACKAGE_NAME:${it.packageName}")
         }
     }
 
@@ -117,8 +136,8 @@ class DownloadHelper @Inject constructor(
      *   [DownloadStatus.INSTALLING];
      * - [InstallerEvent.Installed] marks it [DownloadStatus.INSTALLED] (kept so the user can
      *   still export the APK);
-     * - [InstallerEvent.Failed] reverts an in-progress install back to
-     *   [DownloadStatus.COMPLETED] so the downloaded files can be re-installed without
+     * - [InstallerEvent.Failed] reverts an in-progress install to
+     *   [DownloadStatus.AWAITING_INSTALL] so the downloaded files can be re-installed without
      *   re-downloading.
      */
     private fun observeInstalls() {
@@ -133,8 +152,20 @@ class DownloadHelper @Inject constructor(
                     downloadDao.updateStatus(event.packageName, DownloadStatus.INSTALLED)
                 }
 
-                is InstallerEvent.Failed -> if (existing.status == DownloadStatus.INSTALLING) {
-                    downloadDao.updateStatus(event.packageName, DownloadStatus.COMPLETED)
+                is InstallerEvent.Failed -> if (
+                    existing.status in setOf(
+                        DownloadStatus.INSTALLING,
+                        DownloadStatus.AWAITING_INSTALL
+                    )
+                ) {
+                    downloadDao.updateStatus(
+                        event.packageName,
+                        if (existing.hasDownloadedFiles(context)) {
+                            DownloadStatus.AWAITING_INSTALL
+                        } else {
+                            DownloadStatus.COMPLETED
+                        }
+                    )
                 }
 
                 else -> {}
@@ -236,6 +267,33 @@ class DownloadHelper @Inject constructor(
             }
         }
         downloadDao.insert(download)
+    }
+
+    suspend fun installPending(packageName: String): Boolean {
+        val existing = getDownload(packageName) ?: return false
+        if (!existing.canInstall(context)) {
+            // Auto-delete may have removed the APKs after an earlier install attempt. Nothing
+            // is installable, so re-download rather than leaving the action doing nothing.
+            Log.i(TAG, "Files for $packageName are gone, re-queueing download")
+            retryDownload(packageName)
+            return false
+        }
+        Log.i(TAG, "Re-triggering install for $packageName")
+        NotificationUtil.clearAppNotification(context, packageName)
+        return runCatching {
+            appInstaller.getPreferredInstaller(notifyOnFallback = true).install(existing)
+            true
+        }.getOrElse {
+            Log.e(TAG, "Failed to install $packageName", it)
+            false
+        }
+    }
+
+    suspend fun dismissPendingInstall(packageName: String, versionCode: Long) {
+        Log.i(TAG, "Dismissing pending install for $packageName")
+        runCatching { appInstaller.getPreferredInstaller().cancelInstall(packageName) }
+        NotificationUtil.clearAppNotification(context, packageName)
+        clearDownload(packageName, versionCode)
     }
 
     /**

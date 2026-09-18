@@ -59,6 +59,10 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom11To12(db)
     }
 
+    val MIGRATION_12_13 = object : Migration(12, 13) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom12To13(db)
+    }
+
     private const val TAG = "MigrationHelper"
 
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
@@ -298,6 +302,32 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 11 to 12", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    /**
+     * Add the notification table backing the in-app notification centre.
+     */
+    private fun migrateFrom12To13(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "CREATE TABLE IF NOT EXISTS `notification` (" +
+                    "`id` TEXT NOT NULL, " +
+                    "`type` TEXT NOT NULL, " +
+                    "`title` TEXT NOT NULL, " +
+                    "`body` TEXT NOT NULL, " +
+                    "`packageName` TEXT, " +
+                    "`url` TEXT, " +
+                    "`timestamp` INTEGER NOT NULL, " +
+                    "`isRead` INTEGER NOT NULL, " +
+                    "PRIMARY KEY(`id`))"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 12 to 13", exception)
         } finally {
             database.endTransaction()
         }

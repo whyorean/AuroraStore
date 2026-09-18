@@ -57,6 +57,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_TRACKERS
 import com.aurora.store.viewmodel.all.UpdatesViewModel
+import com.aurora.store.viewmodel.notifications.NotificationsViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
@@ -74,6 +75,7 @@ fun MainScreen(
     initialTab: Int = 0,
     mainViewModel: MainViewModel = hiltViewModel(),
     updatesViewModel: UpdatesViewModel = hiltViewModel(),
+    notificationsViewModel: NotificationsViewModel = hiltViewModel(),
     onNavigateTo: (Destination) -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -82,6 +84,7 @@ fun MainScreen(
         initialValue = null
     )
     val updateCount = updates?.size ?: 0
+    val notificationCount by notificationsViewModel.unreadCount.collectAsStateWithLifecycle()
     val downloads by updatesViewModel.downloadsList.collectAsStateWithLifecycle()
 
     val coroutineScope = rememberCoroutineScope()
@@ -150,6 +153,18 @@ fun MainScreen(
                 title = stringResource(MainTab.entries[pagerState.currentPage].labelRes),
                 showNavigationIcon = false,
                 actions = {
+                    IconButton(onClick = { onNavigateTo(Destination.Notifications) }) {
+                        BadgedBox(
+                            badge = {
+                                if (notificationCount > 0) Badge { Text("$notificationCount") }
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_notifications_black_24dp),
+                                contentDescription = stringResource(R.string.title_notifications)
+                            )
+                        }
+                    }
                     IconButton(onClick = { onNavigateTo(Destination.Downloads) }) {
                         Icon(
                             painter = painterResource(R.drawable.ic_download_manager),

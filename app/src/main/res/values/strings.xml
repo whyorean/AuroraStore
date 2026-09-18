@@ -590,6 +590,11 @@
     <string name="status_verifying">Verifying</string>
     <string name="status_installing">Installing</string>
     <string name="status_installed">Installed</string>
+    <string name="status_awaiting_install">Waiting for confirmation</string>
+
+    <!-- Notifications -->
+    <string name="notification_install_prompt_pending">Tap to finish installing</string>
+    <string name="notification_none">Nothing to see here</string>
 
     <!-- UnarchivePackageReceiver -->
     <string name="authentication_required_title">Authentication required</string>

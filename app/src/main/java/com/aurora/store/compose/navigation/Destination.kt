@@ -24,6 +24,7 @@ sealed class Destination {
 
     data object Search : Destination()
     data object Downloads : Destination()
+    data object Notifications : Destination()
 
     data class StreamBrowse(val cluster: StreamCluster) : Destination()
     data class ExpandedStreamBrowse(val title: String, val browseUrl: String) : Destination()

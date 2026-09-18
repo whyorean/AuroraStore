@@ -6,8 +6,10 @@
 
 package com.aurora.store
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.os.Bundle
 import android.util.Log.DEBUG
 import android.util.Log.INFO
 import androidx.compose.material3.ComposeMaterial3Flags
@@ -60,6 +62,10 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
 
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
         val events = EventFlow()
+
+        private var startedActivities = 0
+
+        val isForeground get() = startedActivities > 0
     }
 
     override fun onCreate() {
@@ -80,6 +86,8 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         // Create Notification Channels
         NotificationUtil.createNotificationChannel(this)
 
+        registerActivityLifecycleCallbacks(foregroundTracker)
+
         // Initialize Download and Update helpers to observe and trigger downloads
         downloadHelper.init()
         updateHelper.init()
@@ -93,6 +101,22 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         )
 
         CommonUtil.cleanupInstallationSessions(applicationContext)
+    }
+
+    private val foregroundTracker = object : ActivityLifecycleCallbacks {
+        override fun onActivityStarted(activity: Activity) {
+            startedActivities++
+        }
+
+        override fun onActivityStopped(activity: Activity) {
+            startedActivities = (startedActivities - 1).coerceAtLeast(0)
+        }
+
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+        override fun onActivityResumed(activity: Activity) {}
+        override fun onActivityPaused(activity: Activity) {}
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+        override fun onActivityDestroyed(activity: Activity) {}
     }
 
     override fun newImageLoader(context: Context): ImageLoader = ImageLoader(this).newBuilder()

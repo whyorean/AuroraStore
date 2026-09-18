@@ -318,6 +318,44 @@ object NotificationUtil {
         refreshGroupSummaries(context)
     }
 
+    fun notifyInstallPrompt(
+        context: Context,
+        packageName: String,
+        displayName: String,
+        confirmIntent: Intent
+    ) {
+        val pendingIntent = PendingIntentCompat.getActivity(
+            context,
+            packageName.hashCode().absoluteValue,
+            confirmIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT,
+            false
+        )
+
+        val notification = NotificationCompat.Builder(
+            context,
+            Constants.NOTIFICATION_CHANNEL_ALERTS
+        )
+            .setSmallIcon(R.drawable.ic_install)
+            .setContentTitle(displayName)
+            .setContentText(context.getString(R.string.notification_install_prompt_pending))
+            .setContentIntent(pendingIntent)
+            .setCategory(Notification.CATEGORY_RECOMMENDATION)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .addAction(
+                NotificationCompat.Action.Builder(
+                    R.drawable.ic_install,
+                    context.getString(R.string.action_install),
+                    pendingIntent
+                ).build()
+            )
+            .build()
+
+        context.getSystemService<NotificationManager>()!!
+            .notify(packageName.hashCode(), notification)
+    }
+
     /**
      * Posts the grouped install-failure notification (with a retry action) and refreshes the
      * failure group summary.

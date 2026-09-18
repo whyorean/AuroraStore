@@ -28,6 +28,8 @@ open class InstallerEvent(open val packageName: String) : Event() {
         val progress: Float = 0.0F
     ) : InstallerEvent(packageName)
 
+    data class PendingUserAction(override val packageName: String) : InstallerEvent(packageName)
+
     data class Failed(
         override val packageName: String,
         val error: String? = null,

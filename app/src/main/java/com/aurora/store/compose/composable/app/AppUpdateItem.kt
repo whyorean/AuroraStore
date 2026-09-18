@@ -47,7 +47,8 @@ fun AppUpdateItem(
     // Only the INSTALLING status shows as "Installing"; a downloaded-but-not-installed
     // (COMPLETED) app falls back to the "Update" action. isChecking is the pre-download
     // tracker check, shown with the same indeterminate progress + Cancel as an active download.
-    val inProgress = isChecking || (download != null && !download.isFinished)
+    val inProgress = isChecking ||
+        (download != null && !download.isFinished && !download.isAwaitingInstall)
     val installing = download?.status == DownloadStatus.INSTALLING
     val progress = if (download?.status == DownloadStatus.DOWNLOADING) {
         download.progress.toFloat()

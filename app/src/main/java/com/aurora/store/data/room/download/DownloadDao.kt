@@ -41,6 +41,15 @@ interface DownloadDao {
     @Query("SELECT * FROM download")
     fun downloads(): Flow<List<Download>>
 
+    @Query(
+        """
+        SELECT * FROM download
+        WHERE downloadStatus = 'AWAITING_INSTALL'
+        ORDER BY downloadedAt DESC
+        """
+    )
+    fun pendingInstalls(): Flow<List<Download>>
+
     @Query("SELECT * FROM download ORDER BY downloadedAt DESC")
     fun pagedDownloads(): PagingSource<Int, Download>
 
