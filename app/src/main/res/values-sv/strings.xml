@@ -285,7 +285,7 @@
     <string name="android_market_desc">Android Market var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter, gick i pension 2017.</string>
     <string name="details_ratings_title_hint">Recensera titel</string>
     <string name="pref_network_proxy_url">Proxyn\'s URL</string>
-    <string name="pref_updates_check_frequency_desc">Konfigurera intervall för automatiska självuppdateringar, i timmar.</string>
+    <string name="pref_updates_check_frequency_desc">Ange hur ofta Aurora söker efter appuppdateringar.</string>
     <string name="pref_aurora_only">Filtrera appar från andra källor.</string>
     <string name="toast_proxy_invalid">Ogiltig URL för proxy, kontrollera formatet!</string>
     <string name="pref_aurora_only_desc">Kontrollera inte efter uppdateringar för appar installerade från källor utanför Aurora Store</string>
@@ -312,7 +312,7 @@
     <string name="action_home_screen">Lägg till på hemskärmen</string>
     <string name="action_uninstall_success">Avinstallationen lyckades</string>
     <string name="details_no_favourites">Inga favorit-appar hittades</string>
-    <string name="pref_updates_incompatible_desc">Visa uppdateringar för inkompatibla eller inaktiverade appar som kan misslyckas med att installera</string>
+    <string name="pref_updates_incompatible_desc">Visa uppdateringar för inkompatibla eller inaktiverade appar som kanske inte går att installera.</string>
     <string name="root_installer_desc">Kräver privilegier för root/superanvändare, har stöd för alla Android-versioner.</string>
     <string name="shizuku_installer_subtitle">Använder systemets API:er direkt med privilegier för adb/root</string>
     <string name="manage_account">Hantera ditt konto</string>
@@ -405,7 +405,7 @@
     <string name="manual_download_version_error">Versionskod kan endast innehålla siffror</string>
     <string name="made_with_love">Tillverkad med <xliff:g id="heart_emoji">%1$s</xliff:g> i Indien</string>
     <string name="about_aurora_store_title">Om Aurora Store</string>
-    <string name="about_aurora_store_summary">Aurora Store gör att du kan söka och ladda ner appar från den officiella Google Play Store. Du kan kontrollera appbeskrivningar, skärmdumpar, uppdateringar, andra användares kommentarer och ladda ner APK-filen direkt från Google Play till din enhet. För att använda Aurora Store måste du ha ett Google Play-konto och logga in på ditt Google Play-konto när du första gången öppnar och konfigurerar Aurora Store.\n\nTill skillnad från en traditionell appbutik äger Aurora Store inte, licensierar eller distribuerar några appar. Alla appar, appbeskrivningar, skärmdumpar och annat innehåll i Aurora Store är direkt hämtade, nedladdade och/eller visas från Google Play. Aurora Store fungerar precis som en dörr eller en webbläsare, så att du kan logga in på ditt Google Play-konto och hitta apparna från Google Play.\n\nObservera att Aurora Store har inget godkännande, sponsring eller tillstånd från Google, Google Play, några appar som laddats ner via Aurora Store eller någon apputvecklare; inte heller har Aurora Store någon anslutning, samarbete eller koppling till dem.</string>
+    <string name="about_aurora_store_summary">Aurora Store gör att du kan söka efter och hämta appar från den officiella Google Play Store. Du kan se appbeskrivningar, skärmbilder, uppdateringar och andra användares kommentarer samt hämta APK-filen direkt från Google Play till din enhet. För att använda Aurora Store loggar du in med ett Google Play-konto när du först öppnar och konfigurerar appen.\n\nTill skillnad från en traditionell appbutik äger, licensierar eller distribuerar Aurora Store inga appar. Alla appar, appbeskrivningar, skärmbilder och allt annat innehåll i Aurora Store hämtas direkt från, laddas ned från och/eller visas från Google Play. Aurora Store fungerar precis som en dörr eller en webbläsare och gör det möjligt för dig att logga in på ditt Google Play-konto och hitta appar från Google Play.\n\nObservera att Aurora Store varken har något godkännande, stöd eller tillstånd från Google, Google Play, appar som hämtas via Aurora Store eller apputvecklare, och inte heller någon anknytning, något samarbete eller annan koppling till dem.</string>
     <string name="pref_clear_device_owner_title">Rensa enhetsägare</string>
     <string name="pref_clear_device_owner_desc">Detta kommer att återkalla sessionsinstallerarens tillstånd att tyst installera appar. Fortsätt med rensa enhet ägande?</string>
     <string name="pref_dispenser_title">Hantera fördelare</string>
