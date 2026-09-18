@@ -176,8 +176,8 @@
     <string name="about_gitlab">GitLab</string>
     <string name="about_fdroid_summary">Hämta Aurora-butiken via F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
-    <string name="about_bitcoin_eth_summary">Donera via Eterium (ETH)</string>
-    <string name="about_bitcoin_eth">Eterium</string>
+    <string name="about_bitcoin_eth_summary">Donera via Ethereum (ETH)</string>
+    <string name="about_bitcoin_eth">Ethereum</string>
     <string name="about_bitcoin_btc_summary">Donera via Bitcoin (BTC)</string>
     <string name="about_bitcoin_btc">Bitcoin</string>
     <string name="about_bitcoin_bch_summary">Donera via Bitcoin-pengar (BCH)</string>
@@ -214,7 +214,7 @@
     <string name="installer_service_misconfigured">Ställ in Aurora-tjänster och godkänn alla behörigheter först.</string>
     <string name="device_miui_description">Snälla, inaktivera MIUI-optimeringar för att tillåta installationer, annars kan du välja installationsprogrammet för Root eller Tjänster.</string>
     <string name="installer_am_unavailable">Installera app-hanteraren eller ändra på installationsprogrammet.</string>
-    <string name="action_get_local_apk">Spara appaket</string>
+    <string name="action_get_local_apk">Spara apppaket</string>
     <string name="pref_common_extra">Extra</string>
     <string name="pref_install_mode_am">Installationsprogrammet AM</string>
     <string name="pref_install_mode_native">Inbyggt installationsprogram (Föråldrat)</string>
@@ -282,7 +282,7 @@
     <string name="notification_channel_updates">Uppdateringsaviseringar</string>
     <string name="permissions_denied">Behörigheter som krävs nekades. Vänligen godkänn dessa för att fortsätta åtgärden</string>
     <string name="pref_install_mode_shizuku">Installationsprogrammet Shizuku</string>
-    <string name="android_market_desc">Android Market var en nätbaserad butik som erbjöd mjukvaru-applikationer gjorda för Android-enheter, gick i pension 2017.</string>
+    <string name="android_market_desc">Android Market var en nätbutik som erbjöd program för Android-enheter och avvecklades 2017.</string>
     <string name="details_ratings_title_hint">Recensera titel</string>
     <string name="pref_network_proxy_url">Proxyn\'s URL</string>
     <string name="pref_updates_check_frequency_desc">Ange hur ofta Aurora söker efter appuppdateringar.</string>
@@ -364,7 +364,7 @@
     <string name="item_optional">Valfritt</string>
     <string name="set">Ställ in</string>
     <string name="filter_latest">Senaste</string>
-    <string name="details_compatibility_title">Kompabilitet</string>
+    <string name="details_compatibility_title">Kompatibilitet</string>
     <string name="default_spoof">Standard</string>
     <string name="available_spoof">Tillgänglig</string>
     <string name="disable">Inaktivera</string>
@@ -413,7 +413,7 @@
     <string name="no_dispensers_available">Inga utdelare tillgängliga</string>
     <string name="add_dispenser_title">Lägg till utdelare</string>
     <string name="add_dispenser_summary">Lägg till en tokenutdelare till Aurora Store. Tokenutdelare ger kontouppgifter till Aurora Store för anonym inloggning.</string>
-    <string name="add_dispenser_hint">Utdelaradress</string>
+    <string name="add_dispenser_hint">Dispenser-URL</string>
     <string name="remove_dispenser_title">Ta bort utdelare?</string>
     <string name="remove_dispenser_summary">Vill du ta bort utdelaren \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
     <string name="toast_black_import_failed">Misslyckades med att importera svartlista!</string>
@@ -520,19 +520,19 @@
     <string name="notification_group_alerts">Varningar</string>
     <string name="pref_updates_warn_trackers">Varna för nya spårare i appuppdateringar</string>
     <string name="pref_self_update">Självuppdatera</string>
-    <string name="pref_source_filters_title">Filtrera appear från andra källor</string>
+    <string name="pref_source_filters_title">Filtrera appar från andra källor</string>
     <string name="pref_source_filters_desc_all">Skippa varje app inte installerad av Aurora Store</string>
     <string name="tracker_warning_title">Inga spårare upptäckta</string>
-    <string name="tracker_warning_desc">Den här uppdateringen lägger till spårare som inte var i den installerade verionen:</string>
+    <string name="tracker_warning_desc">Den här uppdateringen lägger till spårare som inte fanns i den installerade versionen:</string>
     <string name="title_install_favourites">Installera favoriter?</string>
     <string name="install_favourites_summary">Det har vill ladda ner och installera %1$d appar.</string>
     <string name="title_notifications">Notifieringar</string>
-    <string name="pref_notification_progress">Visa nedladdningsframmsteg</string>
+    <string name="pref_notification_progress">Visa nedladdningsförlopp</string>
     <string name="pref_notification_categories">Kategorier</string>
     <string name="pref_notification_disabled">Notifieringar är avstängda</string>
     <string name="pref_notification_disabled_desc">Klicka för att sätta på Notifieringar för Aurora Store</string>
     <string name="updates_incompatible_header">Inkompatibla uppdateringar</string>
-    <string name="updates_incompatible_desc">De här sytemappara kan inte installeras på det här operativsystemet</string>
+    <string name="updates_incompatible_desc">De här systemapparna kan inte installeras på detta operativsystem</string>
     <string name="pref_source_filters_desc_none">Inga installationsprogram har uteslutits</string>
     <string name="pref_source_filters_desc_count">%1$d installationsprogram har uteslutits</string>
     <string name="source_filters_all">Filtrera alla andra installationsprogram</string>
