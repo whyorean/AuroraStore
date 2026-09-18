@@ -1,0 +1,9 @@
+• Gränssnittet byggdes om med moderna Jetpack Compose
+• Stöd för flera Google-konton
+• Användarrecensioner på appdetaljsidan
+• Valfritt applås med biometriska uppgifter eller enhetens inloggningsuppgifter
+• Installation med ett klick för favoriter och ett köpflöde för betalappar
+• Omarbetade aviseringar med grupperade sammanfattningar och inställningar
+• Förnyad uppdateringsskärm; självuppdateringar visas nu i listan
+• Tillförlitligare hämtningar och installationer samt stöd för microG-installationsprogram
+• Felrättningar och översättningsuppdateringar
