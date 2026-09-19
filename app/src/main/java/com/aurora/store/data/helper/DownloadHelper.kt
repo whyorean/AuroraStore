@@ -80,6 +80,17 @@ class DownloadHelper @Inject constructor(
         runCatching { downloadDao.getDownload(packageName) }.getOrNull()
 
     /**
+     * Whether [enqueue] would actually fetch files for [packageName] at [versionCode], rather
+     * than install what an earlier download already left on disk.
+     */
+    suspend fun needsDownload(packageName: String, versionCode: Long): Boolean {
+        val existing = getDownload(packageName)
+        return existing == null ||
+            existing.versionCode != versionCode ||
+            !existing.canInstall(context)
+    }
+
+    /**
      * Removes failed download from the queue and starts observing for newly enqueued apps.
      */
     fun init() {

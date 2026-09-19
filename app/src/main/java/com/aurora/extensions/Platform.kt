@@ -13,6 +13,9 @@ import java.util.Locale
 val isNAndAbove: Boolean
     get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
+val isNMR1AndAbove: Boolean
+    get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1
+
 val isOAndAbove: Boolean
     get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 

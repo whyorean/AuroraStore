@@ -47,6 +47,7 @@ import com.aurora.extensions.toast
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.FavouriteListItem
+import com.aurora.store.compose.composable.InsufficientStorageDialog
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SectionHeader
@@ -57,8 +58,10 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.commons.InstallFavouritesDialog
 import com.aurora.store.compose.ui.favourite.menu.FavouriteMenu
 import com.aurora.store.compose.ui.favourite.menu.MenuItem
+import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.util.StorageUtil
 import com.aurora.store.viewmodel.all.FavouriteViewModel
 import java.util.Calendar
 import kotlin.random.Random
@@ -76,6 +79,11 @@ fun FavouriteScreen(
         .collectAsStateWithLifecycle()
     val downloads by viewModel.downloadsList.collectAsStateWithLifecycle()
     val downloadMap = remember(downloads) { downloads.associateBy { it.packageName } }
+    var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
+
+    LaunchedEffect(Unit) {
+        viewModel.storageWarning.collect { storageWarning = it }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.enqueueResult.collect { count ->
@@ -131,6 +139,17 @@ fun FavouriteScreen(
             )
         }
     )
+
+    storageWarning?.let { requirement ->
+        InsufficientStorageDialog(
+            requirement = requirement,
+            onFreeUpSpace = {
+                storageWarning = null
+                StorageUtil.openFreeUpSpace(context)
+            },
+            onDismiss = { storageWarning = null }
+        )
+    }
 }
 
 @Composable

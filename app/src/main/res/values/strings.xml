@@ -108,6 +108,7 @@
     <string name="action_share">"Share"</string>
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_uninstall_success">"Successfully uninstalled"</string>
+    <string name="action_free_up_space">Free up space</string>
     <string name="action_home_screen">Add to home screen</string>
     <string name="action_info">"App info"</string>
     <string name="action_update">"Update"</string>
@@ -327,6 +328,9 @@
     <string name="title_installation">"Installation"</string>
     <string name="title_installed">"Installed"</string>
     <string name="title_installer">"App installer"</string>
+    <string name="insufficient_storage_title">Not enough space</string>
+    <string name="insufficient_storage_desc">%1$s needs %2$s, but only %3$s is available.</string>
+    <string name="insufficient_storage_hint">Free up %1$s and try again.</string>
     <string name="title_install_favourites">"Install favourites?"</string>
     <string name="install_favourites_summary">"This will download and install %1$d apps."</string>
     <string name="install_favourites_warning">"You may see a separate installation prompt for each app."</string>
@@ -637,6 +641,10 @@
     <plurals name="permissions_required">
         <item quantity="one">Permission required</item>
         <item quantity="other">Permissions required</item>
+    </plurals>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d app needs %2$s, but only %3$s is available.</item>
+        <item quantity="other">%1$d apps need %2$s, but only %3$s is available.</item>
     </plurals>
     <plurals name="favourites_count">
         <item quantity="one">%1$d favourite</item>

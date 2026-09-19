@@ -18,12 +18,14 @@ import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
+import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.favourite.ImportExport
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.StorageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -68,6 +70,9 @@ class FavouriteViewModel @Inject constructor(
     // applicable, -1 when fetching details failed) so the screen can show accurate feedback.
     private val _enqueueResult = MutableSharedFlow<Int>()
     val enqueueResult = _enqueueResult.asSharedFlow()
+
+    private val _storageWarning = MutableSharedFlow<StorageRequirement>()
+    val storageWarning = _storageWarning.asSharedFlow()
 
     // Whether at least one favourite is still not installed, recomputed whenever the favourites
     // list changes or any app is installed/removed. Drives visibility of the "Install all"
@@ -132,7 +137,8 @@ class FavouriteViewModel @Inject constructor(
     /**
      * Fetches details for all favourites and enqueues the installable ones for download &
      * install. Already installed (and up-to-date) apps are skipped, as are paid apps that an
-     * anonymous account can't acquire. The actual count enqueued is emitted via [enqueueResult].
+     * anonymous account can't acquire. The actual count enqueued is emitted via [enqueueResult],
+     * or, if they don't fit on disk, nothing is enqueued and [storageWarning] is emitted.
      */
     fun installAll() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -144,6 +150,16 @@ class FavouriteViewModel @Inject constructor(
                         PackageUtil.isUpdatable(context, app.packageName, app.versionCode)
                     val acquirable = app.isFree || !authProvider.isAnonymous
                     needsInstall && acquirable
+                }
+
+                val pendingSizes = installable
+                    .filter { downloadHelper.needsDownload(it.packageName, it.versionCode) }
+                    .map { it.size }
+
+                val requirement = StorageUtil.check(context, pendingSizes)
+                if (!requirement.isSufficient) {
+                    _storageWarning.emit(requirement)
+                    return@launch
                 }
 
                 installable.forEach { downloadHelper.enqueueApp(it) }

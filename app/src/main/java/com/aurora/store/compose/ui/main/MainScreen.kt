@@ -39,6 +39,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.requiresObbDir
 import com.aurora.store.MainViewModel
 import com.aurora.store.R
+import com.aurora.store.compose.composable.InsufficientStorageDialog
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.TrackerUpdateWarningDialog
 import com.aurora.store.compose.composition.LocalNetworkStatus
@@ -51,11 +52,13 @@ import com.aurora.store.compose.ui.updates.UpdatesScreen
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.model.PermissionType
+import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_TRACKERS
+import com.aurora.store.util.StorageUtil
 import com.aurora.store.viewmodel.all.UpdatesViewModel
 import com.aurora.store.viewmodel.notifications.NotificationsViewModel
 import kotlinx.coroutines.Job
@@ -102,7 +105,16 @@ fun MainScreen(
     var trackerWarning by remember {
         mutableStateOf<Pair<Update, List<ExodusTracker>>?>(null)
     }
+    var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
     val checkingJobs = remember { mutableStateMapOf<String, Job>() }
+
+    // A blocked update never produces a download, so the effect below can't clear its marker.
+    LaunchedEffect(Unit) {
+        updatesViewModel.storageWarning.collect {
+            storageWarning = it
+            checkingJobs.clear()
+        }
+    }
 
     // Once the download a check kicked off actually appears, drop the "checking" marker so the
     // item's in-progress state is driven purely by the download (no flash back to "Update").
@@ -118,6 +130,19 @@ fun MainScreen(
         when (destination) {
             is Destination.AppUpdate -> appUpdateTarget = destination.update
             else -> onNavigateTo(destination)
+        }
+    }
+
+    fun performUpdate(update: Update) {
+        if (update.fileList.requiresObbDir() &&
+            !isGranted(context, PermissionType.STORAGE_MANAGER)
+        ) {
+            checkingJobs.remove(update.packageName)
+            onNavigateTo(
+                Destination.PermissionRationale(setOf(PermissionType.STORAGE_MANAGER))
+            )
+        } else {
+            updatesViewModel.download(update)
         }
     }
 
@@ -239,21 +264,6 @@ fun MainScreen(
                         onNavigateTo = ::handleNavigation
                     )
                     MainTab.UPDATES -> {
-                        fun performUpdate(update: Update) {
-                            if (update.fileList.requiresObbDir() &&
-                                !isGranted(context, PermissionType.STORAGE_MANAGER)
-                            ) {
-                                checkingJobs.remove(update.packageName)
-                                onNavigateTo(
-                                    Destination.PermissionRationale(
-                                        setOf(PermissionType.STORAGE_MANAGER)
-                                    )
-                                )
-                            } else {
-                                updatesViewModel.download(update)
-                            }
-                        }
-
                         UpdatesScreen(
                             viewModel = updatesViewModel,
                             onNavigateTo = ::handleNavigation,
@@ -326,23 +336,23 @@ fun MainScreen(
             onConfirm = {
                 val pending = update
                 trackerWarning = null
-                if (pending.fileList.requiresObbDir() &&
-                    !isGranted(context, PermissionType.STORAGE_MANAGER)
-                ) {
-                    checkingJobs.remove(pending.packageName)
-                    onNavigateTo(
-                        Destination.PermissionRationale(
-                            setOf(PermissionType.STORAGE_MANAGER)
-                        )
-                    )
-                } else {
-                    updatesViewModel.download(pending)
-                }
+                performUpdate(pending)
             },
             onDismiss = {
                 trackerWarning = null
                 checkingJobs.remove(update.packageName)
             }
+        )
+    }
+
+    storageWarning?.let { requirement ->
+        InsufficientStorageDialog(
+            requirement = requirement,
+            onFreeUpSpace = {
+                storageWarning = null
+                StorageUtil.openFreeUpSpace(context)
+            },
+            onDismiss = { storageWarning = null }
         )
     }
 }

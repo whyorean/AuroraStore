@@ -68,6 +68,7 @@ import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
+import com.aurora.store.compose.composable.InsufficientStorageDialog
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SectionHeader
@@ -105,6 +106,7 @@ import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
+import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.providers.PermissionProvider.Companion.isPermittedToInstall
 import com.aurora.store.data.room.account.Account
@@ -113,6 +115,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_TRACKERS
 import com.aurora.store.util.ShortcutManagerUtil
+import com.aurora.store.util.StorageUtil
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.jakewharton.processphoenix.ProcessPhoenix
 import kotlinx.coroutines.Job
@@ -138,8 +141,13 @@ fun AppDetailsScreen(
     val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
+    var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
 
     LaunchedEffect(key1 = packageName) { viewModel.fetchAppDetails(packageName) }
+
+    LaunchedEffect(Unit) {
+        viewModel.storageWarning.collect { storageWarning = it }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.reviewPosted.collect { success ->
@@ -194,6 +202,8 @@ fun AppDetailsScreen(
                     onNavigateTo = onNavigateTo,
                     onLoadMoreCluster = { cluster -> viewModel.loadMoreCluster(cluster) },
                     accounts = accounts,
+                    storageWarning = storageWarning,
+                    onDismissStorageWarning = { storageWarning = null },
                     onDownload = { requestedApp -> viewModel.enqueueDownload(requestedApp) },
                     onDownloadWith = { requestedApp, accountId ->
                         viewModel.enqueueDownloadWith(requestedApp, accountId)
@@ -306,6 +316,8 @@ private fun ScreenContentApp(
     onNavigateTo: (Destination) -> Unit = {},
     onLoadMoreCluster: (cluster: StreamCluster) -> Unit = {},
     accounts: List<Account> = emptyList(),
+    storageWarning: StorageRequirement? = null,
+    onDismissStorageWarning: () -> Unit = {},
     onDownload: (requestedApp: App) -> Unit = {},
     onDownloadWith: (requestedApp: App, accountId: String) -> Unit = { _, _ -> },
     onFavorite: () -> Unit = {},
@@ -358,6 +370,11 @@ private fun ScreenContentApp(
     // taken over the state), so the button doesn't flash back to "Update" between the two.
     LaunchedEffect(state) {
         if (state !is AppState.Updatable) isChecking = false
+    }
+
+    // A blocked download leaves the app Updatable, so the effect above never fires.
+    LaunchedEffect(storageWarning) {
+        if (storageWarning != null) isChecking = false
     }
 
     if (showRestartDialog) {
@@ -442,6 +459,17 @@ private fun ScreenContentApp(
                 trackerWarning = null
                 isChecking = false
             }
+        )
+    }
+
+    storageWarning?.let { requirement ->
+        InsufficientStorageDialog(
+            requirement = requirement,
+            onFreeUpSpace = {
+                onDismissStorageWarning()
+                StorageUtil.openFreeUpSpace(context)
+            },
+            onDismiss = onDismissStorageWarning
         )
     }
 
