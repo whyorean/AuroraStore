@@ -316,7 +316,7 @@
     <string name="force_restart_summary">Aurora Store on käynnistettävä uudelleen juuri muutettujen asetusten käytöön ottamiseksi</string>
     <string name="session_login">Kirjaudu Google Play -tilillesi</string>
     <string name="onboarding_permission_installer_legacy_desc">Salli sovellusten lataus tuntemattomista lähteistä</string>
-    <string name="about_wiki_summary">Löydä vastauksia usein kysyttyihin kysymyksiin (U.K.K.), vianetsinnän vaiheisiin ja muihin asioihin</string>
+    <string name="about_wiki_summary">Löydä vastauksia usein kysyttyihin kysymyksiin (UKK), vianetsinnän vaiheisiin ja muihin asioihin</string>
     <string name="source_code_title">Lähdekoodi</string>
     <string name="failed_apk_export">APK-vienti epäonnistui</string>
     <string name="action_remove_all">Poista kaikki</string>

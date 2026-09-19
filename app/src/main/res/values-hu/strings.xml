@@ -625,5 +625,5 @@
     <string name="manual_download_select_version">Verzió kiválasztása</string>
     <string name="manual_download_no_versions">Nem találhatók ismert verziók</string>
     <string name="manual_download_availability_warning">Előfordulhat, hogy egyes verziók nem tölthetők le, vagy nem kompatibilisek az eszközével.</string>
-    <string name="details_more_certificate_hash">Tanúsítvány ujjlenyomata</string>
+    <string name="details_more_certificate_hash">Tanúsítványkivonat</string>
 </resources>

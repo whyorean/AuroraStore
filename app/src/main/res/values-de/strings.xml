@@ -227,7 +227,7 @@
     <string name="toast_export_success">Gerätekonfiguration wurde exportiert</string>
     <string name="app_updater_service_notif_title">Herunterladen von Apps im Hintergrund</string>
     <string name="app_updater_service_notif_text">Ermöglicht das Herunterladen von Apps im Hintergrund</string>
-    <string name="installer_am_unavailable">Diese Methode ist für Installationen nicht verfügbar. Den „App Manager“ installieren oder die Installationsmethode ändern.</string>
+    <string name="installer_am_unavailable">Diese Methode ist für Installationen nicht verfügbar. Den „App-Manager“ installieren oder die Installationsmethode ändern.</string>
     <string name="pref_install_mode_am">Mit App Manager</string>
     <string name="session_enjoy">Anmelden und genießen.</string>
     <string name="session_good">Alles gut.</string>
@@ -605,11 +605,11 @@
     <string name="action_switch_account">Konto wechseln</string>
     <plurals name="account_count">
         <item quantity="one">Insgesamt %1$d Konto</item>
-        <item quantity="other">Insgesamt %1$d Kontos</item>
+        <item quantity="other">Insgesamt %1$d Konten</item>
     </plurals>
     <plurals name="account_refresh_failed">
         <item quantity="one">%1$d Konto konnte nicht aktualisiert werden</item>
-        <item quantity="other">%1$d Kontos konnten nicht aktualisiert werden</item>
+        <item quantity="other">%1$d Konten konnten nicht aktualisiert werden</item>
     </plurals>
     <string name="account_exists">Konto wurde bereits hinzugefügt</string>
     <string name="action_update_anyway">Trotzdem aktualisieren</string>

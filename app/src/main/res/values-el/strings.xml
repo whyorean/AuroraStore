@@ -475,4 +475,19 @@
     <string name="microg_removed_auth_warning">microG δεν είναι πλέον εγκατεστημένο. Εκτελέστε ξανά τη ρύθμιση για να συνεχίσουν όλα να λειτουργούν ομαλά.</string>
     <string name="preparing_to_download">Προετοιμασία για λήψη</string>
     <string name="verifying_downloads">Επαλήθευση λήψεων</string>
+    <string name="account_add">Προσθήκη λογαριασμού</string>
+    <string name="details_review_delete">Διαγραφή</string>
+    <string name="installed_sort_name">Όνομα</string>
+    <string name="account_default">Προεπιλογή</string>
+    <string name="account_remove">Αφαίρεση</string>
+    <string name="title_security">Ασφάλεια</string>
+    <string name="pref_ui_theme">Θέμα</string>
+    <string name="pref_theme_style_system">Βάσει συστήματος</string>
+    <string name="pref_theme_style_light">Φωτεινό</string>
+    <string name="pref_theme_style_dark">Σκοτεινό</string>
+    <string name="pref_ui_dynamic_color">Δυναμικά χρώματα</string>
+    <string name="pref_notification_categories">Κατηγορίες</string>
+    <string name="installed_filter_all">Όλα</string>
+    <string name="header_blacklist_others">Άλλοι</string>
+    <string name="title_notifications">Ειδοποιήσεις</string>
 </resources>

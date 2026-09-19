@@ -617,4 +617,19 @@
         <item quantity="many">%d apps falharam</item>
         <item quantity="other">%d apps falharam</item>
     </plurals>
+    <string name="account_exists">A conta já foi adicionada</string>
+    <string name="action_update_anyway">Atualizar mesmo assim</string>
+    <string name="exodus_report_history">Histórico de versões</string>
+    <string name="exodus_history_version">%1$s (%2$s)</string>
+    <string name="exodus_history_subtitle">%1$s • %2$d rasteadores</string>
+    <string name="exodus_latest">Mais recente</string>
+    <string name="pref_updates_warn_trackers">Avisar sobre novos rasteadores em atualizações de apps</string>
+    <string name="pref_updates_warn_trackers_desc">Exibir aviso antes de atualizar quando a nova versão adiciona rasteadores que não estavam na versão instalada</string>
+    <string name="tracker_warning_title">Novos rasteadores detetados</string>
+    <string name="tracker_warning_desc">Esta atualização adiciona rasteadores que não estavam na versão instalada:</string>
+    <string name="manual_download_lookup">Buscar versões</string>
+    <string name="manual_download_select_version">Selecione uma versão</string>
+    <string name="manual_download_no_versions">Nenhuma versão conhecida encontrada</string>
+    <string name="manual_download_availability_warning">Algumas versões podem estar indisponíveis para descarregar ou ser incompatíveis com o seu dispositivo.</string>
+    <string name="details_more_certificate_hash">Hash do certificado</string>
 </resources>

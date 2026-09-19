@@ -3,7 +3,7 @@ Aurora Store ist ein inoffizieller FOSS-Client für Google Play mit elegantem De
 <b>Eigenschaften:</b>
 
 • FOSS: Verfügt über eine GPLv3-Lizenz
-• Schönes Design: Basierend auf den neuesten Material 3-Richtlinien
+• Schönes Design: Basierend auf den neuesten Material-3-Richtlinien
 • Kontoanmeldung: Du kannst dich entweder mit einem persönlichen oder einem anonymen Konto anmelden
 • Geräte- und Gebietsschema-Spoofing: Ändere dein Gerät und/oder Ihr Gebietsschema, um auf geografisch gesperrte Apps zuzugreifen
 • Exodus-Privacy-Integration: Tracker sofort in der App sehen

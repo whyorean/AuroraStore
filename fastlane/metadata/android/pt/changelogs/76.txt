@@ -1,0 +1,9 @@
+• Interface refeita com Jetpack Compose
+• Apoio de várias contas Google
+• Análises de utilizadores no ecrã de detalhes do app
+• Bloqueio opcional da app via biometria ou credenciais
+• Instalação com um clique p/ favoritos e fluxo de compra p/ apps pagas
+• Notificações refeitas com resumos agrupados e ajustes
+• Ecrã de atualização refeita; autoatualizações agora aparecem na lista
+• Instalações e downloads mais confiáveis e suporte a instalador microG
+• Bugs corrigidos e traduções atualizadas
