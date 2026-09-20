@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ SPDX-FileCopyrightText: 2021 Aurora OSS
-  ~ SPDX-License-Identifier: GPL-3.0-or-later
-  -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/tab_selected_onboarding" android:state_selected="true" />
-    <item android:drawable="@drawable/tab_default_onboarding" />
-</selector>

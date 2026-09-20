@@ -172,7 +172,7 @@ object NotificationUtil {
             Constants.NOTIFICATION_CHANNEL_DOWNLOADS
         }
         val builder = NotificationCompat.Builder(context, channelId)
-        builder.setSmallIcon(R.drawable.ic_notification_outlined)
+        builder.setSmallIcon(R.drawable.ic_aurora)
         builder.setContentTitle(download.displayName)
         builder.setContentIntent(getContentIntentForDetails(context, download.packageName))
         builder.setLargeIcon(largeIcon)
@@ -277,7 +277,7 @@ object NotificationUtil {
         displayName: String,
         packageName: String
     ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_INSTALL)
-        .setSmallIcon(R.drawable.ic_install)
+        .setSmallIcon(R.drawable.ic_aurora)
         .setLargeIcon(PackageUtil.getIconForPackage(context, packageName))
         .setContentTitle(displayName)
         .setContentText(context.getString(R.string.installer_status_success))
@@ -295,7 +295,7 @@ object NotificationUtil {
         displayName: String,
         content: String?
     ): Notification = NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERTS)
-        .setSmallIcon(R.drawable.ic_install)
+        .setSmallIcon(R.drawable.ic_aurora)
         .setContentTitle(displayName)
         .setContentText(content)
         .setContentIntent(getContentIntentForDetails(context, packageName))
@@ -336,7 +336,7 @@ object NotificationUtil {
             context,
             Constants.NOTIFICATION_CHANNEL_ALERTS
         )
-            .setSmallIcon(R.drawable.ic_install)
+            .setSmallIcon(R.drawable.ic_aurora)
             .setContentTitle(displayName)
             .setContentText(context.getString(R.string.notification_install_prompt_pending))
             .setContentIntent(pendingIntent)
@@ -421,7 +421,7 @@ object NotificationUtil {
             group = GROUP_INSTALLED,
             summaryId = SUMMARY_ID_INSTALLED,
             channelId = Constants.NOTIFICATION_CHANNEL_INSTALL,
-            smallIcon = R.drawable.ic_install,
+            smallIcon = R.drawable.ic_aurora,
             titleRes = R.plurals.notification_installed_summary,
             timeoutMs = INSTALLED_TIMEOUT_MS,
             contentIntent = getContentIntentForMain(context, initialTab = 2)

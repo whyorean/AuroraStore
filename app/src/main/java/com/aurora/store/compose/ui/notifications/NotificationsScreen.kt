@@ -82,7 +82,7 @@ private fun ScreenContent(
         if (entries.isEmpty()) {
             Placeholder(
                 modifier = Modifier.padding(paddingValues),
-                painter = painterResource(R.drawable.ic_notifications_black_24dp),
+                painter = painterResource(R.drawable.ic_notifications),
                 message = stringResource(R.string.notification_none)
             )
             return@Scaffold

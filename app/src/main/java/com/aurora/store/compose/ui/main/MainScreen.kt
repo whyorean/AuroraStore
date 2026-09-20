@@ -185,7 +185,7 @@ fun MainScreen(
                             }
                         ) {
                             Icon(
-                                painter = painterResource(R.drawable.ic_notifications_black_24dp),
+                                painter = painterResource(R.drawable.ic_notifications),
                                 contentDescription = stringResource(R.string.title_notifications)
                             )
                         }
