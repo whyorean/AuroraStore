@@ -384,12 +384,16 @@ class DownloadWorker @AssistedInject constructor(
     /**
      * Builds a [PurchaseHelper] bound to the account this download should use: the app's
      * per-app binding if any, otherwise the default account. Refreshes that account's session
-     * first if it is missing/expired so the purchase isn't rejected.
+     * first if it is missing/expired/built under a stale device spoof, so the purchase isn't
+     * rejected and the delivered splits match the device the user picked.
      */
     private suspend fun resolvePurchaseHelper(packageName: String): PurchaseHelper {
         val accountId = accountRepository.resolveAccountId(packageName)
         var authData = authProvider.getAuthData(accountId)
-        if (authData == null || !AuthHelper.using(httpClient).isValid(authData)) {
+        if (authData == null ||
+            !authProvider.matchesActiveSpoof(authData) ||
+            !AuthHelper.using(httpClient).isValid(authData)
+        ) {
             // Refresh the resolved account; propagate failure instead of silently falling back to
             // a different account, which would purchase a bound app under the wrong identity.
             authData = authProvider.refresh(accountId).getOrElse { error ->

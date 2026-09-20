@@ -50,7 +50,7 @@ class SpoofViewModel @Inject constructor(
     fun onDeviceSelected(properties: Properties) {
         _currentDevice.value = properties
 
-        if (currentDevice == defaultProperties) {
+        if (properties == defaultProperties) {
             spoofProvider.removeSpoofDeviceProperties()
         } else {
             spoofProvider.setSpoofDeviceProperties(properties)
@@ -60,7 +60,7 @@ class SpoofViewModel @Inject constructor(
     fun onLocaleSelected(locale: Locale) {
         _currentLocale.value = locale
 
-        if (currentLocale == defaultLocale) {
+        if (locale == defaultLocale) {
             spoofProvider.removeSpoofLocale()
         } else {
             spoofProvider.setSpoofLocale(locale)
