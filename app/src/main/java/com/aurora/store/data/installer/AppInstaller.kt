@@ -175,9 +175,17 @@ class AppInstaller @Inject constructor(
          * Whether anything here can serve the Shizuku installer — the official app, any fork of
          * it, or Sui. Answers "installed", not "running", so a server that is present but not
          * started keeps the installer visible instead of the option quietly disappearing.
+         *
+         * A live binder counts on its own: forks with a stealth mode reinstall themselves under a
+         * random package name and leave a permission-less stub behind, so there may be no package
+         * left to find while the server keeps serving.
          */
         fun hasShizukuOrSui(context: Context): Boolean = isOAndAbove &&
-            (ShizukuInstaller.getProviderPackage(context) != null || Sui.isSui())
+            (
+                Shizuku.pingBinder() ||
+                    ShizukuInstaller.getProviderPackage(context) != null ||
+                    Sui.isSui()
+                )
 
         // Shizuku.checkSelfPermission() throws when the binder is not alive (Shizuku
         // disabled/not running), so guard on pingBinder() and swallow any failure to let
