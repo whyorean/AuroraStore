@@ -42,6 +42,7 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -55,6 +56,7 @@ class SessionInstaller @Inject constructor(
 
     private val packageInstaller = context.packageManager.packageInstaller
     private val enqueuedSessions = mutableListOf<MutableSet<SessionInfo>>()
+    private val committedSessions = ConcurrentHashMap.newKeySet<Int>()
 
     val callback = object : PackageInstaller.SessionCallback() {
         override fun onCreated(sessionId: Int) {}
@@ -80,6 +82,8 @@ class SessionInstaller @Inject constructor(
         }
 
         override fun onFinished(sessionId: Int, success: Boolean) {
+            committedSessions.remove(sessionId)
+
             val sessionSet =
                 enqueuedSessions.find { it.any { session -> session.sessionId == sessionId } }
                     ?: return
@@ -103,8 +107,7 @@ class SessionInstaller @Inject constructor(
                 }
             }
 
-            // Proceed with the next available session
-            enqueuedSessions.firstOrNull()?.firstOrNull()?.let(::commitInstall)
+            commitNextPending()
         }
     }
 
@@ -172,9 +175,28 @@ class SessionInstaller @Inject constructor(
             .find { set -> set.any { it.packageName == packageName } } ?: return
 
         Log.i(TAG, "Abandoning staged session(s) for $packageName")
-        sessionSet.forEach { runCatching { packageInstaller.abandonSession(it.sessionId) } }
+        sessionSet.forEach {
+            runCatching { packageInstaller.abandonSession(it.sessionId) }
+            committedSessions.remove(it.sessionId)
+        }
         enqueuedSessions.remove(sessionSet)
         removeFromInstallQueue(packageName)
+    }
+
+    /**
+     * Commits the head of the first queued set that isn't already in flight.
+     *
+     * Re-committing a session that is still waiting on the system's install confirmation makes
+     * PackageInstallerSession swap in the new status receiver and re-dispatch, which fires a
+     * second STATUS_PENDING_USER_ACTION and puts a duplicate confirmation dialog on screen. One
+     * of the two installs the app, the other is left resolving a session that no longer exists
+     * and lands the user on the system's "Can't install app" screen.
+     */
+    private fun commitNextPending() {
+        enqueuedSessions
+            .mapNotNull { it.firstOrNull() }
+            .firstOrNull { it.sessionId !in committedSessions }
+            ?.let(::commitInstall)
     }
 
     private fun stageInstall(
@@ -260,10 +282,12 @@ class SessionInstaller @Inject constructor(
 
     private fun commitSession(sessionInfo: SessionInfo) {
         try {
+            committedSessions.add(sessionInfo.sessionId)
             val session = packageInstaller.openSession(sessionInfo.sessionId)
             session.commit(getCallBackIntent(sessionInfo)!!.intentSender)
             session.close()
         } catch (e: Exception) {
+            committedSessions.remove(sessionInfo.sessionId)
             Log.e(TAG, "Error committing session: ${e.message}")
         } finally {
             removeFromInstallQueue(sessionInfo.packageName)
