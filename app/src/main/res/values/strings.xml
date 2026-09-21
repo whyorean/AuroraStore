@@ -616,6 +616,7 @@
     <string name="no_description">No description available</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissions</string>
     <string name="details_more_info">More info</string>
+    <string name="details_more_files">Files</string>
     <string name="details_more_target_api">Targets</string>
     <string name="details_more_package_name">Package name</string>
     <string name="details_more_content_rating">Content rating</string>
