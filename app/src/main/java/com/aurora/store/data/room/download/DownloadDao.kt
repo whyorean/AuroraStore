@@ -10,6 +10,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RawQuery
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.model.DownloadStatus
 import kotlinx.coroutines.flow.Flow
@@ -50,8 +52,8 @@ interface DownloadDao {
     )
     fun pendingInstalls(): Flow<List<Download>>
 
-    @Query("SELECT * FROM download ORDER BY downloadedAt DESC")
-    fun pagedDownloads(): PagingSource<Int, Download>
+    @RawQuery(observedEntities = [Download::class])
+    fun pagedDownloads(query: SupportSQLiteQuery): PagingSource<Int, Download>
 
     @Query("SELECT * FROM download WHERE packageName = :packageName")
     suspend fun getDownload(packageName: String): Download

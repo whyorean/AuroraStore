@@ -14,10 +14,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -30,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
@@ -47,9 +51,11 @@ import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.compose.ui.commons.SortSheet
 import com.aurora.store.compose.ui.downloads.menu.DownloadsMenu
 import com.aurora.store.compose.ui.downloads.menu.MenuItem
 import com.aurora.store.compose.ui.sheets.DownloadActionsSheet
+import com.aurora.store.data.model.DownloadSortBy
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.viewmodel.downloads.DownloadsViewModel
@@ -63,6 +69,7 @@ fun DownloadsScreen(
 ) {
     val context = LocalContext.current
     val downloads = viewModel.downloads.collectAsLazyPagingItems()
+    val sort by viewModel.sort.collectAsStateWithLifecycle()
 
     val exportMimeType = "application/zip"
     var requestedExport by rememberSaveable { mutableStateOf<Download?>(null) }
@@ -80,6 +87,8 @@ fun DownloadsScreen(
 
     ScreenContent(
         downloads = downloads,
+        sort = sort,
+        onSortChange = { viewModel.updateSort(it) },
         onNavigateTo = onNavigateTo,
         onCancelAll = { viewModel.cancelAll() },
         onForceClearAll = { viewModel.clearAll() },
@@ -99,6 +108,8 @@ fun DownloadsScreen(
 @Composable
 private fun ScreenContent(
     downloads: LazyPagingItems<Download> = emptyPagingItems(),
+    sort: DownloadSort = DownloadSort(),
+    onSortChange: (DownloadSort) -> Unit = {},
     onNavigateTo: (Destination) -> Unit = {},
     onCancel: (packageName: String) -> Unit = {},
     onClear: (download: Download) -> Unit = {},
@@ -116,6 +127,19 @@ private fun ScreenContent(
      */
     var initialLoad by rememberSaveable { mutableStateOf(true) }
     var actionsTarget by rememberSaveable { mutableStateOf<Download?>(null) }
+    var sortSheetVisible by remember { mutableStateOf(false) }
+
+    if (sortSheetVisible) {
+        SortSheet(
+            options = DownloadSortBy.entries,
+            sortBy = sort.sortBy,
+            sortOrder = sort.sortOrder,
+            labelRes = { it.labelRes() },
+            onSortByChange = { onSortChange(sort.copy(sortBy = it)) },
+            onSortOrderChange = { onSortChange(sort.copy(sortOrder = it)) },
+            onDismiss = { sortSheetVisible = false }
+        )
+    }
 
     actionsTarget?.let { target ->
         DownloadActionsSheet(
@@ -144,7 +168,17 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = stringResource(R.string.title_download_manager),
-                actions = { if (downloads.itemCount != 0) SetupMenu() }
+                actions = {
+                    if (downloads.itemCount != 0) {
+                        IconButton(onClick = { sortSheetVisible = true }) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_tune),
+                                contentDescription = stringResource(R.string.installed_sort_by)
+                            )
+                        }
+                        SetupMenu()
+                    }
+                }
             )
         }
     ) { paddingValues ->

@@ -82,13 +82,65 @@ fun SortFilterSheet(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun <T> SortSheet(
+    options: List<T>,
+    sortBy: T,
+    sortOrder: SortOrder,
+    labelRes: (T) -> Int,
+    onSortByChange: (T) -> Unit,
+    onSortOrderChange: (SortOrder) -> Unit,
+    onDismiss: () -> Unit
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+        ) {
+            SortOptions(
+                options = options,
+                sortBy = sortBy,
+                sortOrder = sortOrder,
+                labelRes = labelRes,
+                onSortByChange = onSortByChange,
+                onSortOrderChange = onSortOrderChange
+            )
+            Spacer(Modifier.navigationBarsPadding())
+        }
+    }
+}
+
+@Composable
 private fun SortSection(state: SortFilterState, onStateChange: (SortFilterState) -> Unit) {
+    SortOptions(
+        options = SortBy.entries,
+        sortBy = state.sortBy,
+        sortOrder = state.sortOrder,
+        labelRes = { it.labelRes() },
+        onSortByChange = { onStateChange(state.copy(sortBy = it)) },
+        onSortOrderChange = { onStateChange(state.copy(sortOrder = it)) }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun <T> SortOptions(
+    options: List<T>,
+    sortBy: T,
+    sortOrder: SortOrder,
+    labelRes: (T) -> Int,
+    onSortByChange: (T) -> Unit,
+    onSortOrderChange: (SortOrder) -> Unit
+) {
     SectionHeader(title = stringResource(R.string.installed_sort_by))
-    SortBy.entries.forEach { option ->
+    options.forEach { option ->
         SelectableRow(
-            label = stringResource(option.labelRes()),
-            selected = state.sortBy == option,
-            onClick = { onStateChange(state.copy(sortBy = option)) }
+            label = stringResource(labelRes(option)),
+            selected = sortBy == option,
+            onClick = { onSortByChange(option) }
         )
     }
     Row(
@@ -102,8 +154,8 @@ private fun SortSection(state: SortFilterState, onStateChange: (SortFilterState)
         SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
             SortOrder.entries.forEachIndexed { index, order ->
                 SegmentedButton(
-                    selected = state.sortOrder == order,
-                    onClick = { onStateChange(state.copy(sortOrder = order)) },
+                    selected = sortOrder == order,
+                    onClick = { onSortOrderChange(order) },
                     shape = SegmentedButtonDefaults.itemShape(
                         index = index,
                         count = SortOrder.entries.size

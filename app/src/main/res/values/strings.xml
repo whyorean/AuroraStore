@@ -682,6 +682,7 @@
     <string name="installed_sort_ascending">Ascending</string>
     <string name="installed_sort_descending">Descending</string>
     <string name="installed_filter">Filter</string>
+    <string name="download_sort_date_downloaded">Date downloaded</string>
     <string name="installed_filter_user_apps">User apps</string>
     <string name="installed_filter_system_apps">System apps</string>
     <string name="installed_filter_installer">Installed from</string>

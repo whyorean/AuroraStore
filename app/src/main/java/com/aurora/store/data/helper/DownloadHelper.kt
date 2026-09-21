@@ -7,6 +7,8 @@ package com.aurora.store.data.helper
 
 import android.content.Context
 import android.util.Log
+import androidx.paging.PagingSource
+import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
 import androidx.work.Data
@@ -22,6 +24,7 @@ import com.aurora.store.AuroraApp
 import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.installer.AppInstaller
+import com.aurora.store.data.model.DownloadSortBy
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
@@ -68,7 +71,17 @@ class DownloadHelper @Inject constructor(
     val downloadsList = downloadDao.downloads()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val pagedDownloads get() = downloadDao.pagedDownloads()
+    fun pagedDownloads(sortBy: DownloadSortBy, ascending: Boolean): PagingSource<Int, Download> {
+        val column = when (sortBy) {
+            DownloadSortBy.DATE_DOWNLOADED -> "downloadedAt"
+            DownloadSortBy.NAME -> "displayName COLLATE NOCASE"
+            DownloadSortBy.SIZE -> "size"
+        }
+        val direction = if (ascending) "ASC" else "DESC"
+        return downloadDao.pagedDownloads(
+            SimpleSQLiteQuery("SELECT * FROM download ORDER BY $column $direction, packageName")
+        )
+    }
 
     val pendingInstalls = downloadDao.pendingInstalls()
         .stateIn(AuroraApp.scope, SharingStarted.WhileSubscribed(), emptyList())
