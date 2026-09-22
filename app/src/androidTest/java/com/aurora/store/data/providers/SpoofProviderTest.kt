@@ -49,6 +49,12 @@ class SpoofProviderTest {
     }
 
     @Test
+    fun testSpoofingDeviceLocaleDropsRegionUnknownToPlay() {
+        spoofProvider.setSpoofLocale(Locale.forLanguageTag("es-419"))
+        assertThat(spoofProvider.locale).isEqualTo(Locale.forLanguageTag("es"))
+    }
+
+    @Test
     fun testSpoofingDeviceProperties() {
         assertThat(spoofProvider.isDeviceSpoofEnabled).isFalse()
 

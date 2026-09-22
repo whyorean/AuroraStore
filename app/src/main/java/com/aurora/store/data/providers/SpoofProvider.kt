@@ -6,6 +6,7 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import com.aurora.extensions.withPlayRegion
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
@@ -35,10 +36,14 @@ class SpoofProvider @Inject constructor(
     }
 
     val availableSpoofDeviceProperties get() = availableDeviceProperties
-    val availableSpoofLocales = Locale.getAvailableLocales().toMutableList().apply {
-        remove(Locale.getDefault())
-        sortBy { it.displayName }
-    }
+    val availableSpoofLocales = Locale.getAvailableLocales()
+        .map { it.withPlayRegion() }
+        .distinct()
+        .toMutableList()
+        .apply {
+            remove(Locale.getDefault().withPlayRegion())
+            sortBy { it.displayName }
+        }
 
     val deviceProperties: Properties
         get() {
@@ -56,7 +61,7 @@ class SpoofProvider @Inject constructor(
             spoofLocale
         } else {
             Locale.getDefault()
-        }
+        }.withPlayRegion()
 
     val isLocaleSpoofEnabled: Boolean
         get() = Preferences.getBoolean(context, LOCALE_SPOOF_ENABLED)
