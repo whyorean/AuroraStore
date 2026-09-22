@@ -15,7 +15,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.ktlint)
-    alias(libs.plugins.rikka.tools.refine.plugin)
     alias(libs.plugins.hilt.android.plugin)
 }
 
@@ -239,12 +238,8 @@ dependencies {
     implementation(libs.auroraoss.gplayapi)
 
     // Shizuku
-    compileOnly(libs.rikka.hidden.stub)
-    implementation(libs.rikka.tools.refine.runtime)
     implementation(libs.rikka.shizuku.api)
     implementation(libs.rikka.shizuku.provider)
-
-    implementation(libs.lsposed.hiddenapibypass)
 
     // Test
     testImplementation(libs.junit)

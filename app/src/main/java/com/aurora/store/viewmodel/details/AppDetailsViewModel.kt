@@ -36,6 +36,7 @@ import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.Scores
+import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.favourite.Favourite
@@ -47,6 +48,7 @@ import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
+import com.aurora.store.util.StorageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -90,6 +92,9 @@ class AppDetailsViewModel @Inject constructor(
 
     private val _state = MutableStateFlow<AppState>(AppState.Loading)
     val state = _state.asStateFlow()
+
+    private val _storageWarning = MutableSharedFlow<StorageRequirement>()
+    val storageWarning = _storageWarning.asSharedFlow()
 
     private val _suggestionsBundle = MutableStateFlow<StreamBundle?>(null)
     val suggestionsBundle: StateFlow<StreamBundle?> = _suggestionsBundle.asStateFlow()
@@ -333,12 +338,22 @@ class AppDetailsViewModel @Inject constructor(
 
     fun enqueueDownload(app: App) {
         viewModelScope.launch(Dispatchers.IO) {
-            downloadHelper.enqueueApp(app)
+            if (hasSpaceFor(app)) downloadHelper.enqueueApp(app)
         }
     }
 
     fun enqueueDownloadWith(app: App, accountId: String) {
-        viewModelScope.launch(Dispatchers.IO) { downloadHelper.enqueueApp(app, accountId) }
+        viewModelScope.launch(Dispatchers.IO) {
+            if (hasSpaceFor(app)) downloadHelper.enqueueApp(app, accountId)
+        }
+    }
+
+    private suspend fun hasSpaceFor(app: App): Boolean {
+        if (!downloadHelper.needsDownload(app.packageName, app.versionCode)) return true
+
+        val requirement = StorageUtil.check(context, listOf(app.size), app.displayName)
+        if (!requirement.isSufficient) _storageWarning.emit(requirement)
+        return requirement.isSufficient
     }
 
     fun cancelDownload(app: App) {

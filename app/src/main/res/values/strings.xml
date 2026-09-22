@@ -1,22 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Aurora Store
-  ~  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
-  ~  Copyright (C) 2022, The Calyx Institute
-  ~  Copyright (C) 2023, grrfe <grrfe@420blaze.it>
-  ~
-  ~  Aurora Store is free software: you can redistribute it and/or modify
-  ~  it under the terms of the GNU General Public License as published by
-  ~  the Free Software Foundation, either version 2 of the License, or
-  ~  (at your option) any later version.
-  ~
-  ~  Aurora Store is distributed in the hope that it will be useful,
-  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~  GNU General Public License for more details.
-  ~
-  ~  You should have received a copy of the GNU General Public License
-  ~  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
-  ~
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ SPDX-FileCopyrightText: 2021 Aurora OSS
+  ~ SPDX-FileCopyrightText: 2022 The Calyx Institute
+  ~ SPDX-FileCopyrightText: 2023 grrfe <grrfe@420blaze.it>
+  ~ SPDX-License-Identifier: GPL-3.0-or-later
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" translatable="false">"Aurora Store"</string>
@@ -121,6 +108,7 @@
     <string name="action_share">"Share"</string>
     <string name="action_uninstall">"Uninstall"</string>
     <string name="action_uninstall_success">"Successfully uninstalled"</string>
+    <string name="action_free_up_space">Free up space</string>
     <string name="action_home_screen">Add to home screen</string>
     <string name="action_info">"App info"</string>
     <string name="action_update">"Update"</string>
@@ -213,6 +201,8 @@
     <string name="installer_root_unavailable">No root access. Grant it or change the installer.</string>
     <string name="installer_shizuku_unavailable">Shizuku is not installed or set up properly.</string>
     <string name="installer_fallback_session">Chosen installer is unavailable, using the default installer instead.</string>
+    <!-- Installer description, then the app providing it, e.g. "… · Served by Shevery" -->
+    <string name="installer_provider">%1$s · Served by %2$s</string>
 
     <!-- Security -->
     <string name="title_security">Security</string>
@@ -338,6 +328,9 @@
     <string name="title_installation">"Installation"</string>
     <string name="title_installed">"Installed"</string>
     <string name="title_installer">"App installer"</string>
+    <string name="insufficient_storage_title">Not enough space</string>
+    <string name="insufficient_storage_desc">%1$s needs %2$s, but only %3$s is available.</string>
+    <string name="insufficient_storage_hint">Free up %1$s and try again.</string>
     <string name="title_install_favourites">"Install favourites?"</string>
     <string name="install_favourites_summary">"This will download and install %1$d apps."</string>
     <string name="install_favourites_warning">"You may see a separate installation prompt for each app."</string>
@@ -601,6 +594,11 @@
     <string name="status_verifying">Verifying</string>
     <string name="status_installing">Installing</string>
     <string name="status_installed">Installed</string>
+    <string name="status_awaiting_install">Waiting for confirmation</string>
+
+    <!-- Notifications -->
+    <string name="notification_install_prompt_pending">Tap to finish installing</string>
+    <string name="notification_none">Nothing to see here</string>
 
     <!-- UnarchivePackageReceiver -->
     <string name="authentication_required_title">Authentication required</string>
@@ -618,6 +616,7 @@
     <string name="no_description">No description available</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissions</string>
     <string name="details_more_info">More info</string>
+    <string name="details_more_files">Files</string>
     <string name="details_more_target_api">Targets</string>
     <string name="details_more_package_name">Package name</string>
     <string name="details_more_content_rating">Content rating</string>
@@ -643,6 +642,10 @@
     <plurals name="permissions_required">
         <item quantity="one">Permission required</item>
         <item quantity="other">Permissions required</item>
+    </plurals>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d app needs %2$s, but only %3$s is available.</item>
+        <item quantity="other">%1$d apps need %2$s, but only %3$s is available.</item>
     </plurals>
     <plurals name="favourites_count">
         <item quantity="one">%1$d favourite</item>
@@ -679,6 +682,7 @@
     <string name="installed_sort_ascending">Ascending</string>
     <string name="installed_sort_descending">Descending</string>
     <string name="installed_filter">Filter</string>
+    <string name="download_sort_date_downloaded">Date downloaded</string>
     <string name="installed_filter_user_apps">User apps</string>
     <string name="installed_filter_system_apps">System apps</string>
     <string name="installed_filter_installer">Installed from</string>

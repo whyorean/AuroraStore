@@ -70,6 +70,9 @@ fun StreamCarousel(
     }
 
     val clusters = streamBundle.streamClusters.values
+        .map { cluster ->
+            cluster.copy(clusterAppList = cluster.clusterAppList.distinctBy { it.packageName })
+        }
         .filter { cluster ->
             cluster.clusterAppList.isNotEmpty() &&
                 cluster.clusterTitle.isNotBlank() &&

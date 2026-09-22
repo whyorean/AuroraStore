@@ -21,4 +21,15 @@ data class IgnoredUpdate(
     @PrimaryKey
     val packageName: String,
     val ignoredVersionCode: Long? = null
-)
+) {
+    fun hides(update: Update): Boolean =
+        ignoredVersionCode == null || ignoredVersionCode == update.versionCode
+}
+
+/**
+ * Whether [rules], keyed by package name, mute this update. Every path that surfaces an
+ * update — list, notification or auto-install — must go through this, or an update the
+ * user ignored comes back on one of the paths that skipped the check.
+ */
+fun Update.isIgnoredBy(rules: Map<String, IgnoredUpdate>): Boolean =
+    rules[packageName]?.hides(this) == true

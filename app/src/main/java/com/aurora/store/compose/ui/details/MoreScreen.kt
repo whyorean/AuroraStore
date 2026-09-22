@@ -6,6 +6,7 @@
 
 package com.aurora.store.compose.ui.details
 
+import android.text.format.Formatter
 import android.util.Base64
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,6 +42,7 @@ import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.isWindowCompact
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.ScrollHint
@@ -133,6 +135,12 @@ private fun ScreenContent(
                     }
                 }
 
+                if (app.fileList.isNotEmpty()) {
+                    item {
+                        AppFiles(files = app.fileList)
+                    }
+                }
+
                 item {
                     AppInfoMore(app = app)
                 }
@@ -164,6 +172,20 @@ private fun AppDependencies(dependencies: List<App>, onNavigateTo: (Destination)
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun AppFiles(files: List<PlayFile>) {
+    val context = LocalContext.current
+    SectionHeader(title = stringResource(R.string.details_more_files))
+    files.forEach { file ->
+        Info(
+            title = AnnotatedString(text = file.name),
+            description = AnnotatedString(
+                text = Formatter.formatShortFileSize(context, file.size)
+            )
+        )
     }
 }
 

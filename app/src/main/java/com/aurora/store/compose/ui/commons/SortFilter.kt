@@ -76,7 +76,7 @@ fun loadSortFilterState(context: Context, keys: SortFilterPrefKeys): SortFilterS
     return SortFilterState(sortBy, sortOrder, appTypes, installer)
 }
 
-private inline fun <reified T : Enum<T>> enumValueOrDefault(name: String, default: T): T =
+internal inline fun <reified T : Enum<T>> enumValueOrDefault(name: String, default: T): T =
     runCatching { enumValueOf<T>(name) }.getOrDefault(default)
 
 fun SortBy.labelRes(): Int = when (this) {

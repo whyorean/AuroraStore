@@ -1,20 +1,6 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2021 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.data.providers
@@ -55,6 +41,15 @@ class AuthProvider @Inject constructor(
     private val accountRepository: AccountRepository,
     private val tokenProvider: GoogleAccountTokenProvider
 ) {
+    private companion object {
+        val SPOOF_IDENTITY_KEYS = listOf(
+            "Build.FINGERPRINT",
+            "Platforms",
+            "Screen.Density",
+            "Vending.version"
+        )
+    }
+
     @Volatile
     private var cachedDefault: Account? = null
 
@@ -107,7 +102,26 @@ class AuthProvider @Inject constructor(
     /**
      * Checks whether saved AuthData is valid or not
      */
-    fun isSavedAuthDataValid(): Boolean = AuthHelper.using(httpClient).isValid(authData!!)
+    fun isSavedAuthDataValid(): Boolean = authData!!.let {
+        matchesActiveSpoof(it) && AuthHelper.using(httpClient).isValid(it)
+    }
+
+    /**
+     * Whether [authData] was built under the device configuration and locale that are active now.
+     *
+     * Play picks the split APKs it serves from the device configuration uploaded when the session
+     * was created, so a session built under a different device keeps getting that device's splits
+     * however the spoof is set afterwards. Such a session has to be rebuilt before it is used.
+     */
+    fun matchesActiveSpoof(authData: AuthData): Boolean {
+        val sessionProperties = authData.deviceInfoProvider?.properties ?: return false
+        val activeProperties = spoofProvider.deviceProperties
+
+        return authData.locale == spoofProvider.locale &&
+            SPOOF_IDENTITY_KEYS.all {
+                sessionProperties.getProperty(it) == activeProperties.getProperty(it)
+            }
+    }
 
     /**
      * Builds [AuthData] for login using personal Google account

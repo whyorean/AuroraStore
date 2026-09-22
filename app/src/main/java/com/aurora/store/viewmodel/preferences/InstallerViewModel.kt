@@ -41,6 +41,9 @@ class InstallerViewModel @Inject constructor(
     private val sharedPreferences = Preferences.getPrefs(context)
     private var isShizukuAlive = Sui.isSui()
 
+    /** Set while a Shizuku permission request is outstanding, for [onResumed] to finish. */
+    private var awaitingShizukuGrant = false
+
     private val _error = MutableSharedFlow<String>()
     val error = _error.asSharedFlow()
 
@@ -70,6 +73,7 @@ class InstallerViewModel @Inject constructor(
     }
 
     override fun onRequestPermissionResult(requestCode: Int, grantResult: Int) {
+        awaitingShizukuGrant = false
         if (grantResult == PackageManager.PERMISSION_GRANTED) {
             save(Installer.SHIZUKU)
         } else {
@@ -78,6 +82,15 @@ class InstallerViewModel @Inject constructor(
                 _error.emit(context.getString(R.string.permissions_denied))
             }
         }
+    }
+
+    /**
+     * Completes a Shizuku selection waiting on a permission granted since, on return from the
+     * manager's screen. Acts only once the permission is held, so a denial does not loop.
+     */
+    fun onResumed() {
+        if (!awaitingShizukuGrant) return
+        if (AppInstaller.hasShizukuPerm(context)) save(Installer.SHIZUKU)
     }
 
     fun save(installer: Installer) {
@@ -110,8 +123,9 @@ class InstallerViewModel @Inject constructor(
 
                 Installer.SHIZUKU -> {
                     if (AppInstaller.hasShizukuOrSui(context) && isShizukuAlive) {
-                        if (!AppInstaller.hasShizukuPerm()) {
+                        if (!AppInstaller.hasShizukuPerm(context)) {
                             Log.i(TAG, "Requesting permission for shizuku")
+                            awaitingShizukuGrant = true
                             Shizuku.requestPermission(9000)
                             return@launch
                         }
@@ -133,6 +147,7 @@ class InstallerViewModel @Inject constructor(
                 else -> Log.i(TAG, "Trying to set ${installer.name} installer without any checks")
             }
 
+            awaitingShizukuGrant = false
             context.save(PREFERENCE_INSTALLER_ID, installer.ordinal)
         }
     }

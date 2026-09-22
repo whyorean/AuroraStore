@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 package com.aurora.store.data.work
 
 import android.app.NotificationManager
@@ -27,8 +32,10 @@ import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
 import com.aurora.store.data.providers.GoogleAccountTokenProvider
+import com.aurora.store.data.room.update.IgnoredUpdateDao
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.data.room.update.UpdateDao
+import com.aurora.store.data.room.update.isIgnoredBy
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
@@ -39,6 +46,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
@@ -60,6 +68,7 @@ class UpdateWorker @AssistedInject constructor(
     private val json: Json,
     private val blacklistProvider: BlacklistProvider,
     private val updateDao: UpdateDao,
+    private val ignoredUpdateDao: IgnoredUpdateDao,
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     tokenProvider: GoogleAccountTokenProvider,
@@ -116,9 +125,17 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         try {
+            // Ignored updates are still written to the database so the Updates screen can
+            // list them under "Ignored"; they are dropped here so they reach neither the
+            // notification nor the auto-install below.
+            val ignoreRules = ignoredUpdateDao.ignoredUpdates().first().associateBy {
+                it.packageName
+            }
+
             val allUpdates = checkUpdates()
                 .also { updateDao.insertUpdates(it) }
                 .filter { if (!isExtendedUpdateEnabled) it.hasValidCert else true }
+                .filterNot { it.isIgnoredBy(ignoreRules) }
 
             // Incompatible updates (e.g. system app updates on HyperOS / GrapheneOS) are
             // surfaced in the UI but excluded from notifications and auto-install.

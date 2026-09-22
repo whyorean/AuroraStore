@@ -1,27 +1,15 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *  Copyright (C) 2023, grrfe <grrfe@420blaze.it>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2021 Aurora OSS
+ * SPDX-FileCopyrightText: 2023 grrfe <grrfe@420blaze.it>
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.os.Bundle
 import android.util.Log.DEBUG
 import android.util.Log.INFO
 import androidx.compose.material3.ComposeMaterial3Flags
@@ -32,7 +20,6 @@ import coil3.ImageLoader
 import coil3.SingletonImageLoader
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.crossfade
-import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.data.event.EventFlow
 import com.aurora.store.data.helper.DownloadHelper
@@ -47,7 +34,6 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.MainScope
 import okhttp3.OkHttpClient
-import org.lsposed.hiddenapibypass.HiddenApiBypass
 
 @HiltAndroidApp
 class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Factory {
@@ -76,6 +62,10 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
 
         val enqueuedInstalls: MutableSet<String> = mutableSetOf()
         val events = EventFlow()
+
+        private var startedActivities = 0
+
+        val isForeground get() = startedActivities > 0
     }
 
     override fun onCreate() {
@@ -93,11 +83,10 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         )
         if (dynamicColors) DynamicColors.applyToActivitiesIfAvailable(this)
 
-        // Required for Shizuku installer
-        if (isPAndAbove) HiddenApiBypass.addHiddenApiExemptions("I", "L")
-
         // Create Notification Channels
         NotificationUtil.createNotificationChannel(this)
+
+        registerActivityLifecycleCallbacks(foregroundTracker)
 
         // Initialize Download and Update helpers to observe and trigger downloads
         downloadHelper.init()
@@ -112,6 +101,22 @@ class AuroraApp : Application(), Configuration.Provider, SingletonImageLoader.Fa
         )
 
         CommonUtil.cleanupInstallationSessions(applicationContext)
+    }
+
+    private val foregroundTracker = object : ActivityLifecycleCallbacks {
+        override fun onActivityStarted(activity: Activity) {
+            startedActivities++
+        }
+
+        override fun onActivityStopped(activity: Activity) {
+            startedActivities = (startedActivities - 1).coerceAtLeast(0)
+        }
+
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+        override fun onActivityResumed(activity: Activity) {}
+        override fun onActivityPaused(activity: Activity) {}
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+        override fun onActivityDestroyed(activity: Activity) {}
     }
 
     override fun newImageLoader(context: Context): ImageLoader = ImageLoader(this).newBuilder()

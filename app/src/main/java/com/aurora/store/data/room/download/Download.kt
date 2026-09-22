@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 package com.aurora.store.data.room.download
 
 import android.content.Context
@@ -41,7 +46,7 @@ data class Download(
 ) : Parcelable {
     val isFinished get() = status in DownloadStatus.finished
     val isRunning get() = status in DownloadStatus.running
-    private val isSuccessful get() = status == DownloadStatus.COMPLETED
+    private val isSuccessful get() = status in DownloadStatus.installable
 
     /**
      * `true` while the download is queued, purchasing, downloading or verifying, i.e.
@@ -49,6 +54,8 @@ data class Download(
      * [DownloadStatus.VERIFYING], which sits between downloading and completion.
      */
     val isActive get() = isRunning || status == DownloadStatus.VERIFYING
+
+    val isAwaitingInstall get() = status == DownloadStatus.AWAITING_INSTALL
 
     companion object {
         fun fromApp(app: App): Download = Download(
@@ -114,8 +121,9 @@ data class Download(
         )
     }
 
-    fun canInstall(context: Context): Boolean {
-        if (!isSuccessful) return false
+    fun canInstall(context: Context): Boolean = isSuccessful && hasDownloadedFiles(context)
+
+    fun hasDownloadedFiles(context: Context): Boolean {
         val dir = PathUtil.getAppDownloadDir(context, packageName, versionCode)
         // Require at least one actual APK on disk, not just that the directory exists —
         // an empty/partially-cleaned directory must not look installable.

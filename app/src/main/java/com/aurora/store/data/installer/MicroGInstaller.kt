@@ -1,20 +1,6 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2021 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.data.installer
@@ -46,7 +32,6 @@ class MicroGInstaller @Inject constructor(
             get() = InstallerInfo(
                 id = 6,
                 installer = Installer.MICROG,
-                packageNames = listOf(PACKAGE_NAME_PLAY_STORE),
                 installerPackageNames = listOf(PACKAGE_NAME_PLAY_STORE),
                 title = R.string.pref_install_mode_microg,
                 subtitle = R.string.microg_installer_subtitle,

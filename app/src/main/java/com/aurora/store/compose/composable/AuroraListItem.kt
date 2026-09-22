@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
@@ -29,6 +28,8 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * stacked headline + supporting + tertiary text column, and a trailing slot (checkbox,
  * button, chip…). [headlineStyle] toggles between data-row (bodyMedium) and settings-row
  * (bodyLarge) typography while keeping every other dimension consistent.
+ *
+ * Every text slot wraps rather than truncating; nothing here is worth hiding.
  */
 @Composable
 fun AuroraListItem(
@@ -61,28 +62,19 @@ fun AuroraListItem(
     ) {
         if (leading != null) leading()
         Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = headline,
-                style = headlineStyle,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            Text(text = headline, style = headlineStyle)
             if (!supporting.isNullOrBlank()) {
                 Text(
                     text = supporting,
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
             if (!tertiary.isNullOrBlank()) {
                 Text(
                     text = tertiary,
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }

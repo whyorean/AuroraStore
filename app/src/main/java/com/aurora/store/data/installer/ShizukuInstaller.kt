@@ -1,61 +1,40 @@
 /*
- * Aurora Store
- *  Copyright (C) 2021, Rahul Kumar Patel <whyorean@gmail.com>
- *
- *  Aurora Store is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  Aurora Store is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * SPDX-FileCopyrightText: 2021 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 package com.aurora.store.data.installer
 
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
-import android.content.pm.IPackageInstaller
-import android.content.pm.IPackageInstallerSession
-import android.content.pm.IPackageManager
-import android.content.pm.PackageInstaller
-import android.content.pm.PackageInstaller.SessionParams
-import android.content.pm.PackageInstallerHidden
-import android.content.pm.PackageManagerHidden
 import android.os.Build
-import android.os.IBinder
-import android.os.IInterface
+import android.os.ParcelFileDescriptor
+import android.os.Process
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.core.app.PendingIntentCompat
 import com.aurora.extensions.TAG
-import com.aurora.extensions.isOAndAbove
-import com.aurora.extensions.isSAndAbove
 import com.aurora.store.R
-import com.aurora.store.data.installer.AppInstaller.Companion.ACTION_INSTALL_STATUS
-import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_DISPLAY_NAME
-import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_PACKAGE_NAME
-import com.aurora.store.data.installer.AppInstaller.Companion.EXTRA_VERSION_CODE
 import com.aurora.store.data.installer.base.InstallerBase
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
-import com.aurora.store.data.receiver.InstallerStatusReceiver
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dev.rikka.tools.refine.Refine
+import java.io.File
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
-import rikka.shizuku.ShizukuBinderWrapper
-import rikka.shizuku.SystemServiceHelper
+import moe.shizuku.server.IShizukuService
+import rikka.shizuku.Shizuku
+import rikka.shizuku.ShizukuProvider
 
+/**
+ * Installs through `pm`, run by the Shizuku server as its own uid.
+ *
+ * [android.content.pm.PackageInstaller]'s privileged constructors are hidden members the platform
+ * refuses to link at this targetSdk, so a session cannot be rebuilt out of them however willing
+ * the server is. `pm` is the platform's own front end to the same calls, and is already how
+ * [RootInstaller] installs.
+ */
 @Singleton
 @RequiresApi(Build.VERSION_CODES.O)
 class ShizukuInstaller @Inject constructor(
@@ -63,45 +42,35 @@ class ShizukuInstaller @Inject constructor(
 ) : InstallerBase(context) {
 
     companion object {
-        const val SHIZUKU_PACKAGE_NAME = "moe.shizuku.privileged.api"
         const val PLAY_PACKAGE_NAME = "com.android.vending"
+
+        private const val STREAM_TIMEOUT_MS = 5_000L
 
         val installerInfo: InstallerInfo
             get() = InstallerInfo(
                 id = 5,
                 installer = Installer.SHIZUKU,
-                packageNames = listOf(SHIZUKU_PACKAGE_NAME),
                 installerPackageNames = listOf(PLAY_PACKAGE_NAME),
                 title = R.string.pref_install_mode_shizuku,
                 subtitle = R.string.shizuku_installer_subtitle,
                 description = R.string.shizuku_installer_desc
             )
-    }
 
-    // Taken from LSPatch (https://github.com/LSPosed/LSPatch)
-    private fun IBinder.wrap() = ShizukuBinderWrapper(this)
-    private fun IInterface.asShizukuBinder() = this.asBinder().wrap()
+        /**
+         * Package of the app serving Shizuku — the official app, or any fork of it.
+         *
+         * Resolved from whichever package *defines* [ShizukuProvider.PERMISSION] rather than from
+         * known package names, because that permission is the discovery contract: a server finds
+         * its clients by scanning for the apps requesting it. Null covers Sui, which ships the
+         * server in a Magisk module and so has no manager app to name.
+         */
+        fun getProviderPackage(context: Context): String? = runCatching {
+            context.packageManager.getPermissionInfo(ShizukuProvider.PERMISSION, 0).packageName
+        }.getOrNull()
 
-    private val iPackageManager: IPackageManager by lazy {
-        IPackageManager.Stub.asInterface(SystemServiceHelper.getSystemService("package").wrap())
-    }
-
-    private val iPackageInstaller: IPackageInstaller by lazy {
-        IPackageInstaller.Stub.asInterface(iPackageManager.packageInstaller.asShizukuBinder())
-    }
-
-    private val packageInstaller: PackageInstaller? by lazy {
-        if (isSAndAbove) {
-            Refine.unsafeCast<PackageInstaller>(
-                PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, null, 0)
-            )
-        } else if (isOAndAbove) {
-            Refine.unsafeCast<PackageInstaller>(
-                PackageInstallerHidden(iPackageInstaller, PLAY_PACKAGE_NAME, 0)
-            )
-        } else {
-            null
-        }
+        /** The session id out of `Success: created install session [1234]`. */
+        internal fun parseSessionId(output: String): Int? =
+            Regex("""\[(\d+)]""").find(output)?.groupValues?.get(1)?.toIntOrNull()
     }
 
     override fun install(download: Download) {
@@ -113,100 +82,123 @@ class ShizukuInstaller @Inject constructor(
             download.sharedLibs.forEach {
                 // Shared library packages cannot be updated
                 if (!isSharedLibraryInstalled(context, it.packageName, it.versionCode)) {
-                    install(
-                        packageName = download.packageName,
-                        versionCode = download.versionCode,
-                        sharedLibPkgName = it.packageName
-                    )
+                    install(download.packageName, download.versionCode, it.packageName)
                 }
             }
-            install(
-                packageName = download.packageName,
-                versionCode = download.versionCode,
-                displayName = download.displayName
-            )
+            install(download.packageName, download.versionCode)
         }
     }
 
-    private fun install(
-        packageName: String,
-        versionCode: Long,
-        sharedLibPkgName: String = "",
-        displayName: String = ""
-    ) {
-        Log.i(
-            TAG,
-            "Received session install request for ${sharedLibPkgName.ifBlank { packageName }}"
-        )
+    private fun install(packageName: String, versionCode: Long, sharedLibPkgName: String = "") {
+        val target = sharedLibPkgName.ifBlank { packageName }
+        Log.i(TAG, "Received session install request for $target")
 
-        val (sessionId, session) = kotlin.runCatching {
-            val params = SessionParams(SessionParams.MODE_FULL_INSTALL)
-
-            // Replace existing app (Updates)
-            var flags = Refine
-                .unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags
-            flags = flags or PackageManagerHidden.INSTALL_REPLACE_EXISTING
-            Refine.unsafeCast<PackageInstallerHidden.SessionParamsHidden>(params).installFlags =
-                flags
-
-            val sessionId = packageInstaller!!.createSession(params)
-            val iSession = IPackageInstallerSession.Stub.asInterface(
-                iPackageInstaller.openSession(sessionId).asShizukuBinder()
-            )
-            val session = Refine.unsafeCast<PackageInstaller.Session>(
-                PackageInstallerHidden.SessionHidden(iSession)
-            )
-
-            sessionId to session
-        }.getOrElse { ex ->
-            ex.printStackTrace()
-            postError(
-                packageName,
-                context.getString(R.string.installer_status_failure),
-                context.getString(R.string.installer_shizuku_unavailable)
-            )
+        val files = getFiles(packageName, versionCode, sharedLibPkgName)
+        if (files.isEmpty()) {
+            fail(packageName, context.getString(R.string.installer_status_failure_session))
             return
         }
 
-        try {
-            Log.i(TAG, "Writing splits to session for ${sharedLibPkgName.ifBlank { packageName }}")
-            getFiles(packageName, versionCode, sharedLibPkgName).forEach {
-                it.inputStream().use { input ->
-                    session.openWrite(
-                        "${sharedLibPkgName.ifBlank { packageName }}_${System.currentTimeMillis()}",
-                        0,
-                        -1
-                    ).use { output ->
-                        input.copyTo(output)
-                        session.fsync(output)
-                    }
-                }
-            }
-
-            val callBackIntent = Intent(context, InstallerStatusReceiver::class.java).apply {
-                action = ACTION_INSTALL_STATUS
-                setPackage(context.packageName)
-                addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
-                putExtra(EXTRA_PACKAGE_NAME, sharedLibPkgName.ifBlank { packageName })
-                putExtra(EXTRA_VERSION_CODE, versionCode)
-                putExtra(EXTRA_DISPLAY_NAME, displayName)
-            }
-
-            val pendingIntent = PendingIntentCompat.getBroadcast(
-                context,
-                sessionId,
-                callBackIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT,
-                true
+        val created = exec(
+            listOf(
+                "pm",
+                "install-create",
+                "-i",
+                PLAY_PACKAGE_NAME,
+                "--user",
+                (Process.myUid() / 100_000).toString(),
+                "-r",
+                "-S",
+                files.sumOf { it.length() }.toString()
             )
-
-            Log.i(TAG, "Starting install session for $packageName")
-            session.commit(pendingIntent!!.intentSender)
-            session.close()
-        } catch (exception: Exception) {
-            session.abandon()
-            removeFromInstallQueue(packageName)
-            postError(packageName, exception.localizedMessage, exception.stackTraceToString())
+        ).getOrElse { error ->
+            fail(packageName, error.localizedMessage, error.stackTraceToString())
+            return
         }
+
+        val sessionId = parseSessionId(created)
+        if (sessionId == null) {
+            fail(packageName, context.getString(R.string.installer_status_failure_session), created)
+            return
+        }
+
+        Log.i(TAG, "Writing splits to session $sessionId for $target")
+        files.forEach { file ->
+            // Streamed into stdin, not named as a path: a server started from adb runs as shell
+            // and cannot read Aurora's own data directory.
+            val command = listOf(
+                "pm",
+                "install-write",
+                "-S",
+                file.length().toString(),
+                sessionId.toString(),
+                file.name,
+                "-"
+            )
+            exec(command, input = file).onFailure { error ->
+                exec(listOf("pm", "install-abandon", sessionId.toString()))
+                fail(packageName, error.localizedMessage, error.stackTraceToString())
+                return
+            }
+        }
+
+        Log.i(TAG, "Committing session $sessionId for $target")
+        exec(listOf("pm", "install-commit", sessionId.toString()))
+            .onSuccess {
+                // Installation is not yet finished if this is a shared library
+                if (packageName == download?.packageName) onInstallationSuccess()
+            }
+            .onFailure { error ->
+                fail(packageName, error.localizedMessage, error.stackTraceToString())
+            }
+    }
+
+    private fun fail(packageName: String, error: String?, extra: String? = null) {
+        removeFromInstallQueue(packageName)
+        postError(
+            packageName,
+            error ?: context.getString(R.string.installer_status_failure),
+            extra ?: context.getString(R.string.installer_shizuku_unavailable)
+        )
+    }
+
+    /**
+     * Runs [command] as the Shizuku server's own uid. `newProcess` hands the argv straight to
+     * `Runtime.exec`, so nothing here needs quoting.
+     *
+     * @param input streamed into the command's stdin
+     */
+    private fun exec(command: List<String>, input: File? = null): Result<String> = runCatching {
+        val service = IShizukuService.Stub.asInterface(Shizuku.getBinder())
+            ?: throw IOException(context.getString(R.string.installer_shizuku_unavailable))
+        val process = service.newProcess(command.toTypedArray(), null, null)
+
+        // Written before stdout is drained: `pm` reads the package to its end before it answers,
+        // so waiting on its output first deadlocks against it waiting on the input.
+        if (input != null) {
+            ParcelFileDescriptor.AutoCloseOutputStream(process.outputStream).use { output ->
+                input.inputStream().use { it.copyTo(output) }
+            }
+        }
+
+        // On its own thread: whichever stream is read second can fill its pipe buffer first, and
+        // a subprocess blocked writing it never closes the one being read.
+        val errText = StringBuilder()
+        val reader = Thread {
+            runCatching {
+                ParcelFileDescriptor.AutoCloseInputStream(process.errorStream)
+                    .bufferedReader().use { errText.append(it.readText()) }
+            }
+        }
+        reader.start()
+
+        val out = ParcelFileDescriptor.AutoCloseInputStream(process.inputStream)
+            .bufferedReader().use { it.readText() }.trim()
+        val exitCode = process.waitFor()
+        reader.join(STREAM_TIMEOUT_MS)
+        val err = errText.toString().trim()
+
+        if (exitCode != 0) throw IOException(err.ifBlank { out.ifBlank { "pm exited $exitCode" } })
+        out.ifBlank { err }
     }
 }

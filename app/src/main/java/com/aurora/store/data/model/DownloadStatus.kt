@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 package com.aurora.store.data.model
 
 import androidx.annotation.StringRes
@@ -12,6 +17,7 @@ enum class DownloadStatus(@StringRes val localized: Int) {
     UNAVAILABLE(R.string.status_unavailable),
     VERIFYING(R.string.status_verifying),
     PURCHASING(R.string.preparing_to_install),
+    AWAITING_INSTALL(R.string.status_awaiting_install),
     INSTALLING(R.string.status_installing),
     INSTALLED(R.string.status_installed);
 
@@ -26,5 +32,10 @@ enum class DownloadStatus(@StringRes val localized: Int) {
          * concurrent workers can't clobber the shared foreground/progress notification.
          */
         val processing = setOf(PURCHASING, DOWNLOADING, VERIFYING)
+
+        /** States reached only once the download was handed off to the installer. */
+        val installerStates = setOf(AWAITING_INSTALL, INSTALLING, INSTALLED)
+
+        val installable = setOf(COMPLETED, AWAITING_INSTALL)
     }
 }

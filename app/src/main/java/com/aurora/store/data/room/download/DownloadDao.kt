@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 package com.aurora.store.data.room.download
 
 import androidx.paging.PagingSource
@@ -5,6 +10,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RawQuery
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.data.model.DownloadStatus
 import kotlinx.coroutines.flow.Flow
@@ -36,8 +43,17 @@ interface DownloadDao {
     @Query("SELECT * FROM download")
     fun downloads(): Flow<List<Download>>
 
-    @Query("SELECT * FROM download ORDER BY downloadedAt DESC")
-    fun pagedDownloads(): PagingSource<Int, Download>
+    @Query(
+        """
+        SELECT * FROM download
+        WHERE downloadStatus = 'AWAITING_INSTALL'
+        ORDER BY downloadedAt DESC
+        """
+    )
+    fun pendingInstalls(): Flow<List<Download>>
+
+    @RawQuery(observedEntities = [Download::class])
+    fun pagedDownloads(query: SupportSQLiteQuery): PagingSource<Int, Download>
 
     @Query("SELECT * FROM download WHERE packageName = :packageName")
     suspend fun getDownload(packageName: String): Download

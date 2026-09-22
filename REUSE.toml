@@ -24,13 +24,35 @@ path = [
     "app/testkey.jks",
     "app/src/main/**/*.png",
     "app/src/main/res/resources.properties",
+    # Launcher icons for the debug/nightly variants; binary, cannot be annotated.
+    "app/src/debug/res/**/*.png",
+    "app/src/nightly/res/**/*.png",
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = [
-    "2021-2025 Aurora OSS",
+    "2021-2026 Aurora OSS",
     "2023-2025 The Calyx Institute"
 ]
 SPDX-License-Identifier = "GPL-3.0-or-later"
+
+# Translations are managed by Weblate, which rewrites these files wholesale on
+# every sync and would drop an inline header.
+[[annotations]]
+path = "app/src/main/res/values-*/strings.xml"
+precedence = "aggregate"
+SPDX-FileCopyrightText = [
+    "2021-2026 Aurora OSS",
+    "2021-2026 Aurora Store translators"
+]
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+# Root CA bundle fetched verbatim from https://pki.goog/roots.pem for
+# certificate pinning; annotated here so updates stay a straight file swap.
+[[annotations]]
+path = "app/src/main/res/raw/google_roots_ca.pem"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Google Trust Services LLC"
+SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
 path = "gradle/wrapper/**"

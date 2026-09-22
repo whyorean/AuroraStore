@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
 import com.aurora.store.compose.composable.InstallerListItem
@@ -46,6 +47,12 @@ fun InstallerScreen(viewModel: InstallerViewModel = hiltViewModel()) {
         viewModel.error.collect { error ->
             snackBarHostState.showSnackbar(message = error)
         }
+    }
+
+    // The manager grants in its own screen, and its result callback may never reach us
+    LifecycleResumeEffect(Unit) {
+        viewModel.onResumed()
+        onPauseOrDispose {}
     }
 
     ScreenContent(
