@@ -10,6 +10,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.aurora.extensions.TAG
+import com.aurora.extensions.withPlayRegion
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.NativeDeviceInfoProvider
 import com.aurora.store.data.providers.SpoofProvider
@@ -32,7 +33,7 @@ class SpoofViewModel @Inject constructor(
     /** Full sign-out, clearing both the account DB rows and the legacy prefs. */
     fun logout() = authProvider.logout()
 
-    val defaultLocale: Locale = Locale.getDefault()
+    val defaultLocale: Locale = Locale.getDefault().withPlayRegion()
     val defaultProperties = NativeDeviceInfoProvider.getNativeDeviceProperties(context)
 
     private val _currentLocale = MutableStateFlow(spoofProvider.locale)
