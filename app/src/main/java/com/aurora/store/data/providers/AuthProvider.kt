@@ -12,6 +12,7 @@ import com.aurora.Constants
 import com.aurora.extensions.TAG
 import com.aurora.gplayapi.data.models.AuthData
 import com.aurora.gplayapi.data.models.PlayResponse
+import com.aurora.gplayapi.helpers.AppDetailsHelper
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.AuroraApp
@@ -24,6 +25,7 @@ import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +44,8 @@ class AuthProvider @Inject constructor(
     private val tokenProvider: GoogleAccountTokenProvider
 ) {
     private companion object {
+        const val VALIDATION_PACKAGE = "com.google.android.apps.maps"
+
         val SPOOF_IDENTITY_KEYS = listOf(
             "Build.FINGERPRINT",
             "Platforms",
@@ -101,9 +105,21 @@ class AuthProvider @Inject constructor(
 
     /**
      * Checks whether saved AuthData is valid or not
+     * @throws IOException when Play can't be reached, instead of reporting the session invalid
      */
     fun isSavedAuthDataValid(): Boolean = authData!!.let {
-        matchesActiveSpoof(it) && AuthHelper.using(httpClient).isValid(it)
+        matchesActiveSpoof(it) && isValid(it)
+    }
+
+    // AuthHelper.isValid() swallows network errors too, which rebuilt sessions on a bad network
+    private fun isValid(authData: AuthData): Boolean = try {
+        val app = AppDetailsHelper(authData).using(httpClient)
+            .getAppByPackageName(VALIDATION_PACKAGE)
+        app.packageName == VALIDATION_PACKAGE && app.displayName.isNotEmpty()
+    } catch (exception: IOException) {
+        throw exception
+    } catch (_: Exception) {
+        false
     }
 
     /**
