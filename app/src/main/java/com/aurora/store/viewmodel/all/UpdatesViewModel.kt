@@ -14,6 +14,8 @@ import com.aurora.store.data.helper.UpdateHelper
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.room.update.Update
+import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_LAST_CHECKED
 import com.aurora.store.util.StorageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -40,6 +42,11 @@ class UpdatesViewModel @Inject constructor(
     val ignoredUpdates get() = updateHelper.ignoredUpdates
 
     val fetchingUpdates = updateHelper.isCheckingUpdates
+
+    init {
+        // An empty list only means "no updates" once a check has actually run
+        if (Preferences.getLong(context, PREFERENCE_UPDATES_LAST_CHECKED) == 0L) fetchUpdates()
+    }
 
     fun fetchUpdates() {
         updateHelper.checkUpdatesNow()
