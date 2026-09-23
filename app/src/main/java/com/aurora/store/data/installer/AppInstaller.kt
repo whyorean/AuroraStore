@@ -64,10 +64,17 @@ class AppInstaller @Inject constructor(
         fun getCurrentInstaller(context: Context): Installer =
             Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
 
-        fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> = listOfNotNull(
+        /**
+         * @param rootAccess Defaults to [hasRootAccess], which blocks until the root manager
+         * answers its prompt; never evaluate it on the main thread.
+         */
+        fun getAvailableInstallersInfo(
+            context: Context,
+            rootAccess: Boolean = hasRootAccess()
+        ): List<InstallerInfo> = listOfNotNull(
             SessionInstaller.installerInfo,
             NativeInstaller.installerInfo,
-            if (hasRootAccess()) RootInstaller.installerInfo else null,
+            if (rootAccess) RootInstaller.installerInfo else null,
             if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
             if (hasAppManager(context)) AMInstaller.installerInfo else null,
             if (hasShizukuOrSui(context)) {
@@ -137,7 +144,14 @@ class AppInstaller @Inject constructor(
             }
         }
 
-        fun hasRootAccess(): Boolean = Shell.getShell().isRoot
+        /**
+         * @param recheck Re-probe `su` if the cached shell isn't root, e.g. after root was
+         * granted in the root manager; libsu otherwise keeps the first shell for the process.
+         */
+        fun hasRootAccess(recheck: Boolean = false): Boolean {
+            if (recheck) Shell.getCachedShell()?.takeUnless { it.isRoot }?.close()
+            return Shell.getShell().isRoot
+        }
 
         fun hasAuroraService(context: Context): Boolean = try {
             val packageInfo = PackageUtil.getPackageInfo(

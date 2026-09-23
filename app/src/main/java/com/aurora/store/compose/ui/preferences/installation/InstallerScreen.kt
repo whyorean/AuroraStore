@@ -19,7 +19,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +31,6 @@ import com.aurora.store.compose.composable.InstallerListItem
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.commons.MicroGInstallerPrerequisiteDialog
-import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.installer.SessionInstaller
 import com.aurora.store.data.model.Installer
 import com.aurora.store.data.model.InstallerInfo
@@ -41,6 +39,7 @@ import com.aurora.store.viewmodel.preferences.InstallerViewModel
 @Composable
 fun InstallerScreen(viewModel: InstallerViewModel = hiltViewModel()) {
     val currentInstallerId by viewModel.currentInstaller.collectAsStateWithLifecycle()
+    val availableInstallers by viewModel.availableInstallers.collectAsStateWithLifecycle()
     val snackBarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(key1 = Unit) {
@@ -58,7 +57,7 @@ fun InstallerScreen(viewModel: InstallerViewModel = hiltViewModel()) {
     ScreenContent(
         snackBarHostState = snackBarHostState,
         currentInstaller = Installer.entries[currentInstallerId],
-        availableInstallers = AppInstaller.getAvailableInstallersInfo(LocalContext.current),
+        availableInstallers = availableInstallers,
         onInstallerSelected = { installer -> viewModel.save(installer) }
     )
 }
