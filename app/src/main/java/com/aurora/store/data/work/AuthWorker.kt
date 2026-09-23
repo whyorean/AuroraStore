@@ -20,6 +20,7 @@ import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.util.Preferences
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import java.io.IOException
 
 /**
  * Worker to refresh [AuthData] in background
@@ -39,7 +40,14 @@ open class AuthWorker @AssistedInject constructor(
             return Result.failure()
         }
 
-        if (authProvider.isSavedAuthDataValid()) {
+        val isValid = try {
+            authProvider.isSavedAuthDataValid()
+        } catch (exception: IOException) {
+            Log.e(TAG, "Couldn't reach Play to validate AuthData", exception)
+            return Result.failure()
+        }
+
+        if (isValid) {
             Log.i(TAG, "Saved AuthData is valid")
             return Result.success()
         }

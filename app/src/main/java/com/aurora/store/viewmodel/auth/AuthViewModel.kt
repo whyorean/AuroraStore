@@ -26,6 +26,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -214,7 +215,7 @@ class AuthViewModel @Inject constructor(
         } catch (exception: Exception) {
             val error = when (exception) {
                 is UnknownHostException -> context.getString(R.string.title_no_network)
-                is ConnectException -> context.getString(R.string.server_unreachable)
+                is IOException -> context.getString(R.string.server_unreachable)
                 else -> context.getString(R.string.bad_request)
             }
             _authState.value = AuthState.Failed(error)
