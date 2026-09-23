@@ -111,9 +111,18 @@ class AuthProvider @Inject constructor(
         matchesActiveSpoof(it) && isValid(it)
     }
 
+    // A cached details response would vouch for the session without asking Play
+    private val uncachedHttpClient = object : IHttpClient by httpClient {
+        override fun get(
+            url: String,
+            headers: Map<String, String>,
+            params: Map<String, String>
+        ): PlayResponse = httpClient.get(url, headers + ("Cache-Control" to "no-cache"), params)
+    }
+
     // AuthHelper.isValid() swallows network errors too, which rebuilt sessions on a bad network
     private fun isValid(authData: AuthData): Boolean = try {
-        val app = AppDetailsHelper(authData).using(httpClient)
+        val app = AppDetailsHelper(authData).using(uncachedHttpClient)
             .getAppByPackageName(VALIDATION_PACKAGE)
         app.packageName == VALIDATION_PACKAGE && app.displayName.isNotEmpty()
     } catch (exception: IOException) {
