@@ -134,7 +134,7 @@ private fun ScreenContent() {
             }
             item { HorizontalDivider() }
             item {
-                ListItem(headlineContent = { Text(stringResource(R.string.pref_ui_theme)) })
+                ListItem(headlineContent = { Text(stringResource(R.string.pref_ui_appearance)) })
             }
             item {
                 ListItem(

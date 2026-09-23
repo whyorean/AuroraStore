@@ -65,6 +65,16 @@ class AppInstaller @Inject constructor(
         fun getCurrentInstaller(context: Context): Installer =
             Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
 
+        fun getInstallerInfo(installer: Installer): InstallerInfo = when (installer) {
+            Installer.SESSION -> SessionInstaller.installerInfo
+            Installer.NATIVE -> NativeInstaller.installerInfo
+            Installer.ROOT -> RootInstaller.installerInfo
+            Installer.SERVICE -> ServiceInstaller.installerInfo
+            Installer.AM -> AMInstaller.installerInfo
+            Installer.SHIZUKU -> ShizukuInstaller.installerInfo
+            Installer.MICROG -> MicroGInstaller.installerInfo
+        }
+
         /**
          * @param rootAccess Defaults to [hasRootAccess], which blocks until the root manager
          * answers its prompt; never evaluate it on the main thread.
