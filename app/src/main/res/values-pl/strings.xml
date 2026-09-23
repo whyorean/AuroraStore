@@ -132,7 +132,6 @@
     <string name="purchase_unsupported">Aplikacja nie jest wspierana</string>
     <string name="purchase_invalid">Aplikacja nie została zakupiona</string>
     <string name="purchase_failed">Pobieranie nieudane</string>
-    <string name="pref_install_mode_summary">Wybierz tryb instalacji plików APK</string>
     <string name="pref_install_mode_session">Instalator sesji</string>
     <string name="pref_install_mode_services">Usługi Aurora (przestarzały)</string>
     <string name="pref_install_mode_root">Instalator root</string>

@@ -169,7 +169,6 @@
     <string name="purchase_failed">Скачивание не удалось</string>
     <string name="pref_ui_title">Внешний вид</string>
     <string name="pref_install_mode_title">Способ установки</string>
-    <string name="pref_install_mode_summary">Выберите режим установки APK</string>
     <string name="pref_install_mode_services">Сервисы Aurora (Устарел)</string>
     <string name="pref_install_mode_root">Root-установщик</string>
     <string name="pref_install_mode_native">Системный установщик (Устарел)</string>

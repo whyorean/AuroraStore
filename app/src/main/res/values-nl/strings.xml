@@ -78,7 +78,6 @@
     <string name="pref_ui_title">Aanpassing</string>
     <string name="pref_network_title">Netwerken</string>
     <string name="pref_install_mode_title">Installatiemethode</string>
-    <string name="pref_install_mode_summary">Modus van APK-installatie selecteren</string>
     <string name="pref_install_mode_session">Session installateur</string>
     <string name="pref_install_mode_services">Aurora Diensten (Verouderd)</string>
     <string name="pref_install_mode_root">Root installateur</string>

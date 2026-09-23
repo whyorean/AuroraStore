@@ -131,7 +131,6 @@
     <string name="pref_ui_title">Prilagođavanje</string>
     <string name="pref_network_title">Umrežavanje</string>
     <string name="pref_install_mode_title">Način instaliranja</string>
-    <string name="pref_install_mode_summary">Odaberi način instaliranja APK datoteka</string>
     <string name="pref_install_mode_session">Instalacija sesija</string>
     <string name="pref_install_mode_services">Aurora usluge (zastarjelo)</string>
     <string name="pref_install_mode_root">Administratorska instalacija</string>

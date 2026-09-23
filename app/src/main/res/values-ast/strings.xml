@@ -178,7 +178,6 @@
     <string name="filter_review_critical">Reseña crítica</string>
     <string name="pref_install_delete_summary">Los APKs baxaos van desaniciase puramente dempués d\'instalalos</string>
     <string name="pref_install_mode_am">Instalador AM</string>
-    <string name="pref_install_mode_summary">Seleiciona\'l métodu d\'instalación de los archivos APK</string>
     <string name="pref_ui_similar_apps">Aplicaciones asemeyaes y rellacionaes</string>
     <string name="tab_for_you">Pa ti</string>
     <string name="title_installed">Instalóse</string>

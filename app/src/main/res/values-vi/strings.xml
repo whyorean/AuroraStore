@@ -133,7 +133,6 @@
     <string name="pref_ui_title">Tùy chỉnh</string>
     <string name="pref_network_title">Kết nối mạng</string>
     <string name="pref_install_mode_title">Phương thức cài đặt</string>
-    <string name="pref_install_mode_summary">Chọn chế độ cài đặt APK</string>
     <string name="pref_install_mode_session">Trình cài đặt phiên</string>
     <string name="pref_install_mode_services">Dịch vụ Aurora (Không dùng nữa)</string>
     <string name="pref_install_mode_root">Trình cài đặt root</string>

@@ -243,7 +243,6 @@
     <string name="pref_install_mode_services">Aurora Services (Hindi na ginagamit)</string>
     <string name="pref_install_mode_session">Installer ng session</string>
     <string name="pref_install_mode_microg">Installer ng MicroG</string>
-    <string name="pref_install_mode_summary">Sumelekta ng paraan sa pag install ng APK</string>
     <string name="pref_install_mode_title">Method ng pag-install</string>
     <string name="pref_vending_version_title">Version ng Google Play</string>
     <string name="pref_vending_version_device">Default (galing sa config ng device)</string>

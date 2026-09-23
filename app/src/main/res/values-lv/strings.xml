@@ -221,7 +221,6 @@
     <string name="pref_install_mode_native">Iebūvētais uzstādītājs (novecojis)</string>
     <string name="pref_install_mode_root">Superlietotāja uzstādītājs</string>
     <string name="pref_install_mode_session">Sesijas uzstādītājs</string>
-    <string name="pref_install_mode_summary">Atlasīt APK uzstādīšanas veidu</string>
     <string name="pref_install_mode_title">Uzstādīšanas veids</string>
     <string name="update_available">atjauninājums</string>
     <string name="updates_available">atjauninājumi</string>

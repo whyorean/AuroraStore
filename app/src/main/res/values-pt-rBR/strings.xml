@@ -198,7 +198,6 @@
     <string name="purchase_failed">Download falhou</string>
     <string name="pref_ui_title">Personalização</string>
     <string name="pref_install_mode_title">Método de instalação</string>
-    <string name="pref_install_mode_summary">Selecione o modo de instalação de APKs</string>
     <string name="pref_install_mode_session">Instalador de sessão</string>
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>

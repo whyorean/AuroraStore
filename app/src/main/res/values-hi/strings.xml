@@ -150,7 +150,6 @@
     <string name="download_paused">रोके गए • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
     <string name="installer_status_failure_incompatible">असंगत ऐप</string>
     <string name="menu_license">लाइसेंस</string>
-    <string name="pref_install_mode_summary">APK इंस्टॉलेशन का मोड चुनें</string>
     <string name="tab_top_charts">शीर्ष तालिका</string>
     <string name="toast_manual_available">बधाई हो, अनुरोधित संस्करण कोड उपलब्ध है, अभी डाउनलोड किया जा रहा है।</string>
     <string name="details_changelog_unavailable">बदलावलॉग नहीं दिया गया</string>

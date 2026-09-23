@@ -47,7 +47,6 @@
     <string name="purchase_failed">Преузимање није успело</string>
     <string name="pref_ui_title">Прилагођавање</string>
     <string name="pref_install_mode_title">Начин инсталације</string>
-    <string name="pref_install_mode_summary">Изаберите начин инсталације APK-а</string>
     <string name="pref_install_mode_session">Програм за инсталацију „Сесија”</string>
     <string name="pref_install_mode_services">Aurora услуге (застареле)</string>
     <string name="pref_install_mode_root">Програм за инсталацију „Root”</string>

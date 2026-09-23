@@ -25,7 +25,6 @@
     <string name="pref_ui_title">Personalización</string>
     <string name="pref_network_title">Rede</string>
     <string name="pref_install_mode_title">Método de instalación</string>
-    <string name="pref_install_mode_summary">Seleccione o modo de instalación do APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
     <string name="pref_install_mode_services">Servizos Aurora (Obsoleto)</string>
     <string name="pref_install_mode_root">Instalador root</string>

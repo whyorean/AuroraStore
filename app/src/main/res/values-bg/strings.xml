@@ -137,7 +137,6 @@
     <string name="pref_install_mode_am">AM инсталатор.</string>
     <string name="pref_install_mode_root">Root инсталатор</string>
     <string name="pref_install_mode_services">Услуги на Aurora</string>
-    <string name="pref_install_mode_summary">Изберете режим на инсталиране на APK</string>
     <string name="pref_ui_no_for_you_desc">Показва страници за вас на началния екран</string>
     <string name="purchase_failed">Изтеглянето се провали</string>
     <string name="purchase_unsupported">Приложението не се поддържа</string>

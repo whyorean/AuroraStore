@@ -245,7 +245,6 @@
     <string name="pref_install_mode_services">Servìtzios de Aurora (non prus suportados)</string>
     <string name="pref_install_mode_session">Installadore de sessione</string>
     <string name="pref_install_mode_microg">Installadore MicroG</string>
-    <string name="pref_install_mode_summary">Ischerta sa manera de installatzione de sos APK</string>
     <string name="pref_install_mode_title">Manera de installatzione</string>
     <string name="pref_vending_version_title">Versione de Google Play</string>
     <string name="pref_vending_version_device">Predefinida (dae sa configuratzione de su dispositivu)</string>

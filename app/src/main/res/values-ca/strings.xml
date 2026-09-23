@@ -167,7 +167,6 @@
     <string name="pref_install_mode_native">Instal·lador natiu (obsolet)</string>
     <string name="pref_install_mode_services">Serveis d\'Aurora (obsolet)</string>
     <string name="pref_install_mode_session">Instal·lador de sessió</string>
-    <string name="pref_install_mode_summary">Seleccionar el mode d\'instal·lació de l\'APK</string>
     <string name="pref_install_mode_title">Mètode d\'instal·lació</string>
     <string name="pref_ui_title">Personalització</string>
     <string name="pref_ui_layout">Disposició</string>

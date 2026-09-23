@@ -189,7 +189,6 @@
     <string name="pref_install_mode_services">Aurora Services (ບໍ່ແນະນຳໃຫ້ໃຊ້ແລ້ວ)</string>
     <string name="pref_install_mode_session">ຕົວຕິດຕັ້ງ Session</string>
     <string name="pref_install_mode_microg">ຕົວຕິດຕັ້ງ MicroG</string>
-    <string name="pref_install_mode_summary">ເລືອກຮູບແບບການຕິດຕັ້ງ APK</string>
     <string name="pref_install_mode_title">ວິທີການຕິດຕັ້ງ</string>
     <string name="pref_vending_version_title">ເວີຊັນຂອງ Google Play</string>
     <string name="pref_vending_version_device">ຄ່າເລີ່ມຕົ້ນ (ຈາກການຕັ້ງຄ່າອຸປະກອນ)</string>
