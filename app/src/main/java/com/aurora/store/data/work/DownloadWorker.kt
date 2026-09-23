@@ -28,6 +28,7 @@ import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.exceptions.GooglePlayException
 import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.gplayapi.helpers.PurchaseHelper
 import com.aurora.gplayapi.network.IHttpClient
@@ -357,8 +358,15 @@ class DownloadWorker @AssistedInject constructor(
                     }
 
                     else -> {
-                        val userMessage = exception.message?.takeIf { it.isNotBlank() }
-                            ?: context.getString(R.string.download_failed)
+                        val userMessage = when (exception) {
+                            is GooglePlayException.AppNotSupported -> context.getString(
+                                R.string.download_version_unavailable,
+                                download.versionCode
+                            )
+
+                            else -> exception.message?.takeIf { it.isNotBlank() }
+                                ?: context.getString(R.string.download_failed)
+                        }
                         notifyStatus(
                             status = DownloadStatus.FAILED,
                             message = userMessage
