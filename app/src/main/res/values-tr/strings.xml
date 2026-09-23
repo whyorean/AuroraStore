@@ -626,4 +626,18 @@
     <string name="manual_download_no_versions">Bilinen sürüm bulunamadı</string>
     <string name="manual_download_availability_warning">Bazı sürümler indirilebilir olmayabilir veya aygıtınızla uyumsuz olabilir.</string>
     <string name="details_more_certificate_hash">Sertifika sağlama toplamı</string>
+    <string name="action_free_up_space">Alan boşalt</string>
+    <string name="installer_provider">%1$s · %2$s tarafından sağlanıyor</string>
+    <string name="insufficient_storage_title">Yeterli alan yok</string>
+    <string name="insufficient_storage_desc">%1$s için %2$s gerekiyor, ancak yalnızca %3$s var.</string>
+    <string name="insufficient_storage_hint">%1$s kadar yer açın ve tekrar deneyin.</string>
+    <string name="status_awaiting_install">Onay bekleniyor</string>
+    <string name="notification_install_prompt_pending">Kurulumu tamamlamak için dokunun</string>
+    <string name="notification_none">Burada bir şey yok</string>
+    <string name="details_more_files">Dosyalar</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d uygulama için %2$s gerekiyor, ancak yalnızca %3$s var.</item>
+        <item quantity="other">%1$d uygulama için %2$s gerekiyor, ancak yalnızca %3$s var.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">İndirme tarihi</string>
 </resources>
