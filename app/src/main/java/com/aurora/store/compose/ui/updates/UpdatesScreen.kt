@@ -49,12 +49,19 @@ fun UpdatesScreen(
     val ignoredUpdates by viewModel.ignoredUpdates.collectAsStateWithLifecycle()
     val downloads by viewModel.downloadsList.collectAsStateWithLifecycle()
     val fetchingUpdates by viewModel.fetchingUpdates.collectAsStateWithLifecycle()
+    val installing by viewModel.installing.collectAsStateWithLifecycle()
 
-    val updateMap = remember(updates, downloads) {
+    val updateMap = remember(updates, downloads, installing) {
         updates?.associateWith { update ->
             downloads.find {
                 it.packageName == update.packageName &&
                     it.versionCode == update.versionCode
+            }?.let {
+                if (it.isAwaitingInstall && it.packageName in installing) {
+                    it.copy(status = DownloadStatus.INSTALLING)
+                } else {
+                    it
+                }
             }
         }
     }
