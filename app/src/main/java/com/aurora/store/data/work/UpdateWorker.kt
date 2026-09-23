@@ -42,6 +42,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_LAST_CHECKED
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.util.Locale
@@ -133,7 +134,14 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             val allUpdates = checkUpdates()
-                .also { updateDao.insertUpdates(it) }
+                .also {
+                    updateDao.insertUpdates(it)
+                    Preferences.putLong(
+                        context,
+                        PREFERENCE_UPDATES_LAST_CHECKED,
+                        System.currentTimeMillis()
+                    )
+                }
                 .filter { if (!isExtendedUpdateEnabled) it.hasValidCert else true }
                 .filterNot { it.isIgnoredBy(ignoreRules) }
 
