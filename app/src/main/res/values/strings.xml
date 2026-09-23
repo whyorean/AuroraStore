@@ -436,6 +436,7 @@
     <string name="check_connectivity">Check internet connectivity</string>
     <string name="app_language">App language</string>
     <string name="pref_ui_theme">Theme</string>
+    <string name="pref_ui_appearance">Appearance</string>
     <string name="pref_theme_style_system">Follow system</string>
     <string name="pref_theme_style_light">Light</string>
     <string name="pref_theme_style_dark">Dark</string>
