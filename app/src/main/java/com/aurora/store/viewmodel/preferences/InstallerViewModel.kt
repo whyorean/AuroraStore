@@ -18,15 +18,20 @@ import com.aurora.extensions.observeAsStateFlow
 import com.aurora.store.R
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.Installer
+import com.aurora.store.data.model.InstallerInfo
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.save
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import rikka.shizuku.Shizuku
 import rikka.sui.Sui
 
@@ -58,10 +63,25 @@ class InstallerViewModel @Inject constructor(
         valueProvider = { installerId }
     )
 
+    private val _availableInstallers = MutableStateFlow<List<InstallerInfo>>(emptyList())
+    val availableInstallers = _availableInstallers.asStateFlow()
+
     init {
         Shizuku.addBinderReceivedListenerSticky(this)
         Shizuku.addBinderDeadListener(this)
         Shizuku.addRequestPermissionResultListener(this)
+    }
+
+    private fun refreshInstallers() {
+        viewModelScope.launch(Dispatchers.IO) {
+            // Root is probed last: it waits on the root manager's prompt for as long as it shows
+            _availableInstallers.value =
+                AppInstaller.getAvailableInstallersInfo(context, rootAccess = false)
+            _availableInstallers.value = AppInstaller.getAvailableInstallersInfo(
+                context,
+                rootAccess = AppInstaller.hasRootAccess(recheck = true)
+            )
+        }
     }
 
     override fun onBinderReceived() {
@@ -89,6 +109,7 @@ class InstallerViewModel @Inject constructor(
      * manager's screen. Acts only once the permission is held, so a denial does not loop.
      */
     fun onResumed() {
+        refreshInstallers()
         if (!awaitingShizukuGrant) return
         if (AppInstaller.hasShizukuPerm(context)) save(Installer.SHIZUKU)
     }
@@ -106,7 +127,7 @@ class InstallerViewModel @Inject constructor(
                 }
 
                 Installer.ROOT -> {
-                    if (!AppInstaller.hasRootAccess()) {
+                    if (!withContext(Dispatchers.IO) { AppInstaller.hasRootAccess() }) {
                         Log.e(TAG, "Trying to set root installer without root access")
                         _error.emit(context.getString(R.string.installer_root_unavailable))
                         return@launch
