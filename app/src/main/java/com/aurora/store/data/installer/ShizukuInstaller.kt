@@ -146,7 +146,10 @@ class ShizukuInstaller @Inject constructor(
         exec(listOf("pm", "install-commit", sessionId.toString()))
             .onSuccess {
                 // Installation is not yet finished if this is a shared library
-                if (packageName == download?.packageName) onInstallationSuccess()
+                if (packageName == download?.packageName) {
+                    AppInstaller.recordPlayAttributedInstall(context, packageName)
+                    onInstallationSuccess()
+                }
             }
             .onFailure { error ->
                 fail(packageName, error.localizedMessage, error.stackTraceToString())
