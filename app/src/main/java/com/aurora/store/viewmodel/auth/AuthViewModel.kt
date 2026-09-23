@@ -7,6 +7,7 @@ package com.aurora.store.viewmodel.auth
 
 import android.content.Context
 import android.util.Log
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
@@ -26,6 +27,7 @@ import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.net.ConnectException
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -45,12 +47,16 @@ class AuthViewModel @Inject constructor(
     private val _authState: MutableStateFlow<AuthState> = MutableStateFlow(AuthState.Init)
     val authState = _authState.asStateFlow()
 
-    /** Emits the outcome of adding a Google account (non-default) so the caller can navigate back. */
-    private val _accountAdded = MutableSharedFlow<Boolean>()
+    /** Emits null once a Google account (non-default) is added, otherwise the error to show. */
+    private val _accountAdded = MutableSharedFlow<String?>()
     val accountAdded = _accountAdded.asSharedFlow()
 
-    init {
-        updateAuthState()
+    /**
+     * Validates the saved session, once per ViewModel. Only the splash screen should call this:
+     * validation rebuilds the default account's session when it fails.
+     */
+    fun checkSession() {
+        if (_authState.value == AuthState.Init) updateAuthState()
     }
 
     fun buildGoogleAuthData(email: String, token: String, tokenType: AuthHelper.Token) {
@@ -77,7 +83,7 @@ class AuthViewModel @Inject constructor(
      */
     fun addGoogleAuthData(email: String, token: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val added = runCatching {
+            val result = runCatching {
                 val authData = authProvider
                     .buildGoogleAuthData(email, token, AuthHelper.Token.AAS)
                     .getOrThrow()
@@ -88,9 +94,13 @@ class AuthViewModel @Inject constructor(
                     authViaMicroG = false,
                     makeDefault = false
                 )
-            }.isSuccess
+            }
             authProvider.syncDefaultToPrefs()
-            _accountAdded.emit(added)
+            _accountAdded.emit(
+                result.exceptionOrNull()?.let {
+                    googleLoginError(it, R.string.failed_to_generate_session)
+                }
+            )
         }
     }
 
@@ -137,10 +147,26 @@ class AuthViewModel @Inject constructor(
                 }
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to build AuthData", exception)
-                AuroraApp.events.send(AuthEvent.GoogleLogin(false, "", ""))
+                AuroraApp.events.send(
+                    AuthEvent.GoogleLogin(
+                        success = false,
+                        email = "",
+                        token = "",
+                        error = googleLoginError(exception, R.string.toast_aas_token_failed)
+                    )
+                )
             }
         }
     }
+
+    private fun googleLoginError(exception: Throwable, @StringRes fallback: Int): String =
+        context.getString(
+            when (exception) {
+                is SocketTimeoutException -> R.string.google_login_timeout
+                is UnknownHostException, is ConnectException -> R.string.check_connectivity
+                else -> fallback
+            }
+        )
 
     fun retry() = updateAuthState()
 

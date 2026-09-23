@@ -368,6 +368,7 @@
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
     <string name="toast_aas_token_failed">Could not generate AAS Token</string>
+    <string name="google_login_timeout">Google didn\'t respond in time. Please sign in again.</string>
     <string name="toast_export_success">Device config exported</string>
     <string name="toast_export_failed">Could not export device config</string>
     <string name="toast_import_success">Device config imported</string>
