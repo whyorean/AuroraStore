@@ -49,7 +49,6 @@
     <string name="pref_ui_title">Anpassning</string>
     <string name="pref_network_title">Nätverk</string>
     <string name="pref_install_mode_title">Installationsmetod</string>
-    <string name="pref_install_mode_summary">Välj läge för installation av APK</string>
     <string name="pref_install_mode_session">Installationsprogrammet för Sessionen</string>
     <string name="pref_install_mode_services">Aurora-tjänster (Föråldrat)</string>
     <string name="pref_install_mode_root">Installationsprogrammet för Root</string>

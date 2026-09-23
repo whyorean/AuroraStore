@@ -160,7 +160,6 @@
     <string name="pref_install_mode_root">Root-installationsprogram</string>
     <string name="pref_install_mode_services">Aurora Services (forældet)</string>
     <string name="pref_install_mode_session">Session-installationsprogram</string>
-    <string name="pref_install_mode_summary">Vælg installationsmetode for APK</string>
     <string name="pref_install_mode_title">Installationsmetode</string>
     <string name="pref_network_title">Netværk</string>
     <string name="pref_ui_title">Tilpasning</string>

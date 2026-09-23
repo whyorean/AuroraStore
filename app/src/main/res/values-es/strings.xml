@@ -41,7 +41,6 @@
     <string name="purchase_failed">La descarga falló</string>
     <string name="pref_ui_title">Personalización</string>
     <string name="pref_install_mode_title">Método de instalación</string>
-    <string name="pref_install_mode_summary">Selecciona el modo de instalación del APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
     <string name="pref_install_mode_services">Servicios de Aurora (Obsoleto)</string>
     <string name="pref_install_mode_root">Instalador root</string>

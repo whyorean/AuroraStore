@@ -113,7 +113,6 @@
     <string name="pref_install_mode_am">Усталёўшчык AM</string>
     <string name="pref_install_mode_root">Усталёўшчык суперкарыстальніка</string>
     <string name="pref_install_mode_services">Сэрвісы Aurora (састарэлыя)</string>
-    <string name="pref_install_mode_summary">Выберыце варыянт усталявання APK</string>
     <string name="pref_vending_version_title">Версія Google Play</string>
     <string name="pref_network_proxy_url">URL-адрас проксі</string>
     <string name="pref_network_proxy_url_message">Увядзіце сапраўдны URL-адрас проксі для праходжання ўсяго трафіку праз яго.</string>

@@ -184,7 +184,6 @@
     <string name="pref_install_mode_native">Natívny inštalátor (zastarané)</string>
     <string name="pref_install_mode_root">Root inštalátor</string>
     <string name="pref_install_mode_services">Aurora Služby (zastarané)</string>
-    <string name="pref_install_mode_summary">Vyberte režim inštalácie APK</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
     <string name="pref_aurora_only_desc">Kontrolovať iba aktualizácie pre aplikácie nainštalované v obchode Aurora</string>
     <string name="purchase_unsupported">Aplikácia nie je podporovaná</string>

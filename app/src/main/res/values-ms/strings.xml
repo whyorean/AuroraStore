@@ -204,7 +204,6 @@
     <string name="pref_install_mode_services">Aurora Services (telah usang)</string>
     <string name="pref_install_mode_session">Pemasang sesi</string>
     <string name="pref_install_mode_microg">Pemasang microG</string>
-    <string name="pref_install_mode_summary">Pilih mod pemasangan APK</string>
     <string name="pref_install_mode_title">Cara pemasangan</string>
     <string name="pref_vending_version_title">Versi Google Play</string>
     <string name="pref_vending_version_device">Lalai (ikut tetapan peranti)</string>

@@ -114,7 +114,6 @@
     <string name="pref_install_delete_title">Forigi APK post instalado</string>
     <string name="pref_install_mode_native">Operaciuma instalilo (troantikva)</string>
     <string name="pref_install_mode_root">Ĉefuzanta instalilo</string>
-    <string name="pref_install_mode_summary">Elekti reĝimon de APK instalado</string>
     <string name="pref_install_mode_title">Instalada maniero</string>
     <string name="pref_ui_layout">Aranĝo</string>
     <string name="purchase_failed">Elŝuto malsukcesa</string>

@@ -59,7 +59,6 @@
     <string name="pref_ui_title">Přizpůsobení</string>
     <string name="pref_network_title">Síť</string>
     <string name="pref_install_mode_title">Způsob instalace</string>
-    <string name="pref_install_mode_summary">Vyberte režim instalace APK</string>
     <string name="pref_install_mode_session">Relační instalátor</string>
     <string name="pref_install_mode_services">Služby Aurora (zastaralé)</string>
     <string name="pref_install_mode_root">Root instalátor</string>

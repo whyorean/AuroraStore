@@ -170,7 +170,6 @@
     <string name="pref_ui_title">Зовнішній вигляд</string>
     <string name="pref_network_title">Мережа</string>
     <string name="pref_install_mode_title">Спосіб установлення</string>
-    <string name="pref_install_mode_summary">Оберіть режим установлення APK</string>
     <string name="pref_install_mode_session">Установлювач Android</string>
     <string name="pref_install_mode_services">Сервіси Aurora (застарілі)</string>
     <string name="pref_install_mode_root">Root-установлювач</string>

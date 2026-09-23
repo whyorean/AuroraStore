@@ -191,7 +191,6 @@
     <string name="pref_ui_title">Testreszabás</string>
     <string name="pref_network_title">Hálózat</string>
     <string name="pref_install_mode_title">Telepítési mód</string>
-    <string name="pref_install_mode_summary">APK-fájlok telepítési módja</string>
     <string name="pref_install_mode_services">Aurora-szolgáltatások (elavult)</string>
     <string name="pref_install_mode_root">Root-telepítő</string>
     <string name="pref_install_mode_native">Natív telepítő (elavult)</string>

@@ -188,7 +188,6 @@
     <string name="installer_service_misconfigured">הגדרת שירותי אורורה ואישור כל ההרשאות תחילה.</string>
     <string name="spoof_apply">יש להתחבר מחדש בשביל שההתחזות תעבוד</string>
     <string name="onboarding_permission_installer_desc">אשר התקנת אפליקציות מחנות אורורה</string>
-    <string name="pref_install_mode_summary">בחר שיטה להתקנות APK</string>
     <string name="pref_install_mode_native">מתקין Native (לא עדכני)</string>
     <string name="device_miui_description">נא להשבית את מיטובי הביצועים של MIUI בשביל לאפשר התקנת יישומים, לחלופין ניתן לבחור להשתמש במתקין שורש (Root) או במתקין Services.</string>
     <string name="toast_manual_unavailable">קוד הגרסה שביקשת לא זמין.</string>

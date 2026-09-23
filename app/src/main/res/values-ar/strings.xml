@@ -144,7 +144,6 @@
     <string name="details_beta_available">الانضمام إلى البرنامج التجريبي؟</string>
     <string name="details_beta_subscribed">أنت أحد مختبري الإصدارات التجريبية</string>
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
-    <string name="pref_install_mode_summary">حدّد وضع تثبيت APK</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف ملفات APK التي نُزلّت فورًا بعد التثبيت</string>
     <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات المثبتة من F-Droid</string>

@@ -227,7 +227,6 @@
     <string name="pref_install_mode_root">روٹ انسٹالر</string>
     <string name="pref_install_mode_services">ارورہ سروسز (فرسودہ)</string>
     <string name="pref_install_mode_session">سیشن انسٹالر</string>
-    <string name="pref_install_mode_summary">اے پی کے کی تنصیب کا موڈ منتخب کریں</string>
     <string name="pref_install_mode_title">تنصیب کا طریقہ</string>
     <string name="pref_vending_version_title">گوگل پلے ورژن</string>
     <string name="pref_vending_version_device">ڈیفالٹ (ڈیوائس کنفیگ سے)</string>

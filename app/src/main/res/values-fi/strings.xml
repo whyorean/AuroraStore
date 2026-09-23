@@ -193,7 +193,6 @@
     <string name="pref_ui_title">Mukauttaminen</string>
     <string name="pref_network_title">Verkkoyhteys</string>
     <string name="pref_install_mode_title">Asennustapa</string>
-    <string name="pref_install_mode_summary">Valitse APK-asennustapa</string>
     <string name="pref_install_mode_session">Sessioasentaja</string>
     <string name="pref_install_mode_services">Aurora-palvelut (Vanhentunut)</string>
     <string name="pref_install_mode_root">Root-asentaja</string>

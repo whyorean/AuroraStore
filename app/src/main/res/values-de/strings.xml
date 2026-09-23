@@ -98,7 +98,6 @@
     <string name="purchase_failed">Download fehlgeschlagen</string>
     <string name="pref_ui_title">Anpassung</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
-    <string name="pref_install_mode_summary">Methode der APK-Installation auswählen</string>
     <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach Installation löschen</string>

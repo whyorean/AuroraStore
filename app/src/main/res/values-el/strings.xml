@@ -189,7 +189,6 @@
     <string name="title_updates">Ενημερώσεις</string>
     <string name="pref_filter_fdroid_title">Φιλτράρετε εφαρμογές F-Droid</string>
     <string name="pref_ui_layout">Διάταξη</string>
-    <string name="pref_install_mode_summary">Επιλέξτε τον τρόπο εγκατάστασης του APK</string>
     <string name="pref_install_mode_title">Μέθοδος εγκατάστασης</string>
     <string name="title_language">Γλώσσα</string>
     <string name="title_apps">Εφαρμογές</string>

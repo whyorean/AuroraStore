@@ -160,7 +160,6 @@
     <string name="purchase_session_expired">Sessione scaduta, accedi nuovamente per ottenere una nuova sessione.</string>
     <string name="pref_ui_title">Personalizzazione</string>
     <string name="pref_install_mode_title">Metodo di installazione</string>
-    <string name="pref_install_mode_summary">Seleziona la modalità di installazione degli APK</string>
     <string name="pref_install_mode_session">Installatore di sessione</string>
     <string name="pref_install_mode_services">Servizi Aurora (Deprecato)</string>
     <string name="pref_install_mode_root">Installatore Root</string>

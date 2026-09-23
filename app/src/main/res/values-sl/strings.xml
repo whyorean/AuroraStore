@@ -171,7 +171,6 @@
     <string name="download_eta_sec">še %1$ds</string>
     <string name="download_progress">Prenašanje • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="pref_install_mode_session">Sejni namestitveni program</string>
-    <string name="pref_install_mode_summary">Izberite način namestitve APK</string>
     <string name="pref_network_title">Omreženje</string>
     <string name="tab_top_grossing">Najboljše dobičkonosne</string>
     <string name="tab_top_paid">Najboljše plačane</string>

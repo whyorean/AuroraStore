@@ -48,7 +48,6 @@
     <string name="purchase_failed">Alferrikako deskarga</string>
     <string name="pref_ui_title">Personalizazioa</string>
     <string name="pref_install_mode_title">Instalazio modua</string>
-    <string name="pref_install_mode_summary">Aukeratu APK-ak instalatzeko modua</string>
     <string name="pref_install_mode_session">Saio instalatzailea</string>
     <string name="pref_install_mode_services">Aurora zerbitzuak (zaharkitua)</string>
     <string name="pref_install_mode_root">Root instalatzailea</string>
