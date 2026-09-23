@@ -109,6 +109,8 @@ fun SplashScreen(
         }
     }
 
+    LaunchedEffect(Unit) { viewModel.checkSession() }
+
     LaunchedEffect(authState) {
         when (val state = authState) {
             AuthState.Valid, AuthState.SignedIn -> {

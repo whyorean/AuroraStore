@@ -77,23 +77,23 @@ fun GoogleLoginScreen(
                         )
                     }
                 } else {
-                    Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(
+                        context,
+                        event.error ?: context.getString(R.string.toast_aas_token_failed),
+                        Toast.LENGTH_LONG
+                    ).show()
                     onNavigateTo(if (addAccount) Destination.Accounts else Destination.Splash())
                 }
             }
         }
     }
 
-    // In add-account mode the user is already signed in (authState is Valid), so don't let the
-    // authState effect bounce to Main. Navigate back to the account screen once the add completes.
+    // In add-account mode the default session is left untouched, so don't let the authState
+    // effect bounce to Main. Navigate back to the account screen once the add completes.
     if (addAccount) {
         LaunchedEffect(Unit) {
-            viewModel.accountAdded.collect { ok ->
-                if (!ok) {
-                    Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
-                        .show()
-                }
+            viewModel.accountAdded.collect { error ->
+                if (error != null) Toast.makeText(context, error, Toast.LENGTH_LONG).show()
                 onNavigateTo(Destination.Accounts)
             }
         }
