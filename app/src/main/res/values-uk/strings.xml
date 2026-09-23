@@ -638,4 +638,20 @@
     <string name="manual_download_no_versions">Відомих версій не знайдено</string>
     <string name="manual_download_availability_warning">Деякі версії можуть бути недоступними для завантаження або несумісними з вашим пристроєм.</string>
     <string name="details_more_certificate_hash">Хеш сертифіката</string>
+    <string name="action_free_up_space">Звільнити простір</string>
+    <string name="installer_provider">%1$s · Надано %2$s</string>
+    <string name="insufficient_storage_title">Недостатньо простору</string>
+    <string name="insufficient_storage_desc">%1$s потрібно %2$s, але доступно лише %3$s.</string>
+    <string name="insufficient_storage_hint">Звільніть %1$s та повторіть спробу.</string>
+    <string name="status_awaiting_install">Очікування підтвердження</string>
+    <string name="notification_install_prompt_pending">Торкніться, щоб завершити встановлення</string>
+    <string name="notification_none">Тут нічого немає</string>
+    <string name="details_more_files">Файли</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">Застосунку %1$d потрібно %2$s, але доступно лише %3$s.</item>
+        <item quantity="few">%1$d застосункам потрібно %2$s, але доступно лише %3$s.</item>
+        <item quantity="many">%1$d застосункам потрібно %2$s, але доступно лише %3$s.</item>
+        <item quantity="other">%1$d застосункам потрібно %2$s, але доступно лише %3$s.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Дата завантаження</string>
 </resources>
