@@ -40,6 +40,10 @@ class NetworkProvider @Inject constructor(@ApplicationContext private val contex
                 }
             }
 
+            // The callback stays silent when there is no network at all, so seed the current state;
+            // before registering, so a network arriving in between isn't overwritten
+            if (connectivityManager.activeNetwork == null) trySend(NetworkStatus.UNAVAILABLE)
+
             if (isNAndAbove) {
                 connectivityManager.registerDefaultNetworkCallback(networkCallback)
             } else {
