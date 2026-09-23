@@ -57,7 +57,7 @@ fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Uni
 @Composable
 private fun buildAppExtras(app: App): String = buildList {
     add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
-    add("${app.labeledRating}★")
+    if (app.labeledRating.isNotBlank() && app.labeledRating != "0.0") add("${app.labeledRating}★")
     add(stringResource(if (app.isFree) R.string.details_free else R.string.details_paid))
     add(
         stringResource(
