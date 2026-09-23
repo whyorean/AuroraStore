@@ -101,7 +101,7 @@ class UpdateWorker @AssistedInject constructor(
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
     override suspend fun doWork(): Result {
-        super.doWork()
+        val authResult = super.doWork()
 
         Log.i(TAG, "Checking for app updates")
         val updateMode = UpdateMode.entries[
@@ -120,7 +120,7 @@ class UpdateWorker @AssistedInject constructor(
             return Result.failure()
         }
 
-        if (!authProvider.isSavedAuthDataValid()) {
+        if (authResult !is Result.Success) {
             Log.i(TAG, "AuthData is not valid, retrying later!")
             return Result.retry()
         }
