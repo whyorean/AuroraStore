@@ -30,6 +30,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
+import com.aurora.store.util.Preferences.PREFERENCE_PLAY_ATTRIBUTED_INSTALLS
 import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -151,6 +152,33 @@ class AppInstaller @Inject constructor(
         fun hasRootAccess(recheck: Boolean = false): Boolean {
             if (recheck) Shell.getCachedShell()?.takeUnless { it.isRoot }?.close()
             return Shell.getShell().isRoot
+        }
+
+        /**
+         * Records a Root/Shizuku install, which the system attributes to Play, as Aurora's.
+         * Keyed by first install time so a later reinstall by anything else no longer matches.
+         */
+        @Synchronized
+        fun recordPlayAttributedInstall(context: Context, packageName: String) {
+            val key = playAttributedKey(context, packageName) ?: return
+            val others = Preferences.getStringSet(context, PREFERENCE_PLAY_ATTRIBUTED_INSTALLS)
+                .filterNot { it.substringBeforeLast('/') == packageName }
+            Preferences.putStringSet(
+                context,
+                PREFERENCE_PLAY_ATTRIBUTED_INSTALLS,
+                (others + key).toSet()
+            )
+        }
+
+        fun isPlayAttributedInstall(context: Context, packageName: String): Boolean {
+            val key = playAttributedKey(context, packageName) ?: return false
+            return key in Preferences.getStringSet(context, PREFERENCE_PLAY_ATTRIBUTED_INSTALLS)
+        }
+
+        private fun playAttributedKey(context: Context, packageName: String): String? = try {
+            "$packageName/${PackageUtil.getPackageInfo(context, packageName).firstInstallTime}"
+        } catch (_: Exception) {
+            null
         }
 
         fun hasAuroraService(context: Context): Boolean = try {

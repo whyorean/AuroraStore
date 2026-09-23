@@ -12,6 +12,7 @@ import android.util.Base64
 import android.util.Log
 import com.aurora.Constants.PACKAGE_NAME_APP_GALLERY
 import com.aurora.Constants.PACKAGE_NAME_GMS
+import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
 import com.aurora.extensions.TAG
 import com.aurora.extensions.generateX509Certificate
 import com.aurora.extensions.getUpdateOwnerPackageNameCompat
@@ -45,11 +46,14 @@ object CertUtil {
             PACKAGE_NAME_APP_GALLERY
 
     fun isAuroraStoreApp(context: Context, packageName: String): Boolean {
-        val installerPackageNames = AppInstaller.getAvailableInstallersInfo(context)
-            .flatMap { it.installerPackageNames }
-            .toSet()
-        val packageInstaller = context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
-        return installerPackageNames.contains(packageInstaller)
+        val owner = context.packageManager.getUpdateOwnerPackageNameCompat(packageName)
+            ?: return false
+        // Root and Shizuku installs claim Play as installer, so Play alone proves nothing
+        if (owner == PACKAGE_NAME_PLAY_STORE) {
+            return AppInstaller.isPlayAttributedInstall(context, packageName)
+        }
+        return AppInstaller.getAvailableInstallersInfo(context, rootAccess = false)
+            .any { owner in it.installerPackageNames }
     }
 
     fun getEncodedCertificateHashes(context: Context, packageName: String): List<String> = try {

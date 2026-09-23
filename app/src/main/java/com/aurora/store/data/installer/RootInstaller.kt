@@ -101,7 +101,10 @@ class RootInstaller @Inject constructor(
 
                 if (shellResult.isSuccess) {
                     // Installation is not yet finished if this is a shared library
-                    if (packageName == download?.packageName) onInstallationSuccess()
+                    if (packageName == download?.packageName) {
+                        AppInstaller.recordPlayAttributedInstall(context, packageName)
+                        onInstallationSuccess()
+                    }
                 } else {
                     removeFromInstallQueue(packageName)
                     AuroraApp.events.send(
