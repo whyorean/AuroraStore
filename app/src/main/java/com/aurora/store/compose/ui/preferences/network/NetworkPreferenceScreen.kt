@@ -119,9 +119,11 @@ private fun ScreenContent(
         ProxyURLDialog(
             currentUrl = Preferences.getString(context, PREFERENCE_PROXY_URL),
             onSave = { url ->
-                showProxyDialog = false
-                if (onSaveProxyUrl(url)) {
-                    showForceRestartDialog = true
+                onSaveProxyUrl(url).also { saved ->
+                    if (saved) {
+                        showProxyDialog = false
+                        showForceRestartDialog = true
+                    }
                 }
             },
             onDelete = {
@@ -216,11 +218,12 @@ private fun ScreenContent(
 @Composable
 private fun ProxyURLDialog(
     currentUrl: String,
-    onSave: (String) -> Unit,
+    onSave: (String) -> Boolean,
     onDelete: () -> Unit,
     onDismiss: () -> Unit
 ) {
     var url by remember { mutableStateOf(currentUrl) }
+    var isInvalid by remember { mutableStateOf(false) }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.pref_network_proxy_url)) },
@@ -232,8 +235,17 @@ private fun ProxyURLDialog(
                 )
                 OutlinedTextField(
                     value = url,
-                    onValueChange = { url = it },
+                    onValueChange = {
+                        url = it
+                        isInvalid = false
+                    },
                     label = { Text(stringResource(R.string.pref_network_proxy_url_hint)) },
+                    isError = isInvalid,
+                    supportingText = if (isInvalid) {
+                        { Text(stringResource(R.string.toast_proxy_invalid)) }
+                    } else {
+                        null
+                    },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
                     modifier = Modifier.fillMaxWidth()
@@ -243,7 +255,7 @@ private fun ProxyURLDialog(
         confirmButton = {
             TextButton(
                 enabled = url.isNotBlank(),
-                onClick = { onSave(url.trim()) }
+                onClick = { isInvalid = !onSave(url.trim()) }
             ) {
                 Text(stringResource(R.string.set))
             }
