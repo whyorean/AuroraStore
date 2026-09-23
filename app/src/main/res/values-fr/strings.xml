@@ -632,4 +632,19 @@
     <string name="manual_download_no_versions">Aucune version connue n\'a été trouvée</string>
     <string name="manual_download_availability_warning">Certaines versions peuvent ne pas être disponibles au téléchargement ou être incompatibles avec votre appareil.</string>
     <string name="details_more_certificate_hash">Empreinte numérique du certificat</string>
+    <string name="action_free_up_space">Libérer de l\'espace</string>
+    <string name="insufficient_storage_title">Pas assez d\'espace</string>
+    <string name="insufficient_storage_desc">%1$s nécessite %2$s, mais seulement %3$s est disponible.</string>
+    <string name="insufficient_storage_hint">Libérez %1$s et essayez à nouveau.</string>
+    <string name="status_awaiting_install">En attente de confirmation</string>
+    <string name="notification_install_prompt_pending">Appuyez pour finir l\'installation</string>
+    <string name="details_more_files">Fichiers</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d appli nécessite %2$s, mais seulement %3$s est disponible.</item>
+        <item quantity="many">%1$d applis nécessitent %2$s, mais seulement %3$s est disponible.</item>
+        <item quantity="other">%1$d applis nécessitent %2$s, mais seulement %3$s est disponible.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Date de téléchargement</string>
+    <string name="notification_none">Il n\'y a rien ici</string>
+    <string name="installer_provider">%1$s · Fourni par %2$s</string>
 </resources>
