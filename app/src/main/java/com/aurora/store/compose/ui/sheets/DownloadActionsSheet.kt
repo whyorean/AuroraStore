@@ -37,6 +37,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil
+import com.aurora.store.util.PathUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,7 +52,7 @@ fun DownloadActionsSheet(
 ) {
     val context = LocalContext.current
     val canInstall = download.canInstall(context)
-    val canExport = canInstall || PackageUtil.isInstalled(context, download.packageName)
+    val canExport = PathUtil.getExportableFiles(context, download).isNotEmpty()
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
