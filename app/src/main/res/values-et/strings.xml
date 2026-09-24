@@ -626,4 +626,18 @@
     <string name="tracker_warning_desc">Selle uuendusega lisandub jälitajaid, mida paigaldatud versioonis pole:</string>
     <string name="manual_download_lookup">Otsi versiooni</string>
     <string name="manual_download_select_version">Vali versioon</string>
+    <string name="action_free_up_space">Vabasta andmeruumi</string>
+    <string name="installer_provider">%1$s · Kasutusel on %2$s</string>
+    <string name="insufficient_storage_title">Ei ole piisavalt andmeruumi</string>
+    <string name="insufficient_storage_desc">%1$s vajab %2$s, aga saadaval on vaid %3$s.</string>
+    <string name="insufficient_storage_hint">Vabasta %1$s andmeruumi ja proovi uuesti.</string>
+    <string name="status_awaiting_install">Kasutaja kinnituse ootel</string>
+    <string name="notification_install_prompt_pending">Klõpsa paigalduse lõpetamiseks</string>
+    <string name="notification_none">Siin pole mitte midagi huvitavat</string>
+    <string name="details_more_files">Failid</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">Rakendus %1$d vajab %2$s, aga saadaval on vaid %3$s.</item>
+        <item quantity="other">Rakendus %1$d vajab %2$s, aga saadaval on vaid %3$s.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Allalaadimise kuupäev</string>
 </resources>
