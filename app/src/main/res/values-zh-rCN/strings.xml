@@ -620,4 +620,17 @@
     <string name="manual_download_no_versions">没找到已知版本</string>
     <string name="manual_download_availability_warning">一些版本可能下载不了或者和你的设备不兼容。</string>
     <string name="details_more_certificate_hash">证书哈希</string>
+    <string name="action_free_up_space">腾出空间</string>
+    <string name="installer_provider">%1$s · %2$s 提供</string>
+    <string name="insufficient_storage_title">空间不足</string>
+    <string name="insufficient_storage_desc">%1$s 需要 %2$s，但只有 %3$s。</string>
+    <string name="insufficient_storage_hint">腾出 %1$s 后重试。</string>
+    <string name="status_awaiting_install">等待确认中</string>
+    <string name="notification_install_prompt_pending">轻触完成安装</string>
+    <string name="notification_none">无通知</string>
+    <string name="details_more_files">文件</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="other">%1$d 个应用需要 %2$s，但只有 %3$s。</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">下载日期</string>
 </resources>
