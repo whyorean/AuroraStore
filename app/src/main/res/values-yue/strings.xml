@@ -220,4 +220,5 @@
     <string name="action_request_analysis">請求重新分析</string>
     <string name="action_home_screen">喺主畫面加個公仔</string>
     <string name="download_clear_finished">抹走搞掂嗰啲</string>
+    <string name="action_free_up_space">釋放空間</string>
 </resources>
