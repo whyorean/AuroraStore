@@ -632,4 +632,19 @@
     <string name="manual_download_no_versions">Nu s-au găsit versiuni cunoscute</string>
     <string name="manual_download_availability_warning">Unele versiuni pot fi indisponibile pentru descărcare sau sunt incompatibile cu acest dispozitiv.</string>
     <string name="details_more_certificate_hash">Hash de certificat</string>
+    <string name="action_free_up_space">Eliberează spațiu</string>
+    <string name="installer_provider">%1$s · Furnizat de %2$s</string>
+    <string name="insufficient_storage_title">Nu este suficient spațiu</string>
+    <string name="insufficient_storage_desc">%1$s necesită %2$s, însă sunt disponibili doar %3$s.</string>
+    <string name="insufficient_storage_hint">Eliberează %1$s și încearcă din nou.</string>
+    <string name="status_awaiting_install">Se așteaptă confirmarea</string>
+    <string name="notification_install_prompt_pending">Atinge pentru a finaliza instalarea</string>
+    <string name="notification_none">Nimic de văzut aici</string>
+    <string name="details_more_files">Fișiere</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d aplicație necesită %2$s, însă sunt disponibili doar %3$s.</item>
+        <item quantity="few">%1$d aplicații necesită %2$s, însă sunt disponibili doar %3$s.</item>
+        <item quantity="other">%1$d aplicații necesită %2$s, însă sunt disponibili doar %3$s.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Data descărcării</string>
 </resources>
