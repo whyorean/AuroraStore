@@ -640,4 +640,18 @@
     <string name="details_more_certificate_hash">Hash certyfikatu</string>
     <string name="details_more_files">Pliki</string>
     <string name="download_sort_date_downloaded">Data pobrania</string>
+    <string name="action_free_up_space">Zwolnij miejsce</string>
+    <string name="installer_provider">%1$s · Obsługiwane przez %2$s</string>
+    <string name="insufficient_storage_title">Za mało miejsca</string>
+    <string name="insufficient_storage_desc">%1$s potrzebuje %2$s, ale dostępne jest tylko %3$s.</string>
+    <string name="insufficient_storage_hint">Zwolnij %1$s i spróbuj ponownie.</string>
+    <string name="status_awaiting_install">Czekam na potwierdzenie</string>
+    <string name="notification_install_prompt_pending">Dotknij, aby zakończyć instalację</string>
+    <string name="notification_none">Nie ma tu nic do oglądania</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d aplikacja wymaga %2$s, ale dostępne jest tylko %3$s.</item>
+        <item quantity="few">%1$d aplikacje wymagają %2$s, ale dostępne jest tylko %3$s.</item>
+        <item quantity="many">%1$d aplikacji wymaga %2$s, ale dostępne jest tylko %3$s.</item>
+        <item quantity="other">%1$d aplikacji wymaga %2$s, ale dostępne jest tylko %3$s.</item>
+    </plurals>
 </resources>
