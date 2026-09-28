@@ -8,11 +8,13 @@ package com.aurora.store.compose.composable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -20,6 +22,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -40,6 +44,7 @@ private const val LOAD_MORE_THRESHOLD = 2
 fun StreamCarousel(
     modifier: Modifier = Modifier,
     streamBundle: StreamBundle?,
+    bottomContentPadding: Dp = 0.dp,
     filterSingleAppClusters: Boolean = true,
     lazyListState: LazyListState = rememberLazyListState(),
     onHeaderClick: (StreamCluster) -> Unit = {},
@@ -59,24 +64,28 @@ fun StreamCarousel(
     }
 
     if (streamBundle == null) {
+        val shimmerBrush = rememberShimmerBrush()
         LazyColumn(
             modifier = modifier.fillMaxSize(),
             state = lazyListState,
+            contentPadding = PaddingValues(bottom = bottomContentPadding),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
         ) {
-            items(5) { ShimmerCarouselSection() }
+            items(5) { ShimmerCarouselSection(shimmerBrush) }
         }
         return
     }
 
-    val clusters = streamBundle.streamClusters.values
-        .map { cluster ->
-            cluster.copy(clusterAppList = cluster.clusterAppList.distinctBy { it.packageName })
-        }
-        .filter { cluster ->
-            cluster.clusterAppList.isNotEmpty() &&
-                cluster.clusterTitle.isNotBlank() &&
-                (!filterSingleAppClusters || cluster.clusterAppList.size > 1)
+    val clusters = remember(streamBundle, filterSingleAppClusters) {
+        streamBundle.streamClusters.values
+            .map { cluster ->
+                cluster.copy(clusterAppList = cluster.clusterAppList.distinctBy { it.packageName })
+            }
+            .filter { cluster ->
+                cluster.clusterAppList.isNotEmpty() &&
+                    cluster.clusterTitle.isNotBlank() &&
+                    (!filterSingleAppClusters || cluster.clusterAppList.size > 1)
+            }
         }
 
     if (clusters.isEmpty()) {
@@ -91,21 +100,22 @@ fun StreamCarousel(
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         state = lazyListState,
+        contentPadding = PaddingValues(bottom = bottomContentPadding),
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(
-                if (clusters.size == 1) {
-                    R.dimen.spacing_medium
-                } else {
-                    R.dimen.spacing_xsmall
-                }
-            )
+            if (clusters.size == 1) ListItemDefaults.SegmentedGap
+            else dimensionResource(R.dimen.spacing_xsmall)
         )
     ) {
         if (clusters.size == 1) {
             val apps = clusters.first().clusterAppList
             items(count = apps.size, key = { apps[it].id }) { index ->
                 LargeAppListItem(
+                    modifier = Modifier.padding(
+                        horizontal = dimensionResource(R.dimen.spacing_large)
+                    ),
                     app = apps[index],
+                    itemIndex = index,
+                    itemCount = apps.size,
                     onClick = { onAppClick(apps[index]) }
                 )
             }
@@ -141,8 +151,11 @@ fun StreamCarousel(
 internal fun ClusterRow(
     cluster: StreamCluster,
     onAppClick: (App) -> Unit = {},
-    onClusterScrolled: (StreamCluster) -> Unit = {}
+    onClusterScrolled: (StreamCluster) -> Unit = {},
+    horizontalContentPadding: Dp? = null
 ) {
+    val rowHorizontalContentPadding = horizontalContentPadding
+        ?: dimensionResource(R.dimen.spacing_large)
     val rowState = rememberLazyListState()
     val reachedEnd by remember {
         derivedStateOf {
@@ -158,7 +171,7 @@ internal fun ClusterRow(
 
     LazyRow(
         state = rowState,
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_small)),
+        contentPadding = PaddingValues(horizontal = rowHorizontalContentPadding),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         itemsIndexed(

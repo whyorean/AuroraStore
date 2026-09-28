@@ -91,7 +91,7 @@ fun MicroG(
         modifier = modifier
             .fillMaxSize()
             .padding(
-                horizontal = dimensionResource(R.dimen.spacing_small),
+                horizontal = dimensionResource(R.dimen.spacing_large),
                 vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
         verticalArrangement = Arrangement.SpaceBetween

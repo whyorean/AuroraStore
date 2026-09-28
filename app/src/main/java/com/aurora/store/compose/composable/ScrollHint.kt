@@ -15,15 +15,20 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -38,8 +43,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.dp
 import com.aurora.store.R
 import kotlin.math.roundToInt
 import kotlinx.coroutines.launch
@@ -87,7 +92,10 @@ fun ScrollHint(
         visible = visible,
         modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = dimensionResource(R.dimen.scroll_hint_padding)),
+            .padding(
+                bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() +
+                    dimensionResource(R.dimen.scroll_hint_padding)
+            ),
         enter = fadeIn() + slideInVertically { it / 2 },
         exit = fadeOut()
     ) {
@@ -95,21 +103,28 @@ fun ScrollHint(
             contentAlignment = Center,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_arrow_down),
-                contentDescription = "Scroll down",
+            FilledTonalIconButton(
+                onClick = {
+                    coroutineScope.launch {
+                        listState.animateScrollBy(onClickScrollOffset)
+                    }
+                },
                 modifier = Modifier
-                    .size(32.dp)
-                    .offset {
-                        IntOffset(0, offsetY.roundToInt())
-                    }
-                    .alpha(0.7f)
-                    .clickable {
-                        coroutineScope.launch {
-                            listState.animateScrollBy(onClickScrollOffset)
-                        }
-                    }
-            )
+                    .offset { IntOffset(0, offsetY.roundToInt()) }
+                    .alpha(0.92f),
+                shapes = IconButtonDefaults.shapes(
+                    shape = RoundedCornerShape(dimensionResource(R.dimen.radius_large))
+                ),
+                colors = IconButtonDefaults.filledTonalIconButtonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_arrow_down),
+                    contentDescription = stringResource(R.string.action_scroll_down)
+                )
+            }
         }
     }
 }

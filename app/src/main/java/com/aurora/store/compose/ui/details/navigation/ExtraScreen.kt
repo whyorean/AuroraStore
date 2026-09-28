@@ -24,6 +24,9 @@ sealed class ExtraScreen : NavKey, Parcelable {
     data object More : ExtraScreen()
 
     @Serializable
+    data object MoreInfo : ExtraScreen()
+
+    @Serializable
     data class Screenshot(val index: Int) : ExtraScreen()
 
     @Serializable

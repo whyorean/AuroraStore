@@ -23,7 +23,6 @@ import com.aurora.gplayapi.data.models.datasafety.EntryType
 import com.aurora.gplayapi.data.models.datasafety.Report
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
-import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -37,9 +36,10 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 fun DataSafety(report: Report, privacyPolicyUrl: String) {
     val context = LocalContext.current
 
-    SectionHeader(
+    DetailsPortalCard(
         title = stringResource(R.string.details_data_safety_title),
-        subtitle = stringResource(R.string.details_data_safety_subtitle),
+        description = stringResource(R.string.details_data_safety_subtitle),
+        icon = painterResource(R.drawable.ic_cloud_upload),
         onClick = { context.browse(privacyPolicyUrl) }
     )
 

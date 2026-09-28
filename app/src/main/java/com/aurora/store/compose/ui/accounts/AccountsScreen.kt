@@ -23,8 +23,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -61,6 +59,10 @@ import com.aurora.extensions.browse
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.compose.composable.AccountListItem
+import com.aurora.store.compose.composable.ExpressiveMenuGroup
+import com.aurora.store.compose.composable.ExpressiveMenuIcon
+import com.aurora.store.compose.composable.ExpressiveMenuItem
+import com.aurora.store.compose.composable.ExpressiveMenuPopup
 import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.navigation.Destination
@@ -437,10 +439,10 @@ private fun AddOptionRow(iconRes: Int, label: String, onClick: () -> Unit) {
 private fun OverflowMenu(onRefreshAll: () -> Unit) {
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
-    val links = mapOf(
-        R.string.menu_terms to URL_TOS,
-        R.string.menu_disclaimer to URL_DISCLAIMER,
-        R.string.menu_license to URL_LICENSE
+    val links = listOf(
+        Triple(R.string.menu_terms, URL_TOS, R.drawable.ic_about),
+        Triple(R.string.menu_disclaimer, URL_DISCLAIMER, R.drawable.ic_disclaimer),
+        Triple(R.string.menu_license, URL_LICENSE, R.drawable.ic_license)
     )
 
     Box {
@@ -450,23 +452,36 @@ private fun OverflowMenu(onRefreshAll: () -> Unit) {
                 contentDescription = stringResource(R.string.menu)
             )
         }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.account_refresh_all)) },
-                onClick = {
-                    expanded = false
-                    onRefreshAll()
-                }
-            )
-            HorizontalDivider()
-            links.forEach { (label, url) ->
-                DropdownMenuItem(
-                    text = { Text(text = stringResource(label)) },
+        ExpressiveMenuPopup(expanded = expanded, onDismissRequest = { expanded = false }) {
+            ExpressiveMenuGroup(index = 0, count = 2) {
+                ExpressiveMenuItem(
+                    index = 0,
+                    count = 1,
+                    text = { Text(text = stringResource(R.string.account_refresh_all)) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_refresh))
+                    },
                     onClick = {
                         expanded = false
-                        context.browse(url)
+                        onRefreshAll()
                     }
                 )
+            }
+            ExpressiveMenuGroup(index = 1, count = 2) {
+                links.forEachIndexed { index, (label, url, icon) ->
+                    ExpressiveMenuItem(
+                        index = index,
+                        count = links.size,
+                        text = { Text(text = stringResource(label)) },
+                        leadingIcon = {
+                            ExpressiveMenuIcon(painterResource(icon))
+                        },
+                        onClick = {
+                            expanded = false
+                            context.browse(url)
+                        }
+                    )
+                }
             }
         }
     }

@@ -6,28 +6,25 @@
 
 package com.aurora.store.compose.ui.details.composable
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.dp
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
-import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -38,31 +35,22 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  */
 @Composable
 fun Changelog(changelog: String) {
-    SectionHeader(title = stringResource(R.string.details_changelog))
-    Box(
+    if (changelog.isBlank()) return
+
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.spacing_medium))
+            .padding(horizontal = dimensionResource(R.dimen.spacing_large)),
+        shape = MaterialTheme.shapes.extraLarge,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        )
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
-                .background(color = MaterialTheme.colorScheme.secondaryContainer)
-                .padding(
-                    horizontal = dimensionResource(R.dimen.spacing_medium),
-                    vertical = dimensionResource(R.dimen.spacing_small)
-                )
-        ) {
-            Text(
-                text = if (changelog.isBlank()) {
-                    AnnotatedString(text = stringResource(R.string.details_changelog_unavailable))
-                } else {
-                    AnnotatedString.fromHtml(htmlString = changelog)
-                },
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
+        Text(
+            modifier = Modifier.padding(dimensionResource(R.dimen.spacing_large)),
+            text = AnnotatedString.fromHtml(htmlString = changelog),
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 

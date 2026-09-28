@@ -1,0 +1,11 @@
+# Aurora Store redesigned startup UI.
+HSPLcom/aurora/store/compose/navigation/NavDisplayKt;->**(**)**
+HSPLcom/aurora/store/compose/ui/main/MainScreenKt;->**(**)**
+HSPLcom/aurora/store/compose/ui/apps/AppsGamesScreenKt;->**(**)**
+HSPLcom/aurora/store/compose/ui/apps/ForYouPageKt;->**(**)**
+HSPLcom/aurora/store/compose/composable/StreamCarouselKt;->**(**)**
+
+# Common post-startup details navigation and rendering.
+HPLcom/aurora/store/compose/ui/details/AppDetailsScreenKt;->**(**)**
+HPLcom/aurora/store/compose/ui/details/composable/DetailsKt;->**(**)**
+HPLcom/aurora/store/compose/ui/details/composable/ScreenshotsKt;->**(**)**

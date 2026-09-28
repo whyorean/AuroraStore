@@ -6,7 +6,6 @@
 package com.aurora.store.compose.ui.details.composable
 
 import android.text.format.DateUtils
-import android.widget.RatingBar
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,13 +35,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.viewinterop.AndroidView
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.SectionHeader
+import com.aurora.store.compose.composable.details.StarRating
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
@@ -113,7 +112,7 @@ private fun ReviewSummary(review: Review, onEdit: () -> Unit, onDelete: () -> Un
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+            .padding(horizontal = dimensionResource(R.dimen.spacing_large)),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         Row(
@@ -144,20 +143,7 @@ private fun ReviewSummary(review: Review, onEdit: () -> Unit, onDelete: () -> Un
                     ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    AndroidView(
-                        factory = { context ->
-                            RatingBar(
-                                context,
-                                null,
-                                android.R.attr.ratingBarStyleIndicator
-                            ).apply {
-                                numStars = 5
-                                stepSize = 1F
-                                setIsIndicator(true)
-                            }
-                        },
-                        update = { it.rating = review.rating.toFloat() }
-                    )
+                    StarRating(rating = review.rating)
                     if (review.timeStamp > 0L) {
                         Text(text = "·", style = MaterialTheme.typography.bodySmall)
                         Text(
@@ -214,21 +200,10 @@ private fun ReviewForm(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+            .padding(horizontal = dimensionResource(R.dimen.spacing_large)),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
-        AndroidView(
-            factory = { context ->
-                RatingBar(context, null, android.R.attr.ratingBarStyle).apply {
-                    numStars = 5
-                    stepSize = 1F
-                    setOnRatingBarChangeListener { _, value, fromUser ->
-                        if (fromUser) rating = value.toInt()
-                    }
-                }
-            },
-            update = { it.rating = rating.toFloat() }
-        )
+        StarRating(rating = rating, onRatingChange = { rating = it })
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),

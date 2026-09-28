@@ -6,31 +6,41 @@
 package com.aurora.store.compose.composable.details
 
 import android.text.format.DateUtils
-import android.widget.RatingBar
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.viewinterop.AndroidView
 import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.Review
 import com.aurora.store.R
+import com.aurora.store.compose.composable.RoundedIconButton
+import com.aurora.store.compose.composable.rememberStoreImageRequest
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -40,57 +50,99 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param review [Review] about an app
  */
 @Composable
-fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
-    Row(
+fun ReviewListItem(
+    modifier: Modifier = Modifier,
+    review: Review,
+    maxCommentLines: Int = Int.MAX_VALUE,
+    expandable: Boolean = false
+) {
+    var expanded by rememberSaveable(review.commentId, review.comment) {
+        mutableStateOf(false)
+    }
+    var hasMoreContent by rememberSaveable(review.commentId, review.comment) {
+        mutableStateOf(false)
+    }
+
+    ListItem(
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                horizontal = dimensionResource(R.dimen.spacing_medium),
-                vertical = dimensionResource(R.dimen.spacing_small)
-            )
-    ) {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(review.userPhotoUrl)
-                .crossfade(true)
-                .build(),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .requiredSize(dimensionResource(R.dimen.icon_size_small))
-                .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
-        )
-        Column(
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.spacing_small))
-        ) {
-            Text(
-                text = review.userName,
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            .then(
+                if (expandable) Modifier.animateContentSize(animationSpec = spring())
+                else Modifier
+            ),
+        shapes = com.aurora.store.compose.composable.auroraListItemShapes(),
+        overlineContent = {
             Text(
                 text = DateUtils.formatDateTime(
                     LocalContext.current,
                     review.timeStamp,
                     DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_YEAR
                 ),
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            AndroidView(
-                factory = { context ->
-                    RatingBar(context, null, android.R.attr.ratingBarStyleSmall)
-                },
-                update = { view ->
-                    view.rating = review.rating.toFloat()
+        },
+            supportingContent = {
+            Column(
+                modifier = if (expandable) {
+                    Modifier.animateContentSize(animationSpec = spring())
+                } else {
+                    Modifier
                 }
+            ) {
+                StarRating(rating = review.rating)
+                Text(
+                    text = review.comment,
+                    modifier = Modifier.padding(top = dimensionResource(R.dimen.spacing_small)),
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = if (expandable && expanded) Int.MAX_VALUE else maxCommentLines,
+                    overflow = TextOverflow.Ellipsis,
+                    onTextLayout = { result ->
+                        if (expandable && !expanded) {
+                            hasMoreContent = result.didOverflowHeight
+                        }
+                    }
+                )
+            }
+        },
+        leadingContent = {
+            AsyncImage(
+                model = rememberStoreImageRequest(review.userPhotoUrl),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .requiredSize(dimensionResource(R.dimen.icon_size_small))
+                    .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
             )
-            Text(
-                text = review.comment,
-                style = MaterialTheme.typography.bodySmall,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
+        },
+        trailingContent = {
+            if (expandable && hasMoreContent) {
+                RoundedIconButton(
+                    onClick = { expanded = !expanded },
+                    painter = painterResource(
+                        if (expanded) R.drawable.ic_keyboard_arrow_up
+                        else R.drawable.ic_keyboard_arrow_down
+                    ),
+                    contentDescription = stringResource(
+                        if (expanded) R.string.details_collapse_review
+                        else R.string.details_expand_review
+                    )
+                )
+            }
+        },
+        verticalAlignment = Alignment.CenterVertically,
+        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+        contentPadding = PaddingValues(
+            horizontal = dimensionResource(R.dimen.spacing_large),
+            vertical = dimensionResource(R.dimen.spacing_small)
+        )
+    ) {
+        Text(
+            text = review.userName,
+            style = MaterialTheme.typography.titleSmall,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 

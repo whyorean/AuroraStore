@@ -7,12 +7,18 @@
 package com.aurora.store.compose.ui.details
 
 import android.text.format.Formatter
-import android.util.Base64
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -27,8 +33,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
@@ -38,9 +44,7 @@ import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.adaptiveNavigationIcon
-import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.isWindowCompact
-import com.aurora.extensions.toast
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.PlayFile
 import com.aurora.store.R
@@ -49,6 +53,7 @@ import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.AppListItem
+import com.aurora.store.compose.ui.details.composable.DetailsPortalCard
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -59,6 +64,7 @@ import com.aurora.store.viewmodel.details.MoreViewModel
 fun MoreScreen(
     packageName: String,
     onNavigateTo: (Destination) -> Unit,
+    onOpenMoreInfo: () -> Unit,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
     moreViewModel: MoreViewModel = hiltViewModel(
         key = "$packageName/more",
@@ -73,7 +79,8 @@ fun MoreScreen(
     ScreenContent(
         app = app!!,
         dependencies = dependencies,
-        onNavigateTo = onNavigateTo
+        onNavigateTo = onNavigateTo,
+        onOpenMoreInfo = onOpenMoreInfo
     )
 }
 
@@ -82,6 +89,7 @@ private fun ScreenContent(
     app: App,
     dependencies: List<App>? = null,
     onNavigateTo: (Destination) -> Unit = {},
+    onOpenMoreInfo: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     val topAppBarTitle = when {
@@ -93,9 +101,11 @@ private fun ScreenContent(
         topBar = {
             TopAppBar(
                 title = topAppBarTitle,
-                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
+                navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
+                boxedNavigationIcon = true
             )
-        }
+        },
+        contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)
     ) { paddingValues ->
         val listState = rememberLazyListState()
         Box(
@@ -106,8 +116,12 @@ private fun ScreenContent(
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 state = listState,
+                contentPadding = PaddingValues(
+                    bottom = WindowInsets.navigationBars.asPaddingValues()
+                        .calculateBottomPadding() + dimensionResource(R.dimen.spacing_large)
+                ),
                 verticalArrangement = Arrangement.spacedBy(
-                    dimensionResource(R.dimen.spacing_medium)
+                    dimensionResource(R.dimen.spacing_large)
                 )
             ) {
                 item {
@@ -117,7 +131,7 @@ private fun ScreenContent(
                 item {
                     Text(
                         modifier = Modifier.padding(
-                            horizontal = dimensionResource(R.dimen.spacing_medium)
+                            horizontal = dimensionResource(R.dimen.spacing_large)
                         ),
                         text = AnnotatedString.fromHtml(
                             htmlString = app.description
@@ -142,7 +156,12 @@ private fun ScreenContent(
                 }
 
                 item {
-                    AppInfoMore(app = app)
+                    DetailsPortalCard(
+                        title = stringResource(R.string.details_more_info),
+                        description = stringResource(R.string.details_more_info_description),
+                        icon = painterResource(R.drawable.ic_menu_about),
+                        onClick = onOpenMoreInfo
+                    )
                 }
             }
             ScrollHint(
@@ -164,7 +183,11 @@ private fun AppDependencies(dependencies: List<App>, onNavigateTo: (Destination)
             title = AnnotatedString(text = stringResource(R.string.details_no_dependencies))
         )
     } else {
-        LazyRow(modifier = Modifier.fillMaxWidth()) {
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_large)),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
+        ) {
             items(items = dependencies, key = { item -> item.id }) { app ->
                 AppListItem(
                     app = app,
@@ -185,76 +208,6 @@ private fun AppFiles(files: List<PlayFile>) {
             description = AnnotatedString(
                 text = Formatter.formatShortFileSize(context, file.size)
             )
-        )
-    }
-}
-
-@OptIn(ExperimentalStdlibApi::class)
-private fun decodeBase64UrlToHex(base64Url: String) =
-    Base64.decode(base64Url, Base64.URL_SAFE).toHexString()
-
-/**
- * Composable to show more information about the app that maybe advanced
- */
-@Composable
-private fun AppInfoMore(app: App) {
-    SectionHeader(title = stringResource(R.string.details_more_info))
-    Info(
-        title = AnnotatedString(
-            text = stringResource(R.string.details_more_package_name)
-        ),
-        description = AnnotatedString(text = app.packageName)
-    )
-
-    Info(
-        title = AnnotatedString(
-            text = stringResource(R.string.details_more_target_api)
-        ),
-        description = AnnotatedString(text = "API ${app.targetSdk}")
-    )
-
-    Info(
-        title = AnnotatedString(
-            text = stringResource(R.string.details_more_content_rating)
-        ),
-        description = AnnotatedString(text = app.contentRating.title)
-    )
-
-    val certHashes = app.certificateSetList.mapNotNull { it.sha256.takeIf { s -> s.isNotBlank() } }
-        .map { decodeBase64UrlToHex(it) }
-    if (certHashes.isNotEmpty()) {
-        val context = LocalContext.current
-        certHashes.forEachIndexed { index, certHash ->
-            val title = if (certHashes.size == 1) {
-                stringResource(R.string.details_more_certificate_hash)
-            } else {
-                "${stringResource(R.string.details_more_certificate_hash)} ${index + 1}"
-            }
-            Info(
-                title = AnnotatedString(text = title),
-                description = AnnotatedString(text = certHash),
-                onClick = {
-                    context.copyToClipBoard(certHash)
-                    context.toast(R.string.toast_clipboard_copied)
-                }
-            )
-        }
-    }
-
-    app.appInfo.appInfoMap.forEach { (title, subtitle) ->
-        Info(
-            title = AnnotatedString(
-                text = title.replace("_", " ")
-                    .lowercase(LocalLocale.current.platformLocale)
-                    .replaceFirstChar {
-                        if (it.isLowerCase()) {
-                            it.titlecase(LocalLocale.current.platformLocale)
-                        } else {
-                            it.toString()
-                        }
-                    }
-            ),
-            description = AnnotatedString(text = subtitle)
         )
     }
 }

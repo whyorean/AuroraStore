@@ -5,18 +5,18 @@
 
 package com.aurora.store.compose.composable.app
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,26 +27,28 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
+import com.aurora.store.compose.composable.auroraSegmentedListItemShapes
+import com.aurora.store.compose.composable.app.AnimatedAppIcon
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.util.CommonUtil
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun AppUpdateItem(
     modifier: Modifier = Modifier,
     update: Update,
     download: Download? = null,
     isChecking: Boolean = false,
+    itemIndex: Int = 0,
+    itemCount: Int = 1,
     onClick: () -> Unit = {},
     onUpdate: () -> Unit = {},
     onCancel: () -> Unit = {},
     onUnignore: (() -> Unit)? = null
 ) {
-    // Only the INSTALLING status shows as "Installing"; a downloaded-but-not-installed
-    // (COMPLETED) app falls back to the "Update" action. isChecking is the pre-download
-    // tracker check, shown with the same indeterminate progress + Cancel as an active download.
     val inProgress = isChecking ||
         (download != null && !download.isFinished && !download.isAwaitingInstall)
     val installing = download?.status == DownloadStatus.INSTALLING
@@ -56,73 +58,86 @@ fun AppUpdateItem(
         0f
     }
 
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(
-                horizontal = dimensionResource(R.dimen.spacing_medium),
-                vertical = dimensionResource(R.dimen.spacing_small)
-            ),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box(modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium))) {
+    SegmentedListItem(
+        selected = false,
+        onClick = onClick,
+        shapes = auroraSegmentedListItemShapes(index = itemIndex, count = itemCount),
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        colors = ListItemDefaults.segmentedColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        contentPadding = PaddingValues(
+            horizontal = dimensionResource(R.dimen.spacing_large),
+            vertical = dimensionResource(R.dimen.spacing_small)
+        ),
+        leadingContent = {
             AnimatedAppIcon(
                 modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
                 iconUrl = update.iconURL,
                 inProgress = inProgress,
                 progress = progress
             )
-        }
-        Spacer(Modifier.width(dimensionResource(R.dimen.spacing_medium)))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = update.displayName,
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = update.developerName,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = "${update.versionName}  •  ${CommonUtil.addSiPrefix(update.size)}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-        Spacer(Modifier.width(dimensionResource(R.dimen.spacing_small)))
-        when {
-            onUnignore != null -> {
-                OutlinedButton(onClick = onUnignore) {
-                    Text(stringResource(R.string.action_unignore))
-                }
+        },
+        supportingContent = {
+            Column {
+                Text(
+                    text = update.developerName,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = "${update.versionName}  •  ${CommonUtil.addSiPrefix(update.size)}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
+        },
+        trailingContent = {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(
+                    dimensionResource(R.dimen.spacing_xsmall)
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                when {
+                    onUnignore != null -> {
+                        OutlinedButton(onClick = onUnignore) {
+                            Text(stringResource(R.string.action_unignore))
+                        }
+                    }
 
-            installing -> {
-                OutlinedButton(onClick = {}, enabled = false) {
-                    Text(stringResource(R.string.action_installing))
-                }
-            }
+                    installing -> {
+                        OutlinedButton(onClick = {}, enabled = false) {
+                            Text(stringResource(R.string.action_installing))
+                        }
+                    }
 
-            inProgress -> {
-                OutlinedButton(onClick = onCancel) {
-                    Text(stringResource(R.string.action_cancel))
-                }
-            }
+                    inProgress -> {
+                        OutlinedButton(onClick = onCancel) {
+                            Text(stringResource(R.string.action_cancel))
+                        }
+                    }
 
-            else -> {
-                Button(onClick = onUpdate) {
-                    Text(stringResource(R.string.action_update))
+                    else -> {
+                        Button(onClick = onUpdate) {
+                            Text(stringResource(R.string.action_update))
+                        }
+                    }
                 }
             }
         }
+    ) {
+        Text(
+            text = update.displayName,
+            style = MaterialTheme.typography.titleSmall,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
