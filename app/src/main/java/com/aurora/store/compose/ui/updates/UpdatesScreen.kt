@@ -6,10 +6,13 @@
 package com.aurora.store.compose.ui.updates
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
@@ -21,6 +24,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.store.R
@@ -42,7 +47,8 @@ fun UpdatesScreen(
     onRequestUpdateAll: (List<Update>) -> Unit = {},
     onCancelUpdate: (String) -> Unit = {},
     onCancelAll: () -> Unit = {},
-    checkingPackages: Set<String> = emptySet()
+    checkingPackages: Set<String> = emptySet(),
+    bottomContentPadding: Dp = 0.dp
 ) {
     val context = LocalContext.current
     val updates by viewModel.updates.collectAsStateWithLifecycle()
@@ -88,6 +94,12 @@ fun UpdatesScreen(
             updateMap == null -> {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(
+                        start = dimensionResource(R.dimen.spacing_large),
+                        end = dimensionResource(R.dimen.spacing_large),
+                        top = dimensionResource(R.dimen.spacing_large),
+                        bottom = dimensionResource(R.dimen.spacing_large) + bottomContentPadding
+                    ),
                     verticalArrangement = Arrangement.spacedBy(
                         dimensionResource(R.dimen.spacing_medium)
                     )
@@ -109,25 +121,34 @@ fun UpdatesScreen(
             else -> {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.spacing_medium)
-                    )
+                    contentPadding = PaddingValues(
+                        start = dimensionResource(R.dimen.spacing_large),
+                        end = dimensionResource(R.dimen.spacing_large),
+                        top = dimensionResource(R.dimen.spacing_large),
+                        bottom = dimensionResource(R.dimen.spacing_large) + bottomContentPadding
+                    ),
+                    verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
                 ) {
                     if (selfEntries.isNotEmpty()) {
                         item(key = "header_self") {
                             SectionHeader(
                                 title = stringResource(R.string.updates_self_header),
-                                subtitle = stringResource(R.string.updates_self_desc)
+                                subtitle = stringResource(R.string.updates_self_desc),
+                                horizontalPadding = 0.dp
                             )
                         }
-                        items(
+                        itemsIndexed(
                             items = selfEntries,
-                            key = { "self-${it.key.packageName}" }
-                        ) { (update, download) ->
+                            key = { _, entry -> "self-${entry.key.packageName}" }
+                        ) { index, entry ->
+                            val update = entry.key
+                            val download = entry.value
                             AppUpdateItem(
                                 update = update,
                                 download = download,
                                 isChecking = update.packageName in checkingPackages,
+                                itemIndex = index,
+                                itemCount = selfEntries.size,
                                 // Served from the Aurora OSS feed, not Play — there is
                                 // no app details page to open.
                                 onClick = {},
@@ -155,6 +176,7 @@ fun UpdatesScreen(
                             )
                             SectionHeader(
                                 title = title,
+                                horizontalPadding = 0.dp,
                                 trailing = {
                                     TextButton(
                                         onClick = {
@@ -190,6 +212,7 @@ fun UpdatesScreen(
                             SectionHeader(
                                 title = stringResource(R.string.updates_approval_header),
                                 subtitle = stringResource(R.string.updates_approval_desc),
+                                horizontalPadding = 0.dp,
                                 trailing = {
                                     TextButton(
                                         onClick = {
@@ -219,7 +242,8 @@ fun UpdatesScreen(
                         item(key = "header_incompatible") {
                             SectionHeader(
                                 title = stringResource(R.string.updates_incompatible_header),
-                                subtitle = stringResource(R.string.updates_incompatible_desc)
+                                subtitle = stringResource(R.string.updates_incompatible_desc),
+                                horizontalPadding = 0.dp
                             )
                         }
                         updateItems(
@@ -236,15 +260,18 @@ fun UpdatesScreen(
                         item(key = "header_ignored") {
                             SectionHeader(
                                 title = stringResource(R.string.updates_ignored_header),
-                                subtitle = stringResource(R.string.updates_ignored_desc)
+                                subtitle = stringResource(R.string.updates_ignored_desc),
+                                horizontalPadding = 0.dp
                             )
                         }
-                        items(
+                        itemsIndexed(
                             items = ignoredUpdates,
-                            key = { "ignored-${it.packageName}" }
-                        ) { update ->
+                            key = { _, update -> "ignored-${update.packageName}" }
+                        ) { index, update ->
                             AppUpdateItem(
                                 update = update,
+                                itemIndex = index,
+                                itemCount = ignoredUpdates.size,
                                 onClick = {},
                                 onUnignore = { viewModel.unignore(update.packageName) }
                             )
@@ -270,14 +297,18 @@ private fun LazyListScope.updateItems(
     onCancelUpdate: (String) -> Unit,
     checkingPackages: Set<String>
 ) {
-    items(
+    itemsIndexed(
         items = entries,
-        key = { "$keyPrefix-${it.key.packageName}" }
-    ) { (update, download) ->
+        key = { _, entry -> "$keyPrefix-${entry.key.packageName}" }
+    ) { index, entry ->
+        val update = entry.key
+        val download = entry.value
         AppUpdateItem(
             update = update,
             download = download,
             isChecking = update.packageName in checkingPackages,
+            itemIndex = index,
+            itemCount = entries.size,
             onClick = {
                 onNavigateTo(Destination.AppUpdate(update))
             },

@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -25,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.Dp
 import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -39,14 +39,16 @@ fun SectionHeader(
     title: String,
     subtitle: String? = null,
     onClick: (() -> Unit)? = null,
-    trailing: (@Composable () -> Unit)? = null
+    trailing: (@Composable () -> Unit)? = null,
+    horizontalPadding: Dp? = null
 ) {
+    val sectionHorizontalPadding = horizontalPadding ?: dimensionResource(R.dimen.spacing_large)
     Row(
         modifier = modifier
             .fillMaxWidth()
             .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
             .padding(
-                horizontal = dimensionResource(R.dimen.spacing_medium),
+                horizontal = sectionHorizontalPadding,
                 vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -71,11 +73,11 @@ fun SectionHeader(
         }
         when {
             trailing != null -> trailing()
-            onClick != null -> Icon(
+            onClick != null -> ArrowIconBox(
                 painter = painterResource(R.drawable.ic_arrow_right),
                 contentDescription = null,
-                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_default)),
-                tint = MaterialTheme.colorScheme.primary
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }

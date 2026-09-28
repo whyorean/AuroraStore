@@ -132,7 +132,7 @@ private fun Header(app: App, showBuy: Boolean = false, onBuy: () -> Unit = {}) {
             contentDescription = null,
             modifier = Modifier
                 .requiredSize(dimensionResource(R.dimen.icon_size_medium))
-                .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium)))
+                .clip(RoundedCornerShape(dimensionResource(R.dimen.app_icon_radius)))
         )
         Column(modifier = Modifier.weight(1f)) {
             Text(

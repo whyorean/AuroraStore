@@ -8,33 +8,33 @@ package com.aurora.store.compose.ui.details.composable
 
 import android.text.format.Formatter
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.text.InlineTextContent
-import androidx.compose.foundation.text.appendInlineContent
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.Placeholder
-import androidx.compose.ui.text.PlaceholderVerticalAlign
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.compose.ui.unit.LayoutDirection
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AnimatedAppIcon
@@ -42,7 +42,6 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.AppState
 import com.aurora.store.util.CommonUtil
-import com.aurora.store.util.PackageUtil
 
 /**
  * Composable to display basic app details, supposed to be used as a part
@@ -55,61 +54,18 @@ import com.aurora.store.util.PackageUtil
 fun Details(
     app: App,
     state: AppState = AppState.Unavailable,
-    onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {}
+    showAppName: Boolean = true,
+    onNavigateToDetailsDevProfile: (developerName: String) -> Unit = {},
+    modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val versionName = if (state is AppState.Installed) state.versionName else app.versionName
-    val versionCode = if (state is AppState.Installed) state.versionCode else app.versionCode
     val speed = if (state is AppState.Downloading) state.speed else 0
     val timeRemaining = if (state is AppState.Downloading) state.timeRemaining else 0
 
-    @Composable
-    fun UpdatableVersion() {
-        val updateVersion = stringResource(R.string.version, versionName, versionCode)
-        val localVersion = stringResource(
-            R.string.version,
-            PackageUtil.getInstalledVersionName(context, app.packageName),
-            PackageUtil.getInstalledVersionCode(context, app.packageName)
-        )
-
-        Text(
-            style = MaterialTheme.typography.bodySmall,
-            text = buildAnnotatedString {
-                when (LocalLayoutDirection.current) {
-                    LayoutDirection.Ltr -> append(localVersion)
-                    LayoutDirection.Rtl -> append(updateVersion)
-                }
-
-                append(" ")
-                appendInlineContent("iconId", "[arrow]")
-                append(" ")
-
-                when (LocalLayoutDirection.current) {
-                    LayoutDirection.Ltr -> append(updateVersion)
-                    LayoutDirection.Rtl -> append(localVersion)
-                }
-            },
-            inlineContent = mapOf(
-                "iconId" to InlineTextContent(
-                    Placeholder(
-                        width = MaterialTheme.typography.bodySmall.fontSize,
-                        height = MaterialTheme.typography.bodySmall.fontSize,
-                        placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
-                    )
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_arrow_forward),
-                        contentDescription = null
-                    )
-                }
-            )
-        )
-    }
-
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.spacing_medium))
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium)),
+        verticalAlignment = Alignment.Top
     ) {
         AnimatedAppIcon(
             modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_large)),
@@ -117,51 +73,65 @@ fun Details(
             inProgress = state.inProgress(),
             progress = state.progress()
         )
-        Column(modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.spacing_small))) {
-            Text(
-                text = app.displayName,
-                style = MaterialTheme.typography.titleLarge,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                modifier = Modifier
-                    .clickable(onClick = { onNavigateToDetailsDevProfile(app.developerName) }),
-                text = app.developerName,
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.primary
-            )
-            AnimatedContent(targetState = state::class) { cState ->
-                if (cState == AppState.Updatable::class) {
-                    UpdatableVersion()
-                    return@AnimatedContent
-                }
-
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(0.dp)
+        ) {
+            if (showAppName) {
                 Text(
-                    style = MaterialTheme.typography.bodySmall,
-                    text = when (cState) {
-                        AppState.Downloading::class -> {
-                            "${Formatter.formatShortFileSize(context, speed)}/s" +
-                                ", " + CommonUtil.getETAString(context, timeRemaining)
-                        }
-
-                        AppState.Installing::class -> stringResource(R.string.action_installing)
-
-                        AppState.Queued::class -> stringResource(R.string.status_queued)
-
-                        AppState.Purchasing::class ->
-                            stringResource(R.string.preparing_to_download)
-
-                        AppState.Verifying::class ->
-                            stringResource(R.string.verifying_downloads)
-
-                        else -> {
-                            stringResource(R.string.version, versionName, versionCode)
-                        }
-                    }
+                    text = app.displayName,
+                    style = MaterialTheme.typography.headlineSmall,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
                 )
+            }
+            Box(
+                modifier = Modifier
+                    .clickable(
+                        role = Role.Button,
+                        onClick = { onNavigateToDetailsDevProfile(app.developerName) }
+                    )
+                    .heightIn(min = 36.dp),
+                contentAlignment = Alignment.TopStart
+            ) {
+                Text(
+                    text = app.developerName,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+            if (state.inProgress()) {
+                AnimatedContent(
+                    targetState = state::class,
+                    transitionSpec = {
+                        fadeIn(animationSpec = spring()) togetherWith
+                            fadeOut(animationSpec = tween(durationMillis = 100))
+                    },
+                    label = "AppProgress"
+                ) { currentState ->
+                    Text(
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        text = when (currentState) {
+                            AppState.Downloading::class -> {
+                                "${Formatter.formatShortFileSize(context, speed)}/s" +
+                                    ", " + CommonUtil.getETAString(context, timeRemaining)
+                            }
+
+                            AppState.Installing::class ->
+                                stringResource(R.string.action_installing)
+
+                            AppState.Queued::class -> stringResource(R.string.status_queued)
+
+                            AppState.Purchasing::class ->
+                                stringResource(R.string.preparing_to_download)
+
+                            else -> stringResource(R.string.verifying_downloads)
+                        }
+                    )
+                }
             }
         }
     }

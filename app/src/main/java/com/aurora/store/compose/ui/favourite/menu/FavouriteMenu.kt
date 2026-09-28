@@ -7,8 +7,6 @@
 package com.aurora.store.compose.ui.favourite.menu
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -23,6 +21,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
+import com.aurora.store.compose.composable.ExpressiveMenuGroup
+import com.aurora.store.compose.composable.ExpressiveMenuIcon
+import com.aurora.store.compose.composable.ExpressiveMenuItem
+import com.aurora.store.compose.composable.ExpressiveMenuPopup
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
@@ -51,16 +53,28 @@ fun FavouriteMenu(
                 contentDescription = stringResource(R.string.menu)
             )
         }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_import)) },
-                onClick = { onClick(MenuItem.IMPORT) }
-            )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_export)) },
-                onClick = { onClick(MenuItem.EXPORT) },
-                enabled = items > 0
-            )
+        ExpressiveMenuPopup(expanded = expanded, onDismissRequest = { expanded = false }) {
+            ExpressiveMenuGroup(index = 0, count = 1) {
+                ExpressiveMenuItem(
+                    index = 0,
+                    count = 2,
+                    text = { Text(text = stringResource(R.string.action_import)) },
+                    onClick = { onClick(MenuItem.IMPORT) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_file_copy))
+                    }
+                )
+                ExpressiveMenuItem(
+                    index = 1,
+                    count = 2,
+                    text = { Text(text = stringResource(R.string.action_export)) },
+                    onClick = { onClick(MenuItem.EXPORT) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_cloud_upload))
+                    },
+                    enabled = items > 0
+                )
+            }
         }
     }
 }

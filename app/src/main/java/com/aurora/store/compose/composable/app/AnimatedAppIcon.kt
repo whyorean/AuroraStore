@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
@@ -29,10 +28,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composable.rememberStoreImageRequest
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -58,9 +56,10 @@ fun AnimatedAppIcon(
         targetValue = if (inProgress) 0.75F else 1F,
         animationSpec = tween(durationMillis = 300)
     )
-    val clip = when {
-        inProgress -> CircleShape
-        else -> RoundedCornerShape(dimensionResource(R.dimen.radius_medium))
+    val clip = if (inProgress) {
+        CircleShape
+    } else {
+        RoundedCornerShape(dimensionResource(R.dimen.app_icon_radius))
     }
 
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
@@ -69,20 +68,17 @@ fun AnimatedAppIcon(
                 .fillMaxSize()
                 .semantics { testTag = "progressIndicator" }
             if (animatedProgress > 0) {
-                CircularProgressIndicator(
+                CircularWavyProgressIndicator(
                     modifier = indicatorModifier,
                     progress = { animatedProgress / 100 }
                 )
             } else {
-                CircularProgressIndicator(modifier = indicatorModifier)
+                CircularWavyProgressIndicator(modifier = indicatorModifier)
             }
         }
 
         AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(iconUrl)
-                .crossfade(true)
-                .build(),
+            model = rememberStoreImageRequest(iconUrl),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

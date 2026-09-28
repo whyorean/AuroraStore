@@ -1,4 +1,10 @@
-# Aurora Store
+# Unofficial Aurora Store UI Fork
+
+> This is an independent community fork of [Aurora Store](https://github.com/whyorean/AuroraStore), based on GPL-3.0-or-later source. The app UI and launcher artwork have been modified in this fork; these changes are dated 2026-09-28. See [LICENSE](LICENSE) and [patching/README.md](patching/README.md) for the license and reproducible source patch.
+>
+> This fork is not affiliated with or endorsed by Aurora OSS, Google, or Apple. Aurora Store and the original artwork identify the upstream project. The original project links and signing fingerprints below refer only to upstream Aurora Store, not builds from this fork. Fork builds, when published, will be listed in this repository's GitHub Releases.
+
+## Upstream Aurora Store overview
 
 Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, reviews, and download the APK directly from Google Play to your device. 
 

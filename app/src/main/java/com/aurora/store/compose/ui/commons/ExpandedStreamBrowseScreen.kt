@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,6 +21,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
@@ -27,7 +29,6 @@ import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.app.LargeAppListItem
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.viewmodel.browse.ExpandedStreamBrowseViewModel
-import kotlin.uuid.Uuid
 
 @Composable
 fun ExpandedStreamBrowseScreen(
@@ -76,16 +77,21 @@ fun ExpandedStreamBrowseScreen(
                             .fillMaxSize()
                             .padding(paddingValues),
                         verticalArrangement = Arrangement.spacedBy(
-                            dimensionResource(R.dimen.spacing_medium)
+                            ListItemDefaults.SegmentedGap
                         )
                     ) {
                         items(
                             count = apps.itemCount,
-                            key = { Uuid.random().toString() }
+                            key = apps.itemKey { it.packageName }
                         ) { index ->
                             apps[index]?.let { app ->
                                 LargeAppListItem(
+                                    modifier = Modifier.padding(
+                                        horizontal = dimensionResource(R.dimen.spacing_large)
+                                    ),
                                     app = app,
+                                    itemIndex = index,
+                                    itemCount = apps.itemCount,
                                     onClick = {
                                         onNavigateTo(Destination.AppDetails(app.packageName))
                                     }

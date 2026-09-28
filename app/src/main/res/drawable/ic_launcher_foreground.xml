@@ -1,5 +1,6 @@
 <!--
   ~ SPDX-FileCopyrightText: 2021 Aurora OSS
+  ~ SPDX-FileCopyrightText: 2026 Aryan J. (color adaptation)
   ~ SPDX-License-Identifier: GPL-3.0-or-later
   -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +17,7 @@
         <group>
             <clip-path android:pathData="M0,0h283v283h-283z" />
             <path
-                android:fillColor="#EEEEEE"
+                android:fillColor="#5148D8"
                 android:fillType="evenOdd"
                 android:pathData="M134.975,56.317C135.235,56.087 135.511,55.869 135.802,55.665C139.966,52.749 145.705,53.761 148.621,57.925L191.087,118.573H190.655H168.614L140.84,78.907L112.574,119.408H90.334L132.857,58.478C133.455,57.62 134.174,56.898 134.975,56.317Z" />
             <path
@@ -44,19 +45,19 @@
                 android:fillColor="#80CBC4"
                 android:pathData="M102.5,132.5m-47.5,0a47.5,47.5 0,1 1,95 0a47.5,47.5 0,1 1,-95 0" />
             <path
-                android:fillColor="#FAFAFA"
+                android:fillColor="#6C63FF"
                 android:fillType="evenOdd"
                 android:pathData="M146.389,55.704C142.274,52.823 136.602,53.823 133.72,57.938L91.263,118.573H113.472L148.623,68.373C151.504,64.258 150.504,58.586 146.389,55.704Z" />
             <path
-                android:fillColor="#F5F5F5"
+                android:fillColor="#817AFF"
                 android:fillType="evenOdd"
                 android:pathData="M146.337,55.839C142.024,52.81 136.083,53.857 133.066,58.179L90.335,119.408H113.611L148.684,69.152C151.701,64.829 150.65,58.869 146.337,55.839Z" />
             <path
-                android:fillColor="#E4E4E4"
+                android:fillColor="#4D45BE"
                 android:fillType="evenOdd"
                 android:pathData="M115.989,116H92.714L92,117.023V119H113.896L115.989,116Z" />
             <path
-                android:fillColor="#FAFAFA"
+                android:fillColor="#6C63FF"
                 android:pathData="M187.837,117H231.818C236.868,117 241,121.125 241,126.167L240.725,128.642L217.403,213.617C215.199,221.317 208.129,227 199.682,227H80.318C71.871,227 64.801,221.317 62.689,213.617L39.367,128.642C39.092,127.817 39,126.992 39,126.167C39,121.125 43.132,117 48.182,117H187.837Z" />
             <path
                 android:fillType="evenOdd"

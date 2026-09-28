@@ -11,6 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.Dp
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.gplayapi.helpers.contracts.StreamContract
@@ -26,7 +27,8 @@ internal fun ForYouContent(
     onAppClick: (App) -> Unit,
     onHeaderClick: (StreamCluster) -> Unit,
     onClusterScrolled: (StreamCluster) -> Unit,
-    onScrolledToEnd: () -> Unit
+    onScrolledToEnd: () -> Unit,
+    bottomContentPadding: Dp
 ) {
     val category = category(pageType)
     val state by viewModel.liveData.observeAsState()
@@ -40,6 +42,7 @@ internal fun ForYouContent(
     StreamCarousel(
         modifier = Modifier.fillMaxSize(),
         streamBundle = streamBundle?.get(category),
+        bottomContentPadding = bottomContentPadding,
         onHeaderClick = onHeaderClick,
         onAppClick = onAppClick,
         onClusterScrolled = onClusterScrolled,

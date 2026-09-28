@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.dp
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
@@ -44,7 +45,10 @@ fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Bool
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.spacing_medium)),
+            .padding(
+                horizontal = dimensionResource(R.dimen.spacing_large),
+                vertical = dimensionResource(R.dimen.spacing_medium)
+            ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
@@ -58,7 +62,8 @@ fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Bool
                     stringResource(R.string.details_beta_available)
                 }
             ),
-            description = AnnotatedString(text = stringResource(R.string.details_beta_description))
+            description = AnnotatedString(text = stringResource(R.string.details_beta_description)),
+            horizontalPadding = 0.dp
         )
         FilledTonalButton(onClick = { onTestingSubscriptionChange(!isSubscribed) }) {
             Text(

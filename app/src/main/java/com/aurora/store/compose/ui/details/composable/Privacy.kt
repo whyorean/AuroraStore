@@ -30,11 +30,19 @@ import com.aurora.store.data.model.Report
  */
 @Composable
 fun Privacy(report: Report?, onNavigateToDetailsExodus: (() -> Unit)? = null) {
-    SectionHeader(
-        title = stringResource(R.string.details_privacy),
-        subtitle = stringResource(R.string.exodus_powered),
-        onClick = onNavigateToDetailsExodus
-    )
+    if (onNavigateToDetailsExodus != null) {
+        DetailsPortalCard(
+            title = stringResource(R.string.details_privacy),
+            description = stringResource(R.string.exodus_powered),
+            icon = painterResource(R.drawable.ic_visibility),
+            onClick = onNavigateToDetailsExodus
+        )
+    } else {
+        SectionHeader(
+            title = stringResource(R.string.details_privacy),
+            subtitle = stringResource(R.string.exodus_powered)
+        )
+    }
 
     val reportStatus = when {
         report == null -> stringResource(R.string.failed_to_fetch_report)
