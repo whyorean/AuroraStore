@@ -15,7 +15,7 @@ index 61e753c31c0d4a98d811161d35c0a5ed91e9f3b6..e7ac76d54235b78638ad20c0931e057b
  Aurora Store enables you to search and download apps from the official Google Play store. You can check app descriptions, screenshots, updates, reviews, and download the APK directly from Google Play to your device. 
  
 diff --git a/app/build.gradle.kts b/app/build.gradle.kts
-index 0355f09a9b0d0bb73972cfb7a4bcd0b0bb0cf1cb..0d5533b380491833b45f3d864d5a7022c734f9db 100644
+index 0355f09a9b0d0bb73972cfb7a4bcd0b0bb0cf1cb..9e2ab512ef86c8a8e6a4e03f8e21304f483b888f 100644
 --- a/app/build.gradle.kts
 +++ b/app/build.gradle.kts
 @@ -59,7 +59,7 @@ configure<ApplicationExtension> {
@@ -23,7 +23,7 @@ index 0355f09a9b0d0bb73972cfb7a4bcd0b0bb0cf1cb..0d5533b380491833b45f3d864d5a7022
          applicationId = "com.aurora.store"
          minSdk {
 -            version = release(23)
-+            version = release(26)
++            version = release(24)
          }
          targetSdk {
              version = release(37)

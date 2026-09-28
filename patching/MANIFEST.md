@@ -1,11 +1,11 @@
 # Generated Patch Manifest
 
-- Generated: 2026-09-28T09:25:49Z
+- Generated: 2026-09-28T09:33:36Z
 - Baseline commit: e17b1a4a2be9c325dbced6946b5cc91e83c13b02
-- Source HEAD: 6a65d94c538de4ec6beaa6f8d2dfd9d8707d5640
+- Source HEAD: 32c37ce13ef52d3002dfce39ac65e7883eeb4a3e
 - Files: 79 total (69 modified, 10 added, 0 deleted)
 - Patch: aurora-expressive-ui.patch
-- Patch SHA-256: 1532f45d1fba2c55836b9f0ddc274d8ca0d7541a2c4e98697ccff4f70d8e1abc
+- Patch SHA-256: 1a948c1d7ff675d7c59257f5fdc037211f2d2eeb68ed125170a7216e2bebebd5
 
 | Status | Path |
 | --- | --- |
