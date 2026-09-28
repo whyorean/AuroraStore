@@ -1,11 +1,11 @@
 # Generated Patch Manifest
 
-- Generated: 2026-09-28T07:29:47Z
+- Generated: 2026-09-28T09:25:49Z
 - Baseline commit: e17b1a4a2be9c325dbced6946b5cc91e83c13b02
-- Source HEAD: b4e788104a780d1a6cd2955b2e3662b7fc19c10e
-- Files: 83 total (73 modified, 10 added, 0 deleted)
+- Source HEAD: 6a65d94c538de4ec6beaa6f8d2dfd9d8707d5640
+- Files: 79 total (69 modified, 10 added, 0 deleted)
 - Patch: aurora-expressive-ui.patch
-- Patch SHA-256: 3a9896fd3d2e136cda394ca24753d17a22f614a345798d33bf6a16885266262b
+- Patch SHA-256: 1532f45d1fba2c55836b9f0ddc274d8ca0d7541a2c4e98697ccff4f70d8e1abc
 
 | Status | Path |
 | --- | --- |
@@ -83,10 +83,6 @@
 | M | `app/src/main/java/com/aurora/store/compose/ui/spoof/menu/SpoofMenu.kt` |
 | M | `app/src/main/java/com/aurora/store/compose/ui/updates/UpdatesScreen.kt` |
 | M | `app/src/main/java/com/aurora/store/viewmodel/search/SearchViewModel.kt` |
-| M | `app/src/main/res/drawable-v24/ic_launcher_foreground.xml` |
-| M | `app/src/main/res/drawable/ic_launcher_foreground.xml` |
-| M | `app/src/main/res/drawable/ic_logo.xml` |
-| M | `app/src/main/res/drawable/ic_logo_alt.xml` |
 | A | `app/src/main/res/drawable/ic_star_filled.xml` |
 | M | `app/src/main/res/values/colors.xml` |
 | M | `app/src/main/res/values/dimens.xml` |
