@@ -59,7 +59,7 @@ configure<ApplicationExtension> {
     defaultConfig {
         applicationId = "com.aurora.store"
         minSdk {
-            version = release(26)
+            version = release(24)
         }
         targetSdk {
             version = release(37)
