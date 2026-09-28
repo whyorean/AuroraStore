@@ -639,7 +639,7 @@
     <string name="manual_download_availability_warning">Niektóre wersje mogą być niedostępne do pobrania lub mogą nie działać na Twoim urządzeniu.</string>
     <string name="details_more_certificate_hash">Hash certyfikatu</string>
     <string name="details_more_files">Pliki</string>
-    <string name="download_sort_date_downloaded">Data pobrania</string>
+    <string name="download_sort_date_downloaded">Daty pobrania</string>
     <string name="action_free_up_space">Zwolnij miejsce</string>
     <string name="installer_provider">%1$s · Obsługiwane przez %2$s</string>
     <string name="insufficient_storage_title">Za mało miejsca</string>
