@@ -37,13 +37,16 @@ trap cleanup EXIT
 
 GIT_INDEX_FILE="$temporary_index" git -C "$source_root" read-tree "$base_commit"
 GIT_INDEX_FILE="$temporary_index" git -C "$source_root" add --all -- \
-    . ':(exclude)patching' ':(exclude)patching/**'
+    . ':(exclude)patching' ':(exclude)patching/**' \
+    ':(exclude)showcase' ':(exclude)showcase/**'
 GIT_INDEX_FILE="$temporary_index" git -C "$source_root" diff \
     --cached --name-status --no-renames -z "$base_commit" -- \
-    . ':(exclude)patching' ':(exclude)patching/**' > "$temporary_status"
+    . ':(exclude)patching' ':(exclude)patching/**' \
+    ':(exclude)showcase' ':(exclude)showcase/**' > "$temporary_status"
 GIT_INDEX_FILE="$temporary_index" git -C "$source_root" diff \
     --cached --binary --full-index "$base_commit" -- \
-    . ':(exclude)patching' ':(exclude)patching/**' > "$temporary_patch"
+    . ':(exclude)patching' ':(exclude)patching/**' \
+    ':(exclude)showcase' ':(exclude)showcase/**' > "$temporary_patch"
 
 if [[ ! -s "$temporary_patch" ]]; then
     echo "No source changes found relative to $base_commit." >&2

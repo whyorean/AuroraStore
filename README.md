@@ -1,8 +1,8 @@
-# Unofficial Aurora Store UI Fork
+# Aurora Store UI Proposal — Material 3 Expressive
 
-> This is an independent community fork of [Aurora Store](https://github.com/whyorean/AuroraStore), based on GPL-3.0-or-later source. The app UI and launcher artwork have been modified in this fork; these changes are dated 2026-09-28. See [LICENSE](LICENSE) and [patching/README.md](patching/README.md) for the license and reproducible source patch.
+> This is an independent, UI-focused proposal built on the GPL-3.0 Aurora Store source. This proposal keeps the upstream app name and launcher artwork; its changes are dated 2026-09-28. See [LICENSE](LICENSE) and [patching/README.md](patching/README.md) for the license and reproducible source patch.
 >
-> This fork is not affiliated with or endorsed by Aurora OSS, Google, or Apple. Aurora Store and the original artwork identify the upstream project. The original project links and signing fingerprints below refer only to upstream Aurora Store, not builds from this fork. Fork builds, when published, will be listed in this repository's GitHub Releases.
+> This is not an official Aurora Store build and is not affiliated with or endorsed by Aurora OSS, Google, or Apple. “Aurora Store” and the original artwork refer to the upstream project. The original project links and signing fingerprints below refer only to upstream Aurora Store, not builds from this fork.
 
 ## Upstream Aurora Store overview
 

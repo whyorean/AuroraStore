@@ -17,7 +17,7 @@ The current generated patch is the source of truth for this fork. It is primaril
 - The main and inner pagers, startup requests, Categories trigger, Top Charts pagination, downloads collection, and app-details flow collection follow the recorded upstream behavior. The pages are not artificially warmed or held in memory by this patch.
 - Non-Compose source changes are limited to a window refresh-rate preference (`ComposeActivity`, capped at 120 Hz), cancellation of stale typed search suggestions (`SearchViewModel`), and a Material 3 minimum SDK/dependency adjustment. Aurora's existing suggestion filtering and five-item limit are retained. Cancellation only applies to user-entered nonblank queries; it adds no startup prefetch.
 - The baseline profile contains compilation rules for the redesigned UI. It does not execute or precompose the screens at startup.
-- The generated patch also includes the updated launcher artwork and fork attribution notice. It retains the upstream GPL notices; this license does not grant permission to use upstream trademarks.
+- The proposal preserves the upstream launcher artwork and app display name so the contribution stays focused on the UI. It retains the upstream GPL notices; the GPL does not itself grant trademark rights.
 
 No changes are made under the app's data, repository, worker, or installer source packages. When Aurora updates those areas without changing a touched UI surface, this patch should remain straightforward to apply. UI or navigation changes in overlapping files still need a targeted port and review.
 
