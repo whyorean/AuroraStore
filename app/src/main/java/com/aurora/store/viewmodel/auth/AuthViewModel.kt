@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.AuthenticatedSession
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.event.AuthEvent
@@ -60,7 +60,7 @@ class AuthViewModel @Inject constructor(
         if (_authState.value == AuthState.Init) updateAuthState()
     }
 
-    fun buildGoogleAuthData(email: String, token: String, tokenType: AuthHelper.Token) {
+    fun buildGoogleAuthData(email: String, token: String, tokenType: TokenType) {
         _authState.value = AuthState.Fetching
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -86,7 +86,7 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val result = runCatching {
                 val authData = authProvider
-                    .buildGoogleAuthData(email, token, AuthHelper.Token.AAS)
+                    .buildGoogleAuthData(email, token, TokenType.AAS)
                     .getOrThrow()
                 require(authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty())
                 authProvider.persistAccount(
@@ -200,11 +200,11 @@ class AuthViewModel @Inject constructor(
                         }
 
                         when (tokenPair.second) {
-                            AuthHelper.Token.AAS -> {
-                                buildGoogleAuthData(email, tokenPair.first, AuthHelper.Token.AAS)
+                            TokenType.AAS -> {
+                                buildGoogleAuthData(email, tokenPair.first, TokenType.AAS)
                             }
 
-                            AuthHelper.Token.AUTH -> {
+                            TokenType.AUTH -> {
                                 _authState.value =
                                     AuthState.PendingAccountManager(email, tokenPair.first)
                             }
@@ -222,18 +222,19 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private suspend fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType) {
+    private suspend fun verifyAndSaveAuth(
+        authData: AuthenticatedSession,
+        accountType: AccountType
+    ) {
         _authState.value = AuthState.Verifying
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             authProvider.saveAuthData(authData)
             val tokenType =
-                if (authData.aasToken.isBlank()) AuthHelper.Token.AUTH else AuthHelper.Token.AAS
+                if (authData.aasToken.isNullOrBlank()) TokenType.AUTH else TokenType.AAS
             AccountProvider.login(
                 context,
                 authData.email,
-                authData.aasToken.ifBlank {
-                    authData.authToken
-                },
+                authData.aasToken?.ifBlank { authData.authToken } ?: authData.authToken,
                 tokenType,
                 accountType
             )
@@ -243,7 +244,7 @@ class AuthViewModel @Inject constructor(
                 context,
                 Preferences.PREFERENCE_AUTH_VIA_MICROG,
                 accountType == AccountType.GOOGLE &&
-                    tokenType == AuthHelper.Token.AUTH &&
+                    tokenType == TokenType.AUTH &&
                     PackageUtil.hasSupportedMicroGVariant(context)
             )
             authProvider.persistAccount(

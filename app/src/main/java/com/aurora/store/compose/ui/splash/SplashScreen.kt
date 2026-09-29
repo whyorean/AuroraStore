@@ -56,7 +56,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.compose.composition.LocalNetworkStatus
@@ -351,7 +351,7 @@ private fun requestAuthTokenForGoogle(
             { result ->
                 val token = result.result.getString(AccountManager.KEY_AUTHTOKEN)
                 if (token != null) {
-                    viewModel.buildGoogleAuthData(accountName, token, AuthHelper.Token.AUTH)
+                    viewModel.buildGoogleAuthData(accountName, token, TokenType.AUTH)
                 } else {
                     Log.e("SplashScreen", "AccountManager returned null auth token")
                     onError()

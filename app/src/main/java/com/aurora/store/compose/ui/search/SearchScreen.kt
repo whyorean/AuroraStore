@@ -66,8 +66,8 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.aurora.extensions.emptyPagingItems
-import com.aurora.gplayapi.SearchSuggestEntry
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.api.SearchSuggestion
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
@@ -107,7 +107,7 @@ fun SearchScreen(viewModel: SearchViewModel = hiltViewModel()) {
 
 @Composable
 private fun ScreenContent(
-    suggestions: List<SearchSuggestEntry> = emptyList(),
+    suggestions: List<SearchSuggestion> = emptyList(),
     results: LazyPagingItems<App> = emptyPagingItems(),
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
@@ -195,7 +195,7 @@ private fun ScreenContent(
         ExpandedDockedSearchBar(state = searchBarState, inputField = inputField) {
             suggestions.forEach { suggestion ->
                 SearchSuggestionListItem(
-                    searchSuggestEntry = suggestion,
+                    searchSuggestion = suggestion,
                     onClick = { query -> onRequestSearch(query) },
                     onAction = { query -> textFieldState.setTextAndPlaceCursorAtEnd(query.trim()) }
                 )

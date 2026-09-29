@@ -8,7 +8,7 @@ package com.aurora.store.viewmodel.accounts
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.providers.AuthProvider
@@ -113,7 +113,7 @@ class AccountsViewModel @Inject constructor(
             val added = runCatching {
                 val token = tokenProvider.fetchAuthToken(email = email, activity = activity)
                 val authData = authProvider
-                    .buildGoogleAuthData(email, token, AuthHelper.Token.AUTH)
+                    .buildGoogleAuthData(email, token, TokenType.AUTH)
                     .getOrThrow()
                 authProvider.persistAccount(
                     authData = authData,

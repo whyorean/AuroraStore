@@ -14,8 +14,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.isValidApp
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.helpers.web.WebAppDetailsHelper
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.compose.ui.commons.InstalledAppMeta
 import com.aurora.store.compose.ui.commons.SortFilterPrefKeys
 import com.aurora.store.compose.ui.commons.SortFilterState
@@ -46,7 +46,7 @@ import kotlinx.coroutines.launch
 class InstalledViewModel @Inject constructor(
     blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context,
-    private val webAppDetailsHelper: WebAppDetailsHelper
+    private val webPlayClient: WebPlayClient
 ) : ViewModel() {
 
     private val blacklist = blacklistProvider.blacklist
@@ -107,7 +107,7 @@ class InstalledViewModel @Inject constructor(
                 manualPager(pageSize = GenericPagingSource.DEFAULT_PAGE_SIZE) { page ->
                     val chunk = chunks.getOrNull(page - 1)
                         ?: return@manualPager PageResult(emptyList<App>(), hasMore = false)
-                    val items = webAppDetailsHelper.getAppDetails(chunk.map { it.packageName })
+                    val items = webPlayClient.apps.details(chunk.map { it.packageName })
                     PageResult(items, hasMore = page < chunks.size)
                 }.flow
                     .distinctUntilChanged()

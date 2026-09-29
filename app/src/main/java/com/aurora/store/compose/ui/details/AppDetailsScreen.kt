@@ -59,11 +59,11 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Review
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.Review
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow
@@ -140,6 +140,7 @@ fun AppDetailsScreen(
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
+    val canDownload by viewModel.canDownload.collectAsStateWithLifecycle()
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
     var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
 
@@ -195,6 +196,7 @@ fun AppDetailsScreen(
                     suggestionsBundle = suggestionsBundle,
                     isFavorite = favorite,
                     isAnonymous = viewModel.authProvider.isAnonymous,
+                    canDownload = canDownload,
                     state = currentState,
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
@@ -309,6 +311,7 @@ private fun ScreenContentApp(
     suggestionsBundle: StreamBundle? = StreamBundle.EMPTY,
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
+    canDownload: Boolean = false,
     state: AppState = AppState.Unavailable,
     plexusScores: Scores? = null,
     dataSafetyReport: DataSafetyReport? = null,
@@ -338,9 +341,13 @@ private fun ScreenContentApp(
 ) {
     val context = LocalContext.current
 
-    // Anonymous accounts can't purchase, so a paid app can neither be installed nor manually
-    // downloaded (any version) by them. Free apps are always acquirable.
-    val canAcquire = app.isFree || !isAnonymous
+    // Gated decision 1 (phase-6 migration plan): gate on the session's DOWNLOAD capability
+    // rather than on account presence. Aurora's isAnonymous ("dispensed Play account") is a
+    // different concept from a gplayapi-v4 anonymous session, and every anonymously-fetched
+    // app's isFree is false (the V2 proto's Price is always empty), so gating on !isAnonymous
+    // the way v3 did would make Install vanish catalogue-wide for anonymous sessions. Free
+    // apps are always acquirable regardless.
+    val canAcquire = app.isFree || canDownload
 
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
 
@@ -761,8 +768,7 @@ private fun ScreenContentApp(
                 )
             }
         ) { paddingValues ->
-            val hasContent = suggestionsBundle == null ||
-                suggestionsBundle.streamClusters.isNotEmpty()
+            val hasContent = suggestionsBundle == null || suggestionsBundle.hasClusters()
             if (hasContent) {
                 StreamCarousel(
                     modifier = Modifier.padding(paddingValues),
@@ -856,13 +862,13 @@ private fun LazyListScope.suggestionClusterItems(
         return
     }
 
-    val clusters = suggestionsBundle.streamClusters.values.filter {
-        it.clusterTitle.isNotBlank() && it.clusterAppList.isNotEmpty()
+    val clusters = suggestionsBundle.clusters.filter {
+        it.title.isNotBlank() && it.apps.isNotEmpty()
     }
 
     clusters.forEach { cluster ->
         item(key = "cluster-header-${cluster.id}") {
-            SectionHeader(title = cluster.clusterTitle)
+            SectionHeader(title = cluster.title)
         }
         item(key = "cluster-row-${cluster.id}") {
             ClusterRow(
@@ -881,18 +887,19 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
     ScreenContentApp(
         app = app,
         isAnonymous = false,
+        canDownload = true,
         suggestionsBundle = StreamBundle(
-            id = 1,
-            streamClusters = mapOf(
-                1 to StreamCluster(
-                    id = 1,
-                    clusterTitle = "Similar apps",
-                    clusterAppList = List(8) { app.copy(id = it) }
+            id = "suggestions",
+            clusters = listOf(
+                StreamCluster(
+                    id = "1",
+                    title = "Similar apps",
+                    apps = List(8) { app.copy(id = it) }
                 ),
-                2 to StreamCluster(
-                    id = 2,
-                    clusterTitle = "More by ${app.developerName}",
-                    clusterAppList = List(5) { app.copy(id = 100 + it) }
+                StreamCluster(
+                    id = "2",
+                    title = "More by ${app.developerName}",
+                    apps = List(5) { app.copy(id = 100 + it) }
                 )
             )
         )

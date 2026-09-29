@@ -31,10 +31,10 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.aurora.extensions.adaptiveNavigationIcon
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.data.models.details.DevStream
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.DeveloperStream
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
@@ -64,14 +64,14 @@ fun DevProfileScreen(
 
     LaunchedEffect(developerId) { viewModel.getStreamBundle(developerId) }
 
-    val devStream = (state as? ViewState.Success<*>)?.data as? DevStream
+    val devStream = (state as? ViewState.Success<*>)?.data as? DeveloperStream
 
     DevStreamContent(
         title = devStream?.title?.takeIf { it.isNotBlank() } ?: developerId,
         streamBundle = devStream?.streamBundle,
         isError = state is ViewState.Error,
         onRetry = { viewModel.getStreamBundle(developerId) },
-        onClusterScrolled = viewModel::observeCluster,
+        onClusterScrolled = { cluster -> viewModel.observeCluster(cluster) },
         onNavigateTo = onNavigateTo
     )
 }

@@ -10,9 +10,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.exceptions.GooglePlayException
-import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.model.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.AuthEvent
 import dagger.assisted.Assisted
@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = MoreViewModel.Factory::class)
 class MoreViewModel @AssistedInject constructor(
     @Assisted private val dependencies: List<String>,
-    private val appDetailsHelper: AppDetailsHelper
+    private val playClient: PlayClient
 ) : ViewModel() {
 
     @AssistedFactory
@@ -45,8 +45,8 @@ class MoreViewModel @AssistedInject constructor(
     private fun fetchDependencies() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _dependentApps.value = appDetailsHelper.getAppByPackageName(dependencies)
-            } catch (exception: GooglePlayException.AuthException) {
+                _dependentApps.value = playClient.apps.details(dependencies)
+            } catch (exception: PlayException.Unauthorized) {
                 Log.w(TAG, "Dependencies fetch returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
             } catch (exception: Exception) {

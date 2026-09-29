@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.Constants.PACKAGE_NAME_GMS
 import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.AppFile
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
@@ -84,7 +84,7 @@ class MicroGViewModel @Inject constructor(
         iconURL = "$ICON_BASE_URL/GmsCore/refs/heads/master/play-services-core/$ICON_FILE_PATH",
         developerName = "microG Team",
         fileList = listOf(
-            PlayFile(
+            AppFile(
                 url = MICROG_DOWNLOAD_URL,
                 name = "$PACKAGE_NAME_GMS-$GMS_VERSION_CODE-hw.apk",
                 size = 92834436,
@@ -101,7 +101,7 @@ class MicroGViewModel @Inject constructor(
         iconURL = "$ICON_BASE_URL/FakeStore/refs/heads/main/fake-store/$ICON_FILE_PATH",
         developerName = "microG Team",
         fileList = listOf(
-            PlayFile(
+            AppFile(
                 url = FAKE_STORE_DOWNLOAD_URL,
                 name = "$PACKAGE_NAME_PLAY_STORE-$COMPANION_VERSION_CODE-hw.apk",
                 size = 4641800,

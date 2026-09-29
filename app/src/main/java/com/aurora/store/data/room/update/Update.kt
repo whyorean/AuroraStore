@@ -12,15 +12,18 @@ import android.os.Parcelable
 import androidx.annotation.RequiresApi
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.AppFile
 import com.aurora.store.BuildConfig
+import com.aurora.store.data.room.AppFileParceler
 import com.aurora.store.data.room.download.SharedLib
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.PackageUtil
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.TypeParceler
 
 @Parcelize
+@TypeParceler<AppFile, AppFileParceler>
 @Entity(tableName = "update")
 data class Update(
     @PrimaryKey
@@ -36,7 +39,7 @@ data class Update(
     val updatedOn: String,
     val hasValidCert: Boolean,
     val offerType: Int,
-    var fileList: List<PlayFile>,
+    var fileList: List<AppFile>,
     val sharedLibs: List<SharedLib>,
     val targetSdk: Int = 1,
     val isIncompatible: Boolean = false
@@ -55,7 +58,7 @@ data class Update(
             app.size,
             app.updatedOn,
             app.certificateSetList.any {
-                it.certificateSet in CertUtil.getEncodedCertificateHashes(
+                it.certificateHash in CertUtil.getEncodedCertificateHashes(
                     context,
                     app.packageName
                 )

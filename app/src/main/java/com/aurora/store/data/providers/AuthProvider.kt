@@ -10,12 +10,16 @@ import android.content.Context
 import android.util.Log
 import com.aurora.Constants
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.data.models.PlayResponse
-import com.aurora.gplayapi.helpers.AppDetailsHelper
-import com.aurora.gplayapi.helpers.AuthHelper
-import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.gplayapi.android.AndroidLogger
+import com.aurora.gplayapi.device.DeviceProfile
+import com.aurora.gplayapi.net.HttpEngine
+import com.aurora.gplayapi.session.AuthenticatedSession
+import com.aurora.gplayapi.session.SessionFactory
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.AuroraApp
+import com.aurora.store.BuildConfig.APPLICATION_ID
+import com.aurora.store.BuildConfig.VERSION_CODE
+import com.aurora.store.BuildConfig.VERSION_NAME
 import com.aurora.store.R
 import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.model.AccountType
@@ -26,36 +30,40 @@ import com.aurora.store.util.Preferences.PREFERENCE_AUTH_DATA
 import com.aurora.store.util.Preferences.PREFERENCE_DISPENSER_URLS
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
+import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import okhttp3.Headers.Companion.toHeaders
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
 
 @Singleton
 class AuthProvider @Inject constructor(
     @ApplicationContext private val context: Context,
     private val json: Json,
     private val spoofProvider: SpoofProvider,
-    private val httpClient: IHttpClient,
+    private val okHttpClient: OkHttpClient,
+    private val httpEngine: HttpEngine,
     private val accountRepository: AccountRepository,
     private val tokenProvider: GoogleAccountTokenProvider
 ) {
-    private companion object {
-        const val VALIDATION_PACKAGE = "com.google.android.apps.maps"
-
-        val SPOOF_IDENTITY_KEYS = listOf(
-            "Build.FINGERPRINT",
-            "Platforms",
-            "Screen.Density",
-            "Vending.version"
-        )
-    }
+    private val sessionFactory = SessionFactory(httpEngine, AndroidLogger)
 
     @Volatile
     private var cachedDefault: Account? = null
+
+    @Volatile
+    private var cachedAuthData: AuthenticatedSession? = null
 
     @Volatile
     private var cacheWarm = false
@@ -65,6 +73,7 @@ class AuthProvider @Inject constructor(
             importLegacyAccountIfNeeded()
             accountRepository.defaultAccount.collect { account ->
                 cachedDefault = account
+                cachedAuthData = decodeAuthData(account)
                 cacheWarm = true
             }
         }
@@ -76,13 +85,24 @@ class AuthProvider @Inject constructor(
             return if (dispensers.isNotEmpty()) dispensers.random() else null
         }
 
-    /** Default account's AuthData (or BOGUS). Served from the cache when warm (see [init]). */
-    val authData: AuthData?
-        get() = decodeAuthData(defaultAccountSnapshot())
+    /** Default account's session (or `null`). Served from the cache when warm (see [init]). */
+    val authData: AuthenticatedSession?
+        get() = if (cacheWarm) cachedAuthData else decodeAuthData(defaultAccountSnapshot())
 
     /** Whether the default account is anonymous. Served from the cache when warm (see [init]). */
     val isAnonymous: Boolean
         get() = defaultAccountSnapshot()?.isAnonymous ?: true
+
+    /**
+     * The default account mapped onto a v4 [AuthenticatedSession], for gplayapi v4's
+     * [com.aurora.gplayapi.session.AuthSessionSource] contract - resolved several times per API
+     * call and documented there as needing to be cheap: no disk, no network, on every
+     * invocation. Reads only the [init] collector's warm cache; `null` before it is warm or
+     * when the default account has no usable session yet, rather than [defaultAccountSnapshot]'s
+     * blocking query - either case is exactly what "no signed-in account" already means to
+     * [com.aurora.gplayapi.session.DefaultSessionProvider], which falls back to anonymous.
+     */
+    internal fun currentSession(): AuthenticatedSession? = if (cacheWarm) cachedAuthData else null
 
     /**
      * The default account: from the in-memory cache when warm, otherwise a one-off blocking query
@@ -98,76 +118,79 @@ class AuthProvider @Inject constructor(
         }
     }
 
-    private fun decodeAuthData(account: Account?): AuthData =
-        account?.authDataJson?.takeIf { it.isNotBlank() }
-            ?.let { json.decodeFromString<AuthData>(it) }
-            ?: AuthData("BOGUS")
+    /**
+     * Decodes [Account.authDataJson] as a v4 [AuthenticatedSession].
+     *
+     * A session persisted before this migration is v3 `AuthData` JSON, a different shape v4
+     * cannot read - caught here rather than propagated, and treated the same as "no session":
+     * [AuthViewModel]'s existing invalid-session path already re-mints from the plain
+     * email/token this class keeps redundantly ([AccountProvider]'s prefs mirror for the
+     * default account, [Account.aasToken]/[Account.authToken] for every other one via
+     * [refresh]), so this is a one-time, automatic re-login on first use after upgrading,
+     * never a hard failure.
+     */
+    private fun decodeAuthData(account: Account?): AuthenticatedSession? =
+        account?.authDataJson?.takeIf { it.isNotBlank() }?.let {
+            try {
+                json.decodeFromString<AuthenticatedSession>(it)
+            } catch (exception: SerializationException) {
+                Log.e(
+                    TAG,
+                    "Stored session for ${account.id} is not a valid v4 session; treating as signed out",
+                    exception
+                )
+                null
+            }
+        }
 
     /**
-     * Checks whether saved AuthData is valid or not
+     * Checks whether saved session is valid or not
      * @throws IOException when Play can't be reached, instead of reporting the session invalid
      */
-    fun isSavedAuthDataValid(): Boolean = authData!!.let {
-        matchesActiveSpoof(it) && isValid(it)
-    }
-
-    // A cached details response would vouch for the session without asking Play
-    private val uncachedHttpClient = object : IHttpClient by httpClient {
-        override fun get(
-            url: String,
-            headers: Map<String, String>,
-            params: Map<String, String>
-        ): PlayResponse = httpClient.get(url, headers + ("Cache-Control" to "no-cache"), params)
-    }
-
-    // AuthHelper.isValid() swallows network errors too, which rebuilt sessions on a bad network
-    private fun isValid(authData: AuthData): Boolean = try {
-        val app = AppDetailsHelper(authData).using(uncachedHttpClient)
-            .getAppByPackageName(VALIDATION_PACKAGE)
-        app.packageName == VALIDATION_PACKAGE && app.displayName.isNotEmpty()
-    } catch (exception: IOException) {
-        throw exception
-    } catch (_: Exception) {
-        false
+    suspend fun isSavedAuthDataValid(): Boolean {
+        val session = authData ?: return false
+        if (!matchesActiveSpoof(session.device, session.locale)) return false
+        return sessionFactory.validate(session)
     }
 
     /**
-     * Whether [authData] was built under the device configuration and locale that are active now.
+     * Whether a session built under [device]/[locale] matches the device configuration and
+     * locale active right now.
      *
-     * Play picks the split APKs it serves from the device configuration uploaded when the session
-     * was created, so a session built under a different device keeps getting that device's splits
-     * however the spoof is set afterwards. Such a session has to be rebuilt before it is used.
+     * Play picks the split APKs it serves from the device configuration uploaded when the
+     * session was created, so a session built under a different device keeps getting that
+     * device's splits however the spoof is set afterwards. Such a session has to be rebuilt
+     * before it is used. Compares the whole [DeviceProfile.fingerprint] rather than a
+     * handful of hand-picked keys, which is stricter and, unlike v3's field-by-field
+     * comparison, also catches a difference in a custom-imported config that those specific
+     * keys never looked at.
      */
-    fun matchesActiveSpoof(authData: AuthData): Boolean {
-        val sessionProperties = authData.deviceInfoProvider?.properties ?: return false
-        val activeProperties = spoofProvider.deviceProperties
-
-        return authData.locale == spoofProvider.locale &&
-            SPOOF_IDENTITY_KEYS.all {
-                sessionProperties.getProperty(it) == activeProperties.getProperty(it)
-            }
+    fun matchesActiveSpoof(device: DeviceProfile?, locale: Locale): Boolean {
+        device ?: return false
+        return locale == spoofProvider.locale &&
+            device.fingerprint == spoofProvider.deviceProfile().fingerprint
     }
 
     /**
-     * Builds [AuthData] for login using personal Google account
+     * Builds an [AuthenticatedSession] for login using personal Google account
      * @param email E-mail ID
      * @param token AAS or Auth token
-     * @param tokenType Type of the token, one from [AuthHelper.Token]
-     * @return Result encapsulating [AuthData] or exception
+     * @param tokenType Type of the token, one from [TokenType]
+     * @return Result encapsulating [AuthenticatedSession] or exception
      */
     suspend fun buildGoogleAuthData(
         email: String,
         token: String,
-        tokenType: AuthHelper.Token
-    ): Result<AuthData> {
+        tokenType: TokenType
+    ): Result<AuthenticatedSession> {
         return withContext(Dispatchers.IO) {
             try {
                 return@withContext Result.success(
-                    AuthHelper.build(
+                    sessionFactory.authenticate(
                         email = email,
                         token = token,
                         tokenType = tokenType,
-                        properties = spoofProvider.deviceProperties,
+                        device = spoofProvider.deviceProfile(),
                         locale = spoofProvider.locale
                     )
                 )
@@ -179,30 +202,29 @@ class AuthProvider @Inject constructor(
     }
 
     /**
-     * Builds [AuthData] for login using one of the dispensers
-     * @return Result encapsulating [AuthData] or exception
+     * Builds an [AuthenticatedSession] for login using one of the dispensers
+     * @return Result encapsulating [AuthenticatedSession] or exception
      */
-    suspend fun buildAnonymousAuthData(): Result<AuthData> {
+    suspend fun buildAnonymousAuthData(): Result<AuthenticatedSession> {
         return withContext(Dispatchers.IO) {
             try {
-                val playResponse = httpClient.postAuth(
+                val body = postToDispenser(
                     dispenserURL!!,
                     json.encodeToString(spoofProvider.deviceProperties).toByteArray()
-                ).also {
-                    if (!it.isSuccessful) throwError(it, context)
+                ).use { response ->
+                    if (!response.isSuccessful) throwError(response, context)
+                    response.body.string()
                 }
 
-                val auth = json.decodeFromString<Auth>(String(playResponse.responseBytes))
-                return@withContext Result.success(
-                    AuthHelper.build(
-                        email = auth.email,
-                        token = auth.auth,
-                        tokenType = AuthHelper.Token.AUTH,
-                        isAnonymous = true,
-                        properties = spoofProvider.deviceProperties,
-                        locale = spoofProvider.locale
-                    )
-                )
+                val auth = json.decodeFromString<Auth>(body)
+                val session = sessionFactory.authenticate(
+                    email = auth.email,
+                    token = auth.auth,
+                    tokenType = TokenType.AUTH,
+                    device = spoofProvider.deviceProfile(),
+                    locale = spoofProvider.locale
+                ).copy(isDispensed = true)
+                return@withContext Result.success(session)
             } catch (exception: Exception) {
                 Log.e(TAG, "Failed to generate AuthData", exception)
                 return@withContext Result.failure(exception)
@@ -210,42 +232,86 @@ class AuthProvider @Inject constructor(
         }
     }
 
-    /**
-     * Returns the [AuthData] for the given [accountId], or null if not found / not yet cached.
-     */
-    suspend fun getAuthData(accountId: String): AuthData? {
-        val account = accountRepository.getById(accountId) ?: return null
-        return account.authDataJson?.takeIf { it.isNotBlank() }
-            ?.let { json.decodeFromString<AuthData>(it) }
+    @Throws(IOException::class)
+    private fun postToDispenser(url: String, body: ByteArray): Response {
+        val headers = mapOf(
+            "User-Agent" to "${APPLICATION_ID}-${VERSION_NAME}-${VERSION_CODE}"
+        ).toHeaders()
+        val request = Request(
+            url = url.toHttpUrl(),
+            headers = headers,
+            method = "POST",
+            body = body.toRequestBody("application/json".toMediaType())
+        )
+        return okHttpClient.newCall(request).execute()
     }
 
     /**
-     * Rebuilds and persists [accountId]'s AuthData. Pass an [activity] for user-initiated
+     * Returns the [AuthenticatedSession] for the given [accountId], or null if not found / not
+     * yet cached.
+     */
+    suspend fun getAuthData(accountId: String): AuthenticatedSession? =
+        decodeAuthData(accountRepository.getById(accountId))
+
+    /**
+     * The gplayapi v4 session for [accountId], refreshed first when it is missing, was built
+     * under a device spoof that is no longer active, or is no longer accepted by Play. Play
+     * serves the split APKs of whatever device a session was created under, so a stale session
+     * quietly delivers another device's splits rather than failing.
+     *
+     * Refuses rather than falling back to another account: this exists for an app bound to a
+     * specific account, and resolving that app as the default account would acquire it under an
+     * identity the user did not pick.
+     *
+     * Unlike [currentSession] this is deliberately *not* cheap - it can hit the database, the
+     * network and a token mint - so it belongs on a per-download path, never behind
+     * `AuthSessionSource.current`.
+     *
+     * @throws IllegalStateException when the account cannot produce a usable session
+     */
+    suspend fun sessionFor(accountId: String): AuthenticatedSession {
+        val stored = getAuthData(accountId)
+            ?.takeIf { matchesActiveSpoof(it.device, it.locale) }
+        if (stored != null && sessionFactory.validate(stored)) return stored
+
+        return refresh(accountId).getOrElse { error ->
+            throw IllegalStateException(
+                "Could not refresh session for account $accountId; re-authentication required",
+                error
+            )
+        }
+    }
+
+    /**
+     * Rebuilds and persists [accountId]'s session. Pass an [activity] for user-initiated
      * refreshes so a device (microG) account can show any consent UI it needs; background
      * callers omit it and rely on a non-interactive token mint.
      */
-    suspend fun refresh(accountId: String, activity: Activity? = null): Result<AuthData> {
+    suspend fun refresh(
+        accountId: String,
+        activity: Activity? = null
+    ): Result<AuthenticatedSession> {
         val account = accountRepository.getById(accountId)
             ?: return Result.failure(IllegalStateException("No account $accountId"))
         return runCatching {
             val authData = when (account.type) {
                 AccountType.ANONYMOUS -> buildAnonymousAuthData().getOrThrow()
                 AccountType.GOOGLE -> when (account.tokenType) {
-                    AuthHelper.Token.AAS -> {
+                    TokenType.AAS -> {
                         val aasToken = account.aasToken
                             ?: throw IllegalStateException(
                                 "AAS account ${account.id} has no aasToken"
                             )
-                        buildGoogleAuthData(account.email, aasToken, AuthHelper.Token.AAS)
+                        buildGoogleAuthData(account.email, aasToken, TokenType.AAS)
                             .getOrThrow()
                     }
-                    AuthHelper.Token.AUTH -> {
+                    TokenType.AUTH -> {
                         val token = tokenProvider.fetchAuthToken(
                             account.email,
                             account.authToken,
                             activity
                         )
-                        buildGoogleAuthData(account.email, token, AuthHelper.Token.AAS).getOrThrow()
+                        buildGoogleAuthData(account.email, token, TokenType.AAS).getOrThrow()
                     }
                 }
             }
@@ -295,20 +361,19 @@ class AuthProvider @Inject constructor(
      * [makeDefault] is true, marks it the default.
      */
     suspend fun persistAccount(
-        authData: AuthData,
+        authData: AuthenticatedSession,
         accountType: AccountType,
         authViaMicroG: Boolean,
         makeDefault: Boolean = true
     ) {
-        val tokenType =
-            if (authData.aasToken.isBlank()) AuthHelper.Token.AUTH else AuthHelper.Token.AAS
+        val tokenType = if (authData.aasToken.isNullOrBlank()) TokenType.AUTH else TokenType.AAS
         val account = Account(
             id = Account.idFor(accountType, authData.email),
             type = accountType,
             email = authData.email,
             displayName = authData.userProfile?.name,
             profilePicUrl = authData.userProfile?.artwork?.url,
-            aasToken = authData.aasToken.ifBlank { null },
+            aasToken = authData.aasToken?.ifBlank { null },
             authToken = authData.authToken.ifBlank { null },
             tokenType = tokenType,
             authViaMicroG = authViaMicroG,
@@ -333,14 +398,14 @@ class AuthProvider @Inject constructor(
     }
 
     /**
-     * Saves given [AuthData]
+     * Saves given [AuthenticatedSession]
      */
-    fun saveAuthData(authData: AuthData) {
+    fun saveAuthData(authData: AuthenticatedSession) {
         Preferences.putString(context, PREFERENCE_AUTH_DATA, json.encodeToString(authData))
     }
 
     /**
-     * Removes saved [AuthData]
+     * Removes saved session
      */
     fun removeAuthData(context: Context) {
         Preferences.remove(context, PREFERENCE_AUTH_DATA)
@@ -367,7 +432,7 @@ class AuthProvider @Inject constructor(
                 email = email.ifBlank { "anonymous@aurora" },
                 aasToken = aas,
                 authToken = auth,
-                tokenType = if (aas != null) AuthHelper.Token.AAS else AuthHelper.Token.AUTH,
+                tokenType = if (aas != null) TokenType.AAS else TokenType.AUTH,
                 authViaMicroG = Preferences.getBoolean(
                     context,
                     Preferences.PREFERENCE_AUTH_VIA_MICROG,
@@ -380,8 +445,8 @@ class AuthProvider @Inject constructor(
     }
 
     @Throws(Exception::class)
-    private fun throwError(playResponse: PlayResponse, context: Context) {
-        when (playResponse.code) {
+    private fun throwError(response: Response, context: Context) {
+        when (response.code) {
             400 -> throw Exception(context.getString(R.string.bad_request))
 
             403 -> throw Exception(context.getString(R.string.access_denied_using_vpn))
@@ -393,13 +458,13 @@ class AuthProvider @Inject constructor(
             503 -> throw Exception(context.getString(R.string.server_maintenance))
 
             else -> {
-                if (playResponse.errorString.isNotBlank()) {
-                    throw Exception(playResponse.errorString)
+                if (response.message.isNotBlank()) {
+                    throw Exception(response.message)
                 } else {
                     throw Exception(
                         context.getString(
                             R.string.failed_generating_session,
-                            playResponse.code
+                            response.code
                         )
                     )
                 }

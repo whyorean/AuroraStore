@@ -11,9 +11,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.contracts.StreamContract
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.HomeStash
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.data.model.ViewState
@@ -32,7 +31,7 @@ internal fun ForYouContent(
     val state by viewModel.liveData.observeAsState()
 
     LaunchedEffect(category) {
-        viewModel.getStreamBundle(category, StreamContract.Type.HOME)
+        viewModel.getStreamBundle(category)
     }
 
     @Suppress("UNCHECKED_CAST")

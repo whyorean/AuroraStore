@@ -169,6 +169,7 @@
     <string name="download_failed">"Download failed"</string>
     <string name="download_version_unavailable">Version %1$d isn\'t available for this device</string>
     <string name="download_failed_storage">Not enough storage space to download this app</string>
+    <string name="download_signing_key_rotated">Sign in with a Google account to update this app: its signing key has changed, and anonymous downloads can\'t handle that</string>
     <string name="download_force_clear_all">"Force clear all"</string>
     <string name="download_metadata">"Getting metadata"</string>
     <string name="download_none">"No downloads"</string>
@@ -373,6 +374,8 @@
     <string name="toast_export_failed">Could not export device config</string>
     <string name="toast_import_success">Device config imported</string>
     <string name="toast_import_failed">"Could not import device config"</string>
+    <string name="toast_spoof_import_invalid">"Invalid device config, missing or malformed fields"</string>
+    <string name="toast_spoof_device_invalid">"Active device spoof is invalid, reverted to default"</string>
     <string name="toast_proxy_invalid">"Invalid proxy URL, check format!"</string>
     <string name="toast_proxy_success">"Proxy set successfully"</string>
     <string name="toast_proxy_failed">"Failed to set proxy"</string>
@@ -605,6 +608,9 @@
     <!-- UnarchivePackageReceiver -->
     <string name="authentication_required_title">Authentication required</string>
     <string name="authentication_required_unarchive">Please log in to your Google Play account to unarchive the app!</string>
+
+    <!-- UpdateWorker -->
+    <string name="authentication_required_update_check">Checking for updates needs a signed-in Google Play account; anonymous sessions can\'t check in bulk yet.</string>
 
     <!-- SpoofFragment -->
     <string name="default_spoof">Default</string>

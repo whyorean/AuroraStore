@@ -71,6 +71,24 @@ object CertUtil {
         emptyList()
     }
 
+    /**
+     * Whether [packageName]'s installed signing key has been rotated, so Play has to be told
+     * which certificate of the lineage is installed (`ch`) for the update it serves to be one
+     * that can be installed over it - without it the install fails with
+     * `INSTALL_FAILED_UPDATE_INCOMPATIBLE`. Multiple *signers* are not a rotation: APK Signature
+     * Scheme v3 permits one or the other and never both, so that case reads false.
+     */
+    fun hasRotatedSigningKey(context: Context, packageName: String): Boolean {
+        if (!isPAndAbove) return false
+        return try {
+            val signingInfo = getPackageInfoWithSignature(context, packageName).signingInfo!!
+            !signingInfo.hasMultipleSigners() && signingInfo.signingCertificateHistory!!.size > 1
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed to read the signing lineage of $packageName", exception)
+            false
+        }
+    }
+
     private fun isSignedByFDroid(context: Context, packageName: String): Boolean = try {
         getX509Certificates(context, packageName).any { cert ->
             cert.subjectDN.name

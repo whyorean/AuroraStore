@@ -18,8 +18,9 @@ import com.aurora.extensions.TAG
 import com.aurora.extensions.isGrapheneOS
 import com.aurora.extensions.isHyperOS
 import com.aurora.extensions.isIgnoringBatteryOptimizations
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.model.App
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
@@ -27,7 +28,6 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.model.UpdateMode
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
@@ -50,6 +50,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 /**
  * A worker that drives periodic app-update checks. The repeat interval is configurable
@@ -65,7 +68,7 @@ import kotlinx.serialization.json.Json
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
-    private val httpClient: HttpClient,
+    private val okHttpClient: OkHttpClient,
     private val json: Json,
     private val blacklistProvider: BlacklistProvider,
     private val updateDao: UpdateDao,
@@ -73,7 +76,7 @@ class UpdateWorker @AssistedInject constructor(
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     tokenProvider: GoogleAccountTokenProvider,
-    private val appDetailsHelper: AppDetailsHelper,
+    private val playClient: PlayClient,
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, tokenProvider, context, workerParams) {
@@ -185,6 +188,16 @@ class UpdateWorker @AssistedInject constructor(
             filteredUpdates.first.forEach { downloadHelper.enqueueUpdate(it) }
 
             return Result.success()
+        } catch (exception: PlayException.RequiresAccount) {
+            // Gated decision 2 (phase-6 migration plan): the anonymous lane has no bulk
+            // details endpoint, so a session that degraded to anonymous (e.g. a stored
+            // session that failed its device/locale check) can't check for updates at all.
+            // Told to the user rather than left to look like updates silently stopped.
+            Log.i(TAG, "Update check needs a signed-in account; session is anonymous", exception)
+            with(context.getSystemService<NotificationManager>()!!) {
+                notify(NOTIFICATION_ID, NotificationUtil.getUpdateCheckAuthNotification(context))
+            }
+            return Result.failure()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to fetch updates", exception)
             return Result.failure()
@@ -241,7 +254,7 @@ class UpdateWorker @AssistedInject constructor(
                 emptySet()
             }
 
-            val updates = appDetailsHelper.getAppByPackageName(filteredPackages)
+            val updates = playClient.apps.details(filteredPackages)
                 .filter { it.displayName.isNotEmpty() }
                 .filter { PackageUtil.isUpdatable(context, it.packageName, it.versionCode) }
                 .toMutableList()
@@ -286,7 +299,9 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         try {
-            val selfUpdate = httpClient.call(updateUrl).use {
+            val selfUpdate = okHttpClient.newCall(
+                Request(url = updateUrl.toHttpUrl())
+            ).execute().use {
                 json.decodeFromString<SelfUpdate>(it.body.string())
             }
 

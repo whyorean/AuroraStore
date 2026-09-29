@@ -7,10 +7,10 @@ package com.aurora.store.compose.preview
 
 import android.Manifest
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Artwork
-import com.aurora.gplayapi.data.models.Rating
-import com.aurora.gplayapi.data.models.details.TestingProgram
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.Artwork
+import com.aurora.gplayapi.model.Rating
+import com.aurora.gplayapi.model.TestingProgram
 import com.aurora.store.BuildConfig
 
 /**

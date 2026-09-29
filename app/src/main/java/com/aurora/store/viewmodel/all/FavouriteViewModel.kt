@@ -14,13 +14,13 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.session.Capability
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.StorageRequirement
 import com.aurora.store.data.paging.GenericPagingSource.Companion.pager
-import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.favourite.Favourite
 import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.data.room.favourite.ImportExport
@@ -52,9 +52,8 @@ import kotlinx.serialization.json.Json
 class FavouriteViewModel @Inject constructor(
     private val favouriteDao: FavouriteDao,
     private val json: Json,
-    private val appDetailsHelper: AppDetailsHelper,
+    private val playClient: PlayClient,
     private val downloadHelper: DownloadHelper,
-    private val authProvider: AuthProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
@@ -136,19 +135,26 @@ class FavouriteViewModel @Inject constructor(
 
     /**
      * Fetches details for all favourites and enqueues the installable ones for download &
-     * install. Already installed (and up-to-date) apps are skipped, as are paid apps that an
-     * anonymous account can't acquire. The actual count enqueued is emitted via [enqueueResult],
-     * or, if they don't fit on disk, nothing is enqueued and [storageWarning] is emitted.
+     * install. Already installed (and up-to-date) apps are skipped, as are paid apps the
+     * current session can't acquire. The actual count enqueued is emitted via
+     * [enqueueResult], or, if they don't fit on disk, nothing is enqueued and
+     * [storageWarning] is emitted.
+     *
+     * Gated decision 1 (phase-6 migration plan): acquirability is gated on
+     * [Capability.DOWNLOAD], not on Aurora's own `AuthProvider.isAnonymous` - a different,
+     * account-presence concept - so an anonymous session (whose apps' `isFree` is always
+     * `false`, the V2 proto's `Price` being unfilled) doesn't lose "Install all" outright.
      */
     fun installAll() {
         viewModelScope.launch(Dispatchers.IO) {
             _isEnqueuing.value = true
             try {
                 val packageNames = favouriteDao.favourites().first().map { it.packageName }
-                val installable = appDetailsHelper.getAppByPackageName(packageNames).filter { app ->
+                val canDownload = playClient.supports(Capability.DOWNLOAD)
+                val installable = playClient.apps.details(packageNames).filter { app ->
                     val needsInstall = !PackageUtil.isInstalled(context, app.packageName) ||
                         PackageUtil.isUpdatable(context, app.packageName, app.versionCode)
-                    val acquirable = app.isFree || !authProvider.isAnonymous
+                    val acquirable = app.isFree || canDownload
                     needsInstall && acquirable
                 }
 

@@ -7,7 +7,7 @@ package com.aurora.store.data.room.account
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.data.model.AccountType
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -23,8 +23,8 @@ class AccountConverter @Inject constructor() {
     fun fromAccountType(type: AccountType): String = type.name
 
     @TypeConverter
-    fun toToken(value: String): AuthHelper.Token = AuthHelper.Token.valueOf(value)
+    fun toToken(value: String): TokenType = TokenType.valueOf(value)
 
     @TypeConverter
-    fun fromToken(token: AuthHelper.Token): String = token.name
+    fun fromToken(token: TokenType): String = token.name
 }

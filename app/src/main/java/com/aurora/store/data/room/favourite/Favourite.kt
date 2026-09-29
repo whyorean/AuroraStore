@@ -8,8 +8,8 @@ package com.aurora.store.data.room.favourite
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.Artwork
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 

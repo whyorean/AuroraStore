@@ -24,8 +24,8 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.aurora.extensions.emptyPagingItems
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
@@ -52,7 +52,7 @@ fun StreamBrowseScreen(
     val apps = viewModel.apps.collectAsLazyPagingItems()
 
     ScreenContent(
-        title = streamCluster.clusterTitle,
+        title = streamCluster.title,
         apps = apps,
         onNavigateTo = onNavigateTo
     )

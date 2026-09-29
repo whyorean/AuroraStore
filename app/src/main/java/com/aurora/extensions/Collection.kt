@@ -5,6 +5,6 @@
 
 package com.aurora.extensions
 
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.AppFile
 
-fun List<PlayFile>.requiresObbDir(): Boolean = this.any { it.type == PlayFile.Type.OBB }
+fun List<AppFile>.requiresObbDir(): Boolean = this.any { it.type == AppFile.Type.OBB }

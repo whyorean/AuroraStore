@@ -51,16 +51,14 @@ class AccountRepository @Inject constructor(
     }
 
     /**
-     * The account id to use for [packageName]: its binding if one exists, otherwise the current
-     * default account's id. Falls back to [Account.ANONYMOUS_ID] when no default is set yet
-     * (e.g. immediately after migration before login) — callers must treat this as "use the
-     * anonymous account", and the anonymous account is expected to exist by the time a download
-     * runs.
+     * The account [packageName] was explicitly bound to, or null when it simply uses whichever
+     * account is default — or no account at all, which gplayapi answers anonymously. This
+     * replaced a `resolveAccountId` that fell back to the default account's id (and to
+     * [Account.ANONYMOUS_ID] when there was none): a caller needs to know *whether* an app is
+     * pinned to a particular account, and that fallback could not say.
      */
-    suspend fun resolveAccountId(packageName: String): String {
-        bindingDao.getForPackage(packageName)?.let { return it.accountId }
-        return accountDao.getDefault()?.id ?: Account.ANONYMOUS_ID
-    }
+    suspend fun boundAccountId(packageName: String): String? =
+        bindingDao.getForPackage(packageName)?.accountId
 
     /**
      * Records the account an app was installed with. Binding to the current default clears any

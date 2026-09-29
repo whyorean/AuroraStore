@@ -11,8 +11,8 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.AuthenticatedSession
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
@@ -23,7 +23,7 @@ import dagger.assisted.AssistedInject
 import java.io.IOException
 
 /**
- * Worker to refresh [AuthData] in background
+ * Worker to refresh [AuthenticatedSession] in background
  * @see UpdateWorker
  */
 @HiltWorker
@@ -65,19 +65,19 @@ open class AuthWorker @AssistedInject constructor(
                     }
 
                     when (tokenPair.second) {
-                        AuthHelper.Token.AAS -> {
+                        TokenType.AAS -> {
                             Log.i(TAG, "Refreshing AuthData for personal account")
                             authProvider.buildGoogleAuthData(
                                 email,
                                 tokenPair.first,
-                                AuthHelper.Token.AAS
+                                TokenType.AAS
                             ).getOrThrow()
                         }
 
-                        AuthHelper.Token.AUTH -> {
+                        TokenType.AUTH -> {
                             Log.i(TAG, "Refreshing AuthData via AccountManager")
                             val newToken = tokenProvider.fetchAuthToken(email, tokenPair.first)
-                            authProvider.buildGoogleAuthData(email, newToken, AuthHelper.Token.AAS)
+                            authProvider.buildGoogleAuthData(email, newToken, TokenType.AAS)
                                 .getOrThrow()
                         }
                     }
@@ -108,14 +108,17 @@ open class AuthWorker @AssistedInject constructor(
         }
     }
 
-    private fun verifyAndSaveAuth(authData: AuthData, accountType: AccountType): AuthData? =
+    private fun verifyAndSaveAuth(
+        authData: AuthenticatedSession,
+        accountType: AccountType
+    ): AuthenticatedSession? =
         if (authData.authToken.isNotEmpty() && authData.deviceConfigToken.isNotEmpty()) {
             authProvider.saveAuthData(authData)
             AccountProvider.login(
                 context,
                 authData.email,
-                authData.aasToken.ifBlank { authData.authToken },
-                if (authData.aasToken.isBlank()) AuthHelper.Token.AUTH else AuthHelper.Token.AAS,
+                authData.aasToken?.ifBlank { authData.authToken } ?: authData.authToken,
+                if (authData.aasToken.isNullOrBlank()) TokenType.AUTH else TokenType.AAS,
                 accountType
             )
             authData

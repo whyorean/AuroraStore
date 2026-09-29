@@ -5,12 +5,15 @@
 
 package com.aurora.store.util
 
-import com.aurora.store.data.network.HttpClient
 import java.util.Locale
 import javax.inject.Inject
+import okhttp3.Headers.Companion.toHeaders
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 
-class AC2DMTask @Inject constructor(private val httpClient: HttpClient) {
+class AC2DMTask @Inject constructor(private val okHttpClient: OkHttpClient) {
 
     @Throws(Exception::class)
     fun getAC2DMResponse(email: String, oAuthToken: String): Map<String, String> {
@@ -31,18 +34,27 @@ class AC2DMTask @Inject constructor(private val httpClient: HttpClient) {
 
         val body = params.map { "${it.key}=${it.value}" }.joinToString(separator = "&")
 
-        val header = mapOf(
+        val headers = mapOf(
             "app" to "com.google.android.gms",
             "User-Agent" to "",
             "Content-Type" to "application/x-www-form-urlencoded"
+        ).toHeaders()
+
+        val request = Request(
+            url = TOKEN_AUTH_URL.toHttpUrl(),
+            headers = headers,
+            method = "POST",
+            body = body.toRequestBody()
         )
 
-        val response = httpClient.post(TOKEN_AUTH_URL, header, body.toRequestBody())
+        val response = okHttpClient.newCall(request).execute()
 
-        return if (response.isSuccessful) {
-            AC2DMUtil.parseResponse(String(response.responseBytes))
-        } else {
-            emptyMap()
+        return response.use {
+            if (it.isSuccessful) {
+                AC2DMUtil.parseResponse(it.body.string())
+            } else {
+                emptyMap()
+            }
         }
     }
 

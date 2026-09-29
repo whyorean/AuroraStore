@@ -17,10 +17,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.extensions.browse
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.datasafety.Entry
-import com.aurora.gplayapi.data.models.datasafety.EntryType
-import com.aurora.gplayapi.data.models.datasafety.Report
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.DataSafetyEntry
+import com.aurora.gplayapi.model.DataSafetyEntryType
+import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.SectionHeader
@@ -34,7 +34,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param privacyPolicyUrl App's privacy policy URL
  */
 @Composable
-fun DataSafety(report: Report, privacyPolicyUrl: String) {
+fun DataSafety(report: DataSafetyReport, privacyPolicyUrl: String) {
     val context = LocalContext.current
 
     SectionHeader(
@@ -45,7 +45,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
 
     report.entries.groupBy { it.type }.forEach { (type, entries) ->
         when (type) {
-            EntryType.DATA_COLLECTED -> {
+            DataSafetyEntryType.DATA_COLLECTED -> {
                 Info(
                     painter = painterResource(R.drawable.ic_cloud_upload),
                     title = AnnotatedString(
@@ -60,7 +60,7 @@ fun DataSafety(report: Report, privacyPolicyUrl: String) {
                 )
             }
 
-            EntryType.DATA_SHARED -> {
+            DataSafetyEntryType.DATA_SHARED -> {
                 Info(
                     painter = painterResource(R.drawable.ic_share),
                     title = AnnotatedString(
@@ -90,16 +90,16 @@ private fun DataSafetyPreview(@PreviewParameter(AppPreviewProvider::class) app: 
     ) {
         DataSafety(
             privacyPolicyUrl = app.privacyPolicyUrl,
-            report = Report(
+            report = DataSafetyReport(
                 packageName = app.packageName,
                 entries = listOf(
-                    Entry(
-                        type = EntryType.DATA_COLLECTED,
+                    DataSafetyEntry(
+                        type = DataSafetyEntryType.DATA_COLLECTED,
                         name = String(),
                         description = String()
                     ),
-                    Entry(
-                        type = EntryType.DATA_SHARED,
+                    DataSafetyEntry(
+                        type = DataSafetyEntryType.DATA_SHARED,
                         name = String(),
                         description = String()
                     )

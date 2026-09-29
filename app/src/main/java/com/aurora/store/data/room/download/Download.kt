@@ -11,16 +11,19 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.aurora.extensions.requiresGMS
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.AppFile
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.room.AppFileParceler
 import com.aurora.store.data.room.suite.ExternalApk
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.util.PathUtil
 import java.util.Date
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.TypeParceler
 
 @Parcelize
+@TypeParceler<AppFile, AppFileParceler>
 @Entity(tableName = "download")
 data class Download(
     @PrimaryKey val packageName: String,
@@ -38,7 +41,7 @@ data class Download(
     var timeRemaining: Long,
     var totalFiles: Int,
     var downloadedFiles: Int,
-    var fileList: List<PlayFile>,
+    var fileList: List<AppFile>,
     val sharedLibs: List<SharedLib>,
     val targetSdk: Int = 1,
     val downloadedAt: Long = 0,

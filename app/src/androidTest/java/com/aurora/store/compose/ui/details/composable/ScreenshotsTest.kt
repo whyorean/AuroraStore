@@ -9,7 +9,7 @@ import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.performSemanticsAction
-import com.aurora.gplayapi.data.models.Artwork
+import com.aurora.gplayapi.model.Artwork
 import com.aurora.store.IsolatedTest
 import org.junit.Assert.assertEquals
 import org.junit.Test

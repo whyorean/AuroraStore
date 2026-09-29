@@ -28,7 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
@@ -73,7 +73,7 @@ fun GoogleLoginScreen(
                         viewModel.buildGoogleAuthData(
                             event.email,
                             event.token,
-                            AuthHelper.Token.AAS
+                            TokenType.AAS
                         )
                     }
                 } else {

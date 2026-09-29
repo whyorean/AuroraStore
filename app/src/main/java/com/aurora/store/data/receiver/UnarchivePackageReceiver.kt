@@ -14,7 +14,7 @@ import android.util.Log
 import androidx.core.content.getSystemService
 import com.aurora.extensions.TAG
 import com.aurora.extensions.isVAndAbove
-import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.PlayClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.providers.AccountProvider
@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 class UnarchivePackageReceiver : BroadcastReceiver() {
 
     @Inject
-    lateinit var appDetailsHelper: AppDetailsHelper
+    lateinit var playClient: PlayClient
 
     @Inject
     lateinit var downloadHelper: DownloadHelper
@@ -53,7 +53,7 @@ class UnarchivePackageReceiver : BroadcastReceiver() {
                     return@launch
                 }
 
-                val app = appDetailsHelper.getAppByPackageName(packageName)
+                val app = playClient.apps.details(packageName)
                 downloadHelper.enqueueApp(app)
             }
         }

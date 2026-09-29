@@ -7,13 +7,18 @@ package com.aurora.store.compose.navigation
 
 import android.os.Parcelable
 import androidx.navigation3.runtime.NavKey
-import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.data.model.PermissionType
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.TypeParceler
 import kotlinx.serialization.Serializable
 
 /**
- * Destinations for navigation in compose
+ * Destinations for navigation in compose.
+ *
+ * [StreamCluster] is a gplayapi-v4 model, and `core` deliberately has no `Parcelable` (no
+ * Android dependency at all), so [StreamBrowse] round-trips it through [StreamClusterParceler]
+ * rather than through generated `@Parcelize` field-by-field code.
  */
 @Parcelize
 @Serializable
@@ -75,6 +80,7 @@ sealed class Screen : NavKey, Parcelable {
     data object Installed : Screen()
 
     @Serializable
+    @TypeParceler<StreamCluster, StreamClusterParceler>
     data class StreamBrowse(val streamCluster: StreamCluster) : Screen()
 
     @Serializable

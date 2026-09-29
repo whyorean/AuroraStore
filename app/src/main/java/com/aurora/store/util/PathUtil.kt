@@ -8,7 +8,7 @@ package com.aurora.store.util
 import android.content.Context
 import android.os.Environment
 import androidx.core.content.pm.PackageInfoCompat
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.AppFile
 import com.aurora.store.data.room.download.Download
 import java.io.File
 import java.util.UUID
@@ -43,15 +43,15 @@ object PathUtil {
     )
 
     /**
-     * Returns an instance of java's [File] class for the given [PlayFile]
+     * Returns an instance of java's [File] class for the given [AppFile]
      * @param context [Context]
-     * @param playFile [PlayFile] to download
+     * @param playFile [AppFile] to download
      * @param download An instance of [Download]
      */
-    fun getLocalFile(context: Context, playFile: PlayFile, download: Download): File {
+    fun getLocalFile(context: Context, playFile: AppFile, download: Download): File {
         val sharedLib = download.sharedLibs.find { it.fileList.contains(playFile) }
         return when (playFile.type) {
-            PlayFile.Type.BASE, PlayFile.Type.SPLIT -> {
+            AppFile.Type.BASE, AppFile.Type.SPLIT -> {
                 val downloadDir = if (sharedLib != null) {
                     getLibDownloadDir(
                         context,
@@ -65,7 +65,7 @@ object PathUtil {
                 return File(downloadDir, playFile.name)
             }
 
-            PlayFile.Type.OBB, PlayFile.Type.PATCH -> {
+            AppFile.Type.OBB, AppFile.Type.PATCH -> {
                 File(getObbDownloadDir(download.packageName), playFile.name)
             }
         }
@@ -89,7 +89,7 @@ object PathUtil {
         val appDir = getAppDownloadDir(context, download.packageName, download.versionCode)
         val playFiles = download.fileList + download.sharedLibs.flatMap { it.fileList }
         val (obbPlayFiles, apkPlayFiles) = playFiles.partition {
-            it.type == PlayFile.Type.OBB || it.type == PlayFile.Type.PATCH
+            it.type == AppFile.Type.OBB || it.type == AppFile.Type.PATCH
         }
 
         val apkFiles = apkPlayFiles.associate { playFile ->

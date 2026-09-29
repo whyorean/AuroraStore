@@ -6,7 +6,14 @@
 package com.aurora.store.data.providers
 
 import android.content.Context
+import android.util.Log
+import com.aurora.extensions.TAG
+import com.aurora.extensions.isHuawei
+import com.aurora.extensions.toast
 import com.aurora.extensions.withPlayRegion
+import com.aurora.gplayapi.android.NativeDeviceProperties
+import com.aurora.gplayapi.device.DeviceProfile
+import com.aurora.gplayapi.device.DeviceRegistry
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
@@ -33,6 +40,20 @@ class SpoofProvider @Inject constructor(
 
         private const val DEVICE_SPOOF_ENABLED = "DEVICE_SPOOF_ENABLED"
         private const val DEVICE_SPOOF_PROPERTIES = "DEVICE_SPOOF_PROPERTIES"
+
+        /**
+         * Gated decision 4: the live path always sends these, regardless of what GSF/Vending
+         * build is actually installed. [NativeDeviceProperties] reads the real installed
+         * versions - right for the device-config export flow, which wants the true values -
+         * but Aurora's protocol (Finsky's User-Agent, `PsRhSigner.finskyVersion`, `AuthParams`,
+         * `CheckinRequestBuilder`) has only ever been exercised against this exact vintage.
+         * Sending the real installed version on the live path would announce a current Play
+         * Store build while still speaking a 21.5.17-vintage protocol, a combination no real
+         * Aurora install has ever sent.
+         */
+        private const val PINNED_GSF_VERSION = "203019037"
+        private const val PINNED_VENDING_VERSION = "82151710"
+        private const val PINNED_VENDING_VERSION_STRING = "21.5.17-21 [0] [PR] 326734551"
     }
 
     val availableSpoofDeviceProperties get() = availableDeviceProperties
@@ -50,10 +71,27 @@ class SpoofProvider @Inject constructor(
             val currentProperties = if (isDeviceSpoofEnabled) {
                 spoofDeviceProperties
             } else {
-                NativeDeviceInfoProvider.getNativeDeviceProperties(context)
+                nativeDeviceProperties
             }
             setVendingVersion(currentProperties)
             return currentProperties
+        }
+
+    /**
+     * The running device's real properties: gplayapi-android's [NativeDeviceProperties] reading
+     * plus two things that are app policy rather than device reading, so the library
+     * deliberately leaves them out - the live-path GSF/Vending version pin (see
+     * [PINNED_GSF_VERSION]) and, on Huawei hardware, the Pixel 7a substitution
+     * ([stripHuaweiProperties]), which depends on Aurora's own [isHuawei] and chooses which
+     * device to present rather than reading the one actually running.
+     */
+    val nativeDeviceProperties: Properties
+        get() {
+            val properties = NativeDeviceProperties.read(context)
+            properties.setProperty("GSF.version", PINNED_GSF_VERSION)
+            properties.setProperty("Vending.version", PINNED_VENDING_VERSION)
+            properties.setProperty("Vending.versionString", PINNED_VENDING_VERSION_STRING)
+            return if (isHuawei) stripHuaweiProperties(properties) else properties
         }
 
     val locale: Locale
@@ -62,6 +100,30 @@ class SpoofProvider @Inject constructor(
         } else {
             Locale.getDefault()
         }.withPlayRegion()
+
+    /**
+     * [deviceProperties] as a v4 [DeviceProfile] - what `PlayClientModule`'s `SessionProvider`
+     * and `AuthProvider` build sessions against.
+     *
+     * A device config selected before gplayapi v4 validated (33 required keys, 11 numeric)
+     * can fail that validation now. Rather than let an [IllegalArgumentException] break every
+     * Play call, an invalid *active* spoof is disabled here so this and future calls fall back
+     * to the real device, and the user is told once rather than left to wonder why Play
+     * requests started failing.
+     */
+    fun deviceProfile(): DeviceProfile {
+        val properties = deviceProperties
+        return try {
+            DeviceRegistry.parse(properties.getProperty("Build.PRODUCT", "spoofed"), properties)
+        } catch (exception: IllegalArgumentException) {
+            Log.e(TAG, "Active device spoof is invalid, disabling it", exception)
+            if (isDeviceSpoofEnabled) {
+                removeSpoofDeviceProperties()
+                context.toast(R.string.toast_spoof_device_invalid)
+            }
+            DeviceRegistry.default
+        }
+    }
 
     val isLocaleSpoofEnabled: Boolean
         get() = Preferences.getBoolean(context, LOCALE_SPOOF_ENABLED)
@@ -115,5 +177,17 @@ class SpoofProvider @Inject constructor(
                 versionStrings[vendingVersionIndex]
             )
         }
+    }
+
+    private fun stripHuaweiProperties(properties: Properties): Properties {
+        properties["Build.HARDWARE"] = "lynx"
+        properties["Build.BOOTLOADER"] = "lynx-1.0-9716681"
+        properties["Build.BRAND"] = "google"
+        properties["Build.DEVICE"] = "lynx"
+        properties["Build.MODEL"] = "Pixel 7a"
+        properties["Build.MANUFACTURER"] = "Google"
+        properties["Build.PRODUCT"] = "lynx"
+        properties["Build.ID"] = "TQ2A.230505.002"
+        return properties
     }
 }

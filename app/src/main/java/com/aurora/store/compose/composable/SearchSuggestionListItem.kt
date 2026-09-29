@@ -19,27 +19,27 @@ import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.gplayapi.SearchSuggestEntry
+import com.aurora.gplayapi.api.SearchSuggestion
 import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 @Composable
 fun SearchSuggestionListItem(
     modifier: Modifier = Modifier,
-    searchSuggestEntry: SearchSuggestEntry,
+    searchSuggestion: SearchSuggestion,
     onClick: (query: String) -> Unit = {},
     onAction: (query: String) -> Unit = {}
 ) {
     AuroraListItem(
         modifier = modifier,
-        headline = searchSuggestEntry.title,
-        onClick = { onClick(searchSuggestEntry.title) },
+        headline = searchSuggestion.title,
+        onClick = { onClick(searchSuggestion.title) },
         leading = {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(
-                        if (searchSuggestEntry.hasImageContainer()) {
-                            searchSuggestEntry.imageContainer.imageUrl
+                        if (searchSuggestion.imageUrl.isNotBlank()) {
+                            searchSuggestion.imageUrl
                         } else {
                             R.drawable.ic_search_suggestion
                         }
@@ -53,7 +53,7 @@ fun SearchSuggestionListItem(
             )
         },
         trailing = {
-            IconButton(onClick = { onAction(searchSuggestEntry.title) }) {
+            IconButton(onClick = { onAction(searchSuggestion.title) }) {
                 Icon(
                     painter = painterResource(R.drawable.ic_search_append),
                     contentDescription = null
@@ -68,6 +68,6 @@ fun SearchSuggestionListItem(
 @Composable
 private fun SearchSuggestionListItemPreview() {
     SearchSuggestionListItem(
-        searchSuggestEntry = SearchSuggestEntry.getDefaultInstance()
+        searchSuggestion = SearchSuggestion(title = "Aurora Store")
     )
 }

@@ -37,7 +37,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 
 @OptIn(ExperimentalMaterial3Api::class)

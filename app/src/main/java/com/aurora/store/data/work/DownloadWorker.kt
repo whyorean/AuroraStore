@@ -27,11 +27,12 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
-import com.aurora.gplayapi.data.models.PlayFile
-import com.aurora.gplayapi.exceptions.GooglePlayException
-import com.aurora.gplayapi.helpers.AuthHelper
-import com.aurora.gplayapi.helpers.PurchaseHelper
-import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.android.AndroidLogger
+import com.aurora.gplayapi.model.AppFile
+import com.aurora.gplayapi.net.HttpEngine
+import com.aurora.gplayapi.session.SessionProvider
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.AccountRepository
@@ -42,11 +43,11 @@ import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.DownloadStatus.Companion.installerStates
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
+import com.aurora.store.module.NoAuth
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
@@ -71,6 +72,11 @@ import kotlin.properties.Delegates
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
+import okhttp3.Headers.Companion.toHeaders
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
@@ -83,7 +89,10 @@ class DownloadWorker @AssistedInject constructor(
     tokenProvider: GoogleAccountTokenProvider,
     private val downloadDao: DownloadDao,
     private val appInstaller: AppInstaller,
-    private val httpClient: IHttpClient,
+    private val okHttpClient: OkHttpClient,
+    private val httpEngine: HttpEngine,
+    private val playClient: PlayClient,
+    @NoAuth private val noAuthPlayClient: PlayClient,
     private val accountRepository: AccountRepository,
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
@@ -98,7 +107,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private lateinit var download: Download
-    private lateinit var purchaseHelper: PurchaseHelper
+    private lateinit var deliveryClient: PlayClient
 
     private val notificationManager = context.getSystemService<NotificationManager>()!!
 
@@ -137,7 +146,7 @@ class DownloadWorker @AssistedInject constructor(
         // Fetch required data for download
         try {
             download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
-            purchaseHelper = resolvePurchaseHelper(download.packageName)
+            deliveryClient = playClientFor(download.packageName)
         } catch (exception: Exception) {
             return onFailure(exception)
         }
@@ -154,7 +163,7 @@ class DownloadWorker @AssistedInject constructor(
         // failure (unreachable/pinned host, non-HTTP url, undecodable image) must never abort
         // the download itself.
         try {
-            val response = (httpClient as HttpClient).call(download.iconURL).body
+            val response = get(download.iconURL).body
             val bitmap = BitmapFactory.decodeStream(
                 withContext(Dispatchers.IO) { response.byteStream() }
             )
@@ -166,13 +175,13 @@ class DownloadWorker @AssistedInject constructor(
         // Set work/service to foreground on < Android 12.0
         setForeground(getForegroundInfo())
 
-        // Try to purchase the app if file list is empty. Surface any GPlayApi error
+        // Resolve download URLs if the file list is empty. Surface any gplayapi error
         // (e.g. AppNotPurchased, AppNotSupported, AppRemoved) as the failure cause so
         // the user sees the real reason instead of a generic "files not available".
         notifyStatus(DownloadStatus.PURCHASING)
         try {
             download.fileList = download.fileList.ifEmpty {
-                purchase(download.packageName, download.versionCode, download.offerType)
+                resolveFiles(download.packageName, download.versionCode, download.offerType)
             }
         } catch (exception: Exception) {
             return onFailure(exception)
@@ -189,7 +198,7 @@ class DownloadWorker @AssistedInject constructor(
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
-        val files = mutableListOf<PlayFile>()
+        val files = mutableListOf<AppFile>()
 
         // Check if shared libs are present, if yes, handle them first
         if (download.sharedLibs.isNotEmpty()) {
@@ -203,9 +212,9 @@ class DownloadWorker @AssistedInject constructor(
                         it.packageName
                     ).mkdirs()
 
-                    // Purchase shared lib if file list is empty
+                    // Resolve the shared lib's own files if its list is empty
                     it.fileList = it.fileList.ifEmpty {
-                        purchase(it.packageName, it.versionCode, 0)
+                        resolveFiles(it.packageName, it.versionCode, 0)
                     }
                     files.addAll(it.fileList)
                 }
@@ -359,9 +368,17 @@ class DownloadWorker @AssistedInject constructor(
 
                     else -> {
                         val userMessage = when (exception) {
-                            is GooglePlayException.AppNotSupported -> context.getString(
+                            is PlayException.AppNotSupported -> context.getString(
                                 R.string.download_version_unavailable,
                                 download.versionCode
+                            )
+
+                            // Delivery is the only call this worker makes, and both session
+                            // types carry Capability.DOWNLOAD, so the only way it can demand an
+                            // account is the signing-key rotation the anonymous endpoint cannot
+                            // express. The library's own message says so, in English only.
+                            is PlayException.RequiresAccount -> context.getString(
+                                R.string.download_signing_key_rotated
                             )
 
                             else -> exception.message?.takeIf { it.isNotBlank() }
@@ -390,58 +407,120 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Builds a [PurchaseHelper] bound to the account this download should use: the app's
-     * per-app binding if any, otherwise the default account. Refreshes that account's session
-     * first if it is missing/expired/built under a stale device spoof, so the purchase isn't
-     * rejected and the delivered splits match the device the user picked.
+     * The client this download resolves its files through.
+     *
+     * An app bound to a specific account gets a client pinned to that account's session:
+     * Aurora records the account an app was installed with ([AccountRepository.bindApp]), and
+     * a paid app bought on a second account has to be resolved as that account. Propagates a
+     * refresh failure instead of falling back, which would acquire a bound app under an
+     * identity the user did not pick.
+     *
+     * Everything else goes out on [noAuthPlayClient], with no account at all. A dispensed
+     * account is shared by every Aurora user it was handed to, and its Play quota is consumed
+     * by *downloads* far faster than by browsing - HTTP 429 on delivery is the failure users
+     * actually hit. The account-less delivery endpoint has no such shared quota, so the
+     * account's budget is spent only where an account is genuinely required. [resolveFiles]
+     * falls back to the account when Play refuses an account-less resolve.
+     *
+     * Whether a session reaches the authenticated acquire/purchase/delivery flow or the
+     * account-less delivery endpoint is gplayapi's call, made per request from the session's
+     * own type.
      */
-    private suspend fun resolvePurchaseHelper(packageName: String): PurchaseHelper {
-        val accountId = accountRepository.resolveAccountId(packageName)
-        var authData = authProvider.getAuthData(accountId)
-        if (authData == null ||
-            !authProvider.matchesActiveSpoof(authData) ||
-            !AuthHelper.using(httpClient).isValid(authData)
-        ) {
-            // Refresh the resolved account; propagate failure instead of silently falling back to
-            // a different account, which would purchase a bound app under the wrong identity.
-            authData = authProvider.refresh(accountId).getOrElse { error ->
-                throw IllegalStateException(
-                    "Could not refresh session for account $accountId; re-authentication required",
-                    error
-                )
-            }
-        }
-        return PurchaseHelper(authData).using(httpClient)
+    private suspend fun playClientFor(packageName: String): PlayClient {
+        val boundAccountId = accountRepository.boundAccountId(packageName)
+            ?: return noAuthPlayClient
+        val session = authProvider.sessionFor(boundAccountId)
+        return PlayClient(httpEngine, SessionProvider { session }, AndroidLogger)
     }
 
     /**
-     * Purchases the app to get the download URL of the required files
-     * @param packageName The packageName of the app
-     * @param versionCode Required version of the app
-     * @param offerType Offer type of the app (free/paid)
-     * @return A list of purchased files
+     * Resolves the download URLs of the files needed to install [packageName] at
+     * [versionCode], acquiring or purchasing it first if that is what the session's protocol
+     * requires.
+     *
+     * Android 9.0+ supports signing-key rotation, so an update of an already-installed app
+     * carries the installed certificate's hash. `requireCertificateHash` marks that hash
+     * load-bearing only for an app that actually rotated: the anonymous delivery endpoint
+     * accepts no hash at all, and gplayapi then refuses rather than answering with files that
+     * would fail to install over the installed key
+     * ([PlayException.RequiresAccount], surfaced by [onFailure]).
+     *
+     * The installed-app check reads [download]'s package rather than [packageName], so a shared
+     * library is asked for with the parent app's certificate hash. That is v3's behaviour kept
+     * as found; nothing here can establish what Play does with a hash that belongs to a
+     * different package.
      */
-    private fun purchase(packageName: String, versionCode: Long, offerType: Int): List<PlayFile> {
-        // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-        return if (isPAndAbove && PackageUtil.isInstalled(context, download.packageName)) {
-            purchaseHelper.purchase(
-                packageName,
-                versionCode,
-                offerType,
-                CertUtil.getEncodedCertificateHashes(context, download.packageName).last()
-            )
+    private suspend fun resolveFiles(
+        packageName: String,
+        versionCode: Long,
+        offerType: Int
+    ): List<AppFile> {
+        val updatingInstalled =
+            isPAndAbove && PackageUtil.isInstalled(context, download.packageName)
+        val certificateHash = if (updatingInstalled) {
+            CertUtil.getEncodedCertificateHashes(context, download.packageName).lastOrNull()
         } else {
-            purchaseHelper.purchase(packageName, versionCode, offerType)
+            null
         }
+        val requireCertificateHash = updatingInstalled &&
+            CertUtil.hasRotatedSigningKey(context, download.packageName)
+
+        suspend fun resolveWith(client: PlayClient) = client.delivery.resolve(
+            packageName = packageName,
+            versionCode = versionCode,
+            offerType = offerType,
+            certificateHash = certificateHash,
+            requireCertificateHash = requireCertificateHash
+        )
+
+        // With no signed-in account the fallback below has nothing better to offer - its
+        // client would resolve to the same account-less session - so don't spend a second
+        // request re-asking Play the question it has already refused.
+        if (deliveryClient !== noAuthPlayClient || authProvider.authData == null) {
+            return resolveWith(deliveryClient)
+        }
+
+        // Three things the account-less endpoint cannot serve: a paid app, anything Play
+        // scopes to a library, and an app whose signing key rotated (it accepts no
+        // certificate hash, so gplayapi refuses rather than hand back files that would fail
+        // to install over the installed key). Each is a refusal, not a transport error, and
+        // each is exactly what the signed-in account is still here for - so retry once on it
+        // and pin the rest of this download to it.
+        return try {
+            resolveWith(noAuthPlayClient)
+        } catch (exception: PlayException) {
+            when (exception) {
+                is PlayException.RequiresAccount,
+                is PlayException.AppNotPurchased,
+                is PlayException.Unauthorized -> {
+                    Log.i(TAG, "Account-less delivery refused $packageName, using the account")
+                    deliveryClient = playClient
+                    resolveWith(playClient)
+                }
+                else -> throw exception
+            }
+        }
+    }
+
+    /**
+     * A plain GET on Aurora's own [OkHttpClient], used for the two transfers gplayapi has no
+     * place for: fetching a notification icon, and streaming an APK off the delivery URL
+     * gplayapi resolved. `HttpEngine` buffers a whole response body by design, so a multi-
+     * hundred-megabyte split with resume, byte ranges and progress cannot go through it -
+     * resolution and file transfer are separate concerns using separate tools on purpose.
+     */
+    private fun get(url: String, headers: Map<String, String> = emptyMap()): Response {
+        val request = Request(url = url.toHttpUrl(), headers = headers.toHeaders())
+        return okHttpClient.newCall(request).execute()
     }
 
     /**
      * Downloads the file from the given request.
      * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
-     * @param gFile A [PlayFile] to download
+     * @param gFile An [AppFile] to download
      * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(packageName: String, gFile: PlayFile): Boolean {
+    private suspend fun downloadFile(packageName: String, gFile: AppFile): Boolean {
         return withContext(Dispatchers.IO) {
             Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
             val file = PathUtil.getLocalFile(context, gFile, download)
@@ -459,14 +538,13 @@ class DownloadWorker @AssistedInject constructor(
                 val tmpFile = File(file.absolutePath + ".tmp")
                 val existingBytes = if (tmpFile.exists()) tmpFile.length() else 0L
 
-                val okHttpClient = httpClient as HttpClient
                 val headers = mutableMapOf<String, String>()
                 if (existingBytes > 0) {
                     Log.i(TAG, "$tmpFile has an unfinished download, requesting resume!")
                     headers["Range"] = "bytes=$existingBytes-"
                 }
 
-                val response = okHttpClient.call(gFile.url, headers)
+                val response = get(gFile.url, headers)
                 if (!response.isSuccessful) {
                     val code = response.code
                     response.close()
@@ -661,11 +739,11 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Verifies integrity of a downloaded [PlayFile].
-     * @param gFile [PlayFile] to verify
+     * Verifies integrity of a downloaded [AppFile].
+     * @param gFile [AppFile] to verify
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun verifyFile(gFile: PlayFile): Boolean {
+    private suspend fun verifyFile(gFile: AppFile): Boolean {
         val file = PathUtil.getLocalFile(context, gFile, download)
         Log.i(TAG, "Verifying $file")
 
@@ -700,7 +778,7 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private fun deleteFile(file: PlayFile) {
+    private fun deleteFile(file: AppFile) {
         val apkFile = PathUtil.getLocalFile(context, file, download)
         if (apkFile.exists()) {
             apkFile.delete()
@@ -718,7 +796,7 @@ class DownloadWorker @AssistedInject constructor(
      * Bytes already present on disk (final or partial .tmp) for [files], so the storage check
      * only requires room for what's still left to fetch.
      */
-    private fun downloadedBytesOnDisk(files: List<PlayFile>): Long = files.sumOf { gFile ->
+    private fun downloadedBytesOnDisk(files: List<AppFile>): Long = files.sumOf { gFile ->
         val file = PathUtil.getLocalFile(context, gFile, download)
         val tmpFile = File(file.absolutePath + ".tmp")
         when {

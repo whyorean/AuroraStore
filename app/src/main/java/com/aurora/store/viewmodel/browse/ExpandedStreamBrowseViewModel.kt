@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-FileCopyrightText: 2024 Aurora OSS
  * SPDX-FileCopyrightText: 2021 Rahul Kumar Patel <whyorean@gmail.com>
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -12,9 +13,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.exceptions.GooglePlayException
-import com.aurora.gplayapi.helpers.ExpandedBrowseHelper
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.ClusterCursor
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
 import com.aurora.store.data.event.AuthEvent
@@ -32,7 +34,7 @@ import kotlinx.coroutines.flow.onEach
 @HiltViewModel(assistedFactory = ExpandedStreamBrowseViewModel.Factory::class)
 class ExpandedStreamBrowseViewModel @AssistedInject constructor(
     @Assisted val browseUrl: String,
-    private val streamHelper: ExpandedBrowseHelper
+    private val playClient: PlayClient
 ) : ViewModel() {
 
     @AssistedFactory
@@ -51,42 +53,30 @@ class ExpandedStreamBrowseViewModel @AssistedInject constructor(
     }
 
     private fun fetchApps() {
-        var listUrl = ""
-        var nextPageUrl = ""
+        var cursor: ClusterCursor? = null
 
         manualPager { page ->
             val items = try {
                 when (page) {
                     1 -> {
-                        val browseResponse = streamHelper.getBrowseStreamResponse(browseUrl)
-                        if (browseResponse.hasBrowseTab()) {
-                            listUrl = browseResponse.browseTab.listUrl
-                            val cluster = streamHelper.getExpandedBrowseClusters(
-                                id = listUrl.hashCode(),
-                                listUrl
-                            )
-                            _title.value = cluster.clusterTitle
-                            nextPageUrl = cluster.clusterNextPageUrl
-                            cluster.clusterAppList
-                        } else {
-                            emptyList()
-                        }
+                        val cluster = playClient.streams.expandedBrowse(browseUrl)
+                        _title.value = cluster.title
+                        cursor = cluster.next
+                        cluster.apps
                     }
 
                     else -> {
-                        if (nextPageUrl.isNotBlank()) {
-                            val cluster = streamHelper.getExpandedBrowseClusters(
-                                nextPageUrl.hashCode(),
-                                nextPageUrl
-                            )
-                            nextPageUrl = cluster.clusterNextPageUrl
-                            cluster.clusterAppList
+                        val nextCursor = cursor
+                        if (nextCursor != null) {
+                            val cluster = playClient.streams.next(nextCursor)
+                            cursor = cluster.next
+                            cluster.apps
                         } else {
                             emptyList()
                         }
                     }
                 }
-            } catch (exception: GooglePlayException.AuthException) {
+            } catch (exception: PlayException.Unauthorized) {
                 Log.w(TAG, "Expanded stream returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()

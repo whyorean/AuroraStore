@@ -5,8 +5,8 @@
 
 package com.aurora.store.module
 
-import com.aurora.gplayapi.data.serializers.LocaleSerializer
-import com.aurora.gplayapi.data.serializers.PropertiesSerializer
+import com.aurora.gplayapi.internal.LocaleSerializer
+import com.aurora.gplayapi.internal.PropertiesSerializer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
