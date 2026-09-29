@@ -534,7 +534,7 @@
     <string name="app_lock_locked_message">L’authentification est nécessaire pour accéder à Aurora Store</string>
     <string name="app_lock_unlock">Déverrouiller</string>
     <string name="app_lock_prompt_title">Déverrouiller Aurora Store</string>
-    <string name="app_lock_prompt_subtitle">Saisissez le schéma de verrouillage de l\'écran, le code PIN, le mot de passe ou votre empreinte digitale</string>
+    <string name="app_lock_prompt_subtitle">Saisissez le schéma de verrouillage de l\'écran, le code d’accès, le mot de passe ou votre empreinte digitale</string>
     <string name="notification_channel_alerts">Erreurs &amp; alertes</string>
     <string name="notification_group_activity">Téléchargements et mises à jour</string>
     <string name="notification_group_alerts">Alertes</string>
@@ -570,7 +570,7 @@
     <string name="details_review_delete_message">Votre note et votre avis seront supprimés de Google Play.</string>
     <string name="details_your_review">Votre avis</string>
     <string name="confirm_deeplink_title">Vérifier les liens externes</string>
-    <string name="confirm_deeplink_summary">Demandez confirmation avant d\'ouvrir la fiche d\'une application à partir d\'un lien, afin d\'empêcher les publicités de lancer Aurora Store sans votre consentement.</string>
+    <string name="confirm_deeplink_summary">Demandez confirmation avant d’ouvrir la fiche d’une appli à partir d’un lien, afin d’empêcher le lancement par des publicités d’Aurora Store sans votre consentement.</string>
     <string name="confirm_deeplink_sheet_title">Poursuivre vers Aurora Store ?</string>
     <string name="confirm_deeplink_sheet_message">Une appli externe veut ouvrir Aurora Store</string>
     <string name="confirm_deeplink_sheet_source">Ouvert à partir de %1$s</string>
@@ -634,10 +634,10 @@
     <string name="details_more_certificate_hash">Empreinte numérique du certificat</string>
     <string name="action_free_up_space">Libérer de l’espace</string>
     <string name="insufficient_storage_title">L’espace est insuffisant</string>
-    <string name="insufficient_storage_desc">%1$d appli demande %2$s, mais l’espace libre est : %3$s.</string>
-    <string name="insufficient_storage_hint">Libérez %1$s et essayez à nouveau.</string>
+    <string name="insufficient_storage_desc">%1$s demande %2$s, mais l’espace libre est %3$s.</string>
+    <string name="insufficient_storage_hint">Libérez %1$s et réessayez.</string>
     <string name="status_awaiting_install">En attente de confirmation</string>
-    <string name="notification_install_prompt_pending">Appuyez pour finir l\'installation</string>
+    <string name="notification_install_prompt_pending">Touchez pour finir l’installation</string>
     <string name="details_more_files">Fichiers</string>
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="one">%1$d appli demande %2$s, mais l’espace libre est insuffisant : %3$s.</item>
