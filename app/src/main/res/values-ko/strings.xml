@@ -620,4 +620,17 @@
     <string name="manual_download_no_versions">버전을 찾을 수 없음</string>
     <string name="manual_download_availability_warning">일부 버전은 다운로드할 수 없거나 기기와 호환되지 않을 수 있습니다.</string>
     <string name="details_more_certificate_hash">인증서 해시</string>
+    <string name="action_free_up_space">공간 확보</string>
+    <string name="insufficient_storage_title">공간 부족</string>
+    <string name="insufficient_storage_desc">%1$s에는 %2$s만큼이 필요하지만, %3$s만 이용할 수 있습니다.</string>
+    <string name="insufficient_storage_hint">%1$s만큼 비우고 다시 시도하세요.</string>
+    <string name="status_awaiting_install">확인 대기 중</string>
+    <string name="notification_install_prompt_pending">눌러서 설치 마치기</string>
+    <string name="notification_none">확인할 것 없음</string>
+    <string name="details_more_files">파일</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="other">앱 %1$d개에는 %2$s만큼이 필요하지만, %3$s만 이용할 수 있습니다.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">다운로드한 날짜</string>
+    <string name="installer_provider">%1$s · %2$s에서 처리</string>
 </resources>
